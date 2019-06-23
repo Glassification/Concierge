@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Ammunitions>
+  <Ammunition name="Arrows" qty="20" />
+  <Ammunition name="Blowgun needles" qty="50" />
+  <Ammunition name="Crossbow bolts" qty="20" />
+  <Ammunition name="Shuriken" qty="10" />
+  <Ammunition name="Sling bullets" qty="20" />
+</Ammunitions>
