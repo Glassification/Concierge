@@ -108,7 +108,13 @@
     <Compile Include="Characters\Vitality.cs" />
     <Compile Include="Characters\Wealth.cs" />
     <Compile Include="Persistence\CcsFile.cs" />
+    <Compile Include="Presentation\AbilitiesPage.xaml.cs">
+      <DependentUpon>AbilitiesPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Presentation\DivideLootUI\Player.cs" />
+    <Compile Include="Presentation\EquipmentPage.xaml.cs">
+      <DependentUpon>EquipmentPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Presentation\InventoryPage.xaml.cs">
       <DependentUpon>InventoryPage.xaml</DependentUpon>
     </Compile>
@@ -178,6 +184,14 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Page Include="Presentation\AbilitiesPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\EquipmentPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Presentation\InventoryPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

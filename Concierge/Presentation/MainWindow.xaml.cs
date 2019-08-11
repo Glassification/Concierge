@@ -1,18 +1,8 @@
 ﻿using Concierge.Persistence;
 using Microsoft.Win32;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace Concierge.Presentation
 {
@@ -21,10 +11,19 @@ namespace Concierge.Presentation
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        #region Members
+
         private OpenFileDialog openFileDialog = new OpenFileDialog();
         private SaveFileDialog saveFileDialog = new SaveFileDialog();
 
         InventoryPage InventoryPage = new InventoryPage();
+        EquipmentPage EquipmentPage = new EquipmentPage();
+        AbilitiesPage AbilitiesPage = new AbilitiesPage();
+
+        #endregion
+
+        #region Constructor
 
         public MainWindow()
         {
@@ -34,10 +33,15 @@ namespace Concierge.Presentation
             GridContent.Width = GridContentWidthClose;
 
             InventoryPage.Visibility = Visibility.Collapsed;
-            FrameContent.Content = InventoryPage;
+            EquipmentPage.Visibility = Visibility.Collapsed;
+            AbilitiesPage.Visibility = Visibility.Collapsed;
 
             DataContext = this;
         }
+
+        #endregion
+
+        #region Methods
 
         public void CloseWindow()
         {
@@ -113,6 +117,8 @@ namespace Concierge.Presentation
             TextCharacterClass.Text = Program.Character.GetClasses;
 
             InventoryPage.Draw();
+            AbilitiesPage.Draw();
+            EquipmentPage.Draw();
         }
 
         public void LongRest()
@@ -132,6 +138,10 @@ namespace Concierge.Presentation
             return (Keyboard.Modifiers & ModifierKeys.Shift) == ModifierKeys.Shift;
         }
 
+        #endregion
+
+        #region Accessors
+
         public double GridContentWidthOpen
         {
             get
@@ -146,6 +156,17 @@ namespace Concierge.Presentation
             {
                 return SystemParameters.PrimaryScreenWidth - 60;
             }
+        }
+
+        #endregion
+
+        #region Events
+
+        #region Window Events
+
+        private void MainWindow_ContentRendered(object sender, EventArgs e)
+        {
+            FrameContent.NavigationUIVisibility = System.Windows.Navigation.NavigationUIVisibility.Hidden;
         }
 
         private void MainWindow_KeyPress(object sender, KeyEventArgs e)
@@ -222,6 +243,10 @@ namespace Concierge.Presentation
             }
         }
 
+        #endregion
+
+        #region Menu Events
+
         private void ButtonOpenMenu_Click(object sender, RoutedEventArgs e)
         {
             ButtonCloseMenu.Visibility = Visibility.Visible;
@@ -268,35 +293,68 @@ namespace Concierge.Presentation
             LongRest();
         }
 
+        #endregion
+
+        #region Page Selection Events
+
         private void ItemNotes_Selected(object sender, RoutedEventArgs e)
         {
             InventoryPage.Visibility = Visibility.Collapsed;
+            EquipmentPage.Visibility = Visibility.Collapsed;
+            AbilitiesPage.Visibility = Visibility.Collapsed;
         }
 
         private void ItemInventory_Selected(object sender, RoutedEventArgs e)
         {
+            EquipmentPage.Visibility = Visibility.Collapsed;
+            AbilitiesPage.Visibility = Visibility.Collapsed;
             InventoryPage.Visibility = Visibility.Visible;
-            DrawAll();
+            FrameContent.Content = InventoryPage;
+            InventoryPage.Draw();
         }
 
         private void ItemDetails_Selected(object sender, RoutedEventArgs e)
         {
             InventoryPage.Visibility = Visibility.Collapsed;
+            EquipmentPage.Visibility = Visibility.Collapsed;
+            AbilitiesPage.Visibility = Visibility.Collapsed;
+        }
+
+        private void ItemAbilities_Selected(object sender, RoutedEventArgs e)
+        {
+            InventoryPage.Visibility = Visibility.Collapsed;
+            EquipmentPage.Visibility = Visibility.Collapsed;
+            AbilitiesPage.Visibility = Visibility.Visible;
+            FrameContent.Content = AbilitiesPage;
+            AbilitiesPage.Draw();
         }
 
         private void ItemEquipment_Selected(object sender, RoutedEventArgs e)
         {
             InventoryPage.Visibility = Visibility.Collapsed;
+            AbilitiesPage.Visibility = Visibility.Collapsed;
+            EquipmentPage.Visibility = Visibility.Visible;
+            FrameContent.Content = EquipmentPage;
+            EquipmentPage.Draw();
         }
 
         private void ItemOverview_Selected(object sender, RoutedEventArgs e)
         {
             InventoryPage.Visibility = Visibility.Collapsed;
+            EquipmentPage.Visibility = Visibility.Collapsed;
+            AbilitiesPage.Visibility = Visibility.Collapsed;
         }
 
         private void ItemSpellcasting_Selected(object sender, RoutedEventArgs e)
         {
             InventoryPage.Visibility = Visibility.Collapsed;
+            EquipmentPage.Visibility = Visibility.Collapsed;
+            AbilitiesPage.Visibility = Visibility.Collapsed;
         }
+
+        #endregion
+
+        #endregion
+
     }
 }

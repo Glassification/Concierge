@@ -25,6 +25,28 @@ namespace Concierge.Characters.Collections
         }
 
         public string Name { get; set; }
+        public int Attack
+        {
+            get
+            {
+                switch (Ability)
+                {
+                    default:
+                    case Constants.Abilities.STR:
+                        return Constants.CalculateBonus(Program.Character.Attributes.Strength) + Program.Character.ProficiencyBonus;
+                    case Constants.Abilities.DEX:
+                        return Constants.CalculateBonus(Program.Character.Attributes.Dexterity) + Program.Character.ProficiencyBonus;
+                    case Constants.Abilities.CON:
+                        return Constants.CalculateBonus(Program.Character.Attributes.Constitution) + Program.Character.ProficiencyBonus;
+                    case Constants.Abilities.INT:
+                        return Constants.CalculateBonus(Program.Character.Attributes.Intelligence) + Program.Character.ProficiencyBonus;
+                    case Constants.Abilities.WIS:
+                        return Constants.CalculateBonus(Program.Character.Attributes.Wisdom) + Program.Character.ProficiencyBonus;
+                    case Constants.Abilities.CHA:
+                        return Constants.CalculateBonus(Program.Character.Attributes.Charisma) + Program.Character.ProficiencyBonus;
+                }
+            }
+        }
         public Constants.Abilities Ability { get; set; }
         public string Damage { get; set; }
         public string Misc { get; set; }

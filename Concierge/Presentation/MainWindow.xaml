@@ -6,8 +6,16 @@
         xmlns:local="clr-namespace:Concierge.Presentation"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="1080" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None" Background="#FF202020" KeyDown="MainWindow_KeyPress" WindowState="Maximized">
+        Title="MainWindow" Height="600" Width="1080" 
+        ResizeMode="NoResize" 
+        WindowStartupLocation="CenterScreen" 
+        WindowStyle="None" 
+        Background="#FF202020" 
+        KeyDown="MainWindow_KeyPress" 
+        WindowState="Maximized">
 
+    
+    
     <Window.Resources>
         <ObjectDataProvider x:Key="getGridContentWidthOpen"
                             ObjectType="{x:Type local:MainWindow}"
@@ -149,7 +157,7 @@
 
             <!-- Content Area -->
             <Grid x:Name="GridContent" HorizontalAlignment="Right" Width="1020" Background="Transparent">
-                <Frame Name="FrameContent">
+                <Frame Name="FrameContent" ContentRendered="MainWindow_ContentRendered">
                     
                 </Frame>
             </Grid>
@@ -177,6 +185,12 @@
                             <StackPanel Orientation="Horizontal">
                                 <materialDesign:PackIcon Kind="Sword" Height="25" Width="25" Margin="10"/>
                                 <TextBlock Text="Equipment" VerticalAlignment="Center" Margin="20 10"/>
+                            </StackPanel>
+                        </ListViewItem>
+                        <ListViewItem x:Name="ItemAbilities" Height="60" Selected="ItemAbilities_Selected">
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="Brain" Height="25" Width="25" Margin="10"/>
+                                <TextBlock Text="Abilities" VerticalAlignment="Center" Margin="20 10"/>
                             </StackPanel>
                         </ListViewItem>
                         <ListViewItem x:Name="ItemInventory" Height="60" Selected="ItemInventory_Selected">
