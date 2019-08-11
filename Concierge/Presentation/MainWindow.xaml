@@ -148,7 +148,7 @@
         <Grid Grid.Row="1">
 
             <!-- Content Area -->
-            <Grid x:Name="GridContent" HorizontalAlignment="Right" Width="1020" Background="DarkBlue">
+            <Grid x:Name="GridContent" HorizontalAlignment="Right" Width="1020" Background="Transparent">
                 <Frame Name="FrameContent">
                     
                 </Frame>

@@ -1,4 +1,5 @@
 ﻿using Concierge.Characters.Collections;
+using Concierge.Utility;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,12 +35,12 @@ namespace Concierge.Presentation
 
         private void FillList()
         {
-            ListViewInventory.Items.Clear();
-            
+            InventoryDataGrid.Items.Clear();
 
-            foreach (Inventory inventory in Program.Character.Inventories)
+            foreach (var inventory in Program.Character.Inventories)
             {
-                ListViewInventory.Items.Add(inventory);
+
+                InventoryDataGrid.Items.Add(inventory);
             }
         }
 
@@ -49,6 +50,49 @@ namespace Concierge.Presentation
             {
                 return SystemParameters.PrimaryScreenHeight - 100;
             }
+        }
+
+        private void ButtonUp_Click(object sender, RoutedEventArgs e)
+        {
+            Inventory inventory;
+            int index;
+
+            if (InventoryDataGrid.SelectedItem != null)
+            {
+                inventory = (Inventory)InventoryDataGrid.SelectedItem;
+                index = Program.Character.Inventories.IndexOf(inventory);
+
+                if (index != 0)
+                {
+                    Constants.Swap(Program.Character.Inventories, index, index - 1);
+                    FillList();
+                    InventoryDataGrid.SelectedIndex = index - 1;
+                }
+            }
+        }
+
+        private void ButtonDown_Click(object sender, RoutedEventArgs e)
+        {
+            Inventory inventory;
+            int index;
+
+            if (InventoryDataGrid.SelectedItem != null)
+            {
+                inventory = (Inventory)InventoryDataGrid.SelectedItem;
+                index = Program.Character.Inventories.IndexOf(inventory);
+
+                if (index != Program.Character.Inventories.Count - 1)
+                {
+                    Constants.Swap(Program.Character.Inventories, index, index + 1);
+                    FillList();
+                    InventoryDataGrid.SelectedIndex = index + 1;
+                }
+            }
+        }
+
+        private void ButtonClear_Click(object sender, RoutedEventArgs e)
+        {
+            InventoryDataGrid.UnselectAll();
         }
 
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
@@ -63,7 +107,14 @@ namespace Concierge.Presentation
 
         private void ButtonDelete_Click(object sender, RoutedEventArgs e)
         {
+            Inventory inventory;
 
+            if (InventoryDataGrid.SelectedItem != null)
+            {
+                inventory = (Inventory)InventoryDataGrid.SelectedItem;
+                Program.Character.Inventories.Remove(inventory);
+                FillList();
+            }
         }
     }
 }
