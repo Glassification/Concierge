@@ -164,6 +164,7 @@
                                       Height="200"
                                       BorderThickness="0"
                                       Style="{DynamicResource DGHeaderStyle}"
+                                      SelectionChanged="AmmoDataGrid_SelectionChanged"
                                       SelectionMode="Single">
                         <DataGrid.Columns>
                             <DataGridTextColumn 
@@ -207,6 +208,7 @@
                               MaxHeight="{Binding Path=WeaponHeight}"
                               BorderThickness="0"
                               Style="{DynamicResource DGHeaderStyle}"
+                              SelectionChanged="WeaponDataGrid_SelectionChanged"
                               SelectionMode="Single">
                         <DataGrid.Columns>
                             <DataGridTextColumn 

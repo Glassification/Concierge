@@ -1,4 +1,5 @@
 ﻿using Concierge.Characters.Collections;
+using Concierge.Utility;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -90,17 +91,68 @@ namespace Concierge.Presentation
 
         private void ButtonUp_Click(object sender, RoutedEventArgs e)
         {
-            
+            int index;
+
+            if (AmmoDataGrid.SelectedItem != null)
+            {
+                Ammunition ammo = (Ammunition)AmmoDataGrid.SelectedItem;
+                index = Program.Character.Ammunitions.IndexOf(ammo);
+
+                if (index != 0)
+                {
+                    Constants.Swap(Program.Character.Ammunitions, index, index - 1);
+                    FillAmmoList();
+                    AmmoDataGrid.SelectedIndex = index - 1;
+                }
+            }
+            else if (WeaponDataGrid.SelectedItem != null)
+            {
+                Weapon weapon = (Weapon)WeaponDataGrid.SelectedItem;
+                index = Program.Character.Weapons.IndexOf(weapon);
+
+                if (index != 0)
+                {
+                    Constants.Swap(Program.Character.Weapons, index, index - 1);
+                    FillWeaponList();
+                    WeaponDataGrid.SelectedIndex = index - 1;
+                }
+            }
         }
 
         private void ButtonDown_Click(object sender, RoutedEventArgs e)
         {
-            
+            int index;
+
+            if (AmmoDataGrid.SelectedItem != null)
+            {
+                Ammunition ammo = (Ammunition)AmmoDataGrid.SelectedItem;
+                index = Program.Character.Ammunitions.IndexOf(ammo);
+
+                if (index != Program.Character.Ammunitions.Count - 1)
+                {
+                    Constants.Swap(Program.Character.Ammunitions, index, index + 1);
+                    FillAmmoList();
+                    AmmoDataGrid.SelectedIndex = index + 1;
+                }
+            }
+            else if (WeaponDataGrid.SelectedItem != null)
+            {
+                Weapon weapon = (Weapon)WeaponDataGrid.SelectedItem;
+                index = Program.Character.Weapons.IndexOf(weapon);
+
+                if (index != Program.Character.Weapons.Count - 1)
+                {
+                    Constants.Swap(Program.Character.Weapons, index, index + 1);
+                    FillWeaponList();
+                    WeaponDataGrid.SelectedIndex = index + 1;
+                }
+            }
         }
 
         private void ButtonClear_Click(object sender, RoutedEventArgs e)
         {
-            
+            WeaponDataGrid.UnselectAll();
+            AmmoDataGrid.UnselectAll();
         }
 
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
@@ -115,7 +167,35 @@ namespace Concierge.Presentation
 
         private void ButtonDelete_Click(object sender, RoutedEventArgs e)
         {
-            
+            //colby.bauer@mts.net
+            if (AmmoDataGrid.SelectedItem != null)
+            {
+                Ammunition ammo = (Ammunition)AmmoDataGrid.SelectedItem;
+                Program.Character.Ammunitions.Remove(ammo);
+                FillAmmoList();
+            }
+            else if (WeaponDataGrid.SelectedItem != null)
+            {
+                Weapon weapon = (Weapon)WeaponDataGrid.SelectedItem;
+                Program.Character.Weapons.Remove(weapon);
+                FillWeaponList();
+            }
+        }
+
+        private void AmmoDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (AmmoDataGrid.SelectedItem != null)
+            {
+                WeaponDataGrid.UnselectAll();
+            }
+        }
+
+        private void WeaponDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (WeaponDataGrid.SelectedItem != null)
+            {
+                AmmoDataGrid.UnselectAll();
+            }
         }
     }
 }
