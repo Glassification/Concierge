@@ -61,26 +61,6 @@ namespace Concierge.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap about_128 {
-            get {
-                object obj = ResourceManager.GetObject("about_128", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap about_selected_128 {
-            get {
-                object obj = ResourceManager.GetObject("about_selected_128", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;
         ///&lt;Ammunitions&gt;
         ///  &lt;Ammunition name=&quot;Arrows&quot; qty=&quot;20&quot; /&gt;
@@ -99,19 +79,9 @@ namespace Concierge.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap divide_loot_128 {
+        internal static System.Drawing.Bitmap armor_class_icon {
             get {
-                object obj = ResourceManager.GetObject("divide_loot_128", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap divide_loot_selected_128 {
-            get {
-                object obj = ResourceManager.GetObject("divide_loot_selected_128", resourceCulture);
+                object obj = ResourceManager.GetObject("armor_class_icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -123,26 +93,6 @@ namespace Concierge.Properties {
             get {
                 object obj = ResourceManager.GetObject("dndnextlogo", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap fullscreen_128 {
-            get {
-                object obj = ResourceManager.GetObject("fullscreen_128", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap fullscreen_selected_128 {
-            get {
-                object obj = ResourceManager.GetObject("fullscreen_selected_128", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
@@ -160,206 +110,6 @@ namespace Concierge.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap long_rest_128 {
-            get {
-                object obj = ResourceManager.GetObject("long_rest_128", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap long_rest_selected_128 {
-            get {
-                object obj = ResourceManager.GetObject("long_rest_selected_128", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap mute_128 {
-            get {
-                object obj = ResourceManager.GetObject("mute_128", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap mute_selected_128 {
-            get {
-                object obj = ResourceManager.GetObject("mute_selected_128", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap new_file_128 {
-            get {
-                object obj = ResourceManager.GetObject("new_file_128", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap new_file_selected_128 {
-            get {
-                object obj = ResourceManager.GetObject("new_file_selected_128", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap open_file_128 {
-            get {
-                object obj = ResourceManager.GetObject("open_file_128", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap open_file_selected_128 {
-            get {
-                object obj = ResourceManager.GetObject("open_file_selected_128", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap properties_128 {
-            get {
-                object obj = ResourceManager.GetObject("properties_128", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap properties_selected_128 {
-            get {
-                object obj = ResourceManager.GetObject("properties_selected_128", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap quit_128 {
-            get {
-                object obj = ResourceManager.GetObject("quit_128", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap quit_selected_128 {
-            get {
-                object obj = ResourceManager.GetObject("quit_selected_128", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap roll_dice_128 {
-            get {
-                object obj = ResourceManager.GetObject("roll_dice_128", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap roll_dice_selected_128 {
-            get {
-                object obj = ResourceManager.GetObject("roll_dice_selected_128", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap save_as_file_128 {
-            get {
-                object obj = ResourceManager.GetObject("save_as_file_128", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap save_as_file_selected_128 {
-            get {
-                object obj = ResourceManager.GetObject("save_as_file_selected_128", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap save_file_128 {
-            get {
-                object obj = ResourceManager.GetObject("save_file_128", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap save_file_selected_128 {
-            get {
-                object obj = ResourceManager.GetObject("save_file_selected_128", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap settings_128 {
-            get {
-                object obj = ResourceManager.GetObject("settings_128", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap settings_selected_128 {
-            get {
-                object obj = ResourceManager.GetObject("settings_selected_128", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
         ///&lt;Spells&gt;
         ///  &lt;Spell name=&quot;Acid Splash&quot; level=&quot;Cantrip&quot; page=&quot;211&quot; school=&quot;Conjuration&quot; ritual=&quot;No&quot; comp=&quot;V, S&quot; concen=&quot;No&quot; range=&quot;60 ft.&quot; duration=&quot;Instantaneous&quot; area=&quot;1 or 2 adjacent targets&quot; save=&quot;DEX (Fail)&quot; damage=&quot;1d6 Acid&quot; description=&quot;DAM: Add extra 1d6 at 5th level, 11th level, and 17th level.&quot; prepared=&quot;No&quot; /&gt;
@@ -368,26 +118,6 @@ namespace Concierge.Properties {
         internal static string SpellList {
             get {
                 return ResourceManager.GetString("SpellList", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap table_128 {
-            get {
-                object obj = ResourceManager.GetObject("table_128", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap table_selected_128 {
-            get {
-                object obj = ResourceManager.GetObject("table_selected_128", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
             }
         }
         

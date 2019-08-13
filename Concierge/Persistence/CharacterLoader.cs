@@ -256,7 +256,8 @@ namespace Concierge.Persistence
                         DamageType = (Constants.DamageTypes)Enum.Parse(typeof(Constants.DamageTypes), (string)elem.Attribute("dmgType")),
                         Range = (string)elem.Attribute("range"),
                         Note = (string)elem.Attribute("notes"),
-                        Weight = (double)elem.Attribute("weight")
+                        Weight = (double)elem.Attribute("weight"),
+                        WeaponType = (Constants.WeaponTypes)Enum.Parse(typeof(Constants.WeaponTypes), (string)elem.Attribute("weaponType"))
                     };
 
                     character.Weapons.Add(weapon);

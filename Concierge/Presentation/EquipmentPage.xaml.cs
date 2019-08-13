@@ -26,6 +26,7 @@ namespace Concierge.Presentation
         {
             InitializeComponent();
             DataContext = this;
+            ArmorImage.Source = Constants.ToBitmapImage(Properties.Resources.armor_class_icon);
         }
 
         public void Draw()
@@ -33,10 +34,7 @@ namespace Concierge.Presentation
             FillWeaponList();
             FillAmmoList();
 
-            ArmorWorn.Text = Program.Character.Armor.Equiped;
-            ArmorType.Text = Program.Character.Armor.Type.ToString();
-            AC.Text = Program.Character.Armor.ArmorClass.ToString(); ;
-            Stealth.Text = Program.Character.Armor.Stealth.ToString();
+            ArmorClassField.Text = Program.Character.Armor.TotalArmorClass.ToString();
             Shield.Text = Program.Character.Armor.Shield;
             ShieldAC.Text = Program.Character.Armor.ShieldArmorClass.ToString();
             MiscBonus.Text = Program.Character.Armor.MiscArmorClass.ToString();

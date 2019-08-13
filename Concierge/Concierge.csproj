@@ -108,6 +108,7 @@
     <Compile Include="Characters\Vitality.cs" />
     <Compile Include="Characters\Wealth.cs" />
     <Compile Include="Persistence\CcsFile.cs" />
+    <Compile Include="Persistence\DefaultListLoader.cs" />
     <Compile Include="Presentation\AbilitiesPage.xaml.cs">
       <DependentUpon>AbilitiesPage.xaml</DependentUpon>
     </Compile>
@@ -182,7 +183,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Resources\Images\armor_class_icon.png" />
+  </ItemGroup>
   <ItemGroup>
     <Page Include="Presentation\AbilitiesPage.xaml">
       <SubType>Designer</SubType>
@@ -221,36 +224,6 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Images\about_128.png" />
-    <Resource Include="Resources\Images\about_selected_128.png" />
-    <Resource Include="Resources\Images\divide_loot_128.png" />
-    <Resource Include="Resources\Images\divide_loot_selected_128.png" />
-    <Resource Include="Resources\Images\fullscreen_128.png" />
-    <Resource Include="Resources\Images\fullscreen_selected_128.png" />
-    <Resource Include="Resources\Images\long_rest_128.png" />
-    <Resource Include="Resources\Images\long_rest_selected_128.png" />
-    <Resource Include="Resources\Images\mute_128.png" />
-    <Resource Include="Resources\Images\mute_selected_128.png" />
-    <Resource Include="Resources\Images\new_file_128.png" />
-    <Resource Include="Resources\Images\new_file_selected_128.png" />
-    <Resource Include="Resources\Images\open_file_128.png" />
-    <Resource Include="Resources\Images\open_file_selected_128.png" />
-    <Resource Include="Resources\Images\properties_128.png" />
-    <Resource Include="Resources\Images\properties_selected_128.png" />
-    <Resource Include="Resources\Images\quit_128.png" />
-    <Resource Include="Resources\Images\quit_selected_128.png" />
-    <Resource Include="Resources\Images\roll_dice_128.png" />
-    <Resource Include="Resources\Images\roll_dice_selected_128.png" />
-    <Resource Include="Resources\Images\save_as_file_128.png" />
-    <Resource Include="Resources\Images\save_as_file_selected_128.png" />
-    <Resource Include="Resources\Images\save_file_128.png" />
-    <Resource Include="Resources\Images\save_file_selected_128.png" />
-    <Resource Include="Resources\Images\settings_128.png" />
-    <Resource Include="Resources\Images\settings_selected_128.png" />
-    <Resource Include="Resources\Images\table_128.png" />
-    <Resource Include="Resources\Images\table_selected_128.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

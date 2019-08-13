@@ -54,6 +54,7 @@ namespace Concierge.Characters.Collections
         public string Range { get; set; }
         public string Note { get; set; }
         public double Weight { get; set; }
+        public Constants.WeaponTypes WeaponType { get; set; }
         public Guid ID { get; private set; }
     }
 }

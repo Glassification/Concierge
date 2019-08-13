@@ -45,5 +45,31 @@ namespace Concierge.Characters
         public int MiscArmorClass { get; set; }
 
         public int MagicArmorClass { get; set; }
+
+        public int TotalArmorClass
+        {
+            get
+            {
+                int ac = ArmorClass + ShieldArmorClass + MiscArmorClass + MagicArmorClass;
+
+                switch (Type)
+                {
+                    case Constants.ArmorType.None:
+                        ac += 10;
+                        break;
+                    case Constants.ArmorType.Light:
+                        ac += Constants.CalculateBonus(Program.Character.Attributes.Dexterity);
+                        break;
+                    case Constants.ArmorType.Medium:
+                        ac += Math.Min(2, Constants.CalculateBonus(Program.Character.Attributes.Dexterity));
+                        break;
+                    case Constants.ArmorType.Heavy:
+                    case Constants.ArmorType.Massive:
+                        break;
+                }
+
+                return ac;
+            }
+        }
     }
 }

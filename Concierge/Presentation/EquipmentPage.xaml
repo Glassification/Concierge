@@ -129,19 +129,20 @@
             <Grid>
                 <StackPanel>
                     <Grid x:Name="ArmorHeader" Height="200">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="5*"/>
-                            <RowDefinition Height="5*" />
-                        </Grid.RowDefinitions>
-                        <Grid Grid.Row="0">
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock x:Name="ArmorWorn" FontSize="20" Margin="40 0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                <TextBlock x:Name="ArmorType" FontSize="20" Margin="40 0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                <TextBlock x:Name="AC" FontSize="20" Margin="40 0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                <TextBlock x:Name="Stealth" FontSize="20" Margin="40 0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                            </StackPanel>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="35*"/>
+                            <ColumnDefinition Width="65*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="0">
+                            <Image x:Name="ArmorImage"
+                                   Stretch="Uniform"/>
+                            <TextBlock x:Name="ArmorClassField"
+                                       Foreground="White"
+                                       FontSize="18"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"/>
                         </Grid>
-                        <Grid Grid.Row="1">
+                        <Grid Grid.Column="1">
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock x:Name="Shield" FontSize="20" Margin="40 0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                                 <TextBlock x:Name="ShieldAC" FontSize="20" Margin="40 0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center"/>
