@@ -257,7 +257,8 @@ namespace Concierge.Persistence
                         Range = (string)elem.Attribute("range"),
                         Note = (string)elem.Attribute("notes"),
                         Weight = (double)elem.Attribute("weight"),
-                        WeaponType = (Constants.WeaponTypes)Enum.Parse(typeof(Constants.WeaponTypes), (string)elem.Attribute("weaponType"))
+                        WeaponType = (Constants.WeaponTypes)Enum.Parse(typeof(Constants.WeaponTypes), (string)elem.Attribute("weaponType")),
+                        ProficiencyOverride = bool.Parse((string)elem.Attribute("override"))
                     };
 
                     character.Weapons.Add(weapon);

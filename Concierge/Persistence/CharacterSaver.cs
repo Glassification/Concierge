@@ -200,6 +200,7 @@ namespace Concierge.Persistence
                             select
                                 new XElement("Weapon",
                                     new XAttribute("name", weapon.Name),
+                                    new XAttribute("weaponType", weapon.WeaponType.ToString()),
                                     new XAttribute("ability", weapon.Ability),
                                     new XAttribute("dmg", weapon.Damage),
                                     new XAttribute("misc", weapon.Misc),
@@ -207,6 +208,7 @@ namespace Concierge.Persistence
                                     new XAttribute("range", weapon.Range),
                                     new XAttribute("notes", weapon.Note),
                                     new XAttribute("weight", weapon.Weight),
+                                    new XAttribute("override", weapon.ProficiencyOverride),
                                     new XAttribute("id", weapon.ID)
                                     )
                             ),

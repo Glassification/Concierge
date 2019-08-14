@@ -68,6 +68,23 @@ namespace Concierge.Utility
             }
         }
 
+        public static string FormatName(string name)
+        {
+            char[] ch = name.ToArray();
+            int offset = 0;
+
+            for (int i = 1; i < ch.Length; i++)
+            {
+                if (char.IsUpper(ch[i]))
+                {
+                    name = name.Insert(i + offset, " ");
+                    offset++;
+                }
+            }
+
+            return name;
+        }
+
         public static ReadOnlyCollection<int> AutosaveIntervals { get; private set; }
         public static ReadOnlyCollection<Weapon> Weapons { get; private set; }
         public static ReadOnlyCollection<Ammunition> Ammunitions { get; private set; }

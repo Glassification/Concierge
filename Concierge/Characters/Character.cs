@@ -44,6 +44,76 @@ namespace Concierge.Characters
             SpellSlots.Reset();
         }
 
+        public bool IsWeaponProficient(Weapon weapon)
+        {
+            string weaponName = Constants.FormatName(weapon.WeaponType.ToString());
+
+            if (weapon.ProficiencyOverride)
+                return true;
+
+            if (Proficiency.Weapons.ContainsValue(weaponName))
+                return true;
+
+            switch (weapon.WeaponType)
+            {
+                // Simple Ranged Weapons
+                case Constants.WeaponTypes.LightCrossbow:
+                case Constants.WeaponTypes.Dart:
+                case Constants.WeaponTypes.Shortbow:
+                case Constants.WeaponTypes.Sling:
+                    if (Proficiency.Weapons.ContainsValue("Simple Ranged Weapons"))
+                        return true;
+                    break;
+                // Simple Melee Weapons
+                case Constants.WeaponTypes.Club:
+                case Constants.WeaponTypes.Dagger:
+                case Constants.WeaponTypes.Greatclub:
+                case Constants.WeaponTypes.Handaxe:
+                case Constants.WeaponTypes.Javelin:
+                case Constants.WeaponTypes.LightHammer:
+                case Constants.WeaponTypes.Mace:
+                case Constants.WeaponTypes.Quarterstaff:
+                case Constants.WeaponTypes.Sickle:
+                case Constants.WeaponTypes.Spear:
+                    if (Proficiency.Weapons.ContainsValue("Simple Melee Weapons"))
+                        return true;
+                    break;
+                // Martial Ranged Weapons
+                case Constants.WeaponTypes.Blowgun:
+                case Constants.WeaponTypes.HandCrossbow:
+                case Constants.WeaponTypes.HeavyCrossbow:
+                case Constants.WeaponTypes.Longbow:
+                case Constants.WeaponTypes.Net:
+                    if (Proficiency.Weapons.ContainsValue("Martial Ranged Weapons"))
+                        return true;
+                    break;
+                // Martial Melee Weapons
+                case Constants.WeaponTypes.Battleaxe:
+                case Constants.WeaponTypes.Flail:
+                case Constants.WeaponTypes.Glaive:
+                case Constants.WeaponTypes.Greataxe:
+                case Constants.WeaponTypes.Greatsword:
+                case Constants.WeaponTypes.Halberd:
+                case Constants.WeaponTypes.Lance:
+                case Constants.WeaponTypes.Longsword:
+                case Constants.WeaponTypes.Maul:
+                case Constants.WeaponTypes.Morningstar:
+                case Constants.WeaponTypes.Pike:
+                case Constants.WeaponTypes.Rapier:
+                case Constants.WeaponTypes.Scimitar:
+                case Constants.WeaponTypes.Shortsword:
+                case Constants.WeaponTypes.Trident:
+                case Constants.WeaponTypes.WarPick:
+                case Constants.WeaponTypes.Warhammer:
+                case Constants.WeaponTypes.Whip:
+                    if (Proficiency.Weapons.ContainsValue("Martial Melee Weapons"))
+                        return true;
+                    break;
+            }
+
+            return false;
+        }
+
         private void Initialize()
         {
             Abilities = new List<Ability>();

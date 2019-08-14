@@ -12,11 +12,13 @@ namespace Concierge.Characters.Collections
         public Weapon()
         {
             ID = Guid.NewGuid();
+            ProficiencyOverride = false;
         }
 
         public Weapon(Guid id)
         {
             ID = id;
+            ProficiencyOverride = false;
         }
 
         public override string ToString()
@@ -29,21 +31,26 @@ namespace Concierge.Characters.Collections
         {
             get
             {
+                int bonus = 0;
+
+                if (Program.Character.IsWeaponProficient(this))
+                    bonus = Program.Character.ProficiencyBonus;
+
                 switch (Ability)
                 {
                     default:
                     case Constants.Abilities.STR:
-                        return Constants.CalculateBonus(Program.Character.Attributes.Strength) + Program.Character.ProficiencyBonus;
+                        return Constants.CalculateBonus(Program.Character.Attributes.Strength) + bonus;
                     case Constants.Abilities.DEX:
-                        return Constants.CalculateBonus(Program.Character.Attributes.Dexterity) + Program.Character.ProficiencyBonus;
+                        return Constants.CalculateBonus(Program.Character.Attributes.Dexterity) + bonus;
                     case Constants.Abilities.CON:
-                        return Constants.CalculateBonus(Program.Character.Attributes.Constitution) + Program.Character.ProficiencyBonus;
+                        return Constants.CalculateBonus(Program.Character.Attributes.Constitution) + bonus;
                     case Constants.Abilities.INT:
-                        return Constants.CalculateBonus(Program.Character.Attributes.Intelligence) + Program.Character.ProficiencyBonus;
+                        return Constants.CalculateBonus(Program.Character.Attributes.Intelligence) + bonus;
                     case Constants.Abilities.WIS:
-                        return Constants.CalculateBonus(Program.Character.Attributes.Wisdom) + Program.Character.ProficiencyBonus;
+                        return Constants.CalculateBonus(Program.Character.Attributes.Wisdom) + bonus;
                     case Constants.Abilities.CHA:
-                        return Constants.CalculateBonus(Program.Character.Attributes.Charisma) + Program.Character.ProficiencyBonus;
+                        return Constants.CalculateBonus(Program.Character.Attributes.Charisma) + bonus;
                 }
             }
         }
@@ -55,6 +62,7 @@ namespace Concierge.Characters.Collections
         public string Note { get; set; }
         public double Weight { get; set; }
         public Constants.WeaponTypes WeaponType { get; set; }
+        public bool ProficiencyOverride { get; set; }
         public Guid ID { get; private set; }
     }
 }
