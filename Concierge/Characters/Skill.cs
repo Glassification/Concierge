@@ -30,30 +30,6 @@ namespace Concierge.Characters
             Intimidation = new Intimidation();
             Performance = new Performance();
             Persuasion = new Persuasion();
-
-            SetSkillCheck(Constants.Checks.Normal);
-        }
-
-        public void SetSkillCheck(Constants.Checks checks)
-        {
-            Athletics.Checks = checks;
-            Acrobatics.Checks = checks;
-            SleightOfHand.Checks = checks;
-            Stealth.Checks = checks;
-            Arcana.Checks = checks;
-            History.Checks = checks;
-            Investigation.Checks = checks;
-            Nature.Checks = checks;
-            Religion.Checks = checks;
-            AnimalHandling.Checks = checks;
-            Insight.Checks = checks;
-            Medicine.Checks = checks;
-            Perception.Checks = checks;
-            Survival.Checks = checks;
-            Deception.Checks = checks;
-            Intimidation.Checks = checks;
-            Performance.Checks = checks;
-            Persuasion.Checks = checks;
         }
 
         public Athletics Athletics { get; set; }

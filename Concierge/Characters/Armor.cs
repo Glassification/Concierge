@@ -55,7 +55,8 @@ namespace Concierge.Characters
                 switch (Type)
                 {
                     case Constants.ArmorType.None:
-                        ac += 10;
+                        if (ArmorClass == 0)
+                            ac += 10;
                         break;
                     case Constants.ArmorType.Light:
                         ac += Constants.CalculateBonus(Program.Character.Attributes.Dexterity);

@@ -115,7 +115,7 @@ namespace Concierge.Persistence
                                 ),
                             new XElement("InitiativeBonus", new XAttribute("value", character.Details.InitiativeBonus)),
                             new XElement("PerceptionBonus", new XAttribute("value", character.Details.PerceptionBonus)),
-                            new XElement("Movement", new XAttribute("value", character.Details.Movement)),
+                            new XElement("Movement", new XAttribute("value", character.Details.BaseMovement)),
                             new XElement("Vision", new XAttribute("value", character.Details.Vision))
                             ),
                         new XElement("Appearance",
@@ -169,7 +169,7 @@ namespace Concierge.Persistence
                             ),
                         new XElement("HitPoints",
                             new XElement("MaxHP", new XAttribute("value", character.Vitality.MaxHealth)),
-                            new XElement("CurrentHP", new XAttribute("value", character.Vitality.CurrentHealth)),
+                            new XElement("CurrentHP", new XAttribute("value", character.Vitality.BaseHealth)),
                             new XElement("TemporaryHP", new XAttribute("value", character.Vitality.TemporaryHealth)),
                             new XElement("Conditions",
                                 new XElement("Blinded", new XAttribute("value", character.Vitality.Conditions.Blinded)),

@@ -12,6 +12,19 @@ namespace Concierge.SavingThrowsNamespace
             Proficiency = proficiency;
         }
 
+        public override Constants.Checks Checks
+        {
+            get
+            {
+                if (Program.Character.Vitality.Conditions.Fatigued.Equals("Exhaustion 3") ||
+                    Program.Character.Vitality.Conditions.Fatigued.Equals("Exhaustion 4") ||
+                    Program.Character.Vitality.Conditions.Fatigued.Equals("Exhaustion 5"))
+                    return Constants.Checks.Disadvantage;
+                else
+                    return Constants.Checks.Normal;
+            }
+        }
+
         public override int Bonus
         {
             get

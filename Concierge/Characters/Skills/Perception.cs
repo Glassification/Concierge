@@ -17,6 +17,25 @@ namespace Concierge.SkillsNamespace
             Expertise = expertise;
         }
 
+        public override Constants.Checks Checks
+        {
+            get
+            {
+                if (Program.Character.Vitality.Conditions.Fatigued.Equals("Exhaustion 1") ||
+                    Program.Character.Vitality.Conditions.Fatigued.Equals("Exhaustion 2") ||
+                    Program.Character.Vitality.Conditions.Fatigued.Equals("Exhaustion 3") ||
+                    Program.Character.Vitality.Conditions.Fatigued.Equals("Exhaustion 4") ||
+                    Program.Character.Vitality.Conditions.Fatigued.Equals("Exhaustion 5") ||
+                    Program.Character.Vitality.Conditions.Frightened.Equals("Afflicted") ||
+                    Program.Character.Vitality.Conditions.Poisoned.Equals("Afflicted"))
+                    return Constants.Checks.Disadvantage;
+                else if (Program.Character.Vitality.Conditions.Blinded.Equals("Afflicted"))
+                    return Constants.Checks.Fail;
+                else
+                    return Constants.Checks.Normal;
+            }
+        }
+
         public override int Bonus
         {
             get

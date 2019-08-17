@@ -20,6 +20,7 @@ namespace Concierge.Presentation
         InventoryPage InventoryPage = new InventoryPage();
         EquipmentPage EquipmentPage = new EquipmentPage();
         AbilitiesPage AbilitiesPage = new AbilitiesPage();
+        OverviewPage OverviewPage = new OverviewPage();
 
         #endregion
 
@@ -35,6 +36,7 @@ namespace Concierge.Presentation
             InventoryPage.Visibility = Visibility.Collapsed;
             EquipmentPage.Visibility = Visibility.Collapsed;
             AbilitiesPage.Visibility = Visibility.Collapsed;
+            OverviewPage.Visibility = Visibility.Collapsed;
 
             DataContext = this;
         }
@@ -302,12 +304,14 @@ namespace Concierge.Presentation
             InventoryPage.Visibility = Visibility.Collapsed;
             EquipmentPage.Visibility = Visibility.Collapsed;
             AbilitiesPage.Visibility = Visibility.Collapsed;
+            OverviewPage.Visibility = Visibility.Collapsed;
         }
 
         private void ItemInventory_Selected(object sender, RoutedEventArgs e)
         {
             EquipmentPage.Visibility = Visibility.Collapsed;
             AbilitiesPage.Visibility = Visibility.Collapsed;
+            OverviewPage.Visibility = Visibility.Collapsed;
             InventoryPage.Visibility = Visibility.Visible;
             FrameContent.Content = InventoryPage;
             InventoryPage.Draw();
@@ -318,12 +322,14 @@ namespace Concierge.Presentation
             InventoryPage.Visibility = Visibility.Collapsed;
             EquipmentPage.Visibility = Visibility.Collapsed;
             AbilitiesPage.Visibility = Visibility.Collapsed;
+            OverviewPage.Visibility = Visibility.Collapsed;
         }
 
         private void ItemAbilities_Selected(object sender, RoutedEventArgs e)
         {
             InventoryPage.Visibility = Visibility.Collapsed;
             EquipmentPage.Visibility = Visibility.Collapsed;
+            OverviewPage.Visibility = Visibility.Collapsed;
             AbilitiesPage.Visibility = Visibility.Visible;
             FrameContent.Content = AbilitiesPage;
             AbilitiesPage.Draw();
@@ -333,6 +339,7 @@ namespace Concierge.Presentation
         {
             InventoryPage.Visibility = Visibility.Collapsed;
             AbilitiesPage.Visibility = Visibility.Collapsed;
+            OverviewPage.Visibility = Visibility.Collapsed;
             EquipmentPage.Visibility = Visibility.Visible;
             FrameContent.Content = EquipmentPage;
             EquipmentPage.Draw();
@@ -343,6 +350,8 @@ namespace Concierge.Presentation
             InventoryPage.Visibility = Visibility.Collapsed;
             EquipmentPage.Visibility = Visibility.Collapsed;
             AbilitiesPage.Visibility = Visibility.Collapsed;
+            OverviewPage.Visibility = Visibility.Visible;
+            FrameContent.Content = OverviewPage;
         }
 
         private void ItemSpellcasting_Selected(object sender, RoutedEventArgs e)
@@ -350,6 +359,7 @@ namespace Concierge.Presentation
             InventoryPage.Visibility = Visibility.Collapsed;
             EquipmentPage.Visibility = Visibility.Collapsed;
             AbilitiesPage.Visibility = Visibility.Collapsed;
+            OverviewPage.Visibility = Visibility.Collapsed;
         }
 
         #endregion

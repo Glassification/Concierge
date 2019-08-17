@@ -8,10 +8,12 @@ namespace Concierge.Characters
 {
     public class Vitality
     {
+        private int BaseHealthField;
+
         public Vitality()
         {
             MaxHealth = 0;
-            CurrentHealth = 0;
+            BaseHealth = 0;
             TemporaryHealth = 0;
             HitDice = new HitDice();
             Conditions = new Conditions();
@@ -19,7 +21,7 @@ namespace Concierge.Characters
 
         public void ResetHealth()
         {
-            CurrentHealth = MaxHealth;
+            BaseHealth = MaxHealth;
         }
 
         public void RegainHitDice()
@@ -45,7 +47,38 @@ namespace Concierge.Characters
 
         public int MaxHealth { get; set; }
 
-        public int CurrentHealth { get; set; }
+        public int CurrentHealth
+        {
+            get
+            {
+                if (Conditions.Fatigued.Equals("Exhaustion 4") || Conditions.Fatigued.Equals("Exhaustion 5"))
+                {
+                    if (BaseHealth > MaxHealth/2)
+                    {
+                        return MaxHealth / 2;
+                    }
+                }
+                else if (Conditions.Fatigued.Equals("Exhaustion 6"))
+                {
+                    return 0;
+                }
+
+                return BaseHealth;
+            }
+        }
+
+        public int BaseHealth
+        {
+            get
+            {
+                return BaseHealthField;
+            }
+            set
+            {
+                BaseHealthField = Math.Min(value, MaxHealth);
+                BaseHealthField = Math.Max(value, 0);
+            }
+        }
 
         public int TemporaryHealth { get; set; }
 

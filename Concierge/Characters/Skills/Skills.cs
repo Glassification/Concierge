@@ -21,10 +21,9 @@ namespace Concierge.SkillsNamespace
             set;
         }
 
-        public Constants.Checks Checks
+        public abstract Constants.Checks Checks
         {
             get;
-            set;
         }
 
         public abstract int Bonus

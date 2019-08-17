@@ -24,7 +24,7 @@ namespace Concierge.Utility
         public enum Abilities { NONE, STR, DEX, CON, INT, WIS, CHA };
         public enum ArmorType { None, Light, Medium, Heavy, Massive };
         public enum ArmorStealth { Normal, Disadvantage };
-        public enum Checks { Normal, Disadvantage, Fail };
+        public enum Checks { Normal, Advantage, Disadvantage, Fail };
         public enum DamageTypes { None, Bludgeoning, Piercing, Slashing, Acid, Cold, Fire, Force, Lightning, Necrotic, Poison, Psychic, Radiant, Thunder };
         public enum WeaponTypes { Battleaxe, Blowgun, Club, Dagger, Dart, Flail, Glaive, Greataxe, Greatclub, Greatsword, Halberd, HandCrossbow, Handaxe, HeavyCrossbow, Javelin, Lance, LightCrossbow, LightHammer, Longbow, Longsword, Mace, Maul, Morningstar, Net, Pike, Quarterstaff, Rapier, Scimitar, Shortbow, Shortsword, Sickle, Sling, Spear, Trident, WarPick, Warhammer, Whip };
 

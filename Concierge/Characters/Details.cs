@@ -18,7 +18,7 @@ namespace Concierge.Characters
             Languages = new Dictionary<Guid, string>();
             InitiativeBonus = 0;
             PerceptionBonus = 0;
-            Movement = 0;
+            BaseMovement = 0;
             Vision = "";
         }
 
@@ -38,8 +38,43 @@ namespace Concierge.Characters
 
         public int PerceptionBonus { get; set; }
 
-        public int Movement { get; set; }
+        public int BaseMovement { get; set; }
 
         public string Vision { get; set; }
+
+        public int Movement
+        {
+            get
+            {
+                int newMovement = BaseMovement;
+
+                if (Program.Character.Vitality.Conditions.Fatigued.Equals("Exhaustion 5") ||
+                    Program.Character.Vitality.Conditions.Grappled.Equals("Afflicted") ||
+                    Program.Character.Vitality.Conditions.Restrained.Equals("Afflicted"))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (Program.Character.Vitality.Conditions.Encumbrance.Equals("Encumbered"))
+                    {
+                        newMovement -= 10;
+                    }
+                    else if (Program.Character.Vitality.Conditions.Encumbrance.Equals("Heavily Encumbered"))
+                    {
+                        newMovement -= 20;
+                    }
+
+                    if (Program.Character.Vitality.Conditions.Fatigued.Equals("Exhaustion 2") ||
+                        Program.Character.Vitality.Conditions.Fatigued.Equals("Exhaustion 3") ||
+                        Program.Character.Vitality.Conditions.Fatigued.Equals("Exhaustion 4"))
+                    {
+                        newMovement /= 2;
+                    }
+
+                    return newMovement;
+                }
+            }
+        }
     }
 }

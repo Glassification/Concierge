@@ -19,18 +19,6 @@ namespace Concierge.Characters
             Intelligence = new Intelligence();
             Wisdom = new Wisdom();
             Charisma = new Charisma();
-
-            SetSavingThrowCheck(Constants.Checks.Normal);
-        }
-
-        public void SetSavingThrowCheck(Constants.Checks checks)
-        {
-            Strength.Checks = checks;
-            Dexterity.Checks = checks;
-            Constitution.Checks = checks;
-            Intelligence.Checks = checks;
-            Wisdom.Checks = checks;
-            Charisma.Checks = checks;
         }
 
         public Strength Strength { get; set; }

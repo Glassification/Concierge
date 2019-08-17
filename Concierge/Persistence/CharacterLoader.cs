@@ -117,7 +117,7 @@ namespace Concierge.Persistence
                 character.Details.Experience = (string)element.Element("Experience").Attribute("value");
                 character.Details.InitiativeBonus = (int)element.Element("InitiativeBonus").Attribute("value");
                 character.Details.PerceptionBonus = (int)element.Element("PerceptionBonus").Attribute("value");
-                character.Details.Movement = (int)element.Element("Movement").Attribute("value");
+                character.Details.BaseMovement = (int)element.Element("Movement").Attribute("value");
                 character.Details.Vision = (string)element.Element("Vision").Attribute("value");
 
                 var classess = element.Element("Classes").Elements("Class");
@@ -210,7 +210,7 @@ namespace Concierge.Persistence
                 //-------------------------------------------------------------------------------------------------------
                 element = root.Element("HitPoints");
                 character.Vitality.MaxHealth = (int)element.Element("MaxHP").Attribute("value");
-                character.Vitality.CurrentHealth = (int)element.Element("CurrentHP").Attribute("value");
+                character.Vitality.BaseHealth = (int)element.Element("CurrentHP").Attribute("value");
                 character.Vitality.TemporaryHealth = (int)element.Element("TemporaryHP").Attribute("value");
 
                 element = element.Element("Conditions");

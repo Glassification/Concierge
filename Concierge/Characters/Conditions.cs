@@ -52,38 +52,6 @@ namespace Concierge.Characters
         }
 
         /// =========================================
-        /// FormatChecks()
-        /// =========================================
-        public void FormatChecks()
-        {
-            if (Fatigued.Equals("Exhaustion 1") || Fatigued.Equals("Exhaustion 2") || Fatigued.Equals("Exhaustion 3") || Fatigued.Equals("Exhaustion 4") || Fatigued.Equals("Exhaustion 5") || Afflicted(Frightened) || Afflicted(Poisoned))
-            {
-                Program.Character.Skill.SetSkillCheck(Constants.Checks.Disadvantage);
-            }
-
-            if (Afflicted(Blinded))
-            {
-                Program.Character.Skill.SetSkillCheck(Constants.Checks.Fail);
-            }
-
-            if (Fatigued.Equals("Exhaustion 3") || Fatigued.Equals("Exhaustion 4") || Fatigued.Equals("Exhaustion 5"))
-            {
-                Program.Character.SavingThrow.SetSavingThrowCheck(Constants.Checks.Disadvantage);
-            }
-
-            if (Afflicted(Restrained))
-            {
-                Program.Character.SavingThrow.Dexterity.Checks = Constants.Checks.Disadvantage;
-            }
-
-            if (Afflicted(Paralyzed) || Afflicted(Stunned))
-            {
-                Program.Character.SavingThrow.Strength.Checks = Constants.Checks.Fail;
-                Program.Character.SavingThrow.Dexterity.Checks = Constants.Checks.Fail;
-            }
-        }
-
-        /// =========================================
         /// GetDescription()
         /// =========================================
         public string GetDescription(string name)
@@ -213,68 +181,6 @@ namespace Concierge.Characters
             copy.Unconscious = Unconscious;
 
             return copy;
-        }
-
-        /// =========================================
-        /// FormatMovement()
-        /// =========================================
-        public string FormatMovement()
-        {
-            int movement = Program.Character.Details.Movement;
-
-            if (Fatigued.Equals("Exhaustion 5") || Grappled.Equals("Afflicted") || Restrained.Equals("Afflicted"))
-            {
-                movement = 0;
-            }
-            else
-            {
-                if (Encumbrance.Equals("Encumbered"))
-                {
-                    movement -= 10;
-                }
-                else if (Encumbrance.Equals("Heavily Encumbered"))
-                {
-                    movement -= 20;
-                }
-
-                if (Fatigued.Equals("Exhaustion 2") || Fatigued.Equals("Exhaustion 3") || Fatigued.Equals("Exhaustion 4"))
-                {
-                    movement /= 2;
-                }
-            }
-
-            return movement.ToString();
-        }
-
-        /// =========================================
-        /// FormatHealth()
-        /// =========================================
-        public string FormatHealth()
-        {
-            string health = Program.Character.Vitality.MaxHealth.ToString();
-            int halfHP = Program.Character.Vitality.MaxHealth / 2;
-
-            if (Fatigued.Equals("Exhaustion 4") || Fatigued.Equals("Exhaustion 5"))
-            {
-                health = halfHP.ToString();
-
-                if (Program.Character.Vitality.CurrentHealth > halfHP)
-                {
-                    Program.Character.Vitality.CurrentHealth = halfHP;
-                }
-            }
-            else if (Fatigued.Equals("Exhaustion 6"))
-            {
-                health = "0";
-                Program.Character.Vitality.CurrentHealth = 0;
-            }
-
-            return health;
-        }
-
-        private bool Afflicted(string condition)
-        {
-            return !condition.Equals("Cured");
         }
 
         public string Blinded { get; set; }
