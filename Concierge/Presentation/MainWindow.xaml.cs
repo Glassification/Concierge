@@ -36,7 +36,8 @@ namespace Concierge.Presentation
             InventoryPage.Visibility = Visibility.Collapsed;
             EquipmentPage.Visibility = Visibility.Collapsed;
             AbilitiesPage.Visibility = Visibility.Collapsed;
-            OverviewPage.Visibility = Visibility.Collapsed;
+            OverviewPage.Visibility = Visibility.Visible;
+            FrameContent.Content = OverviewPage;
 
             DataContext = this;
         }
