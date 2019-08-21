@@ -122,6 +122,7 @@ namespace Concierge.Presentation
             InventoryPage.Draw();
             AbilitiesPage.Draw();
             EquipmentPage.Draw();
+            OverviewPage.Draw();
         }
 
         public void LongRest()
@@ -353,6 +354,7 @@ namespace Concierge.Presentation
             AbilitiesPage.Visibility = Visibility.Collapsed;
             OverviewPage.Visibility = Visibility.Visible;
             FrameContent.Content = OverviewPage;
+            OverviewPage.Draw();
         }
 
         private void ItemSpellcasting_Selected(object sender, RoutedEventArgs e)
