@@ -1,0 +1,245 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Character>
+  <Settings>
+    <AutoSave enabled="false" interval="10" />
+    <CoinWeight ignore="true" />
+    <Encumbrance use="false" />
+  </Settings>
+  <Attributes>
+    <Strength value="7" />
+    <Dexterity value="20" />
+    <Constitution value="14" />
+    <Intelligence value="9" />
+    <Wisdom value="15" />
+    <Charisma value="16" />
+  </Attributes>
+  <Proficiency>
+    <SavingThrows>
+      <Strength proficiency="false" />
+      <Dexterity proficiency="true" />
+      <Constitution proficiency="false" />
+      <Intelligence proficiency="true" />
+      <Wisdom proficiency="false" />
+      <Charisma proficiency="false" />
+    </SavingThrows>
+    <Skills>
+      <Athletics proficiency="false" expertise="false" />
+      <Acrobatics proficiency="true" expertise="false" />
+      <SleightOfHand proficiency="true" expertise="false" />
+      <Stealth proficiency="true" expertise="true" />
+      <Arcana proficiency="false" expertise="false" />
+      <History proficiency="false" expertise="false" />
+      <Investigation proficiency="false" expertise="false" />
+      <Nature proficiency="false" expertise="false" />
+      <Religion proficiency="false" expertise="false" />
+      <AnimalHandling proficiency="false" expertise="false" />
+      <Insight proficiency="true" expertise="false" />
+      <Medicine proficiency="false" expertise="false" />
+      <Perception proficiency="true" expertise="true" />
+      <Survival proficiency="false" expertise="false" />
+      <Deception proficiency="true" expertise="true" />
+      <Intimidation proficiency="true" expertise="false" />
+      <Performance proficiency="false" expertise="false" />
+      <Persuasion proficiency="true" expertise="true" />
+    </Skills>
+    <Equipment>
+      <Armors>
+        <Armor value="Light Armor" id="ed2bcbe2-318c-4118-9453-5de20b326cdd" />
+      </Armors>
+      <Shields />
+      <Weapons>
+        <Weapon value="Simple Melee Weapons" id="cfca8e0b-d264-4f2a-9bc5-a07a01af462e" />
+		<Weapon value="Simple Ranged Weapons" id="093c9814-63d5-4161-a85f-60248d69a548" />
+        <Weapon value="Hand Crossbow" id="059ea7a7-06db-4ab1-9b37-b0bc1885f46b" />
+        <Weapon value="Longsword" id="601a0fad-b779-4f0a-bedc-c8c6290868af" />
+        <Weapon value="Rapier" id="5dc2f862-43f6-428c-becf-2e1b267de12a" />
+        <Weapon value="Shortsword" id="59509815-2ba3-45f7-9f7e-9ce1d77255ed" />
+      </Weapons>
+      <Tools>
+        <Tool value="Thieves' Tools" id="f56e1dca-37a1-4625-8428-c47ef90ecf65" />
+        <Tool value="Three-Dragon Ante Set" id="f59eedb5-9773-40dd-9145-a5c7b2fae03d" />
+        <Tool value="Disguise Kit" id="526dd367-f9fc-4497-a5aa-50413691215a" />
+        <Tool value="Poisoner Kit" id="e36569a1-ca68-48e6-b047-88777a456243" />
+      </Tools>
+    </Equipment>
+  </Proficiency>
+  <Details>
+    <Name value="Caleston Nailo" />
+    <Race value="Half-Elf" />
+    <Background value="Criminal" />
+    <Alignment value="Chaotic Good" />
+    <Classes>
+      <Class name="Rogue" level="6" id="cae01638-537d-455a-95a6-606fafb62798" />
+    </Classes>
+    <Experience value="16071" />
+    <Languages>
+      <Language value="Common" id="c32dcdcb-33b3-46de-9dbf-2b46aeaa0b5b" />
+      <Language value="Elvish" id="b25516db-14ca-499b-9956-ddc60bebab6a" />
+      <Language value="Draconic" id="583c023c-10f0-4da5-be1b-ae06ceeeec8b" />
+    </Languages>
+    <InitiativeBonus value="5" />
+    <PerceptionBonus value="0" />
+    <Movement value="30" />
+    <Vision value="Darkvision" />
+  </Details>
+  <Appearance>
+    <Gender value="Male" />
+    <Age value="28" />
+    <Height value="5' 10&quot;" />
+    <Weight value="154 lbs." />
+    <SkinColour value="White" />
+    <HairColour value="Black" />
+    <EyeColour value="Ice Blue" />
+    <Marks value="Sideburns; Mssing tip of pinky on left hand; Small slanted scar on chin running from left to right" />
+  </Appearance>
+  <Personality>
+    <Trait1 value="I don't pay attention to the risks in a situation. Never tell me the odds." />
+    <Trait2 value="There's nothing I like more than a good mystery." />
+    <Ideal value="Freedom: Chains are meant to be broken, as are those who would forge them. (Chaotic)" />
+    <Bond value="Someone I love died because of a mistake I made. That will never happen again." />
+    <Flaw value="I'm a sucker for a pretty face." />
+    <Background value="Criminal Contact: Network of trustworthy contacts. Can use them to send and receive messages quickly over great distances." />
+    <Notes value="Last big job went wrong. Escaped from prison. Injured, rest of group assumed dead. Am still wanted." />
+  </Personality>
+  <Wealth>
+    <Copper value="1820" />
+    <Silver value="34" />
+    <Electrum value="0" />
+    <Gold value="326" />
+    <Platinum value="0" />
+  </Wealth>
+  <ClassResources />
+  <ArmorClass>
+    <ArmorWorn value="Studded Leather" />
+    <ArmorType value="Light" />
+    <ArmorAC value="12" />
+    <Strength value="0" />
+    <ArmorWeight value="13" />
+    <Stealth value="Normal" />
+    <Shield value="None" />
+    <ShieldAC value="0" />
+    <ShieldWeight value="0" />
+    <MiscAC value="0" />
+    <MagicAC value="0" />
+  </ArmorClass>
+  <HitPoints>
+    <MaxHP value="50" />
+    <CurrentHP value="34" />
+    <TemporaryHP value="0" />
+    <Conditions>
+      <Blinded value="Cured" />
+      <Charmed value="Cured" />
+      <Deafened value="Cured" />
+      <Fatigued value="Exhaustion 2" />
+      <Frightened value="Cured" />
+      <Grappled value="Cured" />
+      <Incapacitated value="Cured" />
+      <Invisible value="Cured" />
+      <Paralyzed value="Cured" />
+      <Petrified value="Cured" />
+      <Poisoned value="Cured" />
+      <Prone value="Cured" />
+      <Restrained value="Cured" />
+      <Stunned value="Cured" />
+      <Unconscious value="Cured" />
+    </Conditions>
+    <HitDice>
+      <D6 total="0" spent="0" />
+      <D8 total="6" spent="6" />
+      <D10 total="0" spent="0" />
+      <D12 total="0" spent="0" />
+    </HitDice>
+  </HitPoints>
+  <Weapons>
+    <Weapon name="Jump Blade" weaponType="Rapier" ability="DEX" dmg="1d8 +5" misc="+1" dmgType="Piercing" range="5 / 5" notes="Finesse, Gain the Jump spell." weight="2" override="false" id="3623585c-05c3-4373-9a85-7073766dff88" />
+    <Weapon name="Shortbow" weaponType="Shortbow" ability="DEX" dmg="1d6 +5" misc="" dmgType="Piercing" range="80 / 320" notes="Ammo, Two-Handed" weight="2" override="false" id="29ce8db2-43bb-4411-8d56-24561c38d1ba" />
+    <Weapon name="Dagger" weaponType="Dagger" ability="DEX" dmg="1d4 +5" misc="" dmgType="Piercing" range="20 / 60" notes="Finesse, Light, Thrown" weight="1" override="false" id="3c829286-b04d-45d2-b084-0499f37db4ce" />
+    <Weapon name="Dagger" weaponType="Dagger" ability="DEX" dmg="1d4 +5" misc="" dmgType="Piercing" range="20 / 60" notes="Finesse, Light, Thrown" weight="1" override="false" id="ef6d044f-2ce7-43cb-aacc-354f1ad5fa96" />
+    <Weapon name="Silver Dagger" weaponType="Dagger" ability="DEX" dmg="1d4 +5" misc="" dmgType="Piercing" range="20 / 60" notes="Finesse, Light, Thrown" weight="1" override="false" id="1ce7fe19-471c-463f-b41d-a6ce6fb16a87" />
+  </Weapons>
+  <Ammunitions>
+    <Ammunition name="Arrows" amount="20" miscDmg="" dmgType="None" used="0" id="7cead0e8-5f84-42c4-81ab-1daedc525ee2" />
+    <Ammunition name="Silvered Arrows" amount="8" miscDmg="" dmgType="None" used="0" id="2ac78c8b-9b89-4d3c-841f-de8de48e20d6" />
+  </Ammunitions>
+  <Inventory>
+    <Item name="Bag of Gems" amount="1" wgt="0" note="A small bag containing many fine gems worth 170gp." id="2220104f-bc56-4269-ab6b-d299900afdab" />
+    <Item name="Ball Bearings (bag of 1,000)" amount="0" wgt="2" note="As an action, you can spill these tiny metal balls from their pouch to cover a level, square area that is 10 feet on a side. Moving across the covered area must succeed on a DC 10 Dexterity saving throw or fall prone. Moving through the area at half speed doesn't need a save." id="dce5317f-4b45-4fa4-a92d-014f814ac28d" />
+    <Item name="Black Onxy Leather Gloves" amount="1" wgt="0.5" note="Fancy pair of for hidding rings on ones hand." id="b902c364-abd5-4d34-b7eb-f8939c9ec6a0" />
+    <Item name="Blue Cloak with Hood" amount="1" wgt="2" note="Simple cloak with usable hood." id="e8495208-6a29-4ddb-a543-a56ba6068a14" />
+    <Item name="Candle" amount="1" wgt="0" note="For 1 hour, a candle sheds bright light in a 5-foot radius and dim light for an additional 5 feet." id="5f3e27ba-d485-4ad7-8bd9-051a84149ee8" />
+    <Item name="Crowbar" amount="1" wgt="5" note="Using a crowbar grants advantage to Strength checks where the crowbar's leverage can be applied." id="f68b1937-8ebd-4585-8774-9cce2aff4e2c" />
+    <Item name="Cult of the Dragon Patch" amount="1" wgt="0" note="An insignia representing membership with the Dragon Cult." id="198b830d-3e87-40c8-a8c4-9a284b59748d" />
+    <Item name="Dirty Handkerchief" amount="1" wgt="0" note="Filthy peice of cloth of unknown origins." id="4703c571-6968-4474-8372-c8e33b672ac3" />
+    <Item name="Eagle Beak" amount="1" wgt="0.5" note="The beak of an eagle that was far too much trouble." id="9439bbe7-a3f7-4f91-a87f-82800c82953b" />
+    <Item name="Flask of Oil" amount="10" wgt="0.5" note="A flask or tankard can hold 1 pint of liquid." id="1a0a88c4-bdd7-4e2b-8ba2-29466a01ab9b" />
+    <Item name="Fur coat" amount="1" wgt="0.5" note="Fur coat for keeping warm in cold climates." id="0f12a63a-13f6-4842-abc9-2b22d2a17de6" />
+    <Item name="Hammer" amount="1" wgt="2" note="This one-handed hammer with an iron head is useful for pounding pitons into a wall." id="2e210db0-a2de-4cb3-8577-5190a4699f98" />
+    <Item name="Hooded lantern" amount="1" wgt="2" note="Casts bright light in 30 foot radius, dim light for additional 30 feet. Burns 6 hours on pint of oil. Lower hood to cast dim light in 5 foot radius." id="6e600c96-43c5-4e8d-935c-340a7432c201" />
+    <Item name="Insperation Die (d10)" amount="1" wgt="0" note="Used to add a d10 to any d20 roll." id="e55b9b84-e843-465d-9dc9-329251f7309c" />
+    <Item name="Magic Stick" amount="1" wgt="0.5" note="A thin stick thought to be magical in some way." id="405aa64b-8129-4fd7-b434-8be450ed48bd" />
+    <Item name="Map" amount="1" wgt="0" note="Map to an unspecified location." id="36a0103f-4225-4574-b6df-63164a3e62ee" />
+    <Item name="Nightcap" amount="1" wgt="0.5" note="A 'magic' nightcap given by an annoying bird person." id="3dcd0a66-279c-4a1a-8107-b4ddfe7723b0" />
+    <Item name="Ogre Tusk" amount="1" wgt="1" note="Tusk of a fallen ogre." id="847f9b16-8999-4976-b010-6feff676403b" />
+    <Item name="Piton" amount="10" wgt="0.25" note="When a wall doesn’t offer handholds and footholds, you can make your own. A piton is a steel spike with an eye through which you can loop a rope." id="b68e2648-296e-48fd-9419-c4c3e81f74ce" />
+    <Item name="Poisoner's Kit" amount="1" wgt="1" note="Contains chemicals and equipment to create poisons." id="6eaa6dfe-5ffd-4ffb-a4dd-d2f163cc9003" />
+    <Item name="Quiver" amount="1" wgt="1" note="A quiver can hold up to 20 arrows." id="f60c0b35-910d-4c87-ab9d-3f612aff1abd" />
+    <Item name="Rations (1-Day)" amount="5" wgt="1" note="Rations consist of dry foods suitable for extended travel, including jerky, dried fruit, hardtack, and nuts." id="1d51cc12-3eab-4f6c-a515-a91e2217ff9d" />
+    <Item name="Red Cape" amount="0" wgt="0" note="A simple cape." id="8b1db20e-e64b-4f63-aa44-d34e044051d9" />
+    <Item name="Ring" amount="1" wgt="0" note="A simple gold ring." id="fc475c38-3378-41b9-a18f-b2f84faa8fe3" />
+    <Item name="Rope, Hempen (50 feet)" amount="1" wgt="5" note="Rope, has 2 hit points and can be burst with a DC 17 Strength check." id="5b0b36da-263e-4f4d-ada7-9443cc291cef" />
+    <Item name="Salted Meat" amount="14" wgt="0.1" note="Food for one person for a meal." id="8f42b8a2-24b6-4214-b2b6-34d92c923663" />
+    <Item name="Sheet of Paper" amount="1" wgt="0" note="Say the words 'trust is earned' to get all the perks befitting a lieutenant." id="7cd3bbef-5c57-49e4-bc1b-892f9f8acac8" />
+    <Item name="Small bead" amount="1" wgt="0" note="A small marble like bead coloured a translucent green." id="22de7563-d7f1-4884-bb52-89aa7dd067e5" />
+    <Item name="String" amount="1" wgt="0" note="A 10-foot length of string, typically found in a burglar's pack." id="0db7ecfe-e56d-4e7f-ba91-94ef3aa17a3d" />
+    <Item name="Thieves Tools" amount="1" wgt="1" note="Small file, lock picks, mirror on metal handle, narrow bladed scissors, pliers." id="a13e8f6e-98f5-4be7-b3a4-fd1de60c9369" />
+    <Item name="Three-Dragon Ante Set" amount="1" wgt="0" note="The deck consists of 70 cards (plus two reference cards)." id="63d98434-f81c-4c42-8e77-d0fd32227485" />
+    <Item name="Tinderbox" amount="1" wgt="1" note="This small container holds flint, fire steel, and tinder (usually dry cloth soaked in light oil) used to kindle a fire. Using it to light a torch -- or anything else with abundant, exposed fuel -- takes an action. Lighting any other fire takes 1 minute." id="5a8b8cf9-b0ca-427b-bfc5-7e7c32487083" />
+    <Item name="Trinket" amount="1" wgt="0" note="A carved crystal that faintly glows in the moonlight. (Object stolen from the noble)" id="122989ae-7554-4937-bca5-7cb429ce9c56" />
+    <Item name="Waterskin" amount="1" wgt="0" note="A waterskin can hold 4 pints of liquid." id="bea6e62c-c53b-42b9-ae8f-b170d19e7209" />
+  </Inventory>
+  <Abilities>
+    <Ability name="Fey Ancestry" level="1" uses="-" recovery="-" action="-" notes="Avtg on saving throws against being charmed. Magic cannot put me to sleep" id="f6f4ca8a-6064-4df5-9e8a-96f2d45c3e93" />
+    <Ability name="Expertise" level="1" uses="-" recovery="-" action="-" notes="Double proficiency bonus in select skills (Again at level 6)" id="298a10d9-2b30-478e-9cb2-a8db9a67dbaa" />
+    <Ability name="Thieves' Cant" level="1" uses="-" recovery="-" action="-" notes="Takes 4 times longer to convey meaning. Target must also know Cant" id="36a9c3d0-bfa3-44fa-a6ba-0aa9121747da" />
+    <Ability name="Sneak Attack" level="1" uses="1 Per Turn" recovery="1 Turn" action="3d6 Damage" notes="Must have advantage or target must have enemy within 5 feet" id="6b5ed6b2-db6b-494b-959c-d40e5aadbe56" />
+    <Ability name="Cunning Action" level="2" uses="-" recovery="-" action="-" notes="Dash, Disengage, Hide as bonus action" id="f86fbd99-762d-437b-896b-c05ddc272c9f" />
+    <Ability name="Assassinate" level="3" uses="1 Per Turn" recovery="1 Turn" action="Avtg on attack roll" notes="Avtg on attack rolls against creature without combat turn; Hit against surprised creature is critical" id="2f8bb412-1952-49f5-a8df-33cb6e43a01f" />
+    <Ability name="Uncanny Dodge" level="5" uses="1 Per Round" recovery="1 Round" action="Reaction" notes="Use reaction to take half damage against an attack you can see." id="23c4a706-ce91-4b2f-8772-e20c1e33a0f0" />
+    <Ability name="Alert" level="1" uses="-" recovery="-" action="-" notes="+5 to initative; Cannot be surprised; enemies don't get advt on sneak attack" id="3f361e19-7d00-4f60-957d-a6d3d6d783a4" />
+  </Abilities>
+  <Spellcasting>
+    <SpellClasses />
+    <SpellSlots>
+      <Pact total="0" used="0" />
+      <One total="0" used="0" />
+      <Two total="0" used="0" />
+      <Three total="0" used="0" />
+      <Four total="0" used="0" />
+      <Five total="0" used="0" />
+      <Six total="0" used="0" />
+      <Seven total="0" used="0" />
+      <Eight total="0" used="0" />
+      <Nine total="0" used="0" />
+    </SpellSlots>
+    <SpellList>
+      <Spell name="Jump" level="1" page="254" school="Transmutation" ritual="No" comp="Jump Blade" concen="false" range="Touch" duration="6 seconds" area="Self" save="N/A" damage="N/A" description="Target's jump distance tripled until spell ends. Can be used once per long rest." prepared="false" id="cff6cbb7-613e-446e-875a-9ab2957ab692" />
+    </SpellList>
+  </Spellcasting>
+  <Companion>
+    <Name value="" />
+    <AC value="0" />
+    <HitDice value="" />
+    <HP value="0" />
+    <CurrentHP value="0" />
+    <Speed value="" />
+    <Strength value="1" />
+    <Dexterity value="1" />
+    <Constitution value="1" />
+    <Intelligence value="1" />
+    <Wisdom value="1" />
+    <Charisma value="1" />
+    <Perception value="0" />
+    <Senses value="" />
+  </Companion>
+  <CampainNotes />
+</Character>
