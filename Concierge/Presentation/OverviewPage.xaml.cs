@@ -33,6 +33,9 @@ namespace Concierge.Presentation
             DrawDetails();
             DrawSavingThrows();
             DrawSkills();
+            DrawHealth();
+            DrawArmorClass();
+            DrawHitDice();
         }
 
         #region Attributes
@@ -205,9 +208,108 @@ namespace Concierge.Presentation
 
         #endregion
 
+        #region AC HP
+
+        private void DrawHealth()
+        {
+            CurrentHpField.Text = Program.Character.Vitality.CurrentHealth.ToString();
+            TotalHpField.Text = "/" + Program.Character.Vitality.MaxHealth.ToString();
+
+            CurrentHpField.Foreground = SetHealthStyle();
+        }
+
+        private void DrawArmorClass()
+        {
+            ArmorClassField.Text = Program.Character.Armor.TotalArmorClass.ToString();
+        }
+
+        #endregion
+
+        #region HitDice
+
+        private void DrawHitDice()
+        {
+            D6TotalField.Text = Program.Character.Vitality.HitDice.TotalD6.ToString();
+            D6TotalField.Foreground = SetTotalTextStyle(Program.Character.Vitality.HitDice.TotalD6, Program.Character.Vitality.HitDice.SpentD6);
+            D6TotalBox.Background = SetTotalBoxStyle(Program.Character.Vitality.HitDice.TotalD6, Program.Character.Vitality.HitDice.SpentD6);
+            D6SpentField.Text = Program.Character.Vitality.HitDice.SpentD6.ToString();
+            D6SpentField.Foreground = SetSpentTextStyle(Program.Character.Vitality.HitDice.TotalD6, Program.Character.Vitality.HitDice.SpentD6);
+            D6SpentBox.Background = SetSpentBoxStyle(Program.Character.Vitality.HitDice.TotalD6, Program.Character.Vitality.HitDice.SpentD6);
+
+            D8TotalField.Text = Program.Character.Vitality.HitDice.TotalD8.ToString();
+            D8TotalField.Foreground = SetTotalTextStyle(Program.Character.Vitality.HitDice.TotalD8, Program.Character.Vitality.HitDice.SpentD8);
+            D8SpentField.Text = Program.Character.Vitality.HitDice.SpentD8.ToString();
+            D8SpentField.Foreground = SetSpentTextStyle(Program.Character.Vitality.HitDice.TotalD8, Program.Character.Vitality.HitDice.SpentD8);
+            D8SpentBox.Background = SetSpentBoxStyle(Program.Character.Vitality.HitDice.TotalD8, Program.Character.Vitality.HitDice.SpentD8);
+            D8TotalBox.Background = SetTotalBoxStyle(Program.Character.Vitality.HitDice.TotalD8, Program.Character.Vitality.HitDice.SpentD8);
+
+            D10TotalField.Text = Program.Character.Vitality.HitDice.TotalD10.ToString();
+            D10TotalField.Foreground = SetTotalTextStyle(Program.Character.Vitality.HitDice.TotalD10, Program.Character.Vitality.HitDice.SpentD10);
+            D10SpentField.Text = Program.Character.Vitality.HitDice.SpentD10.ToString();
+            D10SpentField.Foreground = SetSpentTextStyle(Program.Character.Vitality.HitDice.TotalD10, Program.Character.Vitality.HitDice.SpentD10);
+            D10SpentBox.Background = SetSpentBoxStyle(Program.Character.Vitality.HitDice.TotalD10, Program.Character.Vitality.HitDice.SpentD10);
+            D10TotalBox.Background = SetTotalBoxStyle(Program.Character.Vitality.HitDice.TotalD10, Program.Character.Vitality.HitDice.SpentD10);
+
+            D12TotalField.Text = Program.Character.Vitality.HitDice.TotalD12.ToString();
+            D12TotalField.Foreground = SetTotalTextStyle(Program.Character.Vitality.HitDice.TotalD12, Program.Character.Vitality.HitDice.SpentD12);
+            D12SpentField.Text = Program.Character.Vitality.HitDice.SpentD12.ToString();
+            D12SpentField.Foreground = SetSpentTextStyle(Program.Character.Vitality.HitDice.TotalD12, Program.Character.Vitality.HitDice.SpentD12);
+            D12SpentBox.Background = SetSpentBoxStyle(Program.Character.Vitality.HitDice.TotalD12, Program.Character.Vitality.HitDice.SpentD12);
+            D12TotalBox.Background = SetTotalBoxStyle(Program.Character.Vitality.HitDice.TotalD12, Program.Character.Vitality.HitDice.SpentD12);
+        }
+
+        #endregion
+
         #endregion
 
         #region Helpers
+
+        private Brush SetSpentTextStyle(int total, int used)
+        {
+            if (total == used)
+                return Brushes.DarkRed;
+            else
+                return Brushes.White;
+        }
+
+        private Brush SetSpentBoxStyle(int total, int used)
+        {
+            if (total == used)
+                return Brushes.IndianRed;
+            else
+                return new SolidColorBrush(Color.FromArgb(255, 62, 62, 66));
+        }
+
+        private Brush SetTotalTextStyle(int total, int used)
+        {
+            if (total == used)
+                return Brushes.DarkGray;
+            else
+                return Brushes.White;
+        }
+
+        private Brush SetTotalBoxStyle(int total, int used)
+        {
+            if (total == used)
+                return new SolidColorBrush(Color.FromArgb(255, 15, 15, 15));
+            else
+                return new SolidColorBrush(Color.FromArgb(255, 51, 51, 51));
+        }
+
+        private Brush SetHealthStyle()
+        {
+            int third = Program.Character.Vitality.MaxHealth / 3;
+            int hp = Program.Character.Vitality.CurrentHealth;
+
+            if (hp < third && hp > 0)
+                return Brushes.IndianRed;
+            else if (hp >= third * 2)
+                return Brushes.DarkGreen;
+            else if (hp <= 0)
+                return Brushes.DarkGray;
+            else
+                return Brushes.DarkOrange;
+        }
 
         private void SetBoxStyle(bool flag, Rectangle rectangle)
         {
@@ -246,6 +348,42 @@ namespace Concierge.Presentation
         }
 
         #endregion
+
+        #endregion
+
+        #region Accessors
+
+        public int HeartWidth
+        {
+            get
+            {
+                return (int)HealthBox.RenderSize.Width;
+            }
+        }
+
+        public int HeartHeight
+        {
+            get
+            {
+                return (int)HealthBox.RenderSize.Height;
+            }
+        }
+
+        public int ShieldWidth
+        {
+            get
+            {
+                return (int)HealthBox.RenderSize.Width;
+            }
+        }
+
+        public int ShieldHeight
+        {
+            get
+            {
+                return (int)HealthBox.RenderSize.Height;
+            }
+        }
 
         #endregion
 

@@ -10,9 +10,9 @@
       Title="OverviewPage">
 
     <Page.Resources>
-        
+
     </Page.Resources>
-    
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="150"/>
@@ -440,15 +440,14 @@
                 </Grid>
             </Grid>
         </Grid>
-        
+
         <!--Saving Throws, Skills, Health, AC-->
         <Grid Grid.Column="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="10*"/>
-                <RowDefinition Height="25*"/>
-                <RowDefinition Height="65*"/>
+                <RowDefinition Height="90*"/>
             </Grid.RowDefinitions>
-            
+
             <!--Stats-->
             <Grid Grid.Row="0">
                 <Grid.ColumnDefinitions>
@@ -457,7 +456,7 @@
                     <ColumnDefinition Width="25*"/>
                     <ColumnDefinition Width="25*"/>
                 </Grid.ColumnDefinitions>
-                
+
                 <!--Initiative-->
                 <Grid Grid.Column="0" Margin="3">
                     <Grid.ColumnDefinitions>
@@ -474,7 +473,7 @@
                                    HorizontalAlignment="Center"
                                    VerticalAlignment="Center"/>
                     </Grid>
-                    
+
                     <!--Value-->
                     <Grid Grid.Column="1" Background="#ff06011f">
                         <TextBlock x:Name="InitiativeField"
@@ -485,7 +484,7 @@
                                    VerticalAlignment="Center"/>
                     </Grid>
                 </Grid>
-                
+
                 <!--Perception-->
                 <Grid Grid.Column="1" Margin="3">
                     <Grid.ColumnDefinitions>
@@ -514,7 +513,7 @@
                                    VerticalAlignment="Center"/>
                     </Grid>
                 </Grid>
-                
+
                 <!--Vision-->
                 <Grid Grid.Column="2" Margin="3">
                     <Grid.ColumnDefinitions>
@@ -543,7 +542,7 @@
                                    VerticalAlignment="Center"/>
                     </Grid>
                 </Grid>
-                
+
                 <!--Movement-->
                 <Grid Grid.Column="3" Margin="3">
                     <Grid.ColumnDefinitions>
@@ -573,1224 +572,1512 @@
                     </Grid>
                 </Grid>
             </Grid>
-            
-            <!--Saving Throws, Health, AC-->
+
+            <!--Saving Throws, Skills, Health, AC, HitDice, Pool-->
             <Grid Grid.Row="1">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="50*"/>
                     <ColumnDefinition Width="50*"/>
                 </Grid.ColumnDefinitions>
-                
-                <!--Saving Throws-->
-                <Grid Grid.Column="0" Margin="3">
+
+                <!--Saving Throws, Skills-->
+                <Grid Grid.Column="0">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="15*"/>
-                        <RowDefinition Height="85*"/>
+                        <RowDefinition Height="32*"/>
+                        <RowDefinition Height="68*"/>
                     </Grid.RowDefinitions>
-                    
-                    <!--Header-->
-                    <Grid Grid.Row="0" Background="Black">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="15*"/>
-                            <ColumnDefinition Width="65*"/>
-                            <ColumnDefinition Width="20*"/>
-                        </Grid.ColumnDefinitions>
-                        
-                        <Grid Grid.Column="0">
-                            <TextBlock Text="Proficiency"
+
+                    <!--Saving Throws-->
+                    <Grid Grid.Row="0" Margin="3">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="15*"/>
+                            <RowDefinition Height="85*"/>
+                        </Grid.RowDefinitions>
+
+                        <!--Header-->
+                        <Grid Grid.Row="0" Background="Black">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="15*"/>
+                                <ColumnDefinition Width="65*"/>
+                                <ColumnDefinition Width="20*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Grid Grid.Column="0">
+                                <TextBlock Text="Proficiency"
                                    Foreground="White"
                                    FontSize="12"
                                    FontWeight="Bold"
                                    HorizontalAlignment="Center"
                                    VerticalAlignment="Center"/>
-                        </Grid>
+                            </Grid>
 
-                        <Grid Grid.Column="1">
-                            <TextBlock Text="Saving Throws"
+                            <Grid Grid.Column="1">
+                                <TextBlock Text="Saving Throws"
                                    Foreground="White"
                                    FontSize="20"
                                    FontWeight="Bold"
                                    HorizontalAlignment="Center"
                                    VerticalAlignment="Center"/>
-                        </Grid>
+                            </Grid>
 
-                        <Grid Grid.Column="20">
-                            <TextBlock Text="Bonus"
+                            <Grid Grid.Column="20">
+                                <TextBlock Text="Bonus"
                                    Foreground="White"
                                    FontSize="12"
                                    FontWeight="Bold"
                                    HorizontalAlignment="Center"
                                    VerticalAlignment="Center"/>
+                            </Grid>
                         </Grid>
-                    </Grid>
-                    
-                    <!--Content-->
-                    <Grid Grid.Row="1">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="16*"/>
-                            <RowDefinition Height="16*"/>
-                            <RowDefinition Height="16*"/>
-                            <RowDefinition Height="16*"/>
-                            <RowDefinition Height="16*"/>
-                            <RowDefinition Height="16*"/>
-                        </Grid.RowDefinitions>
-                        
-                        <!--Strength-->
-                        <Grid Grid.Row="0" Background="#FF333333">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="15*"/>
-                                <ColumnDefinition Width="65*"/>
-                                <ColumnDefinition Width="20*"/>
-                            </Grid.ColumnDefinitions>
 
-                            <!--Proficiency-->
-                            <Grid Grid.Column="0">
-                                <Rectangle x:Name="StrengthProficiencyBox"
+                        <!--Content-->
+                        <Grid Grid.Row="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="16*"/>
+                                <RowDefinition Height="16*"/>
+                                <RowDefinition Height="16*"/>
+                                <RowDefinition Height="16*"/>
+                                <RowDefinition Height="16*"/>
+                                <RowDefinition Height="16*"/>
+                            </Grid.RowDefinitions>
+
+                            <!--Strength-->
+                            <Grid Grid.Row="0" Background="#FF333333">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="15*"/>
+                                    <ColumnDefinition Width="65*"/>
+                                    <ColumnDefinition Width="20*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <!--Proficiency-->
+                                <Grid Grid.Column="0">
+                                    <Rectangle x:Name="StrengthProficiencyBox"
                                            Stroke="#ff06011f"
                                            Stretch="Uniform"
                                            Margin="3"/>
-                            </Grid>
+                                </Grid>
 
-                            <!--Name-->
-                            <Grid Grid.Column="1">
-                                <TextBlock Text="Strength"
+                                <!--Name-->
+                                <Grid Grid.Column="1">
+                                    <TextBlock Text="Strength"
                                            x:Name="StrengthSavingThrowName"
                                            Foreground="White"
                                            FontSize="15"
                                            FontWeight="Bold"
                                            VerticalAlignment="Center"/>
-                            </Grid>
+                                </Grid>
 
-                            <!--Value-->
-                            <Grid Grid.Column="2">
-                                <TextBlock x:Name="StrengthSavingThrowField"
+                                <!--Value-->
+                                <Grid Grid.Column="2">
+                                    <TextBlock x:Name="StrengthSavingThrowField"
                                            Foreground="White"
                                            FontSize="15"
                                            FontWeight="Bold"
                                            HorizontalAlignment="Center"
                                            VerticalAlignment="Center"/>
+                                </Grid>
                             </Grid>
-                        </Grid>
-                        
-                        <!--Dexterity-->
-                        <Grid Grid.Row="1" Background="#FF3e3e42">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="15*"/>
-                                <ColumnDefinition Width="65*"/>
-                                <ColumnDefinition Width="20*"/>
-                            </Grid.ColumnDefinitions>
 
-                            <!--Proficiency-->
-                            <Grid Grid.Column="0">
-                                <Rectangle x:Name="DexterityProficiencyBox"
+                            <!--Dexterity-->
+                            <Grid Grid.Row="1" Background="#FF3e3e42">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="15*"/>
+                                    <ColumnDefinition Width="65*"/>
+                                    <ColumnDefinition Width="20*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <!--Proficiency-->
+                                <Grid Grid.Column="0">
+                                    <Rectangle x:Name="DexterityProficiencyBox"
                                            Stroke="#ff06011f"
                                            Stretch="Uniform"
                                            Margin="3"/>
-                            </Grid>
+                                </Grid>
 
-                            <!--Name-->
-                            <Grid Grid.Column="1">
-                                <TextBlock Text="Dexterity"
+                                <!--Name-->
+                                <Grid Grid.Column="1">
+                                    <TextBlock Text="Dexterity"
                                            x:Name="DexteritySavingThrowName"
                                            Foreground="White"
                                            FontSize="15"
                                            FontWeight="Bold"
                                            VerticalAlignment="Center"/>
-                            </Grid>
+                                </Grid>
 
-                            <!--Value-->
-                            <Grid Grid.Column="2">
-                                <TextBlock x:Name="DexteritySavingThrowField"
+                                <!--Value-->
+                                <Grid Grid.Column="2">
+                                    <TextBlock x:Name="DexteritySavingThrowField"
                                            Foreground="White"
                                            FontSize="15"
                                            FontWeight="Bold"
                                            HorizontalAlignment="Center"
                                            VerticalAlignment="Center"/>
+                                </Grid>
                             </Grid>
-                        </Grid>
-                        
-                        <!--Constitution-->
-                        <Grid Grid.Row="2" Background="#FF333333">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="15*"/>
-                                <ColumnDefinition Width="65*"/>
-                                <ColumnDefinition Width="20*"/>
-                            </Grid.ColumnDefinitions>
 
-                            <!--Proficiency-->
-                            <Grid Grid.Column="0">
-                                <Rectangle x:Name="ConstitutionProficiencyBox"
+                            <!--Constitution-->
+                            <Grid Grid.Row="2" Background="#FF333333">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="15*"/>
+                                    <ColumnDefinition Width="65*"/>
+                                    <ColumnDefinition Width="20*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <!--Proficiency-->
+                                <Grid Grid.Column="0">
+                                    <Rectangle x:Name="ConstitutionProficiencyBox"
                                            Stroke="#ff06011f"
                                            Stretch="Uniform"
                                            Margin="3"/>
-                            </Grid>
+                                </Grid>
 
-                            <!--Name-->
-                            <Grid Grid.Column="1">
-                                <TextBlock Text="Constitution"
+                                <!--Name-->
+                                <Grid Grid.Column="1">
+                                    <TextBlock Text="Constitution"
                                            x:Name="ConstitutionSavingThrowName"
                                            Foreground="White"
                                            FontSize="15"
                                            FontWeight="Bold"
                                            VerticalAlignment="Center"/>
-                            </Grid>
+                                </Grid>
 
-                            <!--Value-->
-                            <Grid Grid.Column="2">
-                                <TextBlock x:Name="ConstitutionSavingThrowField"
+                                <!--Value-->
+                                <Grid Grid.Column="2">
+                                    <TextBlock x:Name="ConstitutionSavingThrowField"
                                            Foreground="White"
                                            FontSize="15"
                                            FontWeight="Bold"
                                            HorizontalAlignment="Center"
                                            VerticalAlignment="Center"/>
+                                </Grid>
                             </Grid>
-                        </Grid>
-                        
-                        <!--Intelligence-->
-                        <Grid Grid.Row="3" Background="#FF3e3e42">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="15*"/>
-                                <ColumnDefinition Width="65*"/>
-                                <ColumnDefinition Width="20*"/>
-                            </Grid.ColumnDefinitions>
 
-                            <!--Proficiency-->
-                            <Grid Grid.Column="0">
-                                <Rectangle x:Name="IntelligenceProficiencyBox"
+                            <!--Intelligence-->
+                            <Grid Grid.Row="3" Background="#FF3e3e42">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="15*"/>
+                                    <ColumnDefinition Width="65*"/>
+                                    <ColumnDefinition Width="20*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <!--Proficiency-->
+                                <Grid Grid.Column="0">
+                                    <Rectangle x:Name="IntelligenceProficiencyBox"
                                            Stroke="#ff06011f"
                                            Stretch="Uniform"
                                            Margin="3"/>
-                            </Grid>
+                                </Grid>
 
-                            <!--Name-->
-                            <Grid Grid.Column="1">
-                                <TextBlock Text="Intelligence"
+                                <!--Name-->
+                                <Grid Grid.Column="1">
+                                    <TextBlock Text="Intelligence"
                                            x:Name="IntelligenceSavingThrowName"
                                            Foreground="White"
                                            FontSize="15"
                                            FontWeight="Bold"
                                            VerticalAlignment="Center"/>
-                            </Grid>
+                                </Grid>
 
-                            <!--Value-->
-                            <Grid Grid.Column="2">
-                                <TextBlock x:Name="IntelligenceSavingThrowField"
+                                <!--Value-->
+                                <Grid Grid.Column="2">
+                                    <TextBlock x:Name="IntelligenceSavingThrowField"
                                            Foreground="White"
                                            FontSize="15"
                                            FontWeight="Bold"
                                            HorizontalAlignment="Center"
                                            VerticalAlignment="Center"/>
+                                </Grid>
                             </Grid>
-                        </Grid>
-                        
-                        <!--Wisdom-->
-                        <Grid Grid.Row="4" Background="#FF333333">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="15*"/>
-                                <ColumnDefinition Width="65*"/>
-                                <ColumnDefinition Width="20*"/>
-                            </Grid.ColumnDefinitions>
 
-                            <!--Proficiency-->
-                            <Grid Grid.Column="0">
-                                <Rectangle x:Name="WisdomProficiencyBox"
+                            <!--Wisdom-->
+                            <Grid Grid.Row="4" Background="#FF333333">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="15*"/>
+                                    <ColumnDefinition Width="65*"/>
+                                    <ColumnDefinition Width="20*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <!--Proficiency-->
+                                <Grid Grid.Column="0">
+                                    <Rectangle x:Name="WisdomProficiencyBox"
                                            Stroke="#ff06011f"
                                            Stretch="Uniform"
                                            Margin="3"/>
-                            </Grid>
+                                </Grid>
 
-                            <!--Name-->
-                            <Grid Grid.Column="1">
-                                <TextBlock Text="Wisdom"
+                                <!--Name-->
+                                <Grid Grid.Column="1">
+                                    <TextBlock Text="Wisdom"
                                            x:Name="WisdomSavingThrowName"
                                            Foreground="White"
                                            FontSize="15"
                                            FontWeight="Bold"
                                            VerticalAlignment="Center"/>
-                            </Grid>
+                                </Grid>
 
-                            <!--Value-->
-                            <Grid Grid.Column="2">
-                                <TextBlock x:Name="WisdomSavingThrowField"
+                                <!--Value-->
+                                <Grid Grid.Column="2">
+                                    <TextBlock x:Name="WisdomSavingThrowField"
                                            Foreground="White"
                                            FontSize="15"
                                            FontWeight="Bold"
                                            HorizontalAlignment="Center"
                                            VerticalAlignment="Center"/>
+                                </Grid>
                             </Grid>
-                        </Grid>
-                        
-                        <!--Charisma-->
-                        <Grid Grid.Row="5" Background="#FF3e3e42">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="15*"/>
-                                <ColumnDefinition Width="65*"/>
-                                <ColumnDefinition Width="20*"/>
-                            </Grid.ColumnDefinitions>
 
-                            <!--Proficiency-->
-                            <Grid Grid.Column="0">
-                                <Rectangle x:Name="CharismaProficiencyBox"
+                            <!--Charisma-->
+                            <Grid Grid.Row="5" Background="#FF3e3e42">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="15*"/>
+                                    <ColumnDefinition Width="65*"/>
+                                    <ColumnDefinition Width="20*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <!--Proficiency-->
+                                <Grid Grid.Column="0">
+                                    <Rectangle x:Name="CharismaProficiencyBox"
                                            Stroke="#ff06011f"
                                            Stretch="Uniform"
                                            Margin="3"/>
-                            </Grid>
+                                </Grid>
 
-                            <!--Name-->
-                            <Grid Grid.Column="1">
-                                <TextBlock Text="Charisma"
+                                <!--Name-->
+                                <Grid Grid.Column="1">
+                                    <TextBlock Text="Charisma"
                                            x:Name="CharismaSavingThrowName"
                                            Foreground="White"
                                            FontSize="15"
                                            FontWeight="Bold"
                                            VerticalAlignment="Center"/>
-                            </Grid>
+                                </Grid>
 
-                            <!--Value-->
-                            <Grid Grid.Column="2">
-                                <TextBlock x:Name="CharismaSavingThrowField"
+                                <!--Value-->
+                                <Grid Grid.Column="2">
+                                    <TextBlock x:Name="CharismaSavingThrowField"
                                            Foreground="White"
                                            FontSize="15"
                                            FontWeight="Bold"
                                            HorizontalAlignment="Center"
                                            VerticalAlignment="Center"/>
+                                </Grid>
                             </Grid>
                         </Grid>
                     </Grid>
-                </Grid>
-                
-                <!--Health, AC-->
-                <Grid Grid.Column="1">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="50*"/>
-                        <ColumnDefinition Width="50*"/>
-                    </Grid.ColumnDefinitions>
-                    
-                    <!--Health-->
-                    <Grid Grid.Column="0">
-                        
-                    </Grid>
-                    
-                    <!--AC-->
-                    <Grid Grid.Column="1">
-                        
-                    </Grid>
-                </Grid>
-            </Grid>
-            
-            <!--Skills, TODO-->
-            <Grid Grid.Row="2">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="50*"/>
-                    <ColumnDefinition Width="50*"/>
-                </Grid.ColumnDefinitions>
-                
-                <!--Skills-->
-                <Grid Grid.Column="0" Margin="3">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="08*"/>
-                        <RowDefinition Height="92*"/>
-                    </Grid.RowDefinitions>
 
-                    <!--Header-->
-                    <Grid Grid.Row="0" Background="Black">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="15*"/>
-                            <ColumnDefinition Width="15*"/>
-                            <ColumnDefinition Width="55*"/>
-                            <ColumnDefinition Width="15*"/>
-                        </Grid.ColumnDefinitions>
+                    <!--Skills-->
+                    <Grid Grid.Row="1" Margin="3">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="08*"/>
+                            <RowDefinition Height="92*"/>
+                        </Grid.RowDefinitions>
 
-                        <Grid Grid.Column="0">
-                            <TextBlock Text="Proficiency"
+                        <!--Header-->
+                        <Grid Grid.Row="0" Background="Black">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="15*"/>
+                                <ColumnDefinition Width="15*"/>
+                                <ColumnDefinition Width="55*"/>
+                                <ColumnDefinition Width="15*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Grid Grid.Column="0">
+                                <TextBlock Text="Proficiency"
                                Foreground="White"
                                FontSize="12"
                                FontWeight="Bold"
                                HorizontalAlignment="Center"
                                VerticalAlignment="Center"/>
-                        </Grid>
+                            </Grid>
 
-                        <Grid Grid.Column="1">
-                            <TextBlock Text="Expertise"
+                            <Grid Grid.Column="1">
+                                <TextBlock Text="Expertise"
                                Foreground="White"
                                FontSize="12"
                                FontWeight="Bold"
                                HorizontalAlignment="Center"
                                VerticalAlignment="Center"/>
-                        </Grid>
+                            </Grid>
 
-                        <Grid Grid.Column="2">
-                            <TextBlock Text="Skills"
+                            <Grid Grid.Column="2">
+                                <TextBlock Text="Skills"
                                Foreground="White"
                                FontSize="20"
                                FontWeight="Bold"
                                HorizontalAlignment="Center"
                                VerticalAlignment="Center"/>
-                        </Grid>
+                            </Grid>
 
-                        <Grid Grid.Column="3">
-                            <TextBlock Text="Bonus"
+                            <Grid Grid.Column="3">
+                                <TextBlock Text="Bonus"
                                Foreground="White"
                                FontSize="12"
                                FontWeight="Bold"
                                HorizontalAlignment="Center"
                                VerticalAlignment="Center"/>
+                            </Grid>
                         </Grid>
-                    </Grid>
 
-                    <!--Skills-->
-                    <Grid Grid.Row="1">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="5.5*"/>
-                            <RowDefinition Height="5.5*"/>
-                            <RowDefinition Height="5.5*"/>
-                            <RowDefinition Height="5.5*"/>
-                            <RowDefinition Height="5.5*"/>
-                            <RowDefinition Height="5.5*"/>
-                            <RowDefinition Height="5.5*"/>
-                            <RowDefinition Height="5.5*"/>
-                            <RowDefinition Height="5.5*"/>
-                            <RowDefinition Height="5.5*"/>
-                            <RowDefinition Height="5.5*"/>
-                            <RowDefinition Height="5.5*"/>
-                            <RowDefinition Height="5.5*"/>
-                            <RowDefinition Height="5.5*"/>
-                            <RowDefinition Height="5.5*"/>
-                            <RowDefinition Height="5.5*"/>
-                            <RowDefinition Height="5.5*"/>
-                            <RowDefinition Height="5.5*"/>
-                        </Grid.RowDefinitions>
+                        <!--Skills-->
+                        <Grid Grid.Row="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="5.5*"/>
+                                <RowDefinition Height="5.5*"/>
+                                <RowDefinition Height="5.5*"/>
+                                <RowDefinition Height="5.5*"/>
+                                <RowDefinition Height="5.5*"/>
+                                <RowDefinition Height="5.5*"/>
+                                <RowDefinition Height="5.5*"/>
+                                <RowDefinition Height="5.5*"/>
+                                <RowDefinition Height="5.5*"/>
+                                <RowDefinition Height="5.5*"/>
+                                <RowDefinition Height="5.5*"/>
+                                <RowDefinition Height="5.5*"/>
+                                <RowDefinition Height="5.5*"/>
+                                <RowDefinition Height="5.5*"/>
+                                <RowDefinition Height="5.5*"/>
+                                <RowDefinition Height="5.5*"/>
+                                <RowDefinition Height="5.5*"/>
+                                <RowDefinition Height="5.5*"/>
+                            </Grid.RowDefinitions>
 
-                        <!--Athletics-->
-                        <Grid Grid.Row="0" Background="#FF333333">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="15*"/>
-                                <ColumnDefinition Width="15*"/>
-                                <ColumnDefinition Width="55*"/>
-                                <ColumnDefinition Width="15*"/>
-                            </Grid.ColumnDefinitions>
+                            <!--Athletics-->
+                            <Grid Grid.Row="0" Background="#FF333333">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="15*"/>
+                                    <ColumnDefinition Width="15*"/>
+                                    <ColumnDefinition Width="55*"/>
+                                    <ColumnDefinition Width="15*"/>
+                                </Grid.ColumnDefinitions>
 
-                            <!--Proficiency-->
-                            <Grid Grid.Column="0">
-                                <Rectangle x:Name="AthleticsProficiencyBox"
+                                <!--Proficiency-->
+                                <Grid Grid.Column="0">
+                                    <Rectangle x:Name="AthleticsProficiencyBox"
                                            Stroke="#ff06011f"
                                            Stretch="Uniform"
                                            Margin="3"/>
-                            </Grid>
+                                </Grid>
 
-                            <!--Expertiese-->
-                            <Grid Grid.Column="1">
-                                <Rectangle x:Name="AthleticsExpertieseBox"
+                                <!--Expertiese-->
+                                <Grid Grid.Column="1">
+                                    <Rectangle x:Name="AthleticsExpertieseBox"
                                            Stroke="#ff06011f"
                                            Stretch="Uniform"
                                            Margin="3"/>
-                            </Grid>
+                                </Grid>
 
-                            <!--Name-->
-                            <Grid Grid.Column="2">
-                                <TextBlock Text="Athletics"
+                                <!--Name-->
+                                <Grid Grid.Column="2">
+                                    <TextBlock Text="Athletics"
                                            x:Name="AthleticsSkillName"
                                            Foreground="White"
                                            FontSize="15"
                                            FontWeight="Bold"
                                            VerticalAlignment="Center"/>
-                            </Grid>
+                                </Grid>
 
-                            <!--Value-->
-                            <Grid Grid.Column="3">
-                                <TextBlock x:Name="AthleticsSkillField"
+                                <!--Value-->
+                                <Grid Grid.Column="3">
+                                    <TextBlock x:Name="AthleticsSkillField"
                                            Foreground="White"
                                            FontSize="15"
                                            FontWeight="Bold"
                                            HorizontalAlignment="Center"
                                            VerticalAlignment="Center"/>
+                                </Grid>
                             </Grid>
-                        </Grid>
 
-                        <!--Acrobatics-->
-                        <Grid Grid.Row="1" Background="#FF3e3e42">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="15*"/>
-                                <ColumnDefinition Width="15*"/>
-                                <ColumnDefinition Width="55*"/>
-                                <ColumnDefinition Width="15*"/>
-                            </Grid.ColumnDefinitions>
+                            <!--Acrobatics-->
+                            <Grid Grid.Row="1" Background="#FF3e3e42">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="15*"/>
+                                    <ColumnDefinition Width="15*"/>
+                                    <ColumnDefinition Width="55*"/>
+                                    <ColumnDefinition Width="15*"/>
+                                </Grid.ColumnDefinitions>
 
-                            <!--Proficiency-->
-                            <Grid Grid.Column="0">
-                                <Rectangle x:Name="AcrobaticsProficiencyBox"
+                                <!--Proficiency-->
+                                <Grid Grid.Column="0">
+                                    <Rectangle x:Name="AcrobaticsProficiencyBox"
                                            Stroke="#ff06011f"
                                            Stretch="Uniform"
                                            Margin="3"/>
-                            </Grid>
+                                </Grid>
 
-                            <!--Expertiese-->
-                            <Grid Grid.Column="1">
-                                <Rectangle x:Name="AcrobaticsExpertieseBox"
+                                <!--Expertiese-->
+                                <Grid Grid.Column="1">
+                                    <Rectangle x:Name="AcrobaticsExpertieseBox"
                                            Stroke="#ff06011f"
                                            Stretch="Uniform"
                                            Margin="3"/>
-                            </Grid>
+                                </Grid>
 
-                            <!--Name-->
-                            <Grid Grid.Column="2">
-                                <TextBlock Text="Acrobatics"
+                                <!--Name-->
+                                <Grid Grid.Column="2">
+                                    <TextBlock Text="Acrobatics"
                                            x:Name="AcrobaticsSkillName"
                                            Foreground="White"
                                            FontSize="15"
                                            FontWeight="Bold"
                                            VerticalAlignment="Center"/>
-                            </Grid>
+                                </Grid>
 
-                            <!--Value-->
-                            <Grid Grid.Column="3">
-                                <TextBlock x:Name="AcrobaticsSkillField"
+                                <!--Value-->
+                                <Grid Grid.Column="3">
+                                    <TextBlock x:Name="AcrobaticsSkillField"
                                            Foreground="White"
                                            FontSize="15"
                                            FontWeight="Bold"
                                            HorizontalAlignment="Center"
                                            VerticalAlignment="Center"/>
+                                </Grid>
                             </Grid>
-                        </Grid>
 
-                        <!--Sleight of Hand-->
-                        <Grid Grid.Row="2" Background="#FF333333">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="15*"/>
-                                <ColumnDefinition Width="15*"/>
-                                <ColumnDefinition Width="55*"/>
-                                <ColumnDefinition Width="15*"/>
-                            </Grid.ColumnDefinitions>
+                            <!--Sleight of Hand-->
+                            <Grid Grid.Row="2" Background="#FF333333">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="15*"/>
+                                    <ColumnDefinition Width="15*"/>
+                                    <ColumnDefinition Width="55*"/>
+                                    <ColumnDefinition Width="15*"/>
+                                </Grid.ColumnDefinitions>
 
-                            <!--Proficiency-->
-                            <Grid Grid.Column="0">
-                                <Rectangle x:Name="SleightOfHandProficiencyBox"
+                                <!--Proficiency-->
+                                <Grid Grid.Column="0">
+                                    <Rectangle x:Name="SleightOfHandProficiencyBox"
                                            Stroke="#ff06011f"
                                            Stretch="Uniform"
                                            Margin="3"/>
-                            </Grid>
+                                </Grid>
 
-                            <!--Expertiese-->
-                            <Grid Grid.Column="1">
-                                <Rectangle x:Name="SleightOfHandExpertieseBox"
+                                <!--Expertiese-->
+                                <Grid Grid.Column="1">
+                                    <Rectangle x:Name="SleightOfHandExpertieseBox"
                                            Stroke="#ff06011f"
                                            Stretch="Uniform"
                                            Margin="3"/>
-                            </Grid>
+                                </Grid>
 
-                            <!--Name-->
-                            <Grid Grid.Column="2">
-                                <TextBlock Text="Sleight of Hand"
+                                <!--Name-->
+                                <Grid Grid.Column="2">
+                                    <TextBlock Text="Sleight of Hand"
                                            x:Name="SleightOfHandSkillName"
                                            Foreground="White"
                                            FontSize="15"
                                            FontWeight="Bold"
                                            VerticalAlignment="Center"/>
-                            </Grid>
+                                </Grid>
 
-                            <!--Value-->
-                            <Grid Grid.Column="3">
-                                <TextBlock x:Name="SleightOfHandSkillField"
+                                <!--Value-->
+                                <Grid Grid.Column="3">
+                                    <TextBlock x:Name="SleightOfHandSkillField"
                                            Foreground="White"
                                            FontSize="15"
                                            FontWeight="Bold"
                                            HorizontalAlignment="Center"
                                            VerticalAlignment="Center"/>
+                                </Grid>
                             </Grid>
-                        </Grid>
 
-                        <!--Stealth-->
-                        <Grid Grid.Row="3" Background="#FF3e3e42">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="15*"/>
-                                <ColumnDefinition Width="15*"/>
-                                <ColumnDefinition Width="55*"/>
-                                <ColumnDefinition Width="15*"/>
-                            </Grid.ColumnDefinitions>
+                            <!--Stealth-->
+                            <Grid Grid.Row="3" Background="#FF3e3e42">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="15*"/>
+                                    <ColumnDefinition Width="15*"/>
+                                    <ColumnDefinition Width="55*"/>
+                                    <ColumnDefinition Width="15*"/>
+                                </Grid.ColumnDefinitions>
 
-                            <!--Proficiency-->
-                            <Grid Grid.Column="0">
-                                <Rectangle x:Name="StealthProficiencyBox"
+                                <!--Proficiency-->
+                                <Grid Grid.Column="0">
+                                    <Rectangle x:Name="StealthProficiencyBox"
                                            Stroke="#ff06011f"
                                            Stretch="Uniform"
                                            Margin="3"/>
-                            </Grid>
+                                </Grid>
 
-                            <!--Expertiese-->
-                            <Grid Grid.Column="1">
-                                <Rectangle x:Name="StealthExpertieseBox"
+                                <!--Expertiese-->
+                                <Grid Grid.Column="1">
+                                    <Rectangle x:Name="StealthExpertieseBox"
                                            Stroke="#ff06011f"
                                            Stretch="Uniform"
                                            Margin="3"/>
-                            </Grid>
+                                </Grid>
 
-                            <!--Name-->
-                            <Grid Grid.Column="2">
-                                <TextBlock Text="Stealth"
+                                <!--Name-->
+                                <Grid Grid.Column="2">
+                                    <TextBlock Text="Stealth"
                                            x:Name="StealthSkillName"
                                            Foreground="White"
                                            FontSize="15"
                                            FontWeight="Bold"
                                            VerticalAlignment="Center"/>
-                            </Grid>
+                                </Grid>
 
-                            <!--Value-->
-                            <Grid Grid.Column="3">
-                                <TextBlock x:Name="StealthSkillField"
+                                <!--Value-->
+                                <Grid Grid.Column="3">
+                                    <TextBlock x:Name="StealthSkillField"
                                            Foreground="White"
                                            FontSize="15"
                                            FontWeight="Bold"
                                            HorizontalAlignment="Center"
                                            VerticalAlignment="Center"/>
+                                </Grid>
                             </Grid>
-                        </Grid>
 
-                        <!--Arcana-->
-                        <Grid Grid.Row="4" Background="#FF333333">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="15*"/>
-                                <ColumnDefinition Width="15*"/>
-                                <ColumnDefinition Width="55*"/>
-                                <ColumnDefinition Width="15*"/>
-                            </Grid.ColumnDefinitions>
+                            <!--Arcana-->
+                            <Grid Grid.Row="4" Background="#FF333333">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="15*"/>
+                                    <ColumnDefinition Width="15*"/>
+                                    <ColumnDefinition Width="55*"/>
+                                    <ColumnDefinition Width="15*"/>
+                                </Grid.ColumnDefinitions>
 
-                            <!--Proficiency-->
-                            <Grid Grid.Column="0">
-                                <Rectangle x:Name="ArcanaProficiencyBox"
+                                <!--Proficiency-->
+                                <Grid Grid.Column="0">
+                                    <Rectangle x:Name="ArcanaProficiencyBox"
                                            Stroke="#ff06011f"
                                            Stretch="Uniform"
                                            Margin="3"/>
-                            </Grid>
+                                </Grid>
 
-                            <!--Expertiese-->
-                            <Grid Grid.Column="1">
-                                <Rectangle x:Name="ArcanaExpertieseBox"
+                                <!--Expertiese-->
+                                <Grid Grid.Column="1">
+                                    <Rectangle x:Name="ArcanaExpertieseBox"
                                            Stroke="#ff06011f"
                                            Stretch="Uniform"
                                            Margin="3"/>
-                            </Grid>
+                                </Grid>
 
-                            <!--Name-->
-                            <Grid Grid.Column="2">
-                                <TextBlock Text="Arcana"
+                                <!--Name-->
+                                <Grid Grid.Column="2">
+                                    <TextBlock Text="Arcana"
                                            x:Name="ArcanaSkillName"
                                            Foreground="White"
                                            FontSize="15"
                                            FontWeight="Bold"
                                            VerticalAlignment="Center"/>
-                            </Grid>
+                                </Grid>
 
-                            <!--Value-->
-                            <Grid Grid.Column="3">
-                                <TextBlock x:Name="ArcanaSkillField"
+                                <!--Value-->
+                                <Grid Grid.Column="3">
+                                    <TextBlock x:Name="ArcanaSkillField"
                                            Foreground="White"
                                            FontSize="15"
                                            FontWeight="Bold"
                                            HorizontalAlignment="Center"
                                            VerticalAlignment="Center"/>
+                                </Grid>
                             </Grid>
-                        </Grid>
 
-                        <!--History-->
-                        <Grid Grid.Row="5" Background="#FF3e3e42">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="15*"/>
-                                <ColumnDefinition Width="15*"/>
-                                <ColumnDefinition Width="55*"/>
-                                <ColumnDefinition Width="15*"/>
-                            </Grid.ColumnDefinitions>
+                            <!--History-->
+                            <Grid Grid.Row="5" Background="#FF3e3e42">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="15*"/>
+                                    <ColumnDefinition Width="15*"/>
+                                    <ColumnDefinition Width="55*"/>
+                                    <ColumnDefinition Width="15*"/>
+                                </Grid.ColumnDefinitions>
 
-                            <!--Proficiency-->
-                            <Grid Grid.Column="0">
-                                <Rectangle x:Name="HistoryProficiencyBox"
+                                <!--Proficiency-->
+                                <Grid Grid.Column="0">
+                                    <Rectangle x:Name="HistoryProficiencyBox"
                                            Stroke="#ff06011f"
                                            Stretch="Uniform"
                                            Margin="3"/>
-                            </Grid>
+                                </Grid>
 
-                            <!--Expertiese-->
-                            <Grid Grid.Column="1">
-                                <Rectangle x:Name="HistoryExpertieseBox"
+                                <!--Expertiese-->
+                                <Grid Grid.Column="1">
+                                    <Rectangle x:Name="HistoryExpertieseBox"
                                            Stroke="#ff06011f"
                                            Stretch="Uniform"
                                            Margin="3"/>
-                            </Grid>
+                                </Grid>
 
-                            <!--Name-->
-                            <Grid Grid.Column="2">
-                                <TextBlock Text="History"
+                                <!--Name-->
+                                <Grid Grid.Column="2">
+                                    <TextBlock Text="History"
                                            x:Name="HistorySkillName"
                                            Foreground="White"
                                            FontSize="15"
                                            FontWeight="Bold"
                                            VerticalAlignment="Center"/>
-                            </Grid>
+                                </Grid>
 
-                            <!--Value-->
-                            <Grid Grid.Column="3">
-                                <TextBlock x:Name="HistorySkillField"
+                                <!--Value-->
+                                <Grid Grid.Column="3">
+                                    <TextBlock x:Name="HistorySkillField"
                                            Foreground="White"
                                            FontSize="15"
                                            FontWeight="Bold"
                                            HorizontalAlignment="Center"
                                            VerticalAlignment="Center"/>
+                                </Grid>
                             </Grid>
-                        </Grid>
 
-                        <!--Investigation-->
-                        <Grid Grid.Row="6" Background="#FF333333">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="15*"/>
-                                <ColumnDefinition Width="15*"/>
-                                <ColumnDefinition Width="55*"/>
-                                <ColumnDefinition Width="15*"/>
-                            </Grid.ColumnDefinitions>
+                            <!--Investigation-->
+                            <Grid Grid.Row="6" Background="#FF333333">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="15*"/>
+                                    <ColumnDefinition Width="15*"/>
+                                    <ColumnDefinition Width="55*"/>
+                                    <ColumnDefinition Width="15*"/>
+                                </Grid.ColumnDefinitions>
 
-                            <!--Proficiency-->
-                            <Grid Grid.Column="0">
-                                <Rectangle x:Name="InvestigationProficiencyBox"
+                                <!--Proficiency-->
+                                <Grid Grid.Column="0">
+                                    <Rectangle x:Name="InvestigationProficiencyBox"
                                            Stroke="#ff06011f"
                                            Stretch="Uniform"
                                            Margin="3"/>
-                            </Grid>
+                                </Grid>
 
-                            <!--Expertiese-->
-                            <Grid Grid.Column="1">
-                                <Rectangle x:Name="InvestigationExpertieseBox"
+                                <!--Expertiese-->
+                                <Grid Grid.Column="1">
+                                    <Rectangle x:Name="InvestigationExpertieseBox"
                                            Stroke="#ff06011f"
                                            Stretch="Uniform"
                                            Margin="3"/>
-                            </Grid>
+                                </Grid>
 
-                            <!--Name-->
-                            <Grid Grid.Column="2">
-                                <TextBlock Text="Investigation"
+                                <!--Name-->
+                                <Grid Grid.Column="2">
+                                    <TextBlock Text="Investigation"
                                            x:Name="InvestigationSkillName"
                                            Foreground="White"
                                            FontSize="15"
                                            FontWeight="Bold"
                                            VerticalAlignment="Center"/>
-                            </Grid>
+                                </Grid>
 
-                            <!--Value-->
-                            <Grid Grid.Column="3">
-                                <TextBlock x:Name="InvestigationSkillField"
+                                <!--Value-->
+                                <Grid Grid.Column="3">
+                                    <TextBlock x:Name="InvestigationSkillField"
                                            Foreground="White"
                                            FontSize="15"
                                            FontWeight="Bold"
                                            HorizontalAlignment="Center"
                                            VerticalAlignment="Center"/>
+                                </Grid>
                             </Grid>
-                        </Grid>
 
-                        <!--Nature-->
-                        <Grid Grid.Row="7" Background="#FF3e3e42">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="15*"/>
-                                <ColumnDefinition Width="15*"/>
-                                <ColumnDefinition Width="55*"/>
-                                <ColumnDefinition Width="15*"/>
-                            </Grid.ColumnDefinitions>
+                            <!--Nature-->
+                            <Grid Grid.Row="7" Background="#FF3e3e42">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="15*"/>
+                                    <ColumnDefinition Width="15*"/>
+                                    <ColumnDefinition Width="55*"/>
+                                    <ColumnDefinition Width="15*"/>
+                                </Grid.ColumnDefinitions>
 
-                            <!--Proficiency-->
-                            <Grid Grid.Column="0">
-                                <Rectangle x:Name="NatureProficiencyBox"
+                                <!--Proficiency-->
+                                <Grid Grid.Column="0">
+                                    <Rectangle x:Name="NatureProficiencyBox"
                                            Stroke="#ff06011f"
                                            Stretch="Uniform"
                                            Margin="3"/>
-                            </Grid>
+                                </Grid>
 
-                            <!--Expertiese-->
-                            <Grid Grid.Column="1">
-                                <Rectangle x:Name="NatureExpertieseBox"
+                                <!--Expertiese-->
+                                <Grid Grid.Column="1">
+                                    <Rectangle x:Name="NatureExpertieseBox"
                                            Stroke="#ff06011f"
                                            Stretch="Uniform"
                                            Margin="3"/>
-                            </Grid>
+                                </Grid>
 
-                            <!--Name-->
-                            <Grid Grid.Column="2">
-                                <TextBlock Text="Nature"
+                                <!--Name-->
+                                <Grid Grid.Column="2">
+                                    <TextBlock Text="Nature"
                                            x:Name="NatureSkillName"
                                            Foreground="White"
                                            FontSize="15"
                                            FontWeight="Bold"
                                            VerticalAlignment="Center"/>
-                            </Grid>
+                                </Grid>
 
-                            <!--Value-->
-                            <Grid Grid.Column="3">
-                                <TextBlock x:Name="NatureSkillField"
+                                <!--Value-->
+                                <Grid Grid.Column="3">
+                                    <TextBlock x:Name="NatureSkillField"
                                            Foreground="White"
                                            FontSize="15"
                                            FontWeight="Bold"
                                            HorizontalAlignment="Center"
                                            VerticalAlignment="Center"/>
+                                </Grid>
                             </Grid>
-                        </Grid>
 
-                        <!--Religion-->
-                        <Grid Grid.Row="8" Background="#FF333333">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="15*"/>
-                                <ColumnDefinition Width="15*"/>
-                                <ColumnDefinition Width="55*"/>
-                                <ColumnDefinition Width="15*"/>
-                            </Grid.ColumnDefinitions>
+                            <!--Religion-->
+                            <Grid Grid.Row="8" Background="#FF333333">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="15*"/>
+                                    <ColumnDefinition Width="15*"/>
+                                    <ColumnDefinition Width="55*"/>
+                                    <ColumnDefinition Width="15*"/>
+                                </Grid.ColumnDefinitions>
 
-                            <!--Proficiency-->
-                            <Grid Grid.Column="0">
-                                <Rectangle x:Name="ReligionProficiencyBox"
+                                <!--Proficiency-->
+                                <Grid Grid.Column="0">
+                                    <Rectangle x:Name="ReligionProficiencyBox"
                                            Stroke="#ff06011f"
                                            Stretch="Uniform"
                                            Margin="3"/>
-                            </Grid>
+                                </Grid>
 
-                            <!--Expertiese-->
-                            <Grid Grid.Column="1">
-                                <Rectangle x:Name="ReligionExpertieseBox"
+                                <!--Expertiese-->
+                                <Grid Grid.Column="1">
+                                    <Rectangle x:Name="ReligionExpertieseBox"
                                            Stroke="#ff06011f"
                                            Stretch="Uniform"
                                            Margin="3"/>
-                            </Grid>
+                                </Grid>
 
-                            <!--Name-->
-                            <Grid Grid.Column="2">
-                                <TextBlock Text="Religion"
+                                <!--Name-->
+                                <Grid Grid.Column="2">
+                                    <TextBlock Text="Religion"
                                            x:Name="ReligionSkillName"
                                            Foreground="White"
                                            FontSize="15"
                                            FontWeight="Bold"
                                            VerticalAlignment="Center"/>
-                            </Grid>
+                                </Grid>
 
-                            <!--Value-->
-                            <Grid Grid.Column="3">
-                                <TextBlock x:Name="ReligionSkillField"
+                                <!--Value-->
+                                <Grid Grid.Column="3">
+                                    <TextBlock x:Name="ReligionSkillField"
                                            Foreground="White"
                                            FontSize="15"
                                            FontWeight="Bold"
                                            HorizontalAlignment="Center"
                                            VerticalAlignment="Center"/>
+                                </Grid>
                             </Grid>
-                        </Grid>
 
-                        <!--Animal Handling-->
-                        <Grid Grid.Row="9" Background="#FF3e3e42">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="15*"/>
-                                <ColumnDefinition Width="15*"/>
-                                <ColumnDefinition Width="55*"/>
-                                <ColumnDefinition Width="15*"/>
-                            </Grid.ColumnDefinitions>
+                            <!--Animal Handling-->
+                            <Grid Grid.Row="9" Background="#FF3e3e42">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="15*"/>
+                                    <ColumnDefinition Width="15*"/>
+                                    <ColumnDefinition Width="55*"/>
+                                    <ColumnDefinition Width="15*"/>
+                                </Grid.ColumnDefinitions>
 
-                            <!--Proficiency-->
-                            <Grid Grid.Column="0">
-                                <Rectangle x:Name="AnimalHandlingProficiencyBox"
+                                <!--Proficiency-->
+                                <Grid Grid.Column="0">
+                                    <Rectangle x:Name="AnimalHandlingProficiencyBox"
                                            Stroke="#ff06011f"
                                            Stretch="Uniform"
                                            Margin="3"/>
-                            </Grid>
+                                </Grid>
 
-                            <!--Expertiese-->
-                            <Grid Grid.Column="1">
-                                <Rectangle x:Name="AnimalHandlingExpertieseBox"
+                                <!--Expertiese-->
+                                <Grid Grid.Column="1">
+                                    <Rectangle x:Name="AnimalHandlingExpertieseBox"
                                            Stroke="#ff06011f"
                                            Stretch="Uniform"
                                            Margin="3"/>
-                            </Grid>
+                                </Grid>
 
-                            <!--Name-->
-                            <Grid Grid.Column="2">
-                                <TextBlock Text="Animal Handling"
+                                <!--Name-->
+                                <Grid Grid.Column="2">
+                                    <TextBlock Text="Animal Handling"
                                            x:Name="AnimalHandlingSkillName"
                                            Foreground="White"
                                            FontSize="15"
                                            FontWeight="Bold"
                                            VerticalAlignment="Center"/>
-                            </Grid>
+                                </Grid>
 
-                            <!--Value-->
-                            <Grid Grid.Column="3">
-                                <TextBlock x:Name="AnimalHandlingSkillField"
+                                <!--Value-->
+                                <Grid Grid.Column="3">
+                                    <TextBlock x:Name="AnimalHandlingSkillField"
                                            Foreground="White"
                                            FontSize="15"
                                            FontWeight="Bold"
                                            HorizontalAlignment="Center"
                                            VerticalAlignment="Center"/>
+                                </Grid>
                             </Grid>
-                        </Grid>
 
-                        <!--Insight-->
-                        <Grid Grid.Row="10" Background="#FF333333">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="15*"/>
-                                <ColumnDefinition Width="15*"/>
-                                <ColumnDefinition Width="55*"/>
-                                <ColumnDefinition Width="15*"/>
-                            </Grid.ColumnDefinitions>
+                            <!--Insight-->
+                            <Grid Grid.Row="10" Background="#FF333333">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="15*"/>
+                                    <ColumnDefinition Width="15*"/>
+                                    <ColumnDefinition Width="55*"/>
+                                    <ColumnDefinition Width="15*"/>
+                                </Grid.ColumnDefinitions>
 
-                            <!--Proficiency-->
-                            <Grid Grid.Column="0">
-                                <Rectangle x:Name="InsightProficiencyBox"
+                                <!--Proficiency-->
+                                <Grid Grid.Column="0">
+                                    <Rectangle x:Name="InsightProficiencyBox"
                                            Stroke="#ff06011f"
                                            Stretch="Uniform"
                                            Margin="3"/>
-                            </Grid>
+                                </Grid>
 
-                            <!--Expertiese-->
-                            <Grid Grid.Column="1">
-                                <Rectangle x:Name="InsightExpertieseBox"
+                                <!--Expertiese-->
+                                <Grid Grid.Column="1">
+                                    <Rectangle x:Name="InsightExpertieseBox"
                                            Stroke="#ff06011f"
                                            Stretch="Uniform"
                                            Margin="3"/>
-                            </Grid>
+                                </Grid>
 
-                            <!--Name-->
-                            <Grid Grid.Column="2">
-                                <TextBlock Text="Insight"
+                                <!--Name-->
+                                <Grid Grid.Column="2">
+                                    <TextBlock Text="Insight"
                                            x:Name="InsightSkillName"
                                            Foreground="White"
                                            FontSize="15"
                                            FontWeight="Bold"
                                            VerticalAlignment="Center"/>
-                            </Grid>
+                                </Grid>
 
-                            <!--Value-->
-                            <Grid Grid.Column="3">
-                                <TextBlock x:Name="InsightSkillField"
+                                <!--Value-->
+                                <Grid Grid.Column="3">
+                                    <TextBlock x:Name="InsightSkillField"
                                            Foreground="White"
                                            FontSize="15"
                                            FontWeight="Bold"
                                            HorizontalAlignment="Center"
                                            VerticalAlignment="Center"/>
+                                </Grid>
                             </Grid>
-                        </Grid>
 
-                        <!--Medicine-->
-                        <Grid Grid.Row="11" Background="#FF3e3e42">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="15*"/>
-                                <ColumnDefinition Width="15*"/>
-                                <ColumnDefinition Width="55*"/>
-                                <ColumnDefinition Width="15*"/>
-                            </Grid.ColumnDefinitions>
+                            <!--Medicine-->
+                            <Grid Grid.Row="11" Background="#FF3e3e42">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="15*"/>
+                                    <ColumnDefinition Width="15*"/>
+                                    <ColumnDefinition Width="55*"/>
+                                    <ColumnDefinition Width="15*"/>
+                                </Grid.ColumnDefinitions>
 
-                            <!--Proficiency-->
-                            <Grid Grid.Column="0">
-                                <Rectangle x:Name="MedicineProficiencyBox"
+                                <!--Proficiency-->
+                                <Grid Grid.Column="0">
+                                    <Rectangle x:Name="MedicineProficiencyBox"
                                            Stroke="#ff06011f"
                                            Stretch="Uniform"
                                            Margin="3"/>
-                            </Grid>
+                                </Grid>
 
-                            <!--Expertiese-->
-                            <Grid Grid.Column="1">
-                                <Rectangle x:Name="MedicineExpertieseBox"
+                                <!--Expertiese-->
+                                <Grid Grid.Column="1">
+                                    <Rectangle x:Name="MedicineExpertieseBox"
                                            Stroke="#ff06011f"
                                            Stretch="Uniform"
                                            Margin="3"/>
-                            </Grid>
+                                </Grid>
 
-                            <!--Name-->
-                            <Grid Grid.Column="2">
-                                <TextBlock Text="Medicine"
+                                <!--Name-->
+                                <Grid Grid.Column="2">
+                                    <TextBlock Text="Medicine"
                                            x:Name="MedicineSkillName"
                                            Foreground="White"
                                            FontSize="15"
                                            FontWeight="Bold"
                                            VerticalAlignment="Center"/>
-                            </Grid>
+                                </Grid>
 
-                            <!--Value-->
-                            <Grid Grid.Column="3">
-                                <TextBlock x:Name="MedicineSkillField"
+                                <!--Value-->
+                                <Grid Grid.Column="3">
+                                    <TextBlock x:Name="MedicineSkillField"
                                            Foreground="White"
                                            FontSize="15"
                                            FontWeight="Bold"
                                            HorizontalAlignment="Center"
                                            VerticalAlignment="Center"/>
+                                </Grid>
                             </Grid>
-                        </Grid>
 
-                        <!--Perception-->
-                        <Grid Grid.Row="12" Background="#FF333333">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="15*"/>
-                                <ColumnDefinition Width="15*"/>
-                                <ColumnDefinition Width="55*"/>
-                                <ColumnDefinition Width="15*"/>
-                            </Grid.ColumnDefinitions>
+                            <!--Perception-->
+                            <Grid Grid.Row="12" Background="#FF333333">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="15*"/>
+                                    <ColumnDefinition Width="15*"/>
+                                    <ColumnDefinition Width="55*"/>
+                                    <ColumnDefinition Width="15*"/>
+                                </Grid.ColumnDefinitions>
 
-                            <!--Proficiency-->
-                            <Grid Grid.Column="0">
-                                <Rectangle x:Name="PerceptionProficiencyBox"
+                                <!--Proficiency-->
+                                <Grid Grid.Column="0">
+                                    <Rectangle x:Name="PerceptionProficiencyBox"
                                            Stroke="#ff06011f"
                                            Stretch="Uniform"
                                            Margin="3"/>
-                            </Grid>
+                                </Grid>
 
-                            <!--Expertiese-->
-                            <Grid Grid.Column="1">
-                                <Rectangle x:Name="PerceptionExpertieseBox"
+                                <!--Expertiese-->
+                                <Grid Grid.Column="1">
+                                    <Rectangle x:Name="PerceptionExpertieseBox"
                                            Stroke="#ff06011f"
                                            Stretch="Uniform"
                                            Margin="3"/>
-                            </Grid>
+                                </Grid>
 
-                            <!--Name-->
-                            <Grid Grid.Column="2">
-                                <TextBlock Text="Perception"
+                                <!--Name-->
+                                <Grid Grid.Column="2">
+                                    <TextBlock Text="Perception"
                                            x:Name="PerceptionSkillName"
                                            Foreground="White"
                                            FontSize="15"
                                            FontWeight="Bold"
                                            VerticalAlignment="Center"/>
-                            </Grid>
+                                </Grid>
 
-                            <!--Value-->
-                            <Grid Grid.Column="3">
-                                <TextBlock x:Name="PerceptionSkillField"
+                                <!--Value-->
+                                <Grid Grid.Column="3">
+                                    <TextBlock x:Name="PerceptionSkillField"
                                            Foreground="White"
                                            FontSize="15"
                                            FontWeight="Bold"
                                            HorizontalAlignment="Center"
                                            VerticalAlignment="Center"/>
+                                </Grid>
                             </Grid>
-                        </Grid>
 
-                        <!--Survival-->
-                        <Grid Grid.Row="13" Background="#FF3e3e42">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="15*"/>
-                                <ColumnDefinition Width="15*"/>
-                                <ColumnDefinition Width="55*"/>
-                                <ColumnDefinition Width="15*"/>
-                            </Grid.ColumnDefinitions>
+                            <!--Survival-->
+                            <Grid Grid.Row="13" Background="#FF3e3e42">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="15*"/>
+                                    <ColumnDefinition Width="15*"/>
+                                    <ColumnDefinition Width="55*"/>
+                                    <ColumnDefinition Width="15*"/>
+                                </Grid.ColumnDefinitions>
 
-                            <!--Proficiency-->
-                            <Grid Grid.Column="0">
-                                <Rectangle x:Name="SurvivalProficiencyBox"
+                                <!--Proficiency-->
+                                <Grid Grid.Column="0">
+                                    <Rectangle x:Name="SurvivalProficiencyBox"
                                            Stroke="#ff06011f"
                                            Stretch="Uniform"
                                            Margin="3"/>
-                            </Grid>
+                                </Grid>
 
-                            <!--Expertiese-->
-                            <Grid Grid.Column="1">
-                                <Rectangle x:Name="SurvivalExpertieseBox"
+                                <!--Expertiese-->
+                                <Grid Grid.Column="1">
+                                    <Rectangle x:Name="SurvivalExpertieseBox"
                                            Stroke="#ff06011f"
                                            Stretch="Uniform"
                                            Margin="3"/>
-                            </Grid>
+                                </Grid>
 
-                            <!--Name-->
-                            <Grid Grid.Column="2">
-                                <TextBlock Text="Survival"
+                                <!--Name-->
+                                <Grid Grid.Column="2">
+                                    <TextBlock Text="Survival"
                                            x:Name="SurvivalSkillName"
                                            Foreground="White"
                                            FontSize="15"
                                            FontWeight="Bold"
                                            VerticalAlignment="Center"/>
-                            </Grid>
+                                </Grid>
 
-                            <!--Value-->
-                            <Grid Grid.Column="3">
-                                <TextBlock x:Name="SurvivalSkillField"
+                                <!--Value-->
+                                <Grid Grid.Column="3">
+                                    <TextBlock x:Name="SurvivalSkillField"
                                            Foreground="White"
                                            FontSize="15"
                                            FontWeight="Bold"
                                            HorizontalAlignment="Center"
                                            VerticalAlignment="Center"/>
+                                </Grid>
                             </Grid>
-                        </Grid>
 
-                        <!--Deception-->
-                        <Grid Grid.Row="14" Background="#FF333333">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="15*"/>
-                                <ColumnDefinition Width="15*"/>
-                                <ColumnDefinition Width="55*"/>
-                                <ColumnDefinition Width="15*"/>
-                            </Grid.ColumnDefinitions>
+                            <!--Deception-->
+                            <Grid Grid.Row="14" Background="#FF333333">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="15*"/>
+                                    <ColumnDefinition Width="15*"/>
+                                    <ColumnDefinition Width="55*"/>
+                                    <ColumnDefinition Width="15*"/>
+                                </Grid.ColumnDefinitions>
 
-                            <!--Proficiency-->
-                            <Grid Grid.Column="0">
-                                <Rectangle x:Name="DeceptionProficiencyBox"
+                                <!--Proficiency-->
+                                <Grid Grid.Column="0">
+                                    <Rectangle x:Name="DeceptionProficiencyBox"
                                            Stroke="#ff06011f"
                                            Stretch="Uniform"
                                            Margin="3"/>
-                            </Grid>
+                                </Grid>
 
-                            <!--Expertiese-->
-                            <Grid Grid.Column="1">
-                                <Rectangle x:Name="DeceptionExpertieseBox"
+                                <!--Expertiese-->
+                                <Grid Grid.Column="1">
+                                    <Rectangle x:Name="DeceptionExpertieseBox"
                                            Stroke="#ff06011f"
                                            Stretch="Uniform"
                                            Margin="3"/>
-                            </Grid>
+                                </Grid>
 
-                            <!--Name-->
-                            <Grid Grid.Column="2">
-                                <TextBlock Text="Deception"
+                                <!--Name-->
+                                <Grid Grid.Column="2">
+                                    <TextBlock Text="Deception"
                                            x:Name="DeceptionSkillName"
                                            Foreground="White"
                                            FontSize="15"
                                            FontWeight="Bold"
                                            VerticalAlignment="Center"/>
-                            </Grid>
+                                </Grid>
 
-                            <!--Value-->
-                            <Grid Grid.Column="3">
-                                <TextBlock x:Name="DeceptionSkillField"
+                                <!--Value-->
+                                <Grid Grid.Column="3">
+                                    <TextBlock x:Name="DeceptionSkillField"
                                            Foreground="White"
                                            FontSize="15"
                                            FontWeight="Bold"
                                            HorizontalAlignment="Center"
                                            VerticalAlignment="Center"/>
+                                </Grid>
                             </Grid>
-                        </Grid>
 
-                        <!--Intimidation-->
-                        <Grid Grid.Row="15" Background="#FF3e3e42">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="15*"/>
-                                <ColumnDefinition Width="15*"/>
-                                <ColumnDefinition Width="55*"/>
-                                <ColumnDefinition Width="15*"/>
-                            </Grid.ColumnDefinitions>
+                            <!--Intimidation-->
+                            <Grid Grid.Row="15" Background="#FF3e3e42">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="15*"/>
+                                    <ColumnDefinition Width="15*"/>
+                                    <ColumnDefinition Width="55*"/>
+                                    <ColumnDefinition Width="15*"/>
+                                </Grid.ColumnDefinitions>
 
-                            <!--Proficiency-->
-                            <Grid Grid.Column="0">
-                                <Rectangle x:Name="IntimidationProficiencyBox"
+                                <!--Proficiency-->
+                                <Grid Grid.Column="0">
+                                    <Rectangle x:Name="IntimidationProficiencyBox"
                                            Stroke="#ff06011f"
                                            Stretch="Uniform"
                                            Margin="3"/>
-                            </Grid>
+                                </Grid>
 
-                            <!--Expertiese-->
-                            <Grid Grid.Column="1">
-                                <Rectangle x:Name="IntimidationExpertieseBox"
+                                <!--Expertiese-->
+                                <Grid Grid.Column="1">
+                                    <Rectangle x:Name="IntimidationExpertieseBox"
                                            Stroke="#ff06011f"
                                            Stretch="Uniform"
                                            Margin="3"/>
-                            </Grid>
+                                </Grid>
 
-                            <!--Name-->
-                            <Grid Grid.Column="2">
-                                <TextBlock Text="Intimidation"
+                                <!--Name-->
+                                <Grid Grid.Column="2">
+                                    <TextBlock Text="Intimidation"
                                            x:Name="IntimidationSkillName"
                                            Foreground="White"
                                            FontSize="15"
                                            FontWeight="Bold"
                                            VerticalAlignment="Center"/>
-                            </Grid>
+                                </Grid>
 
-                            <!--Value-->
-                            <Grid Grid.Column="3">
-                                <TextBlock x:Name="IntimidationSkillField"
+                                <!--Value-->
+                                <Grid Grid.Column="3">
+                                    <TextBlock x:Name="IntimidationSkillField"
                                            Foreground="White"
                                            FontSize="15"
                                            FontWeight="Bold"
                                            HorizontalAlignment="Center"
                                            VerticalAlignment="Center"/>
+                                </Grid>
                             </Grid>
-                        </Grid>
 
-                        <!--Performance-->
-                        <Grid Grid.Row="16" Background="#FF333333">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="15*"/>
-                                <ColumnDefinition Width="15*"/>
-                                <ColumnDefinition Width="55*"/>
-                                <ColumnDefinition Width="15*"/>
-                            </Grid.ColumnDefinitions>
+                            <!--Performance-->
+                            <Grid Grid.Row="16" Background="#FF333333">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="15*"/>
+                                    <ColumnDefinition Width="15*"/>
+                                    <ColumnDefinition Width="55*"/>
+                                    <ColumnDefinition Width="15*"/>
+                                </Grid.ColumnDefinitions>
 
-                            <!--Proficiency-->
-                            <Grid Grid.Column="0">
-                                <Rectangle x:Name="PerformanceProficiencyBox"
+                                <!--Proficiency-->
+                                <Grid Grid.Column="0">
+                                    <Rectangle x:Name="PerformanceProficiencyBox"
                                            Stroke="#ff06011f"
                                            Stretch="Uniform"
                                            Margin="3"/>
-                            </Grid>
+                                </Grid>
 
-                            <!--Expertiese-->
-                            <Grid Grid.Column="1">
-                                <Rectangle x:Name="PerformanceExpertieseBox"
+                                <!--Expertiese-->
+                                <Grid Grid.Column="1">
+                                    <Rectangle x:Name="PerformanceExpertieseBox"
                                            Stroke="#ff06011f"
                                            Stretch="Uniform"
                                            Margin="3"/>
-                            </Grid>
+                                </Grid>
 
-                            <!--Name-->
-                            <Grid Grid.Column="2">
-                                <TextBlock Text="Performance"
+                                <!--Name-->
+                                <Grid Grid.Column="2">
+                                    <TextBlock Text="Performance"
                                            x:Name="PerformanceSkillName"
                                            Foreground="White"
                                            FontSize="15"
                                            FontWeight="Bold"
                                            VerticalAlignment="Center"/>
-                            </Grid>
+                                </Grid>
 
-                            <!--Value-->
-                            <Grid Grid.Column="3">
-                                <TextBlock x:Name="PerformanceSkillField"
+                                <!--Value-->
+                                <Grid Grid.Column="3">
+                                    <TextBlock x:Name="PerformanceSkillField"
                                            Foreground="White"
                                            FontSize="15"
                                            FontWeight="Bold"
                                            HorizontalAlignment="Center"
                                            VerticalAlignment="Center"/>
+                                </Grid>
                             </Grid>
-                        </Grid>
 
-                        <!--Persuasion-->
-                        <Grid Grid.Row="17" Background="#FF3e3e42">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="15*"/>
-                                <ColumnDefinition Width="15*"/>
-                                <ColumnDefinition Width="55*"/>
-                                <ColumnDefinition Width="15*"/>
-                            </Grid.ColumnDefinitions>
+                            <!--Persuasion-->
+                            <Grid Grid.Row="17" Background="#FF3e3e42">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="15*"/>
+                                    <ColumnDefinition Width="15*"/>
+                                    <ColumnDefinition Width="55*"/>
+                                    <ColumnDefinition Width="15*"/>
+                                </Grid.ColumnDefinitions>
 
-                            <!--Proficiency-->
-                            <Grid Grid.Column="0">
-                                <Rectangle x:Name="PersuasionProficiencyBox"
+                                <!--Proficiency-->
+                                <Grid Grid.Column="0">
+                                    <Rectangle x:Name="PersuasionProficiencyBox"
                                            Stroke="#ff06011f"
                                            Stretch="Uniform"
                                            Margin="3"/>
-                            </Grid>
+                                </Grid>
 
-                            <!--Expertiese-->
-                            <Grid Grid.Column="1">
-                                <Rectangle x:Name="PersuasionExpertieseBox"
+                                <!--Expertiese-->
+                                <Grid Grid.Column="1">
+                                    <Rectangle x:Name="PersuasionExpertieseBox"
                                            Stroke="#ff06011f"
                                            Stretch="Uniform"
                                            Margin="3"/>
-                            </Grid>
+                                </Grid>
 
-                            <!--Name-->
-                            <Grid Grid.Column="2">
-                                <TextBlock Text="Persuasion"
+                                <!--Name-->
+                                <Grid Grid.Column="2">
+                                    <TextBlock Text="Persuasion"
                                            x:Name="PersuasionSkillName"
                                            Foreground="White"
                                            FontSize="15"
                                            FontWeight="Bold"
                                            VerticalAlignment="Center"/>
-                            </Grid>
+                                </Grid>
 
-                            <!--Value-->
-                            <Grid Grid.Column="3">
-                                <TextBlock x:Name="PersuasionSkillField"
+                                <!--Value-->
+                                <Grid Grid.Column="3">
+                                    <TextBlock x:Name="PersuasionSkillField"
                                            Foreground="White"
                                            FontSize="15"
                                            FontWeight="Bold"
                                            HorizontalAlignment="Center"
                                            VerticalAlignment="Center"/>
+                                </Grid>
                             </Grid>
                         </Grid>
                     </Grid>
                 </Grid>
-                
+
+                <!--Health, AC, HitDice, Pool-->
+                <Grid Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="33*"/>
+                        <RowDefinition Height="33*"/>
+                        <RowDefinition Height="33*"/>
+                    </Grid.RowDefinitions>
+
+                    <!--Health, AC-->
+                    <Grid Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="50*"/>
+                            <ColumnDefinition Width="50*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <!--Health-->
+                        <Grid Grid.Column="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="80*"/>
+                                <RowDefinition Height="20*"/>
+                            </Grid.RowDefinitions>
+
+                            <!--Current HP-->
+                            <Grid Grid.Row="0" 
+                                  Margin="3, 3, 3, 0" 
+                                  Background="#ff06011f" 
+                                  x:Name="HealthBox">
+                                <materialDesign:PackIcon Kind="Heart" 
+                                                         FontStretch="Expanded"
+                                                         Foreground="#ff780531"
+                                                         HorizontalAlignment="Center"
+                                                         VerticalAlignment="Center"
+                                                         Width="{Binding Path=HeartWidth}"
+                                                         Height="{Binding Path=HeartHeight}"/>
+                                <TextBlock x:Name="CurrentHpField"
+                                           Foreground="White"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"
+                                           FontSize="55"
+                                           FontWeight="Bold"/>
+                            </Grid>
+                            
+                            <!--Total HP-->
+                            <Grid Grid.Row="1" Margin="3, 0, 3, 3" Background="Black">
+                                <TextBlock x:Name="TotalHpField"
+                                           Foreground="White"
+                                           FontSize="23"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"
+                                           FontWeight="Bold"/>
+                            </Grid>
+                        </Grid>
+
+                        <!--AC-->
+                        <Grid Grid.Column="1" 
+                              Margin="3"
+                              Background="#ff06011f">
+                            <materialDesign:PackIcon Kind="Shield" 
+                                                         FontStretch="Expanded"
+                                                         Foreground="DimGray"
+                                                         HorizontalAlignment="Center"
+                                                         VerticalAlignment="Center"
+                                                         Width="{Binding Path=ShieldWidth}"
+                                                         Height="{Binding Path=ShieldHeight}"/>
+                            <TextBlock x:Name="ArmorClassField"
+                                           Foreground="White"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"
+                                           FontSize="65"
+                                           FontWeight="Bold"/>
+                        </Grid>
+                    </Grid>
+
+                    <!--HitDice-->
+                    <Grid Grid.Row="1"
+                          Margin="3"
+                          Background="#ff06011f">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="30*"/>
+                            <ColumnDefinition Width="70*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <!--Header-->
+                        <Grid Grid.Column="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="60*"/>
+                                <RowDefinition Height="40*"/>
+                            </Grid.RowDefinitions>
+
+                            <Grid Grid.Row="0">
+                                <TextBlock Text="Hit Dice"
+                                           Foreground="White"
+                                           FontSize="35"
+                                           FontWeight="Bold"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"/>
+                            </Grid>
+
+                            <Grid Grid.Row="1" 
+                                  Margin="15"
+                                  Background="Black">
+                                <TextBlock Text="Spent"
+                                           Foreground="White"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"
+                                           FontSize="25"
+                                           FontWeight="Bold"/>
+                            </Grid>
+                        </Grid>
+
+                        <!--Dice-->
+                        <Grid Grid.Column="1" Margin="15">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="25*"/>
+                                <ColumnDefinition Width="25*"/>
+                                <ColumnDefinition Width="25*"/>
+                                <ColumnDefinition Width="25*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <!--D6-->
+                            <Grid Grid.Column="0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="33*"/>
+                                    <RowDefinition Height="33*"/>
+                                    <RowDefinition Height="33*"/>
+                                </Grid.RowDefinitions>
+
+                                <!--Header-->
+                                <Grid Grid.Row="0" 
+                                      Background="#ff1c1636"
+                                      Margin="3, 0, 3, 0">
+                                    <TextBlock Text="D6"
+                                               FontSize="25"
+                                               FontWeight="Bold"
+                                               Foreground="White"
+                                               HorizontalAlignment="Center"
+                                               VerticalAlignment="Center"/>
+                                </Grid>
+
+                                <!--Total-->
+                                <Grid Grid.Row="1"
+                                      Margin="3, 0, 3, 0"
+                                      Background="#FF333333"
+                                      x:Name="D6TotalBox">
+                                    <TextBlock x:Name="D6TotalField"
+                                               Foreground="White"
+                                               FontSize="30"
+                                               HorizontalAlignment="Center"
+                                               VerticalAlignment="Center"/>
+                                </Grid>
+
+                                <!--Spent-->
+                                <Grid Grid.Row="2"
+                                      Margin="3, 0, 3, 0"
+                                      Background="#FF3e3e42"
+                                      x:Name="D6SpentBox">
+                                    <TextBlock x:Name="D6SpentField"
+                                               Foreground="White"
+                                               FontSize="30"
+                                               HorizontalAlignment="Center"
+                                               VerticalAlignment="Center"/>
+                                </Grid>
+                            </Grid>
+
+                            <!--D8-->
+                            <Grid Grid.Column="1">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="33*"/>
+                                    <RowDefinition Height="33*"/>
+                                    <RowDefinition Height="33*"/>
+                                </Grid.RowDefinitions>
+
+                                <!--Header-->
+                                <Grid Grid.Row="0" 
+                                      Background="#ff1c1636"
+                                      Margin="3, 0, 3, 0">
+                                    <TextBlock Text="D8"
+                                               FontSize="25"
+                                               FontWeight="Bold"
+                                               Foreground="White"
+                                               HorizontalAlignment="Center"
+                                               VerticalAlignment="Center"/>
+                                </Grid>
+
+                                <!--Total-->
+                                <Grid Grid.Row="1"
+                                      Margin="3, 0, 3, 0"
+                                      Background="#FF333333"
+                                      x:Name="D8TotalBox">
+                                    <TextBlock x:Name="D8TotalField"
+                                               Foreground="White"
+                                               FontSize="30"
+                                               HorizontalAlignment="Center"
+                                               VerticalAlignment="Center"/>
+                                </Grid>
+
+                                <!--Spent-->
+                                <Grid Grid.Row="2"
+                                      Margin="3, 0, 3, 0"
+                                      Background="#FF3e3e42"
+                                      x:Name="D8SpentBox">
+                                    <TextBlock x:Name="D8SpentField"
+                                               Foreground="White"
+                                               FontSize="30"
+                                               HorizontalAlignment="Center"
+                                               VerticalAlignment="Center"/>
+                                </Grid>
+                            </Grid>
+
+                            <!--D10-->
+                            <Grid Grid.Column="2">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="33*"/>
+                                    <RowDefinition Height="33*"/>
+                                    <RowDefinition Height="33*"/>
+                                </Grid.RowDefinitions>
+
+                                <!--Header-->
+                                <Grid Grid.Row="0" 
+                                      Background="#ff1c1636"
+                                      Margin="3, 0, 3, 0">
+                                    <TextBlock Text="D10"
+                                               FontSize="25"
+                                               FontWeight="Bold"
+                                               Foreground="White"
+                                               HorizontalAlignment="Center"
+                                               VerticalAlignment="Center"/>
+                                </Grid>
+
+                                <!--Total-->
+                                <Grid Grid.Row="1"
+                                      Margin="3, 0, 3, 0"
+                                      Background="#FF333333"
+                                      x:Name="D10TotalBox">
+                                    <TextBlock x:Name="D10TotalField"
+                                               Foreground="White"
+                                               FontSize="30"
+                                               HorizontalAlignment="Center"
+                                               VerticalAlignment="Center"/>
+                                </Grid>
+
+                                <!--Spent-->
+                                <Grid Grid.Row="2"
+                                      Margin="3, 0, 3, 0"
+                                      Background="#FF3e3e42"
+                                      x:Name="D10SpentBox">
+                                    <TextBlock x:Name="D10SpentField"
+                                               Foreground="White"
+                                               FontSize="30"
+                                               HorizontalAlignment="Center"
+                                               VerticalAlignment="Center"/>
+                                </Grid>
+                            </Grid>
+
+                            <!--D12-->
+                            <Grid Grid.Column="3">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="33*"/>
+                                    <RowDefinition Height="33*"/>
+                                    <RowDefinition Height="33*"/>
+                                </Grid.RowDefinitions>
+
+                                <!--Header-->
+                                <Grid Grid.Row="0" 
+                                      Background="#ff1c1636"
+                                      Margin="3, 0, 3, 0">
+                                    <TextBlock Text="D12"
+                                               FontSize="25"
+                                               FontWeight="Bold"
+                                               Foreground="White"
+                                               HorizontalAlignment="Center"
+                                               VerticalAlignment="Center"/>
+                                </Grid>
+
+                                <!--Total-->
+                                <Grid Grid.Row="1"
+                                      Margin="3, 0, 3, 0"
+                                      Background="#FF333333"
+                                      x:Name="D12TotalBox">
+                                    <TextBlock x:Name="D12TotalField"
+                                               Foreground="White"
+                                               FontSize="30"
+                                               HorizontalAlignment="Center"
+                                               VerticalAlignment="Center"/>
+                                </Grid>
+
+                                <!--Spent-->
+                                <Grid Grid.Row="2"
+                                      Margin="3, 0, 3, 0"
+                                      Background="#FF3e3e42"
+                                      x:Name="D12SpentBox">
+                                    <TextBlock x:Name="D12SpentField"
+                                               Foreground="White"
+                                               FontSize="30"
+                                               HorizontalAlignment="Center"
+                                               VerticalAlignment="Center"/>
+                                </Grid>
+                            </Grid>
+                        </Grid>
+                    </Grid>
+
+                    <!--Pool-->
+                    <Grid Grid.Row="2">
+
+                    </Grid>
+                </Grid>
             </Grid>
         </Grid>
     </Grid>
