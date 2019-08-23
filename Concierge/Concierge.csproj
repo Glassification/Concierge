@@ -112,6 +112,9 @@
     <Compile Include="Presentation\AbilitiesPage.xaml.cs">
       <DependentUpon>AbilitiesPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Presentation\DetailsPage.xaml.cs">
+      <DependentUpon>DetailsPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Presentation\DivideLootUI\Player.cs" />
     <Compile Include="Presentation\EquipmentPage.xaml.cs">
       <DependentUpon>EquipmentPage.xaml</DependentUpon>
@@ -192,6 +195,10 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="Presentation\AbilitiesPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\DetailsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
