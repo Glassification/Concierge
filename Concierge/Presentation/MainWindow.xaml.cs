@@ -111,13 +111,9 @@ namespace Concierge.Presentation
             TextCharacterRace.Text = Program.Character.Details.Race;
 
             if (Program.Character.Level > 0)
-            {
                 TextCharacterLevel.Text = "Level " + Program.Character.Level;
-            }
             else
-            {
                 TextCharacterLevel.Text = "";
-            }
 
             TextCharacterClass.Text = Program.Character.GetClasses;
 

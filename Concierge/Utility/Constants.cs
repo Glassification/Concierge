@@ -3,10 +3,10 @@ using Concierge.Persistence;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
+using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
 namespace Concierge.Utility
@@ -50,7 +50,7 @@ namespace Concierge.Utility
             list[indexB] = tmp;
         }
 
-        public static BitmapImage ToBitmapImage(this Bitmap bitmap)
+        public static BitmapImage ToBitmapImage(this System.Drawing.Bitmap bitmap)
         {
             using (var memory = new MemoryStream())
             {
@@ -90,5 +90,36 @@ namespace Concierge.Utility
         public static ReadOnlyCollection<Ammunition> Ammunitions { get; private set; }
         public static ReadOnlyCollection<Spell> Spells { get; private set; }
         public static ReadOnlyCollection<Inventory> Inventories { get; private set; }
+
+        #region Colors
+
+        /// =========================================
+        /// LightGreen()
+        /// -----------------------------------------
+        /// <summary>
+        /// ARGB value of [255, 216, 228, 188]
+        /// </summary>
+        /// =========================================
+        public static Color LightGreen { get { return Color.FromArgb(255, 216, 228, 188); } }
+
+        /// =========================================
+        /// LightYellow()
+        /// -----------------------------------------
+        /// <summary>
+        /// ARGB value of [255, 252, 213, 180]
+        /// </summary>
+        /// =========================================
+        public static Color LightYellow { get { return Color.FromArgb(255, 252, 213, 180); } }
+
+        /// =========================================
+        /// MediumRed()
+        /// -----------------------------------------
+        /// <summary>
+        /// ARGB value of [255, 187, 74, 67]
+        /// </summary>
+        /// =========================================
+        public static Color MediumRed { get { return Color.FromArgb(255, 187, 74, 67); } }
+
+        #endregion
     }
 }

@@ -1790,13 +1790,13 @@
                         <!--Health-->
                         <Grid Grid.Column="0">
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="80*"/>
                                 <RowDefinition Height="20*"/>
+                                <RowDefinition Height="80*"/>
                             </Grid.RowDefinitions>
 
                             <!--Current HP-->
-                            <Grid Grid.Row="0" 
-                                  Margin="3, 3, 3, 0" 
+                            <Grid Grid.Row="1" 
+                                  Margin="3, 0, 3, 3" 
                                   Background="#ff06011f" 
                                   x:Name="HealthBox">
                                 <materialDesign:PackIcon Kind="Heart" 
@@ -1812,36 +1812,61 @@
                                            VerticalAlignment="Center"
                                            FontSize="55"
                                            FontWeight="Bold"/>
-                            </Grid>
-                            
-                            <!--Total HP-->
-                            <Grid Grid.Row="1" Margin="3, 0, 3, 3" Background="Black">
                                 <TextBlock x:Name="TotalHpField"
                                            Foreground="White"
                                            FontSize="23"
+                                           HorizontalAlignment="Right"
+                                           VerticalAlignment="Bottom"
+                                           FontWeight="Bold"
+                                           Margin="5, 5, 15, 10"/>
+                            </Grid>
+                            
+                            <!--Total HP-->
+                            <Grid Grid.Row="0" Margin="3, 3, 3, 0" Background="Black">
+                                <TextBlock Text="Health"
+                                           Foreground="White"
+                                           FontSize="35"
+                                           FontWeight="Bold"
                                            HorizontalAlignment="Center"
-                                           VerticalAlignment="Center"
-                                           FontWeight="Bold"/>
+                                           VerticalAlignment="Center"/>
                             </Grid>
                         </Grid>
 
                         <!--AC-->
-                        <Grid Grid.Column="1" 
-                              Margin="3"
-                              Background="#ff06011f">
-                            <materialDesign:PackIcon Kind="Shield" 
+                        <Grid Grid.Column="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="20*"/>
+                                <RowDefinition Height="80*"/>
+                            </Grid.RowDefinitions>
+                            
+                            <!--Header-->
+                            <Grid Grid.Row="0" Margin="3, 3, 3, 0" Background="Black">
+                                <TextBlock Text="Armor Class"
+                                           Foreground="White"
+                                           FontSize="35"
+                                           FontWeight="Bold"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"/>
+                            </Grid>
+                            
+                            <!--AC-->
+                            <Grid Grid.Row="1"
+                                  Margin="3, 0, 3, 3" 
+                                  Background="#ff06011f">
+                                <materialDesign:PackIcon Kind="Shield" 
                                                          FontStretch="Expanded"
                                                          Foreground="DimGray"
                                                          HorizontalAlignment="Center"
                                                          VerticalAlignment="Center"
                                                          Width="{Binding Path=ShieldWidth}"
                                                          Height="{Binding Path=ShieldHeight}"/>
-                            <TextBlock x:Name="ArmorClassField"
-                                           Foreground="White"
-                                           HorizontalAlignment="Center"
-                                           VerticalAlignment="Center"
-                                           FontSize="65"
-                                           FontWeight="Bold"/>
+                                <TextBlock x:Name="ArmorClassField"
+                                       Foreground="White"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"
+                                       FontSize="65"
+                                       FontWeight="Bold"/>
+                            </Grid>
                         </Grid>
                     </Grid>
 
