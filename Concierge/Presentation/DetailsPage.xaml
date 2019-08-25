@@ -10,340 +10,376 @@
       Title="DetailsPage">
 
     <Page.Resources>
-
+        <Style x:Key="ColumnElementStyle" TargetType="TextBlock">
+            <Setter Property="Margin" Value="5,5,5,5" />
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="FontSize" Value="15"/>
+        </Style>
+        <Style TargetType="{x:Type DataGridRow}">
+            <Style.Triggers>
+                <Trigger Property="ItemsControl.AlternationIndex" Value="0">
+                    <Setter Property="Background" Value="#FF333333"/>
+                    <Setter Property="Foreground" Value="White"/>
+                </Trigger>
+                <Trigger Property="ItemsControl.AlternationIndex" Value="1">
+                    <Setter Property="Background" Value="#FF3e3e42"/>
+                    <Setter Property="Foreground" Value="White"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="DGHeaderStyle" TargetType="{x:Type DataGrid}">
+            <Setter Property="ColumnHeaderStyle" Value="{DynamicResource DGCHeaderStyle}"/>
+            <Setter Property="Background" Value="#ff06011f" />
+            <Setter Property="AlternationCount" Value="2" />
+        </Style>
+        <Style x:Key="DGCHeaderStyle" TargetType="DataGridColumnHeader">
+            <Setter Property="Height" Value="35"/>
+            <Setter Property="Background" Value="#ff06011f" />
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="18" />
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
     </Page.Resources>
     
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="70*"/>
-            <RowDefinition Height="30*"/>
-        </Grid.RowDefinitions>
-        
-        <!--Appearance, Personality, Wealth, Weight, Conditions-->
-        <Grid Grid.Row="0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="30*"/>
-                <ColumnDefinition Width="45*"/>
-                <ColumnDefinition Width="25*"/>
-            </Grid.ColumnDefinitions>
-            
-            <!--Appearance-->
-            <Grid Grid.Column="0" 
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="75*"/>
+            <ColumnDefinition Width="25*"/>
+        </Grid.ColumnDefinitions>
+
+        <!--Appearance, Personality, Proficiencies-->
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="70*"/>
+                <RowDefinition Height="30*"/>
+            </Grid.RowDefinitions>
+
+            <!--Appearance, Personality-->
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="40*"/>
+                    <ColumnDefinition Width="60*"/>
+                </Grid.ColumnDefinitions>
+
+                <!--Appearance-->
+                <Grid Grid.Column="0" 
                   Background="#ff06011f"
                   Margin="3">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="13*"/>
-                    <RowDefinition Height="10*"/>
-                    <RowDefinition Height="10*"/>
-                    <RowDefinition Height="10*"/>
-                    <RowDefinition Height="10*"/>
-                    <RowDefinition Height="10*"/>
-                    <RowDefinition Height="10*"/>
-                    <RowDefinition Height="10*"/>
-                    <RowDefinition Height="17*"/>
-                </Grid.RowDefinitions>
-                
-                <!--Header-->
-                <Grid Grid.Row="0">
-                    <TextBlock Text="Appearance"
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="13*"/>
+                        <RowDefinition Height="10*"/>
+                        <RowDefinition Height="10*"/>
+                        <RowDefinition Height="10*"/>
+                        <RowDefinition Height="10*"/>
+                        <RowDefinition Height="10*"/>
+                        <RowDefinition Height="10*"/>
+                        <RowDefinition Height="10*"/>
+                        <RowDefinition Height="17*"/>
+                    </Grid.RowDefinitions>
+
+                    <!--Header-->
+                    <Grid Grid.Row="0">
+                        <TextBlock Text="Appearance"
                                Foreground="White"
                                FontSize="40"
                                FontWeight="Bold"
                                HorizontalAlignment="Center"
                                VerticalAlignment="Center"/>
-                </Grid>
-                
-                <!--Gender-->
-                <Grid Grid.Row="1">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="25*"/>
-                        <ColumnDefinition Width="75*"/>
-                    </Grid.ColumnDefinitions>
+                    </Grid>
 
-                    <Grid Grid.Column="0"
+                    <!--Gender-->
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="25*"/>
+                            <ColumnDefinition Width="75*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid Grid.Column="0"
                           Background="#ff1c1636"
                           Margin="3, 3, 0, 3">
-                        <TextBlock Text="Gender"
+                            <TextBlock Text="Gender"
                                    Foreground="White"
                                    FontSize="20"
                                    FontWeight="Bold"
                                    HorizontalAlignment="Left"
                                    VerticalAlignment="Center"
                                    Margin="10, 0, 0, 0"/>
-                    </Grid>
+                        </Grid>
 
-                    <Grid Grid.Column="1"
+                        <Grid Grid.Column="1"
                           Background="#FF3e3e42"
                           Margin="0, 3, 3, 3">
-                        <TextBlock x:Name="GenderField"
+                            <TextBlock x:Name="GenderField"
                                    Foreground="White"
                                    FontSize="16"
                                    HorizontalAlignment="Left"
                                    VerticalAlignment="Center"
                                    Margin="10, 0, 0, 0"
                                    TextWrapping="Wrap"/>
+                        </Grid>
                     </Grid>
-                </Grid>
 
-                <!--Age-->
-                <Grid Grid.Row="2">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="25*"/>
-                        <ColumnDefinition Width="75*"/>
-                    </Grid.ColumnDefinitions>
+                    <!--Age-->
+                    <Grid Grid.Row="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="25*"/>
+                            <ColumnDefinition Width="75*"/>
+                        </Grid.ColumnDefinitions>
 
-                    <Grid Grid.Column="0"
+                        <Grid Grid.Column="0"
                           Background="#ff1c1636"
                           Margin="3, 3, 0, 3">
-                        <TextBlock Text="Age"
+                            <TextBlock Text="Age"
                                    Foreground="White"
                                    FontSize="20"
                                    FontWeight="Bold"
                                    HorizontalAlignment="Left"
                                    VerticalAlignment="Center"
                                    Margin="10, 0, 0, 0"/>
-                    </Grid>
+                        </Grid>
 
-                    <Grid Grid.Column="1"
+                        <Grid Grid.Column="1"
                           Background="#FF3e3e42"
                           Margin="0, 3, 3, 3">
-                        <TextBlock x:Name="AgeField"
+                            <TextBlock x:Name="AgeField"
                                    Foreground="White"
                                    FontSize="16"
                                    HorizontalAlignment="Left"
                                    VerticalAlignment="Center"
                                    Margin="10, 0, 0, 0"
                                    TextWrapping="Wrap"/>
+                        </Grid>
                     </Grid>
-                </Grid>
 
-                <!--Height-->
-                <Grid Grid.Row="3">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="25*"/>
-                        <ColumnDefinition Width="75*"/>
-                    </Grid.ColumnDefinitions>
+                    <!--Height-->
+                    <Grid Grid.Row="3">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="25*"/>
+                            <ColumnDefinition Width="75*"/>
+                        </Grid.ColumnDefinitions>
 
-                    <Grid Grid.Column="0"
+                        <Grid Grid.Column="0"
                           Background="#ff1c1636"
                           Margin="3, 3, 0, 3">
-                        <TextBlock Text="Height"
+                            <TextBlock Text="Height"
                                    Foreground="White"
                                    FontSize="20"
                                    FontWeight="Bold"
                                    HorizontalAlignment="Left"
                                    VerticalAlignment="Center"
                                    Margin="10, 0, 0, 0"/>
-                    </Grid>
+                        </Grid>
 
-                    <Grid Grid.Column="1"
+                        <Grid Grid.Column="1"
                           Background="#FF3e3e42"
                           Margin="0, 3, 3, 3">
-                        <TextBlock x:Name="HeightField"
+                            <TextBlock x:Name="HeightField"
                                    Foreground="White"
                                    FontSize="16"
                                    HorizontalAlignment="Left"
                                    VerticalAlignment="Center"
                                    Margin="10, 0, 0, 0"
                                    TextWrapping="Wrap"/>
+                        </Grid>
                     </Grid>
-                </Grid>
 
-                <!--Weight-->
-                <Grid Grid.Row="4">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="25*"/>
-                        <ColumnDefinition Width="75*"/>
-                    </Grid.ColumnDefinitions>
+                    <!--Weight-->
+                    <Grid Grid.Row="4">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="25*"/>
+                            <ColumnDefinition Width="75*"/>
+                        </Grid.ColumnDefinitions>
 
-                    <Grid Grid.Column="0"
+                        <Grid Grid.Column="0"
                           Background="#ff1c1636"
                           Margin="3, 3, 0, 3">
-                        <TextBlock Text="Weight"
+                            <TextBlock Text="Weight"
                                    Foreground="White"
                                    FontSize="20"
                                    FontWeight="Bold"
                                    HorizontalAlignment="Left"
                                    VerticalAlignment="Center"
                                    Margin="10, 0, 0, 0"/>
-                    </Grid>
+                        </Grid>
 
-                    <Grid Grid.Column="1"
+                        <Grid Grid.Column="1"
                           Background="#FF3e3e42"
                           Margin="0, 3, 3, 3">
-                        <TextBlock x:Name="WeightField"
+                            <TextBlock x:Name="WeightField"
                                    Foreground="White"
                                    FontSize="16"
                                    HorizontalAlignment="Left"
                                    VerticalAlignment="Center"
                                    Margin="10, 0, 0, 0"
                                    TextWrapping="Wrap"/>
+                        </Grid>
                     </Grid>
-                </Grid>
-                
-                <!--Hair Colour-->
-                <Grid Grid.Row="5">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="32*"/>
-                        <ColumnDefinition Width="68*"/>
-                    </Grid.ColumnDefinitions>
 
-                    <Grid Grid.Column="0"
+                    <!--Hair Colour-->
+                    <Grid Grid.Row="5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="32*"/>
+                            <ColumnDefinition Width="68*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid Grid.Column="0"
                           Background="#ff1c1636"
                           Margin="3, 3, 0, 3">
-                        <TextBlock Text="Hair Colour"
+                            <TextBlock Text="Hair Colour"
                                    Foreground="White"
                                    FontSize="20"
                                    FontWeight="Bold"
                                    HorizontalAlignment="Left"
                                    VerticalAlignment="Center"
                                    Margin="10, 0, 0, 0"/>
-                    </Grid>
+                        </Grid>
 
-                    <Grid Grid.Column="1"
+                        <Grid Grid.Column="1"
                           Background="#FF3e3e42"
                           Margin="0, 3, 3, 3">
-                        <TextBlock x:Name="HairColourField"
+                            <TextBlock x:Name="HairColourField"
                                    Foreground="White"
                                    FontSize="16"
                                    HorizontalAlignment="Left"
                                    VerticalAlignment="Center"
                                    Margin="10, 0, 0, 0"
                                    TextWrapping="Wrap"/>
+                        </Grid>
                     </Grid>
-                </Grid>
-                
-                <!--Skin Colour-->
-                <Grid Grid.Row="6">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="32*"/>
-                        <ColumnDefinition Width="68*"/>
-                    </Grid.ColumnDefinitions>
 
-                    <Grid Grid.Column="0"
+                    <!--Skin Colour-->
+                    <Grid Grid.Row="6">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="32*"/>
+                            <ColumnDefinition Width="68*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid Grid.Column="0"
                           Background="#ff1c1636"
                           Margin="3, 3, 0, 3">
-                        <TextBlock Text="Skin Colour"
+                            <TextBlock Text="Skin Colour"
                                    Foreground="White"
                                    FontSize="20"
                                    FontWeight="Bold"
                                    HorizontalAlignment="Left"
                                    VerticalAlignment="Center"
                                    Margin="10, 0, 0, 0"/>
-                    </Grid>
+                        </Grid>
 
-                    <Grid Grid.Column="1"
+                        <Grid Grid.Column="1"
                           Background="#FF3e3e42"
                           Margin="0, 3, 3, 3">
-                        <TextBlock x:Name="SkinColourField"
+                            <TextBlock x:Name="SkinColourField"
                                    Foreground="White"
                                    FontSize="16"
                                    HorizontalAlignment="Left"
                                    VerticalAlignment="Center"
                                    Margin="10, 0, 0, 0"
                                    TextWrapping="Wrap"/>
+                        </Grid>
                     </Grid>
-                </Grid>
-                
-                <!--Eye Colour-->
-                <Grid Grid.Row="7">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="32*"/>
-                        <ColumnDefinition Width="68*"/>
-                    </Grid.ColumnDefinitions>
 
-                    <Grid Grid.Column="0"
+                    <!--Eye Colour-->
+                    <Grid Grid.Row="7">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="32*"/>
+                            <ColumnDefinition Width="68*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid Grid.Column="0"
                           Background="#ff1c1636"
                           Margin="3, 3, 0, 3">
-                        <TextBlock Text="Eye Colour"
+                            <TextBlock Text="Eye Colour"
                                    Foreground="White"
                                    FontSize="20"
                                    FontWeight="Bold"
                                    HorizontalAlignment="Left"
                                    VerticalAlignment="Center"
                                    Margin="10, 0, 0, 0"/>
-                    </Grid>
+                        </Grid>
 
-                    <Grid Grid.Column="1"
+                        <Grid Grid.Column="1"
                           Background="#FF3e3e42"
                           Margin="0, 3, 3, 3">
-                        <TextBlock x:Name="EyeColourField"
+                            <TextBlock x:Name="EyeColourField"
                                    Foreground="White"
                                    FontSize="16"
                                    HorizontalAlignment="Left"
                                    VerticalAlignment="Center"
                                    Margin="10, 0, 0, 0"
                                    TextWrapping="Wrap"/>
+                        </Grid>
                     </Grid>
-                </Grid>
-                
-                <!--Marks-->
-                <Grid Grid.Row="8">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="35*"/>
-                        <RowDefinition Height="65*"/>
-                    </Grid.RowDefinitions>
 
-                    <Grid Grid.Row="0"
+                    <!--Marks-->
+                    <Grid Grid.Row="8">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="35*"/>
+                            <RowDefinition Height="65*"/>
+                        </Grid.RowDefinitions>
+
+                        <Grid Grid.Row="0"
                           Background="#ff1c1636"
                           Margin="3, 3, 3, 0">
-                        <TextBlock Text="Distinguishing Marks"
+                            <TextBlock Text="Distinguishing Marks"
                                    Foreground="White"
                                    FontSize="18"
                                    FontWeight="Bold"
                                    HorizontalAlignment="Center"
                                    VerticalAlignment="Center"/>
-                    </Grid>
+                        </Grid>
 
-                    <Grid Grid.Row="1"
+                        <Grid Grid.Row="1"
                           Background="#FF3e3e42"
                           Margin="3, 0, 3, 3">
-                        <TextBlock x:Name="MarksField"
+                            <TextBlock x:Name="MarksField"
                                    Foreground="White"
                                    FontSize="16"
                                    HorizontalAlignment="Left"
                                    VerticalAlignment="Center"
                                    Margin="10, 0, 0, 0"
                                    TextWrapping="Wrap"/>
+                        </Grid>
                     </Grid>
                 </Grid>
-            </Grid>
-            
-            <!--Personality-->
-            <Grid Grid.Column="1"
+
+                <!--Personality-->
+                <Grid Grid.Column="1"
                   Background="#ff06011f"
                   Margin="3">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="13*"/>
-                    <RowDefinition Height="21.75*"/>
-                    <RowDefinition Height="11.675*"/>
-                    <RowDefinition Height="11.675*"/>
-                    <RowDefinition Height="11.675*"/>
-                    <RowDefinition Height="17.75*"/>
-                    <RowDefinition Height="11.675*"/>
-                </Grid.RowDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="13*"/>
+                        <RowDefinition Height="21.75*"/>
+                        <RowDefinition Height="11.675*"/>
+                        <RowDefinition Height="11.675*"/>
+                        <RowDefinition Height="11.675*"/>
+                        <RowDefinition Height="17.75*"/>
+                        <RowDefinition Height="11.675*"/>
+                    </Grid.RowDefinitions>
 
-                <!--Header-->
-                <Grid Grid.Row="0">
-                    <TextBlock Text="Personality"
+                    <!--Header-->
+                    <Grid Grid.Row="0">
+                        <TextBlock Text="Personality"
                                Foreground="White"
                                FontSize="40"
                                FontWeight="Bold"
                                HorizontalAlignment="Center"
                                VerticalAlignment="Center"/>
-                </Grid>
+                    </Grid>
 
-                <!--Traits-->
-                <Grid Grid.Row="1">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="28*"/>
-                        <ColumnDefinition Width="72*"/>
-                    </Grid.ColumnDefinitions>
+                    <!--Traits-->
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="28*"/>
+                            <ColumnDefinition Width="72*"/>
+                        </Grid.ColumnDefinitions>
 
-                    <Grid Grid.Column="0"
+                        <Grid Grid.Column="0"
                           Background="#ff1c1636"
                           Margin="3, 3, 0, 3">
-                        <TextBlock Text="Personality Traits"
+                            <TextBlock Text="Personality Traits"
                                    Foreground="White"
                                    FontSize="25"
                                    FontWeight="Bold"
@@ -351,18 +387,62 @@
                                    VerticalAlignment="Center"
                                    Margin="10, 0, 0, 0"
                                    TextWrapping="Wrap"/>
-                    </Grid>
+                        </Grid>
 
-                    <Grid Grid.Column="1"
+                        <Grid Grid.Column="1"
                           Background="#FF3e3e42"
                           Margin="0, 3, 3, 3">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="50*"/>
-                            <RowDefinition Height="50*"/>
-                        </Grid.RowDefinitions>
-                        
-                        <Grid Grid.Row="0">
-                            <TextBlock x:Name="TraitField1"
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="50*"/>
+                                <RowDefinition Height="50*"/>
+                            </Grid.RowDefinitions>
+
+                            <Grid Grid.Row="0">
+                                <TextBlock x:Name="TraitField1"
+                                       Foreground="White"
+                                       FontSize="16"
+                                       HorizontalAlignment="Left"
+                                       VerticalAlignment="Center"
+                                       Margin="10, 0, 0, 0"
+                                       TextWrapping="Wrap"/>
+                            </Grid>
+
+                            <Grid Grid.Row="1">
+                                <TextBlock x:Name="TraitField2"
+                                       Foreground="White"
+                                       FontSize="16"
+                                       HorizontalAlignment="Left"
+                                       VerticalAlignment="Center"
+                                       Margin="10, 0, 0, 0"
+                                       TextWrapping="Wrap"/>
+                            </Grid>
+                        </Grid>
+                    </Grid>
+
+                    <!--Ideal-->
+                    <Grid Grid.Row="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="17*"/>
+                            <ColumnDefinition Width="83*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid Grid.Column="0"
+                          Background="#ff1c1636"
+                          Margin="3, 3, 0, 3">
+                            <TextBlock Text="Ideal"
+                                   Foreground="White"
+                                   FontSize="25"
+                                   FontWeight="Bold"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Center"
+                                   Margin="10, 0, 0, 0"
+                                   TextWrapping="Wrap"/>
+                        </Grid>
+
+                        <Grid Grid.Column="1"
+                          Background="#FF3e3e42"
+                          Margin="0, 3, 3, 3">
+                            <TextBlock x:Name="IdealField"
                                        Foreground="White"
                                        FontSize="16"
                                        HorizontalAlignment="Left"
@@ -370,9 +450,32 @@
                                        Margin="10, 0, 0, 0"
                                        TextWrapping="Wrap"/>
                         </Grid>
+                    </Grid>
 
-                        <Grid Grid.Row="1">
-                            <TextBlock x:Name="TraitField2"
+                    <!--Bond-->
+                    <Grid Grid.Row="3">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="17*"/>
+                            <ColumnDefinition Width="83*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid Grid.Column="0"
+                          Background="#ff1c1636"
+                          Margin="3, 3, 0, 3">
+                            <TextBlock Text="Bond"
+                                   Foreground="White"
+                                   FontSize="25"
+                                   FontWeight="Bold"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Center"
+                                   Margin="10, 0, 0, 0"
+                                   TextWrapping="Wrap"/>
+                        </Grid>
+
+                        <Grid Grid.Column="1"
+                          Background="#FF3e3e42"
+                          Margin="0, 3, 3, 3">
+                            <TextBlock x:Name="BondField"
                                        Foreground="White"
                                        FontSize="16"
                                        HorizontalAlignment="Left"
@@ -381,19 +484,18 @@
                                        TextWrapping="Wrap"/>
                         </Grid>
                     </Grid>
-                </Grid>
 
-                <!--Ideal-->
-                <Grid Grid.Row="2">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="17*"/>
-                        <ColumnDefinition Width="83*"/>
-                    </Grid.ColumnDefinitions>
+                    <!--Flaw-->
+                    <Grid Grid.Row="4">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="17*"/>
+                            <ColumnDefinition Width="83*"/>
+                        </Grid.ColumnDefinitions>
 
-                    <Grid Grid.Column="0"
+                        <Grid Grid.Column="0"
                           Background="#ff1c1636"
                           Margin="3, 3, 0, 3">
-                        <TextBlock Text="Ideal"
+                            <TextBlock Text="Flaw"
                                    Foreground="White"
                                    FontSize="25"
                                    FontWeight="Bold"
@@ -401,32 +503,32 @@
                                    VerticalAlignment="Center"
                                    Margin="10, 0, 0, 0"
                                    TextWrapping="Wrap"/>
-                    </Grid>
+                        </Grid>
 
-                    <Grid Grid.Column="1"
+                        <Grid Grid.Column="1"
                           Background="#FF3e3e42"
                           Margin="0, 3, 3, 3">
-                        <TextBlock x:Name="IdealField"
+                            <TextBlock x:Name="FlawField"
                                        Foreground="White"
                                        FontSize="16"
                                        HorizontalAlignment="Left"
                                        VerticalAlignment="Center"
                                        Margin="10, 0, 0, 0"
                                        TextWrapping="Wrap"/>
+                        </Grid>
                     </Grid>
-                </Grid>
 
-                <!--Bond-->
-                <Grid Grid.Row="3">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="17*"/>
-                        <ColumnDefinition Width="83*"/>
-                    </Grid.ColumnDefinitions>
+                    <!--Background-->
+                    <Grid Grid.Row="5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="28*"/>
+                            <ColumnDefinition Width="72*"/>
+                        </Grid.ColumnDefinitions>
 
-                    <Grid Grid.Column="0"
+                        <Grid Grid.Column="0"
                           Background="#ff1c1636"
                           Margin="3, 3, 0, 3">
-                        <TextBlock Text="Bond"
+                            <TextBlock Text="Background Feature"
                                    Foreground="White"
                                    FontSize="25"
                                    FontWeight="Bold"
@@ -434,32 +536,32 @@
                                    VerticalAlignment="Center"
                                    Margin="10, 0, 0, 0"
                                    TextWrapping="Wrap"/>
-                    </Grid>
+                        </Grid>
 
-                    <Grid Grid.Column="1"
+                        <Grid Grid.Column="1"
                           Background="#FF3e3e42"
                           Margin="0, 3, 3, 3">
-                        <TextBlock x:Name="BondField"
+                            <TextBlock x:Name="BackgroundField"
                                        Foreground="White"
                                        FontSize="16"
                                        HorizontalAlignment="Left"
                                        VerticalAlignment="Center"
                                        Margin="10, 0, 0, 0"
                                        TextWrapping="Wrap"/>
+                        </Grid>
                     </Grid>
-                </Grid>
 
-                <!--Flaw-->
-                <Grid Grid.Row="4">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="17*"/>
-                        <ColumnDefinition Width="83*"/>
-                    </Grid.ColumnDefinitions>
+                    <!--Notes-->
+                    <Grid Grid.Row="6">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="17*"/>
+                            <ColumnDefinition Width="83*"/>
+                        </Grid.ColumnDefinitions>
 
-                    <Grid Grid.Column="0"
+                        <Grid Grid.Column="0"
                           Background="#ff1c1636"
                           Margin="3, 3, 0, 3">
-                        <TextBlock Text="Flaw"
+                            <TextBlock Text="Notes"
                                    Foreground="White"
                                    FontSize="25"
                                    FontWeight="Bold"
@@ -467,400 +569,522 @@
                                    VerticalAlignment="Center"
                                    Margin="10, 0, 0, 0"
                                    TextWrapping="Wrap"/>
-                    </Grid>
+                        </Grid>
 
-                    <Grid Grid.Column="1"
+                        <Grid Grid.Column="1"
                           Background="#FF3e3e42"
                           Margin="0, 3, 3, 3">
-                        <TextBlock x:Name="FlawField"
+                            <TextBlock x:Name="NotesField"
                                        Foreground="White"
                                        FontSize="16"
                                        HorizontalAlignment="Left"
                                        VerticalAlignment="Center"
                                        Margin="10, 0, 0, 0"
                                        TextWrapping="Wrap"/>
-                    </Grid>
-                </Grid>
-
-                <!--Background-->
-                <Grid Grid.Row="5">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="28*"/>
-                        <ColumnDefinition Width="72*"/>
-                    </Grid.ColumnDefinitions>
-
-                    <Grid Grid.Column="0"
-                          Background="#ff1c1636"
-                          Margin="3, 3, 0, 3">
-                        <TextBlock Text="Background Feature"
-                                   Foreground="White"
-                                   FontSize="25"
-                                   FontWeight="Bold"
-                                   HorizontalAlignment="Left"
-                                   VerticalAlignment="Center"
-                                   Margin="10, 0, 0, 0"
-                                   TextWrapping="Wrap"/>
-                    </Grid>
-
-                    <Grid Grid.Column="1"
-                          Background="#FF3e3e42"
-                          Margin="0, 3, 3, 3">
-                        <TextBlock x:Name="BackgroundField"
-                                       Foreground="White"
-                                       FontSize="16"
-                                       HorizontalAlignment="Left"
-                                       VerticalAlignment="Center"
-                                       Margin="10, 0, 0, 0"
-                                       TextWrapping="Wrap"/>
-                    </Grid>
-                </Grid>
-
-                <!--Notes-->
-                <Grid Grid.Row="6">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="17*"/>
-                        <ColumnDefinition Width="83*"/>
-                    </Grid.ColumnDefinitions>
-
-                    <Grid Grid.Column="0"
-                          Background="#ff1c1636"
-                          Margin="3, 3, 0, 3">
-                        <TextBlock Text="Notes"
-                                   Foreground="White"
-                                   FontSize="25"
-                                   FontWeight="Bold"
-                                   HorizontalAlignment="Left"
-                                   VerticalAlignment="Center"
-                                   Margin="10, 0, 0, 0"
-                                   TextWrapping="Wrap"/>
-                    </Grid>
-
-                    <Grid Grid.Column="1"
-                          Background="#FF3e3e42"
-                          Margin="0, 3, 3, 3">
-                        <TextBlock x:Name="NotesField"
-                                       Foreground="White"
-                                       FontSize="16"
-                                       HorizontalAlignment="Left"
-                                       VerticalAlignment="Center"
-                                       Margin="10, 0, 0, 0"
-                                       TextWrapping="Wrap"/>
+                        </Grid>
                     </Grid>
                 </Grid>
             </Grid>
 
-            <!--Wealth, Weight, Conditions-->
-            <Grid Grid.Column="2">
+            <!--Proficiencies-->
+            <Grid Grid.Row="1">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="33*"/>
-                    <RowDefinition Height="33*"/>
-                    <RowDefinition Height="33*"/>
+                    <RowDefinition Height="20*"/>
+                    <RowDefinition Height="80*"/>
                 </Grid.RowDefinitions>
-                
-                <!--Wealth-->
-                <Grid Grid.Row="0" Margin="3" Background="#ff06011f">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="25*"/>
-                        <RowDefinition Height="25*"/>
-                        <RowDefinition Height="50*"/>
-                    </Grid.RowDefinitions>
+
+                <!--Header-->
+                <Grid Grid.Row="0"
+                      Background="Black"
+                      Margin="3, 3, 3, 0">
+                    <TextBlock Text="Proficiencies"
+                               Foreground="White"
+                               FontSize="24"
+                               FontWeight="Bold"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"/>
+                    <TextBlock x:Name="ProficiencyBonusField"
+                               Foreground="White"
+                               Background="#ff1c1636"
+                               FontSize="24"
+                               FontWeight="Bold"
+                               HorizontalAlignment="Right"
+                               VerticalAlignment="Center"
+                               Margin="0, 0, 10, 0"/>
+                </Grid>
+
+                <!--Lists-->
+                <Grid Grid.Row="1"
+                      Background="#ff06011f"
+                      Margin="3, 0, 3, 3">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="25*"/>
+                        <ColumnDefinition Width="25*"/>
+                        <ColumnDefinition Width="25*"/>
+                        <ColumnDefinition Width="25*"/>
+                    </Grid.ColumnDefinitions>
                     
-                    <!--Header-->
-                    <Grid Grid.Row="0"
+                    <!--Weapons-->
+                    <Grid Grid.Column="0" Margin="3, 0, 3, 3" x:Name="WeaponGrid">
+                        <DataGrid x:Name="WeaponProficiencyDataGrid"
+                                  AutoGenerateColumns="False"
+                                  VerticalScrollBarVisibility="Hidden"
+                                  HorizontalScrollBarVisibility="Disabled"
+                                  Background="#ff06011f"
+                                  HeadersVisibility="Column"
+                                  IsReadOnly="True"
+                                  HorizontalGridLinesBrush="Transparent"
+                                  VerticalGridLinesBrush="Transparent"
+                                  CanUserResizeColumns="False"
+                                  CanUserAddRows="False"
+                                  MaxHeight="{Binding Path=ProficiencyGridSize}"
+                                  BorderThickness="0"
+                                  Style="{DynamicResource DGHeaderStyle}"
+                                  SelectionMode="Single">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Weapons"
+                                                    Width="100*"
+                                                    Binding="{Binding Value}"
+                                                    ElementStyle="{StaticResource ColumnElementStyle}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
+                    
+                    <!--Armor-->
+                    <Grid Grid.Column="1"  Margin="3, 0, 3, 3" x:Name="ArmorGrid">
+                        <DataGrid x:Name="ArmorProficiencyDataGrid"
+                                  AutoGenerateColumns="False"
+                                  VerticalScrollBarVisibility="Hidden"
+                                  HorizontalScrollBarVisibility="Disabled"
+                                  Background="#ff06011f"
+                                  HeadersVisibility="Column"
+                                  IsReadOnly="True"
+                                  HorizontalGridLinesBrush="Transparent"
+                                  VerticalGridLinesBrush="Transparent"
+                                  CanUserResizeColumns="False"
+                                  CanUserAddRows="False"
+                                  MaxHeight="{Binding Path=ProficiencyGridSize}"
+                                  BorderThickness="0"
+                                  Style="{DynamicResource DGHeaderStyle}"
+                                  SelectionMode="Single">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Armor"
+                                                    Width="100*"
+                                                    Binding="{Binding Value}"
+                                                    ElementStyle="{StaticResource ColumnElementStyle}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
+                    
+                    <!--Shields-->
+                    <Grid Grid.Column="2"  Margin="3, 0, 3, 3" x:Name="ShieldGrid">
+                        <DataGrid x:Name="ShieldProficiencyDataGrid"
+                                  AutoGenerateColumns="False"
+                                  VerticalScrollBarVisibility="Hidden"
+                                  HorizontalScrollBarVisibility="Disabled"
+                                  Background="#ff06011f"
+                                  HeadersVisibility="Column"
+                                  IsReadOnly="True"
+                                  HorizontalGridLinesBrush="Transparent"
+                                  VerticalGridLinesBrush="Transparent"
+                                  CanUserResizeColumns="False"
+                                  CanUserAddRows="False"
+                                  MaxHeight="{Binding Path=ProficiencyGridSize}"
+                                  BorderThickness="0"
+                                  Style="{DynamicResource DGHeaderStyle}"
+                                  SelectionMode="Single">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Shields"
+                                                    Width="100*"
+                                                    Binding="{Binding Value}"
+                                                    ElementStyle="{StaticResource ColumnElementStyle}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
+                    
+                    <!--Tools-->
+                    <Grid Grid.Column="3"  Margin="3, 0, 3, 3" x:Name="ToolsGrid">
+                        <DataGrid x:Name="ToolProficiencyDataGrid"
+                                  AutoGenerateColumns="False"
+                                  VerticalScrollBarVisibility="Hidden"
+                                  HorizontalScrollBarVisibility="Disabled"
+                                  Background="#ff06011f"
+                                  HeadersVisibility="Column"
+                                  IsReadOnly="True"
+                                  HorizontalGridLinesBrush="Transparent"
+                                  VerticalGridLinesBrush="Transparent"
+                                  CanUserResizeColumns="False"
+                                  CanUserAddRows="False"
+                                  MaxHeight="{Binding Path=ProficiencyGridSize}"
+                                  BorderThickness="0"
+                                  Style="{DynamicResource DGHeaderStyle}"
+                                  SelectionMode="Single">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Tools"
+                                                    Width="100*"
+                                                    Binding="{Binding Value}"
+                                                    ElementStyle="{StaticResource ColumnElementStyle}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </Grid>
+
+        <!--Wealth, Weight, Language, Conditions-->
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="25*"/>
+                <RowDefinition Height="25*"/>
+                <RowDefinition Height="25*"/>
+                <RowDefinition Height="25*"/>
+            </Grid.RowDefinitions>
+
+            <!--Wealth-->
+            <Grid Grid.Row="0" Margin="3" Background="#ff06011f">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="25*"/>
+                    <RowDefinition Height="25*"/>
+                    <RowDefinition Height="50*"/>
+                </Grid.RowDefinitions>
+
+                <!--Header-->
+                <Grid Grid.Row="0"
                           Background="Black">
-                        <TextBlock Text="Wealth"
+                    <TextBlock Text="Wealth"
                                    Foreground="White"
                                    FontSize="25"
                                    FontWeight="Bold"
                                    HorizontalAlignment="Center"
                                    VerticalAlignment="Center"/>
-                    </Grid>
-                    
-                    <!--Total Gold-->
-                    <Grid Grid.Row="1"
-                          Background="#ff06011f">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="60*"/>
-                            <ColumnDefinition Width="40*"/>
-                        </Grid.ColumnDefinitions>
+                </Grid>
 
-                        <Grid Grid.Column="0">
-                            <TextBlock x:Name="TotalWealthField"
+                <!--Total Gold-->
+                <Grid Grid.Row="1"
+                          Background="#ff06011f">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="60*"/>
+                        <ColumnDefinition Width="40*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid Grid.Column="0">
+                        <TextBlock x:Name="TotalWealthField"
                                        Text="0.00"
                                        Foreground="White"
                                        FontSize="25"
                                        HorizontalAlignment="Center"
                                        VerticalAlignment="Center"/>
-                        </Grid>
+                    </Grid>
 
-                        <Grid Grid.Column="1">
-                            <TextBlock Text="Gold Value"
+                    <Grid Grid.Column="1">
+                        <TextBlock Text="Gold Value"
                                        Foreground="White"
                                        FontSize="20"
                                        HorizontalAlignment="Center"
                                        VerticalAlignment="Center"/>
+                    </Grid>
+                </Grid>
+
+                <!--Currency ff1c1636-->
+                <Grid Grid.Row="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="20*"/>
+                        <ColumnDefinition Width="20*"/>
+                        <ColumnDefinition Width="20*"/>
+                        <ColumnDefinition Width="20*"/>
+                        <ColumnDefinition Width="20*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!--CP-->
+                    <Grid Grid.Column="0" Margin="3, 0, 3, 0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="40*"/>
+                            <RowDefinition Height="60*"/>
+                        </Grid.RowDefinitions>
+
+                        <Grid Grid.Row="0" Background="#ffb87333">
+                            <TextBlock Text="CP"
+                                           Foreground="Black"
+                                           FontSize="22"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"/>
+                        </Grid>
+
+                        <Grid Grid.Row="1" Background="#FF3e3e42" Margin="0, 0, 0, 3">
+                            <TextBlock x:Name="CopperField"
+                                           Foreground="White"
+                                           FontSize="18"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"/>
                         </Grid>
                     </Grid>
 
-                    <!--Currency ff1c1636-->
-                    <Grid Grid.Row="2">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="20*"/>
-                            <ColumnDefinition Width="20*"/>
-                            <ColumnDefinition Width="20*"/>
-                            <ColumnDefinition Width="20*"/>
-                            <ColumnDefinition Width="20*"/>
-                        </Grid.ColumnDefinitions>
-                        
-                        <!--CP-->
-                        <Grid Grid.Column="0" Margin="3, 0, 3, 0">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="40*"/>
-                                <RowDefinition Height="60*"/>
-                            </Grid.RowDefinitions>
+                    <!--SP-->
+                    <Grid Grid.Column="1" Margin="3, 0, 3, 0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="40*"/>
+                            <RowDefinition Height="60*"/>
+                        </Grid.RowDefinitions>
 
-                            <Grid Grid.Row="0" Background="#ffb87333">
-                                <TextBlock Text="CP"
+                        <Grid Grid.Row="0" Background="Silver">
+                            <TextBlock Text="SP"
                                            Foreground="Black"
                                            FontSize="22"
                                            HorizontalAlignment="Center"
                                            VerticalAlignment="Center"/>
-                            </Grid>
-
-                            <Grid Grid.Row="1" Background="#FF3e3e42" Margin="0, 0, 0, 3">
-                                <TextBlock x:Name="CopperField"
-                                           Foreground="White"
-                                           FontSize="18"
-                                           HorizontalAlignment="Center"
-                                           VerticalAlignment="Center"/>
-                            </Grid>
                         </Grid>
 
-                        <!--SP-->
-                        <Grid Grid.Column="1" Margin="3, 0, 3, 0">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="40*"/>
-                                <RowDefinition Height="60*"/>
-                            </Grid.RowDefinitions>
-
-                            <Grid Grid.Row="0" Background="Silver">
-                                <TextBlock Text="SP"
-                                           Foreground="Black"
-                                           FontSize="22"
-                                           HorizontalAlignment="Center"
-                                           VerticalAlignment="Center"/>
-                            </Grid>
-
-                            <Grid Grid.Row="1" Background="#FF3e3e42" Margin="0, 0, 0, 3">
-                                <TextBlock x:Name="SilverField"
+                        <Grid Grid.Row="1" Background="#FF3e3e42" Margin="0, 0, 0, 3">
+                            <TextBlock x:Name="SilverField"
                                            Foreground="White"
                                            FontSize="18"
                                            HorizontalAlignment="Center"
                                            VerticalAlignment="Center"/>
-                            </Grid>
+                        </Grid>
+                    </Grid>
+
+                    <!--EP-->
+                    <Grid Grid.Column="2" Margin="3, 0, 3, 0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="40*"/>
+                            <RowDefinition Height="60*"/>
+                        </Grid.RowDefinitions>
+
+                        <Grid Grid.Row="0" Background="#ff50c878">
+                            <TextBlock Text="EP"
+                                           Foreground="Black"
+                                           FontSize="22"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"/>
                         </Grid>
 
-                        <!--EP-->
-                        <Grid Grid.Column="2" Margin="3, 0, 3, 0">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="40*"/>
-                                <RowDefinition Height="60*"/>
-                            </Grid.RowDefinitions>
-
-                            <Grid Grid.Row="0" Background="#ff50c878">
-                                <TextBlock Text="EP"
-                                           Foreground="Black"
-                                           FontSize="22"
-                                           HorizontalAlignment="Center"
-                                           VerticalAlignment="Center"/>
-                            </Grid>
-
-                            <Grid Grid.Row="1" Background="#FF3e3e42" Margin="0, 0, 0, 3">
-                                <TextBlock x:Name="ElectrumField"
+                        <Grid Grid.Row="1" Background="#FF3e3e42" Margin="0, 0, 0, 3">
+                            <TextBlock x:Name="ElectrumField"
                                            Foreground="White"
                                            FontSize="18"
                                            HorizontalAlignment="Center"
                                            VerticalAlignment="Center"/>
-                            </Grid>
+                        </Grid>
+                    </Grid>
+
+                    <!--GP-->
+                    <Grid Grid.Column="3" Margin="3, 0, 3, 0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="40*"/>
+                            <RowDefinition Height="60*"/>
+                        </Grid.RowDefinitions>
+
+                        <Grid Grid.Row="0" Background="#ffCFB53B">
+                            <TextBlock Text="GP"
+                                           Foreground="Black"
+                                           FontSize="22"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"/>
                         </Grid>
 
-                        <!--GP-->
-                        <Grid Grid.Column="3" Margin="3, 0, 3, 0">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="40*"/>
-                                <RowDefinition Height="60*"/>
-                            </Grid.RowDefinitions>
-
-                            <Grid Grid.Row="0" Background="#ffCFB53B">
-                                <TextBlock Text="GP"
-                                           Foreground="Black"
-                                           FontSize="22"
-                                           HorizontalAlignment="Center"
-                                           VerticalAlignment="Center"/>
-                            </Grid>
-
-                            <Grid Grid.Row="1" Background="#FF3e3e42" Margin="0, 0, 0, 3">
-                                <TextBlock x:Name="GoldField"
+                        <Grid Grid.Row="1" Background="#FF3e3e42" Margin="0, 0, 0, 3">
+                            <TextBlock x:Name="GoldField"
                                            Foreground="White"
                                            FontSize="18"
                                            HorizontalAlignment="Center"
                                            VerticalAlignment="Center"/>
-                            </Grid>
+                        </Grid>
+                    </Grid>
+
+                    <!--PP-->
+                    <Grid Grid.Column="4" Margin="3, 0, 3, 0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="40*"/>
+                            <RowDefinition Height="60*"/>
+                        </Grid.RowDefinitions>
+
+                        <Grid Grid.Row="0" Background="#ffe5e4e2">
+                            <TextBlock Text="PP"
+                                           Foreground="Black"
+                                           FontSize="22"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"/>
                         </Grid>
 
-                        <!--PP-->
-                        <Grid Grid.Column="4" Margin="3, 0, 3, 0">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="40*"/>
-                                <RowDefinition Height="60*"/>
-                            </Grid.RowDefinitions>
-
-                            <Grid Grid.Row="0" Background="#ffe5e4e2">
-                                <TextBlock Text="PP"
-                                           Foreground="Black"
-                                           FontSize="22"
-                                           HorizontalAlignment="Center"
-                                           VerticalAlignment="Center"/>
-                            </Grid>
-
-                            <Grid Grid.Row="1" Background="#FF3e3e42" Margin="0, 0, 0, 3">
-                                <TextBlock x:Name="PlatinumField"
+                        <Grid Grid.Row="1" Background="#FF3e3e42" Margin="0, 0, 0, 3">
+                            <TextBlock x:Name="PlatinumField"
                                            Foreground="White"
                                            FontSize="18"
                                            HorizontalAlignment="Center"
                                            VerticalAlignment="Center"/>
-                            </Grid>
                         </Grid>
                     </Grid>
                 </Grid>
-                
-                <!--Weight-->
-                <Grid Grid.Row="1" Background="#ff06011f" Margin="3">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="45*"/>
-                        <RowDefinition Height="55*"/>
-                    </Grid.RowDefinitions>
-                    
-                    <!--Total Weight-->
-                    <Grid Grid.Row="0">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="50*"/>
-                            <ColumnDefinition Width="50*"/>
-                        </Grid.ColumnDefinitions>
+            </Grid>
 
-                        <Grid Grid.Column="0">
-                            <TextBlock Text="Weight Carried"
+            <!--Weight-->
+            <Grid Grid.Row="1" Background="#ff06011f" Margin="3">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="45*"/>
+                    <RowDefinition Height="55*"/>
+                </Grid.RowDefinitions>
+
+                <!--Total Weight-->
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50*"/>
+                        <ColumnDefinition Width="50*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid Grid.Column="0">
+                        <TextBlock Text="Weight Carried"
                                        Foreground="White"
                                        FontSize="20"
                                        FontWeight="Bold"
                                        HorizontalAlignment="Center"
                                        VerticalAlignment="Center"/>
-                        </Grid>
+                    </Grid>
 
-                        <Grid Grid.Column="1"
+                    <Grid Grid.Column="1"
                               Margin="10"
                               x:Name="WeightCarriedBox">
-                            <TextBlock Text="55.2"
+                        <TextBlock Text="55.2"
                                        Foreground="White"
                                        FontSize="35"
                                        HorizontalAlignment="Center"
                                        VerticalAlignment="Center"
                                        x:Name="WeightCarriedField"/>
-                        </Grid>
                     </Grid>
-                    
-                    <!--Capacity-->
-                    <Grid Grid.Row="1">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="33*"/>
-                            <ColumnDefinition Width="33*"/>
-                            <ColumnDefinition Width="33*"/>
-                        </Grid.ColumnDefinitions>
-                        
-                        <!--Light-->
-                        <Grid Grid.Column="0" Margin="5, 0, 5, 5">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="45*"/>
-                                <RowDefinition Height="55*"/>
-                            </Grid.RowDefinitions>
+                </Grid>
 
-                            <Grid Grid.Row="0" Background="Black">
-                                <TextBlock Text="Light"
+                <!--Capacity-->
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="33*"/>
+                        <ColumnDefinition Width="33*"/>
+                        <ColumnDefinition Width="33*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!--Light-->
+                    <Grid Grid.Column="0" Margin="5, 0, 5, 5">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="45*"/>
+                            <RowDefinition Height="55*"/>
+                        </Grid.RowDefinitions>
+
+                        <Grid Grid.Row="0" Background="Black">
+                            <TextBlock Text="Light"
                                            FontSize="22"
                                            Foreground="White"
                                            FontWeight="Bold"
                                            HorizontalAlignment="Center"
                                            VerticalAlignment="Center"/>
-                            </Grid>
+                        </Grid>
 
-                            <Grid Grid.Row="1" Background="#ffd8e4bc">
-                                <TextBlock FontSize="35"
+                        <Grid Grid.Row="1" Background="#ffd8e4bc">
+                            <TextBlock FontSize="35"
                                            HorizontalAlignment="Center"
                                            VerticalAlignment="Center"
                                            x:Name="LightWeightField"/>
-                            </Grid>
                         </Grid>
-                        
-                        <!--Medium-->
-                        <Grid Grid.Column="1" Margin="5, 0, 5, 5">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="45*"/>
-                                <RowDefinition Height="55*"/>
-                            </Grid.RowDefinitions>
+                    </Grid>
 
-                            <Grid Grid.Row="0" Background="Black">
-                                <TextBlock Text="Medium"
+                    <!--Medium-->
+                    <Grid Grid.Column="1" Margin="5, 0, 5, 5">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="45*"/>
+                            <RowDefinition Height="55*"/>
+                        </Grid.RowDefinitions>
+
+                        <Grid Grid.Row="0" Background="Black">
+                            <TextBlock Text="Medium"
                                            FontSize="22"
                                            Foreground="White"
                                            FontWeight="Bold"
                                            HorizontalAlignment="Center"
                                            VerticalAlignment="Center"/>
-                            </Grid>
+                        </Grid>
 
-                            <Grid Grid.Row="1" Background="#fffcd6b4">
-                                <TextBlock FontSize="35"
+                        <Grid Grid.Row="1" Background="#fffcd6b4">
+                            <TextBlock FontSize="35"
                                            HorizontalAlignment="Center"
                                            VerticalAlignment="Center"
                                            x:Name="MediumWeightField"/>
-                            </Grid>
                         </Grid>
-                        
-                        <!--Heavy-->
-                        <Grid Grid.Column="2" Margin="5, 0, 5, 5">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="45*"/>
-                                <RowDefinition Height="55*"/>
-                            </Grid.RowDefinitions>
+                    </Grid>
 
-                            <Grid Grid.Row="0" Background="Black">
-                                <TextBlock Text="Heavy"
+                    <!--Heavy-->
+                    <Grid Grid.Column="2" Margin="5, 0, 5, 5">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="45*"/>
+                            <RowDefinition Height="55*"/>
+                        </Grid.RowDefinitions>
+
+                        <Grid Grid.Row="0" Background="Black">
+                            <TextBlock Text="Heavy"
                                            FontSize="22"
                                            Foreground="White"
                                            FontWeight="Bold"
                                            HorizontalAlignment="Center"
                                            VerticalAlignment="Center"/>
-                            </Grid>
+                        </Grid>
 
-                            <Grid Grid.Row="1" Background="Pink">
-                                <TextBlock FontSize="35"
+                        <Grid Grid.Row="1" Background="Pink">
+                            <TextBlock FontSize="35"
                                            HorizontalAlignment="Center"
                                            VerticalAlignment="Center"
                                            x:Name="HeavyWeightField"/>
-                            </Grid>
                         </Grid>
                     </Grid>
                 </Grid>
-                
-                <!--Conditions-->
-                <Grid Grid.Row="2">
-                    
-                </Grid>
             </Grid>
-        </Grid>
-        
-        <!--Proficiencies-->
-        <Grid Grid.Row="1">
+
+            <!--Language-->
+            <Grid Grid.Row="2" Margin="3">
+                <DataGrid x:Name="LanguagesDataGrid"
+                                  AutoGenerateColumns="False"
+                                  VerticalScrollBarVisibility="Hidden"
+                                  HorizontalScrollBarVisibility="Disabled"
+                                  Background="#ff06011f"
+                                  HeadersVisibility="Column"
+                                  IsReadOnly="True"
+                                  HorizontalGridLinesBrush="Transparent"
+                                  VerticalGridLinesBrush="Transparent"
+                                  CanUserResizeColumns="False"
+                                  CanUserAddRows="False"
+                                  MaxHeight="{Binding Path=ProficiencyGridSize}"
+                                  BorderThickness="0"
+                                  Style="{DynamicResource DGHeaderStyle}"
+                                  SelectionMode="Single">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Languages"
+                                                    Width="100*"
+                                                    Binding="{Binding Value}"
+                                                    ElementStyle="{StaticResource ColumnElementStyle}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
             
+            <!--Conditions-->
+            <Grid Grid.Row="3" Margin="3">
+                <DataGrid x:Name="ConditionsDataGrid"
+                                  AutoGenerateColumns="False"
+                                  VerticalScrollBarVisibility="Hidden"
+                                  HorizontalScrollBarVisibility="Disabled"
+                                  Background="#ff06011f"
+                                  HeadersVisibility="Column"
+                                  IsReadOnly="True"
+                                  HorizontalGridLinesBrush="Transparent"
+                                  VerticalGridLinesBrush="Transparent"
+                                  CanUserResizeColumns="False"
+                                  CanUserAddRows="False"
+                                  MaxHeight="{Binding Path=ProficiencyGridSize}"
+                                  BorderThickness="0"
+                                  Style="{DynamicResource DGHeaderStyle}"
+                                  SelectionMode="Single">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Conditions"
+                                                    Width="100*"
+                                                    Binding="{Binding Value}"
+                                                    ElementStyle="{StaticResource ColumnElementStyle}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
         </Grid>
     </Grid>
 </Page>

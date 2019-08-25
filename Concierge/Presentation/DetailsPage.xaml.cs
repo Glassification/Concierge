@@ -41,6 +41,9 @@ namespace Concierge.Presentation
             DrawWeight();
             DrawAppearance();
             DrawPersonality();
+            DrawProficiencies();
+            DrawLanguages();
+            DrawConditions();
         }
 
         private void DrawWealth()
@@ -87,6 +90,56 @@ namespace Concierge.Presentation
             NotesField.Text = Program.Character.Personality.Notes;
         }
 
+        private void DrawProficiencies()
+        {
+            WeaponProficiencyDataGrid.Items.Clear();
+            ArmorProficiencyDataGrid.Items.Clear();
+            ShieldProficiencyDataGrid.Items.Clear();
+            ToolProficiencyDataGrid.Items.Clear();
+
+            foreach (var weapon in Program.Character.Proficiency.Weapons)
+            {
+                WeaponProficiencyDataGrid.Items.Add(weapon);
+            }
+
+            foreach (var armor in Program.Character.Proficiency.Armors)
+            {
+                ArmorProficiencyDataGrid.Items.Add(armor);
+            }
+
+            foreach (var shield in Program.Character.Proficiency.Shields)
+            {
+                ShieldProficiencyDataGrid.Items.Add(shield);
+            }
+
+            foreach (var tool in Program.Character.Proficiency.Tools)
+            {
+                ToolProficiencyDataGrid.Items.Add(tool);
+            }
+
+            ProficiencyBonusField.Text = "  Bonus: " + Program.Character.ProficiencyBonus + "  ";
+        }
+
+        private void DrawLanguages()
+        {
+            LanguagesDataGrid.Items.Clear();
+
+            foreach (var language in Program.Character.Details.Languages)
+            {
+                LanguagesDataGrid.Items.Add(language);
+            }
+        }
+
+        private void DrawConditions()
+        {
+            ConditionsDataGrid.Items.Clear();
+
+            foreach (var condition in Program.Character.Vitality.Conditions.ToArray())
+            {
+                ConditionsDataGrid.Items.Add(condition);
+            }
+        }
+
         #endregion
 
         #region Helpers
@@ -98,12 +151,12 @@ namespace Concierge.Presentation
             if (weight <= Program.Character.LightCarryCapacity)
             {
                 WeightCarriedField.Foreground = Brushes.Black;
-                WeightCarriedBox.Background = new SolidColorBrush(Constants.LightGreen);
+                WeightCarriedBox.Background = new SolidColorBrush(Colours.LightGreen);
             }
             else if (weight > Program.Character.LightCarryCapacity && weight <= Program.Character.MediumCarryCapacity)
             {
-                WeightCarriedField.Foreground = new SolidColorBrush(Constants.MediumRed);
-                WeightCarriedBox.Background = new SolidColorBrush(Constants.LightYellow);
+                WeightCarriedField.Foreground = new SolidColorBrush(Colours.MediumRed);
+                WeightCarriedBox.Background = new SolidColorBrush(Colours.LightYellow);
             }
             else if (weight > Program.Character.MediumCarryCapacity && weight <= Program.Character.HeavyCarryCapacity)
             {
@@ -118,6 +171,18 @@ namespace Concierge.Presentation
         }
 
         #endregion
+
+        #endregion
+
+        #region Accessors
+
+        public double ProficiencyGridSize
+        {
+            get
+            {
+                return WeaponGrid.RenderSize.Height;
+            }
+        }
 
         #endregion
     }

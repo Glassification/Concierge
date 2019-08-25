@@ -90,36 +90,5 @@ namespace Concierge.Utility
         public static ReadOnlyCollection<Ammunition> Ammunitions { get; private set; }
         public static ReadOnlyCollection<Spell> Spells { get; private set; }
         public static ReadOnlyCollection<Inventory> Inventories { get; private set; }
-
-        #region Colors
-
-        /// =========================================
-        /// LightGreen()
-        /// -----------------------------------------
-        /// <summary>
-        /// ARGB value of [255, 216, 228, 188]
-        /// </summary>
-        /// =========================================
-        public static Color LightGreen { get { return Color.FromArgb(255, 216, 228, 188); } }
-
-        /// =========================================
-        /// LightYellow()
-        /// -----------------------------------------
-        /// <summary>
-        /// ARGB value of [255, 252, 213, 180]
-        /// </summary>
-        /// =========================================
-        public static Color LightYellow { get { return Color.FromArgb(255, 252, 213, 180); } }
-
-        /// =========================================
-        /// MediumRed()
-        /// -----------------------------------------
-        /// <summary>
-        /// ARGB value of [255, 187, 74, 67]
-        /// </summary>
-        /// =========================================
-        public static Color MediumRed { get { return Color.FromArgb(255, 187, 74, 67); } }
-
-        #endregion
     }
 }

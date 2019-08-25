@@ -1,4 +1,5 @@
 ﻿using Concierge.Persistence;
+using Concierge.Utility;
 using Microsoft.Win32;
 using System;
 using System.Windows;
@@ -109,9 +110,15 @@ namespace Concierge.Presentation
         {
             TextCharacterName.Text = Program.Character.Details.Name;
             TextCharacterRace.Text = Program.Character.Details.Race;
+            TextCharacterAlignment.Text = Program.Character.Details.Alignment;
 
             if (Program.Character.Level > 0)
                 TextCharacterLevel.Text = "Level " + Program.Character.Level;
+            else
+                TextCharacterLevel.Text = "";
+
+            if (Program.Character.Level > 0 && Program.Character.Level <= Constants.MAX_LEVEL)
+                TextCharacterXp.Text = Program.Character.Details.Experience + "/" + Program.Character.ExperienceToLevel + " Experience";
             else
                 TextCharacterLevel.Text = "";
 

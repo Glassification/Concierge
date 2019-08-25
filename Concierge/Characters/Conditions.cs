@@ -136,28 +136,28 @@ namespace Concierge.Characters
         /// =========================================
         /// ToArray()
         /// =========================================
-        public string[] ToArray()
+        public List<KeyValuePair<string, string>> ToArray()
         {
-            string[] array = new string[16];
+            List<KeyValuePair<string, string>> keyValuePairs = new List<KeyValuePair<string, string>>();
 
-            array[0] = Blinded.Equals("Cured") ? "" : "Blinded";
-            array[1] = Charmed.Equals("Cured") ? "" : "Charmed";
-            array[2] = Deafened.Equals("Cured") ? "" : "Deafened";
-            array[3] = Encumbrance.Equals("Normal") ? "" : Encumbrance;
-            array[4] = Fatigued.Equals("Cured") ? "" : Fatigued;
-            array[5] = Frightened.Equals("Cured") ? "" : "Frightened";
-            array[6] = Grappled.Equals("Cured") ? "" : "Grappled";
-            array[7] = Incapacitated.Equals("Cured") ? "" : "Incapacitated";
-            array[8] = Invisible.Equals("Cured") ? "" : "Invisible";
-            array[9] = Paralyzed.Equals("Cured") ? "" : "Paralyzed";
-            array[10] = Petrified.Equals("Cured") ? "" : "Petrified";
-            array[11] = Poisoned.Equals("Cured") ? "" : "Poisoned";
-            array[12] = Prone.Equals("Cured") ? "" : "Prone";
-            array[13] = Restrained.Equals("Cured") ? "" : "Restrained";
-            array[14] = Stunned.Equals("Cured") ? "" : "Stunned";
-            array[15] = Unconscious.Equals("Cured") ? "" : "Unconscious";
+            keyValuePairs.Add(new KeyValuePair<string, string>(Blinded, "Blinded - " + GetDescription(Blinded)));
+            keyValuePairs.Add(new KeyValuePair<string, string>(Charmed, "Charmed - " + GetDescription(Charmed)));
+            keyValuePairs.Add(new KeyValuePair<string, string>(Deafened, "Deafened - " + GetDescription(Deafened)));
+            keyValuePairs.Add(new KeyValuePair<string, string>(Encumbrance, Encumbrance + " - " + GetDescription(Encumbrance)));
+            keyValuePairs.Add(new KeyValuePair<string, string>(Fatigued, Fatigued + " - " + GetDescription(Fatigued)));
+            keyValuePairs.Add(new KeyValuePair<string, string>(Frightened, "Frightened - " + GetDescription(Frightened)));
+            keyValuePairs.Add(new KeyValuePair<string, string>(Grappled, "Grappled - " + GetDescription(Grappled)));
+            keyValuePairs.Add(new KeyValuePair<string, string>(Incapacitated, "Incapacitated - " + GetDescription(Incapacitated)));
+            keyValuePairs.Add(new KeyValuePair<string, string>(Invisible, "Invisible - " + GetDescription(Invisible)));
+            keyValuePairs.Add(new KeyValuePair<string, string>(Paralyzed, "Paralyzed - " + GetDescription(Paralyzed)));
+            keyValuePairs.Add(new KeyValuePair<string, string>(Petrified, "Petrified - " + GetDescription(Petrified)));
+            keyValuePairs.Add(new KeyValuePair<string, string>(Poisoned, "Poisoned - " + GetDescription(Poisoned)));
+            keyValuePairs.Add(new KeyValuePair<string, string>(Prone, "Prone - " + GetDescription(Prone)));
+            keyValuePairs.Add(new KeyValuePair<string, string>(Restrained, "Restrained - " + GetDescription(Restrained)));
+            keyValuePairs.Add(new KeyValuePair<string, string>(Stunned, "Stunned - " + GetDescription(Stunned)));
+            keyValuePairs.Add(new KeyValuePair<string, string>(Unconscious, "Unconscious - " + GetDescription(Unconscious)));
 
-            return array;
+            return keyValuePairs.Where(x => !x.Key.Equals("Cured") && !x.Key.Equals("Normal")).ToList();
         }
 
         public Conditions Copy()

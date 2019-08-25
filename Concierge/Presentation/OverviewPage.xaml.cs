@@ -216,6 +216,7 @@ namespace Concierge.Presentation
             TotalHpField.Text = "/" + Program.Character.Vitality.MaxHealth.ToString();
 
             CurrentHpField.Foreground = SetHealthStyle();
+            TotalHpField.Foreground = SetHealthStyle();
         }
 
         private void DrawArmorClass()

@@ -88,10 +88,12 @@
 
             <Grid x:Name="CharacterHeader" Grid.Column="1" Background="Black">
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock x:Name="TextCharacterName" FontSize="20" Margin="40 0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                    <TextBlock x:Name="TextCharacterRace" FontSize="20" Margin="40 0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                    <TextBlock x:Name="TextCharacterLevel" FontSize="20" Margin="40 0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                    <TextBlock x:Name="TextCharacterClass" FontSize="20" Margin="40 0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    <TextBlock x:Name="TextCharacterName" FontSize="20" Margin="30 0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    <TextBlock x:Name="TextCharacterRace" FontSize="20" Margin="30 0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    <TextBlock x:Name="TextCharacterAlignment" FontSize="20" Margin="30 0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    <TextBlock x:Name="TextCharacterLevel" FontSize="20" Margin="30 0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    <TextBlock x:Name="TextCharacterXp" FontSize="20" Margin="30 0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    <TextBlock x:Name="TextCharacterClass" FontSize="20" Margin="30 0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                 </StackPanel>
             </Grid>
 
