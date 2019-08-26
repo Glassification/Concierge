@@ -39,6 +39,13 @@
             <Setter Property="FontSize" Value="18" />
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="Margin" Value="10, 10, 10, 10"/>
+            <Setter Property="ContentTemplate">
+                <Setter.Value>
+                    <DataTemplate>
+                        <TextBlock TextWrapping="Wrap" Text="{Binding}"/>
+                    </DataTemplate>
+                </Setter.Value>
+            </Setter>
         </Style>
     </Page.Resources>
 

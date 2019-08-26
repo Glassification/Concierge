@@ -26,7 +26,6 @@ namespace Concierge.Presentation
         {
             InitializeComponent();
             DataContext = this;
-            ArmorImage.Source = Constants.ToBitmapImage(Properties.Resources.armor_class_icon);
         }
 
         public void Draw()
@@ -34,13 +33,13 @@ namespace Concierge.Presentation
             FillWeaponList();
             FillAmmoList();
 
-            ArmorClassField.Text = Program.Character.Armor.TotalArmorClass.ToString();
-            Shield.Text = Program.Character.Armor.Shield;
-            ShieldAC.Text = Program.Character.Armor.ShieldArmorClass.ToString();
-            MiscBonus.Text = Program.Character.Armor.MiscArmorClass.ToString();
-            MagicBonus.Text = Program.Character.Armor.MagicArmorClass.ToString();
+            //ArmorClassField.Text = Program.Character.Armor.TotalArmorClass.ToString();
+            //Shield.Text = Program.Character.Armor.Shield;
+            //ShieldAC.Text = Program.Character.Armor.ShieldArmorClass.ToString();
+            //MiscBonus.Text = Program.Character.Armor.MiscArmorClass.ToString();
+            //MagicBonus.Text = Program.Character.Armor.MagicArmorClass.ToString();
         }
-
+        
         private void FillWeaponList()
         {
             WeaponDataGrid.Items.Clear();
@@ -62,31 +61,7 @@ namespace Concierge.Presentation
                 AmmoDataGrid.Items.Add(ammo);
             }
         }
-
-        public double WeaponHeight
-        {
-            get
-            {
-                return SystemParameters.PrimaryScreenHeight - 500;
-            }
-        }
-
-        public double AmmoHeight
-        {
-            get
-            {
-                return 300;
-            }
-        }
-
-        public double ArmorHeight
-        {
-            get
-            {
-                return 300;
-            }
-        }
-
+        
         private void ButtonUp_Click(object sender, RoutedEventArgs e)
         {
             int index;
@@ -195,5 +170,6 @@ namespace Concierge.Presentation
                 AmmoDataGrid.UnselectAll();
             }
         }
+        
     }
 }

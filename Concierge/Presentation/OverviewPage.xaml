@@ -2116,6 +2116,40 @@
                                        FontWeight="Bold"
                                        HorizontalAlignment="Center"
                                        VerticalAlignment="Center"/>
+                            
+                            <Button x:Name="LeftResourceButton"
+                                    Width="40"
+                                    Height="40"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Center"
+                                    Margin="10, 0, 0, 0"
+                                    Background="{x:Null}" 
+                                    BorderBrush="{x:Null}" 
+                                    Foreground="White"
+                                    Click="LeftResourceButton_Click">
+                                <materialDesign:PackIcon Kind="LessThan"
+                                                     Width="40"
+                                                     Height="40"
+                                                     HorizontalAlignment="Center"
+                                                     VerticalAlignment="Center"/>
+                            </Button>
+
+                            <Button x:Name="RightResourceButton"
+                                    Foreground="White"
+                                    Width="40"
+                                    Height="40"
+                                    HorizontalAlignment="Right"
+                                    VerticalAlignment="Center"
+                                    Margin="0, 0, 10, 0"
+                                    Background="{x:Null}" 
+                                    BorderBrush="{x:Null}"
+                                    Click="RightResourceButton_Click">
+                                <materialDesign:PackIcon Kind="GreaterThan"
+                                                     Width="40"
+                                                     Height="40"
+                                                     HorizontalAlignment="Center"
+                                                     VerticalAlignment="Center"/>
+                            </Button>
                         </Grid>
                         
                         <!--Type-->
@@ -2136,12 +2170,70 @@
                                            VerticalAlignment="Center"/>
                             </Grid>
 
-                            <Grid Grid.Column="1">
-                                
+                            <Grid Grid.Column="1"
+                                  Background="#FF3e3e42"
+                                  Margin="0, 3, 3, 3">
+                                <TextBlock x:Name="ResourceTypeField"
+                                           FontSize="30"
+                                           Foreground="White"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"/>
                             </Grid>
                         </Grid>
                         
                         <!--Pool/Spent-->
+                        <Grid Grid.Row="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="15*"/>
+                                <ColumnDefinition Width="35*"/>
+                                <ColumnDefinition Width="15*"/>
+                                <ColumnDefinition Width="35*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Grid Grid.Column="0"
+                                  Background="#ff1c1636"
+                                  Margin="3, 3, 0, 0">
+                                <TextBlock Text="Pool"
+                                           FontSize="26"
+                                           Foreground="White"
+                                           FontWeight="Bold"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"/>
+                            </Grid>
+
+                            <Grid Grid.Column="1"
+                                  Background="#FF3e3e42"
+                                  Margin="0, 3, 3, 3"
+                                  x:Name="ResourcePoolBox">
+                                <TextBlock x:Name="ResourcePoolField"
+                                           FontSize="26"
+                                           Foreground="White"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"/>
+                            </Grid>
+                            
+                            <Grid Grid.Column="2"
+                                  Background="#ff1c1636"
+                                  Margin="3, 3, 0, 0">
+                                <TextBlock Text="Spent"
+                                           FontSize="26"
+                                           Foreground="White"
+                                           FontWeight="Bold"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"/>
+                            </Grid>
+
+                            <Grid Grid.Column="3"
+                                  Background="#FF3e3e42"
+                                  Margin="0, 3, 3, 3"
+                                  x:Name="ResourceSpentBox">
+                                <TextBlock x:Name="ResourceSpentField"
+                                           FontSize="26"
+                                           Foreground="White"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"/>
+                            </Grid>
+                        </Grid>
                     </Grid>
                 </Grid>
             </Grid>

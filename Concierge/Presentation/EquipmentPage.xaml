@@ -29,22 +29,57 @@
         </Style>
         <Style x:Key="DGHeaderStyle" TargetType="{x:Type DataGrid}">
             <Setter Property="ColumnHeaderStyle" Value="{DynamicResource DGCHeaderStyle}"/>
-            <Setter Property="Background" Value="#ff06011f" />
+            <Setter Property="Background" Value="#ff1c1636" />
             <Setter Property="AlternationCount" Value="2" />
         </Style>
         <Style x:Key="DGCHeaderStyle" TargetType="DataGridColumnHeader">
             <Setter Property="Height" Value="50"/>
-            <Setter Property="Background" Value="#ff06011f" />
+            <Setter Property="Background" Value="#ff1c1636" />
             <Setter Property="Foreground" Value="White"/>
             <Setter Property="FontSize" Value="18" />
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="Margin" Value="10, 10, 10, 10"/>
+            <Setter Property="ContentTemplate">
+                <Setter.Value>
+                    <DataTemplate>
+                        <TextBlock TextWrapping="Wrap" Text="{Binding}"/>
+                    </DataTemplate>
+                </Setter.Value>
+            </Setter>
         </Style>
     </Page.Resources>
-    
+
     <Grid>
-        <StackPanel>
-            <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30*"/>
+            <RowDefinition Height="70*"/>
+        </Grid.RowDefinitions>
+        
+        <!--Armor Details-->
+        <Grid Grid.Row="0">
+            
+        </Grid>
+        
+        <!--Ammo, Weapons-->
+        <Grid Grid.Row="1" Background="#ff06011f"
+              >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="35*"/>
+                <RowDefinition Height="55*"/>
+            </Grid.RowDefinitions>
+            
+            <!--Header-->
+            <Grid Grid.Row="0"
+                  Background="#ff06011f"
+                  Margin="3, 3, 3, 0">
+                <TextBlock Text="Ammunition and Weapons"
+                           Foreground="White"
+                           HorizontalAlignment="Left"
+                           VerticalAlignment="Center"
+                           FontSize="30"
+                           FontWeight="Bold"
+                           Margin="15, 0, 0, 0"/>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                     <Button x:Name="ButtonUp" 
                             Height="50" 
@@ -126,39 +161,17 @@
                     </Button>
                 </StackPanel>
             </Grid>
-            <Grid>
-                <StackPanel>
-                    <Grid x:Name="ArmorHeader" Height="200">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="35*"/>
-                            <ColumnDefinition Width="65*" />
-                        </Grid.ColumnDefinitions>
-                        <Grid Grid.Column="0">
-                            <Image x:Name="ArmorImage"
-                                   Stretch="Uniform"/>
-                            <TextBlock x:Name="ArmorClassField"
-                                       Foreground="White"
-                                       FontSize="18"
-                                       HorizontalAlignment="Center"
-                                       VerticalAlignment="Center"/>
-                        </Grid>
-                        <Grid Grid.Column="1">
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock x:Name="Shield" FontSize="20" Margin="40 0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                <TextBlock x:Name="ShieldAC" FontSize="20" Margin="40 0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                <TextBlock x:Name="MiscBonus" FontSize="20" Margin="40 0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                <TextBlock x:Name="MagicBonus" FontSize="20" Margin="40 0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                            </StackPanel>
-                        </Grid>
-                    </Grid>
-                    <DataGrid x:Name="AmmoDataGrid"
+            
+            <!--Ammo-->
+            <Grid Grid.Row="1" Margin="3" x:Name="AmmoGrid">
+                <DataGrid x:Name="AmmoDataGrid"
                                       AutoGenerateColumns="False"
                                       VerticalScrollBarVisibility="Auto"
                                       HorizontalScrollBarVisibility="Disabled"
-                                      Background="#ff06011f"
+                                      Background="#ff1c1636"
                                       HeadersVisibility="Column"
                                       IsReadOnly="True"
-                              Margin="0, 5, 0, 0"
+                                      Margin="0, 5, 0, 0"
                                       HorizontalGridLinesBrush="Transparent"
                                       VerticalGridLinesBrush="Transparent"
                                       CanUserResizeColumns="False"
@@ -168,39 +181,43 @@
                                       Style="{DynamicResource DGHeaderStyle}"
                                       SelectionChanged="AmmoDataGrid_SelectionChanged"
                                       SelectionMode="Single">
-                        <DataGrid.Columns>
-                            <DataGridTextColumn 
+                    <DataGrid.Columns>
+                        <DataGridTextColumn 
                                         Header="Ammo"
                                         Binding="{Binding Name}"
                                         Width="0.2*"
                                         ElementStyle="{StaticResource ColumnElementStyle}"/>
-                            <DataGridTextColumn 
+                        <DataGridTextColumn 
                                         Header="Quantity"
                                         Binding="{Binding Quantity}"
                                         Width="0.05*"
                                         ElementStyle="{StaticResource ColumnElementStyle}"/>
-                            <DataGridTextColumn 
+                        <DataGridTextColumn 
                                         Header="Damage Bonus"
                                         Binding="{Binding Bonus}"
                                         Width="0.1*"
                                         ElementStyle="{StaticResource ColumnElementStyle}"/>
-                            <DataGridTextColumn 
+                        <DataGridTextColumn 
                                         Header="Damage Type"
                                         Binding="{Binding DamageType}"
                                         Width="0.1*"
                                         ElementStyle="{StaticResource ColumnElementStyle}"/>
-                            <DataGridTextColumn 
+                        <DataGridTextColumn 
                                         Header="Used"
                                         Binding="{Binding Used}"
                                         Width="0.1*"
                                         ElementStyle="{StaticResource ColumnElementStyle}"/>
-                        </DataGrid.Columns>
-                    </DataGrid>
-                    <DataGrid x:Name="WeaponDataGrid"
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+            
+            <!--Weapons-->
+            <Grid Grid.Row="2" Margin="3" x:Name="WeaponGrid">
+                <DataGrid x:Name="WeaponDataGrid"
                               AutoGenerateColumns="False"
                               VerticalScrollBarVisibility="Auto"
                               HorizontalScrollBarVisibility="Disabled"
-                              Background="#ff06011f"
+                              Background="#ff1c1636"
                               HeadersVisibility="Column"
                               IsReadOnly="True"
                               Margin="0, 5, 0, 0"
@@ -208,56 +225,54 @@
                               VerticalGridLinesBrush="Transparent"
                               CanUserResizeColumns="False"
                               CanUserAddRows="False"
-                              MaxHeight="{Binding Path=WeaponHeight}"
                               BorderThickness="0"
                               Style="{DynamicResource DGHeaderStyle}"
                               SelectionChanged="WeaponDataGrid_SelectionChanged"
                               SelectionMode="Single">
-                        <DataGrid.Columns>
-                            <DataGridTextColumn 
+                    <DataGrid.Columns>
+                        <DataGridTextColumn 
                                 Header="Weapon/Attack"
                                 Binding="{Binding Name}"
                                 Width="0.2*"
                                 ElementStyle="{StaticResource ColumnElementStyle}"/>
-                            <DataGridTextColumn 
+                        <DataGridTextColumn 
                                 Header="Attack Bonus"
                                 Binding="{Binding Attack}"
-                                Width="0.05*"
+                                Width="0.1*"
                                 ElementStyle="{StaticResource ColumnElementStyle}"/>
-                            <DataGridTextColumn 
+                        <DataGridTextColumn 
                                 Header="Ability"
                                 Binding="{Binding Ability}"
                                 Width="0.1*"
                                 ElementStyle="{StaticResource ColumnElementStyle}"/>
-                            <DataGridTextColumn 
+                        <DataGridTextColumn 
                                 Header="Damage"
                                 Binding="{Binding Damage}"
                                 Width="0.1*"
                                 ElementStyle="{StaticResource ColumnElementStyle}"/>
-                            <DataGridTextColumn 
+                        <DataGridTextColumn 
                                 Header="Misc Bonus"
                                 Binding="{Binding Misc}"
                                 Width="0.1*"
                                 ElementStyle="{StaticResource ColumnElementStyle}"/>
-                            <DataGridTextColumn 
+                        <DataGridTextColumn 
                                 Header="Damage Type"
                                 Binding="{Binding DamageType}"
                                 Width="0.1*"
                                 ElementStyle="{StaticResource ColumnElementStyle}"/>
-                            <DataGridTextColumn 
+                        <DataGridTextColumn 
                                 Header="Range"
                                 Binding="{Binding Range}"
                                 Width="0.1*"
                                 ElementStyle="{StaticResource ColumnElementStyle}"/>
-                            <DataGridTextColumn 
+                        <DataGridTextColumn 
                                 Header="Notes"
                                 Binding="{Binding Note}"
-                                Width="0.25*"
+                                Width="0.20*"
                                 ElementStyle="{StaticResource ColumnElementStyle}"/>
-                        </DataGrid.Columns>
-                    </DataGrid>
-                </StackPanel>
+                    </DataGrid.Columns>
+                </DataGrid>
             </Grid>
-        </StackPanel>
+        </Grid>
     </Grid>
 </Page>

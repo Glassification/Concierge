@@ -1,4 +1,5 @@
-﻿using Concierge.Utility;
+﻿using Concierge.Characters.Collections;
+using Concierge.Utility;
 using System;
 using System.Windows;
 using System.Windows.Controls;
@@ -19,6 +20,7 @@ namespace Concierge.Presentation
         {
             InitializeComponent();
             DataContext = this;
+            ResourceIndex = 0;
         }
 
         #endregion
@@ -36,6 +38,7 @@ namespace Concierge.Presentation
             DrawHealth();
             DrawArmorClass();
             DrawHitDice();
+            DrawResourcePool();
         }
 
         #region Attributes
@@ -261,9 +264,54 @@ namespace Concierge.Presentation
 
         #endregion
 
+        #region Resource Pool
+
+        private void DrawResourcePool()
+        {
+            SetArrowStyle();
+
+            if (Program.Character.ClassResources.Count > 0)
+            {
+                ClassResource classResource = Program.Character.ClassResources[ResourceIndex];
+
+                ResourceTypeField.Text = classResource.Type;
+
+                ResourcePoolField.Text = classResource.Total.ToString();
+                ResourcePoolBox.Background = SetTotalBoxStyle(classResource.Total, classResource.Spent);
+
+                ResourceSpentField.Text = classResource.Total.ToString();
+                ResourceSpentBox.Background = SetSpentBoxStyle(classResource.Total, classResource.Spent);
+            }
+            else
+            {
+                ResourceTypeField.Text = "None";
+
+                ResourcePoolField.Text = "0";
+                ResourcePoolBox.Background = SetTotalBoxStyle(0, 0);
+
+                ResourceSpentField.Text = "0";
+                ResourceSpentBox.Background = SetSpentBoxStyle(0, 0);
+            }
+        }
+
+        #endregion
+
         #endregion
 
         #region Helpers
+
+        private void SetArrowStyle()
+        {
+            if (ResourceIndex == 0)
+                LeftResourceButton.Foreground = Brushes.DimGray;
+            else
+                LeftResourceButton.Foreground = Brushes.White;
+
+            if (ResourceIndex == Program.Character.ClassResources.Count - 1 || Program.Character.ClassResources.Count == 0)
+                RightResourceButton.Foreground = Brushes.DimGray;
+            else
+                RightResourceButton.Foreground = Brushes.White;
+        }
 
         private Brush SetSpentTextStyle(int total, int used)
         {
@@ -383,6 +431,30 @@ namespace Concierge.Presentation
             get
             {
                 return (int)HealthBox.RenderSize.Height;
+            }
+        }
+
+        public int ResourceIndex { get; private set; }
+
+        #endregion
+
+        #region Events
+
+        private void LeftResourceButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (ResourceIndex > 0)
+            {
+                ResourceIndex--;
+                DrawResourcePool();
+            }
+        }
+
+        private void RightResourceButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (ResourceIndex < Program.Character.ClassResources.Count - 1)
+            {
+                ResourceIndex++;
+                DrawResourcePool();
             }
         }
 
