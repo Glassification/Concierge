@@ -29,7 +29,74 @@ namespace Concierge.Characters.Collections
         public int Level { get; set; }
         public int KnownCantrips { get; set; }
         public int KnownSpells { get; set; }
-        public int PreparedSpells { get; set; }
         public Guid ID { get; private set; }
+
+        public int PreparedSpells
+        {
+            get
+            {
+                int count = 0;
+
+                foreach (var spell in Program.Character.Spells)
+                {
+                    if (spell.Class.Equals(Name) && spell.Prepared)
+                    {
+                        count++;
+                    }
+                }
+
+                return count;
+            }
+        }
+
+        public int Attack
+        {
+            get
+            {
+                int bonus = Program.Character.ProficiencyBonus;
+
+                switch (Ability)
+                {
+                    default:
+                    case Constants.Abilities.STR:
+                        return Constants.CalculateBonus(Program.Character.Attributes.Strength) + bonus;
+                    case Constants.Abilities.DEX:
+                        return Constants.CalculateBonus(Program.Character.Attributes.Dexterity) + bonus;
+                    case Constants.Abilities.CON:
+                        return Constants.CalculateBonus(Program.Character.Attributes.Constitution) + bonus;
+                    case Constants.Abilities.INT:
+                        return Constants.CalculateBonus(Program.Character.Attributes.Intelligence) + bonus;
+                    case Constants.Abilities.WIS:
+                        return Constants.CalculateBonus(Program.Character.Attributes.Wisdom) + bonus;
+                    case Constants.Abilities.CHA:
+                        return Constants.CalculateBonus(Program.Character.Attributes.Charisma) + bonus;
+                }
+            }
+        }
+
+        public int Save
+        {
+            get
+            {
+                int bonus = Program.Character.ProficiencyBonus + Constants.BASE_DC;
+
+                switch (Ability)
+                {
+                    default:
+                    case Constants.Abilities.STR:
+                        return Constants.CalculateBonus(Program.Character.Attributes.Strength) + bonus;
+                    case Constants.Abilities.DEX:
+                        return Constants.CalculateBonus(Program.Character.Attributes.Dexterity) + bonus;
+                    case Constants.Abilities.CON:
+                        return Constants.CalculateBonus(Program.Character.Attributes.Constitution) + bonus;
+                    case Constants.Abilities.INT:
+                        return Constants.CalculateBonus(Program.Character.Attributes.Intelligence) + bonus;
+                    case Constants.Abilities.WIS:
+                        return Constants.CalculateBonus(Program.Character.Attributes.Wisdom) + bonus;
+                    case Constants.Abilities.CHA:
+                        return Constants.CalculateBonus(Program.Character.Attributes.Charisma) + bonus;
+                }
+            }
+        }
     }
 }

@@ -1,0 +1,346 @@
+﻿<Page x:Class="Concierge.Presentation.NotesPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:local="clr-namespace:Concierge.Presentation"
+      xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="1020"
+      Title="NotesPage">
+
+    <Grid Background="#ff06011f" Margin="3">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="7*"/>
+            <RowDefinition Height="93*"/>
+        </Grid.RowDefinitions>
+        
+        <!--Header-->
+        <Grid Grid.Row="0">
+            <TextBlock Text="Campain Notes"
+                           Foreground="White"
+                           FontSize="25"
+                           FontWeight="Bold"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Left"
+                           Margin="150, 0, 0, 0"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button x:Name="ButtonUp" 
+                            Height="50" 
+                            Width="60" 
+                            HorizontalAlignment="Center" 
+                            VerticalAlignment="Center" 
+                            Background="{x:Null}" 
+                            BorderBrush="{x:Null}" 
+                            Foreground="Blue" 
+                            ToolTip="Move Item Up">
+                    <materialDesign:PackIcon Kind="ArrowUp" Width="25" Height="25"/>
+                </Button>
+                <Button x:Name="ButtonDown" 
+                            Height="50" 
+                            Width="60" 
+                            HorizontalAlignment="Center" 
+                            VerticalAlignment="Center" 
+                            Background="{x:Null}" 
+                            BorderBrush="{x:Null}" 
+                            Foreground="Blue" 
+                            ToolTip="Move Item Down">
+                    <materialDesign:PackIcon Kind="ArrowDown" Width="25" Height="25"/>
+                </Button>
+                <Button x:Name="ButtonClear" 
+                            Height="50" 
+                            Width="60" 
+                            HorizontalAlignment="Center" 
+                            VerticalAlignment="Center" 
+                            Background="{x:Null}" 
+                            BorderBrush="{x:Null}" 
+                            Foreground="Purple" 
+                            ToolTip="Clear Selected Item">
+                    <materialDesign:PackIcon Kind="Cancel" Width="25" Height="25"/>
+                </Button>
+                <Label Height="50"
+                           Width="60"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           Background="{x:Null}" 
+                            BorderBrush="{x:Null}"/>
+                <Button x:Name="ButtonAdd" 
+                            Height="50" 
+                            Width="60" 
+                            HorizontalAlignment="Center" 
+                            VerticalAlignment="Center" 
+                            Background="{x:Null}" 
+                            BorderBrush="{x:Null}" 
+                            Foreground="Green" 
+                            ToolTip="Add New Item">
+                    <materialDesign:PackIcon Kind="Add" Width="25" Height="25"/>
+                </Button>
+                <Button x:Name="ButtonEdit" 
+                            Height="50" 
+                            Width="60" 
+                            HorizontalAlignment="Center" 
+                            VerticalAlignment="Center" 
+                            Background="{x:Null}" 
+                            BorderBrush="{x:Null}" 
+                            Foreground="DarkOrange" 
+                            ToolTip="Edit Selected Item">
+                    <materialDesign:PackIcon Kind="Edit" Width="25" Height="25"/>
+                </Button>
+                <Button x:Name="ButtonDelete" 
+                            Height="50" 
+                            Width="60" 
+                            HorizontalAlignment="Center" 
+                            VerticalAlignment="Center" 
+                            Background="{x:Null}" 
+                            BorderBrush="{x:Null}" 
+                            Foreground="IndianRed" 
+                            ToolTip="Delete Selected Item">
+                    <materialDesign:PackIcon Kind="Delete" Width="25" Height="25"/>
+                </Button>
+            </StackPanel>
+        </Grid>
+        
+        <!--Contents-->
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="80*"/>
+            </Grid.ColumnDefinitions>
+            
+            <!--Notes Tree-->
+            <Grid Grid.Column="0">
+                <TreeView x:Name="NotesTreeView"
+                          Margin="3"
+                          Background="#ff1c1636"
+                          SelectedItemChanged="NotesTreeView_SelectedItemChanged"
+                          FontSize="25"
+                          BorderBrush="{x:Null}">
+                    
+                </TreeView>
+            </Grid>
+            
+            <!--Notes-->
+            <Grid Grid.Column="1"
+                  Margin="3, 0, 3, 3"
+                  Background="#FF3e3e42">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="10*"/>
+                    <RowDefinition Height="90*"/>
+                </Grid.RowDefinitions>
+                
+                <!--Toolbar-->
+                <Grid Grid.Row="0">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                        <Button x:Name="ButtonCut" 
+                            Height="50" 
+                            Width="60" 
+                            HorizontalAlignment="Center" 
+                            VerticalAlignment="Center" 
+                            Background="{x:Null}" 
+                            BorderBrush="{x:Null}" 
+                            Foreground="White" 
+                            ToolTip="Cut"
+                            Click="ButtonCut_Click">
+                            <materialDesign:PackIcon Kind="Scissors" Width="25" Height="25"/>
+                        </Button>
+                        <Button x:Name="ButtonCopy" 
+                            Height="50" 
+                            Width="60" 
+                            HorizontalAlignment="Center" 
+                            VerticalAlignment="Center" 
+                            Background="{x:Null}" 
+                            BorderBrush="{x:Null}" 
+                            Foreground="White" 
+                            ToolTip="Copy"
+                            Click="ButtonCopy_Click">
+                            <materialDesign:PackIcon Kind="ContentCopy" Width="25" Height="25"/>
+                        </Button>
+                        <Button x:Name="ButtonPaste" 
+                            Height="50" 
+                            Width="60" 
+                            HorizontalAlignment="Center" 
+                            VerticalAlignment="Center" 
+                            Background="{x:Null}" 
+                            BorderBrush="{x:Null}" 
+                            Foreground="White" 
+                            ToolTip="Paste"
+                            Click="ButtonPaste_Click">
+                            <materialDesign:PackIcon Kind="ContentPaste" Width="25" Height="25"/>
+                        </Button>
+                        <Button x:Name="ButtonUndo" 
+                            Height="50" 
+                            Width="60" 
+                            HorizontalAlignment="Center" 
+                            VerticalAlignment="Center" 
+                            Background="{x:Null}" 
+                            BorderBrush="{x:Null}" 
+                            Foreground="White" 
+                            ToolTip="Undo"
+                            Click="ButtonUndo_Click">
+                            <materialDesign:PackIcon Kind="Undo" Width="25" Height="25"/>
+                        </Button>
+                        <Button x:Name="ButtonRedo" 
+                            Height="50" 
+                            Width="60" 
+                            HorizontalAlignment="Center" 
+                            VerticalAlignment="Center" 
+                            Background="{x:Null}" 
+                            BorderBrush="{x:Null}" 
+                            Foreground="White" 
+                            ToolTip="Redo"
+                            Click="ButtonRedo_Click">
+                            <materialDesign:PackIcon Kind="Redo" Width="25" Height="25"/>
+                        </Button>
+                        <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"
+                                   Foreground="White"/>
+                        <Button x:Name="ButtonBold" 
+                            Height="50" 
+                            Width="60" 
+                            HorizontalAlignment="Center" 
+                            VerticalAlignment="Center" 
+                            Background="{x:Null}" 
+                            BorderBrush="{x:Null}" 
+                            Foreground="White" 
+                            ToolTip="Bold"
+                            Click="ButtonBold_Click">
+                            <materialDesign:PackIcon Kind="FormatBold" Width="25" Height="25"/>
+                        </Button>
+                        <Button x:Name="ButtonItalic" 
+                            Height="50" 
+                            Width="60" 
+                            HorizontalAlignment="Center" 
+                            VerticalAlignment="Center" 
+                            Background="{x:Null}" 
+                            BorderBrush="{x:Null}" 
+                            Foreground="White" 
+                            ToolTip="Italic"
+                            Click="ButtonItalic_Click">
+                            <materialDesign:PackIcon Kind="FormatItalic" Width="25" Height="25"/>
+                        </Button>
+                        <Button x:Name="ButtonUnderline" 
+                            Height="50" 
+                            Width="60" 
+                            HorizontalAlignment="Center" 
+                            VerticalAlignment="Center" 
+                            Background="{x:Null}" 
+                            BorderBrush="{x:Null}" 
+                            Foreground="White" 
+                            ToolTip="Underline"
+                            Click="ButtonUnderline_Click">
+                            <materialDesign:PackIcon Kind="FormatUnderline" Width="25" Height="25"/>
+                        </Button>
+                        <Button x:Name="ButtonFont" 
+                            Height="50" 
+                            Width="60" 
+                            HorizontalAlignment="Center" 
+                            VerticalAlignment="Center" 
+                            Background="{x:Null}" 
+                            BorderBrush="{x:Null}" 
+                            Foreground="White" 
+                            ToolTip="Font"
+                            Click="ButtonFont_Click">
+                            <materialDesign:PackIcon Kind="FormatFont" Width="25" Height="25"/>
+                        </Button>
+                        <Button x:Name="ButtonSpellcheck" 
+                            Height="50" 
+                            Width="60" 
+                            HorizontalAlignment="Center" 
+                            VerticalAlignment="Center" 
+                            Background="{x:Null}" 
+                            BorderBrush="{x:Null}" 
+                            Foreground="White" 
+                            ToolTip="Spellcheck"
+                            Click="ButtonSpellcheck_Click">
+                            <materialDesign:PackIcon Kind="Spellcheck" Width="25" Height="25"/>
+                        </Button>
+                        <Button x:Name="ButtonColor" 
+                            Height="50" 
+                            Width="60" 
+                            HorizontalAlignment="Center" 
+                            VerticalAlignment="Center" 
+                            Background="{x:Null}" 
+                            BorderBrush="{x:Null}" 
+                            Foreground="White" 
+                            ToolTip="Colour"
+                            Click="ButtonColor_Click">
+                            <xctk:ColorPicker x:Name="ColourPicker"/>
+                        </Button>
+                        <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"
+                                   Foreground="White"/>
+                        <Button x:Name="ButtonBullets" 
+                            Height="50" 
+                            Width="60" 
+                            HorizontalAlignment="Center" 
+                            VerticalAlignment="Center" 
+                            Background="{x:Null}" 
+                            BorderBrush="{x:Null}" 
+                            Foreground="White" 
+                            ToolTip="Bullets"
+                            Click="ButtonBullets_Click">
+                            <materialDesign:PackIcon Kind="FormatListBulleted" Width="25" Height="25"/>
+                        </Button>
+                        <Button x:Name="ButtonNumbering" 
+                            Height="50" 
+                            Width="60" 
+                            HorizontalAlignment="Center" 
+                            VerticalAlignment="Center" 
+                            Background="{x:Null}" 
+                            BorderBrush="{x:Null}" 
+                            Foreground="White" 
+                            ToolTip="Numbers"
+                            Click="ButtonNumbering_Click">
+                            <materialDesign:PackIcon Kind="FormatListNumbered" Width="25" Height="25"/>
+                        </Button>
+                        <Button x:Name="ButtonAlignLeft" 
+                            Height="50" 
+                            Width="60" 
+                            HorizontalAlignment="Center" 
+                            VerticalAlignment="Center" 
+                            Background="{x:Null}" 
+                            BorderBrush="{x:Null}" 
+                            Foreground="White" 
+                            ToolTip="Align Left"
+                            Click="ButtonAlignLeft_Click">
+                            <materialDesign:PackIcon Kind="FormatAlignLeft" Width="25" Height="25"/>
+                        </Button>
+                        <Button x:Name="ButtonAlignCentre" 
+                            Height="50" 
+                            Width="60" 
+                            HorizontalAlignment="Center" 
+                            VerticalAlignment="Center" 
+                            Background="{x:Null}" 
+                            BorderBrush="{x:Null}" 
+                            Foreground="White" 
+                            ToolTip="Align Centre"
+                            Click="ButtonAlignCentre_Click">
+                            <materialDesign:PackIcon Kind="FormatAlignMiddle" Width="25" Height="25"/>
+                        </Button>
+                        <Button x:Name="ButtonAlignRight" 
+                            Height="50" 
+                            Width="60" 
+                            HorizontalAlignment="Center" 
+                            VerticalAlignment="Center" 
+                            Background="{x:Null}" 
+                            BorderBrush="{x:Null}" 
+                            Foreground="White" 
+                            ToolTip="Align Right"
+                            Click="ButtonAlignRight_Click">
+                            <materialDesign:PackIcon Kind="FormatAlignRight" Width="25" Height="25"/>
+                        </Button>
+                    </StackPanel>
+                </Grid>
+                
+                <!--Text-->
+                <Grid Grid.Row="1">
+                    <RichTextBox x:Name="NotesTextBox"
+                             Background="#FF333333"
+                             Margin="3"
+                             BorderBrush="{x:Null}">
+
+                    </RichTextBox>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
+</Page>

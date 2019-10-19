@@ -29,12 +29,12 @@
         </Style>
         <Style x:Key="DGHeaderStyle" TargetType="{x:Type DataGrid}">
             <Setter Property="ColumnHeaderStyle" Value="{DynamicResource DGCHeaderStyle}"/>
-            <Setter Property="Background" Value="#ff06011f" />
+            <Setter Property="Background" Value="#ff1c1636" />
             <Setter Property="AlternationCount" Value="2" />
         </Style>
         <Style x:Key="DGCHeaderStyle" TargetType="DataGridColumnHeader">
             <Setter Property="Height" Value="50"/>
-            <Setter Property="Background" Value="#ff06011f" />
+            <Setter Property="Background" Value="#ff1c1636" />
             <Setter Property="Foreground" Value="White"/>
             <Setter Property="FontSize" Value="18" />
             <Setter Property="FontWeight" Value="Bold"/>
@@ -48,13 +48,28 @@
             </Setter>
         </Style>
     </Page.Resources>
-    
 
-    <Grid>
-        <StackPanel>
-            <Grid>
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                    <Button x:Name="ButtonUp" 
+
+    <Grid Background="#ff06011f" Margin="3">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="7*"/>
+            <RowDefinition Height="93*"/>
+        </Grid.RowDefinitions>
+
+        <!--Header-->
+        <Grid Grid.Row="0"
+              Background="#ff06011f"
+              Margin="3">
+            <TextBlock Text="Inventory"
+                           Foreground="White"
+                           FontSize="25"
+                           FontWeight="Bold"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Left"
+                           Margin="150, 0, 0, 0"/>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button x:Name="ButtonUp" 
                             Height="50" 
                             Width="60" 
                             HorizontalAlignment="Center" 
@@ -64,9 +79,9 @@
                             Foreground="Blue" 
                             Click="ButtonUp_Click"
                             ToolTip="Move Item Up">
-                        <materialDesign:PackIcon Kind="ArrowUp" Width="25" Height="25"/>
-                    </Button>
-                    <Button x:Name="ButtonDown" 
+                    <materialDesign:PackIcon Kind="ArrowUp" Width="25" Height="25"/>
+                </Button>
+                <Button x:Name="ButtonDown" 
                             Height="50" 
                             Width="60" 
                             HorizontalAlignment="Center" 
@@ -76,9 +91,9 @@
                             Foreground="Blue" 
                             Click="ButtonDown_Click"
                             ToolTip="Move Item Down">
-                        <materialDesign:PackIcon Kind="ArrowDown" Width="25" Height="25"/>
-                    </Button>
-                    <Button x:Name="ButtonClear" 
+                    <materialDesign:PackIcon Kind="ArrowDown" Width="25" Height="25"/>
+                </Button>
+                <Button x:Name="ButtonClear" 
                             Height="50" 
                             Width="60" 
                             HorizontalAlignment="Center" 
@@ -88,15 +103,15 @@
                             Foreground="Purple" 
                             Click="ButtonClear_Click"
                             ToolTip="Clear Selected Item">
-                        <materialDesign:PackIcon Kind="Cancel" Width="25" Height="25"/>
-                    </Button>
-                    <Label Height="50"
+                    <materialDesign:PackIcon Kind="Cancel" Width="25" Height="25"/>
+                </Button>
+                <Label Height="50"
                            Width="60"
                            HorizontalAlignment="Center"
                            VerticalAlignment="Center"
                            Background="{x:Null}" 
                             BorderBrush="{x:Null}"/>
-                    <Button x:Name="ButtonAdd" 
+                <Button x:Name="ButtonAdd" 
                             Height="50" 
                             Width="60" 
                             HorizontalAlignment="Center" 
@@ -106,9 +121,9 @@
                             Foreground="Green" 
                             Click="ButtonAdd_Click"
                             ToolTip="Add New Item">
-                        <materialDesign:PackIcon Kind="Add" Width="25" Height="25"/>
-                    </Button>
-                    <Button x:Name="ButtonEdit" 
+                    <materialDesign:PackIcon Kind="Add" Width="25" Height="25"/>
+                </Button>
+                <Button x:Name="ButtonEdit" 
                             Height="50" 
                             Width="60" 
                             HorizontalAlignment="Center" 
@@ -118,9 +133,9 @@
                             Foreground="DarkOrange" 
                             Click="ButtonEdit_Click"
                             ToolTip="Edit Selected Item">
-                        <materialDesign:PackIcon Kind="Edit" Width="25" Height="25"/>
-                    </Button>
-                    <Button x:Name="ButtonDelete" 
+                    <materialDesign:PackIcon Kind="Edit" Width="25" Height="25"/>
+                </Button>
+                <Button x:Name="ButtonDelete" 
                             Height="50" 
                             Width="60" 
                             HorizontalAlignment="Center" 
@@ -130,15 +145,18 @@
                             Foreground="IndianRed" 
                             Click="ButtonDelete_Click"
                             ToolTip="Delete Selected Item">
-                        <materialDesign:PackIcon Kind="Delete" Width="25" Height="25"/>
-                    </Button>
-                </StackPanel>
-            </Grid>
+                    <materialDesign:PackIcon Kind="Delete" Width="25" Height="25"/>
+                </Button>
+            </StackPanel>
+        </Grid>
+        
+        <!--Inventory-->
+        <Grid Grid.Row="1">
             <DataGrid x:Name="InventoryDataGrid"
                       AutoGenerateColumns="False"
                       VerticalScrollBarVisibility="Auto"
                       HorizontalScrollBarVisibility="Disabled"
-                      Background="#ff06011f"
+                      Background="#ff1c1636"
                       HeadersVisibility="Column"
                       IsReadOnly="True"
                       HorizontalGridLinesBrush="Transparent"
@@ -172,6 +190,6 @@
                         ElementStyle="{StaticResource ColumnElementStyle}"/>
                 </DataGrid.Columns>
             </DataGrid>
-        </StackPanel>
+        </Grid>
     </Grid>
 </Page>

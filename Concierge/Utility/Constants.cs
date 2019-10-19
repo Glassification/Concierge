@@ -85,6 +85,38 @@ namespace Concierge.Utility
             return name;
         }
 
+        public static Brush SetUsedTextStyle(int total, int used)
+        {
+            if (total == used)
+                return Brushes.DarkRed;
+            else
+                return Brushes.White;
+        }
+
+        public static Brush SetUsedBoxStyle(int total, int used)
+        {
+            if (total == used)
+                return Brushes.IndianRed;
+            else
+                return new SolidColorBrush(Color.FromArgb(255, 62, 62, 66));
+        }
+
+        public static Brush SetTotalTextStyle(int total, int used)
+        {
+            if (total == used)
+                return Brushes.DarkGray;
+            else
+                return Brushes.White;
+        }
+
+        public static Brush SetTotalBoxStyle(int total, int used)
+        {
+            if (total == used)
+                return new SolidColorBrush(Color.FromArgb(255, 15, 15, 15));
+            else
+                return new SolidColorBrush(Color.FromArgb(255, 51, 51, 51));
+        }
+
         public static ReadOnlyCollection<int> AutosaveIntervals { get; private set; }
         public static ReadOnlyCollection<Weapon> Weapons { get; private set; }
         public static ReadOnlyCollection<Ammunition> Ammunitions { get; private set; }

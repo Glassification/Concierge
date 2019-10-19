@@ -33,11 +33,14 @@ namespace Concierge.Presentation
             FillWeaponList();
             FillAmmoList();
 
-            //ArmorClassField.Text = Program.Character.Armor.TotalArmorClass.ToString();
-            //Shield.Text = Program.Character.Armor.Shield;
-            //ShieldAC.Text = Program.Character.Armor.ShieldArmorClass.ToString();
-            //MiscBonus.Text = Program.Character.Armor.MiscArmorClass.ToString();
-            //MagicBonus.Text = Program.Character.Armor.MagicArmorClass.ToString();
+            ArmorClassField.Text = Program.Character.Armor.TotalArmorClass.ToString();
+            ArmorWornField.Text = Program.Character.Armor.Equiped;
+            ArmorTypeField.Text = Program.Character.Armor.Type.ToString();
+            ArmorStealthField.Text = Program.Character.Armor.Stealth.ToString();
+            ShieldWornField.Text = Program.Character.Armor.Shield;
+            ShieldAcField.Text = Program.Character.Armor.ShieldArmorClass.ToString();
+            MiscBonusField.Text = Program.Character.Armor.MiscArmorClass.ToString();
+            MagicBonusField.Text = Program.Character.Armor.MagicArmorClass.ToString();
         }
         
         private void FillWeaponList()

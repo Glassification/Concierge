@@ -257,7 +257,6 @@ namespace Concierge.Persistence
                                         new XAttribute("ability", magic.Ability),
                                         new XAttribute("cantrips", magic.KnownCantrips),
                                         new XAttribute("known", magic.KnownSpells),
-                                        new XAttribute("prepared", magic.PreparedSpells),
                                         new XAttribute("id", magic.ID)
                                     )
                                 ),
@@ -319,11 +318,14 @@ namespace Concierge.Persistence
                             // new XElement("Notes", new XAttribute("one", character.Companion.Notes.First), new XAttribute("two", character.Companion.Notes.Second))
                             ),
                         new XElement("CampainNotes",
-                            from campainNote in character.Documents
+                            from campainChapter in character.Chapters
                             select
-                                new XElement("Note", new XAttribute("id", campainNote.ID),
-                                                     new XAttribute("name", campainNote.Name),
-                                                     new XCData(campainNote.RTF))
+                                new XElement("Chapter", new XAttribute("name", campainChapter.Name), new XAttribute("id", campainChapter.ID),
+                                    from campainNotes in campainChapter.Documents
+                                    select
+                                        new XElement("Note", new XAttribute("id", campainNotes.ID),
+                                                             new XAttribute("name", campainNotes.Name),
+                                                             new XCData(campainNotes.RTF)))
                             )
                         )
                     );

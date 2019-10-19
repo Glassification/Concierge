@@ -360,7 +360,6 @@ namespace Concierge.Persistence
                         Ability = (Constants.Abilities)Enum.Parse(typeof(Constants.Abilities), (string)elem.Attribute("ability")),
                         KnownCantrips = (int)elem.Attribute("cantrips"),
                         KnownSpells = (int)elem.Attribute("known"),
-                        PreparedSpells = (int)elem.Attribute("prepared"),
                         Level = (int)elem.Attribute("level")
                     };
 
@@ -424,17 +423,29 @@ namespace Concierge.Persistence
                 //-------------------------------------------------------------------------------------------------------
                 // Parse Campain Notes
                 //-------------------------------------------------------------------------------------------------------
-                var campainNotes = root.Element("CampainNotes").Elements("Note");
+                var campainChapters = root.Element("CampainNotes").Elements("Chapter");
 
-                foreach (XElement elem in campainNotes)
+                foreach (XElement elem in campainChapters)
                 {
-                    Document document = new Document(new Guid((string)elem.Attribute("id")))
+                    Chapter chapter = new Chapter(new Guid((string)elem.Attribute("id")))
                     {
                         Name = (string)elem.Attribute("name"),
-                        RTF = elem.Value
                     };
 
-                    character.Documents.Add(document);
+                    var campainNotes = elem.Elements("Note");
+
+                    foreach (XElement innerElem in campainNotes)
+                    {
+                        Document document = new Document(new Guid((string)innerElem.Attribute("id")))
+                        {
+                            Name = (string)innerElem.Attribute("name"),
+                            RTF = innerElem.Value
+                        };
+
+                        chapter.Documents.Add(document);
+                    }
+
+                    character.Chapters.Add(chapter);
                 }
 
                 Program.Modified = false;

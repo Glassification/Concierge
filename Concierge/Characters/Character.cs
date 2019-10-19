@@ -121,11 +121,11 @@ namespace Concierge.Characters
             Appearance = new Appearance();
             Armor = new Armor();
             Attributes = new Attributes();
+            Chapters = new List<Chapter>();
             Classess = new List<Class>();
             ClassResources = new List<ClassResource>();
             Companion = new Companion();
             Details = new Details();
-            Documents = new List<Document>();
             Inventories = new List<Inventory>();
             MagicClasses = new List<MagicClass>();
             Personality = new Personality();
@@ -148,7 +148,7 @@ namespace Concierge.Characters
         public List<ClassResource> ClassResources { get; private set; }
         public Companion Companion { get; private set; }
         public Details Details { get; private set; }
-        public List<Document> Documents { get; set; }
+        public List<Chapter> Chapters { get; set; }
         public List<Inventory> Inventories { get; private set; }
         public List<MagicClass> MagicClasses { get; private set; }
         public Personality Personality { get; private set; }

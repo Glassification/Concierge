@@ -37,6 +37,7 @@ namespace Concierge.Characters.Collections
         public string Save { get; set; }
         public string Damage { get; set; }
         public string Description { get; set; }
+        public string Class { get; set; }
         public Guid ID { get; private set; }
     }
 }
