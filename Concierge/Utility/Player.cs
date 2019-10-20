@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Concierge.Presentation.DivideLootUI
+namespace Concierge.Utility
 {
     public class Player
     {

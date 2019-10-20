@@ -149,7 +149,7 @@
                 </Button>
             </StackPanel>
         </Grid>
-        
+
         <!--Spell class, spell slots-->
         <Grid Grid.Row="1"
               Margin="0, 0, 0, 0">
@@ -158,7 +158,7 @@
                 <ColumnDefinition Width="10*"/>
                 <ColumnDefinition Width="45*"/>
             </Grid.ColumnDefinitions>
-            
+
             <!--Spell classes-->
             <Grid Grid.Column="0"
                   Margin="3, 3, 3, 3">
@@ -248,7 +248,7 @@
                                        VerticalAlignment="Center"/>
                 </Grid>
             </Grid>
-            
+
             <!--Spell slots-->
             <Grid Grid.Column="2"
                   Margin="3, 3, 3, 3"
@@ -311,7 +311,7 @@
                             <RowDefinition Height="2*" />
                             <RowDefinition Height="4*" />
                         </Grid.RowDefinitions>
-                        
+
                         <!--Total-->
                         <Grid Grid.Row="0"
                               x:Name="TotalPactBox"
@@ -746,10 +746,14 @@
                 </Grid>
             </Grid>
         </Grid>
-        
+
         <!--Spell list-->
         <Grid Grid.Row="2"
               Margin="0, 3, 0, 0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="17*"/>
+                <ColumnDefinition Width="143*"/>
+            </Grid.ColumnDefinitions>
             <DataGrid x:Name="SpellListDataGrid"
                       AutoGenerateColumns="False"
                       VerticalScrollBarVisibility="Auto"
@@ -765,7 +769,7 @@
                       BorderThickness="0"
                       Style="{DynamicResource DGHeaderStyle}"
                       SelectionMode="Single"
-                      SelectionChanged="SpellListDataGrid_SelectionChanged">
+                      SelectionChanged="SpellListDataGrid_SelectionChanged" Grid.ColumnSpan="2" Margin="0,0,0,0.4">
                 <DataGrid.Columns>
                     <DataGridTextColumn 
                         Header="Preped"

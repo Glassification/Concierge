@@ -134,7 +134,11 @@
     <Compile Include="Presentation\DialogBoxes\ColorPickerWindow.xaml.cs">
       <DependentUpon>ColorPickerWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Presentation\DivideLootUI\Player.cs" />
+    <Compile Include="Presentation\ToolsPage.xaml.cs">
+      <DependentUpon>ToolsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Utility\Die.cs" />
+    <Compile Include="Utility\Player.cs" />
     <Compile Include="Presentation\EquipmentPage.xaml.cs">
       <DependentUpon>EquipmentPage.xaml</DependentUpon>
     </Compile>
@@ -255,6 +259,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Presentation\ToolsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Icons\dndnextlogo.ico" />
@@ -278,6 +286,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Presentation\DivideLootUI\" />
     <Folder Include="Presentation\RollDiceUI\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

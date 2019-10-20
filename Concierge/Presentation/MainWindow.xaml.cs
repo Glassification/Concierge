@@ -25,6 +25,7 @@ namespace Concierge.Presentation
         DetailsPage DetailsPage = new DetailsPage();
         NotesPage NotesPage = new NotesPage();
         SpellcastingPage SpellcastingPage = new SpellcastingPage();
+        ToolsPage ToolsPage = new ToolsPage();
 
         #endregion
 
@@ -43,6 +44,7 @@ namespace Concierge.Presentation
             DetailsPage.Visibility = Visibility.Collapsed;
             NotesPage.Visibility = Visibility.Collapsed;
             SpellcastingPage.Visibility = Visibility.Collapsed;
+            ToolsPage.Visibility = Visibility.Collapsed;
             OverviewPage.Visibility = Visibility.Visible;
             FrameContent.Content = OverviewPage;
 
@@ -135,6 +137,7 @@ namespace Concierge.Presentation
             DetailsPage.Draw();
             NotesPage.Draw();
             SpellcastingPage.Draw();
+            ToolsPage.Draw();
         }
 
         public void LongRest()
@@ -321,6 +324,7 @@ namespace Concierge.Presentation
             OverviewPage.Visibility = Visibility.Collapsed;
             DetailsPage.Visibility = Visibility.Collapsed;
             SpellcastingPage.Visibility = Visibility.Collapsed;
+            ToolsPage.Visibility = Visibility.Collapsed;
             NotesPage.Visibility = Visibility.Visible;
             FrameContent.Content = NotesPage;
             NotesPage.Draw();
@@ -334,6 +338,7 @@ namespace Concierge.Presentation
             DetailsPage.Visibility = Visibility.Collapsed;
             NotesPage.Visibility = Visibility.Collapsed;
             SpellcastingPage.Visibility = Visibility.Collapsed;
+            ToolsPage.Visibility = Visibility.Collapsed;
             InventoryPage.Visibility = Visibility.Visible;
             FrameContent.Content = InventoryPage;
             InventoryPage.Draw();
@@ -347,6 +352,7 @@ namespace Concierge.Presentation
             OverviewPage.Visibility = Visibility.Collapsed;
             NotesPage.Visibility = Visibility.Collapsed;
             SpellcastingPage.Visibility = Visibility.Collapsed;
+            ToolsPage.Visibility = Visibility.Collapsed;
             DetailsPage.Visibility = Visibility.Visible;
             FrameContent.Content = DetailsPage;
             DetailsPage.Draw();
@@ -360,6 +366,7 @@ namespace Concierge.Presentation
             DetailsPage.Visibility = Visibility.Collapsed;
             NotesPage.Visibility = Visibility.Collapsed;
             SpellcastingPage.Visibility = Visibility.Collapsed;
+            ToolsPage.Visibility = Visibility.Collapsed;
             AbilitiesPage.Visibility = Visibility.Visible;
             FrameContent.Content = AbilitiesPage;
             AbilitiesPage.Draw();
@@ -373,6 +380,7 @@ namespace Concierge.Presentation
             DetailsPage.Visibility = Visibility.Collapsed;
             NotesPage.Visibility = Visibility.Collapsed;
             SpellcastingPage.Visibility = Visibility.Collapsed;
+            ToolsPage.Visibility = Visibility.Collapsed;
             EquipmentPage.Visibility = Visibility.Visible;
             FrameContent.Content = EquipmentPage;
             EquipmentPage.Draw();
@@ -386,6 +394,7 @@ namespace Concierge.Presentation
             DetailsPage.Visibility = Visibility.Collapsed;
             NotesPage.Visibility = Visibility.Collapsed;
             SpellcastingPage.Visibility = Visibility.Collapsed;
+            ToolsPage.Visibility = Visibility.Collapsed;
             OverviewPage.Visibility = Visibility.Visible;
             FrameContent.Content = OverviewPage;
             OverviewPage.Draw();
@@ -400,13 +409,29 @@ namespace Concierge.Presentation
             DetailsPage.Visibility = Visibility.Collapsed;
             NotesPage.Visibility = Visibility.Collapsed;
             SpellcastingPage.Visibility = Visibility.Visible;
+            ToolsPage.Visibility = Visibility.Collapsed;
             FrameContent.Content = SpellcastingPage;
             SpellcastingPage.Draw();
+        }
+
+        private void ItemTools_Selected(object sender, RoutedEventArgs e)
+        {
+            InventoryPage.Visibility = Visibility.Collapsed;
+            EquipmentPage.Visibility = Visibility.Collapsed;
+            AbilitiesPage.Visibility = Visibility.Collapsed;
+            OverviewPage.Visibility = Visibility.Collapsed;
+            DetailsPage.Visibility = Visibility.Collapsed;
+            NotesPage.Visibility = Visibility.Collapsed;
+            SpellcastingPage.Visibility = Visibility.Collapsed;
+            ToolsPage.Visibility = Visibility.Visible;
+            FrameContent.Content = ToolsPage;
+            ToolsPage.Draw();
         }
 
         #endregion
 
         #endregion
+
 
     }
 }

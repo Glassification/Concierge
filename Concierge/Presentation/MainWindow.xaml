@@ -207,7 +207,7 @@
                                 <TextBlock Text="Spellcasting" VerticalAlignment="Center" Margin="20 10"/>
                             </StackPanel>
                         </ListViewItem>
-                        <ListViewItem x:Name="ItemTools" Height="60">
+                        <ListViewItem x:Name="ItemTools" Height="60" Selected="ItemTools_Selected">
                             <StackPanel Orientation="Horizontal">
                                 <materialDesign:PackIcon Kind="Screwdriver" Height="25" Width="25" Margin="10"/>
                                 <TextBlock Text="Tools" VerticalAlignment="Center" Margin="20 10"/>
