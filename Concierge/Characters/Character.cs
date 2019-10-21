@@ -2,6 +2,7 @@
 using Concierge.Utility;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Concierge.Characters
 {
@@ -137,6 +138,11 @@ namespace Concierge.Characters
             Vitality = new Vitality();
             Wealth = new Wealth();
             Weapons = new List<Weapon>();
+        }
+
+        public Chapter GetChapterById(Guid id)
+        {
+            return Chapters.Where(x => x.ID.Equals(id)).Single();
         }
 
         public List<Ability> Abilities { get; set; }

@@ -20,6 +20,11 @@ namespace Concierge.Characters.Collections
             ID = id;
         }
 
+        public Document GetDocumentById(Guid id)
+        {
+            return Documents.Where(x => x.ID.Equals(id)).Single();
+        }
+
         public List<Document> Documents { get; set; }
         public string Name { get; set; }
         public Guid ID { get; private set; }

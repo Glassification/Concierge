@@ -194,7 +194,7 @@
                         </Button>
                         <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"
                                    Foreground="White"/>
-                        <Button x:Name="ButtonBold" 
+                        <ToggleButton x:Name="ButtonBold" 
                             Height="50" 
                             Width="60" 
                             HorizontalAlignment="Center" 
@@ -205,8 +205,8 @@
                             ToolTip="Bold"
                             Click="ButtonBold_Click">
                             <materialDesign:PackIcon Kind="FormatBold" Width="25" Height="25"/>
-                        </Button>
-                        <Button x:Name="ButtonItalic" 
+                        </ToggleButton>
+                        <ToggleButton x:Name="ButtonItalic" 
                             Height="50" 
                             Width="60" 
                             HorizontalAlignment="Center" 
@@ -217,8 +217,8 @@
                             ToolTip="Italic"
                             Click="ButtonItalic_Click">
                             <materialDesign:PackIcon Kind="FormatItalic" Width="25" Height="25"/>
-                        </Button>
-                        <Button x:Name="ButtonUnderline" 
+                        </ToggleButton>
+                        <ToggleButton x:Name="ButtonUnderline" 
                             Height="50" 
                             Width="60" 
                             HorizontalAlignment="Center" 
@@ -229,19 +229,18 @@
                             ToolTip="Underline"
                             Click="ButtonUnderline_Click">
                             <materialDesign:PackIcon Kind="FormatUnderline" Width="25" Height="25"/>
-                        </Button>
-                        <Button x:Name="ButtonFont" 
-                            Height="50" 
-                            Width="60" 
-                            HorizontalAlignment="Center" 
-                            VerticalAlignment="Center" 
-                            Background="{x:Null}" 
-                            BorderBrush="{x:Null}" 
-                            Foreground="White" 
-                            ToolTip="Font"
-                            Click="ButtonFont_Click">
-                            <materialDesign:PackIcon Kind="FormatFont" Width="25" Height="25"/>
-                        </Button>
+                        </ToggleButton>
+                        <ComboBox Name="FontFamilyList" 
+                                  Width="150" 
+                                  SelectionChanged="FontFamilyList_SelectionChanged" 
+                                  Background="DimGray"
+                                  Margin="5, 20, 5, 20"/>
+                        <ComboBox Name="FontSizeList" 
+                                  Width="50" 
+                                  IsEditable="True" 
+                                  TextBoxBase.TextChanged="FontSizeList_TextChanged" 
+                                  Background="DimGray"
+                                  Margin="5, 20, 5, 20"/>
                         <Button x:Name="ButtonSpellcheck" 
                             Height="50" 
                             Width="60" 
@@ -264,7 +263,7 @@
                             Foreground="White" 
                             ToolTip="Colour"
                             Click="ButtonColor_Click">
-                            <xctk:ColorPicker x:Name="ColourPicker"/>
+                            <materialDesign:PackIcon Kind="FormatColorText" Width="25" Height="25"/>
                         </Button>
                         <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"
                                    Foreground="White"/>
@@ -292,51 +291,16 @@
                             Click="ButtonNumbering_Click">
                             <materialDesign:PackIcon Kind="FormatListNumbered" Width="25" Height="25"/>
                         </Button>
-                        <Button x:Name="ButtonAlignLeft" 
-                            Height="50" 
-                            Width="60" 
-                            HorizontalAlignment="Center" 
-                            VerticalAlignment="Center" 
-                            Background="{x:Null}" 
-                            BorderBrush="{x:Null}" 
-                            Foreground="White" 
-                            ToolTip="Align Left"
-                            Click="ButtonAlignLeft_Click">
-                            <materialDesign:PackIcon Kind="FormatAlignLeft" Width="25" Height="25"/>
-                        </Button>
-                        <Button x:Name="ButtonAlignCentre" 
-                            Height="50" 
-                            Width="60" 
-                            HorizontalAlignment="Center" 
-                            VerticalAlignment="Center" 
-                            Background="{x:Null}" 
-                            BorderBrush="{x:Null}" 
-                            Foreground="White" 
-                            ToolTip="Align Centre"
-                            Click="ButtonAlignCentre_Click">
-                            <materialDesign:PackIcon Kind="FormatAlignMiddle" Width="25" Height="25"/>
-                        </Button>
-                        <Button x:Name="ButtonAlignRight" 
-                            Height="50" 
-                            Width="60" 
-                            HorizontalAlignment="Center" 
-                            VerticalAlignment="Center" 
-                            Background="{x:Null}" 
-                            BorderBrush="{x:Null}" 
-                            Foreground="White" 
-                            ToolTip="Align Right"
-                            Click="ButtonAlignRight_Click">
-                            <materialDesign:PackIcon Kind="FormatAlignRight" Width="25" Height="25"/>
-                        </Button>
                     </StackPanel>
                 </Grid>
                 
                 <!--Text-->
                 <Grid Grid.Row="1">
                     <RichTextBox x:Name="NotesTextBox"
-                             Background="#FF333333"
-                             Margin="3"
-                             BorderBrush="{x:Null}">
+                                 Background="#FF333333"
+                                 Margin="3"
+                                 BorderBrush="{x:Null}"
+                                 SelectionChanged="NotesTextBox_SelectionChanged">
 
                     </RichTextBox>
                 </Grid>

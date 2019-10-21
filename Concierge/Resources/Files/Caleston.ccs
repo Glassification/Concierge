@@ -241,5 +241,33 @@
     <Perception value="0" />
     <Senses value="" />
   </Companion>
-  <CampainNotes />
+  <CampainNotes>
+    <Chapter name="Chapter 1" id="7ca018dd-b6b8-48e6-8791-6ac46bafd86a">
+      <Note name="Note 1" id="120d997e-7a26-4e94-bc3a-674f9796c797">
+        <![CDATA[{\rtf1\ansi\ansicpg1252\deff0\deflang4105{\fonttbl{\f0\fnil\fcharset0 Microsoft Sans Serif;}}
+{\colortbl ;\red255\green255\blue255;}
+\viewkind4\uc1\pard\cf1\f0\fs29         Our story begins, well it begins as you might expect, in a hole in the ground there lived a badger. Now this was not your ordinary badger, this badger had lived quite a successful life; reproducing many time, always well fed, surviving droughts and floods, and coming out on top of everything life had to hurl at it. Until one fateful evening when everything changed. The badger was bedding down for the night when it heard a loud bang from outside its burrow. After a lifetime of success this badger didn\rquote t think twice about poking its head outside to see who would dare interrupt its sleep. Looking about, all was quiet on the darkened paths of the university. You see, this was a place for training the next generation of wizards and our badger friend had lived its entire life near all manner of magical phenomenon, some of which had cast a kind of luck spell on it. This was no ordinary badger, this was a magical one! But it is at this point in our story when this magical badger\rquote s magical luck ran out, for an even more magical creature, a basselope (part basset hound part antelope), came bounding out of the tree line and snatched the badger between its jaws. As this stories focal point thus far slowly expired, its last thoughts were of\'85\'85\'85 nothing. Because badgers don\rquote t have the capacity for thought because they don\rquote t have souls, and he went straight to hell. \par
+\par
+        This leads us very nicely to this stories true main character: Isaac Hawthorne, wizard-intraining. He had been at the collage for 6 years and thus far had not mastered a single spell. It was amazing he was even still in school at this point considering it took him 5 tries to even complete the first year course Introduction to Spell Casting 1020. Try as he might, he could just not cast any spell from the books. He understood the theory, he could read the books cover to cover in no time at all, but none of the spell would ever work for him. The only reason he was able to pass any of his courses was by getting one of his classmates to cast the spells for him, while he would mimic the hand motions and incantations. The administration were getting suspicious that he was cheating his exams but couldn\rquote t prove anything outright, so they came up with a plan. They decided to call for a surprise private demonstration of Isaac\rquote s ability. He was led into a large chamber with the dean of wizardry and 8 members of the administration in attendance, and asked to cast the spell of his choice. Sensing no way out of this predicament, Isaac opened his spell book, fumbled through the pages, and found a simple Dancing Lights cantrip. He set to work, making the hand motions and muttered the phrases\'85\'85. And nothing happened. As a look of smug satisfaction grew across the dean\rquote s face, Isaac thought about how great a distraction would be right now. Maybe a wardrobe malfunction or an animal crashing through the hall, something, anything, to get him out of this. No sooner had the thoughts entered his mind when three balls of magical energy came shooting out of his hands towards his audience. He had just cast magic missile at the dean of the university. The first two shots connected with the dean and left two large smoldering holes in his torso. The last shot went wide and hit a support column, causing it to collapse on the remaining administration in the chamber.\par
+\par
+        Isaac left the collage that night and set out on the road. Even though he had just inadvertently killed 9 people, he was smiling. For he may have failed as a wizard, but his spell casting days were just beginning. \fs24\par
+}
+]]>
+      </Note>
+      <Note name="Note 2" id="dccec941-e6b8-409b-9f4c-2028351aa350">
+        <![CDATA[{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Microsoft Sans Serif;}{\f1\fnil\fcharset2 Symbol;}}
+{\colortbl ;\red255\green255\blue255;\red0\green255\blue255;\red255\green128\blue128;\red128\green64\blue64;\red128\green255\blue128;}
+\viewkind4\uc1\pard\cf1\b\f0\fs36 Knowledge of Languages\cf2\par
+\par
+\cf3\f1 - \f0\fs32 Draconic\par
+\fs24 Didn't originally know or study the draconic language. Once I set out on the road after discovering my powers, it just sort of came to me. Only in bits and pieces first, but soon I could both read and write it fluenty.\cf4\par
+\fs32\par
+\cf5\f1 -\f0  Orc\par
+\fs24 I learned Orc while still at the collage. Since at this point I had given up on trying to learn spells and was just faking my through, I decided to learn about other things. One of the topics that caught my fancy was learning a really annoying language to speak in fornt of others and really piss them off. With its grunts and harsh sounds, Orc was the perfect candidate. \par
+\cf1\b0\par
+}
+]]>
+      </Note>
+    </Chapter>
+  </CampainNotes>
 </Character>

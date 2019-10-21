@@ -55,6 +55,13 @@ namespace Concierge.Presentation
 
         #region Methods
 
+        protected override void OnClosed(EventArgs e)
+        {
+            base.OnClosed(e);
+
+            App.Current.Shutdown();
+        }
+
         public void CloseWindow()
         {
             if (Program.Modified)
