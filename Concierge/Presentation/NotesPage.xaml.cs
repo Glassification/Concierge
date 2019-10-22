@@ -34,6 +34,8 @@ namespace Concierge.Presentation
             Lock = false;
             FontFamilyList.ItemsSource = Fonts.SystemFontFamilies.OrderBy(f => f.Source);
             FontSizeList.ItemsSource = new List<double>() { 8, 9, 10, 11, 12, 14, 16, 18, 20, 22, 24, 26, 28, 36, 48, 72 };
+            //ButtonUndo.IsEnabled = false;
+            //ButtonRedo.IsEnabled = false;
         }
 
         #endregion
@@ -42,16 +44,19 @@ namespace Concierge.Presentation
 
         public void Draw()
         {
-            //DrawNotes();
             DrawTreeView();
         }
 
-        private void DrawNotes()
+        public void ClearTextBox()
         {
-            if (Program.Character.Chapters.Count > 0 && Program.Character.Chapters[0].Documents.Count > 0)
+            NotesTextBox.Document.Blocks.Clear();
+        }
+
+        public void SaveTextBox()
+        {
+            if (SelectedDocument != null)
             {
-                CurrentDocumentText = Program.Character.Chapters[0].Documents[0].RTF;
-                LoadCurrentDocument(CurrentDocumentText);
+                SelectedDocument.RTF = SaveCurrentDocument();
             }
         }
 
@@ -146,6 +151,8 @@ namespace Concierge.Presentation
                         SelectedDocument.RTF = SaveCurrentDocument();
                     }
 
+                    NotesTextBox.IsUndoEnabled = false;
+                    NotesTextBox.IsUndoEnabled = true;
                     SelectedDocument = treeViewItem.Tag as Document;
                     LoadCurrentDocument(SelectedDocument.RTF);
                 }
@@ -158,27 +165,28 @@ namespace Concierge.Presentation
 
         private void ButtonCut_Click(object sender, RoutedEventArgs e)
         {
-
+            Clipboard.SetText(NotesTextBox.Selection.Text);
+            NotesTextBox.Selection.Text = string.Empty;
         }
 
         private void ButtonCopy_Click(object sender, RoutedEventArgs e)
         {
-
+            Clipboard.SetText(NotesTextBox.Selection.Text);
         }
 
         private void ButtonPaste_Click(object sender, RoutedEventArgs e)
         {
-
+            NotesTextBox.Selection.Text = Clipboard.GetText();
         }
 
         private void ButtonUndo_Click(object sender, RoutedEventArgs e)
         {
-
+            NotesTextBox.Undo();
         }
 
         private void ButtonRedo_Click(object sender, RoutedEventArgs e)
         {
-            
+            NotesTextBox.Redo();
         }
 
         private void ButtonBold_Click(object sender, RoutedEventArgs e)
@@ -209,56 +217,13 @@ namespace Concierge.Presentation
         {
             if ((bool)ButtonUnderline.IsChecked)
             {
-                NotesTextBox.Selection.ApplyPropertyValue(TextDecoration.PenProperty, TextDecorations.Underline);
+                NotesTextBox.Selection.ApplyPropertyValue(Inline.TextDecorationsProperty, TextDecorations.Underline);
             }
             else
             {
-                //NotesTextBox.Selection.ApplyPropertyValue(TextDecoration.PenProperty, TextDecorations.);
+                NotesTextBox.Selection.ApplyPropertyValue(Inline.TextDecorationsProperty, null);
             }
         }
-
-        private void ButtonFont_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void ButtonSpellcheck_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void ButtonColor_Click(object sender, RoutedEventArgs e)
-        {
-        }
-
-        private void ButtonBullets_Click(object sender, RoutedEventArgs e)
-        {
-           // NotesTextBox.Selection.ApplyPropertyValue(Inline.)
-        }
-
-        private void ButtonNumbering_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void ButtonAlignLeft_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void ButtonAlignCentre_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void ButtonAlignRight_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        #endregion
-
-        #endregion
 
         private void NotesTextBox_SelectionChanged(object sender, RoutedEventArgs e)
         {
@@ -269,14 +234,67 @@ namespace Concierge.Presentation
 
             obj = NotesTextBox.Selection.GetPropertyValue(Inline.FontStyleProperty);
             ButtonItalic.IsChecked = (obj != DependencyProperty.UnsetValue) && (obj.Equals(FontStyles.Italic));
+
+            obj = NotesTextBox.Selection.GetPropertyValue(Inline.TextDecorationsProperty);
+            ButtonUnderline.IsChecked = (obj != DependencyProperty.UnsetValue) && (obj.Equals(TextDecorations.Underline));
+
+            obj = NotesTextBox.Selection.GetPropertyValue(Inline.FontFamilyProperty);
+            FontFamilyList.SelectedItem = obj;
+
+            obj = NotesTextBox.Selection.GetPropertyValue(Inline.FontSizeProperty);
+            FontSizeList.Text = obj == DependencyProperty.UnsetValue ? string.Empty : obj.ToString();
+
+            obj = NotesTextBox.Selection.GetPropertyValue(TextElement.ForegroundProperty);
+            ColorPicker.SelectedColor = obj == DependencyProperty.UnsetValue ? Colors.White : (Color)ColorConverter.ConvertFromString(obj.ToString());
+
+            //ButtonUndo.IsEnabled = NotesTextBox.CanUndo;
+            //ButtonRedo.IsEnabled = NotesTextBox.CanRedo;
         }
 
         private void FontFamilyList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            if (FontFamilyList.SelectedItem != null)
+                NotesTextBox.Selection.ApplyPropertyValue(Inline.FontFamilyProperty, FontFamilyList.SelectedItem);
         }
 
         private void FontSizeList_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            double test;
+
+            if (double.TryParse(FontSizeList.Text, out test))
+            {
+                NotesTextBox.Selection.ApplyPropertyValue(Inline.FontSizeProperty, FontSizeList.Text);
+            }
+        }
+
+        private void ColorPicker_SelectedColorChanged(object sender, RoutedPropertyChangedEventArgs<Color?> e)
+        {
+            NotesTextBox.Selection.ApplyPropertyValue(TextElement.ForegroundProperty, ColorPicker.SelectedColor.ToString());
+        }
+
+        #endregion
+
+        #endregion
+
+        private void ButtonClear_Click(object sender, RoutedEventArgs e)
+        {
+            SaveTextBox();
+            ClearTextBox();
+
+            TreeViewItem item = NotesTreeView?.SelectedItem as TreeViewItem;
+
+            if (item != null)
+            {
+                item.IsSelected = false;
+            }
+        }
+
+        private void ButtonUp_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ButtonDown_Click(object sender, RoutedEventArgs e)
         {
 
         }

@@ -77,6 +77,7 @@ namespace Concierge.Presentation
             Program.CcsFile = null;
             Program.Character.Reset();
 
+            NotesPage.ClearTextBox();
             DrawAll();
         }
 
@@ -99,6 +100,7 @@ namespace Concierge.Presentation
             
             if (Program.CcsFile != null)
             {
+                NotesPage.SaveTextBox();
                 CharacterSaver.SaveCharacterSheet(Program.Character, Program.CcsFile);
             }
             else
@@ -115,6 +117,7 @@ namespace Concierge.Presentation
                 Program.CcsFile = new CcsFile();
                 Program.CcsFile.Path = saveFileDialog.FileName;
 
+                NotesPage.SaveTextBox();
                 CharacterSaver.SaveCharacterSheet(Program.Character, Program.CcsFile);
             }
         }
