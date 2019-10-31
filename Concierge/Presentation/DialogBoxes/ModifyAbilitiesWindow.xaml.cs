@@ -1,5 +1,4 @@
 ﻿using Concierge.Characters.Collections;
-using Concierge.Utility;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,29 +16,28 @@ using System.Windows.Shapes;
 namespace Concierge.Presentation.DialogBoxes
 {
     /// <summary>
-    /// Interaction logic for ModifyInventoryWindow.xaml
+    /// Interaction logic for ModifyAbilitiesWindow.xaml
     /// </summary>
-    public partial class ModifyInventoryWindow : Window
+    public partial class ModifyAbilitiesWindow : Window
     {
 
         #region Constructor
 
-        public ModifyInventoryWindow()
+        public ModifyAbilitiesWindow()
         {
             InitializeComponent();
-            NameComboBox.ItemsSource = Constants.Inventories;
         }
 
         #endregion
 
         #region Methods
 
-        public void ShowEdit(Inventory inventory)
+        public void ShowEdit(Ability ability)
         {
-            HeaderTextBlock.Text = "Edit Item";
-            SelectedItemId = inventory.ID;
+            HeaderTextBlock.Text = "Edit Ability";
+            SelectedAbilityId = ability.ID;
             Editing = true;
-            FillFields(inventory);
+            FillFields(ability);
             ButtonApply.Visibility = Visibility.Collapsed;
 
             ShowDialog();
@@ -47,7 +45,7 @@ namespace Concierge.Presentation.DialogBoxes
 
         public void ShowAdd()
         {
-            HeaderTextBlock.Text = "Add Item";
+            HeaderTextBlock.Text = "Add Ability";
             Editing = false;
             ClearFields();
             ButtonApply.Visibility = Visibility.Visible;
@@ -55,41 +53,49 @@ namespace Concierge.Presentation.DialogBoxes
             ShowDialog();
         }
 
-        private void FillFields(Inventory inventory)
+        private void FillFields(Ability ability)
         {
-            NameComboBox.Text = inventory.Name;
-            AmountUpDown.Value = inventory.Amount;
-            WeightUpDown.Value = inventory.Weight;
-            NotesTextBox.Text = inventory.Note;
+            NameTextBox.Text = ability.Name;
+            LevelTextBox.Text = ability.Level;
+            UsesTextBox.Text = ability.Uses;
+            RecoveryTextBox.Text = ability.Recovery;
+            ActionTextBox.Text = ability.Action;
+            NotesTextBox.Text = ability.Note;
         }
 
         private void ClearFields()
         {
-            NameComboBox.Text = string.Empty;
-            AmountUpDown.Value = 0;
-            WeightUpDown.Value = 0.0;
+            NameTextBox.Text = string.Empty;
+            LevelTextBox.Text = string.Empty;
+            UsesTextBox.Text = string.Empty;
+            RecoveryTextBox.Text = string.Empty;
+            ActionTextBox.Text = string.Empty;
             NotesTextBox.Text = string.Empty;
         }
 
-        private Inventory ToInventory()
+        private Ability ToAbility()
         {
-            Inventory inventory = new Inventory()
+            Ability ability = new Ability()
             {
-                Name = NameComboBox.Text,
-                Amount = AmountUpDown.Value ?? 0,
-                Weight = WeightUpDown.Value ?? 0.0,
+                Name = NameTextBox.Text,
+                Level = LevelTextBox.Text,
+                Uses = UsesTextBox.Text,
+                Recovery = RecoveryTextBox.Text,
+                Action = ActionTextBox.Text,
                 Note = NotesTextBox.Text
             };
 
-            return inventory;
+            return ability;
         }
 
-        private void UpdateInventory(Inventory inventory)
+        private void UpdateAbility(Ability ability)
         {
-            inventory.Name = NameComboBox.Text;
-            inventory.Amount = AmountUpDown.Value ?? 0;
-            inventory.Weight = WeightUpDown.Value ?? 0.0;
-            inventory.Note = NotesTextBox.Text;
+            ability.Name = NameTextBox.Text;
+            ability.Level = LevelTextBox.Text;
+            ability.Uses = UsesTextBox.Text;
+            ability.Recovery = RecoveryTextBox.Text;
+            ability.Action = ActionTextBox.Text;
+            ability.Note = NotesTextBox.Text;
         }
 
         #endregion
@@ -97,7 +103,7 @@ namespace Concierge.Presentation.DialogBoxes
         #region Accessors
 
         private bool Editing { get; set; }
-        private Guid SelectedItemId { get; set; }
+        private Guid SelectedAbilityId { get; set; }
 
         #endregion
 
@@ -120,7 +126,7 @@ namespace Concierge.Presentation.DialogBoxes
 
         private void ButtonApply_Click(object sender, RoutedEventArgs e)
         {
-            Program.Character.Inventories.Add(ToInventory());
+            Program.Character.Abilities.Add(ToAbility());
             ClearFields();
         }
 
@@ -128,22 +134,14 @@ namespace Concierge.Presentation.DialogBoxes
         {
             if (Editing)
             {
-                UpdateInventory(Program.Character.GetInventoryById(SelectedItemId));
+                UpdateAbility(Program.Character.GetAbilityById(SelectedAbilityId));
             }
             else
             {
-                Program.Character.Inventories.Add(ToInventory());
+                Program.Character.Abilities.Add(ToAbility());
             }
 
             Hide();
-        }
-
-        private void NameComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (NameComboBox.SelectedItem != null)
-            {
-                FillFields(NameComboBox.SelectedItem as Inventory);
-            }
         }
 
         private void ButtonCancel_Click(object sender, RoutedEventArgs e)
@@ -152,6 +150,5 @@ namespace Concierge.Presentation.DialogBoxes
         }
 
         #endregion
-
     }
 }

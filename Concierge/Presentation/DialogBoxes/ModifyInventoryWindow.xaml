@@ -14,7 +14,9 @@
         WindowStyle="None"
         Background="Black"
         ResizeMode="NoResize"
-        KeyDown="Window_KeyDown">
+        KeyDown="Window_KeyDown"
+        BorderThickness="1"
+        BorderBrush="#429cd6">
 
     <Window.Resources>
         <ControlTemplate x:Key="ComboBoxToggleButton" TargetType="{x:Type ToggleButton}">
@@ -24,22 +26,22 @@
                     <ColumnDefinition Width="20" />
                 </Grid.ColumnDefinitions>
                 <Border
-                  x:Name="Border" 
+                  x:Name="Border"
                   Grid.ColumnSpan="2"
                   CornerRadius="0"
                   Background="#FF3F3F3F"
                   BorderBrush="#FF97A0A5"
                   BorderThickness="1" />
-                <Border 
+                <Border
                   Grid.Column="0"
-                  CornerRadius="0" 
-                  Margin="1" 
-                  Background="#FF3F3F3F" 
+                  CornerRadius="0"
+                  Margin="1"
+                  Background="#FF3F3F3F"
                   BorderBrush="#FF97A0A5"
                   BorderThickness="0,0,1,0" />
-                <Path 
+                <Path
                   x:Name="Arrow"
-                  Grid.Column="1"     
+                  Grid.Column="1"
                   Fill="White"
                   HorizontalAlignment="Center"
                   VerticalAlignment="Center"
@@ -79,10 +81,10 @@
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type ComboBox}">
                         <Grid>
-                            <ToggleButton 
-                            Name="ToggleButton" 
-                            Template="{StaticResource ComboBoxToggleButton}" 
-                            Grid.Column="2" 
+                            <ToggleButton
+                            Name="ToggleButton"
+                            Template="{StaticResource ComboBoxToggleButton}"
+                            Grid.Column="2"
                             Focusable="false"
                             IsChecked="{Binding Path=IsDropDownOpen,Mode=TwoWay,RelativeSource={RelativeSource TemplatedParent}}"
                             ClickMode="Press">
@@ -94,29 +96,29 @@
                             VerticalAlignment="Center"
                             HorizontalAlignment="Left" />
                             <TextBox x:Name="PART_EditableTextBox"
-                            Style="{x:Null}" 
-                            Template="{StaticResource ComboBoxTextBox}" 
-                            HorizontalAlignment="Left" 
-                            VerticalAlignment="Center" 
+                            Style="{x:Null}"
+                            Template="{StaticResource ComboBoxTextBox}"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
                             Margin="13,3,23,3"
-                            Focusable="True" 
+                            Focusable="True"
                             Background="#FF3F3F3F"
                             Foreground="White"
                             Visibility="Hidden"
                             IsReadOnly="{TemplateBinding IsReadOnly}"/>
-                            <Popup 
+                            <Popup
                             Name="Popup"
                             Placement="Bottom"
                             IsOpen="{TemplateBinding IsDropDownOpen}"
-                            AllowsTransparency="True" 
+                            AllowsTransparency="True"
                             Focusable="False"
                             PopupAnimation="Slide">
 
                                 <Grid Name="DropDown"
-                              SnapsToDevicePixels="True"                
+                              SnapsToDevicePixels="True"
                               MinWidth="{TemplateBinding ActualWidth}"
                               MaxHeight="{TemplateBinding MaxDropDownHeight}">
-                                    <Border 
+                                    <Border
                                 x:Name="DropDownBorder"
                                 Background="#FF3F3F3F"
 
@@ -184,16 +186,16 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="8*"/>
-            <RowDefinition Height="1*"/>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="360"/>
+            <RowDefinition Height="45"/>
         </Grid.RowDefinitions>
 
         <!--Header-->
         <Grid Grid.Row="0">
             <TextBlock Text="Add Item"
                        x:Name="HeaderTextBlock"
-                       Foreground="White"
+                       Foreground="#429cd6"
                        FontSize="35"
                        HorizontalAlignment="Left"
                        VerticalAlignment="Center"
@@ -206,7 +208,7 @@
                     VerticalAlignment="Center"
                     Background="{x:Null}"
                     BorderBrush="{x:Null}"
-                    Foreground="IndianRed"
+                    Foreground="Red"
                     ToolTip="Close"
                     Click="ButtonClose_Click">
                 <materialDesign:PackIcon Kind="CloseBoxOutline" Width="25" Height="25"/>
@@ -340,35 +342,41 @@
                 </Grid>
             </Grid>
         </Grid>
-        
+
         <!--Buttons-->
         <Grid Grid.Row="2">
             <StackPanel Orientation="Horizontal"
                         VerticalAlignment="Center"
                         HorizontalAlignment="Center">
-                <Button x:Name="ButtonApply"
-                        Height="50"
-                        Width="60"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
-                        Background="{x:Null}"
-                        BorderBrush="{x:Null}"
-                        Foreground="OrangeRed"
-                        ToolTip="Add"
-                        Click="ButtonApply_Click">
-                    <materialDesign:PackIcon Kind="PlusBox" Width="25" Height="25"/>
-                </Button>
                 <Button x:Name="ButtonOK"
                         Height="50"
                         Width="60"
-                        HorizontalAlignment="Right"
-                        VerticalAlignment="Center"
                         Background="{x:Null}"
                         BorderBrush="{x:Null}"
                         Foreground="Green"
-                        ToolTip="Accept"
+                        ToolTip="OK"
                         Click="ButtonOK_Click">
                     <materialDesign:PackIcon Kind="CheckBox" Width="25" Height="25"/>
+                </Button>
+                <Button x:Name="ButtonApply"
+                        Height="50"
+                        Width="60"
+                        Background="{x:Null}"
+                        BorderBrush="{x:Null}"
+                        Foreground="OrangeRed"
+                        ToolTip="Apply"
+                        Click="ButtonApply_Click">
+                    <materialDesign:PackIcon Kind="PlusBox" Width="25" Height="25"/>
+                </Button>
+                <Button x:Name="ButtonCancel"
+                        Height="50"
+                        Width="60"
+                        Background="{x:Null}"
+                        BorderBrush="{x:Null}"
+                        Foreground="IndianRed"
+                        ToolTip="Cancel"
+                        Click="ButtonCancel_Click">
+                    <materialDesign:PackIcon Kind="Cancel" Width="25" Height="25"/>
                 </Button>
             </StackPanel>
         </Grid>

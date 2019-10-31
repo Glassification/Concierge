@@ -1,4 +1,5 @@
 ﻿using Concierge.Characters.Collections;
+using Concierge.Presentation.DialogBoxes;
 using Concierge.Utility;
 using System;
 using System.Collections.Generic;
@@ -29,6 +30,7 @@ namespace Concierge.Presentation
         {
             InitializeComponent();
             DataContext = this;
+            ModifyAbilitiesWindow = new ModifyAbilitiesWindow();
         }
 
         #endregion
@@ -62,6 +64,8 @@ namespace Concierge.Presentation
                 return SystemParameters.PrimaryScreenHeight - 100;
             }
         }
+
+        private ModifyAbilitiesWindow ModifyAbilitiesWindow { get; }
 
         #endregion
 
@@ -112,12 +116,17 @@ namespace Concierge.Presentation
 
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
-
+            ModifyAbilitiesWindow.ShowAdd();
+            FillList();
         }
 
         private void ButtonEdit_Click(object sender, RoutedEventArgs e)
         {
-
+            if (AbilitiesDataGrid.SelectedItem != null)
+            {
+                ModifyAbilitiesWindow.ShowEdit((Ability)AbilitiesDataGrid.SelectedItem);
+                FillList();
+            }
         }
 
         private void ButtonDelete_Click(object sender, RoutedEventArgs e)
