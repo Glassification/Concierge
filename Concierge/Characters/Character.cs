@@ -145,6 +145,11 @@ namespace Concierge.Characters
             return Chapters.Where(x => x.ID.Equals(id)).Single();
         }
 
+        public Inventory GetInventoryById(Guid id)
+        {
+            return Inventories.Where(x => x.ID.Equals(id)).Single();
+        }
+
         public List<Ability> Abilities { get; set; }
         public List<Ammunition> Ammunitions { get; private set; }
         public Appearance Appearance { get; private set; }

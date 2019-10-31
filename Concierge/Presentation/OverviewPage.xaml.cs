@@ -1,4 +1,5 @@
-﻿using Concierge.Characters.Collections;
+﻿using Concierge.Characters;
+using Concierge.Characters.Collections;
 using Concierge.Utility;
 using System;
 using System.Windows;
@@ -21,6 +22,51 @@ namespace Concierge.Presentation
             InitializeComponent();
             DataContext = this;
             ResourceIndex = 0;
+
+            StrengthProficiencyBox.MouseDown += SavingThrows_MouseDown;
+            DexterityProficiencyBox.MouseDown += SavingThrows_MouseDown;
+            ConstitutionProficiencyBox.MouseDown += SavingThrows_MouseDown;
+            IntelligenceProficiencyBox.MouseDown += SavingThrows_MouseDown;
+            WisdomProficiencyBox.MouseDown += SavingThrows_MouseDown;
+            CharismaProficiencyBox.MouseDown += SavingThrows_MouseDown;
+
+            AthleticsProficiencyBox.MouseDown += SkillProficiency_MouseDown;
+            AcrobaticsProficiencyBox.MouseDown += SkillProficiency_MouseDown;
+            SleightOfHandProficiencyBox.MouseDown += SkillProficiency_MouseDown;
+            StealthProficiencyBox.MouseDown += SkillProficiency_MouseDown;
+            ArcanaProficiencyBox.MouseDown += SkillProficiency_MouseDown;
+            HistoryProficiencyBox.MouseDown += SkillProficiency_MouseDown;
+            InvestigationProficiencyBox.MouseDown += SkillProficiency_MouseDown;
+            NatureProficiencyBox.MouseDown += SkillProficiency_MouseDown;
+            ReligionProficiencyBox.MouseDown += SkillProficiency_MouseDown;
+            AnimalHandlingProficiencyBox.MouseDown += SkillProficiency_MouseDown;
+            InsightProficiencyBox.MouseDown += SkillProficiency_MouseDown;
+            MedicineProficiencyBox.MouseDown += SkillProficiency_MouseDown;
+            PerceptionProficiencyBox.MouseDown += SkillProficiency_MouseDown;
+            SurvivalProficiencyBox.MouseDown += SkillProficiency_MouseDown;
+            DeceptionProficiencyBox.MouseDown += SkillProficiency_MouseDown;
+            IntimidationProficiencyBox.MouseDown += SkillProficiency_MouseDown;
+            PerformanceProficiencyBox.MouseDown += SkillProficiency_MouseDown;
+            PersuasionProficiencyBox.MouseDown += SkillProficiency_MouseDown;
+
+            AthleticsExpertieseBox.MouseDown += SkillExpertise_MouseDown;
+            AcrobaticsExpertieseBox.MouseDown += SkillExpertise_MouseDown;
+            SleightOfHandExpertieseBox.MouseDown += SkillExpertise_MouseDown;
+            StealthExpertieseBox.MouseDown += SkillExpertise_MouseDown;
+            ArcanaExpertieseBox.MouseDown += SkillExpertise_MouseDown;
+            HistoryExpertieseBox.MouseDown += SkillExpertise_MouseDown;
+            InvestigationExpertieseBox.MouseDown += SkillExpertise_MouseDown;
+            NatureExpertieseBox.MouseDown += SkillExpertise_MouseDown;
+            ReligionExpertieseBox.MouseDown += SkillExpertise_MouseDown;
+            AnimalHandlingExpertieseBox.MouseDown += SkillExpertise_MouseDown;
+            InsightExpertieseBox.MouseDown += SkillExpertise_MouseDown;
+            MedicineExpertieseBox.MouseDown += SkillExpertise_MouseDown;
+            PerceptionExpertieseBox.MouseDown += SkillExpertise_MouseDown;
+            SurvivalExpertieseBox.MouseDown += SkillExpertise_MouseDown;
+            DeceptionExpertieseBox.MouseDown += SkillExpertise_MouseDown;
+            IntimidationExpertieseBox.MouseDown += SkillExpertise_MouseDown;
+            PerformanceExpertieseBox.MouseDown += SkillExpertise_MouseDown;
+            PersuasionExpertieseBox.MouseDown += SkillExpertise_MouseDown;
         }
 
         #endregion
@@ -424,6 +470,165 @@ namespace Concierge.Presentation
                 ResourceIndex++;
                 DrawResourcePool();
             }
+        }
+
+        private void SavingThrows_MouseDown(object sender, RoutedEventArgs e)
+        {
+            Rectangle rectangle = sender as Rectangle;
+
+            switch (rectangle.Name)
+            {
+                case "StrengthProficiencyBox":
+                    Program.Character.SavingThrow.Strength.Proficiency = !Program.Character.SavingThrow.Strength.Proficiency;
+                    break;
+                case "DexterityProficiencyBox":
+                    Program.Character.SavingThrow.Dexterity.Proficiency = !Program.Character.SavingThrow.Dexterity.Proficiency;
+                    break;
+                case "ConstitutionProficiencyBox":
+                    Program.Character.SavingThrow.Constitution.Proficiency = !Program.Character.SavingThrow.Constitution.Proficiency;
+                    break;
+                case "IntelligenceProficiencyBox":
+                    Program.Character.SavingThrow.Intelligence.Proficiency = !Program.Character.SavingThrow.Intelligence.Proficiency;
+                    break;
+                case "WisdomProficiencyBox":
+                    Program.Character.SavingThrow.Wisdom.Proficiency = !Program.Character.SavingThrow.Wisdom.Proficiency;
+                    break;
+                case "CharismaProficiencyBox":
+                    Program.Character.SavingThrow.Charisma.Proficiency = !Program.Character.SavingThrow.Charisma.Proficiency;
+                    break;
+            }
+
+            DrawSavingThrows();
+        }
+
+        private void SkillProficiency_MouseDown(object sender, RoutedEventArgs e)
+        {
+            Rectangle rectangle = sender as Rectangle;
+
+            switch (rectangle.Name)
+            {
+                case "AthleticsProficiencyBox":
+                    Program.Character.Skill.Athletics.Proficiency = !Program.Character.Skill.Athletics.Proficiency;
+                    break;
+                case "AcrobaticsProficiencyBox":
+                    Program.Character.Skill.Acrobatics.Proficiency = !Program.Character.Skill.Acrobatics.Proficiency;
+                    break;
+                case "SleightOfHandProficiencyBox":
+                    Program.Character.Skill.SleightOfHand.Proficiency = !Program.Character.Skill.SleightOfHand.Proficiency;
+                    break;
+                case "StealthProficiencyBox":
+                    Program.Character.Skill.Stealth.Proficiency = !Program.Character.Skill.Stealth.Proficiency;
+                    break;
+                case "ArcanaProficiencyBox":
+                    Program.Character.Skill.Arcana.Proficiency = !Program.Character.Skill.Arcana.Proficiency;
+                    break;
+                case "HistoryProficiencyBox":
+                    Program.Character.Skill.History.Proficiency = !Program.Character.Skill.History.Proficiency;
+                    break;
+                case "InvestigationProficiencyBox":
+                    Program.Character.Skill.Investigation.Proficiency = !Program.Character.Skill.Investigation.Proficiency;
+                    break;
+                case "NatureProficiencyBox":
+                    Program.Character.Skill.Nature.Proficiency = !Program.Character.Skill.Nature.Proficiency;
+                    break;
+                case "ReligionProficiencyBox":
+                    Program.Character.Skill.Religion.Proficiency = !Program.Character.Skill.Religion.Proficiency;
+                    break;
+                case "AnimalHandlingProficiencyBox":
+                    Program.Character.Skill.AnimalHandling.Proficiency = !Program.Character.Skill.AnimalHandling.Proficiency;
+                    break;
+                case "InsightProficiencyBox":
+                    Program.Character.Skill.Insight.Proficiency = !Program.Character.Skill.Insight.Proficiency;
+                    break;
+                case "MedicineProficiencyBox":
+                    Program.Character.Skill.Medicine.Proficiency = !Program.Character.Skill.Medicine.Proficiency;
+                    break;
+                case "PerceptionProficiencyBox":
+                    Program.Character.Skill.Perception.Proficiency = !Program.Character.Skill.Perception.Proficiency;
+                    break;
+                case "SurvivalProficiencyBox":
+                    Program.Character.Skill.Survival.Proficiency = !Program.Character.Skill.Survival.Proficiency;
+                    break;
+                case "DeceptionProficiencyBox":
+                    Program.Character.Skill.Deception.Proficiency = !Program.Character.Skill.Deception.Proficiency;
+                    break;
+                case "IntimidationProficiencyBox":
+                    Program.Character.Skill.Intimidation.Proficiency = !Program.Character.Skill.Intimidation.Proficiency;
+                    break;
+                case "PerformanceProficiencyBox":
+                    Program.Character.Skill.Performance.Proficiency = !Program.Character.Skill.Performance.Proficiency;
+                    break;
+                case "PersuasionProficiencyBox":
+                    Program.Character.Skill.Persuasion.Proficiency = !Program.Character.Skill.Persuasion.Proficiency;
+                    break;
+            }
+
+            DrawSkills();
+        }
+
+        private void SkillExpertise_MouseDown(object sender, RoutedEventArgs e)
+        {
+            Rectangle rectangle = sender as Rectangle;
+
+            switch (rectangle.Name)
+            {
+                case "AthleticsExpertieseBox":
+                    Program.Character.Skill.Athletics.Expertise = !Program.Character.Skill.Athletics.Expertise;
+                    break;
+                case "AcrobaticsExpertieseBox":
+                    Program.Character.Skill.Acrobatics.Expertise = !Program.Character.Skill.Acrobatics.Expertise;
+                    break;
+                case "SleightOfHandExpertieseBox":
+                    Program.Character.Skill.SleightOfHand.Expertise = !Program.Character.Skill.SleightOfHand.Expertise;
+                    break;
+                case "StealthExpertieseBox":
+                    Program.Character.Skill.Stealth.Expertise = !Program.Character.Skill.Stealth.Expertise;
+                    break;
+                case "ArcanaExpertieseBox":
+                    Program.Character.Skill.Arcana.Expertise = !Program.Character.Skill.Arcana.Expertise;
+                    break;
+                case "HistoryExpertieseBox":
+                    Program.Character.Skill.History.Expertise = !Program.Character.Skill.History.Expertise;
+                    break;
+                case "InvestigationExpertieseBox":
+                    Program.Character.Skill.Investigation.Expertise = !Program.Character.Skill.Investigation.Expertise;
+                    break;
+                case "NatureExpertieseBox":
+                    Program.Character.Skill.Nature.Expertise = !Program.Character.Skill.Nature.Expertise;
+                    break;
+                case "ReligionExpertieseBox":
+                    Program.Character.Skill.Religion.Expertise = !Program.Character.Skill.Religion.Expertise;
+                    break;
+                case "AnimalHandlingExpertieseBox":
+                    Program.Character.Skill.AnimalHandling.Expertise = !Program.Character.Skill.AnimalHandling.Expertise;
+                    break;
+                case "InsightExpertieseBox":
+                    Program.Character.Skill.Insight.Expertise = !Program.Character.Skill.Insight.Expertise;
+                    break;
+                case "MedicineExpertieseBox":
+                    Program.Character.Skill.Medicine.Expertise = !Program.Character.Skill.Medicine.Expertise;
+                    break;
+                case "PerceptionExpertieseBox":
+                    Program.Character.Skill.Perception.Expertise = !Program.Character.Skill.Perception.Expertise;
+                    break;
+                case "SurvivalExpertieseBox":
+                    Program.Character.Skill.Survival.Expertise = !Program.Character.Skill.Survival.Expertise;
+                    break;
+                case "DeceptionExpertieseBox":
+                    Program.Character.Skill.Deception.Expertise = !Program.Character.Skill.Deception.Expertise;
+                    break;
+                case "IntimidationExpertieseBox":
+                    Program.Character.Skill.Intimidation.Expertise = !Program.Character.Skill.Intimidation.Expertise;
+                    break;
+                case "PerformanceExpertieseBox":
+                    Program.Character.Skill.Performance.Expertise = !Program.Character.Skill.Performance.Expertise;
+                    break;
+                case "PersuasionExpertieseBox":
+                    Program.Character.Skill.Persuasion.Expertise = !Program.Character.Skill.Persuasion.Expertise;
+                    break;
+            }
+
+            DrawSkills();
         }
 
         #endregion

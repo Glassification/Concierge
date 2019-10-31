@@ -3,6 +3,7 @@ using Concierge.Persistence;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Data.Metadata.Edm;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;

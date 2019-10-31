@@ -1,4 +1,5 @@
 ﻿using Concierge.Characters.Collections;
+using Concierge.Presentation.DialogBoxes;
 using Concierge.Utility;
 using System;
 using System.Windows;
@@ -17,6 +18,8 @@ namespace Concierge.Presentation
         {
             InitializeComponent();
             DataContext = this;
+
+            ModifyInventoryWindow = new ModifyInventoryWindow();
         }
 
         #endregion
@@ -50,6 +53,8 @@ namespace Concierge.Presentation
                 return SystemParameters.PrimaryScreenHeight - 100;
             }
         }
+
+        private ModifyInventoryWindow ModifyInventoryWindow { get; }
 
         #endregion
 
@@ -100,12 +105,20 @@ namespace Concierge.Presentation
 
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
-
+            ModifyInventoryWindow.ShowAdd();
+            FillList();
         }
 
         private void ButtonEdit_Click(object sender, RoutedEventArgs e)
         {
+            Inventory inventory;
 
+            if (InventoryDataGrid.SelectedItem != null)
+            {
+                inventory = (Inventory)InventoryDataGrid.SelectedItem;
+                ModifyInventoryWindow.ShowEdit(inventory);
+                FillList();
+            }
         }
 
         private void ButtonDelete_Click(object sender, RoutedEventArgs e)

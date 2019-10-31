@@ -1,5 +1,6 @@
 ﻿using Concierge.Characters.Collections;
 using Concierge.Presentation.DialogBoxes;
+using Concierge.Utility;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -291,7 +292,17 @@ namespace Concierge.Presentation
 
         private void ButtonUp_Click(object sender, RoutedEventArgs e)
         {
+            TreeViewItem item = NotesTreeView?.SelectedItem as TreeViewItem;
 
+            if (item?.Parent is TreeViewItem)
+            {
+                (item.Parent as TreeViewItem).Items.MoveCurrentTo(item);
+                (item.Parent as TreeViewItem).Items.MoveCurrentToPrevious();
+            }
+            else
+            {
+
+            }
         }
 
         private void ButtonDown_Click(object sender, RoutedEventArgs e)
