@@ -1,4 +1,5 @@
 ﻿using Concierge.Characters.Collections;
+using Concierge.Presentation.DialogBoxes;
 using Concierge.Utility;
 using System;
 using System.Collections.Generic;
@@ -26,6 +27,7 @@ namespace Concierge.Presentation
         {
             InitializeComponent();
             DataContext = this;
+            ModifyArmorWindow = new ModifyArmorWindow();
         }
 
         public void Draw()
@@ -42,7 +44,7 @@ namespace Concierge.Presentation
             MiscBonusField.Text = Program.Character.Armor.MiscArmorClass.ToString();
             MagicBonusField.Text = Program.Character.Armor.MagicArmorClass.ToString();
         }
-        
+
         private void FillWeaponList()
         {
             WeaponDataGrid.Items.Clear();
@@ -64,7 +66,9 @@ namespace Concierge.Presentation
                 AmmoDataGrid.Items.Add(ammo);
             }
         }
-        
+
+        private ModifyArmorWindow ModifyArmorWindow { get; }
+
         private void ButtonUp_Click(object sender, RoutedEventArgs e)
         {
             int index;
@@ -173,6 +177,11 @@ namespace Concierge.Presentation
                 AmmoDataGrid.UnselectAll();
             }
         }
-        
+
+        private void EditDetailsButton_Click(object sender, RoutedEventArgs e)
+        {
+            ModifyArmorWindow.ShowEdit();
+            Draw();
+        }
     }
 }

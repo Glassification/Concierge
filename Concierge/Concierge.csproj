@@ -138,6 +138,9 @@
     <Compile Include="Presentation\DialogBoxes\ModifyAbilitiesWindow.xaml.cs">
       <DependentUpon>ModifyAbilitiesWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Presentation\DialogBoxes\ModifyArmorWindow.xaml.cs">
+      <DependentUpon>ModifyArmorWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Presentation\DialogBoxes\ModifyInventoryWindow.xaml.cs">
       <DependentUpon>ModifyInventoryWindow.xaml</DependentUpon>
     </Compile>
@@ -243,6 +246,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Presentation\DialogBoxes\ModifyAbilitiesWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\DialogBoxes\ModifyArmorWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -73,6 +73,18 @@
                            VerticalAlignment="Center"
                            HorizontalAlignment="Left"
                            Margin="150, 0, 0, 0"/>
+                <Button x:Name="EditDetailsButton"
+                        Height="50"
+                        Width="60"
+                        Background="{x:Null}"
+                        BorderBrush="{x:Null}"
+                        Foreground="DarkOrange"
+                        ToolTip="Apply"
+                        Click="EditDetailsButton_Click"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Center">
+                    <materialDesign:PackIcon Kind="Edit" Width="25" Height="25"/>
+                </Button>
             </Grid>
             
             <!--Details-->
