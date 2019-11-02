@@ -1,5 +1,6 @@
 ﻿using Concierge.Characters.Collections;
 using Concierge.Presentation.DialogBoxes;
+using Concierge.Presentation.Popups;
 using Concierge.Utility;
 using System;
 using System.Collections.Generic;
@@ -28,6 +29,8 @@ namespace Concierge.Presentation
             InitializeComponent();
             DataContext = this;
             ModifyArmorWindow = new ModifyArmorWindow();
+            EquipmentPopupWindow = new EquipmentPopupWindow();
+            ModifyWeaponWindow = new ModifyWeaponWindow();
         }
 
         public void Draw()
@@ -68,6 +71,8 @@ namespace Concierge.Presentation
         }
 
         private ModifyArmorWindow ModifyArmorWindow { get; }
+        private ModifyWeaponWindow ModifyWeaponWindow { get; set; }
+        private EquipmentPopupWindow EquipmentPopupWindow { get; }
 
         private void ButtonUp_Click(object sender, RoutedEventArgs e)
         {
@@ -137,12 +142,32 @@ namespace Concierge.Presentation
 
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
+            Constants.PopupButons popupButons;
 
+            popupButons = EquipmentPopupWindow.ShowPopup();
+
+            switch (popupButons)
+            {
+                case Constants.PopupButons.AddWeapon:
+                    ModifyWeaponWindow.ShowAdd();
+                    FillWeaponList();
+                    break;
+                case Constants.PopupButons.AddAmmo:
+                    break;
+            }
         }
 
         private void ButtonEdit_Click(object sender, RoutedEventArgs e)
         {
-
+            if (AmmoDataGrid.SelectedItem != null)
+            {
+                
+            }
+            else if (WeaponDataGrid.SelectedItem != null)
+            {
+                ModifyWeaponWindow.ShowEdit((Weapon)WeaponDataGrid.SelectedItem);
+                FillWeaponList();
+            }
         }
 
         private void ButtonDelete_Click(object sender, RoutedEventArgs e)

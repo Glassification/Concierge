@@ -144,6 +144,12 @@
     <Compile Include="Presentation\DialogBoxes\ModifyInventoryWindow.xaml.cs">
       <DependentUpon>ModifyInventoryWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Presentation\DialogBoxes\ModifyWeaponWindow.xaml.cs">
+      <DependentUpon>ModifyWeaponWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Popups\EquipmentPopupWindow.xaml.cs">
+      <DependentUpon>EquipmentPopupWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Presentation\ToolsPage.xaml.cs">
       <DependentUpon>ToolsPage.xaml</DependentUpon>
     </Compile>
@@ -257,6 +263,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Presentation\DialogBoxes\ModifyWeaponWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Presentation\EquipmentPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -274,6 +284,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Presentation\OverviewPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\Popups\EquipmentPopupWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

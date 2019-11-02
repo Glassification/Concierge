@@ -155,6 +155,11 @@ namespace Concierge.Characters
             return Abilities.Where(x => x.ID.Equals(id)).Single();
         }
 
+        public Weapon GetWeaponById(Guid id)
+        {
+            return Weapons.Where(x => x.ID.Equals(id)).Single();
+        }
+
         public List<Ability> Abilities { get; set; }
         public List<Ammunition> Ammunitions { get; private set; }
         public Appearance Appearance { get; private set; }
