@@ -33,7 +33,7 @@ namespace Concierge.Presentation.DialogBoxes
         public void ShowAdd()
         {
             HeaderTextBlock.Text = "Add Weapon";
-            Editing = true;
+            Editing = false;
             ApplyButton.Visibility = Visibility.Visible;
             ClearFields();
 

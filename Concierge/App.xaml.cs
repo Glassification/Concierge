@@ -15,7 +15,7 @@ namespace Concierge
     {
         public App()
         {
-            //MainWindow = Presentation.MainWindow;
+            
         }
     }
 }

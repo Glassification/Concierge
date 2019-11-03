@@ -132,17 +132,20 @@
     <Compile Include="Presentation\DetailsPage.xaml.cs">
       <DependentUpon>DetailsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Presentation\DialogBoxes\ColorPickerWindow.xaml.cs">
-      <DependentUpon>ColorPickerWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Presentation\DialogBoxes\ModifyAbilitiesWindow.xaml.cs">
       <DependentUpon>ModifyAbilitiesWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\DialogBoxes\ModifyAmmoWindow.xaml.cs">
+      <DependentUpon>ModifyAmmoWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Presentation\DialogBoxes\ModifyArmorWindow.xaml.cs">
       <DependentUpon>ModifyArmorWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Presentation\DialogBoxes\ModifyInventoryWindow.xaml.cs">
       <DependentUpon>ModifyInventoryWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\DialogBoxes\ModifyWealthWindow.xaml.cs">
+      <DependentUpon>ModifyWealthWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Presentation\DialogBoxes\ModifyWeaponWindow.xaml.cs">
       <DependentUpon>ModifyWeaponWindow.xaml</DependentUpon>
@@ -247,11 +250,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Presentation\DialogBoxes\ColorPickerWindow.xaml">
+    <Page Include="Presentation\DialogBoxes\ModifyAbilitiesWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Presentation\DialogBoxes\ModifyAbilitiesWindow.xaml">
+    <Page Include="Presentation\DialogBoxes\ModifyAmmoWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -260,6 +263,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Presentation\DialogBoxes\ModifyInventoryWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\DialogBoxes\ModifyWealthWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

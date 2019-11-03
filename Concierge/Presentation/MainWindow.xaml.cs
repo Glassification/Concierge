@@ -35,6 +35,7 @@ namespace Concierge.Presentation
         {
             InitializeComponent();
 
+            Style = (Style)FindResource(typeof(Window));
 
             GridContent.Width = GridContentWidthClose;
 

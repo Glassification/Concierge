@@ -56,81 +56,56 @@ namespace Concierge.Characters
         /// =========================================
         public string GetDescription(string name)
         {
-            string description;
-            string str = ", ";
+            const string str = ", ";
 
             switch (name)
             {
                 case "Blinded":
-                    description = BlindedDescription;
-                    break;
+                    return BlindedDescription;
                 case "Charmed":
-                    description = CharmedDescription;
-                    break;
+                    return CharmedDescription;
                 case "Deafened":
-                    description = DeafenedDescription;
-                    break;
+                    return DeafenedDescription;
                 case "Encumbered":
                 case "Heavily Encumbered":
-                    description = EncumbranceDescription;
-                    break;
+                    return EncumbranceDescription;
                 case "Frightened":
-                    description = FrightenedDescription;
-                    break;
+                    return FrightenedDescription;
                 case "Grappled":
-                    description = GrappledDescription;
-                    break;
+                    return GrappledDescription;
                 case "Incapacitated":
-                    description = IncapacitatedDescription;
-                    break;
+                    return IncapacitatedDescription;
                 case "Invisible":
-                    description = InvisibleDescription;
-                    break;
+                    return InvisibleDescription;
                 case "Paralyzed":
-                    description = ParalyzedDescription;
-                    break;
+                    return ParalyzedDescription;
                 case "Petrified":
-                    description = PetrifiedDescription;
-                    break;
+                    return PetrifiedDescription;
                 case "Poisoned":
-                    description = PoisonedDescription;
-                    break;
+                    return PoisonedDescription;
                 case "Prone":
-                    description = ProneDescription;
-                    break;
+                    return ProneDescription;
                 case "Restrained":
-                    description = RestrainedDescription;
-                    break;
+                    return RestrainedDescription;
                 case "Stunned":
-                    description = StunnedDescription;
-                    break;
+                    return StunnedDescription;
                 case "Unconscious":
-                    description = UnconsciousDescription;
-                    break;
+                    return UnconsciousDescription;
                 case "Exhaustion 1":
-                    description = Exausted1;
-                    break;
+                    return Exausted1;
                 case "Exhaustion 2":
-                    description = Exausted1 + str + Exausted2;
-                    break;
+                    return Exausted1 + str + Exausted2;
                 case "Exhaustion 3":
-                    description = Exausted1 + str + Exausted2 + str + Exausted3;
-                    break;
+                    return Exausted1 + str + Exausted2 + str + Exausted3;
                 case "Exhaustion 4":
-                    description = Exausted1 + str + Exausted2 + str + Exausted3 + str + Exausted4;
-                    break;
+                    return Exausted1 + str + Exausted2 + str + Exausted3 + str + Exausted4;
                 case "Exhaustion 5":
-                    description = Exausted1 + str + Exausted2 + str + Exausted3 + str + Exausted4 + str + Exausted5;
-                    break;
+                    return Exausted1 + str + Exausted2 + str + Exausted3 + str + Exausted4 + str + Exausted5;
                 case "Exhaustion 6":
-                    description = Exausted6;
-                    break;
+                    return Exausted6;
                 default:
-                    description = "";
-                    break;
+                    return string.Empty;
             }
-
-            return description;
         }
 
         /// =========================================
@@ -140,22 +115,22 @@ namespace Concierge.Characters
         {
             List<KeyValuePair<string, string>> keyValuePairs = new List<KeyValuePair<string, string>>();
 
-            keyValuePairs.Add(new KeyValuePair<string, string>(Blinded, "Blinded - " + GetDescription(Blinded)));
-            keyValuePairs.Add(new KeyValuePair<string, string>(Charmed, "Charmed - " + GetDescription(Charmed)));
-            keyValuePairs.Add(new KeyValuePair<string, string>(Deafened, "Deafened - " + GetDescription(Deafened)));
-            keyValuePairs.Add(new KeyValuePair<string, string>(Encumbrance, Encumbrance + " - " + GetDescription(Encumbrance)));
-            keyValuePairs.Add(new KeyValuePair<string, string>(Fatigued, Fatigued + " - " + GetDescription(Fatigued)));
-            keyValuePairs.Add(new KeyValuePair<string, string>(Frightened, "Frightened - " + GetDescription(Frightened)));
-            keyValuePairs.Add(new KeyValuePair<string, string>(Grappled, "Grappled - " + GetDescription(Grappled)));
-            keyValuePairs.Add(new KeyValuePair<string, string>(Incapacitated, "Incapacitated - " + GetDescription(Incapacitated)));
-            keyValuePairs.Add(new KeyValuePair<string, string>(Invisible, "Invisible - " + GetDescription(Invisible)));
-            keyValuePairs.Add(new KeyValuePair<string, string>(Paralyzed, "Paralyzed - " + GetDescription(Paralyzed)));
-            keyValuePairs.Add(new KeyValuePair<string, string>(Petrified, "Petrified - " + GetDescription(Petrified)));
-            keyValuePairs.Add(new KeyValuePair<string, string>(Poisoned, "Poisoned - " + GetDescription(Poisoned)));
-            keyValuePairs.Add(new KeyValuePair<string, string>(Prone, "Prone - " + GetDescription(Prone)));
-            keyValuePairs.Add(new KeyValuePair<string, string>(Restrained, "Restrained - " + GetDescription(Restrained)));
-            keyValuePairs.Add(new KeyValuePair<string, string>(Stunned, "Stunned - " + GetDescription(Stunned)));
-            keyValuePairs.Add(new KeyValuePair<string, string>(Unconscious, "Unconscious - " + GetDescription(Unconscious)));
+            keyValuePairs.Add(new KeyValuePair<string, string>(Blinded,         "Blinded - "        + GetDescription(Blinded)));
+            keyValuePairs.Add(new KeyValuePair<string, string>(Charmed,         "Charmed - "        + GetDescription(Charmed)));
+            keyValuePairs.Add(new KeyValuePair<string, string>(Deafened,        "Deafened - "       + GetDescription(Deafened)));
+            keyValuePairs.Add(new KeyValuePair<string, string>(Encumbrance,     Encumbrance + " - " + GetDescription(Encumbrance)));
+            keyValuePairs.Add(new KeyValuePair<string, string>(Fatigued,        Fatigued + " - "    + GetDescription(Fatigued)));
+            keyValuePairs.Add(new KeyValuePair<string, string>(Frightened,      "Frightened - "     + GetDescription(Frightened)));
+            keyValuePairs.Add(new KeyValuePair<string, string>(Grappled,        "Grappled - "       + GetDescription(Grappled)));
+            keyValuePairs.Add(new KeyValuePair<string, string>(Incapacitated,   "Incapacitated - "  + GetDescription(Incapacitated)));
+            keyValuePairs.Add(new KeyValuePair<string, string>(Invisible,       "Invisible - "      + GetDescription(Invisible)));
+            keyValuePairs.Add(new KeyValuePair<string, string>(Paralyzed,       "Paralyzed - "      + GetDescription(Paralyzed)));
+            keyValuePairs.Add(new KeyValuePair<string, string>(Petrified,       "Petrified - "      + GetDescription(Petrified)));
+            keyValuePairs.Add(new KeyValuePair<string, string>(Poisoned,        "Poisoned - "       + GetDescription(Poisoned)));
+            keyValuePairs.Add(new KeyValuePair<string, string>(Prone,           "Prone - "          + GetDescription(Prone)));
+            keyValuePairs.Add(new KeyValuePair<string, string>(Restrained,      "Restrained - "     + GetDescription(Restrained)));
+            keyValuePairs.Add(new KeyValuePair<string, string>(Stunned,         "Stunned - "        + GetDescription(Stunned)));
+            keyValuePairs.Add(new KeyValuePair<string, string>(Unconscious,     "Unconscious - "    + GetDescription(Unconscious)));
 
             return keyValuePairs.Where(x => !x.Key.Equals("Cured") && !x.Key.Equals("Normal")).ToList();
         }
@@ -184,33 +159,19 @@ namespace Concierge.Characters
         }
 
         public string Blinded { get; set; }
-
         public string Charmed { get; set; }
-
         public string Deafened { get; set; }
-
         public string Fatigued { get; set; }
-
         public string Frightened { get; set; }
-
         public string Grappled { get; set; }
-
         public string Incapacitated { get; set; }
-
         public string Invisible { get; set; }
-
         public string Paralyzed { get; set; }
-
         public string Petrified { get; set; }
-
         public string Poisoned { get; set; }
-
         public string Prone { get; set; }
-
         public string Restrained { get; set; }
-
         public string Stunned { get; set; }
-
         public string Unconscious { get; set; }
 
         public string Encumbrance

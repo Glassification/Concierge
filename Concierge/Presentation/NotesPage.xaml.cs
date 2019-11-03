@@ -26,7 +26,6 @@ namespace Concierge.Presentation
     {
 
         #region Constructor
-        ColorPickerWindow colorPicker = new ColorPickerWindow();
         public NotesPage()
         {
             InitializeComponent();

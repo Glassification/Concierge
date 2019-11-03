@@ -31,6 +31,7 @@ namespace Concierge.Presentation
             ModifyArmorWindow = new ModifyArmorWindow();
             EquipmentPopupWindow = new EquipmentPopupWindow();
             ModifyWeaponWindow = new ModifyWeaponWindow();
+            ModifyAmmoWindow = new ModifyAmmoWindow();
         }
 
         public void Draw()
@@ -71,7 +72,8 @@ namespace Concierge.Presentation
         }
 
         private ModifyArmorWindow ModifyArmorWindow { get; }
-        private ModifyWeaponWindow ModifyWeaponWindow { get; set; }
+        private ModifyWeaponWindow ModifyWeaponWindow { get; }
+        private ModifyAmmoWindow ModifyAmmoWindow { get; }
         private EquipmentPopupWindow EquipmentPopupWindow { get; }
 
         private void ButtonUp_Click(object sender, RoutedEventArgs e)
@@ -153,6 +155,8 @@ namespace Concierge.Presentation
                     FillWeaponList();
                     break;
                 case Constants.PopupButons.AddAmmo:
+                    ModifyAmmoWindow.ShowAdd();
+                    FillAmmoList();
                     break;
             }
         }
@@ -161,7 +165,8 @@ namespace Concierge.Presentation
         {
             if (AmmoDataGrid.SelectedItem != null)
             {
-                
+                ModifyAmmoWindow.ShowEdit((Ammunition)AmmoDataGrid.SelectedItem);
+                FillAmmoList();
             }
             else if (WeaponDataGrid.SelectedItem != null)
             {
@@ -172,7 +177,6 @@ namespace Concierge.Presentation
 
         private void ButtonDelete_Click(object sender, RoutedEventArgs e)
         {
-            //colby.bauer@mts.net
             if (AmmoDataGrid.SelectedItem != null)
             {
                 Ammunition ammo = (Ammunition)AmmoDataGrid.SelectedItem;

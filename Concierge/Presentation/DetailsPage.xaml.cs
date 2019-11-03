@@ -1,4 +1,5 @@
-﻿using Concierge.Utility;
+﻿using Concierge.Presentation.DialogBoxes;
+using Concierge.Utility;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,6 +28,8 @@ namespace Concierge.Presentation
         public DetailsPage()
         {
             InitializeComponent();
+
+            ModifyWealthWindow = new ModifyWealthWindow();
         }
 
         #endregion
@@ -184,6 +187,38 @@ namespace Concierge.Presentation
             }
         }
 
+        private ModifyWealthWindow ModifyWealthWindow { get; }
+
         #endregion
+
+        #region Events
+
+        private void EditWealthButton_Click(object sender, RoutedEventArgs e)
+        {
+            ModifyWealthWindow.ShowWindow();
+            DrawWealth();
+        }
+
+        #endregion
+
+        private void DeleteButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void EditButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void AddButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ClearButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

@@ -20,6 +20,7 @@ namespace Concierge.Presentation
         public OverviewPage()
         {
             InitializeComponent();
+
             DataContext = this;
             ResourceIndex = 0;
 

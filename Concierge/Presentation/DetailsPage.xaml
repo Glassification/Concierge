@@ -611,6 +611,56 @@
                                HorizontalAlignment="Right"
                                VerticalAlignment="Center"
                                Margin="0, 0, 10, 0"/>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                        <Button x:Name="ClearButton" 
+                            Height="50" 
+                            Width="60" 
+                            HorizontalAlignment="Center" 
+                            VerticalAlignment="Center" 
+                            Background="{x:Null}" 
+                            BorderBrush="{x:Null}" 
+                            Foreground="Purple" 
+                            Click="ClearButton_Click"
+                            ToolTip="Clear Selected Item">
+                            <materialDesign:PackIcon Kind="Cancel" Width="25" Height="25"/>
+                        </Button>
+                        <Button x:Name="AddButton" 
+                            Height="50" 
+                            Width="60" 
+                            HorizontalAlignment="Center" 
+                            VerticalAlignment="Center" 
+                            Background="{x:Null}" 
+                            BorderBrush="{x:Null}" 
+                            Foreground="Green" 
+                            Click="AddButton_Click"
+                            ToolTip="Add New Item">
+                            <materialDesign:PackIcon Kind="Add" Width="25" Height="25"/>
+                        </Button>
+                        <Button x:Name="EditButton" 
+                            Height="50" 
+                            Width="60" 
+                            HorizontalAlignment="Center" 
+                            VerticalAlignment="Center" 
+                            Background="{x:Null}" 
+                            BorderBrush="{x:Null}" 
+                            Foreground="DarkOrange" 
+                            Click="EditButton_Click"
+                            ToolTip="Edit Selected Item">
+                            <materialDesign:PackIcon Kind="Edit" Width="25" Height="25"/>
+                        </Button>
+                        <Button x:Name="DeleteButton" 
+                            Height="50" 
+                            Width="60" 
+                            HorizontalAlignment="Center" 
+                            VerticalAlignment="Center" 
+                            Background="{x:Null}" 
+                            BorderBrush="{x:Null}" 
+                            Foreground="IndianRed" 
+                            Click="DeleteButton_Click"
+                            ToolTip="Delete Selected Item">
+                            <materialDesign:PackIcon Kind="Delete" Width="25" Height="25"/>
+                        </Button>
+                    </StackPanel>
                 </Grid>
 
                 <!--Lists-->
@@ -757,6 +807,18 @@
                                    FontWeight="Bold"
                                    HorizontalAlignment="Center"
                                    VerticalAlignment="Center"/>
+                    <Button x:Name="EditWealthButton"
+                            Height="50"
+                            Width="60"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Center"
+                            Background="{x:Null}"
+                            BorderBrush="{x:Null}"
+                            Foreground="DarkOrange"
+                            ToolTip="Close"
+                            Click="EditWealthButton_Click">
+                        <materialDesign:PackIcon Kind="Edit" Width="25" Height="25"/>
+                    </Button>
                 </Grid>
 
                 <!--Total Gold-->

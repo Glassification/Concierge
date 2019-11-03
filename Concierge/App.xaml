@@ -5,6 +5,9 @@
              StartupUri="Presentation/MainWindow.xaml"
              ShutdownMode="OnMainWindowClose">
     <Application.Resources>
-         
+        <Style TargetType="{x:Type Window}">
+            <Setter Property="FontFamily"
+            Value="Segoe UI" />
+        </Style>
     </Application.Resources>
 </Application>
