@@ -144,17 +144,17 @@ namespace Concierge.Presentation
 
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
-            Constants.PopupButons popupButons;
+            Constants.PopupButtons popupButons;
 
             popupButons = EquipmentPopupWindow.ShowPopup();
 
             switch (popupButons)
             {
-                case Constants.PopupButons.AddWeapon:
+                case Constants.PopupButtons.AddWeapon:
                     ModifyWeaponWindow.ShowAdd();
                     FillWeaponList();
                     break;
-                case Constants.PopupButons.AddAmmo:
+                case Constants.PopupButtons.AddAmmo:
                     ModifyAmmoWindow.ShowAdd();
                     FillAmmoList();
                     break;

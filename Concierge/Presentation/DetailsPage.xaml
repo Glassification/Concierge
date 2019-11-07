@@ -690,7 +690,8 @@
                                   MaxHeight="{Binding Path=ProficiencyGridSize}"
                                   BorderThickness="0"
                                   Style="{DynamicResource DGHeaderStyle}"
-                                  SelectionMode="Single">
+                                  SelectionMode="Single"
+                                  SelectionChanged="WeaponProficiencyDataGrid_SelectionChanged">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Weapons"
                                                     Width="100*"
@@ -716,7 +717,8 @@
                                   MaxHeight="{Binding Path=ProficiencyGridSize}"
                                   BorderThickness="0"
                                   Style="{DynamicResource DGHeaderStyle}"
-                                  SelectionMode="Single">
+                                  SelectionMode="Single"
+                                  SelectionChanged="ArmorProficiencyDataGrid_SelectionChanged">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Armor"
                                                     Width="100*"
@@ -742,7 +744,8 @@
                                   MaxHeight="{Binding Path=ProficiencyGridSize}"
                                   BorderThickness="0"
                                   Style="{DynamicResource DGHeaderStyle}"
-                                  SelectionMode="Single">
+                                  SelectionMode="Single"
+                                  SelectionChanged="ShieldProficiencyDataGrid_SelectionChanged">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Shields"
                                                     Width="100*"
@@ -768,7 +771,8 @@
                                   MaxHeight="{Binding Path=ProficiencyGridSize}"
                                   BorderThickness="0"
                                   Style="{DynamicResource DGHeaderStyle}"
-                                  SelectionMode="Single">
+                                  SelectionMode="Single"
+                                  SelectionChanged="ToolProficiencyDataGrid_SelectionChanged">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Tools"
                                                     Width="100*"

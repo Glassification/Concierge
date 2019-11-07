@@ -1,0 +1,127 @@
+﻿<Window x:Class="Concierge.Presentation.DialogBoxes.ModifyProficiencyWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Concierge.Presentation.DialogBoxes"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Title="ModifyProficiencyWindow"
+        Height="275"
+        Width="400"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        Background="Black"
+        ResizeMode="NoResize"
+        KeyDown="Window_KeyDown"
+        BorderThickness="1"
+        BorderBrush="#429cd6">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="185"/>
+            <RowDefinition Height="45"/>
+        </Grid.RowDefinitions>
+
+        <!--Header-->
+        <Grid Grid.Row="0">
+            <TextBlock Text="Add [TYPE] Proficiency"
+                       x:Name="HeaderTextBlock"
+                       Foreground="#429cd6"
+                       FontSize="27"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Center"
+                       Margin="30, 0, 0, 0"
+                       FontWeight="Bold"/>
+            <Button x:Name="CloseButton"
+                    Height="50"
+                    Width="60"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Center"
+                    Background="{x:Null}"
+                    BorderBrush="{x:Null}"
+                    Foreground="Red"
+                    ToolTip="Close"
+                    Click="CloseButton_Click">
+                <materialDesign:PackIcon Kind="CloseBoxOutline" Width="25" Height="25"/>
+            </Button>
+        </Grid>
+
+        <!--Values-->
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="33*"/>
+                <RowDefinition Height="33*"/>
+                <RowDefinition Height="33*"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="35*"/>
+                    <ColumnDefinition Width="65*"/>
+                </Grid.ColumnDefinitions>
+
+                <!--Title-->
+                <Grid Grid.Column="0">
+                    <TextBlock Text="Proficiency:"
+                               Foreground="White"
+                               FontSize="20"
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Top"
+                               Margin="10, 20, 0, 0"/>
+                </Grid>
+
+                <!--Value-->
+                <Grid Grid.Column="1"
+                      Background="#FF3F3F3F"
+                      Margin="0, 10, 20, 10">
+                    <TextBox x:Name="ProficiencyTextBox"
+                             Background="#FF3F3F3F"
+                             Margin="5"
+                             BorderThickness="0"
+                             Foreground="White"
+                             FontSize="15"
+                             VerticalContentAlignment="Center"/>
+                </Grid>
+            </Grid>
+        </Grid>
+
+        <!--Buttons-->
+        <Grid Grid.Row="2">
+            <StackPanel Orientation="Horizontal"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center">
+                <Button x:Name="OkButton"
+                        Height="50"
+                        Width="60"
+                        Background="{x:Null}"
+                        BorderBrush="{x:Null}"
+                        Foreground="Green"
+                        ToolTip="OK"
+                        Click="OkButton_Click">
+                    <materialDesign:PackIcon Kind="CheckBox" Width="25" Height="25"/>
+                </Button>
+                <Button x:Name="ApplyButton"
+                        Height="50"
+                        Width="60"
+                        Background="{x:Null}"
+                        BorderBrush="{x:Null}"
+                        Foreground="OrangeRed"
+                        ToolTip="Apply"
+                        Click="ApplyButton_Click">
+                    <materialDesign:PackIcon Kind="PlusBox" Width="25" Height="25"/>
+                </Button>
+                <Button x:Name="CancelButton"
+                        Height="50"
+                        Width="60"
+                        Background="{x:Null}"
+                        BorderBrush="{x:Null}"
+                        Foreground="IndianRed"
+                        ToolTip="Cancel"
+                        Click="CancelButton_Click">
+                    <materialDesign:PackIcon Kind="Cancel" Width="25" Height="25"/>
+                </Button>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>

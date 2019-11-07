@@ -15,36 +15,36 @@ namespace Concierge.Presentation.Popups
             InitializeComponent();
         }
 
-        public Constants.PopupButons ShowPopup()
+        public Constants.PopupButtons ShowPopup()
         {
             ShowDialog();
 
             return ButtonPress;
         }
 
-        private Constants.PopupButons ButtonPress { get; set; }
+        private Constants.PopupButtons ButtonPress { get; set; }
 
         private void WeaponButton_Click(object sender, RoutedEventArgs e)
         {
-            ButtonPress = Constants.PopupButons.AddWeapon;
+            ButtonPress = Constants.PopupButtons.AddWeapon;
             Hide();
         }
 
         private void AmmoButton_Click(object sender, RoutedEventArgs e)
         {
-            ButtonPress = Constants.PopupButons.AddAmmo;
+            ButtonPress = Constants.PopupButtons.AddAmmo;
             Hide();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            ButtonPress = Constants.PopupButons.Cancel;
+            ButtonPress = Constants.PopupButtons.Cancel;
             Hide();
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            ButtonPress = Constants.PopupButons.Cancel;
+            ButtonPress = Constants.PopupButtons.Cancel;
             Hide();
         }
 
@@ -53,6 +53,7 @@ namespace Concierge.Presentation.Popups
             switch (e.Key)
             {
                 case Key.Escape:
+                    ButtonPress = Constants.PopupButtons.Cancel;
                     Hide();
                     break;
             }

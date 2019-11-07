@@ -1,4 +1,5 @@
 ﻿using Concierge.Presentation.DialogBoxes;
+using Concierge.Presentation.Popups;
 using Concierge.Utility;
 using System;
 using System.Collections.Generic;
@@ -30,6 +31,8 @@ namespace Concierge.Presentation
             InitializeComponent();
 
             ModifyWealthWindow = new ModifyWealthWindow();
+            ProficiencyPopupWindow = new ProficiencyPopupWindow();
+            ModifyProficiencyWindow = new ModifyProficiencyWindow();
         }
 
         #endregion
@@ -188,6 +191,8 @@ namespace Concierge.Presentation
         }
 
         private ModifyWealthWindow ModifyWealthWindow { get; }
+        private ProficiencyPopupWindow ProficiencyPopupWindow { get; }
+        private ModifyProficiencyWindow ModifyProficiencyWindow { get; }
 
         #endregion
 
@@ -199,26 +204,124 @@ namespace Concierge.Presentation
             DrawWealth();
         }
 
-        #endregion
-
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
-
+            if (WeaponProficiencyDataGrid.SelectedItem != null)
+            {
+                var weapon = (KeyValuePair<Guid, string>)WeaponProficiencyDataGrid.SelectedItem;
+                Program.Character.Proficiency.Weapons.Remove(weapon.Key);
+                DrawProficiencies();
+            }
+            else if (ArmorProficiencyDataGrid.SelectedItem != null)
+            {
+                var armor = (KeyValuePair<Guid, string>)ArmorProficiencyDataGrid.SelectedItem;
+                Program.Character.Proficiency.Armors.Remove(armor.Key);
+                DrawProficiencies();
+            }
+            else if (ShieldProficiencyDataGrid.SelectedItem != null)
+            {
+                var shield = (KeyValuePair<Guid, string>)ShieldProficiencyDataGrid.SelectedItem;
+                Program.Character.Proficiency.Shields.Remove(shield.Key);
+                DrawProficiencies();
+            }
+            else if (ToolProficiencyDataGrid.SelectedItem != null)
+            {
+                var tool = (KeyValuePair<Guid, string>)ToolProficiencyDataGrid.SelectedItem;
+                Program.Character.Proficiency.Tools.Remove(tool.Key);
+                DrawProficiencies();
+            }
         }
 
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
+            KeyValuePair<Guid, string> proficiency;
 
+            if (WeaponProficiencyDataGrid.SelectedItem != null)
+            {
+                proficiency = (KeyValuePair<Guid, string>)WeaponProficiencyDataGrid.SelectedItem;
+                ModifyProficiencyWindow.ShowEdit(Constants.PopupButtons.WeaponProficiency, proficiency.Key);
+                DrawProficiencies();
+            }
+            else if (ArmorProficiencyDataGrid.SelectedItem != null)
+            {
+                proficiency = (KeyValuePair<Guid, string>)ArmorProficiencyDataGrid.SelectedItem;
+                ModifyProficiencyWindow.ShowEdit(Constants.PopupButtons.ArmorProficiency, proficiency.Key);
+                DrawProficiencies();
+            }
+            else if (ShieldProficiencyDataGrid.SelectedItem != null)
+            {
+                proficiency = (KeyValuePair<Guid, string>)ShieldProficiencyDataGrid.SelectedItem;
+                ModifyProficiencyWindow.ShowEdit(Constants.PopupButtons.ShieldProficiency, proficiency.Key);
+                DrawProficiencies();
+            }
+            else if (ToolProficiencyDataGrid.SelectedItem != null)
+            {
+                proficiency = (KeyValuePair<Guid, string>)ToolProficiencyDataGrid.SelectedItem;
+                ModifyProficiencyWindow.ShowEdit(Constants.PopupButtons.ToolProficiency, proficiency.Key);
+                DrawProficiencies();
+            }
         }
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
+            Constants.PopupButtons popupButtons;
 
+            popupButtons = ProficiencyPopupWindow.ShowPopup();
+
+            ModifyProficiencyWindow.ShowAdd(popupButtons);
+
+            DrawProficiencies();
         }
 
         private void ClearButton_Click(object sender, RoutedEventArgs e)
         {
-
+            WeaponProficiencyDataGrid.UnselectAll();
+            ArmorProficiencyDataGrid.UnselectAll();
+            ShieldProficiencyDataGrid.UnselectAll();
+            ToolProficiencyDataGrid.UnselectAll();
         }
+
+        private void WeaponProficiencyDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (WeaponProficiencyDataGrid.SelectedItem != null)
+            {
+                ArmorProficiencyDataGrid.UnselectAll();
+                ShieldProficiencyDataGrid.UnselectAll();
+                ToolProficiencyDataGrid.UnselectAll();
+            }
+        }
+
+        private void ArmorProficiencyDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (ArmorProficiencyDataGrid.SelectedItem != null)
+            {
+                WeaponProficiencyDataGrid.UnselectAll();
+                ShieldProficiencyDataGrid.UnselectAll();
+                ToolProficiencyDataGrid.UnselectAll();
+            }
+        }
+
+        private void ShieldProficiencyDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (ShieldProficiencyDataGrid.SelectedItem != null)
+            {
+                WeaponProficiencyDataGrid.UnselectAll();
+                ArmorProficiencyDataGrid.UnselectAll();
+                ToolProficiencyDataGrid.UnselectAll();
+            }
+        }
+
+        private void ToolProficiencyDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (ToolProficiencyDataGrid.SelectedItem != null)
+            {
+                WeaponProficiencyDataGrid.UnselectAll();
+                ArmorProficiencyDataGrid.UnselectAll();
+                ShieldProficiencyDataGrid.UnselectAll();
+            }
+        }
+
+        #endregion
+
     }
 }

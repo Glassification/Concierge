@@ -1,5 +1,6 @@
 ﻿using Concierge.Characters;
 using Concierge.Characters.Collections;
+using Concierge.Presentation.Popups;
 using Concierge.Utility;
 using System;
 using System.Windows;
@@ -197,7 +198,7 @@ namespace Concierge.Presentation
             SetTextStyle(Program.Character.Skill.Intimidation.Checks, IntimidationSkillField);
             SetTextStyle(Program.Character.Skill.Performance.Checks, PerformanceSkillField);
             SetTextStyle(Program.Character.Skill.Persuasion.Checks, PersuasionSkillField);
-            
+
             SetTextStyle(Program.Character.Skill.Athletics.Checks, AthleticsSkillName);
             SetTextStyle(Program.Character.Skill.Acrobatics.Checks, AcrobaticsSkillName);
             SetTextStyle(Program.Character.Skill.SleightOfHand.Checks, SleightOfHandSkillName);
