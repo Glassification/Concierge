@@ -20,13 +20,13 @@ namespace Concierge.SavingThrowsNamespace
         {
             get
             {
-                if (Program.Character.Vitality.Conditions.Fatigued.Equals("Exhaustion 3") ||
-                    Program.Character.Vitality.Conditions.Fatigued.Equals("Exhaustion 4") ||
-                    Program.Character.Vitality.Conditions.Fatigued.Equals("Exhaustion 5") ||
-                    Program.Character.Vitality.Conditions.Restrained.Equals("Afflicted"))
+                if (Program.Character.Vitality.Conditions.Fatigued.Equals("Three") ||
+                    Program.Character.Vitality.Conditions.Fatigued.Equals("Four") ||
+                    Program.Character.Vitality.Conditions.Fatigued.Equals("Five") ||
+                    Program.Character.Vitality.Conditions.Restrained.Equals("Restrained"))
                     return Constants.Checks.Disadvantage;
-                else if (Program.Character.Vitality.Conditions.Paralyzed.Equals("Afflicted") ||
-                         Program.Character.Vitality.Conditions.Stunned.Equals("Afflicted"))
+                else if (Program.Character.Vitality.Conditions.Paralyzed.Equals("Paralyzed") ||
+                         Program.Character.Vitality.Conditions.Stunned.Equals("Stunned"))
                     return Constants.Checks.Fail;
                 else
                     return Constants.Checks.Normal;

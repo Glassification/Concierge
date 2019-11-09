@@ -29,6 +29,8 @@ namespace Concierge.Utility
         public enum DamageTypes { None, Bludgeoning, Piercing, Slashing, Acid, Cold, Fire, Force, Lightning, Necrotic, Poison, Psychic, Radiant, Thunder };
         public enum WeaponTypes { Battleaxe, Blowgun, Club, Dagger, Dart, Flail, Glaive, Greataxe, Greatclub, Greatsword, Halberd, HandCrossbow, Handaxe, HeavyCrossbow, Javelin, Lance, LightCrossbow, LightHammer, Longbow, Longsword, Mace, Maul, Morningstar, Net, Pike, Quarterstaff, Rapier, Scimitar, Shortbow, Shortsword, Sickle, Sling, Spear, Trident, WarPick, Warhammer, Whip };
         public enum PopupButtons { OK, Apply, Cancel, AddWeapon, AddAmmo, WeaponProficiency, ArmorProficiency, ShieldProficiency, ToolProficiency, AddMagicClass, AddSpell, AddChapter, AddPage };
+        public enum ConditionTypes { Cured, Afflicted };
+        public enum ExhaustionType { Normal, One, Two, Three, Four, Five, Six };
 
         static Constants()
         {

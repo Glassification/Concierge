@@ -13,6 +13,7 @@ namespace Concierge.Presentation.DialogBoxes
         public ModifyProficiencyWindow()
         {
             InitializeComponent();
+            PopupButton = Constants.PopupButtons.Cancel;
         }
 
         public void ShowAdd(Constants.PopupButtons popupButton)

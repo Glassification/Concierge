@@ -51,14 +51,14 @@ namespace Concierge.Characters
         {
             get
             {
-                if (Conditions.Fatigued.Equals("Exhaustion 4") || Conditions.Fatigued.Equals("Exhaustion 5"))
+                if (Conditions.Fatigued.Equals("Four") || Conditions.Fatigued.Equals("Five"))
                 {
                     if (BaseHealth > MaxHealth/2)
                     {
                         return MaxHealth / 2;
                     }
                 }
-                else if (Conditions.Fatigued.Equals("Exhaustion 6"))
+                else if (Conditions.Fatigued.Equals("Six"))
                 {
                     return 0;
                 }

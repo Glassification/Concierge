@@ -33,6 +33,7 @@ namespace Concierge.Presentation
             ModifyWealthWindow = new ModifyWealthWindow();
             ProficiencyPopupWindow = new ProficiencyPopupWindow();
             ModifyProficiencyWindow = new ModifyProficiencyWindow();
+            MondifyConditionsWindow = new MondifyConditionsWindow();
         }
 
         #endregion
@@ -193,6 +194,7 @@ namespace Concierge.Presentation
         private ModifyWealthWindow ModifyWealthWindow { get; }
         private ProficiencyPopupWindow ProficiencyPopupWindow { get; }
         private ModifyProficiencyWindow ModifyProficiencyWindow { get; }
+        private MondifyConditionsWindow MondifyConditionsWindow { get; }
 
         #endregion
 
@@ -323,5 +325,10 @@ namespace Concierge.Presentation
 
         #endregion
 
+        private void EditConditionsButton_Click(object sender, RoutedEventArgs e)
+        {
+            MondifyConditionsWindow.ShowEdit();
+            DrawConditions();
+        }
     }
 }

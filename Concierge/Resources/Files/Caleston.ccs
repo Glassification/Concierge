@@ -130,7 +130,7 @@
       <Blinded value="Cured" />
       <Charmed value="Cured" />
       <Deafened value="Cured" />
-      <Fatigued value="Exhaustion 2" />
+      <Fatigued value="Two" />
       <Frightened value="Cured" />
       <Grappled value="Cured" />
       <Incapacitated value="Cured" />

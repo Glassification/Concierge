@@ -16,9 +16,9 @@ namespace Concierge.SavingThrowsNamespace
         {
             get
             {
-                if (Program.Character.Vitality.Conditions.Fatigued.Equals("Exhaustion 3") ||
-                    Program.Character.Vitality.Conditions.Fatigued.Equals("Exhaustion 4") ||
-                    Program.Character.Vitality.Conditions.Fatigued.Equals("Exhaustion 5"))
+                if (Program.Character.Vitality.Conditions.Fatigued.Equals("Three") ||
+                    Program.Character.Vitality.Conditions.Fatigued.Equals("Four") ||
+                    Program.Character.Vitality.Conditions.Fatigued.Equals("Five"))
                     return Constants.Checks.Disadvantage;
                 else
                     return Constants.Checks.Normal;

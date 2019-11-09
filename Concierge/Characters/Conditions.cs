@@ -37,7 +37,7 @@ namespace Concierge.Characters
             Blinded = "Cured";
             Charmed = "Cured";
             Deafened = "Cured";
-            Fatigued = "Cured";
+            Fatigued = "Normal";
             Frightened = "Cured";
             Grappled = "Cured";
             Incapacitated = "Cured";
@@ -91,17 +91,17 @@ namespace Concierge.Characters
                     return StunnedDescription;
                 case "Unconscious":
                     return UnconsciousDescription;
-                case "Exhaustion 1":
+                case "One":
                     return Exausted1;
-                case "Exhaustion 2":
+                case "Two":
                     return Exausted1 + str + Exausted2;
-                case "Exhaustion 3":
+                case "Three":
                     return Exausted1 + str + Exausted2 + str + Exausted3;
-                case "Exhaustion 4":
+                case "Four":
                     return Exausted1 + str + Exausted2 + str + Exausted3 + str + Exausted4;
-                case "Exhaustion 5":
+                case "Five":
                     return Exausted1 + str + Exausted2 + str + Exausted3 + str + Exausted4 + str + Exausted5;
-                case "Exhaustion 6":
+                case "Six":
                     return Exausted6;
                 default:
                     return string.Empty;
@@ -119,7 +119,7 @@ namespace Concierge.Characters
             keyValuePairs.Add(new KeyValuePair<string, string>(Charmed,         "Charmed - "        + GetDescription(Charmed)));
             keyValuePairs.Add(new KeyValuePair<string, string>(Deafened,        "Deafened - "       + GetDescription(Deafened)));
             keyValuePairs.Add(new KeyValuePair<string, string>(Encumbrance,     Encumbrance + " - " + GetDescription(Encumbrance)));
-            keyValuePairs.Add(new KeyValuePair<string, string>(Fatigued,        Fatigued + " - "    + GetDescription(Fatigued)));
+            keyValuePairs.Add(new KeyValuePair<string, string>(Fatigued,        ToInteger(Fatigued) + " - "    + GetDescription(Fatigued)));
             keyValuePairs.Add(new KeyValuePair<string, string>(Frightened,      "Frightened - "     + GetDescription(Frightened)));
             keyValuePairs.Add(new KeyValuePair<string, string>(Grappled,        "Grappled - "       + GetDescription(Grappled)));
             keyValuePairs.Add(new KeyValuePair<string, string>(Incapacitated,   "Incapacitated - "  + GetDescription(Incapacitated)));
@@ -133,6 +133,27 @@ namespace Concierge.Characters
             keyValuePairs.Add(new KeyValuePair<string, string>(Unconscious,     "Unconscious - "    + GetDescription(Unconscious)));
 
             return keyValuePairs.Where(x => !x.Key.Equals("Cured") && !x.Key.Equals("Normal")).ToList();
+        }
+
+        private string ToInteger(string str)
+        {
+            switch (str)
+            {
+                case "One":
+                    return "Exaustion 1";
+                case "Two":
+                    return "Exaustion 2";
+                case "Three":
+                    return "Exaustion 3";
+                case "Four":
+                    return "Exaustion 4";
+                case "Five":
+                    return "Exaustion 5";
+                case "Six":
+                    return "Exaustion 6";
+                default:
+                    return string.Empty;
+            }
         }
 
         public Conditions Copy()

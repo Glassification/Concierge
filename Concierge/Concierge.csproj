@@ -153,6 +153,9 @@
     <Compile Include="Presentation\DialogBoxes\ModifyWeaponWindow.xaml.cs">
       <DependentUpon>ModifyWeaponWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Presentation\DialogBoxes\MondifyConditionsWindow.xaml.cs">
+      <DependentUpon>MondifyConditionsWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Presentation\Popups\EquipmentPopupWindow.xaml.cs">
       <DependentUpon>EquipmentPopupWindow.xaml</DependentUpon>
     </Compile>
@@ -281,6 +284,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Presentation\DialogBoxes\ModifyWeaponWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\DialogBoxes\MondifyConditionsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

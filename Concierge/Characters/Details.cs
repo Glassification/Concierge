@@ -48,9 +48,9 @@ namespace Concierge.Characters
             {
                 int newMovement = BaseMovement;
 
-                if (Program.Character.Vitality.Conditions.Fatigued.Equals("Exhaustion 5") ||
-                    Program.Character.Vitality.Conditions.Grappled.Equals("Afflicted") ||
-                    Program.Character.Vitality.Conditions.Restrained.Equals("Afflicted"))
+                if (Program.Character.Vitality.Conditions.Fatigued.Equals("Five") ||
+                    Program.Character.Vitality.Conditions.Grappled.Equals("Grappled") ||
+                    Program.Character.Vitality.Conditions.Restrained.Equals("Restrained"))
                 {
                     return 0;
                 }
@@ -65,9 +65,9 @@ namespace Concierge.Characters
                         newMovement -= 20;
                     }
 
-                    if (Program.Character.Vitality.Conditions.Fatigued.Equals("Exhaustion 2") ||
-                        Program.Character.Vitality.Conditions.Fatigued.Equals("Exhaustion 3") ||
-                        Program.Character.Vitality.Conditions.Fatigued.Equals("Exhaustion 4"))
+                    if (Program.Character.Vitality.Conditions.Fatigued.Equals("Two") ||
+                        Program.Character.Vitality.Conditions.Fatigued.Equals("Three") ||
+                        Program.Character.Vitality.Conditions.Fatigued.Equals("Four"))
                     {
                         newMovement /= 2;
                     }
