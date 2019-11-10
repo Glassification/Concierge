@@ -1,0 +1,576 @@
+﻿<Page x:Class="Concierge.Presentation.EquipmentPageUi.EquipmentPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:local="clr-namespace:Concierge.Presentation.EquipmentPageUi"
+      mc:Ignorable="d"
+      d:DesignHeight="600" d:DesignWidth="1020"
+      Title="EquipmentPage">
+
+    <Page.Resources>
+        <Style x:Key="ColumnElementStyle" TargetType="TextBlock">
+            <Setter Property="Margin" Value="10,10,10,10" />
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="FontSize" Value="15"/>
+        </Style>
+        <Style TargetType="{x:Type DataGridRow}">
+            <Style.Triggers>
+                <Trigger Property="ItemsControl.AlternationIndex" Value="0">
+                    <Setter Property="Background" Value="#FF333333"/>
+                    <Setter Property="Foreground" Value="White"/>
+                </Trigger>
+                <Trigger Property="ItemsControl.AlternationIndex" Value="1">
+                    <Setter Property="Background" Value="#FF3e3e42"/>
+                    <Setter Property="Foreground" Value="White"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="DGHeaderStyle" TargetType="{x:Type DataGrid}">
+            <Setter Property="ColumnHeaderStyle" Value="{DynamicResource DGCHeaderStyle}"/>
+            <Setter Property="Background" Value="#ff1c1636" />
+            <Setter Property="AlternationCount" Value="2" />
+        </Style>
+        <Style x:Key="DGCHeaderStyle" TargetType="DataGridColumnHeader">
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="Background" Value="#ff1c1636" />
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="18" />
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Margin" Value="10, 10, 10, 10"/>
+            <Setter Property="ContentTemplate">
+                <Setter.Value>
+                    <DataTemplate>
+                        <TextBlock TextWrapping="Wrap" Text="{Binding}"/>
+                    </DataTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30*"/>
+            <RowDefinition Height="70*"/>
+        </Grid.RowDefinitions>
+
+        <!--Armor Details-->
+        <Grid Grid.Row="0"
+              Background="#ff06011f"
+              Margin="3">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="18*"/>
+                <RowDefinition Height="82*"/>
+            </Grid.RowDefinitions>
+
+            <!--Header-->
+            <Grid Grid.Row="0">
+                <TextBlock Text="Armor Details"
+                           Foreground="White"
+                           FontSize="25"
+                           FontWeight="Bold"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Left"
+                           Margin="150, 0, 0, 0"/>
+                <Button x:Name="EditDetailsButton"
+                        Height="50"
+                        Width="60"
+                        Background="{x:Null}"
+                        BorderBrush="{x:Null}"
+                        Foreground="DarkOrange"
+                        ToolTip="Apply"
+                        Click="EditDetailsButton_Click"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Center">
+                    <materialDesign:PackIcon Kind="Edit" Width="25" Height="25"/>
+                </Button>
+            </Grid>
+
+            <!--Details-->
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="25*"/>
+                    <ColumnDefinition Width="25*"/>
+                    <ColumnDefinition Width="25*"/>
+                    <ColumnDefinition Width="25*"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid Grid.Column="0" Margin="3">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50*"/>
+                        <RowDefinition Height="50*"/>
+                    </Grid.RowDefinitions>
+
+                    <!--Armor Worn-->
+                    <Grid Grid.Row="0" Margin=" 0, 3, 0, 3">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="30*"/>
+                            <ColumnDefinition Width="70*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid Grid.Column="0"
+                              Background="#ff1c1636">
+                            <TextBlock Text="Armor Worn"
+                                       Foreground="White"
+                                       FontSize="25"
+                                       FontWeight="Bold"
+                                       TextWrapping="Wrap"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"/>
+                        </Grid>
+
+                        <Grid Grid.Column="1"
+                              Background="#FF3e3e42">
+                            <TextBlock x:Name="ArmorWornField"
+                                       Foreground="White"
+                                       TextWrapping="Wrap"
+                                       FontSize="30"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"/>
+                        </Grid>
+                    </Grid>
+
+                    <!--Armor Type-->
+                    <Grid Grid.Row="1" Margin=" 0, 3, 0, 3">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="30*"/>
+                            <ColumnDefinition Width="70*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid Grid.Column="0"
+                              Background="#ff1c1636">
+                            <TextBlock Text="Armor Type"
+                                       Foreground="White"
+                                       FontSize="25"
+                                       FontWeight="Bold"
+                                       TextWrapping="Wrap"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"/>
+                        </Grid>
+
+                        <Grid Grid.Column="1"
+                              Background="#FF3e3e42">
+                            <TextBlock x:Name="ArmorTypeField"
+                                       Foreground="White"
+                                       TextWrapping="Wrap"
+                                       FontSize="30"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"/>
+                        </Grid>
+                    </Grid>
+                </Grid>
+
+                <Grid Grid.Column="1" Margin="3">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50*"/>
+                        <RowDefinition Height="50*"/>
+                    </Grid.RowDefinitions>
+
+                    <!--Armor Class-->
+                    <Grid Grid.Row="0" Margin=" 0, 3, 0, 3">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="30*"/>
+                            <ColumnDefinition Width="70*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid Grid.Column="0"
+                              Background="#ff1c1636">
+                            <TextBlock Text="Armor Class"
+                                       Foreground="White"
+                                       FontSize="25"
+                                       FontWeight="Bold"
+                                       TextWrapping="Wrap"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"/>
+                        </Grid>
+
+                        <Grid Grid.Column="1"
+                              Background="#FF3e3e42">
+                            <TextBlock x:Name="ArmorClassField"
+                                       Foreground="White"
+                                       FontSize="30"
+                                       TextWrapping="Wrap"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"/>
+                        </Grid>
+                    </Grid>
+
+                    <!--Armor Stealth-->
+                    <Grid Grid.Row="1" Margin=" 0, 3, 0, 3">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="30*"/>
+                            <ColumnDefinition Width="70*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid Grid.Column="0"
+                              Background="#ff1c1636">
+                            <TextBlock Text="Armor Stealth"
+                                       Foreground="White"
+                                       FontSize="25"
+                                       FontWeight="Bold"
+                                       TextWrapping="Wrap"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"/>
+                        </Grid>
+
+                        <Grid Grid.Column="1"
+                              Background="#FF3e3e42">
+                            <TextBlock x:Name="ArmorStealthField"
+                                       Foreground="White"
+                                       TextWrapping="Wrap"
+                                       FontSize="30"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"/>
+                        </Grid>
+                    </Grid>
+                </Grid>
+
+                <Grid Grid.Column="2" Margin="3">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50*"/>
+                        <RowDefinition Height="50*"/>
+                    </Grid.RowDefinitions>
+
+                    <!--Misc Bonus-->
+                    <Grid Grid.Row="0" Margin=" 0, 3, 0, 3">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="30*"/>
+                            <ColumnDefinition Width="70*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid Grid.Column="0"
+                              Background="#ff1c1636">
+                            <TextBlock Text="Misc Bonus"
+                                       Foreground="White"
+                                       FontSize="25"
+                                       FontWeight="Bold"
+                                       TextWrapping="Wrap"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"/>
+                        </Grid>
+
+                        <Grid Grid.Column="1"
+                              Background="#FF3e3e42">
+                            <TextBlock x:Name="MiscBonusField"
+                                       Foreground="White"
+                                       TextWrapping="Wrap"
+                                       FontSize="30"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"/>
+                        </Grid>
+                    </Grid>
+
+                    <!--Magic Bonus-->
+                    <Grid Grid.Row="1" Margin=" 0, 3, 0, 3">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="30*"/>
+                            <ColumnDefinition Width="70*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid Grid.Column="0"
+                              Background="#ff1c1636">
+                            <TextBlock Text="Magic Bonus"
+                                       Foreground="White"
+                                       FontSize="25"
+                                       FontWeight="Bold"
+                                       TextWrapping="Wrap"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"/>
+                        </Grid>
+
+                        <Grid Grid.Column="1"
+                              Background="#FF3e3e42">
+                            <TextBlock x:Name="MagicBonusField"
+                                       Foreground="White"
+                                       TextWrapping="Wrap"
+                                       FontSize="30"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"/>
+                        </Grid>
+                    </Grid>
+                </Grid>
+
+                <Grid Grid.Column="3" Margin="3">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50*"/>
+                        <RowDefinition Height="50*"/>
+                    </Grid.RowDefinitions>
+
+                    <!--Shield Worn-->
+                    <Grid Grid.Row="0" Margin=" 0, 3, 0, 3">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="30*"/>
+                            <ColumnDefinition Width="70*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid Grid.Column="0"
+                              Background="#ff1c1636">
+                            <TextBlock Text="Shield Worn"
+                                       Foreground="White"
+                                       FontSize="25"
+                                       FontWeight="Bold"
+                                       TextWrapping="Wrap"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"/>
+                        </Grid>
+
+                        <Grid Grid.Column="1"
+                              Background="#FF3e3e42">
+                            <TextBlock x:Name="ShieldWornField"
+                                       Foreground="White"
+                                       FontSize="30"
+                                       TextWrapping="Wrap"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"/>
+                        </Grid>
+                    </Grid>
+
+                    <!--Shield AC-->
+                    <Grid Grid.Row="1" Margin=" 0, 3, 0, 3">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="30*"/>
+                            <ColumnDefinition Width="70*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid Grid.Column="0"
+                              Background="#ff1c1636">
+                            <TextBlock Text="Shield AC"
+                                       Foreground="White"
+                                       FontSize="25"
+                                       FontWeight="Bold"
+                                       TextWrapping="Wrap"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"/>
+                        </Grid>
+
+                        <Grid Grid.Column="1"
+                              Background="#FF3e3e42">
+                            <TextBlock x:Name="ShieldAcField"
+                                       Foreground="White"
+                                       FontSize="30"
+                                       TextWrapping="Wrap"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"/>
+                        </Grid>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </Grid>
+
+        <!--Ammo, Weapons-->
+        <Grid Grid.Row="1" Background="#ff06011f" Margin="3"
+              >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="8*"/>
+                <RowDefinition Height="36*"/>
+                <RowDefinition Height="56*"/>
+            </Grid.RowDefinitions>
+
+            <!--Header-->
+            <Grid Grid.Row="0"
+                  Background="#ff06011f"
+                  Margin="3, 3, 3, 0">
+                <TextBlock Text="Ammunition and Weapons"
+                           Foreground="White"
+                           HorizontalAlignment="Left"
+                           VerticalAlignment="Center"
+                           FontSize="30"
+                           FontWeight="Bold"
+                           Margin="15, 0, 0, 0"/>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Button x:Name="ButtonUp"
+                            Height="50"
+                            Width="60"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Background="{x:Null}"
+                            BorderBrush="{x:Null}"
+                            Foreground="Blue"
+                            Click="ButtonUp_Click"
+                            ToolTip="Move Item Up">
+                        <materialDesign:PackIcon Kind="ArrowUp" Width="25" Height="25"/>
+                    </Button>
+                    <Button x:Name="ButtonDown"
+                            Height="50"
+                            Width="60"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Background="{x:Null}"
+                            BorderBrush="{x:Null}"
+                            Foreground="Blue"
+                            Click="ButtonDown_Click"
+                            ToolTip="Move Item Down">
+                        <materialDesign:PackIcon Kind="ArrowDown" Width="25" Height="25"/>
+                    </Button>
+                    <Button x:Name="ButtonClear"
+                            Height="50"
+                            Width="60"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Background="{x:Null}"
+                            BorderBrush="{x:Null}"
+                            Foreground="Purple"
+                            Click="ButtonClear_Click"
+                            ToolTip="Clear Selected Item">
+                        <materialDesign:PackIcon Kind="Cancel" Width="25" Height="25"/>
+                    </Button>
+                    <Label Height="50"
+                           Width="60"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           Background="{x:Null}"
+                            BorderBrush="{x:Null}"/>
+                    <Button x:Name="ButtonAdd"
+                            Height="50"
+                            Width="60"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Background="{x:Null}"
+                            BorderBrush="{x:Null}"
+                            Foreground="Green"
+                            Click="ButtonAdd_Click"
+                            ToolTip="Add New Item">
+                        <materialDesign:PackIcon Kind="Add" Width="25" Height="25"/>
+                    </Button>
+                    <Button x:Name="ButtonEdit"
+                            Height="50"
+                            Width="60"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Background="{x:Null}"
+                            BorderBrush="{x:Null}"
+                            Foreground="DarkOrange"
+                            Click="ButtonEdit_Click"
+                            ToolTip="Edit Selected Item">
+                        <materialDesign:PackIcon Kind="Edit" Width="25" Height="25"/>
+                    </Button>
+                    <Button x:Name="ButtonDelete"
+                            Height="50"
+                            Width="60"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Background="{x:Null}"
+                            BorderBrush="{x:Null}"
+                            Foreground="IndianRed"
+                            Click="ButtonDelete_Click"
+                            ToolTip="Delete Selected Item">
+                        <materialDesign:PackIcon Kind="Delete" Width="25" Height="25"/>
+                    </Button>
+                </StackPanel>
+            </Grid>
+
+            <!--Ammo-->
+            <Grid Grid.Row="1" Margin="3" x:Name="AmmoGrid">
+                <DataGrid x:Name="AmmoDataGrid"
+                                      AutoGenerateColumns="False"
+                                      VerticalScrollBarVisibility="Auto"
+                                      HorizontalScrollBarVisibility="Disabled"
+                                      Background="#ff1c1636"
+                                      HeadersVisibility="Column"
+                                      IsReadOnly="True"
+                                      Margin="0, 5, 0, 0"
+                                      HorizontalGridLinesBrush="Transparent"
+                                      VerticalGridLinesBrush="Transparent"
+                                      CanUserResizeColumns="False"
+                                      CanUserAddRows="False"
+                                      Height="200"
+                                      BorderThickness="0"
+                                      Style="{DynamicResource DGHeaderStyle}"
+                                      SelectionChanged="AmmoDataGrid_SelectionChanged"
+                                      SelectionMode="Single">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn
+                                        Header="Ammo"
+                                        Binding="{Binding Name}"
+                                        Width="0.2*"
+                                        ElementStyle="{StaticResource ColumnElementStyle}"/>
+                        <DataGridTextColumn
+                                        Header="Quantity"
+                                        Binding="{Binding Quantity}"
+                                        Width="0.05*"
+                                        ElementStyle="{StaticResource ColumnElementStyle}"/>
+                        <DataGridTextColumn
+                                        Header="Damage Bonus"
+                                        Binding="{Binding Bonus}"
+                                        Width="0.1*"
+                                        ElementStyle="{StaticResource ColumnElementStyle}"/>
+                        <DataGridTextColumn
+                                        Header="Damage Type"
+                                        Binding="{Binding DamageType}"
+                                        Width="0.1*"
+                                        ElementStyle="{StaticResource ColumnElementStyle}"/>
+                        <DataGridTextColumn
+                                        Header="Used"
+                                        Binding="{Binding Used}"
+                                        Width="0.1*"
+                                        ElementStyle="{StaticResource ColumnElementStyle}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+
+            <!--Weapons-->
+            <Grid Grid.Row="2" Margin="3" x:Name="WeaponGrid">
+                <DataGrid x:Name="WeaponDataGrid"
+                              AutoGenerateColumns="False"
+                              VerticalScrollBarVisibility="Auto"
+                              HorizontalScrollBarVisibility="Disabled"
+                              Background="#ff1c1636"
+                              HeadersVisibility="Column"
+                              IsReadOnly="True"
+                              Margin="0, 5, 0, 0"
+                              HorizontalGridLinesBrush="Transparent"
+                              VerticalGridLinesBrush="Transparent"
+                              CanUserResizeColumns="False"
+                              CanUserAddRows="False"
+                              BorderThickness="0"
+                              Style="{DynamicResource DGHeaderStyle}"
+                              SelectionChanged="WeaponDataGrid_SelectionChanged"
+                              SelectionMode="Single">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn
+                                Header="Weapon/Attack"
+                                Binding="{Binding Name}"
+                                Width="0.2*"
+                                ElementStyle="{StaticResource ColumnElementStyle}"/>
+                        <DataGridTextColumn
+                                Header="Attack Bonus"
+                                Binding="{Binding Attack}"
+                                Width="0.1*"
+                                ElementStyle="{StaticResource ColumnElementStyle}"/>
+                        <DataGridTextColumn
+                                Header="Ability"
+                                Binding="{Binding Ability}"
+                                Width="0.1*"
+                                ElementStyle="{StaticResource ColumnElementStyle}"/>
+                        <DataGridTextColumn
+                                Header="Damage"
+                                Binding="{Binding Damage}"
+                                Width="0.1*"
+                                ElementStyle="{StaticResource ColumnElementStyle}"/>
+                        <DataGridTextColumn
+                                Header="Misc Bonus"
+                                Binding="{Binding Misc}"
+                                Width="0.1*"
+                                ElementStyle="{StaticResource ColumnElementStyle}"/>
+                        <DataGridTextColumn
+                                Header="Damage Type"
+                                Binding="{Binding DamageType}"
+                                Width="0.1*"
+                                ElementStyle="{StaticResource ColumnElementStyle}"/>
+                        <DataGridTextColumn
+                                Header="Range"
+                                Binding="{Binding Range}"
+                                Width="0.1*"
+                                ElementStyle="{StaticResource ColumnElementStyle}"/>
+                        <DataGridTextColumn
+                                Header="Notes"
+                                Binding="{Binding Note}"
+                                Width="0.20*"
+                                ElementStyle="{StaticResource ColumnElementStyle}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+        </Grid>
+    </Grid>
+</Page>

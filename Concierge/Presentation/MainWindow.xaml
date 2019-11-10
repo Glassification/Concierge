@@ -6,16 +6,14 @@
         xmlns:local="clr-namespace:Concierge.Presentation"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="1080" 
-        ResizeMode="NoResize" 
-        WindowStartupLocation="CenterScreen" 
-        WindowStyle="None" 
-        Background="#FF202020" 
-        KeyDown="MainWindow_KeyPress" 
+        Title="MainWindow" Height="600" Width="1080"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        Background="#FF202020"
+        KeyDown="MainWindow_KeyPress"
         WindowState="Maximized">
 
-    
-    
     <Window.Resources>
         <ObjectDataProvider x:Key="getGridContentWidthOpen"
                             ObjectType="{x:Type local:MainWindow}"
@@ -63,7 +61,7 @@
             <RowDefinition Height="50"/>
             <RowDefinition Height="1*" />
         </Grid.RowDefinitions>
-        
+
         <!-- Side Menu -->
 
         <!-- Title Menu -->
@@ -153,17 +151,17 @@
                 </StackPanel>
             </Grid>
         </Grid>
-        
+
         <!--  -->
         <Grid Grid.Row="1">
 
             <!-- Content Area -->
             <Grid x:Name="GridContent" HorizontalAlignment="Right" Width="1020" Background="Transparent">
                 <Frame Name="FrameContent" ContentRendered="MainWindow_ContentRendered">
-                    
+
                 </Frame>
             </Grid>
-            
+
             <!-- Side Menu -->
             <Grid x:Name="GridMenu" HorizontalAlignment="Left" Width="60" Background="#FF191919">
                 <Grid.Effect>
@@ -224,8 +222,4 @@
             </Grid>
         </Grid>
     </Grid>
-
-    <!--<Grid>
-        
-    </Grid>-->
 </Window>

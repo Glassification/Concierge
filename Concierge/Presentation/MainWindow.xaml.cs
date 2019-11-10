@@ -1,4 +1,12 @@
 ﻿using Concierge.Persistence;
+using Concierge.Presentation.AbilitiesPageUi;
+using Concierge.Presentation.DetailsPageUi;
+using Concierge.Presentation.EquipmentPageUi;
+using Concierge.Presentation.InventoryPageUi;
+using Concierge.Presentation.NotesPageUi;
+using Concierge.Presentation.OverviewPageUi;
+using Concierge.Presentation.SpellcastingPageUi;
+using Concierge.Presentation.ToolsPageUi;
 using Concierge.Utility;
 using Microsoft.Win32;
 using System;
@@ -98,7 +106,7 @@ namespace Concierge.Presentation
 
         public void SaveCharacterSheet()
         {
-            
+
             if (Program.CcsFile != null)
             {
                 NotesPage.SaveTextBox();
@@ -226,7 +234,7 @@ namespace Concierge.Presentation
                             OpenCharacterSheet();
                         }
                         break;
-                    // Close Window 
+                    // Close Window
                     case Key.Q:
                         if (IsControl())
                         {
