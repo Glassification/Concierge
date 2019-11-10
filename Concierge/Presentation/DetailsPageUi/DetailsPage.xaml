@@ -81,6 +81,18 @@
 
                     <!--Header-->
                     <Grid Grid.Row="0">
+                        <Button x:Name="EditAppearanceButton"
+                                Height="50"
+                                Width="60"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Center"
+                                Background="{x:Null}"
+                                BorderBrush="{x:Null}"
+                                Foreground="DarkOrange"
+                                ToolTip="Edit"
+                                Click="EditAppearanceButton_Click">
+                            <materialDesign:PackIcon Kind="Edit" Width="25" Height="25"/>
+                        </Button>
                         <TextBlock Text="Appearance"
                                Foreground="White"
                                FontSize="40"
@@ -361,6 +373,18 @@
 
                     <!--Header-->
                     <Grid Grid.Row="0">
+                        <Button x:Name="EditPersonalityButton"
+                                Height="50"
+                                Width="60"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Center"
+                                Background="{x:Null}"
+                                BorderBrush="{x:Null}"
+                                Foreground="DarkOrange"
+                                ToolTip="Edit"
+                                Click="EditPersonalityButton_Click">
+                            <materialDesign:PackIcon Kind="Edit" Width="25" Height="25"/>
+                        </Button>
                         <TextBlock Text="Personality"
                                Foreground="White"
                                FontSize="40"

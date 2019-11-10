@@ -136,6 +136,12 @@
     <Compile Include="Presentation\AbilitiesPageUi\ModifyAbilitiesWindow.xaml.cs">
       <DependentUpon>ModifyAbilitiesWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Presentation\DetailsPageUi\ModifyAppearanceWindow.xaml.cs">
+      <DependentUpon>ModifyAppearanceWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\DetailsPageUi\ModifyPersonalityWindow.xaml.cs">
+      <DependentUpon>ModifyPersonalityWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Presentation\EquipmentPageUi\ModifyAmmoWindow.xaml.cs">
       <DependentUpon>ModifyAmmoWindow.xaml</DependentUpon>
     </Compile>
@@ -264,6 +270,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Presentation\AbilitiesPageUi\ModifyAbilitiesWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\DetailsPageUi\ModifyAppearanceWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\DetailsPageUi\ModifyPersonalityWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

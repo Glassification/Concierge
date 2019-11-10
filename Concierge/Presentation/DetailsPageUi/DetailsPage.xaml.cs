@@ -25,6 +25,8 @@ namespace Concierge.Presentation.DetailsPageUi
             ModifyProficiencyWindow = new ModifyProficiencyWindow();
             MondifyConditionsWindow = new MondifyConditionsWindow();
             ModifyLanguagesWindow = new ModifyLanguagesWindow();
+            ModifyAppearanceWindow = new ModifyAppearanceWindow();
+            ModifyPersonalityWindow = new ModifyPersonalityWindow();
         }
 
         #endregion
@@ -187,6 +189,8 @@ namespace Concierge.Presentation.DetailsPageUi
         private ModifyProficiencyWindow ModifyProficiencyWindow { get; }
         private MondifyConditionsWindow MondifyConditionsWindow { get; }
         private ModifyLanguagesWindow ModifyLanguagesWindow { get; }
+        private ModifyAppearanceWindow ModifyAppearanceWindow { get; }
+        private ModifyPersonalityWindow ModifyPersonalityWindow { get; }
 
         #endregion
 
@@ -355,6 +359,18 @@ namespace Concierge.Presentation.DetailsPageUi
         private void ClearConditionsButton_Click(object sender, RoutedEventArgs e)
         {
             ConditionsDataGrid.UnselectAll();
+        }
+
+        private void EditAppearanceButton_Click(object sender, RoutedEventArgs e)
+        {
+            ModifyAppearanceWindow.ShowEdit();
+            DrawAppearance();
+        }
+
+        private void EditPersonalityButton_Click(object sender, RoutedEventArgs e)
+        {
+            ModifyPersonalityWindow.ShowEdit();
+            DrawPersonality();
         }
     }
 }
