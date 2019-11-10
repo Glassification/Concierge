@@ -110,6 +110,7 @@
     <Compile Include="Characters\Collections\ClassResource.cs" />
     <Compile Include="Characters\Collections\Document.cs" />
     <Compile Include="Characters\Collections\Inventory.cs" />
+    <Compile Include="Characters\Collections\Language.cs" />
     <Compile Include="Characters\Collections\MagicClass.cs" />
     <Compile Include="Characters\Collections\Spell.cs" />
     <Compile Include="Characters\Collections\Weapon.cs" />
@@ -143,6 +144,9 @@
     </Compile>
     <Compile Include="Presentation\DialogBoxes\ModifyInventoryWindow.xaml.cs">
       <DependentUpon>ModifyInventoryWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\DialogBoxes\ModifyLanguagesWindow.xaml.cs">
+      <DependentUpon>ModifyLanguagesWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Presentation\DialogBoxes\ModifyProficiencyWindow.xaml.cs">
       <DependentUpon>ModifyProficiencyWindow.xaml</DependentUpon>
@@ -275,6 +279,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Presentation\DialogBoxes\ModifyLanguagesWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Presentation\DialogBoxes\ModifyProficiencyWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -349,6 +357,8 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Resources\Xml\LanguageList.xml" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

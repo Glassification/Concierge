@@ -73,9 +73,9 @@
     </Classes>
     <Experience value="16071" />
     <Languages>
-      <Language value="Common" id="c32dcdcb-33b3-46de-9dbf-2b46aeaa0b5b" />
-      <Language value="Elvish" id="b25516db-14ca-499b-9956-ddc60bebab6a" />
-      <Language value="Draconic" id="583c023c-10f0-4da5-be1b-ae06ceeeec8b" />
+      <Language Name="Common" Script="Common" Speakers="Humans, halflings, half-elves, half-orcs" id="c32dcdcb-33b3-46de-9dbf-2b46aeaa0b5b" />
+      <Language Name="Elvish" Script="Elvish" Speakers="Elves" id="b25516db-14ca-499b-9956-ddc60bebab6a" />
+      <Language Name="Draconic" Script="Draconic" Speakers="Kobolds, troglodytes, lizardfolk, dragons, dragonborn" id="583c023c-10f0-4da5-be1b-ae06ceeeec8b" />
     </Languages>
     <InitiativeBonus value="5" />
     <PerceptionBonus value="0" />

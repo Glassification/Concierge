@@ -40,6 +40,7 @@ namespace Concierge.Utility
             Ammunitions = new ReadOnlyCollection<Ammunition>(DefaultListLoader.LoadAmmunitionList());
             Spells = new ReadOnlyCollection<Spell>(DefaultListLoader.LoadSpellList());
             Inventories = new ReadOnlyCollection<Inventory>(DefaultListLoader.LoadInventoryList());
+            Languages = new ReadOnlyCollection<Language>(DefaultListLoader.LoadLanguageList());
         }
 
         public static int CalculateBonus(int score)
@@ -126,5 +127,6 @@ namespace Concierge.Utility
         public static ReadOnlyCollection<Ammunition> Ammunitions { get; private set; }
         public static ReadOnlyCollection<Spell> Spells { get; private set; }
         public static ReadOnlyCollection<Inventory> Inventories { get; private set; }
+        public static ReadOnlyCollection<Language> Languages { get; private set; }
     }
 }

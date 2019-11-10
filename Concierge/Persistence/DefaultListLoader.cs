@@ -152,5 +152,36 @@ namespace Concierge.Persistence
 
             return inventories;
         }
+
+        public static List<Language> LoadLanguageList()
+        {
+            List<Language> languages = new List<Language>();
+
+            try
+            {
+                XDocument xml = XDocument.Parse(Properties.Resources.LanguageList);
+                XElement root = xml.Element("Languages");
+
+                var Languages = root.Elements("Language");
+                foreach (XElement elem in Languages)
+                {
+                    Language l = new Language(Guid.Empty)
+                    {
+                        Name = (string)elem.Attribute("Name"),
+                        Script = (string)elem.Attribute("Script"),
+                        Speakers = (string)elem.Attribute("Speakers")
+                    };
+
+                    languages.Add(l);
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.StackTrace);
+                MessageBox.Show("Error: Default language list not loaded successfully", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
+            return languages;
+        }
     }
 }

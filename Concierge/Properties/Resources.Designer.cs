@@ -120,6 +120,22 @@ namespace Concierge.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;
+        ///&lt;Languages&gt;
+        ///  &lt;Language Name=&quot;Abyssal&quot; Script=&quot;Infernal&quot; Speakers=&quot;Demons, chaotic evil outsiders&quot;/&gt;
+        ///  &lt;Language Name=&quot;Aquan&quot; Script=&quot;Elven&quot; Speakers=&quot;Water-based creatures&quot;/&gt;
+        ///  &lt;Language Name=&quot;Auran&quot; Script=&quot;Draconic&quot; Speakers=&quot;Air-based creatures&quot;/&gt;
+        ///  &lt;Language Name=&quot;Celestial&quot; Script=&quot;Celestial&quot; Speakers=&quot;Celestials (angels, devas)&quot;/&gt;
+        ///  &lt;Language Name=&quot;Common&quot; Script=&quot;Common&quot; Speakers=&quot;Humans, halflings, half-elves, half-orcs&quot;/&gt;
+        ///  &lt;Language Name=&quot;Deep Speech [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string LanguageList {
+            get {
+                return ResourceManager.GetString("LanguageList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
         ///&lt;Spells&gt;
         ///  &lt;Spell name=&quot;Acid Splash&quot; level=&quot;Cantrip&quot; page=&quot;211&quot; school=&quot;Conjuration&quot; ritual=&quot;No&quot; comp=&quot;V, S&quot; concen=&quot;No&quot; range=&quot;60 ft.&quot; duration=&quot;Instantaneous&quot; area=&quot;1 or 2 adjacent targets&quot; save=&quot;DEX (Fail)&quot; damage=&quot;1d6 Acid&quot; description=&quot;DAM: Add extra 1d6 at 5th level, 11th level, and 17th level.&quot; prepared=&quot;No&quot; /&gt;

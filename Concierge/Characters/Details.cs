@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Concierge.Characters.Collections;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,11 +16,16 @@ namespace Concierge.Characters
             Background = "";
             Alignment = "";
             Experience = "";
-            Languages = new Dictionary<Guid, string>();
+            Languages = new List<Language>();
             InitiativeBonus = 0;
             PerceptionBonus = 0;
             BaseMovement = 0;
             Vision = "";
+        }
+
+        public Language GetLanguageById(Guid id)
+        {
+            return Languages.Where(x => x.ID.Equals(id)).Single();
         }
 
         public string Name { get; set; }
@@ -32,7 +38,7 @@ namespace Concierge.Characters
 
         public string Experience { get; set; }
 
-        public Dictionary<Guid, string> Languages { get; set; }
+        public List<Language> Languages { get; set; }
 
         public int InitiativeBonus { get; set; }
 

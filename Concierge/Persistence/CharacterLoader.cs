@@ -134,7 +134,13 @@ namespace Concierge.Persistence
                 var languages = element.Element("Languages").Elements("Language");
                 foreach (var language in languages)
                 {
-                    character.Details.Languages.Add(new Guid((string)language.Attribute("id")), (string)language.Attribute("value"));
+                    Language l = new Language(new Guid((string)language.Attribute("id")))
+                    {
+                        Name = (string)language.Attribute("Name"),
+                        Script = (string)language.Attribute("Script"),
+                        Speakers = (string)language.Attribute("Speakers")
+                    };
+                    character.Details.Languages.Add(l);
                 }
 
                 //-------------------------------------------------------------------------------------------------------

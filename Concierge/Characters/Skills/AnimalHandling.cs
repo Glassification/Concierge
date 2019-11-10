@@ -21,15 +21,15 @@ namespace Concierge.SkillsNamespace
         {
             get
             {
-                if (Program.Character.Vitality.Conditions.Fatigued.Equals("Exhaustion 1") ||
-                    Program.Character.Vitality.Conditions.Fatigued.Equals("Exhaustion 2") ||
-                    Program.Character.Vitality.Conditions.Fatigued.Equals("Exhaustion 3") ||
-                    Program.Character.Vitality.Conditions.Fatigued.Equals("Exhaustion 4") ||
-                    Program.Character.Vitality.Conditions.Fatigued.Equals("Exhaustion 5") ||
-                    Program.Character.Vitality.Conditions.Frightened.Equals("Afflicted") ||
-                    Program.Character.Vitality.Conditions.Poisoned.Equals("Afflicted"))
+                if (Program.Character.Vitality.Conditions.Fatigued.Equals("One") ||
+                    Program.Character.Vitality.Conditions.Fatigued.Equals("Two") ||
+                    Program.Character.Vitality.Conditions.Fatigued.Equals("Three") ||
+                    Program.Character.Vitality.Conditions.Fatigued.Equals("Four") ||
+                    Program.Character.Vitality.Conditions.Fatigued.Equals("Five") ||
+                    Program.Character.Vitality.Conditions.Frightened.Equals("Frightened") ||
+                    Program.Character.Vitality.Conditions.Poisoned.Equals("Poisoned"))
                     return Constants.Checks.Disadvantage;
-                else if (Program.Character.Vitality.Conditions.Blinded.Equals("Afflicted"))
+                else if (Program.Character.Vitality.Conditions.Blinded.Equals("Blinded"))
                     return Constants.Checks.Fail;
                 else
                     return Constants.Checks.Normal;

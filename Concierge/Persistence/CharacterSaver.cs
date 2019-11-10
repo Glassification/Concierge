@@ -109,8 +109,10 @@ namespace Concierge.Persistence
                                     from language in character.Details.Languages
                                     select
                                         new XElement("Language",
-                                            new XAttribute("value", language.Value),
-                                            new XAttribute("id", language.Key)
+                                            new XAttribute("Name", language.Name),
+                                            new XAttribute("NamScripte", language.Script),
+                                            new XAttribute("Speakers", language.Speakers),
+                                            new XAttribute("id", language.ID)
                                             )
                                 ),
                             new XElement("InitiativeBonus", new XAttribute("value", character.Details.InitiativeBonus)),

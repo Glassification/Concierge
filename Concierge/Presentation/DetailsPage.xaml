@@ -788,9 +788,9 @@
         <!--Wealth, Weight, Language, Conditions-->
         <Grid Grid.Column="1">
             <Grid.RowDefinitions>
-                <RowDefinition Height="25*"/>
-                <RowDefinition Height="25*"/>
-                <RowDefinition Height="25*"/>
+                <RowDefinition Height="23*"/>
+                <RowDefinition Height="22*"/>
+                <RowDefinition Height="30*"/>
                 <RowDefinition Height="25*"/>
             </Grid.RowDefinitions>
 
@@ -819,7 +819,7 @@
                             Background="{x:Null}"
                             BorderBrush="{x:Null}"
                             Foreground="DarkOrange"
-                            ToolTip="Close"
+                            ToolTip="Edit"
                             Click="EditWealthButton_Click">
                         <materialDesign:PackIcon Kind="Edit" Width="25" Height="25"/>
                     </Button>
@@ -1103,27 +1103,87 @@
             <!--Language-->
             <Grid Grid.Row="2" Margin="3">
                 <DataGrid x:Name="LanguagesDataGrid"
-                                  AutoGenerateColumns="False"
-                                  VerticalScrollBarVisibility="Hidden"
-                                  HorizontalScrollBarVisibility="Disabled"
-                                  Background="#ff06011f"
-                                  HeadersVisibility="Column"
-                                  IsReadOnly="True"
-                                  HorizontalGridLinesBrush="Transparent"
-                                  VerticalGridLinesBrush="Transparent"
-                                  CanUserResizeColumns="False"
-                                  CanUserAddRows="False"
-                                  MaxHeight="{Binding Path=ProficiencyGridSize}"
-                                  BorderThickness="0"
-                                  Style="{DynamicResource DGHeaderStyle}"
-                                  SelectionMode="Single">
+                        AutoGenerateColumns="False"
+                        VerticalScrollBarVisibility="Hidden"
+                        HorizontalScrollBarVisibility="Disabled"
+                        Background="#ff06011f"
+                        HeadersVisibility="Column"
+                        IsReadOnly="True"
+                        HorizontalGridLinesBrush="Transparent"
+                        VerticalGridLinesBrush="Transparent"
+                        CanUserResizeColumns="False"
+                        CanUserAddRows="False"
+                        MaxHeight="{Binding Path=ProficiencyGridSize}"
+                        BorderThickness="0"
+                        Style="{DynamicResource DGHeaderStyle}"
+                        SelectionMode="Single">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Languages"
-                                                    Width="100*"
-                                                    Binding="{Binding Value}"
-                                                    ElementStyle="{StaticResource ColumnElementStyle}"/>
+                                            Width="100*"
+                                            Binding="{Binding Description}"
+                                            ElementStyle="{StaticResource ColumnElementStyle}"/>
                     </DataGrid.Columns>
                 </DataGrid>
+                <StackPanel Orientation="Horizontal"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top">
+                    <Button x:Name="ClearLanguagesButton"
+                            Height="35"
+                            Width="35"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top"
+                            Background="{x:Null}"
+                            BorderBrush="{x:Null}"
+                            Foreground="Purple"
+                            ToolTip="Clear"
+                            Click="ClearLanguagesButton_Click"
+                            Margin="0, 0, 3, 3">
+                        <materialDesign:PackIcon Kind="Cancel" Width="25" Height="25"/>
+                    </Button>
+                    <Button x:Name="DeleteLanguagesButton"
+                            Height="35"
+                            Width="35"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top"
+                            Background="{x:Null}"
+                            BorderBrush="{x:Null}"
+                            Foreground="IndianRed"
+                            ToolTip="Edit"
+                            Click="DeleteLanguagesButton_Click"
+                            Margin="0, 0, 3, 3">
+                        <materialDesign:PackIcon Kind="Delete" Width="25" Height="25"/>
+                    </Button>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Top">
+                    <Button x:Name="AddLanguagesButton"
+                            Height="35"
+                            Width="35"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Background="{x:Null}"
+                            BorderBrush="{x:Null}"
+                            Foreground="Green"
+                            Click="AddLanguagesButton_Click"
+                            ToolTip="Add"
+                            Margin="0, 0, 3, 3">
+                        <materialDesign:PackIcon Kind="Add" Width="25" Height="25"/>
+                    </Button>
+                    <Button x:Name="EditLanguagesButton"
+                        Height="35"
+                        Width="35"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Top"
+                        Background="{x:Null}"
+                        BorderBrush="{x:Null}"
+                        Foreground="DarkOrange"
+                        ToolTip="Edit"
+                        Click="EditLanguagesButton_Click"
+                        Margin="0, 0, 3, 3">
+                        <materialDesign:PackIcon Kind="Edit" Width="25" Height="25"/>
+                    </Button>
+                </StackPanel>
             </Grid>
             
             <!--Conditions-->
@@ -1150,19 +1210,36 @@
                                                     ElementStyle="{StaticResource ColumnElementStyle}"/>
                     </DataGrid.Columns>
                 </DataGrid>
-                <Button x:Name="EditConditionsButton"
-                        Height="35"
-                        Width="35"
-                        HorizontalAlignment="Right"
-                        VerticalAlignment="Top"
-                        Background="{x:Null}"
-                        BorderBrush="{x:Null}"
-                        Foreground="DarkOrange"
-                        ToolTip="Close"
-                        Click="EditConditionsButton_Click"
-                        Margin="0, 3, 3, 3">
-                    <materialDesign:PackIcon Kind="Edit" Width="25" Height="25"/>
-                </Button>
+                <StackPanel Orientation="Horizontal"
+                            VerticalAlignment="Top"
+                            HorizontalAlignment="Right">
+                    <Button x:Name="ClearConditionsButton"
+                                Height="35"
+                                Width="35"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Top"
+                                Background="{x:Null}"
+                                BorderBrush="{x:Null}"
+                                Foreground="Purple"
+                                ToolTip="Clear"
+                                Click="ClearConditionsButton_Click"
+                                Margin="0, 0, 3, 3">
+                        <materialDesign:PackIcon Kind="Cancel" Width="25" Height="25"/>
+                    </Button>
+                    <Button x:Name="EditConditionsButton"
+                            Height="35"
+                            Width="35"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Top"
+                            Background="{x:Null}"
+                            BorderBrush="{x:Null}"
+                            Foreground="DarkOrange"
+                            ToolTip="Edit"
+                            Click="EditConditionsButton_Click"
+                            Margin="0, 0, 3, 3">
+                        <materialDesign:PackIcon Kind="Edit" Width="25" Height="25"/>
+                    </Button>
+                </StackPanel>
             </Grid>
         </Grid>
     </Grid>

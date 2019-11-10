@@ -1,4 +1,5 @@
-﻿using Concierge.Presentation.DialogBoxes;
+﻿using Concierge.Characters.Collections;
+using Concierge.Presentation.DialogBoxes;
 using Concierge.Presentation.Popups;
 using Concierge.Utility;
 using System;
@@ -34,6 +35,7 @@ namespace Concierge.Presentation
             ProficiencyPopupWindow = new ProficiencyPopupWindow();
             ModifyProficiencyWindow = new ModifyProficiencyWindow();
             MondifyConditionsWindow = new MondifyConditionsWindow();
+            ModifyLanguagesWindow = new ModifyLanguagesWindow();
         }
 
         #endregion
@@ -195,6 +197,7 @@ namespace Concierge.Presentation
         private ProficiencyPopupWindow ProficiencyPopupWindow { get; }
         private ModifyProficiencyWindow ModifyProficiencyWindow { get; }
         private MondifyConditionsWindow MondifyConditionsWindow { get; }
+        private ModifyLanguagesWindow ModifyLanguagesWindow { get; }
 
         #endregion
 
@@ -329,6 +332,40 @@ namespace Concierge.Presentation
         {
             MondifyConditionsWindow.ShowEdit();
             DrawConditions();
+        }
+
+        private void EditLanguagesButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (LanguagesDataGrid.SelectedItem != null)
+            {
+                ModifyLanguagesWindow.ShowEdit(LanguagesDataGrid.SelectedItem as Language);
+                DrawLanguages();
+            }
+        }
+
+        private void AddLanguagesButton_Click(object sender, RoutedEventArgs e)
+        {
+            ModifyLanguagesWindow.ShowAdd();
+            DrawLanguages();
+        }
+
+        private void DeleteLanguagesButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (LanguagesDataGrid.SelectedItem != null)
+            {
+                Program.Character.Details.Languages.Remove(LanguagesDataGrid.SelectedItem as Language);
+                DrawLanguages();
+            }
+        }
+
+        private void ClearLanguagesButton_Click(object sender, RoutedEventArgs e)
+        {
+            LanguagesDataGrid.UnselectAll();
+        }
+
+        private void ClearConditionsButton_Click(object sender, RoutedEventArgs e)
+        {
+            ConditionsDataGrid.UnselectAll();
         }
     }
 }
