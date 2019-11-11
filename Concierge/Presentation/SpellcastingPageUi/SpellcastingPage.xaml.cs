@@ -202,7 +202,18 @@ namespace Concierge.Presentation.SpellcastingPageUi
 
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
-
+            if (MagicClassDataGrid.SelectedItem != null)
+            {
+                MagicClass magicClass = (MagicClass)MagicClassDataGrid.SelectedItem;
+                Program.Character.MagicClasses.Remove(magicClass);
+                FillMagicClassList();
+            }
+            else if (SpellListDataGrid.SelectedItem != null)
+            {
+                Spell spell = (Spell)SpellListDataGrid.SelectedItem;
+                Program.Character.Spells.Remove(spell);
+                FillSpellList();
+            }
         }
 
         private void ButtonEdit_Click(object sender, RoutedEventArgs e)

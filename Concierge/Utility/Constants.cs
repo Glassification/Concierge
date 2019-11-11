@@ -31,6 +31,8 @@ namespace Concierge.Utility
         public enum PopupButtons { OK, Apply, Cancel, AddWeapon, AddAmmo, WeaponProficiency, ArmorProficiency, ShieldProficiency, ToolProficiency, AddMagicClass, AddSpell, AddChapter, AddPage };
         public enum ConditionTypes { Cured, Afflicted };
         public enum ExhaustionType { Normal, One, Two, Three, Four, Five, Six };
+        public enum ClassTypes { Barbarian, Bard, Cleric, Druid, Fighter, Monk, Paladin, Ranger, Rouge, Sorcerer, Warlock, Wizard};
+        public enum ArcaneSchools { Abjuration, Conjuration, Divination, Enchantment, Evocation, Illusion, Necromancy, Transmutation, Universal };
 
         static Constants()
         {

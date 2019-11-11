@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Concierge.Utility;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,10 +26,10 @@ namespace Concierge.Characters.Collections
 
         public string Name { get; set; }
         public bool Prepared { get; set; }
-        public string Level { get; set; }
-        public string Page { get; set; }
-        public string School { get; set; }
-        public string Ritual { get; set; }
+        public int Level { get; set; }
+        public int Page { get; set; }
+        public Constants.ArcaneSchools School { get; set; }
+        public bool Ritual { get; set; }
         public string Components { get; set; }
         public bool Concentration { get; set; }
         public string Range { get; set; }
@@ -38,6 +39,6 @@ namespace Concierge.Characters.Collections
         public string Damage { get; set; }
         public string Description { get; set; }
         public string Class { get; set; }
-        public Guid ID { get; private set; }
+        public Guid ID { get; }
     }
 }

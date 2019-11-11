@@ -165,6 +165,11 @@ namespace Concierge.Characters
             return Ammunitions.Where(x => x.ID.Equals(id)).Single();
         }
 
+        public Spell GetSpellById(Guid id)
+        {
+            return Spells.Where(x => x.ID.Equals(id)).Single();
+        }
+
         public List<Ability> Abilities { get; set; }
         public List<Ammunition> Ammunitions { get; private set; }
         public Appearance Appearance { get; private set; }

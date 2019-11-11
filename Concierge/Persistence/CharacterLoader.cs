@@ -382,10 +382,10 @@ namespace Concierge.Persistence
                     Spell spell = new Spell(new Guid((string)elem.Attribute("id")))
                     {
                         Name = (string)elem.Attribute("name"),
-                        Level = (string)elem.Attribute("level"),
-                        Page = (string)elem.Attribute("page"),
-                        School = (string)elem.Attribute("school"),
-                        Ritual = (string)elem.Attribute("ritual"),
+                        Level = int.Parse((string)elem.Attribute("level")),
+                        Page = int.Parse((string)elem.Attribute("page")),
+                        School = (Constants.ArcaneSchools)Enum.Parse(typeof(Constants.ArcaneSchools), (string)elem.Attribute("school")),
+                        Ritual = bool.Parse((string)elem.Attribute("ritual")),
                         Components = (string)elem.Attribute("comp"),
                         Concentration = bool.Parse((string)elem.Attribute("concen")),
                         Range = (string)elem.Attribute("range"),
