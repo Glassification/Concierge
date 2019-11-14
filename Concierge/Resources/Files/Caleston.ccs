@@ -222,7 +222,7 @@
       <Nine total="0" used="0" />
     </SpellSlots>
     <SpellList>
-      <Spell name="Jump" level="1" page="254" school="Transmutation" ritual="No" comp="Jump Blade" concen="false" range="Touch" duration="6 seconds" area="Self" save="N/A" damage="N/A" description="Target's jump distance tripled until spell ends. Can be used once per long rest." prepared="false" id="cff6cbb7-613e-446e-875a-9ab2957ab692" />
+      <Spell name="Jump" level="1" page="254" school="Transmutation" ritual="false" comp="Jump Blade" concen="false" range="Touch" duration="6 seconds" area="Self" save="N/A" damage="N/A" description="Target's jump distance tripled until spell ends. Can be used once per long rest." prepared="false" id="cff6cbb7-613e-446e-875a-9ab2957ab692" />
     </SpellList>
   </Spellcasting>
   <Companion>
