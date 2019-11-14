@@ -14,6 +14,9 @@ namespace Concierge.Presentation.SpellcastingPageUi
         public SpellcastingPage()
         {
             InitializeComponent();
+            SpellcastingSelectionWindow = new SpellcastingSelectionWindow();
+            ModifySpellWindow = new ModifySpellWindow();
+            ModifySpellClassWindow = new ModifySpellClassWindow();
         }
 
         public void Draw()
@@ -134,6 +137,10 @@ namespace Concierge.Presentation.SpellcastingPageUi
             CasterLevelField.Text = level.ToString();
         }
 
+        private SpellcastingSelectionWindow SpellcastingSelectionWindow { get; }
+        private ModifySpellWindow ModifySpellWindow { get; }
+        private ModifySpellClassWindow ModifySpellClassWindow { get; }
+
         private void ButtonUp_Click(object sender, RoutedEventArgs e)
         {
             int index;
@@ -202,23 +209,37 @@ namespace Concierge.Presentation.SpellcastingPageUi
 
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
-            if (MagicClassDataGrid.SelectedItem != null)
+            Constants.PopupButtons popupButton;
+
+            popupButton = SpellcastingSelectionWindow.ShowPopup();
+
+            switch (popupButton)
             {
-                MagicClass magicClass = (MagicClass)MagicClassDataGrid.SelectedItem;
-                Program.Character.MagicClasses.Remove(magicClass);
-                FillMagicClassList();
-            }
-            else if (SpellListDataGrid.SelectedItem != null)
-            {
-                Spell spell = (Spell)SpellListDataGrid.SelectedItem;
-                Program.Character.Spells.Remove(spell);
-                FillSpellList();
+                case Constants.PopupButtons.AddMagicClass:
+                    ModifySpellClassWindow.AddClass();
+                    FillMagicClassList();
+                    break;
+                case Constants.PopupButtons.AddSpell:
+                    ModifySpellWindow.AddSpell();
+                    FillSpellList();
+                    break;
             }
         }
 
         private void ButtonEdit_Click(object sender, RoutedEventArgs e)
         {
-
+            if (MagicClassDataGrid.SelectedItem != null)
+            {
+                MagicClass magicClass = (MagicClass)MagicClassDataGrid.SelectedItem;
+                ModifySpellClassWindow.EditClass(magicClass);
+                FillMagicClassList();
+            }
+            else if (SpellListDataGrid.SelectedItem != null)
+            {
+                Spell spell = (Spell)SpellListDataGrid.SelectedItem;
+                ModifySpellWindow.EditSpell(spell);
+                FillSpellList();
+            }
         }
 
         private void ButtonDelete_Click(object sender, RoutedEventArgs e)

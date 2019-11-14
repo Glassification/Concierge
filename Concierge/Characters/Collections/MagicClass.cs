@@ -35,7 +35,7 @@ namespace Concierge.Characters.Collections
         {
             get
             {
-                return Program.Character.Spells.Where(x => x.Class.Equals(Name) && x.Prepared).ToList().Count;
+                return Program.Character.Spells.Where(x => x.Class?.Equals(Name) ?? false && x.Prepared).ToList().Count;
             }
         }
 

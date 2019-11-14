@@ -172,8 +172,14 @@
     <Compile Include="Presentation\DetailsPageUi\ProficiencyPopupWindow.xaml.cs">
       <DependentUpon>ProficiencyPopupWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Presentation\SpellcastingPageUi\ModifySpellClassWindow.xaml.cs">
+      <DependentUpon>ModifySpellClassWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Presentation\SpellcastingPageUi\ModifySpellWindow.xaml.cs">
       <DependentUpon>ModifySpellWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\SpellcastingPageUi\SpellcastingSelectionWindow.xaml.cs">
+      <DependentUpon>SpellcastingSelectionWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Presentation\ToolsPageUi\ToolsPage.xaml.cs">
       <DependentUpon>ToolsPage.xaml</DependentUpon>
@@ -344,11 +350,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Presentation\SpellcastingPageUi\ModifySpellClassWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Presentation\SpellcastingPageUi\ModifySpellWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Presentation\SpellcastingPageUi\SpellcastingPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\SpellcastingPageUi\SpellcastingSelectionWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

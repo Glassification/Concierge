@@ -182,37 +182,37 @@
                         <DataGridTextColumn
                         Header="Class"
                         Binding="{Binding Name}"
-                        Width="0.05*"
+                        Width="25*"
                         ElementStyle="{StaticResource ColumnElementStyle}"/>
                         <DataGridTextColumn
                         Header="Ability"
                         Binding="{Binding Ability}"
-                        Width="0.1*"
+                        Width="12.5*"
                         ElementStyle="{StaticResource ColumnElementStyle}"/>
                         <DataGridTextColumn
                         Header="Attack Bonus"
                         Binding="{Binding Attack}"
-                        Width="0.05*"
+                        Width="12.5*"
                         ElementStyle="{StaticResource ColumnElementStyle}"/>
                         <DataGridTextColumn
                         Header="Spell Save DC"
                         Binding="{Binding Save}"
-                        Width="0.05*"
+                        Width="12.5*"
                         ElementStyle="{StaticResource ColumnElementStyle}"/>
                         <DataGridTextColumn
                         Header="Cantrips Known"
                         Binding="{Binding KnownCantrips}"
-                        Width="0.09*"
+                        Width="12.5*"
                         ElementStyle="{StaticResource ColumnElementStyle}"/>
                         <DataGridTextColumn
                         Header="Spells Known"
                         Binding="{Binding KnownSpells}"
-                        Width="0.05*"
+                        Width="12.5*"
                         ElementStyle="{StaticResource ColumnElementStyle}"/>
                         <DataGridTextColumn
                         Header="Spells Prepared"
                         Binding="{Binding PreparedSpells}"
-                        Width="0.09*"
+                        Width="12.5*"
                         ElementStyle="{StaticResource ColumnElementStyle}"/>
                     </DataGrid.Columns>
                 </DataGrid>

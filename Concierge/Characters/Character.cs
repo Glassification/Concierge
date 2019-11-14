@@ -170,6 +170,11 @@ namespace Concierge.Characters
             return Spells.Where(x => x.ID.Equals(id)).Single();
         }
 
+        public MagicClass GetMagicClassById(Guid id)
+        {
+            return MagicClasses.Where(x => x.ID.Equals(id)).Single();
+        }
+
         public List<Ability> Abilities { get; set; }
         public List<Ammunition> Ammunitions { get; private set; }
         public Appearance Appearance { get; private set; }
@@ -261,6 +266,21 @@ namespace Concierge.Characters
                 }
 
                 return totalLevel;
+            }
+        }
+
+        public int CasterLevel
+        {
+            get
+            {
+                int level = 0;
+
+                foreach (var magicClass in MagicClasses)
+                {
+                    level += magicClass.Level;
+                }
+
+                return level;
             }
         }
 

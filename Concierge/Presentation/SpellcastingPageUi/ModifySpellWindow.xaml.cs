@@ -1,18 +1,10 @@
 ﻿using Concierge.Characters.Collections;
 using Concierge.Utility;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace Concierge.Presentation.SpellcastingPageUi
 {
@@ -24,7 +16,7 @@ namespace Concierge.Presentation.SpellcastingPageUi
         public ModifySpellWindow()
         {
             InitializeComponent();
-            SpellNameComboBox.ItemsSource = Program.Character.Spells;
+            SpellNameComboBox.ItemsSource = Constants.Spells;
             SchoolComboBox.ItemsSource = Enum.GetValues(typeof(Constants.ArcaneSchools)).Cast<Constants.ArcaneSchools>();
             ClassComboBox.ItemsSource = Enum.GetValues(typeof(Constants.ClassTypes)).Cast<Constants.ClassTypes>();
         }

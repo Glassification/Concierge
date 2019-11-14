@@ -1,0 +1,88 @@
+﻿<Window x:Class="Concierge.Presentation.SpellcastingPageUi.SpellcastingSelectionWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Concierge.Presentation.SpellcastingPageUi"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Title="SpellcastingSelectionWindow"
+        Height="200"
+        Width="400"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        Background="Black"
+        ResizeMode="NoResize"
+        KeyDown="Window_KeyDown"
+        BorderThickness="1"
+        BorderBrush="#429cd6">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="6*"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Center">
+                <Button x:Name="CloseButton"
+                        Height="50"
+                        Width="60"
+                        Background="{x:Null}"
+                        BorderBrush="{x:Null}"
+                        Foreground="Red"
+                        ToolTip="Close"
+                        Click="CloseButton_Click">
+                    <materialDesign:PackIcon Kind="CloseBoxOutline" Width="25" Height="25"/>
+                </Button>
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <TextBlock Text="Would you like to add a spell or class?"
+                       Foreground="White"
+                       FontSize="25"
+                       TextWrapping="Wrap"
+                       Margin="15"/>
+        </Grid>
+
+        <Grid Grid.Row="2">
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center">
+                <Button x:Name="SpellClassButton"
+                        Height="50"
+                        Width="60"
+                        Background="{x:Null}"
+                        BorderBrush="{x:Null}"
+                        Foreground="LightCyan"
+                        ToolTip="Add Class"
+                        Click="SpellClassButton_Click">
+                    <materialDesign:PackIcon Kind="GraduationCap" Width="25" Height="25"/>
+                </Button>
+                <Button x:Name="SpellButton"
+                        Height="50"
+                        Width="60"
+                        Background="{x:Null}"
+                        BorderBrush="{x:Null}"
+                        Foreground="DarkCyan"
+                        ToolTip="Add Spell"
+                        Click="SpellButton_Click">
+                    <materialDesign:PackIcon Kind="Wand" Width="25" Height="25"/>
+                </Button>
+                <Button x:Name="CancelButton"
+                        Height="50"
+                        Width="60"
+                        Background="{x:Null}"
+                        BorderBrush="{x:Null}"
+                        Foreground="IndianRed"
+                        ToolTip="Cancel"
+                        Click="CancelButton_Click">
+                    <materialDesign:PackIcon Kind="Cancel" Width="25" Height="25"/>
+                </Button>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>
