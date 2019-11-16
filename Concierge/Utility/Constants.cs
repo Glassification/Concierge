@@ -21,6 +21,7 @@ namespace Concierge.Utility
         public const int MAX_SCORE = 30;
         public const int MIN_SCORE = 0;
         public const int BASE_PERCEPTION = 10;
+        public const int MAX_CLASSES = 3;
 
         public enum Abilities { NONE, STR, DEX, CON, INT, WIS, CHA };
         public enum ArmorType { None, Light, Medium, Heavy, Massive };
@@ -33,6 +34,7 @@ namespace Concierge.Utility
         public enum ExhaustionType { Normal, One, Two, Three, Four, Five, Six };
         public enum ClassTypes { Barbarian, Bard, Cleric, Druid, Fighter, Monk, Paladin, Ranger, Rouge, Sorcerer, Warlock, Wizard};
         public enum ArcaneSchools { Abjuration, Conjuration, Divination, Enchantment, Evocation, Illusion, Necromancy, Transmutation, Universal };
+        public enum VisionTypes { Normal, Blindsight, Darkvision, Truesight };
 
         static Constants()
         {

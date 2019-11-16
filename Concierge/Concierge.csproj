@@ -172,6 +172,18 @@
     <Compile Include="Presentation\DetailsPageUi\ProficiencyPopupWindow.xaml.cs">
       <DependentUpon>ProficiencyPopupWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Presentation\OverviewPageUi\ModifyAttributesWindow.xaml.cs">
+      <DependentUpon>ModifyAttributesWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\OverviewPageUi\ModifyHealthWindow.xaml.cs">
+      <DependentUpon>ModifyHealthWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\OverviewPageUi\ModifyHpWindow.xaml.cs">
+      <DependentUpon>ModifyHpWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\OverviewPageUi\ModifySensesWindow.xaml.cs">
+      <DependentUpon>ModifySensesWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Presentation\SpellcastingPageUi\ModifySpellClassWindow.xaml.cs">
       <DependentUpon>ModifySpellClassWindow.xaml</DependentUpon>
     </Compile>
@@ -338,6 +350,22 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Presentation\NotesPageUi\NotesPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\OverviewPageUi\ModifyAttributesWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\OverviewPageUi\ModifyHealthWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\OverviewPageUi\ModifyHpWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\OverviewPageUi\ModifySensesWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

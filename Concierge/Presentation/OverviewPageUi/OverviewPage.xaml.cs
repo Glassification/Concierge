@@ -23,6 +23,11 @@ namespace Concierge.Presentation.OverviewPageUi
 
             DataContext = this;
             ResourceIndex = 0;
+            ModifyAttributesWindow = new ModifyAttributesWindow();
+            ModifySensesWindow = new ModifySensesWindow();
+            ModifyHealthWindow = new ModifyHealthWindow();
+
+            #region Create Events
 
             StrengthProficiencyBox.MouseDown += SavingThrows_MouseDown;
             StrengthProficiencyBox.MouseEnter += ToggleBox_MouseEnter;
@@ -194,6 +199,8 @@ namespace Concierge.Presentation.OverviewPageUi
             PersuasionExpertieseBox.MouseDown += SkillExpertise_MouseDown;
             PersuasionExpertieseBox.MouseEnter += ToggleBox_MouseEnter;
             PersuasionExpertieseBox.MouseLeave += ToggleBox_MouseLeave;
+
+            #endregion
         }
 
         #endregion
@@ -241,7 +248,7 @@ namespace Concierge.Presentation.OverviewPageUi
         {
             InitiativeField.Text = Program.Character.Initiative.ToString();
             PassivePerceptionField.Text = Program.Character.PassivePerception.ToString();
-            VisionField.Text = Program.Character.Details.Vision;
+            VisionField.Text = Program.Character.Details.Vision.ToString();
             MovementSpeedField.Text = Program.Character.Details.Movement.ToString();
         }
 
@@ -576,6 +583,9 @@ namespace Concierge.Presentation.OverviewPageUi
         }
 
         public int ResourceIndex { get; private set; }
+        private ModifyAttributesWindow ModifyAttributesWindow { get; } 
+        private ModifySensesWindow ModifySensesWindow { get; }
+        private ModifyHealthWindow ModifyHealthWindow { get; }
 
         #endregion
 
@@ -770,5 +780,47 @@ namespace Concierge.Presentation.OverviewPageUi
 
         #endregion
 
+        private void EditAttributesButton_Click(object sender, RoutedEventArgs e)
+        {
+            ModifyAttributesWindow.EditAttributes();
+            DrawAttributes();
+        }
+
+        private void EditSensesButton_Click(object sender, RoutedEventArgs e)
+        {
+            ModifySensesWindow.EditSenses();
+            DrawDetails();
+        }
+
+        private void EditHealthButton_Click(object sender, RoutedEventArgs e)
+        {
+            ModifyHealthWindow.EditHealth();
+            DrawHealth();
+        }
+
+        private void EditHitDiceButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void EditResourceButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void AddResourceButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void TakeDamageButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void HealDamageButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

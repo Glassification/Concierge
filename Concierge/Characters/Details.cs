@@ -1,4 +1,5 @@
 ﻿using Concierge.Characters.Collections;
+using Concierge.Utility;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,7 +21,7 @@ namespace Concierge.Characters
             InitiativeBonus = 0;
             PerceptionBonus = 0;
             BaseMovement = 0;
-            Vision = "";
+            Vision = Constants.VisionTypes.Normal;
         }
 
         public Language GetLanguageById(Guid id)
@@ -46,7 +47,7 @@ namespace Concierge.Characters
 
         public int BaseMovement { get; set; }
 
-        public string Vision { get; set; }
+        public Constants.VisionTypes Vision { get; set; }
 
         public int Movement
         {

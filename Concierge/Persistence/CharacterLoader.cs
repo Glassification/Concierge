@@ -114,8 +114,9 @@ namespace Concierge.Persistence
                 character.Details.InitiativeBonus = (int)element.Element("InitiativeBonus").Attribute("value");
                 character.Details.PerceptionBonus = (int)element.Element("PerceptionBonus").Attribute("value");
                 character.Details.BaseMovement = (int)element.Element("Movement").Attribute("value");
-                character.Details.Vision = (string)element.Element("Vision").Attribute("value");
+                character.Details.Vision = (Constants.VisionTypes)Enum.Parse(typeof(Constants.VisionTypes), (string)element.Element("Vision").Attribute("value"));
 
+                int index = 0;
                 var classess = element.Element("Classes").Elements("Class");
                 foreach (var @class in classess)
                 {
@@ -124,7 +125,8 @@ namespace Concierge.Persistence
                     c.Name = (string)@class.Attribute("name");
                     c.Level = (int)@class.Attribute("level");
 
-                    character.Classess.Add(c);
+                    character.Classess[index] = c;
+                    index++;
                 }
 
                 var languages = element.Element("Languages").Elements("Language");

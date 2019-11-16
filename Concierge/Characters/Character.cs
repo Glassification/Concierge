@@ -123,7 +123,7 @@ namespace Concierge.Characters
             Armor = new Armor();
             Attributes = new Attributes();
             Chapters = new List<Chapter>();
-            Classess = new List<Class>();
+            Classess = new Class[Constants.MAX_CLASSES];
             ClassResources = new List<ClassResource>();
             Companion = new Companion();
             Details = new Details();
@@ -138,6 +138,11 @@ namespace Concierge.Characters
             Vitality = new Vitality();
             Wealth = new Wealth();
             Weapons = new List<Weapon>();
+
+            for (int i = 0; i < Constants.MAX_CLASSES; i++)
+            {
+                Classess[i] = new Class();
+            }
         }
 
         public Chapter GetChapterById(Guid id)
@@ -180,7 +185,7 @@ namespace Concierge.Characters
         public Appearance Appearance { get; private set; }
         public Armor Armor { get; private set; }
         public Attributes Attributes { get; private set; }
-        public List<Class> Classess { get; private set; }
+        public Class[] Classess { get; private set; }
         public List<ClassResource> ClassResources { get; private set; }
         public Companion Companion { get; private set; }
         public Details Details { get; private set; }

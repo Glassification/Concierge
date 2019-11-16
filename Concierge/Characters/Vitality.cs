@@ -8,7 +8,7 @@ namespace Concierge.Characters
 {
     public class Vitality
     {
-        private int BaseHealthField;
+        private int iBaseHealthField;
 
         public Vitality()
         {
@@ -45,6 +45,25 @@ namespace Concierge.Characters
             HitDice.SpentD12 = Math.Max(temp, 0);
         }
 
+        public void Damage(int damage)
+        {
+            int oldTempHealth = TemporaryHealth;
+
+            TemporaryHealth -= damage;
+
+            if (TemporaryHealth < 0)
+            {
+                TemporaryHealth = 0;
+                damage -= oldTempHealth;
+                BaseHealth -= damage;
+            }
+        }
+
+        public void Heal(int heal)
+        {
+            BaseHealth += heal;
+        }
+
         public int MaxHealth { get; set; }
 
         public int CurrentHealth
@@ -63,7 +82,7 @@ namespace Concierge.Characters
                     return 0;
                 }
 
-                return BaseHealth;
+                return BaseHealth + TemporaryHealth;
             }
         }
 
@@ -71,12 +90,12 @@ namespace Concierge.Characters
         {
             get
             {
-                return BaseHealthField;
+                return iBaseHealthField;
             }
             set
             {
-                BaseHealthField = Math.Min(value, MaxHealth);
-                BaseHealthField = Math.Max(value, 0);
+                iBaseHealthField = Math.Min(value, MaxHealth);
+                iBaseHealthField = Math.Max(value, 0);
             }
         }
 
