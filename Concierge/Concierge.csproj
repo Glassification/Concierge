@@ -175,6 +175,9 @@
     <Compile Include="Presentation\SpellcastingPageUi\ModifySpellClassWindow.xaml.cs">
       <DependentUpon>ModifySpellClassWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Presentation\SpellcastingPageUi\ModifySpellSlotsWindow.xaml.cs">
+      <DependentUpon>ModifySpellSlotsWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Presentation\SpellcastingPageUi\ModifySpellWindow.xaml.cs">
       <DependentUpon>ModifySpellWindow.xaml</DependentUpon>
     </Compile>
@@ -351,6 +354,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Presentation\SpellcastingPageUi\ModifySpellClassWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\SpellcastingPageUi\ModifySpellSlotsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

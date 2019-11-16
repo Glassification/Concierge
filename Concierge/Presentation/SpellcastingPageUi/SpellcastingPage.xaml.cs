@@ -3,6 +3,7 @@ using Concierge.Utility;
 using System;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace Concierge.Presentation.SpellcastingPageUi
 {
@@ -11,13 +12,23 @@ namespace Concierge.Presentation.SpellcastingPageUi
     /// </summary>
     public partial class SpellcastingPage : Page
     {
+
+        #region Constructor
+
         public SpellcastingPage()
         {
             InitializeComponent();
             SpellcastingSelectionWindow = new SpellcastingSelectionWindow();
             ModifySpellWindow = new ModifySpellWindow();
             ModifySpellClassWindow = new ModifySpellClassWindow();
+            ModifySpellSlotsWindow = new ModifySpellSlotsWindow();
+
+            InitializeClickEvents();
         }
+
+        #endregion
+
+        #region Methods
 
         public void Draw()
         {
@@ -125,21 +136,82 @@ namespace Concierge.Presentation.SpellcastingPageUi
 
         private void FillMagicClassList()
         {
-            int level = 0;
             MagicClassDataGrid.Items.Clear();
 
             foreach (var magicClass in Program.Character.MagicClasses)
             {
                 MagicClassDataGrid.Items.Add(magicClass);
-                level += magicClass.Level;
             }
 
-            CasterLevelField.Text = level.ToString();
+            CasterLevelField.Text = Program.Character.CasterLevel.ToString();
         }
+
+        private void InitializeClickEvents()
+        {
+            UsedPactBox.MouseDown += UsedSlot_MouseDown;
+            UsedPactBox.MouseEnter += UsedSlot_MouseEnter;
+            UsedPactBox.MouseLeave += UsedSlot_MouseLeave;
+
+            UsedFirstBox.MouseDown += UsedSlot_MouseDown;
+            UsedFirstBox.MouseEnter += UsedSlot_MouseEnter;
+            UsedFirstBox.MouseLeave += UsedSlot_MouseLeave;
+
+            UsedSecondBox.MouseDown += UsedSlot_MouseDown;
+            UsedSecondBox.MouseEnter += UsedSlot_MouseEnter;
+            UsedSecondBox.MouseLeave += UsedSlot_MouseLeave;
+
+            UsedThirdBox.MouseDown += UsedSlot_MouseDown;
+            UsedThirdBox.MouseEnter += UsedSlot_MouseEnter;
+            UsedThirdBox.MouseLeave += UsedSlot_MouseLeave;
+
+            UsedFourthBox.MouseDown += UsedSlot_MouseDown;
+            UsedFourthBox.MouseEnter += UsedSlot_MouseEnter;
+            UsedFourthBox.MouseLeave += UsedSlot_MouseLeave;
+
+            UsedFifthBox.MouseDown += UsedSlot_MouseDown;
+            UsedFifthBox.MouseEnter += UsedSlot_MouseEnter;
+            UsedFifthBox.MouseLeave += UsedSlot_MouseLeave;
+
+            UsedSixthBox.MouseDown += UsedSlot_MouseDown;
+            UsedSixthBox.MouseEnter += UsedSlot_MouseEnter;
+            UsedSixthBox.MouseLeave += UsedSlot_MouseLeave;
+
+            UsedSeventhBox.MouseDown += UsedSlot_MouseDown;
+            UsedSeventhBox.MouseEnter += UsedSlot_MouseEnter;
+            UsedSeventhBox.MouseLeave += UsedSlot_MouseLeave;
+
+            UsedEighthBox.MouseDown += UsedSlot_MouseDown;
+            UsedEighthBox.MouseEnter += UsedSlot_MouseEnter;
+            UsedEighthBox.MouseLeave += UsedSlot_MouseLeave;
+
+            UsedNinethBox.MouseDown += UsedSlot_MouseDown;
+            UsedNinethBox.MouseEnter += UsedSlot_MouseEnter;
+            UsedNinethBox.MouseLeave += UsedSlot_MouseLeave;
+
+        }
+
+        private int IncrementUsedSpellSlots(int used, int total)
+        {
+            if (used < total)
+            {
+                return used + 1;
+            }
+
+            return used;
+        }
+
+        #endregion
+
+        #region Accessors
 
         private SpellcastingSelectionWindow SpellcastingSelectionWindow { get; }
         private ModifySpellWindow ModifySpellWindow { get; }
         private ModifySpellClassWindow ModifySpellClassWindow { get; }
+        private ModifySpellSlotsWindow ModifySpellSlotsWindow { get; }
+
+        #endregion
+
+        #region Events
 
         private void ButtonUp_Click(object sender, RoutedEventArgs e)
         {
@@ -273,5 +345,66 @@ namespace Concierge.Presentation.SpellcastingPageUi
                 MagicClassDataGrid.UnselectAll();
             }
         }
+
+        private void LevelEditButton_Click(object sender, RoutedEventArgs e)
+        {
+            ModifySpellSlotsWindow.EditSpellSlots();
+            FillTotalSpellSlots();
+            FillUsedSpellSlots();
+        }
+
+        private void UsedSlot_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Grid usedBox = sender as Grid;
+
+            switch (usedBox.Name)
+            {
+                case "UsedPactBox":
+                    Program.Character.SpellSlots.PactUsed = IncrementUsedSpellSlots(Program.Character.SpellSlots.PactUsed, Program.Character.SpellSlots.PactTotal);
+                    break;
+                case "UsedFirstBox":
+                    Program.Character.SpellSlots.FirstUsed = IncrementUsedSpellSlots(Program.Character.SpellSlots.FirstUsed, Program.Character.SpellSlots.FirstTotal);
+                    break;
+                case "UsedSecondBox":
+                    Program.Character.SpellSlots.SecondUsed = IncrementUsedSpellSlots(Program.Character.SpellSlots.SecondUsed, Program.Character.SpellSlots.SecondTotal);
+                    break;
+                case "UsedThirdBox":
+                    Program.Character.SpellSlots.ThirdUsed = IncrementUsedSpellSlots(Program.Character.SpellSlots.ThirdUsed, Program.Character.SpellSlots.ThirdTotal);
+                    break;
+                case "UsedFourthBox":
+                    Program.Character.SpellSlots.FourthUsed = IncrementUsedSpellSlots(Program.Character.SpellSlots.FourthUsed, Program.Character.SpellSlots.FourthTotal);
+                    break;
+                case "UsedFifthBox":
+                    Program.Character.SpellSlots.FifthUsed = IncrementUsedSpellSlots(Program.Character.SpellSlots.FifthUsed, Program.Character.SpellSlots.FifthTotal);
+                    break;
+                case "UsedSixthBox":
+                    Program.Character.SpellSlots.SixthUsed = IncrementUsedSpellSlots(Program.Character.SpellSlots.SixthUsed, Program.Character.SpellSlots.SixthTotal);
+                    break;
+                case "UsedSeventhBox":
+                    Program.Character.SpellSlots.SeventhUsed = IncrementUsedSpellSlots(Program.Character.SpellSlots.SeventhUsed, Program.Character.SpellSlots.SeventhTotal);
+                    break;
+                case "UsedEighthBox":
+                    Program.Character.SpellSlots.EighthUsed = IncrementUsedSpellSlots(Program.Character.SpellSlots.EighthUsed, Program.Character.SpellSlots.EighthTotal);
+                    break;
+                case "UsedNinethBox":
+                    Program.Character.SpellSlots.NinethUsed = IncrementUsedSpellSlots(Program.Character.SpellSlots.NinethUsed, Program.Character.SpellSlots.NinethTotal);
+                    break;
+            }
+
+            FillTotalSpellSlots();
+            FillUsedSpellSlots();
+        }
+
+        private void UsedSlot_MouseEnter(object sender, MouseEventArgs e)
+        {
+            Mouse.OverrideCursor = Cursors.Hand;
+        }
+
+        private void UsedSlot_MouseLeave(object sender, MouseEventArgs e)
+        {
+            Mouse.OverrideCursor = Cursors.Arrow;
+        }
+
+        #endregion
     }
 }

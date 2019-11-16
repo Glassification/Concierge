@@ -26,7 +26,7 @@ namespace Concierge.Persistence
                         Name = (string)elem.Attribute("name"),
                         Ability = Constants.Abilities.NONE,
                         Damage = (string)elem.Attribute("damage"),
-                        Misc = "",
+                        Misc = string.Empty,
                         DamageType = (Constants.DamageTypes)Enum.Parse(typeof(Constants.DamageTypes), (string)elem.Attribute("type")),
                         Range = (string)elem.Attribute("range"),
                         Note = (string)elem.Attribute("notes"),
@@ -165,14 +165,14 @@ namespace Concierge.Persistence
                 var Languages = root.Elements("Language");
                 foreach (XElement elem in Languages)
                 {
-                    Language l = new Language(Guid.Empty)
+                    Language language = new Language(Guid.Empty)
                     {
                         Name = (string)elem.Attribute("Name"),
                         Script = (string)elem.Attribute("Script"),
                         Speakers = (string)elem.Attribute("Speakers")
                     };
 
-                    languages.Add(l);
+                    languages.Add(language);
                 }
             }
             catch (Exception e)

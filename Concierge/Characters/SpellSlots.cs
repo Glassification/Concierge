@@ -60,20 +60,5 @@ namespace Concierge.Characters
         public int SeventhUsed { get; set; }
         public int EighthUsed { get; set; }
         public int NinethUsed { get; set; }
-
-        public int Level
-        {
-            get
-            {
-                int totalLevel = 0;
-
-                foreach (MagicClass magicClass in Program.Character.MagicClasses)
-                {
-                    totalLevel += magicClass.Level;
-                }
-
-                return totalLevel;
-            }
-        }
     }
 }

@@ -3,6 +3,7 @@ using Concierge.Utility;
 using System;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Shapes;
 
@@ -24,49 +25,175 @@ namespace Concierge.Presentation.OverviewPageUi
             ResourceIndex = 0;
 
             StrengthProficiencyBox.MouseDown += SavingThrows_MouseDown;
+            StrengthProficiencyBox.MouseEnter += ToggleBox_MouseEnter;
+            StrengthProficiencyBox.MouseLeave += ToggleBox_MouseLeave;
+
             DexterityProficiencyBox.MouseDown += SavingThrows_MouseDown;
+            DexterityProficiencyBox.MouseEnter += ToggleBox_MouseEnter;
+            DexterityProficiencyBox.MouseLeave += ToggleBox_MouseLeave;
+
             ConstitutionProficiencyBox.MouseDown += SavingThrows_MouseDown;
+            ConstitutionProficiencyBox.MouseEnter += ToggleBox_MouseEnter;
+            ConstitutionProficiencyBox.MouseLeave += ToggleBox_MouseLeave;
+
             IntelligenceProficiencyBox.MouseDown += SavingThrows_MouseDown;
+            IntelligenceProficiencyBox.MouseEnter += ToggleBox_MouseEnter;
+            IntelligenceProficiencyBox.MouseLeave += ToggleBox_MouseLeave;
+
             WisdomProficiencyBox.MouseDown += SavingThrows_MouseDown;
+            WisdomProficiencyBox.MouseEnter += ToggleBox_MouseEnter;
+            WisdomProficiencyBox.MouseLeave += ToggleBox_MouseLeave;
+
             CharismaProficiencyBox.MouseDown += SavingThrows_MouseDown;
+            CharismaProficiencyBox.MouseEnter += ToggleBox_MouseEnter;
+            CharismaProficiencyBox.MouseLeave += ToggleBox_MouseLeave;
 
+            //------------------------------------------------------------------
             AthleticsProficiencyBox.MouseDown += SkillProficiency_MouseDown;
-            AcrobaticsProficiencyBox.MouseDown += SkillProficiency_MouseDown;
-            SleightOfHandProficiencyBox.MouseDown += SkillProficiency_MouseDown;
-            StealthProficiencyBox.MouseDown += SkillProficiency_MouseDown;
-            ArcanaProficiencyBox.MouseDown += SkillProficiency_MouseDown;
-            HistoryProficiencyBox.MouseDown += SkillProficiency_MouseDown;
-            InvestigationProficiencyBox.MouseDown += SkillProficiency_MouseDown;
-            NatureProficiencyBox.MouseDown += SkillProficiency_MouseDown;
-            ReligionProficiencyBox.MouseDown += SkillProficiency_MouseDown;
-            AnimalHandlingProficiencyBox.MouseDown += SkillProficiency_MouseDown;
-            InsightProficiencyBox.MouseDown += SkillProficiency_MouseDown;
-            MedicineProficiencyBox.MouseDown += SkillProficiency_MouseDown;
-            PerceptionProficiencyBox.MouseDown += SkillProficiency_MouseDown;
-            SurvivalProficiencyBox.MouseDown += SkillProficiency_MouseDown;
-            DeceptionProficiencyBox.MouseDown += SkillProficiency_MouseDown;
-            IntimidationProficiencyBox.MouseDown += SkillProficiency_MouseDown;
-            PerformanceProficiencyBox.MouseDown += SkillProficiency_MouseDown;
-            PersuasionProficiencyBox.MouseDown += SkillProficiency_MouseDown;
+            AthleticsProficiencyBox.MouseEnter += ToggleBox_MouseEnter;
+            AthleticsProficiencyBox.MouseLeave += ToggleBox_MouseLeave;
 
+            AcrobaticsProficiencyBox.MouseDown += SkillProficiency_MouseDown;
+            AcrobaticsProficiencyBox.MouseEnter += ToggleBox_MouseEnter;
+            AcrobaticsProficiencyBox.MouseLeave += ToggleBox_MouseLeave;
+
+            SleightOfHandProficiencyBox.MouseDown += SkillProficiency_MouseDown;
+            SleightOfHandProficiencyBox.MouseEnter += ToggleBox_MouseEnter;
+            SleightOfHandProficiencyBox.MouseLeave += ToggleBox_MouseLeave;
+
+            StealthProficiencyBox.MouseDown += SkillProficiency_MouseDown;
+            StealthProficiencyBox.MouseEnter += ToggleBox_MouseEnter;
+            StealthProficiencyBox.MouseLeave += ToggleBox_MouseLeave;
+
+            ArcanaProficiencyBox.MouseDown += SkillProficiency_MouseDown;
+            ArcanaProficiencyBox.MouseEnter += ToggleBox_MouseEnter;
+            ArcanaProficiencyBox.MouseLeave += ToggleBox_MouseLeave;
+
+            HistoryProficiencyBox.MouseDown += SkillProficiency_MouseDown;
+            HistoryProficiencyBox.MouseEnter += ToggleBox_MouseEnter;
+            HistoryProficiencyBox.MouseLeave += ToggleBox_MouseLeave;
+
+            InvestigationProficiencyBox.MouseDown += SkillProficiency_MouseDown;
+            InvestigationProficiencyBox.MouseEnter += ToggleBox_MouseEnter;
+            InvestigationProficiencyBox.MouseLeave += ToggleBox_MouseLeave;
+
+            NatureProficiencyBox.MouseDown += SkillProficiency_MouseDown;
+            InvestigationProficiencyBox.MouseEnter += ToggleBox_MouseEnter;
+            InvestigationProficiencyBox.MouseLeave += ToggleBox_MouseLeave;
+
+            ReligionProficiencyBox.MouseDown += SkillProficiency_MouseDown;
+            InvestigationProficiencyBox.MouseEnter += ToggleBox_MouseEnter;
+            InvestigationProficiencyBox.MouseLeave += ToggleBox_MouseLeave;
+
+            AnimalHandlingProficiencyBox.MouseDown += SkillProficiency_MouseDown;
+            AnimalHandlingProficiencyBox.MouseEnter += ToggleBox_MouseEnter;
+            AnimalHandlingProficiencyBox.MouseLeave += ToggleBox_MouseLeave;
+
+            InsightProficiencyBox.MouseDown += SkillProficiency_MouseDown;
+            InsightProficiencyBox.MouseEnter += ToggleBox_MouseEnter;
+            InsightProficiencyBox.MouseLeave += ToggleBox_MouseLeave;
+
+            MedicineProficiencyBox.MouseDown += SkillProficiency_MouseDown;
+            MedicineProficiencyBox.MouseEnter += ToggleBox_MouseEnter;
+            MedicineProficiencyBox.MouseLeave += ToggleBox_MouseLeave;
+
+            PerceptionProficiencyBox.MouseDown += SkillProficiency_MouseDown;
+            PerceptionProficiencyBox.MouseEnter += ToggleBox_MouseEnter;
+            PerceptionProficiencyBox.MouseLeave += ToggleBox_MouseLeave;
+
+            SurvivalProficiencyBox.MouseDown += SkillProficiency_MouseDown;
+            PerceptionProficiencyBox.MouseEnter += ToggleBox_MouseEnter;
+            PerceptionProficiencyBox.MouseLeave += ToggleBox_MouseLeave;
+
+            DeceptionProficiencyBox.MouseDown += SkillProficiency_MouseDown;
+            DeceptionProficiencyBox.MouseEnter += ToggleBox_MouseEnter;
+            DeceptionProficiencyBox.MouseLeave += ToggleBox_MouseLeave;
+
+            IntimidationProficiencyBox.MouseDown += SkillProficiency_MouseDown;
+            IntimidationProficiencyBox.MouseEnter += ToggleBox_MouseEnter;
+            IntimidationProficiencyBox.MouseLeave += ToggleBox_MouseLeave;
+
+            PerformanceProficiencyBox.MouseDown += SkillProficiency_MouseDown;
+            PerformanceProficiencyBox.MouseEnter += ToggleBox_MouseEnter;
+            PerformanceProficiencyBox.MouseLeave += ToggleBox_MouseLeave;
+
+            PersuasionProficiencyBox.MouseDown += SkillProficiency_MouseDown;
+            PersuasionProficiencyBox.MouseEnter += ToggleBox_MouseEnter;
+            PersuasionProficiencyBox.MouseLeave += ToggleBox_MouseLeave;
+
+
+            //------------------------------------------------------------------
             AthleticsExpertieseBox.MouseDown += SkillExpertise_MouseDown;
+            AthleticsExpertieseBox.MouseEnter += ToggleBox_MouseEnter;
+            AthleticsExpertieseBox.MouseLeave += ToggleBox_MouseLeave;
+
             AcrobaticsExpertieseBox.MouseDown += SkillExpertise_MouseDown;
+            AcrobaticsExpertieseBox.MouseEnter += ToggleBox_MouseEnter;
+            AcrobaticsExpertieseBox.MouseLeave += ToggleBox_MouseLeave;
+
             SleightOfHandExpertieseBox.MouseDown += SkillExpertise_MouseDown;
+            SleightOfHandExpertieseBox.MouseEnter += ToggleBox_MouseEnter;
+            SleightOfHandExpertieseBox.MouseLeave += ToggleBox_MouseLeave;
+
             StealthExpertieseBox.MouseDown += SkillExpertise_MouseDown;
+            StealthExpertieseBox.MouseEnter += ToggleBox_MouseEnter;
+            StealthExpertieseBox.MouseLeave += ToggleBox_MouseLeave;
+
             ArcanaExpertieseBox.MouseDown += SkillExpertise_MouseDown;
+            ArcanaExpertieseBox.MouseEnter += ToggleBox_MouseEnter;
+            ArcanaExpertieseBox.MouseLeave += ToggleBox_MouseLeave;
+
             HistoryExpertieseBox.MouseDown += SkillExpertise_MouseDown;
+            HistoryExpertieseBox.MouseEnter += ToggleBox_MouseEnter;
+            HistoryExpertieseBox.MouseLeave += ToggleBox_MouseLeave;
+
             InvestigationExpertieseBox.MouseDown += SkillExpertise_MouseDown;
+            InvestigationExpertieseBox.MouseEnter += ToggleBox_MouseEnter;
+            InvestigationExpertieseBox.MouseLeave += ToggleBox_MouseLeave;
+
             NatureExpertieseBox.MouseDown += SkillExpertise_MouseDown;
+            NatureExpertieseBox.MouseEnter += ToggleBox_MouseEnter;
+            NatureExpertieseBox.MouseLeave += ToggleBox_MouseLeave;
+
             ReligionExpertieseBox.MouseDown += SkillExpertise_MouseDown;
+            ReligionExpertieseBox.MouseEnter += ToggleBox_MouseEnter;
+            ReligionExpertieseBox.MouseLeave += ToggleBox_MouseLeave;
+
             AnimalHandlingExpertieseBox.MouseDown += SkillExpertise_MouseDown;
+            AnimalHandlingExpertieseBox.MouseEnter += ToggleBox_MouseEnter;
+            AnimalHandlingExpertieseBox.MouseLeave += ToggleBox_MouseLeave;
+
             InsightExpertieseBox.MouseDown += SkillExpertise_MouseDown;
+            InsightExpertieseBox.MouseEnter += ToggleBox_MouseEnter;
+            InsightExpertieseBox.MouseLeave += ToggleBox_MouseLeave;
+
             MedicineExpertieseBox.MouseDown += SkillExpertise_MouseDown;
+            MedicineExpertieseBox.MouseEnter += ToggleBox_MouseEnter;
+            MedicineExpertieseBox.MouseLeave += ToggleBox_MouseLeave;
+
             PerceptionExpertieseBox.MouseDown += SkillExpertise_MouseDown;
+            PerceptionExpertieseBox.MouseEnter += ToggleBox_MouseEnter;
+            PerceptionExpertieseBox.MouseLeave += ToggleBox_MouseLeave;
+
             SurvivalExpertieseBox.MouseDown += SkillExpertise_MouseDown;
+            SurvivalExpertieseBox.MouseEnter += ToggleBox_MouseEnter;
+            SurvivalExpertieseBox.MouseLeave += ToggleBox_MouseLeave;
+
             DeceptionExpertieseBox.MouseDown += SkillExpertise_MouseDown;
+            DeceptionExpertieseBox.MouseEnter += ToggleBox_MouseEnter;
+            DeceptionExpertieseBox.MouseLeave += ToggleBox_MouseLeave;
+
             IntimidationExpertieseBox.MouseDown += SkillExpertise_MouseDown;
+            IntimidationExpertieseBox.MouseEnter += ToggleBox_MouseEnter;
+            IntimidationExpertieseBox.MouseLeave += ToggleBox_MouseLeave;
+
             PerformanceExpertieseBox.MouseDown += SkillExpertise_MouseDown;
+            PerformanceExpertieseBox.MouseEnter += ToggleBox_MouseEnter;
+            PerformanceExpertieseBox.MouseLeave += ToggleBox_MouseLeave;
+
             PersuasionExpertieseBox.MouseDown += SkillExpertise_MouseDown;
+            PersuasionExpertieseBox.MouseEnter += ToggleBox_MouseEnter;
+            PersuasionExpertieseBox.MouseLeave += ToggleBox_MouseLeave;
         }
 
         #endregion
@@ -629,6 +756,16 @@ namespace Concierge.Presentation.OverviewPageUi
             }
 
             DrawSkills();
+        }
+
+        private void ToggleBox_MouseEnter(object sender, MouseEventArgs e)
+        {
+            Mouse.OverrideCursor = Cursors.Hand;
+        }
+
+        private void ToggleBox_MouseLeave(object sender, MouseEventArgs e)
+        {
+            Mouse.OverrideCursor = Cursors.Arrow;
         }
 
         #endregion

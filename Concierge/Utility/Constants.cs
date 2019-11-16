@@ -94,7 +94,7 @@ namespace Concierge.Utility
 
         public static Brush SetUsedTextStyle(int total, int used)
         {
-            if (total == used)
+            if (total <= used)
                 return Brushes.DarkRed;
             else
                 return Brushes.White;
@@ -102,7 +102,7 @@ namespace Concierge.Utility
 
         public static Brush SetUsedBoxStyle(int total, int used)
         {
-            if (total == used)
+            if (total <= used)
                 return Brushes.IndianRed;
             else
                 return new SolidColorBrush(Color.FromArgb(255, 62, 62, 66));
@@ -110,7 +110,7 @@ namespace Concierge.Utility
 
         public static Brush SetTotalTextStyle(int total, int used)
         {
-            if (total == used)
+            if (total <= used)
                 return Brushes.DarkGray;
             else
                 return Brushes.White;
@@ -118,7 +118,7 @@ namespace Concierge.Utility
 
         public static Brush SetTotalBoxStyle(int total, int used)
         {
-            if (total == used)
+            if (total <= used)
                 return new SolidColorBrush(Color.FromArgb(255, 15, 15, 15));
             else
                 return new SolidColorBrush(Color.FromArgb(255, 51, 51, 51));
