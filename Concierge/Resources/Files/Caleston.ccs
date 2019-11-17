@@ -69,13 +69,17 @@
     <Background value="Criminal" />
     <Alignment value="Chaotic Good" />
     <Classes>
-      <Class name="Rogue" level="6" id="cae01638-537d-455a-95a6-606fafb62798" />
+      <Class name="Rogue" level="7" id="cae01638-537d-455a-95a6-606fafb62798" />
+      <Class name="" level="0" id="a3c5c8b2-0e85-4e71-9bba-6f269c8b939c" />
+      <Class name="" level="0" id="e95d46bc-e4cd-4879-abf1-995c946b4097" />
     </Classes>
     <Experience value="16071" />
     <Languages>
       <Language Name="Common" Script="Common" Speakers="Humans, halflings, half-elves, half-orcs" id="c32dcdcb-33b3-46de-9dbf-2b46aeaa0b5b" />
       <Language Name="Elvish" Script="Elvish" Speakers="Elves" id="b25516db-14ca-499b-9956-ddc60bebab6a" />
       <Language Name="Draconic" Script="Draconic" Speakers="Kobolds, troglodytes, lizardfolk, dragons, dragonborn" id="583c023c-10f0-4da5-be1b-ae06ceeeec8b" />
+      <Language Name="Infernal" Script="Infernal" Speakers="Devils, Tieflings" id="b196123d-689c-447c-bc1a-12d97907c28e" />
+      <Language Name="Primordial" Script="Dwarvish" Speakers="Elementals" id="f6dd39e0-e5ba-4f53-b203-771a2b3f137b" />
     </Languages>
     <InitiativeBonus value="5" />
     <PerceptionBonus value="0" />
@@ -102,17 +106,17 @@
     <Notes value="Last big job went wrong. Escaped from prison. Injured, rest of group assumed dead. Am still wanted." />
   </Personality>
   <Wealth>
-    <Copper value="1820" />
-    <Silver value="34" />
+    <Copper value="203" />
+    <Silver value="128" />
     <Electrum value="0" />
-    <Gold value="326" />
+    <Gold value="516" />
     <Platinum value="0" />
   </Wealth>
   <ClassResources />
   <ArmorClass>
     <ArmorWorn value="Studded Leather" />
     <ArmorType value="Light" />
-    <ArmorAC value="12" />
+    <ArmorAC value="13" />
     <Strength value="0" />
     <ArmorWeight value="13" />
     <Stealth value="Normal" />
@@ -123,14 +127,14 @@
     <MagicAC value="0" />
   </ArmorClass>
   <HitPoints>
-    <MaxHP value="50" />
-    <CurrentHP value="34" />
+    <MaxHP value="56" />
+    <CurrentHP value="47" />
     <TemporaryHP value="0" />
     <Conditions>
       <Blinded value="Cured" />
       <Charmed value="Cured" />
       <Deafened value="Cured" />
-      <Fatigued value="Two" />
+      <Fatigued value="One" />
       <Frightened value="Cured" />
       <Grappled value="Cured" />
       <Incapacitated value="Cured" />
@@ -145,7 +149,7 @@
     </Conditions>
     <HitDice>
       <D6 total="0" spent="0" />
-      <D8 total="6" spent="6" />
+      <D8 total="7" spent="2" />
       <D10 total="0" spent="0" />
       <D12 total="0" spent="0" />
     </HitDice>
@@ -155,10 +159,9 @@
     <Weapon name="Shortbow" weaponType="Shortbow" ability="DEX" dmg="1d6 +5" misc="" dmgType="Piercing" range="80 / 320" notes="Ammo, Two-Handed" weight="2" override="false" id="29ce8db2-43bb-4411-8d56-24561c38d1ba" />
     <Weapon name="Dagger" weaponType="Dagger" ability="DEX" dmg="1d4 +5" misc="" dmgType="Piercing" range="20 / 60" notes="Finesse, Light, Thrown" weight="1" override="false" id="3c829286-b04d-45d2-b084-0499f37db4ce" />
     <Weapon name="Dagger" weaponType="Dagger" ability="DEX" dmg="1d4 +5" misc="" dmgType="Piercing" range="20 / 60" notes="Finesse, Light, Thrown" weight="1" override="false" id="ef6d044f-2ce7-43cb-aacc-354f1ad5fa96" />
-    <Weapon name="Silver Dagger" weaponType="Dagger" ability="DEX" dmg="1d4 +5" misc="" dmgType="Piercing" range="20 / 60" notes="Finesse, Light, Thrown" weight="1" override="false" id="1ce7fe19-471c-463f-b41d-a6ce6fb16a87" />
   </Weapons>
   <Ammunitions>
-    <Ammunition name="Arrows" amount="20" miscDmg="" dmgType="None" used="0" id="7cead0e8-5f84-42c4-81ab-1daedc525ee2" />
+    <Ammunition name="Arrows" amount="18" miscDmg="" dmgType="None" used="1" id="7cead0e8-5f84-42c4-81ab-1daedc525ee2" />
     <Ammunition name="Silvered Arrows" amount="8" miscDmg="" dmgType="None" used="0" id="2ac78c8b-9b89-4d3c-841f-de8de48e20d6" />
   </Ammunitions>
   <Inventory>
@@ -195,17 +198,20 @@
     <Item name="Three-Dragon Ante Set" amount="1" wgt="0" note="The deck consists of 70 cards (plus two reference cards)." id="63d98434-f81c-4c42-8e77-d0fd32227485" />
     <Item name="Tinderbox" amount="1" wgt="1" note="This small container holds flint, fire steel, and tinder (usually dry cloth soaked in light oil) used to kindle a fire. Using it to light a torch -- or anything else with abundant, exposed fuel -- takes an action. Lighting any other fire takes 1 minute." id="5a8b8cf9-b0ca-427b-bfc5-7e7c32487083" />
     <Item name="Trinket" amount="1" wgt="0" note="A carved crystal that faintly glows in the moonlight. (Object stolen from the noble)" id="122989ae-7554-4937-bca5-7cb429ce9c56" />
-    <Item name="Waterskin" amount="1" wgt="0" note="A waterskin can hold 4 pints of liquid." id="bea6e62c-c53b-42b9-ae8f-b170d19e7209" />
+    <Item name="Waterskin" amount="1" wgt="0" note="A waterskin can hold 4 pints of liquid. Currently drugged." id="bea6e62c-c53b-42b9-ae8f-b170d19e7209" />
+    <Item name="Egg" amount="1" wgt="0" note="Smashing this egg will cast Disguise Self." id="a4399f57-818d-40f1-953c-eba60f7b3f5c" />
+    <Item name="Phone a Friend Rock" amount="1" wgt="0" note="Whisper into the crystal and another creature with the other in the pair will hear you. 1 action to use." id="3bceed1d-33dc-4a40-b4b9-329436249a10" />
   </Inventory>
   <Abilities>
-    <Ability name="Fey Ancestry" level="1" uses="-" recovery="-" action="-" notes="Avtg on saving throws against being charmed. Magic cannot put me to sleep" id="f6f4ca8a-6064-4df5-9e8a-96f2d45c3e93" />
+    <Ability name="Alert" level="1" uses="-" recovery="-" action="-" notes="+5 to initative; Cannot be surprised; enemies don't get advt on sneak attack" id="3f361e19-7d00-4f60-957d-a6d3d6d783a4" />
     <Ability name="Expertise" level="1" uses="-" recovery="-" action="-" notes="Double proficiency bonus in select skills (Again at level 6)" id="298a10d9-2b30-478e-9cb2-a8db9a67dbaa" />
+    <Ability name="Fey Ancestry" level="1" uses="-" recovery="-" action="-" notes="Avtg on saving throws against being charmed. Magic cannot put me to sleep" id="f6f4ca8a-6064-4df5-9e8a-96f2d45c3e93" />
     <Ability name="Thieves' Cant" level="1" uses="-" recovery="-" action="-" notes="Takes 4 times longer to convey meaning. Target must also know Cant" id="36a9c3d0-bfa3-44fa-a6ba-0aa9121747da" />
-    <Ability name="Sneak Attack" level="1" uses="1 Per Turn" recovery="1 Turn" action="3d6 Damage" notes="Must have advantage or target must have enemy within 5 feet" id="6b5ed6b2-db6b-494b-959c-d40e5aadbe56" />
+    <Ability name="Sneak Attack" level="1" uses="1 Per Turn" recovery="1 Turn" action="4d6 Damage" notes="Must have advantage or target must have enemy within 5 feet" id="6b5ed6b2-db6b-494b-959c-d40e5aadbe56" />
     <Ability name="Cunning Action" level="2" uses="-" recovery="-" action="-" notes="Dash, Disengage, Hide as bonus action" id="f86fbd99-762d-437b-896b-c05ddc272c9f" />
     <Ability name="Assassinate" level="3" uses="1 Per Turn" recovery="1 Turn" action="Avtg on attack roll" notes="Avtg on attack rolls against creature without combat turn; Hit against surprised creature is critical" id="2f8bb412-1952-49f5-a8df-33cb6e43a01f" />
     <Ability name="Uncanny Dodge" level="5" uses="1 Per Round" recovery="1 Round" action="Reaction" notes="Use reaction to take half damage against an attack you can see." id="23c4a706-ce91-4b2f-8772-e20c1e33a0f0" />
-    <Ability name="Alert" level="1" uses="-" recovery="-" action="-" notes="+5 to initative; Cannot be surprised; enemies don't get advt on sneak attack" id="3f361e19-7d00-4f60-957d-a6d3d6d783a4" />
+    <Ability name="Evasion" level="7" uses="-" recovery="-" action="Dex Save" notes="Succeed on a DEX save and take no damage, Fail and take half damage." id="dd0ce017-6272-4550-99e4-b5dd53313e04" />
   </Abilities>
   <Spellcasting>
     <SpellClasses />
@@ -222,7 +228,8 @@
       <Nine total="0" used="0" />
     </SpellSlots>
     <SpellList>
-      <Spell name="Jump" level="1" page="254" school="Transmutation" ritual="false" comp="Jump Blade" concen="false" range="Touch" duration="6 seconds" area="Self" save="N/A" damage="N/A" description="Target's jump distance tripled until spell ends. Can be used once per long rest." prepared="false" id="cff6cbb7-613e-446e-875a-9ab2957ab692" />
+      <Spell name="Jump" level="1" page="254" school="Transmutation" ritual="false" comp="Jump Blade" concen="false" range="Touch" duration="6 seconds" area="Self" save="N/A" damage="N/A" description="Target's jump distance tripled until spell ends. Can be used once per long rest." prepared="true" id="cff6cbb7-613e-446e-875a-9ab2957ab692" />
+      <Spell name="Disguise Self" level="1" page="233" school="Illusion" ritual="false" comp="Egg" concen="false" range="Self" duration="1 hour" area="Self" save="N/A" damage="N/A" description="Create illusion to appear as someone else.  Foiled by Investigation vs. spell DC." prepared="true" id="99f3c1a6-06a8-4b21-9866-403e2278b340" />
     </SpellList>
   </Spellcasting>
   <Companion>

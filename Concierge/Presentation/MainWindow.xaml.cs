@@ -135,6 +135,7 @@ namespace Concierge.Presentation
         {
             TextCharacterName.Text = Program.Character.Details.Name;
             TextCharacterRace.Text = Program.Character.Details.Race;
+            TextCharacterBackground.Text = Program.Character.Details.Background;
             TextCharacterAlignment.Text = Program.Character.Details.Alignment;
 
             if (Program.Character.Level > 0)

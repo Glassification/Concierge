@@ -310,7 +310,10 @@ namespace Concierge.Characters
 
                 foreach (Class @class in Classess)
                 {
-                    classes += @class.Name + ", ";
+                    if (!string.IsNullOrEmpty(@class.Name))
+                    {
+                        classes += @class.Name + ", ";
+                    }
                 }
 
                 classes = !string.IsNullOrEmpty(classes) ? classes.Remove(classes.Length - 2) : "";

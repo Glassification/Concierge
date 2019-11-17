@@ -110,7 +110,7 @@ namespace Concierge.Persistence
                                     select
                                         new XElement("Language",
                                             new XAttribute("Name", language.Name),
-                                            new XAttribute("NamScripte", language.Script),
+                                            new XAttribute("Script", language.Script),
                                             new XAttribute("Speakers", language.Speakers),
                                             new XAttribute("id", language.ID)
                                             )
