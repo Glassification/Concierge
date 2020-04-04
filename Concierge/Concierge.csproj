@@ -130,6 +130,7 @@
     <Compile Include="Presentation\AbilitiesPageUi\AbilitiesPage.xaml.cs">
       <DependentUpon>AbilitiesPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Presentation\Components\ConciergeDataGrid.cs" />
     <Compile Include="Presentation\DetailsPageUi\DetailsPage.xaml.cs">
       <DependentUpon>DetailsPage.xaml</DependentUpon>
     </Compile>
@@ -178,6 +179,9 @@
     <Compile Include="Presentation\OverviewPageUi\ModifyHealthWindow.xaml.cs">
       <DependentUpon>ModifyHealthWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Presentation\OverviewPageUi\ModifyHitDiceWindow.xaml.cs">
+      <DependentUpon>ModifyHitDiceWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Presentation\OverviewPageUi\ModifyHpWindow.xaml.cs">
       <DependentUpon>ModifyHpWindow.xaml</DependentUpon>
     </Compile>
@@ -220,6 +224,7 @@
     <Compile Include="Utility\Colours.cs" />
     <Compile Include="Utility\Constants.cs" />
     <Compile Include="Utility\Settings.cs" />
+    <Compile Include="Utility\Utilities.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Characters\Character.cs" />
@@ -358,6 +363,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Presentation\OverviewPageUi\ModifyHealthWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\OverviewPageUi\ModifyHitDiceWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

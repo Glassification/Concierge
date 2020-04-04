@@ -48,18 +48,18 @@
       </Armors>
       <Shields />
       <Weapons>
-        <Weapon value="Simple Melee Weapons" id="cfca8e0b-d264-4f2a-9bc5-a07a01af462e" />
-        <Weapon value="Simple Ranged Weapons" id="093c9814-63d5-4161-a85f-60248d69a548" />
         <Weapon value="Hand Crossbow" id="059ea7a7-06db-4ab1-9b37-b0bc1885f46b" />
         <Weapon value="Longsword" id="601a0fad-b779-4f0a-bedc-c8c6290868af" />
         <Weapon value="Rapier" id="5dc2f862-43f6-428c-becf-2e1b267de12a" />
         <Weapon value="Shortsword" id="59509815-2ba3-45f7-9f7e-9ce1d77255ed" />
+        <Weapon value="Simple Melee Weapons" id="cfca8e0b-d264-4f2a-9bc5-a07a01af462e" />
+        <Weapon value="Simple Ranged Weapons" id="093c9814-63d5-4161-a85f-60248d69a548" />
       </Weapons>
       <Tools>
-        <Tool value="Thieves' Tools" id="f56e1dca-37a1-4625-8428-c47ef90ecf65" />
-        <Tool value="Three-Dragon Ante Set" id="f59eedb5-9773-40dd-9145-a5c7b2fae03d" />
         <Tool value="Disguise Kit" id="526dd367-f9fc-4497-a5aa-50413691215a" />
         <Tool value="Poisoner Kit" id="e36569a1-ca68-48e6-b047-88777a456243" />
+        <Tool value="Thieves' Tools" id="f56e1dca-37a1-4625-8428-c47ef90ecf65" />
+        <Tool value="Three-Dragon Ante Set" id="f59eedb5-9773-40dd-9145-a5c7b2fae03d" />
       </Tools>
     </Equipment>
   </Proficiency>
@@ -76,8 +76,8 @@
     <Experience value="48000" />
     <Languages>
       <Language Name="Common" Script="Common" Speakers="Humans, halflings, half-elves, half-orcs" id="c32dcdcb-33b3-46de-9dbf-2b46aeaa0b5b" />
-      <Language Name="Elvish" Script="Elvish" Speakers="Elves" id="b25516db-14ca-499b-9956-ddc60bebab6a" />
       <Language Name="Draconic" Script="Draconic" Speakers="Kobolds, troglodytes, lizardfolk, dragons, dragonborn" id="583c023c-10f0-4da5-be1b-ae06ceeeec8b" />
+      <Language Name="Elvish" Script="Elvish" Speakers="Elves" id="b25516db-14ca-499b-9956-ddc60bebab6a" />
       <Language Name="Infernal" Script="Infernal" Speakers="Devils, Tieflings" id="b196123d-689c-447c-bc1a-12d97907c28e" />
       <Language Name="Primordial" Script="Dwarvish" Speakers="Elementals" id="f6dd39e0-e5ba-4f53-b203-771a2b3f137b" />
     </Languages>
@@ -155,10 +155,10 @@
     </HitDice>
   </HitPoints>
   <Weapons>
-    <Weapon name="Jump Blade" weaponType="Rapier" ability="DEX" dmg="1d8 +5" misc="+1" dmgType="Piercing" range="5 / 5" notes="Finesse, Gain the Jump spell." weight="2" override="false" id="3623585c-05c3-4373-9a85-7073766dff88" />
-    <Weapon name="Shortbow" weaponType="Shortbow" ability="DEX" dmg="1d6 +5" misc="" dmgType="Piercing" range="80 / 320" notes="Ammo, Two-Handed" weight="2" override="false" id="29ce8db2-43bb-4411-8d56-24561c38d1ba" />
     <Weapon name="Dagger" weaponType="Dagger" ability="DEX" dmg="1d4 +5" misc="" dmgType="Piercing" range="20 / 60" notes="Finesse, Light, Thrown" weight="1" override="false" id="3c829286-b04d-45d2-b084-0499f37db4ce" />
     <Weapon name="Dagger" weaponType="Dagger" ability="DEX" dmg="1d4 +5" misc="" dmgType="Piercing" range="20 / 60" notes="Finesse, Light, Thrown" weight="1" override="false" id="ef6d044f-2ce7-43cb-aacc-354f1ad5fa96" />
+    <Weapon name="Jump Blade" weaponType="Rapier" ability="DEX" dmg="1d8 +5" misc="+1" dmgType="Piercing" range="5 / 5" notes="Finesse, Gain the Jump spell." weight="2" override="false" id="3623585c-05c3-4373-9a85-7073766dff88" />
+    <Weapon name="Shortbow" weaponType="Shortbow" ability="DEX" dmg="1d6 +5" misc="" dmgType="Piercing" range="80 / 320" notes="Ammo, Two-Handed" weight="2" override="false" id="29ce8db2-43bb-4411-8d56-24561c38d1ba" />
     <Weapon name="Silver Dagger" weaponType="Dagger" ability="NONE" dmg="1d4" misc="" dmgType="Piercing" range="20 / 60" notes="Finesse, light, thrown" weight="1" override="false" id="ea1e50d1-f778-4b8f-bc27-6fd021e88640" />
   </Weapons>
   <Ammunitions>
@@ -166,7 +166,10 @@
     <Ammunition name="Silvered Arrows" amount="8" miscDmg="" dmgType="None" used="0" id="2ac78c8b-9b89-4d3c-841f-de8de48e20d6" />
   </Ammunitions>
   <Inventory>
+    <Item name="A Shit Tonne of Weapons" amount="1" wgt="2" note="Garbage" id="a9d45255-646e-4e8f-8178-e5f830fc3271" />
+    <Item name="Ancient Map" amount="1" wgt="0" note="Very old map oh a mountain range. It looks to be similar to the sunset mountains. Written in Dwarvish." id="3e50f31a-efff-4941-840a-3ddc62923247" />
     <Item name="Bag of Gems" amount="1" wgt="0" note="A small bag containing many fine gems worth 170gp." id="2220104f-bc56-4269-ab6b-d299900afdab" />
+    <Item name="Bag of Holding" amount="1" wgt="5" note="The bag stores items in an extradimensional space. Can hold up to 500lbs, and 64 cubic feet. Turning the bag inside out will spill all its contents." id="db7d5961-ee1c-4b75-ae6f-7d1b346068d2" />
     <Item name="Ball Bearings (bag of 1,000)" amount="0" wgt="2" note="As an action, you can spill these tiny metal balls from their pouch to cover a level, square area that is 10 feet on a side. Moving across the covered area must succeed on a DC 10 Dexterity saving throw or fall prone. Moving through the area at half speed doesn't need a save." id="dce5317f-4b45-4fa4-a92d-014f814ac28d" />
     <Item name="Black Onxy Leather Gloves" amount="1" wgt="0.5" note="Fancy pair of for hidding rings on ones hand." id="b902c364-abd5-4d34-b7eb-f8939c9ec6a0" />
     <Item name="Blue Cloak with Hood" amount="1" wgt="2" note="Simple cloak with usable hood." id="e8495208-6a29-4ddb-a543-a56ba6068a14" />
@@ -177,13 +180,18 @@
     <Item name="Eagle Beak" amount="1" wgt="0.5" note="The beak of an eagle that was far too much trouble." id="9439bbe7-a3f7-4f91-a87f-82800c82953b" />
     <Item name="Flask of Oil" amount="10" wgt="0.5" note="A flask or tankard can hold 1 pint of liquid." id="1a0a88c4-bdd7-4e2b-8ba2-29466a01ab9b" />
     <Item name="Fur coat" amount="1" wgt="0.5" note="Fur coat for keeping warm in cold climates." id="0f12a63a-13f6-4842-abc9-2b22d2a17de6" />
+    <Item name="Glass Vial" amount="42" wgt="0" note="Empty vial. Can hold 7 doses of something (drugs)." id="9c9996ea-34e0-4d35-bf3a-f410a0df36aa" />
     <Item name="Gold Bar" amount="12" wgt="20" note="Each bar is worth 50gp." id="22289266-9d9c-4893-acb9-e2ddcfb25bed" />
     <Item name="Hammer" amount="1" wgt="2" note="This one-handed hammer with an iron head is useful for pounding pitons into a wall." id="2e210db0-a2de-4cb3-8577-5190a4699f98" />
     <Item name="Hooded lantern" amount="1" wgt="2" note="Casts bright light in 30 foot radius, dim light for additional 30 feet. Burns 6 hours on pint of oil. Lower hood to cast dim light in 5 foot radius." id="6e600c96-43c5-4e8d-935c-340a7432c201" />
     <Item name="Insperation Die (d10)" amount="1" wgt="0" note="Used to add a d10 to any d20 roll." id="e55b9b84-e843-465d-9dc9-329251f7309c" />
+    <Item name="Intel" amount="1" wgt="0" note="Intel on the imperial forces." id="7d96f5ce-eab8-4334-ab65-65ef124adffd" />
     <Item name="Magic Stick" amount="1" wgt="0.5" note="A thin stick thought to be magical in some way." id="405aa64b-8129-4fd7-b434-8be450ed48bd" />
     <Item name="Map" amount="1" wgt="0" note="Map to an unspecified location." id="36a0103f-4225-4574-b6df-63164a3e62ee" />
+    <Item name="Metal Rod" amount="1" wgt="0" note="Rod found in Bag of Holding (Might be a key)." id="16ff5754-ccb8-455d-a164-5259e86aa3da" />
     <Item name="Ogre Tusk" amount="1" wgt="1" note="Tusk of a fallen ogre." id="847f9b16-8999-4976-b010-6feff676403b" />
+    <Item name="Ornate Clothes" amount="1" wgt="1" note="Very rich looking clothes. Black with red trim." id="a694c18a-060e-4f07-b621-180787eb1de1" />
+    <Item name="Phone a Friend Rock" amount="1" wgt="0" note="Whisper into the crystal and another creature with the other in the pair will hear you. 1 action to use." id="3bceed1d-33dc-4a40-b4b9-329436249a10" />
     <Item name="Piton" amount="10" wgt="0.25" note="When a wall doesn’t offer handholds and footholds, you can make your own. A piton is a steel spike with an eye through which you can loop a rope." id="b68e2648-296e-48fd-9419-c4c3e81f74ce" />
     <Item name="Poisoner's Kit" amount="1" wgt="1" note="Contains chemicals and equipment to create poisons." id="6eaa6dfe-5ffd-4ffb-a4dd-d2f163cc9003" />
     <Item name="Quiver" amount="1" wgt="1" note="A quiver can hold up to 20 arrows." id="f60c0b35-910d-4c87-ab9d-3f612aff1abd" />
@@ -192,6 +200,7 @@
     <Item name="Rope, Hempen (50 feet)" amount="1" wgt="5" note="Rope, has 2 hit points and can be burst with a DC 17 Strength check." id="5b0b36da-263e-4f4d-ada7-9443cc291cef" />
     <Item name="Salted Meat" amount="14" wgt="0.1" note="Food for one person for a meal." id="8f42b8a2-24b6-4214-b2b6-34d92c923663" />
     <Item name="Sheet of Paper" amount="1" wgt="0" note="Say the words 'trust is earned' to get all the perks befitting a lieutenant." id="7cd3bbef-5c57-49e4-bc1b-892f9f8acac8" />
+    <Item name="Shovel" amount="1" wgt="5" note="A standard shovel used for digging." id="4d1cfaef-6a48-419c-a35a-67d53508674f" />
     <Item name="Small bead" amount="1" wgt="0" note="A small marble like bead coloured a translucent green." id="22de7563-d7f1-4884-bb52-89aa7dd067e5" />
     <Item name="String" amount="1" wgt="0" note="A 10-foot length of string, typically found in a burglar's pack." id="0db7ecfe-e56d-4e7f-ba91-94ef3aa17a3d" />
     <Item name="Thieves Tools" amount="1" wgt="1" note="Small file, lock picks, mirror on metal handle, narrow bladed scissors, pliers." id="a13e8f6e-98f5-4be7-b3a4-fd1de60c9369" />
@@ -199,15 +208,6 @@
     <Item name="Tinderbox" amount="1" wgt="1" note="This small container holds flint, fire steel, and tinder (usually dry cloth soaked in light oil) used to kindle a fire. Using it to light a torch -- or anything else with abundant, exposed fuel -- takes an action. Lighting any other fire takes 1 minute." id="5a8b8cf9-b0ca-427b-bfc5-7e7c32487083" />
     <Item name="Trinket" amount="1" wgt="0" note="A carved crystal that faintly glows in the moonlight. (Object stolen from the noble)" id="122989ae-7554-4937-bca5-7cb429ce9c56" />
     <Item name="Waterskin" amount="1" wgt="0" note="A waterskin can hold 4 pints of liquid. Currently drugged." id="bea6e62c-c53b-42b9-ae8f-b170d19e7209" />
-    <Item name="Phone a Friend Rock" amount="1" wgt="0" note="Whisper into the crystal and another creature with the other in the pair will hear you. 1 action to use." id="3bceed1d-33dc-4a40-b4b9-329436249a10" />
-    <Item name="Bag of Holding" amount="1" wgt="5" note="The bag stores items in an extradimensional space. Can hold up to 500lbs, and 64 cubic feet. Turning the bag inside out will spill all its contents." id="db7d5961-ee1c-4b75-ae6f-7d1b346068d2" />
-    <Item name="Ornate Clothes" amount="1" wgt="1" note="Very rich looking clothes. Black with red trim." id="a694c18a-060e-4f07-b621-180787eb1de1" />
-    <Item name="Metal Rod" amount="1" wgt="0" note="Rod found in Bag of Holding (Might be a key)." id="16ff5754-ccb8-455d-a164-5259e86aa3da" />
-    <Item name="Ancient Map" amount="1" wgt="0" note="Very old map oh a mountain range. It looks to be similar to the sunset mountains. Written in Dwarvish." id="3e50f31a-efff-4941-840a-3ddc62923247" />
-    <Item name="Glass Vial" amount="42" wgt="0" note="Empty vial. Can hold 7 doses of something (drugs)." id="9c9996ea-34e0-4d35-bf3a-f410a0df36aa" />
-    <Item name="Intel" amount="1" wgt="0" note="Intel on the imperial forces." id="7d96f5ce-eab8-4334-ab65-65ef124adffd" />
-    <Item name="Shovel" amount="1" wgt="5" note="A standard shovel used for digging." id="4d1cfaef-6a48-419c-a35a-67d53508674f" />
-    <Item name="A Shit Tonne of Weapons" amount="1" wgt="2" note="Garbage" id="a9d45255-646e-4e8f-8178-e5f830fc3271" />
   </Inventory>
   <Abilities>
     <Ability name="Alert" level="1" uses="-" recovery="-" action="-" notes="+5 to initative; Cannot be surprised; enemies don't get advt on sneak attack" id="3f361e19-7d00-4f60-957d-a6d3d6d783a4" />
@@ -237,7 +237,6 @@
     </SpellSlots>
     <SpellList>
       <Spell name="Jump" level="1" page="254" school="Transmutation" ritual="false" comp="Jump Blade" concen="false" range="Touch" duration="6 seconds" area="Self" save="N/A" damage="N/A" description="Target's jump distance tripled until spell ends. Can be used once per long rest." prepared="true" id="cff6cbb7-613e-446e-875a-9ab2957ab692" />
-      <Spell name="Disguise Self" level="1" page="233" school="Illusion" ritual="false" comp="Egg" concen="false" range="Self" duration="1 hour" area="Self" save="N/A" damage="N/A" description="Create illusion to appear as someone else.  Foiled by Investigation vs. spell DC." prepared="true" id="99f3c1a6-06a8-4b21-9866-403e2278b340" />
     </SpellList>
   </Spellcasting>
   <Companion>

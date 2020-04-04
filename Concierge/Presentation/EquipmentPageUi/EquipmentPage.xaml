@@ -5,6 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       xmlns:local="clr-namespace:Concierge.Presentation.EquipmentPageUi"
+      xmlns:components="clr-namespace:Concierge.Presentation.Components"
       mc:Ignorable="d"
       d:DesignHeight="600" d:DesignWidth="1020"
       Title="EquipmentPage">
@@ -462,7 +463,7 @@
 
             <!--Ammo-->
             <Grid Grid.Row="1" Margin="3" x:Name="AmmoGrid">
-                <DataGrid x:Name="AmmoDataGrid"
+                <components:ConciergeDataGrid x:Name="AmmoDataGrid"
                                       AutoGenerateColumns="False"
                                       VerticalScrollBarVisibility="Auto"
                                       HorizontalScrollBarVisibility="Disabled"
@@ -478,7 +479,8 @@
                                       BorderThickness="0"
                                       Style="{DynamicResource DGHeaderStyle}"
                                       SelectionChanged="AmmoDataGrid_SelectionChanged"
-                                      SelectionMode="Single">
+                                      SelectionMode="Single"
+                                      Sorted="AmmoDataGrid_Sorted">
                     <DataGrid.Columns>
                         <DataGridTextColumn
                                         Header="Ammo"
@@ -506,12 +508,12 @@
                                         Width="0.1*"
                                         ElementStyle="{StaticResource ColumnElementStyle}"/>
                     </DataGrid.Columns>
-                </DataGrid>
+                </components:ConciergeDataGrid>
             </Grid>
 
             <!--Weapons-->
             <Grid Grid.Row="2" Margin="3" x:Name="WeaponGrid">
-                <DataGrid x:Name="WeaponDataGrid"
+                <components:ConciergeDataGrid x:Name="WeaponDataGrid"
                               AutoGenerateColumns="False"
                               VerticalScrollBarVisibility="Auto"
                               HorizontalScrollBarVisibility="Disabled"
@@ -526,7 +528,8 @@
                               BorderThickness="0"
                               Style="{DynamicResource DGHeaderStyle}"
                               SelectionChanged="WeaponDataGrid_SelectionChanged"
-                              SelectionMode="Single">
+                              SelectionMode="Single"
+                              Sorted="WeaponDataGrid_Sorted">
                     <DataGrid.Columns>
                         <DataGridTextColumn
                                 Header="Weapon/Attack"
@@ -569,7 +572,7 @@
                                 Width="0.20*"
                                 ElementStyle="{StaticResource ColumnElementStyle}"/>
                     </DataGrid.Columns>
-                </DataGrid>
+                </components:ConciergeDataGrid>
             </Grid>
         </Grid>
     </Grid>

@@ -2029,7 +2029,10 @@
                                 <Grid Grid.Row="2"
                                       Margin="3, 0, 3, 0"
                                       Background="#FF3e3e42"
-                                      x:Name="D6SpentBox">
+                                      x:Name="D6SpentBox"
+                                      MouseDown="D6SpentBox_MouseDown"
+                                      MouseEnter="D6SpentBox_MouseEnter"
+                                      MouseLeave="D6SpentBox_MouseLeave">
                                     <TextBlock x:Name="D6SpentField"
                                                Foreground="White"
                                                FontSize="30"
@@ -2074,7 +2077,10 @@
                                 <Grid Grid.Row="2"
                                       Margin="3, 0, 3, 0"
                                       Background="#FF3e3e42"
-                                      x:Name="D8SpentBox">
+                                      x:Name="D8SpentBox"
+                                      MouseDown="D8SpentBox_MouseDown"
+                                      MouseEnter="D8SpentBox_MouseEnter"
+                                      MouseLeave="D8SpentBox_MouseLeave">
                                     <TextBlock x:Name="D8SpentField"
                                                Foreground="White"
                                                FontSize="30"
@@ -2119,7 +2125,10 @@
                                 <Grid Grid.Row="2"
                                       Margin="3, 0, 3, 0"
                                       Background="#FF3e3e42"
-                                      x:Name="D10SpentBox">
+                                      x:Name="D10SpentBox"
+                                      MouseDown="D10SpentBox_MouseDown"
+                                      MouseEnter="D10SpentBox_MouseEnter"
+                                      MouseLeave="D10SpentBox_MouseLeave">
                                     <TextBlock x:Name="D10SpentField"
                                                Foreground="White"
                                                FontSize="30"
@@ -2164,7 +2173,10 @@
                                 <Grid Grid.Row="2"
                                       Margin="3, 0, 3, 0"
                                       Background="#FF3e3e42"
-                                      x:Name="D12SpentBox">
+                                      x:Name="D12SpentBox"
+                                      MouseDown="D12SpentBox_MouseDown"
+                                      MouseEnter="D12SpentBox_MouseEnter"
+                                      MouseLeave="D12SpentBox_MouseLeave">
                                     <TextBlock x:Name="D12SpentField"
                                                Foreground="White"
                                                FontSize="30"

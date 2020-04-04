@@ -41,7 +41,7 @@ namespace Concierge.SavingThrowsNamespace
                 if (Proficiency)
                     bonus += Program.Character.ProficiencyBonus;
 
-                bonus += Constants.CalculateBonus(Program.Character.Attributes.Strength);
+                bonus += Utilities.CalculateBonus(Program.Character.Attributes.Strength);
 
                 return bonus;
             }

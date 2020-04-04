@@ -5,6 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:Concierge.Presentation.SpellcastingPageUi"
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:components="clr-namespace:Concierge.Presentation.Components"
       mc:Ignorable="d"
       d:DesignHeight="450" d:DesignWidth="800"
       Title="SpellcastingPage">
@@ -162,7 +163,7 @@
             <!--Spell classes-->
             <Grid Grid.Column="0"
                   Margin="3, 3, 3, 3">
-                <DataGrid x:Name="MagicClassDataGrid"
+                <components:ConciergeDataGrid x:Name="MagicClassDataGrid"
                       AutoGenerateColumns="False"
                       VerticalScrollBarVisibility="Auto"
                       HorizontalScrollBarVisibility="Disabled"
@@ -177,7 +178,8 @@
                       BorderThickness="0"
                       Style="{DynamicResource DGHeaderStyle}"
                       SelectionMode="Single"
-                      SelectionChanged="MagicClassDataGrid_SelectionChanged">
+                      SelectionChanged="MagicClassDataGrid_SelectionChanged"
+                      Sorted="MagicClassDataGrid_Sorted">
                     <DataGrid.Columns>
                         <DataGridTextColumn
                         Header="Class"
@@ -215,7 +217,7 @@
                         Width="12.5*"
                         ElementStyle="{StaticResource ColumnElementStyle}"/>
                     </DataGrid.Columns>
-                </DataGrid>
+                </components:ConciergeDataGrid>
             </Grid>
 
             <!--Spell level-->
@@ -766,7 +768,7 @@
                 <ColumnDefinition Width="17*"/>
                 <ColumnDefinition Width="143*"/>
             </Grid.ColumnDefinitions>
-            <DataGrid x:Name="SpellListDataGrid"
+            <components:ConciergeDataGrid x:Name="SpellListDataGrid"
                       AutoGenerateColumns="False"
                       VerticalScrollBarVisibility="Auto"
                       HorizontalScrollBarVisibility="Disabled"
@@ -781,7 +783,8 @@
                       BorderThickness="0"
                       Style="{DynamicResource DGHeaderStyle}"
                       SelectionMode="Single"
-                      SelectionChanged="SpellListDataGrid_SelectionChanged" Grid.ColumnSpan="2" Margin="0,0,0,0.4">
+                      SelectionChanged="SpellListDataGrid_SelectionChanged" Grid.ColumnSpan="2" Margin="0,0,0,0.4"
+                      Sorted="SpellListDataGrid_Sorted">
                 <DataGrid.Columns>
                     <DataGridTextColumn
                         Header="Preped"
@@ -854,7 +857,7 @@
                         Width="0.12*"
                         ElementStyle="{StaticResource ColumnElementStyle}"/>
                 </DataGrid.Columns>
-            </DataGrid>
+            </components:ConciergeDataGrid>
         </Grid>
     </Grid>
 </Page>

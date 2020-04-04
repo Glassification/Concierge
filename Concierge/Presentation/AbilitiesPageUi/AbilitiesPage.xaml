@@ -5,6 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       xmlns:local="clr-namespace:Concierge.Presentation.AbilitiesPageUi"
+      xmlns:components="clr-namespace:Concierge.Presentation.Components"
       mc:Ignorable="d"
       d:DesignHeight="600" d:DesignWidth="1020"
       Title="AbilitiesPage">
@@ -151,7 +152,7 @@
 
         <!--Abilities-->
         <Grid Grid.Row="1">
-            <DataGrid x:Name="AbilitiesDataGrid"
+            <components:ConciergeDataGrid x:Name="AbilitiesDataGrid"
                       AutoGenerateColumns="False"
                       VerticalScrollBarVisibility="Auto"
                       HorizontalScrollBarVisibility="Disabled"
@@ -165,7 +166,8 @@
                       MaxHeight="{Binding Path=AbilitiesHeight}"
                       BorderThickness="0"
                       Style="{DynamicResource DGHeaderStyle}"
-                      SelectionMode="Single">
+                      SelectionMode="Single"
+                      Sorted="AbilitiesDataGrid_Sorted">
                 <DataGrid.Columns>
                     <DataGridTextColumn
                         Header="Name"
@@ -198,7 +200,7 @@
                         Width="0.4*"
                         ElementStyle="{StaticResource ColumnElementStyle}"/>
                 </DataGrid.Columns>
-            </DataGrid>
+            </components:ConciergeDataGrid>
         </Grid>
     </Grid>
 </Page>

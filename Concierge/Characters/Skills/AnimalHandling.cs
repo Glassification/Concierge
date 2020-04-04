@@ -47,7 +47,7 @@ namespace Concierge.SkillsNamespace
                 if (Expertise)
                     bonus += Program.Character.ProficiencyBonus;
 
-                bonus += Constants.CalculateBonus(Program.Character.Attributes.Wisdom);
+                bonus += Utilities.CalculateBonus(Program.Character.Attributes.Wisdom);
 
                 return bonus;
             }

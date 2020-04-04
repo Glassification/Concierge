@@ -372,5 +372,59 @@ namespace Concierge.Presentation.DetailsPageUi
             ModifyPersonalityWindow.ShowEdit();
             DrawPersonality();
         }
+
+        private void WeaponProficiencyDataGrid_Sorted(object sender, RoutedEventArgs e)
+        {
+            Program.Character.Proficiency.Weapons.Clear();
+
+            foreach (var weapon in WeaponProficiencyDataGrid.Items)
+            {
+                var keyValuePair = (KeyValuePair<Guid, string>)weapon;
+                Program.Character.Proficiency.Weapons.Add(keyValuePair.Key, keyValuePair.Value);
+            }
+        }
+
+        private void ArmorProficiencyDataGrid_Sorted(object sender, RoutedEventArgs e)
+        {
+            Program.Character.Proficiency.Armors.Clear();
+
+            foreach (var armor in ArmorProficiencyDataGrid.Items)
+            {
+                var keyValuePair = (KeyValuePair<Guid, string>)armor;
+                Program.Character.Proficiency.Armors.Add(keyValuePair.Key, keyValuePair.Value);
+            }
+        }
+
+        private void ShieldProficiencyDataGrid_Sorted(object sender, RoutedEventArgs e)
+        {
+            Program.Character.Proficiency.Shields.Clear();
+
+            foreach (var shield in ShieldProficiencyDataGrid.Items)
+            {
+                var keyValuePair = (KeyValuePair<Guid, string>)shield;
+                Program.Character.Proficiency.Shields.Add(keyValuePair.Key, keyValuePair.Value);
+            }
+        }
+
+        private void ToolProficiencyDataGrid_Sorted(object sender, RoutedEventArgs e)
+        {
+            Program.Character.Proficiency.Tools.Clear();
+
+            foreach (var tool in ToolProficiencyDataGrid.Items)
+            {
+                var keyValuePair = (KeyValuePair<Guid, string>)tool;
+                Program.Character.Proficiency.Tools.Add(keyValuePair.Key, keyValuePair.Value);
+            }
+        }
+
+        private void LanguagesDataGrid_Sorted(object sender, RoutedEventArgs e)
+        {
+            Program.Character.Details.Languages.Clear();
+
+            foreach (var language in LanguagesDataGrid.Items)
+            {
+                Program.Character.Details.Languages.Add(language as Language);
+            }
+        }
     }
 }

@@ -26,6 +26,8 @@ namespace Concierge.Presentation.OverviewPageUi
             ModifyAttributesWindow = new ModifyAttributesWindow();
             ModifySensesWindow = new ModifySensesWindow();
             ModifyHealthWindow = new ModifyHealthWindow();
+            ModifyHpWindow = new ModifyHpWindow();
+            ModifyHitDiceWindow = new ModifyHitDiceWindow();
 
             #region Create Events
 
@@ -225,12 +227,12 @@ namespace Concierge.Presentation.OverviewPageUi
 
         private void DrawAttributes()
         {
-            StrengthBonusField.Text = Constants.CalculateBonus(Program.Character.Attributes.Strength).ToString();
-            DexterityBonusField.Text = Constants.CalculateBonus(Program.Character.Attributes.Dexterity).ToString();
-            ConstitutionBonusField.Text = Constants.CalculateBonus(Program.Character.Attributes.Constitution).ToString();
-            IntelligenceBonusField.Text = Constants.CalculateBonus(Program.Character.Attributes.Intelligence).ToString();
-            WisdomBonusField.Text = Constants.CalculateBonus(Program.Character.Attributes.Wisdom).ToString();
-            CharismaBonusField.Text = Constants.CalculateBonus(Program.Character.Attributes.Charisma).ToString();
+            StrengthBonusField.Text = Utilities.CalculateBonus(Program.Character.Attributes.Strength).ToString();
+            DexterityBonusField.Text = Utilities.CalculateBonus(Program.Character.Attributes.Dexterity).ToString();
+            ConstitutionBonusField.Text = Utilities.CalculateBonus(Program.Character.Attributes.Constitution).ToString();
+            IntelligenceBonusField.Text = Utilities.CalculateBonus(Program.Character.Attributes.Intelligence).ToString();
+            WisdomBonusField.Text = Utilities.CalculateBonus(Program.Character.Attributes.Wisdom).ToString();
+            CharismaBonusField.Text = Utilities.CalculateBonus(Program.Character.Attributes.Charisma).ToString();
 
             StrengthScoreField.Text = Program.Character.Attributes.Strength.ToString();
             DexterityScoreField.Text = Program.Character.Attributes.Dexterity.ToString();
@@ -414,32 +416,32 @@ namespace Concierge.Presentation.OverviewPageUi
         private void DrawHitDice()
         {
             D6TotalField.Text = Program.Character.Vitality.HitDice.TotalD6.ToString();
-            D6TotalField.Foreground = Constants.SetTotalTextStyle(Program.Character.Vitality.HitDice.TotalD6, Program.Character.Vitality.HitDice.SpentD6);
-            D6TotalBox.Background = Constants.SetTotalBoxStyle(Program.Character.Vitality.HitDice.TotalD6, Program.Character.Vitality.HitDice.SpentD6);
+            D6TotalField.Foreground = Utilities.SetTotalTextStyle(Program.Character.Vitality.HitDice.TotalD6, Program.Character.Vitality.HitDice.SpentD6);
+            D6TotalBox.Background = Utilities.SetTotalBoxStyle(Program.Character.Vitality.HitDice.TotalD6, Program.Character.Vitality.HitDice.SpentD6);
             D6SpentField.Text = Program.Character.Vitality.HitDice.SpentD6.ToString();
-            D6SpentField.Foreground = Constants.SetUsedTextStyle(Program.Character.Vitality.HitDice.TotalD6, Program.Character.Vitality.HitDice.SpentD6);
-            D6SpentBox.Background = Constants.SetUsedBoxStyle(Program.Character.Vitality.HitDice.TotalD6, Program.Character.Vitality.HitDice.SpentD6);
+            D6SpentField.Foreground = Utilities.SetUsedTextStyle(Program.Character.Vitality.HitDice.TotalD6, Program.Character.Vitality.HitDice.SpentD6);
+            D6SpentBox.Background = Utilities.SetUsedBoxStyle(Program.Character.Vitality.HitDice.TotalD6, Program.Character.Vitality.HitDice.SpentD6);
 
             D8TotalField.Text = Program.Character.Vitality.HitDice.TotalD8.ToString();
-            D8TotalField.Foreground = Constants.SetTotalTextStyle(Program.Character.Vitality.HitDice.TotalD8, Program.Character.Vitality.HitDice.SpentD8);
+            D8TotalField.Foreground = Utilities.SetTotalTextStyle(Program.Character.Vitality.HitDice.TotalD8, Program.Character.Vitality.HitDice.SpentD8);
             D8SpentField.Text = Program.Character.Vitality.HitDice.SpentD8.ToString();
-            D8SpentField.Foreground = Constants.SetUsedTextStyle(Program.Character.Vitality.HitDice.TotalD8, Program.Character.Vitality.HitDice.SpentD8);
-            D8SpentBox.Background = Constants.SetUsedBoxStyle(Program.Character.Vitality.HitDice.TotalD8, Program.Character.Vitality.HitDice.SpentD8);
-            D8TotalBox.Background = Constants.SetTotalBoxStyle(Program.Character.Vitality.HitDice.TotalD8, Program.Character.Vitality.HitDice.SpentD8);
+            D8SpentField.Foreground = Utilities.SetUsedTextStyle(Program.Character.Vitality.HitDice.TotalD8, Program.Character.Vitality.HitDice.SpentD8);
+            D8SpentBox.Background = Utilities.SetUsedBoxStyle(Program.Character.Vitality.HitDice.TotalD8, Program.Character.Vitality.HitDice.SpentD8);
+            D8TotalBox.Background = Utilities.SetTotalBoxStyle(Program.Character.Vitality.HitDice.TotalD8, Program.Character.Vitality.HitDice.SpentD8);
 
             D10TotalField.Text = Program.Character.Vitality.HitDice.TotalD10.ToString();
-            D10TotalField.Foreground = Constants.SetTotalTextStyle(Program.Character.Vitality.HitDice.TotalD10, Program.Character.Vitality.HitDice.SpentD10);
+            D10TotalField.Foreground = Utilities.SetTotalTextStyle(Program.Character.Vitality.HitDice.TotalD10, Program.Character.Vitality.HitDice.SpentD10);
             D10SpentField.Text = Program.Character.Vitality.HitDice.SpentD10.ToString();
-            D10SpentField.Foreground = Constants.SetUsedTextStyle(Program.Character.Vitality.HitDice.TotalD10, Program.Character.Vitality.HitDice.SpentD10);
-            D10SpentBox.Background = Constants.SetUsedBoxStyle(Program.Character.Vitality.HitDice.TotalD10, Program.Character.Vitality.HitDice.SpentD10);
-            D10TotalBox.Background = Constants.SetTotalBoxStyle(Program.Character.Vitality.HitDice.TotalD10, Program.Character.Vitality.HitDice.SpentD10);
+            D10SpentField.Foreground = Utilities.SetUsedTextStyle(Program.Character.Vitality.HitDice.TotalD10, Program.Character.Vitality.HitDice.SpentD10);
+            D10SpentBox.Background = Utilities.SetUsedBoxStyle(Program.Character.Vitality.HitDice.TotalD10, Program.Character.Vitality.HitDice.SpentD10);
+            D10TotalBox.Background = Utilities.SetTotalBoxStyle(Program.Character.Vitality.HitDice.TotalD10, Program.Character.Vitality.HitDice.SpentD10);
 
             D12TotalField.Text = Program.Character.Vitality.HitDice.TotalD12.ToString();
-            D12TotalField.Foreground = Constants.SetTotalTextStyle(Program.Character.Vitality.HitDice.TotalD12, Program.Character.Vitality.HitDice.SpentD12);
+            D12TotalField.Foreground = Utilities.SetTotalTextStyle(Program.Character.Vitality.HitDice.TotalD12, Program.Character.Vitality.HitDice.SpentD12);
             D12SpentField.Text = Program.Character.Vitality.HitDice.SpentD12.ToString();
-            D12SpentField.Foreground = Constants.SetUsedTextStyle(Program.Character.Vitality.HitDice.TotalD12, Program.Character.Vitality.HitDice.SpentD12);
-            D12SpentBox.Background = Constants.SetUsedBoxStyle(Program.Character.Vitality.HitDice.TotalD12, Program.Character.Vitality.HitDice.SpentD12);
-            D12TotalBox.Background = Constants.SetTotalBoxStyle(Program.Character.Vitality.HitDice.TotalD12, Program.Character.Vitality.HitDice.SpentD12);
+            D12SpentField.Foreground = Utilities.SetUsedTextStyle(Program.Character.Vitality.HitDice.TotalD12, Program.Character.Vitality.HitDice.SpentD12);
+            D12SpentBox.Background = Utilities.SetUsedBoxStyle(Program.Character.Vitality.HitDice.TotalD12, Program.Character.Vitality.HitDice.SpentD12);
+            D12TotalBox.Background = Utilities.SetTotalBoxStyle(Program.Character.Vitality.HitDice.TotalD12, Program.Character.Vitality.HitDice.SpentD12);
         }
 
         #endregion
@@ -457,20 +459,20 @@ namespace Concierge.Presentation.OverviewPageUi
                 ResourceTypeField.Text = classResource.Type;
 
                 ResourcePoolField.Text = classResource.Total.ToString();
-                ResourcePoolBox.Background = Constants.SetTotalBoxStyle(classResource.Total, classResource.Spent);
+                ResourcePoolBox.Background = Utilities.SetTotalBoxStyle(classResource.Total, classResource.Spent);
 
                 ResourceSpentField.Text = classResource.Total.ToString();
-                ResourceSpentBox.Background = Constants.SetUsedBoxStyle(classResource.Total, classResource.Spent);
+                ResourceSpentBox.Background = Utilities.SetUsedBoxStyle(classResource.Total, classResource.Spent);
             }
             else
             {
                 ResourceTypeField.Text = "None";
 
                 ResourcePoolField.Text = "0";
-                ResourcePoolBox.Background = Constants.SetTotalBoxStyle(0, 0);
+                ResourcePoolBox.Background = Utilities.SetTotalBoxStyle(0, 0);
 
                 ResourceSpentField.Text = "0";
-                ResourceSpentBox.Background = Constants.SetUsedBoxStyle(0, 0);
+                ResourceSpentBox.Background = Utilities.SetUsedBoxStyle(0, 0);
             }
         }
 
@@ -583,9 +585,16 @@ namespace Concierge.Presentation.OverviewPageUi
         }
 
         public int ResourceIndex { get; private set; }
+
         private ModifyAttributesWindow ModifyAttributesWindow { get; } 
+
         private ModifySensesWindow ModifySensesWindow { get; }
+
         private ModifyHealthWindow ModifyHealthWindow { get; }
+
+        private ModifyHpWindow ModifyHpWindow { get; }
+
+        private ModifyHitDiceWindow ModifyHitDiceWindow { get; }
 
         #endregion
 
@@ -778,8 +787,6 @@ namespace Concierge.Presentation.OverviewPageUi
             Mouse.OverrideCursor = Cursors.Arrow;
         }
 
-        #endregion
-
         private void EditAttributesButton_Click(object sender, RoutedEventArgs e)
         {
             ModifyAttributesWindow.EditAttributes();
@@ -800,7 +807,8 @@ namespace Concierge.Presentation.OverviewPageUi
 
         private void EditHitDiceButton_Click(object sender, RoutedEventArgs e)
         {
-
+            ModifyHitDiceWindow.ModifyHitDice();
+            DrawHitDice();
         }
 
         private void EditResourceButton_Click(object sender, RoutedEventArgs e)
@@ -815,12 +823,97 @@ namespace Concierge.Presentation.OverviewPageUi
 
         private void TakeDamageButton_Click(object sender, RoutedEventArgs e)
         {
-
+            ModifyHpWindow.SubtractHP();
+            DrawHealth();
         }
 
         private void HealDamageButton_Click(object sender, RoutedEventArgs e)
         {
-
+            ModifyHpWindow.AddHP();
+            DrawHealth();
         }
+
+        private void D6SpentBox_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Program.Character.Vitality.HitDice.SpentD6++;
+            DrawHitDice();
+
+            if (Program.Character.Vitality.HitDice.SpentD6 == Program.Character.Vitality.HitDice.TotalD6)
+                Mouse.OverrideCursor = Cursors.Arrow;
+        }
+
+        private void D8SpentBox_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Program.Character.Vitality.HitDice.SpentD8++;
+            DrawHitDice();
+
+            if (Program.Character.Vitality.HitDice.SpentD8 == Program.Character.Vitality.HitDice.TotalD8)
+                Mouse.OverrideCursor = Cursors.Arrow;
+        }
+
+        private void D10SpentBox_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Program.Character.Vitality.HitDice.SpentD10++;
+            DrawHitDice();
+
+            if (Program.Character.Vitality.HitDice.SpentD10 == Program.Character.Vitality.HitDice.TotalD10)
+                Mouse.OverrideCursor = Cursors.Arrow;
+        }
+
+        private void D12SpentBox_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Program.Character.Vitality.HitDice.SpentD12++;
+            DrawHitDice();
+
+            if (Program.Character.Vitality.HitDice.SpentD12 == Program.Character.Vitality.HitDice.TotalD12)
+                Mouse.OverrideCursor = Cursors.Arrow;
+        }
+
+        private void D6SpentBox_MouseEnter(object sender, MouseEventArgs e)
+        {
+            if (Program.Character.Vitality.HitDice.SpentD6 != Program.Character.Vitality.HitDice.TotalD6)
+                Mouse.OverrideCursor = Cursors.Hand;
+        }
+
+        private void D6SpentBox_MouseLeave(object sender, MouseEventArgs e)
+        {
+            Mouse.OverrideCursor = Cursors.Arrow;
+        }
+
+        private void D8SpentBox_MouseEnter(object sender, MouseEventArgs e)
+        {
+            if (Program.Character.Vitality.HitDice.SpentD8 != Program.Character.Vitality.HitDice.TotalD8)
+                Mouse.OverrideCursor = Cursors.Hand;
+        }
+
+        private void D8SpentBox_MouseLeave(object sender, MouseEventArgs e)
+        {
+            Mouse.OverrideCursor = Cursors.Arrow;
+        }
+
+        private void D10SpentBox_MouseEnter(object sender, MouseEventArgs e)
+        {
+            if (Program.Character.Vitality.HitDice.SpentD10 != Program.Character.Vitality.HitDice.TotalD10)
+                Mouse.OverrideCursor = Cursors.Hand;
+        }
+
+        private void D10SpentBox_MouseLeave(object sender, MouseEventArgs e)
+        {
+            Mouse.OverrideCursor = Cursors.Arrow;
+        }
+
+        private void D12SpentBox_MouseEnter(object sender, MouseEventArgs e)
+        {
+            if (Program.Character.Vitality.HitDice.SpentD12 != Program.Character.Vitality.HitDice.TotalD12)
+                Mouse.OverrideCursor = Cursors.Hand;
+        }
+
+        private void D12SpentBox_MouseLeave(object sender, MouseEventArgs e)
+        {
+            Mouse.OverrideCursor = Cursors.Arrow;
+        }
+
+        #endregion
+
     }
 }

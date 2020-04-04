@@ -5,6 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       xmlns:local="clr-namespace:Concierge.Presentation.DetailsPageUi"
+      xmlns:components="clr-namespace:Concierge.Presentation.Components"
       mc:Ignorable="d"
       d:DesignHeight="600" d:DesignWidth="1020"
       Title="DetailsPage">
@@ -700,7 +701,7 @@
 
                     <!--Weapons-->
                     <Grid Grid.Column="0" Margin="3, 0, 3, 3" x:Name="WeaponGrid">
-                        <DataGrid x:Name="WeaponProficiencyDataGrid"
+                        <components:ConciergeDataGrid x:Name="WeaponProficiencyDataGrid"
                                   AutoGenerateColumns="False"
                                   VerticalScrollBarVisibility="Hidden"
                                   HorizontalScrollBarVisibility="Disabled"
@@ -715,19 +716,20 @@
                                   BorderThickness="0"
                                   Style="{DynamicResource DGHeaderStyle}"
                                   SelectionMode="Single"
-                                  SelectionChanged="WeaponProficiencyDataGrid_SelectionChanged">
+                                  SelectionChanged="WeaponProficiencyDataGrid_SelectionChanged"
+                                  Sorted="WeaponProficiencyDataGrid_Sorted">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Weapons"
                                                     Width="100*"
                                                     Binding="{Binding Value}"
                                                     ElementStyle="{StaticResource ColumnElementStyle}"/>
                             </DataGrid.Columns>
-                        </DataGrid>
+                        </components:ConciergeDataGrid>
                     </Grid>
 
                     <!--Armor-->
                     <Grid Grid.Column="1"  Margin="3, 0, 3, 3" x:Name="ArmorGrid">
-                        <DataGrid x:Name="ArmorProficiencyDataGrid"
+                        <components:ConciergeDataGrid x:Name="ArmorProficiencyDataGrid"
                                   AutoGenerateColumns="False"
                                   VerticalScrollBarVisibility="Hidden"
                                   HorizontalScrollBarVisibility="Disabled"
@@ -742,19 +744,20 @@
                                   BorderThickness="0"
                                   Style="{DynamicResource DGHeaderStyle}"
                                   SelectionMode="Single"
-                                  SelectionChanged="ArmorProficiencyDataGrid_SelectionChanged">
+                                  SelectionChanged="ArmorProficiencyDataGrid_SelectionChanged"
+                                  Sorted="ArmorProficiencyDataGrid_Sorted">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Armor"
                                                     Width="100*"
                                                     Binding="{Binding Value}"
                                                     ElementStyle="{StaticResource ColumnElementStyle}"/>
                             </DataGrid.Columns>
-                        </DataGrid>
+                        </components:ConciergeDataGrid>
                     </Grid>
 
                     <!--Shields-->
                     <Grid Grid.Column="2"  Margin="3, 0, 3, 3" x:Name="ShieldGrid">
-                        <DataGrid x:Name="ShieldProficiencyDataGrid"
+                        <components:ConciergeDataGrid x:Name="ShieldProficiencyDataGrid"
                                   AutoGenerateColumns="False"
                                   VerticalScrollBarVisibility="Hidden"
                                   HorizontalScrollBarVisibility="Disabled"
@@ -769,19 +772,20 @@
                                   BorderThickness="0"
                                   Style="{DynamicResource DGHeaderStyle}"
                                   SelectionMode="Single"
-                                  SelectionChanged="ShieldProficiencyDataGrid_SelectionChanged">
+                                  SelectionChanged="ShieldProficiencyDataGrid_SelectionChanged"
+                                  Sorted="ShieldProficiencyDataGrid_Sorted">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Shields"
                                                     Width="100*"
                                                     Binding="{Binding Value}"
                                                     ElementStyle="{StaticResource ColumnElementStyle}"/>
                             </DataGrid.Columns>
-                        </DataGrid>
+                        </components:ConciergeDataGrid>
                     </Grid>
 
                     <!--Tools-->
                     <Grid Grid.Column="3"  Margin="3, 0, 3, 3" x:Name="ToolsGrid">
-                        <DataGrid x:Name="ToolProficiencyDataGrid"
+                        <components:ConciergeDataGrid x:Name="ToolProficiencyDataGrid"
                                   AutoGenerateColumns="False"
                                   VerticalScrollBarVisibility="Hidden"
                                   HorizontalScrollBarVisibility="Disabled"
@@ -796,14 +800,15 @@
                                   BorderThickness="0"
                                   Style="{DynamicResource DGHeaderStyle}"
                                   SelectionMode="Single"
-                                  SelectionChanged="ToolProficiencyDataGrid_SelectionChanged">
+                                  SelectionChanged="ToolProficiencyDataGrid_SelectionChanged"
+                                  Sorted="ToolProficiencyDataGrid_Sorted">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Tools"
                                                     Width="100*"
                                                     Binding="{Binding Value}"
                                                     ElementStyle="{StaticResource ColumnElementStyle}"/>
                             </DataGrid.Columns>
-                        </DataGrid>
+                        </components:ConciergeDataGrid>
                     </Grid>
                 </Grid>
             </Grid>
@@ -1126,7 +1131,7 @@
 
             <!--Language-->
             <Grid Grid.Row="2" Margin="3">
-                <DataGrid x:Name="LanguagesDataGrid"
+                <components:ConciergeDataGrid x:Name="LanguagesDataGrid"
                         AutoGenerateColumns="False"
                         VerticalScrollBarVisibility="Hidden"
                         HorizontalScrollBarVisibility="Disabled"
@@ -1140,14 +1145,15 @@
                         MaxHeight="{Binding Path=ProficiencyGridSize}"
                         BorderThickness="0"
                         Style="{DynamicResource DGHeaderStyle}"
-                        SelectionMode="Single">
+                        SelectionMode="Single"
+                        Sorted="LanguagesDataGrid_Sorted">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Languages"
                                             Width="100*"
                                             Binding="{Binding Description}"
                                             ElementStyle="{StaticResource ColumnElementStyle}"/>
                     </DataGrid.Columns>
-                </DataGrid>
+                </components:ConciergeDataGrid>
                 <StackPanel Orientation="Horizontal"
                             HorizontalAlignment="Left"
                             VerticalAlignment="Top">
@@ -1212,7 +1218,7 @@
 
             <!--Conditions-->
             <Grid Grid.Row="3" Margin="3">
-                <DataGrid x:Name="ConditionsDataGrid"
+                <components:ConciergeDataGrid x:Name="ConditionsDataGrid"
                                   AutoGenerateColumns="False"
                                   VerticalScrollBarVisibility="Hidden"
                                   HorizontalScrollBarVisibility="Disabled"
@@ -1233,7 +1239,7 @@
                                                     Binding="{Binding Value}"
                                                     ElementStyle="{StaticResource ColumnElementStyle}"/>
                     </DataGrid.Columns>
-                </DataGrid>
+                </components:ConciergeDataGrid>
                 <StackPanel Orientation="Horizontal"
                             VerticalAlignment="Top"
                             HorizontalAlignment="Right">

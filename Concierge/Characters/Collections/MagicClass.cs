@@ -46,17 +46,17 @@ namespace Concierge.Characters.Collections
                 {
                     default:
                     case Constants.Abilities.STR:
-                        return Constants.CalculateBonus(Program.Character.Attributes.Strength) + bonus;
+                        return Utilities.CalculateBonus(Program.Character.Attributes.Strength) + bonus;
                     case Constants.Abilities.DEX:
-                        return Constants.CalculateBonus(Program.Character.Attributes.Dexterity) + bonus;
+                        return Utilities.CalculateBonus(Program.Character.Attributes.Dexterity) + bonus;
                     case Constants.Abilities.CON:
-                        return Constants.CalculateBonus(Program.Character.Attributes.Constitution) + bonus;
+                        return Utilities.CalculateBonus(Program.Character.Attributes.Constitution) + bonus;
                     case Constants.Abilities.INT:
-                        return Constants.CalculateBonus(Program.Character.Attributes.Intelligence) + bonus;
+                        return Utilities.CalculateBonus(Program.Character.Attributes.Intelligence) + bonus;
                     case Constants.Abilities.WIS:
-                        return Constants.CalculateBonus(Program.Character.Attributes.Wisdom) + bonus;
+                        return Utilities.CalculateBonus(Program.Character.Attributes.Wisdom) + bonus;
                     case Constants.Abilities.CHA:
-                        return Constants.CalculateBonus(Program.Character.Attributes.Charisma) + bonus;
+                        return Utilities.CalculateBonus(Program.Character.Attributes.Charisma) + bonus;
                 }
             }
         }
@@ -71,17 +71,17 @@ namespace Concierge.Characters.Collections
                 {
                     default:
                     case Constants.Abilities.STR:
-                        return Constants.CalculateBonus(Program.Character.Attributes.Strength) + bonus;
+                        return Utilities.CalculateBonus(Program.Character.Attributes.Strength) + bonus;
                     case Constants.Abilities.DEX:
-                        return Constants.CalculateBonus(Program.Character.Attributes.Dexterity) + bonus;
+                        return Utilities.CalculateBonus(Program.Character.Attributes.Dexterity) + bonus;
                     case Constants.Abilities.CON:
-                        return Constants.CalculateBonus(Program.Character.Attributes.Constitution) + bonus;
+                        return Utilities.CalculateBonus(Program.Character.Attributes.Constitution) + bonus;
                     case Constants.Abilities.INT:
-                        return Constants.CalculateBonus(Program.Character.Attributes.Intelligence) + bonus;
+                        return Utilities.CalculateBonus(Program.Character.Attributes.Intelligence) + bonus;
                     case Constants.Abilities.WIS:
-                        return Constants.CalculateBonus(Program.Character.Attributes.Wisdom) + bonus;
+                        return Utilities.CalculateBonus(Program.Character.Attributes.Wisdom) + bonus;
                     case Constants.Abilities.CHA:
-                        return Constants.CalculateBonus(Program.Character.Attributes.Charisma) + bonus;
+                        return Utilities.CalculateBonus(Program.Character.Attributes.Charisma) + bonus;
                 }
             }
         }

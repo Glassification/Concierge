@@ -59,10 +59,10 @@ namespace Concierge.Characters
                             ac += 10;
                         break;
                     case Constants.ArmorType.Light:
-                        ac += Constants.CalculateBonus(Program.Character.Attributes.Dexterity);
+                        ac += Utilities.CalculateBonus(Program.Character.Attributes.Dexterity);
                         break;
                     case Constants.ArmorType.Medium:
-                        ac += Math.Min(2, Constants.CalculateBonus(Program.Character.Attributes.Dexterity));
+                        ac += Math.Min(2, Utilities.CalculateBonus(Program.Character.Attributes.Dexterity));
                         break;
                     case Constants.ArmorType.Heavy:
                     case Constants.ArmorType.Massive:

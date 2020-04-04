@@ -5,6 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:Concierge.Presentation.InventoryPageUi"
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:components="clr-namespace:Concierge.Presentation.Components"
       mc:Ignorable="d"
       d:DesignHeight="600" d:DesignWidth="1020"
       Title="InventoryPage">
@@ -152,7 +153,7 @@
 
         <!--Inventory-->
         <Grid Grid.Row="1">
-            <DataGrid x:Name="InventoryDataGrid"
+            <components:ConciergeDataGrid x:Name="InventoryDataGrid"
                       AutoGenerateColumns="False"
                       VerticalScrollBarVisibility="Auto"
                       HorizontalScrollBarVisibility="Disabled"
@@ -166,7 +167,8 @@
                       MaxHeight="{Binding Path=InventoryHeight}"
                       BorderThickness="0"
                       Style="{DynamicResource DGHeaderStyle}"
-                      SelectionMode="Single">
+                      SelectionMode="Single"
+                      Sorted="InventoryDataGrid_Sorted">
                 <DataGrid.Columns>
                     <DataGridTextColumn
                         Header="Name"
@@ -189,7 +191,7 @@
                         Width="0.55*"
                         ElementStyle="{StaticResource ColumnElementStyle}"/>
                 </DataGrid.Columns>
-            </DataGrid>
+            </components:ConciergeDataGrid>
         </Grid>
     </Grid>
 </Page>

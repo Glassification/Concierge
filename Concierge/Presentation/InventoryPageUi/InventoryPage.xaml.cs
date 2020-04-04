@@ -71,7 +71,7 @@ namespace Concierge.Presentation.InventoryPageUi
 
                 if (index != 0)
                 {
-                    Constants.Swap(Program.Character.Inventories, index, index - 1);
+                    Utilities.Swap(Program.Character.Inventories, index, index - 1);
                     FillList();
                     InventoryDataGrid.SelectedIndex = index - 1;
                 }
@@ -90,7 +90,7 @@ namespace Concierge.Presentation.InventoryPageUi
 
                 if (index != Program.Character.Inventories.Count - 1)
                 {
-                    Constants.Swap(Program.Character.Inventories, index, index + 1);
+                    Utilities.Swap(Program.Character.Inventories, index, index + 1);
                     FillList();
                     InventoryDataGrid.SelectedIndex = index + 1;
                 }
@@ -129,6 +129,16 @@ namespace Concierge.Presentation.InventoryPageUi
                 inventory = (Inventory)InventoryDataGrid.SelectedItem;
                 Program.Character.Inventories.Remove(inventory);
                 FillList();
+            }
+        }
+
+        private void InventoryDataGrid_Sorted(object sender, RoutedEventArgs e)
+        {
+            Program.Character.Inventories.Clear();
+
+            foreach (var item in InventoryDataGrid.Items)
+            {
+                Program.Character.Inventories.Add(item as Inventory);
             }
         }
 

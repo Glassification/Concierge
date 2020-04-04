@@ -71,7 +71,7 @@ namespace Concierge.Presentation.AbilitiesPageUi
 
                 if (index != 0)
                 {
-                    Constants.Swap(Program.Character.Abilities, index, index - 1);
+                    Utilities.Swap(Program.Character.Abilities, index, index - 1);
                     FillList();
                     AbilitiesDataGrid.SelectedIndex = index - 1;
                 }
@@ -90,7 +90,7 @@ namespace Concierge.Presentation.AbilitiesPageUi
 
                 if (index != Program.Character.Abilities.Count - 1)
                 {
-                    Constants.Swap(Program.Character.Abilities, index, index + 1);
+                    Utilities.Swap(Program.Character.Abilities, index, index + 1);
                     FillList();
                     AbilitiesDataGrid.SelectedIndex = index + 1;
                 }
@@ -126,6 +126,16 @@ namespace Concierge.Presentation.AbilitiesPageUi
                 ability = (Ability)AbilitiesDataGrid.SelectedItem;
                 Program.Character.Abilities.Remove(ability);
                 FillList();
+            }
+        }
+
+        private void AbilitiesDataGrid_Sorted(object sender, RoutedEventArgs e)
+        {
+            Program.Character.Abilities.Clear();
+
+            foreach (var ability in AbilitiesDataGrid.Items)
+            {
+                Program.Character.Abilities.Add(ability as Ability);
             }
         }
 

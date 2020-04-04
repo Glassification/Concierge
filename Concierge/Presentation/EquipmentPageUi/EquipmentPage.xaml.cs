@@ -74,7 +74,7 @@ namespace Concierge.Presentation.EquipmentPageUi
 
                 if (index != 0)
                 {
-                    Constants.Swap(Program.Character.Ammunitions, index, index - 1);
+                    Utilities.Swap(Program.Character.Ammunitions, index, index - 1);
                     FillAmmoList();
                     AmmoDataGrid.SelectedIndex = index - 1;
                 }
@@ -86,7 +86,7 @@ namespace Concierge.Presentation.EquipmentPageUi
 
                 if (index != 0)
                 {
-                    Constants.Swap(Program.Character.Weapons, index, index - 1);
+                    Utilities.Swap(Program.Character.Weapons, index, index - 1);
                     FillWeaponList();
                     WeaponDataGrid.SelectedIndex = index - 1;
                 }
@@ -104,7 +104,7 @@ namespace Concierge.Presentation.EquipmentPageUi
 
                 if (index != Program.Character.Ammunitions.Count - 1)
                 {
-                    Constants.Swap(Program.Character.Ammunitions, index, index + 1);
+                    Utilities.Swap(Program.Character.Ammunitions, index, index + 1);
                     FillAmmoList();
                     AmmoDataGrid.SelectedIndex = index + 1;
                 }
@@ -116,7 +116,7 @@ namespace Concierge.Presentation.EquipmentPageUi
 
                 if (index != Program.Character.Weapons.Count - 1)
                 {
-                    Constants.Swap(Program.Character.Weapons, index, index + 1);
+                    Utilities.Swap(Program.Character.Weapons, index, index + 1);
                     FillWeaponList();
                     WeaponDataGrid.SelectedIndex = index + 1;
                 }
@@ -198,6 +198,26 @@ namespace Concierge.Presentation.EquipmentPageUi
         {
             ModifyArmorWindow.ShowEdit();
             Draw();
+        }
+
+        private void WeaponDataGrid_Sorted(object sender, RoutedEventArgs e)
+        {
+            Program.Character.Weapons.Clear();
+
+            foreach (var weapon in WeaponDataGrid.Items)
+            {
+                Program.Character.Weapons.Add(weapon as Weapon);
+            }
+        }
+
+        private void AmmoDataGrid_Sorted(object sender, RoutedEventArgs e)
+        {
+            Program.Character.Ammunitions.Clear();
+
+            foreach (var ammo in AmmoDataGrid.Items)
+            {
+                Program.Character.Ammunitions.Add(ammo as Ammunition);
+            }
         }
     }
 }

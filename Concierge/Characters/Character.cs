@@ -47,7 +47,7 @@ namespace Concierge.Characters
 
         public bool IsWeaponProficient(Weapon weapon)
         {
-            string weaponName = Constants.FormatName(weapon.WeaponType.ToString());
+            string weaponName = Utilities.FormatName(weapon.WeaponType.ToString());
 
             if (weapon.ProficiencyOverride)
                 return true;
@@ -255,7 +255,7 @@ namespace Concierge.Characters
         {
             get
             {
-                return Constants.CalculateBonus(Attributes.Dexterity) + Details.InitiativeBonus;
+                return Utilities.CalculateBonus(Attributes.Dexterity) + Details.InitiativeBonus;
             }
         }
 
