@@ -1,117 +1,115 @@
-﻿using System;
-using System.Windows;
-using System.Windows.Input;
+﻿// <copyright file="ModifyWealthWindow.xaml.cs" company="Thomas Beckett">
+// Copyright (c) Thomas Beckett. All rights reserved.
+// </copyright>
 
 namespace Concierge.Presentation.DetailsPageUi
 {
+    using System.Windows;
+    using System.Windows.Input;
+
     /// <summary>
-    /// Interaction logic for ModifyWealthWindow.xaml
+    /// Interaction logic for ModifyWealthWindow.xaml.
     /// </summary>
     public partial class ModifyWealthWindow : Window
     {
         public ModifyWealthWindow()
         {
-            InitializeComponent();
+            this.InitializeComponent();
         }
+
+        private int CP { get; set; }
+
+        private int SP { get; set; }
+
+        private int EP { get; set; }
+
+        private int GP { get; set; }
+
+        private int PP { get; set; }
 
         public void ShowWindow()
         {
-            ClearFields();
+            this.ClearFields();
 
-            CP = Program.Character.Wealth.Copper;
-            SP = Program.Character.Wealth.Silver;
-            EP = Program.Character.Wealth.Electrum;
-            GP = Program.Character.Wealth.Gold;
-            PP = Program.Character.Wealth.Platinum;
+            this.CP = Program.Character.Wealth.Copper;
+            this.SP = Program.Character.Wealth.Silver;
+            this.EP = Program.Character.Wealth.Electrum;
+            this.GP = Program.Character.Wealth.Gold;
+            this.PP = Program.Character.Wealth.Platinum;
 
-            FillFields();
+            this.FillFields();
 
-            ShowDialog();
+            this.ShowDialog();
         }
 
         private void ClearFields()
         {
-            AddRadioButton.IsChecked = true;
-            CpRadioButton.IsChecked = true;
-            AmountUpDown.Value = 0;
+            this.AddRadioButton.IsChecked = true;
+            this.CpRadioButton.IsChecked = true;
+            this.AmountUpDown.Value = 0;
         }
 
         private void FillFields()
         {
-            CopperField.Text = CP.ToString();
-            SilverField.Text = SP.ToString();
-            ElectrumField.Text = EP.ToString();
-            GoldField.Text = GP.ToString();
-            PlatinumField.Text = PP.ToString();
+            this.CopperField.Text = this.CP.ToString();
+            this.SilverField.Text = this.SP.ToString();
+            this.ElectrumField.Text = this.EP.ToString();
+            this.GoldField.Text = this.GP.ToString();
+            this.PlatinumField.Text = this.PP.ToString();
         }
 
         private int GetAmount()
         {
-            if (AddRadioButton.IsChecked ?? false)
-            {
-                return AmountUpDown.Value ?? 0;
-            }
-            else if (SubtractRadioButton.IsChecked ?? false)
-            {
-                return (AmountUpDown.Value ?? 0) * -1;
-            }
-            else
-            {
-                return 0;
-            }
+            return this.AddRadioButton.IsChecked ?? false
+                ? this.AmountUpDown.Value ?? 0
+                : this.SubtractRadioButton.IsChecked ?? false ? (this.AmountUpDown.Value ?? 0) * -1 : 0;
         }
-
-        private int CP { get; set; }
-        private int SP { get; set; }
-        private int EP { get; set; }
-        private int GP { get; set; }
-        private int PP { get; set; }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            Hide();
+            this.Hide();
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
-            Program.Character.Wealth.Copper = CP;
-            Program.Character.Wealth.Silver = SP;
-            Program.Character.Wealth.Electrum = EP;
-            Program.Character.Wealth.Gold = GP;
-            Program.Character.Wealth.Platinum = PP;
+            Program.Character.Wealth.Copper = this.CP;
+            Program.Character.Wealth.Silver = this.SP;
+            Program.Character.Wealth.Electrum = this.EP;
+            Program.Character.Wealth.Gold = this.GP;
+            Program.Character.Wealth.Platinum = this.PP;
 
-            Hide();
+            this.Hide();
         }
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
-            if (CpRadioButton.IsChecked ?? false)
+            if (this.CpRadioButton.IsChecked ?? false)
             {
-                CP += GetAmount();
+                this.CP += this.GetAmount();
             }
-            else if (SpRadioButton.IsChecked ?? false)
+            else if (this.SpRadioButton.IsChecked ?? false)
             {
-                SP += GetAmount();
+                this.SP += this.GetAmount();
             }
-            else if (EpRadioButton.IsChecked ?? false)
+            else if (this.EpRadioButton.IsChecked ?? false)
             {
-                EP += GetAmount();
+                this.EP += this.GetAmount();
             }
-            else if (GpRadioButton.IsChecked ?? false)
+            else if (this.GpRadioButton.IsChecked ?? false)
             {
-                GP += GetAmount();
+                this.GP += this.GetAmount();
             }
-            else if (PpRadioButton.IsChecked ?? false)
+            else if (this.PpRadioButton.IsChecked ?? false)
             {
-                PP += GetAmount();
+                this.PP += this.GetAmount();
             }
 
-            FillFields();
+            this.FillFields();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            Hide();
+            this.Hide();
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
@@ -119,7 +117,7 @@ namespace Concierge.Presentation.DetailsPageUi
             switch (e.Key)
             {
                 case Key.Escape:
-                    Hide();
+                    this.Hide();
                     break;
             }
         }

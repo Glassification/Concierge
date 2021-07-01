@@ -1,125 +1,131 @@
-﻿using Concierge.Characters.Collections;
-using Concierge.Utility;
-using System;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Input;
+﻿// <copyright file="ModifyLanguagesWindow.xaml.cs" company="Thomas Beckett">
+// Copyright (c) Thomas Beckett. All rights reserved.
+// </copyright>
 
 namespace Concierge.Presentation.DetailsPageUi
 {
+    using System;
+    using System.Windows;
+    using System.Windows.Controls;
+    using System.Windows.Input;
+
+    using Concierge.Characters.Collections;
+    using Concierge.Utility;
+
     /// <summary>
-    /// Interaction logic for ModifyLanguagesWindow.xaml
+    /// Interaction logic for ModifyLanguagesWindow.xaml.
     /// </summary>
     public partial class ModifyLanguagesWindow : Window
     {
         public ModifyLanguagesWindow()
         {
-            InitializeComponent();
-            NameComboBox.ItemsSource = Constants.Languages;
+            this.InitializeComponent();
+            this.NameComboBox.ItemsSource = Constants.Languages;
         }
+
+        private bool Editing { get; set; }
+
+        private Guid SelectedLanguageId { get; set; }
 
         public void ShowAdd()
         {
-            HeaderTextBlock.Text = "Add Language";
-            Editing = false;
-            ApplyButton.Visibility = Visibility.Visible;
-            ClearFields();
+            this.HeaderTextBlock.Text = "Add Language";
+            this.Editing = false;
+            this.ApplyButton.Visibility = Visibility.Visible;
+            this.ClearFields();
 
-            ShowDialog();
+            this.ShowDialog();
         }
 
         public void ShowEdit(Language language)
         {
-            HeaderTextBlock.Text = "Edit Language";
-            SelectedLanguageId = language.ID;
-            Editing = true;
-            ApplyButton.Visibility = Visibility.Collapsed;
-            FillFields(language);
+            this.HeaderTextBlock.Text = "Edit Language";
+            this.SelectedLanguageId = language.ID;
+            this.Editing = true;
+            this.ApplyButton.Visibility = Visibility.Collapsed;
+            this.FillFields(language);
 
-            ShowDialog();
+            this.ShowDialog();
         }
 
         private void FillFields(Language language)
         {
-            NameComboBox.Text = language.Name;
-            ScriptTextBox.Text = language.Script;
-            SpeakersTextBox.Text = language.Speakers;
+            this.NameComboBox.Text = language.Name;
+            this.ScriptTextBox.Text = language.Script;
+            this.SpeakersTextBox.Text = language.Speakers;
         }
 
         private void ClearFields()
         {
-            NameComboBox.Text = string.Empty;
-            ScriptTextBox.Text = string.Empty;
-            SpeakersTextBox.Text = string.Empty;
+            this.NameComboBox.Text = string.Empty;
+            this.ScriptTextBox.Text = string.Empty;
+            this.SpeakersTextBox.Text = string.Empty;
         }
 
         private void UpdateLanguage(Language language)
         {
-            language.Name = NameComboBox.Text;
-            language.Script = ScriptTextBox.Text;
-            language.Speakers = SpeakersTextBox.Text;
+            language.Name = this.NameComboBox.Text;
+            language.Script = this.ScriptTextBox.Text;
+            language.Speakers = this.SpeakersTextBox.Text;
         }
 
         private Language ToLanguage()
         {
             Language language = new Language()
             {
-                Name = NameComboBox.Text,
-                Script = ScriptTextBox.Text,
-                Speakers = SpeakersTextBox.Text
+                Name = this.NameComboBox.Text,
+                Script = this.ScriptTextBox.Text,
+                Speakers = this.SpeakersTextBox.Text,
             };
 
             return language;
         }
-
-        private bool Editing { get; set; }
-        private Guid SelectedLanguageId { get; set; }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
             switch (e.Key)
             {
                 case Key.Escape:
-                    Hide();
+                    this.Hide();
                     break;
             }
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            Hide();
+            this.Hide();
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
-            if (Editing)
+            if (this.Editing)
             {
-                UpdateLanguage(Program.Character.Details.GetLanguageById(SelectedLanguageId));
+                this.UpdateLanguage(Program.Character.Details.GetLanguageById(this.SelectedLanguageId));
             }
             else
             {
-                Program.Character.Details.Languages.Add(ToLanguage());
+                Program.Character.Details.Languages.Add(this.ToLanguage());
             }
 
-            Hide();
+            this.Hide();
         }
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
-            Program.Character.Details.Languages.Add(ToLanguage());
-            ClearFields();
+            Program.Character.Details.Languages.Add(this.ToLanguage());
+            this.ClearFields();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            Hide();
+            this.Hide();
         }
 
         private void NameComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (NameComboBox.SelectedItem != null)
+            if (this.NameComboBox.SelectedItem != null)
             {
-                FillFields(NameComboBox.SelectedItem as Language);
+                this.FillFields(this.NameComboBox.SelectedItem as Language);
             }
         }
     }

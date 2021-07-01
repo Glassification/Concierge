@@ -1,12 +1,11 @@
-﻿using Concierge.Utility;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// <copyright file="Attributes.cs" company="Thomas Beckett">
+// Copyright (c) Thomas Beckett. All rights reserved.
+// </copyright>
 
 namespace Concierge.Characters
 {
+    using Concierge.Utility;
+
     public class Attributes
     {
         private int _strength;
@@ -18,89 +17,83 @@ namespace Concierge.Characters
 
         public Attributes()
         {
-            _strength = 0;
-            _dexterity = 0;
-            _constitution = 0;
-            _intelligence = 0;
-            _wisdom = 0;
-            _charisma = 0;
+            this._strength = 0;
+            this._dexterity = 0;
+            this._constitution = 0;
+            this._intelligence = 0;
+            this._wisdom = 0;
+            this._charisma = 0;
         }
 
         public int Strength
         {
-            get
-            {
-                return _strength;
-            }
+            get => this._strength;
             set
             {
                 if (value >= Constants.MIN_SCORE && value <= Constants.MAX_SCORE)
-                    _strength = value;
+                {
+                    this._strength = value;
+                }
             }
         }
 
         public int Dexterity
         {
-            get
-            {
-                return _dexterity;
-            }
+            get => this._dexterity;
             set
             {
                 if (value >= Constants.MIN_SCORE && value <= Constants.MAX_SCORE)
-                    _dexterity = value;
+                {
+                    this._dexterity = value;
+                }
             }
         }
 
         public int Constitution
         {
-            get
-            {
-                return _constitution;
-            }
+            get => this._constitution;
             set
             {
                 if (value >= Constants.MIN_SCORE && value <= Constants.MAX_SCORE)
-                    _constitution = value;
+                {
+                    this._constitution = value;
+                }
             }
         }
 
         public int Intelligence
         {
-            get
-            {
-                return _intelligence;
-            }
+            get => this._intelligence;
             set
             {
                 if (value >= Constants.MIN_SCORE && value <= Constants.MAX_SCORE)
-                    _intelligence = value;
+                {
+                    this._intelligence = value;
+                }
             }
         }
 
         public int Wisdom
         {
-            get
-            {
-                return _wisdom;
-            }
+            get => this._wisdom;
             set
             {
                 if (value >= Constants.MIN_SCORE && value <= Constants.MAX_SCORE)
-                    _wisdom = value;
+                {
+                    this._wisdom = value;
+                }
             }
         }
 
         public int Charisma
         {
-            get
-            {
-                return _charisma;
-            }
+            get => this._charisma;
             set
             {
                 if (value >= Constants.MIN_SCORE && value <= Constants.MAX_SCORE)
-                    _charisma = value;
+                {
+                    this._charisma = value;
+                }
             }
         }
     }

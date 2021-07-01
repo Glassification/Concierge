@@ -1,67 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// <copyright file="Vitality.cs" company="Thomas Beckett">
+// Copyright (c) Thomas Beckett. All rights reserved.
+// </copyright>
 
 namespace Concierge.Characters
 {
+    using System;
+
     public class Vitality
     {
         private int iBaseHealthField;
 
         public Vitality()
         {
-            MaxHealth = 0;
-            BaseHealth = 0;
-            TemporaryHealth = 0;
-            HitDice = new HitDice();
-            Conditions = new Conditions();
-        }
-
-        public void ResetHealth()
-        {
-            BaseHealth = MaxHealth;
-        }
-
-        public void RegainHitDice()
-        {
-            int temp;
-
-            temp = HitDice.SpentD6;
-            temp -= Math.Max(HitDice.SpentD6 / 2, 1);
-            HitDice.SpentD6 = Math.Max(temp, 0);
-
-            temp = HitDice.SpentD8;
-            temp -= Math.Max(HitDice.SpentD8 / 2, 1);
-            HitDice.SpentD8 = Math.Max(temp, 0);
-
-            temp = HitDice.SpentD10;
-            temp -= Math.Max(HitDice.SpentD10 / 2, 1);
-            HitDice.SpentD10 = Math.Max(temp, 0);
-
-            temp = HitDice.SpentD12;
-            temp -= Math.Max(HitDice.SpentD12 / 2, 1);
-            HitDice.SpentD12 = Math.Max(temp, 0);
-        }
-
-        public void Damage(int damage)
-        {
-            int oldTempHealth = TemporaryHealth;
-
-            TemporaryHealth -= damage;
-
-            if (TemporaryHealth < 0)
-            {
-                TemporaryHealth = 0;
-                damage -= oldTempHealth;
-                BaseHealth -= damage;
-            }
-        }
-
-        public void Heal(int heal)
-        {
-            BaseHealth += heal;
+            this.MaxHealth = 0;
+            this.BaseHealth = 0;
+            this.TemporaryHealth = 0;
+            this.HitDice = new HitDice();
+            this.Conditions = new Conditions();
         }
 
         public int MaxHealth { get; set; }
@@ -70,32 +25,29 @@ namespace Concierge.Characters
         {
             get
             {
-                if (Conditions.Fatigued.Equals("Four") || Conditions.Fatigued.Equals("Five"))
+                if (this.Conditions.Fatigued.Equals("Four") || this.Conditions.Fatigued.Equals("Five"))
                 {
-                    if (BaseHealth > MaxHealth/2)
+                    if (this.BaseHealth > this.MaxHealth / 2)
                     {
-                        return MaxHealth / 2;
+                        return this.MaxHealth / 2;
                     }
                 }
-                else if (Conditions.Fatigued.Equals("Six"))
+                else if (this.Conditions.Fatigued.Equals("Six"))
                 {
                     return 0;
                 }
 
-                return BaseHealth + TemporaryHealth;
+                return this.BaseHealth + this.TemporaryHealth;
             }
         }
 
         public int BaseHealth
         {
-            get
-            {
-                return iBaseHealthField;
-            }
+            get => this.iBaseHealthField;
             set
             {
-                iBaseHealthField = Math.Min(value, MaxHealth);
-                iBaseHealthField = Math.Max(value, 0);
+                this.iBaseHealthField = Math.Min(value, this.MaxHealth);
+                this.iBaseHealthField = Math.Max(value, 0);
             }
         }
 
@@ -104,5 +56,50 @@ namespace Concierge.Characters
         public HitDice HitDice { get; set; }
 
         public Conditions Conditions { get; set; }
+
+        public void ResetHealth()
+        {
+            this.BaseHealth = this.MaxHealth;
+        }
+
+        public void RegainHitDice()
+        {
+            int temp;
+
+            temp = this.HitDice.SpentD6;
+            temp -= Math.Max(this.HitDice.SpentD6 / 2, 1);
+            this.HitDice.SpentD6 = Math.Max(temp, 0);
+
+            temp = this.HitDice.SpentD8;
+            temp -= Math.Max(this.HitDice.SpentD8 / 2, 1);
+            this.HitDice.SpentD8 = Math.Max(temp, 0);
+
+            temp = this.HitDice.SpentD10;
+            temp -= Math.Max(this.HitDice.SpentD10 / 2, 1);
+            this.HitDice.SpentD10 = Math.Max(temp, 0);
+
+            temp = this.HitDice.SpentD12;
+            temp -= Math.Max(this.HitDice.SpentD12 / 2, 1);
+            this.HitDice.SpentD12 = Math.Max(temp, 0);
+        }
+
+        public void Damage(int damage)
+        {
+            int oldTempHealth = this.TemporaryHealth;
+
+            this.TemporaryHealth -= damage;
+
+            if (this.TemporaryHealth < 0)
+            {
+                this.TemporaryHealth = 0;
+                damage -= oldTempHealth;
+                this.BaseHealth -= damage;
+            }
+        }
+
+        public void Heal(int heal)
+        {
+            this.BaseHealth += heal;
+        }
     }
 }

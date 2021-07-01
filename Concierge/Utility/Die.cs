@@ -1,26 +1,31 @@
-﻿using System;
-using System.Collections.Generic;
+﻿// <copyright file="Die.cs" company="Thomas Beckett">
+// Copyright (c) Thomas Beckett. All rights reserved.
+// </copyright>
 
 namespace Concierge.Utility
 {
+    using System.Collections.Generic;
+
     public class Die
     {
         public Die(string roll, int[] list, int total)
         {
-            Roll = roll;
-            DiceList = new List<int>(list);
-            Total = total;
+            this.Roll = roll;
+            this.DiceList = new List<int>(list);
+            this.Total = total;
         }
 
         public string Roll { get; set; }
+
         public List<int> DiceList { get; set; }
+
         public string Dice
         {
             get
             {
-                string str = "";
+                var str = string.Empty;
 
-                foreach (int die in DiceList)
+                foreach (int die in this.DiceList)
                 {
                     str += die + ", ";
                 }
@@ -33,6 +38,7 @@ namespace Concierge.Utility
                 return str;
             }
         }
+
         public int Total { get; set; }
     }
 }

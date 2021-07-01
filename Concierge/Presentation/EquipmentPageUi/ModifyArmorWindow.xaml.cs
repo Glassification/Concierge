@@ -1,105 +1,95 @@
-﻿using Concierge.Characters;
-using Concierge.Utility;
-using System;
-using System.Linq;
-using System.Windows;
-using System.Windows.Input;
-
+﻿// <copyright file="ModifyArmorWindow.xaml.cs" company="Thomas Beckett">
+// Copyright (c) Thomas Beckett. All rights reserved.
+// </copyright>
 
 namespace Concierge.Presentation.EquipmentPageUi
 {
+    using System;
+    using System.Linq;
+    using System.Windows;
+    using System.Windows.Input;
+
+    using Concierge.Characters;
+    using Concierge.Characters.Enums;
+
     /// <summary>
-    /// Interaction logic for ModifyArmorWindow.xaml
+    /// Interaction logic for ModifyArmorWindow.xaml.
     /// </summary>
     public partial class ModifyArmorWindow : Window
     {
-
-        #region Constructor
-
         public ModifyArmorWindow()
         {
-            InitializeComponent();
-            TypeComboBox.ItemsSource = Enum.GetValues(typeof(Constants.ArmorType)).Cast<Constants.ArmorType>();
-            StealthComboBox.ItemsSource = Enum.GetValues(typeof(Constants.ArmorStealth)).Cast<Constants.ArmorStealth>();
+            this.InitializeComponent();
+            this.TypeComboBox.ItemsSource = Enum.GetValues(typeof(ArmorType)).Cast<ArmorType>();
+            this.StealthComboBox.ItemsSource = Enum.GetValues(typeof(ArmorStealth)).Cast<ArmorStealth>();
         }
-
-        #endregion
-
-        #region Methods
 
         public void ShowEdit()
         {
-            FillArmorDetails(Program.Character.Armor);
-            ShowDialog();
+            this.FillArmorDetails(Program.Character.Armor);
+            this.ShowDialog();
         }
 
         private void FillArmorDetails(Armor armor)
         {
-            EquipedTextBox.Text = armor.Equiped;
-            TypeComboBox.Text = armor.Type.ToString();
-            ArmorClassUpDown.Value = armor.ArmorClass;
-            WeightUpDown.Value = armor.Weight;
-            StrengthUpDown.Value = armor.Strength;
-            StealthComboBox.Text = armor.Stealth.ToString();
+            this.EquipedTextBox.Text = armor.Equiped;
+            this.TypeComboBox.Text = armor.Type.ToString();
+            this.ArmorClassUpDown.Value = armor.ArmorClass;
+            this.WeightUpDown.Value = armor.Weight;
+            this.StrengthUpDown.Value = armor.Strength;
+            this.StealthComboBox.Text = armor.Stealth.ToString();
 
-            ShieldTextBox.Text = armor.Shield;
-            ShieldArmorClassUpDown.Value = armor.ShieldArmorClass;
-            ShieldWeightUpDown.Value = armor.ShieldWeight;
-            MiscArmorClassUpDown.Value = armor.MiscArmorClass;
-            MagicArmorClassUpDown.Value = armor.MagicArmorClass;
+            this.ShieldTextBox.Text = armor.Shield;
+            this.ShieldArmorClassUpDown.Value = armor.ShieldArmorClass;
+            this.ShieldWeightUpDown.Value = armor.ShieldWeight;
+            this.MiscArmorClassUpDown.Value = armor.MiscArmorClass;
+            this.MagicArmorClassUpDown.Value = armor.MagicArmorClass;
         }
 
         private void ToArmor(Armor armor)
         {
-            armor.Equiped = EquipedTextBox.Text;
-            armor.Type = (Constants.ArmorType)Enum.Parse(typeof(Constants.ArmorType), TypeComboBox.Text);
-            armor.ArmorClass = (int)ArmorClassUpDown.Value;
-            armor.Weight = (double)WeightUpDown.Value;
-            armor.Strength = (int)StrengthUpDown.Value;
-            armor.Stealth = (Constants.ArmorStealth)Enum.Parse(typeof(Constants.ArmorStealth), StealthComboBox.Text);
-            armor.Shield = ShieldTextBox.Text;
-            armor.ShieldArmorClass = (int)ShieldArmorClassUpDown.Value;
-            armor.ShieldWeight = (double)ShieldWeightUpDown.Value;
-            armor.MiscArmorClass = (int)MiscArmorClassUpDown.Value;
-            armor.MagicArmorClass = (int)MagicArmorClassUpDown.Value;
+            armor.Equiped = this.EquipedTextBox.Text;
+            armor.Type = (ArmorType)Enum.Parse(typeof(ArmorType), this.TypeComboBox.Text);
+            armor.ArmorClass = (int)this.ArmorClassUpDown.Value;
+            armor.Weight = (double)this.WeightUpDown.Value;
+            armor.Strength = (int)this.StrengthUpDown.Value;
+            armor.Stealth = (ArmorStealth)Enum.Parse(typeof(ArmorStealth), this.StealthComboBox.Text);
+            armor.Shield = this.ShieldTextBox.Text;
+            armor.ShieldArmorClass = (int)this.ShieldArmorClassUpDown.Value;
+            armor.ShieldWeight = (double)this.ShieldWeightUpDown.Value;
+            armor.MiscArmorClass = (int)this.MiscArmorClassUpDown.Value;
+            armor.MagicArmorClass = (int)this.MagicArmorClassUpDown.Value;
         }
-
-        #endregion
-
-        #region Events
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
             switch (e.Key)
             {
                 case Key.Escape:
-                    Hide();
+                    this.Hide();
                     break;
             }
         }
 
         private void ButtonClose_Click(object sender, RoutedEventArgs e)
         {
-            Hide();
+            this.Hide();
         }
 
         private void ButtonApply_Click(object sender, RoutedEventArgs e)
         {
-            ToArmor(Program.Character.Armor);
+            this.ToArmor(Program.Character.Armor);
         }
 
         private void ButtonOK_Click(object sender, RoutedEventArgs e)
         {
-            ToArmor(Program.Character.Armor);
-            Hide();
+            this.ToArmor(Program.Character.Armor);
+            this.Hide();
         }
 
         private void ButtonCancel_Click(object sender, RoutedEventArgs e)
         {
-            Hide();
+            this.Hide();
         }
-
-        #endregion
-
     }
 }

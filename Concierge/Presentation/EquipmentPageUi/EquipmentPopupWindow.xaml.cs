@@ -1,51 +1,55 @@
-﻿using Concierge.Utility;
-using System;
-using System.Windows;
-using System.Windows.Input;
+﻿// <copyright file="EquipmentPopupWindow.xaml.cs" company="Thomas Beckett">
+// Copyright (c) Thomas Beckett. All rights reserved.
+// </copyright>
 
 namespace Concierge.Presentation.EquipmentPageUi
 {
+    using System.Windows;
+    using System.Windows.Input;
+
+    using Concierge.Characters.Enums;
+
     /// <summary>
-    /// Interaction logic for EquipmentPopupWindow.xaml
+    /// Interaction logic for EquipmentPopupWindow.xaml.
     /// </summary>
     public partial class EquipmentPopupWindow : Window
     {
         public EquipmentPopupWindow()
         {
-            InitializeComponent();
+            this.InitializeComponent();
         }
 
-        public Constants.PopupButtons ShowPopup()
+        private PopupButtons ButtonPress { get; set; }
+
+        public PopupButtons ShowPopup()
         {
-            ShowDialog();
+            this.ShowDialog();
 
-            return ButtonPress;
+            return this.ButtonPress;
         }
-
-        private Constants.PopupButtons ButtonPress { get; set; }
 
         private void WeaponButton_Click(object sender, RoutedEventArgs e)
         {
-            ButtonPress = Constants.PopupButtons.AddWeapon;
-            Hide();
+            this.ButtonPress = PopupButtons.AddWeapon;
+            this.Hide();
         }
 
         private void AmmoButton_Click(object sender, RoutedEventArgs e)
         {
-            ButtonPress = Constants.PopupButtons.AddAmmo;
-            Hide();
+            this.ButtonPress = PopupButtons.AddAmmo;
+            this.Hide();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            ButtonPress = Constants.PopupButtons.Cancel;
-            Hide();
+            this.ButtonPress = PopupButtons.Cancel;
+            this.Hide();
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            ButtonPress = Constants.PopupButtons.Cancel;
-            Hide();
+            this.ButtonPress = PopupButtons.Cancel;
+            this.Hide();
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
@@ -53,8 +57,10 @@ namespace Concierge.Presentation.EquipmentPageUi
             switch (e.Key)
             {
                 case Key.Escape:
-                    ButtonPress = Constants.PopupButtons.Cancel;
-                    Hide();
+                    this.ButtonPress = PopupButtons.Cancel;
+                    this.Hide();
+                    break;
+                default:
                     break;
             }
         }

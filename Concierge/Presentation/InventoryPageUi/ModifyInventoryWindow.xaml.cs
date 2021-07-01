@@ -1,75 +1,77 @@
-﻿using Concierge.Characters.Collections;
-using Concierge.Utility;
-using System;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Input;
+﻿// <copyright file="ModifyInventoryWindow.xaml.cs" company="Thomas Beckett">
+// Copyright (c) Thomas Beckett. All rights reserved.
+// </copyright>
 
 namespace Concierge.Presentation.InventoryPageUi
 {
+    using System;
+    using System.Windows;
+    using System.Windows.Controls;
+    using System.Windows.Input;
+
+    using Concierge.Characters.Collections;
+    using Concierge.Utility;
+
     /// <summary>
-    /// Interaction logic for ModifyInventoryWindow.xaml
+    /// Interaction logic for ModifyInventoryWindow.xaml.
     /// </summary>
     public partial class ModifyInventoryWindow : Window
     {
-
-        #region Constructor
-
         public ModifyInventoryWindow()
         {
-            InitializeComponent();
-            NameComboBox.ItemsSource = Constants.Inventories;
+            this.InitializeComponent();
+            this.NameComboBox.ItemsSource = Constants.Inventories;
         }
 
-        #endregion
+        private bool Editing { get; set; }
 
-        #region Methods
+        private Guid SelectedItemId { get; set; }
 
         public void ShowEdit(Inventory inventory)
         {
-            HeaderTextBlock.Text = "Edit Item";
-            SelectedItemId = inventory.ID;
-            Editing = true;
-            FillFields(inventory);
-            ButtonApply.Visibility = Visibility.Collapsed;
+            this.HeaderTextBlock.Text = "Edit Item";
+            this.SelectedItemId = inventory.ID;
+            this.Editing = true;
+            this.FillFields(inventory);
+            this.ButtonApply.Visibility = Visibility.Collapsed;
 
-            ShowDialog();
+            this.ShowDialog();
         }
 
         public void ShowAdd()
         {
-            HeaderTextBlock.Text = "Add Item";
-            Editing = false;
-            ClearFields();
-            ButtonApply.Visibility = Visibility.Visible;
+            this.HeaderTextBlock.Text = "Add Item";
+            this.Editing = false;
+            this.ClearFields();
+            this.ButtonApply.Visibility = Visibility.Visible;
 
-            ShowDialog();
+            this.ShowDialog();
         }
 
         private void FillFields(Inventory inventory)
         {
-            NameComboBox.Text = inventory.Name;
-            AmountUpDown.Value = inventory.Amount;
-            WeightUpDown.Value = inventory.Weight;
-            NotesTextBox.Text = inventory.Note;
+            this.NameComboBox.Text = inventory.Name;
+            this.AmountUpDown.Value = inventory.Amount;
+            this.WeightUpDown.Value = inventory.Weight;
+            this.NotesTextBox.Text = inventory.Note;
         }
 
         private void ClearFields()
         {
-            NameComboBox.Text = string.Empty;
-            AmountUpDown.Value = 0;
-            WeightUpDown.Value = 0.0;
-            NotesTextBox.Text = string.Empty;
+            this.NameComboBox.Text = string.Empty;
+            this.AmountUpDown.Value = 0;
+            this.WeightUpDown.Value = 0.0;
+            this.NotesTextBox.Text = string.Empty;
         }
 
         private Inventory ToInventory()
         {
-            Inventory inventory = new Inventory()
+            var inventory = new Inventory()
             {
-                Name = NameComboBox.Text,
-                Amount = AmountUpDown.Value ?? 0,
-                Weight = WeightUpDown.Value ?? 0.0,
-                Note = NotesTextBox.Text
+                Name = this.NameComboBox.Text,
+                Amount = this.AmountUpDown.Value ?? 0,
+                Weight = this.WeightUpDown.Value ?? 0.0,
+                Note = this.NotesTextBox.Text,
             };
 
             return inventory;
@@ -77,72 +79,58 @@ namespace Concierge.Presentation.InventoryPageUi
 
         private void UpdateInventory(Inventory inventory)
         {
-            inventory.Name = NameComboBox.Text;
-            inventory.Amount = AmountUpDown.Value ?? 0;
-            inventory.Weight = WeightUpDown.Value ?? 0.0;
-            inventory.Note = NotesTextBox.Text;
+            inventory.Name = this.NameComboBox.Text;
+            inventory.Amount = this.AmountUpDown.Value ?? 0;
+            inventory.Weight = this.WeightUpDown.Value ?? 0.0;
+            inventory.Note = this.NotesTextBox.Text;
         }
-
-        #endregion
-
-        #region Accessors
-
-        private bool Editing { get; set; }
-        private Guid SelectedItemId { get; set; }
-
-        #endregion
-
-        #region Events
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
             switch (e.Key)
             {
                 case Key.Escape:
-                    Hide();
+                    this.Hide();
                     break;
             }
         }
 
         private void ButtonClose_Click(object sender, RoutedEventArgs e)
         {
-            Hide();
+            this.Hide();
         }
 
         private void ButtonApply_Click(object sender, RoutedEventArgs e)
         {
-            Program.Character.Inventories.Add(ToInventory());
-            ClearFields();
+            Program.Character.Inventories.Add(this.ToInventory());
+            this.ClearFields();
         }
 
         private void ButtonOK_Click(object sender, RoutedEventArgs e)
         {
-            if (Editing)
+            if (this.Editing)
             {
-                UpdateInventory(Program.Character.GetInventoryById(SelectedItemId));
+                this.UpdateInventory(Program.Character.GetInventoryById(this.SelectedItemId));
             }
             else
             {
-                Program.Character.Inventories.Add(ToInventory());
+                Program.Character.Inventories.Add(this.ToInventory());
             }
 
-            Hide();
+            this.Hide();
         }
 
         private void NameComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (NameComboBox.SelectedItem != null)
+            if (this.NameComboBox.SelectedItem != null)
             {
-                FillFields(NameComboBox.SelectedItem as Inventory);
+                this.FillFields(this.NameComboBox.SelectedItem as Inventory);
             }
         }
 
         private void ButtonCancel_Click(object sender, RoutedEventArgs e)
         {
-            Hide();
+            this.Hide();
         }
-
-        #endregion
-
     }
 }

@@ -1,0 +1,28 @@
+﻿[*.cs]
+
+# IDE0065: Misplaced using directive
+csharp_using_directive_placement = inside_namespace
+
+# SA1310: Field names should not contain underscore
+dotnet_diagnostic.SA1310.severity = none
+
+# IDE0003: Remove qualification
+dotnet_diagnostic.IDE0003.severity = none
+
+# IDE0003: Remove qualification
+dotnet_diagnostic.IDE0008.severity = none
+
+# IDE0003: Remove qualification
+dotnet_diagnostic.IDE0058.severity = none
+
+# IDE0003: Remove qualification
+dotnet_diagnostic.IDE0010.severity = none
+
+# Default severity for analyzer diagnostics with category 'StyleCop.CSharp.NamingRules'
+dotnet_analyzer_diagnostic.category-StyleCop.CSharp.NamingRules.severity = none
+
+# SA1600: Elements should be documented
+dotnet_diagnostic.SA1600.severity = none
+
+# SA1626: Single-line comments should not use documentation style slashes
+dotnet_diagnostic.SA1626.severity = none

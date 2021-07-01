@@ -1,10 +1,14 @@
-﻿namespace Concierge.Utility
+﻿// <copyright file="Constants.cs" company="Thomas Beckett">
+// Copyright (c) Thomas Beckett. All rights reserved.
+// </copyright>
+
+namespace Concierge.Utility
 {
-    using Concierge.Characters.Collections;
-    using Concierge.Persistence;
-    using System;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
+
+    using Concierge.Characters.Collections;
+    using Concierge.Persistence;
 
     public static class Constants
     {
@@ -16,19 +20,6 @@
         public const int MIN_SCORE = 0;
         public const int BASE_PERCEPTION = 10;
         public const int MAX_CLASSES = 3;
-
-        public enum Abilities { NONE, STR, DEX, CON, INT, WIS, CHA };
-        public enum ArmorType { None, Light, Medium, Heavy, Massive };
-        public enum ArmorStealth { Normal, Disadvantage };
-        public enum Checks { Normal, Advantage, Disadvantage, Fail };
-        public enum DamageTypes { None, Bludgeoning, Piercing, Slashing, Acid, Cold, Fire, Force, Lightning, Necrotic, Poison, Psychic, Radiant, Thunder };
-        public enum WeaponTypes { Battleaxe, Blowgun, Club, Dagger, Dart, Flail, Glaive, Greataxe, Greatclub, Greatsword, Halberd, HandCrossbow, Handaxe, HeavyCrossbow, Javelin, Lance, LightCrossbow, LightHammer, Longbow, Longsword, Mace, Maul, Morningstar, Net, Pike, Quarterstaff, Rapier, Scimitar, Shortbow, Shortsword, Sickle, Sling, Spear, Trident, WarPick, Warhammer, Whip };
-        public enum PopupButtons { OK, Apply, Cancel, AddWeapon, AddAmmo, WeaponProficiency, ArmorProficiency, ShieldProficiency, ToolProficiency, AddMagicClass, AddSpell, AddChapter, AddPage };
-        public enum ConditionTypes { Cured, Afflicted };
-        public enum ExhaustionType { Normal, One, Two, Three, Four, Five, Six };
-        public enum ClassTypes { Barbarian, Bard, Cleric, Druid, Fighter, Monk, Paladin, Ranger, Rouge, Sorcerer, Warlock, Wizard};
-        public enum ArcaneSchools { Abjuration, Conjuration, Divination, Enchantment, Evocation, Illusion, Necromancy, Transmutation, Universal };
-        public enum VisionTypes { Normal, Blindsight, Darkvision, Truesight };
 
         static Constants()
         {
@@ -42,10 +33,15 @@
         }
 
         public static ReadOnlyCollection<int> AutosaveIntervals { get; private set; }
+
         public static ReadOnlyCollection<Weapon> Weapons { get; private set; }
+
         public static ReadOnlyCollection<Ammunition> Ammunitions { get; private set; }
+
         public static ReadOnlyCollection<Spell> Spells { get; private set; }
+
         public static ReadOnlyCollection<Inventory> Inventories { get; private set; }
+
         public static ReadOnlyCollection<Language> Languages { get; private set; }
     }
 }

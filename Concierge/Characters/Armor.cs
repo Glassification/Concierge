@@ -1,32 +1,34 @@
-﻿using Concierge.Utility;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// <copyright file="Armor.cs" company="Thomas Beckett">
+// Copyright (c) Thomas Beckett. All rights reserved.
+// </copyright>
 
 namespace Concierge.Characters
 {
+    using System;
+
+    using Concierge.Characters.Enums;
+    using Concierge.Utility;
+
     public class Armor
     {
         public Armor()
         {
-            Equiped = "";
-            Type = Constants.ArmorType.None;
-            ArmorClass = 0;
-            Strength = 0;
-            Weight = 0.0;
-            Stealth = Constants.ArmorStealth.Normal;
-            Shield = "";
-            ShieldArmorClass = 0;
-            ShieldWeight = 0.0;
-            MiscArmorClass = 0;
-            MagicArmorClass = 0;
+            this.Equiped = string.Empty;
+            this.Type = ArmorType.None;
+            this.ArmorClass = 0;
+            this.Strength = 0;
+            this.Weight = 0.0;
+            this.Stealth = ArmorStealth.Normal;
+            this.Shield = string.Empty;
+            this.ShieldArmorClass = 0;
+            this.ShieldWeight = 0.0;
+            this.MiscArmorClass = 0;
+            this.MagicArmorClass = 0;
         }
 
         public string Equiped { get; set; }
 
-        public Constants.ArmorType Type { get; set; }
+        public ArmorType Type { get; set; }
 
         public int ArmorClass { get; set; }
 
@@ -34,7 +36,7 @@ namespace Concierge.Characters
 
         public double Weight { get; set; }
 
-        public Constants.ArmorStealth Stealth { get; set; }
+        public ArmorStealth Stealth { get; set; }
 
         public string Shield { get; set; }
 
@@ -50,22 +52,26 @@ namespace Concierge.Characters
         {
             get
             {
-                int ac = ArmorClass + ShieldArmorClass + MiscArmorClass + MagicArmorClass;
+                var ac = this.ArmorClass + this.ShieldArmorClass + this.MiscArmorClass + this.MagicArmorClass;
 
-                switch (Type)
+                switch (this.Type)
                 {
-                    case Constants.ArmorType.None:
-                        if (ArmorClass == 0)
+                    default:
+                    case ArmorType.None:
+                        if (this.ArmorClass == 0)
+                        {
                             ac += 10;
+                        }
+
                         break;
-                    case Constants.ArmorType.Light:
+                    case ArmorType.Light:
                         ac += Utilities.CalculateBonus(Program.Character.Attributes.Dexterity);
                         break;
-                    case Constants.ArmorType.Medium:
+                    case ArmorType.Medium:
                         ac += Math.Min(2, Utilities.CalculateBonus(Program.Character.Attributes.Dexterity));
                         break;
-                    case Constants.ArmorType.Heavy:
-                    case Constants.ArmorType.Massive:
+                    case ArmorType.Heavy:
+                    case ArmorType.Massive:
                         break;
                 }
 

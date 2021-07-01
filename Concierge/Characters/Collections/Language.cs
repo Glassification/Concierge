@@ -1,35 +1,36 @@
-﻿using System;
+﻿// <copyright file="Language.cs" company="Thomas Beckett">
+// Copyright (c) Thomas Beckett. All rights reserved.
+// </copyright>
 
 namespace Concierge.Characters.Collections
 {
+    using System;
+
     public class Language
     {
         public Language()
         {
-            ID = Guid.NewGuid();
+            this.ID = Guid.NewGuid();
         }
 
         public Language(Guid id)
         {
-            ID = id;
-        }
-
-        public override string ToString()
-        {
-            return Name;
+            this.ID = id;
         }
 
         public string Name { get; set; }
+
         public string Script { get; set; }
+
         public string Speakers { get; set; }
+
         public Guid ID { get; }
 
-        public string Description
+        public string Description => $"{this.Name} ({this.Script}), Spoken by: {this.Speakers}";
+
+        public override string ToString()
         {
-            get
-            {
-                return $"{Name} ({Script}), Spoken by: {Speakers}";
-            }
+            return this.Name;
         }
     }
 }

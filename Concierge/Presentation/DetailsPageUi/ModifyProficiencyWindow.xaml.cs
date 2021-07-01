@@ -1,91 +1,90 @@
-﻿using Concierge.Utility;
-using System;
-using System.Windows;
-using System.Windows.Input;
+﻿// <copyright file="ModifyProficiencyWindow.xaml.cs" company="Thomas Beckett">
+// Copyright (c) Thomas Beckett. All rights reserved.
+// </copyright>
 
 namespace Concierge.Presentation.DetailsPageUi
 {
+    using System;
+    using System.Windows;
+    using System.Windows.Input;
+
+    using Concierge.Characters.Enums;
+
     /// <summary>
-    /// Interaction logic for ModifyProficiencyWindow.xaml
+    /// Interaction logic for ModifyProficiencyWindow.xaml.
     /// </summary>
     public partial class ModifyProficiencyWindow : Window
     {
         public ModifyProficiencyWindow()
         {
-            InitializeComponent();
-            PopupButton = Constants.PopupButtons.Cancel;
+            this.InitializeComponent();
+            this.PopupButton = PopupButtons.Cancel;
         }
 
-        public void ShowAdd(Constants.PopupButtons popupButton)
-        {
-            PopupButton = popupButton;
-            Editing = false;
-            HeaderTextBlock.Text = HeaderText;
-            ClearFields();
-            ApplyButton.Visibility = Visibility.Visible;
+        private PopupButtons PopupButton { get; set; }
 
-            ShowDialog();
+        private bool Editing { get; set; }
+
+        private Guid SelectedProficiencyId { get; set; }
+
+        private string HeaderText => $"{(this.Editing ? "Edit" : "Add")} {this.PopupButton.ToString().Replace("Proficiency", string.Empty)} Proficiency";
+
+        public void ShowAdd(PopupButtons popupButton)
+        {
+            this.PopupButton = popupButton;
+            this.Editing = false;
+            this.HeaderTextBlock.Text = this.HeaderText;
+            this.ClearFields();
+            this.ApplyButton.Visibility = Visibility.Visible;
+
+            this.ShowDialog();
         }
 
-        public void ShowEdit(Constants.PopupButtons popupButton, Guid id)
+        public void ShowEdit(PopupButtons popupButton, Guid id)
         {
-            PopupButton = popupButton;
-            Editing = true;
-            SelectedProficiencyId = id;
-            HeaderTextBlock.Text = HeaderText;
-            ProficiencyTextBox.Text = Program.Character.Proficiency.GetProficiencyById(id);
-            ApplyButton.Visibility = Visibility.Collapsed;
+            this.PopupButton = popupButton;
+            this.Editing = true;
+            this.SelectedProficiencyId = id;
+            this.HeaderTextBlock.Text = this.HeaderText;
+            this.ProficiencyTextBox.Text = Program.Character.Proficiency.GetProficiencyById(id);
+            this.ApplyButton.Visibility = Visibility.Collapsed;
 
-            ShowDialog();
+            this.ShowDialog();
         }
 
         private void ClearFields()
         {
-            ProficiencyTextBox.Text = string.Empty;
-        }
-
-        private Constants.PopupButtons PopupButton { get; set; }
-        private bool Editing { get; set; }
-        private Guid SelectedProficiencyId { get; set; }
-
-        private string HeaderText
-        {
-            get
-            {
-                return $"{(Editing ? "Edit" : "Add")} " +
-                    $"{PopupButton.ToString().Replace("Proficiency", "")} " +
-                    $"Proficiency";
-            }
+            this.ProficiencyTextBox.Text = string.Empty;
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            Hide();
+            this.Hide();
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
-            if (Editing)
+            if (this.Editing)
             {
-                Program.Character.Proficiency.SetProficiencyById(SelectedProficiencyId, ProficiencyTextBox.Text);
+                Program.Character.Proficiency.SetProficiencyById(this.SelectedProficiencyId, this.ProficiencyTextBox.Text);
             }
             else
             {
-                Program.Character.Proficiency.AddProficiencyByPopupButton(PopupButton, ProficiencyTextBox.Text);
+                Program.Character.Proficiency.AddProficiencyByPopupButton(this.PopupButton, this.ProficiencyTextBox.Text);
             }
 
-            Hide();
+            this.Hide();
         }
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
-            Program.Character.Proficiency.AddProficiencyByPopupButton(PopupButton, ProficiencyTextBox.Text);
-            ClearFields();
+            Program.Character.Proficiency.AddProficiencyByPopupButton(this.PopupButton, this.ProficiencyTextBox.Text);
+            this.ClearFields();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            Hide();
+            this.Hide();
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
@@ -93,7 +92,7 @@ namespace Concierge.Presentation.DetailsPageUi
             switch (e.Key)
             {
                 case Key.Escape:
-                    Hide();
+                    this.Hide();
                     break;
             }
         }

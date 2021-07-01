@@ -1,78 +1,80 @@
-﻿using Concierge.Characters.Collections;
-using System;
-using System.Windows;
-using System.Windows.Input;
+﻿// <copyright file="ModifyAbilitiesWindow.xaml.cs" company="Thomas Beckett">
+// Copyright (c) Thomas Beckett. All rights reserved.
+// </copyright>
 
 namespace Concierge.Presentation.AbilitiesPageUi
 {
+    using System;
+    using System.Windows;
+    using System.Windows.Input;
+
+    using Concierge.Characters.Collections;
+
     /// <summary>
-    /// Interaction logic for ModifyAbilitiesWindow.xaml
+    /// Interaction logic for ModifyAbilitiesWindow.xaml.
     /// </summary>
     public partial class ModifyAbilitiesWindow : Window
     {
-
-        #region Constructor
-
         public ModifyAbilitiesWindow()
         {
-            InitializeComponent();
+            this.InitializeComponent();
         }
 
-        #endregion
+        private bool Editing { get; set; }
 
-        #region Methods
+        private Guid SelectedAbilityId { get; set; }
 
         public void ShowEdit(Ability ability)
         {
-            HeaderTextBlock.Text = "Edit Ability";
-            SelectedAbilityId = ability.ID;
-            Editing = true;
-            FillFields(ability);
-            ButtonApply.Visibility = Visibility.Collapsed;
+            this.HeaderTextBlock.Text = "Edit Ability";
+            this.SelectedAbilityId = ability.ID;
+            this.Editing = true;
+            this.FillFields(ability);
+            this.ButtonApply.Visibility = Visibility.Collapsed;
 
-            ShowDialog();
+            this.ShowDialog();
         }
 
         public void ShowAdd()
         {
-            HeaderTextBlock.Text = "Add Ability";
-            Editing = false;
-            ClearFields();
-            ButtonApply.Visibility = Visibility.Visible;
+            this.HeaderTextBlock.Text = "Add Ability";
+            this.Editing = false;
+            this.ClearFields();
+            this.ButtonApply.Visibility = Visibility.Visible;
 
-            ShowDialog();
+            this.ShowDialog();
         }
 
         private void FillFields(Ability ability)
         {
-            NameTextBox.Text = ability.Name;
-            LevelTextBox.Text = ability.Level;
-            UsesTextBox.Text = ability.Uses;
-            RecoveryTextBox.Text = ability.Recovery;
-            ActionTextBox.Text = ability.Action;
-            NotesTextBox.Text = ability.Note;
+            this.NameTextBox.Text = ability.Name;
+            this.LevelTextBox.Text = ability.Level;
+            this.UsesTextBox.Text = ability.Uses;
+            this.RecoveryTextBox.Text = ability.Recovery;
+            this.ActionTextBox.Text = ability.Action;
+            this.NotesTextBox.Text = ability.Note;
         }
 
         private void ClearFields()
         {
-            NameTextBox.Text = string.Empty;
-            LevelTextBox.Text = string.Empty;
-            UsesTextBox.Text = string.Empty;
-            RecoveryTextBox.Text = string.Empty;
-            ActionTextBox.Text = string.Empty;
-            NotesTextBox.Text = string.Empty;
+            this.NameTextBox.Text = string.Empty;
+            this.LevelTextBox.Text = string.Empty;
+            this.UsesTextBox.Text = string.Empty;
+            this.RecoveryTextBox.Text = string.Empty;
+            this.ActionTextBox.Text = string.Empty;
+            this.NotesTextBox.Text = string.Empty;
         }
 
         private Ability ToAbility()
         {
-            Ability ability = new Ability()
+            var ability = new Ability()
             {
-                Name = NameTextBox.Text,
-                Level = LevelTextBox.Text,
-                Uses = UsesTextBox.Text,
-                Recovery = RecoveryTextBox.Text,
-                Action = ActionTextBox.Text,
-                Note = NotesTextBox.Text
+                Name = this.NameTextBox.Text,
+                Level = this.LevelTextBox.Text,
+                Uses = this.UsesTextBox.Text,
+                Recovery = this.RecoveryTextBox.Text,
+                Action = this.ActionTextBox.Text,
+                Note = this.NotesTextBox.Text,
             };
 
             return ability;
@@ -80,65 +82,52 @@ namespace Concierge.Presentation.AbilitiesPageUi
 
         private void UpdateAbility(Ability ability)
         {
-            ability.Name = NameTextBox.Text;
-            ability.Level = LevelTextBox.Text;
-            ability.Uses = UsesTextBox.Text;
-            ability.Recovery = RecoveryTextBox.Text;
-            ability.Action = ActionTextBox.Text;
-            ability.Note = NotesTextBox.Text;
+            ability.Name = this.NameTextBox.Text;
+            ability.Level = this.LevelTextBox.Text;
+            ability.Uses = this.UsesTextBox.Text;
+            ability.Recovery = this.RecoveryTextBox.Text;
+            ability.Action = this.ActionTextBox.Text;
+            ability.Note = this.NotesTextBox.Text;
         }
-
-        #endregion
-
-        #region Accessors
-
-        private bool Editing { get; set; }
-        private Guid SelectedAbilityId { get; set; }
-
-        #endregion
-
-        #region Events
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
             switch (e.Key)
             {
                 case Key.Escape:
-                    Hide();
+                    this.Hide();
                     break;
             }
         }
 
         private void ButtonClose_Click(object sender, RoutedEventArgs e)
         {
-            Hide();
+            this.Hide();
         }
 
         private void ButtonApply_Click(object sender, RoutedEventArgs e)
         {
-            Program.Character.Abilities.Add(ToAbility());
-            ClearFields();
+            Program.Character.Abilities.Add(this.ToAbility());
+            this.ClearFields();
         }
 
         private void ButtonOK_Click(object sender, RoutedEventArgs e)
         {
-            if (Editing)
+            if (this.Editing)
             {
-                UpdateAbility(Program.Character.GetAbilityById(SelectedAbilityId));
+                this.UpdateAbility(Program.Character.GetAbilityById(this.SelectedAbilityId));
             }
             else
             {
-                Program.Character.Abilities.Add(ToAbility());
+                Program.Character.Abilities.Add(this.ToAbility());
             }
 
-            Hide();
+            this.Hide();
         }
 
         private void ButtonCancel_Click(object sender, RoutedEventArgs e)
         {
-            Hide();
+            this.Hide();
         }
-
-        #endregion
     }
 }

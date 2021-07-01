@@ -1,134 +1,107 @@
-﻿using Concierge.Characters.Collections;
-using Concierge.Utility;
-using System;
-using System.Windows;
-using System.Windows.Controls;
+﻿// <copyright file="InventoryPage.xaml.cs" company="Thomas Beckett">
+// Copyright (c) Thomas Beckett. All rights reserved.
+// </copyright>
 
 namespace Concierge.Presentation.InventoryPageUi
 {
+    using System.Windows;
+    using System.Windows.Controls;
+
+    using Concierge.Characters.Collections;
+    using Concierge.Utility;
+
     /// <summary>
-    /// Interaction logic for InventoryPage.xaml
+    /// Interaction logic for InventoryPage.xaml.
     /// </summary>
     public partial class InventoryPage : Page
     {
-        #region Constructor
-
         public InventoryPage()
         {
-            InitializeComponent();
-            DataContext = this;
+            this.InitializeComponent();
+            this.DataContext = this;
 
-            ModifyInventoryWindow = new ModifyInventoryWindow();
+            this.ModifyInventoryWindow = new ModifyInventoryWindow();
         }
 
-        #endregion
+        public double InventoryHeight => SystemParameters.PrimaryScreenHeight - 100;
 
-        #region Methods
+        private ModifyInventoryWindow ModifyInventoryWindow { get; }
 
         public void Draw()
         {
-            FillList();
+            this.FillList();
         }
 
         private void FillList()
         {
-            InventoryDataGrid.Items.Clear();
+            this.InventoryDataGrid.Items.Clear();
 
             foreach (var inventory in Program.Character.Inventories)
             {
-
-                InventoryDataGrid.Items.Add(inventory);
+                this.InventoryDataGrid.Items.Add(inventory);
             }
         }
-
-        #endregion
-
-        #region Accessors
-
-        public double InventoryHeight
-        {
-            get
-            {
-                return SystemParameters.PrimaryScreenHeight - 100;
-            }
-        }
-
-        private ModifyInventoryWindow ModifyInventoryWindow { get; }
-
-        #endregion
-
-        #region Events
 
         private void ButtonUp_Click(object sender, RoutedEventArgs e)
         {
-            Inventory inventory;
-            int index;
-
-            if (InventoryDataGrid.SelectedItem != null)
+            if (this.InventoryDataGrid.SelectedItem != null)
             {
-                inventory = (Inventory)InventoryDataGrid.SelectedItem;
-                index = Program.Character.Inventories.IndexOf(inventory);
+                var inventory = (Inventory)this.InventoryDataGrid.SelectedItem;
+                var index = Program.Character.Inventories.IndexOf(inventory);
 
                 if (index != 0)
                 {
                     Utilities.Swap(Program.Character.Inventories, index, index - 1);
-                    FillList();
-                    InventoryDataGrid.SelectedIndex = index - 1;
+                    this.FillList();
+                    this.InventoryDataGrid.SelectedIndex = index - 1;
                 }
             }
         }
 
         private void ButtonDown_Click(object sender, RoutedEventArgs e)
         {
-            Inventory inventory;
-            int index;
-
-            if (InventoryDataGrid.SelectedItem != null)
+            if (this.InventoryDataGrid.SelectedItem != null)
             {
-                inventory = (Inventory)InventoryDataGrid.SelectedItem;
-                index = Program.Character.Inventories.IndexOf(inventory);
+                var inventory = (Inventory)this.InventoryDataGrid.SelectedItem;
+                var index = Program.Character.Inventories.IndexOf(inventory);
 
                 if (index != Program.Character.Inventories.Count - 1)
                 {
                     Utilities.Swap(Program.Character.Inventories, index, index + 1);
-                    FillList();
-                    InventoryDataGrid.SelectedIndex = index + 1;
+                    this.FillList();
+                    this.InventoryDataGrid.SelectedIndex = index + 1;
                 }
             }
         }
 
         private void ButtonClear_Click(object sender, RoutedEventArgs e)
         {
-            InventoryDataGrid.UnselectAll();
+            this.InventoryDataGrid.UnselectAll();
         }
 
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
-            ModifyInventoryWindow.ShowAdd();
-            FillList();
+            this.ModifyInventoryWindow.ShowAdd();
+            this.FillList();
         }
 
         private void ButtonEdit_Click(object sender, RoutedEventArgs e)
         {
-            Inventory inventory;
-
-            if (InventoryDataGrid.SelectedItem != null)
+            if (this.InventoryDataGrid.SelectedItem != null)
             {
-                inventory = (Inventory)InventoryDataGrid.SelectedItem;
-                ModifyInventoryWindow.ShowEdit(inventory);
-                FillList();
+                var inventory = (Inventory)this.InventoryDataGrid.SelectedItem;
+                this.ModifyInventoryWindow.ShowEdit(inventory);
+                this.FillList();
             }
         }
 
         private void ButtonDelete_Click(object sender, RoutedEventArgs e)
         {
-            Inventory inventory;
-
-            if (InventoryDataGrid.SelectedItem != null)
+            if (this.InventoryDataGrid.SelectedItem != null)
             {
-                inventory = (Inventory)InventoryDataGrid.SelectedItem;
+                var inventory = (Inventory)this.InventoryDataGrid.SelectedItem;
                 Program.Character.Inventories.Remove(inventory);
-                FillList();
+                this.FillList();
             }
         }
 
@@ -136,13 +109,10 @@ namespace Concierge.Presentation.InventoryPageUi
         {
             Program.Character.Inventories.Clear();
 
-            foreach (var item in InventoryDataGrid.Items)
+            foreach (var item in this.InventoryDataGrid.Items)
             {
                 Program.Character.Inventories.Add(item as Inventory);
             }
         }
-
-        #endregion
-
     }
 }

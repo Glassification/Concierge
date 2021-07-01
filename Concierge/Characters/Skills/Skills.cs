@@ -1,12 +1,11 @@
-﻿using Concierge.Utility;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// <copyright file="Skills.cs" company="Thomas Beckett">
+// Copyright (c) Thomas Beckett. All rights reserved.
+// </copyright>
 
 namespace Concierge.SkillsNamespace
 {
+    using Concierge.Characters.Enums;
+
     public abstract class Skills
     {
         public bool Proficiency
@@ -21,7 +20,7 @@ namespace Concierge.SkillsNamespace
             set;
         }
 
-        public abstract Constants.Checks Checks
+        public abstract StatusChecks Checks
         {
             get;
         }

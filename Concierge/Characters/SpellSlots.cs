@@ -1,9 +1,6 @@
-﻿using Concierge.Characters.Collections;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// <copyright file="SpellSlots.cs" company="Thomas Beckett">
+// Copyright (c) Thomas Beckett. All rights reserved.
+// </copyright>
 
 namespace Concierge.Characters
 {
@@ -11,54 +8,72 @@ namespace Concierge.Characters
     {
         public SpellSlots()
         {
-            PactTotal = 0;
-            FirstTotal = 0;
-            SecondTotal = 0;
-            ThirdTotal = 0;
-            FourthTotal = 0;
-            FifthTotal = 0;
-            SixthTotal = 0;
-            SeventhTotal = 0;
-            EighthTotal = 0;
-            NinethTotal = 0;
+            this.PactTotal = 0;
+            this.FirstTotal = 0;
+            this.SecondTotal = 0;
+            this.ThirdTotal = 0;
+            this.FourthTotal = 0;
+            this.FifthTotal = 0;
+            this.SixthTotal = 0;
+            this.SeventhTotal = 0;
+            this.EighthTotal = 0;
+            this.NinethTotal = 0;
 
-            Reset();
-        }
-
-        public void Reset()
-        {
-            PactUsed = 0;
-            FirstUsed = 0;
-            SecondUsed = 0;
-            ThirdUsed = 0;
-            FourthUsed = 0;
-            FifthUsed = 0;
-            SixthUsed = 0;
-            SeventhUsed = 0;
-            EighthUsed = 0;
-            NinethUsed = 0;
+            this.Reset();
         }
 
         public int PactTotal { get; set; }
+
         public int FirstTotal { get; set; }
+
         public int SecondTotal { get; set; }
+
         public int ThirdTotal { get; set; }
+
         public int FourthTotal { get; set; }
+
         public int FifthTotal { get; set; }
+
         public int SixthTotal { get; set; }
+
         public int SeventhTotal { get; set; }
+
         public int EighthTotal { get; set; }
+
         public int NinethTotal { get; set; }
 
         public int PactUsed { get; set; }
+
         public int FirstUsed { get; set; }
+
         public int SecondUsed { get; set; }
+
         public int ThirdUsed { get; set; }
+
         public int FourthUsed { get; set; }
+
         public int FifthUsed { get; set; }
+
         public int SixthUsed { get; set; }
+
         public int SeventhUsed { get; set; }
+
         public int EighthUsed { get; set; }
+
         public int NinethUsed { get; set; }
+
+        public void Reset()
+        {
+            this.PactUsed = 0;
+            this.FirstUsed = 0;
+            this.SecondUsed = 0;
+            this.ThirdUsed = 0;
+            this.FourthUsed = 0;
+            this.FifthUsed = 0;
+            this.SixthUsed = 0;
+            this.SeventhUsed = 0;
+            this.EighthUsed = 0;
+            this.NinethUsed = 0;
+        }
     }
 }

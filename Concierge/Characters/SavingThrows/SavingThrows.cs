@@ -1,12 +1,11 @@
-﻿using Concierge.Utility;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// <copyright file="SavingThrows.cs" company="Thomas Beckett">
+// Copyright (c) Thomas Beckett. All rights reserved.
+// </copyright>
 
 namespace Concierge.SavingThrowsNamespace
 {
+    using Concierge.Characters.Enums;
+
     public abstract class SavingThrows
     {
         public bool Proficiency
@@ -15,7 +14,7 @@ namespace Concierge.SavingThrowsNamespace
             set;
         }
 
-        public abstract Constants.Checks Checks
+        public abstract StatusChecks StatusChecks
         {
             get;
         }

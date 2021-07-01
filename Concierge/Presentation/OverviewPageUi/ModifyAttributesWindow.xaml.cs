@@ -1,43 +1,46 @@
-﻿using System;
-using System.Windows;
-using System.Windows.Input;
+﻿// <copyright file="ModifyAttributesWindow.xaml.cs" company="Thomas Beckett">
+// Copyright (c) Thomas Beckett. All rights reserved.
+// </copyright>
 
 namespace Concierge.Presentation.OverviewPageUi
 {
+    using System.Windows;
+    using System.Windows.Input;
+
     /// <summary>
-    /// Interaction logic for ModifyAttributesWindow.xaml
+    /// Interaction logic for ModifyAttributesWindow.xaml.
     /// </summary>
     public partial class ModifyAttributesWindow : Window
     {
         public ModifyAttributesWindow()
         {
-            InitializeComponent();
+            this.InitializeComponent();
         }
 
         public void EditAttributes()
         {
-            FillFields();
-            ShowDialog();
+            this.FillFields();
+            this.ShowDialog();
         }
 
         private void FillFields()
         {
-            StrengthUpDown.Value = Program.Character.Attributes.Strength;
-            DexterityUpDown.Value = Program.Character.Attributes.Dexterity;
-            ConstitutionUpDown.Value = Program.Character.Attributes.Constitution;
-            IntelligenceUpDown.Value = Program.Character.Attributes.Intelligence;
-            WisdomUpDown.Value = Program.Character.Attributes.Wisdom;
-            CharismaUpDown.Value = Program.Character.Attributes.Charisma;
+            this.StrengthUpDown.Value = Program.Character.Attributes.Strength;
+            this.DexterityUpDown.Value = Program.Character.Attributes.Dexterity;
+            this.ConstitutionUpDown.Value = Program.Character.Attributes.Constitution;
+            this.IntelligenceUpDown.Value = Program.Character.Attributes.Intelligence;
+            this.WisdomUpDown.Value = Program.Character.Attributes.Wisdom;
+            this.CharismaUpDown.Value = Program.Character.Attributes.Charisma;
         }
 
         private void UpdateAttributes()
         {
-            Program.Character.Attributes.Strength = StrengthUpDown.Value ?? 0;
-            Program.Character.Attributes.Dexterity = DexterityUpDown.Value ?? 0;
-            Program.Character.Attributes.Constitution = ConstitutionUpDown.Value ?? 0;
-            Program.Character.Attributes.Intelligence = IntelligenceUpDown.Value ?? 0;
-            Program.Character.Attributes.Wisdom = WisdomUpDown.Value ?? 0;
-            Program.Character.Attributes.Charisma = CharismaUpDown.Value ?? 0;
+            Program.Character.Attributes.Strength = this.StrengthUpDown.Value ?? 0;
+            Program.Character.Attributes.Dexterity = this.DexterityUpDown.Value ?? 0;
+            Program.Character.Attributes.Constitution = this.ConstitutionUpDown.Value ?? 0;
+            Program.Character.Attributes.Intelligence = this.IntelligenceUpDown.Value ?? 0;
+            Program.Character.Attributes.Wisdom = this.WisdomUpDown.Value ?? 0;
+            Program.Character.Attributes.Charisma = this.CharismaUpDown.Value ?? 0;
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
@@ -45,30 +48,30 @@ namespace Concierge.Presentation.OverviewPageUi
             switch (e.Key)
             {
                 case Key.Escape:
-                    Hide();
+                    this.Hide();
                     break;
             }
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
-            UpdateAttributes();
-            Hide();
+            this.UpdateAttributes();
+            this.Hide();
         }
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
-            UpdateAttributes();
+            this.UpdateAttributes();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            Hide();
+            this.Hide();
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            Hide();
+            this.Hide();
         }
     }
 }

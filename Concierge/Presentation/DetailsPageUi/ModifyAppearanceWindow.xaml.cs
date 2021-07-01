@@ -1,47 +1,50 @@
-﻿using System;
-using System.Windows;
-using System.Windows.Input;
+﻿// <copyright file="ModifyAppearanceWindow.xaml.cs" company="Thomas Beckett">
+// Copyright (c) Thomas Beckett. All rights reserved.
+// </copyright>
 
 namespace Concierge.Presentation.DetailsPageUi
 {
+    using System.Windows;
+    using System.Windows.Input;
+
     /// <summary>
-    /// Interaction logic for ModifyAppearanceWindow.xaml
+    /// Interaction logic for ModifyAppearanceWindow.xaml.
     /// </summary>
     public partial class ModifyAppearanceWindow : Window
     {
         public ModifyAppearanceWindow()
         {
-            InitializeComponent();
+            this.InitializeComponent();
         }
 
         public void ShowEdit()
         {
-            FillFields();
-            ShowDialog();
+            this.FillFields();
+            this.ShowDialog();
         }
 
         private void FillFields()
         {
-            GenderTextBox.Text = Program.Character.Appearance.Gender;
-            AgeTextBox.Text = Program.Character.Appearance.Age;
-            HeightTextBox.Text = Program.Character.Appearance.Height;
-            WeightTextBox.Text = Program.Character.Appearance.Weight;
-            SkinColourTextBox.Text = Program.Character.Appearance.SkinColour;
-            EyeColourTextBox.Text = Program.Character.Appearance.EyeColour;
-            HairColourTextBox.Text = Program.Character.Appearance.HairColour;
-            DistinguishingMarksTextBox.Text = Program.Character.Appearance.DistinguishingMarks;
+            this.GenderTextBox.Text = Program.Character.Appearance.Gender;
+            this.AgeTextBox.Text = Program.Character.Appearance.Age;
+            this.HeightTextBox.Text = Program.Character.Appearance.Height;
+            this.WeightTextBox.Text = Program.Character.Appearance.Weight;
+            this.SkinColourTextBox.Text = Program.Character.Appearance.SkinColour;
+            this.EyeColourTextBox.Text = Program.Character.Appearance.EyeColour;
+            this.HairColourTextBox.Text = Program.Character.Appearance.HairColour;
+            this.DistinguishingMarksTextBox.Text = Program.Character.Appearance.DistinguishingMarks;
         }
 
         private void UpdateAppearance()
         {
-            Program.Character.Appearance.Gender = GenderTextBox.Text;
-            Program.Character.Appearance.Age = AgeTextBox.Text;
-            Program.Character.Appearance.Height = HeightTextBox.Text;
-            Program.Character.Appearance.Weight = WeightTextBox.Text;
-            Program.Character.Appearance.SkinColour = SkinColourTextBox.Text;
-            Program.Character.Appearance.EyeColour = EyeColourTextBox.Text;
-            Program.Character.Appearance.HairColour = HairColourTextBox.Text;
-            Program.Character.Appearance.DistinguishingMarks = DistinguishingMarksTextBox.Text;
+            Program.Character.Appearance.Gender = this.GenderTextBox.Text;
+            Program.Character.Appearance.Age = this.AgeTextBox.Text;
+            Program.Character.Appearance.Height = this.HeightTextBox.Text;
+            Program.Character.Appearance.Weight = this.WeightTextBox.Text;
+            Program.Character.Appearance.SkinColour = this.SkinColourTextBox.Text;
+            Program.Character.Appearance.EyeColour = this.EyeColourTextBox.Text;
+            Program.Character.Appearance.HairColour = this.HairColourTextBox.Text;
+            Program.Character.Appearance.DistinguishingMarks = this.DistinguishingMarksTextBox.Text;
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
@@ -49,30 +52,30 @@ namespace Concierge.Presentation.DetailsPageUi
             switch (e.Key)
             {
                 case Key.Escape:
-                    Hide();
+                    this.Hide();
                     break;
             }
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            Hide();
+            this.Hide();
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
-            UpdateAppearance();
-            Hide();
+            this.UpdateAppearance();
+            this.Hide();
         }
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
-            UpdateAppearance();
+            this.UpdateAppearance();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            Hide();
+            this.Hide();
         }
     }
 }

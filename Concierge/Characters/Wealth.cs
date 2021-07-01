@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// <copyright file="Wealth.cs" company="Thomas Beckett">
+// Copyright (c) Thomas Beckett. All rights reserved.
+// </copyright>
 
 namespace Concierge.Characters
 {
@@ -10,11 +8,11 @@ namespace Concierge.Characters
     {
         public Wealth()
         {
-            Copper = 0;
-            Silver = 0;
-            Electrum = 0;
-            Gold = 0;
-            Platinum = 0;
+            this.Copper = 0;
+            this.Silver = 0;
+            this.Electrum = 0;
+            this.Gold = 0;
+            this.Platinum = 0;
         }
 
         public int Copper { get; set; }
@@ -27,20 +25,8 @@ namespace Concierge.Characters
 
         public int Platinum { get; set; }
 
-        public double TotalValue
-        {
-            get
-            {
-                return (Copper / 100.0) + (Silver / 10.0) + (Electrum / 2.0) + Gold + (Platinum * 10.0);
-            }
-        }
+        public double TotalValue => (this.Copper / 100.0) + (this.Silver / 10.0) + (this.Electrum / 2.0) + this.Gold + (this.Platinum * 10.0);
 
-        public int TotalCoins
-        {
-            get
-            {
-                return Copper + Silver + Electrum + Gold + Platinum;
-            }
-        }
+        public int TotalCoins => this.Copper + this.Silver + this.Electrum + this.Gold + this.Platinum;
     }
 }

@@ -1,49 +1,44 @@
-﻿using Concierge.Utility;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// <copyright file="Strength.cs" company="Thomas Beckett">
+// Copyright (c) Thomas Beckett. All rights reserved.
+// </copyright>
 
 namespace Concierge.SavingThrowsNamespace
 {
+    using Concierge.Characters.Enums;
+    using Concierge.Utility;
+
     public class Strength : SavingThrows
     {
         private int bonus;
 
         public Strength(bool proficiency = false)
         {
-            Proficiency = proficiency;
+            this.Proficiency = proficiency;
         }
 
-        public override Constants.Checks Checks
-        {
-            get
-            {
-                if (Program.Character.Vitality.Conditions.Fatigued.Equals("Three") ||
+        public override StatusChecks StatusChecks => Program.Character.Vitality.Conditions.Fatigued.Equals("Three") ||
                     Program.Character.Vitality.Conditions.Fatigued.Equals("Four") ||
-                    Program.Character.Vitality.Conditions.Fatigued.Equals("Five"))
-                    return Constants.Checks.Disadvantage;
-                else if (Program.Character.Vitality.Conditions.Paralyzed.Equals("Paralyzed") ||
-                         Program.Character.Vitality.Conditions.Stunned.Equals("Stunned"))
-                    return Constants.Checks.Fail;
-                else
-                    return Constants.Checks.Normal;
-            }
-        }
+                    Program.Character.Vitality.Conditions.Fatigued.Equals("Five")
+                    ? StatusChecks.Disadvantage
+                    : Program.Character.Vitality.Conditions.Paralyzed.Equals("Paralyzed") ||
+                                             Program.Character.Vitality.Conditions.Stunned.Equals("Stunned")
+                        ? StatusChecks.Fail
+                        : StatusChecks.Normal;
 
         public override int Bonus
         {
             get
             {
-                bonus = 0;
+                this.bonus = 0;
 
-                if (Proficiency)
-                    bonus += Program.Character.ProficiencyBonus;
+                if (this.Proficiency)
+                {
+                    this.bonus += Program.Character.ProficiencyBonus;
+                }
 
-                bonus += Utilities.CalculateBonus(Program.Character.Attributes.Strength);
+                this.bonus += Utilities.CalculateBonus(Program.Character.Attributes.Strength);
 
-                return bonus;
+                return this.bonus;
             }
         }
     }

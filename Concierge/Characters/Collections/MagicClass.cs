@@ -1,40 +1,40 @@
-﻿using Concierge.Utility;
-using System;
-using System.Linq;
+﻿// <copyright file="MagicClass.cs" company="Thomas Beckett">
+// Copyright (c) Thomas Beckett. All rights reserved.
+// </copyright>
 
 namespace Concierge.Characters.Collections
 {
+    using System;
+    using System.Linq;
+
+    using Concierge.Characters.Enums;
+    using Concierge.Utility;
+
     public class MagicClass
     {
         public MagicClass()
         {
-            ID = Guid.NewGuid();
+            this.ID = Guid.NewGuid();
         }
 
         public MagicClass(Guid id)
         {
-            ID = id;
-        }
-
-        public override string ToString()
-        {
-            return Name;
+            this.ID = id;
         }
 
         public string Name { get; set; }
-        public Constants.Abilities Ability { get; set; }
+
+        public Abilities Ability { get; set; }
+
         public int Level { get; set; }
+
         public int KnownCantrips { get; set; }
+
         public int KnownSpells { get; set; }
+
         public Guid ID { get; private set; }
 
-        public int PreparedSpells
-        {
-            get
-            {
-                return Program.Character.Spells.Where(x => x.Class?.Equals(Name) ?? false && x.Prepared).ToList().Count;
-            }
-        }
+        public int PreparedSpells => Program.Character.Spells.Where(x => x.Class?.Equals(this.Name) ?? false && x.Prepared).ToList().Count;
 
         public int Attack
         {
@@ -42,20 +42,20 @@ namespace Concierge.Characters.Collections
             {
                 int bonus = Program.Character.ProficiencyBonus;
 
-                switch (Ability)
+                switch (this.Ability)
                 {
                     default:
-                    case Constants.Abilities.STR:
+                    case Abilities.STR:
                         return Utilities.CalculateBonus(Program.Character.Attributes.Strength) + bonus;
-                    case Constants.Abilities.DEX:
+                    case Abilities.DEX:
                         return Utilities.CalculateBonus(Program.Character.Attributes.Dexterity) + bonus;
-                    case Constants.Abilities.CON:
+                    case Abilities.CON:
                         return Utilities.CalculateBonus(Program.Character.Attributes.Constitution) + bonus;
-                    case Constants.Abilities.INT:
+                    case Abilities.INT:
                         return Utilities.CalculateBonus(Program.Character.Attributes.Intelligence) + bonus;
-                    case Constants.Abilities.WIS:
+                    case Abilities.WIS:
                         return Utilities.CalculateBonus(Program.Character.Attributes.Wisdom) + bonus;
-                    case Constants.Abilities.CHA:
+                    case Abilities.CHA:
                         return Utilities.CalculateBonus(Program.Character.Attributes.Charisma) + bonus;
                 }
             }
@@ -67,23 +67,28 @@ namespace Concierge.Characters.Collections
             {
                 int bonus = Program.Character.ProficiencyBonus + Constants.BASE_DC;
 
-                switch (Ability)
+                switch (this.Ability)
                 {
                     default:
-                    case Constants.Abilities.STR:
+                    case Abilities.STR:
                         return Utilities.CalculateBonus(Program.Character.Attributes.Strength) + bonus;
-                    case Constants.Abilities.DEX:
+                    case Abilities.DEX:
                         return Utilities.CalculateBonus(Program.Character.Attributes.Dexterity) + bonus;
-                    case Constants.Abilities.CON:
+                    case Abilities.CON:
                         return Utilities.CalculateBonus(Program.Character.Attributes.Constitution) + bonus;
-                    case Constants.Abilities.INT:
+                    case Abilities.INT:
                         return Utilities.CalculateBonus(Program.Character.Attributes.Intelligence) + bonus;
-                    case Constants.Abilities.WIS:
+                    case Abilities.WIS:
                         return Utilities.CalculateBonus(Program.Character.Attributes.Wisdom) + bonus;
-                    case Constants.Abilities.CHA:
+                    case Abilities.CHA:
                         return Utilities.CalculateBonus(Program.Character.Attributes.Charisma) + bonus;
                 }
             }
+        }
+
+        public override string ToString()
+        {
+            return this.Name;
         }
     }
 }

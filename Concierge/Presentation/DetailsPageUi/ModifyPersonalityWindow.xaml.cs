@@ -1,45 +1,48 @@
-﻿using System;
-using System.Windows;
-using System.Windows.Input;
+﻿// <copyright file="ModifyPersonalityWindow.xaml.cs" company="Thomas Beckett">
+// Copyright (c) Thomas Beckett. All rights reserved.
+// </copyright>
 
 namespace Concierge.Presentation.DetailsPageUi
 {
+    using System.Windows;
+    using System.Windows.Input;
+
     /// <summary>
-    /// Interaction logic for ModifyPersonalityWindow.xaml
+    /// Interaction logic for ModifyPersonalityWindow.xaml.
     /// </summary>
     public partial class ModifyPersonalityWindow : Window
     {
         public ModifyPersonalityWindow()
         {
-            InitializeComponent();
+            this.InitializeComponent();
         }
 
         public void ShowEdit()
         {
-            FillFields();
-            ShowDialog();
+            this.FillFields();
+            this.ShowDialog();
         }
 
         private void FillFields()
         {
-            Trait1TextBox.Text = Program.Character.Personality.Trait1;
-            Trait2TextBox.Text = Program.Character.Personality.Trait2;
-            IdealTextBox.Text = Program.Character.Personality.Ideal;
-            BondTextBox.Text = Program.Character.Personality.Bond;
-            FlawTextBox.Text = Program.Character.Personality.Flaw;
-            BackgroundTextBox.Text = Program.Character.Personality.Background;
-            NotesTextBox.Text = Program.Character.Personality.Notes;
+            this.Trait1TextBox.Text = Program.Character.Personality.Trait1;
+            this.Trait2TextBox.Text = Program.Character.Personality.Trait2;
+            this.IdealTextBox.Text = Program.Character.Personality.Ideal;
+            this.BondTextBox.Text = Program.Character.Personality.Bond;
+            this.FlawTextBox.Text = Program.Character.Personality.Flaw;
+            this.BackgroundTextBox.Text = Program.Character.Personality.Background;
+            this.NotesTextBox.Text = Program.Character.Personality.Notes;
         }
 
         private void UpdatePersonality()
         {
-            Program.Character.Personality.Trait1 = Trait1TextBox.Text;
-            Program.Character.Personality.Trait2 = Trait2TextBox.Text;
-            Program.Character.Personality.Ideal = IdealTextBox.Text;
-            Program.Character.Personality.Bond = BondTextBox.Text;
-            Program.Character.Personality.Flaw = FlawTextBox.Text;
-            Program.Character.Personality.Background = BackgroundTextBox.Text;
-            Program.Character.Personality.Notes = NotesTextBox.Text;
+            Program.Character.Personality.Trait1 = this.Trait1TextBox.Text;
+            Program.Character.Personality.Trait2 = this.Trait2TextBox.Text;
+            Program.Character.Personality.Ideal = this.IdealTextBox.Text;
+            Program.Character.Personality.Bond = this.BondTextBox.Text;
+            Program.Character.Personality.Flaw = this.FlawTextBox.Text;
+            Program.Character.Personality.Background = this.BackgroundTextBox.Text;
+            Program.Character.Personality.Notes = this.NotesTextBox.Text;
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
@@ -47,30 +50,30 @@ namespace Concierge.Presentation.DetailsPageUi
             switch (e.Key)
             {
                 case Key.Escape:
-                    Hide();
+                    this.Hide();
                     break;
             }
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            Hide();
+            this.Hide();
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
-            UpdatePersonality();
-            Hide();
+            this.UpdatePersonality();
+            this.Hide();
         }
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
-            UpdatePersonality();
+            this.UpdatePersonality();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            Hide();
+            this.Hide();
         }
     }
 }

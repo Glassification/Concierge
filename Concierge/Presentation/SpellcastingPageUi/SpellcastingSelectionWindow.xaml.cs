@@ -1,62 +1,66 @@
-﻿using Concierge.Utility;
-using System;
-using System.Windows;
-using System.Windows.Input;
+﻿// <copyright file="SpellcastingSelectionWindow.xaml.cs" company="Thomas Beckett">
+// Copyright (c) Thomas Beckett. All rights reserved.
+// </copyright>
 
 namespace Concierge.Presentation.SpellcastingPageUi
 {
+    using System.Windows;
+    using System.Windows.Input;
+
+    using Concierge.Characters.Enums;
+
     /// <summary>
-    /// Interaction logic for SpellcastingSelectionWindow.xaml
+    /// Interaction logic for SpellcastingSelectionWindow.xaml.
     /// </summary>
     public partial class SpellcastingSelectionWindow : Window
     {
         public SpellcastingSelectionWindow()
         {
-            InitializeComponent();
+            this.InitializeComponent();
         }
 
-        public Constants.PopupButtons ShowPopup()
+        private PopupButtons ButtonPress { get; set; }
+
+        public PopupButtons ShowPopup()
         {
-            ShowDialog();
+            this.ShowDialog();
 
-            return ButtonPress;
+            return this.ButtonPress;
         }
-
-        private Constants.PopupButtons ButtonPress { get; set; }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
             switch (e.Key)
             {
                 case Key.Escape:
-                    ButtonPress = Constants.PopupButtons.Cancel;
-                    Hide();
+                    this.ButtonPress = PopupButtons.Cancel;
+                    this.Hide();
                     break;
             }
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            ButtonPress = Constants.PopupButtons.Cancel;
-            Hide();
+            this.ButtonPress = PopupButtons.Cancel;
+            this.Hide();
         }
 
         private void SpellClassButton_Click(object sender, RoutedEventArgs e)
         {
-            ButtonPress = Constants.PopupButtons.AddMagicClass;
-            Hide();
+            this.ButtonPress = PopupButtons.AddMagicClass;
+            this.Hide();
         }
 
         private void SpellButton_Click(object sender, RoutedEventArgs e)
         {
-            ButtonPress = Constants.PopupButtons.AddSpell;
-            Hide();
+            this.ButtonPress = PopupButtons.AddSpell;
+            this.Hide();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            ButtonPress = Constants.PopupButtons.Cancel;
-            Hide();
+            this.ButtonPress = PopupButtons.Cancel;
+            this.Hide();
         }
     }
 }

@@ -1,4 +1,8 @@
-﻿namespace Concierge.Utility
+﻿// <copyright file="Utilities.cs" company="Thomas Beckett">
+// Copyright (c) Thomas Beckett. All rights reserved.
+// </copyright>
+
+namespace Concierge.Utility
 {
     using System;
     using System.Collections.Generic;
@@ -42,7 +46,7 @@
 
         public static string FormatName(string name)
         {
-            char[] ch = name.ToArray();
+            var ch = name.ToArray();
             int offset = 0;
 
             for (int i = 1; i < ch.Length; i++)
@@ -59,34 +63,22 @@
 
         public static Brush SetUsedTextStyle(int total, int used)
         {
-            if (total <= used)
-                return Brushes.DarkRed;
-            else
-                return Brushes.White;
+            return total <= used ? Brushes.DarkRed : Brushes.White;
         }
 
         public static Brush SetUsedBoxStyle(int total, int used)
         {
-            if (total <= used)
-                return Brushes.IndianRed;
-            else
-                return new SolidColorBrush(Color.FromArgb(255, 62, 62, 66));
+            return total <= used ? Brushes.IndianRed : new SolidColorBrush(Color.FromArgb(255, 62, 62, 66));
         }
 
         public static Brush SetTotalTextStyle(int total, int used)
         {
-            if (total <= used)
-                return Brushes.DarkGray;
-            else
-                return Brushes.White;
+            return total <= used ? Brushes.DarkGray : Brushes.White;
         }
 
         public static Brush SetTotalBoxStyle(int total, int used)
         {
-            if (total <= used)
-                return new SolidColorBrush(Color.FromArgb(255, 15, 15, 15));
-            else
-                return new SolidColorBrush(Color.FromArgb(255, 51, 51, 51));
+            return total <= used ? new SolidColorBrush(Color.FromArgb(255, 15, 15, 15)) : new SolidColorBrush(Color.FromArgb(255, 51, 51, 51));
         }
     }
 }

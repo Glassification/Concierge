@@ -1,37 +1,40 @@
-﻿using System;
-using System.Windows;
-using System.Windows.Input;
+﻿// <copyright file="ModifyHealthWindow.xaml.cs" company="Thomas Beckett">
+// Copyright (c) Thomas Beckett. All rights reserved.
+// </copyright>
 
 namespace Concierge.Presentation.OverviewPageUi
 {
+    using System.Windows;
+    using System.Windows.Input;
+
     /// <summary>
-    /// Interaction logic for ModifyHealthWindow.xaml
+    /// Interaction logic for ModifyHealthWindow.xaml.
     /// </summary>
     public partial class ModifyHealthWindow : Window
     {
         public ModifyHealthWindow()
         {
-            InitializeComponent();
+            this.InitializeComponent();
         }
 
         public void EditHealth()
         {
-            FillFields();
-            ShowDialog();
+            this.FillFields();
+            this.ShowDialog();
         }
 
         private void FillFields()
         {
-            CurrentHpUpDown.Value = Program.Character.Vitality.BaseHealth;
-            TemporaryHpUpDown.Value = Program.Character.Vitality.TemporaryHealth;
-            TotalHpUpDown.Value = Program.Character.Vitality.MaxHealth;
+            this.CurrentHpUpDown.Value = Program.Character.Vitality.BaseHealth;
+            this.TemporaryHpUpDown.Value = Program.Character.Vitality.TemporaryHealth;
+            this.TotalHpUpDown.Value = Program.Character.Vitality.MaxHealth;
         }
 
         private void UpdateHealth()
         {
-            Program.Character.Vitality.BaseHealth = CurrentHpUpDown.Value ?? 0;
-            Program.Character.Vitality.TemporaryHealth = TemporaryHpUpDown.Value ?? 0;
-            Program.Character.Vitality.MaxHealth = TotalHpUpDown.Value ?? 0;
+            Program.Character.Vitality.BaseHealth = this.CurrentHpUpDown.Value ?? 0;
+            Program.Character.Vitality.TemporaryHealth = this.TemporaryHpUpDown.Value ?? 0;
+            Program.Character.Vitality.MaxHealth = this.TotalHpUpDown.Value ?? 0;
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
@@ -39,30 +42,30 @@ namespace Concierge.Presentation.OverviewPageUi
             switch (e.Key)
             {
                 case Key.Escape:
-                    Hide();
+                    this.Hide();
                     break;
             }
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            Hide();
+            this.Hide();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            Hide();
+            this.Hide();
         }
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
-            UpdateHealth();
+            this.UpdateHealth();
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
-            UpdateHealth();
-            Hide();
+            this.UpdateHealth();
+            this.Hide();
         }
     }
 }

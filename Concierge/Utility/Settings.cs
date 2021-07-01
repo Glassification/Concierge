@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// <copyright file="Settings.cs" company="Thomas Beckett">
+// Copyright (c) Thomas Beckett. All rights reserved.
+// </copyright>
 
 namespace Concierge.Utility
 {
@@ -13,6 +11,14 @@ namespace Concierge.Utility
             Default();
         }
 
+        public static bool AutosaveEnable { get; set; }
+
+        public static int AutosaveInterval { get; set; }
+
+        public static bool UseCoinWeight { get; set; }
+
+        public static bool UseEncumbrance { get; set; }
+
         public static void Default()
         {
             AutosaveEnable = false;
@@ -20,10 +26,5 @@ namespace Concierge.Utility
             UseCoinWeight = false;
             UseEncumbrance = false;
         }
-
-        public static bool AutosaveEnable { get; set; }
-        public static int AutosaveInterval { get; set; }
-        public static bool UseCoinWeight { get; set; }
-        public static bool UseEncumbrance { get; set; }
     }
 }

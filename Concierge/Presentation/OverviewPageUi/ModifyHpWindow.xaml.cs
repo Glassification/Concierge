@@ -1,84 +1,78 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+﻿// <copyright file="ModifyHpWindow.xaml.cs" company="Thomas Beckett">
+// Copyright (c) Thomas Beckett. All rights reserved.
+// </copyright>
 
 namespace Concierge.Presentation.OverviewPageUi
 {
+    using System;
+    using System.Windows;
+    using System.Windows.Input;
+
     /// <summary>
-    /// Interaction logic for ModifyHpWindow.xaml
+    /// Interaction logic for ModifyHpWindow.xaml.
     /// </summary>
     public partial class ModifyHpWindow : Window
     {
         public ModifyHpWindow()
         {
-            InitializeComponent();
+            this.InitializeComponent();
         }
+
+        private bool IsOk { get; set; }
 
         public void AddHP()
         {
-            HeaderTextBlock.Text = "Add HP";
+            this.HeaderTextBlock.Text = "Add HP";
 
-            ShowDialog();
+            this.ShowDialog();
 
-            if (IsOk)
+            if (this.IsOk)
             {
-                Program.Character.Vitality.BaseHealth += HpUpDown.Value ?? 0;
+                Program.Character.Vitality.BaseHealth += this.HpUpDown.Value ?? 0;
                 Program.Character.Vitality.BaseHealth = Math.Min(Program.Character.Vitality.BaseHealth, Program.Character.Vitality.MaxHealth);
             }
         }
 
         public void SubtractHP()
         {
-            HeaderTextBlock.Text = "Subract HP";
+            this.HeaderTextBlock.Text = "Subract HP";
 
-            ShowDialog();
+            this.ShowDialog();
 
-            if (IsOk)
+            if (this.IsOk)
             {
-                Program.Character.Vitality.BaseHealth -= HpUpDown.Value ?? 0;
+                Program.Character.Vitality.BaseHealth -= this.HpUpDown.Value ?? 0;
                 Program.Character.Vitality.BaseHealth = Math.Max(Program.Character.Vitality.BaseHealth, 0);
             }
         }
-
-        private bool IsOk { get; set; }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
             switch (e.Key)
             {
                 case Key.Escape:
-                    IsOk = false;
-                    Hide();
+                    this.IsOk = false;
+                    this.Hide();
                     break;
             }
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            IsOk = false;
-            Hide();
+            this.IsOk = false;
+            this.Hide();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            IsOk = false;
-            Hide();
+            this.IsOk = false;
+            this.Hide();
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
-            IsOk = true;
-            Hide();
+            this.IsOk = true;
+            this.Hide();
         }
     }
 }

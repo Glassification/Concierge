@@ -1,94 +1,100 @@
-﻿using Concierge.Characters.Collections;
-using Concierge.Utility;
-using System;
-using System.Windows;
-using System.Windows.Controls;
+﻿// <copyright file="EquipmentPage.xaml.cs" company="Thomas Beckett">
+// Copyright (c) Thomas Beckett. All rights reserved.
+// </copyright>
 
 namespace Concierge.Presentation.EquipmentPageUi
 {
+    using System.Windows;
+    using System.Windows.Controls;
+
+    using Concierge.Characters.Collections;
+    using Concierge.Characters.Enums;
+    using Concierge.Utility;
+
     /// <summary>
-    /// Interaction logic for EquipmentPage.xaml
+    /// Interaction logic for EquipmentPage.xaml.
     /// </summary>
     public partial class EquipmentPage : Page
     {
         public EquipmentPage()
         {
-            InitializeComponent();
-            DataContext = this;
-            ModifyArmorWindow = new ModifyArmorWindow();
-            EquipmentPopupWindow = new EquipmentPopupWindow();
-            ModifyWeaponWindow = new ModifyWeaponWindow();
-            ModifyAmmoWindow = new ModifyAmmoWindow();
+            this.InitializeComponent();
+            this.DataContext = this;
+            this.ModifyArmorWindow = new ModifyArmorWindow();
+            this.EquipmentPopupWindow = new EquipmentPopupWindow();
+            this.ModifyWeaponWindow = new ModifyWeaponWindow();
+            this.ModifyAmmoWindow = new ModifyAmmoWindow();
         }
+
+        private ModifyArmorWindow ModifyArmorWindow { get; }
+
+        private ModifyWeaponWindow ModifyWeaponWindow { get; }
+
+        private ModifyAmmoWindow ModifyAmmoWindow { get; }
+
+        private EquipmentPopupWindow EquipmentPopupWindow { get; }
 
         public void Draw()
         {
-            FillWeaponList();
-            FillAmmoList();
+            this.FillWeaponList();
+            this.FillAmmoList();
 
-            ArmorClassField.Text = Program.Character.Armor.TotalArmorClass.ToString();
-            ArmorWornField.Text = Program.Character.Armor.Equiped;
-            ArmorTypeField.Text = Program.Character.Armor.Type.ToString();
-            ArmorStealthField.Text = Program.Character.Armor.Stealth.ToString();
-            ShieldWornField.Text = Program.Character.Armor.Shield;
-            ShieldAcField.Text = Program.Character.Armor.ShieldArmorClass.ToString();
-            MiscBonusField.Text = Program.Character.Armor.MiscArmorClass.ToString();
-            MagicBonusField.Text = Program.Character.Armor.MagicArmorClass.ToString();
+            this.ArmorClassField.Text = Program.Character.Armor.TotalArmorClass.ToString();
+            this.ArmorWornField.Text = Program.Character.Armor.Equiped;
+            this.ArmorTypeField.Text = Program.Character.Armor.Type.ToString();
+            this.ArmorStealthField.Text = Program.Character.Armor.Stealth.ToString();
+            this.ShieldWornField.Text = Program.Character.Armor.Shield;
+            this.ShieldAcField.Text = Program.Character.Armor.ShieldArmorClass.ToString();
+            this.MiscBonusField.Text = Program.Character.Armor.MiscArmorClass.ToString();
+            this.MagicBonusField.Text = Program.Character.Armor.MagicArmorClass.ToString();
         }
 
         private void FillWeaponList()
         {
-            WeaponDataGrid.Items.Clear();
+            this.WeaponDataGrid.Items.Clear();
 
             foreach (var weapon in Program.Character.Weapons)
             {
-
-                WeaponDataGrid.Items.Add(weapon);
+                this.WeaponDataGrid.Items.Add(weapon);
             }
         }
 
         private void FillAmmoList()
         {
-            AmmoDataGrid.Items.Clear();
+            this.AmmoDataGrid.Items.Clear();
 
             foreach (var ammo in Program.Character.Ammunitions)
             {
-
-                AmmoDataGrid.Items.Add(ammo);
+                this.AmmoDataGrid.Items.Add(ammo);
             }
         }
-
-        private ModifyArmorWindow ModifyArmorWindow { get; }
-        private ModifyWeaponWindow ModifyWeaponWindow { get; }
-        private ModifyAmmoWindow ModifyAmmoWindow { get; }
-        private EquipmentPopupWindow EquipmentPopupWindow { get; }
 
         private void ButtonUp_Click(object sender, RoutedEventArgs e)
         {
             int index;
 
-            if (AmmoDataGrid.SelectedItem != null)
+            if (this.AmmoDataGrid.SelectedItem != null)
             {
-                Ammunition ammo = (Ammunition)AmmoDataGrid.SelectedItem;
+                var ammo = (Ammunition)this.AmmoDataGrid.SelectedItem;
                 index = Program.Character.Ammunitions.IndexOf(ammo);
 
                 if (index != 0)
                 {
                     Utilities.Swap(Program.Character.Ammunitions, index, index - 1);
-                    FillAmmoList();
-                    AmmoDataGrid.SelectedIndex = index - 1;
+                    this.FillAmmoList();
+                    this.AmmoDataGrid.SelectedIndex = index - 1;
                 }
             }
-            else if (WeaponDataGrid.SelectedItem != null)
+            else if (this.WeaponDataGrid.SelectedItem != null)
             {
-                Weapon weapon = (Weapon)WeaponDataGrid.SelectedItem;
+                var weapon = (Weapon)this.WeaponDataGrid.SelectedItem;
                 index = Program.Character.Weapons.IndexOf(weapon);
 
                 if (index != 0)
                 {
                     Utilities.Swap(Program.Character.Weapons, index, index - 1);
-                    FillWeaponList();
-                    WeaponDataGrid.SelectedIndex = index - 1;
+                    this.FillWeaponList();
+                    this.WeaponDataGrid.SelectedIndex = index - 1;
                 }
             }
         }
@@ -97,114 +103,112 @@ namespace Concierge.Presentation.EquipmentPageUi
         {
             int index;
 
-            if (AmmoDataGrid.SelectedItem != null)
+            if (this.AmmoDataGrid.SelectedItem != null)
             {
-                Ammunition ammo = (Ammunition)AmmoDataGrid.SelectedItem;
+                var ammo = (Ammunition)this.AmmoDataGrid.SelectedItem;
                 index = Program.Character.Ammunitions.IndexOf(ammo);
 
                 if (index != Program.Character.Ammunitions.Count - 1)
                 {
                     Utilities.Swap(Program.Character.Ammunitions, index, index + 1);
-                    FillAmmoList();
-                    AmmoDataGrid.SelectedIndex = index + 1;
+                    this.FillAmmoList();
+                    this.AmmoDataGrid.SelectedIndex = index + 1;
                 }
             }
-            else if (WeaponDataGrid.SelectedItem != null)
+            else if (this.WeaponDataGrid.SelectedItem != null)
             {
-                Weapon weapon = (Weapon)WeaponDataGrid.SelectedItem;
+                var weapon = (Weapon)this.WeaponDataGrid.SelectedItem;
                 index = Program.Character.Weapons.IndexOf(weapon);
 
                 if (index != Program.Character.Weapons.Count - 1)
                 {
                     Utilities.Swap(Program.Character.Weapons, index, index + 1);
-                    FillWeaponList();
-                    WeaponDataGrid.SelectedIndex = index + 1;
+                    this.FillWeaponList();
+                    this.WeaponDataGrid.SelectedIndex = index + 1;
                 }
             }
         }
 
         private void ButtonClear_Click(object sender, RoutedEventArgs e)
         {
-            WeaponDataGrid.UnselectAll();
-            AmmoDataGrid.UnselectAll();
+            this.WeaponDataGrid.UnselectAll();
+            this.AmmoDataGrid.UnselectAll();
         }
 
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
-            Constants.PopupButtons popupButons;
-
-            popupButons = EquipmentPopupWindow.ShowPopup();
+            var popupButons = this.EquipmentPopupWindow.ShowPopup();
 
             switch (popupButons)
             {
-                case Constants.PopupButtons.AddWeapon:
-                    ModifyWeaponWindow.ShowAdd();
-                    FillWeaponList();
+                case PopupButtons.AddWeapon:
+                    this.ModifyWeaponWindow.ShowAdd();
+                    this.FillWeaponList();
                     break;
-                case Constants.PopupButtons.AddAmmo:
-                    ModifyAmmoWindow.ShowAdd();
-                    FillAmmoList();
+                case PopupButtons.AddAmmo:
+                    this.ModifyAmmoWindow.ShowAdd();
+                    this.FillAmmoList();
                     break;
             }
         }
 
         private void ButtonEdit_Click(object sender, RoutedEventArgs e)
         {
-            if (AmmoDataGrid.SelectedItem != null)
+            if (this.AmmoDataGrid.SelectedItem != null)
             {
-                ModifyAmmoWindow.ShowEdit((Ammunition)AmmoDataGrid.SelectedItem);
-                FillAmmoList();
+                this.ModifyAmmoWindow.ShowEdit((Ammunition)this.AmmoDataGrid.SelectedItem);
+                this.FillAmmoList();
             }
-            else if (WeaponDataGrid.SelectedItem != null)
+            else if (this.WeaponDataGrid.SelectedItem != null)
             {
-                ModifyWeaponWindow.ShowEdit((Weapon)WeaponDataGrid.SelectedItem);
-                FillWeaponList();
+                this.ModifyWeaponWindow.ShowEdit((Weapon)this.WeaponDataGrid.SelectedItem);
+                this.FillWeaponList();
             }
         }
 
         private void ButtonDelete_Click(object sender, RoutedEventArgs e)
         {
-            if (AmmoDataGrid.SelectedItem != null)
+            if (this.AmmoDataGrid.SelectedItem != null)
             {
-                Ammunition ammo = (Ammunition)AmmoDataGrid.SelectedItem;
+                var ammo = (Ammunition)this.AmmoDataGrid.SelectedItem;
                 Program.Character.Ammunitions.Remove(ammo);
-                FillAmmoList();
+                this.FillAmmoList();
             }
-            else if (WeaponDataGrid.SelectedItem != null)
+            else if (this.WeaponDataGrid.SelectedItem != null)
             {
-                Weapon weapon = (Weapon)WeaponDataGrid.SelectedItem;
+                var weapon = (Weapon)this.WeaponDataGrid.SelectedItem;
                 Program.Character.Weapons.Remove(weapon);
-                FillWeaponList();
+                this.FillWeaponList();
             }
         }
 
         private void AmmoDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (AmmoDataGrid.SelectedItem != null)
+            if (this.AmmoDataGrid.SelectedItem != null)
             {
-                WeaponDataGrid.UnselectAll();
+                this.WeaponDataGrid.UnselectAll();
             }
         }
 
         private void WeaponDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (WeaponDataGrid.SelectedItem != null)
+            if (this.WeaponDataGrid.SelectedItem != null)
             {
-                AmmoDataGrid.UnselectAll();
+                this.AmmoDataGrid.UnselectAll();
             }
         }
 
         private void EditDetailsButton_Click(object sender, RoutedEventArgs e)
         {
-            ModifyArmorWindow.ShowEdit();
-            Draw();
+            this.ModifyArmorWindow.ShowEdit();
+            this.Draw();
         }
 
         private void WeaponDataGrid_Sorted(object sender, RoutedEventArgs e)
         {
             Program.Character.Weapons.Clear();
 
-            foreach (var weapon in WeaponDataGrid.Items)
+            foreach (var weapon in this.WeaponDataGrid.Items)
             {
                 Program.Character.Weapons.Add(weapon as Weapon);
             }
@@ -214,7 +218,7 @@ namespace Concierge.Presentation.EquipmentPageUi
         {
             Program.Character.Ammunitions.Clear();
 
-            foreach (var ammo in AmmoDataGrid.Items)
+            foreach (var ammo in this.AmmoDataGrid.Items)
             {
                 Program.Character.Ammunitions.Add(ammo as Ammunition);
             }

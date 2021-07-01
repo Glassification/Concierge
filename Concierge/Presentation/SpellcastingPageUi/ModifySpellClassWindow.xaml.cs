@@ -1,142 +1,140 @@
-﻿using Concierge.Characters.Collections;
-using Concierge.Utility;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+﻿// <copyright file="ModifySpellClassWindow.xaml.cs" company="Thomas Beckett">
+// Copyright (c) Thomas Beckett. All rights reserved.
+// </copyright>
 
 namespace Concierge.Presentation.SpellcastingPageUi
 {
+    using System;
+    using System.Linq;
+    using System.Windows;
+    using System.Windows.Input;
+
+    using Concierge.Characters.Collections;
+    using Concierge.Characters.Enums;
+    using Concierge.Utility;
+
     /// <summary>
-    /// Interaction logic for ModifySpellClassWindow.xaml
+    /// Interaction logic for ModifySpellClassWindow.xaml.
     /// </summary>
     public partial class ModifySpellClassWindow : Window
     {
         public ModifySpellClassWindow()
         {
-            InitializeComponent();
-            ClassNameComboBox.ItemsSource = Enum.GetValues(typeof(Constants.ClassTypes)).Cast<Constants.ClassTypes>();
-            AbilityComboBox.ItemsSource = Enum.GetValues(typeof(Constants.Abilities)).Cast<Constants.Abilities>();
+            this.InitializeComponent();
+            this.ClassNameComboBox.ItemsSource = Enum.GetValues(typeof(ClassType)).Cast<ClassType>();
+            this.AbilityComboBox.ItemsSource = Enum.GetValues(typeof(Abilities)).Cast<Abilities>();
         }
+
+        private bool Editing { get; set; }
+
+        private Guid SelectedClassId { get; set; }
 
         public void AddClass()
         {
-            HeaderTextBlock.Text = "Add Magic Class";
-            Editing = false;
-            ApplyButton.Visibility = Visibility.Visible;
-            ClearFields();
+            this.HeaderTextBlock.Text = "Add Magic Class";
+            this.Editing = false;
+            this.ApplyButton.Visibility = Visibility.Visible;
+            this.ClearFields();
 
-            ShowDialog();
+            this.ShowDialog();
         }
 
         public void EditClass(MagicClass magicClass)
         {
-            HeaderTextBlock.Text = "Edit Magic Class";
-            SelectedClassId = magicClass.ID;
-            Editing = true;
-            ApplyButton.Visibility = Visibility.Collapsed;
-            FillFields(magicClass);
+            this.HeaderTextBlock.Text = "Edit Magic Class";
+            this.SelectedClassId = magicClass.ID;
+            this.Editing = true;
+            this.ApplyButton.Visibility = Visibility.Collapsed;
+            this.FillFields(magicClass);
 
-            ShowDialog();
+            this.ShowDialog();
         }
 
         private void FillFields(MagicClass magicClass)
         {
-            ClassNameComboBox.Text = magicClass.Name;
-            AbilityComboBox.Text = magicClass.Ability.ToString();
-            AttackTextBox.Text = magicClass.Attack.ToString();
-            SaveTextBox.Text = magicClass.Save.ToString();
-            LevelUpDown.Value = magicClass.Level;
-            CantripsUpDown.Value = magicClass.KnownCantrips;
-            SpellsUpDown.Value = magicClass.KnownSpells;
-            PreparedTextBox.Text = magicClass.PreparedSpells.ToString();
+            this.ClassNameComboBox.Text = magicClass.Name;
+            this.AbilityComboBox.Text = magicClass.Ability.ToString();
+            this.AttackTextBox.Text = magicClass.Attack.ToString();
+            this.SaveTextBox.Text = magicClass.Save.ToString();
+            this.LevelUpDown.Value = magicClass.Level;
+            this.CantripsUpDown.Value = magicClass.KnownCantrips;
+            this.SpellsUpDown.Value = magicClass.KnownSpells;
+            this.PreparedTextBox.Text = magicClass.PreparedSpells.ToString();
         }
 
         private void ClearFields()
         {
-            ClassNameComboBox.Text = string.Empty;
-            AbilityComboBox.Text = Constants.Abilities.NONE.ToString();
-            AttackTextBox.Text = string.Empty;
-            SaveTextBox.Text = string.Empty;
-            LevelUpDown.Value = 0;
-            CantripsUpDown.Value = 0;
-            SpellsUpDown.Value = 0;
-            PreparedTextBox.Text = string.Empty;
+            this.ClassNameComboBox.Text = string.Empty;
+            this.AbilityComboBox.Text = Abilities.NONE.ToString();
+            this.AttackTextBox.Text = string.Empty;
+            this.SaveTextBox.Text = string.Empty;
+            this.LevelUpDown.Value = 0;
+            this.CantripsUpDown.Value = 0;
+            this.SpellsUpDown.Value = 0;
+            this.PreparedTextBox.Text = string.Empty;
         }
 
         private void UpdateClass(MagicClass magicClass)
         {
-            magicClass.Name = ClassNameComboBox.Text;
-            magicClass.Ability = (Constants.Abilities)Enum.Parse(typeof(Constants.Abilities), AbilityComboBox.Text);
-            magicClass.Level = LevelUpDown.Value ?? 0;
-            magicClass.KnownCantrips = CantripsUpDown.Value ?? 0;
-            magicClass.KnownSpells = SpellsUpDown.Value ?? 0;
+            magicClass.Name = this.ClassNameComboBox.Text;
+            magicClass.Ability = (Abilities)Enum.Parse(typeof(Abilities), this.AbilityComboBox.Text);
+            magicClass.Level = this.LevelUpDown.Value ?? 0;
+            magicClass.KnownCantrips = this.CantripsUpDown.Value ?? 0;
+            magicClass.KnownSpells = this.SpellsUpDown.Value ?? 0;
         }
 
         private MagicClass ToClass()
         {
-            MagicClass magicClass = new MagicClass()
+            var magicClass = new MagicClass()
             {
-                Name = ClassNameComboBox.Text,
-                Ability = (Constants.Abilities)Enum.Parse(typeof(Constants.Abilities), AbilityComboBox.Text),
-                Level = LevelUpDown.Value ?? 0,
-                KnownSpells = SpellsUpDown.Value ?? 0,
-                KnownCantrips = CantripsUpDown.Value ?? 0
+                Name = this.ClassNameComboBox.Text,
+                Ability = (Abilities)Enum.Parse(typeof(Abilities), this.AbilityComboBox.Text),
+                Level = this.LevelUpDown.Value ?? 0,
+                KnownSpells = this.SpellsUpDown.Value ?? 0,
+                KnownCantrips = this.CantripsUpDown.Value ?? 0,
             };
 
             return magicClass;
         }
-
-        private bool Editing { get; set; }
-        private Guid SelectedClassId { get; set; }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
             switch (e.Key)
             {
                 case Key.Escape:
-                    Hide();
+                    this.Hide();
                     break;
             }
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            Hide();
+            this.Hide();
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
-            if (Editing)
+            if (this.Editing)
             {
-                UpdateClass(Program.Character.GetMagicClassById(SelectedClassId));
+                this.UpdateClass(Program.Character.GetMagicClassById(this.SelectedClassId));
             }
             else
             {
-                Program.Character.MagicClasses.Add(ToClass());
+                Program.Character.MagicClasses.Add(this.ToClass());
             }
 
-            Hide();
+            this.Hide();
         }
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
-            Program.Character.MagicClasses.Add(ToClass());
-            ClearFields();
+            Program.Character.MagicClasses.Add(this.ToClass());
+            this.ClearFields();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            Hide();
+            this.Hide();
         }
     }
 }

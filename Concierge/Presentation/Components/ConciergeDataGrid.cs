@@ -1,6 +1,9 @@
-﻿namespace Concierge.Presentation.Components
+﻿// <copyright file="ConciergeDataGrid.cs" company="Thomas Beckett">
+// Copyright (c) Thomas Beckett. All rights reserved.
+// </copyright>
+
+namespace Concierge.Presentation.Components
 {
-    using System;
     using System.Windows;
     using System.Windows.Controls;
 
@@ -11,20 +14,20 @@
 
         public event RoutedEventHandler Sorted
         {
-            add { AddHandler(SortedEvent, value); }
-            remove { RemoveHandler(SortedEvent, value); }
+            add { this.AddHandler(SortedEvent, value); }
+            remove { this.RemoveHandler(SortedEvent, value); }
         }
 
-        void RaiseSortedEvent()
+        public void RaiseSortedEvent()
         {
             RoutedEventArgs newEventArgs = new RoutedEventArgs(ConciergeDataGrid.SortedEvent);
-            RaiseEvent(newEventArgs);
+            this.RaiseEvent(newEventArgs);
         }
 
         protected override void OnSorting(DataGridSortingEventArgs eventArgs)
         {
             base.OnSorting(eventArgs);
-            RaiseSortedEvent();
+            this.RaiseSortedEvent();
         }
     }
 }

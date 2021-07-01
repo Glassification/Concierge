@@ -1,157 +1,164 @@
-﻿using Concierge.Characters.Collections;
-using Concierge.Utility;
-using System;
-using System.Linq;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Input;
+﻿// <copyright file="ModifyWeaponWindow.xaml.cs" company="Thomas Beckett">
+// Copyright (c) Thomas Beckett. All rights reserved.
+// </copyright>
 
 namespace Concierge.Presentation.EquipmentPageUi
 {
+    using System;
+    using System.Linq;
+    using System.Windows;
+    using System.Windows.Controls;
+    using System.Windows.Input;
+
+    using Concierge.Characters.Collections;
+    using Concierge.Characters.Enums;
+    using Concierge.Utility;
+
     /// <summary>
-    /// Interaction logic for ModifyWeaponWindow.xaml
+    /// Interaction logic for ModifyWeaponWindow.xaml.
     /// </summary>
     public partial class ModifyWeaponWindow : Window
     {
         public ModifyWeaponWindow()
         {
-            InitializeComponent();
-            WeaponComboBox.ItemsSource = Constants.Weapons;
-            TypeComboBox.ItemsSource = Enum.GetValues(typeof(Constants.WeaponTypes)).Cast<Constants.WeaponTypes>();
-            AbilityComboBox.ItemsSource = Enum.GetValues(typeof(Constants.Abilities)).Cast<Constants.Abilities>();
-            DamageTypeComboBox.ItemsSource = Enum.GetValues(typeof(Constants.DamageTypes)).Cast<Constants.DamageTypes>();
+            this.InitializeComponent();
+            this.WeaponComboBox.ItemsSource = Constants.Weapons;
+            this.TypeComboBox.ItemsSource = Enum.GetValues(typeof(WeaponTypes)).Cast<WeaponTypes>();
+            this.AbilityComboBox.ItemsSource = Enum.GetValues(typeof(Abilities)).Cast<Abilities>();
+            this.DamageTypeComboBox.ItemsSource = Enum.GetValues(typeof(DamageTypes)).Cast<DamageTypes>();
         }
+
+        private bool Editing { get; set; }
+
+        private Guid SelectedWeaponId { get; set; }
 
         public void ShowAdd()
         {
-            HeaderTextBlock.Text = "Add Weapon";
-            Editing = false;
-            ApplyButton.Visibility = Visibility.Visible;
-            ClearFields();
+            this.HeaderTextBlock.Text = "Add Weapon";
+            this.Editing = false;
+            this.ApplyButton.Visibility = Visibility.Visible;
+            this.ClearFields();
 
-            ShowDialog();
+            this.ShowDialog();
         }
 
         public void ShowEdit(Weapon weapon)
         {
-            HeaderTextBlock.Text = "Edit Weapon";
-            SelectedWeaponId = weapon.ID;
-            Editing = true;
-            ApplyButton.Visibility = Visibility.Collapsed;
-            FillFields(weapon);
+            this.HeaderTextBlock.Text = "Edit Weapon";
+            this.SelectedWeaponId = weapon.ID;
+            this.Editing = true;
+            this.ApplyButton.Visibility = Visibility.Collapsed;
+            this.FillFields(weapon);
 
-            ShowDialog();
+            this.ShowDialog();
         }
 
         private void FillFields(Weapon weapon)
         {
-            WeaponComboBox.Text = weapon.Name;
-            TypeComboBox.Text = weapon.WeaponType.ToString();
-            AbilityComboBox.Text = weapon.Ability.ToString();
-            DamageTextBox.Text = weapon.Damage;
-            MiscDamageTextBox.Text = weapon.Misc;
-            DamageTypeComboBox.Text = weapon.DamageType.ToString();
-            RangeTextBox.Text = weapon.Range;
-            WeightUpDown.Value = weapon.Weight;
-            ProficencyOverrideCheckBox.IsChecked = weapon.ProficiencyOverride;
-            NotesTextBox.Text = weapon.Note;
+            this.WeaponComboBox.Text = weapon.Name;
+            this.TypeComboBox.Text = weapon.WeaponType.ToString();
+            this.AbilityComboBox.Text = weapon.Ability.ToString();
+            this.DamageTextBox.Text = weapon.Damage;
+            this.MiscDamageTextBox.Text = weapon.Misc;
+            this.DamageTypeComboBox.Text = weapon.DamageType.ToString();
+            this.RangeTextBox.Text = weapon.Range;
+            this.WeightUpDown.Value = weapon.Weight;
+            this.ProficencyOverrideCheckBox.IsChecked = weapon.ProficiencyOverride;
+            this.NotesTextBox.Text = weapon.Note;
         }
 
         private void ClearFields()
         {
-            WeaponComboBox.Text = string.Empty;
-            TypeComboBox.Text = string.Empty;
-            AbilityComboBox.Text = string.Empty;
-            DamageTextBox.Text = string.Empty;
-            MiscDamageTextBox.Text = string.Empty;
-            DamageTypeComboBox.Text = string.Empty;
-            RangeTextBox.Text = string.Empty;
-            WeightUpDown.Value = 0.0;
-            ProficencyOverrideCheckBox.IsChecked = false;
-            NotesTextBox.Text = string.Empty;
+            this.WeaponComboBox.Text = string.Empty;
+            this.TypeComboBox.Text = string.Empty;
+            this.AbilityComboBox.Text = string.Empty;
+            this.DamageTextBox.Text = string.Empty;
+            this.MiscDamageTextBox.Text = string.Empty;
+            this.DamageTypeComboBox.Text = string.Empty;
+            this.RangeTextBox.Text = string.Empty;
+            this.WeightUpDown.Value = 0.0;
+            this.ProficencyOverrideCheckBox.IsChecked = false;
+            this.NotesTextBox.Text = string.Empty;
         }
 
         private void UpdateWeapon(Weapon weapon)
         {
-            weapon.Name = WeaponComboBox.Text;
-            weapon.WeaponType = (Constants.WeaponTypes)Enum.Parse(typeof(Constants.WeaponTypes), TypeComboBox.Text);
-            weapon.Ability = (Constants.Abilities)Enum.Parse(typeof(Constants.Abilities), AbilityComboBox.Text);
-            weapon.Damage = DamageTextBox.Text;
-            weapon.Misc = MiscDamageTextBox.Text;
-            weapon.DamageType = (Constants.DamageTypes)Enum.Parse(typeof(Constants.DamageTypes), DamageTypeComboBox.Text);
-            weapon.Range = RangeTextBox.Text;
-            weapon.Weight = WeightUpDown.Value ?? 0.0;
-            weapon.ProficiencyOverride = ProficencyOverrideCheckBox.IsChecked ?? false;
-            weapon.Note = NotesTextBox.Text;
+            weapon.Name = this.WeaponComboBox.Text;
+            weapon.WeaponType = (WeaponTypes)Enum.Parse(typeof(WeaponTypes), this.TypeComboBox.Text);
+            weapon.Ability = (Abilities)Enum.Parse(typeof(Abilities), this.AbilityComboBox.Text);
+            weapon.Damage = this.DamageTextBox.Text;
+            weapon.Misc = this.MiscDamageTextBox.Text;
+            weapon.DamageType = (DamageTypes)Enum.Parse(typeof(DamageTypes), this.DamageTypeComboBox.Text);
+            weapon.Range = this.RangeTextBox.Text;
+            weapon.Weight = this.WeightUpDown.Value ?? 0.0;
+            weapon.ProficiencyOverride = this.ProficencyOverrideCheckBox.IsChecked ?? false;
+            weapon.Note = this.NotesTextBox.Text;
         }
 
         private Weapon ToWeapon()
         {
-            Weapon weapon = new Weapon()
+            var weapon = new Weapon()
             {
-                Name = WeaponComboBox.Text,
-                WeaponType = (Constants.WeaponTypes)Enum.Parse(typeof(Constants.WeaponTypes), TypeComboBox.Text),
-                Ability = (Constants.Abilities)Enum.Parse(typeof(Constants.Abilities), AbilityComboBox.Text),
-                Damage = DamageTextBox.Text,
-                Misc = MiscDamageTextBox.Text,
-                DamageType = (Constants.DamageTypes)Enum.Parse(typeof(Constants.DamageTypes), DamageTypeComboBox.Text),
-                Range = RangeTextBox.Text,
-                Weight = WeightUpDown.Value ?? 0.0,
-                ProficiencyOverride = ProficencyOverrideCheckBox.IsChecked ?? false,
-                Note = NotesTextBox.Text
+                Name = this.WeaponComboBox.Text,
+                WeaponType = (WeaponTypes)Enum.Parse(typeof(WeaponTypes), this.TypeComboBox.Text),
+                Ability = (Abilities)Enum.Parse(typeof(Abilities), this.AbilityComboBox.Text),
+                Damage = this.DamageTextBox.Text,
+                Misc = this.MiscDamageTextBox.Text,
+                DamageType = (DamageTypes)Enum.Parse(typeof(DamageTypes), this.DamageTypeComboBox.Text),
+                Range = this.RangeTextBox.Text,
+                Weight = this.WeightUpDown.Value ?? 0.0,
+                ProficiencyOverride = this.ProficencyOverrideCheckBox.IsChecked ?? false,
+                Note = this.NotesTextBox.Text,
             };
 
             return weapon;
         }
-
-        private bool Editing { get; set; }
-        private Guid SelectedWeaponId { get; set; }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
             switch (e.Key)
             {
                 case Key.Escape:
-                    Hide();
+                    this.Hide();
                     break;
             }
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            Hide();
+            this.Hide();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            Hide();
+            this.Hide();
         }
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
-            Program.Character.Weapons.Add(ToWeapon());
-            ClearFields();
+            Program.Character.Weapons.Add(this.ToWeapon());
+            this.ClearFields();
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
-            if (Editing)
+            if (this.Editing)
             {
-                UpdateWeapon(Program.Character.GetWeaponById(SelectedWeaponId));
+                this.UpdateWeapon(Program.Character.GetWeaponById(this.SelectedWeaponId));
             }
             else
             {
-                Program.Character.Weapons.Add(ToWeapon());
+                Program.Character.Weapons.Add(this.ToWeapon());
             }
 
-            Hide();
+            this.Hide();
         }
 
         private void WeaponComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (WeaponComboBox.SelectedItem != null)
+            if (this.WeaponComboBox.SelectedItem != null)
             {
-                FillFields(WeaponComboBox.SelectedItem as Weapon);
+                this.FillFields(this.WeaponComboBox.SelectedItem as Weapon);
             }
         }
     }

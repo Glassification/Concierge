@@ -1,32 +1,30 @@
-﻿using Concierge.Utility;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// <copyright file="Weapon.cs" company="Thomas Beckett">
+// Copyright (c) Thomas Beckett. All rights reserved.
+// </copyright>
 
 namespace Concierge.Characters.Collections
 {
+    using System;
+
+    using Concierge.Characters.Enums;
+    using Concierge.Utility;
+
     public class Weapon
     {
         public Weapon()
         {
-            ID = Guid.NewGuid();
-            ProficiencyOverride = false;
+            this.ID = Guid.NewGuid();
+            this.ProficiencyOverride = false;
         }
 
         public Weapon(Guid id)
         {
-            ID = id;
-            ProficiencyOverride = false;
-        }
-
-        public override string ToString()
-        {
-            return Name;
+            this.ID = id;
+            this.ProficiencyOverride = false;
         }
 
         public string Name { get; set; }
+
         public int Attack
         {
             get
@@ -34,35 +32,52 @@ namespace Concierge.Characters.Collections
                 int bonus = 0;
 
                 if (Program.Character.IsWeaponProficient(this))
+                {
                     bonus = Program.Character.ProficiencyBonus;
+                }
 
-                switch (Ability)
+                switch (this.Ability)
                 {
                     default:
-                    case Constants.Abilities.STR:
+                    case Abilities.STR:
                         return Utilities.CalculateBonus(Program.Character.Attributes.Strength) + bonus;
-                    case Constants.Abilities.DEX:
+                    case Abilities.DEX:
                         return Utilities.CalculateBonus(Program.Character.Attributes.Dexterity) + bonus;
-                    case Constants.Abilities.CON:
+                    case Abilities.CON:
                         return Utilities.CalculateBonus(Program.Character.Attributes.Constitution) + bonus;
-                    case Constants.Abilities.INT:
+                    case Abilities.INT:
                         return Utilities.CalculateBonus(Program.Character.Attributes.Intelligence) + bonus;
-                    case Constants.Abilities.WIS:
+                    case Abilities.WIS:
                         return Utilities.CalculateBonus(Program.Character.Attributes.Wisdom) + bonus;
-                    case Constants.Abilities.CHA:
+                    case Abilities.CHA:
                         return Utilities.CalculateBonus(Program.Character.Attributes.Charisma) + bonus;
                 }
             }
         }
-        public Constants.Abilities Ability { get; set; }
+
+        public Abilities Ability { get; set; }
+
         public string Damage { get; set; }
+
         public string Misc { get; set; }
-        public Constants.DamageTypes DamageType { get; set; }
+
+        public DamageTypes DamageType { get; set; }
+
         public string Range { get; set; }
+
         public string Note { get; set; }
+
         public double Weight { get; set; }
-        public Constants.WeaponTypes WeaponType { get; set; }
+
+        public WeaponTypes WeaponType { get; set; }
+
         public bool ProficiencyOverride { get; set; }
+
         public Guid ID { get; private set; }
+
+        public override string ToString()
+        {
+            return this.Name;
+        }
     }
 }

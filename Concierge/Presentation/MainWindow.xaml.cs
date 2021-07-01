@@ -1,28 +1,31 @@
-﻿using Concierge.Persistence;
-using Concierge.Presentation.AbilitiesPageUi;
-using Concierge.Presentation.DetailsPageUi;
-using Concierge.Presentation.EquipmentPageUi;
-using Concierge.Presentation.InventoryPageUi;
-using Concierge.Presentation.NotesPageUi;
-using Concierge.Presentation.OverviewPageUi;
-using Concierge.Presentation.SpellcastingPageUi;
-using Concierge.Presentation.ToolsPageUi;
-using Concierge.Utility;
-using Microsoft.Win32;
-using System;
-using System.Windows;
-using System.Windows.Input;
+﻿// <copyright file="MainWindow.xaml.cs" company="Thomas Beckett">
+// Copyright (c) Thomas Beckett. All rights reserved.
+// </copyright>
 
 namespace Concierge.Presentation
 {
+    using System;
+    using System.Windows;
+    using System.Windows.Input;
+    using System.Windows.Media;
+
+    using Concierge.Persistence;
+    using Concierge.Presentation.AbilitiesPageUi;
+    using Concierge.Presentation.DetailsPageUi;
+    using Concierge.Presentation.EquipmentPageUi;
+    using Concierge.Presentation.InventoryPageUi;
+    using Concierge.Presentation.NotesPageUi;
+    using Concierge.Presentation.OverviewPageUi;
+    using Concierge.Presentation.SpellcastingPageUi;
+    using Concierge.Presentation.ToolsPageUi;
+    using Concierge.Utility;
+    using Microsoft.Win32;
+
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for MainWindow.xaml.
     /// </summary>
     public partial class MainWindow : Window
     {
-
-        #region Members
-
         private OpenFileDialog openFileDialog = new OpenFileDialog();
         private SaveFileDialog saveFileDialog = new SaveFileDialog();
 
@@ -35,34 +38,26 @@ namespace Concierge.Presentation
         SpellcastingPage SpellcastingPage = new SpellcastingPage();
         ToolsPage ToolsPage = new ToolsPage();
 
-        #endregion
-
-        #region Constructor
-
         public MainWindow()
         {
-            InitializeComponent();
+            this.InitializeComponent();
 
-            Style = (Style)FindResource(typeof(Window));
+            this.Style = (Style)this.FindResource(typeof(Window));
 
-            GridContent.Width = GridContentWidthClose;
+            this.GridContent.Width = this.GridContentWidthClose;
 
-            InventoryPage.Visibility = Visibility.Collapsed;
-            EquipmentPage.Visibility = Visibility.Collapsed;
-            AbilitiesPage.Visibility = Visibility.Collapsed;
-            DetailsPage.Visibility = Visibility.Collapsed;
-            NotesPage.Visibility = Visibility.Collapsed;
-            SpellcastingPage.Visibility = Visibility.Collapsed;
-            ToolsPage.Visibility = Visibility.Collapsed;
-            OverviewPage.Visibility = Visibility.Visible;
-            FrameContent.Content = OverviewPage;
+            this.InventoryPage.Visibility = Visibility.Collapsed;
+            this.EquipmentPage.Visibility = Visibility.Collapsed;
+            this.AbilitiesPage.Visibility = Visibility.Collapsed;
+            this.DetailsPage.Visibility = Visibility.Collapsed;
+            this.NotesPage.Visibility = Visibility.Collapsed;
+            this.SpellcastingPage.Visibility = Visibility.Collapsed;
+            this.ToolsPage.Visibility = Visibility.Collapsed;
+            this.OverviewPage.Visibility = Visibility.Visible;
+            this.FrameContent.Content = this.OverviewPage;
 
-            DataContext = this;
+            this.DataContext = this;
         }
-
-        #endregion
-
-        #region Methods
 
         protected override void OnClosed(EventArgs e)
         {
@@ -78,7 +73,7 @@ namespace Concierge.Presentation
                 // TODO Display popup - would you like to close without saving?
             }
 
-            Close();
+            this.Close();
         }
 
         public void NewCharacterSheet()
@@ -86,85 +81,91 @@ namespace Concierge.Presentation
             Program.CcsFile = null;
             Program.Character.Reset();
 
-            NotesPage.ClearTextBox();
-            DrawAll();
+            this.NotesPage.ClearTextBox();
+            this.DrawAll();
         }
 
         public void OpenCharacterSheet()
         {
-            if (openFileDialog.ShowDialog() ?? false)
+            if (this.openFileDialog.ShowDialog() ?? false)
             {
                 Program.CcsFile = new CcsFile();
-                Program.CcsFile.Path = openFileDialog.FileName;
+                Program.CcsFile.Path = this.openFileDialog.FileName;
 
                 Program.Character.Reset();
                 CharacterLoader.LoadCharacterSheet(Program.Character, Program.CcsFile);
 
-                DrawAll();
+                this.DrawAll();
             }
         }
 
         public void SaveCharacterSheet()
         {
-
             if (Program.CcsFile != null)
             {
-                NotesPage.SaveTextBox();
+                this.NotesPage.SaveTextBox();
                 CharacterSaver.SaveCharacterSheet(Program.Character, Program.CcsFile);
             }
             else
             {
-                SaveCharacterSheetAs();
+                this.SaveCharacterSheetAs();
             }
         }
 
         public void SaveCharacterSheetAs()
         {
-            if (saveFileDialog.ShowDialog() ?? false)
+            if (this.saveFileDialog.ShowDialog() ?? false)
             {
-
                 Program.CcsFile = new CcsFile();
-                Program.CcsFile.Path = saveFileDialog.FileName;
+                Program.CcsFile.Path = this.saveFileDialog.FileName;
 
-                NotesPage.SaveTextBox();
+                this.NotesPage.SaveTextBox();
                 CharacterSaver.SaveCharacterSheet(Program.Character, Program.CcsFile);
             }
         }
 
         public void DrawAll()
         {
-            TextCharacterName.Text = Program.Character.Details.Name;
-            TextCharacterRace.Text = Program.Character.Details.Race;
-            TextCharacterBackground.Text = Program.Character.Details.Background;
-            TextCharacterAlignment.Text = Program.Character.Details.Alignment;
+            this.TextCharacterName.Text = Program.Character.Details.Name;
+            this.TextCharacterRace.Text = Program.Character.Details.Race;
+            this.TextCharacterBackground.Text = Program.Character.Details.Background;
+            this.TextCharacterAlignment.Text = Program.Character.Details.Alignment;
 
             if (Program.Character.Level > 0)
-                TextCharacterLevel.Text = "Level " + Program.Character.Level;
+            {
+                this.TextCharacterLevel.Text = "Level " + Program.Character.Level;
+            }
             else
-                TextCharacterLevel.Text = "";
+            {
+                this.TextCharacterLevel.Text = string.Empty;
+            }
 
             if (Program.Character.Level > 0 && Program.Character.Level <= Constants.MAX_LEVEL)
-                TextCharacterXp.Text = Program.Character.Details.Experience + "/" + Program.Character.ExperienceToLevel + " Experience";
+            {
+                this.TextCharacterXp.Text = Program.Character.Details.Experience + "/" + Program.Character.ExperienceToLevel + " Experience";
+            }
             else
-                TextCharacterLevel.Text = "";
+            {
+                this.TextCharacterLevel.Text = string.Empty;
+            }
 
-            TextCharacterClass.Text = Program.Character.GetClasses;
+            this.TextCharacterClass.Text = Program.Character.GetClasses;
 
-            InventoryPage.Draw();
-            AbilitiesPage.Draw();
-            EquipmentPage.Draw();
-            OverviewPage.Draw();
-            DetailsPage.Draw();
-            NotesPage.Draw();
-            SpellcastingPage.Draw();
-            ToolsPage.Draw();
+            this.InventoryPage.Draw();
+            this.AbilitiesPage.Draw();
+            this.EquipmentPage.Draw();
+            this.OverviewPage.Draw();
+            this.DetailsPage.Draw();
+            this.NotesPage.Draw();
+            this.SpellcastingPage.Draw();
+            this.ToolsPage.Draw();
         }
 
         public void LongRest()
         {
             Program.Character.LongRest();
 
-            DrawAll();
+            this.DrawAll();
         }
 
         private bool IsControl()
@@ -177,35 +178,13 @@ namespace Concierge.Presentation
             return (Keyboard.Modifiers & ModifierKeys.Shift) == ModifierKeys.Shift;
         }
 
-        #endregion
+        public double GridContentWidthOpen => SystemParameters.PrimaryScreenWidth - 200;
 
-        #region Accessors
-
-        public double GridContentWidthOpen
-        {
-            get
-            {
-                return SystemParameters.PrimaryScreenWidth - 200;
-            }
-        }
-
-        public double GridContentWidthClose
-        {
-            get
-            {
-                return SystemParameters.PrimaryScreenWidth - 60;
-            }
-        }
-
-        #endregion
-
-        #region Events
-
-        #region Window Events
+        public double GridContentWidthClose => SystemParameters.PrimaryScreenWidth - 60;
 
         private void MainWindow_ContentRendered(object sender, EventArgs e)
         {
-            FrameContent.NavigationUIVisibility = System.Windows.Navigation.NavigationUIVisibility.Hidden;
+            this.FrameContent.NavigationUIVisibility = System.Windows.Navigation.NavigationUIVisibility.Hidden;
         }
 
         private void MainWindow_KeyPress(object sender, KeyEventArgs e)
@@ -216,41 +195,41 @@ namespace Concierge.Presentation
                 {
                     // Long Rest
                     case Key.L:
-                        if (IsControl())
+                        if (this.IsControl())
                         {
-                            LongRest();
+                            this.LongRest();
                         }
                         break;
                     // New Character Sheet
                     case Key.N:
-                        if (IsControl())
+                        if (this.IsControl())
                         {
-                            NewCharacterSheet();
+                            this.NewCharacterSheet();
                         }
                         break;
                     // Open Character Sheet
                     case Key.O:
-                        if (IsControl())
+                        if (this.IsControl())
                         {
-                            OpenCharacterSheet();
+                            this.OpenCharacterSheet();
                         }
                         break;
                     // Close Window
                     case Key.Q:
-                        if (IsControl())
+                        if (this.IsControl())
                         {
-                            CloseWindow();
+                            this.CloseWindow();
                         }
                         break;
                     // Save Character Sheet
                     case Key.S:
-                        if (IsControl() && IsShift())
+                        if (this.IsControl() && this.IsShift())
                         {
-                            SaveCharacterSheetAs();
+                            this.SaveCharacterSheetAs();
                         }
-                        else if (IsControl())
+                        else if (this.IsControl())
                         {
-                            SaveCharacterSheet();
+                            this.SaveCharacterSheet();
                         }
                         break;
                     // --------------------------------------------------------------
@@ -282,176 +261,192 @@ namespace Concierge.Presentation
             }
         }
 
-        #endregion
-
-        #region Menu Events
-
         private void ButtonOpenMenu_Click(object sender, RoutedEventArgs e)
         {
-            ButtonCloseMenu.Visibility = Visibility.Visible;
-            ButtonOpenMenu.Visibility = Visibility.Collapsed;
+            this.ButtonCloseMenu.Visibility = Visibility.Visible;
+            this.ButtonOpenMenu.Visibility = Visibility.Collapsed;
 
-            GridContent.Width = GridContentWidthOpen;
+            this.GridContent.Width = this.GridContentWidthOpen;
         }
 
         private void ButtonCloseMenu_Click(object sender, RoutedEventArgs e)
         {
-            ButtonCloseMenu.Visibility = Visibility.Collapsed;
-            ButtonOpenMenu.Visibility = Visibility.Visible;
+            this.ButtonCloseMenu.Visibility = Visibility.Collapsed;
+            this.ButtonOpenMenu.Visibility = Visibility.Visible;
 
-            GridContent.Width = GridContentWidthClose;
+            this.GridContent.Width = this.GridContentWidthClose;
         }
 
         private void ButtonClose_Click(object sender, RoutedEventArgs e)
         {
-            CloseWindow();
+            this.CloseWindow();
         }
 
         private void ButtonNewCharacter_Click(object sender, RoutedEventArgs e)
         {
-            NewCharacterSheet();
+            this.NewCharacterSheet();
         }
 
         private void ButtonOpenCharacter_Click(object sender, RoutedEventArgs e)
         {
-            OpenCharacterSheet();
+            this.OpenCharacterSheet();
         }
 
         private void ButtonSaveCharacter_Click(object sender, RoutedEventArgs e)
         {
-            SaveCharacterSheet();
+            this.SaveCharacterSheet();
         }
 
         private void ButtonSaveCharacterAs_Click(object sender, RoutedEventArgs e)
         {
-            SaveCharacterSheetAs();
+            this.SaveCharacterSheetAs();
         }
 
         private void ButtonLongRest_Click(object sender, RoutedEventArgs e)
         {
-            LongRest();
+            this.LongRest();
         }
-
-        #endregion
-
-        #region Page Selection Events
 
         private void ItemNotes_Selected(object sender, RoutedEventArgs e)
         {
-            InventoryPage.Visibility = Visibility.Collapsed;
-            EquipmentPage.Visibility = Visibility.Collapsed;
-            AbilitiesPage.Visibility = Visibility.Collapsed;
-            OverviewPage.Visibility = Visibility.Collapsed;
-            DetailsPage.Visibility = Visibility.Collapsed;
-            SpellcastingPage.Visibility = Visibility.Collapsed;
-            ToolsPage.Visibility = Visibility.Collapsed;
-            NotesPage.Visibility = Visibility.Visible;
-            FrameContent.Content = NotesPage;
-            NotesPage.Draw();
+            this.InventoryPage.Visibility = Visibility.Collapsed;
+            this.EquipmentPage.Visibility = Visibility.Collapsed;
+            this.AbilitiesPage.Visibility = Visibility.Collapsed;
+            this.OverviewPage.Visibility = Visibility.Collapsed;
+            this.DetailsPage.Visibility = Visibility.Collapsed;
+            this.SpellcastingPage.Visibility = Visibility.Collapsed;
+            this.ToolsPage.Visibility = Visibility.Collapsed;
+            this.NotesPage.Visibility = Visibility.Visible;
+            this.FrameContent.Content = this.NotesPage;
+            this.NotesPage.Draw();
         }
 
         private void ItemInventory_Selected(object sender, RoutedEventArgs e)
         {
-            EquipmentPage.Visibility = Visibility.Collapsed;
-            AbilitiesPage.Visibility = Visibility.Collapsed;
-            OverviewPage.Visibility = Visibility.Collapsed;
-            DetailsPage.Visibility = Visibility.Collapsed;
-            NotesPage.Visibility = Visibility.Collapsed;
-            SpellcastingPage.Visibility = Visibility.Collapsed;
-            ToolsPage.Visibility = Visibility.Collapsed;
-            InventoryPage.Visibility = Visibility.Visible;
-            FrameContent.Content = InventoryPage;
-            InventoryPage.Draw();
+            this.EquipmentPage.Visibility = Visibility.Collapsed;
+            this.AbilitiesPage.Visibility = Visibility.Collapsed;
+            this.OverviewPage.Visibility = Visibility.Collapsed;
+            this.DetailsPage.Visibility = Visibility.Collapsed;
+            this.NotesPage.Visibility = Visibility.Collapsed;
+            this.SpellcastingPage.Visibility = Visibility.Collapsed;
+            this.ToolsPage.Visibility = Visibility.Collapsed;
+            this.InventoryPage.Visibility = Visibility.Visible;
+            this.FrameContent.Content = this.InventoryPage;
+            this.InventoryPage.Draw();
         }
 
         private void ItemDetails_Selected(object sender, RoutedEventArgs e)
         {
-            InventoryPage.Visibility = Visibility.Collapsed;
-            EquipmentPage.Visibility = Visibility.Collapsed;
-            AbilitiesPage.Visibility = Visibility.Collapsed;
-            OverviewPage.Visibility = Visibility.Collapsed;
-            NotesPage.Visibility = Visibility.Collapsed;
-            SpellcastingPage.Visibility = Visibility.Collapsed;
-            ToolsPage.Visibility = Visibility.Collapsed;
-            DetailsPage.Visibility = Visibility.Visible;
-            FrameContent.Content = DetailsPage;
-            DetailsPage.Draw();
+            this.InventoryPage.Visibility = Visibility.Collapsed;
+            this.EquipmentPage.Visibility = Visibility.Collapsed;
+            this.AbilitiesPage.Visibility = Visibility.Collapsed;
+            this.OverviewPage.Visibility = Visibility.Collapsed;
+            this.NotesPage.Visibility = Visibility.Collapsed;
+            this.SpellcastingPage.Visibility = Visibility.Collapsed;
+            this.ToolsPage.Visibility = Visibility.Collapsed;
+            this.DetailsPage.Visibility = Visibility.Visible;
+            this.FrameContent.Content = this.DetailsPage;
+            this.DetailsPage.Draw();
         }
 
         private void ItemAbilities_Selected(object sender, RoutedEventArgs e)
         {
-            InventoryPage.Visibility = Visibility.Collapsed;
-            EquipmentPage.Visibility = Visibility.Collapsed;
-            OverviewPage.Visibility = Visibility.Collapsed;
-            DetailsPage.Visibility = Visibility.Collapsed;
-            NotesPage.Visibility = Visibility.Collapsed;
-            SpellcastingPage.Visibility = Visibility.Collapsed;
-            ToolsPage.Visibility = Visibility.Collapsed;
-            AbilitiesPage.Visibility = Visibility.Visible;
-            FrameContent.Content = AbilitiesPage;
-            AbilitiesPage.Draw();
+            this.InventoryPage.Visibility = Visibility.Collapsed;
+            this.EquipmentPage.Visibility = Visibility.Collapsed;
+            this.OverviewPage.Visibility = Visibility.Collapsed;
+            this.DetailsPage.Visibility = Visibility.Collapsed;
+            this.NotesPage.Visibility = Visibility.Collapsed;
+            this.SpellcastingPage.Visibility = Visibility.Collapsed;
+            this.ToolsPage.Visibility = Visibility.Collapsed;
+            this.AbilitiesPage.Visibility = Visibility.Visible;
+            this.FrameContent.Content = this.AbilitiesPage;
+            this.AbilitiesPage.Draw();
         }
 
         private void ItemEquipment_Selected(object sender, RoutedEventArgs e)
         {
-            InventoryPage.Visibility = Visibility.Collapsed;
-            AbilitiesPage.Visibility = Visibility.Collapsed;
-            OverviewPage.Visibility = Visibility.Collapsed;
-            DetailsPage.Visibility = Visibility.Collapsed;
-            NotesPage.Visibility = Visibility.Collapsed;
-            SpellcastingPage.Visibility = Visibility.Collapsed;
-            ToolsPage.Visibility = Visibility.Collapsed;
-            EquipmentPage.Visibility = Visibility.Visible;
-            FrameContent.Content = EquipmentPage;
-            EquipmentPage.Draw();
+            this.InventoryPage.Visibility = Visibility.Collapsed;
+            this.AbilitiesPage.Visibility = Visibility.Collapsed;
+            this.OverviewPage.Visibility = Visibility.Collapsed;
+            this.DetailsPage.Visibility = Visibility.Collapsed;
+            this.NotesPage.Visibility = Visibility.Collapsed;
+            this.SpellcastingPage.Visibility = Visibility.Collapsed;
+            this.ToolsPage.Visibility = Visibility.Collapsed;
+            this.EquipmentPage.Visibility = Visibility.Visible;
+            this.FrameContent.Content = this.EquipmentPage;
+            this.EquipmentPage.Draw();
         }
 
         private void ItemOverview_Selected(object sender, RoutedEventArgs e)
         {
-            InventoryPage.Visibility = Visibility.Collapsed;
-            EquipmentPage.Visibility = Visibility.Collapsed;
-            AbilitiesPage.Visibility = Visibility.Collapsed;
-            DetailsPage.Visibility = Visibility.Collapsed;
-            NotesPage.Visibility = Visibility.Collapsed;
-            SpellcastingPage.Visibility = Visibility.Collapsed;
-            ToolsPage.Visibility = Visibility.Collapsed;
-            OverviewPage.Visibility = Visibility.Visible;
-            FrameContent.Content = OverviewPage;
-            OverviewPage.Draw();
+            this.InventoryPage.Visibility = Visibility.Collapsed;
+            this.EquipmentPage.Visibility = Visibility.Collapsed;
+            this.AbilitiesPage.Visibility = Visibility.Collapsed;
+            this.DetailsPage.Visibility = Visibility.Collapsed;
+            this.NotesPage.Visibility = Visibility.Collapsed;
+            this.SpellcastingPage.Visibility = Visibility.Collapsed;
+            this.ToolsPage.Visibility = Visibility.Collapsed;
+            this.OverviewPage.Visibility = Visibility.Visible;
+            this.FrameContent.Content = this.OverviewPage;
+            this.OverviewPage.Draw();
         }
 
         private void ItemSpellcasting_Selected(object sender, RoutedEventArgs e)
         {
-            InventoryPage.Visibility = Visibility.Collapsed;
-            EquipmentPage.Visibility = Visibility.Collapsed;
-            AbilitiesPage.Visibility = Visibility.Collapsed;
-            OverviewPage.Visibility = Visibility.Collapsed;
-            DetailsPage.Visibility = Visibility.Collapsed;
-            NotesPage.Visibility = Visibility.Collapsed;
-            SpellcastingPage.Visibility = Visibility.Visible;
-            ToolsPage.Visibility = Visibility.Collapsed;
-            FrameContent.Content = SpellcastingPage;
-            SpellcastingPage.Draw();
+            this.InventoryPage.Visibility = Visibility.Collapsed;
+            this.EquipmentPage.Visibility = Visibility.Collapsed;
+            this.AbilitiesPage.Visibility = Visibility.Collapsed;
+            this.OverviewPage.Visibility = Visibility.Collapsed;
+            this.DetailsPage.Visibility = Visibility.Collapsed;
+            this.NotesPage.Visibility = Visibility.Collapsed;
+            this.SpellcastingPage.Visibility = Visibility.Visible;
+            this.ToolsPage.Visibility = Visibility.Collapsed;
+            this.FrameContent.Content = this.SpellcastingPage;
+            this.SpellcastingPage.Draw();
         }
 
         private void ItemTools_Selected(object sender, RoutedEventArgs e)
         {
-            InventoryPage.Visibility = Visibility.Collapsed;
-            EquipmentPage.Visibility = Visibility.Collapsed;
-            AbilitiesPage.Visibility = Visibility.Collapsed;
-            OverviewPage.Visibility = Visibility.Collapsed;
-            DetailsPage.Visibility = Visibility.Collapsed;
-            NotesPage.Visibility = Visibility.Collapsed;
-            SpellcastingPage.Visibility = Visibility.Collapsed;
-            ToolsPage.Visibility = Visibility.Visible;
-            FrameContent.Content = ToolsPage;
-            ToolsPage.Draw();
+            this.InventoryPage.Visibility = Visibility.Collapsed;
+            this.EquipmentPage.Visibility = Visibility.Collapsed;
+            this.AbilitiesPage.Visibility = Visibility.Collapsed;
+            this.OverviewPage.Visibility = Visibility.Collapsed;
+            this.DetailsPage.Visibility = Visibility.Collapsed;
+            this.NotesPage.Visibility = Visibility.Collapsed;
+            this.SpellcastingPage.Visibility = Visibility.Collapsed;
+            this.ToolsPage.Visibility = Visibility.Visible;
+            this.FrameContent.Content = this.ToolsPage;
+            this.ToolsPage.Draw();
         }
 
-        #endregion
+        private void ButtonOpenMenu_MouseEnter(object sender, MouseEventArgs e)
+        {
+            this.ButtonOpenMenu.Foreground = Brushes.Black;
+        }
 
-        #endregion
+        private void ButtonOpenMenu_MouseLeave(object sender, MouseEventArgs e)
+        {
+            this.ButtonOpenMenu.Foreground = Brushes.White;
+        }
 
+        private void ButtonCloseMenu_MouseEnter(object sender, MouseEventArgs e)
+        {
+            this.ButtonCloseMenu.Foreground = Brushes.Black;
+        }
 
+        private void ButtonCloseMenu_MouseLeave(object sender, MouseEventArgs e)
+        {
+            this.ButtonCloseMenu.Foreground = Brushes.White;
+        }
+
+        private void ButtonClose_MouseEnter(object sender, MouseEventArgs e)
+        {
+            this.ButtonClose.Foreground = Brushes.Black;
+        }
+
+        private void ButtonClose_MouseLeave(object sender, MouseEventArgs e)
+        {
+            this.ButtonClose.Foreground = Brushes.White;
+        }
     }
 }

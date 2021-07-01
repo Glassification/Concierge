@@ -75,10 +75,31 @@
             <!-- Side Menu Toggle -->
             <Grid x:Name="GridMenuButton" Grid.Column="0" Background="#FF191919">
                 <StackPanel>
-                    <Button x:Name="ButtonOpenMenu" Height="50" Width="60" HorizontalAlignment="Center" VerticalAlignment="Center" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Click="ButtonOpenMenu_Click">
+                    <Button x:Name="ButtonOpenMenu" 
+                            Height="50" 
+                            Width="60" 
+                            HorizontalAlignment="Center" 
+                            VerticalAlignment="Center" 
+                            Background="Transparent" 
+                            BorderBrush="{x:Null}" 
+                            Foreground="White" 
+                            Click="ButtonOpenMenu_Click"
+                            MouseEnter="ButtonOpenMenu_MouseEnter"
+                            MouseLeave="ButtonOpenMenu_MouseLeave">
                         <materialDesign:PackIcon Kind="Menu" Width="25" Height="25"/>
                     </Button>
-                    <Button x:Name="ButtonCloseMenu" Visibility="Collapsed" Height="50" Width="60" HorizontalAlignment="Center" VerticalAlignment="Center" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Click="ButtonCloseMenu_Click">
+                    <Button x:Name="ButtonCloseMenu" 
+                            Visibility="Collapsed" 
+                            Height="50" 
+                            Width="60" 
+                            HorizontalAlignment="Center" 
+                            VerticalAlignment="Center" 
+                            Background="Transparent" 
+                            BorderBrush="{x:Null}" 
+                            Foreground="White" 
+                            Click="ButtonCloseMenu_Click"
+                            MouseEnter="ButtonCloseMenu_MouseEnter"
+                            MouseLeave="ButtonCloseMenu_MouseLeave">
                         <materialDesign:PackIcon Kind="Menu" Width="25" Height="25"/>
                     </Button>
                 </StackPanel>
@@ -98,7 +119,11 @@
 
             <Grid x:Name="OptionButtons" Grid.Column="2" Background="Black">
                 <StackPanel Orientation="Horizontal">
-                    <materialDesign:PopupBox PlacementMode="BottomAndAlignRightEdges" Foreground="White" StaysOpen="False" Margin="10">
+                    <materialDesign:PopupBox 
+                        PlacementMode="BottomAndAlignRightEdges" 
+                        Foreground="White" 
+                        StaysOpen="False" 
+                        Margin="10">
                         <StackPanel Width="150" Background="#FF191919">
                             <Button x:Name="ButtonNewCharacter" Foreground="White" Click="ButtonNewCharacter_Click">
                                 <StackPanel Orientation="Horizontal">
@@ -146,7 +171,16 @@
                             </Button>
                         </StackPanel>
                     </materialDesign:PopupBox>
-                    <Button x:Name="ButtonClose" Height="50" Width="60" HorizontalAlignment="Center" VerticalAlignment="Center" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Click="ButtonClose_Click">
+                    <Button x:Name="ButtonClose" 
+                            Height="50" Width="60" 
+                            HorizontalAlignment="Center" 
+                            VerticalAlignment="Center" 
+                            Background="Transparent" 
+                            BorderBrush="{x:Null}" 
+                            Foreground="White" 
+                            Click="ButtonClose_Click"
+                            MouseEnter="ButtonClose_MouseEnter"
+                            MouseLeave="ButtonClose_MouseLeave">
                         <materialDesign:PackIcon Kind="Power" Width="25" Height="25"/>
                     </Button>
                 </StackPanel>

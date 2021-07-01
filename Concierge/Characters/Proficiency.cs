@@ -1,85 +1,86 @@
-﻿using Concierge.Utility;
-using System;
-using System.Collections.Generic;
+﻿// <copyright file="Proficiency.cs" company="Thomas Beckett">
+// Copyright (c) Thomas Beckett. All rights reserved.
+// </copyright>
 
 namespace Concierge.Characters
 {
+    using System;
+    using System.Collections.Generic;
+    using Concierge.Characters.Enums;
+
     public class Proficiency
     {
         public Proficiency()
         {
-            Armors = new Dictionary<Guid, string>();
-            Shields = new Dictionary<Guid, string>();
-            Weapons = new Dictionary<Guid, string>();
-            Tools = new Dictionary<Guid, string>();
+            this.Armors = new Dictionary<Guid, string>();
+            this.Shields = new Dictionary<Guid, string>();
+            this.Weapons = new Dictionary<Guid, string>();
+            this.Tools = new Dictionary<Guid, string>();
         }
+
+        public Dictionary<Guid, string> Armors { get; set; }
+
+        public Dictionary<Guid, string> Shields { get; set; }
+
+        public Dictionary<Guid, string> Weapons { get; set; }
+
+        public Dictionary<Guid, string> Tools { get; set; }
 
         public string GetProficiencyById(Guid id)
         {
-            if (Armors.ContainsKey(id))
+            if (this.Armors.ContainsKey(id))
             {
-                return Armors[id];
+                return this.Armors[id];
             }
-            else if (Shields.ContainsKey(id))
+            else if (this.Shields.ContainsKey(id))
             {
-                return Shields[id];
-            }
-            else if (Weapons.ContainsKey(id))
-            {
-                return Weapons[id];
-            }
-            else if (Tools.ContainsKey(id))
-            {
-                return Tools[id];
+                return this.Shields[id];
             }
             else
             {
-                return null;
+                return this.Weapons.ContainsKey(id) ? this.Weapons[id] : this.Tools.ContainsKey(id) ? this.Tools[id] : null;
             }
         }
 
         public void SetProficiencyById(Guid id, string proficiency)
         {
-            if (Armors.ContainsKey(id))
+            if (this.Armors.ContainsKey(id))
             {
-                Armors[id] = proficiency;
+                this.Armors[id] = proficiency;
             }
-            else if (Shields.ContainsKey(id))
+            else if (this.Shields.ContainsKey(id))
             {
-                Shields[id] = proficiency;
+                this.Shields[id] = proficiency;
             }
-            else if (Weapons.ContainsKey(id))
+            else if (this.Weapons.ContainsKey(id))
             {
-                Weapons[id] = proficiency;
+                this.Weapons[id] = proficiency;
             }
-            else if (Tools.ContainsKey(id))
+            else if (this.Tools.ContainsKey(id))
             {
-                Tools[id] = proficiency;
+                this.Tools[id] = proficiency;
             }
         }
 
-        public void AddProficiencyByPopupButton(Constants.PopupButtons PopupButton, string proficiency)
+        public void AddProficiencyByPopupButton(PopupButtons PopupButton, string proficiency)
         {
             switch (PopupButton)
             {
-                case Constants.PopupButtons.ArmorProficiency:
-                    Armors.Add(Guid.NewGuid(), proficiency);
+                case PopupButtons.ArmorProficiency:
+                    this.Armors.Add(Guid.NewGuid(), proficiency);
                     break;
-                case Constants.PopupButtons.ShieldProficiency:
-                    Shields.Add(Guid.NewGuid(), proficiency);
+                case PopupButtons.ShieldProficiency:
+                    this.Shields.Add(Guid.NewGuid(), proficiency);
                     break;
-                case Constants.PopupButtons.WeaponProficiency:
-                    Weapons.Add(Guid.NewGuid(), proficiency);
+                case PopupButtons.WeaponProficiency:
+                    this.Weapons.Add(Guid.NewGuid(), proficiency);
                     break;
-                case Constants.PopupButtons.ToolProficiency:
-                    Tools.Add(Guid.NewGuid(), proficiency);
+                case PopupButtons.ToolProficiency:
+                    this.Tools.Add(Guid.NewGuid(), proficiency);
+                    break;
+                default:
                     break;
             }
         }
-
-        public Dictionary<Guid, string> Armors { get; set; }
-        public Dictionary<Guid, string> Shields { get; set; }
-        public Dictionary<Guid, string> Weapons { get; set; }
-        public Dictionary<Guid, string> Tools { get; set; }
     }
 }

@@ -1,61 +1,53 @@
-﻿namespace Concierge.Presentation.OverviewPageUi
+﻿// <copyright file="ModifyHitDiceWindow.xaml.cs" company="Thomas Beckett">
+// Copyright (c) Thomas Beckett. All rights reserved.
+// </copyright>
+
+namespace Concierge.Presentation.OverviewPageUi
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
     using System.Windows;
-    using System.Windows.Controls;
-    using System.Windows.Data;
-    using System.Windows.Documents;
     using System.Windows.Input;
-    using System.Windows.Media;
-    using System.Windows.Media.Imaging;
-    using System.Windows.Navigation;
-    using System.Windows.Shapes;
 
     /// <summary>
-    /// Interaction logic for ModifyHitDiceWindow.xaml
+    /// Interaction logic for ModifyHitDiceWindow.xaml.
     /// </summary>
     public partial class ModifyHitDiceWindow : Window
     {
         public ModifyHitDiceWindow()
         {
-            InitializeComponent();
+            this.InitializeComponent();
         }
 
         public void ModifyHitDice()
         {
-            SetHitDice();
+            this.SetHitDice();
 
-            ShowDialog();
+            this.ShowDialog();
         }
 
         private void SetHitDice()
         {
-            TotalD6UpDown.Value = Program.Character.Vitality.HitDice.TotalD6;
-            TotalD8UpDown.Value = Program.Character.Vitality.HitDice.TotalD8;
-            TotalD10UpDown.Value = Program.Character.Vitality.HitDice.TotalD10;
-            TotalD12UpDown.Value = Program.Character.Vitality.HitDice.TotalD12;
+            this.TotalD6UpDown.Value = Program.Character.Vitality.HitDice.TotalD6;
+            this.TotalD8UpDown.Value = Program.Character.Vitality.HitDice.TotalD8;
+            this.TotalD10UpDown.Value = Program.Character.Vitality.HitDice.TotalD10;
+            this.TotalD12UpDown.Value = Program.Character.Vitality.HitDice.TotalD12;
 
-            UsedD6UpDown.Value = Program.Character.Vitality.HitDice.SpentD6;
-            UsedD8UpDown.Value = Program.Character.Vitality.HitDice.SpentD8;
-            UsedD10UpDown.Value = Program.Character.Vitality.HitDice.SpentD10;
-            UsedD12UpDown.Value = Program.Character.Vitality.HitDice.SpentD12;
+            this.UsedD6UpDown.Value = Program.Character.Vitality.HitDice.SpentD6;
+            this.UsedD8UpDown.Value = Program.Character.Vitality.HitDice.SpentD8;
+            this.UsedD10UpDown.Value = Program.Character.Vitality.HitDice.SpentD10;
+            this.UsedD12UpDown.Value = Program.Character.Vitality.HitDice.SpentD12;
         }
 
         private void GetHitDice()
         {
-            Program.Character.Vitality.HitDice.TotalD6 = TotalD6UpDown.Value ?? 0;
-            Program.Character.Vitality.HitDice.TotalD8 = TotalD8UpDown.Value ?? 0;
-            Program.Character.Vitality.HitDice.TotalD10 = TotalD10UpDown.Value ?? 0;
-            Program.Character.Vitality.HitDice.TotalD12 = TotalD12UpDown.Value ?? 0;
+            Program.Character.Vitality.HitDice.TotalD6 = this.TotalD6UpDown.Value ?? 0;
+            Program.Character.Vitality.HitDice.TotalD8 = this.TotalD8UpDown.Value ?? 0;
+            Program.Character.Vitality.HitDice.TotalD10 = this.TotalD10UpDown.Value ?? 0;
+            Program.Character.Vitality.HitDice.TotalD12 = this.TotalD12UpDown.Value ?? 0;
 
-            Program.Character.Vitality.HitDice.SpentD6 = UsedD6UpDown.Value ?? 0;
-            Program.Character.Vitality.HitDice.SpentD8 = UsedD8UpDown.Value ?? 0;
-            Program.Character.Vitality.HitDice.SpentD10 = UsedD10UpDown.Value ?? 0;
-            Program.Character.Vitality.HitDice.SpentD12 = UsedD12UpDown.Value ?? 0;
+            Program.Character.Vitality.HitDice.SpentD6 = this.UsedD6UpDown.Value ?? 0;
+            Program.Character.Vitality.HitDice.SpentD8 = this.UsedD8UpDown.Value ?? 0;
+            Program.Character.Vitality.HitDice.SpentD10 = this.UsedD10UpDown.Value ?? 0;
+            Program.Character.Vitality.HitDice.SpentD12 = this.UsedD12UpDown.Value ?? 0;
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
@@ -63,30 +55,30 @@
             switch (e.Key)
             {
                 case Key.Escape:
-                    Hide();
+                    this.Hide();
                     break;
             }
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            Hide();
+            this.Hide();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            Hide();
+            this.Hide();
         }
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
-            GetHitDice();
+            this.GetHitDice();
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
-            GetHitDice();
-            Hide();
+            this.GetHitDice();
+            this.Hide();
         }
     }
 }

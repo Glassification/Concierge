@@ -1,32 +1,36 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// <copyright file="Inventory.cs" company="Thomas Beckett">
+// Copyright (c) Thomas Beckett. All rights reserved.
+// </copyright>
 
 namespace Concierge.Characters.Collections
 {
+    using System;
+
     public class Inventory
     {
         public Inventory()
         {
-            ID = Guid.NewGuid();
+            this.ID = Guid.NewGuid();
         }
 
         public Inventory(Guid id)
         {
-            ID = id;
-        }
-
-        public override string ToString()
-        {
-            return Name;
+            this.ID = id;
         }
 
         public string Name { get; set; }
+
         public int Amount { get; set; }
+
         public double Weight { get; set; }
+
         public string Note { get; set; }
+
         public Guid ID { get; private set; }
+
+        public override string ToString()
+        {
+            return this.Name;
+        }
     }
 }

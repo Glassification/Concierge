@@ -1,13 +1,24 @@
-﻿using Concierge.Characters;
-using System.Linq;
-using System.Xml.Linq;
-using Concierge.Utility;
-using System;
+﻿// <copyright file="CharacterSaver.cs" company="Thomas Beckett">
+// Copyright (c) Thomas Beckett. All rights reserved.
+// </copyright>
 
 namespace Concierge.Persistence
 {
+    using System;
+    using System.Diagnostics.CodeAnalysis;
+    using System.Linq;
+    using System.Xml.Linq;
+
+    using Concierge.Characters;
+    using Concierge.Utility;
+
     public static class CharacterSaver
     {
+        [SuppressMessage("StyleCop.CSharp.ReadabilityRules", "SA1116:Split parameters should start on line after declaration", Justification = "Formatting.")]
+        [SuppressMessage("StyleCop.CSharp.SpacingRules", "SA1009:Closing parenthesis should be spaced correctly", Justification = "Formatting.")]
+        [SuppressMessage("StyleCop.CSharp.ReadabilityRules", "SA1111:Closing parenthesis should be on line of last parameter", Justification = "Formatting.")]
+        [SuppressMessage("StyleCop.CSharp.ReadabilityRules", "SA1118:Parameter should not span multiple lines", Justification = "Formatting.")]
+        [SuppressMessage("StyleCop.CSharp.ReadabilityRules", "SA1117:Parameters should be on same line or separate lines", Justification = "Formatting.")]
         public static void SaveCharacterSheet(Character character, CcsFile ccsFile)
         {
             try
@@ -311,6 +322,7 @@ namespace Concierge.Persistence
                             new XElement("Charisma", new XAttribute("value", character.Companion.Charisma)),
                             new XElement("Perception", new XAttribute("value", character.Companion.Perception)),
                             new XElement("Senses", new XAttribute("value", character.Companion.Senses))
+
                             // new XElement("Attack", new XAttribute("one", character.Companion.Attack.First), new XAttribute("two", character.Companion.Attack.Second)),
                             // new XElement("Type", new XAttribute("one", character.Companion.Type.First), new XAttribute("two", character.Companion.Type.Second)),
                             // new XElement("AtkBonus", new XAttribute("one", character.Companion.AtkBonus.First), new XAttribute("two", character.Companion.AtkBonus.Second)),

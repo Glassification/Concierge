@@ -1,34 +1,40 @@
-﻿using Concierge.Utility;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// <copyright file="Ammunition.cs" company="Thomas Beckett">
+// Copyright (c) Thomas Beckett. All rights reserved.
+// </copyright>
 
 namespace Concierge.Characters.Collections
 {
+    using System;
+
+    using Concierge.Characters.Enums;
+
     public class Ammunition
     {
         public Ammunition()
         {
-            ID = Guid.NewGuid();
+            this.ID = Guid.NewGuid();
         }
 
         public Ammunition(Guid id)
         {
-            ID = id;
-        }
-
-        public override string ToString()
-        {
-            return Name;
+            this.ID = id;
         }
 
         public string Name { get; set; }
+
         public int Quantity { get; set; }
+
         public string Bonus { get; set; }
-        public Constants.DamageTypes DamageType { get; set; }
+
+        public DamageTypes DamageType { get; set; }
+
         public int Used { get; set; }
+
         public Guid ID { get; private set; }
+
+        public override string ToString()
+        {
+            return this.Name;
+        }
     }
 }

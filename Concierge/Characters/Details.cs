@@ -1,32 +1,30 @@
-﻿using Concierge.Characters.Collections;
-using Concierge.Utility;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// <copyright file="Details.cs" company="Thomas Beckett">
+// Copyright (c) Thomas Beckett. All rights reserved.
+// </copyright>
 
 namespace Concierge.Characters
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+
+    using Concierge.Characters.Collections;
+    using Concierge.Characters.Enums;
+
     public class Details
     {
         public Details()
         {
-            Name = "";
-            Race = "";
-            Background = "";
-            Alignment = "";
-            Experience = "";
-            Languages = new List<Language>();
-            InitiativeBonus = 0;
-            PerceptionBonus = 0;
-            BaseMovement = 0;
-            Vision = Constants.VisionTypes.Normal;
-        }
-
-        public Language GetLanguageById(Guid id)
-        {
-            return Languages.Where(x => x.ID.Equals(id)).Single();
+            this.Name = string.Empty;
+            this.Race = string.Empty;
+            this.Background = string.Empty;
+            this.Alignment = string.Empty;
+            this.Experience = string.Empty;
+            this.Languages = new List<Language>();
+            this.InitiativeBonus = 0;
+            this.PerceptionBonus = 0;
+            this.BaseMovement = 0;
+            this.Vision = VisionTypes.Normal;
         }
 
         public string Name { get; set; }
@@ -47,13 +45,13 @@ namespace Concierge.Characters
 
         public int BaseMovement { get; set; }
 
-        public Constants.VisionTypes Vision { get; set; }
+        public VisionTypes Vision { get; set; }
 
         public int Movement
         {
             get
             {
-                int newMovement = BaseMovement;
+                int newMovement = this.BaseMovement;
 
                 if (Program.Character.Vitality.Conditions.Fatigued.Equals("Five") ||
                     Program.Character.Vitality.Conditions.Grappled.Equals("Grappled") ||
@@ -82,6 +80,11 @@ namespace Concierge.Characters
                     return newMovement;
                 }
             }
+        }
+
+        public Language GetLanguageById(Guid id)
+        {
+            return this.Languages.Single(x => x.ID.Equals(id));
         }
     }
 }

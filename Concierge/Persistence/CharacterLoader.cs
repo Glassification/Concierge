@@ -1,22 +1,28 @@
-﻿using Concierge.Characters;
-using Concierge.Characters.Collections;
-using Concierge.SavingThrowsNamespace;
-using Concierge.SkillsNamespace;
-using Concierge.Utility;
-using System;
-using System.Xml.Linq;
+﻿// <copyright file="CharacterLoader.cs" company="Thomas Beckett">
+// Copyright (c) Thomas Beckett. All rights reserved.
+// </copyright>
 
 namespace Concierge.Persistence
 {
+    using System;
+    using System.Xml.Linq;
+
+    using Concierge.Characters;
+    using Concierge.Characters.Collections;
+    using Concierge.Characters.Enums;
+    using Concierge.SavingThrowsNamespace;
+    using Concierge.SkillsNamespace;
+    using Concierge.Utility;
+
     public static class CharacterLoader
     {
         public static void LoadCharacterSheet(Character character, CcsFile ccsFile)
         {
             try
             {
-                XDocument xml = XDocument.Load(ccsFile.AbsolutePath);
+                var xml = XDocument.Load(ccsFile.AbsolutePath);
 
-                XElement root = xml.Element("Character");
+                var root = xml.Element("Character");
                 XElement element;
 
                 //-------------------------------------------------------------------------------------------------------
@@ -43,24 +49,24 @@ namespace Concierge.Persistence
                 // Parse Saving Throws
                 //-------------------------------------------------------------------------------------------------------
                 element = root.Element("Proficiency").Element("SavingThrows");
-                character.SavingThrow.Strength = new Strength(proficiency:(bool)element.Element("Strength").Attribute("proficiency"));
-                character.SavingThrow.Dexterity = new Dexterity(proficiency:(bool)element.Element("Dexterity").Attribute("proficiency"));
-                character.SavingThrow.Constitution = new Constitution(proficiency:(bool)element.Element("Constitution").Attribute("proficiency"));
-                character.SavingThrow.Intelligence = new Intelligence(proficiency:(bool)element.Element("Intelligence").Attribute("proficiency"));
-                character.SavingThrow.Wisdom = new Wisdom(proficiency:(bool)element.Element("Wisdom").Attribute("proficiency"));
-                character.SavingThrow.Charisma = new Charisma(proficiency:(bool)element.Element("Charisma").Attribute("proficiency"));
+                character.SavingThrow.Strength = new Strength(proficiency: (bool)element.Element("Strength").Attribute("proficiency"));
+                character.SavingThrow.Dexterity = new Dexterity(proficiency: (bool)element.Element("Dexterity").Attribute("proficiency"));
+                character.SavingThrow.Constitution = new Constitution(proficiency: (bool)element.Element("Constitution").Attribute("proficiency"));
+                character.SavingThrow.Intelligence = new Intelligence(proficiency: (bool)element.Element("Intelligence").Attribute("proficiency"));
+                character.SavingThrow.Wisdom = new Wisdom(proficiency: (bool)element.Element("Wisdom").Attribute("proficiency"));
+                character.SavingThrow.Charisma = new Charisma(proficiency: (bool)element.Element("Charisma").Attribute("proficiency"));
 
                 //-------------------------------------------------------------------------------------------------------
                 // Parse Skills
                 //-------------------------------------------------------------------------------------------------------
                 element = root.Element("Proficiency").Element("Skills");
-                character.Skill.Athletics = new Athletics(proficiency:(bool)element.Element("Athletics").Attribute("proficiency"), expertise: (bool)element.Element("Athletics").Attribute("expertise"));
-                character.Skill.Acrobatics = new Acrobatics(proficiency:(bool)element.Element("Acrobatics").Attribute("proficiency"), expertise: (bool)element.Element("Acrobatics").Attribute("expertise"));
-                character.Skill.SleightOfHand = new SleightOfHand(proficiency:(bool)element.Element("SleightOfHand").Attribute("proficiency"), expertise: (bool)element.Element("SleightOfHand").Attribute("expertise"));
-                character.Skill.Stealth = new Stealth(proficiency:(bool)element.Element("Stealth").Attribute("proficiency"), expertise: (bool)element.Element("Stealth").Attribute("expertise"));
-                character.Skill.Arcana = new Arcana(proficiency:(bool)element.Element("Arcana").Attribute("proficiency"), expertise: (bool)element.Element("Arcana").Attribute("expertise"));
-                character.Skill.History = new History(proficiency:(bool)element.Element("History").Attribute("proficiency"), expertise: (bool)element.Element("History").Attribute("expertise"));
-                character.Skill.Investigation = new Investigation(proficiency:(bool)element.Element("Investigation").Attribute("proficiency"), expertise: (bool)element.Element("Investigation").Attribute("expertise"));
+                character.Skill.Athletics = new Athletics(proficiency: (bool)element.Element("Athletics").Attribute("proficiency"), expertise: (bool)element.Element("Athletics").Attribute("expertise"));
+                character.Skill.Acrobatics = new Acrobatics(proficiency: (bool)element.Element("Acrobatics").Attribute("proficiency"), expertise: (bool)element.Element("Acrobatics").Attribute("expertise"));
+                character.Skill.SleightOfHand = new SleightOfHand(proficiency: (bool)element.Element("SleightOfHand").Attribute("proficiency"), expertise: (bool)element.Element("SleightOfHand").Attribute("expertise"));
+                character.Skill.Stealth = new Stealth(proficiency: (bool)element.Element("Stealth").Attribute("proficiency"), expertise: (bool)element.Element("Stealth").Attribute("expertise"));
+                character.Skill.Arcana = new Arcana(proficiency: (bool)element.Element("Arcana").Attribute("proficiency"), expertise: (bool)element.Element("Arcana").Attribute("expertise"));
+                character.Skill.History = new History(proficiency: (bool)element.Element("History").Attribute("proficiency"), expertise: (bool)element.Element("History").Attribute("expertise"));
+                character.Skill.Investigation = new Investigation(proficiency: (bool)element.Element("Investigation").Attribute("proficiency"), expertise: (bool)element.Element("Investigation").Attribute("expertise"));
                 character.Skill.Nature = new Nature(proficiency: (bool)element.Element("Nature").Attribute("proficiency"), expertise: (bool)element.Element("Nature").Attribute("expertise"));
                 character.Skill.Religion = new Religion(proficiency: (bool)element.Element("Religion").Attribute("proficiency"), expertise: (bool)element.Element("Religion").Attribute("expertise"));
                 character.Skill.AnimalHandling = new AnimalHandling(proficiency: (bool)element.Element("AnimalHandling").Attribute("proficiency"), expertise: (bool)element.Element("AnimalHandling").Attribute("expertise"));
@@ -114,16 +120,17 @@ namespace Concierge.Persistence
                 character.Details.InitiativeBonus = (int)element.Element("InitiativeBonus").Attribute("value");
                 character.Details.PerceptionBonus = (int)element.Element("PerceptionBonus").Attribute("value");
                 character.Details.BaseMovement = (int)element.Element("Movement").Attribute("value");
-                character.Details.Vision = (Constants.VisionTypes)Enum.Parse(typeof(Constants.VisionTypes), (string)element.Element("Vision").Attribute("value"));
+                character.Details.Vision = (VisionTypes)Enum.Parse(typeof(VisionTypes), (string)element.Element("Vision").Attribute("value"));
 
                 int index = 0;
                 var classess = element.Element("Classes").Elements("Class");
                 foreach (var @class in classess)
                 {
-                    Class c = new Class(new Guid((string)@class.Attribute("id")));
-
-                    c.Name = (string)@class.Attribute("name");
-                    c.Level = (int)@class.Attribute("level");
+                    var c = new Class(new Guid((string)@class.Attribute("id")))
+                    {
+                        Name = (string)@class.Attribute("name"),
+                        Level = (int)@class.Attribute("level"),
+                    };
 
                     character.Classess[index] = c;
                     index++;
@@ -132,11 +139,11 @@ namespace Concierge.Persistence
                 var languages = element.Element("Languages").Elements("Language");
                 foreach (var language in languages)
                 {
-                    Language l = new Language(new Guid((string)language.Attribute("id")))
+                    var l = new Language(new Guid((string)language.Attribute("id")))
                     {
                         Name = (string)language.Attribute("Name"),
                         Script = (string)language.Attribute("Script"),
-                        Speakers = (string)language.Attribute("Speakers")
+                        Speakers = (string)language.Attribute("Speakers"),
                     };
                     character.Details.Languages.Add(l);
                 }
@@ -181,28 +188,28 @@ namespace Concierge.Persistence
                 //-------------------------------------------------------------------------------------------------------
                 var resources = root.Element("ClassResources").Elements("ClassResource");
 
-                foreach (XElement elem in resources)
+                foreach (var elem in resources)
                 {
-                    ClassResource classResource = new ClassResource(new Guid((string)elem.Attribute("id")))
+                    var classResource = new ClassResource(new Guid((string)elem.Attribute("id")))
                     {
                         Type = (string)elem.Attribute("type"),
                         Total = (int)elem.Attribute("pool"),
-                        Spent = (int)elem.Attribute("spent")
+                        Spent = (int)elem.Attribute("spent"),
                     };
 
                     character.ClassResources.Add(classResource);
-                };
+                }
 
                 //-------------------------------------------------------------------------------------------------------
                 // Parse Armor Class
                 //-------------------------------------------------------------------------------------------------------
                 element = root.Element("ArmorClass");
                 character.Armor.Equiped = (string)element.Element("ArmorWorn").Attribute("value");
-                character.Armor.Type = (Constants.ArmorType)Enum.Parse(typeof(Constants.ArmorType), (string)element.Element("ArmorType").Attribute("value"));
+                character.Armor.Type = (ArmorType)Enum.Parse(typeof(ArmorType), (string)element.Element("ArmorType").Attribute("value"));
                 character.Armor.ArmorClass = (int)element.Element("ArmorAC").Attribute("value");
                 character.Armor.Strength = (int)element.Element("Strength").Attribute("value");
                 character.Armor.Weight = (int)element.Element("ArmorWeight").Attribute("value");
-                character.Armor.Stealth = (Constants.ArmorStealth)Enum.Parse(typeof(Constants.ArmorStealth), (string)element.Element("Stealth").Attribute("value"));
+                character.Armor.Stealth = (ArmorStealth)Enum.Parse(typeof(ArmorStealth), (string)element.Element("Stealth").Attribute("value"));
                 character.Armor.Shield = (string)element.Element("Shield").Attribute("value");
                 character.Armor.ShieldArmorClass = (int)element.Element("ShieldAC").Attribute("value");
                 character.Armor.ShieldWeight = (int)element.Element("ShieldWeight").Attribute("value");
@@ -249,20 +256,20 @@ namespace Concierge.Persistence
                 //-------------------------------------------------------------------------------------------------------
                 var weapons = root.Element("Weapons").Elements("Weapon");
 
-                foreach (XElement elem in weapons)
+                foreach (var elem in weapons)
                 {
-                    Weapon weapon = new Weapon(new Guid((string)elem.Attribute("id")))
+                    var weapon = new Weapon(new Guid((string)elem.Attribute("id")))
                     {
                         Name = (string)elem.Attribute("name"),
-                        Ability = (Constants.Abilities)Enum.Parse(typeof(Constants.Abilities), (string)elem.Attribute("ability")),
+                        Ability = (Abilities)Enum.Parse(typeof(Abilities), (string)elem.Attribute("ability")),
                         Damage = (string)elem.Attribute("dmg"),
                         Misc = (string)elem.Attribute("misc"),
-                        DamageType = (Constants.DamageTypes)Enum.Parse(typeof(Constants.DamageTypes), (string)elem.Attribute("dmgType")),
+                        DamageType = (DamageTypes)Enum.Parse(typeof(DamageTypes), (string)elem.Attribute("dmgType")),
                         Range = (string)elem.Attribute("range"),
                         Note = (string)elem.Attribute("notes"),
                         Weight = (double)elem.Attribute("weight"),
-                        WeaponType = (Constants.WeaponTypes)Enum.Parse(typeof(Constants.WeaponTypes), (string)elem.Attribute("weaponType")),
-                        ProficiencyOverride = bool.Parse((string)elem.Attribute("override"))
+                        WeaponType = (WeaponTypes)Enum.Parse(typeof(WeaponTypes), (string)elem.Attribute("weaponType")),
+                        ProficiencyOverride = bool.Parse((string)elem.Attribute("override")),
                     };
 
                     character.Weapons.Add(weapon);
@@ -273,15 +280,15 @@ namespace Concierge.Persistence
                 //-------------------------------------------------------------------------------------------------------
                 var ammunitions = root.Element("Ammunitions").Elements("Ammunition");
 
-                foreach (XElement elem in ammunitions)
+                foreach (var elem in ammunitions)
                 {
-                    Ammunition ammunition = new Ammunition(new Guid((string)elem.Attribute("id")))
+                    var ammunition = new Ammunition(new Guid((string)elem.Attribute("id")))
                     {
                         Name = (string)elem.Attribute("name"),
                         Quantity = (int)elem.Attribute("amount"),
                         Bonus = (string)elem.Attribute("miscDmg"),
-                        DamageType = (Constants.DamageTypes)Enum.Parse(typeof(Constants.DamageTypes), (string)elem.Attribute("dmgType")),
-                        Used = (int)elem.Attribute("used")
+                        DamageType = (DamageTypes)Enum.Parse(typeof(DamageTypes), (string)elem.Attribute("dmgType")),
+                        Used = (int)elem.Attribute("used"),
                     };
 
                     character.Ammunitions.Add(ammunition);
@@ -292,14 +299,14 @@ namespace Concierge.Persistence
                 //-------------------------------------------------------------------------------------------------------
                 var inventories = root.Element("Inventory").Elements("Item");
 
-                foreach (XElement elem in inventories)
+                foreach (var elem in inventories)
                 {
-                    Inventory inventory = new Inventory(new Guid((string)elem.Attribute("id")))
+                    var inventory = new Inventory(new Guid((string)elem.Attribute("id")))
                     {
                         Name = (string)elem.Attribute("name"),
                         Amount = (int)elem.Attribute("amount"),
                         Weight = (double)elem.Attribute("wgt"),
-                        Note = (string)elem.Attribute("note")
+                        Note = (string)elem.Attribute("note"),
                     };
 
                     character.Inventories.Add(inventory);
@@ -310,16 +317,16 @@ namespace Concierge.Persistence
                 //-------------------------------------------------------------------------------------------------------
                 var abilities = root.Element("Abilities").Elements("Ability");
 
-                foreach (XElement elem in abilities)
+                foreach (var elem in abilities)
                 {
-                    Ability ability = new Ability(new Guid((string)elem.Attribute("id")))
+                    var ability = new Ability(new Guid((string)elem.Attribute("id")))
                     {
                         Name = (string)elem.Attribute("name"),
                         Level = (string)elem.Attribute("level"),
                         Uses = (string)elem.Attribute("uses"),
                         Recovery = (string)elem.Attribute("recovery"),
                         Action = (string)elem.Attribute("action"),
-                        Note = (string)elem.Attribute("notes")
+                        Note = (string)elem.Attribute("notes"),
                     };
 
                     character.Abilities.Add(ability);
@@ -356,15 +363,15 @@ namespace Concierge.Persistence
                 //-------------------------------------------------------------------------------------------------------
                 var classes = root.Element("Spellcasting").Element("SpellClasses").Elements("SpellClass");
 
-                foreach (XElement elem in classes)
+                foreach (var elem in classes)
                 {
-                    MagicClass magic = new MagicClass(new Guid((string)elem.Attribute("id")))
+                    var magic = new MagicClass(new Guid((string)elem.Attribute("id")))
                     {
                         Name = (string)elem.Attribute("class"),
-                        Ability = (Constants.Abilities)Enum.Parse(typeof(Constants.Abilities), (string)elem.Attribute("ability")),
+                        Ability = (Abilities)Enum.Parse(typeof(Abilities), (string)elem.Attribute("ability")),
                         KnownCantrips = (int)elem.Attribute("cantrips"),
                         KnownSpells = (int)elem.Attribute("known"),
-                        Level = (int)elem.Attribute("level")
+                        Level = (int)elem.Attribute("level"),
                     };
 
                     character.MagicClasses.Add(magic);
@@ -375,14 +382,14 @@ namespace Concierge.Persistence
                 //-------------------------------------------------------------------------------------------------------
                 var spells = root.Element("Spellcasting").Element("SpellList").Elements("Spell");
 
-                foreach (XElement elem in spells)
+                foreach (var elem in spells)
                 {
-                    Spell spell = new Spell(new Guid((string)elem.Attribute("id")))
+                    var spell = new Spell(new Guid((string)elem.Attribute("id")))
                     {
                         Name = (string)elem.Attribute("name"),
                         Level = int.Parse((string)elem.Attribute("level")),
                         Page = int.Parse((string)elem.Attribute("page")),
-                        School = (Constants.ArcaneSchools)Enum.Parse(typeof(Constants.ArcaneSchools), (string)elem.Attribute("school")),
+                        School = (ArcaneSchools)Enum.Parse(typeof(ArcaneSchools), (string)elem.Attribute("school")),
                         Ritual = bool.Parse((string)elem.Attribute("ritual")),
                         Components = (string)elem.Attribute("comp"),
                         Concentration = bool.Parse((string)elem.Attribute("concen")),
@@ -392,7 +399,7 @@ namespace Concierge.Persistence
                         Save = (string)elem.Attribute("save"),
                         Damage = (string)elem.Attribute("damage"),
                         Description = (string)elem.Attribute("description"),
-                        Prepared = bool.Parse((string)elem.Attribute("prepared"))
+                        Prepared = bool.Parse((string)elem.Attribute("prepared")),
                     };
 
                     character.Spells.Add(spell);
@@ -416,6 +423,8 @@ namespace Concierge.Persistence
                 character.Companion.Charisma = (int)element.Element("Charisma").Attribute("value");
                 character.Companion.Perception = (string)element.Element("Perception").Attribute("value");
                 character.Companion.Senses = (string)element.Element("Senses").Attribute("value");
+
+                /*
                 //character.Companion.Attack = new Pair((string)element.Element("Attack").Attribute("one"), (string)element.Element("Attack").Attribute("two"));
                 //character.Companion.Type = new Pair((string)element.Element("Type").Attribute("one"), (string)element.Element("Type").Attribute("two"));
                 //character.Companion.AtkBonus = new Pair((string)element.Element("AtkBonus").Attribute("one"), (string)element.Element("AtkBonus").Attribute("two"));
@@ -423,27 +432,28 @@ namespace Concierge.Persistence
                 //character.Companion.DmgType = new PresetPair((string)element.Element("DmgType").Attribute("one"), (string)element.Element("DmgType").Attribute("two"));
                 //character.Companion.Reach = new Pair((string)element.Element("Reach").Attribute("one"), (string)element.Element("Reach").Attribute("two"));
                 //character.Companion.Notes = new Pair((string)element.Element("Notes").Attribute("one"), (string)element.Element("Notes").Attribute("two"));
+                */
 
                 //-------------------------------------------------------------------------------------------------------
                 // Parse Campain Notes
                 //-------------------------------------------------------------------------------------------------------
                 var campainChapters = root.Element("CampainNotes").Elements("Chapter");
 
-                foreach (XElement elem in campainChapters)
+                foreach (var elem in campainChapters)
                 {
-                    Chapter chapter = new Chapter(new Guid((string)elem.Attribute("id")))
+                    var chapter = new Chapter(new Guid((string)elem.Attribute("id")))
                     {
                         Name = (string)elem.Attribute("name"),
                     };
 
                     var campainNotes = elem.Elements("Note");
 
-                    foreach (XElement innerElem in campainNotes)
+                    foreach (var innerElem in campainNotes)
                     {
-                        Document document = new Document(new Guid((string)innerElem.Attribute("id")))
+                        var document = new Document(new Guid((string)innerElem.Attribute("id")))
                         {
                             Name = (string)innerElem.Attribute("name"),
-                            RTF = innerElem.Value
+                            RTF = innerElem.Value,
                         };
 
                         chapter.Documents.Add(document);

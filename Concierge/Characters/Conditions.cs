@@ -1,12 +1,14 @@
-﻿using Concierge.Utility;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// <copyright file="Conditions.cs" company="Thomas Beckett">
+// Copyright (c) Thomas Beckett. All rights reserved.
+// </copyright>
 
 namespace Concierge.Characters
 {
+    using System.Collections.Generic;
+    using System.Linq;
+
+    using Concierge.Utility;
+
     public class Conditions
     {
         public const string BlindedDescription = "Automatically fail any ability checks. Attack rolls against you have advantage, your attacks have disadvantage.";
@@ -34,21 +36,78 @@ namespace Concierge.Characters
 
         public Conditions()
         {
-            Blinded = "Cured";
-            Charmed = "Cured";
-            Deafened = "Cured";
-            Fatigued = "Normal";
-            Frightened = "Cured";
-            Grappled = "Cured";
-            Incapacitated = "Cured";
-            Invisible = "Cured";
-            Paralyzed = "Cured";
-            Petrified = "Cured";
-            Poisoned = "Cured";
-            Prone = "Cured";
-            Restrained = "Cured";
-            Stunned = "Cured";
-            Unconscious = "Cured";
+            this.Blinded = "Cured";
+            this.Charmed = "Cured";
+            this.Deafened = "Cured";
+            this.Fatigued = "Normal";
+            this.Frightened = "Cured";
+            this.Grappled = "Cured";
+            this.Incapacitated = "Cured";
+            this.Invisible = "Cured";
+            this.Paralyzed = "Cured";
+            this.Petrified = "Cured";
+            this.Poisoned = "Cured";
+            this.Prone = "Cured";
+            this.Restrained = "Cured";
+            this.Stunned = "Cured";
+            this.Unconscious = "Cured";
+        }
+
+        public string Blinded { get; set; }
+
+        public string Charmed { get; set; }
+
+        public string Deafened { get; set; }
+
+        public string Fatigued { get; set; }
+
+        public string Frightened { get; set; }
+
+        public string Grappled { get; set; }
+
+        public string Incapacitated { get; set; }
+
+        public string Invisible { get; set; }
+
+        public string Paralyzed { get; set; }
+
+        public string Petrified { get; set; }
+
+        public string Poisoned { get; set; }
+
+        public string Prone { get; set; }
+
+        public string Restrained { get; set; }
+
+        public string Stunned { get; set; }
+
+        public string Unconscious { get; set; }
+
+        public string Encumbrance
+        {
+            get
+            {
+                var str = "Normal";
+
+                if (Program.Character.Armor.Strength > Program.Character.Attributes.Strength)
+                {
+                    str = "Encumbered";
+                }
+
+                if (Settings.UseEncumbrance)
+                {
+                    if (Program.Character.CarryWeight > Program.Character.LightCarryCapacity && Program.Character.CarryWeight <= Program.Character.MediumCarryCapacity)
+                    {
+                        str = "Encumbered";
+                    }
+                    else if (Program.Character.CarryWeight > Program.Character.MediumCarryCapacity)
+                    {
+                        str = "Heavily Encumbered";
+                    }
+                }
+
+                return str;
+            }
         }
 
         /// =========================================
@@ -113,26 +172,51 @@ namespace Concierge.Characters
         /// =========================================
         public List<KeyValuePair<string, string>> ToArray()
         {
-            List<KeyValuePair<string, string>> keyValuePairs = new List<KeyValuePair<string, string>>();
-
-            keyValuePairs.Add(new KeyValuePair<string, string>(Blinded,         "Blinded - "        + GetDescription(Blinded)));
-            keyValuePairs.Add(new KeyValuePair<string, string>(Charmed,         "Charmed - "        + GetDescription(Charmed)));
-            keyValuePairs.Add(new KeyValuePair<string, string>(Deafened,        "Deafened - "       + GetDescription(Deafened)));
-            keyValuePairs.Add(new KeyValuePair<string, string>(Encumbrance,     Encumbrance + " - " + GetDescription(Encumbrance)));
-            keyValuePairs.Add(new KeyValuePair<string, string>(Fatigued,        ToInteger(Fatigued) + " - "    + GetDescription(Fatigued)));
-            keyValuePairs.Add(new KeyValuePair<string, string>(Frightened,      "Frightened - "     + GetDescription(Frightened)));
-            keyValuePairs.Add(new KeyValuePair<string, string>(Grappled,        "Grappled - "       + GetDescription(Grappled)));
-            keyValuePairs.Add(new KeyValuePair<string, string>(Incapacitated,   "Incapacitated - "  + GetDescription(Incapacitated)));
-            keyValuePairs.Add(new KeyValuePair<string, string>(Invisible,       "Invisible - "      + GetDescription(Invisible)));
-            keyValuePairs.Add(new KeyValuePair<string, string>(Paralyzed,       "Paralyzed - "      + GetDescription(Paralyzed)));
-            keyValuePairs.Add(new KeyValuePair<string, string>(Petrified,       "Petrified - "      + GetDescription(Petrified)));
-            keyValuePairs.Add(new KeyValuePair<string, string>(Poisoned,        "Poisoned - "       + GetDescription(Poisoned)));
-            keyValuePairs.Add(new KeyValuePair<string, string>(Prone,           "Prone - "          + GetDescription(Prone)));
-            keyValuePairs.Add(new KeyValuePair<string, string>(Restrained,      "Restrained - "     + GetDescription(Restrained)));
-            keyValuePairs.Add(new KeyValuePair<string, string>(Stunned,         "Stunned - "        + GetDescription(Stunned)));
-            keyValuePairs.Add(new KeyValuePair<string, string>(Unconscious,     "Unconscious - "    + GetDescription(Unconscious)));
+            var keyValuePairs = new List<KeyValuePair<string, string>>
+            {
+                new KeyValuePair<string, string>(this.Blinded, "Blinded - " + this.GetDescription(this.Blinded)),
+                new KeyValuePair<string, string>(this.Charmed, "Charmed - " + this.GetDescription(this.Charmed)),
+                new KeyValuePair<string, string>(this.Deafened, "Deafened - " + this.GetDescription(this.Deafened)),
+                new KeyValuePair<string, string>(this.Encumbrance, this.Encumbrance + " - " + this.GetDescription(this.Encumbrance)),
+                new KeyValuePair<string, string>(this.Fatigued, this.ToInteger(this.Fatigued) + " - " + this.GetDescription(this.Fatigued)),
+                new KeyValuePair<string, string>(this.Frightened, "Frightened - " + this.GetDescription(this.Frightened)),
+                new KeyValuePair<string, string>(this.Grappled, "Grappled - " + this.GetDescription(this.Grappled)),
+                new KeyValuePair<string, string>(this.Incapacitated, "Incapacitated - " + this.GetDescription(this.Incapacitated)),
+                new KeyValuePair<string, string>(this.Invisible, "Invisible - " + this.GetDescription(this.Invisible)),
+                new KeyValuePair<string, string>(this.Paralyzed, "Paralyzed - " + this.GetDescription(this.Paralyzed)),
+                new KeyValuePair<string, string>(this.Petrified, "Petrified - " + this.GetDescription(this.Petrified)),
+                new KeyValuePair<string, string>(this.Poisoned, "Poisoned - " + this.GetDescription(this.Poisoned)),
+                new KeyValuePair<string, string>(this.Prone, "Prone - " + this.GetDescription(this.Prone)),
+                new KeyValuePair<string, string>(this.Restrained, "Restrained - " + this.GetDescription(this.Restrained)),
+                new KeyValuePair<string, string>(this.Stunned, "Stunned - " + this.GetDescription(this.Stunned)),
+                new KeyValuePair<string, string>(this.Unconscious, "Unconscious - " + this.GetDescription(this.Unconscious)),
+            };
 
             return keyValuePairs.Where(x => !x.Key.Equals("Cured") && !x.Key.Equals("Normal")).ToList();
+        }
+
+        public Conditions Copy()
+        {
+            var copy = new Conditions
+            {
+                Blinded = this.Blinded,
+                Charmed = this.Charmed,
+                Deafened = this.Deafened,
+                Fatigued = this.Fatigued,
+                Frightened = this.Frightened,
+                Grappled = this.Grappled,
+                Incapacitated = this.Incapacitated,
+                Invisible = this.Invisible,
+                Paralyzed = this.Paralyzed,
+                Petrified = this.Petrified,
+                Poisoned = this.Poisoned,
+                Prone = this.Prone,
+                Restrained = this.Restrained,
+                Stunned = this.Stunned,
+                Unconscious = this.Unconscious,
+            };
+
+            return copy;
         }
 
         private string ToInteger(string str)
@@ -153,73 +237,6 @@ namespace Concierge.Characters
                     return "Exaustion 6";
                 default:
                     return string.Empty;
-            }
-        }
-
-        public Conditions Copy()
-        {
-            Conditions copy = new Conditions();
-
-            copy.Blinded = Blinded;
-            copy.Charmed = Charmed;
-            copy.Deafened = Deafened;
-            copy.Fatigued = Fatigued;
-            copy.Frightened = Frightened;
-            copy.Grappled = Grappled;
-            copy.Incapacitated = Incapacitated;
-            copy.Invisible = Invisible;
-            copy.Paralyzed = Paralyzed;
-            copy.Petrified = Petrified;
-            copy.Poisoned = Poisoned;
-            copy.Prone = Prone;
-            copy.Restrained = Restrained;
-            copy.Stunned = Stunned;
-            copy.Unconscious = Unconscious;
-
-            return copy;
-        }
-
-        public string Blinded { get; set; }
-        public string Charmed { get; set; }
-        public string Deafened { get; set; }
-        public string Fatigued { get; set; }
-        public string Frightened { get; set; }
-        public string Grappled { get; set; }
-        public string Incapacitated { get; set; }
-        public string Invisible { get; set; }
-        public string Paralyzed { get; set; }
-        public string Petrified { get; set; }
-        public string Poisoned { get; set; }
-        public string Prone { get; set; }
-        public string Restrained { get; set; }
-        public string Stunned { get; set; }
-        public string Unconscious { get; set; }
-
-        public string Encumbrance
-        {
-            get
-            {
-                string str = "Normal";
-
-                if (Program.Character.Armor.Strength > Program.Character.Attributes.Strength)
-                {
-                    str = "Encumbered";
-                }
-
-                if (Settings.UseEncumbrance)
-                {
-                    if (Program.Character.CarryWeight > Program.Character.LightCarryCapacity && Program.Character.CarryWeight <= Program.Character.MediumCarryCapacity)
-                    {
-                        str = "Encumbered";
-                    }
-                    else if (Program.Character.CarryWeight > Program.Character.MediumCarryCapacity)
-                    {
-                        str = "Heavily Encumbered";
-                    }
-
-                }
-
-                return str;
             }
         }
     }

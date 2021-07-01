@@ -1,4 +1,6 @@
-﻿using System;
+﻿// <copyright file="Appearance.cs" company="Thomas Beckett">
+// Copyright (c) Thomas Beckett. All rights reserved.
+// </copyright>
 
 namespace Concierge.Characters
 {
@@ -6,14 +8,14 @@ namespace Concierge.Characters
     {
         public Appearance()
         {
-            Gender = "";
-            Age = "";
-            Height = "";
-            Weight = "";
-            SkinColour = "";
-            EyeColour = "";
-            HairColour = "";
-            DistinguishingMarks = "";
+            this.Gender = string.Empty;
+            this.Age = string.Empty;
+            this.Height = string.Empty;
+            this.Weight = string.Empty;
+            this.SkinColour = string.Empty;
+            this.EyeColour = string.Empty;
+            this.HairColour = string.Empty;
+            this.DistinguishingMarks = string.Empty;
         }
 
         public string Gender { get; set; }

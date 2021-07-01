@@ -1,21 +1,26 @@
-﻿namespace Concierge.Characters
-{
-    using System;
+﻿// <copyright file="HitDice.cs" company="Thomas Beckett">
+// Copyright (c) Thomas Beckett. All rights reserved.
+// </copyright>
 
+namespace Concierge.Characters
+{
     public class HitDice
     {
-        private int spentD6, spentD8, spentD10, spentD12;
+        private int spentD6;
+        private int spentD8;
+        private int spentD10;
+        private int spentD12;
 
         public HitDice()
         {
-            TotalD6 = 0;
-            TotalD8 = 0;
-            TotalD10 = 0;
-            TotalD12 = 0;
-            spentD6 = 0;
-            spentD8 = 0;
-            spentD10 = 0;
-            spentD12 = 0;
+            this.TotalD6 = 0;
+            this.TotalD8 = 0;
+            this.TotalD10 = 0;
+            this.TotalD12 = 0;
+            this.spentD6 = 0;
+            this.spentD8 = 0;
+            this.spentD10 = 0;
+            this.spentD12 = 0;
         }
 
         public int TotalD6 { get; set; }
@@ -28,60 +33,48 @@
 
         public int SpentD6
         {
-            get
-            {
-                return spentD6;
-            }
+            get => this.spentD6;
             set
             {
-                if (value <= TotalD6)
+                if (value <= this.TotalD6)
                 {
-                    spentD6 = value;
+                    this.spentD6 = value;
                 }
             }
         }
 
         public int SpentD8
         {
-            get
-            {
-                return spentD8;
-            }
+            get => this.spentD8;
             set
             {
-                if (value <= TotalD8)
+                if (value <= this.TotalD8)
                 {
-                    spentD8 = value;
+                    this.spentD8 = value;
                 }
             }
         }
 
         public int SpentD10
         {
-            get
-            {
-                return spentD10;
-            }
+            get => this.spentD10;
             set
             {
-                if (value <= TotalD10)
+                if (value <= this.TotalD10)
                 {
-                    spentD10 = value;
+                    this.spentD10 = value;
                 }
             }
         }
 
         public int SpentD12
         {
-            get
-            {
-                return spentD12;
-            }
+            get => this.spentD12;
             set
             {
-                if (value <= TotalD12)
+                if (value <= this.TotalD12)
                 {
-                    spentD12 = value;
+                    this.spentD12 = value;
                 }
             }
         }

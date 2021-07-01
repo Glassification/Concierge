@@ -1,232 +1,215 @@
-﻿using Concierge.Characters.Collections;
-using Concierge.Utility;
-using System;
-using System.Collections.Generic;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Media;
+﻿// <copyright file="DetailsPage.xaml.cs" company="Thomas Beckett">
+// Copyright (c) Thomas Beckett. All rights reserved.
+// </copyright>
 
 namespace Concierge.Presentation.DetailsPageUi
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Windows;
+    using System.Windows.Controls;
+    using System.Windows.Media;
+
+    using Concierge.Characters.Collections;
+    using Concierge.Characters.Enums;
+    using Concierge.Utility;
+
     /// <summary>
-    /// Interaction logic for DetailsPage.xaml
+    /// Interaction logic for DetailsPage.xaml.
     /// </summary>
     public partial class DetailsPage : Page
     {
-
-        #region Constructor
-
         public DetailsPage()
         {
-            InitializeComponent();
+            this.InitializeComponent();
 
-            ModifyWealthWindow = new ModifyWealthWindow();
-            ProficiencyPopupWindow = new ProficiencyPopupWindow();
-            ModifyProficiencyWindow = new ModifyProficiencyWindow();
-            MondifyConditionsWindow = new MondifyConditionsWindow();
-            ModifyLanguagesWindow = new ModifyLanguagesWindow();
-            ModifyAppearanceWindow = new ModifyAppearanceWindow();
-            ModifyPersonalityWindow = new ModifyPersonalityWindow();
+            this.ModifyWealthWindow = new ModifyWealthWindow();
+            this.ProficiencyPopupWindow = new ProficiencyPopupWindow();
+            this.ModifyProficiencyWindow = new ModifyProficiencyWindow();
+            this.MondifyConditionsWindow = new MondifyConditionsWindow();
+            this.ModifyLanguagesWindow = new ModifyLanguagesWindow();
+            this.ModifyAppearanceWindow = new ModifyAppearanceWindow();
+            this.ModifyPersonalityWindow = new ModifyPersonalityWindow();
         }
 
-        #endregion
+        public double ProficiencyGridSize => this.WeaponGrid.RenderSize.Height;
 
-        #region Methods
+        private ModifyWealthWindow ModifyWealthWindow { get; }
 
-        #region Drawing
+        private ProficiencyPopupWindow ProficiencyPopupWindow { get; }
+
+        private ModifyProficiencyWindow ModifyProficiencyWindow { get; }
+
+        private MondifyConditionsWindow MondifyConditionsWindow { get; }
+
+        private ModifyLanguagesWindow ModifyLanguagesWindow { get; }
+
+        private ModifyAppearanceWindow ModifyAppearanceWindow { get; }
+
+        private ModifyPersonalityWindow ModifyPersonalityWindow { get; }
 
         public void Draw()
         {
-            DrawWealth();
-            DrawWeight();
-            DrawAppearance();
-            DrawPersonality();
-            DrawProficiencies();
-            DrawLanguages();
-            DrawConditions();
+            this.DrawWealth();
+            this.DrawWeight();
+            this.DrawAppearance();
+            this.DrawPersonality();
+            this.DrawProficiencies();
+            this.DrawLanguages();
+            this.DrawConditions();
         }
 
         private void DrawWealth()
         {
-            TotalWealthField.Text = "¤ " + string.Format("{0:0.00}", Program.Character.Wealth.TotalValue);
+            this.TotalWealthField.Text = "¤ " + string.Format("{0:0.00}", Program.Character.Wealth.TotalValue);
 
-            CopperField.Text = Program.Character.Wealth.Copper.ToString();
-            SilverField.Text = Program.Character.Wealth.Silver.ToString();
-            ElectrumField.Text = Program.Character.Wealth.Electrum.ToString();
-            GoldField.Text = Program.Character.Wealth.Gold.ToString();
-            PlatinumField.Text = Program.Character.Wealth.Platinum.ToString();
+            this.CopperField.Text = Program.Character.Wealth.Copper.ToString();
+            this.SilverField.Text = Program.Character.Wealth.Silver.ToString();
+            this.ElectrumField.Text = Program.Character.Wealth.Electrum.ToString();
+            this.GoldField.Text = Program.Character.Wealth.Gold.ToString();
+            this.PlatinumField.Text = Program.Character.Wealth.Platinum.ToString();
         }
 
         private void DrawWeight()
         {
-            WeightCarriedField.Text = Program.Character.CarryWeight.ToString();
-            LightWeightField.Text = Program.Character.LightCarryCapacity.ToString();
-            MediumWeightField.Text = Program.Character.MediumCarryCapacity.ToString();
-            HeavyWeightField.Text = Program.Character.HeavyCarryCapacity.ToString();
+            this.WeightCarriedField.Text = Program.Character.CarryWeight.ToString();
+            this.LightWeightField.Text = Program.Character.LightCarryCapacity.ToString();
+            this.MediumWeightField.Text = Program.Character.MediumCarryCapacity.ToString();
+            this.HeavyWeightField.Text = Program.Character.HeavyCarryCapacity.ToString();
 
-            FormatCarryWeight();
+            this.FormatCarryWeight();
         }
 
         private void DrawAppearance()
         {
-            GenderField.Text = Program.Character.Appearance.Gender;
-            AgeField.Text = Program.Character.Appearance.Age;
-            HeightField.Text = Program.Character.Appearance.Height;
-            WeightField.Text = Program.Character.Appearance.Weight;
-            HairColourField.Text = Program.Character.Appearance.HairColour;
-            SkinColourField.Text = Program.Character.Appearance.SkinColour;
-            EyeColourField.Text = Program.Character.Appearance.EyeColour;
-            MarksField.Text = Program.Character.Appearance.DistinguishingMarks;
+            this.GenderField.Text = Program.Character.Appearance.Gender;
+            this.AgeField.Text = Program.Character.Appearance.Age;
+            this.HeightField.Text = Program.Character.Appearance.Height;
+            this.WeightField.Text = Program.Character.Appearance.Weight;
+            this.HairColourField.Text = Program.Character.Appearance.HairColour;
+            this.SkinColourField.Text = Program.Character.Appearance.SkinColour;
+            this.EyeColourField.Text = Program.Character.Appearance.EyeColour;
+            this.MarksField.Text = Program.Character.Appearance.DistinguishingMarks;
         }
 
         private void DrawPersonality()
         {
-            TraitField1.Text = Program.Character.Personality.Trait1;
-            TraitField2.Text = Program.Character.Personality.Trait2;
-            IdealField.Text = Program.Character.Personality.Ideal;
-            BondField.Text = Program.Character.Personality.Bond;
-            FlawField.Text = Program.Character.Personality.Flaw;
-            BackgroundField.Text = Program.Character.Personality.Background;
-            NotesField.Text = Program.Character.Personality.Notes;
+            this.TraitField1.Text = Program.Character.Personality.Trait1;
+            this.TraitField2.Text = Program.Character.Personality.Trait2;
+            this.IdealField.Text = Program.Character.Personality.Ideal;
+            this.BondField.Text = Program.Character.Personality.Bond;
+            this.FlawField.Text = Program.Character.Personality.Flaw;
+            this.BackgroundField.Text = Program.Character.Personality.Background;
+            this.NotesField.Text = Program.Character.Personality.Notes;
         }
 
         private void DrawProficiencies()
         {
-            WeaponProficiencyDataGrid.Items.Clear();
-            ArmorProficiencyDataGrid.Items.Clear();
-            ShieldProficiencyDataGrid.Items.Clear();
-            ToolProficiencyDataGrid.Items.Clear();
+            this.WeaponProficiencyDataGrid.Items.Clear();
+            this.ArmorProficiencyDataGrid.Items.Clear();
+            this.ShieldProficiencyDataGrid.Items.Clear();
+            this.ToolProficiencyDataGrid.Items.Clear();
 
             foreach (var weapon in Program.Character.Proficiency.Weapons)
             {
-                WeaponProficiencyDataGrid.Items.Add(weapon);
+                this.WeaponProficiencyDataGrid.Items.Add(weapon);
             }
 
             foreach (var armor in Program.Character.Proficiency.Armors)
             {
-                ArmorProficiencyDataGrid.Items.Add(armor);
+                this.ArmorProficiencyDataGrid.Items.Add(armor);
             }
 
             foreach (var shield in Program.Character.Proficiency.Shields)
             {
-                ShieldProficiencyDataGrid.Items.Add(shield);
+                this.ShieldProficiencyDataGrid.Items.Add(shield);
             }
 
             foreach (var tool in Program.Character.Proficiency.Tools)
             {
-                ToolProficiencyDataGrid.Items.Add(tool);
+                this.ToolProficiencyDataGrid.Items.Add(tool);
             }
 
-            ProficiencyBonusField.Text = "  Bonus: " + Program.Character.ProficiencyBonus + "  ";
+            this.ProficiencyBonusField.Text = $"  Bonus: {Program.Character.ProficiencyBonus}  ";
         }
 
         private void DrawLanguages()
         {
-            LanguagesDataGrid.Items.Clear();
+            this.LanguagesDataGrid.Items.Clear();
 
             foreach (var language in Program.Character.Details.Languages)
             {
-                LanguagesDataGrid.Items.Add(language);
+                this.LanguagesDataGrid.Items.Add(language);
             }
         }
 
         private void DrawConditions()
         {
-            ConditionsDataGrid.Items.Clear();
+            this.ConditionsDataGrid.Items.Clear();
 
             foreach (var condition in Program.Character.Vitality.Conditions.ToArray())
             {
-                ConditionsDataGrid.Items.Add(condition);
+                this.ConditionsDataGrid.Items.Add(condition);
             }
         }
-
-        #endregion
-
-        #region Helpers
 
         private void FormatCarryWeight()
         {
-            double weight = Program.Character.CarryWeight;
+            var weight = Program.Character.CarryWeight;
 
             if (weight <= Program.Character.LightCarryCapacity)
             {
-                WeightCarriedField.Foreground = Brushes.Black;
-                WeightCarriedBox.Background = new SolidColorBrush(Colours.LightGreen);
+                this.WeightCarriedField.Foreground = Brushes.Black;
+                this.WeightCarriedBox.Background = new SolidColorBrush(Colours.LightGreen);
             }
             else if (weight > Program.Character.LightCarryCapacity && weight <= Program.Character.MediumCarryCapacity)
             {
-                WeightCarriedField.Foreground = new SolidColorBrush(Colours.MediumRed);
-                WeightCarriedBox.Background = new SolidColorBrush(Colours.LightYellow);
+                this.WeightCarriedField.Foreground = new SolidColorBrush(Colours.MediumRed);
+                this.WeightCarriedBox.Background = new SolidColorBrush(Colours.LightYellow);
             }
             else if (weight > Program.Character.MediumCarryCapacity && weight <= Program.Character.HeavyCarryCapacity)
             {
-                WeightCarriedField.Foreground = Brushes.DarkRed;
-                WeightCarriedBox.Background = Brushes.Pink;
+                this.WeightCarriedField.Foreground = Brushes.DarkRed;
+                this.WeightCarriedBox.Background = Brushes.Pink;
             }
             else
             {
-                WeightCarriedField.Foreground = Brushes.Red;
-                WeightCarriedBox.Background = Brushes.DimGray;
+                this.WeightCarriedField.Foreground = Brushes.Red;
+                this.WeightCarriedBox.Background = Brushes.DimGray;
             }
         }
-
-        #endregion
-
-        #endregion
-
-        #region Accessors
-
-        public double ProficiencyGridSize
-        {
-            get
-            {
-                return WeaponGrid.RenderSize.Height;
-            }
-        }
-
-        private ModifyWealthWindow ModifyWealthWindow { get; }
-        private ProficiencyPopupWindow ProficiencyPopupWindow { get; }
-        private ModifyProficiencyWindow ModifyProficiencyWindow { get; }
-        private MondifyConditionsWindow MondifyConditionsWindow { get; }
-        private ModifyLanguagesWindow ModifyLanguagesWindow { get; }
-        private ModifyAppearanceWindow ModifyAppearanceWindow { get; }
-        private ModifyPersonalityWindow ModifyPersonalityWindow { get; }
-
-        #endregion
-
-        #region Events
 
         private void EditWealthButton_Click(object sender, RoutedEventArgs e)
         {
-            ModifyWealthWindow.ShowWindow();
-            DrawWealth();
+            this.ModifyWealthWindow.ShowWindow();
+            this.DrawWealth();
         }
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
-            if (WeaponProficiencyDataGrid.SelectedItem != null)
+            if (this.WeaponProficiencyDataGrid.SelectedItem != null)
             {
-                var weapon = (KeyValuePair<Guid, string>)WeaponProficiencyDataGrid.SelectedItem;
+                var weapon = (KeyValuePair<Guid, string>)this.WeaponProficiencyDataGrid.SelectedItem;
                 Program.Character.Proficiency.Weapons.Remove(weapon.Key);
-                DrawProficiencies();
+                this.DrawProficiencies();
             }
-            else if (ArmorProficiencyDataGrid.SelectedItem != null)
+            else if (this.ArmorProficiencyDataGrid.SelectedItem != null)
             {
-                var armor = (KeyValuePair<Guid, string>)ArmorProficiencyDataGrid.SelectedItem;
+                var armor = (KeyValuePair<Guid, string>)this.ArmorProficiencyDataGrid.SelectedItem;
                 Program.Character.Proficiency.Armors.Remove(armor.Key);
-                DrawProficiencies();
+                this.DrawProficiencies();
             }
-            else if (ShieldProficiencyDataGrid.SelectedItem != null)
+            else if (this.ShieldProficiencyDataGrid.SelectedItem != null)
             {
-                var shield = (KeyValuePair<Guid, string>)ShieldProficiencyDataGrid.SelectedItem;
+                var shield = (KeyValuePair<Guid, string>)this.ShieldProficiencyDataGrid.SelectedItem;
                 Program.Character.Proficiency.Shields.Remove(shield.Key);
-                DrawProficiencies();
+                this.DrawProficiencies();
             }
-            else if (ToolProficiencyDataGrid.SelectedItem != null)
+            else if (this.ToolProficiencyDataGrid.SelectedItem != null)
             {
-                var tool = (KeyValuePair<Guid, string>)ToolProficiencyDataGrid.SelectedItem;
+                var tool = (KeyValuePair<Guid, string>)this.ToolProficiencyDataGrid.SelectedItem;
                 Program.Character.Proficiency.Tools.Remove(tool.Key);
-                DrawProficiencies();
+                this.DrawProficiencies();
             }
         }
 
@@ -234,150 +217,148 @@ namespace Concierge.Presentation.DetailsPageUi
         {
             KeyValuePair<Guid, string> proficiency;
 
-            if (WeaponProficiencyDataGrid.SelectedItem != null)
+            if (this.WeaponProficiencyDataGrid.SelectedItem != null)
             {
-                proficiency = (KeyValuePair<Guid, string>)WeaponProficiencyDataGrid.SelectedItem;
-                ModifyProficiencyWindow.ShowEdit(Constants.PopupButtons.WeaponProficiency, proficiency.Key);
-                DrawProficiencies();
+                proficiency = (KeyValuePair<Guid, string>)this.WeaponProficiencyDataGrid.SelectedItem;
+                this.ModifyProficiencyWindow.ShowEdit(PopupButtons.WeaponProficiency, proficiency.Key);
+                this.DrawProficiencies();
             }
-            else if (ArmorProficiencyDataGrid.SelectedItem != null)
+            else if (this.ArmorProficiencyDataGrid.SelectedItem != null)
             {
-                proficiency = (KeyValuePair<Guid, string>)ArmorProficiencyDataGrid.SelectedItem;
-                ModifyProficiencyWindow.ShowEdit(Constants.PopupButtons.ArmorProficiency, proficiency.Key);
-                DrawProficiencies();
+                proficiency = (KeyValuePair<Guid, string>)this.ArmorProficiencyDataGrid.SelectedItem;
+                this.ModifyProficiencyWindow.ShowEdit(PopupButtons.ArmorProficiency, proficiency.Key);
+                this.DrawProficiencies();
             }
-            else if (ShieldProficiencyDataGrid.SelectedItem != null)
+            else if (this.ShieldProficiencyDataGrid.SelectedItem != null)
             {
-                proficiency = (KeyValuePair<Guid, string>)ShieldProficiencyDataGrid.SelectedItem;
-                ModifyProficiencyWindow.ShowEdit(Constants.PopupButtons.ShieldProficiency, proficiency.Key);
-                DrawProficiencies();
+                proficiency = (KeyValuePair<Guid, string>)this.ShieldProficiencyDataGrid.SelectedItem;
+                this.ModifyProficiencyWindow.ShowEdit(PopupButtons.ShieldProficiency, proficiency.Key);
+                this.DrawProficiencies();
             }
-            else if (ToolProficiencyDataGrid.SelectedItem != null)
+            else if (this.ToolProficiencyDataGrid.SelectedItem != null)
             {
-                proficiency = (KeyValuePair<Guid, string>)ToolProficiencyDataGrid.SelectedItem;
-                ModifyProficiencyWindow.ShowEdit(Constants.PopupButtons.ToolProficiency, proficiency.Key);
-                DrawProficiencies();
+                proficiency = (KeyValuePair<Guid, string>)this.ToolProficiencyDataGrid.SelectedItem;
+                this.ModifyProficiencyWindow.ShowEdit(PopupButtons.ToolProficiency, proficiency.Key);
+                this.DrawProficiencies();
             }
         }
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            Constants.PopupButtons popupButtons;
+            PopupButtons popupButtons;
 
-            popupButtons = ProficiencyPopupWindow.ShowPopup();
+            popupButtons = this.ProficiencyPopupWindow.ShowPopup();
 
-            ModifyProficiencyWindow.ShowAdd(popupButtons);
+            this.ModifyProficiencyWindow.ShowAdd(popupButtons);
 
-            DrawProficiencies();
+            this.DrawProficiencies();
         }
 
         private void ClearButton_Click(object sender, RoutedEventArgs e)
         {
-            WeaponProficiencyDataGrid.UnselectAll();
-            ArmorProficiencyDataGrid.UnselectAll();
-            ShieldProficiencyDataGrid.UnselectAll();
-            ToolProficiencyDataGrid.UnselectAll();
+            this.WeaponProficiencyDataGrid.UnselectAll();
+            this.ArmorProficiencyDataGrid.UnselectAll();
+            this.ShieldProficiencyDataGrid.UnselectAll();
+            this.ToolProficiencyDataGrid.UnselectAll();
         }
 
         private void WeaponProficiencyDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (WeaponProficiencyDataGrid.SelectedItem != null)
+            if (this.WeaponProficiencyDataGrid.SelectedItem != null)
             {
-                ArmorProficiencyDataGrid.UnselectAll();
-                ShieldProficiencyDataGrid.UnselectAll();
-                ToolProficiencyDataGrid.UnselectAll();
+                this.ArmorProficiencyDataGrid.UnselectAll();
+                this.ShieldProficiencyDataGrid.UnselectAll();
+                this.ToolProficiencyDataGrid.UnselectAll();
             }
         }
 
         private void ArmorProficiencyDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (ArmorProficiencyDataGrid.SelectedItem != null)
+            if (this.ArmorProficiencyDataGrid.SelectedItem != null)
             {
-                WeaponProficiencyDataGrid.UnselectAll();
-                ShieldProficiencyDataGrid.UnselectAll();
-                ToolProficiencyDataGrid.UnselectAll();
+                this.WeaponProficiencyDataGrid.UnselectAll();
+                this.ShieldProficiencyDataGrid.UnselectAll();
+                this.ToolProficiencyDataGrid.UnselectAll();
             }
         }
 
         private void ShieldProficiencyDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (ShieldProficiencyDataGrid.SelectedItem != null)
+            if (this.ShieldProficiencyDataGrid.SelectedItem != null)
             {
-                WeaponProficiencyDataGrid.UnselectAll();
-                ArmorProficiencyDataGrid.UnselectAll();
-                ToolProficiencyDataGrid.UnselectAll();
+                this.WeaponProficiencyDataGrid.UnselectAll();
+                this.ArmorProficiencyDataGrid.UnselectAll();
+                this.ToolProficiencyDataGrid.UnselectAll();
             }
         }
 
         private void ToolProficiencyDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (ToolProficiencyDataGrid.SelectedItem != null)
+            if (this.ToolProficiencyDataGrid.SelectedItem != null)
             {
-                WeaponProficiencyDataGrid.UnselectAll();
-                ArmorProficiencyDataGrid.UnselectAll();
-                ShieldProficiencyDataGrid.UnselectAll();
+                this.WeaponProficiencyDataGrid.UnselectAll();
+                this.ArmorProficiencyDataGrid.UnselectAll();
+                this.ShieldProficiencyDataGrid.UnselectAll();
             }
         }
 
-        #endregion
-
         private void EditConditionsButton_Click(object sender, RoutedEventArgs e)
         {
-            MondifyConditionsWindow.ShowEdit();
-            DrawConditions();
+            this.MondifyConditionsWindow.ShowEdit();
+            this.DrawConditions();
         }
 
         private void EditLanguagesButton_Click(object sender, RoutedEventArgs e)
         {
-            if (LanguagesDataGrid.SelectedItem != null)
+            if (this.LanguagesDataGrid.SelectedItem != null)
             {
-                ModifyLanguagesWindow.ShowEdit(LanguagesDataGrid.SelectedItem as Language);
-                DrawLanguages();
+                this.ModifyLanguagesWindow.ShowEdit(this.LanguagesDataGrid.SelectedItem as Language);
+                this.DrawLanguages();
             }
         }
 
         private void AddLanguagesButton_Click(object sender, RoutedEventArgs e)
         {
-            ModifyLanguagesWindow.ShowAdd();
-            DrawLanguages();
+            this.ModifyLanguagesWindow.ShowAdd();
+            this.DrawLanguages();
         }
 
         private void DeleteLanguagesButton_Click(object sender, RoutedEventArgs e)
         {
-            if (LanguagesDataGrid.SelectedItem != null)
+            if (this.LanguagesDataGrid.SelectedItem != null)
             {
-                Program.Character.Details.Languages.Remove(LanguagesDataGrid.SelectedItem as Language);
-                DrawLanguages();
+                Program.Character.Details.Languages.Remove(this.LanguagesDataGrid.SelectedItem as Language);
+                this.DrawLanguages();
             }
         }
 
         private void ClearLanguagesButton_Click(object sender, RoutedEventArgs e)
         {
-            LanguagesDataGrid.UnselectAll();
+            this.LanguagesDataGrid.UnselectAll();
         }
 
         private void ClearConditionsButton_Click(object sender, RoutedEventArgs e)
         {
-            ConditionsDataGrid.UnselectAll();
+            this.ConditionsDataGrid.UnselectAll();
         }
 
         private void EditAppearanceButton_Click(object sender, RoutedEventArgs e)
         {
-            ModifyAppearanceWindow.ShowEdit();
-            DrawAppearance();
+            this.ModifyAppearanceWindow.ShowEdit();
+            this.DrawAppearance();
         }
 
         private void EditPersonalityButton_Click(object sender, RoutedEventArgs e)
         {
-            ModifyPersonalityWindow.ShowEdit();
-            DrawPersonality();
+            this.ModifyPersonalityWindow.ShowEdit();
+            this.DrawPersonality();
         }
 
         private void WeaponProficiencyDataGrid_Sorted(object sender, RoutedEventArgs e)
         {
             Program.Character.Proficiency.Weapons.Clear();
 
-            foreach (var weapon in WeaponProficiencyDataGrid.Items)
+            foreach (var weapon in this.WeaponProficiencyDataGrid.Items)
             {
                 var keyValuePair = (KeyValuePair<Guid, string>)weapon;
                 Program.Character.Proficiency.Weapons.Add(keyValuePair.Key, keyValuePair.Value);
@@ -388,7 +369,7 @@ namespace Concierge.Presentation.DetailsPageUi
         {
             Program.Character.Proficiency.Armors.Clear();
 
-            foreach (var armor in ArmorProficiencyDataGrid.Items)
+            foreach (var armor in this.ArmorProficiencyDataGrid.Items)
             {
                 var keyValuePair = (KeyValuePair<Guid, string>)armor;
                 Program.Character.Proficiency.Armors.Add(keyValuePair.Key, keyValuePair.Value);
@@ -399,7 +380,7 @@ namespace Concierge.Presentation.DetailsPageUi
         {
             Program.Character.Proficiency.Shields.Clear();
 
-            foreach (var shield in ShieldProficiencyDataGrid.Items)
+            foreach (var shield in this.ShieldProficiencyDataGrid.Items)
             {
                 var keyValuePair = (KeyValuePair<Guid, string>)shield;
                 Program.Character.Proficiency.Shields.Add(keyValuePair.Key, keyValuePair.Value);
@@ -410,7 +391,7 @@ namespace Concierge.Presentation.DetailsPageUi
         {
             Program.Character.Proficiency.Tools.Clear();
 
-            foreach (var tool in ToolProficiencyDataGrid.Items)
+            foreach (var tool in this.ToolProficiencyDataGrid.Items)
             {
                 var keyValuePair = (KeyValuePair<Guid, string>)tool;
                 Program.Character.Proficiency.Tools.Add(keyValuePair.Key, keyValuePair.Value);
@@ -421,7 +402,7 @@ namespace Concierge.Presentation.DetailsPageUi
         {
             Program.Character.Details.Languages.Clear();
 
-            foreach (var language in LanguagesDataGrid.Items)
+            foreach (var language in this.LanguagesDataGrid.Items)
             {
                 Program.Character.Details.Languages.Add(language as Language);
             }

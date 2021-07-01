@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// <copyright file="CcsFile.cs" company="Thomas Beckett">
+// Copyright (c) Thomas Beckett. All rights reserved.
+// </copyright>
 
 namespace Concierge.Persistence
 {
@@ -10,18 +8,12 @@ namespace Concierge.Persistence
     {
         public CcsFile()
         {
-
         }
 
         public string Name { get; set; }
+
         public string Path { get; set; }
 
-        public string AbsolutePath
-        {
-            get
-            {
-                return Path + Name;
-            }
-        }
+        public string AbsolutePath => this.Path + this.Name;
     }
 }

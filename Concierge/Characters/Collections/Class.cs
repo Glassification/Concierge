@@ -1,28 +1,29 @@
-﻿using Concierge.Utility;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// <copyright file="Class.cs" company="Thomas Beckett">
+// Copyright (c) Thomas Beckett. All rights reserved.
+// </copyright>
 
 namespace Concierge.Characters.Collections
 {
+    using System;
+
+    using Concierge.Utility;
+
     public class Class
     {
         private int _level;
 
         public Class()
         {
-            _level = 0;
-            Name = "";
-            ID = Guid.NewGuid();
+            this._level = 0;
+            this.Name = string.Empty;
+            this.ID = Guid.NewGuid();
         }
 
         public Class(Guid id)
         {
-            _level = 0;
-            Name = "";
-            ID = id;
+            this._level = 0;
+            this.Name = string.Empty;
+            this.ID = id;
         }
 
         public string Name { get; set; }
@@ -31,17 +32,14 @@ namespace Concierge.Characters.Collections
 
         public int Level
         {
-            get
-            {
-                return _level;
-            }
+            get => this._level;
             set
             {
                 if (value <= Constants.MAX_LEVEL && value >= 0)
                 {
-                    if (Program.Character.ValidateClassLevel(value, ID))
+                    if (Program.Character.ValidateClassLevel(value, this.ID))
                     {
-                        _level = value;
+                        this._level = value;
                     }
                 }
             }
