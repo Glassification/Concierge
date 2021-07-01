@@ -15,7 +15,8 @@
         ResizeMode="NoResize"
         KeyDown="Window_KeyDown"
         BorderThickness="1"
-        BorderBrush="#429cd6">
+        BorderBrush="#429cd6"
+        Style="{StaticResource WindowXboxDasboardStyle}">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="45"/>
@@ -38,7 +39,7 @@
                     Width="60"
                     HorizontalAlignment="Right"
                     VerticalAlignment="Center"
-                    Background="{x:Null}"
+                    Background="Transparent"
                     BorderBrush="{x:Null}"
                     Foreground="Red"
                     ToolTip="Close"
@@ -334,7 +335,7 @@
                 <Button x:Name="OkButton"
                         Height="50"
                         Width="60"
-                        Background="{x:Null}"
+                        Background="Transparent"
                         BorderBrush="{x:Null}"
                         Foreground="Green"
                         ToolTip="OK"
@@ -344,7 +345,7 @@
                 <Button x:Name="ApplyButton"
                         Height="50"
                         Width="60"
-                        Background="{x:Null}"
+                        Background="Transparent"
                         BorderBrush="{x:Null}"
                         Foreground="OrangeRed"
                         ToolTip="Apply"
@@ -354,7 +355,7 @@
                 <Button x:Name="CancelButton"
                         Height="50"
                         Width="60"
-                        Background="{x:Null}"
+                        Background="Transparent"
                         BorderBrush="{x:Null}"
                         Foreground="IndianRed"
                         ToolTip="Cancel"

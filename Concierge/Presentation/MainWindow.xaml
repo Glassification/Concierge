@@ -12,7 +12,8 @@
         WindowStyle="None"
         Background="#FF202020"
         KeyDown="MainWindow_KeyPress"
-        WindowState="Maximized">
+        WindowState="Maximized"
+        Style="{StaticResource WindowXboxDasboardStyle}">
 
     <Window.Resources>
         <ObjectDataProvider x:Key="getGridContentWidthOpen"

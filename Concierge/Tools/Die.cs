@@ -2,7 +2,7 @@
 // Copyright (c) Thomas Beckett. All rights reserved.
 // </copyright>
 
-namespace Concierge.Utility
+namespace Concierge.Tools
 {
     using System.Collections.Generic;
 

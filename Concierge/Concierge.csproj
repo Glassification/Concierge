@@ -217,9 +217,9 @@
     <Compile Include="Presentation\ToolsPageUi\ToolsPage.xaml.cs">
       <DependentUpon>ToolsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Utility\Die.cs" />
-    <Compile Include="Utility\Enums\Currency.cs" />
-    <Compile Include="Utility\Player.cs" />
+    <Compile Include="Tools\Die.cs" />
+    <Compile Include="Tools\Enums\Currency.cs" />
+    <Compile Include="Tools\Player.cs" />
     <Compile Include="Presentation\EquipmentPageUi\EquipmentPage.xaml.cs">
       <DependentUpon>EquipmentPage.xaml</DependentUpon>
     </Compile>
@@ -309,6 +309,14 @@
     <Resource Include="Resources\Images\armor_class_icon.png" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Resources\Dictionary\PageFontStyling.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\Dictionary\WindowFontStyling.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Presentation\AbilitiesPageUi\AbilitiesPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

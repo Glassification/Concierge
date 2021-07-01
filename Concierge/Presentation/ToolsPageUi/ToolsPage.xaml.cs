@@ -9,7 +9,7 @@ namespace Concierge.Presentation.ToolsPageUi
     using System.Windows;
     using System.Windows.Controls;
 
-    using Concierge.Utility;
+    using Concierge.Tools;
 
     /// <summary>
     /// Interaction logic for ToolsPage.xaml.
@@ -84,29 +84,28 @@ namespace Concierge.Presentation.ToolsPageUi
 
         private void Distribute(Player loot)
         {
-            bool end = false;
-            double maxValue = loot.Total / this.Players.Count;
+            var maxValue = loot.Total / this.Players.Count;
 
-            if (this.Players.Count > 0)
+            if (this.Players.Count <= 0)
             {
-                for (int i = 0; i < Player.CURRENCIES; i++)
-                {
-                    while (loot.CurrencyList[i] > 0)
-                    {
-                        for (int j = 0; j < this.Players.Count && !end; j++)
-                        {
-                            if (loot.CurrencyList[i] < 1)
-                            {
-                                end = true;
-                            }
-                            else if (this.Players[j].Total < maxValue)
-                            {
-                                this.Players[j].CurrencyList[i]++;
-                                loot.CurrencyList[i]--;
-                            }
-                        }
+                return;
+            }
 
-                        end = false;
+            for (int i = 0; i < Player.CURRENCIES; i++)
+            {
+                while (loot.CurrencyList[i] > 0)
+                {
+                    for (int j = 0; j < this.Players.Count; j++)
+                    {
+                        if (loot.CurrencyList[i] < 1)
+                        {
+                            break;
+                        }
+                        else if (this.Players[j].Total < maxValue)
+                        {
+                            this.Players[j].CurrencyList[i]++;
+                            loot.CurrencyList[i]--;
+                        }
                     }
                 }
             }

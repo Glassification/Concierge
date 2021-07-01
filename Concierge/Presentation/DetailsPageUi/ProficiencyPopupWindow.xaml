@@ -15,7 +15,8 @@
         ResizeMode="NoResize"
         KeyDown="Window_KeyDown"
         BorderThickness="1"
-        BorderBrush="#429cd6">
+        BorderBrush="#429cd6"
+        Style="{StaticResource WindowXboxDasboardStyle}">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="2*"/>
@@ -30,7 +31,7 @@
                 <Button x:Name="CloseButton"
                         Height="50"
                         Width="60"
-                        Background="{x:Null}"
+                        Background="Transparent"
                         BorderBrush="{x:Null}"
                         Foreground="Red"
                         ToolTip="Close"
@@ -55,7 +56,7 @@
                 <Button x:Name="WeaponButton"
                         Height="50"
                         Width="60"
-                        Background="{x:Null}"
+                        Background="Transparent"
                         BorderBrush="{x:Null}"
                         Foreground="Gray"
                         ToolTip="Weapon"
@@ -65,7 +66,7 @@
                 <Button x:Name="ArmorButton"
                         Height="50"
                         Width="60"
-                        Background="{x:Null}"
+                        Background="Transparent"
                         BorderBrush="{x:Null}"
                         Foreground="SaddleBrown"
                         ToolTip="Armor"
@@ -75,7 +76,7 @@
                 <Button x:Name="ShieldButton"
                         Height="50"
                         Width="60"
-                        Background="{x:Null}"
+                        Background="Transparent"
                         BorderBrush="{x:Null}"
                         Foreground="Goldenrod"
                         ToolTip="Shield"
@@ -85,7 +86,7 @@
                 <Button x:Name="ToolButton"
                         Height="50"
                         Width="60"
-                        Background="{x:Null}"
+                        Background="Transparent"
                         BorderBrush="{x:Null}"
                         Foreground="Firebrick"
                         ToolTip="Tool"
@@ -95,7 +96,7 @@
                 <Button x:Name="CancelButton"
                         Height="50"
                         Width="60"
-                        Background="{x:Null}"
+                        Background="Transparent"
                         BorderBrush="{x:Null}"
                         Foreground="IndianRed"
                         ToolTip="Cancel"

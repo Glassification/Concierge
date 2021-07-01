@@ -26,23 +26,21 @@ namespace Concierge.Presentation
     /// </summary>
     public partial class MainWindow : Window
     {
-        private OpenFileDialog openFileDialog = new OpenFileDialog();
-        private SaveFileDialog saveFileDialog = new SaveFileDialog();
+        private readonly OpenFileDialog openFileDialog = new OpenFileDialog();
+        private readonly SaveFileDialog saveFileDialog = new SaveFileDialog();
 
-        InventoryPage InventoryPage = new InventoryPage();
-        EquipmentPage EquipmentPage = new EquipmentPage();
-        AbilitiesPage AbilitiesPage = new AbilitiesPage();
-        OverviewPage OverviewPage = new OverviewPage();
-        DetailsPage DetailsPage = new DetailsPage();
-        NotesPage NotesPage = new NotesPage();
-        SpellcastingPage SpellcastingPage = new SpellcastingPage();
-        ToolsPage ToolsPage = new ToolsPage();
+        private readonly InventoryPage InventoryPage = new InventoryPage();
+        private readonly EquipmentPage EquipmentPage = new EquipmentPage();
+        private readonly AbilitiesPage AbilitiesPage = new AbilitiesPage();
+        private readonly OverviewPage OverviewPage = new OverviewPage();
+        private readonly DetailsPage DetailsPage = new DetailsPage();
+        private readonly NotesPage NotesPage = new NotesPage();
+        private readonly SpellcastingPage SpellcastingPage = new SpellcastingPage();
+        private readonly ToolsPage ToolsPage = new ToolsPage();
 
         public MainWindow()
         {
             this.InitializeComponent();
-
-            this.Style = (Style)this.FindResource(typeof(Window));
 
             this.GridContent.Width = this.GridContentWidthClose;
 
@@ -59,12 +57,9 @@ namespace Concierge.Presentation
             this.DataContext = this;
         }
 
-        protected override void OnClosed(EventArgs e)
-        {
-            base.OnClosed(e);
+        public double GridContentWidthOpen => SystemParameters.PrimaryScreenWidth - 200;
 
-            App.Current.Shutdown();
-        }
+        public double GridContentWidthClose => SystemParameters.PrimaryScreenWidth - 60;
 
         public void CloseWindow()
         {
@@ -168,6 +163,13 @@ namespace Concierge.Presentation
             this.DrawAll();
         }
 
+        protected override void OnClosed(EventArgs e)
+        {
+            base.OnClosed(e);
+
+            Application.Current.Shutdown();
+        }
+
         private bool IsControl()
         {
             return (Keyboard.Modifiers & ModifierKeys.Control) == ModifierKeys.Control;
@@ -177,10 +179,6 @@ namespace Concierge.Presentation
         {
             return (Keyboard.Modifiers & ModifierKeys.Shift) == ModifierKeys.Shift;
         }
-
-        public double GridContentWidthOpen => SystemParameters.PrimaryScreenWidth - 200;
-
-        public double GridContentWidthClose => SystemParameters.PrimaryScreenWidth - 60;
 
         private void MainWindow_ContentRendered(object sender, EventArgs e)
         {
@@ -199,28 +197,36 @@ namespace Concierge.Presentation
                         {
                             this.LongRest();
                         }
+
                         break;
+
                     // New Character Sheet
                     case Key.N:
                         if (this.IsControl())
                         {
                             this.NewCharacterSheet();
                         }
+
                         break;
+
                     // Open Character Sheet
                     case Key.O:
                         if (this.IsControl())
                         {
                             this.OpenCharacterSheet();
                         }
+
                         break;
+
                     // Close Window
                     case Key.Q:
                         if (this.IsControl())
                         {
                             this.CloseWindow();
                         }
+
                         break;
+
                     // Save Character Sheet
                     case Key.S:
                         if (this.IsControl() && this.IsShift())
@@ -231,29 +237,38 @@ namespace Concierge.Presentation
                         {
                             this.SaveCharacterSheet();
                         }
+
                         break;
+
                     // --------------------------------------------------------------
                     // Page 1
                     case Key.D1:
                         break;
+
                     // Page 2
                     case Key.D2:
                         break;
+
                     // Page 3
                     case Key.D3:
                         break;
+
                     // Page 4
                     case Key.D4:
                         break;
+
                     // Page 5
                     case Key.D5:
                         break;
+
                     // Page 6
                     case Key.D6:
                         break;
+
                     // Page 7
                     case Key.D7:
                         break;
+
                     // Page 8
                     case Key.D8:
                         break;

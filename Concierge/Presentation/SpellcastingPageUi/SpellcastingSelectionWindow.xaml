@@ -15,7 +15,8 @@
         ResizeMode="NoResize"
         KeyDown="Window_KeyDown"
         BorderThickness="1"
-        BorderBrush="#429cd6">
+        BorderBrush="#429cd6"
+        Style="{StaticResource WindowXboxDasboardStyle}">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="2*"/>
@@ -30,7 +31,7 @@
                 <Button x:Name="CloseButton"
                         Height="50"
                         Width="60"
-                        Background="{x:Null}"
+                        Background="Transparent"
                         BorderBrush="{x:Null}"
                         Foreground="Red"
                         ToolTip="Close"
@@ -55,7 +56,7 @@
                 <Button x:Name="SpellClassButton"
                         Height="50"
                         Width="60"
-                        Background="{x:Null}"
+                        Background="Transparent"
                         BorderBrush="{x:Null}"
                         Foreground="LightCyan"
                         ToolTip="Add Class"
@@ -65,7 +66,7 @@
                 <Button x:Name="SpellButton"
                         Height="50"
                         Width="60"
-                        Background="{x:Null}"
+                        Background="Transparent"
                         BorderBrush="{x:Null}"
                         Foreground="DarkCyan"
                         ToolTip="Add Spell"
@@ -75,7 +76,7 @@
                 <Button x:Name="CancelButton"
                         Height="50"
                         Width="60"
-                        Background="{x:Null}"
+                        Background="Transparent"
                         BorderBrush="{x:Null}"
                         Foreground="IndianRed"
                         ToolTip="Cancel"
