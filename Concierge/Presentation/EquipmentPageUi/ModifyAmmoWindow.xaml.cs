@@ -76,6 +76,8 @@ namespace Concierge.Presentation.EquipmentPageUi
             ammunition.Bonus = this.BonusTextBox.Text;
             ammunition.DamageType = (DamageTypes)Enum.Parse(typeof(DamageTypes), this.DamageTypeComboBox.Text);
             ammunition.Used = this.UsedUpDown.Value ?? 0;
+
+            Program.Modified = true;
         }
 
         private Ammunition ToAmmunition()
@@ -116,6 +118,7 @@ namespace Concierge.Presentation.EquipmentPageUi
             else
             {
                 Program.Character.Ammunitions.Add(this.ToAmmunition());
+                Program.Modified = true;
             }
 
             this.Hide();
@@ -124,6 +127,7 @@ namespace Concierge.Presentation.EquipmentPageUi
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Character.Ammunitions.Add(this.ToAmmunition());
+            Program.Modified = true;
             this.ClearFields();
         }
 

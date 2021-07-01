@@ -43,6 +43,8 @@ namespace Concierge.Presentation.DetailsPageUi
             Program.Character.Personality.Flaw = this.FlawTextBox.Text;
             Program.Character.Personality.Background = this.BackgroundTextBox.Text;
             Program.Character.Personality.Notes = this.NotesTextBox.Text;
+
+            Program.Modified = true;
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)

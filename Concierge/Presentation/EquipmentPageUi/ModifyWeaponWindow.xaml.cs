@@ -93,6 +93,8 @@ namespace Concierge.Presentation.EquipmentPageUi
             weapon.Weight = this.WeightUpDown.Value ?? 0.0;
             weapon.ProficiencyOverride = this.ProficencyOverrideCheckBox.IsChecked ?? false;
             weapon.Note = this.NotesTextBox.Text;
+
+            Program.Modified = true;
         }
 
         private Weapon ToWeapon()
@@ -137,6 +139,7 @@ namespace Concierge.Presentation.EquipmentPageUi
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Character.Weapons.Add(this.ToWeapon());
+            Program.Modified = true;
             this.ClearFields();
         }
 
@@ -149,6 +152,7 @@ namespace Concierge.Presentation.EquipmentPageUi
             else
             {
                 Program.Character.Weapons.Add(this.ToWeapon());
+                Program.Modified = true;
             }
 
             this.Hide();

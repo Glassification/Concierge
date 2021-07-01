@@ -56,6 +56,8 @@ namespace Concierge.Presentation.NotesPageUi
             if (this.SelectedDocument != null)
             {
                 this.SelectedDocument.RTF = this.SaveCurrentDocument();
+
+                Program.Modified = true;
             }
         }
 

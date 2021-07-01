@@ -718,6 +718,8 @@ namespace Concierge.Presentation.OverviewPageUi
         {
             this.ModifyAttributesWindow.EditAttributes();
             this.DrawAttributes();
+            this.DrawSavingThrows();
+            this.DrawSkills();
         }
 
         private void EditSensesButton_Click(object sender, RoutedEventArgs e)

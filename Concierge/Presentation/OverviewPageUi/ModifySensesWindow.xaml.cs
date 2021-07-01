@@ -45,6 +45,8 @@ namespace Concierge.Presentation.OverviewPageUi
             Program.Character.Details.PerceptionBonus = this.PerceptionBonusUpDown.Value ?? 0;
             Program.Character.Details.Vision = (VisionTypes)Enum.Parse(typeof(VisionTypes), this.VisionComboBox.Text);
             Program.Character.Details.BaseMovement = this.BaseMovementUpDown.Value ?? 0;
+
+            Program.Modified = true;
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)

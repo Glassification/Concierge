@@ -81,6 +81,8 @@ namespace Concierge.Presentation.SpellcastingPageUi
             magicClass.Level = this.LevelUpDown.Value ?? 0;
             magicClass.KnownCantrips = this.CantripsUpDown.Value ?? 0;
             magicClass.KnownSpells = this.SpellsUpDown.Value ?? 0;
+
+            Program.Modified = true;
         }
 
         private MagicClass ToClass()
@@ -121,6 +123,7 @@ namespace Concierge.Presentation.SpellcastingPageUi
             else
             {
                 Program.Character.MagicClasses.Add(this.ToClass());
+                Program.Modified = true;
             }
 
             this.Hide();
@@ -129,6 +132,7 @@ namespace Concierge.Presentation.SpellcastingPageUi
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Character.MagicClasses.Add(this.ToClass());
+            Program.Modified = true;
             this.ClearFields();
         }
 

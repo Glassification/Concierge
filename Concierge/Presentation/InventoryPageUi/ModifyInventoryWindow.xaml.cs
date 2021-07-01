@@ -83,6 +83,8 @@ namespace Concierge.Presentation.InventoryPageUi
             inventory.Amount = this.AmountUpDown.Value ?? 0;
             inventory.Weight = this.WeightUpDown.Value ?? 0.0;
             inventory.Note = this.NotesTextBox.Text;
+
+            Program.Modified = true;
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
@@ -103,6 +105,7 @@ namespace Concierge.Presentation.InventoryPageUi
         private void ButtonApply_Click(object sender, RoutedEventArgs e)
         {
             Program.Character.Inventories.Add(this.ToInventory());
+            Program.Modified = true;
             this.ClearFields();
         }
 
@@ -115,6 +118,7 @@ namespace Concierge.Presentation.InventoryPageUi
             else
             {
                 Program.Character.Inventories.Add(this.ToInventory());
+                Program.Modified = true;
             }
 
             this.Hide();

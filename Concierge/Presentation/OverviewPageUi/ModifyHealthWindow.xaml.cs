@@ -35,6 +35,8 @@ namespace Concierge.Presentation.OverviewPageUi
             Program.Character.Vitality.BaseHealth = this.CurrentHpUpDown.Value ?? 0;
             Program.Character.Vitality.TemporaryHealth = this.TemporaryHpUpDown.Value ?? 0;
             Program.Character.Vitality.MaxHealth = this.TotalHpUpDown.Value ?? 0;
+
+            Program.Modified = true;
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)

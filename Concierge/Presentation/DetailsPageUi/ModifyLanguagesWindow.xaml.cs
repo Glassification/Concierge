@@ -67,6 +67,8 @@ namespace Concierge.Presentation.DetailsPageUi
             language.Name = this.NameComboBox.Text;
             language.Script = this.ScriptTextBox.Text;
             language.Speakers = this.SpeakersTextBox.Text;
+
+            Program.Modified = true;
         }
 
         private Language ToLanguage()
@@ -105,6 +107,7 @@ namespace Concierge.Presentation.DetailsPageUi
             else
             {
                 Program.Character.Details.Languages.Add(this.ToLanguage());
+                Program.Modified = true;
             }
 
             this.Hide();
@@ -113,6 +116,7 @@ namespace Concierge.Presentation.DetailsPageUi
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Character.Details.Languages.Add(this.ToLanguage());
+            Program.Modified = true;
             this.ClearFields();
         }
 

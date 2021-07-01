@@ -107,6 +107,8 @@ namespace Concierge.Presentation.SpellcastingPageUi
             spell.Damage = this.DamageTextBox.Text;
             spell.Description = this.NotesTextBox.Text;
             spell.Class = this.ClassComboBox.Text;
+
+            Program.Modified = true;
         }
 
         private Spell ToSpell()
@@ -157,6 +159,7 @@ namespace Concierge.Presentation.SpellcastingPageUi
             else
             {
                 Program.Character.Spells.Add(this.ToSpell());
+                Program.Modified = true;
             }
 
             this.Hide();
@@ -165,6 +168,7 @@ namespace Concierge.Presentation.SpellcastingPageUi
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Character.Spells.Add(this.ToSpell());
+            Program.Modified = true;
             this.ClearFields();
         }
 

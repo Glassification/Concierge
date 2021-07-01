@@ -67,10 +67,12 @@ namespace Concierge.Presentation.DetailsPageUi
             if (this.Editing)
             {
                 Program.Character.Proficiency.SetProficiencyById(this.SelectedProficiencyId, this.ProficiencyTextBox.Text);
+                Program.Modified = true;
             }
             else
             {
                 Program.Character.Proficiency.AddProficiencyByPopupButton(this.PopupButton, this.ProficiencyTextBox.Text);
+                Program.Modified = true;
             }
 
             this.Hide();
@@ -79,6 +81,7 @@ namespace Concierge.Presentation.DetailsPageUi
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Character.Proficiency.AddProficiencyByPopupButton(this.PopupButton, this.ProficiencyTextBox.Text);
+            Program.Modified = true;
             this.ClearFields();
         }
 

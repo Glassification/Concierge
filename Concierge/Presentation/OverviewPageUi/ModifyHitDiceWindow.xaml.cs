@@ -48,6 +48,8 @@ namespace Concierge.Presentation.OverviewPageUi
             Program.Character.Vitality.HitDice.SpentD8 = this.UsedD8UpDown.Value ?? 0;
             Program.Character.Vitality.HitDice.SpentD10 = this.UsedD10UpDown.Value ?? 0;
             Program.Character.Vitality.HitDice.SpentD12 = this.UsedD12UpDown.Value ?? 0;
+
+            Program.Modified = true;
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)

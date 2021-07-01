@@ -78,6 +78,7 @@ namespace Concierge.Presentation.DetailsPageUi
             Program.Character.Wealth.Gold = this.GP;
             Program.Character.Wealth.Platinum = this.PP;
 
+            Program.Modified = true;
             this.Hide();
         }
 

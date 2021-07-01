@@ -70,7 +70,7 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="60" />
                 <ColumnDefinition Width="1*" />
-                <ColumnDefinition Width="120" />
+                <ColumnDefinition Width="180" />
             </Grid.ColumnDefinitions>
 
             <!-- Side Menu Toggle -->
@@ -113,7 +113,6 @@
                     <TextBlock x:Name="TextCharacterBackground" FontSize="15" Margin="25 0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                     <TextBlock x:Name="TextCharacterAlignment" FontSize="15" Margin="25 0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                     <TextBlock x:Name="TextCharacterLevel" FontSize="15" Margin="25 0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                    <TextBlock x:Name="TextCharacterXp" FontSize="15" Margin="25 0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                     <TextBlock x:Name="TextCharacterClass" FontSize="15" Margin="25 0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                 </StackPanel>
             </Grid>
@@ -172,6 +171,18 @@
                             </Button>
                         </StackPanel>
                     </materialDesign:PopupBox>
+                    <Button x:Name="ButtonMinimize" 
+                            Height="50" Width="60" 
+                            HorizontalAlignment="Center" 
+                            VerticalAlignment="Center" 
+                            Background="Transparent" 
+                            BorderBrush="{x:Null}" 
+                            Foreground="White" 
+                            Click="ButtonMinimize_Click"
+                            MouseEnter="ButtonMinimize_MouseEnter"
+                            MouseLeave="ButtonMinimize_MouseLeave">
+                        <materialDesign:PackIcon Kind="WindowMinimize" Width="25" Height="25"/>
+                    </Button>
                     <Button x:Name="ButtonClose" 
                             Height="50" Width="60" 
                             HorizontalAlignment="Center" 
@@ -182,7 +193,7 @@
                             Click="ButtonClose_Click"
                             MouseEnter="ButtonClose_MouseEnter"
                             MouseLeave="ButtonClose_MouseLeave">
-                        <materialDesign:PackIcon Kind="Power" Width="25" Height="25"/>
+                        <materialDesign:PackIcon Kind="WindowClose" Width="25" Height="25"/>
                     </Button>
                 </StackPanel>
             </Grid>

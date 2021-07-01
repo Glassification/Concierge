@@ -145,6 +145,9 @@
       <DependentUpon>AbilitiesPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Presentation\Components\ConciergeDataGrid.cs" />
+    <Compile Include="Presentation\ConfirmCloseWindow.xaml.cs">
+      <DependentUpon>ConfirmCloseWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Presentation\DetailsPageUi\DetailsPage.xaml.cs">
       <DependentUpon>DetailsPage.xaml</DependentUpon>
     </Compile>
@@ -309,6 +312,10 @@
     <Resource Include="Resources\Images\armor_class_icon.png" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Presentation\ConfirmCloseWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Resources\Dictionary\PageFontStyling.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

@@ -18,7 +18,6 @@ namespace Concierge.Presentation
     using Concierge.Presentation.OverviewPageUi;
     using Concierge.Presentation.SpellcastingPageUi;
     using Concierge.Presentation.ToolsPageUi;
-    using Concierge.Utility;
     using Microsoft.Win32;
 
     /// <summary>
@@ -28,6 +27,7 @@ namespace Concierge.Presentation
     {
         private readonly OpenFileDialog openFileDialog = new OpenFileDialog();
         private readonly SaveFileDialog saveFileDialog = new SaveFileDialog();
+        private readonly ConfirmCloseWindow confirmCloseWindow = new ConfirmCloseWindow();
 
         private readonly InventoryPage InventoryPage = new InventoryPage();
         private readonly EquipmentPage EquipmentPage = new EquipmentPage();
@@ -63,9 +63,9 @@ namespace Concierge.Presentation
 
         public void CloseWindow()
         {
-            if (Program.Modified)
+            if (Program.Modified && this.confirmCloseWindow.ShowWindow())
             {
-                // TODO Display popup - would you like to close without saving?
+                this.SaveCharacterSheet();
             }
 
             this.Close();
@@ -129,15 +129,6 @@ namespace Concierge.Presentation
             if (Program.Character.Level > 0)
             {
                 this.TextCharacterLevel.Text = "Level " + Program.Character.Level;
-            }
-            else
-            {
-                this.TextCharacterLevel.Text = string.Empty;
-            }
-
-            if (Program.Character.Level > 0 && Program.Character.Level <= Constants.MAX_LEVEL)
-            {
-                this.TextCharacterXp.Text = Program.Character.Details.Experience + "/" + Program.Character.ExperienceToLevel + " Experience";
             }
             else
             {
@@ -462,6 +453,21 @@ namespace Concierge.Presentation
         private void ButtonClose_MouseLeave(object sender, MouseEventArgs e)
         {
             this.ButtonClose.Foreground = Brushes.White;
+        }
+
+        private void ButtonMinimize_MouseEnter(object sender, MouseEventArgs e)
+        {
+            this.ButtonMinimize.Foreground = Brushes.Black;
+        }
+
+        private void ButtonMinimize_MouseLeave(object sender, MouseEventArgs e)
+        {
+            this.ButtonMinimize.Foreground = Brushes.White;
+        }
+
+        private void ButtonMinimize_Click(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
         }
     }
 }

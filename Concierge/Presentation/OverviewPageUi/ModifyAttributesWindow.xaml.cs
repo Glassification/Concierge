@@ -41,6 +41,8 @@ namespace Concierge.Presentation.OverviewPageUi
             Program.Character.Attributes.Intelligence = this.IntelligenceUpDown.Value ?? 0;
             Program.Character.Attributes.Wisdom = this.WisdomUpDown.Value ?? 0;
             Program.Character.Attributes.Charisma = this.CharismaUpDown.Value ?? 0;
+
+            Program.Modified = true;
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)

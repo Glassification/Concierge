@@ -45,6 +45,8 @@ namespace Concierge.Presentation.DetailsPageUi
             Program.Character.Appearance.EyeColour = this.EyeColourTextBox.Text;
             Program.Character.Appearance.HairColour = this.HairColourTextBox.Text;
             Program.Character.Appearance.DistinguishingMarks = this.DistinguishingMarksTextBox.Text;
+
+            Program.Modified = true;
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)

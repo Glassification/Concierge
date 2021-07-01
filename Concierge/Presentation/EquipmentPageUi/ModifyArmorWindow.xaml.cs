@@ -79,11 +79,13 @@ namespace Concierge.Presentation.EquipmentPageUi
         private void ButtonApply_Click(object sender, RoutedEventArgs e)
         {
             this.ToArmor(Program.Character.Armor);
+            Program.Modified = true;
         }
 
         private void ButtonOK_Click(object sender, RoutedEventArgs e)
         {
             this.ToArmor(Program.Character.Armor);
+            Program.Modified = true;
             this.Hide();
         }
 

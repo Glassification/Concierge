@@ -30,6 +30,8 @@ namespace Concierge.Presentation.OverviewPageUi
             {
                 Program.Character.Vitality.BaseHealth += this.HpUpDown.Value ?? 0;
                 Program.Character.Vitality.BaseHealth = Math.Min(Program.Character.Vitality.BaseHealth, Program.Character.Vitality.MaxHealth);
+
+                Program.Modified = true;
             }
         }
 
@@ -43,6 +45,8 @@ namespace Concierge.Presentation.OverviewPageUi
             {
                 Program.Character.Vitality.BaseHealth -= this.HpUpDown.Value ?? 0;
                 Program.Character.Vitality.BaseHealth = Math.Max(Program.Character.Vitality.BaseHealth, 0);
+
+                Program.Modified = true;
             }
         }
 

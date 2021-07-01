@@ -71,6 +71,8 @@ namespace Concierge.Presentation.SpellcastingPageUi
             Program.Character.SpellSlots.SeventhTotal = this.Total7UpDown.Value ?? 0;
             Program.Character.SpellSlots.EighthTotal = this.Total8UpDown.Value ?? 0;
             Program.Character.SpellSlots.NinethTotal = this.Total9UpDown.Value ?? 0;
+
+            Program.Modified = true;
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)

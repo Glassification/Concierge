@@ -88,6 +88,8 @@ namespace Concierge.Presentation.AbilitiesPageUi
             ability.Recovery = this.RecoveryTextBox.Text;
             ability.Action = this.ActionTextBox.Text;
             ability.Note = this.NotesTextBox.Text;
+
+            Program.Modified = true;
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
@@ -108,6 +110,7 @@ namespace Concierge.Presentation.AbilitiesPageUi
         private void ButtonApply_Click(object sender, RoutedEventArgs e)
         {
             Program.Character.Abilities.Add(this.ToAbility());
+            Program.Modified = true;
             this.ClearFields();
         }
 
@@ -120,6 +123,7 @@ namespace Concierge.Presentation.AbilitiesPageUi
             else
             {
                 Program.Character.Abilities.Add(this.ToAbility());
+                Program.Modified = true;
             }
 
             this.Hide();
