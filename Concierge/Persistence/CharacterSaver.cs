@@ -21,6 +21,8 @@ namespace Concierge.Persistence
         [SuppressMessage("StyleCop.CSharp.ReadabilityRules", "SA1117:Parameters should be on same line or separate lines", Justification = "Formatting.")]
         public static void SaveCharacterSheet(Character character, CcsFile ccsFile)
         {
+            Program.SaveStatusWindow.ShowWindow();
+
             try
             {
                 XDocument xml = new XDocument(

@@ -2,12 +2,13 @@
 // Copyright (c) Thomas Beckett. All rights reserved.
 // </copyright>
 
-namespace Concierge.Presentation.ToolsPageUi
+namespace Concierge.Presentation.HelperUi
 {
     using System.Windows;
     using System.Windows.Input;
     using System.Windows.Media;
 
+    using Concierge.Presentation.Enums;
     using Concierge.Utility;
 
     /// <summary>
@@ -19,6 +20,8 @@ namespace Concierge.Presentation.ToolsPageUi
         {
             this.InitializeComponent();
         }
+
+        private string FormattedInterval => $"Autosave Interval: {Constants.AutosaveIntervals[(int)this.AutosaveInterval.Value]} minute{((int)this.AutosaveInterval.Value > 0 ? "s" : string.Empty)}";
 
         public void ShowWindow()
         {
@@ -32,7 +35,7 @@ namespace Concierge.Presentation.ToolsPageUi
             this.AutosaveInterval.Value = Settings.AutosaveInterval;
             this.CoinWeightCheckBox.IsChecked = Settings.UseCoinWeight;
             this.EncumbranceCheckBox.IsChecked = Settings.UseEncumbrance;
-            this.IntervalTextBox.Text = $"Autosave Interval: {Constants.AutosaveIntervals[Settings.AutosaveInterval]} minutes";
+            this.IntervalTextBox.Text = this.FormattedInterval;
 
             if (Settings.AutosaveEnable)
             {
@@ -48,7 +51,17 @@ namespace Concierge.Presentation.ToolsPageUi
 
         private void Write()
         {
-            Settings.AutosaveEnable = this.AutosaveCheckBox.IsChecked ?? false;
+            if (Program.CcsFile == null && (this.AutosaveCheckBox.IsChecked ?? false))
+            {
+                Program.ConciergeMessageWindow.ShowWindow(
+                    "You must save this sheet before enabling autosave.",
+                    MessageWindowButtons.Ok);
+            }
+            else
+            {
+                Settings.AutosaveEnable = this.AutosaveCheckBox.IsChecked ?? false;
+            }
+
             Settings.AutosaveInterval = (int)this.AutosaveInterval.Value;
             Settings.UseCoinWeight = this.CoinWeightCheckBox.IsChecked ?? false;
             Settings.UseEncumbrance = this.EncumbranceCheckBox.IsChecked ?? false;
@@ -97,7 +110,7 @@ namespace Concierge.Presentation.ToolsPageUi
 
         private void AutosaveInterval_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            this.IntervalTextBox.Text = $"Autosave Interval: {Constants.AutosaveIntervals[(int)this.AutosaveInterval.Value]} minutes";
+            this.IntervalTextBox.Text = this.FormattedInterval;
         }
 
         private void AutosaveCheckBox_Checked(object sender, RoutedEventArgs e)

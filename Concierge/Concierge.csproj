@@ -145,8 +145,8 @@
       <DependentUpon>AbilitiesPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Presentation\Components\ConciergeDataGrid.cs" />
-    <Compile Include="Presentation\ConfirmCloseWindow.xaml.cs">
-      <DependentUpon>ConfirmCloseWindow.xaml</DependentUpon>
+    <Compile Include="Presentation\HelperUi\ConciergeMessageWindow.xaml.cs">
+      <DependentUpon>ConciergeMessageWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Presentation\DetailsPageUi\DetailsPage.xaml.cs">
       <DependentUpon>DetailsPage.xaml</DependentUpon>
@@ -160,12 +160,16 @@
     <Compile Include="Presentation\DetailsPageUi\ModifyPersonalityWindow.xaml.cs">
       <DependentUpon>ModifyPersonalityWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Presentation\Enums\DialogResult.cs" />
+    <Compile Include="Presentation\Enums\MessageWindowResult.cs" />
+    <Compile Include="Presentation\Enums\MessageWindowButtons.cs" />
     <Compile Include="Presentation\EquipmentPageUi\ModifyAmmoWindow.xaml.cs">
       <DependentUpon>ModifyAmmoWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Presentation\EquipmentPageUi\ModifyArmorWindow.xaml.cs">
       <DependentUpon>ModifyArmorWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\HelperUi\SaveStatusWindow.xaml.cs">
+      <DependentUpon>SaveStatusWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Presentation\InventoryPageUi\ModifyInventoryWindow.xaml.cs">
       <DependentUpon>ModifyInventoryWindow.xaml</DependentUpon>
@@ -218,7 +222,7 @@
     <Compile Include="Presentation\SpellcastingPageUi\SpellcastingSelectionWindow.xaml.cs">
       <DependentUpon>SpellcastingSelectionWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Presentation\ToolsPageUi\SettingsWindow.xaml.cs">
+    <Compile Include="Presentation\HelperUi\SettingsWindow.xaml.cs">
       <DependentUpon>SettingsWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Presentation\ToolsPageUi\ToolsPage.xaml.cs">
@@ -243,6 +247,7 @@
       <DependentUpon>SpellcastingPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
+    <Compile Include="Utility\AutosaveTimer.cs" />
     <Compile Include="Utility\Colours.cs" />
     <Compile Include="Utility\Constants.cs" />
     <Compile Include="Utility\Settings.cs" />
@@ -316,11 +321,15 @@
     <Resource Include="Resources\Images\armor_class_icon.png" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="Presentation\ConfirmCloseWindow.xaml">
+    <Page Include="Presentation\HelperUi\ConciergeMessageWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Presentation\ToolsPageUi\SettingsWindow.xaml">
+    <Page Include="Presentation\HelperUi\SaveStatusWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\HelperUi\SettingsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

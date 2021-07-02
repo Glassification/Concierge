@@ -292,7 +292,7 @@
                     </Grid>
 
                     <Grid Grid.Row="1"
-                          Background="Black"
+                          Background="#161223"
                           Margin="10, 15, 10, 15">
                         <TextBlock Text="Used"
                                        Foreground="White"

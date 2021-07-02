@@ -12,12 +12,15 @@ namespace Concierge.Presentation
     using Concierge.Persistence;
     using Concierge.Presentation.AbilitiesPageUi;
     using Concierge.Presentation.DetailsPageUi;
+    using Concierge.Presentation.Enums;
     using Concierge.Presentation.EquipmentPageUi;
+    using Concierge.Presentation.HelperUi;
     using Concierge.Presentation.InventoryPageUi;
     using Concierge.Presentation.NotesPageUi;
     using Concierge.Presentation.OverviewPageUi;
     using Concierge.Presentation.SpellcastingPageUi;
     using Concierge.Presentation.ToolsPageUi;
+    using Concierge.Utility;
     using Microsoft.Win32;
 
     /// <summary>
@@ -27,8 +30,9 @@ namespace Concierge.Presentation
     {
         private readonly OpenFileDialog openFileDialog = new OpenFileDialog();
         private readonly SaveFileDialog saveFileDialog = new SaveFileDialog();
-        private readonly ConfirmCloseWindow confirmCloseWindow = new ConfirmCloseWindow();
         private readonly SettingsWindow settingsWindow = new SettingsWindow();
+
+        private readonly AutosaveTimer autosaveTimer = new AutosaveTimer();
 
         private readonly InventoryPage InventoryPage = new InventoryPage();
         private readonly EquipmentPage EquipmentPage = new EquipmentPage();
@@ -66,17 +70,19 @@ namespace Concierge.Presentation
         {
             if (Program.Modified)
             {
-                switch (this.confirmCloseWindow.ShowWindow())
+                switch (Program.ConciergeMessageWindow.ShowWindow(
+                    "You have unsaved changes, would you like to save before closing?",
+                    MessageWindowButtons.YesNoCancel))
                 {
-                    case Enums.DialogResult.OK:
+                    case MessageWindowResult.OK:
                         this.SaveCharacterSheet();
                         this.Close();
                         break;
-                    case Enums.DialogResult.No:
+                    case MessageWindowResult.No:
                         this.Close();
                         break;
                     default:
-                    case Enums.DialogResult.Cancel:
+                    case MessageWindowResult.Cancel:
                         break;
                 }
             }
@@ -93,17 +99,28 @@ namespace Concierge.Presentation
 
             this.NotesPage.ClearTextBox();
             this.DrawAll();
+
+            this.autosaveTimer.Stop();
         }
 
         public void OpenCharacterSheet()
         {
             if (this.openFileDialog.ShowDialog() ?? false)
             {
-                Program.CcsFile = new CcsFile();
-                Program.CcsFile.Path = this.openFileDialog.FileName;
+                this.autosaveTimer.Stop();
+
+                Program.CcsFile = new CcsFile
+                {
+                    Path = this.openFileDialog.FileName,
+                };
 
                 Program.Character.Reset();
                 CharacterLoader.LoadCharacterSheet(Program.Character, Program.CcsFile);
+
+                if (Settings.AutosaveEnable)
+                {
+                    this.autosaveTimer.Start(Constants.AutosaveIntervals[Settings.AutosaveInterval]);
+                }
 
                 this.DrawAll();
             }
@@ -445,6 +462,15 @@ namespace Concierge.Presentation
             this.settingsWindow.ShowWindow();
             this.OverviewPage.Draw();
             this.DetailsPage.Draw();
+
+            if (Settings.AutosaveEnable)
+            {
+                this.autosaveTimer.Start(Constants.AutosaveIntervals[Settings.AutosaveInterval]);
+            }
+            else
+            {
+                this.autosaveTimer.Stop();
+            }
         }
 
         private void ButtonOpenMenu_MouseEnter(object sender, MouseEventArgs e)

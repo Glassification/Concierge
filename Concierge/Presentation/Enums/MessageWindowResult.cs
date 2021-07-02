@@ -1,10 +1,10 @@
-﻿// <copyright file="DialogResult.cs" company="Thomas Beckett">
+﻿// <copyright file="MessageWindowResult.cs" company="Thomas Beckett">
 // Copyright (c) Thomas Beckett. All rights reserved.
 // </copyright>
 
 namespace Concierge.Presentation.Enums
 {
-    public enum DialogResult
+    public enum MessageWindowResult
     {
         OK,
         Yes,
@@ -12,5 +12,6 @@ namespace Concierge.Presentation.Enums
         Accept,
         Apply,
         Cancel,
+        Exit,
     }
 }
