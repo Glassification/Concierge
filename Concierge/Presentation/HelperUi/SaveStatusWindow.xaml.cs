@@ -20,24 +20,22 @@ namespace Concierge.Presentation.HelperUi
 
             this.Left = SystemParameters.PrimaryScreenWidth - this.Width - 10;
             this.Top = SystemParameters.PrimaryScreenHeight - this.Height - 10;
-        }
 
-        public void ShowWindow()
-        {
-            this.ShowDialog();
-        }
-
-        private void Window_ContentRendered(object sender, EventArgs e)
-        {
-            var progressBarFiller = new BackgroundWorker
+            this.ProgressBarFiller = new BackgroundWorker
             {
                 WorkerReportsProgress = true,
             };
-            progressBarFiller.DoWork += this.ProgressBarFiller_DoWork;
-            progressBarFiller.ProgressChanged += this.ProgressBarFiller_ProgressChanged;
-            progressBarFiller.RunWorkerCompleted += this.ProgressBarFiller_RunWorkerCompleted;
+            this.ProgressBarFiller.DoWork += this.ProgressBarFiller_DoWork;
+            this.ProgressBarFiller.ProgressChanged += this.ProgressBarFiller_ProgressChanged;
+            this.ProgressBarFiller.RunWorkerCompleted += this.ProgressBarFiller_RunWorkerCompleted;
+        }
 
-            progressBarFiller.RunWorkerAsync();
+        private BackgroundWorker ProgressBarFiller { get; }
+
+        public void ShowWindow()
+        {
+            this.ProgressBarFiller.RunWorkerAsync();
+            this.ShowDialog();
         }
 
         private void ProgressBarFiller_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -47,7 +45,7 @@ namespace Concierge.Presentation.HelperUi
 
         private void ProgressBarFiller_DoWork(object sender, DoWorkEventArgs e)
         {
-            for (int i = 0; i < 100; i++)
+            for (int i = 0; i <= 100; i++)
             {
                 (sender as BackgroundWorker).ReportProgress(i);
                 Thread.Sleep(10);

@@ -13,8 +13,7 @@
         ResizeMode="NoResize"
         BorderThickness="1"
         BorderBrush="#706599"
-        Style="{StaticResource WindowXboxDasboardStyle}"
-        ContentRendered="Window_ContentRendered">
+        Style="{StaticResource WindowXboxDasboardStyle}">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="2*"/>

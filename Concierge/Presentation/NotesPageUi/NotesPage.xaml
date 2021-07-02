@@ -200,7 +200,7 @@
                             VerticalAlignment="Center"
                             Background="Transparent"
                             BorderBrush="{x:Null}"
-                            Foreground="Blue"
+                            Foreground="SteelBlue"
                             ToolTip="Move Item Up"
                         Click="ButtonUp_Click">
                     <materialDesign:PackIcon Kind="ArrowUp" Width="25" Height="25"/>
@@ -212,7 +212,7 @@
                             VerticalAlignment="Center"
                             Background="Transparent"
                             BorderBrush="{x:Null}"
-                            Foreground="Blue"
+                            Foreground="SteelBlue"
                             ToolTip="Move Item Down"
                         Click="ButtonDown_Click">
                     <materialDesign:PackIcon Kind="ArrowDown" Width="25" Height="25"/>
@@ -224,7 +224,7 @@
                             VerticalAlignment="Center"
                             Background="Transparent"
                             BorderBrush="{x:Null}"
-                            Foreground="Purple"
+                            Foreground="Silver"
                             ToolTip="Clear Selected Item"
                         Click="ButtonClear_Click">
                     <materialDesign:PackIcon Kind="Cancel" Width="25" Height="25"/>
@@ -242,7 +242,7 @@
                             VerticalAlignment="Center"
                             Background="Transparent"
                             BorderBrush="{x:Null}"
-                            Foreground="Green"
+                            Foreground="PaleGreen"
                             ToolTip="Add New Item">
                     <materialDesign:PackIcon Kind="Add" Width="25" Height="25"/>
                 </Button>
@@ -253,7 +253,7 @@
                             VerticalAlignment="Center"
                             Background="Transparent"
                             BorderBrush="{x:Null}"
-                            Foreground="DarkOrange"
+                            Foreground="PaleGoldenrod"
                             ToolTip="Edit Selected Item">
                     <materialDesign:PackIcon Kind="Edit" Width="25" Height="25"/>
                 </Button>

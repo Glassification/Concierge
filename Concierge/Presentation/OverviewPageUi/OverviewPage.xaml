@@ -49,7 +49,7 @@
                             VerticalAlignment="Center"
                             Background="Transparent"
                             BorderBrush="{x:Null}"
-                            Foreground="DarkOrange"
+                            Foreground="PaleGoldenrod"
                             Click="EditAttributesButton_Click"
                             ToolTip="Edit Attributes">
                             <materialDesign:PackIcon Kind="Edit" Width="25" Height="25"/>
@@ -487,7 +487,7 @@
                                 VerticalAlignment="Top"
                                 Background="Transparent"
                                 BorderBrush="{x:Null}"
-                                Foreground="DarkOrange"
+                                Foreground="PaleGoldenrod"
                                 Click="EditSensesButton_Click"
                                 ToolTip="Edit Senses">
                             <materialDesign:PackIcon Kind="Edit" Width="25" Height="25"/>
@@ -1868,7 +1868,7 @@
                                     VerticalAlignment="Top"
                                     Background="Transparent"
                                     BorderBrush="{x:Null}"
-                                    Foreground="Green"
+                                    Foreground="PaleGreen"
                                     Click="HealDamageButton_Click"
                                     ToolTip="Heal Damage">
                                     <materialDesign:PackIcon Kind="Heart" Width="25" Height="25"/>
@@ -1884,7 +1884,7 @@
                                         VerticalAlignment="Center"
                                         Background="Transparent"
                                         BorderBrush="{x:Null}"
-                                        Foreground="DarkOrange"
+                                        Foreground="PaleGoldenrod"
                                         Click="EditHealthButton_Click"
                                         ToolTip="Edit Health">
                                     <materialDesign:PackIcon Kind="Edit" Width="25" Height="25"/>
@@ -1952,7 +1952,7 @@
                                 VerticalAlignment="Top"
                                 Background="Transparent"
                                 BorderBrush="{x:Null}"
-                                Foreground="DarkOrange"
+                                Foreground="PaleGoldenrod"
                                 Click="EditHitDiceButton_Click"
                                 ToolTip="Edit Attributes">
                             <materialDesign:PackIcon Kind="Edit" Width="25" Height="25"/>
@@ -2232,7 +2232,7 @@
                                     VerticalAlignment="Center"
                                     Background="Transparent"
                                     BorderBrush="{x:Null}"
-                                    Foreground="DarkOrange"
+                                    Foreground="PaleGoldenrod"
                                     Click="EditResourceButton_Click"
                                     ToolTip="Edit Resource"
                                     Margin="60, 0, 0, 0">
@@ -2263,7 +2263,7 @@
                                     VerticalAlignment="Center"
                                     Background="Transparent"
                                     BorderBrush="{x:Null}"
-                                    Foreground="Green"
+                                    Foreground="PaleGreen"
                                     Click="AddResourceButton_Click"
                                     ToolTip="Add Resource"
                                     Margin="0, 0, 60, 0">

@@ -83,7 +83,7 @@
                             VerticalAlignment="Center"
                             Background="Transparent"
                             BorderBrush="{x:Null}"
-                            Foreground="Green"
+                            Foreground="SteelBlue"
                             Click="ButtonResetHistory_Click"
                             Margin="10, 0, 60, 0"
                             ToolTip="Divide Loot">
@@ -860,7 +860,7 @@
                             VerticalAlignment="Center"
                             Background="Transparent"
                             BorderBrush="{x:Null}"
-                            Foreground="Blue"
+                            Foreground="SteelBlue"
                             Click="ButtonDivideLoot_Click"
                             Margin="10, 0, 10, 0"
                             ToolTip="Divide Loot">
@@ -873,7 +873,7 @@
                             VerticalAlignment="Center"
                             Background="Transparent"
                             BorderBrush="{x:Null}"
-                            Foreground="Blue"
+                            Foreground="SteelBlue"
                             Click="ButtonResetLoot_Click"
                             Margin="10, 0, 60, 0"
                             ToolTip="Reset">

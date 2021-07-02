@@ -90,7 +90,7 @@
                                 VerticalAlignment="Center"
                                 Background="Transparent"
                                 BorderBrush="{x:Null}"
-                                Foreground="DarkOrange"
+                                Foreground="PaleGoldenrod"
                                 ToolTip="Edit"
                                 Click="EditAppearanceButton_Click">
                             <materialDesign:PackIcon Kind="Edit" Width="25" Height="25"/>
@@ -382,7 +382,7 @@
                                 VerticalAlignment="Center"
                                 Background="Transparent"
                                 BorderBrush="{x:Null}"
-                                Foreground="DarkOrange"
+                                Foreground="PaleGoldenrod"
                                 ToolTip="Edit"
                                 Click="EditPersonalityButton_Click">
                             <materialDesign:PackIcon Kind="Edit" Width="25" Height="25"/>
@@ -645,7 +645,7 @@
                             VerticalAlignment="Center"
                             Background="Transparent"
                             BorderBrush="{x:Null}"
-                            Foreground="Purple"
+                            Foreground="Silver"
                             Click="ClearButton_Click"
                             ToolTip="Clear Selected Item">
                             <materialDesign:PackIcon Kind="Cancel" Width="25" Height="25"/>
@@ -657,7 +657,7 @@
                             VerticalAlignment="Center"
                             Background="Transparent"
                             BorderBrush="{x:Null}"
-                            Foreground="Green"
+                            Foreground="PaleGreen"
                             Click="AddButton_Click"
                             ToolTip="Add New Item">
                             <materialDesign:PackIcon Kind="Add" Width="25" Height="25"/>
@@ -669,7 +669,7 @@
                             VerticalAlignment="Center"
                             Background="Transparent"
                             BorderBrush="{x:Null}"
-                            Foreground="DarkOrange"
+                            Foreground="PaleGoldenrod"
                             Click="EditButton_Click"
                             ToolTip="Edit Selected Item">
                             <materialDesign:PackIcon Kind="Edit" Width="25" Height="25"/>
@@ -848,7 +848,7 @@
                             VerticalAlignment="Center"
                             Background="Transparent"
                             BorderBrush="{x:Null}"
-                            Foreground="DarkOrange"
+                            Foreground="PaleGoldenrod"
                             ToolTip="Edit"
                             Click="EditWealthButton_Click">
                         <materialDesign:PackIcon Kind="Edit" Width="25" Height="25"/>
@@ -1165,7 +1165,7 @@
                             VerticalAlignment="Top"
                             Background="Transparent"
                             BorderBrush="{x:Null}"
-                            Foreground="Purple"
+                            Foreground="Silver"
                             ToolTip="Clear"
                             Click="ClearLanguagesButton_Click"
                             Margin="0, 0, 3, 3">
@@ -1195,7 +1195,7 @@
                             VerticalAlignment="Center"
                             Background="Transparent"
                             BorderBrush="{x:Null}"
-                            Foreground="Green"
+                            Foreground="PaleGreen"
                             Click="AddLanguagesButton_Click"
                             ToolTip="Add"
                             Margin="0, 0, 3, 3">
@@ -1208,7 +1208,7 @@
                         VerticalAlignment="Top"
                         Background="Transparent"
                         BorderBrush="{x:Null}"
-                        Foreground="DarkOrange"
+                        Foreground="PaleGoldenrod"
                         ToolTip="Edit"
                         Click="EditLanguagesButton_Click"
                         Margin="0, 0, 3, 3">
@@ -1251,7 +1251,7 @@
                                 VerticalAlignment="Top"
                                 Background="Transparent"
                                 BorderBrush="{x:Null}"
-                                Foreground="Purple"
+                                Foreground="Silver"
                                 ToolTip="Clear"
                                 Click="ClearConditionsButton_Click"
                                 Margin="0, 0, 3, 3">
@@ -1264,7 +1264,7 @@
                             VerticalAlignment="Top"
                             Background="Transparent"
                             BorderBrush="{x:Null}"
-                            Foreground="DarkOrange"
+                            Foreground="PaleGoldenrod"
                             ToolTip="Edit"
                             Click="EditConditionsButton_Click"
                             Margin="0, 0, 3, 3">

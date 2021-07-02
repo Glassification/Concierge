@@ -45,7 +45,7 @@
         <Grid Grid.Row="1">
             <TextBlock 
                 x:Name="MessageText"
-                Text="You have unsaved changes, would you like to save before closing?"
+                Text="Your message here"
                     Foreground="White"
                     FontSize="25"
                     TextWrapping="Wrap"
