@@ -36,7 +36,7 @@
         </Style>
         <Style x:Key="DGCHeaderStyle" TargetType="DataGridColumnHeader">
             <Setter Property="Height" Value="50"/>
-            <Setter Property="Background" Value="#ff1c1636" />
+            <Setter Property="Background" Value="#17112E" />
             <Setter Property="Foreground" Value="White"/>
             <Setter Property="FontSize" Value="18" />
             <Setter Property="FontWeight" Value="Bold"/>
@@ -59,7 +59,7 @@
 
         <!--Armor Details-->
         <Grid Grid.Row="0"
-              Background="#ff06011f"
+              Background="#0B061E"
               Margin="3">
             <Grid.RowDefinitions>
                 <RowDefinition Height="18*"/>
@@ -112,7 +112,7 @@
                         </Grid.ColumnDefinitions>
 
                         <Grid Grid.Column="0"
-                              Background="#ff1c1636">
+                              Background="#17112E">
                             <TextBlock Text="Armor Worn"
                                        Foreground="White"
                                        FontSize="25"
@@ -141,7 +141,7 @@
                         </Grid.ColumnDefinitions>
 
                         <Grid Grid.Column="0"
-                              Background="#ff1c1636">
+                              Background="#17112E">
                             <TextBlock Text="Armor Type"
                                        Foreground="White"
                                        FontSize="25"
@@ -177,7 +177,7 @@
                         </Grid.ColumnDefinitions>
 
                         <Grid Grid.Column="0"
-                              Background="#ff1c1636">
+                              Background="#17112E">
                             <TextBlock Text="Armor Class"
                                        Foreground="White"
                                        FontSize="25"
@@ -206,7 +206,7 @@
                         </Grid.ColumnDefinitions>
 
                         <Grid Grid.Column="0"
-                              Background="#ff1c1636">
+                              Background="#17112E">
                             <TextBlock Text="Armor Stealth"
                                        Foreground="White"
                                        FontSize="25"
@@ -242,7 +242,7 @@
                         </Grid.ColumnDefinitions>
 
                         <Grid Grid.Column="0"
-                              Background="#ff1c1636">
+                              Background="#17112E">
                             <TextBlock Text="Misc Bonus"
                                        Foreground="White"
                                        FontSize="25"
@@ -271,7 +271,7 @@
                         </Grid.ColumnDefinitions>
 
                         <Grid Grid.Column="0"
-                              Background="#ff1c1636">
+                              Background="#17112E">
                             <TextBlock Text="Magic Bonus"
                                        Foreground="White"
                                        FontSize="25"
@@ -307,7 +307,7 @@
                         </Grid.ColumnDefinitions>
 
                         <Grid Grid.Column="0"
-                              Background="#ff1c1636">
+                              Background="#17112E">
                             <TextBlock Text="Shield Worn"
                                        Foreground="White"
                                        FontSize="25"
@@ -336,7 +336,7 @@
                         </Grid.ColumnDefinitions>
 
                         <Grid Grid.Column="0"
-                              Background="#ff1c1636">
+                              Background="#17112E">
                             <TextBlock Text="Shield AC"
                                        Foreground="White"
                                        FontSize="25"
@@ -361,7 +361,7 @@
         </Grid>
 
         <!--Ammo, Weapons-->
-        <Grid Grid.Row="1" Background="#ff06011f" Margin="3"
+        <Grid Grid.Row="1" Background="#0B061E" Margin="3"
               >
             <Grid.RowDefinitions>
                 <RowDefinition Height="8*"/>
@@ -371,7 +371,7 @@
 
             <!--Header-->
             <Grid Grid.Row="0"
-                  Background="#ff06011f"
+                  Background="#0B061E"
                   Margin="3, 3, 3, 0">
                 <TextBlock Text="Ammunition and Weapons"
                            Foreground="White"
@@ -468,7 +468,7 @@
                                       AutoGenerateColumns="False"
                                       VerticalScrollBarVisibility="Auto"
                                       HorizontalScrollBarVisibility="Disabled"
-                                      Background="#ff1c1636"
+                                      Background="#17112E"
                                       HeadersVisibility="Column"
                                       IsReadOnly="True"
                                       Margin="0, 5, 0, 0"
@@ -518,7 +518,7 @@
                               AutoGenerateColumns="False"
                               VerticalScrollBarVisibility="Auto"
                               HorizontalScrollBarVisibility="Disabled"
-                              Background="#ff1c1636"
+                              Background="#17112E"
                               HeadersVisibility="Column"
                               IsReadOnly="True"
                               Margin="0, 5, 0, 0"

@@ -36,7 +36,7 @@
         </Style>
         <Style x:Key="DGCHeaderStyle" TargetType="DataGridColumnHeader">
             <Setter Property="Height" Value="50"/>
-            <Setter Property="Background" Value="#ff1c1636" />
+            <Setter Property="Background" Value="#17112E" />
             <Setter Property="Foreground" Value="White"/>
             <Setter Property="FontSize" Value="12" />
             <Setter Property="FontWeight" Value="Bold"/>
@@ -60,7 +60,7 @@
 
         <!--Header-->
         <Grid Grid.Row="0"
-              Background="#ff06011f"
+              Background="#0B061E"
               Margin="3">
             <TextBlock Text="Spellcasting"
                            Foreground="White"
@@ -168,7 +168,7 @@
                       AutoGenerateColumns="False"
                       VerticalScrollBarVisibility="Auto"
                       HorizontalScrollBarVisibility="Disabled"
-                      Background="#ff1c1636"
+                      Background="#17112E"
                       HeadersVisibility="Column"
                       IsReadOnly="True"
                       HorizontalGridLinesBrush="Transparent"
@@ -230,7 +230,7 @@
                 </Grid.RowDefinitions>
 
                 <Grid Grid.Row="0"
-                    Background="#ff1c1636">
+                    Background="#161223">
                     <TextBlock Text="Caster Level"
                                        Foreground="White"
                                        FontSize="25"
@@ -255,7 +255,7 @@
             <!--Spell slots-->
             <Grid Grid.Column="2"
                   Margin="3, 3, 3, 3"
-                  Background="#ff06011f">
+                  Background="#0B061E">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1*"/>
                     <ColumnDefinition Width="9*"/>
@@ -341,7 +341,7 @@
 
                         <!--Name-->
                         <Grid Grid.Row="1"
-                                Background="#ff1c1636"
+                                Background="#17112E"
                                 Margin="3, 0, 3, 0">
                             <TextBlock Text="Pact"
                                         FontSize="18"
@@ -385,7 +385,7 @@
 
                         <!--Name-->
                         <Grid Grid.Row="1"
-                                Background="#ff1c1636"
+                                Background="#17112E"
                                 Margin="3, 0, 3, 0">
                             <TextBlock Text="1st"
                                         FontSize="18"
@@ -429,7 +429,7 @@
 
                         <!--Name-->
                         <Grid Grid.Row="1"
-                                Background="#ff1c1636"
+                                Background="#17112E"
                                 Margin="3, 0, 3, 0">
                             <TextBlock Text="2nd"
                                         FontSize="18"
@@ -473,7 +473,7 @@
 
                         <!--Name-->
                         <Grid Grid.Row="1"
-                                Background="#ff1c1636"
+                                Background="#17112E"
                                 Margin="3, 0, 3, 0">
                             <TextBlock Text="3rd"
                                         FontSize="18"
@@ -517,7 +517,7 @@
 
                         <!--Name-->
                         <Grid Grid.Row="1"
-                                Background="#ff1c1636"
+                                Background="#17112E"
                                 Margin="3, 0, 3, 0">
                             <TextBlock Text="4th"
                                         FontSize="18"
@@ -561,7 +561,7 @@
 
                         <!--Name-->
                         <Grid Grid.Row="1"
-                                Background="#ff1c1636"
+                                Background="#17112E"
                                 Margin="3, 0, 3, 0">
                             <TextBlock Text="5th"
                                         FontSize="18"
@@ -605,7 +605,7 @@
 
                         <!--Name-->
                         <Grid Grid.Row="1"
-                                Background="#ff1c1636"
+                                Background="#17112E"
                                 Margin="3, 0, 3, 0">
                             <TextBlock Text="6th"
                                         FontSize="18"
@@ -649,7 +649,7 @@
 
                         <!--Name-->
                         <Grid Grid.Row="1"
-                                Background="#ff1c1636"
+                                Background="#17112E"
                                 Margin="3, 0, 3, 0">
                             <TextBlock Text="7th"
                                         FontSize="18"
@@ -693,7 +693,7 @@
 
                         <!--Name-->
                         <Grid Grid.Row="1"
-                                Background="#ff1c1636"
+                                Background="#17112E"
                                 Margin="3, 0, 3, 0">
                             <TextBlock Text="8th"
                                         FontSize="18"
@@ -737,7 +737,7 @@
 
                         <!--Name-->
                         <Grid Grid.Row="1"
-                                Background="#ff1c1636"
+                                Background="#17112E"
                                 Margin="3, 0, 3, 0">
                             <TextBlock Text="9th"
                                         FontSize="18"
@@ -773,7 +773,7 @@
                       AutoGenerateColumns="False"
                       VerticalScrollBarVisibility="Auto"
                       HorizontalScrollBarVisibility="Disabled"
-                      Background="#ff1c1636"
+                      Background="#17112E"
                       HeadersVisibility="Column"
                       IsReadOnly="True"
                       HorizontalGridLinesBrush="Transparent"

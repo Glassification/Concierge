@@ -15,7 +15,7 @@
         ResizeMode="NoResize"
         KeyDown="Window_KeyDown"
         BorderThickness="1"
-        BorderBrush="#988CD0"
+        BorderBrush="#706599"
         Style="{StaticResource WindowXboxDasboardStyle}">
     <Window.Resources>
         <ControlTemplate x:Key="ComboBoxToggleButton" TargetType="{x:Type ToggleButton}">

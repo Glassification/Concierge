@@ -36,7 +36,7 @@
         </Style>
         <Style x:Key="DGCHeaderStyle" TargetType="DataGridColumnHeader">
             <Setter Property="Height" Value="50"/>
-            <Setter Property="Background" Value="#ff1c1636" />
+            <Setter Property="Background" Value="#17112E" />
             <Setter Property="Foreground" Value="White"/>
             <Setter Property="FontSize" Value="20" />
             <Setter Property="FontWeight" Value="Bold"/>
@@ -66,7 +66,7 @@
 
             <!--Header-->
             <Grid Grid.Row="0"
-                    Background="#ff06011f"
+                    Background="#0B061E"
                     Margin="3, 3, 3, 0">
                 <TextBlock Text="Roll Dice"
                            Foreground="White"
@@ -117,7 +117,7 @@
 
                     <!--Header-->
                     <Grid Grid.Row="0"
-                          Background="#ff1c1636"
+                          Background="#17112E"
                           Margin="3, 3, 3, 0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="15*"/>
@@ -801,7 +801,7 @@
                               AutoGenerateColumns="False"
                               VerticalScrollBarVisibility="Auto"
                               HorizontalScrollBarVisibility="Disabled"
-                              Background="#ff1c1636"
+                              Background="#17112E"
                               HeadersVisibility="Column"
                               IsReadOnly="True"
                               HorizontalGridLinesBrush="Transparent"
@@ -843,7 +843,7 @@
 
             <!--Header-->
             <Grid Grid.Row="0"
-                    Background="#ff06011f"
+                    Background="#0B061E"
                     Margin="3, 3, 3, 0">
                 <TextBlock Text="Divide Loot"
                            Foreground="White"
@@ -884,7 +884,7 @@
 
             <!--Body-->
             <Grid Grid.Row="1"
-                  Background="#ff06011f"
+                  Background="#0B061E"
                   Margin="3, 0, 3, 3">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="2*"/>
@@ -911,7 +911,7 @@
 
                         <!--Label-->
                         <Grid Grid.Column="0"
-                              Background="#ff1c1636"
+                              Background="#161223"
                               Margin="3, 3, 0, 3">
                             <TextBlock Text="Players"
                                        Foreground="White"
@@ -1133,7 +1133,7 @@
                       AutoGenerateColumns="False"
                       VerticalScrollBarVisibility="Auto"
                       HorizontalScrollBarVisibility="Disabled"
-                      Background="#ff1c1636"
+                      Background="#17112E"
                       HeadersVisibility="Column"
                       IsReadOnly="True"
                       HorizontalGridLinesBrush="Transparent"

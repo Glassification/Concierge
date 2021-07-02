@@ -10,7 +10,7 @@
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
-        Background="#FF202020"
+        Background="#252526"
         KeyDown="MainWindow_KeyPress"
         WindowState="Maximized"
         Style="{StaticResource WindowXboxDasboardStyle}">

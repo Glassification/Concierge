@@ -36,7 +36,7 @@
         </Style>
         <Style x:Key="DGCHeaderStyle" TargetType="DataGridColumnHeader">
             <Setter Property="Height" Value="50"/>
-            <Setter Property="Background" Value="#ff1c1636" />
+            <Setter Property="Background" Value="#17112E" />
             <Setter Property="Foreground" Value="White"/>
             <Setter Property="FontSize" Value="18" />
             <Setter Property="FontWeight" Value="Bold"/>
@@ -51,7 +51,7 @@
         </Style>
     </Page.Resources>
 
-    <Grid Background="#ff06011f" Margin="3">
+    <Grid Background="#0B061E" Margin="3">
         <Grid.RowDefinitions>
             <RowDefinition Height="7*"/>
             <RowDefinition Height="93*"/>
@@ -157,7 +157,7 @@
                       AutoGenerateColumns="False"
                       VerticalScrollBarVisibility="Auto"
                       HorizontalScrollBarVisibility="Disabled"
-                      Background="#ff1c1636"
+                      Background="#17112E"
                       HeadersVisibility="Column"
                       IsReadOnly="True"
                       HorizontalGridLinesBrush="Transparent"

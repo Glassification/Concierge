@@ -177,7 +177,7 @@
         </Style>
     </Page.Resources>
 
-    <Grid Background="#ff06011f" Margin="3">
+    <Grid Background="#0B061E" Margin="3">
         <Grid.RowDefinitions>
             <RowDefinition Height="7*"/>
             <RowDefinition Height="93*"/>
@@ -274,15 +274,16 @@
         <!--Contents-->
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="20*"/>
-                <ColumnDefinition Width="80*"/>
+                <ColumnDefinition Width="203*"/>
+                <ColumnDefinition Width="591*"/>
+                <ColumnDefinition Width="220*"/>
             </Grid.ColumnDefinitions>
 
             <!--Notes Tree-->
-            <Grid Grid.Column="0">
+            <Grid Grid.Column="0" Margin="0,0,0,0.5">
                 <TreeView x:Name="NotesTreeView"
                           Margin="3"
-                          Background="#ff1c1636"
+                          Background="#17112E"
                           SelectedItemChanged="NotesTreeView_SelectedItemChanged"
                           FontSize="25"
                           BorderBrush="{x:Null}">
@@ -292,8 +293,8 @@
 
             <!--Notes-->
             <Grid Grid.Column="1"
-                  Margin="3, 0, 3, 3"
-                  Background="#FF3e3e42">
+                  Margin="3,0,3,2.5"
+                  Background="#FF3e3e42" Grid.ColumnSpan="2">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="10*"/>
                     <RowDefinition Height="90*"/>
