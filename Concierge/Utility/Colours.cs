@@ -9,6 +9,33 @@ namespace Concierge.Utility
     public static class Colours
     {
         /// =========================================
+        /// PopupBackground()
+        /// -----------------------------------------
+        /// <summary>
+        /// Gets aRGB value of [255, 37, 37, 38].
+        /// </summary>
+        /// =========================================
+        public static Color PopupBackground => Color.FromArgb(255, 37, 37, 38);
+
+        /// =========================================
+        /// ButtonBackground()
+        /// -----------------------------------------
+        /// <summary>
+        /// Gets aRGB value of [255, 51, 51, 55].
+        /// </summary>
+        /// =========================================
+        public static Color ButtonBackground => Color.FromArgb(255, 51, 51, 55);
+
+        /// =========================================
+        /// ButtonHoverBackground()
+        /// -----------------------------------------
+        /// <summary>
+        /// Gets aRGB value of [255, 63, 63, 64].
+        /// </summary>
+        /// =========================================
+        public static Color ButtonHoverBackground => Color.FromArgb(255, 63, 63, 64);
+
+        /// =========================================
         /// DarkGrey()
         /// -----------------------------------------
         /// <summary>

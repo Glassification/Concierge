@@ -7,15 +7,15 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         Title="ProficiencyPopupWindow"
-        Height="200"
-        Width="400"
+        Height="250"
+        Width="650"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
-        Background="Black"
+        Background="#252526"
         ResizeMode="NoResize"
         KeyDown="Window_KeyDown"
         BorderThickness="1"
-        BorderBrush="#429cd6"
+        BorderBrush="#988CD0"
         Style="{StaticResource WindowXboxDasboardStyle}">
     <Grid>
         <Grid.RowDefinitions>
@@ -33,17 +33,19 @@
                         Width="60"
                         Background="Transparent"
                         BorderBrush="{x:Null}"
-                        Foreground="Red"
+                        Foreground="White"
                         ToolTip="Close"
-                        Click="CloseButton_Click">
-                    <materialDesign:PackIcon Kind="CloseBoxOutline" Width="25" Height="25"/>
+                        Click="CloseButton_Click"
+                        MouseEnter="CloseButton_MouseEnter"
+                        MouseLeave="CloseButton_MouseLeave">
+                    <materialDesign:PackIcon Kind="WindowClose" Width="25" Height="25"/>
                 </Button>
             </StackPanel>
         </Grid>
         <Grid Grid.Row="1">
             <TextBlock Text="You have unsaved changes, would you like to save before closing?"
                        Foreground="White"
-                       FontSize="25"
+                       FontSize="30"
                        TextWrapping="Wrap"
                        Margin="15"/>
         </Grid>
@@ -52,24 +54,22 @@
                         VerticalAlignment="Center"
                         HorizontalAlignment="Center">
                 <Button x:Name="OkButton"
-                        Height="50"
-                        Width="60"
-                        Background="Transparent"
+                        Style="{StaticResource PopupWindowButton}"
                         BorderBrush="{x:Null}"
-                        Foreground="Green"
-                        ToolTip="OK"
+                        Content="Yes"
                         Click="OkButton_Click">
-                    <materialDesign:PackIcon Kind="CheckBox" Width="25" Height="25"/>
+                </Button>
+                <Button x:Name="NoButton"
+                        BorderBrush="{x:Null}"
+                        Content="No"
+                        Click="NoButton_Click"
+                        Style="{StaticResource PopupWindowButton}">
                 </Button>
                 <Button x:Name="CancelButton"
-                        Height="50"
-                        Width="60"
-                        Background="Transparent"
                         BorderBrush="{x:Null}"
-                        Foreground="IndianRed"
-                        ToolTip="Cancel"
-                        Click="CancelButton_Click">
-                    <materialDesign:PackIcon Kind="Cancel" Width="25" Height="25"/>
+                        Content="Cancel"
+                        Click="CancelButton_Click"
+                        Style="{StaticResource PopupWindowButton}">
                 </Button>
             </StackPanel>
         </Grid>

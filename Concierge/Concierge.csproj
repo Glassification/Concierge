@@ -160,6 +160,7 @@
     <Compile Include="Presentation\DetailsPageUi\ModifyPersonalityWindow.xaml.cs">
       <DependentUpon>ModifyPersonalityWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Presentation\Enums\DialogResult.cs" />
     <Compile Include="Presentation\EquipmentPageUi\ModifyAmmoWindow.xaml.cs">
       <DependentUpon>ModifyAmmoWindow.xaml</DependentUpon>
     </Compile>
@@ -216,6 +217,9 @@
     </Compile>
     <Compile Include="Presentation\SpellcastingPageUi\SpellcastingSelectionWindow.xaml.cs">
       <DependentUpon>SpellcastingSelectionWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\ToolsPageUi\SettingsWindow.xaml.cs">
+      <DependentUpon>SettingsWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Presentation\ToolsPageUi\ToolsPage.xaml.cs">
       <DependentUpon>ToolsPage.xaml</DependentUpon>
@@ -313,6 +317,14 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="Presentation\ConfirmCloseWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\ToolsPageUi\SettingsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\Dictionary\ButtonStyling.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

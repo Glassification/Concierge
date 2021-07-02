@@ -8,10 +8,10 @@ namespace Concierge.Presentation.SpellcastingPageUi
     using System.Linq;
     using System.Windows;
     using System.Windows.Input;
+    using System.Windows.Media;
 
     using Concierge.Characters.Collections;
     using Concierge.Characters.Enums;
-    using Concierge.Utility;
 
     /// <summary>
     /// Interaction logic for ModifySpellClassWindow.xaml.
@@ -139,6 +139,16 @@ namespace Concierge.Presentation.SpellcastingPageUi
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
             this.Hide();
+        }
+
+        private void CloseButton_MouseEnter(object sender, MouseEventArgs e)
+        {
+            this.CloseButton.Foreground = Brushes.Black;
+        }
+
+        private void CloseButton_MouseLeave(object sender, MouseEventArgs e)
+        {
+            this.CloseButton.Foreground = Brushes.White;
         }
     }
 }

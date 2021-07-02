@@ -7,21 +7,22 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         Title="ProficiencyPopupWindow"
-        Height="200"
-        Width="400"
+        Height="295"
+        Width="650"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
         Background="Black"
         ResizeMode="NoResize"
         KeyDown="Window_KeyDown"
         BorderThickness="1"
-        BorderBrush="#429cd6"
+        BorderBrush="#988CD0"
         Style="{StaticResource WindowXboxDasboardStyle}">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="2*"/>
-            <RowDefinition Height="6*"/>
-            <RowDefinition Height="2*"/>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="115"/>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="70"/>
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0">
@@ -29,14 +30,17 @@
                         HorizontalAlignment="Right"
                         VerticalAlignment="Center">
                 <Button x:Name="CloseButton"
-                        Height="50"
-                        Width="60"
-                        Background="Transparent"
-                        BorderBrush="{x:Null}"
-                        Foreground="Red"
-                        ToolTip="Close"
-                        Click="CloseButton_Click">
-                    <materialDesign:PackIcon Kind="CloseBoxOutline" Width="25" Height="25"/>
+                    Height="50"
+                    Width="60"
+                    Background="Transparent"
+                    BorderBrush="{x:Null}"
+                    Foreground="White"
+                    ToolTip="Close"
+                    HorizontalAlignment="Right"
+                    Click="CloseButton_Click"
+                    MouseEnter="CloseButton_MouseEnter"
+                    MouseLeave="CloseButton_MouseLeave">
+                    <materialDesign:PackIcon Kind="WindowClose" Width="25" Height="25"/>
                 </Button>
             </StackPanel>
         </Grid>
@@ -44,7 +48,7 @@
         <Grid Grid.Row="1">
             <TextBlock Text="Which type of proficency would you like to add?"
                        Foreground="White"
-                       FontSize="25"
+                       FontSize="30"
                        TextWrapping="Wrap"
                        Margin="15"/>
         </Grid>
@@ -53,55 +57,42 @@
             <StackPanel Orientation="Horizontal"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center">
-                <Button x:Name="WeaponButton"
-                        Height="50"
-                        Width="60"
-                        Background="Transparent"
-                        BorderBrush="{x:Null}"
-                        Foreground="Gray"
-                        ToolTip="Weapon"
-                        Click="WeaponButton_Click">
-                    <materialDesign:PackIcon Kind="Sword" Width="25" Height="25"/>
-                </Button>
-                <Button x:Name="ArmorButton"
-                        Height="50"
-                        Width="60"
-                        Background="Transparent"
-                        BorderBrush="{x:Null}"
-                        Foreground="SaddleBrown"
-                        ToolTip="Armor"
-                        Click="ArmorButton_Click">
-                    <materialDesign:PackIcon Kind="ChessKnight" Width="25" Height="25"/>
-                </Button>
-                <Button x:Name="ShieldButton"
-                        Height="50"
-                        Width="60"
-                        Background="Transparent"
-                        BorderBrush="{x:Null}"
-                        Foreground="Goldenrod"
-                        ToolTip="Shield"
-                        Click="ShieldButton_Click">
-                    <materialDesign:PackIcon Kind="Shield" Width="25" Height="25"/>
-                </Button>
                 <Button x:Name="ToolButton"
-                        Height="50"
-                        Width="60"
-                        Background="Transparent"
+                        Style="{StaticResource PopupWindowButton}"
                         BorderBrush="{x:Null}"
-                        Foreground="Firebrick"
-                        ToolTip="Tool"
+                        Content="Tool"
                         Click="ToolButton_Click">
-                    <materialDesign:PackIcon Kind="Toolbox" Width="25" Height="25"/>
                 </Button>
                 <Button x:Name="CancelButton"
-                        Height="50"
-                        Width="60"
-                        Background="Transparent"
+                        Style="{StaticResource PopupWindowButton}"
                         BorderBrush="{x:Null}"
-                        Foreground="IndianRed"
-                        ToolTip="Cancel"
+                        Content="Cancel"
                         Click="CancelButton_Click">
-                    <materialDesign:PackIcon Kind="Cancel" Width="25" Height="25"/>
+                </Button>
+            </StackPanel>
+        </Grid>
+        
+        <Grid Grid.Row="3">
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center">
+                <Button x:Name="WeaponButton"
+                        Style="{StaticResource PopupWindowButton}"
+                        BorderBrush="{x:Null}"
+                        Content="Weapon"
+                        Click="WeaponButton_Click">
+                </Button>
+                <Button x:Name="ArmorButton"
+                        Style="{StaticResource PopupWindowButton}"
+                        BorderBrush="{x:Null}"
+                        Content="Armor"
+                        Click="ArmorButton_Click">
+                </Button>
+                <Button x:Name="ShieldButton"
+                        BorderBrush="{x:Null}"
+                        Content="Shield"
+                        Click="ShieldButton_Click"
+                        Style="{StaticResource PopupWindowButton}">
                 </Button>
             </StackPanel>
         </Grid>

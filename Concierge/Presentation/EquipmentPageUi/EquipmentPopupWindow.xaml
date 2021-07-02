@@ -7,21 +7,21 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         Title="EquipmentPopupWindow"
-        Height="200"
-        Width="400"
+        Height="225"
+        Width="650"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
-        Background="Black"
+        Background="#252526"
         ResizeMode="NoResize"
         KeyDown="Window_KeyDown"
         BorderThickness="1"
-        BorderBrush="#429cd6"
+        BorderBrush="#988CD0"
         Style="{StaticResource WindowXboxDasboardStyle}">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="2*"/>
-            <RowDefinition Height="6*"/>
-            <RowDefinition Height="2*"/>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="110"/>
+            <RowDefinition Height="70"/>
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0">
@@ -29,14 +29,17 @@
                         HorizontalAlignment="Right"
                         VerticalAlignment="Center">
                 <Button x:Name="CloseButton"
-                        Height="50"
-                        Width="60"
-                        Background="Transparent"
-                        BorderBrush="{x:Null}"
-                        Foreground="Red"
-                        ToolTip="Close"
-                        Click="CloseButton_Click">
-                    <materialDesign:PackIcon Kind="CloseBoxOutline" Width="25" Height="25"/>
+                    Height="50"
+                    Width="60"
+                    Background="Transparent"
+                    BorderBrush="{x:Null}"
+                    Foreground="White"
+                    ToolTip="Close"
+                    HorizontalAlignment="Right"
+                    Click="CloseButton_Click"
+                    MouseEnter="CloseButton_MouseEnter"
+                    MouseLeave="CloseButton_MouseLeave">
+                    <materialDesign:PackIcon Kind="WindowClose" Width="25" Height="25"/>
                 </Button>
             </StackPanel>
         </Grid>
@@ -44,7 +47,7 @@
         <Grid Grid.Row="1">
             <TextBlock Text="Would you like to add a weapon or ammunition?"
                        Foreground="White"
-                       FontSize="25"
+                       FontSize="30"
                        TextWrapping="Wrap"
                        Margin="15"/>
         </Grid>
@@ -54,34 +57,22 @@
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center">
                 <Button x:Name="WeaponButton"
-                        Height="50"
-                        Width="60"
-                        Background="Transparent"
+                        Style="{StaticResource PopupWindowButton}"
                         BorderBrush="{x:Null}"
-                        Foreground="Gray"
-                        ToolTip="Add Weapon"
+                        Content="Weapon"
                         Click="WeaponButton_Click">
-                    <materialDesign:PackIcon Kind="Sword" Width="25" Height="25"/>
                 </Button>
                 <Button x:Name="AmmoButton"
-                        Height="50"
-                        Width="60"
-                        Background="Transparent"
+                        Style="{StaticResource PopupWindowButton}"
                         BorderBrush="{x:Null}"
-                        Foreground="RosyBrown"
-                        ToolTip="Add Ammo"
+                        Content="Ammo"
                         Click="AmmoButton_Click">
-                    <materialDesign:PackIcon Kind="BullseyeArrow" Width="25" Height="25"/>
                 </Button>
                 <Button x:Name="CancelButton"
-                        Height="50"
-                        Width="60"
-                        Background="Transparent"
                         BorderBrush="{x:Null}"
-                        Foreground="IndianRed"
-                        ToolTip="Cancel"
-                        Click="CancelButton_Click">
-                    <materialDesign:PackIcon Kind="Cancel" Width="25" Height="25"/>
+                        Content="Cancel"
+                        Click="CancelButton_Click"
+                        Style="{StaticResource PopupWindowButton}">
                 </Button>
             </StackPanel>
         </Grid>

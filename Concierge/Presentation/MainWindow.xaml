@@ -108,12 +108,12 @@
 
             <Grid x:Name="CharacterHeader" Grid.Column="1" Background="Black">
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock x:Name="TextCharacterName" FontSize="15" Margin="25 0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                    <TextBlock x:Name="TextCharacterRace" FontSize="15" Margin="25 0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                    <TextBlock x:Name="TextCharacterBackground" FontSize="15" Margin="25 0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                    <TextBlock x:Name="TextCharacterAlignment" FontSize="15" Margin="25 0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                    <TextBlock x:Name="TextCharacterLevel" FontSize="15" Margin="25 0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                    <TextBlock x:Name="TextCharacterClass" FontSize="15" Margin="25 0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    <TextBlock x:Name="TextCharacterName" FontSize="20" Margin="25 0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    <TextBlock x:Name="TextCharacterRace" FontSize="20" Margin="25 0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    <TextBlock x:Name="TextCharacterBackground" FontSize="20" Margin="25 0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    <TextBlock x:Name="TextCharacterAlignment" FontSize="20" Margin="25 0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    <TextBlock x:Name="TextCharacterLevel" FontSize="20" Margin="25 0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    <TextBlock x:Name="TextCharacterClass" FontSize="20" Margin="25 0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                 </StackPanel>
             </Grid>
 
@@ -163,7 +163,7 @@
                                     <TextBlock Text="Properties" VerticalAlignment="Center" Margin="20 10"/>
                                 </StackPanel>
                             </Button>
-                            <Button x:Name="ButtonSettings" Foreground="White" Click="ButtonLongRest_Click">
+                            <Button x:Name="SettingsButton" Foreground="White" Click="SettingsButton_Click">
                                 <StackPanel Orientation="Horizontal">
                                     <materialDesign:PackIcon Kind="Settings" Height="25" Width="25" Margin="0 10"/>
                                     <TextBlock Text="Settings" VerticalAlignment="Center" Margin="20 10"/>
@@ -260,7 +260,7 @@
                         </ListViewItem>
                         <ListViewItem x:Name="ItemNotes" Height="60" Selected="ItemNotes_Selected">
                             <StackPanel Orientation="Horizontal">
-                                <materialDesign:PackIcon Kind="Pencil" Height="25" Width="25" Margin="10"/>
+                                <materialDesign:PackIcon Kind="Pen" Height="25" Width="25" Margin="10"/>
                                 <TextBlock Text="Notes" VerticalAlignment="Center" Margin="20 10"/>
                             </StackPanel>
                         </ListViewItem>

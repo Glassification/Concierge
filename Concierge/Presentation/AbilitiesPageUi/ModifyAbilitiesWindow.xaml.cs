@@ -7,6 +7,7 @@ namespace Concierge.Presentation.AbilitiesPageUi
     using System;
     using System.Windows;
     using System.Windows.Input;
+    using System.Windows.Media;
 
     using Concierge.Characters.Collections;
 
@@ -30,7 +31,7 @@ namespace Concierge.Presentation.AbilitiesPageUi
             this.SelectedAbilityId = ability.ID;
             this.Editing = true;
             this.FillFields(ability);
-            this.ButtonApply.Visibility = Visibility.Collapsed;
+            this.ApplyButton.Visibility = Visibility.Collapsed;
 
             this.ShowDialog();
         }
@@ -40,7 +41,7 @@ namespace Concierge.Presentation.AbilitiesPageUi
             this.HeaderTextBlock.Text = "Add Ability";
             this.Editing = false;
             this.ClearFields();
-            this.ButtonApply.Visibility = Visibility.Visible;
+            this.ApplyButton.Visibility = Visibility.Visible;
 
             this.ShowDialog();
         }
@@ -102,19 +103,19 @@ namespace Concierge.Presentation.AbilitiesPageUi
             }
         }
 
-        private void ButtonClose_Click(object sender, RoutedEventArgs e)
+        private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             this.Hide();
         }
 
-        private void ButtonApply_Click(object sender, RoutedEventArgs e)
+        private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Character.Abilities.Add(this.ToAbility());
             Program.Modified = true;
             this.ClearFields();
         }
 
-        private void ButtonOK_Click(object sender, RoutedEventArgs e)
+        private void OkButton_Click(object sender, RoutedEventArgs e)
         {
             if (this.Editing)
             {
@@ -129,9 +130,19 @@ namespace Concierge.Presentation.AbilitiesPageUi
             this.Hide();
         }
 
-        private void ButtonCancel_Click(object sender, RoutedEventArgs e)
+        private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
             this.Hide();
+        }
+
+        private void CloseButton_MouseEnter(object sender, MouseEventArgs e)
+        {
+            this.CloseButton.Foreground = Brushes.Black;
+        }
+
+        private void CloseButton_MouseLeave(object sender, MouseEventArgs e)
+        {
+            this.CloseButton.Foreground = Brushes.White;
         }
     }
 }

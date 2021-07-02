@@ -6,6 +6,7 @@ namespace Concierge.Presentation.OverviewPageUi
 {
     using System.Windows;
     using System.Windows.Input;
+    using System.Windows.Media;
 
     /// <summary>
     /// Interaction logic for ModifyHealthWindow.xaml.
@@ -68,6 +69,16 @@ namespace Concierge.Presentation.OverviewPageUi
         {
             this.UpdateHealth();
             this.Hide();
+        }
+
+        private void CloseButton_MouseEnter(object sender, MouseEventArgs e)
+        {
+            this.CloseButton.Foreground = Brushes.Black;
+        }
+
+        private void CloseButton_MouseLeave(object sender, MouseEventArgs e)
+        {
+            this.CloseButton.Foreground = Brushes.White;
         }
     }
 }

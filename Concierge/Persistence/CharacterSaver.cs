@@ -27,7 +27,7 @@ namespace Concierge.Persistence
                     new XElement("Character",
                         new XElement("Settings",
                             new XElement("AutoSave", new XAttribute("enabled", Settings.AutosaveEnable), new XAttribute("interval", Settings.AutosaveInterval)),
-                            new XElement("CoinWeight", new XAttribute("ignore", Settings.UseCoinWeight)),
+                            new XElement("CoinWeight", new XAttribute("ignore", !Settings.UseCoinWeight)),
                             new XElement("Encumbrance", new XAttribute("use", Settings.UseEncumbrance))
                             ),
                         new XElement("Attributes",

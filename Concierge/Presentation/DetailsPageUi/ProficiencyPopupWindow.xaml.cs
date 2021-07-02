@@ -6,6 +6,7 @@ namespace Concierge.Presentation.DetailsPageUi
 {
     using System.Windows;
     using System.Windows.Input;
+    using System.Windows.Media;
 
     using Concierge.Characters.Enums;
 
@@ -73,6 +74,16 @@ namespace Concierge.Presentation.DetailsPageUi
                     this.Hide();
                     break;
             }
+        }
+
+        private void CloseButton_MouseEnter(object sender, MouseEventArgs e)
+        {
+            this.CloseButton.Foreground = Brushes.Black;
+        }
+
+        private void CloseButton_MouseLeave(object sender, MouseEventArgs e)
+        {
+            this.CloseButton.Foreground = Brushes.White;
         }
     }
 }

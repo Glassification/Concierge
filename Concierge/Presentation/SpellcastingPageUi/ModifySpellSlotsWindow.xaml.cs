@@ -6,6 +6,7 @@ namespace Concierge.Presentation.SpellcastingPageUi
 {
     using System.Windows;
     using System.Windows.Input;
+    using System.Windows.Media;
 
     /// <summary>
     /// Interaction logic for ModifySpellSlotsWindow.xaml.
@@ -104,6 +105,16 @@ namespace Concierge.Presentation.SpellcastingPageUi
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
             this.Hide();
+        }
+
+        private void CloseButton_MouseEnter(object sender, MouseEventArgs e)
+        {
+            this.CloseButton.Foreground = Brushes.Black;
+        }
+
+        private void CloseButton_MouseLeave(object sender, MouseEventArgs e)
+        {
+            this.CloseButton.Foreground = Brushes.White;
         }
     }
 }

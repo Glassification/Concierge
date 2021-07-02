@@ -8,15 +8,15 @@
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         mc:Ignorable="d"
         Title="ModifySpellClassWindow"
-        Height="375"
+        Height="400"
         Width="800"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
-        Background="Black"
+        Background="#252526"
         ResizeMode="NoResize"
         KeyDown="Window_KeyDown"
         BorderThickness="1"
-        BorderBrush="#429cd6"
+        BorderBrush="#988CD0"
         Style="{StaticResource WindowXboxDasboardStyle}">
 
     <Window.Resources>
@@ -49,20 +49,7 @@
                   Data="M0,0 L0,2 L4,6 L8,2 L8,0 L4,4 z"
                 />
             </Grid>
-            <!--<ControlTemplate.Triggers>
-            <Trigger Property="ToggleButton.IsMouseOver" Value="true">
-                <Setter TargetName="Border" Property="Background" Value="#808080" />
-            </Trigger>
-            <Trigger Property="ToggleButton.IsChecked" Value="true">
-                <Setter TargetName="Border" Property="Background" Value="#E0E0E0" />
-            </Trigger>
-            <Trigger Property="IsEnabled" Value="False">
-                <Setter TargetName="Border" Property="Background" Value="#EEEEEE" />
-                <Setter TargetName="Border" Property="BorderBrush" Value="#AAAAAA" />
-                <Setter Property="Foreground" Value="#888888"/>
-                <Setter TargetName="Arrow" Property="Fill" Value="#888888" />
-            </Trigger>
-        </ControlTemplate.Triggers>-->
+            
         </ControlTemplate>
 
         <ControlTemplate x:Key="ComboBoxTextBox" TargetType="{x:Type TextBox}">
@@ -189,14 +176,14 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="45"/>
             <RowDefinition Height="285"/>
-            <RowDefinition Height="45"/>
+            <RowDefinition Height="70"/>
         </Grid.RowDefinitions>
 
         <!--Header-->
         <Grid Grid.Row="0">
             <TextBlock Text="Add Magic Class"
                        x:Name="HeaderTextBlock"
-                       Foreground="#429cd6"
+                       Foreground="#988CD0"
                        FontSize="35"
                        HorizontalAlignment="Left"
                        VerticalAlignment="Center"
@@ -205,14 +192,15 @@
             <Button x:Name="CloseButton"
                     Height="50"
                     Width="60"
-                    HorizontalAlignment="Right"
-                    VerticalAlignment="Center"
                     Background="Transparent"
                     BorderBrush="{x:Null}"
-                    Foreground="Red"
+                    Foreground="White"
                     ToolTip="Close"
-                    Click="CloseButton_Click">
-                <materialDesign:PackIcon Kind="CloseBoxOutline" Width="25" Height="25"/>
+                    HorizontalAlignment="Right"
+                    Click="CloseButton_Click"
+                    MouseEnter="CloseButton_MouseEnter"
+                    MouseLeave="CloseButton_MouseLeave">
+                <materialDesign:PackIcon Kind="WindowClose" Width="25" Height="25"/>
             </Button>
         </Grid>
 
@@ -489,34 +477,22 @@
                         VerticalAlignment="Center"
                         HorizontalAlignment="Center">
                 <Button x:Name="OkButton"
-                        Height="50"
-                        Width="60"
-                        Background="Transparent"
+                        Style="{StaticResource PopupWindowButton}"
                         BorderBrush="{x:Null}"
-                        Foreground="Green"
-                        ToolTip="OK"
+                        Content="OK"
                         Click="OkButton_Click">
-                    <materialDesign:PackIcon Kind="CheckBox" Width="25" Height="25"/>
                 </Button>
                 <Button x:Name="ApplyButton"
-                        Height="50"
-                        Width="60"
-                        Background="Transparent"
+                        Style="{StaticResource PopupWindowButton}"
                         BorderBrush="{x:Null}"
-                        Foreground="OrangeRed"
-                        ToolTip="Apply"
+                        Content="Apply"
                         Click="ApplyButton_Click">
-                    <materialDesign:PackIcon Kind="PlusBox" Width="25" Height="25"/>
                 </Button>
                 <Button x:Name="CancelButton"
-                        Height="50"
-                        Width="60"
-                        Background="Transparent"
                         BorderBrush="{x:Null}"
-                        Foreground="IndianRed"
-                        ToolTip="Cancel"
-                        Click="CancelButton_Click">
-                    <materialDesign:PackIcon Kind="Cancel" Width="25" Height="25"/>
+                        Content="Cancel"
+                        Click="CancelButton_Click"
+                        Style="{StaticResource PopupWindowButton}">
                 </Button>
             </StackPanel>
         </Grid>

@@ -18,6 +18,7 @@ namespace Concierge.Tools
 
         public Player(int cp, int sp, int ep, int gp, int pp)
         {
+            this.CurrencyList = new int[CURRENCIES];
             this.CurrencyList[(int)Currency.Copper] = cp;
             this.CurrencyList[(int)Currency.Silver] = sp;
             this.CurrencyList[(int)Currency.Electrum] = ep;

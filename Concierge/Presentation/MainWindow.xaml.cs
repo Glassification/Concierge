@@ -28,6 +28,7 @@ namespace Concierge.Presentation
         private readonly OpenFileDialog openFileDialog = new OpenFileDialog();
         private readonly SaveFileDialog saveFileDialog = new SaveFileDialog();
         private readonly ConfirmCloseWindow confirmCloseWindow = new ConfirmCloseWindow();
+        private readonly SettingsWindow settingsWindow = new SettingsWindow();
 
         private readonly InventoryPage InventoryPage = new InventoryPage();
         private readonly EquipmentPage EquipmentPage = new EquipmentPage();
@@ -63,12 +64,26 @@ namespace Concierge.Presentation
 
         public void CloseWindow()
         {
-            if (Program.Modified && this.confirmCloseWindow.ShowWindow())
+            if (Program.Modified)
             {
-                this.SaveCharacterSheet();
+                switch (this.confirmCloseWindow.ShowWindow())
+                {
+                    case Enums.DialogResult.OK:
+                        this.SaveCharacterSheet();
+                        this.Close();
+                        break;
+                    case Enums.DialogResult.No:
+                        this.Close();
+                        break;
+                    default:
+                    case Enums.DialogResult.Cancel:
+                        break;
+                }
             }
-
-            this.Close();
+            else
+            {
+                this.Close();
+            }
         }
 
         public void NewCharacterSheet()
@@ -423,6 +438,13 @@ namespace Concierge.Presentation
             this.ToolsPage.Visibility = Visibility.Visible;
             this.FrameContent.Content = this.ToolsPage;
             this.ToolsPage.Draw();
+        }
+
+        private void SettingsButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.settingsWindow.ShowWindow();
+            this.OverviewPage.Draw();
+            this.DetailsPage.Draw();
         }
 
         private void ButtonOpenMenu_MouseEnter(object sender, MouseEventArgs e)

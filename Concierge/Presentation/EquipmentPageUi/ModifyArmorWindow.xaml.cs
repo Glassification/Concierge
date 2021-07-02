@@ -8,6 +8,7 @@ namespace Concierge.Presentation.EquipmentPageUi
     using System.Linq;
     using System.Windows;
     using System.Windows.Input;
+    using System.Windows.Media;
 
     using Concierge.Characters;
     using Concierge.Characters.Enums;
@@ -71,27 +72,37 @@ namespace Concierge.Presentation.EquipmentPageUi
             }
         }
 
-        private void ButtonClose_Click(object sender, RoutedEventArgs e)
+        private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             this.Hide();
         }
 
-        private void ButtonApply_Click(object sender, RoutedEventArgs e)
+        private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
             this.ToArmor(Program.Character.Armor);
             Program.Modified = true;
         }
 
-        private void ButtonOK_Click(object sender, RoutedEventArgs e)
+        private void OkButton_Click(object sender, RoutedEventArgs e)
         {
             this.ToArmor(Program.Character.Armor);
             Program.Modified = true;
             this.Hide();
         }
 
-        private void ButtonCancel_Click(object sender, RoutedEventArgs e)
+        private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
             this.Hide();
+        }
+
+        private void CloseButton_MouseEnter(object sender, MouseEventArgs e)
+        {
+            this.CloseButton.Foreground = Brushes.Black;
+        }
+
+        private void CloseButton_MouseLeave(object sender, MouseEventArgs e)
+        {
+            this.CloseButton.Foreground = Brushes.White;
         }
     }
 }

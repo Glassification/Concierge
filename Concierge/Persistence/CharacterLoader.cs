@@ -31,7 +31,7 @@ namespace Concierge.Persistence
                 element = root.Element("Settings");
                 Settings.AutosaveEnable = bool.Parse((string)element.Element("AutoSave").Attribute("enabled"));
                 Settings.AutosaveInterval = int.Parse((string)element.Element("AutoSave").Attribute("interval"));
-                Settings.UseCoinWeight = bool.Parse((string)element.Element("CoinWeight").Attribute("ignore"));
+                Settings.UseCoinWeight = !bool.Parse((string)element.Element("CoinWeight").Attribute("ignore"));
                 Settings.UseEncumbrance = bool.Parse((string)element.Element("Encumbrance").Attribute("use"));
 
                 //-------------------------------------------------------------------------------------------------------

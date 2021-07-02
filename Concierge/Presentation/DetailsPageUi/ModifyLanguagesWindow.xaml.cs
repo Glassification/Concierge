@@ -8,6 +8,7 @@ namespace Concierge.Presentation.DetailsPageUi
     using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Input;
+    using System.Windows.Media;
 
     using Concierge.Characters.Collections;
     using Concierge.Utility;
@@ -131,6 +132,16 @@ namespace Concierge.Presentation.DetailsPageUi
             {
                 this.FillFields(this.NameComboBox.SelectedItem as Language);
             }
+        }
+
+        private void CloseButton_MouseEnter(object sender, MouseEventArgs e)
+        {
+            this.CloseButton.Foreground = Brushes.Black;
+        }
+
+        private void CloseButton_MouseLeave(object sender, MouseEventArgs e)
+        {
+            this.CloseButton.Foreground = Brushes.White;
         }
     }
 }
