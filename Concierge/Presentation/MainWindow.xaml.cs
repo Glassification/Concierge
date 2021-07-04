@@ -51,13 +51,7 @@ namespace Concierge.Presentation
 
             this.GridContent.Width = this.GridContentWidthClose;
 
-            this.InventoryPage.Visibility = Visibility.Collapsed;
-            this.EquipmentPage.Visibility = Visibility.Collapsed;
-            this.AbilitiesPage.Visibility = Visibility.Collapsed;
-            this.DetailsPage.Visibility = Visibility.Collapsed;
-            this.NotesPage.Visibility = Visibility.Collapsed;
-            this.SpellcastingPage.Visibility = Visibility.Collapsed;
-            this.ToolsPage.Visibility = Visibility.Collapsed;
+            this.CollapseAll();
             this.OverviewPage.Visibility = Visibility.Visible;
             this.FrameContent.Content = this.OverviewPage;
 
@@ -67,6 +61,10 @@ namespace Concierge.Presentation
         public double GridContentWidthOpen => SystemParameters.PrimaryScreenWidth - 200;
 
         public double GridContentWidthClose => SystemParameters.PrimaryScreenWidth - 60;
+
+        private bool IsControl => (Keyboard.Modifiers & ModifierKeys.Control) == ModifierKeys.Control;
+
+        private bool IsShift => (Keyboard.Modifiers & ModifierKeys.Shift) == ModifierKeys.Shift;
 
         public void CloseWindow()
         {
@@ -145,8 +143,10 @@ namespace Concierge.Presentation
         {
             if (this.saveFileDialog.ShowDialog() ?? false)
             {
-                Program.CcsFile = new CcsFile();
-                Program.CcsFile.Path = this.saveFileDialog.FileName;
+                Program.CcsFile = new CcsFile
+                {
+                    Path = this.saveFileDialog.FileName,
+                };
 
                 this.NotesPage.SaveTextBox();
                 CharacterSaver.SaveCharacterSheet(Program.Character, Program.CcsFile);
@@ -195,14 +195,16 @@ namespace Concierge.Presentation
             Application.Current.Shutdown();
         }
 
-        private bool IsControl()
+        private void CollapseAll()
         {
-            return (Keyboard.Modifiers & ModifierKeys.Control) == ModifierKeys.Control;
-        }
-
-        private bool IsShift()
-        {
-            return (Keyboard.Modifiers & ModifierKeys.Shift) == ModifierKeys.Shift;
+            this.InventoryPage.Visibility = Visibility.Collapsed;
+            this.EquipmentPage.Visibility = Visibility.Collapsed;
+            this.AbilitiesPage.Visibility = Visibility.Collapsed;
+            this.DetailsPage.Visibility = Visibility.Collapsed;
+            this.NotesPage.Visibility = Visibility.Collapsed;
+            this.SpellcastingPage.Visibility = Visibility.Collapsed;
+            this.ToolsPage.Visibility = Visibility.Collapsed;
+            this.OverviewPage.Visibility = Visibility.Collapsed;
         }
 
         private void MainWindow_ContentRendered(object sender, EventArgs e)
@@ -212,65 +214,70 @@ namespace Concierge.Presentation
 
         private void MainWindow_KeyPress(object sender, KeyEventArgs e)
         {
-            if (!Program.Typing)
+            if (Program.Typing || !this.IsControl)
             {
-                if (this.IsControl())
-                {
-                    switch (e.Key)
-                    {
-                        case Key.L:
-                            this.LongRest();
-                            break;
-                        case Key.N:
-                            this.NewCharacterSheet();
-                            break;
-                        case Key.O:
-                            this.OpenCharacterSheet();
-                            break;
-                        case Key.P:
-                            this.modifyPropertiesWindow.ShowWindow();
-                            this.DrawAll();
-                            break;
-                        case Key.Q:
-                            this.CloseWindow();
-                            break;
-                        case Key.S:
-                            if (this.IsShift())
-                            {
-                                this.SaveCharacterSheetAs();
-                            }
-                            else
-                            {
-                                this.SaveCharacterSheet();
-                            }
+                return;
+            }
 
-                            break;
-                        case Key.D1:
-                            this.MoveSelection(0);
-                            break;
-                        case Key.D2:
-                            this.MoveSelection(1);
-                            break;
-                        case Key.D3:
-                            this.MoveSelection(2);
-                            break;
-                        case Key.D4:
-                            this.MoveSelection(3);
-                            break;
-                        case Key.D5:
-                            this.MoveSelection(4);
-                            break;
-                        case Key.D6:
-                            this.MoveSelection(5);
-                            break;
-                        case Key.D7:
-                            this.MoveSelection(6);
-                            break;
-                        case Key.D8:
-                            this.MoveSelection(7);
-                            break;
+            switch (e.Key)
+            {
+                case Key.L:
+                    this.LongRest();
+                    break;
+                case Key.N:
+                    this.NewCharacterSheet();
+                    break;
+                case Key.O:
+                    this.OpenCharacterSheet();
+                    break;
+                case Key.P:
+                    this.modifyPropertiesWindow.ShowWindow();
+                    this.DrawAll();
+                    break;
+                case Key.Q:
+                    this.CloseWindow();
+                    break;
+                case Key.S:
+                    if (this.IsShift)
+                    {
+                        this.SaveCharacterSheetAs();
                     }
-                }
+                    else
+                    {
+                        this.SaveCharacterSheet();
+                    }
+
+                    break;
+                case Key.OemMinus:
+                    this.WindowState = WindowState.Minimized;
+                    break;
+                case Key.OemPlus:
+                    this.WindowState = WindowState.Maximized;
+                    break;
+                case Key.D1:
+                    this.MoveSelection(0);
+                    break;
+                case Key.D2:
+                    this.MoveSelection(1);
+                    break;
+                case Key.D3:
+                    this.MoveSelection(2);
+                    break;
+                case Key.D4:
+                    this.MoveSelection(3);
+                    break;
+                case Key.D5:
+                    this.MoveSelection(4);
+                    break;
+                case Key.D6:
+                    this.MoveSelection(5);
+                    break;
+                case Key.D7:
+                    this.MoveSelection(6);
+                    break;
+                case Key.D8:
+                    this.MoveSelection(7);
+                    break;
             }
         }
 
@@ -332,13 +339,7 @@ namespace Concierge.Presentation
 
         private void ItemNotes_Selected(object sender, RoutedEventArgs e)
         {
-            this.InventoryPage.Visibility = Visibility.Collapsed;
-            this.EquipmentPage.Visibility = Visibility.Collapsed;
-            this.AbilitiesPage.Visibility = Visibility.Collapsed;
-            this.OverviewPage.Visibility = Visibility.Collapsed;
-            this.DetailsPage.Visibility = Visibility.Collapsed;
-            this.SpellcastingPage.Visibility = Visibility.Collapsed;
-            this.ToolsPage.Visibility = Visibility.Collapsed;
+            this.CollapseAll();
             this.NotesPage.Visibility = Visibility.Visible;
             this.FrameContent.Content = this.NotesPage;
             this.NotesPage.Draw();
@@ -346,13 +347,7 @@ namespace Concierge.Presentation
 
         private void ItemInventory_Selected(object sender, RoutedEventArgs e)
         {
-            this.EquipmentPage.Visibility = Visibility.Collapsed;
-            this.AbilitiesPage.Visibility = Visibility.Collapsed;
-            this.OverviewPage.Visibility = Visibility.Collapsed;
-            this.DetailsPage.Visibility = Visibility.Collapsed;
-            this.NotesPage.Visibility = Visibility.Collapsed;
-            this.SpellcastingPage.Visibility = Visibility.Collapsed;
-            this.ToolsPage.Visibility = Visibility.Collapsed;
+            this.CollapseAll();
             this.InventoryPage.Visibility = Visibility.Visible;
             this.FrameContent.Content = this.InventoryPage;
             this.InventoryPage.Draw();
@@ -360,13 +355,7 @@ namespace Concierge.Presentation
 
         private void ItemDetails_Selected(object sender, RoutedEventArgs e)
         {
-            this.InventoryPage.Visibility = Visibility.Collapsed;
-            this.EquipmentPage.Visibility = Visibility.Collapsed;
-            this.AbilitiesPage.Visibility = Visibility.Collapsed;
-            this.OverviewPage.Visibility = Visibility.Collapsed;
-            this.NotesPage.Visibility = Visibility.Collapsed;
-            this.SpellcastingPage.Visibility = Visibility.Collapsed;
-            this.ToolsPage.Visibility = Visibility.Collapsed;
+            this.CollapseAll();
             this.DetailsPage.Visibility = Visibility.Visible;
             this.FrameContent.Content = this.DetailsPage;
             this.DetailsPage.Draw();
@@ -374,13 +363,7 @@ namespace Concierge.Presentation
 
         private void ItemAbilities_Selected(object sender, RoutedEventArgs e)
         {
-            this.InventoryPage.Visibility = Visibility.Collapsed;
-            this.EquipmentPage.Visibility = Visibility.Collapsed;
-            this.OverviewPage.Visibility = Visibility.Collapsed;
-            this.DetailsPage.Visibility = Visibility.Collapsed;
-            this.NotesPage.Visibility = Visibility.Collapsed;
-            this.SpellcastingPage.Visibility = Visibility.Collapsed;
-            this.ToolsPage.Visibility = Visibility.Collapsed;
+            this.CollapseAll();
             this.AbilitiesPage.Visibility = Visibility.Visible;
             this.FrameContent.Content = this.AbilitiesPage;
             this.AbilitiesPage.Draw();
@@ -388,13 +371,7 @@ namespace Concierge.Presentation
 
         private void ItemEquipment_Selected(object sender, RoutedEventArgs e)
         {
-            this.InventoryPage.Visibility = Visibility.Collapsed;
-            this.AbilitiesPage.Visibility = Visibility.Collapsed;
-            this.OverviewPage.Visibility = Visibility.Collapsed;
-            this.DetailsPage.Visibility = Visibility.Collapsed;
-            this.NotesPage.Visibility = Visibility.Collapsed;
-            this.SpellcastingPage.Visibility = Visibility.Collapsed;
-            this.ToolsPage.Visibility = Visibility.Collapsed;
+            this.CollapseAll();
             this.EquipmentPage.Visibility = Visibility.Visible;
             this.FrameContent.Content = this.EquipmentPage;
             this.EquipmentPage.Draw();
@@ -402,13 +379,7 @@ namespace Concierge.Presentation
 
         private void ItemOverview_Selected(object sender, RoutedEventArgs e)
         {
-            this.InventoryPage.Visibility = Visibility.Collapsed;
-            this.EquipmentPage.Visibility = Visibility.Collapsed;
-            this.AbilitiesPage.Visibility = Visibility.Collapsed;
-            this.DetailsPage.Visibility = Visibility.Collapsed;
-            this.NotesPage.Visibility = Visibility.Collapsed;
-            this.SpellcastingPage.Visibility = Visibility.Collapsed;
-            this.ToolsPage.Visibility = Visibility.Collapsed;
+            this.CollapseAll();
             this.OverviewPage.Visibility = Visibility.Visible;
             this.FrameContent.Content = this.OverviewPage;
             this.OverviewPage.Draw();
@@ -416,27 +387,15 @@ namespace Concierge.Presentation
 
         private void ItemSpellcasting_Selected(object sender, RoutedEventArgs e)
         {
-            this.InventoryPage.Visibility = Visibility.Collapsed;
-            this.EquipmentPage.Visibility = Visibility.Collapsed;
-            this.AbilitiesPage.Visibility = Visibility.Collapsed;
-            this.OverviewPage.Visibility = Visibility.Collapsed;
-            this.DetailsPage.Visibility = Visibility.Collapsed;
-            this.NotesPage.Visibility = Visibility.Collapsed;
+            this.CollapseAll();
             this.SpellcastingPage.Visibility = Visibility.Visible;
-            this.ToolsPage.Visibility = Visibility.Collapsed;
             this.FrameContent.Content = this.SpellcastingPage;
             this.SpellcastingPage.Draw();
         }
 
         private void ItemTools_Selected(object sender, RoutedEventArgs e)
         {
-            this.InventoryPage.Visibility = Visibility.Collapsed;
-            this.EquipmentPage.Visibility = Visibility.Collapsed;
-            this.AbilitiesPage.Visibility = Visibility.Collapsed;
-            this.OverviewPage.Visibility = Visibility.Collapsed;
-            this.DetailsPage.Visibility = Visibility.Collapsed;
-            this.NotesPage.Visibility = Visibility.Collapsed;
-            this.SpellcastingPage.Visibility = Visibility.Collapsed;
+            this.CollapseAll();
             this.ToolsPage.Visibility = Visibility.Visible;
             this.FrameContent.Content = this.ToolsPage;
             this.ToolsPage.Draw();
@@ -464,44 +423,14 @@ namespace Concierge.Presentation
             }
         }
 
-        private void ButtonOpenMenu_MouseEnter(object sender, MouseEventArgs e)
+        private void Button_MouseEnter(object sender, MouseEventArgs e)
         {
-            this.ButtonOpenMenu.Foreground = Brushes.Black;
+            ((Button)sender).Foreground = Brushes.Black;
         }
 
-        private void ButtonOpenMenu_MouseLeave(object sender, MouseEventArgs e)
+        private void Button_MouseLeave(object sender, MouseEventArgs e)
         {
-            this.ButtonOpenMenu.Foreground = Brushes.White;
-        }
-
-        private void ButtonCloseMenu_MouseEnter(object sender, MouseEventArgs e)
-        {
-            this.ButtonCloseMenu.Foreground = Brushes.Black;
-        }
-
-        private void ButtonCloseMenu_MouseLeave(object sender, MouseEventArgs e)
-        {
-            this.ButtonCloseMenu.Foreground = Brushes.White;
-        }
-
-        private void ButtonClose_MouseEnter(object sender, MouseEventArgs e)
-        {
-            this.ButtonClose.Foreground = Brushes.Black;
-        }
-
-        private void ButtonClose_MouseLeave(object sender, MouseEventArgs e)
-        {
-            this.ButtonClose.Foreground = Brushes.White;
-        }
-
-        private void ButtonMinimize_MouseEnter(object sender, MouseEventArgs e)
-        {
-            this.ButtonMinimize.Foreground = Brushes.Black;
-        }
-
-        private void ButtonMinimize_MouseLeave(object sender, MouseEventArgs e)
-        {
-            this.ButtonMinimize.Foreground = Brushes.White;
+            ((Button)sender).Foreground = Brushes.White;
         }
 
         private void ButtonMinimize_Click(object sender, RoutedEventArgs e)

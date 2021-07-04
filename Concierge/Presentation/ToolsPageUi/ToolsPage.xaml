@@ -934,8 +934,8 @@
                                      VerticalContentAlignment="Center"
                                      HorizontalContentAlignment="Center"
                                      MaxLength="5"
-                                     GotFocus="PlayersInput_GotFocus"
-                                     LostFocus="PlayersInput_LostFocus"/>
+                                     GotFocus="Input_GotFocus"
+                                     LostFocus="Input_LostFocus"/>
                         </Grid>
                     </Grid>
 
@@ -971,8 +971,8 @@
                                      VerticalContentAlignment="Center"
                                      HorizontalContentAlignment="Center"
                                      MaxLength="10"
-                                     GotFocus="CopperInput_GotFocus"
-                                     LostFocus="CopperInput_LostFocus"/>
+                                     GotFocus="Input_GotFocus"
+                                     LostFocus="Input_LostFocus"/>
                         </Grid>
                     </Grid>
 
@@ -1008,8 +1008,8 @@
                                      VerticalContentAlignment="Center"
                                      HorizontalContentAlignment="Center"
                                      MaxLength="10"
-                                     GotFocus="SilverInput_GotFocus"
-                                     LostFocus="SilverInput_LostFocus"/>
+                                     GotFocus="Input_GotFocus"
+                                     LostFocus="Input_LostFocus"/>
                         </Grid>
                     </Grid>
 
@@ -1045,8 +1045,8 @@
                                      VerticalContentAlignment="Center"
                                      HorizontalContentAlignment="Center"
                                      MaxLength="10"
-                                     GotFocus="ElectrumInput_GotFocus"
-                                     LostFocus="ElectrumInput_LostFocus"/>
+                                     GotFocus="Input_GotFocus"
+                                     LostFocus="Input_LostFocus"/>
                         </Grid>
                     </Grid>
 
@@ -1082,8 +1082,8 @@
                                      VerticalContentAlignment="Center"
                                      HorizontalContentAlignment="Center"
                                      MaxLength="10"
-                                     GotFocus="GoldInput_GotFocus"
-                                     LostFocus="GoldInput_LostFocus"/>
+                                     GotFocus="Input_GotFocus"
+                                     LostFocus="Input_LostFocus"/>
                         </Grid>
                     </Grid>
 
@@ -1119,8 +1119,8 @@
                                      VerticalContentAlignment="Center"
                                      HorizontalContentAlignment="Center"
                                      MaxLength="10"
-                                     GotFocus="PlatinumInput_GotFocus"
-                                     LostFocus="PlatinumInput_LostFocus"/>
+                                     GotFocus="Input_GotFocus"
+                                     LostFocus="Input_LostFocus"/>
                         </Grid>
                     </Grid>
 

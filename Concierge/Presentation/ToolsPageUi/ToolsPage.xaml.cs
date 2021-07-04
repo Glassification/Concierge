@@ -10,6 +10,7 @@ namespace Concierge.Presentation.ToolsPageUi
     using System.Windows.Controls;
 
     using Concierge.Tools;
+    using Xceed.Wpf.Toolkit;
 
     /// <summary>
     /// Interaction logic for ToolsPage.xaml.
@@ -134,99 +135,19 @@ namespace Concierge.Presentation.ToolsPageUi
         {
         }
 
-        private void PlayersInput_GotFocus(object sender, RoutedEventArgs e)
+        private void Input_GotFocus(object sender, RoutedEventArgs e)
         {
-            if (this.PlayersInput.Text.Equals("0"))
+            if (((TextBox)sender).Text.Equals("0"))
             {
-                this.PlayersInput.Text = string.Empty;
+                ((TextBox)sender).Text = string.Empty;
             }
         }
 
-        private void PlayersInput_LostFocus(object sender, RoutedEventArgs e)
+        private void Input_LostFocus(object sender, RoutedEventArgs e)
         {
-            if (!int.TryParse(this.PlayersInput.Text, out _))
+            if (!int.TryParse(((TextBox)sender).Text, out _))
             {
-                this.PlayersInput.Text = "0";
-            }
-        }
-
-        private void CopperInput_GotFocus(object sender, RoutedEventArgs e)
-        {
-            if (this.CopperInput.Text.Equals("0"))
-            {
-                this.CopperInput.Text = string.Empty;
-            }
-        }
-
-        private void CopperInput_LostFocus(object sender, RoutedEventArgs e)
-        {
-            if (!int.TryParse(this.CopperInput.Text, out _))
-            {
-                this.CopperInput.Text = "0";
-            }
-        }
-
-        private void SilverInput_GotFocus(object sender, RoutedEventArgs e)
-        {
-            if (this.SilverInput.Text.Equals("0"))
-            {
-                this.SilverInput.Text = string.Empty;
-            }
-        }
-
-        private void SilverInput_LostFocus(object sender, RoutedEventArgs e)
-        {
-            if (!int.TryParse(this.SilverInput.Text, out _))
-            {
-                this.SilverInput.Text = "0";
-            }
-        }
-
-        private void ElectrumInput_GotFocus(object sender, RoutedEventArgs e)
-        {
-            if (this.ElectrumInput.Text.Equals("0"))
-            {
-                this.ElectrumInput.Text = string.Empty;
-            }
-        }
-
-        private void ElectrumInput_LostFocus(object sender, RoutedEventArgs e)
-        {
-            if (!int.TryParse(this.ElectrumInput.Text, out _))
-            {
-                this.ElectrumInput.Text = "0";
-            }
-        }
-
-        private void GoldInput_GotFocus(object sender, RoutedEventArgs e)
-        {
-            if (this.GoldInput.Text.Equals("0"))
-            {
-                this.GoldInput.Text = string.Empty;
-            }
-        }
-
-        private void GoldInput_LostFocus(object sender, RoutedEventArgs e)
-        {
-            if (!int.TryParse(this.GoldInput.Text, out _))
-            {
-                this.GoldInput.Text = "0";
-            }
-        }
-
-        private void PlatinumInput_GotFocus(object sender, RoutedEventArgs e)
-        {
-            if (this.PlatinumInput.Text.Equals("0"))
-            {
-                this.PlatinumInput.Text = string.Empty;
-            }
-        }
-
-        private void PlatinumInput_LostFocus(object sender, RoutedEventArgs e)
-        {
-            if (!int.TryParse(this.PlatinumInput.Text, out _))
-            {
-                this.PlatinumInput.Text = "0";
+                ((TextBox)sender).Text = "0";
             }
         }
 
@@ -238,60 +159,48 @@ namespace Concierge.Presentation.ToolsPageUi
             {
                 this.RollDiceHistoryDataGrid.Items.Add(dice);
             }
+
+            if (this.RollDiceHistoryDataGrid.Items.Count > 0)
+            {
+                this.RollDiceHistoryDataGrid.SelectedItem = this.RollDiceHistoryDataGrid.Items[this.RollDiceHistoryDataGrid.Items.Count - 1];
+                this.RollDiceHistoryDataGrid.UpdateLayout();
+                this.RollDiceHistoryDataGrid.ScrollIntoView(this.RollDiceHistoryDataGrid.SelectedItem);
+            }
         }
 
         private void SetDefaultDiceValues()
         {
-            this.D4NumberUpDown.Value = 1;
-            this.D4ModifierUpDown.Value = 0;
-            this.D4Plus.IsChecked = true;
-            this.D4Result.Text = "0";
-
-            this.D6NumberUpDown.Value = 1;
-            this.D6ModifierUpDown.Value = 0;
-            this.D6Plus.IsChecked = true;
-            this.D6Result.Text = "0";
-
-            this.D8NumberUpDown.Value = 1;
-            this.D8ModifierUpDown.Value = 0;
-            this.D8Plus.IsChecked = true;
-            this.D8Result.Text = "0";
-
-            this.D10NumberUpDown.Value = 1;
-            this.D10ModifierUpDown.Value = 0;
-            this.D10Plus.IsChecked = true;
-            this.D10Result.Text = "0";
-
-            this.D100NumberUpDown.Value = 1;
-            this.D100ModifierUpDown.Value = 0;
-            this.D100Plus.IsChecked = true;
-            this.D100Result.Text = "0";
-
-            this.D12NumberUpDown.Value = 1;
-            this.D12ModifierUpDown.Value = 0;
-            this.D12Plus.IsChecked = true;
-            this.D12Result.Text = "0";
-
-            this.D20NumberUpDown.Value = 1;
-            this.D20ModifierUpDown.Value = 0;
-            this.D20Plus.IsChecked = true;
-            this.D20Result.Text = "0";
-
+            this.SetDieValue(this.D4NumberUpDown, this.D4ModifierUpDown, this.D4Plus, this.D4Result);
+            this.SetDieValue(this.D6NumberUpDown, this.D6ModifierUpDown, this.D6Plus, this.D6Result);
+            this.SetDieValue(this.D8NumberUpDown, this.D8ModifierUpDown, this.D8Plus, this.D8Result);
+            this.SetDieValue(this.D10NumberUpDown, this.D10ModifierUpDown, this.D10Plus, this.D10Result);
+            this.SetDieValue(this.D100NumberUpDown, this.D100ModifierUpDown, this.D100Plus, this.D100Result);
+            this.SetDieValue(this.D12NumberUpDown, this.D12ModifierUpDown, this.D12Plus, this.D12Result);
+            this.SetDieValue(this.D20NumberUpDown, this.D20ModifierUpDown, this.D20Plus, this.D20Result);
+            this.SetDieValue(this.DxNumberUpDown, this.DxModifierUpDown, this.DxPlus, this.DxResult);
             this.DxDieUpDown.Value = 1;
-            this.DxNumberUpDown.Value = 1;
-            this.DxModifierUpDown.Value = 0;
-            this.DxPlus.IsChecked = true;
-            this.DxResult.Text = "0";
+        }
+
+        private void SetDieValue(
+            IntegerUpDown dieNumber,
+            IntegerUpDown modifierNumber,
+            RadioButton plusButton,
+            TextBlock resultNumber)
+        {
+            dieNumber.Value = 1;
+            modifierNumber.Value = 0;
+            plusButton.IsChecked = true;
+            resultNumber.Text = "0";
         }
 
         private string RollDice(int diceNumber, int diceSides, int modified, bool isPlus)
         {
-            int total = 0, val;
-            int[] rolledDice = new int[diceNumber];
+            var total = 0;
+            var rolledDice = new int[diceNumber];
 
             for (int i = 0; i < diceNumber; i++)
             {
-                val = this.Random.Next(1, diceSides + 1);
+                var val = this.Random.Next(1, diceSides + 1);
                 total += val;
                 rolledDice[i] = val;
             }

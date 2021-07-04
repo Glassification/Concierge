@@ -128,7 +128,6 @@
     <Compile Include="Characters\Enums\DamageTypes.cs" />
     <Compile Include="Characters\Enums\ExhaustionLevel.cs" />
     <Compile Include="Characters\Enums\PopupButtons.cs" />
-    <Compile Include="Characters\Enums\Races.cs" />
     <Compile Include="Characters\Enums\StatusChecks.cs" />
     <Compile Include="Characters\Enums\VisionTypes.cs" />
     <Compile Include="Characters\Enums\WeaponTypes.cs" />
