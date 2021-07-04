@@ -6,6 +6,7 @@ namespace Concierge.Presentation
 {
     using System;
     using System.Windows;
+    using System.Windows.Controls;
     using System.Windows.Input;
     using System.Windows.Media;
 
@@ -31,6 +32,7 @@ namespace Concierge.Presentation
         private readonly OpenFileDialog openFileDialog = new OpenFileDialog();
         private readonly SaveFileDialog saveFileDialog = new SaveFileDialog();
         private readonly SettingsWindow settingsWindow = new SettingsWindow();
+        private readonly ModifyPropertiesWindow modifyPropertiesWindow = new ModifyPropertiesWindow();
 
         private readonly AutosaveTimer autosaveTimer = new AutosaveTimer();
 
@@ -212,90 +214,73 @@ namespace Concierge.Presentation
         {
             if (!Program.Typing)
             {
-                switch (e.Key)
+                if (this.IsControl())
                 {
-                    // Long Rest
-                    case Key.L:
-                        if (this.IsControl())
-                        {
+                    switch (e.Key)
+                    {
+                        case Key.L:
                             this.LongRest();
-                        }
-
-                        break;
-
-                    // New Character Sheet
-                    case Key.N:
-                        if (this.IsControl())
-                        {
+                            break;
+                        case Key.N:
                             this.NewCharacterSheet();
-                        }
-
-                        break;
-
-                    // Open Character Sheet
-                    case Key.O:
-                        if (this.IsControl())
-                        {
+                            break;
+                        case Key.O:
                             this.OpenCharacterSheet();
-                        }
-
-                        break;
-
-                    // Close Window
-                    case Key.Q:
-                        if (this.IsControl())
-                        {
+                            break;
+                        case Key.P:
+                            this.modifyPropertiesWindow.ShowWindow();
+                            this.DrawAll();
+                            break;
+                        case Key.Q:
                             this.CloseWindow();
-                        }
+                            break;
+                        case Key.S:
+                            if (this.IsShift())
+                            {
+                                this.SaveCharacterSheetAs();
+                            }
+                            else
+                            {
+                                this.SaveCharacterSheet();
+                            }
 
-                        break;
-
-                    // Save Character Sheet
-                    case Key.S:
-                        if (this.IsControl() && this.IsShift())
-                        {
-                            this.SaveCharacterSheetAs();
-                        }
-                        else if (this.IsControl())
-                        {
-                            this.SaveCharacterSheet();
-                        }
-
-                        break;
-
-                    // --------------------------------------------------------------
-                    // Page 1
-                    case Key.D1:
-                        break;
-
-                    // Page 2
-                    case Key.D2:
-                        break;
-
-                    // Page 3
-                    case Key.D3:
-                        break;
-
-                    // Page 4
-                    case Key.D4:
-                        break;
-
-                    // Page 5
-                    case Key.D5:
-                        break;
-
-                    // Page 6
-                    case Key.D6:
-                        break;
-
-                    // Page 7
-                    case Key.D7:
-                        break;
-
-                    // Page 8
-                    case Key.D8:
-                        break;
+                            break;
+                        case Key.D1:
+                            this.MoveSelection(0);
+                            break;
+                        case Key.D2:
+                            this.MoveSelection(1);
+                            break;
+                        case Key.D3:
+                            this.MoveSelection(2);
+                            break;
+                        case Key.D4:
+                            this.MoveSelection(3);
+                            break;
+                        case Key.D5:
+                            this.MoveSelection(4);
+                            break;
+                        case Key.D6:
+                            this.MoveSelection(5);
+                            break;
+                        case Key.D7:
+                            this.MoveSelection(6);
+                            break;
+                        case Key.D8:
+                            this.MoveSelection(7);
+                            break;
+                    }
                 }
+            }
+        }
+
+        private void MoveSelection(int index)
+        {
+            if (index >= 0 && index < this.ListViewMenu.Items.Count)
+            {
+                this.ListViewMenu.SelectedItem = this.ListViewMenu.Items[index];
+                this.UpdateLayout();
+                ((ListViewItem)this.ListViewMenu.ItemContainerGenerator.ContainerFromIndex(index)).Focus();
             }
         }
 
@@ -455,6 +440,12 @@ namespace Concierge.Presentation
             this.ToolsPage.Visibility = Visibility.Visible;
             this.FrameContent.Content = this.ToolsPage;
             this.ToolsPage.Draw();
+        }
+
+        private void PropertiesButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.modifyPropertiesWindow.ShowWindow();
+            this.DrawAll();
         }
 
         private void SettingsButton_Click(object sender, RoutedEventArgs e)

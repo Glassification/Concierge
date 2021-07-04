@@ -35,7 +35,7 @@ namespace Concierge.Characters.Collections
             get => this._level;
             set
             {
-                if (value <= Constants.MAX_LEVEL && value >= 0)
+                if (value <= Constants.MaxLevel && value >= 0)
                 {
                     if (Program.Character.ValidateClassLevel(value, this.ID))
                     {

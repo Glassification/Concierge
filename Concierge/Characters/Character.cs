@@ -90,7 +90,7 @@ namespace Concierge.Characters
 
                 if (Settings.UseCoinWeight)
                 {
-                    weight += this.Wealth.TotalCoins / Constants.COIN_GROUP;
+                    weight += this.Wealth.TotalCoins / Constants.CoinGroup;
                 }
 
                 return weight;
@@ -99,7 +99,7 @@ namespace Concierge.Characters
 
         public int ProficiencyBonus => this.Level - 1 > 0 ? Proficiencies[this.Level - 1] : Proficiencies[0];
 
-        public int PassivePerception => Constants.BASE_PERCEPTION + this.Skill.Perception.Bonus + this.Details.PerceptionBonus;
+        public int PassivePerception => Constants.BasePerception + this.Skill.Perception.Bonus + this.Details.PerceptionBonus;
 
         public int Initiative => Utilities.CalculateBonus(this.Attributes.Dexterity) + this.Details.InitiativeBonus;
 
@@ -178,7 +178,7 @@ namespace Concierge.Characters
                 }
             }
 
-            return totalLevel <= Constants.MAX_LEVEL && totalLevel >= 0;
+            return totalLevel <= Constants.MaxLevel && totalLevel >= 0;
         }
 
         public void LongRest()
@@ -322,7 +322,7 @@ namespace Concierge.Characters
             this.Armor = new Armor();
             this.Attributes = new Attributes();
             this.Chapters = new List<Chapter>();
-            this.Classess = new Class[Constants.MAX_CLASSES];
+            this.Classess = new Class[Constants.MaxClasses];
             this.ClassResources = new List<ClassResource>();
             this.Companion = new Companion();
             this.Details = new Details();
@@ -338,7 +338,7 @@ namespace Concierge.Characters
             this.Wealth = new Wealth();
             this.Weapons = new List<Weapon>();
 
-            for (int i = 0; i < Constants.MAX_CLASSES; i++)
+            for (int i = 0; i < Constants.MaxClasses; i++)
             {
                 this.Classess[i] = new Class();
             }

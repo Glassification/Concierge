@@ -1855,7 +1855,7 @@
                                     VerticalAlignment="Top"
                                     Background="Transparent"
                                     BorderBrush="{x:Null}"
-                                    Foreground="Red"
+                                    Foreground="IndianRed"
                                     Click="TakeDamageButton_Click"
                                     ToolTip="Take Damage">
                                     <materialDesign:PackIcon Kind="HeartBroken" Width="25" Height="25"/>

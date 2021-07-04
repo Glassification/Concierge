@@ -14,12 +14,14 @@ namespace Concierge.Presentation.HelperUi
     /// </summary>
     public partial class SaveStatusWindow : Window
     {
+        private const int MarginOffset = 10;
+
         public SaveStatusWindow()
         {
             this.InitializeComponent();
 
-            this.Left = SystemParameters.PrimaryScreenWidth - this.Width - 10;
-            this.Top = SystemParameters.PrimaryScreenHeight - this.Height - 10;
+            this.Left = SystemParameters.PrimaryScreenWidth - this.Width - MarginOffset;
+            this.Top = SystemParameters.PrimaryScreenHeight - this.Height - MarginOffset;
 
             this.ProgressBarFiller = new BackgroundWorker
             {
@@ -48,7 +50,7 @@ namespace Concierge.Presentation.HelperUi
             for (int i = 0; i <= 100; i++)
             {
                 (sender as BackgroundWorker).ReportProgress(i);
-                Thread.Sleep(10);
+                Thread.Sleep(3);
             }
         }
 

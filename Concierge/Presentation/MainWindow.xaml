@@ -157,7 +157,7 @@
                                 </StackPanel>
                             </Button>
                             <Separator Foreground="White"/>
-                            <Button x:Name="ButtonProperties" Foreground="White" Click="ButtonLongRest_Click">
+                            <Button x:Name="ButtonProperties" Foreground="White" Click="PropertiesButton_Click">
                                 <StackPanel Orientation="Horizontal">
                                     <materialDesign:PackIcon Kind="Wrench" Height="25" Width="25" Margin="0 10"/>
                                     <TextBlock Text="Properties" VerticalAlignment="Center" Margin="20 10"/>

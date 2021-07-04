@@ -65,7 +65,7 @@ namespace Concierge.Characters.Collections
         {
             get
             {
-                int bonus = Program.Character.ProficiencyBonus + Constants.BASE_DC;
+                int bonus = Program.Character.ProficiencyBonus + Constants.BaseDC;
 
                 switch (this.Ability)
                 {

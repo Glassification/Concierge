@@ -28,3 +28,4 @@ dotnet_diagnostic.SA1600.severity = none
 dotnet_diagnostic.SA1626.severity = none
 [*.{cs,vb}]
 tab_width=4
+indent_size=4

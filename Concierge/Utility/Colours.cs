@@ -9,78 +9,6 @@ namespace Concierge.Utility
     public static class Colours
     {
         /// =========================================
-        /// PopupBackground()
-        /// -----------------------------------------
-        /// <summary>
-        /// Gets aRGB value of [255, 37, 37, 38].
-        /// </summary>
-        /// =========================================
-        public static Color PopupBackground => Color.FromArgb(255, 37, 37, 38);
-
-        /// =========================================
-        /// ButtonBackground()
-        /// -----------------------------------------
-        /// <summary>
-        /// Gets aRGB value of [255, 51, 51, 55].
-        /// </summary>
-        /// =========================================
-        public static Color ButtonBackground => Color.FromArgb(255, 51, 51, 55);
-
-        /// =========================================
-        /// ButtonHoverBackground()
-        /// -----------------------------------------
-        /// <summary>
-        /// Gets aRGB value of [255, 63, 63, 64].
-        /// </summary>
-        /// =========================================
-        public static Color ButtonHoverBackground => Color.FromArgb(255, 63, 63, 64);
-
-        /// =========================================
-        /// DarkGrey()
-        /// -----------------------------------------
-        /// <summary>
-        /// Gets aRGB value of [255, 45, 45, 48].
-        /// </summary>
-        /// =========================================
-        public static Color DarkGrey => Color.FromArgb(255, 45, 45, 48);
-
-        /// =========================================
-        /// MediumGrey()
-        /// -----------------------------------------
-        /// <summary>
-        /// Gets aRGB value of [255, 95, 95, 95].
-        /// </summary>
-        /// =========================================
-        public static Color MediumGrey => Color.FromArgb(255, 95, 95, 95);
-
-        /// =========================================
-        /// ControlGrey()
-        /// -----------------------------------------
-        /// <summary>
-        /// Gets aRGB value of [255, 28, 28, 28].
-        /// </summary>
-        /// =========================================
-        public static Color ControlGrey => Color.FromArgb(255, 28, 28, 28);
-
-        /// =========================================
-        /// DarkBlue()
-        /// -----------------------------------------
-        /// <summary>
-        /// Gets aRGB value of [255, 22, 54, 92].
-        /// </summary>
-        /// =========================================
-        public static Color DarkBlue => Color.FromArgb(255, 22, 54, 92);
-
-        /// =========================================
-        /// MediumBlue()
-        /// -----------------------------------------
-        /// <summary>
-        /// Gets aRGB value of [255, 31, 73, 125].
-        /// </summary>
-        /// =========================================
-        public static Color MediumBlue => Color.FromArgb(255, 31, 73, 125);
-
-        /// =========================================
         /// LightGreen()
         /// -----------------------------------------
         /// <summary>
@@ -106,23 +34,5 @@ namespace Concierge.Utility
         /// </summary>
         /// =========================================
         public static Color MediumRed => Color.FromArgb(255, 187, 74, 67);
-
-        /// =========================================
-        /// HighlightBlue()
-        /// -----------------------------------------
-        /// <summary>
-        /// Gets aRGB value of [255, 181, 215, 243].
-        /// </summary>
-        /// =========================================
-        public static Color HighlightBlue => Color.FromArgb(255, 181, 215, 243);
-
-        /// =========================================
-        /// HighlightBlue()
-        /// -----------------------------------------
-        /// <summary>
-        /// Gets aRGB value of [255, 0, 120, 215].
-        /// </summary>
-        /// =========================================
-        public static Color OutlineBlue => Color.FromArgb(255, 0, 120, 215);
     }
 }

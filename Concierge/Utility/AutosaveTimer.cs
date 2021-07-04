@@ -21,6 +21,7 @@ namespace Concierge.Utility
 
         public void Start(int interval)
         {
+            this.Stop();
             this.DispatcherTimer.Interval = TimeSpan.FromMinutes(interval);
             this.DispatcherTimer.Start();
         }

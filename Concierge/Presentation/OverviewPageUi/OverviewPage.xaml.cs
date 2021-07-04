@@ -462,23 +462,11 @@ namespace Concierge.Presentation.OverviewPageUi
 
         private void SetArrowStyle()
         {
-            if (this.ResourceIndex == 0)
-            {
-                this.LeftResourceButton.Foreground = Brushes.DimGray;
-            }
-            else
-            {
-                this.LeftResourceButton.Foreground = Brushes.White;
-            }
+            this.LeftResourceButton.Foreground = this.ResourceIndex == 0 ? Brushes.DimGray : Brushes.White;
 
-            if (this.ResourceIndex == Program.Character.ClassResources.Count - 1 || Program.Character.ClassResources.Count == 0)
-            {
-                this.RightResourceButton.Foreground = Brushes.DimGray;
-            }
-            else
-            {
-                this.RightResourceButton.Foreground = Brushes.White;
-            }
+            this.RightResourceButton.Foreground = this.ResourceIndex == Program.Character.ClassResources.Count - 1 || Program.Character.ClassResources.Count == 0
+                ? Brushes.DimGray
+                : Brushes.White;
         }
 
         private Brush SetHealthStyle()
@@ -512,17 +500,23 @@ namespace Concierge.Presentation.OverviewPageUi
                 case StatusChecks.Fail:
                     textBlock.TextDecorations = TextDecorations.Strikethrough;
                     textBlock.Foreground = Brushes.DarkGray;
+                    textBlock.ToolTip = "Automatic Fail";
                     break;
                 case StatusChecks.Advantage:
+                    textBlock.TextDecorations = new TextDecorationCollection();
                     textBlock.Foreground = Brushes.Green;
+                    textBlock.ToolTip = "Advantage";
                     break;
                 case StatusChecks.Disadvantage:
+                    textBlock.TextDecorations = new TextDecorationCollection();
                     textBlock.Foreground = Brushes.IndianRed;
+                    textBlock.ToolTip = "Disadvantage";
                     break;
                 case StatusChecks.Normal:
                 default:
-                    textBlock.TextDecorations.Clear();
+                    textBlock.TextDecorations = new TextDecorationCollection();
                     textBlock.Foreground = Brushes.White;
+                    textBlock.ToolTip = null;
                     break;
             }
         }

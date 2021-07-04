@@ -86,7 +86,7 @@
                             Foreground="SteelBlue"
                             Click="ButtonResetHistory_Click"
                             Margin="10, 0, 60, 0"
-                            ToolTip="Divide Loot">
+                            ToolTip="Clear History">
                         <materialDesign:PackIcon Kind="Refresh" Height="25" Width="25" Margin="10"/>
                     </Button>
                 </StackPanel>
@@ -251,7 +251,7 @@
                                     VerticalAlignment="Center"
                                     Background="Transparent"
                                     BorderBrush="{x:Null}"
-                                    Foreground="IndianRed"
+                                    Foreground="#615299"
                                     ToolTip="Roll d4"
                                     Click="ButtonRollD4_Click">
                                 <materialDesign:PackIcon Kind="DiceD4" Height="25" Width="25" Margin="10"/>
@@ -326,7 +326,7 @@
                                     VerticalAlignment="Center"
                                     Background="Transparent"
                                     BorderBrush="{x:Null}"
-                                    Foreground="IndianRed"
+                                    Foreground="#615299"
                                     ToolTip="Roll d6"
                                     Click="ButtonRollD6_Click">
                                 <materialDesign:PackIcon Kind="DiceD6" Height="25" Width="25" Margin="10"/>
@@ -401,7 +401,7 @@
                                     VerticalAlignment="Center"
                                     Background="Transparent"
                                     BorderBrush="{x:Null}"
-                                    Foreground="IndianRed"
+                                    Foreground="#615299"
                                     ToolTip="Roll d8"
                                     Click="ButtonRollD8_Click">
                                 <materialDesign:PackIcon Kind="DiceD8" Height="25" Width="25" Margin="10"/>
@@ -476,7 +476,7 @@
                                     VerticalAlignment="Center"
                                     Background="Transparent"
                                     BorderBrush="{x:Null}"
-                                    Foreground="IndianRed"
+                                    Foreground="#615299"
                                     ToolTip="Roll d10"
                                     Click="ButtonRollD10_Click">
                                 <materialDesign:PackIcon Kind="DiceD10" Height="25" Width="25" Margin="10"/>
@@ -551,7 +551,7 @@
                                     VerticalAlignment="Center"
                                     Background="Transparent"
                                     BorderBrush="{x:Null}"
-                                    Foreground="IndianRed"
+                                    Foreground="#615299"
                                     ToolTip="Roll d100"
                                     Click="ButtonRollD100_Click">
                                 <materialDesign:PackIcon Kind="DiceMultiple" Height="25" Width="25" Margin="10"/>
@@ -626,7 +626,7 @@
                                     VerticalAlignment="Center"
                                     Background="Transparent"
                                     BorderBrush="{x:Null}"
-                                    Foreground="IndianRed"
+                                    Foreground="#615299"
                                     ToolTip="Roll d12"
                                     Click="ButtonRollD12_Click">
                                 <materialDesign:PackIcon Kind="DiceD12" Height="25" Width="25" Margin="10"/>
@@ -701,7 +701,7 @@
                                     VerticalAlignment="Center"
                                     Background="Transparent"
                                     BorderBrush="{x:Null}"
-                                    Foreground="IndianRed"
+                                    Foreground="#615299"
                                     ToolTip="Roll d20"
                                     Click="ButtonRollD20_Click">
                                 <materialDesign:PackIcon Kind="DiceD20" Height="25" Width="25" Margin="10"/>
@@ -777,7 +777,7 @@
                                     VerticalAlignment="Center"
                                     Background="Transparent"
                                     BorderBrush="{x:Null}"
-                                    Foreground="IndianRed"
+                                    Foreground="#615299"
                                     ToolTip="Roll dx"
                                     Click="ButtonRollDx_Click">
                                 <materialDesign:PackIcon Kind="DiceMultiple" Height="25" Width="25" Margin="10"/>
@@ -876,7 +876,7 @@
                             Foreground="SteelBlue"
                             Click="ButtonResetLoot_Click"
                             Margin="10, 0, 60, 0"
-                            ToolTip="Reset">
+                            ToolTip="Clear">
                         <materialDesign:PackIcon Kind="Refresh" Height="25" Width="25" Margin="10"/>
                     </Button>
                 </StackPanel>

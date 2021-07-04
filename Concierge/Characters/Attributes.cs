@@ -30,7 +30,7 @@ namespace Concierge.Characters
             get => this._strength;
             set
             {
-                if (value >= Constants.MIN_SCORE && value <= Constants.MAX_SCORE)
+                if (value >= Constants.MinScore && value <= Constants.MaxScore)
                 {
                     this._strength = value;
                 }
@@ -42,7 +42,7 @@ namespace Concierge.Characters
             get => this._dexterity;
             set
             {
-                if (value >= Constants.MIN_SCORE && value <= Constants.MAX_SCORE)
+                if (value >= Constants.MinScore && value <= Constants.MaxScore)
                 {
                     this._dexterity = value;
                 }
@@ -54,7 +54,7 @@ namespace Concierge.Characters
             get => this._constitution;
             set
             {
-                if (value >= Constants.MIN_SCORE && value <= Constants.MAX_SCORE)
+                if (value >= Constants.MinScore && value <= Constants.MaxScore)
                 {
                     this._constitution = value;
                 }
@@ -66,7 +66,7 @@ namespace Concierge.Characters
             get => this._intelligence;
             set
             {
-                if (value >= Constants.MIN_SCORE && value <= Constants.MAX_SCORE)
+                if (value >= Constants.MinScore && value <= Constants.MaxScore)
                 {
                     this._intelligence = value;
                 }
@@ -78,7 +78,7 @@ namespace Concierge.Characters
             get => this._wisdom;
             set
             {
-                if (value >= Constants.MIN_SCORE && value <= Constants.MAX_SCORE)
+                if (value >= Constants.MinScore && value <= Constants.MaxScore)
                 {
                     this._wisdom = value;
                 }
@@ -90,7 +90,7 @@ namespace Concierge.Characters
             get => this._charisma;
             set
             {
-                if (value >= Constants.MIN_SCORE && value <= Constants.MAX_SCORE)
+                if (value >= Constants.MinScore && value <= Constants.MaxScore)
                 {
                     this._charisma = value;
                 }

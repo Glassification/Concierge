@@ -14,7 +14,7 @@ namespace Concierge.Characters.Enums
         Monk,
         Paladin,
         Ranger,
-        Rouge,
+        Rogue,
         Sorcerer,
         Warlock,
         Wizard,
