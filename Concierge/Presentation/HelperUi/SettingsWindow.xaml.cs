@@ -31,13 +31,13 @@ namespace Concierge.Presentation.HelperUi
 
         private void Read()
         {
-            this.AutosaveCheckBox.IsChecked = Settings.AutosaveEnable;
-            this.AutosaveInterval.Value = Settings.AutosaveInterval;
-            this.CoinWeightCheckBox.IsChecked = Settings.UseCoinWeight;
-            this.EncumbranceCheckBox.IsChecked = Settings.UseEncumbrance;
+            this.AutosaveCheckBox.IsChecked = Program.CcsFile.AutosaveEnable;
+            this.AutosaveInterval.Value = Program.CcsFile.AutosaveInterval;
+            this.CoinWeightCheckBox.IsChecked = Program.CcsFile.UseCoinWeight;
+            this.EncumbranceCheckBox.IsChecked = Program.CcsFile.UseEncumbrance;
             this.IntervalTextBox.Text = this.FormattedInterval;
 
-            if (Settings.AutosaveEnable)
+            if (Program.CcsFile.AutosaveEnable)
             {
                 this.IntervalTextBox.IsEnabled = true;
                 this.AutosaveInterval.IsEnabled = true;
@@ -59,12 +59,12 @@ namespace Concierge.Presentation.HelperUi
             }
             else
             {
-                Settings.AutosaveEnable = this.AutosaveCheckBox.IsChecked ?? false;
+                Program.CcsFile.AutosaveEnable = this.AutosaveCheckBox.IsChecked ?? false;
             }
 
-            Settings.AutosaveInterval = (int)this.AutosaveInterval.Value;
-            Settings.UseCoinWeight = this.CoinWeightCheckBox.IsChecked ?? false;
-            Settings.UseEncumbrance = this.EncumbranceCheckBox.IsChecked ?? false;
+            Program.CcsFile.AutosaveInterval = (int)this.AutosaveInterval.Value;
+            Program.CcsFile.UseCoinWeight = this.CoinWeightCheckBox.IsChecked ?? false;
+            Program.CcsFile.UseEncumbrance = this.EncumbranceCheckBox.IsChecked ?? false;
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)

@@ -138,8 +138,8 @@ namespace Concierge.Properties {
         /// <summary>
         ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
         ///&lt;Spells&gt;
-        ///  &lt;Spell name=&quot;Acid Splash&quot; level=&quot;Cantrip&quot; page=&quot;211&quot; school=&quot;Conjuration&quot; ritual=&quot;No&quot; comp=&quot;V, S&quot; concen=&quot;No&quot; range=&quot;60 ft.&quot; duration=&quot;Instantaneous&quot; area=&quot;1 or 2 adjacent targets&quot; save=&quot;DEX (Fail)&quot; damage=&quot;1d6 Acid&quot; description=&quot;DAM: Add extra 1d6 at 5th level, 11th level, and 17th level.&quot; prepared=&quot;No&quot; /&gt;
-        ///  &lt;Spell name=&quot;Aid&quot; level=&quot;2&quot; page=&quot;211&quot; school=&quot;Abjuration&quot; ritual=&quot;No&quot; comp=&quot;V, S, M (white cloth strip)&quot; concen=&quot;No&quot; range=&quot;30 ft.&quot; duration=&quot;8 hou [rest of string was truncated]&quot;;.
+        ///  &lt;Spell name=&quot;Acid Splash&quot; level=&quot;0&quot; page=&quot;211&quot; school=&quot;Conjuration&quot; ritual=&quot;No&quot; comp=&quot;V, S&quot; concen=&quot;No&quot; range=&quot;60 ft.&quot; duration=&quot;Instantaneous&quot; area=&quot;1 or 2 adjacent targets&quot; save=&quot;DEX (Fail)&quot; damage=&quot;1d6 Acid&quot; description=&quot;DAM: Add extra 1d6 at 5th level, 11th level, and 17th level.&quot; prepared=&quot;No&quot; /&gt;
+        ///  &lt;Spell name=&quot;Aid&quot; level=&quot;2&quot; page=&quot;211&quot; school=&quot;Abjuration&quot; ritual=&quot;No&quot; comp=&quot;V, S, M (white cloth strip)&quot; concen=&quot;No&quot; range=&quot;30 ft.&quot; duration=&quot;8 hours&quot; ar [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string SpellList {
             get {

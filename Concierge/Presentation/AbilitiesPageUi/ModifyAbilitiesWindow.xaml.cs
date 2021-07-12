@@ -110,7 +110,7 @@ namespace Concierge.Presentation.AbilitiesPageUi
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
-            Program.Character.Abilities.Add(this.ToAbility());
+            Program.CcsFile.Character.Abilities.Add(this.ToAbility());
             Program.Modified = true;
             this.ClearFields();
         }
@@ -119,11 +119,11 @@ namespace Concierge.Presentation.AbilitiesPageUi
         {
             if (this.Editing)
             {
-                this.UpdateAbility(Program.Character.GetAbilityById(this.SelectedAbilityId));
+                this.UpdateAbility(Program.CcsFile.Character.GetAbilityById(this.SelectedAbilityId));
             }
             else
             {
-                Program.Character.Abilities.Add(this.ToAbility());
+                Program.CcsFile.Character.Abilities.Add(this.ToAbility());
                 Program.Modified = true;
             }
 

@@ -114,11 +114,11 @@ namespace Concierge.Presentation.EquipmentPageUi
         {
             if (this.Editing)
             {
-                this.UpdateAmmunition(Program.Character.GetAmmunitionById(this.SelectedAmmoId));
+                this.UpdateAmmunition(Program.CcsFile.Character.GetAmmunitionById(this.SelectedAmmoId));
             }
             else
             {
-                Program.Character.Ammunitions.Add(this.ToAmmunition());
+                Program.CcsFile.Character.Ammunitions.Add(this.ToAmmunition());
                 Program.Modified = true;
             }
 
@@ -127,7 +127,7 @@ namespace Concierge.Presentation.EquipmentPageUi
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
-            Program.Character.Ammunitions.Add(this.ToAmmunition());
+            Program.CcsFile.Character.Ammunitions.Add(this.ToAmmunition());
             Program.Modified = true;
             this.ClearFields();
         }

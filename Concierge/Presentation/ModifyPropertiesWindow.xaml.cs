@@ -37,30 +37,30 @@ namespace Concierge.Presentation
 
         private void Read()
         {
-            this.NameTextBox.Text = Program.Character.Details.Name;
-            this.RaceComboBox.Text = Program.Character.Details.Race;
-            this.BackgroundComboBox.Text = Program.Character.Details.Background;
-            this.AlignmentComboBox.Text = Program.Character.Details.Alignment;
-            this.Level1UpDown.Value = Program.Character.Classess[0].Level;
-            this.Level2UpDown.Value = Program.Character.Classess[1].Level;
-            this.Level3UpDown.Value = Program.Character.Classess[2].Level;
-            this.Class1ComboBox.Text = Program.Character.Classess[0].Name;
-            this.Class2ComboBox.Text = Program.Character.Classess[1].Name;
-            this.Class3ComboBox.Text = Program.Character.Classess[2].Name;
+            this.NameTextBox.Text = Program.CcsFile.Character.Details.Name;
+            this.RaceComboBox.Text = Program.CcsFile.Character.Details.Race;
+            this.BackgroundComboBox.Text = Program.CcsFile.Character.Details.Background;
+            this.AlignmentComboBox.Text = Program.CcsFile.Character.Details.Alignment;
+            this.Level1UpDown.Value = Program.CcsFile.Character.Classess[0].Level;
+            this.Level2UpDown.Value = Program.CcsFile.Character.Classess[1].Level;
+            this.Level3UpDown.Value = Program.CcsFile.Character.Classess[2].Level;
+            this.Class1ComboBox.Text = Program.CcsFile.Character.Classess[0].Name;
+            this.Class2ComboBox.Text = Program.CcsFile.Character.Classess[1].Name;
+            this.Class3ComboBox.Text = Program.CcsFile.Character.Classess[2].Name;
         }
 
         private void Write()
         {
-            Program.Character.Details.Name = this.NameTextBox.Text;
-            Program.Character.Details.Race = this.RaceComboBox.Text;
-            Program.Character.Details.Background = this.BackgroundComboBox.Text;
-            Program.Character.Details.Alignment = this.BackgroundComboBox.Text;
-            Program.Character.Classess[0].Level = this.Level1UpDown.Value ?? 0;
-            Program.Character.Classess[1].Level = this.Level2UpDown.Value ?? 0;
-            Program.Character.Classess[2].Level = this.Level3UpDown.Value ?? 0;
-            Program.Character.Classess[0].Name = this.Class1ComboBox.Text;
-            Program.Character.Classess[1].Name = this.Class2ComboBox.Text;
-            Program.Character.Classess[2].Name = this.Class3ComboBox.Text;
+            Program.CcsFile.Character.Details.Name = this.NameTextBox.Text;
+            Program.CcsFile.Character.Details.Race = this.RaceComboBox.Text;
+            Program.CcsFile.Character.Details.Background = this.BackgroundComboBox.Text;
+            Program.CcsFile.Character.Details.Alignment = this.AlignmentComboBox.Text;
+            Program.CcsFile.Character.Classess[0].Level = this.Level1UpDown.Value ?? 0;
+            Program.CcsFile.Character.Classess[1].Level = this.Level2UpDown.Value ?? 0;
+            Program.CcsFile.Character.Classess[2].Level = this.Level3UpDown.Value ?? 0;
+            Program.CcsFile.Character.Classess[0].Name = this.Class1ComboBox.Text;
+            Program.CcsFile.Character.Classess[1].Name = this.Class2ComboBox.Text;
+            Program.CcsFile.Character.Classess[2].Name = this.Class3ComboBox.Text;
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)

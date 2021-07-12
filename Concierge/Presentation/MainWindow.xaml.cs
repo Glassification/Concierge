@@ -22,6 +22,7 @@ namespace Concierge.Presentation
     using Concierge.Presentation.SpellcastingPageUi;
     using Concierge.Presentation.ToolsPageUi;
     using Concierge.Utility;
+    using Concierge.Utility.Extensions;
     using Microsoft.Win32;
 
     /// <summary>
@@ -56,6 +57,13 @@ namespace Concierge.Presentation
             this.FrameContent.Content = this.OverviewPage;
 
             this.DataContext = this;
+
+            if (Program.CcsFile.AutosaveEnable)
+            {
+                this.autosaveTimer.Start(Constants.AutosaveIntervals[Program.CcsFile.AutosaveInterval]);
+            }
+
+            this.DrawAll();
         }
 
         public double GridContentWidthOpen => SystemParameters.PrimaryScreenWidth - 200;
@@ -95,7 +103,7 @@ namespace Concierge.Presentation
         public void NewCharacterSheet()
         {
             Program.CcsFile = null;
-            Program.Character.Reset();
+            Program.CcsFile.Character.Reset();
 
             this.NotesPage.ClearTextBox();
             this.DrawAll();
@@ -109,17 +117,11 @@ namespace Concierge.Presentation
             {
                 this.autosaveTimer.Stop();
 
-                Program.CcsFile = new CcsFile
-                {
-                    Path = this.openFileDialog.FileName,
-                };
+                Program.CcsFile = CharacterLoader.LoadCharacterSheetJson(this.openFileDialog.FileName);
 
-                Program.Character.Reset();
-                CharacterLoader.LoadCharacterSheet(Program.Character, Program.CcsFile);
-
-                if (Settings.AutosaveEnable)
+                if (Program.CcsFile.AutosaveEnable)
                 {
-                    this.autosaveTimer.Start(Constants.AutosaveIntervals[Settings.AutosaveInterval]);
+                    this.autosaveTimer.Start(Constants.AutosaveIntervals[Program.CcsFile.AutosaveInterval]);
                 }
 
                 this.DrawAll();
@@ -128,10 +130,10 @@ namespace Concierge.Presentation
 
         public void SaveCharacterSheet()
         {
-            if (Program.CcsFile != null)
+            if (!Program.CcsFile.AbsolutePath.IsNullOrWhiteSpace())
             {
                 this.NotesPage.SaveTextBox();
-                CharacterSaver.SaveCharacterSheet(Program.Character, Program.CcsFile);
+                CharacterSaver.SaveCharacterSheetJson(Program.CcsFile);
             }
             else
             {
@@ -143,33 +145,30 @@ namespace Concierge.Presentation
         {
             if (this.saveFileDialog.ShowDialog() ?? false)
             {
-                Program.CcsFile = new CcsFile
-                {
-                    Path = this.saveFileDialog.FileName,
-                };
+                Program.CcsFile.AbsolutePath = this.saveFileDialog.FileName;
 
                 this.NotesPage.SaveTextBox();
-                CharacterSaver.SaveCharacterSheet(Program.Character, Program.CcsFile);
+                CharacterSaver.SaveCharacterSheetJson(Program.CcsFile);
             }
         }
 
         public void DrawAll()
         {
-            this.TextCharacterName.Text = Program.Character.Details.Name;
-            this.TextCharacterRace.Text = Program.Character.Details.Race;
-            this.TextCharacterBackground.Text = Program.Character.Details.Background;
-            this.TextCharacterAlignment.Text = Program.Character.Details.Alignment;
+            this.TextCharacterName.Text = Program.CcsFile.Character.Details.Name;
+            this.TextCharacterRace.Text = Program.CcsFile.Character.Details.Race;
+            this.TextCharacterBackground.Text = Program.CcsFile.Character.Details.Background;
+            this.TextCharacterAlignment.Text = Program.CcsFile.Character.Details.Alignment;
 
-            if (Program.Character.Level > 0)
+            if (Program.CcsFile.Character.Level > 0)
             {
-                this.TextCharacterLevel.Text = "Level " + Program.Character.Level;
+                this.TextCharacterLevel.Text = "Level " + Program.CcsFile.Character.Level;
             }
             else
             {
                 this.TextCharacterLevel.Text = string.Empty;
             }
 
-            this.TextCharacterClass.Text = Program.Character.GetClasses;
+            this.TextCharacterClass.Text = Program.CcsFile.Character.GetClasses;
 
             this.InventoryPage.Draw();
             this.AbilitiesPage.Draw();
@@ -183,7 +182,7 @@ namespace Concierge.Presentation
 
         public void LongRest()
         {
-            Program.Character.LongRest();
+            Program.CcsFile.Character.LongRest();
 
             this.DrawAll();
         }
@@ -413,9 +412,9 @@ namespace Concierge.Presentation
             this.OverviewPage.Draw();
             this.DetailsPage.Draw();
 
-            if (Settings.AutosaveEnable)
+            if (Program.CcsFile.AutosaveEnable)
             {
-                this.autosaveTimer.Start(Constants.AutosaveIntervals[Settings.AutosaveInterval]);
+                this.autosaveTimer.Start(Constants.AutosaveIntervals[Program.CcsFile.AutosaveInterval]);
             }
             else
             {

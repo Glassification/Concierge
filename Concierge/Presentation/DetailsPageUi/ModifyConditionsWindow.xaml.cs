@@ -46,41 +46,41 @@ namespace Concierge.Presentation.DetailsPageUi
 
         private void FillFields()
         {
-            this.BlindedComboBox.Text = Program.Character.Vitality.Conditions.Blinded.Equals("Cured") ? "Cured" : "Afflicted";
-            this.CharmedComboBox.Text = Program.Character.Vitality.Conditions.Charmed.Equals("Cured") ? "Cured" : "Afflicted";
-            this.DeafenedComboBox.Text = Program.Character.Vitality.Conditions.Deafened.Equals("Cured") ? "Cured" : "Afflicted";
-            this.FatiguedComboBox.Text = Program.Character.Vitality.Conditions.Fatigued;
-            this.FrightenedComboBox.Text = Program.Character.Vitality.Conditions.Frightened.Equals("Cured") ? "Cured" : "Afflicted";
-            this.GrappledComboBox.Text = Program.Character.Vitality.Conditions.Grappled.Equals("Cured") ? "Cured" : "Afflicted";
-            this.IncapacitatedComboBox.Text = Program.Character.Vitality.Conditions.Incapacitated.Equals("Cured") ? "Cured" : "Afflicted";
-            this.InvisibleComboBox.Text = Program.Character.Vitality.Conditions.Invisible.Equals("Cured") ? "Cured" : "Afflicted";
-            this.ParalyzedComboBox.Text = Program.Character.Vitality.Conditions.Paralyzed.Equals("Cured") ? "Cured" : "Afflicted";
-            this.PetrifiedComboBox.Text = Program.Character.Vitality.Conditions.Petrified.Equals("Cured") ? "Cured" : "Afflicted";
-            this.PoisonedComboBox.Text = Program.Character.Vitality.Conditions.Poisoned.Equals("Cured") ? "Cured" : "Afflicted";
-            this.ProneComboBox.Text = Program.Character.Vitality.Conditions.Prone.Equals("Cured") ? "Cured" : "Afflicted";
-            this.RestrainedComboBox.Text = Program.Character.Vitality.Conditions.Restrained.Equals("Cured") ? "Cured" : "Afflicted";
-            this.StunnedComboBox.Text = Program.Character.Vitality.Conditions.Stunned.Equals("Cured") ? "Cured" : "Afflicted";
-            this.UnconsciousComboBox.Text = Program.Character.Vitality.Conditions.Unconscious.Equals("Cured") ? "Cured" : "Afflicted";
-            this.EncumbranceTextBox.Text = Program.Character.Vitality.Conditions.Encumbrance;
+            this.BlindedComboBox.Text = Program.CcsFile.Character.Vitality.Conditions.Blinded.Equals("Cured") ? "Cured" : "Afflicted";
+            this.CharmedComboBox.Text = Program.CcsFile.Character.Vitality.Conditions.Charmed.Equals("Cured") ? "Cured" : "Afflicted";
+            this.DeafenedComboBox.Text = Program.CcsFile.Character.Vitality.Conditions.Deafened.Equals("Cured") ? "Cured" : "Afflicted";
+            this.FatiguedComboBox.Text = Program.CcsFile.Character.Vitality.Conditions.Fatigued;
+            this.FrightenedComboBox.Text = Program.CcsFile.Character.Vitality.Conditions.Frightened.Equals("Cured") ? "Cured" : "Afflicted";
+            this.GrappledComboBox.Text = Program.CcsFile.Character.Vitality.Conditions.Grappled.Equals("Cured") ? "Cured" : "Afflicted";
+            this.IncapacitatedComboBox.Text = Program.CcsFile.Character.Vitality.Conditions.Incapacitated.Equals("Cured") ? "Cured" : "Afflicted";
+            this.InvisibleComboBox.Text = Program.CcsFile.Character.Vitality.Conditions.Invisible.Equals("Cured") ? "Cured" : "Afflicted";
+            this.ParalyzedComboBox.Text = Program.CcsFile.Character.Vitality.Conditions.Paralyzed.Equals("Cured") ? "Cured" : "Afflicted";
+            this.PetrifiedComboBox.Text = Program.CcsFile.Character.Vitality.Conditions.Petrified.Equals("Cured") ? "Cured" : "Afflicted";
+            this.PoisonedComboBox.Text = Program.CcsFile.Character.Vitality.Conditions.Poisoned.Equals("Cured") ? "Cured" : "Afflicted";
+            this.ProneComboBox.Text = Program.CcsFile.Character.Vitality.Conditions.Prone.Equals("Cured") ? "Cured" : "Afflicted";
+            this.RestrainedComboBox.Text = Program.CcsFile.Character.Vitality.Conditions.Restrained.Equals("Cured") ? "Cured" : "Afflicted";
+            this.StunnedComboBox.Text = Program.CcsFile.Character.Vitality.Conditions.Stunned.Equals("Cured") ? "Cured" : "Afflicted";
+            this.UnconsciousComboBox.Text = Program.CcsFile.Character.Vitality.Conditions.Unconscious.Equals("Cured") ? "Cured" : "Afflicted";
+            this.EncumbranceTextBox.Text = Program.CcsFile.Character.Vitality.Conditions.Encumbrance;
         }
 
         private void UpdateConditions()
         {
-            Program.Character.Vitality.Conditions.Blinded = this.BlindedComboBox.Text.Equals("Cured") ? "Cured" : "Blinded";
-            Program.Character.Vitality.Conditions.Charmed = this.CharmedComboBox.Text.Equals("Cured") ? "Cured" : "Charmed";
-            Program.Character.Vitality.Conditions.Deafened = this.DeafenedComboBox.Text.Equals("Cured") ? "Cured" : "Deafened";
-            Program.Character.Vitality.Conditions.Fatigued = this.FatiguedComboBox.Text;
-            Program.Character.Vitality.Conditions.Frightened = this.FrightenedComboBox.Text.Equals("Cured") ? "Cured" : "Frightened";
-            Program.Character.Vitality.Conditions.Grappled = this.GrappledComboBox.Text.Equals("Cured") ? "Cured" : "Grappled";
-            Program.Character.Vitality.Conditions.Incapacitated = this.IncapacitatedComboBox.Text.Equals("Cured") ? "Cured" : "Incapacitated";
-            Program.Character.Vitality.Conditions.Invisible = this.InvisibleComboBox.Text.Equals("Cured") ? "Cured" : "Invisible";
-            Program.Character.Vitality.Conditions.Paralyzed = this.ParalyzedComboBox.Text.Equals("Cured") ? "Cured" : "Paralyzed";
-            Program.Character.Vitality.Conditions.Petrified = this.PetrifiedComboBox.Text.Equals("Cured") ? "Cured" : "Petrified";
-            Program.Character.Vitality.Conditions.Poisoned = this.PoisonedComboBox.Text.Equals("Cured") ? "Cured" : "Poisoned";
-            Program.Character.Vitality.Conditions.Prone = this.ProneComboBox.Text.Equals("Cured") ? "Cured" : "Prone";
-            Program.Character.Vitality.Conditions.Restrained = this.RestrainedComboBox.Text.Equals("Cured") ? "Cured" : "Restrained";
-            Program.Character.Vitality.Conditions.Stunned = this.StunnedComboBox.Text.Equals("Cured") ? "Cured" : "Stunned";
-            Program.Character.Vitality.Conditions.Unconscious = this.UnconsciousComboBox.Text.Equals("Cured") ? "Cured" : "Unconscious";
+            Program.CcsFile.Character.Vitality.Conditions.Blinded = this.BlindedComboBox.Text.Equals("Cured") ? "Cured" : "Blinded";
+            Program.CcsFile.Character.Vitality.Conditions.Charmed = this.CharmedComboBox.Text.Equals("Cured") ? "Cured" : "Charmed";
+            Program.CcsFile.Character.Vitality.Conditions.Deafened = this.DeafenedComboBox.Text.Equals("Cured") ? "Cured" : "Deafened";
+            Program.CcsFile.Character.Vitality.Conditions.Fatigued = this.FatiguedComboBox.Text;
+            Program.CcsFile.Character.Vitality.Conditions.Frightened = this.FrightenedComboBox.Text.Equals("Cured") ? "Cured" : "Frightened";
+            Program.CcsFile.Character.Vitality.Conditions.Grappled = this.GrappledComboBox.Text.Equals("Cured") ? "Cured" : "Grappled";
+            Program.CcsFile.Character.Vitality.Conditions.Incapacitated = this.IncapacitatedComboBox.Text.Equals("Cured") ? "Cured" : "Incapacitated";
+            Program.CcsFile.Character.Vitality.Conditions.Invisible = this.InvisibleComboBox.Text.Equals("Cured") ? "Cured" : "Invisible";
+            Program.CcsFile.Character.Vitality.Conditions.Paralyzed = this.ParalyzedComboBox.Text.Equals("Cured") ? "Cured" : "Paralyzed";
+            Program.CcsFile.Character.Vitality.Conditions.Petrified = this.PetrifiedComboBox.Text.Equals("Cured") ? "Cured" : "Petrified";
+            Program.CcsFile.Character.Vitality.Conditions.Poisoned = this.PoisonedComboBox.Text.Equals("Cured") ? "Cured" : "Poisoned";
+            Program.CcsFile.Character.Vitality.Conditions.Prone = this.ProneComboBox.Text.Equals("Cured") ? "Cured" : "Prone";
+            Program.CcsFile.Character.Vitality.Conditions.Restrained = this.RestrainedComboBox.Text.Equals("Cured") ? "Cured" : "Restrained";
+            Program.CcsFile.Character.Vitality.Conditions.Stunned = this.StunnedComboBox.Text.Equals("Cured") ? "Cured" : "Stunned";
+            Program.CcsFile.Character.Vitality.Conditions.Unconscious = this.UnconsciousComboBox.Text.Equals("Cured") ? "Cured" : "Unconscious";
 
             Program.Modified = true;
         }

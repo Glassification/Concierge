@@ -47,7 +47,7 @@ namespace Concierge.Presentation.DetailsPageUi
             this.Editing = true;
             this.SelectedProficiencyId = id;
             this.HeaderTextBlock.Text = this.HeaderText;
-            this.ProficiencyTextBox.Text = Program.Character.Proficiency.GetProficiencyById(id);
+            this.ProficiencyTextBox.Text = Program.CcsFile.Character.Proficiency.GetProficiencyById(id);
             this.ApplyButton.Visibility = Visibility.Collapsed;
 
             this.ShowDialog();
@@ -67,12 +67,12 @@ namespace Concierge.Presentation.DetailsPageUi
         {
             if (this.Editing)
             {
-                Program.Character.Proficiency.SetProficiencyById(this.SelectedProficiencyId, this.ProficiencyTextBox.Text);
+                Program.CcsFile.Character.Proficiency.SetProficiencyById(this.SelectedProficiencyId, this.ProficiencyTextBox.Text);
                 Program.Modified = true;
             }
             else
             {
-                Program.Character.Proficiency.AddProficiencyByPopupButton(this.PopupButton, this.ProficiencyTextBox.Text);
+                Program.CcsFile.Character.Proficiency.AddProficiencyByPopupButton(this.PopupButton, this.ProficiencyTextBox.Text);
                 Program.Modified = true;
             }
 
@@ -81,7 +81,7 @@ namespace Concierge.Presentation.DetailsPageUi
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
-            Program.Character.Proficiency.AddProficiencyByPopupButton(this.PopupButton, this.ProficiencyTextBox.Text);
+            Program.CcsFile.Character.Proficiency.AddProficiencyByPopupButton(this.PopupButton, this.ProficiencyTextBox.Text);
             Program.Modified = true;
             this.ClearFields();
         }

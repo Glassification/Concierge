@@ -26,6 +26,5 @@ dotnet_diagnostic.SA1600.severity = none
 
 # SA1626: Single-line comments should not use documentation style slashes
 dotnet_diagnostic.SA1626.severity = none
-[*.{cs,vb}]
-tab_width=4
-indent_size=4
+dotnet_diagnostic.SA1604.severity=silent
+dotnet_diagnostic.SA1611.severity=silent

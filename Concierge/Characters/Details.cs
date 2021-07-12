@@ -10,6 +10,7 @@ namespace Concierge.Characters
 
     using Concierge.Characters.Collections;
     using Concierge.Characters.Enums;
+    using Newtonsoft.Json;
 
     public class Details
     {
@@ -47,32 +48,33 @@ namespace Concierge.Characters
 
         public VisionTypes Vision { get; set; }
 
+        [JsonIgnore]
         public int Movement
         {
             get
             {
                 int newMovement = this.BaseMovement;
 
-                if (Program.Character.Vitality.Conditions.Fatigued.Equals("Five") ||
-                    Program.Character.Vitality.Conditions.Grappled.Equals("Grappled") ||
-                    Program.Character.Vitality.Conditions.Restrained.Equals("Restrained"))
+                if (Program.CcsFile.Character.Vitality.Conditions.Fatigued.Equals("Five") ||
+                    Program.CcsFile.Character.Vitality.Conditions.Grappled.Equals("Grappled") ||
+                    Program.CcsFile.Character.Vitality.Conditions.Restrained.Equals("Restrained"))
                 {
                     return 0;
                 }
                 else
                 {
-                    if (Program.Character.Vitality.Conditions.Encumbrance.Equals("Encumbered"))
+                    if (Program.CcsFile.Character.Vitality.Conditions.Encumbrance.Equals("Encumbered"))
                     {
                         newMovement -= 10;
                     }
-                    else if (Program.Character.Vitality.Conditions.Encumbrance.Equals("Heavily Encumbered"))
+                    else if (Program.CcsFile.Character.Vitality.Conditions.Encumbrance.Equals("Heavily Encumbered"))
                     {
                         newMovement -= 20;
                     }
 
-                    if (Program.Character.Vitality.Conditions.Fatigued.Equals("Two") ||
-                        Program.Character.Vitality.Conditions.Fatigued.Equals("Three") ||
-                        Program.Character.Vitality.Conditions.Fatigued.Equals("Four"))
+                    if (Program.CcsFile.Character.Vitality.Conditions.Fatigued.Equals("Two") ||
+                        Program.CcsFile.Character.Vitality.Conditions.Fatigued.Equals("Three") ||
+                        Program.CcsFile.Character.Vitality.Conditions.Fatigued.Equals("Four"))
                     {
                         newMovement /= 2;
                     }

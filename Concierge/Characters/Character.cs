@@ -11,6 +11,7 @@ namespace Concierge.Characters
     using Concierge.Characters.Collections;
     using Concierge.Characters.Enums;
     using Concierge.Utility;
+    using Newtonsoft.Json;
 
     public class Character
     {
@@ -37,7 +38,7 @@ namespace Concierge.Characters
 
         public Attributes Attributes { get; private set; }
 
-        public Class[] Classess { get; private set; }
+        public List<Class> Classess { get; private set; }
 
         public List<ClassResource> ClassResources { get; private set; }
 
@@ -69,18 +70,22 @@ namespace Concierge.Characters
 
         public List<Weapon> Weapons { get; private set; }
 
+        [JsonIgnore]
         public double CarryWeight
         {
             get
             {
                 double weight = 0.0;
 
-                foreach (Inventory item in this.Inventories)
+                foreach (var item in this.Inventories)
                 {
-                    weight += item.Weight * item.Amount;
+                    if (!item.IsInBagOfHolding)
+                    {
+                        weight += item.Weight * item.Amount;
+                    }
                 }
 
-                foreach (Weapon weapon in this.Weapons)
+                foreach (var weapon in this.Weapons)
                 {
                     weight += weapon.Weight;
                 }
@@ -88,7 +93,7 @@ namespace Concierge.Characters
                 weight += this.Armor.Weight;
                 weight += this.Armor.ShieldWeight;
 
-                if (Settings.UseCoinWeight)
+                if (Program.CcsFile.UseCoinWeight)
                 {
                     weight += this.Wealth.TotalCoins / Constants.CoinGroup;
                 }
@@ -97,12 +102,16 @@ namespace Concierge.Characters
             }
         }
 
+        [JsonIgnore]
         public int ProficiencyBonus => this.Level - 1 > 0 ? Proficiencies[this.Level - 1] : Proficiencies[0];
 
+        [JsonIgnore]
         public int PassivePerception => Constants.BasePerception + this.Skill.Perception.Bonus + this.Details.PerceptionBonus;
 
+        [JsonIgnore]
         public int Initiative => Utilities.CalculateBonus(this.Attributes.Dexterity) + this.Details.InitiativeBonus;
 
+        [JsonIgnore]
         public int Level
         {
             get
@@ -118,6 +127,7 @@ namespace Concierge.Characters
             }
         }
 
+        [JsonIgnore]
         public int CasterLevel
         {
             get
@@ -133,8 +143,10 @@ namespace Concierge.Characters
             }
         }
 
+        [JsonIgnore]
         public string ExperienceToLevel => this.Level - 1 > 0 ? Levels[this.Level - 1].ToString() : Levels[0].ToString();
 
+        [JsonIgnore]
         public string GetClasses
         {
             get
@@ -155,10 +167,13 @@ namespace Concierge.Characters
             }
         }
 
+        [JsonIgnore]
         public int LightCarryCapacity => this.Attributes.Strength * 5;
 
+        [JsonIgnore]
         public int MediumCarryCapacity => this.Attributes.Strength * 10;
 
+        [JsonIgnore]
         public int HeavyCarryCapacity => this.Attributes.Strength * 15;
 
         public void Reset()
@@ -322,7 +337,7 @@ namespace Concierge.Characters
             this.Armor = new Armor();
             this.Attributes = new Attributes();
             this.Chapters = new List<Chapter>();
-            this.Classess = new Class[Constants.MaxClasses];
+            this.Classess = new List<Class>();
             this.ClassResources = new List<ClassResource>();
             this.Companion = new Companion();
             this.Details = new Details();
@@ -337,11 +352,6 @@ namespace Concierge.Characters
             this.Vitality = new Vitality();
             this.Wealth = new Wealth();
             this.Weapons = new List<Weapon>();
-
-            for (int i = 0; i < Constants.MaxClasses; i++)
-            {
-                this.Classess[i] = new Class();
-            }
         }
     }
 }

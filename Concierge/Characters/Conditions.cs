@@ -8,6 +8,7 @@ namespace Concierge.Characters
     using System.Linq;
 
     using Concierge.Utility;
+    using Newtonsoft.Json;
 
     public class Conditions
     {
@@ -83,24 +84,25 @@ namespace Concierge.Characters
 
         public string Unconscious { get; set; }
 
+        [JsonIgnore]
         public string Encumbrance
         {
             get
             {
                 var str = "Normal";
 
-                if (Program.Character.Armor.Strength > Program.Character.Attributes.Strength)
+                if (Program.CcsFile.Character.Armor.Strength > Program.CcsFile.Character.Attributes.Strength)
                 {
                     str = "Encumbered";
                 }
 
-                if (Settings.UseEncumbrance)
+                if (Program.CcsFile.UseEncumbrance)
                 {
-                    if (Program.Character.CarryWeight > Program.Character.LightCarryCapacity && Program.Character.CarryWeight <= Program.Character.MediumCarryCapacity)
+                    if (Program.CcsFile.Character.CarryWeight > Program.CcsFile.Character.LightCarryCapacity && Program.CcsFile.Character.CarryWeight <= Program.CcsFile.Character.MediumCarryCapacity)
                     {
                         str = "Encumbered";
                     }
-                    else if (Program.Character.CarryWeight > Program.Character.MediumCarryCapacity)
+                    else if (Program.CcsFile.Character.CarryWeight > Program.CcsFile.Character.MediumCarryCapacity)
                     {
                         str = "Heavily Encumbered";
                     }

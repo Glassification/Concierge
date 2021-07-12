@@ -4,8 +4,10 @@
 
 namespace Concierge.Utility
 {
+    using System;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
+    using System.Reflection;
 
     using Concierge.Characters.Collections;
     using Concierge.Persistence;
@@ -110,5 +112,14 @@ namespace Concierge.Utility
         public static ReadOnlyCollection<string> Backgrounds { get; }
 
         public static ReadOnlyCollection<string> Races { get; }
+
+        public static string AssemblyVersion
+        {
+            get
+            {
+                Version version = Assembly.GetExecutingAssembly().GetName().Version;
+                return $"{version.Major}.{version.Minor}.{version.Build}";
+            }
+        }
     }
 }

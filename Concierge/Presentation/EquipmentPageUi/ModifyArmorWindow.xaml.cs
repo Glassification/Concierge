@@ -27,7 +27,7 @@ namespace Concierge.Presentation.EquipmentPageUi
 
         public void ShowEdit()
         {
-            this.FillArmorDetails(Program.Character.Armor);
+            this.FillArmorDetails(Program.CcsFile.Character.Armor);
             this.ShowDialog();
         }
 
@@ -79,13 +79,13 @@ namespace Concierge.Presentation.EquipmentPageUi
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
-            this.ToArmor(Program.Character.Armor);
+            this.ToArmor(Program.CcsFile.Character.Armor);
             Program.Modified = true;
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
-            this.ToArmor(Program.Character.Armor);
+            this.ToArmor(Program.CcsFile.Character.Armor);
             Program.Modified = true;
             this.Hide();
         }

@@ -17,15 +17,15 @@ namespace Concierge.SkillsNamespace
             this.Expertise = expertise;
         }
 
-        public override StatusChecks Checks => Program.Character.Vitality.Conditions.Fatigued.Equals("One") ||
-                    Program.Character.Vitality.Conditions.Fatigued.Equals("Two") ||
-                    Program.Character.Vitality.Conditions.Fatigued.Equals("Three") ||
-                    Program.Character.Vitality.Conditions.Fatigued.Equals("Four") ||
-                    Program.Character.Vitality.Conditions.Fatigued.Equals("Five") ||
-                    Program.Character.Vitality.Conditions.Frightened.Equals("Frightened") ||
-                    Program.Character.Vitality.Conditions.Poisoned.Equals("Poisoned")
+        public override StatusChecks Checks => Program.CcsFile.Character.Vitality.Conditions.Fatigued.Equals("One") ||
+                    Program.CcsFile.Character.Vitality.Conditions.Fatigued.Equals("Two") ||
+                    Program.CcsFile.Character.Vitality.Conditions.Fatigued.Equals("Three") ||
+                    Program.CcsFile.Character.Vitality.Conditions.Fatigued.Equals("Four") ||
+                    Program.CcsFile.Character.Vitality.Conditions.Fatigued.Equals("Five") ||
+                    Program.CcsFile.Character.Vitality.Conditions.Frightened.Equals("Frightened") ||
+                    Program.CcsFile.Character.Vitality.Conditions.Poisoned.Equals("Poisoned")
                     ? StatusChecks.Disadvantage
-                    : Program.Character.Vitality.Conditions.Blinded.Equals("Blinded") ? StatusChecks.Fail : StatusChecks.Normal;
+                    : Program.CcsFile.Character.Vitality.Conditions.Blinded.Equals("Blinded") ? StatusChecks.Fail : StatusChecks.Normal;
 
         public override int Bonus
         {
@@ -35,15 +35,15 @@ namespace Concierge.SkillsNamespace
 
                 if (this.Proficiency)
                 {
-                    this.bonus += Program.Character.ProficiencyBonus;
+                    this.bonus += Program.CcsFile.Character.ProficiencyBonus;
                 }
 
                 if (this.Expertise)
                 {
-                    this.bonus += Program.Character.ProficiencyBonus;
+                    this.bonus += Program.CcsFile.Character.ProficiencyBonus;
                 }
 
-                this.bonus += Utilities.CalculateBonus(Program.Character.Attributes.Strength);
+                this.bonus += Utilities.CalculateBonus(Program.CcsFile.Character.Attributes.Strength);
 
                 return this.bonus;
             }

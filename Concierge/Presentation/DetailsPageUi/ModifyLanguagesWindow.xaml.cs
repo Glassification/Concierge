@@ -103,11 +103,11 @@ namespace Concierge.Presentation.DetailsPageUi
         {
             if (this.Editing)
             {
-                this.UpdateLanguage(Program.Character.Details.GetLanguageById(this.SelectedLanguageId));
+                this.UpdateLanguage(Program.CcsFile.Character.Details.GetLanguageById(this.SelectedLanguageId));
             }
             else
             {
-                Program.Character.Details.Languages.Add(this.ToLanguage());
+                Program.CcsFile.Character.Details.Languages.Add(this.ToLanguage());
                 Program.Modified = true;
             }
 
@@ -116,7 +116,7 @@ namespace Concierge.Presentation.DetailsPageUi
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
-            Program.Character.Details.Languages.Add(this.ToLanguage());
+            Program.CcsFile.Character.Details.Languages.Add(this.ToLanguage());
             Program.Modified = true;
             this.ClearFields();
         }

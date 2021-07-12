@@ -6,6 +6,8 @@ namespace Concierge.Characters
 {
     using System;
 
+    using Newtonsoft.Json;
+
     public class Vitality
     {
         private int iBaseHealthField;
@@ -21,6 +23,7 @@ namespace Concierge.Characters
 
         public int MaxHealth { get; set; }
 
+        [JsonIgnore]
         public int CurrentHealth
         {
             get

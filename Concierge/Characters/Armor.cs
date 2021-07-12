@@ -8,6 +8,7 @@ namespace Concierge.Characters
 
     using Concierge.Characters.Enums;
     using Concierge.Utility;
+    using Newtonsoft.Json;
 
     public class Armor
     {
@@ -48,6 +49,7 @@ namespace Concierge.Characters
 
         public int MagicArmorClass { get; set; }
 
+        [JsonIgnore]
         public int TotalArmorClass
         {
             get
@@ -65,10 +67,10 @@ namespace Concierge.Characters
 
                         break;
                     case ArmorType.Light:
-                        ac += Utilities.CalculateBonus(Program.Character.Attributes.Dexterity);
+                        ac += Utilities.CalculateBonus(Program.CcsFile.Character.Attributes.Dexterity);
                         break;
                     case ArmorType.Medium:
-                        ac += Math.Min(2, Utilities.CalculateBonus(Program.Character.Attributes.Dexterity));
+                        ac += Math.Min(2, Utilities.CalculateBonus(Program.CcsFile.Character.Attributes.Dexterity));
                         break;
                     case ArmorType.Heavy:
                     case ArmorType.Massive:

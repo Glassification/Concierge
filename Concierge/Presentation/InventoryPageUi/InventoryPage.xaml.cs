@@ -36,7 +36,7 @@ namespace Concierge.Presentation.InventoryPageUi
         {
             this.InventoryDataGrid.Items.Clear();
 
-            foreach (var inventory in Program.Character.Inventories)
+            foreach (var inventory in Program.CcsFile.Character.Inventories)
             {
                 this.InventoryDataGrid.Items.Add(inventory);
             }
@@ -47,11 +47,11 @@ namespace Concierge.Presentation.InventoryPageUi
             if (this.InventoryDataGrid.SelectedItem != null)
             {
                 var inventory = (Inventory)this.InventoryDataGrid.SelectedItem;
-                var index = Program.Character.Inventories.IndexOf(inventory);
+                var index = Program.CcsFile.Character.Inventories.IndexOf(inventory);
 
                 if (index != 0)
                 {
-                    Utilities.Swap(Program.Character.Inventories, index, index - 1);
+                    Utilities.Swap(Program.CcsFile.Character.Inventories, index, index - 1);
                     this.FillList();
                     this.InventoryDataGrid.SelectedIndex = index - 1;
                 }
@@ -63,11 +63,11 @@ namespace Concierge.Presentation.InventoryPageUi
             if (this.InventoryDataGrid.SelectedItem != null)
             {
                 var inventory = (Inventory)this.InventoryDataGrid.SelectedItem;
-                var index = Program.Character.Inventories.IndexOf(inventory);
+                var index = Program.CcsFile.Character.Inventories.IndexOf(inventory);
 
-                if (index != Program.Character.Inventories.Count - 1)
+                if (index != Program.CcsFile.Character.Inventories.Count - 1)
                 {
-                    Utilities.Swap(Program.Character.Inventories, index, index + 1);
+                    Utilities.Swap(Program.CcsFile.Character.Inventories, index, index + 1);
                     this.FillList();
                     this.InventoryDataGrid.SelectedIndex = index + 1;
                 }
@@ -100,18 +100,18 @@ namespace Concierge.Presentation.InventoryPageUi
             if (this.InventoryDataGrid.SelectedItem != null)
             {
                 var inventory = (Inventory)this.InventoryDataGrid.SelectedItem;
-                Program.Character.Inventories.Remove(inventory);
+                Program.CcsFile.Character.Inventories.Remove(inventory);
                 this.FillList();
             }
         }
 
         private void InventoryDataGrid_Sorted(object sender, RoutedEventArgs e)
         {
-            Program.Character.Inventories.Clear();
+            Program.CcsFile.Character.Inventories.Clear();
 
             foreach (var item in this.InventoryDataGrid.Items)
             {
-                Program.Character.Inventories.Add(item as Inventory);
+                Program.CcsFile.Character.Inventories.Add(item as Inventory);
             }
         }
     }

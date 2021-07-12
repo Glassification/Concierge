@@ -26,16 +26,16 @@ namespace Concierge.Presentation.OverviewPageUi
 
         private void FillFields()
         {
-            this.CurrentHpUpDown.Value = Program.Character.Vitality.BaseHealth;
-            this.TemporaryHpUpDown.Value = Program.Character.Vitality.TemporaryHealth;
-            this.TotalHpUpDown.Value = Program.Character.Vitality.MaxHealth;
+            this.CurrentHpUpDown.Value = Program.CcsFile.Character.Vitality.BaseHealth;
+            this.TemporaryHpUpDown.Value = Program.CcsFile.Character.Vitality.TemporaryHealth;
+            this.TotalHpUpDown.Value = Program.CcsFile.Character.Vitality.MaxHealth;
         }
 
         private void UpdateHealth()
         {
-            Program.Character.Vitality.BaseHealth = this.CurrentHpUpDown.Value ?? 0;
-            Program.Character.Vitality.TemporaryHealth = this.TemporaryHpUpDown.Value ?? 0;
-            Program.Character.Vitality.MaxHealth = this.TotalHpUpDown.Value ?? 0;
+            Program.CcsFile.Character.Vitality.BaseHealth = this.CurrentHpUpDown.Value ?? 0;
+            Program.CcsFile.Character.Vitality.TemporaryHealth = this.TemporaryHpUpDown.Value ?? 0;
+            Program.CcsFile.Character.Vitality.MaxHealth = this.TotalHpUpDown.Value ?? 0;
 
             Program.Modified = true;
         }

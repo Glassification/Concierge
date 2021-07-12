@@ -35,7 +35,7 @@ namespace Concierge.Presentation.AbilitiesPageUi
         {
             this.AbilitiesDataGrid.Items.Clear();
 
-            foreach (var ability in Program.Character.Abilities)
+            foreach (var ability in Program.CcsFile.Character.Abilities)
             {
                 this.AbilitiesDataGrid.Items.Add(ability);
             }
@@ -49,11 +49,11 @@ namespace Concierge.Presentation.AbilitiesPageUi
             if (this.AbilitiesDataGrid.SelectedItem != null)
             {
                 ability = (Ability)this.AbilitiesDataGrid.SelectedItem;
-                index = Program.Character.Abilities.IndexOf(ability);
+                index = Program.CcsFile.Character.Abilities.IndexOf(ability);
 
                 if (index != 0)
                 {
-                    Utilities.Swap(Program.Character.Abilities, index, index - 1);
+                    Utilities.Swap(Program.CcsFile.Character.Abilities, index, index - 1);
                     this.FillList();
                     this.AbilitiesDataGrid.SelectedIndex = index - 1;
                 }
@@ -68,11 +68,11 @@ namespace Concierge.Presentation.AbilitiesPageUi
             if (this.AbilitiesDataGrid.SelectedItem != null)
             {
                 ability = (Ability)this.AbilitiesDataGrid.SelectedItem;
-                index = Program.Character.Abilities.IndexOf(ability);
+                index = Program.CcsFile.Character.Abilities.IndexOf(ability);
 
-                if (index != Program.Character.Abilities.Count - 1)
+                if (index != Program.CcsFile.Character.Abilities.Count - 1)
                 {
-                    Utilities.Swap(Program.Character.Abilities, index, index + 1);
+                    Utilities.Swap(Program.CcsFile.Character.Abilities, index, index + 1);
                     this.FillList();
                     this.AbilitiesDataGrid.SelectedIndex = index + 1;
                 }
@@ -106,18 +106,18 @@ namespace Concierge.Presentation.AbilitiesPageUi
             if (this.AbilitiesDataGrid.SelectedItem != null)
             {
                 ability = (Ability)this.AbilitiesDataGrid.SelectedItem;
-                Program.Character.Abilities.Remove(ability);
+                Program.CcsFile.Character.Abilities.Remove(ability);
                 this.FillList();
             }
         }
 
         private void AbilitiesDataGrid_Sorted(object sender, RoutedEventArgs e)
         {
-            Program.Character.Abilities.Clear();
+            Program.CcsFile.Character.Abilities.Clear();
 
             foreach (var ability in this.AbilitiesDataGrid.Items)
             {
-                Program.Character.Abilities.Add(ability as Ability);
+                Program.CcsFile.Character.Abilities.Add(ability as Ability);
             }
         }
     }

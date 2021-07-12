@@ -54,6 +54,7 @@ namespace Concierge.Presentation.InventoryPageUi
             this.NameComboBox.Text = inventory.Name;
             this.AmountUpDown.Value = inventory.Amount;
             this.WeightUpDown.Value = inventory.Weight;
+            this.BagOfHoldingCheckBox.IsChecked = inventory.IsInBagOfHolding;
             this.NotesTextBox.Text = inventory.Note;
         }
 
@@ -62,6 +63,7 @@ namespace Concierge.Presentation.InventoryPageUi
             this.NameComboBox.Text = string.Empty;
             this.AmountUpDown.Value = 0;
             this.WeightUpDown.Value = 0.0;
+            this.BagOfHoldingCheckBox.IsChecked = false;
             this.NotesTextBox.Text = string.Empty;
         }
 
@@ -72,6 +74,7 @@ namespace Concierge.Presentation.InventoryPageUi
                 Name = this.NameComboBox.Text,
                 Amount = this.AmountUpDown.Value ?? 0,
                 Weight = this.WeightUpDown.Value ?? 0.0,
+                IsInBagOfHolding = this.BagOfHoldingCheckBox.IsChecked ?? false,
                 Note = this.NotesTextBox.Text,
             };
 
@@ -83,9 +86,8 @@ namespace Concierge.Presentation.InventoryPageUi
             inventory.Name = this.NameComboBox.Text;
             inventory.Amount = this.AmountUpDown.Value ?? 0;
             inventory.Weight = this.WeightUpDown.Value ?? 0.0;
+            inventory.IsInBagOfHolding = this.BagOfHoldingCheckBox.IsChecked ?? false;
             inventory.Note = this.NotesTextBox.Text;
-
-            Program.Modified = true;
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
@@ -105,7 +107,7 @@ namespace Concierge.Presentation.InventoryPageUi
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
-            Program.Character.Inventories.Add(this.ToInventory());
+            Program.CcsFile.Character.Inventories.Add(this.ToInventory());
             Program.Modified = true;
             this.ClearFields();
         }
@@ -114,11 +116,11 @@ namespace Concierge.Presentation.InventoryPageUi
         {
             if (this.Editing)
             {
-                this.UpdateInventory(Program.Character.GetInventoryById(this.SelectedItemId));
+                this.UpdateInventory(Program.CcsFile.Character.GetInventoryById(this.SelectedItemId));
             }
             else
             {
-                Program.Character.Inventories.Add(this.ToInventory());
+                Program.CcsFile.Character.Inventories.Add(this.ToInventory());
                 Program.Modified = true;
             }
 

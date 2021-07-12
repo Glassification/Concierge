@@ -46,95 +46,95 @@ namespace Concierge.Presentation.SpellcastingPageUi
 
         private void FillTotalSpellSlots()
         {
-            this.TotalPactField.Text = Program.Character.SpellSlots.PactTotal.ToString();
-            this.TotalPactField.Foreground = Utilities.SetTotalTextStyle(Program.Character.SpellSlots.PactTotal, Program.Character.SpellSlots.PactUsed);
-            this.TotalPactBox.Background = Utilities.SetTotalBoxStyle(Program.Character.SpellSlots.PactTotal, Program.Character.SpellSlots.PactUsed);
+            this.TotalPactField.Text = Program.CcsFile.Character.SpellSlots.PactTotal.ToString();
+            this.TotalPactField.Foreground = Utilities.SetTotalTextStyle(Program.CcsFile.Character.SpellSlots.PactTotal, Program.CcsFile.Character.SpellSlots.PactUsed);
+            this.TotalPactBox.Background = Utilities.SetTotalBoxStyle(Program.CcsFile.Character.SpellSlots.PactTotal, Program.CcsFile.Character.SpellSlots.PactUsed);
 
-            this.TotalFirstField.Text = Program.Character.SpellSlots.FirstTotal.ToString();
-            this.TotalFirstField.Foreground = Utilities.SetTotalTextStyle(Program.Character.SpellSlots.FirstTotal, Program.Character.SpellSlots.FirstUsed);
-            this.TotalFirstBox.Background = Utilities.SetTotalBoxStyle(Program.Character.SpellSlots.FirstTotal, Program.Character.SpellSlots.FirstUsed);
+            this.TotalFirstField.Text = Program.CcsFile.Character.SpellSlots.FirstTotal.ToString();
+            this.TotalFirstField.Foreground = Utilities.SetTotalTextStyle(Program.CcsFile.Character.SpellSlots.FirstTotal, Program.CcsFile.Character.SpellSlots.FirstUsed);
+            this.TotalFirstBox.Background = Utilities.SetTotalBoxStyle(Program.CcsFile.Character.SpellSlots.FirstTotal, Program.CcsFile.Character.SpellSlots.FirstUsed);
 
-            this.TotalSecondField.Text = Program.Character.SpellSlots.SecondTotal.ToString();
-            this.TotalSecondField.Foreground = Utilities.SetTotalTextStyle(Program.Character.SpellSlots.SecondTotal, Program.Character.SpellSlots.SecondUsed);
-            this.TotalSecondBox.Background = Utilities.SetTotalBoxStyle(Program.Character.SpellSlots.SecondTotal, Program.Character.SpellSlots.SecondUsed);
+            this.TotalSecondField.Text = Program.CcsFile.Character.SpellSlots.SecondTotal.ToString();
+            this.TotalSecondField.Foreground = Utilities.SetTotalTextStyle(Program.CcsFile.Character.SpellSlots.SecondTotal, Program.CcsFile.Character.SpellSlots.SecondUsed);
+            this.TotalSecondBox.Background = Utilities.SetTotalBoxStyle(Program.CcsFile.Character.SpellSlots.SecondTotal, Program.CcsFile.Character.SpellSlots.SecondUsed);
 
-            this.TotalThirdField.Text = Program.Character.SpellSlots.ThirdTotal.ToString();
-            this.TotalThirdField.Foreground = Utilities.SetTotalTextStyle(Program.Character.SpellSlots.ThirdTotal, Program.Character.SpellSlots.ThirdUsed);
-            this.TotalThirdBox.Background = Utilities.SetTotalBoxStyle(Program.Character.SpellSlots.ThirdTotal, Program.Character.SpellSlots.ThirdUsed);
+            this.TotalThirdField.Text = Program.CcsFile.Character.SpellSlots.ThirdTotal.ToString();
+            this.TotalThirdField.Foreground = Utilities.SetTotalTextStyle(Program.CcsFile.Character.SpellSlots.ThirdTotal, Program.CcsFile.Character.SpellSlots.ThirdUsed);
+            this.TotalThirdBox.Background = Utilities.SetTotalBoxStyle(Program.CcsFile.Character.SpellSlots.ThirdTotal, Program.CcsFile.Character.SpellSlots.ThirdUsed);
 
-            this.TotalFourthField.Text = Program.Character.SpellSlots.FourthTotal.ToString();
-            this.TotalFourthField.Foreground = Utilities.SetTotalTextStyle(Program.Character.SpellSlots.FourthTotal, Program.Character.SpellSlots.FourthUsed);
-            this.TotalFourthBox.Background = Utilities.SetTotalBoxStyle(Program.Character.SpellSlots.FourthTotal, Program.Character.SpellSlots.FourthUsed);
+            this.TotalFourthField.Text = Program.CcsFile.Character.SpellSlots.FourthTotal.ToString();
+            this.TotalFourthField.Foreground = Utilities.SetTotalTextStyle(Program.CcsFile.Character.SpellSlots.FourthTotal, Program.CcsFile.Character.SpellSlots.FourthUsed);
+            this.TotalFourthBox.Background = Utilities.SetTotalBoxStyle(Program.CcsFile.Character.SpellSlots.FourthTotal, Program.CcsFile.Character.SpellSlots.FourthUsed);
 
-            this.TotalFifthField.Text = Program.Character.SpellSlots.FifthTotal.ToString();
-            this.TotalFifthField.Foreground = Utilities.SetTotalTextStyle(Program.Character.SpellSlots.FifthTotal, Program.Character.SpellSlots.FifthUsed);
-            this.TotalFifthBox.Background = Utilities.SetTotalBoxStyle(Program.Character.SpellSlots.FifthTotal, Program.Character.SpellSlots.FifthUsed);
+            this.TotalFifthField.Text = Program.CcsFile.Character.SpellSlots.FifthTotal.ToString();
+            this.TotalFifthField.Foreground = Utilities.SetTotalTextStyle(Program.CcsFile.Character.SpellSlots.FifthTotal, Program.CcsFile.Character.SpellSlots.FifthUsed);
+            this.TotalFifthBox.Background = Utilities.SetTotalBoxStyle(Program.CcsFile.Character.SpellSlots.FifthTotal, Program.CcsFile.Character.SpellSlots.FifthUsed);
 
-            this.TotalSixthField.Text = Program.Character.SpellSlots.SixthTotal.ToString();
-            this.TotalSixthField.Foreground = Utilities.SetTotalTextStyle(Program.Character.SpellSlots.SixthTotal, Program.Character.SpellSlots.SixthUsed);
-            this.TotalSixthBox.Background = Utilities.SetTotalBoxStyle(Program.Character.SpellSlots.SixthTotal, Program.Character.SpellSlots.SixthUsed);
+            this.TotalSixthField.Text = Program.CcsFile.Character.SpellSlots.SixthTotal.ToString();
+            this.TotalSixthField.Foreground = Utilities.SetTotalTextStyle(Program.CcsFile.Character.SpellSlots.SixthTotal, Program.CcsFile.Character.SpellSlots.SixthUsed);
+            this.TotalSixthBox.Background = Utilities.SetTotalBoxStyle(Program.CcsFile.Character.SpellSlots.SixthTotal, Program.CcsFile.Character.SpellSlots.SixthUsed);
 
-            this.TotalSeventhField.Text = Program.Character.SpellSlots.SeventhTotal.ToString();
-            this.TotalSeventhField.Foreground = Utilities.SetTotalTextStyle(Program.Character.SpellSlots.SeventhTotal, Program.Character.SpellSlots.SeventhUsed);
-            this.TotalSeventhBox.Background = Utilities.SetTotalBoxStyle(Program.Character.SpellSlots.SeventhTotal, Program.Character.SpellSlots.SeventhUsed);
+            this.TotalSeventhField.Text = Program.CcsFile.Character.SpellSlots.SeventhTotal.ToString();
+            this.TotalSeventhField.Foreground = Utilities.SetTotalTextStyle(Program.CcsFile.Character.SpellSlots.SeventhTotal, Program.CcsFile.Character.SpellSlots.SeventhUsed);
+            this.TotalSeventhBox.Background = Utilities.SetTotalBoxStyle(Program.CcsFile.Character.SpellSlots.SeventhTotal, Program.CcsFile.Character.SpellSlots.SeventhUsed);
 
-            this.TotalEighthField.Text = Program.Character.SpellSlots.EighthTotal.ToString();
-            this.TotalEighthField.Foreground = Utilities.SetTotalTextStyle(Program.Character.SpellSlots.EighthTotal, Program.Character.SpellSlots.EighthUsed);
-            this.TotalEighthBox.Background = Utilities.SetTotalBoxStyle(Program.Character.SpellSlots.EighthTotal, Program.Character.SpellSlots.EighthUsed);
+            this.TotalEighthField.Text = Program.CcsFile.Character.SpellSlots.EighthTotal.ToString();
+            this.TotalEighthField.Foreground = Utilities.SetTotalTextStyle(Program.CcsFile.Character.SpellSlots.EighthTotal, Program.CcsFile.Character.SpellSlots.EighthUsed);
+            this.TotalEighthBox.Background = Utilities.SetTotalBoxStyle(Program.CcsFile.Character.SpellSlots.EighthTotal, Program.CcsFile.Character.SpellSlots.EighthUsed);
 
-            this.TotalNinethField.Text = Program.Character.SpellSlots.NinethTotal.ToString();
-            this.TotalNinethField.Foreground = Utilities.SetTotalTextStyle(Program.Character.SpellSlots.NinethTotal, Program.Character.SpellSlots.NinethUsed);
-            this.TotalNinethBox.Background = Utilities.SetTotalBoxStyle(Program.Character.SpellSlots.NinethTotal, Program.Character.SpellSlots.NinethUsed);
+            this.TotalNinethField.Text = Program.CcsFile.Character.SpellSlots.NinethTotal.ToString();
+            this.TotalNinethField.Foreground = Utilities.SetTotalTextStyle(Program.CcsFile.Character.SpellSlots.NinethTotal, Program.CcsFile.Character.SpellSlots.NinethUsed);
+            this.TotalNinethBox.Background = Utilities.SetTotalBoxStyle(Program.CcsFile.Character.SpellSlots.NinethTotal, Program.CcsFile.Character.SpellSlots.NinethUsed);
         }
 
         private void FillUsedSpellSlots()
         {
-            this.UsedPactField.Text = Program.Character.SpellSlots.PactUsed.ToString();
-            this.UsedPactField.Foreground = Utilities.SetUsedTextStyle(Program.Character.SpellSlots.PactTotal, Program.Character.SpellSlots.PactUsed);
-            this.UsedPactBox.Background = Utilities.SetUsedBoxStyle(Program.Character.SpellSlots.PactTotal, Program.Character.SpellSlots.PactUsed);
+            this.UsedPactField.Text = Program.CcsFile.Character.SpellSlots.PactUsed.ToString();
+            this.UsedPactField.Foreground = Utilities.SetUsedTextStyle(Program.CcsFile.Character.SpellSlots.PactTotal, Program.CcsFile.Character.SpellSlots.PactUsed);
+            this.UsedPactBox.Background = Utilities.SetUsedBoxStyle(Program.CcsFile.Character.SpellSlots.PactTotal, Program.CcsFile.Character.SpellSlots.PactUsed);
 
-            this.UsedFirstField.Text = Program.Character.SpellSlots.FirstUsed.ToString();
-            this.UsedFirstField.Foreground = Utilities.SetUsedTextStyle(Program.Character.SpellSlots.FirstTotal, Program.Character.SpellSlots.FirstUsed);
-            this.UsedFirstBox.Background = Utilities.SetUsedBoxStyle(Program.Character.SpellSlots.FirstTotal, Program.Character.SpellSlots.FirstUsed);
+            this.UsedFirstField.Text = Program.CcsFile.Character.SpellSlots.FirstUsed.ToString();
+            this.UsedFirstField.Foreground = Utilities.SetUsedTextStyle(Program.CcsFile.Character.SpellSlots.FirstTotal, Program.CcsFile.Character.SpellSlots.FirstUsed);
+            this.UsedFirstBox.Background = Utilities.SetUsedBoxStyle(Program.CcsFile.Character.SpellSlots.FirstTotal, Program.CcsFile.Character.SpellSlots.FirstUsed);
 
-            this.UsedSecondField.Text = Program.Character.SpellSlots.SecondUsed.ToString();
-            this.UsedSecondField.Foreground = Utilities.SetUsedTextStyle(Program.Character.SpellSlots.SecondTotal, Program.Character.SpellSlots.SecondUsed);
-            this.UsedSecondBox.Background = Utilities.SetUsedBoxStyle(Program.Character.SpellSlots.SecondTotal, Program.Character.SpellSlots.SecondUsed);
+            this.UsedSecondField.Text = Program.CcsFile.Character.SpellSlots.SecondUsed.ToString();
+            this.UsedSecondField.Foreground = Utilities.SetUsedTextStyle(Program.CcsFile.Character.SpellSlots.SecondTotal, Program.CcsFile.Character.SpellSlots.SecondUsed);
+            this.UsedSecondBox.Background = Utilities.SetUsedBoxStyle(Program.CcsFile.Character.SpellSlots.SecondTotal, Program.CcsFile.Character.SpellSlots.SecondUsed);
 
-            this.UsedThirdField.Text = Program.Character.SpellSlots.ThirdUsed.ToString();
-            this.UsedThirdField.Foreground = Utilities.SetUsedTextStyle(Program.Character.SpellSlots.ThirdTotal, Program.Character.SpellSlots.ThirdUsed);
-            this.UsedThirdBox.Background = Utilities.SetUsedBoxStyle(Program.Character.SpellSlots.ThirdTotal, Program.Character.SpellSlots.ThirdUsed);
+            this.UsedThirdField.Text = Program.CcsFile.Character.SpellSlots.ThirdUsed.ToString();
+            this.UsedThirdField.Foreground = Utilities.SetUsedTextStyle(Program.CcsFile.Character.SpellSlots.ThirdTotal, Program.CcsFile.Character.SpellSlots.ThirdUsed);
+            this.UsedThirdBox.Background = Utilities.SetUsedBoxStyle(Program.CcsFile.Character.SpellSlots.ThirdTotal, Program.CcsFile.Character.SpellSlots.ThirdUsed);
 
-            this.UsedFourthField.Text = Program.Character.SpellSlots.FourthUsed.ToString();
-            this.UsedFourthField.Foreground = Utilities.SetUsedTextStyle(Program.Character.SpellSlots.FourthTotal, Program.Character.SpellSlots.FourthUsed);
-            this.UsedFourthBox.Background = Utilities.SetUsedBoxStyle(Program.Character.SpellSlots.FourthTotal, Program.Character.SpellSlots.FourthUsed);
+            this.UsedFourthField.Text = Program.CcsFile.Character.SpellSlots.FourthUsed.ToString();
+            this.UsedFourthField.Foreground = Utilities.SetUsedTextStyle(Program.CcsFile.Character.SpellSlots.FourthTotal, Program.CcsFile.Character.SpellSlots.FourthUsed);
+            this.UsedFourthBox.Background = Utilities.SetUsedBoxStyle(Program.CcsFile.Character.SpellSlots.FourthTotal, Program.CcsFile.Character.SpellSlots.FourthUsed);
 
-            this.UsedFifthField.Text = Program.Character.SpellSlots.FifthUsed.ToString();
-            this.UsedFifthField.Foreground = Utilities.SetUsedTextStyle(Program.Character.SpellSlots.FifthTotal, Program.Character.SpellSlots.FifthUsed);
-            this.UsedFifthBox.Background = Utilities.SetUsedBoxStyle(Program.Character.SpellSlots.FifthTotal, Program.Character.SpellSlots.FifthUsed);
+            this.UsedFifthField.Text = Program.CcsFile.Character.SpellSlots.FifthUsed.ToString();
+            this.UsedFifthField.Foreground = Utilities.SetUsedTextStyle(Program.CcsFile.Character.SpellSlots.FifthTotal, Program.CcsFile.Character.SpellSlots.FifthUsed);
+            this.UsedFifthBox.Background = Utilities.SetUsedBoxStyle(Program.CcsFile.Character.SpellSlots.FifthTotal, Program.CcsFile.Character.SpellSlots.FifthUsed);
 
-            this.UsedSixthField.Text = Program.Character.SpellSlots.SixthUsed.ToString();
-            this.UsedSixthField.Foreground = Utilities.SetUsedTextStyle(Program.Character.SpellSlots.SixthTotal, Program.Character.SpellSlots.SixthUsed);
-            this.UsedSixthBox.Background = Utilities.SetUsedBoxStyle(Program.Character.SpellSlots.SixthTotal, Program.Character.SpellSlots.SixthUsed);
+            this.UsedSixthField.Text = Program.CcsFile.Character.SpellSlots.SixthUsed.ToString();
+            this.UsedSixthField.Foreground = Utilities.SetUsedTextStyle(Program.CcsFile.Character.SpellSlots.SixthTotal, Program.CcsFile.Character.SpellSlots.SixthUsed);
+            this.UsedSixthBox.Background = Utilities.SetUsedBoxStyle(Program.CcsFile.Character.SpellSlots.SixthTotal, Program.CcsFile.Character.SpellSlots.SixthUsed);
 
-            this.UsedSeventhField.Text = Program.Character.SpellSlots.SeventhUsed.ToString();
-            this.UsedSeventhField.Foreground = Utilities.SetUsedTextStyle(Program.Character.SpellSlots.SeventhTotal, Program.Character.SpellSlots.SeventhUsed);
-            this.UsedSeventhBox.Background = Utilities.SetUsedBoxStyle(Program.Character.SpellSlots.SeventhTotal, Program.Character.SpellSlots.SeventhUsed);
+            this.UsedSeventhField.Text = Program.CcsFile.Character.SpellSlots.SeventhUsed.ToString();
+            this.UsedSeventhField.Foreground = Utilities.SetUsedTextStyle(Program.CcsFile.Character.SpellSlots.SeventhTotal, Program.CcsFile.Character.SpellSlots.SeventhUsed);
+            this.UsedSeventhBox.Background = Utilities.SetUsedBoxStyle(Program.CcsFile.Character.SpellSlots.SeventhTotal, Program.CcsFile.Character.SpellSlots.SeventhUsed);
 
-            this.UsedEighthField.Text = Program.Character.SpellSlots.EighthUsed.ToString();
-            this.UsedEighthField.Foreground = Utilities.SetUsedTextStyle(Program.Character.SpellSlots.EighthTotal, Program.Character.SpellSlots.EighthUsed);
-            this.UsedEighthBox.Background = Utilities.SetUsedBoxStyle(Program.Character.SpellSlots.EighthTotal, Program.Character.SpellSlots.EighthUsed);
+            this.UsedEighthField.Text = Program.CcsFile.Character.SpellSlots.EighthUsed.ToString();
+            this.UsedEighthField.Foreground = Utilities.SetUsedTextStyle(Program.CcsFile.Character.SpellSlots.EighthTotal, Program.CcsFile.Character.SpellSlots.EighthUsed);
+            this.UsedEighthBox.Background = Utilities.SetUsedBoxStyle(Program.CcsFile.Character.SpellSlots.EighthTotal, Program.CcsFile.Character.SpellSlots.EighthUsed);
 
-            this.UsedNinethField.Text = Program.Character.SpellSlots.NinethUsed.ToString();
-            this.UsedNinethField.Foreground = Utilities.SetUsedTextStyle(Program.Character.SpellSlots.NinethTotal, Program.Character.SpellSlots.NinethUsed);
-            this.UsedNinethBox.Background = Utilities.SetUsedBoxStyle(Program.Character.SpellSlots.NinethTotal, Program.Character.SpellSlots.NinethUsed);
+            this.UsedNinethField.Text = Program.CcsFile.Character.SpellSlots.NinethUsed.ToString();
+            this.UsedNinethField.Foreground = Utilities.SetUsedTextStyle(Program.CcsFile.Character.SpellSlots.NinethTotal, Program.CcsFile.Character.SpellSlots.NinethUsed);
+            this.UsedNinethBox.Background = Utilities.SetUsedBoxStyle(Program.CcsFile.Character.SpellSlots.NinethTotal, Program.CcsFile.Character.SpellSlots.NinethUsed);
         }
 
         private void FillSpellList()
         {
             this.SpellListDataGrid.Items.Clear();
 
-            foreach (var spell in Program.Character.Spells)
+            foreach (var spell in Program.CcsFile.Character.Spells)
             {
                 this.SpellListDataGrid.Items.Add(spell);
             }
@@ -144,12 +144,12 @@ namespace Concierge.Presentation.SpellcastingPageUi
         {
             this.MagicClassDataGrid.Items.Clear();
 
-            foreach (var magicClass in Program.Character.MagicClasses)
+            foreach (var magicClass in Program.CcsFile.Character.MagicClasses)
             {
                 this.MagicClassDataGrid.Items.Add(magicClass);
             }
 
-            this.CasterLevelField.Text = Program.Character.CasterLevel.ToString();
+            this.CasterLevelField.Text = Program.CcsFile.Character.CasterLevel.ToString();
         }
 
         private void InitializeClickEvents()
@@ -207,11 +207,11 @@ namespace Concierge.Presentation.SpellcastingPageUi
             if (this.MagicClassDataGrid.SelectedItem != null)
             {
                 var magicClass = (MagicClass)this.MagicClassDataGrid.SelectedItem;
-                index = Program.Character.MagicClasses.IndexOf(magicClass);
+                index = Program.CcsFile.Character.MagicClasses.IndexOf(magicClass);
 
                 if (index != 0)
                 {
-                    Utilities.Swap(Program.Character.MagicClasses, index, index - 1);
+                    Utilities.Swap(Program.CcsFile.Character.MagicClasses, index, index - 1);
                     this.FillMagicClassList();
                     this.MagicClassDataGrid.SelectedIndex = index - 1;
                 }
@@ -219,11 +219,11 @@ namespace Concierge.Presentation.SpellcastingPageUi
             else if (this.SpellListDataGrid.SelectedItem != null)
             {
                 var spell = (Spell)this.SpellListDataGrid.SelectedItem;
-                index = Program.Character.Spells.IndexOf(spell);
+                index = Program.CcsFile.Character.Spells.IndexOf(spell);
 
                 if (index != 0)
                 {
-                    Utilities.Swap(Program.Character.Spells, index, index - 1);
+                    Utilities.Swap(Program.CcsFile.Character.Spells, index, index - 1);
                     this.FillSpellList();
                     this.SpellListDataGrid.SelectedIndex = index - 1;
                 }
@@ -237,11 +237,11 @@ namespace Concierge.Presentation.SpellcastingPageUi
             if (this.MagicClassDataGrid.SelectedItem != null)
             {
                 var magicClass = (MagicClass)this.MagicClassDataGrid.SelectedItem;
-                index = Program.Character.MagicClasses.IndexOf(magicClass);
+                index = Program.CcsFile.Character.MagicClasses.IndexOf(magicClass);
 
-                if (index != Program.Character.MagicClasses.Count - 1)
+                if (index != Program.CcsFile.Character.MagicClasses.Count - 1)
                 {
-                    Utilities.Swap(Program.Character.MagicClasses, index, index + 1);
+                    Utilities.Swap(Program.CcsFile.Character.MagicClasses, index, index + 1);
                     this.FillMagicClassList();
                     this.MagicClassDataGrid.SelectedIndex = index + 1;
                 }
@@ -249,11 +249,11 @@ namespace Concierge.Presentation.SpellcastingPageUi
             else if (this.SpellListDataGrid.SelectedItem != null)
             {
                 var spell = (Spell)this.SpellListDataGrid.SelectedItem;
-                index = Program.Character.Spells.IndexOf(spell);
+                index = Program.CcsFile.Character.Spells.IndexOf(spell);
 
-                if (index != Program.Character.Spells.Count - 1)
+                if (index != Program.CcsFile.Character.Spells.Count - 1)
                 {
-                    Utilities.Swap(Program.Character.Spells, index, index + 1);
+                    Utilities.Swap(Program.CcsFile.Character.Spells, index, index + 1);
                     this.FillSpellList();
                     this.SpellListDataGrid.SelectedIndex = index + 1;
                 }
@@ -304,13 +304,13 @@ namespace Concierge.Presentation.SpellcastingPageUi
             if (this.MagicClassDataGrid.SelectedItem != null)
             {
                 MagicClass magicClass = (MagicClass)this.MagicClassDataGrid.SelectedItem;
-                Program.Character.MagicClasses.Remove(magicClass);
+                Program.CcsFile.Character.MagicClasses.Remove(magicClass);
                 this.FillMagicClassList();
             }
             else if (this.SpellListDataGrid.SelectedItem != null)
             {
                 Spell spell = (Spell)this.SpellListDataGrid.SelectedItem;
-                Program.Character.Spells.Remove(spell);
+                Program.CcsFile.Character.Spells.Remove(spell);
                 this.FillSpellList();
             }
         }
@@ -345,34 +345,34 @@ namespace Concierge.Presentation.SpellcastingPageUi
             switch (usedBox.Name)
             {
                 case "UsedPactBox":
-                    Program.Character.SpellSlots.PactUsed = this.IncrementUsedSpellSlots(Program.Character.SpellSlots.PactUsed, Program.Character.SpellSlots.PactTotal);
+                    Program.CcsFile.Character.SpellSlots.PactUsed = this.IncrementUsedSpellSlots(Program.CcsFile.Character.SpellSlots.PactUsed, Program.CcsFile.Character.SpellSlots.PactTotal);
                     break;
                 case "UsedFirstBox":
-                    Program.Character.SpellSlots.FirstUsed = this.IncrementUsedSpellSlots(Program.Character.SpellSlots.FirstUsed, Program.Character.SpellSlots.FirstTotal);
+                    Program.CcsFile.Character.SpellSlots.FirstUsed = this.IncrementUsedSpellSlots(Program.CcsFile.Character.SpellSlots.FirstUsed, Program.CcsFile.Character.SpellSlots.FirstTotal);
                     break;
                 case "UsedSecondBox":
-                    Program.Character.SpellSlots.SecondUsed = this.IncrementUsedSpellSlots(Program.Character.SpellSlots.SecondUsed, Program.Character.SpellSlots.SecondTotal);
+                    Program.CcsFile.Character.SpellSlots.SecondUsed = this.IncrementUsedSpellSlots(Program.CcsFile.Character.SpellSlots.SecondUsed, Program.CcsFile.Character.SpellSlots.SecondTotal);
                     break;
                 case "UsedThirdBox":
-                    Program.Character.SpellSlots.ThirdUsed = this.IncrementUsedSpellSlots(Program.Character.SpellSlots.ThirdUsed, Program.Character.SpellSlots.ThirdTotal);
+                    Program.CcsFile.Character.SpellSlots.ThirdUsed = this.IncrementUsedSpellSlots(Program.CcsFile.Character.SpellSlots.ThirdUsed, Program.CcsFile.Character.SpellSlots.ThirdTotal);
                     break;
                 case "UsedFourthBox":
-                    Program.Character.SpellSlots.FourthUsed = this.IncrementUsedSpellSlots(Program.Character.SpellSlots.FourthUsed, Program.Character.SpellSlots.FourthTotal);
+                    Program.CcsFile.Character.SpellSlots.FourthUsed = this.IncrementUsedSpellSlots(Program.CcsFile.Character.SpellSlots.FourthUsed, Program.CcsFile.Character.SpellSlots.FourthTotal);
                     break;
                 case "UsedFifthBox":
-                    Program.Character.SpellSlots.FifthUsed = this.IncrementUsedSpellSlots(Program.Character.SpellSlots.FifthUsed, Program.Character.SpellSlots.FifthTotal);
+                    Program.CcsFile.Character.SpellSlots.FifthUsed = this.IncrementUsedSpellSlots(Program.CcsFile.Character.SpellSlots.FifthUsed, Program.CcsFile.Character.SpellSlots.FifthTotal);
                     break;
                 case "UsedSixthBox":
-                    Program.Character.SpellSlots.SixthUsed = this.IncrementUsedSpellSlots(Program.Character.SpellSlots.SixthUsed, Program.Character.SpellSlots.SixthTotal);
+                    Program.CcsFile.Character.SpellSlots.SixthUsed = this.IncrementUsedSpellSlots(Program.CcsFile.Character.SpellSlots.SixthUsed, Program.CcsFile.Character.SpellSlots.SixthTotal);
                     break;
                 case "UsedSeventhBox":
-                    Program.Character.SpellSlots.SeventhUsed = this.IncrementUsedSpellSlots(Program.Character.SpellSlots.SeventhUsed, Program.Character.SpellSlots.SeventhTotal);
+                    Program.CcsFile.Character.SpellSlots.SeventhUsed = this.IncrementUsedSpellSlots(Program.CcsFile.Character.SpellSlots.SeventhUsed, Program.CcsFile.Character.SpellSlots.SeventhTotal);
                     break;
                 case "UsedEighthBox":
-                    Program.Character.SpellSlots.EighthUsed = this.IncrementUsedSpellSlots(Program.Character.SpellSlots.EighthUsed, Program.Character.SpellSlots.EighthTotal);
+                    Program.CcsFile.Character.SpellSlots.EighthUsed = this.IncrementUsedSpellSlots(Program.CcsFile.Character.SpellSlots.EighthUsed, Program.CcsFile.Character.SpellSlots.EighthTotal);
                     break;
                 case "UsedNinethBox":
-                    Program.Character.SpellSlots.NinethUsed = this.IncrementUsedSpellSlots(Program.Character.SpellSlots.NinethUsed, Program.Character.SpellSlots.NinethTotal);
+                    Program.CcsFile.Character.SpellSlots.NinethUsed = this.IncrementUsedSpellSlots(Program.CcsFile.Character.SpellSlots.NinethUsed, Program.CcsFile.Character.SpellSlots.NinethTotal);
                     break;
             }
 
@@ -392,21 +392,21 @@ namespace Concierge.Presentation.SpellcastingPageUi
 
         private void SpellListDataGrid_Sorted(object sender, RoutedEventArgs e)
         {
-            Program.Character.Spells.Clear();
+            Program.CcsFile.Character.Spells.Clear();
 
             foreach (var spell in this.SpellListDataGrid.Items)
             {
-                Program.Character.Spells.Add(spell as Spell);
+                Program.CcsFile.Character.Spells.Add(spell as Spell);
             }
         }
 
         private void MagicClassDataGrid_Sorted(object sender, RoutedEventArgs e)
         {
-            Program.Character.MagicClasses.Clear();
+            Program.CcsFile.Character.MagicClasses.Clear();
 
             foreach (var magicClass in this.SpellListDataGrid.Items)
             {
-                Program.Character.MagicClasses.Add(magicClass as MagicClass);
+                Program.CcsFile.Character.MagicClasses.Add(magicClass as MagicClass);
             }
         }
     }

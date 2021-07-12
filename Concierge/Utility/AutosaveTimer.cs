@@ -33,7 +33,7 @@ namespace Concierge.Utility
 
         private void DispatcherTimer_Autosave(object sender, EventArgs e)
         {
-            CharacterSaver.SaveCharacterSheet(Program.Character, Program.CcsFile);
+            CharacterSaver.SaveCharacterSheetJson(Program.CcsFile);
         }
     }
 }

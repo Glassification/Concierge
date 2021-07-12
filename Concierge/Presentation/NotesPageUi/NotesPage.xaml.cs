@@ -65,7 +65,7 @@ namespace Concierge.Presentation.NotesPageUi
         {
             this.NotesTreeView.Items.Clear();
 
-            foreach (var chapter in Program.Character.Chapters)
+            foreach (var chapter in Program.CcsFile.Character.Chapters)
             {
                 var treeViewChapter = new TreeViewItem()
                 {

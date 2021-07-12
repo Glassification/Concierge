@@ -4,6 +4,8 @@
 
 namespace Concierge.Characters
 {
+    using Newtonsoft.Json;
+
     public class Wealth
     {
         public Wealth()
@@ -25,8 +27,10 @@ namespace Concierge.Characters
 
         public int Platinum { get; set; }
 
+        [JsonIgnore]
         public double TotalValue => (this.Copper / 100.0) + (this.Silver / 10.0) + (this.Electrum / 2.0) + this.Gold + (this.Platinum * 10.0);
 
+        [JsonIgnore]
         public int TotalCoins => this.Copper + this.Silver + this.Electrum + this.Gold + this.Platinum;
     }
 }

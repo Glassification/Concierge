@@ -16,12 +16,12 @@ namespace Concierge.SavingThrowsNamespace
             this.Proficiency = proficiency;
         }
 
-        public override StatusChecks StatusChecks => Program.Character.Vitality.Conditions.Fatigued.Equals("Three") ||
-                    Program.Character.Vitality.Conditions.Fatigued.Equals("Four") ||
-                    Program.Character.Vitality.Conditions.Fatigued.Equals("Five")
+        public override StatusChecks StatusChecks => Program.CcsFile.Character.Vitality.Conditions.Fatigued.Equals("Three") ||
+                    Program.CcsFile.Character.Vitality.Conditions.Fatigued.Equals("Four") ||
+                    Program.CcsFile.Character.Vitality.Conditions.Fatigued.Equals("Five")
                     ? StatusChecks.Disadvantage
-                    : Program.Character.Vitality.Conditions.Paralyzed.Equals("Paralyzed") ||
-                                             Program.Character.Vitality.Conditions.Stunned.Equals("Stunned")
+                    : Program.CcsFile.Character.Vitality.Conditions.Paralyzed.Equals("Paralyzed") ||
+                                             Program.CcsFile.Character.Vitality.Conditions.Stunned.Equals("Stunned")
                         ? StatusChecks.Fail
                         : StatusChecks.Normal;
 
@@ -33,10 +33,10 @@ namespace Concierge.SavingThrowsNamespace
 
                 if (this.Proficiency)
                 {
-                    this.bonus += Program.Character.ProficiencyBonus;
+                    this.bonus += Program.CcsFile.Character.ProficiencyBonus;
                 }
 
-                this.bonus += Utilities.CalculateBonus(Program.Character.Attributes.Strength);
+                this.bonus += Utilities.CalculateBonus(Program.CcsFile.Character.Attributes.Strength);
 
                 return this.bonus;
             }

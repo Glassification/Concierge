@@ -26,24 +26,24 @@ namespace Concierge.Presentation.DetailsPageUi
 
         private void FillFields()
         {
-            this.Trait1TextBox.Text = Program.Character.Personality.Trait1;
-            this.Trait2TextBox.Text = Program.Character.Personality.Trait2;
-            this.IdealTextBox.Text = Program.Character.Personality.Ideal;
-            this.BondTextBox.Text = Program.Character.Personality.Bond;
-            this.FlawTextBox.Text = Program.Character.Personality.Flaw;
-            this.BackgroundTextBox.Text = Program.Character.Personality.Background;
-            this.NotesTextBox.Text = Program.Character.Personality.Notes;
+            this.Trait1TextBox.Text = Program.CcsFile.Character.Personality.Trait1;
+            this.Trait2TextBox.Text = Program.CcsFile.Character.Personality.Trait2;
+            this.IdealTextBox.Text = Program.CcsFile.Character.Personality.Ideal;
+            this.BondTextBox.Text = Program.CcsFile.Character.Personality.Bond;
+            this.FlawTextBox.Text = Program.CcsFile.Character.Personality.Flaw;
+            this.BackgroundTextBox.Text = Program.CcsFile.Character.Personality.Background;
+            this.NotesTextBox.Text = Program.CcsFile.Character.Personality.Notes;
         }
 
         private void UpdatePersonality()
         {
-            Program.Character.Personality.Trait1 = this.Trait1TextBox.Text;
-            Program.Character.Personality.Trait2 = this.Trait2TextBox.Text;
-            Program.Character.Personality.Ideal = this.IdealTextBox.Text;
-            Program.Character.Personality.Bond = this.BondTextBox.Text;
-            Program.Character.Personality.Flaw = this.FlawTextBox.Text;
-            Program.Character.Personality.Background = this.BackgroundTextBox.Text;
-            Program.Character.Personality.Notes = this.NotesTextBox.Text;
+            Program.CcsFile.Character.Personality.Trait1 = this.Trait1TextBox.Text;
+            Program.CcsFile.Character.Personality.Trait2 = this.Trait2TextBox.Text;
+            Program.CcsFile.Character.Personality.Ideal = this.IdealTextBox.Text;
+            Program.CcsFile.Character.Personality.Bond = this.BondTextBox.Text;
+            Program.CcsFile.Character.Personality.Flaw = this.FlawTextBox.Text;
+            Program.CcsFile.Character.Personality.Background = this.BackgroundTextBox.Text;
+            Program.CcsFile.Character.Personality.Notes = this.NotesTextBox.Text;
 
             Program.Modified = true;
         }

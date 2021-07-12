@@ -155,11 +155,11 @@ namespace Concierge.Presentation.SpellcastingPageUi
         {
             if (this.Editing)
             {
-                this.UpdateSpell(Program.Character.GetSpellById(this.SelectedSpellId));
+                this.UpdateSpell(Program.CcsFile.Character.GetSpellById(this.SelectedSpellId));
             }
             else
             {
-                Program.Character.Spells.Add(this.ToSpell());
+                Program.CcsFile.Character.Spells.Add(this.ToSpell());
                 Program.Modified = true;
             }
 
@@ -168,7 +168,7 @@ namespace Concierge.Presentation.SpellcastingPageUi
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
-            Program.Character.Spells.Add(this.ToSpell());
+            Program.CcsFile.Character.Spells.Add(this.ToSpell());
             Program.Modified = true;
             this.ClearFields();
         }

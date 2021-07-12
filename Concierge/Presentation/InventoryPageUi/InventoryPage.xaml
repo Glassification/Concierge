@@ -187,6 +187,11 @@
                         Width="0.1*"
                         ElementStyle="{StaticResource ColumnElementStyle}"/>
                     <DataGridTextColumn
+                        Header="In Bag of Holding"
+                        Binding="{Binding IsInBagOfHolding}"
+                        Width="0.1*"
+                        ElementStyle="{StaticResource ColumnElementStyle}"/>
+                    <DataGridTextColumn
                         Header="Notes"
                         Binding="{Binding Note}"
                         Width="0.55*"

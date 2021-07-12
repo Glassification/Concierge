@@ -6,6 +6,8 @@ namespace Concierge.Characters.Collections
 {
     using System;
 
+    using Newtonsoft.Json;
+
     public class Language
     {
         public Language()
@@ -26,6 +28,7 @@ namespace Concierge.Characters.Collections
 
         public Guid ID { get; }
 
+        [JsonIgnore]
         public string Description => $"{this.Name} ({this.Script}), Spoken by: {this.Speakers}";
 
         public override string ToString()

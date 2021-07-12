@@ -39,21 +39,21 @@ namespace Concierge.Presentation.EquipmentPageUi
             this.FillWeaponList();
             this.FillAmmoList();
 
-            this.ArmorClassField.Text = Program.Character.Armor.TotalArmorClass.ToString();
-            this.ArmorWornField.Text = Program.Character.Armor.Equiped;
-            this.ArmorTypeField.Text = Program.Character.Armor.Type.ToString();
-            this.ArmorStealthField.Text = Program.Character.Armor.Stealth.ToString();
-            this.ShieldWornField.Text = Program.Character.Armor.Shield;
-            this.ShieldAcField.Text = Program.Character.Armor.ShieldArmorClass.ToString();
-            this.MiscBonusField.Text = Program.Character.Armor.MiscArmorClass.ToString();
-            this.MagicBonusField.Text = Program.Character.Armor.MagicArmorClass.ToString();
+            this.ArmorClassField.Text = Program.CcsFile.Character.Armor.TotalArmorClass.ToString();
+            this.ArmorWornField.Text = Program.CcsFile.Character.Armor.Equiped;
+            this.ArmorTypeField.Text = Program.CcsFile.Character.Armor.Type.ToString();
+            this.ArmorStealthField.Text = Program.CcsFile.Character.Armor.Stealth.ToString();
+            this.ShieldWornField.Text = Program.CcsFile.Character.Armor.Shield;
+            this.ShieldAcField.Text = Program.CcsFile.Character.Armor.ShieldArmorClass.ToString();
+            this.MiscBonusField.Text = Program.CcsFile.Character.Armor.MiscArmorClass.ToString();
+            this.MagicBonusField.Text = Program.CcsFile.Character.Armor.MagicArmorClass.ToString();
         }
 
         private void FillWeaponList()
         {
             this.WeaponDataGrid.Items.Clear();
 
-            foreach (var weapon in Program.Character.Weapons)
+            foreach (var weapon in Program.CcsFile.Character.Weapons)
             {
                 this.WeaponDataGrid.Items.Add(weapon);
             }
@@ -63,7 +63,7 @@ namespace Concierge.Presentation.EquipmentPageUi
         {
             this.AmmoDataGrid.Items.Clear();
 
-            foreach (var ammo in Program.Character.Ammunitions)
+            foreach (var ammo in Program.CcsFile.Character.Ammunitions)
             {
                 this.AmmoDataGrid.Items.Add(ammo);
             }
@@ -76,11 +76,11 @@ namespace Concierge.Presentation.EquipmentPageUi
             if (this.AmmoDataGrid.SelectedItem != null)
             {
                 var ammo = (Ammunition)this.AmmoDataGrid.SelectedItem;
-                index = Program.Character.Ammunitions.IndexOf(ammo);
+                index = Program.CcsFile.Character.Ammunitions.IndexOf(ammo);
 
                 if (index != 0)
                 {
-                    Utilities.Swap(Program.Character.Ammunitions, index, index - 1);
+                    Utilities.Swap(Program.CcsFile.Character.Ammunitions, index, index - 1);
                     this.FillAmmoList();
                     this.AmmoDataGrid.SelectedIndex = index - 1;
                 }
@@ -88,11 +88,11 @@ namespace Concierge.Presentation.EquipmentPageUi
             else if (this.WeaponDataGrid.SelectedItem != null)
             {
                 var weapon = (Weapon)this.WeaponDataGrid.SelectedItem;
-                index = Program.Character.Weapons.IndexOf(weapon);
+                index = Program.CcsFile.Character.Weapons.IndexOf(weapon);
 
                 if (index != 0)
                 {
-                    Utilities.Swap(Program.Character.Weapons, index, index - 1);
+                    Utilities.Swap(Program.CcsFile.Character.Weapons, index, index - 1);
                     this.FillWeaponList();
                     this.WeaponDataGrid.SelectedIndex = index - 1;
                 }
@@ -106,11 +106,11 @@ namespace Concierge.Presentation.EquipmentPageUi
             if (this.AmmoDataGrid.SelectedItem != null)
             {
                 var ammo = (Ammunition)this.AmmoDataGrid.SelectedItem;
-                index = Program.Character.Ammunitions.IndexOf(ammo);
+                index = Program.CcsFile.Character.Ammunitions.IndexOf(ammo);
 
-                if (index != Program.Character.Ammunitions.Count - 1)
+                if (index != Program.CcsFile.Character.Ammunitions.Count - 1)
                 {
-                    Utilities.Swap(Program.Character.Ammunitions, index, index + 1);
+                    Utilities.Swap(Program.CcsFile.Character.Ammunitions, index, index + 1);
                     this.FillAmmoList();
                     this.AmmoDataGrid.SelectedIndex = index + 1;
                 }
@@ -118,11 +118,11 @@ namespace Concierge.Presentation.EquipmentPageUi
             else if (this.WeaponDataGrid.SelectedItem != null)
             {
                 var weapon = (Weapon)this.WeaponDataGrid.SelectedItem;
-                index = Program.Character.Weapons.IndexOf(weapon);
+                index = Program.CcsFile.Character.Weapons.IndexOf(weapon);
 
-                if (index != Program.Character.Weapons.Count - 1)
+                if (index != Program.CcsFile.Character.Weapons.Count - 1)
                 {
-                    Utilities.Swap(Program.Character.Weapons, index, index + 1);
+                    Utilities.Swap(Program.CcsFile.Character.Weapons, index, index + 1);
                     this.FillWeaponList();
                     this.WeaponDataGrid.SelectedIndex = index + 1;
                 }
@@ -171,13 +171,13 @@ namespace Concierge.Presentation.EquipmentPageUi
             if (this.AmmoDataGrid.SelectedItem != null)
             {
                 var ammo = (Ammunition)this.AmmoDataGrid.SelectedItem;
-                Program.Character.Ammunitions.Remove(ammo);
+                Program.CcsFile.Character.Ammunitions.Remove(ammo);
                 this.FillAmmoList();
             }
             else if (this.WeaponDataGrid.SelectedItem != null)
             {
                 var weapon = (Weapon)this.WeaponDataGrid.SelectedItem;
-                Program.Character.Weapons.Remove(weapon);
+                Program.CcsFile.Character.Weapons.Remove(weapon);
                 this.FillWeaponList();
             }
         }
@@ -206,21 +206,21 @@ namespace Concierge.Presentation.EquipmentPageUi
 
         private void WeaponDataGrid_Sorted(object sender, RoutedEventArgs e)
         {
-            Program.Character.Weapons.Clear();
+            Program.CcsFile.Character.Weapons.Clear();
 
             foreach (var weapon in this.WeaponDataGrid.Items)
             {
-                Program.Character.Weapons.Add(weapon as Weapon);
+                Program.CcsFile.Character.Weapons.Add(weapon as Weapon);
             }
         }
 
         private void AmmoDataGrid_Sorted(object sender, RoutedEventArgs e)
         {
-            Program.Character.Ammunitions.Clear();
+            Program.CcsFile.Character.Ammunitions.Clear();
 
             foreach (var ammo in this.AmmoDataGrid.Items)
             {
-                Program.Character.Ammunitions.Add(ammo as Ammunition);
+                Program.CcsFile.Character.Ammunitions.Add(ammo as Ammunition);
             }
         }
     }

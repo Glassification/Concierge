@@ -26,52 +26,52 @@ namespace Concierge.Presentation.SpellcastingPageUi
 
         private void FillFields()
         {
-            this.UsedPactUpDown.Value = Program.Character.SpellSlots.PactUsed;
-            this.Used1UpDown.Value = Program.Character.SpellSlots.FirstUsed;
-            this.Used2UpDown.Value = Program.Character.SpellSlots.SecondUsed;
-            this.Used3UpDown.Value = Program.Character.SpellSlots.ThirdUsed;
-            this.Used4UpDown.Value = Program.Character.SpellSlots.FourthUsed;
-            this.Used5UpDown.Value = Program.Character.SpellSlots.FifthUsed;
-            this.Used6UpDown.Value = Program.Character.SpellSlots.SixthUsed;
-            this.Used7UpDown.Value = Program.Character.SpellSlots.SeventhUsed;
-            this.Used8UpDown.Value = Program.Character.SpellSlots.EighthUsed;
-            this.Used9UpDown.Value = Program.Character.SpellSlots.NinethUsed;
+            this.UsedPactUpDown.Value = Program.CcsFile.Character.SpellSlots.PactUsed;
+            this.Used1UpDown.Value = Program.CcsFile.Character.SpellSlots.FirstUsed;
+            this.Used2UpDown.Value = Program.CcsFile.Character.SpellSlots.SecondUsed;
+            this.Used3UpDown.Value = Program.CcsFile.Character.SpellSlots.ThirdUsed;
+            this.Used4UpDown.Value = Program.CcsFile.Character.SpellSlots.FourthUsed;
+            this.Used5UpDown.Value = Program.CcsFile.Character.SpellSlots.FifthUsed;
+            this.Used6UpDown.Value = Program.CcsFile.Character.SpellSlots.SixthUsed;
+            this.Used7UpDown.Value = Program.CcsFile.Character.SpellSlots.SeventhUsed;
+            this.Used8UpDown.Value = Program.CcsFile.Character.SpellSlots.EighthUsed;
+            this.Used9UpDown.Value = Program.CcsFile.Character.SpellSlots.NinethUsed;
 
-            this.TotalPactUpDown.Value = Program.Character.SpellSlots.PactTotal;
-            this.Total1UpDown.Value = Program.Character.SpellSlots.FirstTotal;
-            this.Total2UpDown.Value = Program.Character.SpellSlots.SecondTotal;
-            this.Total3UpDown.Value = Program.Character.SpellSlots.ThirdTotal;
-            this.Total4UpDown.Value = Program.Character.SpellSlots.FourthTotal;
-            this.Total5UpDown.Value = Program.Character.SpellSlots.FifthTotal;
-            this.Total6UpDown.Value = Program.Character.SpellSlots.SixthTotal;
-            this.Total7UpDown.Value = Program.Character.SpellSlots.SeventhTotal;
-            this.Total8UpDown.Value = Program.Character.SpellSlots.EighthTotal;
-            this.Total9UpDown.Value = Program.Character.SpellSlots.NinethTotal;
+            this.TotalPactUpDown.Value = Program.CcsFile.Character.SpellSlots.PactTotal;
+            this.Total1UpDown.Value = Program.CcsFile.Character.SpellSlots.FirstTotal;
+            this.Total2UpDown.Value = Program.CcsFile.Character.SpellSlots.SecondTotal;
+            this.Total3UpDown.Value = Program.CcsFile.Character.SpellSlots.ThirdTotal;
+            this.Total4UpDown.Value = Program.CcsFile.Character.SpellSlots.FourthTotal;
+            this.Total5UpDown.Value = Program.CcsFile.Character.SpellSlots.FifthTotal;
+            this.Total6UpDown.Value = Program.CcsFile.Character.SpellSlots.SixthTotal;
+            this.Total7UpDown.Value = Program.CcsFile.Character.SpellSlots.SeventhTotal;
+            this.Total8UpDown.Value = Program.CcsFile.Character.SpellSlots.EighthTotal;
+            this.Total9UpDown.Value = Program.CcsFile.Character.SpellSlots.NinethTotal;
         }
 
         private void UpdateSpellSlots()
         {
-            Program.Character.SpellSlots.PactUsed = this.UsedPactUpDown.Value ?? 0;
-            Program.Character.SpellSlots.FirstUsed = this.Used1UpDown.Value ?? 0;
-            Program.Character.SpellSlots.SecondUsed = this.Used2UpDown.Value ?? 0;
-            Program.Character.SpellSlots.ThirdUsed = this.Used3UpDown.Value ?? 0;
-            Program.Character.SpellSlots.FourthUsed = this.Used4UpDown.Value ?? 0;
-            Program.Character.SpellSlots.FifthUsed = this.Used5UpDown.Value ?? 0;
-            Program.Character.SpellSlots.SixthUsed = this.UsedPactUpDown.Value ?? 0;
-            Program.Character.SpellSlots.SeventhUsed = this.Used7UpDown.Value ?? 0;
-            Program.Character.SpellSlots.EighthUsed = this.Used8UpDown.Value ?? 0;
-            Program.Character.SpellSlots.NinethUsed = this.Used9UpDown.Value ?? 0;
+            Program.CcsFile.Character.SpellSlots.PactUsed = this.UsedPactUpDown.Value ?? 0;
+            Program.CcsFile.Character.SpellSlots.FirstUsed = this.Used1UpDown.Value ?? 0;
+            Program.CcsFile.Character.SpellSlots.SecondUsed = this.Used2UpDown.Value ?? 0;
+            Program.CcsFile.Character.SpellSlots.ThirdUsed = this.Used3UpDown.Value ?? 0;
+            Program.CcsFile.Character.SpellSlots.FourthUsed = this.Used4UpDown.Value ?? 0;
+            Program.CcsFile.Character.SpellSlots.FifthUsed = this.Used5UpDown.Value ?? 0;
+            Program.CcsFile.Character.SpellSlots.SixthUsed = this.UsedPactUpDown.Value ?? 0;
+            Program.CcsFile.Character.SpellSlots.SeventhUsed = this.Used7UpDown.Value ?? 0;
+            Program.CcsFile.Character.SpellSlots.EighthUsed = this.Used8UpDown.Value ?? 0;
+            Program.CcsFile.Character.SpellSlots.NinethUsed = this.Used9UpDown.Value ?? 0;
 
-            Program.Character.SpellSlots.PactTotal = this.TotalPactUpDown.Value ?? 0;
-            Program.Character.SpellSlots.FirstTotal = this.Total1UpDown.Value ?? 0;
-            Program.Character.SpellSlots.SecondTotal = this.Total2UpDown.Value ?? 0;
-            Program.Character.SpellSlots.ThirdTotal = this.Total3UpDown.Value ?? 0;
-            Program.Character.SpellSlots.FourthTotal = this.Total4UpDown.Value ?? 0;
-            Program.Character.SpellSlots.FifthTotal = this.Total5UpDown.Value ?? 0;
-            Program.Character.SpellSlots.SixthTotal = this.Total6UpDown.Value ?? 0;
-            Program.Character.SpellSlots.SeventhTotal = this.Total7UpDown.Value ?? 0;
-            Program.Character.SpellSlots.EighthTotal = this.Total8UpDown.Value ?? 0;
-            Program.Character.SpellSlots.NinethTotal = this.Total9UpDown.Value ?? 0;
+            Program.CcsFile.Character.SpellSlots.PactTotal = this.TotalPactUpDown.Value ?? 0;
+            Program.CcsFile.Character.SpellSlots.FirstTotal = this.Total1UpDown.Value ?? 0;
+            Program.CcsFile.Character.SpellSlots.SecondTotal = this.Total2UpDown.Value ?? 0;
+            Program.CcsFile.Character.SpellSlots.ThirdTotal = this.Total3UpDown.Value ?? 0;
+            Program.CcsFile.Character.SpellSlots.FourthTotal = this.Total4UpDown.Value ?? 0;
+            Program.CcsFile.Character.SpellSlots.FifthTotal = this.Total5UpDown.Value ?? 0;
+            Program.CcsFile.Character.SpellSlots.SixthTotal = this.Total6UpDown.Value ?? 0;
+            Program.CcsFile.Character.SpellSlots.SeventhTotal = this.Total7UpDown.Value ?? 0;
+            Program.CcsFile.Character.SpellSlots.EighthTotal = this.Total8UpDown.Value ?? 0;
+            Program.CcsFile.Character.SpellSlots.NinethTotal = this.Total9UpDown.Value ?? 0;
 
             Program.Modified = true;
         }

@@ -118,11 +118,11 @@ namespace Concierge.Presentation.SpellcastingPageUi
         {
             if (this.Editing)
             {
-                this.UpdateClass(Program.Character.GetMagicClassById(this.SelectedClassId));
+                this.UpdateClass(Program.CcsFile.Character.GetMagicClassById(this.SelectedClassId));
             }
             else
             {
-                Program.Character.MagicClasses.Add(this.ToClass());
+                Program.CcsFile.Character.MagicClasses.Add(this.ToClass());
                 Program.Modified = true;
             }
 
@@ -131,7 +131,7 @@ namespace Concierge.Presentation.SpellcastingPageUi
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
-            Program.Character.MagicClasses.Add(this.ToClass());
+            Program.CcsFile.Character.MagicClasses.Add(this.ToClass());
             Program.Modified = true;
             this.ClearFields();
         }

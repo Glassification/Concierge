@@ -139,7 +139,7 @@ namespace Concierge.Presentation.EquipmentPageUi
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
-            Program.Character.Weapons.Add(this.ToWeapon());
+            Program.CcsFile.Character.Weapons.Add(this.ToWeapon());
             Program.Modified = true;
             this.ClearFields();
         }
@@ -148,11 +148,11 @@ namespace Concierge.Presentation.EquipmentPageUi
         {
             if (this.Editing)
             {
-                this.UpdateWeapon(Program.Character.GetWeaponById(this.SelectedWeaponId));
+                this.UpdateWeapon(Program.CcsFile.Character.GetWeaponById(this.SelectedWeaponId));
             }
             else
             {
-                Program.Character.Weapons.Add(this.ToWeapon());
+                Program.CcsFile.Character.Weapons.Add(this.ToWeapon());
                 Program.Modified = true;
             }
 

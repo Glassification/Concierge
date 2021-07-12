@@ -4,23 +4,24 @@
 
 namespace Concierge
 {
-    using Concierge.Characters;
+    using Concierge.Logging;
     using Concierge.Persistence;
     using Concierge.Presentation.HelperUi;
+    using Concierge.Services;
+    using Concierge.Utility;
 
     public static class Program
     {
         static Program()
         {
-            Character = new Character();
+            InitializeLogger();
+
             ConciergeMessageWindow = new ConciergeMessageWindow();
             SaveStatusWindow = new SaveStatusWindow();
-            CcsFile = null;
             Modified = true;
             Typing = false;
+            ErrorService = new ErrorService(Logger);
         }
-
-        public static Character Character { get; private set; }
 
         public static CcsFile CcsFile { get; set; }
 
@@ -31,5 +32,17 @@ namespace Concierge
         public static bool Typing { get; set; }
 
         public static bool Modified { get; set; }
+
+        public static LocalLogger Logger { get; private set; }
+
+        public static ErrorService ErrorService { get; private set; }
+
+        private static void InitializeLogger()
+        {
+            Logger = new LocalLogger();
+
+            Logger.NewLine();
+            Logger.Info($"Starting Result Display v{Constants.AssemblyVersion}");
+        }
     }
 }

@@ -61,46 +61,46 @@ namespace Concierge.Presentation.DetailsPageUi
 
         private void DrawWealth()
         {
-            this.TotalWealthField.Text = "¤ " + string.Format("{0:0.00}", Program.Character.Wealth.TotalValue);
+            this.TotalWealthField.Text = "¤ " + string.Format("{0:0.00}", Program.CcsFile.Character.Wealth.TotalValue);
 
-            this.CopperField.Text = Program.Character.Wealth.Copper.ToString();
-            this.SilverField.Text = Program.Character.Wealth.Silver.ToString();
-            this.ElectrumField.Text = Program.Character.Wealth.Electrum.ToString();
-            this.GoldField.Text = Program.Character.Wealth.Gold.ToString();
-            this.PlatinumField.Text = Program.Character.Wealth.Platinum.ToString();
+            this.CopperField.Text = Program.CcsFile.Character.Wealth.Copper.ToString();
+            this.SilverField.Text = Program.CcsFile.Character.Wealth.Silver.ToString();
+            this.ElectrumField.Text = Program.CcsFile.Character.Wealth.Electrum.ToString();
+            this.GoldField.Text = Program.CcsFile.Character.Wealth.Gold.ToString();
+            this.PlatinumField.Text = Program.CcsFile.Character.Wealth.Platinum.ToString();
         }
 
         private void DrawWeight()
         {
-            this.WeightCarriedField.Text = Program.Character.CarryWeight.ToString();
-            this.LightWeightField.Text = Program.Character.LightCarryCapacity.ToString();
-            this.MediumWeightField.Text = Program.Character.MediumCarryCapacity.ToString();
-            this.HeavyWeightField.Text = Program.Character.HeavyCarryCapacity.ToString();
+            this.WeightCarriedField.Text = Program.CcsFile.Character.CarryWeight.ToString();
+            this.LightWeightField.Text = Program.CcsFile.Character.LightCarryCapacity.ToString();
+            this.MediumWeightField.Text = Program.CcsFile.Character.MediumCarryCapacity.ToString();
+            this.HeavyWeightField.Text = Program.CcsFile.Character.HeavyCarryCapacity.ToString();
 
             this.FormatCarryWeight();
         }
 
         private void DrawAppearance()
         {
-            this.GenderField.Text = Program.Character.Appearance.Gender;
-            this.AgeField.Text = Program.Character.Appearance.Age;
-            this.HeightField.Text = Program.Character.Appearance.Height;
-            this.WeightField.Text = Program.Character.Appearance.Weight;
-            this.HairColourField.Text = Program.Character.Appearance.HairColour;
-            this.SkinColourField.Text = Program.Character.Appearance.SkinColour;
-            this.EyeColourField.Text = Program.Character.Appearance.EyeColour;
-            this.MarksField.Text = Program.Character.Appearance.DistinguishingMarks;
+            this.GenderField.Text = Program.CcsFile.Character.Appearance.Gender;
+            this.AgeField.Text = Program.CcsFile.Character.Appearance.Age;
+            this.HeightField.Text = Program.CcsFile.Character.Appearance.Height;
+            this.WeightField.Text = Program.CcsFile.Character.Appearance.Weight;
+            this.HairColourField.Text = Program.CcsFile.Character.Appearance.HairColour;
+            this.SkinColourField.Text = Program.CcsFile.Character.Appearance.SkinColour;
+            this.EyeColourField.Text = Program.CcsFile.Character.Appearance.EyeColour;
+            this.MarksField.Text = Program.CcsFile.Character.Appearance.DistinguishingMarks;
         }
 
         private void DrawPersonality()
         {
-            this.TraitField1.Text = Program.Character.Personality.Trait1;
-            this.TraitField2.Text = Program.Character.Personality.Trait2;
-            this.IdealField.Text = Program.Character.Personality.Ideal;
-            this.BondField.Text = Program.Character.Personality.Bond;
-            this.FlawField.Text = Program.Character.Personality.Flaw;
-            this.BackgroundField.Text = Program.Character.Personality.Background;
-            this.NotesField.Text = Program.Character.Personality.Notes;
+            this.TraitField1.Text = Program.CcsFile.Character.Personality.Trait1;
+            this.TraitField2.Text = Program.CcsFile.Character.Personality.Trait2;
+            this.IdealField.Text = Program.CcsFile.Character.Personality.Ideal;
+            this.BondField.Text = Program.CcsFile.Character.Personality.Bond;
+            this.FlawField.Text = Program.CcsFile.Character.Personality.Flaw;
+            this.BackgroundField.Text = Program.CcsFile.Character.Personality.Background;
+            this.NotesField.Text = Program.CcsFile.Character.Personality.Notes;
         }
 
         private void DrawProficiencies()
@@ -110,34 +110,34 @@ namespace Concierge.Presentation.DetailsPageUi
             this.ShieldProficiencyDataGrid.Items.Clear();
             this.ToolProficiencyDataGrid.Items.Clear();
 
-            foreach (var weapon in Program.Character.Proficiency.Weapons)
+            foreach (var weapon in Program.CcsFile.Character.Proficiency.Weapons)
             {
                 this.WeaponProficiencyDataGrid.Items.Add(weapon);
             }
 
-            foreach (var armor in Program.Character.Proficiency.Armors)
+            foreach (var armor in Program.CcsFile.Character.Proficiency.Armors)
             {
                 this.ArmorProficiencyDataGrid.Items.Add(armor);
             }
 
-            foreach (var shield in Program.Character.Proficiency.Shields)
+            foreach (var shield in Program.CcsFile.Character.Proficiency.Shields)
             {
                 this.ShieldProficiencyDataGrid.Items.Add(shield);
             }
 
-            foreach (var tool in Program.Character.Proficiency.Tools)
+            foreach (var tool in Program.CcsFile.Character.Proficiency.Tools)
             {
                 this.ToolProficiencyDataGrid.Items.Add(tool);
             }
 
-            this.ProficiencyBonusField.Text = $"  Bonus: {Program.Character.ProficiencyBonus}  ";
+            this.ProficiencyBonusField.Text = $"  Bonus: {Program.CcsFile.Character.ProficiencyBonus}  ";
         }
 
         private void DrawLanguages()
         {
             this.LanguagesDataGrid.Items.Clear();
 
-            foreach (var language in Program.Character.Details.Languages)
+            foreach (var language in Program.CcsFile.Character.Details.Languages)
             {
                 this.LanguagesDataGrid.Items.Add(language);
             }
@@ -147,7 +147,7 @@ namespace Concierge.Presentation.DetailsPageUi
         {
             this.ConditionsDataGrid.Items.Clear();
 
-            foreach (var condition in Program.Character.Vitality.Conditions.ToArray())
+            foreach (var condition in Program.CcsFile.Character.Vitality.Conditions.ToArray())
             {
                 this.ConditionsDataGrid.Items.Add(condition);
             }
@@ -155,19 +155,19 @@ namespace Concierge.Presentation.DetailsPageUi
 
         private void FormatCarryWeight()
         {
-            var weight = Program.Character.CarryWeight;
+            var weight = Program.CcsFile.Character.CarryWeight;
 
-            if (weight <= Program.Character.LightCarryCapacity)
+            if (weight <= Program.CcsFile.Character.LightCarryCapacity)
             {
                 this.WeightCarriedField.Foreground = Brushes.Black;
                 this.WeightCarriedBox.Background = new SolidColorBrush(Colours.LightGreen);
             }
-            else if (weight > Program.Character.LightCarryCapacity && weight <= Program.Character.MediumCarryCapacity)
+            else if (weight > Program.CcsFile.Character.LightCarryCapacity && weight <= Program.CcsFile.Character.MediumCarryCapacity)
             {
                 this.WeightCarriedField.Foreground = new SolidColorBrush(Colours.MediumRed);
                 this.WeightCarriedBox.Background = new SolidColorBrush(Colours.LightYellow);
             }
-            else if (weight > Program.Character.MediumCarryCapacity && weight <= Program.Character.HeavyCarryCapacity)
+            else if (weight > Program.CcsFile.Character.MediumCarryCapacity && weight <= Program.CcsFile.Character.HeavyCarryCapacity)
             {
                 this.WeightCarriedField.Foreground = Brushes.DarkRed;
                 this.WeightCarriedBox.Background = Brushes.Pink;
@@ -190,25 +190,25 @@ namespace Concierge.Presentation.DetailsPageUi
             if (this.WeaponProficiencyDataGrid.SelectedItem != null)
             {
                 var weapon = (KeyValuePair<Guid, string>)this.WeaponProficiencyDataGrid.SelectedItem;
-                Program.Character.Proficiency.Weapons.Remove(weapon.Key);
+                Program.CcsFile.Character.Proficiency.Weapons.Remove(weapon.Key);
                 this.DrawProficiencies();
             }
             else if (this.ArmorProficiencyDataGrid.SelectedItem != null)
             {
                 var armor = (KeyValuePair<Guid, string>)this.ArmorProficiencyDataGrid.SelectedItem;
-                Program.Character.Proficiency.Armors.Remove(armor.Key);
+                Program.CcsFile.Character.Proficiency.Armors.Remove(armor.Key);
                 this.DrawProficiencies();
             }
             else if (this.ShieldProficiencyDataGrid.SelectedItem != null)
             {
                 var shield = (KeyValuePair<Guid, string>)this.ShieldProficiencyDataGrid.SelectedItem;
-                Program.Character.Proficiency.Shields.Remove(shield.Key);
+                Program.CcsFile.Character.Proficiency.Shields.Remove(shield.Key);
                 this.DrawProficiencies();
             }
             else if (this.ToolProficiencyDataGrid.SelectedItem != null)
             {
                 var tool = (KeyValuePair<Guid, string>)this.ToolProficiencyDataGrid.SelectedItem;
-                Program.Character.Proficiency.Tools.Remove(tool.Key);
+                Program.CcsFile.Character.Proficiency.Tools.Remove(tool.Key);
                 this.DrawProficiencies();
             }
         }
@@ -327,7 +327,7 @@ namespace Concierge.Presentation.DetailsPageUi
         {
             if (this.LanguagesDataGrid.SelectedItem != null)
             {
-                Program.Character.Details.Languages.Remove(this.LanguagesDataGrid.SelectedItem as Language);
+                Program.CcsFile.Character.Details.Languages.Remove(this.LanguagesDataGrid.SelectedItem as Language);
                 this.DrawLanguages();
             }
         }
@@ -356,55 +356,55 @@ namespace Concierge.Presentation.DetailsPageUi
 
         private void WeaponProficiencyDataGrid_Sorted(object sender, RoutedEventArgs e)
         {
-            Program.Character.Proficiency.Weapons.Clear();
+            Program.CcsFile.Character.Proficiency.Weapons.Clear();
 
             foreach (var weapon in this.WeaponProficiencyDataGrid.Items)
             {
                 var keyValuePair = (KeyValuePair<Guid, string>)weapon;
-                Program.Character.Proficiency.Weapons.Add(keyValuePair.Key, keyValuePair.Value);
+                Program.CcsFile.Character.Proficiency.Weapons.Add(keyValuePair.Key, keyValuePair.Value);
             }
         }
 
         private void ArmorProficiencyDataGrid_Sorted(object sender, RoutedEventArgs e)
         {
-            Program.Character.Proficiency.Armors.Clear();
+            Program.CcsFile.Character.Proficiency.Armors.Clear();
 
             foreach (var armor in this.ArmorProficiencyDataGrid.Items)
             {
                 var keyValuePair = (KeyValuePair<Guid, string>)armor;
-                Program.Character.Proficiency.Armors.Add(keyValuePair.Key, keyValuePair.Value);
+                Program.CcsFile.Character.Proficiency.Armors.Add(keyValuePair.Key, keyValuePair.Value);
             }
         }
 
         private void ShieldProficiencyDataGrid_Sorted(object sender, RoutedEventArgs e)
         {
-            Program.Character.Proficiency.Shields.Clear();
+            Program.CcsFile.Character.Proficiency.Shields.Clear();
 
             foreach (var shield in this.ShieldProficiencyDataGrid.Items)
             {
                 var keyValuePair = (KeyValuePair<Guid, string>)shield;
-                Program.Character.Proficiency.Shields.Add(keyValuePair.Key, keyValuePair.Value);
+                Program.CcsFile.Character.Proficiency.Shields.Add(keyValuePair.Key, keyValuePair.Value);
             }
         }
 
         private void ToolProficiencyDataGrid_Sorted(object sender, RoutedEventArgs e)
         {
-            Program.Character.Proficiency.Tools.Clear();
+            Program.CcsFile.Character.Proficiency.Tools.Clear();
 
             foreach (var tool in this.ToolProficiencyDataGrid.Items)
             {
                 var keyValuePair = (KeyValuePair<Guid, string>)tool;
-                Program.Character.Proficiency.Tools.Add(keyValuePair.Key, keyValuePair.Value);
+                Program.CcsFile.Character.Proficiency.Tools.Add(keyValuePair.Key, keyValuePair.Value);
             }
         }
 
         private void LanguagesDataGrid_Sorted(object sender, RoutedEventArgs e)
         {
-            Program.Character.Details.Languages.Clear();
+            Program.CcsFile.Character.Details.Languages.Clear();
 
             foreach (var language in this.LanguagesDataGrid.Items)
             {
-                Program.Character.Details.Languages.Add(language as Language);
+                Program.CcsFile.Character.Details.Languages.Add(language as Language);
             }
         }
     }

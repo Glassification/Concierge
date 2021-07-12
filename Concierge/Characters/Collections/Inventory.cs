@@ -24,6 +24,8 @@ namespace Concierge.Characters.Collections
 
         public double Weight { get; set; }
 
+        public bool IsInBagOfHolding { get; set; }
+
         public string Note { get; set; }
 
         public Guid ID { get; private set; }

@@ -31,21 +31,21 @@ namespace Concierge.Presentation.OverviewPageUi
 
         private void FillFields()
         {
-            this.InitiativeTextBox.Text = Program.Character.Initiative.ToString();
-            this.InitiativeBonusUpDown.Value = Program.Character.Details.InitiativeBonus;
-            this.PerceptionTextBox.Text = Program.Character.PassivePerception.ToString();
-            this.PerceptionBonusUpDown.Value = Program.Character.Details.PerceptionBonus;
-            this.VisionComboBox.Text = Program.Character.Details.Vision.ToString();
-            this.MovementTextBox.Text = Program.Character.Details.Movement.ToString();
-            this.BaseMovementUpDown.Value = Program.Character.Details.BaseMovement;
+            this.InitiativeTextBox.Text = Program.CcsFile.Character.Initiative.ToString();
+            this.InitiativeBonusUpDown.Value = Program.CcsFile.Character.Details.InitiativeBonus;
+            this.PerceptionTextBox.Text = Program.CcsFile.Character.PassivePerception.ToString();
+            this.PerceptionBonusUpDown.Value = Program.CcsFile.Character.Details.PerceptionBonus;
+            this.VisionComboBox.Text = Program.CcsFile.Character.Details.Vision.ToString();
+            this.MovementTextBox.Text = Program.CcsFile.Character.Details.Movement.ToString();
+            this.BaseMovementUpDown.Value = Program.CcsFile.Character.Details.BaseMovement;
         }
 
         private void UpdateSenses()
         {
-            Program.Character.Details.InitiativeBonus = this.InitiativeBonusUpDown.Value ?? 0;
-            Program.Character.Details.PerceptionBonus = this.PerceptionBonusUpDown.Value ?? 0;
-            Program.Character.Details.Vision = (VisionTypes)Enum.Parse(typeof(VisionTypes), this.VisionComboBox.Text);
-            Program.Character.Details.BaseMovement = this.BaseMovementUpDown.Value ?? 0;
+            Program.CcsFile.Character.Details.InitiativeBonus = this.InitiativeBonusUpDown.Value ?? 0;
+            Program.CcsFile.Character.Details.PerceptionBonus = this.PerceptionBonusUpDown.Value ?? 0;
+            Program.CcsFile.Character.Details.Vision = (VisionTypes)Enum.Parse(typeof(VisionTypes), this.VisionComboBox.Text);
+            Program.CcsFile.Character.Details.BaseMovement = this.BaseMovementUpDown.Value ?? 0;
 
             Program.Modified = true;
         }

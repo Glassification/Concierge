@@ -26,22 +26,22 @@ namespace Concierge.Presentation.OverviewPageUi
 
         private void FillFields()
         {
-            this.StrengthUpDown.Value = Program.Character.Attributes.Strength;
-            this.DexterityUpDown.Value = Program.Character.Attributes.Dexterity;
-            this.ConstitutionUpDown.Value = Program.Character.Attributes.Constitution;
-            this.IntelligenceUpDown.Value = Program.Character.Attributes.Intelligence;
-            this.WisdomUpDown.Value = Program.Character.Attributes.Wisdom;
-            this.CharismaUpDown.Value = Program.Character.Attributes.Charisma;
+            this.StrengthUpDown.Value = Program.CcsFile.Character.Attributes.Strength;
+            this.DexterityUpDown.Value = Program.CcsFile.Character.Attributes.Dexterity;
+            this.ConstitutionUpDown.Value = Program.CcsFile.Character.Attributes.Constitution;
+            this.IntelligenceUpDown.Value = Program.CcsFile.Character.Attributes.Intelligence;
+            this.WisdomUpDown.Value = Program.CcsFile.Character.Attributes.Wisdom;
+            this.CharismaUpDown.Value = Program.CcsFile.Character.Attributes.Charisma;
         }
 
         private void UpdateAttributes()
         {
-            Program.Character.Attributes.Strength = this.StrengthUpDown.Value ?? 0;
-            Program.Character.Attributes.Dexterity = this.DexterityUpDown.Value ?? 0;
-            Program.Character.Attributes.Constitution = this.ConstitutionUpDown.Value ?? 0;
-            Program.Character.Attributes.Intelligence = this.IntelligenceUpDown.Value ?? 0;
-            Program.Character.Attributes.Wisdom = this.WisdomUpDown.Value ?? 0;
-            Program.Character.Attributes.Charisma = this.CharismaUpDown.Value ?? 0;
+            Program.CcsFile.Character.Attributes.Strength = this.StrengthUpDown.Value ?? 0;
+            Program.CcsFile.Character.Attributes.Dexterity = this.DexterityUpDown.Value ?? 0;
+            Program.CcsFile.Character.Attributes.Constitution = this.ConstitutionUpDown.Value ?? 0;
+            Program.CcsFile.Character.Attributes.Intelligence = this.IntelligenceUpDown.Value ?? 0;
+            Program.CcsFile.Character.Attributes.Wisdom = this.WisdomUpDown.Value ?? 0;
+            Program.CcsFile.Character.Attributes.Charisma = this.CharismaUpDown.Value ?? 0;
 
             Program.Modified = true;
         }

@@ -5,6 +5,7 @@
 namespace Concierge.SkillsNamespace
 {
     using Concierge.Characters.Enums;
+    using Newtonsoft.Json;
 
     public abstract class Skills
     {
@@ -20,11 +21,13 @@ namespace Concierge.SkillsNamespace
             set;
         }
 
+        [JsonIgnore]
         public abstract StatusChecks Checks
         {
             get;
         }
 
+        [JsonIgnore]
         public abstract int Bonus
         {
             get;

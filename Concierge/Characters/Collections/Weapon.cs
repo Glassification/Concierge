@@ -8,6 +8,7 @@ namespace Concierge.Characters.Collections
 
     using Concierge.Characters.Enums;
     using Concierge.Utility;
+    using Newtonsoft.Json;
 
     public class Weapon
     {
@@ -25,32 +26,33 @@ namespace Concierge.Characters.Collections
 
         public string Name { get; set; }
 
+        [JsonIgnore]
         public int Attack
         {
             get
             {
                 int bonus = 0;
 
-                if (Program.Character.IsWeaponProficient(this))
+                if (Program.CcsFile.Character.IsWeaponProficient(this))
                 {
-                    bonus = Program.Character.ProficiencyBonus;
+                    bonus = Program.CcsFile.Character.ProficiencyBonus;
                 }
 
                 switch (this.Ability)
                 {
                     default:
                     case Abilities.STR:
-                        return Utilities.CalculateBonus(Program.Character.Attributes.Strength) + bonus;
+                        return Utilities.CalculateBonus(Program.CcsFile.Character.Attributes.Strength) + bonus;
                     case Abilities.DEX:
-                        return Utilities.CalculateBonus(Program.Character.Attributes.Dexterity) + bonus;
+                        return Utilities.CalculateBonus(Program.CcsFile.Character.Attributes.Dexterity) + bonus;
                     case Abilities.CON:
-                        return Utilities.CalculateBonus(Program.Character.Attributes.Constitution) + bonus;
+                        return Utilities.CalculateBonus(Program.CcsFile.Character.Attributes.Constitution) + bonus;
                     case Abilities.INT:
-                        return Utilities.CalculateBonus(Program.Character.Attributes.Intelligence) + bonus;
+                        return Utilities.CalculateBonus(Program.CcsFile.Character.Attributes.Intelligence) + bonus;
                     case Abilities.WIS:
-                        return Utilities.CalculateBonus(Program.Character.Attributes.Wisdom) + bonus;
+                        return Utilities.CalculateBonus(Program.CcsFile.Character.Attributes.Wisdom) + bonus;
                     case Abilities.CHA:
-                        return Utilities.CalculateBonus(Program.Character.Attributes.Charisma) + bonus;
+                        return Utilities.CalculateBonus(Program.CcsFile.Character.Attributes.Charisma) + bonus;
                 }
             }
         }

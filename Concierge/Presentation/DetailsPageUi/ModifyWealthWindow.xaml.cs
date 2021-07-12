@@ -32,11 +32,11 @@ namespace Concierge.Presentation.DetailsPageUi
         {
             this.ClearFields();
 
-            this.CP = Program.Character.Wealth.Copper;
-            this.SP = Program.Character.Wealth.Silver;
-            this.EP = Program.Character.Wealth.Electrum;
-            this.GP = Program.Character.Wealth.Gold;
-            this.PP = Program.Character.Wealth.Platinum;
+            this.CP = Program.CcsFile.Character.Wealth.Copper;
+            this.SP = Program.CcsFile.Character.Wealth.Silver;
+            this.EP = Program.CcsFile.Character.Wealth.Electrum;
+            this.GP = Program.CcsFile.Character.Wealth.Gold;
+            this.PP = Program.CcsFile.Character.Wealth.Platinum;
 
             this.FillFields();
 
@@ -73,11 +73,11 @@ namespace Concierge.Presentation.DetailsPageUi
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
-            Program.Character.Wealth.Copper = this.CP;
-            Program.Character.Wealth.Silver = this.SP;
-            Program.Character.Wealth.Electrum = this.EP;
-            Program.Character.Wealth.Gold = this.GP;
-            Program.Character.Wealth.Platinum = this.PP;
+            Program.CcsFile.Character.Wealth.Copper = this.CP;
+            Program.CcsFile.Character.Wealth.Silver = this.SP;
+            Program.CcsFile.Character.Wealth.Electrum = this.EP;
+            Program.CcsFile.Character.Wealth.Gold = this.GP;
+            Program.CcsFile.Character.Wealth.Platinum = this.PP;
 
             Program.Modified = true;
             this.Hide();

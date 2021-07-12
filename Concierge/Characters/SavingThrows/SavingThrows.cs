@@ -5,6 +5,7 @@
 namespace Concierge.SavingThrowsNamespace
 {
     using Concierge.Characters.Enums;
+    using Newtonsoft.Json;
 
     public abstract class SavingThrows
     {
@@ -14,11 +15,13 @@ namespace Concierge.SavingThrowsNamespace
             set;
         }
 
+        [JsonIgnore]
         public abstract StatusChecks StatusChecks
         {
             get;
         }
 
+        [JsonIgnore]
         public abstract int Bonus
         {
             get;
