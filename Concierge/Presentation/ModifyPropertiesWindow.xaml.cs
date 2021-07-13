@@ -27,6 +27,8 @@ namespace Concierge.Presentation
             this.Class1ComboBox.ItemsSource = Enum.GetValues(typeof(ClassType)).Cast<ClassType>();
             this.Class2ComboBox.ItemsSource = Enum.GetValues(typeof(ClassType)).Cast<ClassType>();
             this.Class3ComboBox.ItemsSource = Enum.GetValues(typeof(ClassType)).Cast<ClassType>();
+
+            Program.Logger.Info($"Initialized {nameof(ModifyPropertiesWindow)}.");
         }
 
         public void ShowWindow()
@@ -37,6 +39,8 @@ namespace Concierge.Presentation
 
         private void Read()
         {
+            Program.Logger.Info($"Read character sheet.");
+
             this.NameTextBox.Text = Program.CcsFile.Character.Details.Name;
             this.RaceComboBox.Text = Program.CcsFile.Character.Details.Race;
             this.BackgroundComboBox.Text = Program.CcsFile.Character.Details.Background;
@@ -51,6 +55,8 @@ namespace Concierge.Presentation
 
         private void Write()
         {
+            Program.Logger.Info($"Write character sheet.");
+
             Program.CcsFile.Character.Details.Name = this.NameTextBox.Text;
             Program.CcsFile.Character.Details.Race = this.RaceComboBox.Text;
             Program.CcsFile.Character.Details.Background = this.BackgroundComboBox.Text;
@@ -68,6 +74,7 @@ namespace Concierge.Presentation
             switch (e.Key)
             {
                 case Key.Escape:
+                    Program.Logger.Info($"ESCAPE key pressed.");
                     this.Hide();
                     break;
             }
@@ -75,22 +82,30 @@ namespace Concierge.Presentation
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
+            Program.Logger.Info($"OK button click.");
+
             this.Write();
             this.Hide();
         }
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
+            Program.Logger.Info($"Apply button click.");
+
             this.Write();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
+            Program.Logger.Info($"Cancel button click.");
+
             this.Hide();
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
+            Program.Logger.Info($"Close button click.");
+
             this.Hide();
         }
 

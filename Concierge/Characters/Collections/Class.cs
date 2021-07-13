@@ -37,7 +37,7 @@ namespace Concierge.Characters.Collections
             {
                 if (value <= Constants.MaxLevel && value >= 0)
                 {
-                    if (Program.CcsFile.Character.ValidateClassLevel(value, this.ID))
+                    if (Utilities.ValidateClassLevel(Program.CcsFile.Character.Classess, this.ID))
                     {
                         this._level = value;
                     }

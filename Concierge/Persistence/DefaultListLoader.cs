@@ -6,12 +6,11 @@ namespace Concierge.Persistence
 {
     using System;
     using System.Collections.Generic;
-    using System.Windows;
     using System.Xml.Linq;
 
     using Concierge.Characters.Collections;
     using Concierge.Characters.Enums;
-    using Concierge.Utility;
+    using Concierge.Exceptions.Enums;
 
     public static class DefaultListLoader
     {
@@ -42,11 +41,12 @@ namespace Concierge.Persistence
 
                     weapons.Add(weapon);
                 }
+
+                Program.Logger.Info("Weapons loaded successfully.");
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                Console.WriteLine(e.StackTrace);
-                _ = MessageBox.Show("Error: Default weapon list not loaded successfully", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                Program.ErrorService.LogError(ex, Severity.Release);
             }
 
             return weapons;
@@ -75,11 +75,12 @@ namespace Concierge.Persistence
 
                     ammunitions.Add(ammunition);
                 }
+
+                Program.Logger.Info("Ammunition loaded successfully.");
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                Console.WriteLine(e.StackTrace);
-                _ = MessageBox.Show("Error: Default ammunition list not loaded successfully", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                Program.ErrorService.LogError(ex, Severity.Release);
             }
 
             return ammunitions;
@@ -117,11 +118,12 @@ namespace Concierge.Persistence
 
                     spells.Add(spell);
                 }
+
+                Program.Logger.Info("Spells loaded successfully.");
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                Console.WriteLine(e.StackTrace);
-                _ = MessageBox.Show("Error: Default spell list not loaded successfully", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                Program.ErrorService.LogError(ex, Severity.Release);
             }
 
             return spells;
@@ -149,11 +151,12 @@ namespace Concierge.Persistence
 
                     inventories.Add(inventory);
                 }
+
+                Program.Logger.Info("Items loaded successfully.");
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                Console.WriteLine(e.StackTrace);
-                _ = MessageBox.Show("Error: Default item list not loaded successfully", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                Program.ErrorService.LogError(ex, Severity.Release);
             }
 
             return inventories;
@@ -180,11 +183,12 @@ namespace Concierge.Persistence
 
                     languages.Add(language);
                 }
+
+                Program.Logger.Info("Languages loaded successfully.");
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                Console.WriteLine(e.StackTrace);
-                _ = MessageBox.Show("Error: Default language list not loaded successfully", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                Program.ErrorService.LogError(ex, Severity.Release);
             }
 
             return languages;

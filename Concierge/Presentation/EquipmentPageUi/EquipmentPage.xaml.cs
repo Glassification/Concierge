@@ -36,17 +36,19 @@ namespace Concierge.Presentation.EquipmentPageUi
 
         public void Draw()
         {
+            var armor = Program.CcsFile.Character.Armor;
+
             this.FillWeaponList();
             this.FillAmmoList();
 
-            this.ArmorClassField.Text = Program.CcsFile.Character.Armor.TotalArmorClass.ToString();
-            this.ArmorWornField.Text = Program.CcsFile.Character.Armor.Equiped;
-            this.ArmorTypeField.Text = Program.CcsFile.Character.Armor.Type.ToString();
-            this.ArmorStealthField.Text = Program.CcsFile.Character.Armor.Stealth.ToString();
-            this.ShieldWornField.Text = Program.CcsFile.Character.Armor.Shield;
-            this.ShieldAcField.Text = Program.CcsFile.Character.Armor.ShieldArmorClass.ToString();
-            this.MiscBonusField.Text = Program.CcsFile.Character.Armor.MiscArmorClass.ToString();
-            this.MagicBonusField.Text = Program.CcsFile.Character.Armor.MagicArmorClass.ToString();
+            this.ArmorClassField.Text = armor.TotalArmorClass.ToString();
+            this.ArmorWornField.Text = armor.Equiped;
+            this.ArmorTypeField.Text = armor.Type.ToString();
+            this.ArmorStealthField.Text = armor.Stealth.ToString();
+            this.ShieldWornField.Text = armor.Shield;
+            this.ShieldAcField.Text = armor.ShieldArmorClass.ToString();
+            this.MiscBonusField.Text = armor.MiscArmorClass.ToString();
+            this.MagicBonusField.Text = armor.MagicArmorClass.ToString();
         }
 
         private void FillWeaponList()
@@ -71,12 +73,10 @@ namespace Concierge.Presentation.EquipmentPageUi
 
         private void ButtonUp_Click(object sender, RoutedEventArgs e)
         {
-            int index;
-
             if (this.AmmoDataGrid.SelectedItem != null)
             {
                 var ammo = (Ammunition)this.AmmoDataGrid.SelectedItem;
-                index = Program.CcsFile.Character.Ammunitions.IndexOf(ammo);
+                var index = Program.CcsFile.Character.Ammunitions.IndexOf(ammo);
 
                 if (index != 0)
                 {
@@ -88,7 +88,7 @@ namespace Concierge.Presentation.EquipmentPageUi
             else if (this.WeaponDataGrid.SelectedItem != null)
             {
                 var weapon = (Weapon)this.WeaponDataGrid.SelectedItem;
-                index = Program.CcsFile.Character.Weapons.IndexOf(weapon);
+                var index = Program.CcsFile.Character.Weapons.IndexOf(weapon);
 
                 if (index != 0)
                 {
@@ -101,12 +101,10 @@ namespace Concierge.Presentation.EquipmentPageUi
 
         private void ButtonDown_Click(object sender, RoutedEventArgs e)
         {
-            int index;
-
             if (this.AmmoDataGrid.SelectedItem != null)
             {
                 var ammo = (Ammunition)this.AmmoDataGrid.SelectedItem;
-                index = Program.CcsFile.Character.Ammunitions.IndexOf(ammo);
+                var index  = Program.CcsFile.Character.Ammunitions.IndexOf(ammo);
 
                 if (index != Program.CcsFile.Character.Ammunitions.Count - 1)
                 {
@@ -118,7 +116,7 @@ namespace Concierge.Presentation.EquipmentPageUi
             else if (this.WeaponDataGrid.SelectedItem != null)
             {
                 var weapon = (Weapon)this.WeaponDataGrid.SelectedItem;
-                index = Program.CcsFile.Character.Weapons.IndexOf(weapon);
+                var index  = Program.CcsFile.Character.Weapons.IndexOf(weapon);
 
                 if (index != Program.CcsFile.Character.Weapons.Count - 1)
                 {

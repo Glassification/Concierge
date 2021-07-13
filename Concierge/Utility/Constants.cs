@@ -4,7 +4,6 @@
 
 namespace Concierge.Utility
 {
-    using System;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using System.Reflection;
@@ -15,7 +14,6 @@ namespace Concierge.Utility
     public static class Constants
     {
         public const int MaxLevel = 20;
-        public const string NewFile = "<NEW_FILE>";
         public const int BaseDC = 8;
         public const int CoinGroup = 50;
         public const int MaxScore = 30;
@@ -117,7 +115,7 @@ namespace Concierge.Utility
         {
             get
             {
-                Version version = Assembly.GetExecutingAssembly().GetName().Version;
+                var version = Assembly.GetExecutingAssembly().GetName().Version;
                 return $"{version.Major}.{version.Minor}.{version.Build}";
             }
         }

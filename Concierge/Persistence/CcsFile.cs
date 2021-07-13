@@ -7,6 +7,7 @@ namespace Concierge.Persistence
     using System.IO;
 
     using Concierge.Characters;
+    using Concierge.Utility;
     using Newtonsoft.Json;
 
     public class CcsFile
@@ -27,6 +28,10 @@ namespace Concierge.Persistence
 
         public bool UseEncumbrance { get; set; }
 
+        public string Version { get; set; }
+
+        public bool CheckVersion { get; set; }
+
         [JsonIgnore]
         public string FileName => Path.GetFileName(this.AbsolutePath);
 
@@ -42,6 +47,8 @@ namespace Concierge.Persistence
             this.AutosaveInterval = 1;
             this.UseCoinWeight = false;
             this.UseEncumbrance = false;
+            this.CheckVersion = false;
+            this.Version = Constants.AssemblyVersion;
         }
     }
 }

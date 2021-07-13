@@ -13,6 +13,7 @@ namespace Concierge.Presentation.InventoryPageUi
     /// <summary>
     /// Interaction logic for InventoryPage.xaml.
     /// </summary>
+    [System.Runtime.InteropServices.Guid("09356E68-3748-4686-8507-80745407DAF7")]
     public partial class InventoryPage : Page
     {
         public InventoryPage()

@@ -33,6 +33,13 @@ namespace Concierge.Persistence
 
                 ccsFile.AbsolutePath = file;
 
+                if (ccsFile.CheckVersion && !CheckVersion(ccsFile.Version))
+                {
+                    return new CcsFile();
+                }
+
+                Program.Modified = false;
+
                 return ccsFile;
             }
             catch (Exception ex)

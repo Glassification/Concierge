@@ -9,6 +9,8 @@ namespace Concierge.Utility
     using System.Linq;
     using System.Windows.Media;
 
+    using Concierge.Characters.Collections;
+
     public static class Utilities
     {
         public static int CalculateBonus(int score)
@@ -40,6 +42,21 @@ namespace Concierge.Utility
             return name;
         }
 
+        public static bool ValidateClassLevel(List<Class> classes, Guid id)
+        {
+            int totalLevel = 0;
+
+            foreach (Class @class in classes)
+            {
+                if (!@class.ID.Equals(id))
+                {
+                    totalLevel += @class.Level;
+                }
+            }
+
+            return totalLevel <= Constants.MaxLevel && totalLevel >= 0;
+        }
+
         public static Brush SetUsedTextStyle(int total, int used)
         {
             return total <= used ? Brushes.DarkRed : Brushes.White;
@@ -47,7 +64,7 @@ namespace Concierge.Utility
 
         public static Brush SetUsedBoxStyle(int total, int used)
         {
-            return total <= used ? Brushes.IndianRed : new SolidColorBrush(Color.FromArgb(255, 62, 62, 66));
+            return total <= used ? Brushes.IndianRed : Colours.UsedBoxBrush;
         }
 
         public static Brush SetTotalTextStyle(int total, int used)
@@ -57,7 +74,7 @@ namespace Concierge.Utility
 
         public static Brush SetTotalBoxStyle(int total, int used)
         {
-            return total <= used ? new SolidColorBrush(Color.FromArgb(255, 15, 15, 15)) : new SolidColorBrush(Color.FromArgb(255, 51, 51, 51));
+            return total <= used ? Colours.TotalDarkBoxBrush : Colours.TotalLightBoxBrush;
         }
     }
 }

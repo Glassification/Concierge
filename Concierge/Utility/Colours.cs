@@ -8,6 +8,19 @@ namespace Concierge.Utility
 
     public static class Colours
     {
+        static Colours()
+        {
+            UsedBoxBrush = new SolidColorBrush(Color.FromArgb(255, 62, 62, 66));
+            TotalDarkBoxBrush = new SolidColorBrush(Color.FromArgb(255, 15, 15, 15));
+            TotalLightBoxBrush = new SolidColorBrush(Color.FromArgb(255, 51, 51, 51));
+        }
+
+        public static SolidColorBrush TotalDarkBoxBrush { get; }
+
+        public static SolidColorBrush TotalLightBoxBrush { get; }
+
+        public static SolidColorBrush UsedBoxBrush { get; }
+
         /// =========================================
         /// LightGreen()
         /// -----------------------------------------

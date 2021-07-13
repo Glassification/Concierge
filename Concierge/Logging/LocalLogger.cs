@@ -14,6 +14,8 @@ namespace Concierge.Logging
 
     public class LocalLogger : Logger
     {
+        private const string DefaultLoggingFolder = "Logging";
+
         public LocalLogger()
         : base()
         {
@@ -78,7 +80,9 @@ namespace Concierge.Logging
 
         private string FormatLogFilePath(string filePath)
         {
-            return filePath.IsNullOrWhiteSpace() ? Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) : filePath;
+            return filePath.IsNullOrWhiteSpace() ?
+                Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), DefaultLoggingFolder) :
+                filePath;
         }
 
         private void Rotate(string filePath)

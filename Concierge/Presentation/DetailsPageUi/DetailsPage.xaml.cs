@@ -245,9 +245,7 @@ namespace Concierge.Presentation.DetailsPageUi
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            PopupButtons popupButtons;
-
-            popupButtons = this.ProficiencyPopupWindow.ShowPopup();
+            var popupButtons = this.ProficiencyPopupWindow.ShowPopup();
 
             this.ModifyProficiencyWindow.ShowAdd(popupButtons);
 

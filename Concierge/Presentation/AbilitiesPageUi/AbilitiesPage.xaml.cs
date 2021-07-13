@@ -20,6 +20,8 @@ namespace Concierge.Presentation.AbilitiesPageUi
             this.InitializeComponent();
             this.DataContext = this;
             this.ModifyAbilitiesWindow = new ModifyAbilitiesWindow();
+
+            Program.Logger.Info($"Initialized {nameof(AbilitiesPage)}.");
         }
 
         public double AbilitiesHeight => SystemParameters.PrimaryScreenHeight - 100;
@@ -43,13 +45,10 @@ namespace Concierge.Presentation.AbilitiesPageUi
 
         private void ButtonUp_Click(object sender, RoutedEventArgs e)
         {
-            Ability ability;
-            int index;
-
             if (this.AbilitiesDataGrid.SelectedItem != null)
             {
-                ability = (Ability)this.AbilitiesDataGrid.SelectedItem;
-                index = Program.CcsFile.Character.Abilities.IndexOf(ability);
+                var ability = (Ability)this.AbilitiesDataGrid.SelectedItem;
+                var index = Program.CcsFile.Character.Abilities.IndexOf(ability);
 
                 if (index != 0)
                 {
@@ -62,13 +61,10 @@ namespace Concierge.Presentation.AbilitiesPageUi
 
         private void ButtonDown_Click(object sender, RoutedEventArgs e)
         {
-            Ability ability;
-            int index;
-
             if (this.AbilitiesDataGrid.SelectedItem != null)
             {
-                ability = (Ability)this.AbilitiesDataGrid.SelectedItem;
-                index = Program.CcsFile.Character.Abilities.IndexOf(ability);
+                var ability = (Ability)this.AbilitiesDataGrid.SelectedItem;
+                var index = Program.CcsFile.Character.Abilities.IndexOf(ability);
 
                 if (index != Program.CcsFile.Character.Abilities.Count - 1)
                 {
@@ -101,11 +97,9 @@ namespace Concierge.Presentation.AbilitiesPageUi
 
         private void ButtonDelete_Click(object sender, RoutedEventArgs e)
         {
-            Ability ability;
-
             if (this.AbilitiesDataGrid.SelectedItem != null)
             {
-                ability = (Ability)this.AbilitiesDataGrid.SelectedItem;
+                var ability = (Ability)this.AbilitiesDataGrid.SelectedItem;
                 Program.CcsFile.Character.Abilities.Remove(ability);
                 this.FillList();
             }

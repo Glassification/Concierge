@@ -21,17 +21,16 @@ namespace Concierge.Presentation
     using Concierge.Presentation.OverviewPageUi;
     using Concierge.Presentation.SpellcastingPageUi;
     using Concierge.Presentation.ToolsPageUi;
+    using Concierge.Services;
     using Concierge.Utility;
     using Concierge.Utility.Extensions;
-    using Microsoft.Win32;
 
     /// <summary>
     /// Interaction logic for MainWindow.xaml.
     /// </summary>
     public partial class MainWindow : Window
     {
-        private readonly OpenFileDialog openFileDialog = new OpenFileDialog();
-        private readonly SaveFileDialog saveFileDialog = new SaveFileDialog();
+        private readonly FileAccessService fileAccessService = new FileAccessService();
         private readonly SettingsWindow settingsWindow = new SettingsWindow();
         private readonly ModifyPropertiesWindow modifyPropertiesWindow = new ModifyPropertiesWindow();
 
@@ -64,6 +63,8 @@ namespace Concierge.Presentation
             }
 
             this.DrawAll();
+
+            Program.Logger.Info($"{nameof(MainWindow)} loaded.");
         }
 
         public double GridContentWidthOpen => SystemParameters.PrimaryScreenWidth - 200;
@@ -102,8 +103,9 @@ namespace Concierge.Presentation
 
         public void NewCharacterSheet()
         {
-            Program.CcsFile = null;
-            Program.CcsFile.Character.Reset();
+            Program.Logger.Info($"Creating new character sheet.");
+
+            Program.CcsFile = new CcsFile();
 
             this.NotesPage.ClearTextBox();
             this.DrawAll();
@@ -113,27 +115,34 @@ namespace Concierge.Presentation
 
         public void OpenCharacterSheet()
         {
-            if (this.openFileDialog.ShowDialog() ?? false)
+            Program.Logger.Info($"Opening character sheet.");
+
+            var ccsFile = this.fileAccessService.Open();
+
+            if (ccsFile == null)
             {
-                this.autosaveTimer.Stop();
-
-                Program.CcsFile = CharacterLoader.LoadCharacterSheetJson(this.openFileDialog.FileName);
-
-                if (Program.CcsFile.AutosaveEnable)
-                {
-                    this.autosaveTimer.Start(Constants.AutosaveIntervals[Program.CcsFile.AutosaveInterval]);
-                }
-
-                this.DrawAll();
+                return;
             }
+
+            this.autosaveTimer.Stop();
+
+            Program.CcsFile = ccsFile;
+            if (Program.CcsFile.AutosaveEnable)
+            {
+                this.autosaveTimer.Start(Constants.AutosaveIntervals[Program.CcsFile.AutosaveInterval]);
+            }
+
+            this.DrawAll();
         }
 
         public void SaveCharacterSheet()
         {
+            Program.Logger.Info($"Save character sheet.");
+
             if (!Program.CcsFile.AbsolutePath.IsNullOrWhiteSpace())
             {
                 this.NotesPage.SaveTextBox();
-                CharacterSaver.SaveCharacterSheetJson(Program.CcsFile);
+                this.fileAccessService.Save(Program.CcsFile);
             }
             else
             {
@@ -143,13 +152,10 @@ namespace Concierge.Presentation
 
         public void SaveCharacterSheetAs()
         {
-            if (this.saveFileDialog.ShowDialog() ?? false)
-            {
-                Program.CcsFile.AbsolutePath = this.saveFileDialog.FileName;
+            Program.Logger.Info($"Save as character sheet.");
 
-                this.NotesPage.SaveTextBox();
-                CharacterSaver.SaveCharacterSheetJson(Program.CcsFile);
-            }
+            this.NotesPage.SaveTextBox();
+            this.fileAccessService.Save(Program.CcsFile);
         }
 
         public void DrawAll()
@@ -182,6 +188,7 @@ namespace Concierge.Presentation
 
         public void LongRest()
         {
+            Program.Logger.Info($"Long rest.");
             Program.CcsFile.Character.LongRest();
 
             this.DrawAll();
@@ -191,6 +198,7 @@ namespace Concierge.Presentation
         {
             base.OnClosed(e);
 
+            Program.Logger.Info("Closing Concierge.");
             Application.Current.Shutdown();
         }
 
@@ -292,6 +300,8 @@ namespace Concierge.Presentation
 
         private void ButtonOpenMenu_Click(object sender, RoutedEventArgs e)
         {
+            Program.Logger.Info($"Expand sidebar.");
+
             this.ButtonCloseMenu.Visibility = Visibility.Visible;
             this.ButtonOpenMenu.Visibility = Visibility.Collapsed;
 
@@ -300,6 +310,8 @@ namespace Concierge.Presentation
 
         private void ButtonCloseMenu_Click(object sender, RoutedEventArgs e)
         {
+            Program.Logger.Info($"Collapse sidebar.");
+
             this.ButtonCloseMenu.Visibility = Visibility.Collapsed;
             this.ButtonOpenMenu.Visibility = Visibility.Visible;
 
@@ -338,6 +350,8 @@ namespace Concierge.Presentation
 
         private void ItemNotes_Selected(object sender, RoutedEventArgs e)
         {
+            Program.Logger.Info($"Navigate to Notes page.");
+
             this.CollapseAll();
             this.NotesPage.Visibility = Visibility.Visible;
             this.FrameContent.Content = this.NotesPage;
@@ -346,6 +360,8 @@ namespace Concierge.Presentation
 
         private void ItemInventory_Selected(object sender, RoutedEventArgs e)
         {
+            Program.Logger.Info($"Navigate to Inventory page.");
+
             this.CollapseAll();
             this.InventoryPage.Visibility = Visibility.Visible;
             this.FrameContent.Content = this.InventoryPage;
@@ -354,6 +370,8 @@ namespace Concierge.Presentation
 
         private void ItemDetails_Selected(object sender, RoutedEventArgs e)
         {
+            Program.Logger.Info($"Navigate to Details page.");
+
             this.CollapseAll();
             this.DetailsPage.Visibility = Visibility.Visible;
             this.FrameContent.Content = this.DetailsPage;
@@ -362,6 +380,8 @@ namespace Concierge.Presentation
 
         private void ItemAbilities_Selected(object sender, RoutedEventArgs e)
         {
+            Program.Logger.Info($"Navigate to Abilities page.");
+
             this.CollapseAll();
             this.AbilitiesPage.Visibility = Visibility.Visible;
             this.FrameContent.Content = this.AbilitiesPage;
@@ -370,6 +390,8 @@ namespace Concierge.Presentation
 
         private void ItemEquipment_Selected(object sender, RoutedEventArgs e)
         {
+            Program.Logger.Info($"Navigate to Equipment page.");
+
             this.CollapseAll();
             this.EquipmentPage.Visibility = Visibility.Visible;
             this.FrameContent.Content = this.EquipmentPage;
@@ -378,6 +400,8 @@ namespace Concierge.Presentation
 
         private void ItemOverview_Selected(object sender, RoutedEventArgs e)
         {
+            Program.Logger.Info($"Navigate to Overview page.");
+
             this.CollapseAll();
             this.OverviewPage.Visibility = Visibility.Visible;
             this.FrameContent.Content = this.OverviewPage;
@@ -386,6 +410,8 @@ namespace Concierge.Presentation
 
         private void ItemSpellcasting_Selected(object sender, RoutedEventArgs e)
         {
+            Program.Logger.Info($"Navigate to Spellcasting page.");
+
             this.CollapseAll();
             this.SpellcastingPage.Visibility = Visibility.Visible;
             this.FrameContent.Content = this.SpellcastingPage;
@@ -394,6 +420,8 @@ namespace Concierge.Presentation
 
         private void ItemTools_Selected(object sender, RoutedEventArgs e)
         {
+            Program.Logger.Info($"Navigate to Tools page.");
+
             this.CollapseAll();
             this.ToolsPage.Visibility = Visibility.Visible;
             this.FrameContent.Content = this.ToolsPage;
@@ -402,12 +430,16 @@ namespace Concierge.Presentation
 
         private void PropertiesButton_Click(object sender, RoutedEventArgs e)
         {
+            Program.Logger.Info($"Open properties.");
+
             this.modifyPropertiesWindow.ShowWindow();
             this.DrawAll();
         }
 
         private void SettingsButton_Click(object sender, RoutedEventArgs e)
         {
+            Program.Logger.Info($"Open settings.");
+
             this.settingsWindow.ShowWindow();
             this.OverviewPage.Draw();
             this.DetailsPage.Draw();

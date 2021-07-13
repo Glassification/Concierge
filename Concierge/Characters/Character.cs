@@ -181,21 +181,6 @@ namespace Concierge.Characters
             this.Initialize();
         }
 
-        public bool ValidateClassLevel(int level, Guid id)
-        {
-            int totalLevel = 0;
-
-            foreach (Class @class in this.Classess)
-            {
-                if (!@class.ID.Equals(id))
-                {
-                    totalLevel += @class.Level;
-                }
-            }
-
-            return totalLevel <= Constants.MaxLevel && totalLevel >= 0;
-        }
-
         public void LongRest()
         {
             this.Vitality.ResetHealth();

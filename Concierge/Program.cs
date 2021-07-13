@@ -42,7 +42,7 @@ namespace Concierge
             Logger = new LocalLogger();
 
             Logger.NewLine();
-            Logger.Info($"Starting Result Display v{Constants.AssemblyVersion}");
+            Logger.Info($"Starting Concierge v{Constants.AssemblyVersion}");
         }
     }
 }
