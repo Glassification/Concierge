@@ -497,7 +497,7 @@
                     <!--Value-->
                     <Grid Grid.Column="1">
                         <CheckBox Name="ProficencyOverrideCheckBox"
-                                  Margin="15">
+                                  Margin="5, 15, 0, 0">
                             <CheckBox.LayoutTransform>
                                 <ScaleTransform ScaleX="2" ScaleY="2" />
                             </CheckBox.LayoutTransform>

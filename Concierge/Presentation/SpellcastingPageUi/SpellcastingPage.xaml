@@ -15,7 +15,7 @@
         <Style x:Key="ColumnElementStyle" TargetType="TextBlock">
             <Setter Property="Margin" Value="10,10,10,10" />
             <Setter Property="TextWrapping" Value="Wrap"/>
-            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="FontSize" Value="13"/>
         </Style>
         <Style TargetType="{x:Type DataGridRow}">
             <Style.Triggers>
@@ -789,7 +789,7 @@
                 <DataGrid.Columns>
                     <DataGridTextColumn
                         Header="Preped"
-                        Binding="{Binding Prepared}"
+                        Binding="{Binding PreparedText}"
                         Width="0.05*"
                         ElementStyle="{StaticResource ColumnElementStyle}"/>
                     <DataGridTextColumn

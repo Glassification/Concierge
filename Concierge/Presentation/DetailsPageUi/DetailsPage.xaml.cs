@@ -11,7 +11,6 @@ namespace Concierge.Presentation.DetailsPageUi
     using System.Windows.Media;
 
     using Concierge.Characters.Collections;
-    using Concierge.Characters.Enums;
     using Concierge.Utility;
 
     /// <summary>
@@ -24,7 +23,6 @@ namespace Concierge.Presentation.DetailsPageUi
             this.InitializeComponent();
 
             this.ModifyWealthWindow = new ModifyWealthWindow();
-            this.ProficiencyPopupWindow = new ProficiencyPopupWindow();
             this.ModifyProficiencyWindow = new ModifyProficiencyWindow();
             this.MondifyConditionsWindow = new MondifyConditionsWindow();
             this.ModifyLanguagesWindow = new ModifyLanguagesWindow();
@@ -35,8 +33,6 @@ namespace Concierge.Presentation.DetailsPageUi
         public double ProficiencyGridSize => this.WeaponGrid.RenderSize.Height;
 
         private ModifyWealthWindow ModifyWealthWindow { get; }
-
-        private ProficiencyPopupWindow ProficiencyPopupWindow { get; }
 
         private ModifyProficiencyWindow ModifyProficiencyWindow { get; }
 
@@ -220,34 +216,32 @@ namespace Concierge.Presentation.DetailsPageUi
             if (this.WeaponProficiencyDataGrid.SelectedItem != null)
             {
                 proficiency = (KeyValuePair<Guid, string>)this.WeaponProficiencyDataGrid.SelectedItem;
-                this.ModifyProficiencyWindow.ShowEdit(PopupButtons.WeaponProficiency, proficiency.Key);
+                this.ModifyProficiencyWindow.ShowEdit(proficiency.Key);
                 this.DrawProficiencies();
             }
             else if (this.ArmorProficiencyDataGrid.SelectedItem != null)
             {
                 proficiency = (KeyValuePair<Guid, string>)this.ArmorProficiencyDataGrid.SelectedItem;
-                this.ModifyProficiencyWindow.ShowEdit(PopupButtons.ArmorProficiency, proficiency.Key);
+                this.ModifyProficiencyWindow.ShowEdit(proficiency.Key);
                 this.DrawProficiencies();
             }
             else if (this.ShieldProficiencyDataGrid.SelectedItem != null)
             {
                 proficiency = (KeyValuePair<Guid, string>)this.ShieldProficiencyDataGrid.SelectedItem;
-                this.ModifyProficiencyWindow.ShowEdit(PopupButtons.ShieldProficiency, proficiency.Key);
+                this.ModifyProficiencyWindow.ShowEdit(proficiency.Key);
                 this.DrawProficiencies();
             }
             else if (this.ToolProficiencyDataGrid.SelectedItem != null)
             {
                 proficiency = (KeyValuePair<Guid, string>)this.ToolProficiencyDataGrid.SelectedItem;
-                this.ModifyProficiencyWindow.ShowEdit(PopupButtons.ToolProficiency, proficiency.Key);
+                this.ModifyProficiencyWindow.ShowEdit(proficiency.Key);
                 this.DrawProficiencies();
             }
         }
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            var popupButtons = this.ProficiencyPopupWindow.ShowPopup();
-
-            this.ModifyProficiencyWindow.ShowAdd(popupButtons);
+            this.ModifyProficiencyWindow.ShowAdd();
 
             this.DrawProficiencies();
         }

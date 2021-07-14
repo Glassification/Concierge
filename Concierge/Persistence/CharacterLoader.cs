@@ -44,7 +44,6 @@ namespace Concierge.Persistence
             }
             catch (Exception ex)
             {
-                Program.Logger.Error(ex);
                 Program.ErrorService.LogError(ex, Severity.Release);
                 Program.Modified = true;
 

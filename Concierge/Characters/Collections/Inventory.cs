@@ -6,6 +6,8 @@ namespace Concierge.Characters.Collections
 {
     using System;
 
+    using Newtonsoft.Json;
+
     public class Inventory
     {
         public Inventory()
@@ -25,6 +27,9 @@ namespace Concierge.Characters.Collections
         public double Weight { get; set; }
 
         public bool IsInBagOfHolding { get; set; }
+
+        [JsonIgnore]
+        public string InBagOfHoldingText => this.IsInBagOfHolding ? "Yes" : "No";
 
         public string Note { get; set; }
 

@@ -7,6 +7,7 @@ namespace Concierge.Characters.Collections
     using System;
 
     using Concierge.Characters.Enums;
+    using Newtonsoft.Json;
 
     public class Spell
     {
@@ -23,6 +24,9 @@ namespace Concierge.Characters.Collections
         public string Name { get; set; }
 
         public bool Prepared { get; set; }
+
+        [JsonIgnore]
+        public string PreparedText => this.Prepared ? "Yes" : "No";
 
         public int Level { get; set; }
 

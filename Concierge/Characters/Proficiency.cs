@@ -6,7 +6,7 @@ namespace Concierge.Characters
 {
     using System;
     using System.Collections.Generic;
-
+    using Concierge.Characters.Dto;
     using Concierge.Characters.Enums;
 
     public class Proficiency
@@ -27,20 +27,17 @@ namespace Concierge.Characters
 
         public Dictionary<Guid, string> Tools { get; set; }
 
-        public string GetProficiencyById(Guid id)
+        public ProficiencyDto GetProficiencyById(Guid id)
         {
-            if (this.Armors.ContainsKey(id))
-            {
-                return this.Armors[id];
-            }
-            else if (this.Shields.ContainsKey(id))
-            {
-                return this.Shields[id];
-            }
-            else
-            {
-                return this.Weapons.ContainsKey(id) ? this.Weapons[id] : this.Tools.ContainsKey(id) ? this.Tools[id] : null;
-            }
+            return this.Armors.ContainsKey(id)
+                ? new ProficiencyDto(this.Armors[id], ProficiencyTypes.Armor)
+                : this.Shields.ContainsKey(id)
+                    ? new ProficiencyDto(this.Shields[id], ProficiencyTypes.Shield)
+                    : this.Weapons.ContainsKey(id) ?
+                        new ProficiencyDto(this.Weapons[id], ProficiencyTypes.Weapon) :
+                        this.Tools.ContainsKey(id) ?
+                            new ProficiencyDto(this.Tools[id], ProficiencyTypes.Tool) :
+                            null;
         }
 
         public void SetProficiencyById(Guid id, string proficiency)
@@ -63,20 +60,20 @@ namespace Concierge.Characters
             }
         }
 
-        public void AddProficiencyByPopupButton(PopupButtons PopupButton, string proficiency)
+        public void AddProficiencyByProficiencyType(ProficiencyTypes proficiencyTypes, string proficiency)
         {
-            switch (PopupButton)
+            switch (proficiencyTypes)
             {
-                case PopupButtons.ArmorProficiency:
+                case ProficiencyTypes.Armor:
                     this.Armors.Add(Guid.NewGuid(), proficiency);
                     break;
-                case PopupButtons.ShieldProficiency:
+                case ProficiencyTypes.Shield:
                     this.Shields.Add(Guid.NewGuid(), proficiency);
                     break;
-                case PopupButtons.WeaponProficiency:
+                case ProficiencyTypes.Tool:
                     this.Weapons.Add(Guid.NewGuid(), proficiency);
                     break;
-                case PopupButtons.ToolProficiency:
+                case ProficiencyTypes.Weapon:
                     this.Tools.Add(Guid.NewGuid(), proficiency);
                     break;
                 default:
