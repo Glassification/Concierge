@@ -14,6 +14,7 @@ namespace Concierge.Presentation
     using Concierge.Presentation.AbilitiesPageUi;
     using Concierge.Presentation.DetailsPageUi;
     using Concierge.Presentation.Enums;
+    using Concierge.Presentation.EquipedItemsPageUi;
     using Concierge.Presentation.EquipmentPageUi;
     using Concierge.Presentation.HelperUi;
     using Concierge.Presentation.InventoryPageUi;
@@ -44,12 +45,13 @@ namespace Concierge.Presentation
         private readonly NotesPage NotesPage = new NotesPage();
         private readonly SpellcastingPage SpellcastingPage = new SpellcastingPage();
         private readonly ToolsPage ToolsPage = new ToolsPage();
+        private readonly EquipedItemsPage EquipedItemsPage = new EquipedItemsPage();
 
         public MainWindow()
         {
             this.InitializeComponent();
 
-            this.GridContent.Width = this.GridContentWidthClose;
+            this.GridContent.Width = GridContentWidthClose;
 
             this.CollapseAll();
             this.OverviewPage.Visibility = Visibility.Visible;
@@ -67,13 +69,13 @@ namespace Concierge.Presentation
             Program.Logger.Info($"{nameof(MainWindow)} loaded.");
         }
 
-        public double GridContentWidthOpen => SystemParameters.PrimaryScreenWidth - 200;
+        public static double GridContentWidthOpen => SystemParameters.PrimaryScreenWidth - 200;
 
-        public double GridContentWidthClose => SystemParameters.PrimaryScreenWidth - 60;
+        public static double GridContentWidthClose => SystemParameters.PrimaryScreenWidth - 60;
 
-        private bool IsControl => (Keyboard.Modifiers & ModifierKeys.Control) == ModifierKeys.Control;
+        private static bool IsControl => (Keyboard.Modifiers & ModifierKeys.Control) == ModifierKeys.Control;
 
-        private bool IsShift => (Keyboard.Modifiers & ModifierKeys.Shift) == ModifierKeys.Shift;
+        private static bool IsShift => (Keyboard.Modifiers & ModifierKeys.Shift) == ModifierKeys.Shift;
 
         public void CloseWindow()
         {
@@ -212,6 +214,7 @@ namespace Concierge.Presentation
             this.SpellcastingPage.Visibility = Visibility.Collapsed;
             this.ToolsPage.Visibility = Visibility.Collapsed;
             this.OverviewPage.Visibility = Visibility.Collapsed;
+            this.EquipedItemsPage.Visibility = Visibility.Collapsed;
         }
 
         private void MainWindow_ContentRendered(object sender, EventArgs e)
@@ -221,7 +224,7 @@ namespace Concierge.Presentation
 
         private void MainWindow_KeyPress(object sender, KeyEventArgs e)
         {
-            if (Program.Typing || !this.IsControl)
+            if (Program.Typing || !IsControl)
             {
                 return;
             }
@@ -245,7 +248,7 @@ namespace Concierge.Presentation
                     this.CloseWindow();
                     break;
                 case Key.S:
-                    if (this.IsShift)
+                    if (IsShift)
                     {
                         this.SaveCharacterSheetAs();
                     }
@@ -305,7 +308,7 @@ namespace Concierge.Presentation
             this.ButtonCloseMenu.Visibility = Visibility.Visible;
             this.ButtonOpenMenu.Visibility = Visibility.Collapsed;
 
-            this.GridContent.Width = this.GridContentWidthOpen;
+            this.GridContent.Width = GridContentWidthOpen;
         }
 
         private void ButtonCloseMenu_Click(object sender, RoutedEventArgs e)
@@ -315,7 +318,7 @@ namespace Concierge.Presentation
             this.ButtonCloseMenu.Visibility = Visibility.Collapsed;
             this.ButtonOpenMenu.Visibility = Visibility.Visible;
 
-            this.GridContent.Width = this.GridContentWidthClose;
+            this.GridContent.Width = GridContentWidthClose;
         }
 
         private void ButtonClose_Click(object sender, RoutedEventArgs e)
@@ -366,6 +369,16 @@ namespace Concierge.Presentation
             this.InventoryPage.Visibility = Visibility.Visible;
             this.FrameContent.Content = this.InventoryPage;
             this.InventoryPage.Draw();
+        }
+
+        private void ItemEquipedItems_Selected(object sender, RoutedEventArgs e)
+        {
+            Program.Logger.Info($"Navigate to Equiped Items page.");
+
+            this.CollapseAll();
+            this.EquipedItemsPage.Visibility = Visibility.Visible;
+            this.FrameContent.Content = this.EquipedItemsPage;
+            this.EquipedItemsPage.Draw();
         }
 
         private void ItemDetails_Selected(object sender, RoutedEventArgs e)

@@ -21,6 +21,14 @@ namespace Concierge.Utility
         public const int BasePerception = 10;
         public const int MaxClasses = 3;
 
+        private static readonly int[] levels =
+        {
+            300, 900, 2700, 6500, 14000, 23000, 34000, 48000, 64000, 85000, 100000,
+            120000, 140000, 165000, 195000, 225000, 265000, 305000, 355000, 0,
+        };
+
+        private static readonly int[] proficiencies = { 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 6, 6, 6, 6 };
+
         private static readonly string[] alignment =
         {
             "Lawful Good",
@@ -91,6 +99,8 @@ namespace Concierge.Utility
             Alignment = new ReadOnlyCollection<string>(alignment);
             Backgrounds = new ReadOnlyCollection<string>(backgrounds);
             Races = new ReadOnlyCollection<string>(races);
+            Levels = new ReadOnlyCollection<int>(levels);
+            Proficiencies = new ReadOnlyCollection<int>(proficiencies);
         }
 
         public static ReadOnlyCollection<int> AutosaveIntervals { get; private set; }
@@ -110,6 +120,10 @@ namespace Concierge.Utility
         public static ReadOnlyCollection<string> Backgrounds { get; }
 
         public static ReadOnlyCollection<string> Races { get; }
+
+        public static ReadOnlyCollection<int> Levels { get; }
+
+        public static ReadOnlyCollection<int> Proficiencies { get; }
 
         public static string AssemblyVersion
         {

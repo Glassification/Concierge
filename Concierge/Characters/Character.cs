@@ -15,14 +15,6 @@ namespace Concierge.Characters
 
     public class Character
     {
-        private static readonly int[] Levels =
-        {
-            300, 900, 2700, 6500, 14000, 23000, 34000, 48000, 64000, 85000, 100000,
-            120000, 140000, 165000, 195000, 225000, 265000, 305000, 355000, 0,
-        };
-
-        private static readonly int[] Proficiencies = { 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 6, 6, 6, 6 };
-
         public Character()
         {
             this.Initialize();
@@ -70,6 +62,8 @@ namespace Concierge.Characters
 
         public List<Weapon> Weapons { get; private set; }
 
+        public EquipedItems EquipedItems { get; private set; }
+
         [JsonIgnore]
         public double CarryWeight
         {
@@ -103,7 +97,7 @@ namespace Concierge.Characters
         }
 
         [JsonIgnore]
-        public int ProficiencyBonus => this.Level - 1 > 0 ? Proficiencies[this.Level - 1] : Proficiencies[0];
+        public int ProficiencyBonus => this.Level - 1 > 0 ? Constants.Proficiencies[this.Level - 1] : Constants.Proficiencies[0];
 
         [JsonIgnore]
         public int PassivePerception => Constants.BasePerception + this.Skill.Perception.Bonus + this.Details.PerceptionBonus;
@@ -144,7 +138,7 @@ namespace Concierge.Characters
         }
 
         [JsonIgnore]
-        public string ExperienceToLevel => this.Level - 1 > 0 ? Levels[this.Level - 1].ToString() : Levels[0].ToString();
+        public string ExperienceToLevel => this.Level - 1 > 0 ? Constants.Levels[this.Level - 1].ToString() : Constants.Levels[0].ToString();
 
         [JsonIgnore]
         public string GetClasses
@@ -337,6 +331,7 @@ namespace Concierge.Characters
             this.Vitality = new Vitality();
             this.Wealth = new Wealth();
             this.Weapons = new List<Weapon>();
+            this.EquipedItems = new EquipedItems();
         }
     }
 }

@@ -240,6 +240,12 @@
                                 <TextBlock Text="Abilities" VerticalAlignment="Center" Margin="20 10"/>
                             </StackPanel>
                         </ListViewItem>
+                        <ListViewItem x:Name="ItemEquipedItems" Height="60" Selected="ItemEquipedItems_Selected">
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="Person" Height="25" Width="25" Margin="10"/>
+                                <TextBlock Text="Equiped Items" VerticalAlignment="Center" Margin="20 10"/>
+                            </StackPanel>
+                        </ListViewItem>
                         <ListViewItem x:Name="ItemInventory" Height="60" Selected="ItemInventory_Selected">
                             <StackPanel Orientation="Horizontal">
                                 <materialDesign:PackIcon Kind="Briefcase" Height="25" Width="25" Margin="10"/>
