@@ -46,6 +46,9 @@
     <Compile Update="Presentation\EquipedItemsPageUi\EquipedItemsPage.xaml.cs">
       <DependentUpon>%(Filename)</DependentUpon>
     </Compile>
+    <Compile Update="Presentation\EquipedItemsPageUi\ModifyEquippedItemsWindow.xaml.cs">
+      <DependentUpon>%(Filename)</DependentUpon>
+    </Compile>
     <Compile Update="Properties\Resources.Designer.cs">
       <DesignTime>True</DesignTime>
     </Compile>

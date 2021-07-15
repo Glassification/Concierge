@@ -1,10 +1,10 @@
-﻿// <copyright file="EquipSlot.cs" company="Thomas Beckett">
+﻿// <copyright file="EquipmentSlot.cs" company="Thomas Beckett">
 // Copyright (c) Thomas Beckett. All rights reserved.
 // </copyright>
 
 namespace Concierge.Characters.Enums
 {
-    public enum EquipSlot
+    public enum EquipmentSlot
     {
         Head,
         Torso,

@@ -1,8 +1,7 @@
 {
   "profiles": {
     "Concierge": {
-      "commandName": "Project",
-      "commandLineArgs": "\"C:\\Users\\TomBe\\Desktop\\CharacterTest.json\""
+      "commandName": "Project"
     }
   }
 }

@@ -186,6 +186,7 @@ namespace Concierge.Presentation
             this.NotesPage.Draw();
             this.SpellcastingPage.Draw();
             this.ToolsPage.Draw();
+            this.EquipedItemsPage.Draw();
         }
 
         public void LongRest()

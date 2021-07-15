@@ -13,6 +13,11 @@ namespace Concierge.Utility
 
     public static class Utilities
     {
+        public static T GetPropertyValue<T>(object source, string propertyName)
+        {
+            return (T)source.GetType().GetProperty(propertyName).GetValue(source, null);
+        }
+
         public static int CalculateBonus(int score)
         {
             return (int)Math.Floor((score - 10) / 2.0);

@@ -61,7 +61,7 @@
         <Grid Grid.Row="0"
               Background="#0B061E"
               Margin="3">
-            <TextBlock Text="Equiped Items"
+            <TextBlock Text="Equipped Items"
                            Foreground="White"
                            FontSize="25"
                            FontWeight="Bold"
@@ -151,14 +151,34 @@
             </StackPanel>
         </Grid>
 
-        <Grid Grid.Row="1">
+        <Grid Grid.Row="1" x:Name="DrawingGrid">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="33*"/>
+                    <RowDefinition Height="33*"/>
+                    <RowDefinition Height="33*"/>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="45*"/>
+                        <ColumnDefinition Width="10*"/>
+                        <ColumnDefinition Width="45*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid Grid.Column="2" Margin="0,99,40,99" Background="#988CD0">
+                        
+                    </Grid>
+                </Grid>
+            </Grid>
+
             <materialDesign:PackIcon 
-                        Kind="HumanHandsdown"
-                        Width="{Binding Path=InventoryWidth}"
-                        Height="{Binding Path=InventoryHeight}"
-                        Foreground="#615299"
-                        HorizontalAlignment="Center"/>
-            
+                Kind="HumanHandsdown"
+                Width="{Binding Path=EquippedItemsWidth}"
+                Height="{Binding Path=EquippedItemsHeight}"
+                Foreground="#161223"
+                HorizontalAlignment="Center"/>
+
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="33*"/>
@@ -174,9 +194,13 @@
                     </Grid.RowDefinitions>
 
                     <!--Torso-->
-                    <Grid Grid.Row="1">
+                    <Grid 
+                        Grid.Row="1"
+                        Background="#988CD0"
+                        Margin="15">
                         <components:ConciergeDataGrid 
                             x:Name="TorsoEquipmentDataGrid"
+                            Tag="Torso"
                             AutoGenerateColumns="False"
                             VerticalScrollBarVisibility="Hidden"
                             HorizontalScrollBarVisibility="Disabled"
@@ -190,21 +214,27 @@
                             BorderThickness="0"
                             Style="{DynamicResource DGHeaderStyle}"
                             SelectionMode="Single"
-                            Margin="20">
+                            Margin="1"
+                            SelectionChanged="EquipmentDataGrid_SelectionChanged"
+                            Sorted="EquipmentDataGrid_Sorted">
                             <DataGrid.Columns>
                                 <DataGridTextColumn 
                                     Header="Torso"
                                     Width="100*"
-                                    Binding="{Binding Value}"
+                                    Binding="{Binding Name}"
                                     ElementStyle="{StaticResource ColumnElementStyle}"/>
                             </DataGrid.Columns>
                         </components:ConciergeDataGrid>
                     </Grid>
 
                     <!--Legs-->
-                    <Grid Grid.Row="2">
+                    <Grid 
+                        Grid.Row="2"
+                        Background="#988CD0"
+                        Margin="15">
                         <components:ConciergeDataGrid 
                             x:Name="LegsEquipmentDataGrid"
+                            Tag="Legs"
                             AutoGenerateColumns="False"
                             VerticalScrollBarVisibility="Hidden"
                             HorizontalScrollBarVisibility="Disabled"
@@ -218,12 +248,14 @@
                             BorderThickness="0"
                             Style="{DynamicResource DGHeaderStyle}"
                             SelectionMode="Single"
-                            Margin="20">
+                            Margin="1"
+                            SelectionChanged="EquipmentDataGrid_SelectionChanged"
+                            Sorted="EquipmentDataGrid_Sorted">
                             <DataGrid.Columns>
                                 <DataGridTextColumn 
                                     Header="Legs"
                                     Width="100*"
-                                    Binding="{Binding Value}"
+                                    Binding="{Binding Name}"
                                     ElementStyle="{StaticResource ColumnElementStyle}"/>
                             </DataGrid.Columns>
                         </components:ConciergeDataGrid>
@@ -238,9 +270,13 @@
                     </Grid.RowDefinitions>
                     
                     <!--Head-->
-                    <Grid Grid.Row="0">
+                    <Grid 
+                        Grid.Row="0"
+                        Background="#988CD0"
+                        Margin="15">
                         <components:ConciergeDataGrid 
                             x:Name="HeadEquipmentDataGrid"
+                            Tag="Head"
                             AutoGenerateColumns="False"
                             VerticalScrollBarVisibility="Hidden"
                             HorizontalScrollBarVisibility="Disabled"
@@ -254,21 +290,27 @@
                             BorderThickness="0"
                             Style="{DynamicResource DGHeaderStyle}"
                             SelectionMode="Single"
-                            Margin="20">
+                            Margin="1"
+                            SelectionChanged="EquipmentDataGrid_SelectionChanged"
+                            Sorted="EquipmentDataGrid_Sorted">
                             <DataGrid.Columns>
                                 <DataGridTextColumn 
                                     Header="Head"
                                     Width="100*"
-                                    Binding="{Binding Value}"
+                                    Binding="{Binding Name}"
                                     ElementStyle="{StaticResource ColumnElementStyle}"/>
                             </DataGrid.Columns>
                         </components:ConciergeDataGrid>
                     </Grid>
 
                     <!--Hands-->
-                    <Grid Grid.Row="1">
+                    <Grid 
+                        Grid.Row="1"
+                        Background="#988CD0"
+                        Margin="15">
                         <components:ConciergeDataGrid 
                             x:Name="HandsEquipmentDataGrid"
+                            Tag="Hands"
                             AutoGenerateColumns="False"
                             VerticalScrollBarVisibility="Hidden"
                             HorizontalScrollBarVisibility="Disabled"
@@ -282,21 +324,27 @@
                             BorderThickness="0"
                             Style="{DynamicResource DGHeaderStyle}"
                             SelectionMode="Single"
-                            Margin="20">
+                            Margin="1"
+                            SelectionChanged="EquipmentDataGrid_SelectionChanged"
+                            Sorted="EquipmentDataGrid_Sorted">
                             <DataGrid.Columns>
                                 <DataGridTextColumn 
                                     Header="Hands"
                                     Width="100*"
-                                    Binding="{Binding Value}"
+                                    Binding="{Binding Name}"
                                     ElementStyle="{StaticResource ColumnElementStyle}"/>
                             </DataGrid.Columns>
                         </components:ConciergeDataGrid>
                     </Grid>
 
                     <!--Feet-->
-                    <Grid Grid.Row="2">
+                    <Grid 
+                        Grid.Row="2"
+                        Background="#988CD0"
+                        Margin="15">
                         <components:ConciergeDataGrid 
                             x:Name="FeetEquipmentDataGrid"
+                            Tag="Feet"
                             AutoGenerateColumns="False"
                             VerticalScrollBarVisibility="Hidden"
                             HorizontalScrollBarVisibility="Disabled"
@@ -310,12 +358,14 @@
                             BorderThickness="0"
                             Style="{DynamicResource DGHeaderStyle}"
                             SelectionMode="Single"
-                            Margin="20">
+                            Margin="1"
+                            SelectionChanged="EquipmentDataGrid_SelectionChanged"
+                            Sorted="EquipmentDataGrid_Sorted">
                             <DataGrid.Columns>
                                 <DataGridTextColumn 
                                     Header="Feet"
                                     Width="100*"
-                                    Binding="{Binding Value}"
+                                    Binding="{Binding Name}"
                                     ElementStyle="{StaticResource ColumnElementStyle}"/>
                             </DataGrid.Columns>
                         </components:ConciergeDataGrid>

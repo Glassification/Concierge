@@ -218,7 +218,7 @@
                     <ListView x:Name="ListViewMenu" BorderThickness="0" Foreground="White" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Background="#FF191919">
                         <ListViewItem x:Name="ItemOverview" Height="60" Selector.IsSelected="True" Selected="ItemOverview_Selected">
                             <StackPanel Orientation="Horizontal">
-                                <materialDesign:PackIcon Kind="Person" Height="25" Width="25" Margin="10"/>
+                                <materialDesign:PackIcon Kind="Globe" Height="25" Width="25" Margin="10"/>
                                 <TextBlock Text="Overview" VerticalAlignment="Center" Margin="20 10"/>
                             </StackPanel>
                         </ListViewItem>
@@ -243,7 +243,7 @@
                         <ListViewItem x:Name="ItemEquipedItems" Height="60" Selected="ItemEquipedItems_Selected">
                             <StackPanel Orientation="Horizontal">
                                 <materialDesign:PackIcon Kind="Person" Height="25" Width="25" Margin="10"/>
-                                <TextBlock Text="Equiped Items" VerticalAlignment="Center" Margin="20 10"/>
+                                <TextBlock Text="Equipped Items" VerticalAlignment="Center" Margin="20 10"/>
                             </StackPanel>
                         </ListViewItem>
                         <ListViewItem x:Name="ItemInventory" Height="60" Selected="ItemInventory_Selected">

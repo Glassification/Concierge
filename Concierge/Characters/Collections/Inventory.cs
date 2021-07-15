@@ -33,11 +33,27 @@ namespace Concierge.Characters.Collections
 
         public string Note { get; set; }
 
+        public Guid EquppedId { get; set; }
+
         public Guid ID { get; private set; }
 
         public override string ToString()
         {
             return this.Name;
+        }
+
+        public Inventory Copy()
+        {
+            return new Inventory()
+            {
+                Name = this.Name,
+                Amount = 1,
+                Weight = this.Weight,
+                IsInBagOfHolding = false,
+                Note = this.Note,
+                EquppedId = Guid.NewGuid(),
+                ID = this.ID,
+            };
         }
     }
 }
