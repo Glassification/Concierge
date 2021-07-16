@@ -8,8 +8,6 @@ namespace Concierge.Presentation.EquipedItemsPageUi
     using System.Collections.Generic;
     using System.Windows;
     using System.Windows.Controls;
-    using System.Windows.Media;
-    using System.Windows.Shapes;
 
     using Concierge.Characters.Collections;
     using Concierge.Characters.Enums;
@@ -61,21 +59,6 @@ namespace Concierge.Presentation.EquipedItemsPageUi
                 dataGrid.Items.Add(item);
             }
         }
-
-        /*private void DrawConnectingLines()
-        {
-            var line = new Line()
-            {
-                X1 = this.HeadGrid.PointToScreen(new Point(0, 0)).X,
-                Y1 = this.HeadGrid.PointToScreen(new Point(0, 0)).Y,
-                X2 = this.TorsoGrid.PointToScreen(new Point(0, 0)).X,
-                Y2 = this.TorsoGrid.PointToScreen(new Point(0, 0)).Y,
-                StrokeThickness = 4,
-                Stroke = Brushes.Red,
-            };
-
-            this.DrawingGrid.Children.Add(line);
-        }*/
 
         private void EquipmentDataGrid_Sorted(object sender, RoutedEventArgs e)
         {
@@ -185,7 +168,7 @@ namespace Concierge.Presentation.EquipedItemsPageUi
                 return;
             }
 
-            this.modifyInventoryWindow.ShowEdit(this.SelectedItem);
+            this.modifyInventoryWindow.ShowEdit(this.SelectedItem, true);
             this.Draw();
         }
 

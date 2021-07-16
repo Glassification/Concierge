@@ -150,8 +150,15 @@
                 </Button>
             </StackPanel>
         </Grid>
-
+    
         <Grid Grid.Row="1" x:Name="DrawingGrid">
+            <materialDesign:PackIcon 
+                Kind="HumanHandsdown"
+                Width="{Binding Path=EquippedItemsWidth}"
+                Height="{Binding Path=EquippedItemsHeight}"
+                Foreground="#161223"
+                HorizontalAlignment="Center"/>
+            
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="33*"/>
@@ -166,18 +173,64 @@
                         <ColumnDefinition Width="45*"/>
                     </Grid.ColumnDefinitions>
 
-                    <Grid Grid.Column="2" Margin="0,99,40,99" Background="#988CD0">
-                        
+                    <Grid Grid.Column="2" Margin="0,99,40,99">
+                        <materialDesign:PackIcon 
+                            Kind="ArrowLeft"
+                            Width="200"
+                            Height="20"
+                            Foreground="#988CD0"
+                            HorizontalAlignment="Left"/>
+                    </Grid>
+                </Grid>
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="45*"/>
+                        <ColumnDefinition Width="10*"/>
+                        <ColumnDefinition Width="45*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid Grid.Column="0" Margin="0,99,40,99">
+                        <materialDesign:PackIcon 
+                            Kind="ArrowRight"
+                            Width="200"
+                            Height="20"
+                            Foreground="#988CD0"
+                            HorizontalAlignment="Right"/>
+                    </Grid>
+                    <Grid Grid.Column="2" Margin="0,99,40,99">
+                        <materialDesign:PackIcon 
+                            Kind="ArrowLeft"
+                            Width="200"
+                            Height="20"
+                            Foreground="#988CD0"
+                            HorizontalAlignment="Left"/>
+                    </Grid>
+                </Grid>
+                <Grid Grid.Row="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="45*"/>
+                        <ColumnDefinition Width="10*"/>
+                        <ColumnDefinition Width="45*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid Grid.Column="0" Margin="0,99,40,99">
+                        <materialDesign:PackIcon 
+                            Kind="ArrowRight"
+                            Width="200"
+                            Height="20"
+                            Foreground="#988CD0"
+                            HorizontalAlignment="Right"/>
+                    </Grid>
+                    <Grid Grid.Column="2" Margin="0,99,40,99">
+                        <materialDesign:PackIcon 
+                            Kind="ArrowLeft"
+                            Width="200"
+                            Height="20"
+                            Foreground="#988CD0"
+                            HorizontalAlignment="Left"/>
                     </Grid>
                 </Grid>
             </Grid>
-
-            <materialDesign:PackIcon 
-                Kind="HumanHandsdown"
-                Width="{Binding Path=EquippedItemsWidth}"
-                Height="{Binding Path=EquippedItemsHeight}"
-                Foreground="#161223"
-                HorizontalAlignment="Center"/>
 
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -193,6 +246,39 @@
                         <RowDefinition Height="33*"/>
                     </Grid.RowDefinitions>
 
+                    <Grid 
+                        Grid.Row="0"
+                        Margin="15,70,15,70"
+                        Background="#988CD0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="35*"/>
+                            <ColumnDefinition Width="65*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid 
+                            Grid.Column="0"
+                            Background="#0B061E"
+                            Margin="1,1,0,1">
+                            <TextBlock 
+                                Text="Attuned"
+                                Foreground="White"
+                                FontSize="22"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"/>
+                        </Grid>
+                        <Grid 
+                            Grid.Column="1"
+                            Background="#17112E"
+                            Margin="0,1,1,1">
+                            <TextBlock 
+                                Text="0/3"
+                                Foreground="White"
+                                FontSize="30"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"/>
+                        </Grid>
+                    </Grid>
+                    
                     <!--Torso-->
                     <Grid 
                         Grid.Row="1"
@@ -220,8 +306,13 @@
                             <DataGrid.Columns>
                                 <DataGridTextColumn 
                                     Header="Torso"
-                                    Width="100*"
+                                    Width="75*"
                                     Binding="{Binding Name}"
+                                    ElementStyle="{StaticResource ColumnElementStyle}"/>
+                                <DataGridTextColumn 
+                                    Header="Attuned"
+                                    Width="25*"
+                                    Binding="{Binding AttunedText}"
                                     ElementStyle="{StaticResource ColumnElementStyle}"/>
                             </DataGrid.Columns>
                         </components:ConciergeDataGrid>
@@ -254,8 +345,13 @@
                             <DataGrid.Columns>
                                 <DataGridTextColumn 
                                     Header="Legs"
-                                    Width="100*"
+                                    Width="75*"
                                     Binding="{Binding Name}"
+                                    ElementStyle="{StaticResource ColumnElementStyle}"/>
+                                <DataGridTextColumn 
+                                    Header="Attuned"
+                                    Width="25*"
+                                    Binding="{Binding AttunedText}"
                                     ElementStyle="{StaticResource ColumnElementStyle}"/>
                             </DataGrid.Columns>
                         </components:ConciergeDataGrid>
@@ -296,8 +392,13 @@
                             <DataGrid.Columns>
                                 <DataGridTextColumn 
                                     Header="Head"
-                                    Width="100*"
+                                    Width="75*"
                                     Binding="{Binding Name}"
+                                    ElementStyle="{StaticResource ColumnElementStyle}"/>
+                                <DataGridTextColumn 
+                                    Header="Attuned"
+                                    Width="25*"
+                                    Binding="{Binding AttunedText}"
                                     ElementStyle="{StaticResource ColumnElementStyle}"/>
                             </DataGrid.Columns>
                         </components:ConciergeDataGrid>
@@ -330,8 +431,13 @@
                             <DataGrid.Columns>
                                 <DataGridTextColumn 
                                     Header="Hands"
-                                    Width="100*"
+                                    Width="75*"
                                     Binding="{Binding Name}"
+                                    ElementStyle="{StaticResource ColumnElementStyle}"/>
+                                <DataGridTextColumn 
+                                    Header="Attuned"
+                                    Width="25*"
+                                    Binding="{Binding AttunedText}"
                                     ElementStyle="{StaticResource ColumnElementStyle}"/>
                             </DataGrid.Columns>
                         </components:ConciergeDataGrid>
@@ -364,8 +470,13 @@
                             <DataGrid.Columns>
                                 <DataGridTextColumn 
                                     Header="Feet"
-                                    Width="100*"
+                                    Width="75*"
                                     Binding="{Binding Name}"
+                                    ElementStyle="{StaticResource ColumnElementStyle}"/>
+                                <DataGridTextColumn 
+                                    Header="Attuned"
+                                    Width="25*"
+                                    Binding="{Binding AttunedText}"
                                     ElementStyle="{StaticResource ColumnElementStyle}"/>
                             </DataGrid.Columns>
                         </components:ConciergeDataGrid>

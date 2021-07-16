@@ -11,6 +11,8 @@ namespace Concierge.Presentation.InventoryPageUi
     using System.Windows.Media;
 
     using Concierge.Characters.Collections;
+    using Concierge.Presentation.Enums;
+    using Concierge.Presentation.HelperUi;
     using Concierge.Utility;
 
     /// <summary>
@@ -18,21 +20,26 @@ namespace Concierge.Presentation.InventoryPageUi
     /// </summary>
     public partial class ModifyInventoryWindow : Window
     {
+        private readonly ConciergeMessageWindow conciergeMessageWindow = new ConciergeMessageWindow();
+
         public ModifyInventoryWindow()
         {
             this.InitializeComponent();
             this.NameComboBox.ItemsSource = Constants.Inventories;
         }
 
+        private bool EquippedItem { get; set; }
+
         private bool Editing { get; set; }
 
-        private Guid SelectedItemId { get; set; }
+        private Inventory SelectedItem { get; set; }
 
-        public void ShowEdit(Inventory inventory)
+        public void ShowEdit(Inventory inventory, bool equippedItem = false)
         {
             this.HeaderTextBlock.Text = "Edit Item";
-            this.SelectedItemId = inventory.ID;
+            this.SelectedItem = inventory;
             this.Editing = true;
+            this.EquippedItem = equippedItem;
             this.FillFields(inventory);
             this.ApplyButton.Visibility = Visibility.Collapsed;
 
@@ -54,8 +61,18 @@ namespace Concierge.Presentation.InventoryPageUi
             this.NameComboBox.Text = inventory.Name;
             this.AmountUpDown.Value = inventory.Amount;
             this.WeightUpDown.Value = inventory.Weight;
-            this.BagOfHoldingCheckBox.IsChecked = inventory.IsInBagOfHolding;
             this.NotesTextBox.Text = inventory.Note;
+
+            if (this.EquippedItem)
+            {
+                this.BagOfHoldingText.Text = "Attuned:";
+                this.BagOfHoldingCheckBox.IsChecked = inventory.Attuned;
+            }
+            else
+            {
+                this.BagOfHoldingText.Text = "Bag of Holding:";
+                this.BagOfHoldingCheckBox.IsChecked = inventory.IsInBagOfHolding;
+            }
         }
 
         private void ClearFields()
@@ -86,8 +103,24 @@ namespace Concierge.Presentation.InventoryPageUi
             inventory.Name = this.NameComboBox.Text;
             inventory.Amount = this.AmountUpDown.Value ?? 0;
             inventory.Weight = this.WeightUpDown.Value ?? 0.0;
-            inventory.IsInBagOfHolding = this.BagOfHoldingCheckBox.IsChecked ?? false;
             inventory.Note = this.NotesTextBox.Text;
+
+            if (this.EquippedItem)
+            {
+                inventory.Attuned = this.BagOfHoldingCheckBox.IsChecked ?? false;
+
+                if (Program.CcsFile.Character.EquipedItems.Attuned > Constants.MaxAttunedItems)
+                {
+                    inventory.Attuned = false;
+                    this.conciergeMessageWindow.ShowWindow(
+                        $"You can only attune to a max of {Constants.MaxAttunedItems} items.",
+                        MessageWindowButtons.Ok);
+                }
+            }
+            else
+            {
+                inventory.IsInBagOfHolding = this.BagOfHoldingCheckBox.IsChecked ?? false;
+            }
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
@@ -116,7 +149,7 @@ namespace Concierge.Presentation.InventoryPageUi
         {
             if (this.Editing)
             {
-                this.UpdateInventory(Program.CcsFile.Character.GetInventoryById(this.SelectedItemId));
+                this.UpdateInventory(this.SelectedItem);
             }
             else
             {

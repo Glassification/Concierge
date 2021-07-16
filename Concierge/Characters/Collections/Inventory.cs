@@ -33,6 +33,11 @@ namespace Concierge.Characters.Collections
 
         public string Note { get; set; }
 
+        public bool Attuned { get; set; }
+
+        [JsonIgnore]
+        public string AttunedText => this.Attuned ? "Yes" : "No";
+
         public Guid EquppedId { get; set; }
 
         public Guid ID { get; private set; }

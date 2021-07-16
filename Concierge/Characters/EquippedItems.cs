@@ -2,12 +2,13 @@
 // Copyright (c) Thomas Beckett. All rights reserved.
 // </copyright>
 
-namespace Concierge.Characters.Collections
+namespace Concierge.Characters
 {
     using System;
     using System.Collections.Generic;
     using System.Linq;
 
+    using Concierge.Characters.Collections;
     using Concierge.Characters.Enums;
     using Newtonsoft.Json;
 
@@ -64,6 +65,23 @@ namespace Concierge.Characters.Collections
                 weight += GetWeight(this.Feet);
 
                 return weight;
+            }
+        }
+
+        [JsonIgnore]
+        public int Attuned
+        {
+            get
+            {
+                var attuned = 0;
+
+                attuned += GetAttuned(this.Head);
+                attuned += GetAttuned(this.Torso);
+                attuned += GetAttuned(this.Hands);
+                attuned += GetAttuned(this.Legs);
+                attuned += GetAttuned(this.Feet);
+
+                return attuned;
             }
         }
 
@@ -151,6 +169,21 @@ namespace Concierge.Characters.Collections
             return weight;
         }
 
+        private static int GetAttuned(List<Inventory> list)
+        {
+            var attuned = 0;
+
+            foreach (var item in list)
+            {
+                if (item.Attuned)
+                {
+                    attuned++;
+                }
+            }
+
+            return attuned;
+        }
+
         private static void AddToInventory(Inventory item)
         {
             var inventory = Program.CcsFile.Character.Inventories;
@@ -159,6 +192,7 @@ namespace Concierge.Characters.Collections
             if (existingItem == null)
             {
                 item.EquppedId = Guid.Empty;
+                item.Attuned = false;
                 inventory.Add(item);
             }
             else

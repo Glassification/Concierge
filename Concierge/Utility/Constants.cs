@@ -20,6 +20,7 @@ namespace Concierge.Utility
         public const int MinScore = 0;
         public const int BasePerception = 10;
         public const int MaxClasses = 3;
+        public const int MaxAttunedItems = 3;
 
         private static readonly int[] levels =
         {
