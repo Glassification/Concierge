@@ -8,25 +8,47 @@ namespace Concierge.Characters.Collections
     using System.Collections.Generic;
     using System.Linq;
 
+    using Newtonsoft.Json;
+
     public class Chapter
     {
         public Chapter()
         {
             this.Documents = new List<Document>();
             this.ID = Guid.NewGuid();
+            this.IsNewChapterPlaceholder = false;
+        }
+
+        public Chapter(string name)
+        {
+            this.Documents = new List<Document>();
+            this.ID = Guid.NewGuid();
+            this.Name = name;
+            this.IsNewChapterPlaceholder = false;
         }
 
         public Chapter(Guid id)
         {
             this.Documents = new List<Document>();
             this.ID = id;
+            this.IsNewChapterPlaceholder = false;
         }
 
         public List<Document> Documents { get; set; }
 
         public string Name { get; set; }
 
+        public bool IsExpanded { get; set; }
+
+        [JsonIgnore]
+        public bool IsNewChapterPlaceholder { get; set; }
+
         public Guid ID { get; private set; }
+
+        public override string ToString()
+        {
+            return this.Name;
+        }
 
         public Document GetDocumentById(Guid id)
         {

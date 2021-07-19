@@ -275,14 +275,9 @@ namespace Concierge.Characters
             return false;
         }
 
-        public Chapter GetChapterById(Guid id)
+        public Chapter GetChapterByDocumentId(Guid id)
         {
-            return this.Chapters.Single(x => x.ID.Equals(id));
-        }
-
-        public Inventory GetInventoryById(Guid id)
-        {
-            return this.Inventories.Single(x => x.ID.Equals(id));
+            return this.Chapters.Single(x => x.Documents.Any(y => y.ID.Equals(id)));
         }
 
         public Ability GetAbilityById(Guid id)

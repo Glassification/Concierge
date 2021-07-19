@@ -15,12 +15,19 @@ namespace Concierge.Presentation.NotesPageUi
     using System.Windows.Media;
 
     using Concierge.Characters.Collections;
+    using Concierge.Exceptions.Enums;
+    using Concierge.Presentation.Components;
+    using Concierge.Utility;
 
     /// <summary>
     /// Interaction logic for NotesPage.xaml.
     /// </summary>
     public partial class NotesPage : Page
     {
+        private const int MaxUndoQueue = 10;
+
+        private readonly ModifyNotesWindow modifyNotesWindow = new ModifyNotesWindow();
+
         public NotesPage()
         {
             this.InitializeComponent();
@@ -29,10 +36,7 @@ namespace Concierge.Presentation.NotesPageUi
             this.Lock = false;
             this.FontFamilyList.ItemsSource = Fonts.SystemFontFamilies.OrderBy(f => f.Source);
             this.FontSizeList.ItemsSource = new List<double>() { 8, 9, 10, 11, 12, 14, 16, 18, 20, 22, 24, 26, 28, 36, 48, 72 };
-
-            // ButtonUndo.IsEnabled = false;
-
-            // ButtonRedo.IsEnabled = false;
+            this.NotesTextBox.UndoLimit = MaxUndoQueue;
         }
 
         public Document SelectedDocument { get; set; }
@@ -49,6 +53,7 @@ namespace Concierge.Presentation.NotesPageUi
         public void ClearTextBox()
         {
             this.NotesTextBox.Document.Blocks.Clear();
+            this.SelectedDocument = null;
         }
 
         public void SaveTextBox()
@@ -67,21 +72,15 @@ namespace Concierge.Presentation.NotesPageUi
 
             foreach (var chapter in Program.CcsFile.Character.Chapters)
             {
-                var treeViewChapter = new TreeViewItem()
-                {
-                    Header = chapter.Name,
-                    Tag = chapter,
-                    Foreground = Brushes.White,
-                };
+                var treeViewChapter = new ChapterTreeViewItem(chapter);
+                treeViewChapter.Expanded += this.TreeViewItem_Expanded;
+                treeViewChapter.Collapsed += this.TreeViewItem_Collapsed;
 
                 foreach (var document in chapter.Documents)
                 {
-                    var treeViewDocument = new TreeViewItem()
-                    {
-                        Header = document.Name,
-                        Tag = document,
-                        Foreground = Brushes.White,
-                    };
+                    var treeViewDocument = new DocumentTreeViewItem(document);
+                    treeViewDocument.Expanded += this.TreeViewItem_Expanded;
+                    treeViewDocument.Collapsed += this.TreeViewItem_Collapsed;
 
                     treeViewChapter.Items.Add(treeViewDocument);
                 }
@@ -117,7 +116,7 @@ namespace Concierge.Presentation.NotesPageUi
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.StackTrace);
+                Program.ErrorService.LogError(ex, Severity.Release);
                 return string.Empty;
             }
         }
@@ -128,19 +127,19 @@ namespace Concierge.Presentation.NotesPageUi
             {
                 this.Lock = true;
 
-                var treeViewItem = this.NotesTreeView?.SelectedItem as TreeViewItem;
-
-                if (treeViewItem?.Parent is TreeViewItem)
+                if (this.NotesTreeView?.SelectedItem is DocumentTreeViewItem)
                 {
+                    var treeViewItem = this.NotesTreeView?.SelectedItem as DocumentTreeViewItem;
                     if (this.SelectedDocument != null)
                     {
-                        this.SelectedDocument.RTF = this.SaveCurrentDocument();
+                        this.SaveTextBox();
                     }
 
                     this.NotesTextBox.IsUndoEnabled = false;
                     this.NotesTextBox.IsUndoEnabled = true;
-                    this.SelectedDocument = treeViewItem.Tag as Document;
+                    this.SelectedDocument = treeViewItem.Document;
                     this.LoadCurrentDocument(this.SelectedDocument.RTF);
+                    this.ResetUndoQueue();
                 }
 
                 this.Lock = false;
@@ -230,9 +229,6 @@ namespace Concierge.Presentation.NotesPageUi
 
             obj = this.NotesTextBox.Selection.GetPropertyValue(TextElement.ForegroundProperty);
             this.ColorPicker.SelectedColor = obj == DependencyProperty.UnsetValue ? Colors.White : (Color)ColorConverter.ConvertFromString(obj.ToString());
-
-            // ButtonUndo.IsEnabled = NotesTextBox.CanUndo;
-            // ButtonRedo.IsEnabled = NotesTextBox.CanRedo;
         }
 
         private void FontFamilyList_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -245,9 +241,7 @@ namespace Concierge.Presentation.NotesPageUi
 
         private void FontSizeList_TextChanged(object sender, TextChangedEventArgs e)
         {
-            double test;
-
-            if (double.TryParse(this.FontSizeList.Text, out test))
+            if (double.TryParse(this.FontSizeList.Text, out _))
             {
                 this.NotesTextBox.Selection.ApplyPropertyValue(Inline.FontSizeProperty, this.FontSizeList.Text);
             }
@@ -258,35 +252,130 @@ namespace Concierge.Presentation.NotesPageUi
             this.NotesTextBox.Selection.ApplyPropertyValue(TextElement.ForegroundProperty, this.ColorPicker.SelectedColor.ToString());
         }
 
+        private void ResetUndoQueue()
+        {
+            this.NotesTextBox.UndoLimit = 0;
+            this.NotesTextBox.UndoLimit = MaxUndoQueue;
+        }
+
         private void ButtonClear_Click(object sender, RoutedEventArgs e)
         {
             this.SaveTextBox();
             this.ClearTextBox();
+            this.ResetUndoQueue();
 
-            TreeViewItem item = this.NotesTreeView?.SelectedItem as TreeViewItem;
-
-            if (item != null)
+            if (this.NotesTreeView?.SelectedItem is TreeViewItem item)
             {
                 item.IsSelected = false;
             }
         }
 
-        private void ButtonUp_Click(object sender, RoutedEventArgs e)
+        private void MoveTreeViewItem(int increment, bool useZero, Func<int, int, bool> func)
         {
-            var item = this.NotesTreeView?.SelectedItem as TreeViewItem;
-
-            if (item?.Parent is TreeViewItem)
+            if (this.NotesTreeView?.SelectedItem == null)
             {
-                (item.Parent as TreeViewItem).Items.MoveCurrentTo(item);
-                (item.Parent as TreeViewItem).Items.MoveCurrentToPrevious();
+                return;
+            }
+
+            if (this.NotesTreeView.SelectedItem is DocumentTreeViewItem)
+            {
+                var item = this.NotesTreeView.SelectedItem as DocumentTreeViewItem;
+                var chapterItem = item.Parent as ChapterTreeViewItem;
+                var chapterIndex = this.NotesTreeView.Items.IndexOf(chapterItem);
+                var index = chapterItem.Items.IndexOf(item);
+
+                if (func(index, useZero ? 0 : chapterItem.Items.Count - 1))
+                {
+                    this.SelectedDocument.RTF = this.SaveCurrentDocument();
+                    this.SwapTreeViewItem(chapterItem.Chapter.Documents, index, index + increment);
+
+                    var newIndex = (this.NotesTreeView.Items[chapterIndex] as ChapterTreeViewItem).Items[index + increment];
+                    (newIndex as DocumentTreeViewItem).IsSelected = true;
+                }
             }
             else
             {
+                var item = this.NotesTreeView.SelectedItem as ChapterTreeViewItem;
+                var index = this.NotesTreeView.Items.IndexOf(item);
+
+                if (func(index, useZero ? 0 : this.NotesTreeView.Items.Count - 1))
+                {
+                    this.SwapTreeViewItem(Program.CcsFile.Character.Chapters, index, index + increment);
+                    var newIndex = this.NotesTreeView.Items[index + increment];
+                    (newIndex as ChapterTreeViewItem).IsSelected = true;
+                }
+            }
+        }
+
+        private void SwapTreeViewItem<T>(IList<T> list, int oldIndex, int newIndex)
+        {
+            Utilities.Swap(list, oldIndex, newIndex);
+            this.Lock = true;
+            this.DrawTreeView();
+            this.Lock = false;
+        }
+
+        private void ButtonUp_Click(object sender, RoutedEventArgs e)
+        {
+            this.MoveTreeViewItem(-1, true, (x, y) => x > y);
+        }
+
+        private void TreeViewItem_Expanded(object sender, RoutedEventArgs e)
+        {
+            if (sender is ChapterTreeViewItem)
+            {
+                var chapterItem = sender as ChapterTreeViewItem;
+                chapterItem.Chapter.IsExpanded = true;
+            }
+            else
+            {
+                var documentItem = sender as DocumentTreeViewItem;
+                documentItem.Document.IsExpanded = true;
+            }
+        }
+
+        private void TreeViewItem_Collapsed(object sender, RoutedEventArgs e)
+        {
+            if (sender is ChapterTreeViewItem)
+            {
+                var chapterItem = sender as ChapterTreeViewItem;
+                chapterItem.Chapter.IsExpanded = false;
+            }
+            else
+            {
+                var documentItem = sender as DocumentTreeViewItem;
+                documentItem.Document.IsExpanded = false;
             }
         }
 
         private void ButtonDown_Click(object sender, RoutedEventArgs e)
         {
+            this.MoveTreeViewItem(1, false, (x, y) => x < y);
+        }
+
+        private void ButtonAdd_Click(object sender, RoutedEventArgs e)
+        {
+            this.modifyNotesWindow.ShowAdd();
+            this.Draw();
+        }
+
+        private void ButtonEdit_Click(object sender, RoutedEventArgs e)
+        {
+            if (this.NotesTreeView.SelectedItem == null)
+            {
+                return;
+            }
+
+            if (this.NotesTreeView.SelectedItem is ChapterTreeViewItem chapterTreeViewItem)
+            {
+                this.modifyNotesWindow.ShowEdit(chapterTreeViewItem.Chapter);
+            }
+            else if (this.NotesTreeView.SelectedItem is DocumentTreeViewItem documentTreeViewItem)
+            {
+                this.modifyNotesWindow.ShowEdit(documentTreeViewItem.Document);
+            }
+
+            this.Draw();
         }
     }
 }

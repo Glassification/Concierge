@@ -8,15 +8,13 @@ namespace Concierge.Characters.Collections
 
     public class Document
     {
-        public Document()
+        public Document(string name)
         {
             this.ID = Guid.NewGuid();
+            this.Name = name;
         }
 
-        public Document(Guid id)
-        {
-            this.ID = id;
-        }
+        public bool IsExpanded { get; set; }
 
         public string Name { get; set; }
 

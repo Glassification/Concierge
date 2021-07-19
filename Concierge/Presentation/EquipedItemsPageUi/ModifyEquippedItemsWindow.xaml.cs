@@ -13,6 +13,7 @@ namespace Concierge.Presentation.EquipedItemsPageUi
     using Concierge.Characters;
     using Concierge.Characters.Collections;
     using Concierge.Characters.Enums;
+    using Concierge.Utility.Extensions;
 
     /// <summary>
     /// Interaction logic for ModifyEquippedItemsWindow.xaml.
@@ -28,8 +29,6 @@ namespace Concierge.Presentation.EquipedItemsPageUi
         public void ShowAdd()
         {
             this.ClearFields();
-
-            this.ItemComboBox.IsEnabled = true;
             this.ItemComboBox.ItemsSource = EquippedItems.Equipable;
 
             this.ShowDialog();
@@ -48,7 +47,11 @@ namespace Concierge.Presentation.EquipedItemsPageUi
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
-            var item = this.ItemComboBox.SelectedItem as Inventory;
+            if (!(this.ItemComboBox.SelectedItem is Inventory item) || this.SlotComboBox.Text.IsNullOrWhiteSpace())
+            {
+                return;
+            }
+
             var slot = (EquipmentSlot)Enum.Parse(typeof(EquipmentSlot), this.SlotComboBox.Text);
 
             Program.CcsFile.Character.EquipedItems.Equip(item, slot);
@@ -57,7 +60,11 @@ namespace Concierge.Presentation.EquipedItemsPageUi
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
-            var item = this.ItemComboBox.SelectedItem as Inventory;
+            if (!(this.ItemComboBox.SelectedItem is Inventory item) || this.SlotComboBox.Text.IsNullOrWhiteSpace())
+            {
+                return;
+            }
+
             var slot = (EquipmentSlot)Enum.Parse(typeof(EquipmentSlot), this.SlotComboBox.Text);
 
             Program.CcsFile.Character.EquipedItems.Equip(item, slot);

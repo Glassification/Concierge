@@ -43,6 +43,8 @@ namespace Concierge.Presentation.EquipedItemsPageUi
 
         public void Draw()
         {
+            this.UsedAttunement.Text = $"{Program.CcsFile.Character.EquipedItems.Attuned}/{Constants.MaxAttunedItems}";
+
             ReadEquippedItems(Program.CcsFile.Character.EquipedItems.Head, this.HeadEquipmentDataGrid);
             ReadEquippedItems(Program.CcsFile.Character.EquipedItems.Torso, this.TorsoEquipmentDataGrid);
             ReadEquippedItems(Program.CcsFile.Character.EquipedItems.Hands, this.HandsEquipmentDataGrid);

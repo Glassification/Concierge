@@ -144,7 +144,7 @@ namespace Concierge.Presentation
             if (!Program.CcsFile.AbsolutePath.IsNullOrWhiteSpace())
             {
                 this.NotesPage.SaveTextBox();
-                this.fileAccessService.Save(Program.CcsFile);
+                this.fileAccessService.Save(Program.CcsFile, false);
             }
             else
             {
@@ -157,7 +157,7 @@ namespace Concierge.Presentation
             Program.Logger.Info($"Save as character sheet.");
 
             this.NotesPage.SaveTextBox();
-            this.fileAccessService.Save(Program.CcsFile);
+            this.fileAccessService.Save(Program.CcsFile, true);
         }
 
         public void DrawAll()
@@ -288,6 +288,9 @@ namespace Concierge.Presentation
                     break;
                 case Key.D8:
                     this.MoveSelection(7);
+                    break;
+                case Key.D9:
+                    this.MoveSelection(8);
                     break;
             }
         }

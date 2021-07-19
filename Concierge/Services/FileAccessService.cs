@@ -5,6 +5,7 @@
 namespace Concierge.Services
 {
     using Concierge.Persistence;
+    using Concierge.Presentation.HelperUi;
     using Microsoft.Win32;
 
     public class FileAccessService
@@ -17,6 +18,7 @@ namespace Concierge.Services
 
         private readonly OpenFileDialog openFileDialog;
         private readonly SaveFileDialog saveFileDialog;
+        private readonly SaveStatusWindow saveStatusWindow = new SaveStatusWindow();
 
         public FileAccessService()
         {
@@ -46,14 +48,18 @@ namespace Concierge.Services
             }
         }
 
-        public void Save(CcsFile ccsFile)
+        public void Save(CcsFile ccsFile, bool saveAs)
         {
-            if (this.saveFileDialog.ShowDialog() ?? false)
+            if (saveAs)
             {
-                ccsFile.AbsolutePath = this.saveFileDialog.FileName;
-
-                CharacterSaver.SaveCharacterSheetJson(ccsFile);
+                if (this.saveFileDialog.ShowDialog() ?? false)
+                {
+                    ccsFile.AbsolutePath = this.saveFileDialog.FileName;
+                }
             }
+
+            this.saveStatusWindow.ShowWindow();
+            CharacterSaver.SaveCharacterSheetJson(ccsFile);
         }
     }
 }

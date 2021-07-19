@@ -248,7 +248,7 @@
 
                     <Grid 
                         Grid.Row="0"
-                        Margin="15,70,15,70"
+                        Margin="15,95,15,95"
                         Background="#988CD0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="35*"/>
@@ -271,9 +271,10 @@
                             Background="#17112E"
                             Margin="0,1,1,1">
                             <TextBlock 
+                                x:Name="UsedAttunement"
                                 Text="0/3"
                                 Foreground="White"
-                                FontSize="30"
+                                FontSize="35"
                                 HorizontalAlignment="Center"
                                 VerticalAlignment="Center"/>
                         </Grid>
