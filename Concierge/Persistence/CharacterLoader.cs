@@ -53,7 +53,7 @@ namespace Concierge.Persistence
 
         private static bool CheckVersion(string version)
         {
-            if (version.IsNullOrWhiteSpace() || version.CompareTo(Constants.AssemblyVersion) > 0)
+            if (version.IsNullOrWhiteSpace() || version.CompareTo(Constants.AssemblyVersion) < 0)
             {
                 var message = string.Format(
                     "This file was saved with version {0} of Concierge. Current version is {1}.\nContinue loading?",
@@ -61,7 +61,11 @@ namespace Concierge.Persistence
                     Constants.AssemblyVersion);
 
                 Program.Logger.Warning(message);
-                var result = ConciergeMessageWindow.ShowWindow(Regex.Unescape(message), MessageWindowButtons.YesNo);
+                var result = ConciergeMessageWindow.ShowWindow(
+                    Regex.Unescape(message),
+                    "Warning",
+                    MessageWindowButtons.YesNo,
+                    MessageWindowIcons.Alert);
 
                 switch (result)
                 {

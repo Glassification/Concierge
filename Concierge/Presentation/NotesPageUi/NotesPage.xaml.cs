@@ -16,7 +16,7 @@ namespace Concierge.Presentation.NotesPageUi
     using System.Windows.Input;
     using System.Windows.Media;
 
-    using Concierge.Characters.Collections;
+    using Concierge.Characters.Notes;
     using Concierge.Exceptions.Enums;
     using Concierge.Presentation.Components;
     using Concierge.Presentation.Enums;
@@ -431,7 +431,9 @@ namespace Concierge.Presentation.NotesPageUi
             {
                 var result = this.conciergeMessageWindow.ShowWindow(
                     "Are you sure yo want to delete this chapter and all pages within?",
-                    MessageWindowButtons.YesNo);
+                    "Warning",
+                    MessageWindowButtons.YesNo,
+                    MessageWindowIcons.Question);
 
                 if (result != MessageWindowResult.Yes)
                 {
@@ -444,7 +446,9 @@ namespace Concierge.Presentation.NotesPageUi
             {
                 var result = this.conciergeMessageWindow.ShowWindow(
                     "Are you sure yo want to delete this page?",
-                    MessageWindowButtons.YesNo);
+                    "Warning",
+                    MessageWindowButtons.YesNo,
+                    MessageWindowIcons.Question);
 
                 if (result != MessageWindowResult.Yes)
                 {

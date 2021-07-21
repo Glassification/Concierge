@@ -7,7 +7,7 @@ namespace Concierge.Presentation.InventoryPageUi
     using System.Windows;
     using System.Windows.Controls;
 
-    using Concierge.Characters.Collections;
+    using Concierge.Characters.Items;
     using Concierge.Utility;
 
     /// <summary>

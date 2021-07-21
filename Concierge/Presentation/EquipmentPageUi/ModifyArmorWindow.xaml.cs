@@ -13,6 +13,7 @@ namespace Concierge.Presentation.EquipmentPageUi
 
     using Concierge.Characters;
     using Concierge.Characters.Enums;
+    using Concierge.Characters.Items;
 
     /// <summary>
     /// Interaction logic for ModifyArmorWindow.xaml.

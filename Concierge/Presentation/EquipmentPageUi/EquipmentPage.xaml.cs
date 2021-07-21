@@ -7,8 +7,8 @@ namespace Concierge.Presentation.EquipmentPageUi
     using System.Windows;
     using System.Windows.Controls;
 
-    using Concierge.Characters.Collections;
     using Concierge.Characters.Enums;
+    using Concierge.Characters.Items;
     using Concierge.Utility;
 
     /// <summary>
@@ -104,7 +104,7 @@ namespace Concierge.Presentation.EquipmentPageUi
             if (this.AmmoDataGrid.SelectedItem != null)
             {
                 var ammo = (Ammunition)this.AmmoDataGrid.SelectedItem;
-                var index  = Program.CcsFile.Character.Ammunitions.IndexOf(ammo);
+                var index = Program.CcsFile.Character.Ammunitions.IndexOf(ammo);
 
                 if (index != Program.CcsFile.Character.Ammunitions.Count - 1)
                 {
@@ -116,7 +116,7 @@ namespace Concierge.Presentation.EquipmentPageUi
             else if (this.WeaponDataGrid.SelectedItem != null)
             {
                 var weapon = (Weapon)this.WeaponDataGrid.SelectedItem;
-                var index  = Program.CcsFile.Character.Weapons.IndexOf(weapon);
+                var index = Program.CcsFile.Character.Weapons.IndexOf(weapon);
 
                 if (index != Program.CcsFile.Character.Weapons.Count - 1)
                 {

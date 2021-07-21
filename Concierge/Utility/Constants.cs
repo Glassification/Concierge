@@ -8,7 +8,9 @@ namespace Concierge.Utility
     using System.Collections.ObjectModel;
     using System.Reflection;
 
-    using Concierge.Characters.Collections;
+    using Concierge.Characters.Characteristics;
+    using Concierge.Characters.Items;
+    using Concierge.Characters.Spellcasting;
     using Concierge.Persistence;
 
     public static class Constants

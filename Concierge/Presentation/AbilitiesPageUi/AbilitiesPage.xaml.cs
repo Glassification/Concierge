@@ -7,7 +7,7 @@ namespace Concierge.Presentation.AbilitiesPageUi
     using System.Windows;
     using System.Windows.Controls;
 
-    using Concierge.Characters.Collections;
+    using Concierge.Characters.Characteristics;
     using Concierge.Utility;
 
     /// <summary>

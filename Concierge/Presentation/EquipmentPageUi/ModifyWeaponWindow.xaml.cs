@@ -11,8 +11,8 @@ namespace Concierge.Presentation.EquipmentPageUi
     using System.Windows.Input;
     using System.Windows.Media;
 
-    using Concierge.Characters.Collections;
     using Concierge.Characters.Enums;
+    using Concierge.Characters.Items;
     using Concierge.Utility;
 
     /// <summary>
@@ -65,6 +65,7 @@ namespace Concierge.Presentation.EquipmentPageUi
             this.RangeTextBox.Text = weapon.Range;
             this.WeightUpDown.Value = weapon.Weight;
             this.ProficencyOverrideCheckBox.IsChecked = weapon.ProficiencyOverride;
+            this.BagOfHoldingCheckBox.IsChecked = weapon.IsInBagOfHolding;
             this.NotesTextBox.Text = weapon.Note;
         }
 
@@ -79,6 +80,7 @@ namespace Concierge.Presentation.EquipmentPageUi
             this.RangeTextBox.Text = string.Empty;
             this.WeightUpDown.Value = 0.0;
             this.ProficencyOverrideCheckBox.IsChecked = false;
+            this.BagOfHoldingCheckBox.IsChecked = false;
             this.NotesTextBox.Text = string.Empty;
         }
 
@@ -93,6 +95,7 @@ namespace Concierge.Presentation.EquipmentPageUi
             weapon.Range = this.RangeTextBox.Text;
             weapon.Weight = this.WeightUpDown.Value ?? 0.0;
             weapon.ProficiencyOverride = this.ProficencyOverrideCheckBox.IsChecked ?? false;
+            weapon.IsInBagOfHolding = this.BagOfHoldingCheckBox.IsChecked ?? false;
             weapon.Note = this.NotesTextBox.Text;
 
             Program.Modified = true;
@@ -111,6 +114,7 @@ namespace Concierge.Presentation.EquipmentPageUi
                 Range = this.RangeTextBox.Text,
                 Weight = this.WeightUpDown.Value ?? 0.0,
                 ProficiencyOverride = this.ProficencyOverrideCheckBox.IsChecked ?? false,
+                IsInBagOfHolding = this.BagOfHoldingCheckBox.IsChecked ?? false,
                 Note = this.NotesTextBox.Text,
             };
 

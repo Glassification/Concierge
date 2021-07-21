@@ -8,6 +8,7 @@ namespace Concierge.Persistence
     using System.IO;
 
     using Concierge.Exceptions.Enums;
+    using Concierge.Utility;
     using Newtonsoft.Json;
 
     public static class CharacterSaver
@@ -16,6 +17,7 @@ namespace Concierge.Persistence
         {
             try
             {
+                ccsFile.Version = Constants.AssemblyVersion;
                 var rawJson = JsonConvert.SerializeObject(ccsFile, Formatting.Indented);
 
                 File.WriteAllText(ccsFile.AbsolutePath, rawJson);

@@ -9,7 +9,7 @@ namespace Concierge.Utility
     using System.Linq;
     using System.Windows.Media;
 
-    using Concierge.Characters.Collections;
+    using Concierge.Characters;
 
     public static class Utilities
     {
@@ -47,17 +47,14 @@ namespace Concierge.Utility
             return name;
         }
 
-        public static bool ValidateClassLevel(List<Class> classes, Guid id)
+        public static bool ValidateClassLevel(Character character, Guid id, int newValue)
         {
-            int totalLevel = 0;
+            var totalLevel =
+                (character.Class1.Id.Equals(id) ? 0 : character.Class1.Level) +
+                (character.Class2.Id.Equals(id) ? 0 : character.Class2.Level) +
+                (character.Class3.Id.Equals(id) ? 0 : character.Class3.Level);
 
-            foreach (Class @class in classes)
-            {
-                if (!@class.Id.Equals(id))
-                {
-                    totalLevel += @class.Level;
-                }
-            }
+            totalLevel += newValue;
 
             return totalLevel <= Constants.MaxLevel && totalLevel >= 0;
         }

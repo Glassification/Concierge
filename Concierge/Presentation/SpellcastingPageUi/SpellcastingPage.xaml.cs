@@ -8,8 +8,8 @@ namespace Concierge.Presentation.SpellcastingPageUi
     using System.Windows.Controls;
     using System.Windows.Input;
 
-    using Concierge.Characters.Collections;
     using Concierge.Characters.Enums;
+    using Concierge.Characters.Spellcasting;
     using Concierge.Utility;
 
     /// <summary>

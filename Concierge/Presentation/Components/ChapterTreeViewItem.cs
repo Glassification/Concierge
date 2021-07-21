@@ -8,7 +8,7 @@ namespace Concierge.Presentation.Components
     using System.Windows.Controls;
     using System.Windows.Media;
 
-    using Concierge.Characters.Collections;
+    using Concierge.Characters.Notes;
     using MaterialDesignThemes.Wpf;
 
     public class ChapterTreeViewItem : TreeViewItem

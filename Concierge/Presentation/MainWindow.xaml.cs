@@ -83,7 +83,9 @@ namespace Concierge.Presentation
             {
                 switch (Program.ConciergeMessageWindow.ShowWindow(
                     "You have unsaved changes, would you like to save before closing?",
-                    MessageWindowButtons.YesNoCancel))
+                    "Warning",
+                    MessageWindowButtons.YesNoCancel,
+                    MessageWindowIcons.Question))
                 {
                     case MessageWindowResult.OK:
                         this.SaveCharacterSheet();
@@ -167,14 +169,7 @@ namespace Concierge.Presentation
             this.TextCharacterBackground.Text = Program.CcsFile.Character.Details.Background;
             this.TextCharacterAlignment.Text = Program.CcsFile.Character.Details.Alignment;
 
-            if (Program.CcsFile.Character.Level > 0)
-            {
-                this.TextCharacterLevel.Text = "Level " + Program.CcsFile.Character.Level;
-            }
-            else
-            {
-                this.TextCharacterLevel.Text = string.Empty;
-            }
+            this.TextCharacterLevel.Text = Program.CcsFile.Character.Level > 0 ? "Level " + Program.CcsFile.Character.Level : string.Empty;
 
             this.TextCharacterClass.Text = Program.CcsFile.Character.GetClasses;
 

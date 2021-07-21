@@ -494,7 +494,7 @@
                         </Button>
                         <TextBlock Text="Initiative"
                                    Foreground="White"
-                                   FontSize="18"
+                                   FontSize="20"
                                    FontWeight="Bold"
                                    HorizontalAlignment="Center"
                                    VerticalAlignment="Center"/>
@@ -522,7 +522,7 @@
                     <Grid Grid.Column="0" Background="#0B061E">
                         <TextBlock Text="Passive Perception"
                                    Foreground="White"
-                                   FontSize="18"
+                                   FontSize="20"
                                    FontWeight="Bold"
                                    HorizontalAlignment="Center"
                                    VerticalAlignment="Center"
@@ -551,7 +551,7 @@
                     <Grid Grid.Column="0" Background="#0B061E">
                         <TextBlock Text="Vision"
                                    Foreground="White"
-                                   FontSize="18"
+                                   FontSize="20"
                                    FontWeight="Bold"
                                    HorizontalAlignment="Center"
                                    VerticalAlignment="Center"
@@ -580,7 +580,7 @@
                     <Grid Grid.Column="0" Background="#0B061E">
                         <TextBlock Text="Movement Speed"
                                    Foreground="White"
-                                   FontSize="18"
+                                   FontSize="20"
                                    FontWeight="Bold"
                                    HorizontalAlignment="Center"
                                    VerticalAlignment="Center"

@@ -56,7 +56,9 @@ namespace Concierge.Presentation.HelperUi
             {
                 Program.ConciergeMessageWindow.ShowWindow(
                     "You must save this sheet before enabling autosave.",
-                    MessageWindowButtons.Ok);
+                    "Warning",
+                    MessageWindowButtons.Ok,
+                    MessageWindowIcons.Alert);
             }
             else
             {

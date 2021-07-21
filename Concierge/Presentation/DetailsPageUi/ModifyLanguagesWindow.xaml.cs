@@ -10,7 +10,7 @@ namespace Concierge.Presentation.DetailsPageUi
     using System.Windows.Input;
     using System.Windows.Media;
 
-    using Concierge.Characters.Collections;
+    using Concierge.Characters.Characteristics;
     using Concierge.Utility;
 
     /// <summary>

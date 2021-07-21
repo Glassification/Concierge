@@ -9,7 +9,7 @@ namespace Concierge.Presentation.NotesPageUi
     using System.Windows.Input;
     using System.Windows.Media;
 
-    using Concierge.Characters.Collections;
+    using Concierge.Characters.Notes;
     using Concierge.Utility.Extensions;
 
     /// <summary>

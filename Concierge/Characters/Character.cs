@@ -7,10 +7,18 @@ namespace Concierge.Characters
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Text;
 
-    using Concierge.Characters.Collections;
+    using Concierge.Characters.Characteristics;
+    using Concierge.Characters.CharacterSavingThrows;
+    using Concierge.Characters.CharacterSkills;
     using Concierge.Characters.Enums;
+    using Concierge.Characters.Items;
+    using Concierge.Characters.Notes;
+    using Concierge.Characters.Spellcasting;
+    using Concierge.Characters.Status;
     using Concierge.Utility;
+    using Concierge.Utility.Extensions;
     using Newtonsoft.Json;
 
     public class Character
@@ -18,7 +26,6 @@ namespace Concierge.Characters
         public Character()
         {
             this.Initialize();
-            this.Classess = new List<Class>() { new Class(), new Class(), new Class() };
         }
 
         public List<Ability> Abilities { get; set; }
@@ -31,7 +38,11 @@ namespace Concierge.Characters
 
         public Attributes Attributes { get; private set; }
 
-        public List<Class> Classess { get; private set; }
+        public CharacterClass Class1 { get; set; }
+
+        public CharacterClass Class2 { get; set; }
+
+        public CharacterClass Class3 { get; set; }
 
         public List<ClassResource> ClassResources { get; private set; }
 
@@ -82,7 +93,10 @@ namespace Concierge.Characters
 
                 foreach (var weapon in this.Weapons)
                 {
-                    weight += weapon.Weight;
+                    if (!weapon.IsInBagOfHolding)
+                    {
+                        weight += weapon.Weight;
+                    }
                 }
 
                 weight += this.Armor.Weight;
@@ -109,20 +123,7 @@ namespace Concierge.Characters
         public int Initiative => Utilities.CalculateBonus(this.Attributes.Dexterity) + this.Details.InitiativeBonus;
 
         [JsonIgnore]
-        public int Level
-        {
-            get
-            {
-                int totalLevel = 0;
-
-                foreach (Class @class in this.Classess)
-                {
-                    totalLevel += @class.Level;
-                }
-
-                return totalLevel;
-            }
-        }
+        public int Level => this.Class1.Level + this.Class2.Level + this.Class3.Level;
 
         [JsonIgnore]
         public int CasterLevel
@@ -148,19 +149,15 @@ namespace Concierge.Characters
         {
             get
             {
-                string classes = string.Empty;
+                var classes = new StringBuilder();
 
-                foreach (Class @class in this.Classess)
-                {
-                    if (!string.IsNullOrEmpty(@class.Name))
-                    {
-                        classes += @class.Name + ", ";
-                    }
-                }
+                classes.Append(this.Class1.Name.IsNullOrWhiteSpace() ? string.Empty : $"{this.Class1.Name}, ");
+                classes.Append(this.Class2.Name.IsNullOrWhiteSpace() ? string.Empty : $"{this.Class2.Name}, ");
+                classes.Append(this.Class3.Name.IsNullOrWhiteSpace() ? string.Empty : this.Class3.Name);
 
-                classes = !string.IsNullOrEmpty(classes) ? classes.Remove(classes.Length - 2) : string.Empty;
+                var classString = classes.ToString().Trim().Trim(',');
 
-                return classes;
+                return classString;
             }
         }
 
@@ -314,7 +311,9 @@ namespace Concierge.Characters
             this.Armor = new Armor();
             this.Attributes = new Attributes();
             this.Chapters = new List<Chapter>();
-            this.Classess = new List<Class>();
+            this.Class1 = new CharacterClass();
+            this.Class2 = new CharacterClass();
+            this.Class3 = new CharacterClass();
             this.ClassResources = new List<ClassResource>();
             this.Companion = new Companion();
             this.Details = new Details();

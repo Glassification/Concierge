@@ -101,7 +101,7 @@
                             Click="ButtonCloseMenu_Click"
                             MouseEnter="Button_MouseEnter"
                             MouseLeave="Button_MouseLeave">
-                        <materialDesign:PackIcon Kind="Menu" Width="25" Height="25"/>
+                        <materialDesign:PackIcon Kind="MenuOpen" Width="25" Height="25"/>
                     </Button>
                 </StackPanel>
             </Grid>

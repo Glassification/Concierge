@@ -25,39 +25,35 @@ namespace Concierge.Services
 
         private Logger Logger { get; set; }
 
-        /// =========================================
-        /// LogError()
-        /// =========================================
         public void LogError(Exception ex, Severity severity)
         {
             Guard.IsNull(ex, nameof(ex));
 
-            string message = this.IsHandledException(ex) ? ex.Message : $"A generic error occured: {ex.Message}";
+            string message = IsHandledException(ex) ? ex.Message : $"A generic error occured: {ex.Message}";
 
             switch (severity)
             {
                 case Severity.Debug:
 #if DEBUG
                     Debug.WriteLine($"{ex.Message}\n{ex.StackTrace}");
-                    this.ShowMessage(message);
+                    ShowMessage(message);
 #endif
-
-                    this.Logger.Error(message);
                     break;
                 case Severity.Release:
-                    this.Logger.Error(message);
-                    this.ShowMessage(message);
+                    ShowMessage(message);
                     break;
             }
+
+            this.Logger.Error(message);
         }
 
-        private void ShowMessage(string message)
+        private static void ShowMessage(string message)
         {
             var errorMessageBox = new ConciergeMessageWindow();
-            errorMessageBox.ShowWindow(message, MessageWindowButtons.Ok);
+            errorMessageBox.ShowWindow(message, "Error", MessageWindowButtons.Ok, MessageWindowIcons.Error);
         }
 
-        private bool IsHandledException(Exception ex)
+        private static bool IsHandledException(Exception ex)
         {
             return ex is ConciergeException;
         }

@@ -10,7 +10,7 @@ namespace Concierge.Presentation.AbilitiesPageUi
     using System.Windows.Input;
     using System.Windows.Media;
 
-    using Concierge.Characters.Collections;
+    using Concierge.Characters.Characteristics;
 
     /// <summary>
     /// Interaction logic for ModifyAbilitiesWindow.xaml.

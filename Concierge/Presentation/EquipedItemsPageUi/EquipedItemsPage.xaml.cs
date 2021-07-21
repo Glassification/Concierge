@@ -9,8 +9,8 @@ namespace Concierge.Presentation.EquipedItemsPageUi
     using System.Windows;
     using System.Windows.Controls;
 
-    using Concierge.Characters.Collections;
     using Concierge.Characters.Enums;
+    using Concierge.Characters.Items;
     using Concierge.Presentation.Components;
     using Concierge.Presentation.InventoryPageUi;
     using Concierge.Utility;

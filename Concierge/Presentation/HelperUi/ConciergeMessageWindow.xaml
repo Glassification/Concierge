@@ -25,31 +25,57 @@
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0">
-            <StackPanel Orientation="Horizontal"
-                        HorizontalAlignment="Right"
-                        VerticalAlignment="Center">
-                <Button x:Name="CloseButton"
-                        Height="50"
-                        Width="60"
-                        Background="Transparent"
-                        BorderBrush="{x:Null}"
-                        Foreground="White"
-                        ToolTip="Close"
-                        Click="CloseButton_Click"
-                        MouseEnter="Button_MouseEnter"
-                        MouseLeave="Button_MouseLeave">
-                    <materialDesign:PackIcon Kind="WindowClose" Width="25" Height="25"/>
-                </Button>
-            </StackPanel>
+            <TextBlock
+                x:Name="MessageTitle"
+                Text="Message title"
+                FontSize="35"
+                Foreground="#988CD0"
+                Margin="30, 0, 0, 0"
+                FontWeight="Bold"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Left"/>
+            <Button 
+                x:Name="CloseButton"
+                Height="50"
+                Width="60"
+                Background="Transparent"
+                BorderBrush="{x:Null}"
+                Foreground="White"
+                ToolTip="Close"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Center"
+                Click="CloseButton_Click"
+                MouseEnter="Button_MouseEnter"
+                MouseLeave="Button_MouseLeave">
+                <materialDesign:PackIcon Kind="WindowClose" Width="25" Height="25"/>
+            </Button>
         </Grid>
         <Grid Grid.Row="1">
-            <TextBlock 
-                x:Name="MessageText"
-                Text="Your message here"
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="15*"/>
+                <ColumnDefinition Width="85*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="0">
+                <materialDesign:PackIcon 
+                    x:Name="MessageIcon"
+                    Kind="Solid" 
                     Foreground="White"
-                    FontSize="25"
-                    TextWrapping="Wrap"
-                    Margin="15"/>
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Top"
+                    Width="60" 
+                    Height="60"/>
+            </Grid>
+            
+            <Grid Grid.Column="1">
+                <TextBlock 
+                    x:Name="MessageText"
+                    Text="Your message here"
+                        Foreground="White"
+                        FontSize="25"
+                        TextWrapping="Wrap"
+                        Margin="15"/>
+            </Grid>
         </Grid>
         <Grid Grid.Row="2">
             <StackPanel Orientation="Horizontal"

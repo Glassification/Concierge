@@ -10,6 +10,7 @@ namespace Concierge.Presentation.HelperUi
     using System.Windows.Media;
 
     using Concierge.Presentation.Enums;
+    using MaterialDesignThemes.Wpf;
 
     /// <summary>
     /// Interaction logic for ConfirmCloseWindow.xaml.
@@ -23,10 +24,54 @@ namespace Concierge.Presentation.HelperUi
 
         private MessageWindowResult Result { get; set; }
 
-        public MessageWindowResult ShowWindow(string message, MessageWindowButtons messageWindowButtons)
+        public MessageWindowResult ShowWindow(
+            string message,
+            string title,
+            MessageWindowButtons messageWindowButtons,
+            MessageWindowIcons messageWindowIcons)
         {
             this.MessageText.Text = message;
+            this.MessageTitle.Text = title;
+            this.SetMessageIcon(messageWindowIcons);
+            this.SetMessageButtons(messageWindowButtons);
+            this.ShowDialog();
 
+            return this.Result;
+        }
+
+        private void SetMessageIcon(MessageWindowIcons messageWindowIcons)
+        {
+            this.MessageIcon.Visibility = Visibility.Visible;
+
+            switch (messageWindowIcons)
+            {
+                case MessageWindowIcons.Alert:
+                    this.MessageIcon.Kind = PackIconKind.Alert;
+                    break;
+                case MessageWindowIcons.Error:
+                    this.MessageIcon.Kind = PackIconKind.Error;
+                    break;
+                case MessageWindowIcons.Help:
+                    this.MessageIcon.Kind = PackIconKind.HelpCircle;
+                    break;
+                case MessageWindowIcons.Information:
+                    this.MessageIcon.Kind = PackIconKind.Information;
+                    break;
+                case MessageWindowIcons.Question:
+                    this.MessageIcon.Kind = PackIconKind.QuestionMarkCircle;
+                    break;
+                case MessageWindowIcons.Warning:
+                    this.MessageIcon.Kind = PackIconKind.WarningCircle;
+                    break;
+                case MessageWindowIcons.None:
+                default:
+                    this.MessageIcon.Visibility = Visibility.Hidden;
+                    break;
+            }
+        }
+
+        private void SetMessageButtons(MessageWindowButtons messageWindowButtons)
+        {
             switch (messageWindowButtons)
             {
                 case MessageWindowButtons.YesNoCancel:
@@ -54,10 +99,6 @@ namespace Concierge.Presentation.HelperUi
                     this.OkButton.Visibility = Visibility.Visible;
                     break;
             }
-
-            this.ShowDialog();
-
-            return this.Result;
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)

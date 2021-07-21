@@ -6,6 +6,7 @@ namespace Concierge.Characters
 {
     using System;
     using System.Collections.Generic;
+
     using Concierge.Characters.Dto;
     using Concierge.Characters.Enums;
 

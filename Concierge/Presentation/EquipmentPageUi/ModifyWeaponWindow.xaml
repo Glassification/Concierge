@@ -414,7 +414,8 @@
                     <RowDefinition Height="16*"/>
                     <RowDefinition Height="16*"/>
                     <RowDefinition Height="16*"/>
-                    <RowDefinition Height="48*"/>
+                    <RowDefinition Height="16*"/>
+                    <RowDefinition Height="32*"/>
                 </Grid.RowDefinitions>
 
                 <!--Range-->
@@ -506,8 +507,36 @@
                     </Grid>
                 </Grid>
 
-                <!--Notes-->
                 <Grid Grid.Row="3">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="35*"/>
+                        <ColumnDefinition Width="65*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!--Title-->
+                    <Grid Grid.Column="0">
+                        <TextBlock 
+                            Text="Bag of Holding:"
+                            Foreground="White"
+                            FontSize="16"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Margin="10, 0, 0, 0"/>
+                    </Grid>
+
+                    <!--Value-->
+                    <Grid Grid.Column="1">
+                        <CheckBox Name="BagOfHoldingCheckBox"
+                                  Margin="5, 15, 0, 0">
+                            <CheckBox.LayoutTransform>
+                                <ScaleTransform ScaleX="2" ScaleY="2" />
+                            </CheckBox.LayoutTransform>
+                        </CheckBox>
+                    </Grid>
+                </Grid>
+                
+                <!--Notes-->
+                <Grid Grid.Row="4">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="35*"/>
                         <ColumnDefinition Width="65*"/>

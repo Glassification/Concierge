@@ -11,8 +11,8 @@ namespace Concierge.Presentation.OverviewPageUi
     using System.Windows.Media;
     using System.Windows.Shapes;
 
-    using Concierge.Characters.Collections;
     using Concierge.Characters.Enums;
+    using Concierge.Characters.Status;
     using Concierge.Utility;
 
     /// <summary>

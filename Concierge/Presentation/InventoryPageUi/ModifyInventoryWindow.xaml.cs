@@ -9,7 +9,7 @@ namespace Concierge.Presentation.InventoryPageUi
     using System.Windows.Input;
     using System.Windows.Media;
 
-    using Concierge.Characters.Collections;
+    using Concierge.Characters.Items;
     using Concierge.Presentation.Enums;
     using Concierge.Presentation.HelperUi;
     using Concierge.Utility;
@@ -113,7 +113,9 @@ namespace Concierge.Presentation.InventoryPageUi
                     inventory.Attuned = false;
                     this.conciergeMessageWindow.ShowWindow(
                         $"You can only attune to a max of {Constants.MaxAttunedItems} items.",
-                        MessageWindowButtons.Ok);
+                        "Error",
+                        MessageWindowButtons.Ok,
+                        MessageWindowIcons.Error);
                 }
             }
             else

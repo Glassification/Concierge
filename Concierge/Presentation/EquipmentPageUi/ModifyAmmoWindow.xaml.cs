@@ -11,8 +11,8 @@ namespace Concierge.Presentation.EquipmentPageUi
     using System.Windows.Input;
     using System.Windows.Media;
 
-    using Concierge.Characters.Collections;
     using Concierge.Characters.Enums;
+    using Concierge.Characters.Items;
     using Concierge.Utility;
 
     /// <summary>

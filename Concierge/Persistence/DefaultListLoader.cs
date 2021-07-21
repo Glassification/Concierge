@@ -8,8 +8,10 @@ namespace Concierge.Persistence
     using System.Collections.Generic;
     using System.Xml.Linq;
 
-    using Concierge.Characters.Collections;
+    using Concierge.Characters.Characteristics;
     using Concierge.Characters.Enums;
+    using Concierge.Characters.Items;
+    using Concierge.Characters.Spellcasting;
     using Concierge.Exceptions.Enums;
 
     public static class DefaultListLoader
