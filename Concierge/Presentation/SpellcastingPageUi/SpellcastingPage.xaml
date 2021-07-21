@@ -803,11 +803,6 @@
                         Width="0.05*"
                         ElementStyle="{StaticResource ColumnElementStyle}"/>
                     <DataGridTextColumn
-                        Header="Page"
-                        Binding="{Binding Page}"
-                        Width="0.05*"
-                        ElementStyle="{StaticResource ColumnElementStyle}"/>
-                    <DataGridTextColumn
                         Header="School"
                         Binding="{Binding School}"
                         Width="0.09*"
@@ -855,7 +850,7 @@
                     <DataGridTextColumn
                         Header="Description"
                         Binding="{Binding Description}"
-                        Width="0.12*"
+                        Width="0.17*"
                         ElementStyle="{StaticResource ColumnElementStyle}"/>
                 </DataGrid.Columns>
             </components:ConciergeDataGrid>

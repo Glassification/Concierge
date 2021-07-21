@@ -18,6 +18,7 @@ namespace Concierge.Characters
         public Character()
         {
             this.Initialize();
+            this.Classess = new List<Class>() { new Class(), new Class(), new Class() };
         }
 
         public List<Ability> Abilities { get; set; }
@@ -277,32 +278,32 @@ namespace Concierge.Characters
 
         public Chapter GetChapterByDocumentId(Guid id)
         {
-            return this.Chapters.Single(x => x.Documents.Any(y => y.ID.Equals(id)));
+            return this.Chapters.Single(x => x.Documents.Any(y => y.Id.Equals(id)));
         }
 
         public Ability GetAbilityById(Guid id)
         {
-            return this.Abilities.Single(x => x.ID.Equals(id));
+            return this.Abilities.Single(x => x.Id.Equals(id));
         }
 
         public Weapon GetWeaponById(Guid id)
         {
-            return this.Weapons.Single(x => x.ID.Equals(id));
+            return this.Weapons.Single(x => x.Id.Equals(id));
         }
 
         public Ammunition GetAmmunitionById(Guid id)
         {
-            return this.Ammunitions.Single(x => x.ID.Equals(id));
+            return this.Ammunitions.Single(x => x.Id.Equals(id));
         }
 
         public Spell GetSpellById(Guid id)
         {
-            return this.Spells.Single(x => x.ID.Equals(id));
+            return this.Spells.Single(x => x.Id.Equals(id));
         }
 
         public MagicClass GetMagicClassById(Guid id)
         {
-            return this.MagicClasses.Single(x => x.ID.Equals(id));
+            return this.MagicClasses.Single(x => x.Id.Equals(id));
         }
 
         private void Initialize()

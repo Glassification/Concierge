@@ -10,7 +10,7 @@ namespace Concierge.Characters.Collections
     {
         public Document(string name)
         {
-            this.ID = Guid.NewGuid();
+            this.Id = Guid.NewGuid();
             this.Name = name;
         }
 
@@ -20,7 +20,7 @@ namespace Concierge.Characters.Collections
 
         public string RTF { get; set; }
 
-        public Guid ID { get; private set; }
+        public Guid Id { get; private set; }
 
         public override string ToString()
         {

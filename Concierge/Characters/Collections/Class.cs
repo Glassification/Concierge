@@ -16,19 +16,12 @@ namespace Concierge.Characters.Collections
         {
             this._level = 0;
             this.Name = string.Empty;
-            this.ID = Guid.NewGuid();
-        }
-
-        public Class(Guid id)
-        {
-            this._level = 0;
-            this.Name = string.Empty;
-            this.ID = id;
+            this.Id = Guid.NewGuid();
         }
 
         public string Name { get; set; }
 
-        public Guid ID { get; private set; }
+        public Guid Id { get; private set; }
 
         public int Level
         {
@@ -37,7 +30,7 @@ namespace Concierge.Characters.Collections
             {
                 if (value <= Constants.MaxLevel && value >= 0)
                 {
-                    if (Utilities.ValidateClassLevel(Program.CcsFile.Character.Classess, this.ID))
+                    if (Utilities.ValidateClassLevel(Program.CcsFile.Character.Classess, this.Id))
                     {
                         this._level = value;
                     }

@@ -11,13 +11,18 @@ namespace Concierge.Presentation.NotesPageUi
     using System.Text;
     using System.Windows;
     using System.Windows.Controls;
+    using System.Windows.Controls.Primitives;
     using System.Windows.Documents;
+    using System.Windows.Input;
     using System.Windows.Media;
 
     using Concierge.Characters.Collections;
     using Concierge.Exceptions.Enums;
     using Concierge.Presentation.Components;
+    using Concierge.Presentation.Enums;
+    using Concierge.Presentation.HelperUi;
     using Concierge.Utility;
+    using MaterialDesignThemes.Wpf;
 
     /// <summary>
     /// Interaction logic for NotesPage.xaml.
@@ -27,6 +32,7 @@ namespace Concierge.Presentation.NotesPageUi
         private const int MaxUndoQueue = 10;
 
         private readonly ModifyNotesWindow modifyNotesWindow = new ModifyNotesWindow();
+        private readonly ConciergeMessageWindow conciergeMessageWindow = new ConciergeMessageWindow();
 
         public NotesPage()
         {
@@ -37,6 +43,9 @@ namespace Concierge.Presentation.NotesPageUi
             this.FontFamilyList.ItemsSource = Fonts.SystemFontFamilies.OrderBy(f => f.Source);
             this.FontSizeList.ItemsSource = new List<double>() { 8, 9, 10, 11, 12, 14, 16, 18, 20, 22, 24, 26, 28, 36, 48, 72 };
             this.NotesTextBox.UndoLimit = MaxUndoQueue;
+
+            this.NotesTextBox.FontSize = 20;
+            this.NotesTextBox.Foreground = Brushes.White;
         }
 
         public Document SelectedDocument { get; set; }
@@ -61,9 +70,18 @@ namespace Concierge.Presentation.NotesPageUi
             if (this.SelectedDocument != null)
             {
                 this.SelectedDocument.RTF = this.SaveCurrentDocument();
-
-                Program.Modified = true;
             }
+        }
+
+        private static void SetTreeViewItemColor(TreeViewItem treeViewItem, Brush brush)
+        {
+            if (treeViewItem == null)
+            {
+                return;
+            }
+
+            ((treeViewItem.Header as StackPanel).Children[0] as PackIcon).Foreground = brush;
+            ((treeViewItem.Header as StackPanel).Children[1] as TextBlock).Foreground = brush;
         }
 
         private void DrawTreeView()
@@ -91,9 +109,19 @@ namespace Concierge.Presentation.NotesPageUi
 
         private void LoadCurrentDocument(string text)
         {
+            var dataFormat = DataFormats.Rtf;
+
+            if (text == null)
+            {
+                text = string.Empty;
+                dataFormat = DataFormats.Text;
+                this.NotesTextBox.FontSize = 20;
+                this.NotesTextBox.Foreground = Brushes.White;
+            }
+
             var stream = new MemoryStream(Encoding.Default.GetBytes(text));
             this.NotesTextBox.Document.Blocks.Clear();
-            this.NotesTextBox.Selection.Load(stream, DataFormats.Rtf);
+            this.NotesTextBox.Selection.Load(stream, dataFormat);
         }
 
         private string SaveCurrentDocument()
@@ -141,6 +169,20 @@ namespace Concierge.Presentation.NotesPageUi
                     this.LoadCurrentDocument(this.SelectedDocument.RTF);
                     this.ResetUndoQueue();
                 }
+
+                foreach (var chapter in this.NotesTreeView.Items)
+                {
+                    var chapterTreeViewItem = chapter as TreeViewItem;
+                    SetTreeViewItemColor(chapterTreeViewItem, Brushes.White);
+
+                    foreach (var document in chapterTreeViewItem.Items)
+                    {
+                        var documentTreeViewItem = document as TreeViewItem;
+                        SetTreeViewItemColor(documentTreeViewItem, Brushes.White);
+                    }
+                }
+
+                SetTreeViewItemColor(this.NotesTreeView.SelectedItem as TreeViewItem, Brushes.Black);
 
                 this.Lock = false;
             }
@@ -376,6 +418,68 @@ namespace Concierge.Presentation.NotesPageUi
             }
 
             this.Draw();
+        }
+
+        private void ButtonDelete_Click(object sender, RoutedEventArgs e)
+        {
+            if (this.NotesTreeView.SelectedItem == null)
+            {
+                return;
+            }
+
+            if (this.NotesTreeView.SelectedItem is ChapterTreeViewItem chapterTreeViewItem)
+            {
+                var result = this.conciergeMessageWindow.ShowWindow(
+                    "Are you sure yo want to delete this chapter and all pages within?",
+                    MessageWindowButtons.YesNo);
+
+                if (result != MessageWindowResult.Yes)
+                {
+                    return;
+                }
+
+                Program.CcsFile.Character.Chapters.Remove(chapterTreeViewItem.Chapter);
+            }
+            else if (this.NotesTreeView.SelectedItem is DocumentTreeViewItem documentTreeViewItem)
+            {
+                var result = this.conciergeMessageWindow.ShowWindow(
+                    "Are you sure yo want to delete this page?",
+                    MessageWindowButtons.YesNo);
+
+                if (result != MessageWindowResult.Yes)
+                {
+                    return;
+                }
+
+                var chapter = Program.CcsFile.Character.GetChapterByDocumentId(documentTreeViewItem.Document.Id);
+                chapter.Documents.Remove(documentTreeViewItem.Document);
+            }
+
+            this.Draw();
+        }
+
+        private void Button_MouseEnter(object sender, MouseEventArgs e)
+        {
+            if (sender is Button)
+            {
+                (sender as Button).Foreground = Brushes.Black;
+            }
+            else
+            {
+                (sender as ToggleButton).Foreground = Brushes.Black;
+            }
+        }
+
+        private void Button_MouseLeave(object sender, MouseEventArgs e)
+        {
+            if (sender is Button)
+            {
+                (sender as Button).Foreground = Brushes.White;
+            }
+            else
+            {
+                (sender as ToggleButton).Foreground = Brushes.White;
+            }
         }
     }
 }

@@ -196,8 +196,8 @@
                     ToolTip="Close"
                     HorizontalAlignment="Right"
                     Click="CloseButton_Click"
-                    MouseEnter="CloseButton_MouseEnter"
-                    MouseLeave="CloseButton_MouseLeave">
+                    MouseEnter="Button_MouseEnter"
+                    MouseLeave="Button_MouseLeave">
                 <materialDesign:PackIcon Kind="WindowClose" Width="25" Height="25"/>
             </Button>
         </Grid>
@@ -375,6 +375,7 @@
                                             Foreground="White"
                                             FontSize="25"
                                             Margin="0, 0, 5, 0"
+                                            Minimum="0"
                                             Height="40"/>
                         </Grid>
                         <Grid Grid.Column="1">
@@ -384,6 +385,7 @@
                                             Foreground="White"
                                             FontSize="25"
                                             Margin="0, 0, 5, 0"
+                                            Minimum="0"
                                             Height="40"/>
                         </Grid>
                         <Grid Grid.Column="2">
@@ -392,6 +394,7 @@
                                             BorderThickness="0"
                                             Foreground="White"
                                             FontSize="25"
+                                            Minimum="0"
                                             Margin="0, 0, 5, 0"
                                             Height="40"/>
                         </Grid>
@@ -490,18 +493,24 @@
                         Style="{StaticResource PopupWindowButton}"
                         BorderBrush="{x:Null}"
                         Content="OK"
+                        MouseEnter="Button_MouseEnter"
+                        MouseLeave="Button_MouseLeave"
                         Click="OkButton_Click">
                 </Button>
                 <Button x:Name="ApplyButton"
                         Style="{StaticResource PopupWindowButton}"
                         BorderBrush="{x:Null}"
                         Content="Apply"
+                        MouseEnter="Button_MouseEnter"
+                        MouseLeave="Button_MouseLeave"
                         Click="ApplyButton_Click">
                 </Button>
                 <Button x:Name="CancelButton"
                         BorderBrush="{x:Null}"
                         Content="Cancel"
                         Click="CancelButton_Click"
+                        MouseEnter="Button_MouseEnter"
+                        MouseLeave="Button_MouseLeave"
                         Style="{StaticResource PopupWindowButton}">
                 </Button>
             </StackPanel>

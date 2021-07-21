@@ -12,12 +12,12 @@ namespace Concierge.Characters.Collections
     {
         public Ammunition()
         {
-            this.ID = Guid.NewGuid();
+            this.Id = Guid.NewGuid();
         }
 
         public Ammunition(Guid id)
         {
-            this.ID = id;
+            this.Id = id;
         }
 
         public string Name { get; set; }
@@ -30,7 +30,7 @@ namespace Concierge.Characters.Collections
 
         public int Used { get; set; }
 
-        public Guid ID { get; private set; }
+        public Guid Id { get; private set; }
 
         public override string ToString()
         {

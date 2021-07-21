@@ -215,12 +215,14 @@
                         </Grid>
                         <!--Number-->
                         <Grid Grid.Column="1">
-                            <xctk:IntegerUpDown Name="D4NumberUpDown"
-                                                Background="DimGray"
-                                                BorderThickness="0"
-                                                Foreground="White"
-                                                FontSize="25"
-                                                Margin="3"/>
+                            <xctk:IntegerUpDown 
+                                Name="D4NumberUpDown"
+                                Background="DimGray"
+                                BorderThickness="0"
+                                Foreground="White"
+                                FontSize="25"
+                                Margin="3"
+                                Minimum="0"/>
                         </Grid>
                         <!--PlusMinus-->
                         <Grid Grid.Column="2">
@@ -235,12 +237,14 @@
                         </Grid>
                         <!--Modifier-->
                         <Grid Grid.Column="3">
-                            <xctk:IntegerUpDown Name="D4ModifierUpDown"
-                                                Background="DimGray"
-                                                BorderThickness="0"
-                                                Foreground="White"
-                                                FontSize="25"
-                                                Margin="3"/>
+                            <xctk:IntegerUpDown 
+                                Name="D4ModifierUpDown"
+                                Background="DimGray"
+                                BorderThickness="0"
+                                Foreground="White"
+                                FontSize="25"
+                                Margin="3"
+                                Minimum="0"/>
                         </Grid>
                         <!--Roll-->
                         <Grid Grid.Column="4">
@@ -253,7 +257,7 @@
                                     BorderBrush="{x:Null}"
                                     Foreground="#615299"
                                     ToolTip="Roll d4"
-                                    Click="ButtonRollD4_Click">
+                                    Click="ButtonRoll_Click">
                                 <materialDesign:PackIcon Kind="DiceD4" Height="25" Width="25" Margin="10"/>
                             </Button>
                         </Grid>
@@ -290,12 +294,14 @@
                         </Grid>
                         <!--Number-->
                         <Grid Grid.Column="1">
-                            <xctk:IntegerUpDown Name="D6NumberUpDown"
-                                                Background="DimGray"
-                                                BorderThickness="0"
-                                                Foreground="White"
-                                                FontSize="25"
-                                                Margin="3"/>
+                            <xctk:IntegerUpDown 
+                                Name="D6NumberUpDown"
+                                Background="DimGray"
+                                BorderThickness="0"
+                                Foreground="White"
+                                FontSize="25"
+                                Margin="3"
+                                Minimum="0"/>
                         </Grid>
                         <!--PlusMinus-->
                         <Grid Grid.Column="2">
@@ -310,12 +316,14 @@
                         </Grid>
                         <!--Modifier-->
                         <Grid Grid.Column="3">
-                            <xctk:IntegerUpDown Name="D6ModifierUpDown"
-                                                Background="DimGray"
-                                                BorderThickness="0"
-                                                Foreground="White"
-                                                FontSize="25"
-                                                Margin="3"/>
+                            <xctk:IntegerUpDown 
+                                Name="D6ModifierUpDown"
+                                Background="DimGray"
+                                BorderThickness="0"
+                                Foreground="White"
+                                FontSize="25"
+                                Margin="3"
+                                Minimum="0"/>
                         </Grid>
                         <!--Roll-->
                         <Grid Grid.Column="4">
@@ -328,7 +336,7 @@
                                     BorderBrush="{x:Null}"
                                     Foreground="#615299"
                                     ToolTip="Roll d6"
-                                    Click="ButtonRollD6_Click">
+                                    Click="ButtonRoll_Click">
                                 <materialDesign:PackIcon Kind="DiceD6" Height="25" Width="25" Margin="10"/>
                             </Button>
                         </Grid>
@@ -365,12 +373,14 @@
                         </Grid>
                         <!--Number-->
                         <Grid Grid.Column="1">
-                            <xctk:IntegerUpDown Name="D8NumberUpDown"
-                                                Background="DimGray"
-                                                BorderThickness="0"
-                                                Foreground="White"
-                                                FontSize="25"
-                                                Margin="3"/>
+                            <xctk:IntegerUpDown 
+                                Name="D8NumberUpDown"
+                                Background="DimGray"
+                                BorderThickness="0"
+                                Foreground="White"
+                                FontSize="25"
+                                Margin="3"
+                                Minimum="0"/>
                         </Grid>
                         <!--PlusMinus-->
                         <Grid Grid.Column="2">
@@ -385,12 +395,14 @@
                         </Grid>
                         <!--Modifier-->
                         <Grid Grid.Column="3">
-                            <xctk:IntegerUpDown Name="D8ModifierUpDown"
-                                                Background="DimGray"
-                                                BorderThickness="0"
-                                                Foreground="White"
-                                                FontSize="25"
-                                                Margin="3"/>
+                            <xctk:IntegerUpDown 
+                                Name="D8ModifierUpDown"
+                                Background="DimGray"
+                                BorderThickness="0"
+                                Foreground="White"
+                                FontSize="25"
+                                Margin="3"
+                                Minimum="0"/>
                         </Grid>
                         <!--Roll-->
                         <Grid Grid.Column="4">
@@ -403,7 +415,7 @@
                                     BorderBrush="{x:Null}"
                                     Foreground="#615299"
                                     ToolTip="Roll d8"
-                                    Click="ButtonRollD8_Click">
+                                    Click="ButtonRoll_Click">
                                 <materialDesign:PackIcon Kind="DiceD8" Height="25" Width="25" Margin="10"/>
                             </Button>
                         </Grid>
@@ -440,12 +452,14 @@
                         </Grid>
                         <!--Number-->
                         <Grid Grid.Column="1">
-                            <xctk:IntegerUpDown Name="D10NumberUpDown"
-                                                Background="DimGray"
-                                                BorderThickness="0"
-                                                Foreground="White"
-                                                FontSize="25"
-                                                Margin="3"/>
+                            <xctk:IntegerUpDown 
+                                Name="D10NumberUpDown"
+                                Background="DimGray"
+                                BorderThickness="0"
+                                Foreground="White"
+                                FontSize="25"
+                                Margin="3"
+                                Minimum="0"/>
                         </Grid>
                         <!--PlusMinus-->
                         <Grid Grid.Column="2">
@@ -460,12 +474,14 @@
                         </Grid>
                         <!--Modifier-->
                         <Grid Grid.Column="3">
-                            <xctk:IntegerUpDown Name="D10ModifierUpDown"
-                                                Background="DimGray"
-                                                BorderThickness="0"
-                                                Foreground="White"
-                                                FontSize="25"
-                                                Margin="3"/>
+                            <xctk:IntegerUpDown 
+                                Name="D10ModifierUpDown"
+                                Background="DimGray"
+                                BorderThickness="0"
+                                Foreground="White"
+                                FontSize="25"
+                                Margin="3"
+                                Minimum="0"/>
                         </Grid>
                         <!--Roll-->
                         <Grid Grid.Column="4">
@@ -478,7 +494,7 @@
                                     BorderBrush="{x:Null}"
                                     Foreground="#615299"
                                     ToolTip="Roll d10"
-                                    Click="ButtonRollD10_Click">
+                                    Click="ButtonRoll_Click">
                                 <materialDesign:PackIcon Kind="DiceD10" Height="25" Width="25" Margin="10"/>
                             </Button>
                         </Grid>
@@ -515,12 +531,14 @@
                         </Grid>
                         <!--Number-->
                         <Grid Grid.Column="1">
-                            <xctk:IntegerUpDown Name="D100NumberUpDown"
-                                                Background="DimGray"
-                                                BorderThickness="0"
-                                                Foreground="White"
-                                                FontSize="25"
-                                                Margin="3"/>
+                            <xctk:IntegerUpDown 
+                                Name="D100NumberUpDown"
+                                Background="DimGray"
+                                BorderThickness="0"
+                                Foreground="White"
+                                FontSize="25"
+                                Margin="3"
+                                Minimum="0"/>
                         </Grid>
                         <!--PlusMinus-->
                         <Grid Grid.Column="2">
@@ -535,12 +553,14 @@
                         </Grid>
                         <!--Modifier-->
                         <Grid Grid.Column="3">
-                            <xctk:IntegerUpDown Name="D100ModifierUpDown"
-                                                Background="DimGray"
-                                                BorderThickness="0"
-                                                Foreground="White"
-                                                FontSize="25"
-                                                Margin="3"/>
+                            <xctk:IntegerUpDown 
+                                Name="D100ModifierUpDown"
+                                Background="DimGray"
+                                BorderThickness="0"
+                                Foreground="White"
+                                FontSize="25"
+                                Margin="3"
+                                Minimum="0"/>
                         </Grid>
                         <!--Roll-->
                         <Grid Grid.Column="4">
@@ -553,7 +573,7 @@
                                     BorderBrush="{x:Null}"
                                     Foreground="#615299"
                                     ToolTip="Roll d100"
-                                    Click="ButtonRollD100_Click">
+                                    Click="ButtonRoll_Click">
                                 <materialDesign:PackIcon Kind="DiceMultiple" Height="25" Width="25" Margin="10"/>
                             </Button>
                         </Grid>
@@ -590,12 +610,14 @@
                         </Grid>
                         <!--Number-->
                         <Grid Grid.Column="1">
-                            <xctk:IntegerUpDown Name="D12NumberUpDown"
-                                                Background="DimGray"
-                                                BorderThickness="0"
-                                                Foreground="White"
-                                                FontSize="25"
-                                                Margin="3"/>
+                            <xctk:IntegerUpDown 
+                                Name="D12NumberUpDown"
+                                Background="DimGray"
+                                BorderThickness="0"
+                                Foreground="White"
+                                FontSize="25"
+                                Margin="3"
+                                Minimum="0"/>
                         </Grid>
                         <!--PlusMinus-->
                         <Grid Grid.Column="2">
@@ -610,12 +632,14 @@
                         </Grid>
                         <!--Modifier-->
                         <Grid Grid.Column="3">
-                            <xctk:IntegerUpDown Name="D12ModifierUpDown"
-                                                Background="DimGray"
-                                                BorderThickness="0"
-                                                Foreground="White"
-                                                FontSize="25"
-                                                Margin="3"/>
+                            <xctk:IntegerUpDown 
+                                Name="D12ModifierUpDown"
+                                Background="DimGray"
+                                BorderThickness="0"
+                                Foreground="White"
+                                FontSize="25"
+                                Margin="3"
+                                Minimum="0"/>
                         </Grid>
                         <!--Roll-->
                         <Grid Grid.Column="4">
@@ -628,7 +652,7 @@
                                     BorderBrush="{x:Null}"
                                     Foreground="#615299"
                                     ToolTip="Roll d12"
-                                    Click="ButtonRollD12_Click">
+                                    Click="ButtonRoll_Click">
                                 <materialDesign:PackIcon Kind="DiceD12" Height="25" Width="25" Margin="10"/>
                             </Button>
                         </Grid>
@@ -665,12 +689,14 @@
                         </Grid>
                         <!--Number-->
                         <Grid Grid.Column="1">
-                            <xctk:IntegerUpDown Name="D20NumberUpDown"
-                                                Background="DimGray"
-                                                BorderThickness="0"
-                                                Foreground="White"
-                                                FontSize="25"
-                                                Margin="3"/>
+                            <xctk:IntegerUpDown 
+                                Name="D20NumberUpDown"
+                                Background="DimGray"
+                                BorderThickness="0"
+                                Foreground="White"
+                                FontSize="25"
+                                Margin="3"
+                                Minimum="0"/>
                         </Grid>
                         <!--PlusMinus-->
                         <Grid Grid.Column="2">
@@ -685,12 +711,14 @@
                         </Grid>
                         <!--Modifier-->
                         <Grid Grid.Column="3">
-                            <xctk:IntegerUpDown Name="D20ModifierUpDown"
-                                                Background="DimGray"
-                                                BorderThickness="0"
-                                                Foreground="White"
-                                                FontSize="25"
-                                                Margin="3"/>
+                            <xctk:IntegerUpDown 
+                                Name="D20ModifierUpDown"
+                                Background="DimGray"
+                                BorderThickness="0"
+                                Foreground="White"
+                                FontSize="25"
+                                Margin="3"
+                                Minimum="0"/>
                         </Grid>
                         <!--Roll-->
                         <Grid Grid.Column="4">
@@ -703,7 +731,7 @@
                                     BorderBrush="{x:Null}"
                                     Foreground="#615299"
                                     ToolTip="Roll d20"
-                                    Click="ButtonRollD20_Click">
+                                    Click="ButtonRoll_Click">
                                 <materialDesign:PackIcon Kind="DiceD20" Height="25" Width="25" Margin="10"/>
                             </Button>
                         </Grid>
@@ -732,21 +760,25 @@
 
                         <!--Die-->
                         <Grid Grid.Column="0">
-                            <xctk:IntegerUpDown Name="DxDieUpDown"
-                                                Background="DimGray"
-                                                BorderThickness="0"
-                                                Foreground="White"
-                                                FontSize="25"
-                                                Margin="3"/>
+                            <xctk:IntegerUpDown 
+                                Name="DxDieUpDown"
+                                Background="DimGray"
+                                BorderThickness="0"
+                                Foreground="White"
+                                FontSize="25"
+                                Margin="3"
+                                Minimum="0"/>
                         </Grid>
                         <!--Number-->
                         <Grid Grid.Column="1">
-                            <xctk:IntegerUpDown Name="DxNumberUpDown"
-                                                Background="DimGray"
-                                                BorderThickness="0"
-                                                Foreground="White"
-                                                FontSize="25"
-                                                Margin="3"/>
+                            <xctk:IntegerUpDown 
+                                Name="DxNumberUpDown"
+                                Background="DimGray"
+                                BorderThickness="0"
+                                Foreground="White"
+                                FontSize="25"
+                                Margin="3"
+                                Minimum="0"/>
                         </Grid>
                         <!--PlusMinus-->
                         <Grid Grid.Column="2">
@@ -761,12 +793,14 @@
                         </Grid>
                         <!--Modifier-->
                         <Grid Grid.Column="3">
-                            <xctk:IntegerUpDown Name="DxModifierUpDown"
-                                                Background="DimGray"
-                                                BorderThickness="0"
-                                                Foreground="White"
-                                                FontSize="25"
-                                                Margin="3"/>
+                            <xctk:IntegerUpDown 
+                                Name="DxModifierUpDown"
+                                Background="DimGray"
+                                BorderThickness="0"
+                                Foreground="White"
+                                FontSize="25"
+                                Margin="3"
+                                Minimum="0"/>
                         </Grid>
                         <!--Roll-->
                         <Grid Grid.Column="4">
@@ -779,7 +813,7 @@
                                     BorderBrush="{x:Null}"
                                     Foreground="#615299"
                                     ToolTip="Roll dx"
-                                    Click="ButtonRollDx_Click">
+                                    Click="ButtonRoll_Click">
                                 <materialDesign:PackIcon Kind="DiceMultiple" Height="25" Width="25" Margin="10"/>
                             </Button>
                         </Grid>

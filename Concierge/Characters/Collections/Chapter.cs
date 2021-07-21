@@ -12,25 +12,11 @@ namespace Concierge.Characters.Collections
 
     public class Chapter
     {
-        public Chapter()
-        {
-            this.Documents = new List<Document>();
-            this.ID = Guid.NewGuid();
-            this.IsNewChapterPlaceholder = false;
-        }
-
         public Chapter(string name)
         {
             this.Documents = new List<Document>();
-            this.ID = Guid.NewGuid();
+            this.Id = Guid.NewGuid();
             this.Name = name;
-            this.IsNewChapterPlaceholder = false;
-        }
-
-        public Chapter(Guid id)
-        {
-            this.Documents = new List<Document>();
-            this.ID = id;
             this.IsNewChapterPlaceholder = false;
         }
 
@@ -43,7 +29,7 @@ namespace Concierge.Characters.Collections
         [JsonIgnore]
         public bool IsNewChapterPlaceholder { get; set; }
 
-        public Guid ID { get; private set; }
+        public Guid Id { get; private set; }
 
         public override string ToString()
         {
@@ -52,7 +38,7 @@ namespace Concierge.Characters.Collections
 
         public Document GetDocumentById(Guid id)
         {
-            return this.Documents.Single(x => x.ID.Equals(id));
+            return this.Documents.Single(x => x.Id.Equals(id));
         }
     }
 }

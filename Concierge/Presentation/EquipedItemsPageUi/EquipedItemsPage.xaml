@@ -260,11 +260,12 @@
                             Background="#0B061E"
                             Margin="1,1,0,1">
                             <TextBlock 
-                                Text="Attuned"
+                                Text="Attuned Items"
                                 Foreground="White"
-                                FontSize="22"
+                                FontSize="23"
                                 HorizontalAlignment="Center"
-                                VerticalAlignment="Center"/>
+                                VerticalAlignment="Center"
+                                TextWrapping="Wrap"/>
                         </Grid>
                         <Grid 
                             Grid.Column="1"

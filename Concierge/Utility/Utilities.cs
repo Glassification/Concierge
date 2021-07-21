@@ -53,7 +53,7 @@ namespace Concierge.Utility
 
             foreach (Class @class in classes)
             {
-                if (!@class.ID.Equals(id))
+                if (!@class.Id.Equals(id))
                 {
                     totalLevel += @class.Level;
                 }

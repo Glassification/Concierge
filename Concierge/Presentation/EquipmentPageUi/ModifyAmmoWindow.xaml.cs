@@ -44,7 +44,7 @@ namespace Concierge.Presentation.EquipmentPageUi
         public void ShowEdit(Ammunition ammunition)
         {
             this.HeaderTextBlock.Text = "Edit Ammunition";
-            this.SelectedAmmoId = ammunition.ID;
+            this.SelectedAmmoId = ammunition.Id;
             this.Editing = true;
             this.ApplyButton.Visibility = Visibility.Collapsed;
             this.FillFields(ammunition);
@@ -145,14 +145,14 @@ namespace Concierge.Presentation.EquipmentPageUi
             }
         }
 
-        private void CloseButton_MouseEnter(object sender, MouseEventArgs e)
+        private void Button_MouseEnter(object sender, RoutedEventArgs e)
         {
-            this.CloseButton.Foreground = Brushes.Black;
+            (sender as Button).Foreground = Brushes.Black;
         }
 
-        private void CloseButton_MouseLeave(object sender, MouseEventArgs e)
+        private void Button_MouseLeave(object sender, RoutedEventArgs e)
         {
-            this.CloseButton.Foreground = Brushes.White;
+            (sender as Button).Foreground = Brushes.White;
         }
     }
 }

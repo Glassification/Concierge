@@ -224,7 +224,7 @@
                         </ListViewItem>
                         <ListViewItem x:Name="ItemDetails" Height="60" Selected="ItemDetails_Selected">
                             <StackPanel Orientation="Horizontal">
-                                <materialDesign:PackIcon Kind="Information" Height="25" Width="25" Margin="10"/>
+                                <materialDesign:PackIcon Kind="Details" Height="25" Width="25" Margin="10"/>
                                 <TextBlock Text="Details" VerticalAlignment="Center" Margin="20 10"/>
                             </StackPanel>
                         </ListViewItem>
@@ -242,25 +242,25 @@
                         </ListViewItem>
                         <ListViewItem x:Name="ItemEquipedItems" Height="60" Selected="ItemEquipedItems_Selected">
                             <StackPanel Orientation="Horizontal">
-                                <materialDesign:PackIcon Kind="Person" Height="25" Width="25" Margin="10"/>
+                                <materialDesign:PackIcon Kind="PersonOutline" Height="25" Width="25" Margin="10"/>
                                 <TextBlock Text="Equipped Items" VerticalAlignment="Center" Margin="20 10"/>
                             </StackPanel>
                         </ListViewItem>
                         <ListViewItem x:Name="ItemInventory" Height="60" Selected="ItemInventory_Selected">
                             <StackPanel Orientation="Horizontal">
-                                <materialDesign:PackIcon Kind="Briefcase" Height="25" Width="25" Margin="10"/>
+                                <materialDesign:PackIcon Kind="BackpackOutline" Height="25" Width="25" Margin="10"/>
                                 <TextBlock Text="Inventory" VerticalAlignment="Center" Margin="20 10"/>
                             </StackPanel>
                         </ListViewItem>
                         <ListViewItem x:Name="ItemSpellcasting" Height="60" Selected="ItemSpellcasting_Selected">
                             <StackPanel Orientation="Horizontal">
-                                <materialDesign:PackIcon Kind="Wand" Height="25" Width="25" Margin="10"/>
+                                <materialDesign:PackIcon Kind="Magic" Height="25" Width="25" Margin="10"/>
                                 <TextBlock Text="Spellcasting" VerticalAlignment="Center" Margin="20 10"/>
                             </StackPanel>
                         </ListViewItem>
                         <ListViewItem x:Name="ItemTools" Height="60" Selected="ItemTools_Selected">
                             <StackPanel Orientation="Horizontal">
-                                <materialDesign:PackIcon Kind="Screwdriver" Height="25" Width="25" Margin="10"/>
+                                <materialDesign:PackIcon Kind="ToolboxOutline" Height="25" Width="25" Margin="10"/>
                                 <TextBlock Text="Tools" VerticalAlignment="Center" Margin="20 10"/>
                             </StackPanel>
                         </ListViewItem>

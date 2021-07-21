@@ -15,12 +15,7 @@ namespace Concierge.Characters.Collections
     {
         public MagicClass()
         {
-            this.ID = Guid.NewGuid();
-        }
-
-        public MagicClass(Guid id)
-        {
-            this.ID = id;
+            this.Id = Guid.NewGuid();
         }
 
         public string Name { get; set; }
@@ -33,7 +28,7 @@ namespace Concierge.Characters.Collections
 
         public int KnownSpells { get; set; }
 
-        public Guid ID { get; private set; }
+        public Guid Id { get; private set; }
 
         [JsonIgnore]
         public int PreparedSpells => Program.CcsFile.Character.Spells.Where(x => x.Class?.Equals(this.Name) ?? false && x.Prepared).ToList().Count;

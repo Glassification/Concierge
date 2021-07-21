@@ -247,15 +247,17 @@
                     Click="ButtonEdit_Click">
                     <materialDesign:PackIcon Kind="Edit" Width="25" Height="25"/>
                 </Button>
-                <Button x:Name="ButtonDelete"
-                            Height="50"
-                            Width="60"
-                            HorizontalAlignment="Center"
-                            VerticalAlignment="Center"
-                            Background="Transparent"
-                            BorderBrush="{x:Null}"
-                            Foreground="IndianRed"
-                            ToolTip="Delete Selected Item">
+                <Button 
+                    x:Name="ButtonDelete"
+                    Height="50"
+                    Width="60"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Background="Transparent"
+                    BorderBrush="{x:Null}"
+                    Foreground="IndianRed"
+                    ToolTip="Delete Selected Item"
+                    Click="ButtonDelete_Click">
                     <materialDesign:PackIcon Kind="Delete" Width="25" Height="25"/>
                 </Button>
             </StackPanel>
@@ -290,7 +292,8 @@
                 <!--Toolbar-->
                 <Grid Grid.Row="0">
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                        <Button x:Name="ButtonCut"
+                        <Button 
+                            x:Name="ButtonCut"
                             Height="50"
                             Width="60"
                             HorizontalAlignment="Center"
@@ -299,10 +302,13 @@
                             BorderBrush="{x:Null}"
                             Foreground="White"
                             ToolTip="Cut"
-                            Click="ButtonCut_Click">
+                            Click="ButtonCut_Click"
+                            MouseEnter="Button_MouseEnter"
+                            MouseLeave="Button_MouseLeave">
                             <materialDesign:PackIcon Kind="Scissors" Width="25" Height="25"/>
                         </Button>
-                        <Button x:Name="ButtonCopy"
+                        <Button 
+                            x:Name="ButtonCopy"
                             Height="50"
                             Width="60"
                             HorizontalAlignment="Center"
@@ -311,10 +317,13 @@
                             BorderBrush="{x:Null}"
                             Foreground="White"
                             ToolTip="Copy"
-                            Click="ButtonCopy_Click">
+                            Click="ButtonCopy_Click"
+                            MouseEnter="Button_MouseEnter"
+                            MouseLeave="Button_MouseLeave">
                             <materialDesign:PackIcon Kind="ContentCopy" Width="25" Height="25"/>
                         </Button>
-                        <Button x:Name="ButtonPaste"
+                        <Button 
+                            x:Name="ButtonPaste"
                             Height="50"
                             Width="60"
                             HorizontalAlignment="Center"
@@ -323,10 +332,13 @@
                             BorderBrush="{x:Null}"
                             Foreground="White"
                             ToolTip="Paste"
-                            Click="ButtonPaste_Click">
+                            Click="ButtonPaste_Click"
+                            MouseEnter="Button_MouseEnter"
+                            MouseLeave="Button_MouseLeave">
                             <materialDesign:PackIcon Kind="ContentPaste" Width="25" Height="25"/>
                         </Button>
-                        <Button x:Name="ButtonUndo"
+                        <Button 
+                            x:Name="ButtonUndo"
                             Height="50"
                             Width="60"
                             HorizontalAlignment="Center"
@@ -335,10 +347,13 @@
                             BorderBrush="{x:Null}"
                             Foreground="White"
                             ToolTip="Undo"
-                            Click="ButtonUndo_Click">
+                            Click="ButtonUndo_Click"
+                            MouseEnter="Button_MouseEnter"
+                            MouseLeave="Button_MouseLeave">
                             <materialDesign:PackIcon Kind="Undo" Width="25" Height="25"/>
                         </Button>
-                        <Button x:Name="ButtonRedo"
+                        <Button 
+                            x:Name="ButtonRedo"
                             Height="50"
                             Width="60"
                             HorizontalAlignment="Center"
@@ -347,12 +362,15 @@
                             BorderBrush="{x:Null}"
                             Foreground="White"
                             ToolTip="Redo"
-                            Click="ButtonRedo_Click">
+                            Click="ButtonRedo_Click"
+                            MouseEnter="Button_MouseEnter"
+                            MouseLeave="Button_MouseLeave">
                             <materialDesign:PackIcon Kind="Redo" Width="25" Height="25"/>
                         </Button>
                         <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"
                                    Foreground="White"/>
-                        <ToggleButton x:Name="ButtonBold"
+                        <ToggleButton 
+                            x:Name="ButtonBold"
                             Height="50"
                             Width="60"
                             HorizontalAlignment="Center"
@@ -361,10 +379,13 @@
                             BorderBrush="{x:Null}"
                             Foreground="White"
                             ToolTip="Bold"
-                            Click="ButtonBold_Click">
+                            Click="ButtonBold_Click"
+                            MouseEnter="Button_MouseEnter"
+                            MouseLeave="Button_MouseLeave">
                             <materialDesign:PackIcon Kind="FormatBold" Width="25" Height="25"/>
                         </ToggleButton>
-                        <ToggleButton x:Name="ButtonItalic"
+                        <ToggleButton 
+                            x:Name="ButtonItalic"
                             Height="50"
                             Width="60"
                             HorizontalAlignment="Center"
@@ -373,10 +394,13 @@
                             BorderBrush="{x:Null}"
                             Foreground="White"
                             ToolTip="Italic"
-                            Click="ButtonItalic_Click">
+                            Click="ButtonItalic_Click"
+                            MouseEnter="Button_MouseEnter"
+                            MouseLeave="Button_MouseLeave">
                             <materialDesign:PackIcon Kind="FormatItalic" Width="25" Height="25"/>
                         </ToggleButton>
-                        <ToggleButton x:Name="ButtonUnderline"
+                        <ToggleButton 
+                            x:Name="ButtonUnderline"
                             Height="50"
                             Width="60"
                             HorizontalAlignment="Center"
@@ -385,7 +409,9 @@
                             BorderBrush="{x:Null}"
                             Foreground="White"
                             ToolTip="Underline"
-                            Click="ButtonUnderline_Click">
+                            Click="ButtonUnderline_Click"
+                            MouseEnter="Button_MouseEnter"
+                            MouseLeave="Button_MouseLeave">
                             <materialDesign:PackIcon Kind="FormatUnderline" Width="25" Height="25"/>
                         </ToggleButton>
                         <ComboBox Name="FontFamilyList"

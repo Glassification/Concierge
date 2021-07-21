@@ -13,12 +13,12 @@ namespace Concierge.Characters.Collections
     {
         public Spell()
         {
-            this.ID = Guid.NewGuid();
+            this.Id = Guid.NewGuid();
         }
 
         public Spell(Guid id)
         {
-            this.ID = id;
+            this.Id = id;
         }
 
         public string Name { get; set; }
@@ -54,7 +54,7 @@ namespace Concierge.Characters.Collections
 
         public string Class { get; set; }
 
-        public Guid ID { get; }
+        public Guid Id { get; }
 
         public override string ToString()
         {

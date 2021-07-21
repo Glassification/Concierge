@@ -12,12 +12,12 @@ namespace Concierge.Characters.Collections
     {
         public Language()
         {
-            this.ID = Guid.NewGuid();
+            this.Id = Guid.NewGuid();
         }
 
         public Language(Guid id)
         {
-            this.ID = id;
+            this.Id = id;
         }
 
         public string Name { get; set; }
@@ -26,7 +26,7 @@ namespace Concierge.Characters.Collections
 
         public string Speakers { get; set; }
 
-        public Guid ID { get; }
+        public Guid Id { get; }
 
         [JsonIgnore]
         public string Description => $"{this.Name} ({this.Script}), Spoken by: {this.Speakers}";

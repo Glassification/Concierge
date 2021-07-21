@@ -86,7 +86,7 @@ namespace Concierge.Characters
 
         public Language GetLanguageById(Guid id)
         {
-            return this.Languages.Single(x => x.ID.Equals(id));
+            return this.Languages.Single(x => x.Id.Equals(id));
         }
     }
 }

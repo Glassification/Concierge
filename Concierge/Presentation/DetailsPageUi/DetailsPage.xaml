@@ -718,7 +718,7 @@
                                   Style="{DynamicResource DGHeaderStyle}"
                                   SelectionMode="Single"
                                   SelectionChanged="WeaponProficiencyDataGrid_SelectionChanged"
-                                  Sorted="WeaponProficiencyDataGrid_Sorted">
+                                  Sorted="ProficiencyDataGrid_Sorted">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Weapons"
                                                     Width="100*"
@@ -746,7 +746,7 @@
                                   Style="{DynamicResource DGHeaderStyle}"
                                   SelectionMode="Single"
                                   SelectionChanged="ArmorProficiencyDataGrid_SelectionChanged"
-                                  Sorted="ArmorProficiencyDataGrid_Sorted">
+                                  Sorted="ProficiencyDataGrid_Sorted">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Armor"
                                                     Width="100*"
@@ -774,7 +774,7 @@
                                   Style="{DynamicResource DGHeaderStyle}"
                                   SelectionMode="Single"
                                   SelectionChanged="ShieldProficiencyDataGrid_SelectionChanged"
-                                  Sorted="ShieldProficiencyDataGrid_Sorted">
+                                  Sorted="ProficiencyDataGrid_Sorted">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Shields"
                                                     Width="100*"
@@ -802,7 +802,7 @@
                                   Style="{DynamicResource DGHeaderStyle}"
                                   SelectionMode="Single"
                                   SelectionChanged="ToolProficiencyDataGrid_SelectionChanged"
-                                  Sorted="ToolProficiencyDataGrid_Sorted">
+                                  Sorted="ProficiencyDataGrid_Sorted">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Tools"
                                                     Width="100*"

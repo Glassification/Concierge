@@ -187,7 +187,7 @@ namespace Concierge.Characters
         private static void AddToInventory(Inventory item)
         {
             var inventory = Program.CcsFile.Character.Inventories;
-            var existingItem = inventory.SingleOrDefault(x => x.ID.Equals(item.ID));
+            var existingItem = inventory.SingleOrDefault(x => x.Id.Equals(item.Id));
 
             if (existingItem == null)
             {

@@ -4,7 +4,6 @@
 
 namespace Concierge.Presentation.HelperUi
 {
-    using System;
     using System.ComponentModel;
     using System.Threading;
     using System.Windows;

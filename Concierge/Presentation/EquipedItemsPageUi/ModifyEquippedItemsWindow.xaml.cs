@@ -7,6 +7,7 @@ namespace Concierge.Presentation.EquipedItemsPageUi
     using System;
     using System.Linq;
     using System.Windows;
+    using System.Windows.Controls;
     using System.Windows.Input;
     using System.Windows.Media;
 
@@ -55,6 +56,8 @@ namespace Concierge.Presentation.EquipedItemsPageUi
             var slot = (EquipmentSlot)Enum.Parse(typeof(EquipmentSlot), this.SlotComboBox.Text);
 
             Program.CcsFile.Character.EquipedItems.Equip(item, slot);
+            Program.Modified = true;
+
             this.Hide();
         }
 
@@ -71,6 +74,8 @@ namespace Concierge.Presentation.EquipedItemsPageUi
 
             this.ClearFields();
             this.ItemComboBox.ItemsSource = EquippedItems.Equipable;
+
+            Program.Modified = true;
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
@@ -88,14 +93,14 @@ namespace Concierge.Presentation.EquipedItemsPageUi
             }
         }
 
-        private void CloseButton_MouseEnter(object sender, MouseEventArgs e)
+        private void Button_MouseEnter(object sender, RoutedEventArgs e)
         {
-            this.CloseButton.Foreground = Brushes.Black;
+            (sender as Button).Foreground = Brushes.Black;
         }
 
-        private void CloseButton_MouseLeave(object sender, MouseEventArgs e)
+        private void Button_MouseLeave(object sender, RoutedEventArgs e)
         {
-            this.CloseButton.Foreground = Brushes.White;
+            (sender as Button).Foreground = Brushes.White;
         }
     }
 }

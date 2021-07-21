@@ -4,7 +4,6 @@
 
 namespace Concierge.Presentation.InventoryPageUi
 {
-    using System;
     using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Input;
@@ -173,14 +172,14 @@ namespace Concierge.Presentation.InventoryPageUi
             this.Hide();
         }
 
-        private void CloseButton_MouseEnter(object sender, MouseEventArgs e)
+        private void Button_MouseEnter(object sender, RoutedEventArgs e)
         {
-            this.CloseButton.Foreground = Brushes.Black;
+            (sender as Button).Foreground = Brushes.Black;
         }
 
-        private void CloseButton_MouseLeave(object sender, MouseEventArgs e)
+        private void Button_MouseLeave(object sender, RoutedEventArgs e)
         {
-            this.CloseButton.Foreground = Brushes.White;
+            (sender as Button).Foreground = Brushes.White;
         }
     }
 }

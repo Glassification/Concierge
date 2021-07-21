@@ -11,6 +11,7 @@ namespace Concierge.Presentation.DetailsPageUi
     using System.Windows.Media;
 
     using Concierge.Characters.Collections;
+    using Concierge.Presentation.Components;
     using Concierge.Utility;
 
     /// <summary>
@@ -53,6 +54,15 @@ namespace Concierge.Presentation.DetailsPageUi
             this.DrawProficiencies();
             this.DrawLanguages();
             this.DrawConditions();
+        }
+
+        private static void SortProficiencyItems(Dictionary<Guid, string> proficiency, ItemCollection items)
+        {
+            foreach (var item in items)
+            {
+                var keyValuePair = (KeyValuePair<Guid, string>)item;
+                proficiency.Add(keyValuePair.Key, keyValuePair.Value);
+            }
         }
 
         private void DrawWealth()
@@ -346,47 +356,26 @@ namespace Concierge.Presentation.DetailsPageUi
             this.DrawPersonality();
         }
 
-        private void WeaponProficiencyDataGrid_Sorted(object sender, RoutedEventArgs e)
+        private void ProficiencyDataGrid_Sorted(object sender, RoutedEventArgs e)
         {
-            Program.CcsFile.Character.Proficiency.Weapons.Clear();
-
-            foreach (var weapon in this.WeaponProficiencyDataGrid.Items)
+            switch ((sender as ConciergeDataGrid).Name)
             {
-                var keyValuePair = (KeyValuePair<Guid, string>)weapon;
-                Program.CcsFile.Character.Proficiency.Weapons.Add(keyValuePair.Key, keyValuePair.Value);
-            }
-        }
-
-        private void ArmorProficiencyDataGrid_Sorted(object sender, RoutedEventArgs e)
-        {
-            Program.CcsFile.Character.Proficiency.Armors.Clear();
-
-            foreach (var armor in this.ArmorProficiencyDataGrid.Items)
-            {
-                var keyValuePair = (KeyValuePair<Guid, string>)armor;
-                Program.CcsFile.Character.Proficiency.Armors.Add(keyValuePair.Key, keyValuePair.Value);
-            }
-        }
-
-        private void ShieldProficiencyDataGrid_Sorted(object sender, RoutedEventArgs e)
-        {
-            Program.CcsFile.Character.Proficiency.Shields.Clear();
-
-            foreach (var shield in this.ShieldProficiencyDataGrid.Items)
-            {
-                var keyValuePair = (KeyValuePair<Guid, string>)shield;
-                Program.CcsFile.Character.Proficiency.Shields.Add(keyValuePair.Key, keyValuePair.Value);
-            }
-        }
-
-        private void ToolProficiencyDataGrid_Sorted(object sender, RoutedEventArgs e)
-        {
-            Program.CcsFile.Character.Proficiency.Tools.Clear();
-
-            foreach (var tool in this.ToolProficiencyDataGrid.Items)
-            {
-                var keyValuePair = (KeyValuePair<Guid, string>)tool;
-                Program.CcsFile.Character.Proficiency.Tools.Add(keyValuePair.Key, keyValuePair.Value);
+                case "WeaponProficiencyDataGrid":
+                    Program.CcsFile.Character.Proficiency.Weapons.Clear();
+                    SortProficiencyItems(Program.CcsFile.Character.Proficiency.Weapons, this.WeaponProficiencyDataGrid.Items);
+                    break;
+                case "ArmorProficiencyDataGrid":
+                    Program.CcsFile.Character.Proficiency.Armors.Clear();
+                    SortProficiencyItems(Program.CcsFile.Character.Proficiency.Armors, this.ArmorProficiencyDataGrid.Items);
+                    break;
+                case "ShieldProficiencyDataGrid":
+                    Program.CcsFile.Character.Proficiency.Shields.Clear();
+                    SortProficiencyItems(Program.CcsFile.Character.Proficiency.Shields, this.ShieldProficiencyDataGrid.Items);
+                    break;
+                case "ToolProficiencyDataGrid":
+                    Program.CcsFile.Character.Proficiency.Tools.Clear();
+                    SortProficiencyItems(Program.CcsFile.Character.Proficiency.Tools, this.ToolProficiencyDataGrid.Items);
+                    break;
             }
         }
 

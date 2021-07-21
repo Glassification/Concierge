@@ -4,6 +4,7 @@
 
 namespace Concierge.Presentation.OverviewPageUi
 {
+    using System;
     using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Input;
@@ -109,6 +110,66 @@ namespace Concierge.Presentation.OverviewPageUi
             this.DrawResourcePool();
         }
 
+        private static void SetCursor(int spent, int total, Func<int, int, bool> func, Cursor cursor)
+        {
+            if (func(spent, total))
+            {
+                Mouse.OverrideCursor = cursor;
+            }
+        }
+
+        private static void SetTextStyle(StatusChecks check, TextBlock textBlock)
+        {
+            switch (check)
+            {
+                case StatusChecks.Fail:
+                    textBlock.TextDecorations = TextDecorations.Strikethrough;
+                    textBlock.Foreground = Brushes.DarkGray;
+                    textBlock.ToolTip = "Automatic Fail";
+                    break;
+                case StatusChecks.Advantage:
+                    textBlock.TextDecorations = new TextDecorationCollection();
+                    textBlock.Foreground = Brushes.Green;
+                    textBlock.ToolTip = "Advantage";
+                    break;
+                case StatusChecks.Disadvantage:
+                    textBlock.TextDecorations = new TextDecorationCollection();
+                    textBlock.Foreground = Brushes.IndianRed;
+                    textBlock.ToolTip = "Disadvantage";
+                    break;
+                case StatusChecks.Normal:
+                default:
+                    textBlock.TextDecorations = new TextDecorationCollection();
+                    textBlock.Foreground = Brushes.White;
+                    textBlock.ToolTip = null;
+                    break;
+            }
+        }
+
+        private static void SetBoxStyle(bool flag, Rectangle rectangle)
+        {
+            if (flag)
+            {
+                rectangle.Fill = new SolidColorBrush(Color.FromArgb(255, 6, 1, 31));
+                rectangle.Stroke = Brushes.Transparent;
+            }
+            else
+            {
+                rectangle.Stroke = new SolidColorBrush(Color.FromArgb(255, 6, 1, 31));
+                rectangle.Fill = Brushes.Transparent;
+            }
+        }
+
+        private static Brush SetHealthStyle()
+        {
+            int third = Program.CcsFile.Character.Vitality.MaxHealth / 3;
+            int hp = Program.CcsFile.Character.Vitality.CurrentHealth;
+
+            return hp < third && hp > 0
+                ? Brushes.IndianRed
+                : hp >= third * 2 ? Brushes.DarkGreen : hp <= 0 ? Brushes.DarkGray : Brushes.DarkOrange;
+        }
+
         private void InitializeToggleBox(Rectangle toggleBox, MouseButtonEventHandler mouseButtonEventHandler)
         {
             toggleBox.MouseDown += mouseButtonEventHandler;
@@ -154,26 +215,26 @@ namespace Concierge.Presentation.OverviewPageUi
             this.WisdomSavingThrowField.Text = savingThrow.Wisdom.Bonus.ToString();
             this.CharismaSavingThrowField.Text = savingThrow.Charisma.Bonus.ToString();
 
-            this.SetTextStyle(savingThrow.Strength.StatusChecks, this.StrengthSavingThrowField);
-            this.SetTextStyle(savingThrow.Dexterity.StatusChecks, this.DexteritySavingThrowField);
-            this.SetTextStyle(savingThrow.Constitution.StatusChecks, this.ConstitutionSavingThrowField);
-            this.SetTextStyle(savingThrow.Intelligence.StatusChecks, this.IntelligenceSavingThrowField);
-            this.SetTextStyle(savingThrow.Wisdom.StatusChecks, this.WisdomSavingThrowField);
-            this.SetTextStyle(savingThrow.Charisma.StatusChecks, this.CharismaSavingThrowField);
+            SetTextStyle(savingThrow.Strength.StatusChecks, this.StrengthSavingThrowField);
+            SetTextStyle(savingThrow.Dexterity.StatusChecks, this.DexteritySavingThrowField);
+            SetTextStyle(savingThrow.Constitution.StatusChecks, this.ConstitutionSavingThrowField);
+            SetTextStyle(savingThrow.Intelligence.StatusChecks, this.IntelligenceSavingThrowField);
+            SetTextStyle(savingThrow.Wisdom.StatusChecks, this.WisdomSavingThrowField);
+            SetTextStyle(savingThrow.Charisma.StatusChecks, this.CharismaSavingThrowField);
 
-            this.SetTextStyle(savingThrow.Strength.StatusChecks, this.StrengthSavingThrowName);
-            this.SetTextStyle(savingThrow.Dexterity.StatusChecks, this.DexteritySavingThrowName);
-            this.SetTextStyle(savingThrow.Constitution.StatusChecks, this.ConstitutionSavingThrowName);
-            this.SetTextStyle(savingThrow.Intelligence.StatusChecks, this.IntelligenceSavingThrowName);
-            this.SetTextStyle(savingThrow.Wisdom.StatusChecks, this.WisdomSavingThrowName);
-            this.SetTextStyle(savingThrow.Charisma.StatusChecks, this.CharismaSavingThrowName);
+            SetTextStyle(savingThrow.Strength.StatusChecks, this.StrengthSavingThrowName);
+            SetTextStyle(savingThrow.Dexterity.StatusChecks, this.DexteritySavingThrowName);
+            SetTextStyle(savingThrow.Constitution.StatusChecks, this.ConstitutionSavingThrowName);
+            SetTextStyle(savingThrow.Intelligence.StatusChecks, this.IntelligenceSavingThrowName);
+            SetTextStyle(savingThrow.Wisdom.StatusChecks, this.WisdomSavingThrowName);
+            SetTextStyle(savingThrow.Charisma.StatusChecks, this.CharismaSavingThrowName);
 
-            this.SetBoxStyle(savingThrow.Strength.Proficiency, this.StrengthProficiencyBox);
-            this.SetBoxStyle(savingThrow.Dexterity.Proficiency, this.DexterityProficiencyBox);
-            this.SetBoxStyle(savingThrow.Constitution.Proficiency, this.ConstitutionProficiencyBox);
-            this.SetBoxStyle(savingThrow.Intelligence.Proficiency, this.IntelligenceProficiencyBox);
-            this.SetBoxStyle(savingThrow.Wisdom.Proficiency, this.WisdomProficiencyBox);
-            this.SetBoxStyle(savingThrow.Charisma.Proficiency, this.CharismaProficiencyBox);
+            SetBoxStyle(savingThrow.Strength.Proficiency, this.StrengthProficiencyBox);
+            SetBoxStyle(savingThrow.Dexterity.Proficiency, this.DexterityProficiencyBox);
+            SetBoxStyle(savingThrow.Constitution.Proficiency, this.ConstitutionProficiencyBox);
+            SetBoxStyle(savingThrow.Intelligence.Proficiency, this.IntelligenceProficiencyBox);
+            SetBoxStyle(savingThrow.Wisdom.Proficiency, this.WisdomProficiencyBox);
+            SetBoxStyle(savingThrow.Charisma.Proficiency, this.CharismaProficiencyBox);
         }
 
         private void DrawSkills()
@@ -199,81 +260,81 @@ namespace Concierge.Presentation.OverviewPageUi
             this.PerformanceSkillField.Text = skill.Performance.Bonus.ToString();
             this.PersuasionSkillField.Text = skill.Persuasion.Bonus.ToString();
 
-            this.SetTextStyle(skill.Athletics.Checks, this.AthleticsSkillField);
-            this.SetTextStyle(skill.Acrobatics.Checks, this.AcrobaticsSkillField);
-            this.SetTextStyle(skill.SleightOfHand.Checks, this.SleightOfHandSkillField);
-            this.SetTextStyle(skill.Stealth.Checks, this.StealthSkillField);
-            this.SetTextStyle(skill.Arcana.Checks, this.ArcanaSkillField);
-            this.SetTextStyle(skill.History.Checks, this.HistorySkillField);
-            this.SetTextStyle(skill.Investigation.Checks, this.InvestigationSkillField);
-            this.SetTextStyle(skill.Nature.Checks, this.NatureSkillField);
-            this.SetTextStyle(skill.Religion.Checks, this.ReligionSkillField);
-            this.SetTextStyle(skill.AnimalHandling.Checks, this.AnimalHandlingSkillField);
-            this.SetTextStyle(skill.Insight.Checks, this.InsightSkillField);
-            this.SetTextStyle(skill.Medicine.Checks, this.MedicineSkillField);
-            this.SetTextStyle(skill.Perception.Checks, this.PerceptionSkillField);
-            this.SetTextStyle(skill.Survival.Checks, this.SurvivalSkillField);
-            this.SetTextStyle(skill.Deception.Checks, this.DeceptionSkillField);
-            this.SetTextStyle(skill.Intimidation.Checks, this.IntimidationSkillField);
-            this.SetTextStyle(skill.Performance.Checks, this.PerformanceSkillField);
-            this.SetTextStyle(skill.Persuasion.Checks, this.PersuasionSkillField);
+            SetTextStyle(skill.Athletics.Checks, this.AthleticsSkillField);
+            SetTextStyle(skill.Acrobatics.Checks, this.AcrobaticsSkillField);
+            SetTextStyle(skill.SleightOfHand.Checks, this.SleightOfHandSkillField);
+            SetTextStyle(skill.Stealth.Checks, this.StealthSkillField);
+            SetTextStyle(skill.Arcana.Checks, this.ArcanaSkillField);
+            SetTextStyle(skill.History.Checks, this.HistorySkillField);
+            SetTextStyle(skill.Investigation.Checks, this.InvestigationSkillField);
+            SetTextStyle(skill.Nature.Checks, this.NatureSkillField);
+            SetTextStyle(skill.Religion.Checks, this.ReligionSkillField);
+            SetTextStyle(skill.AnimalHandling.Checks, this.AnimalHandlingSkillField);
+            SetTextStyle(skill.Insight.Checks, this.InsightSkillField);
+            SetTextStyle(skill.Medicine.Checks, this.MedicineSkillField);
+            SetTextStyle(skill.Perception.Checks, this.PerceptionSkillField);
+            SetTextStyle(skill.Survival.Checks, this.SurvivalSkillField);
+            SetTextStyle(skill.Deception.Checks, this.DeceptionSkillField);
+            SetTextStyle(skill.Intimidation.Checks, this.IntimidationSkillField);
+            SetTextStyle(skill.Performance.Checks, this.PerformanceSkillField);
+            SetTextStyle(skill.Persuasion.Checks, this.PersuasionSkillField);
 
-            this.SetTextStyle(skill.Athletics.Checks, this.AthleticsSkillName);
-            this.SetTextStyle(skill.Acrobatics.Checks, this.AcrobaticsSkillName);
-            this.SetTextStyle(skill.SleightOfHand.Checks, this.SleightOfHandSkillName);
-            this.SetTextStyle(skill.Stealth.Checks, this.StealthSkillName);
-            this.SetTextStyle(skill.Arcana.Checks, this.ArcanaSkillName);
-            this.SetTextStyle(skill.History.Checks, this.HistorySkillName);
-            this.SetTextStyle(skill.Investigation.Checks, this.InvestigationSkillName);
-            this.SetTextStyle(skill.Nature.Checks, this.NatureSkillName);
-            this.SetTextStyle(skill.Religion.Checks, this.ReligionSkillName);
-            this.SetTextStyle(skill.AnimalHandling.Checks, this.AnimalHandlingSkillName);
-            this.SetTextStyle(skill.Insight.Checks, this.InsightSkillName);
-            this.SetTextStyle(skill.Medicine.Checks, this.MedicineSkillName);
-            this.SetTextStyle(skill.Perception.Checks, this.PerceptionSkillName);
-            this.SetTextStyle(skill.Survival.Checks, this.SurvivalSkillName);
-            this.SetTextStyle(skill.Deception.Checks, this.DeceptionSkillName);
-            this.SetTextStyle(skill.Intimidation.Checks, this.IntimidationSkillName);
-            this.SetTextStyle(skill.Performance.Checks, this.PerformanceSkillName);
-            this.SetTextStyle(skill.Persuasion.Checks, this.PersuasionSkillName);
+            SetTextStyle(skill.Athletics.Checks, this.AthleticsSkillName);
+            SetTextStyle(skill.Acrobatics.Checks, this.AcrobaticsSkillName);
+            SetTextStyle(skill.SleightOfHand.Checks, this.SleightOfHandSkillName);
+            SetTextStyle(skill.Stealth.Checks, this.StealthSkillName);
+            SetTextStyle(skill.Arcana.Checks, this.ArcanaSkillName);
+            SetTextStyle(skill.History.Checks, this.HistorySkillName);
+            SetTextStyle(skill.Investigation.Checks, this.InvestigationSkillName);
+            SetTextStyle(skill.Nature.Checks, this.NatureSkillName);
+            SetTextStyle(skill.Religion.Checks, this.ReligionSkillName);
+            SetTextStyle(skill.AnimalHandling.Checks, this.AnimalHandlingSkillName);
+            SetTextStyle(skill.Insight.Checks, this.InsightSkillName);
+            SetTextStyle(skill.Medicine.Checks, this.MedicineSkillName);
+            SetTextStyle(skill.Perception.Checks, this.PerceptionSkillName);
+            SetTextStyle(skill.Survival.Checks, this.SurvivalSkillName);
+            SetTextStyle(skill.Deception.Checks, this.DeceptionSkillName);
+            SetTextStyle(skill.Intimidation.Checks, this.IntimidationSkillName);
+            SetTextStyle(skill.Performance.Checks, this.PerformanceSkillName);
+            SetTextStyle(skill.Persuasion.Checks, this.PersuasionSkillName);
 
-            this.SetBoxStyle(skill.Athletics.Proficiency, this.AthleticsProficiencyBox);
-            this.SetBoxStyle(skill.Acrobatics.Proficiency, this.AcrobaticsProficiencyBox);
-            this.SetBoxStyle(skill.SleightOfHand.Proficiency, this.SleightOfHandProficiencyBox);
-            this.SetBoxStyle(skill.Stealth.Proficiency, this.StealthProficiencyBox);
-            this.SetBoxStyle(skill.Arcana.Proficiency, this.ArcanaProficiencyBox);
-            this.SetBoxStyle(skill.History.Proficiency, this.HistoryProficiencyBox);
-            this.SetBoxStyle(skill.Investigation.Proficiency, this.InvestigationProficiencyBox);
-            this.SetBoxStyle(skill.Nature.Proficiency, this.NatureProficiencyBox);
-            this.SetBoxStyle(skill.Religion.Proficiency, this.ReligionProficiencyBox);
-            this.SetBoxStyle(skill.AnimalHandling.Proficiency, this.AnimalHandlingProficiencyBox);
-            this.SetBoxStyle(skill.Insight.Proficiency, this.InsightProficiencyBox);
-            this.SetBoxStyle(skill.Medicine.Proficiency, this.MedicineProficiencyBox);
-            this.SetBoxStyle(skill.Perception.Proficiency, this.PerceptionProficiencyBox);
-            this.SetBoxStyle(skill.Survival.Proficiency, this.SurvivalProficiencyBox);
-            this.SetBoxStyle(skill.Deception.Proficiency, this.DeceptionProficiencyBox);
-            this.SetBoxStyle(skill.Intimidation.Proficiency, this.IntimidationProficiencyBox);
-            this.SetBoxStyle(skill.Performance.Proficiency, this.PerformanceProficiencyBox);
-            this.SetBoxStyle(skill.Persuasion.Proficiency, this.PersuasionProficiencyBox);
+            SetBoxStyle(skill.Athletics.Proficiency, this.AthleticsProficiencyBox);
+            SetBoxStyle(skill.Acrobatics.Proficiency, this.AcrobaticsProficiencyBox);
+            SetBoxStyle(skill.SleightOfHand.Proficiency, this.SleightOfHandProficiencyBox);
+            SetBoxStyle(skill.Stealth.Proficiency, this.StealthProficiencyBox);
+            SetBoxStyle(skill.Arcana.Proficiency, this.ArcanaProficiencyBox);
+            SetBoxStyle(skill.History.Proficiency, this.HistoryProficiencyBox);
+            SetBoxStyle(skill.Investigation.Proficiency, this.InvestigationProficiencyBox);
+            SetBoxStyle(skill.Nature.Proficiency, this.NatureProficiencyBox);
+            SetBoxStyle(skill.Religion.Proficiency, this.ReligionProficiencyBox);
+            SetBoxStyle(skill.AnimalHandling.Proficiency, this.AnimalHandlingProficiencyBox);
+            SetBoxStyle(skill.Insight.Proficiency, this.InsightProficiencyBox);
+            SetBoxStyle(skill.Medicine.Proficiency, this.MedicineProficiencyBox);
+            SetBoxStyle(skill.Perception.Proficiency, this.PerceptionProficiencyBox);
+            SetBoxStyle(skill.Survival.Proficiency, this.SurvivalProficiencyBox);
+            SetBoxStyle(skill.Deception.Proficiency, this.DeceptionProficiencyBox);
+            SetBoxStyle(skill.Intimidation.Proficiency, this.IntimidationProficiencyBox);
+            SetBoxStyle(skill.Performance.Proficiency, this.PerformanceProficiencyBox);
+            SetBoxStyle(skill.Persuasion.Proficiency, this.PersuasionProficiencyBox);
 
-            this.SetBoxStyle(skill.Athletics.Expertise, this.AthleticsExpertieseBox);
-            this.SetBoxStyle(skill.Acrobatics.Expertise, this.AcrobaticsExpertieseBox);
-            this.SetBoxStyle(skill.SleightOfHand.Expertise, this.SleightOfHandExpertieseBox);
-            this.SetBoxStyle(skill.Stealth.Expertise, this.StealthExpertieseBox);
-            this.SetBoxStyle(skill.Arcana.Expertise, this.ArcanaExpertieseBox);
-            this.SetBoxStyle(skill.History.Expertise, this.HistoryExpertieseBox);
-            this.SetBoxStyle(skill.Investigation.Expertise, this.InvestigationExpertieseBox);
-            this.SetBoxStyle(skill.Nature.Expertise, this.NatureExpertieseBox);
-            this.SetBoxStyle(skill.Religion.Expertise, this.ReligionExpertieseBox);
-            this.SetBoxStyle(skill.AnimalHandling.Expertise, this.AnimalHandlingExpertieseBox);
-            this.SetBoxStyle(skill.Insight.Expertise, this.InsightExpertieseBox);
-            this.SetBoxStyle(skill.Medicine.Expertise, this.MedicineExpertieseBox);
-            this.SetBoxStyle(skill.Perception.Expertise, this.PerceptionExpertieseBox);
-            this.SetBoxStyle(skill.Survival.Expertise, this.SurvivalExpertieseBox);
-            this.SetBoxStyle(skill.Deception.Expertise, this.DeceptionExpertieseBox);
-            this.SetBoxStyle(skill.Intimidation.Expertise, this.IntimidationExpertieseBox);
-            this.SetBoxStyle(skill.Performance.Expertise, this.PerformanceExpertieseBox);
-            this.SetBoxStyle(skill.Persuasion.Expertise, this.PersuasionExpertieseBox);
+            SetBoxStyle(skill.Athletics.Expertise, this.AthleticsExpertieseBox);
+            SetBoxStyle(skill.Acrobatics.Expertise, this.AcrobaticsExpertieseBox);
+            SetBoxStyle(skill.SleightOfHand.Expertise, this.SleightOfHandExpertieseBox);
+            SetBoxStyle(skill.Stealth.Expertise, this.StealthExpertieseBox);
+            SetBoxStyle(skill.Arcana.Expertise, this.ArcanaExpertieseBox);
+            SetBoxStyle(skill.History.Expertise, this.HistoryExpertieseBox);
+            SetBoxStyle(skill.Investigation.Expertise, this.InvestigationExpertieseBox);
+            SetBoxStyle(skill.Nature.Expertise, this.NatureExpertieseBox);
+            SetBoxStyle(skill.Religion.Expertise, this.ReligionExpertieseBox);
+            SetBoxStyle(skill.AnimalHandling.Expertise, this.AnimalHandlingExpertieseBox);
+            SetBoxStyle(skill.Insight.Expertise, this.InsightExpertieseBox);
+            SetBoxStyle(skill.Medicine.Expertise, this.MedicineExpertieseBox);
+            SetBoxStyle(skill.Perception.Expertise, this.PerceptionExpertieseBox);
+            SetBoxStyle(skill.Survival.Expertise, this.SurvivalExpertieseBox);
+            SetBoxStyle(skill.Deception.Expertise, this.DeceptionExpertieseBox);
+            SetBoxStyle(skill.Intimidation.Expertise, this.IntimidationExpertieseBox);
+            SetBoxStyle(skill.Performance.Expertise, this.PerformanceExpertieseBox);
+            SetBoxStyle(skill.Persuasion.Expertise, this.PersuasionExpertieseBox);
         }
 
         private void DrawHealth()
@@ -281,8 +342,8 @@ namespace Concierge.Presentation.OverviewPageUi
             this.CurrentHpField.Text = Program.CcsFile.Character.Vitality.CurrentHealth.ToString();
             this.TotalHpField.Text = "/" + Program.CcsFile.Character.Vitality.MaxHealth.ToString();
 
-            this.CurrentHpField.Foreground = this.SetHealthStyle();
-            this.TotalHpField.Foreground = this.SetHealthStyle();
+            this.CurrentHpField.Foreground = SetHealthStyle();
+            this.TotalHpField.Foreground = SetHealthStyle();
         }
 
         private void DrawArmorClass()
@@ -358,58 +419,6 @@ namespace Concierge.Presentation.OverviewPageUi
             this.RightResourceButton.Foreground = this.ResourceIndex == Program.CcsFile.Character.ClassResources.Count - 1 || Program.CcsFile.Character.ClassResources.Count == 0
                 ? Brushes.DimGray
                 : Brushes.White;
-        }
-
-        private Brush SetHealthStyle()
-        {
-            int third = Program.CcsFile.Character.Vitality.MaxHealth / 3;
-            int hp = Program.CcsFile.Character.Vitality.CurrentHealth;
-
-            return hp < third && hp > 0
-                ? Brushes.IndianRed
-                : hp >= third * 2 ? Brushes.DarkGreen : hp <= 0 ? Brushes.DarkGray : Brushes.DarkOrange;
-        }
-
-        private void SetBoxStyle(bool flag, Rectangle rectangle)
-        {
-            if (flag)
-            {
-                rectangle.Fill = new SolidColorBrush(Color.FromArgb(255, 6, 1, 31));
-                rectangle.Stroke = Brushes.Transparent;
-            }
-            else
-            {
-                rectangle.Stroke = new SolidColorBrush(Color.FromArgb(255, 6, 1, 31));
-                rectangle.Fill = Brushes.Transparent;
-            }
-        }
-
-        private void SetTextStyle(StatusChecks check, TextBlock textBlock)
-        {
-            switch (check)
-            {
-                case StatusChecks.Fail:
-                    textBlock.TextDecorations = TextDecorations.Strikethrough;
-                    textBlock.Foreground = Brushes.DarkGray;
-                    textBlock.ToolTip = "Automatic Fail";
-                    break;
-                case StatusChecks.Advantage:
-                    textBlock.TextDecorations = new TextDecorationCollection();
-                    textBlock.Foreground = Brushes.Green;
-                    textBlock.ToolTip = "Advantage";
-                    break;
-                case StatusChecks.Disadvantage:
-                    textBlock.TextDecorations = new TextDecorationCollection();
-                    textBlock.Foreground = Brushes.IndianRed;
-                    textBlock.ToolTip = "Disadvantage";
-                    break;
-                case StatusChecks.Normal:
-                default:
-                    textBlock.TextDecorations = new TextDecorationCollection();
-                    textBlock.Foreground = Brushes.White;
-                    textBlock.ToolTip = null;
-                    break;
-            }
         }
 
         private void LeftResourceButton_Click(object sender, RoutedEventArgs e)
@@ -645,98 +654,53 @@ namespace Concierge.Presentation.OverviewPageUi
             this.DrawHealth();
         }
 
-        private void D6SpentBox_MouseDown(object sender, MouseButtonEventArgs e)
+        private void SpentBox_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            Program.CcsFile.Character.Vitality.HitDice.SpentD6++;
+            var hitDice = Program.CcsFile.Character.Vitality.HitDice;
+            switch ((sender as Grid).Name)
+            {
+                case "D6SpentBox":
+                    Program.CcsFile.Character.Vitality.HitDice.SpentD8++;
+                    SetCursor(hitDice.SpentD8, hitDice.TotalD8, (x, y) => x == y, Cursors.Arrow);
+                    break;
+                case "D8SpentBox":
+                    Program.CcsFile.Character.Vitality.HitDice.SpentD8++;
+                    SetCursor(hitDice.SpentD8, hitDice.TotalD8, (x, y) => x == y, Cursors.Arrow);
+                    break;
+                case "D10SpentBox":
+                    Program.CcsFile.Character.Vitality.HitDice.SpentD10++;
+                    SetCursor(hitDice.SpentD10, hitDice.TotalD10, (x, y) => x == y, Cursors.Arrow);
+                    break;
+                case "D12SpentBox":
+                    Program.CcsFile.Character.Vitality.HitDice.SpentD12++;
+                    SetCursor(hitDice.SpentD12, hitDice.TotalD12, (x, y) => x == y, Cursors.Arrow);
+                    break;
+            }
+
             this.DrawHitDice();
+        }
 
-            if (Program.CcsFile.Character.Vitality.HitDice.SpentD6 == Program.CcsFile.Character.Vitality.HitDice.TotalD6)
+        private void SpentBox_MouseEnter(object sender, MouseEventArgs e)
+        {
+            var hitDice = Program.CcsFile.Character.Vitality.HitDice;
+            switch ((sender as Grid).Name)
             {
-                Mouse.OverrideCursor = Cursors.Arrow;
+                case "D6SpentBox":
+                    SetCursor(hitDice.SpentD6, hitDice.TotalD6, (x, y) => x != y, Cursors.Hand);
+                    break;
+                case "D8SpentBox":
+                    SetCursor(hitDice.SpentD8, hitDice.TotalD8, (x, y) => x != y, Cursors.Hand);
+                    break;
+                case "D10SpentBox":
+                    SetCursor(hitDice.SpentD10, hitDice.TotalD10, (x, y) => x != y, Cursors.Hand);
+                    break;
+                case "D12SpentBox":
+                    SetCursor(hitDice.SpentD12, hitDice.TotalD12, (x, y) => x != y, Cursors.Hand);
+                    break;
             }
         }
 
-        private void D8SpentBox_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            Program.CcsFile.Character.Vitality.HitDice.SpentD8++;
-            this.DrawHitDice();
-
-            if (Program.CcsFile.Character.Vitality.HitDice.SpentD8 == Program.CcsFile.Character.Vitality.HitDice.TotalD8)
-            {
-                Mouse.OverrideCursor = Cursors.Arrow;
-            }
-        }
-
-        private void D10SpentBox_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            Program.CcsFile.Character.Vitality.HitDice.SpentD10++;
-            this.DrawHitDice();
-
-            if (Program.CcsFile.Character.Vitality.HitDice.SpentD10 == Program.CcsFile.Character.Vitality.HitDice.TotalD10)
-            {
-                Mouse.OverrideCursor = Cursors.Arrow;
-            }
-        }
-
-        private void D12SpentBox_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            Program.CcsFile.Character.Vitality.HitDice.SpentD12++;
-            this.DrawHitDice();
-
-            if (Program.CcsFile.Character.Vitality.HitDice.SpentD12 == Program.CcsFile.Character.Vitality.HitDice.TotalD12)
-            {
-                Mouse.OverrideCursor = Cursors.Arrow;
-            }
-        }
-
-        private void D6SpentBox_MouseEnter(object sender, MouseEventArgs e)
-        {
-            if (Program.CcsFile.Character.Vitality.HitDice.SpentD6 != Program.CcsFile.Character.Vitality.HitDice.TotalD6)
-            {
-                Mouse.OverrideCursor = Cursors.Hand;
-            }
-        }
-
-        private void D6SpentBox_MouseLeave(object sender, MouseEventArgs e)
-        {
-            Mouse.OverrideCursor = Cursors.Arrow;
-        }
-
-        private void D8SpentBox_MouseEnter(object sender, MouseEventArgs e)
-        {
-            if (Program.CcsFile.Character.Vitality.HitDice.SpentD8 != Program.CcsFile.Character.Vitality.HitDice.TotalD8)
-            {
-                Mouse.OverrideCursor = Cursors.Hand;
-            }
-        }
-
-        private void D8SpentBox_MouseLeave(object sender, MouseEventArgs e)
-        {
-            Mouse.OverrideCursor = Cursors.Arrow;
-        }
-
-        private void D10SpentBox_MouseEnter(object sender, MouseEventArgs e)
-        {
-            if (Program.CcsFile.Character.Vitality.HitDice.SpentD10 != Program.CcsFile.Character.Vitality.HitDice.TotalD10)
-            {
-                Mouse.OverrideCursor = Cursors.Hand;
-            }
-        }
-
-        private void D10SpentBox_MouseLeave(object sender, MouseEventArgs e)
-        {
-            Mouse.OverrideCursor = Cursors.Arrow;
-        }
-
-        private void D12SpentBox_MouseEnter(object sender, MouseEventArgs e)
-        {
-            if (Program.CcsFile.Character.Vitality.HitDice.SpentD12 != Program.CcsFile.Character.Vitality.HitDice.TotalD12)
-            {
-                Mouse.OverrideCursor = Cursors.Hand;
-            }
-        }
-
-        private void D12SpentBox_MouseLeave(object sender, MouseEventArgs e)
+        private void SpentBox_MouseLeave(object sender, MouseEventArgs e)
         {
             Mouse.OverrideCursor = Cursors.Arrow;
         }

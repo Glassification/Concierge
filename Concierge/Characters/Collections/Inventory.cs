@@ -12,12 +12,12 @@ namespace Concierge.Characters.Collections
     {
         public Inventory()
         {
-            this.ID = Guid.NewGuid();
+            this.Id = Guid.NewGuid();
         }
 
         public Inventory(Guid id)
         {
-            this.ID = id;
+            this.Id = id;
         }
 
         public string Name { get; set; }
@@ -40,7 +40,7 @@ namespace Concierge.Characters.Collections
 
         public Guid EquppedId { get; set; }
 
-        public Guid ID { get; private set; }
+        public Guid Id { get; private set; }
 
         public override string ToString()
         {
@@ -57,7 +57,7 @@ namespace Concierge.Characters.Collections
                 IsInBagOfHolding = false,
                 Note = this.Note,
                 EquppedId = Guid.NewGuid(),
-                ID = this.ID,
+                Id = this.Id,
             };
         }
     }

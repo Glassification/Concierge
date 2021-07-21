@@ -5,6 +5,7 @@
 namespace Concierge.Presentation.NotesPageUi
 {
     using System.Windows;
+    using System.Windows.Controls;
     using System.Windows.Input;
     using System.Windows.Media;
 
@@ -49,7 +50,7 @@ namespace Concierge.Presentation.NotesPageUi
         {
             this.HeaderTextBlock.Text = "Edit Page";
             this.SetupWindow(true);
-            this.ChapterComboBox.Text = Program.CcsFile.Character.GetChapterByDocumentId(document.ID).Name;
+            this.ChapterComboBox.Text = Program.CcsFile.Character.GetChapterByDocumentId(document.Id).Name;
             this.DocumentTextBox.Text = document.Name;
             this.CurrentChapter = null;
             this.CurrentDocument = document;
@@ -67,7 +68,7 @@ namespace Concierge.Presentation.NotesPageUi
         private void GenerateChapterComboBox()
         {
             this.ChapterComboBox.Items.Clear();
-            this.ChapterComboBox.Items.Add(new Chapter("__ New Chapter __")
+            this.ChapterComboBox.Items.Add(new Chapter("--New Chapter--")
             {
                 IsNewChapterPlaceholder = true,
             });
@@ -142,6 +143,12 @@ namespace Concierge.Presentation.NotesPageUi
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
             this.OkApplyChanges();
+
+            if (!this.IsEdit)
+            {
+                this.ClearFields();
+                this.GenerateChapterComboBox();
+            }
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
@@ -159,14 +166,14 @@ namespace Concierge.Presentation.NotesPageUi
             }
         }
 
-        private void CloseButton_MouseEnter(object sender, MouseEventArgs e)
+        private void Button_MouseEnter(object sender, RoutedEventArgs e)
         {
-            this.CloseButton.Foreground = Brushes.Black;
+            (sender as Button).Foreground = Brushes.Black;
         }
 
-        private void CloseButton_MouseLeave(object sender, MouseEventArgs e)
+        private void Button_MouseLeave(object sender, RoutedEventArgs e)
         {
-            this.CloseButton.Foreground = Brushes.White;
+            (sender as Button).Foreground = Brushes.White;
         }
     }
 }

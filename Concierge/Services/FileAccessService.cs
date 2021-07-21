@@ -58,7 +58,8 @@ namespace Concierge.Services
                 }
             }
 
-            this.saveStatusWindow.ShowWindow();
+            // TODO - Figure out why this is triggering a focus reset to overview page.
+            // this.saveStatusWindow.ShowWindow();
             CharacterSaver.SaveCharacterSheetJson(ccsFile);
         }
     }

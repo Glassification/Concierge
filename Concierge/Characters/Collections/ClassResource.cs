@@ -12,16 +12,12 @@ namespace Concierge.Characters.Collections
         {
         }
 
-        public ClassResource(Guid id)
-        {
-        }
-
         public string Type { get; set; }
 
         public int Total { get; set; }
 
         public int Spent { get; set; }
 
-        public Guid ID { get; private set; }
+        public Guid Id { get; private set; }
     }
 }

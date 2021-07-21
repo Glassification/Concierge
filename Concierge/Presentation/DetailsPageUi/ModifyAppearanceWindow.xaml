@@ -34,17 +34,18 @@
                        VerticalAlignment="Center"
                        Margin="30, 0, 0, 0"
                        FontWeight="Bold"/>
-            <Button x:Name="CloseButton"
-                    Height="50"
-                    Width="60"
-                    Background="Transparent"
-                    BorderBrush="{x:Null}"
-                    Foreground="White"
-                    ToolTip="Close"
-                    HorizontalAlignment="Right"
-                    Click="CloseButton_Click"
-                    MouseEnter="CloseButton_MouseEnter"
-                    MouseLeave="CloseButton_MouseLeave">
+            <Button 
+                x:Name="CloseButton"
+                Height="50"
+                Width="60"
+                Background="Transparent"
+                BorderBrush="{x:Null}"
+                Foreground="White"
+                ToolTip="Close"
+                HorizontalAlignment="Right"
+                Click="CloseButton_Click"
+                MouseEnter="Button_MouseEnter"
+                MouseLeave="Button_MouseLeave">
                 <materialDesign:PackIcon Kind="WindowClose" Width="25" Height="25"/>
             </Button>
         </Grid>
@@ -333,23 +334,32 @@
             <StackPanel Orientation="Horizontal"
                         VerticalAlignment="Center"
                         HorizontalAlignment="Center">
-                <Button x:Name="OkButton"
-                        Style="{StaticResource PopupWindowButton}"
-                        BorderBrush="{x:Null}"
-                        Content="OK"
-                        Click="OkButton_Click">
+                <Button 
+                    x:Name="OkButton"
+                    Style="{StaticResource PopupWindowButton}"
+                    BorderBrush="{x:Null}"
+                    Content="OK"
+                    MouseEnter="Button_MouseEnter"
+                    MouseLeave="Button_MouseLeave"
+                    Click="OkButton_Click">
                 </Button>
-                <Button x:Name="ApplyButton"
-                        Style="{StaticResource PopupWindowButton}"
-                        BorderBrush="{x:Null}"
-                        Content="Apply"
-                        Click="ApplyButton_Click">
+                <Button 
+                    x:Name="ApplyButton"
+                    Style="{StaticResource PopupWindowButton}"
+                    BorderBrush="{x:Null}"
+                    Content="Apply"
+                    MouseEnter="Button_MouseEnter"
+                    MouseLeave="Button_MouseLeave"
+                    Click="ApplyButton_Click">
                 </Button>
-                <Button x:Name="CancelButton"
-                        BorderBrush="{x:Null}"
-                        Content="Cancel"
-                        Click="CancelButton_Click"
-                        Style="{StaticResource PopupWindowButton}">
+                <Button 
+                    x:Name="CancelButton"
+                    BorderBrush="{x:Null}"
+                    Content="Cancel"
+                    Click="CancelButton_Click"
+                    MouseEnter="Button_MouseEnter"
+                    MouseLeave="Button_MouseLeave"
+                    Style="{StaticResource PopupWindowButton}">
                 </Button>
             </StackPanel>
         </Grid>

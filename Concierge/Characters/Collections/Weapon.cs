@@ -14,13 +14,13 @@ namespace Concierge.Characters.Collections
     {
         public Weapon()
         {
-            this.ID = Guid.NewGuid();
+            this.Id = Guid.NewGuid();
             this.ProficiencyOverride = false;
         }
 
         public Weapon(Guid id)
         {
-            this.ID = id;
+            this.Id = id;
             this.ProficiencyOverride = false;
         }
 
@@ -75,7 +75,7 @@ namespace Concierge.Characters.Collections
 
         public bool ProficiencyOverride { get; set; }
 
-        public Guid ID { get; private set; }
+        public Guid Id { get; private set; }
 
         public override string ToString()
         {

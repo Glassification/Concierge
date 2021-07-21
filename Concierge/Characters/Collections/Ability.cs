@@ -10,12 +10,7 @@ namespace Concierge.Characters.Collections
     {
         public Ability()
         {
-            this.ID = Guid.NewGuid();
-        }
-
-        public Ability(Guid id)
-        {
-            this.ID = id;
+            this.Id = Guid.NewGuid();
         }
 
         public string Name { get; set; }
@@ -30,7 +25,7 @@ namespace Concierge.Characters.Collections
 
         public string Note { get; set; }
 
-        public Guid ID { get; private set; }
+        public Guid Id { get; private set; }
 
         public override string ToString()
         {
