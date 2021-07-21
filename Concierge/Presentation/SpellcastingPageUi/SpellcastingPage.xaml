@@ -281,26 +281,28 @@
                                 Click="LevelEditButton_Click">
                             <materialDesign:PackIcon Kind="Edit" Width="25" Height="25"/>
                         </Button>
-                        <TextBlock Text="Spell Slots"
-                                       Foreground="White"
-                                       FontSize="15"
-                                       FontWeight="Bold"
-                                       TextWrapping="Wrap"
-                                       HorizontalAlignment="Center"
-                                       VerticalAlignment="Center"
-                               Margin="3, 3, 3, 3"/>
+                        <TextBlock 
+                            Text="Spell Slots"
+                            Foreground="White"
+                            FontSize="15"
+                            FontWeight="Bold"
+                            TextWrapping="Wrap"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Margin="3, 3, 3, 3"/>
                     </Grid>
 
                     <Grid Grid.Row="1"
                           Background="#161223"
-                          Margin="10, 15, 10, 15">
-                        <TextBlock Text="Used"
-                                       Foreground="White"
-                                       FontSize="15"
-                                       FontWeight="Bold"
-                                       TextWrapping="Wrap"
-                                       HorizontalAlignment="Center"
-                                       VerticalAlignment="Center"/>
+                          Margin="5, 15, 5, 15">
+                        <TextBlock 
+                            Text="Used"
+                            Foreground="White"
+                            FontSize="15"
+                            FontWeight="Bold"
+                            TextWrapping="Wrap"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"/>
                     </Grid>
                 </Grid>
 

@@ -7,7 +7,7 @@
     <RootNamespace>Concierge</RootNamespace>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <ApplicationIcon>dndnextlogo.ico</ApplicationIcon>
-    <Version>2.4.1</Version>
+    <Version>2.4.3</Version>
     <EnableNETAnalyzers>true</EnableNETAnalyzers>
   </PropertyGroup>
 
