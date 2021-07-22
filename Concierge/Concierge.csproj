@@ -7,7 +7,7 @@
     <RootNamespace>Concierge</RootNamespace>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <ApplicationIcon>dndnextlogo.ico</ApplicationIcon>
-    <Version>2.4.3</Version>
+    <Version>2.5.0</Version>
     <EnableNETAnalyzers>true</EnableNETAnalyzers>
   </PropertyGroup>
 
@@ -49,7 +49,7 @@
     <Compile Update="Interface\EquipedItemsPageUi\ModifyEquippedItemsWindow.xaml.cs">
       <DependentUpon>%(Filename)</DependentUpon>
     </Compile>
-    <Compile Update="Interface\OverviewPageUi\ModifyClassResourceWindow.xaml.cs">
+    <Compile Update="Interface\DetailsPageUi\ModifyClassResourceWindow.xaml.cs">
       <DependentUpon>%(Filename)</DependentUpon>
     </Compile>
     <Compile Update="Properties\Resources.Designer.cs">

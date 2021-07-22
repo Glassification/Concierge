@@ -8,27 +8,6 @@ namespace Concierge.Characters
     {
         public Companion()
         {
-            this.Name = string.Empty;
-            this.ArmorClass = string.Empty;
-            this.HitDice = string.Empty;
-            this.Health = string.Empty;
-            this.CurrentHealth = string.Empty;
-            this.Speed = string.Empty;
-            this.Strength = 0;
-            this.Dexterity = 0;
-            this.Constitution = 0;
-            this.Intelligence = 0;
-            this.Wisdom = 0;
-            this.Charisma = 0;
-            this.Perception = string.Empty;
-            this.Senses = string.Empty;
-            this.Attack = string.Empty;
-            this.Type = string.Empty;
-            this.AttackBonus = string.Empty;
-            this.Damage = string.Empty;
-            this.DamageType = string.Empty;
-            this.Reach = string.Empty;
-            this.Notes = string.Empty;
         }
 
         public string Name { get; set; }

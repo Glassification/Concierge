@@ -11,6 +11,7 @@ namespace Concierge.Interface.DetailsPageUi
     using System.Windows.Media;
 
     using Concierge.Characters.Characteristics;
+    using Concierge.Characters.Status;
     using Concierge.Interface.Components;
     using Concierge.Utility;
 
@@ -19,39 +20,27 @@ namespace Concierge.Interface.DetailsPageUi
     /// </summary>
     public partial class DetailsPage : Page
     {
+        private readonly ModifyProficiencyWindow modifyProficiencyWindow = new ModifyProficiencyWindow();
+        private readonly MondifyConditionsWindow mondifyConditionsWindow = new MondifyConditionsWindow();
+        private readonly ModifyLanguagesWindow modifyLanguagesWindow = new ModifyLanguagesWindow();
+        private readonly ModifyAppearanceWindow modifyAppearanceWindow = new ModifyAppearanceWindow();
+        private readonly ModifyPersonalityWindow modifyPersonalityWindow = new ModifyPersonalityWindow();
+        private readonly ModifyClassResourceWindow modifyClassResourceWindow = new ModifyClassResourceWindow();
+
         public DetailsPage()
         {
             this.InitializeComponent();
-
-            this.ModifyWealthWindow = new ModifyWealthWindow();
-            this.ModifyProficiencyWindow = new ModifyProficiencyWindow();
-            this.MondifyConditionsWindow = new MondifyConditionsWindow();
-            this.ModifyLanguagesWindow = new ModifyLanguagesWindow();
-            this.ModifyAppearanceWindow = new ModifyAppearanceWindow();
-            this.ModifyPersonalityWindow = new ModifyPersonalityWindow();
         }
 
         public double ProficiencyGridSize => this.WeaponGrid.RenderSize.Height;
 
-        private ModifyWealthWindow ModifyWealthWindow { get; }
-
-        private ModifyProficiencyWindow ModifyProficiencyWindow { get; }
-
-        private MondifyConditionsWindow MondifyConditionsWindow { get; }
-
-        private ModifyLanguagesWindow ModifyLanguagesWindow { get; }
-
-        private ModifyAppearanceWindow ModifyAppearanceWindow { get; }
-
-        private ModifyPersonalityWindow ModifyPersonalityWindow { get; }
-
         public void Draw()
         {
-            this.DrawWealth();
             this.DrawWeight();
             this.DrawAppearance();
             this.DrawPersonality();
             this.DrawProficiencies();
+            this.DrawResources();
             this.DrawLanguages();
             this.DrawConditions();
         }
@@ -63,17 +52,6 @@ namespace Concierge.Interface.DetailsPageUi
                 var keyValuePair = (KeyValuePair<Guid, string>)item;
                 proficiency.Add(keyValuePair.Key, keyValuePair.Value);
             }
-        }
-
-        private void DrawWealth()
-        {
-            this.TotalWealthField.Text = "¤ " + string.Format("{0:0.00}", Program.CcsFile.Character.Wealth.TotalValue);
-
-            this.CopperField.Text = Program.CcsFile.Character.Wealth.Copper.ToString();
-            this.SilverField.Text = Program.CcsFile.Character.Wealth.Silver.ToString();
-            this.ElectrumField.Text = Program.CcsFile.Character.Wealth.Electrum.ToString();
-            this.GoldField.Text = Program.CcsFile.Character.Wealth.Gold.ToString();
-            this.PlatinumField.Text = Program.CcsFile.Character.Wealth.Platinum.ToString();
         }
 
         private void DrawWeight()
@@ -149,6 +127,16 @@ namespace Concierge.Interface.DetailsPageUi
             }
         }
 
+        private void DrawResources()
+        {
+            this.ResourcesDataGrid.Items.Clear();
+
+            foreach (var resource in Program.CcsFile.Character.ClassResources)
+            {
+                this.ResourcesDataGrid.Items.Add(resource);
+            }
+        }
+
         private void DrawConditions()
         {
             this.ConditionsDataGrid.Items.Clear();
@@ -183,12 +171,6 @@ namespace Concierge.Interface.DetailsPageUi
                 this.WeightCarriedField.Foreground = Brushes.Red;
                 this.WeightCarriedBox.Background = Brushes.DimGray;
             }
-        }
-
-        private void EditWealthButton_Click(object sender, RoutedEventArgs e)
-        {
-            this.ModifyWealthWindow.ShowWindow();
-            this.DrawWealth();
         }
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
@@ -234,32 +216,32 @@ namespace Concierge.Interface.DetailsPageUi
             if (this.WeaponProficiencyDataGrid.SelectedItem != null)
             {
                 proficiency = (KeyValuePair<Guid, string>)this.WeaponProficiencyDataGrid.SelectedItem;
-                this.ModifyProficiencyWindow.ShowEdit(proficiency.Key);
+                this.modifyProficiencyWindow.ShowEdit(proficiency.Key);
                 this.DrawProficiencies();
             }
             else if (this.ArmorProficiencyDataGrid.SelectedItem != null)
             {
                 proficiency = (KeyValuePair<Guid, string>)this.ArmorProficiencyDataGrid.SelectedItem;
-                this.ModifyProficiencyWindow.ShowEdit(proficiency.Key);
+                this.modifyProficiencyWindow.ShowEdit(proficiency.Key);
                 this.DrawProficiencies();
             }
             else if (this.ShieldProficiencyDataGrid.SelectedItem != null)
             {
                 proficiency = (KeyValuePair<Guid, string>)this.ShieldProficiencyDataGrid.SelectedItem;
-                this.ModifyProficiencyWindow.ShowEdit(proficiency.Key);
+                this.modifyProficiencyWindow.ShowEdit(proficiency.Key);
                 this.DrawProficiencies();
             }
             else if (this.ToolProficiencyDataGrid.SelectedItem != null)
             {
                 proficiency = (KeyValuePair<Guid, string>)this.ToolProficiencyDataGrid.SelectedItem;
-                this.ModifyProficiencyWindow.ShowEdit(proficiency.Key);
+                this.modifyProficiencyWindow.ShowEdit(proficiency.Key);
                 this.DrawProficiencies();
             }
         }
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            this.ModifyProficiencyWindow.ShowAdd();
+            this.modifyProficiencyWindow.ShowAdd();
 
             this.DrawProficiencies();
         }
@@ -314,7 +296,7 @@ namespace Concierge.Interface.DetailsPageUi
 
         private void EditConditionsButton_Click(object sender, RoutedEventArgs e)
         {
-            this.MondifyConditionsWindow.ShowEdit();
+            this.mondifyConditionsWindow.ShowEdit();
             this.DrawConditions();
         }
 
@@ -322,15 +304,30 @@ namespace Concierge.Interface.DetailsPageUi
         {
             if (this.LanguagesDataGrid.SelectedItem != null)
             {
-                this.ModifyLanguagesWindow.ShowEdit(this.LanguagesDataGrid.SelectedItem as Language);
+                this.modifyLanguagesWindow.ShowEdit(this.LanguagesDataGrid.SelectedItem as Language);
                 this.DrawLanguages();
+            }
+        }
+
+        private void EditResourcesButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (this.ResourcesDataGrid.SelectedItem != null)
+            {
+                this.modifyClassResourceWindow.ShowEdit(this.ResourcesDataGrid.SelectedItem as ClassResource);
+                this.DrawResources();
             }
         }
 
         private void AddLanguagesButton_Click(object sender, RoutedEventArgs e)
         {
-            this.ModifyLanguagesWindow.ShowAdd();
+            this.modifyLanguagesWindow.ShowAdd();
             this.DrawLanguages();
+        }
+
+        private void AddResourcesButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.modifyClassResourceWindow.ShowAdd();
+            this.DrawResources();
         }
 
         private void DeleteLanguagesButton_Click(object sender, RoutedEventArgs e)
@@ -344,9 +341,25 @@ namespace Concierge.Interface.DetailsPageUi
             }
         }
 
+        private void DeleteResourcesButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (this.ResourcesDataGrid.SelectedItem != null)
+            {
+                Program.Modify();
+
+                Program.CcsFile.Character.ClassResources.Remove(this.ResourcesDataGrid.SelectedItem as ClassResource);
+                this.DrawResources();
+            }
+        }
+
         private void ClearLanguagesButton_Click(object sender, RoutedEventArgs e)
         {
             this.LanguagesDataGrid.UnselectAll();
+        }
+
+        private void ClearResourcesButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.ResourcesDataGrid.UnselectAll();
         }
 
         private void ClearConditionsButton_Click(object sender, RoutedEventArgs e)
@@ -356,13 +369,13 @@ namespace Concierge.Interface.DetailsPageUi
 
         private void EditAppearanceButton_Click(object sender, RoutedEventArgs e)
         {
-            this.ModifyAppearanceWindow.ShowEdit();
+            this.modifyAppearanceWindow.ShowEdit();
             this.DrawAppearance();
         }
 
         private void EditPersonalityButton_Click(object sender, RoutedEventArgs e)
         {
-            this.ModifyPersonalityWindow.ShowEdit();
+            this.modifyPersonalityWindow.ShowEdit();
             this.DrawPersonality();
         }
 
@@ -399,6 +412,17 @@ namespace Concierge.Interface.DetailsPageUi
             foreach (var language in this.LanguagesDataGrid.Items)
             {
                 Program.CcsFile.Character.Details.Languages.Add(language as Language);
+            }
+        }
+
+        private void ResourcesDataGrid_Sorted(object sender, RoutedEventArgs e)
+        {
+            Program.Modify();
+            Program.CcsFile.Character.ClassResources.Clear();
+
+            foreach (var resource in this.ResourcesDataGrid.Items)
+            {
+                Program.CcsFile.Character.ClassResources.Add(resource as ClassResource);
             }
         }
     }

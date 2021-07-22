@@ -2,7 +2,7 @@
 // Copyright (c) Thomas Beckett. All rights reserved.
 // </copyright>
 
-namespace Concierge.Interface.DetailsPageUi
+namespace Concierge.Interface.OverviewPageUi
 {
     using System.Windows;
     using System.Windows.Controls;

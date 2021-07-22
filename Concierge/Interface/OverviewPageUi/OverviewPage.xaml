@@ -2189,185 +2189,196 @@
                         </Grid>
                     </Grid>
 
-                    <!--Pool-->
+                    <!--Wealth-->
                     <Grid Grid.Row="2" Margin="3" Background="#ff06011f">
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="30*"/>
-                            <RowDefinition Height="33*"/>
-                            <RowDefinition Height="36*"/>
+                            <RowDefinition Height="25*"/>
+                            <RowDefinition Height="25*"/>
+                            <RowDefinition Height="50*"/>
                         </Grid.RowDefinitions>
 
                         <!--Header-->
                         <Grid Grid.Row="0"
-                              Background="#0B061E"
-                              Margin="0, 0, 0, 3">
-                            <TextBlock 
-                                Text="Class Resource"
-                                Foreground="White"
-                                FontSize="40"
-                                FontWeight="Bold"
-                                Margin="25,0,0,0"
-                                HorizontalAlignment="Center"
-                                VerticalAlignment="Center"/>
-
-                            <Button x:Name="LeftResourceButton"
-                                    Width="40"
-                                    Height="40"
-                                    HorizontalAlignment="Left"
-                                    VerticalAlignment="Center"
-                                    Margin="10, 0, 0, 0"
-                                    Background="Transparent"
-                                    BorderBrush="{x:Null}"
-                                    Foreground="White"
-                                    Click="LeftResourceButton_Click">
-                                <materialDesign:PackIcon Kind="LessThan"
-                                                     Width="40"
-                                                     Height="40"
-                                                     HorizontalAlignment="Center"
-                                                     VerticalAlignment="Center"/>
-                            </Button>
-
-                            <Button x:Name="EditResourceButton"
-                                    Height="35"
-                                    Width="35"
-                                    HorizontalAlignment="Left"
-                                    VerticalAlignment="Center"
-                                    Background="Transparent"
-                                    BorderBrush="{x:Null}"
-                                    Foreground="PaleGoldenrod"
-                                    Click="EditResourceButton_Click"
-                                    ToolTip="Edit Resource"
-                                    Margin="60, 0, 0, 0">
+                          Background="#0B061E">
+                            <TextBlock Text="Wealth"
+                                   Foreground="White"
+                                   FontSize="35"
+                                   FontWeight="Bold"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"/>
+                            <Button x:Name="EditWealthButton"
+                            Height="50"
+                            Width="60"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Center"
+                            Background="Transparent"
+                            BorderBrush="{x:Null}"
+                            Foreground="PaleGoldenrod"
+                            ToolTip="Edit"
+                            Click="EditWealthButton_Click">
                                 <materialDesign:PackIcon Kind="Edit" Width="25" Height="25"/>
                             </Button>
-
-                            <Button 
-                                x:Name="ButtonDelete"
-                                Height="35"
-                                Width="35"
-                                HorizontalAlignment="Left"
-                                VerticalAlignment="Center"
-                                Background="Transparent"
-                                BorderBrush="{x:Null}"
-                                Foreground="IndianRed"
-                                ToolTip="Delete Current Item"
-                                Margin="100,0,0,0"
-                                Click="ButtonDelete_Click">
-                                <materialDesign:PackIcon Kind="Delete" Width="25" Height="25"/>
-                            </Button>
-
-                            <Button x:Name="RightResourceButton"
-                                    Foreground="White"
-                                    Width="40"
-                                    Height="40"
-                                    HorizontalAlignment="Right"
-                                    VerticalAlignment="Center"
-                                    Margin="0, 0, 10, 0"
-                                    Background="Transparent"
-                                    BorderBrush="{x:Null}"
-                                    Click="RightResourceButton_Click">
-                                <materialDesign:PackIcon Kind="GreaterThan"
-                                                     Width="40"
-                                                     Height="40"
-                                                     HorizontalAlignment="Center"
-                                                     VerticalAlignment="Center"/>
-                            </Button>
-
-                            <Button x:Name="AddResourceButton"
-                                    Height="35"
-                                    Width="35"
-                                    HorizontalAlignment="Right"
-                                    VerticalAlignment="Center"
-                                    Background="Transparent"
-                                    BorderBrush="{x:Null}"
-                                    Foreground="PaleGreen"
-                                    Click="AddResourceButton_Click"
-                                    ToolTip="Add Resource"
-                                    Margin="0, 0, 60, 0">
-                                <materialDesign:PackIcon Kind="Add" Width="25" Height="25"/>
-                            </Button>
                         </Grid>
 
-                        <!--Type-->
-                        <Grid Grid.Row="1">
+                        <!--Total Gold-->
+                        <Grid Grid.Row="1"
+                          Background="#17112E">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="20*"/>
-                                <ColumnDefinition Width="80*"/>
+                                <ColumnDefinition Width="60*"/>
+                                <ColumnDefinition Width="40*"/>
                             </Grid.ColumnDefinitions>
 
-                            <Grid Grid.Column="0"
-                                  Background="#17112E"
-                                  Margin="3, 3, 0, 3">
-                                <TextBlock Text="Type"
-                                           FontSize="35"
-                                           Foreground="White"
-                                           FontWeight="Bold"
-                                           HorizontalAlignment="Center"
-                                           VerticalAlignment="Center"/>
+                            <Grid Grid.Column="0">
+                                <TextBlock x:Name="TotalWealthField"
+                                       Text="0.00"
+                                       Foreground="White"
+                                       FontSize="30"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"/>
                             </Grid>
 
-                            <Grid Grid.Column="1"
-                                  Background="#FF3e3e42"
-                                  Margin="0, 3, 3, 3">
-                                <TextBlock x:Name="ResourceTypeField"
-                                           FontSize="30"
-                                           Foreground="White"
-                                           HorizontalAlignment="Center"
-                                           VerticalAlignment="Center"/>
+                            <Grid Grid.Column="1">
+                                <TextBlock Text="Gold Value"
+                                       Foreground="White"
+                                       FontSize="25"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"/>
                             </Grid>
                         </Grid>
 
-                        <!--Pool/Spent-->
+                        <!--Currency ff1c1636-->
                         <Grid Grid.Row="2">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="15*"/>
-                                <ColumnDefinition Width="35*"/>
-                                <ColumnDefinition Width="15*"/>
-                                <ColumnDefinition Width="35*"/>
+                                <ColumnDefinition Width="20*"/>
+                                <ColumnDefinition Width="20*"/>
+                                <ColumnDefinition Width="20*"/>
+                                <ColumnDefinition Width="20*"/>
+                                <ColumnDefinition Width="20*"/>
                             </Grid.ColumnDefinitions>
 
-                            <Grid Grid.Column="0"
-                                  Background="#17112E"
-                                  Margin="3, 3, 0, 0">
-                                <TextBlock Text="Pool"
-                                           FontSize="26"
-                                           Foreground="White"
-                                           FontWeight="Bold"
+                            <!--CP-->
+                            <Grid Grid.Column="0" Margin="3, 0, 3, 0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="40*"/>
+                                    <RowDefinition Height="60*"/>
+                                </Grid.RowDefinitions>
+
+                                <Grid Grid.Row="0" Background="#ffb87333">
+                                    <TextBlock Text="CP"
+                                           Foreground="Black"
+                                           FontSize="28"
+                                               FontWeight="Bold"
                                            HorizontalAlignment="Center"
                                            VerticalAlignment="Center"/>
+                                </Grid>
+
+                                <Grid Grid.Row="1" Background="#FF3e3e42" Margin="0, 0, 0, 3">
+                                    <TextBlock x:Name="CopperField"
+                                           Foreground="White"
+                                           FontSize="24"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"/>
+                                </Grid>
                             </Grid>
 
-                            <Grid Grid.Column="1"
-                                  Background="#FF3e3e42"
-                                  Margin="0, 3, 3, 3"
-                                  x:Name="ResourcePoolBox">
-                                <TextBlock x:Name="ResourcePoolField"
-                                           FontSize="35"
-                                           Foreground="White"
+                            <!--SP-->
+                            <Grid Grid.Column="1" Margin="3, 0, 3, 0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="40*"/>
+                                    <RowDefinition Height="60*"/>
+                                </Grid.RowDefinitions>
+
+                                <Grid Grid.Row="0" Background="Silver">
+                                    <TextBlock Text="SP"
+                                           Foreground="Black"
+                                           FontSize="28"
+                                            FontWeight="Bold"
                                            HorizontalAlignment="Center"
                                            VerticalAlignment="Center"/>
+                                </Grid>
+
+                                <Grid Grid.Row="1" Background="#FF3e3e42" Margin="0, 0, 0, 3">
+                                    <TextBlock x:Name="SilverField"
+                                           Foreground="White"
+                                           FontSize="24"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"/>
+                                </Grid>
                             </Grid>
 
-                            <Grid Grid.Column="2"
-                                  Background="#17112E"
-                                  Margin="3, 3, 0, 0">
-                                <TextBlock Text="Spent"
-                                           FontSize="26"
-                                           Foreground="White"
-                                           FontWeight="Bold"
+                            <!--EP-->
+                            <Grid Grid.Column="2" Margin="3, 0, 3, 0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="40*"/>
+                                    <RowDefinition Height="60*"/>
+                                </Grid.RowDefinitions>
+
+                                <Grid Grid.Row="0" Background="#ff50c878">
+                                    <TextBlock Text="EP"
+                                           Foreground="Black"
+                                           FontSize="28"
+                                            FontWeight="Bold"
                                            HorizontalAlignment="Center"
                                            VerticalAlignment="Center"/>
+                                </Grid>
+
+                                <Grid Grid.Row="1" Background="#FF3e3e42" Margin="0, 0, 0, 3">
+                                    <TextBlock x:Name="ElectrumField"
+                                           Foreground="White"
+                                           FontSize="24"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"/>
+                                </Grid>
                             </Grid>
 
-                            <Grid Grid.Column="3"
-                                  Background="#FF3e3e42"
-                                  Margin="0, 3, 3, 3"
-                                  x:Name="ResourceSpentBox">
-                                <TextBlock x:Name="ResourceSpentField"
-                                           FontSize="35"
-                                           Foreground="White"
+                            <!--GP-->
+                            <Grid Grid.Column="3" Margin="3, 0, 3, 0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="40*"/>
+                                    <RowDefinition Height="60*"/>
+                                </Grid.RowDefinitions>
+
+                                <Grid Grid.Row="0" Background="#ffCFB53B">
+                                    <TextBlock Text="GP"
+                                           Foreground="Black"
+                                           FontSize="28"
+                                            FontWeight="Bold"
                                            HorizontalAlignment="Center"
                                            VerticalAlignment="Center"/>
+                                </Grid>
+
+                                <Grid Grid.Row="1" Background="#FF3e3e42" Margin="0, 0, 0, 3">
+                                    <TextBlock x:Name="GoldField"
+                                           Foreground="White"
+                                           FontSize="24"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"/>
+                                </Grid>
+                            </Grid>
+
+                            <!--PP-->
+                            <Grid Grid.Column="4" Margin="3, 0, 3, 0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="40*"/>
+                                    <RowDefinition Height="60*"/>
+                                </Grid.RowDefinitions>
+
+                                <Grid Grid.Row="0" Background="#ffe5e4e2">
+                                    <TextBlock Text="PP"
+                                           Foreground="Black"
+                                           FontSize="28"
+                                            FontWeight="Bold"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"/>
+                                </Grid>
+
+                                <Grid Grid.Row="1" Background="#FF3e3e42" Margin="0, 0, 0, 3">
+                                    <TextBlock x:Name="PlatinumField"
+                                           Foreground="White"
+                                           FontSize="24"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"/>
+                                </Grid>
                             </Grid>
                         </Grid>
                     </Grid>

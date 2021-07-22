@@ -12,7 +12,6 @@ namespace Concierge.Interface.OverviewPageUi
     using System.Windows.Shapes;
 
     using Concierge.Characters.Enums;
-    using Concierge.Characters.Status;
     using Concierge.Utility;
 
     /// <summary>
@@ -20,19 +19,18 @@ namespace Concierge.Interface.OverviewPageUi
     /// </summary>
     public partial class OverviewPage : Page
     {
-        private readonly ModifyClassResourceWindow modifyClassResourceWindow = new ModifyClassResourceWindow();
         private readonly ModifyAttributesWindow modifyAttributesWindow = new ModifyAttributesWindow();
         private readonly ModifySensesWindow modifySensesWindow = new ModifySensesWindow();
         private readonly ModifyHealthWindow modifyHealthWindow = new ModifyHealthWindow();
         private readonly ModifyHpWindow modifyHpWindow = new ModifyHpWindow();
         private readonly ModifyHitDiceWindow modifyHitDiceWindow = new ModifyHitDiceWindow();
+        private readonly ModifyWealthWindow modifyWealthWindow = new ModifyWealthWindow();
 
         public OverviewPage()
         {
             this.InitializeComponent();
 
             this.DataContext = this;
-            this.ResourceIndex = 0;
 
             this.InitializeToggleBox(this.StrengthProficiencyBox, this.SavingThrows_MouseDown);
             this.InitializeToggleBox(this.DexterityProficiencyBox, this.SavingThrows_MouseDown);
@@ -88,8 +86,6 @@ namespace Concierge.Interface.OverviewPageUi
 
         public int ShieldHeight => (int)this.HealthBox.RenderSize.Height;
 
-        public int ResourceIndex { get; private set; }
-
         public void Draw()
         {
             this.DrawAttributes();
@@ -99,7 +95,7 @@ namespace Concierge.Interface.OverviewPageUi
             this.DrawHealth();
             this.DrawArmorClass();
             this.DrawHitDice();
-            this.DrawResourcePool();
+            this.DrawWealth();
         }
 
         private static void SetCursor(int spent, int total, Func<int, int, bool> func, Cursor cursor)
@@ -376,59 +372,15 @@ namespace Concierge.Interface.OverviewPageUi
             this.D12TotalBox.Background = Utilities.SetTotalBoxStyle(hitDice.TotalD12, hitDice.SpentD12);
         }
 
-        private void DrawResourcePool()
+        private void DrawWealth()
         {
-            this.SetArrowStyle();
+            this.TotalWealthField.Text = $"¤ {string.Format("{0:0.00}", Program.CcsFile.Character.Wealth.TotalValue)}";
 
-            if (Program.CcsFile.Character.ClassResources.Count > 0)
-            {
-                var classResource = Program.CcsFile.Character.ClassResources[this.ResourceIndex];
-
-                this.ResourceTypeField.Text = classResource.Type;
-
-                this.ResourcePoolField.Text = classResource.Total.ToString();
-                this.ResourcePoolBox.Background = Utilities.SetTotalBoxStyle(classResource.Total, classResource.Spent);
-
-                this.ResourceSpentField.Text = classResource.Total.ToString();
-                this.ResourceSpentBox.Background = Utilities.SetUsedBoxStyle(classResource.Total, classResource.Spent);
-            }
-            else
-            {
-                this.ResourceTypeField.Text = "None";
-
-                this.ResourcePoolField.Text = "0";
-                this.ResourcePoolBox.Background = Utilities.SetTotalBoxStyle(0, 0);
-
-                this.ResourceSpentField.Text = "0";
-                this.ResourceSpentBox.Background = Utilities.SetUsedBoxStyle(0, 0);
-            }
-        }
-
-        private void SetArrowStyle()
-        {
-            this.LeftResourceButton.Foreground = this.ResourceIndex == 0 ? Brushes.DimGray : Brushes.White;
-
-            this.RightResourceButton.Foreground = this.ResourceIndex == Program.CcsFile.Character.ClassResources.Count - 1 || Program.CcsFile.Character.ClassResources.Count == 0
-                ? Brushes.DimGray
-                : Brushes.White;
-        }
-
-        private void LeftResourceButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (this.ResourceIndex > 0)
-            {
-                this.ResourceIndex--;
-                this.DrawResourcePool();
-            }
-        }
-
-        private void RightResourceButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (this.ResourceIndex < Program.CcsFile.Character.ClassResources.Count - 1)
-            {
-                this.ResourceIndex++;
-                this.DrawResourcePool();
-            }
+            this.CopperField.Text = Program.CcsFile.Character.Wealth.Copper.ToString();
+            this.SilverField.Text = Program.CcsFile.Character.Wealth.Silver.ToString();
+            this.ElectrumField.Text = Program.CcsFile.Character.Wealth.Electrum.ToString();
+            this.GoldField.Text = Program.CcsFile.Character.Wealth.Gold.ToString();
+            this.PlatinumField.Text = Program.CcsFile.Character.Wealth.Platinum.ToString();
         }
 
         private void SavingThrows_MouseDown(object sender, RoutedEventArgs e)
@@ -632,34 +584,6 @@ namespace Concierge.Interface.OverviewPageUi
             this.DrawHitDice();
         }
 
-        private void EditResourceButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (Program.CcsFile.Character.ClassResources.Count > 0)
-            {
-                this.modifyClassResourceWindow.ShowEdit(Program.CcsFile.Character.ClassResources[this.ResourceIndex]);
-                this.DrawResourcePool();
-            }
-        }
-
-        private void AddResourceButton_Click(object sender, RoutedEventArgs e)
-        {
-            this.ResourceIndex += this.modifyClassResourceWindow.ShowAdd();
-
-            this.ResourceIndex = Math.Min(this.ResourceIndex, Program.CcsFile.Character.ClassResources.Count - 1);
-
-            this.DrawResourcePool();
-        }
-
-        private void ButtonDelete_Click(object sender, RoutedEventArgs e)
-        {
-            if (Program.CcsFile.Character.ClassResources.Count > 0)
-            {
-                Program.CcsFile.Character.ClassResources.RemoveAt(this.ResourceIndex);
-                this.ResourceIndex--;
-                this.DrawResourcePool();
-            }
-        }
-
         private void TakeDamageButton_Click(object sender, RoutedEventArgs e)
         {
             this.modifyHpWindow.SubtractHP();
@@ -723,6 +647,12 @@ namespace Concierge.Interface.OverviewPageUi
         private void SpentBox_MouseLeave(object sender, MouseEventArgs e)
         {
             Mouse.OverrideCursor = Cursors.Arrow;
+        }
+
+        private void EditWealthButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.modifyWealthWindow.ShowWindow();
+            this.DrawWealth();
         }
     }
 }

@@ -2,7 +2,7 @@
 // Copyright (c) Thomas Beckett. All rights reserved.
 // </copyright>
 
-namespace Concierge.Interface.OverviewPageUi
+namespace Concierge.Interface.DetailsPageUi
 {
     using System.Windows;
     using System.Windows.Controls;
@@ -27,17 +27,12 @@ namespace Concierge.Interface.OverviewPageUi
 
         private ClassResource ClassResource { get; set; }
 
-        private int AddedCount { get; set; }
-
-        public int ShowAdd()
+        public void ShowAdd()
         {
             this.Editing = false;
-            this.AddedCount = 0;
             this.HeaderTextBlock.Text = this.HeaderText;
             this.ClearFields();
             this.ShowDialog();
-
-            return this.AddedCount;
         }
 
         public void ShowEdit(ClassResource classResource)
@@ -65,8 +60,6 @@ namespace Concierge.Interface.OverviewPageUi
 
         private ClassResource CreateClassResource()
         {
-            this.AddedCount++;
-
             return new ClassResource()
             {
                 Type = this.ResourceTextBox.Text,
@@ -107,6 +100,11 @@ namespace Concierge.Interface.OverviewPageUi
             Program.Modify();
 
             this.UpdateClassResource();
+
+            if (!this.Editing)
+            {
+                this.ClearFields();
+            }
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)

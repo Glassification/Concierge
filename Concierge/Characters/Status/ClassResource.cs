@@ -10,6 +10,7 @@ namespace Concierge.Characters.Status
     {
         public ClassResource()
         {
+            this.Id = Guid.NewGuid();
         }
 
         public string Type { get; set; }
@@ -17,6 +18,8 @@ namespace Concierge.Characters.Status
         public int Total { get; set; }
 
         public int Spent { get; set; }
+
+        public string Description => $"{this.Type} - {this.Spent}/{this.Total} Used";
 
         public Guid Id { get; private set; }
     }
