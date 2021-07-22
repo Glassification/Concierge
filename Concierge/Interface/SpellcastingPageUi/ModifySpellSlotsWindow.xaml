@@ -1,0 +1,672 @@
+﻿<Window x:Class="Concierge.Interface.SpellcastingPageUi.ModifySpellSlotsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Concierge.Interface.SpellcastingPageUi"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        mc:Ignorable="d"
+        Title="ModifySpellSlotsWindow"
+        Height="650"
+        Width="650"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        Background="#252526"
+        ResizeMode="NoResize"
+        KeyDown="Window_KeyDown"
+        BorderThickness="1"
+        BorderBrush="#706599"
+        Style="{StaticResource WindowXboxDasboardStyle}">
+
+    <Window.Resources>
+        <ControlTemplate x:Key="ComboBoxToggleButton" TargetType="{x:Type ToggleButton}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="20" />
+                </Grid.ColumnDefinitions>
+                <Border
+                  x:Name="Border"
+                  Grid.ColumnSpan="2"
+                  CornerRadius="0"
+                  Background="#FF3F3F3F"
+                  BorderBrush="#FF97A0A5"
+                  BorderThickness="1" />
+                <Border
+                  Grid.Column="0"
+                  CornerRadius="0"
+                  Margin="1"
+                  Background="#FF3F3F3F"
+                  BorderBrush="#FF97A0A5"
+                  BorderThickness="0,0,1,0" />
+                <Path
+                  x:Name="Arrow"
+                  Grid.Column="1"
+                  Fill="White"
+                  HorizontalAlignment="Center"
+                  VerticalAlignment="Center"
+                  Data="M0,0 L0,2 L4,6 L8,2 L8,0 L4,4 z"
+                />
+            </Grid>
+            <!--<ControlTemplate.Triggers>
+            <Trigger Property="ToggleButton.IsMouseOver" Value="true">
+                <Setter TargetName="Border" Property="Background" Value="#808080" />
+            </Trigger>
+            <Trigger Property="ToggleButton.IsChecked" Value="true">
+                <Setter TargetName="Border" Property="Background" Value="#E0E0E0" />
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter TargetName="Border" Property="Background" Value="#EEEEEE" />
+                <Setter TargetName="Border" Property="BorderBrush" Value="#AAAAAA" />
+                <Setter Property="Foreground" Value="#888888"/>
+                <Setter TargetName="Arrow" Property="Fill" Value="#888888" />
+            </Trigger>
+        </ControlTemplate.Triggers>-->
+        </ControlTemplate>
+
+        <ControlTemplate x:Key="ComboBoxTextBox" TargetType="{x:Type TextBox}">
+            <Border x:Name="PART_ContentHost" Focusable="False" Background="{TemplateBinding Background}" />
+        </ControlTemplate>
+
+        <Style x:Key="{x:Type ComboBox}" TargetType="{x:Type ComboBox}">
+            <Setter Property="SnapsToDevicePixels" Value="true"/>
+            <Setter Property="OverridesDefaultStyle" Value="true"/>
+            <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto"/>
+            <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
+            <Setter Property="ScrollViewer.CanContentScroll" Value="true"/>
+            <Setter Property="MinWidth" Value="120"/>
+            <Setter Property="MinHeight" Value="20"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ComboBox}">
+                        <Grid>
+                            <ToggleButton
+                            Name="ToggleButton"
+                            Template="{StaticResource ComboBoxToggleButton}"
+                            Grid.Column="2"
+                            Focusable="false"
+                            IsChecked="{Binding Path=IsDropDownOpen,Mode=TwoWay,RelativeSource={RelativeSource TemplatedParent}}"
+                            ClickMode="Press">
+                            </ToggleButton>
+                            <ContentPresenter Name="ContentSite" IsHitTestVisible="False"  Content="{TemplateBinding SelectionBoxItem}"
+                            ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
+                            ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
+                            Margin="3,3,23,3"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Left" />
+                            <TextBox x:Name="PART_EditableTextBox"
+                            Style="{x:Null}"
+                            Template="{StaticResource ComboBoxTextBox}"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Margin="13,3,23,3"
+                            Focusable="True"
+                            Background="#FF3F3F3F"
+                            Foreground="White"
+                            Visibility="Hidden"
+                            IsReadOnly="{TemplateBinding IsReadOnly}"/>
+                            <Popup
+                            Name="Popup"
+                            Placement="Bottom"
+                            IsOpen="{TemplateBinding IsDropDownOpen}"
+                            AllowsTransparency="True"
+                            Focusable="False"
+                            PopupAnimation="Slide">
+
+                                <Grid Name="DropDown"
+                              SnapsToDevicePixels="True"
+                              MinWidth="{TemplateBinding ActualWidth}"
+                              MaxHeight="{TemplateBinding MaxDropDownHeight}">
+                                    <Border
+                                x:Name="DropDownBorder"
+                                Background="#FF3F3F3F"
+
+                                BorderThickness="1"
+                                BorderBrush="#888888"/>
+                                    <ScrollViewer Margin="4,6,4,6" SnapsToDevicePixels="True">
+                                        <StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Contained" />
+                                    </ScrollViewer>
+                                </Grid>
+                            </Popup>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="HasItems" Value="false">
+                                <Setter TargetName="DropDownBorder" Property="MinHeight" Value="95"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Foreground" Value="#888888"/>
+                            </Trigger>
+                            <Trigger Property="IsGrouping" Value="true">
+                                <Setter Property="ScrollViewer.CanContentScroll" Value="false"/>
+                            </Trigger>
+                            <Trigger SourceName="Popup" Property="Popup.AllowsTransparency" Value="true">
+                                <Setter TargetName="DropDownBorder" Property="CornerRadius" Value="0"/>
+                                <Setter TargetName="DropDownBorder" Property="Margin" Value="0,2,0,0"/>
+                            </Trigger>
+                            <Trigger Property="IsEditable"  Value="true">
+                                <Setter Property="IsTabStop" Value="false"/>
+                                <Setter TargetName="PART_EditableTextBox" Property="Visibility" Value="Visible"/>
+                                <Setter TargetName="ContentSite" Property="Visibility" Value="Hidden"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+            </Style.Triggers>
+        </Style>
+
+        <!-- SimpleStyles: ComboBoxItem -->
+        <Style x:Key="{x:Type ComboBoxItem}" TargetType="{x:Type ComboBoxItem}">
+            <Setter Property="SnapsToDevicePixels" Value="true"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="OverridesDefaultStyle" Value="true"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ComboBoxItem}">
+                        <Border Name="Border"
+                              Padding="2"
+                              SnapsToDevicePixels="true">
+                            <ContentPresenter />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsHighlighted" Value="true">
+                                <Setter TargetName="Border" Property="Background" Value="#FF4F4F4F"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Foreground" Value="#888888"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="535"/>
+            <RowDefinition Height="70"/>
+        </Grid.RowDefinitions>
+
+        <!--Header-->
+        <Grid Grid.Row="0">
+            <TextBlock Text="Edit Spell Slots"
+                       x:Name="HeaderTextBlock"
+                       Foreground="#988CD0"
+                       FontSize="35"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Center"
+                       Margin="30, 0, 0, 0"
+                       FontWeight="Bold"/>
+            <Button x:Name="CloseButton"
+                    Height="50"
+                    Width="60"
+                    Background="Transparent"
+                    BorderBrush="{x:Null}"
+                    Foreground="White"
+                    ToolTip="Close"
+                    HorizontalAlignment="Right"
+                    Click="CloseButton_Click"
+                    MouseEnter="Button_MouseEnter"
+                    MouseLeave="Button_MouseLeave">
+                <materialDesign:PackIcon Kind="WindowClose" Width="25" Height="25"/>
+            </Button>
+        </Grid>
+
+        <!--Values-->
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="40*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="40*"/>
+            </Grid.ColumnDefinitions>
+
+            <!--Used Slots-->
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="9.1*"/>
+                    <RowDefinition Height="9.1*"/>
+                    <RowDefinition Height="9.1*"/>
+                    <RowDefinition Height="9.1*"/>
+                    <RowDefinition Height="9.1*"/>
+                    <RowDefinition Height="9.1*"/>
+                    <RowDefinition Height="9.1*"/>
+                    <RowDefinition Height="9.1*"/>
+                    <RowDefinition Height="9.1*"/>
+                    <RowDefinition Height="9.1*"/>
+                    <RowDefinition Height="9.1*"/>
+                </Grid.RowDefinitions>
+
+                <!--Header-->
+                <Grid Grid.Row="0">
+                    <TextBlock Text="Used"
+                               Foreground="White"
+                               FontSize="25"
+                               FontWeight="Bold"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"/>
+                </Grid>
+
+                <!--Used Pact-->
+                <Grid Grid.Row="1">
+                    <xctk:IntegerUpDown Name="UsedPactUpDown"
+                                        Background="#FF3F3F3F"
+                                        BorderThickness="0"
+                                        Foreground="White"
+                                        FontSize="25"
+                                        Margin="20, 0, 0, 0"
+                                        Minimum="0"
+                                        Height="40"/>
+                </Grid>
+
+                <!--Used 1st-->
+                <Grid Grid.Row="2">
+                    <xctk:IntegerUpDown Name="Used1UpDown"
+                                        Background="#FF3F3F3F"
+                                        BorderThickness="0"
+                                        Foreground="White"
+                                        FontSize="25"
+                                        Margin="20, 0, 0, 0"
+                                        Minimum="0"
+                                        Height="40"/>
+                </Grid>
+
+                <!--Used 2nd-->
+                <Grid Grid.Row="3">
+                    <xctk:IntegerUpDown Name="Used2UpDown"
+                                        Background="#FF3F3F3F"
+                                        BorderThickness="0"
+                                        Foreground="White"
+                                        FontSize="25"
+                                        Minimum="0"
+                                        Margin="20, 0, 0, 0"
+                                        Height="40"/>
+                </Grid>
+
+                <!--Used 3rd-->
+                <Grid Grid.Row="4">
+                    <xctk:IntegerUpDown Name="Used3UpDown"
+                                        Background="#FF3F3F3F"
+                                        BorderThickness="0"
+                                        Foreground="White"
+                                        FontSize="25"
+                                        Minimum="0"
+                                        Margin="20, 0, 0, 0"
+                                        Height="40"/>
+                </Grid>
+
+                <!--Used 4th-->
+                <Grid Grid.Row="5">
+                    <xctk:IntegerUpDown Name="Used4UpDown"
+                                        Background="#FF3F3F3F"
+                                        BorderThickness="0"
+                                        Foreground="White"
+                                        FontSize="25"
+                                        Minimum="0"
+                                        Margin="20, 0, 0, 0"
+                                        Height="40"/>
+                </Grid>
+
+                <!--Used 5th-->
+                <Grid Grid.Row="6">
+                    <xctk:IntegerUpDown Name="Used5UpDown"
+                                        Background="#FF3F3F3F"
+                                        BorderThickness="0"
+                                        Foreground="White"
+                                        FontSize="25"
+                                        Margin="20, 0, 0, 0"
+                                        Minimum="0"
+                                        Height="40"/>
+                </Grid>
+
+                <!--Used 6th-->
+                <Grid Grid.Row="7">
+                    <xctk:IntegerUpDown Name="Used6UpDown"
+                                        Background="#FF3F3F3F"
+                                        BorderThickness="0"
+                                        Foreground="White"
+                                        FontSize="25"
+                                        Margin="20, 0, 0, 0"
+                                        Minimum="0"
+                                        Height="40"/>
+                </Grid>
+
+                <!--Used 7th-->
+                <Grid Grid.Row="8">
+                    <xctk:IntegerUpDown Name="Used7UpDown"
+                                        Background="#FF3F3F3F"
+                                        BorderThickness="0"
+                                        Foreground="White"
+                                        FontSize="25"
+                                        Margin="20, 0, 0, 0"
+                                        Minimum="0"
+                                        Height="40"/>
+                </Grid>
+
+                <!--Used 8th-->
+                <Grid Grid.Row="9">
+                    <xctk:IntegerUpDown Name="Used8UpDown"
+                                        Background="#FF3F3F3F"
+                                        BorderThickness="0"
+                                        Foreground="White"
+                                        FontSize="25"
+                                        Margin="20, 0, 0, 0"
+                                        Minimum="0"
+                                        Height="40"/>
+                </Grid>
+
+                <!--Used 9th-->
+                <Grid Grid.Row="10">
+                    <xctk:IntegerUpDown Name="Used9UpDown"
+                                        Background="#FF3F3F3F"
+                                        BorderThickness="0"
+                                        Foreground="White"
+                                        FontSize="25"
+                                        Margin="20, 0, 0, 0"
+                                        Minimum="0"
+                                        Height="40"/>
+                </Grid>
+            </Grid>
+
+            <!--Labels-->
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="9.1*"/>
+                    <RowDefinition Height="9.1*"/>
+                    <RowDefinition Height="9.1*"/>
+                    <RowDefinition Height="9.1*"/>
+                    <RowDefinition Height="9.1*"/>
+                    <RowDefinition Height="9.1*"/>
+                    <RowDefinition Height="9.1*"/>
+                    <RowDefinition Height="9.1*"/>
+                    <RowDefinition Height="9.1*"/>
+                    <RowDefinition Height="9.1*"/>
+                    <RowDefinition Height="9.1*"/>
+                </Grid.RowDefinitions>
+
+                <!--Pact-->
+                <Grid Grid.Row="1">
+                    <TextBlock Text="Pact"
+                               Foreground="White"
+                               FontSize="25"
+                               FontWeight="Bold"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"/>
+                </Grid>
+
+                <!--1st-->
+                <Grid Grid.Row="2">
+                    <TextBlock Text="1st"
+                               Foreground="White"
+                               FontSize="25"
+                               FontWeight="Bold"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"/>
+                </Grid>
+
+                <!--2nd-->
+                <Grid Grid.Row="3">
+                    <TextBlock Text="2nd"
+                               Foreground="White"
+                               FontSize="25"
+                               FontWeight="Bold"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"/>
+                </Grid>
+
+                <!--3rd-->
+                <Grid Grid.Row="4">
+                    <TextBlock Text="3rd"
+                               Foreground="White"
+                               FontSize="25"
+                               FontWeight="Bold"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"/>
+                </Grid>
+
+                <!--4th-->
+                <Grid Grid.Row="5">
+                    <TextBlock Text="4th"
+                               Foreground="White"
+                               FontSize="25"
+                               FontWeight="Bold"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"/>
+                </Grid>
+
+                <!--5th-->
+                <Grid Grid.Row="6">
+                    <TextBlock Text="5th"
+                               Foreground="White"
+                               FontSize="25"
+                               FontWeight="Bold"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"/>
+                </Grid>
+
+                <!--6th-->
+                <Grid Grid.Row="7">
+                    <TextBlock Text="6th"
+                               Foreground="White"
+                               FontSize="25"
+                               FontWeight="Bold"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"/>
+                </Grid>
+
+                <!--7th-->
+                <Grid Grid.Row="8">
+                    <TextBlock Text="7th"
+                               Foreground="White"
+                               FontSize="25"
+                               FontWeight="Bold"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"/>
+                </Grid>
+
+                <!--8th-->
+                <Grid Grid.Row="9">
+                    <TextBlock Text="8th"
+                               Foreground="White"
+                               FontSize="25"
+                               FontWeight="Bold"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"/>
+                </Grid>
+
+                <!--9th-->
+                <Grid Grid.Row="10">
+                    <TextBlock Text="9th"
+                               Foreground="White"
+                               FontSize="25"
+                               FontWeight="Bold"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"/>
+                </Grid>
+            </Grid>
+
+            <!--Total Slots-->
+            <Grid Grid.Column="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="9.1*"/>
+                    <RowDefinition Height="9.1*"/>
+                    <RowDefinition Height="9.1*"/>
+                    <RowDefinition Height="9.1*"/>
+                    <RowDefinition Height="9.1*"/>
+                    <RowDefinition Height="9.1*"/>
+                    <RowDefinition Height="9.1*"/>
+                    <RowDefinition Height="9.1*"/>
+                    <RowDefinition Height="9.1*"/>
+                    <RowDefinition Height="9.1*"/>
+                    <RowDefinition Height="9.1*"/>
+                </Grid.RowDefinitions>
+
+                <!--Header-->
+                <Grid Grid.Row="0">
+                    <TextBlock Text="Total"
+                               Foreground="White"
+                               FontSize="25"
+                               FontWeight="Bold"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"/>
+                </Grid>
+                
+                <!--Total Pact-->
+                <Grid Grid.Row="1">
+                    <xctk:IntegerUpDown Name="TotalPactUpDown"
+                                        Background="#FF3F3F3F"
+                                        BorderThickness="0"
+                                        Foreground="White"
+                                        FontSize="25"
+                                        Minimum="0"
+                                        Margin="0, 0, 20, 0"
+                                        Height="40"/>
+                </Grid>
+
+                <!--Total 1st-->
+                <Grid Grid.Row="2">
+                    <xctk:IntegerUpDown Name="Total1UpDown"
+                                        Background="#FF3F3F3F"
+                                        BorderThickness="0"
+                                        Foreground="White"
+                                        FontSize="25"
+                                        Margin="0, 0, 20, 0"
+                                        Minimum="0"
+                                        Height="40"/>
+                </Grid>
+
+                <!--Total 2nd-->
+                <Grid Grid.Row="3">
+                    <xctk:IntegerUpDown Name="Total2UpDown"
+                                        Background="#FF3F3F3F"
+                                        BorderThickness="0"
+                                        Foreground="White"
+                                        FontSize="25"
+                                        Margin="0, 0, 20, 0"
+                                        Minimum="0"
+                                        Height="40"/>
+                </Grid>
+
+                <!--Total 3rd-->
+                <Grid Grid.Row="4">
+                    <xctk:IntegerUpDown Name="Total3UpDown"
+                                        Background="#FF3F3F3F"
+                                        BorderThickness="0"
+                                        Foreground="White"
+                                        FontSize="25"
+                                        Margin="0, 0, 20, 0"
+                                        Minimum="0"
+                                        Height="40"/>
+                </Grid>
+
+                <!--Total 4th-->
+                <Grid Grid.Row="5">
+                    <xctk:IntegerUpDown Name="Total4UpDown"
+                                        Background="#FF3F3F3F"
+                                        BorderThickness="0"
+                                        Foreground="White"
+                                        FontSize="25"
+                                        Margin="0, 0, 20, 0"
+                                        Minimum="0"
+                                        Height="40"/>
+                </Grid>
+
+                <!--Total 5th-->
+                <Grid Grid.Row="6">
+                    <xctk:IntegerUpDown Name="Total5UpDown"
+                                        Background="#FF3F3F3F"
+                                        BorderThickness="0"
+                                        Foreground="White"
+                                        FontSize="25"
+                                        Margin="0, 0, 20, 0"
+                                        Minimum="0"
+                                        Height="40"/>
+                </Grid>
+
+                <!--Total 6th-->
+                <Grid Grid.Row="7">
+                    <xctk:IntegerUpDown Name="Total6UpDown"
+                                        Background="#FF3F3F3F"
+                                        BorderThickness="0"
+                                        Foreground="White"
+                                        Minimum="0"
+                                        FontSize="25"
+                                        Margin="0, 0, 20, 0"
+                                        Height="40"/>
+                </Grid>
+
+                <!--Total 7th-->
+                <Grid Grid.Row="8">
+                    <xctk:IntegerUpDown Name="Total7UpDown"
+                                        Background="#FF3F3F3F"
+                                        BorderThickness="0"
+                                        Foreground="White"
+                                        FontSize="25"
+                                        Margin="0, 0, 20, 0"
+                                        Minimum="0"
+                                        Height="40"/>
+                </Grid>
+
+                <!--Total 8th-->
+                <Grid Grid.Row="9">
+                    <xctk:IntegerUpDown Name="Total8UpDown"
+                                        Background="#FF3F3F3F"
+                                        BorderThickness="0"
+                                        Foreground="White"
+                                        FontSize="25"
+                                        Margin="0, 0, 20, 0"
+                                        Minimum="0"
+                                        Height="40"/>
+                </Grid>
+
+                <!--Total 9th-->
+                <Grid Grid.Row="10">
+                    <xctk:IntegerUpDown Name="Total9UpDown"
+                                        Background="#FF3F3F3F"
+                                        BorderThickness="0"
+                                        Foreground="White"
+                                        FontSize="25"
+                                        Margin="0, 0, 20, 0"
+                                        Minimum="0"
+                                        Height="40"/>
+                </Grid>
+            </Grid>
+        </Grid>
+
+        <!--Buttons-->
+        <Grid Grid.Row="2">
+            <StackPanel Orientation="Horizontal"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center">
+                <Button x:Name="OkButton"
+                        Style="{StaticResource PopupWindowButton}"
+                        BorderBrush="{x:Null}"
+                        Content="OK"
+                        MouseEnter="Button_MouseEnter"
+                        MouseLeave="Button_MouseLeave"
+                        Click="OkButton_Click">
+                </Button>
+                <Button x:Name="ApplyButton"
+                        Style="{StaticResource PopupWindowButton}"
+                        BorderBrush="{x:Null}"
+                        Content="Apply"
+                        MouseEnter="Button_MouseEnter"
+                        MouseLeave="Button_MouseLeave"
+                        Click="ApplyButton_Click">
+                </Button>
+                <Button x:Name="CancelButton"
+                        BorderBrush="{x:Null}"
+                        Content="Cancel"
+                        Click="CancelButton_Click"
+                        MouseEnter="Button_MouseEnter"
+                        MouseLeave="Button_MouseLeave"
+                        Style="{StaticResource PopupWindowButton}">
+                </Button>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>

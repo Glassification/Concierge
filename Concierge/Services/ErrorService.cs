@@ -9,9 +9,9 @@ namespace Concierge.Services
 
     using Concierge.Exceptions;
     using Concierge.Exceptions.Enums;
+    using Concierge.Interface.Enums;
+    using Concierge.Interface.HelperUi;
     using Concierge.Logging;
-    using Concierge.Presentation.Enums;
-    using Concierge.Presentation.HelperUi;
     using Concierge.Utility;
 
     public class ErrorService

@@ -22,12 +22,12 @@ namespace Concierge.Persistence
 
                 File.WriteAllText(ccsFile.AbsolutePath, rawJson);
 
-                Program.Modified = false;
+                Program.Unmodify();
             }
             catch (Exception ex)
             {
                 Program.ErrorService.LogError(ex, Severity.Release);
-                Program.Modified = true;
+                Program.Modify();
             }
         }
     }

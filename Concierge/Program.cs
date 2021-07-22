@@ -4,9 +4,9 @@
 
 namespace Concierge
 {
+    using Concierge.Interface.HelperUi;
     using Concierge.Logging;
     using Concierge.Persistence;
-    using Concierge.Presentation.HelperUi;
     using Concierge.Services;
     using Concierge.Utility;
 
@@ -31,11 +31,21 @@ namespace Concierge
 
         public static bool Typing { get; set; }
 
-        public static bool Modified { get; set; }
+        public static bool Modified { get; private set; }
 
         public static LocalLogger Logger { get; private set; }
 
         public static ErrorService ErrorService { get; private set; }
+
+        public static void Modify()
+        {
+            Modified = true;
+        }
+
+        public static void Unmodify()
+        {
+            Modified = false;
+        }
 
         private static void InitializeLogger()
         {

@@ -43,10 +43,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Presentation\EquipedItemsPageUi\EquipedItemsPage.xaml.cs">
+    <Compile Update="Interface\EquipedItemsPageUi\EquipedItemsPage.xaml.cs">
       <DependentUpon>%(Filename)</DependentUpon>
     </Compile>
-    <Compile Update="Presentation\EquipedItemsPageUi\ModifyEquippedItemsWindow.xaml.cs">
+    <Compile Update="Interface\EquipedItemsPageUi\ModifyEquippedItemsWindow.xaml.cs">
+      <DependentUpon>%(Filename)</DependentUpon>
+    </Compile>
+    <Compile Update="Interface\OverviewPageUi\ModifyClassResourceWindow.xaml.cs">
       <DependentUpon>%(Filename)</DependentUpon>
     </Compile>
     <Compile Update="Properties\Resources.Designer.cs">

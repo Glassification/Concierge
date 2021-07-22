@@ -9,8 +9,8 @@ namespace Concierge.Persistence
     using System.Text.RegularExpressions;
 
     using Concierge.Exceptions.Enums;
-    using Concierge.Presentation.Enums;
-    using Concierge.Presentation.HelperUi;
+    using Concierge.Interface.Enums;
+    using Concierge.Interface.HelperUi;
     using Concierge.Utility;
     using Concierge.Utility.Extensions;
     using Newtonsoft.Json;
@@ -38,14 +38,14 @@ namespace Concierge.Persistence
                     return new CcsFile();
                 }
 
-                Program.Modified = false;
+                Program.Unmodify();
 
                 return ccsFile;
             }
             catch (Exception ex)
             {
                 Program.ErrorService.LogError(ex, Severity.Release);
-                Program.Modified = true;
+                Program.Modify();
 
                 return new CcsFile();
             }
