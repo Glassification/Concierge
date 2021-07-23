@@ -5,6 +5,7 @@
 namespace Concierge.Interface.EquipmentPageUi
 {
     using System;
+    using System.Collections.Generic;
     using System.Linq;
     using System.Windows;
     using System.Windows.Controls;
@@ -31,10 +32,13 @@ namespace Concierge.Interface.EquipmentPageUi
 
         private bool Editing { get; set; }
 
-        private Guid SelectedWeaponId { get; set; }
+        private Weapon SelectedWeapon { get; set; }
 
-        public void ShowAdd()
+        private List<Weapon> Weapons { get; set; }
+
+        public void ShowAdd(List<Weapon> weapons)
         {
+            this.Weapons = weapons;
             this.HeaderTextBlock.Text = "Add Weapon";
             this.Editing = false;
             this.ApplyButton.Visibility = Visibility.Visible;
@@ -46,8 +50,8 @@ namespace Concierge.Interface.EquipmentPageUi
         public void ShowEdit(Weapon weapon)
         {
             this.HeaderTextBlock.Text = "Edit Weapon";
-            this.SelectedWeaponId = weapon.Id;
             this.Editing = true;
+            this.SelectedWeapon = weapon;
             this.ApplyButton.Visibility = Visibility.Collapsed;
             this.FillFields(weapon);
 
@@ -101,7 +105,7 @@ namespace Concierge.Interface.EquipmentPageUi
 
         private Weapon ToWeapon()
         {
-            var weapon = new Weapon()
+            return new Weapon()
             {
                 Name = this.WeaponComboBox.Text,
                 WeaponType = (WeaponTypes)Enum.Parse(typeof(WeaponTypes), this.TypeComboBox.Text),
@@ -115,8 +119,6 @@ namespace Concierge.Interface.EquipmentPageUi
                 IsInBagOfHolding = this.BagOfHoldingCheckBox.IsChecked ?? false,
                 Note = this.NotesTextBox.Text,
             };
-
-            return weapon;
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
@@ -143,7 +145,7 @@ namespace Concierge.Interface.EquipmentPageUi
         {
             Program.Modify();
 
-            Program.CcsFile.Character.Weapons.Add(this.ToWeapon());
+            this.Weapons.Add(this.ToWeapon());
             this.ClearFields();
         }
 
@@ -153,11 +155,11 @@ namespace Concierge.Interface.EquipmentPageUi
 
             if (this.Editing)
             {
-                this.UpdateWeapon(Program.CcsFile.Character.GetWeaponById(this.SelectedWeaponId));
+                this.UpdateWeapon(this.SelectedWeapon);
             }
             else
             {
-                Program.CcsFile.Character.Weapons.Add(this.ToWeapon());
+                this.Weapons.Add(this.ToWeapon());
             }
 
             this.Hide();

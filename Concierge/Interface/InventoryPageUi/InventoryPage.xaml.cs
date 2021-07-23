@@ -86,7 +86,7 @@ namespace Concierge.Interface.InventoryPageUi
 
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
-            this.ModifyInventoryWindow.ShowAdd();
+            this.ModifyInventoryWindow.ShowAdd(Program.CcsFile.Character.Inventories);
             this.FillList();
         }
 

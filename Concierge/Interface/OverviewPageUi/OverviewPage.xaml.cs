@@ -560,7 +560,7 @@ namespace Concierge.Interface.OverviewPageUi
 
         private void EditAttributesButton_Click(object sender, RoutedEventArgs e)
         {
-            this.modifyAttributesWindow.EditAttributes();
+            this.modifyAttributesWindow.EditAttributes(Program.CcsFile.Character.Attributes);
             this.DrawAttributes();
             this.DrawSavingThrows();
             this.DrawSkills();
@@ -574,25 +574,25 @@ namespace Concierge.Interface.OverviewPageUi
 
         private void EditHealthButton_Click(object sender, RoutedEventArgs e)
         {
-            this.modifyHealthWindow.EditHealth();
+            this.modifyHealthWindow.EditHealth(Program.CcsFile.Character.Vitality);
             this.DrawHealth();
         }
 
         private void EditHitDiceButton_Click(object sender, RoutedEventArgs e)
         {
-            this.modifyHitDiceWindow.ModifyHitDice();
+            this.modifyHitDiceWindow.ModifyHitDice(Program.CcsFile.Character.Vitality.HitDice);
             this.DrawHitDice();
         }
 
         private void TakeDamageButton_Click(object sender, RoutedEventArgs e)
         {
-            this.modifyHpWindow.SubtractHP();
+            this.modifyHpWindow.SubtractHP(Program.CcsFile.Character.Vitality);
             this.DrawHealth();
         }
 
         private void HealDamageButton_Click(object sender, RoutedEventArgs e)
         {
-            this.modifyHpWindow.AddHP();
+            this.modifyHpWindow.AddHP(Program.CcsFile.Character.Vitality);
             this.DrawHealth();
         }
 

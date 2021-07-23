@@ -9,6 +9,8 @@ namespace Concierge.Interface.DetailsPageUi
     using System.Windows.Input;
     using System.Windows.Media;
 
+    using Concierge.Characters.Characteristics;
+
     /// <summary>
     /// Interaction logic for ModifyPersonalityWindow.xaml.
     /// </summary>
@@ -19,32 +21,35 @@ namespace Concierge.Interface.DetailsPageUi
             this.InitializeComponent();
         }
 
-        public void ShowEdit()
+        private Personality Personality { get; set; }
+
+        public void ShowEdit(Personality personality)
         {
+            this.Personality = personality;
             this.FillFields();
             this.ShowDialog();
         }
 
         private void FillFields()
         {
-            this.Trait1TextBox.Text = Program.CcsFile.Character.Personality.Trait1;
-            this.Trait2TextBox.Text = Program.CcsFile.Character.Personality.Trait2;
-            this.IdealTextBox.Text = Program.CcsFile.Character.Personality.Ideal;
-            this.BondTextBox.Text = Program.CcsFile.Character.Personality.Bond;
-            this.FlawTextBox.Text = Program.CcsFile.Character.Personality.Flaw;
-            this.BackgroundTextBox.Text = Program.CcsFile.Character.Personality.Background;
-            this.NotesTextBox.Text = Program.CcsFile.Character.Personality.Notes;
+            this.Trait1TextBox.Text = this.Personality.Trait1;
+            this.Trait2TextBox.Text = this.Personality.Trait2;
+            this.IdealTextBox.Text = this.Personality.Ideal;
+            this.BondTextBox.Text = this.Personality.Bond;
+            this.FlawTextBox.Text = this.Personality.Flaw;
+            this.BackgroundTextBox.Text = this.Personality.Background;
+            this.NotesTextBox.Text = this.Personality.Notes;
         }
 
         private void UpdatePersonality()
         {
-            Program.CcsFile.Character.Personality.Trait1 = this.Trait1TextBox.Text;
-            Program.CcsFile.Character.Personality.Trait2 = this.Trait2TextBox.Text;
-            Program.CcsFile.Character.Personality.Ideal = this.IdealTextBox.Text;
-            Program.CcsFile.Character.Personality.Bond = this.BondTextBox.Text;
-            Program.CcsFile.Character.Personality.Flaw = this.FlawTextBox.Text;
-            Program.CcsFile.Character.Personality.Background = this.BackgroundTextBox.Text;
-            Program.CcsFile.Character.Personality.Notes = this.NotesTextBox.Text;
+            this.Personality.Trait1 = this.Trait1TextBox.Text;
+            this.Personality.Trait2 = this.Trait2TextBox.Text;
+            this.Personality.Ideal = this.IdealTextBox.Text;
+            this.Personality.Bond = this.BondTextBox.Text;
+            this.Personality.Flaw = this.FlawTextBox.Text;
+            this.Personality.Background = this.BackgroundTextBox.Text;
+            this.Personality.Notes = this.NotesTextBox.Text;
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)

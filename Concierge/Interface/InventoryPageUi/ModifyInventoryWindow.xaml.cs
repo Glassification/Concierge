@@ -4,6 +4,7 @@
 
 namespace Concierge.Interface.InventoryPageUi
 {
+    using System.Collections.Generic;
     using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Input;
@@ -33,6 +34,8 @@ namespace Concierge.Interface.InventoryPageUi
 
         private Inventory SelectedItem { get; set; }
 
+        private List<Inventory> Items { get; set; }
+
         public void ShowEdit(Inventory inventory, bool equippedItem = false)
         {
             this.HeaderTextBlock.Text = "Edit Item";
@@ -45,9 +48,10 @@ namespace Concierge.Interface.InventoryPageUi
             this.ShowDialog();
         }
 
-        public void ShowAdd()
+        public void ShowAdd(List<Inventory> items)
         {
             this.HeaderTextBlock.Text = "Add Item";
+            this.Items = items;
             this.Editing = false;
             this.ClearFields();
             this.ApplyButton.Visibility = Visibility.Visible;
@@ -85,7 +89,7 @@ namespace Concierge.Interface.InventoryPageUi
 
         private Inventory ToInventory()
         {
-            var inventory = new Inventory()
+            return new Inventory()
             {
                 Name = this.NameComboBox.Text,
                 Amount = this.AmountUpDown.Value ?? 0,
@@ -93,8 +97,6 @@ namespace Concierge.Interface.InventoryPageUi
                 IsInBagOfHolding = this.BagOfHoldingCheckBox.IsChecked ?? false,
                 Note = this.NotesTextBox.Text,
             };
-
-            return inventory;
         }
 
         private void UpdateInventory(Inventory inventory)
@@ -143,7 +145,7 @@ namespace Concierge.Interface.InventoryPageUi
         {
             Program.Modify();
 
-            Program.CcsFile.Character.Inventories.Add(this.ToInventory());
+            this.Items.Add(this.ToInventory());
             this.ClearFields();
         }
 
@@ -157,7 +159,7 @@ namespace Concierge.Interface.InventoryPageUi
             }
             else
             {
-                Program.CcsFile.Character.Inventories.Add(this.ToInventory());
+                this.Items.Add(this.ToInventory());
             }
 
             this.Hide();

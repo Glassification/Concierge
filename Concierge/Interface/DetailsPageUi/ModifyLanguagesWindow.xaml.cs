@@ -5,6 +5,7 @@
 namespace Concierge.Interface.DetailsPageUi
 {
     using System;
+    using System.Collections.Generic;
     using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Input;
@@ -26,11 +27,14 @@ namespace Concierge.Interface.DetailsPageUi
 
         private bool Editing { get; set; }
 
-        private Guid SelectedLanguageId { get; set; }
+        private Language SelectedLanguage { get; set; }
 
-        public void ShowAdd()
+        private List<Language> Languages { get; set; }
+
+        public void ShowAdd(List<Language> languages)
         {
             this.HeaderTextBlock.Text = "Add Language";
+            this.Languages = languages;
             this.Editing = false;
             this.ApplyButton.Visibility = Visibility.Visible;
             this.ClearFields();
@@ -41,7 +45,7 @@ namespace Concierge.Interface.DetailsPageUi
         public void ShowEdit(Language language)
         {
             this.HeaderTextBlock.Text = "Edit Language";
-            this.SelectedLanguageId = language.Id;
+            this.SelectedLanguage = language;
             this.Editing = true;
             this.ApplyButton.Visibility = Visibility.Collapsed;
             this.FillFields(language);
@@ -72,14 +76,12 @@ namespace Concierge.Interface.DetailsPageUi
 
         private Language ToLanguage()
         {
-            Language language = new Language()
+            return new Language()
             {
                 Name = this.NameComboBox.Text,
                 Script = this.ScriptTextBox.Text,
                 Speakers = this.SpeakersTextBox.Text,
             };
-
-            return language;
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
@@ -103,11 +105,11 @@ namespace Concierge.Interface.DetailsPageUi
 
             if (this.Editing)
             {
-                this.UpdateLanguage(Program.CcsFile.Character.Details.GetLanguageById(this.SelectedLanguageId));
+                this.UpdateLanguage(this.SelectedLanguage);
             }
             else
             {
-                Program.CcsFile.Character.Details.Languages.Add(this.ToLanguage());
+                this.Languages.Add(this.ToLanguage());
             }
 
             this.Hide();
@@ -117,7 +119,7 @@ namespace Concierge.Interface.DetailsPageUi
         {
             Program.Modify();
 
-            Program.CcsFile.Character.Details.Languages.Add(this.ToLanguage());
+            this.Languages.Add(this.ToLanguage());
             this.ClearFields();
         }
 

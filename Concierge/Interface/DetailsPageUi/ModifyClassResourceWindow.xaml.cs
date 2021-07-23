@@ -4,6 +4,7 @@
 
 namespace Concierge.Interface.DetailsPageUi
 {
+    using System.Collections.Generic;
     using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Input;
@@ -27,8 +28,11 @@ namespace Concierge.Interface.DetailsPageUi
 
         private ClassResource ClassResource { get; set; }
 
-        public void ShowAdd()
+        private List<ClassResource> ClassResources { get; set; }
+
+        public void ShowAdd(List<ClassResource> classResources)
         {
+            this.ClassResources = classResources;
             this.Editing = false;
             this.HeaderTextBlock.Text = this.HeaderText;
             this.ClearFields();
@@ -78,7 +82,7 @@ namespace Concierge.Interface.DetailsPageUi
             }
             else
             {
-                Program.CcsFile.Character.ClassResources.Add(this.CreateClassResource());
+                this.ClassResources.Add(this.CreateClassResource());
             }
         }
 

@@ -43,5 +43,6 @@ namespace Concierge.Characters.Enums
         WarPick,
         Warhammer,
         Whip,
+        None,
     }
 }

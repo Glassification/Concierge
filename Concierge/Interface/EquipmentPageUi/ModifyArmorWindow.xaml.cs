@@ -27,9 +27,12 @@ namespace Concierge.Interface.EquipmentPageUi
             this.StealthComboBox.ItemsSource = Enum.GetValues(typeof(ArmorStealth)).Cast<ArmorStealth>();
         }
 
-        public void ShowEdit()
+        private Armor SelectedArmor { get; set; }
+
+        public void ShowEdit(Armor armor)
         {
-            this.FillArmorDetails(Program.CcsFile.Character.Armor);
+            this.SelectedArmor = armor;
+            this.FillArmorDetails(this.SelectedArmor);
             this.ShowDialog();
         }
 
@@ -83,14 +86,14 @@ namespace Concierge.Interface.EquipmentPageUi
         {
             Program.Modify();
 
-            this.ToArmor(Program.CcsFile.Character.Armor);
+            this.ToArmor(this.SelectedArmor);
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Modify();
 
-            this.ToArmor(Program.CcsFile.Character.Armor);
+            this.ToArmor(this.SelectedArmor);
             this.Hide();
         }
 

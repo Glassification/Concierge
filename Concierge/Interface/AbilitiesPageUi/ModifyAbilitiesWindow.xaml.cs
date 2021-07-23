@@ -5,6 +5,7 @@
 namespace Concierge.Interface.AbilitiesPageUi
 {
     using System;
+    using System.Collections.Generic;
     using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Input;
@@ -24,12 +25,14 @@ namespace Concierge.Interface.AbilitiesPageUi
 
         private bool Editing { get; set; }
 
-        private Guid SelectedAbilityId { get; set; }
+        private Ability SelectedAbility { get; set; }
+
+        private List<Ability> Abilities { get; set; }
 
         public void ShowEdit(Ability ability)
         {
             this.HeaderTextBlock.Text = "Edit Ability";
-            this.SelectedAbilityId = ability.Id;
+            this.SelectedAbility = ability;
             this.Editing = true;
             this.FillFields(ability);
             this.ApplyButton.Visibility = Visibility.Collapsed;
@@ -37,9 +40,10 @@ namespace Concierge.Interface.AbilitiesPageUi
             this.ShowDialog();
         }
 
-        public void ShowAdd()
+        public void ShowAdd(List<Ability> abilities)
         {
             this.HeaderTextBlock.Text = "Add Ability";
+            this.Abilities = abilities;
             this.Editing = false;
             this.ClearFields();
             this.ApplyButton.Visibility = Visibility.Visible;
@@ -69,7 +73,7 @@ namespace Concierge.Interface.AbilitiesPageUi
 
         private Ability ToAbility()
         {
-            var ability = new Ability()
+            return new Ability()
             {
                 Name = this.NameTextBox.Text,
                 Level = this.LevelTextBox.Text,
@@ -78,8 +82,6 @@ namespace Concierge.Interface.AbilitiesPageUi
                 Action = this.ActionTextBox.Text,
                 Note = this.NotesTextBox.Text,
             };
-
-            return ability;
         }
 
         private void UpdateAbility(Ability ability)
@@ -111,7 +113,7 @@ namespace Concierge.Interface.AbilitiesPageUi
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
-            Program.CcsFile.Character.Abilities.Add(this.ToAbility());
+            this.Abilities.Add(this.ToAbility());
             this.ClearFields();
         }
 
@@ -121,7 +123,7 @@ namespace Concierge.Interface.AbilitiesPageUi
 
             if (this.Editing)
             {
-                this.UpdateAbility(Program.CcsFile.Character.GetAbilityById(this.SelectedAbilityId));
+                this.UpdateAbility(this.SelectedAbility);
             }
             else
             {

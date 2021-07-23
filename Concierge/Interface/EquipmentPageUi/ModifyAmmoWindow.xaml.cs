@@ -5,6 +5,7 @@
 namespace Concierge.Interface.EquipmentPageUi
 {
     using System;
+    using System.Collections.Generic;
     using System.Linq;
     using System.Windows;
     using System.Windows.Controls;
@@ -29,11 +30,14 @@ namespace Concierge.Interface.EquipmentPageUi
 
         private bool Editing { get; set; }
 
-        private Guid SelectedAmmoId { get; set; }
+        private Ammunition SelectedAmmo { get; set; }
 
-        public void ShowAdd()
+        private List<Ammunition> Ammunitions { get; set; }
+
+        public void ShowAdd(List<Ammunition> ammunitions)
         {
             this.HeaderTextBlock.Text = "Add Ammunition";
+            this.Ammunitions = ammunitions;
             this.Editing = false;
             this.ApplyButton.Visibility = Visibility.Visible;
             this.ClearFields();
@@ -44,7 +48,7 @@ namespace Concierge.Interface.EquipmentPageUi
         public void ShowEdit(Ammunition ammunition)
         {
             this.HeaderTextBlock.Text = "Edit Ammunition";
-            this.SelectedAmmoId = ammunition.Id;
+            this.SelectedAmmo = ammunition;
             this.Editing = true;
             this.ApplyButton.Visibility = Visibility.Collapsed;
             this.FillFields(ammunition);
@@ -81,7 +85,7 @@ namespace Concierge.Interface.EquipmentPageUi
 
         private Ammunition ToAmmunition()
         {
-            var ammunition = new Ammunition()
+            return new Ammunition()
             {
                 Name = this.NameComboBox.Text,
                 Quantity = this.QuantityUpDown.Value ?? 0,
@@ -89,8 +93,6 @@ namespace Concierge.Interface.EquipmentPageUi
                 DamageType = (DamageTypes)Enum.Parse(typeof(DamageTypes), this.DamageTypeComboBox.Text),
                 Used = this.UsedUpDown.Value ?? 0,
             };
-
-            return ammunition;
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
@@ -114,11 +116,11 @@ namespace Concierge.Interface.EquipmentPageUi
 
             if (this.Editing)
             {
-                this.UpdateAmmunition(Program.CcsFile.Character.GetAmmunitionById(this.SelectedAmmoId));
+                this.UpdateAmmunition(this.SelectedAmmo);
             }
             else
             {
-                Program.CcsFile.Character.Ammunitions.Add(this.ToAmmunition());
+                this.Ammunitions.Add(this.ToAmmunition());
             }
 
             this.Hide();
@@ -128,7 +130,7 @@ namespace Concierge.Interface.EquipmentPageUi
         {
             Program.Modify();
 
-            Program.CcsFile.Character.Ammunitions.Add(this.ToAmmunition());
+            this.Ammunitions.Add(this.ToAmmunition());
             this.ClearFields();
         }
 

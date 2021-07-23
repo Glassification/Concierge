@@ -148,11 +148,11 @@ namespace Concierge.Interface.EquipmentPageUi
             switch (popupButons)
             {
                 case PopupButtons.AddWeapon:
-                    this.ModifyWeaponWindow.ShowAdd();
+                    this.ModifyWeaponWindow.ShowAdd(Program.CcsFile.Character.Weapons);
                     this.FillWeaponList();
                     break;
                 case PopupButtons.AddAmmo:
-                    this.ModifyAmmoWindow.ShowAdd();
+                    this.ModifyAmmoWindow.ShowAdd(Program.CcsFile.Character.Ammunitions);
                     this.FillAmmoList();
                     break;
             }
@@ -210,7 +210,7 @@ namespace Concierge.Interface.EquipmentPageUi
 
         private void EditDetailsButton_Click(object sender, RoutedEventArgs e)
         {
-            this.ModifyArmorWindow.ShowEdit();
+            this.ModifyArmorWindow.ShowEdit(Program.CcsFile.Character.Armor);
             this.Draw();
         }
 

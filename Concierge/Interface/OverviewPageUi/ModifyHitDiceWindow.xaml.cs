@@ -9,6 +9,8 @@ namespace Concierge.Interface.OverviewPageUi
     using System.Windows.Input;
     using System.Windows.Media;
 
+    using Concierge.Characters.Status;
+
     /// <summary>
     /// Interaction logic for ModifyHitDiceWindow.xaml.
     /// </summary>
@@ -19,37 +21,40 @@ namespace Concierge.Interface.OverviewPageUi
             this.InitializeComponent();
         }
 
-        public void ModifyHitDice()
-        {
-            this.SetHitDice();
+        private HitDice HitDice { get; set; }
 
+        public void ModifyHitDice(HitDice hitDice)
+        {
+            this.HitDice = hitDice;
+
+            this.SetHitDice();
             this.ShowDialog();
         }
 
         private void SetHitDice()
         {
-            this.TotalD6UpDown.Value = Program.CcsFile.Character.Vitality.HitDice.TotalD6;
-            this.TotalD8UpDown.Value = Program.CcsFile.Character.Vitality.HitDice.TotalD8;
-            this.TotalD10UpDown.Value = Program.CcsFile.Character.Vitality.HitDice.TotalD10;
-            this.TotalD12UpDown.Value = Program.CcsFile.Character.Vitality.HitDice.TotalD12;
+            this.TotalD6UpDown.Value = this.HitDice.TotalD6;
+            this.TotalD8UpDown.Value = this.HitDice.TotalD8;
+            this.TotalD10UpDown.Value = this.HitDice.TotalD10;
+            this.TotalD12UpDown.Value = this.HitDice.TotalD12;
 
-            this.UsedD6UpDown.Value = Program.CcsFile.Character.Vitality.HitDice.SpentD6;
-            this.UsedD8UpDown.Value = Program.CcsFile.Character.Vitality.HitDice.SpentD8;
-            this.UsedD10UpDown.Value = Program.CcsFile.Character.Vitality.HitDice.SpentD10;
-            this.UsedD12UpDown.Value = Program.CcsFile.Character.Vitality.HitDice.SpentD12;
+            this.UsedD6UpDown.Value = this.HitDice.SpentD6;
+            this.UsedD8UpDown.Value = this.HitDice.SpentD8;
+            this.UsedD10UpDown.Value = this.HitDice.SpentD10;
+            this.UsedD12UpDown.Value = this.HitDice.SpentD12;
         }
 
         private void GetHitDice()
         {
-            Program.CcsFile.Character.Vitality.HitDice.TotalD6 = this.TotalD6UpDown.Value ?? 0;
-            Program.CcsFile.Character.Vitality.HitDice.TotalD8 = this.TotalD8UpDown.Value ?? 0;
-            Program.CcsFile.Character.Vitality.HitDice.TotalD10 = this.TotalD10UpDown.Value ?? 0;
-            Program.CcsFile.Character.Vitality.HitDice.TotalD12 = this.TotalD12UpDown.Value ?? 0;
+            this.HitDice.TotalD6 = this.TotalD6UpDown.Value ?? 0;
+            this.HitDice.TotalD8 = this.TotalD8UpDown.Value ?? 0;
+            this.HitDice.TotalD10 = this.TotalD10UpDown.Value ?? 0;
+            this.HitDice.TotalD12 = this.TotalD12UpDown.Value ?? 0;
 
-            Program.CcsFile.Character.Vitality.HitDice.SpentD6 = this.UsedD6UpDown.Value ?? 0;
-            Program.CcsFile.Character.Vitality.HitDice.SpentD8 = this.UsedD8UpDown.Value ?? 0;
-            Program.CcsFile.Character.Vitality.HitDice.SpentD10 = this.UsedD10UpDown.Value ?? 0;
-            Program.CcsFile.Character.Vitality.HitDice.SpentD12 = this.UsedD12UpDown.Value ?? 0;
+            this.HitDice.SpentD6 = this.UsedD6UpDown.Value ?? 0;
+            this.HitDice.SpentD8 = this.UsedD8UpDown.Value ?? 0;
+            this.HitDice.SpentD10 = this.UsedD10UpDown.Value ?? 0;
+            this.HitDice.SpentD12 = this.UsedD12UpDown.Value ?? 0;
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)

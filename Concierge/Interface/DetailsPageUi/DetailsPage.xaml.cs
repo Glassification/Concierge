@@ -296,7 +296,7 @@ namespace Concierge.Interface.DetailsPageUi
 
         private void EditConditionsButton_Click(object sender, RoutedEventArgs e)
         {
-            this.mondifyConditionsWindow.ShowEdit();
+            this.mondifyConditionsWindow.ShowEdit(Program.CcsFile.Character.Vitality.Conditions);
             this.DrawConditions();
         }
 
@@ -320,13 +320,13 @@ namespace Concierge.Interface.DetailsPageUi
 
         private void AddLanguagesButton_Click(object sender, RoutedEventArgs e)
         {
-            this.modifyLanguagesWindow.ShowAdd();
+            this.modifyLanguagesWindow.ShowAdd(Program.CcsFile.Character.Details.Languages);
             this.DrawLanguages();
         }
 
         private void AddResourcesButton_Click(object sender, RoutedEventArgs e)
         {
-            this.modifyClassResourceWindow.ShowAdd();
+            this.modifyClassResourceWindow.ShowAdd(Program.CcsFile.Character.ClassResources);
             this.DrawResources();
         }
 
@@ -369,13 +369,13 @@ namespace Concierge.Interface.DetailsPageUi
 
         private void EditAppearanceButton_Click(object sender, RoutedEventArgs e)
         {
-            this.modifyAppearanceWindow.ShowEdit();
+            this.modifyAppearanceWindow.ShowEdit(Program.CcsFile.Character.Appearance);
             this.DrawAppearance();
         }
 
         private void EditPersonalityButton_Click(object sender, RoutedEventArgs e)
         {
-            this.modifyPersonalityWindow.ShowEdit();
+            this.modifyPersonalityWindow.ShowEdit(Program.CcsFile.Character.Personality);
             this.DrawPersonality();
         }
 

@@ -4,6 +4,7 @@
 
 namespace Concierge.Interface.OverviewPageUi
 {
+    using Concierge.Characters.Status;
     using System;
     using System.Windows;
     using System.Windows.Controls;
@@ -22,7 +23,7 @@ namespace Concierge.Interface.OverviewPageUi
 
         private bool IsOk { get; set; }
 
-        public void AddHP()
+        public void AddHP(Vitality vitality)
         {
             this.HeaderTextBlock.Text = "Add HP";
 
@@ -30,12 +31,12 @@ namespace Concierge.Interface.OverviewPageUi
 
             if (this.IsOk)
             {
-                Program.CcsFile.Character.Vitality.BaseHealth += this.HpUpDown.Value ?? 0;
-                Program.CcsFile.Character.Vitality.BaseHealth = Math.Min(Program.CcsFile.Character.Vitality.BaseHealth, Program.CcsFile.Character.Vitality.MaxHealth);
+                vitality.BaseHealth += this.HpUpDown.Value ?? 0;
+                vitality.BaseHealth = Math.Min(vitality.BaseHealth, vitality.MaxHealth);
             }
         }
 
-        public void SubtractHP()
+        public void SubtractHP(Vitality vitality)
         {
             this.HeaderTextBlock.Text = "Subract HP";
 
@@ -43,8 +44,8 @@ namespace Concierge.Interface.OverviewPageUi
 
             if (this.IsOk)
             {
-                Program.CcsFile.Character.Vitality.BaseHealth -= this.HpUpDown.Value ?? 0;
-                Program.CcsFile.Character.Vitality.BaseHealth = Math.Max(Program.CcsFile.Character.Vitality.BaseHealth, 0);
+                vitality.BaseHealth -= this.HpUpDown.Value ?? 0;
+                vitality.BaseHealth = Math.Max(vitality.BaseHealth, 0);
             }
         }
 

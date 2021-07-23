@@ -11,6 +11,7 @@ namespace Concierge.Interface
     using System.Windows.Media;
 
     using Concierge.Interface.AbilitiesPageUi;
+    using Concierge.Interface.CompanionPageUi;
     using Concierge.Interface.DetailsPageUi;
     using Concierge.Interface.Enums;
     using Concierge.Interface.EquipedItemsPageUi;
@@ -46,6 +47,7 @@ namespace Concierge.Interface
         private readonly SpellcastingPage SpellcastingPage = new SpellcastingPage();
         private readonly ToolsPage ToolsPage = new ToolsPage();
         private readonly EquipedItemsPage EquipedItemsPage = new EquipedItemsPage();
+        private readonly CompanionPage companionPage = new CompanionPage();
 
         public MainWindow()
         {
@@ -182,6 +184,7 @@ namespace Concierge.Interface
             this.SpellcastingPage.Draw();
             this.ToolsPage.Draw();
             this.EquipedItemsPage.Draw();
+            this.companionPage.Draw();
         }
 
         public void LongRest()
@@ -211,6 +214,7 @@ namespace Concierge.Interface
             this.ToolsPage.Visibility = Visibility.Collapsed;
             this.OverviewPage.Visibility = Visibility.Collapsed;
             this.EquipedItemsPage.Visibility = Visibility.Collapsed;
+            this.companionPage.Visibility = Visibility.Collapsed;
         }
 
         private void MainWindow_ContentRendered(object sender, EventArgs e)
@@ -286,6 +290,9 @@ namespace Concierge.Interface
                     break;
                 case Key.D9:
                     this.MoveSelection(8);
+                    break;
+                case Key.D0:
+                    this.MoveSelection(9);
                     break;
             }
         }
@@ -428,6 +435,16 @@ namespace Concierge.Interface
             this.SpellcastingPage.Visibility = Visibility.Visible;
             this.FrameContent.Content = this.SpellcastingPage;
             this.SpellcastingPage.Draw();
+        }
+
+        private void ItemCompanion_Selected(object sender, RoutedEventArgs e)
+        {
+            Program.Logger.Info($"Navigate to Companion page.");
+
+            this.CollapseAll();
+            this.companionPage.Visibility = Visibility.Visible;
+            this.FrameContent.Content = this.companionPage;
+            this.companionPage.Draw();
         }
 
         private void ItemTools_Selected(object sender, RoutedEventArgs e)

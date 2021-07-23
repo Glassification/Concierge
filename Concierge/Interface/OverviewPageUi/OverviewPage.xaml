@@ -2264,12 +2264,13 @@
                                 </Grid.RowDefinitions>
 
                                 <Grid Grid.Row="0" Background="#ffb87333">
-                                    <TextBlock Text="CP"
-                                           Foreground="Black"
-                                           FontSize="28"
-                                               FontWeight="Bold"
-                                           HorizontalAlignment="Center"
-                                           VerticalAlignment="Center"/>
+                                    <TextBlock 
+                                        Text="Copper"
+                                        Foreground="Black"
+                                        FontWeight="Bold"    
+                                        FontSize="20"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"/>
                                 </Grid>
 
                                 <Grid Grid.Row="1" Background="#FF3e3e42" Margin="0, 0, 0, 3">
@@ -2289,12 +2290,13 @@
                                 </Grid.RowDefinitions>
 
                                 <Grid Grid.Row="0" Background="Silver">
-                                    <TextBlock Text="SP"
-                                           Foreground="Black"
-                                           FontSize="28"
-                                            FontWeight="Bold"
-                                           HorizontalAlignment="Center"
-                                           VerticalAlignment="Center"/>
+                                    <TextBlock 
+                                        Text="Silver"
+                                        Foreground="Black"
+                                        FontSize="20"
+                                        FontWeight="Bold"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"/>
                                 </Grid>
 
                                 <Grid Grid.Row="1" Background="#FF3e3e42" Margin="0, 0, 0, 3">
@@ -2314,12 +2316,13 @@
                                 </Grid.RowDefinitions>
 
                                 <Grid Grid.Row="0" Background="#ff50c878">
-                                    <TextBlock Text="EP"
-                                           Foreground="Black"
-                                           FontSize="28"
-                                            FontWeight="Bold"
-                                           HorizontalAlignment="Center"
-                                           VerticalAlignment="Center"/>
+                                    <TextBlock 
+                                        Text="Electrum"
+                                        Foreground="Black"
+                                        FontSize="20"
+                                        FontWeight="Bold"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"/>
                                 </Grid>
 
                                 <Grid Grid.Row="1" Background="#FF3e3e42" Margin="0, 0, 0, 3">
@@ -2339,12 +2342,13 @@
                                 </Grid.RowDefinitions>
 
                                 <Grid Grid.Row="0" Background="#ffCFB53B">
-                                    <TextBlock Text="GP"
-                                           Foreground="Black"
-                                           FontSize="28"
-                                            FontWeight="Bold"
-                                           HorizontalAlignment="Center"
-                                           VerticalAlignment="Center"/>
+                                    <TextBlock 
+                                        Text="Gold"
+                                        Foreground="Black"
+                                        FontSize="20"
+                                        FontWeight="Bold"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"/>
                                 </Grid>
 
                                 <Grid Grid.Row="1" Background="#FF3e3e42" Margin="0, 0, 0, 3">
@@ -2364,12 +2368,13 @@
                                 </Grid.RowDefinitions>
 
                                 <Grid Grid.Row="0" Background="#ffe5e4e2">
-                                    <TextBlock Text="PP"
-                                           Foreground="Black"
-                                           FontSize="28"
-                                            FontWeight="Bold"
-                                           HorizontalAlignment="Center"
-                                           VerticalAlignment="Center"/>
+                                    <TextBlock 
+                                        Text="Platinum"
+                                        Foreground="Black"
+                                        FontSize="20"
+                                        FontWeight="Bold"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"/>
                                 </Grid>
 
                                 <Grid Grid.Row="1" Background="#FF3e3e42" Margin="0, 0, 0, 3">

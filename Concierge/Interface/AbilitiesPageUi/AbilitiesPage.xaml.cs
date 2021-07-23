@@ -86,7 +86,7 @@ namespace Concierge.Interface.AbilitiesPageUi
 
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
-            this.ModifyAbilitiesWindow.ShowAdd();
+            this.ModifyAbilitiesWindow.ShowAdd(Program.CcsFile.Character.Abilities);
             this.FillList();
         }
 

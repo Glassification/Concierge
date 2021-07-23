@@ -4,52 +4,37 @@
 
 namespace Concierge.Characters
 {
+    using System.Collections.Generic;
+
+    using Concierge.Characters.Characteristics;
+    using Concierge.Characters.Enums;
+    using Concierge.Characters.Items;
+    using Concierge.Characters.Status;
+
     public class Companion
     {
         public Companion()
         {
+            this.Vitality = new Vitality();
+            this.Attributes = new Attributes();
+            this.Attacks = new List<Weapon>();
+            this.Name = string.Empty;
         }
 
         public string Name { get; set; }
 
-        public string ArmorClass { get; set; }
+        public int ArmorClass { get; set; }
 
-        public string HitDice { get; set; }
+        public Vitality Vitality { get; set; }
 
-        public string Health { get; set; }
+        public int Movement { get; set; }
 
-        public string CurrentHealth { get; set; }
+        public Attributes Attributes { get; set; }
 
-        public string Speed { get; set; }
+        public int Perception { get; set; }
 
-        public int Strength { get; set; }
+        public VisionTypes Vision { get; set; }
 
-        public int Dexterity { get; set; }
-
-        public int Constitution { get; set; }
-
-        public int Intelligence { get; set; }
-
-        public int Wisdom { get; set; }
-
-        public int Charisma { get; set; }
-
-        public string Perception { get; set; }
-
-        public string Senses { get; set; }
-
-        public string Attack { get; set; }
-
-        public string Type { get; set; }
-
-        public string AttackBonus { get; set; }
-
-        public string Damage { get; set; }
-
-        public string DamageType { get; set; }
-
-        public string Reach { get; set; }
-
-        public string Notes { get; set; }
+        public List<Weapon> Attacks { get; set; }
     }
 }

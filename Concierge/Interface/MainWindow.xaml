@@ -258,6 +258,12 @@
                                 <TextBlock Text="Spellcasting" VerticalAlignment="Center" Margin="20 10"/>
                             </StackPanel>
                         </ListViewItem>
+                        <ListViewItem x:Name="ItemCompanion" Height="60" Selected="ItemCompanion_Selected">
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="PeopleAddOutline" Height="25" Width="25" Margin="10"/>
+                                <TextBlock Text="Companion" VerticalAlignment="Center" Margin="20 10"/>
+                            </StackPanel>
+                        </ListViewItem>
                         <ListViewItem x:Name="ItemTools" Height="60" Selected="ItemTools_Selected">
                             <StackPanel Orientation="Horizontal">
                                 <materialDesign:PackIcon Kind="ToolboxOutline" Height="25" Width="25" Margin="10"/>

@@ -9,6 +9,8 @@ namespace Concierge.Interface.DetailsPageUi
     using System.Windows.Input;
     using System.Windows.Media;
 
+    using Concierge.Characters.Characteristics;
+
     /// <summary>
     /// Interaction logic for ModifyAppearanceWindow.xaml.
     /// </summary>
@@ -19,34 +21,38 @@ namespace Concierge.Interface.DetailsPageUi
             this.InitializeComponent();
         }
 
-        public void ShowEdit()
+        private Appearance Appearance { get; set; }
+
+        public void ShowEdit(Appearance appearance)
         {
+            this.Appearance = appearance;
+
             this.FillFields();
             this.ShowDialog();
         }
 
         private void FillFields()
         {
-            this.GenderTextBox.Text = Program.CcsFile.Character.Appearance.Gender;
-            this.AgeTextBox.Text = Program.CcsFile.Character.Appearance.Age;
-            this.HeightTextBox.Text = Program.CcsFile.Character.Appearance.Height;
-            this.WeightTextBox.Text = Program.CcsFile.Character.Appearance.Weight;
-            this.SkinColourTextBox.Text = Program.CcsFile.Character.Appearance.SkinColour;
-            this.EyeColourTextBox.Text = Program.CcsFile.Character.Appearance.EyeColour;
-            this.HairColourTextBox.Text = Program.CcsFile.Character.Appearance.HairColour;
-            this.DistinguishingMarksTextBox.Text = Program.CcsFile.Character.Appearance.DistinguishingMarks;
+            this.GenderTextBox.Text = this.Appearance.Gender;
+            this.AgeTextBox.Text = this.Appearance.Age;
+            this.HeightTextBox.Text = this.Appearance.Height;
+            this.WeightTextBox.Text = this.Appearance.Weight;
+            this.SkinColourTextBox.Text = this.Appearance.SkinColour;
+            this.EyeColourTextBox.Text = this.Appearance.EyeColour;
+            this.HairColourTextBox.Text = this.Appearance.HairColour;
+            this.DistinguishingMarksTextBox.Text = this.Appearance.DistinguishingMarks;
         }
 
         private void UpdateAppearance()
         {
-            Program.CcsFile.Character.Appearance.Gender = this.GenderTextBox.Text;
-            Program.CcsFile.Character.Appearance.Age = this.AgeTextBox.Text;
-            Program.CcsFile.Character.Appearance.Height = this.HeightTextBox.Text;
-            Program.CcsFile.Character.Appearance.Weight = this.WeightTextBox.Text;
-            Program.CcsFile.Character.Appearance.SkinColour = this.SkinColourTextBox.Text;
-            Program.CcsFile.Character.Appearance.EyeColour = this.EyeColourTextBox.Text;
-            Program.CcsFile.Character.Appearance.HairColour = this.HairColourTextBox.Text;
-            Program.CcsFile.Character.Appearance.DistinguishingMarks = this.DistinguishingMarksTextBox.Text;
+            this.Appearance.Gender = this.GenderTextBox.Text;
+            this.Appearance.Age = this.AgeTextBox.Text;
+            this.Appearance.Height = this.HeightTextBox.Text;
+            this.Appearance.Weight = this.WeightTextBox.Text;
+            this.Appearance.SkinColour = this.SkinColourTextBox.Text;
+            this.Appearance.EyeColour = this.EyeColourTextBox.Text;
+            this.Appearance.HairColour = this.HairColourTextBox.Text;
+            this.Appearance.DistinguishingMarks = this.DistinguishingMarksTextBox.Text;
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
