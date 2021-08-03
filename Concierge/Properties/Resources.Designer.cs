@@ -61,18 +61,12 @@ namespace Concierge.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;
-        ///&lt;Ammunitions&gt;
-        ///  &lt;Ammunition name=&quot;Arrows&quot; qty=&quot;20&quot; /&gt;
-        ///  &lt;Ammunition name=&quot;Blowgun needles&quot; qty=&quot;50&quot; /&gt;
-        ///  &lt;Ammunition name=&quot;Crossbow bolts&quot; qty=&quot;20&quot; /&gt;
-        ///  &lt;Ammunition name=&quot;Shuriken&quot; qty=&quot;10&quot; /&gt;
-        ///  &lt;Ammunition name=&quot;Sling bullets&quot; qty=&quot;20&quot; /&gt;
-        ///&lt;/Ammunitions&gt;.
+        ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static string AmmoList {
+        internal static byte[] Ammunition {
             get {
-                return ResourceManager.GetString("AmmoList", resourceCulture);
+                object obj = ResourceManager.GetObject("Ammunition", resourceCulture);
+                return ((byte[])(obj));
             }
         }
         
@@ -107,58 +101,42 @@ namespace Concierge.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;
-        ///&lt;Items&gt;
-        ///  &lt;Item name=&quot;Abacus&quot; weight=&quot;2&quot; notes=&quot;A standard tool used to make calculations.&quot; /&gt;
-        ///  &lt;Item name=&quot;Acid (vial)&quot; weight=&quot;1&quot; notes=&quot;As an action, you can splash the contents of this vial onto a creature within 5 feet of you or throw the vial up to 20 feet, shattering it on impact. In either case, make a ranged attack against a creature or object, treating the acid as an improvised weapon. On a hit, the target takes 2d6 acid damage.&quot; /&gt;
-        ///  &lt;Item name=&quot;Alchem [rest of string was truncated]&quot;;.
+        ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static string ItemList {
+        internal static byte[] Inventory {
             get {
-                return ResourceManager.GetString("ItemList", resourceCulture);
+                object obj = ResourceManager.GetObject("Inventory", resourceCulture);
+                return ((byte[])(obj));
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;
-        ///&lt;Languages&gt;
-        ///  &lt;Language Name=&quot;Abyssal&quot; Script=&quot;Infernal&quot; Speakers=&quot;Demons, chaotic evil outsiders&quot;/&gt;
-        ///  &lt;Language Name=&quot;Aquan&quot; Script=&quot;Elven&quot; Speakers=&quot;Water-based creatures&quot;/&gt;
-        ///  &lt;Language Name=&quot;Auran&quot; Script=&quot;Draconic&quot; Speakers=&quot;Air-based creatures&quot;/&gt;
-        ///  &lt;Language Name=&quot;Celestial&quot; Script=&quot;Celestial&quot; Speakers=&quot;Celestials (angels, devas)&quot;/&gt;
-        ///  &lt;Language Name=&quot;Common&quot; Script=&quot;Common&quot; Speakers=&quot;Humans, halflings, half-elves, half-orcs&quot;/&gt;
-        ///  &lt;Language Name=&quot;Deep Speech [rest of string was truncated]&quot;;.
+        ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static string LanguageList {
+        internal static byte[] Language {
             get {
-                return ResourceManager.GetString("LanguageList", resourceCulture);
+                object obj = ResourceManager.GetObject("Language", resourceCulture);
+                return ((byte[])(obj));
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
-        ///&lt;Spells&gt;
-        ///  &lt;Spell name=&quot;Acid Splash&quot; level=&quot;0&quot; page=&quot;211&quot; school=&quot;Conjuration&quot; ritual=&quot;No&quot; comp=&quot;V, S&quot; concen=&quot;No&quot; range=&quot;60 ft.&quot; duration=&quot;Instantaneous&quot; area=&quot;1 or 2 adjacent targets&quot; save=&quot;DEX (Fail)&quot; damage=&quot;1d6 Acid&quot; description=&quot;DAM: Add extra 1d6 at 5th level, 11th level, and 17th level.&quot; prepared=&quot;No&quot; /&gt;
-        ///  &lt;Spell name=&quot;Aid&quot; level=&quot;2&quot; page=&quot;211&quot; school=&quot;Abjuration&quot; ritual=&quot;No&quot; comp=&quot;V, S, M (white cloth strip)&quot; concen=&quot;No&quot; range=&quot;30 ft.&quot; duration=&quot;8 hours&quot; ar [rest of string was truncated]&quot;;.
+        ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static string SpellList {
+        internal static byte[] Spell {
             get {
-                return ResourceManager.GetString("SpellList", resourceCulture);
+                object obj = ResourceManager.GetObject("Spell", resourceCulture);
+                return ((byte[])(obj));
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;
-        ///&lt;Weapons&gt;
-        ///  &lt;Weapon name=&quot;Battleaxe&quot; damage=&quot;1d8&quot; type=&quot;Slashing&quot; weight=&quot;4&quot; range=&quot;5 / 5&quot; notes=&quot;Versatile(1d10)&quot;/&gt;
-        ///  &lt;Weapon name=&quot;Blowgun&quot; damage=&quot;1&quot; type=&quot;Piercing&quot; weight=&quot;1&quot; range=&quot;25 / 100&quot; notes=&quot;Ammunition, loading&quot;/&gt;
-        ///  &lt;Weapon name=&quot;Club&quot; damage=&quot;1d4&quot; type=&quot;Bludgeoning&quot; weight=&quot;2&quot; range=&quot;5 / 5&quot; notes=&quot;Light&quot;/&gt;
-        ///  &lt;Weapon name=&quot;Dagger&quot; damage=&quot;1d4&quot; type=&quot;Piercing&quot; weight=&quot;1&quot; range=&quot;20 / 60&quot; notes=&quot;Finesse, light, thrown&quot;/&gt;
-        ///  &lt;Weapon name=&quot;Dart&quot; damage=&quot;1 [rest of string was truncated]&quot;;.
+        ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static string WeaponList {
+        internal static byte[] Weapon {
             get {
-                return ResourceManager.GetString("WeaponList", resourceCulture);
+                object obj = ResourceManager.GetObject("Weapon", resourceCulture);
+                return ((byte[])(obj));
             }
         }
     }

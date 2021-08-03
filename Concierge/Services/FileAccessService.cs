@@ -38,14 +38,7 @@ namespace Concierge.Services
 
         public CcsFile Open()
         {
-            if (this.openFileDialog.ShowDialog() ?? false)
-            {
-                return CharacterLoader.LoadCharacterSheetJson(this.openFileDialog.FileName);
-            }
-            else
-            {
-                return null;
-            }
+            return this.openFileDialog.ShowDialog() ?? false ? CharacterLoader.LoadCharacterSheetJson(this.openFileDialog.FileName) : null;
         }
 
         public void Save(CcsFile ccsFile, bool saveAs)

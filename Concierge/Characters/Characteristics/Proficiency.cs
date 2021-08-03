@@ -2,7 +2,7 @@
 // Copyright (c) Thomas Beckett. All rights reserved.
 // </copyright>
 
-namespace Concierge.Characters
+namespace Concierge.Characters.Characteristics
 {
     using System;
     using System.Collections.Generic;

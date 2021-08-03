@@ -1,0 +1,134 @@
+[
+  {
+    "Name": "Abyssal",
+    "Script": "Infernal",
+    "Speakers": "Demons, chaotic evil outsiders",
+    "Id": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "Name": "Aquan",
+    "Script": "Elven",
+    "Speakers": "Water-based creatures",
+    "Id": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "Name": "Auran",
+    "Script": "Draconic",
+    "Speakers": "Air-based creatures",
+    "Id": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "Name": "Celestial",
+    "Script": "Celestial",
+    "Speakers": "Celestials (angels, devas)",
+    "Id": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "Name": "Common",
+    "Script": "Common",
+    "Speakers": "Humans, halflings, half-elves, half-orcs",
+    "Id": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "Name": "Deep Speech",
+    "Script": "-",
+    "Speakers": "Mind flayers, beholders",
+    "Id": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "Name": "Draconic",
+    "Script": "Draconic",
+    "Speakers": "Kobolds, troglodytes, lizardfolk, dragons, dragonborn",
+    "Id": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "Name": "Druidic",
+    "Script": "Druidic",
+    "Speakers": "Druids (only)",
+    "Id": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "Name": "Dwarvish",
+    "Script": "Dwarvish",
+    "Speakers": "Dwarves",
+    "Id": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "Name": "Elvish",
+    "Script": "Elvish",
+    "Speakers": "Elves",
+    "Id": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "Name": "Giant",
+    "Script": "Dwarvish",
+    "Speakers": "Ogres, giants",
+    "Id": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "Name": "Gnomish",
+    "Script": "Dwarvish",
+    "Speakers": "Gnomes",
+    "Id": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "Name": "Goblin",
+    "Script": "Dwarvish",
+    "Speakers": "Goblinoids, hobgoblins, bugbears",
+    "Id": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "Name": "Gnoll",
+    "Script": "Common",
+    "Speakers": "Gnolls",
+    "Id": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "Name": "Halfling",
+    "Script": "Common",
+    "Speakers": "Halflings",
+    "Id": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "Name": "Ignan",
+    "Script": "Draconic",
+    "Speakers": "Fire-based creatures",
+    "Id": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "Name": "Infernal",
+    "Script": "Infernal",
+    "Speakers": "Devils, Tieflings",
+    "Id": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "Name": "Orc",
+    "Script": "Dwarvish",
+    "Speakers": "Orcs",
+    "Id": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "Name": "Primordial",
+    "Script": "Dwarvish",
+    "Speakers": "Elementals",
+    "Id": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "Name": "Sylvan",
+    "Script": "Elvish",
+    "Speakers": "Fey creatures (dryads, brownies, leprechauns)",
+    "Id": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "Name": "Terran",
+    "Script": "Dwarvish",
+    "Speakers": "Xorns and other earth-based creatures",
+    "Id": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "Name": "Undercommon",
+    "Script": "Elvish",
+    "Speakers": "Drow, Underdark traders",
+    "Id": "00000000-0000-0000-0000-000000000000"
+  }
+]

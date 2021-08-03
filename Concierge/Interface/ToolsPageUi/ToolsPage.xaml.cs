@@ -22,7 +22,7 @@ namespace Concierge.Interface.ToolsPageUi
             this.InitializeComponent();
 
             this.Players = new List<Player>();
-            this.DiceHistory = new List<Die>();
+            this.DiceHistory = new List<DiceRoll>();
             this.Random = new Random();
 
             this.SetDefaultDivideValues();
@@ -31,7 +31,7 @@ namespace Concierge.Interface.ToolsPageUi
 
         private List<Player> Players { get; set; }
 
-        private List<Die> DiceHistory { get; }
+        private List<DiceRoll> DiceHistory { get; }
 
         private Random Random { get; }
 
@@ -216,7 +216,7 @@ namespace Concierge.Interface.ToolsPageUi
 
             total = Math.Max(1, total);
 
-            this.DiceHistory.Add(new Die($"({diceNumber}d{diceSides}) {(isPlus ? "+" : "-")}{modified}", rolledDice, total));
+            this.DiceHistory.Add(new DiceRoll($"({diceNumber}d{diceSides}) {(isPlus ? "+" : "-")}{modified}", rolledDice, total));
             this.DrawDiceHistory();
 
             return total.ToString();

@@ -1,0 +1,42 @@
+[
+  {
+    "Name": "Arrows",
+    "Quantity": 20,
+    "Bonus": "",
+    "DamageType": 0,
+    "Used": 0,
+    "Id": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "Name": "Blowgun needles",
+    "Quantity": 50,
+    "Bonus": "",
+    "DamageType": 0,
+    "Used": 0,
+    "Id": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "Name": "Crossbow bolts",
+    "Quantity": 20,
+    "Bonus": "",
+    "DamageType": 0,
+    "Used": 0,
+    "Id": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "Name": "Shuriken",
+    "Quantity": 10,
+    "Bonus": "",
+    "DamageType": 0,
+    "Used": 0,
+    "Id": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "Name": "Sling bullets",
+    "Quantity": 20,
+    "Bonus": "",
+    "DamageType": 0,
+    "Used": 0,
+    "Id": "00000000-0000-0000-0000-000000000000"
+  }
+]

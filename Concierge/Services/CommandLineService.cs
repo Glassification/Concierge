@@ -4,8 +4,6 @@
 
 namespace Concierge.Services
 {
-    using System.IO;
-
     using Concierge.Persistence;
 
     public class CommandLineService

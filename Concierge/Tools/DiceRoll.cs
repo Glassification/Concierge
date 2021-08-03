@@ -1,4 +1,4 @@
-﻿// <copyright file="Die.cs" company="Thomas Beckett">
+﻿// <copyright file="DiceRoll.cs" company="Thomas Beckett">
 // Copyright (c) Thomas Beckett. All rights reserved.
 // </copyright>
 
@@ -6,18 +6,16 @@ namespace Concierge.Tools
 {
     using System.Collections.Generic;
 
-    public class Die
+    public class DiceRoll
     {
-        public Die(string roll, int[] list, int total)
+        public DiceRoll(string roll, int[] list, int total)
         {
             this.Roll = roll;
             this.DiceList = new List<int>(list);
             this.Total = total;
         }
 
-        public string Roll { get; set; }
-
-        public List<int> DiceList { get; set; }
+        public string Roll { get; private set; }
 
         public string Dice
         {
@@ -30,15 +28,12 @@ namespace Concierge.Tools
                     str += die + ", ";
                 }
 
-                if (str.Length >= 2)
-                {
-                    str = str.Remove(str.Length - 2, 2);
-                }
-
-                return str;
+                return str.Trim(new char[] { ',', ' ' });
             }
         }
 
-        public int Total { get; set; }
+        public int Total { get; private set; }
+
+        private List<int> DiceList { get; set; }
     }
 }

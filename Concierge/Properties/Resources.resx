@@ -118,20 +118,8 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="AmmoList" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Xml\AmmoList.xml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
-  </data>
   <data name="dndnextlogo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Icons\dndnextlogo.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ItemList" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Xml\ItemList.xml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
-  </data>
-  <data name="SpellList" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Xml\SpellList.xml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
-  </data>
-  <data name="WeaponList" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Xml\WeaponList.xml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="armor_class_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Images\armor_class_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -139,7 +127,19 @@
   <data name="Caleston" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Files\Caleston.ccs;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="LanguageList" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Xml\LanguageList.xml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  <data name="Ammunition" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Json\Ammunition.json;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Inventory" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Json\Inventory.json;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Language" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Json\Language.json;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Spell" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Json\Spell.json;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Weapon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Json\Weapon.json;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>
