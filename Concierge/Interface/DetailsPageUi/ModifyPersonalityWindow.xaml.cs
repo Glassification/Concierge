@@ -4,6 +4,7 @@
 
 namespace Concierge.Interface.DetailsPageUi
 {
+    using System;
     using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Input;
@@ -20,6 +21,10 @@ namespace Concierge.Interface.DetailsPageUi
         {
             this.InitializeComponent();
         }
+
+        public delegate void ApplyChangesEventHandler(object sender, EventArgs e);
+
+        public event ApplyChangesEventHandler ApplyChanges;
 
         private Personality Personality { get; set; }
 
@@ -80,6 +85,8 @@ namespace Concierge.Interface.DetailsPageUi
             Program.Modify();
 
             this.UpdatePersonality();
+
+            this.ApplyChanges?.Invoke(this, new EventArgs());
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)

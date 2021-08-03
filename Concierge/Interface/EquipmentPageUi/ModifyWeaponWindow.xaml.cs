@@ -30,6 +30,10 @@ namespace Concierge.Interface.EquipmentPageUi
             this.DamageTypeComboBox.ItemsSource = Enum.GetValues(typeof(DamageTypes)).Cast<DamageTypes>();
         }
 
+        public delegate void ApplyChangesEventHandler(object sender, EventArgs e);
+
+        public event ApplyChangesEventHandler ApplyChanges;
+
         private bool Editing { get; set; }
 
         private Weapon SelectedWeapon { get; set; }
@@ -147,6 +151,8 @@ namespace Concierge.Interface.EquipmentPageUi
 
             this.Weapons.Add(this.ToWeapon());
             this.ClearFields();
+
+            this.ApplyChanges?.Invoke(this, new EventArgs());
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)

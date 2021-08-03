@@ -4,6 +4,7 @@
 
 namespace Concierge.Interface.InventoryPageUi
 {
+    using System;
     using System.Windows;
     using System.Windows.Controls;
 
@@ -16,30 +17,39 @@ namespace Concierge.Interface.InventoryPageUi
     [System.Runtime.InteropServices.Guid("09356E68-3748-4686-8507-80745407DAF7")]
     public partial class InventoryPage : Page
     {
+        private readonly ModifyInventoryWindow modifyInventoryWindow = new ModifyInventoryWindow();
+
         public InventoryPage()
         {
             this.InitializeComponent();
             this.DataContext = this;
-
-            this.ModifyInventoryWindow = new ModifyInventoryWindow();
+            this.modifyInventoryWindow.ApplyChanges += this.Window_ApplyChanges;
         }
 
         public double InventoryHeight => SystemParameters.PrimaryScreenHeight - 100;
 
-        private ModifyInventoryWindow ModifyInventoryWindow { get; }
-
         public void Draw()
         {
-            this.FillList();
+            this.DrawInventory();
         }
 
-        private void FillList()
+        private void DrawInventory()
         {
             this.InventoryDataGrid.Items.Clear();
 
             foreach (var inventory in Program.CcsFile.Character.Inventories)
             {
                 this.InventoryDataGrid.Items.Add(inventory);
+            }
+        }
+
+        private void ScrollInventory()
+        {
+            if (this.InventoryDataGrid.Items.Count > 0)
+            {
+                this.InventoryDataGrid.SelectedItem = this.InventoryDataGrid.Items[this.InventoryDataGrid.Items.Count - 1];
+                this.InventoryDataGrid.UpdateLayout();
+                this.InventoryDataGrid.ScrollIntoView(this.InventoryDataGrid.SelectedItem);
             }
         }
 
@@ -55,7 +65,7 @@ namespace Concierge.Interface.InventoryPageUi
                 if (index != 0)
                 {
                     Utilities.Swap(Program.CcsFile.Character.Inventories, index, index - 1);
-                    this.FillList();
+                    this.DrawInventory();
                     this.InventoryDataGrid.SelectedIndex = index - 1;
                 }
             }
@@ -73,7 +83,7 @@ namespace Concierge.Interface.InventoryPageUi
                 if (index != Program.CcsFile.Character.Inventories.Count - 1)
                 {
                     Utilities.Swap(Program.CcsFile.Character.Inventories, index, index + 1);
-                    this.FillList();
+                    this.DrawInventory();
                     this.InventoryDataGrid.SelectedIndex = index + 1;
                 }
             }
@@ -86,8 +96,8 @@ namespace Concierge.Interface.InventoryPageUi
 
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
-            this.ModifyInventoryWindow.ShowAdd(Program.CcsFile.Character.Inventories);
-            this.FillList();
+            this.modifyInventoryWindow.ShowAdd(Program.CcsFile.Character.Inventories);
+            this.DrawInventory();
         }
 
         private void ButtonEdit_Click(object sender, RoutedEventArgs e)
@@ -95,8 +105,8 @@ namespace Concierge.Interface.InventoryPageUi
             if (this.InventoryDataGrid.SelectedItem != null)
             {
                 var inventory = (Inventory)this.InventoryDataGrid.SelectedItem;
-                this.ModifyInventoryWindow.ShowEdit(inventory);
-                this.FillList();
+                this.modifyInventoryWindow.ShowEdit(inventory);
+                this.DrawInventory();
             }
         }
 
@@ -108,7 +118,7 @@ namespace Concierge.Interface.InventoryPageUi
 
                 var inventory = (Inventory)this.InventoryDataGrid.SelectedItem;
                 Program.CcsFile.Character.Inventories.Remove(inventory);
-                this.FillList();
+                this.DrawInventory();
             }
         }
 
@@ -120,6 +130,17 @@ namespace Concierge.Interface.InventoryPageUi
             foreach (var item in this.InventoryDataGrid.Items)
             {
                 Program.CcsFile.Character.Inventories.Add(item as Inventory);
+            }
+        }
+
+        private void Window_ApplyChanges(object sender, EventArgs e)
+        {
+            switch (sender?.GetType()?.Name)
+            {
+                case "ModifyInventoryWindow":
+                    this.DrawInventory();
+                    this.ScrollInventory();
+                    break;
             }
         }
     }

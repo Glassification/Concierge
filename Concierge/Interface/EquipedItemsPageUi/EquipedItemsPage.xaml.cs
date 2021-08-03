@@ -27,6 +27,7 @@ namespace Concierge.Interface.EquipedItemsPageUi
         {
             this.InitializeComponent();
             this.DataContext = this;
+            this.modifyEquippedItemsWindow.ApplyChanges += this.Window_ApplyChanges;
         }
 
         public static double EquippedItemsHeight => SystemParameters.PrimaryScreenHeight - 100;
@@ -194,6 +195,16 @@ namespace Concierge.Interface.EquipedItemsPageUi
                 (EquipmentSlot)Enum.Parse(typeof(EquipmentSlot), this.SelectedDataGrid.Tag as string));
 
             this.Draw();
+        }
+
+        private void Window_ApplyChanges(object sender, EventArgs e)
+        {
+            switch (sender?.GetType()?.Name)
+            {
+                case "ModifyEquippedItemsWindow":
+                    this.Draw();
+                    break;
+            }
         }
     }
 }

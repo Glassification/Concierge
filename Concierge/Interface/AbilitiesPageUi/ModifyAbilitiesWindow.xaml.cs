@@ -23,6 +23,10 @@ namespace Concierge.Interface.AbilitiesPageUi
             this.InitializeComponent();
         }
 
+        public delegate void ApplyChangesEventHandler(object sender, EventArgs e);
+
+        public event ApplyChangesEventHandler ApplyChanges;
+
         private bool Editing { get; set; }
 
         private Ability SelectedAbility { get; set; }
@@ -106,15 +110,17 @@ namespace Concierge.Interface.AbilitiesPageUi
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            Program.Modify();
-
             this.Hide();
         }
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
+            Program.Modify();
+
             this.Abilities.Add(this.ToAbility());
             this.ClearFields();
+
+            this.ApplyChanges?.Invoke(this, new EventArgs());
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)

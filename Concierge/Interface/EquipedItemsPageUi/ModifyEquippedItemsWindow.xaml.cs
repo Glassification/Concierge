@@ -26,6 +26,10 @@ namespace Concierge.Interface.EquipedItemsPageUi
             this.SlotComboBox.ItemsSource = Enum.GetValues(typeof(EquipmentSlot)).Cast<EquipmentSlot>();
         }
 
+        public delegate void ApplyChangesEventHandler(object sender, EventArgs e);
+
+        public event ApplyChangesEventHandler ApplyChanges;
+
         public void ShowAdd()
         {
             this.ClearFields();
@@ -76,6 +80,8 @@ namespace Concierge.Interface.EquipedItemsPageUi
 
             this.ClearFields();
             this.ItemComboBox.ItemsSource = EquippedItems.Equipable;
+
+            this.ApplyChanges?.Invoke(this, new EventArgs());
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)

@@ -30,6 +30,12 @@ namespace Concierge.Interface.CompanionPageUi
         public CompanionPage()
         {
             this.InitializeComponent();
+
+            this.modifyAttributesWindow.ApplyChanges += this.Window_ApplyChanges;
+            this.modifyHealthWindow.ApplyChanges += this.Window_ApplyChanges;
+            this.modifyHitDiceWindow.ApplyChanges += this.Window_ApplyChanges;
+            this.modifyWeaponWindow.ApplyChanges += this.Window_ApplyChanges;
+            this.modifyPropertiesWindow.ApplyChanges += this.Window_ApplyChanges;
         }
 
         public int HeartWidth => (int)this.HealthBox.RenderSize.Width;
@@ -317,6 +323,28 @@ namespace Concierge.Interface.CompanionPageUi
         private void SpentBox_MouseLeave(object sender, MouseEventArgs e)
         {
             Mouse.OverrideCursor = Cursors.Arrow;
+        }
+
+        private void Window_ApplyChanges(object sender, EventArgs e)
+        {
+            switch (sender?.GetType()?.Name)
+            {
+                case "ModifyAttributesWindow":
+                    this.DrawAttributes();
+                    break;
+                case "ModifyHealthWindow":
+                    this.DrawHealth();
+                    break;
+                case "ModifyHitDiceWindow":
+                    this.DrawHitDice();
+                    break;
+                case "ModifyWeaponWindow":
+                    this.DrawAttacks();
+                    break;
+                case "ModifyPropertiesWindow":
+                    this.DrawDetails();
+                    break;
+            }
         }
     }
 }

@@ -24,6 +24,10 @@ namespace Concierge.Interface.CompanionPageUi
             this.VisionComboBox.ItemsSource = Enum.GetValues(typeof(VisionTypes)).Cast<VisionTypes>();
         }
 
+        public delegate void ApplyChangesEventHandler(object sender, EventArgs e);
+
+        public event ApplyChangesEventHandler ApplyChanges;
+
         public void EditProperties()
         {
             this.Read();
@@ -77,6 +81,8 @@ namespace Concierge.Interface.CompanionPageUi
             Program.Modify();
 
             this.Write();
+
+            this.ApplyChanges?.Invoke(this, new EventArgs());
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)

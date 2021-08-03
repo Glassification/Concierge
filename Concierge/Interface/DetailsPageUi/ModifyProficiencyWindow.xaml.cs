@@ -24,6 +24,10 @@ namespace Concierge.Interface.DetailsPageUi
             this.ProficiencyComboBox.ItemsSource = Enum.GetValues(typeof(ProficiencyTypes)).Cast<ProficiencyTypes>();
         }
 
+        public delegate void ApplyChangesEventHandler(object sender, EventArgs e);
+
+        public event ApplyChangesEventHandler ApplyChanges;
+
         private bool Editing { get; set; }
 
         private Guid SelectedProficiencyId { get; set; }
@@ -95,6 +99,8 @@ namespace Concierge.Interface.DetailsPageUi
                 this.ProficiencyTextBox.Text);
 
             this.ClearFields();
+
+            this.ApplyChanges?.Invoke(this, new EventArgs());
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)

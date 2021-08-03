@@ -40,6 +40,10 @@ namespace Concierge.Interface.DetailsPageUi
             this.UnconsciousComboBox.ItemsSource = Enum.GetValues(typeof(ConditionTypes)).Cast<ConditionTypes>();
         }
 
+        public delegate void ApplyChangesEventHandler(object sender, EventArgs e);
+
+        public event ApplyChangesEventHandler ApplyChanges;
+
         private Conditions Conditions { get; set; }
 
         public void ShowEdit(Conditions conditions)
@@ -117,6 +121,8 @@ namespace Concierge.Interface.DetailsPageUi
             Program.Modify();
 
             this.UpdateConditions();
+
+            this.ApplyChanges?.Invoke(this, new EventArgs());
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)

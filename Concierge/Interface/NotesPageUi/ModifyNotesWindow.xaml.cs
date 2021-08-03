@@ -4,6 +4,7 @@
 
 namespace Concierge.Interface.NotesPageUi
 {
+    using System;
     using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Input;
@@ -21,6 +22,10 @@ namespace Concierge.Interface.NotesPageUi
         {
             this.InitializeComponent();
         }
+
+        public delegate void ApplyChangesEventHandler(object sender, EventArgs e);
+
+        public event ApplyChangesEventHandler ApplyChanges;
 
         private bool IsEdit { get; set; }
 
@@ -151,6 +156,8 @@ namespace Concierge.Interface.NotesPageUi
                 this.ClearFields();
                 this.GenerateChapterComboBox();
             }
+
+            this.ApplyChanges?.Invoke(this, new EventArgs());
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)

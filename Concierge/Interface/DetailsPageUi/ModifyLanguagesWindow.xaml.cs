@@ -25,7 +25,13 @@ namespace Concierge.Interface.DetailsPageUi
             this.NameComboBox.ItemsSource = Constants.Languages;
         }
 
+        public delegate void ApplyChangesEventHandler(object sender, EventArgs e);
+
+        public event ApplyChangesEventHandler ApplyChanges;
+
         private bool Editing { get; set; }
+
+        private string HeaderText => $"{(this.Editing ? "Edit" : "Add")} Language";
 
         private Language SelectedLanguage { get; set; }
 
@@ -33,9 +39,9 @@ namespace Concierge.Interface.DetailsPageUi
 
         public void ShowAdd(List<Language> languages)
         {
-            this.HeaderTextBlock.Text = "Add Language";
-            this.Languages = languages;
             this.Editing = false;
+            this.HeaderTextBlock.Text = this.HeaderText;
+            this.Languages = languages;
             this.ApplyButton.Visibility = Visibility.Visible;
             this.ClearFields();
 
@@ -44,9 +50,9 @@ namespace Concierge.Interface.DetailsPageUi
 
         public void ShowEdit(Language language)
         {
-            this.HeaderTextBlock.Text = "Edit Language";
-            this.SelectedLanguage = language;
             this.Editing = true;
+            this.HeaderTextBlock.Text = this.HeaderText;
+            this.SelectedLanguage = language;
             this.ApplyButton.Visibility = Visibility.Collapsed;
             this.FillFields(language);
 
@@ -121,6 +127,8 @@ namespace Concierge.Interface.DetailsPageUi
 
             this.Languages.Add(this.ToLanguage());
             this.ClearFields();
+
+            this.ApplyChanges?.Invoke(this, new EventArgs());
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)

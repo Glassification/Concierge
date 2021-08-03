@@ -4,6 +4,7 @@
 
 namespace Concierge.Interface.AbilitiesPageUi
 {
+    using System;
     using System.Windows;
     using System.Windows.Controls;
 
@@ -15,31 +16,41 @@ namespace Concierge.Interface.AbilitiesPageUi
     /// </summary>
     public partial class AbilitiesPage : Page
     {
+        private readonly ModifyAbilitiesWindow modifyAbilitiesWindow = new ModifyAbilitiesWindow();
+
         public AbilitiesPage()
         {
             this.InitializeComponent();
             this.DataContext = this;
-            this.ModifyAbilitiesWindow = new ModifyAbilitiesWindow();
+            this.modifyAbilitiesWindow.ApplyChanges += this.Window_ApplyChanges;
 
             Program.Logger.Info($"Initialized {nameof(AbilitiesPage)}.");
         }
 
         public double AbilitiesHeight => SystemParameters.PrimaryScreenHeight - 100;
 
-        private ModifyAbilitiesWindow ModifyAbilitiesWindow { get; }
-
         public void Draw()
         {
-            this.FillList();
+            this.DrawAbilities();
         }
 
-        private void FillList()
+        private void DrawAbilities()
         {
             this.AbilitiesDataGrid.Items.Clear();
 
             foreach (var ability in Program.CcsFile.Character.Abilities)
             {
                 this.AbilitiesDataGrid.Items.Add(ability);
+            }
+        }
+
+        private void ScrollAbilities()
+        {
+            if (this.AbilitiesDataGrid.Items.Count > 0)
+            {
+                this.AbilitiesDataGrid.SelectedItem = this.AbilitiesDataGrid.Items[this.AbilitiesDataGrid.Items.Count - 1];
+                this.AbilitiesDataGrid.UpdateLayout();
+                this.AbilitiesDataGrid.ScrollIntoView(this.AbilitiesDataGrid.SelectedItem);
             }
         }
 
@@ -55,7 +66,7 @@ namespace Concierge.Interface.AbilitiesPageUi
                 if (index != 0)
                 {
                     Utilities.Swap(Program.CcsFile.Character.Abilities, index, index - 1);
-                    this.FillList();
+                    this.DrawAbilities();
                     this.AbilitiesDataGrid.SelectedIndex = index - 1;
                 }
             }
@@ -73,7 +84,7 @@ namespace Concierge.Interface.AbilitiesPageUi
                 if (index != Program.CcsFile.Character.Abilities.Count - 1)
                 {
                     Utilities.Swap(Program.CcsFile.Character.Abilities, index, index + 1);
-                    this.FillList();
+                    this.DrawAbilities();
                     this.AbilitiesDataGrid.SelectedIndex = index + 1;
                 }
             }
@@ -86,16 +97,16 @@ namespace Concierge.Interface.AbilitiesPageUi
 
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
-            this.ModifyAbilitiesWindow.ShowAdd(Program.CcsFile.Character.Abilities);
-            this.FillList();
+            this.modifyAbilitiesWindow.ShowAdd(Program.CcsFile.Character.Abilities);
+            this.DrawAbilities();
         }
 
         private void ButtonEdit_Click(object sender, RoutedEventArgs e)
         {
             if (this.AbilitiesDataGrid.SelectedItem != null)
             {
-                this.ModifyAbilitiesWindow.ShowEdit((Ability)this.AbilitiesDataGrid.SelectedItem);
-                this.FillList();
+                this.modifyAbilitiesWindow.ShowEdit((Ability)this.AbilitiesDataGrid.SelectedItem);
+                this.DrawAbilities();
             }
         }
 
@@ -107,7 +118,7 @@ namespace Concierge.Interface.AbilitiesPageUi
 
                 var ability = (Ability)this.AbilitiesDataGrid.SelectedItem;
                 Program.CcsFile.Character.Abilities.Remove(ability);
-                this.FillList();
+                this.DrawAbilities();
             }
         }
 
@@ -119,6 +130,17 @@ namespace Concierge.Interface.AbilitiesPageUi
             foreach (var ability in this.AbilitiesDataGrid.Items)
             {
                 Program.CcsFile.Character.Abilities.Add(ability as Ability);
+            }
+        }
+
+        private void Window_ApplyChanges(object sender, EventArgs e)
+        {
+            switch (sender?.GetType()?.Name)
+            {
+                case "ModifyAbilitiesWindow":
+                    this.DrawAbilities();
+                    this.ScrollAbilities();
+                    break;
             }
         }
     }

@@ -14,7 +14,6 @@ namespace Concierge.Persistence
     {
         public CcsFile()
         {
-            this.Character = new Character();
             this.Default();
         }
 
@@ -43,6 +42,7 @@ namespace Concierge.Persistence
 
         public void Default()
         {
+            this.Character = new Character();
             this.AutosaveEnable = false;
             this.AutosaveInterval = 1;
             this.UseCoinWeight = false;

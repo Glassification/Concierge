@@ -38,7 +38,6 @@ namespace Concierge.Interface.NotesPageUi
         {
             this.InitializeComponent();
             this.SelectedDocument = null;
-            this.CurrentDocumentText = string.Empty;
             this.Lock = false;
             this.FontFamilyList.ItemsSource = Fonts.SystemFontFamilies.OrderBy(f => f.Source);
             this.FontSizeList.ItemsSource = new List<double>() { 8, 9, 10, 11, 12, 14, 16, 18, 20, 22, 24, 26, 28, 36, 48, 72 };
@@ -46,11 +45,11 @@ namespace Concierge.Interface.NotesPageUi
 
             this.NotesTextBox.FontSize = 20;
             this.NotesTextBox.Foreground = Brushes.White;
+
+            this.modifyNotesWindow.ApplyChanges += this.Window_ApplyChanges;
         }
 
         public Document SelectedDocument { get; set; }
-
-        public string CurrentDocumentText { get; set; }
 
         private bool Lock { get; set; }
 
@@ -69,7 +68,14 @@ namespace Concierge.Interface.NotesPageUi
         {
             if (this.SelectedDocument != null)
             {
-                this.SelectedDocument.RTF = this.SaveCurrentDocument();
+                var savedDocument = this.SaveCurrentDocument();
+
+                if (!savedDocument.Equals(this.SelectedDocument.RTF))
+                {
+                    Program.Modify();
+                }
+
+                this.SelectedDocument.RTF = savedDocument;
             }
         }
 
@@ -487,6 +493,16 @@ namespace Concierge.Interface.NotesPageUi
             else
             {
                 (sender as ToggleButton).Foreground = Brushes.White;
+            }
+        }
+
+        private void Window_ApplyChanges(object sender, EventArgs e)
+        {
+            switch (sender?.GetType()?.Name)
+            {
+                case "ModifyNotesWindow":
+                    this.DrawTreeView();
+                    break;
             }
         }
     }

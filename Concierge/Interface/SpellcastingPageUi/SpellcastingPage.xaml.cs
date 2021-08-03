@@ -4,6 +4,7 @@
 
 namespace Concierge.Interface.SpellcastingPageUi
 {
+    using System;
     using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Input;
@@ -17,13 +18,18 @@ namespace Concierge.Interface.SpellcastingPageUi
     /// </summary>
     public partial class SpellcastingPage : Page
     {
+        private readonly SpellcastingSelectionWindow spellcastingSelectionWindow = new SpellcastingSelectionWindow();
+        private readonly ModifySpellWindow modifySpellWindow = new ModifySpellWindow();
+        private readonly ModifySpellClassWindow modifySpellClassWindow = new ModifySpellClassWindow();
+        private readonly ModifySpellSlotsWindow modifySpellSlotsWindow = new ModifySpellSlotsWindow();
+
         public SpellcastingPage()
         {
             this.InitializeComponent();
-            this.SpellcastingSelectionWindow = new SpellcastingSelectionWindow();
-            this.ModifySpellWindow = new ModifySpellWindow();
-            this.ModifySpellClassWindow = new ModifySpellClassWindow();
-            this.ModifySpellSlotsWindow = new ModifySpellSlotsWindow();
+
+            this.modifySpellWindow.ApplyChanges += this.Window_ApplyChanges;
+            this.modifySpellClassWindow.ApplyChanges += this.Window_ApplyChanges;
+            this.modifySpellSlotsWindow.ApplyChanges += this.Window_ApplyChanges;
 
             this.InitializeUsedSlot(this.UsedPactBox);
             this.InitializeUsedSlot(this.UsedFirstBox);
@@ -37,20 +43,12 @@ namespace Concierge.Interface.SpellcastingPageUi
             this.InitializeUsedSlot(this.UsedNinethBox);
         }
 
-        private SpellcastingSelectionWindow SpellcastingSelectionWindow { get; }
-
-        private ModifySpellWindow ModifySpellWindow { get; }
-
-        private ModifySpellClassWindow ModifySpellClassWindow { get; }
-
-        private ModifySpellSlotsWindow ModifySpellSlotsWindow { get; }
-
         public void Draw()
         {
-            this.FillSpellList();
-            this.FillMagicClassList();
-            this.FillTotalSpellSlots();
-            this.FillUsedSpellSlots();
+            this.DrawSpellList();
+            this.DrawMagicClasses();
+            this.DrawTotalSpellSlots();
+            this.DrawUsedSpellSlots();
         }
 
         private static int IncrementUsedSpellSlots(int used, int total)
@@ -72,7 +70,7 @@ namespace Concierge.Interface.SpellcastingPageUi
             usedBox.Background = Utilities.SetUsedBoxStyle(totalSpells, usedSpells);
         }
 
-        private void FillTotalSpellSlots()
+        private void DrawTotalSpellSlots()
         {
             var spellSlots = Program.CcsFile.Character.SpellSlots;
 
@@ -88,7 +86,7 @@ namespace Concierge.Interface.SpellcastingPageUi
             FillTotalSpellSlot(this.TotalNinethField, this.TotalNinethBox, spellSlots.NinethUsed, spellSlots.NinethTotal);
         }
 
-        private void FillUsedSpellSlots()
+        private void DrawUsedSpellSlots()
         {
             var spellSlots = Program.CcsFile.Character.SpellSlots;
 
@@ -104,7 +102,7 @@ namespace Concierge.Interface.SpellcastingPageUi
             FillUsedSpellSlot(this.UsedNinethField, this.UsedNinethBox, spellSlots.NinethUsed, spellSlots.NinethTotal);
         }
 
-        private void FillSpellList()
+        private void DrawSpellList()
         {
             this.SpellListDataGrid.Items.Clear();
 
@@ -114,7 +112,7 @@ namespace Concierge.Interface.SpellcastingPageUi
             }
         }
 
-        private void FillMagicClassList()
+        private void DrawMagicClasses()
         {
             this.MagicClassDataGrid.Items.Clear();
 
@@ -145,7 +143,7 @@ namespace Concierge.Interface.SpellcastingPageUi
                 if (index != 0)
                 {
                     Utilities.Swap(Program.CcsFile.Character.MagicClasses, index, index - 1);
-                    this.FillMagicClassList();
+                    this.DrawMagicClasses();
                     this.MagicClassDataGrid.SelectedIndex = index - 1;
                 }
             }
@@ -159,7 +157,7 @@ namespace Concierge.Interface.SpellcastingPageUi
                 if (index != 0)
                 {
                     Utilities.Swap(Program.CcsFile.Character.Spells, index, index - 1);
-                    this.FillSpellList();
+                    this.DrawSpellList();
                     this.SpellListDataGrid.SelectedIndex = index - 1;
                 }
             }
@@ -177,7 +175,7 @@ namespace Concierge.Interface.SpellcastingPageUi
                 if (index != Program.CcsFile.Character.MagicClasses.Count - 1)
                 {
                     Utilities.Swap(Program.CcsFile.Character.MagicClasses, index, index + 1);
-                    this.FillMagicClassList();
+                    this.DrawMagicClasses();
                     this.MagicClassDataGrid.SelectedIndex = index + 1;
                 }
             }
@@ -191,7 +189,7 @@ namespace Concierge.Interface.SpellcastingPageUi
                 if (index != Program.CcsFile.Character.Spells.Count - 1)
                 {
                     Utilities.Swap(Program.CcsFile.Character.Spells, index, index + 1);
-                    this.FillSpellList();
+                    this.DrawSpellList();
                     this.SpellListDataGrid.SelectedIndex = index + 1;
                 }
             }
@@ -205,17 +203,17 @@ namespace Concierge.Interface.SpellcastingPageUi
 
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
-            var popupButton = this.SpellcastingSelectionWindow.ShowPopup();
+            var popupButton = this.spellcastingSelectionWindow.ShowPopup();
 
             switch (popupButton)
             {
                 case PopupButtons.AddMagicClass:
-                    this.ModifySpellClassWindow.AddClass();
-                    this.FillMagicClassList();
+                    this.modifySpellClassWindow.AddClass();
+                    this.DrawMagicClasses();
                     break;
                 case PopupButtons.AddSpell:
-                    this.ModifySpellWindow.AddSpell();
-                    this.FillSpellList();
+                    this.modifySpellWindow.AddSpell();
+                    this.DrawSpellList();
                     break;
             }
         }
@@ -225,14 +223,14 @@ namespace Concierge.Interface.SpellcastingPageUi
             if (this.MagicClassDataGrid.SelectedItem != null)
             {
                 var magicClass = (MagicClass)this.MagicClassDataGrid.SelectedItem;
-                this.ModifySpellClassWindow.EditClass(magicClass);
-                this.FillMagicClassList();
+                this.modifySpellClassWindow.EditClass(magicClass);
+                this.DrawMagicClasses();
             }
             else if (this.SpellListDataGrid.SelectedItem != null)
             {
                 var spell = (Spell)this.SpellListDataGrid.SelectedItem;
-                this.ModifySpellWindow.EditSpell(spell);
-                this.FillSpellList();
+                this.modifySpellWindow.EditSpell(spell);
+                this.DrawSpellList();
             }
         }
 
@@ -244,7 +242,7 @@ namespace Concierge.Interface.SpellcastingPageUi
 
                 MagicClass magicClass = (MagicClass)this.MagicClassDataGrid.SelectedItem;
                 Program.CcsFile.Character.MagicClasses.Remove(magicClass);
-                this.FillMagicClassList();
+                this.DrawMagicClasses();
             }
             else if (this.SpellListDataGrid.SelectedItem != null)
             {
@@ -252,7 +250,7 @@ namespace Concierge.Interface.SpellcastingPageUi
 
                 Spell spell = (Spell)this.SpellListDataGrid.SelectedItem;
                 Program.CcsFile.Character.Spells.Remove(spell);
-                this.FillSpellList();
+                this.DrawSpellList();
             }
         }
 
@@ -274,9 +272,9 @@ namespace Concierge.Interface.SpellcastingPageUi
 
         private void LevelEditButton_Click(object sender, RoutedEventArgs e)
         {
-            this.ModifySpellSlotsWindow.EditSpellSlots();
-            this.FillTotalSpellSlots();
-            this.FillUsedSpellSlots();
+            this.modifySpellSlotsWindow.EditSpellSlots();
+            this.DrawTotalSpellSlots();
+            this.DrawUsedSpellSlots();
         }
 
         private void UsedSlot_MouseDown(object sender, MouseButtonEventArgs e)
@@ -319,8 +317,8 @@ namespace Concierge.Interface.SpellcastingPageUi
                     break;
             }
 
-            this.FillTotalSpellSlots();
-            this.FillUsedSpellSlots();
+            this.DrawTotalSpellSlots();
+            this.DrawUsedSpellSlots();
         }
 
         private void UsedSlot_MouseEnter(object sender, MouseEventArgs e)
@@ -354,6 +352,23 @@ namespace Concierge.Interface.SpellcastingPageUi
             foreach (var magicClass in this.SpellListDataGrid.Items)
             {
                 Program.CcsFile.Character.MagicClasses.Add(magicClass as MagicClass);
+            }
+        }
+
+        private void Window_ApplyChanges(object sender, EventArgs e)
+        {
+            switch (sender?.GetType()?.Name)
+            {
+                case "ModifySpellClassWindow":
+                    this.DrawMagicClasses();
+                    break;
+                case "ModifySpellWindow":
+                    this.DrawSpellList();
+                    break;
+                case "ModifySpellSlotsWindow":
+                    this.DrawUsedSpellSlots();
+                    this.DrawTotalSpellSlots();
+                    break;
             }
         }
     }

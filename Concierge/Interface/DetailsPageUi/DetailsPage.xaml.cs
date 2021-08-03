@@ -30,6 +30,12 @@ namespace Concierge.Interface.DetailsPageUi
         public DetailsPage()
         {
             this.InitializeComponent();
+            this.modifyProficiencyWindow.ApplyChanges += this.Window_ApplyChanges;
+            this.mondifyConditionsWindow.ApplyChanges += this.Window_ApplyChanges;
+            this.modifyLanguagesWindow.ApplyChanges += this.Window_ApplyChanges;
+            this.modifyAppearanceWindow.ApplyChanges += this.Window_ApplyChanges;
+            this.modifyPersonalityWindow.ApplyChanges += this.Window_ApplyChanges;
+            this.modifyClassResourceWindow.ApplyChanges += this.Window_ApplyChanges;
         }
 
         public double ProficiencyGridSize => this.WeaponGrid.RenderSize.Height;
@@ -423,6 +429,31 @@ namespace Concierge.Interface.DetailsPageUi
             foreach (var resource in this.ResourcesDataGrid.Items)
             {
                 Program.CcsFile.Character.ClassResources.Add(resource as ClassResource);
+            }
+        }
+
+        private void Window_ApplyChanges(object sender, EventArgs e)
+        {
+            switch (sender?.GetType()?.Name)
+            {
+                case "ModifyAppearanceWindow":
+                    this.DrawAppearance();
+                    break;
+                case "ModifyClassResourceWindow":
+                    this.DrawResources();
+                    break;
+                case "MondifyConditionsWindow":
+                    this.DrawConditions();
+                    break;
+                case "ModifyLanguagesWindow":
+                    this.DrawLanguages();
+                    break;
+                case "ModifyPersonalityWindow":
+                    this.DrawPersonality();
+                    break;
+                case "ModifyProficiencyWindow":
+                    this.DrawProficiencies();
+                    break;
             }
         }
     }

@@ -26,6 +26,10 @@ namespace Concierge.Interface.SpellcastingPageUi
             this.AbilityComboBox.ItemsSource = Enum.GetValues(typeof(Abilities)).Cast<Abilities>();
         }
 
+        public delegate void ApplyChangesEventHandler(object sender, EventArgs e);
+
+        public event ApplyChangesEventHandler ApplyChanges;
+
         private bool Editing { get; set; }
 
         private Guid SelectedClassId { get; set; }
@@ -135,6 +139,8 @@ namespace Concierge.Interface.SpellcastingPageUi
 
             Program.CcsFile.Character.MagicClasses.Add(this.ToClass());
             this.ClearFields();
+
+            this.ApplyChanges?.Invoke(this, new EventArgs());
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)

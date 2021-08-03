@@ -27,6 +27,10 @@ namespace Concierge.Interface.EquipmentPageUi
             this.StealthComboBox.ItemsSource = Enum.GetValues(typeof(ArmorStealth)).Cast<ArmorStealth>();
         }
 
+        public delegate void ApplyChangesEventHandler(object sender, EventArgs e);
+
+        public event ApplyChangesEventHandler ApplyChanges;
+
         private Armor SelectedArmor { get; set; }
 
         public void ShowEdit(Armor armor)
@@ -87,6 +91,8 @@ namespace Concierge.Interface.EquipmentPageUi
             Program.Modify();
 
             this.ToArmor(this.SelectedArmor);
+
+            this.ApplyChanges?.Invoke(this, new EventArgs());
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)

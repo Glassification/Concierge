@@ -4,6 +4,7 @@
 
 namespace Concierge.Interface.OverviewPageUi
 {
+    using System;
     using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Input;
@@ -20,6 +21,10 @@ namespace Concierge.Interface.OverviewPageUi
         {
             this.InitializeComponent();
         }
+
+        public delegate void ApplyChangesEventHandler(object sender, EventArgs e);
+
+        public event ApplyChangesEventHandler ApplyChanges;
 
         private HitDice HitDice { get; set; }
 
@@ -82,6 +87,8 @@ namespace Concierge.Interface.OverviewPageUi
             Program.Modify();
 
             this.GetHitDice();
+
+            this.ApplyChanges?.Invoke(this, new EventArgs());
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)

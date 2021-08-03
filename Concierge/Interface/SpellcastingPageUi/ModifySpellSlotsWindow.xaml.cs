@@ -4,6 +4,7 @@
 
 namespace Concierge.Interface.SpellcastingPageUi
 {
+    using System;
     using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Input;
@@ -18,6 +19,10 @@ namespace Concierge.Interface.SpellcastingPageUi
         {
             this.InitializeComponent();
         }
+
+        public delegate void ApplyChangesEventHandler(object sender, EventArgs e);
+
+        public event ApplyChangesEventHandler ApplyChanges;
 
         public void EditSpellSlots()
         {
@@ -103,6 +108,8 @@ namespace Concierge.Interface.SpellcastingPageUi
             Program.Modify();
 
             this.UpdateSpellSlots();
+
+            this.ApplyChanges?.Invoke(this, new EventArgs());
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)

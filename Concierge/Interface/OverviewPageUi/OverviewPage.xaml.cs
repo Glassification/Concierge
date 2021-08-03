@@ -31,6 +31,10 @@ namespace Concierge.Interface.OverviewPageUi
             this.InitializeComponent();
 
             this.DataContext = this;
+            this.modifyAttributesWindow.ApplyChanges += this.Window_ApplyChanges;
+            this.modifySensesWindow.ApplyChanges += this.Window_ApplyChanges;
+            this.modifyHealthWindow.ApplyChanges += this.Window_ApplyChanges;
+            this.modifyHitDiceWindow.ApplyChanges += this.Window_ApplyChanges;
 
             this.InitializeToggleBox(this.StrengthProficiencyBox, this.SavingThrows_MouseDown);
             this.InitializeToggleBox(this.DexterityProficiencyBox, this.SavingThrows_MouseDown);
@@ -653,6 +657,25 @@ namespace Concierge.Interface.OverviewPageUi
         {
             this.modifyWealthWindow.ShowWindow();
             this.DrawWealth();
+        }
+
+        private void Window_ApplyChanges(object sender, EventArgs e)
+        {
+            switch (sender?.GetType()?.Name)
+            {
+                case "ModifyAttributesWindow":
+                    this.DrawAttributes();
+                    break;
+                case "ModifySensesWindow":
+                    this.DrawDetails();
+                    break;
+                case "ModifyHealthWindow":
+                    this.DrawHealth();
+                    break;
+                case "ModifyHitDiceWindow":
+                    this.DrawHitDice();
+                    break;
+            }
         }
     }
 }

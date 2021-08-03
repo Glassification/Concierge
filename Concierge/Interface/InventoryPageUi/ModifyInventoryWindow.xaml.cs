@@ -4,6 +4,7 @@
 
 namespace Concierge.Interface.InventoryPageUi
 {
+    using System;
     using System.Collections.Generic;
     using System.Windows;
     using System.Windows.Controls;
@@ -27,6 +28,10 @@ namespace Concierge.Interface.InventoryPageUi
             this.InitializeComponent();
             this.NameComboBox.ItemsSource = Constants.Inventories;
         }
+
+        public delegate void ApplyChangesEventHandler(object sender, EventArgs e);
+
+        public event ApplyChangesEventHandler ApplyChanges;
 
         private bool EquippedItem { get; set; }
 
@@ -147,6 +152,8 @@ namespace Concierge.Interface.InventoryPageUi
 
             this.Items.Add(this.ToInventory());
             this.ClearFields();
+
+            this.ApplyChanges?.Invoke(this, new EventArgs());
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)

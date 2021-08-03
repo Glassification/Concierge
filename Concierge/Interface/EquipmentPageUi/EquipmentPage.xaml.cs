@@ -4,6 +4,7 @@
 
 namespace Concierge.Interface.EquipmentPageUi
 {
+    using System;
     using System.Windows;
     using System.Windows.Controls;
 
@@ -16,30 +17,30 @@ namespace Concierge.Interface.EquipmentPageUi
     /// </summary>
     public partial class EquipmentPage : Page
     {
+        private readonly ModifyArmorWindow modifyArmorWindow = new ModifyArmorWindow();
+        private readonly ModifyWeaponWindow modifyWeaponWindow = new ModifyWeaponWindow();
+        private readonly ModifyAmmoWindow modifyAmmoWindow = new ModifyAmmoWindow();
+        private readonly EquipmentPopupWindow equipmentPopupWindow = new EquipmentPopupWindow();
+
         public EquipmentPage()
         {
             this.InitializeComponent();
             this.DataContext = this;
-            this.ModifyArmorWindow = new ModifyArmorWindow();
-            this.EquipmentPopupWindow = new EquipmentPopupWindow();
-            this.ModifyWeaponWindow = new ModifyWeaponWindow();
-            this.ModifyAmmoWindow = new ModifyAmmoWindow();
+            this.modifyAmmoWindow.ApplyChanges += this.Window_ApplyChanges;
+            this.modifyWeaponWindow.ApplyChanges += this.Window_ApplyChanges;
+            this.modifyArmorWindow.ApplyChanges += this.Window_ApplyChanges;
         }
-
-        private ModifyArmorWindow ModifyArmorWindow { get; }
-
-        private ModifyWeaponWindow ModifyWeaponWindow { get; }
-
-        private ModifyAmmoWindow ModifyAmmoWindow { get; }
-
-        private EquipmentPopupWindow EquipmentPopupWindow { get; }
 
         public void Draw()
         {
-            var armor = Program.CcsFile.Character.Armor;
+            this.DrawWeaponList();
+            this.DrawAmmoList();
+            this.DrawArmor();
+        }
 
-            this.FillWeaponList();
-            this.FillAmmoList();
+        private void DrawArmor()
+        {
+            var armor = Program.CcsFile.Character.Armor;
 
             this.ArmorClassField.Text = armor.TotalArmorClass.ToString();
             this.ArmorWornField.Text = armor.Equiped;
@@ -51,7 +52,7 @@ namespace Concierge.Interface.EquipmentPageUi
             this.MagicBonusField.Text = armor.MagicArmorClass.ToString();
         }
 
-        private void FillWeaponList()
+        private void DrawWeaponList()
         {
             this.WeaponDataGrid.Items.Clear();
 
@@ -61,13 +62,33 @@ namespace Concierge.Interface.EquipmentPageUi
             }
         }
 
-        private void FillAmmoList()
+        private void ScrollWeapons()
+        {
+            if (this.WeaponDataGrid.Items.Count > 0)
+            {
+                this.WeaponDataGrid.SelectedItem = this.WeaponDataGrid.Items[this.WeaponDataGrid.Items.Count - 1];
+                this.WeaponDataGrid.UpdateLayout();
+                this.WeaponDataGrid.ScrollIntoView(this.WeaponDataGrid.SelectedItem);
+            }
+        }
+
+        private void DrawAmmoList()
         {
             this.AmmoDataGrid.Items.Clear();
 
             foreach (var ammo in Program.CcsFile.Character.Ammunitions)
             {
                 this.AmmoDataGrid.Items.Add(ammo);
+            }
+        }
+
+        private void ScrollAmmo()
+        {
+            if (this.AmmoDataGrid.Items.Count > 0)
+            {
+                this.AmmoDataGrid.SelectedItem = this.AmmoDataGrid.Items[this.AmmoDataGrid.Items.Count - 1];
+                this.AmmoDataGrid.UpdateLayout();
+                this.AmmoDataGrid.ScrollIntoView(this.AmmoDataGrid.SelectedItem);
             }
         }
 
@@ -83,7 +104,7 @@ namespace Concierge.Interface.EquipmentPageUi
                 if (index != 0)
                 {
                     Utilities.Swap(Program.CcsFile.Character.Ammunitions, index, index - 1);
-                    this.FillAmmoList();
+                    this.DrawAmmoList();
                     this.AmmoDataGrid.SelectedIndex = index - 1;
                 }
             }
@@ -97,7 +118,7 @@ namespace Concierge.Interface.EquipmentPageUi
                 if (index != 0)
                 {
                     Utilities.Swap(Program.CcsFile.Character.Weapons, index, index - 1);
-                    this.FillWeaponList();
+                    this.DrawWeaponList();
                     this.WeaponDataGrid.SelectedIndex = index - 1;
                 }
             }
@@ -115,7 +136,7 @@ namespace Concierge.Interface.EquipmentPageUi
                 if (index != Program.CcsFile.Character.Ammunitions.Count - 1)
                 {
                     Utilities.Swap(Program.CcsFile.Character.Ammunitions, index, index + 1);
-                    this.FillAmmoList();
+                    this.DrawAmmoList();
                     this.AmmoDataGrid.SelectedIndex = index + 1;
                 }
             }
@@ -129,7 +150,7 @@ namespace Concierge.Interface.EquipmentPageUi
                 if (index != Program.CcsFile.Character.Weapons.Count - 1)
                 {
                     Utilities.Swap(Program.CcsFile.Character.Weapons, index, index + 1);
-                    this.FillWeaponList();
+                    this.DrawWeaponList();
                     this.WeaponDataGrid.SelectedIndex = index + 1;
                 }
             }
@@ -143,17 +164,17 @@ namespace Concierge.Interface.EquipmentPageUi
 
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
-            var popupButons = this.EquipmentPopupWindow.ShowPopup();
+            var popupButons = this.equipmentPopupWindow.ShowPopup();
 
             switch (popupButons)
             {
                 case PopupButtons.AddWeapon:
-                    this.ModifyWeaponWindow.ShowAdd(Program.CcsFile.Character.Weapons);
-                    this.FillWeaponList();
+                    this.modifyWeaponWindow.ShowAdd(Program.CcsFile.Character.Weapons);
+                    this.DrawWeaponList();
                     break;
                 case PopupButtons.AddAmmo:
-                    this.ModifyAmmoWindow.ShowAdd(Program.CcsFile.Character.Ammunitions);
-                    this.FillAmmoList();
+                    this.modifyAmmoWindow.ShowAdd(Program.CcsFile.Character.Ammunitions);
+                    this.DrawAmmoList();
                     break;
             }
         }
@@ -162,13 +183,13 @@ namespace Concierge.Interface.EquipmentPageUi
         {
             if (this.AmmoDataGrid.SelectedItem != null)
             {
-                this.ModifyAmmoWindow.ShowEdit((Ammunition)this.AmmoDataGrid.SelectedItem);
-                this.FillAmmoList();
+                this.modifyAmmoWindow.ShowEdit((Ammunition)this.AmmoDataGrid.SelectedItem);
+                this.DrawAmmoList();
             }
             else if (this.WeaponDataGrid.SelectedItem != null)
             {
-                this.ModifyWeaponWindow.ShowEdit((Weapon)this.WeaponDataGrid.SelectedItem);
-                this.FillWeaponList();
+                this.modifyWeaponWindow.ShowEdit((Weapon)this.WeaponDataGrid.SelectedItem);
+                this.DrawWeaponList();
             }
         }
 
@@ -180,7 +201,7 @@ namespace Concierge.Interface.EquipmentPageUi
 
                 var ammo = (Ammunition)this.AmmoDataGrid.SelectedItem;
                 Program.CcsFile.Character.Ammunitions.Remove(ammo);
-                this.FillAmmoList();
+                this.DrawAmmoList();
             }
             else if (this.WeaponDataGrid.SelectedItem != null)
             {
@@ -188,7 +209,7 @@ namespace Concierge.Interface.EquipmentPageUi
 
                 var weapon = (Weapon)this.WeaponDataGrid.SelectedItem;
                 Program.CcsFile.Character.Weapons.Remove(weapon);
-                this.FillWeaponList();
+                this.DrawWeaponList();
             }
         }
 
@@ -210,7 +231,7 @@ namespace Concierge.Interface.EquipmentPageUi
 
         private void EditDetailsButton_Click(object sender, RoutedEventArgs e)
         {
-            this.ModifyArmorWindow.ShowEdit(Program.CcsFile.Character.Armor);
+            this.modifyArmorWindow.ShowEdit(Program.CcsFile.Character.Armor);
             this.Draw();
         }
 
@@ -233,6 +254,24 @@ namespace Concierge.Interface.EquipmentPageUi
             foreach (var ammo in this.AmmoDataGrid.Items)
             {
                 Program.CcsFile.Character.Ammunitions.Add(ammo as Ammunition);
+            }
+        }
+
+        private void Window_ApplyChanges(object sender, EventArgs e)
+        {
+            switch (sender?.GetType()?.Name)
+            {
+                case "ModifyArmorWindow":
+                    this.DrawArmor();
+                    break;
+                case "ModifyAmmoWindow":
+                    this.DrawAmmoList();
+                    this.ScrollAmmo();
+                    break;
+                case "ModifyWeaponWindow":
+                    this.DrawWeaponList();
+                    this.ScrollWeapons();
+                    break;
             }
         }
     }

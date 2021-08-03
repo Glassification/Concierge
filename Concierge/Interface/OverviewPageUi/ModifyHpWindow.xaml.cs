@@ -4,12 +4,13 @@
 
 namespace Concierge.Interface.OverviewPageUi
 {
-    using Concierge.Characters.Status;
     using System;
     using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Input;
     using System.Windows.Media;
+
+    using Concierge.Characters.Status;
 
     /// <summary>
     /// Interaction logic for ModifyHpWindow.xaml.

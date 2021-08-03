@@ -31,14 +31,14 @@ namespace Concierge.Interface.ToolsPageUi
 
         private List<Player> Players { get; set; }
 
-        private Random Random { get; }
-
         private List<Die> DiceHistory { get; }
+
+        private Random Random { get; }
 
         public void Draw()
         {
-            this.FillDivideLootGrid();
-            this.FillDiceHistoryGrid();
+            this.DrawDivideLoot();
+            this.DrawDiceHistory();
         }
 
         private static void SetDieValue(
@@ -63,7 +63,7 @@ namespace Concierge.Interface.ToolsPageUi
             this.PlatinumInput.Text = "0";
         }
 
-        private void FillDivideLootGrid()
+        private void DrawDivideLoot()
         {
             this.DivideLootDataGrid.Items.Clear();
 
@@ -133,7 +133,7 @@ namespace Concierge.Interface.ToolsPageUi
 
             this.Distribute(loot);
 
-            this.FillDivideLootGrid();
+            this.DrawDivideLoot();
         }
 
         private void ButtonResetLoot_Click(object sender, RoutedEventArgs e)
@@ -163,7 +163,7 @@ namespace Concierge.Interface.ToolsPageUi
             }
         }
 
-        private void FillDiceHistoryGrid()
+        private void DrawDiceHistory()
         {
             this.RollDiceHistoryDataGrid.Items.Clear();
 
@@ -217,7 +217,7 @@ namespace Concierge.Interface.ToolsPageUi
             total = Math.Max(1, total);
 
             this.DiceHistory.Add(new Die($"({diceNumber}d{diceSides}) {(isPlus ? "+" : "-")}{modified}", rolledDice, total));
-            this.FillDiceHistoryGrid();
+            this.DrawDiceHistory();
 
             return total.ToString();
         }
@@ -226,7 +226,7 @@ namespace Concierge.Interface.ToolsPageUi
         {
             this.SetDefaultDiceValues();
             this.DiceHistory.Clear();
-            this.FillDiceHistoryGrid();
+            this.DrawDiceHistory();
         }
 
         private void ButtonRoll_Click(object sender, RoutedEventArgs e)

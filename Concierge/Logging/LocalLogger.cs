@@ -121,7 +121,7 @@ namespace Concierge.Logging
             Directory.Delete(archiveFolderInfo.FullName, true);
 
             var archives = logFolderContent.Where(x => x.Extension.Equals(".zip", StringComparison.OrdinalIgnoreCase)).ToArray();
-            if (archives.Count() <= this.MaxLogArchives)
+            if (archives.Length <= this.MaxLogArchives)
             {
                 return;
             }
