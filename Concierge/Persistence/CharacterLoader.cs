@@ -17,12 +17,7 @@ namespace Concierge.Persistence
 
     public static class CharacterLoader
     {
-        static CharacterLoader()
-        {
-            ConciergeMessageWindow = new ConciergeMessageWindow();
-        }
-
-        private static ConciergeMessageWindow ConciergeMessageWindow { get; }
+        private static readonly ConciergeMessageWindow conciergeMessageWindow = new ConciergeMessageWindow();
 
         public static CcsFile LoadCharacterSheetJson(string file)
         {
@@ -61,7 +56,7 @@ namespace Concierge.Persistence
                     Constants.AssemblyVersion);
 
                 Program.Logger.Warning(message);
-                var result = ConciergeMessageWindow.ShowWindow(
+                var result = conciergeMessageWindow.ShowWindow(
                     Regex.Unescape(message),
                     "Warning",
                     MessageWindowButtons.YesNo,

@@ -16,6 +16,8 @@ namespace Concierge.Services
 
     public class ErrorService
     {
+        private readonly ConciergeMessageWindow conciergeMessageWindow = new ConciergeMessageWindow();
+
         public ErrorService(Logger logger)
         {
             Guard.IsNull(logger, nameof(logger));
@@ -36,26 +38,29 @@ namespace Concierge.Services
                 case Severity.Debug:
 #if DEBUG
                     Debug.WriteLine($"{ex.Message}\n{ex.StackTrace}");
-                    ShowMessage(message);
+                    this.ShowMessage(message);
 #endif
                     break;
                 case Severity.Release:
-                    ShowMessage(message);
+                    this.ShowMessage(message);
                     break;
             }
 
             this.Logger.Error(message);
         }
 
-        private static void ShowMessage(string message)
-        {
-            var errorMessageBox = new ConciergeMessageWindow();
-            errorMessageBox.ShowWindow(message, "Error", MessageWindowButtons.Ok, MessageWindowIcons.Error);
-        }
-
         private static bool IsHandledException(Exception ex)
         {
             return ex is ConciergeException;
+        }
+
+        private void ShowMessage(string message)
+        {
+            this.conciergeMessageWindow.ShowWindow(
+                message,
+                "Error",
+                MessageWindowButtons.Ok,
+                MessageWindowIcons.Error);
         }
     }
 }
