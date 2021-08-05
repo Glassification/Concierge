@@ -376,6 +376,7 @@
                                             FontSize="25"
                                             Margin="0, 0, 20, 0"
                                             Minimum="0"
+                                            TextAlignment="Left"
                                             Height="40"/>
                     </Grid>
                 </Grid>
@@ -404,6 +405,7 @@
                                             BorderThickness="0"
                                             Foreground="White"
                                             FontSize="25"
+                                            TextAlignment="Left"
                                             Minimum="0"
                                             Margin="0, 0, 20, 0"
                                             Height="40"/>
@@ -434,6 +436,7 @@
                                             BorderThickness="0"
                                             Foreground="White"
                                             FontSize="25"
+                                            TextAlignment="Left"
                                             Margin="0, 0, 20, 0"
                                             Minimum="0"
                                             Height="40"/>

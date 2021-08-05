@@ -13,6 +13,7 @@ namespace Concierge.Interface.SpellcastingPageUi
 
     using Concierge.Characters.Enums;
     using Concierge.Characters.Spellcasting;
+    using Concierge.Utility;
 
     /// <summary>
     /// Interaction logic for ModifySpellClassWindow.xaml.
@@ -22,7 +23,7 @@ namespace Concierge.Interface.SpellcastingPageUi
         public ModifySpellClassWindow()
         {
             this.InitializeComponent();
-            this.ClassNameComboBox.ItemsSource = Enum.GetValues(typeof(ClassType)).Cast<ClassType>();
+            this.ClassNameComboBox.ItemsSource = Constants.Classes;
             this.AbilityComboBox.ItemsSource = Enum.GetValues(typeof(Abilities)).Cast<Abilities>();
         }
 

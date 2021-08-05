@@ -9,7 +9,7 @@ namespace Concierge.Characters.Characteristics
         public Appearance()
         {
             this.Gender = string.Empty;
-            this.Age = string.Empty;
+            this.Age = 0;
             this.Height = string.Empty;
             this.Weight = string.Empty;
             this.SkinColour = string.Empty;
@@ -20,7 +20,7 @@ namespace Concierge.Characters.Characteristics
 
         public string Gender { get; set; }
 
-        public string Age { get; set; }
+        public int Age { get; set; }
 
         public string Height { get; set; }
 

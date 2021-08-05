@@ -74,19 +74,54 @@ namespace Concierge.Utility
         private static readonly string[] backgrounds =
         {
             "Acolyte",
+            "Anthropologist",
+            "Archaeologist",
+            "Caravan Specialist",
             "Charlatan",
+            "City Watch",
+            "Cloistered Scholar",
+            "Courtier",
             "Criminal",
+            "Dissenter",
             "Entertainer",
             "Folk Hero",
+            "Gladiator",
             "Guild Artisan",
+            "Guild Merchant",
+            "Harborfolk",
             "Haunted One",
             "Hermit",
+            "Inheritor",
+            "Initiate",
+            "Inquisitor",
+            "Investigator",
+            "Knight",
             "Noble",
             "Outlander",
+            "Pirate",
             "Sage",
             "Sailor",
             "Soldier",
             "Urchin",
+        };
+
+        private static readonly string[] classes =
+        {
+            "Artificer",
+            "Barbarian",
+            "Bard",
+            "Blood Hunter",
+            "Cleric",
+            "Druid",
+            "Fighter",
+            "Gunslinger",
+            "Monk",
+            "Paladin",
+            "Ranger",
+            "Rogue",
+            "Sorcerer",
+            "Warlock",
+            "Wizard",
         };
 
         static Constants()
@@ -104,6 +139,7 @@ namespace Concierge.Utility
             Races = new ReadOnlyCollection<string>(races);
             Levels = new ReadOnlyCollection<int>(levels);
             Proficiencies = new ReadOnlyCollection<int>(proficiencies);
+            Classes = new ReadOnlyCollection<string>(classes);
         }
 
         public static ReadOnlyCollection<int> AutosaveIntervals { get; private set; }
@@ -127,6 +163,8 @@ namespace Concierge.Utility
         public static ReadOnlyCollection<int> Levels { get; }
 
         public static ReadOnlyCollection<int> Proficiencies { get; }
+
+        public static ReadOnlyCollection<string> Classes { get; }
 
         public static string AssemblyVersion
         {

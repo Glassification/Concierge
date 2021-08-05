@@ -11,7 +11,7 @@
         Width="650"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
-        Background="Black"
+        Background="#252526"
         ResizeMode="NoResize"
         KeyDown="Window_KeyDown"
         BorderThickness="1"

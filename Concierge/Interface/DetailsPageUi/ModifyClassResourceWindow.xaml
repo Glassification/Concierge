@@ -264,6 +264,7 @@
                     <xctk:IntegerUpDown 
                         Name="PoolUpDown"
                         Background="#FF3F3F3F"
+                        TextAlignment="Left"
                         BorderThickness="0"
                         Foreground="White"
                         FontSize="25"
@@ -285,6 +286,7 @@
                         Name="SpentUpDown"
                         Background="#FF3F3F3F"
                         BorderThickness="0"
+                        TextAlignment="Left"
                         Foreground="White"
                         FontSize="25"
                         Margin="0, 0, 20, 0"

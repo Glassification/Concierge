@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Concierge.Interface.DetailsPageUi"
-        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         mc:Ignorable="d"
         Title="ModifyAppearanceWindow"
         Height="415"
@@ -117,16 +117,17 @@
                     </Grid>
 
                     <!--Value-->
-                    <Grid Grid.Column="1"
-                      Background="#FF3F3F3F"
-                      Margin="0, 8, 20, 8">
-                        <TextBox x:Name="AgeTextBox"
-                                 Background="#FF3F3F3F"
-                                 Margin="5"
-                                 BorderThickness="0"
-                                 Foreground="White"
-                                 FontSize="15"
-                                 VerticalContentAlignment="Center"/>
+                    <Grid Grid.Column="1">
+                        <xctk:IntegerUpDown 
+                            Name="AgeUpDown"
+                            Background="#FF3F3F3F"
+                            BorderThickness="0"
+                            TextAlignment="Left"
+                            Foreground="White"
+                            FontSize="25"
+                            Margin="0, 0, 20, 0"
+                            Minimum="0"
+                            Height="40"/>
                     </Grid>
                 </Grid>
 

@@ -25,9 +25,9 @@ namespace Concierge.Interface
             this.AlignmentComboBox.ItemsSource = Constants.Alignment;
             this.RaceComboBox.ItemsSource = Constants.Races;
             this.BackgroundComboBox.ItemsSource = Constants.Backgrounds;
-            this.Class1ComboBox.ItemsSource = Enum.GetValues(typeof(ClassType)).Cast<ClassType>();
-            this.Class2ComboBox.ItemsSource = Enum.GetValues(typeof(ClassType)).Cast<ClassType>();
-            this.Class3ComboBox.ItemsSource = Enum.GetValues(typeof(ClassType)).Cast<ClassType>();
+            this.Class1ComboBox.ItemsSource = Constants.Classes;
+            this.Class2ComboBox.ItemsSource = Constants.Classes;
+            this.Class3ComboBox.ItemsSource = Constants.Classes;
 
             Program.Logger.Info($"Initialized {nameof(ModifyPropertiesWindow)}.");
         }

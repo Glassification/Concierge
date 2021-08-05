@@ -81,7 +81,7 @@ namespace Concierge.Characters
         {
             get
             {
-                double weight = 0.0;
+                var weight = 0.0;
 
                 foreach (var item in this.Inventories)
                 {
@@ -155,7 +155,7 @@ namespace Concierge.Characters
                 classes.Append(this.Class2.Name.IsNullOrWhiteSpace() ? string.Empty : $"{this.Class2.Name}, ");
                 classes.Append(this.Class3.Name.IsNullOrWhiteSpace() ? string.Empty : this.Class3.Name);
 
-                var classString = classes.ToString().Trim().Trim(',');
+                var classString = classes.ToString().Trim(new char[] { ' ', ',' });
 
                 return classString;
             }
@@ -208,7 +208,7 @@ namespace Concierge.Characters
                         return true;
                     }
 
-                    break;
+                    return false;
 
                 // Simple Melee Weapons
                 case WeaponTypes.Club:
@@ -226,7 +226,7 @@ namespace Concierge.Characters
                         return true;
                     }
 
-                    break;
+                    return false;
 
                 // Martial Ranged Weapons
                 case WeaponTypes.Blowgun:
@@ -239,7 +239,7 @@ namespace Concierge.Characters
                         return true;
                     }
 
-                    break;
+                    return false;
 
                 // Martial Melee Weapons
                 case WeaponTypes.Battleaxe:
@@ -265,32 +265,15 @@ namespace Concierge.Characters
                         return true;
                     }
 
-                    break;
+                    return false;
                 default:
                     return false;
             }
-
-            return false;
         }
 
         public Chapter GetChapterByDocumentId(Guid id)
         {
             return this.Chapters.Single(x => x.Documents.Any(y => y.Id.Equals(id)));
-        }
-
-        public Ability GetAbilityById(Guid id)
-        {
-            return this.Abilities.Single(x => x.Id.Equals(id));
-        }
-
-        public Weapon GetWeaponById(Guid id)
-        {
-            return this.Weapons.Single(x => x.Id.Equals(id));
-        }
-
-        public Ammunition GetAmmunitionById(Guid id)
-        {
-            return this.Ammunitions.Single(x => x.Id.Equals(id));
         }
 
         public Spell GetSpellById(Guid id)

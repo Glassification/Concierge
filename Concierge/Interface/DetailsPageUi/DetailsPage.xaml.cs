@@ -60,6 +60,16 @@ namespace Concierge.Interface.DetailsPageUi
             }
         }
 
+        private static void DrawProficiency(ConciergeDataGrid conciergeDataGrid, Dictionary<Guid, string> proficiencies)
+        {
+            conciergeDataGrid.Items.Clear();
+
+            foreach (var item in proficiencies)
+            {
+                conciergeDataGrid.Items.Add(item);
+            }
+        }
+
         private void DrawWeight()
         {
             this.WeightCarriedField.Text = Program.CcsFile.Character.CarryWeight.ToString();
@@ -72,53 +82,35 @@ namespace Concierge.Interface.DetailsPageUi
 
         private void DrawAppearance()
         {
-            this.GenderField.Text = Program.CcsFile.Character.Appearance.Gender;
-            this.AgeField.Text = Program.CcsFile.Character.Appearance.Age;
-            this.HeightField.Text = Program.CcsFile.Character.Appearance.Height;
-            this.WeightField.Text = Program.CcsFile.Character.Appearance.Weight;
-            this.HairColourField.Text = Program.CcsFile.Character.Appearance.HairColour;
-            this.SkinColourField.Text = Program.CcsFile.Character.Appearance.SkinColour;
-            this.EyeColourField.Text = Program.CcsFile.Character.Appearance.EyeColour;
-            this.MarksField.Text = Program.CcsFile.Character.Appearance.DistinguishingMarks;
+            var appearance = Program.CcsFile.Character.Appearance;
+            this.GenderField.Text = appearance.Gender;
+            this.AgeField.Text = appearance.Age.ToString();
+            this.HeightField.Text = appearance.Height;
+            this.WeightField.Text = appearance.Weight;
+            this.HairColourField.Text = appearance.HairColour;
+            this.SkinColourField.Text = appearance.SkinColour;
+            this.EyeColourField.Text = appearance.EyeColour;
+            this.MarksField.Text = appearance.DistinguishingMarks;
         }
 
         private void DrawPersonality()
         {
-            this.TraitField1.Text = Program.CcsFile.Character.Personality.Trait1;
-            this.TraitField2.Text = Program.CcsFile.Character.Personality.Trait2;
-            this.IdealField.Text = Program.CcsFile.Character.Personality.Ideal;
-            this.BondField.Text = Program.CcsFile.Character.Personality.Bond;
-            this.FlawField.Text = Program.CcsFile.Character.Personality.Flaw;
-            this.BackgroundField.Text = Program.CcsFile.Character.Personality.Background;
-            this.NotesField.Text = Program.CcsFile.Character.Personality.Notes;
+            var personality = Program.CcsFile.Character.Personality;
+            this.TraitField1.Text = personality.Trait1;
+            this.TraitField2.Text = personality.Trait2;
+            this.IdealField.Text = personality.Ideal;
+            this.BondField.Text = personality.Bond;
+            this.FlawField.Text = personality.Flaw;
+            this.BackgroundField.Text = personality.Background;
+            this.NotesField.Text = personality.Notes;
         }
 
         private void DrawProficiencies()
         {
-            this.WeaponProficiencyDataGrid.Items.Clear();
-            this.ArmorProficiencyDataGrid.Items.Clear();
-            this.ShieldProficiencyDataGrid.Items.Clear();
-            this.ToolProficiencyDataGrid.Items.Clear();
-
-            foreach (var weapon in Program.CcsFile.Character.Proficiency.Weapons)
-            {
-                this.WeaponProficiencyDataGrid.Items.Add(weapon);
-            }
-
-            foreach (var armor in Program.CcsFile.Character.Proficiency.Armors)
-            {
-                this.ArmorProficiencyDataGrid.Items.Add(armor);
-            }
-
-            foreach (var shield in Program.CcsFile.Character.Proficiency.Shields)
-            {
-                this.ShieldProficiencyDataGrid.Items.Add(shield);
-            }
-
-            foreach (var tool in Program.CcsFile.Character.Proficiency.Tools)
-            {
-                this.ToolProficiencyDataGrid.Items.Add(tool);
-            }
+            DrawProficiency(this.WeaponProficiencyDataGrid, Program.CcsFile.Character.Proficiency.Weapons);
+            DrawProficiency(this.ArmorProficiencyDataGrid, Program.CcsFile.Character.Proficiency.Armors);
+            DrawProficiency(this.ShieldProficiencyDataGrid, Program.CcsFile.Character.Proficiency.Shields);
+            DrawProficiency(this.ToolProficiencyDataGrid, Program.CcsFile.Character.Proficiency.Tools);
 
             this.ProficiencyBonusField.Text = $"  Bonus: {Program.CcsFile.Character.ProficiencyBonus}  ";
         }

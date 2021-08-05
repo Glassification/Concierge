@@ -58,7 +58,7 @@ namespace Concierge.Interface.AbilitiesPageUi
         private void FillFields(Ability ability)
         {
             this.NameTextBox.Text = ability.Name;
-            this.LevelTextBox.Text = ability.Level;
+            this.LevelUpDown.Value = ability.Level;
             this.UsesTextBox.Text = ability.Uses;
             this.RecoveryTextBox.Text = ability.Recovery;
             this.ActionTextBox.Text = ability.Action;
@@ -68,7 +68,7 @@ namespace Concierge.Interface.AbilitiesPageUi
         private void ClearFields()
         {
             this.NameTextBox.Text = string.Empty;
-            this.LevelTextBox.Text = string.Empty;
+            this.LevelUpDown.Value = 0;
             this.UsesTextBox.Text = string.Empty;
             this.RecoveryTextBox.Text = string.Empty;
             this.ActionTextBox.Text = string.Empty;
@@ -80,7 +80,7 @@ namespace Concierge.Interface.AbilitiesPageUi
             return new Ability()
             {
                 Name = this.NameTextBox.Text,
-                Level = this.LevelTextBox.Text,
+                Level = this.LevelUpDown.Value ?? 0,
                 Uses = this.UsesTextBox.Text,
                 Recovery = this.RecoveryTextBox.Text,
                 Action = this.ActionTextBox.Text,
@@ -91,7 +91,7 @@ namespace Concierge.Interface.AbilitiesPageUi
         private void UpdateAbility(Ability ability)
         {
             ability.Name = this.NameTextBox.Text;
-            ability.Level = this.LevelTextBox.Text;
+            ability.Level = this.LevelUpDown.Value ?? 0;
             ability.Uses = this.UsesTextBox.Text;
             ability.Recovery = this.RecoveryTextBox.Text;
             ability.Action = this.ActionTextBox.Text;

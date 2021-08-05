@@ -287,6 +287,7 @@
                                         FontSize="25"
                                         Margin="0, 0, 20, 0"
                                         Height="40"
+                                        TextAlignment="Left"
                                         Minimum="0"/>
                 </Grid>
             </Grid>
@@ -348,6 +349,7 @@
                                         FontSize="25"
                                         Minimum="0"
                                         Margin="0, 0, 20, 0"
+                                        TextAlignment="Left"
                                         Height="40"/>
                 </Grid>
             </Grid>
@@ -436,6 +438,7 @@
                                         FontSize="25"
                                         Minimum="0"
                                         Margin="0, 0, 20, 0"
+                                        TextAlignment="Left"
                                         Height="40"/>
                 </Grid>
             </Grid>

@@ -281,6 +281,7 @@
                                         Foreground="White"
                                         FontSize="25"
                                         Margin="0, 0, 20, 0"
+                                        TextAlignment="Left"
                                         Height="40"
                                         Minimum="0"/>
                 </Grid>
@@ -367,6 +368,7 @@
                                        Background="#FF3F3F3F"
                                        BorderThickness="0"
                                        Foreground="White"
+                                        TextAlignment="Left"
                                        FontSize="25"
                                        Margin="0, 0, 20, 0"
                                        Height="40"

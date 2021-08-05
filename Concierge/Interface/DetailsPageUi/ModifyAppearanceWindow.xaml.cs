@@ -39,7 +39,7 @@ namespace Concierge.Interface.DetailsPageUi
         private void FillFields()
         {
             this.GenderTextBox.Text = this.Appearance.Gender;
-            this.AgeTextBox.Text = this.Appearance.Age;
+            this.AgeUpDown.Value = this.Appearance.Age;
             this.HeightTextBox.Text = this.Appearance.Height;
             this.WeightTextBox.Text = this.Appearance.Weight;
             this.SkinColourTextBox.Text = this.Appearance.SkinColour;
@@ -51,7 +51,7 @@ namespace Concierge.Interface.DetailsPageUi
         private void UpdateAppearance()
         {
             this.Appearance.Gender = this.GenderTextBox.Text;
-            this.Appearance.Age = this.AgeTextBox.Text;
+            this.Appearance.Age = this.AgeUpDown.Value ?? 0;
             this.Appearance.Height = this.HeightTextBox.Text;
             this.Appearance.Weight = this.WeightTextBox.Text;
             this.Appearance.SkinColour = this.SkinColourTextBox.Text;
