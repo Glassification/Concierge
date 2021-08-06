@@ -134,7 +134,7 @@
                             <Button x:Name="ButtonOpenCharacter" Foreground="White" Click="ButtonOpenCharacter_Click">
                                 <StackPanel Orientation="Horizontal">
                                     <materialDesign:PackIcon Kind="Folder" Height="25" Width="25" Margin="0 10"/>
-                                    <TextBlock Text="Open" VerticalAlignment="Center" Margin="20 10"/>
+                                    <TextBlock Text="Open..." VerticalAlignment="Center" Margin="20 10"/>
                                 </StackPanel>
                             </Button>
                             <Button x:Name="ButtonSaveCharacter" Foreground="White" Click="ButtonSaveCharacter_Click">
@@ -146,7 +146,7 @@
                             <Button x:Name="ButtonSaveCharacterAs" Foreground="White" Click="ButtonSaveCharacterAs_Click">
                                 <StackPanel Orientation="Horizontal">
                                     <materialDesign:PackIcon Kind="ContentSaveAll" Height="25" Width="25" Margin="0 10"/>
-                                    <TextBlock Text="Save As" VerticalAlignment="Center" Margin="20 10"/>
+                                    <TextBlock Text="Save As..." VerticalAlignment="Center" Margin="20 10"/>
                                 </StackPanel>
                             </Button>
                             <Separator Foreground="White"/>
@@ -160,13 +160,20 @@
                             <Button x:Name="ButtonProperties" Foreground="White" Click="PropertiesButton_Click">
                                 <StackPanel Orientation="Horizontal">
                                     <materialDesign:PackIcon Kind="SmartCardOutline" Height="25" Width="25" Margin="0 10"/>
-                                    <TextBlock Text="Properties" VerticalAlignment="Center" Margin="20 10"/>
+                                    <TextBlock Text="Properties..." VerticalAlignment="Center" Margin="20 10"/>
                                 </StackPanel>
                             </Button>
                             <Button x:Name="SettingsButton" Foreground="White" Click="SettingsButton_Click">
                                 <StackPanel Orientation="Horizontal">
                                     <materialDesign:PackIcon Kind="Settings" Height="25" Width="25" Margin="0 10"/>
-                                    <TextBlock Text="Settings" VerticalAlignment="Center" Margin="20 10"/>
+                                    <TextBlock Text="Settings..." VerticalAlignment="Center" Margin="20 10"/>
+                                </StackPanel>
+                            </Button>
+                            <Separator Foreground="White"/>
+                            <Button x:Name="AboutButton" Foreground="White" Click="AboutButton_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <materialDesign:PackIcon Kind="About" Height="25" Width="25" Margin="0 10"/>
+                                    <TextBlock Text="About..." VerticalAlignment="Center" Margin="20 10"/>
                                 </StackPanel>
                             </Button>
                         </StackPanel>

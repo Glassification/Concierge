@@ -12,6 +12,7 @@ namespace Concierge.Interface.AbilitiesPageUi
     using System.Windows.Media;
 
     using Concierge.Characters.Characteristics;
+    using Concierge.Utility;
 
     /// <summary>
     /// Interaction logic for ModifyAbilitiesWindow.xaml.
@@ -21,6 +22,8 @@ namespace Concierge.Interface.AbilitiesPageUi
         public ModifyAbilitiesWindow()
         {
             this.InitializeComponent();
+
+            this.NameComboBox.ItemsSource = Constants.Abilities;
         }
 
         public delegate void ApplyChangesEventHandler(object sender, EventArgs e);
@@ -57,17 +60,17 @@ namespace Concierge.Interface.AbilitiesPageUi
 
         private void FillFields(Ability ability)
         {
-            this.NameTextBox.Text = ability.Name;
+            this.NameComboBox.Text = ability.Name;
             this.LevelUpDown.Value = ability.Level;
             this.UsesTextBox.Text = ability.Uses;
             this.RecoveryTextBox.Text = ability.Recovery;
             this.ActionTextBox.Text = ability.Action;
-            this.NotesTextBox.Text = ability.Note;
+            this.NotesTextBox.Text = ability.Description;
         }
 
         private void ClearFields()
         {
-            this.NameTextBox.Text = string.Empty;
+            this.NameComboBox.Text = string.Empty;
             this.LevelUpDown.Value = 0;
             this.UsesTextBox.Text = string.Empty;
             this.RecoveryTextBox.Text = string.Empty;
@@ -79,23 +82,23 @@ namespace Concierge.Interface.AbilitiesPageUi
         {
             return new Ability()
             {
-                Name = this.NameTextBox.Text,
+                Name = this.NameComboBox.Text,
                 Level = this.LevelUpDown.Value ?? 0,
                 Uses = this.UsesTextBox.Text,
                 Recovery = this.RecoveryTextBox.Text,
                 Action = this.ActionTextBox.Text,
-                Note = this.NotesTextBox.Text,
+                Description = this.NotesTextBox.Text,
             };
         }
 
         private void UpdateAbility(Ability ability)
         {
-            ability.Name = this.NameTextBox.Text;
+            ability.Name = this.NameComboBox.Text;
             ability.Level = this.LevelUpDown.Value ?? 0;
             ability.Uses = this.UsesTextBox.Text;
             ability.Recovery = this.RecoveryTextBox.Text;
             ability.Action = this.ActionTextBox.Text;
-            ability.Note = this.NotesTextBox.Text;
+            ability.Description = this.NotesTextBox.Text;
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
@@ -152,6 +155,14 @@ namespace Concierge.Interface.AbilitiesPageUi
         private void Button_MouseLeave(object sender, RoutedEventArgs e)
         {
             (sender as Button).Foreground = Brushes.White;
+        }
+
+        private void NameComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (this.NameComboBox.SelectedItem != null)
+            {
+                this.FillFields(this.NameComboBox.SelectedItem as Ability);
+            }
         }
     }
 }

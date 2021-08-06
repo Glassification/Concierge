@@ -24,10 +24,32 @@ namespace Concierge.Utility
         public const int MaxClasses = 3;
         public const int MaxAttunedItems = 3;
 
+        public const string Designer = "Thomas Beckett";
+        public const string License = "This program is provided as is. Thomas Beckett Inc. is not responsable for any injuries or TPKs that may result from the use of this product.";
+        public const string Copyright = "2021 Most Rights Reserved.";
+
         private static readonly int[] levels =
         {
-            300, 900, 2700, 6500, 14000, 23000, 34000, 48000, 64000, 85000, 100000,
-            120000, 140000, 165000, 195000, 225000, 265000, 305000, 355000, 0,
+            300,
+            900,
+            2700,
+            6500,
+            14000,
+            23000,
+            34000,
+            48000,
+            64000,
+            85000,
+            100000,
+            120000,
+            140000,
+            165000,
+            195000,
+            225000,
+            265000,
+            305000,
+            355000,
+            0,
         };
 
         private static readonly int[] proficiencies = { 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 6, 6, 6, 6 };
@@ -133,6 +155,7 @@ namespace Concierge.Utility
             Spells = new ReadOnlyCollection<Spell>(DefaultListLoader.LoadSpellList());
             Inventories = new ReadOnlyCollection<Inventory>(DefaultListLoader.LoadInventoryList());
             Languages = new ReadOnlyCollection<Language>(DefaultListLoader.LoadLanguageList());
+            Abilities = new ReadOnlyCollection<Ability>(DefaultListLoader.LoadAbilityList());
 
             Alignment = new ReadOnlyCollection<string>(alignment);
             Backgrounds = new ReadOnlyCollection<string>(backgrounds);
@@ -165,6 +188,8 @@ namespace Concierge.Utility
         public static ReadOnlyCollection<int> Proficiencies { get; }
 
         public static ReadOnlyCollection<string> Classes { get; }
+
+        public static ReadOnlyCollection<Ability> Abilities { get; }
 
         public static string AssemblyVersion
         {

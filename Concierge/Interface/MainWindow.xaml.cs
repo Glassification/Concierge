@@ -35,6 +35,7 @@ namespace Concierge.Interface
         private readonly FileAccessService fileAccessService = new FileAccessService();
         private readonly SettingsWindow settingsWindow = new SettingsWindow();
         private readonly ModifyPropertiesWindow modifyPropertiesWindow = new ModifyPropertiesWindow();
+        private readonly AboutConciergeWindow aboutConciergeWindow = new AboutConciergeWindow();
 
         private readonly AutosaveTimer autosaveTimer = new AutosaveTimer();
 
@@ -231,6 +232,9 @@ namespace Concierge.Interface
 
             switch (e.Key)
             {
+                case Key.H:
+                    this.aboutConciergeWindow.ShowWindow();
+                    break;
                 case Key.L:
                     this.LongRest();
                     break;
@@ -481,6 +485,13 @@ namespace Concierge.Interface
             {
                 this.autosaveTimer.Stop();
             }
+        }
+
+        private void AboutButton_Click(object sender, RoutedEventArgs e)
+        {
+            Program.Logger.Info($"Open About.");
+
+            this.aboutConciergeWindow.ShowWindow();
         }
 
         private void Button_MouseEnter(object sender, MouseEventArgs e)

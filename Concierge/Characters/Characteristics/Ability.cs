@@ -21,9 +21,11 @@ namespace Concierge.Characters.Characteristics
 
         public string Recovery { get; set; }
 
+        public string Requirements { get; set; }
+
         public string Action { get; set; }
 
-        public string Note { get; set; }
+        public string Description { get; set; }
 
         public Guid Id { get; private set; }
 

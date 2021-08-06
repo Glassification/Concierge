@@ -16,23 +16,23 @@ namespace Concierge.Persistence
 
     public static class DefaultListLoader
     {
-        public static List<Weapon> LoadWeaponList()
+        public static List<Ability> LoadAbilityList()
         {
-            var weapons = new List<Weapon>();
+            var abilities = new List<Ability>();
 
             try
             {
-                var rawJson = Encoding.Default.GetString(Properties.Resources.Weapon);
-                weapons = JsonConvert.DeserializeObject<List<Weapon>>(rawJson);
+                var rawJson = Encoding.Default.GetString(Properties.Resources.Ability);
+                abilities = JsonConvert.DeserializeObject<List<Ability>>(rawJson);
 
-                Program.Logger.Info("Weapons loaded successfully.");
+                Program.Logger.Info("Languages loaded successfully.");
             }
             catch (Exception ex)
             {
                 Program.ErrorService.LogError(ex, Severity.Release);
             }
 
-            return weapons;
+            return abilities;
         }
 
         public static List<Ammunition> LoadAmmunitionList()
@@ -52,25 +52,6 @@ namespace Concierge.Persistence
             }
 
             return ammunitions;
-        }
-
-        public static List<Spell> LoadSpellList()
-        {
-            var spells = new List<Spell>();
-
-            try
-            {
-                var rawJson = Encoding.Default.GetString(Properties.Resources.Spell);
-                spells = JsonConvert.DeserializeObject<List<Spell>>(rawJson);
-
-                Program.Logger.Info("Spells loaded successfully.");
-            }
-            catch (Exception ex)
-            {
-                Program.ErrorService.LogError(ex, Severity.Release);
-            }
-
-            return spells;
         }
 
         public static List<Inventory> LoadInventoryList()
@@ -109,6 +90,44 @@ namespace Concierge.Persistence
             }
 
             return languages;
+        }
+
+        public static List<Spell> LoadSpellList()
+        {
+            var spells = new List<Spell>();
+
+            try
+            {
+                var rawJson = Encoding.Default.GetString(Properties.Resources.Spell);
+                spells = JsonConvert.DeserializeObject<List<Spell>>(rawJson);
+
+                Program.Logger.Info("Spells loaded successfully.");
+            }
+            catch (Exception ex)
+            {
+                Program.ErrorService.LogError(ex, Severity.Release);
+            }
+
+            return spells;
+        }
+
+        public static List<Weapon> LoadWeaponList()
+        {
+            var weapons = new List<Weapon>();
+
+            try
+            {
+                var rawJson = Encoding.Default.GetString(Properties.Resources.Weapon);
+                weapons = JsonConvert.DeserializeObject<List<Weapon>>(rawJson);
+
+                Program.Logger.Info("Weapons loaded successfully.");
+            }
+            catch (Exception ex)
+            {
+                Program.ErrorService.LogError(ex, Severity.Release);
+            }
+
+            return weapons;
         }
     }
 }

@@ -196,8 +196,8 @@
                         Width="0.1*"
                         ElementStyle="{StaticResource ColumnElementStyle}"/>
                     <DataGridTextColumn
-                        Header="Notes"
-                        Binding="{Binding Note}"
+                        Header="Description"
+                        Binding="{Binding Description}"
                         Width="0.4*"
                         ElementStyle="{StaticResource ColumnElementStyle}"/>
                 </DataGrid.Columns>

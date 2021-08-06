@@ -1,0 +1,200 @@
+﻿<Window x:Class="Concierge.Interface.AboutConciergeWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Concierge.Interface"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Title="AboutConciergeWindow"
+        Height="250"
+        Width="650"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        Background="#252526"
+        ResizeMode="NoResize"
+        KeyDown="Window_KeyDown"
+        BorderThickness="1"
+        BorderBrush="#706599"
+        Style="{StaticResource WindowXboxDasboardStyle}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="6*"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <TextBlock
+                Text="About Concierge"
+                FontSize="35"
+                Foreground="#988CD0"
+                Margin="30, 0, 0, 0"
+                FontWeight="Bold"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Left"/>
+            <Button 
+                x:Name="CloseButton"
+                Height="50"
+                Width="60"
+                Background="Transparent"
+                BorderBrush="{x:Null}"
+                Foreground="White"
+                ToolTip="Close"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Center"
+                Click="CloseButton_Click"
+                MouseEnter="Button_MouseEnter"
+                MouseLeave="Button_MouseLeave">
+                <materialDesign:PackIcon Kind="WindowClose" Width="25" Height="25"/>
+            </Button>
+        </Grid>
+        
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="66*"/>
+                <RowDefinition Height="33*"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="5*"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid Grid.Column="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="5*"/>
+                        <RowDefinition Height="5*"/>
+                    </Grid.RowDefinitions>
+
+                    <!--Version-->
+                    <Grid Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="40*"/>
+                            <ColumnDefinition Width="60*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <!--Title-->
+                        <Grid Grid.Column="0">
+                            <TextBlock 
+                            Text="Version:"
+                            Foreground="White"
+                            FontSize="20"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Margin="10, 0, 0, 0"/>
+                        </Grid>
+
+                        <!--Value-->
+                        <Grid Grid.Column="1">
+                            <TextBlock
+                            x:Name="VersionField"
+                            Text="0.0.0"
+                            Foreground="White"
+                            FontSize="20"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Margin="10, 0, 0, 0"/>
+                        </Grid>
+                    </Grid>
+
+                    <!--Designer-->
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="40*"/>
+                            <ColumnDefinition Width="60*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <!--Title-->
+                        <Grid Grid.Column="0">
+                            <TextBlock 
+                            Text="Designed By:"
+                            Foreground="White"
+                            FontSize="20"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Margin="10, 0, 0, 0"/>
+                        </Grid>
+
+                        <!--Value-->
+                        <Grid Grid.Column="1">
+                            <TextBlock
+                            x:Name="DesignerField"
+                            Text="Tommy"
+                            Foreground="White"
+                            FontSize="20"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Margin="10, 0, 0, 0"/>
+                        </Grid>
+                    </Grid>
+                </Grid>
+
+                <Grid Grid.Column="1">
+                    <Grid>
+                        <TextBlock
+                            x:Name="LicenseField"
+                            Text="Some Text Here"
+                            Foreground="White"
+                            FontSize="15"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top"
+                            TextWrapping="Wrap"
+                            Margin="10, 0, 0, 0"/>
+                    </Grid>
+                </Grid>
+            </Grid>
+
+            <Grid Grid.Row="1">
+                <!--Copyright-->
+                <Grid Grid.Row="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="20*"/>
+                        <ColumnDefinition Width="80*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!--Title-->
+                    <Grid Grid.Column="0">
+                        <TextBlock 
+                            Text="Copyright:"
+                            Foreground="White"
+                            FontSize="20"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Margin="10, 0, 0, 0"/>
+                    </Grid>
+
+                    <!--Value-->
+                    <Grid Grid.Column="1">
+                        <TextBlock
+                            x:Name="CopyrightField"
+                            Text="2021"
+                            Foreground="White"
+                            FontSize="20"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Margin="10, 0, 0, 0"/>
+                    </Grid>
+                </Grid>
+            </Grid>
+            
+            
+        </Grid>
+        
+        <Grid Grid.Row="2">
+            <StackPanel Orientation="Horizontal"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center">
+                <Button x:Name="OkButton"
+                        Style="{StaticResource PopupWindowButton}"
+                        BorderBrush="{x:Null}"
+                        Content="OK"
+                        Click="OkButton_Click"
+                        MouseEnter="Button_MouseEnter"
+                        MouseLeave="Button_MouseLeave">
+                </Button>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>
