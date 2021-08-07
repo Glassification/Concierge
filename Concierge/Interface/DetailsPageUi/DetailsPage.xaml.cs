@@ -176,6 +176,7 @@ namespace Concierge.Interface.DetailsPageUi
             if (this.WeaponProficiencyDataGrid.SelectedItem != null)
             {
                 Program.Modify();
+                ConciergeSound.ButtonClick();
 
                 var weapon = (KeyValuePair<Guid, string>)this.WeaponProficiencyDataGrid.SelectedItem;
                 Program.CcsFile.Character.Proficiency.Weapons.Remove(weapon.Key);
@@ -184,6 +185,7 @@ namespace Concierge.Interface.DetailsPageUi
             else if (this.ArmorProficiencyDataGrid.SelectedItem != null)
             {
                 Program.Modify();
+                ConciergeSound.ButtonClick();
 
                 var armor = (KeyValuePair<Guid, string>)this.ArmorProficiencyDataGrid.SelectedItem;
                 Program.CcsFile.Character.Proficiency.Armors.Remove(armor.Key);
@@ -192,6 +194,7 @@ namespace Concierge.Interface.DetailsPageUi
             else if (this.ShieldProficiencyDataGrid.SelectedItem != null)
             {
                 Program.Modify();
+                ConciergeSound.ButtonClick();
 
                 var shield = (KeyValuePair<Guid, string>)this.ShieldProficiencyDataGrid.SelectedItem;
                 Program.CcsFile.Character.Proficiency.Shields.Remove(shield.Key);
@@ -200,6 +203,7 @@ namespace Concierge.Interface.DetailsPageUi
             else if (this.ToolProficiencyDataGrid.SelectedItem != null)
             {
                 Program.Modify();
+                ConciergeSound.ButtonClick();
 
                 var tool = (KeyValuePair<Guid, string>)this.ToolProficiencyDataGrid.SelectedItem;
                 Program.CcsFile.Character.Proficiency.Tools.Remove(tool.Key);
@@ -213,24 +217,28 @@ namespace Concierge.Interface.DetailsPageUi
 
             if (this.WeaponProficiencyDataGrid.SelectedItem != null)
             {
+                ConciergeSound.ButtonClick();
                 proficiency = (KeyValuePair<Guid, string>)this.WeaponProficiencyDataGrid.SelectedItem;
                 this.modifyProficiencyWindow.ShowEdit(proficiency.Key);
                 this.DrawProficiencies();
             }
             else if (this.ArmorProficiencyDataGrid.SelectedItem != null)
             {
+                ConciergeSound.ButtonClick();
                 proficiency = (KeyValuePair<Guid, string>)this.ArmorProficiencyDataGrid.SelectedItem;
                 this.modifyProficiencyWindow.ShowEdit(proficiency.Key);
                 this.DrawProficiencies();
             }
             else if (this.ShieldProficiencyDataGrid.SelectedItem != null)
             {
+                ConciergeSound.ButtonClick();
                 proficiency = (KeyValuePair<Guid, string>)this.ShieldProficiencyDataGrid.SelectedItem;
                 this.modifyProficiencyWindow.ShowEdit(proficiency.Key);
                 this.DrawProficiencies();
             }
             else if (this.ToolProficiencyDataGrid.SelectedItem != null)
             {
+                ConciergeSound.ButtonClick();
                 proficiency = (KeyValuePair<Guid, string>)this.ToolProficiencyDataGrid.SelectedItem;
                 this.modifyProficiencyWindow.ShowEdit(proficiency.Key);
                 this.DrawProficiencies();
@@ -239,6 +247,7 @@ namespace Concierge.Interface.DetailsPageUi
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
+            ConciergeSound.ButtonClick();
             this.modifyProficiencyWindow.ShowAdd();
 
             this.DrawProficiencies();
@@ -246,6 +255,7 @@ namespace Concierge.Interface.DetailsPageUi
 
         private void ClearButton_Click(object sender, RoutedEventArgs e)
         {
+            ConciergeSound.ButtonClick();
             this.WeaponProficiencyDataGrid.UnselectAll();
             this.ArmorProficiencyDataGrid.UnselectAll();
             this.ShieldProficiencyDataGrid.UnselectAll();
@@ -294,6 +304,7 @@ namespace Concierge.Interface.DetailsPageUi
 
         private void EditConditionsButton_Click(object sender, RoutedEventArgs e)
         {
+            ConciergeSound.ButtonClick();
             this.mondifyConditionsWindow.ShowEdit(Program.CcsFile.Character.Vitality.Conditions);
             this.DrawConditions();
         }
@@ -302,6 +313,7 @@ namespace Concierge.Interface.DetailsPageUi
         {
             if (this.LanguagesDataGrid.SelectedItem != null)
             {
+                ConciergeSound.ButtonClick();
                 this.modifyLanguagesWindow.ShowEdit(this.LanguagesDataGrid.SelectedItem as Language);
                 this.DrawLanguages();
             }
@@ -311,6 +323,7 @@ namespace Concierge.Interface.DetailsPageUi
         {
             if (this.ResourcesDataGrid.SelectedItem != null)
             {
+                ConciergeSound.ButtonClick();
                 this.modifyClassResourceWindow.ShowEdit(this.ResourcesDataGrid.SelectedItem as ClassResource);
                 this.DrawResources();
             }
@@ -318,12 +331,14 @@ namespace Concierge.Interface.DetailsPageUi
 
         private void AddLanguagesButton_Click(object sender, RoutedEventArgs e)
         {
+            ConciergeSound.ButtonClick();
             this.modifyLanguagesWindow.ShowAdd(Program.CcsFile.Character.Details.Languages);
             this.DrawLanguages();
         }
 
         private void AddResourcesButton_Click(object sender, RoutedEventArgs e)
         {
+            ConciergeSound.ButtonClick();
             this.modifyClassResourceWindow.ShowAdd(Program.CcsFile.Character.ClassResources);
             this.DrawResources();
         }
@@ -333,6 +348,7 @@ namespace Concierge.Interface.DetailsPageUi
             if (this.LanguagesDataGrid.SelectedItem != null)
             {
                 Program.Modify();
+                ConciergeSound.ButtonClick();
 
                 Program.CcsFile.Character.Details.Languages.Remove(this.LanguagesDataGrid.SelectedItem as Language);
                 this.DrawLanguages();
@@ -344,6 +360,7 @@ namespace Concierge.Interface.DetailsPageUi
             if (this.ResourcesDataGrid.SelectedItem != null)
             {
                 Program.Modify();
+                ConciergeSound.ButtonClick();
 
                 Program.CcsFile.Character.ClassResources.Remove(this.ResourcesDataGrid.SelectedItem as ClassResource);
                 this.DrawResources();
@@ -352,27 +369,32 @@ namespace Concierge.Interface.DetailsPageUi
 
         private void ClearLanguagesButton_Click(object sender, RoutedEventArgs e)
         {
+            ConciergeSound.ButtonClick();
             this.LanguagesDataGrid.UnselectAll();
         }
 
         private void ClearResourcesButton_Click(object sender, RoutedEventArgs e)
         {
+            ConciergeSound.ButtonClick();
             this.ResourcesDataGrid.UnselectAll();
         }
 
         private void ClearConditionsButton_Click(object sender, RoutedEventArgs e)
         {
+            ConciergeSound.ButtonClick();
             this.ConditionsDataGrid.UnselectAll();
         }
 
         private void EditAppearanceButton_Click(object sender, RoutedEventArgs e)
         {
+            ConciergeSound.ButtonClick();
             this.modifyAppearanceWindow.ShowEdit(Program.CcsFile.Character.Appearance);
             this.DrawAppearance();
         }
 
         private void EditPersonalityButton_Click(object sender, RoutedEventArgs e)
         {
+            ConciergeSound.ButtonClick();
             this.modifyPersonalityWindow.ShowEdit(Program.CcsFile.Character.Personality);
             this.DrawPersonality();
         }

@@ -10,6 +10,7 @@ namespace Concierge.Interface.HelperUi
     using System.Windows.Media;
 
     using Concierge.Interface.Enums;
+    using Concierge.Utility;
     using MaterialDesignThemes.Wpf;
 
     /// <summary>
@@ -34,6 +35,9 @@ namespace Concierge.Interface.HelperUi
             this.MessageTitle.Text = title;
             this.SetMessageIcon(messageWindowIcons);
             this.SetMessageButtons(messageWindowButtons);
+
+            ConciergeSound.Warning();
+
             this.ShowDialog();
 
             return this.Result;
@@ -115,30 +119,35 @@ namespace Concierge.Interface.HelperUi
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             this.Result = MessageWindowResult.Exit;
+            ConciergeSound.ButtonClick();
             this.Hide();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
             this.Result = MessageWindowResult.Cancel;
+            ConciergeSound.ButtonClick();
             this.Hide();
         }
 
         private void NoButton_Click(object sender, RoutedEventArgs e)
         {
             this.Result = MessageWindowResult.No;
+            ConciergeSound.ButtonClick();
             this.Hide();
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
             this.Result = MessageWindowResult.OK;
+            ConciergeSound.ButtonClick();
             this.Hide();
         }
 
         private void YesButton_Click(object sender, RoutedEventArgs e)
         {
             this.Result = MessageWindowResult.Yes;
+            ConciergeSound.ButtonClick();
             this.Hide();
         }
 

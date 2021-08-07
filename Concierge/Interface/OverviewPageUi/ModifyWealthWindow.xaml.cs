@@ -4,6 +4,7 @@
 
 namespace Concierge.Interface.OverviewPageUi
 {
+    using Concierge.Utility;
     using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Input;
@@ -69,12 +70,14 @@ namespace Concierge.Interface.OverviewPageUi
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
+            ConciergeSound.ButtonClick();
             this.Hide();
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Modify();
+            ConciergeSound.ButtonClick();
 
             Program.CcsFile.Character.Wealth.Copper = this.CP;
             Program.CcsFile.Character.Wealth.Silver = this.SP;
@@ -88,6 +91,7 @@ namespace Concierge.Interface.OverviewPageUi
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Modify();
+            ConciergeSound.ButtonClick();
 
             if (this.CpRadioButton.IsChecked ?? false)
             {
@@ -115,6 +119,7 @@ namespace Concierge.Interface.OverviewPageUi
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
+            ConciergeSound.ButtonClick();
             this.Hide();
         }
 

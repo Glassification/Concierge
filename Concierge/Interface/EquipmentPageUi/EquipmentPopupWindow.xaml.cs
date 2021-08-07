@@ -10,6 +10,7 @@ namespace Concierge.Interface.EquipmentPageUi
     using System.Windows.Media;
 
     using Concierge.Characters.Enums;
+    using Concierge.Utility;
 
     /// <summary>
     /// Interaction logic for EquipmentPopupWindow.xaml.
@@ -32,24 +33,28 @@ namespace Concierge.Interface.EquipmentPageUi
 
         private void WeaponButton_Click(object sender, RoutedEventArgs e)
         {
+            ConciergeSound.ButtonClick();
             this.ButtonPress = PopupButtons.AddWeapon;
             this.Hide();
         }
 
         private void AmmoButton_Click(object sender, RoutedEventArgs e)
         {
+            ConciergeSound.ButtonClick();
             this.ButtonPress = PopupButtons.AddAmmo;
             this.Hide();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
+            ConciergeSound.ButtonClick();
             this.ButtonPress = PopupButtons.Cancel;
             this.Hide();
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
+            ConciergeSound.ButtonClick();
             this.ButtonPress = PopupButtons.Cancel;
             this.Hide();
         }

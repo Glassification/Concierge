@@ -12,6 +12,7 @@ namespace Concierge.Interface.DetailsPageUi
     using System.Windows.Media;
 
     using Concierge.Characters.Status;
+    using Concierge.Utility;
 
     /// <summary>
     /// Interaction logic for ModifyProficiencyWindow.xaml.
@@ -93,12 +94,14 @@ namespace Concierge.Interface.DetailsPageUi
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
+            ConciergeSound.ButtonClick();
             this.Hide();
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Modify();
+            ConciergeSound.ButtonClick();
 
             this.UpdateClassResource();
             this.Hide();
@@ -107,6 +110,7 @@ namespace Concierge.Interface.DetailsPageUi
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Modify();
+            ConciergeSound.ButtonClick();
 
             this.UpdateClassResource();
 
@@ -120,6 +124,7 @@ namespace Concierge.Interface.DetailsPageUi
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
+            ConciergeSound.ButtonClick();
             this.Hide();
         }
 

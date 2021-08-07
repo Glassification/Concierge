@@ -102,14 +102,6 @@ namespace Concierge.Interface.OverviewPageUi
             this.DrawWealth();
         }
 
-        private static void SetCursor(int spent, int total, Func<int, int, bool> func, Cursor cursor)
-        {
-            if (func(spent, total))
-            {
-                Mouse.OverrideCursor = cursor;
-            }
-        }
-
         private static void SetTextStyle(StatusChecks check, TextBlock textBlock)
         {
             switch (check)
@@ -390,6 +382,7 @@ namespace Concierge.Interface.OverviewPageUi
         private void SavingThrows_MouseDown(object sender, RoutedEventArgs e)
         {
             Program.Modify();
+            ConciergeSound.ButtonClick();
 
             var rectangle = sender as Rectangle;
 
@@ -421,6 +414,7 @@ namespace Concierge.Interface.OverviewPageUi
         private void SkillProficiency_MouseDown(object sender, RoutedEventArgs e)
         {
             Program.Modify();
+            ConciergeSound.ButtonClick();
 
             var rectangle = sender as Rectangle;
 
@@ -488,6 +482,7 @@ namespace Concierge.Interface.OverviewPageUi
         private void SkillExpertise_MouseDown(object sender, RoutedEventArgs e)
         {
             Program.Modify();
+            ConciergeSound.ButtonClick();
 
             Rectangle rectangle = sender as Rectangle;
 
@@ -564,6 +559,8 @@ namespace Concierge.Interface.OverviewPageUi
 
         private void EditAttributesButton_Click(object sender, RoutedEventArgs e)
         {
+            ConciergeSound.ButtonClick();
+
             this.modifyAttributesWindow.EditAttributes(Program.CcsFile.Character.Attributes);
             this.DrawAttributes();
             this.DrawSavingThrows();
@@ -572,30 +569,35 @@ namespace Concierge.Interface.OverviewPageUi
 
         private void EditSensesButton_Click(object sender, RoutedEventArgs e)
         {
+            ConciergeSound.ButtonClick();
             this.modifySensesWindow.EditSenses();
             this.DrawDetails();
         }
 
         private void EditHealthButton_Click(object sender, RoutedEventArgs e)
         {
+            ConciergeSound.ButtonClick();
             this.modifyHealthWindow.EditHealth(Program.CcsFile.Character.Vitality);
             this.DrawHealth();
         }
 
         private void EditHitDiceButton_Click(object sender, RoutedEventArgs e)
         {
+            ConciergeSound.ButtonClick();
             this.modifyHitDiceWindow.ModifyHitDice(Program.CcsFile.Character.Vitality.HitDice);
             this.DrawHitDice();
         }
 
         private void TakeDamageButton_Click(object sender, RoutedEventArgs e)
         {
+            ConciergeSound.ButtonClick();
             this.modifyHpWindow.SubtractHP(Program.CcsFile.Character.Vitality);
             this.DrawHealth();
         }
 
         private void HealDamageButton_Click(object sender, RoutedEventArgs e)
         {
+            ConciergeSound.ButtonClick();
             this.modifyHpWindow.AddHP(Program.CcsFile.Character.Vitality);
             this.DrawHealth();
         }
@@ -603,25 +605,26 @@ namespace Concierge.Interface.OverviewPageUi
         private void SpentBox_MouseDown(object sender, MouseButtonEventArgs e)
         {
             Program.Modify();
+            ConciergeSound.ButtonClick();
 
             var hitDice = Program.CcsFile.Character.Vitality.HitDice;
             switch ((sender as Grid).Name)
             {
                 case "D6SpentBox":
-                    Program.CcsFile.Character.Vitality.HitDice.SpentD8++;
-                    SetCursor(hitDice.SpentD8, hitDice.TotalD8, (x, y) => x == y, Cursors.Arrow);
+                    hitDice.SpentD8 = Utilities.IncrementUsedSlots(hitDice.SpentD6, hitDice.TotalD6);
+                    Utilities.SetCursor(hitDice.SpentD8, hitDice.TotalD8, (x, y) => x == y, Cursors.Arrow);
                     break;
                 case "D8SpentBox":
-                    Program.CcsFile.Character.Vitality.HitDice.SpentD8++;
-                    SetCursor(hitDice.SpentD8, hitDice.TotalD8, (x, y) => x == y, Cursors.Arrow);
+                    hitDice.SpentD8 = Utilities.IncrementUsedSlots(hitDice.SpentD8, hitDice.TotalD8);
+                    Utilities.SetCursor(hitDice.SpentD8, hitDice.TotalD8, (x, y) => x == y, Cursors.Arrow);
                     break;
                 case "D10SpentBox":
-                    Program.CcsFile.Character.Vitality.HitDice.SpentD10++;
-                    SetCursor(hitDice.SpentD10, hitDice.TotalD10, (x, y) => x == y, Cursors.Arrow);
+                    hitDice.SpentD10 = Utilities.IncrementUsedSlots(hitDice.SpentD10, hitDice.TotalD10);
+                    Utilities.SetCursor(hitDice.SpentD10, hitDice.TotalD10, (x, y) => x == y, Cursors.Arrow);
                     break;
                 case "D12SpentBox":
-                    Program.CcsFile.Character.Vitality.HitDice.SpentD12++;
-                    SetCursor(hitDice.SpentD12, hitDice.TotalD12, (x, y) => x == y, Cursors.Arrow);
+                    hitDice.SpentD12 = Utilities.IncrementUsedSlots(hitDice.SpentD12, hitDice.TotalD12);
+                    Utilities.SetCursor(hitDice.SpentD12, hitDice.TotalD12, (x, y) => x == y, Cursors.Arrow);
                     break;
             }
 
@@ -634,16 +637,16 @@ namespace Concierge.Interface.OverviewPageUi
             switch ((sender as Grid).Name)
             {
                 case "D6SpentBox":
-                    SetCursor(hitDice.SpentD6, hitDice.TotalD6, (x, y) => x != y, Cursors.Hand);
+                    Utilities.SetCursor(hitDice.SpentD6, hitDice.TotalD6, (x, y) => x != y, Cursors.Hand);
                     break;
                 case "D8SpentBox":
-                    SetCursor(hitDice.SpentD8, hitDice.TotalD8, (x, y) => x != y, Cursors.Hand);
+                    Utilities.SetCursor(hitDice.SpentD8, hitDice.TotalD8, (x, y) => x != y, Cursors.Hand);
                     break;
                 case "D10SpentBox":
-                    SetCursor(hitDice.SpentD10, hitDice.TotalD10, (x, y) => x != y, Cursors.Hand);
+                    Utilities.SetCursor(hitDice.SpentD10, hitDice.TotalD10, (x, y) => x != y, Cursors.Hand);
                     break;
                 case "D12SpentBox":
-                    SetCursor(hitDice.SpentD12, hitDice.TotalD12, (x, y) => x != y, Cursors.Hand);
+                    Utilities.SetCursor(hitDice.SpentD12, hitDice.TotalD12, (x, y) => x != y, Cursors.Hand);
                     break;
             }
         }
@@ -655,6 +658,7 @@ namespace Concierge.Interface.OverviewPageUi
 
         private void EditWealthButton_Click(object sender, RoutedEventArgs e)
         {
+            ConciergeSound.ButtonClick();
             this.modifyWealthWindow.ShowWindow();
             this.DrawWealth();
         }

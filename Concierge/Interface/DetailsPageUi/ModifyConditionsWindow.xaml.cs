@@ -13,6 +13,7 @@ namespace Concierge.Interface.DetailsPageUi
 
     using Concierge.Characters.Enums;
     using Concierge.Characters.Status;
+    using Concierge.Utility;
 
     /// <summary>
     /// Interaction logic for MondifyConditionsWindow.xaml.
@@ -105,12 +106,14 @@ namespace Concierge.Interface.DetailsPageUi
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
+            ConciergeSound.ButtonClick();
             this.Hide();
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Modify();
+            ConciergeSound.ButtonClick();
 
             this.UpdateConditions();
             this.Hide();
@@ -119,6 +122,7 @@ namespace Concierge.Interface.DetailsPageUi
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Modify();
+            ConciergeSound.ButtonClick();
 
             this.UpdateConditions();
 
@@ -127,6 +131,7 @@ namespace Concierge.Interface.DetailsPageUi
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
+            ConciergeSound.ButtonClick();
             this.Hide();
         }
 

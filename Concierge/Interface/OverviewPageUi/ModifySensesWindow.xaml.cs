@@ -12,6 +12,7 @@ namespace Concierge.Interface.OverviewPageUi
     using System.Windows.Media;
 
     using Concierge.Characters.Enums;
+    using Concierge.Utility;
 
     /// <summary>
     /// Interaction logic for ModifySensesWindow.xaml.
@@ -66,6 +67,7 @@ namespace Concierge.Interface.OverviewPageUi
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Modify();
+            ConciergeSound.ButtonClick();
 
             this.UpdateSenses();
             this.Hide();
@@ -74,6 +76,7 @@ namespace Concierge.Interface.OverviewPageUi
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Modify();
+            ConciergeSound.ButtonClick();
 
             this.UpdateSenses();
             this.FillFields();
@@ -83,11 +86,13 @@ namespace Concierge.Interface.OverviewPageUi
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
+            ConciergeSound.ButtonClick();
             this.Hide();
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
+            ConciergeSound.ButtonClick();
             this.Hide();
         }
 

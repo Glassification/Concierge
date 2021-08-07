@@ -51,11 +51,6 @@ namespace Concierge.Interface.SpellcastingPageUi
             this.DrawUsedSpellSlots();
         }
 
-        private static int IncrementUsedSpellSlots(int used, int total)
-        {
-            return used < total ? used + 1 : used;
-        }
-
         private static void FillTotalSpellSlot(TextBlock totalField, Grid totalBox, int usedSpells, int totalSpells)
         {
             totalField.Text = totalSpells.ToString();
@@ -136,6 +131,7 @@ namespace Concierge.Interface.SpellcastingPageUi
             if (this.MagicClassDataGrid.SelectedItem != null)
             {
                 Program.Modify();
+                ConciergeSound.ButtonClick();
 
                 var magicClass = (MagicClass)this.MagicClassDataGrid.SelectedItem;
                 var index = Program.CcsFile.Character.MagicClasses.IndexOf(magicClass);
@@ -150,6 +146,7 @@ namespace Concierge.Interface.SpellcastingPageUi
             else if (this.SpellListDataGrid.SelectedItem != null)
             {
                 Program.Modify();
+                ConciergeSound.ButtonClick();
 
                 var spell = (Spell)this.SpellListDataGrid.SelectedItem;
                 var index = Program.CcsFile.Character.Spells.IndexOf(spell);
@@ -168,6 +165,7 @@ namespace Concierge.Interface.SpellcastingPageUi
             if (this.MagicClassDataGrid.SelectedItem != null)
             {
                 Program.Modify();
+                ConciergeSound.ButtonClick();
 
                 var magicClass = (MagicClass)this.MagicClassDataGrid.SelectedItem;
                 var index = Program.CcsFile.Character.MagicClasses.IndexOf(magicClass);
@@ -182,6 +180,7 @@ namespace Concierge.Interface.SpellcastingPageUi
             else if (this.SpellListDataGrid.SelectedItem != null)
             {
                 Program.Modify();
+                ConciergeSound.ButtonClick();
 
                 var spell = (Spell)this.SpellListDataGrid.SelectedItem;
                 var index = Program.CcsFile.Character.Spells.IndexOf(spell);
@@ -197,12 +196,14 @@ namespace Concierge.Interface.SpellcastingPageUi
 
         private void ButtonClear_Click(object sender, RoutedEventArgs e)
         {
+            ConciergeSound.ButtonClick();
             this.MagicClassDataGrid.UnselectAll();
             this.SpellListDataGrid.UnselectAll();
         }
 
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
+            ConciergeSound.ButtonClick();
             var popupButton = this.spellcastingSelectionWindow.ShowPopup();
 
             switch (popupButton)
@@ -222,12 +223,14 @@ namespace Concierge.Interface.SpellcastingPageUi
         {
             if (this.MagicClassDataGrid.SelectedItem != null)
             {
+                ConciergeSound.ButtonClick();
                 var magicClass = (MagicClass)this.MagicClassDataGrid.SelectedItem;
                 this.modifySpellClassWindow.EditClass(magicClass);
                 this.DrawMagicClasses();
             }
             else if (this.SpellListDataGrid.SelectedItem != null)
             {
+                ConciergeSound.ButtonClick();
                 var spell = (Spell)this.SpellListDataGrid.SelectedItem;
                 this.modifySpellWindow.EditSpell(spell);
                 this.DrawSpellList();
@@ -239,6 +242,7 @@ namespace Concierge.Interface.SpellcastingPageUi
             if (this.MagicClassDataGrid.SelectedItem != null)
             {
                 Program.Modify();
+                ConciergeSound.ButtonClick();
 
                 MagicClass magicClass = (MagicClass)this.MagicClassDataGrid.SelectedItem;
                 Program.CcsFile.Character.MagicClasses.Remove(magicClass);
@@ -247,6 +251,7 @@ namespace Concierge.Interface.SpellcastingPageUi
             else if (this.SpellListDataGrid.SelectedItem != null)
             {
                 Program.Modify();
+                ConciergeSound.ButtonClick();
 
                 Spell spell = (Spell)this.SpellListDataGrid.SelectedItem;
                 Program.CcsFile.Character.Spells.Remove(spell);
@@ -272,6 +277,7 @@ namespace Concierge.Interface.SpellcastingPageUi
 
         private void LevelEditButton_Click(object sender, RoutedEventArgs e)
         {
+            ConciergeSound.ButtonClick();
             this.modifySpellSlotsWindow.EditSpellSlots();
             this.DrawTotalSpellSlots();
             this.DrawUsedSpellSlots();
@@ -279,41 +285,50 @@ namespace Concierge.Interface.SpellcastingPageUi
 
         private void UsedSlot_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            Program.Modify();
-
+            var spellSlots = Program.CcsFile.Character.SpellSlots;
             var usedBox = sender as Grid;
 
             switch (usedBox.Name)
             {
                 case "UsedPactBox":
-                    Program.CcsFile.Character.SpellSlots.PactUsed = IncrementUsedSpellSlots(Program.CcsFile.Character.SpellSlots.PactUsed, Program.CcsFile.Character.SpellSlots.PactTotal);
+                    spellSlots.PactUsed = Utilities.IncrementUsedSlots(spellSlots.PactUsed, spellSlots.PactTotal);
+                    Utilities.SetCursor(spellSlots.PactUsed, spellSlots.PactTotal, (x, y) => x != y, Cursors.Hand);
                     break;
                 case "UsedFirstBox":
-                    Program.CcsFile.Character.SpellSlots.FirstUsed = IncrementUsedSpellSlots(Program.CcsFile.Character.SpellSlots.FirstUsed, Program.CcsFile.Character.SpellSlots.FirstTotal);
+                    spellSlots.FirstUsed = Utilities.IncrementUsedSlots(spellSlots.FirstUsed, spellSlots.FirstTotal);
+                    Utilities.SetCursor(spellSlots.FirstUsed, spellSlots.FirstTotal, (x, y) => x != y, Cursors.Hand);
                     break;
                 case "UsedSecondBox":
-                    Program.CcsFile.Character.SpellSlots.SecondUsed = IncrementUsedSpellSlots(Program.CcsFile.Character.SpellSlots.SecondUsed, Program.CcsFile.Character.SpellSlots.SecondTotal);
+                    spellSlots.SecondUsed = Utilities.IncrementUsedSlots(spellSlots.SecondUsed, spellSlots.SecondTotal);
+                    Utilities.SetCursor(spellSlots.SecondUsed, spellSlots.SecondTotal, (x, y) => x != y, Cursors.Hand);
                     break;
                 case "UsedThirdBox":
-                    Program.CcsFile.Character.SpellSlots.ThirdUsed = IncrementUsedSpellSlots(Program.CcsFile.Character.SpellSlots.ThirdUsed, Program.CcsFile.Character.SpellSlots.ThirdTotal);
+                    spellSlots.ThirdUsed = Utilities.IncrementUsedSlots(spellSlots.ThirdUsed, spellSlots.ThirdTotal);
+                    Utilities.SetCursor(spellSlots.ThirdUsed, spellSlots.ThirdTotal, (x, y) => x != y, Cursors.Hand);
                     break;
                 case "UsedFourthBox":
-                    Program.CcsFile.Character.SpellSlots.FourthUsed = IncrementUsedSpellSlots(Program.CcsFile.Character.SpellSlots.FourthUsed, Program.CcsFile.Character.SpellSlots.FourthTotal);
+                    spellSlots.FourthUsed = Utilities.IncrementUsedSlots(spellSlots.FourthUsed, spellSlots.FourthTotal);
+                    Utilities.SetCursor(spellSlots.FourthUsed, spellSlots.FourthTotal, (x, y) => x != y, Cursors.Hand);
                     break;
                 case "UsedFifthBox":
-                    Program.CcsFile.Character.SpellSlots.FifthUsed = IncrementUsedSpellSlots(Program.CcsFile.Character.SpellSlots.FifthUsed, Program.CcsFile.Character.SpellSlots.FifthTotal);
+                    spellSlots.FifthUsed = Utilities.IncrementUsedSlots(spellSlots.FifthUsed, spellSlots.FifthTotal);
+                    Utilities.SetCursor(spellSlots.FifthUsed, spellSlots.FifthTotal, (x, y) => x != y, Cursors.Hand);
                     break;
                 case "UsedSixthBox":
-                    Program.CcsFile.Character.SpellSlots.SixthUsed = IncrementUsedSpellSlots(Program.CcsFile.Character.SpellSlots.SixthUsed, Program.CcsFile.Character.SpellSlots.SixthTotal);
+                    spellSlots.SixthUsed = Utilities.IncrementUsedSlots(spellSlots.SixthUsed, spellSlots.SixthTotal);
+                    Utilities.SetCursor(spellSlots.SixthUsed, spellSlots.SixthTotal, (x, y) => x != y, Cursors.Hand);
                     break;
                 case "UsedSeventhBox":
-                    Program.CcsFile.Character.SpellSlots.SeventhUsed = IncrementUsedSpellSlots(Program.CcsFile.Character.SpellSlots.SeventhUsed, Program.CcsFile.Character.SpellSlots.SeventhTotal);
+                    spellSlots.SeventhUsed = Utilities.IncrementUsedSlots(spellSlots.SeventhUsed, spellSlots.SeventhTotal);
+                    Utilities.SetCursor(spellSlots.SeventhUsed, spellSlots.SeventhTotal, (x, y) => x != y, Cursors.Hand);
                     break;
                 case "UsedEighthBox":
-                    Program.CcsFile.Character.SpellSlots.EighthUsed = IncrementUsedSpellSlots(Program.CcsFile.Character.SpellSlots.EighthUsed, Program.CcsFile.Character.SpellSlots.EighthTotal);
+                    spellSlots.EighthUsed = Utilities.IncrementUsedSlots(spellSlots.EighthUsed, spellSlots.EighthTotal);
+                    Utilities.SetCursor(spellSlots.EighthUsed, spellSlots.EighthTotal, (x, y) => x != y, Cursors.Hand);
                     break;
                 case "UsedNinethBox":
-                    Program.CcsFile.Character.SpellSlots.NinethUsed = IncrementUsedSpellSlots(Program.CcsFile.Character.SpellSlots.NinethUsed, Program.CcsFile.Character.SpellSlots.NinethTotal);
+                    spellSlots.NinethUsed = Utilities.IncrementUsedSlots(spellSlots.NinethUsed, spellSlots.NinethTotal);
+                    Utilities.SetCursor(spellSlots.NinethUsed, spellSlots.NinethTotal, (x, y) => x != y, Cursors.Hand);
                     break;
             }
 
@@ -323,7 +338,40 @@ namespace Concierge.Interface.SpellcastingPageUi
 
         private void UsedSlot_MouseEnter(object sender, MouseEventArgs e)
         {
-            Mouse.OverrideCursor = Cursors.Hand;
+            var spellSlots = Program.CcsFile.Character.SpellSlots;
+            switch ((sender as Grid).Name)
+            {
+                case "UsedPactBox":
+                    Utilities.SetCursor(spellSlots.PactUsed, spellSlots.PactTotal, (x, y) => x != y, Cursors.Hand);
+                    break;
+                case "UsedFirstField":
+                    Utilities.SetCursor(spellSlots.FirstUsed, spellSlots.FirstTotal, (x, y) => x != y, Cursors.Hand);
+                    break;
+                case "UsedSecondField":
+                    Utilities.SetCursor(spellSlots.SecondUsed, spellSlots.SecondTotal, (x, y) => x != y, Cursors.Hand);
+                    break;
+                case "UsedThirdField":
+                    Utilities.SetCursor(spellSlots.ThirdUsed, spellSlots.ThirdTotal, (x, y) => x != y, Cursors.Hand);
+                    break;
+                case "UsedFourthField":
+                    Utilities.SetCursor(spellSlots.FourthUsed, spellSlots.FourthTotal, (x, y) => x != y, Cursors.Hand);
+                    break;
+                case "UsedFifthField":
+                    Utilities.SetCursor(spellSlots.FifthUsed, spellSlots.FifthTotal, (x, y) => x != y, Cursors.Hand);
+                    break;
+                case "UsedSixthField":
+                    Utilities.SetCursor(spellSlots.SixthUsed, spellSlots.SixthTotal, (x, y) => x != y, Cursors.Hand);
+                    break;
+                case "UsedSeventhField":
+                    Utilities.SetCursor(spellSlots.SeventhUsed, spellSlots.SeventhTotal, (x, y) => x != y, Cursors.Hand);
+                    break;
+                case "UsedEighthField":
+                    Utilities.SetCursor(spellSlots.EighthUsed, spellSlots.EighthTotal, (x, y) => x != y, Cursors.Hand);
+                    break;
+                case "UsedNinethField":
+                    Utilities.SetCursor(spellSlots.NinethUsed, spellSlots.NinethTotal, (x, y) => x != y, Cursors.Hand);
+                    break;
+            }
         }
 
         private void UsedSlot_MouseLeave(object sender, MouseEventArgs e)

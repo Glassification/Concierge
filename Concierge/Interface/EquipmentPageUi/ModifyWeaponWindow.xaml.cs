@@ -137,17 +137,20 @@ namespace Concierge.Interface.EquipmentPageUi
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
+            ConciergeSound.ButtonClick();
             this.Hide();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
+            ConciergeSound.ButtonClick();
             this.Hide();
         }
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Modify();
+            ConciergeSound.ButtonClick();
 
             this.Weapons.Add(this.ToWeapon());
             this.ClearFields();
@@ -158,6 +161,7 @@ namespace Concierge.Interface.EquipmentPageUi
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Modify();
+            ConciergeSound.ButtonClick();
 
             if (this.Editing)
             {

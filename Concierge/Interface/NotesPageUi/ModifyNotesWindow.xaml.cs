@@ -11,6 +11,7 @@ namespace Concierge.Interface.NotesPageUi
     using System.Windows.Media;
 
     using Concierge.Characters.Notes;
+    using Concierge.Utility;
     using Concierge.Utility.Extensions;
 
     /// <summary>
@@ -138,17 +139,20 @@ namespace Concierge.Interface.NotesPageUi
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
+            ConciergeSound.ButtonClick();
             this.Hide();
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
+            ConciergeSound.ButtonClick();
             this.OkApplyChanges();
             this.Hide();
         }
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
+            ConciergeSound.ButtonClick();
             this.OkApplyChanges();
 
             if (!this.IsEdit)
@@ -162,6 +166,7 @@ namespace Concierge.Interface.NotesPageUi
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
+            ConciergeSound.ButtonClick();
             this.Hide();
         }
 

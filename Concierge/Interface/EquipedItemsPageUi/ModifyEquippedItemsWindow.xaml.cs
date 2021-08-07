@@ -13,6 +13,7 @@ namespace Concierge.Interface.EquipedItemsPageUi
 
     using Concierge.Characters.Enums;
     using Concierge.Characters.Items;
+    using Concierge.Utility;
     using Concierge.Utility.Extensions;
 
     /// <summary>
@@ -52,6 +53,7 @@ namespace Concierge.Interface.EquipedItemsPageUi
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Modify();
+            ConciergeSound.ButtonClick();
 
             if (!(this.ItemComboBox.SelectedItem is Inventory item) || this.SlotComboBox.Text.IsNullOrWhiteSpace())
             {
@@ -68,6 +70,7 @@ namespace Concierge.Interface.EquipedItemsPageUi
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Modify();
+            ConciergeSound.ButtonClick();
 
             if (!(this.ItemComboBox.SelectedItem is Inventory item) || this.SlotComboBox.Text.IsNullOrWhiteSpace())
             {
@@ -86,6 +89,7 @@ namespace Concierge.Interface.EquipedItemsPageUi
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
+            ConciergeSound.ButtonClick();
             this.Hide();
         }
 

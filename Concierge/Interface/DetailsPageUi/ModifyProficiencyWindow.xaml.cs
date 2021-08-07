@@ -12,6 +12,7 @@ namespace Concierge.Interface.DetailsPageUi
     using System.Windows.Media;
 
     using Concierge.Characters.Enums;
+    using Concierge.Utility;
 
     /// <summary>
     /// Interaction logic for ModifyProficiencyWindow.xaml.
@@ -69,12 +70,14 @@ namespace Concierge.Interface.DetailsPageUi
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
+            ConciergeSound.ButtonClick();
             this.Hide();
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Modify();
+            ConciergeSound.ButtonClick();
 
             if (this.Editing)
             {
@@ -93,6 +96,7 @@ namespace Concierge.Interface.DetailsPageUi
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Modify();
+            ConciergeSound.ButtonClick();
 
             Program.CcsFile.Character.Proficiency.AddProficiencyByProficiencyType(
                 (ProficiencyTypes)Enum.Parse(typeof(ProficiencyTypes), this.ProficiencyComboBox.Text),
@@ -105,6 +109,7 @@ namespace Concierge.Interface.DetailsPageUi
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
+            ConciergeSound.ButtonClick();
             this.Hide();
         }
 

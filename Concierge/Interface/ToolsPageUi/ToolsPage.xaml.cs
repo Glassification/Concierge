@@ -10,6 +10,7 @@ namespace Concierge.Interface.ToolsPageUi
     using System.Windows.Controls;
 
     using Concierge.Tools;
+    using Concierge.Utility;
     using Xceed.Wpf.Toolkit;
 
     /// <summary>
@@ -126,6 +127,8 @@ namespace Concierge.Interface.ToolsPageUi
 
         private void ButtonDivideLoot_Click(object sender, RoutedEventArgs e)
         {
+            ConciergeSound.ButtonClick();
+
             this.DivideLootDataGrid.Items.Clear();
 
             this.GetPlayers();
@@ -138,6 +141,8 @@ namespace Concierge.Interface.ToolsPageUi
 
         private void ButtonResetLoot_Click(object sender, RoutedEventArgs e)
         {
+
+            ConciergeSound.ButtonClick();
             this.SetDefaultDivideValues();
             this.DivideLootDataGrid.Items.Clear();
             this.Players.Clear();
@@ -149,6 +154,8 @@ namespace Concierge.Interface.ToolsPageUi
 
         private void Input_GotFocus(object sender, RoutedEventArgs e)
         {
+            ConciergeSound.ButtonClick();
+
             if (((TextBox)sender).Text.Equals("0"))
             {
                 ((TextBox)sender).Text = string.Empty;
@@ -224,6 +231,8 @@ namespace Concierge.Interface.ToolsPageUi
 
         private void ButtonResetHistory_Click(object sender, RoutedEventArgs e)
         {
+
+            ConciergeSound.ButtonClick();
             this.SetDefaultDiceValues();
             this.DiceHistory.Clear();
             this.DrawDiceHistory();
@@ -231,6 +240,8 @@ namespace Concierge.Interface.ToolsPageUi
 
         private void ButtonRoll_Click(object sender, RoutedEventArgs e)
         {
+            ConciergeSound.ButtonClick();
+
             switch ((sender as Button).Name)
             {
                 case "ButtonRollD4":

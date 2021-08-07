@@ -7,12 +7,34 @@ namespace Concierge.Utility
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Windows.Input;
     using System.Windows.Media;
 
     using Concierge.Characters;
 
     public static class Utilities
     {
+        public static int IncrementUsedSlots(int used, int total)
+        {
+            if (used < total)
+            {
+                Program.Modify();
+                ConciergeSound.ButtonClick();
+
+                return used + 1;
+            }
+
+            return used;
+        }
+
+        public static void SetCursor(int spent, int total, Func<int, int, bool> func, Cursor cursor)
+        {
+            if (func(spent, total))
+            {
+                Mouse.OverrideCursor = cursor;
+            }
+        }
+
         public static T GetPropertyValue<T>(object source, string propertyName)
         {
             return (T)source.GetType().GetProperty(propertyName).GetValue(source, null);

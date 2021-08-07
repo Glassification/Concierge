@@ -14,6 +14,7 @@ namespace Concierge.Interface.EquipmentPageUi
     using Concierge.Characters;
     using Concierge.Characters.Enums;
     using Concierge.Characters.Items;
+    using Concierge.Utility;
 
     /// <summary>
     /// Interaction logic for ModifyArmorWindow.xaml.
@@ -83,12 +84,14 @@ namespace Concierge.Interface.EquipmentPageUi
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
+            ConciergeSound.ButtonClick();
             this.Hide();
         }
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Modify();
+            ConciergeSound.ButtonClick();
 
             this.ToArmor(this.SelectedArmor);
 
@@ -98,6 +101,7 @@ namespace Concierge.Interface.EquipmentPageUi
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Modify();
+            ConciergeSound.ButtonClick();
 
             this.ToArmor(this.SelectedArmor);
             this.Hide();
@@ -105,6 +109,7 @@ namespace Concierge.Interface.EquipmentPageUi
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
+            ConciergeSound.ButtonClick();
             this.Hide();
         }
 

@@ -31,6 +31,8 @@ namespace Concierge.Persistence
 
         public bool CheckVersion { get; set; }
 
+        public bool MuteSound { get; set; }
+
         [JsonIgnore]
         public string FileName => Path.GetFileName(this.AbsolutePath);
 
@@ -48,6 +50,7 @@ namespace Concierge.Persistence
             this.UseCoinWeight = false;
             this.UseEncumbrance = false;
             this.CheckVersion = false;
+            this.MuteSound = false;
             this.Version = Constants.AssemblyVersion;
         }
     }

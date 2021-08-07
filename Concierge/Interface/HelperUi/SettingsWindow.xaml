@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         Title="ModifyAppearanceWindow"
-        Height="315"
+        Height="325"
         Width="800"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
@@ -172,7 +172,7 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="45"/>
-            <RowDefinition Height="200"/>
+            <RowDefinition Height="210"/>
             <RowDefinition Height="70"/>
         </Grid.RowDefinitions>
 
@@ -212,8 +212,9 @@
             <!--Left-->
             <Grid Grid.Column="0">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="50*"/>
-                    <RowDefinition Height="50*"/>
+                    <RowDefinition Height="33*"/>
+                    <RowDefinition Height="33*"/>
+                    <RowDefinition Height="33*"/>
                 </Grid.RowDefinitions>
 
                 <Grid Grid.Row="0">
@@ -235,7 +236,7 @@
                     <!--Value-->
                     <Grid Grid.Column="1">
                         <CheckBox Name="AutosaveCheckBox"
-                                  Margin="60, 25, 0, 0"
+                                  Margin="60, 15, 0, 0"
                                   Checked="AutosaveCheckBox_Checked"
                                   Unchecked="AutosaveCheckBox_Unchecked">
                             <CheckBox.LayoutTransform>
@@ -281,13 +282,41 @@
                             ValueChanged="AutosaveInterval_ValueChanged"/>
                     </Grid>
                 </Grid>
+
+                <Grid Grid.Row="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="40*"/>
+                        <ColumnDefinition Width="60*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!--Title-->
+                    <Grid Grid.Column="0">
+                        <TextBlock Text="Mute Sounds:"
+                                   Foreground="White"
+                                   FontSize="25"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Center"
+                                   Margin="10, 0, 0, 0"/>
+                    </Grid>
+
+                    <!--Value-->
+                    <Grid Grid.Column="1">
+                        <CheckBox Name="MuteCheckBox"
+                                  Margin="60, 15, 0, 0">
+                            <CheckBox.LayoutTransform>
+                                <ScaleTransform ScaleX="2" ScaleY="2" />
+                            </CheckBox.LayoutTransform>
+                        </CheckBox>
+                    </Grid>
+                </Grid>
             </Grid>
 
             <!--Right-->
             <Grid Grid.Column="1">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="50*"/>
-                    <RowDefinition Height="50*"/>
+                    <RowDefinition Height="33*"/>
+                    <RowDefinition Height="33*"/>
+                    <RowDefinition Height="33*"/>
                 </Grid.RowDefinitions>
 
                 <Grid Grid.Row="0">
@@ -309,7 +338,7 @@
                     <!--Value-->
                     <Grid Grid.Column="1">
                         <CheckBox Name="CoinWeightCheckBox"
-                                  Margin="60, 25, 0, 0">
+                                  Margin="60, 15, 0, 0">
                             <CheckBox.LayoutTransform>
                                 <ScaleTransform ScaleX="2" ScaleY="2" />
                             </CheckBox.LayoutTransform>
@@ -336,7 +365,7 @@
                     <!--Value-->
                     <Grid Grid.Column="1">
                         <CheckBox Name="EncumbranceCheckBox"
-                                  Margin="60, 25, 0, 0">
+                                  Margin="60, 15, 0, 0">
                             <CheckBox.LayoutTransform>
                                 <ScaleTransform ScaleX="2" ScaleY="2" />
                             </CheckBox.LayoutTransform>

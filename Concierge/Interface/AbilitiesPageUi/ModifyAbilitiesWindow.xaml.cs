@@ -113,12 +113,14 @@ namespace Concierge.Interface.AbilitiesPageUi
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
+            ConciergeSound.ButtonClick();
             this.Hide();
         }
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Modify();
+            ConciergeSound.ButtonClick();
 
             this.Abilities.Add(this.ToAbility());
             this.ClearFields();
@@ -129,6 +131,7 @@ namespace Concierge.Interface.AbilitiesPageUi
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Modify();
+            ConciergeSound.ButtonClick();
 
             if (this.Editing)
             {
@@ -144,6 +147,7 @@ namespace Concierge.Interface.AbilitiesPageUi
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
+            ConciergeSound.ButtonClick();
             this.Hide();
         }
 

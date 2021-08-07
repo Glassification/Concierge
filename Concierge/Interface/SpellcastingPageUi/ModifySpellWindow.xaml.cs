@@ -140,6 +140,7 @@ namespace Concierge.Interface.SpellcastingPageUi
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
+            ConciergeSound.ButtonClick();
             this.Hide();
         }
 
@@ -156,6 +157,7 @@ namespace Concierge.Interface.SpellcastingPageUi
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Modify();
+            ConciergeSound.ButtonClick();
 
             if (this.Editing)
             {
@@ -172,6 +174,7 @@ namespace Concierge.Interface.SpellcastingPageUi
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Modify();
+            ConciergeSound.ButtonClick();
 
             Program.CcsFile.Character.Spells.Add(this.ToSpell());
             this.ClearFields();
@@ -181,6 +184,7 @@ namespace Concierge.Interface.SpellcastingPageUi
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
+            ConciergeSound.ButtonClick();
             this.Hide();
         }
 

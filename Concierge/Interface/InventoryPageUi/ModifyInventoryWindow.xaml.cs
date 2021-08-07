@@ -143,12 +143,14 @@ namespace Concierge.Interface.InventoryPageUi
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
+            ConciergeSound.ButtonClick();
             this.Hide();
         }
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Modify();
+            ConciergeSound.ButtonClick();
 
             this.Items.Add(this.ToInventory());
             this.ClearFields();
@@ -159,6 +161,7 @@ namespace Concierge.Interface.InventoryPageUi
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Modify();
+            ConciergeSound.ButtonClick();
 
             if (this.Editing)
             {

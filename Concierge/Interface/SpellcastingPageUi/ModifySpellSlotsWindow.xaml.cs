@@ -4,6 +4,7 @@
 
 namespace Concierge.Interface.SpellcastingPageUi
 {
+    using Concierge.Utility;
     using System;
     using System.Windows;
     using System.Windows.Controls;
@@ -92,12 +93,14 @@ namespace Concierge.Interface.SpellcastingPageUi
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
+            ConciergeSound.ButtonClick();
             this.Hide();
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Modify();
+            ConciergeSound.ButtonClick();
 
             this.UpdateSpellSlots();
             this.Hide();
@@ -106,6 +109,7 @@ namespace Concierge.Interface.SpellcastingPageUi
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Modify();
+            ConciergeSound.ButtonClick();
 
             this.UpdateSpellSlots();
 
@@ -114,6 +118,7 @@ namespace Concierge.Interface.SpellcastingPageUi
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
+            ConciergeSound.ButtonClick();
             this.Hide();
         }
 

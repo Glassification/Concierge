@@ -97,6 +97,7 @@ namespace Concierge.Interface.EquipmentPageUi
             if (this.AmmoDataGrid.SelectedItem != null)
             {
                 Program.Modify();
+                ConciergeSound.ButtonClick();
 
                 var ammo = (Ammunition)this.AmmoDataGrid.SelectedItem;
                 var index = Program.CcsFile.Character.Ammunitions.IndexOf(ammo);
@@ -111,6 +112,7 @@ namespace Concierge.Interface.EquipmentPageUi
             else if (this.WeaponDataGrid.SelectedItem != null)
             {
                 Program.Modify();
+                ConciergeSound.ButtonClick();
 
                 var weapon = (Weapon)this.WeaponDataGrid.SelectedItem;
                 var index = Program.CcsFile.Character.Weapons.IndexOf(weapon);
@@ -129,6 +131,7 @@ namespace Concierge.Interface.EquipmentPageUi
             if (this.AmmoDataGrid.SelectedItem != null)
             {
                 Program.Modify();
+                ConciergeSound.ButtonClick();
 
                 var ammo = (Ammunition)this.AmmoDataGrid.SelectedItem;
                 var index = Program.CcsFile.Character.Ammunitions.IndexOf(ammo);
@@ -143,6 +146,7 @@ namespace Concierge.Interface.EquipmentPageUi
             else if (this.WeaponDataGrid.SelectedItem != null)
             {
                 Program.Modify();
+                ConciergeSound.ButtonClick();
 
                 var weapon = (Weapon)this.WeaponDataGrid.SelectedItem;
                 var index = Program.CcsFile.Character.Weapons.IndexOf(weapon);
@@ -158,12 +162,14 @@ namespace Concierge.Interface.EquipmentPageUi
 
         private void ButtonClear_Click(object sender, RoutedEventArgs e)
         {
+            ConciergeSound.ButtonClick();
             this.WeaponDataGrid.UnselectAll();
             this.AmmoDataGrid.UnselectAll();
         }
 
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
+            ConciergeSound.ButtonClick();
             var popupButons = this.equipmentPopupWindow.ShowPopup();
 
             switch (popupButons)
@@ -183,11 +189,13 @@ namespace Concierge.Interface.EquipmentPageUi
         {
             if (this.AmmoDataGrid.SelectedItem != null)
             {
+                ConciergeSound.ButtonClick();
                 this.modifyAmmoWindow.ShowEdit((Ammunition)this.AmmoDataGrid.SelectedItem);
                 this.DrawAmmoList();
             }
             else if (this.WeaponDataGrid.SelectedItem != null)
             {
+                ConciergeSound.ButtonClick();
                 this.modifyWeaponWindow.ShowEdit((Weapon)this.WeaponDataGrid.SelectedItem);
                 this.DrawWeaponList();
             }
@@ -198,6 +206,7 @@ namespace Concierge.Interface.EquipmentPageUi
             if (this.AmmoDataGrid.SelectedItem != null)
             {
                 Program.Modify();
+                ConciergeSound.ButtonClick();
 
                 var ammo = (Ammunition)this.AmmoDataGrid.SelectedItem;
                 Program.CcsFile.Character.Ammunitions.Remove(ammo);
@@ -206,6 +215,7 @@ namespace Concierge.Interface.EquipmentPageUi
             else if (this.WeaponDataGrid.SelectedItem != null)
             {
                 Program.Modify();
+                ConciergeSound.ButtonClick();
 
                 var weapon = (Weapon)this.WeaponDataGrid.SelectedItem;
                 Program.CcsFile.Character.Weapons.Remove(weapon);
@@ -231,6 +241,7 @@ namespace Concierge.Interface.EquipmentPageUi
 
         private void EditDetailsButton_Click(object sender, RoutedEventArgs e)
         {
+            ConciergeSound.ButtonClick();
             this.modifyArmorWindow.ShowEdit(Program.CcsFile.Character.Armor);
             this.Draw();
         }

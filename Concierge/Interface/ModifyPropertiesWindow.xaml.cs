@@ -85,6 +85,7 @@ namespace Concierge.Interface
         {
             Program.Logger.Info($"OK button click.");
             Program.Modify();
+            ConciergeSound.ButtonClick();
 
             this.Write();
             this.Hide();
@@ -94,6 +95,7 @@ namespace Concierge.Interface
         {
             Program.Logger.Info($"Apply button click.");
             Program.Modify();
+            ConciergeSound.ButtonClick();
 
             this.Write();
         }
@@ -101,6 +103,7 @@ namespace Concierge.Interface
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Logger.Info($"Cancel button click.");
+            ConciergeSound.ButtonClick();
 
             this.Hide();
         }
@@ -108,6 +111,7 @@ namespace Concierge.Interface
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Logger.Info($"Close button click.");
+            ConciergeSound.ButtonClick();
 
             this.Hide();
         }

@@ -37,6 +37,7 @@ namespace Concierge.Interface.HelperUi
             this.CoinWeightCheckBox.IsChecked = Program.CcsFile.UseCoinWeight;
             this.EncumbranceCheckBox.IsChecked = Program.CcsFile.UseEncumbrance;
             this.IntervalTextBox.Text = this.FormattedInterval;
+            this.MuteCheckBox.IsChecked = Program.CcsFile.MuteSound;
 
             if (Program.CcsFile.AutosaveEnable)
             {
@@ -68,6 +69,7 @@ namespace Concierge.Interface.HelperUi
             Program.CcsFile.AutosaveInterval = (int)this.AutosaveInterval.Value;
             Program.CcsFile.UseCoinWeight = this.CoinWeightCheckBox.IsChecked ?? false;
             Program.CcsFile.UseEncumbrance = this.EncumbranceCheckBox.IsChecked ?? false;
+            Program.CcsFile.MuteSound = this.MuteCheckBox.IsChecked ?? false;
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
@@ -82,25 +84,27 @@ namespace Concierge.Interface.HelperUi
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
+            ConciergeSound.ButtonClick();
             this.Hide();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
+            ConciergeSound.ButtonClick();
             this.Hide();
         }
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Modify();
-
+            ConciergeSound.ButtonClick();
             this.Write();
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Modify();
-
+            ConciergeSound.ButtonClick();
             this.Write();
             this.Hide();
         }

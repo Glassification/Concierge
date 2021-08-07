@@ -12,6 +12,7 @@ namespace Concierge.Interface.CompanionPageUi
     using System.Windows.Media;
 
     using Concierge.Characters.Enums;
+    using Concierge.Utility;
 
     /// <summary>
     /// Interaction logic for ModifyHealthWindow.xaml.
@@ -68,17 +69,20 @@ namespace Concierge.Interface.CompanionPageUi
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
+            ConciergeSound.ButtonClick();
             this.Hide();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
+            ConciergeSound.ButtonClick();
             this.Hide();
         }
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Modify();
+            ConciergeSound.ButtonClick();
 
             this.Write();
 
@@ -88,6 +92,7 @@ namespace Concierge.Interface.CompanionPageUi
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Modify();
+            ConciergeSound.ButtonClick();
 
             this.Write();
             this.Hide();

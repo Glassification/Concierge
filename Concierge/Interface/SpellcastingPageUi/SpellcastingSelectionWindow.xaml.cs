@@ -10,6 +10,7 @@ namespace Concierge.Interface.SpellcastingPageUi
     using System.Windows.Media;
 
     using Concierge.Characters.Enums;
+    using Concierge.Utility;
 
     /// <summary>
     /// Interaction logic for SpellcastingSelectionWindow.xaml.
@@ -43,24 +44,28 @@ namespace Concierge.Interface.SpellcastingPageUi
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
+            ConciergeSound.ButtonClick();
             this.ButtonPress = PopupButtons.Cancel;
             this.Hide();
         }
 
         private void SpellClassButton_Click(object sender, RoutedEventArgs e)
         {
+            ConciergeSound.ButtonClick();
             this.ButtonPress = PopupButtons.AddMagicClass;
             this.Hide();
         }
 
         private void SpellButton_Click(object sender, RoutedEventArgs e)
         {
+            ConciergeSound.ButtonClick();
             this.ButtonPress = PopupButtons.AddSpell;
             this.Hide();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
+            ConciergeSound.ButtonClick();
             this.ButtonPress = PopupButtons.Cancel;
             this.Hide();
         }

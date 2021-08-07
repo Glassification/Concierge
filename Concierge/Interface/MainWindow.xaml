@@ -121,7 +121,7 @@
                 <StackPanel Orientation="Horizontal">
                     <materialDesign:PopupBox 
                         PlacementMode="BottomAndAlignRightEdges" 
-                        Foreground="White" 
+                        Foreground="White"
                         StaysOpen="False" 
                         Margin="10">
                         <StackPanel Width="150" Background="#FF191919">

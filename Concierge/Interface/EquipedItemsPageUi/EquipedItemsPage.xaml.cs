@@ -121,6 +121,7 @@ namespace Concierge.Interface.EquipedItemsPageUi
             }
 
             Program.Modify();
+            ConciergeSound.ButtonClick();
 
             var dataGrid = this.SelectedDataGrid;
             var equippedItems = Utilities.GetPropertyValue<List<Inventory>>(Program.CcsFile.Character.EquipedItems, dataGrid.Tag as string);
@@ -142,6 +143,7 @@ namespace Concierge.Interface.EquipedItemsPageUi
             }
 
             Program.Modify();
+            ConciergeSound.ButtonClick();
 
             var dataGrid = this.SelectedDataGrid;
             var equippedItems = Utilities.GetPropertyValue<List<Inventory>>(Program.CcsFile.Character.EquipedItems, dataGrid.Tag as string);
@@ -157,6 +159,7 @@ namespace Concierge.Interface.EquipedItemsPageUi
 
         private void ButtonClear_Click(object sender, RoutedEventArgs e)
         {
+            ConciergeSound.ButtonClick();
             this.HeadEquipmentDataGrid.UnselectAll();
             this.TorsoEquipmentDataGrid.UnselectAll();
             this.HandsEquipmentDataGrid.UnselectAll();
@@ -166,6 +169,7 @@ namespace Concierge.Interface.EquipedItemsPageUi
 
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
+            ConciergeSound.ButtonClick();
             this.modifyEquippedItemsWindow.ShowAdd();
             this.Draw();
         }
@@ -177,6 +181,7 @@ namespace Concierge.Interface.EquipedItemsPageUi
                 return;
             }
 
+            ConciergeSound.ButtonClick();
             this.modifyInventoryWindow.ShowEdit(this.SelectedItem, true);
             this.Draw();
         }
@@ -189,6 +194,7 @@ namespace Concierge.Interface.EquipedItemsPageUi
             }
 
             Program.Modify();
+            ConciergeSound.ButtonClick();
 
             Program.CcsFile.Character.EquipedItems.Dequip(
                 this.SelectedItem,

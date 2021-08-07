@@ -55,47 +55,55 @@ namespace Concierge.Interface.InventoryPageUi
 
         private void ButtonUp_Click(object sender, RoutedEventArgs e)
         {
-            if (this.InventoryDataGrid.SelectedItem != null)
+            if (this.InventoryDataGrid.SelectedItem == null)
             {
-                Program.Modify();
+                return;
+            }
 
-                var inventory = (Inventory)this.InventoryDataGrid.SelectedItem;
-                var index = Program.CcsFile.Character.Inventories.IndexOf(inventory);
+            Program.Modify();
+            ConciergeSound.ButtonClick();
 
-                if (index != 0)
-                {
-                    Utilities.Swap(Program.CcsFile.Character.Inventories, index, index - 1);
-                    this.DrawInventory();
-                    this.InventoryDataGrid.SelectedIndex = index - 1;
-                }
+            var inventory = (Inventory)this.InventoryDataGrid.SelectedItem;
+            var index = Program.CcsFile.Character.Inventories.IndexOf(inventory);
+
+            if (index != 0)
+            {
+                Utilities.Swap(Program.CcsFile.Character.Inventories, index, index - 1);
+                this.DrawInventory();
+                this.InventoryDataGrid.SelectedIndex = index - 1;
             }
         }
 
         private void ButtonDown_Click(object sender, RoutedEventArgs e)
         {
-            if (this.InventoryDataGrid.SelectedItem != null)
+            if (this.InventoryDataGrid.SelectedItem == null)
             {
-                Program.Modify();
+                return;
+            }
 
-                var inventory = (Inventory)this.InventoryDataGrid.SelectedItem;
-                var index = Program.CcsFile.Character.Inventories.IndexOf(inventory);
+            Program.Modify();
+            ConciergeSound.ButtonClick();
 
-                if (index != Program.CcsFile.Character.Inventories.Count - 1)
-                {
-                    Utilities.Swap(Program.CcsFile.Character.Inventories, index, index + 1);
-                    this.DrawInventory();
-                    this.InventoryDataGrid.SelectedIndex = index + 1;
-                }
+            var inventory = (Inventory)this.InventoryDataGrid.SelectedItem;
+            var index = Program.CcsFile.Character.Inventories.IndexOf(inventory);
+
+            if (index != Program.CcsFile.Character.Inventories.Count - 1)
+            {
+                Utilities.Swap(Program.CcsFile.Character.Inventories, index, index + 1);
+                this.DrawInventory();
+                this.InventoryDataGrid.SelectedIndex = index + 1;
             }
         }
 
         private void ButtonClear_Click(object sender, RoutedEventArgs e)
         {
+            ConciergeSound.ButtonClick();
             this.InventoryDataGrid.UnselectAll();
         }
 
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
+            ConciergeSound.ButtonClick();
             this.modifyInventoryWindow.ShowAdd(Program.CcsFile.Character.Inventories);
             this.DrawInventory();
         }
@@ -104,6 +112,7 @@ namespace Concierge.Interface.InventoryPageUi
         {
             if (this.InventoryDataGrid.SelectedItem != null)
             {
+                ConciergeSound.ButtonClick();
                 var inventory = (Inventory)this.InventoryDataGrid.SelectedItem;
                 this.modifyInventoryWindow.ShowEdit(inventory);
                 this.DrawInventory();
@@ -114,6 +123,7 @@ namespace Concierge.Interface.InventoryPageUi
         {
             if (this.InventoryDataGrid.SelectedItem != null)
             {
+                ConciergeSound.ButtonClick();
                 Program.Modify();
 
                 var inventory = (Inventory)this.InventoryDataGrid.SelectedItem;

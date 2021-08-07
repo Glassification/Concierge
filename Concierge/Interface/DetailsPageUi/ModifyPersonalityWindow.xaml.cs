@@ -11,6 +11,7 @@ namespace Concierge.Interface.DetailsPageUi
     using System.Windows.Media;
 
     using Concierge.Characters.Characteristics;
+    using Concierge.Utility;
 
     /// <summary>
     /// Interaction logic for ModifyPersonalityWindow.xaml.
@@ -69,12 +70,14 @@ namespace Concierge.Interface.DetailsPageUi
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
+            ConciergeSound.ButtonClick();
             this.Hide();
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Modify();
+            ConciergeSound.ButtonClick();
 
             this.UpdatePersonality();
             this.Hide();
@@ -83,6 +86,7 @@ namespace Concierge.Interface.DetailsPageUi
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Modify();
+            ConciergeSound.ButtonClick();
 
             this.UpdatePersonality();
 
@@ -91,6 +95,7 @@ namespace Concierge.Interface.DetailsPageUi
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
+            ConciergeSound.ButtonClick();
             this.Hide();
         }
 
