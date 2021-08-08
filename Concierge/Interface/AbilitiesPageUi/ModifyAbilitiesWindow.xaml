@@ -288,13 +288,9 @@
                 <Grid Grid.Column="1"
                       Background="#FF3F3F3F"
                       Margin="0, 10, 20, 10">
-                    <TextBox x:Name="UsesTextBox"
-                             Background="#FF3F3F3F"
-                             Margin="5"
-                             BorderThickness="0"
-                             Foreground="White"
-                             FontSize="15"
-                             VerticalContentAlignment="Center"/>
+                    <components:ConciergeTextBox 
+                        x:Name="UsesTextBox"
+                        FontSize="15"/>
                 </Grid>
             </Grid>
 
@@ -319,13 +315,9 @@
                 <Grid Grid.Column="1"
                       Background="#FF3F3F3F"
                       Margin="0, 10, 20, 10">
-                    <TextBox x:Name="RecoveryTextBox"
-                             Background="#FF3F3F3F"
-                             Margin="5"
-                             BorderThickness="0"
-                             Foreground="White"
-                             FontSize="15"
-                             VerticalContentAlignment="Center"/>
+                    <components:ConciergeTextBox 
+                        x:Name="RecoveryTextBox"
+                        FontSize="15"/>
                 </Grid>
             </Grid>
 
@@ -350,13 +342,9 @@
                 <Grid Grid.Column="1"
                       Background="#FF3F3F3F"
                       Margin="0, 10, 20, 10">
-                    <TextBox x:Name="ActionTextBox"
-                             Background="#FF3F3F3F"
-                             Margin="5"
-                             BorderThickness="0"
-                             Foreground="White"
-                             FontSize="15"
-                             VerticalContentAlignment="Center"/>
+                    <components:ConciergeTextBox 
+                        x:Name="ActionTextBox"
+                        FontSize="15"/>
                 </Grid>
             </Grid>
 
@@ -381,13 +369,11 @@
                 <Grid Grid.Column="1"
                       Background="#FF3F3F3F"
                       Margin="0, 10, 20, 0">
-                    <TextBox x:Name="NotesTextBox"
-                             Background="#FF3F3F3F"
-                             Margin="5"
-                             BorderThickness="0"
-                             Foreground="White"
-                             TextWrapping="Wrap"
-                             FontSize="15"/>
+                    <components:ConciergeTextBox 
+                        x:Name="NotesTextBox"
+                        TextWrapping="Wrap"
+                        VerticalAlignment="Top"
+                        FontSize="15"/>
                 </Grid>
             </Grid>
         </Grid>

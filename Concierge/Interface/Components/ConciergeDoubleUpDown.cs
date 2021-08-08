@@ -17,7 +17,7 @@ namespace Concierge.Interface.Components
         public ConciergeDoubleUpDown()
             : base()
         {
-            this.Background = Colours.UpDownControlBackgroundBrush;
+            this.Background = Colours.ControlBackgroundBrush;
             this.BorderThickness = new Thickness(0);
             this.Foreground = Brushes.White;
             this.Margin = new Thickness(0, 0, 20, 0);
