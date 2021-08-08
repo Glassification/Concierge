@@ -65,6 +65,8 @@ namespace Concierge.Interface.EquipmentPageUi
         private void FillFields(Weapon weapon)
         {
             this.WeightUpDown.UpdatingValue();
+            this.BagOfHoldingCheckBox.UpdatingValue();
+            this.ProficencyOverrideCheckBox.UpdatingValue();
 
             this.WeaponComboBox.Text = weapon.Name;
             this.TypeComboBox.Text = weapon.WeaponType.ToString();
@@ -77,11 +79,16 @@ namespace Concierge.Interface.EquipmentPageUi
             this.ProficencyOverrideCheckBox.IsChecked = weapon.ProficiencyOverride;
             this.BagOfHoldingCheckBox.IsChecked = weapon.IsInBagOfHolding;
             this.NotesTextBox.Text = weapon.Note;
+
+            this.BagOfHoldingCheckBox.UpdatedValue();
+            this.ProficencyOverrideCheckBox.UpdatedValue();
         }
 
         private void ClearFields()
         {
             this.WeightUpDown.UpdatingValue();
+            this.BagOfHoldingCheckBox.UpdatingValue();
+            this.ProficencyOverrideCheckBox.UpdatingValue();
 
             this.WeaponComboBox.Text = string.Empty;
             this.TypeComboBox.Text = string.Empty;
@@ -94,6 +101,9 @@ namespace Concierge.Interface.EquipmentPageUi
             this.ProficencyOverrideCheckBox.IsChecked = false;
             this.BagOfHoldingCheckBox.IsChecked = false;
             this.NotesTextBox.Text = string.Empty;
+
+            this.BagOfHoldingCheckBox.UpdatedValue();
+            this.ProficencyOverrideCheckBox.UpdatedValue();
         }
 
         private void UpdateWeapon(Weapon weapon)

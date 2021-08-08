@@ -308,12 +308,13 @@
 
                 <!--Value-->
                 <Grid Grid.Column="1">
-                    <CheckBox Name="BagOfHoldingCheckBox"
-                                  Margin="5, 15, 0, 0">
+                    <components:ConciergeCheckBox 
+                        x:Name="BagOfHoldingCheckBox"
+                        Margin="5, 15, 0, 0">
                         <CheckBox.LayoutTransform>
                             <ScaleTransform ScaleX="2" ScaleY="2" />
                         </CheckBox.LayoutTransform>
-                    </CheckBox>
+                    </components:ConciergeCheckBox>
                 </Grid>
             </Grid>
 

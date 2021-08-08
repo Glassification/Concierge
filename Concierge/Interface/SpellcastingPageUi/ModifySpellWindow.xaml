@@ -285,12 +285,13 @@
 
                     <!--Value-->
                     <Grid Grid.Column="1">
-                        <CheckBox Name="PreparedCheckBox"
-                                  Margin="0, 10, 0, 0">
+                        <components:ConciergeCheckBox 
+                            x:Name="PreparedCheckBox"
+                            Margin="0, 10, 0, 0">
                             <CheckBox.LayoutTransform>
                                 <ScaleTransform ScaleX="2" ScaleY="2" />
                             </CheckBox.LayoutTransform>
-                        </CheckBox>
+                        </components:ConciergeCheckBox>
                     </Grid>
                 </Grid>
 
@@ -388,12 +389,13 @@
 
                     <!--Value-->
                     <Grid Grid.Column="1">
-                        <CheckBox Name="RitualCheckBox"
-                                  Margin="0, 10, 0, 0">
+                        <components:ConciergeCheckBox  
+                            x:Name="RitualCheckBox"
+                            Margin="0, 10, 0, 0">
                             <CheckBox.LayoutTransform>
                                 <ScaleTransform ScaleX="2" ScaleY="2" />
                             </CheckBox.LayoutTransform>
-                        </CheckBox>
+                        </components:ConciergeCheckBox>
                     </Grid>
                 </Grid>
 
@@ -447,12 +449,13 @@
 
                     <!--Value-->
                     <Grid Grid.Column="1">
-                        <CheckBox Name="ConcentrationCheckBox"
-                                  Margin="0, 10, 0, 0">
+                        <components:ConciergeCheckBox  
+                            x:Name="ConcentrationCheckBox"
+                            Margin="0, 10, 0, 0">
                             <CheckBox.LayoutTransform>
                                 <ScaleTransform ScaleX="2" ScaleY="2" />
                             </CheckBox.LayoutTransform>
-                        </CheckBox>
+                        </components:ConciergeCheckBox>
                     </Grid>
                 </Grid>
             </Grid>

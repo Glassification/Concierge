@@ -61,6 +61,9 @@ namespace Concierge.Interface.SpellcastingPageUi
         {
             this.LevelUpDown.UpdatingValue();
             this.PageUpDown.UpdatingValue();
+            this.PreparedCheckBox.UpdatingValue();
+            this.RitualCheckBox.UpdatingValue();
+            this.ConcentrationCheckBox.UpdatingValue();
 
             this.SpellNameComboBox.Text = spell.Name;
             this.PreparedCheckBox.IsChecked = spell.Prepared;
@@ -77,12 +80,19 @@ namespace Concierge.Interface.SpellcastingPageUi
             this.DamageTextBox.Text = spell.Damage;
             this.NotesTextBox.Text = spell.Description;
             this.ClassComboBox.Text = spell.Class;
+
+            this.PreparedCheckBox.UpdatedValue();
+            this.RitualCheckBox.UpdatedValue();
+            this.ConcentrationCheckBox.UpdatedValue();
         }
 
         private void ClearFields()
         {
             this.LevelUpDown.UpdatingValue();
             this.PageUpDown.UpdatingValue();
+            this.PreparedCheckBox.UpdatingValue();
+            this.RitualCheckBox.UpdatingValue();
+            this.ConcentrationCheckBox.UpdatingValue();
 
             this.SpellNameComboBox.Text = string.Empty;
             this.PreparedCheckBox.IsChecked = false;
@@ -99,6 +109,10 @@ namespace Concierge.Interface.SpellcastingPageUi
             this.ClassComboBox.Text = string.Empty;
             this.DamageTextBox.Text = string.Empty;
             this.NotesTextBox.Text = string.Empty;
+
+            this.PreparedCheckBox.UpdatedValue();
+            this.RitualCheckBox.UpdatedValue();
+            this.ConcentrationCheckBox.UpdatedValue();
         }
 
         private void UpdateSpell(Spell spell)

@@ -68,6 +68,7 @@ namespace Concierge.Interface.InventoryPageUi
         {
             this.AmountUpDown.UpdatingValue();
             this.WeightUpDown.UpdatingValue();
+            this.BagOfHoldingCheckBox.UpdatingValue();
 
             this.NameComboBox.Text = inventory.Name;
             this.AmountUpDown.Value = inventory.Amount;
@@ -84,18 +85,23 @@ namespace Concierge.Interface.InventoryPageUi
                 this.BagOfHoldingText.Text = "Bag of Holding:";
                 this.BagOfHoldingCheckBox.IsChecked = inventory.IsInBagOfHolding;
             }
+
+            this.BagOfHoldingCheckBox.UpdatedValue();
         }
 
         private void ClearFields()
         {
             this.AmountUpDown.UpdatingValue();
             this.WeightUpDown.UpdatingValue();
+            this.BagOfHoldingCheckBox.UpdatingValue();
 
             this.NameComboBox.Text = string.Empty;
             this.AmountUpDown.Value = 0;
             this.WeightUpDown.Value = 0.0;
             this.BagOfHoldingCheckBox.IsChecked = false;
             this.NotesTextBox.Text = string.Empty;
+
+            this.BagOfHoldingCheckBox.UpdatedValue();
         }
 
         private Inventory ToInventory()

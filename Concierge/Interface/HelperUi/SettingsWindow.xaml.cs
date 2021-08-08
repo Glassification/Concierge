@@ -32,6 +32,11 @@ namespace Concierge.Interface.HelperUi
 
         private void Read()
         {
+            this.AutosaveCheckBox.UpdatingValue();
+            this.CoinWeightCheckBox.UpdatingValue();
+            this.EncumbranceCheckBox.UpdatingValue();
+            this.MuteCheckBox.UpdatingValue();
+
             this.AutosaveCheckBox.IsChecked = Program.CcsFile.AutosaveEnable;
             this.AutosaveInterval.Value = Program.CcsFile.AutosaveInterval;
             this.CoinWeightCheckBox.IsChecked = Program.CcsFile.UseCoinWeight;
@@ -49,6 +54,11 @@ namespace Concierge.Interface.HelperUi
                 this.IntervalTextBox.IsEnabled = false;
                 this.AutosaveInterval.IsEnabled = false;
             }
+
+            this.AutosaveCheckBox.UpdatedValue();
+            this.CoinWeightCheckBox.UpdatedValue();
+            this.EncumbranceCheckBox.UpdatedValue();
+            this.MuteCheckBox.UpdatedValue();
         }
 
         private void Write()

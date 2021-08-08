@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:components="clr-namespace:Concierge.Interface.Components"
         xmlns:local="clr-namespace:Concierge.Interface.ToolsPageUi"
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
@@ -235,14 +236,15 @@
 
                     <!--Value-->
                     <Grid Grid.Column="1">
-                        <CheckBox Name="AutosaveCheckBox"
-                                  Margin="60, 15, 0, 0"
-                                  Checked="AutosaveCheckBox_Checked"
-                                  Unchecked="AutosaveCheckBox_Unchecked">
+                        <components:ConciergeCheckBox  
+                            x:Name="AutosaveCheckBox"
+                            Margin="60, 15, 0, 0"
+                            Checked="AutosaveCheckBox_Checked"
+                            Unchecked="AutosaveCheckBox_Unchecked">
                             <CheckBox.LayoutTransform>
                                 <ScaleTransform ScaleX="2" ScaleY="2" />
                             </CheckBox.LayoutTransform>
-                        </CheckBox>
+                        </components:ConciergeCheckBox>
                     </Grid>
                 </Grid>
 
@@ -301,12 +303,13 @@
 
                     <!--Value-->
                     <Grid Grid.Column="1">
-                        <CheckBox Name="MuteCheckBox"
-                                  Margin="60, 15, 0, 0">
+                        <components:ConciergeCheckBox 
+                            x:Name="MuteCheckBox"
+                            Margin="60, 15, 0, 0">
                             <CheckBox.LayoutTransform>
                                 <ScaleTransform ScaleX="2" ScaleY="2" />
                             </CheckBox.LayoutTransform>
-                        </CheckBox>
+                        </components:ConciergeCheckBox>
                     </Grid>
                 </Grid>
             </Grid>
@@ -337,12 +340,13 @@
 
                     <!--Value-->
                     <Grid Grid.Column="1">
-                        <CheckBox Name="CoinWeightCheckBox"
-                                  Margin="60, 15, 0, 0">
+                        <components:ConciergeCheckBox  
+                            x:Name="CoinWeightCheckBox"
+                            Margin="60, 15, 0, 0">
                             <CheckBox.LayoutTransform>
                                 <ScaleTransform ScaleX="2" ScaleY="2" />
                             </CheckBox.LayoutTransform>
-                        </CheckBox>
+                        </components:ConciergeCheckBox>
                     </Grid>
                 </Grid>
 
@@ -364,12 +368,13 @@
 
                     <!--Value-->
                     <Grid Grid.Column="1">
-                        <CheckBox Name="EncumbranceCheckBox"
-                                  Margin="60, 15, 0, 0">
+                        <components:ConciergeCheckBox  
+                            x:Name="EncumbranceCheckBox"
+                            Margin="60, 15, 0, 0">
                             <CheckBox.LayoutTransform>
                                 <ScaleTransform ScaleX="2" ScaleY="2" />
                             </CheckBox.LayoutTransform>
-                        </CheckBox>
+                        </components:ConciergeCheckBox>
                     </Grid>
                 </Grid>
             </Grid>
