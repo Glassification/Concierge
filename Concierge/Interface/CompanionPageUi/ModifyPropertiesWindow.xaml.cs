@@ -111,5 +111,10 @@ namespace Concierge.Interface.CompanionPageUi
         {
             (sender as Button).Foreground = Brushes.White;
         }
+
+        private void VisionComboBox_DropDownOpened(object sender, EventArgs e)
+        {
+            ConciergeSound.UpdateValue();
+        }
     }
 }

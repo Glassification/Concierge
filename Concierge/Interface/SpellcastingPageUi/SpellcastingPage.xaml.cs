@@ -292,43 +292,43 @@ namespace Concierge.Interface.SpellcastingPageUi
             {
                 case "UsedPactBox":
                     spellSlots.PactUsed = Utilities.IncrementUsedSlots(spellSlots.PactUsed, spellSlots.PactTotal);
-                    Utilities.SetCursor(spellSlots.PactUsed, spellSlots.PactTotal, (x, y) => x != y, Cursors.Hand);
+                    Utilities.SetCursor(spellSlots.PactUsed, spellSlots.PactTotal, (x, y) => x >= y, Cursors.Arrow);
                     break;
                 case "UsedFirstBox":
                     spellSlots.FirstUsed = Utilities.IncrementUsedSlots(spellSlots.FirstUsed, spellSlots.FirstTotal);
-                    Utilities.SetCursor(spellSlots.FirstUsed, spellSlots.FirstTotal, (x, y) => x != y, Cursors.Hand);
+                    Utilities.SetCursor(spellSlots.FirstUsed, spellSlots.FirstTotal, (x, y) => x >= y, Cursors.Arrow);
                     break;
                 case "UsedSecondBox":
                     spellSlots.SecondUsed = Utilities.IncrementUsedSlots(spellSlots.SecondUsed, spellSlots.SecondTotal);
-                    Utilities.SetCursor(spellSlots.SecondUsed, spellSlots.SecondTotal, (x, y) => x != y, Cursors.Hand);
+                    Utilities.SetCursor(spellSlots.SecondUsed, spellSlots.SecondTotal, (x, y) => x >= y, Cursors.Arrow);
                     break;
                 case "UsedThirdBox":
                     spellSlots.ThirdUsed = Utilities.IncrementUsedSlots(spellSlots.ThirdUsed, spellSlots.ThirdTotal);
-                    Utilities.SetCursor(spellSlots.ThirdUsed, spellSlots.ThirdTotal, (x, y) => x != y, Cursors.Hand);
+                    Utilities.SetCursor(spellSlots.ThirdUsed, spellSlots.ThirdTotal, (x, y) => x >= y, Cursors.Arrow);
                     break;
                 case "UsedFourthBox":
                     spellSlots.FourthUsed = Utilities.IncrementUsedSlots(spellSlots.FourthUsed, spellSlots.FourthTotal);
-                    Utilities.SetCursor(spellSlots.FourthUsed, spellSlots.FourthTotal, (x, y) => x != y, Cursors.Hand);
+                    Utilities.SetCursor(spellSlots.FourthUsed, spellSlots.FourthTotal, (x, y) => x >= y, Cursors.Arrow);
                     break;
                 case "UsedFifthBox":
                     spellSlots.FifthUsed = Utilities.IncrementUsedSlots(spellSlots.FifthUsed, spellSlots.FifthTotal);
-                    Utilities.SetCursor(spellSlots.FifthUsed, spellSlots.FifthTotal, (x, y) => x != y, Cursors.Hand);
+                    Utilities.SetCursor(spellSlots.FifthUsed, spellSlots.FifthTotal, (x, y) => x >= y, Cursors.Arrow);
                     break;
                 case "UsedSixthBox":
                     spellSlots.SixthUsed = Utilities.IncrementUsedSlots(spellSlots.SixthUsed, spellSlots.SixthTotal);
-                    Utilities.SetCursor(spellSlots.SixthUsed, spellSlots.SixthTotal, (x, y) => x != y, Cursors.Hand);
+                    Utilities.SetCursor(spellSlots.SixthUsed, spellSlots.SixthTotal, (x, y) => x >= y, Cursors.Arrow);
                     break;
                 case "UsedSeventhBox":
                     spellSlots.SeventhUsed = Utilities.IncrementUsedSlots(spellSlots.SeventhUsed, spellSlots.SeventhTotal);
-                    Utilities.SetCursor(spellSlots.SeventhUsed, spellSlots.SeventhTotal, (x, y) => x != y, Cursors.Hand);
+                    Utilities.SetCursor(spellSlots.SeventhUsed, spellSlots.SeventhTotal, (x, y) => x >= y, Cursors.Arrow);
                     break;
                 case "UsedEighthBox":
                     spellSlots.EighthUsed = Utilities.IncrementUsedSlots(spellSlots.EighthUsed, spellSlots.EighthTotal);
-                    Utilities.SetCursor(spellSlots.EighthUsed, spellSlots.EighthTotal, (x, y) => x != y, Cursors.Hand);
+                    Utilities.SetCursor(spellSlots.EighthUsed, spellSlots.EighthTotal, (x, y) => x >= y, Cursors.Arrow);
                     break;
                 case "UsedNinethBox":
                     spellSlots.NinethUsed = Utilities.IncrementUsedSlots(spellSlots.NinethUsed, spellSlots.NinethTotal);
-                    Utilities.SetCursor(spellSlots.NinethUsed, spellSlots.NinethTotal, (x, y) => x != y, Cursors.Hand);
+                    Utilities.SetCursor(spellSlots.NinethUsed, spellSlots.NinethTotal, (x, y) => x >= y, Cursors.Arrow);
                     break;
             }
 
@@ -344,31 +344,31 @@ namespace Concierge.Interface.SpellcastingPageUi
                 case "UsedPactBox":
                     Utilities.SetCursor(spellSlots.PactUsed, spellSlots.PactTotal, (x, y) => x != y, Cursors.Hand);
                     break;
-                case "UsedFirstField":
+                case "UsedFirstBox":
                     Utilities.SetCursor(spellSlots.FirstUsed, spellSlots.FirstTotal, (x, y) => x != y, Cursors.Hand);
                     break;
-                case "UsedSecondField":
+                case "UsedSecondBox":
                     Utilities.SetCursor(spellSlots.SecondUsed, spellSlots.SecondTotal, (x, y) => x != y, Cursors.Hand);
                     break;
-                case "UsedThirdField":
+                case "UsedThirdBox":
                     Utilities.SetCursor(spellSlots.ThirdUsed, spellSlots.ThirdTotal, (x, y) => x != y, Cursors.Hand);
                     break;
-                case "UsedFourthField":
+                case "UsedFourthBox":
                     Utilities.SetCursor(spellSlots.FourthUsed, spellSlots.FourthTotal, (x, y) => x != y, Cursors.Hand);
                     break;
-                case "UsedFifthField":
+                case "UsedFifthBox":
                     Utilities.SetCursor(spellSlots.FifthUsed, spellSlots.FifthTotal, (x, y) => x != y, Cursors.Hand);
                     break;
-                case "UsedSixthField":
+                case "UsedSixthBox":
                     Utilities.SetCursor(spellSlots.SixthUsed, spellSlots.SixthTotal, (x, y) => x != y, Cursors.Hand);
                     break;
-                case "UsedSeventhField":
+                case "UsedSeventhBox":
                     Utilities.SetCursor(spellSlots.SeventhUsed, spellSlots.SeventhTotal, (x, y) => x != y, Cursors.Hand);
                     break;
-                case "UsedEighthField":
+                case "UsedEighthBox":
                     Utilities.SetCursor(spellSlots.EighthUsed, spellSlots.EighthTotal, (x, y) => x != y, Cursors.Hand);
                     break;
-                case "UsedNinethField":
+                case "UsedNinethBox":
                     Utilities.SetCursor(spellSlots.NinethUsed, spellSlots.NinethTotal, (x, y) => x != y, Cursors.Hand);
                     break;
             }

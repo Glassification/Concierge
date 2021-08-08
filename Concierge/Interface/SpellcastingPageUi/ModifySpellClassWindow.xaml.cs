@@ -170,5 +170,10 @@ namespace Concierge.Interface.SpellcastingPageUi
         {
             (sender as Button).Foreground = Brushes.White;
         }
+
+        private void ComboBox_DropDownOpened(object sender, EventArgs e)
+        {
+            ConciergeSound.UpdateValue();
+        }
     }
 }

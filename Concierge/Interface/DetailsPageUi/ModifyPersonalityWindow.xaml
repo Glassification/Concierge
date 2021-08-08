@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:components="clr-namespace:Concierge.Interface.Components"
         xmlns:local="clr-namespace:Concierge.Interface.DetailsPageUi"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
@@ -88,13 +89,11 @@
                     <Grid Grid.Column="1"
                       Background="#FF3F3F3F"
                       Margin="0, 10, 20, 0">
-                        <TextBox x:Name="Trait1TextBox"
-                             Background="#FF3F3F3F"
-                             Margin="5"
-                             BorderThickness="0"
-                             Foreground="White"
-                             TextWrapping="Wrap"
-                             FontSize="15"/>
+                        <components:ConciergeTextBox 
+                            x:Name="Trait1TextBox"
+                            VerticalAlignment="Stretch"
+                            TextWrapping="Wrap"
+                            FontSize="15"/>
                     </Grid>
                 </Grid>
 
@@ -120,13 +119,11 @@
                     <Grid Grid.Column="1"
                       Background="#FF3F3F3F"
                       Margin="0, 10, 20, 0">
-                        <TextBox x:Name="Trait2TextBox"
-                             Background="#FF3F3F3F"
-                             Margin="5"
-                             BorderThickness="0"
-                             Foreground="White"
+                        <components:ConciergeTextBox 
+                            x:Name="Trait2TextBox"
                              TextWrapping="Wrap"
-                             FontSize="15"/>
+                             FontSize="15"
+                            VerticalAlignment="Stretch"/>
                     </Grid>
                 </Grid>
 
@@ -152,11 +149,9 @@
                     <Grid Grid.Column="1"
                       Background="#FF3F3F3F"
                       Margin="0, 10, 20, 0">
-                        <TextBox x:Name="IdealTextBox"
-                             Background="#FF3F3F3F"
-                             Margin="5"
-                             BorderThickness="0"
-                             Foreground="White"
+                        <components:ConciergeTextBox 
+                            x:Name="IdealTextBox"
+                            VerticalAlignment="Stretch"
                              TextWrapping="Wrap"
                              FontSize="15"/>
                     </Grid>
@@ -184,11 +179,9 @@
                     <Grid Grid.Column="1"
                       Background="#FF3F3F3F"
                       Margin="0, 10, 20, 0">
-                        <TextBox x:Name="BondTextBox"
-                             Background="#FF3F3F3F"
-                             Margin="5"
-                             BorderThickness="0"
-                             Foreground="White"
+                        <components:ConciergeTextBox 
+                            x:Name="BondTextBox"
+                            VerticalAlignment="Stretch"
                              TextWrapping="Wrap"
                              FontSize="15"/>
                     </Grid>
@@ -225,11 +218,9 @@
                     <Grid Grid.Column="1"
                       Background="#FF3F3F3F"
                       Margin="0, 10, 20, 0">
-                        <TextBox x:Name="FlawTextBox"
-                             Background="#FF3F3F3F"
-                             Margin="5"
-                             BorderThickness="0"
-                             Foreground="White"
+                        <components:ConciergeTextBox 
+                            x:Name="FlawTextBox"
+                            VerticalAlignment="Stretch"
                              TextWrapping="Wrap"
                              FontSize="15"/>
                     </Grid>
@@ -257,11 +248,9 @@
                     <Grid Grid.Column="1"
                       Background="#FF3F3F3F"
                       Margin="0, 10, 20, 0">
-                        <TextBox x:Name="BackgroundTextBox"
-                             Background="#FF3F3F3F"
-                             Margin="5"
-                             BorderThickness="0"
-                             Foreground="White"
+                        <components:ConciergeTextBox 
+                            x:Name="BackgroundTextBox"
+                            VerticalAlignment="Stretch"
                              TextWrapping="Wrap"
                              FontSize="15"/>
                     </Grid>
@@ -289,11 +278,9 @@
                     <Grid Grid.Column="1"
                       Background="#FF3F3F3F"
                       Margin="0, 10, 20, 0">
-                        <TextBox x:Name="NotesTextBox"
-                             Background="#FF3F3F3F"
-                             Margin="5"
-                             BorderThickness="0"
-                             Foreground="White"
+                        <components:ConciergeTextBox 
+                            x:Name="NotesTextBox"
+                            VerticalAlignment="Stretch"
                              TextWrapping="Wrap"
                              FontSize="15"/>
                     </Grid>

@@ -157,5 +157,10 @@ namespace Concierge.Interface.DetailsPageUi
         {
             (sender as Button).Foreground = Brushes.White;
         }
+
+        private void NameComboBox_DropDownOpened(object sender, EventArgs e)
+        {
+            ConciergeSound.UpdateValue();
+        }
     }
 }

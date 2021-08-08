@@ -132,5 +132,10 @@ namespace Concierge.Interface.DetailsPageUi
         {
             (sender as Button).Foreground = Brushes.White;
         }
+
+        private void ProficiencyComboBox_DropDownOpened(object sender, EventArgs e)
+        {
+            ConciergeSound.UpdateValue();
+        }
     }
 }

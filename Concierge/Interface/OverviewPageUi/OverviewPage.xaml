@@ -10,10 +10,6 @@
       Title="OverviewPage"
       Style="{StaticResource PageXboxDasboardStyle}">
 
-    <Page.Resources>
-
-    </Page.Resources>
-
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="150"/>

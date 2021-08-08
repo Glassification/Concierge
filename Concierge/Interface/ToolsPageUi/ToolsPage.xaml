@@ -223,14 +223,16 @@
                         </Grid>
                         <!--PlusMinus-->
                         <Grid Grid.Column="2">
-                            <RadioButton x:Name="D4Plus"
-                                         HorizontalAlignment="Left"
-                                         VerticalAlignment="Center"
-                                         Margin="30, 0, 0, 0"/>
-                            <RadioButton x:Name="D4Minus"
-                                         HorizontalAlignment="Right"
-                                         VerticalAlignment="Center"
-                                         Margin="0, 0, 30, 0"/>
+                            <components:ConciergeRadioButton 
+                                x:Name="D4Plus"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center"
+                                Margin="30, 0, 0, 0"/>
+                            <components:ConciergeRadioButton 
+                                x:Name="D4Minus"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Center"
+                                Margin="0, 0, 30, 0"/>
                         </Grid>
                         <!--Modifier-->
                         <Grid Grid.Column="3">
@@ -296,11 +298,11 @@
                         </Grid>
                         <!--PlusMinus-->
                         <Grid Grid.Column="2">
-                            <RadioButton x:Name="D6Plus"
+                            <components:ConciergeRadioButton  x:Name="D6Plus"
                                          HorizontalAlignment="Left"
                                          VerticalAlignment="Center"
                                          Margin="30, 0, 0, 0"/>
-                            <RadioButton x:Name="D6Minus"
+                            <components:ConciergeRadioButton  x:Name="D6Minus"
                                          HorizontalAlignment="Right"
                                          VerticalAlignment="Center"
                                          Margin="0, 0, 30, 0"/>
@@ -369,11 +371,11 @@
                         </Grid>
                         <!--PlusMinus-->
                         <Grid Grid.Column="2">
-                            <RadioButton x:Name="D8Plus"
+                            <components:ConciergeRadioButton  x:Name="D8Plus"
                                          HorizontalAlignment="Left"
                                          VerticalAlignment="Center"
                                          Margin="30, 0, 0, 0"/>
-                            <RadioButton x:Name="D8Minus"
+                            <components:ConciergeRadioButton  x:Name="D8Minus"
                                          HorizontalAlignment="Right"
                                          VerticalAlignment="Center"
                                          Margin="0, 0, 30, 0"/>
@@ -442,11 +444,11 @@
                         </Grid>
                         <!--PlusMinus-->
                         <Grid Grid.Column="2">
-                            <RadioButton x:Name="D10Plus"
+                            <components:ConciergeRadioButton  x:Name="D10Plus"
                                          HorizontalAlignment="Left"
                                          VerticalAlignment="Center"
                                          Margin="30, 0, 0, 0"/>
-                            <RadioButton x:Name="D10Minus"
+                            <components:ConciergeRadioButton  x:Name="D10Minus"
                                          HorizontalAlignment="Right"
                                          VerticalAlignment="Center"
                                          Margin="0, 0, 30, 0"/>
@@ -515,11 +517,11 @@
                         </Grid>
                         <!--PlusMinus-->
                         <Grid Grid.Column="2">
-                            <RadioButton x:Name="D100Plus"
+                            <components:ConciergeRadioButton  x:Name="D100Plus"
                                          HorizontalAlignment="Left"
                                          VerticalAlignment="Center"
                                          Margin="30, 0, 0, 0"/>
-                            <RadioButton x:Name="D100Minus"
+                            <components:ConciergeRadioButton  x:Name="D100Minus"
                                          HorizontalAlignment="Right"
                                          VerticalAlignment="Center"
                                          Margin="0, 0, 30, 0"/>
@@ -588,11 +590,11 @@
                         </Grid>
                         <!--PlusMinus-->
                         <Grid Grid.Column="2">
-                            <RadioButton x:Name="D12Plus"
+                            <components:ConciergeRadioButton  x:Name="D12Plus"
                                          HorizontalAlignment="Left"
                                          VerticalAlignment="Center"
                                          Margin="30, 0, 0, 0"/>
-                            <RadioButton x:Name="D12Minus"
+                            <components:ConciergeRadioButton  x:Name="D12Minus"
                                          HorizontalAlignment="Right"
                                          VerticalAlignment="Center"
                                          Margin="0, 0, 30, 0"/>
@@ -661,11 +663,11 @@
                         </Grid>
                         <!--PlusMinus-->
                         <Grid Grid.Column="2">
-                            <RadioButton x:Name="D20Plus"
+                            <components:ConciergeRadioButton  x:Name="D20Plus"
                                          HorizontalAlignment="Left"
                                          VerticalAlignment="Center"
                                          Margin="30, 0, 0, 0"/>
-                            <RadioButton x:Name="D20Minus"
+                            <components:ConciergeRadioButton  x:Name="D20Minus"
                                          HorizontalAlignment="Right"
                                          VerticalAlignment="Center"
                                          Margin="0, 0, 30, 0"/>
@@ -734,11 +736,11 @@
                         </Grid>
                         <!--PlusMinus-->
                         <Grid Grid.Column="2">
-                            <RadioButton x:Name="DxPlus"
+                            <components:ConciergeRadioButton  x:Name="DxPlus"
                                          HorizontalAlignment="Left"
                                          VerticalAlignment="Center"
                                          Margin="30, 0, 0, 0"/>
-                            <RadioButton x:Name="DxMinus"
+                            <components:ConciergeRadioButton  x:Name="DxMinus"
                                          HorizontalAlignment="Right"
                                          VerticalAlignment="Center"
                                          Margin="0, 0, 30, 0"/>
@@ -909,16 +911,14 @@
                         <Grid Grid.Column="1"
                               Background="#FF3e3e42"
                               Margin="0, 3, 3, 3">
-                            <TextBox x:Name="PlayersInput"
-                                     Background="#ff3e3e42"
-                                     BorderThickness="0"
-                                     Foreground="White"
-                                     FontSize="20"
-                                     VerticalContentAlignment="Center"
-                                     HorizontalContentAlignment="Center"
-                                     MaxLength="5"
-                                     GotFocus="Input_GotFocus"
-                                     LostFocus="Input_LostFocus"/>
+                            <components:ConciergeTextBox 
+                                x:Name="PlayersInput"
+                                Background="#ff3e3e42"
+                                FontSize="20"
+                                HorizontalContentAlignment="Center"
+                                MaxLength="5"
+                                GotFocus="Input_GotFocus"
+                                LostFocus="Input_LostFocus"/>
                         </Grid>
                     </Grid>
 
@@ -946,16 +946,14 @@
                         <Grid Grid.Column="1"
                               Background="#FF3e3e42"
                               Margin="0, 3, 3, 3">
-                            <TextBox x:Name="CopperInput"
-                                     Background="#ff3e3e42"
-                                     BorderThickness="0"
-                                     Foreground="White"
-                                     FontSize="20"
-                                     VerticalContentAlignment="Center"
-                                     HorizontalContentAlignment="Center"
-                                     MaxLength="10"
-                                     GotFocus="Input_GotFocus"
-                                     LostFocus="Input_LostFocus"/>
+                            <components:ConciergeTextBox 
+                                x:Name="CopperInput"
+                                Background="#ff3e3e42"
+                                FontSize="20"
+                                HorizontalContentAlignment="Center"
+                                MaxLength="10"
+                                GotFocus="Input_GotFocus"
+                                LostFocus="Input_LostFocus"/>
                         </Grid>
                     </Grid>
 
@@ -983,16 +981,14 @@
                         <Grid Grid.Column="1"
                               Background="#FF3e3e42"
                               Margin="0, 3, 3, 3">
-                            <TextBox x:Name="SilverInput"
-                                     Background="#ff3e3e42"
-                                     BorderThickness="0"
-                                     Foreground="White"
-                                     FontSize="20"
-                                     VerticalContentAlignment="Center"
-                                     HorizontalContentAlignment="Center"
-                                     MaxLength="10"
-                                     GotFocus="Input_GotFocus"
-                                     LostFocus="Input_LostFocus"/>
+                            <components:ConciergeTextBox 
+                                x:Name="SilverInput"
+                                Background="#ff3e3e42"
+                                FontSize="20"
+                                HorizontalContentAlignment="Center"
+                                MaxLength="10"
+                                GotFocus="Input_GotFocus"
+                                LostFocus="Input_LostFocus"/>
                         </Grid>
                     </Grid>
 
@@ -1020,16 +1016,14 @@
                         <Grid Grid.Column="1"
                               Background="#FF3e3e42"
                               Margin="0, 3, 3, 3">
-                            <TextBox x:Name="ElectrumInput"
-                                     Background="#ff3e3e42"
-                                     BorderThickness="0"
-                                     Foreground="White"
-                                     FontSize="20"
-                                     VerticalContentAlignment="Center"
-                                     HorizontalContentAlignment="Center"
-                                     MaxLength="10"
-                                     GotFocus="Input_GotFocus"
-                                     LostFocus="Input_LostFocus"/>
+                            <components:ConciergeTextBox 
+                                x:Name="ElectrumInput"
+                                Background="#ff3e3e42"
+                                FontSize="20"
+                                HorizontalContentAlignment="Center"
+                                MaxLength="10"
+                                GotFocus="Input_GotFocus"
+                                LostFocus="Input_LostFocus"/>
                         </Grid>
                     </Grid>
 
@@ -1057,16 +1051,14 @@
                         <Grid Grid.Column="1"
                               Background="#FF3e3e42"
                               Margin="0, 3, 3, 3">
-                            <TextBox x:Name="GoldInput"
-                                     Background="#ff3e3e42"
-                                     BorderThickness="0"
-                                     Foreground="White"
-                                     FontSize="20"
-                                     VerticalContentAlignment="Center"
-                                     HorizontalContentAlignment="Center"
-                                     MaxLength="10"
-                                     GotFocus="Input_GotFocus"
-                                     LostFocus="Input_LostFocus"/>
+                            <components:ConciergeTextBox 
+                                x:Name="GoldInput"
+                                Background="#ff3e3e42"
+                                FontSize="20"
+                                HorizontalContentAlignment="Center"
+                                MaxLength="10"
+                                GotFocus="Input_GotFocus"
+                                LostFocus="Input_LostFocus"/>
                         </Grid>
                     </Grid>
 
@@ -1094,16 +1086,14 @@
                         <Grid Grid.Column="1"
                               Background="#FF3e3e42"
                               Margin="0, 3, 3, 3">
-                            <TextBox x:Name="PlatinumInput"
-                                     Background="#ff3e3e42"
-                                     BorderThickness="0"
-                                     Foreground="White"
-                                     FontSize="20"
-                                     VerticalContentAlignment="Center"
-                                     HorizontalContentAlignment="Center"
-                                     MaxLength="10"
-                                     GotFocus="Input_GotFocus"
-                                     LostFocus="Input_LostFocus"/>
+                            <components:ConciergeTextBox 
+                                x:Name="PlatinumInput"
+                                Background="#ff3e3e42"
+                                FontSize="20"
+                                HorizontalContentAlignment="Center"
+                                MaxLength="10"
+                                GotFocus="Input_GotFocus"
+                                LostFocus="Input_LostFocus"/>
                         </Grid>
                     </Grid>
 

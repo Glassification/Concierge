@@ -209,5 +209,10 @@ namespace Concierge.Interface.InventoryPageUi
         {
             (sender as Button).Foreground = Brushes.White;
         }
+
+        private void NameComboBox_DropDownOpened(object sender, EventArgs e)
+        {
+            ConciergeSound.UpdateValue();
+        }
     }
 }

@@ -189,5 +189,10 @@ namespace Concierge.Interface.NotesPageUi
         {
             (sender as Button).Foreground = Brushes.White;
         }
+
+        private void ChapterComboBox_DropDownOpened(object sender, EventArgs e)
+        {
+            ConciergeSound.UpdateValue();
+        }
     }
 }

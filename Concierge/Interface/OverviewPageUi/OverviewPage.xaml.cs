@@ -610,8 +610,8 @@ namespace Concierge.Interface.OverviewPageUi
             switch ((sender as Grid).Name)
             {
                 case "D6SpentBox":
-                    hitDice.SpentD8 = Utilities.IncrementUsedSlots(hitDice.SpentD6, hitDice.TotalD6);
-                    Utilities.SetCursor(hitDice.SpentD8, hitDice.TotalD8, (x, y) => x == y, Cursors.Arrow);
+                    hitDice.SpentD6 = Utilities.IncrementUsedSlots(hitDice.SpentD6, hitDice.TotalD6);
+                    Utilities.SetCursor(hitDice.SpentD6, hitDice.TotalD6, (x, y) => x == y, Cursors.Arrow);
                     break;
                 case "D8SpentBox":
                     hitDice.SpentD8 = Utilities.IncrementUsedSlots(hitDice.SpentD8, hitDice.TotalD8);

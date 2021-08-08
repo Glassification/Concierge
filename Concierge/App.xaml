@@ -12,6 +12,7 @@
                 <ResourceDictionary Source="Resources/Dictionary/WindowFontStyling.xaml"/>
                 <ResourceDictionary Source="Resources/Dictionary/PageFontStyling.xaml"/>
                 <ResourceDictionary Source="Resources/Dictionary/ButtonStyling.xaml"/>
+                <ResourceDictionary Source="Resources/Dictionary/ComboBoxStyling.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

@@ -154,8 +154,6 @@ namespace Concierge.Interface.ToolsPageUi
 
         private void Input_GotFocus(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.TapNavigation();
-
             if (((TextBox)sender).Text.Equals("0"))
             {
                 ((TextBox)sender).Text = string.Empty;
