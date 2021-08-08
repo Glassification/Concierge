@@ -286,27 +286,24 @@ namespace Concierge.Interface.CompanionPageUi
 
         private void SpentBox_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            Program.Modify();
-            ConciergeSound.TapNavigation();
-
             var hitDice = Program.CcsFile.Character.Companion.Vitality.HitDice;
             switch ((sender as Grid).Name)
             {
                 case "D6SpentBox":
-                    hitDice.SpentD8++;
-                    SetCursor(hitDice.SpentD8, hitDice.TotalD8, (x, y) => x == y, Cursors.Arrow);
+                    hitDice.SpentD6 = Utilities.IncrementUsedSlots(hitDice.SpentD6, hitDice.TotalD6);
+                    Utilities.SetCursor(hitDice.SpentD6, hitDice.TotalD6, (x, y) => x == y, Cursors.Arrow);
                     break;
                 case "D8SpentBox":
-                    hitDice.SpentD8++;
-                    SetCursor(hitDice.SpentD8, hitDice.TotalD8, (x, y) => x == y, Cursors.Arrow);
+                    hitDice.SpentD8 = Utilities.IncrementUsedSlots(hitDice.SpentD8, hitDice.TotalD8);
+                    Utilities.SetCursor(hitDice.SpentD8, hitDice.TotalD8, (x, y) => x == y, Cursors.Arrow);
                     break;
                 case "D10SpentBox":
-                    hitDice.SpentD10++;
-                    SetCursor(hitDice.SpentD10, hitDice.TotalD10, (x, y) => x == y, Cursors.Arrow);
+                    hitDice.SpentD10 = Utilities.IncrementUsedSlots(hitDice.SpentD10, hitDice.TotalD10);
+                    Utilities.SetCursor(hitDice.SpentD10, hitDice.TotalD10, (x, y) => x == y, Cursors.Arrow);
                     break;
                 case "D12SpentBox":
-                    hitDice.SpentD12++;
-                    SetCursor(hitDice.SpentD12, hitDice.TotalD12, (x, y) => x == y, Cursors.Arrow);
+                    hitDice.SpentD12 = Utilities.IncrementUsedSlots(hitDice.SpentD12, hitDice.TotalD12);
+                    Utilities.SetCursor(hitDice.SpentD12, hitDice.TotalD12, (x, y) => x == y, Cursors.Arrow);
                     break;
             }
 

@@ -604,8 +604,6 @@ namespace Concierge.Interface.OverviewPageUi
 
         private void SpentBox_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            Program.Modify();
-
             var hitDice = Program.CcsFile.Character.Vitality.HitDice;
             switch ((sender as Grid).Name)
             {
