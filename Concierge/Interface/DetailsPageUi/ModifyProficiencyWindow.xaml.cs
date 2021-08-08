@@ -70,14 +70,14 @@ namespace Concierge.Interface.DetailsPageUi
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
             this.Hide();
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Modify();
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
 
             if (this.Editing)
             {
@@ -96,7 +96,7 @@ namespace Concierge.Interface.DetailsPageUi
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Modify();
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
 
             Program.CcsFile.Character.Proficiency.AddProficiencyByProficiencyType(
                 (ProficiencyTypes)Enum.Parse(typeof(ProficiencyTypes), this.ProficiencyComboBox.Text),
@@ -109,7 +109,7 @@ namespace Concierge.Interface.DetailsPageUi
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
             this.Hide();
         }
 

@@ -64,14 +64,14 @@ namespace Concierge.Interface.OverviewPageUi
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
             this.IsOk = false;
             this.Hide();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
             this.IsOk = false;
             this.Hide();
         }
@@ -79,7 +79,7 @@ namespace Concierge.Interface.OverviewPageUi
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Modify();
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
 
             this.IsOk = true;
             this.Hide();

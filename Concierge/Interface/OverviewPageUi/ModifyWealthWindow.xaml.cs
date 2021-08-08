@@ -47,6 +47,8 @@ namespace Concierge.Interface.OverviewPageUi
 
         private void ClearFields()
         {
+            this.AmountUpDown.UpdatingValue();
+
             this.AddRadioButton.IsChecked = true;
             this.CpRadioButton.IsChecked = true;
             this.AmountUpDown.Value = 0;
@@ -70,14 +72,14 @@ namespace Concierge.Interface.OverviewPageUi
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
             this.Hide();
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Modify();
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
 
             Program.CcsFile.Character.Wealth.Copper = this.CP;
             Program.CcsFile.Character.Wealth.Silver = this.SP;
@@ -91,7 +93,7 @@ namespace Concierge.Interface.OverviewPageUi
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Modify();
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
 
             if (this.CpRadioButton.IsChecked ?? false)
             {
@@ -119,7 +121,7 @@ namespace Concierge.Interface.OverviewPageUi
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
             this.Hide();
         }
 

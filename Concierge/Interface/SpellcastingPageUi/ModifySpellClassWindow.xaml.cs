@@ -58,6 +58,10 @@ namespace Concierge.Interface.SpellcastingPageUi
 
         private void FillFields(MagicClass magicClass)
         {
+            this.LevelUpDown.UpdatingValue();
+            this.CantripsUpDown.UpdatingValue();
+            this.SpellsUpDown.UpdatingValue();
+
             this.ClassNameComboBox.Text = magicClass.Name;
             this.AbilityComboBox.Text = magicClass.Ability.ToString();
             this.AttackTextBox.Text = magicClass.Attack.ToString();
@@ -70,6 +74,10 @@ namespace Concierge.Interface.SpellcastingPageUi
 
         private void ClearFields()
         {
+            this.LevelUpDown.UpdatingValue();
+            this.CantripsUpDown.UpdatingValue();
+            this.SpellsUpDown.UpdatingValue();
+
             this.ClassNameComboBox.Text = string.Empty;
             this.AbilityComboBox.Text = Abilities.NONE.ToString();
             this.AttackTextBox.Text = string.Empty;
@@ -115,14 +123,14 @@ namespace Concierge.Interface.SpellcastingPageUi
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
             this.Hide();
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Modify();
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
 
             if (this.Editing)
             {
@@ -139,7 +147,7 @@ namespace Concierge.Interface.SpellcastingPageUi
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Modify();
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
 
             Program.CcsFile.Character.MagicClasses.Add(this.ToClass());
             this.ClearFields();
@@ -149,7 +157,7 @@ namespace Concierge.Interface.SpellcastingPageUi
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
             this.Hide();
         }
 

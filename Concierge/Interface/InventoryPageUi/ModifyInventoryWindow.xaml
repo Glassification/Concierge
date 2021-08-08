@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Concierge.Interface.InventoryPageUi"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns:components="clr-namespace:Concierge.Interface.Components"
         mc:Ignorable="d"
         Title="ModifyInventoryWindow"
         Height="550"
@@ -261,15 +261,7 @@
 
                 <!--Value-->
                 <Grid Grid.Column="1">
-                    <xctk:IntegerUpDown Name="AmountUpDown"
-                                        Background="#FF3F3F3F"
-                                        BorderThickness="0"
-                                        Foreground="White"
-                                        FontSize="25"
-                                        Margin="0, 0, 20, 0"
-                                        Height="50"
-                                        TextAlignment="Left"
-                                        Minimum="0"/>
+                    <components:ConciergeIntegerUpDown x:Name="AmountUpDown"/>
                 </Grid>
             </Grid>
 
@@ -292,15 +284,7 @@
 
                 <!--Value-->
                 <Grid Grid.Column="1">
-                    <xctk:DoubleUpDown Name="WeightUpDown"
-                                       Background="#FF3F3F3F"
-                                       BorderThickness="0"
-                                       Foreground="White"
-                                       FontSize="25"
-                                       Margin="0, 0, 20, 0"
-                                       Minimum="0"
-                                       TextAlignment="Left"
-                                       Height="50"/>
+                    <components:ConciergeDoubleUpDown x:Name="WeightUpDown"/>
                 </Grid>
             </Grid>
 

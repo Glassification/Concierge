@@ -33,28 +33,28 @@ namespace Concierge.Interface.EquipmentPageUi
 
         private void WeaponButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
             this.ButtonPress = PopupButtons.AddWeapon;
             this.Hide();
         }
 
         private void AmmoButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
             this.ButtonPress = PopupButtons.AddAmmo;
             this.Hide();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
             this.ButtonPress = PopupButtons.Cancel;
             this.Hide();
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
             this.ButtonPress = PopupButtons.Cancel;
             this.Hide();
         }

@@ -39,6 +39,10 @@ namespace Concierge.Interface.CompanionPageUi
         {
             var companion = Program.CcsFile.Character.Companion;
 
+            this.AcUpDown.UpdatingValue();
+            this.PerceptionUpDown.UpdatingValue();
+            this.MovementUpDown.UpdatingValue();
+
             this.NameTextBox.Text = companion.Name;
             this.AcUpDown.Value = companion.ArmorClass;
             this.PerceptionUpDown.Value = companion.Perception;
@@ -69,20 +73,20 @@ namespace Concierge.Interface.CompanionPageUi
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
             this.Hide();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
             this.Hide();
         }
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Modify();
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
 
             this.Write();
 
@@ -92,7 +96,7 @@ namespace Concierge.Interface.CompanionPageUi
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Modify();
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
 
             this.Write();
             this.Hide();

@@ -139,20 +139,20 @@ namespace Concierge.Interface.NotesPageUi
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
             this.Hide();
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
             this.OkApplyChanges();
             this.Hide();
         }
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
             this.OkApplyChanges();
 
             if (!this.IsEdit)
@@ -166,7 +166,7 @@ namespace Concierge.Interface.NotesPageUi
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
             this.Hide();
         }
 

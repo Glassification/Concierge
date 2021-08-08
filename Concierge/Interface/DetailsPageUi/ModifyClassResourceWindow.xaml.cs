@@ -56,6 +56,9 @@ namespace Concierge.Interface.DetailsPageUi
 
         private void FillFields()
         {
+            this.PoolUpDown.UpdatingValue();
+            this.SpentUpDown.UpdatingValue();
+
             this.ResourceTextBox.Text = this.ClassResource.Type;
             this.PoolUpDown.Value = this.ClassResource.Total;
             this.SpentUpDown.Value = this.ClassResource.Spent;
@@ -63,6 +66,9 @@ namespace Concierge.Interface.DetailsPageUi
 
         private void ClearFields()
         {
+            this.PoolUpDown.UpdatingValue();
+            this.SpentUpDown.UpdatingValue();
+
             this.ResourceTextBox.Text = string.Empty;
             this.PoolUpDown.Value = 0;
             this.SpentUpDown.Value = 0;
@@ -94,14 +100,14 @@ namespace Concierge.Interface.DetailsPageUi
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
             this.Hide();
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Modify();
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
 
             this.UpdateClassResource();
             this.Hide();
@@ -110,7 +116,7 @@ namespace Concierge.Interface.DetailsPageUi
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Modify();
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
 
             this.UpdateClassResource();
 
@@ -124,7 +130,7 @@ namespace Concierge.Interface.DetailsPageUi
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
             this.Hide();
         }
 

@@ -37,6 +37,10 @@ namespace Concierge.Interface.OverviewPageUi
 
         private void FillFields()
         {
+            this.InitiativeBonusUpDown.UpdatingValue();
+            this.PerceptionBonusUpDown.UpdatingValue();
+            this.BaseMovementUpDown.UpdatingValue();
+
             this.InitiativeTextBox.Text = Program.CcsFile.Character.Initiative.ToString();
             this.InitiativeBonusUpDown.Value = Program.CcsFile.Character.Details.InitiativeBonus;
             this.PerceptionTextBox.Text = Program.CcsFile.Character.PassivePerception.ToString();
@@ -67,7 +71,7 @@ namespace Concierge.Interface.OverviewPageUi
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Modify();
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
 
             this.UpdateSenses();
             this.Hide();
@@ -76,7 +80,7 @@ namespace Concierge.Interface.OverviewPageUi
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Modify();
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
 
             this.UpdateSenses();
             this.FillFields();
@@ -86,13 +90,13 @@ namespace Concierge.Interface.OverviewPageUi
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
             this.Hide();
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
             this.Hide();
         }
 

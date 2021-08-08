@@ -313,7 +313,7 @@ namespace Concierge.Interface
 
         private void ButtonOpenMenu_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
             Program.Logger.Info($"Expand sidebar.");
 
             this.ButtonCloseMenu.Visibility = Visibility.Visible;
@@ -324,7 +324,7 @@ namespace Concierge.Interface
 
         private void ButtonCloseMenu_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
             Program.Logger.Info($"Collapse sidebar.");
 
             this.ButtonCloseMenu.Visibility = Visibility.Collapsed;
@@ -335,43 +335,43 @@ namespace Concierge.Interface
 
         private void ButtonClose_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
             this.CloseWindow();
         }
 
         private void ButtonNewCharacter_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
             this.NewCharacterSheet();
         }
 
         private void ButtonOpenCharacter_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
             this.OpenCharacterSheet();
         }
 
         private void ButtonSaveCharacter_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
             this.SaveCharacterSheet();
         }
 
         private void ButtonSaveCharacterAs_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
             this.SaveCharacterSheetAs();
         }
 
         private void ButtonLongRest_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
             this.LongRest();
         }
 
         private void ItemNotes_Selected(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
             Program.Logger.Info($"Navigate to Notes page.");
 
             this.CollapseAll();
@@ -382,7 +382,7 @@ namespace Concierge.Interface
 
         private void ItemInventory_Selected(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
             Program.Logger.Info($"Navigate to Inventory page.");
 
             this.CollapseAll();
@@ -393,7 +393,7 @@ namespace Concierge.Interface
 
         private void ItemEquipedItems_Selected(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
             Program.Logger.Info($"Navigate to Equiped Items page.");
 
             this.CollapseAll();
@@ -404,7 +404,7 @@ namespace Concierge.Interface
 
         private void ItemDetails_Selected(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
             Program.Logger.Info($"Navigate to Details page.");
 
             this.CollapseAll();
@@ -415,7 +415,7 @@ namespace Concierge.Interface
 
         private void ItemAbilities_Selected(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
             Program.Logger.Info($"Navigate to Abilities page.");
 
             this.CollapseAll();
@@ -426,7 +426,7 @@ namespace Concierge.Interface
 
         private void ItemEquipment_Selected(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
             Program.Logger.Info($"Navigate to Equipment page.");
 
             this.CollapseAll();
@@ -437,7 +437,7 @@ namespace Concierge.Interface
 
         private void ItemOverview_Selected(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
             Program.Logger.Info($"Navigate to Overview page.");
 
             this.CollapseAll();
@@ -448,7 +448,7 @@ namespace Concierge.Interface
 
         private void ItemSpellcasting_Selected(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
             Program.Logger.Info($"Navigate to Spellcasting page.");
 
             this.CollapseAll();
@@ -459,7 +459,7 @@ namespace Concierge.Interface
 
         private void ItemCompanion_Selected(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
             Program.Logger.Info($"Navigate to Companion page.");
 
             this.CollapseAll();
@@ -470,7 +470,7 @@ namespace Concierge.Interface
 
         private void ItemTools_Selected(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
             Program.Logger.Info($"Navigate to Tools page.");
 
             this.CollapseAll();
@@ -481,7 +481,7 @@ namespace Concierge.Interface
 
         private void PropertiesButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
             Program.Logger.Info($"Open properties.");
 
             this.modifyPropertiesWindow.ShowWindow();
@@ -490,7 +490,7 @@ namespace Concierge.Interface
 
         private void SettingsButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
             Program.Logger.Info($"Open settings.");
 
             this.settingsWindow.ShowWindow();
@@ -509,7 +509,7 @@ namespace Concierge.Interface
 
         private void AboutButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
             Program.Logger.Info($"Open About.");
 
             this.aboutConciergeWindow.ShowWindow();
@@ -527,7 +527,7 @@ namespace Concierge.Interface
 
         private void ButtonMinimize_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
             this.WindowState = WindowState.Minimized;
         }
     }

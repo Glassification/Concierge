@@ -19,7 +19,7 @@ namespace Concierge.Utility
             if (used < total)
             {
                 Program.Modify();
-                ConciergeSound.ButtonClick();
+                ConciergeSound.UpdateValue();
 
                 return used + 1;
             }

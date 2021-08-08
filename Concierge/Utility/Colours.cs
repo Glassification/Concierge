@@ -13,11 +13,14 @@ namespace Concierge.Utility
             UsedBoxBrush = new SolidColorBrush(Color.FromArgb(255, 62, 62, 66));
             TotalDarkBoxBrush = new SolidColorBrush(Color.FromArgb(255, 15, 15, 15));
             TotalLightBoxBrush = new SolidColorBrush(Color.FromArgb(255, 51, 51, 51));
+            UpDownControlBackgroundBrush = new SolidColorBrush(Color.FromArgb(255, 63, 63, 63));
         }
 
         public static SolidColorBrush TotalDarkBoxBrush { get; }
 
         public static SolidColorBrush TotalLightBoxBrush { get; }
+
+        public static SolidColorBrush UpDownControlBackgroundBrush { get; }
 
         public static SolidColorBrush UsedBoxBrush { get; }
 
@@ -26,5 +29,6 @@ namespace Concierge.Utility
         public static Color LightYellow => Color.FromArgb(255, 252, 213, 180);
 
         public static Color MediumRed => Color.FromArgb(255, 187, 74, 67);
+
     }
 }

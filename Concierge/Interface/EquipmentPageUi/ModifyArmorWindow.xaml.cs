@@ -11,7 +11,6 @@ namespace Concierge.Interface.EquipmentPageUi
     using System.Windows.Input;
     using System.Windows.Media;
 
-    using Concierge.Characters;
     using Concierge.Characters.Enums;
     using Concierge.Characters.Items;
     using Concierge.Utility;
@@ -43,6 +42,14 @@ namespace Concierge.Interface.EquipmentPageUi
 
         private void FillArmorDetails(Armor armor)
         {
+            this.ArmorClassUpDown.UpdatingValue();
+            this.WeightUpDown.UpdatingValue();
+            this.StrengthUpDown.UpdatingValue();
+            this.ShieldArmorClassUpDown.UpdatingValue();
+            this.ShieldWeightUpDown.UpdatingValue();
+            this.MiscArmorClassUpDown.UpdatingValue();
+            this.MagicArmorClassUpDown.UpdatingValue();
+
             this.EquipedTextBox.Text = armor.Equiped;
             this.TypeComboBox.Text = armor.Type.ToString();
             this.ArmorClassUpDown.Value = armor.ArmorClass;
@@ -84,14 +91,14 @@ namespace Concierge.Interface.EquipmentPageUi
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
             this.Hide();
         }
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Modify();
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
 
             this.ToArmor(this.SelectedArmor);
 
@@ -101,7 +108,7 @@ namespace Concierge.Interface.EquipmentPageUi
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Modify();
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
 
             this.ToArmor(this.SelectedArmor);
             this.Hide();
@@ -109,7 +116,7 @@ namespace Concierge.Interface.EquipmentPageUi
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
             this.Hide();
         }
 

@@ -39,6 +39,10 @@ namespace Concierge.Interface.OverviewPageUi
 
         private void FillFields()
         {
+            this.CurrentHpUpDown.UpdatingValue();
+            this.TemporaryHpUpDown.UpdatingValue();
+            this.TotalHpUpDown.UpdatingValue();
+
             this.CurrentHpUpDown.Value = this.Vitality.BaseHealth;
             this.TemporaryHpUpDown.Value = this.Vitality.TemporaryHealth;
             this.TotalHpUpDown.Value = this.Vitality.MaxHealth;
@@ -63,20 +67,20 @@ namespace Concierge.Interface.OverviewPageUi
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
             this.Hide();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
             this.Hide();
         }
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Modify();
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
 
             this.UpdateHealth();
 
@@ -86,7 +90,7 @@ namespace Concierge.Interface.OverviewPageUi
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Modify();
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
 
             this.UpdateHealth();
             this.Hide();

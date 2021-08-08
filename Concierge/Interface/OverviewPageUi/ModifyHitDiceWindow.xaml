@@ -5,6 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Concierge.Interface.OverviewPageUi"
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:components="clr-namespace:Concierge.Interface.Components"
       xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
       mc:Ignorable="d" 
       Title="ModifyHitDiceWindow"
@@ -253,14 +254,7 @@
 
                     <!--Value-->
                     <Grid Grid.Column="1">
-                        <xctk:IntegerUpDown Name="TotalD6UpDown"
-                                            Background="#FF3F3F3F"
-                                            BorderThickness="0"
-                                            Foreground="White"
-                                            FontSize="25"
-                                            Minimum="0"
-                                            Margin="0, 0, 20, 0"
-                                            Height="40"/>
+                        <components:ConciergeIntegerUpDown x:Name="TotalD6UpDown"/>
                     </Grid>
                 </Grid>
 
@@ -283,14 +277,7 @@
 
                     <!--Value-->
                     <Grid Grid.Column="1">
-                        <xctk:IntegerUpDown Name="TotalD8UpDown"
-                                            Background="#FF3F3F3F"
-                                            BorderThickness="0"
-                                            Foreground="White"
-                                            FontSize="25"
-                                            Minimum="0"
-                                            Margin="0, 0, 20, 0"
-                                            Height="40"/>
+                        <components:ConciergeIntegerUpDown x:Name="TotalD8UpDown"/>
                     </Grid>
                 </Grid>
 
@@ -313,14 +300,7 @@
 
                     <!--Value-->
                     <Grid Grid.Column="1">
-                        <xctk:IntegerUpDown Name="TotalD10UpDown"
-                                            Background="#FF3F3F3F"
-                                            BorderThickness="0"
-                                            Foreground="White"
-                                            FontSize="25"
-                                            Minimum="0"
-                                            Margin="0, 0, 20, 0"
-                                            Height="40"/>
+                        <components:ConciergeIntegerUpDown x:Name="TotalD10UpDown"/>
                     </Grid>
                 </Grid>
 
@@ -343,14 +323,7 @@
 
                     <!--Value-->
                     <Grid Grid.Column="1">
-                        <xctk:IntegerUpDown Name="TotalD12UpDown"
-                                            Background="#FF3F3F3F"
-                                            BorderThickness="0"
-                                            Foreground="White"
-                                            FontSize="25"
-                                            Minimum="0"
-                                            Margin="0, 0, 20, 0"
-                                            Height="40"/>
+                        <components:ConciergeIntegerUpDown x:Name="TotalD12UpDown"/>
                     </Grid>
                 </Grid>
             </Grid>
@@ -383,14 +356,7 @@
 
                     <!--Value-->
                     <Grid Grid.Column="1">
-                        <xctk:IntegerUpDown Name="UsedD6UpDown"
-                                            Background="#FF3F3F3F"
-                                            BorderThickness="0"
-                                            Foreground="White"
-                                            FontSize="25"
-                                            Minimum="0"
-                                            Margin="0, 0, 20, 0"
-                                            Height="40"/>
+                        <components:ConciergeIntegerUpDown x:Name="UsedD6UpDown"/>
                     </Grid>
                 </Grid>
 
@@ -413,14 +379,7 @@
 
                     <!--Value-->
                     <Grid Grid.Column="1">
-                        <xctk:IntegerUpDown Name="UsedD8UpDown"
-                                            Background="#FF3F3F3F"
-                                            BorderThickness="0"
-                                            Foreground="White"
-                                            Minimum="0"
-                                            FontSize="25"
-                                            Margin="0, 0, 20, 0"
-                                            Height="40"/>
+                        <components:ConciergeIntegerUpDown x:Name="UsedD8UpDown"/>
                     </Grid>
                 </Grid>
 
@@ -443,14 +402,7 @@
 
                     <!--Value-->
                     <Grid Grid.Column="1">
-                        <xctk:IntegerUpDown Name="UsedD10UpDown"
-                                            Background="#FF3F3F3F"
-                                            BorderThickness="0"
-                                            Foreground="White"
-                                            FontSize="25"
-                                            Minimum="0"
-                                            Margin="0, 0, 20, 0"
-                                            Height="40"/>
+                        <components:ConciergeIntegerUpDown x:Name="UsedD10UpDown"/>
                     </Grid>
                 </Grid>
 
@@ -473,14 +425,7 @@
 
                     <!--Value-->
                     <Grid Grid.Column="1">
-                        <xctk:IntegerUpDown Name="UsedD12UpDown"
-                                            Background="#FF3F3F3F"
-                                            BorderThickness="0"
-                                            Foreground="White"
-                                            FontSize="25"
-                                            Minimum="0"
-                                            Margin="0, 0, 20, 0"
-                                            Height="40"/>
+                        <components:ConciergeIntegerUpDown x:Name="UsedD12UpDown"/>
                     </Grid>
                 </Grid>
 

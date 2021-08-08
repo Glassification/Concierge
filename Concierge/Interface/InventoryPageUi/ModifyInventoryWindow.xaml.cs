@@ -66,6 +66,9 @@ namespace Concierge.Interface.InventoryPageUi
 
         private void FillFields(Inventory inventory)
         {
+            this.AmountUpDown.UpdatingValue();
+            this.WeightUpDown.UpdatingValue();
+
             this.NameComboBox.Text = inventory.Name;
             this.AmountUpDown.Value = inventory.Amount;
             this.WeightUpDown.Value = inventory.Weight;
@@ -85,6 +88,9 @@ namespace Concierge.Interface.InventoryPageUi
 
         private void ClearFields()
         {
+            this.AmountUpDown.UpdatingValue();
+            this.WeightUpDown.UpdatingValue();
+
             this.NameComboBox.Text = string.Empty;
             this.AmountUpDown.Value = 0;
             this.WeightUpDown.Value = 0.0;
@@ -143,14 +149,14 @@ namespace Concierge.Interface.InventoryPageUi
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
             this.Hide();
         }
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Modify();
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
 
             this.Items.Add(this.ToInventory());
             this.ClearFields();
@@ -161,7 +167,7 @@ namespace Concierge.Interface.InventoryPageUi
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Modify();
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
 
             if (this.Editing)
             {

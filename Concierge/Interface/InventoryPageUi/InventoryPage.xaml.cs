@@ -61,7 +61,7 @@ namespace Concierge.Interface.InventoryPageUi
             }
 
             Program.Modify();
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
 
             var inventory = (Inventory)this.InventoryDataGrid.SelectedItem;
             var index = Program.CcsFile.Character.Inventories.IndexOf(inventory);
@@ -82,7 +82,7 @@ namespace Concierge.Interface.InventoryPageUi
             }
 
             Program.Modify();
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
 
             var inventory = (Inventory)this.InventoryDataGrid.SelectedItem;
             var index = Program.CcsFile.Character.Inventories.IndexOf(inventory);
@@ -97,13 +97,13 @@ namespace Concierge.Interface.InventoryPageUi
 
         private void ButtonClear_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
             this.InventoryDataGrid.UnselectAll();
         }
 
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
             this.modifyInventoryWindow.ShowAdd(Program.CcsFile.Character.Inventories);
             this.DrawInventory();
         }
@@ -112,7 +112,7 @@ namespace Concierge.Interface.InventoryPageUi
         {
             if (this.InventoryDataGrid.SelectedItem != null)
             {
-                ConciergeSound.ButtonClick();
+                ConciergeSound.TapNavigation();
                 var inventory = (Inventory)this.InventoryDataGrid.SelectedItem;
                 this.modifyInventoryWindow.ShowEdit(inventory);
                 this.DrawInventory();
@@ -123,7 +123,7 @@ namespace Concierge.Interface.InventoryPageUi
         {
             if (this.InventoryDataGrid.SelectedItem != null)
             {
-                ConciergeSound.ButtonClick();
+                ConciergeSound.TapNavigation();
                 Program.Modify();
 
                 var inventory = (Inventory)this.InventoryDataGrid.SelectedItem;

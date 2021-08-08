@@ -39,6 +39,13 @@ namespace Concierge.Interface.OverviewPageUi
 
         private void FillFields()
         {
+            this.StrengthUpDown.UpdatingValue();
+            this.DexterityUpDown.UpdatingValue();
+            this.ConstitutionUpDown.UpdatingValue();
+            this.IntelligenceUpDown.UpdatingValue();
+            this.WisdomUpDown.UpdatingValue();
+            this.CharismaUpDown.UpdatingValue();
+
             this.StrengthUpDown.Value = this.Attributes.Strength;
             this.DexterityUpDown.Value = this.Attributes.Dexterity;
             this.ConstitutionUpDown.Value = this.Attributes.Constitution;
@@ -70,7 +77,7 @@ namespace Concierge.Interface.OverviewPageUi
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Modify();
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
 
             this.UpdateAttributes();
             this.Hide();
@@ -79,7 +86,7 @@ namespace Concierge.Interface.OverviewPageUi
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Modify();
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
 
             this.UpdateAttributes();
 
@@ -88,13 +95,13 @@ namespace Concierge.Interface.OverviewPageUi
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
             this.Hide();
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
             this.Hide();
         }
 

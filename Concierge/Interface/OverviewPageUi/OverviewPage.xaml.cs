@@ -382,7 +382,7 @@ namespace Concierge.Interface.OverviewPageUi
         private void SavingThrows_MouseDown(object sender, RoutedEventArgs e)
         {
             Program.Modify();
-            ConciergeSound.ButtonClick();
+            ConciergeSound.UpdateValue();
 
             var rectangle = sender as Rectangle;
 
@@ -414,7 +414,7 @@ namespace Concierge.Interface.OverviewPageUi
         private void SkillProficiency_MouseDown(object sender, RoutedEventArgs e)
         {
             Program.Modify();
-            ConciergeSound.ButtonClick();
+            ConciergeSound.UpdateValue();
 
             var rectangle = sender as Rectangle;
 
@@ -482,7 +482,7 @@ namespace Concierge.Interface.OverviewPageUi
         private void SkillExpertise_MouseDown(object sender, RoutedEventArgs e)
         {
             Program.Modify();
-            ConciergeSound.ButtonClick();
+            ConciergeSound.UpdateValue();
 
             Rectangle rectangle = sender as Rectangle;
 
@@ -559,7 +559,7 @@ namespace Concierge.Interface.OverviewPageUi
 
         private void EditAttributesButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
 
             this.modifyAttributesWindow.EditAttributes(Program.CcsFile.Character.Attributes);
             this.DrawAttributes();
@@ -569,35 +569,35 @@ namespace Concierge.Interface.OverviewPageUi
 
         private void EditSensesButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
             this.modifySensesWindow.EditSenses();
             this.DrawDetails();
         }
 
         private void EditHealthButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
             this.modifyHealthWindow.EditHealth(Program.CcsFile.Character.Vitality);
             this.DrawHealth();
         }
 
         private void EditHitDiceButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
             this.modifyHitDiceWindow.ModifyHitDice(Program.CcsFile.Character.Vitality.HitDice);
             this.DrawHitDice();
         }
 
         private void TakeDamageButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
             this.modifyHpWindow.SubtractHP(Program.CcsFile.Character.Vitality);
             this.DrawHealth();
         }
 
         private void HealDamageButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
             this.modifyHpWindow.AddHP(Program.CcsFile.Character.Vitality);
             this.DrawHealth();
         }
@@ -605,7 +605,6 @@ namespace Concierge.Interface.OverviewPageUi
         private void SpentBox_MouseDown(object sender, MouseButtonEventArgs e)
         {
             Program.Modify();
-            ConciergeSound.ButtonClick();
 
             var hitDice = Program.CcsFile.Character.Vitality.HitDice;
             switch ((sender as Grid).Name)
@@ -658,7 +657,7 @@ namespace Concierge.Interface.OverviewPageUi
 
         private void EditWealthButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
             this.modifyWealthWindow.ShowWindow();
             this.DrawWealth();
         }

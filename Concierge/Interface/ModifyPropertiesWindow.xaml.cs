@@ -42,6 +42,10 @@ namespace Concierge.Interface
         {
             Program.Logger.Info($"Read character sheet.");
 
+            this.Level1UpDown.UpdatingValue();
+            this.Level2UpDown.UpdatingValue();
+            this.Level3UpDown.UpdatingValue();
+
             this.NameTextBox.Text = Program.CcsFile.Character.Details.Name;
             this.RaceComboBox.Text = Program.CcsFile.Character.Details.Race;
             this.BackgroundComboBox.Text = Program.CcsFile.Character.Details.Background;
@@ -85,7 +89,7 @@ namespace Concierge.Interface
         {
             Program.Logger.Info($"OK button click.");
             Program.Modify();
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
 
             this.Write();
             this.Hide();
@@ -95,7 +99,7 @@ namespace Concierge.Interface
         {
             Program.Logger.Info($"Apply button click.");
             Program.Modify();
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
 
             this.Write();
         }
@@ -103,7 +107,7 @@ namespace Concierge.Interface
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Logger.Info($"Cancel button click.");
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
 
             this.Hide();
         }
@@ -111,7 +115,7 @@ namespace Concierge.Interface
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Logger.Info($"Close button click.");
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
 
             this.Hide();
         }

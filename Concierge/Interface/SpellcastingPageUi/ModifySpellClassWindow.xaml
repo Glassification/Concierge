@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Concierge.Interface.SpellcastingPageUi"
+        xmlns:components="clr-namespace:Concierge.Interface.Components"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         mc:Ignorable="d"
@@ -369,15 +370,7 @@
 
                     <!--Value-->
                     <Grid Grid.Column="1">
-                        <xctk:IntegerUpDown Name="LevelUpDown"
-                                            Background="#FF3F3F3F"
-                                            BorderThickness="0"
-                                            Foreground="White"
-                                            FontSize="25"
-                                            Margin="0, 0, 20, 0"
-                                            Minimum="0"
-                                            TextAlignment="Left"
-                                            Height="40"/>
+                        <components:ConciergeIntegerUpDown x:Name="LevelUpDown"/>
                     </Grid>
                 </Grid>
 
@@ -400,15 +393,7 @@
 
                     <!--Value-->
                     <Grid Grid.Column="1">
-                        <xctk:IntegerUpDown Name="CantripsUpDown"
-                                            Background="#FF3F3F3F"
-                                            BorderThickness="0"
-                                            Foreground="White"
-                                            FontSize="25"
-                                            TextAlignment="Left"
-                                            Minimum="0"
-                                            Margin="0, 0, 20, 0"
-                                            Height="40"/>
+                        <components:ConciergeIntegerUpDown x:Name="CantripsUpDown"/>
                     </Grid>
                 </Grid>
 
@@ -431,15 +416,7 @@
 
                     <!--Value-->
                     <Grid Grid.Column="1">
-                        <xctk:IntegerUpDown Name="SpellsUpDown"
-                                            Background="#FF3F3F3F"
-                                            BorderThickness="0"
-                                            Foreground="White"
-                                            FontSize="25"
-                                            TextAlignment="Left"
-                                            Margin="0, 0, 20, 0"
-                                            Minimum="0"
-                                            Height="40"/>
+                        <components:ConciergeIntegerUpDown x:Name="SpellsUpDown"/>
                     </Grid>
                 </Grid>
 

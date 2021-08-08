@@ -39,6 +39,15 @@ namespace Concierge.Interface.OverviewPageUi
 
         private void SetHitDice()
         {
+            this.TotalD6UpDown.UpdatingValue();
+            this.TotalD8UpDown.UpdatingValue();
+            this.TotalD10UpDown.UpdatingValue();
+            this.TotalD12UpDown.UpdatingValue();
+            this.UsedD6UpDown.UpdatingValue();
+            this.UsedD8UpDown.UpdatingValue();
+            this.UsedD10UpDown.UpdatingValue();
+            this.UsedD12UpDown.UpdatingValue();
+
             this.TotalD6UpDown.Value = this.HitDice.TotalD6;
             this.TotalD8UpDown.Value = this.HitDice.TotalD8;
             this.TotalD10UpDown.Value = this.HitDice.TotalD10;
@@ -75,20 +84,20 @@ namespace Concierge.Interface.OverviewPageUi
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
             this.Hide();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
             this.Hide();
         }
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Modify();
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
 
             this.GetHitDice();
 
@@ -98,7 +107,7 @@ namespace Concierge.Interface.OverviewPageUi
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Modify();
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
 
             this.GetHitDice();
             this.Hide();

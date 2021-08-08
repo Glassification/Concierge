@@ -60,6 +60,8 @@ namespace Concierge.Interface.AbilitiesPageUi
 
         private void FillFields(Ability ability)
         {
+            this.LevelUpDown.UpdatingValue();
+
             this.NameComboBox.Text = ability.Name;
             this.LevelUpDown.Value = ability.Level;
             this.UsesTextBox.Text = ability.Uses;
@@ -70,6 +72,8 @@ namespace Concierge.Interface.AbilitiesPageUi
 
         private void ClearFields()
         {
+            this.LevelUpDown.UpdatingValue();
+
             this.NameComboBox.Text = string.Empty;
             this.LevelUpDown.Value = 0;
             this.UsesTextBox.Text = string.Empty;
@@ -113,14 +117,14 @@ namespace Concierge.Interface.AbilitiesPageUi
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
             this.Hide();
         }
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Modify();
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
 
             this.Abilities.Add(this.ToAbility());
             this.ClearFields();
@@ -131,7 +135,7 @@ namespace Concierge.Interface.AbilitiesPageUi
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Modify();
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
 
             if (this.Editing)
             {
@@ -147,7 +151,7 @@ namespace Concierge.Interface.AbilitiesPageUi
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
             this.Hide();
         }
 

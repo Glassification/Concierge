@@ -119,35 +119,35 @@ namespace Concierge.Interface.HelperUi
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             this.Result = MessageWindowResult.Exit;
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
             this.Hide();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
             this.Result = MessageWindowResult.Cancel;
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
             this.Hide();
         }
 
         private void NoButton_Click(object sender, RoutedEventArgs e)
         {
             this.Result = MessageWindowResult.No;
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
             this.Hide();
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
             this.Result = MessageWindowResult.OK;
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
             this.Hide();
         }
 
         private void YesButton_Click(object sender, RoutedEventArgs e)
         {
             this.Result = MessageWindowResult.Yes;
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
             this.Hide();
         }
 

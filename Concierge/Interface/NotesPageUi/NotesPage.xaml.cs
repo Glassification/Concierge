@@ -196,38 +196,38 @@ namespace Concierge.Interface.NotesPageUi
 
         private void ButtonCut_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
             Clipboard.SetText(this.NotesTextBox.Selection.Text);
             this.NotesTextBox.Selection.Text = string.Empty;
         }
 
         private void ButtonCopy_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
             Clipboard.SetText(this.NotesTextBox.Selection.Text);
         }
 
         private void ButtonPaste_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
             this.NotesTextBox.Selection.Text = Clipboard.GetText();
         }
 
         private void ButtonUndo_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
             this.NotesTextBox.Undo();
         }
 
         private void ButtonRedo_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
             this.NotesTextBox.Redo();
         }
 
         private void ButtonBold_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
 
             if ((bool)this.ButtonBold.IsChecked)
             {
@@ -241,7 +241,7 @@ namespace Concierge.Interface.NotesPageUi
 
         private void ButtonItalic_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
 
             if ((bool)this.ButtonItalic.IsChecked)
             {
@@ -255,7 +255,7 @@ namespace Concierge.Interface.NotesPageUi
 
         private void ButtonUnderline_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
 
             if ((bool)this.ButtonUnderline.IsChecked)
             {
@@ -319,7 +319,7 @@ namespace Concierge.Interface.NotesPageUi
 
         private void ButtonClear_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
 
             this.SaveTextBox();
             this.ClearTextBox();
@@ -380,7 +380,7 @@ namespace Concierge.Interface.NotesPageUi
 
         private void ButtonUp_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
             this.MoveTreeViewItem(-1, true, (x, y) => x > y);
         }
 
@@ -414,13 +414,13 @@ namespace Concierge.Interface.NotesPageUi
 
         private void ButtonDown_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
             this.MoveTreeViewItem(1, false, (x, y) => x < y);
         }
 
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
             this.modifyNotesWindow.ShowAdd();
             this.Draw();
         }
@@ -432,7 +432,7 @@ namespace Concierge.Interface.NotesPageUi
                 return;
             }
 
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
 
             if (this.NotesTreeView.SelectedItem is ChapterTreeViewItem chapterTreeViewItem)
             {
@@ -454,7 +454,7 @@ namespace Concierge.Interface.NotesPageUi
             }
 
             Program.Modify();
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
 
             if (this.NotesTreeView.SelectedItem is ChapterTreeViewItem chapterTreeViewItem)
             {

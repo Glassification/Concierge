@@ -8,15 +8,18 @@ namespace Concierge.Utility
 
     public static class ConciergeSound
     {
-        private static int skipClickCount = 0;
+        private static int skipClickCount;
 
         static ConciergeSound()
         {
-            ButtonSound = new SoundPlayer(Properties.Resources.GenericTapSound);
+            HighPitchTapSound = new SoundPlayer(Properties.Resources.HighPitchTapSound);
+            TapSound = new SoundPlayer(Properties.Resources.GenericTapSound);
             WarningSound = new SoundPlayer(Properties.Resources.GenericWarning);
         }
 
-        private static SoundPlayer ButtonSound { get; set; }
+        private static SoundPlayer HighPitchTapSound { get; set; }
+
+        private static SoundPlayer TapSound { get; set; }
 
         private static SoundPlayer WarningSound { get; set; }
 
@@ -34,14 +37,24 @@ namespace Concierge.Utility
             }
         }
 
-        public static void ButtonClick()
+        public static void TapNavigation()
         {
             if (Program.CcsFile.MuteSound || SkipClick)
             {
                 return;
             }
 
-            ButtonSound.Play();
+            TapSound.Play();
+        }
+
+        public static void UpdateValue()
+        {
+            if (Program.CcsFile.MuteSound)
+            {
+                return;
+            }
+
+            HighPitchTapSound.Play();
         }
 
         public static void Warning()

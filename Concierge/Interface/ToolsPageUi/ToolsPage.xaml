@@ -4,7 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-      xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+      xmlns:components="clr-namespace:Concierge.Interface.Components"
       xmlns:local="clr-namespace:Concierge.Interface.ToolsPageUi"
       mc:Ignorable="d"
       d:DesignHeight="450" d:DesignWidth="800"
@@ -215,14 +215,11 @@
                         </Grid>
                         <!--Number-->
                         <Grid Grid.Column="1">
-                            <xctk:IntegerUpDown 
-                                Name="D4NumberUpDown"
+                            <components:ConciergeIntegerUpDown 
+                                x:Name="D4NumberUpDown"
                                 Background="DimGray"
-                                BorderThickness="0"
-                                Foreground="White"
-                                FontSize="25"
-                                Margin="3"
-                                Minimum="0"/>
+                                Height="30"
+                                Margin="3"/>
                         </Grid>
                         <!--PlusMinus-->
                         <Grid Grid.Column="2">
@@ -237,14 +234,11 @@
                         </Grid>
                         <!--Modifier-->
                         <Grid Grid.Column="3">
-                            <xctk:IntegerUpDown 
-                                Name="D4ModifierUpDown"
+                            <components:ConciergeIntegerUpDown 
+                                x:Name="D4ModifierUpDown"
                                 Background="DimGray"
-                                BorderThickness="0"
-                                Foreground="White"
-                                FontSize="25"
-                                Margin="3"
-                                Minimum="0"/>
+                                Height="30"
+                                Margin="3,3,3.4,-11.4" VerticalAlignment="Top"/>
                         </Grid>
                         <!--Roll-->
                         <Grid Grid.Column="4">
@@ -294,14 +288,11 @@
                         </Grid>
                         <!--Number-->
                         <Grid Grid.Column="1">
-                            <xctk:IntegerUpDown 
-                                Name="D6NumberUpDown"
+                            <components:ConciergeIntegerUpDown 
+                                x:Name="D6NumberUpDown"
                                 Background="DimGray"
-                                BorderThickness="0"
-                                Foreground="White"
-                                FontSize="25"
-                                Margin="3"
-                                Minimum="0"/>
+                                Height="30"
+                                Margin="3"/>
                         </Grid>
                         <!--PlusMinus-->
                         <Grid Grid.Column="2">
@@ -316,14 +307,11 @@
                         </Grid>
                         <!--Modifier-->
                         <Grid Grid.Column="3">
-                            <xctk:IntegerUpDown 
-                                Name="D6ModifierUpDown"
+                            <components:ConciergeIntegerUpDown 
+                                x:Name="D6ModifierUpDown"
                                 Background="DimGray"
-                                BorderThickness="0"
-                                Foreground="White"
-                                FontSize="25"
-                                Margin="3"
-                                Minimum="0"/>
+                                Height="30"
+                                Margin="3"/>
                         </Grid>
                         <!--Roll-->
                         <Grid Grid.Column="4">
@@ -373,14 +361,11 @@
                         </Grid>
                         <!--Number-->
                         <Grid Grid.Column="1">
-                            <xctk:IntegerUpDown 
-                                Name="D8NumberUpDown"
+                            <components:ConciergeIntegerUpDown 
+                                x:Name="D8NumberUpDown"
                                 Background="DimGray"
-                                BorderThickness="0"
-                                Foreground="White"
-                                FontSize="25"
-                                Margin="3"
-                                Minimum="0"/>
+                                Height="30"
+                                Margin="3"/>
                         </Grid>
                         <!--PlusMinus-->
                         <Grid Grid.Column="2">
@@ -395,14 +380,11 @@
                         </Grid>
                         <!--Modifier-->
                         <Grid Grid.Column="3">
-                            <xctk:IntegerUpDown 
-                                Name="D8ModifierUpDown"
+                            <components:ConciergeIntegerUpDown 
+                                x:Name="D8ModifierUpDown"
                                 Background="DimGray"
-                                BorderThickness="0"
-                                Foreground="White"
-                                FontSize="25"
-                                Margin="3"
-                                Minimum="0"/>
+                                Height="30"
+                                Margin="3"/>
                         </Grid>
                         <!--Roll-->
                         <Grid Grid.Column="4">
@@ -452,14 +434,11 @@
                         </Grid>
                         <!--Number-->
                         <Grid Grid.Column="1">
-                            <xctk:IntegerUpDown 
-                                Name="D10NumberUpDown"
+                            <components:ConciergeIntegerUpDown 
+                                x:Name="D10NumberUpDown"
                                 Background="DimGray"
-                                BorderThickness="0"
-                                Foreground="White"
-                                FontSize="25"
-                                Margin="3"
-                                Minimum="0"/>
+                                Height="30"
+                                Margin="3"/>
                         </Grid>
                         <!--PlusMinus-->
                         <Grid Grid.Column="2">
@@ -474,14 +453,11 @@
                         </Grid>
                         <!--Modifier-->
                         <Grid Grid.Column="3">
-                            <xctk:IntegerUpDown 
-                                Name="D10ModifierUpDown"
+                            <components:ConciergeIntegerUpDown 
+                                x:Name="D10ModifierUpDown"
                                 Background="DimGray"
-                                BorderThickness="0"
-                                Foreground="White"
-                                FontSize="25"
-                                Margin="3"
-                                Minimum="0"/>
+                                Height="30"
+                                Margin="3"/>
                         </Grid>
                         <!--Roll-->
                         <Grid Grid.Column="4">
@@ -531,14 +507,11 @@
                         </Grid>
                         <!--Number-->
                         <Grid Grid.Column="1">
-                            <xctk:IntegerUpDown 
-                                Name="D100NumberUpDown"
+                            <components:ConciergeIntegerUpDown 
+                                x:Name="D100NumberUpDown"
                                 Background="DimGray"
-                                BorderThickness="0"
-                                Foreground="White"
-                                FontSize="25"
-                                Margin="3"
-                                Minimum="0"/>
+                                Height="30"
+                                Margin="3"/>
                         </Grid>
                         <!--PlusMinus-->
                         <Grid Grid.Column="2">
@@ -553,14 +526,11 @@
                         </Grid>
                         <!--Modifier-->
                         <Grid Grid.Column="3">
-                            <xctk:IntegerUpDown 
-                                Name="D100ModifierUpDown"
+                            <components:ConciergeIntegerUpDown 
+                                x:Name="D100ModifierUpDown"
                                 Background="DimGray"
-                                BorderThickness="0"
-                                Foreground="White"
-                                FontSize="25"
-                                Margin="3"
-                                Minimum="0"/>
+                                Height="30"
+                                Margin="3"/>
                         </Grid>
                         <!--Roll-->
                         <Grid Grid.Column="4">
@@ -610,14 +580,11 @@
                         </Grid>
                         <!--Number-->
                         <Grid Grid.Column="1">
-                            <xctk:IntegerUpDown 
-                                Name="D12NumberUpDown"
+                            <components:ConciergeIntegerUpDown 
+                                x:Name="D12NumberUpDown"
                                 Background="DimGray"
-                                BorderThickness="0"
-                                Foreground="White"
-                                FontSize="25"
-                                Margin="3"
-                                Minimum="0"/>
+                                Height="30"
+                                Margin="3"/>
                         </Grid>
                         <!--PlusMinus-->
                         <Grid Grid.Column="2">
@@ -632,14 +599,11 @@
                         </Grid>
                         <!--Modifier-->
                         <Grid Grid.Column="3">
-                            <xctk:IntegerUpDown 
-                                Name="D12ModifierUpDown"
+                            <components:ConciergeIntegerUpDown 
+                                x:Name="D12ModifierUpDown"
                                 Background="DimGray"
-                                BorderThickness="0"
-                                Foreground="White"
-                                FontSize="25"
-                                Margin="3"
-                                Minimum="0"/>
+                                Height="30"
+                                Margin="3"/>
                         </Grid>
                         <!--Roll-->
                         <Grid Grid.Column="4">
@@ -689,14 +653,11 @@
                         </Grid>
                         <!--Number-->
                         <Grid Grid.Column="1">
-                            <xctk:IntegerUpDown 
-                                Name="D20NumberUpDown"
+                            <components:ConciergeIntegerUpDown 
+                                x:Name="D20NumberUpDown"
                                 Background="DimGray"
-                                BorderThickness="0"
-                                Foreground="White"
-                                FontSize="25"
-                                Margin="3"
-                                Minimum="0"/>
+                                Height="30"
+                                Margin="3"/>
                         </Grid>
                         <!--PlusMinus-->
                         <Grid Grid.Column="2">
@@ -711,14 +672,11 @@
                         </Grid>
                         <!--Modifier-->
                         <Grid Grid.Column="3">
-                            <xctk:IntegerUpDown 
-                                Name="D20ModifierUpDown"
+                            <components:ConciergeIntegerUpDown 
+                                x:Name="D20ModifierUpDown"
                                 Background="DimGray"
-                                BorderThickness="0"
-                                Foreground="White"
-                                FontSize="25"
-                                Margin="3"
-                                Minimum="0"/>
+                                Height="30"
+                                Margin="3"/>
                         </Grid>
                         <!--Roll-->
                         <Grid Grid.Column="4">
@@ -760,25 +718,19 @@
 
                         <!--Die-->
                         <Grid Grid.Column="0">
-                            <xctk:IntegerUpDown 
-                                Name="DxDieUpDown"
+                            <components:ConciergeIntegerUpDown 
+                                x:Name="DxDieUpDown"
                                 Background="DimGray"
-                                BorderThickness="0"
-                                Foreground="White"
-                                FontSize="25"
-                                Margin="3"
-                                Minimum="0"/>
+                                Height="30"
+                                Margin="3"/>
                         </Grid>
                         <!--Number-->
                         <Grid Grid.Column="1">
-                            <xctk:IntegerUpDown 
-                                Name="DxNumberUpDown"
+                            <components:ConciergeIntegerUpDown 
+                                x:Name="DxNumberUpDown"
                                 Background="DimGray"
-                                BorderThickness="0"
-                                Foreground="White"
-                                FontSize="25"
-                                Margin="3"
-                                Minimum="0"/>
+                                Height="30"
+                                Margin="3"/>
                         </Grid>
                         <!--PlusMinus-->
                         <Grid Grid.Column="2">
@@ -793,14 +745,11 @@
                         </Grid>
                         <!--Modifier-->
                         <Grid Grid.Column="3">
-                            <xctk:IntegerUpDown 
-                                Name="DxModifierUpDown"
+                            <components:ConciergeIntegerUpDown 
+                                x:Name="DxModifierUpDown"
                                 Background="DimGray"
-                                BorderThickness="0"
-                                Foreground="White"
-                                FontSize="25"
-                                Margin="3"
-                                Minimum="0"/>
+                                Height="30"
+                                Margin="3"/>
                         </Grid>
                         <!--Roll-->
                         <Grid Grid.Column="4">

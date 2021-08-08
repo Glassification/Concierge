@@ -31,8 +31,35 @@ namespace Concierge.Interface.SpellcastingPageUi
             this.ShowDialog();
         }
 
+        private void SetUpDownUpdating()
+        {
+            this.UsedPactUpDown.UpdatingValue();
+            this.Used1UpDown.UpdatingValue();
+            this.Used2UpDown.UpdatingValue();
+            this.Used3UpDown.UpdatingValue();
+            this.Used4UpDown.UpdatingValue();
+            this.Used5UpDown.UpdatingValue();
+            this.Used6UpDown.UpdatingValue();
+            this.Used7UpDown.UpdatingValue();
+            this.Used8UpDown.UpdatingValue();
+            this.Used9UpDown.UpdatingValue();
+
+            this.TotalPactUpDown.UpdatingValue();
+            this.Total1UpDown.UpdatingValue();
+            this.Total2UpDown.UpdatingValue();
+            this.Total3UpDown.UpdatingValue();
+            this.Total4UpDown.UpdatingValue();
+            this.Total5UpDown.UpdatingValue();
+            this.Total6UpDown.UpdatingValue();
+            this.Total7UpDown.UpdatingValue();
+            this.Total8UpDown.UpdatingValue();
+            this.Total9UpDown.UpdatingValue();
+        }
+
         private void FillFields()
         {
+            this.SetUpDownUpdating();
+
             this.UsedPactUpDown.Value = Program.CcsFile.Character.SpellSlots.PactUsed;
             this.Used1UpDown.Value = Program.CcsFile.Character.SpellSlots.FirstUsed;
             this.Used2UpDown.Value = Program.CcsFile.Character.SpellSlots.SecondUsed;
@@ -93,14 +120,14 @@ namespace Concierge.Interface.SpellcastingPageUi
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
             this.Hide();
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Modify();
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
 
             this.UpdateSpellSlots();
             this.Hide();
@@ -109,7 +136,7 @@ namespace Concierge.Interface.SpellcastingPageUi
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Modify();
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
 
             this.UpdateSpellSlots();
 
@@ -118,7 +145,7 @@ namespace Concierge.Interface.SpellcastingPageUi
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
             this.Hide();
         }
 

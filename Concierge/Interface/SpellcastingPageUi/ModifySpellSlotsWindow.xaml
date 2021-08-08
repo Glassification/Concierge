@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Concierge.Interface.SpellcastingPageUi"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns:components="clr-namespace:Concierge.Interface.Components"
         mc:Ignorable="d"
         Title="ModifySpellSlotsWindow"
         Height="650"
@@ -253,122 +253,52 @@
 
                 <!--Used Pact-->
                 <Grid Grid.Row="1">
-                    <xctk:IntegerUpDown Name="UsedPactUpDown"
-                                        Background="#FF3F3F3F"
-                                        BorderThickness="0"
-                                        Foreground="White"
-                                        FontSize="25"
-                                        Margin="20, 0, 0, 0"
-                                        Minimum="0"
-                                        Height="40"/>
+                    <components:ConciergeIntegerUpDown x:Name="UsedPactUpDown"/>
                 </Grid>
 
                 <!--Used 1st-->
                 <Grid Grid.Row="2">
-                    <xctk:IntegerUpDown Name="Used1UpDown"
-                                        Background="#FF3F3F3F"
-                                        BorderThickness="0"
-                                        Foreground="White"
-                                        FontSize="25"
-                                        Margin="20, 0, 0, 0"
-                                        Minimum="0"
-                                        Height="40"/>
+                    <components:ConciergeIntegerUpDown x:Name="Used1UpDown"/>
                 </Grid>
 
                 <!--Used 2nd-->
                 <Grid Grid.Row="3">
-                    <xctk:IntegerUpDown Name="Used2UpDown"
-                                        Background="#FF3F3F3F"
-                                        BorderThickness="0"
-                                        Foreground="White"
-                                        FontSize="25"
-                                        Minimum="0"
-                                        Margin="20, 0, 0, 0"
-                                        Height="40"/>
+                    <components:ConciergeIntegerUpDown x:Name="Used2UpDown"/>
                 </Grid>
 
                 <!--Used 3rd-->
                 <Grid Grid.Row="4">
-                    <xctk:IntegerUpDown Name="Used3UpDown"
-                                        Background="#FF3F3F3F"
-                                        BorderThickness="0"
-                                        Foreground="White"
-                                        FontSize="25"
-                                        Minimum="0"
-                                        Margin="20, 0, 0, 0"
-                                        Height="40"/>
+                    <components:ConciergeIntegerUpDown x:Name="Used3UpDown"/>
                 </Grid>
 
                 <!--Used 4th-->
                 <Grid Grid.Row="5">
-                    <xctk:IntegerUpDown Name="Used4UpDown"
-                                        Background="#FF3F3F3F"
-                                        BorderThickness="0"
-                                        Foreground="White"
-                                        FontSize="25"
-                                        Minimum="0"
-                                        Margin="20, 0, 0, 0"
-                                        Height="40"/>
+                    <components:ConciergeIntegerUpDown x:Name="Used4UpDown"/>
                 </Grid>
 
                 <!--Used 5th-->
                 <Grid Grid.Row="6">
-                    <xctk:IntegerUpDown Name="Used5UpDown"
-                                        Background="#FF3F3F3F"
-                                        BorderThickness="0"
-                                        Foreground="White"
-                                        FontSize="25"
-                                        Margin="20, 0, 0, 0"
-                                        Minimum="0"
-                                        Height="40"/>
+                    <components:ConciergeIntegerUpDown x:Name="Used5UpDown"/>
                 </Grid>
 
                 <!--Used 6th-->
                 <Grid Grid.Row="7">
-                    <xctk:IntegerUpDown Name="Used6UpDown"
-                                        Background="#FF3F3F3F"
-                                        BorderThickness="0"
-                                        Foreground="White"
-                                        FontSize="25"
-                                        Margin="20, 0, 0, 0"
-                                        Minimum="0"
-                                        Height="40"/>
+                    <components:ConciergeIntegerUpDown x:Name="Used6UpDown"/>
                 </Grid>
 
                 <!--Used 7th-->
                 <Grid Grid.Row="8">
-                    <xctk:IntegerUpDown Name="Used7UpDown"
-                                        Background="#FF3F3F3F"
-                                        BorderThickness="0"
-                                        Foreground="White"
-                                        FontSize="25"
-                                        Margin="20, 0, 0, 0"
-                                        Minimum="0"
-                                        Height="40"/>
+                    <components:ConciergeIntegerUpDown x:Name="Used7UpDown"/>
                 </Grid>
 
                 <!--Used 8th-->
                 <Grid Grid.Row="9">
-                    <xctk:IntegerUpDown Name="Used8UpDown"
-                                        Background="#FF3F3F3F"
-                                        BorderThickness="0"
-                                        Foreground="White"
-                                        FontSize="25"
-                                        Margin="20, 0, 0, 0"
-                                        Minimum="0"
-                                        Height="40"/>
+                    <components:ConciergeIntegerUpDown x:Name="Used8UpDown"/>
                 </Grid>
 
                 <!--Used 9th-->
                 <Grid Grid.Row="10">
-                    <xctk:IntegerUpDown Name="Used9UpDown"
-                                        Background="#FF3F3F3F"
-                                        BorderThickness="0"
-                                        Foreground="White"
-                                        FontSize="25"
-                                        Margin="20, 0, 0, 0"
-                                        Minimum="0"
-                                        Height="40"/>
+                    <components:ConciergeIntegerUpDown x:Name="Used9UpDown"/>
                 </Grid>
             </Grid>
 
@@ -517,122 +447,52 @@
                 
                 <!--Total Pact-->
                 <Grid Grid.Row="1">
-                    <xctk:IntegerUpDown Name="TotalPactUpDown"
-                                        Background="#FF3F3F3F"
-                                        BorderThickness="0"
-                                        Foreground="White"
-                                        FontSize="25"
-                                        Minimum="0"
-                                        Margin="0, 0, 20, 0"
-                                        Height="40"/>
+                    <components:ConciergeIntegerUpDown x:Name="TotalPactUpDown"/>
                 </Grid>
 
                 <!--Total 1st-->
                 <Grid Grid.Row="2">
-                    <xctk:IntegerUpDown Name="Total1UpDown"
-                                        Background="#FF3F3F3F"
-                                        BorderThickness="0"
-                                        Foreground="White"
-                                        FontSize="25"
-                                        Margin="0, 0, 20, 0"
-                                        Minimum="0"
-                                        Height="40"/>
+                    <components:ConciergeIntegerUpDown x:Name="Total1UpDown"/>
                 </Grid>
 
                 <!--Total 2nd-->
                 <Grid Grid.Row="3">
-                    <xctk:IntegerUpDown Name="Total2UpDown"
-                                        Background="#FF3F3F3F"
-                                        BorderThickness="0"
-                                        Foreground="White"
-                                        FontSize="25"
-                                        Margin="0, 0, 20, 0"
-                                        Minimum="0"
-                                        Height="40"/>
+                    <components:ConciergeIntegerUpDown x:Name="Total2UpDown"/>
                 </Grid>
 
                 <!--Total 3rd-->
                 <Grid Grid.Row="4">
-                    <xctk:IntegerUpDown Name="Total3UpDown"
-                                        Background="#FF3F3F3F"
-                                        BorderThickness="0"
-                                        Foreground="White"
-                                        FontSize="25"
-                                        Margin="0, 0, 20, 0"
-                                        Minimum="0"
-                                        Height="40"/>
+                    <components:ConciergeIntegerUpDown x:Name="Total3UpDown"/>
                 </Grid>
 
                 <!--Total 4th-->
                 <Grid Grid.Row="5">
-                    <xctk:IntegerUpDown Name="Total4UpDown"
-                                        Background="#FF3F3F3F"
-                                        BorderThickness="0"
-                                        Foreground="White"
-                                        FontSize="25"
-                                        Margin="0, 0, 20, 0"
-                                        Minimum="0"
-                                        Height="40"/>
+                    <components:ConciergeIntegerUpDown x:Name="Total4UpDown"/>
                 </Grid>
 
                 <!--Total 5th-->
                 <Grid Grid.Row="6">
-                    <xctk:IntegerUpDown Name="Total5UpDown"
-                                        Background="#FF3F3F3F"
-                                        BorderThickness="0"
-                                        Foreground="White"
-                                        FontSize="25"
-                                        Margin="0, 0, 20, 0"
-                                        Minimum="0"
-                                        Height="40"/>
+                    <components:ConciergeIntegerUpDown x:Name="Total5UpDown"/>
                 </Grid>
 
                 <!--Total 6th-->
                 <Grid Grid.Row="7">
-                    <xctk:IntegerUpDown Name="Total6UpDown"
-                                        Background="#FF3F3F3F"
-                                        BorderThickness="0"
-                                        Foreground="White"
-                                        Minimum="0"
-                                        FontSize="25"
-                                        Margin="0, 0, 20, 0"
-                                        Height="40"/>
+                    <components:ConciergeIntegerUpDown x:Name="Total6UpDown"/>
                 </Grid>
 
                 <!--Total 7th-->
                 <Grid Grid.Row="8">
-                    <xctk:IntegerUpDown Name="Total7UpDown"
-                                        Background="#FF3F3F3F"
-                                        BorderThickness="0"
-                                        Foreground="White"
-                                        FontSize="25"
-                                        Margin="0, 0, 20, 0"
-                                        Minimum="0"
-                                        Height="40"/>
+                    <components:ConciergeIntegerUpDown x:Name="Total7UpDown"/>
                 </Grid>
 
                 <!--Total 8th-->
                 <Grid Grid.Row="9">
-                    <xctk:IntegerUpDown Name="Total8UpDown"
-                                        Background="#FF3F3F3F"
-                                        BorderThickness="0"
-                                        Foreground="White"
-                                        FontSize="25"
-                                        Margin="0, 0, 20, 0"
-                                        Minimum="0"
-                                        Height="40"/>
+                    <components:ConciergeIntegerUpDown x:Name="Total8UpDown"/>
                 </Grid>
 
                 <!--Total 9th-->
                 <Grid Grid.Row="10">
-                    <xctk:IntegerUpDown Name="Total9UpDown"
-                                        Background="#FF3F3F3F"
-                                        BorderThickness="0"
-                                        Foreground="White"
-                                        FontSize="25"
-                                        Margin="0, 0, 20, 0"
-                                        Minimum="0"
-                                        Height="40"/>
+                    <components:ConciergeIntegerUpDown x:Name="Total9UpDown"/>
                 </Grid>
             </Grid>
         </Grid>

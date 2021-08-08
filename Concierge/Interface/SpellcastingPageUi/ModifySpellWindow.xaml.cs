@@ -59,6 +59,9 @@ namespace Concierge.Interface.SpellcastingPageUi
 
         private void FillFields(Spell spell)
         {
+            this.LevelUpDown.UpdatingValue();
+            this.PageUpDown.UpdatingValue();
+
             this.SpellNameComboBox.Text = spell.Name;
             this.PreparedCheckBox.IsChecked = spell.Prepared;
             this.LevelUpDown.Value = spell.Level;
@@ -78,6 +81,9 @@ namespace Concierge.Interface.SpellcastingPageUi
 
         private void ClearFields()
         {
+            this.LevelUpDown.UpdatingValue();
+            this.PageUpDown.UpdatingValue();
+
             this.SpellNameComboBox.Text = string.Empty;
             this.PreparedCheckBox.IsChecked = false;
             this.LevelUpDown.Value = 0;
@@ -140,7 +146,7 @@ namespace Concierge.Interface.SpellcastingPageUi
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
             this.Hide();
         }
 
@@ -157,7 +163,7 @@ namespace Concierge.Interface.SpellcastingPageUi
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Modify();
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
 
             if (this.Editing)
             {
@@ -174,7 +180,7 @@ namespace Concierge.Interface.SpellcastingPageUi
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Modify();
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
 
             Program.CcsFile.Character.Spells.Add(this.ToSpell());
             this.ClearFields();
@@ -184,7 +190,7 @@ namespace Concierge.Interface.SpellcastingPageUi
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
             this.Hide();
         }
 

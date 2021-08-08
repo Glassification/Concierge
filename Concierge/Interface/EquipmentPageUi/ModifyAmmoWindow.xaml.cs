@@ -62,6 +62,9 @@ namespace Concierge.Interface.EquipmentPageUi
 
         private void FillFields(Ammunition ammunition)
         {
+            this.QuantityUpDown.UpdatingValue();
+            this.UsedUpDown.UpdatingValue();
+
             this.NameComboBox.Text = ammunition.Name;
             this.QuantityUpDown.Value = ammunition.Quantity;
             this.BonusTextBox.Text = ammunition.Bonus;
@@ -71,6 +74,9 @@ namespace Concierge.Interface.EquipmentPageUi
 
         private void ClearFields()
         {
+            this.QuantityUpDown.UpdatingValue();
+            this.UsedUpDown.UpdatingValue();
+
             this.NameComboBox.Text = string.Empty;
             this.QuantityUpDown.Value = 0;
             this.BonusTextBox.Text = string.Empty;
@@ -111,14 +117,14 @@ namespace Concierge.Interface.EquipmentPageUi
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
             this.Hide();
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Modify();
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
 
             if (this.Editing)
             {
@@ -135,7 +141,7 @@ namespace Concierge.Interface.EquipmentPageUi
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Modify();
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
 
             this.Ammunitions.Add(this.ToAmmunition());
             this.ClearFields();
@@ -145,7 +151,7 @@ namespace Concierge.Interface.EquipmentPageUi
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
             this.Hide();
         }
 

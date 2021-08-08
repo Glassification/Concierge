@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Concierge.Interface.EquipmentPageUi"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns:components="clr-namespace:Concierge.Interface.Components"
         mc:Ignorable="d"
         Title="ModifyWeaponWindow"
         Height="475"
@@ -468,15 +468,7 @@
 
                     <!--Value-->
                     <Grid Grid.Column="1">
-                        <xctk:DoubleUpDown Name="WeightUpDown"
-                                            Background="#FF3F3F3F"
-                                            BorderThickness="0"
-                                            Foreground="White"
-                                           TextAlignment="Left"
-                                            FontSize="25"
-                                            Margin="0, 0, 20, 0"
-                                            Height="40"
-                                           Minimum="0"/>
+                        <components:ConciergeDoubleUpDown x:Name="WeightUpDown"/>
                     </Grid>
                 </Grid>
 

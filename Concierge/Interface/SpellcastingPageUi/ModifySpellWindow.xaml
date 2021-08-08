@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Concierge.Interface.SpellcastingPageUi"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns:components="clr-namespace:Concierge.Interface.Components"
         mc:Ignorable="d"
         Title="ModifySpellWindow"
         Height="545"
@@ -313,16 +313,9 @@
 
                     <!--Value-->
                     <Grid Grid.Column="1">
-                        <xctk:IntegerUpDown Name="LevelUpDown"
-                                            Background="#FF3F3F3F"
-                                            BorderThickness="0"
-                                            Foreground="White"
-                                            FontSize="25"
-                                            TextAlignment="Left"
-                                            Minimum="0"
-                                            Maximum="9"
-                                            Margin="0, 0, 20, 0"
-                                            Height="40"/>
+                        <components:ConciergeIntegerUpDown 
+                            x:Name="LevelUpDown"
+                            Maximum="9"/>
                     </Grid>
                 </Grid>
 
@@ -345,15 +338,7 @@
 
                     <!--Value-->
                     <Grid Grid.Column="1">
-                        <xctk:IntegerUpDown Name="PageUpDown"
-                                            Background="#FF3F3F3F"
-                                            BorderThickness="0"
-                                            Foreground="White"
-                                            FontSize="25"
-                                            TextAlignment="Left"
-                                            Minimum="0"
-                                            Margin="0, 0, 20, 0"
-                                            Height="40"/>
+                        <components:ConciergeIntegerUpDown x:Name="PageUpDown"/>
                     </Grid>
                 </Grid>
 

@@ -155,14 +155,14 @@ namespace Concierge.Interface.CompanionPageUi
 
         private void EditAttributesButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
             this.modifyAttributesWindow.EditAttributes(Program.CcsFile.Character.Companion.Attributes);
             this.DrawAttributes();
         }
 
         private void EditHitDiceButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
             this.modifyHitDiceWindow.ModifyHitDice(Program.CcsFile.Character.Companion.Vitality.HitDice);
             this.DrawHitDice();
         }
@@ -186,7 +186,7 @@ namespace Concierge.Interface.CompanionPageUi
             }
 
             Program.Modify();
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
 
             var weapon = this.WeaponDataGrid.SelectedItem as Weapon;
             var index = Program.CcsFile.Character.Companion.Attacks.IndexOf(weapon);
@@ -207,7 +207,7 @@ namespace Concierge.Interface.CompanionPageUi
             }
 
             Program.Modify();
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
 
             var weapon = this.WeaponDataGrid.SelectedItem as Weapon;
             var index = Program.CcsFile.Character.Companion.Attacks.IndexOf(weapon);
@@ -222,13 +222,13 @@ namespace Concierge.Interface.CompanionPageUi
 
         private void ButtonClear_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
             this.WeaponDataGrid.UnselectAll();
         }
 
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
             this.modifyWeaponWindow.ShowAdd(Program.CcsFile.Character.Companion.Attacks);
             this.DrawAttacks();
         }
@@ -237,7 +237,7 @@ namespace Concierge.Interface.CompanionPageUi
         {
             if (this.WeaponDataGrid.SelectedItem != null)
             {
-                ConciergeSound.ButtonClick();
+                ConciergeSound.TapNavigation();
                 this.modifyWeaponWindow.ShowEdit(this.WeaponDataGrid.SelectedItem as Weapon);
                 this.DrawAttacks();
             }
@@ -248,7 +248,7 @@ namespace Concierge.Interface.CompanionPageUi
             if (this.WeaponDataGrid.SelectedItem != null)
             {
                 Program.Modify();
-                ConciergeSound.ButtonClick();
+                ConciergeSound.TapNavigation();
 
                 var weapon = this.WeaponDataGrid.SelectedItem as Weapon;
                 Program.CcsFile.Character.Companion.Attacks.Remove(weapon);
@@ -258,28 +258,28 @@ namespace Concierge.Interface.CompanionPageUi
 
         private void EditHealthButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
             this.modifyHealthWindow.EditHealth(Program.CcsFile.Character.Companion.Vitality);
             this.DrawHealth();
         }
 
         private void TakeDamageButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
             this.modifyHpWindow.SubtractHP(Program.CcsFile.Character.Companion.Vitality);
             this.DrawHealth();
         }
 
         private void HealDamageButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
             this.modifyHpWindow.AddHP(Program.CcsFile.Character.Companion.Vitality);
             this.DrawHealth();
         }
 
         private void EditPropertiesButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
             this.modifyPropertiesWindow.EditProperties();
             this.DrawDetails();
         }
@@ -287,7 +287,7 @@ namespace Concierge.Interface.CompanionPageUi
         private void SpentBox_MouseDown(object sender, MouseButtonEventArgs e)
         {
             Program.Modify();
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
 
             var hitDice = Program.CcsFile.Character.Companion.Vitality.HitDice;
             switch ((sender as Grid).Name)

@@ -131,7 +131,7 @@ namespace Concierge.Interface.SpellcastingPageUi
             if (this.MagicClassDataGrid.SelectedItem != null)
             {
                 Program.Modify();
-                ConciergeSound.ButtonClick();
+                ConciergeSound.TapNavigation();
 
                 var magicClass = (MagicClass)this.MagicClassDataGrid.SelectedItem;
                 var index = Program.CcsFile.Character.MagicClasses.IndexOf(magicClass);
@@ -146,7 +146,7 @@ namespace Concierge.Interface.SpellcastingPageUi
             else if (this.SpellListDataGrid.SelectedItem != null)
             {
                 Program.Modify();
-                ConciergeSound.ButtonClick();
+                ConciergeSound.TapNavigation();
 
                 var spell = (Spell)this.SpellListDataGrid.SelectedItem;
                 var index = Program.CcsFile.Character.Spells.IndexOf(spell);
@@ -165,7 +165,7 @@ namespace Concierge.Interface.SpellcastingPageUi
             if (this.MagicClassDataGrid.SelectedItem != null)
             {
                 Program.Modify();
-                ConciergeSound.ButtonClick();
+                ConciergeSound.TapNavigation();
 
                 var magicClass = (MagicClass)this.MagicClassDataGrid.SelectedItem;
                 var index = Program.CcsFile.Character.MagicClasses.IndexOf(magicClass);
@@ -180,7 +180,7 @@ namespace Concierge.Interface.SpellcastingPageUi
             else if (this.SpellListDataGrid.SelectedItem != null)
             {
                 Program.Modify();
-                ConciergeSound.ButtonClick();
+                ConciergeSound.TapNavigation();
 
                 var spell = (Spell)this.SpellListDataGrid.SelectedItem;
                 var index = Program.CcsFile.Character.Spells.IndexOf(spell);
@@ -196,14 +196,14 @@ namespace Concierge.Interface.SpellcastingPageUi
 
         private void ButtonClear_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
             this.MagicClassDataGrid.UnselectAll();
             this.SpellListDataGrid.UnselectAll();
         }
 
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
             var popupButton = this.spellcastingSelectionWindow.ShowPopup();
 
             switch (popupButton)
@@ -223,14 +223,14 @@ namespace Concierge.Interface.SpellcastingPageUi
         {
             if (this.MagicClassDataGrid.SelectedItem != null)
             {
-                ConciergeSound.ButtonClick();
+                ConciergeSound.TapNavigation();
                 var magicClass = (MagicClass)this.MagicClassDataGrid.SelectedItem;
                 this.modifySpellClassWindow.EditClass(magicClass);
                 this.DrawMagicClasses();
             }
             else if (this.SpellListDataGrid.SelectedItem != null)
             {
-                ConciergeSound.ButtonClick();
+                ConciergeSound.TapNavigation();
                 var spell = (Spell)this.SpellListDataGrid.SelectedItem;
                 this.modifySpellWindow.EditSpell(spell);
                 this.DrawSpellList();
@@ -242,7 +242,7 @@ namespace Concierge.Interface.SpellcastingPageUi
             if (this.MagicClassDataGrid.SelectedItem != null)
             {
                 Program.Modify();
-                ConciergeSound.ButtonClick();
+                ConciergeSound.TapNavigation();
 
                 MagicClass magicClass = (MagicClass)this.MagicClassDataGrid.SelectedItem;
                 Program.CcsFile.Character.MagicClasses.Remove(magicClass);
@@ -251,7 +251,7 @@ namespace Concierge.Interface.SpellcastingPageUi
             else if (this.SpellListDataGrid.SelectedItem != null)
             {
                 Program.Modify();
-                ConciergeSound.ButtonClick();
+                ConciergeSound.TapNavigation();
 
                 Spell spell = (Spell)this.SpellListDataGrid.SelectedItem;
                 Program.CcsFile.Character.Spells.Remove(spell);
@@ -277,7 +277,7 @@ namespace Concierge.Interface.SpellcastingPageUi
 
         private void LevelEditButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
             this.modifySpellSlotsWindow.EditSpellSlots();
             this.DrawTotalSpellSlots();
             this.DrawUsedSpellSlots();

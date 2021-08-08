@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Concierge.Interface.EquipmentPageUi"
-        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns:components="clr-namespace:Concierge.Interface.Components"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         Title="ModifyArmorWindow"
@@ -313,15 +313,7 @@
 
                     <!--Value-->
                     <Grid Grid.Column="1">
-                        <xctk:IntegerUpDown Name="ArmorClassUpDown"
-                                            Background="#FF3F3F3F"
-                                            BorderThickness="0"
-                                            TextAlignment="Left"
-                                            Foreground="White"
-                                            FontSize="25"
-                                            Margin="0, 0, 20, 0"
-                                            Height="40"
-                                            Minimum="0"/>
+                        <components:ConciergeIntegerUpDown x:Name="ArmorClassUpDown"/>
                     </Grid>
                 </Grid>
 
@@ -344,15 +336,7 @@
 
                     <!--Value-->
                     <Grid Grid.Column="1">
-                        <xctk:DoubleUpDown Name="WeightUpDown"
-                                            Background="#FF3F3F3F"
-                                            BorderThickness="0"
-                                            Foreground="White"
-                                           TextAlignment="Left"
-                                            FontSize="25"
-                                            Margin="0, 0, 20, 0"
-                                            Height="40"
-                                           Minimum="0"/>
+                        <components:ConciergeDoubleUpDown x:Name="WeightUpDown"/>
                     </Grid>
                 </Grid>
 
@@ -375,15 +359,7 @@
 
                     <!--Value-->
                     <Grid Grid.Column="1">
-                        <xctk:DoubleUpDown Name="StrengthUpDown"
-                                            Background="#FF3F3F3F"
-                                            BorderThickness="0"
-                                            Foreground="White"
-                                           TextAlignment="Left"
-                                            FontSize="25"
-                                            Margin="0, 0, 20, 0"
-                                            Height="40"
-                                           Minimum="0"/>
+                        <components:ConciergeIntegerUpDown x:Name="StrengthUpDown"/>
                     </Grid>
                 </Grid>
 
@@ -476,15 +452,7 @@
 
                     <!--Value-->
                     <Grid Grid.Column="1">
-                        <xctk:IntegerUpDown Name="ShieldArmorClassUpDown"
-                                            Background="#FF3F3F3F"
-                                            BorderThickness="0"
-                                            Foreground="White"
-                                            TextAlignment="Left"
-                                            FontSize="25"
-                                            Margin="0, 0, 20, 0"
-                                            Height="40"
-                                            Minimum="0"/>
+                        <components:ConciergeIntegerUpDown x:Name="ShieldArmorClassUpDown"/>
                     </Grid>
                 </Grid>
 
@@ -507,15 +475,7 @@
 
                     <!--Value-->
                     <Grid Grid.Column="1">
-                        <xctk:DoubleUpDown Name="ShieldWeightUpDown"
-                                            Background="#FF3F3F3F"
-                                            BorderThickness="0"
-                                            Foreground="White"
-                                           TextAlignment="Left"
-                                            FontSize="25"
-                                            Margin="0, 0, 20, 0"
-                                            Height="40"
-                                           Minimum="0"/>
+                        <components:ConciergeDoubleUpDown x:Name="ShieldWeightUpDown"/>
                     </Grid>
                 </Grid>
 
@@ -538,15 +498,7 @@
 
                     <!--Value-->
                     <Grid Grid.Column="1">
-                        <xctk:IntegerUpDown Name="MiscArmorClassUpDown"
-                                            Background="#FF3F3F3F"
-                                            BorderThickness="0"
-                                            Foreground="White"
-                                            TextAlignment="Left"
-                                            FontSize="25"
-                                            Margin="0, 0, 20, 0"
-                                            Height="40"
-                                            Minimum="0"/>
+                        <components:ConciergeIntegerUpDown x:Name="MiscArmorClassUpDown"/>
                     </Grid>
                 </Grid>
 
@@ -569,15 +521,7 @@
 
                     <!--Value-->
                     <Grid Grid.Column="1">
-                        <xctk:IntegerUpDown Name="MagicArmorClassUpDown"
-                                            Background="#FF3F3F3F"
-                                            BorderThickness="0"
-                                            TextAlignment="Left"
-                                            Foreground="White"
-                                            FontSize="25"
-                                            Margin="0, 0, 20, 0"
-                                            Height="40"
-                                            Minimum="0"/>
+                        <components:ConciergeIntegerUpDown x:Name="MagicArmorClassUpDown"/>
                     </Grid>
                 </Grid>
             </Grid>

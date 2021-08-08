@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Concierge.Interface.OverviewPageUi"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns:components="clr-namespace:Concierge.Interface.Components"
         mc:Ignorable="d"
         Title="ModifyWealthWindow"
         Height="425"
@@ -94,14 +94,9 @@
 
             <!--Amount-->
             <Grid Grid.Row="1">
-                <xctk:IntegerUpDown Name="AmountUpDown"
-                                    Background="#FF3F3F3F"
-                                    BorderThickness="0"
-                                    Foreground="White"
-                                    FontSize="25"
-                                    Margin="130, 0, 130, 0"
-                                    Height="40"
-                                    Minimum="0"/>
+                <components:ConciergeIntegerUpDown 
+                    x:Name="AmountUpDown"
+                    Margin="130, 0, 130, 0"/>
             </Grid>
 
             <!--Currency-->

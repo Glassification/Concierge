@@ -64,6 +64,8 @@ namespace Concierge.Interface.EquipmentPageUi
 
         private void FillFields(Weapon weapon)
         {
+            this.WeightUpDown.UpdatingValue();
+
             this.WeaponComboBox.Text = weapon.Name;
             this.TypeComboBox.Text = weapon.WeaponType.ToString();
             this.AbilityComboBox.Text = weapon.Ability.ToString();
@@ -79,6 +81,8 @@ namespace Concierge.Interface.EquipmentPageUi
 
         private void ClearFields()
         {
+            this.WeightUpDown.UpdatingValue();
+
             this.WeaponComboBox.Text = string.Empty;
             this.TypeComboBox.Text = string.Empty;
             this.AbilityComboBox.Text = string.Empty;
@@ -137,20 +141,20 @@ namespace Concierge.Interface.EquipmentPageUi
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
             this.Hide();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
             this.Hide();
         }
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Modify();
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
 
             this.Weapons.Add(this.ToWeapon());
             this.ClearFields();
@@ -161,7 +165,7 @@ namespace Concierge.Interface.EquipmentPageUi
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Modify();
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
 
             if (this.Editing)
             {

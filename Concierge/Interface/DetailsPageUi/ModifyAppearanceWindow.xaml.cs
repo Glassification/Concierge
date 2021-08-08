@@ -39,6 +39,8 @@ namespace Concierge.Interface.DetailsPageUi
 
         private void FillFields()
         {
+            this.AgeUpDown.UpdatingValue();
+
             this.GenderTextBox.Text = this.Appearance.Gender;
             this.AgeUpDown.Value = this.Appearance.Age;
             this.HeightTextBox.Text = this.Appearance.Height;
@@ -73,14 +75,14 @@ namespace Concierge.Interface.DetailsPageUi
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
             this.Hide();
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Modify();
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
 
             this.UpdateAppearance();
             this.Hide();
@@ -89,7 +91,7 @@ namespace Concierge.Interface.DetailsPageUi
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Modify();
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
 
             this.UpdateAppearance();
 
@@ -98,7 +100,7 @@ namespace Concierge.Interface.DetailsPageUi
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.ButtonClick();
+            ConciergeSound.TapNavigation();
             this.Hide();
         }
 

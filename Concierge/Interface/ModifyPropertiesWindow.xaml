@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns:components="clr-namespace:Concierge.Interface.Components"
         xmlns:local="clr-namespace:Concierge.Interface"
         mc:Ignorable="d"
          Title="ModifyPropertiesWindow"
@@ -369,40 +369,22 @@
                         </Grid.ColumnDefinitions>
 
                         <Grid Grid.Column="0">
-                            <xctk:IntegerUpDown 
-                                Name="Level1UpDown"
-                                Background="#FF3F3F3F"
-                                BorderThickness="0"
-                                Foreground="White"
-                                FontSize="25"
+                            <components:ConciergeIntegerUpDown 
+                                x:Name="Level1UpDown"
                                 Margin="0, 0, 5, 0"
-                                Minimum="0"
-                                Maximum="20"
-                                Height="40"/>
+                                Maximum="20"/>
                         </Grid>
                         <Grid Grid.Column="1">
-                            <xctk:IntegerUpDown 
-                                Name="Level2UpDown"
-                                Background="#FF3F3F3F"
-                                BorderThickness="0"
-                                Foreground="White"
-                                FontSize="25"
+                            <components:ConciergeIntegerUpDown 
+                                x:Name="Level2UpDown"
                                 Margin="0, 0, 5, 0"
-                                Minimum="0"
-                                Maximum="20"
-                                Height="40"/>
+                                Maximum="20"/>
                         </Grid>
                         <Grid Grid.Column="2">
-                            <xctk:IntegerUpDown 
-                                Name="Level3UpDown"
-                                Background="#FF3F3F3F"
-                                BorderThickness="0"
-                                Foreground="White"
-                                FontSize="25"
-                                Minimum="0"
+                            <components:ConciergeIntegerUpDown 
+                                x:Name="Level3UpDown"
                                 Maximum="20"
-                                Margin="0, 0, 5, 0"
-                                Height="40"/>
+                                Margin="0, 0, 5, 0"/>
                         </Grid>
                     </Grid>
                 </Grid>
