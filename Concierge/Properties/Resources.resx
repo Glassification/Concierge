@@ -157,4 +157,10 @@
   <data name="HighPitchTapSound" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Sounds\HighPitchTapSound.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="GenericTapSoundLoud" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Sounds\GenericTapSoundLoud.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="HighPitchTapSoundLoud" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Sounds\HighPitchTapSoundLoud.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>

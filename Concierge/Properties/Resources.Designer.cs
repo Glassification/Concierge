@@ -131,6 +131,15 @@ namespace Concierge.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
         /// </summary>
+        internal static System.IO.UnmanagedMemoryStream GenericTapSoundLoud {
+            get {
+                return ResourceManager.GetStream("GenericTapSoundLoud", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
         internal static System.IO.UnmanagedMemoryStream GenericWarning {
             get {
                 return ResourceManager.GetStream("GenericWarning", resourceCulture);
@@ -143,6 +152,15 @@ namespace Concierge.Properties {
         internal static System.IO.UnmanagedMemoryStream HighPitchTapSound {
             get {
                 return ResourceManager.GetStream("HighPitchTapSound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream HighPitchTapSoundLoud {
+            get {
+                return ResourceManager.GetStream("HighPitchTapSoundLoud", resourceCulture);
             }
         }
         

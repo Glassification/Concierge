@@ -12,8 +12,8 @@ namespace Concierge.Utility
 
         static ConciergeSound()
         {
-            HighPitchTapSound = new SoundPlayer(Properties.Resources.HighPitchTapSound);
-            TapSound = new SoundPlayer(Properties.Resources.GenericTapSound);
+            HighPitchTapSound = new SoundPlayer(Properties.Resources.HighPitchTapSoundLoud);
+            TapSound = new SoundPlayer(Properties.Resources.GenericTapSoundLoud);
             WarningSound = new SoundPlayer(Properties.Resources.GenericWarning);
         }
 
@@ -35,6 +35,11 @@ namespace Concierge.Utility
 
                 return false;
             }
+        }
+
+        public static void ResetSkipClick()
+        {
+            skipClickCount = 0;
         }
 
         public static void TapNavigation()
