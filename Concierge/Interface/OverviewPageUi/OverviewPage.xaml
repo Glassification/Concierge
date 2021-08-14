@@ -52,7 +52,7 @@
                         </Button>
                         <TextBlock Text="Strength"
                                    Foreground="White"
-                                   FontSize="15"
+                                   FontSize="17"
                                    HorizontalAlignment="Center"
                                    VerticalAlignment="Center"
                                    FontWeight="Bold"/>
@@ -69,7 +69,7 @@
                             <TextBlock Text="Bonus"
                                        Margin="5"
                                        Foreground="White"
-                                       FontSize="13"
+                                       FontSize="15"
                                        HorizontalAlignment="Left"
                                        VerticalAlignment="Center"
                                        FontStyle="Italic"/>
@@ -77,7 +77,7 @@
                         <Grid Grid.Column="1" Grid.ColumnSpan="2">
                             <TextBlock x:Name="StrengthBonusField"
                                        Foreground="White"
-                                       FontSize="24"
+                                       FontSize="25"
                                        HorizontalAlignment="Center"
                                        VerticalAlignment="Center"
                                        FontWeight="Bold"/>
@@ -94,7 +94,7 @@
                             <TextBlock Text="Score"
                                        Margin="5"
                                        Foreground="White"
-                                       FontSize="13"
+                                       FontSize="15"
                                        HorizontalAlignment="Left"
                                        VerticalAlignment="Center"
                                        FontStyle="Italic"/>
@@ -102,7 +102,7 @@
                         <Grid Grid.Column="1">
                             <TextBlock x:Name="StrengthScoreField"
                                        Foreground="White"
-                                       FontSize="13"
+                                       FontSize="15"
                                        HorizontalAlignment="Center"
                                        VerticalAlignment="Center"/>
                         </Grid>
@@ -121,7 +121,7 @@
                     <Grid Grid.Row="0" Background="#0B061E">
                         <TextBlock Text="Dexterity"
                                    Foreground="White"
-                                   FontSize="15"
+                                   FontSize="17"
                                    HorizontalAlignment="Center"
                                    VerticalAlignment="Center"
                                    FontWeight="Bold"/>
@@ -137,7 +137,7 @@
                             <TextBlock Text="Bonus"
                                        Margin="5"
                                        Foreground="White"
-                                       FontSize="13"
+                                       FontSize="15"
                                        HorizontalAlignment="Left"
                                        VerticalAlignment="Center"
                                        FontStyle="Italic"/>
@@ -145,7 +145,7 @@
                         <Grid Grid.Column="1">
                             <TextBlock x:Name="DexterityBonusField"
                                        Foreground="White"
-                                       FontSize="24"
+                                       FontSize="25"
                                        HorizontalAlignment="Center"
                                        VerticalAlignment="Center"
                                        FontWeight="Bold"/>
@@ -162,7 +162,7 @@
                             <TextBlock Text="Score"
                                        Margin="5"
                                        Foreground="White"
-                                       FontSize="13"
+                                       FontSize="15"
                                        HorizontalAlignment="Left"
                                        VerticalAlignment="Center"
                                        FontStyle="Italic"/>
@@ -170,7 +170,7 @@
                         <Grid Grid.Column="1">
                             <TextBlock x:Name="DexterityScoreField"
                                        Foreground="White"
-                                       FontSize="13"
+                                       FontSize="15"
                                        HorizontalAlignment="Center"
                                        VerticalAlignment="Center"/>
                         </Grid>
@@ -189,7 +189,7 @@
                     <Grid Grid.Row="0" Background="#0B061E">
                         <TextBlock Text="Constitution"
                                    Foreground="White"
-                                   FontSize="15"
+                                   FontSize="17"
                                    HorizontalAlignment="Center"
                                    VerticalAlignment="Center"
                                    FontWeight="Bold"/>
@@ -205,7 +205,7 @@
                             <TextBlock Text="Bonus"
                                        Margin="5"
                                        Foreground="White"
-                                       FontSize="13"
+                                       FontSize="15"
                                        HorizontalAlignment="Left"
                                        VerticalAlignment="Center"
                                        FontStyle="Italic"/>
@@ -213,7 +213,7 @@
                         <Grid Grid.Column="1">
                             <TextBlock x:Name="ConstitutionBonusField"
                                        Foreground="White"
-                                       FontSize="24"
+                                       FontSize="25"
                                        HorizontalAlignment="Center"
                                        VerticalAlignment="Center"
                                        FontWeight="Bold"/>
@@ -230,7 +230,7 @@
                             <TextBlock Text="Score"
                                        Margin="5"
                                        Foreground="White"
-                                       FontSize="13"
+                                       FontSize="15"
                                        HorizontalAlignment="Left"
                                        VerticalAlignment="Center"
                                        FontStyle="Italic"/>
@@ -238,7 +238,7 @@
                         <Grid Grid.Column="1">
                             <TextBlock x:Name="ConstitutionScoreField"
                                        Foreground="White"
-                                       FontSize="13"
+                                       FontSize="15"
                                        HorizontalAlignment="Center"
                                        VerticalAlignment="Center"/>
                         </Grid>
@@ -257,7 +257,7 @@
                     <Grid Grid.Row="0" Background="#0B061E">
                         <TextBlock Text="Intelligence"
                                    Foreground="White"
-                                   FontSize="15"
+                                   FontSize="17"
                                    HorizontalAlignment="Center"
                                    VerticalAlignment="Center"
                                    FontWeight="Bold"/>
@@ -273,7 +273,7 @@
                             <TextBlock Text="Bonus"
                                        Margin="5"
                                        Foreground="White"
-                                       FontSize="13"
+                                       FontSize="15"
                                        HorizontalAlignment="Left"
                                        VerticalAlignment="Center"
                                        FontStyle="Italic"/>
@@ -281,7 +281,7 @@
                         <Grid Grid.Column="1">
                             <TextBlock x:Name="IntelligenceBonusField"
                                        Foreground="White"
-                                       FontSize="24"
+                                       FontSize="25"
                                        HorizontalAlignment="Center"
                                        VerticalAlignment="Center"
                                        FontWeight="Bold"/>
@@ -298,7 +298,7 @@
                             <TextBlock Text="Score"
                                        Margin="5"
                                        Foreground="White"
-                                       FontSize="13"
+                                       FontSize="15"
                                        HorizontalAlignment="Left"
                                        VerticalAlignment="Center"
                                        FontStyle="Italic"/>
@@ -306,7 +306,7 @@
                         <Grid Grid.Column="1">
                             <TextBlock x:Name="IntelligenceScoreField"
                                        Foreground="White"
-                                       FontSize="13"
+                                       FontSize="15"
                                        HorizontalAlignment="Center"
                                        VerticalAlignment="Center"/>
                         </Grid>
@@ -325,7 +325,7 @@
                     <Grid Grid.Row="0" Background="#0B061E">
                         <TextBlock Text="Wisdom"
                                    Foreground="White"
-                                   FontSize="15"
+                                   FontSize="17"
                                    HorizontalAlignment="Center"
                                    VerticalAlignment="Center"
                                    FontWeight="Bold"/>
@@ -341,7 +341,7 @@
                             <TextBlock Text="Bonus"
                                        Margin="5"
                                        Foreground="White"
-                                       FontSize="13"
+                                       FontSize="15"
                                        HorizontalAlignment="Left"
                                        VerticalAlignment="Center"
                                        FontStyle="Italic"/>
@@ -349,7 +349,7 @@
                         <Grid Grid.Column="1">
                             <TextBlock x:Name="WisdomBonusField"
                                        Foreground="White"
-                                       FontSize="24"
+                                       FontSize="25"
                                        HorizontalAlignment="Center"
                                        VerticalAlignment="Center"
                                        FontWeight="Bold"/>
@@ -366,7 +366,7 @@
                             <TextBlock Text="Score"
                                        Margin="5"
                                        Foreground="White"
-                                       FontSize="13"
+                                       FontSize="15"
                                        HorizontalAlignment="Left"
                                        VerticalAlignment="Center"
                                        FontStyle="Italic"/>
@@ -374,7 +374,7 @@
                         <Grid Grid.Column="1">
                             <TextBlock x:Name="WisdomScoreField"
                                        Foreground="White"
-                                       FontSize="13"
+                                       FontSize="15"
                                        HorizontalAlignment="Center"
                                        VerticalAlignment="Center"/>
                         </Grid>
@@ -393,7 +393,7 @@
                     <Grid Grid.Row="0" Background="#0B061E">
                         <TextBlock Text="Charisma"
                                    Foreground="White"
-                                   FontSize="15"
+                                   FontSize="17"
                                    HorizontalAlignment="Center"
                                    VerticalAlignment="Center"
                                    FontWeight="Bold"/>
@@ -409,7 +409,7 @@
                             <TextBlock Text="Bonus"
                                        Margin="5"
                                        Foreground="White"
-                                       FontSize="13"
+                                       FontSize="15"
                                        HorizontalAlignment="Left"
                                        VerticalAlignment="Center"
                                        FontStyle="Italic"/>
@@ -417,7 +417,7 @@
                         <Grid Grid.Column="1">
                             <TextBlock x:Name="CharismaBonusField"
                                        Foreground="White"
-                                       FontSize="24"
+                                       FontSize="25"
                                        HorizontalAlignment="Center"
                                        VerticalAlignment="Center"
                                        FontWeight="Bold"/>
@@ -434,7 +434,7 @@
                             <TextBlock Text="Score"
                                        Margin="5"
                                        Foreground="White"
-                                       FontSize="13"
+                                       FontSize="15"
                                        HorizontalAlignment="Left"
                                        VerticalAlignment="Center"
                                        FontStyle="Italic"/>
@@ -442,7 +442,7 @@
                         <Grid Grid.Column="1">
                             <TextBlock x:Name="CharismaScoreField"
                                        Foreground="White"
-                                       FontSize="13"
+                                       FontSize="15"
                                        HorizontalAlignment="Center"
                                        VerticalAlignment="Center"/>
                         </Grid>
@@ -627,7 +627,7 @@
                             <Grid Grid.Column="0">
                                 <TextBlock Text="Proficiency"
                                    Foreground="White"
-                                   FontSize="12"
+                                   FontSize="15"
                                    FontWeight="Bold"
                                    HorizontalAlignment="Center"
                                    VerticalAlignment="Center"/>
@@ -636,7 +636,7 @@
                             <Grid Grid.Column="1">
                                 <TextBlock Text="Saving Throws"
                                    Foreground="White"
-                                   FontSize="20"
+                                   FontSize="23"
                                    FontWeight="Bold"
                                    HorizontalAlignment="Center"
                                    VerticalAlignment="Center"/>
@@ -645,7 +645,7 @@
                             <Grid Grid.Column="20">
                                 <TextBlock Text="Bonus"
                                    Foreground="White"
-                                   FontSize="12"
+                                   FontSize="15"
                                    FontWeight="Bold"
                                    HorizontalAlignment="Center"
                                    VerticalAlignment="Center"/>
@@ -684,7 +684,7 @@
                                     <TextBlock Text="Strength"
                                            x:Name="StrengthSavingThrowName"
                                            Foreground="White"
-                                           FontSize="15"
+                                           FontSize="17"
                                            FontWeight="Bold"
                                            VerticalAlignment="Center"/>
                                 </Grid>
@@ -693,7 +693,7 @@
                                 <Grid Grid.Column="2">
                                     <TextBlock x:Name="StrengthSavingThrowField"
                                            Foreground="White"
-                                           FontSize="15"
+                                           FontSize="20"
                                            FontWeight="Bold"
                                            HorizontalAlignment="Center"
                                            VerticalAlignment="Center"/>
@@ -721,7 +721,7 @@
                                     <TextBlock Text="Dexterity"
                                            x:Name="DexteritySavingThrowName"
                                            Foreground="White"
-                                           FontSize="15"
+                                           FontSize="17"
                                            FontWeight="Bold"
                                            VerticalAlignment="Center"/>
                                 </Grid>
@@ -730,7 +730,7 @@
                                 <Grid Grid.Column="2">
                                     <TextBlock x:Name="DexteritySavingThrowField"
                                            Foreground="White"
-                                           FontSize="15"
+                                           FontSize="20"
                                            FontWeight="Bold"
                                            HorizontalAlignment="Center"
                                            VerticalAlignment="Center"/>
@@ -758,7 +758,7 @@
                                     <TextBlock Text="Constitution"
                                            x:Name="ConstitutionSavingThrowName"
                                            Foreground="White"
-                                           FontSize="15"
+                                           FontSize="17"
                                            FontWeight="Bold"
                                            VerticalAlignment="Center"/>
                                 </Grid>
@@ -767,7 +767,7 @@
                                 <Grid Grid.Column="2">
                                     <TextBlock x:Name="ConstitutionSavingThrowField"
                                            Foreground="White"
-                                           FontSize="15"
+                                           FontSize="20"
                                            FontWeight="Bold"
                                            HorizontalAlignment="Center"
                                            VerticalAlignment="Center"/>
@@ -795,7 +795,7 @@
                                     <TextBlock Text="Intelligence"
                                            x:Name="IntelligenceSavingThrowName"
                                            Foreground="White"
-                                           FontSize="15"
+                                           FontSize="17"
                                            FontWeight="Bold"
                                            VerticalAlignment="Center"/>
                                 </Grid>
@@ -804,7 +804,7 @@
                                 <Grid Grid.Column="2">
                                     <TextBlock x:Name="IntelligenceSavingThrowField"
                                            Foreground="White"
-                                           FontSize="15"
+                                           FontSize="20"
                                            FontWeight="Bold"
                                            HorizontalAlignment="Center"
                                            VerticalAlignment="Center"/>
@@ -832,7 +832,7 @@
                                     <TextBlock Text="Wisdom"
                                            x:Name="WisdomSavingThrowName"
                                            Foreground="White"
-                                           FontSize="15"
+                                           FontSize="17"
                                            FontWeight="Bold"
                                            VerticalAlignment="Center"/>
                                 </Grid>
@@ -841,7 +841,7 @@
                                 <Grid Grid.Column="2">
                                     <TextBlock x:Name="WisdomSavingThrowField"
                                            Foreground="White"
-                                           FontSize="15"
+                                           FontSize="20"
                                            FontWeight="Bold"
                                            HorizontalAlignment="Center"
                                            VerticalAlignment="Center"/>
@@ -869,7 +869,7 @@
                                     <TextBlock Text="Charisma"
                                            x:Name="CharismaSavingThrowName"
                                            Foreground="White"
-                                           FontSize="15"
+                                           FontSize="17"
                                            FontWeight="Bold"
                                            VerticalAlignment="Center"/>
                                 </Grid>
@@ -878,7 +878,7 @@
                                 <Grid Grid.Column="2">
                                     <TextBlock x:Name="CharismaSavingThrowField"
                                            Foreground="White"
-                                           FontSize="15"
+                                           FontSize="20"
                                            FontWeight="Bold"
                                            HorizontalAlignment="Center"
                                            VerticalAlignment="Center"/>
@@ -906,7 +906,7 @@
                             <Grid Grid.Column="0">
                                 <TextBlock Text="Proficiency"
                                Foreground="White"
-                               FontSize="12"
+                               FontSize="15"
                                FontWeight="Bold"
                                HorizontalAlignment="Center"
                                VerticalAlignment="Center"/>
@@ -915,7 +915,7 @@
                             <Grid Grid.Column="1">
                                 <TextBlock Text="Expertise"
                                Foreground="White"
-                               FontSize="12"
+                               FontSize="15"
                                FontWeight="Bold"
                                HorizontalAlignment="Center"
                                VerticalAlignment="Center"/>
@@ -924,7 +924,7 @@
                             <Grid Grid.Column="2">
                                 <TextBlock Text="Skills"
                                Foreground="White"
-                               FontSize="20"
+                               FontSize="23"
                                FontWeight="Bold"
                                HorizontalAlignment="Center"
                                VerticalAlignment="Center"/>
@@ -933,7 +933,7 @@
                             <Grid Grid.Column="3">
                                 <TextBlock Text="Bonus"
                                Foreground="White"
-                               FontSize="12"
+                               FontSize="15"
                                FontWeight="Bold"
                                HorizontalAlignment="Center"
                                VerticalAlignment="Center"/>
@@ -1002,7 +1002,7 @@
                                 <Grid Grid.Column="3">
                                     <TextBlock x:Name="AthleticsSkillField"
                                            Foreground="White"
-                                           FontSize="15"
+                                           FontSize="17"
                                            FontWeight="Bold"
                                            HorizontalAlignment="Center"
                                            VerticalAlignment="Center"/>
@@ -1048,7 +1048,7 @@
                                 <Grid Grid.Column="3">
                                     <TextBlock x:Name="AcrobaticsSkillField"
                                            Foreground="White"
-                                           FontSize="15"
+                                           FontSize="17"
                                            FontWeight="Bold"
                                            HorizontalAlignment="Center"
                                            VerticalAlignment="Center"/>
@@ -1094,7 +1094,7 @@
                                 <Grid Grid.Column="3">
                                     <TextBlock x:Name="SleightOfHandSkillField"
                                            Foreground="White"
-                                           FontSize="15"
+                                           FontSize="17"
                                            FontWeight="Bold"
                                            HorizontalAlignment="Center"
                                            VerticalAlignment="Center"/>
@@ -1140,7 +1140,7 @@
                                 <Grid Grid.Column="3">
                                     <TextBlock x:Name="StealthSkillField"
                                            Foreground="White"
-                                           FontSize="15"
+                                           FontSize="17"
                                            FontWeight="Bold"
                                            HorizontalAlignment="Center"
                                            VerticalAlignment="Center"/>
@@ -1186,7 +1186,7 @@
                                 <Grid Grid.Column="3">
                                     <TextBlock x:Name="ArcanaSkillField"
                                            Foreground="White"
-                                           FontSize="15"
+                                           FontSize="17"
                                            FontWeight="Bold"
                                            HorizontalAlignment="Center"
                                            VerticalAlignment="Center"/>
@@ -1232,7 +1232,7 @@
                                 <Grid Grid.Column="3">
                                     <TextBlock x:Name="HistorySkillField"
                                            Foreground="White"
-                                           FontSize="15"
+                                           FontSize="17"
                                            FontWeight="Bold"
                                            HorizontalAlignment="Center"
                                            VerticalAlignment="Center"/>
@@ -1278,7 +1278,7 @@
                                 <Grid Grid.Column="3">
                                     <TextBlock x:Name="InvestigationSkillField"
                                            Foreground="White"
-                                           FontSize="15"
+                                           FontSize="17"
                                            FontWeight="Bold"
                                            HorizontalAlignment="Center"
                                            VerticalAlignment="Center"/>
@@ -1324,7 +1324,7 @@
                                 <Grid Grid.Column="3">
                                     <TextBlock x:Name="NatureSkillField"
                                            Foreground="White"
-                                           FontSize="15"
+                                           FontSize="17"
                                            FontWeight="Bold"
                                            HorizontalAlignment="Center"
                                            VerticalAlignment="Center"/>
@@ -1370,7 +1370,7 @@
                                 <Grid Grid.Column="3">
                                     <TextBlock x:Name="ReligionSkillField"
                                            Foreground="White"
-                                           FontSize="15"
+                                           FontSize="17"
                                            FontWeight="Bold"
                                            HorizontalAlignment="Center"
                                            VerticalAlignment="Center"/>
@@ -1416,7 +1416,7 @@
                                 <Grid Grid.Column="3">
                                     <TextBlock x:Name="AnimalHandlingSkillField"
                                            Foreground="White"
-                                           FontSize="15"
+                                           FontSize="17"
                                            FontWeight="Bold"
                                            HorizontalAlignment="Center"
                                            VerticalAlignment="Center"/>
@@ -1462,7 +1462,7 @@
                                 <Grid Grid.Column="3">
                                     <TextBlock x:Name="InsightSkillField"
                                            Foreground="White"
-                                           FontSize="15"
+                                           FontSize="17"
                                            FontWeight="Bold"
                                            HorizontalAlignment="Center"
                                            VerticalAlignment="Center"/>
@@ -1508,7 +1508,7 @@
                                 <Grid Grid.Column="3">
                                     <TextBlock x:Name="MedicineSkillField"
                                            Foreground="White"
-                                           FontSize="15"
+                                           FontSize="17"
                                            FontWeight="Bold"
                                            HorizontalAlignment="Center"
                                            VerticalAlignment="Center"/>
@@ -1554,7 +1554,7 @@
                                 <Grid Grid.Column="3">
                                     <TextBlock x:Name="PerceptionSkillField"
                                            Foreground="White"
-                                           FontSize="15"
+                                           FontSize="17"
                                            FontWeight="Bold"
                                            HorizontalAlignment="Center"
                                            VerticalAlignment="Center"/>
@@ -1600,7 +1600,7 @@
                                 <Grid Grid.Column="3">
                                     <TextBlock x:Name="SurvivalSkillField"
                                            Foreground="White"
-                                           FontSize="15"
+                                           FontSize="17"
                                            FontWeight="Bold"
                                            HorizontalAlignment="Center"
                                            VerticalAlignment="Center"/>
@@ -1646,7 +1646,7 @@
                                 <Grid Grid.Column="3">
                                     <TextBlock x:Name="DeceptionSkillField"
                                            Foreground="White"
-                                           FontSize="15"
+                                           FontSize="17"
                                            FontWeight="Bold"
                                            HorizontalAlignment="Center"
                                            VerticalAlignment="Center"/>
@@ -1692,7 +1692,7 @@
                                 <Grid Grid.Column="3">
                                     <TextBlock x:Name="IntimidationSkillField"
                                            Foreground="White"
-                                           FontSize="15"
+                                           FontSize="17"
                                            FontWeight="Bold"
                                            HorizontalAlignment="Center"
                                            VerticalAlignment="Center"/>
@@ -1738,7 +1738,7 @@
                                 <Grid Grid.Column="3">
                                     <TextBlock x:Name="PerformanceSkillField"
                                            Foreground="White"
-                                           FontSize="15"
+                                           FontSize="17"
                                            FontWeight="Bold"
                                            HorizontalAlignment="Center"
                                            VerticalAlignment="Center"/>
@@ -1784,7 +1784,7 @@
                                 <Grid Grid.Column="3">
                                     <TextBlock x:Name="PersuasionSkillField"
                                            Foreground="White"
-                                           FontSize="15"
+                                           FontSize="17"
                                            FontWeight="Bold"
                                            HorizontalAlignment="Center"
                                            VerticalAlignment="Center"/>
@@ -1823,26 +1823,29 @@
                                   Margin="3, 0, 3, 3"
                                   Background="#17112E"
                                   x:Name="HealthBox">
-                                <materialDesign:PackIcon Kind="Heart"
-                                                         FontStretch="Expanded"
-                                                         Foreground="#ff780531"
-                                                         HorizontalAlignment="Center"
-                                                         VerticalAlignment="Center"
-                                                         Width="{Binding Path=HeartWidth}"
-                                                         Height="{Binding Path=HeartHeight}"/>
-                                <TextBlock x:Name="CurrentHpField"
-                                           Foreground="White"
-                                           HorizontalAlignment="Center"
-                                           VerticalAlignment="Center"
-                                           FontSize="55"
-                                           FontWeight="Bold"/>
-                                <TextBlock x:Name="TotalHpField"
-                                           Foreground="White"
-                                           FontSize="23"
-                                           HorizontalAlignment="Right"
-                                           VerticalAlignment="Bottom"
-                                           FontWeight="Bold"
-                                           Margin="5, 5, 15, 10"/>
+                                <materialDesign:PackIcon 
+                                    Kind="Heart"
+                                    FontStretch="Expanded"
+                                    Foreground="#ff780531"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Width="{Binding Path=HeartWidth}"
+                                    Height="{Binding Path=HeartHeight}"/>
+                                <TextBlock 
+                                    x:Name="CurrentHpField"
+                                    Foreground="White"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    FontSize="65"
+                                    FontWeight="Bold"/>
+                                <TextBlock 
+                                    x:Name="TotalHpField"
+                                    Foreground="White"
+                                    FontSize="30"
+                                    HorizontalAlignment="Right"
+                                    VerticalAlignment="Bottom"
+                                    FontWeight="Bold"
+                                    Margin="5, 5, 15, 10"/>
 
                                 <Button x:Name="TakeDamageButton"
                                     Height="35"
@@ -1915,19 +1918,21 @@
                             <Grid Grid.Row="1"
                                   Margin="3, 0, 3, 3"
                                   Background="#17112E">
-                                <materialDesign:PackIcon Kind="Shield"
-                                                         FontStretch="Expanded"
-                                                         Foreground="DimGray"
-                                                         HorizontalAlignment="Center"
-                                                         VerticalAlignment="Center"
-                                                         Width="{Binding Path=ShieldWidth}"
-                                                         Height="{Binding Path=ShieldHeight}"/>
-                                <TextBlock x:Name="ArmorClassField"
-                                       Foreground="White"
-                                       HorizontalAlignment="Center"
-                                       VerticalAlignment="Center"
-                                       FontSize="65"
-                                       FontWeight="Bold"/>
+                                <materialDesign:PackIcon 
+                                    Kind="Shield"
+                                    FontStretch="Expanded"
+                                    Foreground="DimGray"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Width="{Binding Path=ShieldWidth}"
+                                    Height="{Binding Path=ShieldHeight}"/>
+                                <TextBlock 
+                                    x:Name="ArmorClassField"
+                                    Foreground="White"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    FontSize="65"
+                                    FontWeight="Bold"/>
                             </Grid>
                         </Grid>
                     </Grid>

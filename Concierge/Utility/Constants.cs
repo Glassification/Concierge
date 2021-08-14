@@ -54,6 +54,8 @@ namespace Concierge.Utility
 
         private static readonly int[] proficiencies = { 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 6, 6, 6, 6 };
 
+        private static readonly int[] autosaveIntervals = { 1, 5, 10, 15, 20, 30, 45, 60, 90, 120 };
+
         private static readonly string[] alignment =
         {
             "Lawful Good",
@@ -148,7 +150,7 @@ namespace Concierge.Utility
 
         static Constants()
         {
-            AutosaveIntervals = new ReadOnlyCollection<int>(new List<int> { 1, 5, 10, 15, 20, 30, 45, 60, 90, 120 });
+            AutosaveIntervals = new ReadOnlyCollection<int>(autosaveIntervals);
 
             Weapons = new ReadOnlyCollection<Weapon>(DefaultListLoader.LoadWeaponList());
             Ammunitions = new ReadOnlyCollection<Ammunition>(DefaultListLoader.LoadAmmunitionList());

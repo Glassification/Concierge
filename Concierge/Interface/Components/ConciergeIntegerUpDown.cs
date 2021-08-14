@@ -23,7 +23,7 @@ namespace Concierge.Interface.Components
             this.Margin = new Thickness(0, 0, 20, 0);
             this.Height = 40;
             this.Minimum = 0;
-            this.TextAlignment = TextAlignment.Left;
+            this.TextAlignment = TextAlignment.Center;
             this.FontSize = 25;
 
             this.ValueChanged += this.CreateSound_ValueChanged;

@@ -4,9 +4,7 @@
 
 namespace Concierge.Characters.Characteristics
 {
-    using System;
     using System.Collections.Generic;
-    using System.Linq;
 
     using Concierge.Characters.Enums;
     using Newtonsoft.Json;
@@ -48,44 +46,36 @@ namespace Concierge.Characters.Characteristics
         public VisionTypes Vision { get; set; }
 
         [JsonIgnore]
-        public int Movement
+        public int Movement => GetMovement(this.BaseMovement);
+
+        public static int GetMovement(int baseMovement)
         {
-            get
+            if (Program.CcsFile.Character.Vitality.Conditions.Fatigued.Equals("Five") ||
+                Program.CcsFile.Character.Vitality.Conditions.Grappled.Equals("Grappled") ||
+                Program.CcsFile.Character.Vitality.Conditions.Restrained.Equals("Restrained"))
             {
-                int newMovement = this.BaseMovement;
-
-                if (Program.CcsFile.Character.Vitality.Conditions.Fatigued.Equals("Five") ||
-                    Program.CcsFile.Character.Vitality.Conditions.Grappled.Equals("Grappled") ||
-                    Program.CcsFile.Character.Vitality.Conditions.Restrained.Equals("Restrained"))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (Program.CcsFile.Character.Vitality.Conditions.Encumbrance.Equals("Encumbered"))
-                    {
-                        newMovement -= 10;
-                    }
-                    else if (Program.CcsFile.Character.Vitality.Conditions.Encumbrance.Equals("Heavily Encumbered"))
-                    {
-                        newMovement -= 20;
-                    }
-
-                    if (Program.CcsFile.Character.Vitality.Conditions.Fatigued.Equals("Two") ||
-                        Program.CcsFile.Character.Vitality.Conditions.Fatigued.Equals("Three") ||
-                        Program.CcsFile.Character.Vitality.Conditions.Fatigued.Equals("Four"))
-                    {
-                        newMovement /= 2;
-                    }
-
-                    return newMovement;
-                }
+                return 0;
             }
-        }
+            else
+            {
+                if (Program.CcsFile.Character.Vitality.Conditions.Encumbrance.Equals("Encumbered"))
+                {
+                    baseMovement -= 10;
+                }
+                else if (Program.CcsFile.Character.Vitality.Conditions.Encumbrance.Equals("Heavily Encumbered"))
+                {
+                    baseMovement -= 20;
+                }
 
-        public Language GetLanguageById(Guid id)
-        {
-            return this.Languages.Single(x => x.Id.Equals(id));
+                if (Program.CcsFile.Character.Vitality.Conditions.Fatigued.Equals("Two") ||
+                    Program.CcsFile.Character.Vitality.Conditions.Fatigued.Equals("Three") ||
+                    Program.CcsFile.Character.Vitality.Conditions.Fatigued.Equals("Four"))
+                {
+                    baseMovement /= 2;
+                }
+
+                return baseMovement;
+            }
         }
     }
 }

@@ -11,6 +11,7 @@ namespace Concierge.Interface.OverviewPageUi
     using System.Windows.Input;
     using System.Windows.Media;
 
+    using Concierge.Characters.Characteristics;
     using Concierge.Characters.Enums;
     using Concierge.Utility;
 
@@ -41,12 +42,12 @@ namespace Concierge.Interface.OverviewPageUi
             this.PerceptionBonusUpDown.UpdatingValue();
             this.BaseMovementUpDown.UpdatingValue();
 
-            this.InitiativeTextBox.Text = Program.CcsFile.Character.Initiative.ToString();
+            this.InitiativeTextBlock.Text = Program.CcsFile.Character.Initiative.ToString();
             this.InitiativeBonusUpDown.Value = Program.CcsFile.Character.Details.InitiativeBonus;
-            this.PerceptionTextBox.Text = Program.CcsFile.Character.PassivePerception.ToString();
+            this.PerceptionTextBlock.Text = Program.CcsFile.Character.PassivePerception.ToString();
             this.PerceptionBonusUpDown.Value = Program.CcsFile.Character.Details.PerceptionBonus;
             this.VisionComboBox.Text = Program.CcsFile.Character.Details.Vision.ToString();
-            this.MovementTextBox.Text = Program.CcsFile.Character.Details.Movement.ToString();
+            this.MovementTextBlock.Text = Program.CcsFile.Character.Details.Movement.ToString();
             this.BaseMovementUpDown.Value = Program.CcsFile.Character.Details.BaseMovement;
         }
 
@@ -113,6 +114,13 @@ namespace Concierge.Interface.OverviewPageUi
         private void VisionComboBox_DropDownOpened(object sender, EventArgs e)
         {
             ConciergeSound.UpdateValue();
+        }
+
+        private void IntegerUpDown_ValueChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
+        {
+            this.InitiativeTextBlock.Text = (Utilities.CalculateBonus(Program.CcsFile.Character.Attributes.Dexterity) + (this.InitiativeBonusUpDown.Value ?? 0)).ToString();
+            this.PerceptionTextBlock.Text = (Constants.BasePerception + Program.CcsFile.Character.Skill.Perception.Bonus + (this.PerceptionBonusUpDown.Value ?? 0)).ToString();
+            this.MovementTextBlock.Text = Details.GetMovement(this.BaseMovementUpDown.Value ?? 0).ToString();
         }
     }
 }

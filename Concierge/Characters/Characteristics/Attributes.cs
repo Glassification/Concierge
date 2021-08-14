@@ -8,93 +8,89 @@ namespace Concierge.Characters.Characteristics
 
     public class Attributes
     {
-        private int _strength;
-        private int _dexterity;
-        private int _constitution;
-        private int _intelligence;
-        private int _wisdom;
-        private int _charisma;
+        private int strength;
+        private int dexterity;
+        private int constitution;
+        private int intelligence;
+        private int wisdom;
+        private int charisma;
 
         public Attributes()
         {
-            this._strength = 0;
-            this._dexterity = 0;
-            this._constitution = 0;
-            this._intelligence = 0;
-            this._wisdom = 0;
-            this._charisma = 0;
+            this.strength = 0;
+            this.dexterity = 0;
+            this.constitution = 0;
+            this.intelligence = 0;
+            this.wisdom = 0;
+            this.charisma = 0;
         }
 
         public int Strength
         {
-            get => this._strength;
+            get => this.strength;
             set
             {
-                if (value >= Constants.MinScore && value <= Constants.MaxScore)
-                {
-                    this._strength = value;
-                }
+                this.strength = Truncate(value);
             }
         }
 
         public int Dexterity
         {
-            get => this._dexterity;
+            get => this.dexterity;
             set
             {
-                if (value >= Constants.MinScore && value <= Constants.MaxScore)
-                {
-                    this._dexterity = value;
-                }
+                this.dexterity = Truncate(value);
             }
         }
 
         public int Constitution
         {
-            get => this._constitution;
+            get => this.constitution;
             set
             {
-                if (value >= Constants.MinScore && value <= Constants.MaxScore)
-                {
-                    this._constitution = value;
-                }
+                this.constitution = Truncate(value);
             }
         }
 
         public int Intelligence
         {
-            get => this._intelligence;
+            get => this.intelligence;
             set
             {
-                if (value >= Constants.MinScore && value <= Constants.MaxScore)
-                {
-                    this._intelligence = value;
-                }
+                this.intelligence = Truncate(value);
             }
         }
 
         public int Wisdom
         {
-            get => this._wisdom;
+            get => this.wisdom;
             set
             {
-                if (value >= Constants.MinScore && value <= Constants.MaxScore)
-                {
-                    this._wisdom = value;
-                }
+                this.wisdom = Truncate(value);
             }
         }
 
         public int Charisma
         {
-            get => this._charisma;
+            get => this.charisma;
             set
             {
-                if (value >= Constants.MinScore && value <= Constants.MaxScore)
-                {
-                    this._charisma = value;
-                }
+                this.charisma = Truncate(value);
             }
+        }
+
+        private static int Truncate(int value)
+        {
+            if (value < Constants.MinScore)
+            {
+                return Constants.MinScore;
+            }
+            else if (value > Constants.MaxScore)
+            {
+                return Constants.MaxScore;
+            }
+
+            return value;
         }
     }
 }

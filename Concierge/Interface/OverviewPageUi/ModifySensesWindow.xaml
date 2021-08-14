@@ -6,7 +6,6 @@
         xmlns:local="clr-namespace:Concierge.Interface.OverviewPageUi"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:components="clr-namespace:Concierge.Interface.Components"
-        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         mc:Ignorable="d"
         Title="ModifySensesWindow"
         Height="500"
@@ -83,12 +82,15 @@
                 </Grid>
 
                 <!--Value-->
-                <Grid Grid.Column="1"
-                      Background="#FF3F3F3F"
-                      Margin="0, 8, 20, 8">
-                    <components:ConciergeTextBox 
-                        x:Name="InitiativeTextBox"
-                        FontSize="15"/>
+                <Grid Grid.Column="1">
+                    <TextBlock 
+                        Text="20"
+                        Name="InitiativeTextBlock"
+                        Foreground="White"
+                        FontSize="25"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        Margin="0, 0, 0, 0"/>
                 </Grid>
             </Grid>
             
@@ -111,7 +113,7 @@
 
                 <!--Value-->
                 <Grid Grid.Column="1">
-                    <components:ConciergeIntegerUpDown x:Name="InitiativeBonusUpDown"/>
+                    <components:ConciergeIntegerUpDown x:Name="InitiativeBonusUpDown" ValueChanged="IntegerUpDown_ValueChanged"/>
                 </Grid>
             </Grid>
 
@@ -133,12 +135,15 @@
                 </Grid>
 
                 <!--Value-->
-                <Grid Grid.Column="1"
-                      Background="#FF3F3F3F"
-                      Margin="0, 8, 20, 8">
-                    <components:ConciergeTextBox 
-                        x:Name="PerceptionTextBox"
-                        FontSize="15"/>
+                <Grid Grid.Column="1">
+                    <TextBlock 
+                        Text="20"
+                        Name="PerceptionTextBlock"
+                        Foreground="White"
+                        FontSize="25"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        Margin="0, 0, 0, 0"/>
                 </Grid>
             </Grid>
 
@@ -161,7 +166,7 @@
 
                 <!--Value-->
                 <Grid Grid.Column="1">
-                    <components:ConciergeIntegerUpDown x:Name="PerceptionBonusUpDown"/>
+                    <components:ConciergeIntegerUpDown x:Name="PerceptionBonusUpDown" ValueChanged="IntegerUpDown_ValueChanged"/>
                 </Grid>
             </Grid>
 
@@ -212,12 +217,15 @@
                 </Grid>
 
                 <!--Value-->
-                <Grid Grid.Column="1"
-                      Background="#FF3F3F3F"
-                      Margin="0, 8, 20, 8">
-                    <components:ConciergeTextBox 
-                        x:Name="MovementTextBox"
-                        FontSize="15"/>
+                <Grid Grid.Column="1">
+                    <TextBlock 
+                        Text="20"
+                        Name="MovementTextBlock"
+                        Foreground="White"
+                        FontSize="25"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        Margin="0, 0, 0, 0"/>
                 </Grid>
             </Grid>
 
@@ -240,7 +248,7 @@
 
                 <!--Value-->
                 <Grid Grid.Column="1">
-                    <components:ConciergeIntegerUpDown x:Name="BaseMovementUpDown"/>
+                    <components:ConciergeIntegerUpDown x:Name="BaseMovementUpDown" ValueChanged="IntegerUpDown_ValueChanged"/>
                 </Grid>
             </Grid>
         </Grid>
