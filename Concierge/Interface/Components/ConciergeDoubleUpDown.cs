@@ -1,4 +1,4 @@
-﻿// <copyright file="ConciergeIntegerUpDown.cs" company="Thomas Beckett">
+﻿// <copyright file="ConciergeDoubleUpDown.cs" company="Thomas Beckett">
 // Copyright (c) Thomas Beckett. All rights reserved.
 // </copyright>
 

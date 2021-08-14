@@ -15,11 +15,6 @@ namespace Concierge.Characters.Characteristics
             this.Id = Guid.NewGuid();
         }
 
-        public Language(Guid id)
-        {
-            this.Id = id;
-        }
-
         public string Name { get; set; }
 
         public string Script { get; set; }

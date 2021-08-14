@@ -22,6 +22,7 @@ namespace Concierge.Interface.NotesPageUi
     using Concierge.Interface.Enums;
     using Concierge.Interface.HelperUi;
     using Concierge.Utility;
+    using Concierge.Utility.Extensions;
     using MaterialDesignThemes.Wpf;
 
     /// <summary>
@@ -372,7 +373,7 @@ namespace Concierge.Interface.NotesPageUi
 
         private void SwapTreeViewItem<T>(IList<T> list, int oldIndex, int newIndex)
         {
-            Utilities.Swap(list, oldIndex, newIndex);
+            list.Swap(oldIndex, newIndex);
             this.Lock = true;
             this.DrawTreeView();
             this.Lock = false;

@@ -10,6 +10,7 @@ namespace Concierge.Interface.InventoryPageUi
 
     using Concierge.Characters.Items;
     using Concierge.Utility;
+    using Concierge.Utility.Extensions;
 
     /// <summary>
     /// Interaction logic for InventoryPage.xaml.
@@ -68,7 +69,7 @@ namespace Concierge.Interface.InventoryPageUi
 
             if (index != 0)
             {
-                Utilities.Swap(Program.CcsFile.Character.Inventories, index, index - 1);
+                Program.CcsFile.Character.Inventories.Swap(index, index - 1);
                 this.DrawInventory();
                 this.InventoryDataGrid.SelectedIndex = index - 1;
             }
@@ -89,7 +90,7 @@ namespace Concierge.Interface.InventoryPageUi
 
             if (index != Program.CcsFile.Character.Inventories.Count - 1)
             {
-                Utilities.Swap(Program.CcsFile.Character.Inventories, index, index + 1);
+                Program.CcsFile.Character.Inventories.Swap(index, index + 1);
                 this.DrawInventory();
                 this.InventoryDataGrid.SelectedIndex = index + 1;
             }

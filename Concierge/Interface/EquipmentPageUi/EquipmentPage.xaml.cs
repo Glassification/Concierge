@@ -11,6 +11,7 @@ namespace Concierge.Interface.EquipmentPageUi
     using Concierge.Characters.Enums;
     using Concierge.Characters.Items;
     using Concierge.Utility;
+    using Concierge.Utility.Extensions;
 
     /// <summary>
     /// Interaction logic for EquipmentPage.xaml.
@@ -104,7 +105,7 @@ namespace Concierge.Interface.EquipmentPageUi
 
                 if (index != 0)
                 {
-                    Utilities.Swap(Program.CcsFile.Character.Ammunitions, index, index - 1);
+                    Program.CcsFile.Character.Ammunitions.Swap(index, index - 1);
                     this.DrawAmmoList();
                     this.AmmoDataGrid.SelectedIndex = index - 1;
                 }
@@ -119,7 +120,7 @@ namespace Concierge.Interface.EquipmentPageUi
 
                 if (index != 0)
                 {
-                    Utilities.Swap(Program.CcsFile.Character.Weapons, index, index - 1);
+                    Program.CcsFile.Character.Weapons.Swap(index, index - 1);
                     this.DrawWeaponList();
                     this.WeaponDataGrid.SelectedIndex = index - 1;
                 }
@@ -138,7 +139,7 @@ namespace Concierge.Interface.EquipmentPageUi
 
                 if (index != Program.CcsFile.Character.Ammunitions.Count - 1)
                 {
-                    Utilities.Swap(Program.CcsFile.Character.Ammunitions, index, index + 1);
+                    Program.CcsFile.Character.Ammunitions.Swap(index, index + 1);
                     this.DrawAmmoList();
                     this.AmmoDataGrid.SelectedIndex = index + 1;
                 }
@@ -153,7 +154,7 @@ namespace Concierge.Interface.EquipmentPageUi
 
                 if (index != Program.CcsFile.Character.Weapons.Count - 1)
                 {
-                    Utilities.Swap(Program.CcsFile.Character.Weapons, index, index + 1);
+                    Program.CcsFile.Character.Weapons.Swap(index, index + 1);
                     this.DrawWeaponList();
                     this.WeaponDataGrid.SelectedIndex = index + 1;
                 }

@@ -6,7 +6,6 @@ namespace Concierge.Characters.Notes
 {
     using System;
     using System.Collections.Generic;
-    using System.Linq;
 
     using Newtonsoft.Json;
 
@@ -34,11 +33,6 @@ namespace Concierge.Characters.Notes
         public override string ToString()
         {
             return this.Name;
-        }
-
-        public Document GetDocumentById(Guid id)
-        {
-            return this.Documents.Single(x => x.Id.Equals(id));
         }
     }
 }

@@ -15,11 +15,6 @@ namespace Concierge.Characters.Items
             this.Id = Guid.NewGuid();
         }
 
-        public Ammunition(Guid id)
-        {
-            this.Id = id;
-        }
-
         public string Name { get; set; }
 
         public int Quantity { get; set; }

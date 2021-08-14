@@ -5,15 +5,71 @@
 namespace Concierge.Utility
 {
     using System;
-    using System.Collections.Generic;
     using System.Linq;
+    using System.Windows;
+    using System.Windows.Controls;
     using System.Windows.Input;
     using System.Windows.Media;
+    using System.Windows.Shapes;
 
     using Concierge.Characters;
+    using Concierge.Characters.Enums;
+    using Concierge.Characters.Status;
 
     public static class Utilities
     {
+        public static void SetTextStyle(StatusChecks check, TextBlock textBlock)
+        {
+            switch (check)
+            {
+                case StatusChecks.Fail:
+                    textBlock.TextDecorations = TextDecorations.Strikethrough;
+                    textBlock.Foreground = Brushes.DarkGray;
+                    textBlock.ToolTip = "Automatic Fail";
+                    break;
+                case StatusChecks.Advantage:
+                    textBlock.TextDecorations = new TextDecorationCollection();
+                    textBlock.Foreground = Brushes.Green;
+                    textBlock.ToolTip = "Advantage";
+                    break;
+                case StatusChecks.Disadvantage:
+                    textBlock.TextDecorations = new TextDecorationCollection();
+                    textBlock.Foreground = Brushes.IndianRed;
+                    textBlock.ToolTip = "Disadvantage";
+                    break;
+                case StatusChecks.Normal:
+                default:
+                    textBlock.TextDecorations = new TextDecorationCollection();
+                    textBlock.Foreground = Brushes.White;
+                    textBlock.ToolTip = null;
+                    break;
+            }
+        }
+
+        public static void SetBoxStyle(bool flag, Rectangle rectangle)
+        {
+            if (flag)
+            {
+                rectangle.Fill = Colours.ToggleBoxBrush;
+                rectangle.Stroke = Brushes.Transparent;
+            }
+            else
+            {
+                rectangle.Stroke = Colours.ToggleBoxBrush;
+                rectangle.Fill = Brushes.Transparent;
+            }
+        }
+
+        public static Brush SetHealthStyle(Vitality vitality)
+        {
+            int third = vitality.MaxHealth / 3;
+            int hp = vitality.CurrentHealth;
+
+            return hp < third && hp > 0
+                ? Brushes.IndianRed
+                : hp >= third * 2 ? Brushes.DarkGreen : hp <= 0 ? Brushes.DarkGray : Brushes.DarkOrange;
+        }
+
         public static int IncrementUsedSlots(int used, int total)
         {
             if (used < total)
@@ -43,13 +99,6 @@ namespace Concierge.Utility
         public static int CalculateBonus(int score)
         {
             return (int)Math.Floor((score - 10) / 2.0);
-        }
-
-        public static void Swap<T>(IList<T> list, int indexA, int indexB)
-        {
-            T tmp = list[indexA];
-            list[indexA] = list[indexB];
-            list[indexB] = tmp;
         }
 
         public static string FormatName(string name)

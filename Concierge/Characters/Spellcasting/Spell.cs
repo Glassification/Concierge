@@ -16,11 +16,6 @@ namespace Concierge.Characters.Spellcasting
             this.Id = Guid.NewGuid();
         }
 
-        public Spell(Guid id)
-        {
-            this.Id = id;
-        }
-
         public string Name { get; set; }
 
         public bool Prepared { get; set; }

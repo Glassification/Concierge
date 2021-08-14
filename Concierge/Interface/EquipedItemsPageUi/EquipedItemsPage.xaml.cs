@@ -14,6 +14,7 @@ namespace Concierge.Interface.EquipedItemsPageUi
     using Concierge.Interface.Components;
     using Concierge.Interface.InventoryPageUi;
     using Concierge.Utility;
+    using Concierge.Utility.Extensions;
 
     /// <summary>
     /// Interaction logic for EquipedItemsPage.xaml.
@@ -129,7 +130,7 @@ namespace Concierge.Interface.EquipedItemsPageUi
 
             if (index != 0)
             {
-                Utilities.Swap(equippedItems, index, index - 1);
+                equippedItems.Swap(index, index - 1);
                 this.Draw();
                 dataGrid.SelectedIndex = index - 1;
             }
@@ -151,7 +152,7 @@ namespace Concierge.Interface.EquipedItemsPageUi
 
             if (index != equippedItems.Count - 1)
             {
-                Utilities.Swap(equippedItems, index, index + 1);
+                equippedItems.Swap(index, index + 1);
                 this.Draw();
                 dataGrid.SelectedIndex = index + 1;
             }

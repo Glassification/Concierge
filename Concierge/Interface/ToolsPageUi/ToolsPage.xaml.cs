@@ -141,7 +141,6 @@ namespace Concierge.Interface.ToolsPageUi
 
         private void ButtonResetLoot_Click(object sender, RoutedEventArgs e)
         {
-
             ConciergeSound.TapNavigation();
             this.SetDefaultDivideValues();
             this.DivideLootDataGrid.Items.Clear();
@@ -247,7 +246,6 @@ namespace Concierge.Interface.ToolsPageUi
 
         private void ButtonResetHistory_Click(object sender, RoutedEventArgs e)
         {
-
             ConciergeSound.TapNavigation();
             this.SetDefaultDiceValues();
             this.DiceHistory.Clear();

@@ -14,6 +14,7 @@ namespace Concierge.Interface.CompanionPageUi
     using Concierge.Interface.EquipmentPageUi;
     using Concierge.Interface.OverviewPageUi;
     using Concierge.Utility;
+    using Concierge.Utility.Extensions;
 
     /// <summary>
     /// Interaction logic for ToolsPage.xaml.
@@ -193,7 +194,7 @@ namespace Concierge.Interface.CompanionPageUi
 
             if (index != 0)
             {
-                Utilities.Swap(Program.CcsFile.Character.Companion.Attacks, index, index - 1);
+                Program.CcsFile.Character.Companion.Attacks.Swap(index, index - 1);
                 this.DrawAttacks();
                 this.WeaponDataGrid.SelectedIndex = index - 1;
             }
@@ -214,7 +215,7 @@ namespace Concierge.Interface.CompanionPageUi
 
             if (index != Program.CcsFile.Character.Companion.Attacks.Count - 1)
             {
-                Utilities.Swap(Program.CcsFile.Character.Companion.Attacks, index, index + 1);
+                Program.CcsFile.Character.Companion.Attacks.Swap(index, index + 1);
                 this.DrawAttacks();
                 this.WeaponDataGrid.SelectedIndex = index + 1;
             }

@@ -10,6 +10,7 @@ namespace Concierge.Interface.AbilitiesPageUi
 
     using Concierge.Characters.Characteristics;
     using Concierge.Utility;
+    using Concierge.Utility.Extensions;
 
     /// <summary>
     /// Interaction logic for AbilitiesPage.xaml.
@@ -67,7 +68,7 @@ namespace Concierge.Interface.AbilitiesPageUi
 
                 if (index != 0)
                 {
-                    Utilities.Swap(Program.CcsFile.Character.Abilities, index, index - 1);
+                    Program.CcsFile.Character.Abilities.Swap(index, index - 1);
                     this.DrawAbilities();
                     this.AbilitiesDataGrid.SelectedIndex = index - 1;
                 }
@@ -87,7 +88,7 @@ namespace Concierge.Interface.AbilitiesPageUi
 
                 if (index != Program.CcsFile.Character.Abilities.Count - 1)
                 {
-                    Utilities.Swap(Program.CcsFile.Character.Abilities, index, index + 1);
+                    Program.CcsFile.Character.Abilities.Swap(index, index + 1);
                     this.DrawAbilities();
                     this.AbilitiesDataGrid.SelectedIndex = index + 1;
                 }

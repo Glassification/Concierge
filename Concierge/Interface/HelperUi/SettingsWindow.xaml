@@ -256,32 +256,23 @@
 
                     <!--Title-->
                     <Grid Grid.Column="0">
-                        <TextBlock 
-                            x:Name="IntervalTextBox"
-                            Text="Autosave Interval (minutes):"
-                            Foreground="White"
-                            FontSize="18"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Center"
-                            Margin="10, 0, 0, 0"
-                            TextWrapping="Wrap"/>
+                        <TextBlock Text="Coin Weight:"
+                                   Foreground="White"
+                                   FontSize="25"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Center"
+                                   Margin="10, 0, 0, 0"/>
                     </Grid>
 
                     <!--Value-->
                     <Grid Grid.Column="1">
-                        <Slider
-                            x:Name="AutosaveInterval"
-                            Foreground="White"
-                            VerticalAlignment="Center"
-                            Margin="0,0,20,0"
-                            Minimum="0"
-                            Maximum="9"
-                            Interval="1"
-                            TickPlacement="BottomRight"
-                            TickFrequency="1"
-                            SmallChange="1"
-                            IsSnapToTickEnabled="True"
-                            ValueChanged="AutosaveInterval_ValueChanged"/>
+                        <components:ConciergeCheckBox  
+                            x:Name="CoinWeightCheckBox"
+                            Margin="60, 15, 0, 0">
+                            <CheckBox.LayoutTransform>
+                                <ScaleTransform ScaleX="2" ScaleY="2" />
+                            </CheckBox.LayoutTransform>
+                        </components:ConciergeCheckBox>
                     </Grid>
                 </Grid>
 
@@ -330,23 +321,32 @@
 
                     <!--Title-->
                     <Grid Grid.Column="0">
-                        <TextBlock Text="Coin Weight:"
-                                   Foreground="White"
-                                   FontSize="25"
-                                   HorizontalAlignment="Left"
-                                   VerticalAlignment="Center"
-                                   Margin="10, 0, 0, 0"/>
+                        <TextBlock 
+                            x:Name="IntervalTextBox"
+                            Text="Autosave Interval (minutes):"
+                            Foreground="White"
+                            FontSize="18"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Margin="10, 0, 0, 0"
+                            TextWrapping="Wrap"/>
                     </Grid>
 
                     <!--Value-->
                     <Grid Grid.Column="1">
-                        <components:ConciergeCheckBox  
-                            x:Name="CoinWeightCheckBox"
-                            Margin="60, 15, 0, 0">
-                            <CheckBox.LayoutTransform>
-                                <ScaleTransform ScaleX="2" ScaleY="2" />
-                            </CheckBox.LayoutTransform>
-                        </components:ConciergeCheckBox>
+                        <Slider
+                            x:Name="AutosaveInterval"
+                            Foreground="White"
+                            VerticalAlignment="Center"
+                            Margin="0,0,20,0"
+                            Minimum="0"
+                            Maximum="9"
+                            Interval="1"
+                            TickPlacement="BottomRight"
+                            TickFrequency="1"
+                            SmallChange="1"
+                            IsSnapToTickEnabled="True"
+                            ValueChanged="AutosaveInterval_ValueChanged"/>
                     </Grid>
                 </Grid>
 

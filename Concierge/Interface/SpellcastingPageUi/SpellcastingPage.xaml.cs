@@ -12,6 +12,7 @@ namespace Concierge.Interface.SpellcastingPageUi
     using Concierge.Characters.Enums;
     using Concierge.Characters.Spellcasting;
     using Concierge.Utility;
+    using Concierge.Utility.Extensions;
 
     /// <summary>
     /// Interaction logic for SpellcastingPage.xaml.
@@ -138,7 +139,7 @@ namespace Concierge.Interface.SpellcastingPageUi
 
                 if (index != 0)
                 {
-                    Utilities.Swap(Program.CcsFile.Character.MagicClasses, index, index - 1);
+                    Program.CcsFile.Character.MagicClasses.Swap(index, index - 1);
                     this.DrawMagicClasses();
                     this.MagicClassDataGrid.SelectedIndex = index - 1;
                 }
@@ -153,7 +154,7 @@ namespace Concierge.Interface.SpellcastingPageUi
 
                 if (index != 0)
                 {
-                    Utilities.Swap(Program.CcsFile.Character.Spells, index, index - 1);
+                    Program.CcsFile.Character.Spells.Swap(index, index - 1);
                     this.DrawSpellList();
                     this.SpellListDataGrid.SelectedIndex = index - 1;
                 }
@@ -172,7 +173,7 @@ namespace Concierge.Interface.SpellcastingPageUi
 
                 if (index != Program.CcsFile.Character.MagicClasses.Count - 1)
                 {
-                    Utilities.Swap(Program.CcsFile.Character.MagicClasses, index, index + 1);
+                    Program.CcsFile.Character.MagicClasses.Swap(index, index + 1);
                     this.DrawMagicClasses();
                     this.MagicClassDataGrid.SelectedIndex = index + 1;
                 }
@@ -187,7 +188,7 @@ namespace Concierge.Interface.SpellcastingPageUi
 
                 if (index != Program.CcsFile.Character.Spells.Count - 1)
                 {
-                    Utilities.Swap(Program.CcsFile.Character.Spells, index, index + 1);
+                    Program.CcsFile.Character.Spells.Swap(index, index + 1);
                     this.DrawSpellList();
                     this.SpellListDataGrid.SelectedIndex = index + 1;
                 }

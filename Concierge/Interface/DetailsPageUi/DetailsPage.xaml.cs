@@ -83,6 +83,7 @@ namespace Concierge.Interface.DetailsPageUi
         private void DrawAppearance()
         {
             var appearance = Program.CcsFile.Character.Appearance;
+
             this.GenderField.Text = appearance.Gender;
             this.AgeField.Text = appearance.Age.ToString();
             this.HeightField.Text = appearance.Height;
@@ -96,6 +97,7 @@ namespace Concierge.Interface.DetailsPageUi
         private void DrawPersonality()
         {
             var personality = Program.CcsFile.Character.Personality;
+
             this.TraitField1.Text = personality.Trait1;
             this.TraitField2.Text = personality.Trait2;
             this.IdealField.Text = personality.Ideal;

@@ -18,12 +18,6 @@ namespace Concierge.Characters.Items
             this.ProficiencyOverride = false;
         }
 
-        public Weapon(Guid id)
-        {
-            this.Id = id;
-            this.ProficiencyOverride = false;
-        }
-
         public string Name { get; set; }
 
         [JsonIgnore]

@@ -50,26 +50,28 @@ namespace Concierge.Characters.Characteristics
 
         public static int GetMovement(int baseMovement)
         {
-            if (Program.CcsFile.Character.Vitality.Conditions.Fatigued.Equals("Five") ||
-                Program.CcsFile.Character.Vitality.Conditions.Grappled.Equals("Grappled") ||
-                Program.CcsFile.Character.Vitality.Conditions.Restrained.Equals("Restrained"))
+            var conditions = Program.CcsFile.Character.Vitality.Conditions;
+
+            if (conditions.Fatigued.Equals("Five") ||
+                conditions.Grappled.Equals("Grappled") ||
+                conditions.Restrained.Equals("Restrained"))
             {
                 return 0;
             }
             else
             {
-                if (Program.CcsFile.Character.Vitality.Conditions.Encumbrance.Equals("Encumbered"))
+                if (conditions.Encumbrance.Equals("Encumbered"))
                 {
                     baseMovement -= 10;
                 }
-                else if (Program.CcsFile.Character.Vitality.Conditions.Encumbrance.Equals("Heavily Encumbered"))
+                else if (conditions.Encumbrance.Equals("Heavily Encumbered"))
                 {
                     baseMovement -= 20;
                 }
 
-                if (Program.CcsFile.Character.Vitality.Conditions.Fatigued.Equals("Two") ||
-                    Program.CcsFile.Character.Vitality.Conditions.Fatigued.Equals("Three") ||
-                    Program.CcsFile.Character.Vitality.Conditions.Fatigued.Equals("Four"))
+                if (conditions.Fatigued.Equals("Two") ||
+                    conditions.Fatigued.Equals("Three") ||
+                    conditions.Fatigued.Equals("Four"))
                 {
                     baseMovement /= 2;
                 }
