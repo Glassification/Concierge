@@ -7,9 +7,7 @@ namespace Concierge.Interface.DetailsPageUi
     using System;
     using System.Linq;
     using System.Windows;
-    using System.Windows.Controls;
     using System.Windows.Input;
-    using System.Windows.Media;
 
     using Concierge.Characters.Enums;
     using Concierge.Characters.Status;
@@ -106,14 +104,12 @@ namespace Concierge.Interface.DetailsPageUi
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.TapNavigation();
             this.Hide();
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Modify();
-            ConciergeSound.TapNavigation();
 
             this.UpdateConditions();
             this.Hide();
@@ -122,7 +118,6 @@ namespace Concierge.Interface.DetailsPageUi
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Modify();
-            ConciergeSound.TapNavigation();
 
             this.UpdateConditions();
 
@@ -131,18 +126,7 @@ namespace Concierge.Interface.DetailsPageUi
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.TapNavigation();
             this.Hide();
-        }
-
-        private void Button_MouseEnter(object sender, RoutedEventArgs e)
-        {
-            (sender as Button).Foreground = Brushes.Black;
-        }
-
-        private void Button_MouseLeave(object sender, RoutedEventArgs e)
-        {
-            (sender as Button).Foreground = Brushes.White;
         }
 
         private void ComboBox_DropDownOpened(object sender, EventArgs e)

@@ -8,7 +8,6 @@ namespace Concierge.Interface
     using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Input;
-    using System.Windows.Media;
 
     using Concierge.Interface.AbilitiesPageUi;
     using Concierge.Interface.CompanionPageUi;
@@ -327,7 +326,6 @@ namespace Concierge.Interface
 
         private void ButtonOpenMenu_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.TapNavigation();
             Program.Logger.Info($"Expand sidebar.");
 
             this.ButtonCloseMenu.Visibility = Visibility.Visible;
@@ -338,7 +336,6 @@ namespace Concierge.Interface
 
         private void ButtonCloseMenu_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.TapNavigation();
             Program.Logger.Info($"Collapse sidebar.");
 
             this.ButtonCloseMenu.Visibility = Visibility.Collapsed;
@@ -354,31 +351,26 @@ namespace Concierge.Interface
 
         private void ButtonNewCharacter_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.TapNavigation();
             this.NewCharacterSheet();
         }
 
         private void ButtonOpenCharacter_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.TapNavigation();
             this.OpenCharacterSheet();
         }
 
         private void ButtonSaveCharacter_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.TapNavigation();
             this.SaveCharacterSheet();
         }
 
         private void ButtonSaveCharacterAs_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.TapNavigation();
             this.SaveCharacterSheetAs();
         }
 
         private void ButtonLongRest_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.TapNavigation();
             this.LongRest();
         }
 
@@ -434,7 +426,6 @@ namespace Concierge.Interface
 
         private void PropertiesButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.TapNavigation();
             Program.Logger.Info($"Open properties.");
 
             this.modifyPropertiesWindow.ShowWindow();
@@ -443,7 +434,6 @@ namespace Concierge.Interface
 
         private void SettingsButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.TapNavigation();
             Program.Logger.Info($"Open settings.");
 
             this.settingsWindow.ShowWindow();
@@ -462,25 +452,13 @@ namespace Concierge.Interface
 
         private void AboutButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.TapNavigation();
             Program.Logger.Info($"Open About.");
 
             this.aboutConciergeWindow.ShowWindow();
         }
 
-        private void Button_MouseEnter(object sender, MouseEventArgs e)
-        {
-            ((Button)sender).Foreground = Brushes.Black;
-        }
-
-        private void Button_MouseLeave(object sender, MouseEventArgs e)
-        {
-            ((Button)sender).Foreground = Brushes.White;
-        }
-
         private void ButtonMinimize_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.TapNavigation();
             this.WindowState = WindowState.Minimized;
         }
     }

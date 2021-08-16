@@ -12,8 +12,6 @@ namespace Concierge.Interface.EquipmentPageUi
     using Concierge.Characters.Enums;
     using Concierge.Characters.Items;
     using Concierge.Interface.Components;
-    using Concierge.Utility;
-    using Concierge.Utility.Extensions;
 
     /// <summary>
     /// Interaction logic for EquipmentPage.xaml.
@@ -130,14 +128,12 @@ namespace Concierge.Interface.EquipmentPageUi
 
         private void ButtonClear_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.TapNavigation();
             this.WeaponDataGrid.UnselectAll();
             this.AmmoDataGrid.UnselectAll();
         }
 
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.TapNavigation();
             var popupButons = this.equipmentPopupWindow.ShowPopup();
 
             switch (popupButons)
@@ -157,13 +153,11 @@ namespace Concierge.Interface.EquipmentPageUi
         {
             if (this.AmmoDataGrid.SelectedItem != null)
             {
-                ConciergeSound.TapNavigation();
                 this.modifyAmmoWindow.ShowEdit((Ammunition)this.AmmoDataGrid.SelectedItem);
                 this.DrawAmmoList();
             }
             else if (this.WeaponDataGrid.SelectedItem != null)
             {
-                ConciergeSound.TapNavigation();
                 this.modifyWeaponWindow.ShowEdit((Weapon)this.WeaponDataGrid.SelectedItem);
                 this.DrawWeaponList();
             }
@@ -174,7 +168,6 @@ namespace Concierge.Interface.EquipmentPageUi
             if (this.AmmoDataGrid.SelectedItem != null)
             {
                 Program.Modify();
-                ConciergeSound.TapNavigation();
 
                 var ammo = (Ammunition)this.AmmoDataGrid.SelectedItem;
                 Program.CcsFile.Character.Ammunitions.Remove(ammo);
@@ -183,7 +176,6 @@ namespace Concierge.Interface.EquipmentPageUi
             else if (this.WeaponDataGrid.SelectedItem != null)
             {
                 Program.Modify();
-                ConciergeSound.TapNavigation();
 
                 var weapon = (Weapon)this.WeaponDataGrid.SelectedItem;
                 Program.CcsFile.Character.Weapons.Remove(weapon);
@@ -209,7 +201,6 @@ namespace Concierge.Interface.EquipmentPageUi
 
         private void EditDetailsButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.TapNavigation();
             this.modifyArmorWindow.ShowEdit(Program.CcsFile.Character.Armor);
             this.Draw();
         }

@@ -117,14 +117,12 @@ namespace Concierge.Interface.AbilitiesPageUi
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.TapNavigation();
             this.Hide();
         }
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Modify();
-            ConciergeSound.TapNavigation();
 
             this.Abilities.Add(this.ToAbility());
             this.ClearFields();
@@ -135,7 +133,6 @@ namespace Concierge.Interface.AbilitiesPageUi
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Modify();
-            ConciergeSound.TapNavigation();
 
             if (this.Editing)
             {
@@ -151,18 +148,7 @@ namespace Concierge.Interface.AbilitiesPageUi
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.TapNavigation();
             this.Hide();
-        }
-
-        private void Button_MouseEnter(object sender, RoutedEventArgs e)
-        {
-            (sender as Button).Foreground = Brushes.Black;
-        }
-
-        private void Button_MouseLeave(object sender, RoutedEventArgs e)
-        {
-            (sender as Button).Foreground = Brushes.White;
         }
 
         private void NameComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)

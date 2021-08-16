@@ -80,19 +80,19 @@
 
                 <!--Name-->
                 <Grid Grid.Column="0" Background="#0B061E">
-                    <Button 
+                    <components:ConciergeButton 
                         x:Name="EditAttributesButton"
                         Height="35"
                         Width="35"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Center"
                         Background="Transparent"
-                        BorderBrush="{x:Null}"
+                        
                         Foreground="PaleGoldenrod"
                         Click="EditAttributesButton_Click"
                         ToolTip="Edit Attributes">
                         <materialDesign:PackIcon Kind="Edit" Width="25" Height="25"/>
-                    </Button>
+                    </components:ConciergeButton>
                     <TextBlock 
                         Text="Strength"
                         Foreground="White"
@@ -588,19 +588,19 @@
 
                         <!--Name-->
                         <Grid Grid.Column="0" Background="#0B061E">
-                            <Button 
+                            <components:ConciergeButton 
                                 x:Name="EditPropertiesButton"
                                 Height="30"
                                 Width="30"
                                 HorizontalAlignment="Left"
                                 VerticalAlignment="Top"
                                 Background="Transparent"
-                                BorderBrush="{x:Null}"
+                                
                                 Foreground="PaleGoldenrod"
                                 Click="EditPropertiesButton_Click"
                                 ToolTip="Edit Health">
                                 <materialDesign:PackIcon Kind="Edit" Width="25" Height="25"/>
-                            </Button>
+                            </components:ConciergeButton>
 
                             <TextBlock 
                                 Text="Name"
@@ -765,50 +765,50 @@
                         FontWeight="Bold"
                         Margin="5, 5, 15, 10"/>
 
-                    <Button 
+                    <components:ConciergeButton 
                         x:Name="TakeDamageButton"
                         Height="35"
                         Width="35"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Top"
                         Background="Transparent"
-                        BorderBrush="{x:Null}"
+                        
                         Foreground="IndianRed"
                         Click="TakeDamageButton_Click"
                         ToolTip="Take Damage">
                         <materialDesign:PackIcon Kind="HeartBroken" Width="25" Height="25"/>
-                    </Button>
+                    </components:ConciergeButton>
 
-                    <Button 
+                    <components:ConciergeButton 
                         x:Name="HealDamageButton"
                         Height="35"
                         Width="35"
                         HorizontalAlignment="Right"
                         VerticalAlignment="Top"
                         Background="Transparent"
-                        BorderBrush="{x:Null}"
+                        
                         Foreground="PaleGreen"
                         Click="HealDamageButton_Click"
                         ToolTip="Heal Damage">
                         <materialDesign:PackIcon Kind="Heart" Width="25" Height="25"/>
-                    </Button>
+                    </components:ConciergeButton>
                 </Grid>
 
                 <!--Total HP-->
                 <Grid Grid.Row="0" Margin="3, 3, 3, 0" Background="#0B061E">
-                    <Button 
+                    <components:ConciergeButton 
                         x:Name="EditHealthButton"
                         Height="35"
                         Width="35"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Center"
                         Background="Transparent"
-                        BorderBrush="{x:Null}"
+                        
                         Foreground="PaleGoldenrod"
                         Click="EditHealthButton_Click"
                         ToolTip="Edit Health">
                         <materialDesign:PackIcon Kind="Edit" Width="25" Height="25"/>
-                    </Button>
+                    </components:ConciergeButton>
                     <TextBlock 
                         Text="Health"
                         Foreground="White"
@@ -829,19 +829,19 @@
                     <ColumnDefinition Width="70*"/>
                 </Grid.ColumnDefinitions>
 
-                <Button 
+                <components:ConciergeButton 
                     x:Name="EditHitDiceButton"
                     Height="35"
                     Width="35"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
                     Background="Transparent"
-                    BorderBrush="{x:Null}"
+                    
                     Foreground="PaleGoldenrod"
                     Click="EditHitDiceButton_Click"
                     ToolTip="Edit Attributes">
                     <materialDesign:PackIcon Kind="Edit" Width="25" Height="25"/>
-                </Button>
+                </components:ConciergeButton>
 
                 <!--Header-->
                 <Grid Grid.Column="0">
@@ -1105,91 +1105,91 @@
                     FontWeight="Bold"
                     Margin="15, 0, 0, 0"/>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                    <Button 
+                    <components:ConciergeButton 
                         x:Name="ButtonUp"
                         Height="50"
                         Width="60"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
                         Background="Transparent"
-                        BorderBrush="{x:Null}"
+                        
                         Foreground="SteelBlue"
                         Click="ButtonUp_Click"
                         ToolTip="Move Item Up">
                         <materialDesign:PackIcon Kind="ArrowUp" Width="25" Height="25"/>
-                    </Button>
-                    <Button 
+                    </components:ConciergeButton>
+                    <components:ConciergeButton 
                         x:Name="ButtonDown"
                         Height="50"
                         Width="60"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
                         Background="Transparent"
-                        BorderBrush="{x:Null}"
+                        
                         Foreground="SteelBlue"
                         Click="ButtonDown_Click"
                         ToolTip="Move Item Down">
                         <materialDesign:PackIcon Kind="ArrowDown" Width="25" Height="25"/>
-                    </Button>
-                    <Button 
+                    </components:ConciergeButton>
+                    <components:ConciergeButton 
                         x:Name="ButtonClear"
                         Height="50"
                         Width="60"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
                         Background="Transparent"
-                        BorderBrush="{x:Null}"
+                        
                         Foreground="Silver"
                         Click="ButtonClear_Click"
                         ToolTip="Clear Selected Item">
                         <materialDesign:PackIcon Kind="Cancel" Width="25" Height="25"/>
-                    </Button>
+                    </components:ConciergeButton>
                     <Label 
                         Height="50"
                         Width="60"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
                         Background="Transparent"
-                        BorderBrush="{x:Null}"/>
-                    <Button 
+                        />
+                    <components:ConciergeButton 
                         x:Name="ButtonAdd"
                         Height="50"
                         Width="60"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
                         Background="Transparent"
-                        BorderBrush="{x:Null}"
+                        
                         Foreground="PaleGreen"
                         Click="ButtonAdd_Click"
                         ToolTip="Add New Item">
                         <materialDesign:PackIcon Kind="Add" Width="25" Height="25"/>
-                    </Button>
-                    <Button 
+                    </components:ConciergeButton>
+                    <components:ConciergeButton 
                         x:Name="ButtonEdit"
                         Height="50"
                         Width="60"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
                         Background="Transparent"
-                        BorderBrush="{x:Null}"
+                        
                         Foreground="PaleGoldenrod"
                         Click="ButtonEdit_Click"
                         ToolTip="Edit Selected Item">
                         <materialDesign:PackIcon Kind="Edit" Width="25" Height="25"/>
-                    </Button>
-                    <Button 
+                    </components:ConciergeButton>
+                    <components:ConciergeButton 
                         x:Name="ButtonDelete"
                         Height="50"
                         Width="60"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
                         Background="Transparent"
-                        BorderBrush="{x:Null}"
+                        
                         Foreground="IndianRed"
                         Click="ButtonDelete_Click"
                         ToolTip="Delete Selected Item">
                         <materialDesign:PackIcon Kind="Delete" Width="25" Height="25"/>
-                    </Button>
+                    </components:ConciergeButton>
                 </StackPanel>
             </Grid>
 

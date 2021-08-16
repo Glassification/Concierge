@@ -5,6 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       xmlns:local="clr-namespace:Concierge.Interface.NotesPageUi"
+      xmlns:components="clr-namespace:Concierge.Interface.Components"
       xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
       mc:Ignorable="d"
       d:DesignHeight="600" d:DesignWidth="1020"
@@ -179,87 +180,87 @@
                            HorizontalAlignment="Left"
                            Margin="150, 0, 0, 0"/>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                <Button x:Name="ButtonUp"
+                <components:ConciergeButton x:Name="ButtonUp"
                             Height="50"
                             Width="60"
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"
                             Background="Transparent"
-                            BorderBrush="{x:Null}"
+                            
                             Foreground="SteelBlue"
                             ToolTip="Move Item Up"
                         Click="ButtonUp_Click">
                     <materialDesign:PackIcon Kind="ArrowUp" Width="25" Height="25"/>
-                </Button>
-                <Button x:Name="ButtonDown"
+                </components:ConciergeButton>
+                <components:ConciergeButton x:Name="ButtonDown"
                             Height="50"
                             Width="60"
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"
                             Background="Transparent"
-                            BorderBrush="{x:Null}"
+                            
                             Foreground="SteelBlue"
                             ToolTip="Move Item Down"
                         Click="ButtonDown_Click">
                     <materialDesign:PackIcon Kind="ArrowDown" Width="25" Height="25"/>
-                </Button>
-                <Button x:Name="ButtonClear"
+                </components:ConciergeButton>
+                <components:ConciergeButton x:Name="ButtonClear"
                             Height="50"
                             Width="60"
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"
                             Background="Transparent"
-                            BorderBrush="{x:Null}"
+                            
                             Foreground="Silver"
                             ToolTip="Clear Selected Item"
                         Click="ButtonClear_Click">
                     <materialDesign:PackIcon Kind="Cancel" Width="25" Height="25"/>
-                </Button>
+                </components:ConciergeButton>
                 <Label Height="50"
                            Width="60"
                            HorizontalAlignment="Center"
                            VerticalAlignment="Center"
                            Background="Transparent"
-                            BorderBrush="{x:Null}"/>
-                <Button 
+                            />
+                <components:ConciergeButton 
                     x:Name="ButtonAdd"
                     Height="50"
                     Width="60"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     Background="Transparent"
-                    BorderBrush="{x:Null}"
+                    
                     Foreground="PaleGreen"
                     ToolTip="Add New Item"
                     Click="ButtonAdd_Click">
                     <materialDesign:PackIcon Kind="Add" Width="25" Height="25"/>
-                </Button>
-                <Button 
+                </components:ConciergeButton>
+                <components:ConciergeButton 
                     x:Name="ButtonEdit"
                     Height="50"
                     Width="60"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     Background="Transparent"
-                    BorderBrush="{x:Null}"
+                    
                     Foreground="PaleGoldenrod"
                     ToolTip="Edit Selected Item"
                     Click="ButtonEdit_Click">
                     <materialDesign:PackIcon Kind="Edit" Width="25" Height="25"/>
-                </Button>
-                <Button 
+                </components:ConciergeButton>
+                <components:ConciergeButton 
                     x:Name="ButtonDelete"
                     Height="50"
                     Width="60"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     Background="Transparent"
-                    BorderBrush="{x:Null}"
+                    
                     Foreground="IndianRed"
                     ToolTip="Delete Selected Item"
                     Click="ButtonDelete_Click">
                     <materialDesign:PackIcon Kind="Delete" Width="25" Height="25"/>
-                </Button>
+                </components:ConciergeButton>
             </StackPanel>
         </Grid>
 
@@ -292,128 +293,113 @@
                 <!--Toolbar-->
                 <Grid Grid.Row="0">
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                        <Button 
+                        <components:ConciergeButton 
                             x:Name="ButtonCut"
                             Height="50"
                             Width="60"
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"
                             Background="Transparent"
-                            BorderBrush="{x:Null}"
+                            
                             Foreground="White"
                             ToolTip="Cut"
                             Click="ButtonCut_Click"
-                            MouseEnter="Button_MouseEnter"
-                            MouseLeave="Button_MouseLeave">
+                            
+                            >
                             <materialDesign:PackIcon Kind="Scissors" Width="25" Height="25"/>
-                        </Button>
-                        <Button 
+                        </components:ConciergeButton>
+                        <components:ConciergeButton 
                             x:Name="ButtonCopy"
                             Height="50"
                             Width="60"
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"
                             Background="Transparent"
-                            BorderBrush="{x:Null}"
+                            
                             Foreground="White"
                             ToolTip="Copy"
                             Click="ButtonCopy_Click"
-                            MouseEnter="Button_MouseEnter"
-                            MouseLeave="Button_MouseLeave">
+                            
+                            >
                             <materialDesign:PackIcon Kind="ContentCopy" Width="25" Height="25"/>
-                        </Button>
-                        <Button 
+                        </components:ConciergeButton>
+                        <components:ConciergeButton 
                             x:Name="ButtonPaste"
                             Height="50"
                             Width="60"
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"
                             Background="Transparent"
-                            BorderBrush="{x:Null}"
+                            
                             Foreground="White"
                             ToolTip="Paste"
                             Click="ButtonPaste_Click"
-                            MouseEnter="Button_MouseEnter"
-                            MouseLeave="Button_MouseLeave">
+                            
+                            >
                             <materialDesign:PackIcon Kind="ContentPaste" Width="25" Height="25"/>
-                        </Button>
-                        <Button 
+                        </components:ConciergeButton>
+                        <components:ConciergeButton 
                             x:Name="ButtonUndo"
                             Height="50"
                             Width="60"
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"
                             Background="Transparent"
-                            BorderBrush="{x:Null}"
+                            
                             Foreground="White"
                             ToolTip="Undo"
                             Click="ButtonUndo_Click"
-                            MouseEnter="Button_MouseEnter"
-                            MouseLeave="Button_MouseLeave">
+                            
+                            >
                             <materialDesign:PackIcon Kind="Undo" Width="25" Height="25"/>
-                        </Button>
-                        <Button 
+                        </components:ConciergeButton>
+                        <components:ConciergeButton 
                             x:Name="ButtonRedo"
                             Height="50"
                             Width="60"
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"
                             Background="Transparent"
-                            BorderBrush="{x:Null}"
+                            
                             Foreground="White"
                             ToolTip="Redo"
                             Click="ButtonRedo_Click"
-                            MouseEnter="Button_MouseEnter"
-                            MouseLeave="Button_MouseLeave">
+                            
+                            >
                             <materialDesign:PackIcon Kind="Redo" Width="25" Height="25"/>
-                        </Button>
+                        </components:ConciergeButton>
                         <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"
                                    Foreground="White"/>
-                        <ToggleButton 
+                        <components:ConciergeToggleButton 
                             x:Name="ButtonBold"
                             Height="50"
                             Width="60"
-                            HorizontalAlignment="Center"
-                            VerticalAlignment="Center"
                             Background="Transparent"
-                            BorderBrush="{x:Null}"
                             Foreground="White"
                             ToolTip="Bold"
-                            Click="ButtonBold_Click"
-                            MouseEnter="Button_MouseEnter"
-                            MouseLeave="Button_MouseLeave">
+                            Click="ButtonBold_Click">
                             <materialDesign:PackIcon Kind="FormatBold" Width="25" Height="25"/>
-                        </ToggleButton>
-                        <ToggleButton 
+                        </components:ConciergeToggleButton>
+                        <components:ConciergeToggleButton 
                             x:Name="ButtonItalic"
                             Height="50"
                             Width="60"
-                            HorizontalAlignment="Center"
-                            VerticalAlignment="Center"
                             Background="Transparent"
-                            BorderBrush="{x:Null}"
                             Foreground="White"
                             ToolTip="Italic"
-                            Click="ButtonItalic_Click"
-                            MouseEnter="Button_MouseEnter"
-                            MouseLeave="Button_MouseLeave">
+                            Click="ButtonItalic_Click">
                             <materialDesign:PackIcon Kind="FormatItalic" Width="25" Height="25"/>
-                        </ToggleButton>
-                        <ToggleButton 
+                        </components:ConciergeToggleButton>
+                        <components:ConciergeToggleButton 
                             x:Name="ButtonUnderline"
                             Height="50"
                             Width="60"
-                            HorizontalAlignment="Center"
-                            VerticalAlignment="Center"
                             Background="Transparent"
-                            BorderBrush="{x:Null}"
                             Foreground="White"
                             ToolTip="Underline"
-                            Click="ButtonUnderline_Click"
-                            MouseEnter="Button_MouseEnter"
-                            MouseLeave="Button_MouseLeave">
+                            Click="ButtonUnderline_Click">
                             <materialDesign:PackIcon Kind="FormatUnderline" Width="25" Height="25"/>
-                        </ToggleButton>
+                        </components:ConciergeToggleButton>
                         <ComboBox Name="FontFamilyList"
                                   Width="150"
                                   SelectionChanged="FontFamilyList_SelectionChanged"
@@ -446,7 +432,6 @@
                                  BorderBrush="{x:Null}"
                                  SpellCheck.IsEnabled="True"
                                  SelectionChanged="NotesTextBox_SelectionChanged">
-
                     </RichTextBox>
                 </Grid>
             </Grid>

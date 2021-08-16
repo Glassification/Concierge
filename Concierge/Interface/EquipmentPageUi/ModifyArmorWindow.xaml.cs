@@ -7,9 +7,7 @@ namespace Concierge.Interface.EquipmentPageUi
     using System;
     using System.Linq;
     using System.Windows;
-    using System.Windows.Controls;
     using System.Windows.Input;
-    using System.Windows.Media;
 
     using Concierge.Characters.Enums;
     using Concierge.Characters.Items;
@@ -91,14 +89,12 @@ namespace Concierge.Interface.EquipmentPageUi
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.TapNavigation();
             this.Hide();
         }
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Modify();
-            ConciergeSound.TapNavigation();
 
             this.ToArmor(this.SelectedArmor);
 
@@ -108,7 +104,6 @@ namespace Concierge.Interface.EquipmentPageUi
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Modify();
-            ConciergeSound.TapNavigation();
 
             this.ToArmor(this.SelectedArmor);
             this.Hide();
@@ -116,18 +111,7 @@ namespace Concierge.Interface.EquipmentPageUi
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.TapNavigation();
             this.Hide();
-        }
-
-        private void Button_MouseEnter(object sender, RoutedEventArgs e)
-        {
-            (sender as Button).Foreground = Brushes.Black;
-        }
-
-        private void Button_MouseLeave(object sender, RoutedEventArgs e)
-        {
-            (sender as Button).Foreground = Brushes.White;
         }
 
         private void ComboBox_DropDownOpened(object sender, EventArgs e)

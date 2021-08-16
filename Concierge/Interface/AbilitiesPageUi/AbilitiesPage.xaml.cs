@@ -79,23 +79,17 @@ namespace Concierge.Interface.AbilitiesPageUi
 
         private void ButtonClear_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.TapNavigation();
-
             this.AbilitiesDataGrid.UnselectAll();
         }
 
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.TapNavigation();
-
             this.modifyAbilitiesWindow.ShowAdd(Program.CcsFile.Character.Abilities);
             this.DrawAbilities();
         }
 
         private void ButtonEdit_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.TapNavigation();
-
             if (this.AbilitiesDataGrid.SelectedItem != null)
             {
                 this.modifyAbilitiesWindow.ShowEdit((Ability)this.AbilitiesDataGrid.SelectedItem);
@@ -105,8 +99,6 @@ namespace Concierge.Interface.AbilitiesPageUi
 
         private void ButtonDelete_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.TapNavigation();
-
             if (this.AbilitiesDataGrid.SelectedItem != null)
             {
                 Program.Modify();

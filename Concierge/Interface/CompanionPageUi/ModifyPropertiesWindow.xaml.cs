@@ -73,20 +73,17 @@ namespace Concierge.Interface.CompanionPageUi
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.TapNavigation();
             this.Hide();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.TapNavigation();
             this.Hide();
         }
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Modify();
-            ConciergeSound.TapNavigation();
 
             this.Write();
 
@@ -96,20 +93,9 @@ namespace Concierge.Interface.CompanionPageUi
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Modify();
-            ConciergeSound.TapNavigation();
 
             this.Write();
             this.Hide();
-        }
-
-        private void Button_MouseEnter(object sender, RoutedEventArgs e)
-        {
-            (sender as Button).Foreground = Brushes.Black;
-        }
-
-        private void Button_MouseLeave(object sender, RoutedEventArgs e)
-        {
-            (sender as Button).Foreground = Brushes.White;
         }
 
         private void VisionComboBox_DropDownOpened(object sender, EventArgs e)

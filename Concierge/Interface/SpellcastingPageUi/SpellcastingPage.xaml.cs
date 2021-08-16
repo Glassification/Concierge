@@ -163,7 +163,6 @@ namespace Concierge.Interface.SpellcastingPageUi
 
         private void ButtonClear_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.TapNavigation();
             this.MagicClassDataGrid.UnselectAll();
             this.SpellListDataGrid.UnselectAll();
         }
@@ -239,7 +238,6 @@ namespace Concierge.Interface.SpellcastingPageUi
 
         private void LevelEditButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.TapNavigation();
             this.modifySpellSlotsWindow.EditSpellSlots();
             this.DrawTotalSpellSlots();
             this.DrawUsedSpellSlots();

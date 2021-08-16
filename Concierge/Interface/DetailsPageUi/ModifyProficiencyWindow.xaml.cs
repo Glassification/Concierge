@@ -70,14 +70,12 @@ namespace Concierge.Interface.DetailsPageUi
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.TapNavigation();
             this.Hide();
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Modify();
-            ConciergeSound.TapNavigation();
 
             if (this.Editing)
             {
@@ -96,7 +94,6 @@ namespace Concierge.Interface.DetailsPageUi
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Modify();
-            ConciergeSound.TapNavigation();
 
             Program.CcsFile.Character.Proficiency.AddProficiencyByProficiencyType(
                 (ProficiencyTypes)Enum.Parse(typeof(ProficiencyTypes), this.ProficiencyComboBox.Text),
@@ -109,7 +106,6 @@ namespace Concierge.Interface.DetailsPageUi
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.TapNavigation();
             this.Hide();
         }
 
@@ -121,16 +117,6 @@ namespace Concierge.Interface.DetailsPageUi
                     this.Hide();
                     break;
             }
-        }
-
-        private void Button_MouseEnter(object sender, RoutedEventArgs e)
-        {
-            (sender as Button).Foreground = Brushes.Black;
-        }
-
-        private void Button_MouseLeave(object sender, RoutedEventArgs e)
-        {
-            (sender as Button).Foreground = Brushes.White;
         }
 
         private void ProficiencyComboBox_DropDownOpened(object sender, EventArgs e)

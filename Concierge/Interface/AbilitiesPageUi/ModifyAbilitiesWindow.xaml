@@ -36,19 +36,19 @@
                        VerticalAlignment="Center"
                        Margin="30, 0, 0, 0"
                        FontWeight="Bold"/>
-            <Button x:Name="CloseButton"
+            <components:ConciergeButton x:Name="CloseButton"
                     Height="50"
                     Width="60"
                     Background="Transparent"
-                    BorderBrush="{x:Null}"
+                    
                     Foreground="White"
                     ToolTip="Close"
                     HorizontalAlignment="Right"
                     Click="CloseButton_Click"
-                    MouseEnter="Button_MouseEnter"
-                    MouseLeave="Button_MouseLeave">
+                    
+                    >
                 <materialDesign:PackIcon Kind="WindowClose" Width="25" Height="25"/>
-            </Button>
+            </components:ConciergeButton>
         </Grid>
 
         <!--Fields-->
@@ -233,33 +233,33 @@
             <StackPanel Orientation="Horizontal"
                         VerticalAlignment="Center"
                         HorizontalAlignment="Center">
-                <Button 
+                <components:ConciergeButton 
                     x:Name="OkButton"
                     Style="{StaticResource PopupWindowButton}"
-                    BorderBrush="{x:Null}"
+                    
                     Content="OK"
                     Click="OkButton_Click"
-                    MouseEnter="Button_MouseEnter"
-                    MouseLeave="Button_MouseLeave">
-                </Button>
-                <Button 
+                    
+                    >
+                </components:ConciergeButton>
+                <components:ConciergeButton 
                     x:Name="ApplyButton"
                     Style="{StaticResource PopupWindowButton}"
-                    BorderBrush="{x:Null}"
+                    
                     Content="Apply"
                     Click="ApplyButton_Click"
-                    MouseEnter="Button_MouseEnter"
-                    MouseLeave="Button_MouseLeave">
-                </Button>
-                <Button 
+                    
+                    >
+                </components:ConciergeButton>
+                <components:ConciergeButton 
                     x:Name="CancelButton"
-                    BorderBrush="{x:Null}"
+                    
                     Content="Cancel"
                     Click="CancelButton_Click"
-                    MouseEnter="Button_MouseEnter"
-                    MouseLeave="Button_MouseLeave"
+                    
+                    
                     Style="{StaticResource PopupWindowButton}">
-                </Button>
+                </components:ConciergeButton>
             </StackPanel>
         </Grid>
     </Grid>

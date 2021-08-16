@@ -9,7 +9,6 @@ namespace Concierge.Interface.SpellcastingPageUi
     using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Input;
-    using System.Windows.Media;
 
     using Concierge.Characters.Enums;
     using Concierge.Characters.Spellcasting;
@@ -160,7 +159,6 @@ namespace Concierge.Interface.SpellcastingPageUi
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.TapNavigation();
             this.Hide();
         }
 
@@ -177,7 +175,6 @@ namespace Concierge.Interface.SpellcastingPageUi
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Modify();
-            ConciergeSound.TapNavigation();
 
             if (this.Editing)
             {
@@ -194,7 +191,6 @@ namespace Concierge.Interface.SpellcastingPageUi
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Modify();
-            ConciergeSound.TapNavigation();
 
             Program.CcsFile.Character.Spells.Add(this.ToSpell());
             this.ClearFields();
@@ -204,7 +200,6 @@ namespace Concierge.Interface.SpellcastingPageUi
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.TapNavigation();
             this.Hide();
         }
 
@@ -214,16 +209,6 @@ namespace Concierge.Interface.SpellcastingPageUi
             {
                 this.FillFields(this.SpellNameComboBox.SelectedItem as Spell);
             }
-        }
-
-        private void Button_MouseEnter(object sender, RoutedEventArgs e)
-        {
-            (sender as Button).Foreground = Brushes.Black;
-        }
-
-        private void Button_MouseLeave(object sender, RoutedEventArgs e)
-        {
-            (sender as Button).Foreground = Brushes.White;
         }
 
         private void ComboBox_DropDownOpened(object sender, EventArgs e)

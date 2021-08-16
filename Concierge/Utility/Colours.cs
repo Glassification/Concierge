@@ -71,13 +71,5 @@ namespace Concierge.Utility
                             ? Color.FromArgb(255, (byte)p, (byte)q, (byte)v)
                             : hi == 4 ? Color.FromArgb(255, (byte)t, (byte)p, (byte)v) : Color.FromArgb(255, (byte)v, (byte)p, (byte)q);
         }
-
-        public static Color Invert(Color color)
-        {
-            var hsvColour = ToHsv(color);
-            hsvColour.Invert();
-
-            return FromHsv(hsvColour);
-        }
     }
 }

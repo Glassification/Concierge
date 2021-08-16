@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:components="clr-namespace:Concierge.Interface.Components"
       xmlns:local="clr-namespace:Concierge.Interface.OverviewPageUi"
       mc:Ignorable="d"
       d:DesignHeight="600" d:DesignWidth="1020"
@@ -38,18 +39,18 @@
 
                     <!--Name-->
                     <Grid Grid.Row="0" Background="#0B061E">
-                        <Button x:Name="EditAttributesButton"
+                        <components:ConciergeButton x:Name="EditAttributesButton"
                             Height="35"
                             Width="35"
                             HorizontalAlignment="Left"
                             VerticalAlignment="Center"
                             Background="Transparent"
-                            BorderBrush="{x:Null}"
+                            
                             Foreground="PaleGoldenrod"
                             Click="EditAttributesButton_Click"
                             ToolTip="Edit Attributes">
                             <materialDesign:PackIcon Kind="Edit" Width="25" Height="25"/>
-                        </Button>
+                        </components:ConciergeButton>
                         <TextBlock Text="Strength"
                                    Foreground="White"
                                    FontSize="17"
@@ -476,18 +477,18 @@
 
                     <!--Name-->
                     <Grid Grid.Column="0" Background="#0B061E">
-                        <Button x:Name="EditSensesButton"
+                        <components:ConciergeButton x:Name="EditSensesButton"
                                 Height="35"
                                 Width="35"
                                 HorizontalAlignment="Left"
                                 VerticalAlignment="Top"
                                 Background="Transparent"
-                                BorderBrush="{x:Null}"
+                                
                                 Foreground="PaleGoldenrod"
                                 Click="EditSensesButton_Click"
                                 ToolTip="Edit Senses">
                             <materialDesign:PackIcon Kind="Edit" Width="25" Height="25"/>
-                        </Button>
+                        </components:ConciergeButton>
                         <TextBlock Text="Initiative"
                                    Foreground="White"
                                    FontSize="20"
@@ -1847,47 +1848,47 @@
                                     FontWeight="Bold"
                                     Margin="5, 5, 15, 10"/>
 
-                                <Button x:Name="TakeDamageButton"
+                                <components:ConciergeButton x:Name="TakeDamageButton"
                                     Height="35"
                                     Width="35"
                                     HorizontalAlignment="Left"
                                     VerticalAlignment="Top"
                                     Background="Transparent"
-                                    BorderBrush="{x:Null}"
+                                    
                                     Foreground="IndianRed"
                                     Click="TakeDamageButton_Click"
                                     ToolTip="Take Damage">
                                     <materialDesign:PackIcon Kind="HeartBroken" Width="25" Height="25"/>
-                                </Button>
+                                </components:ConciergeButton>
 
-                                <Button x:Name="HealDamageButton"
+                                <components:ConciergeButton x:Name="HealDamageButton"
                                     Height="35"
                                     Width="35"
                                     HorizontalAlignment="Right"
                                     VerticalAlignment="Top"
                                     Background="Transparent"
-                                    BorderBrush="{x:Null}"
+                                    
                                     Foreground="PaleGreen"
                                     Click="HealDamageButton_Click"
                                     ToolTip="Heal Damage">
                                     <materialDesign:PackIcon Kind="Heart" Width="25" Height="25"/>
-                                </Button>
+                                </components:ConciergeButton>
                             </Grid>
 
                             <!--Total HP-->
                             <Grid Grid.Row="0" Margin="3, 3, 3, 0" Background="#0B061E">
-                                <Button x:Name="EditHealthButton"
+                                <components:ConciergeButton x:Name="EditHealthButton"
                                         Height="35"
                                         Width="35"
                                         HorizontalAlignment="Left"
                                         VerticalAlignment="Center"
                                         Background="Transparent"
-                                        BorderBrush="{x:Null}"
+                                        
                                         Foreground="PaleGoldenrod"
                                         Click="EditHealthButton_Click"
                                         ToolTip="Edit Health">
                                     <materialDesign:PackIcon Kind="Edit" Width="25" Height="25"/>
-                                </Button>
+                                </components:ConciergeButton>
                                 <TextBlock Text="Health"
                                            Foreground="White"
                                            FontSize="35"
@@ -1946,18 +1947,18 @@
                             <ColumnDefinition Width="70*"/>
                         </Grid.ColumnDefinitions>
 
-                        <Button x:Name="EditHitDiceButton"
+                        <components:ConciergeButton x:Name="EditHitDiceButton"
                                 Height="35"
                                 Width="35"
                                 HorizontalAlignment="Left"
                                 VerticalAlignment="Top"
                                 Background="Transparent"
-                                BorderBrush="{x:Null}"
+                                
                                 Foreground="PaleGoldenrod"
                                 Click="EditHitDiceButton_Click"
                                 ToolTip="Edit Attributes">
                             <materialDesign:PackIcon Kind="Edit" Width="25" Height="25"/>
-                        </Button>
+                        </components:ConciergeButton>
 
                         <!--Header-->
                         <Grid Grid.Column="0">
@@ -2207,18 +2208,18 @@
                                    FontWeight="Bold"
                                    HorizontalAlignment="Center"
                                    VerticalAlignment="Center"/>
-                            <Button x:Name="EditWealthButton"
+                            <components:ConciergeButton x:Name="EditWealthButton"
                             Height="50"
                             Width="60"
                             HorizontalAlignment="Right"
                             VerticalAlignment="Center"
                             Background="Transparent"
-                            BorderBrush="{x:Null}"
+                            
                             Foreground="PaleGoldenrod"
                             ToolTip="Edit"
                             Click="EditWealthButton_Click">
                                 <materialDesign:PackIcon Kind="Edit" Width="25" Height="25"/>
-                            </Button>
+                            </components:ConciergeButton>
                         </Grid>
 
                         <!--Total Gold-->

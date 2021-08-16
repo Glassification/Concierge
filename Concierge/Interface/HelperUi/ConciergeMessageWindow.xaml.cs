@@ -5,9 +5,7 @@
 namespace Concierge.Interface.HelperUi
 {
     using System.Windows;
-    using System.Windows.Controls;
     using System.Windows.Input;
-    using System.Windows.Media;
 
     using Concierge.Interface.Enums;
     using Concierge.Utility;
@@ -119,46 +117,31 @@ namespace Concierge.Interface.HelperUi
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             this.Result = MessageWindowResult.Exit;
-            ConciergeSound.TapNavigation();
             this.Hide();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
             this.Result = MessageWindowResult.Cancel;
-            ConciergeSound.TapNavigation();
             this.Hide();
         }
 
         private void NoButton_Click(object sender, RoutedEventArgs e)
         {
             this.Result = MessageWindowResult.No;
-            ConciergeSound.TapNavigation();
             this.Hide();
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
             this.Result = MessageWindowResult.OK;
-            ConciergeSound.TapNavigation();
             this.Hide();
         }
 
         private void YesButton_Click(object sender, RoutedEventArgs e)
         {
             this.Result = MessageWindowResult.Yes;
-            ConciergeSound.TapNavigation();
             this.Hide();
-        }
-
-        private void Button_MouseEnter(object sender, RoutedEventArgs e)
-        {
-            (sender as Button).Foreground = Brushes.Black;
-        }
-
-        private void Button_MouseLeave(object sender, RoutedEventArgs e)
-        {
-            (sender as Button).Foreground = Brushes.White;
         }
     }
 }

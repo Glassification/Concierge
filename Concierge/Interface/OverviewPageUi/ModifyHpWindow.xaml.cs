@@ -6,12 +6,9 @@ namespace Concierge.Interface.OverviewPageUi
 {
     using System;
     using System.Windows;
-    using System.Windows.Controls;
     using System.Windows.Input;
-    using System.Windows.Media;
 
     using Concierge.Characters.Status;
-    using Concierge.Utility;
 
     /// <summary>
     /// Interaction logic for ModifyHpWindow.xaml.
@@ -64,14 +61,12 @@ namespace Concierge.Interface.OverviewPageUi
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.TapNavigation();
             this.IsOk = false;
             this.Hide();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.TapNavigation();
             this.IsOk = false;
             this.Hide();
         }
@@ -79,20 +74,9 @@ namespace Concierge.Interface.OverviewPageUi
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Modify();
-            ConciergeSound.TapNavigation();
 
             this.IsOk = true;
             this.Hide();
-        }
-
-        private void Button_MouseEnter(object sender, RoutedEventArgs e)
-        {
-            (sender as Button).Foreground = Brushes.Black;
-        }
-
-        private void Button_MouseLeave(object sender, RoutedEventArgs e)
-        {
-            (sender as Button).Foreground = Brushes.White;
         }
     }
 }

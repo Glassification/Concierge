@@ -5,11 +5,7 @@
 namespace Concierge.Interface.OverviewPageUi
 {
     using System.Windows;
-    using System.Windows.Controls;
     using System.Windows.Input;
-    using System.Windows.Media;
-
-    using Concierge.Utility;
 
     /// <summary>
     /// Interaction logic for ModifyWealthWindow.xaml.
@@ -73,14 +69,12 @@ namespace Concierge.Interface.OverviewPageUi
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.TapNavigation();
             this.Hide();
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Modify();
-            ConciergeSound.TapNavigation();
 
             Program.CcsFile.Character.Wealth.Copper = this.CP;
             Program.CcsFile.Character.Wealth.Silver = this.SP;
@@ -94,7 +88,6 @@ namespace Concierge.Interface.OverviewPageUi
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Modify();
-            ConciergeSound.TapNavigation();
 
             if (this.CpRadioButton.IsChecked ?? false)
             {
@@ -122,7 +115,6 @@ namespace Concierge.Interface.OverviewPageUi
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.TapNavigation();
             this.Hide();
         }
 
@@ -134,16 +126,6 @@ namespace Concierge.Interface.OverviewPageUi
                     this.Hide();
                     break;
             }
-        }
-
-        private void Button_MouseEnter(object sender, RoutedEventArgs e)
-        {
-            (sender as Button).Foreground = Brushes.Black;
-        }
-
-        private void Button_MouseLeave(object sender, RoutedEventArgs e)
-        {
-            (sender as Button).Foreground = Brushes.White;
         }
     }
 }

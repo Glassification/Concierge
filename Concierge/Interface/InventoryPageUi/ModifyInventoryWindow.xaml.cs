@@ -9,7 +9,6 @@ namespace Concierge.Interface.InventoryPageUi
     using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Input;
-    using System.Windows.Media;
 
     using Concierge.Characters.Items;
     using Concierge.Interface.Enums;
@@ -155,14 +154,12 @@ namespace Concierge.Interface.InventoryPageUi
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.TapNavigation();
             this.Hide();
         }
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Modify();
-            ConciergeSound.TapNavigation();
 
             this.Items.Add(this.ToInventory());
             this.ClearFields();
@@ -173,7 +170,6 @@ namespace Concierge.Interface.InventoryPageUi
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Modify();
-            ConciergeSound.TapNavigation();
 
             if (this.Editing)
             {
@@ -198,16 +194,6 @@ namespace Concierge.Interface.InventoryPageUi
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
             this.Hide();
-        }
-
-        private void Button_MouseEnter(object sender, RoutedEventArgs e)
-        {
-            (sender as Button).Foreground = Brushes.Black;
-        }
-
-        private void Button_MouseLeave(object sender, RoutedEventArgs e)
-        {
-            (sender as Button).Foreground = Brushes.White;
         }
 
         private void NameComboBox_DropDownOpened(object sender, EventArgs e)

@@ -21,7 +21,6 @@ namespace Concierge.Interface.NotesPageUi
     using Concierge.Interface.Components;
     using Concierge.Interface.Enums;
     using Concierge.Interface.HelperUi;
-    using Concierge.Utility;
     using Concierge.Utility.Extensions;
     using MaterialDesignThemes.Wpf;
 
@@ -197,39 +196,32 @@ namespace Concierge.Interface.NotesPageUi
 
         private void ButtonCut_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.TapNavigation();
             Clipboard.SetText(this.NotesTextBox.Selection.Text);
             this.NotesTextBox.Selection.Text = string.Empty;
         }
 
         private void ButtonCopy_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.TapNavigation();
             Clipboard.SetText(this.NotesTextBox.Selection.Text);
         }
 
         private void ButtonPaste_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.TapNavigation();
             this.NotesTextBox.Selection.Text = Clipboard.GetText();
         }
 
         private void ButtonUndo_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.TapNavigation();
             this.NotesTextBox.Undo();
         }
 
         private void ButtonRedo_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.TapNavigation();
             this.NotesTextBox.Redo();
         }
 
         private void ButtonBold_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.TapNavigation();
-
             if ((bool)this.ButtonBold.IsChecked)
             {
                 this.NotesTextBox.Selection.ApplyPropertyValue(TextElement.FontWeightProperty, FontWeights.Bold);
@@ -242,8 +234,6 @@ namespace Concierge.Interface.NotesPageUi
 
         private void ButtonItalic_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.TapNavigation();
-
             if ((bool)this.ButtonItalic.IsChecked)
             {
                 this.NotesTextBox.Selection.ApplyPropertyValue(TextElement.FontStyleProperty, FontStyles.Italic);
@@ -256,8 +246,6 @@ namespace Concierge.Interface.NotesPageUi
 
         private void ButtonUnderline_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.TapNavigation();
-
             if ((bool)this.ButtonUnderline.IsChecked)
             {
                 this.NotesTextBox.Selection.ApplyPropertyValue(Inline.TextDecorationsProperty, TextDecorations.Underline);
@@ -320,8 +308,6 @@ namespace Concierge.Interface.NotesPageUi
 
         private void ButtonClear_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.TapNavigation();
-
             this.SaveTextBox();
             this.ClearTextBox();
             this.ResetUndoQueue();
@@ -381,7 +367,6 @@ namespace Concierge.Interface.NotesPageUi
 
         private void ButtonUp_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.TapNavigation();
             this.MoveTreeViewItem(-1, true, (x, y) => x > y);
         }
 
@@ -415,13 +400,11 @@ namespace Concierge.Interface.NotesPageUi
 
         private void ButtonDown_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.TapNavigation();
             this.MoveTreeViewItem(1, false, (x, y) => x < y);
         }
 
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.TapNavigation();
             this.modifyNotesWindow.ShowAdd();
             this.Draw();
         }
@@ -432,8 +415,6 @@ namespace Concierge.Interface.NotesPageUi
             {
                 return;
             }
-
-            ConciergeSound.TapNavigation();
 
             if (this.NotesTreeView.SelectedItem is ChapterTreeViewItem chapterTreeViewItem)
             {
@@ -455,7 +436,6 @@ namespace Concierge.Interface.NotesPageUi
             }
 
             Program.Modify();
-            ConciergeSound.TapNavigation();
 
             if (this.NotesTreeView.SelectedItem is ChapterTreeViewItem chapterTreeViewItem)
             {
@@ -490,30 +470,6 @@ namespace Concierge.Interface.NotesPageUi
             }
 
             this.Draw();
-        }
-
-        private void Button_MouseEnter(object sender, MouseEventArgs e)
-        {
-            if (sender is Button)
-            {
-                (sender as Button).Foreground = Brushes.Black;
-            }
-            else
-            {
-                (sender as ToggleButton).Foreground = Brushes.Black;
-            }
-        }
-
-        private void Button_MouseLeave(object sender, MouseEventArgs e)
-        {
-            if (sender is Button)
-            {
-                (sender as Button).Foreground = Brushes.White;
-            }
-            else
-            {
-                (sender as ToggleButton).Foreground = Brushes.White;
-            }
         }
 
         private void Window_ApplyChanges(object sender, EventArgs e)

@@ -11,7 +11,6 @@ namespace Concierge.Interface.ToolsPageUi
     using System.Windows.Input;
 
     using Concierge.Tools;
-    using Concierge.Utility;
     using Xceed.Wpf.Toolkit;
 
     /// <summary>
@@ -236,15 +235,11 @@ namespace Concierge.Interface.ToolsPageUi
 
         private void ButtonDivideLoot_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.TapNavigation();
-
             this.DivideLoot();
         }
 
         private void ButtonResetLoot_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.TapNavigation();
-
             this.ClearDivideLoot();
         }
 
@@ -270,8 +265,6 @@ namespace Concierge.Interface.ToolsPageUi
 
         private void ButtonResetHistory_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.TapNavigation();
-
             this.SetDefaultDiceValues();
             this.DiceHistory.Clear();
             this.DrawDiceHistory();
@@ -279,8 +272,6 @@ namespace Concierge.Interface.ToolsPageUi
 
         private void ButtonRoll_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.TapNavigation();
-
             switch ((sender as Button).Name)
             {
                 case "ButtonRollD4":

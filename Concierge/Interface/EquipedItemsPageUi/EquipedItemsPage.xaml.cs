@@ -14,7 +14,6 @@ namespace Concierge.Interface.EquipedItemsPageUi
     using Concierge.Interface.Components;
     using Concierge.Interface.InventoryPageUi;
     using Concierge.Utility;
-    using Concierge.Utility.Extensions;
 
     /// <summary>
     /// Interaction logic for EquipedItemsPage.xaml.
@@ -140,7 +139,6 @@ namespace Concierge.Interface.EquipedItemsPageUi
 
         private void ButtonClear_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.TapNavigation();
             this.HeadEquipmentDataGrid.UnselectAll();
             this.TorsoEquipmentDataGrid.UnselectAll();
             this.HandsEquipmentDataGrid.UnselectAll();
@@ -150,7 +148,6 @@ namespace Concierge.Interface.EquipedItemsPageUi
 
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.TapNavigation();
             this.modifyEquippedItemsWindow.ShowAdd();
             this.Draw();
         }
@@ -162,7 +159,6 @@ namespace Concierge.Interface.EquipedItemsPageUi
                 return;
             }
 
-            ConciergeSound.TapNavigation();
             this.modifyInventoryWindow.ShowEdit(this.SelectedItem, true);
             this.Draw();
         }
@@ -175,7 +171,6 @@ namespace Concierge.Interface.EquipedItemsPageUi
             }
 
             Program.Modify();
-            ConciergeSound.TapNavigation();
 
             Program.CcsFile.Character.EquipedItems.Dequip(
                 this.SelectedItem,

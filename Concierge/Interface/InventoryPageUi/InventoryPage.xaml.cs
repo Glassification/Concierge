@@ -9,8 +9,6 @@ namespace Concierge.Interface.InventoryPageUi
     using System.Windows.Controls;
 
     using Concierge.Characters.Items;
-    using Concierge.Utility;
-    using Concierge.Utility.Extensions;
 
     /// <summary>
     /// Interaction logic for InventoryPage.xaml.
@@ -78,13 +76,11 @@ namespace Concierge.Interface.InventoryPageUi
 
         private void ButtonClear_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.TapNavigation();
             this.InventoryDataGrid.UnselectAll();
         }
 
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.TapNavigation();
             this.modifyInventoryWindow.ShowAdd(Program.CcsFile.Character.Inventories);
             this.DrawInventory();
         }
@@ -93,7 +89,6 @@ namespace Concierge.Interface.InventoryPageUi
         {
             if (this.InventoryDataGrid.SelectedItem != null)
             {
-                ConciergeSound.TapNavigation();
                 var inventory = (Inventory)this.InventoryDataGrid.SelectedItem;
                 this.modifyInventoryWindow.ShowEdit(inventory);
                 this.DrawInventory();
@@ -104,7 +99,6 @@ namespace Concierge.Interface.InventoryPageUi
         {
             if (this.InventoryDataGrid.SelectedItem != null)
             {
-                ConciergeSound.TapNavigation();
                 Program.Modify();
 
                 var inventory = (Inventory)this.InventoryDataGrid.SelectedItem;

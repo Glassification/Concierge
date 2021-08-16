@@ -8,7 +8,6 @@ namespace Concierge.Interface.Components
     using System.Windows;
     using System.Windows.Controls;
 
-    using Concierge.Utility;
     using Concierge.Utility.Extensions;
 
     public class ConciergeDataGrid : DataGrid
@@ -36,7 +35,6 @@ namespace Concierge.Interface.Components
             }
 
             Program.Modify();
-            ConciergeSound.TapNavigation();
 
             var item = (T)this.SelectedItem;
             var index = list.IndexOf(item);

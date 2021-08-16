@@ -512,8 +512,6 @@ namespace Concierge.Interface.OverviewPageUi
 
         private void EditAttributesButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.TapNavigation();
-
             this.modifyAttributesWindow.EditAttributes(Program.CcsFile.Character.Attributes);
             this.DrawAttributes();
             this.DrawSavingThrows();
@@ -522,35 +520,30 @@ namespace Concierge.Interface.OverviewPageUi
 
         private void EditSensesButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.TapNavigation();
             this.modifySensesWindow.EditSenses();
             this.DrawDetails();
         }
 
         private void EditHealthButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.TapNavigation();
             this.modifyHealthWindow.EditHealth(Program.CcsFile.Character.Vitality);
             this.DrawHealth();
         }
 
         private void EditHitDiceButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.TapNavigation();
             this.modifyHitDiceWindow.ModifyHitDice(Program.CcsFile.Character.Vitality.HitDice);
             this.DrawHitDice();
         }
 
         private void TakeDamageButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.TapNavigation();
             this.modifyHpWindow.SubtractHP(Program.CcsFile.Character.Vitality);
             this.DrawHealth();
         }
 
         private void HealDamageButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.TapNavigation();
             this.modifyHpWindow.AddHP(Program.CcsFile.Character.Vitality);
             this.DrawHealth();
         }
@@ -608,7 +601,6 @@ namespace Concierge.Interface.OverviewPageUi
 
         private void EditWealthButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.TapNavigation();
             this.modifyWealthWindow.ShowWindow();
             this.DrawWealth();
         }

@@ -71,48 +71,48 @@
                            Margin="150, 0, 0, 0"/>
 
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                <Button x:Name="ButtonUp"
+                <components:ConciergeButton x:Name="ButtonUp"
                             Height="50"
                             Width="60"
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"
                             Background="Transparent"
-                            BorderBrush="{x:Null}"
+                            
                             Foreground="SteelBlue"
                             Click="ButtonUp_Click"
                             ToolTip="Move Item Up">
                     <materialDesign:PackIcon Kind="ArrowUp" Width="25" Height="25"/>
-                </Button>
-                <Button x:Name="ButtonDown"
+                </components:ConciergeButton>
+                <components:ConciergeButton x:Name="ButtonDown"
                             Height="50"
                             Width="60"
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"
                             Background="Transparent"
-                            BorderBrush="{x:Null}"
+                            
                             Foreground="SteelBlue"
                             Click="ButtonDown_Click"
                             ToolTip="Move Item Down">
                     <materialDesign:PackIcon Kind="ArrowDown" Width="25" Height="25"/>
-                </Button>
-                <Button x:Name="ButtonClear"
+                </components:ConciergeButton>
+                <components:ConciergeButton x:Name="ButtonClear"
                             Height="50"
                             Width="60"
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"
                             Background="Transparent"
-                            BorderBrush="{x:Null}"
+                            
                             Foreground="Silver"
                             Click="ButtonClear_Click"
                             ToolTip="Clear Selected Item">
                     <materialDesign:PackIcon Kind="Cancel" Width="25" Height="25"/>
-                </Button>
+                </components:ConciergeButton>
                 <Label Height="50"
                            Width="60"
                            HorizontalAlignment="Center"
                            VerticalAlignment="Center"
                            Background="Transparent"
-                            BorderBrush="{x:Null}"/>
+                            />
                 <components:ConciergeButton 
                     x:Name="ButtonAdd"
                     Height="50"
@@ -263,18 +263,18 @@
                     </Grid.RowDefinitions>
 
                     <Grid Grid.Row="0">
-                        <Button x:Name="LevelEditButton"
+                        <components:ConciergeButton x:Name="LevelEditButton"
                                 Height="35"
                                 Width="35"
                                 HorizontalAlignment="Right"
                                 VerticalAlignment="Top"
                                 Background="Transparent"
-                                BorderBrush="{x:Null}"
+                                
                                 Foreground="PaleGoldenrod"
                                 ToolTip="Edit Spell Slots"
                                 Click="LevelEditButton_Click">
                             <materialDesign:PackIcon Kind="Edit" Width="25" Height="25"/>
-                        </Button>
+                        </components:ConciergeButton>
                         <TextBlock 
                             Text="Spell Slots"
                             Foreground="White"

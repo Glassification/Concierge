@@ -7,9 +7,7 @@ namespace Concierge.Interface.EquipedItemsPageUi
     using System;
     using System.Linq;
     using System.Windows;
-    using System.Windows.Controls;
     using System.Windows.Input;
-    using System.Windows.Media;
 
     using Concierge.Characters.Enums;
     using Concierge.Characters.Items;
@@ -47,14 +45,12 @@ namespace Concierge.Interface.EquipedItemsPageUi
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.TapNavigation();
             this.Hide();
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Modify();
-            ConciergeSound.TapNavigation();
 
             if (!(this.ItemComboBox.SelectedItem is Inventory item) || this.SlotComboBox.Text.IsNullOrWhiteSpace())
             {
@@ -71,7 +67,6 @@ namespace Concierge.Interface.EquipedItemsPageUi
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Modify();
-            ConciergeSound.TapNavigation();
 
             if (!(this.ItemComboBox.SelectedItem is Inventory item) || this.SlotComboBox.Text.IsNullOrWhiteSpace())
             {
@@ -90,7 +85,6 @@ namespace Concierge.Interface.EquipedItemsPageUi
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.TapNavigation();
             this.Hide();
         }
 
@@ -102,16 +96,6 @@ namespace Concierge.Interface.EquipedItemsPageUi
                     this.Hide();
                     break;
             }
-        }
-
-        private void Button_MouseEnter(object sender, RoutedEventArgs e)
-        {
-            (sender as Button).Foreground = Brushes.Black;
-        }
-
-        private void Button_MouseLeave(object sender, RoutedEventArgs e)
-        {
-            (sender as Button).Foreground = Brushes.White;
         }
 
         private void ComboBox_DropDownOpened(object sender, EventArgs e)

@@ -6,9 +6,7 @@ namespace Concierge.Interface.NotesPageUi
 {
     using System;
     using System.Windows;
-    using System.Windows.Controls;
     using System.Windows.Input;
-    using System.Windows.Media;
 
     using Concierge.Characters.Notes;
     using Concierge.Utility;
@@ -139,20 +137,17 @@ namespace Concierge.Interface.NotesPageUi
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.TapNavigation();
             this.Hide();
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.TapNavigation();
             this.OkApplyChanges();
             this.Hide();
         }
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.TapNavigation();
             this.OkApplyChanges();
 
             if (!this.IsEdit)
@@ -166,7 +161,6 @@ namespace Concierge.Interface.NotesPageUi
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.TapNavigation();
             this.Hide();
         }
 
@@ -178,16 +172,6 @@ namespace Concierge.Interface.NotesPageUi
                     this.Hide();
                     break;
             }
-        }
-
-        private void Button_MouseEnter(object sender, RoutedEventArgs e)
-        {
-            (sender as Button).Foreground = Brushes.Black;
-        }
-
-        private void Button_MouseLeave(object sender, RoutedEventArgs e)
-        {
-            (sender as Button).Foreground = Brushes.White;
         }
 
         private void ChapterComboBox_DropDownOpened(object sender, EventArgs e)

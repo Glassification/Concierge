@@ -5,13 +5,9 @@
 namespace Concierge.Interface
 {
     using System;
-    using System.Linq;
     using System.Windows;
-    using System.Windows.Controls;
     using System.Windows.Input;
-    using System.Windows.Media;
 
-    using Concierge.Characters.Enums;
     using Concierge.Utility;
 
     /// <summary>
@@ -89,7 +85,6 @@ namespace Concierge.Interface
         {
             Program.Logger.Info($"OK button click.");
             Program.Modify();
-            ConciergeSound.TapNavigation();
 
             this.Write();
             this.Hide();
@@ -99,7 +94,6 @@ namespace Concierge.Interface
         {
             Program.Logger.Info($"Apply button click.");
             Program.Modify();
-            ConciergeSound.TapNavigation();
 
             this.Write();
         }
@@ -107,7 +101,6 @@ namespace Concierge.Interface
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Logger.Info($"Cancel button click.");
-            ConciergeSound.TapNavigation();
 
             this.Hide();
         }
@@ -115,19 +108,8 @@ namespace Concierge.Interface
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Logger.Info($"Close button click.");
-            ConciergeSound.TapNavigation();
 
             this.Hide();
-        }
-
-        private void Button_MouseEnter(object sender, RoutedEventArgs e)
-        {
-            (sender as Button).Foreground = Brushes.Black;
-        }
-
-        private void Button_MouseLeave(object sender, RoutedEventArgs e)
-        {
-            (sender as Button).Foreground = Brushes.White;
         }
 
         private void ComboBox_DropDownOpened(object sender, EventArgs e)
