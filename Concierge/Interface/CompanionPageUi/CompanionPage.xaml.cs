@@ -19,7 +19,7 @@ namespace Concierge.Interface.CompanionPageUi
     /// <summary>
     /// Interaction logic for ToolsPage.xaml.
     /// </summary>
-    public partial class CompanionPage : Page
+    public partial class CompanionPage : Page, IConciergePage
     {
         private readonly ModifyAttributesWindow modifyAttributesWindow = new ModifyAttributesWindow();
         private readonly ModifyHealthWindow modifyHealthWindow = new ModifyHealthWindow();
@@ -181,43 +181,23 @@ namespace Concierge.Interface.CompanionPageUi
 
         private void ButtonUp_Click(object sender, RoutedEventArgs e)
         {
-            if (this.WeaponDataGrid.SelectedItem == null)
+            var index = this.WeaponDataGrid.NextItem(Program.CcsFile.Character.Companion.Attacks, 0, -1);
+
+            if (index != -1)
             {
-                return;
-            }
-
-            Program.Modify();
-            ConciergeSound.TapNavigation();
-
-            var weapon = this.WeaponDataGrid.SelectedItem as Weapon;
-            var index = Program.CcsFile.Character.Companion.Attacks.IndexOf(weapon);
-
-            if (index != 0)
-            {
-                Program.CcsFile.Character.Companion.Attacks.Swap(index, index - 1);
                 this.DrawAttacks();
-                this.WeaponDataGrid.SelectedIndex = index - 1;
+                this.WeaponDataGrid.SelectedIndex = index;
             }
         }
 
         private void ButtonDown_Click(object sender, RoutedEventArgs e)
         {
-            if (this.WeaponDataGrid.SelectedItem == null)
+            var index = this.WeaponDataGrid.NextItem(Program.CcsFile.Character.Companion.Attacks, Program.CcsFile.Character.Companion.Attacks.Count - 1, 1);
+
+            if (index != -1)
             {
-                return;
-            }
-
-            Program.Modify();
-            ConciergeSound.TapNavigation();
-
-            var weapon = this.WeaponDataGrid.SelectedItem as Weapon;
-            var index = Program.CcsFile.Character.Companion.Attacks.IndexOf(weapon);
-
-            if (index != Program.CcsFile.Character.Companion.Attacks.Count - 1)
-            {
-                Program.CcsFile.Character.Companion.Attacks.Swap(index, index + 1);
                 this.DrawAttacks();
-                this.WeaponDataGrid.SelectedIndex = index + 1;
+                this.WeaponDataGrid.SelectedIndex = index;
             }
         }
 

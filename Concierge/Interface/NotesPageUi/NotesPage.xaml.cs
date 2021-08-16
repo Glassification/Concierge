@@ -28,7 +28,7 @@ namespace Concierge.Interface.NotesPageUi
     /// <summary>
     /// Interaction logic for NotesPage.xaml.
     /// </summary>
-    public partial class NotesPage : Page
+    public partial class NotesPage : Page, IConciergePage
     {
         private const int MaxUndoQueue = 10;
 

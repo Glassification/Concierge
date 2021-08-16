@@ -16,7 +16,7 @@ namespace Concierge.Interface.InventoryPageUi
     /// Interaction logic for InventoryPage.xaml.
     /// </summary>
     [System.Runtime.InteropServices.Guid("09356E68-3748-4686-8507-80745407DAF7")]
-    public partial class InventoryPage : Page
+    public partial class InventoryPage : Page, IConciergePage
     {
         private readonly ModifyInventoryWindow modifyInventoryWindow = new ModifyInventoryWindow();
 
@@ -56,43 +56,23 @@ namespace Concierge.Interface.InventoryPageUi
 
         private void ButtonUp_Click(object sender, RoutedEventArgs e)
         {
-            if (this.InventoryDataGrid.SelectedItem == null)
+            var index = this.InventoryDataGrid.NextItem(Program.CcsFile.Character.Inventories, 0, -1);
+
+            if (index != -1)
             {
-                return;
-            }
-
-            Program.Modify();
-            ConciergeSound.TapNavigation();
-
-            var inventory = (Inventory)this.InventoryDataGrid.SelectedItem;
-            var index = Program.CcsFile.Character.Inventories.IndexOf(inventory);
-
-            if (index != 0)
-            {
-                Program.CcsFile.Character.Inventories.Swap(index, index - 1);
                 this.DrawInventory();
-                this.InventoryDataGrid.SelectedIndex = index - 1;
+                this.InventoryDataGrid.SelectedIndex = index;
             }
         }
 
         private void ButtonDown_Click(object sender, RoutedEventArgs e)
         {
-            if (this.InventoryDataGrid.SelectedItem == null)
+            var index = this.InventoryDataGrid.NextItem(Program.CcsFile.Character.Inventories, Program.CcsFile.Character.Inventories.Count - 1, 1);
+
+            if (index != -1)
             {
-                return;
-            }
-
-            Program.Modify();
-            ConciergeSound.TapNavigation();
-
-            var inventory = (Inventory)this.InventoryDataGrid.SelectedItem;
-            var index = Program.CcsFile.Character.Inventories.IndexOf(inventory);
-
-            if (index != Program.CcsFile.Character.Inventories.Count - 1)
-            {
-                Program.CcsFile.Character.Inventories.Swap(index, index + 1);
                 this.DrawInventory();
-                this.InventoryDataGrid.SelectedIndex = index + 1;
+                this.InventoryDataGrid.SelectedIndex = index;
             }
         }
 

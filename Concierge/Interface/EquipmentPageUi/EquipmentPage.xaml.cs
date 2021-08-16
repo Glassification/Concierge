@@ -5,18 +5,20 @@
 namespace Concierge.Interface.EquipmentPageUi
 {
     using System;
+    using System.Collections.Generic;
     using System.Windows;
     using System.Windows.Controls;
 
     using Concierge.Characters.Enums;
     using Concierge.Characters.Items;
+    using Concierge.Interface.Components;
     using Concierge.Utility;
     using Concierge.Utility.Extensions;
 
     /// <summary>
     /// Interaction logic for EquipmentPage.xaml.
     /// </summary>
-    public partial class EquipmentPage : Page
+    public partial class EquipmentPage : Page, IConciergePage
     {
         private readonly ModifyArmorWindow modifyArmorWindow = new ModifyArmorWindow();
         private readonly ModifyWeaponWindow modifyWeaponWindow = new ModifyWeaponWindow();
@@ -32,11 +34,28 @@ namespace Concierge.Interface.EquipmentPageUi
             this.modifyArmorWindow.ApplyChanges += this.Window_ApplyChanges;
         }
 
+        private delegate void DrawList();
+
         public void Draw()
         {
             this.DrawWeaponList();
             this.DrawAmmoList();
             this.DrawArmor();
+        }
+
+        private static bool NextItem<T>(ConciergeDataGrid dataGrid, DrawList drawList, List<T> list, int limit, int increment)
+        {
+            var index = dataGrid.NextItem(list, limit, increment);
+
+            if (index != -1)
+            {
+                drawList();
+                dataGrid.SelectedIndex = index;
+
+                return true;
+            }
+
+            return false;
         }
 
         private void DrawArmor()
@@ -95,69 +114,17 @@ namespace Concierge.Interface.EquipmentPageUi
 
         private void ButtonUp_Click(object sender, RoutedEventArgs e)
         {
-            if (this.AmmoDataGrid.SelectedItem != null)
+            if (!NextItem(this.AmmoDataGrid, this.DrawAmmoList, Program.CcsFile.Character.Ammunitions, 0, -1))
             {
-                Program.Modify();
-                ConciergeSound.TapNavigation();
-
-                var ammo = (Ammunition)this.AmmoDataGrid.SelectedItem;
-                var index = Program.CcsFile.Character.Ammunitions.IndexOf(ammo);
-
-                if (index != 0)
-                {
-                    Program.CcsFile.Character.Ammunitions.Swap(index, index - 1);
-                    this.DrawAmmoList();
-                    this.AmmoDataGrid.SelectedIndex = index - 1;
-                }
-            }
-            else if (this.WeaponDataGrid.SelectedItem != null)
-            {
-                Program.Modify();
-                ConciergeSound.TapNavigation();
-
-                var weapon = (Weapon)this.WeaponDataGrid.SelectedItem;
-                var index = Program.CcsFile.Character.Weapons.IndexOf(weapon);
-
-                if (index != 0)
-                {
-                    Program.CcsFile.Character.Weapons.Swap(index, index - 1);
-                    this.DrawWeaponList();
-                    this.WeaponDataGrid.SelectedIndex = index - 1;
-                }
+                NextItem(this.WeaponDataGrid, this.DrawWeaponList, Program.CcsFile.Character.Weapons, 0, -1);
             }
         }
 
         private void ButtonDown_Click(object sender, RoutedEventArgs e)
         {
-            if (this.AmmoDataGrid.SelectedItem != null)
+            if (!NextItem(this.AmmoDataGrid, this.DrawAmmoList, Program.CcsFile.Character.Ammunitions, Program.CcsFile.Character.Ammunitions.Count - 1, 1))
             {
-                Program.Modify();
-                ConciergeSound.TapNavigation();
-
-                var ammo = (Ammunition)this.AmmoDataGrid.SelectedItem;
-                var index = Program.CcsFile.Character.Ammunitions.IndexOf(ammo);
-
-                if (index != Program.CcsFile.Character.Ammunitions.Count - 1)
-                {
-                    Program.CcsFile.Character.Ammunitions.Swap(index, index + 1);
-                    this.DrawAmmoList();
-                    this.AmmoDataGrid.SelectedIndex = index + 1;
-                }
-            }
-            else if (this.WeaponDataGrid.SelectedItem != null)
-            {
-                Program.Modify();
-                ConciergeSound.TapNavigation();
-
-                var weapon = (Weapon)this.WeaponDataGrid.SelectedItem;
-                var index = Program.CcsFile.Character.Weapons.IndexOf(weapon);
-
-                if (index != Program.CcsFile.Character.Weapons.Count - 1)
-                {
-                    Program.CcsFile.Character.Weapons.Swap(index, index + 1);
-                    this.DrawWeaponList();
-                    this.WeaponDataGrid.SelectedIndex = index + 1;
-                }
+                NextItem(this.WeaponDataGrid, this.DrawWeaponList, Program.CcsFile.Character.Weapons, Program.CcsFile.Character.Weapons.Count - 1, 1);
             }
         }
 

@@ -15,7 +15,7 @@ namespace Concierge.Interface.AbilitiesPageUi
     /// <summary>
     /// Interaction logic for AbilitiesPage.xaml.
     /// </summary>
-    public partial class AbilitiesPage : Page
+    public partial class AbilitiesPage : Page, IConciergePage
     {
         private readonly ModifyAbilitiesWindow modifyAbilitiesWindow = new ModifyAbilitiesWindow();
 
@@ -57,41 +57,23 @@ namespace Concierge.Interface.AbilitiesPageUi
 
         private void ButtonUp_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.TapNavigation();
+            var index = this.AbilitiesDataGrid.NextItem(Program.CcsFile.Character.Abilities, 0, -1);
 
-            if (this.AbilitiesDataGrid.SelectedItem != null)
+            if (index != -1)
             {
-                Program.Modify();
-
-                var ability = (Ability)this.AbilitiesDataGrid.SelectedItem;
-                var index = Program.CcsFile.Character.Abilities.IndexOf(ability);
-
-                if (index != 0)
-                {
-                    Program.CcsFile.Character.Abilities.Swap(index, index - 1);
-                    this.DrawAbilities();
-                    this.AbilitiesDataGrid.SelectedIndex = index - 1;
-                }
+                this.DrawAbilities();
+                this.AbilitiesDataGrid.SelectedIndex = index;
             }
         }
 
         private void ButtonDown_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.TapNavigation();
+            var index = this.AbilitiesDataGrid.NextItem(Program.CcsFile.Character.Abilities, Program.CcsFile.Character.Abilities.Count - 1, 1);
 
-            if (this.AbilitiesDataGrid.SelectedItem != null)
+            if (index != -1)
             {
-                Program.Modify();
-
-                var ability = (Ability)this.AbilitiesDataGrid.SelectedItem;
-                var index = Program.CcsFile.Character.Abilities.IndexOf(ability);
-
-                if (index != Program.CcsFile.Character.Abilities.Count - 1)
-                {
-                    Program.CcsFile.Character.Abilities.Swap(index, index + 1);
-                    this.DrawAbilities();
-                    this.AbilitiesDataGrid.SelectedIndex = index + 1;
-                }
+                this.DrawAbilities();
+                this.AbilitiesDataGrid.SelectedIndex = index;
             }
         }
 

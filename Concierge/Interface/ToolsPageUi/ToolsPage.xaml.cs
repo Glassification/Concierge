@@ -8,6 +8,7 @@ namespace Concierge.Interface.ToolsPageUi
     using System.Collections.Generic;
     using System.Windows;
     using System.Windows.Controls;
+    using System.Windows.Input;
 
     using Concierge.Tools;
     using Concierge.Utility;
@@ -16,8 +17,10 @@ namespace Concierge.Interface.ToolsPageUi
     /// <summary>
     /// Interaction logic for ToolsPage.xaml.
     /// </summary>
-    public partial class ToolsPage : Page
+    public partial class ToolsPage : Page, IConciergePage
     {
+        private const string Zero = "0";
+
         public ToolsPage()
         {
             this.InitializeComponent();
@@ -51,17 +54,17 @@ namespace Concierge.Interface.ToolsPageUi
             dieNumber.Value = 1;
             modifierNumber.Value = 0;
             plusButton.IsChecked = true;
-            resultNumber.Text = "0";
+            resultNumber.Text = Zero;
         }
 
         private void SetDefaultDivideValues()
         {
-            this.PlayersInput.Text = "0";
-            this.CopperInput.Text = "0";
-            this.SilverInput.Text = "0";
-            this.ElectrumInput.Text = "0";
-            this.GoldInput.Text = "0";
-            this.PlatinumInput.Text = "0";
+            this.PlayersInput.Text = Zero;
+            this.CopperInput.Text = Zero;
+            this.SilverInput.Text = Zero;
+            this.ElectrumInput.Text = Zero;
+            this.GoldInput.Text = Zero;
+            this.PlatinumInput.Text = Zero;
         }
 
         private void DrawDivideLoot()
@@ -105,7 +108,7 @@ namespace Concierge.Interface.ToolsPageUi
                 return;
             }
 
-            for (int i = 0; i < Player.CURRENCIES; i++)
+            for (int i = 0; i < Player.Currencies; i++)
             {
                 while (loot.CurrencyList[i] > 0)
                 {
@@ -125,10 +128,8 @@ namespace Concierge.Interface.ToolsPageUi
             }
         }
 
-        private void ButtonDivideLoot_Click(object sender, RoutedEventArgs e)
+        private void DivideLoot()
         {
-            ConciergeSound.TapNavigation();
-
             this.DivideLootDataGrid.Items.Clear();
 
             this.GetPlayers();
@@ -137,34 +138,6 @@ namespace Concierge.Interface.ToolsPageUi
             this.Distribute(loot);
 
             this.DrawDivideLoot();
-        }
-
-        private void ButtonResetLoot_Click(object sender, RoutedEventArgs e)
-        {
-            ConciergeSound.TapNavigation();
-            this.SetDefaultDivideValues();
-            this.DivideLootDataGrid.Items.Clear();
-            this.Players.Clear();
-        }
-
-        private void DivideLootDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-        }
-
-        private void Input_GotFocus(object sender, RoutedEventArgs e)
-        {
-            if (((TextBox)sender).Text.Equals("0"))
-            {
-                ((TextBox)sender).Text = string.Empty;
-            }
-        }
-
-        private void Input_LostFocus(object sender, RoutedEventArgs e)
-        {
-            if (!int.TryParse(((TextBox)sender).Text, out _))
-            {
-                ((TextBox)sender).Text = "0";
-            }
         }
 
         private void DrawDiceHistory()
@@ -244,9 +217,61 @@ namespace Concierge.Interface.ToolsPageUi
             return total.ToString();
         }
 
+        private void ClearDivideLoot()
+        {
+            this.SetDefaultDivideValues();
+            this.DivideLootDataGrid.Items.Clear();
+            this.Players.Clear();
+        }
+
+        private bool HasDivideLootInputFocus()
+        {
+            return this.CopperInput.IsFocused
+                || this.SilverInput.IsFocused
+                || this.ElectrumInput.IsFocused
+                || this.GoldInput.IsFocused
+                || this.PlatinumInput.IsFocused
+                || this.PlayersInput.IsFocused;
+        }
+
+        private void ButtonDivideLoot_Click(object sender, RoutedEventArgs e)
+        {
+            ConciergeSound.TapNavigation();
+
+            this.DivideLoot();
+        }
+
+        private void ButtonResetLoot_Click(object sender, RoutedEventArgs e)
+        {
+            ConciergeSound.TapNavigation();
+
+            this.ClearDivideLoot();
+        }
+
+        private void DivideLootDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+        }
+
+        private void Input_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (((TextBox)sender).Text.Equals(Zero))
+            {
+                ((TextBox)sender).Text = string.Empty;
+            }
+        }
+
+        private void Input_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (!int.TryParse(((TextBox)sender).Text, out _))
+            {
+                ((TextBox)sender).Text = Zero;
+            }
+        }
+
         private void ButtonResetHistory_Click(object sender, RoutedEventArgs e)
         {
             ConciergeSound.TapNavigation();
+
             this.SetDefaultDiceValues();
             this.DiceHistory.Clear();
             this.DrawDiceHistory();
@@ -281,6 +306,27 @@ namespace Concierge.Interface.ToolsPageUi
                     break;
                 case "ButtonRollDx":
                     this.DxResult.Text = this.RollDice((int)this.DxNumberUpDown.Value, (int)this.DxDieUpDown.Value, (int)this.DxModifierUpDown.Value, (bool)this.DxPlus.IsChecked);
+                    break;
+            }
+        }
+
+        private void Page_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.Key)
+            {
+                case Key.Enter:
+                    if (this.HasDivideLootInputFocus())
+                    {
+                        this.DivideLoot();
+                    }
+
+                    break;
+                case Key.Escape:
+                    if (this.HasDivideLootInputFocus())
+                    {
+                        this.ClearDivideLoot();
+                    }
+
                     break;
             }
         }

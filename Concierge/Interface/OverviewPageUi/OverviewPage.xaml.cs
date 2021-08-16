@@ -15,7 +15,7 @@ namespace Concierge.Interface.OverviewPageUi
     /// <summary>
     /// Interaction logic for OverviewPage.xaml.
     /// </summary>
-    public partial class OverviewPage : Page
+    public partial class OverviewPage : Page, IConciergePage
     {
         private readonly ModifyAttributesWindow modifyAttributesWindow = new ModifyAttributesWindow();
         private readonly ModifySensesWindow modifySensesWindow = new ModifySensesWindow();

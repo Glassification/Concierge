@@ -4,8 +4,12 @@
 
 namespace Concierge.Interface.Components
 {
+    using System.Collections.Generic;
     using System.Windows;
     using System.Windows.Controls;
+
+    using Concierge.Utility;
+    using Concierge.Utility.Extensions;
 
     public class ConciergeDataGrid : DataGrid
     {
@@ -22,6 +26,28 @@ namespace Concierge.Interface.Components
         {
             RoutedEventArgs newEventArgs = new RoutedEventArgs(ConciergeDataGrid.SortedEvent);
             this.RaiseEvent(newEventArgs);
+        }
+
+        public int NextItem<T>(List<T> list, int limit, int increment)
+        {
+            if (this.SelectedItem == null)
+            {
+                return -1;
+            }
+
+            Program.Modify();
+            ConciergeSound.TapNavigation();
+
+            var item = (T)this.SelectedItem;
+            var index = list.IndexOf(item);
+
+            if (index != limit)
+            {
+                list.Swap(index, index + increment);
+                return index + increment;
+            }
+
+            return -1;
         }
 
         protected override void OnSorting(DataGridSortingEventArgs eventArgs)

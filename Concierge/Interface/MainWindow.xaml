@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Concierge.Interface"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:components="clr-namespace:Concierge.Interface.Components"
         mc:Ignorable="d"
         Title="MainWindow" Height="600" Width="1080"
         ResizeMode="NoResize"
@@ -190,18 +191,14 @@
                             MouseLeave="Button_MouseLeave">
                         <materialDesign:PackIcon Kind="WindowMinimize" Width="25" Height="25"/>
                     </Button>
-                    <Button x:Name="ButtonClose" 
-                            Height="50" Width="60" 
-                            HorizontalAlignment="Center" 
-                            VerticalAlignment="Center" 
-                            Background="Transparent" 
-                            BorderBrush="{x:Null}" 
-                            Foreground="White" 
-                            Click="ButtonClose_Click"
-                            MouseEnter="Button_MouseEnter"
-                            MouseLeave="Button_MouseLeave">
+                    <components:ConciergeButton 
+                        x:Name="ButtonClose" 
+                        Height="50" Width="60"
+                        Background="Transparent" 
+                        Foreground="White" 
+                        Click="ButtonClose_Click">
                         <materialDesign:PackIcon Kind="WindowClose" Width="25" Height="25"/>
-                    </Button>
+                    </components:ConciergeButton>
                 </StackPanel>
             </Grid>
         </Grid>

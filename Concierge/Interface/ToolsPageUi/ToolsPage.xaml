@@ -7,8 +7,10 @@
       xmlns:components="clr-namespace:Concierge.Interface.Components"
       xmlns:local="clr-namespace:Concierge.Interface.ToolsPageUi"
       mc:Ignorable="d"
+      KeyDown="Page_KeyDown"
       d:DesignHeight="450" d:DesignWidth="800"
       Title="ToolsPage"
+      
       Style="{StaticResource PageXboxDasboardStyle}">
 
     <Page.Resources>

@@ -18,7 +18,7 @@ namespace Concierge.Interface.DetailsPageUi
     /// <summary>
     /// Interaction logic for DetailsPage.xaml.
     /// </summary>
-    public partial class DetailsPage : Page
+    public partial class DetailsPage : Page, IConciergePage
     {
         private readonly ModifyProficiencyWindow modifyProficiencyWindow = new ModifyProficiencyWindow();
         private readonly MondifyConditionsWindow mondifyConditionsWindow = new MondifyConditionsWindow();

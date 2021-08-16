@@ -91,11 +91,11 @@ namespace Concierge.Interface.EquipmentPageUi
             this.ProficencyOverrideCheckBox.UpdatingValue();
 
             this.WeaponComboBox.Text = string.Empty;
-            this.TypeComboBox.Text = string.Empty;
-            this.AbilityComboBox.Text = string.Empty;
+            this.TypeComboBox.Text = WeaponTypes.None.ToString();
+            this.AbilityComboBox.Text = Abilities.NONE.ToString();
             this.DamageTextBox.Text = string.Empty;
             this.MiscDamageTextBox.Text = string.Empty;
-            this.DamageTypeComboBox.Text = string.Empty;
+            this.DamageTypeComboBox.Text = DamageTypes.None.ToString();
             this.RangeTextBox.Text = string.Empty;
             this.WeightUpDown.Value = 0.0;
             this.ProficencyOverrideCheckBox.IsChecked = false;

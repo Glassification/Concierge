@@ -80,7 +80,7 @@ namespace Concierge.Interface.EquipmentPageUi
             this.NameComboBox.Text = string.Empty;
             this.QuantityUpDown.Value = 0;
             this.BonusTextBox.Text = string.Empty;
-            this.DamageTypeComboBox.Text = string.Empty;
+            this.DamageTypeComboBox.Text = DamageTypes.None.ToString();
             this.UsedUpDown.Value = 0;
         }
 

@@ -39,15 +39,15 @@ namespace Concierge.Interface
 
         private readonly AutosaveTimer autosaveTimer = new AutosaveTimer();
 
-        private readonly InventoryPage InventoryPage = new InventoryPage();
-        private readonly EquipmentPage EquipmentPage = new EquipmentPage();
-        private readonly AbilitiesPage AbilitiesPage = new AbilitiesPage();
-        private readonly OverviewPage OverviewPage = new OverviewPage();
-        private readonly DetailsPage DetailsPage = new DetailsPage();
-        private readonly NotesPage NotesPage = new NotesPage();
-        private readonly SpellcastingPage SpellcastingPage = new SpellcastingPage();
-        private readonly ToolsPage ToolsPage = new ToolsPage();
-        private readonly EquipedItemsPage EquipedItemsPage = new EquipedItemsPage();
+        private readonly InventoryPage inventoryPage = new InventoryPage();
+        private readonly EquipmentPage equipmentPage = new EquipmentPage();
+        private readonly AbilitiesPage abilitiesPage = new AbilitiesPage();
+        private readonly OverviewPage overviewPage = new OverviewPage();
+        private readonly DetailsPage detailsPage = new DetailsPage();
+        private readonly NotesPage notesPage = new NotesPage();
+        private readonly SpellcastingPage spellcastingPage = new SpellcastingPage();
+        private readonly ToolsPage toolsPage = new ToolsPage();
+        private readonly EquipedItemsPage equipedItemsPage = new EquipedItemsPage();
         private readonly CompanionPage companionPage = new CompanionPage();
 
         public MainWindow()
@@ -57,8 +57,8 @@ namespace Concierge.Interface
             this.GridContent.Width = GridContentWidthClose;
 
             this.CollapseAll();
-            this.OverviewPage.Visibility = Visibility.Visible;
-            this.FrameContent.Content = this.OverviewPage;
+            this.overviewPage.Visibility = Visibility.Visible;
+            this.FrameContent.Content = this.overviewPage;
 
             this.DataContext = this;
 
@@ -114,7 +114,7 @@ namespace Concierge.Interface
 
             Program.CcsFile = new CcsFile();
 
-            this.NotesPage.ClearTextBox();
+            this.notesPage.ClearTextBox();
             this.DrawAll();
 
             this.autosaveTimer.Stop();
@@ -148,7 +148,7 @@ namespace Concierge.Interface
 
             if (!Program.CcsFile.AbsolutePath.IsNullOrWhiteSpace())
             {
-                this.NotesPage.SaveTextBox();
+                this.notesPage.SaveTextBox();
                 this.fileAccessService.Save(Program.CcsFile, false);
             }
             else
@@ -161,7 +161,7 @@ namespace Concierge.Interface
         {
             Program.Logger.Info($"Save as character sheet.");
 
-            this.NotesPage.SaveTextBox();
+            this.notesPage.SaveTextBox();
             this.fileAccessService.Save(Program.CcsFile, true);
         }
 
@@ -176,15 +176,15 @@ namespace Concierge.Interface
 
             this.TextCharacterClass.Text = Program.CcsFile.Character.GetClasses;
 
-            this.InventoryPage.Draw();
-            this.AbilitiesPage.Draw();
-            this.EquipmentPage.Draw();
-            this.OverviewPage.Draw();
-            this.DetailsPage.Draw();
-            this.NotesPage.Draw();
-            this.SpellcastingPage.Draw();
-            this.ToolsPage.Draw();
-            this.EquipedItemsPage.Draw();
+            this.inventoryPage.Draw();
+            this.abilitiesPage.Draw();
+            this.equipmentPage.Draw();
+            this.overviewPage.Draw();
+            this.detailsPage.Draw();
+            this.notesPage.Draw();
+            this.spellcastingPage.Draw();
+            this.toolsPage.Draw();
+            this.equipedItemsPage.Draw();
             this.companionPage.Draw();
         }
 
@@ -206,16 +206,40 @@ namespace Concierge.Interface
 
         private void CollapseAll()
         {
-            this.InventoryPage.Visibility = Visibility.Collapsed;
-            this.EquipmentPage.Visibility = Visibility.Collapsed;
-            this.AbilitiesPage.Visibility = Visibility.Collapsed;
-            this.DetailsPage.Visibility = Visibility.Collapsed;
-            this.NotesPage.Visibility = Visibility.Collapsed;
-            this.SpellcastingPage.Visibility = Visibility.Collapsed;
-            this.ToolsPage.Visibility = Visibility.Collapsed;
-            this.OverviewPage.Visibility = Visibility.Collapsed;
-            this.EquipedItemsPage.Visibility = Visibility.Collapsed;
+            this.inventoryPage.Visibility = Visibility.Collapsed;
+            this.equipmentPage.Visibility = Visibility.Collapsed;
+            this.abilitiesPage.Visibility = Visibility.Collapsed;
+            this.detailsPage.Visibility = Visibility.Collapsed;
+            this.notesPage.Visibility = Visibility.Collapsed;
+            this.spellcastingPage.Visibility = Visibility.Collapsed;
+            this.toolsPage.Visibility = Visibility.Collapsed;
+            this.overviewPage.Visibility = Visibility.Collapsed;
+            this.equipedItemsPage.Visibility = Visibility.Collapsed;
             this.companionPage.Visibility = Visibility.Collapsed;
+        }
+
+        private void PageSelection(IConciergePage conciergePage)
+        {
+            ConciergeSound.TapNavigation();
+
+            var page = conciergePage as Page;
+
+            this.CollapseAll();
+            page.Visibility = Visibility.Visible;
+            this.FrameContent.Content = page;
+            conciergePage.Draw();
+
+            Program.Logger.Info($"Navigate to {page.GetType().Name}");
+        }
+
+        private void MoveSelection(int index)
+        {
+            if (index >= 0 && index < this.ListViewMenu.Items.Count)
+            {
+                this.ListViewMenu.SelectedItem = this.ListViewMenu.Items[index];
+                this.UpdateLayout();
+                ((ListViewItem)this.ListViewMenu.ItemContainerGenerator.ContainerFromIndex(index)).Focus();
+            }
         }
 
         private void MainWindow_ContentRendered(object sender, EventArgs e)
@@ -301,16 +325,6 @@ namespace Concierge.Interface
             }
         }
 
-        private void MoveSelection(int index)
-        {
-            if (index >= 0 && index < this.ListViewMenu.Items.Count)
-            {
-                this.ListViewMenu.SelectedItem = this.ListViewMenu.Items[index];
-                this.UpdateLayout();
-                ((ListViewItem)this.ListViewMenu.ItemContainerGenerator.ContainerFromIndex(index)).Focus();
-            }
-        }
-
         private void ButtonOpenMenu_Click(object sender, RoutedEventArgs e)
         {
             ConciergeSound.TapNavigation();
@@ -335,7 +349,6 @@ namespace Concierge.Interface
 
         private void ButtonClose_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.TapNavigation();
             this.CloseWindow();
         }
 
@@ -371,112 +384,52 @@ namespace Concierge.Interface
 
         private void ItemNotes_Selected(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.TapNavigation();
-            Program.Logger.Info($"Navigate to Notes page.");
-
-            this.CollapseAll();
-            this.NotesPage.Visibility = Visibility.Visible;
-            this.FrameContent.Content = this.NotesPage;
-            this.NotesPage.Draw();
+            this.PageSelection(this.notesPage);
         }
 
         private void ItemInventory_Selected(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.TapNavigation();
-            Program.Logger.Info($"Navigate to Inventory page.");
-
-            this.CollapseAll();
-            this.InventoryPage.Visibility = Visibility.Visible;
-            this.FrameContent.Content = this.InventoryPage;
-            this.InventoryPage.Draw();
+            this.PageSelection(this.inventoryPage);
         }
 
         private void ItemEquipedItems_Selected(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.TapNavigation();
-            Program.Logger.Info($"Navigate to Equiped Items page.");
-
-            this.CollapseAll();
-            this.EquipedItemsPage.Visibility = Visibility.Visible;
-            this.FrameContent.Content = this.EquipedItemsPage;
-            this.EquipedItemsPage.Draw();
+            this.PageSelection(this.equipedItemsPage);
         }
 
         private void ItemDetails_Selected(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.TapNavigation();
-            Program.Logger.Info($"Navigate to Details page.");
-
-            this.CollapseAll();
-            this.DetailsPage.Visibility = Visibility.Visible;
-            this.FrameContent.Content = this.DetailsPage;
-            this.DetailsPage.Draw();
+            this.PageSelection(this.detailsPage);
         }
 
         private void ItemAbilities_Selected(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.TapNavigation();
-            Program.Logger.Info($"Navigate to Abilities page.");
-
-            this.CollapseAll();
-            this.AbilitiesPage.Visibility = Visibility.Visible;
-            this.FrameContent.Content = this.AbilitiesPage;
-            this.AbilitiesPage.Draw();
+            this.PageSelection(this.abilitiesPage);
         }
 
         private void ItemEquipment_Selected(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.TapNavigation();
-            Program.Logger.Info($"Navigate to Equipment page.");
-
-            this.CollapseAll();
-            this.EquipmentPage.Visibility = Visibility.Visible;
-            this.FrameContent.Content = this.EquipmentPage;
-            this.EquipmentPage.Draw();
+            this.PageSelection(this.equipmentPage);
         }
 
         private void ItemOverview_Selected(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.TapNavigation();
-            Program.Logger.Info($"Navigate to Overview page.");
-
-            this.CollapseAll();
-            this.OverviewPage.Visibility = Visibility.Visible;
-            this.FrameContent.Content = this.OverviewPage;
-            this.OverviewPage.Draw();
+            this.PageSelection(this.overviewPage);
         }
 
         private void ItemSpellcasting_Selected(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.TapNavigation();
-            Program.Logger.Info($"Navigate to Spellcasting page.");
-
-            this.CollapseAll();
-            this.SpellcastingPage.Visibility = Visibility.Visible;
-            this.FrameContent.Content = this.SpellcastingPage;
-            this.SpellcastingPage.Draw();
+            this.PageSelection(this.spellcastingPage);
         }
 
         private void ItemCompanion_Selected(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.TapNavigation();
-            Program.Logger.Info($"Navigate to Companion page.");
-
-            this.CollapseAll();
-            this.companionPage.Visibility = Visibility.Visible;
-            this.FrameContent.Content = this.companionPage;
-            this.companionPage.Draw();
+            this.PageSelection(this.companionPage);
         }
 
         private void ItemTools_Selected(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.TapNavigation();
-            Program.Logger.Info($"Navigate to Tools page.");
-
-            this.CollapseAll();
-            this.ToolsPage.Visibility = Visibility.Visible;
-            this.FrameContent.Content = this.ToolsPage;
-            this.ToolsPage.Draw();
+            this.PageSelection(this.toolsPage);
         }
 
         private void PropertiesButton_Click(object sender, RoutedEventArgs e)
@@ -494,8 +447,8 @@ namespace Concierge.Interface
             Program.Logger.Info($"Open settings.");
 
             this.settingsWindow.ShowWindow();
-            this.OverviewPage.Draw();
-            this.DetailsPage.Draw();
+            this.overviewPage.Draw();
+            this.detailsPage.Draw();
 
             if (Program.CcsFile.AutosaveEnable)
             {

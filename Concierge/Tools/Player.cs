@@ -8,17 +8,17 @@ namespace Concierge.Tools
 
     public class Player
     {
-        public const int CURRENCIES = 5;
+        public const int Currencies = 5;
 
         public Player(string name)
         {
             this.Name = name;
-            this.CurrencyList = new int[CURRENCIES];
+            this.CurrencyList = new int[Currencies];
         }
 
         public Player(int cp, int sp, int ep, int gp, int pp)
         {
-            this.CurrencyList = new int[CURRENCIES];
+            this.CurrencyList = new int[Currencies];
             this.CurrencyList[(int)Currency.Copper] = cp;
             this.CurrencyList[(int)Currency.Silver] = sp;
             this.CurrencyList[(int)Currency.Electrum] = ep;

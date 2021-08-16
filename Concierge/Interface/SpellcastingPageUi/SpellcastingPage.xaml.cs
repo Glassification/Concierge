@@ -5,19 +5,20 @@
 namespace Concierge.Interface.SpellcastingPageUi
 {
     using System;
+    using System.Collections.Generic;
     using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Input;
 
     using Concierge.Characters.Enums;
     using Concierge.Characters.Spellcasting;
+    using Concierge.Interface.Components;
     using Concierge.Utility;
-    using Concierge.Utility.Extensions;
 
     /// <summary>
     /// Interaction logic for SpellcastingPage.xaml.
     /// </summary>
-    public partial class SpellcastingPage : Page
+    public partial class SpellcastingPage : Page, IConciergePage
     {
         private readonly SpellcastingSelectionWindow spellcastingSelectionWindow = new SpellcastingSelectionWindow();
         private readonly ModifySpellWindow modifySpellWindow = new ModifySpellWindow();
@@ -44,6 +45,8 @@ namespace Concierge.Interface.SpellcastingPageUi
             this.InitializeUsedSlot(this.UsedNinethBox);
         }
 
+        private delegate void DrawList();
+
         public void Draw()
         {
             this.DrawSpellList();
@@ -64,6 +67,21 @@ namespace Concierge.Interface.SpellcastingPageUi
             usedField.Text = usedSpells.ToString();
             usedField.Foreground = Utilities.SetUsedTextStyle(totalSpells, usedSpells);
             usedBox.Background = Utilities.SetUsedBoxStyle(totalSpells, usedSpells);
+        }
+
+        private static bool NextItem<T>(ConciergeDataGrid dataGrid, DrawList drawList, List<T> list, int limit, int increment)
+        {
+            var index = dataGrid.NextItem(list, limit, increment);
+
+            if (index != -1)
+            {
+                drawList();
+                dataGrid.SelectedIndex = index;
+
+                return true;
+            }
+
+            return false;
         }
 
         private void DrawTotalSpellSlots()
@@ -129,69 +147,17 @@ namespace Concierge.Interface.SpellcastingPageUi
 
         private void ButtonUp_Click(object sender, RoutedEventArgs e)
         {
-            if (this.MagicClassDataGrid.SelectedItem != null)
+            if (!NextItem(this.MagicClassDataGrid, this.DrawMagicClasses, Program.CcsFile.Character.MagicClasses, 0, -1))
             {
-                Program.Modify();
-                ConciergeSound.TapNavigation();
-
-                var magicClass = (MagicClass)this.MagicClassDataGrid.SelectedItem;
-                var index = Program.CcsFile.Character.MagicClasses.IndexOf(magicClass);
-
-                if (index != 0)
-                {
-                    Program.CcsFile.Character.MagicClasses.Swap(index, index - 1);
-                    this.DrawMagicClasses();
-                    this.MagicClassDataGrid.SelectedIndex = index - 1;
-                }
-            }
-            else if (this.SpellListDataGrid.SelectedItem != null)
-            {
-                Program.Modify();
-                ConciergeSound.TapNavigation();
-
-                var spell = (Spell)this.SpellListDataGrid.SelectedItem;
-                var index = Program.CcsFile.Character.Spells.IndexOf(spell);
-
-                if (index != 0)
-                {
-                    Program.CcsFile.Character.Spells.Swap(index, index - 1);
-                    this.DrawSpellList();
-                    this.SpellListDataGrid.SelectedIndex = index - 1;
-                }
+                NextItem(this.SpellListDataGrid, this.DrawSpellList, Program.CcsFile.Character.Spells, 0, -1);
             }
         }
 
         private void ButtonDown_Click(object sender, RoutedEventArgs e)
         {
-            if (this.MagicClassDataGrid.SelectedItem != null)
+            if (!NextItem(this.MagicClassDataGrid, this.DrawMagicClasses, Program.CcsFile.Character.MagicClasses, Program.CcsFile.Character.MagicClasses.Count - 1, 1))
             {
-                Program.Modify();
-                ConciergeSound.TapNavigation();
-
-                var magicClass = (MagicClass)this.MagicClassDataGrid.SelectedItem;
-                var index = Program.CcsFile.Character.MagicClasses.IndexOf(magicClass);
-
-                if (index != Program.CcsFile.Character.MagicClasses.Count - 1)
-                {
-                    Program.CcsFile.Character.MagicClasses.Swap(index, index + 1);
-                    this.DrawMagicClasses();
-                    this.MagicClassDataGrid.SelectedIndex = index + 1;
-                }
-            }
-            else if (this.SpellListDataGrid.SelectedItem != null)
-            {
-                Program.Modify();
-                ConciergeSound.TapNavigation();
-
-                var spell = (Spell)this.SpellListDataGrid.SelectedItem;
-                var index = Program.CcsFile.Character.Spells.IndexOf(spell);
-
-                if (index != Program.CcsFile.Character.Spells.Count - 1)
-                {
-                    Program.CcsFile.Character.Spells.Swap(index, index + 1);
-                    this.DrawSpellList();
-                    this.SpellListDataGrid.SelectedIndex = index + 1;
-                }
+                NextItem(this.SpellListDataGrid, this.DrawSpellList, Program.CcsFile.Character.Spells, Program.CcsFile.Character.Spells.Count - 1, 1);
             }
         }
 
@@ -204,7 +170,6 @@ namespace Concierge.Interface.SpellcastingPageUi
 
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.TapNavigation();
             var popupButton = this.spellcastingSelectionWindow.ShowPopup();
 
             switch (popupButton)
@@ -224,14 +189,12 @@ namespace Concierge.Interface.SpellcastingPageUi
         {
             if (this.MagicClassDataGrid.SelectedItem != null)
             {
-                ConciergeSound.TapNavigation();
                 var magicClass = (MagicClass)this.MagicClassDataGrid.SelectedItem;
                 this.modifySpellClassWindow.EditClass(magicClass);
                 this.DrawMagicClasses();
             }
             else if (this.SpellListDataGrid.SelectedItem != null)
             {
-                ConciergeSound.TapNavigation();
                 var spell = (Spell)this.SpellListDataGrid.SelectedItem;
                 this.modifySpellWindow.EditSpell(spell);
                 this.DrawSpellList();
@@ -243,7 +206,6 @@ namespace Concierge.Interface.SpellcastingPageUi
             if (this.MagicClassDataGrid.SelectedItem != null)
             {
                 Program.Modify();
-                ConciergeSound.TapNavigation();
 
                 MagicClass magicClass = (MagicClass)this.MagicClassDataGrid.SelectedItem;
                 Program.CcsFile.Character.MagicClasses.Remove(magicClass);
@@ -252,7 +214,6 @@ namespace Concierge.Interface.SpellcastingPageUi
             else if (this.SpellListDataGrid.SelectedItem != null)
             {
                 Program.Modify();
-                ConciergeSound.TapNavigation();
 
                 Spell spell = (Spell)this.SpellListDataGrid.SelectedItem;
                 Program.CcsFile.Character.Spells.Remove(spell);

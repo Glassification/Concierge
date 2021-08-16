@@ -19,7 +19,7 @@ namespace Concierge.Interface.EquipedItemsPageUi
     /// <summary>
     /// Interaction logic for EquipedItemsPage.xaml.
     /// </summary>
-    public partial class EquipedItemsPage : Page
+    public partial class EquipedItemsPage : Page, IConciergePage
     {
         private readonly ModifyEquippedItemsWindow modifyEquippedItemsWindow = new ModifyEquippedItemsWindow();
         private readonly ModifyInventoryWindow modifyInventoryWindow = new ModifyInventoryWindow();
@@ -116,45 +116,25 @@ namespace Concierge.Interface.EquipedItemsPageUi
 
         private void ButtonUp_Click(object sender, RoutedEventArgs e)
         {
-            if (this.SelectedItem == null)
+            var equippedItems = Utilities.GetPropertyValue<List<Inventory>>(Program.CcsFile.Character.EquipedItems, this.SelectedDataGrid.Tag as string);
+            var index = this.SelectedDataGrid.NextItem(equippedItems, 0, -1);
+
+            if (index != -1)
             {
-                return;
-            }
-
-            Program.Modify();
-            ConciergeSound.TapNavigation();
-
-            var dataGrid = this.SelectedDataGrid;
-            var equippedItems = Utilities.GetPropertyValue<List<Inventory>>(Program.CcsFile.Character.EquipedItems, dataGrid.Tag as string);
-            var index = equippedItems.IndexOf(this.SelectedItem);
-
-            if (index != 0)
-            {
-                equippedItems.Swap(index, index - 1);
                 this.Draw();
-                dataGrid.SelectedIndex = index - 1;
+                this.SelectedDataGrid.SelectedIndex = index;
             }
         }
 
         private void ButtonDown_Click(object sender, RoutedEventArgs e)
         {
-            if (this.SelectedItem == null)
+            var equippedItems = Utilities.GetPropertyValue<List<Inventory>>(Program.CcsFile.Character.EquipedItems, this.SelectedDataGrid.Tag as string);
+            var index = this.SelectedDataGrid.NextItem(equippedItems, equippedItems.Count - 1, 1);
+
+            if (index != -1)
             {
-                return;
-            }
-
-            Program.Modify();
-            ConciergeSound.TapNavigation();
-
-            var dataGrid = this.SelectedDataGrid;
-            var equippedItems = Utilities.GetPropertyValue<List<Inventory>>(Program.CcsFile.Character.EquipedItems, dataGrid.Tag as string);
-            var index = equippedItems.IndexOf(this.SelectedItem);
-
-            if (index != equippedItems.Count - 1)
-            {
-                equippedItems.Swap(index, index + 1);
                 this.Draw();
-                dataGrid.SelectedIndex = index + 1;
+                this.SelectedDataGrid.SelectedIndex = index;
             }
         }
 
