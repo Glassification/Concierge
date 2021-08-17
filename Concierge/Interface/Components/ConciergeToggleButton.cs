@@ -35,13 +35,20 @@ namespace Concierge.Interface.Components
 
         private void Button_MouseEnter(object sender, MouseEventArgs e)
         {
-            this.OriginalForeground = (SolidColorBrush)this.Foreground;
+            if (!this.IsChecked ?? false)
+            {
+                this.OriginalForeground = (SolidColorBrush)this.Foreground;
+            }
+
             this.Foreground = Brushes.Black;
         }
 
         private void Button_MouseLeave(object sender, MouseEventArgs e)
         {
-            this.Foreground = this.OriginalForeground;
+            if (!this.IsChecked ?? false)
+            {
+                this.Foreground = this.OriginalForeground;
+            }
         }
     }
 }

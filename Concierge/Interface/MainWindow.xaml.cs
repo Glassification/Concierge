@@ -351,26 +351,31 @@ namespace Concierge.Interface
 
         private void ButtonNewCharacter_Click(object sender, RoutedEventArgs e)
         {
+            ConciergeSound.TapNavigation();
             this.NewCharacterSheet();
         }
 
         private void ButtonOpenCharacter_Click(object sender, RoutedEventArgs e)
         {
+            ConciergeSound.TapNavigation();
             this.OpenCharacterSheet();
         }
 
         private void ButtonSaveCharacter_Click(object sender, RoutedEventArgs e)
         {
+            ConciergeSound.TapNavigation();
             this.SaveCharacterSheet();
         }
 
         private void ButtonSaveCharacterAs_Click(object sender, RoutedEventArgs e)
         {
+            ConciergeSound.TapNavigation();
             this.SaveCharacterSheetAs();
         }
 
         private void ButtonLongRest_Click(object sender, RoutedEventArgs e)
         {
+            ConciergeSound.TapNavigation();
             this.LongRest();
         }
 
@@ -426,6 +431,7 @@ namespace Concierge.Interface
 
         private void PropertiesButton_Click(object sender, RoutedEventArgs e)
         {
+            ConciergeSound.TapNavigation();
             Program.Logger.Info($"Open properties.");
 
             this.modifyPropertiesWindow.ShowWindow();
@@ -434,6 +440,7 @@ namespace Concierge.Interface
 
         private void SettingsButton_Click(object sender, RoutedEventArgs e)
         {
+            ConciergeSound.TapNavigation();
             Program.Logger.Info($"Open settings.");
 
             this.settingsWindow.ShowWindow();
@@ -452,6 +459,7 @@ namespace Concierge.Interface
 
         private void AboutButton_Click(object sender, RoutedEventArgs e)
         {
+            ConciergeSound.TapNavigation();
             Program.Logger.Info($"Open About.");
 
             this.aboutConciergeWindow.ShowWindow();
