@@ -25,7 +25,7 @@ namespace Concierge.Persistence
                 var rawJson = Encoding.Default.GetString(Properties.Resources.Ability);
                 abilities = JsonConvert.DeserializeObject<List<Ability>>(rawJson);
 
-                Program.Logger.Info("Languages loaded successfully.");
+                Program.Logger.Info("Abilities loaded successfully.");
             }
             catch (Exception ex)
             {

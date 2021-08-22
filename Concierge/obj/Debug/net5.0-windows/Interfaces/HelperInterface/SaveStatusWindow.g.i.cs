@@ -9,6 +9,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using Concierge.Interfaces.Components;
 using System;
 using System.Diagnostics;
 using System.Windows;
@@ -60,7 +61,7 @@ namespace Concierge.Interfaces.HelperInterface {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Concierge;component/interfaces/helperinterface/savestatuswindow.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Concierge;V3.0.0.0;component/interfaces/helperinterface/savestatuswindow.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\Interfaces\HelperInterface\SaveStatusWindow.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
