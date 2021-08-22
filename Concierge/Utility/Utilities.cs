@@ -12,9 +12,9 @@ namespace Concierge.Utility
     using System.Windows.Media;
     using System.Windows.Shapes;
 
-    using Concierge.Characters;
-    using Concierge.Characters.Enums;
-    using Concierge.Characters.Status;
+    using Concierge.Character;
+    using Concierge.Character.Enums;
+    using Concierge.Character.Statuses;
 
     public static class Utilities
     {
@@ -118,7 +118,7 @@ namespace Concierge.Utility
             return name;
         }
 
-        public static bool ValidateClassLevel(Character character, Guid id, int newValue)
+        public static bool ValidateClassLevel(ConciergeCharacter character, Guid id, int newValue)
         {
             var totalLevel =
                 (character.Class1.Id.Equals(id) ? 0 : character.Class1.Level) +

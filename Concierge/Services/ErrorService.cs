@@ -9,8 +9,8 @@ namespace Concierge.Services
 
     using Concierge.Exceptions;
     using Concierge.Exceptions.Enums;
-    using Concierge.Interface.Enums;
-    using Concierge.Interface.HelperUi;
+    using Concierge.Interfaces.Enums;
+    using Concierge.Interfaces.HelperInterface;
     using Concierge.Logging;
     using Concierge.Utility;
 

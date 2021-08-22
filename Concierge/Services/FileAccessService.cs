@@ -4,7 +4,7 @@
 
 namespace Concierge.Services
 {
-    using Concierge.Interface.HelperUi;
+    using Concierge.Interfaces.HelperInterface;
     using Concierge.Persistence;
     using Microsoft.Win32;
 

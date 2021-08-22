@@ -1,0 +1,232 @@
+﻿<Window x:Class="Concierge.Interfaces.InventoryPageInterface.ModifyInventoryWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:components="clr-namespace:Concierge.Interfaces.Components"
+        mc:Ignorable="d"
+        Title="ModifyInventoryWindow"
+        Height="550"
+        Width="650"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        Background="#252526"
+        ResizeMode="NoResize"
+        KeyDown="Window_KeyDown"
+        BorderThickness="1"
+        BorderBrush="#706599"
+        Style="{StaticResource WindowXboxDasboardStyle}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="435"/>
+            <RowDefinition Height="70"/>
+        </Grid.RowDefinitions>
+
+        <!--Header-->
+        <Grid Grid.Row="0">
+            <TextBlock Text="Add Item"
+                       x:Name="HeaderTextBlock"
+                       Foreground="#988CD0"
+                       FontSize="35"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Center"
+                       Margin="30, 0, 0, 0"
+                       FontWeight="Bold"/>
+            <components:ConciergeButton x:Name="CloseButton"
+                    Height="50"
+                    Width="60"
+                    Background="Transparent"
+                    
+                    Foreground="White"
+                    ToolTip="Close"
+                    HorizontalAlignment="Right"
+                    Click="CloseButton_Click"
+                    
+                    >
+                <materialDesign:PackIcon Kind="WindowClose" Width="25" Height="25"/>
+            </components:ConciergeButton>
+        </Grid>
+
+        <!--Fields-->
+        <Grid Grid.Row="1"
+              Margin="5, 20, 5, 20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="15*"/>
+                <RowDefinition Height="15*"/>
+                <RowDefinition Height="15*"/>
+                <RowDefinition Height="15*"/>
+                <RowDefinition Height="40*"/>
+            </Grid.RowDefinitions>
+
+            <!--Name-->
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="35*"/>
+                    <ColumnDefinition Width="65*"/>
+                </Grid.ColumnDefinitions>
+
+                <!--Title-->
+                <Grid Grid.Column="0">
+                    <TextBlock Text="Name:"
+                               Foreground="White"
+                               FontSize="20"
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Center"
+                               Margin="10, 0, 0, 0"/>
+                </Grid>
+
+                <!--Value-->
+                <Grid Grid.Column="1">
+                    <ComboBox 
+                        Name="NameComboBox"
+                        IsEditable="True"
+                        Height="50"
+                        Margin="0, 0, 20, 0"
+                        FontSize="15"
+                        DropDownOpened="NameComboBox_DropDownOpened"
+                        SelectionChanged="NameComboBox_SelectionChanged"/>
+                </Grid>
+            </Grid>
+
+            <!--Amount-->
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="35*"/>
+                    <ColumnDefinition Width="65*"/>
+                </Grid.ColumnDefinitions>
+
+                <!--Title-->
+                <Grid Grid.Column="0">
+                    <TextBlock Text="Amount:"
+                               Foreground="White"
+                               FontSize="20"
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Center"
+                               Margin="10, 0, 0, 0"/>
+                </Grid>
+
+                <!--Value-->
+                <Grid Grid.Column="1">
+                    <components:ConciergeIntegerUpDown x:Name="AmountUpDown"/>
+                </Grid>
+            </Grid>
+
+            <!--Weight-->
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="35*"/>
+                    <ColumnDefinition Width="65*"/>
+                </Grid.ColumnDefinitions>
+
+                <!--Title-->
+                <Grid Grid.Column="0">
+                    <TextBlock Text="Weight:"
+                               Foreground="White"
+                               FontSize="20"
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Center"
+                               Margin="10, 0, 0, 0"/>
+                </Grid>
+
+                <!--Value-->
+                <Grid Grid.Column="1">
+                    <components:ConciergeDoubleUpDown x:Name="WeightUpDown"/>
+                </Grid>
+            </Grid>
+
+            <!--Bag of Holding-->
+            <Grid Grid.Row="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="35*"/>
+                    <ColumnDefinition Width="65*"/>
+                </Grid.ColumnDefinitions>
+
+                <!--Title-->
+                <Grid Grid.Column="0">
+                    <TextBlock Text="Bag of Holding:"
+                               x:Name="BagOfHoldingText"
+                               Foreground="White"
+                               FontSize="20"
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Center"
+                               Margin="10, 0, 0, 0"/>
+                </Grid>
+
+                <!--Value-->
+                <Grid Grid.Column="1">
+                    <components:ConciergeCheckBox 
+                        x:Name="BagOfHoldingCheckBox"
+                        Margin="5, 15, 0, 0">
+                        <CheckBox.LayoutTransform>
+                            <ScaleTransform ScaleX="2" ScaleY="2" />
+                        </CheckBox.LayoutTransform>
+                    </components:ConciergeCheckBox>
+                </Grid>
+            </Grid>
+
+            <!--Notes-->
+            <Grid Grid.Row="4">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="35*"/>
+                    <ColumnDefinition Width="65*"/>
+                </Grid.ColumnDefinitions>
+
+                <!--Title-->
+                <Grid Grid.Column="0">
+                    <TextBlock Text="Description:"
+                               Foreground="White"
+                               FontSize="20"
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Top"
+                               Margin="10, 20, 0, 0"/>
+                </Grid>
+
+                <!--Value-->
+                <Grid Grid.Column="1"
+                      Background="#FF3F3F3F"
+                      Margin="0, 10, 20, 0">
+                    <components:ConciergeTextBox 
+                        x:Name="NotesTextBox"
+                        TextWrapping="Wrap"
+                        VerticalAlignment="Stretch"
+                        FontSize="15"/>
+                </Grid>
+            </Grid>
+        </Grid>
+
+        <!--Buttons-->
+        <Grid Grid.Row="2">
+            <StackPanel Orientation="Horizontal"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center">
+                <components:ConciergeButton x:Name="OkButton"
+                        Style="{StaticResource PopupWindowButton}"
+                        
+                        Content="OK"
+                        
+                        
+                        Click="OkButton_Click">
+                </components:ConciergeButton>
+                <components:ConciergeButton x:Name="ApplyButton"
+                        Style="{StaticResource PopupWindowButton}"
+                        
+                        Content="Apply"
+                        
+                        
+                        Click="ApplyButton_Click">
+                </components:ConciergeButton>
+                <components:ConciergeButton x:Name="CancelButton"
+                        
+                        Content="Cancel"
+                        Click="CancelButton_Click"
+                        
+                        
+                        Style="{StaticResource PopupWindowButton}">
+                </components:ConciergeButton>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>

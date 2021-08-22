@@ -1,0 +1,15 @@
+﻿// <copyright file="ArmorType.cs" company="Thomas Beckett">
+// Copyright (c) Thomas Beckett. All rights reserved.
+// </copyright>
+
+namespace Concierge.Character.Enums
+{
+    public enum ArmorType
+    {
+        None,
+        Light,
+        Medium,
+        Heavy,
+        Massive,
+    }
+}

@@ -6,7 +6,7 @@ namespace Concierge.Persistence
 {
     using System.IO;
 
-    using Concierge.Characters;
+    using Concierge.Character;
     using Concierge.Utility;
     using Newtonsoft.Json;
 
@@ -17,7 +17,7 @@ namespace Concierge.Persistence
             this.Default();
         }
 
-        public Character Character { get; set; }
+        public ConciergeCharacter Character { get; set; }
 
         public bool AutosaveEnable { get; set; }
 
@@ -44,7 +44,7 @@ namespace Concierge.Persistence
 
         public void Default()
         {
-            this.Character = new Character();
+            this.Character = new ConciergeCharacter();
             this.AutosaveEnable = false;
             this.AutosaveInterval = 1;
             this.UseCoinWeight = false;

@@ -4,13 +4,12 @@
 
 namespace Concierge.Utility
 {
-    using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using System.Reflection;
 
-    using Concierge.Characters.Characteristics;
-    using Concierge.Characters.Items;
-    using Concierge.Characters.Spellcasting;
+    using Concierge.Character.Characteristics;
+    using Concierge.Character.Items;
+    using Concierge.Character.Spellcasting;
     using Concierge.Persistence;
 
     public static class Constants

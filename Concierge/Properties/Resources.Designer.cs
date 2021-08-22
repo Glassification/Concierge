@@ -81,54 +81,6 @@ namespace Concierge.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap armor_class_icon {
-            get {
-                object obj = ResourceManager.GetObject("armor_class_icon", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        internal static byte[] Caleston {
-            get {
-                object obj = ResourceManager.GetObject("Caleston", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
-        /// </summary>
-        internal static System.Drawing.Icon dndnextlogo {
-            get {
-                object obj = ResourceManager.GetObject("dndnextlogo", resourceCulture);
-                return ((System.Drawing.Icon)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
-        /// </summary>
-        internal static System.IO.UnmanagedMemoryStream GenericButtonClick {
-            get {
-                return ResourceManager.GetStream("GenericButtonClick", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
-        /// </summary>
-        internal static System.IO.UnmanagedMemoryStream GenericTapSound {
-            get {
-                return ResourceManager.GetStream("GenericTapSound", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
         /// </summary>
         internal static System.IO.UnmanagedMemoryStream GenericTapSoundLoud {
@@ -143,15 +95,6 @@ namespace Concierge.Properties {
         internal static System.IO.UnmanagedMemoryStream GenericWarning {
             get {
                 return ResourceManager.GetStream("GenericWarning", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
-        /// </summary>
-        internal static System.IO.UnmanagedMemoryStream HighPitchTapSound {
-            get {
-                return ResourceManager.GetStream("HighPitchTapSound", resourceCulture);
             }
         }
         

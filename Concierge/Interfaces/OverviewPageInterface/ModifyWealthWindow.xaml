@@ -1,0 +1,304 @@
+﻿<Window x:Class="Concierge.Interfaces.OverviewPageInterface.ModifyWealthWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:components="clr-namespace:Concierge.Interfaces.Components"
+        mc:Ignorable="d"
+        Title="ModifyWealthWindow"
+        Height="425"
+        Width="650"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        Background="#252526"
+        ResizeMode="NoResize"
+        KeyDown="Window_KeyDown"
+        BorderThickness="1"
+        BorderBrush="#706599"
+        Style="{StaticResource WindowXboxDasboardStyle}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="310"/>
+            <RowDefinition Height="70"/>
+        </Grid.RowDefinitions>
+
+        <!--Header-->
+        <Grid Grid.Row="0">
+            <TextBlock Text="Edit Wealth"
+                       x:Name="HeaderTextBlock"
+                       Foreground="#988CD0"
+                       FontSize="35"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Center"
+                       Margin="30, 0, 0, 0"
+                       FontWeight="Bold"/>
+            <components:ConciergeButton x:Name="CloseButton"
+                    Height="50"
+                    Width="60"
+                    Background="Transparent"
+                    
+                    Foreground="White"
+                    ToolTip="Close"
+                    HorizontalAlignment="Right"
+                    Click="CloseButton_Click"
+                    
+                    >
+                <materialDesign:PackIcon Kind="WindowClose" Width="25" Height="25"/>
+            </components:ConciergeButton>
+        </Grid>
+
+        <!--Values-->
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="20*"/>
+                <RowDefinition Height="20*"/>
+                <RowDefinition Height="20*"/>
+                <RowDefinition Height="40*"/>
+            </Grid.RowDefinitions>
+
+            <!--Add/Subtract-->
+            <Grid Grid.Row="0">
+                <StackPanel Orientation="Horizontal"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center">
+                    <!--Add-->
+                    <components:ConciergeRadioButton x:Name="AddRadioButton">
+                        <RadioButton.LayoutTransform>
+                            <ScaleTransform ScaleX="1.5" ScaleY="1.5" />
+                        </RadioButton.LayoutTransform>
+                    </components:ConciergeRadioButton>
+                    <TextBlock Text="Add"
+                               Foreground="White"
+                               FontSize="20"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               Margin="0, 0, 20, 0"/>
+
+                    <!--Subtract-->
+                    <components:ConciergeRadioButton x:Name="SubtractRadioButton"
+                                 Margin="20, 0, 0, 0">
+                        <RadioButton.LayoutTransform>
+                            <ScaleTransform ScaleX="1.5" ScaleY="1.5" />
+                        </RadioButton.LayoutTransform>
+                    </components:ConciergeRadioButton>
+                    <TextBlock Text="Subtract"
+                               Foreground="White"
+                               FontSize="20"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"/>
+                </StackPanel>
+            </Grid>
+
+            <!--Amount-->
+            <Grid Grid.Row="1">
+                <components:ConciergeIntegerUpDown 
+                    x:Name="AmountUpDown"
+                    Margin="130, 0, 130, 0"/>
+            </Grid>
+
+            <!--Currency-->
+            <Grid Grid.Row="2">
+                <StackPanel Orientation="Horizontal"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center"
+                            Margin="30, 20, 0, 0">
+                    <components:ConciergeRadioButton x:Name="CpRadioButton"
+                                 Margin="0, 0, 55, 0">
+                        <RadioButton.LayoutTransform>
+                            <ScaleTransform ScaleX="1.5" ScaleY="1.5" />
+                        </RadioButton.LayoutTransform>
+                    </components:ConciergeRadioButton>
+                    <components:ConciergeRadioButton x:Name="SpRadioButton"
+                                 Margin="55, 0, 55, 0">
+                        <RadioButton.LayoutTransform>
+                            <ScaleTransform ScaleX="1.5" ScaleY="1.5" />
+                        </RadioButton.LayoutTransform>
+                    </components:ConciergeRadioButton>
+                    <components:ConciergeRadioButton x:Name="EpRadioButton"
+                                 Margin="50, 0, 50, 0">
+                        <RadioButton.LayoutTransform>
+                            <ScaleTransform ScaleX="1.5" ScaleY="1.5" />
+                        </RadioButton.LayoutTransform>
+                    </components:ConciergeRadioButton>
+                    <components:ConciergeRadioButton x:Name="GpRadioButton"
+                                 Margin="50, 0, 50, 0">
+                        <RadioButton.LayoutTransform>
+                            <ScaleTransform ScaleX="1.5" ScaleY="1.5" />
+                        </RadioButton.LayoutTransform>
+                    </components:ConciergeRadioButton>
+                    <components:ConciergeRadioButton x:Name="PpRadioButton"
+                                 Margin="50, 0, 60, 0">
+                        <RadioButton.LayoutTransform>
+                            <ScaleTransform ScaleX="1.5" ScaleY="1.5" />
+                        </RadioButton.LayoutTransform>
+                    </components:ConciergeRadioButton>
+                </StackPanel>
+            </Grid>
+
+            <!--Denomination-->
+            <Grid Grid.Row="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="20*"/>
+                    <ColumnDefinition Width="20*"/>
+                    <ColumnDefinition Width="20*"/>
+                    <ColumnDefinition Width="20*"/>
+                    <ColumnDefinition Width="20*"/>
+                </Grid.ColumnDefinitions>
+
+                <!--CP-->
+                <Grid Grid.Column="0" Margin="8">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40*"/>
+                        <RowDefinition Height="60*"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid Grid.Row="0" Background="#ffb87333">
+                        <TextBlock Text="CP"
+                                           Foreground="Black"
+                                           FontSize="22"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"/>
+                    </Grid>
+
+                    <Grid Grid.Row="1" Background="#FF3e3e42" Margin="0, 0, 0, 3">
+                        <TextBlock x:Name="CopperField"
+                                           Foreground="White"
+                                           FontSize="18"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"/>
+                    </Grid>
+                </Grid>
+
+                <!--SP-->
+                <Grid Grid.Column="1" Margin="8">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40*"/>
+                        <RowDefinition Height="60*"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid Grid.Row="0" Background="Silver">
+                        <TextBlock Text="SP"
+                                           Foreground="Black"
+                                           FontSize="22"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"/>
+                    </Grid>
+
+                    <Grid Grid.Row="1" Background="#FF3e3e42" Margin="0, 0, 0, 3">
+                        <TextBlock x:Name="SilverField"
+                                           Foreground="White"
+                                           FontSize="18"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"/>
+                    </Grid>
+                </Grid>
+
+                <!--EP-->
+                <Grid Grid.Column="2" Margin="8">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40*"/>
+                        <RowDefinition Height="60*"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid Grid.Row="0" Background="#ff50c878">
+                        <TextBlock Text="EP"
+                                           Foreground="Black"
+                                           FontSize="22"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"/>
+                    </Grid>
+
+                    <Grid Grid.Row="1" Background="#FF3e3e42" Margin="0, 0, 0, 3">
+                        <TextBlock x:Name="ElectrumField"
+                                           Foreground="White"
+                                           FontSize="18"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"/>
+                    </Grid>
+                </Grid>
+
+                <!--GP-->
+                <Grid Grid.Column="3" Margin="8">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40*"/>
+                        <RowDefinition Height="60*"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid Grid.Row="0" Background="#ffCFB53B">
+                        <TextBlock Text="GP"
+                                           Foreground="Black"
+                                           FontSize="22"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"/>
+                    </Grid>
+
+                    <Grid Grid.Row="1" Background="#FF3e3e42" Margin="0, 0, 0, 3">
+                        <TextBlock x:Name="GoldField"
+                                           Foreground="White"
+                                           FontSize="18"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"/>
+                    </Grid>
+                </Grid>
+
+                <!--PP-->
+                <Grid Grid.Column="4" Margin="8">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40*"/>
+                        <RowDefinition Height="60*"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid Grid.Row="0" Background="#ffe5e4e2">
+                        <TextBlock Text="PP"
+                                           Foreground="Black"
+                                           FontSize="22"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"/>
+                    </Grid>
+
+                    <Grid Grid.Row="1" Background="#FF3e3e42" Margin="0, 0, 0, 3">
+                        <TextBlock x:Name="PlatinumField"
+                                           Foreground="White"
+                                           FontSize="18"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"/>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </Grid>
+
+        <!--Buttons-->
+        <Grid Grid.Row="2">
+            <StackPanel Orientation="Horizontal"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center">
+                <components:ConciergeButton x:Name="OkButton"
+                        Style="{StaticResource PopupWindowButton}"
+                        
+                        Content="Confirm"
+                        
+                        
+                        Click="OkButton_Click">
+                </components:ConciergeButton>
+                <components:ConciergeButton x:Name="ApplyButton"
+                        Style="{StaticResource PopupWindowButton}"
+                        
+                        Content="Add"
+                        
+                        
+                        Click="ApplyButton_Click">
+                </components:ConciergeButton>
+                <components:ConciergeButton x:Name="CancelButton"
+                        
+                        Content="Cancel"
+                        Click="CancelButton_Click"
+                        
+                        
+                        Style="{StaticResource PopupWindowButton}">
+                </components:ConciergeButton>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>

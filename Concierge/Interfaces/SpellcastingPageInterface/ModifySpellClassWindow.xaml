@@ -1,0 +1,326 @@
+﻿<Window x:Class="Concierge.Interfaces.SpellcastingPageInterface.ModifySpellClassWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:components="clr-namespace:Concierge.Interfaces.Components"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Title="ModifySpellClassWindow"
+        Height="400"
+        Width="800"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        Background="#252526"
+        ResizeMode="NoResize"
+        KeyDown="Window_KeyDown"
+        BorderThickness="1"
+        BorderBrush="#706599"
+        Style="{StaticResource WindowXboxDasboardStyle}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="285"/>
+            <RowDefinition Height="70"/>
+        </Grid.RowDefinitions>
+
+        <!--Header-->
+        <Grid Grid.Row="0">
+            <TextBlock Text="Add Magic Class"
+                       x:Name="HeaderTextBlock"
+                       Foreground="#988CD0"
+                       FontSize="35"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Center"
+                       Margin="30, 0, 0, 0"
+                       FontWeight="Bold"/>
+            <components:ConciergeButton x:Name="CloseButton"
+                    Height="50"
+                    Width="60"
+                    Background="Transparent"
+                    
+                    Foreground="White"
+                    ToolTip="Close"
+                    HorizontalAlignment="Right"
+                    Click="CloseButton_Click"
+                    
+                    >
+                <materialDesign:PackIcon Kind="WindowClose" Width="25" Height="25"/>
+            </components:ConciergeButton>
+        </Grid>
+
+        <!--Fields-->
+        <Grid Grid.Row="1"
+              Margin="5, 20, 5, 20">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="5*"/>
+            </Grid.ColumnDefinitions>
+
+            <!--Left-->
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="25*"/>
+                    <RowDefinition Height="25*"/>
+                    <RowDefinition Height="25*"/>
+                    <RowDefinition Height="25*"/>
+                </Grid.RowDefinitions>
+
+                <!--Name-->
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="35*"/>
+                        <ColumnDefinition Width="65*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!--Title-->
+                    <Grid Grid.Column="0">
+                        <TextBlock Text="Name:"
+                                   Foreground="White"
+                                   FontSize="20"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Center"
+                                   Margin="10, 0, 0, 0"/>
+                    </Grid>
+
+                    <!--Value-->
+                    <Grid Grid.Column="1">
+                        <ComboBox
+                            Name="ClassNameComboBox"
+                            IsEditable="True"
+                            Height="40"
+                            Margin="0, 0, 20, 0"
+                            DropDownOpened="ComboBox_DropDownOpened"
+                            FontSize="15"/>
+                    </Grid>
+                </Grid>
+
+                <!--Ability-->
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="35*"/>
+                        <ColumnDefinition Width="65*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!--Title-->
+                    <Grid Grid.Column="0">
+                        <TextBlock Text="Ability:"
+                                   Foreground="White"
+                                   FontSize="20"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Center"
+                                   Margin="10, 0, 0, 0"/>
+                    </Grid>
+
+                    <!--Value-->
+                    <Grid Grid.Column="1">
+                        <ComboBox 
+                            Name="AbilityComboBox"
+                            IsEditable="False"
+                            Height="40"
+                            Margin="0, 0, 20, 0"
+                            DropDownOpened="ComboBox_DropDownOpened"
+                            FontSize="15"/>
+                    </Grid>
+                </Grid>
+
+                <!--Attack Bonus-->
+                <Grid Grid.Row="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="35*"/>
+                        <ColumnDefinition Width="65*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!--Title-->
+                    <Grid Grid.Column="0">
+                        <TextBlock Text="Attack Bonus:"
+                                   Foreground="White"
+                                   FontSize="18"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Center"
+                                   Margin="10, 0, 0, 0"/>
+                    </Grid>
+
+                    <!--Value-->
+                    <Grid Grid.Column="1"
+                      Background="#FF3F3F3F"
+                      Margin="0, 8, 20, 8">
+                        <components:ConciergeTextBox 
+                            x:Name="AttackTextBox"
+                            FontSize="15"
+                            IsReadOnly="True"/>
+                    </Grid>
+                </Grid>
+
+                <!--Save-->
+                <Grid Grid.Row="3">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="35*"/>
+                        <ColumnDefinition Width="65*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!--Title-->
+                    <Grid Grid.Column="0">
+                        <TextBlock Text="Spell Save:"
+                                   Foreground="White"
+                                   FontSize="20"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Center"
+                                   Margin="10, 0, 0, 0"/>
+                    </Grid>
+
+                    <!--Value-->
+                    <Grid Grid.Column="1"
+                      Background="#FF3F3F3F"
+                      Margin="0, 8, 20, 8">
+                        <components:ConciergeTextBox 
+                            x:Name="SaveTextBox"
+                            FontSize="15"
+                            IsReadOnly="True"/>
+                    </Grid>
+                </Grid>
+
+            </Grid>
+
+            <!--Right-->
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="25*"/>
+                    <RowDefinition Height="25*"/>
+                    <RowDefinition Height="25*"/>
+                    <RowDefinition Height="25*"/>
+                </Grid.RowDefinitions>
+
+                <!--Level-->
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="35*"/>
+                        <ColumnDefinition Width="65*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!--Title-->
+                    <Grid Grid.Column="0">
+                        <TextBlock Text="Level:"
+                                   Foreground="White"
+                                   FontSize="20"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Center"
+                                   Margin="10, 0, 0, 0"/>
+                    </Grid>
+
+                    <!--Value-->
+                    <Grid Grid.Column="1">
+                        <components:ConciergeIntegerUpDown x:Name="LevelUpDown"/>
+                    </Grid>
+                </Grid>
+
+                <!--Known Cantrips-->
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="35*"/>
+                        <ColumnDefinition Width="65*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!--Title-->
+                    <Grid Grid.Column="0">
+                        <TextBlock Text="Known Cantrips:"
+                                   Foreground="White"
+                                   FontSize="16"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Center"
+                                   Margin="10, 0, 0, 0"/>
+                    </Grid>
+
+                    <!--Value-->
+                    <Grid Grid.Column="1">
+                        <components:ConciergeIntegerUpDown x:Name="CantripsUpDown"/>
+                    </Grid>
+                </Grid>
+
+                <!--Known Spells-->
+                <Grid Grid.Row="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="35*"/>
+                        <ColumnDefinition Width="65*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!--Title-->
+                    <Grid Grid.Column="0">
+                        <TextBlock Text="Known Spells:"
+                                   Foreground="White"
+                                   FontSize="18"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Center"
+                                   Margin="10, 0, 0, 0"/>
+                    </Grid>
+
+                    <!--Value-->
+                    <Grid Grid.Column="1">
+                        <components:ConciergeIntegerUpDown x:Name="SpellsUpDown"/>
+                    </Grid>
+                </Grid>
+
+                <!--Prepared Spells-->
+                <Grid Grid.Row="4">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="35*"/>
+                        <ColumnDefinition Width="65*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!--Title-->
+                    <Grid Grid.Column="0">
+                        <TextBlock Text="Prepared Spells:"
+                                   Foreground="White"
+                                   FontSize="16"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Center"
+                                   Margin="10, 0, 0, 0"/>
+                    </Grid>
+
+                    <!--Value-->
+                    <Grid Grid.Column="1"
+                      Background="#FF3F3F3F"
+                      Margin="0, 8, 20, 8">
+                        <components:ConciergeTextBox 
+                            x:Name="PreparedTextBox"
+                            FontSize="15"
+                            IsReadOnly="True"/>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </Grid>
+
+        <!--Buttons-->
+        <Grid Grid.Row="2">
+            <StackPanel Orientation="Horizontal"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center">
+                <components:ConciergeButton x:Name="OkButton"
+                        Style="{StaticResource PopupWindowButton}"
+                        
+                        Content="OK"
+                        
+                        
+                        Click="OkButton_Click">
+                </components:ConciergeButton>
+                <components:ConciergeButton x:Name="ApplyButton"
+                        Style="{StaticResource PopupWindowButton}"
+                        
+                        Content="Apply"
+                        
+                        
+                        Click="ApplyButton_Click">
+                </components:ConciergeButton>
+                <components:ConciergeButton x:Name="CancelButton"
+                        
+                        Content="Cancel"
+                        
+                        
+                        Click="CancelButton_Click"
+                        Style="{StaticResource PopupWindowButton}">
+                </components:ConciergeButton>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>

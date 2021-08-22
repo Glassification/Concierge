@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup />
+  <ItemGroup>
+    <ApplicationDefinition Update="App.xaml">
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Interfaces\AbilitiesPageInterface\AbilitiesPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Interfaces\AbilitiesPageInterface\ModifyAbilitiesWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Interfaces\CompanionPageInterface\CompanionPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Interfaces\CompanionPageInterface\ModifyPropertiesWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Interfaces\DetailsPageInterface\DetailsPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Interfaces\DetailsPageInterface\ModifyAppearanceWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Interfaces\DetailsPageInterface\ModifyClassResourceWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Interfaces\DetailsPageInterface\ModifyConditionsWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Interfaces\DetailsPageInterface\ModifyLanguagesWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Interfaces\DetailsPageInterface\ModifyPersonalityWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Interfaces\DetailsPageInterface\ModifyProficiencyWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Interfaces\EquipmentPageInterface\EquipmentPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Interfaces\EquipmentPageInterface\EquipmentPopupWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Interfaces\EquipmentPageInterface\ModifyAmmoWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Interfaces\EquipmentPageInterface\ModifyArmorWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Interfaces\EquipmentPageInterface\ModifyWeaponWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Interfaces\EquippedItemsPageInterface\EquippedItemsPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Interfaces\EquippedItemsPageInterface\ModifyEquippedItemsWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Interfaces\HelperInterface\AboutConciergeWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Interfaces\HelperInterface\ConciergeMessageWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Interfaces\HelperInterface\SaveStatusWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Interfaces\HelperInterface\SettingsWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Interfaces\InventoryPageInterface\InventoryPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Interfaces\InventoryPageInterface\ModifyInventoryWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Interfaces\MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Interfaces\ModifyPropertiesWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Interfaces\NotesPageInterface\ModifyNotesWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Interfaces\NotesPageInterface\NotesPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Interfaces\OverviewPageInterface\ModifyAttributesWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Interfaces\OverviewPageInterface\ModifyHealthWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Interfaces\OverviewPageInterface\ModifyHitDiceWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Interfaces\OverviewPageInterface\ModifyHpWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Interfaces\OverviewPageInterface\ModifySensesWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Interfaces\OverviewPageInterface\ModifyWealthWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Interfaces\OverviewPageInterface\OverviewPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Interfaces\SpellcastingPageInterface\ModifySpellClassWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Interfaces\SpellcastingPageInterface\ModifySpellSlotsWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Interfaces\SpellcastingPageInterface\ModifySpellWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Interfaces\SpellcastingPageInterface\SpellcastingPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Interfaces\SpellcastingPageInterface\SpellcastingSelectionWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Interfaces\ToolsPageInterface\ToolsPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Properties\Resources\Dictionary\ButtonStyling.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Properties\Resources\Dictionary\ComboBoxStyling.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Properties\Resources\Dictionary\PageFontStyling.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Properties\Resources\Dictionary\WindowFontStyling.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+</Project>

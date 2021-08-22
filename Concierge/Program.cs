@@ -4,7 +4,7 @@
 
 namespace Concierge
 {
-    using Concierge.Interface.HelperUi;
+    using Concierge.Interfaces.HelperInterface;
     using Concierge.Logging;
     using Concierge.Persistence;
     using Concierge.Services;
@@ -16,6 +16,7 @@ namespace Concierge
         {
             InitializeLogger();
 
+            CcsFile = new CcsFile();
             ConciergeMessageWindow = new ConciergeMessageWindow();
             SaveStatusWindow = new SaveStatusWindow();
             Modified = true;

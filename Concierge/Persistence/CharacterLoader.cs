@@ -9,8 +9,8 @@ namespace Concierge.Persistence
     using System.Text.RegularExpressions;
 
     using Concierge.Exceptions.Enums;
-    using Concierge.Interface.Enums;
-    using Concierge.Interface.HelperUi;
+    using Concierge.Interfaces.Enums;
+    using Concierge.Interfaces.HelperInterface;
     using Concierge.Utility;
     using Concierge.Utility.Extensions;
     using Newtonsoft.Json;

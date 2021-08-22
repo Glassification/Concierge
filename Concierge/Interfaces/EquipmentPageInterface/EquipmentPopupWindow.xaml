@@ -1,0 +1,86 @@
+﻿<Window x:Class="Concierge.Interfaces.EquipmentPageInterface.EquipmentPopupWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:components="clr-namespace:Concierge.Interfaces.Components"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Title="EquipmentPopupWindow"
+        Height="225"
+        Width="650"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        Background="#252526"
+        ResizeMode="NoResize"
+        KeyDown="Window_KeyDown"
+        BorderThickness="1"
+        BorderBrush="#706599"
+        Style="{StaticResource WindowXboxDasboardStyle}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="110"/>
+            <RowDefinition Height="70"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Center">
+                <components:ConciergeButton x:Name="CloseButton"
+                    Height="50"
+                    Width="60"
+                    Background="Transparent"
+                    
+                    Foreground="White"
+                    ToolTip="Close"
+                    HorizontalAlignment="Right"
+                    Click="CloseButton_Click"
+                    
+                    >
+                    <materialDesign:PackIcon Kind="WindowClose" Width="25" Height="25"/>
+                </components:ConciergeButton>
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <TextBlock Text="Would you like to add a weapon or ammunition?"
+                       Foreground="White"
+                       FontSize="30"
+                       TextWrapping="Wrap"
+                       Margin="15"/>
+        </Grid>
+
+        <Grid Grid.Row="2">
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center">
+                <components:ConciergeButton x:Name="WeaponButton"
+                        Style="{StaticResource PopupWindowButton}"
+                        
+                        Content="Weapon"
+                        
+                        
+                        Click="WeaponButton_Click">
+                </components:ConciergeButton>
+                <components:ConciergeButton x:Name="AmmoButton"
+                        Style="{StaticResource PopupWindowButton}"
+                        
+                        Content="Ammo"
+                        
+                        
+                        Click="AmmoButton_Click">
+                </components:ConciergeButton>
+                <components:ConciergeButton x:Name="CancelButton"
+                        
+                        Content="Cancel"
+                        Click="CancelButton_Click"
+                        
+                        
+                        Style="{StaticResource PopupWindowButton}">
+                </components:ConciergeButton>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>

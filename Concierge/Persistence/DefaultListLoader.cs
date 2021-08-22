@@ -8,9 +8,9 @@ namespace Concierge.Persistence
     using System.Collections.Generic;
     using System.Text;
 
-    using Concierge.Characters.Characteristics;
-    using Concierge.Characters.Items;
-    using Concierge.Characters.Spellcasting;
+    using Concierge.Character.Characteristics;
+    using Concierge.Character.Items;
+    using Concierge.Character.Spellcasting;
     using Concierge.Exceptions.Enums;
     using Newtonsoft.Json;
 
