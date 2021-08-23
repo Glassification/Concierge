@@ -24,6 +24,7 @@ namespace Concierge.Interfaces
     using Concierge.Interfaces.ToolsPageInterface;
     using Concierge.Persistence;
     using Concierge.Services;
+    using Concierge.Tools;
     using Concierge.Utility;
     using Concierge.Utility.Extensions;
 
@@ -112,12 +113,23 @@ namespace Concierge.Interfaces
         {
             Program.Logger.Info($"Creating new character sheet.");
 
-            Program.CcsFile = new CcsFile();
+            var result = Program.ConciergeMessageWindow.ShowWindow(
+                            "Would you like to run the Character Creation Wizard?",
+                            "Character Creation",
+                            MessageWindowButtons.YesNoCancel,
+                            MessageWindowIcons.Question);
 
-            this.notesPage.ClearTextBox();
-            this.DrawAll();
-
-            this.autosaveTimer.Stop();
+            switch (result)
+            {
+                case MessageWindowResult.Yes:
+                    this.ResetCharacterSheet();
+                    var characterCreationWizard = new CharacterCreationWizard();
+                    characterCreationWizard.Start();
+                    break;
+                case MessageWindowResult.No:
+                    this.ResetCharacterSheet();
+                    break;
+            }
         }
 
         public void OpenCharacterSheet()
@@ -230,6 +242,16 @@ namespace Concierge.Interfaces
             conciergePage.Draw();
 
             Program.Logger.Info($"Navigate to {page.GetType().Name}");
+        }
+
+        private void ResetCharacterSheet()
+        {
+            Program.CcsFile = new CcsFile();
+
+            this.notesPage.ClearTextBox();
+            this.DrawAll();
+
+            this.autosaveTimer.Stop();
         }
 
         private void MoveSelection(ConciergePage page)

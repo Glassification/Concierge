@@ -188,7 +188,7 @@
                         <ColumnDefinition Width="45*"/>
                     </Grid.ColumnDefinitions>
 
-                    <Grid Grid.Column="0" Margin="0,99,40,99">
+                    <Grid Grid.Column="0" Margin="0,33,40,165">
                         <materialDesign:PackIcon 
                             Kind="ArrowRight"
                             Width="200"
@@ -196,7 +196,7 @@
                             Foreground="#988CD0"
                             HorizontalAlignment="Right"/>
                     </Grid>
-                    <Grid Grid.Column="2" Margin="0,99,40,99">
+                    <Grid Grid.Column="2" Margin="0,165,40,33">
                         <materialDesign:PackIcon 
                             Kind="ArrowLeft"
                             Width="200"
@@ -212,7 +212,7 @@
                         <ColumnDefinition Width="45*"/>
                     </Grid.ColumnDefinitions>
 
-                    <Grid Grid.Column="0" Margin="0,99,40,99">
+                    <Grid Grid.Column="0" Margin="0,33,40,165">
                         <materialDesign:PackIcon 
                             Kind="ArrowRight"
                             Width="200"
@@ -220,7 +220,7 @@
                             Foreground="#988CD0"
                             HorizontalAlignment="Right"/>
                     </Grid>
-                    <Grid Grid.Column="2" Margin="0,99,40,99">
+                    <Grid Grid.Column="2" Margin="0,165,40,33">
                         <materialDesign:PackIcon 
                             Kind="ArrowLeft"
                             Width="200"

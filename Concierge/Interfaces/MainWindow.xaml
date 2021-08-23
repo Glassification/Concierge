@@ -123,6 +123,7 @@
                         Width="60"
                         Background="Black"
                         Foreground="White"
+                        ToolTip="Options"
                         MouseEnter="PopupBoxButton_MouseEnter"
                         MouseLeave="PopupBoxButton_MouseLeave"
                         Click="PopupBoxButton_Click">
