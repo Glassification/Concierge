@@ -23,7 +23,7 @@ namespace Concierge.Interfaces.Components
 
         public void RaiseSortedEvent()
         {
-            RoutedEventArgs newEventArgs = new RoutedEventArgs(ConciergeDataGrid.SortedEvent);
+            RoutedEventArgs newEventArgs = new (ConciergeDataGrid.SortedEvent);
             this.RaiseEvent(newEventArgs);
         }
 

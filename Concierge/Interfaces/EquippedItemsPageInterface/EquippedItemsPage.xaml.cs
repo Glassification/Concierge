@@ -1,4 +1,4 @@
-﻿// <copyright file="EquippedItemsPageInterface.xaml.cs" company="Thomas Beckett">
+﻿// <copyright file="EquippedItemsPage.xaml.cs" company="Thomas Beckett">
 // Copyright (c) Thomas Beckett. All rights reserved.
 // </copyright>
 
@@ -16,14 +16,14 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
     using Concierge.Utility;
 
     /// <summary>
-    /// Interaction logic for EquipedItemsPage.xaml.
+    /// Interaction logic for EquippedItemsPage.xaml.
     /// </summary>
-    public partial class EquipedItemsPage : Page, IConciergePage
+    public partial class EquippedItemsPage : Page, IConciergePage
     {
-        private readonly ModifyEquippedItemsWindow modifyEquippedItemsWindow = new ModifyEquippedItemsWindow();
-        private readonly ModifyInventoryWindow modifyInventoryWindow = new ModifyInventoryWindow();
+        private readonly ModifyEquippedItemsWindow modifyEquippedItemsWindow = new ();
+        private readonly ModifyInventoryWindow modifyInventoryWindow = new ();
 
-        public EquipedItemsPage()
+        public EquippedItemsPage()
         {
             this.InitializeComponent();
             this.DataContext = this;

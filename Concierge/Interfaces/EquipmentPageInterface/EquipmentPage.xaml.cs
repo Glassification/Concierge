@@ -18,10 +18,10 @@ namespace Concierge.Interfaces.EquipmentPageInterface
     /// </summary>
     public partial class EquipmentPage : Page, IConciergePage
     {
-        private readonly ModifyArmorWindow modifyArmorWindow = new ModifyArmorWindow();
-        private readonly ModifyWeaponWindow modifyWeaponWindow = new ModifyWeaponWindow();
-        private readonly ModifyAmmoWindow modifyAmmoWindow = new ModifyAmmoWindow();
-        private readonly EquipmentPopupWindow equipmentPopupWindow = new EquipmentPopupWindow();
+        private readonly ModifyArmorWindow modifyArmorWindow = new ();
+        private readonly ModifyWeaponWindow modifyWeaponWindow = new ();
+        private readonly ModifyAmmoWindow modifyAmmoWindow = new ();
+        private readonly EquipmentPopupWindow equipmentPopupWindow = new ();
 
         public EquipmentPage()
         {

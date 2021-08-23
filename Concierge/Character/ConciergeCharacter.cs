@@ -9,9 +9,9 @@ namespace Concierge.Character
     using System.Linq;
     using System.Text;
 
-    using Concierge.Character.Characteristics;
     using Concierge.Character.AbilitySavingThrows;
     using Concierge.Character.AbilitySkills;
+    using Concierge.Character.Characteristics;
     using Concierge.Character.Enums;
     using Concierge.Character.Items;
     using Concierge.Character.Notes;

@@ -83,11 +83,8 @@
                             HorizontalAlignment="Center" 
                             VerticalAlignment="Center" 
                             Background="Transparent" 
-                             
                             Foreground="White" 
-                            Click="ButtonOpenMenu_Click"
-                            
-                            >
+                            Click="ButtonOpenMenu_Click">
                         <materialDesign:PackIcon Kind="Menu" Width="25" Height="25"/>
                     </components:ConciergeButton>
                     <components:ConciergeButton x:Name="ButtonCloseMenu" 
@@ -120,82 +117,93 @@
 
             <Grid x:Name="OptionButtons" Grid.Column="2" Background="Black">
                 <StackPanel Orientation="Horizontal">
-                    <materialDesign:PopupBox 
-                        PlacementMode="BottomAndAlignRightEdges" 
+                    <components:ConciergeButton
+                        x:Name="PopupBoxButton"
+                        Height="50"
+                        Width="60"
+                        Background="Black"
                         Foreground="White"
-                        StaysOpen="False" 
-                        Margin="10">
-                        <StackPanel Width="150" Background="#FF191919">
-                            <Button x:Name="ButtonNewCharacter" Foreground="White" Click="ButtonNewCharacter_Click">
-                                <StackPanel Orientation="Horizontal">
-                                    <materialDesign:PackIcon Kind="FileDocument" Height="25" Width="25" Margin="0 10"/>
-                                    <TextBlock Text="New" VerticalAlignment="Center" Margin="20 10"/>
-                                </StackPanel>
-                            </Button>
-                            <Button x:Name="ButtonOpenCharacter" Foreground="White" Click="ButtonOpenCharacter_Click">
-                                <StackPanel Orientation="Horizontal">
-                                    <materialDesign:PackIcon Kind="Folder" Height="25" Width="25" Margin="0 10"/>
-                                    <TextBlock Text="Open..." VerticalAlignment="Center" Margin="20 10"/>
-                                </StackPanel>
-                            </Button>
-                            <Button x:Name="ButtonSaveCharacter" Foreground="White" Click="ButtonSaveCharacter_Click">
-                                <StackPanel Orientation="Horizontal">
-                                    <materialDesign:PackIcon Kind="ContentSave" Height="25" Width="25" Margin="0 10"/>
-                                    <TextBlock Text="Save" VerticalAlignment="Center" Margin="20 10"/>
-                                </StackPanel>
-                            </Button>
-                            <Button x:Name="ButtonSaveCharacterAs" Foreground="White" Click="ButtonSaveCharacterAs_Click">
-                                <StackPanel Orientation="Horizontal">
-                                    <materialDesign:PackIcon Kind="ContentSaveAll" Height="25" Width="25" Margin="0 10"/>
-                                    <TextBlock Text="Save As..." VerticalAlignment="Center" Margin="20 10"/>
-                                </StackPanel>
-                            </Button>
-                            <Separator Foreground="White"/>
-                            <Button x:Name="ButtonLongRest" Foreground="White" Click="ButtonLongRest_Click">
-                                <StackPanel Orientation="Horizontal">
-                                    <materialDesign:PackIcon Kind="Sleep" Height="25" Width="25" Margin="0 10"/>
-                                    <TextBlock Text="Long Rest" VerticalAlignment="Center" Margin="20 10"/>
-                                </StackPanel>
-                            </Button>
-                            <Separator Foreground="White"/>
-                            <Button x:Name="ButtonProperties" Foreground="White" Click="PropertiesButton_Click">
-                                <StackPanel Orientation="Horizontal">
-                                    <materialDesign:PackIcon Kind="SmartCardOutline" Height="25" Width="25" Margin="0 10"/>
-                                    <TextBlock Text="Properties..." VerticalAlignment="Center" Margin="20 10"/>
-                                </StackPanel>
-                            </Button>
-                            <Button x:Name="SettingsButton" Foreground="White" Click="SettingsButton_Click">
-                                <StackPanel Orientation="Horizontal">
-                                    <materialDesign:PackIcon Kind="Settings" Height="25" Width="25" Margin="0 10"/>
-                                    <TextBlock Text="Settings..." VerticalAlignment="Center" Margin="20 10"/>
-                                </StackPanel>
-                            </Button>
-                            <Separator Foreground="White"/>
-                            <Button x:Name="AboutButton" Foreground="White" Click="AboutButton_Click">
-                                <StackPanel Orientation="Horizontal">
-                                    <materialDesign:PackIcon Kind="About" Height="25" Width="25" Margin="0 10"/>
-                                    <TextBlock Text="About..." VerticalAlignment="Center" Margin="20 10"/>
-                                </StackPanel>
-                            </Button>
-                        </StackPanel>
-                    </materialDesign:PopupBox>
-                    <components:ConciergeButton x:Name="ButtonMinimize" 
-                            Height="50" Width="60" 
-                            HorizontalAlignment="Center" 
-                            VerticalAlignment="Center" 
-                            Background="Transparent" 
-                             
-                            Foreground="White" 
-                            Click="ButtonMinimize_Click"
-                            
-                            >
+                        MouseEnter="PopupBoxButton_MouseEnter"
+                        MouseLeave="PopupBoxButton_MouseLeave"
+                        Click="PopupBoxButton_Click">
+                        <materialDesign:PopupBox
+                            x:Name="PopupBoxControl"
+                            PlacementMode="BottomAndAlignRightEdges" 
+                            Foreground="White"
+                            StaysOpen="False" 
+                            Margin="10">
+                            <StackPanel Width="150" Background="#FF191919">
+                                <Button x:Name="ButtonNewCharacter" Foreground="White" Click="ButtonNewCharacter_Click">
+                                    <StackPanel Orientation="Horizontal">
+                                        <materialDesign:PackIcon Kind="FileDocument" Height="25" Width="25" Margin="0 10"/>
+                                        <TextBlock Text="New" VerticalAlignment="Center" Margin="20 10"/>
+                                    </StackPanel>
+                                </Button>
+                                <Button x:Name="ButtonOpenCharacter" Foreground="White" Click="ButtonOpenCharacter_Click">
+                                    <StackPanel Orientation="Horizontal">
+                                        <materialDesign:PackIcon Kind="Folder" Height="25" Width="25" Margin="0 10"/>
+                                        <TextBlock Text="Open..." VerticalAlignment="Center" Margin="20 10"/>
+                                    </StackPanel>
+                                </Button>
+                                <Button x:Name="ButtonSaveCharacter" Foreground="White" Click="ButtonSaveCharacter_Click">
+                                    <StackPanel Orientation="Horizontal">
+                                        <materialDesign:PackIcon Kind="ContentSave" Height="25" Width="25" Margin="0 10"/>
+                                        <TextBlock Text="Save" VerticalAlignment="Center" Margin="20 10"/>
+                                    </StackPanel>
+                                </Button>
+                                <Button x:Name="ButtonSaveCharacterAs" Foreground="White" Click="ButtonSaveCharacterAs_Click">
+                                    <StackPanel Orientation="Horizontal">
+                                        <materialDesign:PackIcon Kind="ContentSaveAll" Height="25" Width="25" Margin="0 10"/>
+                                        <TextBlock Text="Save As..." VerticalAlignment="Center" Margin="20 10"/>
+                                    </StackPanel>
+                                </Button>
+                                <Separator Foreground="White"/>
+                                <Button x:Name="ButtonLongRest" Foreground="White" Click="ButtonLongRest_Click">
+                                    <StackPanel Orientation="Horizontal">
+                                        <materialDesign:PackIcon Kind="Sleep" Height="25" Width="25" Margin="0 10"/>
+                                        <TextBlock Text="Long Rest" VerticalAlignment="Center" Margin="20 10"/>
+                                    </StackPanel>
+                                </Button>
+                                <Separator Foreground="White"/>
+                                <Button x:Name="ButtonProperties" Foreground="White" Click="PropertiesButton_Click">
+                                    <StackPanel Orientation="Horizontal">
+                                        <materialDesign:PackIcon Kind="SmartCardOutline" Height="25" Width="25" Margin="0 10"/>
+                                        <TextBlock Text="Properties..." VerticalAlignment="Center" Margin="20 10"/>
+                                    </StackPanel>
+                                </Button>
+                                <Button x:Name="SettingsButton" Foreground="White" Click="SettingsButton_Click">
+                                    <StackPanel Orientation="Horizontal">
+                                        <materialDesign:PackIcon Kind="Settings" Height="25" Width="25" Margin="0 10"/>
+                                        <TextBlock Text="Settings..." VerticalAlignment="Center" Margin="20 10"/>
+                                    </StackPanel>
+                                </Button>
+                                <Separator Foreground="White"/>
+                                <Button x:Name="AboutButton" Foreground="White" Click="AboutButton_Click">
+                                    <StackPanel Orientation="Horizontal">
+                                        <materialDesign:PackIcon Kind="About" Height="25" Width="25" Margin="0 10"/>
+                                        <TextBlock Text="About..." VerticalAlignment="Center" Margin="20 10"/>
+                                    </StackPanel>
+                                </Button>
+                            </StackPanel>
+                        </materialDesign:PopupBox>
+                    </components:ConciergeButton>
+                    <components:ConciergeButton 
+                        x:Name="ButtonMinimize" 
+                        Height="50" Width="60" 
+                        HorizontalAlignment="Center" 
+                        VerticalAlignment="Center" 
+                        Background="Transparent"
+                        Foreground="White"
+                        ToolTip="Minimize"
+                        Click="ButtonMinimize_Click">
                         <materialDesign:PackIcon Kind="WindowMinimize" Width="25" Height="25"/>
                     </components:ConciergeButton>
                     <components:ConciergeButton 
                         x:Name="ButtonClose" 
                         Height="50" Width="60"
                         Background="Transparent" 
-                        Foreground="White" 
+                        Foreground="White"
+                        ToolTip="Close"
                         Click="ButtonClose_Click">
                         <materialDesign:PackIcon Kind="WindowClose" Width="25" Height="25"/>
                     </components:ConciergeButton>

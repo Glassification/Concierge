@@ -20,10 +20,10 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
     /// </summary>
     public partial class SpellcastingPage : Page, IConciergePage
     {
-        private readonly SpellcastingSelectionWindow spellcastingSelectionWindow = new SpellcastingSelectionWindow();
-        private readonly ModifySpellWindow modifySpellWindow = new ModifySpellWindow();
-        private readonly ModifySpellClassWindow modifySpellClassWindow = new ModifySpellClassWindow();
-        private readonly ModifySpellSlotsWindow modifySpellSlotsWindow = new ModifySpellSlotsWindow();
+        private readonly SpellcastingSelectionWindow spellcastingSelectionWindow = new ();
+        private readonly ModifySpellWindow modifySpellWindow = new ();
+        private readonly ModifySpellClassWindow modifySpellClassWindow = new ();
+        private readonly ModifySpellSlotsWindow modifySpellSlotsWindow = new ();
 
         public SpellcastingPage()
         {

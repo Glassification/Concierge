@@ -16,10 +16,10 @@ namespace Concierge.Logging
     public abstract class Logger : IDisposable
     {
         private readonly LogVerbosity logVerbosity;
-        private readonly Queue<Action> queue = new Queue<Action>();
-        private readonly ManualResetEvent hasNewItems = new ManualResetEvent(false);
-        private readonly ManualResetEvent terminate = new ManualResetEvent(false);
-        private readonly ManualResetEvent waiting = new ManualResetEvent(false);
+        private readonly Queue<Action> queue = new ();
+        private readonly ManualResetEvent hasNewItems = new (false);
+        private readonly ManualResetEvent terminate = new (false);
+        private readonly ManualResetEvent waiting = new (false);
         private readonly Thread loggingThread;
 
         protected Logger()

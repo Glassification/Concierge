@@ -17,7 +17,7 @@ namespace Concierge.Persistence
 
     public static class CharacterLoader
     {
-        private static readonly ConciergeMessageWindow conciergeMessageWindow = new ConciergeMessageWindow();
+        private static readonly ConciergeMessageWindow conciergeMessageWindow = new ();
 
         public static CcsFile LoadCharacterSheetJson(string file)
         {

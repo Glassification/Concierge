@@ -17,12 +17,12 @@ namespace Concierge.Interfaces.OverviewPageInterface
     /// </summary>
     public partial class OverviewPage : Page, IConciergePage
     {
-        private readonly ModifyAttributesWindow modifyAttributesWindow = new ModifyAttributesWindow();
-        private readonly ModifySensesWindow modifySensesWindow = new ModifySensesWindow();
-        private readonly ModifyHealthWindow modifyHealthWindow = new ModifyHealthWindow();
-        private readonly ModifyHpWindow modifyHpWindow = new ModifyHpWindow();
-        private readonly ModifyHitDiceWindow modifyHitDiceWindow = new ModifyHitDiceWindow();
-        private readonly ModifyWealthWindow modifyWealthWindow = new ModifyWealthWindow();
+        private readonly ModifyAttributesWindow modifyAttributesWindow = new ();
+        private readonly ModifySensesWindow modifySensesWindow = new ();
+        private readonly ModifyHealthWindow modifyHealthWindow = new ();
+        private readonly ModifyHpWindow modifyHpWindow = new ();
+        private readonly ModifyHitDiceWindow modifyHitDiceWindow = new ();
+        private readonly ModifyWealthWindow modifyWealthWindow = new ();
 
         public OverviewPage()
         {

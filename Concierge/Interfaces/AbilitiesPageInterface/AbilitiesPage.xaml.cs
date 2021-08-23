@@ -17,7 +17,7 @@ namespace Concierge.Interfaces.AbilitiesPageInterface
     /// </summary>
     public partial class AbilitiesPage : Page, IConciergePage
     {
-        private readonly ModifyAbilitiesWindow modifyAbilitiesWindow = new ModifyAbilitiesWindow();
+        private readonly ModifyAbilitiesWindow modifyAbilitiesWindow = new ();
 
         public AbilitiesPage()
         {

@@ -20,12 +20,12 @@ namespace Concierge.Interfaces.DetailsPageInterface
     /// </summary>
     public partial class DetailsPage : Page, IConciergePage
     {
-        private readonly ModifyProficiencyWindow modifyProficiencyWindow = new ModifyProficiencyWindow();
-        private readonly MondifyConditionsWindow mondifyConditionsWindow = new MondifyConditionsWindow();
-        private readonly ModifyLanguagesWindow modifyLanguagesWindow = new ModifyLanguagesWindow();
-        private readonly ModifyAppearanceWindow modifyAppearanceWindow = new ModifyAppearanceWindow();
-        private readonly ModifyPersonalityWindow modifyPersonalityWindow = new ModifyPersonalityWindow();
-        private readonly ModifyClassResourceWindow modifyClassResourceWindow = new ModifyClassResourceWindow();
+        private readonly ModifyProficiencyWindow modifyProficiencyWindow = new ();
+        private readonly MondifyConditionsWindow mondifyConditionsWindow = new ();
+        private readonly ModifyLanguagesWindow modifyLanguagesWindow = new ();
+        private readonly ModifyAppearanceWindow modifyAppearanceWindow = new ();
+        private readonly ModifyPersonalityWindow modifyPersonalityWindow = new ();
+        private readonly ModifyClassResourceWindow modifyClassResourceWindow = new ();
 
         public DetailsPage()
         {

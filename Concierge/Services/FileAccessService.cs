@@ -18,7 +18,7 @@ namespace Concierge.Services
 
         private readonly OpenFileDialog openFileDialog;
         private readonly SaveFileDialog saveFileDialog;
-        private readonly SaveStatusWindow saveStatusWindow = new SaveStatusWindow();
+        private readonly SaveStatusWindow saveStatusWindow = new ();
 
         public FileAccessService()
         {

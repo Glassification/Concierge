@@ -5,7 +5,6 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       xmlns:components="clr-namespace:Concierge.Interfaces.Components"
-      xmlns:local="clr-namespace:Concierge.Interfaces.ToolsPageInterface"
       mc:Ignorable="d"
       KeyDown="Page_KeyDown"
       d:DesignHeight="450" d:DesignWidth="800"
@@ -863,7 +862,7 @@
                             Foreground="SteelBlue"
                             Click="ButtonResetLoot_Click"
                             Margin="10, 0, 60, 0"
-                            ToolTip="Clear">
+                            ToolTip="Clear Loot">
                         <materialDesign:PackIcon Kind="Refresh" Height="25" Width="25" Margin="10"/>
                     </components:ConciergeButton>
                 </StackPanel>

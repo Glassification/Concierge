@@ -16,7 +16,7 @@ namespace Concierge.Services
 
     public class ErrorService
     {
-        private readonly ConciergeMessageWindow conciergeMessageWindow = new ConciergeMessageWindow();
+        private readonly ConciergeMessageWindow conciergeMessageWindow = new ();
 
         public ErrorService(Logger logger)
         {

@@ -5,7 +5,7 @@
     <TargetFramework>net5.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
     <RootNamespace>Concierge</RootNamespace>
-    <Version>3.0.0</Version>
+    <Version>3.0.2</Version>
     <ApplicationIcon>dndnextlogo.ico</ApplicationIcon>
   </PropertyGroup>
 
@@ -30,10 +30,6 @@
 
   <ItemGroup>
     <Folder Include="Properties\Resources\Files\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="..\.editorconfig" Link=".editorconfig" />
   </ItemGroup>
 
   <ItemGroup>

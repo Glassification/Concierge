@@ -16,7 +16,7 @@ namespace Concierge.Interfaces.InventoryPageInterface
     /// </summary>
     public partial class InventoryPage : Page, IConciergePage
     {
-        private readonly ModifyInventoryWindow modifyInventoryWindow = new ModifyInventoryWindow();
+        private readonly ModifyInventoryWindow modifyInventoryWindow = new ();
 
         public InventoryPage()
         {

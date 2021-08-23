@@ -20,12 +20,12 @@ namespace Concierge.Interfaces.CompanionPageInterface
     /// </summary>
     public partial class CompanionPage : Page, IConciergePage
     {
-        private readonly ModifyAttributesWindow modifyAttributesWindow = new ModifyAttributesWindow();
-        private readonly ModifyHealthWindow modifyHealthWindow = new ModifyHealthWindow();
-        private readonly ModifyHpWindow modifyHpWindow = new ModifyHpWindow();
-        private readonly ModifyHitDiceWindow modifyHitDiceWindow = new ModifyHitDiceWindow();
-        private readonly ModifyWeaponWindow modifyWeaponWindow = new ModifyWeaponWindow();
-        private readonly ModifyPropertiesWindow modifyPropertiesWindow = new ModifyPropertiesWindow();
+        private readonly ModifyAttributesWindow modifyAttributesWindow = new ();
+        private readonly ModifyHealthWindow modifyHealthWindow = new ();
+        private readonly ModifyHpWindow modifyHpWindow = new ();
+        private readonly ModifyHitDiceWindow modifyHitDiceWindow = new ();
+        private readonly ModifyWeaponWindow modifyWeaponWindow = new ();
+        private readonly ModifyPropertiesWindow modifyPropertiesWindow = new ();
 
         public CompanionPage()
         {

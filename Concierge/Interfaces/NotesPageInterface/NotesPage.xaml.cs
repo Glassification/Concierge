@@ -29,8 +29,8 @@ namespace Concierge.Interfaces.NotesPageInterface
     {
         private const int MaxUndoQueue = 10;
 
-        private readonly ModifyNotesWindow modifyNotesWindow = new ModifyNotesWindow();
-        private readonly ConciergeMessageWindow conciergeMessageWindow = new ConciergeMessageWindow();
+        private readonly ModifyNotesWindow modifyNotesWindow = new ();
+        private readonly ConciergeMessageWindow conciergeMessageWindow = new ();
 
         public NotesPage()
         {

@@ -20,7 +20,7 @@ namespace Concierge.Interfaces.InventoryPageInterface
     /// </summary>
     public partial class ModifyInventoryWindow : Window
     {
-        private readonly ConciergeMessageWindow conciergeMessageWindow = new ConciergeMessageWindow();
+        private readonly ConciergeMessageWindow conciergeMessageWindow = new ();
 
         public ModifyInventoryWindow()
         {

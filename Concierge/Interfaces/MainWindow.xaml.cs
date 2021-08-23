@@ -8,13 +8,14 @@ namespace Concierge.Interfaces
     using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Input;
+    using System.Windows.Media;
 
     using Concierge.Interfaces.AbilitiesPageInterface;
     using Concierge.Interfaces.CompanionPageInterface;
     using Concierge.Interfaces.DetailsPageInterface;
     using Concierge.Interfaces.Enums;
-    using Concierge.Interfaces.EquippedItemsPageInterface;
     using Concierge.Interfaces.EquipmentPageInterface;
+    using Concierge.Interfaces.EquippedItemsPageInterface;
     using Concierge.Interfaces.HelperInterface;
     using Concierge.Interfaces.InventoryPageInterface;
     using Concierge.Interfaces.NotesPageInterface;
@@ -31,23 +32,23 @@ namespace Concierge.Interfaces
     /// </summary>
     public partial class MainWindow : Window
     {
-        private readonly FileAccessService fileAccessService = new FileAccessService();
-        private readonly SettingsWindow settingsWindow = new SettingsWindow();
-        private readonly ModifyPropertiesWindow modifyPropertiesWindow = new ModifyPropertiesWindow();
-        private readonly AboutConciergeWindow aboutConciergeWindow = new AboutConciergeWindow();
+        private readonly FileAccessService fileAccessService = new ();
+        private readonly SettingsWindow settingsWindow = new ();
+        private readonly ModifyPropertiesWindow modifyPropertiesWindow = new ();
+        private readonly AboutConciergeWindow aboutConciergeWindow = new ();
 
-        private readonly AutosaveTimer autosaveTimer = new AutosaveTimer();
+        private readonly AutosaveTimer autosaveTimer = new ();
 
-        private readonly InventoryPage inventoryPage = new InventoryPage();
-        private readonly EquipmentPage equipmentPage = new EquipmentPage();
-        private readonly AbilitiesPage abilitiesPage = new AbilitiesPage();
-        private readonly OverviewPage overviewPage = new OverviewPage();
-        private readonly DetailsPage detailsPage = new DetailsPage();
-        private readonly NotesPage notesPage = new NotesPage();
-        private readonly SpellcastingPage spellcastingPage = new SpellcastingPage();
-        private readonly ToolsPage toolsPage = new ToolsPage();
-        private readonly EquipedItemsPage equipedItemsPage = new EquipedItemsPage();
-        private readonly CompanionPage companionPage = new CompanionPage();
+        private readonly InventoryPage inventoryPage = new ();
+        private readonly EquipmentPage equipmentPage = new ();
+        private readonly AbilitiesPage abilitiesPage = new ();
+        private readonly OverviewPage overviewPage = new ();
+        private readonly DetailsPage detailsPage = new ();
+        private readonly NotesPage notesPage = new ();
+        private readonly SpellcastingPage spellcastingPage = new ();
+        private readonly ToolsPage toolsPage = new ();
+        private readonly EquippedItemsPage equipedItemsPage = new ();
+        private readonly CompanionPage companionPage = new ();
 
         public MainWindow()
         {
@@ -231,13 +232,13 @@ namespace Concierge.Interfaces
             Program.Logger.Info($"Navigate to {page.GetType().Name}");
         }
 
-        private void MoveSelection(int index)
+        private void MoveSelection(ConciergePage page)
         {
-            if (index >= 0 && index < this.ListViewMenu.Items.Count)
+            if (page >= 0 && ((int)page) < this.ListViewMenu.Items.Count)
             {
-                this.ListViewMenu.SelectedItem = this.ListViewMenu.Items[index];
+                this.ListViewMenu.SelectedItem = this.ListViewMenu.Items[(int)page];
                 this.UpdateLayout();
-                ((ListViewItem)this.ListViewMenu.ItemContainerGenerator.ContainerFromIndex(index)).Focus();
+                ((ListViewItem)this.ListViewMenu.ItemContainerGenerator.ContainerFromIndex((int)page)).Focus();
             }
         }
 
@@ -292,34 +293,34 @@ namespace Concierge.Interfaces
                     this.WindowState = WindowState.Maximized;
                     break;
                 case Key.D1:
-                    this.MoveSelection(0);
+                    this.MoveSelection(ConciergePage.Overview);
                     break;
                 case Key.D2:
-                    this.MoveSelection(1);
+                    this.MoveSelection(ConciergePage.Details);
                     break;
                 case Key.D3:
-                    this.MoveSelection(2);
+                    this.MoveSelection(ConciergePage.Equipment);
                     break;
                 case Key.D4:
-                    this.MoveSelection(3);
+                    this.MoveSelection(ConciergePage.Abilities);
                     break;
                 case Key.D5:
-                    this.MoveSelection(4);
+                    this.MoveSelection(ConciergePage.EquippedItems);
                     break;
                 case Key.D6:
-                    this.MoveSelection(5);
+                    this.MoveSelection(ConciergePage.Inventory);
                     break;
                 case Key.D7:
-                    this.MoveSelection(6);
+                    this.MoveSelection(ConciergePage.Spellcasting);
                     break;
                 case Key.D8:
-                    this.MoveSelection(7);
+                    this.MoveSelection(ConciergePage.Companion);
                     break;
                 case Key.D9:
-                    this.MoveSelection(8);
+                    this.MoveSelection(ConciergePage.Tools);
                     break;
                 case Key.D0:
-                    this.MoveSelection(9);
+                    this.MoveSelection(ConciergePage.Notes);
                     break;
             }
         }
@@ -468,6 +469,21 @@ namespace Concierge.Interfaces
         private void ButtonMinimize_Click(object sender, RoutedEventArgs e)
         {
             this.WindowState = WindowState.Minimized;
+        }
+
+        private void PopupBoxButton_MouseEnter(object sender, MouseEventArgs e)
+        {
+            this.PopupBoxControl.Foreground = Brushes.Black;
+        }
+
+        private void PopupBoxButton_MouseLeave(object sender, MouseEventArgs e)
+        {
+            this.PopupBoxControl.Foreground = Brushes.White;
+        }
+
+        private void PopupBoxButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.PopupBoxControl.IsPopupOpen = true;
         }
     }
 }
