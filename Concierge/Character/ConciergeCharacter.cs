@@ -23,6 +23,8 @@ namespace Concierge.Character
 
     public class ConciergeCharacter
     {
+        private const int SignificantDigits = 2;
+
         public ConciergeCharacter()
         {
             this.Initialize();
@@ -109,7 +111,7 @@ namespace Concierge.Character
 
                 weight += this.EquipedItems.Weight;
 
-                return weight;
+                return Math.Round(weight, SignificantDigits);
             }
         }
 
@@ -196,79 +198,21 @@ namespace Concierge.Character
                 return true;
             }
 
-            switch (weapon.WeaponType)
+            return weapon.WeaponType switch
             {
                 // Simple Ranged Weapons
-                case WeaponTypes.LightCrossbow:
-                case WeaponTypes.Dart:
-                case WeaponTypes.Shortbow:
-                case WeaponTypes.Sling:
-                    if (this.Proficiency.Weapons.ContainsValue("Simple Ranged Weapons"))
-                    {
-                        return true;
-                    }
-
-                    return false;
+                WeaponTypes.LightCrossbow or WeaponTypes.Dart or WeaponTypes.Shortbow or WeaponTypes.Sling => this.Proficiency.Weapons.ContainsValue("Simple Ranged Weapons"),
 
                 // Simple Melee Weapons
-                case WeaponTypes.Club:
-                case WeaponTypes.Dagger:
-                case WeaponTypes.Greatclub:
-                case WeaponTypes.Handaxe:
-                case WeaponTypes.Javelin:
-                case WeaponTypes.LightHammer:
-                case WeaponTypes.Mace:
-                case WeaponTypes.Quarterstaff:
-                case WeaponTypes.Sickle:
-                case WeaponTypes.Spear:
-                    if (this.Proficiency.Weapons.ContainsValue("Simple Melee Weapons"))
-                    {
-                        return true;
-                    }
-
-                    return false;
+                WeaponTypes.Club or WeaponTypes.Dagger or WeaponTypes.Greatclub or WeaponTypes.Handaxe or WeaponTypes.Javelin or WeaponTypes.LightHammer or WeaponTypes.Mace or WeaponTypes.Quarterstaff or WeaponTypes.Sickle or WeaponTypes.Spear => this.Proficiency.Weapons.ContainsValue("Simple Melee Weapons"),
 
                 // Martial Ranged Weapons
-                case WeaponTypes.Blowgun:
-                case WeaponTypes.HandCrossbow:
-                case WeaponTypes.HeavyCrossbow:
-                case WeaponTypes.Longbow:
-                case WeaponTypes.Net:
-                    if (this.Proficiency.Weapons.ContainsValue("Martial Ranged Weapons"))
-                    {
-                        return true;
-                    }
-
-                    return false;
+                WeaponTypes.Blowgun or WeaponTypes.HandCrossbow or WeaponTypes.HeavyCrossbow or WeaponTypes.Longbow or WeaponTypes.Net => this.Proficiency.Weapons.ContainsValue("Martial Ranged Weapons"),
 
                 // Martial Melee Weapons
-                case WeaponTypes.Battleaxe:
-                case WeaponTypes.Flail:
-                case WeaponTypes.Glaive:
-                case WeaponTypes.Greataxe:
-                case WeaponTypes.Greatsword:
-                case WeaponTypes.Halberd:
-                case WeaponTypes.Lance:
-                case WeaponTypes.Longsword:
-                case WeaponTypes.Maul:
-                case WeaponTypes.Morningstar:
-                case WeaponTypes.Pike:
-                case WeaponTypes.Rapier:
-                case WeaponTypes.Scimitar:
-                case WeaponTypes.Shortsword:
-                case WeaponTypes.Trident:
-                case WeaponTypes.WarPick:
-                case WeaponTypes.Warhammer:
-                case WeaponTypes.Whip:
-                    if (this.Proficiency.Weapons.ContainsValue("Martial Melee Weapons"))
-                    {
-                        return true;
-                    }
-
-                    return false;
-                default:
-                    return false;
-            }
+                WeaponTypes.Battleaxe or WeaponTypes.Flail or WeaponTypes.Glaive or WeaponTypes.Greataxe or WeaponTypes.Greatsword or WeaponTypes.Halberd or WeaponTypes.Lance or WeaponTypes.Longsword or WeaponTypes.Maul or WeaponTypes.Morningstar or WeaponTypes.Pike or WeaponTypes.Rapier or WeaponTypes.Scimitar or WeaponTypes.Shortsword or WeaponTypes.Trident or WeaponTypes.WarPick or WeaponTypes.Warhammer or WeaponTypes.Whip => this.Proficiency.Weapons.ContainsValue("Martial Melee Weapons"),
+                _ => false,
+            };
         }
 
         public Chapter GetChapterByDocumentId(Guid id)

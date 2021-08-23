@@ -31,7 +31,7 @@ namespace Concierge.Services
         {
             Guard.IsNull(ex, nameof(ex));
 
-            string message = IsHandledException(ex) ? ex.Message : $"A generic error occured: {ex.Message}";
+            string message = IsHandledException(ex) ? ex.Message : $"A generic error occurred: {ex.Message}";
 
             switch (severity)
             {

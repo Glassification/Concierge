@@ -34,7 +34,7 @@ namespace Concierge
 
         public static bool Modified { get; private set; }
 
-        public static LocalLogger Logger { get; private set; }
+        public static Logger Logger { get; private set; }
 
         public static ErrorService ErrorService { get; private set; }
 
