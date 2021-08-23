@@ -13,12 +13,13 @@ namespace Concierge.Interfaces.EquipmentPageInterface
 
     using Concierge.Character.Enums;
     using Concierge.Character.Items;
+    using Concierge.Interfaces.Enums;
     using Concierge.Utility;
 
     /// <summary>
     /// Interaction logic for ModifyAmmoWindow.xaml.
     /// </summary>
-    public partial class ModifyAmmoWindow : Window
+    public partial class ModifyAmmoWindow : Window, IConciergeWindow
     {
         public ModifyAmmoWindow()
         {
@@ -37,14 +38,29 @@ namespace Concierge.Interfaces.EquipmentPageInterface
 
         private List<Ammunition> Ammunitions { get; set; }
 
+        private MessageWindowResult Result { get; set; }
+
+        public MessageWindowResult ShowWizardSetup()
+        {
+            this.Ammunitions = Program.CcsFile.Character.Ammunitions;
+            this.ApplyButton.Visibility = Visibility.Visible;
+            this.Editing = false;
+            this.HeaderTextBlock.Text = "Add Ammunitionn";
+
+            this.ClearFields();
+            this.ShowDialog();
+
+            return this.Result;
+        }
+
         public void ShowAdd(List<Ammunition> ammunitions)
         {
+            this.Editing = false;
             this.HeaderTextBlock.Text = "Add Ammunition";
             this.Ammunitions = ammunitions;
-            this.Editing = false;
             this.ApplyButton.Visibility = Visibility.Visible;
-            this.ClearFields();
 
+            this.ClearFields();
             this.ShowDialog();
         }
 
@@ -54,8 +70,8 @@ namespace Concierge.Interfaces.EquipmentPageInterface
             this.SelectedAmmo = ammunition;
             this.Editing = true;
             this.ApplyButton.Visibility = Visibility.Collapsed;
-            this.FillFields(ammunition);
 
+            this.FillFields(ammunition);
             this.ShowDialog();
         }
 
@@ -109,6 +125,7 @@ namespace Concierge.Interfaces.EquipmentPageInterface
             switch (e.Key)
             {
                 case Key.Escape:
+                    this.Result = MessageWindowResult.Exit;
                     this.Hide();
                     break;
             }
@@ -116,12 +133,14 @@ namespace Concierge.Interfaces.EquipmentPageInterface
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
+            this.Result = MessageWindowResult.Exit;
             this.Hide();
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Modify();
+            this.Result = MessageWindowResult.OK;
 
             if (this.Editing)
             {
@@ -147,6 +166,7 @@ namespace Concierge.Interfaces.EquipmentPageInterface
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
+            this.Result = MessageWindowResult.Cancel;
             this.Hide();
         }
 

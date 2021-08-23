@@ -39,6 +39,7 @@ namespace Concierge.Interfaces
         private readonly AboutConciergeWindow aboutConciergeWindow = new ();
 
         private readonly AutosaveTimer autosaveTimer = new ();
+        private readonly CharacterCreationWizard characterCreationWizard = new ();
 
         private readonly InventoryPage inventoryPage = new ();
         private readonly EquipmentPage equipmentPage = new ();
@@ -71,6 +72,7 @@ namespace Concierge.Interfaces
             this.DrawAll();
 
             Program.Logger.Info($"{nameof(MainWindow)} loaded.");
+            Program.Unmodify();
         }
 
         public static double GridContentWidthOpen => SystemParameters.PrimaryScreenWidth - 200;
@@ -83,27 +85,9 @@ namespace Concierge.Interfaces
 
         public void CloseWindow()
         {
-            if (Program.Modified)
-            {
-                switch (Program.ConciergeMessageWindow.ShowWindow(
-                    "You have unsaved changes, would you like to save before closing?",
-                    "Warning",
-                    MessageWindowButtons.YesNoCancel,
-                    MessageWindowIcons.Question))
-                {
-                    case MessageWindowResult.OK:
-                        this.SaveCharacterSheet();
-                        this.Close();
-                        break;
-                    case MessageWindowResult.No:
-                        this.Close();
-                        break;
-                    default:
-                    case MessageWindowResult.Cancel:
-                        break;
-                }
-            }
-            else
+            var result = this.CheckSaveBeforeAction("closing");
+
+            if (result != MessageWindowResult.Cancel)
             {
                 this.Close();
             }
@@ -113,28 +97,44 @@ namespace Concierge.Interfaces
         {
             Program.Logger.Info($"Creating new character sheet.");
 
-            var result = Program.ConciergeMessageWindow.ShowWindow(
-                            "Would you like to run the Character Creation Wizard?",
-                            "Character Creation",
-                            MessageWindowButtons.YesNoCancel,
-                            MessageWindowIcons.Question);
+            var result = this.CheckSaveBeforeAction("creating a new sheet");
 
-            switch (result)
+            if (result == MessageWindowResult.Cancel)
             {
-                case MessageWindowResult.Yes:
-                    this.ResetCharacterSheet();
-                    var characterCreationWizard = new CharacterCreationWizard();
-                    characterCreationWizard.Start();
-                    break;
-                case MessageWindowResult.No:
-                    this.ResetCharacterSheet();
-                    break;
+                return;
             }
+
+            this.ResetCharacterSheet();
+            this.DrawAll();
+
+            Program.Unmodify();
+        }
+
+        public void CreateCharacterWizard()
+        {
+            Program.Logger.Info($"Open Character Creation.");
+
+            var result = this.CheckSaveBeforeAction("creating a new character");
+
+            if (result == MessageWindowResult.Cancel)
+            {
+                return;
+            }
+
+            this.ResetCharacterSheet();
+            this.characterCreationWizard.Start();
         }
 
         public void OpenCharacterSheet()
         {
             Program.Logger.Info($"Opening character sheet.");
+
+            var result = this.CheckSaveBeforeAction("opening");
+
+            if (result == MessageWindowResult.Cancel)
+            {
+                return;
+            }
 
             var ccsFile = this.fileAccessService.Open();
 
@@ -214,6 +214,27 @@ namespace Concierge.Interfaces
 
             Program.Logger.Info("Closing Concierge.");
             Application.Current.Shutdown();
+        }
+
+        private MessageWindowResult CheckSaveBeforeAction(string action)
+        {
+            if (!Program.Modified)
+            {
+                return MessageWindowResult.No;
+            }
+
+            var result = Program.ConciergeMessageWindow.ShowWindow(
+                            $"You have unsaved changes, would you like to save before {action}?",
+                            "Warning",
+                            MessageWindowButtons.YesNoCancel,
+                            MessageWindowIcons.Question);
+
+            if (result == MessageWindowResult.Yes)
+            {
+                this.SaveCharacterSheet();
+            }
+
+            return result;
         }
 
         private void CollapseAll()
@@ -506,6 +527,12 @@ namespace Concierge.Interfaces
         private void PopupBoxButton_Click(object sender, RoutedEventArgs e)
         {
             this.PopupBoxControl.IsPopupOpen = true;
+        }
+
+        private void CharacterCreationButton_Click(object sender, RoutedEventArgs e)
+        {
+            ConciergeSound.TapNavigation();
+            this.CreateCharacterWizard();
         }
     }
 }

@@ -11,12 +11,13 @@ namespace Concierge.Interfaces.EquipmentPageInterface
 
     using Concierge.Character.Enums;
     using Concierge.Character.Items;
+    using Concierge.Interfaces.Enums;
     using Concierge.Utility;
 
     /// <summary>
     /// Interaction logic for ModifyArmorWindow.xaml.
     /// </summary>
-    public partial class ModifyArmorWindow : Window
+    public partial class ModifyArmorWindow : Window, IConciergeWindow
     {
         public ModifyArmorWindow()
         {
@@ -31,14 +32,29 @@ namespace Concierge.Interfaces.EquipmentPageInterface
 
         private Armor SelectedArmor { get; set; }
 
+        private MessageWindowResult Result { get; set; }
+
+        public MessageWindowResult ShowWizardSetup()
+        {
+            this.SelectedArmor = Program.CcsFile.Character.Armor;
+            this.ApplyButton.Visibility = Visibility.Collapsed;
+
+            this.FillArmorDetails();
+            this.ShowDialog();
+
+            return this.Result;
+        }
+
         public void ShowEdit(Armor armor)
         {
             this.SelectedArmor = armor;
-            this.FillArmorDetails(this.SelectedArmor);
+            this.ApplyButton.Visibility = Visibility.Visible;
+
+            this.FillArmorDetails();
             this.ShowDialog();
         }
 
-        private void FillArmorDetails(Armor armor)
+        private void FillArmorDetails()
         {
             this.ArmorClassUpDown.UpdatingValue();
             this.WeightUpDown.UpdatingValue();
@@ -48,18 +64,18 @@ namespace Concierge.Interfaces.EquipmentPageInterface
             this.MiscArmorClassUpDown.UpdatingValue();
             this.MagicArmorClassUpDown.UpdatingValue();
 
-            this.EquipedTextBox.Text = armor.Equiped;
-            this.TypeComboBox.Text = armor.Type.ToString();
-            this.ArmorClassUpDown.Value = armor.ArmorClass;
-            this.WeightUpDown.Value = armor.Weight;
-            this.StrengthUpDown.Value = armor.Strength;
-            this.StealthComboBox.Text = armor.Stealth.ToString();
+            this.EquipedTextBox.Text = this.SelectedArmor.Equiped;
+            this.TypeComboBox.Text = this.SelectedArmor.Type.ToString();
+            this.ArmorClassUpDown.Value = this.SelectedArmor.ArmorClass;
+            this.WeightUpDown.Value = this.SelectedArmor.Weight;
+            this.StrengthUpDown.Value = this.SelectedArmor.Strength;
+            this.StealthComboBox.Text = this.SelectedArmor.Stealth.ToString();
 
-            this.ShieldTextBox.Text = armor.Shield;
-            this.ShieldArmorClassUpDown.Value = armor.ShieldArmorClass;
-            this.ShieldWeightUpDown.Value = armor.ShieldWeight;
-            this.MiscArmorClassUpDown.Value = armor.MiscArmorClass;
-            this.MagicArmorClassUpDown.Value = armor.MagicArmorClass;
+            this.ShieldTextBox.Text = this.SelectedArmor.Shield;
+            this.ShieldArmorClassUpDown.Value = this.SelectedArmor.ShieldArmorClass;
+            this.ShieldWeightUpDown.Value = this.SelectedArmor.ShieldWeight;
+            this.MiscArmorClassUpDown.Value = this.SelectedArmor.MiscArmorClass;
+            this.MagicArmorClassUpDown.Value = this.SelectedArmor.MagicArmorClass;
         }
 
         private void ToArmor(Armor armor)
@@ -82,6 +98,7 @@ namespace Concierge.Interfaces.EquipmentPageInterface
             switch (e.Key)
             {
                 case Key.Escape:
+                    this.Result = MessageWindowResult.Exit;
                     this.Hide();
                     break;
             }
@@ -89,6 +106,7 @@ namespace Concierge.Interfaces.EquipmentPageInterface
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
+            this.Result = MessageWindowResult.Exit;
             this.Hide();
         }
 
@@ -104,6 +122,7 @@ namespace Concierge.Interfaces.EquipmentPageInterface
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Modify();
+            this.Result = MessageWindowResult.OK;
 
             this.ToArmor(this.SelectedArmor);
             this.Hide();
@@ -111,6 +130,7 @@ namespace Concierge.Interfaces.EquipmentPageInterface
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
+            this.Result = MessageWindowResult.Cancel;
             this.Hide();
         }
 

@@ -9,11 +9,12 @@ namespace Concierge.Interfaces.DetailsPageInterface
     using System.Windows.Input;
 
     using Concierge.Character.Characteristics;
+    using Concierge.Interfaces.Enums;
 
     /// <summary>
     /// Interaction logic for ModifyPersonalityWindow.xaml.
     /// </summary>
-    public partial class ModifyPersonalityWindow : Window
+    public partial class ModifyPersonalityWindow : Window, IConciergeWindow
     {
         public ModifyPersonalityWindow()
         {
@@ -26,9 +27,24 @@ namespace Concierge.Interfaces.DetailsPageInterface
 
         private Personality Personality { get; set; }
 
+        private MessageWindowResult Result { get; set; }
+
+        public MessageWindowResult ShowWizardSetup()
+        {
+            this.Personality = Program.CcsFile.Character.Personality;
+            this.ApplyButton.Visibility = Visibility.Collapsed;
+
+            this.FillFields();
+            this.ShowDialog();
+
+            return this.Result;
+        }
+
         public void ShowEdit(Personality personality)
         {
             this.Personality = personality;
+            this.ApplyButton.Visibility = Visibility.Visible;
+
             this.FillFields();
             this.ShowDialog();
         }
@@ -60,6 +76,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
             switch (e.Key)
             {
                 case Key.Escape:
+                    this.Result = MessageWindowResult.Exit;
                     this.Hide();
                     break;
             }
@@ -67,12 +84,14 @@ namespace Concierge.Interfaces.DetailsPageInterface
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
+            this.Result = MessageWindowResult.Exit;
             this.Hide();
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Modify();
+            this.Result = MessageWindowResult.OK;
 
             this.UpdatePersonality();
             this.Hide();
@@ -89,6 +108,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
+            this.Result = MessageWindowResult.Cancel;
             this.Hide();
         }
     }

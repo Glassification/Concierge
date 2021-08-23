@@ -11,12 +11,13 @@ namespace Concierge.Interfaces.OverviewPageInterface
 
     using Concierge.Character.Characteristics;
     using Concierge.Character.Enums;
+    using Concierge.Interfaces.Enums;
     using Concierge.Utility;
 
     /// <summary>
     /// Interaction logic for ModifySensesWindow.xaml.
     /// </summary>
-    public partial class ModifySensesWindow : Window
+    public partial class ModifySensesWindow : Window, IConciergeWindow
     {
         public ModifySensesWindow()
         {
@@ -28,8 +29,20 @@ namespace Concierge.Interfaces.OverviewPageInterface
 
         public event ApplyChangesEventHandler ApplyChanges;
 
+        private MessageWindowResult Result { get; set; }
+
+        public MessageWindowResult ShowWizardSetup()
+        {
+            this.FillFields();
+            this.ApplyButton.Visibility = Visibility.Collapsed;
+            this.ShowDialog();
+
+            return this.Result;
+        }
+
         public void EditSenses()
         {
+            this.ApplyButton.Visibility = Visibility.Visible;
             this.FillFields();
             this.ShowDialog();
         }
@@ -62,6 +75,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
             switch (e.Key)
             {
                 case Key.Escape:
+                    this.Result = MessageWindowResult.Exit;
                     this.Hide();
                     break;
             }
@@ -70,6 +84,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Modify();
+            this.Result = MessageWindowResult.OK;
 
             this.UpdateSenses();
             this.Hide();
@@ -87,11 +102,13 @@ namespace Concierge.Interfaces.OverviewPageInterface
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
+            this.Result = MessageWindowResult.Cancel;
             this.Hide();
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
+            this.Result = MessageWindowResult.Exit;
             this.Hide();
         }
 

@@ -12,12 +12,13 @@ namespace Concierge.Interfaces.DetailsPageInterface
     using System.Windows.Media;
 
     using Concierge.Character.Enums;
+    using Concierge.Interfaces.Enums;
     using Concierge.Utility;
 
     /// <summary>
     /// Interaction logic for ModifyProficiencyWindow.xaml.
     /// </summary>
-    public partial class ModifyProficiencyWindow : Window
+    public partial class ModifyProficiencyWindow : Window, IConciergeWindow
     {
         public ModifyProficiencyWindow()
         {
@@ -35,10 +36,25 @@ namespace Concierge.Interfaces.DetailsPageInterface
 
         private string HeaderText => $"{(this.Editing ? "Edit" : "Add")} Proficiency";
 
+        private MessageWindowResult Result { get; set; }
+
+        public MessageWindowResult ShowWizardSetup()
+        {
+            this.Editing = false;
+            this.HeaderTextBlock.Text = this.HeaderText;
+            this.ApplyButton.Visibility = Visibility.Visible;
+            this.ProficiencyComboBox.IsEnabled = true;
+
+            this.ClearFields();
+            this.ShowDialog();
+
+            return this.Result;
+        }
+
         public void ShowAdd()
         {
-            this.HeaderTextBlock.Text = this.HeaderText;
             this.Editing = false;
+            this.HeaderTextBlock.Text = this.HeaderText;
             this.ClearFields();
             this.ApplyButton.Visibility = Visibility.Visible;
             this.ProficiencyComboBox.IsEnabled = true;
@@ -70,12 +86,14 @@ namespace Concierge.Interfaces.DetailsPageInterface
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
+            this.Result = MessageWindowResult.Exit;
             this.Hide();
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Modify();
+            this.Result = MessageWindowResult.OK;
 
             if (this.Editing)
             {
@@ -106,6 +124,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
+            this.Result = MessageWindowResult.Cancel;
             this.Hide();
         }
 
@@ -114,6 +133,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
             switch (e.Key)
             {
                 case Key.Escape:
+                    this.Result = MessageWindowResult.Exit;
                     this.Hide();
                     break;
             }

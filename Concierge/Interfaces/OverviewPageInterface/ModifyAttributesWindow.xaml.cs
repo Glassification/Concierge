@@ -31,8 +31,10 @@ namespace Concierge.Interfaces.OverviewPageInterface
 
         public MessageWindowResult ShowWizardSetup()
         {
-            this.ClearFields();
+            this.Attributes = Program.CcsFile.Character.Attributes;
             this.ApplyButton.Visibility = Visibility.Collapsed;
+
+            this.FillFields();
             this.ShowDialog();
 
             return this.Result;
@@ -62,23 +64,6 @@ namespace Concierge.Interfaces.OverviewPageInterface
             this.IntelligenceUpDown.Value = this.Attributes.Intelligence;
             this.WisdomUpDown.Value = this.Attributes.Wisdom;
             this.CharismaUpDown.Value = this.Attributes.Charisma;
-        }
-
-        private void ClearFields()
-        {
-            this.StrengthUpDown.UpdatingValue();
-            this.DexterityUpDown.UpdatingValue();
-            this.ConstitutionUpDown.UpdatingValue();
-            this.IntelligenceUpDown.UpdatingValue();
-            this.WisdomUpDown.UpdatingValue();
-            this.CharismaUpDown.UpdatingValue();
-
-            this.StrengthUpDown.Value = 0;
-            this.DexterityUpDown.Value = 0;
-            this.ConstitutionUpDown.Value = 0;
-            this.IntelligenceUpDown.Value = 0;
-            this.WisdomUpDown.Value = 0;
-            this.CharismaUpDown.Value = 0;
         }
 
         private void UpdateAttributes()
@@ -129,7 +114,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Result = MessageWindowResult.Cancel;
+            this.Result = MessageWindowResult.Exit;
             this.Hide();
         }
     }

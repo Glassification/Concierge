@@ -9,15 +9,15 @@ namespace Concierge.Interfaces.AbilitiesPageInterface
     using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Input;
-    using System.Windows.Media;
 
     using Concierge.Character.Characteristics;
+    using Concierge.Interfaces.Enums;
     using Concierge.Utility;
 
     /// <summary>
     /// Interaction logic for ModifyAbilitiesWindow.xaml.
     /// </summary>
-    public partial class ModifyAbilitiesWindow : Window
+    public partial class ModifyAbilitiesWindow : Window, IConciergeWindow
     {
         public ModifyAbilitiesWindow()
         {
@@ -36,6 +36,21 @@ namespace Concierge.Interfaces.AbilitiesPageInterface
 
         private List<Ability> Abilities { get; set; }
 
+        private MessageWindowResult Result { get; set; }
+
+        public MessageWindowResult ShowWizardSetup()
+        {
+            this.Editing = false;
+            this.HeaderTextBlock.Text = "Add Ability";
+            this.Abilities = Program.CcsFile.Character.Abilities;
+            this.ApplyButton.Visibility = Visibility.Visible;
+
+            this.ClearFields();
+            this.ShowDialog();
+
+            return this.Result;
+        }
+
         public void ShowEdit(Ability ability)
         {
             this.HeaderTextBlock.Text = "Edit Ability";
@@ -49,12 +64,12 @@ namespace Concierge.Interfaces.AbilitiesPageInterface
 
         public void ShowAdd(List<Ability> abilities)
         {
+            this.Editing = false;
             this.HeaderTextBlock.Text = "Add Ability";
             this.Abilities = abilities;
-            this.Editing = false;
-            this.ClearFields();
             this.ApplyButton.Visibility = Visibility.Visible;
 
+            this.ClearFields();
             this.ShowDialog();
         }
 
@@ -110,6 +125,7 @@ namespace Concierge.Interfaces.AbilitiesPageInterface
             switch (e.Key)
             {
                 case Key.Escape:
+                    this.Result = MessageWindowResult.Exit;
                     this.Hide();
                     break;
             }
@@ -117,6 +133,7 @@ namespace Concierge.Interfaces.AbilitiesPageInterface
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
+            this.Result = MessageWindowResult.Exit;
             this.Hide();
         }
 
@@ -133,6 +150,7 @@ namespace Concierge.Interfaces.AbilitiesPageInterface
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Modify();
+            this.Result = MessageWindowResult.OK;
 
             if (this.Editing)
             {
@@ -148,6 +166,7 @@ namespace Concierge.Interfaces.AbilitiesPageInterface
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
+            this.Result = MessageWindowResult.Cancel;
             this.Hide();
         }
 

@@ -10,11 +10,12 @@ namespace Concierge.Interfaces.DetailsPageInterface
     using System.Windows.Input;
 
     using Concierge.Character.Statuses;
+    using Concierge.Interfaces.Enums;
 
     /// <summary>
     /// Interaction logic for ModifyProficiencyWindow.xaml.
     /// </summary>
-    public partial class ModifyClassResourceWindow : Window
+    public partial class ModifyClassResourceWindow : Window, IConciergeWindow
     {
         public ModifyClassResourceWindow()
         {
@@ -32,6 +33,20 @@ namespace Concierge.Interfaces.DetailsPageInterface
         private ClassResource ClassResource { get; set; }
 
         private List<ClassResource> ClassResources { get; set; }
+
+        private MessageWindowResult Result { get; set; }
+
+        public MessageWindowResult ShowWizardSetup()
+        {
+            this.Editing = false;
+            this.HeaderTextBlock.Text = this.HeaderText;
+            this.ClassResources = Program.CcsFile.Character.ClassResources;
+
+            this.ClearFields();
+            this.ShowDialog();
+
+            return this.Result;
+        }
 
         public void ShowAdd(List<ClassResource> classResources)
         {
@@ -97,12 +112,14 @@ namespace Concierge.Interfaces.DetailsPageInterface
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
+            this.Result = MessageWindowResult.Exit;
             this.Hide();
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Modify();
+            this.Result = MessageWindowResult.OK;
 
             this.UpdateClassResource();
             this.Hide();
@@ -124,6 +141,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
+            this.Result = MessageWindowResult.Cancel;
             this.Hide();
         }
 
@@ -132,6 +150,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
             switch (e.Key)
             {
                 case Key.Escape:
+                    this.Result = MessageWindowResult.Exit;
                     this.Hide();
                     break;
             }

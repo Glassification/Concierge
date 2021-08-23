@@ -11,12 +11,13 @@ namespace Concierge.Interfaces.DetailsPageInterface
     using System.Windows.Input;
 
     using Concierge.Character.Characteristics;
+    using Concierge.Interfaces.Enums;
     using Concierge.Utility;
 
     /// <summary>
     /// Interaction logic for ModifyLanguagesWindow.xaml.
     /// </summary>
-    public partial class ModifyLanguagesWindow : Window
+    public partial class ModifyLanguagesWindow : Window, IConciergeWindow
     {
         public ModifyLanguagesWindow()
         {
@@ -35,6 +36,20 @@ namespace Concierge.Interfaces.DetailsPageInterface
         private Language SelectedLanguage { get; set; }
 
         private List<Language> Languages { get; set; }
+
+        private MessageWindowResult Result { get; set; }
+
+        public MessageWindowResult ShowWizardSetup()
+        {
+            this.Editing = false;
+            this.HeaderTextBlock.Text = this.HeaderText;
+            this.Languages = Program.CcsFile.Character.Details.Languages;
+
+            this.ClearFields();
+            this.ShowDialog();
+
+            return this.Result;
+        }
 
         public void ShowAdd(List<Language> languages)
         {
@@ -94,6 +109,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
             switch (e.Key)
             {
                 case Key.Escape:
+                    this.Result = MessageWindowResult.Exit;
                     this.Hide();
                     break;
             }
@@ -101,12 +117,14 @@ namespace Concierge.Interfaces.DetailsPageInterface
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
+            this.Result = MessageWindowResult.Exit;
             this.Hide();
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Modify();
+            this.Result = MessageWindowResult.OK;
 
             if (this.Editing)
             {
@@ -132,6 +150,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
+            this.Result = MessageWindowResult.Cancel;
             this.Hide();
         }
 

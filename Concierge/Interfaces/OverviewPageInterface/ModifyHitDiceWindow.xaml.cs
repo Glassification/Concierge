@@ -9,11 +9,12 @@ namespace Concierge.Interfaces.OverviewPageInterface
     using System.Windows.Input;
 
     using Concierge.Character.Statuses;
+    using Concierge.Interfaces.Enums;
 
     /// <summary>
     /// Interaction logic for ModifyHitDiceWindow.xaml.
     /// </summary>
-    public partial class ModifyHitDiceWindow : Window
+    public partial class ModifyHitDiceWindow : Window, IConciergeWindow
     {
         public ModifyHitDiceWindow()
         {
@@ -26,9 +27,23 @@ namespace Concierge.Interfaces.OverviewPageInterface
 
         private HitDice HitDice { get; set; }
 
+        private MessageWindowResult Result { get; set; }
+
+        public MessageWindowResult ShowWizardSetup()
+        {
+            this.HitDice = Program.CcsFile.Character.Vitality.HitDice;
+            this.ApplyButton.Visibility = Visibility.Collapsed;
+
+            this.SetHitDice();
+            this.ShowDialog();
+
+            return this.Result;
+        }
+
         public void ModifyHitDice(HitDice hitDice)
         {
             this.HitDice = hitDice;
+            this.ApplyButton.Visibility = Visibility.Visible;
 
             this.SetHitDice();
             this.ShowDialog();
@@ -74,6 +89,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
             switch (e.Key)
             {
                 case Key.Escape:
+                    this.Result = MessageWindowResult.Exit;
                     this.Hide();
                     break;
             }
@@ -81,11 +97,13 @@ namespace Concierge.Interfaces.OverviewPageInterface
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
+            this.Result = MessageWindowResult.Exit;
             this.Hide();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
+            this.Result = MessageWindowResult.Cancel;
             this.Hide();
         }
 
@@ -101,6 +119,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Modify();
+            this.Result = MessageWindowResult.OK;
 
             this.GetHitDice();
             this.Hide();
