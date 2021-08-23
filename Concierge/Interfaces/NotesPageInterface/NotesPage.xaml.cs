@@ -134,17 +134,15 @@ namespace Concierge.Interfaces.NotesPageInterface
 
             try
             {
-                using (var rtfMemoryStream = new MemoryStream())
-                using (var rtfStreamWriter = new StreamWriter(rtfMemoryStream))
-                {
-                    range.Save(rtfMemoryStream, DataFormats.Rtf);
+                using var rtfMemoryStream = new MemoryStream();
+                using var rtfStreamWriter = new StreamWriter(rtfMemoryStream);
+                range.Save(rtfMemoryStream, DataFormats.Rtf);
 
-                    rtfMemoryStream.Flush();
-                    rtfMemoryStream.Position = 0;
-                    var sr = new StreamReader(rtfMemoryStream);
+                rtfMemoryStream.Flush();
+                rtfMemoryStream.Position = 0;
+                var sr = new StreamReader(rtfMemoryStream);
 
-                    return sr.ReadToEnd();
-                }
+                return sr.ReadToEnd();
             }
             catch (Exception ex)
             {
@@ -258,19 +256,19 @@ namespace Concierge.Interfaces.NotesPageInterface
         {
             object obj;
 
-            obj = this.NotesTextBox.Selection.GetPropertyValue(Inline.FontWeightProperty);
+            obj = this.NotesTextBox.Selection.GetPropertyValue(TextElement.FontWeightProperty);
             this.ButtonBold.IsChecked = (obj != DependencyProperty.UnsetValue) && obj.Equals(FontWeights.Bold);
 
-            obj = this.NotesTextBox.Selection.GetPropertyValue(Inline.FontStyleProperty);
+            obj = this.NotesTextBox.Selection.GetPropertyValue(TextElement.FontStyleProperty);
             this.ButtonItalic.IsChecked = (obj != DependencyProperty.UnsetValue) && obj.Equals(FontStyles.Italic);
 
             obj = this.NotesTextBox.Selection.GetPropertyValue(Inline.TextDecorationsProperty);
             this.ButtonUnderline.IsChecked = (obj != DependencyProperty.UnsetValue) && obj.Equals(TextDecorations.Underline);
 
-            obj = this.NotesTextBox.Selection.GetPropertyValue(Inline.FontFamilyProperty);
+            obj = this.NotesTextBox.Selection.GetPropertyValue(TextElement.FontFamilyProperty);
             this.FontFamilyList.SelectedItem = obj;
 
-            obj = this.NotesTextBox.Selection.GetPropertyValue(Inline.FontSizeProperty);
+            obj = this.NotesTextBox.Selection.GetPropertyValue(TextElement.FontSizeProperty);
             this.FontSizeList.Text = obj == DependencyProperty.UnsetValue ? string.Empty : obj.ToString();
 
             obj = this.NotesTextBox.Selection.GetPropertyValue(TextElement.ForegroundProperty);
@@ -281,7 +279,7 @@ namespace Concierge.Interfaces.NotesPageInterface
         {
             if (this.FontFamilyList.SelectedItem != null)
             {
-                this.NotesTextBox.Selection.ApplyPropertyValue(Inline.FontFamilyProperty, this.FontFamilyList.SelectedItem);
+                this.NotesTextBox.Selection.ApplyPropertyValue(TextElement.FontFamilyProperty, this.FontFamilyList.SelectedItem);
             }
         }
 
@@ -289,7 +287,7 @@ namespace Concierge.Interfaces.NotesPageInterface
         {
             if (double.TryParse(this.FontSizeList.Text, out _))
             {
-                this.NotesTextBox.Selection.ApplyPropertyValue(Inline.FontSizeProperty, this.FontSizeList.Text);
+                this.NotesTextBox.Selection.ApplyPropertyValue(TextElement.FontSizeProperty, this.FontSizeList.Text);
             }
         }
 

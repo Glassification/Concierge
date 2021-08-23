@@ -19,8 +19,8 @@ namespace Concierge.Logging
         public LocalLogger()
         : base()
         {
-            this.LogLocation = this.FormatLogFilePath(string.Empty);
-            this.LogFileName = this.FormatLogFileName();
+            this.LogLocation = FormatLogFilePath(string.Empty);
+            this.LogFileName = FormatLogFileName();
 
             this.MaxLogFileSize = 5000000;
             this.MaxLogFiles = 5;
@@ -31,8 +31,8 @@ namespace Concierge.Logging
         public LocalLogger(string logPath)
         : base()
         {
-            this.LogLocation = this.FormatLogFilePath(logPath);
-            this.LogFileName = this.FormatLogFileName();
+            this.LogLocation = FormatLogFilePath(logPath);
+            this.LogFileName = FormatLogFileName();
 
             this.MaxLogFileSize = 5000000;
             this.MaxLogFiles = 5;
@@ -67,18 +67,16 @@ namespace Concierge.Logging
             var logFilePath = Path.Combine(this.LogLocation, this.LogFileName);
             this.Rotate(logFilePath);
 
-            using (var streamWriter = File.AppendText(logFilePath))
-            {
-                streamWriter.WriteLine(message);
-            }
+            using var streamWriter = File.AppendText(logFilePath);
+            streamWriter.WriteLine(message);
         }
 
-        private string FormatLogFileName()
+        private static string FormatLogFileName()
         {
             return $"Concierge.log";
         }
 
-        private string FormatLogFilePath(string filePath)
+        private static string FormatLogFilePath(string filePath)
         {
             return filePath.IsNullOrWhiteSpace() ?
                 Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), DefaultLoggingFolder) :

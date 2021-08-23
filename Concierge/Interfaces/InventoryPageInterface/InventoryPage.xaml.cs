@@ -46,7 +46,7 @@ namespace Concierge.Interfaces.InventoryPageInterface
         {
             if (this.InventoryDataGrid.Items.Count > 0)
             {
-                this.InventoryDataGrid.SelectedItem = this.InventoryDataGrid.Items[this.InventoryDataGrid.Items.Count - 1];
+                this.InventoryDataGrid.SelectedItem = this.InventoryDataGrid.Items[^1];
                 this.InventoryDataGrid.UpdateLayout();
                 this.InventoryDataGrid.ScrollIntoView(this.InventoryDataGrid.SelectedItem);
             }

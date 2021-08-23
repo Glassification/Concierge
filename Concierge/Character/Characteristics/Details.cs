@@ -60,11 +60,11 @@ namespace Concierge.Character.Characteristics
             }
             else
             {
-                if (conditions.Encumbrance.Equals("Encumbered"))
+                if (Statuses.Conditions.Encumbrance.Equals("Encumbered"))
                 {
                     baseMovement -= 10;
                 }
-                else if (conditions.Encumbrance.Equals("Heavily Encumbered"))
+                else if (Statuses.Conditions.Encumbrance.Equals("Heavily Encumbered"))
                 {
                     baseMovement -= 20;
                 }

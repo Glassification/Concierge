@@ -49,7 +49,7 @@ namespace Concierge.Interfaces.AbilitiesPageInterface
         {
             if (this.AbilitiesDataGrid.Items.Count > 0)
             {
-                this.AbilitiesDataGrid.SelectedItem = this.AbilitiesDataGrid.Items[this.AbilitiesDataGrid.Items.Count - 1];
+                this.AbilitiesDataGrid.SelectedItem = this.AbilitiesDataGrid.Items[^1];
                 this.AbilitiesDataGrid.UpdateLayout();
                 this.AbilitiesDataGrid.ScrollIntoView(this.AbilitiesDataGrid.SelectedItem);
             }

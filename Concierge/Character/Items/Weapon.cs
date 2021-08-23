@@ -32,22 +32,17 @@ namespace Concierge.Character.Items
                     bonus = Program.CcsFile.Character.ProficiencyBonus;
                 }
 
-                switch (this.Ability)
+                return this.Ability switch
                 {
-                    default:
-                    case Abilities.STR:
-                        return Utilities.CalculateBonus(Program.CcsFile.Character.Attributes.Strength) + bonus;
-                    case Abilities.DEX:
-                        return Utilities.CalculateBonus(Program.CcsFile.Character.Attributes.Dexterity) + bonus;
-                    case Abilities.CON:
-                        return Utilities.CalculateBonus(Program.CcsFile.Character.Attributes.Constitution) + bonus;
-                    case Abilities.INT:
-                        return Utilities.CalculateBonus(Program.CcsFile.Character.Attributes.Intelligence) + bonus;
-                    case Abilities.WIS:
-                        return Utilities.CalculateBonus(Program.CcsFile.Character.Attributes.Wisdom) + bonus;
-                    case Abilities.CHA:
-                        return Utilities.CalculateBonus(Program.CcsFile.Character.Attributes.Charisma) + bonus;
-                }
+                    Abilities.STR => Utilities.CalculateBonus(Program.CcsFile.Character.Attributes.Strength) + bonus,
+                    Abilities.DEX => Utilities.CalculateBonus(Program.CcsFile.Character.Attributes.Dexterity) + bonus,
+                    Abilities.CON => Utilities.CalculateBonus(Program.CcsFile.Character.Attributes.Constitution) + bonus,
+                    Abilities.INT => Utilities.CalculateBonus(Program.CcsFile.Character.Attributes.Intelligence) + bonus,
+                    Abilities.WIS => Utilities.CalculateBonus(Program.CcsFile.Character.Attributes.Wisdom) + bonus,
+                    Abilities.CHA => Utilities.CalculateBonus(Program.CcsFile.Character.Attributes.Charisma) + bonus,
+                    Abilities.NONE => throw new NotImplementedException(),
+                    _ => throw new NotImplementedException(),
+                };
             }
         }
 

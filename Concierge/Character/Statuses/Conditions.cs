@@ -7,7 +7,6 @@ namespace Concierge.Character.Statuses
     using System.Collections.Generic;
     using System.Linq;
 
-    using Concierge.Utility;
     using Newtonsoft.Json;
 
     public class Conditions
@@ -54,6 +53,34 @@ namespace Concierge.Character.Statuses
             this.Unconscious = "Cured";
         }
 
+        [JsonIgnore]
+        public static string Encumbrance
+        {
+            get
+            {
+                var str = "Normal";
+
+                if (Program.CcsFile.Character.Armor.Strength > Program.CcsFile.Character.Attributes.Strength)
+                {
+                    str = "Encumbered";
+                }
+
+                if (Program.CcsFile.UseEncumbrance)
+                {
+                    if (Program.CcsFile.Character.CarryWeight > Program.CcsFile.Character.LightCarryCapacity && Program.CcsFile.Character.CarryWeight <= Program.CcsFile.Character.MediumCarryCapacity)
+                    {
+                        str = "Encumbered";
+                    }
+                    else if (Program.CcsFile.Character.CarryWeight > Program.CcsFile.Character.MediumCarryCapacity)
+                    {
+                        str = "Heavily Encumbered";
+                    }
+                }
+
+                return str;
+            }
+        }
+
         public string Blinded { get; set; }
 
         public string Charmed { get; set; }
@@ -84,89 +111,38 @@ namespace Concierge.Character.Statuses
 
         public string Unconscious { get; set; }
 
-        [JsonIgnore]
-        public string Encumbrance
-        {
-            get
-            {
-                var str = "Normal";
-
-                if (Program.CcsFile.Character.Armor.Strength > Program.CcsFile.Character.Attributes.Strength)
-                {
-                    str = "Encumbered";
-                }
-
-                if (Program.CcsFile.UseEncumbrance)
-                {
-                    if (Program.CcsFile.Character.CarryWeight > Program.CcsFile.Character.LightCarryCapacity && Program.CcsFile.Character.CarryWeight <= Program.CcsFile.Character.MediumCarryCapacity)
-                    {
-                        str = "Encumbered";
-                    }
-                    else if (Program.CcsFile.Character.CarryWeight > Program.CcsFile.Character.MediumCarryCapacity)
-                    {
-                        str = "Heavily Encumbered";
-                    }
-                }
-
-                return str;
-            }
-        }
-
         /// =========================================
         /// GetDescription()
         /// =========================================
-        public string GetDescription(string name)
+        public static string GetDescription(string name)
         {
             const string str = ", ";
 
-            switch (name)
+            return name switch
             {
-                case "Blinded":
-                    return BlindedDescription;
-                case "Charmed":
-                    return CharmedDescription;
-                case "Deafened":
-                    return DeafenedDescription;
-                case "Encumbered":
-                case "Heavily Encumbered":
-                    return EncumbranceDescription;
-                case "Frightened":
-                    return FrightenedDescription;
-                case "Grappled":
-                    return GrappledDescription;
-                case "Incapacitated":
-                    return IncapacitatedDescription;
-                case "Invisible":
-                    return InvisibleDescription;
-                case "Paralyzed":
-                    return ParalyzedDescription;
-                case "Petrified":
-                    return PetrifiedDescription;
-                case "Poisoned":
-                    return PoisonedDescription;
-                case "Prone":
-                    return ProneDescription;
-                case "Restrained":
-                    return RestrainedDescription;
-                case "Stunned":
-                    return StunnedDescription;
-                case "Unconscious":
-                    return UnconsciousDescription;
-                case "One":
-                    return Exausted1;
-                case "Two":
-                    return Exausted1 + str + Exausted2;
-                case "Three":
-                    return Exausted1 + str + Exausted2 + str + Exausted3;
-                case "Four":
-                    return Exausted1 + str + Exausted2 + str + Exausted3 + str + Exausted4;
-                case "Five":
-                    return Exausted1 + str + Exausted2 + str + Exausted3 + str + Exausted4 + str + Exausted5;
-                case "Six":
-                    return Exausted6;
-                default:
-                    return string.Empty;
-            }
+                "Blinded" => BlindedDescription,
+                "Charmed" => CharmedDescription,
+                "Deafened" => DeafenedDescription,
+                "Encumbered" or "Heavily Encumbered" => EncumbranceDescription,
+                "Frightened" => FrightenedDescription,
+                "Grappled" => GrappledDescription,
+                "Incapacitated" => IncapacitatedDescription,
+                "Invisible" => InvisibleDescription,
+                "Paralyzed" => ParalyzedDescription,
+                "Petrified" => PetrifiedDescription,
+                "Poisoned" => PoisonedDescription,
+                "Prone" => ProneDescription,
+                "Restrained" => RestrainedDescription,
+                "Stunned" => StunnedDescription,
+                "Unconscious" => UnconsciousDescription,
+                "One" => Exausted1,
+                "Two" => Exausted1 + str + Exausted2,
+                "Three" => Exausted1 + str + Exausted2 + str + Exausted3,
+                "Four" => Exausted1 + str + Exausted2 + str + Exausted3 + str + Exausted4,
+                "Five" => Exausted1 + str + Exausted2 + str + Exausted3 + str + Exausted4 + str + Exausted5,
+                "Six" => Exausted6,
+                _ => string.Empty,
+            };
         }
 
         /// =========================================
@@ -176,22 +152,22 @@ namespace Concierge.Character.Statuses
         {
             var keyValuePairs = new List<KeyValuePair<string, string>>
             {
-                new KeyValuePair<string, string>(this.Blinded, "Blinded - " + this.GetDescription(this.Blinded)),
-                new KeyValuePair<string, string>(this.Charmed, "Charmed - " + this.GetDescription(this.Charmed)),
-                new KeyValuePair<string, string>(this.Deafened, "Deafened - " + this.GetDescription(this.Deafened)),
-                new KeyValuePair<string, string>(this.Encumbrance, this.Encumbrance + " - " + this.GetDescription(this.Encumbrance)),
-                new KeyValuePair<string, string>(this.Fatigued, this.ToInteger(this.Fatigued) + " - " + this.GetDescription(this.Fatigued)),
-                new KeyValuePair<string, string>(this.Frightened, "Frightened - " + this.GetDescription(this.Frightened)),
-                new KeyValuePair<string, string>(this.Grappled, "Grappled - " + this.GetDescription(this.Grappled)),
-                new KeyValuePair<string, string>(this.Incapacitated, "Incapacitated - " + this.GetDescription(this.Incapacitated)),
-                new KeyValuePair<string, string>(this.Invisible, "Invisible - " + this.GetDescription(this.Invisible)),
-                new KeyValuePair<string, string>(this.Paralyzed, "Paralyzed - " + this.GetDescription(this.Paralyzed)),
-                new KeyValuePair<string, string>(this.Petrified, "Petrified - " + this.GetDescription(this.Petrified)),
-                new KeyValuePair<string, string>(this.Poisoned, "Poisoned - " + this.GetDescription(this.Poisoned)),
-                new KeyValuePair<string, string>(this.Prone, "Prone - " + this.GetDescription(this.Prone)),
-                new KeyValuePair<string, string>(this.Restrained, "Restrained - " + this.GetDescription(this.Restrained)),
-                new KeyValuePair<string, string>(this.Stunned, "Stunned - " + this.GetDescription(this.Stunned)),
-                new KeyValuePair<string, string>(this.Unconscious, "Unconscious - " + this.GetDescription(this.Unconscious)),
+                new KeyValuePair<string, string>(this.Blinded, "Blinded - " + GetDescription(this.Blinded)),
+                new KeyValuePair<string, string>(this.Charmed, "Charmed - " + GetDescription(this.Charmed)),
+                new KeyValuePair<string, string>(this.Deafened, "Deafened - " + GetDescription(this.Deafened)),
+                new KeyValuePair<string, string>(Encumbrance, Encumbrance + " - " + GetDescription(Encumbrance)),
+                new KeyValuePair<string, string>(this.Fatigued, ToInteger(this.Fatigued) + " - " + GetDescription(this.Fatigued)),
+                new KeyValuePair<string, string>(this.Frightened, "Frightened - " + GetDescription(this.Frightened)),
+                new KeyValuePair<string, string>(this.Grappled, "Grappled - " + GetDescription(this.Grappled)),
+                new KeyValuePair<string, string>(this.Incapacitated, "Incapacitated - " + GetDescription(this.Incapacitated)),
+                new KeyValuePair<string, string>(this.Invisible, "Invisible - " + GetDescription(this.Invisible)),
+                new KeyValuePair<string, string>(this.Paralyzed, "Paralyzed - " + GetDescription(this.Paralyzed)),
+                new KeyValuePair<string, string>(this.Petrified, "Petrified - " + GetDescription(this.Petrified)),
+                new KeyValuePair<string, string>(this.Poisoned, "Poisoned - " + GetDescription(this.Poisoned)),
+                new KeyValuePair<string, string>(this.Prone, "Prone - " + GetDescription(this.Prone)),
+                new KeyValuePair<string, string>(this.Restrained, "Restrained - " + GetDescription(this.Restrained)),
+                new KeyValuePair<string, string>(this.Stunned, "Stunned - " + GetDescription(this.Stunned)),
+                new KeyValuePair<string, string>(this.Unconscious, "Unconscious - " + GetDescription(this.Unconscious)),
             };
 
             return keyValuePairs.Where(x => !x.Key.Equals("Cured") && !x.Key.Equals("Normal")).ToList();
@@ -221,25 +197,18 @@ namespace Concierge.Character.Statuses
             return copy;
         }
 
-        private string ToInteger(string str)
+        private static string ToInteger(string str)
         {
-            switch (str)
+            return str switch
             {
-                case "One":
-                    return "Exaustion 1";
-                case "Two":
-                    return "Exaustion 2";
-                case "Three":
-                    return "Exaustion 3";
-                case "Four":
-                    return "Exaustion 4";
-                case "Five":
-                    return "Exaustion 5";
-                case "Six":
-                    return "Exaustion 6";
-                default:
-                    return string.Empty;
-            }
+                "One" => "Exaustion 1",
+                "Two" => "Exaustion 2",
+                "Three" => "Exaustion 3",
+                "Four" => "Exaustion 4",
+                "Five" => "Exaustion 5",
+                "Six" => "Exaustion 6",
+                _ => string.Empty,
+            };
         }
     }
 }

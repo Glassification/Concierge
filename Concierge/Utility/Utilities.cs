@@ -127,7 +127,7 @@ namespace Concierge.Utility
 
             totalLevel += newValue;
 
-            return totalLevel <= Constants.MaxLevel && totalLevel >= 0;
+            return totalLevel is <= Constants.MaxLevel and >= 0;
         }
 
         public static Brush SetUsedTextStyle(int total, int used)

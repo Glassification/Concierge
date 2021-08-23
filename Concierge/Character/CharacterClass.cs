@@ -28,7 +28,7 @@ namespace Concierge.Character
             get => this.level;
             set
             {
-                if (value <= Constants.MaxLevel && value >= 0)
+                if (value is <= Constants.MaxLevel and >= 0)
                 {
                     if (Utilities.ValidateClassLevel(Program.CcsFile.Character, this.Id, value))
                     {

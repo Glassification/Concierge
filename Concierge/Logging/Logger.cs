@@ -30,17 +30,11 @@ namespace Concierge.Logging
             this.loggingThread.Start();
         }
 
-        /// =========================================
-        /// Info()
-        /// =========================================
         public void Info(string message)
         {
             this.Log(message, LogType.INF);
         }
 
-        /// =========================================
-        /// Info()
-        /// =========================================
         public void Info(object obj)
         {
             try
@@ -54,33 +48,21 @@ namespace Concierge.Logging
             }
         }
 
-        /// =========================================
-        /// Debug()
-        /// =========================================
         public void Debug(string message)
         {
             this.Log(message, LogType.DBG);
         }
 
-        /// =========================================
-        /// Warning()
-        /// =========================================
         public void Warning(string message)
         {
             this.Log(message, LogType.WRN);
         }
 
-        /// =========================================
-        /// Error()
-        /// =========================================
         public void Error(string message)
         {
             this.Log(message, LogType.ERR);
         }
 
-        /// =========================================
-        /// Error()
-        /// =========================================
         public void Error(Exception e)
         {
             if (this.logVerbosity != LogVerbosity.None)
@@ -89,55 +71,34 @@ namespace Concierge.Logging
             }
         }
 
-        /// =========================================
-        /// NewLine()
-        /// =========================================
         public void NewLine()
         {
             this.Log();
         }
 
-        /// =========================================
-        /// ToString()
-        /// =========================================
         public override string ToString()
         {
             return $"Logger settings: [Type: {this.GetType().Name}, Verbosity: {this.logVerbosity}, ";
         }
 
-        /// =========================================
-        /// Flush()
-        /// =========================================
         public void Flush()
         {
             this.waiting.WaitOne();
         }
 
-        /// =========================================
-        /// Dispose()
-        /// =========================================
         public void Dispose()
         {
             this.terminate.Set();
             this.loggingThread.Join();
         }
 
-        /// =========================================
-        /// CreateLog()
-        /// =========================================
         protected abstract void CreateLog(string message);
 
-        /// =========================================
-        /// ComposeLogRow()
-        /// =========================================
         protected virtual string ComposeLogRow(string message, LogType logType)
         {
             return $"[{DateTime.Now.ToString(CultureInfo.InvariantCulture)} {logType}] - {message}";
         }
 
-        /// =========================================
-        /// UnwrapExceptionMessages()
-        /// =========================================
         protected virtual string UnwrapExceptionMessages(Exception ex)
         {
             if (ex == null)
@@ -148,9 +109,6 @@ namespace Concierge.Logging
             return $"{ex}, Inner exception: {this.UnwrapExceptionMessages(ex.InnerException)} ";
         }
 
-        /// =========================================
-        /// ProcessQueue()
-        /// =========================================
         private void ProcessQueue()
         {
             while (true)
@@ -181,9 +139,6 @@ namespace Concierge.Logging
             }
         }
 
-        /// =========================================
-        /// Log()
-        /// =========================================
         private void Log(string message, LogType logType)
         {
             if (message.IsNullOrWhiteSpace())
@@ -204,9 +159,6 @@ namespace Concierge.Logging
             }
         }
 
-        /// =========================================
-        /// Log()
-        /// =========================================
         private void Log()
         {
             lock (this.queue)

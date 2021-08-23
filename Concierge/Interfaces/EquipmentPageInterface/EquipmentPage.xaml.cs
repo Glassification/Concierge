@@ -84,7 +84,7 @@ namespace Concierge.Interfaces.EquipmentPageInterface
         {
             if (this.WeaponDataGrid.Items.Count > 0)
             {
-                this.WeaponDataGrid.SelectedItem = this.WeaponDataGrid.Items[this.WeaponDataGrid.Items.Count - 1];
+                this.WeaponDataGrid.SelectedItem = this.WeaponDataGrid.Items[^1];
                 this.WeaponDataGrid.UpdateLayout();
                 this.WeaponDataGrid.ScrollIntoView(this.WeaponDataGrid.SelectedItem);
             }
@@ -104,7 +104,7 @@ namespace Concierge.Interfaces.EquipmentPageInterface
         {
             if (this.AmmoDataGrid.Items.Count > 0)
             {
-                this.AmmoDataGrid.SelectedItem = this.AmmoDataGrid.Items[this.AmmoDataGrid.Items.Count - 1];
+                this.AmmoDataGrid.SelectedItem = this.AmmoDataGrid.Items[^1];
                 this.AmmoDataGrid.UpdateLayout();
                 this.AmmoDataGrid.ScrollIntoView(this.AmmoDataGrid.SelectedItem);
             }

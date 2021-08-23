@@ -28,55 +28,37 @@ namespace Concierge.Character.Characteristics
         public int Strength
         {
             get => this.strength;
-            set
-            {
-                this.strength = Truncate(value);
-            }
+            set => this.strength = Truncate(value);
         }
 
         public int Dexterity
         {
             get => this.dexterity;
-            set
-            {
-                this.dexterity = Truncate(value);
-            }
+            set => this.dexterity = Truncate(value);
         }
 
         public int Constitution
         {
             get => this.constitution;
-            set
-            {
-                this.constitution = Truncate(value);
-            }
+            set => this.constitution = Truncate(value);
         }
 
         public int Intelligence
         {
             get => this.intelligence;
-            set
-            {
-                this.intelligence = Truncate(value);
-            }
+            set => this.intelligence = Truncate(value);
         }
 
         public int Wisdom
         {
             get => this.wisdom;
-            set
-            {
-                this.wisdom = Truncate(value);
-            }
+            set => this.wisdom = Truncate(value);
         }
 
         public int Charisma
         {
             get => this.charisma;
-            set
-            {
-                this.charisma = Truncate(value);
-            }
+            set => this.charisma = Truncate(value);
         }
 
         private static int Truncate(int value)

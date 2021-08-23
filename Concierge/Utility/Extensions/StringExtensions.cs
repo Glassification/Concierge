@@ -8,42 +8,21 @@ namespace Concierge.Utility.Extensions
 
     public static class StringExtensions
     {
-        /// =========================================
-        /// IsNullOrWhiteSpace()
-        /// -----------------------------------------
-        /// <summary>
-        /// Indicates whether a specified string is null, empty, or consists only of white-space characters.
-        /// </summary>
-        /// =========================================
         public static bool IsNullOrWhiteSpace(this string str)
         {
             return string.IsNullOrWhiteSpace(str);
         }
 
-        /// =========================================
-        /// IsNullOrEmpty()
-        /// -----------------------------------------
-        /// <summary>
-        /// Indicates whether a specified string is null or a string.Empty string.
-        /// </summary>
-        /// =========================================
         public static bool IsNullOrEmpty(this string str)
         {
             return string.IsNullOrEmpty(str);
         }
 
-        /// =========================================
-        /// IsNumeric()
-        /// -----------------------------------------
-        /// <summary>
-        /// Indicates whether a specified string consists only of valid numeric characters.
-        /// </summary>
-        /// =========================================
         public static bool IsNumeric(this string str)
         {
             foreach (char c in str)
             {
-                if (!char.IsDigit(c) && (c != ',' && c != ';' && c != 'e' && c != 'E' && c != '+' && c != '"' && c != '.'))
+                if (!char.IsDigit(c) && c != ',' && c != ';' && c != 'e' && c != 'E' && c != '+' && c != '"' && c != '.')
                 {
                     return false;
                 }
@@ -52,13 +31,6 @@ namespace Concierge.Utility.Extensions
             return true;
         }
 
-        /// =========================================
-        /// CountCharacter()
-        /// -----------------------------------------
-        /// <summary>
-        /// Returns the number of times a specific character occures within a specified string.
-        /// </summary>
-        /// =========================================
         public static int CountCharacter(this string str, char character)
         {
             var count = 0;
@@ -78,9 +50,6 @@ namespace Concierge.Utility.Extensions
             return count;
         }
 
-        /// =========================================
-        /// ReplaceMultiple()
-        /// =========================================
         public static string ReplaceMultiple(this string str, string newCharacter, params string[] oldCharacters)
         {
             var cleanedString = str;

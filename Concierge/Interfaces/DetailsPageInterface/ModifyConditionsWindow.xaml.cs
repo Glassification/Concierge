@@ -70,7 +70,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
             this.RestrainedComboBox.Text = this.Conditions.Restrained.Equals("Cured") ? "Cured" : "Afflicted";
             this.StunnedComboBox.Text = this.Conditions.Stunned.Equals("Cured") ? "Cured" : "Afflicted";
             this.UnconsciousComboBox.Text = this.Conditions.Unconscious.Equals("Cured") ? "Cured" : "Afflicted";
-            this.EncumbranceTextBox.Text = this.Conditions.Encumbrance;
+            this.EncumbranceTextBox.Text = Conditions.Encumbrance;
         }
 
         private void UpdateConditions()

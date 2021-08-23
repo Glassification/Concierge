@@ -35,35 +35,30 @@ namespace Concierge.Tools
         public int Copper
         {
             get => this.CurrencyList[(int)Currency.Copper];
-
             set => this.CurrencyList[(int)Currency.Copper] = value;
         }
 
         public int Silver
         {
             get => this.CurrencyList[(int)Currency.Silver];
-
             set => this.CurrencyList[(int)Currency.Silver] = value;
         }
 
         public int Electrum
         {
             get => this.CurrencyList[(int)Currency.Electrum];
-
             set => this.CurrencyList[(int)Currency.Electrum] = value;
         }
 
         public int Gold
         {
             get => this.CurrencyList[(int)Currency.Gold];
-
             set => this.CurrencyList[(int)Currency.Gold] = value;
         }
 
         public int Platinum
         {
             get => this.CurrencyList[(int)Currency.Platinum];
-
             set => this.CurrencyList[(int)Currency.Platinum] = value;
         }
     }

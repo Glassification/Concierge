@@ -4,7 +4,6 @@
 
 namespace Concierge.Services
 {
-    using Concierge.Interfaces.HelperInterface;
     using Concierge.Persistence;
     using Microsoft.Win32;
 
@@ -16,9 +15,9 @@ namespace Concierge.Services
         private const string SaveFilter = "CCS files (*.ccs)|*.ccs";
         private const string DefaultFileName = "New Character.ccs";
 
+        // private readonly SaveStatusWindow saveStatusWindow = new ();
         private readonly OpenFileDialog openFileDialog;
         private readonly SaveFileDialog saveFileDialog;
-        private readonly SaveStatusWindow saveStatusWindow = new ();
 
         public FileAccessService()
         {

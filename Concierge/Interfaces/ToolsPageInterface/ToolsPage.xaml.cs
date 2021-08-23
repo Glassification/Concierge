@@ -150,7 +150,7 @@ namespace Concierge.Interfaces.ToolsPageInterface
 
             if (this.RollDiceHistoryDataGrid.Items.Count > 0)
             {
-                this.RollDiceHistoryDataGrid.SelectedItem = this.RollDiceHistoryDataGrid.Items[this.RollDiceHistoryDataGrid.Items.Count - 1];
+                this.RollDiceHistoryDataGrid.SelectedItem = this.RollDiceHistoryDataGrid.Items[^1];
                 this.RollDiceHistoryDataGrid.UpdateLayout();
                 this.RollDiceHistoryDataGrid.ScrollIntoView(this.RollDiceHistoryDataGrid.SelectedItem);
             }
