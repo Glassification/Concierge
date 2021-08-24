@@ -44,6 +44,11 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
             this.ShowDialog();
         }
 
+        public void UpdateCancelButton(string text)
+        {
+            this.CancelButton.Content = text;
+        }
+
         private void SetUpDownUpdating()
         {
             this.UsedPactUpDown.UpdatingValue();

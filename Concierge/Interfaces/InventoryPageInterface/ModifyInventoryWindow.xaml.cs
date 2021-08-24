@@ -48,6 +48,7 @@ namespace Concierge.Interfaces.InventoryPageInterface
             this.HeaderTextBlock.Text = "Add Item";
             this.Items = Program.CcsFile.Character.Inventories;
             this.ApplyButton.Visibility = Visibility.Visible;
+            this.OkButton.Visibility = Visibility.Collapsed;
 
             this.ClearFields();
             this.ShowDialog();
@@ -63,6 +64,7 @@ namespace Concierge.Interfaces.InventoryPageInterface
             this.EquippedItem = equippedItem;
             this.FillFields(inventory);
             this.ApplyButton.Visibility = Visibility.Collapsed;
+            this.OkButton.Visibility = Visibility.Visible;
 
             this.ShowDialog();
         }
@@ -74,8 +76,14 @@ namespace Concierge.Interfaces.InventoryPageInterface
             this.Editing = false;
             this.ClearFields();
             this.ApplyButton.Visibility = Visibility.Visible;
+            this.OkButton.Visibility = Visibility.Visible;
 
             this.ShowDialog();
+        }
+
+        public void UpdateCancelButton(string text)
+        {
+            this.CancelButton.Content = text;
         }
 
         private void FillFields(Inventory inventory)

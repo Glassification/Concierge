@@ -47,6 +47,11 @@ namespace Concierge.Interfaces
             this.ShowDialog();
         }
 
+        public void UpdateCancelButton(string text)
+        {
+            this.CancelButton.Content = text;
+        }
+
         private void Read()
         {
             Program.Logger.Info($"Read character sheet.");

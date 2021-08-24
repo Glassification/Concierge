@@ -127,10 +127,10 @@
                     Height="50"
                     Width="60"
                     Background="Transparent"
-                    Foreground="PaleGoldenrod"
+                    Foreground="Khaki"
                     Click="ButtonEdit_Click"
                     ToolTip="Edit Selected Item">
-                    <materialDesign:PackIcon Kind="Edit" Width="25" Height="25"/>
+                    <materialDesign:PackIcon Kind="PlaylistEdit" Width="25" Height="25"/>
                 </components:ConciergeButton>
                 <components:ConciergeButton 
                     x:Name="ButtonDelete"
@@ -269,10 +269,10 @@
                                 VerticalAlignment="Top"
                                 Background="Transparent"
                                 
-                                Foreground="PaleGoldenrod"
+                                Foreground="Khaki"
                                 ToolTip="Edit Spell Slots"
                                 Click="LevelEditButton_Click">
-                            <materialDesign:PackIcon Kind="Edit" Width="25" Height="25"/>
+                            <materialDesign:PackIcon Kind="PlaylistEdit" Width="25" Height="25"/>
                         </components:ConciergeButton>
                         <TextBlock 
                             Text="Spell Slots"

@@ -242,10 +242,10 @@
                     VerticalAlignment="Center"
                     Background="Transparent"
                     
-                    Foreground="PaleGoldenrod"
+                    Foreground="Khaki"
                     ToolTip="Edit Selected Item"
                     Click="ButtonEdit_Click">
-                    <materialDesign:PackIcon Kind="Edit" Width="25" Height="25"/>
+                    <materialDesign:PackIcon Kind="PlaylistEdit" Width="25" Height="25"/>
                 </components:ConciergeButton>
                 <components:ConciergeButton 
                     x:Name="ButtonDelete"

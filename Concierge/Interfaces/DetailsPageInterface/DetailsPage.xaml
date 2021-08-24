@@ -89,10 +89,10 @@
                                 VerticalAlignment="Center"
                                 Background="Transparent"
                                 
-                                Foreground="PaleGoldenrod"
+                                Foreground="Khaki"
                                 ToolTip="Edit"
                                 Click="EditAppearanceButton_Click">
-                            <materialDesign:PackIcon Kind="Edit" Width="25" Height="25"/>
+                            <materialDesign:PackIcon Kind="PlaylistEdit" Width="25" Height="25"/>
                         </components:ConciergeButton>
                         <TextBlock Text="Appearance"
                                Foreground="White"
@@ -381,10 +381,10 @@
                                 VerticalAlignment="Center"
                                 Background="Transparent"
                                 
-                                Foreground="PaleGoldenrod"
+                                Foreground="Khaki"
                                 ToolTip="Edit"
                                 Click="EditPersonalityButton_Click">
-                            <materialDesign:PackIcon Kind="Edit" Width="25" Height="25"/>
+                            <materialDesign:PackIcon Kind="PlaylistEdit" Width="25" Height="25"/>
                         </components:ConciergeButton>
                         <TextBlock Text="Personality"
                                Foreground="White"
@@ -668,10 +668,10 @@
                             VerticalAlignment="Center"
                             Background="Transparent"
                             
-                            Foreground="PaleGoldenrod"
+                            Foreground="Khaki"
                             Click="EditButton_Click"
                             ToolTip="Edit Selected Item">
-                            <materialDesign:PackIcon Kind="Edit" Width="25" Height="25"/>
+                            <materialDesign:PackIcon Kind="PlaylistEdit" Width="25" Height="25"/>
                         </components:ConciergeButton>
                         <components:ConciergeButton x:Name="DeleteButton"
                             Height="50"
@@ -1025,11 +1025,11 @@
                         VerticalAlignment="Top"
                         Background="Transparent"
                         
-                        Foreground="PaleGoldenrod"
+                        Foreground="Khaki"
                         ToolTip="Edit"
                         Click="EditResourcesButton_Click"
                         Margin="0, 0, 3, 3">
-                        <materialDesign:PackIcon Kind="Edit" Width="25" Height="25"/>
+                        <materialDesign:PackIcon Kind="PlaylistEdit" Width="25" Height="25"/>
                     </components:ConciergeButton>
                 </StackPanel>
             </Grid>
@@ -1112,11 +1112,11 @@
                         VerticalAlignment="Top"
                         Background="Transparent"
                         
-                        Foreground="PaleGoldenrod"
+                        Foreground="Khaki"
                         ToolTip="Edit"
                         Click="EditLanguagesButton_Click"
                         Margin="0, 0, 3, 3">
-                        <materialDesign:PackIcon Kind="Edit" Width="25" Height="25"/>
+                        <materialDesign:PackIcon Kind="PlaylistEdit" Width="25" Height="25"/>
                     </components:ConciergeButton>
                 </StackPanel>
             </Grid>
@@ -1168,11 +1168,11 @@
                             VerticalAlignment="Top"
                             Background="Transparent"
                             
-                            Foreground="PaleGoldenrod"
+                            Foreground="Khaki"
                             ToolTip="Edit"
                             Click="EditConditionsButton_Click"
                             Margin="0, 0, 3, 3">
-                        <materialDesign:PackIcon Kind="Edit" Width="25" Height="25"/>
+                        <materialDesign:PackIcon Kind="PlaylistEdit" Width="25" Height="25"/>
                     </components:ConciergeButton>
                 </StackPanel>
             </Grid>

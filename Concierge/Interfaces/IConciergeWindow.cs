@@ -9,5 +9,7 @@ namespace Concierge.Interfaces
     public interface IConciergeWindow
     {
         MessageWindowResult ShowWizardSetup();
+
+        void UpdateCancelButton(string text);
     }
 }

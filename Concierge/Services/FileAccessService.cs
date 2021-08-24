@@ -47,12 +47,16 @@ namespace Concierge.Services
                 if (this.saveFileDialog.ShowDialog() ?? false)
                 {
                     ccsFile.AbsolutePath = this.saveFileDialog.FileName;
+                    CharacterSaver.SaveCharacterSheetJson(ccsFile);
                 }
+            }
+            else
+            {
+                CharacterSaver.SaveCharacterSheetJson(ccsFile);
             }
 
             // TODO - Figure out why this is triggering a focus reset to overview page.
             // this.saveStatusWindow.ShowWindow();
-            CharacterSaver.SaveCharacterSheetJson(ccsFile);
         }
     }
 }

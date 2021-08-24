@@ -46,6 +46,7 @@ namespace Concierge.Interfaces.EquipmentPageInterface
         {
             this.Weapons = Program.CcsFile.Character.Weapons;
             this.ApplyButton.Visibility = Visibility.Visible;
+            this.OkButton.Visibility = Visibility.Collapsed;
             this.Editing = false;
             this.HeaderTextBlock.Text = "Add Weapon";
 
@@ -61,6 +62,7 @@ namespace Concierge.Interfaces.EquipmentPageInterface
             this.Editing = false;
             this.HeaderTextBlock.Text = "Add Weapon";
             this.ApplyButton.Visibility = Visibility.Visible;
+            this.OkButton.Visibility = Visibility.Visible;
 
             this.ClearFields();
             this.ShowDialog();
@@ -72,9 +74,15 @@ namespace Concierge.Interfaces.EquipmentPageInterface
             this.Editing = true;
             this.SelectedWeapon = weapon;
             this.ApplyButton.Visibility = Visibility.Collapsed;
+            this.OkButton.Visibility = Visibility.Visible;
 
             this.FillFields(weapon);
             this.ShowDialog();
+        }
+
+        public void UpdateCancelButton(string text)
+        {
+            this.CancelButton.Content = text;
         }
 
         private void FillFields(Weapon weapon)

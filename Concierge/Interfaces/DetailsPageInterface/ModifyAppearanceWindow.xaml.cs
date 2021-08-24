@@ -48,6 +48,11 @@ namespace Concierge.Interfaces.DetailsPageInterface
             this.ShowDialog();
         }
 
+        public void UpdateCancelButton(string text)
+        {
+            this.CancelButton.Content = text;
+        }
+
         private void FillFields()
         {
             this.AgeUpDown.UpdatingValue();

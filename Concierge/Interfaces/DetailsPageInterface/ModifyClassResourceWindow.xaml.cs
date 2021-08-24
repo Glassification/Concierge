@@ -41,6 +41,8 @@ namespace Concierge.Interfaces.DetailsPageInterface
             this.Editing = false;
             this.HeaderTextBlock.Text = this.HeaderText;
             this.ClassResources = Program.CcsFile.Character.ClassResources;
+            this.OkButton.Visibility = Visibility.Collapsed;
+            this.ApplyButton.Visibility = Visibility.Visible;
 
             this.ClearFields();
             this.ShowDialog();
@@ -53,6 +55,9 @@ namespace Concierge.Interfaces.DetailsPageInterface
             this.ClassResources = classResources;
             this.Editing = false;
             this.HeaderTextBlock.Text = this.HeaderText;
+            this.ApplyButton.Visibility = Visibility.Visible;
+            this.OkButton.Visibility = Visibility.Visible;
+
             this.ClearFields();
             this.ShowDialog();
         }
@@ -62,8 +67,16 @@ namespace Concierge.Interfaces.DetailsPageInterface
             this.Editing = true;
             this.HeaderTextBlock.Text = this.HeaderText;
             this.ClassResource = classResource;
+            this.ApplyButton.Visibility = Visibility.Collapsed;
+            this.OkButton.Visibility = Visibility.Visible;
+
             this.FillFields();
             this.ShowDialog();
+        }
+
+        public void UpdateCancelButton(string text)
+        {
+            this.CancelButton.Content = text;
         }
 
         private void FillFields()

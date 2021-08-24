@@ -49,56 +49,92 @@ namespace Concierge.Tools
         {
             this.IsStopped = false;
 
-            this.NextSetupStep(this.modifyCharacterPropertiesWindow);
-            this.NextSetupStep(this.modifyAttributesWindow);
-            this.NextSetupStep(this.modifySensesWindow);
-            this.NextSetupStep(this.modifyHealthWindow);
-            this.NextSetupStep(this.modifyHitDiceWindow);
-            this.NextSetupStep(this.modifyWealthWindow);
-            this.NextSetupStep(this.modifyAppearanceWindow);
-            this.NextSetupStep(this.modifyPersonalityWindow);
-            this.NextSetupStep(this.modifyProficiencyWindow);
-            this.NextSetupStep(this.modifyLanguagesWindow);
-            this.NextSetupStep(this.modifyClassResourceWindow);
-            this.NextSetupStep(this.modifyAbilitiesWindow);
-            this.NextSetupStep(this.modifyArmorWindow);
-            this.NextSetupStep(this.modifyWeaponWindow);
-            this.NextSetupStep(this.modifyAmmoWindow);
-            this.NextSetupStep(this.modifyInventoryWindow);
-            this.NextSetupStep(this.modifyEquippedItemsWindow);
-            this.NextSetupStep(this.modifySpellClassWindow);
-            this.NextSetupStep(this.modifySpellSlotsWindow);
-            this.NextSetupStep(this.modifySpellWindow);
+            var result = Program.ConciergeMessageWindow.ShowWindow(
+                "This is the Concierge Character Creation Wizard. This will help jump start your path to godhood.",
+                "Character Creation",
+                MessageWindowButtons.OkCancel,
+                MessageWindowIcons.Information);
+
+            if (result != MessageWindowResult.OK)
+            {
+                this.Stop();
+                return;
+            }
+
+            this.RunSetupSteps();
+
+            Program.ConciergeMessageWindow.ShowWindow(
+                "Character creation completed successfully.",
+                "Character Creation",
+                MessageWindowButtons.Ok,
+                MessageWindowIcons.Information);
+
+            Program.Modify();
         }
 
         public void Stop()
         {
             this.IsStopped = true;
             Program.CcsFile.Character = new ConciergeCharacter();
+            Program.Unmodify();
         }
 
-        private void NextSetupStep(IConciergeWindow conciergeWindow)
+        private void RunSetupSteps()
         {
+            this.NextSetupStep(this.modifyCharacterPropertiesWindow, "Skip Section");
+            this.NextSetupStep(this.modifyAttributesWindow, "Skip Section");
+            this.NextSetupStep(this.modifySensesWindow, "Skip Section");
+            this.NextSetupStep(this.modifyHealthWindow, "Skip Section");
+            this.NextSetupStep(this.modifyHitDiceWindow, "Skip Section");
+            this.NextSetupStep(this.modifyWealthWindow, "Skip Section");
+            this.NextSetupStep(this.modifyAppearanceWindow, "Skip Section");
+            this.NextSetupStep(this.modifyPersonalityWindow, "Skip Section");
+            this.NextSetupStep(this.modifyProficiencyWindow, "Continue");
+            this.NextSetupStep(this.modifyLanguagesWindow, "Continue");
+            this.NextSetupStep(this.modifyClassResourceWindow, "Continue");
+            this.NextSetupStep(this.modifyAbilitiesWindow, "Continue");
+            this.NextSetupStep(this.modifyArmorWindow, "Skip Section");
+            this.NextSetupStep(this.modifyWeaponWindow, "Continue");
+            this.NextSetupStep(this.modifyAmmoWindow, "Continue");
+            this.NextSetupStep(this.modifyInventoryWindow, "Continue");
+            this.NextSetupStep(this.modifyEquippedItemsWindow, "Continue");
+            this.NextSetupStep(this.modifySpellClassWindow, "Continue");
+            this.NextSetupStep(this.modifySpellSlotsWindow, "Skip Section");
+            this.NextSetupStep(this.modifySpellWindow, "Continue");
+        }
+
+        private void NextSetupStep(IConciergeWindow conciergeWindow, string buttonText)
+        {
+            MessageWindowResult wizardResult;
+            MessageWindowResult confirmExitResult;
+
             if (this.IsStopped)
             {
                 return;
             }
 
-            var result = conciergeWindow.ShowWizardSetup();
-
-            if (result == MessageWindowResult.Exit)
+            do
             {
-                result = Program.ConciergeMessageWindow.ShowWindow(
-                            "Would you like to exit Character Creation?",
-                            "Character Creation",
-                            MessageWindowButtons.YesNo,
-                            MessageWindowIcons.Question);
+                confirmExitResult = MessageWindowResult.NoResult;
 
-                if (result == MessageWindowResult.Yes)
+                conciergeWindow.UpdateCancelButton(buttonText);
+                wizardResult = conciergeWindow.ShowWizardSetup();
+
+                if (wizardResult == MessageWindowResult.Exit)
                 {
-                    this.Stop();
+                    confirmExitResult = Program.ConciergeMessageWindow.ShowWindow(
+                        "Would you like to exit Character Creation? Existing progress will be lost.",
+                        "Character Creation",
+                        MessageWindowButtons.YesNo,
+                        MessageWindowIcons.Question);
+
+                    if (confirmExitResult is MessageWindowResult.Yes or MessageWindowResult.Exit)
+                    {
+                        this.Stop();
+                    }
                 }
             }
+            while (confirmExitResult == MessageWindowResult.No);
         }
     }
 }

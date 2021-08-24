@@ -47,6 +47,11 @@ namespace Concierge.Interfaces.OverviewPageInterface
             this.ShowDialog();
         }
 
+        public void UpdateCancelButton(string text)
+        {
+            this.CancelButton.Content = text;
+        }
+
         private void FillFields()
         {
             this.InitiativeBonusUpDown.UpdatingValue();

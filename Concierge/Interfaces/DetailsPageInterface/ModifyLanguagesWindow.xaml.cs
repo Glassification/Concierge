@@ -44,6 +44,8 @@ namespace Concierge.Interfaces.DetailsPageInterface
             this.Editing = false;
             this.HeaderTextBlock.Text = this.HeaderText;
             this.Languages = Program.CcsFile.Character.Details.Languages;
+            this.ApplyButton.Visibility = Visibility.Visible;
+            this.OkButton.Visibility = Visibility.Collapsed;
 
             this.ClearFields();
             this.ShowDialog();
@@ -57,8 +59,9 @@ namespace Concierge.Interfaces.DetailsPageInterface
             this.HeaderTextBlock.Text = this.HeaderText;
             this.Languages = languages;
             this.ApplyButton.Visibility = Visibility.Visible;
-            this.ClearFields();
+            this.OkButton.Visibility = Visibility.Visible;
 
+            this.ClearFields();
             this.ShowDialog();
         }
 
@@ -68,9 +71,15 @@ namespace Concierge.Interfaces.DetailsPageInterface
             this.HeaderTextBlock.Text = this.HeaderText;
             this.SelectedLanguage = language;
             this.ApplyButton.Visibility = Visibility.Collapsed;
-            this.FillFields(language);
+            this.OkButton.Visibility = Visibility.Visible;
 
+            this.FillFields(language);
             this.ShowDialog();
+        }
+
+        public void UpdateCancelButton(string text)
+        {
+            this.CancelButton.Content = text;
         }
 
         private void FillFields(Language language)

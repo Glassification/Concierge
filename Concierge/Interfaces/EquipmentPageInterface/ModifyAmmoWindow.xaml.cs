@@ -44,6 +44,7 @@ namespace Concierge.Interfaces.EquipmentPageInterface
         {
             this.Ammunitions = Program.CcsFile.Character.Ammunitions;
             this.ApplyButton.Visibility = Visibility.Visible;
+            this.OkButton.Visibility = Visibility.Collapsed;
             this.Editing = false;
             this.HeaderTextBlock.Text = "Add Ammunitionn";
 
@@ -59,6 +60,7 @@ namespace Concierge.Interfaces.EquipmentPageInterface
             this.HeaderTextBlock.Text = "Add Ammunition";
             this.Ammunitions = ammunitions;
             this.ApplyButton.Visibility = Visibility.Visible;
+            this.OkButton.Visibility = Visibility.Visible;
 
             this.ClearFields();
             this.ShowDialog();
@@ -70,9 +72,15 @@ namespace Concierge.Interfaces.EquipmentPageInterface
             this.SelectedAmmo = ammunition;
             this.Editing = true;
             this.ApplyButton.Visibility = Visibility.Collapsed;
+            this.OkButton.Visibility = Visibility.Visible;
 
             this.FillFields(ammunition);
             this.ShowDialog();
+        }
+
+        public void UpdateCancelButton(string text)
+        {
+            this.CancelButton.Content = text;
         }
 
         private void FillFields(Ammunition ammunition)

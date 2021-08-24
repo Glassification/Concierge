@@ -133,7 +133,7 @@
                             Foreground="White"
                             StaysOpen="False" 
                             Margin="10">
-                            <StackPanel Width="250" Background="#FF191919">
+                            <StackPanel Width="200" Background="#FF191919">
                                 <Button x:Name="ButtonNewCharacter" Foreground="White" Click="ButtonNewCharacter_Click">
                                     <StackPanel Orientation="Horizontal">
                                         <materialDesign:PackIcon Kind="FileDocument" Height="25" Width="25" Margin="0 10"/>
@@ -168,7 +168,7 @@
                                 <Separator Foreground="White"/>
                                 <Button x:Name="CharacterCreationButton" Foreground="White" Click="CharacterCreationButton_Click">
                                     <StackPanel Orientation="Horizontal">
-                                        <materialDesign:PackIcon Kind="Create" Height="25" Width="25" Margin="0 10"/>
+                                        <materialDesign:PackIcon Kind="Creation" Height="25" Width="25" Margin="0 10"/>
                                         <TextBlock Text="Create Character..." VerticalAlignment="Center" Margin="20 10"/>
                                     </StackPanel>
                                 </Button>

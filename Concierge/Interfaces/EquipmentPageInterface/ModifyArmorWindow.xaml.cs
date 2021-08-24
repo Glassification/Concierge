@@ -54,6 +54,11 @@ namespace Concierge.Interfaces.EquipmentPageInterface
             this.ShowDialog();
         }
 
+        public void UpdateCancelButton(string text)
+        {
+            this.CancelButton.Content = text;
+        }
+
         private void FillArmorDetails()
         {
             this.ArmorClassUpDown.UpdatingValue();

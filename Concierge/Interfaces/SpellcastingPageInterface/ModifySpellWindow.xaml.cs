@@ -43,6 +43,7 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
             this.Editing = false;
             this.HeaderTextBlock.Text = "Add Spell";
             this.ApplyButton.Visibility = Visibility.Visible;
+            this.OkButton.Visibility = Visibility.Collapsed;
 
             this.ClearFields();
             this.ShowDialog();
@@ -55,6 +56,7 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
             this.Editing = false;
             this.HeaderTextBlock.Text = "Add Spell";
             this.ApplyButton.Visibility = Visibility.Visible;
+            this.OkButton.Visibility = Visibility.Visible;
 
             this.ClearFields();
             this.ShowDialog();
@@ -66,9 +68,15 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
             this.SelectedSpellId = spell.Id;
             this.Editing = true;
             this.ApplyButton.Visibility = Visibility.Collapsed;
+            this.OkButton.Visibility = Visibility.Visible;
             this.FillFields(spell);
 
             this.ShowDialog();
+        }
+
+        public void UpdateCancelButton(string text)
+        {
+            this.CancelButton.Content = text;
         }
 
         private void FillFields(Spell spell)

@@ -41,6 +41,7 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
             this.Editing = false;
             this.HeaderTextBlock.Text = "Add Magic Class";
             this.ApplyButton.Visibility = Visibility.Visible;
+            this.OkButton.Visibility = Visibility.Collapsed;
             this.ClearFields();
 
             this.ShowDialog();
@@ -53,6 +54,7 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
             this.Editing = false;
             this.HeaderTextBlock.Text = "Add Magic Class";
             this.ApplyButton.Visibility = Visibility.Visible;
+            this.OkButton.Visibility = Visibility.Visible;
             this.ClearFields();
 
             this.ShowDialog();
@@ -64,9 +66,15 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
             this.SelectedClassId = magicClass.Id;
             this.Editing = true;
             this.ApplyButton.Visibility = Visibility.Collapsed;
+            this.OkButton.Visibility = Visibility.Visible;
             this.FillFields(magicClass);
 
             this.ShowDialog();
+        }
+
+        public void UpdateCancelButton(string text)
+        {
+            this.CancelButton.Content = text;
         }
 
         private void FillFields(MagicClass magicClass)

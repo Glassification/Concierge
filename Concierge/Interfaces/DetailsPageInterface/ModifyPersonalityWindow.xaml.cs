@@ -49,6 +49,11 @@ namespace Concierge.Interfaces.DetailsPageInterface
             this.ShowDialog();
         }
 
+        public void UpdateCancelButton(string text)
+        {
+            this.CancelButton.Content = text;
+        }
+
         private void FillFields()
         {
             this.Trait1TextBox.Text = this.Personality.Trait1;

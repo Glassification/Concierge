@@ -36,6 +36,8 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
         {
             this.ClearFields();
             this.ItemComboBox.ItemsSource = EquippedItems.Equipable;
+            this.ApplyButton.Visibility = Visibility.Visible;
+            this.OkButton.Visibility = Visibility.Collapsed;
 
             this.ShowDialog();
 
@@ -46,8 +48,15 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
         {
             this.ClearFields();
             this.ItemComboBox.ItemsSource = EquippedItems.Equipable;
+            this.ApplyButton.Visibility = Visibility.Visible;
+            this.OkButton.Visibility = Visibility.Visible;
 
             this.ShowDialog();
+        }
+
+        public void UpdateCancelButton(string text)
+        {
+            this.CancelButton.Content = text;
         }
 
         private void ClearFields()

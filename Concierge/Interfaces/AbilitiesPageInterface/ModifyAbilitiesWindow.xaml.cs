@@ -44,6 +44,7 @@ namespace Concierge.Interfaces.AbilitiesPageInterface
             this.HeaderTextBlock.Text = "Add Ability";
             this.Abilities = Program.CcsFile.Character.Abilities;
             this.ApplyButton.Visibility = Visibility.Visible;
+            this.OkButton.Visibility = Visibility.Collapsed;
 
             this.ClearFields();
             this.ShowDialog();
@@ -56,9 +57,10 @@ namespace Concierge.Interfaces.AbilitiesPageInterface
             this.HeaderTextBlock.Text = "Edit Ability";
             this.SelectedAbility = ability;
             this.Editing = true;
-            this.FillFields(ability);
             this.ApplyButton.Visibility = Visibility.Collapsed;
+            this.OkButton.Visibility = Visibility.Visible;
 
+            this.FillFields(ability);
             this.ShowDialog();
         }
 
@@ -68,9 +70,15 @@ namespace Concierge.Interfaces.AbilitiesPageInterface
             this.HeaderTextBlock.Text = "Add Ability";
             this.Abilities = abilities;
             this.ApplyButton.Visibility = Visibility.Visible;
+            this.OkButton.Visibility = Visibility.Visible;
 
             this.ClearFields();
             this.ShowDialog();
+        }
+
+        public void UpdateCancelButton(string text)
+        {
+            this.CancelButton.Content = text;
         }
 
         private void FillFields(Ability ability)
