@@ -18,7 +18,7 @@ namespace Concierge.Interfaces.InventoryPageInterface
     /// <summary>
     /// Interaction logic for ModifyInventoryWindow.xaml.
     /// </summary>
-    public partial class ModifyInventoryWindow : Window
+    public partial class ModifyInventoryWindow : Window, IConciergeWindow
     {
         private readonly ConciergeMessageWindow conciergeMessageWindow = new ();
 
@@ -40,6 +40,22 @@ namespace Concierge.Interfaces.InventoryPageInterface
 
         private List<Inventory> Items { get; set; }
 
+        private MessageWindowResult Result { get; set; }
+
+        public MessageWindowResult ShowWizardSetup()
+        {
+            this.Editing = false;
+            this.HeaderTextBlock.Text = "Add Item";
+            this.Items = Program.CcsFile.Character.Inventories;
+            this.ApplyButton.Visibility = Visibility.Visible;
+            this.OkButton.Visibility = Visibility.Collapsed;
+
+            this.ClearFields();
+            this.ShowDialog();
+
+            return this.Result;
+        }
+
         public void ShowEdit(Inventory inventory, bool equippedItem = false)
         {
             this.HeaderTextBlock.Text = "Edit Item";
@@ -48,6 +64,7 @@ namespace Concierge.Interfaces.InventoryPageInterface
             this.EquippedItem = equippedItem;
             this.FillFields(inventory);
             this.ApplyButton.Visibility = Visibility.Collapsed;
+            this.OkButton.Visibility = Visibility.Visible;
 
             this.ShowDialog();
         }
@@ -59,8 +76,14 @@ namespace Concierge.Interfaces.InventoryPageInterface
             this.Editing = false;
             this.ClearFields();
             this.ApplyButton.Visibility = Visibility.Visible;
+            this.OkButton.Visibility = Visibility.Visible;
 
             this.ShowDialog();
+        }
+
+        public void UpdateCancelButton(string text)
+        {
+            this.CancelButton.Content = text;
         }
 
         private void FillFields(Inventory inventory)
@@ -147,6 +170,7 @@ namespace Concierge.Interfaces.InventoryPageInterface
             switch (e.Key)
             {
                 case Key.Escape:
+                    this.Result = MessageWindowResult.Exit;
                     this.Hide();
                     break;
             }
@@ -154,6 +178,7 @@ namespace Concierge.Interfaces.InventoryPageInterface
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
+            this.Result = MessageWindowResult.Exit;
             this.Hide();
         }
 
@@ -170,6 +195,7 @@ namespace Concierge.Interfaces.InventoryPageInterface
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Modify();
+            this.Result = MessageWindowResult.OK;
 
             if (this.Editing)
             {
@@ -193,6 +219,7 @@ namespace Concierge.Interfaces.InventoryPageInterface
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
+            this.Result = MessageWindowResult.Cancel;
             this.Hide();
         }
 

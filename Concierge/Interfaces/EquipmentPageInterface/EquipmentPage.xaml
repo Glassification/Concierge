@@ -79,12 +79,12 @@
                         Width="60"
                         Background="Transparent"
                         
-                        Foreground="PaleGoldenrod"
+                        Foreground="Khaki"
                         ToolTip="Apply"
                         Click="EditDetailsButton_Click"
                         HorizontalAlignment="Right"
                         VerticalAlignment="Center">
-                    <materialDesign:PackIcon Kind="Edit" Width="25" Height="25"/>
+                    <materialDesign:PackIcon Kind="PlaylistEdit" Width="25" Height="25"/>
                 </components:ConciergeButton>
             </Grid>
 
@@ -441,10 +441,10 @@
                             VerticalAlignment="Center"
                             Background="Transparent"
                             
-                            Foreground="PaleGoldenrod"
+                            Foreground="Khaki"
                             Click="ButtonEdit_Click"
                             ToolTip="Edit Selected Item">
-                        <materialDesign:PackIcon Kind="Edit" Width="25" Height="25"/>
+                        <materialDesign:PackIcon Kind="PlaylistEdit" Width="25" Height="25"/>
                     </components:ConciergeButton>
                     <components:ConciergeButton x:Name="ButtonDelete"
                             Height="50"

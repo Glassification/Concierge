@@ -8,12 +8,13 @@ namespace Concierge.Interfaces
     using System.Windows;
     using System.Windows.Input;
 
+    using Concierge.Interfaces.Enums;
     using Concierge.Utility;
 
     /// <summary>
     /// Interaction logic for ModifyPropertiesWindow.xaml.
     /// </summary>
-    public partial class ModifyPropertiesWindow : Window
+    public partial class ModifyPropertiesWindow : Window, IConciergeWindow
     {
         public ModifyPropertiesWindow()
         {
@@ -28,10 +29,27 @@ namespace Concierge.Interfaces
             Program.Logger.Info($"Initialized {nameof(ModifyPropertiesWindow)}.");
         }
 
-        public void ShowWindow()
+        private MessageWindowResult Result { get; set; }
+
+        public MessageWindowResult ShowWizardSetup()
         {
             this.Read();
+            this.ApplyButton.Visibility = Visibility.Collapsed;
             this.ShowDialog();
+
+            return this.Result;
+        }
+
+        public void ShowWindow()
+        {
+            this.ApplyButton.Visibility = Visibility.Visible;
+            this.Read();
+            this.ShowDialog();
+        }
+
+        public void UpdateCancelButton(string text)
+        {
+            this.CancelButton.Content = text;
         }
 
         private void Read()
@@ -76,6 +94,7 @@ namespace Concierge.Interfaces
             {
                 case Key.Escape:
                     Program.Logger.Info($"ESCAPE key pressed.");
+                    this.Result = MessageWindowResult.Exit;
                     this.Hide();
                     break;
             }
@@ -85,6 +104,7 @@ namespace Concierge.Interfaces
         {
             Program.Logger.Info($"OK button click.");
             Program.Modify();
+            this.Result = MessageWindowResult.OK;
 
             this.Write();
             this.Hide();
@@ -101,6 +121,7 @@ namespace Concierge.Interfaces
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Logger.Info($"Cancel button click.");
+            this.Result = MessageWindowResult.Cancel;
 
             this.Hide();
         }
@@ -108,6 +129,7 @@ namespace Concierge.Interfaces
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Logger.Info($"Close button click.");
+            this.Result = MessageWindowResult.Exit;
 
             this.Hide();
         }

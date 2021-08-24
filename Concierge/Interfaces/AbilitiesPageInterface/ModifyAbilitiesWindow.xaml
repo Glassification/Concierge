@@ -237,11 +237,8 @@
                 <components:ConciergeButton 
                     x:Name="OkButton"
                     Style="{StaticResource PopupWindowButton}"
-                    
                     Content="OK"
-                    Click="OkButton_Click"
-                    
-                    >
+                    Click="OkButton_Click">
                 </components:ConciergeButton>
                 <components:ConciergeButton 
                     x:Name="ApplyButton"

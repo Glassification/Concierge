@@ -9,11 +9,12 @@ namespace Concierge.Interfaces.OverviewPageInterface
     using System.Windows.Input;
 
     using Concierge.Character.Characteristics;
+    using Concierge.Interfaces.Enums;
 
     /// <summary>
     /// Interaction logic for ModifyAttributesWindow.xaml.
     /// </summary>
-    public partial class ModifyAttributesWindow : Window
+    public partial class ModifyAttributesWindow : Window, IConciergeWindow
     {
         public ModifyAttributesWindow()
         {
@@ -26,12 +27,31 @@ namespace Concierge.Interfaces.OverviewPageInterface
 
         private Attributes Attributes { get; set; }
 
-        public void EditAttributes(Attributes attributes)
+        private MessageWindowResult Result { get; set; }
+
+        public MessageWindowResult ShowWizardSetup()
         {
-            this.Attributes = attributes;
+            this.Attributes = Program.CcsFile.Character.Attributes;
+            this.ApplyButton.Visibility = Visibility.Collapsed;
 
             this.FillFields();
             this.ShowDialog();
+
+            return this.Result;
+        }
+
+        public void EditAttributes(Attributes attributes)
+        {
+            this.Attributes = attributes;
+            this.ApplyButton.Visibility = Visibility.Visible;
+
+            this.FillFields();
+            this.ShowDialog();
+        }
+
+        public void UpdateCancelButton(string text)
+        {
+            this.CancelButton.Content = text;
         }
 
         private void FillFields()
@@ -66,6 +86,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
             switch (e.Key)
             {
                 case Key.Escape:
+                    this.Result = MessageWindowResult.Exit;
                     this.Hide();
                     break;
             }
@@ -74,6 +95,8 @@ namespace Concierge.Interfaces.OverviewPageInterface
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Modify();
+
+            this.Result = MessageWindowResult.OK;
 
             this.UpdateAttributes();
             this.Hide();
@@ -90,11 +113,13 @@ namespace Concierge.Interfaces.OverviewPageInterface
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
+            this.Result = MessageWindowResult.Cancel;
             this.Hide();
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
+            this.Result = MessageWindowResult.Exit;
             this.Hide();
         }
     }

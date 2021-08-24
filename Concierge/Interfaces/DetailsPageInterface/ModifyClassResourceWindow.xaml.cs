@@ -10,11 +10,12 @@ namespace Concierge.Interfaces.DetailsPageInterface
     using System.Windows.Input;
 
     using Concierge.Character.Statuses;
+    using Concierge.Interfaces.Enums;
 
     /// <summary>
     /// Interaction logic for ModifyProficiencyWindow.xaml.
     /// </summary>
-    public partial class ModifyClassResourceWindow : Window
+    public partial class ModifyClassResourceWindow : Window, IConciergeWindow
     {
         public ModifyClassResourceWindow()
         {
@@ -33,11 +34,30 @@ namespace Concierge.Interfaces.DetailsPageInterface
 
         private List<ClassResource> ClassResources { get; set; }
 
+        private MessageWindowResult Result { get; set; }
+
+        public MessageWindowResult ShowWizardSetup()
+        {
+            this.Editing = false;
+            this.HeaderTextBlock.Text = this.HeaderText;
+            this.ClassResources = Program.CcsFile.Character.ClassResources;
+            this.OkButton.Visibility = Visibility.Collapsed;
+            this.ApplyButton.Visibility = Visibility.Visible;
+
+            this.ClearFields();
+            this.ShowDialog();
+
+            return this.Result;
+        }
+
         public void ShowAdd(List<ClassResource> classResources)
         {
             this.ClassResources = classResources;
             this.Editing = false;
             this.HeaderTextBlock.Text = this.HeaderText;
+            this.ApplyButton.Visibility = Visibility.Visible;
+            this.OkButton.Visibility = Visibility.Visible;
+
             this.ClearFields();
             this.ShowDialog();
         }
@@ -47,8 +67,16 @@ namespace Concierge.Interfaces.DetailsPageInterface
             this.Editing = true;
             this.HeaderTextBlock.Text = this.HeaderText;
             this.ClassResource = classResource;
+            this.ApplyButton.Visibility = Visibility.Collapsed;
+            this.OkButton.Visibility = Visibility.Visible;
+
             this.FillFields();
             this.ShowDialog();
+        }
+
+        public void UpdateCancelButton(string text)
+        {
+            this.CancelButton.Content = text;
         }
 
         private void FillFields()
@@ -97,12 +125,14 @@ namespace Concierge.Interfaces.DetailsPageInterface
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
+            this.Result = MessageWindowResult.Exit;
             this.Hide();
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Modify();
+            this.Result = MessageWindowResult.OK;
 
             this.UpdateClassResource();
             this.Hide();
@@ -124,6 +154,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
+            this.Result = MessageWindowResult.Cancel;
             this.Hide();
         }
 
@@ -132,6 +163,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
             switch (e.Key)
             {
                 case Key.Escape:
+                    this.Result = MessageWindowResult.Exit;
                     this.Hide();
                     break;
             }

@@ -24,6 +24,7 @@ namespace Concierge.Interfaces
     using Concierge.Interfaces.ToolsPageInterface;
     using Concierge.Persistence;
     using Concierge.Services;
+    using Concierge.Tools;
     using Concierge.Utility;
     using Concierge.Utility.Extensions;
 
@@ -38,6 +39,7 @@ namespace Concierge.Interfaces
         private readonly AboutConciergeWindow aboutConciergeWindow = new ();
 
         private readonly AutosaveTimer autosaveTimer = new ();
+        private readonly CharacterCreationWizard characterCreationWizard = new ();
 
         private readonly InventoryPage inventoryPage = new ();
         private readonly EquipmentPage equipmentPage = new ();
@@ -70,6 +72,7 @@ namespace Concierge.Interfaces
             this.DrawAll();
 
             Program.Logger.Info($"{nameof(MainWindow)} loaded.");
+            Program.Unmodify();
         }
 
         public static double GridContentWidthOpen => SystemParameters.PrimaryScreenWidth - 200;
@@ -80,29 +83,13 @@ namespace Concierge.Interfaces
 
         private static bool IsShift => (Keyboard.Modifiers & ModifierKeys.Shift) == ModifierKeys.Shift;
 
+        private bool IgnoreSecondPress { get; set; }
+
         public void CloseWindow()
         {
-            if (Program.Modified)
-            {
-                switch (Program.ConciergeMessageWindow.ShowWindow(
-                    "You have unsaved changes, would you like to save before closing?",
-                    "Warning",
-                    MessageWindowButtons.YesNoCancel,
-                    MessageWindowIcons.Question))
-                {
-                    case MessageWindowResult.OK:
-                        this.SaveCharacterSheet();
-                        this.Close();
-                        break;
-                    case MessageWindowResult.No:
-                        this.Close();
-                        break;
-                    default:
-                    case MessageWindowResult.Cancel:
-                        break;
-                }
-            }
-            else
+            var result = this.CheckSaveBeforeAction("closing");
+
+            if (result != MessageWindowResult.Cancel)
             {
                 this.Close();
             }
@@ -112,17 +99,44 @@ namespace Concierge.Interfaces
         {
             Program.Logger.Info($"Creating new character sheet.");
 
-            Program.CcsFile = new CcsFile();
+            var result = this.CheckSaveBeforeAction("creating a new sheet");
 
-            this.notesPage.ClearTextBox();
+            if (result == MessageWindowResult.Cancel)
+            {
+                return;
+            }
+
+            this.ResetCharacterSheet();
             this.DrawAll();
 
-            this.autosaveTimer.Stop();
+            Program.Unmodify();
+        }
+
+        public void CreateCharacterWizard()
+        {
+            Program.Logger.Info($"Open Character Creation.");
+
+            var result = this.CheckSaveBeforeAction("creating a new character");
+
+            if (result == MessageWindowResult.Cancel)
+            {
+                return;
+            }
+
+            this.ResetCharacterSheet();
+            this.characterCreationWizard.Start();
         }
 
         public void OpenCharacterSheet()
         {
             Program.Logger.Info($"Opening character sheet.");
+
+            var result = this.CheckSaveBeforeAction("opening");
+
+            if (result == MessageWindowResult.Cancel)
+            {
+                return;
+            }
 
             var ccsFile = this.fileAccessService.Open();
 
@@ -204,6 +218,27 @@ namespace Concierge.Interfaces
             Application.Current.Shutdown();
         }
 
+        private MessageWindowResult CheckSaveBeforeAction(string action)
+        {
+            if (!Program.Modified)
+            {
+                return MessageWindowResult.No;
+            }
+
+            var result = Program.ConciergeMessageWindow.ShowWindow(
+                $"You have unsaved changes. Would you like to save before {action}?",
+                "Warning",
+                MessageWindowButtons.YesNoCancel,
+                MessageWindowIcons.Warning);
+
+            if (result == MessageWindowResult.Yes)
+            {
+                this.SaveCharacterSheet();
+            }
+
+            return result;
+        }
+
         private void CollapseAll()
         {
             this.inventoryPage.Visibility = Visibility.Collapsed;
@@ -232,6 +267,16 @@ namespace Concierge.Interfaces
             Program.Logger.Info($"Navigate to {page.GetType().Name}");
         }
 
+        private void ResetCharacterSheet()
+        {
+            Program.CcsFile = new CcsFile();
+
+            this.notesPage.ClearTextBox();
+            this.DrawAll();
+
+            this.autosaveTimer.Stop();
+        }
+
         private void MoveSelection(ConciergePage page)
         {
             if (page >= 0 && ((int)page) < this.ListViewMenu.Items.Count)
@@ -256,6 +301,9 @@ namespace Concierge.Interfaces
 
             switch (e.Key)
             {
+                case Key.C:
+                    this.CreateCharacterWizard();
+                    break;
                 case Key.H:
                     this.aboutConciergeWindow.ShowWindow();
                     break;
@@ -354,30 +402,35 @@ namespace Concierge.Interfaces
         {
             ConciergeSound.TapNavigation();
             this.NewCharacterSheet();
+            this.IgnoreSecondPress = true;
         }
 
         private void ButtonOpenCharacter_Click(object sender, RoutedEventArgs e)
         {
             ConciergeSound.TapNavigation();
             this.OpenCharacterSheet();
+            this.IgnoreSecondPress = true;
         }
 
         private void ButtonSaveCharacter_Click(object sender, RoutedEventArgs e)
         {
             ConciergeSound.TapNavigation();
             this.SaveCharacterSheet();
+            this.IgnoreSecondPress = true;
         }
 
         private void ButtonSaveCharacterAs_Click(object sender, RoutedEventArgs e)
         {
             ConciergeSound.TapNavigation();
             this.SaveCharacterSheetAs();
+            this.IgnoreSecondPress = true;
         }
 
         private void ButtonLongRest_Click(object sender, RoutedEventArgs e)
         {
             ConciergeSound.TapNavigation();
             this.LongRest();
+            this.IgnoreSecondPress = true;
         }
 
         private void ItemNotes_Selected(object sender, RoutedEventArgs e)
@@ -437,6 +490,8 @@ namespace Concierge.Interfaces
 
             this.modifyPropertiesWindow.ShowWindow();
             this.DrawAll();
+
+            this.IgnoreSecondPress = true;
         }
 
         private void SettingsButton_Click(object sender, RoutedEventArgs e)
@@ -456,6 +511,8 @@ namespace Concierge.Interfaces
             {
                 this.autosaveTimer.Stop();
             }
+
+            this.IgnoreSecondPress = true;
         }
 
         private void AboutButton_Click(object sender, RoutedEventArgs e)
@@ -464,6 +521,8 @@ namespace Concierge.Interfaces
             Program.Logger.Info($"Open About.");
 
             this.aboutConciergeWindow.ShowWindow();
+
+            this.IgnoreSecondPress = true;
         }
 
         private void ButtonMinimize_Click(object sender, RoutedEventArgs e)
@@ -483,7 +542,19 @@ namespace Concierge.Interfaces
 
         private void PopupBoxButton_Click(object sender, RoutedEventArgs e)
         {
-            this.PopupBoxControl.IsPopupOpen = true;
+            if (!this.IgnoreSecondPress)
+            {
+                this.PopupBoxControl.IsPopupOpen = true;
+            }
+
+            this.IgnoreSecondPress = false;
+        }
+
+        private void CharacterCreationButton_Click(object sender, RoutedEventArgs e)
+        {
+            ConciergeSound.TapNavigation();
+            this.CreateCharacterWizard();
+            this.IgnoreSecondPress = true;
         }
     }
 }

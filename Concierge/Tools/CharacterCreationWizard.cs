@@ -1,0 +1,140 @@
+﻿// <copyright file="CharacterCreationWizard.cs" company="Thomas Beckett">
+// Copyright (c) Thomas Beckett. All rights reserved.
+// </copyright>
+
+namespace Concierge.Tools
+{
+    using Concierge.Character;
+    using Concierge.Interfaces;
+    using Concierge.Interfaces.AbilitiesPageInterface;
+    using Concierge.Interfaces.DetailsPageInterface;
+    using Concierge.Interfaces.Enums;
+    using Concierge.Interfaces.EquipmentPageInterface;
+    using Concierge.Interfaces.EquippedItemsPageInterface;
+    using Concierge.Interfaces.InventoryPageInterface;
+    using Concierge.Interfaces.OverviewPageInterface;
+    using Concierge.Interfaces.SpellcastingPageInterface;
+
+    public class CharacterCreationWizard
+    {
+        private readonly ModifyPropertiesWindow modifyCharacterPropertiesWindow = new ();
+        private readonly ModifyAttributesWindow modifyAttributesWindow = new ();
+        private readonly ModifySensesWindow modifySensesWindow = new ();
+        private readonly ModifyHealthWindow modifyHealthWindow = new ();
+        private readonly ModifyHitDiceWindow modifyHitDiceWindow = new ();
+        private readonly ModifyWealthWindow modifyWealthWindow = new ();
+        private readonly ModifyAppearanceWindow modifyAppearanceWindow = new ();
+        private readonly ModifyPersonalityWindow modifyPersonalityWindow = new ();
+        private readonly ModifyProficiencyWindow modifyProficiencyWindow = new ();
+        private readonly ModifyLanguagesWindow modifyLanguagesWindow = new ();
+        private readonly ModifyClassResourceWindow modifyClassResourceWindow = new ();
+        private readonly ModifyArmorWindow modifyArmorWindow = new ();
+        private readonly ModifyWeaponWindow modifyWeaponWindow = new ();
+        private readonly ModifyAmmoWindow modifyAmmoWindow = new ();
+        private readonly ModifyInventoryWindow modifyInventoryWindow = new ();
+        private readonly ModifyEquippedItemsWindow modifyEquippedItemsWindow = new ();
+        private readonly ModifySpellClassWindow modifySpellClassWindow = new ();
+        private readonly ModifySpellSlotsWindow modifySpellSlotsWindow = new ();
+        private readonly ModifySpellWindow modifySpellWindow = new ();
+        private readonly ModifyAbilitiesWindow modifyAbilitiesWindow = new ();
+
+        public CharacterCreationWizard()
+        {
+            this.IsStopped = false;
+        }
+
+        private bool IsStopped { get; set; }
+
+        public void Start()
+        {
+            this.IsStopped = false;
+
+            var result = Program.ConciergeMessageWindow.ShowWindow(
+                "This is the Concierge Character Creation Wizard. This will help jump start your path to godhood.",
+                "Character Creation",
+                MessageWindowButtons.OkCancel,
+                MessageWindowIcons.Information);
+
+            if (result != MessageWindowResult.OK)
+            {
+                this.Stop();
+                return;
+            }
+
+            this.RunSetupSteps();
+
+            Program.ConciergeMessageWindow.ShowWindow(
+                "Character creation completed successfully.",
+                "Character Creation",
+                MessageWindowButtons.Ok,
+                MessageWindowIcons.Information);
+
+            Program.Modify();
+        }
+
+        public void Stop()
+        {
+            this.IsStopped = true;
+            Program.CcsFile.Character = new ConciergeCharacter();
+            Program.Unmodify();
+        }
+
+        private void RunSetupSteps()
+        {
+            this.NextSetupStep(this.modifyCharacterPropertiesWindow, "Skip Section");
+            this.NextSetupStep(this.modifyAttributesWindow, "Skip Section");
+            this.NextSetupStep(this.modifySensesWindow, "Skip Section");
+            this.NextSetupStep(this.modifyHealthWindow, "Skip Section");
+            this.NextSetupStep(this.modifyHitDiceWindow, "Skip Section");
+            this.NextSetupStep(this.modifyWealthWindow, "Skip Section");
+            this.NextSetupStep(this.modifyAppearanceWindow, "Skip Section");
+            this.NextSetupStep(this.modifyPersonalityWindow, "Skip Section");
+            this.NextSetupStep(this.modifyProficiencyWindow, "Continue");
+            this.NextSetupStep(this.modifyLanguagesWindow, "Continue");
+            this.NextSetupStep(this.modifyClassResourceWindow, "Continue");
+            this.NextSetupStep(this.modifyAbilitiesWindow, "Continue");
+            this.NextSetupStep(this.modifyArmorWindow, "Skip Section");
+            this.NextSetupStep(this.modifyWeaponWindow, "Continue");
+            this.NextSetupStep(this.modifyAmmoWindow, "Continue");
+            this.NextSetupStep(this.modifyInventoryWindow, "Continue");
+            this.NextSetupStep(this.modifyEquippedItemsWindow, "Continue");
+            this.NextSetupStep(this.modifySpellClassWindow, "Continue");
+            this.NextSetupStep(this.modifySpellSlotsWindow, "Skip Section");
+            this.NextSetupStep(this.modifySpellWindow, "Continue");
+        }
+
+        private void NextSetupStep(IConciergeWindow conciergeWindow, string buttonText)
+        {
+            MessageWindowResult wizardResult;
+            MessageWindowResult confirmExitResult;
+
+            if (this.IsStopped)
+            {
+                return;
+            }
+
+            do
+            {
+                confirmExitResult = MessageWindowResult.NoResult;
+
+                conciergeWindow.UpdateCancelButton(buttonText);
+                wizardResult = conciergeWindow.ShowWizardSetup();
+
+                if (wizardResult == MessageWindowResult.Exit)
+                {
+                    confirmExitResult = Program.ConciergeMessageWindow.ShowWindow(
+                        "Would you like to exit Character Creation? Existing progress will be lost.",
+                        "Character Creation",
+                        MessageWindowButtons.YesNo,
+                        MessageWindowIcons.Question);
+
+                    if (confirmExitResult is MessageWindowResult.Yes or MessageWindowResult.Exit)
+                    {
+                        this.Stop();
+                    }
+                }
+            }
+            while (confirmExitResult == MessageWindowResult.No);
+        }
+    }
+}

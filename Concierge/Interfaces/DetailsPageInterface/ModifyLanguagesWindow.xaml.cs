@@ -11,12 +11,13 @@ namespace Concierge.Interfaces.DetailsPageInterface
     using System.Windows.Input;
 
     using Concierge.Character.Characteristics;
+    using Concierge.Interfaces.Enums;
     using Concierge.Utility;
 
     /// <summary>
     /// Interaction logic for ModifyLanguagesWindow.xaml.
     /// </summary>
-    public partial class ModifyLanguagesWindow : Window
+    public partial class ModifyLanguagesWindow : Window, IConciergeWindow
     {
         public ModifyLanguagesWindow()
         {
@@ -36,14 +37,31 @@ namespace Concierge.Interfaces.DetailsPageInterface
 
         private List<Language> Languages { get; set; }
 
+        private MessageWindowResult Result { get; set; }
+
+        public MessageWindowResult ShowWizardSetup()
+        {
+            this.Editing = false;
+            this.HeaderTextBlock.Text = this.HeaderText;
+            this.Languages = Program.CcsFile.Character.Details.Languages;
+            this.ApplyButton.Visibility = Visibility.Visible;
+            this.OkButton.Visibility = Visibility.Collapsed;
+
+            this.ClearFields();
+            this.ShowDialog();
+
+            return this.Result;
+        }
+
         public void ShowAdd(List<Language> languages)
         {
             this.Editing = false;
             this.HeaderTextBlock.Text = this.HeaderText;
             this.Languages = languages;
             this.ApplyButton.Visibility = Visibility.Visible;
-            this.ClearFields();
+            this.OkButton.Visibility = Visibility.Visible;
 
+            this.ClearFields();
             this.ShowDialog();
         }
 
@@ -53,9 +71,15 @@ namespace Concierge.Interfaces.DetailsPageInterface
             this.HeaderTextBlock.Text = this.HeaderText;
             this.SelectedLanguage = language;
             this.ApplyButton.Visibility = Visibility.Collapsed;
-            this.FillFields(language);
+            this.OkButton.Visibility = Visibility.Visible;
 
+            this.FillFields(language);
             this.ShowDialog();
+        }
+
+        public void UpdateCancelButton(string text)
+        {
+            this.CancelButton.Content = text;
         }
 
         private void FillFields(Language language)
@@ -94,6 +118,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
             switch (e.Key)
             {
                 case Key.Escape:
+                    this.Result = MessageWindowResult.Exit;
                     this.Hide();
                     break;
             }
@@ -101,12 +126,14 @@ namespace Concierge.Interfaces.DetailsPageInterface
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
+            this.Result = MessageWindowResult.Exit;
             this.Hide();
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Modify();
+            this.Result = MessageWindowResult.OK;
 
             if (this.Editing)
             {
@@ -132,6 +159,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
+            this.Result = MessageWindowResult.Cancel;
             this.Hide();
         }
 

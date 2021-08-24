@@ -14,5 +14,6 @@ namespace Concierge.Interfaces.Enums
         Cancel,
         Exit,
         Error,
+        NoResult,
     }
 }

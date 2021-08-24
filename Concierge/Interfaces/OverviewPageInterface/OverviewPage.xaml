@@ -45,10 +45,10 @@
                             VerticalAlignment="Center"
                             Background="Transparent"
                             
-                            Foreground="PaleGoldenrod"
+                            Foreground="Khaki"
                             Click="EditAttributesButton_Click"
                             ToolTip="Edit Attributes">
-                            <materialDesign:PackIcon Kind="Edit" Width="25" Height="25"/>
+                            <materialDesign:PackIcon Kind="PlaylistEdit" Width="25" Height="25"/>
                         </components:ConciergeButton>
                         <TextBlock Text="Strength"
                                    Foreground="White"
@@ -483,10 +483,10 @@
                                 VerticalAlignment="Top"
                                 Background="Transparent"
                                 
-                                Foreground="PaleGoldenrod"
+                                Foreground="Khaki"
                                 Click="EditSensesButton_Click"
                                 ToolTip="Edit Senses">
-                            <materialDesign:PackIcon Kind="Edit" Width="25" Height="25"/>
+                            <materialDesign:PackIcon Kind="PlaylistEdit" Width="25" Height="25"/>
                         </components:ConciergeButton>
                         <TextBlock Text="Initiative"
                                    Foreground="White"
@@ -1883,10 +1883,10 @@
                                         VerticalAlignment="Center"
                                         Background="Transparent"
                                         
-                                        Foreground="PaleGoldenrod"
+                                        Foreground="Khaki"
                                         Click="EditHealthButton_Click"
                                         ToolTip="Edit Health">
-                                    <materialDesign:PackIcon Kind="Edit" Width="25" Height="25"/>
+                                    <materialDesign:PackIcon Kind="PlaylistEdit" Width="25" Height="25"/>
                                 </components:ConciergeButton>
                                 <TextBlock Text="Health"
                                            Foreground="White"
@@ -1953,10 +1953,10 @@
                                 VerticalAlignment="Top"
                                 Background="Transparent"
                                 
-                                Foreground="PaleGoldenrod"
+                                Foreground="Khaki"
                                 Click="EditHitDiceButton_Click"
                                 ToolTip="Edit Attributes">
-                            <materialDesign:PackIcon Kind="Edit" Width="25" Height="25"/>
+                            <materialDesign:PackIcon Kind="PlaylistEdit" Width="25" Height="25"/>
                         </components:ConciergeButton>
 
                         <!--Header-->
@@ -2207,17 +2207,17 @@
                                    FontWeight="Bold"
                                    HorizontalAlignment="Center"
                                    VerticalAlignment="Center"/>
-                            <components:ConciergeButton x:Name="EditWealthButton"
-                            Height="50"
-                            Width="60"
-                            HorizontalAlignment="Right"
-                            VerticalAlignment="Center"
-                            Background="Transparent"
-                            
-                            Foreground="PaleGoldenrod"
-                            ToolTip="Edit"
-                            Click="EditWealthButton_Click">
-                                <materialDesign:PackIcon Kind="Edit" Width="25" Height="25"/>
+                            <components:ConciergeButton 
+                                x:Name="EditWealthButton"
+                                Height="50"
+                                Width="60"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center"
+                                Background="Transparent"
+                                Foreground="Khaki"
+                                ToolTip="Edit"
+                                Click="EditWealthButton_Click">
+                                <materialDesign:PackIcon Kind="PlaylistEdit" Width="25" Height="25"/>
                             </components:ConciergeButton>
                         </Grid>
 

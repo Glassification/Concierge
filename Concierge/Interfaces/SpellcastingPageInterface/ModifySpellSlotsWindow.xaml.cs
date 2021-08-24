@@ -8,10 +8,12 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
     using System.Windows;
     using System.Windows.Input;
 
+    using Concierge.Interfaces.Enums;
+
     /// <summary>
     /// Interaction logic for ModifySpellSlotsWindow.xaml.
     /// </summary>
-    public partial class ModifySpellSlotsWindow : Window
+    public partial class ModifySpellSlotsWindow : Window, IConciergeWindow
     {
         public ModifySpellSlotsWindow()
         {
@@ -22,10 +24,29 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
 
         public event ApplyChangesEventHandler ApplyChanges;
 
-        public void EditSpellSlots()
+        private MessageWindowResult Result { get; set; }
+
+        public MessageWindowResult ShowWizardSetup()
         {
+            this.ApplyButton.Visibility = Visibility.Collapsed;
+
             this.FillFields();
             this.ShowDialog();
+
+            return this.Result;
+        }
+
+        public void EditSpellSlots()
+        {
+            this.ApplyButton.Visibility = Visibility.Visible;
+
+            this.FillFields();
+            this.ShowDialog();
+        }
+
+        public void UpdateCancelButton(string text)
+        {
+            this.CancelButton.Content = text;
         }
 
         private void SetUpDownUpdating()
@@ -114,6 +135,7 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
             switch (e.Key)
             {
                 case Key.Escape:
+                    this.Result = MessageWindowResult.Exit;
                     this.Hide();
                     break;
             }
@@ -121,12 +143,14 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
+            this.Result = MessageWindowResult.Exit;
             this.Hide();
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Modify();
+            this.Result = MessageWindowResult.OK;
 
             this.UpdateSpellSlots();
             this.Hide();
@@ -143,6 +167,7 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
+            this.Result = MessageWindowResult.Cancel;
             this.Hide();
         }
     }

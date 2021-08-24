@@ -11,13 +11,14 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
 
     using Concierge.Character.Enums;
     using Concierge.Character.Items;
+    using Concierge.Interfaces.Enums;
     using Concierge.Utility;
     using Concierge.Utility.Extensions;
 
     /// <summary>
     /// Interaction logic for ModifyEquippedItemsWindow.xaml.
     /// </summary>
-    public partial class ModifyEquippedItemsWindow : Window
+    public partial class ModifyEquippedItemsWindow : Window, IConciergeWindow
     {
         public ModifyEquippedItemsWindow()
         {
@@ -29,12 +30,33 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
 
         public event ApplyChangesEventHandler ApplyChanges;
 
+        private MessageWindowResult Result { get; set; }
+
+        public MessageWindowResult ShowWizardSetup()
+        {
+            this.ClearFields();
+            this.ItemComboBox.ItemsSource = EquippedItems.Equipable;
+            this.ApplyButton.Visibility = Visibility.Visible;
+            this.OkButton.Visibility = Visibility.Collapsed;
+
+            this.ShowDialog();
+
+            return this.Result;
+        }
+
         public void ShowAdd()
         {
             this.ClearFields();
             this.ItemComboBox.ItemsSource = EquippedItems.Equipable;
+            this.ApplyButton.Visibility = Visibility.Visible;
+            this.OkButton.Visibility = Visibility.Visible;
 
             this.ShowDialog();
+        }
+
+        public void UpdateCancelButton(string text)
+        {
+            this.CancelButton.Content = text;
         }
 
         private void ClearFields()
@@ -45,12 +67,14 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
+            this.Result = MessageWindowResult.Exit;
             this.Hide();
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Modify();
+            this.Result = MessageWindowResult.OK;
 
             if (!(this.ItemComboBox.SelectedItem is Inventory item) || this.SlotComboBox.Text.IsNullOrWhiteSpace())
             {
@@ -85,6 +109,7 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
+            this.Result = MessageWindowResult.Cancel;
             this.Hide();
         }
 
@@ -93,6 +118,7 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
             switch (e.Key)
             {
                 case Key.Escape:
+                    this.Result = MessageWindowResult.Exit;
                     this.Hide();
                     break;
             }

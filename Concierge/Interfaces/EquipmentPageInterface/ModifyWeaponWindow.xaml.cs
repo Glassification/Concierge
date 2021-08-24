@@ -13,12 +13,13 @@ namespace Concierge.Interfaces.EquipmentPageInterface
 
     using Concierge.Character.Enums;
     using Concierge.Character.Items;
+    using Concierge.Interfaces.Enums;
     using Concierge.Utility;
 
     /// <summary>
     /// Interaction logic for ModifyWeaponWindow.xaml.
     /// </summary>
-    public partial class ModifyWeaponWindow : Window
+    public partial class ModifyWeaponWindow : Window, IConciergeWindow
     {
         public ModifyWeaponWindow()
         {
@@ -39,14 +40,31 @@ namespace Concierge.Interfaces.EquipmentPageInterface
 
         private List<Weapon> Weapons { get; set; }
 
+        private MessageWindowResult Result { get; set; }
+
+        public MessageWindowResult ShowWizardSetup()
+        {
+            this.Weapons = Program.CcsFile.Character.Weapons;
+            this.ApplyButton.Visibility = Visibility.Visible;
+            this.OkButton.Visibility = Visibility.Collapsed;
+            this.Editing = false;
+            this.HeaderTextBlock.Text = "Add Weapon";
+
+            this.ClearFields();
+            this.ShowDialog();
+
+            return this.Result;
+        }
+
         public void ShowAdd(List<Weapon> weapons)
         {
             this.Weapons = weapons;
-            this.HeaderTextBlock.Text = "Add Weapon";
             this.Editing = false;
+            this.HeaderTextBlock.Text = "Add Weapon";
             this.ApplyButton.Visibility = Visibility.Visible;
-            this.ClearFields();
+            this.OkButton.Visibility = Visibility.Visible;
 
+            this.ClearFields();
             this.ShowDialog();
         }
 
@@ -56,9 +74,15 @@ namespace Concierge.Interfaces.EquipmentPageInterface
             this.Editing = true;
             this.SelectedWeapon = weapon;
             this.ApplyButton.Visibility = Visibility.Collapsed;
-            this.FillFields(weapon);
+            this.OkButton.Visibility = Visibility.Visible;
 
+            this.FillFields(weapon);
             this.ShowDialog();
+        }
+
+        public void UpdateCancelButton(string text)
+        {
+            this.CancelButton.Content = text;
         }
 
         private void FillFields(Weapon weapon)
@@ -143,6 +167,7 @@ namespace Concierge.Interfaces.EquipmentPageInterface
             switch (e.Key)
             {
                 case Key.Escape:
+                    this.Result = MessageWindowResult.Exit;
                     this.Hide();
                     break;
             }
@@ -150,11 +175,13 @@ namespace Concierge.Interfaces.EquipmentPageInterface
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
+            this.Result = MessageWindowResult.Exit;
             this.Hide();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
+            this.Result = MessageWindowResult.Cancel;
             this.Hide();
         }
 
@@ -171,6 +198,7 @@ namespace Concierge.Interfaces.EquipmentPageInterface
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Modify();
+            this.Result = MessageWindowResult.OK;
 
             if (this.Editing)
             {

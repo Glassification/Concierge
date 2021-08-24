@@ -9,11 +9,12 @@ namespace Concierge.Interfaces.OverviewPageInterface
     using System.Windows.Input;
 
     using Concierge.Character.Statuses;
+    using Concierge.Interfaces.Enums;
 
     /// <summary>
     /// Interaction logic for ModifyHealthWindow.xaml.
     /// </summary>
-    public partial class ModifyHealthWindow : Window
+    public partial class ModifyHealthWindow : Window, IConciergeWindow
     {
         public ModifyHealthWindow()
         {
@@ -26,12 +27,31 @@ namespace Concierge.Interfaces.OverviewPageInterface
 
         private Vitality Vitality { get; set; }
 
-        public void EditHealth(Vitality vitality)
+        private MessageWindowResult Result { get; set; }
+
+        public MessageWindowResult ShowWizardSetup()
         {
-            this.Vitality = vitality;
+            this.Vitality = Program.CcsFile.Character.Vitality;
+            this.ApplyButton.Visibility = Visibility.Collapsed;
 
             this.FillFields();
             this.ShowDialog();
+
+            return this.Result;
+        }
+
+        public void EditHealth(Vitality vitality)
+        {
+            this.Vitality = vitality;
+            this.ApplyButton.Visibility = Visibility.Visible;
+
+            this.FillFields();
+            this.ShowDialog();
+        }
+
+        public void UpdateCancelButton(string text)
+        {
+            this.CancelButton.Content = text;
         }
 
         private void FillFields()
@@ -57,6 +77,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
             switch (e.Key)
             {
                 case Key.Escape:
+                    this.Result = MessageWindowResult.Exit;
                     this.Hide();
                     break;
             }
@@ -64,11 +85,13 @@ namespace Concierge.Interfaces.OverviewPageInterface
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
+            this.Result = MessageWindowResult.Exit;
             this.Hide();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
+            this.Result = MessageWindowResult.Cancel;
             this.Hide();
         }
 
@@ -84,6 +107,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Modify();
+            this.Result = MessageWindowResult.OK;
 
             this.UpdateHealth();
             this.Hide();

@@ -7,10 +7,12 @@ namespace Concierge.Interfaces.OverviewPageInterface
     using System.Windows;
     using System.Windows.Input;
 
+    using Concierge.Interfaces.Enums;
+
     /// <summary>
     /// Interaction logic for ModifyWealthWindow.xaml.
     /// </summary>
-    public partial class ModifyWealthWindow : Window
+    public partial class ModifyWealthWindow : Window, IConciergeWindow
     {
         public ModifyWealthWindow()
         {
@@ -27,19 +29,27 @@ namespace Concierge.Interfaces.OverviewPageInterface
 
         private int PP { get; set; }
 
+        private MessageWindowResult Result { get; set; }
+
+        public MessageWindowResult ShowWizardSetup()
+        {
+            this.ClearFields();
+            this.FillFields();
+            this.ShowDialog();
+
+            return this.Result;
+        }
+
         public void ShowWindow()
         {
             this.ClearFields();
-
-            this.CP = Program.CcsFile.Character.Wealth.Copper;
-            this.SP = Program.CcsFile.Character.Wealth.Silver;
-            this.EP = Program.CcsFile.Character.Wealth.Electrum;
-            this.GP = Program.CcsFile.Character.Wealth.Gold;
-            this.PP = Program.CcsFile.Character.Wealth.Platinum;
-
             this.FillFields();
-
             this.ShowDialog();
+        }
+
+        public void UpdateCancelButton(string text)
+        {
+            this.CancelButton.Content = text;
         }
 
         private void ClearFields()
@@ -49,6 +59,12 @@ namespace Concierge.Interfaces.OverviewPageInterface
             this.AddRadioButton.IsChecked = true;
             this.CpRadioButton.IsChecked = true;
             this.AmountUpDown.Value = 0;
+
+            this.CP = Program.CcsFile.Character.Wealth.Copper;
+            this.SP = Program.CcsFile.Character.Wealth.Silver;
+            this.EP = Program.CcsFile.Character.Wealth.Electrum;
+            this.GP = Program.CcsFile.Character.Wealth.Gold;
+            this.PP = Program.CcsFile.Character.Wealth.Platinum;
         }
 
         private void FillFields()
@@ -69,12 +85,14 @@ namespace Concierge.Interfaces.OverviewPageInterface
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
+            this.Result = MessageWindowResult.Exit;
             this.Hide();
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Modify();
+            this.Result = MessageWindowResult.OK;
 
             Program.CcsFile.Character.Wealth.Copper = this.CP;
             Program.CcsFile.Character.Wealth.Silver = this.SP;
@@ -115,6 +133,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
+            this.Result = MessageWindowResult.Cancel;
             this.Hide();
         }
 
@@ -123,6 +142,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
             switch (e.Key)
             {
                 case Key.Escape:
+                    this.Result = MessageWindowResult.Exit;
                     this.Hide();
                     break;
             }

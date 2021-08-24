@@ -9,11 +9,12 @@ namespace Concierge.Interfaces.DetailsPageInterface
     using System.Windows.Input;
 
     using Concierge.Character.Characteristics;
+    using Concierge.Interfaces.Enums;
 
     /// <summary>
     /// Interaction logic for ModifyAppearanceWindow.xaml.
     /// </summary>
-    public partial class ModifyAppearanceWindow : Window
+    public partial class ModifyAppearanceWindow : Window, IConciergeWindow
     {
         public ModifyAppearanceWindow()
         {
@@ -26,12 +27,30 @@ namespace Concierge.Interfaces.DetailsPageInterface
 
         private Appearance Appearance { get; set; }
 
+        private MessageWindowResult Result { get; set; }
+
+        public MessageWindowResult ShowWizardSetup()
+        {
+            this.Appearance = Program.CcsFile.Character.Appearance;
+            this.ApplyButton.Visibility = Visibility.Collapsed;
+            this.FillFields();
+            this.ShowDialog();
+
+            return this.Result;
+        }
+
         public void ShowEdit(Appearance appearance)
         {
             this.Appearance = appearance;
+            this.ApplyButton.Visibility = Visibility.Visible;
 
             this.FillFields();
             this.ShowDialog();
+        }
+
+        public void UpdateCancelButton(string text)
+        {
+            this.CancelButton.Content = text;
         }
 
         private void FillFields()
@@ -65,6 +84,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
             switch (e.Key)
             {
                 case Key.Escape:
+                    this.Result = MessageWindowResult.Exit;
                     this.Hide();
                     break;
             }
@@ -72,12 +92,14 @@ namespace Concierge.Interfaces.DetailsPageInterface
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
+            this.Result = MessageWindowResult.Exit;
             this.Hide();
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Modify();
+            this.Result = MessageWindowResult.OK;
 
             this.UpdateAppearance();
             this.Hide();
@@ -94,6 +116,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
+            this.Result = MessageWindowResult.Cancel;
             this.Hide();
         }
     }
