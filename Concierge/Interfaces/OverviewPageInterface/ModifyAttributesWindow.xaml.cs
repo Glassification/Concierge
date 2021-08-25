@@ -27,9 +27,9 @@ namespace Concierge.Interfaces.OverviewPageInterface
 
         private Attributes Attributes { get; set; }
 
-        private MessageWindowResult Result { get; set; }
+        private ConciergeWindowResult Result { get; set; }
 
-        public MessageWindowResult ShowWizardSetup()
+        public ConciergeWindowResult ShowWizardSetup()
         {
             this.Attributes = Program.CcsFile.Character.Attributes;
             this.ApplyButton.Visibility = Visibility.Collapsed;
@@ -86,7 +86,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
             switch (e.Key)
             {
                 case Key.Escape:
-                    this.Result = MessageWindowResult.Exit;
+                    this.Result = ConciergeWindowResult.Exit;
                     this.Hide();
                     break;
             }
@@ -96,7 +96,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
         {
             Program.Modify();
 
-            this.Result = MessageWindowResult.OK;
+            this.Result = ConciergeWindowResult.OK;
 
             this.UpdateAttributes();
             this.Hide();
@@ -113,13 +113,13 @@ namespace Concierge.Interfaces.OverviewPageInterface
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Result = MessageWindowResult.Cancel;
+            this.Result = ConciergeWindowResult.Cancel;
             this.Hide();
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Result = MessageWindowResult.Exit;
+            this.Result = ConciergeWindowResult.Exit;
             this.Hide();
         }
     }

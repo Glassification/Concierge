@@ -105,6 +105,12 @@
                         
                         Style="{StaticResource PopupWindowButton}">
                 </components:ConciergeButton>
+                <components:ConciergeButton 
+                    x:Name="ApplyButton"
+                    Content="Apply"
+                    Click="NoButton_Click"
+                    Style="{StaticResource PopupWindowButton}">
+                </components:ConciergeButton>
                 <components:ConciergeButton x:Name="CancelButton"
                         
                         Content="Cancel"

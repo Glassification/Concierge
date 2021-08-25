@@ -27,25 +27,24 @@
 
         <!--Header-->
         <Grid Grid.Row="0">
-            <TextBlock Text="Character Properties"
-                       x:Name="HeaderTextBlock"
-                       Foreground="#988CD0"
-                       FontSize="35"
-                       HorizontalAlignment="Left"
-                       VerticalAlignment="Center"
-                       Margin="30, 0, 0, 0"
-                       FontWeight="Bold"/>
-            <components:ConciergeButton x:Name="CloseButton"
-                    Height="50"
-                    Width="60"
-                    Background="Transparent"
-                    
-                    Foreground="White"
-                    ToolTip="Close"
-                    HorizontalAlignment="Right"
-                    Click="CloseButton_Click"
-                    
-                    >
+            <TextBlock 
+                Text="Edit Character Properties"
+                x:Name="HeaderTextBlock"
+                Foreground="#988CD0"
+                FontSize="35"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                Margin="30, 0, 0, 0"
+                FontWeight="Bold"/>
+            <components:ConciergeButton 
+                x:Name="CloseButton"
+                Height="50"
+                Width="60"
+                Background="Transparent"
+                Foreground="White"
+                ToolTip="Close"
+                HorizontalAlignment="Right"
+                Click="CloseButton_Click">
                 <materialDesign:PackIcon Kind="WindowClose" Width="25" Height="25"/>
             </components:ConciergeButton>
         </Grid>
@@ -333,29 +332,23 @@
             <StackPanel Orientation="Horizontal"
                         VerticalAlignment="Center"
                         HorizontalAlignment="Center">
-                <components:ConciergeButton x:Name="OkButton"
-                        Style="{StaticResource PopupWindowButton}"
-                        
-                        Content="OK"
-                        
-                        
-                        Click="OkButton_Click">
+                <components:ConciergeButton 
+                    x:Name="OkButton"
+                    Style="{StaticResource PopupWindowButton}"
+                    Content="OK"
+                    Click="OkButton_Click">
                 </components:ConciergeButton>
-                <components:ConciergeButton x:Name="ApplyButton"
-                        Style="{StaticResource PopupWindowButton}"
-                        
-                        Content="Apply"
-                        
-                        
-                        Click="ApplyButton_Click">
+                <components:ConciergeButton 
+                    x:Name="ApplyButton"
+                    Style="{StaticResource PopupWindowButton}"
+                    Content="Apply"
+                    Click="ApplyButton_Click">
                 </components:ConciergeButton>
-                <components:ConciergeButton x:Name="CancelButton"
-                        
-                        Content="Cancel"
-                        Click="CancelButton_Click"
-                        
-                        
-                        Style="{StaticResource PopupWindowButton}">
+                <components:ConciergeButton 
+                    x:Name="CancelButton"
+                    Content="Cancel"
+                    Click="CancelButton_Click"
+                    Style="{StaticResource PopupWindowButton}">
                 </components:ConciergeButton>
             </StackPanel>
         </Grid>

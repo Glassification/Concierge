@@ -59,15 +59,15 @@ namespace Concierge.Persistence
                 var result = conciergeMessageWindow.ShowWindow(
                     Regex.Unescape(message),
                     "Warning",
-                    MessageWindowButtons.YesNo,
-                    MessageWindowIcons.Alert);
+                    ConciergeWindowButtons.YesNo,
+                    ConciergeWindowIcons.Alert);
 
                 switch (result)
                 {
-                    case MessageWindowResult.Yes:
+                    case ConciergeWindowResult.Yes:
                         Program.Logger.Info("Continue opening file.");
                         return true;
-                    case MessageWindowResult.No:
+                    case ConciergeWindowResult.No:
                     default:
                         Program.Logger.Info("Cancel opening file.");
                         return false;

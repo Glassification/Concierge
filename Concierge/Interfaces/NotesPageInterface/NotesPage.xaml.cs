@@ -438,10 +438,10 @@ namespace Concierge.Interfaces.NotesPageInterface
                 var result = this.conciergeMessageWindow.ShowWindow(
                     "Are you sure yo want to delete this chapter and all pages within?",
                     "Warning",
-                    MessageWindowButtons.YesNo,
-                    MessageWindowIcons.Question);
+                    ConciergeWindowButtons.YesNo,
+                    ConciergeWindowIcons.Question);
 
-                if (result != MessageWindowResult.Yes)
+                if (result != ConciergeWindowResult.Yes)
                 {
                     return;
                 }
@@ -453,10 +453,10 @@ namespace Concierge.Interfaces.NotesPageInterface
                 var result = this.conciergeMessageWindow.ShowWindow(
                     "Are you sure yo want to delete this page?",
                     "Warning",
-                    MessageWindowButtons.YesNo,
-                    MessageWindowIcons.Question);
+                    ConciergeWindowButtons.YesNo,
+                    ConciergeWindowIcons.Question);
 
-                if (result != MessageWindowResult.Yes)
+                if (result != ConciergeWindowResult.Yes)
                 {
                     return;
                 }

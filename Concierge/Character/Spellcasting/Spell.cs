@@ -49,7 +49,7 @@ namespace Concierge.Character.Spellcasting
 
         public string Class { get; set; }
 
-        public Guid Id { get; }
+        public Guid Id { get; init; }
 
         public override string ToString()
         {

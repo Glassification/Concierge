@@ -29,9 +29,9 @@ namespace Concierge.Interfaces.OverviewPageInterface
 
         public event ApplyChangesEventHandler ApplyChanges;
 
-        private MessageWindowResult Result { get; set; }
+        private ConciergeWindowResult Result { get; set; }
 
-        public MessageWindowResult ShowWizardSetup()
+        public ConciergeWindowResult ShowWizardSetup()
         {
             this.FillFields();
             this.ApplyButton.Visibility = Visibility.Collapsed;
@@ -80,7 +80,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
             switch (e.Key)
             {
                 case Key.Escape:
-                    this.Result = MessageWindowResult.Exit;
+                    this.Result = ConciergeWindowResult.Exit;
                     this.Hide();
                     break;
             }
@@ -89,7 +89,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Modify();
-            this.Result = MessageWindowResult.OK;
+            this.Result = ConciergeWindowResult.OK;
 
             this.UpdateSenses();
             this.Hide();
@@ -107,13 +107,13 @@ namespace Concierge.Interfaces.OverviewPageInterface
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Result = MessageWindowResult.Cancel;
+            this.Result = ConciergeWindowResult.Cancel;
             this.Hide();
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Result = MessageWindowResult.Exit;
+            this.Result = ConciergeWindowResult.Exit;
             this.Hide();
         }
 

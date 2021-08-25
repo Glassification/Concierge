@@ -8,7 +8,7 @@ namespace Concierge.Character.Items
 
     using Newtonsoft.Json;
 
-    public class Inventory
+    public class Inventory : IConciergeList
     {
         public Inventory()
         {
@@ -35,7 +35,7 @@ namespace Concierge.Character.Items
 
         public Guid EquppedId { get; set; }
 
-        public Guid Id { get; private set; }
+        public Guid Id { get; init; }
 
         public override string ToString()
         {

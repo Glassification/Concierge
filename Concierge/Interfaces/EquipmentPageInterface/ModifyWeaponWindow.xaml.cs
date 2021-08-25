@@ -40,9 +40,9 @@ namespace Concierge.Interfaces.EquipmentPageInterface
 
         private List<Weapon> Weapons { get; set; }
 
-        private MessageWindowResult Result { get; set; }
+        private ConciergeWindowResult Result { get; set; }
 
-        public MessageWindowResult ShowWizardSetup()
+        public ConciergeWindowResult ShowWizardSetup()
         {
             this.Weapons = Program.CcsFile.Character.Weapons;
             this.ApplyButton.Visibility = Visibility.Visible;
@@ -167,7 +167,7 @@ namespace Concierge.Interfaces.EquipmentPageInterface
             switch (e.Key)
             {
                 case Key.Escape:
-                    this.Result = MessageWindowResult.Exit;
+                    this.Result = ConciergeWindowResult.Exit;
                     this.Hide();
                     break;
             }
@@ -175,13 +175,13 @@ namespace Concierge.Interfaces.EquipmentPageInterface
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Result = MessageWindowResult.Exit;
+            this.Result = ConciergeWindowResult.Exit;
             this.Hide();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Result = MessageWindowResult.Cancel;
+            this.Result = ConciergeWindowResult.Cancel;
             this.Hide();
         }
 
@@ -198,7 +198,7 @@ namespace Concierge.Interfaces.EquipmentPageInterface
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Modify();
-            this.Result = MessageWindowResult.OK;
+            this.Result = ConciergeWindowResult.OK;
 
             if (this.Editing)
             {

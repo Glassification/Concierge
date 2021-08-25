@@ -193,7 +193,7 @@
 
         <!--Header-->
         <Grid Grid.Row="0">
-            <TextBlock Text="Modify Hit Dice"
+            <TextBlock Text="Edit Hit Dice"
                        x:Name="HeaderTextBlock"
                        Foreground="#988CD0"
                        FontSize="35"

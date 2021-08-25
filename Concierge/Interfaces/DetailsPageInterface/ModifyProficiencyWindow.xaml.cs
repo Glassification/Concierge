@@ -7,9 +7,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
     using System;
     using System.Linq;
     using System.Windows;
-    using System.Windows.Controls;
     using System.Windows.Input;
-    using System.Windows.Media;
 
     using Concierge.Character.Enums;
     using Concierge.Interfaces.Enums;
@@ -36,9 +34,9 @@ namespace Concierge.Interfaces.DetailsPageInterface
 
         private string HeaderText => $"{(this.Editing ? "Edit" : "Add")} Proficiency";
 
-        private MessageWindowResult Result { get; set; }
+        private ConciergeWindowResult Result { get; set; }
 
-        public MessageWindowResult ShowWizardSetup()
+        public ConciergeWindowResult ShowWizardSetup()
         {
             this.Editing = false;
             this.HeaderTextBlock.Text = this.HeaderText;
@@ -94,14 +92,14 @@ namespace Concierge.Interfaces.DetailsPageInterface
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Result = MessageWindowResult.Exit;
+            this.Result = ConciergeWindowResult.Exit;
             this.Hide();
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Modify();
-            this.Result = MessageWindowResult.OK;
+            this.Result = ConciergeWindowResult.OK;
 
             if (this.Editing)
             {
@@ -132,7 +130,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Result = MessageWindowResult.Cancel;
+            this.Result = ConciergeWindowResult.Cancel;
             this.Hide();
         }
 
@@ -141,7 +139,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
             switch (e.Key)
             {
                 case Key.Escape:
-                    this.Result = MessageWindowResult.Exit;
+                    this.Result = ConciergeWindowResult.Exit;
                     this.Hide();
                     break;
             }

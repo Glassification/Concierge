@@ -23,8 +23,6 @@ namespace Concierge.Character
 
     public class ConciergeCharacter
     {
-        private const int SignificantDigits = 2;
-
         public ConciergeCharacter()
         {
             this.Initialize();
@@ -111,7 +109,7 @@ namespace Concierge.Character
 
                 weight += this.EquipedItems.Weight;
 
-                return Math.Round(weight, SignificantDigits);
+                return Math.Round(weight, Constants.SignificantDigits);
             }
         }
 
@@ -188,17 +186,11 @@ namespace Concierge.Character
         {
             var weaponName = Utilities.FormatName(weapon.WeaponType.ToString());
 
-            if (weapon.ProficiencyOverride)
-            {
-                return true;
-            }
-
-            if (this.Proficiency.Weapons.ContainsValue(weaponName))
-            {
-                return true;
-            }
-
-            return weapon.WeaponType switch
+            return weapon.ProficiencyOverride
+                ? true
+                : this.Proficiency.Weapons.ContainsValue(weaponName)
+                ? true
+                : weapon.WeaponType switch
             {
                 // Simple Ranged Weapons
                 WeaponTypes.LightCrossbow or WeaponTypes.Dart or WeaponTypes.Shortbow or WeaponTypes.Sling => this.Proficiency.Weapons.ContainsValue("Simple Ranged Weapons"),
@@ -218,16 +210,6 @@ namespace Concierge.Character
         public Chapter GetChapterByDocumentId(Guid id)
         {
             return this.Chapters.Single(x => x.Documents.Any(y => y.Id.Equals(id)));
-        }
-
-        public Spell GetSpellById(Guid id)
-        {
-            return this.Spells.Single(x => x.Id.Equals(id));
-        }
-
-        public MagicClass GetMagicClassById(Guid id)
-        {
-            return this.MagicClasses.Single(x => x.Id.Equals(id));
         }
 
         private void Initialize()

@@ -30,9 +30,9 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
 
         public event ApplyChangesEventHandler ApplyChanges;
 
-        private MessageWindowResult Result { get; set; }
+        private ConciergeWindowResult Result { get; set; }
 
-        public MessageWindowResult ShowWizardSetup()
+        public ConciergeWindowResult ShowWizardSetup()
         {
             this.ClearFields();
             this.ItemComboBox.ItemsSource = EquippedItems.Equipable;
@@ -67,14 +67,14 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Result = MessageWindowResult.Exit;
+            this.Result = ConciergeWindowResult.Exit;
             this.Hide();
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Modify();
-            this.Result = MessageWindowResult.OK;
+            this.Result = ConciergeWindowResult.OK;
 
             if (!(this.ItemComboBox.SelectedItem is Inventory item) || this.SlotComboBox.Text.IsNullOrWhiteSpace())
             {
@@ -109,7 +109,7 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Result = MessageWindowResult.Cancel;
+            this.Result = ConciergeWindowResult.Cancel;
             this.Hide();
         }
 
@@ -118,7 +118,7 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
             switch (e.Key)
             {
                 case Key.Escape:
-                    this.Result = MessageWindowResult.Exit;
+                    this.Result = ConciergeWindowResult.Exit;
                     this.Hide();
                     break;
             }

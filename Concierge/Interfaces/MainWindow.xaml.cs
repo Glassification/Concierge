@@ -89,7 +89,7 @@ namespace Concierge.Interfaces
         {
             var result = this.CheckSaveBeforeAction("closing");
 
-            if (result != MessageWindowResult.Cancel)
+            if (result != ConciergeWindowResult.Cancel)
             {
                 this.Close();
             }
@@ -101,7 +101,7 @@ namespace Concierge.Interfaces
 
             var result = this.CheckSaveBeforeAction("creating a new sheet");
 
-            if (result == MessageWindowResult.Cancel)
+            if (result == ConciergeWindowResult.Cancel)
             {
                 return;
             }
@@ -118,7 +118,7 @@ namespace Concierge.Interfaces
 
             var result = this.CheckSaveBeforeAction("creating a new character");
 
-            if (result == MessageWindowResult.Cancel)
+            if (result == ConciergeWindowResult.Cancel)
             {
                 return;
             }
@@ -133,7 +133,7 @@ namespace Concierge.Interfaces
 
             var result = this.CheckSaveBeforeAction("opening");
 
-            if (result == MessageWindowResult.Cancel)
+            if (result == ConciergeWindowResult.Cancel)
             {
                 return;
             }
@@ -218,20 +218,20 @@ namespace Concierge.Interfaces
             Application.Current.Shutdown();
         }
 
-        private MessageWindowResult CheckSaveBeforeAction(string action)
+        private ConciergeWindowResult CheckSaveBeforeAction(string action)
         {
             if (!Program.Modified)
             {
-                return MessageWindowResult.No;
+                return ConciergeWindowResult.No;
             }
 
             var result = Program.ConciergeMessageWindow.ShowWindow(
                 $"You have unsaved changes. Would you like to save before {action}?",
                 "Warning",
-                MessageWindowButtons.YesNoCancel,
-                MessageWindowIcons.Warning);
+                ConciergeWindowButtons.YesNoCancel,
+                ConciergeWindowIcons.Warning);
 
-            if (result == MessageWindowResult.Yes)
+            if (result == ConciergeWindowResult.Yes)
             {
                 this.SaveCharacterSheet();
             }

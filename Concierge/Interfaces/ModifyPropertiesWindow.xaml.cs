@@ -29,9 +29,9 @@ namespace Concierge.Interfaces
             Program.Logger.Info($"Initialized {nameof(ModifyPropertiesWindow)}.");
         }
 
-        private MessageWindowResult Result { get; set; }
+        private ConciergeWindowResult Result { get; set; }
 
-        public MessageWindowResult ShowWizardSetup()
+        public ConciergeWindowResult ShowWizardSetup()
         {
             this.Read();
             this.ApplyButton.Visibility = Visibility.Collapsed;
@@ -94,7 +94,7 @@ namespace Concierge.Interfaces
             {
                 case Key.Escape:
                     Program.Logger.Info($"ESCAPE key pressed.");
-                    this.Result = MessageWindowResult.Exit;
+                    this.Result = ConciergeWindowResult.Exit;
                     this.Hide();
                     break;
             }
@@ -104,7 +104,7 @@ namespace Concierge.Interfaces
         {
             Program.Logger.Info($"OK button click.");
             Program.Modify();
-            this.Result = MessageWindowResult.OK;
+            this.Result = ConciergeWindowResult.OK;
 
             this.Write();
             this.Hide();
@@ -121,7 +121,7 @@ namespace Concierge.Interfaces
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Logger.Info($"Cancel button click.");
-            this.Result = MessageWindowResult.Cancel;
+            this.Result = ConciergeWindowResult.Cancel;
 
             this.Hide();
         }
@@ -129,7 +129,7 @@ namespace Concierge.Interfaces
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Logger.Info($"Close button click.");
-            this.Result = MessageWindowResult.Exit;
+            this.Result = ConciergeWindowResult.Exit;
 
             this.Hide();
         }

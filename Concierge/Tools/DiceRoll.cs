@@ -6,7 +6,7 @@ namespace Concierge.Tools
 {
     using System.Collections.Generic;
 
-    public class DiceRoll
+    public record DiceRoll
     {
         public DiceRoll(string roll, int[] list, int total)
         {
@@ -15,7 +15,7 @@ namespace Concierge.Tools
             this.Total = total;
         }
 
-        public string Roll { get; private set; }
+        public string Roll { get; init; }
 
         public string Dice
         {
@@ -32,8 +32,8 @@ namespace Concierge.Tools
             }
         }
 
-        public int Total { get; private set; }
+        public int Total { get; init; }
 
-        private List<int> DiceList { get; set; }
+        private List<int> DiceList { get; init; }
     }
 }

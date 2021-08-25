@@ -40,9 +40,9 @@ namespace Concierge.Interfaces.InventoryPageInterface
 
         private List<Inventory> Items { get; set; }
 
-        private MessageWindowResult Result { get; set; }
+        private ConciergeWindowResult Result { get; set; }
 
-        public MessageWindowResult ShowWizardSetup()
+        public ConciergeWindowResult ShowWizardSetup()
         {
             this.Editing = false;
             this.HeaderTextBlock.Text = "Add Item";
@@ -155,8 +155,8 @@ namespace Concierge.Interfaces.InventoryPageInterface
                     this.conciergeMessageWindow.ShowWindow(
                         $"You can only attune to a max of {Constants.MaxAttunedItems} items.",
                         "Error",
-                        MessageWindowButtons.Ok,
-                        MessageWindowIcons.Error);
+                        ConciergeWindowButtons.Ok,
+                        ConciergeWindowIcons.Error);
                 }
             }
             else
@@ -170,7 +170,7 @@ namespace Concierge.Interfaces.InventoryPageInterface
             switch (e.Key)
             {
                 case Key.Escape:
-                    this.Result = MessageWindowResult.Exit;
+                    this.Result = ConciergeWindowResult.Exit;
                     this.Hide();
                     break;
             }
@@ -178,7 +178,7 @@ namespace Concierge.Interfaces.InventoryPageInterface
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Result = MessageWindowResult.Exit;
+            this.Result = ConciergeWindowResult.Exit;
             this.Hide();
         }
 
@@ -195,7 +195,7 @@ namespace Concierge.Interfaces.InventoryPageInterface
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Modify();
-            this.Result = MessageWindowResult.OK;
+            this.Result = ConciergeWindowResult.OK;
 
             if (this.Editing)
             {
@@ -219,7 +219,7 @@ namespace Concierge.Interfaces.InventoryPageInterface
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Result = MessageWindowResult.Cancel;
+            this.Result = ConciergeWindowResult.Cancel;
             this.Hide();
         }
 

@@ -52,10 +52,10 @@ namespace Concierge.Tools
             var result = Program.ConciergeMessageWindow.ShowWindow(
                 "This is the Concierge Character Creation Wizard. This will help jump start your path to godhood.",
                 "Character Creation",
-                MessageWindowButtons.OkCancel,
-                MessageWindowIcons.Information);
+                ConciergeWindowButtons.OkCancel,
+                ConciergeWindowIcons.Information);
 
-            if (result != MessageWindowResult.OK)
+            if (result != ConciergeWindowResult.OK)
             {
                 this.Stop();
                 return;
@@ -64,12 +64,10 @@ namespace Concierge.Tools
             this.RunSetupSteps();
 
             Program.ConciergeMessageWindow.ShowWindow(
-                "Character creation completed successfully.",
+                $"Character creation {(this.IsStopped ? "aborted" : "completed successfully")}.",
                 "Character Creation",
-                MessageWindowButtons.Ok,
-                MessageWindowIcons.Information);
-
-            Program.Modify();
+                ConciergeWindowButtons.Ok,
+                ConciergeWindowIcons.Information);
         }
 
         public void Stop()
@@ -105,36 +103,38 @@ namespace Concierge.Tools
 
         private void NextSetupStep(IConciergeWindow conciergeWindow, string buttonText)
         {
-            MessageWindowResult wizardResult;
-            MessageWindowResult confirmExitResult;
+            ConciergeWindowResult wizardResult;
+            ConciergeWindowResult confirmExitResult;
 
             if (this.IsStopped)
             {
                 return;
             }
 
+            Program.Modify();
+
             do
             {
-                confirmExitResult = MessageWindowResult.NoResult;
+                confirmExitResult = ConciergeWindowResult.NoResult;
 
                 conciergeWindow.UpdateCancelButton(buttonText);
                 wizardResult = conciergeWindow.ShowWizardSetup();
 
-                if (wizardResult == MessageWindowResult.Exit)
+                if (wizardResult == ConciergeWindowResult.Exit)
                 {
                     confirmExitResult = Program.ConciergeMessageWindow.ShowWindow(
                         "Would you like to exit Character Creation? Existing progress will be lost.",
                         "Character Creation",
-                        MessageWindowButtons.YesNo,
-                        MessageWindowIcons.Question);
+                        ConciergeWindowButtons.YesNo,
+                        ConciergeWindowIcons.Question);
 
-                    if (confirmExitResult is MessageWindowResult.Yes or MessageWindowResult.Exit)
+                    if (confirmExitResult is ConciergeWindowResult.Yes or ConciergeWindowResult.Exit)
                     {
                         this.Stop();
                     }
                 }
             }
-            while (confirmExitResult == MessageWindowResult.No);
+            while (confirmExitResult == ConciergeWindowResult.No);
         }
     }
 }

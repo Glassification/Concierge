@@ -5,6 +5,7 @@
 namespace Concierge.Interfaces.SpellcastingPageInterface
 {
     using System;
+    using System.Collections.Generic;
     using System.Linq;
     using System.Windows;
     using System.Windows.Controls;
@@ -34,16 +35,19 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
 
         private bool Editing { get; set; }
 
-        private Guid SelectedSpellId { get; set; }
+        private Spell SelectedSpell { get; set; }
 
-        private MessageWindowResult Result { get; set; }
+        private List<Spell> Spells { get; set; }
 
-        public MessageWindowResult ShowWizardSetup()
+        private ConciergeWindowResult Result { get; set; }
+
+        public ConciergeWindowResult ShowWizardSetup()
         {
             this.Editing = false;
             this.HeaderTextBlock.Text = "Add Spell";
             this.ApplyButton.Visibility = Visibility.Visible;
             this.OkButton.Visibility = Visibility.Collapsed;
+            this.Spells = Program.CcsFile.Character.Spells;
 
             this.ClearFields();
             this.ShowDialog();
@@ -51,12 +55,13 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
             return this.Result;
         }
 
-        public void AddSpell()
+        public void AddSpell(List<Spell> spells)
         {
             this.Editing = false;
             this.HeaderTextBlock.Text = "Add Spell";
             this.ApplyButton.Visibility = Visibility.Visible;
             this.OkButton.Visibility = Visibility.Visible;
+            this.Spells = spells;
 
             this.ClearFields();
             this.ShowDialog();
@@ -65,7 +70,7 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
         public void EditSpell(Spell spell)
         {
             this.HeaderTextBlock.Text = "Edit Spell";
-            this.SelectedSpellId = spell.Id;
+            this.SelectedSpell = spell;
             this.Editing = true;
             this.ApplyButton.Visibility = Visibility.Collapsed;
             this.OkButton.Visibility = Visibility.Visible;
@@ -158,7 +163,7 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
 
         private Spell ToSpell()
         {
-            var spell = new Spell()
+            return new Spell()
             {
                 Name = this.SpellNameComboBox.Text,
                 Prepared = this.PreparedCheckBox.IsChecked ?? false,
@@ -176,13 +181,11 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
                 Description = this.NotesTextBox.Text,
                 Class = this.ClassComboBox.Text,
             };
-
-            return spell;
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Result = MessageWindowResult.Exit;
+            this.Result = ConciergeWindowResult.Exit;
             this.Hide();
         }
 
@@ -191,7 +194,7 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
             switch (e.Key)
             {
                 case Key.Escape:
-                    this.Result = MessageWindowResult.Exit;
+                    this.Result = ConciergeWindowResult.Exit;
                     this.Hide();
                     break;
             }
@@ -200,15 +203,15 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Modify();
-            this.Result = MessageWindowResult.OK;
+            this.Result = ConciergeWindowResult.OK;
 
             if (this.Editing)
             {
-                this.UpdateSpell(Program.CcsFile.Character.GetSpellById(this.SelectedSpellId));
+                this.UpdateSpell(this.SelectedSpell);
             }
             else
             {
-                Program.CcsFile.Character.Spells.Add(this.ToSpell());
+                this.Spells.Add(this.ToSpell());
             }
 
             this.Hide();
@@ -218,7 +221,7 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
         {
             Program.Modify();
 
-            Program.CcsFile.Character.Spells.Add(this.ToSpell());
+            this.Spells.Add(this.ToSpell());
             this.ClearFields();
 
             this.ApplyChanges?.Invoke(this, new EventArgs());
@@ -226,7 +229,7 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Result = MessageWindowResult.Cancel;
+            this.Result = ConciergeWindowResult.Cancel;
             this.Hide();
         }
 

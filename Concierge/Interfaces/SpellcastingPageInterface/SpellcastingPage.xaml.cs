@@ -174,11 +174,11 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
             switch (popupButton)
             {
                 case PopupButtons.AddMagicClass:
-                    this.modifySpellClassWindow.AddClass();
+                    this.modifySpellClassWindow.AddClass(Program.CcsFile.Character.MagicClasses);
                     this.DrawMagicClasses();
                     break;
                 case PopupButtons.AddSpell:
-                    this.modifySpellWindow.AddSpell();
+                    this.modifySpellWindow.AddSpell(Program.CcsFile.Character.Spells);
                     this.DrawSpellList();
                     break;
             }

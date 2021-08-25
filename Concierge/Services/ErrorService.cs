@@ -59,8 +59,8 @@ namespace Concierge.Services
             this.conciergeMessageWindow.ShowWindow(
                 message,
                 "Error",
-                MessageWindowButtons.Ok,
-                MessageWindowIcons.Error);
+                ConciergeWindowButtons.Ok,
+                ConciergeWindowIcons.Error);
         }
     }
 }

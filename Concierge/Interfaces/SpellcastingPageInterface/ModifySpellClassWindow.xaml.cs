@@ -5,6 +5,7 @@
 namespace Concierge.Interfaces.SpellcastingPageInterface
 {
     using System;
+    using System.Collections.Generic;
     using System.Linq;
     using System.Windows;
     using System.Windows.Input;
@@ -32,43 +33,47 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
 
         private bool Editing { get; set; }
 
-        private Guid SelectedClassId { get; set; }
+        private MagicClass SelectedClass { get; set; }
 
-        private MessageWindowResult Result { get; set; }
+        private List<MagicClass> MagicClasses { get; set; }
 
-        public MessageWindowResult ShowWizardSetup()
+        private ConciergeWindowResult Result { get; set; }
+
+        public ConciergeWindowResult ShowWizardSetup()
         {
             this.Editing = false;
             this.HeaderTextBlock.Text = "Add Magic Class";
             this.ApplyButton.Visibility = Visibility.Visible;
             this.OkButton.Visibility = Visibility.Collapsed;
-            this.ClearFields();
+            this.MagicClasses = Program.CcsFile.Character.MagicClasses;
 
+            this.ClearFields();
             this.ShowDialog();
 
             return this.Result;
         }
 
-        public void AddClass()
+        public void AddClass(List<MagicClass> magicClasses)
         {
             this.Editing = false;
             this.HeaderTextBlock.Text = "Add Magic Class";
             this.ApplyButton.Visibility = Visibility.Visible;
             this.OkButton.Visibility = Visibility.Visible;
-            this.ClearFields();
+            this.MagicClasses = magicClasses;
 
+            this.ClearFields();
             this.ShowDialog();
         }
 
         public void EditClass(MagicClass magicClass)
         {
             this.HeaderTextBlock.Text = "Edit Magic Class";
-            this.SelectedClassId = magicClass.Id;
+            this.SelectedClass = magicClass;
             this.Editing = true;
             this.ApplyButton.Visibility = Visibility.Collapsed;
             this.OkButton.Visibility = Visibility.Visible;
-            this.FillFields(magicClass);
 
+            this.FillFields(magicClass);
             this.ShowDialog();
         }
 
@@ -118,9 +123,9 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
             magicClass.KnownSpells = this.SpellsUpDown.Value ?? 0;
         }
 
-        private MagicClass ToClass()
+        private MagicClass ToMagicClass()
         {
-            var magicClass = new MagicClass()
+            return new MagicClass()
             {
                 Name = this.ClassNameComboBox.Text,
                 Ability = (Abilities)Enum.Parse(typeof(Abilities), this.AbilityComboBox.Text),
@@ -128,8 +133,6 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
                 KnownSpells = this.SpellsUpDown.Value ?? 0,
                 KnownCantrips = this.CantripsUpDown.Value ?? 0,
             };
-
-            return magicClass;
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
@@ -137,7 +140,7 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
             switch (e.Key)
             {
                 case Key.Escape:
-                    this.Result = MessageWindowResult.Exit;
+                    this.Result = ConciergeWindowResult.Exit;
                     this.Hide();
                     break;
             }
@@ -145,22 +148,22 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Result = MessageWindowResult.Exit;
+            this.Result = ConciergeWindowResult.Exit;
             this.Hide();
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Modify();
-            this.Result = MessageWindowResult.OK;
+            this.Result = ConciergeWindowResult.OK;
 
             if (this.Editing)
             {
-                this.UpdateClass(Program.CcsFile.Character.GetMagicClassById(this.SelectedClassId));
+                this.UpdateClass(this.SelectedClass);
             }
             else
             {
-                Program.CcsFile.Character.MagicClasses.Add(this.ToClass());
+                this.MagicClasses.Add(this.ToMagicClass());
             }
 
             this.Hide();
@@ -170,7 +173,7 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
         {
             Program.Modify();
 
-            Program.CcsFile.Character.MagicClasses.Add(this.ToClass());
+            this.MagicClasses.Add(this.ToMagicClass());
             this.ClearFields();
 
             this.ApplyChanges?.Invoke(this, new EventArgs());
@@ -178,7 +181,7 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Result = MessageWindowResult.Cancel;
+            this.Result = ConciergeWindowResult.Cancel;
             this.Hide();
         }
 

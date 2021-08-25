@@ -20,13 +20,13 @@ namespace Concierge.Character.Characteristics
             this.Tools = new Dictionary<Guid, string>();
         }
 
-        public Dictionary<Guid, string> Armors { get; set; }
+        public Dictionary<Guid, string> Armors { get; init; }
 
-        public Dictionary<Guid, string> Shields { get; set; }
+        public Dictionary<Guid, string> Shields { get; init; }
 
-        public Dictionary<Guid, string> Weapons { get; set; }
+        public Dictionary<Guid, string> Weapons { get; init; }
 
-        public Dictionary<Guid, string> Tools { get; set; }
+        public Dictionary<Guid, string> Tools { get; init; }
 
         public ProficiencyDto GetProficiencyById(Guid id)
         {
