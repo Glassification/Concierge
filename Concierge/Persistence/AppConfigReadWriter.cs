@@ -6,15 +6,13 @@ namespace Concierge.Persistence
 {
     using System;
     using System.Configuration;
-    using System.Globalization;
 
     using Concierge.Utility.Extensions;
 
     public static class AppConfigReadWriter
     {
-        /// =========================================
-        /// SaveSetting()
-        /// =========================================
+        private delegate bool TryParseDelegate<T>(string s, out T result);
+
         public static void SaveSetting(string settingName, string value)
         {
             if (settingName.IsNullOrWhiteSpace())
@@ -64,14 +62,18 @@ namespace Concierge.Persistence
             }
         }
 
-        /// =========================================
-        /// GetBoolSetting()
-        /// =========================================
-        public static bool GetBoolSetting(string settingName, bool defaultValue)
+        public static T GetSetting<T>(string settingName, T defaultValue)
         {
+            if (!typeof(T).IsPrimitive)
+            {
+                throw new ArgumentException("T must be a primitive type");
+            }
+
             try
             {
-                return !bool.TryParse(ConfigurationManager.AppSettings[settingName], out bool value) ? defaultValue : value;
+                var tryParse = (TryParseDelegate<T>)Delegate.CreateDelegate(typeof(TryParseDelegate<T>), typeof(T), "TryParse", true);
+
+                return !tryParse(ConfigurationManager.AppSettings[settingName], out T value) ? defaultValue : value;
             }
             catch (Exception ex)
             {
@@ -90,50 +92,6 @@ namespace Concierge.Persistence
                 string value;
 
                 return (value = ConfigurationManager.AppSettings[settingName]).IsNullOrWhiteSpace() ? defaultValue : value;
-            }
-            catch (Exception ex)
-            {
-                Program.Logger.Error(ex);
-                return defaultValue;
-            }
-        }
-
-        /// =========================================
-        /// GetIntSetting()
-        /// =========================================
-        public static int GetIntSetting(string settingName, int defaultValue)
-        {
-            try
-            {
-                return !int.TryParse(
-                    ConfigurationManager.AppSettings[settingName],
-                    NumberStyles.Float,
-                    CultureInfo.CurrentCulture,
-                    out int value)
-                    ? defaultValue
-                    : value;
-            }
-            catch (Exception ex)
-            {
-                Program.Logger.Error(ex);
-                return defaultValue;
-            }
-        }
-
-        /// =========================================
-        /// GetDoubleSetting()
-        /// =========================================
-        public static double GetDoubleSetting(string settingName, double defaultValue)
-        {
-            try
-            {
-                return !double.TryParse(
-                    ConfigurationManager.AppSettings[settingName],
-                    NumberStyles.Float,
-                    CultureInfo.CurrentCulture,
-                    out double value)
-                    ? defaultValue
-                    : value;
             }
             catch (Exception ex)
             {

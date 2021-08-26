@@ -24,12 +24,12 @@ namespace Concierge.Utility
             IsDebug = false;
 #endif
 
-            AutosaveEnabled = AppConfigReadWriter.GetBoolSetting(nameof(AutosaveEnabled), DefaultAutosaveEnabled);
-            AutosaveInterval = AppConfigReadWriter.GetIntSetting(nameof(AutosaveInterval), DefaultAutosaveInterval);
-            CheckVersion = AppConfigReadWriter.GetBoolSetting(nameof(CheckVersion), DefaultCheckVersion);
-            MuteSounds = AppConfigReadWriter.GetBoolSetting(nameof(MuteSounds), DefaultMuteSounds);
-            UseCoinWeight = AppConfigReadWriter.GetBoolSetting(nameof(UseCoinWeight), DefaultUseCoinWeight);
-            UseEncumbrance = AppConfigReadWriter.GetBoolSetting(nameof(UseEncumbrance), DefaultUseEncumbrance);
+            AutosaveEnabled = AppConfigReadWriter.GetSetting(nameof(AutosaveEnabled), DefaultAutosaveEnabled);
+            AutosaveInterval = AppConfigReadWriter.GetSetting(nameof(AutosaveInterval), DefaultAutosaveInterval);
+            CheckVersion = AppConfigReadWriter.GetSetting(nameof(CheckVersion), DefaultCheckVersion);
+            MuteSounds = AppConfigReadWriter.GetSetting(nameof(MuteSounds), DefaultMuteSounds);
+            UseCoinWeight = AppConfigReadWriter.GetSetting(nameof(UseCoinWeight), DefaultUseCoinWeight);
+            UseEncumbrance = AppConfigReadWriter.GetSetting(nameof(UseEncumbrance), DefaultUseEncumbrance);
         }
 
         public static bool AutosaveEnabled { get; private set; }
