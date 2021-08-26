@@ -41,7 +41,7 @@ namespace Concierge.Utility
         {
             Program.Logger.Info($"Autosaving...");
 
-            CharacterSaver.SaveCharacterSheetJson(Program.CcsFile);
+            CharacterReadWriter.Write(Program.CcsFile);
         }
     }
 }

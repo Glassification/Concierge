@@ -64,9 +64,9 @@ namespace Concierge.Interfaces
 
             this.DataContext = this;
 
-            if (Program.CcsFile.AutosaveEnable)
+            if (ConciergeSettings.AutosaveEnabled)
             {
-                this.autosaveTimer.Start(Constants.AutosaveIntervals[Program.CcsFile.AutosaveInterval]);
+                this.autosaveTimer.Start(Constants.AutosaveIntervals[ConciergeSettings.AutosaveInterval]);
             }
 
             this.DrawAll();
@@ -148,9 +148,9 @@ namespace Concierge.Interfaces
             this.autosaveTimer.Stop();
 
             Program.CcsFile = ccsFile;
-            if (Program.CcsFile.AutosaveEnable)
+            if (ConciergeSettings.AutosaveEnabled)
             {
-                this.autosaveTimer.Start(Constants.AutosaveIntervals[Program.CcsFile.AutosaveInterval]);
+                this.autosaveTimer.Start(Constants.AutosaveIntervals[ConciergeSettings.AutosaveInterval]);
             }
 
             this.DrawAll();
@@ -503,9 +503,9 @@ namespace Concierge.Interfaces
             this.overviewPage.Draw();
             this.detailsPage.Draw();
 
-            if (Program.CcsFile.AutosaveEnable)
+            if (ConciergeSettings.AutosaveEnabled)
             {
-                this.autosaveTimer.Start(Constants.AutosaveIntervals[Program.CcsFile.AutosaveInterval]);
+                this.autosaveTimer.Start(Constants.AutosaveIntervals[ConciergeSettings.AutosaveInterval]);
             }
             else
             {

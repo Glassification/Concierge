@@ -1,4 +1,4 @@
-﻿// <copyright file="CharacterLoader.cs" company="Thomas Beckett">
+﻿// <copyright file="CharacterReadWriter.cs" company="Thomas Beckett">
 // Copyright (c) Thomas Beckett. All rights reserved.
 // </copyright>
 
@@ -15,11 +15,11 @@ namespace Concierge.Persistence
     using Concierge.Utility.Extensions;
     using Newtonsoft.Json;
 
-    public static class CharacterLoader
+    public static class CharacterReadWriter
     {
         private static readonly ConciergeMessageWindow conciergeMessageWindow = new ();
 
-        public static CcsFile LoadCharacterSheetJson(string file)
+        public static CcsFile Read(string file)
         {
             try
             {
@@ -28,7 +28,7 @@ namespace Concierge.Persistence
 
                 ccsFile.AbsolutePath = file;
 
-                if (ccsFile.CheckVersion && !CheckVersion(ccsFile.Version))
+                if (ConciergeSettings.CheckVersion && !CheckVersion(ccsFile.Version))
                 {
                     return new CcsFile();
                 }
@@ -43,6 +43,24 @@ namespace Concierge.Persistence
                 Program.Modify();
 
                 return new CcsFile();
+            }
+        }
+
+        public static void Write(CcsFile ccsFile)
+        {
+            try
+            {
+                ccsFile.Version = Constants.AssemblyVersion;
+                var rawJson = JsonConvert.SerializeObject(ccsFile, Formatting.Indented);
+
+                File.WriteAllText(ccsFile.AbsolutePath, rawJson);
+
+                Program.Unmodify();
+            }
+            catch (Exception ex)
+            {
+                Program.ErrorService.LogError(ex, Severity.Release);
+                Program.Modify();
             }
         }
 

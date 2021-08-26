@@ -6,7 +6,7 @@ namespace Concierge.Tools
 {
     using System.Collections.Generic;
 
-    public record DiceRoll
+    public class DiceRoll
     {
         public DiceRoll(string roll, int[] list, int total)
         {

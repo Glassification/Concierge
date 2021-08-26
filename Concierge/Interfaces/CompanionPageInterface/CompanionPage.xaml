@@ -596,7 +596,7 @@
                                 
                                 Foreground="Khaki"
                                 Click="EditPropertiesButton_Click"
-                                ToolTip="Edit Health">
+                                ToolTip="Edit Details">
                                 <materialDesign:PackIcon Kind="PlaylistEdit" Width="25" Height="25"/>
                             </components:ConciergeButton>
 
@@ -767,7 +767,7 @@
                         x:Name="TakeDamageButton"
                         Height="35"
                         Width="35"
-                        HorizontalAlignment="Left"
+                        HorizontalAlignment="Right"
                         VerticalAlignment="Top"
                         Background="Transparent"
                         
@@ -781,7 +781,7 @@
                         x:Name="HealDamageButton"
                         Height="35"
                         Width="35"
-                        HorizontalAlignment="Right"
+                        HorizontalAlignment="Left"
                         VerticalAlignment="Top"
                         Background="Transparent"
                         
@@ -837,7 +837,7 @@
                     
                     Foreground="Khaki"
                     Click="EditHitDiceButton_Click"
-                    ToolTip="Edit Attributes">
+                    ToolTip="Edit Hit Dice">
                     <materialDesign:PackIcon Kind="PlaylistEdit" Width="25" Height="25"/>
                 </components:ConciergeButton>
 

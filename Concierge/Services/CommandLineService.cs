@@ -19,7 +19,7 @@ namespace Concierge.Services
                 return;
             }
 
-            Program.CcsFile = CharacterLoader.LoadCharacterSheetJson(args[0]);
+            Program.CcsFile = CharacterReadWriter.Read(args[0]);
         }
     }
 }

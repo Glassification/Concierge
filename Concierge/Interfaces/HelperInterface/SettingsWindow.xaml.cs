@@ -9,6 +9,7 @@ namespace Concierge.Interfaces.HelperInterface
 
     using Concierge.Interfaces.Enums;
     using Concierge.Utility;
+    using Concierge.Utility.Dtos;
 
     /// <summary>
     /// Interaction logic for SettingsWindow.xaml.
@@ -34,15 +35,17 @@ namespace Concierge.Interfaces.HelperInterface
             this.CoinWeightCheckBox.UpdatingValue();
             this.EncumbranceCheckBox.UpdatingValue();
             this.MuteCheckBox.UpdatingValue();
+            this.CheckVersionCheckBox.UpdatingValue();
 
-            this.AutosaveCheckBox.IsChecked = Program.CcsFile.AutosaveEnable;
-            this.AutosaveInterval.Value = Program.CcsFile.AutosaveInterval;
-            this.CoinWeightCheckBox.IsChecked = Program.CcsFile.UseCoinWeight;
-            this.EncumbranceCheckBox.IsChecked = Program.CcsFile.UseEncumbrance;
+            this.AutosaveCheckBox.IsChecked = ConciergeSettings.AutosaveEnabled;
+            this.AutosaveInterval.Value = ConciergeSettings.AutosaveInterval;
+            this.CoinWeightCheckBox.IsChecked = ConciergeSettings.UseCoinWeight;
+            this.EncumbranceCheckBox.IsChecked = ConciergeSettings.UseEncumbrance;
             this.IntervalTextBox.Text = this.FormattedInterval;
-            this.MuteCheckBox.IsChecked = Program.CcsFile.MuteSound;
+            this.MuteCheckBox.IsChecked = ConciergeSettings.MuteSounds;
+            this.CheckVersionCheckBox.IsChecked = ConciergeSettings.CheckVersion;
 
-            if (Program.CcsFile.AutosaveEnable)
+            if (ConciergeSettings.AutosaveEnabled)
             {
                 this.IntervalTextBox.IsEnabled = true;
                 this.AutosaveInterval.IsEnabled = true;
@@ -57,10 +60,13 @@ namespace Concierge.Interfaces.HelperInterface
             this.CoinWeightCheckBox.UpdatedValue();
             this.EncumbranceCheckBox.UpdatedValue();
             this.MuteCheckBox.UpdatedValue();
+            this.CheckVersionCheckBox.UpdatedValue();
         }
 
         private void Write()
         {
+            var autosaveEnabled = ConciergeSettings.AutosaveEnabled;
+
             if (Program.CcsFile == null && (this.AutosaveCheckBox.IsChecked ?? false))
             {
                 Program.ConciergeMessageWindow.ShowWindow(
@@ -71,13 +77,20 @@ namespace Concierge.Interfaces.HelperInterface
             }
             else
             {
-                Program.CcsFile.AutosaveEnable = this.AutosaveCheckBox.IsChecked ?? false;
+                autosaveEnabled = this.AutosaveCheckBox.IsChecked ?? false;
             }
 
-            Program.CcsFile.AutosaveInterval = (int)this.AutosaveInterval.Value;
-            Program.CcsFile.UseCoinWeight = this.CoinWeightCheckBox.IsChecked ?? false;
-            Program.CcsFile.UseEncumbrance = this.EncumbranceCheckBox.IsChecked ?? false;
-            Program.CcsFile.MuteSound = this.MuteCheckBox.IsChecked ?? false;
+            var conciergeSettings = new ConciergeSettingsDto()
+            {
+                AutosaveEnabled = autosaveEnabled,
+                AutosaveInterval = (int)this.AutosaveInterval.Value,
+                CheckVersion = this.CheckVersionCheckBox.IsChecked ?? false,
+                MuteSounds = this.MuteCheckBox.IsChecked ?? false,
+                UseCoinWeight = this.CoinWeightCheckBox.IsChecked ?? false,
+                UseEncumbrance = this.EncumbranceCheckBox.IsChecked ?? false,
+            };
+
+            ConciergeSettings.UpdateSettings(conciergeSettings);
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
@@ -102,13 +115,11 @@ namespace Concierge.Interfaces.HelperInterface
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
-            Program.Modify();
             this.Write();
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
-            Program.Modify();
             this.Write();
             this.Hide();
         }

@@ -19,19 +19,7 @@ namespace Concierge.Persistence
 
         public ConciergeCharacter Character { get; set; }
 
-        public bool AutosaveEnable { get; set; }
-
-        public int AutosaveInterval { get; set; }
-
-        public bool UseCoinWeight { get; set; }
-
-        public bool UseEncumbrance { get; set; }
-
         public string Version { get; set; }
-
-        public bool CheckVersion { get; set; }
-
-        public bool MuteSound { get; set; }
 
         [JsonIgnore]
         public string FileName => Path.GetFileName(this.AbsolutePath);
@@ -45,12 +33,6 @@ namespace Concierge.Persistence
         public void Default()
         {
             this.Character = new ConciergeCharacter();
-            this.AutosaveEnable = false;
-            this.AutosaveInterval = 1;
-            this.UseCoinWeight = false;
-            this.UseEncumbrance = false;
-            this.CheckVersion = false;
-            this.MuteSound = false;
             this.Version = Constants.AssemblyVersion;
         }
     }

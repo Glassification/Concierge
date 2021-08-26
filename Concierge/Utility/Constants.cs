@@ -152,12 +152,12 @@ namespace Concierge.Utility
         {
             AutosaveIntervals = new ReadOnlyCollection<int>(autosaveIntervals);
 
-            Weapons = new ReadOnlyCollection<Weapon>(DefaultListLoader.LoadWeaponList());
-            Ammunitions = new ReadOnlyCollection<Ammunition>(DefaultListLoader.LoadAmmunitionList());
-            Spells = new ReadOnlyCollection<Spell>(DefaultListLoader.LoadSpellList());
-            Inventories = new ReadOnlyCollection<Inventory>(DefaultListLoader.LoadInventoryList());
-            Languages = new ReadOnlyCollection<Language>(DefaultListLoader.LoadLanguageList());
-            Abilities = new ReadOnlyCollection<Ability>(DefaultListLoader.LoadAbilityList());
+            Weapons = new ReadOnlyCollection<Weapon>(DefaultListReadWriter.LoadWeaponList());
+            Ammunitions = new ReadOnlyCollection<Ammunition>(DefaultListReadWriter.LoadAmmunitionList());
+            Spells = new ReadOnlyCollection<Spell>(DefaultListReadWriter.LoadSpellList());
+            Inventories = new ReadOnlyCollection<Inventory>(DefaultListReadWriter.LoadInventoryList());
+            Languages = new ReadOnlyCollection<Language>(DefaultListReadWriter.LoadLanguageList());
+            Abilities = new ReadOnlyCollection<Ability>(DefaultListReadWriter.LoadAbilityList());
 
             Alignment = new ReadOnlyCollection<string>(alignment);
             Backgrounds = new ReadOnlyCollection<string>(backgrounds);

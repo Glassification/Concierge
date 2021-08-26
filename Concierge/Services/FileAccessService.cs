@@ -37,7 +37,7 @@ namespace Concierge.Services
 
         public CcsFile Open()
         {
-            return this.openFileDialog.ShowDialog() ?? false ? CharacterLoader.LoadCharacterSheetJson(this.openFileDialog.FileName) : null;
+            return this.openFileDialog.ShowDialog() ?? false ? CharacterReadWriter.Read(this.openFileDialog.FileName) : null;
         }
 
         public void Save(CcsFile ccsFile, bool saveAs)
@@ -47,12 +47,12 @@ namespace Concierge.Services
                 if (this.saveFileDialog.ShowDialog() ?? false)
                 {
                     ccsFile.AbsolutePath = this.saveFileDialog.FileName;
-                    CharacterSaver.SaveCharacterSheetJson(ccsFile);
+                    CharacterReadWriter.Write(ccsFile);
                 }
             }
             else
             {
-                CharacterSaver.SaveCharacterSheetJson(ccsFile);
+                CharacterReadWriter.Write(ccsFile);
             }
 
             // TODO - Figure out why this is triggering a focus reset to overview page.

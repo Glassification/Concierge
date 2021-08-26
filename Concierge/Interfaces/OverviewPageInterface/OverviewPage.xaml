@@ -1847,26 +1847,26 @@
                                     FontWeight="Bold"
                                     Margin="5, 5, 15, 10"/>
 
-                                <components:ConciergeButton x:Name="TakeDamageButton"
+                                <components:ConciergeButton 
+                                    x:Name="TakeDamageButton"
                                     Height="35"
                                     Width="35"
-                                    HorizontalAlignment="Left"
+                                    HorizontalAlignment="Right"
                                     VerticalAlignment="Top"
                                     Background="Transparent"
-                                    
                                     Foreground="IndianRed"
                                     Click="TakeDamageButton_Click"
                                     ToolTip="Take Damage">
                                     <materialDesign:PackIcon Kind="HeartBroken" Width="25" Height="25"/>
                                 </components:ConciergeButton>
 
-                                <components:ConciergeButton x:Name="HealDamageButton"
+                                <components:ConciergeButton 
+                                    x:Name="HealDamageButton"
                                     Height="35"
                                     Width="35"
-                                    HorizontalAlignment="Right"
+                                    HorizontalAlignment="Left"
                                     VerticalAlignment="Top"
                                     Background="Transparent"
-                                    
                                     Foreground="PaleGreen"
                                     Click="HealDamageButton_Click"
                                     ToolTip="Heal Damage">
@@ -1955,7 +1955,7 @@
                                 
                                 Foreground="Khaki"
                                 Click="EditHitDiceButton_Click"
-                                ToolTip="Edit Attributes">
+                                ToolTip="Edit Hit Dice">
                             <materialDesign:PackIcon Kind="PlaylistEdit" Width="25" Height="25"/>
                         </components:ConciergeButton>
 
@@ -2215,7 +2215,7 @@
                                 VerticalAlignment="Center"
                                 Background="Transparent"
                                 Foreground="Khaki"
-                                ToolTip="Edit"
+                                ToolTip="Edit Wealth"
                                 Click="EditWealthButton_Click">
                                 <materialDesign:PackIcon Kind="PlaylistEdit" Width="25" Height="25"/>
                             </components:ConciergeButton>

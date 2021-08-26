@@ -80,7 +80,7 @@
                         Background="Transparent"
                         
                         Foreground="Khaki"
-                        ToolTip="Apply"
+                        ToolTip="Edit Armor Details"
                         Click="EditDetailsButton_Click"
                         HorizontalAlignment="Right"
                         VerticalAlignment="Center">

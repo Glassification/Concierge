@@ -102,7 +102,7 @@ namespace Concierge.Character
                 weight += this.Armor.Weight;
                 weight += this.Armor.ShieldWeight;
 
-                if (Program.CcsFile.UseCoinWeight)
+                if (ConciergeSettings.UseCoinWeight)
                 {
                     weight += this.Wealth.TotalCoins / Constants.CoinGroup;
                 }

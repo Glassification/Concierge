@@ -6,7 +6,7 @@ namespace Concierge.Character.Dtos
 {
     using Concierge.Character.Enums;
 
-    public record ProficiencyDto
+    public class ProficiencyDto
     {
         public ProficiencyDto(string proficiency, ProficiencyTypes proficiencyTypes)
         {

@@ -44,7 +44,7 @@ namespace Concierge.Utility
 
         public static void TapNavigation()
         {
-            if (Program.CcsFile.MuteSound || SkipClick)
+            if (ConciergeSettings.MuteSounds || SkipClick)
             {
                 return;
             }
@@ -54,7 +54,7 @@ namespace Concierge.Utility
 
         public static void UpdateValue()
         {
-            if (Program.CcsFile.MuteSound)
+            if (ConciergeSettings.MuteSounds)
             {
                 return;
             }
@@ -64,7 +64,7 @@ namespace Concierge.Utility
 
         public static void Warning()
         {
-            if (Program.CcsFile.MuteSound)
+            if (ConciergeSettings.MuteSounds)
             {
                 return;
             }

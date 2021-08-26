@@ -1,4 +1,4 @@
-﻿// <copyright file="DefaultListLoader.cs" company="Thomas Beckett">
+﻿// <copyright file="DefaultListReadWriter.cs" company="Thomas Beckett">
 // Copyright (c) Thomas Beckett. All rights reserved.
 // </copyright>
 
@@ -14,7 +14,7 @@ namespace Concierge.Persistence
     using Concierge.Exceptions.Enums;
     using Newtonsoft.Json;
 
-    public static class DefaultListLoader
+    public static class DefaultListReadWriter
     {
         public static List<Ability> LoadAbilityList()
         {
