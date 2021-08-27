@@ -18,6 +18,9 @@ dotnet_diagnostic.IDE0058.severity = none
 # IDE0003: Remove qualification
 dotnet_diagnostic.IDE0010.severity = none
 
+# IDE0130: Namespace does not match folder structure
+dotnet_diagnostic.IDE0130.severity = none
+
 # Default severity for analyzer diagnostics with category 'StyleCop.CSharp.NamingRules'
 dotnet_analyzer_diagnostic.category-StyleCop.CSharp.NamingRules.severity = none
 

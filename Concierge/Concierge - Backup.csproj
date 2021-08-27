@@ -1,11 +1,11 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net5.0-windows</TargetFramework>
-    <RootNamespace>Concierge</RootNamespace>
     <UseWPF>true</UseWPF>
-    <Version>3.1.4</Version>
+    <RootNamespace>Concierge</RootNamespace>
+    <Version>3.1.3</Version>
     <ApplicationIcon>dndnextlogo.ico</ApplicationIcon>
   </PropertyGroup>
 
@@ -30,10 +30,6 @@
 
   <ItemGroup>
     <Folder Include="Properties\Resources\Files\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="..\.editorconfig" Link=".editorconfig" />
   </ItemGroup>
 
   <ItemGroup>

@@ -13,7 +13,7 @@ namespace Concierge.Persistence
     {
         private delegate bool TryParseDelegate<T>(string s, out T result);
 
-        public static void SaveSetting(string settingName, string value)
+        public static void Write(string settingName, string value)
         {
             if (settingName.IsNullOrWhiteSpace())
             {
@@ -40,10 +40,7 @@ namespace Concierge.Persistence
             }
         }
 
-        /// =========================================
-        /// GetEnumSetting()
-        /// =========================================
-        public static T GetEnumSetting<T>(string settingName)
+        public static T Read<T>(string settingName)
             where T : struct, IConvertible
         {
             if (!typeof(T).IsEnum)
@@ -62,7 +59,7 @@ namespace Concierge.Persistence
             }
         }
 
-        public static T GetSetting<T>(string settingName, T defaultValue)
+        public static T Read<T>(string settingName, T defaultValue)
         {
             if (!typeof(T).IsPrimitive)
             {
@@ -82,10 +79,7 @@ namespace Concierge.Persistence
             }
         }
 
-        /// =========================================
-        /// GetStringSetting()
-        /// =========================================
-        public static string GetStringSetting(string settingName, string defaultValue)
+        public static string Read(string settingName, string defaultValue)
         {
             try
             {

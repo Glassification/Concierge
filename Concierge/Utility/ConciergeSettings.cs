@@ -24,12 +24,12 @@ namespace Concierge.Utility
             IsDebug = false;
 #endif
 
-            AutosaveEnabled = AppConfigReadWriter.GetSetting(nameof(AutosaveEnabled), DefaultAutosaveEnabled);
-            AutosaveInterval = AppConfigReadWriter.GetSetting(nameof(AutosaveInterval), DefaultAutosaveInterval);
-            CheckVersion = AppConfigReadWriter.GetSetting(nameof(CheckVersion), DefaultCheckVersion);
-            MuteSounds = AppConfigReadWriter.GetSetting(nameof(MuteSounds), DefaultMuteSounds);
-            UseCoinWeight = AppConfigReadWriter.GetSetting(nameof(UseCoinWeight), DefaultUseCoinWeight);
-            UseEncumbrance = AppConfigReadWriter.GetSetting(nameof(UseEncumbrance), DefaultUseEncumbrance);
+            AutosaveEnabled = AppConfigReadWriter.Read(nameof(AutosaveEnabled), DefaultAutosaveEnabled);
+            AutosaveInterval = AppConfigReadWriter.Read(nameof(AutosaveInterval), DefaultAutosaveInterval);
+            CheckVersion = AppConfigReadWriter.Read(nameof(CheckVersion), DefaultCheckVersion);
+            MuteSounds = AppConfigReadWriter.Read(nameof(MuteSounds), DefaultMuteSounds);
+            UseCoinWeight = AppConfigReadWriter.Read(nameof(UseCoinWeight), DefaultUseCoinWeight);
+            UseEncumbrance = AppConfigReadWriter.Read(nameof(UseEncumbrance), DefaultUseEncumbrance);
         }
 
         public static bool AutosaveEnabled { get; private set; }
@@ -61,12 +61,12 @@ namespace Concierge.Utility
                 return;
             }
 
-            AppConfigReadWriter.SaveSetting(nameof(AutosaveEnabled), AutosaveEnabled.ToString());
-            AppConfigReadWriter.SaveSetting(nameof(AutosaveInterval), AutosaveInterval.ToString());
-            AppConfigReadWriter.SaveSetting(nameof(CheckVersion), CheckVersion.ToString());
-            AppConfigReadWriter.SaveSetting(nameof(MuteSounds), MuteSounds.ToString());
-            AppConfigReadWriter.SaveSetting(nameof(UseCoinWeight), UseCoinWeight.ToString());
-            AppConfigReadWriter.SaveSetting(nameof(UseEncumbrance), UseEncumbrance.ToString());
+            AppConfigReadWriter.Write(nameof(AutosaveEnabled), AutosaveEnabled.ToString());
+            AppConfigReadWriter.Write(nameof(AutosaveInterval), AutosaveInterval.ToString());
+            AppConfigReadWriter.Write(nameof(CheckVersion), CheckVersion.ToString());
+            AppConfigReadWriter.Write(nameof(MuteSounds), MuteSounds.ToString());
+            AppConfigReadWriter.Write(nameof(UseCoinWeight), UseCoinWeight.ToString());
+            AppConfigReadWriter.Write(nameof(UseEncumbrance), UseEncumbrance.ToString());
         }
 
         public static string GetCurrentState()
