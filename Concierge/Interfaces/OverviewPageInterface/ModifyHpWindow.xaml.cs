@@ -30,8 +30,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
 
             if (this.IsOk)
             {
-                vitality.BaseHealth += this.HpUpDown.Value ?? 0;
-                vitality.BaseHealth = Math.Min(vitality.BaseHealth, vitality.MaxHealth);
+                vitality.Heal(this.HpUpDown.Value ?? 0);
             }
         }
 
@@ -43,8 +42,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
 
             if (this.IsOk)
             {
-                vitality.BaseHealth -= this.HpUpDown.Value ?? 0;
-                vitality.BaseHealth = Math.Max(vitality.BaseHealth, 0);
+                vitality.Damage(this.HpUpDown.Value ?? 0);
             }
         }
 

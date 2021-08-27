@@ -15,22 +15,22 @@ namespace Concierge.Character.Statuses
         public const string BlindedDescription = "Automatically fail any ability checks. Attack rolls against you have advantage, your attacks have disadvantage.";
         public const string CharmedDescription = "You cannot attack the charmer. The charmer has advantage on ability checks when interacting socially.";
         public const string DeafenedDescription = "You cannot hear and automatically fails any ability check that requires hearing.";
-        public const string EncumbranceDescription = "A carry weight exceding 5 and 10 times Strength will reduce speed by 10 and 20 respectivly.";
+        public const string EncumbranceDescription = "A carry weight exceeding 5 and 10 times Strength will reduce speed by 10 and 20 respectively.";
         public const string Exausted1 = "Disadvantage on Ability Checks";
         public const string Exausted2 = "Speed halved";
         public const string Exausted3 = "Disadvantage on Attack rolls and Saving Throws";
         public const string Exausted4 = "Hit point maximum halved";
         public const string Exausted5 = "Speed reduced to 0";
         public const string Exausted6 = "Death.";
-        public const string FatiguedDescription = "Exaustion levels stack up to 6. A long rest reduces the level by 1.";
+        public const string FatiguedDescription = "Exhaustion levels stack up to 6. A long rest reduces the level by 1.";
         public const string FrightenedDescription = "You have disadvantage on Ability Checks and Attack rolls while the source of fear is within line of sight. You can’t willingly move closer to the source.";
         public const string GrappledDescription = "Your speed becomes 0. It ends when the grappler is incapacitated or you are thrown away.";
         public const string IncapacitatedDescription = "You Cannot take Actions or reactions.";
         public const string InvisibleDescription = "You are impossible to see without the aid of magic or a Special sense. Attacks against you have disadvantage, your attacks have advantage.";
         public const string ParalyzedDescription = "You are incapacitated and automatically fail Strength and Dexterity Saving Throws. Attacks have advantage, and melee are auto crit.";
-        public const string PetrifiedDescription = "You are transformed into an inanimate substance and are incapacitated. Resistant to all damage and immune to posion and disease.";
+        public const string PetrifiedDescription = "You are transformed into an inanimate substance and are incapacitated. Resistant to all damage and immune to poison and disease.";
         public const string PoisonedDescription = "You have disadvantage on Attack rolls and Ability Checks";
-        public const string ProneDescription = "Your only movement option is to crawl and have disadvantage on attacks. Melee attack is advantage, ranged is disadantage.";
+        public const string ProneDescription = "Your only movement option is to crawl and have disadvantage on attacks. Melee attack is advantage, ranged is disadvantage.";
         public const string RestrainedDescription = "Your speed becomes 0. Your attacks have disadvantage, enemies have advantage. Dexterity Saving Throws are disadvantage.";
         public const string StunnedDescription = "You are incapacitated and speak falteringly, and automatically fail Strength and Dexterity Saving Throws. Attacks against have advantage.";
         public const string UnconsciousDescription = "You are incapacitated, drop what you're holding, and fall prone. Attacks against have advantage and hits are auto crit.";
@@ -176,7 +176,7 @@ namespace Concierge.Character.Statuses
 
         public Conditions Copy()
         {
-            var copy = new Conditions
+            return new Conditions
             {
                 Blinded = this.Blinded,
                 Charmed = this.Charmed,
@@ -194,20 +194,18 @@ namespace Concierge.Character.Statuses
                 Stunned = this.Stunned,
                 Unconscious = this.Unconscious,
             };
-
-            return copy;
         }
 
         private static string ToInteger(string str)
         {
             return str switch
             {
-                "One" => "Exaustion 1",
-                "Two" => "Exaustion 2",
-                "Three" => "Exaustion 3",
-                "Four" => "Exaustion 4",
-                "Five" => "Exaustion 5",
-                "Six" => "Exaustion 6",
+                "One" => "Exhaustion 1",
+                "Two" => "Exhaustion 2",
+                "Three" => "Exhaustion 3",
+                "Four" => "Exhaustion 4",
+                "Five" => "Exhaustion 5",
+                "Six" => "Exhaustion 6",
                 _ => string.Empty,
             };
         }

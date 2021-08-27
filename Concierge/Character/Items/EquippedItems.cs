@@ -134,26 +134,13 @@ namespace Concierge.Character.Items
 
         public EquipmentSlot GetEquippedItemSlot(Inventory item)
         {
-            if (this.Head.Any(x => x.EquppedId.Equals(item.EquppedId)))
-            {
-                return EquipmentSlot.Head;
-            }
-            else if (this.Torso.Any(x => x.EquppedId.Equals(item.EquppedId)))
-            {
-                return EquipmentSlot.Torso;
-            }
-            else if (this.Hands.Any(x => x.EquppedId.Equals(item.EquppedId)))
-            {
-                return EquipmentSlot.Hands;
-            }
-            else if (this.Legs.Any(x => x.EquppedId.Equals(item.EquppedId)))
-            {
-                return EquipmentSlot.Legs;
-            }
-            else
-            {
-                return EquipmentSlot.Feet;
-            }
+            return this.Head.Any(x => x.EquppedId.Equals(item.EquppedId))
+                ? EquipmentSlot.Head
+                : this.Torso.Any(x => x.EquppedId.Equals(item.EquppedId))
+                    ? EquipmentSlot.Torso
+                    : this.Hands.Any(x => x.EquppedId.Equals(item.EquppedId))
+                                    ? EquipmentSlot.Hands
+                                    : this.Legs.Any(x => x.EquppedId.Equals(item.EquppedId)) ? EquipmentSlot.Legs : EquipmentSlot.Feet;
         }
 
         private static double GetWeight(List<Inventory> list)

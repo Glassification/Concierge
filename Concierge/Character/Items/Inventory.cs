@@ -50,6 +50,7 @@ namespace Concierge.Character.Items
                 Amount = 1,
                 Weight = this.Weight,
                 IsInBagOfHolding = false,
+                Attuned = this.Attuned,
                 Note = this.Note,
                 EquppedId = Guid.NewGuid(),
                 Id = this.Id,

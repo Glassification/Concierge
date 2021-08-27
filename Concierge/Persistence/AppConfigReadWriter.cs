@@ -7,6 +7,7 @@ namespace Concierge.Persistence
     using System;
     using System.Configuration;
 
+    using Concierge.Exceptions.Enums;
     using Concierge.Utility.Extensions;
 
     public static class AppConfigReadWriter
@@ -36,7 +37,7 @@ namespace Concierge.Persistence
             }
             catch (Exception ex)
             {
-                Program.Logger.Error(ex);
+                Program.ErrorService.LogError(ex, Severity.Debug);
             }
         }
 
@@ -54,7 +55,7 @@ namespace Concierge.Persistence
             }
             catch (Exception ex)
             {
-                Program.Logger.Error(ex);
+                Program.ErrorService.LogError(ex, Severity.Debug);
                 return default;
             }
         }
@@ -74,7 +75,7 @@ namespace Concierge.Persistence
             }
             catch (Exception ex)
             {
-                Program.Logger.Error(ex);
+                Program.ErrorService.LogError(ex, Severity.Debug);
                 return defaultValue;
             }
         }
@@ -89,7 +90,7 @@ namespace Concierge.Persistence
             }
             catch (Exception ex)
             {
-                Program.Logger.Error(ex);
+                Program.ErrorService.LogError(ex, Severity.Debug);
                 return defaultValue;
             }
         }

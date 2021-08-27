@@ -16,7 +16,7 @@ namespace Concierge.Persistence
 
     public static class DefaultListReadWriter
     {
-        public static List<Ability> LoadAbilityList()
+        public static List<Ability> ReadAbilityList()
         {
             var abilities = new List<Ability>();
 
@@ -35,7 +35,7 @@ namespace Concierge.Persistence
             return abilities;
         }
 
-        public static List<Ammunition> LoadAmmunitionList()
+        public static List<Ammunition> ReadAmmunitionList()
         {
             var ammunitions = new List<Ammunition>();
 
@@ -54,7 +54,7 @@ namespace Concierge.Persistence
             return ammunitions;
         }
 
-        public static List<Inventory> LoadInventoryList()
+        public static List<Inventory> ReadInventoryList()
         {
             var inventories = new List<Inventory>();
 
@@ -73,7 +73,7 @@ namespace Concierge.Persistence
             return inventories;
         }
 
-        public static List<Language> LoadLanguageList()
+        public static List<Language> ReadLanguageList()
         {
             var languages = new List<Language>();
 
@@ -92,7 +92,7 @@ namespace Concierge.Persistence
             return languages;
         }
 
-        public static List<Spell> LoadSpellList()
+        public static List<Spell> ReadSpellList()
         {
             var spells = new List<Spell>();
 
@@ -111,7 +111,7 @@ namespace Concierge.Persistence
             return spells;
         }
 
-        public static List<Weapon> LoadWeaponList()
+        public static List<Weapon> ReadWeaponList()
         {
             var weapons = new List<Weapon>();
 
