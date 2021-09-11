@@ -80,15 +80,12 @@
                     <components:ConciergeButton x:Name="ButtonResetHistory"
                             Height="50"
                             Width="60"
-                            HorizontalAlignment="Center"
-                            VerticalAlignment="Center"
                             Background="Transparent"
-                            
                             Foreground="SteelBlue"
                             Click="ButtonResetHistory_Click"
                             Margin="10, 0, 60, 0"
                             ToolTip="Clear History">
-                        <materialDesign:PackIcon Kind="Refresh" Height="25" Width="25" Margin="10"/>
+                        <materialDesign:PackIcon Kind="RefreshCircle" Height="25" Width="25" Margin="10"/>
                     </components:ConciergeButton>
                 </StackPanel>
             </Grid>
@@ -842,28 +839,22 @@
                     <components:ConciergeButton x:Name="ButtonDivideLoot"
                             Height="50"
                             Width="60"
-                            HorizontalAlignment="Center"
-                            VerticalAlignment="Center"
                             Background="Transparent"
-                            
                             Foreground="SteelBlue"
                             Click="ButtonDivideLoot_Click"
                             Margin="10, 0, 10, 0"
                             ToolTip="Divide Loot">
-                        <materialDesign:PackIcon Kind="Division" Height="25" Width="25" Margin="10"/>
+                        <materialDesign:PackIcon Kind="Calculator" Height="25" Width="25" Margin="10"/>
                     </components:ConciergeButton>
                     <components:ConciergeButton x:Name="ButtonResetLoot"
                             Height="50"
                             Width="60"
-                            HorizontalAlignment="Center"
-                            VerticalAlignment="Center"
                             Background="Transparent"
-                            
                             Foreground="SteelBlue"
                             Click="ButtonResetLoot_Click"
                             Margin="10, 0, 60, 0"
                             ToolTip="Clear Loot">
-                        <materialDesign:PackIcon Kind="Refresh" Height="25" Width="25" Margin="10"/>
+                        <materialDesign:PackIcon Kind="RefreshCircle" Height="25" Width="25" Margin="10"/>
                     </components:ConciergeButton>
                 </StackPanel>
             </Grid>

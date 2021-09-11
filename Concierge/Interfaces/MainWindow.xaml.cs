@@ -125,6 +125,7 @@ namespace Concierge.Interfaces
 
             this.ResetCharacterSheet();
             this.characterCreationWizard.Start();
+            this.DrawAll();
         }
 
         public void OpenCharacterSheet()
@@ -225,7 +226,7 @@ namespace Concierge.Interfaces
                 return ConciergeWindowResult.No;
             }
 
-            var result = Program.ConciergeMessageWindow.ShowWindow(
+            var result = ConciergeMessageBox.Show(
                 $"You have unsaved changes. Would you like to save before {action}?",
                 "Warning",
                 ConciergeWindowButtons.YesNoCancel,
@@ -555,6 +556,11 @@ namespace Concierge.Interfaces
             ConciergeSound.TapNavigation();
             this.CreateCharacterWizard();
             this.IgnoreSecondPress = true;
+        }
+
+        private void MaximizeButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = WindowState.Maximized;
         }
     }
 }

@@ -33,6 +33,8 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
 
         private bool Editing { get; set; }
 
+        private bool SettingValues { get; set; }
+
         private MagicClass SelectedClass { get; set; }
 
         private List<MagicClass> MagicClasses { get; set; }
@@ -84,34 +86,42 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
 
         private void FillFields(MagicClass magicClass)
         {
+            this.SettingValues = true;
+
             this.LevelUpDown.UpdatingValue();
             this.CantripsUpDown.UpdatingValue();
             this.SpellsUpDown.UpdatingValue();
 
             this.ClassNameComboBox.Text = magicClass.Name;
             this.AbilityComboBox.Text = magicClass.Ability.ToString();
-            this.AttackTextBox.Text = magicClass.Attack.ToString();
-            this.SaveTextBox.Text = magicClass.Save.ToString();
+            this.AttackBonusTextBlock.Text = magicClass.Attack.ToString();
+            this.SpellSaveTextBlock.Text = magicClass.Save.ToString();
             this.LevelUpDown.Value = magicClass.Level;
             this.CantripsUpDown.Value = magicClass.KnownCantrips;
             this.SpellsUpDown.Value = magicClass.KnownSpells;
-            this.PreparedTextBox.Text = magicClass.PreparedSpells.ToString();
+            this.PreparedSpellsTextBlock.Text = magicClass.PreparedSpells.ToString();
+
+            this.SettingValues = false;
         }
 
         private void ClearFields()
         {
+            this.SettingValues = true;
+
             this.LevelUpDown.UpdatingValue();
             this.CantripsUpDown.UpdatingValue();
             this.SpellsUpDown.UpdatingValue();
 
             this.ClassNameComboBox.Text = string.Empty;
             this.AbilityComboBox.Text = Abilities.NONE.ToString();
-            this.AttackTextBox.Text = string.Empty;
-            this.SaveTextBox.Text = string.Empty;
+            this.AttackBonusTextBlock.Text = "0";
+            this.SpellSaveTextBlock.Text = "0";
             this.LevelUpDown.Value = 0;
             this.CantripsUpDown.Value = 0;
             this.SpellsUpDown.Value = 0;
-            this.PreparedTextBox.Text = string.Empty;
+            this.PreparedSpellsTextBlock.Text = "0";
+
+            this.SettingValues = false;
         }
 
         private void UpdateClass(MagicClass magicClass)
@@ -133,6 +143,13 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
                 KnownSpells = this.SpellsUpDown.Value ?? 0,
                 KnownCantrips = this.CantripsUpDown.Value ?? 0,
             };
+        }
+
+        private void RefreshFields()
+        {
+            this.AttackBonusTextBlock.Text = Utilities.CalculateBonusFromAbility((Abilities)Enum.Parse(typeof(Abilities), this.AbilityComboBox.SelectedItem.ToString()), Program.CcsFile.Character).ToString();
+            this.SpellSaveTextBlock.Text = (Utilities.CalculateBonusFromAbility((Abilities)Enum.Parse(typeof(Abilities), this.AbilityComboBox.SelectedItem.ToString()), Program.CcsFile.Character) + Constants.BaseDC).ToString();
+            this.PreparedSpellsTextBlock.Text = Program.CcsFile.Character.Spells.Where(x => (x.Class?.Equals(this.ClassNameComboBox.SelectedItem.ToString()) ?? false) && x.Prepared).ToList().Count.ToString();
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
@@ -188,6 +205,14 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
         private void ComboBox_DropDownOpened(object sender, EventArgs e)
         {
             ConciergeSound.UpdateValue();
+        }
+
+        private void ComboBox_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+            if (!this.SettingValues)
+            {
+                this.RefreshFields();
+            }
         }
     }
 }

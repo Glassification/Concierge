@@ -4,11 +4,11 @@
 
 namespace Concierge.Interfaces.OverviewPageInterface
 {
-    using System;
     using System.Windows;
     using System.Windows.Input;
 
     using Concierge.Character.Statuses;
+    using Concierge.Interfaces.Enums;
 
     /// <summary>
     /// Interaction logic for ModifyHpWindow.xaml.
@@ -20,15 +20,16 @@ namespace Concierge.Interfaces.OverviewPageInterface
             this.InitializeComponent();
         }
 
-        private bool IsOk { get; set; }
+        private ConciergeWindowResult Result { get; set; }
 
         public void AddHP(Vitality vitality)
         {
-            this.HeaderTextBlock.Text = "Add HP";
+            this.HeaderTextBlock.Text = "Heal";
+            this.HpUpDown.Value = 0;
 
             this.ShowDialog();
 
-            if (this.IsOk)
+            if (this.Result == ConciergeWindowResult.OK)
             {
                 vitality.Heal(this.HpUpDown.Value ?? 0);
             }
@@ -36,11 +37,12 @@ namespace Concierge.Interfaces.OverviewPageInterface
 
         public void SubtractHP(Vitality vitality)
         {
-            this.HeaderTextBlock.Text = "Subract HP";
+            this.HeaderTextBlock.Text = "Damage";
+            this.HpUpDown.Value = 0;
 
             this.ShowDialog();
 
-            if (this.IsOk)
+            if (this.Result == ConciergeWindowResult.OK)
             {
                 vitality.Damage(this.HpUpDown.Value ?? 0);
             }
@@ -51,7 +53,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
             switch (e.Key)
             {
                 case Key.Escape:
-                    this.IsOk = false;
+                    this.Result = ConciergeWindowResult.Exit;
                     this.Hide();
                     break;
             }
@@ -59,13 +61,13 @@ namespace Concierge.Interfaces.OverviewPageInterface
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            this.IsOk = false;
+            this.Result = ConciergeWindowResult.Exit;
             this.Hide();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            this.IsOk = false;
+            this.Result = ConciergeWindowResult.Cancel;
             this.Hide();
         }
 
@@ -73,7 +75,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
         {
             Program.Modify();
 
-            this.IsOk = true;
+            this.Result = ConciergeWindowResult.OK;
             this.Hide();
         }
     }

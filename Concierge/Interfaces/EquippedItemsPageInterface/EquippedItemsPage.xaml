@@ -79,7 +79,7 @@
                             Foreground="SteelBlue"
                             Click="ButtonUp_Click"
                             ToolTip="Move Item Up">
-                    <materialDesign:PackIcon Kind="ArrowUp" Width="25" Height="25"/>
+                    <materialDesign:PackIcon Kind="ArrowUpBox" Width="25" Height="25"/>
                 </components:ConciergeButton>
                 <components:ConciergeButton x:Name="ButtonDown"
                             Height="50"
@@ -91,7 +91,7 @@
                             Foreground="SteelBlue"
                             Click="ButtonDown_Click"
                             ToolTip="Move Item Down">
-                    <materialDesign:PackIcon Kind="ArrowDown" Width="25" Height="25"/>
+                    <materialDesign:PackIcon Kind="ArrowDownBox" Width="25" Height="25"/>
                 </components:ConciergeButton>
                 <components:ConciergeButton x:Name="ButtonClear"
                             Height="50"
@@ -149,7 +149,7 @@
                 </components:ConciergeButton>
             </StackPanel>
         </Grid>
-    
+
         <Grid Grid.Row="1" x:Name="DrawingGrid">
             <materialDesign:PackIcon 
                 Kind="HumanHandsdown"
@@ -157,7 +157,7 @@
                 Height="{Binding Path=EquippedItemsHeight}"
                 Foreground="#161223"
                 HorizontalAlignment="Center"/>
-            
+
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="33*"/>
@@ -238,7 +238,7 @@
                     <ColumnDefinition Width="33*"/>
                 </Grid.ColumnDefinitions>
 
-                <Grid Grid.Column="0">
+                <Grid Grid.Column="0" Background="#FF191919" Margin="3,0,0,0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="33*"/>
                         <RowDefinition Height="33*"/>
@@ -358,14 +358,14 @@
                         </components:ConciergeDataGrid>
                     </Grid>
                 </Grid>
-                
-                <Grid Grid.Column="2">
+
+                <Grid Grid.Column="2" Background="#FF191919" Margin="0,0,3,0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="33*"/>
                         <RowDefinition Height="33*"/>
                         <RowDefinition Height="33*"/>
                     </Grid.RowDefinitions>
-                    
+
                     <!--Head-->
                     <Grid 
                         Grid.Row="0"

@@ -10,7 +10,7 @@ namespace Concierge.Character.Statuses
 
     public class Vitality
     {
-        private int iBaseHealthField;
+        private int baseHealthField;
 
         public Vitality()
         {
@@ -46,11 +46,11 @@ namespace Concierge.Character.Statuses
 
         public int BaseHealth
         {
-            get => this.iBaseHealthField;
+            get => this.baseHealthField;
             set
             {
-                this.iBaseHealthField = Math.Min(value, this.MaxHealth);
-                this.iBaseHealthField = Math.Max(value, 0);
+                this.baseHealthField = Math.Min(value, this.MaxHealth);
+                this.baseHealthField = Math.Max(value, 0);
             }
         }
 

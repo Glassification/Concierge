@@ -149,7 +149,7 @@ namespace Concierge.Interfaces.InventoryPageInterface
             {
                 inventory.Attuned = this.BagOfHoldingCheckBox.IsChecked ?? false;
 
-                if (Program.CcsFile.Character.EquipedItems.Attuned > Constants.MaxAttunedItems)
+                if (Program.CcsFile.Character.EquippedItems.Attuned > Constants.MaxAttunedItems)
                 {
                     inventory.Attuned = false;
                     this.conciergeMessageWindow.ShowWindow(

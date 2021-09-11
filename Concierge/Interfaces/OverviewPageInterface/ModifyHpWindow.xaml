@@ -220,7 +220,8 @@
         <Grid Grid.Row="1">
             <components:ConciergeIntegerUpDown 
                 x:Name="HpUpDown"
-                Margin="20, 0, 20, 0"/>
+                Margin="20, 0, 20, 0"
+                Minimum="0"/>
         </Grid>
 
         <!--Buttons-->

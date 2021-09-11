@@ -104,7 +104,7 @@
                 <Grid Grid.Column="0">
                     <TextBlock Text="Initiative Bonus:"
                                Foreground="White"
-                               FontSize="16"
+                               FontSize="20"
                                HorizontalAlignment="Left"
                                VerticalAlignment="Center"
                                Margin="10, 0, 0, 0"/>
@@ -157,7 +157,7 @@
                 <Grid Grid.Column="0">
                     <TextBlock Text="Perception Bonus:"
                                Foreground="White"
-                               FontSize="15"
+                               FontSize="20"
                                HorizontalAlignment="Left"
                                VerticalAlignment="Center"
                                Margin="10, 0, 0, 0"/>
@@ -239,7 +239,7 @@
                 <Grid Grid.Column="0">
                     <TextBlock Text="Base Movement:"
                                Foreground="White"
-                               FontSize="16"
+                               FontSize="20"
                                HorizontalAlignment="Left"
                                VerticalAlignment="Center"
                                Margin="10, 0, 0, 0"/>

@@ -11,6 +11,7 @@ namespace Concierge.Interfaces.ToolsPageInterface
     using System.Windows.Input;
 
     using Concierge.Tools;
+    using Concierge.Utility;
     using Xceed.Wpf.Toolkit;
 
     /// <summary>
@@ -87,7 +88,7 @@ namespace Concierge.Interfaces.ToolsPageInterface
             }
         }
 
-        private Player GetLoot()
+        private Loot GetLoot()
         {
             _ = int.TryParse(this.CopperInput.Text, out int cp);
             _ = int.TryParse(this.SilverInput.Text, out int sp);
@@ -95,10 +96,10 @@ namespace Concierge.Interfaces.ToolsPageInterface
             _ = int.TryParse(this.GoldInput.Text, out int gp);
             _ = int.TryParse(this.PlatinumInput.Text, out int pp);
 
-            return new Player(cp, sp, ep, gp, pp);
+            return new Loot(cp, sp, ep, gp, pp);
         }
 
-        private void Distribute(Player loot)
+        private void Distribute(Loot loot)
         {
             var maxValue = loot.Total / this.Players.Count;
 
@@ -107,7 +108,7 @@ namespace Concierge.Interfaces.ToolsPageInterface
                 return;
             }
 
-            for (int i = 0; i < Player.Currencies; i++)
+            for (int i = 0; i < Constants.Currencies; i++)
             {
                 while (loot.CurrencyList[i] > 0)
                 {

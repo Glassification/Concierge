@@ -83,7 +83,7 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
 
             var slot = (EquipmentSlot)Enum.Parse(typeof(EquipmentSlot), this.SlotComboBox.Text);
 
-            Program.CcsFile.Character.EquipedItems.Equip(item, slot);
+            Program.CcsFile.Character.EquippedItems.Equip(item, slot);
 
             this.Hide();
         }
@@ -99,7 +99,7 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
 
             var slot = (EquipmentSlot)Enum.Parse(typeof(EquipmentSlot), this.SlotComboBox.Text);
 
-            Program.CcsFile.Character.EquipedItems.Equip(item, slot);
+            Program.CcsFile.Character.EquippedItems.Equip(item, slot);
 
             this.ClearFields();
             this.ItemComboBox.ItemsSource = EquippedItems.Equipable;

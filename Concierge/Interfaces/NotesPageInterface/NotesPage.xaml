@@ -189,7 +189,7 @@
                             Foreground="SteelBlue"
                             ToolTip="Move Item Up"
                         Click="ButtonUp_Click">
-                    <materialDesign:PackIcon Kind="ArrowUp" Width="25" Height="25"/>
+                    <materialDesign:PackIcon Kind="ArrowUpBox" Width="25" Height="25"/>
                 </components:ConciergeButton>
                 <components:ConciergeButton x:Name="ButtonDown"
                             Height="50"
@@ -201,7 +201,7 @@
                             Foreground="SteelBlue"
                             ToolTip="Move Item Down"
                         Click="ButtonDown_Click">
-                    <materialDesign:PackIcon Kind="ArrowDown" Width="25" Height="25"/>
+                    <materialDesign:PackIcon Kind="ArrowDownBox" Width="25" Height="25"/>
                 </components:ConciergeButton>
                 <components:ConciergeButton x:Name="ButtonClear"
                             Height="50"

@@ -63,6 +63,8 @@ namespace Concierge.Interfaces.OverviewPageInterface
             this.CurrentHpUpDown.Value = this.Vitality.BaseHealth;
             this.TemporaryHpUpDown.Value = this.Vitality.TemporaryHealth;
             this.TotalHpUpDown.Value = this.Vitality.MaxHealth;
+
+            this.CurrentHpUpDown.Maximum = this.TotalHpUpDown.Value;
         }
 
         private void UpdateHealth()
@@ -111,6 +113,16 @@ namespace Concierge.Interfaces.OverviewPageInterface
 
             this.UpdateHealth();
             this.Hide();
+        }
+
+        private void TotalHpUpDown_ValueChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
+        {
+            if (this.TotalHpUpDown.Value < this.CurrentHpUpDown.Value)
+            {
+                this.CurrentHpUpDown.Value = this.TotalHpUpDown.Value;
+            }
+
+            this.CurrentHpUpDown.Maximum = this.TotalHpUpDown.Value;
         }
     }
 }

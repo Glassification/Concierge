@@ -44,13 +44,13 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
 
         public void Draw()
         {
-            this.UsedAttunement.Text = $"{Program.CcsFile.Character.EquipedItems.Attuned}/{Constants.MaxAttunedItems}";
+            this.UsedAttunement.Text = $"{Program.CcsFile.Character.EquippedItems.Attuned}/{Constants.MaxAttunedItems}";
 
-            ReadEquippedItems(Program.CcsFile.Character.EquipedItems.Head, this.HeadEquipmentDataGrid);
-            ReadEquippedItems(Program.CcsFile.Character.EquipedItems.Torso, this.TorsoEquipmentDataGrid);
-            ReadEquippedItems(Program.CcsFile.Character.EquipedItems.Hands, this.HandsEquipmentDataGrid);
-            ReadEquippedItems(Program.CcsFile.Character.EquipedItems.Legs, this.LegsEquipmentDataGrid);
-            ReadEquippedItems(Program.CcsFile.Character.EquipedItems.Feet, this.FeetEquipmentDataGrid);
+            ReadEquippedItems(Program.CcsFile.Character.EquippedItems.Head, this.HeadEquipmentDataGrid);
+            ReadEquippedItems(Program.CcsFile.Character.EquippedItems.Torso, this.TorsoEquipmentDataGrid);
+            ReadEquippedItems(Program.CcsFile.Character.EquippedItems.Hands, this.HandsEquipmentDataGrid);
+            ReadEquippedItems(Program.CcsFile.Character.EquippedItems.Legs, this.LegsEquipmentDataGrid);
+            ReadEquippedItems(Program.CcsFile.Character.EquippedItems.Feet, this.FeetEquipmentDataGrid);
         }
 
         private static void ReadEquippedItems(List<Inventory> items, ConciergeDataGrid dataGrid)
@@ -68,7 +68,7 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
             Program.Modify();
 
             var dataGrid = sender as ConciergeDataGrid;
-            var equippedItems = Utilities.GetPropertyValue<List<Inventory>>(Program.CcsFile.Character.EquipedItems, dataGrid.Tag as string);
+            var equippedItems = Utilities.GetPropertyValue<List<Inventory>>(Program.CcsFile.Character.EquippedItems, dataGrid.Tag as string);
 
             equippedItems.Clear();
             foreach (var item in dataGrid.Items)
@@ -115,7 +115,7 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
 
         private void ButtonUp_Click(object sender, RoutedEventArgs e)
         {
-            var equippedItems = Utilities.GetPropertyValue<List<Inventory>>(Program.CcsFile.Character.EquipedItems, this.SelectedDataGrid.Tag as string);
+            var equippedItems = Utilities.GetPropertyValue<List<Inventory>>(Program.CcsFile.Character.EquippedItems, this.SelectedDataGrid.Tag as string);
             var index = this.SelectedDataGrid.NextItem(equippedItems, 0, -1);
 
             if (index != -1)
@@ -127,7 +127,7 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
 
         private void ButtonDown_Click(object sender, RoutedEventArgs e)
         {
-            var equippedItems = Utilities.GetPropertyValue<List<Inventory>>(Program.CcsFile.Character.EquipedItems, this.SelectedDataGrid.Tag as string);
+            var equippedItems = Utilities.GetPropertyValue<List<Inventory>>(Program.CcsFile.Character.EquippedItems, this.SelectedDataGrid.Tag as string);
             var index = this.SelectedDataGrid.NextItem(equippedItems, equippedItems.Count - 1, 1);
 
             if (index != -1)
@@ -172,7 +172,7 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
 
             Program.Modify();
 
-            Program.CcsFile.Character.EquipedItems.Dequip(
+            Program.CcsFile.Character.EquippedItems.Dequip(
                 this.SelectedItem,
                 (EquipmentSlot)Enum.Parse(typeof(EquipmentSlot), this.SelectedDataGrid.Tag as string));
 

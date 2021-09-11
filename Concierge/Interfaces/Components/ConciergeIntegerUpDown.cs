@@ -25,6 +25,7 @@ namespace Concierge.Interfaces.Components
             this.Minimum = 0;
             this.TextAlignment = TextAlignment.Center;
             this.FontSize = 25;
+            this.Watermark = "Enter Integer";
 
             this.ValueChanged += this.CreateSound_ValueChanged;
         }

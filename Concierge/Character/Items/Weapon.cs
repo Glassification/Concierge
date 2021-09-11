@@ -40,7 +40,7 @@ namespace Concierge.Character.Items
                     Abilities.INT => Utilities.CalculateBonus(Program.CcsFile.Character.Attributes.Intelligence) + bonus,
                     Abilities.WIS => Utilities.CalculateBonus(Program.CcsFile.Character.Attributes.Wisdom) + bonus,
                     Abilities.CHA => Utilities.CalculateBonus(Program.CcsFile.Character.Attributes.Charisma) + bonus,
-                    Abilities.NONE => throw new NotImplementedException(),
+                    Abilities.NONE => bonus,
                     _ => throw new NotImplementedException(),
                 };
             }

@@ -180,6 +180,7 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
                 case PopupButtons.AddSpell:
                     this.modifySpellWindow.AddSpell(Program.CcsFile.Character.Spells);
                     this.DrawSpellList();
+                    this.DrawMagicClasses();
                     break;
             }
         }
@@ -197,6 +198,7 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
                 var spell = (Spell)this.SpellListDataGrid.SelectedItem;
                 this.modifySpellWindow.EditSpell(spell);
                 this.DrawSpellList();
+                this.DrawMagicClasses();
             }
         }
 
@@ -372,6 +374,7 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
                     break;
                 case "ModifySpellWindow":
                     this.DrawSpellList();
+                    this.DrawMagicClasses();
                     break;
                 case "ModifySpellSlotsWindow":
                     this.DrawUsedSpellSlots();

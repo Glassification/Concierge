@@ -49,7 +49,7 @@ namespace Concierge.Tools
         {
             this.IsStopped = false;
 
-            var result = Program.ConciergeMessageWindow.ShowWindow(
+            var result = ConciergeMessageBox.Show(
                 "This is the Concierge Character Creation Wizard. This will help jump start your path to godhood.",
                 "Character Creation",
                 ConciergeWindowButtons.OkCancel,
@@ -63,7 +63,7 @@ namespace Concierge.Tools
 
             this.RunSetupSteps();
 
-            Program.ConciergeMessageWindow.ShowWindow(
+            ConciergeMessageBox.Show(
                 $"Character creation {(this.IsStopped ? "aborted" : "completed successfully")}.",
                 "Character Creation",
                 ConciergeWindowButtons.Ok,
@@ -122,7 +122,7 @@ namespace Concierge.Tools
 
                 if (wizardResult == ConciergeWindowResult.Exit)
                 {
-                    confirmExitResult = Program.ConciergeMessageWindow.ShowWindow(
+                    confirmExitResult = ConciergeMessageBox.Show(
                         "Would you like to exit Character Creation? Existing progress will be lost.",
                         "Character Creation",
                         ConciergeWindowButtons.YesNo,

@@ -92,6 +92,7 @@
                             Height="40"
                             Margin="0, 0, 20, 0"
                             DropDownOpened="ComboBox_DropDownOpened"
+                            SelectionChanged="ComboBox_SelectionChanged"
                             FontSize="15"/>
                     </Grid>
                 </Grid>
@@ -121,6 +122,7 @@
                             Height="40"
                             Margin="0, 0, 20, 0"
                             DropDownOpened="ComboBox_DropDownOpened"
+                            SelectionChanged="ComboBox_SelectionChanged"
                             FontSize="15"/>
                     </Grid>
                 </Grid>
@@ -134,22 +136,24 @@
 
                     <!--Title-->
                     <Grid Grid.Column="0">
-                        <TextBlock Text="Attack Bonus:"
-                                   Foreground="White"
-                                   FontSize="18"
-                                   HorizontalAlignment="Left"
-                                   VerticalAlignment="Center"
-                                   Margin="10, 0, 0, 0"/>
+                        <TextBlock 
+                            Text="Attack Bonus:"
+                            Foreground="White"
+                            FontSize="18"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Margin="10, 0, 0, 0"/>
                     </Grid>
 
                     <!--Value-->
-                    <Grid Grid.Column="1"
-                      Background="#FF3F3F3F"
-                      Margin="0, 8, 20, 8">
-                        <components:ConciergeTextBox 
-                            x:Name="AttackTextBox"
-                            FontSize="15"
-                            IsReadOnly="True"/>
+                    <Grid Grid.Column="1">
+                        <TextBlock
+                            x:Name="AttackBonusTextBlock"
+                            Text="0"
+                            Foreground="White"
+                            FontSize="25"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"/>
                     </Grid>
                 </Grid>
 
@@ -171,13 +175,14 @@
                     </Grid>
 
                     <!--Value-->
-                    <Grid Grid.Column="1"
-                      Background="#FF3F3F3F"
-                      Margin="0, 8, 20, 8">
-                        <components:ConciergeTextBox 
-                            x:Name="SaveTextBox"
-                            FontSize="15"
-                            IsReadOnly="True"/>
+                    <Grid Grid.Column="1">
+                        <TextBlock
+                            x:Name="SpellSaveTextBlock"
+                            Text="0"
+                            Foreground="White"
+                            FontSize="25"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"/>
                     </Grid>
                 </Grid>
 
@@ -279,13 +284,14 @@
                     </Grid>
 
                     <!--Value-->
-                    <Grid Grid.Column="1"
-                      Background="#FF3F3F3F"
-                      Margin="0, 8, 20, 8">
-                        <components:ConciergeTextBox 
-                            x:Name="PreparedTextBox"
-                            FontSize="15"
-                            IsReadOnly="True"/>
+                    <Grid Grid.Column="1">
+                        <TextBlock
+                            x:Name="PreparedSpellsTextBlock"
+                            Text="0"
+                            Foreground="White"
+                            FontSize="25"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"/>
                     </Grid>
                 </Grid>
             </Grid>

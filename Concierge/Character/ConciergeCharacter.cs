@@ -74,7 +74,7 @@ namespace Concierge.Character
 
         public List<Weapon> Weapons { get; private set; }
 
-        public EquippedItems EquipedItems { get; private set; }
+        public EquippedItems EquippedItems { get; private set; }
 
         [JsonIgnore]
         public double CarryWeight
@@ -107,7 +107,7 @@ namespace Concierge.Character
                     weight += this.Wealth.TotalCoins / Constants.CoinGroup;
                 }
 
-                weight += this.EquipedItems.Weight;
+                weight += this.EquippedItems.Weight;
 
                 return Math.Round(weight, Constants.SignificantDigits);
             }
@@ -237,7 +237,7 @@ namespace Concierge.Character
             this.Vitality = new Vitality();
             this.Wealth = new Wealth();
             this.Weapons = new List<Weapon>();
-            this.EquipedItems = new EquippedItems();
+            this.EquippedItems = new EquippedItems();
         }
     }
 }

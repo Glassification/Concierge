@@ -8,8 +8,10 @@ namespace Concierge.Interfaces.HelperInterface
     using System.Windows.Input;
 
     using Concierge.Interfaces.Enums;
+    using Concierge.Tools;
     using Concierge.Utility;
     using Concierge.Utility.Dtos;
+    using Concierge.Utility.Extensions;
 
     /// <summary>
     /// Interaction logic for SettingsWindow.xaml.
@@ -63,26 +65,22 @@ namespace Concierge.Interfaces.HelperInterface
             this.CheckVersionCheckBox.UpdatedValue();
         }
 
-        private void Write()
+        private bool Write()
         {
-            var autosaveEnabled = ConciergeSettings.AutosaveEnabled;
-
-            if (Program.CcsFile == null && (this.AutosaveCheckBox.IsChecked ?? false))
+            if (Program.CcsFile.AbsolutePath.IsNullOrWhiteSpace() && (this.AutosaveCheckBox.IsChecked ?? false))
             {
-                Program.ConciergeMessageWindow.ShowWindow(
+                ConciergeMessageBox.Show(
                     "You must save this sheet before enabling autosave.",
                     "Warning",
                     ConciergeWindowButtons.Ok,
                     ConciergeWindowIcons.Alert);
-            }
-            else
-            {
-                autosaveEnabled = this.AutosaveCheckBox.IsChecked ?? false;
+
+                return false;
             }
 
             var conciergeSettings = new ConciergeSettingsDto()
             {
-                AutosaveEnabled = autosaveEnabled,
+                AutosaveEnabled = this.AutosaveCheckBox.IsChecked ?? false,
                 AutosaveInterval = (int)this.AutosaveInterval.Value,
                 CheckVersion = this.CheckVersionCheckBox.IsChecked ?? false,
                 MuteSounds = this.MuteCheckBox.IsChecked ?? false,
@@ -91,6 +89,8 @@ namespace Concierge.Interfaces.HelperInterface
             };
 
             ConciergeSettings.UpdateSettings(conciergeSettings);
+
+            return true;
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
@@ -120,8 +120,10 @@ namespace Concierge.Interfaces.HelperInterface
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Write();
-            this.Hide();
+            if (this.Write())
+            {
+                this.Hide();
+            }
         }
 
         private void AutosaveInterval_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)

@@ -28,17 +28,15 @@
             <StackPanel Orientation="Horizontal"
                         HorizontalAlignment="Right"
                         VerticalAlignment="Center">
-                <components:ConciergeButton x:Name="CloseButton"
+                <components:ConciergeButton 
+                    x:Name="CloseButton"
                     Height="50"
                     Width="60"
                     Background="Transparent"
-                    
                     Foreground="White"
                     ToolTip="Close"
                     HorizontalAlignment="Right"
-                    Click="CloseButton_Click"
-                    
-                    >
+                    Click="CloseButton_Click">
                     <materialDesign:PackIcon Kind="WindowClose" Width="25" Height="25"/>
                 </components:ConciergeButton>
             </StackPanel>
@@ -56,29 +54,23 @@
             <StackPanel Orientation="Horizontal"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center">
-                <components:ConciergeButton x:Name="SpellClassButton"
-                        Style="{StaticResource PopupWindowButton}"
-                        
-                        Content="Spell Class"
-                        
-                        
-                        Click="SpellClassButton_Click">
+                <components:ConciergeButton 
+                    x:Name="SpellClassButton"
+                    Style="{StaticResource PopupWindowButton}"
+                    Content="Magic Class"
+                    Click="SpellClassButton_Click">
                 </components:ConciergeButton>
-                <components:ConciergeButton x:Name="SpellButton"
-                        Style="{StaticResource PopupWindowButton}"
-                        
-                        Content="Spell"
-                        
-                        
-                        Click="SpellButton_Click">
+                <components:ConciergeButton 
+                    x:Name="SpellButton"
+                    Style="{StaticResource PopupWindowButton}"
+                    Content="Spell"
+                    Click="SpellButton_Click">
                 </components:ConciergeButton>
-                <components:ConciergeButton x:Name="CancelButton"
-                        
-                        Content="Cancel"
-                        Click="CancelButton_Click"
-                        
-                        
-                        Style="{StaticResource PopupWindowButton}">
+                <components:ConciergeButton 
+                    x:Name="CancelButton"
+                    Content="Cancel"
+                    Click="CancelButton_Click"
+                    Style="{StaticResource PopupWindowButton}">
                 </components:ConciergeButton>
             </StackPanel>
         </Grid>

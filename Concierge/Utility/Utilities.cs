@@ -101,6 +101,23 @@ namespace Concierge.Utility
             return (int)Math.Floor((score - 10) / 2.0);
         }
 
+        public static int CalculateBonusFromAbility(Abilities ability, ConciergeCharacter character)
+        {
+            int bonus = character.ProficiencyBonus;
+
+            return ability switch
+            {
+                Abilities.STR => CalculateBonus(character.Attributes.Strength) + bonus,
+                Abilities.DEX => CalculateBonus(character.Attributes.Dexterity) + bonus,
+                Abilities.CON => CalculateBonus(character.Attributes.Constitution) + bonus,
+                Abilities.INT => CalculateBonus(character.Attributes.Intelligence) + bonus,
+                Abilities.WIS => CalculateBonus(character.Attributes.Wisdom) + bonus,
+                Abilities.CHA => CalculateBonus(character.Attributes.Charisma) + bonus,
+                Abilities.NONE => bonus,
+                _ => throw new NotImplementedException(),
+            };
+        }
+
         public static string FormatName(string name)
         {
             var ch = name.ToArray();

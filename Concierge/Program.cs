@@ -17,7 +17,6 @@ namespace Concierge
             InitializeLogger();
 
             CcsFile = new CcsFile();
-            ConciergeMessageWindow = new ConciergeMessageWindow();
             SaveStatusWindow = new SaveStatusWindow();
             Modified = true;
             Typing = false;
@@ -25,8 +24,6 @@ namespace Concierge
         }
 
         public static CcsFile CcsFile { get; set; }
-
-        public static ConciergeMessageWindow ConciergeMessageWindow { get; }
 
         public static SaveStatusWindow SaveStatusWindow { get; }
 

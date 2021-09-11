@@ -71,7 +71,7 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="60" />
                 <ColumnDefinition Width="1*" />
-                <ColumnDefinition Width="180" />
+                <ColumnDefinition Width="240" />
             </Grid.ColumnDefinitions>
 
             <!-- Side Menu Toggle -->
@@ -195,6 +195,7 @@
                             </StackPanel>
                         </materialDesign:PopupBox>
                     </components:ConciergeButton>
+                    <Separator Foreground="White" Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
                     <components:ConciergeButton 
                         x:Name="ButtonMinimize" 
                         Height="50" Width="60" 
@@ -205,6 +206,15 @@
                         ToolTip="Minimize"
                         Click="ButtonMinimize_Click">
                         <materialDesign:PackIcon Kind="WindowMinimize" Width="25" Height="25"/>
+                    </components:ConciergeButton>
+                    <components:ConciergeButton 
+                        x:Name="MaximizeButton" 
+                        Height="50" Width="60"
+                        Background="Transparent" 
+                        Foreground="White"
+                        ToolTip="Maximize"
+                        Click="MaximizeButton_Click">
+                        <materialDesign:PackIcon Kind="WindowMaximize" Width="25" Height="25"/>
                     </components:ConciergeButton>
                     <components:ConciergeButton 
                         x:Name="ButtonClose" 
@@ -262,13 +272,13 @@
                         </ListViewItem>
                         <ListViewItem x:Name="ItemEquipedItems" Height="60" Selected="ItemEquipedItems_Selected">
                             <StackPanel Orientation="Horizontal">
-                                <materialDesign:PackIcon Kind="PersonOutline" Height="25" Width="25" Margin="10"/>
+                                <materialDesign:PackIcon Kind="Person" Height="25" Width="25" Margin="10"/>
                                 <TextBlock Text="Equipped Items" VerticalAlignment="Center" Margin="20 10"/>
                             </StackPanel>
                         </ListViewItem>
                         <ListViewItem x:Name="ItemInventory" Height="60" Selected="ItemInventory_Selected">
                             <StackPanel Orientation="Horizontal">
-                                <materialDesign:PackIcon Kind="BackpackOutline" Height="25" Width="25" Margin="10"/>
+                                <materialDesign:PackIcon Kind="Backpack" Height="25" Width="25" Margin="10"/>
                                 <TextBlock Text="Inventory" VerticalAlignment="Center" Margin="20 10"/>
                             </StackPanel>
                         </ListViewItem>
@@ -280,13 +290,13 @@
                         </ListViewItem>
                         <ListViewItem x:Name="ItemCompanion" Height="60" Selected="ItemCompanion_Selected">
                             <StackPanel Orientation="Horizontal">
-                                <materialDesign:PackIcon Kind="PeopleAddOutline" Height="25" Width="25" Margin="10"/>
+                                <materialDesign:PackIcon Kind="PeopleAdd" Height="25" Width="25" Margin="10"/>
                                 <TextBlock Text="Companion" VerticalAlignment="Center" Margin="20 10"/>
                             </StackPanel>
                         </ListViewItem>
                         <ListViewItem x:Name="ItemTools" Height="60" Selected="ItemTools_Selected">
                             <StackPanel Orientation="Horizontal">
-                                <materialDesign:PackIcon Kind="ToolboxOutline" Height="25" Width="25" Margin="10"/>
+                                <materialDesign:PackIcon Kind="Tools" Height="25" Width="25" Margin="10"/>
                                 <TextBlock Text="Tools" VerticalAlignment="Center" Margin="20 10"/>
                             </StackPanel>
                         </ListViewItem>

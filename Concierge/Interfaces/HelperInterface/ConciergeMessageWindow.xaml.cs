@@ -6,6 +6,7 @@ namespace Concierge.Interfaces.HelperInterface
 {
     using System.Windows;
     using System.Windows.Input;
+    using System.Windows.Media;
 
     using Concierge.Interfaces.Enums;
     using Concierge.Utility;
@@ -49,21 +50,27 @@ namespace Concierge.Interfaces.HelperInterface
             {
                 case ConciergeWindowIcons.Alert:
                     this.MessageIcon.Kind = PackIconKind.Alert;
+                    this.MessageIcon.Foreground = Brushes.Gold;
                     break;
                 case ConciergeWindowIcons.Error:
-                    this.MessageIcon.Kind = PackIconKind.Error;
+                    this.MessageIcon.Kind = PackIconKind.AlertOctagon;
+                    this.MessageIcon.Foreground = Brushes.DarkRed;
                     break;
                 case ConciergeWindowIcons.Help:
                     this.MessageIcon.Kind = PackIconKind.HelpCircle;
+                    this.MessageIcon.Foreground = Brushes.DodgerBlue;
                     break;
                 case ConciergeWindowIcons.Information:
                     this.MessageIcon.Kind = PackIconKind.Information;
+                    this.MessageIcon.Foreground = Brushes.DodgerBlue;
                     break;
                 case ConciergeWindowIcons.Question:
                     this.MessageIcon.Kind = PackIconKind.QuestionMarkCircle;
+                    this.MessageIcon.Foreground = Brushes.DodgerBlue;
                     break;
                 case ConciergeWindowIcons.Warning:
                     this.MessageIcon.Kind = PackIconKind.WarningCircle;
+                    this.MessageIcon.Foreground = Brushes.Gold;
                     break;
                 case ConciergeWindowIcons.None:
                 default:
