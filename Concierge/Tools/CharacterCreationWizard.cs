@@ -37,6 +37,7 @@ namespace Concierge.Tools
         private readonly ModifySpellSlotsWindow modifySpellSlotsWindow = new ();
         private readonly ModifySpellWindow modifySpellWindow = new ();
         private readonly ModifyAbilitiesWindow modifyAbilitiesWindow = new ();
+        private readonly ModifyCharacterImageWindow modifyCharacterImageWindow = new ();
 
         public CharacterCreationWizard()
         {
@@ -96,6 +97,7 @@ namespace Concierge.Tools
             this.NextSetupStep(this.modifyAmmoWindow, "Continue");
             this.NextSetupStep(this.modifyInventoryWindow, "Continue");
             this.NextSetupStep(this.modifyEquippedItemsWindow, "Continue");
+            this.NextSetupStep(this.modifyCharacterImageWindow, "Skip Section");
             this.NextSetupStep(this.modifySpellClassWindow, "Continue");
             this.NextSetupStep(this.modifySpellSlotsWindow, "Skip Section");
             this.NextSetupStep(this.modifySpellWindow, "Continue");

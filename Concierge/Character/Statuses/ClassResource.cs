@@ -21,6 +21,6 @@ namespace Concierge.Character.Statuses
 
         public string Description => $"{this.Type} - {this.Spent}/{this.Total} Used";
 
-        public Guid Id { get; private set; }
+        public Guid Id { get; init; }
     }
 }

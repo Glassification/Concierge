@@ -139,7 +139,7 @@ namespace Concierge.Interfaces
                 return;
             }
 
-            var ccsFile = this.fileAccessService.Open();
+            var ccsFile = this.fileAccessService.OpenCcs();
 
             if (ccsFile == null)
             {

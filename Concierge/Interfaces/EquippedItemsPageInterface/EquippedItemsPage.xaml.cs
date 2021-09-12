@@ -21,6 +21,7 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
     public partial class EquippedItemsPage : Page, IConciergePage
     {
         private readonly ModifyEquippedItemsWindow modifyEquippedItemsWindow = new ();
+        private readonly ModifyCharacterImageWindow modifyCharacterImageWindow = new ();
         private readonly ModifyInventoryWindow modifyInventoryWindow = new ();
 
         public EquippedItemsPage()
@@ -28,6 +29,7 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
             this.InitializeComponent();
             this.DataContext = this;
             this.modifyEquippedItemsWindow.ApplyChanges += this.Window_ApplyChanges;
+            this.modifyCharacterImageWindow.ApplyChanges += this.Window_ApplyChanges;
         }
 
         public static double EquippedItemsHeight => SystemParameters.PrimaryScreenHeight - 100;
@@ -51,6 +53,8 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
             ReadEquippedItems(Program.CcsFile.Character.EquippedItems.Hands, this.HandsEquipmentDataGrid);
             ReadEquippedItems(Program.CcsFile.Character.EquippedItems.Legs, this.LegsEquipmentDataGrid);
             ReadEquippedItems(Program.CcsFile.Character.EquippedItems.Feet, this.FeetEquipmentDataGrid);
+
+            this.LoadImage();
         }
 
         private static void ReadEquippedItems(List<Inventory> items, ConciergeDataGrid dataGrid)
@@ -60,6 +64,21 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
             foreach (var item in items)
             {
                 dataGrid.Items.Add(item);
+            }
+        }
+
+        private void LoadImage()
+        {
+            this.CharacterImage.Source = Program.CcsFile.Character.CharacterImage.ToImage();
+            this.CharacterImage.Stretch = Program.CcsFile.Character.CharacterImage.Stretch;
+
+            if (this.CharacterImage.Source == null)
+            {
+                this.DefaultCharacterImage.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                this.DefaultCharacterImage.Visibility = Visibility.Hidden;
             }
         }
 
@@ -183,10 +202,17 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
         {
             switch (sender?.GetType()?.Name)
             {
+                case "ModifyCharacterImageWindow":
                 case "ModifyEquippedItemsWindow":
                     this.Draw();
                     break;
             }
+        }
+
+        private void ImageEditButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.modifyCharacterImageWindow.ShowWindow();
+            this.Draw();
         }
     }
 }

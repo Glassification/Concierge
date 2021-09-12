@@ -9,22 +9,32 @@ namespace Concierge.Services
 
     public class FileAccessService
     {
-        private const string DefaultOpenExtension = "ccs";
+        private const string DefaultCcsOpenExtension = "ccs";
+        private const string DefaultImageOpenExtension = "jpg";
         private const string DefaultSaveExtension = "ccs";
-        private const string OpenFilter = "CCS files (*.ccs)|*.ccs|JSON files (*.json)|*.json|All files (*.*)|*.*";
-        private const string SaveFilter = "CCS files (*.ccs)|*.ccs";
+        private const string CcsOpenFilter = "*CCS (*.ccs)|*.ccs|JSON (*.json)|*.json|All files (*.*)|*.*";
+        private const string ImageOpenFilter = "*BMP (*.bmp)|*.bmp|JPEG (*.jpeg;*.jpg)|*.jpeg;*.jpg|PNG (*.png)|*.png|TIFF (*.tiff)|*.tiff|All files (*.*)|*.*";
+        private const string SaveFilter = "CCS (*.ccs)|*.ccs";
         private const string DefaultFileName = "New Character.ccs";
 
         // private readonly SaveStatusWindow saveStatusWindow = new ();
-        private readonly OpenFileDialog openFileDialog;
+        private readonly OpenFileDialog ccsOpenFileDialog;
+        private readonly OpenFileDialog imageOpenFileDialog;
         private readonly SaveFileDialog saveFileDialog;
 
         public FileAccessService()
         {
-            this.openFileDialog = new OpenFileDialog()
+            this.ccsOpenFileDialog = new OpenFileDialog()
             {
-                DefaultExt = DefaultOpenExtension,
-                Filter = OpenFilter,
+                DefaultExt = DefaultCcsOpenExtension,
+                Filter = CcsOpenFilter,
+            };
+
+            this.imageOpenFileDialog = new OpenFileDialog()
+            {
+                DefaultExt = DefaultImageOpenExtension,
+                Filter = ImageOpenFilter,
+                FilterIndex = 2,
             };
 
             this.saveFileDialog = new SaveFileDialog()
@@ -35,9 +45,14 @@ namespace Concierge.Services
             };
         }
 
-        public CcsFile Open()
+        public CcsFile OpenCcs()
         {
-            return this.openFileDialog.ShowDialog() ?? false ? CharacterReadWriter.Read(this.openFileDialog.FileName) : null;
+            return this.ccsOpenFileDialog.ShowDialog() ?? false ? CharacterReadWriter.Read(this.ccsOpenFileDialog.FileName) : null;
+        }
+
+        public string OpenImage()
+        {
+            return this.imageOpenFileDialog.ShowDialog() ?? false ? this.imageOpenFileDialog.FileName : string.Empty;
         }
 
         public void Save(CcsFile ccsFile, bool saveAs)

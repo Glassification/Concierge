@@ -21,7 +21,7 @@ namespace Concierge.Character
 
         public string Name { get; set; }
 
-        public Guid Id { get; private set; }
+        public Guid Id { get; init; }
 
         public int Level
         {

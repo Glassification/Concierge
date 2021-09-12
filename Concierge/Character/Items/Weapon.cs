@@ -66,7 +66,7 @@ namespace Concierge.Character.Items
 
         public bool IsInBagOfHolding { get; set; }
 
-        public Guid Id { get; private set; }
+        public Guid Id { get; init; }
 
         public override string ToString()
         {

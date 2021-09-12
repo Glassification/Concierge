@@ -20,7 +20,7 @@ namespace Concierge.Character.Notes
 
         public string RTF { get; set; }
 
-        public Guid Id { get; private set; }
+        public Guid Id { get; init; }
 
         public override string ToString()
         {

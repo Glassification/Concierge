@@ -28,7 +28,7 @@ namespace Concierge.Character.Spellcasting
 
         public int KnownSpells { get; set; }
 
-        public Guid Id { get; private set; }
+        public Guid Id { get; init; }
 
         [JsonIgnore]
         public int PreparedSpells => Program.CcsFile.Character.Spells.Where(x => (x.Class?.Equals(this.Name) ?? false) && x.Prepared).ToList().Count;

@@ -76,6 +76,8 @@ namespace Concierge.Character
 
         public EquippedItems EquippedItems { get; private set; }
 
+        public CharacterImage CharacterImage { get; private set; }
+
         [JsonIgnore]
         public double CarryWeight
         {
@@ -238,6 +240,7 @@ namespace Concierge.Character
             this.Wealth = new Wealth();
             this.Weapons = new List<Weapon>();
             this.EquippedItems = new EquippedItems();
+            this.CharacterImage = new CharacterImage();
         }
     }
 }

@@ -21,7 +21,7 @@ namespace Concierge.Character.Characteristics
 
         public string Speakers { get; set; }
 
-        public Guid Id { get; }
+        public Guid Id { get; init; }
 
         [JsonIgnore]
         public string Description => $"{this.Name} ({this.Script}), Spoken by: {this.Speakers}";
