@@ -65,13 +65,14 @@ namespace Concierge.Interfaces.OverviewPageInterface
             this.TotalHpUpDown.Value = this.Vitality.MaxHealth;
 
             this.CurrentHpUpDown.Maximum = this.TotalHpUpDown.Value;
+            this.CurrentHpUpDown.Minimum = -this.TotalHpUpDown.Value;
         }
 
         private void UpdateHealth()
         {
+            this.Vitality.MaxHealth = this.TotalHpUpDown.Value ?? 0;
             this.Vitality.BaseHealth = this.CurrentHpUpDown.Value ?? 0;
             this.Vitality.TemporaryHealth = this.TemporaryHpUpDown.Value ?? 0;
-            this.Vitality.MaxHealth = this.TotalHpUpDown.Value ?? 0;
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
@@ -123,6 +124,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
             }
 
             this.CurrentHpUpDown.Maximum = this.TotalHpUpDown.Value;
+            this.CurrentHpUpDown.Minimum = -this.TotalHpUpDown.Value;
         }
     }
 }

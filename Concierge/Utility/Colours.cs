@@ -5,6 +5,7 @@
 namespace Concierge.Utility
 {
     using System;
+    using System.Windows;
     using System.Windows.Media;
 
     using Concierge.Utility.Extensions;
@@ -20,7 +21,13 @@ namespace Concierge.Utility
             TotalLightBoxBrush = new SolidColorBrush(Color.FromArgb(255, 51, 51, 51));
             ControlBackgroundBrush = new SolidColorBrush(Color.FromArgb(255, 63, 63, 63));
             ToggleBoxBrush = new SolidColorBrush(Color.FromArgb(255, 6, 1, 31));
+            FailedSaveBrush = GenerateGradientBrush(FailedDarkRed, FailedLightRed);
+            SucceededSaveBrush = GenerateGradientBrush(SucceededDarkGreen, SucceededLightGreen);
         }
+
+        public static LinearGradientBrush FailedSaveBrush { get; }
+
+        public static LinearGradientBrush SucceededSaveBrush { get; }
 
         public static SolidColorBrush TotalDarkBoxBrush { get; }
 
@@ -37,6 +44,14 @@ namespace Concierge.Utility
         public static Color LightYellow => Color.FromArgb(255, 252, 213, 180);
 
         public static Color MediumRed => Color.FromArgb(255, 187, 74, 67);
+
+        public static Color FailedLightRed => Color.FromArgb(255, 245, 133, 143);
+
+        public static Color FailedDarkRed => Color.FromArgb(255, 250, 74, 90);
+
+        public static Color SucceededLightGreen => Color.FromArgb(255, 190, 236, 176);
+
+        public static Color SucceededDarkGreen => Color.FromArgb(255, 123, 216, 96);
 
         public static HsvColour ToHsv(Color color)
         {
@@ -70,6 +85,19 @@ namespace Concierge.Utility
                         : hi == 3
                             ? Color.FromArgb(255, (byte)p, (byte)q, (byte)v)
                             : hi == 4 ? Color.FromArgb(255, (byte)t, (byte)p, (byte)v) : Color.FromArgb(255, (byte)v, (byte)p, (byte)q);
+        }
+
+        private static LinearGradientBrush GenerateGradientBrush(Color startColor, Color endColor)
+        {
+            var startPoint = new Point(0.5, 0);
+            var endPoint = new Point(0.5, 1);
+            var gradientStopCollection = new GradientStopCollection()
+            {
+                new GradientStop(startColor, 0.0),
+                new GradientStop(endColor, 1.0),
+            };
+
+            return new LinearGradientBrush(gradientStopCollection, startPoint, endPoint);
         }
     }
 }

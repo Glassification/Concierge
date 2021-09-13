@@ -828,32 +828,45 @@
             <Grid Grid.Row="0"
                     Background="#0B061E"
                     Margin="3, 3, 3, 0">
-                <TextBlock Text="Divide Loot"
-                           Foreground="White"
-                           FontSize="23"
-                           FontWeight="Bold"
-                           VerticalAlignment="Center"
-                           HorizontalAlignment="Left"
-                           Margin="150, 0, 0, 0"/>
+                <TextBlock 
+                    Text="Divide Loot"
+                    Foreground="White"
+                    FontSize="23"
+                    FontWeight="Bold"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Left"
+                    Margin="150, 0, 0, 0"/>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                    <components:ConciergeButton x:Name="ButtonDivideLoot"
-                            Height="50"
-                            Width="60"
-                            Background="Transparent"
-                            Foreground="SteelBlue"
-                            Click="ButtonDivideLoot_Click"
-                            Margin="10, 0, 10, 0"
-                            ToolTip="Divide Loot">
+                    <components:ConciergeToggleButton
+                        x:Name="RealNamesToggleButton"
+                        Height="50"
+                        Width="60"
+                        Background="Transparent"
+                        Foreground="SteelBlue"
+                        Margin="10, 0, 10, 0"
+                        ToolTip="Use Real Names">
+                        <materialDesign:PackIcon Kind="AccountQuestion" Height="25" Width="25" Margin="10"/>
+                    </components:ConciergeToggleButton>
+                    <components:ConciergeButton 
+                        x:Name="ButtonDivideLoot"
+                        Height="50"
+                        Width="60"
+                        Background="Transparent"
+                        Foreground="SteelBlue"
+                        Click="ButtonDivideLoot_Click"
+                        Margin="10, 0, 10, 0"
+                        ToolTip="Divide Loot">
                         <materialDesign:PackIcon Kind="Calculator" Height="25" Width="25" Margin="10"/>
                     </components:ConciergeButton>
-                    <components:ConciergeButton x:Name="ButtonResetLoot"
-                            Height="50"
-                            Width="60"
-                            Background="Transparent"
-                            Foreground="SteelBlue"
-                            Click="ButtonResetLoot_Click"
-                            Margin="10, 0, 60, 0"
-                            ToolTip="Clear Loot">
+                    <components:ConciergeButton 
+                        x:Name="ButtonResetLoot"
+                        Height="50"
+                        Width="60"
+                        Background="Transparent"
+                        Foreground="SteelBlue"
+                        Click="ButtonResetLoot_Click"
+                        Margin="10, 0, 60, 0"
+                        ToolTip="Clear Loot">
                         <materialDesign:PackIcon Kind="RefreshCircle" Height="25" Width="25" Margin="10"/>
                     </components:ConciergeButton>
                 </StackPanel>
@@ -890,13 +903,14 @@
                         <Grid Grid.Column="0"
                               Background="#161223"
                               Margin="3, 3, 0, 3">
-                            <TextBlock Text="Players"
-                                       Foreground="White"
-                                       FontSize="20"
-                                       FontWeight="Bold"
-                                       VerticalAlignment="Center"
-                                       HorizontalAlignment="Left"
-                                       Margin="10, 0, 0, 0"/>
+                            <TextBlock 
+                                Text="Players"
+                                Foreground="White"
+                                FontSize="20"
+                                FontWeight="Bold"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Left"
+                                Margin="10, 0, 0, 0"/>
                         </Grid>
 
                         <!--Input-->
@@ -910,7 +924,8 @@
                                 HorizontalContentAlignment="Center"
                                 MaxLength="5"
                                 GotFocus="Input_GotFocus"
-                                LostFocus="Input_LostFocus"/>
+                                LostFocus="Input_LostFocus"
+                                TextChanged="PlayersInput_TextChanged"/>
                         </Grid>
                     </Grid>
 

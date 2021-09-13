@@ -14,5 +14,10 @@ namespace Concierge.Utility.Extensions
             list[indexA] = list[indexB];
             list[indexB] = tmp;
         }
+
+        public static bool IsEmpty<T>(this IList<T> list)
+        {
+            return list.Count == 0;
+        }
     }
 }

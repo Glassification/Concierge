@@ -19,6 +19,7 @@ namespace Concierge.Character.Statuses
             this.TemporaryHealth = 0;
             this.HitDice = new HitDice();
             this.Conditions = new Conditions();
+            this.DeathSavingThrows = new DeathSavingThrows();
         }
 
         public int MaxHealth { get; set; }
@@ -44,13 +45,16 @@ namespace Concierge.Character.Statuses
             }
         }
 
+        [JsonIgnore]
+        public bool IsDead => this.CurrentHealth == -this.MaxHealth;
+
         public int BaseHealth
         {
             get => this.baseHealthField;
             set
             {
                 this.baseHealthField = Math.Min(value, this.MaxHealth);
-                this.baseHealthField = Math.Max(value, 0);
+                this.baseHealthField = Math.Max(value, -this.MaxHealth);
             }
         }
 
@@ -59,6 +63,8 @@ namespace Concierge.Character.Statuses
         public HitDice HitDice { get; set; }
 
         public Conditions Conditions { get; set; }
+
+        public DeathSavingThrows DeathSavingThrows { get; set; }
 
         public void ResetHealth()
         {

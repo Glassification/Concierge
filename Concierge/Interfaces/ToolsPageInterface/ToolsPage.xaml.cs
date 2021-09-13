@@ -9,6 +9,7 @@ namespace Concierge.Interfaces.ToolsPageInterface
     using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Input;
+    using System.Windows.Media;
 
     using Concierge.Tools;
     using Concierge.Utility;
@@ -20,6 +21,9 @@ namespace Concierge.Interfaces.ToolsPageInterface
     public partial class ToolsPage : Page, IConciergePage
     {
         private const string Zero = "0";
+        private const string MagicNumber = "5";
+
+        private readonly string[] playerNames = new string[] { "Colby", "Daniel", "Kaleigh", "Thomas", "Travis" };
 
         public ToolsPage()
         {
@@ -84,7 +88,14 @@ namespace Concierge.Interfaces.ToolsPageInterface
 
             for (int i = 0; i < numPlayers; i++)
             {
-                this.Players.Add(new Player($"Player {i + 1}"));
+                if (this.RealNamesToggleButton.IsChecked ?? false)
+                {
+                    this.Players.Add(new Player(this.playerNames[i]));
+                }
+                else
+                {
+                    this.Players.Add(new Player($"Player {i + 1}"));
+                }
             }
         }
 
@@ -320,6 +331,21 @@ namespace Concierge.Interfaces.ToolsPageInterface
                     }
 
                     break;
+            }
+        }
+
+        private void PlayersInput_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (this.PlayersInput.Text.Equals(MagicNumber))
+            {
+                this.RealNamesToggleButton.IsChecked = false;
+                this.RealNamesToggleButton.Foreground = Brushes.SteelBlue;
+                this.RealNamesToggleButton.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                this.RealNamesToggleButton.IsChecked = false;
+                this.RealNamesToggleButton.Visibility = Visibility.Hidden;
             }
         }
     }

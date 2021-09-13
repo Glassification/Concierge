@@ -10,6 +10,9 @@ namespace Concierge.Interfaces.OverviewPageInterface
     using System.Windows.Input;
     using System.Windows.Shapes;
 
+    using Concierge.Character.Enums;
+    using Concierge.Interfaces.Enums;
+    using Concierge.Tools;
     using Concierge.Utility;
 
     /// <summary>
@@ -88,6 +91,8 @@ namespace Concierge.Interfaces.OverviewPageInterface
 
         public int ShieldHeight => (int)this.HealthBox.RenderSize.Height;
 
+        private bool DeathScreenShown { get; set; }
+
         public void Draw()
         {
             this.DrawAttributes();
@@ -98,6 +103,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
             this.DrawArmorClass();
             this.DrawHitDice();
             this.DrawWealth();
+            this.DrawDeathSavingThrows();
         }
 
         private void InitializeToggleBox(Rectangle toggleBox, MouseButtonEventHandler mouseButtonEventHandler)
@@ -329,6 +335,18 @@ namespace Concierge.Interfaces.OverviewPageInterface
             this.PlatinumField.Text = wealth.Platinum.ToString();
         }
 
+        private void DrawDeathSavingThrows()
+        {
+            var deathSaves = Program.CcsFile.Character.Vitality.DeathSavingThrows;
+            deathSaves.LazyInitialize();
+
+            Utilities.SetRectangleStyle(this.DeathSave1, deathSaves.DeathSaves[0]);
+            Utilities.SetRectangleStyle(this.DeathSave2, deathSaves.DeathSaves[1]);
+            Utilities.SetRectangleStyle(this.DeathSave3, deathSaves.DeathSaves[2]);
+            Utilities.SetRectangleStyle(this.DeathSave4, deathSaves.DeathSaves[3]);
+            Utilities.SetRectangleStyle(this.DeathSave5, deathSaves.DeathSaves[4]);
+        }
+
         private void SavingThrows_MouseDown(object sender, RoutedEventArgs e)
         {
             Program.Modify();
@@ -540,6 +558,15 @@ namespace Concierge.Interfaces.OverviewPageInterface
         {
             this.modifyHpWindow.SubtractHP(Program.CcsFile.Character.Vitality);
             this.DrawHealth();
+
+            if (Program.CcsFile.Character.Vitality.IsDead)
+            {
+                ConciergeMessageBox.Show(
+                    $"{Program.CcsFile.Character.Details.Name} has died.",
+                    "Player Death",
+                    ConciergeWindowButtons.Ok,
+                    ConciergeWindowIcons.Alert);
+            }
         }
 
         private void HealDamageButton_Click(object sender, RoutedEventArgs e)
@@ -622,6 +649,57 @@ namespace Concierge.Interfaces.OverviewPageInterface
                     this.DrawHitDice();
                     break;
             }
+        }
+
+        private void PassSave_Click(object sender, RoutedEventArgs e)
+        {
+            var character = Program.CcsFile.Character;
+
+            if (character.Vitality.DeathSavingThrows.DeathSaveStatus != DeathSave.None)
+            {
+                return;
+            }
+
+            Program.Modify();
+
+            character.Vitality.DeathSavingThrows.MakeDeathSave(DeathSave.Success);
+            this.DrawDeathSavingThrows();
+        }
+
+        private void FailSave_Click(object sender, RoutedEventArgs e)
+        {
+            var character = Program.CcsFile.Character;
+
+            if (character.Vitality.DeathSavingThrows.DeathSaveStatus != DeathSave.None)
+            {
+                return;
+            }
+
+            Program.Modify();
+
+            character.Vitality.DeathSavingThrows.MakeDeathSave(DeathSave.Failure);
+            this.DrawDeathSavingThrows();
+
+            if (character.Vitality.DeathSavingThrows.DeathSaveStatus == DeathSave.Failure && !this.DeathScreenShown)
+            {
+                ConciergeMessageBox.Show(
+                    $"{character.Details.Name} has died.",
+                    "Player Death",
+                    ConciergeWindowButtons.Ok,
+                    ConciergeWindowIcons.Alert);
+
+                this.DeathScreenShown = true;
+            }
+        }
+
+        private void ResetSaves_Click(object sender, RoutedEventArgs e)
+        {
+            Program.Modify();
+
+            Program.CcsFile.Character.Vitality.DeathSavingThrows.ResetDeathSaves();
+            this.DrawDeathSavingThrows();
+
+            this.DeathScreenShown = false;
         }
     }
 }

@@ -295,6 +295,8 @@ namespace Concierge.Interfaces
 
         private void MainWindow_KeyPress(object sender, KeyEventArgs e)
         {
+            EasterEggController.KonamiCode(e.Key);
+
             if (Program.Typing || !IsControl)
             {
                 return;

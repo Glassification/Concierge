@@ -1814,13 +1814,12 @@
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="20*"/>
                                 <RowDefinition Height="80*"/>
+                                <RowDefinition Height="20*"/>
                             </Grid.RowDefinitions>
-
-
 
                             <!--Current HP-->
                             <Grid Grid.Row="1"
-                                  Margin="3, 0, 3, 3"
+                                  Margin="3, 0, 3, 0"
                                   Background="#17112E"
                                   x:Name="HealthBox">
                                 <materialDesign:PackIcon 
@@ -1895,6 +1894,97 @@
                                            HorizontalAlignment="Center"
                                            VerticalAlignment="Center"/>
                             </Grid>
+
+                            <Grid Grid.Row="2" Background="#161223" Margin="3,0,3,3">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="12.5*"/>
+                                    <ColumnDefinition Width="12.5*"/>
+                                    <ColumnDefinition Width="12.5*"/>
+                                    <ColumnDefinition Width="12.5*"/>
+                                    <ColumnDefinition Width="12.5*"/>
+                                    <ColumnDefinition Width="12.5*"/>
+                                    <ColumnDefinition Width="12.5*"/>
+                                    <ColumnDefinition Width="12.5*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Grid Grid.Column="0">
+                                    <Rectangle
+                                        x:Name="DeathSave1"
+                                        Fill="#FF333333"
+                                        Stretch="UniformToFill"
+                                        Margin="3"/>
+                                </Grid>
+                                <Grid Grid.Column="1">
+                                    <Rectangle
+                                        x:Name="DeathSave2"
+                                        Fill="#FF333333"
+                                        Stretch="UniformToFill"
+                                        Margin="3"/>
+                                </Grid>
+                                <Grid Grid.Column="2">
+                                    <Rectangle
+                                        x:Name="DeathSave3"
+                                        Fill="#FF333333"
+                                        Stretch="UniformToFill"
+                                        Margin="3"/>
+                                </Grid>
+                                <Grid Grid.Column="3">
+                                    <Rectangle
+                                        x:Name="DeathSave4"
+                                        Fill="#FF333333"
+                                        Stretch="UniformToFill"
+                                        Margin="3"/>
+                                </Grid>
+                                <Grid Grid.Column="4">
+                                    <Rectangle
+                                        x:Name="DeathSave5"
+                                        Fill="#FF333333"
+                                        Stretch="UniformToFill"
+                                        Margin="3"/>
+                                </Grid>
+                                <Grid Grid.Column="5">
+                                    <components:ConciergeButton
+                                        x:Name="PassSave"
+                                        Height="35"
+                                        Width="35"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        Background="Transparent"
+                                        Foreground="PaleGreen"
+                                        ToolTip="Succeed on Death Save"
+                                        Click="PassSave_Click">
+                                        <materialDesign:PackIcon Kind="CheckCircle" Width="25" Height="25"/>
+                                    </components:ConciergeButton>
+                                </Grid>
+                                <Grid Grid.Column="6">
+                                    <components:ConciergeButton
+                                        x:Name="FailSave"
+                                        Height="35"
+                                        Width="35"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        Background="Transparent"
+                                        Foreground="IndianRed"
+                                        ToolTip="Fail on Death Save"
+                                        Click="FailSave_Click">
+                                        <materialDesign:PackIcon Kind="CloseCircle" Width="25" Height="25"/>
+                                    </components:ConciergeButton>
+                                </Grid>
+                                <Grid Grid.Column="7">
+                                    <components:ConciergeButton
+                                        x:Name="ResetSaves"
+                                        Height="35"
+                                        Width="35"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        Background="Transparent"
+                                        Foreground="SteelBlue"
+                                        ToolTip="Reset Death Saves"
+                                        Click="ResetSaves_Click">
+                                        <materialDesign:PackIcon Kind="RefreshCircle" Width="25" Height="25"/>
+                                    </components:ConciergeButton>
+                                </Grid>
+                            </Grid>
                         </Grid>
 
                         <!--AC-->
@@ -1946,16 +2036,16 @@
                             <ColumnDefinition Width="70*"/>
                         </Grid.ColumnDefinitions>
 
-                        <components:ConciergeButton x:Name="EditHitDiceButton"
-                                Height="35"
-                                Width="35"
-                                HorizontalAlignment="Left"
-                                VerticalAlignment="Top"
-                                Background="Transparent"
-                                
-                                Foreground="Khaki"
-                                Click="EditHitDiceButton_Click"
-                                ToolTip="Edit Hit Dice">
+                        <components:ConciergeButton 
+                            x:Name="EditHitDiceButton"
+                            Height="35"
+                            Width="35"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top"
+                            Background="Transparent"
+                            Foreground="Khaki"
+                            Click="EditHitDiceButton_Click"
+                            ToolTip="Edit Hit Dice">
                             <materialDesign:PackIcon Kind="PlaylistEdit" Width="25" Height="25"/>
                         </components:ConciergeButton>
 

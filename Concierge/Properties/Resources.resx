@@ -136,6 +136,9 @@
   <data name="Inventory" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Json\Inventory.json;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="I_m_a_Conman" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Sounds\I'm a Conman.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="Language" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Json\Language.json;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>

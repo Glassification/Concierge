@@ -18,6 +18,22 @@ namespace Concierge.Utility
 
     public static class Utilities
     {
+        public static void SetRectangleStyle(Rectangle rectangle, DeathSave deathSave)
+        {
+            switch (deathSave)
+            {
+                case DeathSave.None:
+                    rectangle.Fill = Colours.TotalLightBoxBrush;
+                    break;
+                case DeathSave.Failure:
+                    rectangle.Fill = Colours.FailedSaveBrush;
+                    break;
+                case DeathSave.Success:
+                    rectangle.Fill = Colours.SucceededSaveBrush;
+                    break;
+            }
+        }
+
         public static void SetTextStyle(StatusChecks check, TextBlock textBlock)
         {
             switch (check)
