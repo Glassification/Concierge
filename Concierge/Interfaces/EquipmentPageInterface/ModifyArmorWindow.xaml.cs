@@ -138,10 +138,5 @@ namespace Concierge.Interfaces.EquipmentPageInterface
             this.Result = ConciergeWindowResult.Cancel;
             this.Hide();
         }
-
-        private void ComboBox_DropDownOpened(object sender, EventArgs e)
-        {
-            ConciergeSound.UpdateValue();
-        }
     }
 }

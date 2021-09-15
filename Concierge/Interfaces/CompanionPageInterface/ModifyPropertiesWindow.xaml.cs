@@ -95,10 +95,5 @@ namespace Concierge.Interfaces.CompanionPageInterface
             this.Write();
             this.Hide();
         }
-
-        private void VisionComboBox_DropDownOpened(object sender, EventArgs e)
-        {
-            ConciergeSound.UpdateValue();
-        }
     }
 }

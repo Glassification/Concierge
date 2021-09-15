@@ -117,11 +117,6 @@ namespace Concierge.Interfaces.OverviewPageInterface
             this.Hide();
         }
 
-        private void VisionComboBox_DropDownOpened(object sender, EventArgs e)
-        {
-            ConciergeSound.UpdateValue();
-        }
-
         private void IntegerUpDown_ValueChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
         {
             this.InitiativeTextBlock.Text = (Utilities.CalculateBonus(Program.CcsFile.Character.Attributes.Dexterity) + (this.InitiativeBonusUpDown.Value ?? 0)).ToString();

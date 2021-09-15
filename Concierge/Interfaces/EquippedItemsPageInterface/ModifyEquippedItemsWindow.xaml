@@ -74,13 +74,10 @@
 
                 <!--Value-->
                 <Grid Grid.Column="1">
-                    <ComboBox 
-                        Name="SlotComboBox"
-                        IsEditable="False"
-                        Height="40"
-                        Margin="0, 0, 20, 0"
-                        DropDownOpened="ComboBox_DropDownOpened"
-                        FontSize="15"/>
+                    <components:ConciergeComboBox
+                        Style="{StaticResource ComboBoxStyle}"
+                        x:Name="SlotComboBox"
+                        IsEditable="False"/>
                 </Grid>
             </Grid>
 
@@ -102,13 +99,10 @@
 
                 <!--Value-->
                 <Grid Grid.Column="1">
-                    <ComboBox 
+                    <components:ConciergeComboBox
+                        Style="{StaticResource ComboBoxStyle}"
                         x:Name="ItemComboBox"
-                        IsEditable="False"
-                        Height="40"
-                        Margin="0, 0, 20, 0"
-                        DropDownOpened="ComboBox_DropDownOpened"
-                        FontSize="15"/>
+                        IsEditable="False"/>
                 </Grid>
             </Grid>
         </Grid>

@@ -86,14 +86,10 @@
 
                     <!--Value-->
                     <Grid Grid.Column="1">
-                        <ComboBox
-                            Name="ClassNameComboBox"
-                            IsEditable="True"
-                            Height="40"
-                            Margin="0, 0, 20, 0"
-                            DropDownOpened="ComboBox_DropDownOpened"
-                            SelectionChanged="ComboBox_SelectionChanged"
-                            FontSize="15"/>
+                        <components:ConciergeComboBox
+                            Style="{StaticResource ComboBoxStyle}"
+                            x:Name="ClassNameComboBox"
+                            SelectionChanged="ComboBox_SelectionChanged"/>
                     </Grid>
                 </Grid>
 
@@ -116,14 +112,11 @@
 
                     <!--Value-->
                     <Grid Grid.Column="1">
-                        <ComboBox 
-                            Name="AbilityComboBox"
+                        <components:ConciergeComboBox
+                            Style="{StaticResource ComboBoxStyle}"
+                            x:Name="AbilityComboBox"
                             IsEditable="False"
-                            Height="40"
-                            Margin="0, 0, 20, 0"
-                            DropDownOpened="ComboBox_DropDownOpened"
-                            SelectionChanged="ComboBox_SelectionChanged"
-                            FontSize="15"/>
+                            SelectionChanged="ComboBox_SelectionChanged"/>
                     </Grid>
                 </Grid>
 

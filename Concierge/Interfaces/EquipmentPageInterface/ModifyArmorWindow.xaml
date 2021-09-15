@@ -115,13 +115,10 @@
 
                     <!--Value-->
                     <Grid Grid.Column="1">
-                        <ComboBox 
-                            Name="TypeComboBox"
-                            IsEditable="False"
-                            Height="40"
-                            Margin="0, 0, 20, 0"
-                            DropDownOpened="ComboBox_DropDownOpened"
-                            FontSize="15"/>
+                        <components:ConciergeComboBox
+                            Style="{StaticResource ComboBoxStyle}"
+                            x:Name="TypeComboBox"
+                            IsEditable="False"/>
                     </Grid>
                 </Grid>
 
@@ -213,13 +210,10 @@
 
                     <!--Value-->
                     <Grid Grid.Column="1">
-                        <ComboBox 
-                            Name="StealthComboBox"
-                            IsEditable="False"
-                            Height="40"
-                            Margin="0, 0, 20, 0"
-                            DropDownOpened="ComboBox_DropDownOpened"
-                            FontSize="15"/>
+                        <components:ConciergeComboBox
+                            Style="{StaticResource ComboBoxStyle}"
+                            x:Name="StealthComboBox"
+                            IsEditable="False"/>
                     </Grid>
                 </Grid>
             </Grid>

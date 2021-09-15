@@ -173,10 +173,5 @@ namespace Concierge.Interfaces.NotesPageInterface
                     break;
             }
         }
-
-        private void ChapterComboBox_DropDownOpened(object sender, EventArgs e)
-        {
-            ConciergeSound.UpdateValue();
-        }
     }
 }

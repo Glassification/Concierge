@@ -113,13 +113,9 @@
 
                     <!--Value-->
                     <Grid Grid.Column="1">
-                        <ComboBox 
-                            Name="RaceComboBox"
-                            IsEditable="True"
-                            DropDownOpened="ComboBox_DropDownOpened"
-                            Height="40"
-                            Margin="0, 0, 20, 0"
-                            FontSize="15"/>
+                        <components:ConciergeComboBox
+                            Style="{StaticResource ComboBoxStyle}"
+                            x:Name="RaceComboBox"/>
                     </Grid>
                 </Grid>
 
@@ -142,13 +138,9 @@
 
                     <!--Value-->
                     <Grid Grid.Column="1">
-                        <ComboBox 
-                            Name="BackgroundComboBox"
-                            IsEditable="True"
-                            Height="40"
-                            DropDownOpened="ComboBox_DropDownOpened"
-                            Margin="0, 0, 20, 0"
-                            FontSize="15"/>
+                        <components:ConciergeComboBox
+                            Style="{StaticResource ComboBoxStyle}"
+                            x:Name="BackgroundComboBox"/>
                     </Grid>
                 </Grid>
 
@@ -171,13 +163,10 @@
 
                     <!--Value-->
                     <Grid Grid.Column="1">
-                        <ComboBox
-                            Name="AlignmentComboBox"
-                            IsEditable="False"
-                            Height="40"
-                            DropDownOpened="ComboBox_DropDownOpened"
-                            Margin="0, 0, 20, 0"
-                            FontSize="15"/>
+                        <components:ConciergeComboBox
+                            Style="{StaticResource ComboBoxStyle}"
+                            x:Name="AlignmentComboBox"
+                            IsEditable="False"/>
                     </Grid>
                 </Grid>
 
@@ -210,7 +199,7 @@
                     </Grid>
 
                     <!--Value-->
-                    <Grid Grid.Column="1">
+                    <Grid Grid.Column="1" Margin="0,0,20,0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="33*"/>
                             <ColumnDefinition Width="33*"/>
@@ -220,20 +209,20 @@
                         <Grid Grid.Column="0">
                             <components:ConciergeIntegerUpDown 
                                 x:Name="Level1UpDown"
-                                Margin="0, 0, 5, 0"
+                                Margin="0, 0, 6, 0"
                                 Maximum="20"/>
                         </Grid>
                         <Grid Grid.Column="1">
                             <components:ConciergeIntegerUpDown 
                                 x:Name="Level2UpDown"
-                                Margin="0, 0, 5, 0"
+                                Margin="3, 0, 3, 0"
                                 Maximum="20"/>
                         </Grid>
                         <Grid Grid.Column="2">
                             <components:ConciergeIntegerUpDown 
                                 x:Name="Level3UpDown"
                                 Maximum="20"
-                                Margin="0, 0, 5, 0"/>
+                                Margin="6, 0, 0, 0"/>
                         </Grid>
                     </Grid>
                 </Grid>
@@ -257,13 +246,9 @@
 
                     <!--Value-->
                     <Grid Grid.Column="1">
-                        <ComboBox 
-                            Name="Class1ComboBox"
-                            IsEditable="True"
-                            Height="40"
-                            DropDownOpened="ComboBox_DropDownOpened"
-                            Margin="0, 0, 20, 0"
-                            FontSize="15"/>
+                        <components:ConciergeComboBox
+                            Style="{StaticResource ComboBoxStyle}"
+                            x:Name="Class1ComboBox"/>
                     </Grid>
                 </Grid>
 
@@ -286,13 +271,9 @@
 
                     <!--Value-->
                     <Grid Grid.Column="1">
-                        <ComboBox 
-                            Name="Class2ComboBox"
-                            IsEditable="True"
-                            DropDownOpened="ComboBox_DropDownOpened"
-                            Height="40"
-                            Margin="0, 0, 20, 0"
-                            FontSize="15"/>
+                        <components:ConciergeComboBox
+                            Style="{StaticResource ComboBoxStyle}"
+                            x:Name="Class2ComboBox"/>
                     </Grid>
                 </Grid>
 
@@ -315,13 +296,9 @@
 
                     <!--Value-->
                     <Grid Grid.Column="1">
-                        <ComboBox 
-                            Name="Class3ComboBox"
-                            IsEditable="True"
-                            DropDownOpened="ComboBox_DropDownOpened"
-                            Height="40"
-                            Margin="0, 0, 20, 0"
-                            FontSize="15"/>
+                        <components:ConciergeComboBox
+                            Style="{StaticResource ComboBoxStyle}"
+                            x:Name="Class3ComboBox"/>
                     </Grid>
                 </Grid>
             </Grid>

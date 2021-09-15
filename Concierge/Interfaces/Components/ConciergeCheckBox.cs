@@ -6,6 +6,7 @@ namespace Concierge.Interfaces.Components
 {
     using System.Windows;
     using System.Windows.Controls;
+    using System.Windows.Input;
 
     using Concierge.Utility;
 
@@ -16,6 +17,8 @@ namespace Concierge.Interfaces.Components
         {
             this.Checked += this.SoundEffect_Checked;
             this.Unchecked += this.SoundEffect_Unchecked;
+            this.MouseEnter += this.Button_MouseEnter;
+            this.MouseLeave += this.Button_MouseLeave;
         }
 
         public bool IsUpdating { get; private set; }
@@ -48,6 +51,16 @@ namespace Concierge.Interfaces.Components
             }
 
             this.IsUpdating = false;
+        }
+
+        private void Button_MouseEnter(object sender, MouseEventArgs e)
+        {
+            Mouse.OverrideCursor = Cursors.Hand;
+        }
+
+        private void Button_MouseLeave(object sender, MouseEventArgs e)
+        {
+            Mouse.OverrideCursor = Cursors.Arrow;
         }
     }
 }

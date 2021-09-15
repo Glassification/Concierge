@@ -37,11 +37,13 @@ namespace Concierge.Interfaces.Components
         {
             this.OriginalForeground = (SolidColorBrush)this.Foreground;
             this.Foreground = Brushes.Black;
+            Mouse.OverrideCursor = Cursors.Hand;
         }
 
         private void Button_MouseLeave(object sender, MouseEventArgs e)
         {
            this.Foreground = this.OriginalForeground;
+           Mouse.OverrideCursor = Cursors.Arrow;
         }
     }
 }

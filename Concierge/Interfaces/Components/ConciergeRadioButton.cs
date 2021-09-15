@@ -6,6 +6,7 @@ namespace Concierge.Interfaces.Components
 {
     using System.Windows;
     using System.Windows.Controls;
+    using System.Windows.Input;
 
     using Concierge.Utility;
 
@@ -15,6 +16,8 @@ namespace Concierge.Interfaces.Components
             : base()
         {
             this.Click += this.SoundEffect_Click;
+            this.MouseEnter += this.RadioButton_MouseEnter;
+            this.MouseLeave += this.RadioButton_MouseLeave;
         }
 
         public bool IsUpdating { get; private set; }
@@ -37,6 +40,16 @@ namespace Concierge.Interfaces.Components
             }
 
             this.IsUpdating = false;
+        }
+
+        private void RadioButton_MouseEnter(object sender, MouseEventArgs e)
+        {
+            Mouse.OverrideCursor = Cursors.Hand;
+        }
+
+        private void RadioButton_MouseLeave(object sender, MouseEventArgs e)
+        {
+            Mouse.OverrideCursor = Cursors.Arrow;
         }
     }
 }

@@ -1911,6 +1911,7 @@
                                     <Rectangle
                                         x:Name="DeathSave1"
                                         Fill="#FF333333"
+                                        Stroke="#FF333333"
                                         Stretch="UniformToFill"
                                         Margin="3"/>
                                 </Grid>
@@ -1918,6 +1919,7 @@
                                     <Rectangle
                                         x:Name="DeathSave2"
                                         Fill="#FF333333"
+                                        Stroke="#FF333333"
                                         Stretch="UniformToFill"
                                         Margin="3"/>
                                 </Grid>
@@ -1925,6 +1927,7 @@
                                     <Rectangle
                                         x:Name="DeathSave3"
                                         Fill="#FF333333"
+                                        Stroke="#FF333333"
                                         Stretch="UniformToFill"
                                         Margin="3"/>
                                 </Grid>
@@ -1932,6 +1935,7 @@
                                     <Rectangle
                                         x:Name="DeathSave4"
                                         Fill="#FF333333"
+                                        Stroke="#FF333333"
                                         Stretch="UniformToFill"
                                         Margin="3"/>
                                 </Grid>
@@ -1939,6 +1943,7 @@
                                     <Rectangle
                                         x:Name="DeathSave5"
                                         Fill="#FF333333"
+                                        Stroke="#FF333333"
                                         Stretch="UniformToFill"
                                         Margin="3"/>
                                 </Grid>

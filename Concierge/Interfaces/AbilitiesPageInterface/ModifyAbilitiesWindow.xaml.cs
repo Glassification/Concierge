@@ -185,10 +185,5 @@ namespace Concierge.Interfaces.AbilitiesPageInterface
                 this.FillFields(this.NameComboBox.SelectedItem as Ability);
             }
         }
-
-        private void NameComboBox_DropDownOpened(object sender, EventArgs e)
-        {
-            ConciergeSound.UpdateValue();
-        }
     }
 }

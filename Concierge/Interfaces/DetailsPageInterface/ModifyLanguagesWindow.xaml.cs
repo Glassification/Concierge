@@ -170,10 +170,5 @@ namespace Concierge.Interfaces.DetailsPageInterface
                 this.FillFields(this.NameComboBox.SelectedItem as Language);
             }
         }
-
-        private void NameComboBox_DropDownOpened(object sender, EventArgs e)
-        {
-            ConciergeSound.UpdateValue();
-        }
     }
 }

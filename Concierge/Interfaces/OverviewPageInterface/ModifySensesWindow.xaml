@@ -188,13 +188,10 @@
 
                 <!--Value-->
                 <Grid Grid.Column="1">
-                    <ComboBox 
-                        Name="VisionComboBox"
-                        IsEditable="False"
-                        Height="40"
-                        Margin="0, 0, 20, 0"
-                        DropDownOpened="VisionComboBox_DropDownOpened"
-                        FontSize="15"/>
+                    <components:ConciergeComboBox
+                        Style="{StaticResource ComboBoxStyle}"
+                        x:Name="VisionComboBox"
+                        IsEditable="False"/>
                 </Grid>
             </Grid>
 

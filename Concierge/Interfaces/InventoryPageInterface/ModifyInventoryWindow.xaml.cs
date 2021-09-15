@@ -222,10 +222,5 @@ namespace Concierge.Interfaces.InventoryPageInterface
             this.Result = ConciergeWindowResult.Cancel;
             this.Hide();
         }
-
-        private void NameComboBox_DropDownOpened(object sender, EventArgs e)
-        {
-            ConciergeSound.UpdateValue();
-        }
     }
 }

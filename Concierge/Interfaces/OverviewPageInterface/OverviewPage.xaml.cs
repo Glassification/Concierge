@@ -10,10 +10,12 @@ namespace Concierge.Interfaces.OverviewPageInterface
     using System.Windows.Input;
     using System.Windows.Shapes;
 
+    using Concierge.Character;
     using Concierge.Character.Enums;
     using Concierge.Interfaces.Enums;
     using Concierge.Tools;
     using Concierge.Utility;
+    using Concierge.Utility.Extensions;
 
     /// <summary>
     /// Interaction logic for OverviewPage.xaml.
@@ -106,6 +108,15 @@ namespace Concierge.Interfaces.OverviewPageInterface
             this.DrawDeathSavingThrows();
         }
 
+        private static void DisplayCharacterDeathWindow(ConciergeCharacter character)
+        {
+            ConciergeMessageBox.Show(
+                    $"{(character.Details.Name.IsNullOrWhiteSpace() ? "Your character" : character.Details.Name)} has died.",
+                    "Player Death",
+                    ConciergeWindowButtons.Ok,
+                    ConciergeWindowIcons.Alert);
+        }
+
         private void InitializeToggleBox(Rectangle toggleBox, MouseButtonEventHandler mouseButtonEventHandler)
         {
             toggleBox.MouseDown += mouseButtonEventHandler;
@@ -165,12 +176,12 @@ namespace Concierge.Interfaces.OverviewPageInterface
             Utilities.SetTextStyle(savingThrow.Wisdom.StatusChecks, this.WisdomSavingThrowName);
             Utilities.SetTextStyle(savingThrow.Charisma.StatusChecks, this.CharismaSavingThrowName);
 
-            Utilities.SetBoxStyle(savingThrow.Strength.Proficiency, this.StrengthProficiencyBox);
-            Utilities.SetBoxStyle(savingThrow.Dexterity.Proficiency, this.DexterityProficiencyBox);
-            Utilities.SetBoxStyle(savingThrow.Constitution.Proficiency, this.ConstitutionProficiencyBox);
-            Utilities.SetBoxStyle(savingThrow.Intelligence.Proficiency, this.IntelligenceProficiencyBox);
-            Utilities.SetBoxStyle(savingThrow.Wisdom.Proficiency, this.WisdomProficiencyBox);
-            Utilities.SetBoxStyle(savingThrow.Charisma.Proficiency, this.CharismaProficiencyBox);
+            Utilities.SetProficiencyBoxStyle(savingThrow.Strength.Proficiency, this.StrengthProficiencyBox);
+            Utilities.SetProficiencyBoxStyle(savingThrow.Dexterity.Proficiency, this.DexterityProficiencyBox);
+            Utilities.SetProficiencyBoxStyle(savingThrow.Constitution.Proficiency, this.ConstitutionProficiencyBox);
+            Utilities.SetProficiencyBoxStyle(savingThrow.Intelligence.Proficiency, this.IntelligenceProficiencyBox);
+            Utilities.SetProficiencyBoxStyle(savingThrow.Wisdom.Proficiency, this.WisdomProficiencyBox);
+            Utilities.SetProficiencyBoxStyle(savingThrow.Charisma.Proficiency, this.CharismaProficiencyBox);
         }
 
         private void DrawSkills()
@@ -234,43 +245,43 @@ namespace Concierge.Interfaces.OverviewPageInterface
             Utilities.SetTextStyle(skill.Performance.Checks, this.PerformanceSkillName);
             Utilities.SetTextStyle(skill.Persuasion.Checks, this.PersuasionSkillName);
 
-            Utilities.SetBoxStyle(skill.Athletics.Proficiency, this.AthleticsProficiencyBox);
-            Utilities.SetBoxStyle(skill.Acrobatics.Proficiency, this.AcrobaticsProficiencyBox);
-            Utilities.SetBoxStyle(skill.SleightOfHand.Proficiency, this.SleightOfHandProficiencyBox);
-            Utilities.SetBoxStyle(skill.Stealth.Proficiency, this.StealthProficiencyBox);
-            Utilities.SetBoxStyle(skill.Arcana.Proficiency, this.ArcanaProficiencyBox);
-            Utilities.SetBoxStyle(skill.History.Proficiency, this.HistoryProficiencyBox);
-            Utilities.SetBoxStyle(skill.Investigation.Proficiency, this.InvestigationProficiencyBox);
-            Utilities.SetBoxStyle(skill.Nature.Proficiency, this.NatureProficiencyBox);
-            Utilities.SetBoxStyle(skill.Religion.Proficiency, this.ReligionProficiencyBox);
-            Utilities.SetBoxStyle(skill.AnimalHandling.Proficiency, this.AnimalHandlingProficiencyBox);
-            Utilities.SetBoxStyle(skill.Insight.Proficiency, this.InsightProficiencyBox);
-            Utilities.SetBoxStyle(skill.Medicine.Proficiency, this.MedicineProficiencyBox);
-            Utilities.SetBoxStyle(skill.Perception.Proficiency, this.PerceptionProficiencyBox);
-            Utilities.SetBoxStyle(skill.Survival.Proficiency, this.SurvivalProficiencyBox);
-            Utilities.SetBoxStyle(skill.Deception.Proficiency, this.DeceptionProficiencyBox);
-            Utilities.SetBoxStyle(skill.Intimidation.Proficiency, this.IntimidationProficiencyBox);
-            Utilities.SetBoxStyle(skill.Performance.Proficiency, this.PerformanceProficiencyBox);
-            Utilities.SetBoxStyle(skill.Persuasion.Proficiency, this.PersuasionProficiencyBox);
+            Utilities.SetProficiencyBoxStyle(skill.Athletics.Proficiency, this.AthleticsProficiencyBox);
+            Utilities.SetProficiencyBoxStyle(skill.Acrobatics.Proficiency, this.AcrobaticsProficiencyBox);
+            Utilities.SetProficiencyBoxStyle(skill.SleightOfHand.Proficiency, this.SleightOfHandProficiencyBox);
+            Utilities.SetProficiencyBoxStyle(skill.Stealth.Proficiency, this.StealthProficiencyBox);
+            Utilities.SetProficiencyBoxStyle(skill.Arcana.Proficiency, this.ArcanaProficiencyBox);
+            Utilities.SetProficiencyBoxStyle(skill.History.Proficiency, this.HistoryProficiencyBox);
+            Utilities.SetProficiencyBoxStyle(skill.Investigation.Proficiency, this.InvestigationProficiencyBox);
+            Utilities.SetProficiencyBoxStyle(skill.Nature.Proficiency, this.NatureProficiencyBox);
+            Utilities.SetProficiencyBoxStyle(skill.Religion.Proficiency, this.ReligionProficiencyBox);
+            Utilities.SetProficiencyBoxStyle(skill.AnimalHandling.Proficiency, this.AnimalHandlingProficiencyBox);
+            Utilities.SetProficiencyBoxStyle(skill.Insight.Proficiency, this.InsightProficiencyBox);
+            Utilities.SetProficiencyBoxStyle(skill.Medicine.Proficiency, this.MedicineProficiencyBox);
+            Utilities.SetProficiencyBoxStyle(skill.Perception.Proficiency, this.PerceptionProficiencyBox);
+            Utilities.SetProficiencyBoxStyle(skill.Survival.Proficiency, this.SurvivalProficiencyBox);
+            Utilities.SetProficiencyBoxStyle(skill.Deception.Proficiency, this.DeceptionProficiencyBox);
+            Utilities.SetProficiencyBoxStyle(skill.Intimidation.Proficiency, this.IntimidationProficiencyBox);
+            Utilities.SetProficiencyBoxStyle(skill.Performance.Proficiency, this.PerformanceProficiencyBox);
+            Utilities.SetProficiencyBoxStyle(skill.Persuasion.Proficiency, this.PersuasionProficiencyBox);
 
-            Utilities.SetBoxStyle(skill.Athletics.Expertise, this.AthleticsExpertieseBox);
-            Utilities.SetBoxStyle(skill.Acrobatics.Expertise, this.AcrobaticsExpertieseBox);
-            Utilities.SetBoxStyle(skill.SleightOfHand.Expertise, this.SleightOfHandExpertieseBox);
-            Utilities.SetBoxStyle(skill.Stealth.Expertise, this.StealthExpertieseBox);
-            Utilities.SetBoxStyle(skill.Arcana.Expertise, this.ArcanaExpertieseBox);
-            Utilities.SetBoxStyle(skill.History.Expertise, this.HistoryExpertieseBox);
-            Utilities.SetBoxStyle(skill.Investigation.Expertise, this.InvestigationExpertieseBox);
-            Utilities.SetBoxStyle(skill.Nature.Expertise, this.NatureExpertieseBox);
-            Utilities.SetBoxStyle(skill.Religion.Expertise, this.ReligionExpertieseBox);
-            Utilities.SetBoxStyle(skill.AnimalHandling.Expertise, this.AnimalHandlingExpertieseBox);
-            Utilities.SetBoxStyle(skill.Insight.Expertise, this.InsightExpertieseBox);
-            Utilities.SetBoxStyle(skill.Medicine.Expertise, this.MedicineExpertieseBox);
-            Utilities.SetBoxStyle(skill.Perception.Expertise, this.PerceptionExpertieseBox);
-            Utilities.SetBoxStyle(skill.Survival.Expertise, this.SurvivalExpertieseBox);
-            Utilities.SetBoxStyle(skill.Deception.Expertise, this.DeceptionExpertieseBox);
-            Utilities.SetBoxStyle(skill.Intimidation.Expertise, this.IntimidationExpertieseBox);
-            Utilities.SetBoxStyle(skill.Performance.Expertise, this.PerformanceExpertieseBox);
-            Utilities.SetBoxStyle(skill.Persuasion.Expertise, this.PersuasionExpertieseBox);
+            Utilities.SetProficiencyBoxStyle(skill.Athletics.Expertise, this.AthleticsExpertieseBox);
+            Utilities.SetProficiencyBoxStyle(skill.Acrobatics.Expertise, this.AcrobaticsExpertieseBox);
+            Utilities.SetProficiencyBoxStyle(skill.SleightOfHand.Expertise, this.SleightOfHandExpertieseBox);
+            Utilities.SetProficiencyBoxStyle(skill.Stealth.Expertise, this.StealthExpertieseBox);
+            Utilities.SetProficiencyBoxStyle(skill.Arcana.Expertise, this.ArcanaExpertieseBox);
+            Utilities.SetProficiencyBoxStyle(skill.History.Expertise, this.HistoryExpertieseBox);
+            Utilities.SetProficiencyBoxStyle(skill.Investigation.Expertise, this.InvestigationExpertieseBox);
+            Utilities.SetProficiencyBoxStyle(skill.Nature.Expertise, this.NatureExpertieseBox);
+            Utilities.SetProficiencyBoxStyle(skill.Religion.Expertise, this.ReligionExpertieseBox);
+            Utilities.SetProficiencyBoxStyle(skill.AnimalHandling.Expertise, this.AnimalHandlingExpertieseBox);
+            Utilities.SetProficiencyBoxStyle(skill.Insight.Expertise, this.InsightExpertieseBox);
+            Utilities.SetProficiencyBoxStyle(skill.Medicine.Expertise, this.MedicineExpertieseBox);
+            Utilities.SetProficiencyBoxStyle(skill.Perception.Expertise, this.PerceptionExpertieseBox);
+            Utilities.SetProficiencyBoxStyle(skill.Survival.Expertise, this.SurvivalExpertieseBox);
+            Utilities.SetProficiencyBoxStyle(skill.Deception.Expertise, this.DeceptionExpertieseBox);
+            Utilities.SetProficiencyBoxStyle(skill.Intimidation.Expertise, this.IntimidationExpertieseBox);
+            Utilities.SetProficiencyBoxStyle(skill.Performance.Expertise, this.PerformanceExpertieseBox);
+            Utilities.SetProficiencyBoxStyle(skill.Persuasion.Expertise, this.PersuasionExpertieseBox);
         }
 
         private void DrawHealth()
@@ -556,16 +567,14 @@ namespace Concierge.Interfaces.OverviewPageInterface
 
         private void TakeDamageButton_Click(object sender, RoutedEventArgs e)
         {
-            this.modifyHpWindow.SubtractHP(Program.CcsFile.Character.Vitality);
+            var character = Program.CcsFile.Character;
+
+            this.modifyHpWindow.SubtractHP(character.Vitality);
             this.DrawHealth();
 
-            if (Program.CcsFile.Character.Vitality.IsDead)
+            if (character.Vitality.IsDead)
             {
-                ConciergeMessageBox.Show(
-                    $"{Program.CcsFile.Character.Details.Name} has died.",
-                    "Player Death",
-                    ConciergeWindowButtons.Ok,
-                    ConciergeWindowIcons.Alert);
+                DisplayCharacterDeathWindow(character);
             }
         }
 
@@ -682,12 +691,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
 
             if (character.Vitality.DeathSavingThrows.DeathSaveStatus == DeathSave.Failure && !this.DeathScreenShown)
             {
-                ConciergeMessageBox.Show(
-                    $"{character.Details.Name} has died.",
-                    "Player Death",
-                    ConciergeWindowButtons.Ok,
-                    ConciergeWindowIcons.Alert);
-
+                DisplayCharacterDeathWindow(character);
                 this.DeathScreenShown = true;
             }
         }

@@ -21,13 +21,16 @@ namespace Concierge.Utility
             TotalLightBoxBrush = new SolidColorBrush(Color.FromArgb(255, 51, 51, 51));
             ControlBackgroundBrush = new SolidColorBrush(Color.FromArgb(255, 63, 63, 63));
             ToggleBoxBrush = new SolidColorBrush(Color.FromArgb(255, 6, 1, 31));
-            FailedSaveBrush = GenerateGradientBrush(FailedDarkRed, FailedLightRed);
-            SucceededSaveBrush = GenerateGradientBrush(SucceededDarkGreen, SucceededLightGreen);
+            FailedSaveBrush = GenerateGradientBrush(FailedDarkRed, FailedLightRed, new Point(0.5, 0), new Point(0.5, 1));
+            SucceededSaveBrush = GenerateGradientBrush(SucceededDarkGreen, SucceededLightGreen, new Point(0.5, 0), new Point(0.5, 1));
+            ProficiencyBrush = GenerateGradientBrush(ProficiencyDarkPurple, ProficiencyLightPurple, new Point(0, 0), new Point(1, 1));
         }
 
         public static LinearGradientBrush FailedSaveBrush { get; }
 
         public static LinearGradientBrush SucceededSaveBrush { get; }
+
+        public static LinearGradientBrush ProficiencyBrush { get; }
 
         public static SolidColorBrush TotalDarkBoxBrush { get; }
 
@@ -52,6 +55,10 @@ namespace Concierge.Utility
         public static Color SucceededLightGreen => Color.FromArgb(255, 190, 236, 176);
 
         public static Color SucceededDarkGreen => Color.FromArgb(255, 123, 216, 96);
+
+        public static Color ProficiencyLightPurple => Color.FromArgb(255, 23, 17, 46);
+
+        public static Color ProficiencyDarkPurple => Color.FromArgb(255, 11, 6, 30);
 
         public static HsvColour ToHsv(Color color)
         {
@@ -87,10 +94,8 @@ namespace Concierge.Utility
                             : hi == 4 ? Color.FromArgb(255, (byte)t, (byte)p, (byte)v) : Color.FromArgb(255, (byte)v, (byte)p, (byte)q);
         }
 
-        private static LinearGradientBrush GenerateGradientBrush(Color startColor, Color endColor)
+        private static LinearGradientBrush GenerateGradientBrush(Color startColor, Color endColor, Point startPoint, Point endPoint)
         {
-            var startPoint = new Point(0.5, 0);
-            var endPoint = new Point(0.5, 1);
             var gradientStopCollection = new GradientStopCollection()
             {
                 new GradientStop(startColor, 0.0),

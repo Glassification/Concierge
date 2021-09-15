@@ -145,11 +145,6 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
             }
         }
 
-        private void ComboBox_DropDownOpened(object sender, EventArgs e)
-        {
-            ConciergeSound.UpdateValue();
-        }
-
         private void UseCustomImageCheckBox_Checked(object sender, RoutedEventArgs e)
         {
             if (!this.IsDrawing)

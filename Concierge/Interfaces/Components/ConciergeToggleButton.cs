@@ -41,6 +41,7 @@ namespace Concierge.Interfaces.Components
             }
 
             this.Foreground = Brushes.Black;
+            Mouse.OverrideCursor = Cursors.Hand;
         }
 
         private void Button_MouseLeave(object sender, MouseEventArgs e)
@@ -49,6 +50,8 @@ namespace Concierge.Interfaces.Components
             {
                 this.Foreground = this.OriginalForeground;
             }
+
+            Mouse.OverrideCursor = Cursors.Arrow;
         }
     }
 }

@@ -202,11 +202,6 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
             this.Hide();
         }
 
-        private void ComboBox_DropDownOpened(object sender, EventArgs e)
-        {
-            ConciergeSound.UpdateValue();
-        }
-
         private void ComboBox_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
             if (!this.SettingValues)

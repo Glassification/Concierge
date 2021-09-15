@@ -80,13 +80,9 @@
 
                 <!--Value-->
                 <Grid Grid.Column="1">
-                    <ComboBox 
-                        Name="NameComboBox"
-                        IsEditable="True"
-                        Height="50"
-                        Margin="0, 0, 20, 0"
-                        FontSize="15"
-                        DropDownOpened="NameComboBox_DropDownOpened"
+                    <components:ConciergeComboBox
+                        Style="{StaticResource ComboBoxStyle}"
+                        x:Name="NameComboBox"
                         SelectionChanged="NameComboBox_SelectionChanged"/>
                 </Grid>
             </Grid>
@@ -202,29 +198,23 @@
             <StackPanel Orientation="Horizontal"
                         VerticalAlignment="Center"
                         HorizontalAlignment="Center">
-                <components:ConciergeButton x:Name="OkButton"
-                        Style="{StaticResource PopupWindowButton}"
-                        
-                        Content="OK"
-                        
-                        
-                        Click="OkButton_Click">
+                <components:ConciergeButton 
+                    x:Name="OkButton"
+                    Style="{StaticResource PopupWindowButton}"
+                    Content="OK"
+                    Click="OkButton_Click">
                 </components:ConciergeButton>
-                <components:ConciergeButton x:Name="ApplyButton"
-                        Style="{StaticResource PopupWindowButton}"
-                        
-                        Content="Apply"
-                        
-                        
-                        Click="ApplyButton_Click">
+                <components:ConciergeButton 
+                    x:Name="ApplyButton"
+                    Style="{StaticResource PopupWindowButton}"
+                    Content="Apply"
+                    Click="ApplyButton_Click">
                 </components:ConciergeButton>
-                <components:ConciergeButton x:Name="CancelButton"
-                        
-                        Content="Cancel"
-                        Click="CancelButton_Click"
-                        
-                        
-                        Style="{StaticResource PopupWindowButton}">
+                <components:ConciergeButton 
+                    x:Name="CancelButton"
+                    Content="Cancel"
+                    Click="CancelButton_Click"
+                    Style="{StaticResource PopupWindowButton}">
                 </components:ConciergeButton>
             </StackPanel>
         </Grid>

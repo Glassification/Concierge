@@ -219,10 +219,5 @@ namespace Concierge.Interfaces.EquipmentPageInterface
                 this.FillFields(this.WeaponComboBox.SelectedItem as Weapon);
             }
         }
-
-        private void ComboBox_DropDownOpened(object sender, EventArgs e)
-        {
-            ConciergeSound.UpdateValue();
-        }
     }
 }

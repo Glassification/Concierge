@@ -4,7 +4,11 @@
 
 namespace Concierge.Interfaces.Components
 {
+    using System.Diagnostics;
     using System.Windows;
+    using System.Windows.Controls;
+    using System.Windows.Controls.Primitives;
+    using System.Windows.Input;
     using System.Windows.Media;
 
     using Concierge.Utility;
@@ -27,7 +31,9 @@ namespace Concierge.Interfaces.Components
             this.FontSize = 25;
             this.Watermark = "Enter Integer";
 
-            this.ValueChanged += this.CreateSound_ValueChanged;
+            this.Spinned += this.CreateSound_Spinned;
+            this.MouseMove += this.IntegerUpDown_MouseMove;
+            this.MouseLeave += this.Button_MouseLeave;
         }
 
         public void UpdatingValue()
@@ -35,7 +41,7 @@ namespace Concierge.Interfaces.Components
             this.updatingValue = true;
         }
 
-        private void CreateSound_ValueChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
+        private void CreateSound_Spinned(object sender, SpinEventArgs e)
         {
             if (!this.updatingValue)
             {
@@ -43,6 +49,33 @@ namespace Concierge.Interfaces.Components
             }
 
             this.updatingValue = false;
+        }
+
+        private void Button_MouseLeave(object sender, MouseEventArgs e)
+        {
+            Mouse.OverrideCursor = Cursors.Arrow;
+        }
+
+        private void IntegerUpDown_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (Utilities.GetElementUnderMouse<RepeatButton>() != null)
+            {
+                if (Mouse.OverrideCursor != Cursors.Hand)
+                {
+                    Mouse.OverrideCursor = Cursors.Hand;
+                }
+            }
+            else if (Utilities.GetElementUnderMouse<TextBox>() != null)
+            {
+                if (Mouse.OverrideCursor != Cursors.IBeam)
+                {
+                    Mouse.OverrideCursor = Cursors.IBeam;
+                }
+            }
+            else if (Mouse.OverrideCursor != Cursors.Arrow)
+            {
+                Mouse.OverrideCursor = Cursors.Arrow;
+            }
         }
     }
 }

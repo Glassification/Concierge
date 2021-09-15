@@ -78,13 +78,11 @@
 
                 <!--Value-->
                 <Grid Grid.Column="1">
-                    <ComboBox Name="NameComboBox"
-                              IsEditable="True"
-                              Height="40"
-                              Margin="0, 0, 20, 0"
-                              FontSize="15"
-                              SelectionChanged="NameComboBox_SelectionChanged"
-                              DropDownOpened="NameComboBox_DropDownOpened"/>
+                    <components:ConciergeComboBox
+                            Style="{StaticResource ComboBoxStyle}"
+                            x:Name="NameComboBox"
+                            IsEditable="True"
+                            SelectionChanged="NameComboBox_SelectionChanged"/>
                 </Grid>
             </Grid>
 

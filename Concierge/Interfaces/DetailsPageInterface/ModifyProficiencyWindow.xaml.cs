@@ -144,10 +144,5 @@ namespace Concierge.Interfaces.DetailsPageInterface
                     break;
             }
         }
-
-        private void ProficiencyComboBox_DropDownOpened(object sender, EventArgs e)
-        {
-            ConciergeSound.UpdateValue();
-        }
     }
 }

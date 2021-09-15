@@ -90,12 +90,10 @@
 
                     <!--Value-->
                     <Grid Grid.Column="1">
-                        <ComboBox Name="BlindedComboBox"
-                                  IsEditable="False"
-                                  Height="40"
-                                  Margin="0, 0, 20, 0"
-                                  FontSize="15"
-                                  DropDownOpened="ComboBox_DropDownOpened"/>
+                        <components:ConciergeComboBox
+                            Style="{StaticResource ComboBoxStyle}"
+                            x:Name="BlindedComboBox"
+                            IsEditable="False"/>
                     </Grid>
                 </Grid>
 
@@ -118,12 +116,10 @@
 
                     <!--Value-->
                     <Grid Grid.Column="1">
-                        <ComboBox Name="CharmedComboBox"
-                                  IsEditable="False"
-                                  Height="40"
-                                  DropDownOpened="ComboBox_DropDownOpened"
-                                  Margin="0, 0, 20, 0"
-                                  FontSize="15"/>
+                        <components:ConciergeComboBox
+                            Style="{StaticResource ComboBoxStyle}"
+                            x:Name="CharmedComboBox"
+                            IsEditable="False"/>
                     </Grid>
                 </Grid>
 
@@ -146,12 +142,10 @@
 
                     <!--Value-->
                     <Grid Grid.Column="1">
-                        <ComboBox Name="DeafenedComboBox"
-                                  IsEditable="False"
-                                  Height="40"
-                                  DropDownOpened="ComboBox_DropDownOpened"
-                                  Margin="0, 0, 20, 0"
-                                  FontSize="15"/>
+                        <components:ConciergeComboBox
+                            Style="{StaticResource ComboBoxStyle}"
+                            x:Name="DeafenedComboBox"
+                            IsEditable="False"/>
                     </Grid>
                 </Grid>
 
@@ -174,12 +168,10 @@
 
                     <!--Value-->
                     <Grid Grid.Column="1">
-                        <ComboBox Name="FatiguedComboBox"
-                                  IsEditable="False"
-                                  DropDownOpened="ComboBox_DropDownOpened"
-                                  Height="40"
-                                  Margin="0, 0, 20, 0"
-                                  FontSize="15"/>
+                        <components:ConciergeComboBox
+                            Style="{StaticResource ComboBoxStyle}"
+                            x:Name="FatiguedComboBox"
+                            IsEditable="False"/>
                     </Grid>
                 </Grid>
 
@@ -202,12 +194,10 @@
 
                     <!--Value-->
                     <Grid Grid.Column="1">
-                        <ComboBox Name="FrightenedComboBox"
-                                  IsEditable="False"
-                                  Height="40"
-                                  DropDownOpened="ComboBox_DropDownOpened"
-                                  Margin="0, 0, 20, 0"
-                                  FontSize="15"/>
+                        <components:ConciergeComboBox
+                            Style="{StaticResource ComboBoxStyle}"
+                            x:Name="FrightenedComboBox"
+                            IsEditable="False"/>
                     </Grid>
                 </Grid>
 
@@ -230,12 +220,10 @@
 
                     <!--Value-->
                     <Grid Grid.Column="1">
-                        <ComboBox Name="GrappledComboBox"
-                                  IsEditable="False"
-                                  Height="40"
-                                  Margin="0, 0, 20, 0"
-                                  DropDownOpened="ComboBox_DropDownOpened"
-                                  FontSize="15"/>
+                        <components:ConciergeComboBox
+                            Style="{StaticResource ComboBoxStyle}"
+                            x:Name="GrappledComboBox"
+                            IsEditable="False"/>
                     </Grid>
                 </Grid>
 
@@ -258,12 +246,10 @@
 
                     <!--Value-->
                     <Grid Grid.Column="1">
-                        <ComboBox Name="IncapacitatedComboBox"
-                                  IsEditable="False"
-                                  Height="40"
-                                  Margin="0, 0, 20, 0"
-                                  DropDownOpened="ComboBox_DropDownOpened"
-                                  FontSize="15"/>
+                        <components:ConciergeComboBox
+                            Style="{StaticResource ComboBoxStyle}"
+                            x:Name="IncapacitatedComboBox"
+                            IsEditable="False"/>
                     </Grid>
                 </Grid>
 
@@ -286,12 +272,10 @@
 
                     <!--Value-->
                     <Grid Grid.Column="1">
-                        <ComboBox Name="InvisibleComboBox"
-                                  IsEditable="False"
-                                  Height="40"
-                                  DropDownOpened="ComboBox_DropDownOpened"
-                                  Margin="0, 0, 20, 0"
-                                  FontSize="15"/>
+                        <components:ConciergeComboBox
+                            Style="{StaticResource ComboBoxStyle}"
+                            x:Name="InvisibleComboBox"
+                            IsEditable="False"/>
                     </Grid>
                 </Grid>
             </Grid>
@@ -328,12 +312,10 @@
 
                     <!--Value-->
                     <Grid Grid.Column="1">
-                        <ComboBox Name="ParalyzedComboBox"
-                                  IsEditable="False"
-                                  Height="40"
-                                  Margin="0, 0, 20, 0"
-                                  DropDownOpened="ComboBox_DropDownOpened"
-                                  FontSize="15"/>
+                        <components:ConciergeComboBox
+                            Style="{StaticResource ComboBoxStyle}"
+                            x:Name="ParalyzedComboBox"
+                            IsEditable="False"/>
                     </Grid>
                 </Grid>
 
@@ -356,12 +338,10 @@
 
                     <!--Value-->
                     <Grid Grid.Column="1">
-                        <ComboBox Name="PetrifiedComboBox"
-                                  IsEditable="False"
-                                  Height="40"
-                                  Margin="0, 0, 20, 0"
-                                  DropDownOpened="ComboBox_DropDownOpened"
-                                  FontSize="15"/>
+                        <components:ConciergeComboBox
+                            Style="{StaticResource ComboBoxStyle}"
+                            x:Name="PetrifiedComboBox"
+                            IsEditable="False"/>
                     </Grid>
                 </Grid>
 
@@ -384,12 +364,10 @@
 
                     <!--Value-->
                     <Grid Grid.Column="1">
-                        <ComboBox Name="PoisonedComboBox"
-                                  IsEditable="False"
-                                  Height="40"
-                                  Margin="0, 0, 20, 0"
-                                  DropDownOpened="ComboBox_DropDownOpened"
-                                  FontSize="15"/>
+                        <components:ConciergeComboBox
+                            Style="{StaticResource ComboBoxStyle}"
+                            x:Name="PoisonedComboBox"
+                            IsEditable="False"/>
                     </Grid>
                 </Grid>
 
@@ -412,12 +390,10 @@
 
                     <!--Value-->
                     <Grid Grid.Column="1">
-                        <ComboBox Name="ProneComboBox"
-                                  IsEditable="False"
-                                  Height="40"
-                                  DropDownOpened="ComboBox_DropDownOpened"
-                                  Margin="0, 0, 20, 0"
-                                  FontSize="15"/>
+                        <components:ConciergeComboBox
+                            Style="{StaticResource ComboBoxStyle}"
+                            x:Name="ProneComboBox"
+                            IsEditable="False"/>
                     </Grid>
                 </Grid>
 
@@ -440,12 +416,10 @@
 
                     <!--Value-->
                     <Grid Grid.Column="1">
-                        <ComboBox Name="RestrainedComboBox"
-                                  IsEditable="False"
-                                  DropDownOpened="ComboBox_DropDownOpened"
-                                  Height="40"
-                                  Margin="0, 0, 20, 0"
-                                  FontSize="15"/>
+                        <components:ConciergeComboBox
+                            Style="{StaticResource ComboBoxStyle}"
+                            x:Name="RestrainedComboBox"
+                            IsEditable="False"/>
                     </Grid>
                 </Grid>
 
@@ -468,12 +442,10 @@
 
                     <!--Value-->
                     <Grid Grid.Column="1">
-                        <ComboBox Name="StunnedComboBox"
-                                  IsEditable="False"
-                                  Height="40"
-                                  DropDownOpened="ComboBox_DropDownOpened"
-                                  Margin="0, 0, 20, 0"
-                                  FontSize="15"/>
+                        <components:ConciergeComboBox
+                            Style="{StaticResource ComboBoxStyle}"
+                            x:Name="StunnedComboBox"
+                            IsEditable="False"/>
                     </Grid>
                 </Grid>
 
@@ -496,12 +468,10 @@
 
                     <!--Value-->
                     <Grid Grid.Column="1">
-                        <ComboBox Name="UnconsciousComboBox"
-                                  IsEditable="False"
-                                  Height="40"
-                                  Margin="0, 0, 20, 0"
-                                  DropDownOpened="ComboBox_DropDownOpened"
-                                  FontSize="15"/>
+                        <components:ConciergeComboBox
+                            Style="{StaticResource ComboBoxStyle}"
+                            x:Name="UnconsciousComboBox"
+                            IsEditable="False"/>
                     </Grid>
                 </Grid>
 

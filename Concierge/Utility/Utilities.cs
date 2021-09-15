@@ -18,6 +18,29 @@ namespace Concierge.Utility
 
     public static class Utilities
     {
+        public static T GetElementUnderMouse<T>()
+            where T : UIElement
+        {
+            return FindVisualParent<T>(Mouse.DirectlyOver as UIElement);
+        }
+
+        public static T FindVisualParent<T>(UIElement element)
+            where T : UIElement
+        {
+            UIElement parent = element;
+            while (parent != null)
+            {
+                if (parent is T correctlyTyped)
+                {
+                    return correctlyTyped;
+                }
+
+                parent = VisualTreeHelper.GetParent(parent) as UIElement;
+            }
+
+            return null;
+        }
+
         public static void SetRectangleStyle(Rectangle rectangle, DeathSave deathSave)
         {
             switch (deathSave)
@@ -62,12 +85,12 @@ namespace Concierge.Utility
             }
         }
 
-        public static void SetBoxStyle(bool flag, Rectangle rectangle)
+        public static void SetProficiencyBoxStyle(bool flag, Rectangle rectangle)
         {
             if (flag)
             {
-                rectangle.Fill = Colours.ToggleBoxBrush;
-                rectangle.Stroke = Brushes.Transparent;
+                rectangle.Fill = Colours.ProficiencyBrush;
+                rectangle.Stroke = Colours.ToggleBoxBrush;
             }
             else
             {

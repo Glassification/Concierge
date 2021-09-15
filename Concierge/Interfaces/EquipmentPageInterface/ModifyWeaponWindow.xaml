@@ -88,13 +88,9 @@
 
                     <!--Value-->
                     <Grid Grid.Column="1">
-                        <ComboBox 
-                            Name="WeaponComboBox"
-                            IsEditable="True"
-                            Height="40"
-                            Margin="0, 0, 20, 0"
-                            FontSize="15"
-                            DropDownOpened="ComboBox_DropDownOpened"
+                        <components:ConciergeComboBox
+                            Style="{StaticResource ComboBoxStyle}"
+                            x:Name="WeaponComboBox"
                             SelectionChanged="WeaponComboBox_SelectionChanged"/>
                     </Grid>
                 </Grid>
@@ -118,13 +114,10 @@
 
                     <!--Value-->
                     <Grid Grid.Column="1">
-                        <ComboBox 
-                            Name="TypeComboBox"
-                            IsEditable="False"
-                            Height="40"
-                            DropDownOpened="ComboBox_DropDownOpened"
-                            Margin="0, 0, 20, 0"
-                            FontSize="15"/>
+                        <components:ConciergeComboBox
+                            Style="{StaticResource ComboBoxStyle}"
+                            x:Name="TypeComboBox"
+                            IsEditable="False"/>
                     </Grid>
                 </Grid>
 
@@ -147,13 +140,10 @@
 
                     <!--Value-->
                     <Grid Grid.Column="1">
-                        <ComboBox 
-                            Name="AbilityComboBox"
-                            IsEditable="False"
-                            Height="40"
-                            DropDownOpened="ComboBox_DropDownOpened"
-                            Margin="0, 0, 20, 0"
-                            FontSize="15"/>
+                        <components:ConciergeComboBox
+                            Style="{StaticResource ComboBoxStyle}"
+                            x:Name="AbilityComboBox"
+                            IsEditable="False"/>
                     </Grid>
                 </Grid>
 
@@ -230,13 +220,10 @@
 
                     <!--Value-->
                     <Grid Grid.Column="1">
-                        <ComboBox 
-                            Name="DamageTypeComboBox"
-                            IsEditable="False"
-                            Height="40"
-                            Margin="0, 0, 20, 0"
-                            DropDownOpened="ComboBox_DropDownOpened"
-                            FontSize="15"/>
+                        <components:ConciergeComboBox
+                            Style="{StaticResource ComboBoxStyle}"
+                            x:Name="DamageTypeComboBox"
+                            IsEditable="False"/>
                     </Grid>
                 </Grid>
             </Grid>

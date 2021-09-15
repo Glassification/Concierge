@@ -90,13 +90,9 @@
 
                     <!--Value-->
                     <Grid Grid.Column="1">
-                        <ComboBox 
-                            Name="SpellNameComboBox"
-                            IsEditable="True"
-                            DropDownOpened="ComboBox_DropDownOpened"
-                            Height="40"
-                            Margin="0, 0, 20, 0"
-                            FontSize="15"
+                        <components:ConciergeComboBox
+                            Style="{StaticResource ComboBoxStyle}"
+                            x:Name="SpellNameComboBox"
                             SelectionChanged="SpellNameComboBox_SelectionChanged"/>
                     </Grid>
                 </Grid>
@@ -197,13 +193,10 @@
 
                     <!--Value-->
                     <Grid Grid.Column="1">
-                        <ComboBox 
-                            Name="SchoolComboBox"
-                            IsEditable="False"
-                            DropDownOpened="ComboBox_DropDownOpened"
-                            Height="40"
-                            Margin="0, 0, 20, 0"
-                            FontSize="15"/>
+                        <components:ConciergeComboBox
+                            Style="{StaticResource ComboBoxStyle}"
+                            x:Name="SchoolComboBox"
+                            IsEditable="False"/>
                     </Grid>
                 </Grid>
 
@@ -459,13 +452,9 @@
 
                     <!--Value-->
                     <Grid Grid.Column="1">
-                        <ComboBox 
-                            Name="ClassComboBox"
-                            IsEditable="True"
-                            DropDownOpened="ComboBox_DropDownOpened"
-                            Height="40"
-                            Margin="0, 0, 20, 0"
-                            FontSize="15"/>
+                        <components:ConciergeComboBox
+                            Style="{StaticResource ComboBoxStyle}"
+                            x:Name="ClassComboBox"/>
                     </Grid>
                 </Grid>
 

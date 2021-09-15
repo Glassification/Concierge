@@ -77,13 +77,10 @@
 
                 <!--Value-->
                 <Grid Grid.Column="1">
-                    <ComboBox 
-                        Name="ProficiencyComboBox"
-                        IsEditable="False"
-                        Height="40"
-                        Margin="0, 0, 20, 0"
-                        DropDownOpened="ProficiencyComboBox_DropDownOpened"
-                        FontSize="15"/>
+                    <components:ConciergeComboBox
+                        Style="{StaticResource ComboBoxStyle}"
+                        x:Name="ProficiencyComboBox"
+                        IsEditable="False"/>
                 </Grid>
             </Grid>
 
