@@ -157,7 +157,7 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
         private void RefreshFields()
         {
             this.AttackBonusTextBlock.Text = Utilities.CalculateBonusFromAbility((Abilities)Enum.Parse(typeof(Abilities), this.AbilityComboBox.SelectedItem.ToString()), Program.CcsFile.Character).ToString();
-            this.SpellSaveTextBlock.Text = (Utilities.CalculateBonusFromAbility((Abilities)Enum.Parse(typeof(Abilities), this.AbilityComboBox.SelectedItem.ToString()), Program.CcsFile.Character) + Constants.BaseDC).ToString();
+            this.SpellSaveTextBlock.Text = (Utilities.CalculateBonusFromAbility((Abilities)Enum.Parse(typeof(Abilities), this.AbilityComboBox.SelectedItem.ToString()), Program.CcsFile.Character) + Constants.BaseDc).ToString();
             this.PreparedSpellsTextBlock.Text = Program.CcsFile.Character.Spells.Where(x => (x.Class?.Equals(this.ClassNameComboBox.SelectedItem.ToString()) ?? false) && x.Prepared).ToList().Count.ToString();
         }
 

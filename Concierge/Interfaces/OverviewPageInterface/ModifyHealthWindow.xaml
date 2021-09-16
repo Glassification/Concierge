@@ -259,7 +259,7 @@
                 <Grid Grid.Column="0">
                     <TextBlock Text="Temporary HP:"
                                Foreground="White"
-                               FontSize="17"
+                               FontSize="20"
                                HorizontalAlignment="Left"
                                VerticalAlignment="Center"
                                Margin="10, 0, 0, 0"/>

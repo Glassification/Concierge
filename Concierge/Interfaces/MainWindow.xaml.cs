@@ -9,6 +9,7 @@ namespace Concierge.Interfaces
     using System.Windows.Controls;
     using System.Windows.Input;
     using System.Windows.Media;
+    using System.Windows.Navigation;
 
     using Concierge.Interfaces.AbilitiesPageInterface;
     using Concierge.Interfaces.CompanionPageInterface;
@@ -290,7 +291,7 @@ namespace Concierge.Interfaces
 
         private void MainWindow_ContentRendered(object sender, EventArgs e)
         {
-            this.FrameContent.NavigationUIVisibility = System.Windows.Navigation.NavigationUIVisibility.Hidden;
+            this.FrameContent.NavigationUIVisibility = NavigationUIVisibility.Hidden;
         }
 
         private void MainWindow_KeyPress(object sender, KeyEventArgs e)

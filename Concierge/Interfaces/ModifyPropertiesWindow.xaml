@@ -8,7 +8,7 @@
         mc:Ignorable="d"
          Title="ModifyPropertiesWindow"
         Height="400"
-        Width="800"
+        Width="650"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
         Background="#252526"
@@ -130,7 +130,7 @@
                     <Grid Grid.Column="0">
                         <TextBlock Text="Background:"
                                    Foreground="White"
-                                   FontSize="20"
+                                   FontSize="16"
                                    HorizontalAlignment="Left"
                                    VerticalAlignment="Center"
                                    Margin="10, 0, 0, 0"/>
@@ -155,7 +155,7 @@
                     <Grid Grid.Column="0">
                         <TextBlock Text="Alignment:"
                                    Foreground="White"
-                                   FontSize="20"
+                                   FontSize="19"
                                    HorizontalAlignment="Left"
                                    VerticalAlignment="Center"
                                    Margin="10, 0, 0, 0"/>

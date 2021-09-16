@@ -141,7 +141,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
         {
             this.ConditionsDataGrid.Items.Clear();
 
-            foreach (var condition in Program.CcsFile.Character.Vitality.Conditions.ToArray())
+            foreach (var condition in Program.CcsFile.Character.Vitality.Conditions.ToList())
             {
                 this.ConditionsDataGrid.Items.Add(condition);
             }

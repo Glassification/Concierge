@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         Title="ModifyAppearanceWindow"
         Height="415"
-        Width="800"
+        Width="650"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
         Background="#252526"
@@ -182,7 +182,7 @@
                     <Grid Grid.Column="0">
                         <TextBlock Text="Skin Colour:"
                                    Foreground="White"
-                                   FontSize="20"
+                                   FontSize="17"
                                    HorizontalAlignment="Left"
                                    VerticalAlignment="Center"
                                    Margin="10, 0, 0, 0"/>
@@ -218,7 +218,7 @@
                     <Grid Grid.Column="0">
                         <TextBlock Text="Eye Colour:"
                                    Foreground="White"
-                                   FontSize="20"
+                                   FontSize="18"
                                    HorizontalAlignment="Left"
                                    VerticalAlignment="Center"
                                    Margin="10, 0, 0, 0"/>
@@ -245,7 +245,7 @@
                     <Grid Grid.Column="0">
                         <TextBlock Text="Hair Colour:"
                                    Foreground="White"
-                                   FontSize="20"
+                                   FontSize="17"
                                    HorizontalAlignment="Left"
                                    VerticalAlignment="Center"
                                    Margin="10, 0, 0, 0"/>
@@ -272,7 +272,7 @@
                     <Grid Grid.Column="0">
                         <TextBlock Text="Distinguishing Marks:"
                                    Foreground="White"
-                                   FontSize="18"
+                                   FontSize="15"
                                    HorizontalAlignment="Left"
                                    VerticalAlignment="Top"
                                    Margin="10, 20, 0, 0"

@@ -1,0 +1,1222 @@
+{
+  "Character": {
+    "Abilities": [
+      {
+        "Name": "Alert",
+        "Level": "1",
+        "Uses": "-",
+        "Recovery": "-",
+        "Action": "-",
+        "Description": "+5 to initative; Cannot be surprised; enemies don't get advt on sneak attack",
+        "Id": "78a4e6e2-97fc-4374-a551-fb44e590a901"
+      },
+      {
+        "Name": "Expertise",
+        "Level": "1",
+        "Uses": "-",
+        "Recovery": "-",
+        "Action": "-",
+        "Description": "Double proficiency bonus in select skills (Again at level 6)",
+        "Id": "26842e17-6aec-4e5f-bd9c-27340e2d8b62"
+      },
+      {
+        "Name": "Fey Ancestry",
+        "Level": "1",
+        "Uses": "-",
+        "Recovery": "-",
+        "Action": "-",
+        "Description": "Avtg on saving throws against being charmed. Magic cannot put me to sleep",
+        "Id": "7a820cd6-7e30-4004-9058-100e0de7f79b"
+      },
+      {
+        "Name": "Thieves' Cant",
+        "Level": "1",
+        "Uses": "-",
+        "Recovery": "-",
+        "Action": "-",
+        "Description": "Takes 4 times longer to convey meaning. Target must also know Cant",
+        "Id": "9fbdd976-d053-473a-ae95-9b6d630dc34b"
+      },
+      {
+        "Name": "Sneak Attack",
+        "Level": "1",
+        "Uses": "1 Per Turn",
+        "Recovery": "1 Turn",
+        "Action": "5d6 Damage",
+        "Description": "Must have advantage or target must have enemy within 5 feet",
+        "Id": "411b76eb-833a-4c7f-af1d-1391a4be6e8b"
+      },
+      {
+        "Name": "Cunning Action",
+        "Level": "2",
+        "Uses": "-",
+        "Recovery": "-",
+        "Action": "-",
+        "Description": "Dash, Disengage, Hide as bonus action",
+        "Id": "6d9ebff6-4d8a-4f64-a8ce-b7a805a0730c"
+      },
+      {
+        "Name": "Assassinate",
+        "Level": "3",
+        "Uses": "1 Per Turn",
+        "Recovery": "1 Turn",
+        "Action": "Avtg on attack roll",
+        "Description": "Avtg on attack rolls against creature without combat turn; Hit against surprised creature is critical",
+        "Id": "20920921-ba5b-4857-94a3-9194aeb26288"
+      },
+      {
+        "Name": "Uncanny Dodge",
+        "Level": "5",
+        "Uses": "1 Per Round",
+        "Recovery": "1 Round",
+        "Action": "Reaction",
+        "Description": "Use reaction to take half damage against an attack you can see.",
+        "Id": "d2eb92fa-6349-4e17-b251-70cc263e0fe0"
+      },
+      {
+        "Name": "Evasion",
+        "Level": "7",
+        "Uses": "-",
+        "Recovery": "-",
+        "Action": "Dex Save",
+        "Description": "Succeed on a DEX save and take no damage, Fail and take half damage.",
+        "Id": "2b94439f-08fa-4d2b-93b8-793f2bcb5bb1"
+      },
+      {
+        "Name": "Observant",
+        "Level": "8",
+        "Uses": "-",
+        "Recovery": "-",
+        "Action": "-",
+        "Description": "If I can see a targets mouth while they are talking, I can understand what they are saying.",
+        "Id": "58138e3e-aefa-45b1-aff7-57e8341017bf"
+      },
+      {
+        "Name": "Infiltration Expertise",
+        "Level": "9",
+        "Uses": "-",
+        "Recovery": "-",
+        "Action": "-",
+        "Description": "Spend 7 days and 25gp to establish history, profession, and affiliations of an identity. Can't be an existing person. Everyone believes to be the person until given reason not to.",
+        "Id": "4de7ba2d-e3b1-48a2-a27e-f937cac394b7"
+      }
+    ],
+    "Ammunitions": [
+      {
+        "Name": "Arrows",
+        "Quantity": 18,
+        "Bonus": "",
+        "DamageType": 0,
+        "Used": 0,
+        "Id": "5bb2baaf-8b7d-4d2d-bc5f-8f5a41cc7914"
+      },
+      {
+        "Name": "Silvered Arrows",
+        "Quantity": 7,
+        "Bonus": "",
+        "DamageType": 0,
+        "Used": 0,
+        "Id": "4e9d346f-5ab8-4cc3-b927-a0502bce9db1"
+      },
+      {
+        "Name": "Healing Arrows",
+        "Quantity": 5,
+        "Bonus": "2d4+8 Healing",
+        "DamageType": 0,
+        "Used": 0,
+        "Id": "4c87bd0c-3c6a-45cc-a340-d185de4c59d5"
+      }
+    ],
+    "Appearance": {
+      "Gender": "Male",
+      "Age": "28",
+      "Height": "5' 10\"",
+      "Weight": "154 lbs.",
+      "SkinColour": "White",
+      "EyeColour": "Ice Blue",
+      "HairColour": "Black",
+      "DistinguishingMarks": "Sideburns; Mssing pinky on left hand; Small slanted scar on chin running from left to right"
+    },
+    "Armor": {
+      "Equiped": "Studded Leather",
+      "Type": 1,
+      "ArmorClass": 13,
+      "Strength": 0,
+      "Weight": 13.0,
+      "Stealth": 0,
+      "Shield": "None",
+      "ShieldArmorClass": 0,
+      "ShieldWeight": 0.0,
+      "MiscArmorClass": 0,
+      "MagicArmorClass": 0
+    },
+    "Attributes": {
+      "Strength": 7,
+      "Dexterity": 20,
+      "Constitution": 14,
+      "Intelligence": 9,
+      "Wisdom": 16,
+      "Charisma": 16
+    },
+    "Class1": {
+      "Name": "Rogue",
+      "Id": "0badc390-d484-4efc-816e-31fb645906e9",
+      "Level": 9
+    },
+    "Class2": {
+      "Name": "",
+      "Id": "a804d995-d0aa-4235-a966-98c4a9240729",
+      "Level": 0
+    },
+    "Class3": {
+      "Name": "",
+      "Id": "91856f96-831f-4a29-a9c2-9c144f8aef98",
+      "Level": 0
+    },
+    "ClassResources": [],
+    "Companion": {
+      "Name": "",
+      "ArmorClass": 0,
+      "Vitality": {
+        "MaxHealth": 0,
+        "BaseHealth": 0,
+        "TemporaryHealth": 0,
+        "HitDice": {
+          "TotalD6": 0,
+          "TotalD8": 0,
+          "TotalD10": 0,
+          "TotalD12": 0,
+          "SpentD6": 0,
+          "SpentD8": 0,
+          "SpentD10": 0,
+          "SpentD12": 0
+        },
+        "Conditions": {
+          "Blinded": "Cured",
+          "Charmed": "Cured",
+          "Deafened": "Cured",
+          "Fatigued": "Normal",
+          "Frightened": "Cured",
+          "Grappled": "Cured",
+          "Incapacitated": "Cured",
+          "Invisible": "Cured",
+          "Paralyzed": "Cured",
+          "Petrified": "Cured",
+          "Poisoned": "Cured",
+          "Prone": "Cured",
+          "Restrained": "Cured",
+          "Stunned": "Cured",
+          "Unconscious": "Cured"
+        }
+      },
+      "Movement": 0,
+      "Attributes": {
+        "Strength": 0,
+        "Dexterity": 0,
+        "Constitution": 0,
+        "Intelligence": 0,
+        "Wisdom": 0,
+        "Charisma": 0
+      },
+      "Perception": 0,
+      "Vision": 0,
+      "Attacks": []
+    },
+    "Details": {
+      "Name": "Caleston Nailo",
+      "Race": "Half-Elf",
+      "Background": "Criminal",
+      "Alignment": "Chaotic Good",
+      "Experience": "48000",
+      "Languages": [
+        {
+          "Name": "Common",
+          "Script": "Common",
+          "Speakers": "Humans, halflings, half-elves, half-orcs",
+          "Id": "9f4da325-8f0b-4fa3-9605-2115bc238e31"
+        },
+        {
+          "Name": "Draconic",
+          "Script": "Draconic",
+          "Speakers": "Kobolds, troglodytes, lizardfolk, dragons, dragonborn",
+          "Id": "a89cd283-4ebb-473d-a7f0-8ff78039e2a5"
+        },
+        {
+          "Name": "Elvish",
+          "Script": "Elvish",
+          "Speakers": "Elves",
+          "Id": "06654f94-03cf-42e0-9274-4cc4b582d0f7"
+        },
+        {
+          "Name": "Infernal",
+          "Script": "Infernal",
+          "Speakers": "Devils, Tieflings",
+          "Id": "93af0226-5535-4968-a721-10319a80ed4e"
+        },
+        {
+          "Name": "Primordial",
+          "Script": "Dwarvish",
+          "Speakers": "Elementals",
+          "Id": "dbeb1f7a-2f02-4ceb-a881-b33c2cdfa6f1"
+        }
+      ],
+      "InitiativeBonus": 5,
+      "PerceptionBonus": 5,
+      "BaseMovement": 30,
+      "Vision": 2
+    },
+    "Chapters": [
+      {
+        "Documents": [
+          {
+            "IsExpanded": false,
+            "Name": "Arrival at Damera",
+            "RTF": "{\\rtf1\\ansi\\ansicpg1252\\uc1\\htmautsp\\deff2{\\fonttbl{\\f0\\fcharset0 Times New Roman;}{\\f2\\fcharset0 Bahnschrift SemiLight;}{\\f3\\fcharset0 Microsoft Sans Serif;}}{\\colortbl\\red0\\green0\\blue0;\\red255\\green255\\blue255;}\\loch\\hich\\dbch\\pard\\plain\\ltrpar\\itap0{\\lang1033\\fs30\\f3\\cf1 \\cf1\\ql{\\f3 {\\ltrch Our group stopped off in the city of Damera for rest and supplies. Gray spent time getting a permit so he could bring the dead eagle into the city and eat it, against Caleston's protests. Unfortunately the carcass was too decayed and he was force to leave it at customs. The journey ahead needed a horse and carriage so Kussandrick and Caleston scouted out a promising barn that might hold the quarry inside. Kussandrick created a distraction by urinating and Caleston was able to successfully enter the barn undetected. We stole the horse and carriage, lit the barn on fire, escaped the city, and met up with Gray and Gilbert.}\\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n{\\f3 \\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n{\\f3 {\\ltrch Continuing on the journey to Blinding Rock, we came across a damaged bridge and an overly enthusiastic engineer. We were forced to go kill a (troll?) and then convinced the workers to hoist us across with their crane. After setting up camp for the night we were set upon by bandits who tried to get the jump on the group. Caleston was able to escape the fight unscathed, but the rest were not so lucky.}\\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n{\\f3 \\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n{\\f3 \\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n{\\f3 \\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n{\\f3 \\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n{\\f3 \\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n{\\f3 {\\lang4105\\ltrch Cheap Blosem}\\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n}\r\n}",
+            "Id": "7055fd90-f8bf-4d3b-9f49-8d94a6303d92"
+          },
+          {
+            "IsExpanded": false,
+            "Name": "Curse of Lycanthropy",
+            "RTF": "{\\rtf1\\ansi\\ansicpg1252\\uc1\\htmautsp\\deff2{\\fonttbl{\\f0\\fcharset0 Times New Roman;}{\\f2\\fcharset0 Bahnschrift SemiLight;}{\\f3\\fcharset0 Microsoft Sans Serif;}}{\\colortbl\\red0\\green0\\blue0;\\red255\\green255\\blue255;}\\loch\\hich\\dbch\\pard\\plain\\ltrpar\\itap0{\\lang1033\\fs29\\f3\\cf0 \\cf0\\ql{\\fs30\\f3 {\\cf1\\ltrch We met up with Filbin, who had helped us in our last battle. He took us to his hideout which turned out to be a very well finished cave system, and potentialy new base of operations. After so many nights on the road, a real be was all we needed for a good nights sleep. We headed out the bright and early the next morning to find the Group spreading lycanthropy. Gilbert used his zone of truth spell again, but nothing much was learned. Upon reaching our destination, we were set upon by a pack of werewolves and Kussandrick might have been infected. We were able to open a secret door by getting Gray to just break the mechanism. }\\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n{\\fs30\\f3 {\\ltrch }\\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n{\\fs30\\f3 {\\cf1\\ltrch The door did not fully open so we had to crawl through a small tunnel. Inside the complex we fought off many a werebeast, in one hell of a fight. After looting we found }{\\i\\cf1\\ltrch Glasses of Seeing}{\\cf1\\ltrch  and an }{\\i\\cf1\\ltrch Immovable Rod}{\\cf1\\ltrch . The source was already taken so we had to travel to the city of Aveburry and find Erwin (female elf). To get her to trust us, we had to say we were with Filbin only in her company; and to tell her \"}{\\i\\cf1\\ltrch remember stary night}{\\cf1\\ltrch \" and mention Filbin's name. The city is at least partially in favor of lycanthropy as a last ditch effort to save themselves, and the druids might know where source is. It was best that we didn't make it known we are trying to stop the werebeasts.  Aveburry is built in the trees with the South and West protected by walls. There are no houses on the ground and people must move from tree to tree, some trees are magic.  There is a herb shop called the Spider's Grove on east side of town. Erwin is likely in the Treaty Retreat. We encountered a half-elf named Jeramy doesn't speak elvish.}\\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n}\r\n}",
+            "Id": "e94f6f96-75f4-4344-8175-488880d01bfb"
+          },
+          {
+            "IsExpanded": false,
+            "Name": "City of Elves",
+            "RTF": "{\\rtf1\\ansi\\ansicpg1252\\uc1\\htmautsp\\deff2{\\fonttbl{\\f0\\fcharset0 Times New Roman;}{\\f2\\fcharset0 Bahnschrift SemiLight;}{\\f3\\fcharset0 Microsoft Sans Serif;}}{\\colortbl\\red0\\green0\\blue0;\\red255\\green255\\blue255;\\red0\\green255\\blue255;\\red128\\green0\\blue0;}\\loch\\hich\\dbch\\pard\\plain\\ltrpar\\itap0{\\lang1033\\fs30\\f3\\cf1 \\cf1\\ql{\\f3 {\\ltrch We were able to discover that the source might be in the town hall. }{\\cf2\\ltrch Fenissa }{\\ltrch wants to distribute source around the city using the inhibitors (giant floating crystals). After smooth talking our way into the vaults, fighting some water elementals, and solving a puzzle we finally opened the door. We were told it is better to destroy rather than steal the Source, but it wasn't there. However, there was an inhibitor which we were able to destroy. After heading back up to the council chamber to meet }{\\cf2\\ltrch Erwin}{\\ltrch , we arrived while }{\\cf2\\ltrch Fenissa }{\\ltrch was in the middle of a speech}{\\cf2\\ltrch  }{\\ltrch whereupon we were attacked by werewolves. The party dealt with them, but }{\\cf2\\ltrch Fenissa }{\\ltrch escaped to fight another day. We were, however, able to save }{\\cf2\\ltrch Grommash Frume}{\\ltrch  who informed us that the plan to infect the city with lycanthropy was something of a worst kept secret.}\\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n{\\f3 \\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n{\\f3 {\\ltrch After the fight, we explained ourselves to }{\\cf2\\ltrch Grommash }{\\ltrch and were allowed to search }{\\cf2\\ltrch Finissa's }{\\ltrch office. Inside we found a letter implicating }{\\cf2\\ltrch Silverpine }{\\ltrch with the scheme, a reference to a meeting point outside the city, and a map of trade routes suggesting the location of their lair. Her and }{\\cf2\\ltrch Silverpine }{\\ltrch were scheming together. We also noticed she has a lot of books on the fae wilds, and }{\\cf2\\ltrch Gromash Froom's}{\\ltrch  daughter is leader of }{\\cf3\\ltrch The Boiling Fist}{\\ltrch , }{\\cf2\\ltrch Mondath }{\\ltrch (They are not on the best of terms). We made haste for the meeting point, picking up }{\\cf2\\ltrch Filbin }{\\ltrch along the way, and planned our attack. Quick work was made of the defenders and only }{\\cf2\\ltrch Finissa }{\\ltrch and a guard were left alive. From our interigation we learned }{\\cf2\\ltrch Silverpine }{\\ltrch in the second tower, and the source is some kind of fae artifact. The guard was left alive, }{\\cf2\\ltrch Finissa }{\\ltrch executed, and our course was set for the first tower that is haunted by G; a spirit from the battle of the 4th incoursion, and not a fan of lycanthropy.}\\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n}\r\n}",
+            "Id": "b64ca418-c97e-48bd-baee-e16422a54d32"
+          },
+          {
+            "IsExpanded": false,
+            "Name": "The Two Towers",
+            "RTF": "{\\rtf1\\ansi\\ansicpg1252\\uc1\\htmautsp\\deff2{\\fonttbl{\\f0\\fcharset0 Times New Roman;}{\\f2\\fcharset0 Bahnschrift SemiLight;}{\\f3\\fcharset0 Microsoft Sans Serif;}}{\\colortbl\\red0\\green0\\blue0;\\red255\\green255\\blue255;\\red0\\green128\\blue255;\\red0\\green255\\blue255;\\red255\\green128\\blue128;\\red255\\green128\\blue0;\\red128\\green0\\blue128;}\\loch\\hich\\dbch\\pard\\plain\\ltrpar\\itap0{\\lang1033\\fs29\\f3\\cf0 \\cf0\\ql{\\fs30\\f3 {\\cf1\\ltrch We pressed on, making it to the first tower and discovered it in ruins. After entering the abandoned building, we all jumped down a pit into a small underground lake (except }{\\cf2\\ltrch Kus}{\\cf1\\ltrch , who decided to take the hidden staircase) and found a small island with a treasure chest on it. Trying to take some gold caused the ghost to appear and we were forced to deal with him using the power of song. He granted us several silvered weapons and a special bow. We then trekked to the second tower, entered stealthfully, and killed the first person we saw blowing our cover. The fight was difficult, and }{\\cf3\\ltrch Silverpine }{\\cf1\\ltrch managed to escape (although is likely dead on the other side). We discovered a magical anomaly that absorbed items put into it.}\\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n{\\fs30\\f3 {\\ltrch }\\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n{\\fs30\\f3 {\\cf1\\ltrch The battle concluded, we closed to the anomaly with the }{\\i\\cf4\\ltrch Immovable Rod }{\\cf1\\ltrch and gathered some new weapons. }{\\cf3\\ltrch Erwin }{\\cf1\\ltrch decided to go back to }{\\cf5\\ltrch Aveburry}{\\cf1\\ltrch , and }{\\cf3\\ltrch Filbin }{\\cf1\\ltrch and the rest of us went to find the crashed meteorite. We reached the location and found the remains of a battle, with the meteor already looted. A clue was found on a dead }{\\cf6\\ltrch Cult of the Dragon }{\\cf1\\ltrch member that contained reference to a camp near the *** mountains. Despite }{\\cf2\\ltrch Caleston's}{\\cf1\\ltrch  protests, the group set out for the camp. After an encounter with an unknown monster, being attacked by snakes, and finding an impaled family, we fought another epic battle. }\\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n}\r\n}",
+            "Id": "5cf5d376-1618-42ac-a5a7-c62daf40c644"
+          },
+          {
+            "IsExpanded": false,
+            "Name": "Over Hill and Dale",
+            "RTF": "{\\rtf1\\ansi\\ansicpg1252\\uc1\\htmautsp\\deff2{\\fonttbl{\\f0\\fcharset0 Times New Roman;}{\\f2\\fcharset0 Bahnschrift SemiLight;}{\\f3\\fcharset0 Microsoft Sans Serif;}}{\\colortbl\\red0\\green0\\blue0;\\red255\\green255\\blue255;}\\loch\\hich\\dbch\\pard\\plain\\ltrpar\\itap0{\\lang1033\\fs30\\f3\\cf1 \\cf1\\ql{\\f3 {\\ltrch We made our way back to the barn to interogate our hostage Thelo, who told us about their hunting lodge deep in the mountains. Gray did most of the work, and while this was going on Caleston found some winter gear for the trek through the mountains. Something attacked Caleston during the night and left a mark scratched into his chest, the same mark as the one on the children of the murdered family. We set off for the mountain pass and reached a fork in the road and went left, eventually coming accross a giant's cave. Backtracking to the fork there appeared a magic door in the cliffside, and uppon entering we stumbled into a warmly lit bar bussling with patrons. Each of us received a gift and we set off again. We finally reached the hunting lodge and after an intial stealthful approach our cover was blown and we had to fight our way through.}\\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n}\r\n}",
+            "Id": "f066d29a-df66-46ef-9a8d-73aa72dc8c88"
+          },
+          {
+            "IsExpanded": false,
+            "Name": "Cabin in the Woods",
+            "RTF": "{\\rtf1\\ansi\\ansicpg1252\\uc1\\htmautsp\\deff2{\\fonttbl{\\f0\\fcharset0 Times New Roman;}{\\f2\\fcharset0 Bahnschrift SemiLight;}{\\f3\\fcharset0 Microsoft Sans Serif;}}{\\colortbl\\red0\\green0\\blue0;\\red255\\green255\\blue255;\\red255\\green128\\blue0;\\red0\\green128\\blue255;\\red128\\green255\\blue255;\\red128\\green0\\blue255;\\red128\\green0\\blue0;}\\loch\\hich\\dbch\\pard\\plain\\ltrpar\\itap0{\\lang1033\\fs30\\f3\\cf1 \\cf1\\ql{\\f3 {\\ltrch After finally breaking into the }{\\cf2\\ltrch hunting }{\\ltrch lodge we immediately split up. }{\\cf3\\ltrch Caleston }{\\ltrch went down to the basement and discovered two prisoners chained up in a dungeon. One prisoner was a monk named }{\\cf3\\ltrch Lafawnda }{\\ltrch and the other was a dwarf named }{\\cf4\\ltrch ###}{\\ltrch . Meanwhile }{\\cf3\\ltrch Gray }{\\ltrch and }{\\cf3\\ltrch Kussandrick }{\\ltrch started blindly charging through the mansion, placing the entire house an alert. We quickly dispatched two smaller groups of enemies that rushed in, but just then the }{\\cf2\\ltrch lodge }{\\ltrch started shaking and all of the doors began locking. We forced our way into the main room and came face to face with an enormous group of enemies including the leader, a large black }{\\cf4\\ltrch dragonborn}{\\ltrch . A drawn out battle ensued where our hero's journy nearly came to an end, if not for the quick thinking of }{\\cf3\\ltrch Gilbert }{\\ltrch and the assistance of }{\\cf3\\ltrch Lafawnda}{\\ltrch . With the last of the foes cut down and our heroes victorious, the }{\\cf2\\ltrch lodge }{\\ltrch began shaking again . . . }\\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n{\\f3 \\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n{\\f3 {\\ltrch Just then a woman who claimed to be a maid made her way downstairs. She said we had really fucked up and a giant dragon was on its way to secure the lodge. We all hightailed it out, running back down the mountain and taking shelter in the giants cave. While we originally assumed the small bed was for a Dwarf, it was in fact for their \"young adult\" child. }{\\cf3\\ltrch Caleston }{\\ltrch and }{\\cf3\\ltrch Gray }{\\ltrch wanted to not tell him anything, but }{\\cf3\\ltrch Lafawnda }{\\ltrch demanded we tell the truth. }{\\cf3\\ltrch Caleston }{\\ltrch volunteered to tell the kid in the morning and }{\\cf3\\ltrch Lafawnda }{\\ltrch forced }{\\cf3\\ltrch Gilbert }{\\ltrch to stay and observe. }{\\cf3\\ltrch Caleston }{\\ltrch tried to skirt the truth but }{\\cf3\\ltrch Gilbert }{\\ltrch just blurted everything out, causing the giant to sprint out of the cave and run off. We met up with }{\\cf4\\ltrch Filbin }{\\ltrch back at the farm house and began our journey back to }{\\cf5\\ltrch Blinding Rock}{\\ltrch , while being hunted by a demon. }{\\cf3\\ltrch Caleston's}{\\ltrch  usually powerful wisdom failed him during the start of the trek and he was haunted by nightmares about a demonic presence. He came up with a plan to sleep during the day while being carried by }{\\cf3\\ltrch Gray}{\\ltrch , and keep watch at night, negating the demons influence. After several days travel, the group finally reached }{\\cf5\\ltrch Blinding Rock }{\\ltrch and were met at the entrance by some shockingly racist Drow and }{\\cf3\\ltrch Gray }{\\ltrch opened his dumb mouth and claimed }{\\cf3\\ltrch Kussandrick }{\\ltrch and }{\\cf3\\ltrch Caleston }{\\ltrch were slaves. After debriefing with }{\\cf6\\ltrch Mondath Frume}{\\ltrch , we took a shopping trip in the city and found an eccentric vendor with some interesting magical items. }{\\cf3\\ltrch Caleston }{\\ltrch also met with a spider priest and learned of a way to help his demon problem if the party completed a task for her.}\\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n{\\f3 \\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n{\\f3 \\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n}\r\n}",
+            "Id": "9df11d32-f672-4858-9847-e62a5c507051"
+          },
+          {
+            "IsExpanded": false,
+            "Name": "City Underground",
+            "RTF": "{\\rtf1\\ansi\\ansicpg1252\\uc1\\htmautsp\\deff2{\\fonttbl{\\f0\\fcharset0 Times New Roman;}{\\f2\\fcharset0 Bahnschrift SemiLight;}{\\f3\\fcharset0 Microsoft Sans Serif;}}{\\colortbl\\red0\\green0\\blue0;\\red255\\green255\\blue255;}\\loch\\hich\\dbch\\pard\\plain\\ltrpar\\itap0{\\lang1033\\fs30\\f3\\cf1 \\cf1\\ql{\\f3 {\\ltrch With our path set, we finally set off to search for a giant snail shell in the depths of Blinding Rock. Because the group is now in MBRGA (Make Blinding Rock Great Again) Country, Caleston could no longer be the face of the group and was forced to watch as Gray took up the mantle. The group found the entrance to the mine, acquired passes, and started the long trek down in search of their quarry. Caleston forgot to ask where giant snails could be found so he picked a direction and started walking. After several hours Gray got fed up and demanded they turn around and ask directions, but before they could a unicorn appeared and then disappeared just as quickly. The group made it back to the 'surface' and Gray convinced a local named Zandos to be our guide, to his later regret after Grey started to put the fear of God into him. During this whole endeavor Caleston was also suffering from severe exhaustion from his demon problems, and so was moving at a reduced speed.}\\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n{\\f3 \\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n{\\f3 {\\ltrch After a few hours journey in the RIGHT direction, we stumbled across two Dark Elves and their three slaves. While most of the group didn't want to get involved, Lafawnda demanded we do the right thing. But it was Gilbert's purchase of the female slaves that sparked Caleston's decision to go back and kill the slavers while the rest of the group argued (and also to get the money Gilbert payed). He made short work of the first elf, but the other one caused him a little bit of difficulty and he was forced to call for help. After a short battle the last elf made a run for it, but we were just barely able to kill him and free the slaves. Caleston took most of the gold as a finder's fee, and Gilbert was none too happy about losing his groupies. }\\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n{\\f3 \\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n{\\f3 {\\ltrch We set off once again, deeper and deeper into the earth. Magical spells seemed to be malfunctioning in these tunnels, but Gray was adamant his spell casting was in no way related to the odd occurrences. Even after he turned himself into a potted plant several times. Meanwhile, Zandos was getting increasingly panicked because the snails were nowhere to be found and Gray's threats were becoming more creative. Just when all seemed lost for Zandos, a giant snail appeared out of the darkness. The great beast loomed in front of the adventures, fangs glistening, eye stalks menacing, ready to give our hero's a real challenge. Caleston then killed it with two shots, before it could even react. All seemed well until Gray cast a spell and caused crazed unicorn to appear and start attacking the group. It was a tough fight, but things were looking good until Gray in his infinite stupidity cast another spell and spawned a yet another unicorn. After several close calls, the unicorns were banished and the party was victorious. Caleston collected the shell and the party began the long trip back to the 'surface' with Gray now acutely aware of the consequences of casting spells this far down.}\\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n}\r\n}",
+            "Id": "a018d7a8-f2eb-42f3-b91e-9200ad7ef009"
+          },
+          {
+            "IsExpanded": false,
+            "Name": "A Fork in the Road",
+            "RTF": "{\\rtf1\\ansi\\ansicpg1252\\uc1\\htmautsp\\deff2{\\fonttbl{\\f0\\fcharset0 Times New Roman;}{\\f2\\fcharset0 Bahnschrift SemiLight;}{\\f3\\fcharset0 Microsoft Sans Serif;}}{\\colortbl\\red0\\green0\\blue0;\\red255\\green255\\blue255;}\\loch\\hich\\dbch\\pard\\plain\\ltrpar\\itap0{\\lang1033\\fs30\\f3\\cf1 \\cf1\\ql{\\f3 {\\ltrch After licking our wounds we easily convinced Gray and Kussandrick to carry the giant snail shell up through the tunnels. Things were going well until we came accross a a narrow pathway winfing around a large underground lake, with absolutly no monsters calling it home. After berating Gray for his magic use, Caleston asked Gilbert to use a healing spell on him. He realized the magnitue of his his mistake as soon as the words were out of his mouth, but it was too late. He was healed, but Lafonda, Caleston and Gilbert were covered heat to toe in grease. While Gilbert began cleaning up his mess, Gray got impacient and figured he was powerfull enough to travers the narrow path without Calestons perceptive eyes. This nearly proved to be his undoing, when he lost his footing and began to falled into the monster infested waters below. He would have been lost forever if not for the quick thinking of Kussandrick, and his unequaled strength; hauling up Gray's useless body without breaking a sweat. Gilbert, Lafonda, and Caleston all made it down without any trouble; proving once and for all which party members were just dead weight.}\\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n{\\f3 \\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n{\\f3 {\\ltrch After finally reaching the \"surface\" Gray presented our papers to the guards stationed at the mine entrance. The gaurds were very confused as to where he got the papers from, and almost instantly Gray had a new enemy. Caleston took charge of the situation and led the party back to the spider temple to deal with the creature that had been hunting him since Gray's wild goose chase. The spider preist led Caleston down further }\\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n{\\f3 \\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n{\\f3 \\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n{\\f3 \\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n{\\f3 {\\lang4105\\ltrch would you Kill your father if he was a kid?}\\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n{\\f3 \\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n{\\f3 \\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n{\\f3 {\\lang4105\\ltrch The loving peacock}\\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n{\\f3 {\\lang4105\\ltrch Fantastic travler jh}\\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n}\r\n}",
+            "Id": "2cdec6d5-a35b-4136-ad22-f6c8abdedec7"
+          }
+        ],
+        "Name": "The Story so far",
+        "IsExpanded": true,
+        "Id": "13aea63c-e4ae-4463-b5d2-05b388c0adf2"
+      },
+      {
+        "Documents": [
+          {
+            "IsExpanded": false,
+            "Name": "Caleston's Story v2",
+            "RTF": "{\\rtf1\\ansi\\ansicpg1252\\uc1\\htmautsp\\deff2{\\fonttbl{\\f0\\fcharset0 Times New Roman;}{\\f2\\fcharset0 Bahnschrift SemiLight;}{\\f3\\fcharset0 Microsoft Sans Serif;}}{\\colortbl\\red0\\green0\\blue0;\\red255\\green255\\blue255;}\\loch\\hich\\dbch\\pard\\plain\\ltrpar\\itap0{\\lang1033\\fs27\\f3\\cf1 \\cf1\\ql{\\f3 {\\lang4105\\ltrch So Caleston grew up in }{\\lang4105\\b\\ltrch Odessen}{\\lang4105\\ltrch , the capital city of }{\\lang4105\\b\\ltrch Alar}{\\lang4105\\ltrch .}\\li0\\ri0\\sa160\\sb0\\fi0\\ql\\par}\r\n{\\f3 {\\lang4105\\ltrch His mom was and elf named }{\\lang4105\\b\\ltrch Alyndra Na\\'eflo}{\\lang4105\\ltrch  and is dad was a human named }{\\lang4105\\b\\ltrch Carson Levett}{\\lang4105\\ltrch .}\\li0\\ri0\\sa160\\sb0\\fi0\\ql\\par}\r\n{\\f3 {\\lang4105\\ltrch His parents worked as archeologists for the}{\\lang4105\\b\\ltrch  Alarian Trading Company}{\\lang4105\\ltrch . }\\li0\\ri0\\sa160\\sb0\\fi0\\ql\\par}\r\n{\\f3 {\\lang4105\\ltrch They\\rquote re basically like a crown corporation that was spun off into its own entity. Still has very close ties to the government and is always looking for magical artifacts, or old technology to increase its power.}\\li0\\ri0\\sa160\\sb0\\fi0\\ql\\par}\r\n{\\f3 {\\lang4105\\ltrch Cal was never particular good at the whole archeology part, but had a knack for finding treasure, and an even greater knack for setting of traps. Didn\\rquote t really care about the history of the site or its political importance, just enjoyed a good mystery. And knowing things that other people didn\\rquote t.}\\li0\\ri0\\sa160\\sb0\\fi0\\ql\\par}\r\n{\\f3 {\\lang4105\\ltrch     Parents were eventually sent on an expedition to a site in the }{\\lang4105\\b\\ltrch White that Wends}{\\lang4105\\ltrch , an arctic tundra far outside the boarders of }{\\lang4105\\b\\ltrch Alar}{\\lang4105\\ltrch .}\\li0\\ri0\\sa160\\sb0\\fi0\\ql\\par}\r\n{\\f3 {\\lang4105\\ltrch     It was all very hush hush, so Cal didn\\rquote t know any of the details or location.}\\li0\\ri0\\sa160\\sb0\\fi0\\ql\\par}\r\n{\\f3 {\\lang4105\\ltrch Parents never came back from it, he doesn\\rquote t know what happened.}\\li0\\ri0\\sa160\\sb0\\fi0\\ql\\par}\r\n{\\f3 {\\lang4105\\ltrch He was in his mid-20s at that point, so he packed up his stuff, sold off the house, and went off on an adventure to find the location his parents were sent to.}\\li0\\ri0\\sa160\\sb0\\fi0\\ql\\par}\r\n{\\f3 {\\lang4105\\ltrch He only spent about a month searching before the trail got cold. Seemed like someone never wanted the expedition site to be found.}\\li0\\ri0\\sa160\\sb0\\fi0\\ql\\par}\r\n{\\f3 {\\lang4105\\ltrch Eventually he just started joining up with other archeologists on dig sites to lend his \\ldblquote expertise\\rdblquote . Most people saw his last name and assumed he shared his parents\\rquote  skill.}\\li0\\ri0\\sa160\\sb0\\fi0\\ql\\par}\r\n{\\f3 {\\lang4105\\ltrch Joined up with a group that would enter ruins on behalf of a client to retrieve some item, or just do a search and sweep.}\\li0\\ri0\\sa160\\sb0\\fi0\\ql\\par}\r\n{\\f3 {\\lang4105\\ltrch Their last mission was to the }{\\lang4105\\b\\ltrch Scaled Plains}{\\lang4105\\ltrch , a large dragon burial site. Client fronted them a lot of gold to outfit themselves. Happened across Kaleigh\\rquote s character (Declan?) in a tavern, saw his scales, and bullshitted each other into joining forces.}\\li0\\ri0\\sa160\\sb0\\fi0\\ql\\par}\r\n{\\f3 {\\lang4105\\ltrch During the expedition, Cal set of a trap deep under the ruins and the whole place started coming down. He totally bailed on his crew and barely managed to get out. He assumed everyone else was dead and didn\\rquote t have any way to pay the client back so he boarded the first ship he came across in [that port town this whole campaign started in]. }\\li0\\ri0\\sa160\\sb0\\fi0\\ql\\par}\r\n{\\f3 {\\lang4105\\ltrch His trinket, a small spherical crystal that glows faintly in the moonlight, was the only thing of seeming value he found in the scaled plains.}\\li0\\ri0\\sa160\\sb0\\fi0\\ql\\par}\r\n{\\f3 \\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n}\r\n}",
+            "Id": "7f948a0c-b421-4634-bb4e-48a8591b0703"
+          }
+        ],
+        "Name": "Character Background",
+        "IsExpanded": true,
+        "Id": "a009bbbb-e343-44dc-84ef-695cac0406ca"
+      }
+    ],
+    "Inventories": [
+      {
+        "Name": "Ancient Map",
+        "Amount": 1,
+        "Weight": 0.0,
+        "IsInBagOfHolding": true,
+        "Note": "Very old map oh a mountain range. It looks to be similar to the sunset mountains. Written in Dwarvish.",
+        "Attuned": false,
+        "EquppedId": "00000000-0000-0000-0000-000000000000",
+        "Id": "dc9eb5a0-65db-4869-bece-602824641329"
+      },
+      {
+        "Name": "Bag of Candy",
+        "Amount": 1,
+        "Weight": 1.0,
+        "IsInBagOfHolding": true,
+        "Note": "A bag containing 10,000 peices of candy.",
+        "Attuned": false,
+        "EquppedId": "00000000-0000-0000-0000-000000000000",
+        "Id": "d73b5f8b-66b3-40d6-9853-674af0aa8861"
+      },
+      {
+        "Name": "Bag of Holding",
+        "Amount": 1,
+        "Weight": 5.0,
+        "IsInBagOfHolding": false,
+        "Note": "The bag stores items in an extradimensional space. Can hold up to 500lbs, and 64 cubic feet. Turning the bag inside out will spill all its contents.",
+        "Attuned": false,
+        "EquppedId": "00000000-0000-0000-0000-000000000000",
+        "Id": "9f06b1d8-dedd-446c-943b-d09986d1536c"
+      },
+      {
+        "Name": "Ball Bearings (bag of 1,000)",
+        "Amount": 1,
+        "Weight": 2.0,
+        "IsInBagOfHolding": true,
+        "Note": "As an action, you can spill these tiny metal balls from their pouch to cover a level, square area that is 10 feet on a side. Moving across the covered area must succeed on a DC 10 Dexterity saving throw or fall prone. Moving through the area at half speed doesn't need a save.",
+        "Attuned": false,
+        "EquppedId": "00000000-0000-0000-0000-000000000000",
+        "Id": "1df43ce0-b384-4d98-a33f-495c6c3d9d88"
+      },
+      {
+        "Name": "Bath Potions",
+        "Amount": 2,
+        "Weight": 0.5,
+        "IsInBagOfHolding": true,
+        "Note": "The potion will keep you clean for 24 hours. They brush your hair, teeth, and leave you smelling great. Has a small chance of bubbles coming out your mouth.",
+        "Attuned": false,
+        "EquppedId": "00000000-0000-0000-0000-000000000000",
+        "Id": "e8ef0d5c-e9ae-4a8c-9229-44c59183ee26"
+      },
+      {
+        "Name": "Caltrops (bag of 20)",
+        "Amount": 1,
+        "Weight": 2.0,
+        "IsInBagOfHolding": true,
+        "Note": "As an action, you can spread a bag of caltrops to cover a square area that is 5 feet on a side. Any creature that enters the area must succeed on a DC 15 Dexterity saving throw or stop moving this turn and take 1 piercing damage. Taking this damage reduces the creature's walking speed by 10 feet until the creature regains at least 1 hit point. A creature moving through the area at half speed doesn't need to make the save.",
+        "Attuned": false,
+        "EquppedId": "00000000-0000-0000-0000-000000000000",
+        "Id": "e9fbde09-87bd-4a48-abc9-c7e7f4acc137"
+      },
+      {
+        "Name": "Contract for Protection",
+        "Amount": 1,
+        "Weight": 0.0,
+        "IsInBagOfHolding": true,
+        "Note": "Contract to protect mage from danger.",
+        "Attuned": false,
+        "EquppedId": "00000000-0000-0000-0000-000000000000",
+        "Id": "dbb7a5ea-f261-4443-9b28-531d43ace4df"
+      },
+      {
+        "Name": "Crowbar",
+        "Amount": 1,
+        "Weight": 5.0,
+        "IsInBagOfHolding": true,
+        "Note": "Using a crowbar grants advantage to Strength checks where the crowbar's leverage can be applied.",
+        "Attuned": false,
+        "EquppedId": "00000000-0000-0000-0000-000000000000",
+        "Id": "1631531f-0163-47d9-bc01-7a2918403aee"
+      },
+      {
+        "Name": "Cult of the Dragon Patch",
+        "Amount": 1,
+        "Weight": 0.0,
+        "IsInBagOfHolding": true,
+        "Note": "An insignia representing membership with the Dragon Cult.",
+        "Attuned": false,
+        "EquppedId": "00000000-0000-0000-0000-000000000000",
+        "Id": "54c6c293-911f-4df7-9e9b-efc8af927c9d"
+      },
+      {
+        "Name": "Eagle Beak",
+        "Amount": 1,
+        "Weight": 0.5,
+        "IsInBagOfHolding": true,
+        "Note": "The beak of an eagle that was far too much trouble.",
+        "Attuned": false,
+        "EquppedId": "00000000-0000-0000-0000-000000000000",
+        "Id": "e10a8ba5-0e73-40ac-b133-22a838e4c7ef"
+      },
+      {
+        "Name": "Flask of Oil",
+        "Amount": 10,
+        "Weight": 0.5,
+        "IsInBagOfHolding": true,
+        "Note": "A flask or tankard can hold 1 pint of liquid.",
+        "Attuned": false,
+        "EquppedId": "00000000-0000-0000-0000-000000000000",
+        "Id": "691a778d-9cd8-4dca-9056-3c5934c0fcba"
+      },
+      {
+        "Name": "Fur coat",
+        "Amount": 1,
+        "Weight": 0.5,
+        "IsInBagOfHolding": true,
+        "Note": "Woman's fur coat for keeping warm in cold climates.",
+        "Attuned": false,
+        "EquppedId": "00000000-0000-0000-0000-000000000000",
+        "Id": "6b122381-eef3-42b9-b1b3-7867e4fc18c4"
+      },
+      {
+        "Name": "Glass Vial",
+        "Amount": 42,
+        "Weight": 0.1,
+        "IsInBagOfHolding": true,
+        "Note": "Empty vial. Can hold 7 doses of something (drugs).",
+        "Attuned": false,
+        "EquppedId": "00000000-0000-0000-0000-000000000000",
+        "Id": "196bb22a-d395-43d1-93ae-7321dc0dd568"
+      },
+      {
+        "Name": "Hammer",
+        "Amount": 1,
+        "Weight": 2.0,
+        "IsInBagOfHolding": true,
+        "Note": "This one-handed hammer with an iron head is useful for pounding pitons into a wall.",
+        "Attuned": false,
+        "EquppedId": "00000000-0000-0000-0000-000000000000",
+        "Id": "fb91a5ca-7487-41cd-99ec-4a00f714dd89"
+      },
+      {
+        "Name": "Health Potion",
+        "Amount": 2,
+        "Weight": 0.5,
+        "IsInBagOfHolding": true,
+        "Note": "Bonus action to use yourself, action to use on another person. 2d4 +2 HP restored.",
+        "Attuned": false,
+        "EquppedId": "00000000-0000-0000-0000-000000000000",
+        "Id": "4aa3e8b4-4532-44d7-82cf-a95a97d5c5aa"
+      },
+      {
+        "Name": "Hooded lantern",
+        "Amount": 1,
+        "Weight": 2.0,
+        "IsInBagOfHolding": true,
+        "Note": "Casts bright light in 30 foot radius, dim light for additional 30 feet. Burns 6 hours on pint of oil. Lower hood to cast dim light in 5 foot radius.",
+        "Attuned": false,
+        "EquppedId": "00000000-0000-0000-0000-000000000000",
+        "Id": "6271443d-cf76-408a-99d4-397c04dbfc1f"
+      },
+      {
+        "Name": "Insperation Die (d10)",
+        "Amount": 1,
+        "Weight": 0.0,
+        "IsInBagOfHolding": false,
+        "Note": "Used to add a d10 to any d20 roll.",
+        "Attuned": false,
+        "EquppedId": "00000000-0000-0000-0000-000000000000",
+        "Id": "e85ca3b0-7182-4afb-a271-a99bd1ada106"
+      },
+      {
+        "Name": "Intel",
+        "Amount": 1,
+        "Weight": 0.0,
+        "IsInBagOfHolding": true,
+        "Note": "Intel on the imperial forces.",
+        "Attuned": false,
+        "EquppedId": "00000000-0000-0000-0000-000000000000",
+        "Id": "24bf0a25-7722-486f-8217-753d8bcb049e"
+      },
+      {
+        "Name": "Magic Stick",
+        "Amount": 1,
+        "Weight": 0.5,
+        "IsInBagOfHolding": true,
+        "Note": "A thin stick thought to be magical in some way.",
+        "Attuned": false,
+        "EquppedId": "00000000-0000-0000-0000-000000000000",
+        "Id": "a5baa786-e44d-415a-9586-ab0d02c73b51"
+      },
+      {
+        "Name": "Map",
+        "Amount": 1,
+        "Weight": 0.0,
+        "IsInBagOfHolding": true,
+        "Note": "Map to an unspecified location.",
+        "Attuned": false,
+        "EquppedId": "00000000-0000-0000-0000-000000000000",
+        "Id": "3d6988dd-620d-490d-878b-deb4aec477ca"
+      },
+      {
+        "Name": "Metal Rod",
+        "Amount": 1,
+        "Weight": 1.0,
+        "IsInBagOfHolding": true,
+        "Note": "Rod found in Bag of Holding (Might be a key).",
+        "Attuned": false,
+        "EquppedId": "00000000-0000-0000-0000-000000000000",
+        "Id": "d9689d33-7a01-47b9-b34b-03d26eafd517"
+      },
+      {
+        "Name": "Ogre Tusk",
+        "Amount": 1,
+        "Weight": 1.0,
+        "IsInBagOfHolding": true,
+        "Note": "Tusk of a fallen ogre.",
+        "Attuned": false,
+        "EquppedId": "00000000-0000-0000-0000-000000000000",
+        "Id": "a6537f72-633b-44cf-9c4f-40e667d25a00"
+      },
+      {
+        "Name": "Ornate Clothes",
+        "Amount": 1,
+        "Weight": 1.0,
+        "IsInBagOfHolding": true,
+        "Note": "Very rich looking clothes. Black with red trim.",
+        "Attuned": false,
+        "EquppedId": "00000000-0000-0000-0000-000000000000",
+        "Id": "ec3588c9-c5f2-466b-879f-c943516711be"
+      },
+      {
+        "Name": "Phone a Friend Rock",
+        "Amount": 1,
+        "Weight": 0.1,
+        "IsInBagOfHolding": false,
+        "Note": "Whisper into the crystal and another creature with the other in the pair will hear you. 1 action to use.",
+        "Attuned": false,
+        "EquppedId": "00000000-0000-0000-0000-000000000000",
+        "Id": "a034d6c0-fcb9-4381-9876-502ce69c2121"
+      },
+      {
+        "Name": "Piton",
+        "Amount": 10,
+        "Weight": 0.25,
+        "IsInBagOfHolding": true,
+        "Note": "When a wall doesn’t offer handholds and footholds, you can make your own. A piton is a steel spike with an eye through which you can loop a rope.",
+        "Attuned": false,
+        "EquppedId": "00000000-0000-0000-0000-000000000000",
+        "Id": "de189bde-9007-41b2-b600-8d3d06da32a1"
+      },
+      {
+        "Name": "Poisoner's Kit",
+        "Amount": 1,
+        "Weight": 1.0,
+        "IsInBagOfHolding": true,
+        "Note": "Contains chemicals and equipment to create poisons.",
+        "Attuned": false,
+        "EquppedId": "00000000-0000-0000-0000-000000000000",
+        "Id": "11eb7833-99ed-4a7e-9b08-d09cc7f20086"
+      },
+      {
+        "Name": "Potion of Detect Thoughts",
+        "Amount": 1,
+        "Weight": 0.5,
+        "IsInBagOfHolding": true,
+        "Note": "See spell: Detect Thoughts. One time use.",
+        "Attuned": false,
+        "EquppedId": "00000000-0000-0000-0000-000000000000",
+        "Id": "a130608e-a8f4-4345-814e-4b14c2bfb08e"
+      },
+      {
+        "Name": "Potion of Heat Resistance",
+        "Amount": 1,
+        "Weight": 0.5,
+        "IsInBagOfHolding": true,
+        "Note": "Grants resistance to fire",
+        "Attuned": false,
+        "EquppedId": "00000000-0000-0000-0000-000000000000",
+        "Id": "8b9ad34e-b6cf-4b9f-8279-a91de7e726a8"
+      },
+      {
+        "Name": "Puffer Fish Poison",
+        "Amount": 1,
+        "Weight": 0.5,
+        "IsInBagOfHolding": true,
+        "Note": "If injested causes the poison condition. Creature must save on a CD 12 Constitution save. Causes 1d12 poison damage.",
+        "Attuned": false,
+        "EquppedId": "00000000-0000-0000-0000-000000000000",
+        "Id": "87d729f3-f6d0-4cdd-908e-069617e2db01"
+      },
+      {
+        "Name": "Quiver",
+        "Amount": 1,
+        "Weight": 1.0,
+        "IsInBagOfHolding": false,
+        "Note": "A quiver can hold up to 20 arrows.",
+        "Attuned": false,
+        "EquppedId": "00000000-0000-0000-0000-000000000000",
+        "Id": "9a986e5e-6c5e-49f1-87b3-bd97cf2952d8"
+      },
+      {
+        "Name": "Rations (1-Day)",
+        "Amount": 5,
+        "Weight": 1.0,
+        "IsInBagOfHolding": true,
+        "Note": "Rations consist of dry foods suitable for extended travel, including jerky, dried fruit, hardtack, and nuts.",
+        "Attuned": false,
+        "EquppedId": "00000000-0000-0000-0000-000000000000",
+        "Id": "843e267c-b8b8-415b-b7ba-d4a29def7cb2"
+      },
+      {
+        "Name": "Remorhaz Heat Sack",
+        "Amount": 3,
+        "Weight": 0.1,
+        "IsInBagOfHolding": true,
+        "Note": "Sacks containing some sort of chemicals that give off a lot of heat.",
+        "Attuned": false,
+        "EquppedId": "00000000-0000-0000-0000-000000000000",
+        "Id": "00d479b2-34d0-4c86-898e-1a2c70427ec3"
+      },
+      {
+        "Name": "Rope, Hempen (50 feet)",
+        "Amount": 1,
+        "Weight": 5.0,
+        "IsInBagOfHolding": true,
+        "Note": "Rope, has 2 hit points and can be burst with a DC 17 Strength check.",
+        "Attuned": false,
+        "EquppedId": "00000000-0000-0000-0000-000000000000",
+        "Id": "bce11457-7b37-4fdb-8fa7-dd4d942d56a5"
+      },
+      {
+        "Name": "Salted Meat",
+        "Amount": 14,
+        "Weight": 0.1,
+        "IsInBagOfHolding": true,
+        "Note": "Food for one person for a meal.",
+        "Attuned": false,
+        "EquppedId": "00000000-0000-0000-0000-000000000000",
+        "Id": "939ef61f-70c2-4cb7-8747-6adfa4421d3c"
+      },
+      {
+        "Name": "Sheet of Paper",
+        "Amount": 1,
+        "Weight": 0.0,
+        "IsInBagOfHolding": false,
+        "Note": "Say the words 'trust is earned' to get all the perks befitting a lieutenant.",
+        "Attuned": false,
+        "EquppedId": "00000000-0000-0000-0000-000000000000",
+        "Id": "f6f29049-3fc8-4f46-9cf2-86ffe0f82cd7"
+      },
+      {
+        "Name": "Shovel",
+        "Amount": 1,
+        "Weight": 5.0,
+        "IsInBagOfHolding": true,
+        "Note": "A standard shovel used for digging.",
+        "Attuned": false,
+        "EquppedId": "00000000-0000-0000-0000-000000000000",
+        "Id": "3228ba4a-8a3a-40f1-818e-ebe872171f1a"
+      },
+      {
+        "Name": "Small bead",
+        "Amount": 1,
+        "Weight": 0.1,
+        "IsInBagOfHolding": true,
+        "Note": "A small marble like bead coloured a translucent green.",
+        "Attuned": false,
+        "EquppedId": "00000000-0000-0000-0000-000000000000",
+        "Id": "da102374-8e2f-4af7-b048-9e7762081d23"
+      },
+      {
+        "Name": "String",
+        "Amount": 1,
+        "Weight": 0.1,
+        "IsInBagOfHolding": true,
+        "Note": "A 10-foot length of string, typically found in a burglar's pack.",
+        "Attuned": false,
+        "EquppedId": "00000000-0000-0000-0000-000000000000",
+        "Id": "95f7b780-9b12-41d4-b2e9-48452a0741db"
+      },
+      {
+        "Name": "Talking Knife",
+        "Amount": 1,
+        "Weight": 0.25,
+        "IsInBagOfHolding": true,
+        "Note": "The knife has a mouth on it that keeps repeating \"Eating a human is a mortal sin\".",
+        "Attuned": false,
+        "EquppedId": "00000000-0000-0000-0000-000000000000",
+        "Id": "efd7b545-0cbe-4c1f-a0a5-5c87912c794a"
+      },
+      {
+        "Name": "Tent, Two-Person",
+        "Amount": 1,
+        "Weight": 20.0,
+        "IsInBagOfHolding": true,
+        "Note": "A simple and portable canvas shelter, a tent sleeps two.",
+        "Attuned": false,
+        "EquppedId": "00000000-0000-0000-0000-000000000000",
+        "Id": "88bdf00a-52c4-4835-9f2d-b289383e381e"
+      },
+      {
+        "Name": "Thieves Tools",
+        "Amount": 1,
+        "Weight": 1.0,
+        "IsInBagOfHolding": true,
+        "Note": "Small file, lock picks, mirror on metal handle, narrow bladed scissors, pliers.",
+        "Attuned": false,
+        "EquppedId": "00000000-0000-0000-0000-000000000000",
+        "Id": "111ee5fe-9d15-4a9d-a66c-0f6320e71d70"
+      },
+      {
+        "Name": "Three-Dragon Ante Set",
+        "Amount": 1,
+        "Weight": 0.1,
+        "IsInBagOfHolding": true,
+        "Note": "The deck consists of 70 cards (plus two reference cards).",
+        "Attuned": false,
+        "EquppedId": "00000000-0000-0000-0000-000000000000",
+        "Id": "77cb4ecb-bfa5-4725-bdd2-0ca504845e9d"
+      },
+      {
+        "Name": "Tinderbox",
+        "Amount": 1,
+        "Weight": 1.0,
+        "IsInBagOfHolding": true,
+        "Note": "This small container holds flint, fire steel, and tinder (usually dry cloth soaked in light oil) used to kindle a fire. Using it to light a torch -- or anything else with abundant, exposed fuel -- takes an action. Lighting any other fire takes 1 minute.",
+        "Attuned": false,
+        "EquppedId": "00000000-0000-0000-0000-000000000000",
+        "Id": "6c9c7724-21cd-4037-bc59-1e51509d9ffb"
+      },
+      {
+        "Name": "Trinket",
+        "Amount": 1,
+        "Weight": 0.5,
+        "IsInBagOfHolding": true,
+        "Note": "A carved crystal that faintly glows in the moonlight. (Stolen from ruins in the Scaled Plains)",
+        "Attuned": false,
+        "EquppedId": "00000000-0000-0000-0000-000000000000",
+        "Id": "1bc7b300-cff8-4d23-a443-0945b51de4ca"
+      },
+      {
+        "Name": "Very locked box",
+        "Amount": 1,
+        "Weight": 2.0,
+        "IsInBagOfHolding": true,
+        "Note": "A box with 3 locks on it, all interconnected. Strong divination magic from within.",
+        "Attuned": false,
+        "EquppedId": "00000000-0000-0000-0000-000000000000",
+        "Id": "8da7e9c2-5e14-47bb-87e8-d29cb757d5f7"
+      },
+      {
+        "Name": "Waterskin",
+        "Amount": 1,
+        "Weight": 1.0,
+        "IsInBagOfHolding": true,
+        "Note": "A waterskin can hold 4 litres of liquid. Currently drugged.",
+        "Attuned": false,
+        "EquppedId": "00000000-0000-0000-0000-000000000000",
+        "Id": "6b257780-b309-46e4-84ac-bb56c95026eb"
+      },
+      {
+        "Name": "Wooden Staff",
+        "Amount": 1,
+        "Weight": 1.0,
+        "IsInBagOfHolding": true,
+        "Note": "A wooden staff belonging to Declan",
+        "Attuned": false,
+        "EquppedId": "00000000-0000-0000-0000-000000000000",
+        "Id": "477c3b5f-9912-415b-9339-926a0d3c27f3"
+      }
+    ],
+    "MagicClasses": [],
+    "Personality": {
+      "Trait1": "I don't pay attention to the risks in a situation. Never tell me the odds.",
+      "Trait2": "There's nothing I like more than a good mystery.",
+      "Ideal": "Freedom: Chains are meant to be broken, as are those who would forge them. (Chaotic)",
+      "Bond": "Parents left on an expidition, and never returned. I don't like letting things go.",
+      "Flaw": "I'm a sucker for a pretty face.",
+      "Background": "Criminal Contact: Network of trustworthy contacts. Can use them to send and receive messages quickly over great distances.",
+      "Notes": ""
+    },
+    "Proficiency": {
+      "Armors": {
+        "ed2bcbe2-318c-4118-9453-5de20b326cdd": "Light Armor"
+      },
+      "Shields": {},
+      "Weapons": {
+        "093c9814-63d5-4161-a85f-60248d69a548": "Simple Ranged Weapons",
+        "cfca8e0b-d264-4f2a-9bc5-a07a01af462e": "Simple Melee Weapons",
+        "59509815-2ba3-45f7-9f7e-9ce1d77255ed": "Shortsword",
+        "5dc2f862-43f6-428c-becf-2e1b267de12a": "Rapier",
+        "601a0fad-b779-4f0a-bedc-c8c6290868af": "Longsword",
+        "059ea7a7-06db-4ab1-9b37-b0bc1885f46b": "Hand Crossbow"
+      },
+      "Tools": {
+        "526dd367-f9fc-4497-a5aa-50413691215a": "Disguise Kit",
+        "e36569a1-ca68-48e6-b047-88777a456243": "Poisoner Kit",
+        "f56e1dca-37a1-4625-8428-c47ef90ecf65": "Thieves' Tools",
+        "f59eedb5-9773-40dd-9145-a5c7b2fae03d": "Three-Dragon Ante Set"
+      }
+    },
+    "SavingThrow": {
+      "Strength": {
+        "Proficiency": false
+      },
+      "Dexterity": {
+        "Proficiency": true
+      },
+      "Constitution": {
+        "Proficiency": false
+      },
+      "Intelligence": {
+        "Proficiency": true
+      },
+      "Wisdom": {
+        "Proficiency": false
+      },
+      "Charisma": {
+        "Proficiency": false
+      }
+    },
+    "Skill": {
+      "Athletics": {
+        "Proficiency": false,
+        "Expertise": false
+      },
+      "Acrobatics": {
+        "Proficiency": true,
+        "Expertise": false
+      },
+      "SleightOfHand": {
+        "Proficiency": true,
+        "Expertise": false
+      },
+      "Stealth": {
+        "Proficiency": true,
+        "Expertise": true
+      },
+      "Arcana": {
+        "Proficiency": false,
+        "Expertise": false
+      },
+      "History": {
+        "Proficiency": false,
+        "Expertise": false
+      },
+      "Investigation": {
+        "Proficiency": false,
+        "Expertise": false
+      },
+      "Nature": {
+        "Proficiency": false,
+        "Expertise": false
+      },
+      "Religion": {
+        "Proficiency": false,
+        "Expertise": false
+      },
+      "AnimalHandling": {
+        "Proficiency": false,
+        "Expertise": false
+      },
+      "Insight": {
+        "Proficiency": true,
+        "Expertise": false
+      },
+      "Medicine": {
+        "Proficiency": false,
+        "Expertise": false
+      },
+      "Perception": {
+        "Proficiency": true,
+        "Expertise": true
+      },
+      "Survival": {
+        "Proficiency": false,
+        "Expertise": false
+      },
+      "Deception": {
+        "Proficiency": true,
+        "Expertise": true
+      },
+      "Intimidation": {
+        "Proficiency": true,
+        "Expertise": false
+      },
+      "Performance": {
+        "Proficiency": false,
+        "Expertise": false
+      },
+      "Persuasion": {
+        "Proficiency": true,
+        "Expertise": true
+      }
+    },
+    "Spells": [
+      {
+        "Name": "Jump",
+        "Prepared": true,
+        "Level": 1,
+        "Page": 254,
+        "School": 7,
+        "Ritual": false,
+        "Components": "Jump Blade",
+        "Concentration": false,
+        "Range": "Touch",
+        "Duration": "6 seconds",
+        "Area": "Self",
+        "Save": "N/A",
+        "Damage": "N/A",
+        "Description": "Target's jump distance tripled until spell ends. Can be used once per long rest.",
+        "Class": null,
+        "Id": "2deea09b-d409-40ab-9bad-badf5f24c6c6"
+      },
+      {
+        "Name": "Detect Thoughts",
+        "Prepared": true,
+        "Level": 2,
+        "Page": 231,
+        "School": 2,
+        "Ritual": false,
+        "Components": "V, S, M (a copper piece)",
+        "Concentration": true,
+        "Range": "Self",
+        "Duration": "1 minute",
+        "Area": "30 ft. radius",
+        "Save": "See Sourcebook.",
+        "Damage": "N/A",
+        "Description": "You can focus your mind on any one creature that you can see within 30 feet of you. You can sense surface thought, probing deeper will need the creature to make a wisdom saving throw DC 18.",
+        "Class": null,
+        "Id": "0185f768-770c-465f-83f3-d2a2a7a9970e"
+      },
+      {
+        "Name": "Spelldrinker",
+        "Prepared": true,
+        "Level": 1,
+        "Page": 277,
+        "School": 2,
+        "Ritual": false,
+        "Components": "Bow of the Spelldrinker",
+        "Concentration": false,
+        "Range": "60 feet",
+        "Duration": "Reaction",
+        "Area": "Self",
+        "Save": "16",
+        "Damage": "30 Force Damage",
+        "Description": "Lose 30hp and fire a magical arrow of pure force. If the creature is casting a spell <= 5th level, the spell fails. Target must make saving throw using spellcasting modifier. On failed save take 30 damage, on success take 15 damage.",
+        "Class": null,
+        "Id": "7efa0c7a-03bf-40a4-b399-65ad326bca46"
+      },
+      {
+        "Name": "Darkness",
+        "Prepared": true,
+        "Level": 2,
+        "Page": 230,
+        "School": 4,
+        "Ritual": false,
+        "Components": "Calamari Ring",
+        "Concentration": true,
+        "Range": "60 ft.",
+        "Duration": "10 minutes",
+        "Area": "15 ft. radius sphere",
+        "Save": "N/A",
+        "Damage": "N/A",
+        "Description": "Creates darkness normal light can't dispel. Dispels light spells <= 2nd level. Darkvision cannot see through it. If cast on creature or object, it will move with it.",
+        "Class": null,
+        "Id": "5c114bfe-23f3-496a-9499-5e698675b8b3"
+      }
+    ],
+    "SpellSlots": {
+      "PactTotal": 1,
+      "FirstTotal": 1,
+      "SecondTotal": 3,
+      "ThirdTotal": 0,
+      "FourthTotal": 0,
+      "FifthTotal": 0,
+      "SixthTotal": 0,
+      "SeventhTotal": 0,
+      "EighthTotal": 0,
+      "NinethTotal": 0,
+      "PactUsed": 0,
+      "FirstUsed": 0,
+      "SecondUsed": 1,
+      "ThirdUsed": 0,
+      "FourthUsed": 0,
+      "FifthUsed": 0,
+      "SixthUsed": 0,
+      "SeventhUsed": 0,
+      "EighthUsed": 0,
+      "NinethUsed": 0
+    },
+    "Vitality": {
+      "MaxHealth": 71,
+      "BaseHealth": 69,
+      "TemporaryHealth": 0,
+      "HitDice": {
+        "TotalD6": 0,
+        "TotalD8": 9,
+        "TotalD10": 0,
+        "TotalD12": 0,
+        "SpentD6": 0,
+        "SpentD8": 4,
+        "SpentD10": 0,
+        "SpentD12": 0
+      },
+      "Conditions": {
+        "Blinded": "Cured",
+        "Charmed": "Cured",
+        "Deafened": "Cured",
+        "Fatigued": "Normal",
+        "Frightened": "Cured",
+        "Grappled": "Cured",
+        "Incapacitated": "Cured",
+        "Invisible": "Cured",
+        "Paralyzed": "Cured",
+        "Petrified": "Cured",
+        "Poisoned": "Cured",
+        "Prone": "Cured",
+        "Restrained": "Cured",
+        "Stunned": "Cured",
+        "Unconscious": "Cured"
+      }
+    },
+    "Wealth": {
+      "Copper": 0,
+      "Silver": 229,
+      "Electrum": 0,
+      "Gold": 1193,
+      "Platinum": 0
+    },
+    "Weapons": [
+      {
+        "Name": "Dagger",
+        "Ability": 2,
+        "Damage": "1d4 +5",
+        "Misc": "",
+        "DamageType": 2,
+        "Range": "20 / 60",
+        "Note": "Finesse, Light, Thrown",
+        "Weight": 1.0,
+        "WeaponType": 3,
+        "ProficiencyOverride": false,
+        "IsInBagOfHolding": true,
+        "Id": "654ecbed-cbd0-4f70-bcf2-73525e7848ba"
+      },
+      {
+        "Name": "Dagger",
+        "Ability": 2,
+        "Damage": "1d4 +5",
+        "Misc": "",
+        "DamageType": 2,
+        "Range": "20 / 60",
+        "Note": "Finesse, Light, Thrown",
+        "Weight": 1.0,
+        "WeaponType": 3,
+        "ProficiencyOverride": false,
+        "IsInBagOfHolding": true,
+        "Id": "72c1216c-6222-4304-864b-cc0177f06005"
+      },
+      {
+        "Name": "Jump Blade",
+        "Ability": 2,
+        "Damage": "1d8 +5",
+        "Misc": "+1",
+        "DamageType": 2,
+        "Range": "5 / 5",
+        "Note": "Finesse, Gain the Jump spell.",
+        "Weight": 2.0,
+        "WeaponType": 26,
+        "ProficiencyOverride": false,
+        "IsInBagOfHolding": false,
+        "Id": "a1ec56ac-c8cb-447b-afb9-cf55a2eeed4f"
+      },
+      {
+        "Name": "Shortbow",
+        "Ability": 2,
+        "Damage": "1d6 +5",
+        "Misc": "",
+        "DamageType": 2,
+        "Range": "80 / 320",
+        "Note": "Ammo, Two-Handed",
+        "Weight": 2.0,
+        "WeaponType": 28,
+        "ProficiencyOverride": false,
+        "IsInBagOfHolding": true,
+        "Id": "6d8c4e11-9ccf-4282-9b9d-95a0d8b0b1a5"
+      },
+      {
+        "Name": "Silver Dagger",
+        "Ability": 2,
+        "Damage": "1d4",
+        "Misc": "",
+        "DamageType": 2,
+        "Range": "20 / 60",
+        "Note": "Finesse, light, thrown",
+        "Weight": 1.0,
+        "WeaponType": 3,
+        "ProficiencyOverride": false,
+        "IsInBagOfHolding": true,
+        "Id": "62dbe9b2-a3cc-409c-aabb-11a91049c6fa"
+      },
+      {
+        "Name": "Bow of the Spelldrinker",
+        "Ability": 2,
+        "Damage": "1d6 +5",
+        "Misc": "1d4 Force",
+        "DamageType": 2,
+        "Range": "80 / 320",
+        "Note": "Ammunition, two-handed. Wen you see a creature casting a spell within 60' while holding this bow, can cast Spelldrinker. Cannot be used again until a short or long rest.",
+        "Weight": 2.0,
+        "WeaponType": 28,
+        "ProficiencyOverride": false,
+        "IsInBagOfHolding": false,
+        "Id": "63504ca5-f548-4657-a2e2-d775b1b7686a"
+      }
+    ],
+    "EquipedItems": {
+      "Head": [],
+      "Torso": [
+        {
+          "Name": "Blue Cloak with Hood",
+          "Amount": 1,
+          "Weight": 1.0,
+          "IsInBagOfHolding": false,
+          "Note": "Simple cloak with usable hood.",
+          "Attuned": false,
+          "EquppedId": "9db8369c-8c97-4d96-a4d6-9e9bb120916f",
+          "Id": "f6098477-f745-4b6a-b996-4a4a72fc557f"
+        },
+        {
+          "Name": "Studded Leather Armor",
+          "Amount": 1,
+          "Weight": 0.0,
+          "IsInBagOfHolding": false,
+          "Note": "Leather armor with a base AC of 13 + DEX modifier.",
+          "Attuned": false,
+          "EquppedId": "e5f0b521-e5ac-4969-b0c1-89edcb90c624",
+          "Id": "3500be2f-4696-45e0-857d-496d4f6fdb16"
+        }
+      ],
+      "Hands": [
+        {
+          "Name": "Calamari Ring",
+          "Amount": 1,
+          "Weight": 0.1,
+          "IsInBagOfHolding": false,
+          "Note": "Use to cast create darkness. 1d4 uses per day.",
+          "Attuned": true,
+          "EquppedId": "6bd6df63-e816-4256-8a00-3f7569d378e4",
+          "Id": "c5ada3d4-ba74-4015-988d-eefea2d3059f"
+        },
+        {
+          "Name": "Black Onyx Leather Gloves",
+          "Amount": 1,
+          "Weight": 0.5,
+          "IsInBagOfHolding": false,
+          "Note": "Fancy pair of for hidding rings on ones hand.",
+          "Attuned": false,
+          "EquppedId": "a07f5c2b-b8c7-4b77-87b4-fb57eec508c5",
+          "Id": "652beb3a-4d8e-4600-8c2c-6f50860b9ded"
+        }
+      ],
+      "Legs": [],
+      "Feet": [
+        {
+          "Name": "Leather Boots",
+          "Amount": 1,
+          "Weight": 1.0,
+          "IsInBagOfHolding": false,
+          "Note": "High-top black leather boots.",
+          "Attuned": false,
+          "EquppedId": "6950b7e3-22e7-4090-bc6f-20190473b93e",
+          "Id": "32616332-7a03-47c0-b877-ad2e2271b7e6"
+        }
+      ]
+    }
+  },
+  "AutosaveEnable": false,
+  "AutosaveInterval": 2,
+  "UseCoinWeight": false,
+  "UseEncumbrance": true,
+  "Version": "2.6.0",
+  "CheckVersion": true
+}

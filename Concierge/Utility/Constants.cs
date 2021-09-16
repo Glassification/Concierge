@@ -15,7 +15,7 @@ namespace Concierge.Utility
     public static class Constants
     {
         public const int MaxLevel = 20;
-        public const int BaseDC = 8;
+        public const int BaseDc = 8;
         public const int CoinGroup = 50;
         public const int MaxScore = 30;
         public const int MinScore = 0;
@@ -26,7 +26,7 @@ namespace Concierge.Utility
         public const int Currencies = 5;
 
         public const string Designer = "Thomas Beckett";
-        public const string License = "This program is provided as is. Thomas Beckett Inc. is not responsable for any injuries or TPKs that may result from the use of this product.";
+        public const string License = "This program is provided as is. Thomas Beckett Inc. is not responsible for any injuries or TPKs that may result from the use of this product.";
         public const string Copyright = "2021 Most Rights Reserved.";
 
         private static readonly int[] levels =

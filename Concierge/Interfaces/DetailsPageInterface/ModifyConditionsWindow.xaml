@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         Title="MondifyConditionsWindow"
         Height="565"
-        Width="800"
+        Width="650"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
         Background="#252526"
@@ -186,7 +186,7 @@
                     <Grid Grid.Column="0">
                         <TextBlock Text="Frightened:"
                                    Foreground="White"
-                                   FontSize="20"
+                                   FontSize="18"
                                    HorizontalAlignment="Left"
                                    VerticalAlignment="Center"
                                    Margin="10, 0, 0, 0"/>
@@ -238,7 +238,7 @@
                     <Grid Grid.Column="0">
                         <TextBlock Text="Incapacitated:"
                                    Foreground="White"
-                                   FontSize="17"
+                                   FontSize="15"
                                    HorizontalAlignment="Left"
                                    VerticalAlignment="Center"
                                    Margin="10, 0, 0, 0"/>
@@ -408,7 +408,7 @@
                     <Grid Grid.Column="0">
                         <TextBlock Text="Restrained:"
                                    Foreground="White"
-                                   FontSize="20"
+                                   FontSize="18"
                                    HorizontalAlignment="Left"
                                    VerticalAlignment="Center"
                                    Margin="10, 0, 0, 0"/>
@@ -460,7 +460,7 @@
                     <Grid Grid.Column="0">
                         <TextBlock Text="Unconscious:"
                                    Foreground="White"
-                                   FontSize="17"
+                                   FontSize="16"
                                    HorizontalAlignment="Left"
                                    VerticalAlignment="Center"
                                    Margin="10, 0, 0, 0"/>
@@ -486,7 +486,7 @@
                     <Grid Grid.Column="0">
                         <TextBlock Text="Encumbrance:"
                                    Foreground="White"
-                                   FontSize="17"
+                                   FontSize="15"
                                    HorizontalAlignment="Left"
                                    VerticalAlignment="Center"
                                    Margin="10, 0, 0, 0"/>

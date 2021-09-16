@@ -117,7 +117,7 @@ namespace Concierge.Character.Statuses
         /// =========================================
         public static string GetDescription(string name)
         {
-            const string str = ", ";
+            const string Comma = ", ";
 
             return name switch
             {
@@ -137,10 +137,10 @@ namespace Concierge.Character.Statuses
                 "Stunned" => StunnedDescription,
                 "Unconscious" => UnconsciousDescription,
                 "One" => Exausted1,
-                "Two" => Exausted1 + str + Exausted2,
-                "Three" => Exausted1 + str + Exausted2 + str + Exausted3,
-                "Four" => Exausted1 + str + Exausted2 + str + Exausted3 + str + Exausted4,
-                "Five" => Exausted1 + str + Exausted2 + str + Exausted3 + str + Exausted4 + str + Exausted5,
+                "Two" => Exausted1 + Comma + Exausted2,
+                "Three" => Exausted1 + Comma + Exausted2 + Comma + Exausted3,
+                "Four" => Exausted1 + Comma + Exausted2 + Comma + Exausted3 + Comma + Exausted4,
+                "Five" => Exausted1 + Comma + Exausted2 + Comma + Exausted3 + Comma + Exausted4 + Comma + Exausted5,
                 "Six" => Exausted6,
                 _ => string.Empty,
             };
@@ -149,7 +149,7 @@ namespace Concierge.Character.Statuses
         /// =========================================
         /// ToArray()
         /// =========================================
-        public List<KeyValuePair<string, string>> ToArray()
+        public List<KeyValuePair<string, string>> ToList()
         {
             var keyValuePairs = new List<KeyValuePair<string, string>>
             {
@@ -172,28 +172,6 @@ namespace Concierge.Character.Statuses
             };
 
             return keyValuePairs.Where(x => !x.Key.Equals("Cured") && !x.Key.Equals("Normal")).ToList();
-        }
-
-        public Conditions Copy()
-        {
-            return new Conditions
-            {
-                Blinded = this.Blinded,
-                Charmed = this.Charmed,
-                Deafened = this.Deafened,
-                Fatigued = this.Fatigued,
-                Frightened = this.Frightened,
-                Grappled = this.Grappled,
-                Incapacitated = this.Incapacitated,
-                Invisible = this.Invisible,
-                Paralyzed = this.Paralyzed,
-                Petrified = this.Petrified,
-                Poisoned = this.Poisoned,
-                Prone = this.Prone,
-                Restrained = this.Restrained,
-                Stunned = this.Stunned,
-                Unconscious = this.Unconscious,
-            };
         }
 
         private static string ToInteger(string str)

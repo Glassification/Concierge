@@ -73,23 +73,10 @@ namespace Concierge.Character.Statuses
 
         public void RegainHitDice()
         {
-            int temp;
-
-            temp = this.HitDice.SpentD6;
-            temp -= Math.Max(this.HitDice.SpentD6 / 2, 1);
-            this.HitDice.SpentD6 = Math.Max(temp, 0);
-
-            temp = this.HitDice.SpentD8;
-            temp -= Math.Max(this.HitDice.SpentD8 / 2, 1);
-            this.HitDice.SpentD8 = Math.Max(temp, 0);
-
-            temp = this.HitDice.SpentD10;
-            temp -= Math.Max(this.HitDice.SpentD10 / 2, 1);
-            this.HitDice.SpentD10 = Math.Max(temp, 0);
-
-            temp = this.HitDice.SpentD12;
-            temp -= Math.Max(this.HitDice.SpentD12 / 2, 1);
-            this.HitDice.SpentD12 = Math.Max(temp, 0);
+            this.HitDice.SpentD6 = RegainHitDie(this.HitDice.SpentD6);
+            this.HitDice.SpentD8 = RegainHitDie(this.HitDice.SpentD8);
+            this.HitDice.SpentD10 = RegainHitDie(this.HitDice.SpentD10);
+            this.HitDice.SpentD12 = RegainHitDie(this.HitDice.SpentD12);
         }
 
         public void Damage(int damage)
@@ -109,6 +96,14 @@ namespace Concierge.Character.Statuses
         public void Heal(int heal)
         {
             this.BaseHealth += heal;
+        }
+
+        private static int RegainHitDie(int spent)
+        {
+            var temp = spent;
+            temp -= Math.Max(spent / 2, 1);
+
+            return Math.Max(temp, 0);
         }
     }
 }

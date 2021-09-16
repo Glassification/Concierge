@@ -37,7 +37,7 @@ namespace Concierge.Character.Spellcasting
         public int Attack => Utilities.CalculateBonusFromAbility(this.Ability, Program.CcsFile.Character);
 
         [JsonIgnore]
-        public int Save => Utilities.CalculateBonusFromAbility(this.Ability, Program.CcsFile.Character) + Constants.BaseDC;
+        public int Save => Utilities.CalculateBonusFromAbility(this.Ability, Program.CcsFile.Character) + Constants.BaseDc;
 
         public override string ToString()
         {
