@@ -5,13 +5,13 @@
 namespace Concierge.Interfaces.DetailsPageInterface
 {
     using System;
+    using System.ComponentModel;
     using System.Linq;
     using System.Windows;
     using System.Windows.Input;
 
     using Concierge.Character.Enums;
     using Concierge.Character.Statuses;
-    using Concierge.Utility;
 
     /// <summary>
     /// Interaction logic for MondifyConditionsWindow.xaml.
@@ -51,6 +51,13 @@ namespace Concierge.Interfaces.DetailsPageInterface
 
             this.FillFields();
             this.ShowDialog();
+        }
+
+        protected override void OnClosing(CancelEventArgs e)
+        {
+            base.OnClosing(e);
+            e.Cancel = true;
+            this.Hide();
         }
 
         private void FillFields()

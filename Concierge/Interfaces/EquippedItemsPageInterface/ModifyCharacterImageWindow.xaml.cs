@@ -5,14 +5,16 @@
 namespace Concierge.Interfaces.EquippedItemsPageInterface
 {
     using System;
+    using System.ComponentModel;
     using System.Linq;
+    using System.Threading;
     using System.Windows;
+    using System.Windows.Controls;
     using System.Windows.Input;
     using System.Windows.Media;
 
     using Concierge.Interfaces.Enums;
     using Concierge.Services;
-    using Concierge.Utility;
 
     /// <summary>
     /// Interaction logic for ModifyCharacterImageWindow.xaml.
@@ -20,6 +22,7 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
     public partial class ModifyCharacterImageWindow : Window, IConciergeWindow
     {
         private readonly FileAccessService fileAccessService;
+        private readonly BackgroundWorker toolTipTimer = new ();
 
         public ModifyCharacterImageWindow()
         {
@@ -27,6 +30,14 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
 
             this.fileAccessService = new FileAccessService();
             this.FillTypeComboBox.ItemsSource = Enum.GetValues(typeof(Stretch)).Cast<Stretch>();
+
+            this.InformationHover.ToolTip = new ToolTip()
+            {
+                Content = "768x1024 image ratio is recomended",
+            };
+
+            this.toolTipTimer.DoWork += this.BackgroundWorker_DoWork;
+            this.toolTipTimer.RunWorkerCompleted += this.BackgroundWorker_RunWorkerCompleted;
         }
 
         public delegate void ApplyChangesEventHandler(object sender, EventArgs e);
@@ -77,6 +88,15 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
             this.IsDrawing = false;
         }
 
+        protected override void OnClosing(CancelEventArgs e)
+        {
+            base.OnClosing(e);
+            e.Cancel = true;
+            this.Result = ConciergeWindowResult.Exit;
+            (this.InformationHover.ToolTip as ToolTip).IsOpen = false;
+            this.Hide();
+        }
+
         private void OpenImageButton_Click(object sender, RoutedEventArgs e)
         {
             var fileName = this.fileAccessService.OpenImage();
@@ -110,6 +130,7 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
 
             this.Result = ConciergeWindowResult.OK;
             this.UpdateCharacterImage();
+            (this.InformationHover.ToolTip as ToolTip).IsOpen = false;
 
             this.Hide();
         }
@@ -125,12 +146,14 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             this.Result = ConciergeWindowResult.Exit;
+            (this.InformationHover.ToolTip as ToolTip).IsOpen = false;
             this.Hide();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
             this.Result = ConciergeWindowResult.Cancel;
+            (this.InformationHover.ToolTip as ToolTip).IsOpen = false;
             this.Hide();
         }
 
@@ -140,6 +163,7 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
             {
                 case Key.Escape:
                     this.Result = ConciergeWindowResult.Exit;
+                    (this.InformationHover.ToolTip as ToolTip).IsOpen = false;
                     this.Hide();
                     break;
             }
@@ -159,6 +183,26 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
             {
                 this.SetEnabledState(false);
             }
+        }
+
+        private void InformationHover_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            (this.InformationHover.ToolTip as ToolTip).IsOpen = true;
+
+            if (!this.toolTipTimer.IsBusy)
+            {
+                this.toolTipTimer.RunWorkerAsync();
+            }
+        }
+
+        private void BackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            Thread.Sleep(3000);
+        }
+
+        private void BackgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            (this.InformationHover.ToolTip as ToolTip).IsOpen = false;
         }
     }
 }

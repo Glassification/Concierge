@@ -6,6 +6,7 @@ namespace Concierge.Interfaces.InventoryPageInterface
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel;
     using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Input;
@@ -14,6 +15,7 @@ namespace Concierge.Interfaces.InventoryPageInterface
     using Concierge.Interfaces.Enums;
     using Concierge.Interfaces.HelperInterface;
     using Concierge.Utility;
+    using Concierge.Utility.Extensions;
 
     /// <summary>
     /// Interaction logic for ModifyInventoryWindow.xaml.
@@ -84,6 +86,14 @@ namespace Concierge.Interfaces.InventoryPageInterface
         public void UpdateCancelButton(string text)
         {
             this.CancelButton.Content = text;
+        }
+
+        protected override void OnClosing(CancelEventArgs e)
+        {
+            base.OnClosing(e);
+            e.Cancel = true;
+            this.Result = ConciergeWindowResult.Exit;
+            this.Hide();
         }
 
         private void FillFields(Inventory inventory)
@@ -184,6 +194,11 @@ namespace Concierge.Interfaces.InventoryPageInterface
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
+            if (this.NameComboBox.Text.IsNullOrWhiteSpace())
+            {
+                return;
+            }
+
             Program.Modify();
 
             this.Items.Add(this.ToInventory());
@@ -194,6 +209,11 @@ namespace Concierge.Interfaces.InventoryPageInterface
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
+            if (this.NameComboBox.Text.IsNullOrWhiteSpace())
+            {
+                this.Hide();
+            }
+
             Program.Modify();
             this.Result = ConciergeWindowResult.OK;
 

@@ -5,10 +5,13 @@
 namespace Concierge.Interfaces.DetailsPageInterface
 {
     using System;
+    using System.ComponentModel;
+    using System.Linq;
     using System.Windows;
     using System.Windows.Input;
 
     using Concierge.Character.Characteristics;
+    using Concierge.Character.Enums;
     using Concierge.Interfaces.Enums;
 
     /// <summary>
@@ -19,6 +22,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
         public ModifyAppearanceWindow()
         {
             this.InitializeComponent();
+            this.GenderComboBox.ItemsSource = Enum.GetValues(typeof(Gender)).Cast<Gender>();
         }
 
         public delegate void ApplyChangesEventHandler(object sender, EventArgs e);
@@ -53,11 +57,19 @@ namespace Concierge.Interfaces.DetailsPageInterface
             this.CancelButton.Content = text;
         }
 
+        protected override void OnClosing(CancelEventArgs e)
+        {
+            base.OnClosing(e);
+            e.Cancel = true;
+            this.Result = ConciergeWindowResult.Exit;
+            this.Hide();
+        }
+
         private void FillFields()
         {
             this.AgeUpDown.UpdatingValue();
 
-            this.GenderTextBox.Text = this.Appearance.Gender;
+            this.GenderComboBox.Text = this.Appearance.Gender;
             this.AgeUpDown.Value = this.Appearance.Age;
             this.HeightTextBox.Text = this.Appearance.Height;
             this.WeightTextBox.Text = this.Appearance.Weight;
@@ -69,7 +81,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
 
         private void UpdateAppearance()
         {
-            this.Appearance.Gender = this.GenderTextBox.Text;
+            this.Appearance.Gender = this.GenderComboBox.Text;
             this.Appearance.Age = this.AgeUpDown.Value ?? 0;
             this.Appearance.Height = this.HeightTextBox.Text;
             this.Appearance.Weight = this.WeightTextBox.Text;

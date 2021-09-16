@@ -15,9 +15,25 @@ namespace Concierge.Utility
     using Concierge.Character;
     using Concierge.Character.Enums;
     using Concierge.Character.Statuses;
+    using Concierge.Interfaces.Components;
 
     public static class Utilities
     {
+        public static void SetDataGridSelectedIndex(ConciergeDataGrid dataGrid, int index)
+        {
+            if (dataGrid.Items.IsEmpty)
+            {
+                return;
+            }
+
+            if (index == dataGrid.Items.Count)
+            {
+                index--;
+            }
+
+            dataGrid.SelectedIndex = index;
+        }
+
         public static T GetElementUnderMouse<T>()
             where T : UIElement
         {

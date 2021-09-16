@@ -4,6 +4,7 @@
 
 namespace Concierge.Interfaces.SpellcastingPageInterface
 {
+    using System.ComponentModel;
     using System.Windows;
     using System.Windows.Input;
 
@@ -26,6 +27,13 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
             this.ShowDialog();
 
             return this.ButtonPress;
+        }
+
+        protected override void OnClosing(CancelEventArgs e)
+        {
+            base.OnClosing(e);
+            e.Cancel = true;
+            this.Hide();
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)

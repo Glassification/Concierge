@@ -4,6 +4,7 @@
 
 namespace Concierge.Interfaces.HelperInterface
 {
+    using System.ComponentModel;
     using System.Windows;
     using System.Windows.Input;
 
@@ -25,6 +26,13 @@ namespace Concierge.Interfaces.HelperInterface
         {
             this.Read();
             this.ShowDialog();
+        }
+
+        protected override void OnClosing(CancelEventArgs e)
+        {
+            base.OnClosing(e);
+            e.Cancel = true;
+            this.Hide();
         }
 
         private void Read()

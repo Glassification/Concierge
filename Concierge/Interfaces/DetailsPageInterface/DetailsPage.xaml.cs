@@ -180,32 +180,40 @@ namespace Concierge.Interfaces.DetailsPageInterface
                 Program.Modify();
 
                 var weapon = (KeyValuePair<Guid, string>)this.WeaponProficiencyDataGrid.SelectedItem;
+                var index = this.WeaponProficiencyDataGrid.SelectedIndex;
                 Program.CcsFile.Character.Proficiency.Weapons.Remove(weapon.Key);
                 this.DrawProficiencies();
+                Utilities.SetDataGridSelectedIndex(this.WeaponProficiencyDataGrid, index);
             }
             else if (this.ArmorProficiencyDataGrid.SelectedItem != null)
             {
                 Program.Modify();
 
                 var armor = (KeyValuePair<Guid, string>)this.ArmorProficiencyDataGrid.SelectedItem;
+                var index = this.ArmorProficiencyDataGrid.SelectedIndex;
                 Program.CcsFile.Character.Proficiency.Armors.Remove(armor.Key);
                 this.DrawProficiencies();
+                Utilities.SetDataGridSelectedIndex(this.ArmorProficiencyDataGrid, index);
             }
             else if (this.ShieldProficiencyDataGrid.SelectedItem != null)
             {
                 Program.Modify();
 
                 var shield = (KeyValuePair<Guid, string>)this.ShieldProficiencyDataGrid.SelectedItem;
+                var index = this.ShieldProficiencyDataGrid.SelectedIndex;
                 Program.CcsFile.Character.Proficiency.Shields.Remove(shield.Key);
                 this.DrawProficiencies();
+                Utilities.SetDataGridSelectedIndex(this.ShieldProficiencyDataGrid, index);
             }
             else if (this.ToolProficiencyDataGrid.SelectedItem != null)
             {
                 Program.Modify();
 
                 var tool = (KeyValuePair<Guid, string>)this.ToolProficiencyDataGrid.SelectedItem;
+                var index = this.ToolProficiencyDataGrid.SelectedIndex;
                 Program.CcsFile.Character.Proficiency.Tools.Remove(tool.Key);
                 this.DrawProficiencies();
+                Utilities.SetDataGridSelectedIndex(this.ToolProficiencyDataGrid, index);
             }
         }
 
@@ -336,8 +344,10 @@ namespace Concierge.Interfaces.DetailsPageInterface
             {
                 Program.Modify();
 
+                var index = this.LanguagesDataGrid.SelectedIndex;
                 Program.CcsFile.Character.Details.Languages.Remove(this.LanguagesDataGrid.SelectedItem as Language);
                 this.DrawLanguages();
+                Utilities.SetDataGridSelectedIndex(this.LanguagesDataGrid, index);
             }
         }
 
@@ -347,8 +357,10 @@ namespace Concierge.Interfaces.DetailsPageInterface
             {
                 Program.Modify();
 
+                var index = this.ResourcesDataGrid.SelectedIndex;
                 Program.CcsFile.Character.ClassResources.Remove(this.ResourcesDataGrid.SelectedItem as ClassResource);
                 this.DrawResources();
+                Utilities.SetDataGridSelectedIndex(this.ResourcesDataGrid, index);
             }
         }
 

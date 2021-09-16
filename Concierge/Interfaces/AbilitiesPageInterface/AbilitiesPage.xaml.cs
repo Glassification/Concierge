@@ -104,8 +104,11 @@ namespace Concierge.Interfaces.AbilitiesPageInterface
                 Program.Modify();
 
                 var ability = (Ability)this.AbilitiesDataGrid.SelectedItem;
+                var index = this.AbilitiesDataGrid.SelectedIndex;
+
                 Program.CcsFile.Character.Abilities.Remove(ability);
                 this.DrawAbilities();
+                Utilities.SetDataGridSelectedIndex(this.AbilitiesDataGrid, index);
             }
         }
 

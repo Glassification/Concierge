@@ -6,6 +6,7 @@ namespace Concierge.Interfaces.EquipmentPageInterface
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel;
     using System.Linq;
     using System.Windows;
     using System.Windows.Controls;
@@ -81,6 +82,14 @@ namespace Concierge.Interfaces.EquipmentPageInterface
         public void UpdateCancelButton(string text)
         {
             this.CancelButton.Content = text;
+        }
+
+        protected override void OnClosing(CancelEventArgs e)
+        {
+            base.OnClosing(e);
+            e.Cancel = true;
+            this.Result = ConciergeWindowResult.Exit;
+            this.Hide();
         }
 
         private void FillFields(Ammunition ammunition)

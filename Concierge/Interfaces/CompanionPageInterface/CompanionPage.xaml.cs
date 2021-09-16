@@ -225,8 +225,11 @@ namespace Concierge.Interfaces.CompanionPageInterface
                 Program.Modify();
 
                 var weapon = this.WeaponDataGrid.SelectedItem as Weapon;
+                var index = this.WeaponDataGrid.SelectedIndex;
+
                 Program.CcsFile.Character.Companion.Attacks.Remove(weapon);
                 this.DrawAttacks();
+                Utilities.SetDataGridSelectedIndex(this.WeaponDataGrid, index);
             }
         }
 

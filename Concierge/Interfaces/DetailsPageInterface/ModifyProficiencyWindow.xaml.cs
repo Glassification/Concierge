@@ -5,13 +5,13 @@
 namespace Concierge.Interfaces.DetailsPageInterface
 {
     using System;
+    using System.ComponentModel;
     using System.Linq;
     using System.Windows;
     using System.Windows.Input;
 
     using Concierge.Character.Enums;
     using Concierge.Interfaces.Enums;
-    using Concierge.Utility;
 
     /// <summary>
     /// Interaction logic for ModifyProficiencyWindow.xaml.
@@ -82,6 +82,14 @@ namespace Concierge.Interfaces.DetailsPageInterface
         public void UpdateCancelButton(string text)
         {
             this.CancelButton.Content = text;
+        }
+
+        protected override void OnClosing(CancelEventArgs e)
+        {
+            base.OnClosing(e);
+            e.Cancel = true;
+            this.Result = ConciergeWindowResult.Exit;
+            this.Hide();
         }
 
         private void ClearFields()

@@ -208,17 +208,23 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
             {
                 Program.Modify();
 
-                MagicClass magicClass = (MagicClass)this.MagicClassDataGrid.SelectedItem;
+                var magicClass = (MagicClass)this.MagicClassDataGrid.SelectedItem;
+                var index = this.MagicClassDataGrid.SelectedIndex;
+
                 Program.CcsFile.Character.MagicClasses.Remove(magicClass);
                 this.DrawMagicClasses();
+                Utilities.SetDataGridSelectedIndex(this.MagicClassDataGrid, index);
             }
             else if (this.SpellListDataGrid.SelectedItem != null)
             {
                 Program.Modify();
 
-                Spell spell = (Spell)this.SpellListDataGrid.SelectedItem;
+                var spell = (Spell)this.SpellListDataGrid.SelectedItem;
+                var index = this.SpellListDataGrid.SelectedIndex;
+
                 Program.CcsFile.Character.Spells.Remove(spell);
                 this.DrawSpellList();
+                Utilities.SetDataGridSelectedIndex(this.SpellListDataGrid, index);
             }
         }
 

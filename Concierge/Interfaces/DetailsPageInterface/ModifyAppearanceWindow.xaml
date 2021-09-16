@@ -86,12 +86,10 @@
                     </Grid>
 
                     <!--Value-->
-                    <Grid Grid.Column="1"
-                      Background="#FF3F3F3F"
-                      Margin="0, 8, 20, 8">
-                        <components:ConciergeTextBox 
-                            x:Name="GenderTextBox"
-                            FontSize="15"/>
+                    <Grid Grid.Column="1">
+                        <components:ConciergeComboBox
+                            Style="{StaticResource ComboBoxStyle}"
+                            x:Name="GenderComboBox"/>
                     </Grid>
                 </Grid>
 

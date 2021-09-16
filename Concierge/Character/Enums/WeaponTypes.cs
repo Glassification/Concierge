@@ -6,6 +6,7 @@ namespace Concierge.Character.Enums
 {
     public enum WeaponTypes
     {
+        None,
         Battleaxe,
         Blowgun,
         Club,
@@ -43,6 +44,5 @@ namespace Concierge.Character.Enums
         WarPick,
         Warhammer,
         Whip,
-        None,
     }
 }

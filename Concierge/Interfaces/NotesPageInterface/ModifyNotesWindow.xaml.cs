@@ -5,11 +5,11 @@
 namespace Concierge.Interfaces.NotesPageInterface
 {
     using System;
+    using System.ComponentModel;
     using System.Windows;
     using System.Windows.Input;
 
     using Concierge.Character.Notes;
-    using Concierge.Utility;
     using Concierge.Utility.Extensions;
 
     /// <summary>
@@ -59,6 +59,13 @@ namespace Concierge.Interfaces.NotesPageInterface
             this.CurrentChapter = null;
             this.CurrentDocument = document;
             this.ShowDialog();
+        }
+
+        protected override void OnClosing(CancelEventArgs e)
+        {
+            base.OnClosing(e);
+            e.Cancel = true;
+            this.Hide();
         }
 
         private void SetupWindow(bool isEdit)

@@ -4,6 +4,7 @@
 
 namespace Concierge.Interfaces.HelperInterface
 {
+    using System.ComponentModel;
     using System.Windows;
     using System.Windows.Input;
     using System.Windows.Media;
@@ -40,6 +41,13 @@ namespace Concierge.Interfaces.HelperInterface
             this.ShowDialog();
 
             return this.Result;
+        }
+
+        protected override void OnClosing(CancelEventArgs e)
+        {
+            base.OnClosing(e);
+            e.Cancel = true;
+            this.Hide();
         }
 
         private void SetMessageIcon(ConciergeWindowIcons messageWindowIcons)

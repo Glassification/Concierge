@@ -10,6 +10,7 @@ namespace Concierge.Interfaces.InventoryPageInterface
 
     using Concierge.Character.Items;
     using Concierge.Interfaces;
+    using Concierge.Utility;
 
     /// <summary>
     /// Interaction logic for InventoryPage.xaml.
@@ -102,8 +103,11 @@ namespace Concierge.Interfaces.InventoryPageInterface
                 Program.Modify();
 
                 var inventory = (Inventory)this.InventoryDataGrid.SelectedItem;
+                var index = this.InventoryDataGrid.SelectedIndex;
+
                 Program.CcsFile.Character.Inventories.Remove(inventory);
                 this.DrawInventory();
+                Utilities.SetDataGridSelectedIndex(this.InventoryDataGrid, index);
             }
         }
 

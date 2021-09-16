@@ -12,6 +12,7 @@ namespace Concierge.Interfaces.EquipmentPageInterface
     using Concierge.Character.Enums;
     using Concierge.Character.Items;
     using Concierge.Interfaces.Components;
+    using Concierge.Utility;
 
     /// <summary>
     /// Interaction logic for EquipmentPage.xaml.
@@ -170,16 +171,22 @@ namespace Concierge.Interfaces.EquipmentPageInterface
                 Program.Modify();
 
                 var ammo = (Ammunition)this.AmmoDataGrid.SelectedItem;
+                var index = this.AmmoDataGrid.SelectedIndex;
+
                 Program.CcsFile.Character.Ammunitions.Remove(ammo);
                 this.DrawAmmoList();
+                Utilities.SetDataGridSelectedIndex(this.AmmoDataGrid, index);
             }
             else if (this.WeaponDataGrid.SelectedItem != null)
             {
                 Program.Modify();
 
                 var weapon = (Weapon)this.WeaponDataGrid.SelectedItem;
+                var index = this.WeaponDataGrid.SelectedIndex;
+
                 Program.CcsFile.Character.Weapons.Remove(weapon);
                 this.DrawWeaponList();
+                Utilities.SetDataGridSelectedIndex(this.WeaponDataGrid, index);
             }
         }
 

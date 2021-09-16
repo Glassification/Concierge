@@ -5,12 +5,12 @@
 namespace Concierge.Interfaces.CompanionPageInterface
 {
     using System;
+    using System.ComponentModel;
     using System.Linq;
     using System.Windows;
     using System.Windows.Input;
 
     using Concierge.Character.Enums;
-    using Concierge.Utility;
 
     /// <summary>
     /// Interaction logic for ModifyHealthWindow.xaml.
@@ -31,6 +31,13 @@ namespace Concierge.Interfaces.CompanionPageInterface
         {
             this.Read();
             this.ShowDialog();
+        }
+
+        protected override void OnClosing(CancelEventArgs e)
+        {
+            base.OnClosing(e);
+            e.Cancel = true;
+            this.Hide();
         }
 
         private void Read()

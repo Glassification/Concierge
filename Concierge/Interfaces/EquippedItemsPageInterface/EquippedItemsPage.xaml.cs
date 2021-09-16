@@ -42,6 +42,8 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
 
         private Inventory SelectedItem { get; set; }
 
+        private int SelectedIndex { get; set; }
+
         private ConciergeDataGrid SelectedDataGrid { get; set; }
 
         public void Draw()
@@ -100,6 +102,7 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
         {
             var dataGrid = this.SelectedDataGrid = sender as ConciergeDataGrid;
             this.SelectedItem = dataGrid.SelectedItem as Inventory;
+            this.SelectedIndex = dataGrid.SelectedIndex;
 
             if (this.SelectedItem == null)
             {
@@ -191,11 +194,13 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
 
             Program.Modify();
 
+            var index = this.SelectedIndex;
             Program.CcsFile.Character.EquippedItems.Dequip(
                 this.SelectedItem,
                 (EquipmentSlot)Enum.Parse(typeof(EquipmentSlot), this.SelectedDataGrid.Tag as string));
 
             this.Draw();
+            Utilities.SetDataGridSelectedIndex(this.SelectedDataGrid, index);
         }
 
         private void Window_ApplyChanges(object sender, EventArgs e)

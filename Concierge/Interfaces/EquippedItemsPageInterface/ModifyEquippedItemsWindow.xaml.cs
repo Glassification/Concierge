@@ -5,6 +5,7 @@
 namespace Concierge.Interfaces.EquippedItemsPageInterface
 {
     using System;
+    using System.ComponentModel;
     using System.Linq;
     using System.Windows;
     using System.Windows.Input;
@@ -12,7 +13,6 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
     using Concierge.Character.Enums;
     using Concierge.Character.Items;
     using Concierge.Interfaces.Enums;
-    using Concierge.Utility;
     using Concierge.Utility.Extensions;
 
     /// <summary>
@@ -57,6 +57,14 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
         public void UpdateCancelButton(string text)
         {
             this.CancelButton.Content = text;
+        }
+
+        protected override void OnClosing(CancelEventArgs e)
+        {
+            base.OnClosing(e);
+            e.Cancel = true;
+            this.Result = ConciergeWindowResult.Exit;
+            this.Hide();
         }
 
         private void ClearFields()

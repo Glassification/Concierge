@@ -81,7 +81,6 @@
                     <components:ConciergeComboBox
                             Style="{StaticResource ComboBoxStyle}"
                             x:Name="NameComboBox"
-                            IsEditable="True"
                             SelectionChanged="NameComboBox_SelectionChanged"/>
                 </Grid>
             </Grid>

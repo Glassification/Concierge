@@ -18,7 +18,7 @@ namespace Concierge.Character.Characteristics
         {
             this.Encoded = string.Empty;
             this.Path = string.Empty;
-            this.Stretch = Stretch.None;
+            this.Stretch = Stretch.UniformToFill;
             this.UseCustomImage = false;
         }
 
