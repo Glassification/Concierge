@@ -35,19 +35,16 @@
                        VerticalAlignment="Center"
                        Margin="30, 0, 0, 0"
                        FontWeight="Bold"/>
-            <components:ConciergeButton x:Name="CloseButton"
-                    Height="50"
-                    Width="60"
-                    Background="Transparent"
-                    
-                    Foreground="White"
-                    ToolTip="Close"
-                    HorizontalAlignment="Right"
-                    Click="CloseButton_Click"
-                    
-                    >
+            <components:ConciergeDesignButton 
+                Style="{StaticResource ConciergeDesignButtonStyle}" 
+                x:Name="CloseButton"
+                Width="60"
+                Foreground="White"
+                ToolTip="Close"
+                HorizontalAlignment="Right"
+                Click="CloseButton_Click">
                 <materialDesign:PackIcon Kind="WindowClose" Width="25" Height="25"/>
-            </components:ConciergeButton>
+            </components:ConciergeDesignButton>
         </Grid>
 
         <!--Fields-->
@@ -309,6 +306,7 @@
                     <Grid Grid.Column="1">
                         <components:ConciergeCheckBox 
                             x:Name="ProficencyOverrideCheckBox"
+                            Style="{StaticResource CheckBoxStyle}"
                             Margin="5, 15, 0, 0">
                             <CheckBox.LayoutTransform>
                                 <ScaleTransform ScaleX="2" ScaleY="2" />
@@ -338,6 +336,7 @@
                     <Grid Grid.Column="1">
                         <components:ConciergeCheckBox
                             x:Name="BagOfHoldingCheckBox"
+                            Style="{StaticResource CheckBoxStyle}"
                             Margin="5, 15, 0, 0">
                             <CheckBox.LayoutTransform>
                                 <ScaleTransform ScaleX="2" ScaleY="2" />
@@ -383,30 +382,24 @@
             <StackPanel Orientation="Horizontal"
                         VerticalAlignment="Center"
                         HorizontalAlignment="Center">
-                <components:ConciergeButton x:Name="OkButton"
-                        Style="{StaticResource PopupWindowButton}"
-                        
-                        Content="OK"
-                        
-                        
-                        Click="OkButton_Click">
-                </components:ConciergeButton>
-                <components:ConciergeButton x:Name="ApplyButton"
-                        Style="{StaticResource PopupWindowButton}"
-                        
-                        Content="Apply"
-                        
-                        
-                        Click="ApplyButton_Click">
-                </components:ConciergeButton>
-                <components:ConciergeButton x:Name="CancelButton"
-                        
-                        Content="Cancel"
-                        Click="CancelButton_Click"
-                        
-                        
-                        Style="{StaticResource PopupWindowButton}">
-                </components:ConciergeButton>
+                <components:ConciergeTextButton 
+                    x:Name="OkButton"
+                    Style="{StaticResource ConciergeTextButtonStyle}"
+                    Content="OK"
+                    Click="OkButton_Click">
+                </components:ConciergeTextButton>
+                <components:ConciergeTextButton 
+                    x:Name="ApplyButton"
+                    Style="{StaticResource ConciergeTextButtonStyle}"
+                    Content="Apply"
+                    Click="ApplyButton_Click">
+                </components:ConciergeTextButton>
+                <components:ConciergeTextButton 
+                    x:Name="CancelButton"
+                    Content="Cancel"
+                    Click="CancelButton_Click"
+                    Style="{StaticResource ConciergeTextButtonStyle}">
+                </components:ConciergeTextButton>
             </StackPanel>
         </Grid>
     </Grid>

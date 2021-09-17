@@ -1,4 +1,4 @@
-﻿// <copyright file="ConciergeButton.cs" company="Thomas Beckett">
+﻿// <copyright file="ConciergeDesignButton.cs" company="Thomas Beckett">
 // Copyright (c) Thomas Beckett. All rights reserved.
 // </copyright>
 
@@ -11,15 +11,14 @@ namespace Concierge.Interfaces.Components
 
     using Concierge.Utility;
 
-    public class ConciergeButton : Button
+    public class ConciergeDesignButton : Button
     {
-        public ConciergeButton()
+        public ConciergeDesignButton()
             : base()
         {
-            this.BorderBrush = null;
             this.OriginalForeground = null;
             this.HorizontalAlignment = HorizontalAlignment.Center;
-            this.VerticalAlignment = VerticalAlignment.Center;
+            this.VerticalAlignment = VerticalAlignment.Stretch;
 
             this.Click += this.Button_Click;
             this.MouseEnter += this.Button_MouseEnter;
@@ -36,14 +35,16 @@ namespace Concierge.Interfaces.Components
         private void Button_MouseEnter(object sender, MouseEventArgs e)
         {
             this.OriginalForeground = (SolidColorBrush)this.Foreground;
-            this.Foreground = Brushes.Black;
+            this.Foreground = Brushes.White;
+
             Mouse.OverrideCursor = Cursors.Hand;
         }
 
         private void Button_MouseLeave(object sender, MouseEventArgs e)
         {
-           this.Foreground = this.OriginalForeground;
-           Mouse.OverrideCursor = Cursors.Arrow;
+            this.Foreground = this.OriginalForeground;
+
+            Mouse.OverrideCursor = Cursors.Arrow;
         }
     }
 }

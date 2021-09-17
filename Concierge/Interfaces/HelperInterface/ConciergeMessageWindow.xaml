@@ -19,9 +19,9 @@
         Style="{StaticResource WindowXboxDasboardStyle}">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="2*"/>
-            <RowDefinition Height="6*"/>
-            <RowDefinition Height="2*"/>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="135"/>
+            <RowDefinition Height="70"/>
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0">
@@ -34,21 +34,16 @@
                 FontWeight="Bold"
                 VerticalAlignment="Center"
                 HorizontalAlignment="Left"/>
-            <components:ConciergeButton 
+            <components:ConciergeDesignButton 
+                Style="{StaticResource ConciergeDesignButtonStyle}" 
                 x:Name="CloseButton"
-                Height="50"
                 Width="60"
-                Background="Transparent"
-                
                 Foreground="White"
                 ToolTip="Close"
                 HorizontalAlignment="Right"
-                VerticalAlignment="Center"
-                Click="CloseButton_Click"
-                
-                >
+                Click="CloseButton_Click">
                 <materialDesign:PackIcon Kind="WindowClose" Width="25" Height="25"/>
-            </components:ConciergeButton>
+            </components:ConciergeDesignButton>
         </Grid>
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
@@ -81,44 +76,36 @@
             <StackPanel Orientation="Horizontal"
                         VerticalAlignment="Center"
                         HorizontalAlignment="Center">
-                <components:ConciergeButton x:Name="OkButton"
-                        Style="{StaticResource PopupWindowButton}"
-                        
-                        Content="OK"
-                        Click="OkButton_Click"
-                        
-                        >
-                </components:ConciergeButton>
-                <components:ConciergeButton x:Name="YesButton"
-                        Style="{StaticResource PopupWindowButton}"
-                        
-                        Content="Yes"
-                        Click="YesButton_Click"
-                        
-                        >
-                </components:ConciergeButton>
-                <components:ConciergeButton x:Name="NoButton"
-                        
-                        Content="No"
-                        Click="NoButton_Click"
-                        
-                        
-                        Style="{StaticResource PopupWindowButton}">
-                </components:ConciergeButton>
-                <components:ConciergeButton 
+                <components:ConciergeTextButton 
+                    x:Name="OkButton"
+                    Style="{StaticResource ConciergeTextButtonStyle}"
+                    Content="OK"
+                    Click="OkButton_Click">
+                </components:ConciergeTextButton>
+                <components:ConciergeTextButton 
+                    x:Name="YesButton"
+                    Style="{StaticResource ConciergeTextButtonStyle}"
+                    Content="Yes"
+                    Click="YesButton_Click">
+                </components:ConciergeTextButton>
+                <components:ConciergeTextButton 
+                    x:Name="NoButton"
+                    Content="No"
+                    Click="NoButton_Click"
+                    Style="{StaticResource ConciergeTextButtonStyle}">
+                </components:ConciergeTextButton>
+                <components:ConciergeTextButton 
                     x:Name="ApplyButton"
                     Content="Apply"
                     Click="NoButton_Click"
-                    Style="{StaticResource PopupWindowButton}">
-                </components:ConciergeButton>
-                <components:ConciergeButton x:Name="CancelButton"
-                        
-                        Content="Cancel"
-                        Click="CancelButton_Click"
-                        
-                        
-                        Style="{StaticResource PopupWindowButton}">
-                </components:ConciergeButton>
+                    Style="{StaticResource ConciergeTextButtonStyle}">
+                </components:ConciergeTextButton>
+                <components:ConciergeTextButton 
+                    x:Name="CancelButton"
+                    Content="Cancel"
+                    Click="CancelButton_Click"
+                    Style="{StaticResource ConciergeTextButtonStyle}">
+                </components:ConciergeTextButton>
             </StackPanel>
         </Grid>
     </Grid>

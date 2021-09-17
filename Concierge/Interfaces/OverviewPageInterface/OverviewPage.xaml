@@ -38,18 +38,16 @@
 
                     <!--Name-->
                     <Grid Grid.Row="0" Background="#0B061E">
-                        <components:ConciergeButton x:Name="EditAttributesButton"
-                            Height="35"
+                        <components:ConciergeDesignButton 
+                            Style="{StaticResource ConciergeDesignButtonStyle}" 
+                            x:Name="EditAttributesButton"
                             Width="35"
                             HorizontalAlignment="Left"
-                            VerticalAlignment="Center"
-                            Background="Transparent"
-                            
                             Foreground="Khaki"
                             Click="EditAttributesButton_Click"
                             ToolTip="Edit Attributes">
                             <materialDesign:PackIcon Kind="PlaylistEdit" Width="25" Height="25"/>
-                        </components:ConciergeButton>
+                        </components:ConciergeDesignButton>
                         <TextBlock Text="Strength"
                                    Foreground="White"
                                    FontSize="17"
@@ -476,18 +474,18 @@
 
                     <!--Name-->
                     <Grid Grid.Column="0" Background="#0B061E">
-                        <components:ConciergeButton x:Name="EditSensesButton"
-                                Height="35"
-                                Width="35"
-                                HorizontalAlignment="Left"
-                                VerticalAlignment="Top"
-                                Background="Transparent"
-                                
-                                Foreground="Khaki"
-                                Click="EditSensesButton_Click"
-                                ToolTip="Edit Senses">
+                        <components:ConciergeDesignButton 
+                            Style="{StaticResource ConciergeDesignButtonStyle}" 
+                            x:Name="EditSensesButton"
+                            Height="35"
+                            Width="35"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top"
+                            Foreground="Khaki"
+                            Click="EditSensesButton_Click"
+                            ToolTip="Edit Senses">
                             <materialDesign:PackIcon Kind="PlaylistEdit" Width="25" Height="25"/>
-                        </components:ConciergeButton>
+                        </components:ConciergeDesignButton>
                         <TextBlock Text="Initiative"
                                    Foreground="White"
                                    FontSize="20"
@@ -1846,47 +1844,46 @@
                                     FontWeight="Bold"
                                     Margin="5, 5, 15, 10"/>
 
-                                <components:ConciergeButton 
+                                <components:ConciergeDesignButton 
+                                    Style="{StaticResource ConciergeDesignButtonStyle}" 
                                     x:Name="TakeDamageButton"
                                     Height="35"
                                     Width="35"
                                     HorizontalAlignment="Right"
                                     VerticalAlignment="Top"
-                                    Background="Transparent"
                                     Foreground="IndianRed"
                                     Click="TakeDamageButton_Click"
                                     ToolTip="Take Damage">
                                     <materialDesign:PackIcon Kind="HeartBroken" Width="25" Height="25"/>
-                                </components:ConciergeButton>
+                                </components:ConciergeDesignButton>
 
-                                <components:ConciergeButton 
+                                <components:ConciergeDesignButton Style="{StaticResource ConciergeDesignButtonStyle}" 
                                     x:Name="HealDamageButton"
                                     Height="35"
                                     Width="35"
                                     HorizontalAlignment="Left"
                                     VerticalAlignment="Top"
-                                    Background="Transparent"
                                     Foreground="PaleGreen"
                                     Click="HealDamageButton_Click"
                                     ToolTip="Heal Damage">
                                     <materialDesign:PackIcon Kind="Heart" Width="25" Height="25"/>
-                                </components:ConciergeButton>
+                                </components:ConciergeDesignButton>
                             </Grid>
 
                             <!--Total HP-->
                             <Grid Grid.Row="0" Margin="3, 3, 3, 0" Background="#0B061E">
-                                <components:ConciergeButton x:Name="EditHealthButton"
-                                        Height="35"
-                                        Width="35"
-                                        HorizontalAlignment="Left"
-                                        VerticalAlignment="Center"
-                                        Background="Transparent"
-                                        
-                                        Foreground="Khaki"
-                                        Click="EditHealthButton_Click"
-                                        ToolTip="Edit Health">
+                                <components:ConciergeDesignButton
+                                    Style="{StaticResource ConciergeDesignButtonStyle}" 
+                                    x:Name="EditHealthButton"
+                                    Height="35"
+                                    Width="35"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Center"
+                                    Foreground="Khaki"
+                                    Click="EditHealthButton_Click"
+                                    ToolTip="Edit Health">
                                     <materialDesign:PackIcon Kind="PlaylistEdit" Width="25" Height="25"/>
-                                </components:ConciergeButton>
+                                </components:ConciergeDesignButton>
                                 <TextBlock Text="Health"
                                            Foreground="White"
                                            FontSize="35"
@@ -1948,46 +1945,46 @@
                                         Margin="3"/>
                                 </Grid>
                                 <Grid Grid.Column="5">
-                                    <components:ConciergeButton
+                                    <components:ConciergeDesignButton 
+                                        Style="{StaticResource ConciergeDesignButtonStyle}"
                                         x:Name="PassSave"
                                         Height="35"
                                         Width="35"
                                         HorizontalAlignment="Center"
                                         VerticalAlignment="Center"
-                                        Background="Transparent"
                                         Foreground="PaleGreen"
                                         ToolTip="Succeed on Death Save"
                                         Click="PassSave_Click">
                                         <materialDesign:PackIcon Kind="CheckCircle" Width="25" Height="25"/>
-                                    </components:ConciergeButton>
+                                    </components:ConciergeDesignButton>
                                 </Grid>
                                 <Grid Grid.Column="6">
-                                    <components:ConciergeButton
+                                    <components:ConciergeDesignButton 
+                                        Style="{StaticResource ConciergeDesignButtonStyle}"
                                         x:Name="FailSave"
                                         Height="35"
                                         Width="35"
                                         HorizontalAlignment="Center"
                                         VerticalAlignment="Center"
-                                        Background="Transparent"
                                         Foreground="IndianRed"
                                         ToolTip="Fail on Death Save"
                                         Click="FailSave_Click">
                                         <materialDesign:PackIcon Kind="CloseCircle" Width="25" Height="25"/>
-                                    </components:ConciergeButton>
+                                    </components:ConciergeDesignButton>
                                 </Grid>
                                 <Grid Grid.Column="7">
-                                    <components:ConciergeButton
+                                    <components:ConciergeDesignButton
+                                        Style="{StaticResource ConciergeDesignButtonStyle}"
                                         x:Name="ResetSaves"
                                         Height="35"
                                         Width="35"
                                         HorizontalAlignment="Center"
                                         VerticalAlignment="Center"
-                                        Background="Transparent"
                                         Foreground="SteelBlue"
                                         ToolTip="Reset Death Saves"
                                         Click="ResetSaves_Click">
                                         <materialDesign:PackIcon Kind="RefreshCircle" Width="25" Height="25"/>
-                                    </components:ConciergeButton>
+                                    </components:ConciergeDesignButton>
                                 </Grid>
                             </Grid>
                         </Grid>
@@ -2013,6 +2010,10 @@
                             <Grid Grid.Row="1"
                                   Margin="3, 0, 3, 3"
                                   Background="#17112E">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="134*"/>
+                                    <RowDefinition Height="7*"/>
+                                </Grid.RowDefinitions>
                                 <materialDesign:PackIcon 
                                     Kind="Shield"
                                     FontStretch="Expanded"
@@ -2020,14 +2021,15 @@
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"
                                     Width="{Binding Path=ShieldWidth}"
-                                    Height="{Binding Path=ShieldHeight}"/>
+                                    Height="{Binding Path=ShieldHeight}" 
+                                    Margin="0,0,0,0"/>
                                 <TextBlock 
                                     x:Name="ArmorClassField"
                                     Foreground="White"
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"
                                     FontSize="65"
-                                    FontWeight="Bold"/>
+                                    FontWeight="Bold" Margin="0,0,0,0"/>
                             </Grid>
                         </Grid>
                     </Grid>
@@ -2041,18 +2043,18 @@
                             <ColumnDefinition Width="70*"/>
                         </Grid.ColumnDefinitions>
 
-                        <components:ConciergeButton 
+                        <components:ConciergeDesignButton 
+                            Style="{StaticResource ConciergeDesignButtonStyle}" 
                             x:Name="EditHitDiceButton"
                             Height="35"
                             Width="35"
                             HorizontalAlignment="Left"
                             VerticalAlignment="Top"
-                            Background="Transparent"
                             Foreground="Khaki"
                             Click="EditHitDiceButton_Click"
                             ToolTip="Edit Hit Dice">
                             <materialDesign:PackIcon Kind="PlaylistEdit" Width="25" Height="25"/>
-                        </components:ConciergeButton>
+                        </components:ConciergeDesignButton>
 
                         <!--Header-->
                         <Grid Grid.Column="0">
@@ -2302,18 +2304,18 @@
                                    FontWeight="Bold"
                                    HorizontalAlignment="Center"
                                    VerticalAlignment="Center"/>
-                            <components:ConciergeButton 
+                            <components:ConciergeDesignButton 
+                                Style="{StaticResource ConciergeDesignButtonStyle}" 
                                 x:Name="EditWealthButton"
                                 Height="50"
                                 Width="60"
                                 HorizontalAlignment="Left"
                                 VerticalAlignment="Center"
-                                Background="Transparent"
                                 Foreground="Khaki"
                                 ToolTip="Edit Wealth"
                                 Click="EditWealthButton_Click">
                                 <materialDesign:PackIcon Kind="PlaylistEdit" Width="25" Height="25"/>
-                            </components:ConciergeButton>
+                            </components:ConciergeDesignButton>
                         </Grid>
 
                         <!--Total Gold-->

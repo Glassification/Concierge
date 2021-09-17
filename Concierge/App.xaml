@@ -12,6 +12,8 @@
                 <ResourceDictionary Source="Properties/Resources/Dictionary/ComboBoxStyling.xaml"/>
                 <ResourceDictionary Source="Properties/Resources/Dictionary/DataGridStyling.xaml"/>
                 <ResourceDictionary Source="Properties/Resources/Dictionary/TreeViewStyling.xaml"/>
+                <ResourceDictionary Source="Properties/Resources/Dictionary/CheckBoxStyling.xaml"/>
+                <ResourceDictionary Source="Properties/Resources/Dictionary/RadioButtonStyling.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

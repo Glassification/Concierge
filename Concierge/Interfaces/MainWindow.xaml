@@ -77,30 +77,25 @@
             <!-- Side Menu Toggle -->
             <Grid x:Name="GridMenuButton" Grid.Column="0" Background="#FF191919">
                 <StackPanel>
-                    <components:ConciergeButton x:Name="ButtonOpenMenu" 
-                            Height="50" 
-                            Width="60" 
-                            HorizontalAlignment="Center" 
-                            VerticalAlignment="Center" 
-                            Background="Transparent" 
-                            Foreground="White" 
-                            Click="ButtonOpenMenu_Click">
+                    <components:ConciergeDesignButton 
+                        Style="{StaticResource ConciergeDesignButtonStyle}" 
+                        x:Name="ButtonOpenMenu" 
+                        Height="50" 
+                        Width="60" 
+                        Foreground="White" 
+                        Click="ButtonOpenMenu_Click">
                         <materialDesign:PackIcon Kind="Menu" Width="25" Height="25"/>
-                    </components:ConciergeButton>
-                    <components:ConciergeButton x:Name="ButtonCloseMenu" 
-                            Visibility="Collapsed" 
-                            Height="50" 
-                            Width="60" 
-                            HorizontalAlignment="Center" 
-                            VerticalAlignment="Center" 
-                            Background="Transparent" 
-                             
-                            Foreground="White" 
-                            Click="ButtonCloseMenu_Click"
-                            
-                            >
+                    </components:ConciergeDesignButton>
+                    <components:ConciergeDesignButton 
+                        Style="{StaticResource ConciergeDesignButtonStyle}" 
+                        x:Name="ButtonCloseMenu" 
+                        Visibility="Collapsed" 
+                        Height="50" 
+                        Width="60"
+                        Foreground="White" 
+                        Click="ButtonCloseMenu_Click">
                         <materialDesign:PackIcon Kind="MenuOpen" Width="25" Height="25"/>
-                    </components:ConciergeButton>
+                    </components:ConciergeDesignButton>
                 </StackPanel>
             </Grid>
 
@@ -117,15 +112,12 @@
 
             <Grid x:Name="OptionButtons" Grid.Column="2" Background="Black">
                 <StackPanel Orientation="Horizontal">
-                    <components:ConciergeButton
+                    <components:ConciergeDesignButton 
+                        Style="{StaticResource ConciergeDesignButtonStyle}"
                         x:Name="PopupBoxButton"
-                        Height="50"
                         Width="60"
-                        Background="Black"
                         Foreground="White"
                         ToolTip="Options"
-                        MouseEnter="PopupBoxButton_MouseEnter"
-                        MouseLeave="PopupBoxButton_MouseLeave"
                         Click="PopupBoxButton_Click">
                         <materialDesign:PopupBox
                             x:Name="PopupBoxControl"
@@ -194,37 +186,35 @@
                                 </Button>
                             </StackPanel>
                         </materialDesign:PopupBox>
-                    </components:ConciergeButton>
+                    </components:ConciergeDesignButton>
                     <Separator Foreground="White" Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
-                    <components:ConciergeButton 
+                    <components:ConciergeDesignButton 
+                        Style="{StaticResource ConciergeDesignButtonStyle}" 
                         x:Name="ButtonMinimize" 
-                        Height="50" Width="60" 
-                        HorizontalAlignment="Center" 
-                        VerticalAlignment="Center" 
-                        Background="Transparent"
+                        Width="60"
                         Foreground="White"
                         ToolTip="Minimize"
                         Click="ButtonMinimize_Click">
                         <materialDesign:PackIcon Kind="WindowMinimize" Width="25" Height="25"/>
-                    </components:ConciergeButton>
-                    <components:ConciergeButton 
-                        x:Name="MaximizeButton" 
-                        Height="50" Width="60"
-                        Background="Transparent" 
+                    </components:ConciergeDesignButton>
+                    <components:ConciergeDesignButton 
+                        Style="{StaticResource ConciergeDesignButtonStyle}" 
+                        x:Name="MaximizeButton"
+                        Width="60"
                         Foreground="White"
                         ToolTip="Maximize"
                         Click="MaximizeButton_Click">
                         <materialDesign:PackIcon Kind="WindowMaximize" Width="25" Height="25"/>
-                    </components:ConciergeButton>
-                    <components:ConciergeButton 
+                    </components:ConciergeDesignButton>
+                    <components:ConciergeDesignButton 
+                        Style="{StaticResource ConciergeDesignButtonStyle}" 
                         x:Name="ButtonClose" 
-                        Height="50" Width="60"
-                        Background="Transparent" 
+                        Width="60"
                         Foreground="White"
                         ToolTip="Close"
                         Click="ButtonClose_Click">
                         <materialDesign:PackIcon Kind="WindowClose" Width="25" Height="25"/>
-                    </components:ConciergeButton>
+                    </components:ConciergeDesignButton>
                 </StackPanel>
             </Grid>
         </Grid>

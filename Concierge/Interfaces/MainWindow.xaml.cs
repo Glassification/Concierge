@@ -534,16 +534,6 @@ namespace Concierge.Interfaces
             this.WindowState = WindowState.Minimized;
         }
 
-        private void PopupBoxButton_MouseEnter(object sender, MouseEventArgs e)
-        {
-            this.PopupBoxControl.Foreground = Brushes.Black;
-        }
-
-        private void PopupBoxButton_MouseLeave(object sender, MouseEventArgs e)
-        {
-            this.PopupBoxControl.Foreground = Brushes.White;
-        }
-
         private void PopupBoxButton_Click(object sender, RoutedEventArgs e)
         {
             if (!this.IgnoreSecondPress)

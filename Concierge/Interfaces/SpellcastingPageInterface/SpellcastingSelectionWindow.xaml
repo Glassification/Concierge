@@ -28,17 +28,16 @@
             <StackPanel Orientation="Horizontal"
                         HorizontalAlignment="Right"
                         VerticalAlignment="Center">
-                <components:ConciergeButton 
+                <components:ConciergeDesignButton 
+                    Style="{StaticResource ConciergeDesignButtonStyle}" 
                     x:Name="CloseButton"
-                    Height="50"
                     Width="60"
-                    Background="Transparent"
                     Foreground="White"
                     ToolTip="Close"
                     HorizontalAlignment="Right"
                     Click="CloseButton_Click">
                     <materialDesign:PackIcon Kind="WindowClose" Width="25" Height="25"/>
-                </components:ConciergeButton>
+                </components:ConciergeDesignButton>
             </StackPanel>
         </Grid>
 
@@ -54,24 +53,24 @@
             <StackPanel Orientation="Horizontal"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center">
-                <components:ConciergeButton 
+                <components:ConciergeTextButton 
                     x:Name="SpellClassButton"
-                    Style="{StaticResource PopupWindowButton}"
+                    Style="{StaticResource ConciergeTextButtonStyle}"
                     Content="Magic Class"
                     Click="SpellClassButton_Click">
-                </components:ConciergeButton>
-                <components:ConciergeButton 
+                </components:ConciergeTextButton>
+                <components:ConciergeTextButton 
                     x:Name="SpellButton"
-                    Style="{StaticResource PopupWindowButton}"
+                    Style="{StaticResource ConciergeTextButtonStyle}"
                     Content="Spell"
                     Click="SpellButton_Click">
-                </components:ConciergeButton>
-                <components:ConciergeButton 
+                </components:ConciergeTextButton>
+                <components:ConciergeTextButton 
                     x:Name="CancelButton"
                     Content="Cancel"
                     Click="CancelButton_Click"
-                    Style="{StaticResource PopupWindowButton}">
-                </components:ConciergeButton>
+                    Style="{StaticResource ConciergeTextButtonStyle}">
+                </components:ConciergeTextButton>
             </StackPanel>
         </Grid>
     </Grid>

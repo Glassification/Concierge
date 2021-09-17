@@ -28,19 +28,16 @@
             <StackPanel Orientation="Horizontal"
                         HorizontalAlignment="Right"
                         VerticalAlignment="Center">
-                <components:ConciergeButton x:Name="CloseButton"
-                    Height="50"
+                <components:ConciergeDesignButton 
+                    Style="{StaticResource ConciergeDesignButtonStyle}" 
+                    x:Name="CloseButton"
                     Width="60"
-                    Background="Transparent"
-                    
                     Foreground="White"
                     ToolTip="Close"
                     HorizontalAlignment="Right"
-                    Click="CloseButton_Click"
-                    
-                    >
+                    Click="CloseButton_Click">
                     <materialDesign:PackIcon Kind="WindowClose" Width="25" Height="25"/>
-                </components:ConciergeButton>
+                </components:ConciergeDesignButton>
             </StackPanel>
         </Grid>
 
@@ -56,30 +53,24 @@
             <StackPanel Orientation="Horizontal"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center">
-                <components:ConciergeButton x:Name="WeaponButton"
-                        Style="{StaticResource PopupWindowButton}"
-                        
-                        Content="Weapon"
-                        
-                        
-                        Click="WeaponButton_Click">
-                </components:ConciergeButton>
-                <components:ConciergeButton x:Name="AmmoButton"
-                        Style="{StaticResource PopupWindowButton}"
-                        
-                        Content="Ammo"
-                        
-                        
-                        Click="AmmoButton_Click">
-                </components:ConciergeButton>
-                <components:ConciergeButton x:Name="CancelButton"
-                        
-                        Content="Cancel"
-                        Click="CancelButton_Click"
-                        
-                        
-                        Style="{StaticResource PopupWindowButton}">
-                </components:ConciergeButton>
+                <components:ConciergeTextButton 
+                    x:Name="WeaponButton"
+                    Style="{StaticResource ConciergeTextButtonStyle}"
+                    Content="Weapon"
+                    Click="WeaponButton_Click">
+                </components:ConciergeTextButton>
+                <components:ConciergeTextButton 
+                    x:Name="AmmoButton"
+                    Style="{StaticResource ConciergeTextButtonStyle}"
+                    Content="Ammo"
+                    Click="AmmoButton_Click">
+                </components:ConciergeTextButton>
+                <components:ConciergeTextButton 
+                    x:Name="CancelButton" 
+                    Content="Cancel"
+                    Click="CancelButton_Click"
+                    Style="{StaticResource ConciergeTextButtonStyle}">
+                </components:ConciergeTextButton>
             </StackPanel>
         </Grid>
     </Grid>

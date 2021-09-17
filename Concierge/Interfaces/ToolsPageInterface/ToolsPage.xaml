@@ -36,16 +36,16 @@
                            HorizontalAlignment="Left"
                            Margin="150, 0, 0, 0"/>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                    <components:ConciergeButton x:Name="ButtonResetHistory"
-                            Height="50"
-                            Width="60"
-                            Background="Transparent"
-                            Foreground="SteelBlue"
-                            Click="ButtonResetHistory_Click"
-                            Margin="10, 0, 60, 0"
-                            ToolTip="Clear History">
-                        <materialDesign:PackIcon Kind="RefreshCircle" Height="25" Width="25" Margin="10"/>
-                    </components:ConciergeButton>
+                    <components:ConciergeDesignButton 
+                        Style="{StaticResource ConciergeDesignButtonStyle}" 
+                        x:Name="ButtonResetHistory"
+                        Width="60"
+                        Foreground="SteelBlue"
+                        Click="ButtonResetHistory_Click"
+                        Margin="10, 0, 60, 0"
+                        ToolTip="Clear History">
+                        <materialDesign:PackIcon Kind="RefreshCircle" Height="25" Width="25"/>
+                    </components:ConciergeDesignButton>
                 </StackPanel>
             </Grid>
 
@@ -201,18 +201,15 @@
                         </Grid>
                         <!--Roll-->
                         <Grid Grid.Column="4">
-                            <components:ConciergeButton x:Name="ButtonRollD4"
-                                    Height="50"
-                                    Width="60"
-                                    HorizontalAlignment="Center"
-                                    VerticalAlignment="Center"
-                                    Background="Transparent"
-                                    
-                                    Foreground="#615299"
-                                    ToolTip="Roll d4"
-                                    Click="ButtonRoll_Click">
-                                <materialDesign:PackIcon Kind="DiceD4" Height="25" Width="25" Margin="10"/>
-                            </components:ConciergeButton>
+                            <components:ConciergeDesignButton 
+                                Style="{StaticResource ConciergeDesignButtonStyle}" 
+                                x:Name="ButtonRollD4"
+                                Width="60"
+                                Foreground="#615299"
+                                ToolTip="Roll d4"
+                                Click="ButtonRoll_Click">
+                                <materialDesign:PackIcon Kind="DiceD4" Height="25" Width="25"/>
+                            </components:ConciergeDesignButton>
                         </Grid>
                         <!--Result-->
                         <Grid Grid.Column="5">
@@ -274,18 +271,15 @@
                         </Grid>
                         <!--Roll-->
                         <Grid Grid.Column="4">
-                            <components:ConciergeButton x:Name="ButtonRollD6"
-                                    Height="50"
-                                    Width="60"
-                                    HorizontalAlignment="Center"
-                                    VerticalAlignment="Center"
-                                    Background="Transparent"
-                                    
-                                    Foreground="#615299"
-                                    ToolTip="Roll d6"
-                                    Click="ButtonRoll_Click">
-                                <materialDesign:PackIcon Kind="DiceD6" Height="25" Width="25" Margin="10"/>
-                            </components:ConciergeButton>
+                            <components:ConciergeDesignButton 
+                                Style="{StaticResource ConciergeDesignButtonStyle}" 
+                                x:Name="ButtonRollD6"
+                                Width="60"
+                                Foreground="#615299"
+                                ToolTip="Roll d6"
+                                Click="ButtonRoll_Click">
+                                <materialDesign:PackIcon Kind="DiceD6" Height="25" Width="25"/>
+                            </components:ConciergeDesignButton>
                         </Grid>
                         <!--Result-->
                         <Grid Grid.Column="5">
@@ -347,18 +341,15 @@
                         </Grid>
                         <!--Roll-->
                         <Grid Grid.Column="4">
-                            <components:ConciergeButton x:Name="ButtonRollD8"
-                                    Height="50"
-                                    Width="60"
-                                    HorizontalAlignment="Center"
-                                    VerticalAlignment="Center"
-                                    Background="Transparent"
-                                    
-                                    Foreground="#615299"
-                                    ToolTip="Roll d8"
-                                    Click="ButtonRoll_Click">
-                                <materialDesign:PackIcon Kind="DiceD8" Height="25" Width="25" Margin="10"/>
-                            </components:ConciergeButton>
+                            <components:ConciergeDesignButton 
+                                Style="{StaticResource ConciergeDesignButtonStyle}" 
+                                x:Name="ButtonRollD8"
+                                Width="60"
+                                Foreground="#615299"
+                                ToolTip="Roll d8"
+                                Click="ButtonRoll_Click">
+                                <materialDesign:PackIcon Kind="DiceD8" Height="25" Width="25"/>
+                            </components:ConciergeDesignButton>
                         </Grid>
                         <!--Result-->
                         <Grid Grid.Column="5">
@@ -420,18 +411,15 @@
                         </Grid>
                         <!--Roll-->
                         <Grid Grid.Column="4">
-                            <components:ConciergeButton x:Name="ButtonRollD10"
-                                    Height="50"
-                                    Width="60"
-                                    HorizontalAlignment="Center"
-                                    VerticalAlignment="Center"
-                                    Background="Transparent"
-                                    
-                                    Foreground="#615299"
-                                    ToolTip="Roll d10"
-                                    Click="ButtonRoll_Click">
-                                <materialDesign:PackIcon Kind="DiceD10" Height="25" Width="25" Margin="10"/>
-                            </components:ConciergeButton>
+                            <components:ConciergeDesignButton 
+                                Style="{StaticResource ConciergeDesignButtonStyle}" 
+                                x:Name="ButtonRollD10"
+                                Width="60"
+                                Foreground="#615299"
+                                ToolTip="Roll d10"
+                                Click="ButtonRoll_Click">
+                                <materialDesign:PackIcon Kind="DiceD10" Height="25" Width="25"/>
+                            </components:ConciergeDesignButton>
                         </Grid>
                         <!--Result-->
                         <Grid Grid.Column="5">
@@ -493,18 +481,15 @@
                         </Grid>
                         <!--Roll-->
                         <Grid Grid.Column="4">
-                            <components:ConciergeButton x:Name="ButtonRollD100"
-                                    Height="50"
-                                    Width="60"
-                                    HorizontalAlignment="Center"
-                                    VerticalAlignment="Center"
-                                    Background="Transparent"
-                                    
-                                    Foreground="#615299"
-                                    ToolTip="Roll d100"
-                                    Click="ButtonRoll_Click">
-                                <materialDesign:PackIcon Kind="DiceMultiple" Height="25" Width="25" Margin="10"/>
-                            </components:ConciergeButton>
+                            <components:ConciergeDesignButton 
+                                Style="{StaticResource ConciergeDesignButtonStyle}" 
+                                x:Name="ButtonRollD100"
+                                Width="60"
+                                Foreground="#615299"
+                                ToolTip="Roll d100"
+                                Click="ButtonRoll_Click">
+                                <materialDesign:PackIcon Kind="DiceMultiple" Height="25" Width="25"/>
+                            </components:ConciergeDesignButton>
                         </Grid>
                         <!--Result-->
                         <Grid Grid.Column="5">
@@ -566,18 +551,15 @@
                         </Grid>
                         <!--Roll-->
                         <Grid Grid.Column="4">
-                            <components:ConciergeButton x:Name="ButtonRollD12"
-                                    Height="50"
-                                    Width="60"
-                                    HorizontalAlignment="Center"
-                                    VerticalAlignment="Center"
-                                    Background="Transparent"
-                                    
-                                    Foreground="#615299"
-                                    ToolTip="Roll d12"
-                                    Click="ButtonRoll_Click">
-                                <materialDesign:PackIcon Kind="DiceD12" Height="25" Width="25" Margin="10"/>
-                            </components:ConciergeButton>
+                            <components:ConciergeDesignButton 
+                                Style="{StaticResource ConciergeDesignButtonStyle}" 
+                                x:Name="ButtonRollD12"
+                                Width="60"
+                                Foreground="#615299"
+                                ToolTip="Roll d12"
+                                Click="ButtonRoll_Click">
+                                <materialDesign:PackIcon Kind="DiceD12" Height="25" Width="25"/>
+                            </components:ConciergeDesignButton>
                         </Grid>
                         <!--Result-->
                         <Grid Grid.Column="5">
@@ -639,18 +621,15 @@
                         </Grid>
                         <!--Roll-->
                         <Grid Grid.Column="4">
-                            <components:ConciergeButton x:Name="ButtonRollD20"
-                                    Height="50"
-                                    Width="60"
-                                    HorizontalAlignment="Center"
-                                    VerticalAlignment="Center"
-                                    Background="Transparent"
-                                    
-                                    Foreground="#615299"
-                                    ToolTip="Roll d20"
-                                    Click="ButtonRoll_Click">
-                                <materialDesign:PackIcon Kind="DiceD20" Height="25" Width="25" Margin="10"/>
-                            </components:ConciergeButton>
+                            <components:ConciergeDesignButton 
+                                Style="{StaticResource ConciergeDesignButtonStyle}" 
+                                x:Name="ButtonRollD20"
+                                Width="60"
+                                Foreground="#615299"
+                                ToolTip="Roll d20"
+                                Click="ButtonRoll_Click">
+                                <materialDesign:PackIcon Kind="DiceD20" Height="25" Width="25"/>
+                            </components:ConciergeDesignButton>
                         </Grid>
                         <!--Result-->
                         <Grid Grid.Column="5">
@@ -712,18 +691,15 @@
                         </Grid>
                         <!--Roll-->
                         <Grid Grid.Column="4">
-                            <components:ConciergeButton x:Name="ButtonRollDx"
-                                    Height="50"
-                                    Width="60"
-                                    HorizontalAlignment="Center"
-                                    VerticalAlignment="Center"
-                                    Background="Transparent"
-                                    
-                                    Foreground="#615299"
-                                    ToolTip="Roll dx"
-                                    Click="ButtonRoll_Click">
-                                <materialDesign:PackIcon Kind="DiceMultiple" Height="25" Width="25" Margin="10"/>
-                            </components:ConciergeButton>
+                            <components:ConciergeDesignButton 
+                                Style="{StaticResource ConciergeDesignButtonStyle}" 
+                                x:Name="ButtonRollDx"
+                                Width="60"
+                                Foreground="#615299"
+                                ToolTip="Roll dx"
+                                Click="ButtonRoll_Click">
+                                <materialDesign:PackIcon Kind="DiceMultiple" Height="25" Width="25"/>
+                            </components:ConciergeDesignButton>
                         </Grid>
                         <!--Result-->
                         <Grid Grid.Column="5">
@@ -787,37 +763,34 @@
                     Margin="150, 0, 0, 0"/>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                     <components:ConciergeToggleButton
+                        Style="{StaticResource ConciergeToggleButtonStyle}"
                         x:Name="RealNamesToggleButton"
-                        Height="50"
                         Width="60"
-                        Background="Transparent"
                         Foreground="SteelBlue"
                         Margin="10, 0, 10, 0"
                         ToolTip="Use Real Names">
-                        <materialDesign:PackIcon Kind="AccountQuestion" Height="25" Width="25" Margin="10"/>
+                        <materialDesign:PackIcon Kind="AccountQuestion" Height="25" Width="25"/>
                     </components:ConciergeToggleButton>
-                    <components:ConciergeButton 
+                    <components:ConciergeDesignButton 
+                        Style="{StaticResource ConciergeDesignButtonStyle}" 
                         x:Name="ButtonDivideLoot"
-                        Height="50"
                         Width="60"
-                        Background="Transparent"
                         Foreground="SteelBlue"
                         Click="ButtonDivideLoot_Click"
                         Margin="10, 0, 10, 0"
                         ToolTip="Divide Loot">
-                        <materialDesign:PackIcon Kind="Calculator" Height="25" Width="25" Margin="10"/>
-                    </components:ConciergeButton>
-                    <components:ConciergeButton 
+                        <materialDesign:PackIcon Kind="Calculator" Height="25" Width="25"/>
+                    </components:ConciergeDesignButton>
+                    <components:ConciergeDesignButton 
+                        Style="{StaticResource ConciergeDesignButtonStyle}" 
                         x:Name="ButtonResetLoot"
-                        Height="50"
                         Width="60"
-                        Background="Transparent"
                         Foreground="SteelBlue"
                         Click="ButtonResetLoot_Click"
                         Margin="10, 0, 60, 0"
                         ToolTip="Clear Loot">
-                        <materialDesign:PackIcon Kind="RefreshCircle" Height="25" Width="25" Margin="10"/>
-                    </components:ConciergeButton>
+                        <materialDesign:PackIcon Kind="RefreshCircle" Height="25" Width="25"/>
+                    </components:ConciergeDesignButton>
                 </StackPanel>
             </Grid>
 

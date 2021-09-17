@@ -31,84 +31,65 @@
                            Margin="150, 0, 0, 0"/>
 
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                <components:ConciergeButton x:Name="ButtonUp"
-                            Height="50"
-                            Width="60"
-                            HorizontalAlignment="Center"
-                            VerticalAlignment="Center"
-                            Background="Transparent"
-                            
-                            Foreground="SteelBlue"
-                            Click="ButtonUp_Click"
-                            ToolTip="Move Item Up">
+                <components:ConciergeDesignButton 
+                    Style="{StaticResource ConciergeDesignButtonStyle}"
+                    x:Name="ButtonUp"
+                    Width="60"
+                    Foreground="SteelBlue"
+                    Click="ButtonUp_Click"
+                    ToolTip="Move Item Up">
                     <materialDesign:PackIcon Kind="ArrowUpBox" Width="25" Height="25"/>
-                </components:ConciergeButton>
-                <components:ConciergeButton x:Name="ButtonDown"
-                            Height="50"
-                            Width="60"
-                            HorizontalAlignment="Center"
-                            VerticalAlignment="Center"
-                            Background="Transparent"
-                            
-                            Foreground="SteelBlue"
-                            Click="ButtonDown_Click"
-                            ToolTip="Move Item Down">
+                </components:ConciergeDesignButton>
+                <components:ConciergeDesignButton 
+                    Style="{StaticResource ConciergeDesignButtonStyle}" 
+                    x:Name="ButtonDown"
+                    Width="60"
+                    Foreground="SteelBlue"
+                    Click="ButtonDown_Click"
+                    ToolTip="Move Item Down">
                     <materialDesign:PackIcon Kind="ArrowDownBox" Width="25" Height="25"/>
-                </components:ConciergeButton>
-                <components:ConciergeButton x:Name="ButtonClear"
-                            Height="50"
-                            Width="60"
-                            HorizontalAlignment="Center"
-                            VerticalAlignment="Center"
-                            Background="Transparent"
-                            
-                            Foreground="Silver"
-                            Click="ButtonClear_Click"
-                            ToolTip="Clear Selected Item">
+                </components:ConciergeDesignButton>
+                <components:ConciergeDesignButton 
+                    Style="{StaticResource ConciergeDesignButtonStyle}"
+                    x:Name="ButtonClear"
+                    Width="60"
+                    Foreground="Silver"
+                    Click="ButtonClear_Click"
+                    ToolTip="Clear Selected Item">
                     <materialDesign:PackIcon Kind="Cancel" Width="25" Height="25"/>
-                </components:ConciergeButton>
+                </components:ConciergeDesignButton>
                 <Label Height="50"
                            Width="60"
                            HorizontalAlignment="Center"
-                           VerticalAlignment="Center"
                            Background="Transparent"
                             />
-                <components:ConciergeButton x:Name="ButtonAdd"
-                            Height="50"
-                            Width="60"
-                            HorizontalAlignment="Center"
-                            VerticalAlignment="Center"
-                            Background="Transparent"
-                            
-                            Foreground="PaleGreen"
-                            Click="ButtonAdd_Click"
-                            ToolTip="Add New Item">
+                <components:ConciergeDesignButton 
+                    Style="{StaticResource ConciergeDesignButtonStyle}" 
+                    x:Name="ButtonAdd"
+                    Width="60"
+                    Foreground="PaleGreen"
+                    Click="ButtonAdd_Click"
+                    ToolTip="Add New Item">
                     <materialDesign:PackIcon Kind="Add" Width="25" Height="25"/>
-                </components:ConciergeButton>
-                <components:ConciergeButton x:Name="ButtonEdit"
-                            Height="50"
-                            Width="60"
-                            HorizontalAlignment="Center"
-                            VerticalAlignment="Center"
-                            Background="Transparent"
-                            
-                            Foreground="Khaki"
-                            Click="ButtonEdit_Click"
-                            ToolTip="Edit Selected Item">
+                </components:ConciergeDesignButton>
+                <components:ConciergeDesignButton 
+                    Style="{StaticResource ConciergeDesignButtonStyle}" 
+                    x:Name="ButtonEdit"
+                    Width="60"
+                    Foreground="Khaki"
+                    Click="ButtonEdit_Click"
+                    ToolTip="Edit Selected Item">
                     <materialDesign:PackIcon Kind="PlaylistEdit" Width="25" Height="25"/>
-                </components:ConciergeButton>
-                <components:ConciergeButton x:Name="ButtonDelete"
-                            Height="50"
-                            Width="60"
-                            HorizontalAlignment="Center"
-                            VerticalAlignment="Center"
-                            Background="Transparent"
-                            
-                            Foreground="IndianRed"
-                            Click="ButtonDelete_Click"
-                            ToolTip="Delete Selected Item">
+                </components:ConciergeDesignButton>
+                <components:ConciergeDesignButton 
+                    Style="{StaticResource ConciergeDesignButtonStyle}" 
+                    x:Name="ButtonDelete"
+                    Width="60"
+                    Foreground="IndianRed"
+                    Click="ButtonDelete_Click"
+                    ToolTip="Delete Selected Item">
                     <materialDesign:PackIcon Kind="Delete" Width="25" Height="25"/>
-                </components:ConciergeButton>
+                </components:ConciergeDesignButton>
             </StackPanel>
         </Grid>
 

@@ -141,6 +141,9 @@
     <Page Update="Properties\Resources\Dictionary\ButtonStyling.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Properties\Resources\Dictionary\CheckBoxStyling.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Properties\Resources\Dictionary\ComboBoxStyling.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -148,6 +151,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Properties\Resources\Dictionary\PageFontStyling.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Properties\Resources\Dictionary\RadioButtonStyling.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Properties\Resources\Dictionary\TreeViewStyling.xaml">

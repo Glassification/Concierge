@@ -1,31 +1,34 @@
-﻿// <copyright file="ConciergeToggleButton.cs" company="Thomas Beckett">
+﻿// <copyright file="ConciergeTextButton.cs" company="Thomas Beckett">
 // Copyright (c) Thomas Beckett. All rights reserved.
 // </copyright>
 
 namespace Concierge.Interfaces.Components
 {
     using System.Windows;
-    using System.Windows.Controls.Primitives;
+    using System.Windows.Controls;
     using System.Windows.Input;
     using System.Windows.Media;
 
     using Concierge.Utility;
 
-    public class ConciergeToggleButton : ToggleButton
+    public class ConciergeTextButton : Button
     {
-        public ConciergeToggleButton()
+        public ConciergeTextButton()
             : base()
         {
-            this.OriginalForeground = null;
             this.HorizontalAlignment = HorizontalAlignment.Center;
-            this.VerticalAlignment = VerticalAlignment.Stretch;
+            this.VerticalAlignment = VerticalAlignment.Center;
+            this.Foreground = Brushes.White;
+            this.FontSize = 15;
+            this.Width = 200;
+            this.Height = 50;
+            this.Margin = new Thickness(5);
+            this.SnapsToDevicePixels = true;
 
             this.Click += this.Button_Click;
             this.MouseEnter += this.Button_MouseEnter;
             this.MouseLeave += this.Button_MouseLeave;
         }
-
-        private SolidColorBrush OriginalForeground { get; set; }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -34,22 +37,11 @@ namespace Concierge.Interfaces.Components
 
         private void Button_MouseEnter(object sender, MouseEventArgs e)
         {
-            if (!this.IsChecked ?? false)
-            {
-                this.OriginalForeground = (SolidColorBrush)this.Foreground;
-            }
-
-            this.Foreground = Brushes.White;
             Mouse.OverrideCursor = Cursors.Hand;
         }
 
         private void Button_MouseLeave(object sender, MouseEventArgs e)
         {
-            if (!this.IsChecked ?? false)
-            {
-                this.Foreground = this.OriginalForeground;
-            }
-
             Mouse.OverrideCursor = Cursors.Arrow;
         }
     }
