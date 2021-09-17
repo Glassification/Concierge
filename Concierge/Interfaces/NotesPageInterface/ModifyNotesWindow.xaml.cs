@@ -17,6 +17,8 @@ namespace Concierge.Interfaces.NotesPageInterface
     /// </summary>
     public partial class ModifyNotesWindow : Window
     {
+        private const string NewChapter = "--New Chapter--";
+
         public ModifyNotesWindow()
         {
             this.InitializeComponent();
@@ -79,7 +81,7 @@ namespace Concierge.Interfaces.NotesPageInterface
         private void GenerateChapterComboBox()
         {
             this.ChapterComboBox.Items.Clear();
-            this.ChapterComboBox.Items.Add(new Chapter("--New Chapter--")
+            this.ChapterComboBox.Items.Add(new Chapter(NewChapter)
             {
                 IsNewChapterPlaceholder = true,
             });
@@ -159,8 +161,17 @@ namespace Concierge.Interfaces.NotesPageInterface
 
             if (!this.IsEdit)
             {
-                this.ClearFields();
-                this.GenerateChapterComboBox();
+                if (this.ChapterComboBox.Text.Equals(NewChapter))
+                {
+                    var chapterName = this.DocumentTextBox.Text;
+                    this.ClearFields();
+                    this.GenerateChapterComboBox();
+                    this.ChapterComboBox.Text = chapterName;
+                }
+                else
+                {
+                    this.DocumentTextBox.Text = string.Empty;
+                }
             }
 
             this.ApplyChanges?.Invoke(this, new EventArgs());

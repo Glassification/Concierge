@@ -77,17 +77,6 @@ namespace Concierge.Interfaces.NotesPageInterface
             }
         }
 
-        private static void SetTreeViewItemColor(TreeViewItem treeViewItem, Brush brush)
-        {
-            if (treeViewItem == null)
-            {
-                return;
-            }
-
-            ((treeViewItem.Header as StackPanel).Children[0] as PackIcon).Foreground = brush;
-            ((treeViewItem.Header as StackPanel).Children[1] as TextBlock).Foreground = brush;
-        }
-
         private void DrawTreeView()
         {
             this.NotesTreeView.Items.Clear();
@@ -171,20 +160,6 @@ namespace Concierge.Interfaces.NotesPageInterface
                     this.LoadCurrentDocument(this.SelectedDocument.RTF);
                     this.ResetUndoQueue();
                 }
-
-                foreach (var chapter in this.NotesTreeView.Items)
-                {
-                    var chapterTreeViewItem = chapter as TreeViewItem;
-                    SetTreeViewItemColor(chapterTreeViewItem, Brushes.White);
-
-                    foreach (var document in chapterTreeViewItem.Items)
-                    {
-                        var documentTreeViewItem = document as TreeViewItem;
-                        SetTreeViewItemColor(documentTreeViewItem, Brushes.White);
-                    }
-                }
-
-                SetTreeViewItemColor(this.NotesTreeView.SelectedItem as TreeViewItem, Brushes.Black);
 
                 this.Lock = false;
             }
@@ -351,6 +326,8 @@ namespace Concierge.Interfaces.NotesPageInterface
                     (newIndex as ChapterTreeViewItem).IsSelected = true;
                 }
             }
+
+            (this.NotesTreeView.SelectedItem as TreeViewItem).Focus();
         }
 
         private void SwapTreeViewItem<T>(IList<T> list, int oldIndex, int newIndex)

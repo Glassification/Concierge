@@ -277,6 +277,16 @@
                           Background="#17112E"
                           SelectedItemChanged="NotesTreeView_SelectedItemChanged"
                           BorderBrush="{x:Null}">
+                    <TreeView.Resources>
+                        <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}"
+                      Color="#1C3947" />
+                        <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}"
+                      Color="Transparent" />
+                        <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightBrushKey}"
+                      Color="Transparent" />
+                        <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightTextBrushKey}"
+                      Color="White" />
+                    </TreeView.Resources>
                 </TreeView>
             </Grid>
 

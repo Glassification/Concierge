@@ -144,6 +144,7 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
             {
                 this.Draw();
                 this.SelectedDataGrid.SelectedIndex = index;
+                this.SelectedDataGrid.ScrollIntoView(this.SelectedDataGrid.SelectedItem);
             }
         }
 
@@ -156,6 +157,7 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
             {
                 this.Draw();
                 this.SelectedDataGrid.SelectedIndex = index;
+                this.SelectedDataGrid.ScrollIntoView(this.SelectedDataGrid.SelectedItem);
             }
         }
 

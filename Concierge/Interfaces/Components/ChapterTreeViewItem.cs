@@ -4,6 +4,7 @@
 
 namespace Concierge.Interfaces.Components
 {
+    using System;
     using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Media;
@@ -15,10 +16,16 @@ namespace Concierge.Interfaces.Components
     {
         public ChapterTreeViewItem(Chapter chapter)
         {
+            var resourceDictionary = new ResourceDictionary
+            {
+                Source = new Uri("Properties/Resources/Dictionary/TreeViewStyling.xaml", UriKind.RelativeOrAbsolute),
+            };
+
             this.Chapter = chapter;
             this.Header = this.CreateHeader();
             this.Foreground = Brushes.White;
             this.IsExpanded = chapter.IsExpanded;
+            this.Style = resourceDictionary["TreeViewItemStyling"] as Style;
         }
 
         public Chapter Chapter { get; set; }

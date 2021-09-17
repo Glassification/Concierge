@@ -63,6 +63,7 @@ namespace Concierge.Interfaces.AbilitiesPageInterface
             {
                 this.DrawAbilities();
                 this.AbilitiesDataGrid.SelectedIndex = index;
+                this.AbilitiesDataGrid.ScrollIntoView(this.AbilitiesDataGrid.SelectedItem);
             }
         }
 
@@ -74,6 +75,7 @@ namespace Concierge.Interfaces.AbilitiesPageInterface
             {
                 this.DrawAbilities();
                 this.AbilitiesDataGrid.SelectedIndex = index;
+                this.AbilitiesDataGrid.ScrollIntoView(this.AbilitiesDataGrid.SelectedItem);
             }
         }
 

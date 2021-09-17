@@ -16,8 +16,8 @@ namespace Concierge.Logging
     {
         private const string DefaultLoggingFolder = "Logging";
 
-        public LocalLogger()
-        : base()
+        public LocalLogger(bool isDebug = false)
+        : base(isDebug)
         {
             this.LogLocation = FormatLogFilePath(string.Empty);
             this.LogFileName = FormatLogFileName();
@@ -28,8 +28,8 @@ namespace Concierge.Logging
             this.MaxLogRetentionDays = 90;
         }
 
-        public LocalLogger(string logPath)
-        : base()
+        public LocalLogger(string logPath, bool isDebug = false)
+        : base(isDebug)
         {
             this.LogLocation = FormatLogFilePath(logPath);
             this.LogFileName = FormatLogFileName();

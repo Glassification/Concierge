@@ -184,6 +184,7 @@ namespace Concierge.Interfaces.CompanionPageInterface
             {
                 this.DrawAttacks();
                 this.WeaponDataGrid.SelectedIndex = index;
+                this.WeaponDataGrid.ScrollIntoView(this.WeaponDataGrid.SelectedItem);
             }
         }
 
@@ -195,6 +196,7 @@ namespace Concierge.Interfaces.CompanionPageInterface
             {
                 this.DrawAttacks();
                 this.WeaponDataGrid.SelectedIndex = index;
+                this.WeaponDataGrid.ScrollIntoView(this.WeaponDataGrid.SelectedItem);
             }
         }
 

@@ -50,6 +50,7 @@ namespace Concierge.Interfaces.EquipmentPageInterface
             {
                 drawList();
                 dataGrid.SelectedIndex = index;
+                dataGrid.ScrollIntoView(dataGrid.SelectedItem);
 
                 return true;
             }

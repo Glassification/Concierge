@@ -10,46 +10,6 @@
       Title="EquipmentPage"
       Style="{StaticResource PageXboxDasboardStyle}">
 
-    <Page.Resources>
-        <Style x:Key="ColumnElementStyle" TargetType="TextBlock">
-            <Setter Property="Margin" Value="10,10,10,10" />
-            <Setter Property="TextWrapping" Value="Wrap"/>
-            <Setter Property="FontSize" Value="15"/>
-        </Style>
-        <Style TargetType="{x:Type DataGridRow}">
-            <Style.Triggers>
-                <Trigger Property="ItemsControl.AlternationIndex" Value="0">
-                    <Setter Property="Background" Value="#FF333333"/>
-                    <Setter Property="Foreground" Value="White"/>
-                </Trigger>
-                <Trigger Property="ItemsControl.AlternationIndex" Value="1">
-                    <Setter Property="Background" Value="#FF3e3e42"/>
-                    <Setter Property="Foreground" Value="White"/>
-                </Trigger>
-            </Style.Triggers>
-        </Style>
-        <Style x:Key="DGHeaderStyle" TargetType="{x:Type DataGrid}">
-            <Setter Property="ColumnHeaderStyle" Value="{DynamicResource DGCHeaderStyle}"/>
-            <Setter Property="Background" Value="#ff1c1636" />
-            <Setter Property="AlternationCount" Value="2" />
-        </Style>
-        <Style x:Key="DGCHeaderStyle" TargetType="DataGridColumnHeader">
-            <Setter Property="Height" Value="50"/>
-            <Setter Property="Background" Value="#17112E" />
-            <Setter Property="Foreground" Value="White"/>
-            <Setter Property="FontSize" Value="18" />
-            <Setter Property="FontWeight" Value="Bold"/>
-            <Setter Property="Margin" Value="10, 10, 10, 10"/>
-            <Setter Property="ContentTemplate">
-                <Setter.Value>
-                    <DataTemplate>
-                        <TextBlock TextWrapping="Wrap" Text="{Binding}"/>
-                    </DataTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-    </Page.Resources>
-
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="30*"/>
@@ -463,114 +423,94 @@
 
             <!--Ammo-->
             <Grid Grid.Row="1" Margin="3" x:Name="AmmoGrid">
-                <components:ConciergeDataGrid x:Name="AmmoDataGrid"
-                                      AutoGenerateColumns="False"
-                                      VerticalScrollBarVisibility="Auto"
-                                      HorizontalScrollBarVisibility="Disabled"
-                                      Background="#17112E"
-                                      HeadersVisibility="Column"
-                                      IsReadOnly="True"
-                                      Margin="0, 5, 0, 0"
-                                      HorizontalGridLinesBrush="Transparent"
-                                      VerticalGridLinesBrush="Transparent"
-                                      CanUserResizeColumns="False"
-                                      CanUserAddRows="False"
-                                      Height="200"
-                                      BorderThickness="0"
-                                      Style="{DynamicResource DGHeaderStyle}"
-                                      SelectionChanged="AmmoDataGrid_SelectionChanged"
-                                      SelectionMode="Single"
-                                      Sorted="AmmoDataGrid_Sorted">
+                <components:ConciergeDataGrid 
+                    x:Name="AmmoDataGrid"
+                    Background="#17112E"
+                    Margin="0, 5, 0, 0"
+                    Height="200"
+                    Style="{DynamicResource StandardDataGridStyle}"
+                    SelectionChanged="AmmoDataGrid_SelectionChanged"
+                    Sorted="AmmoDataGrid_Sorted">
                     <DataGrid.Columns>
                         <DataGridTextColumn
-                                        Header="Ammo"
-                                        Binding="{Binding Name}"
-                                        Width="0.2*"
-                                        ElementStyle="{StaticResource ColumnElementStyle}"/>
+                            Header="Ammo"
+                            Binding="{Binding Name}"
+                            Width="0.2*"
+                            ElementStyle="{StaticResource StandardColumnElementStyle}"/>
                         <DataGridTextColumn
-                                        Header="Quantity"
-                                        Binding="{Binding Quantity}"
-                                        Width="0.05*"
-                                        ElementStyle="{StaticResource ColumnElementStyle}"/>
+                            Header="Quantity"
+                            Binding="{Binding Quantity}"
+                            Width="0.05*"
+                            ElementStyle="{StaticResource StandardColumnElementStyle}"/>
                         <DataGridTextColumn
-                                        Header="Damage Bonus"
-                                        Binding="{Binding Bonus}"
-                                        Width="0.1*"
-                                        ElementStyle="{StaticResource ColumnElementStyle}"/>
+                            Header="Damage Bonus"
+                            Binding="{Binding Bonus}"
+                            Width="0.1*"
+                            ElementStyle="{StaticResource StandardColumnElementStyle}"/>
                         <DataGridTextColumn
-                                        Header="Damage Type"
-                                        Binding="{Binding DamageType}"
-                                        Width="0.1*"
-                                        ElementStyle="{StaticResource ColumnElementStyle}"/>
+                            Header="Damage Type"
+                            Binding="{Binding DamageType}"
+                            Width="0.1*"
+                            ElementStyle="{StaticResource StandardColumnElementStyle}"/>
                         <DataGridTextColumn
-                                        Header="Used"
-                                        Binding="{Binding Used}"
-                                        Width="0.1*"
-                                        ElementStyle="{StaticResource ColumnElementStyle}"/>
+                            Header="Used"
+                            Binding="{Binding Used}"
+                            Width="0.1*"
+                            ElementStyle="{StaticResource StandardColumnElementStyle}"/>
                     </DataGrid.Columns>
                 </components:ConciergeDataGrid>
             </Grid>
 
             <!--Weapons-->
             <Grid Grid.Row="2" Margin="3" x:Name="WeaponGrid">
-                <components:ConciergeDataGrid x:Name="WeaponDataGrid"
-                              AutoGenerateColumns="False"
-                              VerticalScrollBarVisibility="Auto"
-                              HorizontalScrollBarVisibility="Disabled"
-                              Background="#17112E"
-                              HeadersVisibility="Column"
-                              IsReadOnly="True"
-                              Margin="0, 5, 0, 0"
-                              HorizontalGridLinesBrush="Transparent"
-                              VerticalGridLinesBrush="Transparent"
-                              CanUserResizeColumns="False"
-                              CanUserAddRows="False"
-                              BorderThickness="0"
-                              Style="{DynamicResource DGHeaderStyle}"
-                              SelectionChanged="WeaponDataGrid_SelectionChanged"
-                              SelectionMode="Single"
-                              Sorted="WeaponDataGrid_Sorted">
+                <components:ConciergeDataGrid 
+                    x:Name="WeaponDataGrid"
+                    Background="#17112E"
+                    Margin="0, 5, 0, 0"
+                    Style="{DynamicResource StandardDataGridStyle}"
+                    SelectionChanged="WeaponDataGrid_SelectionChanged"
+                    Sorted="WeaponDataGrid_Sorted">
                     <DataGrid.Columns>
                         <DataGridTextColumn
-                                Header="Weapon/Attack"
-                                Binding="{Binding Name}"
-                                Width="0.2*"
-                                ElementStyle="{StaticResource ColumnElementStyle}"/>
+                            Header="Weapon/Attack"
+                            Binding="{Binding Name}"
+                            Width="0.2*"
+                            ElementStyle="{StaticResource StandardColumnElementStyle}"/>
                         <DataGridTextColumn
-                                Header="Attack Bonus"
-                                Binding="{Binding Attack}"
-                                Width="0.1*"
-                                ElementStyle="{StaticResource ColumnElementStyle}"/>
+                            Header="Attack Bonus"
+                            Binding="{Binding Attack}"
+                            Width="0.1*"
+                            ElementStyle="{StaticResource StandardColumnElementStyle}"/>
                         <DataGridTextColumn
-                                Header="Ability"
-                                Binding="{Binding Ability}"
-                                Width="0.1*"
-                                ElementStyle="{StaticResource ColumnElementStyle}"/>
+                            Header="Ability"
+                            Binding="{Binding Ability}"
+                            Width="0.1*"
+                            ElementStyle="{StaticResource StandardColumnElementStyle}"/>
                         <DataGridTextColumn
-                                Header="Damage"
-                                Binding="{Binding Damage}"
-                                Width="0.1*"
-                                ElementStyle="{StaticResource ColumnElementStyle}"/>
+                            Header="Damage"
+                            Binding="{Binding Damage}"
+                            Width="0.1*"
+                            ElementStyle="{StaticResource StandardColumnElementStyle}"/>
                         <DataGridTextColumn
-                                Header="Misc Bonus"
-                                Binding="{Binding Misc}"
-                                Width="0.1*"
-                                ElementStyle="{StaticResource ColumnElementStyle}"/>
+                            Header="Misc Bonus"
+                            Binding="{Binding Misc}"
+                            Width="0.1*"
+                            ElementStyle="{StaticResource StandardColumnElementStyle}"/>
                         <DataGridTextColumn
-                                Header="Damage Type"
-                                Binding="{Binding DamageType}"
-                                Width="0.1*"
-                                ElementStyle="{StaticResource ColumnElementStyle}"/>
+                            Header="Damage Type"
+                            Binding="{Binding DamageType}"
+                            Width="0.1*"
+                            ElementStyle="{StaticResource StandardColumnElementStyle}"/>
                         <DataGridTextColumn
-                                Header="Range"
-                                Binding="{Binding Range}"
-                                Width="0.1*"
-                                ElementStyle="{StaticResource ColumnElementStyle}"/>
+                            Header="Range"
+                            Binding="{Binding Range}"
+                            Width="0.1*"
+                            ElementStyle="{StaticResource StandardColumnElementStyle}"/>
                         <DataGridTextColumn
-                                Header="Notes"
-                                Binding="{Binding Note}"
-                                Width="0.20*"
-                                ElementStyle="{StaticResource ColumnElementStyle}"/>
+                            Header="Notes"
+                            Binding="{Binding Note}"
+                            Width="0.20*"
+                            ElementStyle="{StaticResource StandardColumnElementStyle}"/>
                     </DataGrid.Columns>
                 </components:ConciergeDataGrid>
             </Grid>

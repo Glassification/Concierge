@@ -47,7 +47,7 @@ namespace Concierge
 
         private static void InitializeLogger()
         {
-            Logger = new LocalLogger();
+            Logger = new LocalLogger(ConciergeSettings.IsDebug);
 
             Logger.NewLine();
             Logger.Info($"Starting Concierge v{Constants.AssemblyVersion}");

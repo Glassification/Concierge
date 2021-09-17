@@ -144,7 +144,13 @@
     <Page Update="Properties\Resources\Dictionary\ComboBoxStyling.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Properties\Resources\Dictionary\DataGridStyling.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Properties\Resources\Dictionary\PageFontStyling.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Properties\Resources\Dictionary\TreeViewStyling.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Properties\Resources\Dictionary\WindowFontStyling.xaml">

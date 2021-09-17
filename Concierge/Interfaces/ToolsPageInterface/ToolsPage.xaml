@@ -9,48 +9,7 @@
       KeyDown="Page_KeyDown"
       d:DesignHeight="450" d:DesignWidth="800"
       Title="ToolsPage"
-      
       Style="{StaticResource PageXboxDasboardStyle}">
-
-    <Page.Resources>
-        <Style x:Key="ColumnElementStyle" TargetType="TextBlock">
-            <Setter Property="Margin" Value="10,10,10,10" />
-            <Setter Property="TextWrapping" Value="Wrap"/>
-            <Setter Property="FontSize" Value="15"/>
-        </Style>
-        <Style TargetType="{x:Type DataGridRow}">
-            <Style.Triggers>
-                <Trigger Property="ItemsControl.AlternationIndex" Value="0">
-                    <Setter Property="Background" Value="#FF333333"/>
-                    <Setter Property="Foreground" Value="White"/>
-                </Trigger>
-                <Trigger Property="ItemsControl.AlternationIndex" Value="1">
-                    <Setter Property="Background" Value="#FF3e3e42"/>
-                    <Setter Property="Foreground" Value="White"/>
-                </Trigger>
-            </Style.Triggers>
-        </Style>
-        <Style x:Key="DGHeaderStyle" TargetType="{x:Type DataGrid}">
-            <Setter Property="ColumnHeaderStyle" Value="{DynamicResource DGCHeaderStyle}"/>
-            <Setter Property="Background" Value="#ff1c1636" />
-            <Setter Property="AlternationCount" Value="2" />
-        </Style>
-        <Style x:Key="DGCHeaderStyle" TargetType="DataGridColumnHeader">
-            <Setter Property="Height" Value="50"/>
-            <Setter Property="Background" Value="#17112E" />
-            <Setter Property="Foreground" Value="White"/>
-            <Setter Property="FontSize" Value="20" />
-            <Setter Property="FontWeight" Value="Bold"/>
-            <Setter Property="Margin" Value="7, 7, 7, 7"/>
-            <Setter Property="ContentTemplate">
-                <Setter.Value>
-                    <DataTemplate>
-                        <TextBlock TextWrapping="Wrap" Text="{Binding}"/>
-                    </DataTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-    </Page.Resources>
 
     <Grid>
         <Grid.RowDefinitions>
@@ -780,39 +739,29 @@
                 <!--Roll History-->
                 <Grid Grid.Column="1"
                       Margin="3">
-                    <DataGrid x:Name="RollDiceHistoryDataGrid"
-                              AutoGenerateColumns="False"
-                              VerticalScrollBarVisibility="Auto"
-                              HorizontalScrollBarVisibility="Disabled"
-                              Background="#17112E"
-                              HeadersVisibility="Column"
-                              IsReadOnly="True"
-                              HorizontalGridLinesBrush="Transparent"
-                              VerticalGridLinesBrush="Transparent"
-                              CanUserResizeColumns="False"
-                              CanUserAddRows="False"
-                              MaxHeight="{Binding Path=AbilitiesHeight}"
-                              BorderThickness="0"
-                              Style="{DynamicResource DGHeaderStyle}"
-                              SelectionMode="Single">
+                    <components:ConciergeDataGrid 
+                        x:Name="RollDiceHistoryDataGrid"
+                        Background="#17112E"
+                        MaxHeight="{Binding Path=AbilitiesHeight}"
+                        Style="{DynamicResource ToolsDataGridStyle}">
                         <DataGrid.Columns>
                             <DataGridTextColumn
                                 Header="Roll"
                                 Binding="{Binding Roll}"
                                 Width="33*"
-                                ElementStyle="{StaticResource ColumnElementStyle}"/>
+                                ElementStyle="{StaticResource StandardColumnElementStyle}"/>
                             <DataGridTextColumn
                                 Header="Dice"
                                 Binding="{Binding Dice}"
                                 Width="33*"
-                                ElementStyle="{StaticResource ColumnElementStyle}"/>
+                                ElementStyle="{StaticResource StandardColumnElementStyle}"/>
                             <DataGridTextColumn
                                 Header="Total"
                                 Binding="{Binding Total}"
                                 Width="33*"
-                                ElementStyle="{StaticResource ColumnElementStyle}"/>
+                                ElementStyle="{StaticResource StandardColumnElementStyle}"/>
                         </DataGrid.Columns>
-                    </DataGrid>
+                    </components:ConciergeDataGrid>
                 </Grid>
             </Grid>
         </Grid>
@@ -1109,60 +1058,50 @@
                 <!--Loot Grid-->
                 <Grid Grid.Column="1"
                       Margin="3, 0, 3, 3">
-                    <DataGrid x:Name="DivideLootDataGrid"
-                      AutoGenerateColumns="False"
-                      VerticalScrollBarVisibility="Auto"
-                      HorizontalScrollBarVisibility="Disabled"
-                      Background="#17112E"
-                      HeadersVisibility="Column"
-                      IsReadOnly="True"
-                      HorizontalGridLinesBrush="Transparent"
-                      VerticalGridLinesBrush="Transparent"
-                      CanUserResizeColumns="False"
-                      CanUserAddRows="False"
-                      MaxHeight="{Binding Path=AbilitiesHeight}"
-                      BorderThickness="0"
-                      Style="{DynamicResource DGHeaderStyle}"
-                      SelectionMode="Single"
-                      SelectionChanged="DivideLootDataGrid_SelectionChanged">
+                    <components:ConciergeDataGrid 
+                        x:Name="DivideLootDataGrid"
+                        Background="#17112E"
+                        MaxHeight="{Binding Path=AbilitiesHeight}"
+                        Style="{DynamicResource ToolsDataGridStyle}"
+                        SelectionChanged="DivideLootDataGrid_SelectionChanged">
                         <DataGrid.Columns>
                             <DataGridTextColumn
-                        Header="Player"
-                        Binding="{Binding Name}"
-                        Width="16*"
-                        ElementStyle="{StaticResource ColumnElementStyle}"/>
+                                Header="Player"
+                                Binding="{Binding Name}"
+                                Width="16*"
+                                ElementStyle="{StaticResource StandardColumnElementStyle}"/>
                             <DataGridTextColumn
-                        Header="Total"
-                        Binding="{Binding Total}"
-                        Width="14*"
-                        ElementStyle="{StaticResource ColumnElementStyle}"/>
+                                Header="Total"
+                                Binding="{Binding Total}"
+                                Width="14*"
+                                ElementStyle="{StaticResource StandardColumnElementStyle}"/>
                             <DataGridTextColumn
-                        Header="Platinum"
-                        Binding="{Binding Platinum}"
-                        Width="14*"
-                        ElementStyle="{StaticResource ColumnElementStyle}"/>
+                                Header="Platinum"
+                                Binding="{Binding Platinum}"
+                                Width="14*"
+                                ElementStyle="{StaticResource StandardColumnElementStyle}"/>
                             <DataGridTextColumn
-                        Header="Gold"
-                        Binding="{Binding Gold}"
-                        Width="14*"
-                        ElementStyle="{StaticResource ColumnElementStyle}"/>
+                                Header="Gold"
+                                Binding="{Binding Gold}"
+                                Width="14*"
+                                ElementStyle="{StaticResource StandardColumnElementStyle}"/>
                             <DataGridTextColumn
-                        Header="Electrum"
-                        Binding="{Binding Electrum}"
-                        Width="14*"
-                        ElementStyle="{StaticResource ColumnElementStyle}"/>
+                                Header="Electrum"
+                                Binding="{Binding Electrum}"
+                                Width="14*"
+                                ElementStyle="{StaticResource StandardColumnElementStyle}"/>
                             <DataGridTextColumn
-                        Header="Silver"
-                        Binding="{Binding Silver}"
-                        Width="14*"
-                        ElementStyle="{StaticResource ColumnElementStyle}"/>
+                                Header="Silver"
+                                Binding="{Binding Silver}"
+                                Width="14*"
+                                ElementStyle="{StaticResource StandardColumnElementStyle}"/>
                             <DataGridTextColumn
-                        Header="Copper"
-                        Binding="{Binding Copper}"
-                        Width="14*"
-                        ElementStyle="{StaticResource ColumnElementStyle}"/>
+                                Header="Copper"
+                                Binding="{Binding Copper}"
+                                Width="14*"
+                                ElementStyle="{StaticResource StandardColumnElementStyle}"/>
                         </DataGrid.Columns>
-                    </DataGrid>
+                    </components:ConciergeDataGrid>
                 </Grid>
             </Grid>
         </Grid>

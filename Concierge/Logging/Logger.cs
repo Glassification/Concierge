@@ -22,13 +22,17 @@ namespace Concierge.Logging
         private readonly ManualResetEvent waiting = new (false);
         private readonly Thread loggingThread;
 
-        protected Logger()
+        protected Logger(bool isDebug)
         {
             this.logVerbosity = LogVerbosity.Full;
 
             this.loggingThread = new Thread(new ThreadStart(this.ProcessQueue)) { IsBackground = true };
             this.loggingThread.Start();
+
+            this.IsDebug = isDebug;
         }
+
+        private bool IsDebug { get; init; }
 
         public void Info(string message)
         {
@@ -147,6 +151,11 @@ namespace Concierge.Logging
             }
 
             var logRow = this.ComposeLogRow(message, logType);
+
+            if (this.IsDebug)
+            {
+                System.Diagnostics.Debug.WriteLine(logRow);
+            }
 
             if (this.logVerbosity == LogVerbosity.Full)
             {

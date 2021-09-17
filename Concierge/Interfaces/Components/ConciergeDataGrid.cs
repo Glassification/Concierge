@@ -7,6 +7,7 @@ namespace Concierge.Interfaces.Components
     using System.Collections.Generic;
     using System.Windows;
     using System.Windows.Controls;
+    using System.Windows.Media;
 
     using Concierge.Utility.Extensions;
 
@@ -14,6 +15,23 @@ namespace Concierge.Interfaces.Components
     {
         public static readonly RoutedEvent SortedEvent = EventManager.RegisterRoutedEvent(
             "Sorted", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(ConciergeDataGrid));
+
+        public ConciergeDataGrid()
+            : base()
+        {
+            this.AutoGenerateColumns = false;
+            this.VerticalScrollBarVisibility = ScrollBarVisibility.Auto;
+            this.HorizontalScrollBarVisibility = ScrollBarVisibility.Disabled;
+            this.HeadersVisibility = DataGridHeadersVisibility.Column;
+            this.IsReadOnly = true;
+            this.CanUserResizeColumns = false;
+            this.HorizontalGridLinesBrush = Brushes.Transparent;
+            this.VerticalGridLinesBrush = Brushes.Transparent;
+            this.CanUserAddRows = false;
+            this.BorderThickness = new Thickness(0);
+            this.SelectionMode = DataGridSelectionMode.Single;
+            this.SelectionUnit = DataGridSelectionUnit.FullRow;
+        }
 
         public event RoutedEventHandler Sorted
         {

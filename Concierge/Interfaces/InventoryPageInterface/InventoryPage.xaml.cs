@@ -61,6 +61,7 @@ namespace Concierge.Interfaces.InventoryPageInterface
             {
                 this.DrawInventory();
                 this.InventoryDataGrid.SelectedIndex = index;
+                this.InventoryDataGrid.ScrollIntoView(this.InventoryDataGrid.SelectedItem);
             }
         }
 
@@ -72,6 +73,7 @@ namespace Concierge.Interfaces.InventoryPageInterface
             {
                 this.DrawInventory();
                 this.InventoryDataGrid.SelectedIndex = index;
+                this.InventoryDataGrid.ScrollIntoView(this.InventoryDataGrid.SelectedItem);
             }
         }
 

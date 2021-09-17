@@ -4,6 +4,8 @@
 
 namespace Concierge.Tools
 {
+    using System;
+
     using Concierge.Tools.Enums;
     using Concierge.Utility;
 
@@ -16,7 +18,7 @@ namespace Concierge.Tools
 
         public int[] CurrencyList { get; }
 
-        public double Total => (this.Copper / 100.0) + (this.Silver / 10.0) + (this.Electrum / 5.0) + this.Gold + (this.Platinum * 10.0);
+        public double Total => Math.Round((this.Copper / 100.0) + (this.Silver / 10.0) + (this.Electrum / 5.0) + this.Gold + (this.Platinum * 10.0), 2);
 
         public int Copper
         {

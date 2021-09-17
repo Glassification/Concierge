@@ -10,6 +10,8 @@
                 <ResourceDictionary Source="Properties/Resources/Dictionary/PageFontStyling.xaml"/>
                 <ResourceDictionary Source="Properties/Resources/Dictionary/ButtonStyling.xaml"/>
                 <ResourceDictionary Source="Properties/Resources/Dictionary/ComboBoxStyling.xaml"/>
+                <ResourceDictionary Source="Properties/Resources/Dictionary/DataGridStyling.xaml"/>
+                <ResourceDictionary Source="Properties/Resources/Dictionary/TreeViewStyling.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

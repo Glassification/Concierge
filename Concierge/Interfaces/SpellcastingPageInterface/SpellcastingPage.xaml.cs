@@ -77,6 +77,7 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
             {
                 drawList();
                 dataGrid.SelectedIndex = index;
+                dataGrid.ScrollIntoView(dataGrid.SelectedItem);
 
                 return true;
             }
