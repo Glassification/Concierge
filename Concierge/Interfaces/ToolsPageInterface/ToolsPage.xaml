@@ -181,11 +181,13 @@
                         <!--PlusMinus-->
                         <Grid Grid.Column="2">
                             <components:ConciergeRadioButton 
+                                Style="{StaticResource RadioButtonStyle}"
                                 x:Name="D4Plus"
                                 HorizontalAlignment="Left"
                                 VerticalAlignment="Center"
                                 Margin="30, 0, 0, 0"/>
                             <components:ConciergeRadioButton 
+                                Style="{StaticResource RadioButtonStyle}"
                                 x:Name="D4Minus"
                                 HorizontalAlignment="Right"
                                 VerticalAlignment="Center"
@@ -252,14 +254,18 @@
                         </Grid>
                         <!--PlusMinus-->
                         <Grid Grid.Column="2">
-                            <components:ConciergeRadioButton  x:Name="D6Plus"
-                                         HorizontalAlignment="Left"
-                                         VerticalAlignment="Center"
-                                         Margin="30, 0, 0, 0"/>
-                            <components:ConciergeRadioButton  x:Name="D6Minus"
-                                         HorizontalAlignment="Right"
-                                         VerticalAlignment="Center"
-                                         Margin="0, 0, 30, 0"/>
+                            <components:ConciergeRadioButton
+                                x:Name="D6Plus"
+                                Style="{StaticResource RadioButtonStyle}"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center"
+                                Margin="30, 0, 0, 0"/>
+                            <components:ConciergeRadioButton
+                                x:Name="D6Minus"
+                                Style="{StaticResource RadioButtonStyle}"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Center"
+                                Margin="0, 0, 30, 0"/>
                         </Grid>
                         <!--Modifier-->
                         <Grid Grid.Column="3">
@@ -322,14 +328,18 @@
                         </Grid>
                         <!--PlusMinus-->
                         <Grid Grid.Column="2">
-                            <components:ConciergeRadioButton  x:Name="D8Plus"
-                                         HorizontalAlignment="Left"
-                                         VerticalAlignment="Center"
-                                         Margin="30, 0, 0, 0"/>
-                            <components:ConciergeRadioButton  x:Name="D8Minus"
-                                         HorizontalAlignment="Right"
-                                         VerticalAlignment="Center"
-                                         Margin="0, 0, 30, 0"/>
+                            <components:ConciergeRadioButton  
+                                x:Name="D8Plus"
+                                Style="{StaticResource RadioButtonStyle}"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center"
+                                Margin="30, 0, 0, 0"/>
+                            <components:ConciergeRadioButton 
+                                x:Name="D8Minus"
+                                Style="{StaticResource RadioButtonStyle}"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Center"
+                                Margin="0, 0, 30, 0"/>
                         </Grid>
                         <!--Modifier-->
                         <Grid Grid.Column="3">
@@ -392,14 +402,18 @@
                         </Grid>
                         <!--PlusMinus-->
                         <Grid Grid.Column="2">
-                            <components:ConciergeRadioButton  x:Name="D10Plus"
-                                         HorizontalAlignment="Left"
-                                         VerticalAlignment="Center"
-                                         Margin="30, 0, 0, 0"/>
-                            <components:ConciergeRadioButton  x:Name="D10Minus"
-                                         HorizontalAlignment="Right"
-                                         VerticalAlignment="Center"
-                                         Margin="0, 0, 30, 0"/>
+                            <components:ConciergeRadioButton  
+                                x:Name="D10Plus"
+                                Style="{StaticResource RadioButtonStyle}"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center"
+                                Margin="30, 0, 0, 0"/>
+                            <components:ConciergeRadioButton  
+                                x:Name="D10Minus"
+                                Style="{StaticResource RadioButtonStyle}"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Center"
+                                Margin="0, 0, 30, 0"/>
                         </Grid>
                         <!--Modifier-->
                         <Grid Grid.Column="3">
@@ -462,14 +476,18 @@
                         </Grid>
                         <!--PlusMinus-->
                         <Grid Grid.Column="2">
-                            <components:ConciergeRadioButton  x:Name="D100Plus"
-                                         HorizontalAlignment="Left"
-                                         VerticalAlignment="Center"
-                                         Margin="30, 0, 0, 0"/>
-                            <components:ConciergeRadioButton  x:Name="D100Minus"
-                                         HorizontalAlignment="Right"
-                                         VerticalAlignment="Center"
-                                         Margin="0, 0, 30, 0"/>
+                            <components:ConciergeRadioButton 
+                                x:Name="D100Plus"
+                                Style="{StaticResource RadioButtonStyle}"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center"
+                                Margin="30, 0, 0, 0"/>
+                            <components:ConciergeRadioButton  
+                                x:Name="D100Minus"
+                                Style="{StaticResource RadioButtonStyle}"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Center"
+                                Margin="0, 0, 30, 0"/>
                         </Grid>
                         <!--Modifier-->
                         <Grid Grid.Column="3">
@@ -532,14 +550,18 @@
                         </Grid>
                         <!--PlusMinus-->
                         <Grid Grid.Column="2">
-                            <components:ConciergeRadioButton  x:Name="D12Plus"
-                                         HorizontalAlignment="Left"
-                                         VerticalAlignment="Center"
-                                         Margin="30, 0, 0, 0"/>
-                            <components:ConciergeRadioButton  x:Name="D12Minus"
-                                         HorizontalAlignment="Right"
-                                         VerticalAlignment="Center"
-                                         Margin="0, 0, 30, 0"/>
+                            <components:ConciergeRadioButton  
+                                x:Name="D12Plus"
+                                Style="{StaticResource RadioButtonStyle}"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center"
+                                Margin="30, 0, 0, 0"/>
+                            <components:ConciergeRadioButton  
+                                x:Name="D12Minus"
+                                Style="{StaticResource RadioButtonStyle}"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Center"
+                                Margin="0, 0, 30, 0"/>
                         </Grid>
                         <!--Modifier-->
                         <Grid Grid.Column="3">
@@ -602,14 +624,18 @@
                         </Grid>
                         <!--PlusMinus-->
                         <Grid Grid.Column="2">
-                            <components:ConciergeRadioButton  x:Name="D20Plus"
-                                         HorizontalAlignment="Left"
-                                         VerticalAlignment="Center"
-                                         Margin="30, 0, 0, 0"/>
-                            <components:ConciergeRadioButton  x:Name="D20Minus"
-                                         HorizontalAlignment="Right"
-                                         VerticalAlignment="Center"
-                                         Margin="0, 0, 30, 0"/>
+                            <components:ConciergeRadioButton 
+                                x:Name="D20Plus"
+                                Style="{StaticResource RadioButtonStyle}"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center"
+                                Margin="30, 0, 0, 0"/>
+                            <components:ConciergeRadioButton  
+                                x:Name="D20Minus"
+                                Style="{StaticResource RadioButtonStyle}"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Center"
+                                Margin="0, 0, 30, 0"/>
                         </Grid>
                         <!--Modifier-->
                         <Grid Grid.Column="3">
@@ -672,14 +698,18 @@
                         </Grid>
                         <!--PlusMinus-->
                         <Grid Grid.Column="2">
-                            <components:ConciergeRadioButton  x:Name="DxPlus"
-                                         HorizontalAlignment="Left"
-                                         VerticalAlignment="Center"
-                                         Margin="30, 0, 0, 0"/>
-                            <components:ConciergeRadioButton  x:Name="DxMinus"
-                                         HorizontalAlignment="Right"
-                                         VerticalAlignment="Center"
-                                         Margin="0, 0, 30, 0"/>
+                            <components:ConciergeRadioButton  
+                                x:Name="DxPlus"
+                                Style="{StaticResource RadioButtonStyle}"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center"
+                                Margin="30, 0, 0, 0"/>
+                            <components:ConciergeRadioButton  
+                                x:Name="DxMinus"
+                                Style="{StaticResource RadioButtonStyle}"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Center"
+                                Margin="0, 0, 30, 0"/>
                         </Grid>
                         <!--Modifier-->
                         <Grid Grid.Column="3">
