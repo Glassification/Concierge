@@ -671,10 +671,11 @@
 
                                 <!--Proficiency-->
                                 <Grid Grid.Column="0">
-                                    <Rectangle x:Name="StrengthProficiencyBox"
-                                           Stroke="#ff06011f"
-                                           Stretch="Uniform"
-                                           Margin="3"/>
+                                    <Rectangle 
+                                        x:Name="StrengthProficiencyBox"
+                                        Stroke="#ff06011f"
+                                        Stretch="Uniform"
+                                        Margin="3"/>
                                 </Grid>
 
                                 <!--Name-->

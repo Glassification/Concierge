@@ -103,16 +103,7 @@ namespace Concierge.Utility
 
         public static void SetProficiencyBoxStyle(bool flag, Rectangle rectangle)
         {
-            if (flag)
-            {
-                rectangle.Fill = Colours.ProficiencyBrush;
-                rectangle.Stroke = Colours.ToggleBoxBrush;
-            }
-            else
-            {
-                rectangle.Stroke = Colours.ToggleBoxBrush;
-                rectangle.Fill = Brushes.Transparent;
-            }
+            rectangle.Fill = flag ? Colours.ProficiencyBrush : Brushes.Transparent;
         }
 
         public static Brush SetHealthStyle(Vitality vitality)

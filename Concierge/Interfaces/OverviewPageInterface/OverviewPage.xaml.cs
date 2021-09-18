@@ -531,11 +531,19 @@ namespace Concierge.Interfaces.OverviewPageInterface
 
         private void ToggleBox_MouseEnter(object sender, MouseEventArgs e)
         {
+            var rectangle = sender as Rectangle;
+            rectangle.Stroke = Colours.RectangleHighlight;
+            rectangle.StrokeThickness = 1;
+
             Mouse.OverrideCursor = Cursors.Hand;
         }
 
         private void ToggleBox_MouseLeave(object sender, MouseEventArgs e)
         {
+            var rectangle = sender as Rectangle;
+            rectangle.Stroke = Colours.RectangleOutline;
+            rectangle.StrokeThickness = 1;
+
             Mouse.OverrideCursor = Cursors.Arrow;
         }
 
