@@ -84,6 +84,7 @@ namespace Concierge.Interfaces.ToolsPageInterface
         private void GetPlayers()
         {
             _ = int.TryParse(this.PlayersInput.Text, out int numPlayers);
+            numPlayers = Math.Max(0, numPlayers);
             this.Players.Clear();
 
             for (int i = 0; i < numPlayers; i++)
@@ -106,6 +107,12 @@ namespace Concierge.Interfaces.ToolsPageInterface
             _ = int.TryParse(this.ElectrumInput.Text, out int ep);
             _ = int.TryParse(this.GoldInput.Text, out int gp);
             _ = int.TryParse(this.PlatinumInput.Text, out int pp);
+
+            cp = Math.Max(0, cp);
+            sp = Math.Max(0, sp);
+            ep = Math.Max(0, ep);
+            gp = Math.Max(0, gp);
+            pp = Math.Max(0, pp);
 
             return new Loot(cp, sp, ep, gp, pp);
         }
@@ -269,7 +276,9 @@ namespace Concierge.Interfaces.ToolsPageInterface
 
         private void Input_LostFocus(object sender, RoutedEventArgs e)
         {
-            if (!int.TryParse(((TextBox)sender).Text, out _))
+            var isNumber = int.TryParse(((TextBox)sender).Text, out int num);
+
+            if (!isNumber || num <= 0)
             {
                 ((TextBox)sender).Text = Zero;
             }

@@ -26,6 +26,15 @@
             <Trigger Property="IsSelected" Value="True">
                 <Setter Property="Background" Value="#1C3947"/>
             </Trigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding RelativeSource={RelativeSource Self}, Path=IsSelected}" Value="True" />
+                    <Condition Binding="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=DataGrid}, Path=IsKeyboardFocusWithin}" Value="False" />
+                </MultiDataTrigger.Conditions>
+                <MultiDataTrigger.Setters>
+                    <Setter Property="Foreground" Value="White" />
+                </MultiDataTrigger.Setters>
+            </MultiDataTrigger>
         </Style.Triggers>
     </Style>
 

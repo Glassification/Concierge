@@ -8,7 +8,6 @@ namespace Concierge.Interfaces
     using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Input;
-    using System.Windows.Media;
     using System.Windows.Navigation;
 
     using Concierge.Interfaces.AbilitiesPageInterface;

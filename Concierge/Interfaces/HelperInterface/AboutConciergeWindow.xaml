@@ -19,9 +19,9 @@
         Style="{StaticResource WindowXboxDasboardStyle}">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="2*"/>
-            <RowDefinition Height="6*"/>
-            <RowDefinition Height="2*"/>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="135"/>
+            <RowDefinition Height="70"/>
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0">
