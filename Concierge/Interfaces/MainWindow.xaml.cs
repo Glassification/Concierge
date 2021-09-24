@@ -34,6 +34,7 @@ namespace Concierge.Interfaces
     public partial class MainWindow : Window
     {
         private readonly FileAccessService fileAccessService = new ();
+        private readonly CommandLineService commandLineService = new ();
         private readonly SettingsWindow settingsWindow = new ();
         private readonly ModifyPropertiesWindow modifyPropertiesWindow = new ();
         private readonly AboutConciergeWindow aboutConciergeWindow = new ();
@@ -69,6 +70,7 @@ namespace Concierge.Interfaces
                 this.autosaveTimer.Start(Constants.AutosaveIntervals[ConciergeSettings.AutosaveInterval]);
             }
 
+            this.commandLineService.ReadCommandLineArgs();
             this.DrawAll();
 
             Program.Logger.Info($"{nameof(MainWindow)} loaded.");

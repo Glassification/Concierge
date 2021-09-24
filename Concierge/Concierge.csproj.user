@@ -156,6 +156,9 @@
     <Page Update="Properties\Resources\Dictionary\RadioButtonStyling.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Properties\Resources\Dictionary\ScrollbarStyling.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Properties\Resources\Dictionary\TreeViewStyling.xaml">
       <SubType>Designer</SubType>
     </Page>

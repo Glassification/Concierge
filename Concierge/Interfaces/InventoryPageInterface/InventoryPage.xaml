@@ -97,7 +97,6 @@
             <components:ConciergeDataGrid 
                 x:Name="InventoryDataGrid"
                 Background="#17112E"
-                MaxHeight="{Binding Path=InventoryHeight}"
                 Style="{DynamicResource StandardDataGridStyle}"
                 Sorted="InventoryDataGrid_Sorted">
                 <DataGrid.Columns>

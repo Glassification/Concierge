@@ -8,6 +8,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
     using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Input;
+    using System.Windows.Media;
     using System.Windows.Shapes;
 
     using Concierge.Character;
@@ -532,7 +533,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
         private void ToggleBox_MouseEnter(object sender, MouseEventArgs e)
         {
             var rectangle = sender as Rectangle;
-            rectangle.Stroke = Colours.RectangleHighlight;
+            rectangle.Stroke = Colours.RectangleBorderHighlight;
             rectangle.StrokeThickness = 1;
 
             Mouse.OverrideCursor = Cursors.Hand;
@@ -541,7 +542,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
         private void ToggleBox_MouseLeave(object sender, MouseEventArgs e)
         {
             var rectangle = sender as Rectangle;
-            rectangle.Stroke = Colours.RectangleOutline;
+            rectangle.Stroke = Colours.RectangleBorder;
             rectangle.StrokeThickness = 1;
 
             Mouse.OverrideCursor = Cursors.Arrow;

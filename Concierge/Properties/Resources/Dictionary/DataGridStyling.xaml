@@ -43,6 +43,10 @@
         <Setter Property="ColumnHeaderStyle" Value="{DynamicResource StandardDataGridHeaderStyle}"/>
         <Setter Property="Background" Value="#ff1c1636" />
         <Setter Property="AlternationCount" Value="2" />
+        <Setter Property="ScrollViewer.IsEnabled" Value="True"/>
+        <Setter Property="ScrollViewer.PanningDeceleration" Value="1000" />
+        <Setter Property="ScrollViewer.PanningMode" Value="Both" />
+        <Setter Property="ScrollViewer.PanningRatio" Value="2" />
     </Style>
     <Style x:Key="StandardDataGridHeaderStyle" TargetType="DataGridColumnHeader">
         <Setter Property="Height" Value="50"/>

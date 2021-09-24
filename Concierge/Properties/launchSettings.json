@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Concierge": {
+      "commandName": "Project",
+      "commandLineArgs": "\"C:\\Users\\TomBe\\source\\repos\\Concierge\\Concierge\\Properties\\Resources\\Files\\Testing Caleston.ccs\""
+    }
+  }
+}

@@ -4,22 +4,27 @@
 
 namespace Concierge.Services
 {
+    using System;
+
     using Concierge.Persistence;
 
     public class CommandLineService
     {
+        private readonly string[] commandLineArgs;
+
         public CommandLineService()
         {
+            this.commandLineArgs = Environment.GetCommandLineArgs();
         }
 
-        public void ReadCommandLineArgs(string[] args)
+        public void ReadCommandLineArgs()
         {
-            if (args.Length < 1)
+            if (this.commandLineArgs.Length < 2)
             {
                 return;
             }
 
-            Program.CcsFile = CharacterReadWriter.Read(args[0]);
+            Program.CcsFile = CharacterReadWriter.Read(this.commandLineArgs[1]);
         }
     }
 }
