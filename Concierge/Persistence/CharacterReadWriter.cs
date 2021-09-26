@@ -46,7 +46,7 @@ namespace Concierge.Persistence
             }
         }
 
-        public static void Write(CcsFile ccsFile)
+        public static bool Write(CcsFile ccsFile)
         {
             try
             {
@@ -56,17 +56,21 @@ namespace Concierge.Persistence
                 File.WriteAllText(ccsFile.AbsolutePath, rawJson);
 
                 Program.Unmodify();
+
+                return true;
             }
             catch (Exception ex)
             {
                 Program.ErrorService.LogError(ex, Severity.Release);
                 Program.Modify();
+
+                return false;
             }
         }
 
         private static bool CheckVersion(string version)
         {
-            if (version.IsNullOrWhiteSpace() || version.CompareTo(Constants.AssemblyVersion) < 0)
+            if (version.IsNullOrWhiteSpace() || CompareMajorMinorVersion(version))
             {
                 var message = string.Format(
                     "This file was saved with version {0} of Concierge. Current version is {1}.\nContinue loading?",
@@ -93,6 +97,24 @@ namespace Concierge.Persistence
             }
 
             return true;
+        }
+
+        private static bool CompareMajorMinorVersion(string fileVersion)
+        {
+            var fileVersions = fileVersion.Split('.');
+            var programVersions = Constants.AssemblyVersion.Split('.');
+
+            if (fileVersions.Length != 3 || programVersions.Length != 3)
+            {
+                return true;
+            }
+
+            if (!fileVersions[0].Equals(programVersions[0]) || !fileVersions[1].Equals(programVersions[1]))
+            {
+                return true;
+            }
+
+            return false;
         }
     }
 }

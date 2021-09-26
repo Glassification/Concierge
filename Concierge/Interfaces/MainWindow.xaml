@@ -235,8 +235,15 @@
                     <DropShadowEffect BlurRadius="2" ShadowDepth="1" Color="#FFAEAEAE"/>
                 </Grid.Effect>
                 <StackPanel>
-                    <ListView x:Name="ListViewMenu" BorderThickness="0" Foreground="White" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Background="#FF191919">
-                        <ListViewItem x:Name="ItemOverview" Height="60" Selector.IsSelected="True" Selected="ItemOverview_Selected">
+                    <ListView 
+                        x:Name="ListViewMenu" 
+                        BorderThickness="0" 
+                        Foreground="White" 
+                        ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
+                        Background="#FF191919"
+                        SelectionChanged="ListViewMenu_SelectionChanged"
+                        SelectionMode="Single">
+                        <ListViewItem x:Name="ItemOverview" Height="60" Selected="ItemOverview_Selected">
                             <StackPanel Orientation="Horizontal">
                                 <materialDesign:PackIcon Kind="Globe" Height="25" Width="25" Margin="10"/>
                                 <TextBlock Text="Overview" VerticalAlignment="Center" Margin="20 10"/>

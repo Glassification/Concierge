@@ -4,6 +4,7 @@
 
 namespace Concierge.Services
 {
+    using Concierge.Interfaces.HelperInterface;
     using Concierge.Persistence;
     using Microsoft.Win32;
 
@@ -17,7 +18,7 @@ namespace Concierge.Services
         private const string SaveFilter = "CCS (*.ccs)|*.ccs";
         private const string DefaultFileName = "New Character.ccs";
 
-        // private readonly SaveStatusWindow saveStatusWindow = new ();
+        private readonly SaveStatusWindow saveStatusWindow = new ();
         private readonly OpenFileDialog ccsOpenFileDialog;
         private readonly OpenFileDialog imageOpenFileDialog;
         private readonly SaveFileDialog saveFileDialog;
@@ -70,8 +71,7 @@ namespace Concierge.Services
                 CharacterReadWriter.Write(ccsFile);
             }
 
-            // TODO - Figure out why this is triggering a focus reset to overview page.
-            // this.saveStatusWindow.ShowWindow();
+            this.saveStatusWindow.ShowWindow();
         }
     }
 }

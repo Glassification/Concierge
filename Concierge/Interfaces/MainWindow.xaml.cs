@@ -58,8 +58,10 @@ namespace Concierge.Interfaces
             this.InitializeComponent();
 
             this.GridContent.Width = GridContentWidthClose;
+            this.IgnoreListItemSelectionChanged = true;
 
             this.CollapseAll();
+            this.ListViewMenu.SelectedIndex = 0;
             this.overviewPage.Visibility = Visibility.Visible;
             this.FrameContent.Content = this.overviewPage;
 
@@ -86,6 +88,8 @@ namespace Concierge.Interfaces
         private static bool IsShift => (Keyboard.Modifiers & ModifierKeys.Shift) == ModifierKeys.Shift;
 
         private bool IgnoreSecondPress { get; set; }
+
+        private bool IgnoreListItemSelectionChanged { get; set; }
 
         public void CloseWindow()
         {
@@ -555,6 +559,17 @@ namespace Concierge.Interfaces
         private void MaximizeButton_Click(object sender, RoutedEventArgs e)
         {
             this.WindowState = WindowState.Maximized;
+        }
+
+        private void ListViewMenu_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (!this.IgnoreListItemSelectionChanged)
+            {
+                this.IgnoreListItemSelectionChanged = true;
+                //this.MoveSelection(ConciergePage.Tools);
+            }
+
+            this.IgnoreListItemSelectionChanged = true;
         }
     }
 }

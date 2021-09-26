@@ -137,6 +137,11 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
 
         private void ButtonUp_Click(object sender, RoutedEventArgs e)
         {
+            if (this.SelectedDataGrid == null)
+            {
+                return;
+            }
+
             var equippedItems = Utilities.GetPropertyValue<List<Inventory>>(Program.CcsFile.Character.EquippedItems, this.SelectedDataGrid.Tag as string);
             var index = this.SelectedDataGrid.NextItem(equippedItems, 0, -1);
 
@@ -150,6 +155,11 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
 
         private void ButtonDown_Click(object sender, RoutedEventArgs e)
         {
+            if (this.SelectedDataGrid == null)
+            {
+                return;
+            }
+
             var equippedItems = Utilities.GetPropertyValue<List<Inventory>>(Program.CcsFile.Character.EquippedItems, this.SelectedDataGrid.Tag as string);
             var index = this.SelectedDataGrid.NextItem(equippedItems, equippedItems.Count - 1, 1);
 

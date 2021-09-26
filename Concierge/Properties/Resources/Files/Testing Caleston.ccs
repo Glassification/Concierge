@@ -1101,7 +1101,7 @@
         "Range": "20 / 60",
         "Note": "Finesse, Light, Thrown",
         "Weight": 1.0,
-        "WeaponType": 3,
+        "WeaponType": 4,
         "ProficiencyOverride": false,
         "IsInBagOfHolding": true,
         "Id": "31a7e817-c926-47b8-bee4-892f54061515"
@@ -1115,7 +1115,7 @@
         "Range": "20 / 60",
         "Note": "Finesse, Light, Thrown",
         "Weight": 1.0,
-        "WeaponType": 3,
+        "WeaponType": 4,
         "ProficiencyOverride": false,
         "IsInBagOfHolding": true,
         "Id": "c89e0531-fb83-4b84-b176-f8aa17848069"
@@ -1129,7 +1129,7 @@
         "Range": "5 / 5",
         "Note": "Finesse, Gain the Jump spell.",
         "Weight": 2.0,
-        "WeaponType": 26,
+        "WeaponType": 27,
         "ProficiencyOverride": false,
         "IsInBagOfHolding": false,
         "Id": "1473ba09-7614-46ed-b5bb-68594e8a2cb4"
@@ -1143,7 +1143,7 @@
         "Range": "80 / 320",
         "Note": "Ammo, Two-Handed",
         "Weight": 2.0,
-        "WeaponType": 28,
+        "WeaponType": 29,
         "ProficiencyOverride": false,
         "IsInBagOfHolding": true,
         "Id": "399bb12c-858a-423f-a01a-514a830c7f06"
@@ -1157,7 +1157,7 @@
         "Range": "20 / 60",
         "Note": "Finesse, light, thrown",
         "Weight": 1.0,
-        "WeaponType": 3,
+        "WeaponType": 4,
         "ProficiencyOverride": false,
         "IsInBagOfHolding": true,
         "Id": "9716ae7b-928f-422a-8b66-240132fb5160"
@@ -1171,7 +1171,7 @@
         "Range": "80 / 320",
         "Note": "Ammunition, two-handed. Wen you see a creature casting a spell within 60' while holding this bow, can cast Spelldrinker. Cannot be used again until a short or long rest.",
         "Weight": 2.0,
-        "WeaponType": 28,
+        "WeaponType": 29,
         "ProficiencyOverride": false,
         "IsInBagOfHolding": false,
         "Id": "c524a3af-5d8d-4e8f-9f23-0c762cf21b2c"
@@ -1191,5 +1191,5 @@
       "UseCustomImage": true
     }
   },
-  "Version": "3.4.22"
+  "Version": "3.4.23"
 }

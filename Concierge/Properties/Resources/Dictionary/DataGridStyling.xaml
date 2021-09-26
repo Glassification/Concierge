@@ -136,7 +136,7 @@
     <Style x:Key="SpellcastingColumnElementStyle" TargetType="TextBlock">
         <Setter Property="Margin" Value="10,10,10,10" />
         <Setter Property="TextWrapping" Value="Wrap"/>
-        <Setter Property="FontSize" Value="13"/>
+        <Setter Property="FontSize" Value="12"/>
     </Style>
     
     <!--Tools-->
