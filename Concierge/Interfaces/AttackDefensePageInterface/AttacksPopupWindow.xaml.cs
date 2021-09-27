@@ -1,8 +1,8 @@
-﻿// <copyright file="EquipmentPopupWindow.xaml.cs" company="Thomas Beckett">
+﻿// <copyright file="AttacksPopupWindow.xaml.cs" company="Thomas Beckett">
 // Copyright (c) Thomas Beckett. All rights reserved.
 // </copyright>
 
-namespace Concierge.Interfaces.EquipmentPageInterface
+namespace Concierge.Interfaces.AttackDefensePageInterface
 {
     using System.ComponentModel;
     using System.Windows;
@@ -13,9 +13,9 @@ namespace Concierge.Interfaces.EquipmentPageInterface
     /// <summary>
     /// Interaction logic for EquipmentPopupWindow.xaml.
     /// </summary>
-    public partial class EquipmentPopupWindow : Window
+    public partial class AttacksPopupWindow : Window
     {
-        public EquipmentPopupWindow()
+        public AttacksPopupWindow()
         {
             this.InitializeComponent();
         }
@@ -36,7 +36,7 @@ namespace Concierge.Interfaces.EquipmentPageInterface
             this.Hide();
         }
 
-        private void WeaponButton_Click(object sender, RoutedEventArgs e)
+        private void AttackButton_Click(object sender, RoutedEventArgs e)
         {
             this.ButtonPress = PopupButtons.AddWeapon;
             this.Hide();

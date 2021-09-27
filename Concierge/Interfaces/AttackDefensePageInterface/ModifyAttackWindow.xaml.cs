@@ -1,8 +1,8 @@
-﻿// <copyright file="ModifyWeaponWindow.xaml.cs" company="Thomas Beckett">
+﻿// <copyright file="ModifyAttackWindow.xaml.cs" company="Thomas Beckett">
 // Copyright (c) Thomas Beckett. All rights reserved.
 // </copyright>
 
-namespace Concierge.Interfaces.EquipmentPageInterface
+namespace Concierge.Interfaces.AttackDefensePageInterface
 {
     using System;
     using System.Collections.Generic;
@@ -20,12 +20,12 @@ namespace Concierge.Interfaces.EquipmentPageInterface
     /// <summary>
     /// Interaction logic for ModifyWeaponWindow.xaml.
     /// </summary>
-    public partial class ModifyWeaponWindow : Window, IConciergeWindow
+    public partial class ModifyAttackWindow : Window, IConciergeWindow
     {
-        public ModifyWeaponWindow()
+        public ModifyAttackWindow()
         {
             this.InitializeComponent();
-            this.WeaponComboBox.ItemsSource = Constants.Weapons;
+            this.AttackComboBox.ItemsSource = Constants.Weapons;
             this.TypeComboBox.ItemsSource = Enum.GetValues(typeof(WeaponTypes)).Cast<WeaponTypes>();
             this.AbilityComboBox.ItemsSource = Enum.GetValues(typeof(Abilities)).Cast<Abilities>();
             this.DamageTypeComboBox.ItemsSource = Enum.GetValues(typeof(DamageTypes)).Cast<DamageTypes>();
@@ -49,7 +49,7 @@ namespace Concierge.Interfaces.EquipmentPageInterface
             this.ApplyButton.Visibility = Visibility.Visible;
             this.OkButton.Visibility = Visibility.Collapsed;
             this.Editing = false;
-            this.HeaderTextBlock.Text = "Add Weapon";
+            this.HeaderTextBlock.Text = "Add Attack";
 
             this.ClearFields();
             this.ShowDialog();
@@ -61,7 +61,7 @@ namespace Concierge.Interfaces.EquipmentPageInterface
         {
             this.Weapons = weapons;
             this.Editing = false;
-            this.HeaderTextBlock.Text = "Add Weapon";
+            this.HeaderTextBlock.Text = "Add Attack";
             this.ApplyButton.Visibility = Visibility.Visible;
             this.OkButton.Visibility = Visibility.Visible;
 
@@ -71,7 +71,7 @@ namespace Concierge.Interfaces.EquipmentPageInterface
 
         public void ShowEdit(Weapon weapon)
         {
-            this.HeaderTextBlock.Text = "Edit Weapon";
+            this.HeaderTextBlock.Text = "Edit Attack";
             this.Editing = true;
             this.SelectedWeapon = weapon;
             this.ApplyButton.Visibility = Visibility.Collapsed;
@@ -100,7 +100,7 @@ namespace Concierge.Interfaces.EquipmentPageInterface
             this.BagOfHoldingCheckBox.UpdatingValue();
             this.ProficencyOverrideCheckBox.UpdatingValue();
 
-            this.WeaponComboBox.Text = weapon.Name;
+            this.AttackComboBox.Text = weapon.Name;
             this.TypeComboBox.Text = weapon.WeaponType.ToString();
             this.AbilityComboBox.Text = weapon.Ability.ToString();
             this.DamageTextBox.Text = weapon.Damage;
@@ -122,7 +122,7 @@ namespace Concierge.Interfaces.EquipmentPageInterface
             this.BagOfHoldingCheckBox.UpdatingValue();
             this.ProficencyOverrideCheckBox.UpdatingValue();
 
-            this.WeaponComboBox.Text = string.Empty;
+            this.AttackComboBox.Text = string.Empty;
             this.TypeComboBox.Text = WeaponTypes.None.ToString();
             this.AbilityComboBox.Text = Abilities.NONE.ToString();
             this.DamageTextBox.Text = string.Empty;
@@ -140,7 +140,7 @@ namespace Concierge.Interfaces.EquipmentPageInterface
 
         private void UpdateWeapon(Weapon weapon)
         {
-            weapon.Name = this.WeaponComboBox.Text;
+            weapon.Name = this.AttackComboBox.Text;
             weapon.WeaponType = (WeaponTypes)Enum.Parse(typeof(WeaponTypes), this.TypeComboBox.Text);
             weapon.Ability = (Abilities)Enum.Parse(typeof(Abilities), this.AbilityComboBox.Text);
             weapon.Damage = this.DamageTextBox.Text;
@@ -157,7 +157,7 @@ namespace Concierge.Interfaces.EquipmentPageInterface
         {
             return new Weapon()
             {
-                Name = this.WeaponComboBox.Text,
+                Name = this.AttackComboBox.Text,
                 WeaponType = (WeaponTypes)Enum.Parse(typeof(WeaponTypes), this.TypeComboBox.Text),
                 Ability = (Abilities)Enum.Parse(typeof(Abilities), this.AbilityComboBox.Text),
                 Damage = this.DamageTextBox.Text,
@@ -221,11 +221,11 @@ namespace Concierge.Interfaces.EquipmentPageInterface
             this.Hide();
         }
 
-        private void WeaponComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void AttackComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (this.WeaponComboBox.SelectedItem != null)
+            if (this.AttackComboBox.SelectedItem != null)
             {
-                this.FillFields(this.WeaponComboBox.SelectedItem as Weapon);
+                this.FillFields(this.AttackComboBox.SelectedItem as Weapon);
             }
         }
     }

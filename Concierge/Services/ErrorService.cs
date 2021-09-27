@@ -10,14 +10,12 @@ namespace Concierge.Services
     using Concierge.Exceptions;
     using Concierge.Exceptions.Enums;
     using Concierge.Interfaces.Enums;
-    using Concierge.Interfaces.HelperInterface;
     using Concierge.Logging;
+    using Concierge.Tools;
     using Concierge.Utility;
 
     public class ErrorService
     {
-        private readonly ConciergeMessageWindow conciergeMessageWindow = new ();
-
         public ErrorService(Logger logger)
         {
             Guard.IsNull(logger, nameof(logger));
@@ -56,7 +54,7 @@ namespace Concierge.Services
 
         private void ShowMessage(string message)
         {
-            this.conciergeMessageWindow.ShowWindow(
+            ConciergeMessageBox.Show(
                 message,
                 "Error",
                 ConciergeWindowButtons.Ok,

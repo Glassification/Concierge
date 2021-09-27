@@ -11,7 +11,7 @@ namespace Concierge.Interfaces.CompanionPageInterface
     using System.Windows.Media;
 
     using Concierge.Character.Items;
-    using Concierge.Interfaces.EquipmentPageInterface;
+    using Concierge.Interfaces.AttackDefensePageInterface;
     using Concierge.Interfaces.OverviewPageInterface;
     using Concierge.Utility;
 
@@ -24,7 +24,7 @@ namespace Concierge.Interfaces.CompanionPageInterface
         private readonly ModifyHealthWindow modifyHealthWindow = new ();
         private readonly ModifyHpWindow modifyHpWindow = new ();
         private readonly ModifyHitDiceWindow modifyHitDiceWindow = new ();
-        private readonly ModifyWeaponWindow modifyWeaponWindow = new ();
+        private readonly ModifyAttackWindow modifyAttackWindow = new ();
         private readonly ModifyPropertiesWindow modifyPropertiesWindow = new ();
 
         public CompanionPage()
@@ -34,7 +34,7 @@ namespace Concierge.Interfaces.CompanionPageInterface
             this.modifyAttributesWindow.ApplyChanges += this.Window_ApplyChanges;
             this.modifyHealthWindow.ApplyChanges += this.Window_ApplyChanges;
             this.modifyHitDiceWindow.ApplyChanges += this.Window_ApplyChanges;
-            this.modifyWeaponWindow.ApplyChanges += this.Window_ApplyChanges;
+            this.modifyAttackWindow.ApplyChanges += this.Window_ApplyChanges;
             this.modifyPropertiesWindow.ApplyChanges += this.Window_ApplyChanges;
         }
 
@@ -207,7 +207,7 @@ namespace Concierge.Interfaces.CompanionPageInterface
 
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
-            this.modifyWeaponWindow.ShowAdd(Program.CcsFile.Character.Companion.Attacks);
+            this.modifyAttackWindow.ShowAdd(Program.CcsFile.Character.Companion.Attacks);
             this.DrawAttacks();
         }
 
@@ -215,7 +215,7 @@ namespace Concierge.Interfaces.CompanionPageInterface
         {
             if (this.WeaponDataGrid.SelectedItem != null)
             {
-                this.modifyWeaponWindow.ShowEdit(this.WeaponDataGrid.SelectedItem as Weapon);
+                this.modifyAttackWindow.ShowEdit(this.WeaponDataGrid.SelectedItem as Weapon);
                 this.DrawAttacks();
             }
         }

@@ -7,9 +7,9 @@ namespace Concierge.Tools
     using Concierge.Character;
     using Concierge.Interfaces;
     using Concierge.Interfaces.AbilitiesPageInterface;
+    using Concierge.Interfaces.AttackDefensePageInterface;
     using Concierge.Interfaces.DetailsPageInterface;
     using Concierge.Interfaces.Enums;
-    using Concierge.Interfaces.EquipmentPageInterface;
     using Concierge.Interfaces.EquippedItemsPageInterface;
     using Concierge.Interfaces.InventoryPageInterface;
     using Concierge.Interfaces.OverviewPageInterface;
@@ -29,7 +29,7 @@ namespace Concierge.Tools
         private readonly ModifyLanguagesWindow modifyLanguagesWindow = new ();
         private readonly ModifyClassResourceWindow modifyClassResourceWindow = new ();
         private readonly ModifyArmorWindow modifyArmorWindow = new ();
-        private readonly ModifyWeaponWindow modifyWeaponWindow = new ();
+        private readonly ModifyAttackWindow modifyAttackWindow = new ();
         private readonly ModifyAmmoWindow modifyAmmoWindow = new ();
         private readonly ModifyInventoryWindow modifyInventoryWindow = new ();
         private readonly ModifyEquippedItemsWindow modifyEquippedItemsWindow = new ();
@@ -37,7 +37,7 @@ namespace Concierge.Tools
         private readonly ModifySpellSlotsWindow modifySpellSlotsWindow = new ();
         private readonly ModifySpellWindow modifySpellWindow = new ();
         private readonly ModifyAbilitiesWindow modifyAbilitiesWindow = new ();
-        private readonly ModifyCharacterImageWindow modifyCharacterImageWindow = new ();
+        private readonly ModifyCharacterImageWindow modifyCharacterImageWindow = new ("768x1024 image ratio is recommended");
 
         public CharacterCreationWizard()
         {
@@ -93,7 +93,7 @@ namespace Concierge.Tools
             this.NextSetupStep(this.modifyClassResourceWindow, "Continue");
             this.NextSetupStep(this.modifyAbilitiesWindow, "Continue");
             this.NextSetupStep(this.modifyArmorWindow, "Skip Section");
-            this.NextSetupStep(this.modifyWeaponWindow, "Continue");
+            this.NextSetupStep(this.modifyAttackWindow, "Continue");
             this.NextSetupStep(this.modifyAmmoWindow, "Continue");
             this.NextSetupStep(this.modifyInventoryWindow, "Continue");
             this.NextSetupStep(this.modifyEquippedItemsWindow, "Continue");

@@ -13,8 +13,10 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
     using System.Windows.Input;
     using System.Windows.Media;
 
+    using Concierge.Character.Characteristics;
     using Concierge.Interfaces.Enums;
     using Concierge.Services;
+    using Concierge.Utility.Extensions;
 
     /// <summary>
     /// Interaction logic for ModifyCharacterImageWindow.xaml.
@@ -24,7 +26,7 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
         private readonly FileAccessService fileAccessService;
         private readonly BackgroundWorker toolTipTimer = new ();
 
-        public ModifyCharacterImageWindow()
+        public ModifyCharacterImageWindow(string toolTipText)
         {
             this.InitializeComponent();
 
@@ -33,7 +35,7 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
 
             this.InformationHover.ToolTip = new ToolTip()
             {
-                Content = "768x1024 image ratio is recomended",
+                Content = toolTipText,
             };
 
             this.toolTipTimer.DoWork += this.BackgroundWorker_DoWork;
@@ -50,9 +52,12 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
 
         private bool IsDrawing { get; set; }
 
+        private CharacterImage CharacterImage { get; set; }
+
         public ConciergeWindowResult ShowWizardSetup()
         {
             this.ApplyButton.Visibility = Visibility.Collapsed;
+            this.CharacterImage = Program.CcsFile.Character.CharacterImage;
 
             this.Draw();
             this.ShowDialog();
@@ -65,9 +70,10 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
             this.CancelButton.Content = text;
         }
 
-        public void ShowWindow()
+        public void ShowWindow(CharacterImage characterImage)
         {
             this.ApplyButton.Visibility = Visibility.Visible;
+            this.CharacterImage = characterImage;
 
             this.Draw();
             this.ShowDialog();
@@ -77,13 +83,11 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
         {
             this.IsDrawing = true;
 
-            var characterImage = Program.CcsFile.Character.CharacterImage;
+            this.ImageSourceTextBox.Text = this.OriginalFileName = this.CharacterImage.Path;
+            this.FillTypeComboBox.Text = this.CharacterImage.Stretch.ToString();
+            this.UseCustomImageCheckBox.IsChecked = this.CharacterImage.UseCustomImage;
 
-            this.ImageSourceTextBox.Text = this.OriginalFileName = characterImage.Path;
-            this.FillTypeComboBox.Text = characterImage.Stretch.ToString();
-            this.UseCustomImageCheckBox.IsChecked = characterImage.UseCustomImage;
-
-            this.SetEnabledState(characterImage.UseCustomImage);
+            this.SetEnabledState(this.CharacterImage.UseCustomImage);
 
             this.IsDrawing = false;
         }
@@ -101,20 +105,21 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
         {
             var fileName = this.fileAccessService.OpenImage();
 
-            this.ImageSourceTextBox.Text = fileName;
+            if (!fileName.IsNullOrWhiteSpace())
+            {
+                this.ImageSourceTextBox.Text = fileName;
+            }
         }
 
         private void UpdateCharacterImage()
         {
-            var characterImage = Program.CcsFile.Character.CharacterImage;
-
             if (!this.OriginalFileName.Equals(this.ImageSourceTextBox.Text))
             {
-                characterImage.EncodeImage(this.ImageSourceTextBox.Text);
+                this.CharacterImage.EncodeImage(this.ImageSourceTextBox.Text);
             }
 
-            characterImage.Stretch = (Stretch)Enum.Parse(typeof(Stretch), this.FillTypeComboBox.Text);
-            characterImage.UseCustomImage = this.UseCustomImageCheckBox.IsChecked ?? false;
+            this.CharacterImage.Stretch = (Stretch)Enum.Parse(typeof(Stretch), this.FillTypeComboBox.Text);
+            this.CharacterImage.UseCustomImage = this.UseCustomImageCheckBox.IsChecked ?? false;
         }
 
         private void SetEnabledState(bool isEnabled)

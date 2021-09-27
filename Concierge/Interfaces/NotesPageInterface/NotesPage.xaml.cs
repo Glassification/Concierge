@@ -18,9 +18,8 @@ namespace Concierge.Interfaces.NotesPageInterface
     using Concierge.Exceptions.Enums;
     using Concierge.Interfaces.Components;
     using Concierge.Interfaces.Enums;
-    using Concierge.Interfaces.HelperInterface;
+    using Concierge.Tools;
     using Concierge.Utility.Extensions;
-    using MaterialDesignThemes.Wpf;
 
     /// <summary>
     /// Interaction logic for NotesPage.xaml.
@@ -30,7 +29,6 @@ namespace Concierge.Interfaces.NotesPageInterface
         private const int MaxUndoQueue = 10;
 
         private readonly ModifyNotesWindow modifyNotesWindow = new ();
-        private readonly ConciergeMessageWindow conciergeMessageWindow = new ();
 
         public NotesPage()
         {
@@ -412,7 +410,7 @@ namespace Concierge.Interfaces.NotesPageInterface
 
             if (this.NotesTreeView.SelectedItem is ChapterTreeViewItem chapterTreeViewItem)
             {
-                var result = this.conciergeMessageWindow.ShowWindow(
+                var result = ConciergeMessageBox.Show(
                     "Are you sure yo want to delete this chapter and all pages within?",
                     "Warning",
                     ConciergeWindowButtons.YesNo,
@@ -427,7 +425,7 @@ namespace Concierge.Interfaces.NotesPageInterface
             }
             else if (this.NotesTreeView.SelectedItem is DocumentTreeViewItem documentTreeViewItem)
             {
-                var result = this.conciergeMessageWindow.ShowWindow(
+                var result = ConciergeMessageBox.Show(
                     "Are you sure yo want to delete this page?",
                     "Warning",
                     ConciergeWindowButtons.YesNo,

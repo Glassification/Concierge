@@ -1,8 +1,8 @@
-﻿// <copyright file="EquipmentPage.xaml.cs" company="Thomas Beckett">
+﻿// <copyright file="AttackDefensePage.xaml.cs" company="Thomas Beckett">
 // Copyright (c) Thomas Beckett. All rights reserved.
 // </copyright>
 
-namespace Concierge.Interfaces.EquipmentPageInterface
+namespace Concierge.Interfaces.AttackDefensePageInterface
 {
     using System;
     using System.Collections.Generic;
@@ -17,19 +17,19 @@ namespace Concierge.Interfaces.EquipmentPageInterface
     /// <summary>
     /// Interaction logic for EquipmentPage.xaml.
     /// </summary>
-    public partial class EquipmentPage : Page, IConciergePage
+    public partial class AttackDefensePage : Page, IConciergePage
     {
         private readonly ModifyArmorWindow modifyArmorWindow = new ();
-        private readonly ModifyWeaponWindow modifyWeaponWindow = new ();
+        private readonly ModifyAttackWindow modifyAttackWindow = new ();
         private readonly ModifyAmmoWindow modifyAmmoWindow = new ();
-        private readonly EquipmentPopupWindow equipmentPopupWindow = new ();
+        private readonly AttacksPopupWindow attacksPopupWindow = new ();
 
-        public EquipmentPage()
+        public AttackDefensePage()
         {
             this.InitializeComponent();
             this.DataContext = this;
             this.modifyAmmoWindow.ApplyChanges += this.Window_ApplyChanges;
-            this.modifyWeaponWindow.ApplyChanges += this.Window_ApplyChanges;
+            this.modifyAttackWindow.ApplyChanges += this.Window_ApplyChanges;
             this.modifyArmorWindow.ApplyChanges += this.Window_ApplyChanges;
         }
 
@@ -136,12 +136,12 @@ namespace Concierge.Interfaces.EquipmentPageInterface
 
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
-            var popupButons = this.equipmentPopupWindow.ShowPopup();
+            var popupButons = this.attacksPopupWindow.ShowPopup();
 
             switch (popupButons)
             {
                 case PopupButtons.AddWeapon:
-                    this.modifyWeaponWindow.ShowAdd(Program.CcsFile.Character.Weapons);
+                    this.modifyAttackWindow.ShowAdd(Program.CcsFile.Character.Weapons);
                     this.DrawWeaponList();
                     break;
                 case PopupButtons.AddAmmo:
@@ -160,7 +160,7 @@ namespace Concierge.Interfaces.EquipmentPageInterface
             }
             else if (this.WeaponDataGrid.SelectedItem != null)
             {
-                this.modifyWeaponWindow.ShowEdit((Weapon)this.WeaponDataGrid.SelectedItem);
+                this.modifyAttackWindow.ShowEdit((Weapon)this.WeaponDataGrid.SelectedItem);
                 this.DrawWeaponList();
             }
         }
@@ -246,7 +246,7 @@ namespace Concierge.Interfaces.EquipmentPageInterface
                     this.DrawAmmoList();
                     this.ScrollAmmo();
                     break;
-                case "ModifyWeaponWindow":
+                case "ModifyAttackWindow":
                     this.DrawWeaponList();
                     this.ScrollWeapons();
                     break;

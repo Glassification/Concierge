@@ -45,19 +45,19 @@
     <Page Update="Interfaces\DetailsPageInterface\ModifyProficiencyWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Interfaces\EquipmentPageInterface\EquipmentPage.xaml">
+    <Page Update="Interfaces\AttackDefensePageInterface\AttackDefensePage.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Interfaces\EquipmentPageInterface\EquipmentPopupWindow.xaml">
+    <Page Update="Interfaces\AttackDefensePageInterface\AttacksPopupWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Interfaces\EquipmentPageInterface\ModifyAmmoWindow.xaml">
+    <Page Update="Interfaces\AttackDefensePageInterface\ModifyAmmoWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Interfaces\EquipmentPageInterface\ModifyArmorWindow.xaml">
+    <Page Update="Interfaces\AttackDefensePageInterface\ModifyArmorWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Interfaces\EquipmentPageInterface\ModifyWeaponWindow.xaml">
+    <Page Update="Interfaces\AttackDefensePageInterface\ModifyAttackWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Interfaces\EquippedItemsPageInterface\EquippedItemsPage.xaml">
