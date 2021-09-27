@@ -10,15 +10,13 @@ namespace Concierge.Persistence
 
     using Concierge.Exceptions.Enums;
     using Concierge.Interfaces.Enums;
-    using Concierge.Interfaces.HelperInterface;
+    using Concierge.Tools;
     using Concierge.Utility;
     using Concierge.Utility.Extensions;
     using Newtonsoft.Json;
 
     public static class CharacterReadWriter
     {
-        private static readonly ConciergeMessageWindow conciergeMessageWindow = new ();
-
         public static CcsFile Read(string file)
         {
             try
@@ -78,7 +76,7 @@ namespace Concierge.Persistence
                     Constants.AssemblyVersion);
 
                 Program.Logger.Warning(message);
-                var result = conciergeMessageWindow.ShowWindow(
+                var result = ConciergeMessageBox.Show(
                     Regex.Unescape(message),
                     "Warning",
                     ConciergeWindowButtons.YesNo,

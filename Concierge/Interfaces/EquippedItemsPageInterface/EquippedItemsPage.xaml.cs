@@ -21,7 +21,7 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
     public partial class EquippedItemsPage : Page, IConciergePage
     {
         private readonly ModifyEquippedItemsWindow modifyEquippedItemsWindow = new ();
-        private readonly ModifyCharacterImageWindow modifyCharacterImageWindow = new ();
+        private readonly ModifyCharacterImageWindow modifyCharacterImageWindow = new ("768x1024 image ratio is recommended");
         private readonly ModifyInventoryWindow modifyInventoryWindow = new ();
 
         public EquippedItemsPage()
@@ -228,7 +228,7 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
 
         private void ImageEditButton_Click(object sender, RoutedEventArgs e)
         {
-            this.modifyCharacterImageWindow.ShowWindow();
+            this.modifyCharacterImageWindow.ShowWindow(Program.CcsFile.Character.CharacterImage);
             this.Draw();
         }
     }

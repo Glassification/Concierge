@@ -31,6 +31,10 @@ dotnet_diagnostic.SA1600.severity = none
 dotnet_diagnostic.SA1626.severity = none
 dotnet_diagnostic.SA1604.severity=silent
 dotnet_diagnostic.SA1611.severity=silent
+
+# IDE0001: Simplify Names
+dotnet_diagnostic.IDE0001.severity = none
+
 [*.{cs,vb}]
 dotnet_diagnostic.CA1305.severity=silent
 

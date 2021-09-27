@@ -2,7 +2,7 @@
 // Copyright (c) Thomas Beckett. All rights reserved.
 // </copyright>
 
-namespace Concierge.Interfaces.EquipmentPageInterface
+namespace Concierge.Interfaces.AttackDefensePageInterface
 {
     using System;
     using System.Collections.Generic;

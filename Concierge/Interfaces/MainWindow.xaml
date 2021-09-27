@@ -100,13 +100,7 @@
             </Grid>
 
             <Grid x:Name="CharacterHeader" Grid.Column="1" Background="Black">
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock x:Name="TextCharacterName" FontSize="20" Margin="25 0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                    <TextBlock x:Name="TextCharacterRace" FontSize="20" Margin="25 0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                    <TextBlock x:Name="TextCharacterBackground" FontSize="20" Margin="25 0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                    <TextBlock x:Name="TextCharacterAlignment" FontSize="20" Margin="25 0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                    <TextBlock x:Name="TextCharacterLevel" FontSize="20" Margin="25 0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                    <TextBlock x:Name="TextCharacterClass" FontSize="20" Margin="25 0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <StackPanel x:Name="CharacterHeaderPanel" Orientation="Horizontal">
                 </StackPanel>
             </Grid>
 
@@ -169,6 +163,12 @@
                                     <StackPanel Orientation="Horizontal">
                                         <materialDesign:PackIcon Kind="SmartCardOutline" Height="25" Width="25" Margin="0 10"/>
                                         <TextBlock Text="Properties..." VerticalAlignment="Center" Margin="20 10"/>
+                                    </StackPanel>
+                                </Button>
+                                <Button x:Name="IconButton" Foreground="White" Click="IconButton_Click">
+                                    <StackPanel Orientation="Horizontal">
+                                        <materialDesign:PackIcon Kind="ImagePlus" Height="25" Width="25" Margin="0 10"/>
+                                        <TextBlock Text="Character Icon..." VerticalAlignment="Center" Margin="20 10"/>
                                     </StackPanel>
                                 </Button>
                                 <Button x:Name="SettingsButton" Foreground="White" Click="SettingsButton_Click">
@@ -241,68 +241,7 @@
                         Foreground="White" 
                         ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
                         Background="#FF191919"
-                        SelectionChanged="ListViewMenu_SelectionChanged"
                         SelectionMode="Single">
-                        <ListViewItem x:Name="ItemOverview" Height="60" Selected="ItemOverview_Selected">
-                            <StackPanel Orientation="Horizontal">
-                                <materialDesign:PackIcon Kind="Globe" Height="25" Width="25" Margin="10"/>
-                                <TextBlock Text="Overview" VerticalAlignment="Center" Margin="20 10"/>
-                            </StackPanel>
-                        </ListViewItem>
-                        <ListViewItem x:Name="ItemDetails" Height="60" Selected="ItemDetails_Selected">
-                            <StackPanel Orientation="Horizontal">
-                                <materialDesign:PackIcon Kind="Details" Height="25" Width="25" Margin="10"/>
-                                <TextBlock Text="Details" VerticalAlignment="Center" Margin="20 10"/>
-                            </StackPanel>
-                        </ListViewItem>
-                        <ListViewItem x:Name="ItemEquipment" Height="60" Selected="ItemEquipment_Selected">
-                            <StackPanel Orientation="Horizontal">
-                                <materialDesign:PackIcon Kind="Sword" Height="25" Width="25" Margin="10"/>
-                                <TextBlock Text="Equipment" VerticalAlignment="Center" Margin="20 10"/>
-                            </StackPanel>
-                        </ListViewItem>
-                        <ListViewItem x:Name="ItemAbilities" Height="60" Selected="ItemAbilities_Selected">
-                            <StackPanel Orientation="Horizontal">
-                                <materialDesign:PackIcon Kind="Brain" Height="25" Width="25" Margin="10"/>
-                                <TextBlock Text="Abilities" VerticalAlignment="Center" Margin="20 10"/>
-                            </StackPanel>
-                        </ListViewItem>
-                        <ListViewItem x:Name="ItemEquipedItems" Height="60" Selected="ItemEquipedItems_Selected">
-                            <StackPanel Orientation="Horizontal">
-                                <materialDesign:PackIcon Kind="Person" Height="25" Width="25" Margin="10"/>
-                                <TextBlock Text="Equipped Items" VerticalAlignment="Center" Margin="20 10"/>
-                            </StackPanel>
-                        </ListViewItem>
-                        <ListViewItem x:Name="ItemInventory" Height="60" Selected="ItemInventory_Selected">
-                            <StackPanel Orientation="Horizontal">
-                                <materialDesign:PackIcon Kind="Backpack" Height="25" Width="25" Margin="10"/>
-                                <TextBlock Text="Inventory" VerticalAlignment="Center" Margin="20 10"/>
-                            </StackPanel>
-                        </ListViewItem>
-                        <ListViewItem x:Name="ItemSpellcasting" Height="60" Selected="ItemSpellcasting_Selected">
-                            <StackPanel Orientation="Horizontal">
-                                <materialDesign:PackIcon Kind="Magic" Height="25" Width="25" Margin="10"/>
-                                <TextBlock Text="Spellcasting" VerticalAlignment="Center" Margin="20 10"/>
-                            </StackPanel>
-                        </ListViewItem>
-                        <ListViewItem x:Name="ItemCompanion" Height="60" Selected="ItemCompanion_Selected">
-                            <StackPanel Orientation="Horizontal">
-                                <materialDesign:PackIcon Kind="PeopleAdd" Height="25" Width="25" Margin="10"/>
-                                <TextBlock Text="Companion" VerticalAlignment="Center" Margin="20 10"/>
-                            </StackPanel>
-                        </ListViewItem>
-                        <ListViewItem x:Name="ItemTools" Height="60" Selected="ItemTools_Selected">
-                            <StackPanel Orientation="Horizontal">
-                                <materialDesign:PackIcon Kind="Tools" Height="25" Width="25" Margin="10"/>
-                                <TextBlock Text="Tools" VerticalAlignment="Center" Margin="20 10"/>
-                            </StackPanel>
-                        </ListViewItem>
-                        <ListViewItem x:Name="ItemNotes" Height="60" Selected="ItemNotes_Selected">
-                            <StackPanel Orientation="Horizontal">
-                                <materialDesign:PackIcon Kind="Pen" Height="25" Width="25" Margin="10"/>
-                                <TextBlock Text="Notes" VerticalAlignment="Center" Margin="20 10"/>
-                            </StackPanel>
-                        </ListViewItem>
                     </ListView>
                 </StackPanel>
             </Grid>

@@ -13,7 +13,7 @@ namespace Concierge.Interfaces.InventoryPageInterface
 
     using Concierge.Character.Items;
     using Concierge.Interfaces.Enums;
-    using Concierge.Interfaces.HelperInterface;
+    using Concierge.Tools;
     using Concierge.Utility;
     using Concierge.Utility.Extensions;
 
@@ -22,8 +22,6 @@ namespace Concierge.Interfaces.InventoryPageInterface
     /// </summary>
     public partial class ModifyInventoryWindow : Window, IConciergeWindow
     {
-        private readonly ConciergeMessageWindow conciergeMessageWindow = new ();
-
         public ModifyInventoryWindow()
         {
             this.InitializeComponent();
@@ -162,7 +160,7 @@ namespace Concierge.Interfaces.InventoryPageInterface
                 if (Program.CcsFile.Character.EquippedItems.Attuned > Constants.MaxAttunedItems)
                 {
                     inventory.Attuned = false;
-                    this.conciergeMessageWindow.ShowWindow(
+                    ConciergeMessageBox.Show(
                         $"You can only attune to a max of {Constants.MaxAttunedItems} items.",
                         "Error",
                         ConciergeWindowButtons.Ok,
