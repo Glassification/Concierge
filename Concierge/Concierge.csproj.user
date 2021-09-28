@@ -7,6 +7,9 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="Interfaces\AttackDefensePageInterface\ModifyStatusEffectsWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Interfaces\EquippedItemsPageInterface\ModifyCharacterImageWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -16,6 +19,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Interfaces\AbilitiesPageInterface\ModifyAbilitiesWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Interfaces\AttackDefensePageInterface\ModifyStatusEffectsWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Interfaces\CompanionPageInterface\CompanionPage.xaml">

@@ -38,11 +38,11 @@ namespace Concierge.Interfaces
     {
         private readonly FileAccessService fileAccessService = new ();
         private readonly CommandLineService commandLineService = new ();
-        private readonly MainWindowService mainWindowService = new ();
+        private readonly MainWindowService mainWindowService;
         private readonly SettingsWindow settingsWindow = new ();
         private readonly ModifyPropertiesWindow modifyPropertiesWindow = new ();
         private readonly AboutConciergeWindow aboutConciergeWindow = new ();
-        private readonly ModifyCharacterImageWindow modifyCharacterImageWindow = new (string.Empty);
+        private readonly ModifyCharacterImageWindow modifyCharacterImageWindow = new ("50x50 image ratio is recommended.");
 
         private readonly AutosaveTimer autosaveTimer = new ();
         private readonly CharacterCreationWizard characterCreationWizard = new ();
@@ -62,6 +62,10 @@ namespace Concierge.Interfaces
         {
             this.InitializeComponent();
 
+            this.mainWindowService = new MainWindowService(this.ListViewItem_Selected);
+            this.modifyPropertiesWindow.ApplyChanges += this.Window_ApplyChanges;
+            this.modifyCharacterImageWindow.ApplyChanges += this.Window_ApplyChanges;
+            this.settingsWindow.ApplyChanges += this.Window_ApplyChanges;
             this.GridContent.Width = GridContentWidthClose;
             this.IgnoreListItemSelectionChanged = true;
 
@@ -226,16 +230,16 @@ namespace Concierge.Interfaces
 
         private void GenerateListViewItems()
         {
-            this.ListViewMenu.Items.Add(this.mainWindowService.CreateListViewItem(this.overviewPage, "Overview", PackIconKind.Globe, this.ListViewItem_Selected));
-            this.ListViewMenu.Items.Add(this.mainWindowService.CreateListViewItem(this.detailsPage, "Details", PackIconKind.Details, this.ListViewItem_Selected));
-            this.ListViewMenu.Items.Add(this.mainWindowService.CreateListViewItem(this.attackDefensePage, "Attack and Defense", PackIconKind.ShieldHalfFull, this.ListViewItem_Selected));
-            this.ListViewMenu.Items.Add(this.mainWindowService.CreateListViewItem(this.abilitiesPage, "Abilities", PackIconKind.Brain, this.ListViewItem_Selected));
-            this.ListViewMenu.Items.Add(this.mainWindowService.CreateListViewItem(this.equipedItemsPage, "Equipped Items", PackIconKind.Person, this.ListViewItem_Selected));
-            this.ListViewMenu.Items.Add(this.mainWindowService.CreateListViewItem(this.inventoryPage, "Inventory", PackIconKind.Backpack, this.ListViewItem_Selected));
-            this.ListViewMenu.Items.Add(this.mainWindowService.CreateListViewItem(this.spellcastingPage, "Spellcasting", PackIconKind.Magic, this.ListViewItem_Selected));
-            this.ListViewMenu.Items.Add(this.mainWindowService.CreateListViewItem(this.companionPage, "Companion", PackIconKind.PersonAdd, this.ListViewItem_Selected));
-            this.ListViewMenu.Items.Add(this.mainWindowService.CreateListViewItem(this.toolsPage, "Tools", PackIconKind.Tools, this.ListViewItem_Selected));
-            this.ListViewMenu.Items.Add(this.mainWindowService.CreateListViewItem(this.notesPage, "Notes", PackIconKind.Pen, this.ListViewItem_Selected));
+            this.ListViewMenu.Items.Add(this.mainWindowService.GenerateListViewItem(this.overviewPage, "Overview", PackIconKind.Globe));
+            this.ListViewMenu.Items.Add(this.mainWindowService.GenerateListViewItem(this.detailsPage, "Details", PackIconKind.Details));
+            this.ListViewMenu.Items.Add(this.mainWindowService.GenerateListViewItem(this.attackDefensePage, "Attack and Defense", PackIconKind.ShieldHalfFull));
+            this.ListViewMenu.Items.Add(this.mainWindowService.GenerateListViewItem(this.abilitiesPage, "Abilities", PackIconKind.Brain));
+            this.ListViewMenu.Items.Add(this.mainWindowService.GenerateListViewItem(this.equipedItemsPage, "Equipped Items", PackIconKind.Person));
+            this.ListViewMenu.Items.Add(this.mainWindowService.GenerateListViewItem(this.inventoryPage, "Inventory", PackIconKind.Backpack));
+            this.ListViewMenu.Items.Add(this.mainWindowService.GenerateListViewItem(this.spellcastingPage, "Spellcasting", PackIconKind.Magic));
+            this.ListViewMenu.Items.Add(this.mainWindowService.GenerateListViewItem(this.companionPage, "Companion", PackIconKind.PersonAdd));
+            this.ListViewMenu.Items.Add(this.mainWindowService.GenerateListViewItem(this.toolsPage, "Tools", PackIconKind.Tools));
+            this.ListViewMenu.Items.Add(this.mainWindowService.GenerateListViewItem(this.notesPage, "Notes", PackIconKind.Pen));
         }
 
         private ConciergeWindowResult CheckSaveBeforeAction(string action)
@@ -315,6 +319,8 @@ namespace Concierge.Interfaces
         private void MainWindow_KeyPress(object sender, KeyEventArgs e)
         {
             EasterEggController.KonamiCode(e.Key);
+
+            // Move off Side Bar to avoid reset
             this.FrameContent.Focus();
 
             if (Program.Typing || !IsControl)
@@ -534,6 +540,18 @@ namespace Concierge.Interfaces
         {
             this.modifyCharacterImageWindow.ShowWindow(Program.CcsFile.Character.CharacterIcon);
             this.mainWindowService.GenerateCharacterStatusBar(this.CharacterHeaderPanel, Program.CcsFile.Character);
+        }
+
+        private void Window_ApplyChanges(object sender, EventArgs e)
+        {
+            switch (sender?.GetType()?.Name)
+            {
+                case "ModifyCharacterImageWindow":
+                case "ModifyPropertiesWindow":
+                case "SettingsWindow":
+                    this.DrawAll();
+                    break;
+            }
         }
     }
 }

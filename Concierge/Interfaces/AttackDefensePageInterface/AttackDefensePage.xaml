@@ -17,309 +17,396 @@
         </Grid.RowDefinitions>
 
         <!--Armor Details-->
-        <Grid Grid.Row="0"
-              Background="#0B061E"
-              Margin="3">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="18*"/>
-                <RowDefinition Height="82*"/>
-            </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="70*"/>
+                <ColumnDefinition Width="30*"/>
+            </Grid.ColumnDefinitions>
 
-            <!--Header-->
-            <Grid Grid.Row="0">
-                <TextBlock Text="Armor Details"
-                           Foreground="White"
-                           FontSize="25"
-                           FontWeight="Bold"
-                           VerticalAlignment="Center"
-                           HorizontalAlignment="Left"
-                           Margin="150, 0, 0, 0"/>
-                <components:ConciergeDesignButton 
-                    Style="{StaticResource ConciergeDesignButtonStyle}"
-                    x:Name="EditDetailsButton"
-                    Width="60"
-                    Foreground="Khaki"
-                    ToolTip="Edit Armor Details"
-                    Click="EditDetailsButton_Click"
-                    HorizontalAlignment="Right">
-                    <materialDesign:PackIcon Kind="PlaylistEdit" Width="25" Height="25"/>
-                </components:ConciergeDesignButton>
+            <Grid Grid.Column="0" Background="#0B061E" Margin="3">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="18*"/>
+                    <RowDefinition Height="82*"/>
+                </Grid.RowDefinitions>
+
+                <!--Header-->
+                <Grid Grid.Row="0">
+                    <TextBlock 
+                        Text="Armor Details"
+                        Foreground="White"
+                        FontSize="30"
+                        FontWeight="Bold"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Left"
+                        Margin="150, 0, 0, 0"/>
+                    <components:ConciergeDesignButton 
+                        Style="{StaticResource ConciergeDesignButtonStyle}"
+                        x:Name="EditDetailsButton"
+                        Width="60"
+                        Foreground="Khaki"
+                        ToolTip="Edit Armor Details"
+                        Click="EditDetailsButton_Click"
+                        HorizontalAlignment="Right">
+                        <materialDesign:PackIcon Kind="PlaylistEdit" Width="25" Height="25"/>
+                    </components:ConciergeDesignButton>
+                </Grid>
+
+                <!--Armor Details-->
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50*"/>
+                        <ColumnDefinition Width="50*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid Grid.Column="0" Margin="3">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50*"/>
+                            <RowDefinition Height="50*"/>
+                        </Grid.RowDefinitions>
+
+                        <!--Armor Worn-->
+                        <Grid Grid.Row="0" Margin=" 0, 3, 0, 3">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="30*"/>
+                                <ColumnDefinition Width="70*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Grid Grid.Column="0"
+                              Background="#17112E">
+                                <TextBlock 
+                                    Text="Armor Worn"
+                                    Foreground="White"
+                                    FontSize="23"
+                                    FontWeight="Bold"
+                                    TextWrapping="Wrap"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"/>
+                            </Grid>
+
+                            <Grid Grid.Column="1"
+                              Background="#FF3e3e42">
+                                <TextBlock 
+                                    x:Name="ArmorWornField"
+                                    Foreground="White"
+                                    TextWrapping="Wrap"
+                                    FontSize="30"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"/>
+                            </Grid>
+                        </Grid>
+
+                        <!--Armor Type, Stealth-->
+                        <Grid Grid.Row="1" Margin=" 0, 3, 0, 3">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="30*"/>
+                                <ColumnDefinition Width="70*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Grid Grid.Column="0" Background="#17112E">
+                                <TextBlock 
+                                    Text="Shield Worn"
+                                    Foreground="White"
+                                    FontSize="23"
+                                    FontWeight="Bold"
+                                    TextWrapping="Wrap"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"/>
+                            </Grid>
+
+                            <Grid Grid.Column="1" Background="#FF3e3e42">
+                                <TextBlock 
+                                    x:Name="ShieldWornField"
+                                    Foreground="White"
+                                    FontSize="30"
+                                    TextWrapping="Wrap"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"/>
+                            </Grid>
+                        </Grid>
+                    </Grid>
+
+                    <Grid Grid.Column="1" Margin="3">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50*"/>
+                            <RowDefinition Height="50*"/>
+                        </Grid.RowDefinitions>
+
+                        <!--Shield-->
+                        <Grid Grid.Row="0" Margin=" 0, 3, 0, 3">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50*"/>
+                                <ColumnDefinition Width="50*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Grid Grid.Column="0" Margin="0, 0, 3, 0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="35*"/>
+                                    <ColumnDefinition Width="65*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Grid Grid.Column="0" Background="#17112E">
+                                    <TextBlock 
+                                        Text="Armor Type"
+                                        Foreground="White"
+                                        FontSize="20"
+                                        FontWeight="Bold"
+                                        TextWrapping="Wrap"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"/>
+                                </Grid>
+
+                                <Grid Grid.Column="1" Background="#FF3e3e42">
+                                    <TextBlock 
+                                        x:Name="ArmorTypeField"
+                                        Foreground="White"
+                                        TextWrapping="Wrap"
+                                        FontSize="25"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"/>
+                                </Grid>
+                            </Grid>
+
+                            <Grid Grid.Column="1" Margin="3, 0, 0, 0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="35*"/>
+                                    <ColumnDefinition Width="65*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Grid Grid.Column="0" Background="#17112E">
+                                    <TextBlock 
+                                        Text="Armor Stealth"
+                                        Foreground="White"
+                                        FontSize="20"
+                                        FontWeight="Bold"
+                                        TextWrapping="Wrap"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"/>
+                                </Grid>
+
+                                <Grid Grid.Column="1" Background="#FF3e3e42">
+                                    <TextBlock 
+                                        x:Name="ArmorStealthField"
+                                        Foreground="White"
+                                        TextWrapping="Wrap"
+                                        FontSize="25"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"/>
+                                </Grid>
+                            </Grid>
+                        </Grid>
+
+                        <Grid Grid.Row="1" Margin="0, 3, 0, 3">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="25*"/>
+                                <ColumnDefinition Width="25*"/>
+                                <ColumnDefinition Width="25*"/>
+                                <ColumnDefinition Width="25*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <!--AC-->
+                            <Grid Grid.Column="0" Margin="0, 0, 2, 0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="30*"/>
+                                    <RowDefinition Height="70*"/>
+                                </Grid.RowDefinitions>
+
+                                <Grid Grid.Row="0" Background="#17112E">
+                                    <TextBlock 
+                                        Text="AC"
+                                        Foreground="White"
+                                        FontSize="15"
+                                        FontWeight="Bold"
+                                        TextWrapping="Wrap"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"/>
+                                </Grid>
+
+                                <Grid Grid.Row="1" Background="#FF3e3e42">
+                                    <TextBlock 
+                                        x:Name="AcField"
+                                        Foreground="White"
+                                        FontSize="30"
+                                        TextWrapping="Wrap"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"/>
+                                </Grid>
+                            </Grid>
+
+                            <Grid Grid.Column="1" Margin="2, 0, 2, 0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="30*"/>
+                                    <RowDefinition Height="70*"/>
+                                </Grid.RowDefinitions>
+
+                                <Grid Grid.Row="0" Background="#17112E">
+                                    <TextBlock 
+                                        Text="Shield AC"
+                                        Foreground="White"
+                                        FontSize="15"
+                                        FontWeight="Bold"
+                                        TextWrapping="Wrap"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"/>
+                                </Grid>
+
+                                <Grid Grid.Row="1" Background="#FF3e3e42">
+                                    <TextBlock 
+                                        x:Name="ShieldAcField"
+                                        Foreground="White"
+                                        FontSize="30"
+                                        TextWrapping="Wrap"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"/>
+                                </Grid>
+                            </Grid>
+
+                            <Grid Grid.Column="2" Margin="2, 0, 2, 0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="30*"/>
+                                    <RowDefinition Height="70*"/>
+                                </Grid.RowDefinitions>
+
+                                <Grid Grid.Row="0" Background="#17112E">
+                                    <TextBlock 
+                                        Text="Magic AC"
+                                        Foreground="White"
+                                        FontSize="15"
+                                        FontWeight="Bold"
+                                        TextWrapping="Wrap"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"/>
+                                </Grid>
+
+                                <Grid Grid.Row="1" Background="#FF3e3e42">
+                                    <TextBlock 
+                                        x:Name="MagicAcField"
+                                        Foreground="White"
+                                        FontSize="30"
+                                        TextWrapping="Wrap"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"/>
+                                </Grid>
+                            </Grid>
+
+                            <Grid Grid.Column="3" Margin="2, 0, 0, 0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="30*"/>
+                                    <RowDefinition Height="70*"/>
+                                </Grid.RowDefinitions>
+
+                                <Grid Grid.Row="0" Background="#17112E">
+                                    <TextBlock 
+                                        Text="Misc AC"
+                                        Foreground="White"
+                                        FontSize="15"
+                                        FontWeight="Bold"
+                                        TextWrapping="Wrap"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"/>
+                                </Grid>
+
+                                <Grid Grid.Row="1" Background="#FF3e3e42">
+                                    <TextBlock 
+                                        x:Name="MiscAcField"
+                                        Foreground="White"
+                                        FontSize="30"
+                                        TextWrapping="Wrap"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"/>
+                                </Grid>
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                </Grid>
             </Grid>
 
-            <!--Details-->
-            <Grid Grid.Row="1">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="25*"/>
-                    <ColumnDefinition Width="25*"/>
-                    <ColumnDefinition Width="25*"/>
-                    <ColumnDefinition Width="25*"/>
-                </Grid.ColumnDefinitions>
+            <Grid Grid.Column="1" Background="#0B061E" Margin="3">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="18*"/>
+                    <RowDefinition Height="82*"/>
+                </Grid.RowDefinitions>
 
-                <Grid Grid.Column="0" Margin="3">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="50*"/>
-                        <RowDefinition Height="50*"/>
-                    </Grid.RowDefinitions>
-
-                    <!--Armor Worn-->
-                    <Grid Grid.Row="0" Margin=" 0, 3, 0, 3">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="30*"/>
-                            <ColumnDefinition Width="70*"/>
-                        </Grid.ColumnDefinitions>
-
-                        <Grid Grid.Column="0"
-                              Background="#17112E">
-                            <TextBlock Text="Armor Worn"
-                                       Foreground="White"
-                                       FontSize="25"
-                                       FontWeight="Bold"
-                                       TextWrapping="Wrap"
-                                       HorizontalAlignment="Center"
-                                       VerticalAlignment="Center"/>
-                        </Grid>
-
-                        <Grid Grid.Column="1"
-                              Background="#FF3e3e42">
-                            <TextBlock x:Name="ArmorWornField"
-                                       Foreground="White"
-                                       TextWrapping="Wrap"
-                                       FontSize="30"
-                                       HorizontalAlignment="Center"
-                                       VerticalAlignment="Center"/>
-                        </Grid>
-                    </Grid>
-
-                    <!--Armor Type-->
-                    <Grid Grid.Row="1" Margin=" 0, 3, 0, 3">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="30*"/>
-                            <ColumnDefinition Width="70*"/>
-                        </Grid.ColumnDefinitions>
-
-                        <Grid Grid.Column="0"
-                              Background="#17112E">
-                            <TextBlock Text="Armor Type"
-                                       Foreground="White"
-                                       FontSize="25"
-                                       FontWeight="Bold"
-                                       TextWrapping="Wrap"
-                                       HorizontalAlignment="Center"
-                                       VerticalAlignment="Center"/>
-                        </Grid>
-
-                        <Grid Grid.Column="1"
-                              Background="#FF3e3e42">
-                            <TextBlock x:Name="ArmorTypeField"
-                                       Foreground="White"
-                                       TextWrapping="Wrap"
-                                       FontSize="30"
-                                       HorizontalAlignment="Center"
-                                       VerticalAlignment="Center"/>
-                        </Grid>
-                    </Grid>
+                <!--Header-->
+                <Grid Grid.Row="0">
+                    <TextBlock 
+                        Text="Status Effects"
+                        Foreground="White"
+                        FontSize="25"
+                        FontWeight="Bold"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center"/>
+                    <StackPanel 
+                        Orientation="Horizontal"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Stretch">
+                        <components:ConciergeDesignButton Style="{StaticResource ConciergeDesignButtonStyle}" 
+                            x:Name="ClearEffectsButton"
+                            Width="35"
+                            HorizontalAlignment="Left"
+                            Foreground="Silver"
+                            ToolTip="Clear Status Effects"
+                            Click="ClearEffectsButton_Click">
+                            <materialDesign:PackIcon Kind="Cancel" Width="25" Height="25"/>
+                        </components:ConciergeDesignButton>
+                        <components:ConciergeDesignButton 
+                            Style="{StaticResource ConciergeDesignButtonStyle}" 
+                            x:Name="DeleteEffectsButton"
+                            Width="35"
+                            HorizontalAlignment="Left"
+                            Foreground="IndianRed"
+                            ToolTip="Delete Status Effects"
+                            Click="DeleteEffectsButton_Click">
+                            <materialDesign:PackIcon Kind="Delete" Width="25" Height="25"/>
+                        </components:ConciergeDesignButton>
+                    </StackPanel>
+                    <StackPanel 
+                        Orientation="Horizontal"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Stretch">
+                        <components:ConciergeDesignButton 
+                            Style="{StaticResource ConciergeDesignButtonStyle}" 
+                            x:Name="AddEffectsButton"
+                            Width="35"
+                            HorizontalAlignment="Center"
+                            Foreground="PaleGreen"
+                            ToolTip="Add Status Effects"
+                            Click="AddEffectsButton_Click">
+                            <materialDesign:PackIcon Kind="Add" Width="25" Height="25"/>
+                        </components:ConciergeDesignButton>
+                        <components:ConciergeDesignButton 
+                            Style="{StaticResource ConciergeDesignButtonStyle}" 
+                            x:Name="EditEffectsButton"
+                            Width="35"
+                            HorizontalAlignment="Right"
+                            Foreground="Khaki"
+                            ToolTip="Edit Status Effects"
+                            Click="EditEffectsButton_Click">
+                            <materialDesign:PackIcon Kind="PlaylistEdit" Width="25" Height="25"/>
+                        </components:ConciergeDesignButton>
+                    </StackPanel>
                 </Grid>
 
-                <Grid Grid.Column="1" Margin="3">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="50*"/>
-                        <RowDefinition Height="50*"/>
-                    </Grid.RowDefinitions>
-
-                    <!--Armor Class-->
-                    <Grid Grid.Row="0" Margin=" 0, 3, 0, 3">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="30*"/>
-                            <ColumnDefinition Width="70*"/>
-                        </Grid.ColumnDefinitions>
-
-                        <Grid Grid.Column="0"
-                              Background="#17112E">
-                            <TextBlock Text="Armor Class"
-                                       Foreground="White"
-                                       FontSize="25"
-                                       FontWeight="Bold"
-                                       TextWrapping="Wrap"
-                                       HorizontalAlignment="Center"
-                                       VerticalAlignment="Center"/>
-                        </Grid>
-
-                        <Grid Grid.Column="1"
-                              Background="#FF3e3e42">
-                            <TextBlock x:Name="ArmorClassField"
-                                       Foreground="White"
-                                       FontSize="30"
-                                       TextWrapping="Wrap"
-                                       HorizontalAlignment="Center"
-                                       VerticalAlignment="Center"/>
-                        </Grid>
-                    </Grid>
-
-                    <!--Armor Stealth-->
-                    <Grid Grid.Row="1" Margin=" 0, 3, 0, 3">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="30*"/>
-                            <ColumnDefinition Width="70*"/>
-                        </Grid.ColumnDefinitions>
-
-                        <Grid Grid.Column="0"
-                              Background="#17112E">
-                            <TextBlock Text="Armor Stealth"
-                                       Foreground="White"
-                                       FontSize="25"
-                                       FontWeight="Bold"
-                                       TextWrapping="Wrap"
-                                       HorizontalAlignment="Center"
-                                       VerticalAlignment="Center"/>
-                        </Grid>
-
-                        <Grid Grid.Column="1"
-                              Background="#FF3e3e42">
-                            <TextBlock x:Name="ArmorStealthField"
-                                       Foreground="White"
-                                       TextWrapping="Wrap"
-                                       FontSize="30"
-                                       HorizontalAlignment="Center"
-                                       VerticalAlignment="Center"/>
-                        </Grid>
-                    </Grid>
-                </Grid>
-
-                <Grid Grid.Column="2" Margin="3">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="50*"/>
-                        <RowDefinition Height="50*"/>
-                    </Grid.RowDefinitions>
-
-                    <!--Misc Bonus-->
-                    <Grid Grid.Row="0" Margin=" 0, 3, 0, 3">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="30*"/>
-                            <ColumnDefinition Width="70*"/>
-                        </Grid.ColumnDefinitions>
-
-                        <Grid Grid.Column="0"
-                              Background="#17112E">
-                            <TextBlock Text="Misc Bonus"
-                                       Foreground="White"
-                                       FontSize="25"
-                                       FontWeight="Bold"
-                                       TextWrapping="Wrap"
-                                       HorizontalAlignment="Center"
-                                       VerticalAlignment="Center"/>
-                        </Grid>
-
-                        <Grid Grid.Column="1"
-                              Background="#FF3e3e42">
-                            <TextBlock x:Name="MiscBonusField"
-                                       Foreground="White"
-                                       TextWrapping="Wrap"
-                                       FontSize="30"
-                                       HorizontalAlignment="Center"
-                                       VerticalAlignment="Center"/>
-                        </Grid>
-                    </Grid>
-
-                    <!--Magic Bonus-->
-                    <Grid Grid.Row="1" Margin=" 0, 3, 0, 3">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="30*"/>
-                            <ColumnDefinition Width="70*"/>
-                        </Grid.ColumnDefinitions>
-
-                        <Grid Grid.Column="0"
-                              Background="#17112E">
-                            <TextBlock Text="Magic Bonus"
-                                       Foreground="White"
-                                       FontSize="25"
-                                       FontWeight="Bold"
-                                       TextWrapping="Wrap"
-                                       HorizontalAlignment="Center"
-                                       VerticalAlignment="Center"/>
-                        </Grid>
-
-                        <Grid Grid.Column="1"
-                              Background="#FF3e3e42">
-                            <TextBlock x:Name="MagicBonusField"
-                                       Foreground="White"
-                                       TextWrapping="Wrap"
-                                       FontSize="30"
-                                       HorizontalAlignment="Center"
-                                       VerticalAlignment="Center"/>
-                        </Grid>
-                    </Grid>
-                </Grid>
-
-                <Grid Grid.Column="3" Margin="3">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="50*"/>
-                        <RowDefinition Height="50*"/>
-                    </Grid.RowDefinitions>
-
-                    <!--Shield Worn-->
-                    <Grid Grid.Row="0" Margin=" 0, 3, 0, 3">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="30*"/>
-                            <ColumnDefinition Width="70*"/>
-                        </Grid.ColumnDefinitions>
-
-                        <Grid Grid.Column="0"
-                              Background="#17112E">
-                            <TextBlock Text="Shield Worn"
-                                       Foreground="White"
-                                       FontSize="25"
-                                       FontWeight="Bold"
-                                       TextWrapping="Wrap"
-                                       HorizontalAlignment="Center"
-                                       VerticalAlignment="Center"/>
-                        </Grid>
-
-                        <Grid Grid.Column="1"
-                              Background="#FF3e3e42">
-                            <TextBlock x:Name="ShieldWornField"
-                                       Foreground="White"
-                                       FontSize="30"
-                                       TextWrapping="Wrap"
-                                       HorizontalAlignment="Center"
-                                       VerticalAlignment="Center"/>
-                        </Grid>
-                    </Grid>
-
-                    <!--Shield AC-->
-                    <Grid Grid.Row="1" Margin=" 0, 3, 0, 3">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="30*"/>
-                            <ColumnDefinition Width="70*"/>
-                        </Grid.ColumnDefinitions>
-
-                        <Grid Grid.Column="0"
-                              Background="#17112E">
-                            <TextBlock Text="Shield AC"
-                                       Foreground="White"
-                                       FontSize="25"
-                                       FontWeight="Bold"
-                                       TextWrapping="Wrap"
-                                       HorizontalAlignment="Center"
-                                       VerticalAlignment="Center"/>
-                        </Grid>
-
-                        <Grid Grid.Column="1"
-                              Background="#FF3e3e42">
-                            <TextBlock x:Name="ShieldAcField"
-                                       Foreground="White"
-                                       FontSize="30"
-                                       TextWrapping="Wrap"
-                                       HorizontalAlignment="Center"
-                                       VerticalAlignment="Center"/>
-                        </Grid>
-                    </Grid>
+                <Grid Grid.Row="1" Margin="0, 3, 0, 0">
+                    <components:ConciergeDataGrid 
+                        x:Name="StatusEffectsDataGrid"
+                        VerticalScrollBarVisibility="Hidden"
+                        Background="#17112E"
+                        Style="{DynamicResource StandardDataGridStyle}"
+                        HeadersVisibility="None"
+                        Sorted="StatusEffectsDataGrid_Sorted" Grid.ColumnSpan="2">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn
+                                Width="100*"
+                                Binding="{Binding Display}"
+                                ElementStyle="{StaticResource StandardColumnElementStyle}"/>
+                        </DataGrid.Columns>
+                    </components:ConciergeDataGrid>
                 </Grid>
             </Grid>
         </Grid>
 
         <!--Ammo, Weapons-->
-        <Grid Grid.Row="1" Background="#0B061E" Margin="3"
-              >
+        <Grid Grid.Row="1" Background="#0B061E" Margin="3">
             <Grid.RowDefinitions>
                 <RowDefinition Height="8*"/>
                 <RowDefinition Height="36*"/>

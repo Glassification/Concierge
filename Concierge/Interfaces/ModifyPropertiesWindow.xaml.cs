@@ -4,6 +4,7 @@
 
 namespace Concierge.Interfaces
 {
+    using System;
     using System.ComponentModel;
     using System.Windows;
     using System.Windows.Input;
@@ -28,6 +29,10 @@ namespace Concierge.Interfaces
 
             Program.Logger.Info($"Initialized {nameof(ModifyPropertiesWindow)}.");
         }
+
+        public delegate void ApplyChangesEventHandler(object sender, EventArgs e);
+
+        public event ApplyChangesEventHandler ApplyChanges;
 
         private ConciergeWindowResult Result { get; set; }
 
@@ -124,6 +129,7 @@ namespace Concierge.Interfaces
             Program.Modify();
 
             this.Write();
+            this.ApplyChanges?.Invoke(this, new EventArgs());
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)

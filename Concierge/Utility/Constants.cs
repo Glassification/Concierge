@@ -149,6 +149,26 @@ namespace Concierge.Utility
             "Wizard",
         };
 
+        private static readonly string[] statusEffects =
+        {
+            "Acid",
+            "Cold",
+            "Fire",
+            "Force",
+            "Lightning",
+            "Necrotic",
+            "Poison",
+            "Psychic",
+            "Radiant",
+            "Thunder",
+            "Nonmagical",
+            "Magic Weapons",
+            "Bludgeoning",
+            "Slashing",
+            "Piercing",
+            "Spells",
+        };
+
         static Constants()
         {
             AutosaveIntervals = new ReadOnlyCollection<int>(autosaveIntervals);
@@ -166,6 +186,7 @@ namespace Concierge.Utility
             Levels = new ReadOnlyCollection<int>(levels);
             Proficiencies = new ReadOnlyCollection<int>(proficiencies);
             Classes = new ReadOnlyCollection<string>(classes);
+            StatusEffects = new ReadOnlyCollection<string>(statusEffects);
         }
 
         public static ReadOnlyCollection<int> AutosaveIntervals { get; private set; }
@@ -193,6 +214,8 @@ namespace Concierge.Utility
         public static ReadOnlyCollection<string> Classes { get; }
 
         public static ReadOnlyCollection<Ability> Abilities { get; }
+
+        public static ReadOnlyCollection<string> StatusEffects { get; }
 
         public static string AssemblyVersion
         {

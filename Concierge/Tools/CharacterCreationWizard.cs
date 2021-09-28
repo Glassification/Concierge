@@ -38,6 +38,7 @@ namespace Concierge.Tools
         private readonly ModifySpellWindow modifySpellWindow = new ();
         private readonly ModifyAbilitiesWindow modifyAbilitiesWindow = new ();
         private readonly ModifyCharacterImageWindow modifyCharacterImageWindow = new ("768x1024 image ratio is recommended");
+        private readonly ModifyStatusEffectsWindow modifyStatusEffectsWindow = new ();
 
         public CharacterCreationWizard()
         {
@@ -97,6 +98,7 @@ namespace Concierge.Tools
             this.NextSetupStep(this.modifyAmmoWindow, "Continue");
             this.NextSetupStep(this.modifyInventoryWindow, "Continue");
             this.NextSetupStep(this.modifyEquippedItemsWindow, "Continue");
+            this.NextSetupStep(this.modifyStatusEffectsWindow, "Continue");
             this.NextSetupStep(this.modifyCharacterImageWindow, "Skip Section");
             this.NextSetupStep(this.modifySpellClassWindow, "Continue");
             this.NextSetupStep(this.modifySpellSlotsWindow, "Skip Section");

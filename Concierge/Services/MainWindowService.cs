@@ -16,15 +16,17 @@ namespace Concierge.Services
 
     public class MainWindowService
     {
-        public MainWindowService()
+        public MainWindowService(RoutedEventHandler selectedEvent)
         {
+            this.SelectedEvent = selectedEvent;
         }
 
-        public ListViewItem CreateListViewItem(
+        private RoutedEventHandler SelectedEvent { get; set; }
+
+        public ListViewItem GenerateListViewItem(
             IConciergePage conciergePage,
             string pageName,
-            PackIconKind packIconKind,
-            RoutedEventHandler selectedEvent)
+            PackIconKind packIconKind)
         {
             var packIcon = new PackIcon()
             {
@@ -53,7 +55,7 @@ namespace Concierge.Services
             stackPanel.Children.Add(textBlock);
 
             listViewItem.Content = stackPanel;
-            listViewItem.Selected += selectedEvent;
+            listViewItem.Selected += this.SelectedEvent;
 
             return listViewItem;
         }

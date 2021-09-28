@@ -80,6 +80,8 @@ namespace Concierge.Character
 
         public CharacterImage CharacterIcon { get; private set; }
 
+        public List<StatusEffect> StatusEffects { get; private set; }
+
         [JsonIgnore]
         public double CarryWeight
         {
@@ -244,6 +246,7 @@ namespace Concierge.Character
             this.EquippedItems = new EquippedItems();
             this.CharacterImage = new CharacterImage();
             this.CharacterIcon = new CharacterImage();
+            this.StatusEffects = new List<StatusEffect>();
         }
     }
 }

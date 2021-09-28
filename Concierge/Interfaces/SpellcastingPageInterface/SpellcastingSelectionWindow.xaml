@@ -7,7 +7,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:viewmodels="clr-namespace:Concierge.Interfaces.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:ConciergeViewModel}"
         mc:Ignorable="d"
         Title="SpellcastingSelectionWindow"
-        Height="425"
+        Height="225"
         Width="650"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
@@ -19,16 +19,13 @@
         Style="{StaticResource WindowXboxDasboardStyle}">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="2*"/>
-            <RowDefinition Height="6*"/>
-            <RowDefinition Height="2*"/>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="110"/>
+            <RowDefinition Height="70"/>
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0">
-            <StackPanel Orientation="Horizontal"
-                        HorizontalAlignment="Right"
-                        VerticalAlignment="Center">
-                <components:ConciergeDesignButton 
+            <components:ConciergeDesignButton 
                     Style="{StaticResource ConciergeDesignButtonStyle}" 
                     x:Name="CloseButton"
                     Width="60"
@@ -36,17 +33,17 @@
                     ToolTip="Close"
                     HorizontalAlignment="Right"
                     Click="CloseButton_Click">
-                    <materialDesign:PackIcon Kind="WindowClose" Width="25" Height="25"/>
-                </components:ConciergeDesignButton>
-            </StackPanel>
+                <materialDesign:PackIcon Kind="WindowClose" Width="25" Height="25"/>
+            </components:ConciergeDesignButton>
         </Grid>
 
         <Grid Grid.Row="1">
-            <TextBlock Text="Would you like to add a spell or class?"
-                       Foreground="White"
-                       FontSize="50"
-                       TextWrapping="Wrap"
-                       Margin="15"/>
+            <TextBlock 
+                Text="Would you like to add a spell or class?"
+                Foreground="White"
+                FontSize="30"
+                TextWrapping="Wrap"
+                Margin="15"/>
         </Grid>
 
         <Grid Grid.Row="2">

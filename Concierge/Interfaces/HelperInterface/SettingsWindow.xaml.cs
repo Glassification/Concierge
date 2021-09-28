@@ -4,6 +4,7 @@
 
 namespace Concierge.Interfaces.HelperInterface
 {
+    using System;
     using System.ComponentModel;
     using System.Windows;
     using System.Windows.Input;
@@ -23,6 +24,10 @@ namespace Concierge.Interfaces.HelperInterface
         {
             this.InitializeComponent();
         }
+
+        public delegate void ApplyChangesEventHandler(object sender, EventArgs e);
+
+        public event ApplyChangesEventHandler ApplyChanges;
 
         private string FormattedInterval => $"Autosave Interval: {Constants.AutosaveIntervals[(int)this.AutosaveInterval.Value]} minute{((int)this.AutosaveInterval.Value > 0 ? "s" : string.Empty)}";
 
@@ -124,6 +129,7 @@ namespace Concierge.Interfaces.HelperInterface
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
             this.Write();
+            this.ApplyChanges?.Invoke(this, new EventArgs());
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)

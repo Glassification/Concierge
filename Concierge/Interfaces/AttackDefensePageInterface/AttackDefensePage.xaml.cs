@@ -11,6 +11,7 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
 
     using Concierge.Character.Enums;
     using Concierge.Character.Items;
+    using Concierge.Character.Statuses;
     using Concierge.Interfaces.Components;
     using Concierge.Utility;
 
@@ -23,6 +24,7 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
         private readonly ModifyAttackWindow modifyAttackWindow = new ();
         private readonly ModifyAmmoWindow modifyAmmoWindow = new ();
         private readonly AttacksPopupWindow attacksPopupWindow = new ();
+        private readonly ModifyStatusEffectsWindow modifyStatusEffectsWindow = new ();
 
         public AttackDefensePage()
         {
@@ -31,6 +33,7 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
             this.modifyAmmoWindow.ApplyChanges += this.Window_ApplyChanges;
             this.modifyAttackWindow.ApplyChanges += this.Window_ApplyChanges;
             this.modifyArmorWindow.ApplyChanges += this.Window_ApplyChanges;
+            this.modifyStatusEffectsWindow.ApplyChanges += this.Window_ApplyChanges;
         }
 
         private delegate void DrawList();
@@ -40,6 +43,7 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
             this.DrawWeaponList();
             this.DrawAmmoList();
             this.DrawArmor();
+            this.DrawStatusEffects();
         }
 
         private static bool NextItem<T>(ConciergeDataGrid dataGrid, DrawList drawList, List<T> list, int limit, int increment)
@@ -62,14 +66,14 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
         {
             var armor = Program.CcsFile.Character.Armor;
 
-            this.ArmorClassField.Text = armor.TotalArmorClass.ToString();
+            this.AcField.Text = armor.TotalArmorClass.ToString();
             this.ArmorWornField.Text = armor.Equiped;
             this.ArmorTypeField.Text = armor.Type.ToString();
             this.ArmorStealthField.Text = armor.Stealth.ToString();
             this.ShieldWornField.Text = armor.Shield;
             this.ShieldAcField.Text = armor.ShieldArmorClass.ToString();
-            this.MiscBonusField.Text = armor.MiscArmorClass.ToString();
-            this.MagicBonusField.Text = armor.MagicArmorClass.ToString();
+            this.MiscAcField.Text = armor.MiscArmorClass.ToString();
+            this.MagicAcField.Text = armor.MagicArmorClass.ToString();
         }
 
         private void DrawWeaponList()
@@ -82,13 +86,13 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
             }
         }
 
-        private void ScrollWeapons()
+        private void DrawStatusEffects()
         {
-            if (this.WeaponDataGrid.Items.Count > 0)
+            this.StatusEffectsDataGrid.Items.Clear();
+
+            foreach (var effect in Program.CcsFile.Character.StatusEffects)
             {
-                this.WeaponDataGrid.SelectedItem = this.WeaponDataGrid.Items[^1];
-                this.WeaponDataGrid.UpdateLayout();
-                this.WeaponDataGrid.ScrollIntoView(this.WeaponDataGrid.SelectedItem);
+                this.StatusEffectsDataGrid.Items.Add(effect);
             }
         }
 
@@ -102,13 +106,13 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
             }
         }
 
-        private void ScrollAmmo()
+        private void ScrollDataGrid(ConciergeDataGrid dataGrid)
         {
-            if (this.AmmoDataGrid.Items.Count > 0)
+            if (dataGrid.Items.Count > 0)
             {
-                this.AmmoDataGrid.SelectedItem = this.AmmoDataGrid.Items[^1];
-                this.AmmoDataGrid.UpdateLayout();
-                this.AmmoDataGrid.ScrollIntoView(this.AmmoDataGrid.SelectedItem);
+                dataGrid.SelectedItem = dataGrid.Items[^1];
+                dataGrid.UpdateLayout();
+                dataGrid.ScrollIntoView(dataGrid.SelectedItem);
             }
         }
 
@@ -242,14 +246,68 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
                 case "ModifyArmorWindow":
                     this.DrawArmor();
                     break;
+                case "ModifyStatusEffectsWindow":
+                    this.DrawStatusEffects();
+                    this.ScrollDataGrid(this.StatusEffectsDataGrid);
+                    break;
                 case "ModifyAmmoWindow":
                     this.DrawAmmoList();
-                    this.ScrollAmmo();
+                    this.ScrollDataGrid(this.AmmoDataGrid);
                     break;
                 case "ModifyAttackWindow":
                     this.DrawWeaponList();
-                    this.ScrollWeapons();
+                    this.ScrollDataGrid(this.WeaponDataGrid);
                     break;
+            }
+        }
+
+        private void ClearEffectsButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.StatusEffectsDataGrid.UnselectAll();
+        }
+
+        private void DeleteEffectsButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (this.StatusEffectsDataGrid.SelectedItem == null)
+            {
+                return;
+            }
+
+            Program.Modify();
+
+            var effect = (StatusEffect)this.StatusEffectsDataGrid.SelectedItem;
+            var index = this.StatusEffectsDataGrid.SelectedIndex;
+
+            Program.CcsFile.Character.StatusEffects.Remove(effect);
+            this.DrawStatusEffects();
+            Utilities.SetDataGridSelectedIndex(this.StatusEffectsDataGrid, index);
+        }
+
+        private void AddEffectsButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.modifyStatusEffectsWindow.ShowAdd(Program.CcsFile.Character.StatusEffects);
+            this.DrawStatusEffects();
+        }
+
+        private void EditEffectsButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (this.StatusEffectsDataGrid.SelectedItem == null)
+            {
+                return;
+            }
+
+            this.modifyStatusEffectsWindow.ShowEdit(this.StatusEffectsDataGrid.SelectedItem as StatusEffect);
+            this.DrawStatusEffects();
+        }
+
+        private void StatusEffectsDataGrid_Sorted(object sender, RoutedEventArgs e)
+        {
+            Program.Modify();
+            Program.CcsFile.Character.StatusEffects.Clear();
+
+            foreach (var effect in this.StatusEffectsDataGrid.Items)
+            {
+                Program.CcsFile.Character.StatusEffects.Add(effect as StatusEffect);
             }
         }
     }

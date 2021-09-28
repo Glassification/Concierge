@@ -1195,7 +1195,15 @@
       "Path": "C:\\Users\\TomBe\\Downloads\\Four_Elements_Trainer_v.0.9.5c-pc\\Four_Elements_Trainer_v.0.9.5c-pc\\game\\presplash.jpg",
       "Stretch": 3,
       "UseCustomImage": true
-    }
+    },
+    "StatusEffects": [
+      {
+        "Name": "Lightning",
+        "Type": 0,
+        "Description": "",
+        "Id": "e9652afa-b7d2-4004-9aa5-156c3371c1a7"
+      }
+    ]
   },
-  "Version": "3.5.0"
+  "Version": "3.6.1"
 }

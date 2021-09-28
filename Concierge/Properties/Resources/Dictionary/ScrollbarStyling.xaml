@@ -9,7 +9,7 @@
     <SolidColorBrush x:Key="SelectedForegroundBrush" Color="Yellow" />
     <SolidColorBrush x:Key="DisabledForegroundBrush" Color="Pink" />
     <SolidColorBrush x:Key="GlyphBrush" Color="Purple" />
-    <SolidColorBrush x:Key="NormalBrush" Color="Orange" />
+    <SolidColorBrush x:Key="NormalBrush" Color="DimGray" />
     <SolidColorBrush x:Key="NormalBorderBrush" Color="Blue" />
     <SolidColorBrush x:Key="HorizontalNormalBrush" Color="DimGray" />
     <SolidColorBrush x:Key="HorizontalNormalBorderBrush" Color="Red" />
@@ -86,7 +86,7 @@
                 <ColumnDefinition Width="0.00001*"/>
                 <ColumnDefinition MaxWidth="18"/>
             </Grid.ColumnDefinitions>
-            <Border Grid.ColumnSpan="3" CornerRadius="2" Background="#F0F0F0"/>
+            <Border Grid.ColumnSpan="3" CornerRadius="2" Background="#FF191919"/>
             <RepeatButton Grid.Column="0"  Style="{StaticResource ScrollBarLineButton}" Width="18" Command="ScrollBar.LineLeftCommand" Content="M 4 0 L 4 8 L 0 4 Z" />
             <Track Name="PART_Track" Grid.Column="1" IsDirectionReversed="False">
                 <Track.DecreaseRepeatButton>
