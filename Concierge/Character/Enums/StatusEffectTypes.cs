@@ -6,6 +6,7 @@ namespace Concierge.Character.Enums
 {
     public enum StatusEffectTypes
     {
+        None,
         Immunity,
         Resistance,
         Vulnerability,

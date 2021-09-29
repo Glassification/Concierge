@@ -105,7 +105,7 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
         private void ClearFields()
         {
             this.NameComboBox.Text = string.Empty;
-            this.TypeComboBox.Text = StatusEffectTypes.Resistance.ToString();
+            this.TypeComboBox.Text = StatusEffectTypes.None.ToString();
             this.DescriptionTextBox.Text = string.Empty;
         }
 

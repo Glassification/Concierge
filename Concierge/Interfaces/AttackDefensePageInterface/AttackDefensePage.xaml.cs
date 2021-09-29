@@ -299,16 +299,5 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
             this.modifyStatusEffectsWindow.ShowEdit(this.StatusEffectsDataGrid.SelectedItem as StatusEffect);
             this.DrawStatusEffects();
         }
-
-        private void StatusEffectsDataGrid_Sorted(object sender, RoutedEventArgs e)
-        {
-            Program.Modify();
-            Program.CcsFile.Character.StatusEffects.Clear();
-
-            foreach (var effect in this.StatusEffectsDataGrid.Items)
-            {
-                Program.CcsFile.Character.StatusEffects.Add(effect as StatusEffect);
-            }
-        }
     }
 }

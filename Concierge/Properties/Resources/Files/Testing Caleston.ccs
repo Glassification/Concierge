@@ -1199,11 +1199,17 @@
     "StatusEffects": [
       {
         "Name": "Lightning",
-        "Type": 0,
-        "Description": "",
+        "Type": 1,
+        "Description": "Take no damage from lightining.",
         "Id": "e9652afa-b7d2-4004-9aa5-156c3371c1a7"
+      },
+      {
+        "Name": "Haste",
+        "Type": 0,
+        "Description": "Do all that stuff haste will allow you to do.",
+        "Id": "65f0bb40-d014-4af9-8385-9547ccf0c961"
       }
     ]
   },
-  "Version": "3.6.1"
+  "Version": "3.6.4"
 }

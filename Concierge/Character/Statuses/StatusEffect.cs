@@ -26,7 +26,7 @@ namespace Concierge.Character.Statuses
         public Guid Id { get; init; }
 
         [JsonIgnore]
-        public string Display => $"{this.Name} {this.Type}{(this.Description.IsNullOrWhiteSpace() ? string.Empty : " - ")}{this.Description}";
+        public string Display => $"{this.Name}{(this.Type == StatusEffectTypes.None ? string.Empty : $" {this.Type}")}{(this.Description.IsNullOrWhiteSpace() ? string.Empty : " - ")}{this.Description}";
 
         public override string ToString()
         {
