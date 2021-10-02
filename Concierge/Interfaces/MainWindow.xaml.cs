@@ -49,6 +49,7 @@ namespace Concierge.Interfaces
 
         private readonly AutosaveTimer autosaveTimer = new ();
         private readonly CharacterCreationWizard characterCreationWizard = new ();
+        private readonly ConciergeDefaultScale conciergeDefaultScale = new ();
 
         private readonly InventoryPage inventoryPage = new ();
         private readonly AttackDefensePage attackDefensePage = new ();
@@ -310,11 +311,10 @@ namespace Concierge.Interfaces
 
         private void CalculateScale()
         {
-            //var wpfScreen = WpfScreen.GetScreenFrom(this);
-            //var rect = wpfScreen.WorkingArea;
+            this.conciergeDefaultScale.Initialize(this.Height, this.Width);
 
-            double yScale = this.Height / 960;
-            double xScale = this.Width / 1536;
+            double yScale = this.Height / this.conciergeDefaultScale.FullScreenHeight;
+            double xScale = this.Width / this.conciergeDefaultScale.FullScreenWidth;
             this.ScaleValueX = (double)OnCoerceScaleValueX(this.MainGrid, xScale);
             this.ScaleValueY = (double)OnCoerceScaleValueY(this.MainGrid, yScale);
         }
