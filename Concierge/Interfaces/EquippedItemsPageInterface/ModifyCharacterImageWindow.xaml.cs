@@ -209,5 +209,13 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
         {
             (this.InformationHover.ToolTip as ToolTip).IsOpen = false;
         }
+
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+            {
+                this.DragMove();
+            }
+        }
     }
 }

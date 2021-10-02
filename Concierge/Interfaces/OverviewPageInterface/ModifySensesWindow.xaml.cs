@@ -132,5 +132,13 @@ namespace Concierge.Interfaces.OverviewPageInterface
             this.PerceptionTextBlock.Text = (Constants.BasePerception + Program.CcsFile.Character.Skill.Perception.Bonus + (this.PerceptionBonusUpDown.Value ?? 0)).ToString();
             this.MovementTextBlock.Text = Details.GetMovement(this.BaseMovementUpDown.Value ?? 0).ToString();
         }
+
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+            {
+                this.DragMove();
+            }
+        }
     }
 }

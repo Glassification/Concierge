@@ -131,5 +131,13 @@ namespace Concierge.Interfaces.OverviewPageInterface
             this.Result = ConciergeWindowResult.Exit;
             this.Hide();
         }
+
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+            {
+                this.DragMove();
+            }
+        }
     }
 }

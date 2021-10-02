@@ -249,5 +249,13 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
                 this.FillFields(this.SpellNameComboBox.SelectedItem as Spell);
             }
         }
+
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+            {
+                this.DragMove();
+            }
+        }
     }
 }

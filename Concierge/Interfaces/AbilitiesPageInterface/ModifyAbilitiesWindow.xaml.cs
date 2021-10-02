@@ -194,5 +194,13 @@ namespace Concierge.Interfaces.AbilitiesPageInterface
                 this.FillFields(this.NameComboBox.SelectedItem as Ability);
             }
         }
+
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+            {
+                this.DragMove();
+            }
+        }
     }
 }

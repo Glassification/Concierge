@@ -32,6 +32,7 @@ namespace Concierge.Persistence
                 }
 
                 Program.Unmodify();
+                Program.Logger.Info($"Successufully loaded {file}");
 
                 return ccsFile;
             }
@@ -54,6 +55,7 @@ namespace Concierge.Persistence
                 File.WriteAllText(ccsFile.AbsolutePath, rawJson);
 
                 Program.Unmodify();
+                Program.Logger.Info($"Successufully saved to {ccsFile.AbsolutePath}");
 
                 return true;
             }

@@ -972,14 +972,14 @@
         "Page": 231,
         "School": 2,
         "Ritual": false,
-        "Components": "V, S, M (a copper piece)",
+        "Components": "Detect thoughts potion",
         "Concentration": true,
         "Range": "Self",
         "Duration": "1 minute",
         "Area": "30 ft. radius",
-        "Save": "See Sourcebook.",
+        "Save": "DC 18",
         "Damage": "N/A",
-        "Description": "You can focus your mind on any one creature that you can see within 30 feet of you. You can sense surface thought, probing deeper will need the creature to make a wisdom saving throw DC 18.",
+        "Description": "You can focus your mind on any one creature that you can see within 30 feet of you. You can sense surface thought, probing deeper will need the creature to make a wisdom saving throw.",
         "Class": null,
         "Id": "0185f768-770c-465f-83f3-d2a2a7a9970e"
       },
@@ -995,7 +995,7 @@
         "Range": "60 feet",
         "Duration": "Reaction",
         "Area": "Self",
-        "Save": "16",
+        "Save": "DC 16",
         "Damage": "30 Force Damage",
         "Description": "Lose 30hp and fire a magical arrow of pure force. If the creature is casting a spell <= 5th level, the spell fails. Target must make saving throw using spellcasting modifier. On failed save take 30 damage, on success take 15 damage.",
         "Class": null,
@@ -1248,7 +1248,8 @@
       "Path": "C:\\Users\\TomBe\\Pictures\\CalestonIcon.png",
       "Stretch": 3,
       "UseCustomImage": true
-    }
+    },
+    "StatusEffects": []
   },
-  "Version": "3.4.23"
+  "Version": "3.6.4"
 }

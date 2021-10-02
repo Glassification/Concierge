@@ -36,6 +36,9 @@ namespace Concierge.Interfaces
     /// </summary>
     public partial class MainWindow : Window
     {
+        public static readonly DependencyProperty ScaleValuePropertyX = DependencyProperty.Register("ScaleValueX", typeof(double), typeof(MainWindow), new UIPropertyMetadata(1.0, new PropertyChangedCallback(OnScaleValueChanged), new CoerceValueCallback(OnCoerceScaleValueX)));
+        public static readonly DependencyProperty ScaleValuePropertyY = DependencyProperty.Register("ScaleValueY", typeof(double), typeof(MainWindow), new UIPropertyMetadata(1.0, new PropertyChangedCallback(OnScaleValueChanged), new CoerceValueCallback(OnCoerceScaleValueY)));
+
         private readonly FileAccessService fileAccessService = new ();
         private readonly CommandLineService commandLineService = new ();
         private readonly MainWindowService mainWindowService;
@@ -92,6 +95,32 @@ namespace Concierge.Interfaces
         public static double GridContentWidthOpen => SystemParameters.PrimaryScreenWidth - 200;
 
         public static double GridContentWidthClose => SystemParameters.PrimaryScreenWidth - 60;
+
+        public double ScaleValueX
+        {
+            get
+            {
+                return (double)this.GetValue(ScaleValuePropertyX);
+            }
+
+            set
+            {
+                this.SetValue(ScaleValuePropertyX, value);
+            }
+        }
+
+        public double ScaleValueY
+        {
+            get
+            {
+                return (double)this.GetValue(ScaleValuePropertyY);
+            }
+
+            set
+            {
+                this.SetValue(ScaleValuePropertyY, value);
+            }
+        }
 
         private static bool IsControl => (Keyboard.Modifiers & ModifierKeys.Control) == ModifierKeys.Control;
 
@@ -226,6 +255,68 @@ namespace Concierge.Interfaces
 
             Program.Logger.Info("Closing Concierge.");
             Application.Current.Shutdown();
+        }
+
+        protected virtual double OnCoerceScaleValue(double value)
+        {
+            if (double.IsNaN(value))
+            {
+                return 1.0d;
+            }
+
+            return Math.Max(0.1, value);
+        }
+
+        protected virtual void OnScaleValueChanged(double oldValue, double newValue)
+        {
+        }
+
+        private static object OnCoerceScaleValueX(DependencyObject o, object value)
+        {
+            if (o is MainWindow mainWindow)
+            {
+                return mainWindow.OnCoerceScaleValue((double)value);
+            }
+            else
+            {
+                return value;
+            }
+        }
+
+        private static object OnCoerceScaleValueY(DependencyObject o, object value)
+        {
+            if (o is MainWindow mainWindow)
+            {
+                return mainWindow.OnCoerceScaleValue((double)value);
+            }
+            else
+            {
+                return value;
+            }
+        }
+
+        private static void OnScaleValueChanged(DependencyObject o, DependencyPropertyChangedEventArgs e)
+        {
+            if (o is MainWindow mainWindow)
+            {
+                mainWindow.OnScaleValueChanged((double)e.OldValue, (double)e.NewValue);
+            }
+        }
+
+        private void MainGrid_SizeChanged(object sender, EventArgs e)
+        {
+            this.CalculateScale();
+        }
+
+        private void CalculateScale()
+        {
+            //var wpfScreen = WpfScreen.GetScreenFrom(this);
+            //var rect = wpfScreen.WorkingArea;
+
+            double yScale = this.Height / 960;
+            double xScale = this.Width / 1536;
+            this.ScaleValueX = (double)OnCoerceScaleValueX(this.MainGrid, xScale);
+            this.ScaleValueY = (double)OnCoerceScaleValueY(this.MainGrid, yScale);
         }
 
         private void GenerateListViewItems()
@@ -533,13 +624,25 @@ namespace Concierge.Interfaces
 
         private void MaximizeButton_Click(object sender, RoutedEventArgs e)
         {
-            this.WindowState = WindowState.Maximized;
+            if (this.WindowState == WindowState.Maximized)
+            {
+                this.MaximizeIcon.Kind = PackIconKind.WindowMaximize;
+                this.WindowState = WindowState.Normal;
+                this.MaximizeButton.ToolTip = "Maximize";
+            }
+            else
+            {
+                this.MaximizeIcon.Kind = PackIconKind.WindowRestore;
+                this.WindowState = WindowState.Maximized;
+                this.MaximizeButton.ToolTip = "Restore Down";
+            }
         }
 
         private void IconButton_Click(object sender, RoutedEventArgs e)
         {
             this.modifyCharacterImageWindow.ShowWindow(Program.CcsFile.Character.CharacterIcon);
             this.mainWindowService.GenerateCharacterStatusBar(this.CharacterHeaderPanel, Program.CcsFile.Character);
+            this.IgnoreSecondPress = true;
         }
 
         private void Window_ApplyChanges(object sender, EventArgs e)
@@ -551,6 +654,14 @@ namespace Concierge.Interfaces
                 case "SettingsWindow":
                     this.DrawAll();
                     break;
+            }
+        }
+
+        private void CharacterHeader_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+            {
+                this.DragMove();
             }
         }
     }

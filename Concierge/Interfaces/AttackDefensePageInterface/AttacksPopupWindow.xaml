@@ -14,6 +14,7 @@
         Background="#252526"
         ResizeMode="NoResize"
         KeyDown="Window_KeyDown"
+        MouseDown="Window_MouseDown"
         BorderThickness="1"
         BorderBrush="#706599"
         Style="{StaticResource WindowXboxDasboardStyle}">

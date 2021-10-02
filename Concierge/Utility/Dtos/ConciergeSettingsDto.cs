@@ -21,5 +21,7 @@ namespace Concierge.Utility.Dtos
         public bool UseCoinWeight { get; init; }
 
         public bool UseEncumbrance { get; init; }
+
+        public bool DisplayWindowInCentre { get; init; }
     }
 }
