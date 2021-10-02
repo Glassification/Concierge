@@ -402,6 +402,22 @@ namespace Concierge.Interfaces
             }
         }
 
+        private void ChangeWindowState()
+        {
+            if (this.WindowState == WindowState.Maximized)
+            {
+                this.MaximizeIcon.Kind = PackIconKind.WindowMaximize;
+                this.WindowState = WindowState.Normal;
+                this.MaximizeButton.ToolTip = "Maximize";
+            }
+            else
+            {
+                this.MaximizeIcon.Kind = PackIconKind.WindowRestore;
+                this.WindowState = WindowState.Maximized;
+                this.MaximizeButton.ToolTip = "Restore Down";
+            }
+        }
+
         private void MainWindow_ContentRendered(object sender, EventArgs e)
         {
             this.FrameContent.NavigationUIVisibility = NavigationUIVisibility.Hidden;
@@ -624,18 +640,7 @@ namespace Concierge.Interfaces
 
         private void MaximizeButton_Click(object sender, RoutedEventArgs e)
         {
-            if (this.WindowState == WindowState.Maximized)
-            {
-                this.MaximizeIcon.Kind = PackIconKind.WindowMaximize;
-                this.WindowState = WindowState.Normal;
-                this.MaximizeButton.ToolTip = "Maximize";
-            }
-            else
-            {
-                this.MaximizeIcon.Kind = PackIconKind.WindowRestore;
-                this.WindowState = WindowState.Maximized;
-                this.MaximizeButton.ToolTip = "Restore Down";
-            }
+            this.ChangeWindowState();
         }
 
         private void IconButton_Click(object sender, RoutedEventArgs e)
@@ -659,6 +664,11 @@ namespace Concierge.Interfaces
 
         private void CharacterHeader_MouseDown(object sender, MouseButtonEventArgs e)
         {
+            if (e.ClickCount == 2)
+            {
+                this.ChangeWindowState();
+            }
+
             if (e.ChangedButton == MouseButton.Left)
             {
                 this.DragMove();

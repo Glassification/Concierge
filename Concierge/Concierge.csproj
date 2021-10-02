@@ -6,7 +6,7 @@
     <RootNamespace>Concierge</RootNamespace>
     <UseWPF>true</UseWPF>
     <UseWindowsForms>true</UseWindowsForms>
-    <Version>3.7.0</Version>
+    <Version>3.7.1</Version>
     <ApplicationIcon>dndnextlogo.ico</ApplicationIcon>
   </PropertyGroup>
 
