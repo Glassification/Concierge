@@ -8,13 +8,12 @@ namespace Concierge.Interfaces.OverviewPageInterface
     using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Input;
-    using System.Windows.Media;
     using System.Windows.Shapes;
 
     using Concierge.Character;
     using Concierge.Character.Enums;
     using Concierge.Interfaces.Enums;
-    using Concierge.Tools;
+    using Concierge.Tools.Interface;
     using Concierge.Utility;
     using Concierge.Utility.Extensions;
 
@@ -570,7 +569,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
 
         private void EditHitDiceButton_Click(object sender, RoutedEventArgs e)
         {
-            this.modifyHitDiceWindow.ModifyHitDice(Program.CcsFile.Character.Vitality.HitDice);
+            this.modifyHitDiceWindow.ShowEdit(Program.CcsFile.Character.Vitality.HitDice);
             this.DrawHitDice();
         }
 
@@ -578,7 +577,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
         {
             var character = Program.CcsFile.Character;
 
-            this.modifyHpWindow.SubtractHP(character.Vitality);
+            this.modifyHpWindow.ShowSubtract(character.Vitality);
             this.DrawHealth();
 
             if (character.Vitality.IsDead)
@@ -589,7 +588,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
 
         private void HealDamageButton_Click(object sender, RoutedEventArgs e)
         {
-            this.modifyHpWindow.AddHP(Program.CcsFile.Character.Vitality);
+            this.modifyHpWindow.ShowAdd(Program.CcsFile.Character.Vitality);
             this.DrawHealth();
         }
 
@@ -646,7 +645,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
 
         private void EditWealthButton_Click(object sender, RoutedEventArgs e)
         {
-            this.modifyWealthWindow.ShowWindow();
+            this.modifyWealthWindow.ShowEdit();
             this.DrawWealth();
         }
 

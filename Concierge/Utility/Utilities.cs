@@ -19,14 +19,6 @@ namespace Concierge.Utility
 
     public static class Utilities
     {
-        public static void SetWindowStartupLocation(Window window)
-        {
-            if (ConciergeSettings.DisplayWindowInCentre)
-            {
-                window.WindowStartupLocation = WindowStartupLocation.CenterOwner;
-            }
-        }
-
         public static void SetDataGridSelectedIndex(ConciergeDataGrid dataGrid, int index)
         {
             if (dataGrid.Items.IsEmpty)

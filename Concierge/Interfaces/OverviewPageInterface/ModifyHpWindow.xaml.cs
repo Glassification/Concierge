@@ -23,7 +23,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
 
         private ConciergeWindowResult Result { get; set; }
 
-        public void AddHP(Vitality vitality)
+        public void ShowAdd(Vitality vitality)
         {
             this.HeaderTextBlock.Text = "Heal";
             this.HpUpDown.Value = 0;
@@ -36,7 +36,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
             }
         }
 
-        public void SubtractHP(Vitality vitality)
+        public void ShowSubtract(Vitality vitality)
         {
             this.HeaderTextBlock.Text = "Damage";
             this.HpUpDown.Value = 0;

@@ -20,7 +20,7 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
     /// <summary>
     /// Interaction logic for ModifyStatusEffectsWindow.xaml.
     /// </summary>
-    public partial class ModifyStatusEffectsWindow : Window, IConciergeWindow
+    public partial class ModifyStatusEffectsWindow : Window, IConciergeModifyWindow
     {
         public ModifyStatusEffectsWindow()
         {

@@ -13,7 +13,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
     /// <summary>
     /// Interaction logic for ModifyWealthWindow.xaml.
     /// </summary>
-    public partial class ModifyWealthWindow : Window, IConciergeWindow
+    public partial class ModifyWealthWindow : Window, IConciergeModifyWindow
     {
         public ModifyWealthWindow()
         {
@@ -41,7 +41,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
             return this.Result;
         }
 
-        public void ShowWindow()
+        public void ShowEdit()
         {
             this.ClearFields();
             this.FillFields();

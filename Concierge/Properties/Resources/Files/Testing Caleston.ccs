@@ -806,7 +806,7 @@
         "Amount": 1,
         "Weight": 1.0,
         "IsInBagOfHolding": true,
-        "Note": "A waterskin can hold 4 litres of liquid. Currently drugged.",
+        "Note": "Test Item",
         "Attuned": false,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
         "Id": "b9344386-4577-4289-8244-dab70e72d2d2"
@@ -820,6 +820,16 @@
         "Attuned": false,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
         "Id": "b4f2b56f-0335-47e7-b420-ddc96f54cec5"
+      },
+      {
+        "Name": "Test Item",
+        "Amount": 1,
+        "Weight": 20.0,
+        "IsInBagOfHolding": false,
+        "Note": "",
+        "Attuned": false,
+        "EquppedId": "00000000-0000-0000-0000-000000000000",
+        "Id": "02fa9abe-1c98-403d-bad6-bb3462d8d59d"
       }
     ],
     "MagicClasses": [],
@@ -1175,6 +1185,20 @@
         "ProficiencyOverride": false,
         "IsInBagOfHolding": false,
         "Id": "c524a3af-5d8d-4e8f-9f23-0c762cf21b2c"
+      },
+      {
+        "Name": "Morningstar",
+        "Ability": 0,
+        "Damage": "1d8",
+        "Misc": "",
+        "DamageType": 2,
+        "Range": "5 / 5",
+        "Note": "Test Item",
+        "Weight": 4.0,
+        "WeaponType": 22,
+        "ProficiencyOverride": false,
+        "IsInBagOfHolding": false,
+        "Id": "6482ddc9-fc9d-4f9b-ad31-18ec5813ffff"
       }
     ],
     "EquippedItems": {
@@ -1211,5 +1235,5 @@
       }
     ]
   },
-  "Version": "3.7.0"
+  "Version": "3.8.0"
 }

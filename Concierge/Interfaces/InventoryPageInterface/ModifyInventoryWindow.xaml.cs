@@ -13,14 +13,14 @@ namespace Concierge.Interfaces.InventoryPageInterface
 
     using Concierge.Character.Items;
     using Concierge.Interfaces.Enums;
-    using Concierge.Tools;
+    using Concierge.Tools.Interface;
     using Concierge.Utility;
     using Concierge.Utility.Extensions;
 
     /// <summary>
     /// Interaction logic for ModifyInventoryWindow.xaml.
     /// </summary>
-    public partial class ModifyInventoryWindow : Window, IConciergeWindow
+    public partial class ModifyInventoryWindow : Window, IConciergeModifyWindow
     {
         public ModifyInventoryWindow()
         {
@@ -36,6 +36,8 @@ namespace Concierge.Interfaces.InventoryPageInterface
 
         private bool Editing { get; set; }
 
+        private string HeaderText => $"{(this.Editing ? "Edit" : "Add")} Item";
+
         private Inventory SelectedItem { get; set; }
 
         private List<Inventory> Items { get; set; }
@@ -45,7 +47,7 @@ namespace Concierge.Interfaces.InventoryPageInterface
         public ConciergeWindowResult ShowWizardSetup()
         {
             this.Editing = false;
-            this.HeaderTextBlock.Text = "Add Item";
+            this.HeaderTextBlock.Text = this.HeaderText;
             this.Items = Program.CcsFile.Character.Inventories;
             this.ApplyButton.Visibility = Visibility.Visible;
             this.OkButton.Visibility = Visibility.Collapsed;
@@ -58,26 +60,27 @@ namespace Concierge.Interfaces.InventoryPageInterface
 
         public void ShowEdit(Inventory inventory, bool equippedItem = false)
         {
-            this.HeaderTextBlock.Text = "Edit Item";
-            this.SelectedItem = inventory;
             this.Editing = true;
+            this.HeaderTextBlock.Text = this.HeaderText;
+            this.SelectedItem = inventory;
             this.EquippedItem = equippedItem;
-            this.FillFields(inventory);
             this.ApplyButton.Visibility = Visibility.Collapsed;
             this.OkButton.Visibility = Visibility.Visible;
 
+            this.FillFields(inventory);
             this.ShowDialog();
         }
 
         public void ShowAdd(List<Inventory> items)
         {
-            this.HeaderTextBlock.Text = "Add Item";
-            this.Items = items;
             this.Editing = false;
-            this.ClearFields();
+            this.HeaderTextBlock.Text = this.HeaderText;
+            this.Items = items;
+
             this.ApplyButton.Visibility = Visibility.Visible;
             this.OkButton.Visibility = Visibility.Visible;
 
+            this.ClearFields();
             this.ShowDialog();
         }
 

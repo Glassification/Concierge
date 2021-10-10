@@ -163,14 +163,12 @@
                                         <TextBlock Text="Long Rest" VerticalAlignment="Center" Margin="20 10"/>
                                     </StackPanel>
                                 </Button>
-                                <Separator Foreground="White"/>
                                 <Button x:Name="CharacterCreationButton" Foreground="White" Click="CharacterCreationButton_Click">
                                     <StackPanel Orientation="Horizontal">
                                         <materialDesign:PackIcon Kind="Creation" Height="25" Width="25" Margin="0 10"/>
                                         <TextBlock Text="Create Character..." VerticalAlignment="Center" Margin="20 10"/>
                                     </StackPanel>
                                 </Button>
-                                <Separator Foreground="White"/>
                                 <Button x:Name="ButtonProperties" Foreground="White" Click="PropertiesButton_Click">
                                     <StackPanel Orientation="Horizontal">
                                         <materialDesign:PackIcon Kind="SmartCardOutline" Height="25" Width="25" Margin="0 10"/>
@@ -181,6 +179,13 @@
                                     <StackPanel Orientation="Horizontal">
                                         <materialDesign:PackIcon Kind="ImagePlus" Height="25" Width="25" Margin="0 10"/>
                                         <TextBlock Text="Character Icon..." VerticalAlignment="Center" Margin="20 10"/>
+                                    </StackPanel>
+                                </Button>
+                                <Separator Foreground="White"/>
+                                <Button x:Name="SearchButton" Foreground="White" Click="SearchButton_Click">
+                                    <StackPanel Orientation="Horizontal">
+                                        <materialDesign:PackIcon Kind="Search" Height="25" Width="25" Margin="0 10"/>
+                                        <TextBlock Text="Search..." VerticalAlignment="Center" Margin="20 10"/>
                                     </StackPanel>
                                 </Button>
                                 <Button x:Name="SettingsButton" Foreground="White" Click="SettingsButton_Click">

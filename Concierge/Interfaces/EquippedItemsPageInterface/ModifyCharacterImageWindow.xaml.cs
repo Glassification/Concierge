@@ -21,7 +21,7 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
     /// <summary>
     /// Interaction logic for ModifyCharacterImageWindow.xaml.
     /// </summary>
-    public partial class ModifyCharacterImageWindow : Window, IConciergeWindow
+    public partial class ModifyCharacterImageWindow : Window, IConciergeModifyWindow
     {
         private readonly FileAccessService fileAccessService;
         private readonly BackgroundWorker toolTipTimer = new ();
@@ -59,7 +59,7 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
             this.ApplyButton.Visibility = Visibility.Collapsed;
             this.CharacterImage = Program.CcsFile.Character.CharacterImage;
 
-            this.Draw();
+            this.FillFields();
             this.ShowDialog();
 
             return this.Result;
@@ -70,26 +70,13 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
             this.CancelButton.Content = text;
         }
 
-        public void ShowWindow(CharacterImage characterImage)
+        public void ShowEdit(CharacterImage characterImage)
         {
             this.ApplyButton.Visibility = Visibility.Visible;
             this.CharacterImage = characterImage;
 
-            this.Draw();
+            this.FillFields();
             this.ShowDialog();
-        }
-
-        public void Draw()
-        {
-            this.IsDrawing = true;
-
-            this.ImageSourceTextBox.Text = this.OriginalFileName = this.CharacterImage.Path;
-            this.FillTypeComboBox.Text = this.CharacterImage.Stretch.ToString();
-            this.UseCustomImageCheckBox.IsChecked = this.CharacterImage.UseCustomImage;
-
-            this.SetEnabledState(this.CharacterImage.UseCustomImage);
-
-            this.IsDrawing = false;
         }
 
         protected override void OnClosing(CancelEventArgs e)
@@ -101,14 +88,17 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
             this.Hide();
         }
 
-        private void OpenImageButton_Click(object sender, RoutedEventArgs e)
+        private void FillFields()
         {
-            var fileName = this.fileAccessService.OpenImage();
+            this.IsDrawing = true;
 
-            if (!fileName.IsNullOrWhiteSpace())
-            {
-                this.ImageSourceTextBox.Text = fileName;
-            }
+            this.ImageSourceTextBox.Text = this.OriginalFileName = this.CharacterImage.Path;
+            this.FillTypeComboBox.Text = this.CharacterImage.Stretch.ToString();
+            this.UseCustomImageCheckBox.IsChecked = this.CharacterImage.UseCustomImage;
+
+            this.SetEnabledState(this.CharacterImage.UseCustomImage);
+
+            this.IsDrawing = false;
         }
 
         private void UpdateCharacterImage()
@@ -127,6 +117,16 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
             this.ImageSourceTextBox.IsEnabled = isEnabled;
             this.FillTypeComboBox.IsEnabled = isEnabled;
             this.OpenImageButton.IsEnabled = isEnabled;
+        }
+
+        private void OpenImageButton_Click(object sender, RoutedEventArgs e)
+        {
+            var fileName = this.fileAccessService.OpenImage();
+
+            if (!fileName.IsNullOrWhiteSpace())
+            {
+                this.ImageSourceTextBox.Text = fileName;
+            }
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)

@@ -15,7 +15,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
     /// <summary>
     /// Interaction logic for ModifyHitDiceWindow.xaml.
     /// </summary>
-    public partial class ModifyHitDiceWindow : Window, IConciergeWindow
+    public partial class ModifyHitDiceWindow : Window, IConciergeModifyWindow
     {
         public ModifyHitDiceWindow()
         {
@@ -35,18 +35,18 @@ namespace Concierge.Interfaces.OverviewPageInterface
             this.HitDice = Program.CcsFile.Character.Vitality.HitDice;
             this.ApplyButton.Visibility = Visibility.Collapsed;
 
-            this.SetHitDice();
+            this.FillFields();
             this.ShowDialog();
 
             return this.Result;
         }
 
-        public void ModifyHitDice(HitDice hitDice)
+        public void ShowEdit(HitDice hitDice)
         {
             this.HitDice = hitDice;
             this.ApplyButton.Visibility = Visibility.Visible;
 
-            this.SetHitDice();
+            this.FillFields();
             this.ShowDialog();
         }
 
@@ -63,7 +63,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
             this.Hide();
         }
 
-        private void SetHitDice()
+        private void FillFields()
         {
             this.TotalD6UpDown.UpdatingValue();
             this.TotalD8UpDown.UpdatingValue();
@@ -85,7 +85,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
             this.UsedD12UpDown.Value = this.HitDice.SpentD12;
         }
 
-        private void GetHitDice()
+        private void UpdateHitDice()
         {
             this.HitDice.TotalD6 = this.TotalD6UpDown.Value ?? 0;
             this.HitDice.TotalD8 = this.TotalD8UpDown.Value ?? 0;
@@ -125,7 +125,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
         {
             Program.Modify();
 
-            this.GetHitDice();
+            this.UpdateHitDice();
 
             this.ApplyChanges?.Invoke(this, new EventArgs());
         }
@@ -135,7 +135,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
             Program.Modify();
             this.Result = ConciergeWindowResult.OK;
 
-            this.GetHitDice();
+            this.UpdateHitDice();
             this.Hide();
         }
 

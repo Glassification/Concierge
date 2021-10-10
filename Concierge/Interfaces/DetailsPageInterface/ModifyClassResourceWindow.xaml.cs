@@ -16,7 +16,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
     /// <summary>
     /// Interaction logic for ModifyProficiencyWindow.xaml.
     /// </summary>
-    public partial class ModifyClassResourceWindow : Window, IConciergeWindow
+    public partial class ModifyClassResourceWindow : Window, IConciergeModifyWindow
     {
         public ModifyClassResourceWindow()
         {
@@ -108,7 +108,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
             this.SpentUpDown.Value = 0;
         }
 
-        private ClassResource CreateClassResource()
+        private ClassResource ToClassResource()
         {
             return new ClassResource()
             {
@@ -128,7 +128,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
             }
             else
             {
-                this.ClassResources.Add(this.CreateClassResource());
+                this.ClassResources.Add(this.ToClassResource());
             }
         }
 

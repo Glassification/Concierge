@@ -18,7 +18,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
     /// <summary>
     /// Interaction logic for ModifyLanguagesWindow.xaml.
     /// </summary>
-    public partial class ModifyLanguagesWindow : Window, IConciergeWindow
+    public partial class ModifyLanguagesWindow : Window, IConciergeModifyWindow
     {
         public ModifyLanguagesWindow()
         {

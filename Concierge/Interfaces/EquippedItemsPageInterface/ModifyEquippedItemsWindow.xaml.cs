@@ -18,7 +18,7 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
     /// <summary>
     /// Interaction logic for ModifyEquippedItemsWindow.xaml.
     /// </summary>
-    public partial class ModifyEquippedItemsWindow : Window, IConciergeWindow
+    public partial class ModifyEquippedItemsWindow : Window, IConciergeModifyWindow
     {
         public ModifyEquippedItemsWindow()
         {

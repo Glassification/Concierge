@@ -10,7 +10,7 @@ namespace Concierge.Persistence
 
     using Concierge.Exceptions.Enums;
     using Concierge.Interfaces.Enums;
-    using Concierge.Tools;
+    using Concierge.Tools.Interface;
     using Concierge.Utility;
     using Concierge.Utility.Extensions;
     using Newtonsoft.Json;

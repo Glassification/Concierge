@@ -18,7 +18,7 @@ namespace Concierge.Interfaces.NotesPageInterface
     using Concierge.Exceptions.Enums;
     using Concierge.Interfaces.Components;
     using Concierge.Interfaces.Enums;
-    using Concierge.Tools;
+    using Concierge.Tools.Interface;
     using Concierge.Utility.Extensions;
 
     /// <summary>

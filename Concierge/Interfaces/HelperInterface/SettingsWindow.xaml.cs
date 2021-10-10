@@ -10,7 +10,7 @@ namespace Concierge.Interfaces.HelperInterface
     using System.Windows.Input;
 
     using Concierge.Interfaces.Enums;
-    using Concierge.Tools;
+    using Concierge.Tools.Interface;
     using Concierge.Utility;
     using Concierge.Utility.Dtos;
     using Concierge.Utility.Extensions;
@@ -31,9 +31,9 @@ namespace Concierge.Interfaces.HelperInterface
 
         private string FormattedInterval => $"Autosave Interval: {Constants.AutosaveIntervals[(int)this.AutosaveInterval.Value]} minute{((int)this.AutosaveInterval.Value > 0 ? "s" : string.Empty)}";
 
-        public void ShowWindow()
+        public void ShowEdit()
         {
-            this.Read();
+            this.FillFields();
             this.ShowDialog();
         }
 
@@ -44,7 +44,7 @@ namespace Concierge.Interfaces.HelperInterface
             this.Hide();
         }
 
-        private void Read()
+        private void FillFields()
         {
             this.AutosaveCheckBox.UpdatingValue();
             this.CoinWeightCheckBox.UpdatingValue();
@@ -78,7 +78,7 @@ namespace Concierge.Interfaces.HelperInterface
             this.CheckVersionCheckBox.UpdatedValue();
         }
 
-        private bool Write()
+        private bool UpdateSettings()
         {
             if (Program.CcsFile.AbsolutePath.IsNullOrWhiteSpace() && (this.AutosaveCheckBox.IsChecked ?? false))
             {
@@ -128,13 +128,13 @@ namespace Concierge.Interfaces.HelperInterface
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Write();
+            this.UpdateSettings();
             this.ApplyChanges?.Invoke(this, new EventArgs());
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
-            if (this.Write())
+            if (this.UpdateSettings())
             {
                 this.Hide();
             }

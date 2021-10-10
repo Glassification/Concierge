@@ -2,7 +2,7 @@
 // Copyright (c) Thomas Beckett. All rights reserved.
 // </copyright>
 
-namespace Concierge.Tools
+namespace Concierge.Tools.DivideLoot
 {
     public class Player : RewardPool
     {

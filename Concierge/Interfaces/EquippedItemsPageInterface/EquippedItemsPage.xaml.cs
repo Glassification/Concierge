@@ -228,7 +228,7 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
 
         private void ImageEditButton_Click(object sender, RoutedEventArgs e)
         {
-            this.modifyCharacterImageWindow.ShowWindow(Program.CcsFile.Character.CharacterImage);
+            this.modifyCharacterImageWindow.ShowEdit(Program.CcsFile.Character.CharacterImage);
             this.Draw();
         }
     }

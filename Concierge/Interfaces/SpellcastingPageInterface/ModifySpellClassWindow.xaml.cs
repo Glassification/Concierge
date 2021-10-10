@@ -19,7 +19,7 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
     /// <summary>
     /// Interaction logic for ModifySpellClassWindow.xaml.
     /// </summary>
-    public partial class ModifySpellClassWindow : Window, IConciergeWindow
+    public partial class ModifySpellClassWindow : Window, IConciergeModifyWindow
     {
         public ModifySpellClassWindow()
         {
@@ -34,6 +34,8 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
 
         private bool Editing { get; set; }
 
+        private string HeaderText => $"{(this.Editing ? "Edit" : "Add")} Magic Class";
+
         private bool SettingValues { get; set; }
 
         private MagicClass SelectedClass { get; set; }
@@ -45,7 +47,7 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
         public ConciergeWindowResult ShowWizardSetup()
         {
             this.Editing = false;
-            this.HeaderTextBlock.Text = "Add Magic Class";
+            this.HeaderTextBlock.Text = this.HeaderText;
             this.ApplyButton.Visibility = Visibility.Visible;
             this.OkButton.Visibility = Visibility.Collapsed;
             this.MagicClasses = Program.CcsFile.Character.MagicClasses;
@@ -59,7 +61,7 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
         public void AddClass(List<MagicClass> magicClasses)
         {
             this.Editing = false;
-            this.HeaderTextBlock.Text = "Add Magic Class";
+            this.HeaderTextBlock.Text = this.HeaderText;
             this.ApplyButton.Visibility = Visibility.Visible;
             this.OkButton.Visibility = Visibility.Visible;
             this.MagicClasses = magicClasses;
@@ -70,9 +72,9 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
 
         public void EditClass(MagicClass magicClass)
         {
-            this.HeaderTextBlock.Text = "Edit Magic Class";
-            this.SelectedClass = magicClass;
             this.Editing = true;
+            this.HeaderTextBlock.Text = this.HeaderText;
+            this.SelectedClass = magicClass;
             this.ApplyButton.Visibility = Visibility.Collapsed;
             this.OkButton.Visibility = Visibility.Visible;
 
@@ -133,7 +135,7 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
             this.SettingValues = false;
         }
 
-        private void UpdateClass(MagicClass magicClass)
+        private void UpdateMagicClass(MagicClass magicClass)
         {
             magicClass.Name = this.ClassNameComboBox.Text;
             magicClass.Ability = (Abilities)Enum.Parse(typeof(Abilities), this.AbilityComboBox.Text);
@@ -185,7 +187,7 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
 
             if (this.Editing)
             {
-                this.UpdateClass(this.SelectedClass);
+                this.UpdateMagicClass(this.SelectedClass);
             }
             else
             {

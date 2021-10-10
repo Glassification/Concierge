@@ -12,6 +12,7 @@ namespace Concierge.Interfaces.ToolsPageInterface
     using System.Windows.Media;
 
     using Concierge.Tools;
+    using Concierge.Tools.DivideLoot;
     using Concierge.Utility;
     using Xceed.Wpf.Toolkit;
 

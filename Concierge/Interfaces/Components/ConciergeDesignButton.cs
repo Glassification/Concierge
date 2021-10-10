@@ -30,6 +30,7 @@ namespace Concierge.Interfaces.Components
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             ConciergeSound.TapNavigation();
+            Program.Logger.Info($"{this.Name} clicked.");
         }
 
         private void Button_MouseEnter(object sender, MouseEventArgs e)

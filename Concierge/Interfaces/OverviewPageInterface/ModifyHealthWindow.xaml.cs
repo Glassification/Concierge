@@ -15,7 +15,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
     /// <summary>
     /// Interaction logic for ModifyHealthWindow.xaml.
     /// </summary>
-    public partial class ModifyHealthWindow : Window, IConciergeWindow
+    public partial class ModifyHealthWindow : Window, IConciergeModifyWindow
     {
         public ModifyHealthWindow()
         {

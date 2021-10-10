@@ -161,7 +161,7 @@ namespace Concierge.Interfaces.CompanionPageInterface
 
         private void EditHitDiceButton_Click(object sender, RoutedEventArgs e)
         {
-            this.modifyHitDiceWindow.ModifyHitDice(Program.CcsFile.Character.Companion.Vitality.HitDice);
+            this.modifyHitDiceWindow.ShowEdit(Program.CcsFile.Character.Companion.Vitality.HitDice);
             this.DrawHitDice();
         }
 
@@ -243,19 +243,19 @@ namespace Concierge.Interfaces.CompanionPageInterface
 
         private void TakeDamageButton_Click(object sender, RoutedEventArgs e)
         {
-            this.modifyHpWindow.SubtractHP(Program.CcsFile.Character.Companion.Vitality);
+            this.modifyHpWindow.ShowSubtract(Program.CcsFile.Character.Companion.Vitality);
             this.DrawHealth();
         }
 
         private void HealDamageButton_Click(object sender, RoutedEventArgs e)
         {
-            this.modifyHpWindow.AddHP(Program.CcsFile.Character.Companion.Vitality);
+            this.modifyHpWindow.ShowAdd(Program.CcsFile.Character.Companion.Vitality);
             this.DrawHealth();
         }
 
         private void EditPropertiesButton_Click(object sender, RoutedEventArgs e)
         {
-            this.modifyPropertiesWindow.EditProperties();
+            this.modifyPropertiesWindow.ShowEdit();
             this.DrawDetails();
         }
 

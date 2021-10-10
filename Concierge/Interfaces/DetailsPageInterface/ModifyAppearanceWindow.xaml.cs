@@ -17,7 +17,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
     /// <summary>
     /// Interaction logic for ModifyAppearanceWindow.xaml.
     /// </summary>
-    public partial class ModifyAppearanceWindow : Window, IConciergeWindow
+    public partial class ModifyAppearanceWindow : Window, IConciergeModifyWindow
     {
         public ModifyAppearanceWindow()
         {

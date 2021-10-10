@@ -20,7 +20,7 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
     /// <summary>
     /// Interaction logic for ModifySpellWindow.xaml.
     /// </summary>
-    public partial class ModifySpellWindow : Window, IConciergeWindow
+    public partial class ModifySpellWindow : Window, IConciergeModifyWindow
     {
         public ModifySpellWindow()
         {
@@ -36,6 +36,8 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
 
         private bool Editing { get; set; }
 
+        private string HeaderText => $"{(this.Editing ? "Edit" : "Add")} Spell";
+
         private Spell SelectedSpell { get; set; }
 
         private List<Spell> Spells { get; set; }
@@ -45,7 +47,7 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
         public ConciergeWindowResult ShowWizardSetup()
         {
             this.Editing = false;
-            this.HeaderTextBlock.Text = "Add Spell";
+            this.HeaderTextBlock.Text = this.HeaderText;
             this.ApplyButton.Visibility = Visibility.Visible;
             this.OkButton.Visibility = Visibility.Collapsed;
             this.Spells = Program.CcsFile.Character.Spells;
@@ -59,7 +61,7 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
         public void AddSpell(List<Spell> spells)
         {
             this.Editing = false;
-            this.HeaderTextBlock.Text = "Add Spell";
+            this.HeaderTextBlock.Text = this.HeaderText;
             this.ApplyButton.Visibility = Visibility.Visible;
             this.OkButton.Visibility = Visibility.Visible;
             this.Spells = spells;
@@ -70,13 +72,13 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
 
         public void EditSpell(Spell spell)
         {
-            this.HeaderTextBlock.Text = "Edit Spell";
-            this.SelectedSpell = spell;
             this.Editing = true;
+            this.HeaderTextBlock.Text = this.HeaderText;
+            this.SelectedSpell = spell;
             this.ApplyButton.Visibility = Visibility.Collapsed;
             this.OkButton.Visibility = Visibility.Visible;
-            this.FillFields(spell);
 
+            this.FillFields(spell);
             this.ShowDialog();
         }
 

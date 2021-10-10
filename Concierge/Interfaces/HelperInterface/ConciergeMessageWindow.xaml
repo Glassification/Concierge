@@ -67,16 +67,17 @@
                 <TextBlock 
                     x:Name="MessageText"
                     Text="Your message here"
-                        Foreground="White"
-                        FontSize="25"
-                        TextWrapping="Wrap"
-                        Margin="15"/>
+                    Foreground="White"
+                    FontSize="25"
+                    TextWrapping="Wrap"
+                    Margin="15"/>
             </Grid>
         </Grid>
         <Grid Grid.Row="2">
-            <StackPanel Orientation="Horizontal"
-                        VerticalAlignment="Center"
-                        HorizontalAlignment="Center">
+            <StackPanel 
+                Orientation="Horizontal"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center">
                 <components:ConciergeTextButton 
                     x:Name="OkButton"
                     Style="{StaticResource ConciergeTextButtonStyle}"

@@ -247,7 +247,7 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
 
         private void LevelEditButton_Click(object sender, RoutedEventArgs e)
         {
-            this.modifySpellSlotsWindow.EditSpellSlots();
+            this.modifySpellSlotsWindow.ShowEdit();
             this.DrawTotalSpellSlots();
             this.DrawUsedSpellSlots();
         }
