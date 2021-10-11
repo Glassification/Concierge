@@ -31,7 +31,7 @@
         <!--Header-->
         <Grid Grid.Row="0">
             <TextBlock 
-                Text="Search Character Sheet"
+                Text="Search"
                 x:Name="HeaderTextBlock"
                 Foreground="#988CD0"
                 FontSize="35"
@@ -63,10 +63,11 @@
 
         <Grid Grid.Row="1">
             <Grid.RowDefinitions>
-                <RowDefinition Height="25*"/>
-                <RowDefinition Height="25*"/>
-                <RowDefinition Height="25*"/>
-                <RowDefinition Height="25*"/>
+                <RowDefinition Height="23*"/>
+                <RowDefinition Height="23*"/>
+                <RowDefinition Height="23*"/>
+                <RowDefinition Height="23*"/>
+                <RowDefinition Height="8*"/>
             </Grid.RowDefinitions>
 
             <Grid Grid.Row="0">
@@ -178,6 +179,16 @@
                         x:Name="SearchTextBox"
                         FontSize="15"/>
                 </Grid>
+            </Grid>
+
+            <Grid Grid.Row="4">
+                <TextBlock
+                    x:Name="SearchResultTextBlock"
+                    Foreground="PaleGreen"
+                    FontSize="15"
+                    Text="Found 0/3 results."
+                    VerticalAlignment="Center"
+                    Margin="100,0,0,0"/>
             </Grid>
         </Grid>
 

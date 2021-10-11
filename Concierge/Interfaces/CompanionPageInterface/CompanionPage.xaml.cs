@@ -12,6 +12,7 @@ namespace Concierge.Interfaces.CompanionPageInterface
 
     using Concierge.Character.Items;
     using Concierge.Interfaces.AttackDefensePageInterface;
+    using Concierge.Interfaces.Enums;
     using Concierge.Interfaces.OverviewPageInterface;
     using Concierge.Utility;
 
@@ -45,6 +46,8 @@ namespace Concierge.Interfaces.CompanionPageInterface
         public int ShieldWidth => (int)this.ArmorClassBox.RenderSize.Width;
 
         public int ShieldHeight => (int)this.ArmorClassBox.RenderSize.Height;
+
+        public ConciergePage ConciergePage => ConciergePage.Companion;
 
         public void Draw()
         {

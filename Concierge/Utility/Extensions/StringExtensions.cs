@@ -61,5 +61,27 @@ namespace Concierge.Utility.Extensions
 
             return cleanedString;
         }
+
+        public static string FormatFromEnum(this string str)
+        {
+            if (str.IsNullOrWhiteSpace())
+            {
+                return string.Empty;
+            }
+
+            var charArray = str.ToCharArray();
+            var offset = 0;
+
+            for (int i = 1; i < charArray.Length; i++)
+            {
+                if (char.IsUpper(charArray[i]))
+                {
+                    str = str.Insert(i + offset, " ");
+                    offset++;
+                }
+            }
+
+            return str;
+        }
     }
 }

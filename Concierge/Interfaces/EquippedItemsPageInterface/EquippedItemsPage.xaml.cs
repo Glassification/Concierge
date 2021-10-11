@@ -12,6 +12,7 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
     using Concierge.Character.Enums;
     using Concierge.Character.Items;
     using Concierge.Interfaces.Components;
+    using Concierge.Interfaces.Enums;
     using Concierge.Interfaces.InventoryPageInterface;
     using Concierge.Utility;
 
@@ -39,6 +40,8 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
         public static double InnerEquippedItemsHeight => SystemParameters.PrimaryScreenHeight - 100 - 50;
 
         public static double InnerEquippedItemsWidth => SystemParameters.PrimaryScreenWidth - 50;
+
+        public ConciergePage ConciergePage => ConciergePage.EquippedItems;
 
         private Inventory SelectedItem { get; set; }
 

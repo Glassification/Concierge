@@ -10,9 +10,11 @@ namespace Concierge.Interfaces.HelperInterface
     using System.Linq;
     using System.Windows;
     using System.Windows.Input;
+    using System.Windows.Media;
 
     using Concierge.Tools.Searching;
     using Concierge.Tools.Searching.Enums;
+    using Concierge.Utility;
     using Concierge.Utility.Extensions;
 
     /// <summary>
@@ -29,8 +31,9 @@ namespace Concierge.Interfaces.HelperInterface
             this.conciergeSearch = new ConciergeSearch(mainWindow);
             this.SearchResults = new List<SearchResult>();
             this.mainWindow = mainWindow;
-            this.SearchDomainComboBox.ItemsSource = Enum.GetValues(typeof(SearchDomain)).Cast<SearchDomain>();
-            this.SearchDomainComboBox.Text = SearchDomain.CurrentPage.ToString();
+            this.SearchDomainComboBox.ItemsSource = Utilities.FormatEnumForDisplay(typeof(SearchDomain));
+            this.SearchDomainComboBox.Text = SearchDomain.CurrentPage.ToString().FormatFromEnum();
+            this.SearchResultTextBlock.Text = string.Empty;
         }
 
         private List<SearchResult> SearchResults { get; set; }
@@ -56,7 +59,7 @@ namespace Concierge.Interfaces.HelperInterface
             {
                 MatchCase = this.MatchCaseCheckBox.IsChecked ?? false,
                 MatchWholeWord = this.MatchWholeWordCheckBox.IsChecked ?? false,
-                SearchDomain = (SearchDomain)Enum.Parse(typeof(SearchDomain), this.SearchDomainComboBox.Text),
+                SearchDomain = (SearchDomain)Enum.Parse(typeof(SearchDomain), this.SearchDomainComboBox.Text.Replace(" ", string.Empty)),
                 TextToSearch = this.SearchTextBox.Text,
             };
         }
@@ -84,8 +87,23 @@ namespace Concierge.Interfaces.HelperInterface
             }
 
             var result = this.SearchResults[this.SearchIndex];
-            this.mainWindow.PageSelection(result.ConciergePage);
+            this.mainWindow.MoveSelection(result.ConciergePage.ConciergePage);
             this.conciergeSearch.Navigate(result);
+            this.Focus();
+        }
+
+        private void FormatResultText()
+        {
+            if (this.SearchResults.IsEmpty())
+            {
+                this.SearchResultTextBlock.Text = "No results found!";
+                this.SearchResultTextBlock.Foreground = Brushes.IndianRed;
+            }
+            else
+            {
+                this.SearchResultTextBlock.Text = $"Found {this.SearchIndex + 1}/{this.SearchResults.Count} results.";
+                this.SearchResultTextBlock.Foreground = Brushes.PaleGreen;
+            }
         }
 
         private void MinimizeButton_Click(object sender, RoutedEventArgs e)
@@ -101,6 +119,7 @@ namespace Concierge.Interfaces.HelperInterface
         private void FindPreviousButton_Click(object sender, RoutedEventArgs e)
         {
             this.SelectSearchResult();
+            this.FormatResultText();
 
             this.SearchIndex--;
             if (this.SearchIndex < 0)
@@ -112,6 +131,7 @@ namespace Concierge.Interfaces.HelperInterface
         private void FindNextButton_Click(object sender, RoutedEventArgs e)
         {
             this.SelectSearchResult();
+            this.FormatResultText();
 
             this.SearchIndex++;
             if (this.SearchIndex >= this.SearchResults.Count)

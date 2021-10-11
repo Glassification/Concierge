@@ -4,12 +4,10 @@
 
 namespace Concierge.Tools.Searching
 {
-    using System;
     using System.Collections.Generic;
     using System.Text.RegularExpressions;
-    using System.Windows;
     using System.Windows.Controls;
-    using System.Windows.Media;
+
     using Concierge.Character;
     using Concierge.Interfaces;
     using Concierge.Interfaces.AbilitiesPageInterface;
@@ -61,7 +59,12 @@ namespace Concierge.Tools.Searching
 
         public void Navigate(SearchResult searchResult)
         {
-            var dataGrids = FindVisualChildren<ConciergeDataGrid>(searchResult.ConciergePage as Page);
+            this.NavigateToDataGrid(searchResult);
+        }
+
+        private void NavigateToDataGrid(SearchResult searchResult)
+        {
+            var dataGrids = Utilities.FindVisualChildren<ConciergeDataGrid>(searchResult.ConciergePage as Page);
 
             foreach (var dataGrid in dataGrids)
             {
@@ -70,30 +73,6 @@ namespace Concierge.Tools.Searching
                 {
                     Utilities.SetDataGridSelectedIndex(dataGrid, index);
                     dataGrid.ScrollIntoView(dataGrid.SelectedItem);
-                }
-            }
-        }
-
-        private static IEnumerable<T> FindVisualChildren<T>(DependencyObject depObj)
-            where T : DependencyObject
-        {
-            if (depObj != null)
-            {
-                foreach (object rawChild in LogicalTreeHelper.GetChildren(depObj))
-                {
-                    if (rawChild is DependencyObject)
-                    {
-                        DependencyObject child = (DependencyObject)rawChild;
-                        if (child is T)
-                        {
-                            yield return (T)child;
-                        }
-
-                        foreach (T childOfChild in FindVisualChildren<T>(child))
-                        {
-                            yield return childOfChild;
-                        }
-                    }
                 }
             }
         }
@@ -192,12 +171,7 @@ namespace Concierge.Tools.Searching
             {
                 var propertyValue = property.GetValue(item);
 
-                if (propertyValue is not string)
-                {
-                    continue;
-                }
-
-                if (this.Regex.IsMatch(propertyValue as string))
+                if (this.Regex.IsMatch(propertyValue.ToString()))
                 {
                     return true;
                 }

@@ -292,6 +292,16 @@ namespace Concierge.Interfaces
             Program.Logger.Info($"Navigate to {page.GetType().Name}");
         }
 
+        public void MoveSelection(ConciergePage page)
+        {
+            if (page >= 0 && ((int)page) < this.ListViewMenu.Items.Count)
+            {
+                this.ListViewMenu.SelectedItem = this.ListViewMenu.Items[(int)page];
+                this.UpdateLayout();
+                ((ListViewItem)this.ListViewMenu.ItemContainerGenerator.ContainerFromIndex((int)page)).Focus();
+            }
+        }
+
         protected override void OnClosed(EventArgs e)
         {
             base.OnClosed(e);
@@ -418,16 +428,6 @@ namespace Concierge.Interfaces
             this.autosaveTimer.Stop();
         }
 
-        private void MoveSelection(ConciergePage page)
-        {
-            if (page >= 0 && ((int)page) < this.ListViewMenu.Items.Count)
-            {
-                this.ListViewMenu.SelectedItem = this.ListViewMenu.Items[(int)page];
-                this.UpdateLayout();
-                ((ListViewItem)this.ListViewMenu.ItemContainerGenerator.ContainerFromIndex((int)page)).Focus();
-            }
-        }
-
         private void ChangeWindowState()
         {
             if (this.WindowState == WindowState.Maximized)
@@ -512,7 +512,7 @@ namespace Concierge.Interfaces
                     this.MoveSelection(ConciergePage.Details);
                     break;
                 case Key.D3:
-                    this.MoveSelection(ConciergePage.Equipment);
+                    this.MoveSelection(ConciergePage.AttackDefense);
                     break;
                 case Key.D4:
                     this.MoveSelection(ConciergePage.Abilities);

@@ -11,6 +11,7 @@ namespace Concierge.Interfaces.ToolsPageInterface
     using System.Windows.Input;
     using System.Windows.Media;
 
+    using Concierge.Interfaces.Enums;
     using Concierge.Tools;
     using Concierge.Tools.DivideLoot;
     using Concierge.Utility;
@@ -37,6 +38,8 @@ namespace Concierge.Interfaces.ToolsPageInterface
             this.SetDefaultDivideValues();
             this.SetDefaultDiceValues();
         }
+
+        public ConciergePage ConciergePage => ConciergePage.Tools;
 
         private List<Player> Players { get; set; }
 

@@ -10,6 +10,7 @@ namespace Concierge.Interfaces.InventoryPageInterface
 
     using Concierge.Character.Items;
     using Concierge.Interfaces;
+    using Concierge.Interfaces.Enums;
     using Concierge.Utility;
 
     /// <summary>
@@ -27,6 +28,8 @@ namespace Concierge.Interfaces.InventoryPageInterface
         }
 
         public double InventoryHeight => SystemParameters.PrimaryScreenHeight - 100;
+
+        public ConciergePage ConciergePage => ConciergePage.Inventory;
 
         public void Draw()
         {

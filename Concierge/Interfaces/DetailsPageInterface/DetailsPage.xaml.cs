@@ -14,6 +14,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
     using Concierge.Character.Characteristics;
     using Concierge.Character.Statuses;
     using Concierge.Interfaces.Components;
+    using Concierge.Interfaces.Enums;
     using Concierge.Utility;
 
     /// <summary>
@@ -40,6 +41,8 @@ namespace Concierge.Interfaces.DetailsPageInterface
         }
 
         public double ProficiencyGridSize => this.WeaponGrid.RenderSize.Height;
+
+        public ConciergePage ConciergePage => ConciergePage.Details;
 
         public void Draw()
         {

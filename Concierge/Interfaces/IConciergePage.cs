@@ -4,8 +4,12 @@
 
 namespace Concierge.Interfaces
 {
+    using Concierge.Interfaces.Enums;
+
     public interface IConciergePage
     {
+        ConciergePage ConciergePage { get; }
+
         void Draw();
     }
 }

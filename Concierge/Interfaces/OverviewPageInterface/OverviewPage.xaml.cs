@@ -93,6 +93,8 @@ namespace Concierge.Interfaces.OverviewPageInterface
 
         public int ShieldHeight => (int)this.HealthBox.RenderSize.Height;
 
+        public ConciergePage ConciergePage => ConciergePage.Overview;
+
         private bool DeathScreenShown { get; set; }
 
         public void Draw()

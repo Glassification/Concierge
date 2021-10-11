@@ -47,6 +47,8 @@ namespace Concierge.Interfaces.NotesPageInterface
 
         public Document SelectedDocument { get; set; }
 
+        public ConciergePage ConciergePage => ConciergePage.Notes;
+
         private bool Lock { get; set; }
 
         public void Draw()
