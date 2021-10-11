@@ -4,17 +4,23 @@
 
 namespace Concierge.Tools.Searching
 {
+    using System;
     using System.Collections.Generic;
-
+    using System.Text.RegularExpressions;
+    using System.Windows;
+    using System.Windows.Controls;
+    using System.Windows.Media;
     using Concierge.Character;
     using Concierge.Interfaces;
     using Concierge.Interfaces.AbilitiesPageInterface;
     using Concierge.Interfaces.AttackDefensePageInterface;
     using Concierge.Interfaces.CompanionPageInterface;
+    using Concierge.Interfaces.Components;
     using Concierge.Interfaces.DetailsPageInterface;
     using Concierge.Interfaces.EquippedItemsPageInterface;
     using Concierge.Interfaces.InventoryPageInterface;
     using Concierge.Interfaces.SpellcastingPageInterface;
+    using Concierge.Utility;
     using Concierge.Utility.Extensions;
 
     public class ConciergeSearch
@@ -34,6 +40,8 @@ namespace Concierge.Tools.Searching
 
         private List<SearchResult> Results { get; set; }
 
+        private Regex Regex { get; set; }
+
         public List<SearchResult> Search(SearchSettings searchSettings, ConciergeCharacter character)
         {
             this.Results.Clear();
@@ -45,9 +53,60 @@ namespace Concierge.Tools.Searching
                 return this.Results;
             }
 
+            this.CreateRegex();
             this.SearchWithSettings();
 
             return this.Results;
+        }
+
+        public void Navigate(SearchResult searchResult)
+        {
+            var dataGrids = FindVisualChildren<ConciergeDataGrid>(searchResult.ConciergePage as Page);
+
+            foreach (var dataGrid in dataGrids)
+            {
+                var index = dataGrid.Items.IndexOf(searchResult.Item);
+                if (index > 0)
+                {
+                    Utilities.SetDataGridSelectedIndex(dataGrid, index);
+                    dataGrid.ScrollIntoView(dataGrid.SelectedItem);
+                }
+            }
+        }
+
+        private static IEnumerable<T> FindVisualChildren<T>(DependencyObject depObj)
+            where T : DependencyObject
+        {
+            if (depObj != null)
+            {
+                foreach (object rawChild in LogicalTreeHelper.GetChildren(depObj))
+                {
+                    if (rawChild is DependencyObject)
+                    {
+                        DependencyObject child = (DependencyObject)rawChild;
+                        if (child is T)
+                        {
+                            yield return (T)child;
+                        }
+
+                        foreach (T childOfChild in FindVisualChildren<T>(child))
+                        {
+                            yield return childOfChild;
+                        }
+                    }
+                }
+            }
+        }
+
+        private void CreateRegex()
+        {
+            var pattern = this.SearchSettings.MatchWholeWord
+                    ? $"\b{Regex.Escape(this.SearchSettings.TextToSearch)}\b"
+                    : Regex.Escape(this.SearchSettings.TextToSearch);
+
+            this.Regex = this.SearchSettings.MatchCase
+                ? new Regex(pattern)
+                : new Regex(pattern, RegexOptions.IgnoreCase);
         }
 
         private void SearchWithSettings()
@@ -98,6 +157,7 @@ namespace Concierge.Tools.Searching
             {
                 this.SearchList(this.Character.ClassResources, conciergePage);
                 this.SearchList(this.Character.Details.Languages, conciergePage);
+                this.SearchList(this.Character.Proficiency, conciergePage);
             }
             else if (conciergePage is EquippedItemsPage)
             {
@@ -137,11 +197,7 @@ namespace Concierge.Tools.Searching
                     continue;
                 }
 
-                var found = this.SearchSettings.MatchCase
-                    ? (propertyValue as string).Contains(this.SearchSettings.TextToSearch, System.StringComparison.InvariantCultureIgnoreCase)
-                    : (propertyValue as string).Contains(this.SearchSettings.TextToSearch);
-
-                if (found)
+                if (this.Regex.IsMatch(propertyValue as string))
                 {
                     return true;
                 }

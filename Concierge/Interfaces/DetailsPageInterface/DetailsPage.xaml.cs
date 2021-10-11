@@ -6,6 +6,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Media;
@@ -51,16 +52,15 @@ namespace Concierge.Interfaces.DetailsPageInterface
             this.DrawConditions();
         }
 
-        private static void SortProficiencyItems(Dictionary<Guid, string> proficiency, ItemCollection items)
+        private static void AddSortedToList(List<Proficiency> proficiency, ConciergeDataGrid dataGrid)
         {
-            foreach (var item in items)
+            foreach (var item in dataGrid.Items)
             {
-                var keyValuePair = (KeyValuePair<Guid, string>)item;
-                proficiency.Add(keyValuePair.Key, keyValuePair.Value);
+                proficiency.Add(item as Proficiency);
             }
         }
 
-        private static void DrawProficiency(ConciergeDataGrid conciergeDataGrid, Dictionary<Guid, string> proficiencies)
+        private static void DrawProficiency(ConciergeDataGrid conciergeDataGrid, List<Proficiency> proficiencies)
         {
             conciergeDataGrid.Items.Clear();
 
@@ -68,6 +68,14 @@ namespace Concierge.Interfaces.DetailsPageInterface
             {
                 conciergeDataGrid.Items.Add(item);
             }
+        }
+
+        private void SortProficiencyItems(List<Proficiency> proficiency)
+        {
+            AddSortedToList(proficiency, this.WeaponProficiencyDataGrid);
+            AddSortedToList(proficiency, this.ArmorProficiencyDataGrid);
+            AddSortedToList(proficiency, this.ShieldProficiencyDataGrid);
+            AddSortedToList(proficiency, this.ToolProficiencyDataGrid);
         }
 
         private void DrawWeight()
@@ -109,10 +117,12 @@ namespace Concierge.Interfaces.DetailsPageInterface
 
         private void DrawProficiencies()
         {
-            DrawProficiency(this.WeaponProficiencyDataGrid, Program.CcsFile.Character.Proficiency.Weapons);
-            DrawProficiency(this.ArmorProficiencyDataGrid, Program.CcsFile.Character.Proficiency.Armors);
-            DrawProficiency(this.ShieldProficiencyDataGrid, Program.CcsFile.Character.Proficiency.Shields);
-            DrawProficiency(this.ToolProficiencyDataGrid, Program.CcsFile.Character.Proficiency.Tools);
+            var character = Program.CcsFile.Character;
+
+            DrawProficiency(this.WeaponProficiencyDataGrid, character.Proficiency.Where(x => x.ProficiencyType == Character.Enums.ProficiencyTypes.Weapon).ToList());
+            DrawProficiency(this.ArmorProficiencyDataGrid, character.Proficiency.Where(x => x.ProficiencyType == Character.Enums.ProficiencyTypes.Armor).ToList());
+            DrawProficiency(this.ShieldProficiencyDataGrid, character.Proficiency.Where(x => x.ProficiencyType == Character.Enums.ProficiencyTypes.Shield).ToList());
+            DrawProficiency(this.ToolProficiencyDataGrid, character.Proficiency.Where(x => x.ProficiencyType == Character.Enums.ProficiencyTypes.Tool).ToList());
 
             this.ProficiencyBonusField.Text = $"  Bonus: {Program.CcsFile.Character.ProficiencyBonus}  ";
         }
@@ -173,83 +183,64 @@ namespace Concierge.Interfaces.DetailsPageInterface
             }
         }
 
+        private void DeleteProficiency(ConciergeDataGrid dataGrid)
+        {
+            Program.Modify();
+
+            var item = dataGrid.SelectedItem as Proficiency;
+            var index = dataGrid.SelectedIndex;
+            Program.CcsFile.Character.Proficiency.Remove(item);
+            this.DrawProficiencies();
+            Utilities.SetDataGridSelectedIndex(dataGrid, index);
+        }
+
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
             if (this.WeaponProficiencyDataGrid.SelectedItem != null)
             {
-                Program.Modify();
-
-                var weapon = (KeyValuePair<Guid, string>)this.WeaponProficiencyDataGrid.SelectedItem;
-                var index = this.WeaponProficiencyDataGrid.SelectedIndex;
-                Program.CcsFile.Character.Proficiency.Weapons.Remove(weapon.Key);
-                this.DrawProficiencies();
-                Utilities.SetDataGridSelectedIndex(this.WeaponProficiencyDataGrid, index);
+                this.DeleteProficiency(this.WeaponProficiencyDataGrid);
             }
             else if (this.ArmorProficiencyDataGrid.SelectedItem != null)
             {
-                Program.Modify();
-
-                var armor = (KeyValuePair<Guid, string>)this.ArmorProficiencyDataGrid.SelectedItem;
-                var index = this.ArmorProficiencyDataGrid.SelectedIndex;
-                Program.CcsFile.Character.Proficiency.Armors.Remove(armor.Key);
-                this.DrawProficiencies();
-                Utilities.SetDataGridSelectedIndex(this.ArmorProficiencyDataGrid, index);
+                this.DeleteProficiency(this.ArmorProficiencyDataGrid);
             }
             else if (this.ShieldProficiencyDataGrid.SelectedItem != null)
             {
-                Program.Modify();
-
-                var shield = (KeyValuePair<Guid, string>)this.ShieldProficiencyDataGrid.SelectedItem;
-                var index = this.ShieldProficiencyDataGrid.SelectedIndex;
-                Program.CcsFile.Character.Proficiency.Shields.Remove(shield.Key);
-                this.DrawProficiencies();
-                Utilities.SetDataGridSelectedIndex(this.ShieldProficiencyDataGrid, index);
+                this.DeleteProficiency(this.ShieldProficiencyDataGrid);
             }
             else if (this.ToolProficiencyDataGrid.SelectedItem != null)
             {
-                Program.Modify();
-
-                var tool = (KeyValuePair<Guid, string>)this.ToolProficiencyDataGrid.SelectedItem;
-                var index = this.ToolProficiencyDataGrid.SelectedIndex;
-                Program.CcsFile.Character.Proficiency.Tools.Remove(tool.Key);
-                this.DrawProficiencies();
-                Utilities.SetDataGridSelectedIndex(this.ToolProficiencyDataGrid, index);
+                this.DeleteProficiency(this.ToolProficiencyDataGrid);
             }
         }
 
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
-            KeyValuePair<Guid, string> proficiency;
-
             if (this.WeaponProficiencyDataGrid.SelectedItem != null)
             {
-                proficiency = (KeyValuePair<Guid, string>)this.WeaponProficiencyDataGrid.SelectedItem;
-                this.modifyProficiencyWindow.ShowEdit(proficiency.Key);
+                this.modifyProficiencyWindow.ShowEdit(this.WeaponProficiencyDataGrid.SelectedItem as Proficiency);
                 this.DrawProficiencies();
             }
             else if (this.ArmorProficiencyDataGrid.SelectedItem != null)
             {
-                proficiency = (KeyValuePair<Guid, string>)this.ArmorProficiencyDataGrid.SelectedItem;
-                this.modifyProficiencyWindow.ShowEdit(proficiency.Key);
+                this.modifyProficiencyWindow.ShowEdit(this.ArmorProficiencyDataGrid.SelectedItem as Proficiency);
                 this.DrawProficiencies();
             }
             else if (this.ShieldProficiencyDataGrid.SelectedItem != null)
             {
-                proficiency = (KeyValuePair<Guid, string>)this.ShieldProficiencyDataGrid.SelectedItem;
-                this.modifyProficiencyWindow.ShowEdit(proficiency.Key);
+                this.modifyProficiencyWindow.ShowEdit(this.ShieldProficiencyDataGrid.SelectedItem as Proficiency);
                 this.DrawProficiencies();
             }
             else if (this.ToolProficiencyDataGrid.SelectedItem != null)
             {
-                proficiency = (KeyValuePair<Guid, string>)this.ToolProficiencyDataGrid.SelectedItem;
-                this.modifyProficiencyWindow.ShowEdit(proficiency.Key);
+                this.modifyProficiencyWindow.ShowEdit(this.ToolProficiencyDataGrid.SelectedItem as Proficiency);
                 this.DrawProficiencies();
             }
         }
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            this.modifyProficiencyWindow.ShowAdd();
+            this.modifyProficiencyWindow.ShowAdd(Program.CcsFile.Character.Proficiency);
 
             this.DrawProficiencies();
         }
@@ -394,26 +385,8 @@ namespace Concierge.Interfaces.DetailsPageInterface
         private void ProficiencyDataGrid_Sorted(object sender, RoutedEventArgs e)
         {
             Program.Modify();
-
-            switch ((sender as ConciergeDataGrid).Name)
-            {
-                case "WeaponProficiencyDataGrid":
-                    Program.CcsFile.Character.Proficiency.Weapons.Clear();
-                    SortProficiencyItems(Program.CcsFile.Character.Proficiency.Weapons, this.WeaponProficiencyDataGrid.Items);
-                    break;
-                case "ArmorProficiencyDataGrid":
-                    Program.CcsFile.Character.Proficiency.Armors.Clear();
-                    SortProficiencyItems(Program.CcsFile.Character.Proficiency.Armors, this.ArmorProficiencyDataGrid.Items);
-                    break;
-                case "ShieldProficiencyDataGrid":
-                    Program.CcsFile.Character.Proficiency.Shields.Clear();
-                    SortProficiencyItems(Program.CcsFile.Character.Proficiency.Shields, this.ShieldProficiencyDataGrid.Items);
-                    break;
-                case "ToolProficiencyDataGrid":
-                    Program.CcsFile.Character.Proficiency.Tools.Clear();
-                    SortProficiencyItems(Program.CcsFile.Character.Proficiency.Tools, this.ToolProficiencyDataGrid.Items);
-                    break;
-            }
+            Program.CcsFile.Character.Proficiency.Clear();
+            this.SortProficiencyItems(Program.CcsFile.Character.Proficiency);
         }
 
         private void LanguagesDataGrid_Sorted(object sender, RoutedEventArgs e)

@@ -673,7 +673,7 @@
                                 <DataGridTextColumn 
                                     Header="Weapons"
                                     Width="100*"
-                                    Binding="{Binding Value}"
+                                    Binding="{Binding Name}"
                                     ElementStyle="{StaticResource DetailsColumnElementStyle}"/>
                             </DataGrid.Columns>
                         </components:ConciergeDataGrid>
@@ -693,7 +693,7 @@
                                 <DataGridTextColumn
                                     Header="Armor"
                                     Width="100*"
-                                    Binding="{Binding Value}"
+                                    Binding="{Binding Name}"
                                     ElementStyle="{StaticResource DetailsColumnElementStyle}"/>
                             </DataGrid.Columns>
                         </components:ConciergeDataGrid>
@@ -713,7 +713,7 @@
                                 <DataGridTextColumn 
                                     Header="Shields"
                                     Width="100*"
-                                    Binding="{Binding Value}"
+                                    Binding="{Binding Name}"
                                     ElementStyle="{StaticResource DetailsColumnElementStyle}"/>
                             </DataGrid.Columns>
                         </components:ConciergeDataGrid>
@@ -733,7 +733,7 @@
                                 <DataGridTextColumn 
                                     Header="Tools"
                                     Width="100*"
-                                    Binding="{Binding Value}"
+                                    Binding="{Binding Name}"
                                     ElementStyle="{StaticResource DetailsColumnElementStyle}"/>
                             </DataGrid.Columns>
                         </components:ConciergeDataGrid>

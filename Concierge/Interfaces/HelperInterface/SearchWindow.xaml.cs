@@ -85,6 +85,7 @@ namespace Concierge.Interfaces.HelperInterface
 
             var result = this.SearchResults[this.SearchIndex];
             this.mainWindow.PageSelection(result.ConciergePage);
+            this.conciergeSearch.Navigate(result);
         }
 
         private void MinimizeButton_Click(object sender, RoutedEventArgs e)

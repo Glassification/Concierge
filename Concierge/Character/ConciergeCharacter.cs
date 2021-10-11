@@ -58,7 +58,7 @@ namespace Concierge.Character
 
         public Personality Personality { get; private set; }
 
-        public Proficiency Proficiency { get; set; }
+        public List<Proficiency> Proficiency { get; set; }
 
         public SavingThrow SavingThrow { get; private set; }
 
@@ -194,21 +194,20 @@ namespace Concierge.Character
 
             return weapon.ProficiencyOverride
                 ? true
-                : this.Proficiency.Weapons.ContainsValue(weaponName)
-                ? true
+                : this.Proficiency.Any(x => x.Name.Equals(weaponName) && x.ProficiencyType == ProficiencyTypes.Weapon) ? true
                 : weapon.WeaponType switch
             {
                 // Simple Ranged Weapons
-                WeaponTypes.LightCrossbow or WeaponTypes.Dart or WeaponTypes.Shortbow or WeaponTypes.Sling => this.Proficiency.Weapons.ContainsValue("Simple Ranged Weapons"),
+                WeaponTypes.LightCrossbow or WeaponTypes.Dart or WeaponTypes.Shortbow or WeaponTypes.Sling => this.Proficiency.Any(x => x.Name.Equals("Simple Ranged Weapons") && x.ProficiencyType == ProficiencyTypes.Weapon),
 
                 // Simple Melee Weapons
-                WeaponTypes.Club or WeaponTypes.Dagger or WeaponTypes.Greatclub or WeaponTypes.Handaxe or WeaponTypes.Javelin or WeaponTypes.LightHammer or WeaponTypes.Mace or WeaponTypes.Quarterstaff or WeaponTypes.Sickle or WeaponTypes.Spear => this.Proficiency.Weapons.ContainsValue("Simple Melee Weapons"),
+                WeaponTypes.Club or WeaponTypes.Dagger or WeaponTypes.Greatclub or WeaponTypes.Handaxe or WeaponTypes.Javelin or WeaponTypes.LightHammer or WeaponTypes.Mace or WeaponTypes.Quarterstaff or WeaponTypes.Sickle or WeaponTypes.Spear => this.Proficiency.Any(x => x.Name.Equals("Simple Melee Weapons") && x.ProficiencyType == ProficiencyTypes.Weapon),
 
                 // Martial Ranged Weapons
-                WeaponTypes.Blowgun or WeaponTypes.HandCrossbow or WeaponTypes.HeavyCrossbow or WeaponTypes.Longbow or WeaponTypes.Net => this.Proficiency.Weapons.ContainsValue("Martial Ranged Weapons"),
+                WeaponTypes.Blowgun or WeaponTypes.HandCrossbow or WeaponTypes.HeavyCrossbow or WeaponTypes.Longbow or WeaponTypes.Net => this.Proficiency.Any(x => x.Name.Equals("Martial Ranged Weapons") && x.ProficiencyType == ProficiencyTypes.Weapon),
 
                 // Martial Melee Weapons
-                WeaponTypes.Battleaxe or WeaponTypes.Flail or WeaponTypes.Glaive or WeaponTypes.Greataxe or WeaponTypes.Greatsword or WeaponTypes.Halberd or WeaponTypes.Lance or WeaponTypes.Longsword or WeaponTypes.Maul or WeaponTypes.Morningstar or WeaponTypes.Pike or WeaponTypes.Rapier or WeaponTypes.Scimitar or WeaponTypes.Shortsword or WeaponTypes.Trident or WeaponTypes.WarPick or WeaponTypes.Warhammer or WeaponTypes.Whip => this.Proficiency.Weapons.ContainsValue("Martial Melee Weapons"),
+                WeaponTypes.Battleaxe or WeaponTypes.Flail or WeaponTypes.Glaive or WeaponTypes.Greataxe or WeaponTypes.Greatsword or WeaponTypes.Halberd or WeaponTypes.Lance or WeaponTypes.Longsword or WeaponTypes.Maul or WeaponTypes.Morningstar or WeaponTypes.Pike or WeaponTypes.Rapier or WeaponTypes.Scimitar or WeaponTypes.Shortsword or WeaponTypes.Trident or WeaponTypes.WarPick or WeaponTypes.Warhammer or WeaponTypes.Whip => this.Proficiency.Any(x => x.Name.Equals("Martial Melee Weapons") && x.ProficiencyType == ProficiencyTypes.Weapon),
                 _ => false,
             };
         }
@@ -235,7 +234,7 @@ namespace Concierge.Character
             this.Inventories = new List<Inventory>();
             this.MagicClasses = new List<MagicClass>();
             this.Personality = new Personality();
-            this.Proficiency = new Proficiency();
+            this.Proficiency = new List<Proficiency>();
             this.SavingThrow = new SavingThrow();
             this.Skill = new Skill();
             this.Spells = new List<Spell>();

@@ -842,26 +842,63 @@
       "Background": "Criminal Contact: Network of trustworthy contacts. Can use them to send and receive messages quickly over great distances.",
       "Notes": ""
     },
-    "Proficiency": {
-      "Armors": {
-        "ed2bcbe2-318c-4118-9453-5de20b326cdd": "Light Armor"
+    "Proficiency": [
+      {
+        "Name": "Light Armor",
+        "ProficiencyType": 0,
+        "Id": "27293e8f-fc82-47b4-bee3-62600c983fb4"
       },
-      "Shields": {},
-      "Weapons": {
-        "093c9814-63d5-4161-a85f-60248d69a548": "Simple Ranged Weapons",
-        "cfca8e0b-d264-4f2a-9bc5-a07a01af462e": "Simple Melee Weapons",
-        "59509815-2ba3-45f7-9f7e-9ce1d77255ed": "Shortsword",
-        "5dc2f862-43f6-428c-becf-2e1b267de12a": "Rapier",
-        "601a0fad-b779-4f0a-bedc-c8c6290868af": "Longsword",
-        "059ea7a7-06db-4ab1-9b37-b0bc1885f46b": "Hand Crossbow"
+      {
+        "Name": "Simple Ranged Weapons",
+        "ProficiencyType": 3,
+        "Id": "d0940544-f6fe-48db-a3a4-56c2d8f98aca"
       },
-      "Tools": {
-        "526dd367-f9fc-4497-a5aa-50413691215a": "Disguise Kit",
-        "e36569a1-ca68-48e6-b047-88777a456243": "Poisoner Kit",
-        "f56e1dca-37a1-4625-8428-c47ef90ecf65": "Thieves' Tools",
-        "f59eedb5-9773-40dd-9145-a5c7b2fae03d": "Three-Dragon Ante Set"
+      {
+        "Name": "Simple Melee Weapons",
+        "ProficiencyType": 3,
+        "Id": "7c4d43c3-68d3-4ee4-9328-cb9d4d834e1a"
+      },
+      {
+        "Name": "Shortsword",
+        "ProficiencyType": 3,
+        "Id": "23528671-4bd9-44b1-93ee-1eb833d3fb9e"
+      },
+      {
+        "Name": "Rapier",
+        "ProficiencyType": 3,
+        "Id": "2d35789d-4f88-4b4b-b30f-d8e56be6e700"
+      },
+      {
+        "Name": "Longsword",
+        "ProficiencyType": 3,
+        "Id": "9907bfc8-82cd-4661-95c7-5c8c1e65328f"
+      },
+      {
+        "Name": "Hand Crossbow",
+        "ProficiencyType": 3,
+        "Id": "5e13ab34-2f74-41b5-a632-3497ca344b55"
+      },
+      {
+        "Name": "Disguise Kit",
+        "ProficiencyType": 2,
+        "Id": "18e8c878-43a2-4808-a5b5-110ce6858661"
+      },
+      {
+        "Name": "Poisoner Kit",
+        "ProficiencyType": 2,
+        "Id": "7258eaa7-5f07-4159-a821-1725ff2f002a"
+      },
+      {
+        "Name": "Thieves' Tools",
+        "ProficiencyType": 2,
+        "Id": "237d27ac-a219-4cab-a7f0-3b40d62b09a9"
+      },
+      {
+        "Name": "Three-Dragon Ante Set",
+        "ProficiencyType": 2,
+        "Id": "a778a59f-3334-4f44-b098-fc6347274a1a"
       }
-    },
+    ],
     "SavingThrow": {
       "Strength": {
         "Proficiency": false
