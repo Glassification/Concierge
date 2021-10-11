@@ -25,6 +25,7 @@ namespace Concierge.Interfaces
     using Concierge.Persistence;
     using Concierge.Services;
     using Concierge.Tools;
+    using Concierge.Tools.Interface;
     using Concierge.Utility;
     using Concierge.Utility.Extensions;
     using MaterialDesignThemes.Wpf;
@@ -36,6 +37,9 @@ namespace Concierge.Interfaces
     /// </summary>
     public partial class MainWindow : Window
     {
+        public static readonly DependencyProperty ScaleValuePropertyX = DependencyProperty.Register("ScaleValueX", typeof(double), typeof(MainWindow), new UIPropertyMetadata(1.0, new PropertyChangedCallback(OnScaleValueChanged), new CoerceValueCallback(OnCoerceScaleValueX)));
+        public static readonly DependencyProperty ScaleValuePropertyY = DependencyProperty.Register("ScaleValueY", typeof(double), typeof(MainWindow), new UIPropertyMetadata(1.0, new PropertyChangedCallback(OnScaleValueChanged), new CoerceValueCallback(OnCoerceScaleValueY)));
+
         private readonly FileAccessService fileAccessService = new ();
         private readonly CommandLineService commandLineService = new ();
         private readonly MainWindowService mainWindowService;
@@ -46,17 +50,7 @@ namespace Concierge.Interfaces
 
         private readonly AutosaveTimer autosaveTimer = new ();
         private readonly CharacterCreationWizard characterCreationWizard = new ();
-
-        private readonly InventoryPage inventoryPage = new ();
-        private readonly AttackDefensePage attackDefensePage = new ();
-        private readonly AbilitiesPage abilitiesPage = new ();
-        private readonly OverviewPage overviewPage = new ();
-        private readonly DetailsPage detailsPage = new ();
-        private readonly NotesPage notesPage = new ();
-        private readonly SpellcastingPage spellcastingPage = new ();
-        private readonly ToolsPage toolsPage = new ();
-        private readonly EquippedItemsPage equipedItemsPage = new ();
-        private readonly CompanionPage companionPage = new ();
+        private readonly SearchWindow searchWindow;
 
         public MainWindow()
         {
@@ -69,11 +63,22 @@ namespace Concierge.Interfaces
             this.GridContent.Width = GridContentWidthClose;
             this.IgnoreListItemSelectionChanged = true;
 
+            this.InventoryPage = new InventoryPage();
+            this.AttackDefensePage = new AttackDefensePage();
+            this.AbilitiesPage = new AbilitiesPage();
+            this.OverviewPage = new OverviewPage();
+            this.DetailsPage = new DetailsPage();
+            this.NotesPage = new NotesPage();
+            this.SpellcastingPage = new SpellcastingPage();
+            this.ToolsPage = new ToolsPage();
+            this.EquippedItemsPage = new EquippedItemsPage();
+            this.CompanionPage = new CompanionPage();
+
             this.CollapseAll();
             this.GenerateListViewItems();
             this.ListViewMenu.SelectedIndex = 0;
-            this.overviewPage.Visibility = Visibility.Visible;
-            this.FrameContent.Content = this.overviewPage;
+            this.OverviewPage.Visibility = Visibility.Visible;
+            this.FrameContent.Content = this.OverviewPage;
 
             this.DataContext = this;
 
@@ -82,6 +87,7 @@ namespace Concierge.Interfaces
                 this.autosaveTimer.Start(Constants.AutosaveIntervals[ConciergeSettings.AutosaveInterval]);
             }
 
+            this.searchWindow = new SearchWindow(this);
             this.commandLineService.ReadCommandLineArgs();
             this.DrawAll();
 
@@ -92,6 +98,54 @@ namespace Concierge.Interfaces
         public static double GridContentWidthOpen => SystemParameters.PrimaryScreenWidth - 200;
 
         public static double GridContentWidthClose => SystemParameters.PrimaryScreenWidth - 60;
+
+        public InventoryPage InventoryPage { get; init; }
+
+        public AttackDefensePage AttackDefensePage { get; init; }
+
+        public AbilitiesPage AbilitiesPage { get; init; }
+
+        public OverviewPage OverviewPage { get; init; }
+
+        public DetailsPage DetailsPage { get; init; }
+
+        public NotesPage NotesPage { get; init; }
+
+        public SpellcastingPage SpellcastingPage { get; init; }
+
+        public ToolsPage ToolsPage { get; init; }
+
+        public EquippedItemsPage EquippedItemsPage { get; init; }
+
+        public CompanionPage CompanionPage { get; init; }
+
+        public IConciergePage CurrentPage => (this.ListViewMenu.SelectedItem as ListViewItem).Tag as IConciergePage;
+
+        public double ScaleValueX
+        {
+            get
+            {
+                return (double)this.GetValue(ScaleValuePropertyX);
+            }
+
+            set
+            {
+                this.SetValue(ScaleValuePropertyX, value);
+            }
+        }
+
+        public double ScaleValueY
+        {
+            get
+            {
+                return (double)this.GetValue(ScaleValuePropertyY);
+            }
+
+            set
+            {
+                this.SetValue(ScaleValuePropertyY, value);
+            }
+        }
 
         private static bool IsControl => (Keyboard.Modifiers & ModifierKeys.Control) == ModifierKeys.Control;
 
@@ -179,7 +233,7 @@ namespace Concierge.Interfaces
 
             if (!Program.CcsFile.AbsolutePath.IsNullOrWhiteSpace())
             {
-                this.notesPage.SaveTextBox();
+                this.NotesPage.SaveTextBox();
                 this.fileAccessService.Save(Program.CcsFile, false);
             }
             else
@@ -192,7 +246,7 @@ namespace Concierge.Interfaces
         {
             Program.Logger.Info($"Save as character sheet.");
 
-            this.notesPage.SaveTextBox();
+            this.NotesPage.SaveTextBox();
             this.fileAccessService.Save(Program.CcsFile, true);
         }
 
@@ -200,16 +254,16 @@ namespace Concierge.Interfaces
         {
             this.mainWindowService.GenerateCharacterStatusBar(this.CharacterHeaderPanel, Program.CcsFile.Character);
 
-            this.inventoryPage.Draw();
-            this.abilitiesPage.Draw();
-            this.attackDefensePage.Draw();
-            this.overviewPage.Draw();
-            this.detailsPage.Draw();
-            this.notesPage.Draw();
-            this.spellcastingPage.Draw();
-            this.toolsPage.Draw();
-            this.equipedItemsPage.Draw();
-            this.companionPage.Draw();
+            this.InventoryPage.Draw();
+            this.AbilitiesPage.Draw();
+            this.AttackDefensePage.Draw();
+            this.OverviewPage.Draw();
+            this.DetailsPage.Draw();
+            this.NotesPage.Draw();
+            this.SpellcastingPage.Draw();
+            this.ToolsPage.Draw();
+            this.EquippedItemsPage.Draw();
+            this.CompanionPage.Draw();
         }
 
         public void LongRest()
@@ -220,6 +274,34 @@ namespace Concierge.Interfaces
             this.DrawAll();
         }
 
+        public void Search()
+        {
+            this.searchWindow.ShowWindow();
+            this.IgnoreSecondPress = true;
+        }
+
+        public void PageSelection(IConciergePage conciergePage)
+        {
+            var page = conciergePage as Page;
+
+            this.CollapseAll();
+            page.Visibility = Visibility.Visible;
+            this.FrameContent.Content = page;
+            conciergePage.Draw();
+
+            Program.Logger.Info($"Navigate to {page.GetType().Name}");
+        }
+
+        public void MoveSelection(ConciergePage page)
+        {
+            if (page >= 0 && ((int)page) < this.ListViewMenu.Items.Count)
+            {
+                this.ListViewMenu.SelectedItem = this.ListViewMenu.Items[(int)page];
+                this.UpdateLayout();
+                ((ListViewItem)this.ListViewMenu.ItemContainerGenerator.ContainerFromIndex((int)page)).Focus();
+            }
+        }
+
         protected override void OnClosed(EventArgs e)
         {
             base.OnClosed(e);
@@ -228,18 +310,77 @@ namespace Concierge.Interfaces
             Application.Current.Shutdown();
         }
 
+        protected virtual double OnCoerceScaleValue(double value)
+        {
+            if (double.IsNaN(value))
+            {
+                return 1.0d;
+            }
+
+            return Math.Max(0.1, value);
+        }
+
+        protected virtual void OnScaleValueChanged(double oldValue, double newValue)
+        {
+        }
+
+        private static object OnCoerceScaleValueX(DependencyObject o, object value)
+        {
+            if (o is MainWindow mainWindow)
+            {
+                return mainWindow.OnCoerceScaleValue((double)value);
+            }
+            else
+            {
+                return value;
+            }
+        }
+
+        private static object OnCoerceScaleValueY(DependencyObject o, object value)
+        {
+            if (o is MainWindow mainWindow)
+            {
+                return mainWindow.OnCoerceScaleValue((double)value);
+            }
+            else
+            {
+                return value;
+            }
+        }
+
+        private static void OnScaleValueChanged(DependencyObject o, DependencyPropertyChangedEventArgs e)
+        {
+            if (o is MainWindow mainWindow)
+            {
+                mainWindow.OnScaleValueChanged((double)e.OldValue, (double)e.NewValue);
+            }
+        }
+
+        private void MainGrid_SizeChanged(object sender, EventArgs e)
+        {
+            this.CalculateScale();
+        }
+
+        private void CalculateScale()
+        {
+            double yScale = this.Height / SystemParameters.PrimaryScreenHeight;
+            double xScale = this.Width / SystemParameters.PrimaryScreenWidth;
+            this.ScaleValueX = (double)OnCoerceScaleValueX(this.MainGrid, xScale);
+            this.ScaleValueY = (double)OnCoerceScaleValueY(this.MainGrid, yScale);
+        }
+
         private void GenerateListViewItems()
         {
-            this.ListViewMenu.Items.Add(this.mainWindowService.GenerateListViewItem(this.overviewPage, "Overview", PackIconKind.Globe));
-            this.ListViewMenu.Items.Add(this.mainWindowService.GenerateListViewItem(this.detailsPage, "Details", PackIconKind.Details));
-            this.ListViewMenu.Items.Add(this.mainWindowService.GenerateListViewItem(this.attackDefensePage, "Attack and Defense", PackIconKind.ShieldHalfFull));
-            this.ListViewMenu.Items.Add(this.mainWindowService.GenerateListViewItem(this.abilitiesPage, "Abilities", PackIconKind.Brain));
-            this.ListViewMenu.Items.Add(this.mainWindowService.GenerateListViewItem(this.equipedItemsPage, "Equipped Items", PackIconKind.Person));
-            this.ListViewMenu.Items.Add(this.mainWindowService.GenerateListViewItem(this.inventoryPage, "Inventory", PackIconKind.Backpack));
-            this.ListViewMenu.Items.Add(this.mainWindowService.GenerateListViewItem(this.spellcastingPage, "Spellcasting", PackIconKind.Magic));
-            this.ListViewMenu.Items.Add(this.mainWindowService.GenerateListViewItem(this.companionPage, "Companion", PackIconKind.PersonAdd));
-            this.ListViewMenu.Items.Add(this.mainWindowService.GenerateListViewItem(this.toolsPage, "Tools", PackIconKind.Tools));
-            this.ListViewMenu.Items.Add(this.mainWindowService.GenerateListViewItem(this.notesPage, "Notes", PackIconKind.Pen));
+            this.ListViewMenu.Items.Add(this.mainWindowService.GenerateListViewItem(this.OverviewPage, "Overview", PackIconKind.Globe));
+            this.ListViewMenu.Items.Add(this.mainWindowService.GenerateListViewItem(this.DetailsPage, "Details", PackIconKind.Details));
+            this.ListViewMenu.Items.Add(this.mainWindowService.GenerateListViewItem(this.AttackDefensePage, "Attack and Defense", PackIconKind.ShieldHalfFull));
+            this.ListViewMenu.Items.Add(this.mainWindowService.GenerateListViewItem(this.AbilitiesPage, "Abilities", PackIconKind.Brain));
+            this.ListViewMenu.Items.Add(this.mainWindowService.GenerateListViewItem(this.EquippedItemsPage, "Equipped Items", PackIconKind.Person));
+            this.ListViewMenu.Items.Add(this.mainWindowService.GenerateListViewItem(this.InventoryPage, "Inventory", PackIconKind.Backpack));
+            this.ListViewMenu.Items.Add(this.mainWindowService.GenerateListViewItem(this.SpellcastingPage, "Spellcasting", PackIconKind.Magic));
+            this.ListViewMenu.Items.Add(this.mainWindowService.GenerateListViewItem(this.CompanionPage, "Companion", PackIconKind.PersonAdd));
+            this.ListViewMenu.Items.Add(this.mainWindowService.GenerateListViewItem(this.ToolsPage, "Tools", PackIconKind.Tools));
+            this.ListViewMenu.Items.Add(this.mainWindowService.GenerateListViewItem(this.NotesPage, "Notes", PackIconKind.Pen));
         }
 
         private ConciergeWindowResult CheckSaveBeforeAction(string action)
@@ -265,49 +406,41 @@ namespace Concierge.Interfaces
 
         private void CollapseAll()
         {
-            this.inventoryPage.Visibility = Visibility.Collapsed;
-            this.attackDefensePage.Visibility = Visibility.Collapsed;
-            this.abilitiesPage.Visibility = Visibility.Collapsed;
-            this.detailsPage.Visibility = Visibility.Collapsed;
-            this.notesPage.Visibility = Visibility.Collapsed;
-            this.spellcastingPage.Visibility = Visibility.Collapsed;
-            this.toolsPage.Visibility = Visibility.Collapsed;
-            this.overviewPage.Visibility = Visibility.Collapsed;
-            this.equipedItemsPage.Visibility = Visibility.Collapsed;
-            this.companionPage.Visibility = Visibility.Collapsed;
-        }
-
-        private void PageSelection(IConciergePage conciergePage)
-        {
-            ConciergeSound.TapNavigation();
-
-            var page = conciergePage as Page;
-
-            this.CollapseAll();
-            page.Visibility = Visibility.Visible;
-            this.FrameContent.Content = page;
-            conciergePage.Draw();
-
-            Program.Logger.Info($"Navigate to {page.GetType().Name}");
+            this.InventoryPage.Visibility = Visibility.Collapsed;
+            this.AttackDefensePage.Visibility = Visibility.Collapsed;
+            this.AbilitiesPage.Visibility = Visibility.Collapsed;
+            this.DetailsPage.Visibility = Visibility.Collapsed;
+            this.NotesPage.Visibility = Visibility.Collapsed;
+            this.SpellcastingPage.Visibility = Visibility.Collapsed;
+            this.ToolsPage.Visibility = Visibility.Collapsed;
+            this.OverviewPage.Visibility = Visibility.Collapsed;
+            this.EquippedItemsPage.Visibility = Visibility.Collapsed;
+            this.CompanionPage.Visibility = Visibility.Collapsed;
         }
 
         private void ResetCharacterSheet()
         {
             Program.CcsFile = new CcsFile();
 
-            this.notesPage.ClearTextBox();
+            this.NotesPage.ClearTextBox();
             this.DrawAll();
 
             this.autosaveTimer.Stop();
         }
 
-        private void MoveSelection(ConciergePage page)
+        private void ChangeWindowState()
         {
-            if (page >= 0 && ((int)page) < this.ListViewMenu.Items.Count)
+            if (this.WindowState == WindowState.Maximized)
             {
-                this.ListViewMenu.SelectedItem = this.ListViewMenu.Items[(int)page];
-                this.UpdateLayout();
-                ((ListViewItem)this.ListViewMenu.ItemContainerGenerator.ContainerFromIndex((int)page)).Focus();
+                this.MaximizeIcon.Kind = PackIconKind.WindowMaximize;
+                this.WindowState = WindowState.Normal;
+                this.MaximizeButton.ToolTip = "Maximize";
+            }
+            else
+            {
+                this.MaximizeIcon.Kind = PackIconKind.WindowRestore;
+                this.WindowState = WindowState.Maximized;
+                this.MaximizeButton.ToolTip = "Restore Down";
             }
         }
 
@@ -320,18 +453,21 @@ namespace Concierge.Interfaces
         {
             EasterEggController.KonamiCode(e.Key);
 
-            // Move off Side Bar to avoid reset
-            this.FrameContent.Focus();
-
             if (Program.Typing || !IsControl)
             {
                 return;
             }
 
+            // Move off Side Bar to avoid reset
+            this.FrameContent.Focus();
+
             switch (e.Key)
             {
                 case Key.C:
                     this.CreateCharacterWizard();
+                    break;
+                case Key.F:
+                    this.Search();
                     break;
                 case Key.H:
                     this.aboutConciergeWindow.ShowWindow();
@@ -376,7 +512,7 @@ namespace Concierge.Interfaces
                     this.MoveSelection(ConciergePage.Details);
                     break;
                 case Key.D3:
-                    this.MoveSelection(ConciergePage.Equipment);
+                    this.MoveSelection(ConciergePage.AttackDefense);
                     break;
                 case Key.D4:
                     this.MoveSelection(ConciergePage.Abilities);
@@ -464,6 +600,7 @@ namespace Concierge.Interfaces
 
         private void ListViewItem_Selected(object sender, RoutedEventArgs e)
         {
+            ConciergeSound.TapNavigation();
             this.PageSelection((sender as ListViewItem).Tag as IConciergePage);
         }
 
@@ -483,9 +620,9 @@ namespace Concierge.Interfaces
             ConciergeSound.TapNavigation();
             Program.Logger.Info($"Open settings.");
 
-            this.settingsWindow.ShowWindow();
-            this.overviewPage.Draw();
-            this.detailsPage.Draw();
+            this.settingsWindow.ShowEdit();
+            this.OverviewPage.Draw();
+            this.DetailsPage.Draw();
 
             if (ConciergeSettings.AutosaveEnabled)
             {
@@ -533,13 +670,19 @@ namespace Concierge.Interfaces
 
         private void MaximizeButton_Click(object sender, RoutedEventArgs e)
         {
-            this.WindowState = WindowState.Maximized;
+            this.ChangeWindowState();
         }
 
         private void IconButton_Click(object sender, RoutedEventArgs e)
         {
-            this.modifyCharacterImageWindow.ShowWindow(Program.CcsFile.Character.CharacterIcon);
+            this.modifyCharacterImageWindow.ShowEdit(Program.CcsFile.Character.CharacterIcon);
             this.mainWindowService.GenerateCharacterStatusBar(this.CharacterHeaderPanel, Program.CcsFile.Character);
+            this.IgnoreSecondPress = true;
+        }
+
+        private void SearchButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Search();
         }
 
         private void Window_ApplyChanges(object sender, EventArgs e)
@@ -551,6 +694,19 @@ namespace Concierge.Interfaces
                 case "SettingsWindow":
                     this.DrawAll();
                     break;
+            }
+        }
+
+        private void CharacterHeader_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ClickCount == 2)
+            {
+                this.ChangeWindowState();
+            }
+
+            if (e.ChangedButton == MouseButton.Left)
+            {
+                this.DragMove();
             }
         }
     }

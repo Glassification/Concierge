@@ -14,7 +14,7 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
     /// <summary>
     /// Interaction logic for ModifySpellSlotsWindow.xaml.
     /// </summary>
-    public partial class ModifySpellSlotsWindow : Window, IConciergeWindow
+    public partial class ModifySpellSlotsWindow : Window, IConciergeModifyWindow
     {
         public ModifySpellSlotsWindow()
         {
@@ -37,7 +37,7 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
             return this.Result;
         }
 
-        public void EditSpellSlots()
+        public void ShowEdit()
         {
             this.ApplyButton.Visibility = Visibility.Visible;
 
@@ -178,6 +178,14 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
         {
             this.Result = ConciergeWindowResult.Cancel;
             this.Hide();
+        }
+
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+            {
+                this.DragMove();
+            }
         }
     }
 }

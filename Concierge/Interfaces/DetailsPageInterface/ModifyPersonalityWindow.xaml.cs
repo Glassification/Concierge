@@ -15,7 +15,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
     /// <summary>
     /// Interaction logic for ModifyPersonalityWindow.xaml.
     /// </summary>
-    public partial class ModifyPersonalityWindow : Window, IConciergeWindow
+    public partial class ModifyPersonalityWindow : Window, IConciergeModifyWindow
     {
         public ModifyPersonalityWindow()
         {
@@ -124,6 +124,14 @@ namespace Concierge.Interfaces.DetailsPageInterface
         {
             this.Result = ConciergeWindowResult.Cancel;
             this.Hide();
+        }
+
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+            {
+                this.DragMove();
+            }
         }
     }
 }

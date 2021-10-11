@@ -15,7 +15,7 @@ namespace Concierge.Interfaces
     /// <summary>
     /// Interaction logic for ModifyPropertiesWindow.xaml.
     /// </summary>
-    public partial class ModifyPropertiesWindow : Window, IConciergeWindow
+    public partial class ModifyPropertiesWindow : Window, IConciergeModifyWindow
     {
         public ModifyPropertiesWindow()
         {
@@ -146,6 +146,14 @@ namespace Concierge.Interfaces
             this.Result = ConciergeWindowResult.Exit;
 
             this.Hide();
+        }
+
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+            {
+                this.DragMove();
+            }
         }
     }
 }

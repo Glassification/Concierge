@@ -9,8 +9,8 @@ namespace Concierge.Interfaces.AbilitiesPageInterface
     using System.Windows.Controls;
 
     using Concierge.Character.Characteristics;
+    using Concierge.Interfaces.Enums;
     using Concierge.Utility;
-    using Concierge.Utility.Extensions;
 
     /// <summary>
     /// Interaction logic for AbilitiesPage.xaml.
@@ -29,6 +29,8 @@ namespace Concierge.Interfaces.AbilitiesPageInterface
         }
 
         public double AbilitiesHeight => SystemParameters.PrimaryScreenHeight - 100;
+
+        public ConciergePage ConciergePage => ConciergePage.Abilities;
 
         public void Draw()
         {

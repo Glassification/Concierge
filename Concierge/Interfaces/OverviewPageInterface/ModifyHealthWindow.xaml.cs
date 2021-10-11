@@ -15,7 +15,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
     /// <summary>
     /// Interaction logic for ModifyHealthWindow.xaml.
     /// </summary>
-    public partial class ModifyHealthWindow : Window, IConciergeWindow
+    public partial class ModifyHealthWindow : Window, IConciergeModifyWindow
     {
         public ModifyHealthWindow()
         {
@@ -134,6 +134,14 @@ namespace Concierge.Interfaces.OverviewPageInterface
 
             this.CurrentHpUpDown.Maximum = this.TotalHpUpDown.Value;
             this.CurrentHpUpDown.Minimum = -this.TotalHpUpDown.Value;
+        }
+
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+            {
+                this.DragMove();
+            }
         }
     }
 }

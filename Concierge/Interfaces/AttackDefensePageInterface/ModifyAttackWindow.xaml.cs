@@ -20,7 +20,7 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
     /// <summary>
     /// Interaction logic for ModifyWeaponWindow.xaml.
     /// </summary>
-    public partial class ModifyAttackWindow : Window, IConciergeWindow
+    public partial class ModifyAttackWindow : Window, IConciergeModifyWindow
     {
         public ModifyAttackWindow()
         {
@@ -37,7 +37,9 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
 
         private bool Editing { get; set; }
 
-        private Weapon SelectedWeapon { get; set; }
+        private string HeaderText => $"{(this.Editing ? "Edit" : "Add")} Attack";
+
+        private Weapon SelectedAttack { get; set; }
 
         private List<Weapon> Weapons { get; set; }
 
@@ -49,7 +51,7 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
             this.ApplyButton.Visibility = Visibility.Visible;
             this.OkButton.Visibility = Visibility.Collapsed;
             this.Editing = false;
-            this.HeaderTextBlock.Text = "Add Attack";
+            this.HeaderTextBlock.Text = this.HeaderText;
 
             this.ClearFields();
             this.ShowDialog();
@@ -61,7 +63,7 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
         {
             this.Weapons = weapons;
             this.Editing = false;
-            this.HeaderTextBlock.Text = "Add Attack";
+            this.HeaderTextBlock.Text = this.HeaderText;
             this.ApplyButton.Visibility = Visibility.Visible;
             this.OkButton.Visibility = Visibility.Visible;
 
@@ -71,9 +73,9 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
 
         public void ShowEdit(Weapon weapon)
         {
-            this.HeaderTextBlock.Text = "Edit Attack";
             this.Editing = true;
-            this.SelectedWeapon = weapon;
+            this.HeaderTextBlock.Text = this.HeaderText;
+            this.SelectedAttack = weapon;
             this.ApplyButton.Visibility = Visibility.Collapsed;
             this.OkButton.Visibility = Visibility.Visible;
 
@@ -211,7 +213,7 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
 
             if (this.Editing)
             {
-                this.UpdateWeapon(this.SelectedWeapon);
+                this.UpdateWeapon(this.SelectedAttack);
             }
             else
             {
@@ -226,6 +228,14 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
             if (this.AttackComboBox.SelectedItem != null)
             {
                 this.FillFields(this.AttackComboBox.SelectedItem as Weapon);
+            }
+        }
+
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+            {
+                this.DragMove();
             }
         }
     }

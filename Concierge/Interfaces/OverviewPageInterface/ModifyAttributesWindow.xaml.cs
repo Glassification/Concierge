@@ -15,7 +15,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
     /// <summary>
     /// Interaction logic for ModifyAttributesWindow.xaml.
     /// </summary>
-    public partial class ModifyAttributesWindow : Window, IConciergeWindow
+    public partial class ModifyAttributesWindow : Window, IConciergeModifyWindow
     {
         public ModifyAttributesWindow()
         {
@@ -130,6 +130,14 @@ namespace Concierge.Interfaces.OverviewPageInterface
         {
             this.Result = ConciergeWindowResult.Exit;
             this.Hide();
+        }
+
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+            {
+                this.DragMove();
+            }
         }
     }
 }

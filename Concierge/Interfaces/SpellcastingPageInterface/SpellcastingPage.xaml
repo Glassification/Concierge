@@ -712,7 +712,7 @@
                 <DataGrid.Columns>
                     <DataGridTextColumn
                         Header="Preped"
-                        Binding="{Binding PreparedText}"
+                        Binding="{Binding PreparedDisplay}"
                         Width="0.05*"
                         ElementStyle="{StaticResource SpellcastingColumnElementStyle}"/>
                     <DataGridTextColumn
@@ -732,7 +732,7 @@
                         ElementStyle="{StaticResource SpellcastingColumnElementStyle}"/>
                     <DataGridTextColumn
                         Header="Ritual"
-                        Binding="{Binding Ritual}"
+                        Binding="{Binding RitualDisplay}"
                         Width="0.05*"
                         ElementStyle="{StaticResource SpellcastingColumnElementStyle}"/>
                     <DataGridTextColumn
@@ -742,7 +742,7 @@
                         ElementStyle="{StaticResource SpellcastingColumnElementStyle}"/>
                     <DataGridTextColumn
                         Header="Concen"
-                        Binding="{Binding Concentration}"
+                        Binding="{Binding ConcentrationDisplay}"
                         Width="0.05*"
                         ElementStyle="{StaticResource SpellcastingColumnElementStyle}"/>
                     <DataGridTextColumn

@@ -13,6 +13,7 @@
         WindowStyle="None"
         Background="#252526"
         ResizeMode="NoResize"
+        MouseDown="Window_MouseDown"
         KeyDown="Window_KeyDown"
         BorderThickness="1"
         BorderBrush="#706599"

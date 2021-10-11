@@ -18,7 +18,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
     /// <summary>
     /// Interaction logic for ModifySensesWindow.xaml.
     /// </summary>
-    public partial class ModifySensesWindow : Window, IConciergeWindow
+    public partial class ModifySensesWindow : Window, IConciergeModifyWindow
     {
         public ModifySensesWindow()
         {
@@ -131,6 +131,14 @@ namespace Concierge.Interfaces.OverviewPageInterface
             this.InitiativeTextBlock.Text = (Utilities.CalculateBonus(Program.CcsFile.Character.Attributes.Dexterity) + (this.InitiativeBonusUpDown.Value ?? 0)).ToString();
             this.PerceptionTextBlock.Text = (Constants.BasePerception + Program.CcsFile.Character.Skill.Perception.Bonus + (this.PerceptionBonusUpDown.Value ?? 0)).ToString();
             this.MovementTextBlock.Text = Details.GetMovement(this.BaseMovementUpDown.Value ?? 0).ToString();
+        }
+
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+            {
+                this.DragMove();
+            }
         }
     }
 }

@@ -20,7 +20,7 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
     /// <summary>
     /// Interaction logic for ModifyAmmoWindow.xaml.
     /// </summary>
-    public partial class ModifyAmmoWindow : Window, IConciergeWindow
+    public partial class ModifyAmmoWindow : Window, IConciergeModifyWindow
     {
         public ModifyAmmoWindow()
         {
@@ -35,6 +35,8 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
 
         private bool Editing { get; set; }
 
+        private string HeaderText => $"{(this.Editing ? "Edit" : "Add")} Ammunitionn";
+
         private Ammunition SelectedAmmo { get; set; }
 
         private List<Ammunition> Ammunitions { get; set; }
@@ -43,11 +45,11 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
 
         public ConciergeWindowResult ShowWizardSetup()
         {
+            this.Editing = false;
+            this.HeaderTextBlock.Text = this.HeaderText;
             this.Ammunitions = Program.CcsFile.Character.Ammunitions;
             this.ApplyButton.Visibility = Visibility.Visible;
             this.OkButton.Visibility = Visibility.Collapsed;
-            this.Editing = false;
-            this.HeaderTextBlock.Text = "Add Ammunitionn";
 
             this.ClearFields();
             this.ShowDialog();
@@ -58,7 +60,7 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
         public void ShowAdd(List<Ammunition> ammunitions)
         {
             this.Editing = false;
-            this.HeaderTextBlock.Text = "Add Ammunition";
+            this.HeaderTextBlock.Text = this.HeaderText;
             this.Ammunitions = ammunitions;
             this.ApplyButton.Visibility = Visibility.Visible;
             this.OkButton.Visibility = Visibility.Visible;
@@ -69,9 +71,9 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
 
         public void ShowEdit(Ammunition ammunition)
         {
-            this.HeaderTextBlock.Text = "Edit Ammunition";
-            this.SelectedAmmo = ammunition;
             this.Editing = true;
+            this.HeaderTextBlock.Text = this.HeaderText;
+            this.SelectedAmmo = ammunition;
             this.ApplyButton.Visibility = Visibility.Collapsed;
             this.OkButton.Visibility = Visibility.Visible;
 
@@ -192,6 +194,14 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
             if (this.NameComboBox.SelectedItem != null)
             {
                 this.FillFields(this.NameComboBox.SelectedItem as Ammunition);
+            }
+        }
+
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+            {
+                this.DragMove();
             }
         }
     }

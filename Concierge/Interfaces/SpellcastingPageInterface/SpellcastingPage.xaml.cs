@@ -13,6 +13,7 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
     using Concierge.Character.Enums;
     using Concierge.Character.Spellcasting;
     using Concierge.Interfaces.Components;
+    using Concierge.Interfaces.Enums;
     using Concierge.Utility;
 
     /// <summary>
@@ -46,6 +47,8 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
         }
 
         private delegate void DrawList();
+
+        public ConciergePage ConciergePage => ConciergePage.Spellcasting;
 
         public void Draw()
         {
@@ -247,7 +250,7 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
 
         private void LevelEditButton_Click(object sender, RoutedEventArgs e)
         {
-            this.modifySpellSlotsWindow.EditSpellSlots();
+            this.modifySpellSlotsWindow.ShowEdit();
             this.DrawTotalSpellSlots();
             this.DrawUsedSpellSlots();
         }

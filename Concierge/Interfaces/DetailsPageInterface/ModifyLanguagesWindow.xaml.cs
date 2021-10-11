@@ -18,7 +18,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
     /// <summary>
     /// Interaction logic for ModifyLanguagesWindow.xaml.
     /// </summary>
-    public partial class ModifyLanguagesWindow : Window, IConciergeWindow
+    public partial class ModifyLanguagesWindow : Window, IConciergeModifyWindow
     {
         public ModifyLanguagesWindow()
         {
@@ -177,6 +177,14 @@ namespace Concierge.Interfaces.DetailsPageInterface
             if (this.NameComboBox.SelectedItem != null)
             {
                 this.FillFields(this.NameComboBox.SelectedItem as Language);
+            }
+        }
+
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+            {
+                this.DragMove();
             }
         }
     }

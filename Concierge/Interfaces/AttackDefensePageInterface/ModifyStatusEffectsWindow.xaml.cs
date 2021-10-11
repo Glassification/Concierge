@@ -20,7 +20,7 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
     /// <summary>
     /// Interaction logic for ModifyStatusEffectsWindow.xaml.
     /// </summary>
-    public partial class ModifyStatusEffectsWindow : Window, IConciergeWindow
+    public partial class ModifyStatusEffectsWindow : Window, IConciergeModifyWindow
     {
         public ModifyStatusEffectsWindow()
         {
@@ -173,6 +173,14 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
                     this.Result = ConciergeWindowResult.Exit;
                     this.Hide();
                     break;
+            }
+        }
+
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+            {
+                this.DragMove();
             }
         }
     }

@@ -27,9 +27,9 @@ namespace Concierge.Interfaces.CompanionPageInterface
 
         public event ApplyChangesEventHandler ApplyChanges;
 
-        public void EditProperties()
+        public void ShowEdit()
         {
-            this.Read();
+            this.FillFields();
             this.ShowDialog();
         }
 
@@ -40,7 +40,7 @@ namespace Concierge.Interfaces.CompanionPageInterface
             this.Hide();
         }
 
-        private void Read()
+        private void FillFields()
         {
             var companion = Program.CcsFile.Character.Companion;
 
@@ -55,7 +55,7 @@ namespace Concierge.Interfaces.CompanionPageInterface
             this.MovementUpDown.Value = companion.Movement;
         }
 
-        private void Write()
+        private void UpdateCompanion()
         {
             var companion = Program.CcsFile.Character.Companion;
 
@@ -90,7 +90,7 @@ namespace Concierge.Interfaces.CompanionPageInterface
         {
             Program.Modify();
 
-            this.Write();
+            this.UpdateCompanion();
 
             this.ApplyChanges?.Invoke(this, new EventArgs());
         }
@@ -99,8 +99,16 @@ namespace Concierge.Interfaces.CompanionPageInterface
         {
             Program.Modify();
 
-            this.Write();
+            this.UpdateCompanion();
             this.Hide();
+        }
+
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+            {
+                this.DragMove();
+            }
         }
     }
 }

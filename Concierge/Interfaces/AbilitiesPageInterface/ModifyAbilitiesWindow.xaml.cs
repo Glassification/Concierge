@@ -18,7 +18,7 @@ namespace Concierge.Interfaces.AbilitiesPageInterface
     /// <summary>
     /// Interaction logic for ModifyAbilitiesWindow.xaml.
     /// </summary>
-    public partial class ModifyAbilitiesWindow : Window, IConciergeWindow
+    public partial class ModifyAbilitiesWindow : Window, IConciergeModifyWindow
     {
         public ModifyAbilitiesWindow()
         {
@@ -33,6 +33,8 @@ namespace Concierge.Interfaces.AbilitiesPageInterface
 
         private bool Editing { get; set; }
 
+        private string HeaderText => $"{(this.Editing ? "Edit" : "Add")} Ability";
+
         private Ability SelectedAbility { get; set; }
 
         private List<Ability> Abilities { get; set; }
@@ -42,7 +44,7 @@ namespace Concierge.Interfaces.AbilitiesPageInterface
         public ConciergeWindowResult ShowWizardSetup()
         {
             this.Editing = false;
-            this.HeaderTextBlock.Text = "Add Ability";
+            this.HeaderTextBlock.Text = this.HeaderText;
             this.Abilities = Program.CcsFile.Character.Abilities;
             this.ApplyButton.Visibility = Visibility.Visible;
             this.OkButton.Visibility = Visibility.Collapsed;
@@ -55,9 +57,9 @@ namespace Concierge.Interfaces.AbilitiesPageInterface
 
         public void ShowEdit(Ability ability)
         {
-            this.HeaderTextBlock.Text = "Edit Ability";
-            this.SelectedAbility = ability;
             this.Editing = true;
+            this.HeaderTextBlock.Text = this.HeaderText;
+            this.SelectedAbility = ability;
             this.ApplyButton.Visibility = Visibility.Collapsed;
             this.OkButton.Visibility = Visibility.Visible;
 
@@ -68,7 +70,7 @@ namespace Concierge.Interfaces.AbilitiesPageInterface
         public void ShowAdd(List<Ability> abilities)
         {
             this.Editing = false;
-            this.HeaderTextBlock.Text = "Add Ability";
+            this.HeaderTextBlock.Text = this.HeaderText;
             this.Abilities = abilities;
             this.ApplyButton.Visibility = Visibility.Visible;
             this.OkButton.Visibility = Visibility.Visible;
@@ -192,6 +194,14 @@ namespace Concierge.Interfaces.AbilitiesPageInterface
             if (this.NameComboBox.SelectedItem != null)
             {
                 this.FillFields(this.NameComboBox.SelectedItem as Ability);
+            }
+        }
+
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+            {
+                this.DragMove();
             }
         }
     }

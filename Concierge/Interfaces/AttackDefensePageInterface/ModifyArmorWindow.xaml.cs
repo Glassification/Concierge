@@ -17,7 +17,7 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
     /// <summary>
     /// Interaction logic for ModifyArmorWindow.xaml.
     /// </summary>
-    public partial class ModifyArmorWindow : Window, IConciergeWindow
+    public partial class ModifyArmorWindow : Window, IConciergeModifyWindow
     {
         public ModifyArmorWindow()
         {
@@ -39,7 +39,7 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
             this.SelectedArmor = Program.CcsFile.Character.Armor;
             this.ApplyButton.Visibility = Visibility.Collapsed;
 
-            this.FillArmorDetails();
+            this.FillFields();
             this.ShowDialog();
 
             return this.Result;
@@ -50,7 +50,7 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
             this.SelectedArmor = armor;
             this.ApplyButton.Visibility = Visibility.Visible;
 
-            this.FillArmorDetails();
+            this.FillFields();
             this.ShowDialog();
         }
 
@@ -67,7 +67,7 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
             this.Hide();
         }
 
-        private void FillArmorDetails()
+        private void FillFields()
         {
             this.ArmorClassUpDown.UpdatingValue();
             this.WeightUpDown.UpdatingValue();
@@ -91,7 +91,7 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
             this.MagicArmorClassUpDown.Value = this.SelectedArmor.MagicArmorClass;
         }
 
-        private void ToArmor(Armor armor)
+        private void UpdateArmor(Armor armor)
         {
             armor.Equiped = this.EquipedTextBox.Text;
             armor.Type = (ArmorType)Enum.Parse(typeof(ArmorType), this.TypeComboBox.Text);
@@ -127,7 +127,7 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
         {
             Program.Modify();
 
-            this.ToArmor(this.SelectedArmor);
+            this.UpdateArmor(this.SelectedArmor);
 
             this.ApplyChanges?.Invoke(this, new EventArgs());
         }
@@ -137,7 +137,7 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
             Program.Modify();
             this.Result = ConciergeWindowResult.OK;
 
-            this.ToArmor(this.SelectedArmor);
+            this.UpdateArmor(this.SelectedArmor);
             this.Hide();
         }
 
@@ -145,6 +145,14 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
         {
             this.Result = ConciergeWindowResult.Cancel;
             this.Hide();
+        }
+
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+            {
+                this.DragMove();
+            }
         }
     }
 }

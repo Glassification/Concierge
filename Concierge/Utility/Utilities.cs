@@ -5,6 +5,7 @@
 namespace Concierge.Utility
 {
     using System;
+    using System.Collections.Generic;
     using System.Linq;
     using System.Windows;
     using System.Windows.Controls;
@@ -16,9 +17,22 @@ namespace Concierge.Utility
     using Concierge.Character.Enums;
     using Concierge.Character.Statuses;
     using Concierge.Interfaces.Components;
+    using Concierge.Utility.Extensions;
 
     public static class Utilities
     {
+        public static List<string> FormatEnumForDisplay(Type enumType)
+        {
+            var stringArray = Enum.GetNames(enumType);
+
+            for (int i = 0; i < stringArray.Length; i++)
+            {
+                stringArray[i] = stringArray[i].FormatFromEnum();
+            }
+
+            return stringArray.ToList();
+        }
+
         public static void SetDataGridSelectedIndex(ConciergeDataGrid dataGrid, int index)
         {
             if (dataGrid.Items.IsEmpty)
@@ -55,6 +69,29 @@ namespace Concierge.Utility
             }
 
             return null;
+        }
+
+        public static IEnumerable<T> FindVisualChildren<T>(DependencyObject depObj)
+            where T : DependencyObject
+        {
+            if (depObj != null)
+            {
+                foreach (object rawChild in LogicalTreeHelper.GetChildren(depObj))
+                {
+                    if (rawChild is DependencyObject child)
+                    {
+                        if (child is T t)
+                        {
+                            yield return t;
+                        }
+
+                        foreach (T childOfChild in FindVisualChildren<T>(child))
+                        {
+                            yield return childOfChild;
+                        }
+                    }
+                }
+            }
         }
 
         public static void SetRectangleStyle(Rectangle rectangle, DeathSave deathSave)

@@ -14,6 +14,7 @@
         Background="#252526"
         ResizeMode="NoResize"
         KeyDown="Window_KeyDown"
+        MouseDown="Window_MouseDown"
         BorderThickness="1"
         BorderBrush="#706599"
         Style="{StaticResource WindowXboxDasboardStyle}">
@@ -239,12 +240,14 @@
 
                 <!--Header-->
                 <Grid Grid.Row="0">
-                    <TextBlock Text="Used"
-                               Foreground="White"
-                               FontSize="25"
-                               FontWeight="Bold"
-                               HorizontalAlignment="Center"
-                               VerticalAlignment="Center"/>
+                    <TextBlock 
+                        Text="Used"
+                        Foreground="White"
+                        FontSize="25"
+                        FontWeight="Bold"
+                        Margin="20,0,0,0"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"/>
                 </Grid>
 
                 <!--Used Pact-->
@@ -433,12 +436,14 @@
 
                 <!--Header-->
                 <Grid Grid.Row="0">
-                    <TextBlock Text="Total"
-                               Foreground="White"
-                               FontSize="25"
-                               FontWeight="Bold"
-                               HorizontalAlignment="Center"
-                               VerticalAlignment="Center"/>
+                    <TextBlock 
+                        Text="Total"
+                        Foreground="White"
+                        FontSize="25"
+                        FontWeight="Bold"
+                        Margin="0,0,20,0"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"/>
                 </Grid>
                 
                 <!--Total Pact-->

@@ -13,6 +13,7 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
     using Concierge.Character.Items;
     using Concierge.Character.Statuses;
     using Concierge.Interfaces.Components;
+    using Concierge.Interfaces.Enums;
     using Concierge.Utility;
 
     /// <summary>
@@ -37,6 +38,8 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
         }
 
         private delegate void DrawList();
+
+        public ConciergePage ConciergePage => ConciergePage.AttackDefense;
 
         public void Draw()
         {

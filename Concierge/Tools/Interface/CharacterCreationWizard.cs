@@ -2,7 +2,7 @@
 // Copyright (c) Thomas Beckett. All rights reserved.
 // </copyright>
 
-namespace Concierge.Tools
+namespace Concierge.Tools.Interface
 {
     using Concierge.Character;
     using Concierge.Interfaces;
@@ -105,7 +105,7 @@ namespace Concierge.Tools
             this.NextSetupStep(this.modifySpellWindow, "Continue");
         }
 
-        private void NextSetupStep(IConciergeWindow conciergeWindow, string buttonText)
+        private void NextSetupStep(IConciergeModifyWindow conciergeWindow, string buttonText)
         {
             ConciergeWindowResult wizardResult;
             ConciergeWindowResult confirmExitResult;

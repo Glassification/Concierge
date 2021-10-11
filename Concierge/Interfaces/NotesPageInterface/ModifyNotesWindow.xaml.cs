@@ -37,6 +37,7 @@ namespace Concierge.Interfaces.NotesPageInterface
         public void ShowAdd()
         {
             this.HeaderTextBlock.Text = "Add Note";
+
             this.SetupWindow(false);
             this.ShowDialog();
         }
@@ -44,22 +45,24 @@ namespace Concierge.Interfaces.NotesPageInterface
         public void ShowEdit(Chapter chapter)
         {
             this.HeaderTextBlock.Text = "Edit Chapter";
-            this.SetupWindow(true);
             this.ChapterComboBox.Text = chapter.Name;
             this.DocumentTextBox.Text = chapter.Name;
             this.CurrentChapter = chapter;
             this.CurrentDocument = null;
+
+            this.SetupWindow(true);
             this.ShowDialog();
         }
 
         public void ShowEdit(Document document)
         {
             this.HeaderTextBlock.Text = "Edit Page";
-            this.SetupWindow(true);
             this.ChapterComboBox.Text = Program.CcsFile.Character.GetChapterByDocumentId(document.Id).Name;
             this.DocumentTextBox.Text = document.Name;
             this.CurrentChapter = null;
             this.CurrentDocument = document;
+
+            this.SetupWindow(true);
             this.ShowDialog();
         }
 
@@ -98,7 +101,7 @@ namespace Concierge.Interfaces.NotesPageInterface
             this.DocumentTextBox.Text = string.Empty;
         }
 
-        private void WriteEdit()
+        private void UpdateNote()
         {
             if (this.CurrentChapter == null)
             {
@@ -110,7 +113,7 @@ namespace Concierge.Interfaces.NotesPageInterface
             }
         }
 
-        private void WriteNew()
+        private void ToNote()
         {
             var chapter = this.ChapterComboBox.SelectedItem as Chapter;
 
@@ -136,11 +139,11 @@ namespace Concierge.Interfaces.NotesPageInterface
 
             if (this.IsEdit)
             {
-                this.WriteEdit();
+                this.UpdateNote();
             }
             else
             {
-                this.WriteNew();
+                this.ToNote();
             }
         }
 
@@ -189,6 +192,14 @@ namespace Concierge.Interfaces.NotesPageInterface
                 case Key.Escape:
                     this.Hide();
                     break;
+            }
+        }
+
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+            {
+                this.DragMove();
             }
         }
     }

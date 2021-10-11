@@ -21,7 +21,7 @@ namespace Concierge.Character.Spellcasting
         public bool Prepared { get; set; }
 
         [JsonIgnore]
-        public string PreparedText => this.Prepared ? "Yes" : "No";
+        public string PreparedDisplay => this.Prepared ? "Yes" : "No";
 
         public int Level { get; set; }
 
@@ -31,9 +31,15 @@ namespace Concierge.Character.Spellcasting
 
         public bool Ritual { get; set; }
 
+        [JsonIgnore]
+        public string RitualDisplay => this.Ritual ? "Yes" : "No";
+
         public string Components { get; set; }
 
         public bool Concentration { get; set; }
+
+        [JsonIgnore]
+        public string ConcentrationDisplay => this.Concentration ? "Yes" : "No";
 
         public string Range { get; set; }
 

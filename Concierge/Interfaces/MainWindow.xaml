@@ -5,9 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Concierge.Interfaces"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        xmlns:components="clr-namespace:Concierge.Interfaces.Components" xmlns:viewmodels="clr-namespace:Concierge.Interfaces.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:ConciergeViewModel}"
+        xmlns:components="clr-namespace:Concierge.Interfaces.Components"
+        xmlns:viewmodels="clr-namespace:Concierge.Interfaces.ViewModels"
+        d:DataContext="{d:DesignInstance Type=viewmodels:ConciergeViewModel}"
         mc:Ignorable="d"
         Title="MainWindow" Height="600" Width="1080"
+        x:Name="ConciergeMainWindow"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
@@ -58,7 +61,16 @@
     </Window.Triggers>
 
     <!-- Main Grid Area -->
-    <Grid>
+    <Grid x:Name="MainGrid" SizeChanged="MainGrid_SizeChanged">
+        <Grid.LayoutTransform>
+            <ScaleTransform 
+                x:Name="ApplicationScaleTransform"
+                CenterX="0"
+                CenterY="0"
+                ScaleX="{Binding ElementName=ConciergeMainWindow, Path=ScaleValueX}"
+                ScaleY="{Binding ElementName=ConciergeMainWindow, Path=ScaleValueY}" />
+        </Grid.LayoutTransform>
+        
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
             <RowDefinition Height="1*" />
@@ -99,7 +111,7 @@
                 </StackPanel>
             </Grid>
 
-            <Grid x:Name="CharacterHeader" Grid.Column="1" Background="Black">
+            <Grid x:Name="CharacterHeader" Grid.Column="1" Background="Black" MouseDown="CharacterHeader_MouseDown">
                 <StackPanel x:Name="CharacterHeaderPanel" Orientation="Horizontal">
                 </StackPanel>
             </Grid>
@@ -151,14 +163,12 @@
                                         <TextBlock Text="Long Rest" VerticalAlignment="Center" Margin="20 10"/>
                                     </StackPanel>
                                 </Button>
-                                <Separator Foreground="White"/>
                                 <Button x:Name="CharacterCreationButton" Foreground="White" Click="CharacterCreationButton_Click">
                                     <StackPanel Orientation="Horizontal">
                                         <materialDesign:PackIcon Kind="Creation" Height="25" Width="25" Margin="0 10"/>
                                         <TextBlock Text="Create Character..." VerticalAlignment="Center" Margin="20 10"/>
                                     </StackPanel>
                                 </Button>
-                                <Separator Foreground="White"/>
                                 <Button x:Name="ButtonProperties" Foreground="White" Click="PropertiesButton_Click">
                                     <StackPanel Orientation="Horizontal">
                                         <materialDesign:PackIcon Kind="SmartCardOutline" Height="25" Width="25" Margin="0 10"/>
@@ -169,6 +179,13 @@
                                     <StackPanel Orientation="Horizontal">
                                         <materialDesign:PackIcon Kind="ImagePlus" Height="25" Width="25" Margin="0 10"/>
                                         <TextBlock Text="Character Icon..." VerticalAlignment="Center" Margin="20 10"/>
+                                    </StackPanel>
+                                </Button>
+                                <Separator Foreground="White"/>
+                                <Button x:Name="SearchButton" Foreground="White" Click="SearchButton_Click">
+                                    <StackPanel Orientation="Horizontal">
+                                        <materialDesign:PackIcon Kind="Search" Height="25" Width="25" Margin="0 10"/>
+                                        <TextBlock Text="Search..." VerticalAlignment="Center" Margin="20 10"/>
                                     </StackPanel>
                                 </Button>
                                 <Button x:Name="SettingsButton" Foreground="White" Click="SettingsButton_Click">
@@ -202,9 +219,9 @@
                         x:Name="MaximizeButton"
                         Width="60"
                         Foreground="White"
-                        ToolTip="Maximize"
+                        ToolTip="Restore Down"
                         Click="MaximizeButton_Click">
-                        <materialDesign:PackIcon Kind="WindowMaximize" Width="25" Height="25"/>
+                        <materialDesign:PackIcon x:Name="MaximizeIcon" Kind="WindowRestore" Width="25" Height="25"/>
                     </components:ConciergeDesignButton>
                     <components:ConciergeDesignButton 
                         Style="{StaticResource ConciergeDesignButtonStyle}" 

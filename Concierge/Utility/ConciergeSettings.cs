@@ -15,6 +15,7 @@ namespace Concierge.Utility
         private const bool DefaultMuteSounds = false;
         private const bool DefaultUseCoinWeight = false;
         private const bool DefaultUseEncumbrance = false;
+        private const bool DefaultDisplayWindowInCentre = false;
 
         static ConciergeSettings()
         {
@@ -30,6 +31,7 @@ namespace Concierge.Utility
             MuteSounds = AppConfigReadWriter.Read(nameof(MuteSounds), DefaultMuteSounds);
             UseCoinWeight = AppConfigReadWriter.Read(nameof(UseCoinWeight), DefaultUseCoinWeight);
             UseEncumbrance = AppConfigReadWriter.Read(nameof(UseEncumbrance), DefaultUseEncumbrance);
+            DisplayWindowInCentre = AppConfigReadWriter.Read(nameof(DisplayWindowInCentre), DefaultDisplayWindowInCentre);
         }
 
         public static bool AutosaveEnabled { get; private set; }
@@ -46,6 +48,8 @@ namespace Concierge.Utility
 
         public static bool UseEncumbrance { get; private set; }
 
+        public static bool DisplayWindowInCentre { get; private set; }
+
         public static void UpdateSettings(ConciergeSettingsDto conciergeSettings)
         {
             AutosaveEnabled = conciergeSettings.AutosaveEnabled;
@@ -54,6 +58,7 @@ namespace Concierge.Utility
             MuteSounds = conciergeSettings.MuteSounds;
             UseCoinWeight = conciergeSettings.UseCoinWeight;
             UseEncumbrance = conciergeSettings.UseEncumbrance;
+            DisplayWindowInCentre = conciergeSettings.DisplayWindowInCentre;
 
             // Can't change app.config during debug mode
             if (IsDebug)
@@ -67,6 +72,7 @@ namespace Concierge.Utility
             AppConfigReadWriter.Write(nameof(MuteSounds), MuteSounds.ToString());
             AppConfigReadWriter.Write(nameof(UseCoinWeight), UseCoinWeight.ToString());
             AppConfigReadWriter.Write(nameof(UseEncumbrance), UseEncumbrance.ToString());
+            AppConfigReadWriter.Write(nameof(DisplayWindowInCentre), DisplayWindowInCentre.ToString());
         }
 
         public static string GetCurrentState()
@@ -76,7 +82,8 @@ namespace Concierge.Utility
                         IsDebug:[{IsDebug}],
                         MuteSounds:[{MuteSounds}],
                         UseCoinWeight:[{UseCoinWeight}],
-                        UseEncumbrance:[{UseEncumbrance}]";
+                        UseEncumbrance:[{UseEncumbrance}]
+                        DisplayWindowInCentre:[{DisplayWindowInCentre}]";
         }
     }
 }

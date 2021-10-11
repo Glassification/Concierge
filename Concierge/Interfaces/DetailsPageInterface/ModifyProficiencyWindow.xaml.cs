@@ -5,18 +5,20 @@
 namespace Concierge.Interfaces.DetailsPageInterface
 {
     using System;
+    using System.Collections.Generic;
     using System.ComponentModel;
     using System.Linq;
     using System.Windows;
     using System.Windows.Input;
 
+    using Concierge.Character.Characteristics;
     using Concierge.Character.Enums;
     using Concierge.Interfaces.Enums;
 
     /// <summary>
     /// Interaction logic for ModifyProficiencyWindow.xaml.
     /// </summary>
-    public partial class ModifyProficiencyWindow : Window, IConciergeWindow
+    public partial class ModifyProficiencyWindow : Window, IConciergeModifyWindow
     {
         public ModifyProficiencyWindow()
         {
@@ -30,7 +32,9 @@ namespace Concierge.Interfaces.DetailsPageInterface
 
         private bool Editing { get; set; }
 
-        private Guid SelectedProficiencyId { get; set; }
+        private Proficiency SelectedProficiency { get; set; }
+
+        private List<Proficiency> SelectedProficiencies { get; set; }
 
         private string HeaderText => $"{(this.Editing ? "Edit" : "Add")} Proficiency";
 
@@ -50,32 +54,28 @@ namespace Concierge.Interfaces.DetailsPageInterface
             return this.Result;
         }
 
-        public void ShowAdd()
+        public void ShowAdd(List<Proficiency> proficiencies)
         {
             this.Editing = false;
             this.HeaderTextBlock.Text = this.HeaderText;
-            this.ClearFields();
+            this.SelectedProficiencies = proficiencies;
             this.ApplyButton.Visibility = Visibility.Visible;
             this.OkButton.Visibility = Visibility.Visible;
             this.ProficiencyComboBox.IsEnabled = true;
 
+            this.ClearFields();
             this.ShowDialog();
         }
 
-        public void ShowEdit(Guid id)
+        public void ShowEdit(Proficiency proficiency)
         {
             this.Editing = true;
-            this.SelectedProficiencyId = id;
+            this.SelectedProficiency = proficiency;
             this.HeaderTextBlock.Text = this.HeaderText;
-
-            var proficiency = Program.CcsFile.Character.Proficiency.GetProficiencyById(id);
-            this.ProficiencyTextBox.Text = proficiency.Proficiency;
-            this.ProficiencyComboBox.Text = proficiency.ProficiencyTypes.ToString();
-            this.ProficiencyComboBox.IsEnabled = false;
-
             this.ApplyButton.Visibility = Visibility.Collapsed;
             this.OkButton.Visibility = Visibility.Visible;
 
+            this.FillFields();
             this.ShowDialog();
         }
 
@@ -90,6 +90,28 @@ namespace Concierge.Interfaces.DetailsPageInterface
             e.Cancel = true;
             this.Result = ConciergeWindowResult.Exit;
             this.Hide();
+        }
+
+        private void FillFields()
+        {
+            this.ProficiencyTextBox.Text = this.SelectedProficiency.Name;
+            this.ProficiencyComboBox.Text = this.SelectedProficiency.ProficiencyType.ToString();
+            this.ProficiencyComboBox.IsEnabled = false;
+        }
+
+        private Proficiency ToProficiency()
+        {
+            return new Proficiency()
+            {
+                Name = this.ProficiencyTextBox.Text,
+                ProficiencyType = (ProficiencyTypes)Enum.Parse(typeof(ProficiencyTypes), this.ProficiencyComboBox.Text),
+            };
+        }
+
+        private void UpdateProficiency(Proficiency proficiency)
+        {
+            proficiency.Name = this.ProficiencyTextBox.Text;
+            proficiency.ProficiencyType = (ProficiencyTypes)Enum.Parse(typeof(ProficiencyTypes), this.ProficiencyComboBox.Text);
         }
 
         private void ClearFields()
@@ -111,13 +133,11 @@ namespace Concierge.Interfaces.DetailsPageInterface
 
             if (this.Editing)
             {
-                Program.CcsFile.Character.Proficiency.SetProficiencyById(this.SelectedProficiencyId, this.ProficiencyTextBox.Text);
+                this.UpdateProficiency(this.SelectedProficiency);
             }
             else
             {
-                Program.CcsFile.Character.Proficiency.AddProficiencyByProficiencyType(
-                    (ProficiencyTypes)Enum.Parse(typeof(ProficiencyTypes), this.ProficiencyComboBox.Text),
-                    this.ProficiencyTextBox.Text);
+                this.SelectedProficiencies.Add(this.ToProficiency());
             }
 
             this.Hide();
@@ -127,10 +147,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
         {
             Program.Modify();
 
-            Program.CcsFile.Character.Proficiency.AddProficiencyByProficiencyType(
-                (ProficiencyTypes)Enum.Parse(typeof(ProficiencyTypes), this.ProficiencyComboBox.Text),
-                this.ProficiencyTextBox.Text);
-
+            this.SelectedProficiencies.Add(this.ToProficiency());
             this.ClearFields();
 
             this.ApplyChanges?.Invoke(this, new EventArgs());
@@ -150,6 +167,14 @@ namespace Concierge.Interfaces.DetailsPageInterface
                     this.Result = ConciergeWindowResult.Exit;
                     this.Hide();
                     break;
+            }
+        }
+
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+            {
+                this.DragMove();
             }
         }
     }

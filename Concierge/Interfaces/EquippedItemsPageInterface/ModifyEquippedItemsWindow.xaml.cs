@@ -18,7 +18,7 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
     /// <summary>
     /// Interaction logic for ModifyEquippedItemsWindow.xaml.
     /// </summary>
-    public partial class ModifyEquippedItemsWindow : Window, IConciergeWindow
+    public partial class ModifyEquippedItemsWindow : Window, IConciergeModifyWindow
     {
         public ModifyEquippedItemsWindow()
         {
@@ -129,6 +129,14 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
                     this.Result = ConciergeWindowResult.Exit;
                     this.Hide();
                     break;
+            }
+        }
+
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+            {
+                this.DragMove();
             }
         }
     }

@@ -588,21 +588,23 @@
                 <Grid Grid.Row="0"
                       Background="#0B061E"
                       Margin="3, 3, 3, 0">
-                    <TextBlock Text="Proficiencies"
-                               Foreground="White"
-                               FontSize="24"
-                               FontWeight="Bold"
-                               HorizontalAlignment="Center"
-                               VerticalAlignment="Center"/>
-                    <TextBlock x:Name="ProficiencyBonusField"
-                               Foreground="White"
-                               Background="#161223"
-                               FontSize="24"
-                               FontWeight="Bold"
-                               HorizontalAlignment="Right"
-                               VerticalAlignment="Center"
-                               Margin="0, 0, 10, 0"/>
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                    <TextBlock 
+                        Text="Proficiencies"
+                        Foreground="White"
+                        FontSize="24"
+                        FontWeight="Bold"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"/>
+                    <TextBlock 
+                        x:Name="ProficiencyBonusField"
+                        Foreground="White"
+                        Background="#161223"
+                        FontSize="24"
+                        FontWeight="Bold"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        Margin="10, 0, 0, 0"/>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                         <components:ConciergeDesignButton 
                             Style="{StaticResource ConciergeDesignButtonStyle}" 
                             x:Name="ClearButton"
@@ -671,7 +673,7 @@
                                 <DataGridTextColumn 
                                     Header="Weapons"
                                     Width="100*"
-                                    Binding="{Binding Value}"
+                                    Binding="{Binding Name}"
                                     ElementStyle="{StaticResource DetailsColumnElementStyle}"/>
                             </DataGrid.Columns>
                         </components:ConciergeDataGrid>
@@ -691,7 +693,7 @@
                                 <DataGridTextColumn
                                     Header="Armor"
                                     Width="100*"
-                                    Binding="{Binding Value}"
+                                    Binding="{Binding Name}"
                                     ElementStyle="{StaticResource DetailsColumnElementStyle}"/>
                             </DataGrid.Columns>
                         </components:ConciergeDataGrid>
@@ -711,7 +713,7 @@
                                 <DataGridTextColumn 
                                     Header="Shields"
                                     Width="100*"
-                                    Binding="{Binding Value}"
+                                    Binding="{Binding Name}"
                                     ElementStyle="{StaticResource DetailsColumnElementStyle}"/>
                             </DataGrid.Columns>
                         </components:ConciergeDataGrid>
@@ -731,7 +733,7 @@
                                 <DataGridTextColumn 
                                     Header="Tools"
                                     Width="100*"
-                                    Binding="{Binding Value}"
+                                    Binding="{Binding Name}"
                                     ElementStyle="{StaticResource DetailsColumnElementStyle}"/>
                             </DataGrid.Columns>
                         </components:ConciergeDataGrid>
