@@ -7,7 +7,6 @@ namespace Concierge.Interfaces.HelperInterface
     using System;
     using System.Collections.Generic;
     using System.ComponentModel;
-    using System.Linq;
     using System.Windows;
     using System.Windows.Input;
     using System.Windows.Media;
@@ -43,6 +42,7 @@ namespace Concierge.Interfaces.HelperInterface
         public void ShowWindow()
         {
             this.WindowState = WindowState.Normal;
+            this.SearchTextBox.Focus();
             this.Show();
         }
 
@@ -118,26 +118,26 @@ namespace Concierge.Interfaces.HelperInterface
 
         private void FindPreviousButton_Click(object sender, RoutedEventArgs e)
         {
-            this.SelectSearchResult();
-            this.FormatResultText();
-
             this.SearchIndex--;
             if (this.SearchIndex < 0)
             {
                 this.SearchIndex = this.SearchResults.Count - 1;
             }
+
+            this.SelectSearchResult();
+            this.FormatResultText();
         }
 
         private void FindNextButton_Click(object sender, RoutedEventArgs e)
         {
-            this.SelectSearchResult();
-            this.FormatResultText();
-
             this.SearchIndex++;
             if (this.SearchIndex >= this.SearchResults.Count)
             {
                 this.SearchIndex = 0;
             }
+
+            this.SelectSearchResult();
+            this.FormatResultText();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
@@ -159,6 +159,9 @@ namespace Concierge.Interfaces.HelperInterface
             {
                 case Key.Escape:
                     this.Hide();
+                    break;
+                case Key.Enter:
+                    this.FindNextButton_Click(this.FindNextButton, null);
                     break;
             }
         }

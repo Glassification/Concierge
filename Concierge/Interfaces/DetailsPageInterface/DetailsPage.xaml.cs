@@ -12,6 +12,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
     using System.Windows.Media;
 
     using Concierge.Character.Characteristics;
+    using Concierge.Character.Enums;
     using Concierge.Character.Statuses;
     using Concierge.Interfaces.Components;
     using Concierge.Interfaces.Enums;
@@ -122,10 +123,10 @@ namespace Concierge.Interfaces.DetailsPageInterface
         {
             var character = Program.CcsFile.Character;
 
-            DrawProficiency(this.WeaponProficiencyDataGrid, character.Proficiency.Where(x => x.ProficiencyType == Character.Enums.ProficiencyTypes.Weapon).ToList());
-            DrawProficiency(this.ArmorProficiencyDataGrid, character.Proficiency.Where(x => x.ProficiencyType == Character.Enums.ProficiencyTypes.Armor).ToList());
-            DrawProficiency(this.ShieldProficiencyDataGrid, character.Proficiency.Where(x => x.ProficiencyType == Character.Enums.ProficiencyTypes.Shield).ToList());
-            DrawProficiency(this.ToolProficiencyDataGrid, character.Proficiency.Where(x => x.ProficiencyType == Character.Enums.ProficiencyTypes.Tool).ToList());
+            DrawProficiency(this.WeaponProficiencyDataGrid, character.Proficiency.Where(x => x.ProficiencyType == ProficiencyTypes.Weapon).ToList());
+            DrawProficiency(this.ArmorProficiencyDataGrid, character.Proficiency.Where(x => x.ProficiencyType == ProficiencyTypes.Armor).ToList());
+            DrawProficiency(this.ShieldProficiencyDataGrid, character.Proficiency.Where(x => x.ProficiencyType == ProficiencyTypes.Shield).ToList());
+            DrawProficiency(this.ToolProficiencyDataGrid, character.Proficiency.Where(x => x.ProficiencyType == ProficiencyTypes.Tool).ToList());
 
             this.ProficiencyBonusField.Text = $"  Bonus: {Program.CcsFile.Character.ProficiencyBonus}  ";
         }

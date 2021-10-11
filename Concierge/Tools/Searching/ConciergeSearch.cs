@@ -171,6 +171,11 @@ namespace Concierge.Tools.Searching
             {
                 var propertyValue = property.GetValue(item);
 
+                if (propertyValue == null)
+                {
+                    continue;
+                }
+
                 if (this.Regex.IsMatch(propertyValue.ToString()))
                 {
                     return true;
