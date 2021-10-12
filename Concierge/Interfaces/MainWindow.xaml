@@ -184,7 +184,7 @@
                                 <Separator Foreground="White"/>
                                 <Button x:Name="SearchButton" Foreground="White" Click="SearchButton_Click">
                                     <StackPanel Orientation="Horizontal">
-                                        <materialDesign:PackIcon Kind="Search" Height="25" Width="25" Margin="0 10"/>
+                                        <materialDesign:PackIcon Kind="FileSearch" Height="25" Width="25" Margin="0 10"/>
                                         <TextBlock Text="Search..." VerticalAlignment="Center" Margin="20 10"/>
                                     </StackPanel>
                                 </Button>

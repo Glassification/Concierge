@@ -77,14 +77,7 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
             this.CharacterImage.Source = Program.CcsFile.Character.CharacterImage.ToImage();
             this.CharacterImage.Stretch = Program.CcsFile.Character.CharacterImage.Stretch;
 
-            if (this.CharacterImage.Source == null)
-            {
-                this.DefaultCharacterImage.Visibility = Visibility.Visible;
-            }
-            else
-            {
-                this.DefaultCharacterImage.Visibility = Visibility.Hidden;
-            }
+            this.DefaultCharacterImage.Visibility = this.CharacterImage.Source == null ? Visibility.Visible : Visibility.Hidden;
         }
 
         private void EquipmentDataGrid_Sorted(object sender, RoutedEventArgs e)

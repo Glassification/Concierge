@@ -4,8 +4,6 @@
 
 namespace Concierge.Tools.Searching
 {
-    using System;
-
     using Concierge.Tools.Searching.Enums;
 
     public class SearchSettings
@@ -15,14 +13,16 @@ namespace Concierge.Tools.Searching
             this.TextToSearch = string.Empty;
             this.MatchCase = false;
             this.MatchWholeWord = false;
+            this.UseRegex = false;
             this.SearchDomain = SearchDomain.CurrentPage;
         }
 
-        public SearchSettings(string textToSearch, bool matchCase, bool matchWholeWord, SearchDomain searchDomain)
+        public SearchSettings(string textToSearch, bool matchCase, bool matchWholeWord, bool useRegex, SearchDomain searchDomain)
         {
             this.TextToSearch = textToSearch;
             this.MatchCase = matchCase;
             this.MatchWholeWord = matchWholeWord;
+            this.UseRegex = useRegex;
             this.SearchDomain = searchDomain;
         }
 
@@ -31,6 +31,8 @@ namespace Concierge.Tools.Searching
         public bool MatchCase { get; set; }
 
         public bool MatchWholeWord { get; set; }
+
+        public bool UseRegex { get; set; }
 
         public SearchDomain SearchDomain { get; set; }
 
@@ -46,6 +48,7 @@ namespace Concierge.Tools.Searching
 
             equals &= searchSettings.MatchCase == this.MatchCase;
             equals &= searchSettings.MatchWholeWord == this.MatchWholeWord;
+            equals &= searchSettings.UseRegex == this.UseRegex;
             equals &= searchSettings.SearchDomain == this.SearchDomain;
             equals &= searchSettings.TextToSearch.Equals(this.TextToSearch);
 
@@ -54,7 +57,7 @@ namespace Concierge.Tools.Searching
 
         public override int GetHashCode()
         {
-            throw new NotImplementedException();
+            return base.GetHashCode();
         }
     }
 }

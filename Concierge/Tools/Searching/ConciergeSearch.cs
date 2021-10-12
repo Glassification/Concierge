@@ -4,6 +4,7 @@
 
 namespace Concierge.Tools.Searching
 {
+    using System;
     using System.Collections.Generic;
     using System.Text.RegularExpressions;
     using System.Windows.Controls;
@@ -17,12 +18,16 @@ namespace Concierge.Tools.Searching
     using Concierge.Interfaces.DetailsPageInterface;
     using Concierge.Interfaces.EquippedItemsPageInterface;
     using Concierge.Interfaces.InventoryPageInterface;
+    using Concierge.Interfaces.NotesPageInterface;
     using Concierge.Interfaces.SpellcastingPageInterface;
+    using Concierge.Tools.Searching.Enums;
     using Concierge.Utility;
     using Concierge.Utility.Extensions;
 
     public class ConciergeSearch
     {
+        private const int MaxDepth = 10;
+
         public ConciergeSearch(MainWindow mainWindow)
         {
             this.MainWindow = mainWindow;
@@ -40,11 +45,14 @@ namespace Concierge.Tools.Searching
 
         private Regex Regex { get; set; }
 
+        private int Depth { get; set; }
+
         public List<SearchResult> Search(SearchSettings searchSettings, ConciergeCharacter character)
         {
             this.Results.Clear();
             this.SearchSettings = searchSettings;
             this.Character = character;
+            this.Depth = 0;
 
             if (searchSettings?.TextToSearch.IsNullOrWhiteSpace() ?? true)
             {
@@ -69,7 +77,7 @@ namespace Concierge.Tools.Searching
             foreach (var dataGrid in dataGrids)
             {
                 var index = dataGrid.Items.IndexOf(searchResult.Item);
-                if (index > 0)
+                if (index >= 0)
                 {
                     Utilities.SetDataGridSelectedIndex(dataGrid, index);
                     dataGrid.ScrollIntoView(dataGrid.SelectedItem);
@@ -92,10 +100,10 @@ namespace Concierge.Tools.Searching
         {
             switch (this.SearchSettings.SearchDomain)
             {
-                case Enums.SearchDomain.CurrentPage:
+                case SearchDomain.CurrentPage:
                     this.SearchPage(this.MainWindow.CurrentPage);
                     break;
-                case Enums.SearchDomain.EntireSheet:
+                case SearchDomain.EntireSheet:
                     this.SearchPages();
                     break;
             }
@@ -151,36 +159,56 @@ namespace Concierge.Tools.Searching
                 this.SearchList(this.Character.Spells, conciergePage);
                 this.SearchList(this.Character.MagicClasses, conciergePage);
             }
+            else if (conciergePage is NotesPage)
+            {
+                this.SearchList(this.Character.Chapters, conciergePage);
+            }
         }
 
-        private void SearchList<T>(List<T> list, IConciergePage conciergePage)
+        private void SearchList<T>(IEnumerable<T> list, IConciergePage conciergePage)
         {
             foreach (var item in list)
             {
-                if (this.SearchObject(item))
+                if (this.SearchObject(item, conciergePage))
                 {
-                    this.Results.Add(new SearchResult(item, conciergePage));
+                    this.Results.Add(new SearchResult(this.SearchSettings.TextToSearch, item, conciergePage));
                 }
             }
         }
 
-        private bool SearchObject(object item)
+        private bool SearchObject(object item, IConciergePage conciergePage)
         {
-            var properties = item.GetType().GetProperties();
-            foreach (var property in properties)
+            try
             {
-                var propertyValue = property.GetValue(item);
-
-                if (propertyValue == null)
+                var properties = item.GetType().GetProperties();
+                foreach (var property in properties)
                 {
-                    continue;
-                }
+                    this.Depth++;
+                    var propertyValue = property.GetValue(item);
 
-                if (this.Regex.IsMatch(propertyValue.ToString()))
-                {
-                    return true;
+                    if (propertyValue == null)
+                    {
+                        continue;
+                    }
+
+                    if (propertyValue.IsList() && this.Depth < MaxDepth)
+                    {
+                        dynamic list = propertyValue;
+                        this.SearchList(list, conciergePage);
+                    }
+
+                    if (this.Regex.IsMatch(propertyValue.ToString()))
+                    {
+                        return true;
+                    }
                 }
             }
+            catch (Exception ex)
+            {
+                Program.ErrorService.LogError(ex, Exceptions.Enums.Severity.Release);
+            }
+
+            this.Depth--;
 
             return false;
         }
