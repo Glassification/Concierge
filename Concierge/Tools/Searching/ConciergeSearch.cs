@@ -67,10 +67,13 @@ namespace Concierge.Tools.Searching
 
         public void Navigate(SearchResult searchResult)
         {
-            this.NavigateToDataGrid(searchResult);
+            if (!this.NavigateToDataGrid(searchResult))
+            {
+                this.NavigateToTreeView(searchResult);
+            }
         }
 
-        private void NavigateToDataGrid(SearchResult searchResult)
+        private bool NavigateToDataGrid(SearchResult searchResult)
         {
             var dataGrids = Utilities.FindVisualChildren<ConciergeDataGrid>(searchResult.ConciergePage as Page);
 
@@ -81,8 +84,29 @@ namespace Concierge.Tools.Searching
                 {
                     Utilities.SetDataGridSelectedIndex(dataGrid, index);
                     dataGrid.ScrollIntoView(dataGrid.SelectedItem);
+                    return true;
                 }
             }
+
+            return false;
+        }
+
+        private bool NavigateToTreeView(SearchResult searchResult)
+        {
+            var treeViews = Utilities.FindVisualChildren<TreeView>(searchResult.ConciergePage as Page);
+
+            foreach (var treeView in treeViews)
+            {
+                var item = treeView.GetTreeViewItem(searchResult.Item);
+
+                if (item is not null)
+                {
+                    item.IsSelected = true;
+                    item.Focus();
+                }
+            }
+
+            return false;
         }
 
         private void CreateRegex()
