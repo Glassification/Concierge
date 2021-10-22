@@ -9,6 +9,7 @@ namespace Concierge.Interfaces.NotesPageInterface
     using System.IO;
     using System.Linq;
     using System.Text;
+    using System.Text.RegularExpressions;
     using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Documents;
@@ -19,6 +20,8 @@ namespace Concierge.Interfaces.NotesPageInterface
     using Concierge.Interfaces.Components;
     using Concierge.Interfaces.Enums;
     using Concierge.Tools.Interface;
+    using Concierge.Tools.Searching;
+    using Concierge.Utility;
     using Concierge.Utility.Extensions;
 
     /// <summary>
@@ -74,6 +77,21 @@ namespace Concierge.Interfaces.NotesPageInterface
                 }
 
                 this.SelectedDocument.RTF = savedDocument;
+            }
+        }
+
+        public void HighlightSearchResults(SearchResult searchResult)
+        {
+            this.NotesTextBox.SelectAll();
+            this.NotesTextBox.Selection.ApplyPropertyValue(TextElement.BackgroundProperty, Colours.TotalLightBoxBrush);
+
+            foreach (Match match in searchResult.SearchRegex.Matches(this.NotesTextBox.Selection.Text))
+            {
+                var startHighlight = this.NotesTextBox.Document.ContentStart.GetPositionAtOffset(match.Index);
+                var endHighlight = this.NotesTextBox.Document.ContentEnd.GetPositionAtOffset(-(this.NotesTextBox.Selection.Text.Length - (match.Index + match.Length)));
+
+                this.NotesTextBox.Selection.Select(startHighlight, endHighlight);
+                this.NotesTextBox.Selection.ApplyPropertyValue(TextElement.BackgroundProperty, Colours.Highlight);
             }
         }
 

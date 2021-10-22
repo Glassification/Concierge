@@ -22,12 +22,14 @@ namespace Concierge.Interfaces.HelperInterface
     public partial class SearchWindow : Window
     {
         private readonly ConciergeSearch conciergeSearch;
+        private readonly ConciergeNavigate conciergeNavigate;
         private readonly MainWindow mainWindow;
 
         public SearchWindow(MainWindow mainWindow)
         {
             this.InitializeComponent();
             this.conciergeSearch = new ConciergeSearch(mainWindow);
+            this.conciergeNavigate = new ConciergeNavigate();
             this.SearchResults = new List<SearchResult>();
             this.mainWindow = mainWindow;
             this.SearchDomainComboBox.ItemsSource = Utilities.FormatEnumForDisplay(typeof(SearchDomain));
@@ -88,7 +90,7 @@ namespace Concierge.Interfaces.HelperInterface
 
             var result = this.SearchResults[this.SearchIndex];
             this.mainWindow.MoveSelection(result.ConciergePage.ConciergePage);
-            this.conciergeSearch.Navigate(result);
+            this.conciergeNavigate.Navigate(result);
             this.Focus();
         }
 

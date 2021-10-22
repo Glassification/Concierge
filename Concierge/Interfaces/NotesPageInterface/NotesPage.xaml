@@ -382,12 +382,13 @@
 
                 <!--Text-->
                 <Grid Grid.Row="1">
-                    <RichTextBox x:Name="NotesTextBox"
-                                 Background="#FF333333"
-                                 Margin="3"
-                                 BorderBrush="{x:Null}"
-                                 SpellCheck.IsEnabled="True"
-                                 SelectionChanged="NotesTextBox_SelectionChanged">
+                    <RichTextBox 
+                        x:Name="NotesTextBox"
+                        Background="#FF333333"
+                        Margin="3"
+                        BorderBrush="{x:Null}"
+                        SpellCheck.IsEnabled="True"
+                        SelectionChanged="NotesTextBox_SelectionChanged">
                     </RichTextBox>
                 </Grid>
             </Grid>

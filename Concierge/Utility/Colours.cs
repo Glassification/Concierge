@@ -23,6 +23,7 @@ namespace Concierge.Utility
             ToggleBoxBrush = new SolidColorBrush(Color.FromArgb(255, 6, 1, 31));
             RectangleBorderHighlight = new SolidColorBrush(Color.FromArgb(255, 34, 126, 169));
             RectangleBorder = new SolidColorBrush(Color.FromArgb(255, 6, 1, 31));
+            Highlight = new SolidColorBrush(Color.FromArgb(255, 28, 57, 71));
             FailedSaveBrush = GenerateGradientBrush(FailedDarkRed, FailedLightRed, new Point(0.5, 0), new Point(0.5, 1));
             SucceededSaveBrush = GenerateGradientBrush(SucceededDarkGreen, SucceededLightGreen, new Point(0.5, 0), new Point(0.5, 1));
             ProficiencyBrush = GenerateGradientBrush(ProficiencyDarkPurple, ProficiencyLightPurple, new Point(0, 0), new Point(1, 1));
@@ -47,6 +48,9 @@ namespace Concierge.Utility
         public static SolidColorBrush RectangleBorderHighlight { get; }
 
         public static SolidColorBrush RectangleBorder { get; }
+
+        public static SolidColorBrush Highlight { get; }
+
 
         public static Color LightGreen => Color.FromArgb(255, 216, 228, 188);
 

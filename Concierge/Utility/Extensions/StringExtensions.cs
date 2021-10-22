@@ -4,7 +4,12 @@
 
 namespace Concierge.Utility.Extensions
 {
+    using System.IO;
+    using System.Text;
     using System.Text.RegularExpressions;
+    using System.Windows;
+    using System.Windows.Controls;
+    using System.Windows.Documents;
 
     public static class StringExtensions
     {
@@ -16,19 +21,6 @@ namespace Concierge.Utility.Extensions
         public static bool IsNullOrEmpty(this string str)
         {
             return string.IsNullOrEmpty(str);
-        }
-
-        public static bool IsNumeric(this string str)
-        {
-            foreach (char c in str)
-            {
-                if (!char.IsDigit(c) && c != ',' && c != ';' && c != 'e' && c != 'E' && c != '+' && c != '"' && c != '.')
-                {
-                    return false;
-                }
-            }
-
-            return true;
         }
 
         public static int CountCharacter(this string str, char character)
@@ -82,6 +74,18 @@ namespace Concierge.Utility.Extensions
             }
 
             return str;
+        }
+
+        public static string RtfToText(this string str)
+        {
+            var richTextBox = new RichTextBox();
+
+            var stream = new MemoryStream(Encoding.Default.GetBytes(str));
+            richTextBox.Selection.Load(stream, DataFormats.Rtf);
+
+            var textRange = new TextRange(richTextBox.Document.ContentStart, richTextBox.Document.ContentEnd);
+
+            return textRange.Text;
         }
     }
 }

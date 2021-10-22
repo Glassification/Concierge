@@ -7,21 +7,18 @@ namespace Concierge.Tools.Searching
     using System;
     using System.Collections.Generic;
     using System.Text.RegularExpressions;
-    using System.Windows.Controls;
 
     using Concierge.Character;
     using Concierge.Interfaces;
     using Concierge.Interfaces.AbilitiesPageInterface;
     using Concierge.Interfaces.AttackDefensePageInterface;
     using Concierge.Interfaces.CompanionPageInterface;
-    using Concierge.Interfaces.Components;
     using Concierge.Interfaces.DetailsPageInterface;
     using Concierge.Interfaces.EquippedItemsPageInterface;
     using Concierge.Interfaces.InventoryPageInterface;
     using Concierge.Interfaces.NotesPageInterface;
     using Concierge.Interfaces.SpellcastingPageInterface;
     using Concierge.Tools.Searching.Enums;
-    using Concierge.Utility;
     using Concierge.Utility.Extensions;
 
     public class ConciergeSearch
@@ -63,50 +60,6 @@ namespace Concierge.Tools.Searching
             this.SearchWithSettings();
 
             return this.Results;
-        }
-
-        public void Navigate(SearchResult searchResult)
-        {
-            if (!this.NavigateToDataGrid(searchResult))
-            {
-                this.NavigateToTreeView(searchResult);
-            }
-        }
-
-        private bool NavigateToDataGrid(SearchResult searchResult)
-        {
-            var dataGrids = Utilities.FindVisualChildren<ConciergeDataGrid>(searchResult.ConciergePage as Page);
-
-            foreach (var dataGrid in dataGrids)
-            {
-                var index = dataGrid.Items.IndexOf(searchResult.Item);
-                if (index >= 0)
-                {
-                    Utilities.SetDataGridSelectedIndex(dataGrid, index);
-                    dataGrid.ScrollIntoView(dataGrid.SelectedItem);
-                    return true;
-                }
-            }
-
-            return false;
-        }
-
-        private bool NavigateToTreeView(SearchResult searchResult)
-        {
-            var treeViews = Utilities.FindVisualChildren<TreeView>(searchResult.ConciergePage as Page);
-
-            foreach (var treeView in treeViews)
-            {
-                var item = treeView.GetTreeViewItem(searchResult.Item);
-
-                if (item is not null)
-                {
-                    item.IsSelected = true;
-                    item.Focus();
-                }
-            }
-
-            return false;
         }
 
         private void CreateRegex()
@@ -195,7 +148,7 @@ namespace Concierge.Tools.Searching
             {
                 if (this.SearchObject(item, conciergePage))
                 {
-                    this.Results.Add(new SearchResult(this.SearchSettings.TextToSearch, item, conciergePage));
+                    this.Results.Add(new SearchResult(this.SearchSettings.TextToSearch, item, this.Regex, conciergePage));
                 }
             }
         }
