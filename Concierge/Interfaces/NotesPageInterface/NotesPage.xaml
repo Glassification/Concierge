@@ -163,7 +163,7 @@
         </Style>
     </Page.Resources>
 
-    <Grid Background="#0B061E" Margin="3">
+    <Grid Background="#000917" Margin="3">
         <Grid.RowDefinitions>
             <RowDefinition Height="7*"/>
             <RowDefinition Height="93*"/>
@@ -254,7 +254,7 @@
             <Grid Grid.Column="0" Margin="0,0,0,0.5">
                 <TreeView x:Name="NotesTreeView"
                           Margin="3"
-                          Background="#17112E"
+                          Background="#001233"
                           SelectedItemChanged="NotesTreeView_SelectedItemChanged"
                           BorderBrush="{x:Null}">
                     <TreeView.Resources>

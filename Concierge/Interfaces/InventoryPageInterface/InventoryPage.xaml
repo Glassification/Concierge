@@ -18,7 +18,7 @@
 
         <!--Header-->
         <Grid Grid.Row="0"
-              Background="#0B061E"
+              Background="#000917"
               Margin="3">
             <TextBlock Text="Inventory"
                            Foreground="White"
@@ -96,7 +96,7 @@
         <Grid Grid.Row="1">
             <components:ConciergeDataGrid 
                 x:Name="InventoryDataGrid"
-                Background="#17112E"
+                Background="#001233"
                 Style="{DynamicResource StandardDataGridStyle}"
                 Sorted="InventoryDataGrid_Sorted">
                 <DataGrid.Columns>

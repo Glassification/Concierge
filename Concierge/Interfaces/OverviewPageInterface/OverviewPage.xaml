@@ -37,7 +37,7 @@
                     </Grid.RowDefinitions>
 
                     <!--Name-->
-                    <Grid Grid.Row="0" Background="#0B061E">
+                    <Grid Grid.Row="0" Background="#000917">
                         <components:ConciergeDesignButton 
                             Style="{StaticResource ConciergeDesignButtonStyle}" 
                             x:Name="EditAttributesButton"
@@ -56,7 +56,7 @@
                                    FontWeight="Bold"/>
                     </Grid>
                     <!--Bonus-->
-                    <Grid Grid.Row="1" Background="#17112E">
+                    <Grid Grid.Row="1" Background="#001233">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="24*"/>
                             <ColumnDefinition Width="19*"/>
@@ -82,7 +82,7 @@
                         </Grid>
                     </Grid>
                     <!--Score-->
-                    <Grid Grid.Row="2" Background="#161223">
+                    <Grid Grid.Row="2" Background="#33415C">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="5*"/>
                             <ColumnDefinition Width="5*"/>
@@ -116,7 +116,7 @@
                     </Grid.RowDefinitions>
 
                     <!--Name-->
-                    <Grid Grid.Row="0" Background="#0B061E">
+                    <Grid Grid.Row="0" Background="#000917">
                         <TextBlock Text="Dexterity"
                                    Foreground="White"
                                    FontSize="17"
@@ -125,7 +125,7 @@
                                    FontWeight="Bold"/>
                     </Grid>
                     <!--Bonus-->
-                    <Grid Grid.Row="1" Background="#17112E">
+                    <Grid Grid.Row="1" Background="#001233">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="5*"/>
                             <ColumnDefinition Width="5*"/>
@@ -150,7 +150,7 @@
                         </Grid>
                     </Grid>
                     <!--Score-->
-                    <Grid Grid.Row="2" Background="#161223">
+                    <Grid Grid.Row="2" Background="#33415C">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="5*"/>
                             <ColumnDefinition Width="5*"/>
@@ -184,7 +184,7 @@
                     </Grid.RowDefinitions>
 
                     <!--Name-->
-                    <Grid Grid.Row="0" Background="#0B061E">
+                    <Grid Grid.Row="0" Background="#000917">
                         <TextBlock Text="Constitution"
                                    Foreground="White"
                                    FontSize="17"
@@ -193,7 +193,7 @@
                                    FontWeight="Bold"/>
                     </Grid>
                     <!--Bonus-->
-                    <Grid Grid.Row="1" Background="#17112E">
+                    <Grid Grid.Row="1" Background="#001233">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="5*"/>
                             <ColumnDefinition Width="5*"/>
@@ -218,7 +218,7 @@
                         </Grid>
                     </Grid>
                     <!--Score-->
-                    <Grid Grid.Row="2" Background="#161223">
+                    <Grid Grid.Row="2" Background="#33415C">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="5*"/>
                             <ColumnDefinition Width="5*"/>
@@ -252,7 +252,7 @@
                     </Grid.RowDefinitions>
 
                     <!--Name-->
-                    <Grid Grid.Row="0" Background="#0B061E">
+                    <Grid Grid.Row="0" Background="#000917">
                         <TextBlock Text="Intelligence"
                                    Foreground="White"
                                    FontSize="17"
@@ -261,7 +261,7 @@
                                    FontWeight="Bold"/>
                     </Grid>
                     <!--Bonus-->
-                    <Grid Grid.Row="1" Background="#17112E">
+                    <Grid Grid.Row="1" Background="#001233">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="5*"/>
                             <ColumnDefinition Width="5*"/>
@@ -286,7 +286,7 @@
                         </Grid>
                     </Grid>
                     <!--Score-->
-                    <Grid Grid.Row="2" Background="#161223">
+                    <Grid Grid.Row="2" Background="#33415C">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="5*"/>
                             <ColumnDefinition Width="5*"/>
@@ -320,7 +320,7 @@
                     </Grid.RowDefinitions>
 
                     <!--Name-->
-                    <Grid Grid.Row="0" Background="#0B061E">
+                    <Grid Grid.Row="0" Background="#000917">
                         <TextBlock Text="Wisdom"
                                    Foreground="White"
                                    FontSize="17"
@@ -329,7 +329,7 @@
                                    FontWeight="Bold"/>
                     </Grid>
                     <!--Bonus-->
-                    <Grid Grid.Row="1" Background="#17112E">
+                    <Grid Grid.Row="1" Background="#001233">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="5*"/>
                             <ColumnDefinition Width="5*"/>
@@ -354,7 +354,7 @@
                         </Grid>
                     </Grid>
                     <!--Score-->
-                    <Grid Grid.Row="2" Background="#161223">
+                    <Grid Grid.Row="2" Background="#33415C">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="5*"/>
                             <ColumnDefinition Width="5*"/>
@@ -388,7 +388,7 @@
                     </Grid.RowDefinitions>
 
                     <!--Name-->
-                    <Grid Grid.Row="0" Background="#0B061E">
+                    <Grid Grid.Row="0" Background="#000917">
                         <TextBlock Text="Charisma"
                                    Foreground="White"
                                    FontSize="17"
@@ -397,7 +397,7 @@
                                    FontWeight="Bold"/>
                     </Grid>
                     <!--Bonus-->
-                    <Grid Grid.Row="1" Background="#17112E">
+                    <Grid Grid.Row="1" Background="#001233">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="5*"/>
                             <ColumnDefinition Width="5*"/>
@@ -422,7 +422,7 @@
                         </Grid>
                     </Grid>
                     <!--Score-->
-                    <Grid Grid.Row="2" Background="#161223">
+                    <Grid Grid.Row="2" Background="#33415C">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="5*"/>
                             <ColumnDefinition Width="5*"/>
@@ -473,7 +473,7 @@
                     </Grid.ColumnDefinitions>
 
                     <!--Name-->
-                    <Grid Grid.Column="0" Background="#0B061E">
+                    <Grid Grid.Column="0" Background="#000917">
                         <components:ConciergeDesignButton 
                             Style="{StaticResource ConciergeDesignButtonStyle}" 
                             x:Name="EditSensesButton"
@@ -495,7 +495,7 @@
                     </Grid>
 
                     <!--Value-->
-                    <Grid Grid.Column="1" Background="#17112E">
+                    <Grid Grid.Column="1" Background="#001233">
                         <TextBlock x:Name="InitiativeField"
                                    Foreground="White"
                                    FontSize="22"
@@ -513,7 +513,7 @@
                     </Grid.ColumnDefinitions>
 
                     <!--Name-->
-                    <Grid Grid.Column="0" Background="#0B061E">
+                    <Grid Grid.Column="0" Background="#000917">
                         <TextBlock Text="Passive Perception"
                                    Foreground="White"
                                    FontSize="20"
@@ -524,7 +524,7 @@
                     </Grid>
 
                     <!--Value-->
-                    <Grid Grid.Column="1" Background="#17112E">
+                    <Grid Grid.Column="1" Background="#001233">
                         <TextBlock x:Name="PassivePerceptionField"
                                    Foreground="White"
                                    FontSize="22"
@@ -542,7 +542,7 @@
                     </Grid.ColumnDefinitions>
 
                     <!--Name-->
-                    <Grid Grid.Column="0" Background="#0B061E">
+                    <Grid Grid.Column="0" Background="#000917">
                         <TextBlock Text="Vision"
                                    Foreground="White"
                                    FontSize="20"
@@ -553,7 +553,7 @@
                     </Grid>
 
                     <!--Value-->
-                    <Grid Grid.Column="1" Background="#17112E">
+                    <Grid Grid.Column="1" Background="#001233">
                         <TextBlock x:Name="VisionField"
                                    Foreground="White"
                                    FontSize="22"
@@ -571,7 +571,7 @@
                     </Grid.ColumnDefinitions>
 
                     <!--Name-->
-                    <Grid Grid.Column="0" Background="#0B061E">
+                    <Grid Grid.Column="0" Background="#000917">
                         <TextBlock Text="Movement Speed"
                                    Foreground="White"
                                    FontSize="20"
@@ -582,7 +582,7 @@
                     </Grid>
 
                     <!--Value-->
-                    <Grid Grid.Column="1" Background="#17112E">
+                    <Grid Grid.Column="1" Background="#001233">
                         <TextBlock x:Name="MovementSpeedField"
                                    Foreground="White"
                                    FontSize="22"
@@ -615,7 +615,7 @@
                         </Grid.RowDefinitions>
 
                         <!--Header-->
-                        <Grid Grid.Row="0" Background="#0B061E">
+                        <Grid Grid.Row="0" Background="#000917">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="15*"/>
                                 <ColumnDefinition Width="65*"/>
@@ -894,7 +894,7 @@
                         </Grid.RowDefinitions>
 
                         <!--Header-->
-                        <Grid Grid.Row="0" Background="#0B061E">
+                        <Grid Grid.Row="0" Background="#000917">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="15*"/>
                                 <ColumnDefinition Width="15*"/>
@@ -1819,7 +1819,7 @@
                             <!--Current HP-->
                             <Grid Grid.Row="1"
                                   Margin="3, 0, 3, 0"
-                                  Background="#17112E"
+                                  Background="#001233"
                                   x:Name="HealthBox">
                                 <materialDesign:PackIcon 
                                     Kind="Heart"
@@ -1872,7 +1872,7 @@
                             </Grid>
 
                             <!--Total HP-->
-                            <Grid Grid.Row="0" Margin="3, 3, 3, 0" Background="#0B061E">
+                            <Grid Grid.Row="0" Margin="3, 3, 3, 0" Background="#000917">
                                 <components:ConciergeDesignButton
                                     Style="{StaticResource ConciergeDesignButtonStyle}" 
                                     x:Name="EditHealthButton"
@@ -1893,7 +1893,7 @@
                                            VerticalAlignment="Center"/>
                             </Grid>
 
-                            <Grid Grid.Row="2" Background="#161223" Margin="3,0,3,3">
+                            <Grid Grid.Row="2" Background="#000917" Margin="3,0,3,3">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="12.5*"/>
                                     <ColumnDefinition Width="12.5*"/>
@@ -1998,7 +1998,7 @@
                             </Grid.RowDefinitions>
 
                             <!--Header-->
-                            <Grid Grid.Row="0" Margin="3, 3, 3, 0" Background="#0B061E">
+                            <Grid Grid.Row="0" Margin="3, 3, 3, 0" Background="#000917">
                                 <TextBlock Text="Armor Class"
                                            Foreground="White"
                                            FontSize="35"
@@ -2010,7 +2010,7 @@
                             <!--AC-->
                             <Grid Grid.Row="1"
                                   Margin="3, 0, 3, 3"
-                                  Background="#17112E">
+                                  Background="#001233">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="134*"/>
                                     <RowDefinition Height="7*"/>
@@ -2038,7 +2038,7 @@
                     <!--HitDice-->
                     <Grid Grid.Row="1"
                           Margin="3"
-                          Background="#0B061E">
+                          Background="#000917">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="30*"/>
                             <ColumnDefinition Width="70*"/>
@@ -2075,7 +2075,7 @@
 
                             <Grid Grid.Row="1"
                                   Margin="15"
-                                  Background="#161223">
+                                  Background="#33415C">
                                 <TextBlock Text="Spent"
                                            Foreground="White"
                                            HorizontalAlignment="Center"
@@ -2104,7 +2104,7 @@
 
                                 <!--Header-->
                                 <Grid Grid.Row="0"
-                                      Background="#17112E"
+                                      Background="#001233"
                                       Margin="3, 0, 3, 0">
                                     <TextBlock Text="D6"
                                                FontSize="25"
@@ -2152,7 +2152,7 @@
 
                                 <!--Header-->
                                 <Grid Grid.Row="0"
-                                      Background="#17112E"
+                                      Background="#001233"
                                       Margin="3, 0, 3, 0">
                                     <TextBlock Text="D8"
                                                FontSize="25"
@@ -2200,7 +2200,7 @@
 
                                 <!--Header-->
                                 <Grid Grid.Row="0"
-                                      Background="#17112E"
+                                      Background="#001233"
                                       Margin="3, 0, 3, 0">
                                     <TextBlock Text="D10"
                                                FontSize="25"
@@ -2248,7 +2248,7 @@
 
                                 <!--Header-->
                                 <Grid Grid.Row="0"
-                                      Background="#17112E"
+                                      Background="#001233"
                                       Margin="3, 0, 3, 0">
                                     <TextBlock Text="D12"
                                                FontSize="25"
@@ -2298,7 +2298,7 @@
 
                         <!--Header-->
                         <Grid Grid.Row="0"
-                          Background="#0B061E">
+                          Background="#000917">
                             <TextBlock Text="Wealth"
                                    Foreground="White"
                                    FontSize="35"
@@ -2321,7 +2321,7 @@
 
                         <!--Total Gold-->
                         <Grid Grid.Row="1"
-                          Background="#17112E">
+                          Background="#001233">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="60*"/>
                                 <ColumnDefinition Width="40*"/>

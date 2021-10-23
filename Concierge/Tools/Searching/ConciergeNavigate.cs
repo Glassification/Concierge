@@ -4,7 +4,6 @@
 
 namespace Concierge.Tools.Searching
 {
-    using System.Text.RegularExpressions;
     using System.Windows.Controls;
 
     using Concierge.Interfaces.Components;

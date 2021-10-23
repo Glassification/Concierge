@@ -19,7 +19,7 @@
 
         <!--Header-->
         <Grid Grid.Row="0"
-              Background="#0B061E"
+              Background="#000917"
               Margin="3">
             <TextBlock Text="Spellcasting"
                            Foreground="White"
@@ -107,7 +107,7 @@
                   Margin="3, 3, 3, 3">
                 <components:ConciergeDataGrid 
                     x:Name="MagicClassDataGrid"
-                    Background="#17112E"
+                    Background="#001233"
                     MaxHeight="{Binding Path=AbilitiesHeight}"
                     Style="{DynamicResource SpellcastingDataGridStyle}"
                     SelectionChanged="MagicClassDataGrid_SelectionChanged"
@@ -161,7 +161,7 @@
                 </Grid.RowDefinitions>
 
                 <Grid Grid.Row="0"
-                    Background="#161223">
+                    Background="#000917">
                     <TextBlock Text="Caster Level"
                                        Foreground="White"
                                        FontSize="25"
@@ -186,7 +186,7 @@
             <!--Spell slots-->
             <Grid Grid.Column="2"
                   Margin="3, 3, 3, 3"
-                  Background="#0B061E">
+                  Background="#000917">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1*"/>
                     <ColumnDefinition Width="9*"/>
@@ -224,7 +224,7 @@
                     </Grid>
 
                     <Grid Grid.Row="1"
-                          Background="#161223"
+                          Background="#33415C"
                           Margin="5, 15, 5, 15">
                         <TextBlock 
                             Text="Used"
@@ -274,7 +274,7 @@
 
                         <!--Name-->
                         <Grid Grid.Row="1"
-                                Background="#17112E"
+                                Background="#001233"
                                 Margin="3, 0, 3, 0">
                             <TextBlock Text="Pact"
                                         FontSize="18"
@@ -318,7 +318,7 @@
 
                         <!--Name-->
                         <Grid Grid.Row="1"
-                                Background="#17112E"
+                                Background="#001233"
                                 Margin="3, 0, 3, 0">
                             <TextBlock Text="1st"
                                         FontSize="18"
@@ -362,7 +362,7 @@
 
                         <!--Name-->
                         <Grid Grid.Row="1"
-                                Background="#17112E"
+                                Background="#001233"
                                 Margin="3, 0, 3, 0">
                             <TextBlock Text="2nd"
                                         FontSize="18"
@@ -406,7 +406,7 @@
 
                         <!--Name-->
                         <Grid Grid.Row="1"
-                                Background="#17112E"
+                                Background="#001233"
                                 Margin="3, 0, 3, 0">
                             <TextBlock Text="3rd"
                                         FontSize="18"
@@ -450,7 +450,7 @@
 
                         <!--Name-->
                         <Grid Grid.Row="1"
-                                Background="#17112E"
+                                Background="#001233"
                                 Margin="3, 0, 3, 0">
                             <TextBlock Text="4th"
                                         FontSize="18"
@@ -494,7 +494,7 @@
 
                         <!--Name-->
                         <Grid Grid.Row="1"
-                                Background="#17112E"
+                                Background="#001233"
                                 Margin="3, 0, 3, 0">
                             <TextBlock Text="5th"
                                         FontSize="18"
@@ -538,7 +538,7 @@
 
                         <!--Name-->
                         <Grid Grid.Row="1"
-                                Background="#17112E"
+                                Background="#001233"
                                 Margin="3, 0, 3, 0">
                             <TextBlock Text="6th"
                                         FontSize="18"
@@ -582,7 +582,7 @@
 
                         <!--Name-->
                         <Grid Grid.Row="1"
-                                Background="#17112E"
+                                Background="#001233"
                                 Margin="3, 0, 3, 0">
                             <TextBlock Text="7th"
                                         FontSize="18"
@@ -626,7 +626,7 @@
 
                         <!--Name-->
                         <Grid Grid.Row="1"
-                                Background="#17112E"
+                                Background="#001233"
                                 Margin="3, 0, 3, 0">
                             <TextBlock Text="8th"
                                         FontSize="18"
@@ -670,7 +670,7 @@
 
                         <!--Name-->
                         <Grid Grid.Row="1"
-                                Background="#17112E"
+                                Background="#001233"
                                 Margin="3, 0, 3, 0">
                             <TextBlock Text="9th"
                                         FontSize="18"
@@ -704,7 +704,7 @@
             </Grid.ColumnDefinitions>
             <components:ConciergeDataGrid 
                 x:Name="SpellListDataGrid"
-                Background="#17112E"
+                Background="#001233"
                 MaxHeight="{Binding Path=AbilitiesHeight}"
                 Style="{DynamicResource SpellcastingDataGridStyle}"
                 SelectionChanged="SpellListDataGrid_SelectionChanged" Grid.ColumnSpan="2" Margin="0,0,0,0.4"

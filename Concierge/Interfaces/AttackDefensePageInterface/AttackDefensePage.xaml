@@ -23,7 +23,7 @@
                 <ColumnDefinition Width="30*"/>
             </Grid.ColumnDefinitions>
 
-            <Grid Grid.Column="0" Background="#0B061E" Margin="3">
+            <Grid Grid.Column="0" Background="#000917" Margin="3">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="18*"/>
                     <RowDefinition Height="82*"/>
@@ -72,7 +72,7 @@
                             </Grid.ColumnDefinitions>
 
                             <Grid Grid.Column="0"
-                              Background="#17112E">
+                              Background="#001233">
                                 <TextBlock 
                                     Text="Armor Worn"
                                     Foreground="White"
@@ -102,7 +102,7 @@
                                 <ColumnDefinition Width="70*"/>
                             </Grid.ColumnDefinitions>
 
-                            <Grid Grid.Column="0" Background="#17112E">
+                            <Grid Grid.Column="0" Background="#001233">
                                 <TextBlock 
                                     Text="Shield Worn"
                                     Foreground="White"
@@ -144,7 +144,7 @@
                                     <ColumnDefinition Width="65*"/>
                                 </Grid.ColumnDefinitions>
 
-                                <Grid Grid.Column="0" Background="#17112E">
+                                <Grid Grid.Column="0" Background="#001233">
                                     <TextBlock 
                                         Text="Armor Type"
                                         Foreground="White"
@@ -172,7 +172,7 @@
                                     <ColumnDefinition Width="65*"/>
                                 </Grid.ColumnDefinitions>
 
-                                <Grid Grid.Column="0" Background="#17112E">
+                                <Grid Grid.Column="0" Background="#001233">
                                     <TextBlock 
                                         Text="Armor Stealth"
                                         Foreground="White"
@@ -210,7 +210,7 @@
                                     <RowDefinition Height="70*"/>
                                 </Grid.RowDefinitions>
 
-                                <Grid Grid.Row="0" Background="#17112E">
+                                <Grid Grid.Row="0" Background="#001233">
                                     <TextBlock 
                                         Text="AC"
                                         Foreground="White"
@@ -238,7 +238,7 @@
                                     <RowDefinition Height="70*"/>
                                 </Grid.RowDefinitions>
 
-                                <Grid Grid.Row="0" Background="#17112E">
+                                <Grid Grid.Row="0" Background="#001233">
                                     <TextBlock 
                                         Text="Shield AC"
                                         Foreground="White"
@@ -266,7 +266,7 @@
                                     <RowDefinition Height="70*"/>
                                 </Grid.RowDefinitions>
 
-                                <Grid Grid.Row="0" Background="#17112E">
+                                <Grid Grid.Row="0" Background="#001233">
                                     <TextBlock 
                                         Text="Magic AC"
                                         Foreground="White"
@@ -294,7 +294,7 @@
                                     <RowDefinition Height="70*"/>
                                 </Grid.RowDefinitions>
 
-                                <Grid Grid.Row="0" Background="#17112E">
+                                <Grid Grid.Row="0" Background="#001233">
                                     <TextBlock 
                                         Text="Misc AC"
                                         Foreground="White"
@@ -320,7 +320,7 @@
                 </Grid>
             </Grid>
 
-            <Grid Grid.Column="1" Background="#0B061E" Margin="3">
+            <Grid Grid.Column="1" Background="#000917" Margin="3">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="18*"/>
                     <RowDefinition Height="82*"/>
@@ -390,7 +390,7 @@
                     <components:ConciergeDataGrid 
                         x:Name="StatusEffectsDataGrid"
                         VerticalScrollBarVisibility="Hidden"
-                        Background="#17112E"
+                        Background="#001233"
                         Style="{DynamicResource StandardDataGridStyle}"
                         HeadersVisibility="None"
                         Grid.ColumnSpan="2">
@@ -406,7 +406,7 @@
         </Grid>
 
         <!--Ammo, Weapons-->
-        <Grid Grid.Row="1" Background="#0B061E" Margin="3">
+        <Grid Grid.Row="1" Background="#000917" Margin="3">
             <Grid.RowDefinitions>
                 <RowDefinition Height="8*"/>
                 <RowDefinition Height="36*"/>
@@ -415,7 +415,7 @@
 
             <!--Header-->
             <Grid Grid.Row="0"
-                  Background="#0B061E"
+                  Background="#000917"
                   Margin="3, 3, 3, 0">
                 <TextBlock Text="Ammunition and Attacks"
                            Foreground="White"
@@ -492,7 +492,7 @@
             <Grid Grid.Row="1" Margin="3" x:Name="AmmoGrid">
                 <components:ConciergeDataGrid 
                     x:Name="AmmoDataGrid"
-                    Background="#17112E"
+                    Background="#001233"
                     Margin="0, 5, 0, 0"
                     Height="200"
                     Style="{DynamicResource StandardDataGridStyle}"
@@ -532,7 +532,7 @@
             <Grid Grid.Row="2" Margin="3" x:Name="WeaponGrid">
                 <components:ConciergeDataGrid 
                     x:Name="WeaponDataGrid"
-                    Background="#17112E"
+                    Background="#001233"
                     Margin="0, 5, 0, 0"
                     Style="{DynamicResource StandardDataGridStyle}"
                     SelectionChanged="WeaponDataGrid_SelectionChanged"

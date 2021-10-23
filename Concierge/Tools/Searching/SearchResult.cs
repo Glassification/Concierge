@@ -11,11 +11,8 @@ namespace Concierge.Tools.Searching
     public class SearchResult
     {
         public SearchResult()
+            : this(string.Empty, null, null, null)
         {
-            this.Item = null;
-            this.ConciergePage = null;
-            this.SearchText = string.Empty;
-            this.SearchRegex = null;
         }
 
         public SearchResult(string searchText, object item, Regex searchRegex, IConciergePage conciergePage)

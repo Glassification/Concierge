@@ -12,7 +12,7 @@
       Title="AbilitiesPage"
       Style="{StaticResource PageXboxDasboardStyle}">
 
-    <Grid Background="#0B061E" Margin="3">
+    <Grid Background="#000917" Margin="3">
         <Grid.RowDefinitions>
             <RowDefinition Height="7*"/>
             <RowDefinition Height="93*"/>
@@ -20,7 +20,7 @@
 
         <!--Header-->
         <Grid Grid.Row="0"
-              Background="#ff06011f"
+              Background="#000917"
               Margin="3">
             <TextBlock Text="Abilities"
                            Foreground="White"
@@ -97,7 +97,7 @@
         <Grid Grid.Row="1">
             <components:ConciergeDataGrid 
                 x:Name="AbilitiesDataGrid"
-                Background="#17112E"
+                Background="#001233"
                 MaxHeight="{Binding Path=AbilitiesHeight}"
                 Style="{DynamicResource StandardDataGridStyle}"
                 Sorted="AbilitiesDataGrid_Sorted">

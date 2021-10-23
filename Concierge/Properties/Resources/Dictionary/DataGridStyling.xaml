@@ -50,7 +50,7 @@
     </Style>
     <Style x:Key="StandardDataGridHeaderStyle" TargetType="DataGridColumnHeader">
         <Setter Property="Height" Value="50"/>
-        <Setter Property="Background" Value="#17112E" />
+        <Setter Property="Background" Value="#001233" />
         <Setter Property="Foreground" Value="White"/>
         <Setter Property="FontSize" Value="18" />
         <Setter Property="FontWeight" Value="Bold"/>
@@ -77,7 +77,7 @@
     </Style>
     <Style x:Key="CompanionDataGridHeaderStyle" TargetType="DataGridColumnHeader">
         <Setter Property="Height" Value="50"/>
-        <Setter Property="Background" Value="#17112E" />
+        <Setter Property="Background" Value="#001233" />
         <Setter Property="Foreground" Value="White"/>
         <Setter Property="FontSize" Value="17" />
         <Setter Property="FontWeight" Value="Bold"/>
@@ -99,7 +99,7 @@
     </Style>
     <Style x:Key="DetailsDataGridHeaderStyle" TargetType="DataGridColumnHeader">
         <Setter Property="Height" Value="35"/>
-        <Setter Property="Background" Value="#17112E" />
+        <Setter Property="Background" Value="#001233" />
         <Setter Property="Foreground" Value="White"/>
         <Setter Property="FontSize" Value="18" />
         <Setter Property="FontWeight" Value="Bold"/>
@@ -120,7 +120,7 @@
     </Style>
     <Style x:Key="SpellcastingDataGridHeaderStyle" TargetType="DataGridColumnHeader">
         <Setter Property="Height" Value="50"/>
-        <Setter Property="Background" Value="#17112E" />
+        <Setter Property="Background" Value="#001233" />
         <Setter Property="Foreground" Value="White"/>
         <Setter Property="FontSize" Value="12" />
         <Setter Property="FontWeight" Value="Bold"/>
@@ -147,7 +147,7 @@
     </Style>
     <Style x:Key="ToolsDataGridHeaderStyle" TargetType="DataGridColumnHeader">
         <Setter Property="Height" Value="50"/>
-        <Setter Property="Background" Value="#17112E" />
+        <Setter Property="Background" Value="#001233" />
         <Setter Property="Foreground" Value="White"/>
         <Setter Property="FontSize" Value="20" />
         <Setter Property="FontWeight" Value="Bold"/>

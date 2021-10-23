@@ -29,7 +29,6 @@ namespace Concierge.Tools.Searching
         {
             this.MainWindow = mainWindow;
             this.Results = new List<SearchResult>();
-            this.SearchSettings = new SearchSettings();
         }
 
         public SearchSettings SearchSettings { get; private set; }
@@ -155,12 +154,13 @@ namespace Concierge.Tools.Searching
 
         private bool SearchObject(object item, IConciergePage conciergePage)
         {
+            this.Depth++;
+
             try
             {
                 var properties = item.GetType().GetProperties();
                 foreach (var property in properties)
                 {
-                    this.Depth++;
                     var propertyValue = property.GetValue(item);
 
                     if (propertyValue == null)

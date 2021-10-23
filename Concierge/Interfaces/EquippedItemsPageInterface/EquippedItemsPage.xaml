@@ -18,7 +18,7 @@
 
         <!--Header-->
         <Grid Grid.Row="0"
-              Background="#0B061E"
+              Background="#000917"
               Margin="3">
             <TextBlock Text="Equipped Items"
                            Foreground="White"
@@ -126,7 +126,7 @@
 
                         <Grid 
                             Grid.Column="0"
-                            Background="#0B061E"
+                            Background="#000917"
                             Margin="1,1,0,1">
                             <TextBlock 
                                 Text="Attuned Items"
@@ -138,7 +138,7 @@
                         </Grid>
                         <Grid 
                             Grid.Column="1"
-                            Background="#17112E"
+                            Background="#001233"
                             Margin="0,1,1,1">
                             <TextBlock 
                                 x:Name="UsedAttunement"
@@ -159,7 +159,7 @@
                             x:Name="TorsoEquipmentDataGrid"
                             Tag="Torso"
                             VerticalScrollBarVisibility="Hidden"
-                            Background="#17112E"
+                            Background="#001233"
                             Style="{DynamicResource StandardDataGridStyle}"
                             Margin="1"
                             SelectionChanged="EquipmentDataGrid_SelectionChanged"
@@ -188,7 +188,7 @@
                             x:Name="LegsEquipmentDataGrid"
                             Tag="Legs"
                             VerticalScrollBarVisibility="Hidden"
-                            Background="#17112E"
+                            Background="#001233"
                             Style="{DynamicResource StandardDataGridStyle}"
                             Margin="1"
                             SelectionChanged="EquipmentDataGrid_SelectionChanged"
@@ -241,7 +241,7 @@
                             x:Name="HeadEquipmentDataGrid"
                             Tag="Head"
                             VerticalScrollBarVisibility="Hidden"
-                            Background="#17112E"
+                            Background="#001233"
                             Style="{DynamicResource StandardDataGridStyle}"
                             Margin="1"
                             SelectionChanged="EquipmentDataGrid_SelectionChanged"
@@ -270,7 +270,7 @@
                             x:Name="HandsEquipmentDataGrid"
                             Tag="Hands"
                             VerticalScrollBarVisibility="Hidden"
-                            Background="#17112E"
+                            Background="#001233"
                             Style="{DynamicResource StandardDataGridStyle}"
                             Margin="1"
                             SelectionChanged="EquipmentDataGrid_SelectionChanged"
@@ -299,7 +299,7 @@
                             x:Name="FeetEquipmentDataGrid"
                             Tag="Feet"
                             VerticalScrollBarVisibility="Hidden"
-                            Background="#17112E"
+                            Background="#001233"
                             Style="{DynamicResource StandardDataGridStyle}"
                             Margin="1"
                             SelectionChanged="EquipmentDataGrid_SelectionChanged"

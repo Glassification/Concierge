@@ -32,7 +32,7 @@
 
                 <!--Appearance-->
                 <Grid Grid.Column="0"
-                  Background="#0B061E"
+                  Background="#000917"
                   Margin="3">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="11*"/>
@@ -76,7 +76,7 @@
                         </Grid.ColumnDefinitions>
 
                         <Grid Grid.Column="0"
-                          Background="#17112E"
+                          Background="#001233"
                           Margin="3, 3, 0, 3">
                             <TextBlock Text="Gender"
                                    Foreground="White"
@@ -108,7 +108,7 @@
                         </Grid.ColumnDefinitions>
 
                         <Grid Grid.Column="0"
-                          Background="#17112E"
+                          Background="#001233"
                           Margin="3, 3, 0, 3">
                             <TextBlock Text="Age"
                                    Foreground="White"
@@ -140,7 +140,7 @@
                         </Grid.ColumnDefinitions>
 
                         <Grid Grid.Column="0"
-                          Background="#17112E"
+                          Background="#001233"
                           Margin="3, 3, 0, 3">
                             <TextBlock Text="Height"
                                    Foreground="White"
@@ -172,7 +172,7 @@
                         </Grid.ColumnDefinitions>
 
                         <Grid Grid.Column="0"
-                          Background="#17112E"
+                          Background="#001233"
                           Margin="3, 3, 0, 3">
                             <TextBlock Text="Weight"
                                    Foreground="White"
@@ -204,7 +204,7 @@
                         </Grid.ColumnDefinitions>
 
                         <Grid Grid.Column="0"
-                          Background="#17112E"
+                          Background="#001233"
                           Margin="3, 3, 0, 3">
                             <TextBlock Text="Hair Colour"
                                    Foreground="White"
@@ -236,7 +236,7 @@
                         </Grid.ColumnDefinitions>
 
                         <Grid Grid.Column="0"
-                          Background="#17112E"
+                          Background="#001233"
                           Margin="3, 3, 0, 3">
                             <TextBlock Text="Skin Colour"
                                    Foreground="White"
@@ -268,7 +268,7 @@
                         </Grid.ColumnDefinitions>
 
                         <Grid Grid.Column="0"
-                          Background="#17112E"
+                          Background="#001233"
                           Margin="3, 3, 0, 3">
                             <TextBlock Text="Eye Colour"
                                    Foreground="White"
@@ -300,7 +300,7 @@
                         </Grid.RowDefinitions>
 
                         <Grid Grid.Row="0"
-                          Background="#17112E"
+                          Background="#001233"
                           Margin="3, 3, 3, 0">
                             <TextBlock Text="Distinguishing Marks"
                                    Foreground="White"
@@ -326,7 +326,7 @@
 
                 <!--Personality-->
                 <Grid Grid.Column="1"
-                  Background="#0B061E"
+                  Background="#000917"
                   Margin="3">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="11*"/>
@@ -368,7 +368,7 @@
                         </Grid.ColumnDefinitions>
 
                         <Grid Grid.Column="0"
-                          Background="#17112E"
+                          Background="#001233"
                           Margin="3, 3, 0, 3">
                             <TextBlock Text="Personality Traits"
                                    Foreground="White"
@@ -418,7 +418,7 @@
                         </Grid.ColumnDefinitions>
 
                         <Grid Grid.Column="0"
-                          Background="#17112E"
+                          Background="#001233"
                           Margin="3, 3, 0, 3">
                             <TextBlock Text="Ideal"
                                    Foreground="White"
@@ -451,7 +451,7 @@
                         </Grid.ColumnDefinitions>
 
                         <Grid Grid.Column="0"
-                          Background="#17112E"
+                          Background="#001233"
                           Margin="3, 3, 0, 3">
                             <TextBlock Text="Bond"
                                    Foreground="White"
@@ -484,7 +484,7 @@
                         </Grid.ColumnDefinitions>
 
                         <Grid Grid.Column="0"
-                          Background="#17112E"
+                          Background="#001233"
                           Margin="3, 3, 0, 3">
                             <TextBlock Text="Flaw"
                                    Foreground="White"
@@ -517,7 +517,7 @@
                         </Grid.ColumnDefinitions>
 
                         <Grid Grid.Column="0"
-                          Background="#17112E"
+                          Background="#001233"
                           Margin="3, 3, 0, 3">
                             <TextBlock Text="Background Feature"
                                    Foreground="White"
@@ -550,7 +550,7 @@
                         </Grid.ColumnDefinitions>
 
                         <Grid Grid.Column="0"
-                          Background="#17112E"
+                          Background="#001233"
                           Margin="3, 3, 0, 3">
                             <TextBlock Text="Notes"
                                    Foreground="White"
@@ -586,7 +586,7 @@
 
                 <!--Header-->
                 <Grid Grid.Row="0"
-                      Background="#0B061E"
+                      Background="#000917"
                       Margin="3, 3, 3, 0">
                     <TextBlock 
                         Text="Proficiencies"
@@ -598,7 +598,7 @@
                     <TextBlock 
                         x:Name="ProficiencyBonusField"
                         Foreground="White"
-                        Background="#161223"
+                        Background="#33415C"
                         FontSize="24"
                         FontWeight="Bold"
                         HorizontalAlignment="Left"
@@ -650,7 +650,7 @@
 
                 <!--Lists-->
                 <Grid Grid.Row="1"
-                      Background="#0B061E"
+                      Background="#000917"
                       Margin="3, 0, 3, 3">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="25*"/>
@@ -664,7 +664,7 @@
                         <components:ConciergeDataGrid 
                             x:Name="WeaponProficiencyDataGrid"
                             VerticalScrollBarVisibility="Hidden"
-                            Background="#17112E"
+                            Background="#001233"
                             MaxHeight="{Binding Path=ProficiencyGridSize}"
                             Style="{DynamicResource DetailsDataGridStyle}"
                             SelectionChanged="WeaponProficiencyDataGrid_SelectionChanged"
@@ -684,7 +684,7 @@
                         <components:ConciergeDataGrid 
                             x:Name="ArmorProficiencyDataGrid"
                             VerticalScrollBarVisibility="Hidden"
-                            Background="#17112E"
+                            Background="#001233"
                             MaxHeight="{Binding Path=ProficiencyGridSize}"
                             Style="{DynamicResource DetailsDataGridStyle}"
                             SelectionChanged="ArmorProficiencyDataGrid_SelectionChanged"
@@ -704,7 +704,7 @@
                         <components:ConciergeDataGrid 
                             x:Name="ShieldProficiencyDataGrid"
                             VerticalScrollBarVisibility="Hidden"
-                            Background="#17112E"
+                            Background="#001233"
                             MaxHeight="{Binding Path=ProficiencyGridSize}"
                             Style="{DynamicResource DetailsDataGridStyle}"
                             SelectionChanged="ShieldProficiencyDataGrid_SelectionChanged"
@@ -724,7 +724,7 @@
                         <components:ConciergeDataGrid 
                             x:Name="ToolProficiencyDataGrid"
                             VerticalScrollBarVisibility="Hidden"
-                            Background="#17112E"
+                            Background="#001233"
                             MaxHeight="{Binding Path=ProficiencyGridSize}"
                             Style="{DynamicResource DetailsDataGridStyle}"
                             SelectionChanged="ToolProficiencyDataGrid_SelectionChanged"
@@ -746,13 +746,11 @@
         <Grid Grid.Column="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="22*"/>
-                <RowDefinition Height="23*"/>
-                <RowDefinition Height="30*"/>
-                <RowDefinition Height="25*"/>
+                <RowDefinition Height="78*"/>
             </Grid.RowDefinitions>
 
             <!--Weight-->
-            <Grid Grid.Row="0" Background="#0B061E" Margin="3">
+            <Grid Grid.Row="0" Background="#000917" Margin="3">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="45*"/>
                     <RowDefinition Height="55*"/>
@@ -801,7 +799,7 @@
                             <RowDefinition Height="55*"/>
                         </Grid.RowDefinitions>
 
-                        <Grid Grid.Row="0" Background="#17112E">
+                        <Grid Grid.Row="0" Background="#001233">
                             <TextBlock Text="Light"
                                            FontSize="22"
                                            Foreground="White"
@@ -825,7 +823,7 @@
                             <RowDefinition Height="55*"/>
                         </Grid.RowDefinitions>
 
-                        <Grid Grid.Row="0" Background="#17112E">
+                        <Grid Grid.Row="0" Background="#001233">
                             <TextBlock Text="Medium"
                                            FontSize="22"
                                            Foreground="White"
@@ -849,7 +847,7 @@
                             <RowDefinition Height="55*"/>
                         </Grid.RowDefinitions>
 
-                        <Grid Grid.Row="0" Background="#17112E">
+                        <Grid Grid.Row="0" Background="#001233">
                             <TextBlock Text="Heavy"
                                            FontSize="22"
                                            Foreground="White"
@@ -869,26 +867,33 @@
             </Grid>
 
             <!--Resources-->
-            <Grid Grid.Row="1" Margin="3">
-                <components:ConciergeDataGrid 
+            <Grid Grid.Row="1" Margin="3" Background="#000917">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="27*"/>
+                    <RowDefinition Height="36*"/>
+                    <RowDefinition Height="36*"/>
+                </Grid.RowDefinitions>
+                
+                <Grid Grid.Row="0" Margin="3">
+                    <components:ConciergeDataGrid 
                     x:Name="ResourcesDataGrid"
                     VerticalScrollBarVisibility="Hidden"
-                    Background="#17112E"
+                    Background="#001233"
                     Style="{DynamicResource DetailsDataGridStyle}"
                     Sorted="ResourcesDataGrid_Sorted">
-                    <DataGrid.Columns>
-                        <DataGridTextColumn 
+                        <DataGrid.Columns>
+                            <DataGridTextColumn 
                             Header="Resources"
                             Width="100*"
                             Binding="{Binding Description}"
                             ElementStyle="{StaticResource DetailsColumnElementStyle}"/>
-                    </DataGrid.Columns>
-                </components:ConciergeDataGrid>
-                <StackPanel 
+                        </DataGrid.Columns>
+                    </components:ConciergeDataGrid>
+                    <StackPanel 
                     Orientation="Horizontal"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top">
-                    <components:ConciergeDesignButton Style="{StaticResource ConciergeDesignButtonStyle}" 
+                        <components:ConciergeDesignButton Style="{StaticResource ConciergeDesignButtonStyle}" 
                         x:Name="ClearResourcesButton"
                         Width="35"
                         HorizontalAlignment="Left"
@@ -896,9 +901,9 @@
                         ToolTip="Clear Resource"
                         Click="ClearResourcesButton_Click"
                         Margin="0, 0, 3, 3">
-                        <materialDesign:PackIcon Kind="Cancel" Width="25" Height="25"/>
-                    </components:ConciergeDesignButton>
-                    <components:ConciergeDesignButton 
+                            <materialDesign:PackIcon Kind="Cancel" Width="25" Height="25"/>
+                        </components:ConciergeDesignButton>
+                        <components:ConciergeDesignButton 
                         Style="{StaticResource ConciergeDesignButtonStyle}" 
                         x:Name="DeleteResourcesButton"
                         Width="35"
@@ -907,14 +912,14 @@
                         ToolTip="Delete Resource"
                         Click="DeleteResourcesButton_Click"
                         Margin="0, 0, 3, 3">
-                        <materialDesign:PackIcon Kind="Delete" Width="25" Height="25"/>
-                    </components:ConciergeDesignButton>
-                </StackPanel>
-                <StackPanel 
+                            <materialDesign:PackIcon Kind="Delete" Width="25" Height="25"/>
+                        </components:ConciergeDesignButton>
+                    </StackPanel>
+                    <StackPanel 
                     Orientation="Horizontal"
                     HorizontalAlignment="Right"
                     VerticalAlignment="Top">
-                    <components:ConciergeDesignButton 
+                        <components:ConciergeDesignButton 
                         Style="{StaticResource ConciergeDesignButtonStyle}" 
                         x:Name="AddResourcesButton"
                         Width="35"
@@ -923,9 +928,9 @@
                         Click="AddResourcesButton_Click"
                         ToolTip="Add Resource"
                         Margin="0, 0, 3, 3">
-                        <materialDesign:PackIcon Kind="Add" Width="25" Height="25"/>
-                    </components:ConciergeDesignButton>
-                    <components:ConciergeDesignButton 
+                            <materialDesign:PackIcon Kind="Add" Width="25" Height="25"/>
+                        </components:ConciergeDesignButton>
+                        <components:ConciergeDesignButton 
                         Style="{StaticResource ConciergeDesignButtonStyle}" 
                         x:Name="EditResourcesButton"
                         Width="35"
@@ -934,32 +939,32 @@
                         ToolTip="Edit Resources"
                         Click="EditResourcesButton_Click"
                         Margin="0, 0, 3, 3">
-                        <materialDesign:PackIcon Kind="PlaylistEdit" Width="25" Height="25"/>
-                    </components:ConciergeDesignButton>
-                </StackPanel>
-            </Grid>
-            
-            <!--Language-->
-            <Grid Grid.Row="2" Margin="3">
-                <components:ConciergeDataGrid 
+                            <materialDesign:PackIcon Kind="PlaylistEdit" Width="25" Height="25"/>
+                        </components:ConciergeDesignButton>
+                    </StackPanel>
+                </Grid>
+
+                <!--Language-->
+                <Grid Grid.Row="1" Margin="3">
+                    <components:ConciergeDataGrid 
                     x:Name="LanguagesDataGrid"
                     VerticalScrollBarVisibility="Hidden"
-                    Background="#17112E"
+                    Background="#001233"
                     MaxHeight="{Binding Path=ProficiencyGridSize}"
                     Style="{DynamicResource DetailsDataGridStyle}"
                     Sorted="LanguagesDataGrid_Sorted">
-                    <DataGrid.Columns>
-                        <DataGridTextColumn 
+                        <DataGrid.Columns>
+                            <DataGridTextColumn 
                             Header="Languages"
                             Width="100*"
                             Binding="{Binding Description}"
                             ElementStyle="{StaticResource DetailsColumnElementStyle}"/>
-                    </DataGrid.Columns>
-                </components:ConciergeDataGrid>
-                <StackPanel Orientation="Horizontal"
+                        </DataGrid.Columns>
+                    </components:ConciergeDataGrid>
+                    <StackPanel Orientation="Horizontal"
                             HorizontalAlignment="Left"
                             VerticalAlignment="Top">
-                    <components:ConciergeDesignButton 
+                        <components:ConciergeDesignButton 
                         Style="{StaticResource ConciergeDesignButtonStyle}"
                         x:Name="ClearLanguagesButton"
                         Width="35"
@@ -968,9 +973,9 @@
                         ToolTip="Clear Language"
                         Click="ClearLanguagesButton_Click"
                         Margin="0, 0, 3, 3">
-                        <materialDesign:PackIcon Kind="Cancel" Width="25" Height="25"/>
-                    </components:ConciergeDesignButton>
-                    <components:ConciergeDesignButton 
+                            <materialDesign:PackIcon Kind="Cancel" Width="25" Height="25"/>
+                        </components:ConciergeDesignButton>
+                        <components:ConciergeDesignButton 
                         Style="{StaticResource ConciergeDesignButtonStyle}" 
                         x:Name="DeleteLanguagesButton"
                         Width="35"
@@ -979,13 +984,13 @@
                         ToolTip="Delete Language"
                         Click="DeleteLanguagesButton_Click"
                         Margin="0, 0, 3, 3">
-                        <materialDesign:PackIcon Kind="Delete" Width="25" Height="25"/>
-                    </components:ConciergeDesignButton>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal"
+                            <materialDesign:PackIcon Kind="Delete" Width="25" Height="25"/>
+                        </components:ConciergeDesignButton>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal"
                             HorizontalAlignment="Right"
                             VerticalAlignment="Top">
-                    <components:ConciergeDesignButton 
+                        <components:ConciergeDesignButton 
                         Style="{StaticResource ConciergeDesignButtonStyle}"
                         x:Name="AddLanguagesButton"
                         Width="35"
@@ -994,9 +999,9 @@
                         Click="AddLanguagesButton_Click"
                         ToolTip="Add Language"
                         Margin="0, 0, 3, 3">
-                        <materialDesign:PackIcon Kind="Add" Width="25" Height="25"/>
-                    </components:ConciergeDesignButton>
-                    <components:ConciergeDesignButton 
+                            <materialDesign:PackIcon Kind="Add" Width="25" Height="25"/>
+                        </components:ConciergeDesignButton>
+                        <components:ConciergeDesignButton 
                         Style="{StaticResource ConciergeDesignButtonStyle}" 
                         x:Name="EditLanguagesButton"
                         Width="35"
@@ -1005,32 +1010,32 @@
                         ToolTip="Edit Language"
                         Click="EditLanguagesButton_Click"
                         Margin="0, 0, 3, 3">
-                        <materialDesign:PackIcon Kind="PlaylistEdit" Width="25" Height="25"/>
-                    </components:ConciergeDesignButton>
-                </StackPanel>
-            </Grid>
+                            <materialDesign:PackIcon Kind="PlaylistEdit" Width="25" Height="25"/>
+                        </components:ConciergeDesignButton>
+                    </StackPanel>
+                </Grid>
 
-            <!--Conditions-->
-            <Grid Grid.Row="3" Margin="3">
-                <components:ConciergeDataGrid 
+                <!--Conditions-->
+                <Grid Grid.Row="2" Margin="3">
+                    <components:ConciergeDataGrid 
                     x:Name="ConditionsDataGrid"
                     VerticalScrollBarVisibility="Hidden"
-                    Background="#17112E"
+                    Background="#001233"
                     MaxHeight="{Binding Path=ProficiencyGridSize}"
                     Style="{DynamicResource DetailsDataGridStyle}"
                     SelectionMode="Single">
-                    <DataGrid.Columns>
-                        <DataGridTextColumn 
+                        <DataGrid.Columns>
+                            <DataGridTextColumn 
                             Header="Conditions"
                             Width="100*"
                             Binding="{Binding Value}"
                             ElementStyle="{StaticResource DetailsColumnElementStyle}"/>
-                    </DataGrid.Columns>
-                </components:ConciergeDataGrid>
-                <StackPanel Orientation="Horizontal"
+                        </DataGrid.Columns>
+                    </components:ConciergeDataGrid>
+                    <StackPanel Orientation="Horizontal"
                             VerticalAlignment="Top"
                             HorizontalAlignment="Right">
-                    <components:ConciergeDesignButton 
+                        <components:ConciergeDesignButton 
                         Style="{StaticResource ConciergeDesignButtonStyle}" 
                         x:Name="ClearConditionsButton"
                         Width="35"
@@ -1039,9 +1044,9 @@
                         ToolTip="Clear Conditions"
                         Click="ClearConditionsButton_Click"
                         Margin="0, 0, 3, 3">
-                        <materialDesign:PackIcon Kind="Cancel" Width="25" Height="25"/>
-                    </components:ConciergeDesignButton>
-                    <components:ConciergeDesignButton 
+                            <materialDesign:PackIcon Kind="Cancel" Width="25" Height="25"/>
+                        </components:ConciergeDesignButton>
+                        <components:ConciergeDesignButton 
                         Style="{StaticResource ConciergeDesignButtonStyle}" 
                         x:Name="EditConditionsButton"
                         Width="35"
@@ -1050,10 +1055,12 @@
                         ToolTip="Edit Conditions"
                         Click="EditConditionsButton_Click"
                         Margin="0, 0, 3, 3">
-                        <materialDesign:PackIcon Kind="PlaylistEdit" Width="25" Height="25"/>
-                    </components:ConciergeDesignButton>
-                </StackPanel>
+                            <materialDesign:PackIcon Kind="PlaylistEdit" Width="25" Height="25"/>
+                        </components:ConciergeDesignButton>
+                    </StackPanel>
+                </Grid>
             </Grid>
+            
         </Grid>
     </Grid>
 </Page>
