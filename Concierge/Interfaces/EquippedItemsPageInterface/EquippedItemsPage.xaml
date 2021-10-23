@@ -118,7 +118,7 @@
                     <Grid 
                         Grid.Row="0"
                         Margin="15,95,15,95"
-                        Background="#988CD0">
+                        Background="#2A6F97">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="35*"/>
                             <ColumnDefinition Width="65*"/>
@@ -153,7 +153,7 @@
                     <!--Torso-->
                     <Grid 
                         Grid.Row="1"
-                        Background="#988CD0"
+                        Background="#2A6F97"
                         Margin="15">
                         <components:ConciergeDataGrid 
                             x:Name="TorsoEquipmentDataGrid"
@@ -182,7 +182,7 @@
                     <!--Legs-->
                     <Grid 
                         Grid.Row="2"
-                        Background="#988CD0"
+                        Background="#2A6F97"
                         Margin="15">
                         <components:ConciergeDataGrid 
                             x:Name="LegsEquipmentDataGrid"
@@ -235,7 +235,7 @@
                     <!--Head-->
                     <Grid 
                         Grid.Row="0"
-                        Background="#988CD0"
+                        Background="#2A6F97"
                         Margin="15">
                         <components:ConciergeDataGrid 
                             x:Name="HeadEquipmentDataGrid"
@@ -264,7 +264,7 @@
                     <!--Hands-->
                     <Grid 
                         Grid.Row="1"
-                        Background="#988CD0"
+                        Background="#2A6F97"
                         Margin="15">
                         <components:ConciergeDataGrid 
                             x:Name="HandsEquipmentDataGrid"
@@ -293,7 +293,7 @@
                     <!--Feet-->
                     <Grid 
                         Grid.Row="2"
-                        Background="#988CD0"
+                        Background="#2A6F97"
                         Margin="15">
                         <components:ConciergeDataGrid 
                             x:Name="FeetEquipmentDataGrid"

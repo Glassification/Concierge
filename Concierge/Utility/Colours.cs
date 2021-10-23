@@ -22,7 +22,7 @@ namespace Concierge.Utility
             ControlBackgroundBrush = new SolidColorBrush(Color.FromArgb(255, 63, 63, 63));
             ToggleBoxBrush = new SolidColorBrush(Color.FromArgb(255, 6, 1, 31));
             RectangleBorderHighlight = new SolidColorBrush(Color.FromArgb(255, 34, 126, 169));
-            RectangleBorder = new SolidColorBrush(Color.FromArgb(255, 6, 1, 31));
+            RectangleBorder = new SolidColorBrush(Color.FromArgb(255, 0, 9, 23));
             Highlight = new SolidColorBrush(Color.FromArgb(255, 28, 57, 71));
             FailedSaveBrush = GenerateGradientBrush(FailedDarkRed, FailedLightRed, new Point(0.5, 0), new Point(0.5, 1));
             SucceededSaveBrush = GenerateGradientBrush(SucceededDarkGreen, SucceededLightGreen, new Point(0.5, 0), new Point(0.5, 1));
@@ -51,7 +51,6 @@ namespace Concierge.Utility
 
         public static SolidColorBrush Highlight { get; }
 
-
         public static Color LightGreen => Color.FromArgb(255, 216, 228, 188);
 
         public static Color LightYellow => Color.FromArgb(255, 252, 213, 180);
@@ -66,9 +65,9 @@ namespace Concierge.Utility
 
         public static Color SucceededDarkGreen => Color.FromArgb(255, 123, 216, 96);
 
-        public static Color ProficiencyLightPurple => Color.FromArgb(255, 23, 17, 46);
+        public static Color ProficiencyLightPurple => Color.FromArgb(255, 0, 18, 51);
 
-        public static Color ProficiencyDarkPurple => Color.FromArgb(255, 11, 6, 30);
+        public static Color ProficiencyDarkPurple => Color.FromArgb(255, 0, 9, 23);
 
         public static HsvColour ToHsv(Color color)
         {

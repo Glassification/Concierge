@@ -15,7 +15,7 @@
         KeyDown="Window_KeyDown"
         MouseDown="Window_MouseDown"
         BorderThickness="1"
-        BorderBrush="#706599"
+        BorderBrush="#2A6F97"
         Style="{StaticResource WindowXboxDasboardStyle}">
     <Grid>
         <Grid.RowDefinitions>
@@ -29,7 +29,7 @@
             <TextBlock 
                 Text="Add Status Effect"
                 x:Name="HeaderTextBlock"
-                Foreground="#988CD0"
+                Foreground="#2A6F97"
                 FontSize="27"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Center"

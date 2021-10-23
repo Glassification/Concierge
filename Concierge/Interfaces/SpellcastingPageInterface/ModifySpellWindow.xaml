@@ -16,7 +16,7 @@
         KeyDown="Window_KeyDown"
         MouseDown="Window_MouseDown"
         BorderThickness="1"
-        BorderBrush="#706599"
+        BorderBrush="#2A6F97"
         Style="{StaticResource WindowXboxDasboardStyle}">
 
     <Grid>
@@ -30,7 +30,7 @@
         <Grid Grid.Row="0">
             <TextBlock Text="Add Spell"
                        x:Name="HeaderTextBlock"
-                       Foreground="#988CD0"
+                       Foreground="#2A6F97"
                        FontSize="35"
                        HorizontalAlignment="Left"
                        VerticalAlignment="Center"

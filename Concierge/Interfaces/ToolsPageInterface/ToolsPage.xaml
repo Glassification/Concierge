@@ -208,7 +208,7 @@
                                 Style="{StaticResource ConciergeDesignButtonStyle}" 
                                 x:Name="ButtonRollD4"
                                 Width="60"
-                                Foreground="#0466C8"
+                                Foreground="#0D77D7"
                                 ToolTip="Roll d4"
                                 Click="ButtonRoll_Click">
                                 <materialDesign:PackIcon Kind="DiceD4" Height="25" Width="25"/>
@@ -283,7 +283,7 @@
                                 Style="{StaticResource ConciergeDesignButtonStyle}" 
                                 x:Name="ButtonRollD6"
                                 Width="60"
-                                Foreground="#0466C8"
+                                Foreground="#0D77D7"
                                 ToolTip="Roll d6"
                                 Click="ButtonRoll_Click">
                                 <materialDesign:PackIcon Kind="DiceD6" Height="25" Width="25"/>
@@ -358,7 +358,7 @@
                                 Style="{StaticResource ConciergeDesignButtonStyle}" 
                                 x:Name="ButtonRollD8"
                                 Width="60"
-                                Foreground="#0466C8"
+                                Foreground="#0D77D7"
                                 ToolTip="Roll d8"
                                 Click="ButtonRoll_Click">
                                 <materialDesign:PackIcon Kind="DiceD8" Height="25" Width="25"/>
@@ -433,7 +433,7 @@
                                 Style="{StaticResource ConciergeDesignButtonStyle}" 
                                 x:Name="ButtonRollD10"
                                 Width="60"
-                                Foreground="#0466C8"
+                                Foreground="#0D77D7"
                                 ToolTip="Roll d10"
                                 Click="ButtonRoll_Click">
                                 <materialDesign:PackIcon Kind="DiceD10" Height="25" Width="25"/>
@@ -508,7 +508,7 @@
                                 Style="{StaticResource ConciergeDesignButtonStyle}" 
                                 x:Name="ButtonRollD100"
                                 Width="60"
-                                Foreground="#0466C8"
+                                Foreground="#0D77D7"
                                 ToolTip="Roll d100"
                                 Click="ButtonRoll_Click">
                                 <materialDesign:PackIcon Kind="DiceMultiple" Height="25" Width="25"/>
@@ -583,7 +583,7 @@
                                 Style="{StaticResource ConciergeDesignButtonStyle}" 
                                 x:Name="ButtonRollD12"
                                 Width="60"
-                                Foreground="#0466C8"
+                                Foreground="#0D77D7"
                                 ToolTip="Roll d12"
                                 Click="ButtonRoll_Click">
                                 <materialDesign:PackIcon Kind="DiceD12" Height="25" Width="25"/>
@@ -658,7 +658,7 @@
                                 Style="{StaticResource ConciergeDesignButtonStyle}" 
                                 x:Name="ButtonRollD20"
                                 Width="60"
-                                Foreground="#0466C8"
+                                Foreground="#0D77D7"
                                 ToolTip="Roll d20"
                                 Click="ButtonRoll_Click">
                                 <materialDesign:PackIcon Kind="DiceD20" Height="25" Width="25"/>
@@ -734,7 +734,7 @@
                                 Style="{StaticResource ConciergeDesignButtonStyle}" 
                                 x:Name="ButtonRollDx"
                                 Width="60"
-                                Foreground="#0466C8"
+                                Foreground="#0D77D7"
                                 ToolTip="Roll dx"
                                 Click="ButtonRoll_Click">
                                 <materialDesign:PackIcon Kind="DiceMultiple" Height="25" Width="25"/>

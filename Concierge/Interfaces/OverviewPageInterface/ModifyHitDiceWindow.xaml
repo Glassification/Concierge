@@ -16,7 +16,7 @@
         MouseDown="Window_MouseDown"
         KeyDown="Window_KeyDown"
         BorderThickness="1"
-        BorderBrush="#706599"
+        BorderBrush="#2A6F97"
         Style="{StaticResource WindowXboxDasboardStyle}">
 
     <Grid>
@@ -31,7 +31,7 @@
             <TextBlock 
                 Text="Edit Hit Dice"
                 x:Name="HeaderTextBlock"
-                Foreground="#988CD0"
+                Foreground="#2A6F97"
                 FontSize="35"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Center"
