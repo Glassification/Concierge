@@ -22,7 +22,7 @@ namespace Concierge.Character.Statuses
         }
 
         [JsonIgnore]
-        public DeathSave DeathSaveStatus => this.InARow(DeathSave.Failure) ? DeathSave.Failure : this.InARow(DeathSave.Success) ? DeathSave.Success : DeathSave.None;
+        public DeathSave DeathSaveStatus => this.HasRequiredInARow(DeathSave.Failure) ? DeathSave.Failure : this.HasRequiredInARow(DeathSave.Success) ? DeathSave.Success : DeathSave.None;
 
         public int CurrentDeathSave { get; set; }
 
@@ -57,7 +57,7 @@ namespace Concierge.Character.Statuses
             }
         }
 
-        private bool InARow(DeathSave deathSave)
+        private bool HasRequiredInARow(DeathSave deathSave)
         {
             var count = 0;
 

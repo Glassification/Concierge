@@ -37,7 +37,7 @@
                     </Grid.RowDefinitions>
 
                     <!--Name-->
-                    <Grid Grid.Row="0" Background="#0B061E">
+                    <Grid Grid.Row="0" Background="#000917">
                         <components:ConciergeDesignButton 
                             Style="{StaticResource ConciergeDesignButtonStyle}" 
                             x:Name="EditAttributesButton"
@@ -56,7 +56,7 @@
                                    FontWeight="Bold"/>
                     </Grid>
                     <!--Bonus-->
-                    <Grid Grid.Row="1" Background="#17112E">
+                    <Grid Grid.Row="1" Background="#001233">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="24*"/>
                             <ColumnDefinition Width="19*"/>
@@ -82,7 +82,7 @@
                         </Grid>
                     </Grid>
                     <!--Score-->
-                    <Grid Grid.Row="2" Background="#161223">
+                    <Grid Grid.Row="2" Background="#33415C">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="5*"/>
                             <ColumnDefinition Width="5*"/>
@@ -116,7 +116,7 @@
                     </Grid.RowDefinitions>
 
                     <!--Name-->
-                    <Grid Grid.Row="0" Background="#0B061E">
+                    <Grid Grid.Row="0" Background="#000917">
                         <TextBlock Text="Dexterity"
                                    Foreground="White"
                                    FontSize="17"
@@ -125,7 +125,7 @@
                                    FontWeight="Bold"/>
                     </Grid>
                     <!--Bonus-->
-                    <Grid Grid.Row="1" Background="#17112E">
+                    <Grid Grid.Row="1" Background="#001233">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="5*"/>
                             <ColumnDefinition Width="5*"/>
@@ -150,7 +150,7 @@
                         </Grid>
                     </Grid>
                     <!--Score-->
-                    <Grid Grid.Row="2" Background="#161223">
+                    <Grid Grid.Row="2" Background="#33415C">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="5*"/>
                             <ColumnDefinition Width="5*"/>
@@ -184,7 +184,7 @@
                     </Grid.RowDefinitions>
 
                     <!--Name-->
-                    <Grid Grid.Row="0" Background="#0B061E">
+                    <Grid Grid.Row="0" Background="#000917">
                         <TextBlock Text="Constitution"
                                    Foreground="White"
                                    FontSize="17"
@@ -193,7 +193,7 @@
                                    FontWeight="Bold"/>
                     </Grid>
                     <!--Bonus-->
-                    <Grid Grid.Row="1" Background="#17112E">
+                    <Grid Grid.Row="1" Background="#001233">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="5*"/>
                             <ColumnDefinition Width="5*"/>
@@ -218,7 +218,7 @@
                         </Grid>
                     </Grid>
                     <!--Score-->
-                    <Grid Grid.Row="2" Background="#161223">
+                    <Grid Grid.Row="2" Background="#33415C">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="5*"/>
                             <ColumnDefinition Width="5*"/>
@@ -252,7 +252,7 @@
                     </Grid.RowDefinitions>
 
                     <!--Name-->
-                    <Grid Grid.Row="0" Background="#0B061E">
+                    <Grid Grid.Row="0" Background="#000917">
                         <TextBlock Text="Intelligence"
                                    Foreground="White"
                                    FontSize="17"
@@ -261,7 +261,7 @@
                                    FontWeight="Bold"/>
                     </Grid>
                     <!--Bonus-->
-                    <Grid Grid.Row="1" Background="#17112E">
+                    <Grid Grid.Row="1" Background="#001233">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="5*"/>
                             <ColumnDefinition Width="5*"/>
@@ -286,7 +286,7 @@
                         </Grid>
                     </Grid>
                     <!--Score-->
-                    <Grid Grid.Row="2" Background="#161223">
+                    <Grid Grid.Row="2" Background="#33415C">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="5*"/>
                             <ColumnDefinition Width="5*"/>
@@ -320,7 +320,7 @@
                     </Grid.RowDefinitions>
 
                     <!--Name-->
-                    <Grid Grid.Row="0" Background="#0B061E">
+                    <Grid Grid.Row="0" Background="#000917">
                         <TextBlock Text="Wisdom"
                                    Foreground="White"
                                    FontSize="17"
@@ -329,7 +329,7 @@
                                    FontWeight="Bold"/>
                     </Grid>
                     <!--Bonus-->
-                    <Grid Grid.Row="1" Background="#17112E">
+                    <Grid Grid.Row="1" Background="#001233">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="5*"/>
                             <ColumnDefinition Width="5*"/>
@@ -354,7 +354,7 @@
                         </Grid>
                     </Grid>
                     <!--Score-->
-                    <Grid Grid.Row="2" Background="#161223">
+                    <Grid Grid.Row="2" Background="#33415C">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="5*"/>
                             <ColumnDefinition Width="5*"/>
@@ -388,7 +388,7 @@
                     </Grid.RowDefinitions>
 
                     <!--Name-->
-                    <Grid Grid.Row="0" Background="#0B061E">
+                    <Grid Grid.Row="0" Background="#000917">
                         <TextBlock Text="Charisma"
                                    Foreground="White"
                                    FontSize="17"
@@ -397,7 +397,7 @@
                                    FontWeight="Bold"/>
                     </Grid>
                     <!--Bonus-->
-                    <Grid Grid.Row="1" Background="#17112E">
+                    <Grid Grid.Row="1" Background="#001233">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="5*"/>
                             <ColumnDefinition Width="5*"/>
@@ -422,7 +422,7 @@
                         </Grid>
                     </Grid>
                     <!--Score-->
-                    <Grid Grid.Row="2" Background="#161223">
+                    <Grid Grid.Row="2" Background="#33415C">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="5*"/>
                             <ColumnDefinition Width="5*"/>
@@ -473,7 +473,7 @@
                     </Grid.ColumnDefinitions>
 
                     <!--Name-->
-                    <Grid Grid.Column="0" Background="#0B061E">
+                    <Grid Grid.Column="0" Background="#000917">
                         <components:ConciergeDesignButton 
                             Style="{StaticResource ConciergeDesignButtonStyle}" 
                             x:Name="EditSensesButton"
@@ -486,16 +486,17 @@
                             ToolTip="Edit Senses">
                             <materialDesign:PackIcon Kind="PlaylistEdit" Width="25" Height="25"/>
                         </components:ConciergeDesignButton>
-                        <TextBlock Text="Initiative"
-                                   Foreground="White"
-                                   FontSize="20"
-                                   FontWeight="Bold"
-                                   HorizontalAlignment="Center"
-                                   VerticalAlignment="Center"/>
+                        <TextBlock
+                            Text="Initiative"
+                            Foreground="White"
+                            FontSize="20"
+                            FontWeight="Bold"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"/>
                     </Grid>
 
                     <!--Value-->
-                    <Grid Grid.Column="1" Background="#17112E">
+                    <Grid Grid.Column="1" Background="#001233">
                         <TextBlock x:Name="InitiativeField"
                                    Foreground="White"
                                    FontSize="22"
@@ -513,7 +514,7 @@
                     </Grid.ColumnDefinitions>
 
                     <!--Name-->
-                    <Grid Grid.Column="0" Background="#0B061E">
+                    <Grid Grid.Column="0" Background="#000917">
                         <TextBlock Text="Passive Perception"
                                    Foreground="White"
                                    FontSize="20"
@@ -524,7 +525,7 @@
                     </Grid>
 
                     <!--Value-->
-                    <Grid Grid.Column="1" Background="#17112E">
+                    <Grid Grid.Column="1" Background="#001233">
                         <TextBlock x:Name="PassivePerceptionField"
                                    Foreground="White"
                                    FontSize="22"
@@ -542,7 +543,7 @@
                     </Grid.ColumnDefinitions>
 
                     <!--Name-->
-                    <Grid Grid.Column="0" Background="#0B061E">
+                    <Grid Grid.Column="0" Background="#000917">
                         <TextBlock Text="Vision"
                                    Foreground="White"
                                    FontSize="20"
@@ -553,7 +554,7 @@
                     </Grid>
 
                     <!--Value-->
-                    <Grid Grid.Column="1" Background="#17112E">
+                    <Grid Grid.Column="1" Background="#001233">
                         <TextBlock x:Name="VisionField"
                                    Foreground="White"
                                    FontSize="22"
@@ -571,7 +572,7 @@
                     </Grid.ColumnDefinitions>
 
                     <!--Name-->
-                    <Grid Grid.Column="0" Background="#0B061E">
+                    <Grid Grid.Column="0" Background="#000917">
                         <TextBlock Text="Movement Speed"
                                    Foreground="White"
                                    FontSize="20"
@@ -582,7 +583,7 @@
                     </Grid>
 
                     <!--Value-->
-                    <Grid Grid.Column="1" Background="#17112E">
+                    <Grid Grid.Column="1" Background="#001233">
                         <TextBlock x:Name="MovementSpeedField"
                                    Foreground="White"
                                    FontSize="22"
@@ -615,7 +616,7 @@
                         </Grid.RowDefinitions>
 
                         <!--Header-->
-                        <Grid Grid.Row="0" Background="#0B061E">
+                        <Grid Grid.Row="0" Background="#000917">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="15*"/>
                                 <ColumnDefinition Width="65*"/>
@@ -673,7 +674,7 @@
                                 <Grid Grid.Column="0">
                                     <Rectangle 
                                         x:Name="StrengthProficiencyBox"
-                                        Stroke="#ff06011f"
+                                        Stroke="#000917"
                                         Stretch="Uniform"
                                         Margin="3"/>
                                 </Grid>
@@ -710,7 +711,7 @@
                                 <!--Proficiency-->
                                 <Grid Grid.Column="0">
                                     <Rectangle x:Name="DexterityProficiencyBox"
-                                           Stroke="#ff06011f"
+                                           Stroke="#000917"
                                            Stretch="Uniform"
                                            Margin="3"/>
                                 </Grid>
@@ -747,7 +748,7 @@
                                 <!--Proficiency-->
                                 <Grid Grid.Column="0">
                                     <Rectangle x:Name="ConstitutionProficiencyBox"
-                                           Stroke="#ff06011f"
+                                           Stroke="#000917"
                                            Stretch="Uniform"
                                            Margin="3"/>
                                 </Grid>
@@ -784,7 +785,7 @@
                                 <!--Proficiency-->
                                 <Grid Grid.Column="0">
                                     <Rectangle x:Name="IntelligenceProficiencyBox"
-                                           Stroke="#ff06011f"
+                                           Stroke="#000917"
                                            Stretch="Uniform"
                                            Margin="3"/>
                                 </Grid>
@@ -821,7 +822,7 @@
                                 <!--Proficiency-->
                                 <Grid Grid.Column="0">
                                     <Rectangle x:Name="WisdomProficiencyBox"
-                                           Stroke="#ff06011f"
+                                           Stroke="#000917"
                                            Stretch="Uniform"
                                            Margin="3"/>
                                 </Grid>
@@ -858,7 +859,7 @@
                                 <!--Proficiency-->
                                 <Grid Grid.Column="0">
                                     <Rectangle x:Name="CharismaProficiencyBox"
-                                           Stroke="#ff06011f"
+                                           Stroke="#000917"
                                            Stretch="Uniform"
                                            Margin="3"/>
                                 </Grid>
@@ -894,7 +895,7 @@
                         </Grid.RowDefinitions>
 
                         <!--Header-->
-                        <Grid Grid.Row="0" Background="#0B061E">
+                        <Grid Grid.Row="0" Background="#000917">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="15*"/>
                                 <ColumnDefinition Width="15*"/>
@@ -974,7 +975,7 @@
                                 <!--Proficiency-->
                                 <Grid Grid.Column="0">
                                     <Rectangle x:Name="AthleticsProficiencyBox"
-                                           Stroke="#ff06011f"
+                                           Stroke="#000917"
                                            Stretch="Uniform"
                                            Margin="3"/>
                                 </Grid>
@@ -982,7 +983,7 @@
                                 <!--Expertiese-->
                                 <Grid Grid.Column="1">
                                     <Rectangle x:Name="AthleticsExpertieseBox"
-                                           Stroke="#ff06011f"
+                                           Stroke="#000917"
                                            Stretch="Uniform"
                                            Margin="3"/>
                                 </Grid>
@@ -1020,7 +1021,7 @@
                                 <!--Proficiency-->
                                 <Grid Grid.Column="0">
                                     <Rectangle x:Name="AcrobaticsProficiencyBox"
-                                           Stroke="#ff06011f"
+                                           Stroke="#000917"
                                            Stretch="Uniform"
                                            Margin="3"/>
                                 </Grid>
@@ -1028,7 +1029,7 @@
                                 <!--Expertiese-->
                                 <Grid Grid.Column="1">
                                     <Rectangle x:Name="AcrobaticsExpertieseBox"
-                                           Stroke="#ff06011f"
+                                           Stroke="#000917"
                                            Stretch="Uniform"
                                            Margin="3"/>
                                 </Grid>
@@ -1066,7 +1067,7 @@
                                 <!--Proficiency-->
                                 <Grid Grid.Column="0">
                                     <Rectangle x:Name="SleightOfHandProficiencyBox"
-                                           Stroke="#ff06011f"
+                                           Stroke="#000917"
                                            Stretch="Uniform"
                                            Margin="3"/>
                                 </Grid>
@@ -1074,7 +1075,7 @@
                                 <!--Expertiese-->
                                 <Grid Grid.Column="1">
                                     <Rectangle x:Name="SleightOfHandExpertieseBox"
-                                           Stroke="#ff06011f"
+                                           Stroke="#000917"
                                            Stretch="Uniform"
                                            Margin="3"/>
                                 </Grid>
@@ -1112,7 +1113,7 @@
                                 <!--Proficiency-->
                                 <Grid Grid.Column="0">
                                     <Rectangle x:Name="StealthProficiencyBox"
-                                           Stroke="#ff06011f"
+                                           Stroke="#000917"
                                            Stretch="Uniform"
                                            Margin="3"/>
                                 </Grid>
@@ -1120,7 +1121,7 @@
                                 <!--Expertiese-->
                                 <Grid Grid.Column="1">
                                     <Rectangle x:Name="StealthExpertieseBox"
-                                           Stroke="#ff06011f"
+                                           Stroke="#000917"
                                            Stretch="Uniform"
                                            Margin="3"/>
                                 </Grid>
@@ -1158,7 +1159,7 @@
                                 <!--Proficiency-->
                                 <Grid Grid.Column="0">
                                     <Rectangle x:Name="ArcanaProficiencyBox"
-                                           Stroke="#ff06011f"
+                                           Stroke="#000917"
                                            Stretch="Uniform"
                                            Margin="3"/>
                                 </Grid>
@@ -1166,7 +1167,7 @@
                                 <!--Expertiese-->
                                 <Grid Grid.Column="1">
                                     <Rectangle x:Name="ArcanaExpertieseBox"
-                                           Stroke="#ff06011f"
+                                           Stroke="#000917"
                                            Stretch="Uniform"
                                            Margin="3"/>
                                 </Grid>
@@ -1204,7 +1205,7 @@
                                 <!--Proficiency-->
                                 <Grid Grid.Column="0">
                                     <Rectangle x:Name="HistoryProficiencyBox"
-                                           Stroke="#ff06011f"
+                                           Stroke="#000917"
                                            Stretch="Uniform"
                                            Margin="3"/>
                                 </Grid>
@@ -1212,7 +1213,7 @@
                                 <!--Expertiese-->
                                 <Grid Grid.Column="1">
                                     <Rectangle x:Name="HistoryExpertieseBox"
-                                           Stroke="#ff06011f"
+                                           Stroke="#000917"
                                            Stretch="Uniform"
                                            Margin="3"/>
                                 </Grid>
@@ -1250,7 +1251,7 @@
                                 <!--Proficiency-->
                                 <Grid Grid.Column="0">
                                     <Rectangle x:Name="InvestigationProficiencyBox"
-                                           Stroke="#ff06011f"
+                                           Stroke="#000917"
                                            Stretch="Uniform"
                                            Margin="3"/>
                                 </Grid>
@@ -1258,7 +1259,7 @@
                                 <!--Expertiese-->
                                 <Grid Grid.Column="1">
                                     <Rectangle x:Name="InvestigationExpertieseBox"
-                                           Stroke="#ff06011f"
+                                           Stroke="#000917"
                                            Stretch="Uniform"
                                            Margin="3"/>
                                 </Grid>
@@ -1296,7 +1297,7 @@
                                 <!--Proficiency-->
                                 <Grid Grid.Column="0">
                                     <Rectangle x:Name="NatureProficiencyBox"
-                                           Stroke="#ff06011f"
+                                           Stroke="#000917"
                                            Stretch="Uniform"
                                            Margin="3"/>
                                 </Grid>
@@ -1304,7 +1305,7 @@
                                 <!--Expertiese-->
                                 <Grid Grid.Column="1">
                                     <Rectangle x:Name="NatureExpertieseBox"
-                                           Stroke="#ff06011f"
+                                           Stroke="#000917"
                                            Stretch="Uniform"
                                            Margin="3"/>
                                 </Grid>
@@ -1342,7 +1343,7 @@
                                 <!--Proficiency-->
                                 <Grid Grid.Column="0">
                                     <Rectangle x:Name="ReligionProficiencyBox"
-                                           Stroke="#ff06011f"
+                                           Stroke="#000917"
                                            Stretch="Uniform"
                                            Margin="3"/>
                                 </Grid>
@@ -1350,7 +1351,7 @@
                                 <!--Expertiese-->
                                 <Grid Grid.Column="1">
                                     <Rectangle x:Name="ReligionExpertieseBox"
-                                           Stroke="#ff06011f"
+                                           Stroke="#000917"
                                            Stretch="Uniform"
                                            Margin="3"/>
                                 </Grid>
@@ -1388,7 +1389,7 @@
                                 <!--Proficiency-->
                                 <Grid Grid.Column="0">
                                     <Rectangle x:Name="AnimalHandlingProficiencyBox"
-                                           Stroke="#ff06011f"
+                                           Stroke="#000917"
                                            Stretch="Uniform"
                                            Margin="3"/>
                                 </Grid>
@@ -1396,7 +1397,7 @@
                                 <!--Expertiese-->
                                 <Grid Grid.Column="1">
                                     <Rectangle x:Name="AnimalHandlingExpertieseBox"
-                                           Stroke="#ff06011f"
+                                           Stroke="#000917"
                                            Stretch="Uniform"
                                            Margin="3"/>
                                 </Grid>
@@ -1434,7 +1435,7 @@
                                 <!--Proficiency-->
                                 <Grid Grid.Column="0">
                                     <Rectangle x:Name="InsightProficiencyBox"
-                                           Stroke="#ff06011f"
+                                           Stroke="#000917"
                                            Stretch="Uniform"
                                            Margin="3"/>
                                 </Grid>
@@ -1442,7 +1443,7 @@
                                 <!--Expertiese-->
                                 <Grid Grid.Column="1">
                                     <Rectangle x:Name="InsightExpertieseBox"
-                                           Stroke="#ff06011f"
+                                           Stroke="#000917"
                                            Stretch="Uniform"
                                            Margin="3"/>
                                 </Grid>
@@ -1480,7 +1481,7 @@
                                 <!--Proficiency-->
                                 <Grid Grid.Column="0">
                                     <Rectangle x:Name="MedicineProficiencyBox"
-                                           Stroke="#ff06011f"
+                                           Stroke="#000917"
                                            Stretch="Uniform"
                                            Margin="3"/>
                                 </Grid>
@@ -1488,7 +1489,7 @@
                                 <!--Expertiese-->
                                 <Grid Grid.Column="1">
                                     <Rectangle x:Name="MedicineExpertieseBox"
-                                           Stroke="#ff06011f"
+                                           Stroke="#000917"
                                            Stretch="Uniform"
                                            Margin="3"/>
                                 </Grid>
@@ -1526,7 +1527,7 @@
                                 <!--Proficiency-->
                                 <Grid Grid.Column="0">
                                     <Rectangle x:Name="PerceptionProficiencyBox"
-                                           Stroke="#ff06011f"
+                                           Stroke="#000917"
                                            Stretch="Uniform"
                                            Margin="3"/>
                                 </Grid>
@@ -1534,7 +1535,7 @@
                                 <!--Expertiese-->
                                 <Grid Grid.Column="1">
                                     <Rectangle x:Name="PerceptionExpertieseBox"
-                                           Stroke="#ff06011f"
+                                           Stroke="#000917"
                                            Stretch="Uniform"
                                            Margin="3"/>
                                 </Grid>
@@ -1572,7 +1573,7 @@
                                 <!--Proficiency-->
                                 <Grid Grid.Column="0">
                                     <Rectangle x:Name="SurvivalProficiencyBox"
-                                           Stroke="#ff06011f"
+                                           Stroke="#000917"
                                            Stretch="Uniform"
                                            Margin="3"/>
                                 </Grid>
@@ -1580,7 +1581,7 @@
                                 <!--Expertiese-->
                                 <Grid Grid.Column="1">
                                     <Rectangle x:Name="SurvivalExpertieseBox"
-                                           Stroke="#ff06011f"
+                                           Stroke="#000917"
                                            Stretch="Uniform"
                                            Margin="3"/>
                                 </Grid>
@@ -1618,7 +1619,7 @@
                                 <!--Proficiency-->
                                 <Grid Grid.Column="0">
                                     <Rectangle x:Name="DeceptionProficiencyBox"
-                                           Stroke="#ff06011f"
+                                           Stroke="#000917"
                                            Stretch="Uniform"
                                            Margin="3"/>
                                 </Grid>
@@ -1626,7 +1627,7 @@
                                 <!--Expertiese-->
                                 <Grid Grid.Column="1">
                                     <Rectangle x:Name="DeceptionExpertieseBox"
-                                           Stroke="#ff06011f"
+                                           Stroke="#000917"
                                            Stretch="Uniform"
                                            Margin="3"/>
                                 </Grid>
@@ -1664,7 +1665,7 @@
                                 <!--Proficiency-->
                                 <Grid Grid.Column="0">
                                     <Rectangle x:Name="IntimidationProficiencyBox"
-                                           Stroke="#ff06011f"
+                                           Stroke="#000917"
                                            Stretch="Uniform"
                                            Margin="3"/>
                                 </Grid>
@@ -1672,7 +1673,7 @@
                                 <!--Expertiese-->
                                 <Grid Grid.Column="1">
                                     <Rectangle x:Name="IntimidationExpertieseBox"
-                                           Stroke="#ff06011f"
+                                           Stroke="#000917"
                                            Stretch="Uniform"
                                            Margin="3"/>
                                 </Grid>
@@ -1710,7 +1711,7 @@
                                 <!--Proficiency-->
                                 <Grid Grid.Column="0">
                                     <Rectangle x:Name="PerformanceProficiencyBox"
-                                           Stroke="#ff06011f"
+                                           Stroke="#000917"
                                            Stretch="Uniform"
                                            Margin="3"/>
                                 </Grid>
@@ -1718,7 +1719,7 @@
                                 <!--Expertiese-->
                                 <Grid Grid.Column="1">
                                     <Rectangle x:Name="PerformanceExpertieseBox"
-                                           Stroke="#ff06011f"
+                                           Stroke="#000917"
                                            Stretch="Uniform"
                                            Margin="3"/>
                                 </Grid>
@@ -1756,7 +1757,7 @@
                                 <!--Proficiency-->
                                 <Grid Grid.Column="0">
                                     <Rectangle x:Name="PersuasionProficiencyBox"
-                                           Stroke="#ff06011f"
+                                           Stroke="#000917"
                                            Stretch="Uniform"
                                            Margin="3"/>
                                 </Grid>
@@ -1764,7 +1765,7 @@
                                 <!--Expertiese-->
                                 <Grid Grid.Column="1">
                                     <Rectangle x:Name="PersuasionExpertieseBox"
-                                           Stroke="#ff06011f"
+                                           Stroke="#000917"
                                            Stretch="Uniform"
                                            Margin="3"/>
                                 </Grid>
@@ -1819,16 +1820,15 @@
                             <!--Current HP-->
                             <Grid Grid.Row="1"
                                   Margin="3, 0, 3, 0"
-                                  Background="#17112E"
+                                  Background="#001233"
                                   x:Name="HealthBox">
                                 <materialDesign:PackIcon 
                                     Kind="Heart"
-                                    FontStretch="Expanded"
                                     Foreground="#ff780531"
-                                    HorizontalAlignment="Center"
-                                    VerticalAlignment="Center"
-                                    Width="{Binding Path=HeartWidth}"
-                                    Height="{Binding Path=HeartHeight}"/>
+                                    HorizontalAlignment="Stretch"
+                                    VerticalAlignment="Stretch"
+                                    Height="auto"
+                                    Width="auto"/>
                                 <TextBlock 
                                     x:Name="CurrentHpField"
                                     Foreground="White"
@@ -1872,7 +1872,7 @@
                             </Grid>
 
                             <!--Total HP-->
-                            <Grid Grid.Row="0" Margin="3, 3, 3, 0" Background="#0B061E">
+                            <Grid Grid.Row="0" Margin="3, 3, 3, 0" Background="#000917">
                                 <components:ConciergeDesignButton
                                     Style="{StaticResource ConciergeDesignButtonStyle}" 
                                     x:Name="EditHealthButton"
@@ -1893,7 +1893,7 @@
                                            VerticalAlignment="Center"/>
                             </Grid>
 
-                            <Grid Grid.Row="2" Background="#161223" Margin="3,0,3,3">
+                            <Grid Grid.Row="2" Background="#000917" Margin="3,0,3,3">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="12.5*"/>
                                     <ColumnDefinition Width="12.5*"/>
@@ -1998,7 +1998,7 @@
                             </Grid.RowDefinitions>
 
                             <!--Header-->
-                            <Grid Grid.Row="0" Margin="3, 3, 3, 0" Background="#0B061E">
+                            <Grid Grid.Row="0" Margin="3, 3, 3, 0" Background="#000917">
                                 <TextBlock Text="Armor Class"
                                            Foreground="White"
                                            FontSize="35"
@@ -2010,19 +2010,14 @@
                             <!--AC-->
                             <Grid Grid.Row="1"
                                   Margin="3, 0, 3, 3"
-                                  Background="#17112E">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="134*"/>
-                                    <RowDefinition Height="7*"/>
-                                </Grid.RowDefinitions>
+                                  Background="#001233">
                                 <materialDesign:PackIcon 
                                     Kind="Shield"
-                                    FontStretch="Expanded"
                                     Foreground="DimGray"
-                                    HorizontalAlignment="Center"
-                                    VerticalAlignment="Center"
-                                    Width="{Binding Path=ShieldWidth}"
-                                    Height="{Binding Path=ShieldHeight}" 
+                                    HorizontalAlignment="Stretch"
+                                    VerticalAlignment="Stretch"
+                                    Height="auto"
+                                    Width="auto"
                                     Margin="0,0,0,0"/>
                                 <TextBlock 
                                     x:Name="ArmorClassField"
@@ -2038,7 +2033,7 @@
                     <!--HitDice-->
                     <Grid Grid.Row="1"
                           Margin="3"
-                          Background="#0B061E">
+                          Background="#000917">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="30*"/>
                             <ColumnDefinition Width="70*"/>
@@ -2075,7 +2070,7 @@
 
                             <Grid Grid.Row="1"
                                   Margin="15"
-                                  Background="#161223">
+                                  Background="#33415C">
                                 <TextBlock Text="Spent"
                                            Foreground="White"
                                            HorizontalAlignment="Center"
@@ -2104,7 +2099,7 @@
 
                                 <!--Header-->
                                 <Grid Grid.Row="0"
-                                      Background="#17112E"
+                                      Background="#001233"
                                       Margin="3, 0, 3, 0">
                                     <TextBlock Text="D6"
                                                FontSize="25"
@@ -2152,7 +2147,7 @@
 
                                 <!--Header-->
                                 <Grid Grid.Row="0"
-                                      Background="#17112E"
+                                      Background="#001233"
                                       Margin="3, 0, 3, 0">
                                     <TextBlock Text="D8"
                                                FontSize="25"
@@ -2200,7 +2195,7 @@
 
                                 <!--Header-->
                                 <Grid Grid.Row="0"
-                                      Background="#17112E"
+                                      Background="#001233"
                                       Margin="3, 0, 3, 0">
                                     <TextBlock Text="D10"
                                                FontSize="25"
@@ -2248,7 +2243,7 @@
 
                                 <!--Header-->
                                 <Grid Grid.Row="0"
-                                      Background="#17112E"
+                                      Background="#001233"
                                       Margin="3, 0, 3, 0">
                                     <TextBlock Text="D12"
                                                FontSize="25"
@@ -2289,7 +2284,7 @@
                     </Grid>
 
                     <!--Wealth-->
-                    <Grid Grid.Row="2" Margin="3" Background="#ff06011f">
+                    <Grid Grid.Row="2" Margin="3" Background="#001233">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="25*"/>
                             <RowDefinition Height="25*"/>
@@ -2298,7 +2293,7 @@
 
                         <!--Header-->
                         <Grid Grid.Row="0"
-                          Background="#0B061E">
+                          Background="#000917">
                             <TextBlock Text="Wealth"
                                    Foreground="White"
                                    FontSize="35"
@@ -2321,7 +2316,7 @@
 
                         <!--Total Gold-->
                         <Grid Grid.Row="1"
-                          Background="#17112E">
+                          Background="#001233">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="60*"/>
                                 <ColumnDefinition Width="40*"/>

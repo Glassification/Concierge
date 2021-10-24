@@ -35,6 +35,12 @@ dotnet_diagnostic.SA1611.severity=silent
 # IDE0001: Simplify Names
 dotnet_diagnostic.IDE0001.severity = none
 
+# CS0612: Type or member is obsolete
+dotnet_diagnostic.CS0612.severity = none
+
+# CS0618: Type or member is obsolete
+dotnet_diagnostic.CS0618.severity = none
+
 [*.{cs,vb}]
 dotnet_diagnostic.CA1305.severity=silent
 

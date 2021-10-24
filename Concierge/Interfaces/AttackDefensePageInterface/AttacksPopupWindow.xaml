@@ -16,7 +16,7 @@
         KeyDown="Window_KeyDown"
         MouseDown="Window_MouseDown"
         BorderThickness="1"
-        BorderBrush="#706599"
+        BorderBrush="#2A6F97"
         Style="{StaticResource WindowXboxDasboardStyle}">
     <Grid>
         <Grid.RowDefinitions>

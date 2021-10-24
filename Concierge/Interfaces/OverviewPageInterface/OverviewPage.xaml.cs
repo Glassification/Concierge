@@ -85,14 +85,6 @@ namespace Concierge.Interfaces.OverviewPageInterface
             this.InitializeToggleBox(this.PersuasionExpertieseBox, this.SkillExpertise_MouseDown);
         }
 
-        public int HeartWidth => (int)this.HealthBox.RenderSize.Width;
-
-        public int HeartHeight => (int)this.HealthBox.RenderSize.Height;
-
-        public int ShieldWidth => (int)this.HealthBox.RenderSize.Width;
-
-        public int ShieldHeight => (int)this.HealthBox.RenderSize.Height;
-
         public ConciergePage ConciergePage => ConciergePage.Overview;
 
         private bool DeathScreenShown { get; set; }
@@ -579,7 +571,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
         {
             var character = Program.CcsFile.Character;
 
-            this.modifyHpWindow.ShowSubtract(character.Vitality);
+            this.modifyHpWindow.ShowDamage(character.Vitality);
             this.DrawHealth();
 
             if (character.Vitality.IsDead)
@@ -590,7 +582,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
 
         private void HealDamageButton_Click(object sender, RoutedEventArgs e)
         {
-            this.modifyHpWindow.ShowAdd(Program.CcsFile.Character.Vitality);
+            this.modifyHpWindow.ShowHeal(Program.CcsFile.Character.Vitality);
             this.DrawHealth();
         }
 

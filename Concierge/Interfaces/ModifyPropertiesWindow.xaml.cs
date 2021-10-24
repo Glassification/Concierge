@@ -38,17 +38,19 @@ namespace Concierge.Interfaces
 
         public ConciergeWindowResult ShowWizardSetup()
         {
-            this.Read();
             this.ApplyButton.Visibility = Visibility.Collapsed;
+
+            this.FillFields();
             this.ShowDialog();
 
             return this.Result;
         }
 
-        public void ShowWindow()
+        public void ShowEdit()
         {
             this.ApplyButton.Visibility = Visibility.Visible;
-            this.Read();
+
+            this.FillFields();
             this.ShowDialog();
         }
 
@@ -65,40 +67,40 @@ namespace Concierge.Interfaces
             this.Hide();
         }
 
-        private void Read()
+        private void FillFields()
         {
-            Program.Logger.Info($"Read character sheet.");
+            var character = Program.CcsFile.Character;
 
             this.Level1UpDown.UpdatingValue();
             this.Level2UpDown.UpdatingValue();
             this.Level3UpDown.UpdatingValue();
 
-            this.NameTextBox.Text = Program.CcsFile.Character.Details.Name;
-            this.RaceComboBox.Text = Program.CcsFile.Character.Details.Race;
-            this.BackgroundComboBox.Text = Program.CcsFile.Character.Details.Background;
-            this.AlignmentComboBox.Text = Program.CcsFile.Character.Details.Alignment;
-            this.Level1UpDown.Value = Program.CcsFile.Character.Class1.Level;
-            this.Level2UpDown.Value = Program.CcsFile.Character.Class2.Level;
-            this.Level3UpDown.Value = Program.CcsFile.Character.Class3.Level;
-            this.Class1ComboBox.Text = Program.CcsFile.Character.Class1.Name;
-            this.Class2ComboBox.Text = Program.CcsFile.Character.Class2.Name;
-            this.Class3ComboBox.Text = Program.CcsFile.Character.Class3.Name;
+            this.NameTextBox.Text = character.Details.Name;
+            this.RaceComboBox.Text = character.Details.Race;
+            this.BackgroundComboBox.Text = character.Details.Background;
+            this.AlignmentComboBox.Text = character.Details.Alignment;
+            this.Level1UpDown.Value = character.Class1.Level;
+            this.Level2UpDown.Value = character.Class2.Level;
+            this.Level3UpDown.Value = character.Class3.Level;
+            this.Class1ComboBox.Text = character.Class1.Name;
+            this.Class2ComboBox.Text = character.Class2.Name;
+            this.Class3ComboBox.Text = character.Class3.Name;
         }
 
-        private void Write()
+        private void UpdateProperties()
         {
-            Program.Logger.Info($"Write character sheet.");
+            var character = Program.CcsFile.Character;
 
-            Program.CcsFile.Character.Details.Name = this.NameTextBox.Text;
-            Program.CcsFile.Character.Details.Race = this.RaceComboBox.Text;
-            Program.CcsFile.Character.Details.Background = this.BackgroundComboBox.Text;
-            Program.CcsFile.Character.Details.Alignment = this.AlignmentComboBox.Text;
-            Program.CcsFile.Character.Class1.Level = this.Level1UpDown.Value ?? 0;
-            Program.CcsFile.Character.Class2.Level = this.Level2UpDown.Value ?? 0;
-            Program.CcsFile.Character.Class3.Level = this.Level3UpDown.Value ?? 0;
-            Program.CcsFile.Character.Class1.Name = this.Class1ComboBox.Text;
-            Program.CcsFile.Character.Class2.Name = this.Class2ComboBox.Text;
-            Program.CcsFile.Character.Class3.Name = this.Class3ComboBox.Text;
+            character.Details.Name = this.NameTextBox.Text;
+            character.Details.Race = this.RaceComboBox.Text;
+            character.Details.Background = this.BackgroundComboBox.Text;
+            character.Details.Alignment = this.AlignmentComboBox.Text;
+            character.Class1.Level = this.Level1UpDown.Value ?? 0;
+            character.Class2.Level = this.Level2UpDown.Value ?? 0;
+            character.Class3.Level = this.Level3UpDown.Value ?? 0;
+            character.Class1.Name = this.Class1ComboBox.Text;
+            character.Class2.Name = this.Class2ComboBox.Text;
+            character.Class3.Name = this.Class3ComboBox.Text;
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
@@ -106,7 +108,7 @@ namespace Concierge.Interfaces
             switch (e.Key)
             {
                 case Key.Escape:
-                    Program.Logger.Info($"ESCAPE key pressed.");
+                    Program.Logger.Info($"Escape key pressed.");
                     this.Result = ConciergeWindowResult.Exit;
                     this.Hide();
                     break;
@@ -115,26 +117,23 @@ namespace Concierge.Interfaces
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
-            Program.Logger.Info($"OK button click.");
             Program.Modify();
             this.Result = ConciergeWindowResult.OK;
 
-            this.Write();
+            this.UpdateProperties();
             this.Hide();
         }
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
-            Program.Logger.Info($"Apply button click.");
             Program.Modify();
 
-            this.Write();
+            this.UpdateProperties();
             this.ApplyChanges?.Invoke(this, new EventArgs());
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            Program.Logger.Info($"Cancel button click.");
             this.Result = ConciergeWindowResult.Cancel;
 
             this.Hide();
@@ -142,7 +141,6 @@ namespace Concierge.Interfaces
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            Program.Logger.Info($"Close button click.");
             this.Result = ConciergeWindowResult.Exit;
 
             this.Hide();

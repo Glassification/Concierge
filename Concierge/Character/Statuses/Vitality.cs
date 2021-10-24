@@ -53,8 +53,8 @@ namespace Concierge.Character.Statuses
             get => this.baseHealthField;
             set
             {
-                this.baseHealthField = Math.Min(value, this.MaxHealth);
-                this.baseHealthField = Math.Max(value, -this.MaxHealth);
+                var boundHp = Math.Min(value, this.MaxHealth);
+                this.baseHealthField = Math.Max(boundHp, -this.MaxHealth);
             }
         }
 
@@ -100,10 +100,8 @@ namespace Concierge.Character.Statuses
 
         private static int RegainHitDie(int spent)
         {
-            var temp = spent;
-            temp -= Math.Max(spent / 2, 1);
-
-            return Math.Max(temp, 0);
+            spent -= Math.Max(spent / 2, 1);
+            return Math.Max(spent, 0);
         }
     }
 }

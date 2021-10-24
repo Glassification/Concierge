@@ -18,7 +18,7 @@
 
         <!--Header-->
         <Grid Grid.Row="0"
-              Background="#0B061E"
+              Background="#000917"
               Margin="3">
             <TextBlock Text="Equipped Items"
                            Foreground="White"
@@ -96,10 +96,11 @@
             <materialDesign:PackIcon
                 x:Name="DefaultCharacterImage"
                 Kind="HumanHandsdown"
-                Width="{Binding Path=EquippedItemsWidth}"
-                Height="{Binding Path=EquippedItemsHeight}"
-                Foreground="#161223"
-                HorizontalAlignment="Center"/>
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch"
+                Height="auto"
+                Width="auto"
+                Foreground="#161223"/>
 
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -115,10 +116,23 @@
                         <RowDefinition Height="33*"/>
                     </Grid.RowDefinitions>
 
+                    <components:ConciergeDesignButton 
+                        Style="{StaticResource ConciergeDesignButtonStyle}" 
+                        x:Name="ImageEditButton"
+                        Height="40"
+                        Width="50"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Top"
+                        Foreground="Khaki"
+                        Click="ImageEditButton_Click"
+                        ToolTip="Edit Character Image">
+                        <materialDesign:PackIcon Kind="PlaylistEdit" Width="25" Height="25"/>
+                    </components:ConciergeDesignButton>
+
                     <Grid 
                         Grid.Row="0"
                         Margin="15,95,15,95"
-                        Background="#988CD0">
+                        Background="#2A6F97">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="35*"/>
                             <ColumnDefinition Width="65*"/>
@@ -126,7 +140,7 @@
 
                         <Grid 
                             Grid.Column="0"
-                            Background="#0B061E"
+                            Background="#000917"
                             Margin="1,1,0,1">
                             <TextBlock 
                                 Text="Attuned Items"
@@ -138,7 +152,7 @@
                         </Grid>
                         <Grid 
                             Grid.Column="1"
-                            Background="#17112E"
+                            Background="#001233"
                             Margin="0,1,1,1">
                             <TextBlock 
                                 x:Name="UsedAttunement"
@@ -153,13 +167,13 @@
                     <!--Torso-->
                     <Grid 
                         Grid.Row="1"
-                        Background="#988CD0"
+                        Background="#2A6F97"
                         Margin="15">
                         <components:ConciergeDataGrid 
                             x:Name="TorsoEquipmentDataGrid"
                             Tag="Torso"
                             VerticalScrollBarVisibility="Hidden"
-                            Background="#17112E"
+                            Background="#001233"
                             Style="{DynamicResource StandardDataGridStyle}"
                             Margin="1"
                             SelectionChanged="EquipmentDataGrid_SelectionChanged"
@@ -182,13 +196,13 @@
                     <!--Legs-->
                     <Grid 
                         Grid.Row="2"
-                        Background="#988CD0"
+                        Background="#2A6F97"
                         Margin="15">
                         <components:ConciergeDataGrid 
                             x:Name="LegsEquipmentDataGrid"
                             Tag="Legs"
                             VerticalScrollBarVisibility="Hidden"
-                            Background="#17112E"
+                            Background="#001233"
                             Style="{DynamicResource StandardDataGridStyle}"
                             Margin="1"
                             SelectionChanged="EquipmentDataGrid_SelectionChanged"
@@ -211,18 +225,6 @@
 
                 <Grid Grid.Column="1">
                     <Image x:Name="CharacterImage"/>
-                    <components:ConciergeDesignButton 
-                        Style="{StaticResource ConciergeDesignButtonStyle}" 
-                        x:Name="ImageEditButton"
-                        Height="40"
-                        Width="50"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Top"
-                        Foreground="Khaki"
-                        Click="ImageEditButton_Click"
-                        ToolTip="Edit Character Image">
-                        <materialDesign:PackIcon Kind="PlaylistEdit" Width="25" Height="25"/>
-                    </components:ConciergeDesignButton>
                 </Grid>
                 
                 <Grid Grid.Column="2" Background="#FF191919" Margin="0,0,3,0">
@@ -235,13 +237,13 @@
                     <!--Head-->
                     <Grid 
                         Grid.Row="0"
-                        Background="#988CD0"
+                        Background="#2A6F97"
                         Margin="15">
                         <components:ConciergeDataGrid 
                             x:Name="HeadEquipmentDataGrid"
                             Tag="Head"
                             VerticalScrollBarVisibility="Hidden"
-                            Background="#17112E"
+                            Background="#001233"
                             Style="{DynamicResource StandardDataGridStyle}"
                             Margin="1"
                             SelectionChanged="EquipmentDataGrid_SelectionChanged"
@@ -264,13 +266,13 @@
                     <!--Hands-->
                     <Grid 
                         Grid.Row="1"
-                        Background="#988CD0"
+                        Background="#2A6F97"
                         Margin="15">
                         <components:ConciergeDataGrid 
                             x:Name="HandsEquipmentDataGrid"
                             Tag="Hands"
                             VerticalScrollBarVisibility="Hidden"
-                            Background="#17112E"
+                            Background="#001233"
                             Style="{DynamicResource StandardDataGridStyle}"
                             Margin="1"
                             SelectionChanged="EquipmentDataGrid_SelectionChanged"
@@ -293,13 +295,13 @@
                     <!--Feet-->
                     <Grid 
                         Grid.Row="2"
-                        Background="#988CD0"
+                        Background="#2A6F97"
                         Margin="15">
                         <components:ConciergeDataGrid 
                             x:Name="FeetEquipmentDataGrid"
                             Tag="Feet"
                             VerticalScrollBarVisibility="Hidden"
-                            Background="#17112E"
+                            Background="#001233"
                             Style="{DynamicResource StandardDataGridStyle}"
                             Margin="1"
                             SelectionChanged="EquipmentDataGrid_SelectionChanged"

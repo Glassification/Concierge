@@ -123,28 +123,16 @@ namespace Concierge.Interfaces
 
         public double ScaleValueX
         {
-            get
-            {
-                return (double)this.GetValue(ScaleValuePropertyX);
-            }
+            get => (double)this.GetValue(ScaleValuePropertyX);
 
-            set
-            {
-                this.SetValue(ScaleValuePropertyX, value);
-            }
+            set => this.SetValue(ScaleValuePropertyX, value);
         }
 
         public double ScaleValueY
         {
-            get
-            {
-                return (double)this.GetValue(ScaleValuePropertyY);
-            }
+            get => (double)this.GetValue(ScaleValuePropertyY);
 
-            set
-            {
-                this.SetValue(ScaleValuePropertyY, value);
-            }
+            set => this.SetValue(ScaleValuePropertyY, value);
         }
 
         private static bool IsControl => (Keyboard.Modifiers & ModifierKeys.Control) == ModifierKeys.Control;
@@ -312,12 +300,7 @@ namespace Concierge.Interfaces
 
         protected virtual double OnCoerceScaleValue(double value)
         {
-            if (double.IsNaN(value))
-            {
-                return 1.0d;
-            }
-
-            return Math.Max(0.1, value);
+            return double.IsNaN(value) ? 1.0d : Math.Max(0.1, value);
         }
 
         protected virtual void OnScaleValueChanged(double oldValue, double newValue)
@@ -326,26 +309,12 @@ namespace Concierge.Interfaces
 
         private static object OnCoerceScaleValueX(DependencyObject o, object value)
         {
-            if (o is MainWindow mainWindow)
-            {
-                return mainWindow.OnCoerceScaleValue((double)value);
-            }
-            else
-            {
-                return value;
-            }
+            return o is MainWindow mainWindow ? mainWindow.OnCoerceScaleValue((double)value) : value;
         }
 
         private static object OnCoerceScaleValueY(DependencyObject o, object value)
         {
-            if (o is MainWindow mainWindow)
-            {
-                return mainWindow.OnCoerceScaleValue((double)value);
-            }
-            else
-            {
-                return value;
-            }
+            return o is MainWindow mainWindow ? mainWindow.OnCoerceScaleValue((double)value) : value;
         }
 
         private static void OnScaleValueChanged(DependencyObject o, DependencyPropertyChangedEventArgs e)
@@ -482,7 +451,7 @@ namespace Concierge.Interfaces
                     this.OpenCharacterSheet();
                     break;
                 case Key.P:
-                    this.modifyPropertiesWindow.ShowWindow();
+                    this.modifyPropertiesWindow.ShowEdit();
                     this.DrawAll();
                     break;
                 case Key.Q:
@@ -609,7 +578,7 @@ namespace Concierge.Interfaces
             ConciergeSound.TapNavigation();
             Program.Logger.Info($"Open properties.");
 
-            this.modifyPropertiesWindow.ShowWindow();
+            this.modifyPropertiesWindow.ShowEdit();
             this.DrawAll();
 
             this.IgnoreSecondPress = true;

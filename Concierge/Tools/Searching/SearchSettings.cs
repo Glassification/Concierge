@@ -9,12 +9,8 @@ namespace Concierge.Tools.Searching
     public class SearchSettings
     {
         public SearchSettings()
+            : this(string.Empty, false, false, false, SearchDomain.CurrentPage)
         {
-            this.TextToSearch = string.Empty;
-            this.MatchCase = false;
-            this.MatchWholeWord = false;
-            this.UseRegex = false;
-            this.SearchDomain = SearchDomain.CurrentPage;
         }
 
         public SearchSettings(string textToSearch, bool matchCase, bool matchWholeWord, bool useRegex, SearchDomain searchDomain)

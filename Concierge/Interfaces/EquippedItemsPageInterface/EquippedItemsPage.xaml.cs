@@ -33,14 +33,6 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
             this.modifyCharacterImageWindow.ApplyChanges += this.Window_ApplyChanges;
         }
 
-        public static double EquippedItemsHeight => SystemParameters.PrimaryScreenHeight - 100;
-
-        public static double EquippedItemsWidth => SystemParameters.PrimaryScreenWidth;
-
-        public static double InnerEquippedItemsHeight => SystemParameters.PrimaryScreenHeight - 100 - 50;
-
-        public static double InnerEquippedItemsWidth => SystemParameters.PrimaryScreenWidth - 50;
-
         public ConciergePage ConciergePage => ConciergePage.EquippedItems;
 
         private Inventory SelectedItem { get; set; }

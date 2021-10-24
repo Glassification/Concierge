@@ -26,7 +26,7 @@
 
             <!--Header-->
             <Grid Grid.Row="0"
-                    Background="#0B061E"
+                    Background="#000917"
                     Margin="3, 3, 3, 0">
                 <TextBlock Text="Roll Dice"
                            Foreground="White"
@@ -74,7 +74,7 @@
 
                     <!--Header-->
                     <Grid Grid.Row="0"
-                          Background="#17112E"
+                          Background="#001233"
                           Margin="3, 3, 3, 0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="15*"/>
@@ -208,7 +208,7 @@
                                 Style="{StaticResource ConciergeDesignButtonStyle}" 
                                 x:Name="ButtonRollD4"
                                 Width="60"
-                                Foreground="#615299"
+                                Foreground="#0D77D7"
                                 ToolTip="Roll d4"
                                 Click="ButtonRoll_Click">
                                 <materialDesign:PackIcon Kind="DiceD4" Height="25" Width="25"/>
@@ -283,7 +283,7 @@
                                 Style="{StaticResource ConciergeDesignButtonStyle}" 
                                 x:Name="ButtonRollD6"
                                 Width="60"
-                                Foreground="#615299"
+                                Foreground="#0D77D7"
                                 ToolTip="Roll d6"
                                 Click="ButtonRoll_Click">
                                 <materialDesign:PackIcon Kind="DiceD6" Height="25" Width="25"/>
@@ -358,7 +358,7 @@
                                 Style="{StaticResource ConciergeDesignButtonStyle}" 
                                 x:Name="ButtonRollD8"
                                 Width="60"
-                                Foreground="#615299"
+                                Foreground="#0D77D7"
                                 ToolTip="Roll d8"
                                 Click="ButtonRoll_Click">
                                 <materialDesign:PackIcon Kind="DiceD8" Height="25" Width="25"/>
@@ -433,7 +433,7 @@
                                 Style="{StaticResource ConciergeDesignButtonStyle}" 
                                 x:Name="ButtonRollD10"
                                 Width="60"
-                                Foreground="#615299"
+                                Foreground="#0D77D7"
                                 ToolTip="Roll d10"
                                 Click="ButtonRoll_Click">
                                 <materialDesign:PackIcon Kind="DiceD10" Height="25" Width="25"/>
@@ -508,7 +508,7 @@
                                 Style="{StaticResource ConciergeDesignButtonStyle}" 
                                 x:Name="ButtonRollD100"
                                 Width="60"
-                                Foreground="#615299"
+                                Foreground="#0D77D7"
                                 ToolTip="Roll d100"
                                 Click="ButtonRoll_Click">
                                 <materialDesign:PackIcon Kind="DiceMultiple" Height="25" Width="25"/>
@@ -583,7 +583,7 @@
                                 Style="{StaticResource ConciergeDesignButtonStyle}" 
                                 x:Name="ButtonRollD12"
                                 Width="60"
-                                Foreground="#615299"
+                                Foreground="#0D77D7"
                                 ToolTip="Roll d12"
                                 Click="ButtonRoll_Click">
                                 <materialDesign:PackIcon Kind="DiceD12" Height="25" Width="25"/>
@@ -658,7 +658,7 @@
                                 Style="{StaticResource ConciergeDesignButtonStyle}" 
                                 x:Name="ButtonRollD20"
                                 Width="60"
-                                Foreground="#615299"
+                                Foreground="#0D77D7"
                                 ToolTip="Roll d20"
                                 Click="ButtonRoll_Click">
                                 <materialDesign:PackIcon Kind="DiceD20" Height="25" Width="25"/>
@@ -734,7 +734,7 @@
                                 Style="{StaticResource ConciergeDesignButtonStyle}" 
                                 x:Name="ButtonRollDx"
                                 Width="60"
-                                Foreground="#615299"
+                                Foreground="#0D77D7"
                                 ToolTip="Roll dx"
                                 Click="ButtonRoll_Click">
                                 <materialDesign:PackIcon Kind="DiceMultiple" Height="25" Width="25"/>
@@ -756,7 +756,7 @@
                       Margin="3">
                     <components:ConciergeDataGrid 
                         x:Name="RollDiceHistoryDataGrid"
-                        Background="#17112E"
+                        Background="#001233"
                         MaxHeight="{Binding Path=AbilitiesHeight}"
                         Style="{DynamicResource ToolsDataGridStyle}">
                         <DataGrid.Columns>
@@ -790,7 +790,7 @@
 
             <!--Header-->
             <Grid Grid.Row="0"
-                    Background="#0B061E"
+                    Background="#000917"
                     Margin="3, 3, 3, 0">
                 <TextBlock 
                     Text="Divide Loot"
@@ -835,7 +835,7 @@
 
             <!--Body-->
             <Grid Grid.Row="1"
-                  Background="#0B061E"
+                  Background="#000917"
                   Margin="3, 0, 3, 3">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="2*"/>
@@ -862,7 +862,7 @@
 
                         <!--Label-->
                         <Grid Grid.Column="0"
-                              Background="#161223"
+                              Background="#33415C"
                               Margin="3, 3, 0, 3">
                             <TextBlock 
                                 Text="Players"
@@ -1072,7 +1072,7 @@
                       Margin="3, 0, 3, 3">
                     <components:ConciergeDataGrid 
                         x:Name="DivideLootDataGrid"
-                        Background="#17112E"
+                        Background="#001233"
                         MaxHeight="{Binding Path=AbilitiesHeight}"
                         Style="{DynamicResource ToolsDataGridStyle}"
                         SelectionChanged="DivideLootDataGrid_SelectionChanged">
