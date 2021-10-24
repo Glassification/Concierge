@@ -137,7 +137,7 @@ namespace Concierge.Tools.Searching
             }
             else if (conciergePage is NotesPage)
             {
-                this.SearchList(this.Character.Chapters, conciergePage);
+                // this.SearchList(this.Character.Chapters, conciergePage);
             }
         }
 

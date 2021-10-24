@@ -39,14 +39,6 @@ namespace Concierge.Interfaces.CompanionPageInterface
             this.modifyPropertiesWindow.ApplyChanges += this.Window_ApplyChanges;
         }
 
-        public int HeartWidth => (int)this.HealthBox.RenderSize.Width;
-
-        public int HeartHeight => (int)this.HealthBox.RenderSize.Height;
-
-        public int ShieldWidth => (int)this.ArmorClassBox.RenderSize.Width;
-
-        public int ShieldHeight => (int)this.ArmorClassBox.RenderSize.Height;
-
         public ConciergePage ConciergePage => ConciergePage.Companion;
 
         public void Draw()
@@ -246,13 +238,13 @@ namespace Concierge.Interfaces.CompanionPageInterface
 
         private void TakeDamageButton_Click(object sender, RoutedEventArgs e)
         {
-            this.modifyHpWindow.ShowSubtract(Program.CcsFile.Character.Companion.Vitality);
+            this.modifyHpWindow.ShowDamage(Program.CcsFile.Character.Companion.Vitality);
             this.DrawHealth();
         }
 
         private void HealDamageButton_Click(object sender, RoutedEventArgs e)
         {
-            this.modifyHpWindow.ShowAdd(Program.CcsFile.Character.Companion.Vitality);
+            this.modifyHpWindow.ShowHeal(Program.CcsFile.Character.Companion.Vitality);
             this.DrawHealth();
         }
 

@@ -503,12 +503,11 @@
                    x:Name="ArmorClassBox">
                     <materialDesign:PackIcon 
                         Kind="Shield"
-                        FontStretch="Expanded"
                         Foreground="DimGray"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
-                        Width="{Binding Path=ShieldWidth}"
-                        Height="{Binding Path=ShieldHeight}"/>
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch"
+                        Height="auto"
+                        Width="auto"/>
                     <TextBlock 
                         x:Name="ArmorClassField"
                         Foreground="White"
@@ -696,12 +695,11 @@
                     x:Name="HealthBox">
                     <materialDesign:PackIcon 
                         Kind="Heart"
-                        FontStretch="Expanded"
                         Foreground="#ff780531"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
-                        Width="{Binding Path=HeartWidth}"
-                        Height="{Binding Path=HeartHeight}"/>
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch"
+                        Height="auto"
+                        Width="auto"/>
                     <TextBlock 
                         x:Name="CurrentHpField"
                         Foreground="White"

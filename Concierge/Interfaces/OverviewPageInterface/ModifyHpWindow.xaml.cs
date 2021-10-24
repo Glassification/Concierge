@@ -19,16 +19,28 @@ namespace Concierge.Interfaces.OverviewPageInterface
         public ModifyHpWindow()
         {
             this.InitializeComponent();
+            this.PreviousHeal = 0;
+            this.PreviousDamage = 0;
         }
+
+        private string HeaderText => this.IsHealing ? "Heal" : "Damage";
 
         private ConciergeWindowResult Result { get; set; }
 
-        public void ShowAdd(Vitality vitality)
+        private int PreviousHeal { get; set; }
+
+        private int PreviousDamage { get; set; }
+
+        private bool IsHealing { get; set; }
+
+        public void ShowHeal(Vitality vitality)
         {
-            this.HeaderTextBlock.Text = "Heal";
-            this.HpUpDown.Value = 0;
+            this.IsHealing = true;
+            this.HeaderTextBlock.Text = this.HeaderText;
+            this.HpUpDown.Value = this.PreviousHeal;
 
             this.ShowDialog();
+            this.SetPreviousValue();
 
             if (this.Result == ConciergeWindowResult.OK)
             {
@@ -36,12 +48,14 @@ namespace Concierge.Interfaces.OverviewPageInterface
             }
         }
 
-        public void ShowSubtract(Vitality vitality)
+        public void ShowDamage(Vitality vitality)
         {
-            this.HeaderTextBlock.Text = "Damage";
-            this.HpUpDown.Value = 0;
+            this.IsHealing = false;
+            this.HeaderTextBlock.Text = this.HeaderText;
+            this.HpUpDown.Value = this.PreviousDamage;
 
             this.ShowDialog();
+            this.SetPreviousValue();
 
             if (this.Result == ConciergeWindowResult.OK)
             {
@@ -55,6 +69,18 @@ namespace Concierge.Interfaces.OverviewPageInterface
             e.Cancel = true;
             this.Result = ConciergeWindowResult.Exit;
             this.Hide();
+        }
+
+        private void SetPreviousValue()
+        {
+            if (this.IsHealing)
+            {
+                this.PreviousHeal = this.HpUpDown.Value ?? 0;
+            }
+            else
+            {
+                this.PreviousDamage = this.HpUpDown.Value ?? 0;
+            }
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)

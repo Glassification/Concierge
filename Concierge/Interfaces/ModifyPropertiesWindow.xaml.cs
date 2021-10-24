@@ -117,7 +117,6 @@ namespace Concierge.Interfaces
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
-            Program.Logger.Info($"OK button click.");
             Program.Modify();
             this.Result = ConciergeWindowResult.OK;
 
@@ -127,7 +126,6 @@ namespace Concierge.Interfaces
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
-            Program.Logger.Info($"Apply button click.");
             Program.Modify();
 
             this.UpdateProperties();
@@ -136,7 +134,6 @@ namespace Concierge.Interfaces
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            Program.Logger.Info($"Cancel button click.");
             this.Result = ConciergeWindowResult.Cancel;
 
             this.Hide();
@@ -144,7 +141,6 @@ namespace Concierge.Interfaces
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            Program.Logger.Info($"Close button click.");
             this.Result = ConciergeWindowResult.Exit;
 
             this.Hide();
