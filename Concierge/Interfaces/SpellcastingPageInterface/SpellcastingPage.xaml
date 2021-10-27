@@ -284,16 +284,23 @@
                                         VerticalAlignment="Center"/>
                         </Grid>
                         <!--Used-->
-                        <Grid Grid.Row="2"
-                              Margin="3, 0, 3, 3"
-                              Background="#FF3e3e42"
-                              x:Name="UsedPactBox">
-                            <TextBlock x:Name="UsedPactField"
-                                        Foreground="White"
-                                        FontSize="25"
-                                        HorizontalAlignment="Center"
-                                        VerticalAlignment="Center"/>
-                        </Grid>
+                        <Border 
+                            Grid.Row="2"
+                            x:Name="UsedPactBorder"
+                            BorderBrush="#FF3e3e42"
+                            Margin="3, 0, 3, 0"
+                            BorderThickness="1">
+                            <Grid
+                                Background="#FF3e3e42"
+                                x:Name="UsedPactBox">
+                                <TextBlock 
+                                    x:Name="UsedPactField"
+                                    Foreground="White"
+                                    FontSize="25"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"/>
+                            </Grid>
+                        </Border>
                     </Grid>
 
                     <!--1st-->
@@ -328,16 +335,23 @@
                                         VerticalAlignment="Center"/>
                         </Grid>
                         <!--Used-->
-                        <Grid Grid.Row="2"
-                              Margin="3, 0, 3, 3"
-                              Background="#FF3e3e42"
-                              x:Name="UsedFirstBox">
-                            <TextBlock x:Name="UsedFirstField"
-                                        Foreground="White"
-                                        FontSize="25"
-                                        HorizontalAlignment="Center"
-                                        VerticalAlignment="Center"/>
-                        </Grid>
+                        <Border 
+                            Grid.Row="2"
+                            x:Name="UsedFirstBorder"
+                            BorderBrush="#FF3e3e42"
+                            Margin="3, 0, 3, 0"
+                            BorderThickness="1">
+                            <Grid
+                                Background="#FF3e3e42"
+                                x:Name="UsedFirstBox">
+                                <TextBlock 
+                                    x:Name="UsedFirstField"
+                                    Foreground="White"
+                                    FontSize="25"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"/>
+                            </Grid>
+                        </Border>
                     </Grid>
 
                     <!--2nd-->
@@ -372,16 +386,23 @@
                                         VerticalAlignment="Center"/>
                         </Grid>
                         <!--Used-->
-                        <Grid Grid.Row="2"
-                              Margin="3, 0, 3, 3"
-                              Background="#FF3e3e42"
-                              x:Name="UsedSecondBox">
-                            <TextBlock x:Name="UsedSecondField"
-                                        Foreground="White"
-                                        FontSize="25"
-                                        HorizontalAlignment="Center"
-                                        VerticalAlignment="Center"/>
-                        </Grid>
+                        <Border 
+                            Grid.Row="2"
+                            x:Name="UsedSecondBorder"
+                            BorderBrush="#FF3e3e42"
+                            Margin="3, 0, 3, 0"
+                            BorderThickness="1">
+                            <Grid
+                                Background="#FF3e3e42"
+                                x:Name="UsedSecondBox">
+                                <TextBlock 
+                                    x:Name="UsedSecondField"
+                                    Foreground="White"
+                                    FontSize="25"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"/>
+                            </Grid>
+                        </Border>
                     </Grid>
 
                     <!--3rd-->
@@ -416,16 +437,23 @@
                                         VerticalAlignment="Center"/>
                         </Grid>
                         <!--Used-->
-                        <Grid Grid.Row="2"
-                              Margin="3, 0, 3, 3"
-                              Background="#FF3e3e42"
-                              x:Name="UsedThirdBox">
-                            <TextBlock x:Name="UsedThirdField"
-                                        Foreground="White"
-                                        FontSize="25"
-                                        HorizontalAlignment="Center"
-                                        VerticalAlignment="Center"/>
-                        </Grid>
+                        <Border 
+                            Grid.Row="2"
+                            x:Name="UsedThirdBorder"
+                            BorderBrush="#FF3e3e42"
+                            Margin="3, 0, 3, 0"
+                            BorderThickness="1">
+                            <Grid
+                                Background="#FF3e3e42"
+                                x:Name="UsedThirdBox">
+                                <TextBlock 
+                                    x:Name="UsedThirdField"
+                                    Foreground="White"
+                                    FontSize="25"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"/>
+                            </Grid>
+                        </Border>
                     </Grid>
 
                     <!--4th-->
@@ -460,16 +488,23 @@
                                         VerticalAlignment="Center"/>
                         </Grid>
                         <!--Used-->
-                        <Grid Grid.Row="2"
-                              Margin="3, 0, 3, 3"
-                              Background="#FF3e3e42"
-                              x:Name="UsedFourthBox">
-                            <TextBlock x:Name="UsedFourthField"
-                                        Foreground="White"
-                                        FontSize="25"
-                                        HorizontalAlignment="Center"
-                                        VerticalAlignment="Center"/>
-                        </Grid>
+                        <Border 
+                            Grid.Row="2"
+                            x:Name="UsedFourthBorder"
+                            BorderBrush="#FF3e3e42"
+                            Margin="3, 0, 3, 0"
+                            BorderThickness="1">
+                            <Grid
+                                Background="#FF3e3e42"
+                                x:Name="UsedFourthBox">
+                                <TextBlock 
+                                    x:Name="UsedFourthField"
+                                    Foreground="White"
+                                    FontSize="25"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"/>
+                            </Grid>
+                        </Border>
                     </Grid>
 
                     <!--5th-->
@@ -504,16 +539,23 @@
                                         VerticalAlignment="Center"/>
                         </Grid>
                         <!--Used-->
-                        <Grid Grid.Row="2"
-                              Margin="3, 0, 3, 3"
-                              Background="#FF3e3e42"
-                              x:Name="UsedFifthBox">
-                            <TextBlock x:Name="UsedFifthField"
-                                        Foreground="White"
-                                        FontSize="25"
-                                        HorizontalAlignment="Center"
-                                        VerticalAlignment="Center"/>
-                        </Grid>
+                        <Border 
+                            Grid.Row="2"
+                            x:Name="UsedFifthBorder"
+                            BorderBrush="#FF3e3e42"
+                            Margin="3, 0, 3, 0"
+                            BorderThickness="1">
+                            <Grid
+                                Background="#FF3e3e42"
+                                x:Name="UsedFifthBox">
+                                <TextBlock 
+                                    x:Name="UsedFifthField"
+                                    Foreground="White"
+                                    FontSize="25"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"/>
+                            </Grid>
+                        </Border>
                     </Grid>
 
                     <!--6th-->
@@ -548,16 +590,23 @@
                                         VerticalAlignment="Center"/>
                         </Grid>
                         <!--Used-->
-                        <Grid Grid.Row="2"
-                              Margin="3, 0, 3, 3"
-                              Background="#FF3e3e42"
-                              x:Name="UsedSixthBox">
-                            <TextBlock x:Name="UsedSixthField"
-                                        Foreground="White"
-                                        FontSize="25"
-                                        HorizontalAlignment="Center"
-                                        VerticalAlignment="Center"/>
-                        </Grid>
+                        <Border 
+                            Grid.Row="2"
+                            x:Name="UsedSixthBorder"
+                            BorderBrush="#FF3e3e42"
+                            Margin="3, 0, 3, 0"
+                            BorderThickness="1">
+                            <Grid
+                                Background="#FF3e3e42"
+                                x:Name="UsedSixthBox">
+                                <TextBlock 
+                                    x:Name="UsedSixthField"
+                                    Foreground="White"
+                                    FontSize="25"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"/>
+                            </Grid>
+                        </Border>
                     </Grid>
 
                     <!--7th-->
@@ -592,16 +641,23 @@
                                         VerticalAlignment="Center"/>
                         </Grid>
                         <!--Used-->
-                        <Grid Grid.Row="2"
-                              Margin="3, 0, 3, 3"
-                              Background="#FF3e3e42"
-                              x:Name="UsedSeventhBox">
-                            <TextBlock x:Name="UsedSeventhField"
-                                        Foreground="White"
-                                        FontSize="25"
-                                        HorizontalAlignment="Center"
-                                        VerticalAlignment="Center"/>
-                        </Grid>
+                        <Border 
+                            Grid.Row="2"
+                            x:Name="UsedSeventhBorder"
+                            BorderBrush="#FF3e3e42"
+                            Margin="3, 0, 3, 0"
+                            BorderThickness="1">
+                            <Grid
+                                Background="#FF3e3e42"
+                                x:Name="UsedSeventhBox">
+                                <TextBlock 
+                                    x:Name="UsedSeventhField"
+                                    Foreground="White"
+                                    FontSize="25"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"/>
+                            </Grid>
+                        </Border>
                     </Grid>
 
                     <!--8th-->
@@ -636,16 +692,23 @@
                                         VerticalAlignment="Center"/>
                         </Grid>
                         <!--Used-->
-                        <Grid Grid.Row="2"
-                              Margin="3, 0, 3, 3"
-                              Background="#FF3e3e42"
-                              x:Name="UsedEighthBox">
-                            <TextBlock x:Name="UsedEighthField"
-                                        Foreground="White"
-                                        FontSize="25"
-                                        HorizontalAlignment="Center"
-                                        VerticalAlignment="Center"/>
-                        </Grid>
+                        <Border 
+                            Grid.Row="2"
+                            x:Name="UsedEighthBorder"
+                            BorderBrush="#FF3e3e42"
+                            Margin="3, 0, 3, 0"
+                            BorderThickness="1">
+                            <Grid
+                                Background="#FF3e3e42"
+                                x:Name="UsedEighthBox">
+                                <TextBlock 
+                                    x:Name="UsedEighthField"
+                                    Foreground="White"
+                                    FontSize="25"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"/>
+                            </Grid>
+                        </Border>
                     </Grid>
 
                     <!--9th-->
@@ -680,16 +743,23 @@
                                         VerticalAlignment="Center"/>
                         </Grid>
                         <!--Used-->
-                        <Grid Grid.Row="2"
-                              Margin="3, 0, 3, 3"
-                              Background="#FF3e3e42"
-                              x:Name="UsedNinethBox">
-                            <TextBlock x:Name="UsedNinethField"
-                                        Foreground="White"
-                                        FontSize="25"
-                                        HorizontalAlignment="Center"
-                                        VerticalAlignment="Center"/>
-                        </Grid>
+                        <Border 
+                            Grid.Row="2"
+                            x:Name="UsedNinethBorder"
+                            BorderBrush="#FF3e3e42"
+                            Margin="3, 0, 3, 0"
+                            BorderThickness="1">
+                            <Grid
+                                Background="#FF3e3e42"
+                                x:Name="UsedNinethBox">
+                                <TextBlock 
+                                    x:Name="UsedNinethField"
+                                    Foreground="White"
+                                    FontSize="25"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"/>
+                            </Grid>
+                        </Border>
                     </Grid>
                 </Grid>
             </Grid>

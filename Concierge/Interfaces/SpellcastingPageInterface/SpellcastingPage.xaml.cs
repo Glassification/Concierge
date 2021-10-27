@@ -44,11 +44,15 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
             this.InitializeUsedSlot(this.UsedSeventhBox);
             this.InitializeUsedSlot(this.UsedEighthBox);
             this.InitializeUsedSlot(this.UsedNinethBox);
+
+            this.CurrentSpellBox = string.Empty;
         }
 
         private delegate void DrawList();
 
         public ConciergePage ConciergePage => ConciergePage.Spellcasting;
+
+        private string CurrentSpellBox { get; set; }
 
         public void Draw()
         {
@@ -65,13 +69,6 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
             totalBox.Background = Utilities.SetTotalBoxStyle(totalSpells, usedSpells);
         }
 
-        private static void FillUsedSpellSlot(TextBlock usedField, Grid usedBox, int usedSpells, int totalSpells)
-        {
-            usedField.Text = usedSpells.ToString();
-            usedField.Foreground = Utilities.SetUsedTextStyle(totalSpells, usedSpells);
-            usedBox.Background = Utilities.SetUsedBoxStyle(totalSpells, usedSpells);
-        }
-
         private static bool NextItem<T>(ConciergeDataGrid dataGrid, DrawList drawList, List<T> list, int limit, int increment)
         {
             var index = dataGrid.NextItem(list, limit, increment);
@@ -86,6 +83,14 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
             }
 
             return false;
+        }
+
+        private void FillUsedSpellSlot(TextBlock usedField, Grid usedBox, Border border, int usedSpells, int totalSpells)
+        {
+            usedField.Text = usedSpells.ToString();
+            usedField.Foreground = Utilities.SetUsedTextStyle(totalSpells, usedSpells);
+            usedBox.Background = Utilities.SetUsedBoxStyle(totalSpells, usedSpells);
+            Utilities.SetBorderColour(usedSpells, totalSpells, usedBox, border, this.CurrentSpellBox);
         }
 
         private void DrawTotalSpellSlots()
@@ -108,16 +113,16 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
         {
             var spellSlots = Program.CcsFile.Character.SpellSlots;
 
-            FillUsedSpellSlot(this.UsedPactField, this.UsedPactBox, spellSlots.PactUsed, spellSlots.PactTotal);
-            FillUsedSpellSlot(this.UsedFirstField, this.UsedFirstBox, spellSlots.FirstUsed, spellSlots.FirstTotal);
-            FillUsedSpellSlot(this.UsedSecondField, this.UsedSecondBox, spellSlots.SecondUsed, spellSlots.SecondTotal);
-            FillUsedSpellSlot(this.UsedThirdField, this.UsedThirdBox, spellSlots.ThirdUsed, spellSlots.ThirdTotal);
-            FillUsedSpellSlot(this.UsedFourthField, this.UsedFourthBox, spellSlots.FourthUsed, spellSlots.FourthTotal);
-            FillUsedSpellSlot(this.UsedFifthField, this.UsedFifthBox, spellSlots.FifthUsed, spellSlots.FifthTotal);
-            FillUsedSpellSlot(this.UsedSixthField, this.UsedSixthBox, spellSlots.SixthUsed, spellSlots.SixthTotal);
-            FillUsedSpellSlot(this.UsedSeventhField, this.UsedSeventhBox, spellSlots.SeventhUsed, spellSlots.SeventhTotal);
-            FillUsedSpellSlot(this.UsedEighthField, this.UsedEighthBox, spellSlots.EighthUsed, spellSlots.EighthTotal);
-            FillUsedSpellSlot(this.UsedNinethField, this.UsedNinethBox, spellSlots.NinethUsed, spellSlots.NinethTotal);
+            this.FillUsedSpellSlot(this.UsedPactField, this.UsedPactBox, this.UsedPactBorder, spellSlots.PactUsed, spellSlots.PactTotal);
+            this.FillUsedSpellSlot(this.UsedFirstField, this.UsedFirstBox, this.UsedFirstBorder, spellSlots.FirstUsed, spellSlots.FirstTotal);
+            this.FillUsedSpellSlot(this.UsedSecondField, this.UsedSecondBox, this.UsedSecondBorder, spellSlots.SecondUsed, spellSlots.SecondTotal);
+            this.FillUsedSpellSlot(this.UsedThirdField, this.UsedThirdBox, this.UsedThirdBorder, spellSlots.ThirdUsed, spellSlots.ThirdTotal);
+            this.FillUsedSpellSlot(this.UsedFourthField, this.UsedFourthBox, this.UsedFourthBorder, spellSlots.FourthUsed, spellSlots.FourthTotal);
+            this.FillUsedSpellSlot(this.UsedFifthField, this.UsedFifthBox, this.UsedFifthBorder, spellSlots.FifthUsed, spellSlots.FifthTotal);
+            this.FillUsedSpellSlot(this.UsedSixthField, this.UsedSixthBox, this.UsedSixthBorder, spellSlots.SixthUsed, spellSlots.SixthTotal);
+            this.FillUsedSpellSlot(this.UsedSeventhField, this.UsedSeventhBox, this.UsedSeventhBorder, spellSlots.SeventhUsed, spellSlots.SeventhTotal);
+            this.FillUsedSpellSlot(this.UsedEighthField, this.UsedEighthBox, this.UsedEighthBorder, spellSlots.EighthUsed, spellSlots.EighthTotal);
+            this.FillUsedSpellSlot(this.UsedNinethField, this.UsedNinethBox, this.UsedNinethBorder, spellSlots.NinethUsed, spellSlots.NinethTotal);
         }
 
         private void DrawSpellList()
@@ -315,45 +320,96 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
 
         private void UsedSlot_MouseEnter(object sender, MouseEventArgs e)
         {
+            var grid = sender as Grid;
             var spellSlots = Program.CcsFile.Character.SpellSlots;
-            switch ((sender as Grid).Name)
+
+            this.CurrentSpellBox = grid.Name;
+
+            switch (grid.Name)
             {
                 case "UsedPactBox":
                     Utilities.SetCursor(spellSlots.PactUsed, spellSlots.PactTotal, (x, y) => x != y, Cursors.Hand);
+                    Utilities.SetBorderColour(spellSlots.PactUsed, spellSlots.PactTotal, grid, this.UsedPactBorder, this.CurrentSpellBox);
                     break;
                 case "UsedFirstBox":
                     Utilities.SetCursor(spellSlots.FirstUsed, spellSlots.FirstTotal, (x, y) => x != y, Cursors.Hand);
+                    Utilities.SetBorderColour(spellSlots.FirstUsed, spellSlots.FirstTotal, grid, this.UsedFirstBorder, this.CurrentSpellBox);
                     break;
                 case "UsedSecondBox":
                     Utilities.SetCursor(spellSlots.SecondUsed, spellSlots.SecondTotal, (x, y) => x != y, Cursors.Hand);
+                    Utilities.SetBorderColour(spellSlots.SecondUsed, spellSlots.SecondTotal, grid, this.UsedSecondBorder, this.CurrentSpellBox);
                     break;
                 case "UsedThirdBox":
                     Utilities.SetCursor(spellSlots.ThirdUsed, spellSlots.ThirdTotal, (x, y) => x != y, Cursors.Hand);
+                    Utilities.SetBorderColour(spellSlots.ThirdUsed, spellSlots.ThirdTotal, grid, this.UsedThirdBorder, this.CurrentSpellBox);
                     break;
                 case "UsedFourthBox":
                     Utilities.SetCursor(spellSlots.FourthUsed, spellSlots.FourthTotal, (x, y) => x != y, Cursors.Hand);
+                    Utilities.SetBorderColour(spellSlots.FourthUsed, spellSlots.FourthTotal, grid, this.UsedFourthBorder, this.CurrentSpellBox);
                     break;
                 case "UsedFifthBox":
                     Utilities.SetCursor(spellSlots.FifthUsed, spellSlots.FifthTotal, (x, y) => x != y, Cursors.Hand);
+                    Utilities.SetBorderColour(spellSlots.FifthUsed, spellSlots.FifthTotal, grid, this.UsedFifthBorder, this.CurrentSpellBox);
                     break;
                 case "UsedSixthBox":
                     Utilities.SetCursor(spellSlots.SixthUsed, spellSlots.SixthTotal, (x, y) => x != y, Cursors.Hand);
+                    Utilities.SetBorderColour(spellSlots.SixthUsed, spellSlots.SixthTotal, grid, this.UsedSixthBorder, this.CurrentSpellBox);
                     break;
                 case "UsedSeventhBox":
                     Utilities.SetCursor(spellSlots.SeventhUsed, spellSlots.SeventhTotal, (x, y) => x != y, Cursors.Hand);
+                    Utilities.SetBorderColour(spellSlots.SeventhUsed, spellSlots.SeventhTotal, grid, this.UsedSeventhBorder, this.CurrentSpellBox);
                     break;
                 case "UsedEighthBox":
                     Utilities.SetCursor(spellSlots.EighthUsed, spellSlots.EighthTotal, (x, y) => x != y, Cursors.Hand);
+                    Utilities.SetBorderColour(spellSlots.EighthUsed, spellSlots.EighthTotal, grid, this.UsedEighthBorder, this.CurrentSpellBox);
                     break;
                 case "UsedNinethBox":
                     Utilities.SetCursor(spellSlots.NinethUsed, spellSlots.NinethTotal, (x, y) => x != y, Cursors.Hand);
+                    Utilities.SetBorderColour(spellSlots.NinethUsed, spellSlots.NinethTotal, grid, this.UsedNinethBorder, this.CurrentSpellBox);
                     break;
             }
         }
 
         private void UsedSlot_MouseLeave(object sender, MouseEventArgs e)
         {
+            var grid = sender as Grid;
+
+            switch (grid.Name)
+            {
+                case "UsedPactBox":
+                    this.UsedPactBorder.BorderBrush = grid.Background;
+                    break;
+                case "UsedFirstBox":
+                    this.UsedFirstBorder.BorderBrush = grid.Background;
+                    break;
+                case "UsedSecondBox":
+                    this.UsedSecondBorder.BorderBrush = grid.Background;
+                    break;
+                case "UsedThirdBox":
+                    this.UsedThirdBorder.BorderBrush = grid.Background;
+                    break;
+                case "UsedFourthBox":
+                    this.UsedFourthBorder.BorderBrush = grid.Background;
+                    break;
+                case "UsedFifthBox":
+                    this.UsedFifthBorder.BorderBrush = grid.Background;
+                    break;
+                case "UsedSixthBox":
+                    this.UsedSixthBorder.BorderBrush = grid.Background;
+                    break;
+                case "UsedSeventhBox":
+                    this.UsedSeventhBorder.BorderBrush = grid.Background;
+                    break;
+                case "UsedEighthBox":
+                    this.UsedEighthBorder.BorderBrush = grid.Background;
+                    break;
+                case "UsedNinethBox":
+                    this.UsedNinethBorder.BorderBrush = grid.Background;
+                    break;
+            }
+
             Mouse.OverrideCursor = Cursors.Arrow;
+            this.CurrentSpellBox = string.Empty;
         }
 
         private void SpellListDataGrid_Sorted(object sender, RoutedEventArgs e)

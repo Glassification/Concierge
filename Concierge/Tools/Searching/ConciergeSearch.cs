@@ -29,6 +29,7 @@ namespace Concierge.Tools.Searching
         {
             this.MainWindow = mainWindow;
             this.Results = new List<SearchResult>();
+            this.SearchSettings = new SearchSettings();
         }
 
         public SearchSettings SearchSettings { get; private set; }
