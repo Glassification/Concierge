@@ -174,6 +174,14 @@ namespace Concierge.Utility
             }
         }
 
+        public static void SetBorderColour(int spent, int total, Grid grid, Border border, string currentName)
+        {
+            border.BorderBrush =
+                spent != total && currentName.Equals(grid.Name)
+                ? Colours.RectangleBorderHighlight
+                : grid.Background;
+        }
+
         public static T GetPropertyValue<T>(object source, string propertyName)
         {
             return (T)source.GetType().GetProperty(propertyName).GetValue(source, null);

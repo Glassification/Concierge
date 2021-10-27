@@ -503,7 +503,7 @@
                    x:Name="ArmorClassBox">
                     <materialDesign:PackIcon 
                         Kind="Shield"
-                        Foreground="DimGray"
+                        Foreground="Gray"
                         HorizontalAlignment="Stretch"
                         VerticalAlignment="Stretch"
                         Height="auto"
@@ -695,22 +695,22 @@
                     x:Name="HealthBox">
                     <materialDesign:PackIcon 
                         Kind="Heart"
-                        Foreground="#ff780531"
+                        x:Name="HpBackground"
                         HorizontalAlignment="Stretch"
                         VerticalAlignment="Stretch"
                         Height="auto"
                         Width="auto"/>
                     <TextBlock 
                         x:Name="CurrentHpField"
-                        Foreground="White"
+                        Foreground="Black"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
-                        FontSize="55"
+                        FontSize="65"
                         FontWeight="Bold"/>
                     <TextBlock 
                         x:Name="TotalHpField"
                         Foreground="White"
-                        FontSize="23"
+                        FontSize="33"
                         HorizontalAlignment="Right"
                         VerticalAlignment="Bottom"
                         FontWeight="Bold"
@@ -719,25 +719,27 @@
                     <components:ConciergeDesignButton 
                         Style="{StaticResource ConciergeDesignButtonStyle}" 
                         x:Name="TakeDamageButton"
+                        Height="35"
                         Width="35"
                         HorizontalAlignment="Right"
                         VerticalAlignment="Top"
                         Foreground="IndianRed"
                         Click="TakeDamageButton_Click"
                         ToolTip="Take Damage">
-                        <materialDesign:PackIcon Kind="HeartBroken" Width="25" Height="25"/>
+                        <materialDesign:PackIcon Kind="HeartMinus" Width="25" Height="25"/>
                     </components:ConciergeDesignButton>
 
                     <components:ConciergeDesignButton 
                         Style="{StaticResource ConciergeDesignButtonStyle}" 
                         x:Name="HealDamageButton"
                         Width="35"
+                        Height="35"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Top"
                         Foreground="PaleGreen"
                         Click="HealDamageButton_Click"
                         ToolTip="Heal Damage">
-                        <materialDesign:PackIcon Kind="Heart" Width="25" Height="25"/>
+                        <materialDesign:PackIcon Kind="HeartPlus" Width="25" Height="25"/>
                     </components:ConciergeDesignButton>
                 </Grid>
 
@@ -861,21 +863,26 @@
                         </Grid>
 
                         <!--Spent-->
-                        <Grid 
+                        <Border 
                             Grid.Row="2"
+                            x:Name="D6Border"
+                            BorderBrush="#FF3e3e42"
                             Margin="3, 0, 3, 0"
-                            Background="#FF3e3e42"
-                            x:Name="D6SpentBox"
-                            MouseDown="SpentBox_MouseDown"
-                            MouseEnter="SpentBox_MouseEnter"
-                            MouseLeave="SpentBox_MouseLeave">
-                            <TextBlock 
-                                x:Name="D6SpentField"
-                                Foreground="White"
-                                FontSize="30"
-                                HorizontalAlignment="Center"
-                                VerticalAlignment="Center"/>
-                        </Grid>
+                            BorderThickness="1">
+                            <Grid 
+                                Background="#FF3e3e42"
+                                x:Name="D6SpentBox"
+                                MouseDown="SpentBox_MouseDown"
+                                MouseEnter="SpentBox_MouseEnter"
+                                MouseLeave="SpentBox_MouseLeave">
+                                    <TextBlock 
+                                        x:Name="D6SpentField"
+                                        Foreground="White"
+                                        FontSize="30"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"/>
+                            </Grid>
+                        </Border>
                     </Grid>
 
                     <!--D8-->
@@ -911,19 +918,26 @@
                         </Grid>
 
                         <!--Spent-->
-                        <Grid Grid.Row="2"
-                                      Margin="3, 0, 3, 0"
-                                      Background="#FF3e3e42"
-                                      x:Name="D8SpentBox"
-                                      MouseDown="SpentBox_MouseDown"
-                                      MouseEnter="SpentBox_MouseEnter"
-                                      MouseLeave="SpentBox_MouseLeave">
-                            <TextBlock x:Name="D8SpentField"
-                                               Foreground="White"
-                                               FontSize="30"
-                                               HorizontalAlignment="Center"
-                                               VerticalAlignment="Center"/>
-                        </Grid>
+                        <Border 
+                            Grid.Row="2"
+                            x:Name="D8Border"
+                            BorderBrush="#FF3e3e42"
+                            Margin="3, 0, 3, 0"
+                            BorderThickness="1">
+                            <Grid
+                                Background="#FF3e3e42"
+                                x:Name="D8SpentBox"
+                                MouseDown="SpentBox_MouseDown"
+                                MouseEnter="SpentBox_MouseEnter"
+                                MouseLeave="SpentBox_MouseLeave">
+                                <TextBlock 
+                                    x:Name="D8SpentField"
+                                    Foreground="White"
+                                    FontSize="30"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"/>
+                            </Grid>
+                        </Border>
                     </Grid>
 
                     <!--D10-->
@@ -959,19 +973,26 @@
                         </Grid>
 
                         <!--Spent-->
-                        <Grid Grid.Row="2"
-                                      Margin="3, 0, 3, 0"
-                                      Background="#FF3e3e42"
-                                      x:Name="D10SpentBox"
-                                      MouseDown="SpentBox_MouseDown"
-                                      MouseEnter="SpentBox_MouseEnter"
-                                      MouseLeave="SpentBox_MouseLeave">
-                            <TextBlock x:Name="D10SpentField"
-                                               Foreground="White"
-                                               FontSize="30"
-                                               HorizontalAlignment="Center"
-                                               VerticalAlignment="Center"/>
-                        </Grid>
+                        <Border 
+                            Grid.Row="2"
+                            x:Name="D10Border"
+                            BorderBrush="#FF3e3e42"
+                            Margin="3, 0, 3, 0"
+                            BorderThickness="1">
+                            <Grid
+                                Background="#FF3e3e42"
+                                x:Name="D10SpentBox"
+                                MouseDown="SpentBox_MouseDown"
+                                MouseEnter="SpentBox_MouseEnter"
+                                MouseLeave="SpentBox_MouseLeave">
+                                <TextBlock 
+                                    x:Name="D10SpentField"
+                                    Foreground="White"
+                                    FontSize="30"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"/>
+                            </Grid>
+                        </Border>
                     </Grid>
 
                     <!--D12-->
@@ -1007,19 +1028,26 @@
                         </Grid>
 
                         <!--Spent-->
-                        <Grid Grid.Row="2"
-                                      Margin="3, 0, 3, 0"
-                                      Background="#FF3e3e42"
-                                      x:Name="D12SpentBox"
-                                      MouseDown="SpentBox_MouseDown"
-                                      MouseEnter="SpentBox_MouseEnter"
-                                      MouseLeave="SpentBox_MouseLeave">
-                            <TextBlock x:Name="D12SpentField"
-                                               Foreground="White"
-                                               FontSize="30"
-                                               HorizontalAlignment="Center"
-                                               VerticalAlignment="Center"/>
-                        </Grid>
+                        <Border 
+                            Grid.Row="2"
+                            x:Name="D12Border"
+                            BorderBrush="#FF3e3e42"
+                            Margin="3, 0, 3, 0"
+                            BorderThickness="1">
+                            <Grid 
+                                Background="#FF3e3e42"
+                                x:Name="D12SpentBox"
+                                MouseDown="SpentBox_MouseDown"
+                                MouseEnter="SpentBox_MouseEnter"
+                                MouseLeave="SpentBox_MouseLeave">
+                                <TextBlock 
+                                    x:Name="D12SpentField"
+                                    Foreground="White"
+                                    FontSize="30"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"/>
+                            </Grid>
+                        </Border>
                     </Grid>
                 </Grid>
             </Grid>

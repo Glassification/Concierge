@@ -26,7 +26,7 @@ namespace Concierge.Utility
             Highlight = new SolidColorBrush(Color.FromArgb(255, 28, 57, 71));
             FailedSaveBrush = GenerateGradientBrush(FailedDarkRed, FailedLightRed, new Point(0.5, 0), new Point(0.5, 1));
             SucceededSaveBrush = GenerateGradientBrush(SucceededDarkGreen, SucceededLightGreen, new Point(0.5, 0), new Point(0.5, 1));
-            ProficiencyBrush = GenerateGradientBrush(ProficiencyDarkPurple, ProficiencyLightPurple, new Point(0, 0), new Point(1, 1));
+            ProficiencyBrush = GenerateGradientBrush(ProficiencyDarkBlue, ProficiencyLightBlue, new Point(0, 0), new Point(1, 1));
         }
 
         public static LinearGradientBrush FailedSaveBrush { get; }
@@ -65,9 +65,9 @@ namespace Concierge.Utility
 
         public static Color SucceededDarkGreen => Color.FromArgb(255, 123, 216, 96);
 
-        public static Color ProficiencyLightPurple => Color.FromArgb(255, 0, 18, 51);
+        public static Color ProficiencyLightBlue => Color.FromArgb(255, 0, 18, 51);
 
-        public static Color ProficiencyDarkPurple => Color.FromArgb(255, 0, 9, 23);
+        public static Color ProficiencyDarkBlue => Color.FromArgb(255, 0, 9, 23);
 
         public static HsvColour ToHsv(Color color)
         {

@@ -257,6 +257,11 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
 
         private void UsedSlot_MouseDown(object sender, MouseButtonEventArgs e)
         {
+            if (e.ClickCount != 2)
+            {
+                return;
+            }
+
             var spellSlots = Program.CcsFile.Character.SpellSlots;
             var usedBox = sender as Grid;
 

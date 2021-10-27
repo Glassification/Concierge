@@ -5,7 +5,7 @@
     <TargetFramework>net5.0-windows</TargetFramework>
     <RootNamespace>Concierge</RootNamespace>
     <UseWPF>true</UseWPF>
-    <Version>3.8.6</Version>
+    <Version>3.8.9</Version>
     <ApplicationIcon>dndnextlogo.ico</ApplicationIcon>
   </PropertyGroup>
 
@@ -19,7 +19,7 @@
 
   <ItemGroup>
     <PackageReference Include="Extended.Wpf.Toolkit" Version="4.1.0" />
-    <PackageReference Include="MaterialDesignThemes" Version="4.1.0" />
+    <PackageReference Include="MaterialDesignThemes" Version="4.2.1" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
       <PrivateAssets>all</PrivateAssets>

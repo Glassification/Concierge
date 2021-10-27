@@ -37,9 +37,13 @@ namespace Concierge.Interfaces.CompanionPageInterface
             this.modifyHitDiceWindow.ApplyChanges += this.Window_ApplyChanges;
             this.modifyAttackWindow.ApplyChanges += this.Window_ApplyChanges;
             this.modifyPropertiesWindow.ApplyChanges += this.Window_ApplyChanges;
+
+            this.CurrentHitDiceBox = string.Empty;
         }
 
         public ConciergePage ConciergePage => ConciergePage.Companion;
+
+        private string CurrentHitDiceBox { get; set; }
 
         public void Draw()
         {
@@ -48,14 +52,6 @@ namespace Concierge.Interfaces.CompanionPageInterface
             this.DrawHealth();
             this.DrawHitDice();
             this.DrawAttacks();
-        }
-
-        private static void SetCursor(int spent, int total, Func<int, int, bool> func, Cursor cursor)
-        {
-            if (func(spent, total))
-            {
-                Mouse.OverrideCursor = cursor;
-            }
         }
 
         private static Brush SetHealthStyle()
@@ -101,7 +97,7 @@ namespace Concierge.Interfaces.CompanionPageInterface
             this.CurrentHpField.Text = Program.CcsFile.Character.Companion.Vitality.CurrentHealth.ToString();
             this.TotalHpField.Text = "/" + Program.CcsFile.Character.Companion.Vitality.MaxHealth.ToString();
 
-            this.CurrentHpField.Foreground = SetHealthStyle();
+            this.HpBackground.Foreground = SetHealthStyle();
             this.TotalHpField.Foreground = SetHealthStyle();
         }
 
@@ -115,6 +111,7 @@ namespace Concierge.Interfaces.CompanionPageInterface
             this.D6SpentField.Text = hitDice.SpentD6.ToString();
             this.D6SpentField.Foreground = Utilities.SetUsedTextStyle(hitDice.TotalD6, hitDice.SpentD6);
             this.D6SpentBox.Background = Utilities.SetUsedBoxStyle(hitDice.TotalD6, hitDice.SpentD6);
+            Utilities.SetBorderColour(hitDice.SpentD6, hitDice.TotalD6, this.D6SpentBox, this.D6Border, this.CurrentHitDiceBox);
 
             this.D8TotalField.Text = hitDice.TotalD8.ToString();
             this.D8TotalField.Foreground = Utilities.SetTotalTextStyle(hitDice.TotalD8, hitDice.SpentD8);
@@ -122,6 +119,7 @@ namespace Concierge.Interfaces.CompanionPageInterface
             this.D8SpentField.Foreground = Utilities.SetUsedTextStyle(hitDice.TotalD8, hitDice.SpentD8);
             this.D8SpentBox.Background = Utilities.SetUsedBoxStyle(hitDice.TotalD8, hitDice.SpentD8);
             this.D8TotalBox.Background = Utilities.SetTotalBoxStyle(hitDice.TotalD8, hitDice.SpentD8);
+            Utilities.SetBorderColour(hitDice.SpentD8, hitDice.TotalD8, this.D8SpentBox, this.D8Border, this.CurrentHitDiceBox);
 
             this.D10TotalField.Text = hitDice.TotalD10.ToString();
             this.D10TotalField.Foreground = Utilities.SetTotalTextStyle(hitDice.TotalD10, hitDice.SpentD10);
@@ -129,6 +127,7 @@ namespace Concierge.Interfaces.CompanionPageInterface
             this.D10SpentField.Foreground = Utilities.SetUsedTextStyle(hitDice.TotalD10, hitDice.SpentD10);
             this.D10SpentBox.Background = Utilities.SetUsedBoxStyle(hitDice.TotalD10, hitDice.SpentD10);
             this.D10TotalBox.Background = Utilities.SetTotalBoxStyle(hitDice.TotalD10, hitDice.SpentD10);
+            Utilities.SetBorderColour(hitDice.SpentD10, hitDice.TotalD10, this.D10SpentBox, this.D10Border, this.CurrentHitDiceBox);
 
             this.D12TotalField.Text = hitDice.TotalD12.ToString();
             this.D12TotalField.Foreground = Utilities.SetTotalTextStyle(hitDice.TotalD12, hitDice.SpentD12);
@@ -136,6 +135,7 @@ namespace Concierge.Interfaces.CompanionPageInterface
             this.D12SpentField.Foreground = Utilities.SetUsedTextStyle(hitDice.TotalD12, hitDice.SpentD12);
             this.D12SpentBox.Background = Utilities.SetUsedBoxStyle(hitDice.TotalD12, hitDice.SpentD12);
             this.D12TotalBox.Background = Utilities.SetTotalBoxStyle(hitDice.TotalD12, hitDice.SpentD12);
+            Utilities.SetBorderColour(hitDice.SpentD12, hitDice.TotalD12, this.D12SpentBox, this.D12Border, this.CurrentHitDiceBox);
         }
 
         private void DrawAttacks()
@@ -256,6 +256,11 @@ namespace Concierge.Interfaces.CompanionPageInterface
 
         private void SpentBox_MouseDown(object sender, MouseButtonEventArgs e)
         {
+            if (e.ClickCount != 2)
+            {
+                return;
+            }
+
             var hitDice = Program.CcsFile.Character.Companion.Vitality.HitDice;
             switch ((sender as Grid).Name)
             {
@@ -286,22 +291,47 @@ namespace Concierge.Interfaces.CompanionPageInterface
             switch ((sender as Grid).Name)
             {
                 case "D6SpentBox":
-                    SetCursor(hitDice.SpentD6, hitDice.TotalD6, (x, y) => x != y, Cursors.Hand);
+                    this.CurrentHitDiceBox = this.D6SpentBox.Name;
+                    Utilities.SetCursor(hitDice.SpentD6, hitDice.TotalD6, (x, y) => x != y, Cursors.Hand);
+                    Utilities.SetBorderColour(hitDice.SpentD6, hitDice.TotalD6, this.D6SpentBox, this.D6Border, this.CurrentHitDiceBox);
                     break;
                 case "D8SpentBox":
-                    SetCursor(hitDice.SpentD8, hitDice.TotalD8, (x, y) => x != y, Cursors.Hand);
+                    this.CurrentHitDiceBox = this.D8SpentBox.Name;
+                    Utilities.SetCursor(hitDice.SpentD8, hitDice.TotalD8, (x, y) => x != y, Cursors.Hand);
+                    Utilities.SetBorderColour(hitDice.SpentD8, hitDice.TotalD8, this.D8SpentBox, this.D8Border, this.CurrentHitDiceBox);
                     break;
                 case "D10SpentBox":
-                    SetCursor(hitDice.SpentD10, hitDice.TotalD10, (x, y) => x != y, Cursors.Hand);
+                    this.CurrentHitDiceBox = this.D10SpentBox.Name;
+                    Utilities.SetCursor(hitDice.SpentD10, hitDice.TotalD10, (x, y) => x != y, Cursors.Hand);
+                    Utilities.SetBorderColour(hitDice.SpentD10, hitDice.TotalD10, this.D10SpentBox, this.D10Border, this.CurrentHitDiceBox);
                     break;
                 case "D12SpentBox":
-                    SetCursor(hitDice.SpentD12, hitDice.TotalD12, (x, y) => x != y, Cursors.Hand);
+                    this.CurrentHitDiceBox = this.D12SpentBox.Name;
+                    Utilities.SetCursor(hitDice.SpentD12, hitDice.TotalD12, (x, y) => x != y, Cursors.Hand);
+                    Utilities.SetBorderColour(hitDice.SpentD12, hitDice.TotalD12, this.D12SpentBox, this.D12Border, this.CurrentHitDiceBox);
                     break;
             }
         }
 
         private void SpentBox_MouseLeave(object sender, MouseEventArgs e)
         {
+            switch ((sender as Grid).Name)
+            {
+                case "D6SpentBox":
+                    this.D6Border.BorderBrush = this.D6SpentBox.Background;
+                    break;
+                case "D8SpentBox":
+                    this.D8Border.BorderBrush = this.D8SpentBox.Background;
+                    break;
+                case "D10SpentBox":
+                    this.D10Border.BorderBrush = this.D10SpentBox.Background;
+                    break;
+                case "D12SpentBox":
+                    this.D12Border.BorderBrush = this.D12SpentBox.Background;
+                    break;
+            }
+
+            this.CurrentHitDiceBox = string.Empty;
             Mouse.OverrideCursor = Cursors.Arrow;
         }
 
