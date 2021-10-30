@@ -54,6 +54,12 @@ namespace Concierge.Interfaces.CompanionPageInterface
             this.DrawAttacks();
         }
 
+        public void Edit(object itemToEdit)
+        {
+            this.modifyAttackWindow.ShowEdit(itemToEdit as Weapon);
+            this.DrawAttacks();
+        }
+
         private static Brush SetHealthStyle()
         {
             int third = Program.CcsFile.Character.Companion.Vitality.MaxHealth / 3;
@@ -205,8 +211,7 @@ namespace Concierge.Interfaces.CompanionPageInterface
         {
             if (this.WeaponDataGrid.SelectedItem != null)
             {
-                this.modifyAttackWindow.ShowEdit(this.WeaponDataGrid.SelectedItem as Weapon);
-                this.DrawAttacks();
+                this.Edit(this.WeaponDataGrid.SelectedItem);
             }
         }
 

@@ -98,7 +98,6 @@
                 x:Name="InventoryDataGrid"
                 Background="#001233"
                 Style="{DynamicResource StandardDataGridStyle}"
-                Tag="{Binding RelativeSource={RelativeSource AncestorType={x:Type Window}}}"
                 Sorted="InventoryDataGrid_Sorted">
                 <DataGrid.Columns>
                     <DataGridTextColumn

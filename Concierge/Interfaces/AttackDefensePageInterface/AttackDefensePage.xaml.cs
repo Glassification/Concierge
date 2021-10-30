@@ -49,6 +49,25 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
             this.DrawStatusEffects();
         }
 
+        public void Edit(object itemToEdit)
+        {
+            if (itemToEdit is Ammunition)
+            {
+                this.modifyAmmoWindow.ShowEdit(itemToEdit as Ammunition);
+                this.DrawAmmoList();
+            }
+            else if (itemToEdit is Weapon)
+            {
+                this.modifyAttackWindow.ShowEdit(itemToEdit as Weapon);
+                this.DrawWeaponList();
+            }
+            else if (itemToEdit is StatusEffect)
+            {
+                this.modifyStatusEffectsWindow.ShowEdit(itemToEdit as StatusEffect);
+                this.DrawStatusEffects();
+            }
+        }
+
         private static bool NextItem<T>(ConciergeDataGrid dataGrid, DrawList drawList, List<T> list, int limit, int increment)
         {
             var index = dataGrid.NextItem(list, limit, increment);
@@ -162,13 +181,11 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
         {
             if (this.AmmoDataGrid.SelectedItem != null)
             {
-                this.modifyAmmoWindow.ShowEdit((Ammunition)this.AmmoDataGrid.SelectedItem);
-                this.DrawAmmoList();
+                this.Edit(this.AmmoDataGrid.SelectedItem);
             }
             else if (this.WeaponDataGrid.SelectedItem != null)
             {
-                this.modifyAttackWindow.ShowEdit((Weapon)this.WeaponDataGrid.SelectedItem);
-                this.DrawWeaponList();
+                this.Edit(this.WeaponDataGrid.SelectedItem);
             }
         }
 
@@ -299,8 +316,7 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
                 return;
             }
 
-            this.modifyStatusEffectsWindow.ShowEdit(this.StatusEffectsDataGrid.SelectedItem as StatusEffect);
-            this.DrawStatusEffects();
+            this.Edit(this.StatusEffectsDataGrid.SelectedItem);
         }
     }
 }

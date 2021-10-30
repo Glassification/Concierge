@@ -106,6 +106,11 @@ namespace Concierge.Interfaces.OverviewPageInterface
             this.DrawDeathSavingThrows();
         }
 
+        public void Edit(object itemToEdit)
+        {
+            throw new NotImplementedException();
+        }
+
         private static void DisplayCharacterDeathWindow(ConciergeCharacter character)
         {
             ConciergeMessageBox.Show(

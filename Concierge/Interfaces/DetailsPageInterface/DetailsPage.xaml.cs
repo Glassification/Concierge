@@ -56,6 +56,25 @@ namespace Concierge.Interfaces.DetailsPageInterface
             this.DrawConditions();
         }
 
+        public void Edit(object itemToEdit)
+        {
+            if (itemToEdit is Proficiency)
+            {
+                this.modifyProficiencyWindow.ShowEdit(itemToEdit as Proficiency);
+                this.DrawProficiencies();
+            }
+            else if (itemToEdit is Language)
+            {
+                this.modifyLanguagesWindow.ShowEdit(itemToEdit as Language);
+                this.DrawLanguages();
+            }
+            else if (itemToEdit is ClassResource)
+            {
+                this.modifyClassResourceWindow.ShowEdit(itemToEdit as ClassResource);
+                this.DrawResources();
+            }
+        }
+
         private static void AddSortedToList(List<Proficiency> proficiency, ConciergeDataGrid dataGrid)
         {
             foreach (var item in dataGrid.Items)
@@ -222,23 +241,19 @@ namespace Concierge.Interfaces.DetailsPageInterface
         {
             if (this.WeaponProficiencyDataGrid.SelectedItem != null)
             {
-                this.modifyProficiencyWindow.ShowEdit(this.WeaponProficiencyDataGrid.SelectedItem as Proficiency);
-                this.DrawProficiencies();
+                this.Edit(this.WeaponProficiencyDataGrid.SelectedItem);
             }
             else if (this.ArmorProficiencyDataGrid.SelectedItem != null)
             {
-                this.modifyProficiencyWindow.ShowEdit(this.ArmorProficiencyDataGrid.SelectedItem as Proficiency);
-                this.DrawProficiencies();
+                this.Edit(this.ArmorProficiencyDataGrid.SelectedItem);
             }
             else if (this.ShieldProficiencyDataGrid.SelectedItem != null)
             {
-                this.modifyProficiencyWindow.ShowEdit(this.ShieldProficiencyDataGrid.SelectedItem as Proficiency);
-                this.DrawProficiencies();
+                this.Edit(this.ShieldProficiencyDataGrid.SelectedItem);
             }
             else if (this.ToolProficiencyDataGrid.SelectedItem != null)
             {
-                this.modifyProficiencyWindow.ShowEdit(this.ToolProficiencyDataGrid.SelectedItem as Proficiency);
-                this.DrawProficiencies();
+                this.Edit(this.ToolProficiencyDataGrid.SelectedItem);
             }
         }
 
@@ -307,8 +322,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
         {
             if (this.LanguagesDataGrid.SelectedItem != null)
             {
-                this.modifyLanguagesWindow.ShowEdit(this.LanguagesDataGrid.SelectedItem as Language);
-                this.DrawLanguages();
+                this.Edit(this.LanguagesDataGrid.SelectedItem);
             }
         }
 
@@ -316,8 +330,10 @@ namespace Concierge.Interfaces.DetailsPageInterface
         {
             if (this.ResourcesDataGrid.SelectedItem != null)
             {
-                this.modifyClassResourceWindow.ShowEdit(this.ResourcesDataGrid.SelectedItem as ClassResource);
-                this.DrawResources();
+                if (this.ResourcesDataGrid.SelectedItem != null)
+                {
+                    this.Edit(this.ResourcesDataGrid.SelectedItem);
+                }
             }
         }
 
