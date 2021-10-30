@@ -16,7 +16,7 @@
         KeyDown="Window_KeyDown"
         MouseDown="Window_MouseDown"
         BorderThickness="1"
-        BorderBrush="#2A6F97"
+        BorderBrush="#227EA9"
         Style="{StaticResource WindowXboxDasboardStyle}">
     <Grid>
         <Grid.RowDefinitions>
@@ -29,7 +29,7 @@
             <TextBlock
                 Text="About Concierge"
                 FontSize="35"
-                Foreground="#2A6F97"
+                Foreground="#227EA9"
                 Margin="30, 0, 0, 0"
                 FontWeight="Bold"
                 VerticalAlignment="Center"

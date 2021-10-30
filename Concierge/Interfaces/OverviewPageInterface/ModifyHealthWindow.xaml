@@ -16,7 +16,7 @@
         KeyDown="Window_KeyDown"
         MouseDown="Window_MouseDown"
         BorderThickness="1"
-        BorderBrush="#2A6F97"
+        BorderBrush="#227EA9"
         Style="{StaticResource WindowXboxDasboardStyle}">
 
     <Window.Resources>
@@ -196,7 +196,7 @@
         <Grid Grid.Row="0">
             <TextBlock Text="Edit Health"
                        x:Name="HeaderTextBlock"
-                       Foreground="#2A6F97"
+                       Foreground="#227EA9"
                        FontSize="35"
                        HorizontalAlignment="Left"
                        VerticalAlignment="Center"
