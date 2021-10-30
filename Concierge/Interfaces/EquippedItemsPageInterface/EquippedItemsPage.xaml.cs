@@ -54,6 +54,17 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
             this.LoadImage();
         }
 
+        public void Edit(object itemToEdit)
+        {
+            if (itemToEdit is not Inventory)
+            {
+                return;
+            }
+
+            this.modifyInventoryWindow.ShowEdit(itemToEdit as Inventory, true);
+            this.Draw();
+        }
+
         private static void ReadEquippedItems(List<Inventory> items, ConciergeDataGrid dataGrid)
         {
             dataGrid.Items.Clear();
@@ -181,8 +192,7 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
                 return;
             }
 
-            this.modifyInventoryWindow.ShowEdit(this.SelectedItem, true);
-            this.Draw();
+            this.Edit(this.SelectedItem);
         }
 
         private void ButtonDelete_Click(object sender, RoutedEventArgs e)

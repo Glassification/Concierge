@@ -9,7 +9,7 @@
         Background="#252526"
         ResizeMode="NoResize"
         BorderThickness="1"
-        BorderBrush="#2A6F97"
+        BorderBrush="#227EA9"
         Style="{StaticResource WindowXboxDasboardStyle}">
     <Grid>
         <Grid.RowDefinitions>

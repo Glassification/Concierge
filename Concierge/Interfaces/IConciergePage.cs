@@ -11,5 +11,7 @@ namespace Concierge.Interfaces
         ConciergePage ConciergePage { get; }
 
         void Draw();
+
+        void Edit(object itemToEdit);
     }
 }

@@ -62,6 +62,21 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
             this.DrawUsedSpellSlots();
         }
 
+        public void Edit(object itemToEdit)
+        {
+            if (itemToEdit is Spell)
+            {
+                this.modifySpellWindow.EditSpell(itemToEdit as Spell);
+                this.DrawSpellList();
+                this.DrawMagicClasses();
+            }
+            else if (itemToEdit is MagicClass)
+            {
+                this.modifySpellClassWindow.EditClass(itemToEdit as MagicClass);
+                this.DrawMagicClasses();
+            }
+        }
+
         private static void FillTotalSpellSlot(TextBlock totalField, Grid totalBox, int usedSpells, int totalSpells)
         {
             totalField.Text = totalSpells.ToString();
@@ -198,16 +213,11 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
         {
             if (this.MagicClassDataGrid.SelectedItem != null)
             {
-                var magicClass = (MagicClass)this.MagicClassDataGrid.SelectedItem;
-                this.modifySpellClassWindow.EditClass(magicClass);
-                this.DrawMagicClasses();
+                this.Edit(this.MagicClassDataGrid.SelectedItem);
             }
             else if (this.SpellListDataGrid.SelectedItem != null)
             {
-                var spell = (Spell)this.SpellListDataGrid.SelectedItem;
-                this.modifySpellWindow.EditSpell(spell);
-                this.DrawSpellList();
-                this.DrawMagicClasses();
+                this.Edit(this.SpellListDataGrid.SelectedItem);
             }
         }
 

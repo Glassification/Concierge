@@ -53,6 +53,11 @@ namespace Concierge.Interfaces.ToolsPageInterface
             this.DrawDiceHistory();
         }
 
+        public void Edit(object itemToEdit)
+        {
+            return;
+        }
+
         private static void SetDieValue(
             IntegerUpDown dieNumber,
             IntegerUpDown modifierNumber,

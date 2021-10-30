@@ -37,6 +37,17 @@ namespace Concierge.Interfaces.AbilitiesPageInterface
             this.DrawAbilities();
         }
 
+        public void Edit(object itemToEdit)
+        {
+            if (itemToEdit is not Ability)
+            {
+                return;
+            }
+
+            this.modifyAbilitiesWindow.ShowEdit(itemToEdit as Ability);
+            this.DrawAbilities();
+        }
+
         private void DrawAbilities()
         {
             this.AbilitiesDataGrid.Items.Clear();
@@ -96,8 +107,7 @@ namespace Concierge.Interfaces.AbilitiesPageInterface
         {
             if (this.AbilitiesDataGrid.SelectedItem != null)
             {
-                this.modifyAbilitiesWindow.ShowEdit((Ability)this.AbilitiesDataGrid.SelectedItem);
-                this.DrawAbilities();
+                this.Edit(this.AbilitiesDataGrid.SelectedItem);
             }
         }
 

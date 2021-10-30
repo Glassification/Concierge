@@ -59,6 +59,11 @@ namespace Concierge.Interfaces.NotesPageInterface
             this.DrawTreeView();
         }
 
+        public void Edit(object itemToEdit)
+        {
+            throw new NotImplementedException();
+        }
+
         public void ClearTextBox()
         {
             this.NotesTextBox.Document.Blocks.Clear();

@@ -36,6 +36,17 @@ namespace Concierge.Interfaces.InventoryPageInterface
             this.DrawInventory();
         }
 
+        public void Edit(object itemToEdit)
+        {
+            if (itemToEdit is not Inventory)
+            {
+                return;
+            }
+
+            this.modifyInventoryWindow.ShowEdit(itemToEdit as Inventory);
+            this.DrawInventory();
+        }
+
         private void DrawInventory()
         {
             this.InventoryDataGrid.Items.Clear();
@@ -95,9 +106,7 @@ namespace Concierge.Interfaces.InventoryPageInterface
         {
             if (this.InventoryDataGrid.SelectedItem != null)
             {
-                var inventory = (Inventory)this.InventoryDataGrid.SelectedItem;
-                this.modifyInventoryWindow.ShowEdit(inventory);
-                this.DrawInventory();
+                this.Edit(this.InventoryDataGrid.SelectedItem);
             }
         }
 
