@@ -150,31 +150,31 @@
     <Page Update="Interfaces\ToolsPageInterface\ToolsPage.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Properties\Resources\Dictionary\ButtonStyling.xaml">
+    <Page Update="Interfaces\Dictionary\ButtonDictionary.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Properties\Resources\Dictionary\CheckBoxStyling.xaml">
+    <Page Update="Interfaces\Dictionary\CheckBoxDictionary.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Properties\Resources\Dictionary\ComboBoxStyling.xaml">
+    <Page Update="Interfaces\Dictionary\ComboBoxDictionary.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Properties\Resources\Dictionary\DataGridStyling.xaml">
+    <Page Update="Interfaces\Dictionary\DataGridDictionary.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Properties\Resources\Dictionary\PageFontStyling.xaml">
+    <Page Update="Interfaces\Dictionary\PageFontDictionary.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Properties\Resources\Dictionary\RadioButtonStyling.xaml">
+    <Page Update="Interfaces\Dictionary\RadioButtonDictionary.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Properties\Resources\Dictionary\ScrollbarStyling.xaml">
+    <Page Update="Interfaces\Dictionary\ScrollbarDictionary.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Properties\Resources\Dictionary\TreeViewStyling.xaml">
+    <Page Update="Interfaces\Dictionary\TreeViewDictionary.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Properties\Resources\Dictionary\WindowFontStyling.xaml">
+    <Page Update="Interfaces\Dictionary\WindowFontDictionary.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

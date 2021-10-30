@@ -41,6 +41,9 @@ dotnet_diagnostic.CS0612.severity = none
 # CS0618: Type or member is obsolete
 dotnet_diagnostic.CS0618.severity = none
 
+# CA1711: Identifiers should not have incorrect suffix
+dotnet_diagnostic.CA1711.severity = silent
+
 [*.{cs,vb}]
 dotnet_diagnostic.CA1305.severity=silent
 
