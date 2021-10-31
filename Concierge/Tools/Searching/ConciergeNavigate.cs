@@ -43,8 +43,8 @@ namespace Concierge.Tools.Searching
                 var index = dataGrid.Items.IndexOf(this.SearchResult.Item);
                 if (index >= 0)
                 {
-                    Utilities.SetDataGridSelectedIndex(dataGrid, index);
-                    dataGrid.ScrollIntoView(dataGrid.SelectedItem);
+                    dataGrid.SetSelectedIndex(index);
+
                     return true;
                 }
             }

@@ -43,8 +43,10 @@ namespace Concierge.Interfaces.InventoryPageInterface
                 return;
             }
 
+            var index = this.InventoryDataGrid.SelectedIndex;
             this.modifyInventoryWindow.ShowEdit(itemToEdit as Inventory);
             this.DrawInventory();
+            this.InventoryDataGrid.SetSelectedIndex(index);
         }
 
         private void DrawInventory()
@@ -74,8 +76,7 @@ namespace Concierge.Interfaces.InventoryPageInterface
             if (index != -1)
             {
                 this.DrawInventory();
-                this.InventoryDataGrid.SelectedIndex = index;
-                this.InventoryDataGrid.ScrollIntoView(this.InventoryDataGrid.SelectedItem);
+                this.InventoryDataGrid.SetSelectedIndex(index);
             }
         }
 
@@ -86,8 +87,7 @@ namespace Concierge.Interfaces.InventoryPageInterface
             if (index != -1)
             {
                 this.DrawInventory();
-                this.InventoryDataGrid.SelectedIndex = index;
-                this.InventoryDataGrid.ScrollIntoView(this.InventoryDataGrid.SelectedItem);
+                this.InventoryDataGrid.SetSelectedIndex(index);
             }
         }
 
@@ -100,6 +100,7 @@ namespace Concierge.Interfaces.InventoryPageInterface
         {
             this.modifyInventoryWindow.ShowAdd(Program.CcsFile.Character.Inventories);
             this.DrawInventory();
+            this.InventoryDataGrid.SetSelectedIndex(this.InventoryDataGrid.LastIndex);
         }
 
         private void ButtonEdit_Click(object sender, RoutedEventArgs e)
@@ -121,7 +122,7 @@ namespace Concierge.Interfaces.InventoryPageInterface
 
                 Program.CcsFile.Character.Inventories.Remove(inventory);
                 this.DrawInventory();
-                Utilities.SetDataGridSelectedIndex(this.InventoryDataGrid, index);
+                this.InventoryDataGrid.SetSelectedIndex(index);
             }
         }
 

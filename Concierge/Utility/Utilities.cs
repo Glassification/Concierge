@@ -16,7 +16,6 @@ namespace Concierge.Utility
     using Concierge.Character;
     using Concierge.Character.Enums;
     using Concierge.Character.Statuses;
-    using Concierge.Interfaces.Components;
     using Concierge.Utility.Extensions;
 
     public static class Utilities
@@ -31,21 +30,6 @@ namespace Concierge.Utility
             }
 
             return stringArray.ToList();
-        }
-
-        public static void SetDataGridSelectedIndex(ConciergeDataGrid dataGrid, int index)
-        {
-            if (dataGrid.Items.IsEmpty)
-            {
-                return;
-            }
-
-            if (index == dataGrid.Items.Count)
-            {
-                index--;
-            }
-
-            dataGrid.SelectedIndex = index;
         }
 
         public static T GetElementUnderMouse<T>()

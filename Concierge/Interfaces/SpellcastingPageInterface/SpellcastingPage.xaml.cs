@@ -66,14 +66,18 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
         {
             if (itemToEdit is Spell)
             {
+                var index = this.SpellListDataGrid.SelectedIndex;
                 this.modifySpellWindow.EditSpell(itemToEdit as Spell);
                 this.DrawSpellList();
                 this.DrawMagicClasses();
+                this.SpellListDataGrid.SetSelectedIndex(index);
             }
             else if (itemToEdit is MagicClass)
             {
+                var index = this.MagicClassDataGrid.SelectedIndex;
                 this.modifySpellClassWindow.EditClass(itemToEdit as MagicClass);
                 this.DrawMagicClasses();
+                this.MagicClassDataGrid.SetSelectedIndex(index);
             }
         }
 
@@ -91,8 +95,7 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
             if (index != -1)
             {
                 drawList();
-                dataGrid.SelectedIndex = index;
-                dataGrid.ScrollIntoView(dataGrid.SelectedItem);
+                dataGrid.SetSelectedIndex(index);
 
                 return true;
             }
@@ -200,11 +203,13 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
                 case PopupButtons.AddMagicClass:
                     this.modifySpellClassWindow.AddClass(Program.CcsFile.Character.MagicClasses);
                     this.DrawMagicClasses();
+                    this.MagicClassDataGrid.SetSelectedIndex(this.MagicClassDataGrid.LastIndex);
                     break;
                 case PopupButtons.AddSpell:
                     this.modifySpellWindow.AddSpell(Program.CcsFile.Character.Spells);
                     this.DrawSpellList();
                     this.DrawMagicClasses();
+                    this.SpellListDataGrid.SetSelectedIndex(this.SpellListDataGrid.LastIndex);
                     break;
             }
         }
@@ -232,7 +237,7 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
 
                 Program.CcsFile.Character.MagicClasses.Remove(magicClass);
                 this.DrawMagicClasses();
-                Utilities.SetDataGridSelectedIndex(this.MagicClassDataGrid, index);
+                this.MagicClassDataGrid.SetSelectedIndex(index);
             }
             else if (this.SpellListDataGrid.SelectedItem != null)
             {
@@ -243,7 +248,7 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
 
                 Program.CcsFile.Character.Spells.Remove(spell);
                 this.DrawSpellList();
-                Utilities.SetDataGridSelectedIndex(this.SpellListDataGrid, index);
+                this.SpellListDataGrid.SetSelectedIndex(index);
             }
         }
 

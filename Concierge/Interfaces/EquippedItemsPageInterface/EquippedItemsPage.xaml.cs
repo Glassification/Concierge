@@ -61,8 +61,10 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
                 return;
             }
 
+            var index = this.SelectedDataGrid.SelectedIndex;
             this.modifyInventoryWindow.ShowEdit(itemToEdit as Inventory, true);
             this.Draw();
+            this.SelectedDataGrid.SetSelectedIndex(index);
         }
 
         private static void ReadEquippedItems(List<Inventory> items, ConciergeDataGrid dataGrid)
@@ -183,6 +185,7 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
         {
             this.modifyEquippedItemsWindow.ShowAdd();
             this.Draw();
+            this.SelectedDataGrid.SetSelectedIndex(this.SelectedDataGrid.LastIndex);
         }
 
         private void ButtonEdit_Click(object sender, RoutedEventArgs e)
@@ -210,7 +213,7 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
                 (EquipmentSlot)Enum.Parse(typeof(EquipmentSlot), this.SelectedDataGrid.Tag as string));
 
             this.Draw();
-            Utilities.SetDataGridSelectedIndex(this.SelectedDataGrid, index);
+            this.SelectedDataGrid.SetSelectedIndex(index);
         }
 
         private void Window_ApplyChanges(object sender, EventArgs e)

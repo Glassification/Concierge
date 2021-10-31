@@ -44,8 +44,10 @@ namespace Concierge.Interfaces.AbilitiesPageInterface
                 return;
             }
 
+            var index = this.AbilitiesDataGrid.SelectedIndex;
             this.modifyAbilitiesWindow.ShowEdit(itemToEdit as Ability);
             this.DrawAbilities();
+            this.AbilitiesDataGrid.SetSelectedIndex(index);
         }
 
         private void DrawAbilities()
@@ -75,8 +77,7 @@ namespace Concierge.Interfaces.AbilitiesPageInterface
             if (index != -1)
             {
                 this.DrawAbilities();
-                this.AbilitiesDataGrid.SelectedIndex = index;
-                this.AbilitiesDataGrid.ScrollIntoView(this.AbilitiesDataGrid.SelectedItem);
+                this.AbilitiesDataGrid.SetSelectedIndex(index);
             }
         }
 
@@ -87,8 +88,7 @@ namespace Concierge.Interfaces.AbilitiesPageInterface
             if (index != -1)
             {
                 this.DrawAbilities();
-                this.AbilitiesDataGrid.SelectedIndex = index;
-                this.AbilitiesDataGrid.ScrollIntoView(this.AbilitiesDataGrid.SelectedItem);
+                this.AbilitiesDataGrid.SetSelectedIndex(index);
             }
         }
 
@@ -101,6 +101,7 @@ namespace Concierge.Interfaces.AbilitiesPageInterface
         {
             this.modifyAbilitiesWindow.ShowAdd(Program.CcsFile.Character.Abilities);
             this.DrawAbilities();
+            this.AbilitiesDataGrid.SetSelectedIndex(this.AbilitiesDataGrid.LastIndex);
         }
 
         private void ButtonEdit_Click(object sender, RoutedEventArgs e)
@@ -122,7 +123,7 @@ namespace Concierge.Interfaces.AbilitiesPageInterface
 
                 Program.CcsFile.Character.Abilities.Remove(ability);
                 this.DrawAbilities();
-                Utilities.SetDataGridSelectedIndex(this.AbilitiesDataGrid, index);
+                this.AbilitiesDataGrid.SetSelectedIndex(index);
             }
         }
 

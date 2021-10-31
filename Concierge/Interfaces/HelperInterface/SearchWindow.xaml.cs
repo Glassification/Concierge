@@ -61,7 +61,7 @@ namespace Concierge.Interfaces.HelperInterface
             {
                 MatchCase = this.MatchCaseCheckBox.IsChecked ?? false,
                 MatchWholeWord = this.MatchWholeWordCheckBox.IsChecked ?? false,
-                SearchDomain = (SearchDomain)Enum.Parse(typeof(SearchDomain), this.SearchDomainComboBox.Text.Replace(" ", string.Empty)),
+                SearchDomain = (SearchDomain)Enum.Parse(typeof(SearchDomain), this.SearchDomainComboBox.Text.Strip(" ")),
                 TextToSearch = this.SearchTextBox.Text,
             };
         }

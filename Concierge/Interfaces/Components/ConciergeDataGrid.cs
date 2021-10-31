@@ -40,9 +40,11 @@ namespace Concierge.Interfaces.Components
             remove { this.RemoveHandler(SortedEvent, value); }
         }
 
+        public int LastIndex => this.Items.Count - 1;
+
         public void RaiseSortedEvent()
         {
-            RoutedEventArgs newEventArgs = new (ConciergeDataGrid.SortedEvent);
+            RoutedEventArgs newEventArgs = new (SortedEvent);
             this.RaiseEvent(newEventArgs);
         }
 
@@ -65,6 +67,23 @@ namespace Concierge.Interfaces.Components
             }
 
             return -1;
+        }
+
+        public void SetSelectedIndex(int index)
+        {
+            if (this.Items.IsEmpty)
+            {
+                return;
+            }
+
+            if (index == this.Items.Count)
+            {
+                index--;
+            }
+
+            this.SelectedIndex = index;
+
+            this.ScrollIntoView(this.SelectedItem);
         }
 
         protected override void OnSorting(DataGridSortingEventArgs eventArgs)

@@ -87,5 +87,10 @@ namespace Concierge.Utility.Extensions
 
             return textRange.Text;
         }
+
+        public static string Strip(this string str, string textToStrip)
+        {
+            return str.Replace(textToStrip, string.Empty);
+        }
     }
 }

@@ -60,18 +60,24 @@ namespace Concierge.Interfaces.DetailsPageInterface
         {
             if (itemToEdit is Proficiency)
             {
+                var index = this.GetSelectedProficencyDataGrid().SelectedIndex;
                 this.modifyProficiencyWindow.ShowEdit(itemToEdit as Proficiency);
                 this.DrawProficiencies();
+                this.GetSelectedProficencyDataGrid().SetSelectedIndex(index);
             }
             else if (itemToEdit is Language)
             {
+                var index = this.LanguagesDataGrid.SelectedIndex;
                 this.modifyLanguagesWindow.ShowEdit(itemToEdit as Language);
                 this.DrawLanguages();
+                this.LanguagesDataGrid.SetSelectedIndex(index);
             }
             else if (itemToEdit is ClassResource)
             {
+                var index = this.ResourcesDataGrid.SelectedIndex;
                 this.modifyClassResourceWindow.ShowEdit(itemToEdit as ClassResource);
                 this.DrawResources();
+                this.ResourcesDataGrid.SetSelectedIndex(index);
             }
         }
 
@@ -212,48 +218,47 @@ namespace Concierge.Interfaces.DetailsPageInterface
 
             var item = dataGrid.SelectedItem as Proficiency;
             var index = dataGrid.SelectedIndex;
+
             Program.CcsFile.Character.Proficiency.Remove(item);
+
             this.DrawProficiencies();
-            Utilities.SetDataGridSelectedIndex(dataGrid, index);
+            dataGrid.SetSelectedIndex(index);
+        }
+
+        private ConciergeDataGrid GetSelectedProficencyDataGrid()
+        {
+            if (this.WeaponProficiencyDataGrid.SelectedItem != null)
+            {
+                return this.WeaponProficiencyDataGrid;
+            }
+            else if (this.ArmorProficiencyDataGrid.SelectedItem != null)
+            {
+                return this.WeaponProficiencyDataGrid;
+            }
+            else if (this.ShieldProficiencyDataGrid.SelectedItem != null)
+            {
+                return this.WeaponProficiencyDataGrid;
+            }
+            else if (this.ToolProficiencyDataGrid.SelectedItem != null)
+            {
+                return this.WeaponProficiencyDataGrid;
+            }
+
+            return null;
         }
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
-            if (this.WeaponProficiencyDataGrid.SelectedItem != null)
-            {
-                this.DeleteProficiency(this.WeaponProficiencyDataGrid);
-            }
-            else if (this.ArmorProficiencyDataGrid.SelectedItem != null)
-            {
-                this.DeleteProficiency(this.ArmorProficiencyDataGrid);
-            }
-            else if (this.ShieldProficiencyDataGrid.SelectedItem != null)
-            {
-                this.DeleteProficiency(this.ShieldProficiencyDataGrid);
-            }
-            else if (this.ToolProficiencyDataGrid.SelectedItem != null)
-            {
-                this.DeleteProficiency(this.ToolProficiencyDataGrid);
-            }
+            this.DeleteProficiency(this.GetSelectedProficencyDataGrid());
         }
 
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
-            if (this.WeaponProficiencyDataGrid.SelectedItem != null)
+            var dataGrid = this.GetSelectedProficencyDataGrid();
+
+            if (dataGrid != null)
             {
-                this.Edit(this.WeaponProficiencyDataGrid.SelectedItem);
-            }
-            else if (this.ArmorProficiencyDataGrid.SelectedItem != null)
-            {
-                this.Edit(this.ArmorProficiencyDataGrid.SelectedItem);
-            }
-            else if (this.ShieldProficiencyDataGrid.SelectedItem != null)
-            {
-                this.Edit(this.ShieldProficiencyDataGrid.SelectedItem);
-            }
-            else if (this.ToolProficiencyDataGrid.SelectedItem != null)
-            {
-                this.Edit(this.ToolProficiencyDataGrid.SelectedItem);
+                this.Edit(dataGrid.SelectedItem);
             }
         }
 
@@ -341,12 +346,14 @@ namespace Concierge.Interfaces.DetailsPageInterface
         {
             this.modifyLanguagesWindow.ShowAdd(Program.CcsFile.Character.Details.Languages);
             this.DrawLanguages();
+            this.LanguagesDataGrid.SetSelectedIndex(this.LanguagesDataGrid.LastIndex);
         }
 
         private void AddResourcesButton_Click(object sender, RoutedEventArgs e)
         {
             this.modifyClassResourceWindow.ShowAdd(Program.CcsFile.Character.ClassResources);
             this.DrawResources();
+            this.ResourcesDataGrid.SetSelectedIndex(this.ResourcesDataGrid.LastIndex);
         }
 
         private void DeleteLanguagesButton_Click(object sender, RoutedEventArgs e)
@@ -358,7 +365,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
                 var index = this.LanguagesDataGrid.SelectedIndex;
                 Program.CcsFile.Character.Details.Languages.Remove(this.LanguagesDataGrid.SelectedItem as Language);
                 this.DrawLanguages();
-                Utilities.SetDataGridSelectedIndex(this.LanguagesDataGrid, index);
+                this.LanguagesDataGrid.SetSelectedIndex(index);
             }
         }
 
@@ -371,7 +378,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
                 var index = this.ResourcesDataGrid.SelectedIndex;
                 Program.CcsFile.Character.ClassResources.Remove(this.ResourcesDataGrid.SelectedItem as ClassResource);
                 this.DrawResources();
-                Utilities.SetDataGridSelectedIndex(this.ResourcesDataGrid, index);
+                this.ResourcesDataGrid.SetSelectedIndex(index);
             }
         }
 

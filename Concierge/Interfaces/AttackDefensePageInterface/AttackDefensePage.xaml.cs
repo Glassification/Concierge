@@ -53,18 +53,24 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
         {
             if (itemToEdit is Ammunition)
             {
+                var index = this.AmmoDataGrid.SelectedIndex;
                 this.modifyAmmoWindow.ShowEdit(itemToEdit as Ammunition);
                 this.DrawAmmoList();
+                this.AmmoDataGrid.SetSelectedIndex(index);
             }
             else if (itemToEdit is Weapon)
             {
+                var index = this.WeaponDataGrid.SelectedIndex;
                 this.modifyAttackWindow.ShowEdit(itemToEdit as Weapon);
                 this.DrawWeaponList();
+                this.WeaponDataGrid.SetSelectedIndex(index);
             }
             else if (itemToEdit is StatusEffect)
             {
+                var index = this.StatusEffectsDataGrid.SelectedIndex;
                 this.modifyStatusEffectsWindow.ShowEdit(itemToEdit as StatusEffect);
                 this.DrawStatusEffects();
+                this.StatusEffectsDataGrid.SetSelectedIndex(index);
             }
         }
 
@@ -75,8 +81,7 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
             if (index != -1)
             {
                 drawList();
-                dataGrid.SelectedIndex = index;
-                dataGrid.ScrollIntoView(dataGrid.SelectedItem);
+                dataGrid.SetSelectedIndex(index);
 
                 return true;
             }
@@ -169,10 +174,12 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
                 case PopupButtons.AddWeapon:
                     this.modifyAttackWindow.ShowAdd(Program.CcsFile.Character.Weapons);
                     this.DrawWeaponList();
+                    this.WeaponDataGrid.SetSelectedIndex(this.WeaponDataGrid.LastIndex);
                     break;
                 case PopupButtons.AddAmmo:
                     this.modifyAmmoWindow.ShowAdd(Program.CcsFile.Character.Ammunitions);
                     this.DrawAmmoList();
+                    this.AmmoDataGrid.SetSelectedIndex(this.AmmoDataGrid.LastIndex);
                     break;
             }
         }
@@ -200,7 +207,7 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
 
                 Program.CcsFile.Character.Ammunitions.Remove(ammo);
                 this.DrawAmmoList();
-                Utilities.SetDataGridSelectedIndex(this.AmmoDataGrid, index);
+                this.AmmoDataGrid.SetSelectedIndex(index);
             }
             else if (this.WeaponDataGrid.SelectedItem != null)
             {
@@ -211,7 +218,7 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
 
                 Program.CcsFile.Character.Weapons.Remove(weapon);
                 this.DrawWeaponList();
-                Utilities.SetDataGridSelectedIndex(this.WeaponDataGrid, index);
+                this.WeaponDataGrid.SetSelectedIndex(index);
             }
         }
 
@@ -300,13 +307,14 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
 
             Program.CcsFile.Character.StatusEffects.Remove(effect);
             this.DrawStatusEffects();
-            Utilities.SetDataGridSelectedIndex(this.StatusEffectsDataGrid, index);
+            this.StatusEffectsDataGrid.SetSelectedIndex(index);
         }
 
         private void AddEffectsButton_Click(object sender, RoutedEventArgs e)
         {
             this.modifyStatusEffectsWindow.ShowAdd(Program.CcsFile.Character.StatusEffects);
             this.DrawStatusEffects();
+            this.StatusEffectsDataGrid.SetSelectedIndex(this.StatusEffectsDataGrid.LastIndex);
         }
 
         private void EditEffectsButton_Click(object sender, RoutedEventArgs e)

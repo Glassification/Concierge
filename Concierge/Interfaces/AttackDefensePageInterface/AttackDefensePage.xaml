@@ -423,7 +423,7 @@
                            VerticalAlignment="Center"
                            FontSize="30"
                            FontWeight="Bold"
-                           Margin="15, 0, 0, 0"/>
+                           Margin="90, 0, 0, 0"/>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                     <components:ConciergeDesignButton 
                         Style="{StaticResource ConciergeDesignButtonStyle}" 

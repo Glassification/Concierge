@@ -56,8 +56,15 @@ namespace Concierge.Interfaces.CompanionPageInterface
 
         public void Edit(object itemToEdit)
         {
+            if (itemToEdit is not Weapon)
+            {
+                return;
+            }
+
+            var index = this.WeaponDataGrid.SelectedIndex;
             this.modifyAttackWindow.ShowEdit(itemToEdit as Weapon);
             this.DrawAttacks();
+            this.WeaponDataGrid.SetSelectedIndex(index);
         }
 
         private static Brush SetHealthStyle()
@@ -179,8 +186,7 @@ namespace Concierge.Interfaces.CompanionPageInterface
             if (index != -1)
             {
                 this.DrawAttacks();
-                this.WeaponDataGrid.SelectedIndex = index;
-                this.WeaponDataGrid.ScrollIntoView(this.WeaponDataGrid.SelectedItem);
+                this.WeaponDataGrid.SetSelectedIndex(this.WeaponDataGrid.SelectedIndex);
             }
         }
 
@@ -191,8 +197,7 @@ namespace Concierge.Interfaces.CompanionPageInterface
             if (index != -1)
             {
                 this.DrawAttacks();
-                this.WeaponDataGrid.SelectedIndex = index;
-                this.WeaponDataGrid.ScrollIntoView(this.WeaponDataGrid.SelectedItem);
+                this.WeaponDataGrid.SetSelectedIndex(this.WeaponDataGrid.SelectedIndex);
             }
         }
 
@@ -205,6 +210,7 @@ namespace Concierge.Interfaces.CompanionPageInterface
         {
             this.modifyAttackWindow.ShowAdd(Program.CcsFile.Character.Companion.Attacks);
             this.DrawAttacks();
+            this.WeaponDataGrid.SetSelectedIndex(this.WeaponDataGrid.LastIndex);
         }
 
         private void ButtonEdit_Click(object sender, RoutedEventArgs e)
@@ -226,7 +232,7 @@ namespace Concierge.Interfaces.CompanionPageInterface
 
                 Program.CcsFile.Character.Companion.Attacks.Remove(weapon);
                 this.DrawAttacks();
-                Utilities.SetDataGridSelectedIndex(this.WeaponDataGrid, index);
+                this.WeaponDataGrid.SetSelectedIndex(index);
             }
         }
 

@@ -16,6 +16,7 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
     using Concierge.Character.Characteristics;
     using Concierge.Interfaces.Enums;
     using Concierge.Services;
+    using Concierge.Utility;
     using Concierge.Utility.Extensions;
 
     /// <summary>
@@ -31,7 +32,7 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
             this.InitializeComponent();
 
             this.fileAccessService = new FileAccessService();
-            this.FillTypeComboBox.ItemsSource = Enum.GetValues(typeof(Stretch)).Cast<Stretch>();
+            this.FillTypeComboBox.ItemsSource = Utilities.FormatEnumForDisplay(typeof(Stretch));
 
             this.InformationHover.ToolTip = new ToolTip()
             {
@@ -93,7 +94,7 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
             this.IsDrawing = true;
 
             this.ImageSourceTextBox.Text = this.OriginalFileName = this.CharacterImage.Path;
-            this.FillTypeComboBox.Text = this.CharacterImage.Stretch.ToString();
+            this.FillTypeComboBox.Text = this.CharacterImage.Stretch.ToString().FormatFromEnum();
             this.UseCustomImageCheckBox.IsChecked = this.CharacterImage.UseCustomImage;
 
             this.SetEnabledState(this.CharacterImage.UseCustomImage);
@@ -108,7 +109,7 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
                 this.CharacterImage.EncodeImage(this.ImageSourceTextBox.Text);
             }
 
-            this.CharacterImage.Stretch = (Stretch)Enum.Parse(typeof(Stretch), this.FillTypeComboBox.Text);
+            this.CharacterImage.Stretch = (Stretch)Enum.Parse(typeof(Stretch), this.FillTypeComboBox.Text.Strip(" "));
             this.CharacterImage.UseCustomImage = this.UseCustomImageCheckBox.IsChecked ?? false;
         }
 
