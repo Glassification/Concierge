@@ -60,10 +60,11 @@ namespace Concierge.Interfaces.DetailsPageInterface
         {
             if (itemToEdit is Proficiency)
             {
-                var index = this.GetSelectedProficencyDataGrid().SelectedIndex;
+                var selectedDataGrid = this.GetSelectedProficencyDataGrid();
+                var index = selectedDataGrid.SelectedIndex;
                 this.modifyProficiencyWindow.ShowEdit(itemToEdit as Proficiency);
                 this.DrawProficiencies();
-                this.GetSelectedProficencyDataGrid().SetSelectedIndex(index);
+                selectedDataGrid.SetSelectedIndex(index);
             }
             else if (itemToEdit is Language)
             {
@@ -233,15 +234,15 @@ namespace Concierge.Interfaces.DetailsPageInterface
             }
             else if (this.ArmorProficiencyDataGrid.SelectedItem != null)
             {
-                return this.WeaponProficiencyDataGrid;
+                return this.ArmorProficiencyDataGrid;
             }
             else if (this.ShieldProficiencyDataGrid.SelectedItem != null)
             {
-                return this.WeaponProficiencyDataGrid;
+                return this.ShieldProficiencyDataGrid;
             }
             else if (this.ToolProficiencyDataGrid.SelectedItem != null)
             {
-                return this.WeaponProficiencyDataGrid;
+                return this.ToolProficiencyDataGrid;
             }
 
             return null;
