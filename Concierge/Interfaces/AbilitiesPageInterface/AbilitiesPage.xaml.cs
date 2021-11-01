@@ -10,7 +10,6 @@ namespace Concierge.Interfaces.AbilitiesPageInterface
 
     using Concierge.Character.Characteristics;
     using Concierge.Interfaces.Enums;
-    using Concierge.Utility;
 
     /// <summary>
     /// Interaction logic for AbilitiesPage.xaml.
@@ -101,7 +100,11 @@ namespace Concierge.Interfaces.AbilitiesPageInterface
         {
             this.modifyAbilitiesWindow.ShowAdd(Program.CcsFile.Character.Abilities);
             this.DrawAbilities();
-            this.AbilitiesDataGrid.SetSelectedIndex(this.AbilitiesDataGrid.LastIndex);
+
+            if (this.modifyAbilitiesWindow.ItemsAdded)
+            {
+                this.AbilitiesDataGrid.SetSelectedIndex(this.AbilitiesDataGrid.LastIndex);
+            }
         }
 
         private void ButtonEdit_Click(object sender, RoutedEventArgs e)

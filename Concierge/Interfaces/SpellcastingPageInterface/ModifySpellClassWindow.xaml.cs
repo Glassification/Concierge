@@ -32,6 +32,8 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
 
         public event ApplyChangesEventHandler ApplyChanges;
 
+        public bool ItemsAdded { get; private set; }
+
         private bool Editing { get; set; }
 
         private string HeaderText => $"{(this.Editing ? "Edit" : "Add")} Magic Class";
@@ -65,6 +67,7 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
             this.ApplyButton.Visibility = Visibility.Visible;
             this.OkButton.Visibility = Visibility.Visible;
             this.MagicClasses = magicClasses;
+            this.ItemsAdded = false;
 
             this.ClearFields();
             this.ShowDialog();
@@ -146,6 +149,8 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
 
         private MagicClass ToMagicClass()
         {
+            this.ItemsAdded = true;
+
             return new MagicClass()
             {
                 Name = this.ClassNameComboBox.Text,

@@ -14,7 +14,10 @@ namespace Concierge.Interfaces.Components
     public class ConciergeDataGrid : DataGrid
     {
         public static readonly RoutedEvent SortedEvent = EventManager.RegisterRoutedEvent(
-            "Sorted", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(ConciergeDataGrid));
+            "Sorted",
+            RoutingStrategy.Bubble,
+            typeof(RoutedEventHandler),
+            typeof(ConciergeDataGrid));
 
         public ConciergeDataGrid()
             : base()

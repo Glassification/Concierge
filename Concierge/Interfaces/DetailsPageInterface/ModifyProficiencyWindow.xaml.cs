@@ -30,6 +30,8 @@ namespace Concierge.Interfaces.DetailsPageInterface
 
         public event ApplyChangesEventHandler ApplyChanges;
 
+        public bool ItemsAdded { get; private set; }
+
         private bool Editing { get; set; }
 
         private Proficiency SelectedProficiency { get; set; }
@@ -62,6 +64,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
             this.ApplyButton.Visibility = Visibility.Visible;
             this.OkButton.Visibility = Visibility.Visible;
             this.ProficiencyComboBox.IsEnabled = true;
+            this.ItemsAdded = false;
 
             this.ClearFields();
             this.ShowDialog();
@@ -101,6 +104,8 @@ namespace Concierge.Interfaces.DetailsPageInterface
 
         private Proficiency ToProficiency()
         {
+            this.ItemsAdded = true;
+
             return new Proficiency()
             {
                 Name = this.ProficiencyTextBox.Text,

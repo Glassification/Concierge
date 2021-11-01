@@ -30,6 +30,8 @@ namespace Concierge.Interfaces.DetailsPageInterface
 
         public event ApplyChangesEventHandler ApplyChanges;
 
+        public bool ItemsAdded { get; private set; }
+
         private bool Editing { get; set; }
 
         private string HeaderText => $"{(this.Editing ? "Edit" : "Add")} Language";
@@ -61,6 +63,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
             this.Languages = languages;
             this.ApplyButton.Visibility = Visibility.Visible;
             this.OkButton.Visibility = Visibility.Visible;
+            this.ItemsAdded = false;
 
             this.ClearFields();
             this.ShowDialog();
@@ -114,6 +117,8 @@ namespace Concierge.Interfaces.DetailsPageInterface
 
         private Language ToLanguage()
         {
+            this.ItemsAdded = true;
+
             return new Language()
             {
                 Name = this.NameComboBox.Text,

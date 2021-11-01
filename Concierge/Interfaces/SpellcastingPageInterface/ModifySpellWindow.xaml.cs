@@ -34,6 +34,8 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
 
         public event ApplyChangesEventHandler ApplyChanges;
 
+        public bool ItemsAdded { get; private set; }
+
         private bool Editing { get; set; }
 
         private string HeaderText => $"{(this.Editing ? "Edit" : "Add")} Spell";
@@ -65,6 +67,7 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
             this.ApplyButton.Visibility = Visibility.Visible;
             this.OkButton.Visibility = Visibility.Visible;
             this.Spells = spells;
+            this.ItemsAdded = false;
 
             this.ClearFields();
             this.ShowDialog();
@@ -174,6 +177,8 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
 
         private Spell ToSpell()
         {
+            this.ItemsAdded = true;
+
             return new Spell()
             {
                 Name = this.SpellNameComboBox.Text,

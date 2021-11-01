@@ -14,7 +14,6 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
     using Concierge.Character.Statuses;
     using Concierge.Interfaces.Components;
     using Concierge.Interfaces.Enums;
-    using Concierge.Utility;
 
     /// <summary>
     /// Interaction logic for EquipmentPage.xaml.
@@ -174,12 +173,20 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
                 case PopupButtons.AddWeapon:
                     this.modifyAttackWindow.ShowAdd(Program.CcsFile.Character.Weapons);
                     this.DrawWeaponList();
-                    this.WeaponDataGrid.SetSelectedIndex(this.WeaponDataGrid.LastIndex);
+                    if (this.modifyAttackWindow.ItemsAdded)
+                    {
+                        this.WeaponDataGrid.SetSelectedIndex(this.WeaponDataGrid.LastIndex);
+                    }
+
                     break;
                 case PopupButtons.AddAmmo:
                     this.modifyAmmoWindow.ShowAdd(Program.CcsFile.Character.Ammunitions);
                     this.DrawAmmoList();
-                    this.AmmoDataGrid.SetSelectedIndex(this.AmmoDataGrid.LastIndex);
+                    if (this.modifyAmmoWindow.ItemsAdded)
+                    {
+                        this.AmmoDataGrid.SetSelectedIndex(this.AmmoDataGrid.LastIndex);
+                    }
+
                     break;
             }
         }
@@ -314,7 +321,11 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
         {
             this.modifyStatusEffectsWindow.ShowAdd(Program.CcsFile.Character.StatusEffects);
             this.DrawStatusEffects();
-            this.StatusEffectsDataGrid.SetSelectedIndex(this.StatusEffectsDataGrid.LastIndex);
+
+            if (this.modifyStatusEffectsWindow.ItemsAdded)
+            {
+                this.StatusEffectsDataGrid.SetSelectedIndex(this.StatusEffectsDataGrid.LastIndex);
+            }
         }
 
         private void EditEffectsButton_Click(object sender, RoutedEventArgs e)

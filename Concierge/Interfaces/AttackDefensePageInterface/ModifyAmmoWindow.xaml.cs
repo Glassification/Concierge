@@ -33,6 +33,8 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
 
         public event ApplyChangesEventHandler ApplyChanges;
 
+        public bool ItemsAdded { get; private set; }
+
         private bool Editing { get; set; }
 
         private string HeaderText => $"{(this.Editing ? "Edit" : "Add")} Ammunition";
@@ -64,6 +66,7 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
             this.Ammunitions = ammunitions;
             this.ApplyButton.Visibility = Visibility.Visible;
             this.OkButton.Visibility = Visibility.Visible;
+            this.ItemsAdded = false;
 
             this.ClearFields();
             this.ShowDialog();
@@ -129,6 +132,8 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
 
         private Ammunition ToAmmunition()
         {
+            this.ItemsAdded = true;
+
             return new Ammunition()
             {
                 Name = this.NameComboBox.Text,

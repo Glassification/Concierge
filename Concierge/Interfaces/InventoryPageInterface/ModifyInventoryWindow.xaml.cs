@@ -32,6 +32,8 @@ namespace Concierge.Interfaces.InventoryPageInterface
 
         public event ApplyChangesEventHandler ApplyChanges;
 
+        public bool ItemsAdded { get; private set; }
+
         private bool EquippedItem { get; set; }
 
         private bool Editing { get; set; }
@@ -76,6 +78,7 @@ namespace Concierge.Interfaces.InventoryPageInterface
             this.Editing = false;
             this.HeaderTextBlock.Text = this.HeaderText;
             this.Items = items;
+            this.ItemsAdded = false;
 
             this.ApplyButton.Visibility = Visibility.Visible;
             this.OkButton.Visibility = Visibility.Visible;
@@ -139,6 +142,8 @@ namespace Concierge.Interfaces.InventoryPageInterface
 
         private Inventory ToInventory()
         {
+            this.ItemsAdded = true;
+
             return new Inventory()
             {
                 Name = this.NameComboBox.Text,

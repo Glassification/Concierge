@@ -203,13 +203,21 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
                 case PopupButtons.AddMagicClass:
                     this.modifySpellClassWindow.AddClass(Program.CcsFile.Character.MagicClasses);
                     this.DrawMagicClasses();
-                    this.MagicClassDataGrid.SetSelectedIndex(this.MagicClassDataGrid.LastIndex);
+                    if (this.modifySpellClassWindow.ItemsAdded)
+                    {
+                        this.MagicClassDataGrid.SetSelectedIndex(this.MagicClassDataGrid.LastIndex);
+                    }
+
                     break;
                 case PopupButtons.AddSpell:
                     this.modifySpellWindow.AddSpell(Program.CcsFile.Character.Spells);
                     this.DrawSpellList();
                     this.DrawMagicClasses();
-                    this.SpellListDataGrid.SetSelectedIndex(this.SpellListDataGrid.LastIndex);
+                    if (this.modifySpellWindow.ItemsAdded)
+                    {
+                        this.SpellListDataGrid.SetSelectedIndex(this.SpellListDataGrid.LastIndex);
+                    }
+
                     break;
             }
         }

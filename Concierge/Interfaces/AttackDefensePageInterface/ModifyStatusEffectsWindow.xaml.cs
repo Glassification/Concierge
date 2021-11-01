@@ -34,6 +34,8 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
 
         public event ApplyChangesEventHandler ApplyChanges;
 
+        public bool ItemsAdded { get; private set; }
+
         private bool Editing { get; set; }
 
         private string HeaderText => $"{(this.Editing ? "Edit" : "Add")} Status Effect";
@@ -65,6 +67,7 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
             this.ApplyButton.Visibility = Visibility.Visible;
             this.OkButton.Visibility = Visibility.Visible;
             this.StatusEffects = statusEffects;
+            this.ItemsAdded = false;
 
             this.ClearFields();
             this.ShowDialog();
@@ -118,6 +121,8 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
 
         private StatusEffect ToStatusEffect()
         {
+            this.ItemsAdded = true;
+
             return new StatusEffect()
             {
                 Name = this.NameComboBox.Text,

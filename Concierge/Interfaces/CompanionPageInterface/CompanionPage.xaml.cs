@@ -210,7 +210,11 @@ namespace Concierge.Interfaces.CompanionPageInterface
         {
             this.modifyAttackWindow.ShowAdd(Program.CcsFile.Character.Companion.Attacks);
             this.DrawAttacks();
-            this.WeaponDataGrid.SetSelectedIndex(this.WeaponDataGrid.LastIndex);
+
+            if (this.modifyAttackWindow.ItemsAdded)
+            {
+                this.WeaponDataGrid.SetSelectedIndex(this.WeaponDataGrid.LastIndex);
+            }
         }
 
         private void ButtonEdit_Click(object sender, RoutedEventArgs e)

@@ -31,6 +31,8 @@ namespace Concierge.Interfaces.AbilitiesPageInterface
 
         public event ApplyChangesEventHandler ApplyChanges;
 
+        public bool ItemsAdded { get; private set; }
+
         private bool Editing { get; set; }
 
         private string HeaderText => $"{(this.Editing ? "Edit" : "Add")} Ability";
@@ -74,6 +76,7 @@ namespace Concierge.Interfaces.AbilitiesPageInterface
             this.Abilities = abilities;
             this.ApplyButton.Visibility = Visibility.Visible;
             this.OkButton.Visibility = Visibility.Visible;
+            this.ItemsAdded = false;
 
             this.ClearFields();
             this.ShowDialog();
@@ -118,6 +121,8 @@ namespace Concierge.Interfaces.AbilitiesPageInterface
 
         private Ability ToAbility()
         {
+            this.ItemsAdded = true;
+
             return new Ability()
             {
                 Name = this.NameComboBox.Text,

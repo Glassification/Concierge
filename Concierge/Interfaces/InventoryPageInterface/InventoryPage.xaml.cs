@@ -11,7 +11,6 @@ namespace Concierge.Interfaces.InventoryPageInterface
     using Concierge.Character.Items;
     using Concierge.Interfaces;
     using Concierge.Interfaces.Enums;
-    using Concierge.Utility;
 
     /// <summary>
     /// Interaction logic for InventoryPage.xaml.
@@ -100,7 +99,11 @@ namespace Concierge.Interfaces.InventoryPageInterface
         {
             this.modifyInventoryWindow.ShowAdd(Program.CcsFile.Character.Inventories);
             this.DrawInventory();
-            this.InventoryDataGrid.SetSelectedIndex(this.InventoryDataGrid.LastIndex);
+
+            if (this.modifyInventoryWindow.ItemsAdded)
+            {
+                this.InventoryDataGrid.SetSelectedIndex(this.InventoryDataGrid.LastIndex);
+            }
         }
 
         private void ButtonEdit_Click(object sender, RoutedEventArgs e)

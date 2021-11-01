@@ -185,7 +185,11 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
         {
             this.modifyEquippedItemsWindow.ShowAdd();
             this.Draw();
-            this.SelectedDataGrid.SetSelectedIndex(this.SelectedDataGrid.LastIndex);
+
+            if (this.modifyEquippedItemsWindow.ItemsAdded)
+            {
+                this.SelectedDataGrid?.SetSelectedIndex(this.SelectedDataGrid.LastIndex);
+            }
         }
 
         private void ButtonEdit_Click(object sender, RoutedEventArgs e)

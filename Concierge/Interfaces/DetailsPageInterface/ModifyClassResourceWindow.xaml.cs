@@ -27,6 +27,8 @@ namespace Concierge.Interfaces.DetailsPageInterface
 
         public event ApplyChangesEventHandler ApplyChanges;
 
+        public bool ItemsAdded { get; private set; }
+
         private bool Editing { get; set; }
 
         private string HeaderText => $"{(this.Editing ? "Edit" : "Add")} Resource";
@@ -58,6 +60,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
             this.HeaderTextBlock.Text = this.HeaderText;
             this.ApplyButton.Visibility = Visibility.Visible;
             this.OkButton.Visibility = Visibility.Visible;
+            this.ItemsAdded = false;
 
             this.ClearFields();
             this.ShowDialog();
@@ -110,6 +113,8 @@ namespace Concierge.Interfaces.DetailsPageInterface
 
         private ClassResource ToClassResource()
         {
+            this.ItemsAdded = true;
+
             return new ClassResource()
             {
                 Type = this.ResourceTextBox.Text,

@@ -347,14 +347,22 @@ namespace Concierge.Interfaces.DetailsPageInterface
         {
             this.modifyLanguagesWindow.ShowAdd(Program.CcsFile.Character.Details.Languages);
             this.DrawLanguages();
-            this.LanguagesDataGrid.SetSelectedIndex(this.LanguagesDataGrid.LastIndex);
+
+            if (this.modifyLanguagesWindow.ItemsAdded)
+            {
+                this.LanguagesDataGrid.SetSelectedIndex(this.LanguagesDataGrid.LastIndex);
+            }
         }
 
         private void AddResourcesButton_Click(object sender, RoutedEventArgs e)
         {
             this.modifyClassResourceWindow.ShowAdd(Program.CcsFile.Character.ClassResources);
             this.DrawResources();
-            this.ResourcesDataGrid.SetSelectedIndex(this.ResourcesDataGrid.LastIndex);
+
+            if (this.modifyClassResourceWindow.ItemsAdded)
+            {
+                this.ResourcesDataGrid.SetSelectedIndex(this.ResourcesDataGrid.LastIndex);
+            }
         }
 
         private void DeleteLanguagesButton_Click(object sender, RoutedEventArgs e)

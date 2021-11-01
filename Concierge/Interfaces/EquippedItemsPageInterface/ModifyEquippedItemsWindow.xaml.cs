@@ -30,6 +30,8 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
 
         public event ApplyChangesEventHandler ApplyChanges;
 
+        public bool ItemsAdded { get; private set; }
+
         private ConciergeWindowResult Result { get; set; }
 
         public ConciergeWindowResult ShowWizardSetup()
@@ -50,6 +52,7 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
             this.ItemComboBox.ItemsSource = EquippedItems.Equipable;
             this.ApplyButton.Visibility = Visibility.Visible;
             this.OkButton.Visibility = Visibility.Visible;
+            this.ItemsAdded = false;
 
             this.ShowDialog();
         }
@@ -90,6 +93,7 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
             }
 
             var slot = (EquipmentSlot)Enum.Parse(typeof(EquipmentSlot), this.SlotComboBox.Text);
+            this.ItemsAdded = true;
 
             Program.CcsFile.Character.EquippedItems.Equip(item, slot);
 
