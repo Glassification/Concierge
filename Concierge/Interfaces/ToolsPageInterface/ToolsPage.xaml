@@ -51,7 +51,7 @@
 
             <!--Content-->
             <Grid Grid.Row="1"
-                  Background="#ff06011f"
+                  Background="#000917"
                   Margin="3, 0, 3, 3">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="7*"/>

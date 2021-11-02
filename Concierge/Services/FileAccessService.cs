@@ -64,14 +64,14 @@ namespace Concierge.Services
                 {
                     ccsFile.AbsolutePath = this.saveFileDialog.FileName;
                     CharacterReadWriter.Write(ccsFile);
+                    this.saveStatusWindow.ShowWindow();
                 }
             }
             else
             {
                 CharacterReadWriter.Write(ccsFile);
+                this.saveStatusWindow.ShowWindow();
             }
-
-            this.saveStatusWindow.ShowWindow();
         }
     }
 }

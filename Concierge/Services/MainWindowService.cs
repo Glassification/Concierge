@@ -6,6 +6,7 @@ namespace Concierge.Services
 {
     using System.Windows;
     using System.Windows.Controls;
+    using System.Windows.Input;
     using System.Windows.Media;
 
     using Concierge.Character;
@@ -31,8 +32,8 @@ namespace Concierge.Services
             var packIcon = new PackIcon()
             {
                 Kind = packIconKind,
-                Height = 25,
-                Width = 25,
+                Height = 28,
+                Width = 28,
                 Margin = new Thickness(10),
             };
             var textBlock = new TextBlock()
@@ -40,6 +41,7 @@ namespace Concierge.Services
                 Text = pageName,
                 VerticalAlignment = VerticalAlignment.Center,
                 Margin = new Thickness(20, 10, 20, 10),
+                FontSize = 12,
             };
             var stackPanel = new StackPanel()
             {
@@ -56,6 +58,8 @@ namespace Concierge.Services
 
             listViewItem.Content = stackPanel;
             listViewItem.Selected += this.SelectedEvent;
+            listViewItem.MouseEnter += this.ListViewItem_MouseEnter;
+            listViewItem.MouseLeave += this.ListViewItem_MouseLeave;
 
             return listViewItem;
         }
@@ -121,6 +125,16 @@ namespace Concierge.Services
                 Stretch = characterImage.Stretch,
                 Margin = new Thickness(5, 5, 0, 5),
             };
+        }
+
+        private void ListViewItem_MouseEnter(object sender, MouseEventArgs e)
+        {
+            Mouse.OverrideCursor = Cursors.Hand;
+        }
+
+        private void ListViewItem_MouseLeave(object sender, MouseEventArgs e)
+        {
+            Mouse.OverrideCursor = Cursors.Arrow;
         }
     }
 }

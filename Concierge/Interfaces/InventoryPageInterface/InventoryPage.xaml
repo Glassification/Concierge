@@ -10,7 +10,7 @@
       Title="InventoryPage"
       Style="{StaticResource PageXboxDasboardStyle}">
 
-    <Grid Background="#ff06011f" Margin="3">
+    <Grid Background="#000917" Margin="3">
         <Grid.RowDefinitions>
             <RowDefinition Height="7*"/>
             <RowDefinition Height="93*"/>

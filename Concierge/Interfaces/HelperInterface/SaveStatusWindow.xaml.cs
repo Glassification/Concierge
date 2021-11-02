@@ -19,9 +19,6 @@ namespace Concierge.Interfaces.HelperInterface
         {
             this.InitializeComponent();
 
-            this.Left = SystemParameters.PrimaryScreenWidth - this.Width - MarginOffset;
-            this.Top = SystemParameters.PrimaryScreenHeight - this.Height - MarginOffset;
-
             this.ProgressBarFiller = new BackgroundWorker
             {
                 WorkerReportsProgress = true,
@@ -35,7 +32,10 @@ namespace Concierge.Interfaces.HelperInterface
 
         public void ShowWindow()
         {
+            this.Left = SystemParameters.PrimaryScreenWidth - this.Width - MarginOffset;
+            this.Top = SystemParameters.PrimaryScreenHeight - this.Height - MarginOffset;
             this.ProgressBarFiller.RunWorkerAsync();
+
             this.ShowDialog();
         }
 

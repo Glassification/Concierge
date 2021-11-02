@@ -128,77 +128,230 @@
                         <materialDesign:PopupBox
                             x:Name="PopupBoxControl"
                             PlacementMode="BottomAndAlignRightEdges"
-                            Foreground="White"
-                            StaysOpen="False" 
+                            StaysOpen="False"
                             Margin="10">
-                            <StackPanel Width="200" Background="#FF191919">
-                                <Button x:Name="ButtonNewCharacter" Click="ButtonNewCharacter_Click">
+                            <StackPanel Width="200" Background="#191919">
+                                <Button 
+                                    x:Name="ButtonNewCharacter" 
+                                    Click="ButtonNewCharacter_Click" 
+                                    Style="{StaticResource ConciergePopupButtonStyle}"
+                                    HorizontalAlignment="Stretch">
                                     <StackPanel Orientation="Horizontal">
-                                        <materialDesign:PackIcon Kind="FileDocument" Foreground="#0081a7" Height="25" Width="25" Margin="0 10"/>
-                                        <TextBlock Text="New" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="20 10"/>
+                                        <materialDesign:PackIcon 
+                                            Kind="FileDocument" 
+                                            Foreground="#0081a7" 
+                                            Height="25" 
+                                            Width="25" 
+                                            Margin="0 10"/>
+                                        <TextBlock 
+                                            Text="New" 
+                                            Foreground="White" 
+                                            VerticalAlignment="Center" 
+                                            HorizontalAlignment="Left" 
+                                            Margin="20 10"/>
                                     </StackPanel>
                                 </Button>
-                                <Button x:Name="ButtonOpenCharacter" Click="ButtonOpenCharacter_Click">
+                                <Button 
+                                    x:Name="ButtonOpenCharacter" 
+                                    Click="ButtonOpenCharacter_Click"
+                                    Style="{StaticResource ConciergePopupButtonStyle}"
+                                    HorizontalAlignment="Stretch">
                                     <StackPanel Orientation="Horizontal">
-                                        <materialDesign:PackIcon Kind="Folder" Foreground="#0081a7" Height="25" Width="25" Margin="0 10"/>
-                                        <TextBlock Text="Open..." Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="20 10"/>
+                                        <materialDesign:PackIcon 
+                                            Kind="Folder" 
+                                            Foreground="#0081a7"
+                                            Height="25" 
+                                            Width="25" 
+                                            Margin="0 10"/>
+                                        <TextBlock 
+                                            Text="Open..." 
+                                            Foreground="White" 
+                                            VerticalAlignment="Center" 
+                                            HorizontalAlignment="Left" 
+                                            Margin="20 10"/>
                                     </StackPanel>
                                 </Button>
-                                <Button x:Name="ButtonSaveCharacter" Click="ButtonSaveCharacter_Click">
+                                <Button 
+                                    x:Name="ButtonSaveCharacter" 
+                                    Click="ButtonSaveCharacter_Click"
+                                    Style="{StaticResource ConciergePopupButtonStyle}"
+                                    HorizontalAlignment="Stretch">
                                     <StackPanel Orientation="Horizontal">
-                                        <materialDesign:PackIcon Kind="ContentSave" Foreground="#0081a7" Height="25" Width="25" Margin="0 10"/>
-                                        <TextBlock Text="Save" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="20 10"/>
+                                        <materialDesign:PackIcon 
+                                            Kind="ContentSave" 
+                                            Foreground="#0081a7" 
+                                            Height="25" 
+                                            Width="25" 
+                                            Margin="0 10"/>
+                                        <TextBlock 
+                                            Text="Save" 
+                                            Foreground="White" 
+                                            VerticalAlignment="Center" 
+                                            HorizontalAlignment="Left" 
+                                            Margin="20 10"/>
                                     </StackPanel>
                                 </Button>
-                                <Button x:Name="ButtonSaveCharacterAs" Click="ButtonSaveCharacterAs_Click">
+                                <Button 
+                                    x:Name="ButtonSaveCharacterAs" 
+                                    Click="ButtonSaveCharacterAs_Click"
+                                    Style="{StaticResource ConciergePopupButtonStyle}"
+                                    HorizontalAlignment="Stretch">
                                     <StackPanel Orientation="Horizontal">
-                                        <materialDesign:PackIcon Kind="ContentSaveAll" Foreground="#0081a7" Height="25" Width="25" Margin="0 10"/>
-                                        <TextBlock Text="Save As..." Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="20 10"/>
+                                        <materialDesign:PackIcon 
+                                            Kind="ContentSaveAll" 
+                                            Foreground="#0081a7" 
+                                            Height="25" 
+                                            Width="25" 
+                                            Margin="0 10"/>
+                                        <TextBlock 
+                                            Text="Save As..." 
+                                            Foreground="White" 
+                                            VerticalAlignment="Center" 
+                                            HorizontalAlignment="Left" 
+                                            Margin="20 10"/>
                                     </StackPanel>
                                 </Button>
                                 <Separator Foreground="White"/>
-                                <Button x:Name="ButtonLongRest" Click="ButtonLongRest_Click">
+                                <Button 
+                                    x:Name="ButtonLongRest" 
+                                    Click="ButtonLongRest_Click"
+                                    Style="{StaticResource ConciergePopupButtonStyle}"
+                                    HorizontalAlignment="Stretch">
                                     <StackPanel Orientation="Horizontal">
-                                        <materialDesign:PackIcon Kind="Sleep" Foreground="#00afb9" Height="25" Width="25" Margin="0 10"/>
-                                        <TextBlock Text="Long Rest" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="20 10"/>
+                                        <materialDesign:PackIcon 
+                                            Kind="Sleep" 
+                                            Foreground="#00afb9" 
+                                            Height="25" 
+                                            Width="25" 
+                                            Margin="0 10"/>
+                                        <TextBlock 
+                                            Text="Long Rest" 
+                                            Foreground="White" 
+                                            VerticalAlignment="Center" 
+                                            HorizontalAlignment="Left" 
+                                            Margin="20 10"/>
                                     </StackPanel>
                                 </Button>
-                                <Button x:Name="CharacterCreationButton" Click="CharacterCreationButton_Click">
+                                <Button 
+                                    x:Name="CharacterCreationButton" 
+                                    Click="CharacterCreationButton_Click"
+                                    Style="{StaticResource ConciergePopupButtonStyle}"
+                                    HorizontalAlignment="Stretch">
                                     <StackPanel Orientation="Horizontal">
-                                        <materialDesign:PackIcon Kind="Creation" Foreground="#00afb9" Height="25" Width="25" Margin="0 10"/>
-                                        <TextBlock Text="Create Character..." Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="20 10"/>
+                                        <materialDesign:PackIcon 
+                                            Kind="Creation" 
+                                            Foreground="#00afb9" 
+                                            Height="25" 
+                                            Width="25" 
+                                            Margin="0 10"/>
+                                        <TextBlock 
+                                            Text="Create Character..." 
+                                            Foreground="White" 
+                                            VerticalAlignment="Center" 
+                                            HorizontalAlignment="Left" 
+                                            Margin="20 10"/>
                                     </StackPanel>
                                 </Button>
-                                <Button x:Name="ButtonProperties" Click="PropertiesButton_Click">
+                                <Button 
+                                    x:Name="ButtonProperties" 
+                                    Click="PropertiesButton_Click"
+                                    Style="{StaticResource ConciergePopupButtonStyle}"
+                                    HorizontalAlignment="Stretch">
                                     <StackPanel Orientation="Horizontal">
-                                        <materialDesign:PackIcon Kind="SmartCardOutline" Foreground="#00afb9" Height="25" Width="25" Margin="0 10"/>
-                                        <TextBlock Text="Properties..." Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="20 10"/>
+                                        <materialDesign:PackIcon 
+                                            Kind="SmartCardOutline" 
+                                            Foreground="#00afb9" 
+                                            Height="25" 
+                                            Width="25" 
+                                            Margin="0 10"/>
+                                        <TextBlock 
+                                            Text="Properties..." 
+                                            Foreground="White" 
+                                            VerticalAlignment="Center" 
+                                            HorizontalAlignment="Left" 
+                                            Margin="20 10"/>
                                     </StackPanel>
                                 </Button>
-                                <Button x:Name="IconButton" Click="IconButton_Click">
+                                <Button 
+                                    x:Name="IconButton" 
+                                    Click="IconButton_Click"
+                                    Style="{StaticResource ConciergePopupButtonStyle}"
+                                    HorizontalAlignment="Stretch">
                                     <StackPanel Orientation="Horizontal">
-                                        <materialDesign:PackIcon Kind="ImagePlus" Foreground="#00afb9" Height="25" Width="25" Margin="0 10"/>
-                                        <TextBlock Text="Character Icon..." Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="20 10"/>
+                                        <materialDesign:PackIcon 
+                                            Kind="ImagePlus" 
+                                            Foreground="#00afb9" 
+                                            Height="25" 
+                                            Width="25" 
+                                            Margin="0 10"/>
+                                        <TextBlock 
+                                            Text="Character Icon..." 
+                                            Foreground="White" 
+                                            VerticalAlignment="Center" 
+                                            HorizontalAlignment="Left" 
+                                            Margin="20 10"/>
                                     </StackPanel>
                                 </Button>
                                 <Separator Foreground="White"/>
-                                <Button Width="500" x:Name="SearchButton" Click="SearchButton_Click">
+                                <Button
+                                    x:Name="SearchButton" 
+                                    Click="SearchButton_Click"
+                                    Style="{StaticResource ConciergePopupButtonStyle}"
+                                    HorizontalAlignment="Stretch">
                                     <StackPanel Orientation="Horizontal">
-                                        <materialDesign:PackIcon Kind="FileSearch" Foreground="#fed9b7" Height="25" Width="25" Margin="0 10"/>
-                                        <TextBlock Text="Search..." Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="20 10"/>
+                                        <materialDesign:PackIcon 
+                                            Kind="FileSearch" 
+                                            Foreground="#fed9b7" 
+                                            Height="25" 
+                                            Width="25" 
+                                            Margin="0 10"/>
+                                        <TextBlock 
+                                            Text="Search..." 
+                                            Foreground="White" 
+                                            VerticalAlignment="Center" 
+                                            HorizontalAlignment="Left" 
+                                            Margin="20 10"/>
                                     </StackPanel>
                                 </Button>
-                                <Button x:Name="SettingsButton" Click="SettingsButton_Click">
+                                <Button 
+                                    x:Name="SettingsButton" 
+                                    Click="SettingsButton_Click"
+                                    Style="{StaticResource ConciergePopupButtonStyle}"
+                                    HorizontalAlignment="Stretch">
                                     <StackPanel Orientation="Horizontal">
-                                        <materialDesign:PackIcon Kind="Settings" Foreground="#fed9b7" Height="25" Width="25" Margin="0 10"/>
-                                        <TextBlock Text="Settings..." Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="20 10"/>
+                                        <materialDesign:PackIcon 
+                                            Kind="Settings" 
+                                            Foreground="#fed9b7" 
+                                            Height="25"
+                                            Width="25" 
+                                            Margin="0 10"/>
+                                        <TextBlock 
+                                            Text="Settings..." 
+                                            Foreground="White" 
+                                            VerticalAlignment="Center" 
+                                            HorizontalAlignment="Left" 
+                                            Margin="20 10"/>
                                     </StackPanel>
                                 </Button>
                                 <Separator Foreground="White"/>
-                                <Button x:Name="AboutButton" Click="AboutButton_Click">
+                                <Button 
+                                    x:Name="AboutButton" 
+                                    Click="AboutButton_Click"
+                                    Style="{StaticResource ConciergePopupButtonStyle}"
+                                    HorizontalAlignment="Stretch">
                                     <StackPanel Orientation="Horizontal">
-                                        <materialDesign:PackIcon Kind="About" Foreground="#f07167" Height="25" Width="25" Margin="0 10"/>
-                                        <TextBlock Text="About..." Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="20 10"/>
+                                        <materialDesign:PackIcon 
+                                            Kind="About" 
+                                            Foreground="#f07167" 
+                                            Height="25"
+                                            Width="25" 
+                                            Margin="0 10"/>
+                                        <TextBlock 
+                                            Text="About..." 
+                                            Foreground="White" 
+                                            VerticalAlignment="Center" 
+                                            HorizontalAlignment="Left" 
+                                            Margin="20 10"/>
                                     </StackPanel>
                                 </Button>
                             </StackPanel>
