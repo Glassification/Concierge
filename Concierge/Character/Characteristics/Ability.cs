@@ -6,7 +6,7 @@ namespace Concierge.Character.Characteristics
 {
     using System;
 
-    public class Ability : IConciergeList
+    public class Ability
     {
         public Ability()
         {

@@ -8,7 +8,7 @@ namespace Concierge.Character.Characteristics
 
     using Newtonsoft.Json;
 
-    public class Language : IConciergeList
+    public class Language
     {
         public Language()
         {

@@ -8,7 +8,7 @@ namespace Concierge.Character.Items
 
     using Concierge.Character.Enums;
 
-    public class Ammunition : IConciergeList
+    public class Ammunition
     {
         public Ammunition()
         {

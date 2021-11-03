@@ -198,7 +198,7 @@ namespace Concierge.Character.Items
                 Program.CcsFile.Character.Inventories.Remove(item);
             }
 
-            return item.Copy();
+            return item.Copy() as Inventory;
         }
     }
 }

@@ -1,10 +1,11 @@
-﻿// <copyright file="IConciergeList.cs" company="Thomas Beckett">
+﻿// <copyright file="ICopyable.cs" company="Thomas Beckett">
 // Copyright (c) Thomas Beckett. All rights reserved.
 // </copyright>
 
 namespace Concierge.Character
 {
-    public interface IConciergeList
+    public interface ICopyable
     {
+        object Copy();
     }
 }

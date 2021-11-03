@@ -10,7 +10,7 @@ namespace Concierge.Character.Items
     using Concierge.Utility;
     using Newtonsoft.Json;
 
-    public class Weapon : IConciergeList
+    public class Weapon
     {
         public Weapon()
         {
