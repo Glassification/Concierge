@@ -62,13 +62,11 @@ namespace Concierge.Interfaces.HelperInterface
 
             if (ConciergeSettings.AutosaveEnabled)
             {
-                this.IntervalTextBox.IsEnabled = true;
-                this.AutosaveInterval.IsEnabled = true;
+                this.EnableAutosaveControls();
             }
             else
             {
-                this.IntervalTextBox.IsEnabled = false;
-                this.AutosaveInterval.IsEnabled = false;
+                this.DisableAutosaveControls();
             }
 
             this.AutosaveCheckBox.UpdatedValue();
@@ -104,6 +102,22 @@ namespace Concierge.Interfaces.HelperInterface
             ConciergeSettings.UpdateSettings(conciergeSettings);
 
             return true;
+        }
+
+        private void EnableAutosaveControls()
+        {
+            this.IntervalTextBox.IsEnabled = true;
+            this.AutosaveInterval.IsEnabled = true;
+            this.IntervalTextBox.Opacity = 1;
+            this.AutosaveInterval.Opacity = 1;
+        }
+
+        private void DisableAutosaveControls()
+        {
+            this.IntervalTextBox.IsEnabled = false;
+            this.AutosaveInterval.IsEnabled = false;
+            this.IntervalTextBox.Opacity = 0.5;
+            this.AutosaveInterval.Opacity = 0.5;
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
@@ -147,14 +161,12 @@ namespace Concierge.Interfaces.HelperInterface
 
         private void AutosaveCheckBox_Checked(object sender, RoutedEventArgs e)
         {
-            this.IntervalTextBox.IsEnabled = true;
-            this.AutosaveInterval.IsEnabled = true;
+            this.EnableAutosaveControls();
         }
 
         private void AutosaveCheckBox_Unchecked(object sender, RoutedEventArgs e)
         {
-            this.IntervalTextBox.IsEnabled = false;
-            this.AutosaveInterval.IsEnabled = false;
+            this.DisableAutosaveControls();
         }
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)

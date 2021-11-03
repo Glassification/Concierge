@@ -42,6 +42,11 @@ namespace Concierge.Utility
 
         public void AddCommand(Command command)
         {
+            if (command is null)
+            {
+                return;
+            }
+
             this.UndoStack.Push(command);
             this.RedoStack.Clear();
 
