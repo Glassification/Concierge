@@ -12,6 +12,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
 
     using Concierge.Character.Characteristics;
     using Concierge.Character.Enums;
+    using Concierge.Commands;
     using Concierge.Interfaces.Enums;
     using Concierge.Utility;
 
@@ -68,20 +69,25 @@ namespace Concierge.Interfaces.OverviewPageInterface
             this.BaseMovementUpDown.UpdatingValue();
 
             this.InitiativeTextBlock.Text = Program.CcsFile.Character.Initiative.ToString();
-            this.InitiativeBonusUpDown.Value = Program.CcsFile.Character.Details.InitiativeBonus;
+            this.InitiativeBonusUpDown.Value = Program.CcsFile.Character.Senses.InitiativeBonus;
             this.PerceptionTextBlock.Text = Program.CcsFile.Character.PassivePerception.ToString();
-            this.PerceptionBonusUpDown.Value = Program.CcsFile.Character.Details.PerceptionBonus;
-            this.VisionComboBox.Text = Program.CcsFile.Character.Details.Vision.ToString();
-            this.MovementTextBlock.Text = Program.CcsFile.Character.Details.Movement.ToString();
-            this.BaseMovementUpDown.Value = Program.CcsFile.Character.Details.BaseMovement;
+            this.PerceptionBonusUpDown.Value = Program.CcsFile.Character.Senses.PerceptionBonus;
+            this.VisionComboBox.Text = Program.CcsFile.Character.Senses.Vision.ToString();
+            this.MovementTextBlock.Text = Program.CcsFile.Character.Senses.Movement.ToString();
+            this.BaseMovementUpDown.Value = Program.CcsFile.Character.Senses.BaseMovement;
         }
 
         private void UpdateSenses()
         {
-            Program.CcsFile.Character.Details.InitiativeBonus = this.InitiativeBonusUpDown.Value ?? 0;
-            Program.CcsFile.Character.Details.PerceptionBonus = this.PerceptionBonusUpDown.Value ?? 0;
-            Program.CcsFile.Character.Details.Vision = (VisionTypes)Enum.Parse(typeof(VisionTypes), this.VisionComboBox.Text);
-            Program.CcsFile.Character.Details.BaseMovement = this.BaseMovementUpDown.Value ?? 0;
+            var senses = Program.CcsFile.Character.Senses;
+            var oldItem = senses.DeepCopy() as Senses;
+
+            senses.InitiativeBonus = this.InitiativeBonusUpDown.Value ?? 0;
+            senses.PerceptionBonus = this.PerceptionBonusUpDown.Value ?? 0;
+            senses.Vision = (VisionTypes)Enum.Parse(typeof(VisionTypes), this.VisionComboBox.Text);
+            senses.BaseMovement = this.BaseMovementUpDown.Value ?? 0;
+
+            Program.UndoRedoService.AddCommand(new EditCommand<Senses>(senses, oldItem));
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
@@ -130,7 +136,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
         {
             this.InitiativeTextBlock.Text = (Utilities.CalculateBonus(Program.CcsFile.Character.Attributes.Dexterity) + (this.InitiativeBonusUpDown.Value ?? 0)).ToString();
             this.PerceptionTextBlock.Text = (Constants.BasePerception + Program.CcsFile.Character.Skill.Perception.Bonus + (this.PerceptionBonusUpDown.Value ?? 0)).ToString();
-            this.MovementTextBlock.Text = Details.GetMovement(this.BaseMovementUpDown.Value ?? 0).ToString();
+            this.MovementTextBlock.Text = Senses.GetMovement(this.BaseMovementUpDown.Value ?? 0).ToString();
         }
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)

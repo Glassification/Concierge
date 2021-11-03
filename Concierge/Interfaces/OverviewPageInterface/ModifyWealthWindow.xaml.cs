@@ -8,6 +8,8 @@ namespace Concierge.Interfaces.OverviewPageInterface
     using System.Windows;
     using System.Windows.Input;
 
+    using Concierge.Character.Statuses;
+    using Concierge.Commands;
     using Concierge.Interfaces.Enums;
 
     /// <summary>
@@ -101,13 +103,18 @@ namespace Concierge.Interfaces.OverviewPageInterface
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Modify();
-            this.Result = ConciergeWindowResult.OK;
 
-            Program.CcsFile.Character.Wealth.Copper = this.CP;
-            Program.CcsFile.Character.Wealth.Silver = this.SP;
-            Program.CcsFile.Character.Wealth.Electrum = this.EP;
-            Program.CcsFile.Character.Wealth.Gold = this.GP;
-            Program.CcsFile.Character.Wealth.Platinum = this.PP;
+            this.Result = ConciergeWindowResult.OK;
+            var wealth = Program.CcsFile.Character.Wealth;
+            var oldItem = wealth.DeepCopy() as Wealth;
+
+            wealth.Copper = this.CP;
+            wealth.Silver = this.SP;
+            wealth.Electrum = this.EP;
+            wealth.Gold = this.GP;
+            wealth.Platinum = this.PP;
+
+            Program.UndoRedoService.AddCommand(new EditCommand<Wealth>(wealth, oldItem));
 
             this.Hide();
         }

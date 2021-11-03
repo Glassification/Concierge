@@ -162,7 +162,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
         {
             this.LanguagesDataGrid.Items.Clear();
 
-            foreach (var language in Program.CcsFile.Character.Details.Languages)
+            foreach (var language in Program.CcsFile.Character.Languages)
             {
                 this.LanguagesDataGrid.Items.Add(language);
             }
@@ -352,7 +352,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
 
         private void AddLanguagesButton_Click(object sender, RoutedEventArgs e)
         {
-            this.modifyLanguagesWindow.ShowAdd(Program.CcsFile.Character.Details.Languages);
+            this.modifyLanguagesWindow.ShowAdd(Program.CcsFile.Character.Languages);
             this.DrawLanguages();
 
             if (this.modifyLanguagesWindow.ItemsAdded)
@@ -381,8 +381,8 @@ namespace Concierge.Interfaces.DetailsPageInterface
                 var language = this.LanguagesDataGrid.SelectedItem as Language;
                 var index = this.LanguagesDataGrid.SelectedIndex;
 
-                Program.UndoRedoService.AddCommand(new DeleteCommand<Language>(Program.CcsFile.Character.Details.Languages, language, index));
-                Program.CcsFile.Character.Details.Languages.Remove(language);
+                Program.UndoRedoService.AddCommand(new DeleteCommand<Language>(Program.CcsFile.Character.Languages, language, index));
+                Program.CcsFile.Character.Languages.Remove(language);
                 this.DrawLanguages();
                 this.LanguagesDataGrid.SetSelectedIndex(index);
             }
@@ -441,11 +441,11 @@ namespace Concierge.Interfaces.DetailsPageInterface
         private void LanguagesDataGrid_Sorted(object sender, RoutedEventArgs e)
         {
             Program.Modify();
-            Program.CcsFile.Character.Details.Languages.Clear();
+            Program.CcsFile.Character.Languages.Clear();
 
             foreach (var language in this.LanguagesDataGrid.Items)
             {
-                Program.CcsFile.Character.Details.Languages.Add(language as Language);
+                Program.CcsFile.Character.Languages.Add(language as Language);
             }
         }
 

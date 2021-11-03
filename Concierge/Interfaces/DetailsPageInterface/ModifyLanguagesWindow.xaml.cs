@@ -47,7 +47,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
         {
             this.Editing = false;
             this.HeaderTextBlock.Text = this.HeaderText;
-            this.Languages = Program.CcsFile.Character.Details.Languages;
+            this.Languages = Program.CcsFile.Character.Languages;
             this.ApplyButton.Visibility = Visibility.Visible;
             this.OkButton.Visibility = Visibility.Collapsed;
 

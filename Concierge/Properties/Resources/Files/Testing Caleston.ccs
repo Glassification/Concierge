@@ -169,29 +169,16 @@
       "Wisdom": 16,
       "Charisma": 16
     },
-    "Class1": {
-      "Name": "Rogue",
-      "Id": "b6d1237c-5a1b-4da7-9bec-4d246afc3124",
-      "Level": 9
-    },
-    "Class2": {
-      "Name": "",
-      "Id": "c4de623e-33f5-4fca-988f-7a1b73e9e423",
-      "Level": 0
-    },
-    "Class3": {
-      "Name": "",
-      "Id": "339a03b8-7e36-4443-b69f-065add2faf89",
-      "Level": 0
-    },
     "ClassResources": [],
     "Companion": {
       "Name": "",
       "ArmorClass": 0,
       "Vitality": {
-        "MaxHealth": 0,
-        "BaseHealth": 0,
-        "TemporaryHealth": 0,
+        "Health": {
+          "MaxHealth": 0,
+          "TemporaryHealth": 0,
+          "BaseHealth": 0
+        },
         "HitDice": {
           "TotalD6": 0,
           "TotalD8": 0,
@@ -237,44 +224,7 @@
       "Vision": 0,
       "Attacks": []
     },
-    "Details": {
-      "Name": "Caleston Nailo",
-      "Race": "Half-Elf",
-      "Background": "Criminal",
-      "Alignment": "Chaotic Good",
-      "Experience": "48000",
-      "Languages": [
-        {
-          "Name": "Common",
-          "Script": "Common",
-          "Speakers": "Humans, halflings, half-elves, half-orcs",
-          "Id": "83a9204c-aedf-4f33-bbff-1b4699da5ab9"
-        },
-        {
-          "Name": "Draconic",
-          "Script": "Draconic",
-          "Speakers": "Kobolds, troglodytes, lizardfolk, dragons, dragonborn",
-          "Id": "1ea68463-cf10-400d-abf7-27c0e01743c5"
-        },
-        {
-          "Name": "Elvish",
-          "Script": "Elvish",
-          "Speakers": "Elves",
-          "Id": "8a9e26a3-ccfe-4536-8042-ec8239d77ae2"
-        },
-        {
-          "Name": "Infernal",
-          "Script": "Infernal",
-          "Speakers": "Devils, Tieflings",
-          "Id": "b253e5a9-7329-45cb-8249-7260335857a0"
-        },
-        {
-          "Name": "Primordial",
-          "Script": "Dwarvish",
-          "Speakers": "Elementals",
-          "Id": "3fb6e4ca-c0b0-47d0-8704-0c3898281f5a"
-        }
-      ],
+    "Senses": {
       "InitiativeBonus": 5,
       "PerceptionBonus": 5,
       "BaseMovement": 30,
@@ -1090,9 +1040,11 @@
       "NinethUsed": 0
     },
     "Vitality": {
-      "MaxHealth": 71,
-      "BaseHealth": 71,
-      "TemporaryHealth": 0,
+      "Health": {
+        "MaxHealth": 71,
+        "TemporaryHealth": 0,
+        "BaseHealth": 69
+      },
       "HitDice": {
         "TotalD6": 0,
         "TotalD8": 9,
@@ -1269,6 +1221,60 @@
         "Type": 0,
         "Description": "Do all that stuff haste will allow you to do.",
         "Id": "65f0bb40-d014-4af9-8385-9547ccf0c961"
+      }
+    ],
+    "Properties": {
+      "Name": "Caleston Nailo",
+      "Race": "Half-Elf",
+      "Background": "Criminal",
+      "Alignment": "Chaotic Good",
+      "Experience": "",
+      "Class1": {
+        "Name": "Rogue",
+        "Id": "233fe4c9-5b31-488a-8abb-e595fe48cf6d",
+        "Level": 9
+      },
+      "Class2": {
+        "Name": "",
+        "Id": "5fe10784-debb-4189-ab7b-62e6ed980814",
+        "Level": 0
+      },
+      "Class3": {
+        "Name": "",
+        "Id": "896eaf37-a5a5-405d-a7a0-d5a9feb372b5",
+        "Level": 0
+      }
+    },
+    "Languages": [
+      {
+        "Name": "Common",
+        "Script": "Common",
+        "Speakers": "Humans, halflings, half-elves, half-orcs",
+        "Id": "c411c407-bfbf-4186-aac4-3d5bd2ce6070"
+      },
+      {
+        "Name": "Draconic",
+        "Script": "Draconic",
+        "Speakers": "Kobolds, troglodytes, lizardfolk, dragons, dragonborn",
+        "Id": "e6421ae7-ea9c-4fcd-ae26-03f120c82bb4"
+      },
+      {
+        "Name": "Elvish",
+        "Script": "Elvish",
+        "Speakers": "Elves",
+        "Id": "4fff9272-e3d5-4a64-9f36-a4eb44c2ca70"
+      },
+      {
+        "Name": "Infernal",
+        "Script": "Infernal",
+        "Speakers": "Devils, Tieflings",
+        "Id": "76efecf0-4077-46c3-afe9-daaf55f7e4c7"
+      },
+      {
+        "Name": "Primordial",
+        "Script": "Dwarvish",
+        "Speakers": "Elementals",
+        "Id": "9eff7d8e-42d3-49b3-9a81-d93a01b557b9"
       }
     ]
   },

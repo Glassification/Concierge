@@ -1,41 +1,21 @@
-﻿// <copyright file="Details.cs" company="Thomas Beckett">
+﻿// <copyright file="Senses.cs" company="Thomas Beckett">
 // Copyright (c) Thomas Beckett. All rights reserved.
 // </copyright>
 
 namespace Concierge.Character.Characteristics
 {
-    using System.Collections.Generic;
-
     using Concierge.Character.Enums;
     using Newtonsoft.Json;
 
-    public class Details
+    public class Senses : ICopyable
     {
-        public Details()
+        public Senses()
         {
-            this.Name = string.Empty;
-            this.Race = string.Empty;
-            this.Background = string.Empty;
-            this.Alignment = string.Empty;
-            this.Experience = string.Empty;
-            this.Languages = new List<Language>();
             this.InitiativeBonus = 0;
             this.PerceptionBonus = 0;
             this.BaseMovement = 0;
             this.Vision = VisionTypes.Normal;
         }
-
-        public string Name { get; set; }
-
-        public string Race { get; set; }
-
-        public string Background { get; set; }
-
-        public string Alignment { get; set; }
-
-        public string Experience { get; set; }
-
-        public List<Language> Languages { get; set; }
 
         public int InitiativeBonus { get; set; }
 
@@ -78,6 +58,17 @@ namespace Concierge.Character.Characteristics
 
                 return baseMovement;
             }
+        }
+
+        public ICopyable DeepCopy()
+        {
+            return new Senses()
+            {
+                InitiativeBonus = this.InitiativeBonus,
+                PerceptionBonus = this.PerceptionBonus,
+                BaseMovement = this.BaseMovement,
+                Vision = this.Vision,
+            };
         }
     }
 }

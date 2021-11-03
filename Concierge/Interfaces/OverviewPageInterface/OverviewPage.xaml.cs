@@ -116,7 +116,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
         private static void DisplayCharacterDeathWindow(ConciergeCharacter character)
         {
             ConciergeMessageBox.Show(
-                    $"{(character.Details.Name.IsNullOrWhiteSpace() ? "Your character" : character.Details.Name)} has died.",
+                    $"{(character.Properties.Name.IsNullOrWhiteSpace() ? "Your character" : character.Properties.Name)} has died.",
                     "Player Death",
                     ConciergeWindowButtons.Ok,
                     ConciergeWindowIcons.Alert);
@@ -167,8 +167,8 @@ namespace Concierge.Interfaces.OverviewPageInterface
         {
             this.InitiativeField.Text = Program.CcsFile.Character.Initiative.ToString();
             this.PassivePerceptionField.Text = Program.CcsFile.Character.PassivePerception.ToString();
-            this.VisionField.Text = Program.CcsFile.Character.Details.Vision.ToString();
-            this.MovementSpeedField.Text = Program.CcsFile.Character.Details.Movement.ToString();
+            this.VisionField.Text = Program.CcsFile.Character.Senses.Vision.ToString();
+            this.MovementSpeedField.Text = Program.CcsFile.Character.Senses.Movement.ToString();
         }
 
         private void DrawSavingThrows()
@@ -309,7 +309,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
             var vitality = Program.CcsFile.Character.Vitality;
 
             this.CurrentHpField.Text = vitality.CurrentHealth.ToString();
-            this.TotalHpField.Text = "/" + vitality.MaxHealth.ToString();
+            this.TotalHpField.Text = "/" + vitality.Health.MaxHealth.ToString();
 
             this.HpBackground.Foreground = Utilities.SetHealthStyle(vitality);
             this.TotalHpField.Foreground = Utilities.SetHealthStyle(vitality);
@@ -610,7 +610,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
 
         private void EditHealthButton_Click(object sender, RoutedEventArgs e)
         {
-            this.modifyHealthWindow.EditHealth(Program.CcsFile.Character.Vitality);
+            this.modifyHealthWindow.EditHealth(Program.CcsFile.Character.Vitality.Health);
             this.DrawHealth();
         }
 

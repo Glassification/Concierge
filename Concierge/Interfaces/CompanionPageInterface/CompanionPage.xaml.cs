@@ -70,7 +70,7 @@ namespace Concierge.Interfaces.CompanionPageInterface
 
         private static Brush SetHealthStyle()
         {
-            int third = Program.CcsFile.Character.Companion.Vitality.MaxHealth / 3;
+            int third = Program.CcsFile.Character.Companion.Vitality.Health.MaxHealth / 3;
             int hp = Program.CcsFile.Character.Companion.Vitality.CurrentHealth;
 
             return hp < third && hp > 0
@@ -124,7 +124,7 @@ namespace Concierge.Interfaces.CompanionPageInterface
         private void DrawHealth()
         {
             this.CurrentHpField.Text = Program.CcsFile.Character.Companion.Vitality.CurrentHealth.ToString();
-            this.TotalHpField.Text = "/" + Program.CcsFile.Character.Companion.Vitality.MaxHealth.ToString();
+            this.TotalHpField.Text = "/" + Program.CcsFile.Character.Companion.Vitality.Health.MaxHealth.ToString();
 
             this.HpBackground.Foreground = SetHealthStyle();
             this.TotalHpField.Foreground = SetHealthStyle();
@@ -244,7 +244,7 @@ namespace Concierge.Interfaces.CompanionPageInterface
 
         private void EditHealthButton_Click(object sender, RoutedEventArgs e)
         {
-            this.modifyHealthWindow.EditHealth(Program.CcsFile.Character.Companion.Vitality);
+            this.modifyHealthWindow.EditHealth(Program.CcsFile.Character.Companion.Vitality.Health);
             this.DrawHealth();
         }
 

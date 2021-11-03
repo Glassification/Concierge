@@ -10,6 +10,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
     using System.Windows.Input;
 
     using Concierge.Character.Characteristics;
+    using Concierge.Commands;
     using Concierge.Interfaces.Enums;
 
     /// <summary>
@@ -82,12 +83,16 @@ namespace Concierge.Interfaces.OverviewPageInterface
 
         private void UpdateAttributes()
         {
+            var oldItem = this.Attributes.DeepCopy() as Attributes;
+
             this.Attributes.Strength = this.StrengthUpDown.Value ?? 0;
             this.Attributes.Dexterity = this.DexterityUpDown.Value ?? 0;
             this.Attributes.Constitution = this.ConstitutionUpDown.Value ?? 0;
             this.Attributes.Intelligence = this.IntelligenceUpDown.Value ?? 0;
             this.Attributes.Wisdom = this.WisdomUpDown.Value ?? 0;
             this.Attributes.Charisma = this.CharismaUpDown.Value ?? 0;
+
+            Program.UndoRedoService.AddCommand(new EditCommand<Attributes>(this.Attributes, oldItem));
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)

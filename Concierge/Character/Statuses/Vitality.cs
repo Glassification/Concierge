@@ -10,19 +10,13 @@ namespace Concierge.Character.Statuses
 
     public class Vitality
     {
-        private int baseHealthField;
-
         public Vitality()
         {
-            this.MaxHealth = 0;
-            this.BaseHealth = 0;
-            this.TemporaryHealth = 0;
+            this.Health = new Health();
             this.HitDice = new HitDice();
             this.Conditions = new Conditions();
             this.DeathSavingThrows = new DeathSavingThrows();
         }
-
-        public int MaxHealth { get; set; }
 
         [JsonIgnore]
         public int CurrentHealth
@@ -31,9 +25,9 @@ namespace Concierge.Character.Statuses
             {
                 if (this.Conditions.Fatigued.Equals("Four") || this.Conditions.Fatigued.Equals("Five"))
                 {
-                    if (this.BaseHealth > this.MaxHealth / 2)
+                    if (this.Health.BaseHealth > this.Health.MaxHealth / 2)
                     {
-                        return this.MaxHealth / 2;
+                        return this.Health.MaxHealth / 2;
                     }
                 }
                 else if (this.Conditions.Fatigued.Equals("Six"))
@@ -41,24 +35,14 @@ namespace Concierge.Character.Statuses
                     return 0;
                 }
 
-                return this.BaseHealth + this.TemporaryHealth;
+                return this.Health.BaseHealth + this.Health.TemporaryHealth;
             }
         }
 
         [JsonIgnore]
-        public bool IsDead => this.CurrentHealth == -this.MaxHealth;
+        public bool IsDead => this.CurrentHealth == -this.Health.MaxHealth;
 
-        public int BaseHealth
-        {
-            get => this.baseHealthField;
-            set
-            {
-                var boundHp = Math.Min(value, this.MaxHealth);
-                this.baseHealthField = Math.Max(boundHp, -this.MaxHealth);
-            }
-        }
-
-        public int TemporaryHealth { get; set; }
+        public Health Health { get; set; }
 
         public HitDice HitDice { get; set; }
 
@@ -68,7 +52,7 @@ namespace Concierge.Character.Statuses
 
         public void ResetHealth()
         {
-            this.BaseHealth = this.MaxHealth;
+            this.Health.BaseHealth = this.Health.MaxHealth;
         }
 
         public void RegainHitDice()
@@ -81,21 +65,21 @@ namespace Concierge.Character.Statuses
 
         public void Damage(int damage)
         {
-            int oldTempHealth = this.TemporaryHealth;
+            int oldTempHealth = this.Health.TemporaryHealth;
 
-            this.TemporaryHealth -= damage;
+            this.Health.TemporaryHealth -= damage;
 
-            if (this.TemporaryHealth < 0)
+            if (this.Health.TemporaryHealth < 0)
             {
-                this.TemporaryHealth = 0;
+                this.Health.TemporaryHealth = 0;
                 damage -= oldTempHealth;
-                this.BaseHealth -= damage;
+                this.Health.BaseHealth -= damage;
             }
         }
 
         public void Heal(int heal)
         {
-            this.BaseHealth += heal;
+            this.Health.BaseHealth += heal;
         }
 
         private static int RegainHitDie(int spent)

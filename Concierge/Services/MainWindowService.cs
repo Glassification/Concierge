@@ -73,34 +73,34 @@ namespace Concierge.Services
                 stackPanel.Children.Add(GenerateCharacterIcon(character.CharacterIcon));
             }
 
-            if (!character.Details.Name.IsNullOrWhiteSpace())
+            if (!character.Properties.Name.IsNullOrWhiteSpace())
             {
-                stackPanel.Children.Add(GenerateTextBlock(character.Details.Name));
+                stackPanel.Children.Add(GenerateTextBlock(character.Properties.Name));
             }
 
-            if (!character.Details.Race.IsNullOrWhiteSpace())
+            if (!character.Properties.Race.IsNullOrWhiteSpace())
             {
-                stackPanel.Children.Add(GenerateTextBlock(character.Details.Race));
+                stackPanel.Children.Add(GenerateTextBlock(character.Properties.Race));
             }
 
-            if (!character.Details.Background.IsNullOrWhiteSpace())
+            if (!character.Properties.Background.IsNullOrWhiteSpace())
             {
-                stackPanel.Children.Add(GenerateTextBlock(character.Details.Background));
+                stackPanel.Children.Add(GenerateTextBlock(character.Properties.Background));
             }
 
-            if (!character.Details.Alignment.IsNullOrWhiteSpace())
+            if (!character.Properties.Alignment.IsNullOrWhiteSpace())
             {
-                stackPanel.Children.Add(GenerateTextBlock(character.Details.Alignment));
+                stackPanel.Children.Add(GenerateTextBlock(character.Properties.Alignment));
             }
 
-            if (character.Level > 0)
+            if (character.Properties.Level > 0)
             {
-                stackPanel.Children.Add(GenerateTextBlock($"Level {character.Level}"));
+                stackPanel.Children.Add(GenerateTextBlock($"Level {character.Properties.Level}"));
             }
 
-            if (!character.GetClasses.IsNullOrWhiteSpace())
+            if (!character.Properties.GetClasses.IsNullOrWhiteSpace())
             {
-                stackPanel.Children.Add(GenerateTextBlock(character.GetClasses));
+                stackPanel.Children.Add(GenerateTextBlock(character.Properties.GetClasses));
             }
         }
 

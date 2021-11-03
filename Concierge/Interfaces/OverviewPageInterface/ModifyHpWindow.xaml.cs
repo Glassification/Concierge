@@ -9,6 +9,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
     using System.Windows.Input;
 
     using Concierge.Character.Statuses;
+    using Concierge.Commands;
     using Concierge.Interfaces.Enums;
 
     /// <summary>
@@ -44,7 +45,9 @@ namespace Concierge.Interfaces.OverviewPageInterface
 
             if (this.Result == ConciergeWindowResult.OK)
             {
+                var oldItem = vitality.Health.DeepCopy() as Health;
                 vitality.Heal(this.HpUpDown.Value ?? 0);
+                Program.UndoRedoService.AddCommand(new EditCommand<Health>(vitality.Health, oldItem));
             }
         }
 
@@ -59,7 +62,9 @@ namespace Concierge.Interfaces.OverviewPageInterface
 
             if (this.Result == ConciergeWindowResult.OK)
             {
+                var oldItem = vitality.Health.DeepCopy() as Health;
                 vitality.Damage(this.HpUpDown.Value ?? 0);
+                Program.UndoRedoService.AddCommand(new EditCommand<Health>(vitality.Health, oldItem));
             }
         }
 

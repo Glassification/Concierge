@@ -9,6 +9,8 @@ namespace Concierge.Interfaces
     using System.Windows;
     using System.Windows.Input;
 
+    using Concierge.Character.Characteristics;
+    using Concierge.Commands;
     using Concierge.Interfaces.Enums;
     using Concierge.Utility;
 
@@ -69,38 +71,41 @@ namespace Concierge.Interfaces
 
         private void FillFields()
         {
-            var character = Program.CcsFile.Character;
+            var properties = Program.CcsFile.Character.Properties;
 
             this.Level1UpDown.UpdatingValue();
             this.Level2UpDown.UpdatingValue();
             this.Level3UpDown.UpdatingValue();
 
-            this.NameTextBox.Text = character.Details.Name;
-            this.RaceComboBox.Text = character.Details.Race;
-            this.BackgroundComboBox.Text = character.Details.Background;
-            this.AlignmentComboBox.Text = character.Details.Alignment;
-            this.Level1UpDown.Value = character.Class1.Level;
-            this.Level2UpDown.Value = character.Class2.Level;
-            this.Level3UpDown.Value = character.Class3.Level;
-            this.Class1ComboBox.Text = character.Class1.Name;
-            this.Class2ComboBox.Text = character.Class2.Name;
-            this.Class3ComboBox.Text = character.Class3.Name;
+            this.NameTextBox.Text = properties.Name;
+            this.RaceComboBox.Text = properties.Race;
+            this.BackgroundComboBox.Text = properties.Background;
+            this.AlignmentComboBox.Text = properties.Alignment;
+            this.Level1UpDown.Value = properties.Class1.Level;
+            this.Level2UpDown.Value = properties.Class2.Level;
+            this.Level3UpDown.Value = properties.Class3.Level;
+            this.Class1ComboBox.Text = properties.Class1.Name;
+            this.Class2ComboBox.Text = properties.Class2.Name;
+            this.Class3ComboBox.Text = properties.Class3.Name;
         }
 
         private void UpdateProperties()
         {
-            var character = Program.CcsFile.Character;
+            var properties = Program.CcsFile.Character.Properties;
+            var oldItem = properties.DeepCopy() as CharacterProperties;
 
-            character.Details.Name = this.NameTextBox.Text;
-            character.Details.Race = this.RaceComboBox.Text;
-            character.Details.Background = this.BackgroundComboBox.Text;
-            character.Details.Alignment = this.AlignmentComboBox.Text;
-            character.Class1.Level = this.Level1UpDown.Value ?? 0;
-            character.Class2.Level = this.Level2UpDown.Value ?? 0;
-            character.Class3.Level = this.Level3UpDown.Value ?? 0;
-            character.Class1.Name = this.Class1ComboBox.Text;
-            character.Class2.Name = this.Class2ComboBox.Text;
-            character.Class3.Name = this.Class3ComboBox.Text;
+            properties.Name = this.NameTextBox.Text;
+            properties.Race = this.RaceComboBox.Text;
+            properties.Background = this.BackgroundComboBox.Text;
+            properties.Alignment = this.AlignmentComboBox.Text;
+            properties.Class1.Level = this.Level1UpDown.Value ?? 0;
+            properties.Class2.Level = this.Level2UpDown.Value ?? 0;
+            properties.Class3.Level = this.Level3UpDown.Value ?? 0;
+            properties.Class1.Name = this.Class1ComboBox.Text;
+            properties.Class2.Name = this.Class2ComboBox.Text;
+            properties.Class3.Name = this.Class3ComboBox.Text;
+
+            Program.UndoRedoService.AddCommand(new EditCommand<CharacterProperties>(properties, oldItem));
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)

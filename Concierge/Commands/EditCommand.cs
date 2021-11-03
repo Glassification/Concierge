@@ -5,6 +5,7 @@
 namespace Concierge.Commands
 {
     using Concierge.Character;
+    using Concierge.Utility;
 
     public class EditCommand<T> : Command
     {
@@ -20,27 +21,43 @@ namespace Concierge.Commands
 
         private T OriginalItem { get; set; }
 
+        private int Depth { get; set; }
+
         public override void Redo()
         {
-            this.SetProperties(this.newItem);
+            this.Depth = 0;
+            this.SetProperties(this.newItem, this.OriginalItem);
         }
 
         public override void Undo()
         {
-            this.SetProperties(this.oldItem);
+            this.Depth = 0;
+            this.SetProperties(this.oldItem, this.OriginalItem);
         }
 
-        private void SetProperties(T item)
+        private void SetProperties(object item, object originalItem)
         {
+            this.Depth++;
+
             var properties = item.GetType().GetProperties();
             foreach (var property in properties)
             {
-                if (property.CanWrite)
+                if (property.CanWrite && property.CanRead)
                 {
                     var propertyValue = property.GetValue(item);
-                    property.SetValue(this.OriginalItem, propertyValue);
+
+                    if (propertyValue is ICopyable && this.Depth < Constants.MaxDepth)
+                    {
+                        this.SetProperties(propertyValue, property.GetValue(originalItem));
+                    }
+                    else
+                    {
+                        property.SetValue(originalItem, propertyValue);
+                    }
                 }
             }
+
+            this.Depth--;
         }
     }
 }

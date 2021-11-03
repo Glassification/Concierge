@@ -8,7 +8,7 @@ namespace Concierge.Character
 
     using Concierge.Utility;
 
-    public class CharacterClass
+    public class CharacterClass : ICopyable
     {
         private int level;
 
@@ -36,6 +36,16 @@ namespace Concierge.Character
                     }
                 }
             }
+        }
+
+        public ICopyable DeepCopy()
+        {
+            return new CharacterClass()
+            {
+                Name = this.Name,
+                Level = this.Level,
+                Id = this.Id,
+            };
         }
     }
 }

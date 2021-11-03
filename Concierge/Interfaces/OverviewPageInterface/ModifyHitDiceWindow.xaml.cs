@@ -10,6 +10,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
     using System.Windows.Input;
 
     using Concierge.Character.Statuses;
+    using Concierge.Commands;
     using Concierge.Interfaces.Enums;
 
     /// <summary>
@@ -87,6 +88,8 @@ namespace Concierge.Interfaces.OverviewPageInterface
 
         private void UpdateHitDice()
         {
+            var oldItem = this.HitDice.DeepCopy() as HitDice;
+
             this.HitDice.TotalD6 = this.TotalD6UpDown.Value ?? 0;
             this.HitDice.TotalD8 = this.TotalD8UpDown.Value ?? 0;
             this.HitDice.TotalD10 = this.TotalD10UpDown.Value ?? 0;
@@ -96,6 +99,8 @@ namespace Concierge.Interfaces.OverviewPageInterface
             this.HitDice.SpentD8 = this.UsedD8UpDown.Value ?? 0;
             this.HitDice.SpentD10 = this.UsedD10UpDown.Value ?? 0;
             this.HitDice.SpentD12 = this.UsedD12UpDown.Value ?? 0;
+
+            Program.UndoRedoService.AddCommand(new EditCommand<HitDice>(this.HitDice, oldItem));
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
