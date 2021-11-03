@@ -76,14 +76,15 @@
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderBrush" Value="Transparent"/>
         <Setter Property="BorderThickness" Value="1"/>
-        <Setter Property="Height" Value="55"/>
+        <Setter Property="Opacity" Value="1"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
                     <Border 
                         Background="{TemplateBinding Background}"
                         BorderBrush="{TemplateBinding BorderBrush}"
-                        BorderThickness="{TemplateBinding BorderThickness}">
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        Opacity="{TemplateBinding Opacity}">
                         <ContentPresenter HorizontalAlignment="Left" VerticalAlignment="Center" Margin="13,0,0,0"/>
                     </Border>
                 </ControlTemplate>
@@ -93,6 +94,9 @@
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="Background" Value="#1C3947"/>
                 <Setter Property="BorderBrush" Value="#227EA9"/>
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Opacity" Value="0.5"/>
             </Trigger>
         </Style.Triggers>
     </Style>

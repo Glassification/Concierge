@@ -56,6 +56,7 @@ namespace Concierge.Interfaces
         {
             this.InitializeComponent();
 
+            Program.UndoRedoService.StackChanged += this.UndoRedo_StackChanged;
             this.mainWindowService = new MainWindowService(this.ListViewItem_Selected);
             this.modifyPropertiesWindow.ApplyChanges += this.Window_ApplyChanges;
             this.modifyCharacterImageWindow.ApplyChanges += this.Window_ApplyChanges;
@@ -268,6 +269,18 @@ namespace Concierge.Interfaces
             this.IgnoreSecondPress = true;
         }
 
+        public void Redo()
+        {
+            Program.UndoRedoService.Redo();
+            this.DrawAll();
+        }
+
+        public void Undo()
+        {
+            Program.UndoRedoService.Undo();
+            this.DrawAll();
+        }
+
         public void PageSelection(IConciergePage conciergePage)
         {
             var page = conciergePage as Page;
@@ -474,6 +487,12 @@ namespace Concierge.Interfaces
                 case Key.OemPlus:
                     this.WindowState = WindowState.Maximized;
                     break;
+                case Key.Y:
+                    this.Redo();
+                    break;
+                case Key.Z:
+                    this.Undo();
+                    break;
                 case Key.D1:
                     this.MoveSelection(ConciergePage.Overview);
                     break;
@@ -677,6 +696,24 @@ namespace Concierge.Interfaces
             {
                 this.DragMove();
             }
+        }
+
+        private void ButtonRedo_Click(object sender, RoutedEventArgs e)
+        {
+            this.Redo();
+            this.IgnoreSecondPress = true;
+        }
+
+        private void ButtonUndo_Click(object sender, RoutedEventArgs e)
+        {
+            this.Undo();
+            this.IgnoreSecondPress = true;
+        }
+
+        private void UndoRedo_StackChanged(object sender, EventArgs e)
+        {
+            this.ButtonUndo.IsEnabled = Program.UndoRedoService.CanUndo;
+            this.ButtonRedo.IsEnabled = Program.UndoRedoService.CanRedo;
         }
     }
 }

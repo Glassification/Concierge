@@ -21,6 +21,7 @@ namespace Concierge
             Modified = true;
             Typing = false;
             ErrorService = new ErrorService(Logger);
+            UndoRedoService = new UndoRedoService();
         }
 
         public static CcsFile CcsFile { get; set; }
@@ -34,6 +35,8 @@ namespace Concierge
         public static Logger Logger { get; private set; }
 
         public static ErrorService ErrorService { get; private set; }
+
+        public static UndoRedoService UndoRedoService { get; private set; }
 
         public static void Modify()
         {

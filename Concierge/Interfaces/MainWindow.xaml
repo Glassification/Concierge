@@ -213,6 +213,49 @@
                                 </Button>
                                 <Separator Foreground="White"/>
                                 <Button 
+                                    x:Name="ButtonUndo"
+                                    IsEnabled="False"
+                                    Click="ButtonUndo_Click"
+                                    Style="{StaticResource ConciergePopupButtonStyle}"
+                                    HorizontalAlignment="Stretch">
+                                    <StackPanel Orientation="Horizontal">
+                                        <materialDesign:PackIcon 
+                                            Kind="Undo" 
+                                            Foreground="#00afb9" 
+                                            Height="25" 
+                                            Width="25" 
+                                            Margin="0 10"/>
+                                        <TextBlock 
+                                            Text="Undo" 
+                                            Foreground="White" 
+                                            VerticalAlignment="Center" 
+                                            HorizontalAlignment="Left" 
+                                            Margin="20 10"/>
+                                    </StackPanel>
+                                </Button>
+                                <Button 
+                                    x:Name="ButtonRedo"
+                                    IsEnabled="False"
+                                    Click="ButtonRedo_Click"
+                                    Style="{StaticResource ConciergePopupButtonStyle}"
+                                    HorizontalAlignment="Stretch">
+                                    <StackPanel Orientation="Horizontal">
+                                        <materialDesign:PackIcon 
+                                            Kind="Redo" 
+                                            Foreground="#00afb9" 
+                                            Height="25" 
+                                            Width="25" 
+                                            Margin="0 10"/>
+                                        <TextBlock 
+                                            Text="Redo" 
+                                            Foreground="White" 
+                                            VerticalAlignment="Center" 
+                                            HorizontalAlignment="Left" 
+                                            Margin="20 10"/>
+                                    </StackPanel>
+                                </Button>
+                                <Separator Foreground="White"/>
+                                <Button 
                                     x:Name="ButtonLongRest" 
                                     Click="ButtonLongRest_Click"
                                     Style="{StaticResource ConciergePopupButtonStyle}"
@@ -220,7 +263,7 @@
                                     <StackPanel Orientation="Horizontal">
                                         <materialDesign:PackIcon 
                                             Kind="Sleep" 
-                                            Foreground="#00afb9" 
+                                            Foreground="#fdfcdc" 
                                             Height="25" 
                                             Width="25" 
                                             Margin="0 10"/>
@@ -240,7 +283,7 @@
                                     <StackPanel Orientation="Horizontal">
                                         <materialDesign:PackIcon 
                                             Kind="Creation" 
-                                            Foreground="#00afb9" 
+                                            Foreground="#fdfcdc" 
                                             Height="25" 
                                             Width="25" 
                                             Margin="0 10"/>
@@ -260,7 +303,7 @@
                                     <StackPanel Orientation="Horizontal">
                                         <materialDesign:PackIcon 
                                             Kind="SmartCardOutline" 
-                                            Foreground="#00afb9" 
+                                            Foreground="#fdfcdc" 
                                             Height="25" 
                                             Width="25" 
                                             Margin="0 10"/>
@@ -280,7 +323,7 @@
                                     <StackPanel Orientation="Horizontal">
                                         <materialDesign:PackIcon 
                                             Kind="ImagePlus" 
-                                            Foreground="#00afb9" 
+                                            Foreground="#fdfcdc" 
                                             Height="25" 
                                             Width="25" 
                                             Margin="0 10"/>

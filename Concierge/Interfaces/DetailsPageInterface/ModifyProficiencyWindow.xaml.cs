@@ -49,6 +49,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
             this.ApplyButton.Visibility = Visibility.Visible;
             this.OkButton.Visibility = Visibility.Collapsed;
             this.ProficiencyComboBox.IsEnabled = true;
+            this.SelectedProficiencies = Program.CcsFile.Character.Proficiency;
 
             this.ClearFields();
             this.ShowDialog();

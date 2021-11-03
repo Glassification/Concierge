@@ -215,6 +215,11 @@ namespace Concierge.Interfaces.DetailsPageInterface
 
         private void DeleteProficiency(ConciergeDataGrid dataGrid)
         {
+            if (dataGrid?.SelectedItem is null)
+            {
+                return;
+            }
+
             Program.Modify();
 
             var item = dataGrid.SelectedItem as Proficiency;
