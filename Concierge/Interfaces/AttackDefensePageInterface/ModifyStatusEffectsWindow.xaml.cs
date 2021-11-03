@@ -13,6 +13,7 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
 
     using Concierge.Character.Enums;
     using Concierge.Character.Statuses;
+    using Concierge.Commands;
     using Concierge.Interfaces.Enums;
     using Concierge.Utility;
     using Concierge.Utility.Extensions;
@@ -114,21 +115,29 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
 
         private void UpdateStatusEffect()
         {
+            var oldItem = this.SelectedEffect.DeepCopy() as StatusEffect;
+
             this.SelectedEffect.Name = this.NameComboBox.Text;
             this.SelectedEffect.Type = (StatusEffectTypes)Enum.Parse(typeof(StatusEffectTypes), this.TypeComboBox.Text);
             this.SelectedEffect.Description = this.DescriptionTextBox.Text;
+
+            Program.UndoRedoService.AddCommand(new EditCommand<StatusEffect>(this.SelectedEffect, oldItem));
         }
 
         private StatusEffect ToStatusEffect()
         {
             this.ItemsAdded = true;
 
-            return new StatusEffect()
+            var effect = new StatusEffect()
             {
                 Name = this.NameComboBox.Text,
                 Type = (StatusEffectTypes)Enum.Parse(typeof(StatusEffectTypes), this.TypeComboBox.Text),
                 Description = this.DescriptionTextBox.Text,
             };
+
+            Program.UndoRedoService.AddCommand(new AddCommand<StatusEffect>(this.StatusEffects, effect));
+
+            return effect;
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)

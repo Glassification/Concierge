@@ -11,6 +11,7 @@ namespace Concierge.Interfaces.CompanionPageInterface
     using System.Windows.Media;
 
     using Concierge.Character.Items;
+    using Concierge.Commands;
     using Concierge.Interfaces.AttackDefensePageInterface;
     using Concierge.Interfaces.Enums;
     using Concierge.Interfaces.OverviewPageInterface;
@@ -234,6 +235,7 @@ namespace Concierge.Interfaces.CompanionPageInterface
                 var weapon = this.WeaponDataGrid.SelectedItem as Weapon;
                 var index = this.WeaponDataGrid.SelectedIndex;
 
+                Program.UndoRedoService.AddCommand(new DeleteCommand<Weapon>(Program.CcsFile.Character.Companion.Attacks, weapon, index));
                 Program.CcsFile.Character.Companion.Attacks.Remove(weapon);
                 this.DrawAttacks();
                 this.WeaponDataGrid.SetSelectedIndex(index);

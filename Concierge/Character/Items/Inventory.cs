@@ -42,7 +42,7 @@ namespace Concierge.Character.Items
             return this.Name;
         }
 
-        public object Copy()
+        public ICopyable DeepCopy()
         {
             return new Inventory()
             {

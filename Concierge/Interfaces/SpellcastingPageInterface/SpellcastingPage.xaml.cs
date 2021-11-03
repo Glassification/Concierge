@@ -12,6 +12,7 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
 
     using Concierge.Character.Enums;
     using Concierge.Character.Spellcasting;
+    using Concierge.Commands;
     using Concierge.Interfaces.Components;
     using Concierge.Interfaces.Enums;
     using Concierge.Utility;
@@ -243,6 +244,7 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
                 var magicClass = (MagicClass)this.MagicClassDataGrid.SelectedItem;
                 var index = this.MagicClassDataGrid.SelectedIndex;
 
+                Program.UndoRedoService.AddCommand(new DeleteCommand<MagicClass>(Program.CcsFile.Character.MagicClasses, magicClass, index));
                 Program.CcsFile.Character.MagicClasses.Remove(magicClass);
                 this.DrawMagicClasses();
                 this.MagicClassDataGrid.SetSelectedIndex(index);
@@ -254,6 +256,7 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
                 var spell = (Spell)this.SpellListDataGrid.SelectedItem;
                 var index = this.SpellListDataGrid.SelectedIndex;
 
+                Program.UndoRedoService.AddCommand(new DeleteCommand<Spell>(Program.CcsFile.Character.Spells, spell, index));
                 Program.CcsFile.Character.Spells.Remove(spell);
                 this.DrawSpellList();
                 this.SpellListDataGrid.SetSelectedIndex(index);

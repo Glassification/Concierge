@@ -12,6 +12,7 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
     using Concierge.Character.Enums;
     using Concierge.Character.Items;
     using Concierge.Character.Statuses;
+    using Concierge.Commands;
     using Concierge.Interfaces.Components;
     using Concierge.Interfaces.Enums;
 
@@ -212,6 +213,7 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
                 var ammo = (Ammunition)this.AmmoDataGrid.SelectedItem;
                 var index = this.AmmoDataGrid.SelectedIndex;
 
+                Program.UndoRedoService.AddCommand(new DeleteCommand<Ammunition>(Program.CcsFile.Character.Ammunitions, ammo, index));
                 Program.CcsFile.Character.Ammunitions.Remove(ammo);
                 this.DrawAmmoList();
                 this.AmmoDataGrid.SetSelectedIndex(index);
@@ -223,6 +225,7 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
                 var weapon = (Weapon)this.WeaponDataGrid.SelectedItem;
                 var index = this.WeaponDataGrid.SelectedIndex;
 
+                Program.UndoRedoService.AddCommand(new DeleteCommand<Weapon>(Program.CcsFile.Character.Weapons, weapon, index));
                 Program.CcsFile.Character.Weapons.Remove(weapon);
                 this.DrawWeaponList();
                 this.WeaponDataGrid.SetSelectedIndex(index);
@@ -312,6 +315,7 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
             var effect = (StatusEffect)this.StatusEffectsDataGrid.SelectedItem;
             var index = this.StatusEffectsDataGrid.SelectedIndex;
 
+            Program.UndoRedoService.AddCommand(new DeleteCommand<StatusEffect>(Program.CcsFile.Character.StatusEffects, effect, index));
             Program.CcsFile.Character.StatusEffects.Remove(effect);
             this.DrawStatusEffects();
             this.StatusEffectsDataGrid.SetSelectedIndex(index);

@@ -9,6 +9,7 @@ namespace Concierge.Interfaces.InventoryPageInterface
     using System.Windows.Controls;
 
     using Concierge.Character.Items;
+    using Concierge.Commands;
     using Concierge.Interfaces;
     using Concierge.Interfaces.Enums;
 
@@ -123,7 +124,9 @@ namespace Concierge.Interfaces.InventoryPageInterface
                 var inventory = (Inventory)this.InventoryDataGrid.SelectedItem;
                 var index = this.InventoryDataGrid.SelectedIndex;
 
+                Program.UndoRedoService.AddCommand(new DeleteCommand<Inventory>(Program.CcsFile.Character.Inventories, inventory, index));
                 Program.CcsFile.Character.Inventories.Remove(inventory);
+
                 this.DrawInventory();
                 this.InventoryDataGrid.SetSelectedIndex(index);
             }

@@ -9,6 +9,7 @@ namespace Concierge.Interfaces.AbilitiesPageInterface
     using System.Windows.Controls;
 
     using Concierge.Character.Characteristics;
+    using Concierge.Commands;
     using Concierge.Interfaces.Enums;
 
     /// <summary>
@@ -124,6 +125,7 @@ namespace Concierge.Interfaces.AbilitiesPageInterface
                 var ability = (Ability)this.AbilitiesDataGrid.SelectedItem;
                 var index = this.AbilitiesDataGrid.SelectedIndex;
 
+                Program.UndoRedoService.AddCommand(new DeleteCommand<Ability>(Program.CcsFile.Character.Abilities, ability, index));
                 Program.CcsFile.Character.Abilities.Remove(ability);
                 this.DrawAbilities();
                 this.AbilitiesDataGrid.SetSelectedIndex(index);

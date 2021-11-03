@@ -6,6 +6,6 @@ namespace Concierge.Character
 {
     public interface ICopyable
     {
-        object Copy();
+        ICopyable DeepCopy();
     }
 }

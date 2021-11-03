@@ -4,18 +4,29 @@
 
 namespace Concierge.Commands
 {
-    using System;
+    using System.Collections.Generic;
 
-    public class DeleteCommand : Command
+    public class DeleteCommand<T> : Command
     {
+        private readonly List<T> list;
+        private readonly T item;
+        private readonly int index;
+
+        public DeleteCommand(List<T> list, T item, int index)
+        {
+            this.list = list;
+            this.item = item;
+            this.index = index;
+        }
+
         public override void Redo()
         {
-            throw new NotImplementedException();
+            this.list.Remove(this.item);
         }
 
         public override void Undo()
         {
-            throw new NotImplementedException();
+            this.list.Insert(this.index, this.item);
         }
     }
 }

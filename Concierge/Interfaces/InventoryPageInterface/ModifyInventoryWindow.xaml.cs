@@ -12,6 +12,7 @@ namespace Concierge.Interfaces.InventoryPageInterface
     using System.Windows.Input;
 
     using Concierge.Character.Items;
+    using Concierge.Commands;
     using Concierge.Interfaces.Enums;
     using Concierge.Tools.Interface;
     using Concierge.Utility;
@@ -143,8 +144,7 @@ namespace Concierge.Interfaces.InventoryPageInterface
         private Inventory ToInventory()
         {
             this.ItemsAdded = true;
-
-            return new Inventory()
+            var item = new Inventory()
             {
                 Name = this.NameComboBox.Text,
                 Amount = this.AmountUpDown.Value ?? 0,
@@ -152,10 +152,16 @@ namespace Concierge.Interfaces.InventoryPageInterface
                 IsInBagOfHolding = this.BagOfHoldingCheckBox.IsChecked ?? false,
                 Note = this.NotesTextBox.Text,
             };
+
+            Program.UndoRedoService.AddCommand(new AddCommand<Inventory>(this.Items, item));
+
+            return item;
         }
 
         private void UpdateInventory(Inventory inventory)
         {
+            var oldItem = inventory.DeepCopy() as Inventory;
+
             inventory.Name = this.NameComboBox.Text;
             inventory.Amount = this.AmountUpDown.Value ?? 0;
             inventory.Weight = this.WeightUpDown.Value ?? 0.0;
@@ -179,6 +185,8 @@ namespace Concierge.Interfaces.InventoryPageInterface
             {
                 inventory.IsInBagOfHolding = this.BagOfHoldingCheckBox.IsChecked ?? false;
             }
+
+            Program.UndoRedoService.AddCommand(new EditCommand<Inventory>(inventory, oldItem));
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)

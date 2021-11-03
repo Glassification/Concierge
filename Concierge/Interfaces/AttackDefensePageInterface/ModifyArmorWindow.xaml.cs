@@ -12,6 +12,7 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
 
     using Concierge.Character.Enums;
     using Concierge.Character.Items;
+    using Concierge.Commands;
     using Concierge.Interfaces.Enums;
 
     /// <summary>
@@ -93,6 +94,8 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
 
         private void UpdateArmor(Armor armor)
         {
+            var oldItem = armor.DeepCopy() as Armor;
+
             armor.Equiped = this.EquipedTextBox.Text;
             armor.Type = (ArmorType)Enum.Parse(typeof(ArmorType), this.TypeComboBox.Text);
             armor.ArmorClass = (int)this.ArmorClassUpDown.Value;
@@ -104,6 +107,8 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
             armor.ShieldWeight = (double)this.ShieldWeightUpDown.Value;
             armor.MiscArmorClass = (int)this.MiscArmorClassUpDown.Value;
             armor.MagicArmorClass = (int)this.MagicArmorClassUpDown.Value;
+
+            Program.UndoRedoService.AddCommand(new EditCommand<Armor>(armor, oldItem));
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)

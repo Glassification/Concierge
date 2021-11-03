@@ -9,7 +9,7 @@ namespace Concierge.Character.Spellcasting
     using Concierge.Character.Enums;
     using Newtonsoft.Json;
 
-    public class Spell
+    public class Spell : ICopyable
     {
         public Spell()
         {
@@ -56,6 +56,28 @@ namespace Concierge.Character.Spellcasting
         public string Class { get; set; }
 
         public Guid Id { get; init; }
+
+        public ICopyable DeepCopy()
+        {
+            return new Spell()
+            {
+                Prepared = this.Prepared,
+                Level = this.Level,
+                Page = this.Page,
+                School = this.School,
+                Ritual = this.Ritual,
+                Components = this.Components,
+                Concentration = this.Concentration,
+                Range = this.Range,
+                Duration = this.Duration,
+                Area = this.Area,
+                Save = this.Save,
+                Damage = this.Damage,
+                Description = this.Description,
+                Class = this.Class,
+                Id = this.Id,
+            };
+        }
 
         public override string ToString()
         {
