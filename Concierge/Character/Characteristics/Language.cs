@@ -8,7 +8,7 @@ namespace Concierge.Character.Characteristics
 
     using Newtonsoft.Json;
 
-    public class Language
+    public class Language : ICopyable
     {
         public Language()
         {
@@ -25,6 +25,17 @@ namespace Concierge.Character.Characteristics
 
         [JsonIgnore]
         public string Description => $"{this.Name} ({this.Script}), Spoken by: {this.Speakers}";
+
+        public ICopyable DeepCopy()
+        {
+            return new Language()
+            {
+                Name = this.Name,
+                Script = this.Script,
+                Speakers = this.Speakers,
+                Id = this.Id,
+            };
+        }
 
         public override string ToString()
         {

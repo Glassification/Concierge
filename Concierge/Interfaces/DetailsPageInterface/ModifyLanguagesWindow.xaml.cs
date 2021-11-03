@@ -12,6 +12,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
     using System.Windows.Input;
 
     using Concierge.Character.Characteristics;
+    using Concierge.Commands;
     using Concierge.Interfaces.Enums;
     using Concierge.Utility;
 
@@ -110,21 +111,29 @@ namespace Concierge.Interfaces.DetailsPageInterface
 
         private void UpdateLanguage(Language language)
         {
+            var oldItem = language.DeepCopy() as Language;
+
             language.Name = this.NameComboBox.Text;
             language.Script = this.ScriptTextBox.Text;
             language.Speakers = this.SpeakersTextBox.Text;
+
+            Program.UndoRedoService.AddCommand(new EditCommand<Language>(language, oldItem));
         }
 
         private Language ToLanguage()
         {
             this.ItemsAdded = true;
 
-            return new Language()
+            var language = new Language()
             {
                 Name = this.NameComboBox.Text,
                 Script = this.ScriptTextBox.Text,
                 Speakers = this.SpeakersTextBox.Text,
             };
+
+            Program.UndoRedoService.AddCommand(new AddCommand<Language>(this.Languages, language));
+
+            return language;
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)

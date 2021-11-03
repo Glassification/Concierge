@@ -14,6 +14,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
     using Concierge.Character.Characteristics;
     using Concierge.Character.Enums;
     using Concierge.Character.Statuses;
+    using Concierge.Commands;
     using Concierge.Interfaces.Components;
     using Concierge.Interfaces.Enums;
     using Concierge.Utility;
@@ -225,6 +226,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
             var item = dataGrid.SelectedItem as Proficiency;
             var index = dataGrid.SelectedIndex;
 
+            Program.UndoRedoService.AddCommand(new DeleteCommand<Proficiency>(Program.CcsFile.Character.Proficiency, item, index));
             Program.CcsFile.Character.Proficiency.Remove(item);
 
             this.DrawProficiencies();
@@ -376,8 +378,11 @@ namespace Concierge.Interfaces.DetailsPageInterface
             {
                 Program.Modify();
 
+                var language = this.LanguagesDataGrid.SelectedItem as Language;
                 var index = this.LanguagesDataGrid.SelectedIndex;
-                Program.CcsFile.Character.Details.Languages.Remove(this.LanguagesDataGrid.SelectedItem as Language);
+
+                Program.UndoRedoService.AddCommand(new DeleteCommand<Language>(Program.CcsFile.Character.Details.Languages, language, index));
+                Program.CcsFile.Character.Details.Languages.Remove(language);
                 this.DrawLanguages();
                 this.LanguagesDataGrid.SetSelectedIndex(index);
             }
@@ -389,8 +394,11 @@ namespace Concierge.Interfaces.DetailsPageInterface
             {
                 Program.Modify();
 
+                var resource = this.ResourcesDataGrid.SelectedItem as ClassResource;
                 var index = this.ResourcesDataGrid.SelectedIndex;
-                Program.CcsFile.Character.ClassResources.Remove(this.ResourcesDataGrid.SelectedItem as ClassResource);
+
+                Program.UndoRedoService.AddCommand(new DeleteCommand<ClassResource>(Program.CcsFile.Character.ClassResources, resource, index));
+                Program.CcsFile.Character.ClassResources.Remove(resource);
                 this.DrawResources();
                 this.ResourcesDataGrid.SetSelectedIndex(index);
             }

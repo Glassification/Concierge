@@ -11,6 +11,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
     using System.Windows.Input;
 
     using Concierge.Character.Statuses;
+    using Concierge.Commands;
     using Concierge.Interfaces.Enums;
 
     /// <summary>
@@ -115,21 +116,29 @@ namespace Concierge.Interfaces.DetailsPageInterface
         {
             this.ItemsAdded = true;
 
-            return new ClassResource()
+            var resource = new ClassResource()
             {
                 Type = this.ResourceTextBox.Text,
                 Total = this.PoolUpDown.Value ?? 0,
                 Spent = this.SpentUpDown.Value ?? 0,
             };
+
+            Program.UndoRedoService.AddCommand(new AddCommand<ClassResource>(this.ClassResources, resource));
+
+            return resource;
         }
 
         private void UpdateClassResource()
         {
             if (this.Editing)
             {
+                var oldItem = this.ClassResource.DeepCopy() as ClassResource;
+
                 this.ClassResource.Type = this.ResourceTextBox.Text;
                 this.ClassResource.Total = this.PoolUpDown.Value ?? 0;
                 this.ClassResource.Spent = this.SpentUpDown.Value ?? 0;
+
+                Program.UndoRedoService.AddCommand(new EditCommand<ClassResource>(this.ClassResource, oldItem));
             }
             else
             {

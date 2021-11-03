@@ -12,6 +12,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
 
     using Concierge.Character.Enums;
     using Concierge.Character.Statuses;
+    using Concierge.Commands;
 
     /// <summary>
     /// Interaction logic for MondifyConditionsWindow.xaml.
@@ -82,6 +83,8 @@ namespace Concierge.Interfaces.DetailsPageInterface
 
         private void UpdateConditions()
         {
+            var oldItem = this.Conditions.DeepCopy() as Conditions;
+
             this.Conditions.Blinded = this.BlindedComboBox.Text.Equals("Cured") ? "Cured" : "Blinded";
             this.Conditions.Charmed = this.CharmedComboBox.Text.Equals("Cured") ? "Cured" : "Charmed";
             this.Conditions.Deafened = this.DeafenedComboBox.Text.Equals("Cured") ? "Cured" : "Deafened";
@@ -97,6 +100,8 @@ namespace Concierge.Interfaces.DetailsPageInterface
             this.Conditions.Restrained = this.RestrainedComboBox.Text.Equals("Cured") ? "Cured" : "Restrained";
             this.Conditions.Stunned = this.StunnedComboBox.Text.Equals("Cured") ? "Cured" : "Stunned";
             this.Conditions.Unconscious = this.UnconsciousComboBox.Text.Equals("Cured") ? "Cured" : "Unconscious";
+
+            Program.UndoRedoService.AddCommand(new EditCommand<Conditions>(this.Conditions, oldItem));
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
