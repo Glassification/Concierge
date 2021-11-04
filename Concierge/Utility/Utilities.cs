@@ -16,10 +16,33 @@ namespace Concierge.Utility
     using Concierge.Character;
     using Concierge.Character.Enums;
     using Concierge.Character.Statuses;
+    using Concierge.Commands;
+    using Concierge.Interfaces.Components;
+    using Concierge.Interfaces.Enums;
     using Concierge.Utility.Extensions;
 
     public static class Utilities
     {
+        public static void SortListFromDataGrid<T>(ConciergeDataGrid dataGrid, List<T> list, ConciergePage conciergePage)
+        {
+            Program.Modify();
+
+            var oldList = new List<T>(list);
+            list.Clear();
+
+            foreach (var item in dataGrid.Items)
+            {
+                list.Add((T)item);
+            }
+
+            Program.UndoRedoService.AddCommand(
+                new ListOrderCommand<T>(
+                    list,
+                    oldList,
+                    new List<T>(list),
+                    conciergePage));
+        }
+
         public static List<string> FormatEnumForDisplay(Type enumType)
         {
             var stringArray = Enum.GetNames(enumType);

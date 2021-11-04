@@ -11,6 +11,7 @@ namespace Concierge.Interfaces.AbilitiesPageInterface
     using Concierge.Character.Characteristics;
     using Concierge.Commands;
     using Concierge.Interfaces.Enums;
+    using Concierge.Utility;
 
     /// <summary>
     /// Interaction logic for AbilitiesPage.xaml.
@@ -73,7 +74,7 @@ namespace Concierge.Interfaces.AbilitiesPageInterface
 
         private void ButtonUp_Click(object sender, RoutedEventArgs e)
         {
-            var index = this.AbilitiesDataGrid.NextItem(Program.CcsFile.Character.Abilities, 0, -1);
+            var index = this.AbilitiesDataGrid.NextItem(Program.CcsFile.Character.Abilities, 0, -1, this.ConciergePage);
 
             if (index != -1)
             {
@@ -84,7 +85,7 @@ namespace Concierge.Interfaces.AbilitiesPageInterface
 
         private void ButtonDown_Click(object sender, RoutedEventArgs e)
         {
-            var index = this.AbilitiesDataGrid.NextItem(Program.CcsFile.Character.Abilities, Program.CcsFile.Character.Abilities.Count - 1, 1);
+            var index = this.AbilitiesDataGrid.NextItem(Program.CcsFile.Character.Abilities, Program.CcsFile.Character.Abilities.Count - 1, 1, this.ConciergePage);
 
             if (index != -1)
             {
@@ -135,13 +136,7 @@ namespace Concierge.Interfaces.AbilitiesPageInterface
 
         private void AbilitiesDataGrid_Sorted(object sender, RoutedEventArgs e)
         {
-            Program.Modify();
-            Program.CcsFile.Character.Abilities.Clear();
-
-            foreach (var ability in this.AbilitiesDataGrid.Items)
-            {
-                Program.CcsFile.Character.Abilities.Add(ability as Ability);
-            }
+            Utilities.SortListFromDataGrid(this.AbilitiesDataGrid, Program.CcsFile.Character.Abilities, this.ConciergePage);
         }
 
         private void Window_ApplyChanges(object sender, EventArgs e)

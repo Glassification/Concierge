@@ -174,18 +174,12 @@ namespace Concierge.Interfaces.CompanionPageInterface
 
         private void WeaponDataGrid_Sorted(object sender, RoutedEventArgs e)
         {
-            Program.Modify();
-            Program.CcsFile.Character.Companion.Attacks.Clear();
-
-            foreach (var weapon in this.WeaponDataGrid.Items)
-            {
-                Program.CcsFile.Character.Companion.Attacks.Add(weapon as Weapon);
-            }
+            Utilities.SortListFromDataGrid(this.WeaponDataGrid, Program.CcsFile.Character.Companion.Attacks, this.ConciergePage);
         }
 
         private void ButtonUp_Click(object sender, RoutedEventArgs e)
         {
-            var index = this.WeaponDataGrid.NextItem(Program.CcsFile.Character.Companion.Attacks, 0, -1);
+            var index = this.WeaponDataGrid.NextItem(Program.CcsFile.Character.Companion.Attacks, 0, -1, this.ConciergePage);
 
             if (index != -1)
             {
@@ -196,7 +190,7 @@ namespace Concierge.Interfaces.CompanionPageInterface
 
         private void ButtonDown_Click(object sender, RoutedEventArgs e)
         {
-            var index = this.WeaponDataGrid.NextItem(Program.CcsFile.Character.Companion.Attacks, Program.CcsFile.Character.Companion.Attacks.Count - 1, 1);
+            var index = this.WeaponDataGrid.NextItem(Program.CcsFile.Character.Companion.Attacks, Program.CcsFile.Character.Companion.Attacks.Count - 1, 1, this.ConciergePage);
 
             if (index != -1)
             {

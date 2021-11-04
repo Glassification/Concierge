@@ -392,6 +392,7 @@
                         VerticalScrollBarVisibility="Hidden"
                         Background="#001233"
                         Style="{DynamicResource StandardDataGridStyle}"
+                        Sorted="StatusEffectsDataGrid_Sorted"
                         HeadersVisibility="None"
                         Grid.ColumnSpan="2">
                         <DataGrid.Columns>

@@ -89,9 +89,9 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
             totalBox.Background = Utilities.SetTotalBoxStyle(totalSpells, usedSpells);
         }
 
-        private static bool NextItem<T>(ConciergeDataGrid dataGrid, DrawList drawList, List<T> list, int limit, int increment)
+        private bool NextItem<T>(ConciergeDataGrid dataGrid, DrawList drawList, List<T> list, int limit, int increment)
         {
-            var index = dataGrid.NextItem(list, limit, increment);
+            var index = dataGrid.NextItem(list, limit, increment, this.ConciergePage);
 
             if (index != -1)
             {
@@ -175,17 +175,17 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
 
         private void ButtonUp_Click(object sender, RoutedEventArgs e)
         {
-            if (!NextItem(this.MagicClassDataGrid, this.DrawMagicClasses, Program.CcsFile.Character.MagicClasses, 0, -1))
+            if (!this.NextItem(this.MagicClassDataGrid, this.DrawMagicClasses, Program.CcsFile.Character.MagicClasses, 0, -1))
             {
-                NextItem(this.SpellListDataGrid, this.DrawSpellList, Program.CcsFile.Character.Spells, 0, -1);
+                this.NextItem(this.SpellListDataGrid, this.DrawSpellList, Program.CcsFile.Character.Spells, 0, -1);
             }
         }
 
         private void ButtonDown_Click(object sender, RoutedEventArgs e)
         {
-            if (!NextItem(this.MagicClassDataGrid, this.DrawMagicClasses, Program.CcsFile.Character.MagicClasses, Program.CcsFile.Character.MagicClasses.Count - 1, 1))
+            if (!this.NextItem(this.MagicClassDataGrid, this.DrawMagicClasses, Program.CcsFile.Character.MagicClasses, Program.CcsFile.Character.MagicClasses.Count - 1, 1))
             {
-                NextItem(this.SpellListDataGrid, this.DrawSpellList, Program.CcsFile.Character.Spells, Program.CcsFile.Character.Spells.Count - 1, 1);
+                this.NextItem(this.SpellListDataGrid, this.DrawSpellList, Program.CcsFile.Character.Spells, Program.CcsFile.Character.Spells.Count - 1, 1);
             }
         }
 
@@ -443,26 +443,12 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
 
         private void SpellListDataGrid_Sorted(object sender, RoutedEventArgs e)
         {
-            Program.Modify();
-
-            Program.CcsFile.Character.Spells.Clear();
-
-            foreach (var spell in this.SpellListDataGrid.Items)
-            {
-                Program.CcsFile.Character.Spells.Add(spell as Spell);
-            }
+            Utilities.SortListFromDataGrid(this.SpellListDataGrid, Program.CcsFile.Character.Spells, this.ConciergePage);
         }
 
         private void MagicClassDataGrid_Sorted(object sender, RoutedEventArgs e)
         {
-            Program.Modify();
-
-            Program.CcsFile.Character.MagicClasses.Clear();
-
-            foreach (var magicClass in this.SpellListDataGrid.Items)
-            {
-                Program.CcsFile.Character.MagicClasses.Add(magicClass as MagicClass);
-            }
+            Utilities.SortListFromDataGrid(this.MagicClassDataGrid, Program.CcsFile.Character.MagicClasses, this.ConciergePage);
         }
 
         private void Window_ApplyChanges(object sender, EventArgs e)

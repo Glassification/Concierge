@@ -435,30 +435,27 @@ namespace Concierge.Interfaces.DetailsPageInterface
         private void ProficiencyDataGrid_Sorted(object sender, RoutedEventArgs e)
         {
             Program.Modify();
+
+            var oldList = new List<Proficiency>(Program.CcsFile.Character.Proficiency);
             Program.CcsFile.Character.Proficiency.Clear();
             this.SortProficiencyItems(Program.CcsFile.Character.Proficiency);
+
+            Program.UndoRedoService.AddCommand(
+                new ListOrderCommand<Proficiency>(
+                    Program.CcsFile.Character.Proficiency,
+                    oldList,
+                    new List<Proficiency>(Program.CcsFile.Character.Proficiency),
+                    this.ConciergePage));
         }
 
         private void LanguagesDataGrid_Sorted(object sender, RoutedEventArgs e)
         {
-            Program.Modify();
-            Program.CcsFile.Character.Languages.Clear();
-
-            foreach (var language in this.LanguagesDataGrid.Items)
-            {
-                Program.CcsFile.Character.Languages.Add(language as Language);
-            }
+            Utilities.SortListFromDataGrid(this.LanguagesDataGrid, Program.CcsFile.Character.Languages, this.ConciergePage);
         }
 
         private void ResourcesDataGrid_Sorted(object sender, RoutedEventArgs e)
         {
-            Program.Modify();
-            Program.CcsFile.Character.ClassResources.Clear();
-
-            foreach (var resource in this.ResourcesDataGrid.Items)
-            {
-                Program.CcsFile.Character.ClassResources.Add(resource as ClassResource);
-            }
+            Utilities.SortListFromDataGrid(this.ResourcesDataGrid, Program.CcsFile.Character.ClassResources, this.ConciergePage);
         }
 
         private void Window_ApplyChanges(object sender, EventArgs e)

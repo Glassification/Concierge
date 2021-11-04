@@ -93,12 +93,20 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
 
             var dataGrid = sender as ConciergeDataGrid;
             var equippedItems = Utilities.GetPropertyValue<List<Inventory>>(Program.CcsFile.Character.EquippedItems, dataGrid.Tag as string);
+            var oldList = new List<Inventory>(equippedItems);
 
             equippedItems.Clear();
             foreach (var item in dataGrid.Items)
             {
                 equippedItems.Add(item as Inventory);
             }
+
+            Program.UndoRedoService.AddCommand(
+                new ListOrderCommand<Inventory>(
+                    equippedItems,
+                    oldList,
+                    new List<Inventory>(equippedItems),
+                    this.ConciergePage));
         }
 
         private void EquipmentDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -146,7 +154,7 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
             }
 
             var equippedItems = Utilities.GetPropertyValue<List<Inventory>>(Program.CcsFile.Character.EquippedItems, this.SelectedDataGrid.Tag as string);
-            var index = this.SelectedDataGrid.NextItem(equippedItems, 0, -1);
+            var index = this.SelectedDataGrid.NextItem(equippedItems, 0, -1, this.ConciergePage);
 
             if (index != -1)
             {
@@ -164,7 +172,7 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
             }
 
             var equippedItems = Utilities.GetPropertyValue<List<Inventory>>(Program.CcsFile.Character.EquippedItems, this.SelectedDataGrid.Tag as string);
-            var index = this.SelectedDataGrid.NextItem(equippedItems, equippedItems.Count - 1, 1);
+            var index = this.SelectedDataGrid.NextItem(equippedItems, equippedItems.Count - 1, 1, this.ConciergePage);
 
             if (index != -1)
             {

@@ -15,6 +15,7 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
     using Concierge.Commands;
     using Concierge.Interfaces.Components;
     using Concierge.Interfaces.Enums;
+    using Concierge.Utility;
 
     /// <summary>
     /// Interaction logic for EquipmentPage.xaml.
@@ -75,9 +76,9 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
             }
         }
 
-        private static bool NextItem<T>(ConciergeDataGrid dataGrid, DrawList drawList, List<T> list, int limit, int increment)
+        private bool NextItem<T>(ConciergeDataGrid dataGrid, DrawList drawList, List<T> list, int limit, int increment)
         {
-            var index = dataGrid.NextItem(list, limit, increment);
+            var index = dataGrid.NextItem(list, limit, increment, this.ConciergePage);
 
             if (index != -1)
             {
@@ -146,17 +147,17 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
 
         private void ButtonUp_Click(object sender, RoutedEventArgs e)
         {
-            if (!NextItem(this.AmmoDataGrid, this.DrawAmmoList, Program.CcsFile.Character.Ammunitions, 0, -1))
+            if (!this.NextItem(this.AmmoDataGrid, this.DrawAmmoList, Program.CcsFile.Character.Ammunitions, 0, -1))
             {
-                NextItem(this.WeaponDataGrid, this.DrawWeaponList, Program.CcsFile.Character.Weapons, 0, -1);
+                this.NextItem(this.WeaponDataGrid, this.DrawWeaponList, Program.CcsFile.Character.Weapons, 0, -1);
             }
         }
 
         private void ButtonDown_Click(object sender, RoutedEventArgs e)
         {
-            if (!NextItem(this.AmmoDataGrid, this.DrawAmmoList, Program.CcsFile.Character.Ammunitions, Program.CcsFile.Character.Ammunitions.Count - 1, 1))
+            if (!this.NextItem(this.AmmoDataGrid, this.DrawAmmoList, Program.CcsFile.Character.Ammunitions, Program.CcsFile.Character.Ammunitions.Count - 1, 1))
             {
-                NextItem(this.WeaponDataGrid, this.DrawWeaponList, Program.CcsFile.Character.Weapons, Program.CcsFile.Character.Weapons.Count - 1, 1);
+                this.NextItem(this.WeaponDataGrid, this.DrawWeaponList, Program.CcsFile.Character.Weapons, Program.CcsFile.Character.Weapons.Count - 1, 1);
             }
         }
 
@@ -257,24 +258,12 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
 
         private void WeaponDataGrid_Sorted(object sender, RoutedEventArgs e)
         {
-            Program.Modify();
-            Program.CcsFile.Character.Weapons.Clear();
-
-            foreach (var weapon in this.WeaponDataGrid.Items)
-            {
-                Program.CcsFile.Character.Weapons.Add(weapon as Weapon);
-            }
+            Utilities.SortListFromDataGrid(this.WeaponDataGrid, Program.CcsFile.Character.Weapons, this.ConciergePage);
         }
 
         private void AmmoDataGrid_Sorted(object sender, RoutedEventArgs e)
         {
-            Program.Modify();
-            Program.CcsFile.Character.Ammunitions.Clear();
-
-            foreach (var ammo in this.AmmoDataGrid.Items)
-            {
-                Program.CcsFile.Character.Ammunitions.Add(ammo as Ammunition);
-            }
+            Utilities.SortListFromDataGrid(this.AmmoDataGrid, Program.CcsFile.Character.Ammunitions, this.ConciergePage);
         }
 
         private void Window_ApplyChanges(object sender, EventArgs e)
@@ -341,6 +330,11 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
             }
 
             this.Edit(this.StatusEffectsDataGrid.SelectedItem);
+        }
+
+        private void StatusEffectsDataGrid_Sorted(object sender, RoutedEventArgs e)
+        {
+            Utilities.SortListFromDataGrid(this.StatusEffectsDataGrid, Program.CcsFile.Character.StatusEffects, this.ConciergePage);
         }
     }
 }
