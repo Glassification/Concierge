@@ -13,9 +13,9 @@ namespace Concierge.Commands
         private readonly EquippedItems equippedItems;
         private readonly EquipmentSlot slot;
 
-        public DequipItemCommand(EquippedItems equippedItems, Inventory item, EquipmentSlot slot, ConciergePage conciergePage)
+        public DequipItemCommand(EquippedItems equippedItems, Inventory item, EquipmentSlot slot)
         {
-            this.ConciergePage = conciergePage;
+            this.ConciergePage = ConciergePage.EquippedItems;
             this.equippedItems = equippedItems;
             this.Item = item;
             this.slot = slot;

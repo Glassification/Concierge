@@ -100,7 +100,7 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
             this.ItemsAdded = true;
 
             var newItem = Program.CcsFile.Character.EquippedItems.Equip(item, slot);
-            Program.UndoRedoService.AddCommand(new EquipItemCommand(Program.CcsFile.Character.EquippedItems, newItem, slot, this.conciergePage));
+            Program.UndoRedoService.AddCommand(new EquipItemCommand(Program.CcsFile.Character.EquippedItems, newItem, slot));
 
             this.Hide();
         }
@@ -117,7 +117,7 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
             var slot = (EquipmentSlot)Enum.Parse(typeof(EquipmentSlot), this.SlotComboBox.Text);
 
             var newItem = Program.CcsFile.Character.EquippedItems.Equip(item, slot);
-            Program.UndoRedoService.AddCommand(new EquipItemCommand(Program.CcsFile.Character.EquippedItems, newItem, slot, this.conciergePage));
+            Program.UndoRedoService.AddCommand(new EquipItemCommand(Program.CcsFile.Character.EquippedItems, newItem, slot));
 
             this.ClearFields();
             this.ItemComboBox.ItemsSource = EquippedItems.Equipable;

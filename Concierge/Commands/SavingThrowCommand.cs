@@ -13,9 +13,9 @@ namespace Concierge.Commands
         private readonly bool oldValue;
         private readonly bool newValue;
 
-        public SavingThrowCommand(SavingThrows savingThrows, bool oldValue, bool newValue, ConciergePage conciergePage)
+        public SavingThrowCommand(SavingThrows savingThrows, bool oldValue, bool newValue)
         {
-            this.ConciergePage = conciergePage;
+            this.ConciergePage = ConciergePage.Overview;
             this.savingThrows = savingThrows;
             this.oldValue = oldValue;
             this.newValue = newValue;

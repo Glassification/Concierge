@@ -375,27 +375,27 @@ namespace Concierge.Interfaces.OverviewPageInterface
             {
                 case "StrengthProficiencyBox":
                     savingThrow.Strength.Proficiency = !savingThrow.Strength.Proficiency;
-                    Program.UndoRedoService.AddCommand(new SavingThrowCommand(savingThrow.Strength, !savingThrow.Strength.Proficiency, savingThrow.Strength.Proficiency, this.ConciergePage));
+                    Program.UndoRedoService.AddCommand(new SavingThrowCommand(savingThrow.Strength, !savingThrow.Strength.Proficiency, savingThrow.Strength.Proficiency));
                     break;
                 case "DexterityProficiencyBox":
                     savingThrow.Dexterity.Proficiency = !savingThrow.Dexterity.Proficiency;
-                    Program.UndoRedoService.AddCommand(new SavingThrowCommand(savingThrow.Dexterity, !savingThrow.Dexterity.Proficiency, savingThrow.Dexterity.Proficiency, this.ConciergePage));
+                    Program.UndoRedoService.AddCommand(new SavingThrowCommand(savingThrow.Dexterity, !savingThrow.Dexterity.Proficiency, savingThrow.Dexterity.Proficiency));
                     break;
                 case "ConstitutionProficiencyBox":
                     savingThrow.Constitution.Proficiency = !savingThrow.Constitution.Proficiency;
-                    Program.UndoRedoService.AddCommand(new SavingThrowCommand(savingThrow.Constitution, !savingThrow.Constitution.Proficiency, savingThrow.Constitution.Proficiency, this.ConciergePage));
+                    Program.UndoRedoService.AddCommand(new SavingThrowCommand(savingThrow.Constitution, !savingThrow.Constitution.Proficiency, savingThrow.Constitution.Proficiency));
                     break;
                 case "IntelligenceProficiencyBox":
                     savingThrow.Intelligence.Proficiency = !savingThrow.Intelligence.Proficiency;
-                    Program.UndoRedoService.AddCommand(new SavingThrowCommand(savingThrow.Intelligence, !savingThrow.Intelligence.Proficiency, savingThrow.Intelligence.Proficiency, this.ConciergePage));
+                    Program.UndoRedoService.AddCommand(new SavingThrowCommand(savingThrow.Intelligence, !savingThrow.Intelligence.Proficiency, savingThrow.Intelligence.Proficiency));
                     break;
                 case "WisdomProficiencyBox":
                     savingThrow.Wisdom.Proficiency = !savingThrow.Wisdom.Proficiency;
-                    Program.UndoRedoService.AddCommand(new SavingThrowCommand(savingThrow.Wisdom, !savingThrow.Wisdom.Proficiency, savingThrow.Wisdom.Proficiency, this.ConciergePage));
+                    Program.UndoRedoService.AddCommand(new SavingThrowCommand(savingThrow.Wisdom, !savingThrow.Wisdom.Proficiency, savingThrow.Wisdom.Proficiency));
                     break;
                 case "CharismaProficiencyBox":
                     savingThrow.Charisma.Proficiency = !savingThrow.Charisma.Proficiency;
-                    Program.UndoRedoService.AddCommand(new SavingThrowCommand(savingThrow.Charisma, !savingThrow.Charisma.Proficiency, savingThrow.Charisma.Proficiency, this.ConciergePage));
+                    Program.UndoRedoService.AddCommand(new SavingThrowCommand(savingThrow.Charisma, !savingThrow.Charisma.Proficiency, savingThrow.Charisma.Proficiency));
                     break;
             }
 
@@ -414,76 +414,76 @@ namespace Concierge.Interfaces.OverviewPageInterface
             {
                 case "AthleticsProficiencyBox":
                     skill.Athletics.Proficiency = !skill.Athletics.Proficiency;
-                    Program.UndoRedoService.AddCommand(new SkillCommand(skill.Athletics, BonusType.Proficiency, !skill.Athletics.Proficiency, skill.Athletics.Proficiency, this.ConciergePage));
+                    Program.UndoRedoService.AddCommand(new SkillCommand(skill.Athletics, BonusType.Proficiency, !skill.Athletics.Proficiency, skill.Athletics.Proficiency));
                     break;
                 case "AcrobaticsProficiencyBox":
                     skill.Acrobatics.Proficiency = !skill.Acrobatics.Proficiency;
-                    Program.UndoRedoService.AddCommand(new SkillCommand(skill.Acrobatics, BonusType.Proficiency, !skill.Acrobatics.Proficiency, skill.Acrobatics.Proficiency, this.ConciergePage));
+                    Program.UndoRedoService.AddCommand(new SkillCommand(skill.Acrobatics, BonusType.Proficiency, !skill.Acrobatics.Proficiency, skill.Acrobatics.Proficiency));
                     break;
                 case "SleightOfHandProficiencyBox":
                     skill.SleightOfHand.Proficiency = !skill.SleightOfHand.Proficiency;
-                    Program.UndoRedoService.AddCommand(new SkillCommand(skill.SleightOfHand, BonusType.Proficiency, !skill.SleightOfHand.Proficiency, skill.SleightOfHand.Proficiency, this.ConciergePage));
+                    Program.UndoRedoService.AddCommand(new SkillCommand(skill.SleightOfHand, BonusType.Proficiency, !skill.SleightOfHand.Proficiency, skill.SleightOfHand.Proficiency));
                     break;
                 case "StealthProficiencyBox":
                     skill.Stealth.Proficiency = !skill.Stealth.Proficiency;
-                    Program.UndoRedoService.AddCommand(new SkillCommand(skill.Stealth, BonusType.Proficiency, !skill.Stealth.Proficiency, skill.Stealth.Proficiency, this.ConciergePage));
+                    Program.UndoRedoService.AddCommand(new SkillCommand(skill.Stealth, BonusType.Proficiency, !skill.Stealth.Proficiency, skill.Stealth.Proficiency));
                     break;
                 case "ArcanaProficiencyBox":
                     skill.Arcana.Proficiency = !skill.Arcana.Proficiency;
-                    Program.UndoRedoService.AddCommand(new SkillCommand(skill.Arcana, BonusType.Proficiency, !skill.Arcana.Proficiency, skill.Arcana.Proficiency, this.ConciergePage));
+                    Program.UndoRedoService.AddCommand(new SkillCommand(skill.Arcana, BonusType.Proficiency, !skill.Arcana.Proficiency, skill.Arcana.Proficiency));
                     break;
                 case "HistoryProficiencyBox":
                     skill.History.Proficiency = !skill.History.Proficiency;
-                    Program.UndoRedoService.AddCommand(new SkillCommand(skill.History, BonusType.Proficiency, !skill.History.Proficiency, skill.History.Proficiency, this.ConciergePage));
+                    Program.UndoRedoService.AddCommand(new SkillCommand(skill.History, BonusType.Proficiency, !skill.History.Proficiency, skill.History.Proficiency));
                     break;
                 case "InvestigationProficiencyBox":
                     skill.Investigation.Proficiency = !skill.Investigation.Proficiency;
-                    Program.UndoRedoService.AddCommand(new SkillCommand(skill.Investigation, BonusType.Proficiency, !skill.Investigation.Proficiency, skill.Investigation.Proficiency, this.ConciergePage));
+                    Program.UndoRedoService.AddCommand(new SkillCommand(skill.Investigation, BonusType.Proficiency, !skill.Investigation.Proficiency, skill.Investigation.Proficiency));
                     break;
                 case "NatureProficiencyBox":
                     skill.Nature.Proficiency = !skill.Nature.Proficiency;
-                    Program.UndoRedoService.AddCommand(new SkillCommand(skill.Nature, BonusType.Proficiency, !skill.Nature.Proficiency, skill.Nature.Proficiency, this.ConciergePage));
+                    Program.UndoRedoService.AddCommand(new SkillCommand(skill.Nature, BonusType.Proficiency, !skill.Nature.Proficiency, skill.Nature.Proficiency));
                     break;
                 case "ReligionProficiencyBox":
                     skill.Religion.Proficiency = !skill.Religion.Proficiency;
-                    Program.UndoRedoService.AddCommand(new SkillCommand(skill.Religion, BonusType.Proficiency, !skill.Religion.Proficiency, skill.Religion.Proficiency, this.ConciergePage));
+                    Program.UndoRedoService.AddCommand(new SkillCommand(skill.Religion, BonusType.Proficiency, !skill.Religion.Proficiency, skill.Religion.Proficiency));
                     break;
                 case "AnimalHandlingProficiencyBox":
                     skill.AnimalHandling.Proficiency = !skill.AnimalHandling.Proficiency;
-                    Program.UndoRedoService.AddCommand(new SkillCommand(skill.AnimalHandling, BonusType.Proficiency, !skill.AnimalHandling.Proficiency, skill.AnimalHandling.Proficiency, this.ConciergePage));
+                    Program.UndoRedoService.AddCommand(new SkillCommand(skill.AnimalHandling, BonusType.Proficiency, !skill.AnimalHandling.Proficiency, skill.AnimalHandling.Proficiency));
 
                     break;
                 case "InsightProficiencyBox":
                     skill.Insight.Proficiency = !skill.Insight.Proficiency;
-                    Program.UndoRedoService.AddCommand(new SkillCommand(skill.Insight, BonusType.Proficiency, !skill.Insight.Proficiency, skill.Insight.Proficiency, this.ConciergePage));
+                    Program.UndoRedoService.AddCommand(new SkillCommand(skill.Insight, BonusType.Proficiency, !skill.Insight.Proficiency, skill.Insight.Proficiency));
                     break;
                 case "MedicineProficiencyBox":
                     skill.Medicine.Proficiency = !skill.Medicine.Proficiency;
-                    Program.UndoRedoService.AddCommand(new SkillCommand(skill.Medicine, BonusType.Proficiency, !skill.Medicine.Proficiency, skill.Medicine.Proficiency, this.ConciergePage));
+                    Program.UndoRedoService.AddCommand(new SkillCommand(skill.Medicine, BonusType.Proficiency, !skill.Medicine.Proficiency, skill.Medicine.Proficiency));
                     break;
                 case "PerceptionProficiencyBox":
                     skill.Perception.Proficiency = !skill.Perception.Proficiency;
-                    Program.UndoRedoService.AddCommand(new SkillCommand(skill.Perception, BonusType.Proficiency, !skill.Perception.Proficiency, skill.Perception.Proficiency, this.ConciergePage));
+                    Program.UndoRedoService.AddCommand(new SkillCommand(skill.Perception, BonusType.Proficiency, !skill.Perception.Proficiency, skill.Perception.Proficiency));
                     break;
                 case "SurvivalProficiencyBox":
                     skill.Survival.Proficiency = !skill.Survival.Proficiency;
-                    Program.UndoRedoService.AddCommand(new SkillCommand(skill.Survival, BonusType.Proficiency, !skill.Survival.Proficiency, skill.Survival.Proficiency, this.ConciergePage));
+                    Program.UndoRedoService.AddCommand(new SkillCommand(skill.Survival, BonusType.Proficiency, !skill.Survival.Proficiency, skill.Survival.Proficiency));
                     break;
                 case "DeceptionProficiencyBox":
                     skill.Deception.Proficiency = !skill.Deception.Proficiency;
-                    Program.UndoRedoService.AddCommand(new SkillCommand(skill.Deception, BonusType.Proficiency, !skill.Deception.Proficiency, skill.Deception.Proficiency, this.ConciergePage));
+                    Program.UndoRedoService.AddCommand(new SkillCommand(skill.Deception, BonusType.Proficiency, !skill.Deception.Proficiency, skill.Deception.Proficiency));
                     break;
                 case "IntimidationProficiencyBox":
                     skill.Intimidation.Proficiency = !skill.Intimidation.Proficiency;
-                    Program.UndoRedoService.AddCommand(new SkillCommand(skill.Intimidation, BonusType.Proficiency, !skill.Intimidation.Proficiency, skill.Intimidation.Proficiency, this.ConciergePage));
+                    Program.UndoRedoService.AddCommand(new SkillCommand(skill.Intimidation, BonusType.Proficiency, !skill.Intimidation.Proficiency, skill.Intimidation.Proficiency));
                     break;
                 case "PerformanceProficiencyBox":
                     skill.Performance.Proficiency = !skill.Performance.Proficiency;
-                    Program.UndoRedoService.AddCommand(new SkillCommand(skill.Performance, BonusType.Proficiency, !skill.Performance.Proficiency, skill.Performance.Proficiency, this.ConciergePage));
+                    Program.UndoRedoService.AddCommand(new SkillCommand(skill.Performance, BonusType.Proficiency, !skill.Performance.Proficiency, skill.Performance.Proficiency));
                     break;
                 case "PersuasionProficiencyBox":
                     skill.Persuasion.Proficiency = !skill.Persuasion.Proficiency;
-                    Program.UndoRedoService.AddCommand(new SkillCommand(skill.Persuasion, BonusType.Proficiency, !skill.Persuasion.Proficiency, skill.Persuasion.Proficiency, this.ConciergePage));
+                    Program.UndoRedoService.AddCommand(new SkillCommand(skill.Persuasion, BonusType.Proficiency, !skill.Persuasion.Proficiency, skill.Persuasion.Proficiency));
                     break;
             }
 
@@ -502,75 +502,75 @@ namespace Concierge.Interfaces.OverviewPageInterface
             {
                 case "AthleticsExpertieseBox":
                     skill.Athletics.Expertise = !skill.Athletics.Expertise;
-                    Program.UndoRedoService.AddCommand(new SkillCommand(skill.Athletics, BonusType.Expertise, !skill.Athletics.Expertise, skill.Athletics.Expertise, this.ConciergePage));
+                    Program.UndoRedoService.AddCommand(new SkillCommand(skill.Athletics, BonusType.Expertise, !skill.Athletics.Expertise, skill.Athletics.Expertise));
                     break;
                 case "AcrobaticsExpertieseBox":
                     skill.Acrobatics.Expertise = !skill.Acrobatics.Expertise;
-                    Program.UndoRedoService.AddCommand(new SkillCommand(skill.Acrobatics, BonusType.Expertise, !skill.Acrobatics.Expertise, skill.Acrobatics.Expertise, this.ConciergePage));
+                    Program.UndoRedoService.AddCommand(new SkillCommand(skill.Acrobatics, BonusType.Expertise, !skill.Acrobatics.Expertise, skill.Acrobatics.Expertise));
                     break;
                 case "SleightOfHandExpertieseBox":
                     skill.SleightOfHand.Expertise = !skill.SleightOfHand.Expertise;
-                    Program.UndoRedoService.AddCommand(new SkillCommand(skill.SleightOfHand, BonusType.Expertise, !skill.SleightOfHand.Expertise, skill.SleightOfHand.Expertise, this.ConciergePage));
+                    Program.UndoRedoService.AddCommand(new SkillCommand(skill.SleightOfHand, BonusType.Expertise, !skill.SleightOfHand.Expertise, skill.SleightOfHand.Expertise));
                     break;
                 case "StealthExpertieseBox":
                     skill.Stealth.Expertise = !skill.Stealth.Expertise;
-                    Program.UndoRedoService.AddCommand(new SkillCommand(skill.Stealth, BonusType.Expertise, !skill.Stealth.Expertise, skill.Stealth.Expertise, this.ConciergePage));
+                    Program.UndoRedoService.AddCommand(new SkillCommand(skill.Stealth, BonusType.Expertise, !skill.Stealth.Expertise, skill.Stealth.Expertise));
                     break;
                 case "ArcanaExpertieseBox":
                     skill.Arcana.Expertise = !skill.Arcana.Expertise;
-                    Program.UndoRedoService.AddCommand(new SkillCommand(skill.Arcana, BonusType.Expertise, !skill.Arcana.Expertise, skill.Arcana.Expertise, this.ConciergePage));
+                    Program.UndoRedoService.AddCommand(new SkillCommand(skill.Arcana, BonusType.Expertise, !skill.Arcana.Expertise, skill.Arcana.Expertise));
                     break;
                 case "HistoryExpertieseBox":
                     skill.History.Expertise = !skill.History.Expertise;
-                    Program.UndoRedoService.AddCommand(new SkillCommand(skill.History, BonusType.Expertise, !skill.History.Expertise, skill.History.Expertise, this.ConciergePage));
+                    Program.UndoRedoService.AddCommand(new SkillCommand(skill.History, BonusType.Expertise, !skill.History.Expertise, skill.History.Expertise));
                     break;
                 case "InvestigationExpertieseBox":
                     skill.Investigation.Expertise = !skill.Investigation.Expertise;
-                    Program.UndoRedoService.AddCommand(new SkillCommand(skill.Investigation, BonusType.Expertise, !skill.Investigation.Expertise, skill.Investigation.Expertise, this.ConciergePage));
+                    Program.UndoRedoService.AddCommand(new SkillCommand(skill.Investigation, BonusType.Expertise, !skill.Investigation.Expertise, skill.Investigation.Expertise));
                     break;
                 case "NatureExpertieseBox":
                     skill.Nature.Expertise = !skill.Nature.Expertise;
-                    Program.UndoRedoService.AddCommand(new SkillCommand(skill.Nature, BonusType.Expertise, !skill.Nature.Expertise, skill.Nature.Expertise, this.ConciergePage));
+                    Program.UndoRedoService.AddCommand(new SkillCommand(skill.Nature, BonusType.Expertise, !skill.Nature.Expertise, skill.Nature.Expertise));
                     break;
                 case "ReligionExpertieseBox":
                     skill.Religion.Expertise = !skill.Religion.Expertise;
-                    Program.UndoRedoService.AddCommand(new SkillCommand(skill.Religion, BonusType.Expertise, !skill.Religion.Expertise, skill.Religion.Expertise, this.ConciergePage));
+                    Program.UndoRedoService.AddCommand(new SkillCommand(skill.Religion, BonusType.Expertise, !skill.Religion.Expertise, skill.Religion.Expertise));
                     break;
                 case "AnimalHandlingExpertieseBox":
                     skill.AnimalHandling.Expertise = !skill.AnimalHandling.Expertise;
-                    Program.UndoRedoService.AddCommand(new SkillCommand(skill.AnimalHandling, BonusType.Expertise, !skill.AnimalHandling.Expertise, skill.AnimalHandling.Expertise, this.ConciergePage));
+                    Program.UndoRedoService.AddCommand(new SkillCommand(skill.AnimalHandling, BonusType.Expertise, !skill.AnimalHandling.Expertise, skill.AnimalHandling.Expertise));
                     break;
                 case "InsightExpertieseBox":
                     skill.Insight.Expertise = !skill.Insight.Expertise;
-                    Program.UndoRedoService.AddCommand(new SkillCommand(skill.Insight, BonusType.Expertise, !skill.Insight.Expertise, skill.Insight.Expertise, this.ConciergePage));
+                    Program.UndoRedoService.AddCommand(new SkillCommand(skill.Insight, BonusType.Expertise, !skill.Insight.Expertise, skill.Insight.Expertise));
                     break;
                 case "MedicineExpertieseBox":
                     skill.Medicine.Expertise = !skill.Medicine.Expertise;
-                    Program.UndoRedoService.AddCommand(new SkillCommand(skill.Medicine, BonusType.Expertise, !skill.Medicine.Expertise, skill.Medicine.Expertise, this.ConciergePage));
+                    Program.UndoRedoService.AddCommand(new SkillCommand(skill.Medicine, BonusType.Expertise, !skill.Medicine.Expertise, skill.Medicine.Expertise));
                     break;
                 case "PerceptionExpertieseBox":
                     skill.Perception.Expertise = !skill.Perception.Expertise;
-                    Program.UndoRedoService.AddCommand(new SkillCommand(skill.Perception, BonusType.Expertise, !skill.Perception.Expertise, skill.Perception.Expertise, this.ConciergePage));
+                    Program.UndoRedoService.AddCommand(new SkillCommand(skill.Perception, BonusType.Expertise, !skill.Perception.Expertise, skill.Perception.Expertise));
                     break;
                 case "SurvivalExpertieseBox":
                     skill.Survival.Expertise = !skill.Survival.Expertise;
-                    Program.UndoRedoService.AddCommand(new SkillCommand(skill.Survival, BonusType.Expertise, !skill.Survival.Expertise, skill.Survival.Expertise, this.ConciergePage));
+                    Program.UndoRedoService.AddCommand(new SkillCommand(skill.Survival, BonusType.Expertise, !skill.Survival.Expertise, skill.Survival.Expertise));
                     break;
                 case "DeceptionExpertieseBox":
                     skill.Deception.Expertise = !skill.Deception.Expertise;
-                    Program.UndoRedoService.AddCommand(new SkillCommand(skill.Deception, BonusType.Expertise, !skill.Deception.Expertise, skill.Deception.Expertise, this.ConciergePage));
+                    Program.UndoRedoService.AddCommand(new SkillCommand(skill.Deception, BonusType.Expertise, !skill.Deception.Expertise, skill.Deception.Expertise));
                     break;
                 case "IntimidationExpertieseBox":
                     skill.Intimidation.Expertise = !skill.Intimidation.Expertise;
-                    Program.UndoRedoService.AddCommand(new SkillCommand(skill.Intimidation, BonusType.Expertise, !skill.Intimidation.Expertise, skill.Intimidation.Expertise, this.ConciergePage));
+                    Program.UndoRedoService.AddCommand(new SkillCommand(skill.Intimidation, BonusType.Expertise, !skill.Intimidation.Expertise, skill.Intimidation.Expertise));
                     break;
                 case "PerformanceExpertieseBox":
                     skill.Performance.Expertise = !skill.Performance.Expertise;
-                    Program.UndoRedoService.AddCommand(new SkillCommand(skill.Performance, BonusType.Expertise, !skill.Performance.Expertise, skill.Performance.Expertise, this.ConciergePage));
+                    Program.UndoRedoService.AddCommand(new SkillCommand(skill.Performance, BonusType.Expertise, !skill.Performance.Expertise, skill.Performance.Expertise));
                     break;
                 case "PersuasionExpertieseBox":
                     skill.Persuasion.Expertise = !skill.Persuasion.Expertise;
-                    Program.UndoRedoService.AddCommand(new SkillCommand(skill.Persuasion, BonusType.Expertise, !skill.Persuasion.Expertise, skill.Persuasion.Expertise, this.ConciergePage));
+                    Program.UndoRedoService.AddCommand(new SkillCommand(skill.Persuasion, BonusType.Expertise, !skill.Persuasion.Expertise, skill.Persuasion.Expertise));
                     break;
             }
 

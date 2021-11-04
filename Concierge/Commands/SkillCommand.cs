@@ -15,9 +15,9 @@ namespace Concierge.Commands
         private readonly bool oldValue;
         private readonly bool newValue;
 
-        public SkillCommand(Skills skills, BonusType bonusType, bool oldValue, bool newValue, ConciergePage conciergePage)
+        public SkillCommand(Skills skills, BonusType bonusType, bool oldValue, bool newValue)
         {
-            this.ConciergePage = conciergePage;
+            this.ConciergePage = ConciergePage.Overview;
             this.skills = skills;
             this.bonusType = bonusType;
             this.oldValue = oldValue;

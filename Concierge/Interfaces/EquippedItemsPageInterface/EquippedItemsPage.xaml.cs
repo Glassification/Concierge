@@ -217,7 +217,7 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
             var slot = (EquipmentSlot)Enum.Parse(typeof(EquipmentSlot), this.SelectedDataGrid.Tag as string);
 
             Program.CcsFile.Character.EquippedItems.Dequip(this.SelectedItem, slot);
-            Program.UndoRedoService.AddCommand(new DequipItemCommand(Program.CcsFile.Character.EquippedItems, this.SelectedItem, slot, this.ConciergePage));
+            Program.UndoRedoService.AddCommand(new DequipItemCommand(Program.CcsFile.Character.EquippedItems, this.SelectedItem, slot));
 
             this.Draw();
             this.SelectedDataGrid.SetSelectedIndex(index);
