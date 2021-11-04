@@ -19,9 +19,12 @@ namespace Concierge.Interfaces.DetailsPageInterface
     /// </summary>
     public partial class ModifyClassResourceWindow : Window, IConciergeModifyWindow
     {
-        public ModifyClassResourceWindow()
+        private readonly ConciergePage conciergePage;
+
+        public ModifyClassResourceWindow(ConciergePage conciergePage)
         {
             this.InitializeComponent();
+            this.conciergePage = conciergePage;
         }
 
         public delegate void ApplyChangesEventHandler(object sender, EventArgs e);
@@ -123,7 +126,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
                 Spent = this.SpentUpDown.Value ?? 0,
             };
 
-            Program.UndoRedoService.AddCommand(new AddCommand<ClassResource>(this.ClassResources, resource));
+            Program.UndoRedoService.AddCommand(new AddCommand<ClassResource>(this.ClassResources, resource, this.conciergePage));
 
             return resource;
         }
@@ -138,7 +141,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
                 this.ClassResource.Total = this.PoolUpDown.Value ?? 0;
                 this.ClassResource.Spent = this.SpentUpDown.Value ?? 0;
 
-                Program.UndoRedoService.AddCommand(new EditCommand<ClassResource>(this.ClassResource, oldItem));
+                Program.UndoRedoService.AddCommand(new EditCommand<ClassResource>(this.ClassResource, oldItem, this.conciergePage));
             }
             else
             {

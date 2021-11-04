@@ -5,6 +5,7 @@
 namespace Concierge.Commands
 {
     using Concierge.Character.AbilitySavingThrows.SavingThrowTypes;
+    using Concierge.Interfaces.Enums;
 
     public class SavingThrowCommand : Command
     {
@@ -12,8 +13,9 @@ namespace Concierge.Commands
         private readonly bool oldValue;
         private readonly bool newValue;
 
-        public SavingThrowCommand(SavingThrows savingThrows, bool oldValue, bool newValue)
+        public SavingThrowCommand(SavingThrows savingThrows, bool oldValue, bool newValue, ConciergePage conciergePage)
         {
+            this.ConciergePage = conciergePage;
             this.savingThrows = savingThrows;
             this.oldValue = oldValue;
             this.newValue = newValue;

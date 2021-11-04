@@ -18,9 +18,12 @@ namespace Concierge.Interfaces.DetailsPageInterface
     /// </summary>
     public partial class ModifyPersonalityWindow : Window, IConciergeModifyWindow
     {
-        public ModifyPersonalityWindow()
+        private readonly ConciergePage conciergePage;
+
+        public ModifyPersonalityWindow(ConciergePage conciergePage)
         {
             this.InitializeComponent();
+            this.conciergePage = conciergePage;
         }
 
         public delegate void ApplyChangesEventHandler(object sender, EventArgs e);
@@ -87,7 +90,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
             this.Personality.Background = this.BackgroundTextBox.Text;
             this.Personality.Notes = this.NotesTextBox.Text;
 
-            Program.UndoRedoService.AddCommand(new EditCommand<Personality>(this.Personality, oldItem));
+            Program.UndoRedoService.AddCommand(new EditCommand<Personality>(this.Personality, oldItem, this.conciergePage));
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)

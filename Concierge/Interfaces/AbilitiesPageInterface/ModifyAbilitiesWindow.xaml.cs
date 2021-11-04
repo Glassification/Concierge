@@ -21,11 +21,14 @@ namespace Concierge.Interfaces.AbilitiesPageInterface
     /// </summary>
     public partial class ModifyAbilitiesWindow : Window, IConciergeModifyWindow
     {
-        public ModifyAbilitiesWindow()
+        private readonly ConciergePage conciergePage;
+
+        public ModifyAbilitiesWindow(ConciergePage conciergePage)
         {
             this.InitializeComponent();
 
             this.NameComboBox.ItemsSource = Constants.Abilities;
+            this.conciergePage = conciergePage;
         }
 
         public delegate void ApplyChangesEventHandler(object sender, EventArgs e);
@@ -134,7 +137,7 @@ namespace Concierge.Interfaces.AbilitiesPageInterface
                 Description = this.NotesTextBox.Text,
             };
 
-            Program.UndoRedoService.AddCommand(new AddCommand<Ability>(this.Abilities, ability));
+            Program.UndoRedoService.AddCommand(new AddCommand<Ability>(this.Abilities, ability, this.conciergePage));
 
             return ability;
         }
@@ -150,7 +153,7 @@ namespace Concierge.Interfaces.AbilitiesPageInterface
             ability.Action = this.ActionTextBox.Text;
             ability.Description = this.NotesTextBox.Text;
 
-            Program.UndoRedoService.AddCommand(new EditCommand<Ability>(ability, oldItem));
+            Program.UndoRedoService.AddCommand(new EditCommand<Ability>(ability, oldItem, this.conciergePage));
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)

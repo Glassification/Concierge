@@ -21,15 +21,16 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
     /// </summary>
     public partial class AttackDefensePage : Page, IConciergePage
     {
-        private readonly ModifyArmorWindow modifyArmorWindow = new ();
-        private readonly ModifyAttackWindow modifyAttackWindow = new ();
-        private readonly ModifyAmmoWindow modifyAmmoWindow = new ();
+        private readonly ModifyArmorWindow modifyArmorWindow = new (ConciergePage.AttackDefense);
+        private readonly ModifyAttackWindow modifyAttackWindow = new (ConciergePage.AttackDefense);
+        private readonly ModifyAmmoWindow modifyAmmoWindow = new (ConciergePage.AttackDefense);
         private readonly AttacksPopupWindow attacksPopupWindow = new ();
-        private readonly ModifyStatusEffectsWindow modifyStatusEffectsWindow = new ();
+        private readonly ModifyStatusEffectsWindow modifyStatusEffectsWindow = new (ConciergePage.AttackDefense);
 
         public AttackDefensePage()
         {
             this.InitializeComponent();
+
             this.DataContext = this;
             this.modifyAmmoWindow.ApplyChanges += this.Window_ApplyChanges;
             this.modifyAttackWindow.ApplyChanges += this.Window_ApplyChanges;
@@ -213,7 +214,7 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
                 var ammo = (Ammunition)this.AmmoDataGrid.SelectedItem;
                 var index = this.AmmoDataGrid.SelectedIndex;
 
-                Program.UndoRedoService.AddCommand(new DeleteCommand<Ammunition>(Program.CcsFile.Character.Ammunitions, ammo, index));
+                Program.UndoRedoService.AddCommand(new DeleteCommand<Ammunition>(Program.CcsFile.Character.Ammunitions, ammo, index, this.ConciergePage));
                 Program.CcsFile.Character.Ammunitions.Remove(ammo);
                 this.DrawAmmoList();
                 this.AmmoDataGrid.SetSelectedIndex(index);
@@ -225,7 +226,7 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
                 var weapon = (Weapon)this.WeaponDataGrid.SelectedItem;
                 var index = this.WeaponDataGrid.SelectedIndex;
 
-                Program.UndoRedoService.AddCommand(new DeleteCommand<Weapon>(Program.CcsFile.Character.Weapons, weapon, index));
+                Program.UndoRedoService.AddCommand(new DeleteCommand<Weapon>(Program.CcsFile.Character.Weapons, weapon, index, this.ConciergePage));
                 Program.CcsFile.Character.Weapons.Remove(weapon);
                 this.DrawWeaponList();
                 this.WeaponDataGrid.SetSelectedIndex(index);
@@ -315,7 +316,7 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
             var effect = (StatusEffect)this.StatusEffectsDataGrid.SelectedItem;
             var index = this.StatusEffectsDataGrid.SelectedIndex;
 
-            Program.UndoRedoService.AddCommand(new DeleteCommand<StatusEffect>(Program.CcsFile.Character.StatusEffects, effect, index));
+            Program.UndoRedoService.AddCommand(new DeleteCommand<StatusEffect>(Program.CcsFile.Character.StatusEffects, effect, index, this.ConciergePage));
             Program.CcsFile.Character.StatusEffects.Remove(effect);
             this.DrawStatusEffects();
             this.StatusEffectsDataGrid.SetSelectedIndex(index);

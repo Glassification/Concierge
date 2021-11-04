@@ -23,12 +23,12 @@ namespace Concierge.Interfaces.CompanionPageInterface
     /// </summary>
     public partial class CompanionPage : Page, IConciergePage
     {
-        private readonly ModifyAttributesWindow modifyAttributesWindow = new ();
-        private readonly ModifyHealthWindow modifyHealthWindow = new ();
-        private readonly ModifyHpWindow modifyHpWindow = new ();
-        private readonly ModifyHitDiceWindow modifyHitDiceWindow = new ();
-        private readonly ModifyAttackWindow modifyAttackWindow = new ();
-        private readonly ModifyPropertiesWindow modifyPropertiesWindow = new ();
+        private readonly ModifyAttributesWindow modifyAttributesWindow = new (ConciergePage.Companion);
+        private readonly ModifyHealthWindow modifyHealthWindow = new (ConciergePage.Companion);
+        private readonly ModifyHpWindow modifyHpWindow = new (ConciergePage.Companion);
+        private readonly ModifyHitDiceWindow modifyHitDiceWindow = new (ConciergePage.Companion);
+        private readonly ModifyAttackWindow modifyAttackWindow = new (ConciergePage.Companion);
+        private readonly ModifyPropertiesWindow modifyPropertiesWindow = new (ConciergePage.Companion);
 
         public CompanionPage()
         {
@@ -238,7 +238,7 @@ namespace Concierge.Interfaces.CompanionPageInterface
                 var weapon = this.WeaponDataGrid.SelectedItem as Weapon;
                 var index = this.WeaponDataGrid.SelectedIndex;
 
-                Program.UndoRedoService.AddCommand(new DeleteCommand<Weapon>(Program.CcsFile.Character.Companion.Attacks, weapon, index));
+                Program.UndoRedoService.AddCommand(new DeleteCommand<Weapon>(Program.CcsFile.Character.Companion.Attacks, weapon, index, this.ConciergePage));
                 Program.CcsFile.Character.Companion.Attacks.Remove(weapon);
                 this.DrawAttacks();
                 this.WeaponDataGrid.SetSelectedIndex(index);
@@ -298,7 +298,7 @@ namespace Concierge.Interfaces.CompanionPageInterface
                     break;
             }
 
-            Program.UndoRedoService.AddCommand(new EditCommand<HitDice>(hitDice, oldItem));
+            Program.UndoRedoService.AddCommand(new EditCommand<HitDice>(hitDice, oldItem, this.ConciergePage));
 
             this.DrawHitDice();
         }

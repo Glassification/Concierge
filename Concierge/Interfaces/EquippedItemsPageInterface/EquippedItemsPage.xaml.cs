@@ -11,6 +11,7 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
 
     using Concierge.Character.Enums;
     using Concierge.Character.Items;
+    using Concierge.Commands;
     using Concierge.Interfaces.Components;
     using Concierge.Interfaces.Enums;
     using Concierge.Interfaces.InventoryPageInterface;
@@ -21,13 +22,14 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
     /// </summary>
     public partial class EquippedItemsPage : Page, IConciergePage
     {
-        private readonly ModifyEquippedItemsWindow modifyEquippedItemsWindow = new ();
-        private readonly ModifyCharacterImageWindow modifyCharacterImageWindow = new ("768x1024 image ratio is recommended");
-        private readonly ModifyInventoryWindow modifyInventoryWindow = new ();
+        private readonly ModifyEquippedItemsWindow modifyEquippedItemsWindow = new (ConciergePage.EquippedItems);
+        private readonly ModifyCharacterImageWindow modifyCharacterImageWindow = new ("768x1024 image ratio is recommended", ConciergePage.EquippedItems);
+        private readonly ModifyInventoryWindow modifyInventoryWindow = new (ConciergePage.EquippedItems);
 
         public EquippedItemsPage()
         {
             this.InitializeComponent();
+
             this.DataContext = this;
             this.modifyEquippedItemsWindow.ApplyChanges += this.Window_ApplyChanges;
             this.modifyCharacterImageWindow.ApplyChanges += this.Window_ApplyChanges;
@@ -212,9 +214,10 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
             Program.Modify();
 
             var index = this.SelectedIndex;
-            Program.CcsFile.Character.EquippedItems.Dequip(
-                this.SelectedItem,
-                (EquipmentSlot)Enum.Parse(typeof(EquipmentSlot), this.SelectedDataGrid.Tag as string));
+            var slot = (EquipmentSlot)Enum.Parse(typeof(EquipmentSlot), this.SelectedDataGrid.Tag as string);
+
+            Program.CcsFile.Character.EquippedItems.Dequip(this.SelectedItem, slot);
+            Program.UndoRedoService.AddCommand(new DequipItemCommand(Program.CcsFile.Character.EquippedItems, this.SelectedItem, slot, this.ConciergePage));
 
             this.Draw();
             this.SelectedDataGrid.SetSelectedIndex(index);

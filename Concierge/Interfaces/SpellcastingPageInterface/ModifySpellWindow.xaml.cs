@@ -23,12 +23,15 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
     /// </summary>
     public partial class ModifySpellWindow : Window, IConciergeModifyWindow
     {
-        public ModifySpellWindow()
+        private readonly ConciergePage conciergePage;
+
+        public ModifySpellWindow(ConciergePage conciergePage)
         {
             this.InitializeComponent();
             this.SpellNameComboBox.ItemsSource = Constants.Spells;
             this.SchoolComboBox.ItemsSource = Enum.GetValues(typeof(ArcaneSchools)).Cast<ArcaneSchools>();
             this.ClassComboBox.ItemsSource = Constants.Classes;
+            this.conciergePage = conciergePage;
         }
 
         public delegate void ApplyChangesEventHandler(object sender, EventArgs e);
@@ -177,7 +180,7 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
             spell.Description = this.NotesTextBox.Text;
             spell.Class = this.ClassComboBox.Text;
 
-            Program.UndoRedoService.AddCommand(new EditCommand<Spell>(spell, oldItem));
+            Program.UndoRedoService.AddCommand(new EditCommand<Spell>(spell, oldItem, this.conciergePage));
         }
 
         private Spell ToSpell()
@@ -203,7 +206,7 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
                 Class = this.ClassComboBox.Text,
             };
 
-            Program.UndoRedoService.AddCommand(new AddCommand<Spell>(this.Spells, spell));
+            Program.UndoRedoService.AddCommand(new AddCommand<Spell>(this.Spells, spell, this.conciergePage));
 
             return spell;
         }

@@ -18,9 +18,12 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
     /// </summary>
     public partial class ModifySpellSlotsWindow : Window, IConciergeModifyWindow
     {
-        public ModifySpellSlotsWindow()
+        private readonly ConciergePage conciergePage;
+
+        public ModifySpellSlotsWindow(ConciergePage conciergePage)
         {
             this.InitializeComponent();
+            this.conciergePage = conciergePage;
         }
 
         public delegate void ApplyChangesEventHandler(object sender, EventArgs e);
@@ -142,7 +145,7 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
             this.SpellSlots.EighthTotal = this.Total8UpDown.Value ?? 0;
             this.SpellSlots.NinethTotal = this.Total9UpDown.Value ?? 0;
 
-            Program.UndoRedoService.AddCommand(new EditCommand<SpellSlots>(this.SpellSlots, oldItem));
+            Program.UndoRedoService.AddCommand(new EditCommand<SpellSlots>(this.SpellSlots, oldItem, this.conciergePage));
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)

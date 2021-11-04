@@ -17,9 +17,12 @@ namespace Concierge.Interfaces.OverviewPageInterface
     /// </summary>
     public partial class ModifyWealthWindow : Window, IConciergeModifyWindow
     {
-        public ModifyWealthWindow()
+        private readonly ConciergePage conciergePage;
+
+        public ModifyWealthWindow(ConciergePage conciergePage)
         {
             this.InitializeComponent();
+            this.conciergePage = conciergePage;
         }
 
         private int CP { get; set; }
@@ -114,7 +117,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
             wealth.Gold = this.GP;
             wealth.Platinum = this.PP;
 
-            Program.UndoRedoService.AddCommand(new EditCommand<Wealth>(wealth, oldItem));
+            Program.UndoRedoService.AddCommand(new EditCommand<Wealth>(wealth, oldItem, this.conciergePage));
 
             this.Hide();
         }

@@ -4,8 +4,12 @@
 
 namespace Concierge.Commands
 {
+    using Concierge.Interfaces.Enums;
+
     public abstract class Command
     {
+        public ConciergePage ConciergePage { get; set; }
+
         public abstract void Redo();
 
         public abstract void Undo();

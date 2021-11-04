@@ -17,11 +17,12 @@ namespace Concierge.Interfaces.AbilitiesPageInterface
     /// </summary>
     public partial class AbilitiesPage : Page, IConciergePage
     {
-        private readonly ModifyAbilitiesWindow modifyAbilitiesWindow = new ();
+        private readonly ModifyAbilitiesWindow modifyAbilitiesWindow = new (ConciergePage.Abilities);
 
         public AbilitiesPage()
         {
             this.InitializeComponent();
+
             this.DataContext = this;
             this.modifyAbilitiesWindow.ApplyChanges += this.Window_ApplyChanges;
 
@@ -125,7 +126,7 @@ namespace Concierge.Interfaces.AbilitiesPageInterface
                 var ability = (Ability)this.AbilitiesDataGrid.SelectedItem;
                 var index = this.AbilitiesDataGrid.SelectedIndex;
 
-                Program.UndoRedoService.AddCommand(new DeleteCommand<Ability>(Program.CcsFile.Character.Abilities, ability, index));
+                Program.UndoRedoService.AddCommand(new DeleteCommand<Ability>(Program.CcsFile.Character.Abilities, ability, index, this.ConciergePage));
                 Program.CcsFile.Character.Abilities.Remove(ability);
                 this.DrawAbilities();
                 this.AbilitiesDataGrid.SetSelectedIndex(index);

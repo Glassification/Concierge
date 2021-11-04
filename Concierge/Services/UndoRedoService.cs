@@ -9,6 +9,8 @@ namespace Concierge.Utility
     using System.Linq;
 
     using Concierge.Commands;
+    using Concierge.Interfaces;
+    using Concierge.Interfaces.Enums;
 
     public class UndoRedoService
     {
@@ -26,6 +28,8 @@ namespace Concierge.Utility
         public bool CanRedo => this.RedoStack.Count > 0;
 
         public bool CanUndo => this.UndoStack.Count > 0;
+
+        public bool UpdateAutosaveTimer { get; private set; }
 
         private Command Current { get; set; }
 
@@ -53,7 +57,7 @@ namespace Concierge.Utility
             this.StackChanged?.Invoke(this, new EventArgs());
         }
 
-        public void Redo()
+        public void Redo(MainWindow mainWindow)
         {
             if (!this.CanRedo)
             {
@@ -62,19 +66,34 @@ namespace Concierge.Utility
 
             this.Current = this.RedoStack.Pop();
             this.UndoStack.Push(this.Current);
+
+            if (this.Current.ConciergePage != ConciergePage.None)
+            {
+                mainWindow.MoveSelection(this.Current.ConciergePage);
+            }
+
+            this.UpdateAutosaveTimer = this.Current is UpdateSettingsCommand;
             this.Current.Redo();
             this.StackChanged?.Invoke(this, new EventArgs());
         }
 
-        public void Undo()
+        public void Undo(MainWindow mainWindow)
         {
             if (!this.CanUndo)
             {
                 return;
             }
 
+            this.UpdateAutosaveTimer = false;
             this.Current = this.UndoStack.Pop();
             this.RedoStack.Push(this.Current);
+
+            if (this.Current.ConciergePage != ConciergePage.None)
+            {
+                mainWindow.MoveSelection(this.Current.ConciergePage);
+            }
+
+            this.UpdateAutosaveTimer = this.Current is UpdateSettingsCommand;
             this.Current.Undo();
             this.StackChanged?.Invoke(this, new EventArgs());
         }

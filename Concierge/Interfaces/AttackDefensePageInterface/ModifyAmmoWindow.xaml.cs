@@ -23,11 +23,14 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
     /// </summary>
     public partial class ModifyAmmoWindow : Window, IConciergeModifyWindow
     {
-        public ModifyAmmoWindow()
+        private readonly ConciergePage conciergePage;
+
+        public ModifyAmmoWindow(ConciergePage conciergePage)
         {
             this.InitializeComponent();
             this.NameComboBox.ItemsSource = Constants.Ammunitions;
             this.DamageTypeComboBox.ItemsSource = Enum.GetValues(typeof(DamageTypes)).Cast<DamageTypes>();
+            this.conciergePage = conciergePage;
         }
 
         public delegate void ApplyChangesEventHandler(object sender, EventArgs e);
@@ -132,7 +135,7 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
             ammunition.DamageType = (DamageTypes)Enum.Parse(typeof(DamageTypes), this.DamageTypeComboBox.Text);
             ammunition.Used = this.UsedUpDown.Value ?? 0;
 
-            Program.UndoRedoService.AddCommand(new EditCommand<Ammunition>(ammunition, oldItem));
+            Program.UndoRedoService.AddCommand(new EditCommand<Ammunition>(ammunition, oldItem, this.conciergePage));
         }
 
         private Ammunition ToAmmunition()
@@ -148,7 +151,7 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
                 Used = this.UsedUpDown.Value ?? 0,
             };
 
-            Program.UndoRedoService.AddCommand(new AddCommand<Ammunition>(this.Ammunitions, ammo));
+            Program.UndoRedoService.AddCommand(new AddCommand<Ammunition>(this.Ammunitions, ammo, this.conciergePage));
 
             return ammo;
         }

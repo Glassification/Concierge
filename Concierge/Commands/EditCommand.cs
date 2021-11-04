@@ -5,6 +5,7 @@
 namespace Concierge.Commands
 {
     using Concierge.Character;
+    using Concierge.Interfaces.Enums;
     using Concierge.Utility;
 
     public class EditCommand<T> : Command
@@ -12,8 +13,9 @@ namespace Concierge.Commands
         private readonly T oldItem;
         private readonly T newItem;
 
-        public EditCommand(T originalItem, T oldItem)
+        public EditCommand(T originalItem, T oldItem, ConciergePage conciergePage)
         {
+            this.ConciergePage = conciergePage;
             this.OriginalItem = originalItem;
             this.oldItem = oldItem;
             this.newItem = (T)(originalItem as ICopyable).DeepCopy();

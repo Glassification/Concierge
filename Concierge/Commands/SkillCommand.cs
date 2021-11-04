@@ -6,6 +6,7 @@ namespace Concierge.Commands
 {
     using Concierge.Character.AbilitySkills.SkillTypes;
     using Concierge.Commands.Enums;
+    using Concierge.Interfaces.Enums;
 
     public class SkillCommand : Command
     {
@@ -14,8 +15,9 @@ namespace Concierge.Commands
         private readonly bool oldValue;
         private readonly bool newValue;
 
-        public SkillCommand(Skills skills, BonusType bonusType, bool oldValue, bool newValue)
+        public SkillCommand(Skills skills, BonusType bonusType, bool oldValue, bool newValue, ConciergePage conciergePage)
         {
+            this.ConciergePage = conciergePage;
             this.skills = skills;
             this.bonusType = bonusType;
             this.oldValue = oldValue;

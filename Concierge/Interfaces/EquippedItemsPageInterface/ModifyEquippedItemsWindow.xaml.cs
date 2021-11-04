@@ -12,6 +12,7 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
 
     using Concierge.Character.Enums;
     using Concierge.Character.Items;
+    using Concierge.Commands;
     using Concierge.Interfaces.Enums;
     using Concierge.Utility.Extensions;
 
@@ -20,10 +21,13 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
     /// </summary>
     public partial class ModifyEquippedItemsWindow : Window, IConciergeModifyWindow
     {
-        public ModifyEquippedItemsWindow()
+        private readonly ConciergePage conciergePage;
+
+        public ModifyEquippedItemsWindow(ConciergePage conciergePage)
         {
             this.InitializeComponent();
             this.SlotComboBox.ItemsSource = Enum.GetValues(typeof(EquipmentSlot)).Cast<EquipmentSlot>();
+            this.conciergePage = conciergePage;
         }
 
         public delegate void ApplyChangesEventHandler(object sender, EventArgs e);
@@ -95,7 +99,8 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
             var slot = (EquipmentSlot)Enum.Parse(typeof(EquipmentSlot), this.SlotComboBox.Text);
             this.ItemsAdded = true;
 
-            Program.CcsFile.Character.EquippedItems.Equip(item, slot);
+            var newItem = Program.CcsFile.Character.EquippedItems.Equip(item, slot);
+            Program.UndoRedoService.AddCommand(new EquipItemCommand(Program.CcsFile.Character.EquippedItems, newItem, slot, this.conciergePage));
 
             this.Hide();
         }
@@ -111,7 +116,8 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
 
             var slot = (EquipmentSlot)Enum.Parse(typeof(EquipmentSlot), this.SlotComboBox.Text);
 
-            Program.CcsFile.Character.EquippedItems.Equip(item, slot);
+            var newItem = Program.CcsFile.Character.EquippedItems.Equip(item, slot);
+            Program.UndoRedoService.AddCommand(new EquipItemCommand(Program.CcsFile.Character.EquippedItems, newItem, slot, this.conciergePage));
 
             this.ClearFields();
             this.ItemComboBox.ItemsSource = EquippedItems.Equipable;

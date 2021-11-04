@@ -21,10 +21,13 @@ namespace Concierge.Interfaces.DetailsPageInterface
     /// </summary>
     public partial class ModifyLanguagesWindow : Window, IConciergeModifyWindow
     {
-        public ModifyLanguagesWindow()
+        private readonly ConciergePage conciergePage;
+
+        public ModifyLanguagesWindow(ConciergePage conciergePage)
         {
             this.InitializeComponent();
             this.NameComboBox.ItemsSource = Constants.Languages;
+            this.conciergePage = conciergePage;
         }
 
         public delegate void ApplyChangesEventHandler(object sender, EventArgs e);
@@ -117,7 +120,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
             language.Script = this.ScriptTextBox.Text;
             language.Speakers = this.SpeakersTextBox.Text;
 
-            Program.UndoRedoService.AddCommand(new EditCommand<Language>(language, oldItem));
+            Program.UndoRedoService.AddCommand(new EditCommand<Language>(language, oldItem, this.conciergePage));
         }
 
         private Language ToLanguage()
@@ -131,7 +134,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
                 Speakers = this.SpeakersTextBox.Text,
             };
 
-            Program.UndoRedoService.AddCommand(new AddCommand<Language>(this.Languages, language));
+            Program.UndoRedoService.AddCommand(new AddCommand<Language>(this.Languages, language, this.conciergePage));
 
             return language;
         }

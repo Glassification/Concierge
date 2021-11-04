@@ -23,13 +23,16 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
     /// </summary>
     public partial class ModifyAttackWindow : Window, IConciergeModifyWindow
     {
-        public ModifyAttackWindow()
+        private readonly ConciergePage conciergePage;
+
+        public ModifyAttackWindow(ConciergePage conciergePage)
         {
             this.InitializeComponent();
             this.AttackComboBox.ItemsSource = Constants.Weapons;
             this.TypeComboBox.ItemsSource = Enum.GetValues(typeof(WeaponTypes)).Cast<WeaponTypes>();
             this.AbilityComboBox.ItemsSource = Enum.GetValues(typeof(Abilities)).Cast<Abilities>();
             this.DamageTypeComboBox.ItemsSource = Enum.GetValues(typeof(DamageTypes)).Cast<DamageTypes>();
+            this.conciergePage = conciergePage;
         }
 
         public delegate void ApplyChangesEventHandler(object sender, EventArgs e);
@@ -160,7 +163,7 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
             weapon.IsInBagOfHolding = this.BagOfHoldingCheckBox.IsChecked ?? false;
             weapon.Note = this.NotesTextBox.Text;
 
-            Program.UndoRedoService.AddCommand(new EditCommand<Weapon>(weapon, oldItem));
+            Program.UndoRedoService.AddCommand(new EditCommand<Weapon>(weapon, oldItem, this.conciergePage));
         }
 
         private Weapon ToWeapon()
@@ -182,7 +185,7 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
                 Note = this.NotesTextBox.Text,
             };
 
-            Program.UndoRedoService.AddCommand(new AddCommand<Weapon>(this.Weapons, weapon));
+            Program.UndoRedoService.AddCommand(new AddCommand<Weapon>(this.Weapons, weapon, this.conciergePage));
 
             return weapon;
         }

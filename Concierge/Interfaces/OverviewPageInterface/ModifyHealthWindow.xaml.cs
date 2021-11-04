@@ -18,9 +18,12 @@ namespace Concierge.Interfaces.OverviewPageInterface
     /// </summary>
     public partial class ModifyHealthWindow : Window, IConciergeModifyWindow
     {
-        public ModifyHealthWindow()
+        private readonly ConciergePage conciergePage;
+
+        public ModifyHealthWindow(ConciergePage conciergePage)
         {
             this.InitializeComponent();
+            this.conciergePage = conciergePage;
         }
 
         public delegate void ApplyChangesEventHandler(object sender, EventArgs e);
@@ -86,7 +89,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
             this.Health.BaseHealth = this.CurrentHpUpDown.Value ?? 0;
             this.Health.TemporaryHealth = this.TemporaryHpUpDown.Value ?? 0;
 
-            Program.UndoRedoService.AddCommand(new EditCommand<Health>(this.Health, oldItem));
+            Program.UndoRedoService.AddCommand(new EditCommand<Health>(this.Health, oldItem, this.conciergePage));
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)

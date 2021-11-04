@@ -22,11 +22,14 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
     /// </summary>
     public partial class ModifySpellClassWindow : Window, IConciergeModifyWindow
     {
-        public ModifySpellClassWindow()
+        private readonly ConciergePage conciergePage;
+
+        public ModifySpellClassWindow(ConciergePage conciergePage)
         {
             this.InitializeComponent();
             this.ClassNameComboBox.ItemsSource = Constants.Classes;
             this.AbilityComboBox.ItemsSource = Enum.GetValues(typeof(Abilities)).Cast<Abilities>();
+            this.conciergePage = conciergePage;
         }
 
         public delegate void ApplyChangesEventHandler(object sender, EventArgs e);
@@ -149,7 +152,7 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
             magicClass.KnownCantrips = this.CantripsUpDown.Value ?? 0;
             magicClass.KnownSpells = this.SpellsUpDown.Value ?? 0;
 
-            Program.UndoRedoService.AddCommand(new EditCommand<MagicClass>(magicClass, oldItem));
+            Program.UndoRedoService.AddCommand(new EditCommand<MagicClass>(magicClass, oldItem, this.conciergePage));
         }
 
         private MagicClass ToMagicClass()
@@ -165,7 +168,7 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
                 KnownCantrips = this.CantripsUpDown.Value ?? 0,
             };
 
-            Program.UndoRedoService.AddCommand(new AddCommand<MagicClass>(this.MagicClasses, magicClass));
+            Program.UndoRedoService.AddCommand(new AddCommand<MagicClass>(this.MagicClasses, magicClass, this.conciergePage));
 
             return magicClass;
         }

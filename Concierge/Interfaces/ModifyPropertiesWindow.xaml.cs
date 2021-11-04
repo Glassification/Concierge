@@ -105,7 +105,7 @@ namespace Concierge.Interfaces
             properties.Class2.Name = this.Class2ComboBox.Text;
             properties.Class3.Name = this.Class3ComboBox.Text;
 
-            Program.UndoRedoService.AddCommand(new EditCommand<CharacterProperties>(properties, oldItem));
+            Program.UndoRedoService.AddCommand(new EditCommand<CharacterProperties>(properties, oldItem, ConciergePage.None));
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)

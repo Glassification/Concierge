@@ -1,0 +1,3 @@
+﻿Fix Note editing.
+Add settings Undo/Redo.
+Move to page when executing command on it.

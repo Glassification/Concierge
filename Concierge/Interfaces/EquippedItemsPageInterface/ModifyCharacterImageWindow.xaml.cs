@@ -26,13 +26,15 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
     {
         private readonly FileAccessService fileAccessService;
         private readonly BackgroundWorker toolTipTimer = new ();
+        private readonly ConciergePage conciergePage;
 
-        public ModifyCharacterImageWindow(string toolTipText)
+        public ModifyCharacterImageWindow(string toolTipText, ConciergePage conciergePage)
         {
             this.InitializeComponent();
 
             this.fileAccessService = new FileAccessService();
             this.FillTypeComboBox.ItemsSource = Utilities.FormatEnumForDisplay(typeof(Stretch));
+            this.conciergePage = conciergePage;
 
             this.InformationHover.ToolTip = new ToolTip()
             {
@@ -114,7 +116,7 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
             this.CharacterImage.Stretch = (Stretch)Enum.Parse(typeof(Stretch), this.FillTypeComboBox.Text.Strip(" "));
             this.CharacterImage.UseCustomImage = this.UseCustomImageCheckBox.IsChecked ?? false;
 
-            Program.UndoRedoService.AddCommand(new EditCommand<CharacterImage>(this.CharacterImage, oldItem));
+            Program.UndoRedoService.AddCommand(new EditCommand<CharacterImage>(this.CharacterImage, oldItem, this.conciergePage));
         }
 
         private void SetEnabledState(bool isEnabled)

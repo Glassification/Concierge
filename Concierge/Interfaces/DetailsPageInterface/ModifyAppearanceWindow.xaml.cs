@@ -20,10 +20,13 @@ namespace Concierge.Interfaces.DetailsPageInterface
     /// </summary>
     public partial class ModifyAppearanceWindow : Window, IConciergeModifyWindow
     {
-        public ModifyAppearanceWindow()
+        private readonly ConciergePage conciergePage;
+
+        public ModifyAppearanceWindow(ConciergePage conciergePage)
         {
             this.InitializeComponent();
             this.GenderComboBox.ItemsSource = Enum.GetValues(typeof(Gender)).Cast<Gender>();
+            this.conciergePage = conciergePage;
         }
 
         public delegate void ApplyChangesEventHandler(object sender, EventArgs e);
@@ -93,7 +96,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
             this.Appearance.HairColour = this.HairColourTextBox.Text;
             this.Appearance.DistinguishingMarks = this.DistinguishingMarksTextBox.Text;
 
-            Program.UndoRedoService.AddCommand(new EditCommand<Appearance>(this.Appearance, oldItem));
+            Program.UndoRedoService.AddCommand(new EditCommand<Appearance>(this.Appearance, oldItem, this.conciergePage));
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)

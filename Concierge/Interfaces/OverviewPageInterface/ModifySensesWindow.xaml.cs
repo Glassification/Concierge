@@ -21,10 +21,13 @@ namespace Concierge.Interfaces.OverviewPageInterface
     /// </summary>
     public partial class ModifySensesWindow : Window, IConciergeModifyWindow
     {
-        public ModifySensesWindow()
+        private readonly ConciergePage conciergePage;
+
+        public ModifySensesWindow(ConciergePage conciergePage)
         {
             this.InitializeComponent();
             this.VisionComboBox.ItemsSource = Enum.GetValues(typeof(VisionTypes)).Cast<VisionTypes>();
+            this.conciergePage = conciergePage;
         }
 
         public delegate void ApplyChangesEventHandler(object sender, EventArgs e);
@@ -87,7 +90,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
             senses.Vision = (VisionTypes)Enum.Parse(typeof(VisionTypes), this.VisionComboBox.Text);
             senses.BaseMovement = this.BaseMovementUpDown.Value ?? 0;
 
-            Program.UndoRedoService.AddCommand(new EditCommand<Senses>(senses, oldItem));
+            Program.UndoRedoService.AddCommand(new EditCommand<Senses>(senses, oldItem, this.conciergePage));
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)

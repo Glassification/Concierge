@@ -18,9 +18,12 @@ namespace Concierge.Interfaces.OverviewPageInterface
     /// </summary>
     public partial class ModifyHitDiceWindow : Window, IConciergeModifyWindow
     {
-        public ModifyHitDiceWindow()
+        private readonly ConciergePage conciergePage;
+
+        public ModifyHitDiceWindow(ConciergePage conciergePage)
         {
             this.InitializeComponent();
+            this.conciergePage = conciergePage;
         }
 
         public delegate void ApplyChangesEventHandler(object sender, EventArgs e);
@@ -100,7 +103,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
             this.HitDice.SpentD10 = this.UsedD10UpDown.Value ?? 0;
             this.HitDice.SpentD12 = this.UsedD12UpDown.Value ?? 0;
 
-            Program.UndoRedoService.AddCommand(new EditCommand<HitDice>(this.HitDice, oldItem));
+            Program.UndoRedoService.AddCommand(new EditCommand<HitDice>(this.HitDice, oldItem, this.conciergePage));
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)

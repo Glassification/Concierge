@@ -18,9 +18,12 @@ namespace Concierge.Interfaces.OverviewPageInterface
     /// </summary>
     public partial class ModifyAttributesWindow : Window, IConciergeModifyWindow
     {
-        public ModifyAttributesWindow()
+        private readonly ConciergePage conciergePage;
+
+        public ModifyAttributesWindow(ConciergePage conciergePage)
         {
             this.InitializeComponent();
+            this.conciergePage = conciergePage;
         }
 
         public delegate void ApplyChangesEventHandler(object sender, EventArgs e);
@@ -92,7 +95,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
             this.Attributes.Wisdom = this.WisdomUpDown.Value ?? 0;
             this.Attributes.Charisma = this.CharismaUpDown.Value ?? 0;
 
-            Program.UndoRedoService.AddCommand(new EditCommand<Attributes>(this.Attributes, oldItem));
+            Program.UndoRedoService.AddCommand(new EditCommand<Attributes>(this.Attributes, oldItem, this.conciergePage));
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)

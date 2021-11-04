@@ -6,14 +6,17 @@ namespace Concierge.Commands
 {
     using System.Collections.Generic;
 
+    using Concierge.Interfaces.Enums;
+
     public class DeleteCommand<T> : Command
     {
         private readonly List<T> list;
         private readonly T item;
         private readonly int index;
 
-        public DeleteCommand(List<T> list, T item, int index)
+        public DeleteCommand(List<T> list, T item, int index, ConciergePage conciergePage)
         {
+            this.ConciergePage = conciergePage;
             this.list = list;
             this.item = item;
             this.index = index;

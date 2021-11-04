@@ -18,7 +18,7 @@ namespace Concierge.Interfaces.InventoryPageInterface
     /// </summary>
     public partial class InventoryPage : Page, IConciergePage
     {
-        private readonly ModifyInventoryWindow modifyInventoryWindow = new ();
+        private readonly ModifyInventoryWindow modifyInventoryWindow = new (ConciergePage.Inventory);
 
         public InventoryPage()
         {
@@ -124,7 +124,7 @@ namespace Concierge.Interfaces.InventoryPageInterface
                 var inventory = (Inventory)this.InventoryDataGrid.SelectedItem;
                 var index = this.InventoryDataGrid.SelectedIndex;
 
-                Program.UndoRedoService.AddCommand(new DeleteCommand<Inventory>(Program.CcsFile.Character.Inventories, inventory, index));
+                Program.UndoRedoService.AddCommand(new DeleteCommand<Inventory>(Program.CcsFile.Character.Inventories, inventory, index, this.ConciergePage));
                 Program.CcsFile.Character.Inventories.Remove(inventory);
 
                 this.DrawInventory();

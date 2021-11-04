@@ -23,10 +23,13 @@ namespace Concierge.Interfaces.InventoryPageInterface
     /// </summary>
     public partial class ModifyInventoryWindow : Window, IConciergeModifyWindow
     {
-        public ModifyInventoryWindow()
+        private readonly ConciergePage conciergePage;
+
+        public ModifyInventoryWindow(ConciergePage conciergePage)
         {
             this.InitializeComponent();
             this.NameComboBox.ItemsSource = Constants.Inventories;
+            this.conciergePage = conciergePage;
         }
 
         public delegate void ApplyChangesEventHandler(object sender, EventArgs e);
@@ -153,7 +156,7 @@ namespace Concierge.Interfaces.InventoryPageInterface
                 Note = this.NotesTextBox.Text,
             };
 
-            Program.UndoRedoService.AddCommand(new AddCommand<Inventory>(this.Items, item));
+            Program.UndoRedoService.AddCommand(new AddCommand<Inventory>(this.Items, item, this.conciergePage));
 
             return item;
         }
@@ -186,7 +189,7 @@ namespace Concierge.Interfaces.InventoryPageInterface
                 inventory.IsInBagOfHolding = this.BagOfHoldingCheckBox.IsChecked ?? false;
             }
 
-            Program.UndoRedoService.AddCommand(new EditCommand<Inventory>(inventory, oldItem));
+            Program.UndoRedoService.AddCommand(new EditCommand<Inventory>(inventory, oldItem, this.conciergePage));
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)

@@ -24,16 +24,17 @@ namespace Concierge.Interfaces.DetailsPageInterface
     /// </summary>
     public partial class DetailsPage : Page, IConciergePage
     {
-        private readonly ModifyProficiencyWindow modifyProficiencyWindow = new ();
-        private readonly MondifyConditionsWindow mondifyConditionsWindow = new ();
-        private readonly ModifyLanguagesWindow modifyLanguagesWindow = new ();
-        private readonly ModifyAppearanceWindow modifyAppearanceWindow = new ();
-        private readonly ModifyPersonalityWindow modifyPersonalityWindow = new ();
-        private readonly ModifyClassResourceWindow modifyClassResourceWindow = new ();
+        private readonly ModifyProficiencyWindow modifyProficiencyWindow = new (ConciergePage.Details);
+        private readonly MondifyConditionsWindow mondifyConditionsWindow = new (ConciergePage.Details);
+        private readonly ModifyLanguagesWindow modifyLanguagesWindow = new (ConciergePage.Details);
+        private readonly ModifyAppearanceWindow modifyAppearanceWindow = new (ConciergePage.Details);
+        private readonly ModifyPersonalityWindow modifyPersonalityWindow = new (ConciergePage.Details);
+        private readonly ModifyClassResourceWindow modifyClassResourceWindow = new (ConciergePage.Details);
 
         public DetailsPage()
         {
             this.InitializeComponent();
+
             this.modifyProficiencyWindow.ApplyChanges += this.Window_ApplyChanges;
             this.mondifyConditionsWindow.ApplyChanges += this.Window_ApplyChanges;
             this.modifyLanguagesWindow.ApplyChanges += this.Window_ApplyChanges;
@@ -226,7 +227,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
             var item = dataGrid.SelectedItem as Proficiency;
             var index = dataGrid.SelectedIndex;
 
-            Program.UndoRedoService.AddCommand(new DeleteCommand<Proficiency>(Program.CcsFile.Character.Proficiency, item, index));
+            Program.UndoRedoService.AddCommand(new DeleteCommand<Proficiency>(Program.CcsFile.Character.Proficiency, item, index, this.ConciergePage));
             Program.CcsFile.Character.Proficiency.Remove(item);
 
             this.DrawProficiencies();
@@ -381,7 +382,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
                 var language = this.LanguagesDataGrid.SelectedItem as Language;
                 var index = this.LanguagesDataGrid.SelectedIndex;
 
-                Program.UndoRedoService.AddCommand(new DeleteCommand<Language>(Program.CcsFile.Character.Languages, language, index));
+                Program.UndoRedoService.AddCommand(new DeleteCommand<Language>(Program.CcsFile.Character.Languages, language, index, this.ConciergePage));
                 Program.CcsFile.Character.Languages.Remove(language);
                 this.DrawLanguages();
                 this.LanguagesDataGrid.SetSelectedIndex(index);
@@ -397,7 +398,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
                 var resource = this.ResourcesDataGrid.SelectedItem as ClassResource;
                 var index = this.ResourcesDataGrid.SelectedIndex;
 
-                Program.UndoRedoService.AddCommand(new DeleteCommand<ClassResource>(Program.CcsFile.Character.ClassResources, resource, index));
+                Program.UndoRedoService.AddCommand(new DeleteCommand<ClassResource>(Program.CcsFile.Character.ClassResources, resource, index, this.ConciergePage));
                 Program.CcsFile.Character.ClassResources.Remove(resource);
                 this.DrawResources();
                 this.ResourcesDataGrid.SetSelectedIndex(index);

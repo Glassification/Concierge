@@ -8,7 +8,7 @@ namespace Concierge.Interfaces.HelperInterface
     using System.ComponentModel;
     using System.Windows;
     using System.Windows.Input;
-
+    using Concierge.Commands;
     using Concierge.Interfaces.Enums;
     using Concierge.Tools.Interface;
     using Concierge.Utility;
@@ -89,6 +89,7 @@ namespace Concierge.Interfaces.HelperInterface
                 return false;
             }
 
+            var oldSettings = ConciergeSettings.ToConciergeSettingsDto();
             var conciergeSettings = new ConciergeSettingsDto()
             {
                 AutosaveEnabled = this.AutosaveCheckBox.IsChecked ?? false,
@@ -99,6 +100,7 @@ namespace Concierge.Interfaces.HelperInterface
                 UseEncumbrance = this.EncumbranceCheckBox.IsChecked ?? false,
             };
 
+            Program.UndoRedoService.AddCommand(new UpdateSettingsCommand(oldSettings, conciergeSettings));
             ConciergeSettings.UpdateSettings(conciergeSettings);
 
             return true;

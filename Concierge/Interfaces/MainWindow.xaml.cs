@@ -46,7 +46,7 @@ namespace Concierge.Interfaces
         private readonly SettingsWindow settingsWindow = new ();
         private readonly ModifyPropertiesWindow modifyPropertiesWindow = new ();
         private readonly AboutConciergeWindow aboutConciergeWindow = new ();
-        private readonly ModifyCharacterImageWindow modifyCharacterImageWindow = new ("50x50 image ratio is recommended.");
+        private readonly ModifyCharacterImageWindow modifyCharacterImageWindow = new ("50x50 image ratio is recommended.", ConciergePage.None);
 
         private readonly AutosaveTimer autosaveTimer = new ();
         private readonly CharacterCreationWizard characterCreationWizard = new ();
@@ -272,13 +272,13 @@ namespace Concierge.Interfaces
 
         public void Redo()
         {
-            Program.UndoRedoService.Redo();
+            Program.UndoRedoService.Redo(this);
             this.DrawAll();
         }
 
         public void Undo()
         {
-            Program.UndoRedoService.Undo();
+            Program.UndoRedoService.Undo(this);
             this.DrawAll();
         }
 
@@ -301,6 +301,18 @@ namespace Concierge.Interfaces
                 this.ListViewMenu.SelectedItem = this.ListViewMenu.Items[(int)page];
                 this.UpdateLayout();
                 ((ListViewItem)this.ListViewMenu.ItemContainerGenerator.ContainerFromIndex((int)page)).Focus();
+            }
+        }
+
+        public void StartStopAutosaveTimer()
+        {
+            if (ConciergeSettings.AutosaveEnabled)
+            {
+                this.autosaveTimer.Start(Constants.AutosaveIntervals[ConciergeSettings.AutosaveInterval]);
+            }
+            else
+            {
+                this.autosaveTimer.Stop();
             }
         }
 
@@ -614,14 +626,7 @@ namespace Concierge.Interfaces
             this.OverviewPage.Draw();
             this.DetailsPage.Draw();
 
-            if (ConciergeSettings.AutosaveEnabled)
-            {
-                this.autosaveTimer.Start(Constants.AutosaveIntervals[ConciergeSettings.AutosaveInterval]);
-            }
-            else
-            {
-                this.autosaveTimer.Stop();
-            }
+            this.StartStopAutosaveTimer();
 
             this.IgnoreSecondPress = true;
         }
@@ -716,6 +721,13 @@ namespace Concierge.Interfaces
         {
             this.ButtonUndo.IsEnabled = Program.UndoRedoService.CanUndo;
             this.ButtonRedo.IsEnabled = Program.UndoRedoService.CanRedo;
+
+            var service = sender as UndoRedoService;
+
+            if (service.UpdateAutosaveTimer)
+            {
+                this.StartStopAutosaveTimer();
+            }
         }
     }
 }

@@ -4,13 +4,15 @@
 
 namespace Concierge.Interfaces.NotesPageInterface
 {
-    using Concierge.Character.Notes;
-    using Concierge.Commands;
-    using Concierge.Utility.Extensions;
     using System;
     using System.ComponentModel;
     using System.Windows;
     using System.Windows.Input;
+
+    using Concierge.Character.Notes;
+    using Concierge.Commands;
+    using Concierge.Interfaces.Enums;
+    using Concierge.Utility.Extensions;
 
     /// <summary>
     /// Interaction logic for ModifyEquippedItemsWindow.xaml.
@@ -19,9 +21,12 @@ namespace Concierge.Interfaces.NotesPageInterface
     {
         private const string NewChapter = "--New Chapter--";
 
-        public ModifyNotesWindow()
+        private readonly ConciergePage conciergePage;
+
+        public ModifyNotesWindow(ConciergePage conciergePage)
         {
             this.InitializeComponent();
+            this.conciergePage = conciergePage;
         }
 
         public delegate void ApplyChangesEventHandler(object sender, EventArgs e);
@@ -107,13 +112,13 @@ namespace Concierge.Interfaces.NotesPageInterface
             {
                 var oldItem = this.CurrentDocument.DeepCopy() as Document;
                 this.CurrentDocument.Name = this.DocumentTextBox.Text;
-                Program.UndoRedoService.AddCommand(new EditCommand<Document>(this.CurrentDocument, oldItem));
+                Program.UndoRedoService.AddCommand(new EditCommand<Document>(this.CurrentDocument, oldItem, this.conciergePage));
             }
             else
             {
                 var oldItem = this.CurrentChapter.DeepCopy() as Chapter;
                 this.CurrentChapter.Name = this.DocumentTextBox.Text;
-                Program.UndoRedoService.AddCommand(new EditCommand<Chapter>(this.CurrentChapter, oldItem));
+                Program.UndoRedoService.AddCommand(new EditCommand<Chapter>(this.CurrentChapter, oldItem, this.conciergePage));
             }
         }
 
@@ -125,13 +130,13 @@ namespace Concierge.Interfaces.NotesPageInterface
             {
                 var newChapter = new Chapter(this.DocumentTextBox.Text);
                 Program.CcsFile.Character.Chapters.Add(newChapter);
-                Program.UndoRedoService.AddCommand(new AddCommand<Chapter>(Program.CcsFile.Character.Chapters, newChapter));
+                Program.UndoRedoService.AddCommand(new AddCommand<Chapter>(Program.CcsFile.Character.Chapters, newChapter, this.conciergePage));
             }
             else
             {
                 var newDocument = new Document(this.DocumentTextBox.Text);
                 chapter.Documents.Add(newDocument);
-                Program.UndoRedoService.AddCommand(new AddCommand<Document>(chapter.Documents, newDocument));
+                Program.UndoRedoService.AddCommand(new AddCommand<Document>(chapter.Documents, newDocument, this.conciergePage));
             }
         }
 

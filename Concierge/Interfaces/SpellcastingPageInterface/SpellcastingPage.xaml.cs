@@ -23,9 +23,9 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
     public partial class SpellcastingPage : Page, IConciergePage
     {
         private readonly SpellcastingSelectionWindow spellcastingSelectionWindow = new ();
-        private readonly ModifySpellWindow modifySpellWindow = new ();
-        private readonly ModifySpellClassWindow modifySpellClassWindow = new ();
-        private readonly ModifySpellSlotsWindow modifySpellSlotsWindow = new ();
+        private readonly ModifySpellWindow modifySpellWindow = new (ConciergePage.Spellcasting);
+        private readonly ModifySpellClassWindow modifySpellClassWindow = new (ConciergePage.Spellcasting);
+        private readonly ModifySpellSlotsWindow modifySpellSlotsWindow = new (ConciergePage.Spellcasting);
 
         public SpellcastingPage()
         {
@@ -244,7 +244,7 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
                 var magicClass = (MagicClass)this.MagicClassDataGrid.SelectedItem;
                 var index = this.MagicClassDataGrid.SelectedIndex;
 
-                Program.UndoRedoService.AddCommand(new DeleteCommand<MagicClass>(Program.CcsFile.Character.MagicClasses, magicClass, index));
+                Program.UndoRedoService.AddCommand(new DeleteCommand<MagicClass>(Program.CcsFile.Character.MagicClasses, magicClass, index, this.ConciergePage));
                 Program.CcsFile.Character.MagicClasses.Remove(magicClass);
                 this.DrawMagicClasses();
                 this.MagicClassDataGrid.SetSelectedIndex(index);
@@ -256,7 +256,7 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
                 var spell = (Spell)this.SpellListDataGrid.SelectedItem;
                 var index = this.SpellListDataGrid.SelectedIndex;
 
-                Program.UndoRedoService.AddCommand(new DeleteCommand<Spell>(Program.CcsFile.Character.Spells, spell, index));
+                Program.UndoRedoService.AddCommand(new DeleteCommand<Spell>(Program.CcsFile.Character.Spells, spell, index, this.ConciergePage));
                 Program.CcsFile.Character.Spells.Remove(spell);
                 this.DrawSpellList();
                 this.SpellListDataGrid.SetSelectedIndex(index);
@@ -341,7 +341,7 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
                     break;
             }
 
-            Program.UndoRedoService.AddCommand(new EditCommand<SpellSlots>(spellSlots, oldItem));
+            Program.UndoRedoService.AddCommand(new EditCommand<SpellSlots>(spellSlots, oldItem, this.ConciergePage));
 
             this.DrawTotalSpellSlots();
             this.DrawUsedSpellSlots();

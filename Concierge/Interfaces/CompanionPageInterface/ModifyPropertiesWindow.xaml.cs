@@ -13,16 +13,20 @@ namespace Concierge.Interfaces.CompanionPageInterface
     using Concierge.Character.Characteristics;
     using Concierge.Character.Enums;
     using Concierge.Commands;
+    using Concierge.Interfaces.Enums;
 
     /// <summary>
     /// Interaction logic for ModifyHealthWindow.xaml.
     /// </summary>
     public partial class ModifyPropertiesWindow : Window
     {
-        public ModifyPropertiesWindow()
+        private readonly ConciergePage conciergePage;
+
+        public ModifyPropertiesWindow(ConciergePage conciergePage)
         {
             this.InitializeComponent();
             this.VisionComboBox.ItemsSource = Enum.GetValues(typeof(VisionTypes)).Cast<VisionTypes>();
+            this.conciergePage = conciergePage;
         }
 
         public delegate void ApplyChangesEventHandler(object sender, EventArgs e);
@@ -69,7 +73,7 @@ namespace Concierge.Interfaces.CompanionPageInterface
             this.Properties.Vision = (VisionTypes)Enum.Parse(typeof(VisionTypes), this.VisionComboBox.Text);
             this.Properties.Movement = this.MovementUpDown.Value ?? 0;
 
-            Program.UndoRedoService.AddCommand(new EditCommand<CompanionProperties>(this.Properties, oldItem));
+            Program.UndoRedoService.AddCommand(new EditCommand<CompanionProperties>(this.Properties, oldItem, this.conciergePage));
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)

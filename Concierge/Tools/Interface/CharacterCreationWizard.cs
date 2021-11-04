@@ -18,27 +18,27 @@ namespace Concierge.Tools.Interface
     public class CharacterCreationWizard
     {
         private readonly ModifyPropertiesWindow modifyCharacterPropertiesWindow = new ();
-        private readonly ModifyAttributesWindow modifyAttributesWindow = new ();
-        private readonly ModifySensesWindow modifySensesWindow = new ();
-        private readonly ModifyHealthWindow modifyHealthWindow = new ();
-        private readonly ModifyHitDiceWindow modifyHitDiceWindow = new ();
-        private readonly ModifyWealthWindow modifyWealthWindow = new ();
-        private readonly ModifyAppearanceWindow modifyAppearanceWindow = new ();
-        private readonly ModifyPersonalityWindow modifyPersonalityWindow = new ();
-        private readonly ModifyProficiencyWindow modifyProficiencyWindow = new ();
-        private readonly ModifyLanguagesWindow modifyLanguagesWindow = new ();
-        private readonly ModifyClassResourceWindow modifyClassResourceWindow = new ();
-        private readonly ModifyArmorWindow modifyArmorWindow = new ();
-        private readonly ModifyAttackWindow modifyAttackWindow = new ();
-        private readonly ModifyAmmoWindow modifyAmmoWindow = new ();
-        private readonly ModifyInventoryWindow modifyInventoryWindow = new ();
-        private readonly ModifyEquippedItemsWindow modifyEquippedItemsWindow = new ();
-        private readonly ModifySpellClassWindow modifySpellClassWindow = new ();
-        private readonly ModifySpellSlotsWindow modifySpellSlotsWindow = new ();
-        private readonly ModifySpellWindow modifySpellWindow = new ();
-        private readonly ModifyAbilitiesWindow modifyAbilitiesWindow = new ();
-        private readonly ModifyCharacterImageWindow modifyCharacterImageWindow = new ("768x1024 image ratio is recommended");
-        private readonly ModifyStatusEffectsWindow modifyStatusEffectsWindow = new ();
+        private readonly ModifyAttributesWindow modifyAttributesWindow = new (ConciergePage.None);
+        private readonly ModifySensesWindow modifySensesWindow = new (ConciergePage.None);
+        private readonly ModifyHealthWindow modifyHealthWindow = new (ConciergePage.None);
+        private readonly ModifyHitDiceWindow modifyHitDiceWindow = new (ConciergePage.None);
+        private readonly ModifyWealthWindow modifyWealthWindow = new (ConciergePage.None);
+        private readonly ModifyAppearanceWindow modifyAppearanceWindow = new (ConciergePage.None);
+        private readonly ModifyPersonalityWindow modifyPersonalityWindow = new (ConciergePage.None);
+        private readonly ModifyProficiencyWindow modifyProficiencyWindow = new (ConciergePage.None);
+        private readonly ModifyLanguagesWindow modifyLanguagesWindow = new (ConciergePage.None);
+        private readonly ModifyClassResourceWindow modifyClassResourceWindow = new (ConciergePage.None);
+        private readonly ModifyArmorWindow modifyArmorWindow = new (ConciergePage.None);
+        private readonly ModifyAttackWindow modifyAttackWindow = new (ConciergePage.None);
+        private readonly ModifyAmmoWindow modifyAmmoWindow = new (ConciergePage.None);
+        private readonly ModifyInventoryWindow modifyInventoryWindow = new (ConciergePage.None);
+        private readonly ModifyEquippedItemsWindow modifyEquippedItemsWindow = new (ConciergePage.None);
+        private readonly ModifySpellClassWindow modifySpellClassWindow = new (ConciergePage.None);
+        private readonly ModifySpellSlotsWindow modifySpellSlotsWindow = new (ConciergePage.None);
+        private readonly ModifySpellWindow modifySpellWindow = new (ConciergePage.None);
+        private readonly ModifyAbilitiesWindow modifyAbilitiesWindow = new (ConciergePage.None);
+        private readonly ModifyCharacterImageWindow modifyCharacterImageWindow = new ("768x1024 image ratio is recommended", ConciergePage.None);
+        private readonly ModifyStatusEffectsWindow modifyStatusEffectsWindow = new (ConciergePage.None);
 
         public CharacterCreationWizard()
         {
@@ -64,6 +64,7 @@ namespace Concierge.Tools.Interface
             }
 
             this.RunSetupSteps();
+            Program.UndoRedoService.Clear();
 
             ConciergeMessageBox.Show(
                 $"Character creation {(this.IsStopped ? "aborted" : "completed successfully")}.",

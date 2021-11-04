@@ -23,12 +23,15 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
     /// </summary>
     public partial class ModifyStatusEffectsWindow : Window, IConciergeModifyWindow
     {
-        public ModifyStatusEffectsWindow()
+        private readonly ConciergePage conciergePage;
+
+        public ModifyStatusEffectsWindow(ConciergePage conciergePage)
         {
             this.InitializeComponent();
 
             this.NameComboBox.ItemsSource = Constants.StatusEffects;
             this.TypeComboBox.ItemsSource = Enum.GetValues(typeof(StatusEffectTypes)).Cast<StatusEffectTypes>();
+            this.conciergePage = conciergePage;
         }
 
         public delegate void ApplyChangesEventHandler(object sender, EventArgs e);
@@ -121,7 +124,7 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
             this.SelectedEffect.Type = (StatusEffectTypes)Enum.Parse(typeof(StatusEffectTypes), this.TypeComboBox.Text);
             this.SelectedEffect.Description = this.DescriptionTextBox.Text;
 
-            Program.UndoRedoService.AddCommand(new EditCommand<StatusEffect>(this.SelectedEffect, oldItem));
+            Program.UndoRedoService.AddCommand(new EditCommand<StatusEffect>(this.SelectedEffect, oldItem, this.conciergePage));
         }
 
         private StatusEffect ToStatusEffect()
@@ -135,7 +138,7 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
                 Description = this.DescriptionTextBox.Text,
             };
 
-            Program.UndoRedoService.AddCommand(new AddCommand<StatusEffect>(this.StatusEffects, effect));
+            Program.UndoRedoService.AddCommand(new AddCommand<StatusEffect>(this.StatusEffects, effect, this.conciergePage));
 
             return effect;
         }
