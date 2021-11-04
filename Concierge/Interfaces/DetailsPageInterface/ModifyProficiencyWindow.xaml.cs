@@ -13,6 +13,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
 
     using Concierge.Character.Characteristics;
     using Concierge.Character.Enums;
+    using Concierge.Commands;
     using Concierge.Interfaces.Enums;
 
     /// <summary>
@@ -20,10 +21,13 @@ namespace Concierge.Interfaces.DetailsPageInterface
     /// </summary>
     public partial class ModifyProficiencyWindow : Window, IConciergeModifyWindow
     {
-        public ModifyProficiencyWindow()
+        private readonly ConciergePage conciergePage;
+
+        public ModifyProficiencyWindow(ConciergePage conciergePage)
         {
             this.InitializeComponent();
             this.ProficiencyComboBox.ItemsSource = Enum.GetValues(typeof(ProficiencyTypes)).Cast<ProficiencyTypes>();
+            this.conciergePage = conciergePage;
         }
 
         public delegate void ApplyChangesEventHandler(object sender, EventArgs e);
@@ -49,6 +53,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
             this.ApplyButton.Visibility = Visibility.Visible;
             this.OkButton.Visibility = Visibility.Collapsed;
             this.ProficiencyComboBox.IsEnabled = true;
+            this.SelectedProficiencies = Program.CcsFile.Character.Proficiency;
 
             this.ClearFields();
             this.ShowDialog();
@@ -106,17 +111,25 @@ namespace Concierge.Interfaces.DetailsPageInterface
         {
             this.ItemsAdded = true;
 
-            return new Proficiency()
+            var proficiency = new Proficiency()
             {
                 Name = this.ProficiencyTextBox.Text,
                 ProficiencyType = (ProficiencyTypes)Enum.Parse(typeof(ProficiencyTypes), this.ProficiencyComboBox.Text),
             };
+
+            Program.UndoRedoService.AddCommand(new AddCommand<Proficiency>(this.SelectedProficiencies, proficiency, this.conciergePage));
+
+            return proficiency;
         }
 
         private void UpdateProficiency(Proficiency proficiency)
         {
+            var oldItem = proficiency.DeepCopy() as Proficiency;
+
             proficiency.Name = this.ProficiencyTextBox.Text;
             proficiency.ProficiencyType = (ProficiencyTypes)Enum.Parse(typeof(ProficiencyTypes), this.ProficiencyComboBox.Text);
+
+            Program.UndoRedoService.AddCommand(new EditCommand<Proficiency>(proficiency, oldItem, this.conciergePage));
         }
 
         private void ClearFields()

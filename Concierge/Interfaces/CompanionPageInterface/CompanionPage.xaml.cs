@@ -11,6 +11,8 @@ namespace Concierge.Interfaces.CompanionPageInterface
     using System.Windows.Media;
 
     using Concierge.Character.Items;
+    using Concierge.Character.Statuses;
+    using Concierge.Commands;
     using Concierge.Interfaces.AttackDefensePageInterface;
     using Concierge.Interfaces.Enums;
     using Concierge.Interfaces.OverviewPageInterface;
@@ -21,12 +23,12 @@ namespace Concierge.Interfaces.CompanionPageInterface
     /// </summary>
     public partial class CompanionPage : Page, IConciergePage
     {
-        private readonly ModifyAttributesWindow modifyAttributesWindow = new ();
-        private readonly ModifyHealthWindow modifyHealthWindow = new ();
-        private readonly ModifyHpWindow modifyHpWindow = new ();
-        private readonly ModifyHitDiceWindow modifyHitDiceWindow = new ();
-        private readonly ModifyAttackWindow modifyAttackWindow = new ();
-        private readonly ModifyPropertiesWindow modifyPropertiesWindow = new ();
+        private readonly ModifyAttributesWindow modifyAttributesWindow = new (ConciergePage.Companion);
+        private readonly ModifyHealthWindow modifyHealthWindow = new (ConciergePage.Companion);
+        private readonly ModifyHpWindow modifyHpWindow = new (ConciergePage.Companion);
+        private readonly ModifyHitDiceWindow modifyHitDiceWindow = new (ConciergePage.Companion);
+        private readonly ModifyAttackWindow modifyAttackWindow = new (ConciergePage.Companion);
+        private readonly ModifyPropertiesWindow modifyPropertiesWindow = new (ConciergePage.Companion);
 
         public CompanionPage()
         {
@@ -69,7 +71,7 @@ namespace Concierge.Interfaces.CompanionPageInterface
 
         private static Brush SetHealthStyle()
         {
-            int third = Program.CcsFile.Character.Companion.Vitality.MaxHealth / 3;
+            int third = Program.CcsFile.Character.Companion.Vitality.Health.MaxHealth / 3;
             int hp = Program.CcsFile.Character.Companion.Vitality.CurrentHealth;
 
             return hp < third && hp > 0
@@ -113,17 +115,19 @@ namespace Concierge.Interfaces.CompanionPageInterface
 
         private void DrawDetails()
         {
-            this.NameField.Text = Program.CcsFile.Character.Companion.Name;
-            this.PerceptionField.Text = Program.CcsFile.Character.Companion.Perception.ToString();
-            this.VisionField.Text = Program.CcsFile.Character.Companion.Vision.ToString();
-            this.MovementField.Text = Program.CcsFile.Character.Companion.Movement.ToString();
-            this.ArmorClassField.Text = Program.CcsFile.Character.Companion.ArmorClass.ToString();
+            var properties = Program.CcsFile.Character.Companion.Properties;
+
+            this.NameField.Text = properties.Name;
+            this.PerceptionField.Text = properties.Perception.ToString();
+            this.VisionField.Text = properties.Vision.ToString();
+            this.MovementField.Text = properties.Movement.ToString();
+            this.ArmorClassField.Text = properties.ArmorClass.ToString();
         }
 
         private void DrawHealth()
         {
             this.CurrentHpField.Text = Program.CcsFile.Character.Companion.Vitality.CurrentHealth.ToString();
-            this.TotalHpField.Text = "/" + Program.CcsFile.Character.Companion.Vitality.MaxHealth.ToString();
+            this.TotalHpField.Text = "/" + Program.CcsFile.Character.Companion.Vitality.Health.MaxHealth.ToString();
 
             this.HpBackground.Foreground = SetHealthStyle();
             this.TotalHpField.Foreground = SetHealthStyle();
@@ -170,18 +174,12 @@ namespace Concierge.Interfaces.CompanionPageInterface
 
         private void WeaponDataGrid_Sorted(object sender, RoutedEventArgs e)
         {
-            Program.Modify();
-            Program.CcsFile.Character.Companion.Attacks.Clear();
-
-            foreach (var weapon in this.WeaponDataGrid.Items)
-            {
-                Program.CcsFile.Character.Companion.Attacks.Add(weapon as Weapon);
-            }
+            Utilities.SortListFromDataGrid(this.WeaponDataGrid, Program.CcsFile.Character.Companion.Attacks, this.ConciergePage);
         }
 
         private void ButtonUp_Click(object sender, RoutedEventArgs e)
         {
-            var index = this.WeaponDataGrid.NextItem(Program.CcsFile.Character.Companion.Attacks, 0, -1);
+            var index = this.WeaponDataGrid.NextItem(Program.CcsFile.Character.Companion.Attacks, 0, -1, this.ConciergePage);
 
             if (index != -1)
             {
@@ -192,7 +190,7 @@ namespace Concierge.Interfaces.CompanionPageInterface
 
         private void ButtonDown_Click(object sender, RoutedEventArgs e)
         {
-            var index = this.WeaponDataGrid.NextItem(Program.CcsFile.Character.Companion.Attacks, Program.CcsFile.Character.Companion.Attacks.Count - 1, 1);
+            var index = this.WeaponDataGrid.NextItem(Program.CcsFile.Character.Companion.Attacks, Program.CcsFile.Character.Companion.Attacks.Count - 1, 1, this.ConciergePage);
 
             if (index != -1)
             {
@@ -234,6 +232,7 @@ namespace Concierge.Interfaces.CompanionPageInterface
                 var weapon = this.WeaponDataGrid.SelectedItem as Weapon;
                 var index = this.WeaponDataGrid.SelectedIndex;
 
+                Program.UndoRedoService.AddCommand(new DeleteCommand<Weapon>(Program.CcsFile.Character.Companion.Attacks, weapon, index, this.ConciergePage));
                 Program.CcsFile.Character.Companion.Attacks.Remove(weapon);
                 this.DrawAttacks();
                 this.WeaponDataGrid.SetSelectedIndex(index);
@@ -242,7 +241,7 @@ namespace Concierge.Interfaces.CompanionPageInterface
 
         private void EditHealthButton_Click(object sender, RoutedEventArgs e)
         {
-            this.modifyHealthWindow.EditHealth(Program.CcsFile.Character.Companion.Vitality);
+            this.modifyHealthWindow.EditHealth(Program.CcsFile.Character.Companion.Vitality.Health);
             this.DrawHealth();
         }
 
@@ -260,7 +259,7 @@ namespace Concierge.Interfaces.CompanionPageInterface
 
         private void EditPropertiesButton_Click(object sender, RoutedEventArgs e)
         {
-            this.modifyPropertiesWindow.ShowEdit();
+            this.modifyPropertiesWindow.ShowEdit(Program.CcsFile.Character.Companion.Properties);
             this.DrawDetails();
         }
 
@@ -272,6 +271,7 @@ namespace Concierge.Interfaces.CompanionPageInterface
             }
 
             var hitDice = Program.CcsFile.Character.Companion.Vitality.HitDice;
+            var oldItem = hitDice.DeepCopy() as HitDice;
             switch ((sender as Grid).Name)
             {
                 case "D6SpentBox":
@@ -291,6 +291,8 @@ namespace Concierge.Interfaces.CompanionPageInterface
                     Utilities.SetCursor(hitDice.SpentD12, hitDice.TotalD12, (x, y) => x == y, Cursors.Arrow);
                     break;
             }
+
+            Program.UndoRedoService.AddCommand(new EditCommand<HitDice>(hitDice, oldItem, this.ConciergePage));
 
             this.DrawHitDice();
         }

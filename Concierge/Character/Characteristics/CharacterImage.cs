@@ -12,7 +12,7 @@ namespace Concierge.Character.Characteristics
     using Concierge.Exceptions.Enums;
     using Concierge.Utility.Extensions;
 
-    public class CharacterImage
+    public class CharacterImage : ICopyable
     {
         public CharacterImage()
         {
@@ -84,6 +84,17 @@ namespace Concierge.Character.Characteristics
 
                 Program.ErrorService.LogError(ex, Severity.Release);
             }
+        }
+
+        public ICopyable DeepCopy()
+        {
+            return new CharacterImage()
+            {
+                Encoded = this.Encoded,
+                Path = this.Path,
+                Stretch = this.Stretch,
+                UseCustomImage = this.UseCustomImage,
+            };
         }
     }
 }

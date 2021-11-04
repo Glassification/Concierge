@@ -24,6 +24,7 @@ namespace Concierge.Utility
         public const int MaxAttunedItems = 3;
         public const int SignificantDigits = 2;
         public const int Currencies = 5;
+        public const int MaxDepth = 10;
 
         public const string Designer = "Thomas Beckett";
         public const string License = "This program is provided as is. Thomas Beckett Inc. is not responsible for any injuries or TPKs that may result from the use of this product.";

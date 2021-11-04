@@ -19,12 +19,11 @@ namespace Concierge.Tools.Searching
     using Concierge.Interfaces.NotesPageInterface;
     using Concierge.Interfaces.SpellcastingPageInterface;
     using Concierge.Tools.Searching.Enums;
+    using Concierge.Utility;
     using Concierge.Utility.Extensions;
 
     public class ConciergeSearch
     {
-        private const int MaxDepth = 10;
-
         public ConciergeSearch(MainWindow mainWindow)
         {
             this.MainWindow = mainWindow;
@@ -120,7 +119,7 @@ namespace Concierge.Tools.Searching
             else if (conciergePage is DetailsPage)
             {
                 this.SearchList(this.Character.ClassResources, conciergePage);
-                this.SearchList(this.Character.Details.Languages, conciergePage);
+                this.SearchList(this.Character.Languages, conciergePage);
                 this.SearchList(this.Character.Proficiency, conciergePage);
             }
             else if (conciergePage is EquippedItemsPage)
@@ -169,7 +168,7 @@ namespace Concierge.Tools.Searching
                         continue;
                     }
 
-                    if (propertyValue.IsList() && this.Depth < MaxDepth)
+                    if (propertyValue.IsList() && this.Depth < Constants.MaxDepth)
                     {
                         dynamic list = propertyValue;
                         this.SearchList(list, conciergePage);

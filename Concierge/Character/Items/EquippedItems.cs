@@ -84,7 +84,7 @@ namespace Concierge.Character.Items
             }
         }
 
-        public void Equip(Inventory item, EquipmentSlot equipSlot)
+        public Inventory Equip(Inventory item, EquipmentSlot equipSlot)
         {
             var newItem = RemoveFromInventory(item);
 
@@ -106,12 +106,12 @@ namespace Concierge.Character.Items
                     this.Feet.Add(newItem);
                     break;
             }
+
+            return newItem;
         }
 
         public void Dequip(Inventory item, EquipmentSlot equipSlot)
         {
-            AddToInventory(item);
-
             switch (equipSlot)
             {
                 case EquipmentSlot.Head:
@@ -130,6 +130,8 @@ namespace Concierge.Character.Items
                     this.Feet.Remove(item);
                     break;
             }
+
+            AddToInventory(item);
         }
 
         public EquipmentSlot GetEquippedItemSlot(Inventory item)
@@ -198,7 +200,10 @@ namespace Concierge.Character.Items
                 Program.CcsFile.Character.Inventories.Remove(item);
             }
 
-            return item.Copy();
+            var newItem = item.DeepCopy() as Inventory;
+            newItem.EquppedId = Guid.NewGuid();
+
+            return newItem;
         }
     }
 }

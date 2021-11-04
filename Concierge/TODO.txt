@@ -1,0 +1,2 @@
+﻿Fix Note editing.
+Allow highlighting of any control.

@@ -9,6 +9,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
     using System.Windows.Input;
 
     using Concierge.Character.Statuses;
+    using Concierge.Commands;
     using Concierge.Interfaces.Enums;
 
     /// <summary>
@@ -16,11 +17,14 @@ namespace Concierge.Interfaces.OverviewPageInterface
     /// </summary>
     public partial class ModifyHpWindow : Window
     {
-        public ModifyHpWindow()
+        private readonly ConciergePage conciergePage;
+
+        public ModifyHpWindow(ConciergePage conciergePage)
         {
             this.InitializeComponent();
             this.PreviousHeal = 0;
             this.PreviousDamage = 0;
+            this.conciergePage = conciergePage;
         }
 
         private string HeaderText => this.IsHealing ? "Heal" : "Damage";
@@ -44,7 +48,9 @@ namespace Concierge.Interfaces.OverviewPageInterface
 
             if (this.Result == ConciergeWindowResult.OK)
             {
+                var oldItem = vitality.Health.DeepCopy() as Health;
                 vitality.Heal(this.HpUpDown.Value ?? 0);
+                Program.UndoRedoService.AddCommand(new EditCommand<Health>(vitality.Health, oldItem, this.conciergePage));
             }
         }
 
@@ -59,7 +65,9 @@ namespace Concierge.Interfaces.OverviewPageInterface
 
             if (this.Result == ConciergeWindowResult.OK)
             {
+                var oldItem = vitality.Health.DeepCopy() as Health;
                 vitality.Damage(this.HpUpDown.Value ?? 0);
+                Program.UndoRedoService.AddCommand(new EditCommand<Health>(vitality.Health, oldItem, this.conciergePage));
             }
         }
 

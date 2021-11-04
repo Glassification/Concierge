@@ -12,6 +12,7 @@ namespace Concierge.Interfaces.AbilitiesPageInterface
     using System.Windows.Input;
 
     using Concierge.Character.Characteristics;
+    using Concierge.Commands;
     using Concierge.Interfaces.Enums;
     using Concierge.Utility;
 
@@ -20,11 +21,14 @@ namespace Concierge.Interfaces.AbilitiesPageInterface
     /// </summary>
     public partial class ModifyAbilitiesWindow : Window, IConciergeModifyWindow
     {
-        public ModifyAbilitiesWindow()
+        private readonly ConciergePage conciergePage;
+
+        public ModifyAbilitiesWindow(ConciergePage conciergePage)
         {
             this.InitializeComponent();
 
             this.NameComboBox.ItemsSource = Constants.Abilities;
+            this.conciergePage = conciergePage;
         }
 
         public delegate void ApplyChangesEventHandler(object sender, EventArgs e);
@@ -123,7 +127,7 @@ namespace Concierge.Interfaces.AbilitiesPageInterface
         {
             this.ItemsAdded = true;
 
-            return new Ability()
+            var ability = new Ability()
             {
                 Name = this.NameComboBox.Text,
                 Level = this.LevelUpDown.Value ?? 0,
@@ -132,16 +136,24 @@ namespace Concierge.Interfaces.AbilitiesPageInterface
                 Action = this.ActionTextBox.Text,
                 Description = this.NotesTextBox.Text,
             };
+
+            Program.UndoRedoService.AddCommand(new AddCommand<Ability>(this.Abilities, ability, this.conciergePage));
+
+            return ability;
         }
 
         private void UpdateAbility(Ability ability)
         {
+            var oldItem = ability.DeepCopy() as Ability;
+
             ability.Name = this.NameComboBox.Text;
             ability.Level = this.LevelUpDown.Value ?? 0;
             ability.Uses = this.UsesTextBox.Text;
             ability.Recovery = this.RecoveryTextBox.Text;
             ability.Action = this.ActionTextBox.Text;
             ability.Description = this.NotesTextBox.Text;
+
+            Program.UndoRedoService.AddCommand(new EditCommand<Ability>(ability, oldItem, this.conciergePage));
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)

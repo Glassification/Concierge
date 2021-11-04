@@ -10,7 +10,7 @@ namespace Concierge.Character.Items
     using Concierge.Utility;
     using Newtonsoft.Json;
 
-    public class Armor
+    public class Armor : ICopyable
     {
         public Armor()
         {
@@ -79,6 +79,24 @@ namespace Concierge.Character.Items
 
                 return ac;
             }
+        }
+
+        public ICopyable DeepCopy()
+        {
+            return new Armor()
+            {
+                Equiped = this.Equiped,
+                Type = this.Type,
+                ArmorClass = this.ArmorClass,
+                Strength = this.Strength,
+                Weight = this.Weight,
+                Stealth = this.Stealth,
+                Shield = this.Shield,
+                ShieldArmorClass = this.ShieldArmorClass,
+                ShieldWeight = this.ShieldWeight,
+                MiscArmorClass = this.MiscArmorClass,
+                MagicArmorClass = this.MagicArmorClass,
+            };
         }
     }
 }

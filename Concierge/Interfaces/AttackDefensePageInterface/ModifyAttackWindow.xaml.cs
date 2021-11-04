@@ -14,6 +14,7 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
 
     using Concierge.Character.Enums;
     using Concierge.Character.Items;
+    using Concierge.Commands;
     using Concierge.Interfaces.Enums;
     using Concierge.Utility;
 
@@ -22,13 +23,16 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
     /// </summary>
     public partial class ModifyAttackWindow : Window, IConciergeModifyWindow
     {
-        public ModifyAttackWindow()
+        private readonly ConciergePage conciergePage;
+
+        public ModifyAttackWindow(ConciergePage conciergePage)
         {
             this.InitializeComponent();
             this.AttackComboBox.ItemsSource = Constants.Weapons;
             this.TypeComboBox.ItemsSource = Enum.GetValues(typeof(WeaponTypes)).Cast<WeaponTypes>();
             this.AbilityComboBox.ItemsSource = Enum.GetValues(typeof(Abilities)).Cast<Abilities>();
             this.DamageTypeComboBox.ItemsSource = Enum.GetValues(typeof(DamageTypes)).Cast<DamageTypes>();
+            this.conciergePage = conciergePage;
         }
 
         public delegate void ApplyChangesEventHandler(object sender, EventArgs e);
@@ -145,6 +149,8 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
 
         private void UpdateWeapon(Weapon weapon)
         {
+            var oldItem = weapon.DeepCopy() as Weapon;
+
             weapon.Name = this.AttackComboBox.Text;
             weapon.WeaponType = (WeaponTypes)Enum.Parse(typeof(WeaponTypes), this.TypeComboBox.Text);
             weapon.Ability = (Abilities)Enum.Parse(typeof(Abilities), this.AbilityComboBox.Text);
@@ -156,13 +162,15 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
             weapon.ProficiencyOverride = this.ProficencyOverrideCheckBox.IsChecked ?? false;
             weapon.IsInBagOfHolding = this.BagOfHoldingCheckBox.IsChecked ?? false;
             weapon.Note = this.NotesTextBox.Text;
+
+            Program.UndoRedoService.AddCommand(new EditCommand<Weapon>(weapon, oldItem, this.conciergePage));
         }
 
         private Weapon ToWeapon()
         {
             this.ItemsAdded = true;
 
-            return new Weapon()
+            var weapon = new Weapon()
             {
                 Name = this.AttackComboBox.Text,
                 WeaponType = (WeaponTypes)Enum.Parse(typeof(WeaponTypes), this.TypeComboBox.Text),
@@ -176,6 +184,10 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
                 IsInBagOfHolding = this.BagOfHoldingCheckBox.IsChecked ?? false,
                 Note = this.NotesTextBox.Text,
             };
+
+            Program.UndoRedoService.AddCommand(new AddCommand<Weapon>(this.Weapons, weapon, this.conciergePage));
+
+            return weapon;
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)

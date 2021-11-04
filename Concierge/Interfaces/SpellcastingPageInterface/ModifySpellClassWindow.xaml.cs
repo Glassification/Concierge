@@ -13,6 +13,7 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
 
     using Concierge.Character.Enums;
     using Concierge.Character.Spellcasting;
+    using Concierge.Commands;
     using Concierge.Interfaces.Enums;
     using Concierge.Utility;
 
@@ -21,11 +22,14 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
     /// </summary>
     public partial class ModifySpellClassWindow : Window, IConciergeModifyWindow
     {
-        public ModifySpellClassWindow()
+        private readonly ConciergePage conciergePage;
+
+        public ModifySpellClassWindow(ConciergePage conciergePage)
         {
             this.InitializeComponent();
             this.ClassNameComboBox.ItemsSource = Constants.Classes;
             this.AbilityComboBox.ItemsSource = Enum.GetValues(typeof(Abilities)).Cast<Abilities>();
+            this.conciergePage = conciergePage;
         }
 
         public delegate void ApplyChangesEventHandler(object sender, EventArgs e);
@@ -140,18 +144,22 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
 
         private void UpdateMagicClass(MagicClass magicClass)
         {
+            var oldItem = magicClass.DeepCopy() as MagicClass;
+
             magicClass.Name = this.ClassNameComboBox.Text;
             magicClass.Ability = (Abilities)Enum.Parse(typeof(Abilities), this.AbilityComboBox.Text);
             magicClass.Level = this.LevelUpDown.Value ?? 0;
             magicClass.KnownCantrips = this.CantripsUpDown.Value ?? 0;
             magicClass.KnownSpells = this.SpellsUpDown.Value ?? 0;
+
+            Program.UndoRedoService.AddCommand(new EditCommand<MagicClass>(magicClass, oldItem, this.conciergePage));
         }
 
         private MagicClass ToMagicClass()
         {
             this.ItemsAdded = true;
 
-            return new MagicClass()
+            var magicClass = new MagicClass()
             {
                 Name = this.ClassNameComboBox.Text,
                 Ability = (Abilities)Enum.Parse(typeof(Abilities), this.AbilityComboBox.Text),
@@ -159,6 +167,10 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
                 KnownSpells = this.SpellsUpDown.Value ?? 0,
                 KnownCantrips = this.CantripsUpDown.Value ?? 0,
             };
+
+            Program.UndoRedoService.AddCommand(new AddCommand<MagicClass>(this.MagicClasses, magicClass, this.conciergePage));
+
+            return magicClass;
         }
 
         private void RefreshFields()

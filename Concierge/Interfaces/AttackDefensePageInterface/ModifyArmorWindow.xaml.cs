@@ -12,6 +12,7 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
 
     using Concierge.Character.Enums;
     using Concierge.Character.Items;
+    using Concierge.Commands;
     using Concierge.Interfaces.Enums;
 
     /// <summary>
@@ -19,11 +20,14 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
     /// </summary>
     public partial class ModifyArmorWindow : Window, IConciergeModifyWindow
     {
-        public ModifyArmorWindow()
+        private readonly ConciergePage conciergePage;
+
+        public ModifyArmorWindow(ConciergePage conciergePage)
         {
             this.InitializeComponent();
             this.TypeComboBox.ItemsSource = Enum.GetValues(typeof(ArmorType)).Cast<ArmorType>();
             this.StealthComboBox.ItemsSource = Enum.GetValues(typeof(ArmorStealth)).Cast<ArmorStealth>();
+            this.conciergePage = conciergePage;
         }
 
         public delegate void ApplyChangesEventHandler(object sender, EventArgs e);
@@ -93,6 +97,8 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
 
         private void UpdateArmor(Armor armor)
         {
+            var oldItem = armor.DeepCopy() as Armor;
+
             armor.Equiped = this.EquipedTextBox.Text;
             armor.Type = (ArmorType)Enum.Parse(typeof(ArmorType), this.TypeComboBox.Text);
             armor.ArmorClass = (int)this.ArmorClassUpDown.Value;
@@ -104,6 +110,8 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
             armor.ShieldWeight = (double)this.ShieldWeightUpDown.Value;
             armor.MiscArmorClass = (int)this.MiscArmorClassUpDown.Value;
             armor.MagicArmorClass = (int)this.MagicArmorClassUpDown.Value;
+
+            Program.UndoRedoService.AddCommand(new EditCommand<Armor>(armor, oldItem, this.conciergePage));
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)

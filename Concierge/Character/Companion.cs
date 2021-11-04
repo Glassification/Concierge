@@ -7,7 +7,6 @@ namespace Concierge.Character
     using System.Collections.Generic;
 
     using Concierge.Character.Characteristics;
-    using Concierge.Character.Enums;
     using Concierge.Character.Items;
     using Concierge.Character.Statuses;
 
@@ -18,22 +17,14 @@ namespace Concierge.Character
             this.Vitality = new Vitality();
             this.Attributes = new Attributes();
             this.Attacks = new List<Weapon>();
-            this.Name = string.Empty;
+            this.Properties = new CompanionProperties();
         }
 
-        public string Name { get; set; }
-
-        public int ArmorClass { get; set; }
+        public CompanionProperties Properties { get; set; }
 
         public Vitality Vitality { get; set; }
 
-        public int Movement { get; set; }
-
         public Attributes Attributes { get; set; }
-
-        public int Perception { get; set; }
-
-        public VisionTypes Vision { get; set; }
 
         public List<Weapon> Attacks { get; set; }
     }

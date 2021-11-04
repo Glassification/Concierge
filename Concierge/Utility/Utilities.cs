@@ -16,10 +16,33 @@ namespace Concierge.Utility
     using Concierge.Character;
     using Concierge.Character.Enums;
     using Concierge.Character.Statuses;
+    using Concierge.Commands;
+    using Concierge.Interfaces.Components;
+    using Concierge.Interfaces.Enums;
     using Concierge.Utility.Extensions;
 
     public static class Utilities
     {
+        public static void SortListFromDataGrid<T>(ConciergeDataGrid dataGrid, List<T> list, ConciergePage conciergePage)
+        {
+            Program.Modify();
+
+            var oldList = new List<T>(list);
+            list.Clear();
+
+            foreach (var item in dataGrid.Items)
+            {
+                list.Add((T)item);
+            }
+
+            Program.UndoRedoService.AddCommand(
+                new ListOrderCommand<T>(
+                    list,
+                    oldList,
+                    new List<T>(list),
+                    conciergePage));
+        }
+
         public static List<string> FormatEnumForDisplay(Type enumType)
         {
             var stringArray = Enum.GetNames(enumType);
@@ -129,7 +152,7 @@ namespace Concierge.Utility
 
         public static Brush SetHealthStyle(Vitality vitality)
         {
-            int third = vitality.MaxHealth / 3;
+            int third = vitality.Health.MaxHealth / 3;
             int hp = vitality.CurrentHealth;
 
             return hp < third && hp > 0
@@ -213,9 +236,9 @@ namespace Concierge.Utility
         public static bool ValidateClassLevel(ConciergeCharacter character, Guid id, int newValue)
         {
             var totalLevel =
-                (character.Class1.Id.Equals(id) ? 0 : character.Class1.Level) +
-                (character.Class2.Id.Equals(id) ? 0 : character.Class2.Level) +
-                (character.Class3.Id.Equals(id) ? 0 : character.Class3.Level);
+                (character.Properties.Class1.Id.Equals(id) ? 0 : character.Properties.Class1.Level) +
+                (character.Properties.Class2.Id.Equals(id) ? 0 : character.Properties.Class2.Level) +
+                (character.Properties.Class3.Id.Equals(id) ? 0 : character.Properties.Class3.Level);
 
             totalLevel += newValue;
 

@@ -10,7 +10,7 @@ namespace Concierge.Character.Items
     using Concierge.Utility;
     using Newtonsoft.Json;
 
-    public class Weapon : IConciergeList
+    public class Weapon : ICopyable
     {
         public Weapon()
         {
@@ -67,6 +67,25 @@ namespace Concierge.Character.Items
         public bool IsInBagOfHolding { get; set; }
 
         public Guid Id { get; init; }
+
+        public ICopyable DeepCopy()
+        {
+            return new Weapon()
+            {
+                Name = this.Name,
+                Ability = this.Ability,
+                Damage = this.Damage,
+                Misc = this.Misc,
+                DamageType = this.DamageType,
+                Range = this.Range,
+                Note = this.Note,
+                Weight = this.Weight,
+                WeaponType = this.WeaponType,
+                ProficiencyOverride = this.ProficiencyOverride,
+                IsInBagOfHolding = this.IsInBagOfHolding,
+                Id = this.Id,
+            };
+        }
 
         public override string ToString()
         {

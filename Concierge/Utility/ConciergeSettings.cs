@@ -75,6 +75,19 @@ namespace Concierge.Utility
             AppConfigReadWriter.Write(nameof(DisplayWindowInCentre), DisplayWindowInCentre.ToString());
         }
 
+        public static ConciergeSettingsDto ToConciergeSettingsDto()
+        {
+            return new ConciergeSettingsDto()
+            {
+                AutosaveEnabled = AutosaveEnabled,
+                AutosaveInterval = AutosaveInterval,
+                CheckVersion = CheckVersion,
+                MuteSounds = MuteSounds,
+                UseCoinWeight = UseCoinWeight,
+                UseEncumbrance = UseEncumbrance,
+            };
+        }
+
         public static string GetCurrentState()
         {
             return $@"AutosaveEnabled:[{AutosaveEnabled}], 

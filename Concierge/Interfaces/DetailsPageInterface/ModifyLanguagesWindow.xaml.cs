@@ -12,6 +12,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
     using System.Windows.Input;
 
     using Concierge.Character.Characteristics;
+    using Concierge.Commands;
     using Concierge.Interfaces.Enums;
     using Concierge.Utility;
 
@@ -20,10 +21,13 @@ namespace Concierge.Interfaces.DetailsPageInterface
     /// </summary>
     public partial class ModifyLanguagesWindow : Window, IConciergeModifyWindow
     {
-        public ModifyLanguagesWindow()
+        private readonly ConciergePage conciergePage;
+
+        public ModifyLanguagesWindow(ConciergePage conciergePage)
         {
             this.InitializeComponent();
             this.NameComboBox.ItemsSource = Constants.Languages;
+            this.conciergePage = conciergePage;
         }
 
         public delegate void ApplyChangesEventHandler(object sender, EventArgs e);
@@ -46,7 +50,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
         {
             this.Editing = false;
             this.HeaderTextBlock.Text = this.HeaderText;
-            this.Languages = Program.CcsFile.Character.Details.Languages;
+            this.Languages = Program.CcsFile.Character.Languages;
             this.ApplyButton.Visibility = Visibility.Visible;
             this.OkButton.Visibility = Visibility.Collapsed;
 
@@ -110,21 +114,29 @@ namespace Concierge.Interfaces.DetailsPageInterface
 
         private void UpdateLanguage(Language language)
         {
+            var oldItem = language.DeepCopy() as Language;
+
             language.Name = this.NameComboBox.Text;
             language.Script = this.ScriptTextBox.Text;
             language.Speakers = this.SpeakersTextBox.Text;
+
+            Program.UndoRedoService.AddCommand(new EditCommand<Language>(language, oldItem, this.conciergePage));
         }
 
         private Language ToLanguage()
         {
             this.ItemsAdded = true;
 
-            return new Language()
+            var language = new Language()
             {
                 Name = this.NameComboBox.Text,
                 Script = this.ScriptTextBox.Text,
                 Speakers = this.SpeakersTextBox.Text,
             };
+
+            Program.UndoRedoService.AddCommand(new AddCommand<Language>(this.Languages, language, this.conciergePage));
+
+            return language;
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)

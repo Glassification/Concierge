@@ -38,17 +38,11 @@ namespace Concierge.Character
 
         public Attributes Attributes { get; private set; }
 
-        public CharacterClass Class1 { get; set; }
-
-        public CharacterClass Class2 { get; set; }
-
-        public CharacterClass Class3 { get; set; }
-
         public List<ClassResource> ClassResources { get; private set; }
 
         public Companion Companion { get; private set; }
 
-        public Details Details { get; private set; }
+        public Senses Senses { get; private set; }
 
         public List<Chapter> Chapters { get; set; }
 
@@ -81,6 +75,10 @@ namespace Concierge.Character
         public CharacterImage CharacterIcon { get; private set; }
 
         public List<StatusEffect> StatusEffects { get; private set; }
+
+        public CharacterProperties Properties { get; private set; }
+
+        public List<Language> Languages { get; set; }
 
         [JsonIgnore]
         public double CarryWeight
@@ -120,16 +118,13 @@ namespace Concierge.Character
         }
 
         [JsonIgnore]
-        public int ProficiencyBonus => this.Level - 1 > 0 ? Constants.Proficiencies[this.Level - 1] : Constants.Proficiencies[0];
+        public int ProficiencyBonus => this.Properties.Level - 1 > 0 ? Constants.Proficiencies[this.Properties.Level - 1] : Constants.Proficiencies[0];
 
         [JsonIgnore]
-        public int PassivePerception => Constants.BasePerception + this.Skill.Perception.Bonus + this.Details.PerceptionBonus;
+        public int PassivePerception => Constants.BasePerception + this.Skill.Perception.Bonus + this.Senses.PerceptionBonus;
 
         [JsonIgnore]
-        public int Initiative => Utilities.CalculateBonus(this.Attributes.Dexterity) + this.Details.InitiativeBonus;
-
-        [JsonIgnore]
-        public int Level => this.Class1.Level + this.Class2.Level + this.Class3.Level;
+        public int Initiative => Utilities.CalculateBonus(this.Attributes.Dexterity) + this.Senses.InitiativeBonus;
 
         [JsonIgnore]
         public int CasterLevel
@@ -144,26 +139,6 @@ namespace Concierge.Character
                 }
 
                 return level;
-            }
-        }
-
-        [JsonIgnore]
-        public string ExperienceToLevel => this.Level - 1 > 0 ? Constants.Levels[this.Level - 1].ToString() : Constants.Levels[0].ToString();
-
-        [JsonIgnore]
-        public string GetClasses
-        {
-            get
-            {
-                var classes = new StringBuilder();
-
-                classes.Append(this.Class1.Name.IsNullOrWhiteSpace() ? string.Empty : $"{this.Class1.Name}, ");
-                classes.Append(this.Class2.Name.IsNullOrWhiteSpace() ? string.Empty : $"{this.Class2.Name}, ");
-                classes.Append(this.Class3.Name.IsNullOrWhiteSpace() ? string.Empty : this.Class3.Name);
-
-                var classString = classes.ToString().Trim(new char[] { ' ', ',' });
-
-                return classString;
             }
         }
 
@@ -225,12 +200,9 @@ namespace Concierge.Character
             this.Armor = new Armor();
             this.Attributes = new Attributes();
             this.Chapters = new List<Chapter>();
-            this.Class1 = new CharacterClass();
-            this.Class2 = new CharacterClass();
-            this.Class3 = new CharacterClass();
             this.ClassResources = new List<ClassResource>();
             this.Companion = new Companion();
-            this.Details = new Details();
+            this.Senses = new Senses();
             this.Inventories = new List<Inventory>();
             this.MagicClasses = new List<MagicClass>();
             this.Personality = new Personality();
@@ -246,6 +218,8 @@ namespace Concierge.Character
             this.CharacterImage = new CharacterImage();
             this.CharacterIcon = new CharacterImage();
             this.StatusEffects = new List<StatusEffect>();
+            this.Properties = new CharacterProperties();
+            this.Languages = new List<Language>();
         }
     }
 }

@@ -16,6 +16,7 @@ namespace Concierge.Interfaces.NotesPageInterface
     using System.Windows.Media;
 
     using Concierge.Character.Notes;
+    using Concierge.Commands;
     using Concierge.Exceptions.Enums;
     using Concierge.Interfaces.Components;
     using Concierge.Interfaces.Enums;
@@ -31,7 +32,7 @@ namespace Concierge.Interfaces.NotesPageInterface
     {
         private const int MaxUndoQueue = 10;
 
-        private readonly ModifyNotesWindow modifyNotesWindow = new ();
+        private readonly ModifyNotesWindow modifyNotesWindow = new (ConciergePage.Notes);
 
         public NotesPage()
         {
@@ -44,7 +45,6 @@ namespace Concierge.Interfaces.NotesPageInterface
 
             this.NotesTextBox.FontSize = 20;
             this.NotesTextBox.Foreground = Brushes.White;
-
             this.modifyNotesWindow.ApplyChanges += this.Window_ApplyChanges;
         }
 
@@ -446,6 +446,8 @@ namespace Concierge.Interfaces.NotesPageInterface
                     return;
                 }
 
+                var index = Program.CcsFile.Character.Chapters.IndexOf(chapterTreeViewItem.Chapter);
+                Program.UndoRedoService.AddCommand(new DeleteCommand<Chapter>(Program.CcsFile.Character.Chapters, chapterTreeViewItem.Chapter, index, this.ConciergePage));
                 Program.CcsFile.Character.Chapters.Remove(chapterTreeViewItem.Chapter);
             }
             else if (this.NotesTreeView.SelectedItem is DocumentTreeViewItem documentTreeViewItem)
@@ -462,6 +464,8 @@ namespace Concierge.Interfaces.NotesPageInterface
                 }
 
                 var chapter = Program.CcsFile.Character.GetChapterByDocumentId(documentTreeViewItem.Document.Id);
+                var index = chapter.Documents.IndexOf(documentTreeViewItem.Document);
+                Program.UndoRedoService.AddCommand(new DeleteCommand<Document>(chapter.Documents, documentTreeViewItem.Document, index, this.ConciergePage));
                 chapter.Documents.Remove(documentTreeViewItem.Document);
             }
 

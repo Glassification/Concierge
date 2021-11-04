@@ -10,6 +10,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
     using System.Windows.Input;
 
     using Concierge.Character.Statuses;
+    using Concierge.Commands;
     using Concierge.Interfaces.Enums;
 
     /// <summary>
@@ -17,22 +18,25 @@ namespace Concierge.Interfaces.OverviewPageInterface
     /// </summary>
     public partial class ModifyHealthWindow : Window, IConciergeModifyWindow
     {
-        public ModifyHealthWindow()
+        private readonly ConciergePage conciergePage;
+
+        public ModifyHealthWindow(ConciergePage conciergePage)
         {
             this.InitializeComponent();
+            this.conciergePage = conciergePage;
         }
 
         public delegate void ApplyChangesEventHandler(object sender, EventArgs e);
 
         public event ApplyChangesEventHandler ApplyChanges;
 
-        private Vitality Vitality { get; set; }
+        private Health Health { get; set; }
 
         private ConciergeWindowResult Result { get; set; }
 
         public ConciergeWindowResult ShowWizardSetup()
         {
-            this.Vitality = Program.CcsFile.Character.Vitality;
+            this.Health = Program.CcsFile.Character.Vitality.Health;
             this.ApplyButton.Visibility = Visibility.Collapsed;
 
             this.FillFields();
@@ -41,9 +45,9 @@ namespace Concierge.Interfaces.OverviewPageInterface
             return this.Result;
         }
 
-        public void EditHealth(Vitality vitality)
+        public void EditHealth(Health health)
         {
-            this.Vitality = vitality;
+            this.Health = health;
             this.ApplyButton.Visibility = Visibility.Visible;
 
             this.FillFields();
@@ -69,9 +73,9 @@ namespace Concierge.Interfaces.OverviewPageInterface
             this.TemporaryHpUpDown.UpdatingValue();
             this.TotalHpUpDown.UpdatingValue();
 
-            this.CurrentHpUpDown.Value = this.Vitality.BaseHealth;
-            this.TemporaryHpUpDown.Value = this.Vitality.TemporaryHealth;
-            this.TotalHpUpDown.Value = this.Vitality.MaxHealth;
+            this.CurrentHpUpDown.Value = this.Health.BaseHealth;
+            this.TemporaryHpUpDown.Value = this.Health.TemporaryHealth;
+            this.TotalHpUpDown.Value = this.Health.MaxHealth;
 
             this.CurrentHpUpDown.Maximum = this.TotalHpUpDown.Value;
             this.CurrentHpUpDown.Minimum = -this.TotalHpUpDown.Value;
@@ -79,9 +83,13 @@ namespace Concierge.Interfaces.OverviewPageInterface
 
         private void UpdateHealth()
         {
-            this.Vitality.MaxHealth = this.TotalHpUpDown.Value ?? 0;
-            this.Vitality.BaseHealth = this.CurrentHpUpDown.Value ?? 0;
-            this.Vitality.TemporaryHealth = this.TemporaryHpUpDown.Value ?? 0;
+            var oldItem = this.Health.DeepCopy() as Health;
+
+            this.Health.MaxHealth = this.TotalHpUpDown.Value ?? 0;
+            this.Health.BaseHealth = this.CurrentHpUpDown.Value ?? 0;
+            this.Health.TemporaryHealth = this.TemporaryHpUpDown.Value ?? 0;
+
+            Program.UndoRedoService.AddCommand(new EditCommand<Health>(this.Health, oldItem, this.conciergePage));
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)

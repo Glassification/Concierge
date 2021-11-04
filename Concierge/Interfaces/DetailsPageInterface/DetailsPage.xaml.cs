@@ -14,6 +14,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
     using Concierge.Character.Characteristics;
     using Concierge.Character.Enums;
     using Concierge.Character.Statuses;
+    using Concierge.Commands;
     using Concierge.Interfaces.Components;
     using Concierge.Interfaces.Enums;
     using Concierge.Utility;
@@ -23,16 +24,17 @@ namespace Concierge.Interfaces.DetailsPageInterface
     /// </summary>
     public partial class DetailsPage : Page, IConciergePage
     {
-        private readonly ModifyProficiencyWindow modifyProficiencyWindow = new ();
-        private readonly MondifyConditionsWindow mondifyConditionsWindow = new ();
-        private readonly ModifyLanguagesWindow modifyLanguagesWindow = new ();
-        private readonly ModifyAppearanceWindow modifyAppearanceWindow = new ();
-        private readonly ModifyPersonalityWindow modifyPersonalityWindow = new ();
-        private readonly ModifyClassResourceWindow modifyClassResourceWindow = new ();
+        private readonly ModifyProficiencyWindow modifyProficiencyWindow = new (ConciergePage.Details);
+        private readonly MondifyConditionsWindow mondifyConditionsWindow = new (ConciergePage.Details);
+        private readonly ModifyLanguagesWindow modifyLanguagesWindow = new (ConciergePage.Details);
+        private readonly ModifyAppearanceWindow modifyAppearanceWindow = new (ConciergePage.Details);
+        private readonly ModifyPersonalityWindow modifyPersonalityWindow = new (ConciergePage.Details);
+        private readonly ModifyClassResourceWindow modifyClassResourceWindow = new (ConciergePage.Details);
 
         public DetailsPage()
         {
             this.InitializeComponent();
+
             this.modifyProficiencyWindow.ApplyChanges += this.Window_ApplyChanges;
             this.mondifyConditionsWindow.ApplyChanges += this.Window_ApplyChanges;
             this.modifyLanguagesWindow.ApplyChanges += this.Window_ApplyChanges;
@@ -161,7 +163,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
         {
             this.LanguagesDataGrid.Items.Clear();
 
-            foreach (var language in Program.CcsFile.Character.Details.Languages)
+            foreach (var language in Program.CcsFile.Character.Languages)
             {
                 this.LanguagesDataGrid.Items.Add(language);
             }
@@ -215,11 +217,17 @@ namespace Concierge.Interfaces.DetailsPageInterface
 
         private void DeleteProficiency(ConciergeDataGrid dataGrid)
         {
+            if (dataGrid?.SelectedItem is null)
+            {
+                return;
+            }
+
             Program.Modify();
 
             var item = dataGrid.SelectedItem as Proficiency;
             var index = dataGrid.SelectedIndex;
 
+            Program.UndoRedoService.AddCommand(new DeleteCommand<Proficiency>(Program.CcsFile.Character.Proficiency, item, index, this.ConciergePage));
             Program.CcsFile.Character.Proficiency.Remove(item);
 
             this.DrawProficiencies();
@@ -345,7 +353,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
 
         private void AddLanguagesButton_Click(object sender, RoutedEventArgs e)
         {
-            this.modifyLanguagesWindow.ShowAdd(Program.CcsFile.Character.Details.Languages);
+            this.modifyLanguagesWindow.ShowAdd(Program.CcsFile.Character.Languages);
             this.DrawLanguages();
 
             if (this.modifyLanguagesWindow.ItemsAdded)
@@ -371,8 +379,11 @@ namespace Concierge.Interfaces.DetailsPageInterface
             {
                 Program.Modify();
 
+                var language = this.LanguagesDataGrid.SelectedItem as Language;
                 var index = this.LanguagesDataGrid.SelectedIndex;
-                Program.CcsFile.Character.Details.Languages.Remove(this.LanguagesDataGrid.SelectedItem as Language);
+
+                Program.UndoRedoService.AddCommand(new DeleteCommand<Language>(Program.CcsFile.Character.Languages, language, index, this.ConciergePage));
+                Program.CcsFile.Character.Languages.Remove(language);
                 this.DrawLanguages();
                 this.LanguagesDataGrid.SetSelectedIndex(index);
             }
@@ -384,8 +395,11 @@ namespace Concierge.Interfaces.DetailsPageInterface
             {
                 Program.Modify();
 
+                var resource = this.ResourcesDataGrid.SelectedItem as ClassResource;
                 var index = this.ResourcesDataGrid.SelectedIndex;
-                Program.CcsFile.Character.ClassResources.Remove(this.ResourcesDataGrid.SelectedItem as ClassResource);
+
+                Program.UndoRedoService.AddCommand(new DeleteCommand<ClassResource>(Program.CcsFile.Character.ClassResources, resource, index, this.ConciergePage));
+                Program.CcsFile.Character.ClassResources.Remove(resource);
                 this.DrawResources();
                 this.ResourcesDataGrid.SetSelectedIndex(index);
             }
@@ -421,30 +435,27 @@ namespace Concierge.Interfaces.DetailsPageInterface
         private void ProficiencyDataGrid_Sorted(object sender, RoutedEventArgs e)
         {
             Program.Modify();
+
+            var oldList = new List<Proficiency>(Program.CcsFile.Character.Proficiency);
             Program.CcsFile.Character.Proficiency.Clear();
             this.SortProficiencyItems(Program.CcsFile.Character.Proficiency);
+
+            Program.UndoRedoService.AddCommand(
+                new ListOrderCommand<Proficiency>(
+                    Program.CcsFile.Character.Proficiency,
+                    oldList,
+                    new List<Proficiency>(Program.CcsFile.Character.Proficiency),
+                    this.ConciergePage));
         }
 
         private void LanguagesDataGrid_Sorted(object sender, RoutedEventArgs e)
         {
-            Program.Modify();
-            Program.CcsFile.Character.Details.Languages.Clear();
-
-            foreach (var language in this.LanguagesDataGrid.Items)
-            {
-                Program.CcsFile.Character.Details.Languages.Add(language as Language);
-            }
+            Utilities.SortListFromDataGrid(this.LanguagesDataGrid, Program.CcsFile.Character.Languages, this.ConciergePage);
         }
 
         private void ResourcesDataGrid_Sorted(object sender, RoutedEventArgs e)
         {
-            Program.Modify();
-            Program.CcsFile.Character.ClassResources.Clear();
-
-            foreach (var resource in this.ResourcesDataGrid.Items)
-            {
-                Program.CcsFile.Character.ClassResources.Add(resource as ClassResource);
-            }
+            Utilities.SortListFromDataGrid(this.ResourcesDataGrid, Program.CcsFile.Character.ClassResources, this.ConciergePage);
         }
 
         private void Window_ApplyChanges(object sender, EventArgs e)

@@ -46,7 +46,7 @@ namespace Concierge.Interfaces
         private readonly SettingsWindow settingsWindow = new ();
         private readonly ModifyPropertiesWindow modifyPropertiesWindow = new ();
         private readonly AboutConciergeWindow aboutConciergeWindow = new ();
-        private readonly ModifyCharacterImageWindow modifyCharacterImageWindow = new ("50x50 image ratio is recommended.");
+        private readonly ModifyCharacterImageWindow modifyCharacterImageWindow = new ("50x50 image ratio is recommended.", ConciergePage.None);
 
         private readonly AutosaveTimer autosaveTimer = new ();
         private readonly CharacterCreationWizard characterCreationWizard = new ();
@@ -56,6 +56,7 @@ namespace Concierge.Interfaces
         {
             this.InitializeComponent();
 
+            Program.UndoRedoService.StackChanged += this.UndoRedo_StackChanged;
             this.mainWindowService = new MainWindowService(this.ListViewItem_Selected);
             this.modifyPropertiesWindow.ApplyChanges += this.Window_ApplyChanges;
             this.modifyCharacterImageWindow.ApplyChanges += this.Window_ApplyChanges;
@@ -197,6 +198,7 @@ namespace Concierge.Interfaces
                 return;
             }
 
+            Program.UndoRedoService.Clear();
             var ccsFile = this.fileAccessService.OpenCcs();
 
             if (ccsFile == null)
@@ -268,6 +270,18 @@ namespace Concierge.Interfaces
             this.IgnoreSecondPress = true;
         }
 
+        public void Redo()
+        {
+            Program.UndoRedoService.Redo(this);
+            this.DrawAll();
+        }
+
+        public void Undo()
+        {
+            Program.UndoRedoService.Undo(this);
+            this.DrawAll();
+        }
+
         public void PageSelection(IConciergePage conciergePage)
         {
             var page = conciergePage as Page;
@@ -287,6 +301,18 @@ namespace Concierge.Interfaces
                 this.ListViewMenu.SelectedItem = this.ListViewMenu.Items[(int)page];
                 this.UpdateLayout();
                 ((ListViewItem)this.ListViewMenu.ItemContainerGenerator.ContainerFromIndex((int)page)).Focus();
+            }
+        }
+
+        public void StartStopAutosaveTimer()
+        {
+            if (ConciergeSettings.AutosaveEnabled)
+            {
+                this.autosaveTimer.Start(Constants.AutosaveIntervals[ConciergeSettings.AutosaveInterval]);
+            }
+            else
+            {
+                this.autosaveTimer.Stop();
             }
         }
 
@@ -390,6 +416,7 @@ namespace Concierge.Interfaces
         private void ResetCharacterSheet()
         {
             Program.CcsFile = new CcsFile();
+            Program.UndoRedoService.Clear();
 
             this.NotesPage.ClearTextBox();
             this.DrawAll();
@@ -473,6 +500,12 @@ namespace Concierge.Interfaces
                     break;
                 case Key.OemPlus:
                     this.WindowState = WindowState.Maximized;
+                    break;
+                case Key.Y:
+                    this.Redo();
+                    break;
+                case Key.Z:
+                    this.Undo();
                     break;
                 case Key.D1:
                     this.MoveSelection(ConciergePage.Overview);
@@ -593,14 +626,7 @@ namespace Concierge.Interfaces
             this.OverviewPage.Draw();
             this.DetailsPage.Draw();
 
-            if (ConciergeSettings.AutosaveEnabled)
-            {
-                this.autosaveTimer.Start(Constants.AutosaveIntervals[ConciergeSettings.AutosaveInterval]);
-            }
-            else
-            {
-                this.autosaveTimer.Stop();
-            }
+            this.StartStopAutosaveTimer();
 
             this.IgnoreSecondPress = true;
         }
@@ -676,6 +702,31 @@ namespace Concierge.Interfaces
             if (e.ChangedButton == MouseButton.Left)
             {
                 this.DragMove();
+            }
+        }
+
+        private void ButtonRedo_Click(object sender, RoutedEventArgs e)
+        {
+            this.Redo();
+            this.IgnoreSecondPress = true;
+        }
+
+        private void ButtonUndo_Click(object sender, RoutedEventArgs e)
+        {
+            this.Undo();
+            this.IgnoreSecondPress = true;
+        }
+
+        private void UndoRedo_StackChanged(object sender, EventArgs e)
+        {
+            this.ButtonUndo.IsEnabled = Program.UndoRedoService.CanUndo;
+            this.ButtonRedo.IsEnabled = Program.UndoRedoService.CanRedo;
+
+            var service = sender as UndoRedoService;
+
+            if (service.UpdateAutosaveTimer)
+            {
+                this.StartStopAutosaveTimer();
             }
         }
     }

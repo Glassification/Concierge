@@ -12,13 +12,17 @@ namespace Concierge.Interfaces.DetailsPageInterface
 
     using Concierge.Character.Enums;
     using Concierge.Character.Statuses;
+    using Concierge.Commands;
+    using Concierge.Interfaces.Enums;
 
     /// <summary>
     /// Interaction logic for MondifyConditionsWindow.xaml.
     /// </summary>
     public partial class MondifyConditionsWindow : Window
     {
-        public MondifyConditionsWindow()
+        private readonly ConciergePage conciergePage;
+
+        public MondifyConditionsWindow(ConciergePage conciergePage)
         {
             this.InitializeComponent();
 
@@ -37,6 +41,8 @@ namespace Concierge.Interfaces.DetailsPageInterface
             this.RestrainedComboBox.ItemsSource = Enum.GetValues(typeof(ConditionTypes)).Cast<ConditionTypes>();
             this.StunnedComboBox.ItemsSource = Enum.GetValues(typeof(ConditionTypes)).Cast<ConditionTypes>();
             this.UnconsciousComboBox.ItemsSource = Enum.GetValues(typeof(ConditionTypes)).Cast<ConditionTypes>();
+
+            this.conciergePage = conciergePage;
         }
 
         public delegate void ApplyChangesEventHandler(object sender, EventArgs e);
@@ -82,6 +88,8 @@ namespace Concierge.Interfaces.DetailsPageInterface
 
         private void UpdateConditions()
         {
+            var oldItem = this.Conditions.DeepCopy() as Conditions;
+
             this.Conditions.Blinded = this.BlindedComboBox.Text.Equals("Cured") ? "Cured" : "Blinded";
             this.Conditions.Charmed = this.CharmedComboBox.Text.Equals("Cured") ? "Cured" : "Charmed";
             this.Conditions.Deafened = this.DeafenedComboBox.Text.Equals("Cured") ? "Cured" : "Deafened";
@@ -97,6 +105,8 @@ namespace Concierge.Interfaces.DetailsPageInterface
             this.Conditions.Restrained = this.RestrainedComboBox.Text.Equals("Cured") ? "Cured" : "Restrained";
             this.Conditions.Stunned = this.StunnedComboBox.Text.Equals("Cured") ? "Cured" : "Stunned";
             this.Conditions.Unconscious = this.UnconsciousComboBox.Text.Equals("Cured") ? "Cured" : "Unconscious";
+
+            Program.UndoRedoService.AddCommand(new EditCommand<Conditions>(this.Conditions, oldItem, this.conciergePage));
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)

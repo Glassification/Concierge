@@ -8,7 +8,7 @@ namespace Concierge.Character.Items
 
     using Concierge.Character.Enums;
 
-    public class Ammunition : IConciergeList
+    public class Ammunition : ICopyable
     {
         public Ammunition()
         {
@@ -26,6 +26,19 @@ namespace Concierge.Character.Items
         public int Used { get; set; }
 
         public Guid Id { get; init; }
+
+        public ICopyable DeepCopy()
+        {
+            return new Ammunition()
+            {
+                Name = this.Name,
+                Quantity = this.Quantity,
+                Bonus = this.Bonus,
+                DamageType = this.DamageType,
+                Used = this.Used,
+                Id = this.Id,
+            };
+        }
 
         public override string ToString()
         {

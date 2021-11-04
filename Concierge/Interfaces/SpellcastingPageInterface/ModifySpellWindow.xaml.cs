@@ -14,6 +14,7 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
 
     using Concierge.Character.Enums;
     using Concierge.Character.Spellcasting;
+    using Concierge.Commands;
     using Concierge.Interfaces.Enums;
     using Concierge.Utility;
 
@@ -22,12 +23,15 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
     /// </summary>
     public partial class ModifySpellWindow : Window, IConciergeModifyWindow
     {
-        public ModifySpellWindow()
+        private readonly ConciergePage conciergePage;
+
+        public ModifySpellWindow(ConciergePage conciergePage)
         {
             this.InitializeComponent();
             this.SpellNameComboBox.ItemsSource = Constants.Spells;
             this.SchoolComboBox.ItemsSource = Enum.GetValues(typeof(ArcaneSchools)).Cast<ArcaneSchools>();
             this.ClassComboBox.ItemsSource = Constants.Classes;
+            this.conciergePage = conciergePage;
         }
 
         public delegate void ApplyChangesEventHandler(object sender, EventArgs e);
@@ -158,6 +162,8 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
 
         private void UpdateSpell(Spell spell)
         {
+            var oldItem = spell.DeepCopy() as Spell;
+
             spell.Name = this.SpellNameComboBox.Text;
             spell.Prepared = this.PreparedCheckBox.IsChecked ?? false;
             spell.Level = this.LevelUpDown.Value ?? 0;
@@ -173,13 +179,15 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
             spell.Damage = this.DamageTextBox.Text;
             spell.Description = this.NotesTextBox.Text;
             spell.Class = this.ClassComboBox.Text;
+
+            Program.UndoRedoService.AddCommand(new EditCommand<Spell>(spell, oldItem, this.conciergePage));
         }
 
         private Spell ToSpell()
         {
             this.ItemsAdded = true;
 
-            return new Spell()
+            var spell = new Spell()
             {
                 Name = this.SpellNameComboBox.Text,
                 Prepared = this.PreparedCheckBox.IsChecked ?? false,
@@ -197,6 +205,10 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
                 Description = this.NotesTextBox.Text,
                 Class = this.ClassComboBox.Text,
             };
+
+            Program.UndoRedoService.AddCommand(new AddCommand<Spell>(this.Spells, spell, this.conciergePage));
+
+            return spell;
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)

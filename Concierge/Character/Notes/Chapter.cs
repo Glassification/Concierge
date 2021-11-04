@@ -9,7 +9,7 @@ namespace Concierge.Character.Notes
 
     using Newtonsoft.Json;
 
-    public class Chapter
+    public class Chapter : ICopyable
     {
         public Chapter(string name)
         {
@@ -29,6 +29,16 @@ namespace Concierge.Character.Notes
         public bool IsNewChapterPlaceholder { get; set; }
 
         public Guid Id { get; init; }
+
+        public ICopyable DeepCopy()
+        {
+            return new Chapter(this.Name)
+            {
+                Documents = new List<Document>(this.Documents),
+                IsExpanded = this.IsExpanded,
+                Id = this.Id,
+            };
+        }
 
         public override string ToString()
         {

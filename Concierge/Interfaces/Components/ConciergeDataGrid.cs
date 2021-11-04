@@ -9,6 +9,8 @@ namespace Concierge.Interfaces.Components
     using System.Windows.Controls;
     using System.Windows.Media;
 
+    using Concierge.Commands;
+    using Concierge.Interfaces.Enums;
     using Concierge.Utility.Extensions;
 
     public class ConciergeDataGrid : DataGrid
@@ -51,7 +53,7 @@ namespace Concierge.Interfaces.Components
             this.RaiseEvent(newEventArgs);
         }
 
-        public int NextItem<T>(List<T> list, int limit, int increment)
+        public int NextItem<T>(List<T> list, int limit, int increment, ConciergePage conciergePage)
         {
             if (this.SelectedItem == null)
             {
@@ -65,7 +67,12 @@ namespace Concierge.Interfaces.Components
 
             if (index != limit)
             {
+                var oldList = new List<T>(list);
                 list.Swap(index, index + increment);
+                var newList = new List<T>(list);
+
+                Program.UndoRedoService.AddCommand(new ListOrderCommand<T>(list, oldList, newList, conciergePage));
+
                 return index + increment;
             }
 

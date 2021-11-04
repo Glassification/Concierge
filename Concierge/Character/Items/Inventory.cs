@@ -8,7 +8,7 @@ namespace Concierge.Character.Items
 
     using Newtonsoft.Json;
 
-    public class Inventory : IConciergeList
+    public class Inventory : ICopyable
     {
         public Inventory()
         {
@@ -42,7 +42,7 @@ namespace Concierge.Character.Items
             return this.Name;
         }
 
-        public Inventory Copy()
+        public ICopyable DeepCopy()
         {
             return new Inventory()
             {

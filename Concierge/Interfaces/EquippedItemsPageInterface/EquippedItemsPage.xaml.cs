@@ -11,6 +11,7 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
 
     using Concierge.Character.Enums;
     using Concierge.Character.Items;
+    using Concierge.Commands;
     using Concierge.Interfaces.Components;
     using Concierge.Interfaces.Enums;
     using Concierge.Interfaces.InventoryPageInterface;
@@ -21,13 +22,14 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
     /// </summary>
     public partial class EquippedItemsPage : Page, IConciergePage
     {
-        private readonly ModifyEquippedItemsWindow modifyEquippedItemsWindow = new ();
-        private readonly ModifyCharacterImageWindow modifyCharacterImageWindow = new ("768x1024 image ratio is recommended");
-        private readonly ModifyInventoryWindow modifyInventoryWindow = new ();
+        private readonly ModifyEquippedItemsWindow modifyEquippedItemsWindow = new (ConciergePage.EquippedItems);
+        private readonly ModifyCharacterImageWindow modifyCharacterImageWindow = new ("768x1024 image ratio is recommended", ConciergePage.EquippedItems);
+        private readonly ModifyInventoryWindow modifyInventoryWindow = new (ConciergePage.EquippedItems);
 
         public EquippedItemsPage()
         {
             this.InitializeComponent();
+
             this.DataContext = this;
             this.modifyEquippedItemsWindow.ApplyChanges += this.Window_ApplyChanges;
             this.modifyCharacterImageWindow.ApplyChanges += this.Window_ApplyChanges;
@@ -91,12 +93,20 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
 
             var dataGrid = sender as ConciergeDataGrid;
             var equippedItems = Utilities.GetPropertyValue<List<Inventory>>(Program.CcsFile.Character.EquippedItems, dataGrid.Tag as string);
+            var oldList = new List<Inventory>(equippedItems);
 
             equippedItems.Clear();
             foreach (var item in dataGrid.Items)
             {
                 equippedItems.Add(item as Inventory);
             }
+
+            Program.UndoRedoService.AddCommand(
+                new ListOrderCommand<Inventory>(
+                    equippedItems,
+                    oldList,
+                    new List<Inventory>(equippedItems),
+                    this.ConciergePage));
         }
 
         private void EquipmentDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -144,7 +154,7 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
             }
 
             var equippedItems = Utilities.GetPropertyValue<List<Inventory>>(Program.CcsFile.Character.EquippedItems, this.SelectedDataGrid.Tag as string);
-            var index = this.SelectedDataGrid.NextItem(equippedItems, 0, -1);
+            var index = this.SelectedDataGrid.NextItem(equippedItems, 0, -1, this.ConciergePage);
 
             if (index != -1)
             {
@@ -162,7 +172,7 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
             }
 
             var equippedItems = Utilities.GetPropertyValue<List<Inventory>>(Program.CcsFile.Character.EquippedItems, this.SelectedDataGrid.Tag as string);
-            var index = this.SelectedDataGrid.NextItem(equippedItems, equippedItems.Count - 1, 1);
+            var index = this.SelectedDataGrid.NextItem(equippedItems, equippedItems.Count - 1, 1, this.ConciergePage);
 
             if (index != -1)
             {
@@ -212,9 +222,10 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
             Program.Modify();
 
             var index = this.SelectedIndex;
-            Program.CcsFile.Character.EquippedItems.Dequip(
-                this.SelectedItem,
-                (EquipmentSlot)Enum.Parse(typeof(EquipmentSlot), this.SelectedDataGrid.Tag as string));
+            var slot = (EquipmentSlot)Enum.Parse(typeof(EquipmentSlot), this.SelectedDataGrid.Tag as string);
+
+            Program.CcsFile.Character.EquippedItems.Dequip(this.SelectedItem, slot);
+            Program.UndoRedoService.AddCommand(new DequipItemCommand(Program.CcsFile.Character.EquippedItems, this.SelectedItem, slot));
 
             this.Draw();
             this.SelectedDataGrid.SetSelectedIndex(index);

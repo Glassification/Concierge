@@ -6,7 +6,9 @@ namespace Concierge.Character.Statuses
 {
     using System;
 
-    public class ClassResource
+    using Newtonsoft.Json;
+
+    public class ClassResource : ICopyable
     {
         public ClassResource()
         {
@@ -19,8 +21,20 @@ namespace Concierge.Character.Statuses
 
         public int Spent { get; set; }
 
+        [JsonIgnore]
         public string Description => $"{this.Type} - {this.Spent}/{this.Total} Used";
 
         public Guid Id { get; init; }
+
+        public ICopyable DeepCopy()
+        {
+            return new ClassResource()
+            {
+                Type = this.Type,
+                Total = this.Total,
+                Spent = this.Spent,
+                Id = this.Id,
+            };
+        }
     }
 }

@@ -14,6 +14,7 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
 
     using Concierge.Character.Enums;
     using Concierge.Character.Items;
+    using Concierge.Commands;
     using Concierge.Interfaces.Enums;
     using Concierge.Utility;
 
@@ -22,11 +23,14 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
     /// </summary>
     public partial class ModifyAmmoWindow : Window, IConciergeModifyWindow
     {
-        public ModifyAmmoWindow()
+        private readonly ConciergePage conciergePage;
+
+        public ModifyAmmoWindow(ConciergePage conciergePage)
         {
             this.InitializeComponent();
             this.NameComboBox.ItemsSource = Constants.Ammunitions;
             this.DamageTypeComboBox.ItemsSource = Enum.GetValues(typeof(DamageTypes)).Cast<DamageTypes>();
+            this.conciergePage = conciergePage;
         }
 
         public delegate void ApplyChangesEventHandler(object sender, EventArgs e);
@@ -123,18 +127,22 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
 
         private void UpdateAmmunition(Ammunition ammunition)
         {
+            var oldItem = ammunition.DeepCopy() as Ammunition;
+
             ammunition.Name = this.NameComboBox.Text;
             ammunition.Quantity = this.QuantityUpDown.Value ?? 0;
             ammunition.Bonus = this.BonusTextBox.Text;
             ammunition.DamageType = (DamageTypes)Enum.Parse(typeof(DamageTypes), this.DamageTypeComboBox.Text);
             ammunition.Used = this.UsedUpDown.Value ?? 0;
+
+            Program.UndoRedoService.AddCommand(new EditCommand<Ammunition>(ammunition, oldItem, this.conciergePage));
         }
 
         private Ammunition ToAmmunition()
         {
             this.ItemsAdded = true;
 
-            return new Ammunition()
+            var ammo = new Ammunition()
             {
                 Name = this.NameComboBox.Text,
                 Quantity = this.QuantityUpDown.Value ?? 0,
@@ -142,6 +150,10 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
                 DamageType = (DamageTypes)Enum.Parse(typeof(DamageTypes), this.DamageTypeComboBox.Text),
                 Used = this.UsedUpDown.Value ?? 0,
             };
+
+            Program.UndoRedoService.AddCommand(new AddCommand<Ammunition>(this.Ammunitions, ammo, this.conciergePage));
+
+            return ammo;
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)

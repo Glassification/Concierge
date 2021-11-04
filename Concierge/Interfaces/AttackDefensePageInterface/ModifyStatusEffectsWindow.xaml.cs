@@ -13,6 +13,7 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
 
     using Concierge.Character.Enums;
     using Concierge.Character.Statuses;
+    using Concierge.Commands;
     using Concierge.Interfaces.Enums;
     using Concierge.Utility;
     using Concierge.Utility.Extensions;
@@ -22,12 +23,15 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
     /// </summary>
     public partial class ModifyStatusEffectsWindow : Window, IConciergeModifyWindow
     {
-        public ModifyStatusEffectsWindow()
+        private readonly ConciergePage conciergePage;
+
+        public ModifyStatusEffectsWindow(ConciergePage conciergePage)
         {
             this.InitializeComponent();
 
             this.NameComboBox.ItemsSource = Constants.StatusEffects;
             this.TypeComboBox.ItemsSource = Enum.GetValues(typeof(StatusEffectTypes)).Cast<StatusEffectTypes>();
+            this.conciergePage = conciergePage;
         }
 
         public delegate void ApplyChangesEventHandler(object sender, EventArgs e);
@@ -114,21 +118,29 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
 
         private void UpdateStatusEffect()
         {
+            var oldItem = this.SelectedEffect.DeepCopy() as StatusEffect;
+
             this.SelectedEffect.Name = this.NameComboBox.Text;
             this.SelectedEffect.Type = (StatusEffectTypes)Enum.Parse(typeof(StatusEffectTypes), this.TypeComboBox.Text);
             this.SelectedEffect.Description = this.DescriptionTextBox.Text;
+
+            Program.UndoRedoService.AddCommand(new EditCommand<StatusEffect>(this.SelectedEffect, oldItem, this.conciergePage));
         }
 
         private StatusEffect ToStatusEffect()
         {
             this.ItemsAdded = true;
 
-            return new StatusEffect()
+            var effect = new StatusEffect()
             {
                 Name = this.NameComboBox.Text,
                 Type = (StatusEffectTypes)Enum.Parse(typeof(StatusEffectTypes), this.TypeComboBox.Text),
                 Description = this.DescriptionTextBox.Text,
             };
+
+            Program.UndoRedoService.AddCommand(new AddCommand<StatusEffect>(this.StatusEffects, effect, this.conciergePage));
+
+            return effect;
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)

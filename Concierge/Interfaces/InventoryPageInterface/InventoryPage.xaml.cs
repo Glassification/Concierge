@@ -9,15 +9,17 @@ namespace Concierge.Interfaces.InventoryPageInterface
     using System.Windows.Controls;
 
     using Concierge.Character.Items;
+    using Concierge.Commands;
     using Concierge.Interfaces;
     using Concierge.Interfaces.Enums;
+    using Concierge.Utility;
 
     /// <summary>
     /// Interaction logic for InventoryPage.xaml.
     /// </summary>
     public partial class InventoryPage : Page, IConciergePage
     {
-        private readonly ModifyInventoryWindow modifyInventoryWindow = new ();
+        private readonly ModifyInventoryWindow modifyInventoryWindow = new (ConciergePage.Inventory);
 
         public InventoryPage()
         {
@@ -70,7 +72,7 @@ namespace Concierge.Interfaces.InventoryPageInterface
 
         private void ButtonUp_Click(object sender, RoutedEventArgs e)
         {
-            var index = this.InventoryDataGrid.NextItem(Program.CcsFile.Character.Inventories, 0, -1);
+            var index = this.InventoryDataGrid.NextItem(Program.CcsFile.Character.Inventories, 0, -1, this.ConciergePage);
 
             if (index != -1)
             {
@@ -81,7 +83,7 @@ namespace Concierge.Interfaces.InventoryPageInterface
 
         private void ButtonDown_Click(object sender, RoutedEventArgs e)
         {
-            var index = this.InventoryDataGrid.NextItem(Program.CcsFile.Character.Inventories, Program.CcsFile.Character.Inventories.Count - 1, 1);
+            var index = this.InventoryDataGrid.NextItem(Program.CcsFile.Character.Inventories, Program.CcsFile.Character.Inventories.Count - 1, 1, this.ConciergePage);
 
             if (index != -1)
             {
@@ -123,7 +125,9 @@ namespace Concierge.Interfaces.InventoryPageInterface
                 var inventory = (Inventory)this.InventoryDataGrid.SelectedItem;
                 var index = this.InventoryDataGrid.SelectedIndex;
 
+                Program.UndoRedoService.AddCommand(new DeleteCommand<Inventory>(Program.CcsFile.Character.Inventories, inventory, index, this.ConciergePage));
                 Program.CcsFile.Character.Inventories.Remove(inventory);
+
                 this.DrawInventory();
                 this.InventoryDataGrid.SetSelectedIndex(index);
             }
@@ -131,13 +135,7 @@ namespace Concierge.Interfaces.InventoryPageInterface
 
         private void InventoryDataGrid_Sorted(object sender, RoutedEventArgs e)
         {
-            Program.Modify();
-            Program.CcsFile.Character.Inventories.Clear();
-
-            foreach (var item in this.InventoryDataGrid.Items)
-            {
-                Program.CcsFile.Character.Inventories.Add(item as Inventory);
-            }
+            Utilities.SortListFromDataGrid(this.InventoryDataGrid, Program.CcsFile.Character.Inventories, this.ConciergePage);
         }
 
         private void Window_ApplyChanges(object sender, EventArgs e)
