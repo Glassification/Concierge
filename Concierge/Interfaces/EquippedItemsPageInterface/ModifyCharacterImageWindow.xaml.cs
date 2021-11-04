@@ -6,7 +6,6 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
 {
     using System;
     using System.ComponentModel;
-    using System.Linq;
     using System.Threading;
     using System.Windows;
     using System.Windows.Controls;
@@ -14,6 +13,7 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
     using System.Windows.Media;
 
     using Concierge.Character.Characteristics;
+    using Concierge.Commands;
     using Concierge.Interfaces.Enums;
     using Concierge.Services;
     using Concierge.Utility;
@@ -104,6 +104,8 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
 
         private void UpdateCharacterImage()
         {
+            var oldItem = this.CharacterImage.DeepCopy() as CharacterImage;
+
             if (!this.OriginalFileName.Equals(this.ImageSourceTextBox.Text))
             {
                 this.CharacterImage.EncodeImage(this.ImageSourceTextBox.Text);
@@ -111,6 +113,8 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
 
             this.CharacterImage.Stretch = (Stretch)Enum.Parse(typeof(Stretch), this.FillTypeComboBox.Text.Strip(" "));
             this.CharacterImage.UseCustomImage = this.UseCustomImageCheckBox.IsChecked ?? false;
+
+            Program.UndoRedoService.AddCommand(new EditCommand<CharacterImage>(this.CharacterImage, oldItem));
         }
 
         private void SetEnabledState(bool isEnabled)
