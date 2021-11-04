@@ -281,7 +281,7 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
 
         private void LevelEditButton_Click(object sender, RoutedEventArgs e)
         {
-            this.modifySpellSlotsWindow.ShowEdit();
+            this.modifySpellSlotsWindow.ShowEdit(Program.CcsFile.Character.SpellSlots);
             this.DrawTotalSpellSlots();
             this.DrawUsedSpellSlots();
         }
@@ -294,6 +294,7 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
             }
 
             var spellSlots = Program.CcsFile.Character.SpellSlots;
+            var oldItem = spellSlots.DeepCopy() as SpellSlots;
             var usedBox = sender as Grid;
 
             switch (usedBox.Name)
@@ -339,6 +340,8 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
                     Utilities.SetCursor(spellSlots.NinethUsed, spellSlots.NinethTotal, (x, y) => x >= y, Cursors.Arrow);
                     break;
             }
+
+            Program.UndoRedoService.AddCommand(new EditCommand<SpellSlots>(spellSlots, oldItem));
 
             this.DrawTotalSpellSlots();
             this.DrawUsedSpellSlots();

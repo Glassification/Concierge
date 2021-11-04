@@ -4,7 +4,7 @@
 
 namespace Concierge.Character.Characteristics
 {
-    public class Appearance
+    public class Appearance : ICopyable
     {
         public Appearance()
         {
@@ -33,5 +33,20 @@ namespace Concierge.Character.Characteristics
         public string HairColour { get; set; }
 
         public string DistinguishingMarks { get; set; }
+
+        public ICopyable DeepCopy()
+        {
+            return new Appearance()
+            {
+                Gender = this.Gender,
+                Age = this.Age,
+                Height = this.Height,
+                Weight = this.Weight,
+                SkinColour = this.SkinColour,
+                EyeColour = this.EyeColour,
+                HairColour = this.HairColour,
+                DistinguishingMarks = this.DistinguishingMarks,
+            };
+        }
     }
 }

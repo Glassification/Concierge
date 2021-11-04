@@ -10,6 +10,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
     using System.Windows.Input;
 
     using Concierge.Character.Characteristics;
+    using Concierge.Commands;
     using Concierge.Interfaces.Enums;
 
     /// <summary>
@@ -76,6 +77,8 @@ namespace Concierge.Interfaces.DetailsPageInterface
 
         private void UpdatePersonality()
         {
+            var oldItem = this.Personality.DeepCopy() as Personality;
+
             this.Personality.Trait1 = this.Trait1TextBox.Text;
             this.Personality.Trait2 = this.Trait2TextBox.Text;
             this.Personality.Ideal = this.IdealTextBox.Text;
@@ -83,6 +86,8 @@ namespace Concierge.Interfaces.DetailsPageInterface
             this.Personality.Flaw = this.FlawTextBox.Text;
             this.Personality.Background = this.BackgroundTextBox.Text;
             this.Personality.Notes = this.NotesTextBox.Text;
+
+            Program.UndoRedoService.AddCommand(new EditCommand<Personality>(this.Personality, oldItem));
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)

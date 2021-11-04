@@ -12,6 +12,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
 
     using Concierge.Character;
     using Concierge.Character.Enums;
+    using Concierge.Character.Statuses;
     using Concierge.Commands;
     using Concierge.Commands.Enums;
     using Concierge.Interfaces.Enums;
@@ -647,6 +648,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
             }
 
             var hitDice = Program.CcsFile.Character.Vitality.HitDice;
+            var oldItem = hitDice.DeepCopy() as HitDice;
             switch ((sender as Grid).Name)
             {
                 case "D6SpentBox":
@@ -666,6 +668,8 @@ namespace Concierge.Interfaces.OverviewPageInterface
                     Utilities.SetCursor(hitDice.SpentD12, hitDice.TotalD12, (x, y) => x == y, Cursors.Arrow);
                     break;
             }
+
+            Program.UndoRedoService.AddCommand(new EditCommand<HitDice>(hitDice, oldItem));
 
             this.DrawHitDice();
         }
@@ -758,7 +762,10 @@ namespace Concierge.Interfaces.OverviewPageInterface
 
             Program.Modify();
 
+            var oldItem = character.Vitality.DeathSavingThrows.DeepCopy() as DeathSavingThrows;
             character.Vitality.DeathSavingThrows.MakeDeathSave(DeathSave.Success);
+            Program.UndoRedoService.AddCommand(new EditCommand<DeathSavingThrows>(character.Vitality.DeathSavingThrows, oldItem));
+
             this.DrawDeathSavingThrows();
         }
 
@@ -773,7 +780,10 @@ namespace Concierge.Interfaces.OverviewPageInterface
 
             Program.Modify();
 
+            var oldItem = character.Vitality.DeathSavingThrows.DeepCopy() as DeathSavingThrows;
             character.Vitality.DeathSavingThrows.MakeDeathSave(DeathSave.Failure);
+            Program.UndoRedoService.AddCommand(new EditCommand<DeathSavingThrows>(character.Vitality.DeathSavingThrows, oldItem));
+
             this.DrawDeathSavingThrows();
 
             if (character.Vitality.DeathSavingThrows.DeathSaveStatus == DeathSave.Failure && !this.DeathScreenShown)
@@ -787,7 +797,10 @@ namespace Concierge.Interfaces.OverviewPageInterface
         {
             Program.Modify();
 
+            var oldItem = Program.CcsFile.Character.Vitality.DeathSavingThrows.DeepCopy() as DeathSavingThrows;
             Program.CcsFile.Character.Vitality.DeathSavingThrows.ResetDeathSaves();
+            Program.UndoRedoService.AddCommand(new EditCommand<DeathSavingThrows>(Program.CcsFile.Character.Vitality.DeathSavingThrows, oldItem));
+
             this.DrawDeathSavingThrows();
 
             this.DeathScreenShown = false;

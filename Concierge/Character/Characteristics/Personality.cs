@@ -4,7 +4,7 @@
 
 namespace Concierge.Character.Characteristics
 {
-    public class Personality
+    public class Personality : ICopyable
     {
         public Personality()
         {
@@ -30,5 +30,19 @@ namespace Concierge.Character.Characteristics
         public string Background { get; set; }
 
         public string Notes { get; set; }
+
+        public ICopyable DeepCopy()
+        {
+            return new Personality()
+            {
+                Trait1 = this.Trait1,
+                Trait2 = this.Trait2,
+                Ideal = this.Ideal,
+                Bond = this.Bond,
+                Flaw = this.Flaw,
+                Background = this.Background,
+                Notes = this.Notes,
+            };
+        }
     }
 }

@@ -4,7 +4,7 @@
 
 namespace Concierge.Character.Spellcasting
 {
-    public class SpellSlots
+    public class SpellSlots : ICopyable
     {
         public SpellSlots()
         {
@@ -61,6 +61,33 @@ namespace Concierge.Character.Spellcasting
         public int EighthUsed { get; set; }
 
         public int NinethUsed { get; set; }
+
+        public ICopyable DeepCopy()
+        {
+            return new SpellSlots()
+            {
+                PactTotal = this.PactTotal,
+                FirstTotal = this.FirstTotal,
+                SecondTotal = this.SecondTotal,
+                ThirdTotal = this.ThirdTotal,
+                FourthTotal = this.FourthTotal,
+                FifthTotal = this.FifthTotal,
+                SixthTotal = this.SixthTotal,
+                SeventhTotal = this.SeventhTotal,
+                EighthTotal = this.EighthTotal,
+                NinethTotal = this.NinethTotal,
+                PactUsed = this.PactUsed,
+                FirstUsed = this.FirstUsed,
+                SecondUsed = this.SecondUsed,
+                ThirdUsed = this.ThirdUsed,
+                FourthUsed = this.FourthUsed,
+                FifthUsed = this.FifthUsed,
+                SixthUsed = this.SixthUsed,
+                SeventhUsed = this.SeventhUsed,
+                EighthUsed = this.EighthUsed,
+                NinethUsed = this.NinethUsed,
+            };
+        }
 
         public void Reset()
         {

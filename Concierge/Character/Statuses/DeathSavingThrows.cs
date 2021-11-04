@@ -10,7 +10,7 @@ namespace Concierge.Character.Statuses
     using Concierge.Utility.Extensions;
     using Newtonsoft.Json;
 
-    public class DeathSavingThrows
+    public class DeathSavingThrows : ICopyable
     {
         private const int MaxDeathSaves = 5;
         private const int SavesInARow = 3;
@@ -55,6 +55,15 @@ namespace Concierge.Character.Statuses
             {
                 this.DeathSaves.Add(DeathSave.None);
             }
+        }
+
+        public ICopyable DeepCopy()
+        {
+            return new DeathSavingThrows()
+            {
+                CurrentDeathSave = this.CurrentDeathSave,
+                DeathSaves = new List<DeathSave>(this.DeathSaves),
+            };
         }
 
         private bool HasRequiredInARow(DeathSave deathSave)

@@ -38,6 +38,7 @@ namespace Concierge.Utility
             this.RedoStack.Clear();
             this.UndoStack.Clear();
             this.Current = null;
+            this.StackChanged?.Invoke(this, new EventArgs());
         }
 
         public void AddCommand(Command command)
@@ -49,7 +50,6 @@ namespace Concierge.Utility
 
             this.UndoStack.Push(command);
             this.RedoStack.Clear();
-
             this.StackChanged?.Invoke(this, new EventArgs());
         }
 
@@ -63,7 +63,6 @@ namespace Concierge.Utility
             this.Current = this.RedoStack.Pop();
             this.UndoStack.Push(this.Current);
             this.Current.Redo();
-
             this.StackChanged?.Invoke(this, new EventArgs());
         }
 
@@ -77,7 +76,6 @@ namespace Concierge.Utility
             this.Current = this.UndoStack.Pop();
             this.RedoStack.Push(this.Current);
             this.Current.Undo();
-
             this.StackChanged?.Invoke(this, new EventArgs());
         }
 

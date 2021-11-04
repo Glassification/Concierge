@@ -171,8 +171,13 @@
     },
     "ClassResources": [],
     "Companion": {
-      "Name": "",
-      "ArmorClass": 0,
+      "Properties": {
+        "Name": "",
+        "ArmorClass": 0,
+        "Movement": 0,
+        "Perception": 0,
+        "Vision": 0
+      },
       "Vitality": {
         "Health": {
           "MaxHealth": 0,
@@ -211,7 +216,6 @@
           "DeathSaves": []
         }
       },
-      "Movement": 0,
       "Attributes": {
         "Strength": 0,
         "Dexterity": 0,
@@ -220,8 +224,6 @@
         "Wisdom": 0,
         "Charisma": 0
       },
-      "Perception": 0,
-      "Vision": 0,
       "Attacks": []
     },
     "Senses": {

@@ -16,6 +16,7 @@ namespace Concierge.Interfaces.NotesPageInterface
     using System.Windows.Media;
 
     using Concierge.Character.Notes;
+    using Concierge.Commands;
     using Concierge.Exceptions.Enums;
     using Concierge.Interfaces.Components;
     using Concierge.Interfaces.Enums;
@@ -446,6 +447,8 @@ namespace Concierge.Interfaces.NotesPageInterface
                     return;
                 }
 
+                var index = Program.CcsFile.Character.Chapters.IndexOf(chapterTreeViewItem.Chapter);
+                Program.UndoRedoService.AddCommand(new DeleteCommand<Chapter>(Program.CcsFile.Character.Chapters, chapterTreeViewItem.Chapter, index));
                 Program.CcsFile.Character.Chapters.Remove(chapterTreeViewItem.Chapter);
             }
             else if (this.NotesTreeView.SelectedItem is DocumentTreeViewItem documentTreeViewItem)
@@ -462,6 +465,8 @@ namespace Concierge.Interfaces.NotesPageInterface
                 }
 
                 var chapter = Program.CcsFile.Character.GetChapterByDocumentId(documentTreeViewItem.Document.Id);
+                var index = chapter.Documents.IndexOf(documentTreeViewItem.Document);
+                Program.UndoRedoService.AddCommand(new DeleteCommand<Document>(chapter.Documents, documentTreeViewItem.Document, index));
                 chapter.Documents.Remove(documentTreeViewItem.Document);
             }
 

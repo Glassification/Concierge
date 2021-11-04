@@ -47,8 +47,4 @@
     </EmbeddedResource>
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Commands\CommandDtos\" />
-  </ItemGroup>
-
 </Project>

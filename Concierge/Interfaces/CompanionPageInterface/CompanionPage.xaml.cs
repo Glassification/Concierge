@@ -11,6 +11,7 @@ namespace Concierge.Interfaces.CompanionPageInterface
     using System.Windows.Media;
 
     using Concierge.Character.Items;
+    using Concierge.Character.Statuses;
     using Concierge.Commands;
     using Concierge.Interfaces.AttackDefensePageInterface;
     using Concierge.Interfaces.Enums;
@@ -114,11 +115,13 @@ namespace Concierge.Interfaces.CompanionPageInterface
 
         private void DrawDetails()
         {
-            this.NameField.Text = Program.CcsFile.Character.Companion.Name;
-            this.PerceptionField.Text = Program.CcsFile.Character.Companion.Perception.ToString();
-            this.VisionField.Text = Program.CcsFile.Character.Companion.Vision.ToString();
-            this.MovementField.Text = Program.CcsFile.Character.Companion.Movement.ToString();
-            this.ArmorClassField.Text = Program.CcsFile.Character.Companion.ArmorClass.ToString();
+            var properties = Program.CcsFile.Character.Companion.Properties;
+
+            this.NameField.Text = properties.Name;
+            this.PerceptionField.Text = properties.Perception.ToString();
+            this.VisionField.Text = properties.Vision.ToString();
+            this.MovementField.Text = properties.Movement.ToString();
+            this.ArmorClassField.Text = properties.ArmorClass.ToString();
         }
 
         private void DrawHealth()
@@ -262,7 +265,7 @@ namespace Concierge.Interfaces.CompanionPageInterface
 
         private void EditPropertiesButton_Click(object sender, RoutedEventArgs e)
         {
-            this.modifyPropertiesWindow.ShowEdit();
+            this.modifyPropertiesWindow.ShowEdit(Program.CcsFile.Character.Companion.Properties);
             this.DrawDetails();
         }
 
@@ -274,6 +277,7 @@ namespace Concierge.Interfaces.CompanionPageInterface
             }
 
             var hitDice = Program.CcsFile.Character.Companion.Vitality.HitDice;
+            var oldItem = hitDice.DeepCopy() as HitDice;
             switch ((sender as Grid).Name)
             {
                 case "D6SpentBox":
@@ -293,6 +297,8 @@ namespace Concierge.Interfaces.CompanionPageInterface
                     Utilities.SetCursor(hitDice.SpentD12, hitDice.TotalD12, (x, y) => x == y, Cursors.Arrow);
                     break;
             }
+
+            Program.UndoRedoService.AddCommand(new EditCommand<HitDice>(hitDice, oldItem));
 
             this.DrawHitDice();
         }

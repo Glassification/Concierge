@@ -4,13 +4,13 @@
 
 namespace Concierge.Interfaces.NotesPageInterface
 {
+    using Concierge.Character.Notes;
+    using Concierge.Commands;
+    using Concierge.Utility.Extensions;
     using System;
     using System.ComponentModel;
     using System.Windows;
     using System.Windows.Input;
-
-    using Concierge.Character.Notes;
-    using Concierge.Utility.Extensions;
 
     /// <summary>
     /// Interaction logic for ModifyEquippedItemsWindow.xaml.
@@ -105,11 +105,15 @@ namespace Concierge.Interfaces.NotesPageInterface
         {
             if (this.CurrentChapter == null)
             {
+                var oldItem = this.CurrentDocument.DeepCopy() as Document;
                 this.CurrentDocument.Name = this.DocumentTextBox.Text;
+                Program.UndoRedoService.AddCommand(new EditCommand<Document>(this.CurrentDocument, oldItem));
             }
             else
             {
+                var oldItem = this.CurrentChapter.DeepCopy() as Chapter;
                 this.CurrentChapter.Name = this.DocumentTextBox.Text;
+                Program.UndoRedoService.AddCommand(new EditCommand<Chapter>(this.CurrentChapter, oldItem));
             }
         }
 
@@ -119,11 +123,15 @@ namespace Concierge.Interfaces.NotesPageInterface
 
             if (chapter.IsNewChapterPlaceholder)
             {
-                Program.CcsFile.Character.Chapters.Add(new Chapter(this.DocumentTextBox.Text));
+                var newChapter = new Chapter(this.DocumentTextBox.Text);
+                Program.CcsFile.Character.Chapters.Add(newChapter);
+                Program.UndoRedoService.AddCommand(new AddCommand<Chapter>(Program.CcsFile.Character.Chapters, newChapter));
             }
             else
             {
-                chapter.Documents.Add(new Document(this.DocumentTextBox.Text));
+                var newDocument = new Document(this.DocumentTextBox.Text);
+                chapter.Documents.Add(newDocument);
+                Program.UndoRedoService.AddCommand(new AddCommand<Document>(chapter.Documents, newDocument));
             }
         }
 

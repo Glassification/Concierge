@@ -198,6 +198,7 @@ namespace Concierge.Interfaces
                 return;
             }
 
+            Program.UndoRedoService.Clear();
             var ccsFile = this.fileAccessService.OpenCcs();
 
             if (ccsFile == null)
@@ -403,6 +404,7 @@ namespace Concierge.Interfaces
         private void ResetCharacterSheet()
         {
             Program.CcsFile = new CcsFile();
+            Program.UndoRedoService.Clear();
 
             this.NotesPage.ClearTextBox();
             this.DrawAll();

@@ -12,6 +12,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
 
     using Concierge.Character.Characteristics;
     using Concierge.Character.Enums;
+    using Concierge.Commands;
     using Concierge.Interfaces.Enums;
 
     /// <summary>
@@ -81,6 +82,8 @@ namespace Concierge.Interfaces.DetailsPageInterface
 
         private void UpdateAppearance()
         {
+            var oldItem = this.Appearance.DeepCopy() as Appearance;
+
             this.Appearance.Gender = this.GenderComboBox.Text;
             this.Appearance.Age = this.AgeUpDown.Value ?? 0;
             this.Appearance.Height = this.HeightTextBox.Text;
@@ -89,6 +92,8 @@ namespace Concierge.Interfaces.DetailsPageInterface
             this.Appearance.EyeColour = this.EyeColourTextBox.Text;
             this.Appearance.HairColour = this.HairColourTextBox.Text;
             this.Appearance.DistinguishingMarks = this.DistinguishingMarksTextBox.Text;
+
+            Program.UndoRedoService.AddCommand(new EditCommand<Appearance>(this.Appearance, oldItem));
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
