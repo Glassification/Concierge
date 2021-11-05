@@ -13,6 +13,9 @@
     <Compile Update="Interfaces\EquippedItemsPageInterface\ModifyCharacterImageWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Interfaces\HelperInterface\HelpWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Interfaces\HelperInterface\SearchWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -85,6 +88,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Interfaces\HelperInterface\ConciergeMessageWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Interfaces\HelperInterface\HelpWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Interfaces\HelperInterface\SaveStatusWindow.xaml">

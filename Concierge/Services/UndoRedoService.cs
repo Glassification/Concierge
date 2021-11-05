@@ -39,6 +39,8 @@ namespace Concierge.Utility
 
         public void Clear()
         {
+            Program.Logger.Info($"Clear all Undo/Redo commands.");
+
             this.RedoStack.Clear();
             this.UndoStack.Clear();
             this.Current = null;
@@ -51,6 +53,8 @@ namespace Concierge.Utility
             {
                 return;
             }
+
+            Program.Logger.Info($"Add new {command.GetType()}.");
 
             this.UndoStack.Push(command);
             this.RedoStack.Clear();
@@ -75,6 +79,8 @@ namespace Concierge.Utility
             this.UpdateAutosaveTimer = this.Current is UpdateSettingsCommand;
             this.Current.Redo();
             this.StackChanged?.Invoke(this, new EventArgs());
+
+            Program.Logger.Info($"Redo {this.Current.GetType()}.");
         }
 
         public void Undo(MainWindow mainWindow)
@@ -96,6 +102,8 @@ namespace Concierge.Utility
             this.UpdateAutosaveTimer = this.Current is UpdateSettingsCommand;
             this.Current.Undo();
             this.StackChanged?.Invoke(this, new EventArgs());
+
+            Program.Logger.Info($"Undo {this.Current.GetType()}.");
         }
 
         public List<Command> GetRedoCommands()

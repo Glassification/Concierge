@@ -46,6 +46,7 @@ namespace Concierge.Interfaces
         private readonly SettingsWindow settingsWindow = new ();
         private readonly ModifyPropertiesWindow modifyPropertiesWindow = new ();
         private readonly AboutConciergeWindow aboutConciergeWindow = new ();
+        private readonly HelpWindow helpWindow = new ();
         private readonly ModifyCharacterImageWindow modifyCharacterImageWindow = new ("50x50 image ratio is recommended.", ConciergePage.None);
 
         private readonly AutosaveTimer autosaveTimer = new ();
@@ -459,14 +460,11 @@ namespace Concierge.Interfaces
 
             switch (e.Key)
             {
-                case Key.C:
-                    this.CreateCharacterWizard();
-                    break;
                 case Key.F:
                     this.Search();
                     break;
                 case Key.H:
-                    this.aboutConciergeWindow.ShowWindow();
+                    this.helpWindow.ShowWindow();
                     break;
                 case Key.L:
                     this.LongRest();
@@ -728,6 +726,12 @@ namespace Concierge.Interfaces
             {
                 this.StartStopAutosaveTimer();
             }
+        }
+
+        private void HelpButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.helpWindow.ShowWindow();
+            this.IgnoreSecondPress = true;
         }
     }
 }
