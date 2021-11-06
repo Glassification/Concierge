@@ -22,7 +22,7 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
     /// </summary>
     public partial class EquippedItemsPage : Page, IConciergePage
     {
-        private readonly ModifyEquippedItemsWindow modifyEquippedItemsWindow = new (ConciergePage.EquippedItems);
+        private readonly ModifyEquippedItemsWindow modifyEquippedItemsWindow = new ();
         private readonly ModifyCharacterImageWindow modifyCharacterImageWindow = new ("768x1024 image ratio is recommended", ConciergePage.EquippedItems);
         private readonly ModifyInventoryWindow modifyInventoryWindow = new (ConciergePage.EquippedItems);
 

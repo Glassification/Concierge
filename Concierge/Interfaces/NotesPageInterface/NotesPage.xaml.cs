@@ -481,5 +481,15 @@ namespace Concierge.Interfaces.NotesPageInterface
                     break;
             }
         }
+
+        private void NotesTextBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            Program.Typing = true;
+        }
+
+        private void NotesTextBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            Program.Typing = false;
+        }
     }
 }

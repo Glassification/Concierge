@@ -21,13 +21,10 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
     /// </summary>
     public partial class ModifyEquippedItemsWindow : Window, IConciergeModifyWindow
     {
-        private readonly ConciergePage conciergePage;
-
-        public ModifyEquippedItemsWindow(ConciergePage conciergePage)
+        public ModifyEquippedItemsWindow()
         {
             this.InitializeComponent();
             this.SlotComboBox.ItemsSource = Enum.GetValues(typeof(EquipmentSlot)).Cast<EquipmentSlot>();
-            this.conciergePage = conciergePage;
         }
 
         public delegate void ApplyChangesEventHandler(object sender, EventArgs e);
@@ -36,10 +33,13 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
 
         public bool ItemsAdded { get; private set; }
 
+        private string PreviousSlot { get; set; }
+
         private ConciergeWindowResult Result { get; set; }
 
         public ConciergeWindowResult ShowWizardSetup()
         {
+            this.PreviousSlot = string.Empty;
             this.ClearFields();
             this.ItemComboBox.ItemsSource = EquippedItems.Equipable;
             this.ApplyButton.Visibility = Visibility.Visible;
@@ -52,6 +52,7 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
 
         public void ShowAdd()
         {
+            this.PreviousSlot = string.Empty;
             this.ClearFields();
             this.ItemComboBox.ItemsSource = EquippedItems.Equipable;
             this.ApplyButton.Visibility = Visibility.Visible;
@@ -76,7 +77,7 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
 
         private void ClearFields()
         {
-            this.SlotComboBox.Text = string.Empty;
+            this.SlotComboBox.Text = this.PreviousSlot;
             this.ItemComboBox.Text = string.Empty;
         }
 
@@ -96,6 +97,7 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
                 return;
             }
 
+            this.PreviousSlot = this.SlotComboBox.Text;
             var slot = (EquipmentSlot)Enum.Parse(typeof(EquipmentSlot), this.SlotComboBox.Text);
             this.ItemsAdded = true;
 
@@ -114,6 +116,7 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
                 return;
             }
 
+            this.PreviousSlot = this.SlotComboBox.Text;
             var slot = (EquipmentSlot)Enum.Parse(typeof(EquipmentSlot), this.SlotComboBox.Text);
 
             var newItem = Program.CcsFile.Character.EquippedItems.Equip(item, slot);

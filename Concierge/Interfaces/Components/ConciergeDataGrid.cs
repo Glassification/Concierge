@@ -81,7 +81,7 @@ namespace Concierge.Interfaces.Components
 
         public void SetSelectedIndex(int index)
         {
-            if (this.Items.IsEmpty)
+            if (this.Items.IsEmpty || index < 0)
             {
                 return;
             }

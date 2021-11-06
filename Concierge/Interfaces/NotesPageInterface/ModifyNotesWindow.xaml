@@ -77,8 +77,7 @@
                 <Grid Grid.Column="1">
                     <components:ConciergeComboBox
                         Style="{StaticResource ComboBoxStyle}"
-                        x:Name="ChapterComboBox"
-                        IsEditable="False"/>
+                        x:Name="ChapterComboBox"/>
                 </Grid>
             </Grid>
 

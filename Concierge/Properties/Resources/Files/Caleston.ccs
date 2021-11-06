@@ -169,29 +169,21 @@
       "Wisdom": 16,
       "Charisma": 16
     },
-    "Class1": {
-      "Name": "Rogue",
-      "Id": "0badc390-d484-4efc-816e-31fb645906e9",
-      "Level": 9
-    },
-    "Class2": {
-      "Name": "",
-      "Id": "a804d995-d0aa-4235-a966-98c4a9240729",
-      "Level": 0
-    },
-    "Class3": {
-      "Name": "",
-      "Id": "91856f96-831f-4a29-a9c2-9c144f8aef98",
-      "Level": 0
-    },
     "ClassResources": [],
     "Companion": {
-      "Name": "",
-      "ArmorClass": 0,
+      "Properties": {
+        "Name": "",
+        "ArmorClass": 0,
+        "Movement": 0,
+        "Perception": 0,
+        "Vision": 0
+      },
       "Vitality": {
-        "MaxHealth": 0,
-        "BaseHealth": 0,
-        "TemporaryHealth": 0,
+        "Health": {
+          "MaxHealth": 0,
+          "TemporaryHealth": 0,
+          "BaseHealth": 0
+        },
         "HitDice": {
           "TotalD6": 0,
           "TotalD8": 0,
@@ -224,7 +216,6 @@
           "DeathSaves": []
         }
       },
-      "Movement": 0,
       "Attributes": {
         "Strength": 0,
         "Dexterity": 0,
@@ -233,48 +224,9 @@
         "Wisdom": 0,
         "Charisma": 0
       },
-      "Perception": 0,
-      "Vision": 0,
       "Attacks": []
     },
-    "Details": {
-      "Name": "Caleston Nailo",
-      "Race": "Half-Elf",
-      "Background": "Criminal",
-      "Alignment": "Chaotic Good",
-      "Experience": "48000",
-      "Languages": [
-        {
-          "Name": "Common",
-          "Script": "Common",
-          "Speakers": "Humans, halflings, half-elves, half-orcs",
-          "Id": "9f4da325-8f0b-4fa3-9605-2115bc238e31"
-        },
-        {
-          "Name": "Draconic",
-          "Script": "Draconic",
-          "Speakers": "Kobolds, troglodytes, lizardfolk, dragons, dragonborn",
-          "Id": "a89cd283-4ebb-473d-a7f0-8ff78039e2a5"
-        },
-        {
-          "Name": "Elvish",
-          "Script": "Elvish",
-          "Speakers": "Elves",
-          "Id": "06654f94-03cf-42e0-9274-4cc4b582d0f7"
-        },
-        {
-          "Name": "Infernal",
-          "Script": "Infernal",
-          "Speakers": "Devils, Tieflings",
-          "Id": "93af0226-5535-4968-a721-10319a80ed4e"
-        },
-        {
-          "Name": "Primordial",
-          "Script": "Dwarvish",
-          "Speakers": "Elementals",
-          "Id": "dbeb1f7a-2f02-4ceb-a881-b33c2cdfa6f1"
-        }
-      ],
+    "Senses": {
       "InitiativeBonus": 5,
       "PerceptionBonus": 5,
       "BaseMovement": 30,
@@ -1080,9 +1032,11 @@
       "NinethUsed": 0
     },
     "Vitality": {
-      "MaxHealth": 71,
-      "BaseHealth": 69,
-      "TemporaryHealth": 0,
+      "Health": {
+        "MaxHealth": 0,
+        "TemporaryHealth": 0,
+        "BaseHealth": 0
+      },
       "HitDice": {
         "TotalD6": 0,
         "TotalD8": 9,
@@ -1218,24 +1172,24 @@
       "Head": [],
       "Torso": [
         {
-          "Name": "Blue Cloak with Hood",
-          "Amount": 1,
-          "Weight": 1.0,
-          "IsInBagOfHolding": false,
-          "Note": "Simple cloak with usable hood.",
-          "Attuned": false,
-          "EquppedId": "9db8369c-8c97-4d96-a4d6-9e9bb120916f",
-          "Id": "f6098477-f745-4b6a-b996-4a4a72fc557f"
-        },
-        {
           "Name": "Studded Leather Armor",
           "Amount": 1,
           "Weight": 0.0,
           "IsInBagOfHolding": false,
           "Note": "Leather armor with a base AC of 13 + DEX modifier.",
           "Attuned": false,
-          "EquppedId": "e5f0b521-e5ac-4969-b0c1-89edcb90c624",
+          "EquppedId": "3bf7f256-6dd8-46a1-a1c3-b2ef882f8bfb",
           "Id": "3500be2f-4696-45e0-857d-496d4f6fdb16"
+        },
+        {
+          "Name": "Blue Cloak with Hood",
+          "Amount": 1,
+          "Weight": 1.0,
+          "IsInBagOfHolding": false,
+          "Note": "Simple cloak with usable hood.",
+          "Attuned": false,
+          "EquppedId": "39c1b556-450c-40e4-87b1-e11f6061b598",
+          "Id": "f6098477-f745-4b6a-b996-4a4a72fc557f"
         }
       ],
       "Hands": [
@@ -1246,7 +1200,7 @@
           "IsInBagOfHolding": false,
           "Note": "Use to cast create darkness. 1d4 uses per day.",
           "Attuned": true,
-          "EquppedId": "6bd6df63-e816-4256-8a00-3f7569d378e4",
+          "EquppedId": "14ecf6d6-df39-4dbe-9c76-f67684486509",
           "Id": "c5ada3d4-ba74-4015-988d-eefea2d3059f"
         },
         {
@@ -1256,7 +1210,7 @@
           "IsInBagOfHolding": false,
           "Note": "Fancy pair of for hidding rings on ones hand.",
           "Attuned": false,
-          "EquppedId": "a07f5c2b-b8c7-4b77-87b4-fb57eec508c5",
+          "EquppedId": "b068ba66-97c2-4ca2-8822-4a7d0e4cf844",
           "Id": "652beb3a-4d8e-4600-8c2c-6f50860b9ded"
         }
       ],
@@ -1269,7 +1223,7 @@
           "IsInBagOfHolding": false,
           "Note": "High-top black leather boots.",
           "Attuned": false,
-          "EquppedId": "6950b7e3-22e7-4090-bc6f-20190473b93e",
+          "EquppedId": "09ff74e8-4893-404d-b5ee-bfac5028cfcc",
           "Id": "32616332-7a03-47c0-b877-ad2e2271b7e6"
         }
       ]
@@ -1286,7 +1240,61 @@
       "Stretch": 3,
       "UseCustomImage": true
     },
-    "StatusEffects": []
+    "StatusEffects": [],
+    "Properties": {
+      "Name": "Caleston Nailo",
+      "Race": "Half-Elf",
+      "Background": "Criminal",
+      "Alignment": "Chaotic Good",
+      "Experience": "",
+      "Class1": {
+        "Name": "Rogue",
+        "Id": "55a0a82a-7e45-494a-b3ef-32481e92fc22",
+        "Level": 9
+      },
+      "Class2": {
+        "Name": "",
+        "Id": "12b429ab-cd39-44da-8364-cfdeda8d9ee5",
+        "Level": 0
+      },
+      "Class3": {
+        "Name": "",
+        "Id": "c6ad9ec1-236d-4703-b89c-4b530dddb054",
+        "Level": 0
+      }
+    },
+    "Languages": [
+      {
+        "Name": "Common",
+        "Script": "Common",
+        "Speakers": "Humans, halflings, half-elves, half-orcs",
+        "Id": "6e159369-ec5f-4ba1-baa7-164638e9f5eb"
+      },
+      {
+        "Name": "Draconic",
+        "Script": "Draconic",
+        "Speakers": "Kobolds, troglodytes, lizardfolk, dragons, dragonborn",
+        "Id": "b5bb4b4d-338f-486e-a51a-01d37394fbe0"
+      },
+      {
+        "Name": "Elvish",
+        "Script": "Elvish",
+        "Speakers": "Elves",
+        "Id": "8ce92fbd-27ae-4e9a-96a1-e036e6f2f015"
+      },
+      {
+        "Name": "Infernal",
+        "Script": "Infernal",
+        "Speakers": "Devils, Tieflings",
+        "Id": "e726f896-f1e9-4a36-83dd-1a631784bb89"
+      },
+      {
+        "Name": "Primordial",
+        "Script": "Dwarvish",
+        "Speakers": "Elementals",
+        "Id": "888442fa-9894-464e-a8d8-66861abae61b"
+      }
+    ]
   },
-  "Version": "3.8.4"
+  "Version": "3.10.0"
 }

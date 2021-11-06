@@ -32,7 +32,7 @@ namespace Concierge.Tools.Interface
         private readonly ModifyAttackWindow modifyAttackWindow = new (ConciergePage.None);
         private readonly ModifyAmmoWindow modifyAmmoWindow = new (ConciergePage.None);
         private readonly ModifyInventoryWindow modifyInventoryWindow = new (ConciergePage.None);
-        private readonly ModifyEquippedItemsWindow modifyEquippedItemsWindow = new (ConciergePage.None);
+        private readonly ModifyEquippedItemsWindow modifyEquippedItemsWindow = new ();
         private readonly ModifySpellClassWindow modifySpellClassWindow = new (ConciergePage.None);
         private readonly ModifySpellSlotsWindow modifySpellSlotsWindow = new (ConciergePage.None);
         private readonly ModifySpellWindow modifySpellWindow = new (ConciergePage.None);

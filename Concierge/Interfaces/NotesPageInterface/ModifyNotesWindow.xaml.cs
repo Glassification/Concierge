@@ -49,25 +49,27 @@ namespace Concierge.Interfaces.NotesPageInterface
 
         public void ShowEdit(Chapter chapter)
         {
+            this.SetupWindow(true);
+
             this.HeaderTextBlock.Text = "Edit Chapter";
             this.ChapterComboBox.Text = chapter.Name;
             this.DocumentTextBox.Text = chapter.Name;
             this.CurrentChapter = chapter;
             this.CurrentDocument = null;
 
-            this.SetupWindow(true);
             this.ShowDialog();
         }
 
         public void ShowEdit(Document document)
         {
+            this.SetupWindow(true);
+
             this.HeaderTextBlock.Text = "Edit Page";
             this.ChapterComboBox.Text = Program.CcsFile.Character.GetChapterByDocumentId(document.Id).Name;
             this.DocumentTextBox.Text = document.Name;
             this.CurrentChapter = null;
             this.CurrentDocument = document;
 
-            this.SetupWindow(true);
             this.ShowDialog();
         }
 
@@ -84,6 +86,7 @@ namespace Concierge.Interfaces.NotesPageInterface
             this.ClearFields();
             this.GenerateChapterComboBox();
             this.ChapterComboBox.IsEnabled = !isEdit;
+            this.ChapterComboBox.Opacity = this.ChapterComboBox.IsEnabled ? 1 : 0.5;
         }
 
         private void GenerateChapterComboBox()
