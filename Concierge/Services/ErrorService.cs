@@ -42,6 +42,10 @@ namespace Concierge.Services
                 case Severity.Release:
                     this.ShowMessage(message);
                     break;
+                case Severity.Unhandled:
+                    message = $"An unhandled exception occurred: {ex.Message}";
+                    this.ShowMessage(message);
+                    break;
             }
 
             this.Logger.Error(message);

@@ -6,7 +6,8 @@ namespace Concierge.Exceptions.Enums
 {
     public enum Severity
     {
-        Debug = 0,
+        Debug,
         Release,
+        Unhandled,
     }
 }

@@ -157,9 +157,6 @@
                             Click="ButtonPaste_Click">
                             <materialDesign:PackIcon Kind="ContentPaste" Width="25" Height="25"/>
                         </components:ConciergeDesignButton>
-                        <Separator 
-                            Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"
-                            Foreground="White"/>
                         <components:ConciergeDesignButton 
                             Style="{StaticResource ConciergeDesignButtonStyle}" 
                             x:Name="ButtonUndo"
@@ -178,9 +175,6 @@
                             Click="ButtonRedo_Click">
                             <materialDesign:PackIcon Kind="Redo" Width="25" Height="25"/>
                         </components:ConciergeDesignButton>
-                        <Separator 
-                            Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"
-                            Foreground="White"/>
                         <components:ConciergeToggleButton 
                             x:Name="ButtonBold"
                             Style="{StaticResource ConciergeToggleButtonStyle}"
@@ -245,6 +239,8 @@
                         SpellCheck.IsEnabled="True"
                         GotFocus="NotesTextBox_GotFocus"
                         LostFocus="NotesTextBox_LostFocus"
+                        MouseEnter="NotesTextBox_MouseEnter"
+                        MouseLeave="NotesTextBox_MouseLeave"
                         SelectionChanged="NotesTextBox_SelectionChanged">
                     </RichTextBox>
                 </Grid>

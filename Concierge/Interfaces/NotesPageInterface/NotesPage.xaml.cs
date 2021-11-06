@@ -13,6 +13,7 @@ namespace Concierge.Interfaces.NotesPageInterface
     using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Documents;
+    using System.Windows.Input;
     using System.Windows.Media;
 
     using Concierge.Character.Notes;
@@ -490,6 +491,16 @@ namespace Concierge.Interfaces.NotesPageInterface
         private void NotesTextBox_LostFocus(object sender, RoutedEventArgs e)
         {
             Program.Typing = false;
+        }
+
+        private void NotesTextBox_MouseEnter(object sender, MouseEventArgs e)
+        {
+            Mouse.OverrideCursor = Cursors.IBeam;
+        }
+
+        private void NotesTextBox_MouseLeave(object sender, MouseEventArgs e)
+        {
+            Mouse.OverrideCursor = Cursors.Arrow;
         }
     }
 }

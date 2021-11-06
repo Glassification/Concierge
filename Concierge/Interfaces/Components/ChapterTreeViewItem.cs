@@ -7,9 +7,11 @@ namespace Concierge.Interfaces.Components
     using System;
     using System.Windows;
     using System.Windows.Controls;
+    using System.Windows.Input;
     using System.Windows.Media;
 
     using Concierge.Character.Notes;
+    using Concierge.Utility;
     using MaterialDesignThemes.Wpf;
 
     public class ChapterTreeViewItem : TreeViewItem
@@ -26,6 +28,9 @@ namespace Concierge.Interfaces.Components
             this.Foreground = Brushes.White;
             this.IsExpanded = chapter.IsExpanded;
             this.Style = resourceDictionary["TreeViewItemStyling"] as Style;
+
+            this.MouseEnter += this.Item_MouseEnter;
+            this.MouseLeave += this.Item_MouseLeave;
         }
 
         public Chapter Chapter { get; set; }
@@ -55,6 +60,33 @@ namespace Concierge.Interfaces.Components
             stackPanel.Children.Add(textBlock);
 
             return stackPanel;
+        }
+
+        private bool IsHighlightedOnChild()
+        {
+            foreach (var item in this.Items)
+            {
+                var documentItem = item as DocumentTreeViewItem;
+
+                if (documentItem.Foreground == Colours.NoteTreeItemHover)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        private void Item_MouseEnter(object sender, MouseEventArgs e)
+        {
+            Mouse.OverrideCursor = Cursors.Hand;
+            this.Foreground = this.IsHighlightedOnChild() ? Brushes.White : Colours.NoteTreeItemHover;
+        }
+
+        private void Item_MouseLeave(object sender, MouseEventArgs e)
+        {
+            Mouse.OverrideCursor = Cursors.Arrow;
+            this.Foreground = Brushes.White;
         }
     }
 }

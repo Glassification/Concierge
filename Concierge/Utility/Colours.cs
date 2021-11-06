@@ -24,6 +24,7 @@ namespace Concierge.Utility
             RectangleBorderHighlight = new SolidColorBrush(Color.FromArgb(255, 34, 126, 169));
             RectangleBorder = new SolidColorBrush(Color.FromArgb(255, 0, 9, 23));
             Highlight = new SolidColorBrush(Color.FromArgb(255, 28, 57, 71));
+            NoteTreeItemHover = new SolidColorBrush(Color.FromArgb(255, 130, 223, 251));
             FailedSaveBrush = GenerateGradientBrush(FailedDarkRed, FailedLightRed, new Point(0.5, 0), new Point(0.5, 1));
             SucceededSaveBrush = GenerateGradientBrush(SucceededDarkGreen, SucceededLightGreen, new Point(0.5, 0), new Point(0.5, 1));
             ProficiencyBrush = GenerateGradientBrush(ProficiencyDarkBlue, ProficiencyLightBlue, new Point(0, 0), new Point(1, 1));
@@ -50,6 +51,8 @@ namespace Concierge.Utility
         public static SolidColorBrush RectangleBorder { get; }
 
         public static SolidColorBrush Highlight { get; }
+
+        public static SolidColorBrush NoteTreeItemHover { get; }
 
         public static Color LightGreen => Color.FromArgb(255, 216, 228, 188);
 

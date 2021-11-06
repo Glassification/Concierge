@@ -460,11 +460,17 @@ namespace Concierge.Interfaces
 
             switch (e.Key)
             {
+                case Key.A:
+                    this.aboutConciergeWindow.ShowWindow();
+                    break;
                 case Key.F:
                     this.Search();
                     break;
                 case Key.H:
                     this.helpWindow.ShowWindow();
+                    break;
+                case Key.I:
+                    this.settingsWindow.ShowEdit();
                     break;
                 case Key.L:
                     this.LongRest();
