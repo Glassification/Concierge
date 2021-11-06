@@ -9,7 +9,6 @@ namespace Concierge.Character.Characteristics
     using System.Windows.Media;
     using System.Windows.Media.Imaging;
 
-    using Concierge.Exceptions.Enums;
     using Concierge.Utility.Extensions;
 
     public class CharacterImage : ICopyable
@@ -55,7 +54,7 @@ namespace Concierge.Character.Characteristics
             }
             catch (Exception ex)
             {
-                Program.ErrorService.LogError(ex, Severity.Release);
+                Program.ErrorService.LogError(ex);
                 return null;
             }
         }
@@ -82,7 +81,7 @@ namespace Concierge.Character.Characteristics
                 this.Path = string.Empty;
                 this.Encoded = string.Empty;
 
-                Program.ErrorService.LogError(ex, Severity.Release);
+                Program.ErrorService.LogError(ex);
             }
         }
 

@@ -65,12 +65,14 @@
 
                 <!--Title-->
                 <Grid Grid.Column="0">
-                    <TextBlock Text="Chapter:"
-                               Foreground="White"
-                               FontSize="20"
-                               HorizontalAlignment="Left"
-                               VerticalAlignment="Top"
-                               Margin="10, 20, 0, 0"/>
+                    <TextBlock 
+                        x:Name="ChapterLabel"
+                        Text="Chapter:"
+                        Foreground="White"
+                        FontSize="20"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        Margin="10, 20, 0, 0"/>
                 </Grid>
 
                 <!--Value-->

@@ -124,6 +124,13 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
             this.ImageSourceTextBox.IsEnabled = isEnabled;
             this.FillTypeComboBox.IsEnabled = isEnabled;
             this.OpenImageButton.IsEnabled = isEnabled;
+            this.InformationHover.IsEnabled = isEnabled;
+
+            this.FillTypeComboBox.Opacity = isEnabled ? 1 : 0.5;
+            this.OpenImageButton.Opacity = isEnabled ? 1 : 0.5;
+            this.InformationHover.Opacity = isEnabled ? 1 : 0.5;
+            this.ImageSourceLabel.Opacity = isEnabled ? 1 : 0.5;
+            this.FillTypeLabel.Opacity = isEnabled ? 1 : 0.5;
         }
 
         private void OpenImageButton_Click(object sender, RoutedEventArgs e)

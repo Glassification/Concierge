@@ -18,7 +18,6 @@ namespace Concierge.Interfaces.NotesPageInterface
 
     using Concierge.Character.Notes;
     using Concierge.Commands;
-    using Concierge.Exceptions.Enums;
     using Concierge.Interfaces.Components;
     using Concierge.Interfaces.Enums;
     using Concierge.Tools.Interface;
@@ -159,7 +158,7 @@ namespace Concierge.Interfaces.NotesPageInterface
             }
             catch (Exception ex)
             {
-                Program.ErrorService.LogError(ex, Severity.Release);
+                Program.ErrorService.LogError(ex);
                 return string.Empty;
             }
         }

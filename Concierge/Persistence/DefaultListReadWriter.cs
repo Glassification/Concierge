@@ -11,7 +11,6 @@ namespace Concierge.Persistence
     using Concierge.Character.Characteristics;
     using Concierge.Character.Items;
     using Concierge.Character.Spellcasting;
-    using Concierge.Exceptions.Enums;
     using Newtonsoft.Json;
 
     public static class DefaultListReadWriter
@@ -29,7 +28,7 @@ namespace Concierge.Persistence
             }
             catch (Exception ex)
             {
-                Program.ErrorService.LogError(ex, Severity.Release);
+                Program.ErrorService.LogError(ex);
             }
 
             return abilities;
@@ -48,7 +47,7 @@ namespace Concierge.Persistence
             }
             catch (Exception ex)
             {
-                Program.ErrorService.LogError(ex, Severity.Release);
+                Program.ErrorService.LogError(ex);
             }
 
             return ammunitions;
@@ -67,7 +66,7 @@ namespace Concierge.Persistence
             }
             catch (Exception ex)
             {
-                Program.ErrorService.LogError(ex, Severity.Release);
+                Program.ErrorService.LogError(ex);
             }
 
             return inventories;
@@ -86,7 +85,7 @@ namespace Concierge.Persistence
             }
             catch (Exception ex)
             {
-                Program.ErrorService.LogError(ex, Severity.Release);
+                Program.ErrorService.LogError(ex);
             }
 
             return languages;
@@ -105,7 +104,7 @@ namespace Concierge.Persistence
             }
             catch (Exception ex)
             {
-                Program.ErrorService.LogError(ex, Severity.Release);
+                Program.ErrorService.LogError(ex);
             }
 
             return spells;
@@ -124,7 +123,7 @@ namespace Concierge.Persistence
             }
             catch (Exception ex)
             {
-                Program.ErrorService.LogError(ex, Severity.Release);
+                Program.ErrorService.LogError(ex);
             }
 
             return weapons;

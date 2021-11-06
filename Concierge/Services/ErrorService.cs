@@ -25,7 +25,7 @@ namespace Concierge.Services
 
         private Logger Logger { get; set; }
 
-        public void LogError(Exception ex, Severity severity)
+        public void LogError(Exception ex, Severity severity = Severity.Release)
         {
             Guard.IsNull(ex, nameof(ex));
 
@@ -36,15 +36,15 @@ namespace Concierge.Services
                 case Severity.Debug:
 #if DEBUG
                     Debug.WriteLine($"{ex.Message}\n{ex.StackTrace}");
-                    this.ShowMessage(message);
+                    ShowMessage(message);
 #endif
                     break;
                 case Severity.Release:
-                    this.ShowMessage(message);
+                    ShowMessage(message);
                     break;
                 case Severity.Unhandled:
                     message = $"An unhandled exception occurred: {ex.Message}";
-                    this.ShowMessage(message);
+                    ShowMessage(message);
                     break;
             }
 
@@ -56,7 +56,7 @@ namespace Concierge.Services
             return ex is ConciergeException;
         }
 
-        private void ShowMessage(string message)
+        private static void ShowMessage(string message)
         {
             ConciergeMessageBox.Show(
                 message,

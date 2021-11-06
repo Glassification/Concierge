@@ -87,6 +87,7 @@ namespace Concierge.Interfaces.NotesPageInterface
             this.GenerateChapterComboBox();
             this.ChapterComboBox.IsEnabled = !isEdit;
             this.ChapterComboBox.Opacity = this.ChapterComboBox.IsEnabled ? 1 : 0.5;
+            this.ChapterLabel.Opacity = this.ChapterComboBox.IsEnabled ? 1 : 0.5;
         }
 
         private void GenerateChapterComboBox()

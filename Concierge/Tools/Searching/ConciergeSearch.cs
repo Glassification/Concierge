@@ -182,7 +182,7 @@ namespace Concierge.Tools.Searching
             }
             catch (Exception ex)
             {
-                Program.ErrorService.LogError(ex, Exceptions.Enums.Severity.Release);
+                Program.ErrorService.LogError(ex);
             }
 
             this.Depth--;

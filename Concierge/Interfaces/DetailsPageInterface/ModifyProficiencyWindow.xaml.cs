@@ -52,9 +52,9 @@ namespace Concierge.Interfaces.DetailsPageInterface
             this.HeaderTextBlock.Text = this.HeaderText;
             this.ApplyButton.Visibility = Visibility.Visible;
             this.OkButton.Visibility = Visibility.Collapsed;
-            this.ProficiencyComboBox.IsEnabled = true;
             this.SelectedProficiencies = Program.CcsFile.Character.Proficiency;
 
+            this.SetEnabledState(true);
             this.ClearFields();
             this.ShowDialog();
 
@@ -68,9 +68,9 @@ namespace Concierge.Interfaces.DetailsPageInterface
             this.SelectedProficiencies = proficiencies;
             this.ApplyButton.Visibility = Visibility.Visible;
             this.OkButton.Visibility = Visibility.Visible;
-            this.ProficiencyComboBox.IsEnabled = true;
             this.ItemsAdded = false;
 
+            this.SetEnabledState(true);
             this.ClearFields();
             this.ShowDialog();
         }
@@ -83,6 +83,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
             this.ApplyButton.Visibility = Visibility.Collapsed;
             this.OkButton.Visibility = Visibility.Visible;
 
+            this.SetEnabledState(false);
             this.FillFields();
             this.ShowDialog();
         }
@@ -100,11 +101,19 @@ namespace Concierge.Interfaces.DetailsPageInterface
             this.Hide();
         }
 
+        private void SetEnabledState(bool isEnabled)
+        {
+            this.ProficiencyComboBox.IsEnabled = isEnabled;
+            this.TypeLabel.IsEnabled = isEnabled;
+
+            this.ProficiencyComboBox.Opacity = isEnabled ? 1 : 0.5;
+            this.TypeLabel.Opacity = isEnabled ? 1 : 0.5;
+        }
+
         private void FillFields()
         {
             this.ProficiencyTextBox.Text = this.SelectedProficiency.Name;
             this.ProficiencyComboBox.Text = this.SelectedProficiency.ProficiencyType.ToString();
-            this.ProficiencyComboBox.IsEnabled = false;
         }
 
         private Proficiency ToProficiency()

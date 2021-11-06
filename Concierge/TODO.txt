@@ -1,2 +1,1 @@
-﻿Fix Note editing.
-Allow highlighting of any control.
+﻿Add searching to Notes

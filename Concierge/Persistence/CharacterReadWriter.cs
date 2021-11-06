@@ -8,7 +8,6 @@ namespace Concierge.Persistence
     using System.IO;
     using System.Text.RegularExpressions;
 
-    using Concierge.Exceptions.Enums;
     using Concierge.Interfaces.Enums;
     using Concierge.Tools.Interface;
     using Concierge.Utility;
@@ -38,7 +37,7 @@ namespace Concierge.Persistence
             }
             catch (Exception ex)
             {
-                Program.ErrorService.LogError(ex, Severity.Release);
+                Program.ErrorService.LogError(ex);
                 Program.Modify();
 
                 return new CcsFile();
@@ -61,7 +60,7 @@ namespace Concierge.Persistence
             }
             catch (Exception ex)
             {
-                Program.ErrorService.LogError(ex, Severity.Release);
+                Program.ErrorService.LogError(ex);
                 Program.Modify();
 
                 return false;
