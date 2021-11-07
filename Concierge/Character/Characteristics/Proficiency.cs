@@ -7,6 +7,7 @@ namespace Concierge.Character.Characteristics
     using System;
 
     using Concierge.Character.Enums;
+    using Concierge.Utility;
 
     public class Proficiency : ICopyable
     {

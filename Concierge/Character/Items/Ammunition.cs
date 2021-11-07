@@ -7,6 +7,7 @@ namespace Concierge.Character.Items
     using System;
 
     using Concierge.Character.Enums;
+    using Concierge.Utility;
 
     public class Ammunition : ICopyable
     {

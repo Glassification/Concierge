@@ -4,6 +4,8 @@
 
 namespace Concierge
 {
+    using System.Reflection;
+
     using Concierge.Interfaces.HelperInterface;
     using Concierge.Logging;
     using Concierge.Persistence;
@@ -14,15 +16,23 @@ namespace Concierge
     {
         static Program()
         {
+#if DEBUG
+            IsDebug = true;
+#else
+            IsDebug = false;
+#endif
+
             InitializeLogger();
 
-            CcsFile = new CcsFile();
             SaveStatusWindow = new SaveStatusWindow();
             Modified = true;
             Typing = false;
             ErrorService = new ErrorService(Logger);
             UndoRedoService = new UndoRedoService();
+            CcsFile = new CcsFile();
         }
+
+        public static bool IsDebug { get; }
 
         public static CcsFile CcsFile { get; set; }
 
@@ -38,6 +48,15 @@ namespace Concierge
 
         public static UndoRedoService UndoRedoService { get; private set; }
 
+        public static string AssemblyVersion
+        {
+            get
+            {
+                var version = Assembly.GetExecutingAssembly().GetName().Version;
+                return $"{version.Major}.{version.Minor}.{version.Build}";
+            }
+        }
+
         public static void Modify()
         {
             Modified = true;
@@ -50,10 +69,10 @@ namespace Concierge
 
         private static void InitializeLogger()
         {
-            Logger = new LocalLogger(ConciergeSettings.IsDebug);
+            Logger = new LocalLogger(IsDebug);
 
             Logger.NewLine();
-            Logger.Info($"Starting Concierge v{Constants.AssemblyVersion}");
+            Logger.Info($"Starting Concierge v{AssemblyVersion}");
         }
     }
 }

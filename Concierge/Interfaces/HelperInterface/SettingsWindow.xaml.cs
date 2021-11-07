@@ -6,6 +6,7 @@ namespace Concierge.Interfaces.HelperInterface
 {
     using System;
     using System.ComponentModel;
+    using System.Linq;
     using System.Windows;
     using System.Windows.Input;
 
@@ -14,6 +15,7 @@ namespace Concierge.Interfaces.HelperInterface
     using Concierge.Tools.Interface;
     using Concierge.Utility;
     using Concierge.Utility.Dtos;
+    using Concierge.Utility.Enums;
     using Concierge.Utility.Extensions;
 
     /// <summary>
@@ -24,6 +26,7 @@ namespace Concierge.Interfaces.HelperInterface
         public SettingsWindow()
         {
             this.InitializeComponent();
+            this.UnitOfMeasurementComboBox.ItemsSource = Enum.GetValues(typeof(UnitTypes)).Cast<UnitTypes>();
         }
 
         public delegate void ApplyChangesEventHandler(object sender, EventArgs e);
@@ -60,6 +63,7 @@ namespace Concierge.Interfaces.HelperInterface
             this.IntervalTextBox.Text = this.FormattedInterval;
             this.MuteCheckBox.IsChecked = ConciergeSettings.MuteSounds;
             this.CheckVersionCheckBox.IsChecked = ConciergeSettings.CheckVersion;
+            this.UnitOfMeasurementComboBox.Text = ConciergeSettings.UnitOfMeasurement.ToString();
 
             if (ConciergeSettings.AutosaveEnabled)
             {
@@ -99,6 +103,7 @@ namespace Concierge.Interfaces.HelperInterface
                 MuteSounds = this.MuteCheckBox.IsChecked ?? false,
                 UseCoinWeight = this.CoinWeightCheckBox.IsChecked ?? false,
                 UseEncumbrance = this.EncumbranceCheckBox.IsChecked ?? false,
+                UnitOfMeasurement = !Enum.TryParse(this.UnitOfMeasurementComboBox.Text, out UnitTypes value) ? default : value,
             };
 
             Program.UndoRedoService.AddCommand(new UpdateSettingsCommand(oldSettings, conciergeSettings));

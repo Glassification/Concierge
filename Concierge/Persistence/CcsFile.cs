@@ -33,7 +33,7 @@ namespace Concierge.Persistence
         public void Default()
         {
             this.Character = new ConciergeCharacter();
-            this.Version = Constants.AssemblyVersion;
+            this.Version = Program.AssemblyVersion;
         }
     }
 }

@@ -4,8 +4,11 @@
 
 namespace Concierge.Utility
 {
+    using System;
+
     using Concierge.Persistence;
     using Concierge.Utility.Dtos;
+    using Concierge.Utility.Enums;
 
     public static class ConciergeSettings
     {
@@ -19,20 +22,19 @@ namespace Concierge.Utility
 
         static ConciergeSettings()
         {
-#if DEBUG
-            IsDebug = true;
-#else
-            IsDebug = false;
-#endif
-
             AutosaveEnabled = AppConfigReadWriter.Read(nameof(AutosaveEnabled), DefaultAutosaveEnabled);
             AutosaveInterval = AppConfigReadWriter.Read(nameof(AutosaveInterval), DefaultAutosaveInterval);
             CheckVersion = AppConfigReadWriter.Read(nameof(CheckVersion), DefaultCheckVersion);
             MuteSounds = AppConfigReadWriter.Read(nameof(MuteSounds), DefaultMuteSounds);
             UseCoinWeight = AppConfigReadWriter.Read(nameof(UseCoinWeight), DefaultUseCoinWeight);
             UseEncumbrance = AppConfigReadWriter.Read(nameof(UseEncumbrance), DefaultUseEncumbrance);
+            UnitOfMeasurement = AppConfigReadWriter.Read<UnitTypes>(nameof(UnitOfMeasurement));
             DisplayWindowInCentre = AppConfigReadWriter.Read(nameof(DisplayWindowInCentre), DefaultDisplayWindowInCentre);
         }
+
+        public delegate void UnitsChangedEventHandler(object sender, EventArgs e);
+
+        public static event UnitsChangedEventHandler UnitsChanged;
 
         public static bool AutosaveEnabled { get; private set; }
 
@@ -40,28 +42,34 @@ namespace Concierge.Utility
 
         public static bool CheckVersion { get; private set; }
 
-        public static bool IsDebug { get; private set; }
-
         public static bool MuteSounds { get; private set; }
 
         public static bool UseCoinWeight { get; private set; }
 
         public static bool UseEncumbrance { get; private set; }
 
+        public static UnitTypes UnitOfMeasurement { get; private set; }
+
         public static bool DisplayWindowInCentre { get; private set; }
 
         public static void UpdateSettings(ConciergeSettingsDto conciergeSettings)
         {
+            if (UnitOfMeasurement != conciergeSettings.UnitOfMeasurement)
+            {
+                UnitsChanged?.Invoke(conciergeSettings, new EventArgs());
+            }
+
             AutosaveEnabled = conciergeSettings.AutosaveEnabled;
             AutosaveInterval = conciergeSettings.AutosaveInterval;
             CheckVersion = conciergeSettings.CheckVersion;
             MuteSounds = conciergeSettings.MuteSounds;
             UseCoinWeight = conciergeSettings.UseCoinWeight;
             UseEncumbrance = conciergeSettings.UseEncumbrance;
+            UnitOfMeasurement = conciergeSettings.UnitOfMeasurement;
             DisplayWindowInCentre = conciergeSettings.DisplayWindowInCentre;
 
             // Can't change app.config during debug mode
-            if (IsDebug)
+            if (Program.IsDebug)
             {
                 return;
             }
@@ -72,7 +80,13 @@ namespace Concierge.Utility
             AppConfigReadWriter.Write(nameof(MuteSounds), MuteSounds.ToString());
             AppConfigReadWriter.Write(nameof(UseCoinWeight), UseCoinWeight.ToString());
             AppConfigReadWriter.Write(nameof(UseEncumbrance), UseEncumbrance.ToString());
+            AppConfigReadWriter.Write(nameof(UnitOfMeasurement), UnitOfMeasurement.ToString());
             AppConfigReadWriter.Write(nameof(DisplayWindowInCentre), DisplayWindowInCentre.ToString());
+        }
+
+        public static void RefreshUnits()
+        {
+            UnitsChanged?.Invoke(ToConciergeSettingsDto(), new EventArgs());
         }
 
         public static ConciergeSettingsDto ToConciergeSettingsDto()
@@ -85,6 +99,7 @@ namespace Concierge.Utility
                 MuteSounds = MuteSounds,
                 UseCoinWeight = UseCoinWeight,
                 UseEncumbrance = UseEncumbrance,
+                UnitOfMeasurement = UnitOfMeasurement,
             };
         }
 
@@ -92,10 +107,11 @@ namespace Concierge.Utility
         {
             return $@"AutosaveEnabled:[{AutosaveEnabled}], 
                         AutosaveInterval:[{AutosaveInterval}],
-                        IsDebug:[{IsDebug}],
+                        IsDebug:[{Program.IsDebug}],
                         MuteSounds:[{MuteSounds}],
                         UseCoinWeight:[{UseCoinWeight}],
                         UseEncumbrance:[{UseEncumbrance}]
+                        UnitOfMeasurement:[{UnitOfMeasurement}]
                         DisplayWindowInCentre:[{DisplayWindowInCentre}]";
         }
     }

@@ -6,6 +6,7 @@ namespace Concierge.Character.Characteristics
 {
     using System.Text;
 
+    using Concierge.Utility;
     using Concierge.Utility.Extensions;
     using Newtonsoft.Json;
 

@@ -6,6 +6,7 @@ namespace Concierge.Character.Characteristics
 {
     using System;
 
+    using Concierge.Utility;
     using Newtonsoft.Json;
 
     public class Language : ICopyable

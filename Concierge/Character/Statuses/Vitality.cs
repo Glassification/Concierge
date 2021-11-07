@@ -63,6 +63,11 @@ namespace Concierge.Character.Statuses
             this.HitDice.SpentD12 = RegainHitDie(this.HitDice.SpentD12);
         }
 
+        public void ResetDeathSaves()
+        {
+            this.DeathSavingThrows.ResetDeathSaves();
+        }
+
         public void Damage(int damage)
         {
             int oldTempHealth = this.Health.TemporaryHealth;

@@ -4,6 +4,8 @@
 
 namespace Concierge.Character.Spellcasting
 {
+    using Concierge.Utility;
+
     public class SpellSlots : ICopyable
     {
         public SpellSlots()

@@ -7,7 +7,6 @@ namespace Concierge.Character
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Text;
 
     using Concierge.Character.AbilitySavingThrows;
     using Concierge.Character.AbilitySkills;
@@ -18,7 +17,6 @@ namespace Concierge.Character
     using Concierge.Character.Spellcasting;
     using Concierge.Character.Statuses;
     using Concierge.Utility;
-    using Concierge.Utility.Extensions;
     using Newtonsoft.Json;
 
     public class ConciergeCharacter
@@ -160,7 +158,11 @@ namespace Concierge.Character
         {
             this.Vitality.ResetHealth();
             this.Vitality.RegainHitDice();
+            this.Vitality.ResetDeathSaves();
             this.SpellSlots.Reset();
+
+            this.Companion.Vitality.ResetHealth();
+            this.Companion.Vitality.RegainHitDice();
         }
 
         public bool IsWeaponProficient(Weapon weapon)

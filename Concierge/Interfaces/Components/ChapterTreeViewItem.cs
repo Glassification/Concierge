@@ -68,7 +68,7 @@ namespace Concierge.Interfaces.Components
             {
                 var documentItem = item as DocumentTreeViewItem;
 
-                if (documentItem.Foreground == Colours.NoteTreeItemHover)
+                if (documentItem.Foreground == ConciergeColors.NoteTreeItemHover)
                 {
                     return true;
                 }
@@ -80,7 +80,7 @@ namespace Concierge.Interfaces.Components
         private void Item_MouseEnter(object sender, MouseEventArgs e)
         {
             Mouse.OverrideCursor = Cursors.Hand;
-            this.Foreground = this.IsHighlightedOnChild() ? Brushes.White : Colours.NoteTreeItemHover;
+            this.Foreground = this.IsHighlightedOnChild() ? Brushes.White : ConciergeColors.NoteTreeItemHover;
         }
 
         private void Item_MouseLeave(object sender, MouseEventArgs e)

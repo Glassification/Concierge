@@ -4,6 +4,8 @@
 
 namespace Concierge.Utility.Dtos
 {
+    using Concierge.Utility.Enums;
+
     public class ConciergeSettingsDto
     {
         public ConciergeSettingsDto()
@@ -21,6 +23,8 @@ namespace Concierge.Utility.Dtos
         public bool UseCoinWeight { get; init; }
 
         public bool UseEncumbrance { get; init; }
+
+        public UnitTypes UnitOfMeasurement { get; init; }
 
         public bool DisplayWindowInCentre { get; init; }
     }

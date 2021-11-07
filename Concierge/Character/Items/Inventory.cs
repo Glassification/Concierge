@@ -6,6 +6,7 @@ namespace Concierge.Character.Items
 {
     using System;
 
+    using Concierge.Utility;
     using Newtonsoft.Json;
 
     public class Inventory : ICopyable

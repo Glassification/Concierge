@@ -7,6 +7,7 @@ namespace Concierge.Character.Statuses
     using System.Collections.Generic;
 
     using Concierge.Character.Enums;
+    using Concierge.Utility;
     using Concierge.Utility.Extensions;
     using Newtonsoft.Json;
 

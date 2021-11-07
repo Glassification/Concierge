@@ -37,7 +37,7 @@ namespace Concierge.Interfaces.HelperInterface
 
         private void Read()
         {
-            this.VersionField.Text = Constants.AssemblyVersion;
+            this.VersionField.Text = Program.AssemblyVersion;
             this.DesignerField.Text = Constants.Designer;
             this.LicenseField.Text = Constants.License;
             this.CopyrightField.Text = $"{CopyrightSymbol}{Constants.Copyright}";

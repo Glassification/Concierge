@@ -14,6 +14,9 @@ namespace Concierge.Interfaces.DetailsPageInterface
     using Concierge.Character.Enums;
     using Concierge.Commands;
     using Concierge.Interfaces.Enums;
+    using Concierge.Utility;
+    using Concierge.Utility.Enums;
+    using Concierge.Utility.Units;
 
     /// <summary>
     /// Interaction logic for ModifyAppearanceWindow.xaml.
@@ -69,18 +72,53 @@ namespace Concierge.Interfaces.DetailsPageInterface
             this.Hide();
         }
 
+        private void FillHeightFields()
+        {
+            if (this.Appearance.Height.UnitType == UnitTypes.Imperial)
+            {
+                var feedAndInches = Utilities.GetSeperateFeetAndInches(this.Appearance.Height.Value);
+
+                this.MetricGrid.Visibility = Visibility.Collapsed;
+                this.ImperialGrid.Visibility = Visibility.Visible;
+                this.FeetUpDown.Value = feedAndInches.Feet;
+                this.InchesUpDown.Value = feedAndInches.Inches;
+            }
+            else
+            {
+                this.MetricGrid.Visibility = Visibility.Visible;
+                this.ImperialGrid.Visibility = Visibility.Collapsed;
+                this.HeightUpDown.Value = this.Appearance.Height.Value;
+            }
+        }
+
+        private double UpdateHeight()
+        {
+            if (this.Appearance.Height.UnitType == UnitTypes.Imperial)
+            {
+                return Utilities.CombineFeetAndInches(this.FeetUpDown.Value ?? 0, this.InchesUpDown.Value ?? 0);
+            }
+            else
+            {
+                return this.HeightUpDown.Value ?? 0;
+            }
+        }
+
         private void FillFields()
         {
             this.AgeUpDown.UpdatingValue();
 
             this.GenderComboBox.Text = this.Appearance.Gender;
             this.AgeUpDown.Value = this.Appearance.Age;
-            this.HeightTextBox.Text = this.Appearance.Height;
-            this.WeightTextBox.Text = this.Appearance.Weight;
+            this.WeightUpDown.Value = this.Appearance.Weight.Value;
             this.SkinColourTextBox.Text = this.Appearance.SkinColour;
             this.EyeColourTextBox.Text = this.Appearance.EyeColour;
             this.HairColourTextBox.Text = this.Appearance.HairColour;
             this.DistinguishingMarksTextBox.Text = this.Appearance.DistinguishingMarks;
+
+            this.HeightUnits.Text = $"({UnitFormat.HeightPostfix})";
+            this.WeightUnits.Text = $"({UnitFormat.WeightPostfix})";
+
+            this.FillHeightFields();
         }
 
         private void UpdateAppearance()
@@ -89,8 +127,8 @@ namespace Concierge.Interfaces.DetailsPageInterface
 
             this.Appearance.Gender = this.GenderComboBox.Text;
             this.Appearance.Age = this.AgeUpDown.Value ?? 0;
-            this.Appearance.Height = this.HeightTextBox.Text;
-            this.Appearance.Weight = this.WeightTextBox.Text;
+            this.Appearance.Height.Value = this.UpdateHeight();
+            this.Appearance.Weight.Value = this.WeightUpDown.Value ?? 0;
             this.Appearance.SkinColour = this.SkinColourTextBox.Text;
             this.Appearance.EyeColour = this.EyeColourTextBox.Text;
             this.Appearance.HairColour = this.HairColourTextBox.Text;

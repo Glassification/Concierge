@@ -2,7 +2,7 @@
 // Copyright (c) Thomas Beckett. All rights reserved.
 // </copyright>
 
-namespace Concierge.Character
+namespace Concierge.Utility
 {
     public interface ICopyable
     {

@@ -7,6 +7,7 @@ namespace Concierge.Character.Spellcasting
     using System;
 
     using Concierge.Character.Enums;
+    using Concierge.Utility;
     using Newtonsoft.Json;
 
     public class Spell : ICopyable

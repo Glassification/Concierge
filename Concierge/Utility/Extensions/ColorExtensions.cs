@@ -36,19 +36,19 @@ namespace Concierge.Utility.Extensions
 
         public static Color Invert(this Color color)
         {
-            var hsvColour = Colours.ToHsv(color);
+            var hsvColour = ConciergeColors.ToHsv(color);
             hsvColour.Invert();
 
-            return Colours.FromHsv(hsvColour);
+            return ConciergeColors.FromHsv(hsvColour);
         }
 
         public static Color SimpleInvert(this Color color)
         {
             return Color.FromArgb(
-                Colours.ColourSpace,
-                (byte)(Colours.ColourSpace - color.R),
-                (byte)(Colours.ColourSpace - color.G),
-                (byte)(Colours.ColourSpace - color.B));
+                ConciergeColors.ColourSpace,
+                (byte)(ConciergeColors.ColourSpace - color.R),
+                (byte)(ConciergeColors.ColourSpace - color.G),
+                (byte)(ConciergeColors.ColourSpace - color.B));
         }
     }
 }

@@ -9,6 +9,7 @@ namespace Concierge.Character.Characteristics
     using System.Windows.Media;
     using System.Windows.Media.Imaging;
 
+    using Concierge.Utility;
     using Concierge.Utility.Extensions;
 
     public class CharacterImage : ICopyable

@@ -5,6 +5,7 @@
 namespace Concierge.Character.Characteristics
 {
     using Concierge.Character.Enums;
+    using Concierge.Utility;
 
     public class CompanionProperties : ICopyable
     {

@@ -141,8 +141,16 @@
     "Appearance": {
       "Gender": "Male",
       "Age": 28,
-      "Height": "5' 10\"",
-      "Weight": "154 lbs.",
+      "Height": {
+        "Value": 177.8,
+        "UnitType": 1,
+        "Measurement": 0
+      },
+      "Weight": {
+        "Value": 69.85322498000001,
+        "UnitType": 1,
+        "Measurement": 1
+      },
       "SkinColour": "White",
       "EyeColour": "Ice Blue",
       "HairColour": "Black",
@@ -1280,5 +1288,5 @@
       }
     ]
   },
-  "Version": "3.10.0"
+  "Version": "3.10.4"
 }

@@ -6,6 +6,8 @@ namespace Concierge.Character.Characteristics
 {
     using System;
 
+    using Concierge.Utility;
+
     public class Ability : ICopyable
     {
         public Ability()

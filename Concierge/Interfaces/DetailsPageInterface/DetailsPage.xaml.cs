@@ -126,8 +126,8 @@ namespace Concierge.Interfaces.DetailsPageInterface
 
             this.GenderField.Text = appearance.Gender;
             this.AgeField.Text = appearance.Age.ToString();
-            this.HeightField.Text = appearance.Height;
-            this.WeightField.Text = appearance.Weight;
+            this.HeightField.Text = appearance.Height.ToString();
+            this.WeightField.Text = appearance.Weight.ToString();
             this.HairColourField.Text = appearance.HairColour;
             this.SkinColourField.Text = appearance.SkinColour;
             this.EyeColourField.Text = appearance.EyeColour;
@@ -196,12 +196,12 @@ namespace Concierge.Interfaces.DetailsPageInterface
             if (weight <= Program.CcsFile.Character.LightCarryCapacity)
             {
                 this.WeightCarriedField.Foreground = Brushes.Black;
-                this.WeightCarriedBox.Background = new SolidColorBrush(Colours.LightGreen);
+                this.WeightCarriedBox.Background = new SolidColorBrush(ConciergeColors.LightGreen);
             }
             else if (weight > Program.CcsFile.Character.LightCarryCapacity && weight <= Program.CcsFile.Character.MediumCarryCapacity)
             {
-                this.WeightCarriedField.Foreground = new SolidColorBrush(Colours.MediumRed);
-                this.WeightCarriedBox.Background = new SolidColorBrush(Colours.LightYellow);
+                this.WeightCarriedField.Foreground = new SolidColorBrush(ConciergeColors.MediumRed);
+                this.WeightCarriedBox.Background = new SolidColorBrush(ConciergeColors.LightYellow);
             }
             else if (weight > Program.CcsFile.Character.MediumCarryCapacity && weight <= Program.CcsFile.Character.HeavyCarryCapacity)
             {

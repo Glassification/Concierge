@@ -5,6 +5,7 @@
 namespace Concierge.Character.Characteristics
 {
     using Concierge.Character.Enums;
+    using Concierge.Utility;
     using Newtonsoft.Json;
 
     public class Senses : ICopyable

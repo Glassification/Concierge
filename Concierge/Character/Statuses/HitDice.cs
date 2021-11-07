@@ -4,6 +4,8 @@
 
 namespace Concierge.Character.Statuses
 {
+    using Concierge.Utility;
+
     public class HitDice : ICopyable
     {
         public HitDice()

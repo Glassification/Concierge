@@ -6,6 +6,7 @@ namespace Concierge.Character.Statuses
 {
     using System;
 
+    using Concierge.Utility;
     using Newtonsoft.Json;
 
     public class ClassResource : ICopyable

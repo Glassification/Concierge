@@ -4,6 +4,7 @@
 
 namespace Concierge.Character.Statuses
 {
+    using Concierge.Utility;
     using Newtonsoft.Json;
 
     public class Wealth : ICopyable

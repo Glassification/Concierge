@@ -4,6 +4,8 @@
 
 namespace Concierge.Character.Characteristics
 {
+    using Concierge.Utility;
+
     public class Personality : ICopyable
     {
         public Personality()

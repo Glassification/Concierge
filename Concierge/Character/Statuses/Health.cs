@@ -6,6 +6,8 @@ namespace Concierge.Character.Statuses
 {
     using System;
 
+    using Concierge.Utility;
+
     public class Health : ICopyable
     {
         private int baseHealthField;

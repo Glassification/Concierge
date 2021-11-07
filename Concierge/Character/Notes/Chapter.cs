@@ -7,6 +7,7 @@ namespace Concierge.Character.Notes
     using System;
     using System.Collections.Generic;
 
+    using Concierge.Utility;
     using Newtonsoft.Json;
 
     public class Chapter : ICopyable

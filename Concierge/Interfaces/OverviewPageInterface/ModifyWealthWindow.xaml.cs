@@ -35,10 +35,14 @@ namespace Concierge.Interfaces.OverviewPageInterface
 
         private int PP { get; set; }
 
+        private Wealth SelectedWealth { get; set; }
+
         private ConciergeWindowResult Result { get; set; }
 
         public ConciergeWindowResult ShowWizardSetup()
         {
+            this.SelectedWealth = Program.CcsFile.Character.Wealth;
+
             this.ClearFields();
             this.FillFields();
             this.ShowDialog();
@@ -46,8 +50,10 @@ namespace Concierge.Interfaces.OverviewPageInterface
             return this.Result;
         }
 
-        public void ShowEdit()
+        public void ShowEdit(Wealth wealth)
         {
+            this.SelectedWealth = wealth;
+
             this.ClearFields();
             this.FillFields();
             this.ShowDialog();
@@ -71,14 +77,14 @@ namespace Concierge.Interfaces.OverviewPageInterface
             this.AmountUpDown.UpdatingValue();
 
             this.AddRadioButton.IsChecked = true;
-            this.CpRadioButton.IsChecked = true;
+            this.GpRadioButton.IsChecked = true;
             this.AmountUpDown.Value = 0;
 
-            this.CP = Program.CcsFile.Character.Wealth.Copper;
-            this.SP = Program.CcsFile.Character.Wealth.Silver;
-            this.EP = Program.CcsFile.Character.Wealth.Electrum;
-            this.GP = Program.CcsFile.Character.Wealth.Gold;
-            this.PP = Program.CcsFile.Character.Wealth.Platinum;
+            this.CP = this.SelectedWealth.Copper;
+            this.SP = this.SelectedWealth.Silver;
+            this.EP = this.SelectedWealth.Electrum;
+            this.GP = this.SelectedWealth.Gold;
+            this.PP = this.SelectedWealth.Platinum;
         }
 
         private void FillFields()
@@ -108,16 +114,15 @@ namespace Concierge.Interfaces.OverviewPageInterface
             Program.Modify();
 
             this.Result = ConciergeWindowResult.OK;
-            var wealth = Program.CcsFile.Character.Wealth;
-            var oldItem = wealth.DeepCopy() as Wealth;
+            var oldItem = this.SelectedWealth.DeepCopy() as Wealth;
 
-            wealth.Copper = this.CP;
-            wealth.Silver = this.SP;
-            wealth.Electrum = this.EP;
-            wealth.Gold = this.GP;
-            wealth.Platinum = this.PP;
+            this.SelectedWealth.Copper = this.CP;
+            this.SelectedWealth.Silver = this.SP;
+            this.SelectedWealth.Electrum = this.EP;
+            this.SelectedWealth.Gold = this.GP;
+            this.SelectedWealth.Platinum = this.PP;
 
-            Program.UndoRedoService.AddCommand(new EditCommand<Wealth>(wealth, oldItem, this.conciergePage));
+            Program.UndoRedoService.AddCommand(new EditCommand<Wealth>(this.SelectedWealth, oldItem, this.conciergePage));
 
             this.Hide();
         }
