@@ -4,8 +4,8 @@
 
 namespace Concierge.Utility
 {
-    public interface ICopyable
+    public interface ICopyable<T>
     {
-        ICopyable DeepCopy();
+        T DeepCopy();
     }
 }

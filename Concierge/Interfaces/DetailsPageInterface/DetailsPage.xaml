@@ -764,23 +764,25 @@
                     </Grid.ColumnDefinitions>
 
                     <Grid Grid.Column="0">
-                        <TextBlock Text="Weight Carried"
-                                       Foreground="White"
-                                       FontSize="20"
-                                       FontWeight="Bold"
-                                       HorizontalAlignment="Center"
-                                       VerticalAlignment="Center"/>
+                        <TextBlock 
+                            Text="Weight Carried"
+                            Foreground="White"
+                            FontSize="20"
+                            FontWeight="Bold"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"/>
                     </Grid>
 
                     <Grid Grid.Column="1"
                               Margin="10"
                               x:Name="WeightCarriedBox">
-                        <TextBlock Text="55.2"
-                                       Foreground="White"
-                                       FontSize="35"
-                                       HorizontalAlignment="Center"
-                                       VerticalAlignment="Center"
-                                       x:Name="WeightCarriedField"/>
+                        <TextBlock 
+                            Text="50"
+                            Foreground="White"
+                            FontSize="30"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            x:Name="WeightCarriedField"/>
                     </Grid>
                 </Grid>
 
@@ -809,10 +811,11 @@
                         </Grid>
 
                         <Grid Grid.Row="1" Background="#ffd8e4bc">
-                            <TextBlock FontSize="35"
-                                           HorizontalAlignment="Center"
-                                           VerticalAlignment="Center"
-                                           x:Name="LightWeightField"/>
+                            <TextBlock 
+                                FontSize="30"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                x:Name="LightWeightField"/>
                         </Grid>
                     </Grid>
 
@@ -833,10 +836,11 @@
                         </Grid>
 
                         <Grid Grid.Row="1" Background="#fffcd6b4">
-                            <TextBlock FontSize="35"
-                                           HorizontalAlignment="Center"
-                                           VerticalAlignment="Center"
-                                           x:Name="MediumWeightField"/>
+                            <TextBlock 
+                                FontSize="30"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                x:Name="MediumWeightField"/>
                         </Grid>
                     </Grid>
 
@@ -857,10 +861,11 @@
                         </Grid>
 
                         <Grid Grid.Row="1" Background="Pink">
-                            <TextBlock FontSize="35"
-                                           HorizontalAlignment="Center"
-                                           VerticalAlignment="Center"
-                                           x:Name="HeavyWeightField"/>
+                            <TextBlock 
+                                FontSize="30"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                x:Name="HeavyWeightField"/>
                         </Grid>
                     </Grid>
                 </Grid>

@@ -6,7 +6,7 @@ namespace Concierge.Character.Spellcasting
 {
     using Concierge.Utility;
 
-    public class SpellSlots : ICopyable
+    public class SpellSlots : ICopyable<SpellSlots>
     {
         public SpellSlots()
         {
@@ -64,7 +64,7 @@ namespace Concierge.Character.Spellcasting
 
         public int NinethUsed { get; set; }
 
-        public ICopyable DeepCopy()
+        public SpellSlots DeepCopy()
         {
             return new SpellSlots()
             {

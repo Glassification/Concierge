@@ -10,7 +10,7 @@ namespace Concierge.Character.Characteristics
     using Concierge.Utility.Extensions;
     using Newtonsoft.Json;
 
-    public class CharacterProperties : ICopyable
+    public class CharacterProperties : ICopyable<CharacterProperties>
     {
         public CharacterProperties()
         {
@@ -60,7 +60,7 @@ namespace Concierge.Character.Characteristics
             }
         }
 
-        public ICopyable DeepCopy()
+        public CharacterProperties DeepCopy()
         {
             return new CharacterProperties()
             {
@@ -69,9 +69,9 @@ namespace Concierge.Character.Characteristics
                 Background = this.Background,
                 Alignment = this.Alignment,
                 Experience = this.Experience,
-                Class1 = this.Class1.DeepCopy() as CharacterClass,
-                Class2 = this.Class2.DeepCopy() as CharacterClass,
-                Class3 = this.Class3.DeepCopy() as CharacterClass,
+                Class1 = this.Class1.DeepCopy(),
+                Class2 = this.Class2.DeepCopy(),
+                Class3 = this.Class3.DeepCopy(),
             };
         }
     }

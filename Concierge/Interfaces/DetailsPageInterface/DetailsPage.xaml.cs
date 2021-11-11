@@ -18,6 +18,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
     using Concierge.Interfaces.Components;
     using Concierge.Interfaces.Enums;
     using Concierge.Utility;
+    using Concierge.Utility.Units;
 
     /// <summary>
     /// Interaction logic for DetailsPage.xaml.
@@ -112,10 +113,12 @@ namespace Concierge.Interfaces.DetailsPageInterface
 
         private void DrawWeight()
         {
-            this.WeightCarriedField.Text = Program.CcsFile.Character.CarryWeight.ToString();
-            this.LightWeightField.Text = Program.CcsFile.Character.LightCarryCapacity.ToString();
-            this.MediumWeightField.Text = Program.CcsFile.Character.MediumCarryCapacity.ToString();
-            this.HeavyWeightField.Text = Program.CcsFile.Character.HeavyCarryCapacity.ToString();
+            var character = Program.CcsFile.Character;
+
+            this.WeightCarriedField.Text = $"{character.CarryWeight} {UnitFormat.WeightUnits}";
+            this.LightWeightField.Text = $"{character.LightCarryCapacity} {UnitFormat.WeightUnits}";
+            this.MediumWeightField.Text = $"{character.MediumCarryCapacity} {UnitFormat.WeightUnits}";
+            this.HeavyWeightField.Text = $"{character.HeavyCarryCapacity} {UnitFormat.WeightUnits}";
 
             this.FormatCarryWeight();
         }

@@ -14,9 +14,12 @@ namespace Concierge.Interfaces.InventoryPageInterface
     using Concierge.Character.Items;
     using Concierge.Commands;
     using Concierge.Interfaces.Enums;
+    using Concierge.Primatives;
     using Concierge.Tools.Interface;
     using Concierge.Utility;
+    using Concierge.Utility.Enums;
     using Concierge.Utility.Extensions;
+    using Concierge.Utility.Units;
 
     /// <summary>
     /// Interaction logic for ModifyInventoryWindow.xaml.
@@ -112,8 +115,9 @@ namespace Concierge.Interfaces.InventoryPageInterface
 
             this.NameComboBox.Text = inventory.Name;
             this.AmountUpDown.Value = inventory.Amount;
-            this.WeightUpDown.Value = inventory.Weight;
+            this.WeightUpDown.Value = inventory.Weight.Value;
             this.NotesTextBox.Text = inventory.Note;
+            this.WeightUnits.Text = $"({UnitFormat.WeightPostfix})";
 
             if (this.EquippedItem)
             {
@@ -151,7 +155,7 @@ namespace Concierge.Interfaces.InventoryPageInterface
             {
                 Name = this.NameComboBox.Text,
                 Amount = this.AmountUpDown.Value ?? 0,
-                Weight = this.WeightUpDown.Value ?? 0.0,
+                Weight = new ConvertableDouble(this.WeightUpDown.Value ?? 0.0, ConciergeSettings.UnitOfMeasurement, Measurements.Weight),
                 IsInBagOfHolding = this.BagOfHoldingCheckBox.IsChecked ?? false,
                 Note = this.NotesTextBox.Text,
             };
@@ -167,7 +171,7 @@ namespace Concierge.Interfaces.InventoryPageInterface
 
             inventory.Name = this.NameComboBox.Text;
             inventory.Amount = this.AmountUpDown.Value ?? 0;
-            inventory.Weight = this.WeightUpDown.Value ?? 0.0;
+            inventory.Weight.Value = this.WeightUpDown.Value ?? 0.0;
             inventory.Note = this.NotesTextBox.Text;
 
             if (this.EquippedItem)

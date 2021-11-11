@@ -10,7 +10,7 @@ namespace Concierge.Character.Spellcasting
     using Concierge.Utility;
     using Newtonsoft.Json;
 
-    public class Spell : ICopyable
+    public class Spell : ICopyable<Spell>
     {
         public Spell()
         {
@@ -58,7 +58,7 @@ namespace Concierge.Character.Spellcasting
 
         public Guid Id { get; init; }
 
-        public ICopyable DeepCopy()
+        public Spell DeepCopy()
         {
             return new Spell()
             {

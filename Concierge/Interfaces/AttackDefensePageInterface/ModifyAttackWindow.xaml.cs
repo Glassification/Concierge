@@ -16,7 +16,10 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
     using Concierge.Character.Items;
     using Concierge.Commands;
     using Concierge.Interfaces.Enums;
+    using Concierge.Primatives;
     using Concierge.Utility;
+    using Concierge.Utility.Enums;
+    using Concierge.Utility.Units;
 
     /// <summary>
     /// Interaction logic for ModifyWeaponWindow.xaml.
@@ -116,10 +119,11 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
             this.MiscDamageTextBox.Text = weapon.Misc;
             this.DamageTypeComboBox.Text = weapon.DamageType.ToString();
             this.RangeTextBox.Text = weapon.Range;
-            this.WeightUpDown.Value = weapon.Weight;
+            this.WeightUpDown.Value = weapon.Weight.Value;
             this.ProficencyOverrideCheckBox.IsChecked = weapon.ProficiencyOverride;
             this.BagOfHoldingCheckBox.IsChecked = weapon.IsInBagOfHolding;
             this.NotesTextBox.Text = weapon.Note;
+            this.WeightUnits.Text = $"({UnitFormat.WeightPostfix})";
 
             this.BagOfHoldingCheckBox.UpdatedValue();
             this.ProficencyOverrideCheckBox.UpdatedValue();
@@ -158,7 +162,7 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
             weapon.Misc = this.MiscDamageTextBox.Text;
             weapon.DamageType = (DamageTypes)Enum.Parse(typeof(DamageTypes), this.DamageTypeComboBox.Text);
             weapon.Range = this.RangeTextBox.Text;
-            weapon.Weight = this.WeightUpDown.Value ?? 0.0;
+            weapon.Weight.Value = this.WeightUpDown.Value ?? 0.0;
             weapon.ProficiencyOverride = this.ProficencyOverrideCheckBox.IsChecked ?? false;
             weapon.IsInBagOfHolding = this.BagOfHoldingCheckBox.IsChecked ?? false;
             weapon.Note = this.NotesTextBox.Text;
@@ -179,7 +183,7 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
                 Misc = this.MiscDamageTextBox.Text,
                 DamageType = (DamageTypes)Enum.Parse(typeof(DamageTypes), this.DamageTypeComboBox.Text),
                 Range = this.RangeTextBox.Text,
-                Weight = this.WeightUpDown.Value ?? 0.0,
+                Weight = new ConvertableDouble(this.WeightUpDown.Value ?? 0.0, ConciergeSettings.UnitOfMeasurement, Measurements.Weight),
                 ProficiencyOverride = this.ProficencyOverrideCheckBox.IsChecked ?? false,
                 IsInBagOfHolding = this.BagOfHoldingCheckBox.IsChecked ?? false,
                 Note = this.NotesTextBox.Text,

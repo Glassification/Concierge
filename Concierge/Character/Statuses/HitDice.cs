@@ -6,7 +6,7 @@ namespace Concierge.Character.Statuses
 {
     using Concierge.Utility;
 
-    public class HitDice : ICopyable
+    public class HitDice : ICopyable<HitDice>
     {
         public HitDice()
         {
@@ -36,7 +36,7 @@ namespace Concierge.Character.Statuses
 
         public int SpentD12 { get; set; }
 
-        public ICopyable DeepCopy()
+        public HitDice DeepCopy()
         {
             return new HitDice()
             {

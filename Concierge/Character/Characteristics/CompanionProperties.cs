@@ -7,7 +7,7 @@ namespace Concierge.Character.Characteristics
     using Concierge.Character.Enums;
     using Concierge.Utility;
 
-    public class CompanionProperties : ICopyable
+    public class CompanionProperties : ICopyable<CompanionProperties>
     {
         public CompanionProperties()
         {
@@ -28,7 +28,7 @@ namespace Concierge.Character.Characteristics
 
         public VisionTypes Vision { get; set; }
 
-        public ICopyable DeepCopy()
+        public CompanionProperties DeepCopy()
         {
             return new CompanionProperties()
             {

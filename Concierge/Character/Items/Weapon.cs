@@ -7,10 +7,11 @@ namespace Concierge.Character.Items
     using System;
 
     using Concierge.Character.Enums;
+    using Concierge.Primatives;
     using Concierge.Utility;
     using Newtonsoft.Json;
 
-    public class Weapon : ICopyable
+    public class Weapon : ICopyable<Weapon>
     {
         public Weapon()
         {
@@ -58,7 +59,7 @@ namespace Concierge.Character.Items
 
         public string Note { get; set; }
 
-        public double Weight { get; set; }
+        public ConvertableDouble Weight { get; set; }
 
         public WeaponTypes WeaponType { get; set; }
 
@@ -68,7 +69,7 @@ namespace Concierge.Character.Items
 
         public Guid Id { get; init; }
 
-        public ICopyable DeepCopy()
+        public Weapon DeepCopy()
         {
             return new Weapon()
             {
@@ -79,7 +80,7 @@ namespace Concierge.Character.Items
                 DamageType = this.DamageType,
                 Range = this.Range,
                 Note = this.Note,
-                Weight = this.Weight,
+                Weight = this.Weight.DeepCopy(),
                 WeaponType = this.WeaponType,
                 ProficiencyOverride = this.ProficiencyOverride,
                 IsInBagOfHolding = this.IsInBagOfHolding,

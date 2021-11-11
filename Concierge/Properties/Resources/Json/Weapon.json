@@ -7,7 +7,11 @@
     "DamageType": 3,
     "Range": "5 / 5",
     "Note": "Versatile(1d10)",
-    "Weight": 4.0,
+    "Weight": {
+      "Value": 4.0,
+      "UnitType": 0,
+      "Measurement": 1
+    },
     "WeaponType": 0,
     "ProficiencyOverride": false,
     "IsInBagOfHolding": false,
@@ -21,7 +25,11 @@
     "DamageType": 2,
     "Range": "25 / 100",
     "Note": "Ammunition, loading",
-    "Weight": 1.0,
+    "Weight": {
+      "Value": 1.0,
+      "UnitType": 0,
+      "Measurement": 1
+    },
     "WeaponType": 1,
     "ProficiencyOverride": false,
     "IsInBagOfHolding": false,
@@ -35,7 +43,11 @@
     "DamageType": 1,
     "Range": "5 / 5",
     "Note": "Light",
-    "Weight": 2.0,
+    "Weight": {
+      "Value": 2.0,
+      "UnitType": 0,
+      "Measurement": 1
+    },
     "WeaponType": 2,
     "ProficiencyOverride": false,
     "IsInBagOfHolding": false,
@@ -49,7 +61,11 @@
     "DamageType": 2,
     "Range": "20 / 60",
     "Note": "Finesse, light, thrown",
-    "Weight": 1.0,
+    "Weight": {
+      "Value": 1.0,
+      "UnitType": 0,
+      "Measurement": 1
+    },
     "WeaponType": 3,
     "ProficiencyOverride": false,
     "IsInBagOfHolding": false,
@@ -63,7 +79,11 @@
     "DamageType": 2,
     "Range": "20 / 60",
     "Note": "Finesse, thrown",
-    "Weight": 0.25,
+    "Weight": {
+      "Value": 0.25,
+      "UnitType": 0,
+      "Measurement": 1
+    },
     "WeaponType": 4,
     "ProficiencyOverride": false,
     "IsInBagOfHolding": false,
@@ -77,7 +97,11 @@
     "DamageType": 1,
     "Range": "5 / 5",
     "Note": "",
-    "Weight": 2.0,
+    "Weight": {
+      "Value": 2.0,
+      "UnitType": 0,
+      "Measurement": 1
+    },
     "WeaponType": 5,
     "ProficiencyOverride": false,
     "IsInBagOfHolding": false,
@@ -91,7 +115,11 @@
     "DamageType": 3,
     "Range": "5 / 5",
     "Note": "Heavy, reach, two-handed",
-    "Weight": 6.0,
+    "Weight": {
+      "Value": 6.0,
+      "UnitType": 0,
+      "Measurement": 1
+    },
     "WeaponType": 6,
     "ProficiencyOverride": false,
     "IsInBagOfHolding": false,
@@ -105,7 +133,11 @@
     "DamageType": 3,
     "Range": "5 / 5",
     "Note": "Heavy, two-handed",
-    "Weight": 7.0,
+    "Weight": {
+      "Value": 7.0,
+      "UnitType": 0,
+      "Measurement": 1
+    },
     "WeaponType": 7,
     "ProficiencyOverride": false,
     "IsInBagOfHolding": false,
@@ -119,7 +151,11 @@
     "DamageType": 1,
     "Range": "5 / 5",
     "Note": "Two-handed",
-    "Weight": 10.0,
+    "Weight": {
+      "Value": 10.0,
+      "UnitType": 0,
+      "Measurement": 1
+    },
     "WeaponType": 8,
     "ProficiencyOverride": false,
     "IsInBagOfHolding": false,
@@ -133,7 +169,11 @@
     "DamageType": 3,
     "Range": "5 / 5",
     "Note": "Heavy, two-handed",
-    "Weight": 6.0,
+    "Weight": {
+      "Value": 6.0,
+      "UnitType": 0,
+      "Measurement": 1
+    },
     "WeaponType": 9,
     "ProficiencyOverride": false,
     "IsInBagOfHolding": false,
@@ -147,7 +187,11 @@
     "DamageType": 3,
     "Range": "5 / 5",
     "Note": "Heavy, reach, two-handed",
-    "Weight": 6.0,
+    "Weight": {
+      "Value": 6.0,
+      "UnitType": 0,
+      "Measurement": 1
+    },
     "WeaponType": 10,
     "ProficiencyOverride": false,
     "IsInBagOfHolding": false,
@@ -161,7 +205,11 @@
     "DamageType": 2,
     "Range": "30 / 120",
     "Note": "Ammunition, light, loading",
-    "Weight": 3.0,
+    "Weight": {
+      "Value": 3.0,
+      "UnitType": 0,
+      "Measurement": 1
+    },
     "WeaponType": 11,
     "ProficiencyOverride": false,
     "IsInBagOfHolding": false,
@@ -175,7 +223,11 @@
     "DamageType": 3,
     "Range": "20 / 60",
     "Note": "Light, thrown",
-    "Weight": 2.0,
+    "Weight": {
+      "Value": 2.0,
+      "UnitType": 0,
+      "Measurement": 1
+    },
     "WeaponType": 12,
     "ProficiencyOverride": false,
     "IsInBagOfHolding": false,
@@ -189,7 +241,11 @@
     "DamageType": 2,
     "Range": "100 / 400",
     "Note": "Ammunition, heavy, loading, two-handed",
-    "Weight": 18.0,
+    "Weight": {
+      "Value": 18.0,
+      "UnitType": 0,
+      "Measurement": 1
+    },
     "WeaponType": 13,
     "ProficiencyOverride": false,
     "IsInBagOfHolding": false,
@@ -203,7 +259,11 @@
     "DamageType": 2,
     "Range": "30 / 120",
     "Note": "Thrown",
-    "Weight": 2.0,
+    "Weight": {
+      "Value": 2.0,
+      "UnitType": 0,
+      "Measurement": 1
+    },
     "WeaponType": 14,
     "ProficiencyOverride": false,
     "IsInBagOfHolding": false,
@@ -217,7 +277,11 @@
     "DamageType": 2,
     "Range": "5 / 5",
     "Note": "Reach, special",
-    "Weight": 6.0,
+    "Weight": {
+      "Value": 6.0,
+      "UnitType": 0,
+      "Measurement": 1
+    },
     "WeaponType": 15,
     "ProficiencyOverride": false,
     "IsInBagOfHolding": false,
@@ -231,7 +295,11 @@
     "DamageType": 2,
     "Range": "80 / 320",
     "Note": "Ammunition, loading, two-handed",
-    "Weight": 5.0,
+    "Weight": {
+      "Value": 5.0,
+      "UnitType": 0,
+      "Measurement": 1
+    },
     "WeaponType": 16,
     "ProficiencyOverride": false,
     "IsInBagOfHolding": false,
@@ -245,7 +313,11 @@
     "DamageType": 1,
     "Range": "20 / 60",
     "Note": "Light, thrown",
-    "Weight": 2.0,
+    "Weight": {
+      "Value": 2.0,
+      "UnitType": 0,
+      "Measurement": 1
+    },
     "WeaponType": 17,
     "ProficiencyOverride": false,
     "IsInBagOfHolding": false,
@@ -259,7 +331,11 @@
     "DamageType": 2,
     "Range": "150 / 600",
     "Note": "Ammunition, heavy, two-handed",
-    "Weight": 2.0,
+    "Weight": {
+      "Value": 2.0,
+      "UnitType": 0,
+      "Measurement": 1
+    },
     "WeaponType": 18,
     "ProficiencyOverride": false,
     "IsInBagOfHolding": false,
@@ -273,7 +349,11 @@
     "DamageType": 3,
     "Range": "5 / 5",
     "Note": "Versatile(1d10)",
-    "Weight": 3.0,
+    "Weight": {
+      "Value": 3.0,
+      "UnitType": 0,
+      "Measurement": 1
+    },
     "WeaponType": 19,
     "ProficiencyOverride": false,
     "IsInBagOfHolding": false,
@@ -287,7 +367,11 @@
     "DamageType": 1,
     "Range": "5 / 5",
     "Note": "",
-    "Weight": 4.0,
+    "Weight": {
+      "Value": 4.0,
+      "UnitType": 0,
+      "Measurement": 1
+    },
     "WeaponType": 20,
     "ProficiencyOverride": false,
     "IsInBagOfHolding": false,
@@ -301,7 +385,11 @@
     "DamageType": 1,
     "Range": "5 / 5",
     "Note": "Heavy, two-handed",
-    "Weight": 10.0,
+    "Weight": {
+      "Value": 10.0,
+      "UnitType": 0,
+      "Measurement": 1
+    },
     "WeaponType": 21,
     "ProficiencyOverride": false,
     "IsInBagOfHolding": false,
@@ -315,7 +403,11 @@
     "DamageType": 2,
     "Range": "5 / 5",
     "Note": "",
-    "Weight": 4.0,
+    "Weight": {
+      "Value": 4.0,
+      "UnitType": 0,
+      "Measurement": 1
+    },
     "WeaponType": 22,
     "ProficiencyOverride": false,
     "IsInBagOfHolding": false,
@@ -329,7 +421,11 @@
     "DamageType": 0,
     "Range": "5 / 15",
     "Note": "Special, thrown",
-    "Weight": 3.0,
+    "Weight": {
+      "Value": 3.0,
+      "UnitType": 0,
+      "Measurement": 1
+    },
     "WeaponType": 23,
     "ProficiencyOverride": false,
     "IsInBagOfHolding": false,
@@ -343,7 +439,11 @@
     "DamageType": 2,
     "Range": "5 / 5",
     "Note": "Heavy, reach, two-handed",
-    "Weight": 18.0,
+    "Weight": {
+      "Value": 18.0,
+      "UnitType": 0,
+      "Measurement": 1
+    },
     "WeaponType": 24,
     "ProficiencyOverride": false,
     "IsInBagOfHolding": false,
@@ -357,7 +457,11 @@
     "DamageType": 1,
     "Range": "5 / 5",
     "Note": "Versatile(1d8)",
-    "Weight": 4.0,
+    "Weight": {
+      "Value": 4.0,
+      "UnitType": 0,
+      "Measurement": 1
+    },
     "WeaponType": 25,
     "ProficiencyOverride": false,
     "IsInBagOfHolding": false,
@@ -371,7 +475,11 @@
     "DamageType": 2,
     "Range": "5 / 5",
     "Note": "Finesse",
-    "Weight": 2.0,
+    "Weight": {
+      "Value": 2.0,
+      "UnitType": 0,
+      "Measurement": 1
+    },
     "WeaponType": 26,
     "ProficiencyOverride": false,
     "IsInBagOfHolding": false,
@@ -385,7 +493,11 @@
     "DamageType": 3,
     "Range": "5 / 5",
     "Note": "Finesse, light",
-    "Weight": 3.0,
+    "Weight": {
+      "Value": 3.0,
+      "UnitType": 0,
+      "Measurement": 1
+    },
     "WeaponType": 27,
     "ProficiencyOverride": false,
     "IsInBagOfHolding": false,
@@ -399,7 +511,11 @@
     "DamageType": 2,
     "Range": "80 / 320",
     "Note": "Ammunition, two-handed",
-    "Weight": 2.0,
+    "Weight": {
+      "Value": 2.0,
+      "UnitType": 0,
+      "Measurement": 1
+    },
     "WeaponType": 28,
     "ProficiencyOverride": false,
     "IsInBagOfHolding": false,
@@ -413,7 +529,11 @@
     "DamageType": 2,
     "Range": "5 / 5",
     "Note": "Finesse, light",
-    "Weight": 2.0,
+    "Weight": {
+      "Value": 2.0,
+      "UnitType": 0,
+      "Measurement": 1
+    },
     "WeaponType": 29,
     "ProficiencyOverride": false,
     "IsInBagOfHolding": false,
@@ -427,7 +547,11 @@
     "DamageType": 3,
     "Range": "5 / 5",
     "Note": "Light",
-    "Weight": 2.0,
+    "Weight": {
+      "Value": 2.0,
+      "UnitType": 0,
+      "Measurement": 1
+    },
     "WeaponType": 30,
     "ProficiencyOverride": false,
     "IsInBagOfHolding": false,
@@ -441,7 +565,11 @@
     "DamageType": 1,
     "Range": "30 / 120",
     "Note": "Ammunition",
-    "Weight": 0.0,
+    "Weight": {
+      "Value": 0.0,
+      "UnitType": 0,
+      "Measurement": 1
+    },
     "WeaponType": 31,
     "ProficiencyOverride": false,
     "IsInBagOfHolding": false,
@@ -455,7 +583,11 @@
     "DamageType": 2,
     "Range": "20 / 60",
     "Note": "Thrown, versatile(1d8)",
-    "Weight": 3.0,
+    "Weight": {
+      "Value": 3.0,
+      "UnitType": 0,
+      "Measurement": 1
+    },
     "WeaponType": 32,
     "ProficiencyOverride": false,
     "IsInBagOfHolding": false,
@@ -469,7 +601,11 @@
     "DamageType": 2,
     "Range": "20 / 60",
     "Note": "Thrown, versatile (1d8)",
-    "Weight": 4.0,
+    "Weight": {
+      "Value": 4.0,
+      "UnitType": 0,
+      "Measurement": 1
+    },
     "WeaponType": 33,
     "ProficiencyOverride": false,
     "IsInBagOfHolding": false,
@@ -483,7 +619,11 @@
     "DamageType": 2,
     "Range": "5 / 5",
     "Note": "",
-    "Weight": 2.0,
+    "Weight": {
+      "Value": 2.0,
+      "UnitType": 0,
+      "Measurement": 1
+    },
     "WeaponType": 34,
     "ProficiencyOverride": false,
     "IsInBagOfHolding": false,
@@ -497,7 +637,11 @@
     "DamageType": 1,
     "Range": "5 / 5",
     "Note": "Versatile(1d10)",
-    "Weight": 2.0,
+    "Weight": {
+      "Value": 2.0,
+      "UnitType": 0,
+      "Measurement": 1
+    },
     "WeaponType": 35,
     "ProficiencyOverride": false,
     "IsInBagOfHolding": false,
@@ -511,7 +655,11 @@
     "DamageType": 3,
     "Range": "5 / 5",
     "Note": "Finesse, reach",
-    "Weight": 3.0,
+    "Weight": {
+      "Value": 3.0,
+      "UnitType": 0,
+      "Measurement": 1
+    },
     "WeaponType": 36,
     "ProficiencyOverride": false,
     "IsInBagOfHolding": false,

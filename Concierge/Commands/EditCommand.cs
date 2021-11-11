@@ -18,7 +18,7 @@ namespace Concierge.Commands
             this.ConciergePage = conciergePage;
             this.OriginalItem = originalItem;
             this.oldItem = oldItem;
-            this.newItem = (T)(originalItem as ICopyable).DeepCopy();
+            this.newItem = (originalItem as ICopyable<T>).DeepCopy();
         }
 
         private T OriginalItem { get; set; }
@@ -48,7 +48,7 @@ namespace Concierge.Commands
                 {
                     var propertyValue = property.GetValue(item);
 
-                    if (propertyValue is ICopyable && this.Depth < Constants.MaxDepth)
+                    if (propertyValue is ICopyable<T> && this.Depth < Constants.MaxDepth)
                     {
                         this.SetProperties(propertyValue, property.GetValue(originalItem));
                     }

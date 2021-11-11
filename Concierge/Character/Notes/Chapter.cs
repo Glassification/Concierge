@@ -10,7 +10,7 @@ namespace Concierge.Character.Notes
     using Concierge.Utility;
     using Newtonsoft.Json;
 
-    public class Chapter : ICopyable
+    public class Chapter : ICopyable<Chapter>
     {
         public Chapter(string name)
         {
@@ -31,7 +31,7 @@ namespace Concierge.Character.Notes
 
         public Guid Id { get; init; }
 
-        public ICopyable DeepCopy()
+        public Chapter DeepCopy()
         {
             return new Chapter(this.Name)
             {

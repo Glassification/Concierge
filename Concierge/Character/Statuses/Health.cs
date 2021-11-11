@@ -8,7 +8,7 @@ namespace Concierge.Character.Statuses
 
     using Concierge.Utility;
 
-    public class Health : ICopyable
+    public class Health : ICopyable<Health>
     {
         private int baseHealthField;
 
@@ -33,7 +33,7 @@ namespace Concierge.Character.Statuses
             }
         }
 
-        public ICopyable DeepCopy()
+        public Health DeepCopy()
         {
             return new Health()
             {

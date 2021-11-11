@@ -12,7 +12,7 @@ namespace Concierge.Character.Characteristics
     using Concierge.Utility;
     using Concierge.Utility.Extensions;
 
-    public class CharacterImage : ICopyable
+    public class CharacterImage : ICopyable<CharacterImage>
     {
         public CharacterImage()
         {
@@ -86,7 +86,7 @@ namespace Concierge.Character.Characteristics
             }
         }
 
-        public ICopyable DeepCopy()
+        public CharacterImage DeepCopy()
         {
             return new CharacterImage()
             {

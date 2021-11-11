@@ -188,6 +188,16 @@ namespace Concierge.Interfaces
             this.DrawAll();
         }
 
+        public void OpenSettings()
+        {
+            Program.Logger.Info($"Open settings.");
+
+            this.settingsWindow.ShowEdit();
+            this.DrawAll();
+
+            this.StartStopAutosaveTimer();
+        }
+
         public void OpenCharacterSheet()
         {
             Program.Logger.Info($"Opening character sheet.");
@@ -470,7 +480,7 @@ namespace Concierge.Interfaces
                     this.helpWindow.ShowWindow();
                     break;
                 case Key.I:
-                    this.settingsWindow.ShowEdit();
+                    this.OpenSettings();
                     break;
                 case Key.L:
                     this.LongRest();
@@ -624,14 +634,7 @@ namespace Concierge.Interfaces
         private void SettingsButton_Click(object sender, RoutedEventArgs e)
         {
             ConciergeSound.TapNavigation();
-            Program.Logger.Info($"Open settings.");
-
-            this.settingsWindow.ShowEdit();
-            this.OverviewPage.Draw();
-            this.DetailsPage.Draw();
-
-            this.StartStopAutosaveTimer();
-
+            this.OpenSettings();
             this.IgnoreSecondPress = true;
         }
 

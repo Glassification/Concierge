@@ -151,7 +151,7 @@ namespace Concierge.Character.Items
 
             foreach (var item in list)
             {
-                weight += item.Weight;
+                weight += item.Weight.Value;
             }
 
             return weight;

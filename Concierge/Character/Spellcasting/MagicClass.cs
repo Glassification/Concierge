@@ -11,7 +11,7 @@ namespace Concierge.Character.Spellcasting
     using Concierge.Utility;
     using Newtonsoft.Json;
 
-    public class MagicClass : ICopyable
+    public class MagicClass : ICopyable<MagicClass>
     {
         public MagicClass()
         {
@@ -39,7 +39,7 @@ namespace Concierge.Character.Spellcasting
         [JsonIgnore]
         public int Save => Utilities.CalculateBonusFromAbility(this.Ability, Program.CcsFile.Character) + Constants.BaseDc;
 
-        public ICopyable DeepCopy()
+        public MagicClass DeepCopy()
         {
             return new MagicClass()
             {

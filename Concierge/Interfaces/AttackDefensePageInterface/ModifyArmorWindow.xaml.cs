@@ -14,6 +14,7 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
     using Concierge.Character.Items;
     using Concierge.Commands;
     using Concierge.Interfaces.Enums;
+    using Concierge.Utility.Units;
 
     /// <summary>
     /// Interaction logic for ModifyArmorWindow.xaml.
@@ -84,13 +85,15 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
             this.EquipedTextBox.Text = this.SelectedArmor.Equiped;
             this.TypeComboBox.Text = this.SelectedArmor.Type.ToString();
             this.ArmorClassUpDown.Value = this.SelectedArmor.ArmorClass;
-            this.WeightUpDown.Value = this.SelectedArmor.Weight;
+            this.WeightUpDown.Value = this.SelectedArmor.Weight.Value;
+            this.WeightUnits.Text = $"({UnitFormat.WeightPostfix})";
             this.StrengthUpDown.Value = this.SelectedArmor.Strength;
             this.StealthComboBox.Text = this.SelectedArmor.Stealth.ToString();
 
             this.ShieldTextBox.Text = this.SelectedArmor.Shield;
             this.ShieldArmorClassUpDown.Value = this.SelectedArmor.ShieldArmorClass;
-            this.ShieldWeightUpDown.Value = this.SelectedArmor.ShieldWeight;
+            this.ShieldWeightUpDown.Value = this.SelectedArmor.ShieldWeight.Value;
+            this.ShieldWeightUnits.Text = $"({UnitFormat.WeightPostfix})";
             this.MiscArmorClassUpDown.Value = this.SelectedArmor.MiscArmorClass;
             this.MagicArmorClassUpDown.Value = this.SelectedArmor.MagicArmorClass;
         }
@@ -101,16 +104,16 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
 
             armor.Equiped = this.EquipedTextBox.Text;
             armor.Type = (ArmorType)Enum.Parse(typeof(ArmorType), this.TypeComboBox.Text);
-            armor.ArmorClass = (int)this.ArmorClassUpDown.Value;
-            armor.Weight = (double)this.WeightUpDown.Value;
-            armor.Strength = (int)this.StrengthUpDown.Value;
+            armor.ArmorClass = this.ArmorClassUpDown.Value ?? 0;
+            armor.Weight.Value = this.WeightUpDown.Value ?? 0.0;
+            armor.Strength = this.StrengthUpDown.Value ?? 0;
             armor.Stealth = (ArmorStealth)Enum.Parse(typeof(ArmorStealth), this.StealthComboBox.Text);
             armor.Shield = this.ShieldTextBox.Text;
-            armor.ShieldArmorClass = (int)this.ShieldArmorClassUpDown.Value;
-            armor.ShieldWeight = (double)this.ShieldWeightUpDown.Value;
-            armor.MiscArmorClass = (int)this.MiscArmorClassUpDown.Value;
-            armor.MagicArmorClass = (int)this.MagicArmorClassUpDown.Value;
-
+            armor.ShieldArmorClass = this.ShieldArmorClassUpDown.Value ?? 0;
+            armor.ShieldWeight.Value = this.ShieldWeightUpDown.Value ?? 0.0;
+            armor.MiscArmorClass = this.MiscArmorClassUpDown.Value ?? 0;
+            armor.MagicArmorClass = this.MagicArmorClassUpDown.Value ?? 0;
+            
             Program.UndoRedoService.AddCommand(new EditCommand<Armor>(armor, oldItem, this.conciergePage));
         }
 

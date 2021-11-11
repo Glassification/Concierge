@@ -11,7 +11,7 @@ namespace Concierge.Character.Statuses
     using Concierge.Utility.Extensions;
     using Newtonsoft.Json;
 
-    public class StatusEffect : ICopyable
+    public class StatusEffect : ICopyable<StatusEffect>
     {
         public StatusEffect()
         {
@@ -29,7 +29,7 @@ namespace Concierge.Character.Statuses
         [JsonIgnore]
         public string Display => $"{this.Name}{(this.Type == StatusEffectTypes.None ? string.Empty : $" {this.Type}")}{(this.Description.IsNullOrWhiteSpace() ? string.Empty : " - ")}{this.Description}";
 
-        public ICopyable DeepCopy()
+        public StatusEffect DeepCopy()
         {
             return new StatusEffect()
             {

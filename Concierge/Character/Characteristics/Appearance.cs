@@ -8,7 +8,7 @@ namespace Concierge.Character.Characteristics
     using Concierge.Utility;
     using Concierge.Utility.Enums;
 
-    public class Appearance : ICopyable
+    public class Appearance : ICopyable<Appearance>
     {
         public Appearance()
         {
@@ -38,14 +38,14 @@ namespace Concierge.Character.Characteristics
 
         public string DistinguishingMarks { get; set; }
 
-        public ICopyable DeepCopy()
+        public Appearance DeepCopy()
         {
             return new Appearance()
             {
                 Gender = this.Gender,
                 Age = this.Age,
-                Height = this.Height.DeepCopy() as ConvertableDouble,
-                Weight = this.Weight.DeepCopy() as ConvertableDouble,
+                Height = this.Height.DeepCopy(),
+                Weight = this.Weight.DeepCopy(),
                 SkinColour = this.SkinColour,
                 EyeColour = this.EyeColour,
                 HairColour = this.HairColour,

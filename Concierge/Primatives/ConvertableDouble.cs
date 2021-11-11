@@ -11,8 +11,13 @@ namespace Concierge.Primatives
     using Concierge.Utility.Enums;
     using Concierge.Utility.Units;
 
-    public class ConvertableDouble : ICopyable
+    public class ConvertableDouble : ICopyable<ConvertableDouble>
     {
+        public ConvertableDouble()
+            : this(0.0, UnitTypes.Imperial, Measurements.Weight)
+        {
+        }
+
         public ConvertableDouble(double value, UnitTypes unitType, Measurements measurement)
         {
             this.Value = value;
@@ -53,7 +58,7 @@ namespace Concierge.Primatives
             return base.GetHashCode();
         }
 
-        public ICopyable DeepCopy()
+        public ConvertableDouble DeepCopy()
         {
             return new ConvertableDouble(this.Value, this.UnitType, this.Measurement);
         }

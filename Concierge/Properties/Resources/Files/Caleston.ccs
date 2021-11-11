@@ -141,23 +141,39 @@
     "Appearance": {
       "Gender": "Male",
       "Age": 28,
-      "Height": "5' 10\"",
-      "Weight": "154 lbs.",
+      "Height": {
+        "Value": 70.0,
+        "UnitType": 0,
+        "Measurement": 0
+      },
+      "Weight": {
+        "Value": 154.0,
+        "UnitType": 0,
+        "Measurement": 1
+      },
       "SkinColour": "White",
       "EyeColour": "Ice Blue",
       "HairColour": "Black",
-      "DistinguishingMarks": "Sideburns; Mssing pinky on left hand; Small slanted scar on chin running from left to right"
+      "DistinguishingMarks": "Sideburns; Missing pinky on left hand; Small slanted scar on chin running from left to right"
     },
     "Armor": {
       "Equiped": "Studded Leather",
       "Type": 1,
       "ArmorClass": 13,
       "Strength": 0,
-      "Weight": 13.0,
+      "Weight": {
+        "Value": 13.0,
+        "UnitType": 0,
+        "Measurement": 1
+      },
       "Stealth": 0,
       "Shield": "None",
       "ShieldArmorClass": 0,
-      "ShieldWeight": 0.0,
+      "ShieldWeight": {
+        "Value": 0.0,
+        "UnitType": 0,
+        "Measurement": 1
+      },
       "MiscArmorClass": 0,
       "MagicArmorClass": 0
     },
@@ -306,472 +322,660 @@
       {
         "Name": "Ancient Map",
         "Amount": 1,
-        "Weight": 0.0,
+        "Weight": {
+          "Value": 0.0,
+          "UnitType": 0,
+          "Measurement": 1
+        },
         "IsInBagOfHolding": true,
         "Note": "Very old map oh a mountain range. It looks to be similar to the sunset mountains. Written in Dwarvish.",
         "Attuned": false,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
-        "Id": "dc9eb5a0-65db-4869-bece-602824641329"
+        "Id": "140b6c03-d69e-4419-ab53-511fa797be92"
       },
       {
         "Name": "Bag of Candy",
         "Amount": 1,
-        "Weight": 1.0,
+        "Weight": {
+          "Value": 1.0,
+          "UnitType": 0,
+          "Measurement": 1
+        },
         "IsInBagOfHolding": true,
         "Note": "A bag containing 10,000 peices of candy.",
         "Attuned": false,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
-        "Id": "d73b5f8b-66b3-40d6-9853-674af0aa8861"
+        "Id": "bd50e9ea-8a05-442d-bb85-7f68ff56b0e7"
       },
       {
         "Name": "Bag of Holding",
         "Amount": 1,
-        "Weight": 5.0,
+        "Weight": {
+          "Value": 5.0,
+          "UnitType": 0,
+          "Measurement": 1
+        },
         "IsInBagOfHolding": false,
         "Note": "The bag stores items in an extradimensional space. Can hold up to 500lbs, and 64 cubic feet. Turning the bag inside out will spill all its contents.",
         "Attuned": false,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
-        "Id": "9f06b1d8-dedd-446c-943b-d09986d1536c"
+        "Id": "679aa1ac-53d8-434d-bd85-cd7c54cb4151"
       },
       {
         "Name": "Ball Bearings (bag of 1,000)",
         "Amount": 1,
-        "Weight": 2.0,
+        "Weight": {
+          "Value": 2.0,
+          "UnitType": 0,
+          "Measurement": 1
+        },
         "IsInBagOfHolding": true,
         "Note": "As an action, you can spill these tiny metal balls from their pouch to cover a level, square area that is 10 feet on a side. Moving across the covered area must succeed on a DC 10 Dexterity saving throw or fall prone. Moving through the area at half speed doesn't need a save.",
         "Attuned": false,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
-        "Id": "1df43ce0-b384-4d98-a33f-495c6c3d9d88"
+        "Id": "46fcff28-d02b-43fb-a61e-16500e349d48"
       },
       {
         "Name": "Bath Potions",
         "Amount": 2,
-        "Weight": 0.5,
+        "Weight": {
+          "Value": 0.5,
+          "UnitType": 0,
+          "Measurement": 1
+        },
         "IsInBagOfHolding": true,
         "Note": "The potion will keep you clean for 24 hours. They brush your hair, teeth, and leave you smelling great. Has a small chance of bubbles coming out your mouth.",
         "Attuned": false,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
-        "Id": "e8ef0d5c-e9ae-4a8c-9229-44c59183ee26"
+        "Id": "7da207a2-428b-4507-a9e7-8f7c130b297c"
       },
       {
         "Name": "Caltrops (bag of 20)",
         "Amount": 1,
-        "Weight": 2.0,
+        "Weight": {
+          "Value": 2.0,
+          "UnitType": 0,
+          "Measurement": 1
+        },
         "IsInBagOfHolding": true,
         "Note": "As an action, you can spread a bag of caltrops to cover a square area that is 5 feet on a side. Any creature that enters the area must succeed on a DC 15 Dexterity saving throw or stop moving this turn and take 1 piercing damage. Taking this damage reduces the creature's walking speed by 10 feet until the creature regains at least 1 hit point. A creature moving through the area at half speed doesn't need to make the save.",
         "Attuned": false,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
-        "Id": "e9fbde09-87bd-4a48-abc9-c7e7f4acc137"
+        "Id": "113c59de-d698-4fc1-ac56-357768439306"
       },
       {
         "Name": "Contract for Protection",
         "Amount": 1,
-        "Weight": 0.0,
+        "Weight": {
+          "Value": 0.0,
+          "UnitType": 0,
+          "Measurement": 1
+        },
         "IsInBagOfHolding": true,
         "Note": "Contract to protect mage from danger.",
         "Attuned": false,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
-        "Id": "dbb7a5ea-f261-4443-9b28-531d43ace4df"
+        "Id": "9913acd2-d10d-48d2-b7b7-c2df25a9b637"
       },
       {
         "Name": "Crowbar",
         "Amount": 1,
-        "Weight": 5.0,
+        "Weight": {
+          "Value": 5.0,
+          "UnitType": 0,
+          "Measurement": 1
+        },
         "IsInBagOfHolding": true,
         "Note": "Using a crowbar grants advantage to Strength checks where the crowbar's leverage can be applied.",
         "Attuned": false,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
-        "Id": "1631531f-0163-47d9-bc01-7a2918403aee"
+        "Id": "16b54342-5d35-4284-b391-3a32d36ade79"
       },
       {
         "Name": "Cult of the Dragon Patch",
         "Amount": 1,
-        "Weight": 0.0,
+        "Weight": {
+          "Value": 0.0,
+          "UnitType": 0,
+          "Measurement": 1
+        },
         "IsInBagOfHolding": true,
         "Note": "An insignia representing membership with the Dragon Cult.",
         "Attuned": false,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
-        "Id": "54c6c293-911f-4df7-9e9b-efc8af927c9d"
+        "Id": "79213218-1999-44a1-8e3f-59c5ca1126cb"
       },
       {
         "Name": "Eagle Beak",
         "Amount": 1,
-        "Weight": 0.5,
+        "Weight": {
+          "Value": 0.5,
+          "UnitType": 0,
+          "Measurement": 1
+        },
         "IsInBagOfHolding": true,
         "Note": "The beak of an eagle that was far too much trouble.",
         "Attuned": false,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
-        "Id": "e10a8ba5-0e73-40ac-b133-22a838e4c7ef"
+        "Id": "837aa570-4d4b-4ab7-845a-7d5a70c88059"
       },
       {
         "Name": "Flask of Oil",
         "Amount": 10,
-        "Weight": 0.5,
+        "Weight": {
+          "Value": 0.5,
+          "UnitType": 0,
+          "Measurement": 1
+        },
         "IsInBagOfHolding": true,
         "Note": "A flask or tankard can hold 1 pint of liquid.",
         "Attuned": false,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
-        "Id": "691a778d-9cd8-4dca-9056-3c5934c0fcba"
+        "Id": "3615d25a-0dd7-4f5d-b142-ad2b006136dc"
       },
       {
         "Name": "Fur coat",
         "Amount": 1,
-        "Weight": 0.5,
+        "Weight": {
+          "Value": 0.5,
+          "UnitType": 0,
+          "Measurement": 1
+        },
         "IsInBagOfHolding": true,
         "Note": "Woman's fur coat for keeping warm in cold climates.",
         "Attuned": false,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
-        "Id": "6b122381-eef3-42b9-b1b3-7867e4fc18c4"
+        "Id": "6cdd98a6-b719-4c92-b865-8f10e49ce0ff"
       },
       {
         "Name": "Glass Vial",
         "Amount": 42,
-        "Weight": 0.1,
+        "Weight": {
+          "Value": 0.1,
+          "UnitType": 0,
+          "Measurement": 1
+        },
         "IsInBagOfHolding": true,
         "Note": "Empty vial. Can hold 7 doses of something (drugs).",
         "Attuned": false,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
-        "Id": "196bb22a-d395-43d1-93ae-7321dc0dd568"
+        "Id": "d0676865-165f-4c43-857b-21cb30db2d13"
       },
       {
         "Name": "Hammer",
         "Amount": 1,
-        "Weight": 2.0,
+        "Weight": {
+          "Value": 2.0,
+          "UnitType": 0,
+          "Measurement": 1
+        },
         "IsInBagOfHolding": true,
         "Note": "This one-handed hammer with an iron head is useful for pounding pitons into a wall.",
         "Attuned": false,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
-        "Id": "fb91a5ca-7487-41cd-99ec-4a00f714dd89"
+        "Id": "c435d0c5-0a37-4a59-a904-c00ed53b1ae4"
       },
       {
         "Name": "Health Potion",
         "Amount": 2,
-        "Weight": 0.5,
+        "Weight": {
+          "Value": 0.5,
+          "UnitType": 0,
+          "Measurement": 1
+        },
         "IsInBagOfHolding": true,
         "Note": "Bonus action to use yourself, action to use on another person. 2d4 +2 HP restored.",
         "Attuned": false,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
-        "Id": "4aa3e8b4-4532-44d7-82cf-a95a97d5c5aa"
+        "Id": "4ed6d349-0757-4022-bc53-0b2b25f4269e"
       },
       {
         "Name": "Hooded lantern",
         "Amount": 1,
-        "Weight": 2.0,
+        "Weight": {
+          "Value": 2.0,
+          "UnitType": 0,
+          "Measurement": 1
+        },
         "IsInBagOfHolding": true,
         "Note": "Casts bright light in 30 foot radius, dim light for additional 30 feet. Burns 6 hours on pint of oil. Lower hood to cast dim light in 5 foot radius.",
         "Attuned": false,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
-        "Id": "6271443d-cf76-408a-99d4-397c04dbfc1f"
+        "Id": "37faed17-725b-4435-a2b1-72974a164b3e"
       },
       {
         "Name": "Insperation Die (d10)",
         "Amount": 1,
-        "Weight": 0.0,
+        "Weight": {
+          "Value": 0.0,
+          "UnitType": 0,
+          "Measurement": 1
+        },
         "IsInBagOfHolding": false,
         "Note": "Used to add a d10 to any d20 roll.",
         "Attuned": false,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
-        "Id": "e85ca3b0-7182-4afb-a271-a99bd1ada106"
+        "Id": "41254983-c7da-4972-80b9-ab165beb0297"
       },
       {
         "Name": "Intel",
         "Amount": 1,
-        "Weight": 0.0,
+        "Weight": {
+          "Value": 0.0,
+          "UnitType": 0,
+          "Measurement": 1
+        },
         "IsInBagOfHolding": true,
         "Note": "Intel on the imperial forces.",
         "Attuned": false,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
-        "Id": "24bf0a25-7722-486f-8217-753d8bcb049e"
+        "Id": "a6192596-c095-4915-8eb5-ccb7a0cf0744"
       },
       {
         "Name": "Magic Stick",
         "Amount": 1,
-        "Weight": 0.5,
+        "Weight": {
+          "Value": 0.5,
+          "UnitType": 0,
+          "Measurement": 1
+        },
         "IsInBagOfHolding": true,
         "Note": "A thin stick thought to be magical in some way.",
         "Attuned": false,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
-        "Id": "a5baa786-e44d-415a-9586-ab0d02c73b51"
+        "Id": "f3f80e26-07b3-4e0c-a10b-f7aed240be0a"
       },
       {
         "Name": "Map",
         "Amount": 1,
-        "Weight": 0.0,
+        "Weight": {
+          "Value": 0.0,
+          "UnitType": 0,
+          "Measurement": 1
+        },
         "IsInBagOfHolding": true,
         "Note": "Map to an unspecified location.",
         "Attuned": false,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
-        "Id": "3d6988dd-620d-490d-878b-deb4aec477ca"
+        "Id": "232563f7-331f-4e34-80bb-8b57b31acad5"
       },
       {
         "Name": "Metal Rod",
         "Amount": 1,
-        "Weight": 1.0,
+        "Weight": {
+          "Value": 1.0,
+          "UnitType": 0,
+          "Measurement": 1
+        },
         "IsInBagOfHolding": true,
         "Note": "Rod found in Bag of Holding (Might be a key).",
         "Attuned": false,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
-        "Id": "d9689d33-7a01-47b9-b34b-03d26eafd517"
+        "Id": "72fb16a4-63ba-4dd4-92ef-1a22f1254559"
       },
       {
         "Name": "Ogre Tusk",
         "Amount": 1,
-        "Weight": 1.0,
+        "Weight": {
+          "Value": 1.0,
+          "UnitType": 0,
+          "Measurement": 1
+        },
         "IsInBagOfHolding": true,
         "Note": "Tusk of a fallen ogre.",
         "Attuned": false,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
-        "Id": "a6537f72-633b-44cf-9c4f-40e667d25a00"
+        "Id": "06fc4ad6-0f00-4387-b6af-174e3d8df570"
       },
       {
         "Name": "Ornate Clothes",
         "Amount": 1,
-        "Weight": 1.0,
+        "Weight": {
+          "Value": 1.0,
+          "UnitType": 0,
+          "Measurement": 1
+        },
         "IsInBagOfHolding": true,
         "Note": "Very rich looking clothes. Black with red trim.",
         "Attuned": false,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
-        "Id": "ec3588c9-c5f2-466b-879f-c943516711be"
+        "Id": "a76034ca-93ea-4a1c-bf85-eaab6022e589"
       },
       {
         "Name": "Phone a Friend Rock",
         "Amount": 1,
-        "Weight": 0.1,
+        "Weight": {
+          "Value": 0.1,
+          "UnitType": 0,
+          "Measurement": 1
+        },
         "IsInBagOfHolding": false,
         "Note": "Whisper into the crystal and another creature with the other in the pair will hear you. 1 action to use.",
         "Attuned": false,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
-        "Id": "a034d6c0-fcb9-4381-9876-502ce69c2121"
+        "Id": "ae5a3f80-614c-418f-b5ce-8d3e6f11103a"
       },
       {
         "Name": "Piton",
         "Amount": 10,
-        "Weight": 0.25,
+        "Weight": {
+          "Value": 0.25,
+          "UnitType": 0,
+          "Measurement": 1
+        },
         "IsInBagOfHolding": true,
         "Note": "When a wall doesn’t offer handholds and footholds, you can make your own. A piton is a steel spike with an eye through which you can loop a rope.",
         "Attuned": false,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
-        "Id": "de189bde-9007-41b2-b600-8d3d06da32a1"
+        "Id": "0a5c2ea6-b4d1-4f0e-9087-2fd2608ee92d"
       },
       {
         "Name": "Poisoner's Kit",
         "Amount": 1,
-        "Weight": 1.0,
+        "Weight": {
+          "Value": 1.0,
+          "UnitType": 0,
+          "Measurement": 1
+        },
         "IsInBagOfHolding": true,
         "Note": "Contains chemicals and equipment to create poisons.",
         "Attuned": false,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
-        "Id": "11eb7833-99ed-4a7e-9b08-d09cc7f20086"
+        "Id": "02bd3416-2e82-4c63-8b62-54bc47412d00"
       },
       {
         "Name": "Potion of Detect Thoughts",
         "Amount": 1,
-        "Weight": 0.5,
+        "Weight": {
+          "Value": 0.5,
+          "UnitType": 0,
+          "Measurement": 1
+        },
         "IsInBagOfHolding": true,
         "Note": "See spell: Detect Thoughts. One time use.",
         "Attuned": false,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
-        "Id": "a130608e-a8f4-4345-814e-4b14c2bfb08e"
+        "Id": "d1207f93-088b-4710-900d-3f8b1ff13d48"
       },
       {
         "Name": "Potion of Heat Resistance",
         "Amount": 1,
-        "Weight": 0.5,
+        "Weight": {
+          "Value": 0.5,
+          "UnitType": 0,
+          "Measurement": 1
+        },
         "IsInBagOfHolding": true,
         "Note": "Grants resistance to fire",
         "Attuned": false,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
-        "Id": "8b9ad34e-b6cf-4b9f-8279-a91de7e726a8"
+        "Id": "1378132a-f287-4779-bc67-ba0dde656c4e"
       },
       {
         "Name": "Puffer Fish Poison",
         "Amount": 1,
-        "Weight": 0.5,
+        "Weight": {
+          "Value": 0.5,
+          "UnitType": 0,
+          "Measurement": 1
+        },
         "IsInBagOfHolding": true,
-        "Note": "If injested causes the poison condition. Creature must save on a DC 12 Constitution save. Causes 1d12 poison damage on fail.",
+        "Note": "If injested causes the poison condition. Creature must save on a CD 12 Constitution save. Causes 1d12 poison damage.",
         "Attuned": false,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
-        "Id": "87d729f3-f6d0-4cdd-908e-069617e2db01"
+        "Id": "ce923a1a-7ccc-4b36-9f40-75963593c2a2"
       },
       {
         "Name": "Quiver",
         "Amount": 1,
-        "Weight": 1.0,
+        "Weight": {
+          "Value": 1.0,
+          "UnitType": 0,
+          "Measurement": 1
+        },
         "IsInBagOfHolding": false,
         "Note": "A quiver can hold up to 20 arrows.",
         "Attuned": false,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
-        "Id": "9a986e5e-6c5e-49f1-87b3-bd97cf2952d8"
+        "Id": "0d60fbd8-10ff-459a-b819-c837a295baee"
       },
       {
         "Name": "Rations (1-Day)",
         "Amount": 5,
-        "Weight": 1.0,
+        "Weight": {
+          "Value": 1.0,
+          "UnitType": 0,
+          "Measurement": 1
+        },
         "IsInBagOfHolding": true,
         "Note": "Rations consist of dry foods suitable for extended travel, including jerky, dried fruit, hardtack, and nuts.",
         "Attuned": false,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
-        "Id": "843e267c-b8b8-415b-b7ba-d4a29def7cb2"
+        "Id": "4f96177b-14ad-4bee-b5f8-c0a1bd0454d2"
       },
       {
         "Name": "Remorhaz Heat Sack",
         "Amount": 3,
-        "Weight": 0.1,
+        "Weight": {
+          "Value": 0.1,
+          "UnitType": 0,
+          "Measurement": 1
+        },
         "IsInBagOfHolding": true,
         "Note": "Sacks containing some sort of chemicals that give off a lot of heat.",
         "Attuned": false,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
-        "Id": "00d479b2-34d0-4c86-898e-1a2c70427ec3"
+        "Id": "c4e74374-99da-41ba-a023-bcd66a9691ff"
       },
       {
         "Name": "Rope, Hempen (50 feet)",
         "Amount": 1,
-        "Weight": 5.0,
+        "Weight": {
+          "Value": 5.0,
+          "UnitType": 0,
+          "Measurement": 1
+        },
         "IsInBagOfHolding": true,
         "Note": "Rope, has 2 hit points and can be burst with a DC 17 Strength check.",
         "Attuned": false,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
-        "Id": "bce11457-7b37-4fdb-8fa7-dd4d942d56a5"
+        "Id": "fd469eae-f2f6-4d75-a1ca-a69fd890d1e4"
       },
       {
         "Name": "Salted Meat",
         "Amount": 14,
-        "Weight": 0.1,
+        "Weight": {
+          "Value": 0.1,
+          "UnitType": 0,
+          "Measurement": 1
+        },
         "IsInBagOfHolding": true,
         "Note": "Food for one person for a meal.",
         "Attuned": false,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
-        "Id": "939ef61f-70c2-4cb7-8747-6adfa4421d3c"
+        "Id": "3147aa3b-5348-49f6-a59f-c253163820dc"
       },
       {
         "Name": "Sheet of Paper",
         "Amount": 1,
-        "Weight": 0.0,
+        "Weight": {
+          "Value": 0.0,
+          "UnitType": 0,
+          "Measurement": 1
+        },
         "IsInBagOfHolding": false,
         "Note": "Say the words 'trust is earned' to get all the perks befitting a lieutenant.",
         "Attuned": false,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
-        "Id": "f6f29049-3fc8-4f46-9cf2-86ffe0f82cd7"
+        "Id": "c64a4b48-1717-432d-b6eb-a9d35d4990af"
       },
       {
         "Name": "Shovel",
         "Amount": 1,
-        "Weight": 5.0,
+        "Weight": {
+          "Value": 5.0,
+          "UnitType": 0,
+          "Measurement": 1
+        },
         "IsInBagOfHolding": true,
         "Note": "A standard shovel used for digging.",
         "Attuned": false,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
-        "Id": "3228ba4a-8a3a-40f1-818e-ebe872171f1a"
+        "Id": "f938f387-3cbb-442d-9fed-b5cf56b3c50d"
       },
       {
         "Name": "Small bead",
         "Amount": 1,
-        "Weight": 0.1,
+        "Weight": {
+          "Value": 0.1,
+          "UnitType": 0,
+          "Measurement": 1
+        },
         "IsInBagOfHolding": true,
         "Note": "A small marble like bead coloured a translucent green.",
         "Attuned": false,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
-        "Id": "da102374-8e2f-4af7-b048-9e7762081d23"
+        "Id": "cfd40c35-af4d-47d0-b0ce-d27b0af3dffd"
       },
       {
         "Name": "String",
         "Amount": 1,
-        "Weight": 0.1,
+        "Weight": {
+          "Value": 0.1,
+          "UnitType": 0,
+          "Measurement": 1
+        },
         "IsInBagOfHolding": true,
         "Note": "A 10-foot length of string, typically found in a burglar's pack.",
         "Attuned": false,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
-        "Id": "95f7b780-9b12-41d4-b2e9-48452a0741db"
+        "Id": "3a032110-79cb-445a-8764-a6ecc2b67aad"
       },
       {
         "Name": "Talking Knife",
         "Amount": 1,
-        "Weight": 0.25,
+        "Weight": {
+          "Value": 0.25,
+          "UnitType": 0,
+          "Measurement": 1
+        },
         "IsInBagOfHolding": true,
         "Note": "The knife has a mouth on it that keeps repeating \"Eating a human is a mortal sin\".",
         "Attuned": false,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
-        "Id": "efd7b545-0cbe-4c1f-a0a5-5c87912c794a"
+        "Id": "b0ca94d3-2b65-4ce7-969e-ba68a49861c8"
       },
       {
         "Name": "Tent, Two-Person",
         "Amount": 1,
-        "Weight": 20.0,
+        "Weight": {
+          "Value": 20.0,
+          "UnitType": 0,
+          "Measurement": 1
+        },
         "IsInBagOfHolding": true,
         "Note": "A simple and portable canvas shelter, a tent sleeps two.",
         "Attuned": false,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
-        "Id": "88bdf00a-52c4-4835-9f2d-b289383e381e"
+        "Id": "52e1bae4-7c1c-4596-9796-c07f8bde3588"
       },
       {
         "Name": "Thieves Tools",
         "Amount": 1,
-        "Weight": 1.0,
+        "Weight": {
+          "Value": 1.0,
+          "UnitType": 0,
+          "Measurement": 1
+        },
         "IsInBagOfHolding": true,
         "Note": "Small file, lock picks, mirror on metal handle, narrow bladed scissors, pliers.",
         "Attuned": false,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
-        "Id": "111ee5fe-9d15-4a9d-a66c-0f6320e71d70"
+        "Id": "662f8d13-7922-48f3-a5c9-16312ce021eb"
       },
       {
         "Name": "Three-Dragon Ante Set",
         "Amount": 1,
-        "Weight": 0.1,
+        "Weight": {
+          "Value": 0.1,
+          "UnitType": 0,
+          "Measurement": 1
+        },
         "IsInBagOfHolding": true,
         "Note": "The deck consists of 70 cards (plus two reference cards).",
         "Attuned": false,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
-        "Id": "77cb4ecb-bfa5-4725-bdd2-0ca504845e9d"
+        "Id": "1f6e95d1-6693-4c74-8f90-bf1d9cd0ca1c"
       },
       {
         "Name": "Tinderbox",
         "Amount": 1,
-        "Weight": 1.0,
+        "Weight": {
+          "Value": 1.0,
+          "UnitType": 0,
+          "Measurement": 1
+        },
         "IsInBagOfHolding": true,
         "Note": "This small container holds flint, fire steel, and tinder (usually dry cloth soaked in light oil) used to kindle a fire. Using it to light a torch -- or anything else with abundant, exposed fuel -- takes an action. Lighting any other fire takes 1 minute.",
         "Attuned": false,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
-        "Id": "6c9c7724-21cd-4037-bc59-1e51509d9ffb"
+        "Id": "6622dd17-864d-4477-85e6-be8551665dd5"
       },
       {
         "Name": "Trinket",
         "Amount": 1,
-        "Weight": 0.5,
+        "Weight": {
+          "Value": 0.5,
+          "UnitType": 0,
+          "Measurement": 1
+        },
         "IsInBagOfHolding": true,
         "Note": "A carved crystal that faintly glows in the moonlight. (Stolen from ruins in the Scaled Plains)",
         "Attuned": false,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
-        "Id": "1bc7b300-cff8-4d23-a443-0945b51de4ca"
+        "Id": "45c3a4fc-3de7-4444-a55a-4a949aaf8907"
       },
       {
         "Name": "Very locked box",
         "Amount": 1,
-        "Weight": 2.0,
+        "Weight": {
+          "Value": 2.0,
+          "UnitType": 0,
+          "Measurement": 1
+        },
         "IsInBagOfHolding": true,
         "Note": "A box with 3 locks on it, all interconnected. Strong divination magic from within.",
         "Attuned": false,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
-        "Id": "8da7e9c2-5e14-47bb-87e8-d29cb757d5f7"
+        "Id": "b59d4e95-e6ee-4ff8-8a59-b34f1ca67d54"
       },
       {
         "Name": "Waterskin",
         "Amount": 1,
-        "Weight": 1.0,
+        "Weight": {
+          "Value": 1.0,
+          "UnitType": 0,
+          "Measurement": 1
+        },
         "IsInBagOfHolding": true,
-        "Note": "A waterskin can hold 4 litres of liquid. Currently drugged.",
+        "Note": "Test Item",
         "Attuned": false,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
-        "Id": "6b257780-b309-46e4-84ac-bb56c95026eb"
+        "Id": "b9344386-4577-4289-8244-dab70e72d2d2"
       },
       {
         "Name": "Wooden Staff",
         "Amount": 1,
-        "Weight": 1.0,
+        "Weight": {
+          "Value": 1.0,
+          "UnitType": 0,
+          "Measurement": 1
+        },
         "IsInBagOfHolding": true,
         "Note": "A wooden staff belonging to Declan",
         "Attuned": false,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
-        "Id": "477c3b5f-9912-415b-9339-926a0d3c27f3"
+        "Id": "b4f2b56f-0335-47e7-b420-ddc96f54cec5"
       }
     ],
     "MagicClasses": [],
@@ -1091,7 +1295,11 @@
         "DamageType": 2,
         "Range": "20 / 60",
         "Note": "Finesse, Light, Thrown",
-        "Weight": 1.0,
+        "Weight": {
+          "Value": 1.0,
+          "UnitType": 0,
+          "Measurement": 1
+        },
         "WeaponType": 4,
         "ProficiencyOverride": false,
         "IsInBagOfHolding": true,
@@ -1105,7 +1313,11 @@
         "DamageType": 2,
         "Range": "20 / 60",
         "Note": "Finesse, Light, Thrown",
-        "Weight": 1.0,
+        "Weight": {
+          "Value": 1.0,
+          "UnitType": 0,
+          "Measurement": 1
+        },
         "WeaponType": 4,
         "ProficiencyOverride": false,
         "IsInBagOfHolding": true,
@@ -1119,7 +1331,11 @@
         "DamageType": 2,
         "Range": "5 / 5",
         "Note": "Finesse, Gain the Jump spell.",
-        "Weight": 2.0,
+        "Weight": {
+          "Value": 2.0,
+          "UnitType": 0,
+          "Measurement": 1
+        },
         "WeaponType": 27,
         "ProficiencyOverride": false,
         "IsInBagOfHolding": false,
@@ -1133,7 +1349,11 @@
         "DamageType": 2,
         "Range": "80 / 320",
         "Note": "Ammo, Two-Handed",
-        "Weight": 2.0,
+        "Weight": {
+          "Value": 2.0,
+          "UnitType": 0,
+          "Measurement": 1
+        },
         "WeaponType": 29,
         "ProficiencyOverride": false,
         "IsInBagOfHolding": true,
@@ -1147,7 +1367,11 @@
         "DamageType": 2,
         "Range": "20 / 60",
         "Note": "Finesse, light, thrown",
-        "Weight": 1.0,
+        "Weight": {
+          "Value": 1.0,
+          "UnitType": 0,
+          "Measurement": 1
+        },
         "WeaponType": 4,
         "ProficiencyOverride": false,
         "IsInBagOfHolding": true,
@@ -1161,7 +1385,11 @@
         "DamageType": 2,
         "Range": "80 / 320",
         "Note": "Ammunition, two-handed. Wen you see a creature casting a spell within 60' while holding this bow, can cast Spelldrinker. Cannot be used again until a short or long rest.",
-        "Weight": 2.0,
+        "Weight": {
+          "Value": 2.0,
+          "UnitType": 0,
+          "Measurement": 1
+        },
         "WeaponType": 29,
         "ProficiencyOverride": false,
         "IsInBagOfHolding": false,
@@ -1174,7 +1402,11 @@
         {
           "Name": "Studded Leather Armor",
           "Amount": 1,
-          "Weight": 0.0,
+          "Weight": {
+            "Value": 0.0,
+            "UnitType": 0,
+            "Measurement": 1
+          },
           "IsInBagOfHolding": false,
           "Note": "Leather armor with a base AC of 13 + DEX modifier.",
           "Attuned": false,
@@ -1184,7 +1416,11 @@
         {
           "Name": "Blue Cloak with Hood",
           "Amount": 1,
-          "Weight": 1.0,
+          "Weight": {
+            "Value": 1.0,
+            "UnitType": 0,
+            "Measurement": 1
+          },
           "IsInBagOfHolding": false,
           "Note": "Simple cloak with usable hood.",
           "Attuned": false,
@@ -1196,7 +1432,11 @@
         {
           "Name": "Calamari Ring",
           "Amount": 1,
-          "Weight": 0.1,
+          "Weight": {
+            "Value": 0.1,
+            "UnitType": 0,
+            "Measurement": 1
+          },
           "IsInBagOfHolding": false,
           "Note": "Use to cast create darkness. 1d4 uses per day.",
           "Attuned": true,
@@ -1206,7 +1446,11 @@
         {
           "Name": "Black Onyx Leather Gloves",
           "Amount": 1,
-          "Weight": 0.5,
+          "Weight": {
+            "Value": 0.5,
+            "UnitType": 0,
+            "Measurement": 1
+          },
           "IsInBagOfHolding": false,
           "Note": "Fancy pair of for hidding rings on ones hand.",
           "Attuned": false,
@@ -1219,7 +1463,11 @@
         {
           "Name": "Leather Boots",
           "Amount": 1,
-          "Weight": 1.0,
+          "Weight": {
+            "Value": 1.0,
+            "UnitType": 0,
+            "Measurement": 1
+          },
           "IsInBagOfHolding": false,
           "Note": "High-top black leather boots.",
           "Attuned": false,
@@ -1296,5 +1544,5 @@
       }
     ]
   },
-  "Version": "3.10.0"
+  "Version": "4.1.0"
 }
