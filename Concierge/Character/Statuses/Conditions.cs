@@ -10,7 +10,7 @@ namespace Concierge.Character.Statuses
     using Concierge.Utility;
     using Newtonsoft.Json;
 
-    public class Conditions : ICopyable
+    public class Conditions : ICopyable<Conditions>
     {
         public const string BlindedDescription = "Automatically fail any ability checks. Attack rolls against you have advantage, your attacks have disadvantage.";
         public const string CharmedDescription = "You cannot attack the charmer. The charmer has advantage on ability checks when interacting socially.";
@@ -174,7 +174,7 @@ namespace Concierge.Character.Statuses
             return keyValuePairs.Where(x => !x.Key.Equals("Cured") && !x.Key.Equals("Normal")).ToList();
         }
 
-        public ICopyable DeepCopy()
+        public Conditions DeepCopy()
         {
             return new Conditions()
             {

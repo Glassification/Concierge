@@ -4,9 +4,10 @@
 
 namespace Concierge.Character.Statuses
 {
+    using Concierge.Utility;
     using Newtonsoft.Json;
 
-    public class Wealth : ICopyable
+    public class Wealth : ICopyable<Wealth>
     {
         public Wealth()
         {
@@ -33,7 +34,7 @@ namespace Concierge.Character.Statuses
         [JsonIgnore]
         public int TotalCoins => this.Copper + this.Silver + this.Electrum + this.Gold + this.Platinum;
 
-        public ICopyable DeepCopy()
+        public Wealth DeepCopy()
         {
             return new Wealth()
             {

@@ -19,10 +19,24 @@ namespace Concierge.Utility
     using Concierge.Commands;
     using Concierge.Interfaces.Components;
     using Concierge.Interfaces.Enums;
+    using Concierge.Utility.Dtos;
     using Concierge.Utility.Extensions;
 
     public static class Utilities
     {
+        public static double CombineFeetAndInches(double feet, double inches)
+        {
+            return (feet * 12) + inches;
+        }
+
+        public static FormattedFeetInchesDto GetSeperateFeetAndInches(double totalInches)
+        {
+            var feet = (int)(totalInches / 12);
+            var inches = totalInches - (feet * 12);
+
+            return new FormattedFeetInchesDto(feet, inches);
+        }
+
         public static void SortListFromDataGrid<T>(ConciergeDataGrid dataGrid, List<T> list, ConciergePage conciergePage)
         {
             Program.Modify();
@@ -106,13 +120,13 @@ namespace Concierge.Utility
             switch (deathSave)
             {
                 case DeathSave.None:
-                    rectangle.Fill = Colours.TotalLightBoxBrush;
+                    rectangle.Fill = ConciergeColors.TotalLightBoxBrush;
                     break;
                 case DeathSave.Failure:
-                    rectangle.Fill = Colours.FailedSaveBrush;
+                    rectangle.Fill = ConciergeColors.FailedSaveBrush;
                     break;
                 case DeathSave.Success:
-                    rectangle.Fill = Colours.SucceededSaveBrush;
+                    rectangle.Fill = ConciergeColors.SucceededSaveBrush;
                     break;
             }
         }
@@ -147,7 +161,7 @@ namespace Concierge.Utility
 
         public static void SetProficiencyBoxStyle(bool flag, Rectangle rectangle)
         {
-            rectangle.Fill = flag ? Colours.ProficiencyBrush : Brushes.Transparent;
+            rectangle.Fill = flag ? ConciergeColors.ProficiencyBrush : Brushes.Transparent;
         }
 
         public static Brush SetHealthStyle(Vitality vitality)
@@ -185,7 +199,7 @@ namespace Concierge.Utility
         {
             border.BorderBrush =
                 spent != total && currentName.Equals(grid.Name)
-                ? Colours.RectangleBorderHighlight
+                ? ConciergeColors.RectangleBorderHighlight
                 : grid.Background;
         }
 
@@ -252,7 +266,7 @@ namespace Concierge.Utility
 
         public static Brush SetUsedBoxStyle(int total, int used)
         {
-            return total <= used ? Brushes.IndianRed : Colours.UsedBoxBrush;
+            return total <= used ? Brushes.IndianRed : ConciergeColors.UsedBoxBrush;
         }
 
         public static Brush SetTotalTextStyle(int total, int used)
@@ -262,7 +276,7 @@ namespace Concierge.Utility
 
         public static Brush SetTotalBoxStyle(int total, int used)
         {
-            return total <= used ? Colours.TotalDarkBoxBrush : Colours.TotalLightBoxBrush;
+            return total <= used ? ConciergeColors.TotalDarkBoxBrush : ConciergeColors.TotalLightBoxBrush;
         }
     }
 }

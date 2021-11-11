@@ -117,12 +117,21 @@
 
                 <!--Title-->
                 <Grid Grid.Column="0">
-                    <TextBlock Text="Weight:"
-                               Foreground="White"
-                               FontSize="20"
-                               HorizontalAlignment="Left"
-                               VerticalAlignment="Center"
-                               Margin="10, 0, 0, 0"/>
+                    <TextBlock 
+                            Text="Weight:"
+                            Foreground="White"
+                            FontSize="19"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top"
+                            Margin="10, 8, 0, 0"/>
+                    <TextBlock 
+                            x:Name="WeightUnits"
+                            Text="Measurement"
+                            Foreground="Goldenrod"
+                            FontSize="12"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Bottom"
+                            Margin="10, 0, 0, 8"/>
                 </Grid>
 
                 <!--Value-->

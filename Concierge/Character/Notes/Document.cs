@@ -6,7 +6,9 @@ namespace Concierge.Character.Notes
 {
     using System;
 
-    public class Document : ICopyable
+    using Concierge.Utility;
+
+    public class Document : ICopyable<Document>
     {
         public Document(string name)
         {
@@ -22,7 +24,7 @@ namespace Concierge.Character.Notes
 
         public Guid Id { get; init; }
 
-        public ICopyable DeepCopy()
+        public Document DeepCopy()
         {
             return new Document(this.Name)
             {

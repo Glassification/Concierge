@@ -7,8 +7,9 @@ namespace Concierge.Character.Characteristics
     using System;
 
     using Concierge.Character.Enums;
+    using Concierge.Utility;
 
-    public class Proficiency : ICopyable
+    public class Proficiency : ICopyable<Proficiency>
     {
         public Proficiency()
         {
@@ -21,7 +22,7 @@ namespace Concierge.Character.Characteristics
 
         public Guid Id { get; init; }
 
-        public ICopyable DeepCopy()
+        public Proficiency DeepCopy()
         {
             return new Proficiency()
             {

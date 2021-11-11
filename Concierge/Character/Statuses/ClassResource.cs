@@ -6,9 +6,10 @@ namespace Concierge.Character.Statuses
 {
     using System;
 
+    using Concierge.Utility;
     using Newtonsoft.Json;
 
-    public class ClassResource : ICopyable
+    public class ClassResource : ICopyable<ClassResource>
     {
         public ClassResource()
         {
@@ -26,7 +27,7 @@ namespace Concierge.Character.Statuses
 
         public Guid Id { get; init; }
 
-        public ICopyable DeepCopy()
+        public ClassResource DeepCopy()
         {
             return new ClassResource()
             {

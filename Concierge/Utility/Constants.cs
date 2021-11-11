@@ -217,14 +217,5 @@ namespace Concierge.Utility
         public static ReadOnlyCollection<Ability> Abilities { get; }
 
         public static ReadOnlyCollection<string> StatusEffects { get; }
-
-        public static string AssemblyVersion
-        {
-            get
-            {
-                var version = Assembly.GetExecutingAssembly().GetName().Version;
-                return $"{version.Major}.{version.Minor}.{version.Build}";
-            }
-        }
     }
 }

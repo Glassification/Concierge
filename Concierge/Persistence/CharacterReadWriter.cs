@@ -31,7 +31,9 @@ namespace Concierge.Persistence
                 }
 
                 Program.Unmodify();
-                Program.Logger.Info($"Successufully loaded {file}");
+                Program.Logger.Info($"Successfully loaded {file}");
+
+                ConciergeSettings.RefreshUnits();
 
                 return ccsFile;
             }
@@ -48,13 +50,13 @@ namespace Concierge.Persistence
         {
             try
             {
-                ccsFile.Version = Constants.AssemblyVersion;
+                ccsFile.Version = Program.AssemblyVersion;
                 var rawJson = JsonConvert.SerializeObject(ccsFile, Formatting.Indented);
 
                 File.WriteAllText(ccsFile.AbsolutePath, rawJson);
 
                 Program.Unmodify();
-                Program.Logger.Info($"Successufully saved to {ccsFile.AbsolutePath}");
+                Program.Logger.Info($"Successfully saved to {ccsFile.AbsolutePath}");
 
                 return true;
             }
@@ -74,7 +76,7 @@ namespace Concierge.Persistence
                 var message = string.Format(
                     "This file was saved with version {0} of Concierge. Current version is {1}.\nContinue loading?",
                     version,
-                    Constants.AssemblyVersion);
+                    Program.AssemblyVersion);
 
                 Program.Logger.Warning(message);
                 var result = ConciergeMessageBox.Show(
@@ -101,7 +103,7 @@ namespace Concierge.Persistence
         private static bool CompareMajorMinorVersion(string fileVersion)
         {
             var fileVersions = fileVersion.Split('.');
-            var programVersions = Constants.AssemblyVersion.Split('.');
+            var programVersions = Program.AssemblyVersion.Split('.');
 
             if (fileVersions.Length != 3 || programVersions.Length != 3)
             {

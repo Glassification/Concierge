@@ -7,7 +7,6 @@ namespace Concierge.Character
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Text;
 
     using Concierge.Character.AbilitySavingThrows;
     using Concierge.Character.AbilitySkills;
@@ -18,7 +17,7 @@ namespace Concierge.Character
     using Concierge.Character.Spellcasting;
     using Concierge.Character.Statuses;
     using Concierge.Utility;
-    using Concierge.Utility.Extensions;
+    using Concierge.Utility.Units;
     using Newtonsoft.Json;
 
     public class ConciergeCharacter
@@ -91,7 +90,7 @@ namespace Concierge.Character
                 {
                     if (!item.IsInBagOfHolding)
                     {
-                        weight += item.Weight * item.Amount;
+                        weight += item.Weight.Value * item.Amount;
                     }
                 }
 
@@ -99,16 +98,16 @@ namespace Concierge.Character
                 {
                     if (!weapon.IsInBagOfHolding)
                     {
-                        weight += weapon.Weight;
+                        weight += weapon.Weight.Value;
                     }
                 }
 
-                weight += this.Armor.Weight;
-                weight += this.Armor.ShieldWeight;
+                weight += this.Armor.Weight.Value;
+                weight += this.Armor.ShieldWeight.Value;
 
                 if (ConciergeSettings.UseCoinWeight)
                 {
-                    weight += this.Wealth.TotalCoins / Constants.CoinGroup;
+                    weight += UnitConvertion.Weight(ConciergeSettings.UnitOfMeasurement, this.Wealth.TotalCoins / Constants.CoinGroup);
                 }
 
                 weight += this.EquippedItems.Weight;
@@ -143,13 +142,13 @@ namespace Concierge.Character
         }
 
         [JsonIgnore]
-        public int LightCarryCapacity => this.Attributes.Strength * 5;
+        public double LightCarryCapacity => this.Attributes.Strength * UnitConvertion.LightMultiplier;
 
         [JsonIgnore]
-        public int MediumCarryCapacity => this.Attributes.Strength * 10;
+        public double MediumCarryCapacity => this.Attributes.Strength * UnitConvertion.MediumMultiplier;
 
         [JsonIgnore]
-        public int HeavyCarryCapacity => this.Attributes.Strength * 15;
+        public double HeavyCarryCapacity => this.Attributes.Strength * UnitConvertion.HeavyMultiplier;
 
         public void Reset()
         {
@@ -160,7 +159,11 @@ namespace Concierge.Character
         {
             this.Vitality.ResetHealth();
             this.Vitality.RegainHitDice();
+            this.Vitality.ResetDeathSaves();
             this.SpellSlots.Reset();
+
+            this.Companion.Vitality.ResetHealth();
+            this.Companion.Vitality.RegainHitDice();
         }
 
         public bool IsWeaponProficient(Weapon weapon)

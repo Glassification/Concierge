@@ -2,10 +2,10 @@
 // Copyright (c) Thomas Beckett. All rights reserved.
 // </copyright>
 
-namespace Concierge.Character
+namespace Concierge.Utility
 {
-    public interface ICopyable
+    public interface ICopyable<T>
     {
-        ICopyable DeepCopy();
+        T DeepCopy();
     }
 }

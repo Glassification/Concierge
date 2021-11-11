@@ -1,4 +1,4 @@
-﻿// <copyright file="Colours.cs" company="Thomas Beckett">
+﻿// <copyright file="ConciergeColors.cs" company="Thomas Beckett">
 // Copyright (c) Thomas Beckett. All rights reserved.
 // </copyright>
 
@@ -10,11 +10,11 @@ namespace Concierge.Utility
 
     using Concierge.Utility.Extensions;
 
-    public static class Colours
+    public static class ConciergeColors
     {
         public const byte ColourSpace = 255;
 
-        static Colours()
+        static ConciergeColors()
         {
             UsedBoxBrush = new SolidColorBrush(Color.FromArgb(255, 62, 62, 66));
             TotalDarkBoxBrush = new SolidColorBrush(Color.FromArgb(255, 15, 15, 15));
@@ -72,7 +72,7 @@ namespace Concierge.Utility
 
         public static Color ProficiencyDarkBlue => Color.FromArgb(255, 0, 9, 23);
 
-        public static HsvColour ToHsv(Color color)
+        public static HsvColor ToHsv(Color color)
         {
             var max = Math.Max(color.R, Math.Max(color.G, color.B));
             var min = Math.Min(color.R, Math.Min(color.G, color.B));
@@ -81,10 +81,10 @@ namespace Concierge.Utility
             var saturation = (max == 0) ? 0 : 1d - (1d * min / max);
             var value = max / 255d;
 
-            return new HsvColour(hue, saturation, value);
+            return new HsvColor(hue, saturation, value);
         }
 
-        public static Color FromHsv(HsvColour hsvColour)
+        public static Color FromHsv(HsvColor hsvColour)
         {
             var hi = Convert.ToInt32(Math.Floor(hsvColour.Hue / 60)) % 6;
             var f = (hsvColour.Hue / 60) - Math.Floor(hsvColour.Hue / 60);

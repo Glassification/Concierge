@@ -16,7 +16,7 @@ namespace Concierge.Interfaces.Components
         public ConciergeTextBox()
             : base()
         {
-            this.Background = Colours.ControlBackgroundBrush;
+            this.Background = ConciergeColors.ControlBackgroundBrush;
             this.Foreground = Brushes.White;
             this.VerticalAlignment = VerticalAlignment.Center;
             this.Margin = new Thickness(5);

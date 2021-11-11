@@ -7,10 +7,11 @@ namespace Concierge.Character.Statuses
     using System.Collections.Generic;
 
     using Concierge.Character.Enums;
+    using Concierge.Utility;
     using Concierge.Utility.Extensions;
     using Newtonsoft.Json;
 
-    public class DeathSavingThrows : ICopyable
+    public class DeathSavingThrows : ICopyable<DeathSavingThrows>
     {
         private const int MaxDeathSaves = 5;
         private const int SavesInARow = 3;
@@ -57,7 +58,7 @@ namespace Concierge.Character.Statuses
             }
         }
 
-        public ICopyable DeepCopy()
+        public DeathSavingThrows DeepCopy()
         {
             return new DeathSavingThrows()
             {

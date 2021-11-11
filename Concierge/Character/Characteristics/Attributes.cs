@@ -6,7 +6,7 @@ namespace Concierge.Character.Characteristics
 {
     using Concierge.Utility;
 
-    public class Attributes : ICopyable
+    public class Attributes : ICopyable<Attributes>
     {
         private int strength;
         private int dexterity;
@@ -61,7 +61,7 @@ namespace Concierge.Character.Characteristics
             set => this.charisma = Truncate(value);
         }
 
-        public ICopyable DeepCopy()
+        public Attributes DeepCopy()
         {
             return new Attributes()
             {

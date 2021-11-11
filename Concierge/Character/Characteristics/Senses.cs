@@ -5,9 +5,10 @@
 namespace Concierge.Character.Characteristics
 {
     using Concierge.Character.Enums;
+    using Concierge.Utility;
     using Newtonsoft.Json;
 
-    public class Senses : ICopyable
+    public class Senses : ICopyable<Senses>
     {
         public Senses()
         {
@@ -60,7 +61,7 @@ namespace Concierge.Character.Characteristics
             }
         }
 
-        public ICopyable DeepCopy()
+        public Senses DeepCopy()
         {
             return new Senses()
             {

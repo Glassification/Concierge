@@ -88,7 +88,7 @@ namespace Concierge.Interfaces.NotesPageInterface
         public void HighlightSearchResults(SearchResult searchResult)
         {
             this.NotesTextBox.SelectAll();
-            this.NotesTextBox.Selection.ApplyPropertyValue(TextElement.BackgroundProperty, Colours.TotalLightBoxBrush);
+            this.NotesTextBox.Selection.ApplyPropertyValue(TextElement.BackgroundProperty, ConciergeColors.TotalLightBoxBrush);
 
             foreach (Match match in searchResult.SearchRegex.Matches(this.NotesTextBox.Selection.Text))
             {
@@ -96,7 +96,7 @@ namespace Concierge.Interfaces.NotesPageInterface
                 var endHighlight = this.NotesTextBox.Document.ContentEnd.GetPositionAtOffset(-(this.NotesTextBox.Selection.Text.Length - (match.Index + match.Length)));
 
                 this.NotesTextBox.Selection.Select(startHighlight, endHighlight);
-                this.NotesTextBox.Selection.ApplyPropertyValue(TextElement.BackgroundProperty, Colours.Highlight);
+                this.NotesTextBox.Selection.ApplyPropertyValue(TextElement.BackgroundProperty, ConciergeColors.Highlight);
             }
         }
 

@@ -495,7 +495,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
             Program.Modify();
             ConciergeSound.UpdateValue();
 
-            Rectangle rectangle = sender as Rectangle;
+            var rectangle = sender as Rectangle;
             var skill = Program.CcsFile.Character.Skill;
 
             switch (rectangle.Name)
@@ -580,7 +580,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
         private void ToggleBox_MouseEnter(object sender, MouseEventArgs e)
         {
             var rectangle = sender as Rectangle;
-            rectangle.Stroke = Colours.RectangleBorderHighlight;
+            rectangle.Stroke = ConciergeColors.RectangleBorderHighlight;
             rectangle.StrokeThickness = 1;
 
             Mouse.OverrideCursor = Cursors.Hand;
@@ -589,7 +589,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
         private void ToggleBox_MouseLeave(object sender, MouseEventArgs e)
         {
             var rectangle = sender as Rectangle;
-            rectangle.Stroke = Colours.RectangleBorder;
+            rectangle.Stroke = ConciergeColors.RectangleBorder;
             rectangle.StrokeThickness = 1;
 
             Mouse.OverrideCursor = Cursors.Arrow;
@@ -728,7 +728,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
 
         private void EditWealthButton_Click(object sender, RoutedEventArgs e)
         {
-            this.modifyWealthWindow.ShowEdit();
+            this.modifyWealthWindow.ShowEdit(Program.CcsFile.Character.Wealth);
             this.DrawWealth();
         }
 

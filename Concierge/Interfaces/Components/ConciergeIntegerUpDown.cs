@@ -20,7 +20,7 @@ namespace Concierge.Interfaces.Components
         public ConciergeIntegerUpDown()
             : base()
         {
-            this.Background = Colours.ControlBackgroundBrush;
+            this.Background = ConciergeColors.ControlBackgroundBrush;
             this.BorderThickness = new Thickness(0);
             this.Foreground = Brushes.White;
             this.Margin = new Thickness(0, 0, 20, 0);

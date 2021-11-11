@@ -7,10 +7,11 @@ namespace Concierge.Character.Items
     using System;
 
     using Concierge.Character.Enums;
+    using Concierge.Primatives;
     using Concierge.Utility;
     using Newtonsoft.Json;
 
-    public class Armor : ICopyable
+    public class Armor : ICopyable<Armor>
     {
         public Armor()
         {
@@ -18,11 +19,11 @@ namespace Concierge.Character.Items
             this.Type = ArmorType.None;
             this.ArmorClass = 0;
             this.Strength = 0;
-            this.Weight = 0.0;
+            this.Weight = new ConvertableDouble();
             this.Stealth = ArmorStealth.Normal;
             this.Shield = string.Empty;
             this.ShieldArmorClass = 0;
-            this.ShieldWeight = 0.0;
+            this.ShieldWeight = new ConvertableDouble();
             this.MiscArmorClass = 0;
             this.MagicArmorClass = 0;
         }
@@ -35,7 +36,7 @@ namespace Concierge.Character.Items
 
         public int Strength { get; set; }
 
-        public double Weight { get; set; }
+        public ConvertableDouble Weight { get; set; }
 
         public ArmorStealth Stealth { get; set; }
 
@@ -43,7 +44,7 @@ namespace Concierge.Character.Items
 
         public int ShieldArmorClass { get; set; }
 
-        public double ShieldWeight { get; set; }
+        public ConvertableDouble ShieldWeight { get; set; }
 
         public int MiscArmorClass { get; set; }
 
@@ -81,7 +82,7 @@ namespace Concierge.Character.Items
             }
         }
 
-        public ICopyable DeepCopy()
+        public Armor DeepCopy()
         {
             return new Armor()
             {
@@ -89,11 +90,11 @@ namespace Concierge.Character.Items
                 Type = this.Type,
                 ArmorClass = this.ArmorClass,
                 Strength = this.Strength,
-                Weight = this.Weight,
+                Weight = this.Weight.DeepCopy(),
                 Stealth = this.Stealth,
                 Shield = this.Shield,
                 ShieldArmorClass = this.ShieldArmorClass,
-                ShieldWeight = this.ShieldWeight,
+                ShieldWeight = this.ShieldWeight.DeepCopy(),
                 MiscArmorClass = this.MiscArmorClass,
                 MagicArmorClass = this.MagicArmorClass,
             };

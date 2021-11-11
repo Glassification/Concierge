@@ -65,7 +65,7 @@ namespace Concierge.Interfaces.Components
         private void Item_MouseEnter(object sender, MouseEventArgs e)
         {
             Mouse.OverrideCursor = Cursors.Hand;
-            this.Foreground = Colours.NoteTreeItemHover;
+            this.Foreground = ConciergeColors.NoteTreeItemHover;
         }
 
         private void Item_MouseLeave(object sender, MouseEventArgs e)

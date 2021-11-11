@@ -1,12 +1,12 @@
-﻿// <copyright file="HsvColour.cs" company="Thomas Beckett">
+﻿// <copyright file="HsvColor.cs" company="Thomas Beckett">
 // Copyright (c) Thomas Beckett. All rights reserved.
 // </copyright>
 
 namespace Concierge.Utility
 {
-    public class HsvColour
+    public class HsvColor
     {
-        public HsvColour(double hue, double saturation, double value)
+        public HsvColor(double hue, double saturation, double value)
         {
             this.Hue = hue;
             this.Saturation = saturation;

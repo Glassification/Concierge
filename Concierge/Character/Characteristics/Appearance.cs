@@ -4,14 +4,18 @@
 
 namespace Concierge.Character.Characteristics
 {
-    public class Appearance : ICopyable
+    using Concierge.Primatives;
+    using Concierge.Utility;
+    using Concierge.Utility.Enums;
+
+    public class Appearance : ICopyable<Appearance>
     {
         public Appearance()
         {
             this.Gender = string.Empty;
             this.Age = 0;
-            this.Height = string.Empty;
-            this.Weight = string.Empty;
+            this.Height = new ConvertableDouble(0, UnitTypes.Imperial, Measurements.Height);
+            this.Weight = new ConvertableDouble(0, UnitTypes.Imperial, Measurements.Weight);
             this.SkinColour = string.Empty;
             this.EyeColour = string.Empty;
             this.HairColour = string.Empty;
@@ -22,9 +26,9 @@ namespace Concierge.Character.Characteristics
 
         public int Age { get; set; }
 
-        public string Height { get; set; }
+        public ConvertableDouble Height { get; set; }
 
-        public string Weight { get; set; }
+        public ConvertableDouble Weight { get; set; }
 
         public string SkinColour { get; set; }
 
@@ -34,14 +38,14 @@ namespace Concierge.Character.Characteristics
 
         public string DistinguishingMarks { get; set; }
 
-        public ICopyable DeepCopy()
+        public Appearance DeepCopy()
         {
             return new Appearance()
             {
                 Gender = this.Gender,
                 Age = this.Age,
-                Height = this.Height,
-                Weight = this.Weight,
+                Height = this.Height.DeepCopy(),
+                Weight = this.Weight.DeepCopy(),
                 SkinColour = this.SkinColour,
                 EyeColour = this.EyeColour,
                 HairColour = this.HairColour,

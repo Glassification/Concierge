@@ -6,7 +6,9 @@ namespace Concierge.Character.Characteristics
 {
     using System;
 
-    public class Ability : ICopyable
+    using Concierge.Utility;
+
+    public class Ability : ICopyable<Ability>
     {
         public Ability()
         {
@@ -29,7 +31,7 @@ namespace Concierge.Character.Characteristics
 
         public Guid Id { get; init; }
 
-        public ICopyable DeepCopy()
+        public Ability DeepCopy()
         {
             return new Ability()
             {
