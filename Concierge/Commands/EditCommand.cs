@@ -4,7 +4,6 @@
 
 namespace Concierge.Commands
 {
-    using Concierge.Character;
     using Concierge.Interfaces.Enums;
     using Concierge.Utility;
 
