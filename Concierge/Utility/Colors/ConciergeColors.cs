@@ -1,0 +1,105 @@
+﻿// <copyright file="ConciergeColors.cs" company="Thomas Beckett">
+// Copyright (c) Thomas Beckett. All rights reserved.
+// </copyright>
+
+namespace Concierge.Utility.Colors
+{
+    using System.Windows;
+    using System.Windows.Media;
+
+    public static class ConciergeColors
+    {
+        static ConciergeColors()
+        {
+            OverviewIcon = new SolidColorBrush(Color.FromArgb(255, 39, 125, 161));
+            DetailsIcon = new SolidColorBrush(Color.FromArgb(255, 87, 117, 144));
+            AttackDefenseIcon = new SolidColorBrush(Color.FromArgb(255, 77, 144, 142));
+            AbilitiesIcon = new SolidColorBrush(Color.FromArgb(255, 67, 170, 139));
+            EquippedItemsIcon = new SolidColorBrush(Color.FromArgb(255, 144, 190, 109));
+            InventoryIcon = new SolidColorBrush(Color.FromArgb(255, 249, 199, 79));
+            SpellcastingIcon = new SolidColorBrush(Color.FromArgb(255, 249, 132, 74));
+            CompanionIcon = new SolidColorBrush(Color.FromArgb(255, 248, 150, 30));
+            ToolsIcon = new SolidColorBrush(Color.FromArgb(255, 243, 114, 44));
+            NotesIcon = new SolidColorBrush(Color.FromArgb(255, 249, 65, 68));
+
+            LightCarryCapacity = new SolidColorBrush(Color.FromArgb(255, 216, 228, 188));
+            MediumCarryCapacity = new SolidColorBrush(Color.FromArgb(255, 252, 213, 180));
+            HeavyCarryCapacity = new SolidColorBrush(Color.FromArgb(255, 187, 74, 67));
+
+            UsedBoxBrush = new SolidColorBrush(Color.FromArgb(255, 62, 62, 66));
+            TotalDarkBoxBrush = new SolidColorBrush(Color.FromArgb(255, 15, 15, 15));
+            TotalLightBoxBrush = new SolidColorBrush(Color.FromArgb(255, 51, 51, 51));
+            ControlBackgroundBrush = new SolidColorBrush(Color.FromArgb(255, 63, 63, 63));
+            ToggleBoxBrush = new SolidColorBrush(Color.FromArgb(255, 6, 1, 31));
+            RectangleBorderHighlight = new SolidColorBrush(Color.FromArgb(255, 34, 126, 169));
+            RectangleBorder = new SolidColorBrush(Color.FromArgb(255, 0, 9, 23));
+            Highlight = new SolidColorBrush(Color.FromArgb(255, 28, 57, 71));
+            NoteTreeItemHover = new SolidColorBrush(Color.FromArgb(255, 130, 223, 251));
+            FailedSaveBrush = ColorUtilities.GenerateGradientBrush(FailedDarkRed, FailedLightRed, new Point(0.5, 0), new Point(0.5, 1));
+            SucceededSaveBrush = ColorUtilities.GenerateGradientBrush(SucceededDarkGreen, SucceededLightGreen, new Point(0.5, 0), new Point(0.5, 1));
+            ProficiencyBrush = ColorUtilities.GenerateGradientBrush(ProficiencyDarkBlue, ProficiencyLightBlue, new Point(0, 0), new Point(1, 1));
+        }
+
+        public static SolidColorBrush OverviewIcon { get; }
+
+        public static SolidColorBrush DetailsIcon { get; }
+
+        public static SolidColorBrush AttackDefenseIcon { get; }
+
+        public static SolidColorBrush AbilitiesIcon { get; }
+
+        public static SolidColorBrush EquippedItemsIcon { get; }
+
+        public static SolidColorBrush InventoryIcon { get; }
+
+        public static SolidColorBrush SpellcastingIcon { get; }
+
+        public static SolidColorBrush CompanionIcon { get; }
+
+        public static SolidColorBrush ToolsIcon { get; }
+
+        public static SolidColorBrush NotesIcon { get; }
+
+        public static LinearGradientBrush FailedSaveBrush { get; }
+
+        public static LinearGradientBrush SucceededSaveBrush { get; }
+
+        public static LinearGradientBrush ProficiencyBrush { get; }
+
+        public static SolidColorBrush TotalDarkBoxBrush { get; }
+
+        public static SolidColorBrush TotalLightBoxBrush { get; }
+
+        public static SolidColorBrush ControlBackgroundBrush { get; }
+
+        public static SolidColorBrush UsedBoxBrush { get; }
+
+        public static SolidColorBrush ToggleBoxBrush { get; }
+
+        public static SolidColorBrush RectangleBorderHighlight { get; }
+
+        public static SolidColorBrush RectangleBorder { get; }
+
+        public static SolidColorBrush Highlight { get; }
+
+        public static SolidColorBrush NoteTreeItemHover { get; }
+
+        public static SolidColorBrush LightCarryCapacity { get; }
+
+        public static SolidColorBrush MediumCarryCapacity { get; }
+
+        public static SolidColorBrush HeavyCarryCapacity { get; }
+
+        public static Color FailedLightRed => Color.FromArgb(255, 245, 133, 143);
+
+        public static Color FailedDarkRed => Color.FromArgb(255, 250, 74, 90);
+
+        public static Color SucceededLightGreen => Color.FromArgb(255, 190, 236, 176);
+
+        public static Color SucceededDarkGreen => Color.FromArgb(255, 123, 216, 96);
+
+        public static Color ProficiencyLightBlue => Color.FromArgb(255, 0, 18, 51);
+
+        public static Color ProficiencyDarkBlue => Color.FromArgb(255, 0, 9, 23);
+    }
+}

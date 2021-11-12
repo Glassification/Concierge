@@ -14,8 +14,8 @@ namespace Concierge.Character.Characteristics
         {
             this.Gender = string.Empty;
             this.Age = 0;
-            this.Height = new ConvertableDouble(0, UnitTypes.Imperial, Measurements.Height);
-            this.Weight = new ConvertableDouble(0, UnitTypes.Imperial, Measurements.Weight);
+            this.Height = new ConciergeDouble(0, UnitTypes.Imperial, Measurements.Height);
+            this.Weight = new ConciergeDouble(0, UnitTypes.Imperial, Measurements.Weight);
             this.SkinColour = string.Empty;
             this.EyeColour = string.Empty;
             this.HairColour = string.Empty;
@@ -26,9 +26,9 @@ namespace Concierge.Character.Characteristics
 
         public int Age { get; set; }
 
-        public ConvertableDouble Height { get; set; }
+        public ConciergeDouble Height { get; set; }
 
-        public ConvertableDouble Weight { get; set; }
+        public ConciergeDouble Weight { get; set; }
 
         public string SkinColour { get; set; }
 

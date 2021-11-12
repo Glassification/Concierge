@@ -218,13 +218,16 @@
                         <Grid Grid.Column="1"
                           Background="#FF3e3e42"
                           Margin="0, 3, 3, 3">
-                            <TextBlock x:Name="HairColourField"
-                                   Foreground="White"
-                                   FontSize="16"
-                                   HorizontalAlignment="Left"
-                                   VerticalAlignment="Center"
-                                   Margin="10, 0, 0, 0"
-                                   TextWrapping="Wrap"/>
+                            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                                <TextBlock 
+                                    x:Name="HairColourField"
+                                    Foreground="White"
+                                    FontSize="16"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Center"
+                                    Margin="10, 0, 0, 0"
+                                    TextWrapping="Wrap"/>
+                            </ScrollViewer>
                         </Grid>
                     </Grid>
 
@@ -250,13 +253,16 @@
                         <Grid Grid.Column="1"
                           Background="#FF3e3e42"
                           Margin="0, 3, 3, 3">
-                            <TextBlock x:Name="SkinColourField"
-                                   Foreground="White"
-                                   FontSize="16"
-                                   HorizontalAlignment="Left"
-                                   VerticalAlignment="Center"
-                                   Margin="10, 0, 0, 0"
-                                   TextWrapping="Wrap"/>
+                            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                                <TextBlock 
+                                    x:Name="SkinColourField"
+                                    Foreground="White"
+                                    FontSize="16"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Center"
+                                    Margin="10, 0, 0, 0"
+                                    TextWrapping="Wrap"/>
+                            </ScrollViewer>
                         </Grid>
                     </Grid>
 
@@ -282,13 +288,16 @@
                         <Grid Grid.Column="1"
                           Background="#FF3e3e42"
                           Margin="0, 3, 3, 3">
-                            <TextBlock x:Name="EyeColourField"
-                                   Foreground="White"
-                                   FontSize="16"
-                                   HorizontalAlignment="Left"
-                                   VerticalAlignment="Center"
-                                   Margin="10, 0, 0, 0"
-                                   TextWrapping="Wrap"/>
+                            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                                <TextBlock 
+                                    x:Name="EyeColourField"
+                                    Foreground="White"
+                                    FontSize="16"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Center"
+                                    Margin="10, 0, 0, 0"
+                                    TextWrapping="Wrap"/>
+                            </ScrollViewer>
                         </Grid>
                     </Grid>
 
@@ -313,13 +322,16 @@
                         <Grid Grid.Row="1"
                           Background="#FF3e3e42"
                           Margin="3, 0, 3, 3">
-                            <TextBlock x:Name="MarksField"
-                                   Foreground="White"
-                                   FontSize="16"
-                                   HorizontalAlignment="Left"
-                                   VerticalAlignment="Center"
-                                   Margin="10, 0, 0, 0"
-                                   TextWrapping="Wrap"/>
+                            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                                <TextBlock 
+                                    x:Name="MarksField"
+                                    Foreground="White"
+                                    FontSize="16"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Center"
+                                    Margin="10, 0, 0, 0"
+                                    TextWrapping="Wrap"/>
+                            </ScrollViewer>
                         </Grid>
                     </Grid>
                 </Grid>
@@ -389,23 +401,29 @@
                             </Grid.RowDefinitions>
 
                             <Grid Grid.Row="0">
-                                <TextBlock x:Name="TraitField1"
-                                       Foreground="White"
-                                       FontSize="16"
-                                       HorizontalAlignment="Left"
-                                       VerticalAlignment="Center"
-                                       Margin="10, 0, 0, 0"
-                                       TextWrapping="Wrap"/>
+                                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                                    <TextBlock 
+                                        x:Name="TraitField1"
+                                        Foreground="White"
+                                        FontSize="16"
+                                        HorizontalAlignment="Left"
+                                        VerticalAlignment="Center"
+                                        Margin="10, 0, 0, 0"
+                                        TextWrapping="Wrap"/>
+                                </ScrollViewer>
                             </Grid>
 
                             <Grid Grid.Row="1">
-                                <TextBlock x:Name="TraitField2"
-                                       Foreground="White"
-                                       FontSize="16"
-                                       HorizontalAlignment="Left"
-                                       VerticalAlignment="Center"
-                                       Margin="10, 0, 0, 0"
-                                       TextWrapping="Wrap"/>
+                                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                                    <TextBlock 
+                                        x:Name="TraitField2"
+                                        Foreground="White"
+                                        FontSize="16"
+                                        HorizontalAlignment="Left"
+                                        VerticalAlignment="Center"
+                                        Margin="10, 0, 0, 0"
+                                        TextWrapping="Wrap"/>
+                                </ScrollViewer>
                             </Grid>
                         </Grid>
                     </Grid>
@@ -433,13 +451,16 @@
                         <Grid Grid.Column="1"
                           Background="#FF3e3e42"
                           Margin="0, 3, 3, 3">
-                            <TextBlock x:Name="IdealField"
-                                       Foreground="White"
-                                       FontSize="16"
-                                       HorizontalAlignment="Left"
-                                       VerticalAlignment="Center"
-                                       Margin="10, 0, 0, 0"
-                                       TextWrapping="Wrap"/>
+                            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                                <TextBlock 
+                                    x:Name="IdealField"
+                                    Foreground="White"
+                                    FontSize="16"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Center"
+                                    Margin="10, 0, 0, 0"
+                                    TextWrapping="Wrap"/>
+                            </ScrollViewer>
                         </Grid>
                     </Grid>
 
@@ -466,13 +487,16 @@
                         <Grid Grid.Column="1"
                           Background="#FF3e3e42"
                           Margin="0, 3, 3, 3">
-                            <TextBlock x:Name="BondField"
-                                       Foreground="White"
-                                       FontSize="16"
-                                       HorizontalAlignment="Left"
-                                       VerticalAlignment="Center"
-                                       Margin="10, 0, 0, 0"
-                                       TextWrapping="Wrap"/>
+                            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                                <TextBlock 
+                                    x:Name="BondField"
+                                    Foreground="White"
+                                    FontSize="16"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Center"
+                                    Margin="10, 0, 0, 0"
+                                    TextWrapping="Wrap"/>
+                            </ScrollViewer>
                         </Grid>
                     </Grid>
 
@@ -499,13 +523,16 @@
                         <Grid Grid.Column="1"
                           Background="#FF3e3e42"
                           Margin="0, 3, 3, 3">
-                            <TextBlock x:Name="FlawField"
-                                       Foreground="White"
-                                       FontSize="16"
-                                       HorizontalAlignment="Left"
-                                       VerticalAlignment="Center"
-                                       Margin="10, 0, 0, 0"
-                                       TextWrapping="Wrap"/>
+                            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                                <TextBlock 
+                                    x:Name="FlawField"
+                                    Foreground="White"
+                                    FontSize="16"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Center"
+                                    Margin="10, 0, 0, 0"
+                                    TextWrapping="Wrap"/>
+                            </ScrollViewer>
                         </Grid>
                     </Grid>
 
@@ -532,13 +559,16 @@
                         <Grid Grid.Column="1"
                           Background="#FF3e3e42"
                           Margin="0, 3, 3, 3">
-                            <TextBlock x:Name="BackgroundField"
-                                       Foreground="White"
-                                       FontSize="16"
-                                       HorizontalAlignment="Left"
-                                       VerticalAlignment="Center"
-                                       Margin="10, 0, 0, 0"
-                                       TextWrapping="Wrap"/>
+                            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                                <TextBlock 
+                                    x:Name="BackgroundField"
+                                    Foreground="White"
+                                    FontSize="16"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Center"
+                                    Margin="10, 0, 0, 0"
+                                    TextWrapping="Wrap"/>
+                            </ScrollViewer>
                         </Grid>
                     </Grid>
 
@@ -565,13 +595,16 @@
                         <Grid Grid.Column="1"
                           Background="#FF3e3e42"
                           Margin="0, 3, 3, 3">
-                            <TextBlock x:Name="NotesField"
-                                       Foreground="White"
-                                       FontSize="16"
-                                       HorizontalAlignment="Left"
-                                       VerticalAlignment="Center"
-                                       Margin="10, 0, 0, 0"
-                                       TextWrapping="Wrap"/>
+                            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                                <TextBlock 
+                                    x:Name="NotesField"
+                                    Foreground="White"
+                                    FontSize="16"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Center"
+                                    Margin="10, 0, 0, 0"
+                                    TextWrapping="Wrap"/>
+                            </ScrollViewer>
                         </Grid>
                     </Grid>
                 </Grid>

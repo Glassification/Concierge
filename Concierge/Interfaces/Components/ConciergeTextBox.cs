@@ -10,6 +10,7 @@ namespace Concierge.Interfaces.Components
     using System.Windows.Media;
 
     using Concierge.Utility;
+    using Concierge.Utility.Colors;
 
     public class ConciergeTextBox : TextBox
     {

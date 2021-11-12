@@ -6,7 +6,7 @@ namespace Concierge.Utility
 {
     using System;
 
-    using Concierge.Persistence;
+    using Concierge.Persistence.ReadWriters;
     using Concierge.Utility.Dtos;
     using Concierge.Utility.Enums;
 

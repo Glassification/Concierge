@@ -23,6 +23,7 @@ namespace Concierge.Interfaces.NotesPageInterface
     using Concierge.Tools.Interface;
     using Concierge.Tools.Searching;
     using Concierge.Utility;
+    using Concierge.Utility.Colors;
     using Concierge.Utility.Extensions;
 
     /// <summary>

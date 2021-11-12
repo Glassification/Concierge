@@ -2,7 +2,7 @@
 // Copyright (c) Thomas Beckett. All rights reserved.
 // </copyright>
 
-namespace Concierge.Persistence
+namespace Concierge.Persistence.ReadWriters
 {
     using System;
     using System.IO;

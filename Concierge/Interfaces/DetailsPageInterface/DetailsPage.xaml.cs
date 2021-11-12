@@ -18,6 +18,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
     using Concierge.Interfaces.Components;
     using Concierge.Interfaces.Enums;
     using Concierge.Utility;
+    using Concierge.Utility.Colors;
     using Concierge.Utility.Units;
 
     /// <summary>
@@ -199,12 +200,12 @@ namespace Concierge.Interfaces.DetailsPageInterface
             if (weight <= Program.CcsFile.Character.LightCarryCapacity)
             {
                 this.WeightCarriedField.Foreground = Brushes.Black;
-                this.WeightCarriedBox.Background = new SolidColorBrush(ConciergeColors.LightGreen);
+                this.WeightCarriedBox.Background = ConciergeColors.LightCarryCapacity;
             }
             else if (weight > Program.CcsFile.Character.LightCarryCapacity && weight <= Program.CcsFile.Character.MediumCarryCapacity)
             {
-                this.WeightCarriedField.Foreground = new SolidColorBrush(ConciergeColors.MediumRed);
-                this.WeightCarriedBox.Background = new SolidColorBrush(ConciergeColors.LightYellow);
+                this.WeightCarriedField.Foreground = ConciergeColors.MediumCarryCapacity;
+                this.WeightCarriedBox.Background = ConciergeColors.HeavyCarryCapacity;
             }
             else if (weight > Program.CcsFile.Character.MediumCarryCapacity && weight <= Program.CcsFile.Character.HeavyCarryCapacity)
             {

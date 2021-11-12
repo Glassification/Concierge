@@ -566,14 +566,16 @@
 
                         <!--Value-->
                         <Grid Grid.Column="1" Background="#001233">
-                            <TextBlock 
-                                x:Name="NameField"
-                                Foreground="White"
-                                FontSize="22"
-                                FontWeight="Bold"
-                                TextWrapping="Wrap"
-                                HorizontalAlignment="Center"
-                                VerticalAlignment="Center"/>
+                            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                                <TextBlock 
+                                    x:Name="NameField"
+                                    Foreground="White"
+                                    FontSize="22"
+                                    FontWeight="Bold"
+                                    TextWrapping="Wrap"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"/>
+                            </ScrollViewer>
                         </Grid>
                     </Grid>
                 </Grid>

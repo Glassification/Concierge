@@ -113,7 +113,7 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
             armor.ShieldWeight.Value = this.ShieldWeightUpDown.Value ?? 0.0;
             armor.MiscArmorClass = this.MiscArmorClassUpDown.Value ?? 0;
             armor.MagicArmorClass = this.MagicArmorClassUpDown.Value ?? 0;
-            
+
             Program.UndoRedoService.AddCommand(new EditCommand<Armor>(armor, oldItem, this.conciergePage));
         }
 

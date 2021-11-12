@@ -7,7 +7,7 @@ namespace Concierge.Utility
     using System;
     using System.Windows.Threading;
 
-    using Concierge.Persistence;
+    using Concierge.Persistence.ReadWriters;
 
     public class AutosaveTimer
     {

@@ -27,11 +27,13 @@ namespace Concierge.Services
         public ListViewItem GenerateListViewItem(
             IConciergePage conciergePage,
             string pageName,
-            PackIconKind packIconKind)
+            PackIconKind packIconKind,
+            SolidColorBrush iconColor)
         {
             var packIcon = new PackIcon()
             {
                 Kind = packIconKind,
+                Foreground = iconColor,
                 Height = 28,
                 Width = 28,
                 Margin = new Thickness(10),

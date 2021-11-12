@@ -18,6 +18,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
     using Concierge.Interfaces.Enums;
     using Concierge.Tools.Interface;
     using Concierge.Utility;
+    using Concierge.Utility.Colors;
     using Concierge.Utility.Extensions;
 
     /// <summary>

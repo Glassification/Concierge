@@ -1237,9 +1237,9 @@
     },
     "Vitality": {
       "Health": {
-        "MaxHealth": 0,
+        "MaxHealth": 71,
         "TemporaryHealth": 0,
-        "BaseHealth": 0
+        "BaseHealth": 69
       },
       "HitDice": {
         "TotalD6": 0,

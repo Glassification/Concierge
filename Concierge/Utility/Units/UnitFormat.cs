@@ -4,6 +4,8 @@
 
 namespace Concierge.Utility.Units
 {
+    using System;
+
     using Concierge.Primatives;
     using Concierge.Utility.Enums;
 
@@ -15,7 +17,7 @@ namespace Concierge.Utility.Units
 
         public static string WeightUnits => ConciergeSettings.UnitOfMeasurement == UnitTypes.Imperial ? "lbs" : "kg";
 
-        public static string ToString(ConvertableDouble value)
+        public static string ToString(ConciergeDouble value)
         {
             return value.Measurement switch
             {
@@ -32,20 +34,18 @@ namespace Concierge.Utility.Units
             return unitType switch
             {
                 UnitTypes.Imperial => $"{(feetAndInches.Feet > 0 ? $"{feetAndInches.Feet}'" : string.Empty)} {(feetAndInches.Inches > 0 ? $"{(int)feetAndInches.Inches}\"" : string.Empty)}",
-                UnitTypes.Metric => $"{string.Format("{0:0.00}", value).TrimEnd('0').TrimEnd('.')} cm",
+                UnitTypes.Metric => $"{Math.Round(value, Constants.SignificantDigits)} cm",
                 _ => value.ToString()
             };
         }
 
         private static string FormatWeight(UnitTypes unitType, double value)
         {
-            var formattedString = string.Format("{0:0.00}", value).TrimEnd('0').TrimEnd('.');
-
             return unitType switch
             {
-                UnitTypes.Imperial => $"{formattedString} lbs",
-                UnitTypes.Metric => $"{formattedString} kg",
-                _ => formattedString,
+                UnitTypes.Imperial => $"{Math.Round(value, Constants.SignificantDigits)} lbs",
+                UnitTypes.Metric => $"{Math.Round(value, Constants.SignificantDigits)} kg",
+                _ => Math.Round(value, Constants.SignificantDigits).ToString(),
             };
         }
     }

@@ -6,7 +6,7 @@ namespace Concierge.Services
 {
     using System;
 
-    using Concierge.Persistence;
+    using Concierge.Persistence.ReadWriters;
 
     public class CommandLineService
     {

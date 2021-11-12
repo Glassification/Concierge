@@ -12,6 +12,7 @@ namespace Concierge.Interfaces.Components
 
     using Concierge.Character.Notes;
     using Concierge.Utility;
+    using Concierge.Utility.Colors;
     using MaterialDesignThemes.Wpf;
 
     public class ChapterTreeViewItem : TreeViewItem

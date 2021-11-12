@@ -64,13 +64,15 @@
             </Grid>
             
             <Grid Grid.Column="1">
-                <TextBlock 
-                    x:Name="MessageText"
-                    Text="Your message here"
-                    Foreground="White"
-                    FontSize="25"
-                    TextWrapping="Wrap"
-                    Margin="15"/>
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <TextBlock 
+                        x:Name="MessageText"
+                        Text="Your message here"
+                        Foreground="White"
+                        FontSize="25"
+                        TextWrapping="Wrap"
+                        Margin="15"/>
+                </ScrollViewer>
             </Grid>
         </Grid>
         <Grid Grid.Row="2">

@@ -11,6 +11,7 @@ namespace Concierge.Interfaces.Components
     using System.Windows.Media;
 
     using Concierge.Utility;
+    using Concierge.Utility.Colors;
     using Xceed.Wpf.Toolkit;
 
     public class ConciergeDoubleUpDown : DoubleUpDown

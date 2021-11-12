@@ -21,7 +21,7 @@ namespace Concierge.Character.Items
 
         public int Amount { get; set; }
 
-        public ConvertableDouble Weight { get; set; }
+        public ConciergeDouble Weight { get; set; }
 
         public bool IsInBagOfHolding { get; set; }
 

@@ -19,6 +19,7 @@ namespace Concierge.Utility
     using Concierge.Commands;
     using Concierge.Interfaces.Components;
     using Concierge.Interfaces.Enums;
+    using Concierge.Utility.Colors;
     using Concierge.Utility.Dtos;
     using Concierge.Utility.Extensions;
 
@@ -39,6 +40,11 @@ namespace Concierge.Utility
 
         public static void SortListFromDataGrid<T>(ConciergeDataGrid dataGrid, List<T> list, ConciergePage conciergePage)
         {
+            if (dataGrid.Items.IsEmpty)
+            {
+                return;
+            }
+
             Program.Modify();
 
             var oldList = new List<T>(list);

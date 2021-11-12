@@ -7,6 +7,8 @@ namespace Concierge.Utility.Extensions
     using System;
     using System.Windows.Media;
 
+    using Concierge.Utility.Colors;
+
     public static class ColorExtensions
     {
         public static double GetHue(this Color color)
@@ -36,19 +38,19 @@ namespace Concierge.Utility.Extensions
 
         public static Color Invert(this Color color)
         {
-            var hsvColour = ConciergeColors.ToHsv(color);
+            var hsvColour = ColorUtilities.ToHsv(color);
             hsvColour.Invert();
 
-            return ConciergeColors.FromHsv(hsvColour);
+            return ColorUtilities.FromHsv(hsvColour);
         }
 
         public static Color SimpleInvert(this Color color)
         {
             return Color.FromArgb(
-                ConciergeColors.ColourSpace,
-                (byte)(ConciergeColors.ColourSpace - color.R),
-                (byte)(ConciergeColors.ColourSpace - color.G),
-                (byte)(ConciergeColors.ColourSpace - color.B));
+                ColorUtilities.ColourSpace,
+                (byte)(ColorUtilities.ColourSpace - color.R),
+                (byte)(ColorUtilities.ColourSpace - color.G),
+                (byte)(ColorUtilities.ColourSpace - color.B));
         }
     }
 }
