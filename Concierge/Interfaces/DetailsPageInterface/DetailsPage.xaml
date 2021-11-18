@@ -60,7 +60,7 @@
                             Click="EditAppearanceButton_Click">
                             <materialDesign:PackIcon Kind="PlaylistEdit" Width="25" Height="25"/>
                         </components:ConciergeDesignButton>
-                        <TextBlock Text="Appearance"
+                        <components:ConciergeTextBlock Text="Appearance"
                                Foreground="White"
                                FontSize="30"
                                FontWeight="Bold"
@@ -78,7 +78,7 @@
                         <Grid Grid.Column="0"
                           Background="#001233"
                           Margin="3, 3, 0, 3">
-                            <TextBlock Text="Gender"
+                            <components:ConciergeTextBlock Text="Gender"
                                    Foreground="White"
                                    FontSize="20"
                                    FontWeight="Bold"
@@ -90,7 +90,7 @@
                         <Grid Grid.Column="1"
                           Background="#FF3e3e42"
                           Margin="0, 3, 3, 3">
-                            <TextBlock x:Name="GenderField"
+                            <components:ConciergeTextBlock x:Name="GenderField"
                                    Foreground="White"
                                    FontSize="16"
                                    HorizontalAlignment="Left"
@@ -110,7 +110,7 @@
                         <Grid Grid.Column="0"
                           Background="#001233"
                           Margin="3, 3, 0, 3">
-                            <TextBlock Text="Age"
+                            <components:ConciergeTextBlock Text="Age"
                                    Foreground="White"
                                    FontSize="20"
                                    FontWeight="Bold"
@@ -122,7 +122,7 @@
                         <Grid Grid.Column="1"
                           Background="#FF3e3e42"
                           Margin="0, 3, 3, 3">
-                            <TextBlock x:Name="AgeField"
+                            <components:ConciergeTextBlock x:Name="AgeField"
                                    Foreground="White"
                                    FontSize="16"
                                    HorizontalAlignment="Left"
@@ -142,7 +142,7 @@
                         <Grid Grid.Column="0"
                           Background="#001233"
                           Margin="3, 3, 0, 3">
-                            <TextBlock Text="Height"
+                            <components:ConciergeTextBlock Text="Height"
                                    Foreground="White"
                                    FontSize="20"
                                    FontWeight="Bold"
@@ -154,7 +154,7 @@
                         <Grid Grid.Column="1"
                           Background="#FF3e3e42"
                           Margin="0, 3, 3, 3">
-                            <TextBlock x:Name="HeightField"
+                            <components:ConciergeTextBlock x:Name="HeightField"
                                    Foreground="White"
                                    FontSize="16"
                                    HorizontalAlignment="Left"
@@ -174,7 +174,7 @@
                         <Grid Grid.Column="0"
                           Background="#001233"
                           Margin="3, 3, 0, 3">
-                            <TextBlock Text="Weight"
+                            <components:ConciergeTextBlock Text="Weight"
                                    Foreground="White"
                                    FontSize="20"
                                    FontWeight="Bold"
@@ -186,7 +186,7 @@
                         <Grid Grid.Column="1"
                           Background="#FF3e3e42"
                           Margin="0, 3, 3, 3">
-                            <TextBlock x:Name="WeightField"
+                            <components:ConciergeTextBlock x:Name="WeightField"
                                    Foreground="White"
                                    FontSize="16"
                                    HorizontalAlignment="Left"
@@ -206,7 +206,7 @@
                         <Grid Grid.Column="0"
                           Background="#001233"
                           Margin="3, 3, 0, 3">
-                            <TextBlock Text="Hair Colour"
+                            <components:ConciergeTextBlock Text="Hair Colour"
                                    Foreground="White"
                                    FontSize="20"
                                    FontWeight="Bold"
@@ -219,7 +219,7 @@
                           Background="#FF3e3e42"
                           Margin="0, 3, 3, 3">
                             <ScrollViewer VerticalScrollBarVisibility="Auto">
-                                <TextBlock 
+                                <components:ConciergeTextBlock 
                                     x:Name="HairColourField"
                                     Foreground="White"
                                     FontSize="16"
@@ -241,7 +241,7 @@
                         <Grid Grid.Column="0"
                           Background="#001233"
                           Margin="3, 3, 0, 3">
-                            <TextBlock Text="Skin Colour"
+                            <components:ConciergeTextBlock Text="Skin Colour"
                                    Foreground="White"
                                    FontSize="20"
                                    FontWeight="Bold"
@@ -254,7 +254,7 @@
                           Background="#FF3e3e42"
                           Margin="0, 3, 3, 3">
                             <ScrollViewer VerticalScrollBarVisibility="Auto">
-                                <TextBlock 
+                                <components:ConciergeTextBlock 
                                     x:Name="SkinColourField"
                                     Foreground="White"
                                     FontSize="16"
@@ -276,7 +276,7 @@
                         <Grid Grid.Column="0"
                           Background="#001233"
                           Margin="3, 3, 0, 3">
-                            <TextBlock Text="Eye Colour"
+                            <components:ConciergeTextBlock Text="Eye Colour"
                                    Foreground="White"
                                    FontSize="20"
                                    FontWeight="Bold"
@@ -289,7 +289,7 @@
                           Background="#FF3e3e42"
                           Margin="0, 3, 3, 3">
                             <ScrollViewer VerticalScrollBarVisibility="Auto">
-                                <TextBlock 
+                                <components:ConciergeTextBlock 
                                     x:Name="EyeColourField"
                                     Foreground="White"
                                     FontSize="16"
@@ -311,7 +311,7 @@
                         <Grid Grid.Row="0"
                           Background="#001233"
                           Margin="3, 3, 3, 0">
-                            <TextBlock Text="Distinguishing Marks"
+                            <components:ConciergeTextBlock Text="Distinguishing Marks"
                                    Foreground="White"
                                    FontSize="18"
                                    FontWeight="Bold"
@@ -323,7 +323,7 @@
                           Background="#FF3e3e42"
                           Margin="3, 0, 3, 3">
                             <ScrollViewer VerticalScrollBarVisibility="Auto">
-                                <TextBlock 
+                                <components:ConciergeTextBlock 
                                     x:Name="MarksField"
                                     Foreground="White"
                                     FontSize="16"
@@ -364,7 +364,7 @@
                             Click="EditPersonalityButton_Click">
                             <materialDesign:PackIcon Kind="PlaylistEdit" Width="25" Height="25"/>
                         </components:ConciergeDesignButton>
-                        <TextBlock Text="Personality"
+                        <components:ConciergeTextBlock Text="Personality"
                                Foreground="White"
                                FontSize="30"
                                FontWeight="Bold"
@@ -382,7 +382,7 @@
                         <Grid Grid.Column="0"
                           Background="#001233"
                           Margin="3, 3, 0, 3">
-                            <TextBlock Text="Personality Traits"
+                            <components:ConciergeTextBlock Text="Personality Traits"
                                    Foreground="White"
                                    FontSize="25"
                                    FontWeight="Bold"
@@ -402,7 +402,7 @@
 
                             <Grid Grid.Row="0">
                                 <ScrollViewer VerticalScrollBarVisibility="Auto">
-                                    <TextBlock 
+                                    <components:ConciergeTextBlock 
                                         x:Name="TraitField1"
                                         Foreground="White"
                                         FontSize="16"
@@ -415,7 +415,7 @@
 
                             <Grid Grid.Row="1">
                                 <ScrollViewer VerticalScrollBarVisibility="Auto">
-                                    <TextBlock 
+                                    <components:ConciergeTextBlock 
                                         x:Name="TraitField2"
                                         Foreground="White"
                                         FontSize="16"
@@ -438,7 +438,7 @@
                         <Grid Grid.Column="0"
                           Background="#001233"
                           Margin="3, 3, 0, 3">
-                            <TextBlock Text="Ideal"
+                            <components:ConciergeTextBlock Text="Ideal"
                                    Foreground="White"
                                    FontSize="25"
                                    FontWeight="Bold"
@@ -452,7 +452,7 @@
                           Background="#FF3e3e42"
                           Margin="0, 3, 3, 3">
                             <ScrollViewer VerticalScrollBarVisibility="Auto">
-                                <TextBlock 
+                                <components:ConciergeTextBlock 
                                     x:Name="IdealField"
                                     Foreground="White"
                                     FontSize="16"
@@ -474,7 +474,7 @@
                         <Grid Grid.Column="0"
                           Background="#001233"
                           Margin="3, 3, 0, 3">
-                            <TextBlock Text="Bond"
+                            <components:ConciergeTextBlock Text="Bond"
                                    Foreground="White"
                                    FontSize="25"
                                    FontWeight="Bold"
@@ -488,7 +488,7 @@
                           Background="#FF3e3e42"
                           Margin="0, 3, 3, 3">
                             <ScrollViewer VerticalScrollBarVisibility="Auto">
-                                <TextBlock 
+                                <components:ConciergeTextBlock 
                                     x:Name="BondField"
                                     Foreground="White"
                                     FontSize="16"
@@ -510,7 +510,7 @@
                         <Grid Grid.Column="0"
                           Background="#001233"
                           Margin="3, 3, 0, 3">
-                            <TextBlock Text="Flaw"
+                            <components:ConciergeTextBlock Text="Flaw"
                                    Foreground="White"
                                    FontSize="25"
                                    FontWeight="Bold"
@@ -524,7 +524,7 @@
                           Background="#FF3e3e42"
                           Margin="0, 3, 3, 3">
                             <ScrollViewer VerticalScrollBarVisibility="Auto">
-                                <TextBlock 
+                                <components:ConciergeTextBlock 
                                     x:Name="FlawField"
                                     Foreground="White"
                                     FontSize="16"
@@ -546,7 +546,7 @@
                         <Grid Grid.Column="0"
                           Background="#001233"
                           Margin="3, 3, 0, 3">
-                            <TextBlock Text="Background Feature"
+                            <components:ConciergeTextBlock Text="Background Feature"
                                    Foreground="White"
                                    FontSize="25"
                                    FontWeight="Bold"
@@ -560,7 +560,7 @@
                           Background="#FF3e3e42"
                           Margin="0, 3, 3, 3">
                             <ScrollViewer VerticalScrollBarVisibility="Auto">
-                                <TextBlock 
+                                <components:ConciergeTextBlock 
                                     x:Name="BackgroundField"
                                     Foreground="White"
                                     FontSize="16"
@@ -582,7 +582,7 @@
                         <Grid Grid.Column="0"
                           Background="#001233"
                           Margin="3, 3, 0, 3">
-                            <TextBlock Text="Notes"
+                            <components:ConciergeTextBlock Text="Notes"
                                    Foreground="White"
                                    FontSize="25"
                                    FontWeight="Bold"
@@ -596,7 +596,7 @@
                           Background="#FF3e3e42"
                           Margin="0, 3, 3, 3">
                             <ScrollViewer VerticalScrollBarVisibility="Auto">
-                                <TextBlock 
+                                <components:ConciergeTextBlock 
                                     x:Name="NotesField"
                                     Foreground="White"
                                     FontSize="16"
@@ -621,14 +621,14 @@
                 <Grid Grid.Row="0"
                       Background="#000917"
                       Margin="3, 3, 3, 0">
-                    <TextBlock 
+                    <components:ConciergeTextBlock 
                         Text="Proficiencies"
                         Foreground="White"
                         FontSize="24"
                         FontWeight="Bold"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"/>
-                    <TextBlock 
+                    <components:ConciergeTextBlock 
                         x:Name="ProficiencyBonusField"
                         Foreground="White"
                         Background="#33415C"
@@ -797,7 +797,7 @@
                     </Grid.ColumnDefinitions>
 
                     <Grid Grid.Column="0">
-                        <TextBlock 
+                        <components:ConciergeTextBlock 
                             Text="Weight Carried"
                             Foreground="White"
                             FontSize="20"
@@ -809,7 +809,7 @@
                     <Grid Grid.Column="1"
                               Margin="10"
                               x:Name="WeightCarriedBox">
-                        <TextBlock 
+                        <components:ConciergeTextBlock 
                             Text="50"
                             Foreground="White"
                             FontSize="30"
@@ -835,7 +835,7 @@
                         </Grid.RowDefinitions>
 
                         <Grid Grid.Row="0" Background="#001233">
-                            <TextBlock Text="Light"
+                            <components:ConciergeTextBlock Text="Light"
                                            FontSize="22"
                                            Foreground="White"
                                            FontWeight="Bold"
@@ -844,7 +844,7 @@
                         </Grid>
 
                         <Grid Grid.Row="1" Background="#ffd8e4bc">
-                            <TextBlock 
+                            <components:ConciergeTextBlock 
                                 FontSize="30"
                                 HorizontalAlignment="Center"
                                 VerticalAlignment="Center"
@@ -860,7 +860,7 @@
                         </Grid.RowDefinitions>
 
                         <Grid Grid.Row="0" Background="#001233">
-                            <TextBlock Text="Medium"
+                            <components:ConciergeTextBlock Text="Medium"
                                            FontSize="22"
                                            Foreground="White"
                                            FontWeight="Bold"
@@ -869,7 +869,7 @@
                         </Grid>
 
                         <Grid Grid.Row="1" Background="#fffcd6b4">
-                            <TextBlock 
+                            <components:ConciergeTextBlock 
                                 FontSize="30"
                                 HorizontalAlignment="Center"
                                 VerticalAlignment="Center"
@@ -885,7 +885,7 @@
                         </Grid.RowDefinitions>
 
                         <Grid Grid.Row="0" Background="#001233">
-                            <TextBlock Text="Heavy"
+                            <components:ConciergeTextBlock Text="Heavy"
                                            FontSize="22"
                                            Foreground="White"
                                            FontWeight="Bold"
@@ -894,7 +894,7 @@
                         </Grid>
 
                         <Grid Grid.Row="1" Background="Pink">
-                            <TextBlock 
+                            <components:ConciergeTextBlock 
                                 FontSize="30"
                                 HorizontalAlignment="Center"
                                 VerticalAlignment="Center"

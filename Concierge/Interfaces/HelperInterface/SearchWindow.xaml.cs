@@ -11,6 +11,7 @@ namespace Concierge.Interfaces.HelperInterface
     using System.Windows.Input;
     using System.Windows.Media;
 
+    using Concierge.Interfaces.Components;
     using Concierge.Tools.Searching;
     using Concierge.Tools.Searching.Enums;
     using Concierge.Utility;
@@ -43,9 +44,9 @@ namespace Concierge.Interfaces.HelperInterface
 
         public void ShowWindow()
         {
-            this.WindowState = WindowState.Normal;
+            this.ClearFields();
             this.SearchTextBox.Focus();
-            this.Show();
+            this.ShowDialog();
         }
 
         protected override void OnClosing(CancelEventArgs e)
@@ -53,6 +54,14 @@ namespace Concierge.Interfaces.HelperInterface
             base.OnClosing(e);
             e.Cancel = true;
             this.Hide();
+        }
+
+        private void ClearFields()
+        {
+            this.MatchCaseCheckBox.IsChecked = false;
+            this.MatchWholeWordCheckBox.IsChecked = false;
+            this.SearchDomainComboBox.Text = SearchDomain.CurrentPage.ToString().FormatFromEnum();
+            this.SearchTextBox.Text = string.Empty;
         }
 
         private SearchSettings ToSettings()
@@ -75,7 +84,7 @@ namespace Concierge.Interfaces.HelperInterface
                 return;
             }
 
-            this.SearchResults = this.conciergeSearch.Search(settings, Program.CcsFile.Character);
+            this.SearchResults = this.conciergeSearch.Search(settings);
             this.SearchIndex = 0;
         }
 
@@ -88,7 +97,10 @@ namespace Concierge.Interfaces.HelperInterface
                 return;
             }
 
+            this.Opacity = 0.8;
+
             var result = this.SearchResults[this.SearchIndex];
+            this.ClearHighlightedResults();
             this.mainWindow.MoveSelection(result.ConciergePage.ConciergePage);
             this.conciergeNavigate.Navigate(result);
             this.Focus();
@@ -108,13 +120,20 @@ namespace Concierge.Interfaces.HelperInterface
             }
         }
 
-        private void MinimizeButton_Click(object sender, RoutedEventArgs e)
+        private void ClearHighlightedResults()
         {
-            this.WindowState = WindowState.Minimized;
+            foreach (var result in this.SearchResults)
+            {
+                if (result.Item is ConciergeTextBlock)
+                {
+                    (result.Item as ConciergeTextBlock).ResetHighlight();
+                }
+            }
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
+            this.ClearHighlightedResults();
             this.Hide();
         }
 
@@ -144,6 +163,7 @@ namespace Concierge.Interfaces.HelperInterface
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
+            this.ClearHighlightedResults();
             this.Hide();
         }
 
@@ -160,11 +180,20 @@ namespace Concierge.Interfaces.HelperInterface
             switch (e.Key)
             {
                 case Key.Escape:
+                    this.ClearHighlightedResults();
                     this.Hide();
                     break;
                 case Key.Enter:
                     this.FindNextButton_Click(this.FindNextButton, null);
                     break;
+            }
+        }
+
+        private void Window_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (this.Opacity < 1)
+            {
+                this.Opacity = 1;
             }
         }
     }

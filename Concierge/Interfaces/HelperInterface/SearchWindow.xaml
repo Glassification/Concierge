@@ -17,9 +17,11 @@
         Background="#252526"
         ResizeMode="NoResize"
         MouseDown="Window_MouseDown"
+        MouseMove="Window_MouseMove"
         KeyDown="Window_KeyDown"
         BorderThickness="1"
         BorderBrush="#227EA9"
+        AllowsTransparency="True"
         Style="{StaticResource WindowXboxDasboardStyle}">
     <Grid>
         <Grid.RowDefinitions>
@@ -40,15 +42,6 @@
                 Margin="30, 0, 0, 0"
                 FontWeight="Bold"/>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                <components:ConciergeDesignButton 
-                    Style="{StaticResource ConciergeDesignButtonStyle}" 
-                    x:Name="MinimizeButton"
-                    Width="60"
-                    Foreground="White"
-                    ToolTip="Minimize"
-                    Click="MinimizeButton_Click">
-                    <materialDesign:PackIcon Kind="WindowMinimize" Width="25" Height="25"/>
-                </components:ConciergeDesignButton>
                 <components:ConciergeDesignButton 
                     Style="{StaticResource ConciergeDesignButtonStyle}" 
                     x:Name="CloseButton"

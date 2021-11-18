@@ -19,13 +19,11 @@
 
         <!--Header-->
         <Grid Grid.Row="0">
-            <TextBlock Text="Campain Notes"
-                           Foreground="White"
-                           FontSize="25"
-                           FontWeight="Bold"
-                           VerticalAlignment="Center"
-                           HorizontalAlignment="Left"
-                           Margin="150, 0, 0, 0"/>
+            <components:ConciergeTextBlock 
+                Text="Campaign Notes"
+                FontSize="25"
+                HorizontalAlignment="Left"
+                Margin="150, 0, 0, 0"/>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                 <components:ConciergeDesignButton 
                     Style="{StaticResource ConciergeDesignButtonStyle}" 

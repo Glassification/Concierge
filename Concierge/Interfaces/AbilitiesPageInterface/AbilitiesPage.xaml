@@ -22,13 +22,11 @@
         <Grid Grid.Row="0"
               Background="#000917"
               Margin="3">
-            <TextBlock Text="Abilities"
-                           Foreground="White"
-                           FontSize="25"
-                           FontWeight="Bold"
-                           VerticalAlignment="Center"
-                           HorizontalAlignment="Left"
-                           Margin="150, 0, 0, 0"/>
+            <components:ConciergeTextBlock 
+                Text="Abilities"
+                FontSize="25"
+                HorizontalAlignment="Left"
+                Margin="150, 0, 0, 0"/>
 
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                 <components:ConciergeDesignButton 

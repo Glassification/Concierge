@@ -48,12 +48,9 @@
                             ToolTip="Edit Attributes">
                             <materialDesign:PackIcon Kind="PlaylistEdit" Width="25" Height="25"/>
                         </components:ConciergeDesignButton>
-                        <TextBlock Text="Strength"
-                                   Foreground="White"
-                                   FontSize="17"
-                                   HorizontalAlignment="Center"
-                                   VerticalAlignment="Center"
-                                   FontWeight="Bold"/>
+                        <components:ConciergeTextBlock 
+                            Text="Strength"
+                            FontSize="17"/>
                     </Grid>
                     <!--Bonus-->
                     <Grid Grid.Row="1" Background="#001233">
@@ -64,21 +61,16 @@
                         </Grid.ColumnDefinitions>
 
                         <Grid Grid.Column="0">
-                            <TextBlock Text="Bonus"
-                                       Margin="5"
-                                       Foreground="White"
-                                       FontSize="15"
-                                       HorizontalAlignment="Left"
-                                       VerticalAlignment="Center"
-                                       FontStyle="Italic"/>
+                            <components:ConciergeTextBlock 
+                                Text="Bonus"
+                                Margin="5"
+                                FontSize="15"
+                                HorizontalAlignment="Left"/>
                         </Grid>
                         <Grid Grid.Column="1" Grid.ColumnSpan="2">
-                            <TextBlock x:Name="StrengthBonusField"
-                                       Foreground="White"
-                                       FontSize="25"
-                                       HorizontalAlignment="Center"
-                                       VerticalAlignment="Center"
-                                       FontWeight="Bold"/>
+                            <components:ConciergeTextBlock 
+                                x:Name="StrengthBonusField"
+                                FontSize="25"/>
                         </Grid>
                     </Grid>
                     <!--Score-->
@@ -89,20 +81,16 @@
                         </Grid.ColumnDefinitions>
 
                         <Grid Grid.Column="0">
-                            <TextBlock Text="Score"
-                                       Margin="5"
-                                       Foreground="White"
-                                       FontSize="15"
-                                       HorizontalAlignment="Left"
-                                       VerticalAlignment="Center"
-                                       FontStyle="Italic"/>
+                            <components:ConciergeTextBlock 
+                                Text="Score"
+                                Margin="5"
+                                FontSize="15"
+                                HorizontalAlignment="Left"/>
                         </Grid>
                         <Grid Grid.Column="1">
-                            <TextBlock x:Name="StrengthScoreField"
-                                       Foreground="White"
-                                       FontSize="15"
-                                       HorizontalAlignment="Center"
-                                       VerticalAlignment="Center"/>
+                            <components:ConciergeTextBlock 
+                                x:Name="StrengthScoreField"
+                                FontSize="15"/>
                         </Grid>
                     </Grid>
                 </Grid>
@@ -117,12 +105,9 @@
 
                     <!--Name-->
                     <Grid Grid.Row="0" Background="#000917">
-                        <TextBlock Text="Dexterity"
-                                   Foreground="White"
-                                   FontSize="17"
-                                   HorizontalAlignment="Center"
-                                   VerticalAlignment="Center"
-                                   FontWeight="Bold"/>
+                        <components:ConciergeTextBlock 
+                            Text="Dexterity"
+                            FontSize="17"/>
                     </Grid>
                     <!--Bonus-->
                     <Grid Grid.Row="1" Background="#001233">
@@ -132,21 +117,16 @@
                         </Grid.ColumnDefinitions>
 
                         <Grid Grid.Column="0">
-                            <TextBlock Text="Bonus"
-                                       Margin="5"
-                                       Foreground="White"
-                                       FontSize="15"
-                                       HorizontalAlignment="Left"
-                                       VerticalAlignment="Center"
-                                       FontStyle="Italic"/>
+                            <components:ConciergeTextBlock 
+                                Text="Bonus"
+                                Margin="5"
+                                FontSize="15"
+                                HorizontalAlignment="Left"/>
                         </Grid>
                         <Grid Grid.Column="1">
-                            <TextBlock x:Name="DexterityBonusField"
-                                       Foreground="White"
-                                       FontSize="25"
-                                       HorizontalAlignment="Center"
-                                       VerticalAlignment="Center"
-                                       FontWeight="Bold"/>
+                            <components:ConciergeTextBlock 
+                                x:Name="DexterityBonusField"
+                                FontSize="25"/>
                         </Grid>
                     </Grid>
                     <!--Score-->
@@ -157,20 +137,16 @@
                         </Grid.ColumnDefinitions>
 
                         <Grid Grid.Column="0">
-                            <TextBlock Text="Score"
-                                       Margin="5"
-                                       Foreground="White"
-                                       FontSize="15"
-                                       HorizontalAlignment="Left"
-                                       VerticalAlignment="Center"
-                                       FontStyle="Italic"/>
+                            <components:ConciergeTextBlock 
+                                Text="Score"
+                                Margin="5"
+                                FontSize="15"
+                                HorizontalAlignment="Left"/>
                         </Grid>
                         <Grid Grid.Column="1">
-                            <TextBlock x:Name="DexterityScoreField"
-                                       Foreground="White"
-                                       FontSize="15"
-                                       HorizontalAlignment="Center"
-                                       VerticalAlignment="Center"/>
+                            <components:ConciergeTextBlock 
+                                x:Name="DexterityScoreField"
+                                FontSize="15"/>
                         </Grid>
                     </Grid>
                 </Grid>
@@ -185,12 +161,9 @@
 
                     <!--Name-->
                     <Grid Grid.Row="0" Background="#000917">
-                        <TextBlock Text="Constitution"
-                                   Foreground="White"
-                                   FontSize="17"
-                                   HorizontalAlignment="Center"
-                                   VerticalAlignment="Center"
-                                   FontWeight="Bold"/>
+                        <components:ConciergeTextBlock 
+                            Text="Constitution"
+                            FontSize="17"/>
                     </Grid>
                     <!--Bonus-->
                     <Grid Grid.Row="1" Background="#001233">
@@ -200,21 +173,16 @@
                         </Grid.ColumnDefinitions>
 
                         <Grid Grid.Column="0">
-                            <TextBlock Text="Bonus"
-                                       Margin="5"
-                                       Foreground="White"
-                                       FontSize="15"
-                                       HorizontalAlignment="Left"
-                                       VerticalAlignment="Center"
-                                       FontStyle="Italic"/>
+                            <components:ConciergeTextBlock 
+                                Text="Bonus"
+                                Margin="5"
+                                FontSize="15"
+                                HorizontalAlignment="Left"/>
                         </Grid>
                         <Grid Grid.Column="1">
-                            <TextBlock x:Name="ConstitutionBonusField"
-                                       Foreground="White"
-                                       FontSize="25"
-                                       HorizontalAlignment="Center"
-                                       VerticalAlignment="Center"
-                                       FontWeight="Bold"/>
+                            <components:ConciergeTextBlock 
+                                x:Name="ConstitutionBonusField"
+                                FontSize="25"/>
                         </Grid>
                     </Grid>
                     <!--Score-->
@@ -225,20 +193,16 @@
                         </Grid.ColumnDefinitions>
 
                         <Grid Grid.Column="0">
-                            <TextBlock Text="Score"
-                                       Margin="5"
-                                       Foreground="White"
-                                       FontSize="15"
-                                       HorizontalAlignment="Left"
-                                       VerticalAlignment="Center"
-                                       FontStyle="Italic"/>
+                            <components:ConciergeTextBlock 
+                                Text="Score"
+                                Margin="5"
+                                FontSize="15"
+                                HorizontalAlignment="Left"/>
                         </Grid>
                         <Grid Grid.Column="1">
-                            <TextBlock x:Name="ConstitutionScoreField"
-                                       Foreground="White"
-                                       FontSize="15"
-                                       HorizontalAlignment="Center"
-                                       VerticalAlignment="Center"/>
+                            <components:ConciergeTextBlock 
+                                x:Name="ConstitutionScoreField"
+                                FontSize="15"/>
                         </Grid>
                     </Grid>
                 </Grid>
@@ -253,7 +217,7 @@
 
                     <!--Name-->
                     <Grid Grid.Row="0" Background="#000917">
-                        <TextBlock Text="Intelligence"
+                        <components:ConciergeTextBlock Text="Intelligence"
                                    Foreground="White"
                                    FontSize="17"
                                    HorizontalAlignment="Center"
@@ -268,7 +232,7 @@
                         </Grid.ColumnDefinitions>
 
                         <Grid Grid.Column="0">
-                            <TextBlock Text="Bonus"
+                            <components:ConciergeTextBlock Text="Bonus"
                                        Margin="5"
                                        Foreground="White"
                                        FontSize="15"
@@ -277,7 +241,7 @@
                                        FontStyle="Italic"/>
                         </Grid>
                         <Grid Grid.Column="1">
-                            <TextBlock x:Name="IntelligenceBonusField"
+                            <components:ConciergeTextBlock x:Name="IntelligenceBonusField"
                                        Foreground="White"
                                        FontSize="25"
                                        HorizontalAlignment="Center"
@@ -293,7 +257,7 @@
                         </Grid.ColumnDefinitions>
 
                         <Grid Grid.Column="0">
-                            <TextBlock Text="Score"
+                            <components:ConciergeTextBlock Text="Score"
                                        Margin="5"
                                        Foreground="White"
                                        FontSize="15"
@@ -302,7 +266,7 @@
                                        FontStyle="Italic"/>
                         </Grid>
                         <Grid Grid.Column="1">
-                            <TextBlock x:Name="IntelligenceScoreField"
+                            <components:ConciergeTextBlock x:Name="IntelligenceScoreField"
                                        Foreground="White"
                                        FontSize="15"
                                        HorizontalAlignment="Center"
@@ -321,7 +285,7 @@
 
                     <!--Name-->
                     <Grid Grid.Row="0" Background="#000917">
-                        <TextBlock Text="Wisdom"
+                        <components:ConciergeTextBlock Text="Wisdom"
                                    Foreground="White"
                                    FontSize="17"
                                    HorizontalAlignment="Center"
@@ -336,7 +300,7 @@
                         </Grid.ColumnDefinitions>
 
                         <Grid Grid.Column="0">
-                            <TextBlock Text="Bonus"
+                            <components:ConciergeTextBlock Text="Bonus"
                                        Margin="5"
                                        Foreground="White"
                                        FontSize="15"
@@ -345,7 +309,7 @@
                                        FontStyle="Italic"/>
                         </Grid>
                         <Grid Grid.Column="1">
-                            <TextBlock x:Name="WisdomBonusField"
+                            <components:ConciergeTextBlock x:Name="WisdomBonusField"
                                        Foreground="White"
                                        FontSize="25"
                                        HorizontalAlignment="Center"
@@ -361,7 +325,7 @@
                         </Grid.ColumnDefinitions>
 
                         <Grid Grid.Column="0">
-                            <TextBlock Text="Score"
+                            <components:ConciergeTextBlock Text="Score"
                                        Margin="5"
                                        Foreground="White"
                                        FontSize="15"
@@ -370,7 +334,7 @@
                                        FontStyle="Italic"/>
                         </Grid>
                         <Grid Grid.Column="1">
-                            <TextBlock x:Name="WisdomScoreField"
+                            <components:ConciergeTextBlock x:Name="WisdomScoreField"
                                        Foreground="White"
                                        FontSize="15"
                                        HorizontalAlignment="Center"
@@ -389,7 +353,7 @@
 
                     <!--Name-->
                     <Grid Grid.Row="0" Background="#000917">
-                        <TextBlock Text="Charisma"
+                        <components:ConciergeTextBlock Text="Charisma"
                                    Foreground="White"
                                    FontSize="17"
                                    HorizontalAlignment="Center"
@@ -404,7 +368,7 @@
                         </Grid.ColumnDefinitions>
 
                         <Grid Grid.Column="0">
-                            <TextBlock Text="Bonus"
+                            <components:ConciergeTextBlock Text="Bonus"
                                        Margin="5"
                                        Foreground="White"
                                        FontSize="15"
@@ -413,7 +377,7 @@
                                        FontStyle="Italic"/>
                         </Grid>
                         <Grid Grid.Column="1">
-                            <TextBlock x:Name="CharismaBonusField"
+                            <components:ConciergeTextBlock x:Name="CharismaBonusField"
                                        Foreground="White"
                                        FontSize="25"
                                        HorizontalAlignment="Center"
@@ -429,7 +393,7 @@
                         </Grid.ColumnDefinitions>
 
                         <Grid Grid.Column="0">
-                            <TextBlock Text="Score"
+                            <components:ConciergeTextBlock Text="Score"
                                        Margin="5"
                                        Foreground="White"
                                        FontSize="15"
@@ -438,7 +402,7 @@
                                        FontStyle="Italic"/>
                         </Grid>
                         <Grid Grid.Column="1">
-                            <TextBlock x:Name="CharismaScoreField"
+                            <components:ConciergeTextBlock x:Name="CharismaScoreField"
                                        Foreground="White"
                                        FontSize="15"
                                        HorizontalAlignment="Center"
@@ -486,7 +450,7 @@
                             ToolTip="Edit Senses">
                             <materialDesign:PackIcon Kind="PlaylistEdit" Width="25" Height="25"/>
                         </components:ConciergeDesignButton>
-                        <TextBlock
+                        <components:ConciergeTextBlock
                             Text="Initiative"
                             Foreground="White"
                             FontSize="20"
@@ -496,13 +460,10 @@
                     </Grid>
 
                     <!--Value-->
-                    <Grid Grid.Column="1" Background="#001233">
-                        <TextBlock x:Name="InitiativeField"
-                                   Foreground="White"
-                                   FontSize="22"
-                                   FontWeight="Bold"
-                                   HorizontalAlignment="Center"
-                                   VerticalAlignment="Center"/>
+                    <Grid Grid.Column="1" Background="#001233" >
+                        <components:ConciergeTextBlock 
+                            x:Name="InitiativeField"
+                            FontSize="22"/>
                     </Grid>
                 </Grid>
 
@@ -515,7 +476,7 @@
 
                     <!--Name-->
                     <Grid Grid.Column="0" Background="#000917">
-                        <TextBlock Text="Passive Perception"
+                        <components:ConciergeTextBlock Text="Passive Perception"
                                    Foreground="White"
                                    FontSize="20"
                                    FontWeight="Bold"
@@ -526,7 +487,7 @@
 
                     <!--Value-->
                     <Grid Grid.Column="1" Background="#001233">
-                        <TextBlock x:Name="PassivePerceptionField"
+                        <components:ConciergeTextBlock x:Name="PassivePerceptionField"
                                    Foreground="White"
                                    FontSize="22"
                                    FontWeight="Bold"
@@ -544,7 +505,7 @@
 
                     <!--Name-->
                     <Grid Grid.Column="0" Background="#000917">
-                        <TextBlock Text="Vision"
+                        <components:ConciergeTextBlock Text="Vision"
                                    Foreground="White"
                                    FontSize="20"
                                    FontWeight="Bold"
@@ -555,7 +516,7 @@
 
                     <!--Value-->
                     <Grid Grid.Column="1" Background="#001233">
-                        <TextBlock x:Name="VisionField"
+                        <components:ConciergeTextBlock x:Name="VisionField"
                                    Foreground="White"
                                    FontSize="22"
                                    FontWeight="Bold"
@@ -573,7 +534,7 @@
 
                     <!--Name-->
                     <Grid Grid.Column="0" Background="#000917">
-                        <TextBlock Text="Movement Speed"
+                        <components:ConciergeTextBlock Text="Movement Speed"
                                    Foreground="White"
                                    FontSize="20"
                                    FontWeight="Bold"
@@ -584,7 +545,7 @@
 
                     <!--Value-->
                     <Grid Grid.Column="1" Background="#001233">
-                        <TextBlock x:Name="MovementSpeedField"
+                        <components:ConciergeTextBlock x:Name="MovementSpeedField"
                                    Foreground="White"
                                    FontSize="22"
                                    FontWeight="Bold"
@@ -624,7 +585,7 @@
                             </Grid.ColumnDefinitions>
 
                             <Grid Grid.Column="0">
-                                <TextBlock Text="Proficiency"
+                                <components:ConciergeTextBlock Text="Proficiency"
                                    Foreground="White"
                                    FontSize="15"
                                    FontWeight="Bold"
@@ -633,7 +594,7 @@
                             </Grid>
 
                             <Grid Grid.Column="1">
-                                <TextBlock Text="Saving Throws"
+                                <components:ConciergeTextBlock Text="Saving Throws"
                                    Foreground="White"
                                    FontSize="23"
                                    FontWeight="Bold"
@@ -642,7 +603,7 @@
                             </Grid>
 
                             <Grid Grid.Column="20">
-                                <TextBlock Text="Bonus"
+                                <components:ConciergeTextBlock Text="Bonus"
                                    Foreground="White"
                                    FontSize="15"
                                    FontWeight="Bold"
@@ -681,7 +642,7 @@
 
                                 <!--Name-->
                                 <Grid Grid.Column="1">
-                                    <TextBlock Text="Strength"
+                                    <components:ConciergeTextBlock Text="Strength"
                                            x:Name="StrengthSavingThrowName"
                                            Foreground="White"
                                            FontSize="17"
@@ -691,7 +652,7 @@
 
                                 <!--Value-->
                                 <Grid Grid.Column="2">
-                                    <TextBlock x:Name="StrengthSavingThrowField"
+                                    <components:ConciergeTextBlock x:Name="StrengthSavingThrowField"
                                            Foreground="White"
                                            FontSize="20"
                                            FontWeight="Bold"
@@ -718,7 +679,7 @@
 
                                 <!--Name-->
                                 <Grid Grid.Column="1">
-                                    <TextBlock Text="Dexterity"
+                                    <components:ConciergeTextBlock Text="Dexterity"
                                            x:Name="DexteritySavingThrowName"
                                            Foreground="White"
                                            FontSize="17"
@@ -728,7 +689,7 @@
 
                                 <!--Value-->
                                 <Grid Grid.Column="2">
-                                    <TextBlock x:Name="DexteritySavingThrowField"
+                                    <components:ConciergeTextBlock x:Name="DexteritySavingThrowField"
                                            Foreground="White"
                                            FontSize="20"
                                            FontWeight="Bold"
@@ -755,7 +716,7 @@
 
                                 <!--Name-->
                                 <Grid Grid.Column="1">
-                                    <TextBlock Text="Constitution"
+                                    <components:ConciergeTextBlock Text="Constitution"
                                            x:Name="ConstitutionSavingThrowName"
                                            Foreground="White"
                                            FontSize="17"
@@ -765,7 +726,7 @@
 
                                 <!--Value-->
                                 <Grid Grid.Column="2">
-                                    <TextBlock x:Name="ConstitutionSavingThrowField"
+                                    <components:ConciergeTextBlock x:Name="ConstitutionSavingThrowField"
                                            Foreground="White"
                                            FontSize="20"
                                            FontWeight="Bold"
@@ -792,7 +753,7 @@
 
                                 <!--Name-->
                                 <Grid Grid.Column="1">
-                                    <TextBlock Text="Intelligence"
+                                    <components:ConciergeTextBlock Text="Intelligence"
                                            x:Name="IntelligenceSavingThrowName"
                                            Foreground="White"
                                            FontSize="17"
@@ -802,7 +763,7 @@
 
                                 <!--Value-->
                                 <Grid Grid.Column="2">
-                                    <TextBlock x:Name="IntelligenceSavingThrowField"
+                                    <components:ConciergeTextBlock x:Name="IntelligenceSavingThrowField"
                                            Foreground="White"
                                            FontSize="20"
                                            FontWeight="Bold"
@@ -829,7 +790,7 @@
 
                                 <!--Name-->
                                 <Grid Grid.Column="1">
-                                    <TextBlock Text="Wisdom"
+                                    <components:ConciergeTextBlock Text="Wisdom"
                                            x:Name="WisdomSavingThrowName"
                                            Foreground="White"
                                            FontSize="17"
@@ -839,7 +800,7 @@
 
                                 <!--Value-->
                                 <Grid Grid.Column="2">
-                                    <TextBlock x:Name="WisdomSavingThrowField"
+                                    <components:ConciergeTextBlock x:Name="WisdomSavingThrowField"
                                            Foreground="White"
                                            FontSize="20"
                                            FontWeight="Bold"
@@ -866,7 +827,7 @@
 
                                 <!--Name-->
                                 <Grid Grid.Column="1">
-                                    <TextBlock Text="Charisma"
+                                    <components:ConciergeTextBlock Text="Charisma"
                                            x:Name="CharismaSavingThrowName"
                                            Foreground="White"
                                            FontSize="17"
@@ -876,7 +837,7 @@
 
                                 <!--Value-->
                                 <Grid Grid.Column="2">
-                                    <TextBlock x:Name="CharismaSavingThrowField"
+                                    <components:ConciergeTextBlock x:Name="CharismaSavingThrowField"
                                            Foreground="White"
                                            FontSize="20"
                                            FontWeight="Bold"
@@ -904,7 +865,7 @@
                             </Grid.ColumnDefinitions>
 
                             <Grid Grid.Column="0">
-                                <TextBlock Text="Proficiency"
+                                <components:ConciergeTextBlock Text="Proficiency"
                                Foreground="White"
                                FontSize="15"
                                FontWeight="Bold"
@@ -913,7 +874,7 @@
                             </Grid>
 
                             <Grid Grid.Column="1">
-                                <TextBlock Text="Expertise"
+                                <components:ConciergeTextBlock Text="Expertise"
                                Foreground="White"
                                FontSize="15"
                                FontWeight="Bold"
@@ -922,7 +883,7 @@
                             </Grid>
 
                             <Grid Grid.Column="2">
-                                <TextBlock Text="Skills"
+                                <components:ConciergeTextBlock Text="Skills"
                                Foreground="White"
                                FontSize="23"
                                FontWeight="Bold"
@@ -931,7 +892,7 @@
                             </Grid>
 
                             <Grid Grid.Column="3">
-                                <TextBlock Text="Bonus"
+                                <components:ConciergeTextBlock Text="Bonus"
                                Foreground="White"
                                FontSize="15"
                                FontWeight="Bold"
@@ -990,7 +951,7 @@
 
                                 <!--Name-->
                                 <Grid Grid.Column="2">
-                                    <TextBlock Text="Athletics"
+                                    <components:ConciergeTextBlock Text="Athletics"
                                            x:Name="AthleticsSkillName"
                                            Foreground="White"
                                            FontSize="15"
@@ -1000,7 +961,7 @@
 
                                 <!--Value-->
                                 <Grid Grid.Column="3">
-                                    <TextBlock x:Name="AthleticsSkillField"
+                                    <components:ConciergeTextBlock x:Name="AthleticsSkillField"
                                            Foreground="White"
                                            FontSize="17"
                                            FontWeight="Bold"
@@ -1036,7 +997,7 @@
 
                                 <!--Name-->
                                 <Grid Grid.Column="2">
-                                    <TextBlock Text="Acrobatics"
+                                    <components:ConciergeTextBlock Text="Acrobatics"
                                            x:Name="AcrobaticsSkillName"
                                            Foreground="White"
                                            FontSize="15"
@@ -1046,7 +1007,7 @@
 
                                 <!--Value-->
                                 <Grid Grid.Column="3">
-                                    <TextBlock x:Name="AcrobaticsSkillField"
+                                    <components:ConciergeTextBlock x:Name="AcrobaticsSkillField"
                                            Foreground="White"
                                            FontSize="17"
                                            FontWeight="Bold"
@@ -1082,7 +1043,7 @@
 
                                 <!--Name-->
                                 <Grid Grid.Column="2">
-                                    <TextBlock Text="Sleight of Hand"
+                                    <components:ConciergeTextBlock Text="Sleight of Hand"
                                            x:Name="SleightOfHandSkillName"
                                            Foreground="White"
                                            FontSize="15"
@@ -1092,7 +1053,7 @@
 
                                 <!--Value-->
                                 <Grid Grid.Column="3">
-                                    <TextBlock x:Name="SleightOfHandSkillField"
+                                    <components:ConciergeTextBlock x:Name="SleightOfHandSkillField"
                                            Foreground="White"
                                            FontSize="17"
                                            FontWeight="Bold"
@@ -1128,7 +1089,7 @@
 
                                 <!--Name-->
                                 <Grid Grid.Column="2">
-                                    <TextBlock Text="Stealth"
+                                    <components:ConciergeTextBlock Text="Stealth"
                                            x:Name="StealthSkillName"
                                            Foreground="White"
                                            FontSize="15"
@@ -1138,7 +1099,7 @@
 
                                 <!--Value-->
                                 <Grid Grid.Column="3">
-                                    <TextBlock x:Name="StealthSkillField"
+                                    <components:ConciergeTextBlock x:Name="StealthSkillField"
                                            Foreground="White"
                                            FontSize="17"
                                            FontWeight="Bold"
@@ -1174,7 +1135,7 @@
 
                                 <!--Name-->
                                 <Grid Grid.Column="2">
-                                    <TextBlock Text="Arcana"
+                                    <components:ConciergeTextBlock Text="Arcana"
                                            x:Name="ArcanaSkillName"
                                            Foreground="White"
                                            FontSize="15"
@@ -1184,7 +1145,7 @@
 
                                 <!--Value-->
                                 <Grid Grid.Column="3">
-                                    <TextBlock x:Name="ArcanaSkillField"
+                                    <components:ConciergeTextBlock x:Name="ArcanaSkillField"
                                            Foreground="White"
                                            FontSize="17"
                                            FontWeight="Bold"
@@ -1220,7 +1181,7 @@
 
                                 <!--Name-->
                                 <Grid Grid.Column="2">
-                                    <TextBlock Text="History"
+                                    <components:ConciergeTextBlock Text="History"
                                            x:Name="HistorySkillName"
                                            Foreground="White"
                                            FontSize="15"
@@ -1230,7 +1191,7 @@
 
                                 <!--Value-->
                                 <Grid Grid.Column="3">
-                                    <TextBlock x:Name="HistorySkillField"
+                                    <components:ConciergeTextBlock x:Name="HistorySkillField"
                                            Foreground="White"
                                            FontSize="17"
                                            FontWeight="Bold"
@@ -1266,7 +1227,7 @@
 
                                 <!--Name-->
                                 <Grid Grid.Column="2">
-                                    <TextBlock Text="Investigation"
+                                    <components:ConciergeTextBlock Text="Investigation"
                                            x:Name="InvestigationSkillName"
                                            Foreground="White"
                                            FontSize="15"
@@ -1276,7 +1237,7 @@
 
                                 <!--Value-->
                                 <Grid Grid.Column="3">
-                                    <TextBlock x:Name="InvestigationSkillField"
+                                    <components:ConciergeTextBlock x:Name="InvestigationSkillField"
                                            Foreground="White"
                                            FontSize="17"
                                            FontWeight="Bold"
@@ -1312,7 +1273,7 @@
 
                                 <!--Name-->
                                 <Grid Grid.Column="2">
-                                    <TextBlock Text="Nature"
+                                    <components:ConciergeTextBlock Text="Nature"
                                            x:Name="NatureSkillName"
                                            Foreground="White"
                                            FontSize="15"
@@ -1322,7 +1283,7 @@
 
                                 <!--Value-->
                                 <Grid Grid.Column="3">
-                                    <TextBlock x:Name="NatureSkillField"
+                                    <components:ConciergeTextBlock x:Name="NatureSkillField"
                                            Foreground="White"
                                            FontSize="17"
                                            FontWeight="Bold"
@@ -1358,7 +1319,7 @@
 
                                 <!--Name-->
                                 <Grid Grid.Column="2">
-                                    <TextBlock Text="Religion"
+                                    <components:ConciergeTextBlock Text="Religion"
                                            x:Name="ReligionSkillName"
                                            Foreground="White"
                                            FontSize="15"
@@ -1368,7 +1329,7 @@
 
                                 <!--Value-->
                                 <Grid Grid.Column="3">
-                                    <TextBlock x:Name="ReligionSkillField"
+                                    <components:ConciergeTextBlock x:Name="ReligionSkillField"
                                            Foreground="White"
                                            FontSize="17"
                                            FontWeight="Bold"
@@ -1404,7 +1365,7 @@
 
                                 <!--Name-->
                                 <Grid Grid.Column="2">
-                                    <TextBlock Text="Animal Handling"
+                                    <components:ConciergeTextBlock Text="Animal Handling"
                                            x:Name="AnimalHandlingSkillName"
                                            Foreground="White"
                                            FontSize="15"
@@ -1414,7 +1375,7 @@
 
                                 <!--Value-->
                                 <Grid Grid.Column="3">
-                                    <TextBlock x:Name="AnimalHandlingSkillField"
+                                    <components:ConciergeTextBlock x:Name="AnimalHandlingSkillField"
                                            Foreground="White"
                                            FontSize="17"
                                            FontWeight="Bold"
@@ -1450,7 +1411,7 @@
 
                                 <!--Name-->
                                 <Grid Grid.Column="2">
-                                    <TextBlock Text="Insight"
+                                    <components:ConciergeTextBlock Text="Insight"
                                            x:Name="InsightSkillName"
                                            Foreground="White"
                                            FontSize="15"
@@ -1460,7 +1421,7 @@
 
                                 <!--Value-->
                                 <Grid Grid.Column="3">
-                                    <TextBlock x:Name="InsightSkillField"
+                                    <components:ConciergeTextBlock x:Name="InsightSkillField"
                                            Foreground="White"
                                            FontSize="17"
                                            FontWeight="Bold"
@@ -1496,7 +1457,7 @@
 
                                 <!--Name-->
                                 <Grid Grid.Column="2">
-                                    <TextBlock Text="Medicine"
+                                    <components:ConciergeTextBlock Text="Medicine"
                                            x:Name="MedicineSkillName"
                                            Foreground="White"
                                            FontSize="15"
@@ -1506,7 +1467,7 @@
 
                                 <!--Value-->
                                 <Grid Grid.Column="3">
-                                    <TextBlock x:Name="MedicineSkillField"
+                                    <components:ConciergeTextBlock x:Name="MedicineSkillField"
                                            Foreground="White"
                                            FontSize="17"
                                            FontWeight="Bold"
@@ -1542,7 +1503,7 @@
 
                                 <!--Name-->
                                 <Grid Grid.Column="2">
-                                    <TextBlock Text="Perception"
+                                    <components:ConciergeTextBlock Text="Perception"
                                            x:Name="PerceptionSkillName"
                                            Foreground="White"
                                            FontSize="15"
@@ -1552,7 +1513,7 @@
 
                                 <!--Value-->
                                 <Grid Grid.Column="3">
-                                    <TextBlock x:Name="PerceptionSkillField"
+                                    <components:ConciergeTextBlock x:Name="PerceptionSkillField"
                                            Foreground="White"
                                            FontSize="17"
                                            FontWeight="Bold"
@@ -1588,7 +1549,7 @@
 
                                 <!--Name-->
                                 <Grid Grid.Column="2">
-                                    <TextBlock Text="Survival"
+                                    <components:ConciergeTextBlock Text="Survival"
                                            x:Name="SurvivalSkillName"
                                            Foreground="White"
                                            FontSize="15"
@@ -1598,7 +1559,7 @@
 
                                 <!--Value-->
                                 <Grid Grid.Column="3">
-                                    <TextBlock x:Name="SurvivalSkillField"
+                                    <components:ConciergeTextBlock x:Name="SurvivalSkillField"
                                            Foreground="White"
                                            FontSize="17"
                                            FontWeight="Bold"
@@ -1634,7 +1595,7 @@
 
                                 <!--Name-->
                                 <Grid Grid.Column="2">
-                                    <TextBlock Text="Deception"
+                                    <components:ConciergeTextBlock Text="Deception"
                                            x:Name="DeceptionSkillName"
                                            Foreground="White"
                                            FontSize="15"
@@ -1644,7 +1605,7 @@
 
                                 <!--Value-->
                                 <Grid Grid.Column="3">
-                                    <TextBlock x:Name="DeceptionSkillField"
+                                    <components:ConciergeTextBlock x:Name="DeceptionSkillField"
                                            Foreground="White"
                                            FontSize="17"
                                            FontWeight="Bold"
@@ -1680,7 +1641,7 @@
 
                                 <!--Name-->
                                 <Grid Grid.Column="2">
-                                    <TextBlock Text="Intimidation"
+                                    <components:ConciergeTextBlock Text="Intimidation"
                                            x:Name="IntimidationSkillName"
                                            Foreground="White"
                                            FontSize="15"
@@ -1690,7 +1651,7 @@
 
                                 <!--Value-->
                                 <Grid Grid.Column="3">
-                                    <TextBlock x:Name="IntimidationSkillField"
+                                    <components:ConciergeTextBlock x:Name="IntimidationSkillField"
                                            Foreground="White"
                                            FontSize="17"
                                            FontWeight="Bold"
@@ -1726,7 +1687,7 @@
 
                                 <!--Name-->
                                 <Grid Grid.Column="2">
-                                    <TextBlock Text="Performance"
+                                    <components:ConciergeTextBlock Text="Performance"
                                            x:Name="PerformanceSkillName"
                                            Foreground="White"
                                            FontSize="15"
@@ -1736,7 +1697,7 @@
 
                                 <!--Value-->
                                 <Grid Grid.Column="3">
-                                    <TextBlock x:Name="PerformanceSkillField"
+                                    <components:ConciergeTextBlock x:Name="PerformanceSkillField"
                                            Foreground="White"
                                            FontSize="17"
                                            FontWeight="Bold"
@@ -1772,7 +1733,7 @@
 
                                 <!--Name-->
                                 <Grid Grid.Column="2">
-                                    <TextBlock Text="Persuasion"
+                                    <components:ConciergeTextBlock Text="Persuasion"
                                            x:Name="PersuasionSkillName"
                                            Foreground="White"
                                            FontSize="15"
@@ -1782,7 +1743,7 @@
 
                                 <!--Value-->
                                 <Grid Grid.Column="3">
-                                    <TextBlock x:Name="PersuasionSkillField"
+                                    <components:ConciergeTextBlock x:Name="PersuasionSkillField"
                                            Foreground="White"
                                            FontSize="17"
                                            FontWeight="Bold"
@@ -1829,14 +1790,14 @@
                                     VerticalAlignment="Stretch"
                                     Height="auto"
                                     Width="auto"/>
-                                <TextBlock
+                                <components:ConciergeTextBlock
                                     x:Name="CurrentHpField"
                                     Foreground="Black"
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"
                                     FontSize="65"
                                     FontWeight="Bold"/>
-                                <TextBlock 
+                                <components:ConciergeTextBlock 
                                     x:Name="TotalHpField"
                                     Foreground="White"
                                     FontSize="30"
@@ -1885,7 +1846,7 @@
                                     ToolTip="Edit Health">
                                     <materialDesign:PackIcon Kind="PlaylistEdit" Width="25" Height="25"/>
                                 </components:ConciergeDesignButton>
-                                <TextBlock Text="Health"
+                                <components:ConciergeTextBlock Text="Health"
                                            Foreground="White"
                                            FontSize="35"
                                            FontWeight="Bold"
@@ -1999,7 +1960,7 @@
 
                             <!--Header-->
                             <Grid Grid.Row="0" Margin="3, 3, 3, 0" Background="#000917">
-                                <TextBlock Text="Armor Class"
+                                <components:ConciergeTextBlock Text="Armor Class"
                                            Foreground="White"
                                            FontSize="35"
                                            FontWeight="Bold"
@@ -2019,7 +1980,7 @@
                                     Height="auto"
                                     Width="auto"
                                     Margin="0,0,0,0"/>
-                                <TextBlock 
+                                <components:ConciergeTextBlock 
                                     x:Name="ArmorClassField"
                                     Foreground="White"
                                     HorizontalAlignment="Center"
@@ -2060,7 +2021,7 @@
                             </Grid.RowDefinitions>
 
                             <Grid Grid.Row="0">
-                                <TextBlock Text="Hit Dice"
+                                <components:ConciergeTextBlock Text="Hit Dice"
                                            Foreground="White"
                                            FontSize="35"
                                            FontWeight="Bold"
@@ -2071,7 +2032,7 @@
                             <Grid Grid.Row="1"
                                   Margin="15"
                                   Background="#33415C">
-                                <TextBlock Text="Spent"
+                                <components:ConciergeTextBlock Text="Spent"
                                            Foreground="White"
                                            HorizontalAlignment="Center"
                                            VerticalAlignment="Center"
@@ -2101,7 +2062,7 @@
                                 <Grid Grid.Row="0"
                                       Background="#001233"
                                       Margin="3, 0, 3, 0">
-                                    <TextBlock Text="D6"
+                                    <components:ConciergeTextBlock Text="D6"
                                                FontSize="25"
                                                FontWeight="Bold"
                                                Foreground="White"
@@ -2114,7 +2075,7 @@
                                       Margin="3, 0, 3, 0"
                                       Background="#FF333333"
                                       x:Name="D6TotalBox">
-                                    <TextBlock x:Name="D6TotalField"
+                                    <components:ConciergeTextBlock x:Name="D6TotalField"
                                                Foreground="White"
                                                FontSize="30"
                                                HorizontalAlignment="Center"
@@ -2134,7 +2095,7 @@
                                         MouseDown="SpentBox_MouseDown"
                                         MouseEnter="SpentBox_MouseEnter"
                                         MouseLeave="SpentBox_MouseLeave">
-                                        <TextBlock 
+                                        <components:ConciergeTextBlock 
                                             x:Name="D6SpentField"
                                             Foreground="White"
                                             FontSize="30"
@@ -2157,7 +2118,7 @@
                                 <Grid Grid.Row="0"
                                       Background="#001233"
                                       Margin="3, 0, 3, 0">
-                                    <TextBlock Text="D8"
+                                    <components:ConciergeTextBlock Text="D8"
                                                FontSize="25"
                                                FontWeight="Bold"
                                                Foreground="White"
@@ -2170,7 +2131,7 @@
                                       Margin="3, 0, 3, 0"
                                       Background="#FF333333"
                                       x:Name="D8TotalBox">
-                                    <TextBlock x:Name="D8TotalField"
+                                    <components:ConciergeTextBlock x:Name="D8TotalField"
                                                Foreground="White"
                                                FontSize="30"
                                                HorizontalAlignment="Center"
@@ -2190,7 +2151,7 @@
                                         MouseDown="SpentBox_MouseDown"
                                         MouseEnter="SpentBox_MouseEnter"
                                         MouseLeave="SpentBox_MouseLeave">
-                                        <TextBlock 
+                                        <components:ConciergeTextBlock 
                                             x:Name="D8SpentField"
                                             Foreground="White"
                                             FontSize="30"
@@ -2214,7 +2175,7 @@
                                 <Grid Grid.Row="0"
                                       Background="#001233"
                                       Margin="3, 0, 3, 0">
-                                    <TextBlock Text="D10"
+                                    <components:ConciergeTextBlock Text="D10"
                                                FontSize="25"
                                                FontWeight="Bold"
                                                Foreground="White"
@@ -2227,7 +2188,7 @@
                                       Margin="3, 0, 3, 0"
                                       Background="#FF333333"
                                       x:Name="D10TotalBox">
-                                    <TextBlock x:Name="D10TotalField"
+                                    <components:ConciergeTextBlock x:Name="D10TotalField"
                                                Foreground="White"
                                                FontSize="30"
                                                HorizontalAlignment="Center"
@@ -2247,7 +2208,7 @@
                                         MouseDown="SpentBox_MouseDown"
                                         MouseEnter="SpentBox_MouseEnter"
                                         MouseLeave="SpentBox_MouseLeave">
-                                        <TextBlock 
+                                        <components:ConciergeTextBlock 
                                             x:Name="D10SpentField"
                                             Foreground="White"
                                             FontSize="30"
@@ -2269,7 +2230,7 @@
                                 <Grid Grid.Row="0"
                                       Background="#001233"
                                       Margin="3, 0, 3, 0">
-                                    <TextBlock Text="D12"
+                                    <components:ConciergeTextBlock Text="D12"
                                                FontSize="25"
                                                FontWeight="Bold"
                                                Foreground="White"
@@ -2282,7 +2243,7 @@
                                       Margin="3, 0, 3, 0"
                                       Background="#FF333333"
                                       x:Name="D12TotalBox">
-                                    <TextBlock x:Name="D12TotalField"
+                                    <components:ConciergeTextBlock x:Name="D12TotalField"
                                                Foreground="White"
                                                FontSize="30"
                                                HorizontalAlignment="Center"
@@ -2302,7 +2263,7 @@
                                         MouseDown="SpentBox_MouseDown"
                                         MouseEnter="SpentBox_MouseEnter"
                                         MouseLeave="SpentBox_MouseLeave">
-                                        <TextBlock 
+                                        <components:ConciergeTextBlock 
                                             x:Name="D12SpentField"
                                             Foreground="White"
                                             FontSize="30"
@@ -2325,7 +2286,7 @@
                         <!--Header-->
                         <Grid Grid.Row="0"
                           Background="#000917">
-                            <TextBlock Text="Wealth"
+                            <components:ConciergeTextBlock Text="Wealth"
                                    Foreground="White"
                                    FontSize="35"
                                    FontWeight="Bold"
@@ -2354,7 +2315,7 @@
                             </Grid.ColumnDefinitions>
 
                             <Grid Grid.Column="0">
-                                <TextBlock x:Name="TotalWealthField"
+                                <components:ConciergeTextBlock x:Name="TotalWealthField"
                                        Text="0.00"
                                        Foreground="White"
                                        FontSize="30"
@@ -2363,7 +2324,7 @@
                             </Grid>
 
                             <Grid Grid.Column="1">
-                                <TextBlock Text="Gold Value"
+                                <components:ConciergeTextBlock Text="Gold Value"
                                        Foreground="White"
                                        FontSize="25"
                                        HorizontalAlignment="Center"
@@ -2389,7 +2350,7 @@
                                 </Grid.RowDefinitions>
 
                                 <Grid Grid.Row="0" Background="#ffb87333">
-                                    <TextBlock 
+                                    <components:ConciergeTextBlock 
                                         Text="Copper"
                                         Foreground="Black"
                                         FontWeight="Bold"    
@@ -2399,7 +2360,7 @@
                                 </Grid>
 
                                 <Grid Grid.Row="1" Background="#FF3e3e42" Margin="0, 0, 0, 3">
-                                    <TextBlock x:Name="CopperField"
+                                    <components:ConciergeTextBlock x:Name="CopperField"
                                            Foreground="White"
                                            FontSize="24"
                                            HorizontalAlignment="Center"
@@ -2415,7 +2376,7 @@
                                 </Grid.RowDefinitions>
 
                                 <Grid Grid.Row="0" Background="Silver">
-                                    <TextBlock 
+                                    <components:ConciergeTextBlock 
                                         Text="Silver"
                                         Foreground="Black"
                                         FontSize="20"
@@ -2425,7 +2386,7 @@
                                 </Grid>
 
                                 <Grid Grid.Row="1" Background="#FF3e3e42" Margin="0, 0, 0, 3">
-                                    <TextBlock x:Name="SilverField"
+                                    <components:ConciergeTextBlock x:Name="SilverField"
                                            Foreground="White"
                                            FontSize="24"
                                            HorizontalAlignment="Center"
@@ -2441,7 +2402,7 @@
                                 </Grid.RowDefinitions>
 
                                 <Grid Grid.Row="0" Background="#ff50c878">
-                                    <TextBlock 
+                                    <components:ConciergeTextBlock 
                                         Text="Electrum"
                                         Foreground="Black"
                                         FontSize="20"
@@ -2451,7 +2412,7 @@
                                 </Grid>
 
                                 <Grid Grid.Row="1" Background="#FF3e3e42" Margin="0, 0, 0, 3">
-                                    <TextBlock x:Name="ElectrumField"
+                                    <components:ConciergeTextBlock x:Name="ElectrumField"
                                            Foreground="White"
                                            FontSize="24"
                                            HorizontalAlignment="Center"
@@ -2467,7 +2428,7 @@
                                 </Grid.RowDefinitions>
 
                                 <Grid Grid.Row="0" Background="#ffCFB53B">
-                                    <TextBlock 
+                                    <components:ConciergeTextBlock 
                                         Text="Gold"
                                         Foreground="Black"
                                         FontSize="20"
@@ -2477,7 +2438,7 @@
                                 </Grid>
 
                                 <Grid Grid.Row="1" Background="#FF3e3e42" Margin="0, 0, 0, 3">
-                                    <TextBlock x:Name="GoldField"
+                                    <components:ConciergeTextBlock x:Name="GoldField"
                                            Foreground="White"
                                            FontSize="24"
                                            HorizontalAlignment="Center"
@@ -2493,7 +2454,7 @@
                                 </Grid.RowDefinitions>
 
                                 <Grid Grid.Row="0" Background="#ffe5e4e2">
-                                    <TextBlock 
+                                    <components:ConciergeTextBlock 
                                         Text="Platinum"
                                         Foreground="Black"
                                         FontSize="20"
@@ -2503,7 +2464,7 @@
                                 </Grid>
 
                                 <Grid Grid.Row="1" Background="#FF3e3e42" Margin="0, 0, 0, 3">
-                                    <TextBlock x:Name="PlatinumField"
+                                    <components:ConciergeTextBlock x:Name="PlatinumField"
                                            Foreground="White"
                                            FontSize="24"
                                            HorizontalAlignment="Center"

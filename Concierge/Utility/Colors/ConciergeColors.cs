@@ -11,16 +11,7 @@ namespace Concierge.Utility.Colors
     {
         static ConciergeColors()
         {
-            OverviewIcon = new SolidColorBrush(Color.FromArgb(255, 98, 71, 170));
-            DetailsIcon = new SolidColorBrush(Color.FromArgb(255, 114, 81, 181));
-            AttackDefenseIcon = new SolidColorBrush(Color.FromArgb(255, 129, 90, 192));
-            AbilitiesIcon = new SolidColorBrush(Color.FromArgb(255, 145, 99, 203));
-            EquippedItemsIcon = new SolidColorBrush(Color.FromArgb(255, 160, 108, 213));
-            InventoryIcon = new SolidColorBrush(Color.FromArgb(255, 177, 133, 219));
-            SpellcastingIcon = new SolidColorBrush(Color.FromArgb(255, 193, 158, 224));
-            CompanionIcon = new SolidColorBrush(Color.FromArgb(255, 210, 183, 229));
-            ToolsIcon = new SolidColorBrush(Color.FromArgb(255, 218, 195, 232));
-            NotesIcon = new SolidColorBrush(Color.FromArgb(255, 222, 201, 233));
+            ControlText = new SolidColorBrush(Color.FromArgb(255, 214, 214, 214));
 
             LightCarryCapacity = new SolidColorBrush(Color.FromArgb(255, 216, 228, 188));
             MediumCarryCapacity = new SolidColorBrush(Color.FromArgb(255, 252, 213, 180));
@@ -40,25 +31,7 @@ namespace Concierge.Utility.Colors
             ProficiencyBrush = ColorUtilities.GenerateGradientBrush(ProficiencyDarkBlue, ProficiencyLightBlue, new Point(0, 0), new Point(1, 1));
         }
 
-        public static SolidColorBrush OverviewIcon { get; }
-
-        public static SolidColorBrush DetailsIcon { get; }
-
-        public static SolidColorBrush AttackDefenseIcon { get; }
-
-        public static SolidColorBrush AbilitiesIcon { get; }
-
-        public static SolidColorBrush EquippedItemsIcon { get; }
-
-        public static SolidColorBrush InventoryIcon { get; }
-
-        public static SolidColorBrush SpellcastingIcon { get; }
-
-        public static SolidColorBrush CompanionIcon { get; }
-
-        public static SolidColorBrush ToolsIcon { get; }
-
-        public static SolidColorBrush NotesIcon { get; }
+        public static SolidColorBrush ControlText { get; }
 
         public static LinearGradientBrush FailedSaveBrush { get; }
 

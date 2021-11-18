@@ -401,6 +401,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
             }
 
             this.DrawSavingThrows();
+            this.Draw();
         }
 
         private void SkillProficiency_MouseDown(object sender, RoutedEventArgs e)
