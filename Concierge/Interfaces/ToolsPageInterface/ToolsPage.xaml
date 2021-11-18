@@ -28,7 +28,7 @@
             <Grid Grid.Row="0"
                     Background="#000917"
                     Margin="3, 3, 3, 0">
-                <TextBlock Text="Roll Dice"
+                <components:ConciergeTextBlock Text="Roll Dice"
                            Foreground="White"
                            FontSize="23"
                            FontWeight="Bold"
@@ -87,7 +87,7 @@
 
                         <!--Die-->
                         <Grid Grid.Column="0">
-                            <TextBlock Text="Die"
+                            <components:ConciergeTextBlock Text="Die"
                                    Foreground="White"
                                    FontSize="25"
                                    FontWeight="Bold"
@@ -96,7 +96,7 @@
                         </Grid>
                         <!--Number-->
                         <Grid Grid.Column="1">
-                            <TextBlock Text="Number"
+                            <components:ConciergeTextBlock Text="Number"
                                    Foreground="White"
                                    FontSize="25"
                                    FontWeight="Bold"
@@ -105,14 +105,14 @@
                         </Grid>
                         <!--PlusMinus-->
                         <Grid Grid.Column="2">
-                            <TextBlock Text="+"
+                            <components:ConciergeTextBlock Text="+"
                                        Foreground="White"
                                        FontSize="25"
                                        FontWeight="Bold"
                                        HorizontalAlignment="Left"
                                        VerticalAlignment="Center"
                                        Margin="30, 0, 0, 0"/>
-                            <TextBlock Text="-"
+                            <components:ConciergeTextBlock Text="-"
                                        Foreground="White"
                                        FontSize="25"
                                        FontWeight="Bold"
@@ -122,7 +122,7 @@
                         </Grid>
                         <!--Modifier-->
                         <Grid Grid.Column="3">
-                            <TextBlock Text="Modifier"
+                            <components:ConciergeTextBlock Text="Modifier"
                                    Foreground="White"
                                    FontSize="25"
                                    FontWeight="Bold"
@@ -131,7 +131,7 @@
                         </Grid>
                         <!--Roll-->
                         <Grid Grid.Column="4">
-                            <TextBlock Text="Roll"
+                            <components:ConciergeTextBlock Text="Roll"
                                    Foreground="White"
                                    FontSize="25"
                                    FontWeight="Bold"
@@ -140,7 +140,7 @@
                         </Grid>
                         <!--Result-->
                         <Grid Grid.Column="5">
-                            <TextBlock Text="Result"
+                            <components:ConciergeTextBlock Text="Result"
                                    Foreground="White"
                                    FontSize="25"
                                    FontWeight="Bold"
@@ -164,7 +164,7 @@
 
                         <!--Die-->
                         <Grid Grid.Column="0">
-                            <TextBlock Text="d4"
+                            <components:ConciergeTextBlock Text="d4"
                                    Foreground="White"
                                    FontSize="25"
                                    HorizontalAlignment="Center"
@@ -216,7 +216,7 @@
                         </Grid>
                         <!--Result-->
                         <Grid Grid.Column="5">
-                            <TextBlock x:Name="D4Result"
+                            <components:ConciergeTextBlock x:Name="D4Result"
                                    Foreground="White"
                                    FontSize="25"
                                    HorizontalAlignment="Center"
@@ -239,7 +239,7 @@
 
                         <!--Die-->
                         <Grid Grid.Column="0">
-                            <TextBlock Text="d6"
+                            <components:ConciergeTextBlock Text="d6"
                                    Foreground="White"
                                    FontSize="25"
                                    HorizontalAlignment="Center"
@@ -291,7 +291,7 @@
                         </Grid>
                         <!--Result-->
                         <Grid Grid.Column="5">
-                            <TextBlock x:Name="D6Result"
+                            <components:ConciergeTextBlock x:Name="D6Result"
                                    Foreground="White"
                                    FontSize="25"
                                    HorizontalAlignment="Center"
@@ -314,7 +314,7 @@
 
                         <!--Die-->
                         <Grid Grid.Column="0">
-                            <TextBlock Text="d8"
+                            <components:ConciergeTextBlock Text="d8"
                                    Foreground="White"
                                    FontSize="25"
                                    HorizontalAlignment="Center"
@@ -366,7 +366,7 @@
                         </Grid>
                         <!--Result-->
                         <Grid Grid.Column="5">
-                            <TextBlock x:Name="D8Result"
+                            <components:ConciergeTextBlock x:Name="D8Result"
                                    Foreground="White"
                                    FontSize="25"
                                    HorizontalAlignment="Center"
@@ -389,7 +389,7 @@
 
                         <!--Die-->
                         <Grid Grid.Column="0">
-                            <TextBlock Text="d10"
+                            <components:ConciergeTextBlock Text="d10"
                                    Foreground="White"
                                    FontSize="25"
                                    HorizontalAlignment="Center"
@@ -441,7 +441,7 @@
                         </Grid>
                         <!--Result-->
                         <Grid Grid.Column="5">
-                            <TextBlock x:Name="D10Result"
+                            <components:ConciergeTextBlock x:Name="D10Result"
                                    Foreground="White"
                                    FontSize="25"
                                    HorizontalAlignment="Center"
@@ -464,7 +464,7 @@
 
                         <!--Die-->
                         <Grid Grid.Column="0">
-                            <TextBlock Text="d100"
+                            <components:ConciergeTextBlock Text="d100"
                                    Foreground="White"
                                    FontSize="25"
                                    HorizontalAlignment="Center"
@@ -516,7 +516,7 @@
                         </Grid>
                         <!--Result-->
                         <Grid Grid.Column="5">
-                            <TextBlock x:Name="D100Result"
+                            <components:ConciergeTextBlock x:Name="D100Result"
                                    Foreground="White"
                                    FontSize="25"
                                    HorizontalAlignment="Center"
@@ -539,7 +539,7 @@
 
                         <!--Die-->
                         <Grid Grid.Column="0">
-                            <TextBlock Text="d12"
+                            <components:ConciergeTextBlock Text="d12"
                                    Foreground="White"
                                    FontSize="25"
                                    HorizontalAlignment="Center"
@@ -591,7 +591,7 @@
                         </Grid>
                         <!--Result-->
                         <Grid Grid.Column="5">
-                            <TextBlock x:Name="D12Result"
+                            <components:ConciergeTextBlock x:Name="D12Result"
                                    Foreground="White"
                                    FontSize="25"
                                    HorizontalAlignment="Center"
@@ -614,7 +614,7 @@
 
                         <!--Die-->
                         <Grid Grid.Column="0">
-                            <TextBlock Text="d20"
+                            <components:ConciergeTextBlock Text="d20"
                                    Foreground="White"
                                    FontSize="25"
                                    HorizontalAlignment="Center"
@@ -666,7 +666,7 @@
                         </Grid>
                         <!--Result-->
                         <Grid Grid.Column="5">
-                            <TextBlock x:Name="D20Result"
+                            <components:ConciergeTextBlock x:Name="D20Result"
                                    Foreground="White"
                                    FontSize="25"
                                    HorizontalAlignment="Center"
@@ -742,7 +742,7 @@
                         </Grid>
                         <!--Result-->
                         <Grid Grid.Column="5">
-                            <TextBlock x:Name="DxResult"
+                            <components:ConciergeTextBlock x:Name="DxResult"
                                    Foreground="White"
                                    FontSize="25"
                                    HorizontalAlignment="Center"
@@ -792,7 +792,7 @@
             <Grid Grid.Row="0"
                     Background="#000917"
                     Margin="3, 3, 3, 0">
-                <TextBlock 
+                <components:ConciergeTextBlock 
                     Text="Divide Loot"
                     Foreground="White"
                     FontSize="23"
@@ -864,7 +864,7 @@
                         <Grid Grid.Column="0"
                               Background="#33415C"
                               Margin="3, 3, 0, 3">
-                            <TextBlock 
+                            <components:ConciergeTextBlock 
                                 Text="Players"
                                 Foreground="White"
                                 FontSize="20"
@@ -901,7 +901,7 @@
                         <Grid Grid.Column="0"
                               Background="#ffb87333"
                               Margin="3, 3, 0, 3">
-                            <TextBlock Text="Copper"
+                            <components:ConciergeTextBlock Text="Copper"
                                        Foreground="Black"
                                        FontSize="20"
                                        FontWeight="Bold"
@@ -936,7 +936,7 @@
                         <Grid Grid.Column="0"
                               Background="Silver"
                               Margin="3, 3, 0, 3">
-                            <TextBlock Text="Silver"
+                            <components:ConciergeTextBlock Text="Silver"
                                        Foreground="Black"
                                        FontSize="20"
                                        FontWeight="Bold"
@@ -971,7 +971,7 @@
                         <Grid Grid.Column="0"
                               Background="#ff50c878"
                               Margin="3, 3, 0, 3">
-                            <TextBlock Text="Electrum"
+                            <components:ConciergeTextBlock Text="Electrum"
                                        Foreground="Black"
                                        FontSize="20"
                                        FontWeight="Bold"
@@ -1006,7 +1006,7 @@
                         <Grid Grid.Column="0"
                               Background="#ffCFB53B"
                               Margin="3, 3, 0, 3">
-                            <TextBlock Text="Gold"
+                            <components:ConciergeTextBlock Text="Gold"
                                        Foreground="Black"
                                        FontSize="20"
                                        FontWeight="Bold"
@@ -1041,7 +1041,7 @@
                         <Grid Grid.Column="0"
                               Background="#ffe5e4e2"
                               Margin="3, 3, 0, 3">
-                            <TextBlock Text="Platinum"
+                            <components:ConciergeTextBlock Text="Platinum"
                                        Foreground="Black"
                                        FontSize="20"
                                        FontWeight="Bold"

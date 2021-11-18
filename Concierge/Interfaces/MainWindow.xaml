@@ -94,7 +94,7 @@
                         x:Name="ButtonOpenMenu" 
                         Height="50" 
                         Width="60" 
-                        Foreground="White" 
+                        Foreground="#D6D6D6" 
                         Click="ButtonOpenMenu_Click">
                         <materialDesign:PackIcon Kind="Menu" Width="25" Height="25"/>
                     </components:ConciergeDesignButton>
@@ -104,7 +104,7 @@
                         Visibility="Collapsed" 
                         Height="50" 
                         Width="60"
-                        Foreground="White" 
+                        Foreground="#D6D6D6" 
                         Click="ButtonCloseMenu_Click">
                         <materialDesign:PackIcon Kind="MenuOpen" Width="25" Height="25"/>
                     </components:ConciergeDesignButton>
@@ -122,7 +122,7 @@
                         Style="{StaticResource ConciergeDesignButtonStyle}"
                         x:Name="PopupBoxButton"
                         Width="60"
-                        Foreground="White"
+                        Foreground="#D6D6D6"
                         ToolTip="Options"
                         Click="PopupBoxButton_Click">
                         <materialDesign:PopupBox
@@ -425,7 +425,7 @@
                         Style="{StaticResource ConciergeDesignButtonStyle}" 
                         x:Name="ButtonMinimize" 
                         Width="60"
-                        Foreground="White"
+                        Foreground="#D6D6D6"
                         ToolTip="Minimize"
                         Click="ButtonMinimize_Click">
                         <materialDesign:PackIcon Kind="WindowMinimize" Width="25" Height="25"/>
@@ -434,7 +434,7 @@
                         Style="{StaticResource ConciergeDesignButtonStyle}" 
                         x:Name="MaximizeButton"
                         Width="60"
-                        Foreground="White"
+                        Foreground="#D6D6D6"
                         ToolTip="Restore Down"
                         Click="MaximizeButton_Click">
                         <materialDesign:PackIcon x:Name="MaximizeIcon" Kind="WindowRestore" Width="25" Height="25"/>
@@ -443,7 +443,7 @@
                         Style="{StaticResource ConciergeDesignButtonStyle}" 
                         x:Name="ButtonClose" 
                         Width="60"
-                        Foreground="White"
+                        Foreground="#D6D6D6"
                         ToolTip="Close"
                         Click="ButtonClose_Click">
                         <materialDesign:PackIcon Kind="WindowClose" Width="25" Height="25"/>

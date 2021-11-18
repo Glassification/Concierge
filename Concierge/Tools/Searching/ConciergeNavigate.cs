@@ -4,6 +4,7 @@
 
 namespace Concierge.Tools.Searching
 {
+    using System.Collections.Generic;
     using System.Windows.Controls;
 
     using Concierge.Interfaces.Components;
@@ -32,6 +33,11 @@ namespace Concierge.Tools.Searching
             {
                 return;
             }
+
+            if (this.NavigateToTextBlock())
+            {
+                return;
+            }
         }
 
         private bool NavigateToDataGrid()
@@ -50,6 +56,18 @@ namespace Concierge.Tools.Searching
             }
 
             return false;
+        }
+
+        private bool NavigateToTextBlock()
+        {
+            if (this.SearchResult.Item is not ConciergeTextBlock)
+            {
+                return false;
+            }
+
+            (this.SearchResult.Item as ConciergeTextBlock).Highlight();
+
+            return true;
         }
 
         private bool NavigateToTreeView()

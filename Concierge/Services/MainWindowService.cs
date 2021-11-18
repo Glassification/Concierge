@@ -12,6 +12,7 @@ namespace Concierge.Services
     using Concierge.Character;
     using Concierge.Character.Characteristics;
     using Concierge.Interfaces;
+    using Concierge.Utility.Colors;
     using Concierge.Utility.Extensions;
     using MaterialDesignThemes.Wpf;
 
@@ -27,13 +28,12 @@ namespace Concierge.Services
         public ListViewItem GenerateListViewItem(
             IConciergePage conciergePage,
             string pageName,
-            PackIconKind packIconKind,
-            SolidColorBrush iconColor)
+            PackIconKind packIconKind)
         {
             var packIcon = new PackIcon()
             {
                 Kind = packIconKind,
-                Foreground = iconColor,
+                Foreground = ConciergeColors.ControlText,
                 Height = 28,
                 Width = 28,
                 Margin = new Thickness(10),

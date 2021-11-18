@@ -21,7 +21,7 @@
         <Grid Grid.Row="0"
               Background="#000917"
               Margin="3">
-            <TextBlock Text="Spellcasting"
+            <components:ConciergeTextBlock Text="Spellcasting"
                            Foreground="White"
                            FontSize="25"
                            FontWeight="Bold"
@@ -162,7 +162,7 @@
 
                 <Grid Grid.Row="0"
                     Background="#000917">
-                    <TextBlock Text="Caster Level"
+                    <components:ConciergeTextBlock Text="Caster Level"
                                        Foreground="White"
                                        FontSize="25"
                                        FontWeight="Bold"
@@ -174,7 +174,7 @@
 
                 <Grid Grid.Row="1"
                     Background="#FF3e3e42">
-                    <TextBlock x:Name="CasterLevelField"
+                    <components:ConciergeTextBlock x:Name="CasterLevelField"
                                        Foreground="White"
                                        TextWrapping="Wrap"
                                        FontSize="40"
@@ -212,7 +212,7 @@
                             Click="LevelEditButton_Click">
                             <materialDesign:PackIcon Kind="PlaylistEdit" Width="25" Height="25"/>
                         </components:ConciergeDesignButton>
-                        <TextBlock 
+                        <components:ConciergeTextBlock 
                             Text="Spell Slots"
                             Foreground="White"
                             FontSize="15"
@@ -226,7 +226,7 @@
                     <Grid Grid.Row="1"
                           Background="#33415C"
                           Margin="5, 15, 5, 15">
-                        <TextBlock 
+                        <components:ConciergeTextBlock 
                             Text="Used"
                             Foreground="White"
                             FontSize="15"
@@ -265,7 +265,7 @@
                               x:Name="TotalPactBox"
                               Background="#FF333333"
                               Margin="3, 3, 3, 0">
-                            <TextBlock x:Name="TotalPactField"
+                            <components:ConciergeTextBlock x:Name="TotalPactField"
                                         Foreground="White"
                                         FontSize="25"
                                         HorizontalAlignment="Center"
@@ -276,7 +276,7 @@
                         <Grid Grid.Row="1"
                                 Background="#001233"
                                 Margin="3, 0, 3, 0">
-                            <TextBlock Text="Pact"
+                            <components:ConciergeTextBlock Text="Pact"
                                         FontSize="18"
                                         FontWeight="Bold"
                                         Foreground="White"
@@ -293,7 +293,7 @@
                             <Grid
                                 Background="#FF3e3e42"
                                 x:Name="UsedPactBox">
-                                <TextBlock 
+                                <components:ConciergeTextBlock 
                                     x:Name="UsedPactField"
                                     Foreground="White"
                                     FontSize="25"
@@ -316,7 +316,7 @@
                               x:Name="TotalFirstBox"
                               Background="#FF333333"
                               Margin="3, 3, 3, 0">
-                            <TextBlock x:Name="TotalFirstField"
+                            <components:ConciergeTextBlock x:Name="TotalFirstField"
                                         Foreground="White"
                                         FontSize="25"
                                         HorizontalAlignment="Center"
@@ -327,7 +327,7 @@
                         <Grid Grid.Row="1"
                                 Background="#001233"
                                 Margin="3, 0, 3, 0">
-                            <TextBlock Text="1st"
+                            <components:ConciergeTextBlock Text="1st"
                                         FontSize="18"
                                         FontWeight="Bold"
                                         Foreground="White"
@@ -344,7 +344,7 @@
                             <Grid
                                 Background="#FF3e3e42"
                                 x:Name="UsedFirstBox">
-                                <TextBlock 
+                                <components:ConciergeTextBlock 
                                     x:Name="UsedFirstField"
                                     Foreground="White"
                                     FontSize="25"
@@ -367,7 +367,7 @@
                               x:Name="TotalSecondBox"
                               Background="#FF333333"
                               Margin="3, 3, 3, 0">
-                            <TextBlock x:Name="TotalSecondField"
+                            <components:ConciergeTextBlock x:Name="TotalSecondField"
                                         Foreground="White"
                                         FontSize="25"
                                         HorizontalAlignment="Center"
@@ -378,7 +378,7 @@
                         <Grid Grid.Row="1"
                                 Background="#001233"
                                 Margin="3, 0, 3, 0">
-                            <TextBlock Text="2nd"
+                            <components:ConciergeTextBlock Text="2nd"
                                         FontSize="18"
                                         FontWeight="Bold"
                                         Foreground="White"
@@ -395,7 +395,7 @@
                             <Grid
                                 Background="#FF3e3e42"
                                 x:Name="UsedSecondBox">
-                                <TextBlock 
+                                <components:ConciergeTextBlock 
                                     x:Name="UsedSecondField"
                                     Foreground="White"
                                     FontSize="25"
@@ -418,7 +418,7 @@
                               x:Name="TotalThirdBox"
                               Background="#FF333333"
                               Margin="3, 3, 3, 0">
-                            <TextBlock x:Name="TotalThirdField"
+                            <components:ConciergeTextBlock x:Name="TotalThirdField"
                                         Foreground="White"
                                         FontSize="25"
                                         HorizontalAlignment="Center"
@@ -429,7 +429,7 @@
                         <Grid Grid.Row="1"
                                 Background="#001233"
                                 Margin="3, 0, 3, 0">
-                            <TextBlock Text="3rd"
+                            <components:ConciergeTextBlock Text="3rd"
                                         FontSize="18"
                                         FontWeight="Bold"
                                         Foreground="White"
@@ -446,7 +446,7 @@
                             <Grid
                                 Background="#FF3e3e42"
                                 x:Name="UsedThirdBox">
-                                <TextBlock 
+                                <components:ConciergeTextBlock 
                                     x:Name="UsedThirdField"
                                     Foreground="White"
                                     FontSize="25"
@@ -469,7 +469,7 @@
                               x:Name="TotalFourthBox"
                               Background="#FF333333"
                               Margin="3, 3, 3, 0">
-                            <TextBlock x:Name="TotalFourthField"
+                            <components:ConciergeTextBlock x:Name="TotalFourthField"
                                         Foreground="White"
                                         FontSize="25"
                                         HorizontalAlignment="Center"
@@ -480,7 +480,7 @@
                         <Grid Grid.Row="1"
                                 Background="#001233"
                                 Margin="3, 0, 3, 0">
-                            <TextBlock Text="4th"
+                            <components:ConciergeTextBlock Text="4th"
                                         FontSize="18"
                                         FontWeight="Bold"
                                         Foreground="White"
@@ -497,7 +497,7 @@
                             <Grid
                                 Background="#FF3e3e42"
                                 x:Name="UsedFourthBox">
-                                <TextBlock 
+                                <components:ConciergeTextBlock 
                                     x:Name="UsedFourthField"
                                     Foreground="White"
                                     FontSize="25"
@@ -520,7 +520,7 @@
                               x:Name="TotalFifthBox"
                               Background="#FF333333"
                               Margin="3, 3, 3, 0">
-                            <TextBlock x:Name="TotalFifthField"
+                            <components:ConciergeTextBlock x:Name="TotalFifthField"
                                         Foreground="White"
                                         FontSize="25"
                                         HorizontalAlignment="Center"
@@ -531,7 +531,7 @@
                         <Grid Grid.Row="1"
                                 Background="#001233"
                                 Margin="3, 0, 3, 0">
-                            <TextBlock Text="5th"
+                            <components:ConciergeTextBlock Text="5th"
                                         FontSize="18"
                                         FontWeight="Bold"
                                         Foreground="White"
@@ -548,7 +548,7 @@
                             <Grid
                                 Background="#FF3e3e42"
                                 x:Name="UsedFifthBox">
-                                <TextBlock 
+                                <components:ConciergeTextBlock 
                                     x:Name="UsedFifthField"
                                     Foreground="White"
                                     FontSize="25"
@@ -571,7 +571,7 @@
                               x:Name="TotalSixthBox"
                               Background="#FF333333"
                               Margin="3, 3, 3, 0">
-                            <TextBlock x:Name="TotalSixthField"
+                            <components:ConciergeTextBlock x:Name="TotalSixthField"
                                         Foreground="White"
                                         FontSize="25"
                                         HorizontalAlignment="Center"
@@ -582,7 +582,7 @@
                         <Grid Grid.Row="1"
                                 Background="#001233"
                                 Margin="3, 0, 3, 0">
-                            <TextBlock Text="6th"
+                            <components:ConciergeTextBlock Text="6th"
                                         FontSize="18"
                                         FontWeight="Bold"
                                         Foreground="White"
@@ -599,7 +599,7 @@
                             <Grid
                                 Background="#FF3e3e42"
                                 x:Name="UsedSixthBox">
-                                <TextBlock 
+                                <components:ConciergeTextBlock 
                                     x:Name="UsedSixthField"
                                     Foreground="White"
                                     FontSize="25"
@@ -622,7 +622,7 @@
                               x:Name="TotalSeventhBox"
                               Background="#FF333333"
                               Margin="3, 3, 3, 0">
-                            <TextBlock x:Name="TotalSeventhField"
+                            <components:ConciergeTextBlock x:Name="TotalSeventhField"
                                         Foreground="White"
                                         FontSize="25"
                                         HorizontalAlignment="Center"
@@ -633,7 +633,7 @@
                         <Grid Grid.Row="1"
                                 Background="#001233"
                                 Margin="3, 0, 3, 0">
-                            <TextBlock Text="7th"
+                            <components:ConciergeTextBlock Text="7th"
                                         FontSize="18"
                                         FontWeight="Bold"
                                         Foreground="White"
@@ -650,7 +650,7 @@
                             <Grid
                                 Background="#FF3e3e42"
                                 x:Name="UsedSeventhBox">
-                                <TextBlock 
+                                <components:ConciergeTextBlock 
                                     x:Name="UsedSeventhField"
                                     Foreground="White"
                                     FontSize="25"
@@ -673,7 +673,7 @@
                               x:Name="TotalEighthBox"
                               Background="#FF333333"
                               Margin="3, 3, 3, 0">
-                            <TextBlock x:Name="TotalEighthField"
+                            <components:ConciergeTextBlock x:Name="TotalEighthField"
                                         Foreground="White"
                                         FontSize="25"
                                         HorizontalAlignment="Center"
@@ -684,7 +684,7 @@
                         <Grid Grid.Row="1"
                                 Background="#001233"
                                 Margin="3, 0, 3, 0">
-                            <TextBlock Text="8th"
+                            <components:ConciergeTextBlock Text="8th"
                                         FontSize="18"
                                         FontWeight="Bold"
                                         Foreground="White"
@@ -701,7 +701,7 @@
                             <Grid
                                 Background="#FF3e3e42"
                                 x:Name="UsedEighthBox">
-                                <TextBlock 
+                                <components:ConciergeTextBlock 
                                     x:Name="UsedEighthField"
                                     Foreground="White"
                                     FontSize="25"
@@ -724,7 +724,7 @@
                               x:Name="TotalNinethBox"
                               Background="#FF333333"
                               Margin="3, 3, 3, 0">
-                            <TextBlock x:Name="TotalNinethField"
+                            <components:ConciergeTextBlock x:Name="TotalNinethField"
                                         Foreground="White"
                                         FontSize="25"
                                         HorizontalAlignment="Center"
@@ -735,7 +735,7 @@
                         <Grid Grid.Row="1"
                                 Background="#001233"
                                 Margin="3, 0, 3, 0">
-                            <TextBlock Text="9th"
+                            <components:ConciergeTextBlock Text="9th"
                                         FontSize="18"
                                         FontWeight="Bold"
                                         Foreground="White"
@@ -752,7 +752,7 @@
                             <Grid
                                 Background="#FF3e3e42"
                                 x:Name="UsedNinethBox">
-                                <TextBlock 
+                                <components:ConciergeTextBlock 
                                     x:Name="UsedNinethField"
                                     Foreground="White"
                                     FontSize="25"

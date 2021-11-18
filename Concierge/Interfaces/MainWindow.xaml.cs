@@ -378,16 +378,16 @@ namespace Concierge.Interfaces
 
         private void GenerateListViewItems()
         {
-            this.ListViewMenu.Items.Add(this.mainWindowService.GenerateListViewItem(this.OverviewPage, "Overview", PackIconKind.Globe, ConciergeColors.OverviewIcon));
-            this.ListViewMenu.Items.Add(this.mainWindowService.GenerateListViewItem(this.DetailsPage, "Details", PackIconKind.Details, ConciergeColors.DetailsIcon));
-            this.ListViewMenu.Items.Add(this.mainWindowService.GenerateListViewItem(this.AttackDefensePage, "Attack and Defense", PackIconKind.ShieldHalfFull, ConciergeColors.AttackDefenseIcon));
-            this.ListViewMenu.Items.Add(this.mainWindowService.GenerateListViewItem(this.AbilitiesPage, "Abilities", PackIconKind.Brain, ConciergeColors.AbilitiesIcon));
-            this.ListViewMenu.Items.Add(this.mainWindowService.GenerateListViewItem(this.EquippedItemsPage, "Equipped Items", PackIconKind.Person, ConciergeColors.EquippedItemsIcon));
-            this.ListViewMenu.Items.Add(this.mainWindowService.GenerateListViewItem(this.InventoryPage, "Inventory", PackIconKind.Backpack, ConciergeColors.InventoryIcon));
-            this.ListViewMenu.Items.Add(this.mainWindowService.GenerateListViewItem(this.SpellcastingPage, "Spellcasting", PackIconKind.Magic, ConciergeColors.SpellcastingIcon));
-            this.ListViewMenu.Items.Add(this.mainWindowService.GenerateListViewItem(this.CompanionPage, "Companion", PackIconKind.PersonAdd, ConciergeColors.CompanionIcon));
-            this.ListViewMenu.Items.Add(this.mainWindowService.GenerateListViewItem(this.ToolsPage, "Tools", PackIconKind.Tools, ConciergeColors.ToolsIcon));
-            this.ListViewMenu.Items.Add(this.mainWindowService.GenerateListViewItem(this.NotesPage, "Notes", PackIconKind.Pen, ConciergeColors.NotesIcon));
+            this.ListViewMenu.Items.Add(this.mainWindowService.GenerateListViewItem(this.OverviewPage, "Overview", PackIconKind.Globe));
+            this.ListViewMenu.Items.Add(this.mainWindowService.GenerateListViewItem(this.DetailsPage, "Details", PackIconKind.Details));
+            this.ListViewMenu.Items.Add(this.mainWindowService.GenerateListViewItem(this.AttackDefensePage, "Attack and Defense", PackIconKind.ShieldHalfFull));
+            this.ListViewMenu.Items.Add(this.mainWindowService.GenerateListViewItem(this.AbilitiesPage, "Abilities", PackIconKind.Brain));
+            this.ListViewMenu.Items.Add(this.mainWindowService.GenerateListViewItem(this.EquippedItemsPage, "Equipped Items", PackIconKind.Person));
+            this.ListViewMenu.Items.Add(this.mainWindowService.GenerateListViewItem(this.InventoryPage, "Inventory", PackIconKind.Backpack));
+            this.ListViewMenu.Items.Add(this.mainWindowService.GenerateListViewItem(this.SpellcastingPage, "Spellcasting", PackIconKind.Magic));
+            this.ListViewMenu.Items.Add(this.mainWindowService.GenerateListViewItem(this.CompanionPage, "Companion", PackIconKind.PersonAdd));
+            this.ListViewMenu.Items.Add(this.mainWindowService.GenerateListViewItem(this.ToolsPage, "Tools", PackIconKind.Tools));
+            this.ListViewMenu.Items.Add(this.mainWindowService.GenerateListViewItem(this.NotesPage, "Notes", PackIconKind.Pen));
         }
 
         private ConciergeWindowResult CheckSaveBeforeAction(string action)

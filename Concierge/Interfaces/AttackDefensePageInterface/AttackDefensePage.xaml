@@ -31,7 +31,7 @@
 
                 <!--Header-->
                 <Grid Grid.Row="0">
-                    <TextBlock 
+                    <components:ConciergeTextBlock
                         Text="Armor Details"
                         Foreground="White"
                         FontSize="30"
@@ -73,7 +73,7 @@
 
                             <Grid Grid.Column="0"
                               Background="#001233">
-                                <TextBlock 
+                                <components:ConciergeTextBlock
                                     Text="Armor Worn"
                                     Foreground="White"
                                     FontSize="23"
@@ -86,7 +86,7 @@
                             <Grid Grid.Column="1"
                               Background="#FF3e3e42">
                                 <ScrollViewer VerticalScrollBarVisibility="Auto">
-                                    <TextBlock 
+                                    <components:ConciergeTextBlock
                                         x:Name="ArmorWornField"
                                         Foreground="White"
                                         TextWrapping="Wrap"
@@ -105,7 +105,7 @@
                             </Grid.ColumnDefinitions>
 
                             <Grid Grid.Column="0" Background="#001233">
-                                <TextBlock 
+                                <components:ConciergeTextBlock
                                     Text="Shield Worn"
                                     Foreground="White"
                                     FontSize="23"
@@ -117,7 +117,7 @@
 
                             <Grid Grid.Column="1" Background="#FF3e3e42">
                                 <ScrollViewer VerticalScrollBarVisibility="Auto">
-                                    <TextBlock 
+                                    <components:ConciergeTextBlock
                                         x:Name="ShieldWornField"
                                         Foreground="White"
                                         FontSize="30"
@@ -149,7 +149,7 @@
                                 </Grid.ColumnDefinitions>
 
                                 <Grid Grid.Column="0" Background="#001233">
-                                    <TextBlock 
+                                    <components:ConciergeTextBlock
                                         Text="Armor Type"
                                         Foreground="White"
                                         FontSize="20"
@@ -160,7 +160,7 @@
                                 </Grid>
 
                                 <Grid Grid.Column="1" Background="#FF3e3e42">
-                                    <TextBlock 
+                                    <components:ConciergeTextBlock
                                         x:Name="ArmorTypeField"
                                         Foreground="White"
                                         TextWrapping="Wrap"
@@ -177,7 +177,7 @@
                                 </Grid.ColumnDefinitions>
 
                                 <Grid Grid.Column="0" Background="#001233">
-                                    <TextBlock 
+                                    <components:ConciergeTextBlock
                                         Text="Armor Stealth"
                                         Foreground="White"
                                         FontSize="20"
@@ -188,7 +188,7 @@
                                 </Grid>
 
                                 <Grid Grid.Column="1" Background="#FF3e3e42">
-                                    <TextBlock 
+                                    <components:ConciergeTextBlock
                                         x:Name="ArmorStealthField"
                                         Foreground="White"
                                         TextWrapping="Wrap"
@@ -215,7 +215,7 @@
                                 </Grid.RowDefinitions>
 
                                 <Grid Grid.Row="0" Background="#001233">
-                                    <TextBlock 
+                                    <components:ConciergeTextBlock
                                         Text="AC"
                                         Foreground="White"
                                         FontSize="17"
@@ -226,7 +226,7 @@
                                 </Grid>
 
                                 <Grid Grid.Row="1" Background="#FF3e3e42">
-                                    <TextBlock 
+                                    <components:ConciergeTextBlock
                                         x:Name="AcField"
                                         Foreground="White"
                                         FontSize="30"
@@ -243,7 +243,7 @@
                                 </Grid.RowDefinitions>
 
                                 <Grid Grid.Row="0" Background="#001233">
-                                    <TextBlock 
+                                    <components:ConciergeTextBlock
                                         Text="Shield AC"
                                         Foreground="White"
                                         FontSize="17"
@@ -254,7 +254,7 @@
                                 </Grid>
 
                                 <Grid Grid.Row="1" Background="#FF3e3e42">
-                                    <TextBlock 
+                                    <components:ConciergeTextBlock
                                         x:Name="ShieldAcField"
                                         Foreground="White"
                                         FontSize="30"
@@ -271,7 +271,7 @@
                                 </Grid.RowDefinitions>
 
                                 <Grid Grid.Row="0" Background="#001233">
-                                    <TextBlock 
+                                    <components:ConciergeTextBlock
                                         Text="Magic AC"
                                         Foreground="White"
                                         FontSize="17"
@@ -282,7 +282,7 @@
                                 </Grid>
 
                                 <Grid Grid.Row="1" Background="#FF3e3e42">
-                                    <TextBlock 
+                                    <components:ConciergeTextBlock
                                         x:Name="MagicAcField"
                                         Foreground="White"
                                         FontSize="30"
@@ -299,7 +299,7 @@
                                 </Grid.RowDefinitions>
 
                                 <Grid Grid.Row="0" Background="#001233">
-                                    <TextBlock 
+                                    <components:ConciergeTextBlock
                                         Text="Misc AC"
                                         Foreground="White"
                                         FontSize="17"
@@ -310,7 +310,7 @@
                                 </Grid>
 
                                 <Grid Grid.Row="1" Background="#FF3e3e42">
-                                    <TextBlock 
+                                    <components:ConciergeTextBlock
                                         x:Name="MiscAcField"
                                         Foreground="White"
                                         FontSize="30"
@@ -332,7 +332,7 @@
 
                 <!--Header-->
                 <Grid Grid.Row="0">
-                    <TextBlock 
+                    <components:ConciergeTextBlock
                         Text="Status Effects"
                         Foreground="White"
                         FontSize="25"
@@ -422,13 +422,11 @@
             <Grid Grid.Row="0"
                   Background="#000917"
                   Margin="3, 3, 3, 0">
-                <TextBlock Text="Ammunition and Attacks"
-                           Foreground="White"
-                           HorizontalAlignment="Left"
-                           VerticalAlignment="Center"
-                           FontSize="30"
-                           FontWeight="Bold"
-                           Margin="90, 0, 0, 0"/>
+                <components:ConciergeTextBlock 
+                    Text="Ammunition and Attacks"
+                    HorizontalAlignment="Left"
+                    FontSize="30"
+                    Margin="90, 0, 0, 0"/>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                     <components:ConciergeDesignButton 
                         Style="{StaticResource ConciergeDesignButtonStyle}" 

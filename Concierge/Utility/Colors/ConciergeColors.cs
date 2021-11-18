@@ -11,16 +11,7 @@ namespace Concierge.Utility.Colors
     {
         static ConciergeColors()
         {
-            OverviewIcon = new SolidColorBrush(Color.FromArgb(255, 39, 125, 161));
-            DetailsIcon = new SolidColorBrush(Color.FromArgb(255, 87, 117, 144));
-            AttackDefenseIcon = new SolidColorBrush(Color.FromArgb(255, 77, 144, 142));
-            AbilitiesIcon = new SolidColorBrush(Color.FromArgb(255, 67, 170, 139));
-            EquippedItemsIcon = new SolidColorBrush(Color.FromArgb(255, 144, 190, 109));
-            InventoryIcon = new SolidColorBrush(Color.FromArgb(255, 249, 199, 79));
-            SpellcastingIcon = new SolidColorBrush(Color.FromArgb(255, 249, 132, 74));
-            CompanionIcon = new SolidColorBrush(Color.FromArgb(255, 248, 150, 30));
-            ToolsIcon = new SolidColorBrush(Color.FromArgb(255, 243, 114, 44));
-            NotesIcon = new SolidColorBrush(Color.FromArgb(255, 249, 65, 68));
+            ControlText = new SolidColorBrush(Color.FromArgb(255, 214, 214, 214));
 
             LightCarryCapacity = new SolidColorBrush(Color.FromArgb(255, 216, 228, 188));
             MediumCarryCapacity = new SolidColorBrush(Color.FromArgb(255, 252, 213, 180));
@@ -40,25 +31,7 @@ namespace Concierge.Utility.Colors
             ProficiencyBrush = ColorUtilities.GenerateGradientBrush(ProficiencyDarkBlue, ProficiencyLightBlue, new Point(0, 0), new Point(1, 1));
         }
 
-        public static SolidColorBrush OverviewIcon { get; }
-
-        public static SolidColorBrush DetailsIcon { get; }
-
-        public static SolidColorBrush AttackDefenseIcon { get; }
-
-        public static SolidColorBrush AbilitiesIcon { get; }
-
-        public static SolidColorBrush EquippedItemsIcon { get; }
-
-        public static SolidColorBrush InventoryIcon { get; }
-
-        public static SolidColorBrush SpellcastingIcon { get; }
-
-        public static SolidColorBrush CompanionIcon { get; }
-
-        public static SolidColorBrush ToolsIcon { get; }
-
-        public static SolidColorBrush NotesIcon { get; }
+        public static SolidColorBrush ControlText { get; }
 
         public static LinearGradientBrush FailedSaveBrush { get; }
 
@@ -90,16 +63,16 @@ namespace Concierge.Utility.Colors
 
         public static SolidColorBrush HeavyCarryCapacity { get; }
 
-        public static Color FailedLightRed => Color.FromArgb(255, 245, 133, 143);
+        private static Color FailedLightRed => Color.FromArgb(255, 245, 133, 143);
 
-        public static Color FailedDarkRed => Color.FromArgb(255, 250, 74, 90);
+        private static Color FailedDarkRed => Color.FromArgb(255, 250, 74, 90);
 
-        public static Color SucceededLightGreen => Color.FromArgb(255, 190, 236, 176);
+        private static Color SucceededLightGreen => Color.FromArgb(255, 190, 236, 176);
 
-        public static Color SucceededDarkGreen => Color.FromArgb(255, 123, 216, 96);
+        private static Color SucceededDarkGreen => Color.FromArgb(255, 123, 216, 96);
 
-        public static Color ProficiencyLightBlue => Color.FromArgb(255, 0, 18, 51);
+        private static Color ProficiencyLightBlue => Color.FromArgb(255, 0, 18, 51);
 
-        public static Color ProficiencyDarkBlue => Color.FromArgb(255, 0, 9, 23);
+        private static Color ProficiencyDarkBlue => Color.FromArgb(255, 0, 9, 23);
     }
 }

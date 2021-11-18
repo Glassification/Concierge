@@ -6,18 +6,12 @@ namespace Concierge.Tools.Searching
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Text.RegularExpressions;
+    using System.Windows.Controls;
 
-    using Concierge.Character;
     using Concierge.Interfaces;
-    using Concierge.Interfaces.AbilitiesPageInterface;
-    using Concierge.Interfaces.AttackDefensePageInterface;
-    using Concierge.Interfaces.CompanionPageInterface;
-    using Concierge.Interfaces.DetailsPageInterface;
-    using Concierge.Interfaces.EquippedItemsPageInterface;
-    using Concierge.Interfaces.InventoryPageInterface;
-    using Concierge.Interfaces.NotesPageInterface;
-    using Concierge.Interfaces.SpellcastingPageInterface;
+    using Concierge.Interfaces.Components;
     using Concierge.Tools.Searching.Enums;
     using Concierge.Utility;
     using Concierge.Utility.Extensions;
@@ -35,19 +29,16 @@ namespace Concierge.Tools.Searching
 
         private MainWindow MainWindow { get; set; }
 
-        private ConciergeCharacter Character { get; set; }
-
         private List<SearchResult> Results { get; set; }
 
         private Regex Regex { get; set; }
 
         private int Depth { get; set; }
 
-        public List<SearchResult> Search(SearchSettings searchSettings, ConciergeCharacter character)
+        public List<SearchResult> Search(SearchSettings searchSettings)
         {
             this.Results.Clear();
             this.SearchSettings = searchSettings;
-            this.Character = character;
             this.Depth = 0;
 
             if (searchSettings?.TextToSearch.IsNullOrWhiteSpace() ?? true)
@@ -94,50 +85,42 @@ namespace Concierge.Tools.Searching
             this.SearchPage(this.MainWindow.EquippedItemsPage);
             this.SearchPage(this.MainWindow.InventoryPage);
             this.SearchPage(this.MainWindow.NotesPage);
+            this.SearchPage(this.MainWindow.OverviewPage);
             this.SearchPage(this.MainWindow.SpellcastingPage);
+            this.SearchPage(this.MainWindow.ToolsPage);
         }
 
         private void SearchPage(IConciergePage conciergePage)
         {
-            if (conciergePage is InventoryPage)
+            this.SearchDataGrids(conciergePage);
+            this.SearchTextBlocks(conciergePage);
+        }
+
+        private void SearchTextBlocks(IConciergePage conciergePage)
+        {
+            var textBlocks = Utilities.FindVisualChildren<ConciergeTextBlock>(conciergePage as Page);
+
+            foreach (var block in textBlocks)
             {
-                this.SearchList(this.Character.Inventories, conciergePage);
+                if (this.Regex.IsMatch(block.Text))
+                {
+                    this.Results.Add(new SearchResult(this.SearchSettings.TextToSearch, block, this.Regex, conciergePage));
+                }
             }
-            else if (conciergePage is AbilitiesPage)
+        }
+
+        private void SearchDataGrids(IConciergePage conciergePage)
+        {
+            var dataGrids = Utilities.FindVisualChildren<ConciergeDataGrid>(conciergePage as Page);
+
+            if (dataGrids.Count() == 0)
             {
-                this.SearchList(this.Character.Abilities, conciergePage);
+                return;
             }
-            else if (conciergePage is AttackDefensePage)
+
+            foreach (var dataGrid in dataGrids)
             {
-                this.SearchList(this.Character.Weapons, conciergePage);
-                this.SearchList(this.Character.Ammunitions, conciergePage);
-            }
-            else if (conciergePage is CompanionPage)
-            {
-                this.SearchList(this.Character.Companion.Attacks, conciergePage);
-            }
-            else if (conciergePage is DetailsPage)
-            {
-                this.SearchList(this.Character.ClassResources, conciergePage);
-                this.SearchList(this.Character.Languages, conciergePage);
-                this.SearchList(this.Character.Proficiency, conciergePage);
-            }
-            else if (conciergePage is EquippedItemsPage)
-            {
-                this.SearchList(this.Character.EquippedItems.Head, conciergePage);
-                this.SearchList(this.Character.EquippedItems.Torso, conciergePage);
-                this.SearchList(this.Character.EquippedItems.Hands, conciergePage);
-                this.SearchList(this.Character.EquippedItems.Legs, conciergePage);
-                this.SearchList(this.Character.EquippedItems.Feet, conciergePage);
-            }
-            else if (conciergePage is SpellcastingPage)
-            {
-                this.SearchList(this.Character.Spells, conciergePage);
-                this.SearchList(this.Character.MagicClasses, conciergePage);
-            }
-            else if (conciergePage is NotesPage)
-            {
-                // this.SearchList(this.Character.Chapters, conciergePage);
+                this.SearchList<object>((from object item in dataGrid.Items select item).ToList(), conciergePage);
             }
         }
 
@@ -145,14 +128,14 @@ namespace Concierge.Tools.Searching
         {
             foreach (var item in list)
             {
-                if (this.SearchObject(item, conciergePage))
+                if (this.SearchListObject(item, conciergePage))
                 {
                     this.Results.Add(new SearchResult(this.SearchSettings.TextToSearch, item, this.Regex, conciergePage));
                 }
             }
         }
 
-        private bool SearchObject(object item, IConciergePage conciergePage)
+        private bool SearchListObject(object item, IConciergePage conciergePage)
         {
             this.Depth++;
 
