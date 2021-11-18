@@ -6,6 +6,7 @@ namespace Concierge.Interfaces.NotesPageInterface
 {
     using System;
     using System.Collections.Generic;
+    using System.DirectoryServices;
     using System.IO;
     using System.Linq;
     using System.Text;
@@ -21,10 +22,10 @@ namespace Concierge.Interfaces.NotesPageInterface
     using Concierge.Interfaces.Components;
     using Concierge.Interfaces.Enums;
     using Concierge.Tools.Interface;
-    using Concierge.Tools.Searching;
-    using Concierge.Utility;
     using Concierge.Utility.Colors;
     using Concierge.Utility.Extensions;
+
+    using SearchResult = Concierge.Search.SearchResult;
 
     /// <summary>
     /// Interaction logic for NotesPage.xaml.

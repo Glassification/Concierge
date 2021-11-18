@@ -2,7 +2,7 @@
 // Copyright (c) Thomas Beckett. All rights reserved.
 // </copyright>
 
-namespace Concierge.Tools.Searching.Enums
+namespace Concierge.Search.Enums
 {
     public enum SearchDomain
     {

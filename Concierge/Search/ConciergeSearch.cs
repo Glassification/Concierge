@@ -2,7 +2,7 @@
 // Copyright (c) Thomas Beckett. All rights reserved.
 // </copyright>
 
-namespace Concierge.Tools.Searching
+namespace Concierge.Search
 {
     using System;
     using System.Collections.Generic;
@@ -12,7 +12,7 @@ namespace Concierge.Tools.Searching
 
     using Concierge.Interfaces;
     using Concierge.Interfaces.Components;
-    using Concierge.Tools.Searching.Enums;
+    using Concierge.Search.Enums;
     using Concierge.Utility;
     using Concierge.Utility.Extensions;
 
@@ -55,7 +55,7 @@ namespace Concierge.Tools.Searching
         private void CreateRegex()
         {
             var pattern = this.SearchSettings.MatchWholeWord
-                    ? $"\b{Regex.Escape(this.SearchSettings.TextToSearch)}\b"
+                    ? @$"\b{Regex.Escape(this.SearchSettings.TextToSearch)}\b"
                     : Regex.Escape(this.SearchSettings.TextToSearch);
 
             this.Regex = this.SearchSettings.MatchCase
@@ -78,16 +78,16 @@ namespace Concierge.Tools.Searching
 
         private void SearchPages()
         {
-            this.SearchPage(this.MainWindow.AbilitiesPage);
-            this.SearchPage(this.MainWindow.AttackDefensePage);
-            this.SearchPage(this.MainWindow.CompanionPage);
+            this.SearchPage(this.MainWindow.OverviewPage);
             this.SearchPage(this.MainWindow.DetailsPage);
+            this.SearchPage(this.MainWindow.AttackDefensePage);
+            this.SearchPage(this.MainWindow.AbilitiesPage);
             this.SearchPage(this.MainWindow.EquippedItemsPage);
             this.SearchPage(this.MainWindow.InventoryPage);
-            this.SearchPage(this.MainWindow.NotesPage);
-            this.SearchPage(this.MainWindow.OverviewPage);
             this.SearchPage(this.MainWindow.SpellcastingPage);
+            this.SearchPage(this.MainWindow.CompanionPage);
             this.SearchPage(this.MainWindow.ToolsPage);
+            this.SearchPage(this.MainWindow.NotesPage);
         }
 
         private void SearchPage(IConciergePage conciergePage)
@@ -113,7 +113,7 @@ namespace Concierge.Tools.Searching
         {
             var dataGrids = Utilities.FindVisualChildren<ConciergeDataGrid>(conciergePage as Page);
 
-            if (dataGrids.Count() == 0)
+            if (!dataGrids.Any())
             {
                 return;
             }

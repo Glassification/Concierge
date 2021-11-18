@@ -4,7 +4,9 @@
 
 namespace Concierge.Primatives
 {
-    public class HsvColor
+    using Concierge.Utility;
+
+    public class HsvColor : ICopyable<HsvColor>
     {
         public HsvColor(double hue, double saturation, double value)
         {
@@ -19,9 +21,39 @@ namespace Concierge.Primatives
 
         public double Value { get; set; }
 
+        public static bool operator ==(HsvColor a, HsvColor b)
+        {
+            return a.Value == b.Value && a.Saturation == b.Saturation && a.Hue == b.Hue;
+        }
+
+        public static bool operator !=(HsvColor a, HsvColor b)
+        {
+            return a.Value != b.Value || a.Saturation != b.Saturation || a.Hue != b.Hue;
+        }
+
+        public override string ToString()
+        {
+            return $"[{this.Hue}, {this.Saturation}, {this.Value}]";
+        }
+
+        public override bool Equals(object obj)
+        {
+            return ReferenceEquals(this, obj) || (obj is null ? false : throw new System.NotImplementedException());
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
+
         public void Invert()
         {
             this.Hue = (this.Hue + 180) % 360;
+        }
+
+        public HsvColor DeepCopy()
+        {
+            return new HsvColor(this.Hue, this.Saturation, this.Value);
         }
     }
 }

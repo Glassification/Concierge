@@ -2,7 +2,7 @@
 // Copyright (c) Thomas Beckett. All rights reserved.
 // </copyright>
 
-namespace Concierge.Tools.Searching
+namespace Concierge.Search
 {
     using System.Text.RegularExpressions;
 

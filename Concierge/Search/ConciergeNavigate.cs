@@ -2,9 +2,8 @@
 // Copyright (c) Thomas Beckett. All rights reserved.
 // </copyright>
 
-namespace Concierge.Tools.Searching
+namespace Concierge.Search
 {
-    using System.Collections.Generic;
     using System.Windows.Controls;
 
     using Concierge.Interfaces.Components;

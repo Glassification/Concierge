@@ -2,9 +2,9 @@
 // Copyright (c) Thomas Beckett. All rights reserved.
 // </copyright>
 
-namespace Concierge.Tools.Searching
+namespace Concierge.Search
 {
-    using Concierge.Tools.Searching.Enums;
+    using Concierge.Search.Enums;
 
     public class SearchSettings
     {

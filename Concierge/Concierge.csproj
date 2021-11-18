@@ -5,7 +5,7 @@
     <TargetFramework>net6.0-windows</TargetFramework>
     <RootNamespace>Concierge</RootNamespace>
     <UseWPF>true</UseWPF>
-    <Version>4.1.2</Version>
+    <Version>4.1.3</Version>
     <ApplicationIcon>dndnextlogo.ico</ApplicationIcon>
   </PropertyGroup>
 
@@ -45,6 +45,10 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Tools\Searching\" />
   </ItemGroup>
 
 </Project>

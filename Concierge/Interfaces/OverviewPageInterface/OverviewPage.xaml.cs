@@ -132,6 +132,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
             Utilities.SetBorderColour(spent, total, spentBox, border, this.CurrentHitDiceBox);
         }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822:Mark members as static", Justification = "Consistency")]
         private void DrawTotalHitDice(TextBlock totalField, Grid totalBox, int spent, int total)
         {
             totalField.Text = total.ToString();

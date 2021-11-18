@@ -12,8 +12,8 @@ namespace Concierge.Interfaces.HelperInterface
     using System.Windows.Media;
 
     using Concierge.Interfaces.Components;
-    using Concierge.Tools.Searching;
-    using Concierge.Tools.Searching.Enums;
+    using Concierge.Search;
+    using Concierge.Search.Enums;
     using Concierge.Utility;
     using Concierge.Utility.Extensions;
 
@@ -58,6 +58,8 @@ namespace Concierge.Interfaces.HelperInterface
 
         private void ClearFields()
         {
+            this.Opacity = 1;
+            this.SearchResultTextBlock.Text = string.Empty;
             this.MatchCaseCheckBox.IsChecked = false;
             this.MatchWholeWordCheckBox.IsChecked = false;
             this.SearchDomainComboBox.Text = SearchDomain.CurrentPage.ToString().FormatFromEnum();
