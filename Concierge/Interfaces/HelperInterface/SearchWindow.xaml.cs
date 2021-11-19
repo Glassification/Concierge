@@ -12,8 +12,10 @@ namespace Concierge.Interfaces.HelperInterface
     using System.Windows.Media;
 
     using Concierge.Interfaces.Components;
+    using Concierge.Interfaces.Enums;
     using Concierge.Search;
     using Concierge.Search.Enums;
+    using Concierge.Tools.Interface;
     using Concierge.Utility;
     using Concierge.Utility.Extensions;
 
@@ -44,7 +46,6 @@ namespace Concierge.Interfaces.HelperInterface
 
         public void ShowWindow()
         {
-            this.ClearFields();
             this.SearchTextBox.Focus();
             this.ShowDialog();
         }
@@ -53,7 +54,7 @@ namespace Concierge.Interfaces.HelperInterface
         {
             base.OnClosing(e);
             e.Cancel = true;
-            this.Hide();
+            this.CloseWindow();
         }
 
         private void ClearFields()
@@ -62,6 +63,7 @@ namespace Concierge.Interfaces.HelperInterface
             this.SearchResultTextBlock.Text = string.Empty;
             this.MatchCaseCheckBox.IsChecked = false;
             this.MatchWholeWordCheckBox.IsChecked = false;
+            this.UseRegexCheckBox.IsChecked = false;
             this.SearchDomainComboBox.Text = SearchDomain.CurrentPage.ToString().FormatFromEnum();
             this.SearchTextBox.Text = string.Empty;
         }
@@ -72,6 +74,7 @@ namespace Concierge.Interfaces.HelperInterface
             {
                 MatchCase = this.MatchCaseCheckBox.IsChecked ?? false,
                 MatchWholeWord = this.MatchWholeWordCheckBox.IsChecked ?? false,
+                UseRegex = this.UseRegexCheckBox.IsChecked ?? false,
                 SearchDomain = (SearchDomain)Enum.Parse(typeof(SearchDomain), this.SearchDomainComboBox.Text.Strip(" ")),
                 TextToSearch = this.SearchTextBox.Text,
             };
@@ -92,6 +95,11 @@ namespace Concierge.Interfaces.HelperInterface
 
         private void SelectSearchResult()
         {
+            if (!this.ValidateRegex())
+            {
+                return;
+            }
+
             this.Search();
 
             if (this.SearchResults.IsEmpty())
@@ -133,10 +141,32 @@ namespace Concierge.Interfaces.HelperInterface
             }
         }
 
-        private void CloseButton_Click(object sender, RoutedEventArgs e)
+        private bool ValidateRegex()
+        {
+            if ((this.UseRegexCheckBox.IsChecked ?? false) && !this.SearchTextBox.Text.IsValidRegex())
+            {
+                ConciergeMessageBox.Show(
+                    $"The current Regex: {this.SearchTextBox.Text} is invalid.",
+                    "Error",
+                    ConciergeWindowButtons.Ok,
+                    ConciergeWindowIcons.Error);
+
+                return false;
+            }
+
+            return true;
+        }
+
+        private void CloseWindow()
         {
             this.ClearHighlightedResults();
+            this.ClearFields();
             this.Hide();
+        }
+
+        private void CloseButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.CloseWindow();
         }
 
         private void FindPreviousButton_Click(object sender, RoutedEventArgs e)
@@ -165,8 +195,7 @@ namespace Concierge.Interfaces.HelperInterface
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            this.ClearHighlightedResults();
-            this.Hide();
+            this.CloseWindow();
         }
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
@@ -182,8 +211,7 @@ namespace Concierge.Interfaces.HelperInterface
             switch (e.Key)
             {
                 case Key.Escape:
-                    this.ClearHighlightedResults();
-                    this.Hide();
+                    this.CloseWindow();
                     break;
                 case Key.Enter:
                     this.FindNextButton_Click(this.FindNextButton, null);
@@ -197,6 +225,23 @@ namespace Concierge.Interfaces.HelperInterface
             {
                 this.Opacity = 1;
             }
+        }
+
+        private void UseRegexCheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            this.MatchWholeWordLabel.IsEnabled = false;
+            this.MatchWholeWordCheckBox.IsEnabled = false;
+            this.MatchWholeWordLabel.Opacity = 0.5;
+            this.MatchWholeWordCheckBox.Opacity = 0.5;
+            this.MatchWholeWordCheckBox.IsChecked = false;
+        }
+
+        private void UseRegexCheckBox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            this.MatchWholeWordLabel.IsEnabled = true;
+            this.MatchWholeWordCheckBox.IsEnabled = true;
+            this.MatchWholeWordLabel.Opacity = 1;
+            this.MatchWholeWordCheckBox.Opacity = 1;
         }
     }
 }

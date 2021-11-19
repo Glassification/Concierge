@@ -54,9 +54,18 @@ namespace Concierge.Search
 
         private void CreateRegex()
         {
-            var pattern = this.SearchSettings.MatchWholeWord
-                    ? @$"\b{Regex.Escape(this.SearchSettings.TextToSearch)}\b"
-                    : Regex.Escape(this.SearchSettings.TextToSearch);
+            string pattern;
+
+            if (this.SearchSettings.UseRegex)
+            {
+                pattern = this.SearchSettings.TextToSearch;
+            }
+            else
+            {
+                pattern = this.SearchSettings.MatchWholeWord
+                        ? @$"\b{Regex.Escape(this.SearchSettings.TextToSearch)}\b"
+                        : Regex.Escape(this.SearchSettings.TextToSearch);
+            }
 
             this.Regex = this.SearchSettings.MatchCase
                 ? new Regex(pattern)
@@ -100,11 +109,11 @@ namespace Concierge.Search
         {
             var textBlocks = Utilities.FindVisualChildren<ConciergeTextBlock>(conciergePage as Page);
 
-            foreach (var block in textBlocks)
+            foreach (var textBlock in textBlocks)
             {
-                if (this.Regex.IsMatch(block.Text))
+                if (this.Regex.IsMatch(textBlock.Text))
                 {
-                    this.Results.Add(new SearchResult(this.SearchSettings.TextToSearch, block, this.Regex, conciergePage));
+                    this.Results.Add(new SearchResult(this.SearchSettings.TextToSearch, textBlock, this.Regex, conciergePage));
                 }
             }
         }

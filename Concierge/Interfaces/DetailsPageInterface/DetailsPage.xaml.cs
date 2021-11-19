@@ -204,8 +204,8 @@ namespace Concierge.Interfaces.DetailsPageInterface
             }
             else if (weight > Program.CcsFile.Character.LightCarryCapacity && weight <= Program.CcsFile.Character.MediumCarryCapacity)
             {
-                this.WeightCarriedField.Foreground = ConciergeColors.MediumCarryCapacity;
-                this.WeightCarriedBox.Background = ConciergeColors.HeavyCarryCapacity;
+                this.WeightCarriedField.Foreground = ConciergeColors.HeavyCarryCapacity;
+                this.WeightCarriedBox.Background = ConciergeColors.MediumCarryCapacity;
             }
             else if (weight > Program.CcsFile.Character.MediumCarryCapacity && weight <= Program.CcsFile.Character.HeavyCarryCapacity)
             {

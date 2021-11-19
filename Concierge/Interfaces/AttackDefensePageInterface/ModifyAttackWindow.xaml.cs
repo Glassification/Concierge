@@ -16,7 +16,7 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
     using Concierge.Character.Items;
     using Concierge.Commands;
     using Concierge.Interfaces.Enums;
-    using Concierge.Primatives;
+    using Concierge.Primitives;
     using Concierge.Utility;
     using Concierge.Utility.Enums;
     using Concierge.Utility.Units;

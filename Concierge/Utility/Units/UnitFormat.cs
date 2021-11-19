@@ -6,7 +6,7 @@ namespace Concierge.Utility.Units
 {
     using System;
 
-    using Concierge.Primatives;
+    using Concierge.Primitives;
     using Concierge.Utility.Enums;
 
     public static class UnitFormat

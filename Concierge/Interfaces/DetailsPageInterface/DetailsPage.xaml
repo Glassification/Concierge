@@ -846,6 +846,7 @@
                         <Grid Grid.Row="1" Background="#ffd8e4bc">
                             <components:ConciergeTextBlock 
                                 FontSize="30"
+                                Foreground="Black"
                                 HorizontalAlignment="Center"
                                 VerticalAlignment="Center"
                                 x:Name="LightWeightField"/>
@@ -871,6 +872,7 @@
                         <Grid Grid.Row="1" Background="#fffcd6b4">
                             <components:ConciergeTextBlock 
                                 FontSize="30"
+                                Foreground="Black"
                                 HorizontalAlignment="Center"
                                 VerticalAlignment="Center"
                                 x:Name="MediumWeightField"/>
@@ -896,6 +898,7 @@
                         <Grid Grid.Row="1" Background="Pink">
                             <components:ConciergeTextBlock 
                                 FontSize="30"
+                                Foreground="Black"
                                 HorizontalAlignment="Center"
                                 VerticalAlignment="Center"
                                 x:Name="HeavyWeightField"/>

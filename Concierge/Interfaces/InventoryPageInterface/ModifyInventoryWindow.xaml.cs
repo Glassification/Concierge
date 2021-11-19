@@ -14,7 +14,7 @@ namespace Concierge.Interfaces.InventoryPageInterface
     using Concierge.Character.Items;
     using Concierge.Commands;
     using Concierge.Interfaces.Enums;
-    using Concierge.Primatives;
+    using Concierge.Primitives;
     using Concierge.Tools.Interface;
     using Concierge.Utility;
     using Concierge.Utility.Enums;

@@ -10,7 +10,7 @@
         d:DataContext="{d:DesignInstance Type=viewmodels:ConciergeViewModel}"
         mc:Ignorable="d"
         Title="SearchWindow"
-        Height="400"
+        Height="445"
         Width="650"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
@@ -26,7 +26,7 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="45"/>
-            <RowDefinition Height="285"/>
+            <RowDefinition Height="330"/>
             <RowDefinition Height="70"/>
         </Grid.RowDefinitions>
 
@@ -56,11 +56,12 @@
 
         <Grid Grid.Row="1">
             <Grid.RowDefinitions>
-                <RowDefinition Height="23*"/>
-                <RowDefinition Height="23*"/>
-                <RowDefinition Height="23*"/>
-                <RowDefinition Height="23*"/>
-                <RowDefinition Height="8*"/>
+                <RowDefinition Height="19*"/>
+                <RowDefinition Height="19*"/>
+                <RowDefinition Height="19*"/>
+                <RowDefinition Height="19*"/>
+                <RowDefinition Height="19*"/>
+                <RowDefinition Height="6*"/>
             </Grid.RowDefinitions>
 
             <Grid Grid.Row="0">
@@ -102,6 +103,7 @@
                 <!--Title-->
                 <Grid Grid.Column="0">
                     <TextBlock 
+                        x:Name="MatchWholeWordLabel"
                         Text="Match Whole Word:"
                         Foreground="White"
                         FontSize="20"
@@ -132,6 +134,38 @@
                 <!--Title-->
                 <Grid Grid.Column="0">
                     <TextBlock 
+                        Text="Use Regex:"
+                        Foreground="White"
+                        FontSize="20"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        Margin="10, 0, 0, 0"/>
+                </Grid>
+
+                <!--Value-->
+                <Grid Grid.Column="1">
+                    <components:ConciergeCheckBox  
+                        x:Name="UseRegexCheckBox"
+                        Margin="60, 15, 0, 0"
+                        Checked="UseRegexCheckBox_Checked"
+                        Unchecked="UseRegexCheckBox_Unchecked"
+                        Style="{StaticResource CheckBoxStyle}">
+                        <CheckBox.LayoutTransform>
+                            <ScaleTransform ScaleX="2" ScaleY="2" />
+                        </CheckBox.LayoutTransform>
+                    </components:ConciergeCheckBox>
+                </Grid>
+            </Grid>
+
+            <Grid Grid.Row="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="35*"/>
+                    <ColumnDefinition Width="65*"/>
+                </Grid.ColumnDefinitions>
+
+                <!--Title-->
+                <Grid Grid.Column="0">
+                    <TextBlock 
                         Text="Look in:"
                         Foreground="White"
                         FontSize="20"
@@ -149,7 +183,7 @@
                 </Grid>
             </Grid>
 
-            <Grid Grid.Row="3">
+            <Grid Grid.Row="4">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="35*"/>
                     <ColumnDefinition Width="65*"/>
@@ -174,7 +208,7 @@
                 </Grid>
             </Grid>
 
-            <Grid Grid.Row="4">
+            <Grid Grid.Row="5">
                 <TextBlock
                     x:Name="SearchResultTextBlock"
                     Foreground="PaleGreen"

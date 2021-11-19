@@ -7,7 +7,7 @@ namespace Concierge.Character.Items
     using System;
 
     using Concierge.Character.Enums;
-    using Concierge.Primatives;
+    using Concierge.Primitives;
     using Concierge.Utility;
     using Newtonsoft.Json;
 

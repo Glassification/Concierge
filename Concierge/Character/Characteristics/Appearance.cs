@@ -4,7 +4,7 @@
 
 namespace Concierge.Character.Characteristics
 {
-    using Concierge.Primatives;
+    using Concierge.Primitives;
     using Concierge.Utility;
     using Concierge.Utility.Enums;
 

@@ -8,7 +8,7 @@ namespace Concierge.Utility.Colors
     using System.Windows;
     using System.Windows.Media;
 
-    using Concierge.Primatives;
+    using Concierge.Primitives;
     using Concierge.Utility.Extensions;
 
     public static class ColorUtilities

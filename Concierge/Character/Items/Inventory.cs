@@ -6,7 +6,7 @@ namespace Concierge.Character.Items
 {
     using System;
 
-    using Concierge.Primatives;
+    using Concierge.Primitives;
     using Concierge.Utility;
     using Newtonsoft.Json;
 

@@ -2,7 +2,7 @@
 // Copyright (c) Thomas Beckett. All rights reserved.
 // </copyright>
 
-namespace Concierge.Primatives
+namespace Concierge.Primitives
 {
     using Concierge.Utility;
 

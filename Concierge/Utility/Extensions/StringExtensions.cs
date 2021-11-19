@@ -4,6 +4,7 @@
 
 namespace Concierge.Utility.Extensions
 {
+    using System;
     using System.IO;
     using System.Text;
     using System.Text.RegularExpressions;
@@ -91,6 +92,25 @@ namespace Concierge.Utility.Extensions
         public static string Strip(this string str, string textToStrip)
         {
             return str.Replace(textToStrip, string.Empty);
+        }
+
+        public static bool IsValidRegex(this string pattern)
+        {
+            if (pattern.IsNullOrWhiteSpace())
+            {
+                return false;
+            }
+
+            try
+            {
+                Regex.Match(string.Empty, pattern);
+            }
+            catch (ArgumentException)
+            {
+                return false;
+            }
+
+            return true;
         }
     }
 }
