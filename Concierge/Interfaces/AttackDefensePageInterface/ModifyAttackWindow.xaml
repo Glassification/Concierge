@@ -76,12 +76,13 @@
 
                     <!--Title-->
                     <Grid Grid.Column="0">
-                        <TextBlock Text="Name:"
-                                   Foreground="White"
-                                   FontSize="20"
-                                   HorizontalAlignment="Left"
-                                   VerticalAlignment="Center"
-                                   Margin="10, 0, 0, 0"/>
+                        <TextBlock 
+                            Text="Name:"
+                            Foreground="White"
+                            FontSize="20"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Margin="10, 0, 0, 0"/>
                     </Grid>
 
                     <!--Value-->
@@ -102,12 +103,13 @@
 
                     <!--Title-->
                     <Grid Grid.Column="0">
-                        <TextBlock Text="Type:"
-                                   Foreground="White"
-                                   FontSize="20"
-                                   HorizontalAlignment="Left"
-                                   VerticalAlignment="Center"
-                                   Margin="10, 0, 0, 0"/>
+                        <TextBlock 
+                            Text="Type:"
+                            Foreground="White"
+                            FontSize="20"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Margin="10, 0, 0, 0"/>
                     </Grid>
 
                     <!--Value-->
@@ -128,12 +130,13 @@
 
                     <!--Title-->
                     <Grid Grid.Column="0">
-                        <TextBlock Text="Ability:"
-                                   Foreground="White"
-                                   FontSize="20"
-                                   HorizontalAlignment="Left"
-                                   VerticalAlignment="Center"
-                                   Margin="10, 0, 0, 0"/>
+                        <TextBlock 
+                            Text="Ability:"
+                            Foreground="White"
+                            FontSize="20"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Margin="10, 0, 0, 0"/>
                     </Grid>
 
                     <!--Value-->
@@ -154,12 +157,13 @@
 
                     <!--Title-->
                     <Grid Grid.Column="0">
-                        <TextBlock Text="Damage:"
-                                   Foreground="White"
-                                   FontSize="20"
-                                   HorizontalAlignment="Left"
-                                   VerticalAlignment="Center"
-                                   Margin="10, 0, 0, 0"/>
+                        <TextBlock 
+                            Text="Damage:"
+                            Foreground="White"
+                            FontSize="20"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Margin="10, 0, 0, 0"/>
                     </Grid>
 
                     <!--Value-->
@@ -181,12 +185,14 @@
 
                     <!--Title-->
                     <Grid Grid.Column="0">
-                        <TextBlock Text="Misc Damage:"
-                                   Foreground="White"
-                                   FontSize="17"
-                                   HorizontalAlignment="Left"
-                                   VerticalAlignment="Center"
-                                   Margin="10, 0, 0, 0"/>
+                        <TextBlock 
+                            Text="Misc Damage:"
+                            Foreground="White"
+                            FontSize="20"
+                            TextWrapping="Wrap"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Margin="10, 0, 0, 0"/>
                     </Grid>
 
                     <!--Value-->
@@ -208,12 +214,14 @@
 
                     <!--Title-->
                     <Grid Grid.Column="0">
-                        <TextBlock Text="Damage Type:"
-                                   Foreground="White"
-                                   FontSize="17"
-                                   HorizontalAlignment="Left"
-                                   VerticalAlignment="Center"
-                                   Margin="10, 0, 0, 0"/>
+                        <TextBlock 
+                            Text="Damage Type:"
+                            Foreground="White"
+                            FontSize="20"
+                            TextWrapping="Wrap"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Margin="10, 0, 0, 0"/>
                     </Grid>
 
                     <!--Value-->
@@ -245,12 +253,13 @@
 
                     <!--Title-->
                     <Grid Grid.Column="0">
-                        <TextBlock Text="Range:"
-                                   Foreground="White"
-                                   FontSize="20"
-                                   HorizontalAlignment="Left"
-                                   VerticalAlignment="Center"
-                                   Margin="10, 0, 0, 0"/>
+                        <TextBlock 
+                            Text="Range:"
+                            Foreground="White"
+                            FontSize="20"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Margin="10, 0, 0, 0"/>
                     </Grid>
 
                     <!--Value-->
@@ -275,7 +284,7 @@
                         <TextBlock 
                             Text="Weight:"
                             Foreground="White"
-                            FontSize="19"
+                            FontSize="20"
                             HorizontalAlignment="Left"
                             VerticalAlignment="Top"
                             Margin="10, 8, 0, 0"/>
@@ -304,12 +313,13 @@
 
                     <!--Title-->
                     <Grid Grid.Column="0">
-                        <TextBlock Text="Proficiency:"
-                                   Foreground="White"
-                                   FontSize="20"
-                                   HorizontalAlignment="Left"
-                                   VerticalAlignment="Center"
-                                   Margin="10, 0, 0, 0"/>
+                        <TextBlock 
+                            Text="Proficiency:"
+                            Foreground="White"
+                            FontSize="20"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Margin="10, 0, 0, 0"/>
                     </Grid>
 
                     <!--Value-->
@@ -336,7 +346,8 @@
                         <TextBlock 
                             Text="Bag of Holding:"
                             Foreground="White"
-                            FontSize="16"
+                            FontSize="20"
+                            TextWrapping="Wrap"
                             HorizontalAlignment="Left"
                             VerticalAlignment="Center"
                             Margin="10, 0, 0, 0"/>
@@ -364,12 +375,13 @@
 
                     <!--Title-->
                     <Grid Grid.Column="0">
-                        <TextBlock Text="Description:"
-                               Foreground="White"
-                               FontSize="20"
-                               HorizontalAlignment="Left"
-                               VerticalAlignment="Top"
-                               Margin="10, 20, 0, 0"/>
+                        <TextBlock 
+                            Text="Description:"
+                            Foreground="White"
+                            FontSize="20"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top"
+                            Margin="10, 20, 0, 0"/>
                     </Grid>
 
                     <!--Value-->

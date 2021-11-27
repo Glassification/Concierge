@@ -16,18 +16,17 @@ namespace Concierge.Interfaces
     using Concierge.Interfaces.DetailsPageInterface;
     using Concierge.Interfaces.Enums;
     using Concierge.Interfaces.EquippedItemsPageInterface;
-    using Concierge.Interfaces.HelperInterface;
     using Concierge.Interfaces.InventoryPageInterface;
     using Concierge.Interfaces.NotesPageInterface;
     using Concierge.Interfaces.OverviewPageInterface;
     using Concierge.Interfaces.SpellcastingPageInterface;
     using Concierge.Interfaces.ToolsPageInterface;
+    using Concierge.Interfaces.UtilityInterface;
     using Concierge.Persistence;
     using Concierge.Services;
     using Concierge.Tools;
     using Concierge.Tools.Interface;
     using Concierge.Utility;
-    using Concierge.Utility.Colors;
     using Concierge.Utility.Extensions;
     using MaterialDesignThemes.Wpf;
 

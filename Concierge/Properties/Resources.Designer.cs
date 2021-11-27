@@ -99,20 +99,21 @@ namespace Concierge.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static System.IO.UnmanagedMemoryStream HighPitchTapSoundLoud {
+        internal static byte[] hey_whats_going_on {
             get {
-                return ResourceManager.GetStream("HighPitchTapSoundLoud", resourceCulture);
+                object obj = ResourceManager.GetObject("hey-whats-going-on", resourceCulture);
+                return ((byte[])(obj));
             }
         }
         
         /// <summary>
         ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
         /// </summary>
-        internal static System.IO.UnmanagedMemoryStream I_m_a_Conman {
+        internal static System.IO.UnmanagedMemoryStream HighPitchTapSoundLoud {
             get {
-                return ResourceManager.GetStream("I_m_a_Conman", resourceCulture);
+                return ResourceManager.GetStream("HighPitchTapSoundLoud", resourceCulture);
             }
         }
         

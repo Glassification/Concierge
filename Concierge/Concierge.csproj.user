@@ -13,10 +13,13 @@
     <Compile Update="Interfaces\EquippedItemsPageInterface\ModifyCharacterImageWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Interfaces\HelperInterface\HelpWindow.xaml.cs">
+    <Compile Update="Interfaces\UtilityInterface\HelpWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Interfaces\HelperInterface\SearchWindow.xaml.cs">
+    <Compile Update="Interfaces\UtilityInterface\KonamiCodeWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Interfaces\UtilityInterface\SearchWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -84,22 +87,25 @@
     <Page Update="Interfaces\EquippedItemsPageInterface\ModifyEquippedItemsWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Interfaces\HelperInterface\AboutConciergeWindow.xaml">
+    <Page Update="Interfaces\UtilityInterface\AboutConciergeWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Interfaces\HelperInterface\ConciergeMessageWindow.xaml">
+    <Page Update="Interfaces\UtilityInterface\ConciergeMessageWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Interfaces\HelperInterface\HelpWindow.xaml">
+    <Page Update="Interfaces\UtilityInterface\HelpWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Interfaces\HelperInterface\SaveStatusWindow.xaml">
+    <Page Update="Interfaces\UtilityInterface\KonamiCodeWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Interfaces\HelperInterface\SearchWindow.xaml">
+    <Page Update="Interfaces\UtilityInterface\SaveStatusWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Interfaces\HelperInterface\SettingsWindow.xaml">
+    <Page Update="Interfaces\UtilityInterface\SearchWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Interfaces\UtilityInterface\SettingsWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Interfaces\InventoryPageInterface\InventoryPage.xaml">

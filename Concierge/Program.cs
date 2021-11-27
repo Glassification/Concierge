@@ -6,7 +6,7 @@ namespace Concierge
 {
     using System.Reflection;
 
-    using Concierge.Interfaces.HelperInterface;
+    using Concierge.Interfaces.UtilityInterface;
     using Concierge.Logging;
     using Concierge.Persistence;
     using Concierge.Services;

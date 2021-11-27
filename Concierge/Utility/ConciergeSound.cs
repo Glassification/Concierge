@@ -15,7 +15,6 @@ namespace Concierge.Utility
             HighPitchTapSound = new SoundPlayer(Properties.Resources.HighPitchTapSoundLoud);
             TapSound = new SoundPlayer(Properties.Resources.GenericTapSoundLoud);
             WarningSound = new SoundPlayer(Properties.Resources.GenericWarning);
-            ConmanSong = new SoundPlayer(Properties.Resources.I_m_a_Conman);
         }
 
         private static SoundPlayer HighPitchTapSound { get; set; }
@@ -23,8 +22,6 @@ namespace Concierge.Utility
         private static SoundPlayer TapSound { get; set; }
 
         private static SoundPlayer WarningSound { get; set; }
-
-        private static SoundPlayer ConmanSong { get; set; }
 
         private static bool SkipClick
         {
@@ -73,11 +70,6 @@ namespace Concierge.Utility
             }
 
             WarningSound.Play();
-        }
-
-        public static void KonamiCodeSound()
-        {
-            ConmanSong.Play();
         }
     }
 }

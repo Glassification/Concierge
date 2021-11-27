@@ -1384,7 +1384,7 @@
         "Misc": "1d4 Force",
         "DamageType": 2,
         "Range": "80 / 320",
-        "Note": "Ammunition, two-handed. Wen you see a creature casting a spell within 60' while holding this bow, can cast Spelldrinker. Cannot be used again until a short or long rest.",
+        "Note": "Ammunition, two-handed. When you see a creature casting a spell within 60' while holding this bow, can cast Spelldrinker. Cannot be used again until a short or long rest.",
         "Weight": {
           "Value": 2.0,
           "UnitType": 0,
@@ -1550,5 +1550,5 @@
       }
     ]
   },
-  "Version": "4.1.1"
+  "Version": "4.1.4"
 }

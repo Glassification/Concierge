@@ -1,0 +1,31 @@
+﻿<Window x:Class="Concierge.Interfaces.UtilityInterface.KonamiCodeWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Concierge.Interfaces.UtilityInterface"
+        mc:Ignorable="d"
+        Title="KonamiCodeWindow"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        Background="#252526"
+        ResizeMode="NoResize"
+        Height="360"
+        Width="480"
+        BorderThickness="1"
+        BorderBrush="#227EA9"
+        KeyDown="Window_KeyDown"
+        MouseDown="Window_MouseDown"
+        IsVisibleChanged="Window_IsVisibleChanged"
+        xmlns:viewmodels="clr-namespace:Concierge.Interfaces.ViewModels" 
+        d:DataContext="{d:DesignInstance Type=viewmodels:ConciergeViewModel}">
+    <Grid>
+        <MediaElement
+            x:Name="VideoControl"
+            Width="480"
+            Height="360"
+            Visibility="Visible"
+            LoadedBehavior="Manual"
+            MediaFailed="VideoControl_MediaFailed"/>
+    </Grid>
+</Window>

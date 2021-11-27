@@ -5,7 +5,7 @@
 namespace Concierge.Tools.Interface
 {
     using Concierge.Interfaces.Enums;
-    using Concierge.Interfaces.HelperInterface;
+    using Concierge.Interfaces.UtilityInterface;
 
     public static class ConciergeMessageBox
     {

@@ -130,14 +130,14 @@
   <data name="GenericWarning" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Sounds\GenericWarning.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="hey-whats-going-on" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Videos\hey-whats-going-on.wmv;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="HighPitchTapSoundLoud" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Sounds\HighPitchTapSoundLoud.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="Inventory" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Json\Inventory.json;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="I_m_a_Conman" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\Sounds\I'm a Conman.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="Language" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Json\Language.json;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>

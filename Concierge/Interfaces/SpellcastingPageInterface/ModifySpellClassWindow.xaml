@@ -130,7 +130,8 @@
                         <TextBlock 
                             Text="Attack Bonus:"
                             Foreground="White"
-                            FontSize="15"
+                            FontSize="20"
+                            TextWrapping="Wrap"
                             HorizontalAlignment="Left"
                             VerticalAlignment="Center"
                             Margin="10, 0, 0, 0"/>
@@ -159,7 +160,8 @@
                     <Grid Grid.Column="0">
                         <TextBlock Text="Spell Save:"
                                    Foreground="White"
-                                   FontSize="15"
+                                   FontSize="20"
+                                   TextWrapping="Wrap"
                                    HorizontalAlignment="Left"
                                    VerticalAlignment="Center"
                                    Margin="10, 0, 0, 0"/>
@@ -222,7 +224,8 @@
                     <Grid Grid.Column="0">
                         <TextBlock Text="Known Cantrips:"
                                    Foreground="White"
-                                   FontSize="13"
+                                   FontSize="20"
+                                   TextWrapping="Wrap"
                                    HorizontalAlignment="Left"
                                    VerticalAlignment="Center"
                                    Margin="10, 0, 0, 0"/>
@@ -245,7 +248,8 @@
                     <Grid Grid.Column="0">
                         <TextBlock Text="Known Spells:"
                                    Foreground="White"
-                                   FontSize="14"
+                                   FontSize="20"
+                                   TextWrapping="Wrap"
                                    HorizontalAlignment="Left"
                                    VerticalAlignment="Center"
                                    Margin="10, 0, 0, 0"/>
@@ -268,7 +272,8 @@
                     <Grid Grid.Column="0">
                         <TextBlock Text="Prepared Spells:"
                                    Foreground="White"
-                                   FontSize="13"
+                                   FontSize="20"
+                                   TextWrapping="Wrap"
                                    HorizontalAlignment="Left"
                                    VerticalAlignment="Center"
                                    Margin="10, 0, 0, 0"/>

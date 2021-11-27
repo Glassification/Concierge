@@ -6,13 +6,17 @@ namespace Concierge.Tools
 {
     using System.Windows.Input;
 
-    using Concierge.Utility;
+    using Concierge.Interfaces.UtilityInterface;
 
     public static class EasterEggController
     {
-        private static readonly Key[] KonamiCodeSequence = new Key[] { Key.Up, Key.Up, Key.Down, Key.Down, Key.Left, Key.Right, Key.Left, Key.Right, Key.A, Key.B };
+        private static readonly Key[] KonamiCodeSequence = new Key[] { Key.Up, Key.Up, Key.Down, Key.Down, Key.Left, Key.Right, Key.Left, Key.Right, Key.B, Key.A };
+
+        private static readonly KonamiCodeWindow konamiCodeWindow = new ();
 
         private static int KonamiCodeIndex { get; set; }
+
+        private static bool IsKonamiCodeValid => KonamiCodeSequence.Length == KonamiCodeIndex;
 
         public static void KonamiCode(Key key)
         {
@@ -20,9 +24,9 @@ namespace Concierge.Tools
             {
                 KonamiCodeIndex++;
 
-                if (KonamiCodeSequence.Length == KonamiCodeIndex)
+                if (IsKonamiCodeValid)
                 {
-                    ConciergeSound.KonamiCodeSound();
+                    konamiCodeWindow.ShowWindow();
                     KonamiCodeIndex = 0;
                 }
             }

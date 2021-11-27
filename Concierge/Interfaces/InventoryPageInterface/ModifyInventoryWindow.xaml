@@ -120,7 +120,7 @@
                     <TextBlock 
                             Text="Weight:"
                             Foreground="White"
-                            FontSize="19"
+                            FontSize="20"
                             HorizontalAlignment="Left"
                             VerticalAlignment="Top"
                             Margin="10, 8, 0, 0"/>
