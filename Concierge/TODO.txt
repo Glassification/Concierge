@@ -1,1 +1,2 @@
 ﻿Add searching to Notes
+Create installer

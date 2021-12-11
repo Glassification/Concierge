@@ -8,31 +8,24 @@ namespace Concierge.Logging
     using System.IO;
     using System.IO.Compression;
     using System.Linq;
-    using System.Reflection;
 
     using Concierge.Utility.Extensions;
 
     public class LocalLogger : Logger
     {
-        private const string DefaultLoggingFolder = "Logging";
+        private const string DefaultLoggingFolder = @"Concierge\Logging";
+        private const string DefaultLogFileName = @"Concierge.log";
 
         public LocalLogger(bool isDebug = false)
-        : base(isDebug)
+        : this(string.Empty, string.Empty, isDebug)
         {
-            this.LogLocation = FormatLogFilePath(string.Empty);
-            this.LogFileName = FormatLogFileName();
-
-            this.MaxLogFileSize = 5000000;
-            this.MaxLogFiles = 5;
-            this.MaxLogArchives = 5;
-            this.MaxLogRetentionDays = 90;
         }
 
-        public LocalLogger(string logPath, bool isDebug = false)
+        public LocalLogger(string logPath, string logName, bool isDebug = false)
         : base(isDebug)
         {
             this.LogLocation = FormatLogFilePath(logPath);
-            this.LogFileName = FormatLogFileName();
+            this.LogFileName = FormatLogFileName(logName);
 
             this.MaxLogFileSize = 5000000;
             this.MaxLogFiles = 5;
@@ -71,15 +64,17 @@ namespace Concierge.Logging
             streamWriter.WriteLine(message);
         }
 
-        private static string FormatLogFileName()
+        private static string FormatLogFileName(string logName)
         {
-            return $"Concierge.log";
+            return logName.IsNullOrWhiteSpace() ?
+                DefaultLogFileName :
+                logName;
         }
 
         private static string FormatLogFilePath(string filePath)
         {
             return filePath.IsNullOrWhiteSpace() ?
-                Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), DefaultLoggingFolder) :
+                Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), DefaultLoggingFolder) :
                 filePath;
         }
 

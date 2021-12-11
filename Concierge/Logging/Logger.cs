@@ -94,6 +94,7 @@ namespace Concierge.Logging
         {
             this.terminate.Set();
             this.loggingThread.Join();
+            GC.SuppressFinalize(this);
         }
 
         protected abstract void CreateLog(string message);

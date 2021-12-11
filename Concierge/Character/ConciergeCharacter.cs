@@ -112,7 +112,7 @@ namespace Concierge.Character
 
                 weight += this.EquippedItems.Weight;
 
-                return Math.Round(weight, Constants.SignificantDigits);
+                return weight;
             }
         }
 

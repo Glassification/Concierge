@@ -15,6 +15,8 @@ namespace Concierge.Primitives
             this.Value = value;
         }
 
+        public static HsvColor Empty => new (0, 0, 0);
+
         public double Hue { get; set; }
 
         public double Saturation { get; set; }

@@ -144,6 +144,7 @@ namespace Concierge.Interfaces.InventoryPageInterface
             this.WeightUpDown.Value = 0.0;
             this.BagOfHoldingCheckBox.IsChecked = false;
             this.NotesTextBox.Text = string.Empty;
+            this.WeightUnits.Text = $"({UnitFormat.WeightPostfix})";
 
             this.BagOfHoldingCheckBox.UpdatedValue();
         }

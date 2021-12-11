@@ -116,10 +116,10 @@ namespace Concierge.Interfaces.DetailsPageInterface
         {
             var character = Program.CcsFile.Character;
 
-            this.WeightCarriedField.Text = $"{character.CarryWeight} {UnitFormat.WeightUnits}";
-            this.LightWeightField.Text = $"{character.LightCarryCapacity} {UnitFormat.WeightUnits}";
-            this.MediumWeightField.Text = $"{character.MediumCarryCapacity} {UnitFormat.WeightUnits}";
-            this.HeavyWeightField.Text = $"{character.HeavyCarryCapacity} {UnitFormat.WeightUnits}";
+            this.WeightCarriedField.Text = UnitFormat.FormatWeight(ConciergeSettings.UnitOfMeasurement, character.CarryWeight);
+            this.LightWeightField.Text = UnitFormat.FormatWeight(ConciergeSettings.UnitOfMeasurement, character.LightCarryCapacity, true);
+            this.MediumWeightField.Text = UnitFormat.FormatWeight(ConciergeSettings.UnitOfMeasurement, character.MediumCarryCapacity, true);
+            this.HeavyWeightField.Text = UnitFormat.FormatWeight(ConciergeSettings.UnitOfMeasurement, character.HeavyCarryCapacity, true);
 
             this.FormatCarryWeight();
         }

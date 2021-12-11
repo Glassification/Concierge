@@ -15,8 +15,6 @@ namespace Concierge.Utility.Units
 
         public static string WeightPostfix => ConciergeSettings.UnitOfMeasurement == UnitTypes.Imperial ? "Pounds" : "Kilograms";
 
-        public static string WeightUnits => ConciergeSettings.UnitOfMeasurement == UnitTypes.Imperial ? "lbs" : "kg";
-
         public static string ToString(ConciergeDouble value)
         {
             return value.Measurement switch
@@ -27,7 +25,7 @@ namespace Concierge.Utility.Units
             };
         }
 
-        private static string FormatHeight(UnitTypes unitType, double value)
+        public static string FormatHeight(UnitTypes unitType, double value)
         {
             var feetAndInches = Utilities.GetSeperateFeetAndInches(value);
 
@@ -39,14 +37,22 @@ namespace Concierge.Utility.Units
             };
         }
 
-        private static string FormatWeight(UnitTypes unitType, double value)
+        public static string FormatWeight(UnitTypes unitType, double value, bool reduceDigits = false)
         {
+            var significantDigits = reduceDigits ? GetSignificantDigits(value) : Constants.SignificantDigits;
+
             return unitType switch
             {
                 UnitTypes.Imperial => $"{Math.Round(value, Constants.SignificantDigits)} lbs",
-                UnitTypes.Metric => $"{Math.Round(value, Constants.SignificantDigits)} kg",
+                UnitTypes.Metric => $"{Math.Round(value, significantDigits)} kg",
                 _ => Math.Round(value, Constants.SignificantDigits).ToString(),
             };
+        }
+
+        private static int GetSignificantDigits(double value)
+        {
+            var digits = ((int)value).ToString().Length;
+            return digits > Constants.SignificantDigits ? Constants.SignificantDigits - 1 : Constants.SignificantDigits;
         }
     }
 }

@@ -56,7 +56,7 @@ namespace Concierge.Utility.Units
             return ConciergeSettings.UnitOfMeasurement switch
             {
                 UnitTypes.Imperial => baseStrength,
-                UnitTypes.Metric => (baseStrength / 2) - (baseStrength * 0.1),
+                UnitTypes.Metric => (baseStrength / 2) + (baseStrength * 0.05),
                 _ => baseStrength,
             };
         }

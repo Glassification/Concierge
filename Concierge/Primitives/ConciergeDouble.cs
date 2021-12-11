@@ -32,12 +32,12 @@ namespace Concierge.Primitives
 
         public static bool operator ==(ConciergeDouble a, ConciergeDouble b)
         {
-            return a.Value == b.Value && a.UnitType == b.UnitType;
+            return a.Value == b.Value && a.UnitType == b.UnitType && a.Measurement == b.Measurement;
         }
 
         public static bool operator !=(ConciergeDouble a, ConciergeDouble b)
         {
-            return a.Value != b.Value || a.UnitType != b.UnitType;
+            return a.Value != b.Value || a.UnitType != b.UnitType || a.Measurement != b.Measurement;
         }
 
         public override string ToString()
