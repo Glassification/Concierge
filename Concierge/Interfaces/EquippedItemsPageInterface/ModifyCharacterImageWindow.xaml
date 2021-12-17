@@ -76,14 +76,9 @@
                 <Grid Grid.Column="1">
                     <components:ConciergeCheckBox 
                         x:Name="UseCustomImageCheckBox"
-                        Margin="0, 18, 0, 0"
                         Style="{StaticResource CheckBoxStyle}"
                         Checked="UseCustomImageCheckBox_Checked"
-                        Unchecked="UseCustomImageCheckBox_Unchecked">
-                        <CheckBox.LayoutTransform>
-                            <ScaleTransform ScaleX="2" ScaleY="2" />
-                        </CheckBox.LayoutTransform>
-                    </components:ConciergeCheckBox>
+                        Unchecked="UseCustomImageCheckBox_Unchecked"/>
                 </Grid>
             </Grid>
 

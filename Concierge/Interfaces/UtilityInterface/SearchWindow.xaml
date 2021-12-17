@@ -85,12 +85,7 @@
                 <Grid Grid.Column="1">
                     <components:ConciergeCheckBox  
                         x:Name="MatchCaseCheckBox"
-                        Margin="60, 15, 0, 0"
-                        Style="{StaticResource CheckBoxStyle}">
-                        <CheckBox.LayoutTransform>
-                            <ScaleTransform ScaleX="2" ScaleY="2" />
-                        </CheckBox.LayoutTransform>
-                    </components:ConciergeCheckBox>
+                        Style="{StaticResource CheckBoxStyle}"/>
                 </Grid>
             </Grid>
 
@@ -116,12 +111,7 @@
                 <Grid Grid.Column="1">
                     <components:ConciergeCheckBox  
                         x:Name="MatchWholeWordCheckBox"
-                        Margin="60, 15, 0, 0"
-                        Style="{StaticResource CheckBoxStyle}">
-                        <CheckBox.LayoutTransform>
-                            <ScaleTransform ScaleX="2" ScaleY="2" />
-                        </CheckBox.LayoutTransform>
-                    </components:ConciergeCheckBox>
+                        Style="{StaticResource CheckBoxStyle}"/>
                 </Grid>
             </Grid>
 
@@ -146,14 +136,9 @@
                 <Grid Grid.Column="1">
                     <components:ConciergeCheckBox  
                         x:Name="UseRegexCheckBox"
-                        Margin="60, 15, 0, 0"
                         Checked="UseRegexCheckBox_Checked"
                         Unchecked="UseRegexCheckBox_Unchecked"
-                        Style="{StaticResource CheckBoxStyle}">
-                        <CheckBox.LayoutTransform>
-                            <ScaleTransform ScaleX="2" ScaleY="2" />
-                        </CheckBox.LayoutTransform>
-                    </components:ConciergeCheckBox>
+                        Style="{StaticResource CheckBoxStyle}"/>
                 </Grid>
             </Grid>
 

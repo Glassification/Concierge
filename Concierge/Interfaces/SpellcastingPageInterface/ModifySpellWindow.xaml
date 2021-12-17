@@ -116,12 +116,7 @@
                     <Grid Grid.Column="1">
                         <components:ConciergeCheckBox 
                             x:Name="PreparedCheckBox"
-                            Style="{StaticResource CheckBoxStyle}"
-                            Margin="0, 10, 0, 0">
-                            <CheckBox.LayoutTransform>
-                                <ScaleTransform ScaleX="2" ScaleY="2" />
-                            </CheckBox.LayoutTransform>
-                        </components:ConciergeCheckBox>
+                            Style="{StaticResource CheckBoxStyle}"/>
                     </Grid>
                 </Grid>
 
@@ -220,12 +215,7 @@
                     <Grid Grid.Column="1">
                         <components:ConciergeCheckBox  
                             x:Name="RitualCheckBox"
-                            Style="{StaticResource CheckBoxStyle}"
-                            Margin="0, 10, 0, 0">
-                            <CheckBox.LayoutTransform>
-                                <ScaleTransform ScaleX="2" ScaleY="2" />
-                            </CheckBox.LayoutTransform>
-                        </components:ConciergeCheckBox>
+                            Style="{StaticResource CheckBoxStyle}"/>
                     </Grid>
                 </Grid>
 
@@ -277,12 +267,7 @@
                     <Grid Grid.Column="1">
                         <components:ConciergeCheckBox  
                             x:Name="ConcentrationCheckBox"
-                            Style="{StaticResource CheckBoxStyle}"
-                            Margin="0, 10, 0, 0">
-                            <CheckBox.LayoutTransform>
-                                <ScaleTransform ScaleX="2" ScaleY="2" />
-                            </CheckBox.LayoutTransform>
-                        </components:ConciergeCheckBox>
+                            Style="{StaticResource CheckBoxStyle}"/>
                     </Grid>
                 </Grid>
             </Grid>

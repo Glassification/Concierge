@@ -85,14 +85,9 @@
                     <Grid Grid.Column="1">
                         <components:ConciergeCheckBox  
                             x:Name="AutosaveCheckBox"
-                            Margin="60, 15, 0, 0"
                             Style="{StaticResource CheckBoxStyle}"
                             Checked="AutosaveCheckBox_Checked"
-                            Unchecked="AutosaveCheckBox_Unchecked">
-                            <CheckBox.LayoutTransform>
-                                <ScaleTransform ScaleX="2" ScaleY="2" />
-                            </CheckBox.LayoutTransform>
-                        </components:ConciergeCheckBox>
+                            Unchecked="AutosaveCheckBox_Unchecked"/>
                     </Grid>
                 </Grid>
 
@@ -116,12 +111,7 @@
                     <Grid Grid.Column="1">
                         <components:ConciergeCheckBox  
                             x:Name="CoinWeightCheckBox"
-                            Style="{StaticResource CheckBoxStyle}"
-                            Margin="60, 15, 0, 0">
-                            <CheckBox.LayoutTransform>
-                                <ScaleTransform ScaleX="2" ScaleY="2" />
-                            </CheckBox.LayoutTransform>
-                        </components:ConciergeCheckBox>
+                            Style="{StaticResource CheckBoxStyle}"/>
                     </Grid>
                 </Grid>
 
@@ -145,12 +135,7 @@
                     <Grid Grid.Column="1">
                         <components:ConciergeCheckBox 
                             x:Name="MuteCheckBox"
-                            Style="{StaticResource CheckBoxStyle}"
-                            Margin="60, 15, 0, 0">
-                            <CheckBox.LayoutTransform>
-                                <ScaleTransform ScaleX="2" ScaleY="2" />
-                            </CheckBox.LayoutTransform>
-                        </components:ConciergeCheckBox>
+                            Style="{StaticResource CheckBoxStyle}"/>
                     </Grid>
                 </Grid>
 
@@ -249,12 +234,7 @@
                     <Grid Grid.Column="1">
                         <components:ConciergeCheckBox  
                             x:Name="EncumbranceCheckBox"
-                            Style="{StaticResource CheckBoxStyle}"
-                            Margin="60, 15, 0, 0">
-                            <CheckBox.LayoutTransform>
-                                <ScaleTransform ScaleX="2" ScaleY="2" />
-                            </CheckBox.LayoutTransform>
-                        </components:ConciergeCheckBox>
+                            Style="{StaticResource CheckBoxStyle}"/>
                     </Grid>
                 </Grid>
 
@@ -270,6 +250,7 @@
                             Text="Check Version:"
                             Foreground="White"
                             FontSize="18"
+                            TextWrapping="Wrap"
                             HorizontalAlignment="Left"
                             VerticalAlignment="Center"
                             Margin="10, 0, 0, 0"/>
@@ -279,12 +260,7 @@
                     <Grid Grid.Column="1">
                         <components:ConciergeCheckBox  
                             x:Name="CheckVersionCheckBox"
-                            Style="{StaticResource CheckBoxStyle}"
-                            Margin="60, 15, 0, 0">
-                            <CheckBox.LayoutTransform>
-                                <ScaleTransform ScaleX="2" ScaleY="2" />
-                            </CheckBox.LayoutTransform>
-                        </components:ConciergeCheckBox>
+                            Style="{StaticResource CheckBoxStyle}"/>
                     </Grid>
                 </Grid>
             </Grid>

@@ -15,6 +15,8 @@ namespace Concierge.Interfaces.Components
         public ConciergeCheckBox()
             : base()
         {
+            this.Margin = new Thickness(0, 15, 0, 0);
+
             this.Checked += this.SoundEffect_Checked;
             this.Unchecked += this.SoundEffect_Unchecked;
             this.MouseEnter += this.Button_MouseEnter;
