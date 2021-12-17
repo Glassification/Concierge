@@ -53,7 +53,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
             this.Conditions = conditions;
 
             this.FillFields();
-            this.ShowDialog();
+            this.ShowConciergeWindow();
         }
 
         private void FillFields()
@@ -101,7 +101,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Hide();
+            this.HideConciergeWindow();
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
@@ -109,7 +109,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
             Program.Modify();
 
             this.UpdateConditions();
-            this.Hide();
+            this.HideConciergeWindow();
         }
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
@@ -123,7 +123,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Hide();
+            this.HideConciergeWindow();
         }
     }
 }

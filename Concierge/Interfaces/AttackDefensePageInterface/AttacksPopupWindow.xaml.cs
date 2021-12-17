@@ -21,7 +21,7 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
 
         public PopupButtons ShowPopup()
         {
-            this.ShowDialog();
+            this.ShowConciergeWindow();
 
             return this.ButtonPress;
         }
@@ -29,25 +29,25 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
         private void AttackButton_Click(object sender, RoutedEventArgs e)
         {
             this.ButtonPress = PopupButtons.AddWeapon;
-            this.Hide();
+            this.HideConciergeWindow();
         }
 
         private void AmmoButton_Click(object sender, RoutedEventArgs e)
         {
             this.ButtonPress = PopupButtons.AddAmmo;
-            this.Hide();
+            this.HideConciergeWindow();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
             this.ButtonPress = PopupButtons.Cancel;
-            this.Hide();
+            this.HideConciergeWindow();
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             this.ButtonPress = PopupButtons.Cancel;
-            this.Hide();
+            this.HideConciergeWindow();
         }
     }
 }

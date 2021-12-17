@@ -8,6 +8,7 @@ namespace Concierge.Interfaces.Components
     using System.ComponentModel;
     using System.Windows;
     using System.Windows.Input;
+    using System.Windows.Media.Animation;
 
     using Concierge.Character.Enums;
     using Concierge.Interfaces.Enums;
@@ -15,8 +16,11 @@ namespace Concierge.Interfaces.Components
 
     public class ConciergeWindow : Window
     {
+        private const double AnimationSpeed = 0.15;
+
         public ConciergeWindow()
         {
+            this.AllowsTransparency = true;
             this.ResizeMode = ResizeMode.NoResize;
             this.WindowStyle = WindowStyle.None;
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
@@ -40,13 +44,52 @@ namespace Concierge.Interfaces.Components
         {
             base.OnClosing(e);
             e.Cancel = true;
-            this.Result = ConciergeWindowResult.Exit;
-            this.Hide();
+            this.HideConciergeWindow();
+        }
+
+        protected void ShowConciergeWindow()
+        {
+            this.OpeningAnimation();
+            this.ShowDialog();
+        }
+
+        protected void HideConciergeWindow()
+        {
+            this.HidingAnimation();
         }
 
         protected void InvokeApplyChanges()
         {
             this.ApplyChanges?.Invoke(this, new EventArgs());
+        }
+
+        private void OpeningAnimation()
+        {
+            var hideAnimation = new DoubleAnimation
+            {
+                From = 0,
+                To = 1,
+                Duration = new Duration(TimeSpan.FromSeconds(AnimationSpeed)),
+            };
+
+            this.BeginAnimation(OpacityProperty, hideAnimation);
+        }
+
+        private void HidingAnimation()
+        {
+            var hideAnimation = new DoubleAnimation
+            {
+                From = 1,
+                To = 0,
+                Duration = new Duration(TimeSpan.FromSeconds(AnimationSpeed)),
+            };
+
+            hideAnimation.Completed += (s, e) =>
+            {
+                this.Hide();
+            };
+
+            this.BeginAnimation(OpacityProperty, hideAnimation);
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
@@ -56,7 +99,7 @@ namespace Concierge.Interfaces.Components
                 case Key.Escape:
                     this.ButtonPress = PopupButtons.Cancel;
                     this.Result = ConciergeWindowResult.Exit;
-                    this.Hide();
+                    this.HideConciergeWindow();
                     break;
             }
         }

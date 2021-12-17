@@ -58,7 +58,7 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
             this.CharacterImage = Program.CcsFile.Character.CharacterImage;
 
             this.FillFields();
-            this.ShowDialog();
+            this.ShowConciergeWindow();
 
             return this.Result;
         }
@@ -74,7 +74,7 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
             this.CharacterImage = characterImage;
 
             this.FillFields();
-            this.ShowDialog();
+            this.ShowConciergeWindow();
         }
 
         protected override void OnClosing(CancelEventArgs e)
@@ -143,7 +143,7 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
             this.UpdateCharacterImage();
             (this.InformationHover.ToolTip as ToolTip).IsOpen = false;
 
-            this.Hide();
+            this.HideConciergeWindow();
         }
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
@@ -158,14 +158,14 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
         {
             this.Result = ConciergeWindowResult.Exit;
             (this.InformationHover.ToolTip as ToolTip).IsOpen = false;
-            this.Hide();
+            this.HideConciergeWindow();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
             this.Result = ConciergeWindowResult.Cancel;
             (this.InformationHover.ToolTip as ToolTip).IsOpen = false;
-            this.Hide();
+            this.HideConciergeWindow();
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)

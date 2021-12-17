@@ -54,7 +54,7 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
             this.MagicClasses = Program.CcsFile.Character.MagicClasses;
 
             this.ClearFields();
-            this.ShowDialog();
+            this.ShowConciergeWindow();
 
             return this.Result;
         }
@@ -69,7 +69,7 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
             this.ItemsAdded = false;
 
             this.ClearFields();
-            this.ShowDialog();
+            this.ShowConciergeWindow();
         }
 
         public void EditClass(MagicClass magicClass)
@@ -81,7 +81,7 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
             this.OkButton.Visibility = Visibility.Visible;
 
             this.FillFields(magicClass);
-            this.ShowDialog();
+            this.ShowConciergeWindow();
         }
 
         public void UpdateCancelButton(string text)
@@ -170,7 +170,7 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             this.Result = ConciergeWindowResult.Exit;
-            this.Hide();
+            this.HideConciergeWindow();
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
@@ -187,7 +187,7 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
                 this.MagicClasses.Add(this.ToMagicClass());
             }
 
-            this.Hide();
+            this.HideConciergeWindow();
         }
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
@@ -203,7 +203,7 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
             this.Result = ConciergeWindowResult.Cancel;
-            this.Hide();
+            this.HideConciergeWindow();
         }
 
         private void ComboBox_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)

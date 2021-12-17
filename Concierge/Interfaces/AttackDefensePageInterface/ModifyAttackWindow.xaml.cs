@@ -58,7 +58,7 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
             this.HeaderTextBlock.Text = this.HeaderText;
 
             this.ClearFields();
-            this.ShowDialog();
+            this.ShowConciergeWindow();
 
             return this.Result;
         }
@@ -73,7 +73,7 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
             this.ItemsAdded = false;
 
             this.ClearFields();
-            this.ShowDialog();
+            this.ShowConciergeWindow();
         }
 
         public void ShowEdit(Weapon weapon)
@@ -85,7 +85,7 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
             this.OkButton.Visibility = Visibility.Visible;
 
             this.FillFields(weapon);
-            this.ShowDialog();
+            this.ShowConciergeWindow();
         }
 
         public void UpdateCancelButton(string text)
@@ -184,13 +184,13 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             this.Result = ConciergeWindowResult.Exit;
-            this.Hide();
+            this.HideConciergeWindow();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
             this.Result = ConciergeWindowResult.Cancel;
-            this.Hide();
+            this.HideConciergeWindow();
         }
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
@@ -217,7 +217,7 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
                 this.Weapons.Add(this.ToWeapon());
             }
 
-            this.Hide();
+            this.HideConciergeWindow();
         }
 
         private void AttackComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)

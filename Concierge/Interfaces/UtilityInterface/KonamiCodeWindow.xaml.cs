@@ -25,7 +25,7 @@ namespace Concierge.Interfaces.UtilityInterface
 
         public void ShowWindow()
         {
-            this.ShowDialog();
+            this.ShowConciergeWindow();
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
@@ -48,7 +48,7 @@ namespace Concierge.Interfaces.UtilityInterface
 
         private void VideoControl_MediaFailed(object sender, ExceptionRoutedEventArgs e)
         {
-            this.Hide();
+            this.HideConciergeWindow();
         }
     }
 }

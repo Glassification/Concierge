@@ -35,7 +35,7 @@ namespace Concierge.Interfaces.UtilityInterface
 
             ConciergeSound.Warning();
 
-            this.ShowDialog();
+            this.ShowConciergeWindow();
 
             return this.Result;
         }
@@ -130,37 +130,37 @@ namespace Concierge.Interfaces.UtilityInterface
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             this.Result = ConciergeWindowResult.Exit;
-            this.Hide();
+            this.HideConciergeWindow();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
             this.Result = ConciergeWindowResult.Cancel;
-            this.Hide();
+            this.HideConciergeWindow();
         }
 
         private void NoButton_Click(object sender, RoutedEventArgs e)
         {
             this.Result = ConciergeWindowResult.No;
-            this.Hide();
+            this.HideConciergeWindow();
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
             this.Result = ConciergeWindowResult.OK;
-            this.Hide();
+            this.HideConciergeWindow();
         }
 
         private void YesButton_Click(object sender, RoutedEventArgs e)
         {
             this.Result = ConciergeWindowResult.Yes;
-            this.Hide();
+            this.HideConciergeWindow();
         }
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
             this.Result = ConciergeWindowResult.Apply;
-            this.Hide();
+            this.HideConciergeWindow();
         }
     }
 }

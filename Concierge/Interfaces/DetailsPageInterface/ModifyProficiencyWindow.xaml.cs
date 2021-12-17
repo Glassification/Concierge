@@ -51,7 +51,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
 
             this.SetEnabledState(true);
             this.ClearFields();
-            this.ShowDialog();
+            this.ShowConciergeWindow();
 
             return this.Result;
         }
@@ -67,7 +67,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
 
             this.SetEnabledState(true);
             this.ClearFields();
-            this.ShowDialog();
+            this.ShowConciergeWindow();
         }
 
         public void ShowEdit(Proficiency proficiency)
@@ -80,7 +80,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
 
             this.SetEnabledState(false);
             this.FillFields();
-            this.ShowDialog();
+            this.ShowConciergeWindow();
         }
 
         public void UpdateCancelButton(string text)
@@ -137,7 +137,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             this.Result = ConciergeWindowResult.Exit;
-            this.Hide();
+            this.HideConciergeWindow();
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
@@ -154,7 +154,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
                 this.SelectedProficiencies.Add(this.ToProficiency());
             }
 
-            this.Hide();
+            this.HideConciergeWindow();
         }
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
@@ -170,7 +170,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
             this.Result = ConciergeWindowResult.Cancel;
-            this.Hide();
+            this.HideConciergeWindow();
         }
     }
 }

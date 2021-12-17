@@ -23,7 +23,7 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
 
         public PopupButtons ShowPopup()
         {
-            this.ShowDialog();
+            this.ShowConciergeWindow();
 
             return this.ButtonPress;
         }
@@ -31,25 +31,25 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             this.ButtonPress = PopupButtons.Cancel;
-            this.Hide();
+            this.HideConciergeWindow();
         }
 
         private void SpellClassButton_Click(object sender, RoutedEventArgs e)
         {
             this.ButtonPress = PopupButtons.AddMagicClass;
-            this.Hide();
+            this.HideConciergeWindow();
         }
 
         private void SpellButton_Click(object sender, RoutedEventArgs e)
         {
             this.ButtonPress = PopupButtons.AddSpell;
-            this.Hide();
+            this.HideConciergeWindow();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
             this.ButtonPress = PopupButtons.Cancel;
-            this.Hide();
+            this.HideConciergeWindow();
         }
     }
 }

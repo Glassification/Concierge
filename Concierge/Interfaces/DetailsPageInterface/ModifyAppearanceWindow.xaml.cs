@@ -40,7 +40,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
             this.Appearance = Program.CcsFile.Character.Appearance;
             this.ApplyButton.Visibility = Visibility.Collapsed;
             this.FillFields();
-            this.ShowDialog();
+            this.ShowConciergeWindow();
 
             return this.Result;
         }
@@ -51,7 +51,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
             this.ApplyButton.Visibility = Visibility.Visible;
 
             this.FillFields();
-            this.ShowDialog();
+            this.ShowConciergeWindow();
         }
 
         public void UpdateCancelButton(string text)
@@ -127,7 +127,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             this.Result = ConciergeWindowResult.Exit;
-            this.Hide();
+            this.HideConciergeWindow();
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
@@ -136,7 +136,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
             this.Result = ConciergeWindowResult.OK;
 
             this.UpdateAppearance();
-            this.Hide();
+            this.HideConciergeWindow();
         }
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
@@ -151,7 +151,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
             this.Result = ConciergeWindowResult.Cancel;
-            this.Hide();
+            this.HideConciergeWindow();
         }
     }
 }

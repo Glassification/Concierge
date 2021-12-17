@@ -35,7 +35,7 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
             this.SpellSlots = Program.CcsFile.Character.SpellSlots;
 
             this.FillFields();
-            this.ShowDialog();
+            this.ShowConciergeWindow();
 
             return this.Result;
         }
@@ -46,7 +46,7 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
             this.SpellSlots = spellSlots;
 
             this.FillFields();
-            this.ShowDialog();
+            this.ShowConciergeWindow();
         }
 
         public void UpdateCancelButton(string text)
@@ -138,7 +138,7 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             this.Result = ConciergeWindowResult.Exit;
-            this.Hide();
+            this.HideConciergeWindow();
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
@@ -147,7 +147,7 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
             this.Result = ConciergeWindowResult.OK;
 
             this.UpdateSpellSlots();
-            this.Hide();
+            this.HideConciergeWindow();
         }
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
@@ -162,7 +162,7 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
             this.Result = ConciergeWindowResult.Cancel;
-            this.Hide();
+            this.HideConciergeWindow();
         }
     }
 }

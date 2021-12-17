@@ -4,12 +4,9 @@
 
 namespace Concierge.Interfaces.InventoryPageInterface
 {
-    using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
     using System.Windows;
     using System.Windows.Controls;
-    using System.Windows.Input;
 
     using Concierge.Character.Items;
     using Concierge.Commands;
@@ -57,7 +54,7 @@ namespace Concierge.Interfaces.InventoryPageInterface
             this.OkButton.Visibility = Visibility.Collapsed;
 
             this.ClearFields();
-            this.ShowDialog();
+            this.ShowConciergeWindow();
 
             return this.Result;
         }
@@ -72,7 +69,7 @@ namespace Concierge.Interfaces.InventoryPageInterface
             this.OkButton.Visibility = Visibility.Visible;
 
             this.FillFields(inventory);
-            this.ShowDialog();
+            this.ShowConciergeWindow();
         }
 
         public void ShowAdd(List<Inventory> items)
@@ -86,7 +83,7 @@ namespace Concierge.Interfaces.InventoryPageInterface
             this.OkButton.Visibility = Visibility.Visible;
 
             this.ClearFields();
-            this.ShowDialog();
+            this.ShowConciergeWindow();
         }
 
         public void UpdateCancelButton(string text)
@@ -187,7 +184,7 @@ namespace Concierge.Interfaces.InventoryPageInterface
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             this.Result = ConciergeWindowResult.Exit;
-            this.Hide();
+            this.HideConciergeWindow();
         }
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
@@ -209,7 +206,7 @@ namespace Concierge.Interfaces.InventoryPageInterface
         {
             if (this.NameComboBox.Text.IsNullOrWhiteSpace())
             {
-                this.Hide();
+                this.HideConciergeWindow();
             }
 
             Program.Modify();
@@ -224,7 +221,7 @@ namespace Concierge.Interfaces.InventoryPageInterface
                 this.Items.Add(this.ToInventory());
             }
 
-            this.Hide();
+            this.HideConciergeWindow();
         }
 
         private void NameComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -238,7 +235,7 @@ namespace Concierge.Interfaces.InventoryPageInterface
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
             this.Result = ConciergeWindowResult.Cancel;
-            this.Hide();
+            this.HideConciergeWindow();
         }
     }
 }

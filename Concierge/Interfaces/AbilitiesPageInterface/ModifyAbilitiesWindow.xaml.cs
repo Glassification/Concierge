@@ -4,12 +4,9 @@
 
 namespace Concierge.Interfaces.AbilitiesPageInterface
 {
-    using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
     using System.Windows;
     using System.Windows.Controls;
-    using System.Windows.Input;
 
     using Concierge.Character.Characteristics;
     using Concierge.Commands;
@@ -51,7 +48,7 @@ namespace Concierge.Interfaces.AbilitiesPageInterface
             this.OkButton.Visibility = Visibility.Collapsed;
 
             this.ClearFields();
-            this.ShowDialog();
+            this.ShowConciergeWindow();
 
             return this.Result;
         }
@@ -65,7 +62,7 @@ namespace Concierge.Interfaces.AbilitiesPageInterface
             this.OkButton.Visibility = Visibility.Visible;
 
             this.FillFields(ability);
-            this.ShowDialog();
+            this.ShowConciergeWindow();
         }
 
         public void ShowAdd(List<Ability> abilities)
@@ -78,7 +75,7 @@ namespace Concierge.Interfaces.AbilitiesPageInterface
             this.ItemsAdded = false;
 
             this.ClearFields();
-            this.ShowDialog();
+            this.ShowConciergeWindow();
         }
 
         public void UpdateCancelButton(string text)
@@ -146,7 +143,7 @@ namespace Concierge.Interfaces.AbilitiesPageInterface
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             this.Result = ConciergeWindowResult.Exit;
-            this.Hide();
+            this.HideConciergeWindow();
         }
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
@@ -173,13 +170,13 @@ namespace Concierge.Interfaces.AbilitiesPageInterface
                 Program.CcsFile.Character.Abilities.Add(this.ToAbility());
             }
 
-            this.Hide();
+            this.HideConciergeWindow();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
             this.Result = ConciergeWindowResult.Cancel;
-            this.Hide();
+            this.HideConciergeWindow();
         }
 
         private void NameComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)

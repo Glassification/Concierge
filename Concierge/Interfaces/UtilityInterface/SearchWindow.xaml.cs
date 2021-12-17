@@ -47,7 +47,7 @@ namespace Concierge.Interfaces.UtilityInterface
         public void ShowWindow()
         {
             this.SearchTextBox.Focus();
-            this.ShowDialog();
+            this.ShowConciergeWindow();
         }
 
         protected override void OnClosing(CancelEventArgs e)
@@ -161,7 +161,7 @@ namespace Concierge.Interfaces.UtilityInterface
         {
             this.ClearHighlightedResults();
             this.ClearFields();
-            this.Hide();
+            this.HideConciergeWindow();
         }
 
         private void FindPreviousButton_Click(object sender, RoutedEventArgs e)
@@ -192,7 +192,7 @@ namespace Concierge.Interfaces.UtilityInterface
         {
             this.ClearHighlightedResults();
             this.ClearFields();
-            this.Hide();
+            this.HideConciergeWindow();
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
@@ -202,7 +202,7 @@ namespace Concierge.Interfaces.UtilityInterface
                 case Key.Escape:
                     this.ClearHighlightedResults();
                     this.ClearFields();
-                    this.Hide();
+                    this.HideConciergeWindow();
                     break;
                 case Key.Enter:
                     this.FindNextButton_Click(this.FindNextButton, null);

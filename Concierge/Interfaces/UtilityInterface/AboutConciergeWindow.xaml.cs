@@ -24,7 +24,7 @@ namespace Concierge.Interfaces.UtilityInterface
         public void ShowWindow()
         {
             this.Read();
-            this.ShowDialog();
+            this.ShowConciergeWindow();
         }
 
         private void Read()
@@ -37,12 +37,12 @@ namespace Concierge.Interfaces.UtilityInterface
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Hide();
+            this.HideConciergeWindow();
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Hide();
+            this.HideConciergeWindow();
         }
     }
 }

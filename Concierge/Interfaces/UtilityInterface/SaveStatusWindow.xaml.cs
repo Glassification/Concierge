@@ -38,12 +38,12 @@ namespace Concierge.Interfaces.UtilityInterface
             this.Top = SystemParameters.PrimaryScreenHeight - this.Height - MarginOffset;
             this.ProgressBarFiller.RunWorkerAsync();
 
-            this.ShowDialog();
+            this.ShowConciergeWindow();
         }
 
         private void ProgressBarFiller_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            this.Hide();
+            this.HideConciergeWindow();
         }
 
         private void ProgressBarFiller_DoWork(object sender, DoWorkEventArgs e)

@@ -40,7 +40,7 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
             this.ApplyButton.Visibility = Visibility.Visible;
             this.OkButton.Visibility = Visibility.Collapsed;
 
-            this.ShowDialog();
+            this.ShowConciergeWindow();
 
             return this.Result;
         }
@@ -54,7 +54,7 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
             this.OkButton.Visibility = Visibility.Visible;
             this.ItemsAdded = false;
 
-            this.ShowDialog();
+            this.ShowConciergeWindow();
         }
 
         public void UpdateCancelButton(string text)
@@ -71,7 +71,7 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             this.Result = ConciergeWindowResult.Exit;
-            this.Hide();
+            this.HideConciergeWindow();
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
@@ -91,7 +91,7 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
             var newItem = Program.CcsFile.Character.EquippedItems.Equip(item, slot);
             Program.UndoRedoService.AddCommand(new EquipItemCommand(Program.CcsFile.Character.EquippedItems, newItem, slot));
 
-            this.Hide();
+            this.HideConciergeWindow();
         }
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
@@ -118,7 +118,7 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
             this.Result = ConciergeWindowResult.Cancel;
-            this.Hide();
+            this.HideConciergeWindow();
         }
     }
 }

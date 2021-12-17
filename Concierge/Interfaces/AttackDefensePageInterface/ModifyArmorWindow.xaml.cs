@@ -40,7 +40,7 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
             this.ApplyButton.Visibility = Visibility.Collapsed;
 
             this.FillFields();
-            this.ShowDialog();
+            this.ShowConciergeWindow();
 
             return this.Result;
         }
@@ -51,7 +51,7 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
             this.ApplyButton.Visibility = Visibility.Visible;
 
             this.FillFields();
-            this.ShowDialog();
+            this.ShowConciergeWindow();
         }
 
         public void UpdateCancelButton(string text)
@@ -107,7 +107,7 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             this.Result = ConciergeWindowResult.Exit;
-            this.Hide();
+            this.HideConciergeWindow();
         }
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
@@ -125,13 +125,13 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
             this.Result = ConciergeWindowResult.OK;
 
             this.UpdateArmor(this.SelectedArmor);
-            this.Hide();
+            this.HideConciergeWindow();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
             this.Result = ConciergeWindowResult.Cancel;
-            this.Hide();
+            this.HideConciergeWindow();
         }
     }
 }

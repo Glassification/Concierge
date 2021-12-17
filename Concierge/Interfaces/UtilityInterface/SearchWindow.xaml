@@ -15,7 +15,6 @@
     Width="650"
     MouseMove="Window_MouseMove"
     KeyDown="Window_KeyDown"
-    AllowsTransparency="True"
     Style="{StaticResource WindowXboxDasboardStyle}">
     <Grid>
         <Grid.RowDefinitions>

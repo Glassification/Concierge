@@ -41,7 +41,7 @@ namespace Concierge.Interfaces.NotesPageInterface
             this.HeaderTextBlock.Text = "Add Note";
 
             this.SetupWindow(false);
-            this.ShowDialog();
+            this.ShowConciergeWindow();
         }
 
         public void ShowEdit(Chapter chapter)
@@ -54,7 +54,7 @@ namespace Concierge.Interfaces.NotesPageInterface
             this.CurrentChapter = chapter;
             this.CurrentDocument = null;
 
-            this.ShowDialog();
+            this.ShowConciergeWindow();
         }
 
         public void ShowEdit(Document document)
@@ -67,7 +67,7 @@ namespace Concierge.Interfaces.NotesPageInterface
             this.CurrentChapter = null;
             this.CurrentDocument = document;
 
-            this.ShowDialog();
+            this.ShowConciergeWindow();
         }
 
         private void SetupWindow(bool isEdit)
@@ -156,13 +156,13 @@ namespace Concierge.Interfaces.NotesPageInterface
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Hide();
+            this.HideConciergeWindow();
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
             this.OkApplyChanges();
-            this.Hide();
+            this.HideConciergeWindow();
         }
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
@@ -189,7 +189,7 @@ namespace Concierge.Interfaces.NotesPageInterface
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Hide();
+            this.HideConciergeWindow();
         }
     }
 }

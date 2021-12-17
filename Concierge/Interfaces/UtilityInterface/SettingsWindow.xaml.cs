@@ -35,7 +35,7 @@ namespace Concierge.Interfaces.UtilityInterface
         public void ShowEdit()
         {
             this.FillFields();
-            this.ShowDialog();
+            this.ShowConciergeWindow();
         }
 
         private void FillFields()
@@ -120,12 +120,12 @@ namespace Concierge.Interfaces.UtilityInterface
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Hide();
+            this.HideConciergeWindow();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Hide();
+            this.HideConciergeWindow();
         }
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
@@ -138,7 +138,7 @@ namespace Concierge.Interfaces.UtilityInterface
         {
             if (this.UpdateSettings())
             {
-                this.Hide();
+                this.HideConciergeWindow();
             }
         }
 

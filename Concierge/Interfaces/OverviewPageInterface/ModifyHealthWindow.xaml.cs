@@ -35,7 +35,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
             this.ApplyButton.Visibility = Visibility.Collapsed;
 
             this.FillFields();
-            this.ShowDialog();
+            this.ShowConciergeWindow();
 
             return this.Result;
         }
@@ -46,7 +46,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
             this.ApplyButton.Visibility = Visibility.Visible;
 
             this.FillFields();
-            this.ShowDialog();
+            this.ShowConciergeWindow();
         }
 
         public void UpdateCancelButton(string text)
@@ -82,13 +82,13 @@ namespace Concierge.Interfaces.OverviewPageInterface
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             this.Result = ConciergeWindowResult.Exit;
-            this.Hide();
+            this.HideConciergeWindow();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
             this.Result = ConciergeWindowResult.Cancel;
-            this.Hide();
+            this.HideConciergeWindow();
         }
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
@@ -106,7 +106,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
             this.Result = ConciergeWindowResult.OK;
 
             this.UpdateHealth();
-            this.Hide();
+            this.HideConciergeWindow();
         }
 
         private void TotalHpUpDown_ValueChanged(object sender, RoutedPropertyChangedEventArgs<object> e)

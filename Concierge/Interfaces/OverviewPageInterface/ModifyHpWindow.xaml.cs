@@ -42,7 +42,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
             this.HeaderTextBlock.Text = this.HeaderText;
             this.HpUpDown.Value = this.PreviousHeal;
 
-            this.ShowDialog();
+            this.ShowConciergeWindow();
             this.SetPreviousValue();
 
             if (this.Result == ConciergeWindowResult.OK)
@@ -59,7 +59,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
             this.HeaderTextBlock.Text = this.HeaderText;
             this.HpUpDown.Value = this.PreviousDamage;
 
-            this.ShowDialog();
+            this.ShowConciergeWindow();
             this.SetPreviousValue();
 
             if (this.Result == ConciergeWindowResult.OK)
@@ -85,13 +85,13 @@ namespace Concierge.Interfaces.OverviewPageInterface
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             this.Result = ConciergeWindowResult.Exit;
-            this.Hide();
+            this.HideConciergeWindow();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
             this.Result = ConciergeWindowResult.Cancel;
-            this.Hide();
+            this.HideConciergeWindow();
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
@@ -99,7 +99,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
             Program.Modify();
 
             this.Result = ConciergeWindowResult.OK;
-            this.Hide();
+            this.HideConciergeWindow();
         }
     }
 }
