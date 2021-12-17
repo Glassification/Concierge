@@ -5,12 +5,13 @@
 namespace Concierge.Interfaces.UtilityInterface
 {
     using System.Windows;
-    using System.Windows.Input;
+
+    using Concierge.Interfaces.Components;
 
     /// <summary>
     /// Interaction logic for HelpWindow.xaml.
     /// </summary>
-    public partial class HelpWindow : Window
+    public partial class HelpWindow : ConciergeWindow
     {
         public HelpWindow()
         {
@@ -30,24 +31,6 @@ namespace Concierge.Interfaces.UtilityInterface
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
             this.Hide();
-        }
-
-        private void Window_KeyDown(object sender, KeyEventArgs e)
-        {
-            switch (e.Key)
-            {
-                case Key.Escape:
-                    this.Hide();
-                    break;
-            }
-        }
-
-        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            if (e.ChangedButton == MouseButton.Left)
-            {
-                this.DragMove();
-            }
         }
     }
 }

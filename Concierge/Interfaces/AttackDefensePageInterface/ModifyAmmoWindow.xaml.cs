@@ -15,13 +15,14 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
     using Concierge.Character.Enums;
     using Concierge.Character.Items;
     using Concierge.Commands;
+    using Concierge.Interfaces.Components;
     using Concierge.Interfaces.Enums;
     using Concierge.Utility;
 
     /// <summary>
     /// Interaction logic for ModifyAmmoWindow.xaml.
     /// </summary>
-    public partial class ModifyAmmoWindow : Window, IConciergeModifyWindow
+    public partial class ModifyAmmoWindow : ConciergeWindow, IConciergeModifyWindow
     {
         private readonly ConciergePage conciergePage;
 
@@ -33,10 +34,6 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
             this.conciergePage = conciergePage;
         }
 
-        public delegate void ApplyChangesEventHandler(object sender, EventArgs e);
-
-        public event ApplyChangesEventHandler ApplyChanges;
-
         public bool ItemsAdded { get; private set; }
 
         private bool Editing { get; set; }
@@ -46,8 +43,6 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
         private Ammunition SelectedAmmo { get; set; }
 
         private List<Ammunition> Ammunitions { get; set; }
-
-        private ConciergeWindowResult Result { get; set; }
 
         public ConciergeWindowResult ShowWizardSetup()
         {
@@ -91,14 +86,6 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
         public void UpdateCancelButton(string text)
         {
             this.CancelButton.Content = text;
-        }
-
-        protected override void OnClosing(CancelEventArgs e)
-        {
-            base.OnClosing(e);
-            e.Cancel = true;
-            this.Result = ConciergeWindowResult.Exit;
-            this.Hide();
         }
 
         private void FillFields(Ammunition ammunition)
@@ -156,17 +143,6 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
             return ammo;
         }
 
-        private void Window_KeyDown(object sender, KeyEventArgs e)
-        {
-            switch (e.Key)
-            {
-                case Key.Escape:
-                    this.Result = ConciergeWindowResult.Exit;
-                    this.Hide();
-                    break;
-            }
-        }
-
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             this.Result = ConciergeWindowResult.Exit;
@@ -197,7 +173,7 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
             this.Ammunitions.Add(this.ToAmmunition());
             this.ClearFields();
 
-            this.ApplyChanges?.Invoke(this, new EventArgs());
+            this.InvokeApplyChanges();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
@@ -211,14 +187,6 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
             if (this.NameComboBox.SelectedItem != null)
             {
                 this.FillFields(this.NameComboBox.SelectedItem as Ammunition);
-            }
-        }
-
-        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            if (e.ChangedButton == MouseButton.Left)
-            {
-                this.DragMove();
             }
         }
     }

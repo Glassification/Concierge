@@ -13,13 +13,14 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
     using Concierge.Character.Enums;
     using Concierge.Character.Items;
     using Concierge.Commands;
+    using Concierge.Interfaces.Components;
     using Concierge.Interfaces.Enums;
     using Concierge.Utility.Extensions;
 
     /// <summary>
     /// Interaction logic for ModifyEquippedItemsWindow.xaml.
     /// </summary>
-    public partial class ModifyEquippedItemsWindow : Window, IConciergeModifyWindow
+    public partial class ModifyEquippedItemsWindow : ConciergeWindow, IConciergeModifyWindow
     {
         public ModifyEquippedItemsWindow()
         {
@@ -27,15 +28,9 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
             this.SlotComboBox.ItemsSource = Enum.GetValues(typeof(EquipmentSlot)).Cast<EquipmentSlot>();
         }
 
-        public delegate void ApplyChangesEventHandler(object sender, EventArgs e);
-
-        public event ApplyChangesEventHandler ApplyChanges;
-
         public bool ItemsAdded { get; private set; }
 
         private string PreviousSlot { get; set; }
-
-        private ConciergeWindowResult Result { get; set; }
 
         public ConciergeWindowResult ShowWizardSetup()
         {
@@ -65,14 +60,6 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
         public void UpdateCancelButton(string text)
         {
             this.CancelButton.Content = text;
-        }
-
-        protected override void OnClosing(CancelEventArgs e)
-        {
-            base.OnClosing(e);
-            e.Cancel = true;
-            this.Result = ConciergeWindowResult.Exit;
-            this.Hide();
         }
 
         private void ClearFields()
@@ -125,32 +112,13 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
             this.ClearFields();
             this.ItemComboBox.ItemsSource = EquippedItems.Equipable;
 
-            this.ApplyChanges?.Invoke(this, new EventArgs());
+            this.InvokeApplyChanges();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
             this.Result = ConciergeWindowResult.Cancel;
             this.Hide();
-        }
-
-        private void Window_KeyDown(object sender, KeyEventArgs e)
-        {
-            switch (e.Key)
-            {
-                case Key.Escape:
-                    this.Result = ConciergeWindowResult.Exit;
-                    this.Hide();
-                    break;
-            }
-        }
-
-        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            if (e.ChangedButton == MouseButton.Left)
-            {
-                this.DragMove();
-            }
         }
     }
 }

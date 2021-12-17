@@ -4,11 +4,10 @@
 
 namespace Concierge.Interfaces.UtilityInterface
 {
-    using System.ComponentModel;
     using System.Windows;
-    using System.Windows.Input;
     using System.Windows.Media;
 
+    using Concierge.Interfaces.Components;
     using Concierge.Interfaces.Enums;
     using Concierge.Utility;
     using MaterialDesignThemes.Wpf;
@@ -16,14 +15,12 @@ namespace Concierge.Interfaces.UtilityInterface
     /// <summary>
     /// Interaction logic for ConfirmCloseWindow.xaml.
     /// </summary>
-    public partial class ConciergeMessageWindow : Window
+    public partial class ConciergeMessageWindow : ConciergeWindow
     {
         public ConciergeMessageWindow()
         {
             this.InitializeComponent();
         }
-
-        private ConciergeWindowResult Result { get; set; }
 
         public ConciergeWindowResult ShowWindow(
             string message,
@@ -41,13 +38,6 @@ namespace Concierge.Interfaces.UtilityInterface
             this.ShowDialog();
 
             return this.Result;
-        }
-
-        protected override void OnClosing(CancelEventArgs e)
-        {
-            base.OnClosing(e);
-            e.Cancel = true;
-            this.Hide();
         }
 
         private void SetMessageIcon(ConciergeWindowIcons messageWindowIcons)
@@ -137,17 +127,6 @@ namespace Concierge.Interfaces.UtilityInterface
             this.ApplyButton.Visibility = Visibility.Collapsed;
         }
 
-        private void Window_KeyDown(object sender, KeyEventArgs e)
-        {
-            switch (e.Key)
-            {
-                case Key.Escape:
-                    this.Result = ConciergeWindowResult.Exit;
-                    this.Hide();
-                    break;
-            }
-        }
-
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             this.Result = ConciergeWindowResult.Exit;
@@ -182,14 +161,6 @@ namespace Concierge.Interfaces.UtilityInterface
         {
             this.Result = ConciergeWindowResult.Apply;
             this.Hide();
-        }
-
-        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            if (e.ChangedButton == MouseButton.Left)
-            {
-                this.DragMove();
-            }
         }
     }
 }

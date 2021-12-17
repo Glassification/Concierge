@@ -13,13 +13,14 @@ namespace Concierge.Interfaces.OverviewPageInterface
     using Concierge.Character.Characteristics;
     using Concierge.Character.Enums;
     using Concierge.Commands;
+    using Concierge.Interfaces.Components;
     using Concierge.Interfaces.Enums;
     using Concierge.Utility;
 
     /// <summary>
     /// Interaction logic for ModifySensesWindow.xaml.
     /// </summary>
-    public partial class ModifySensesWindow : Window, IConciergeModifyWindow
+    public partial class ModifySensesWindow : ConciergeWindow, IConciergeModifyWindow
     {
         private readonly ConciergePage conciergePage;
 
@@ -29,12 +30,6 @@ namespace Concierge.Interfaces.OverviewPageInterface
             this.VisionComboBox.ItemsSource = Enum.GetValues(typeof(VisionTypes)).Cast<VisionTypes>();
             this.conciergePage = conciergePage;
         }
-
-        public delegate void ApplyChangesEventHandler(object sender, EventArgs e);
-
-        public event ApplyChangesEventHandler ApplyChanges;
-
-        private ConciergeWindowResult Result { get; set; }
 
         public ConciergeWindowResult ShowWizardSetup()
         {
@@ -55,14 +50,6 @@ namespace Concierge.Interfaces.OverviewPageInterface
         public void UpdateCancelButton(string text)
         {
             this.CancelButton.Content = text;
-        }
-
-        protected override void OnClosing(CancelEventArgs e)
-        {
-            base.OnClosing(e);
-            e.Cancel = true;
-            this.Result = ConciergeWindowResult.Exit;
-            this.Hide();
         }
 
         private void FillFields()
@@ -93,17 +80,6 @@ namespace Concierge.Interfaces.OverviewPageInterface
             Program.UndoRedoService.AddCommand(new EditCommand<Senses>(senses, oldItem, this.conciergePage));
         }
 
-        private void Window_KeyDown(object sender, KeyEventArgs e)
-        {
-            switch (e.Key)
-            {
-                case Key.Escape:
-                    this.Result = ConciergeWindowResult.Exit;
-                    this.Hide();
-                    break;
-            }
-        }
-
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Modify();
@@ -120,7 +96,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
             this.UpdateSenses();
             this.FillFields();
 
-            this.ApplyChanges?.Invoke(this, new EventArgs());
+            this.InvokeApplyChanges();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
@@ -140,14 +116,6 @@ namespace Concierge.Interfaces.OverviewPageInterface
             this.InitiativeTextBlock.Text = (Utilities.CalculateBonus(Program.CcsFile.Character.Attributes.Dexterity) + (this.InitiativeBonusUpDown.Value ?? 0)).ToString();
             this.PerceptionTextBlock.Text = (Constants.BasePerception + Program.CcsFile.Character.Skill.Perception.Bonus + (this.PerceptionBonusUpDown.Value ?? 0)).ToString();
             this.MovementTextBlock.Text = Senses.GetMovement(this.BaseMovementUpDown.Value ?? 0).ToString();
-        }
-
-        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            if (e.ChangedButton == MouseButton.Left)
-            {
-                this.DragMove();
-            }
         }
     }
 }

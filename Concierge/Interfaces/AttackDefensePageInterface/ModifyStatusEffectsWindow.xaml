@@ -1,22 +1,17 @@
-﻿<Window x:Class="Concierge.Interfaces.AttackDefensePageInterface.ModifyStatusEffectsWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Concierge.Interfaces.AttackDefensePageInterface" xmlns:components="clr-namespace:Concierge.Interfaces.Components" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        mc:Ignorable="d"
-        Title="ModifyStatusEffectsWindow"
-        Height="300"
-        Width="650"
-        WindowStartupLocation="CenterScreen"
-        WindowStyle="None"
-        Background="#252526"
-        ResizeMode="NoResize"
-        KeyDown="Window_KeyDown"
-        MouseDown="Window_MouseDown"
-        BorderThickness="1"
-        BorderBrush="#227EA9"
-        Style="{StaticResource WindowXboxDasboardStyle}">
+﻿<components:ConciergeWindow
+    x:Class="Concierge.Interfaces.AttackDefensePageInterface.ModifyStatusEffectsWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="clr-namespace:Concierge.Interfaces.AttackDefensePageInterface" 
+    xmlns:components="clr-namespace:Concierge.Interfaces.Components" 
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    mc:Ignorable="d"
+    Title="ModifyStatusEffectsWindow"
+    Height="300"
+    Width="650"
+    Style="{StaticResource WindowXboxDasboardStyle}">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="45"/>
@@ -177,4 +172,4 @@
             </StackPanel>
         </Grid>
     </Grid>
-</Window>
+</components:ConciergeWindow>

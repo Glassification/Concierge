@@ -9,6 +9,7 @@ namespace Concierge.Interfaces.Components
     using System.Windows;
     using System.Windows.Input;
 
+    using Concierge.Character.Enums;
     using Concierge.Interfaces.Enums;
     using Concierge.Utility.Colors;
 
@@ -31,6 +32,8 @@ namespace Concierge.Interfaces.Components
 
         public event ApplyChangesEventHandler ApplyChanges;
 
+        protected PopupButtons ButtonPress { get; set; }
+
         protected ConciergeWindowResult Result { get; set; }
 
         protected override void OnClosing(CancelEventArgs e)
@@ -41,11 +44,17 @@ namespace Concierge.Interfaces.Components
             this.Hide();
         }
 
+        protected void InvokeApplyChanges()
+        {
+            this.ApplyChanges?.Invoke(this, new EventArgs());
+        }
+
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
             switch (e.Key)
             {
                 case Key.Escape:
+                    this.ButtonPress = PopupButtons.Cancel;
                     this.Result = ConciergeWindowResult.Exit;
                     this.Hide();
                     break;

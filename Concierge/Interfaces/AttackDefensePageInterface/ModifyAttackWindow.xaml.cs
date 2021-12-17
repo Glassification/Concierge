@@ -15,6 +15,7 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
     using Concierge.Character.Enums;
     using Concierge.Character.Items;
     using Concierge.Commands;
+    using Concierge.Interfaces.Components;
     using Concierge.Interfaces.Enums;
     using Concierge.Primitives;
     using Concierge.Utility;
@@ -24,7 +25,7 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
     /// <summary>
     /// Interaction logic for ModifyWeaponWindow.xaml.
     /// </summary>
-    public partial class ModifyAttackWindow : Window, IConciergeModifyWindow
+    public partial class ModifyAttackWindow : ConciergeWindow, IConciergeModifyWindow
     {
         private readonly ConciergePage conciergePage;
 
@@ -38,10 +39,6 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
             this.conciergePage = conciergePage;
         }
 
-        public delegate void ApplyChangesEventHandler(object sender, EventArgs e);
-
-        public event ApplyChangesEventHandler ApplyChanges;
-
         public bool ItemsAdded { get; private set; }
 
         private bool Editing { get; set; }
@@ -51,8 +48,6 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
         private Weapon SelectedAttack { get; set; }
 
         private List<Weapon> Weapons { get; set; }
-
-        private ConciergeWindowResult Result { get; set; }
 
         public ConciergeWindowResult ShowWizardSetup()
         {
@@ -96,14 +91,6 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
         public void UpdateCancelButton(string text)
         {
             this.CancelButton.Content = text;
-        }
-
-        protected override void OnClosing(CancelEventArgs e)
-        {
-            base.OnClosing(e);
-            e.Cancel = true;
-            this.Result = ConciergeWindowResult.Exit;
-            this.Hide();
         }
 
         private void FillFields(Weapon weapon)
@@ -194,17 +181,6 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
             return weapon;
         }
 
-        private void Window_KeyDown(object sender, KeyEventArgs e)
-        {
-            switch (e.Key)
-            {
-                case Key.Escape:
-                    this.Result = ConciergeWindowResult.Exit;
-                    this.Hide();
-                    break;
-            }
-        }
-
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             this.Result = ConciergeWindowResult.Exit;
@@ -224,7 +200,7 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
             this.Weapons.Add(this.ToWeapon());
             this.ClearFields();
 
-            this.ApplyChanges?.Invoke(this, new EventArgs());
+            this.InvokeApplyChanges();
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
@@ -249,14 +225,6 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
             if (this.AttackComboBox.SelectedItem != null)
             {
                 this.FillFields(this.AttackComboBox.SelectedItem as Weapon);
-            }
-        }
-
-        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            if (e.ChangedButton == MouseButton.Left)
-            {
-                this.DragMove();
             }
         }
     }

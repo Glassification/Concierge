@@ -10,12 +10,13 @@ namespace Concierge.Interfaces.OverviewPageInterface
 
     using Concierge.Character.Statuses;
     using Concierge.Commands;
+    using Concierge.Interfaces.Components;
     using Concierge.Interfaces.Enums;
 
     /// <summary>
     /// Interaction logic for ModifyHpWindow.xaml.
     /// </summary>
-    public partial class ModifyHpWindow : Window
+    public partial class ModifyHpWindow : ConciergeWindow
     {
         private readonly ConciergePage conciergePage;
 
@@ -28,8 +29,6 @@ namespace Concierge.Interfaces.OverviewPageInterface
         }
 
         private string HeaderText => this.IsHealing ? "Heal" : "Damage";
-
-        private ConciergeWindowResult Result { get; set; }
 
         private int PreviousHeal { get; set; }
 
@@ -71,14 +70,6 @@ namespace Concierge.Interfaces.OverviewPageInterface
             }
         }
 
-        protected override void OnClosing(CancelEventArgs e)
-        {
-            base.OnClosing(e);
-            e.Cancel = true;
-            this.Result = ConciergeWindowResult.Exit;
-            this.Hide();
-        }
-
         private void SetPreviousValue()
         {
             if (this.IsHealing)
@@ -88,17 +79,6 @@ namespace Concierge.Interfaces.OverviewPageInterface
             else
             {
                 this.PreviousDamage = this.HpUpDown.Value ?? 0;
-            }
-        }
-
-        private void Window_KeyDown(object sender, KeyEventArgs e)
-        {
-            switch (e.Key)
-            {
-                case Key.Escape:
-                    this.Result = ConciergeWindowResult.Exit;
-                    this.Hide();
-                    break;
             }
         }
 
@@ -120,14 +100,6 @@ namespace Concierge.Interfaces.OverviewPageInterface
 
             this.Result = ConciergeWindowResult.OK;
             this.Hide();
-        }
-
-        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            if (e.ChangedButton == MouseButton.Left)
-            {
-                this.DragMove();
-            }
         }
     }
 }

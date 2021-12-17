@@ -11,6 +11,7 @@ namespace Concierge.Interfaces.UtilityInterface
     using System.Windows.Input;
 
     using Concierge.Commands;
+    using Concierge.Interfaces.Components;
     using Concierge.Interfaces.Enums;
     using Concierge.Tools.Interface;
     using Concierge.Utility;
@@ -21,7 +22,7 @@ namespace Concierge.Interfaces.UtilityInterface
     /// <summary>
     /// Interaction logic for SettingsWindow.xaml.
     /// </summary>
-    public partial class SettingsWindow : Window
+    public partial class SettingsWindow : ConciergeWindow
     {
         public SettingsWindow()
         {
@@ -29,23 +30,12 @@ namespace Concierge.Interfaces.UtilityInterface
             this.UnitOfMeasurementComboBox.ItemsSource = Enum.GetValues(typeof(UnitTypes)).Cast<UnitTypes>();
         }
 
-        public delegate void ApplyChangesEventHandler(object sender, EventArgs e);
-
-        public event ApplyChangesEventHandler ApplyChanges;
-
         private string FormattedInterval => $"Autosave Interval: {Constants.AutosaveIntervals[(int)this.AutosaveInterval.Value]} minute{((int)this.AutosaveInterval.Value > 0 ? "s" : string.Empty)}";
 
         public void ShowEdit()
         {
             this.FillFields();
             this.ShowDialog();
-        }
-
-        protected override void OnClosing(CancelEventArgs e)
-        {
-            base.OnClosing(e);
-            e.Cancel = true;
-            this.Hide();
         }
 
         private void FillFields()
@@ -128,16 +118,6 @@ namespace Concierge.Interfaces.UtilityInterface
             this.AutosaveInterval.Opacity = 0.5;
         }
 
-        private void Window_KeyDown(object sender, KeyEventArgs e)
-        {
-            switch (e.Key)
-            {
-                case Key.Escape:
-                    this.Hide();
-                    break;
-            }
-        }
-
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             this.Hide();
@@ -151,7 +131,7 @@ namespace Concierge.Interfaces.UtilityInterface
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
             this.UpdateSettings();
-            this.ApplyChanges?.Invoke(this, new EventArgs());
+            this.InvokeApplyChanges();
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
@@ -175,14 +155,6 @@ namespace Concierge.Interfaces.UtilityInterface
         private void AutosaveCheckBox_Unchecked(object sender, RoutedEventArgs e)
         {
             this.DisableAutosaveControls();
-        }
-
-        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            if (e.ChangedButton == MouseButton.Left)
-            {
-                this.DragMove();
-            }
         }
     }
 }

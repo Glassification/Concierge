@@ -8,10 +8,12 @@ namespace Concierge.Interfaces.UtilityInterface
     using System.Threading;
     using System.Windows;
 
+    using Concierge.Interfaces.Components;
+
     /// <summary>
     /// Interaction logic for SaveStatusWindow.xaml.
     /// </summary>
-    public partial class SaveStatusWindow : Window
+    public partial class SaveStatusWindow : ConciergeWindow
     {
         private const int MarginOffset = 10;
 

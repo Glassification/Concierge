@@ -8,17 +8,17 @@ namespace Concierge.Interfaces.CompanionPageInterface
     using System.ComponentModel;
     using System.Linq;
     using System.Windows;
-    using System.Windows.Input;
 
     using Concierge.Character.Characteristics;
     using Concierge.Character.Enums;
     using Concierge.Commands;
+    using Concierge.Interfaces.Components;
     using Concierge.Interfaces.Enums;
 
     /// <summary>
     /// Interaction logic for ModifyHealthWindow.xaml.
     /// </summary>
-    public partial class ModifyPropertiesWindow : Window
+    public partial class ModifyPropertiesWindow : ConciergeWindow
     {
         private readonly ConciergePage conciergePage;
 
@@ -28,10 +28,6 @@ namespace Concierge.Interfaces.CompanionPageInterface
             this.VisionComboBox.ItemsSource = Enum.GetValues(typeof(VisionTypes)).Cast<VisionTypes>();
             this.conciergePage = conciergePage;
         }
-
-        public delegate void ApplyChangesEventHandler(object sender, EventArgs e);
-
-        public event ApplyChangesEventHandler ApplyChanges;
 
         private CompanionProperties Properties { get; set; }
 
@@ -76,16 +72,6 @@ namespace Concierge.Interfaces.CompanionPageInterface
             Program.UndoRedoService.AddCommand(new EditCommand<CompanionProperties>(this.Properties, oldItem, this.conciergePage));
         }
 
-        private void Window_KeyDown(object sender, KeyEventArgs e)
-        {
-            switch (e.Key)
-            {
-                case Key.Escape:
-                    this.Hide();
-                    break;
-            }
-        }
-
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             this.Hide();
@@ -102,7 +88,7 @@ namespace Concierge.Interfaces.CompanionPageInterface
 
             this.UpdateCompanion();
 
-            this.ApplyChanges?.Invoke(this, new EventArgs());
+            this.InvokeApplyChanges();
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
@@ -111,14 +97,6 @@ namespace Concierge.Interfaces.CompanionPageInterface
 
             this.UpdateCompanion();
             this.Hide();
-        }
-
-        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            if (e.ChangedButton == MouseButton.Left)
-            {
-                this.DragMove();
-            }
         }
     }
 }

@@ -13,13 +13,14 @@ namespace Concierge.Interfaces.DetailsPageInterface
 
     using Concierge.Character.Characteristics;
     using Concierge.Commands;
+    using Concierge.Interfaces.Components;
     using Concierge.Interfaces.Enums;
     using Concierge.Utility;
 
     /// <summary>
     /// Interaction logic for ModifyLanguagesWindow.xaml.
     /// </summary>
-    public partial class ModifyLanguagesWindow : Window, IConciergeModifyWindow
+    public partial class ModifyLanguagesWindow : ConciergeWindow, IConciergeModifyWindow
     {
         private readonly ConciergePage conciergePage;
 
@@ -30,10 +31,6 @@ namespace Concierge.Interfaces.DetailsPageInterface
             this.conciergePage = conciergePage;
         }
 
-        public delegate void ApplyChangesEventHandler(object sender, EventArgs e);
-
-        public event ApplyChangesEventHandler ApplyChanges;
-
         public bool ItemsAdded { get; private set; }
 
         private bool Editing { get; set; }
@@ -43,8 +40,6 @@ namespace Concierge.Interfaces.DetailsPageInterface
         private Language SelectedLanguage { get; set; }
 
         private List<Language> Languages { get; set; }
-
-        private ConciergeWindowResult Result { get; set; }
 
         public ConciergeWindowResult ShowWizardSetup()
         {
@@ -90,14 +85,6 @@ namespace Concierge.Interfaces.DetailsPageInterface
             this.CancelButton.Content = text;
         }
 
-        protected override void OnClosing(CancelEventArgs e)
-        {
-            base.OnClosing(e);
-            e.Cancel = true;
-            this.Result = ConciergeWindowResult.Exit;
-            this.Hide();
-        }
-
         private void FillFields(Language language)
         {
             this.NameComboBox.Text = language.Name;
@@ -139,17 +126,6 @@ namespace Concierge.Interfaces.DetailsPageInterface
             return language;
         }
 
-        private void Window_KeyDown(object sender, KeyEventArgs e)
-        {
-            switch (e.Key)
-            {
-                case Key.Escape:
-                    this.Result = ConciergeWindowResult.Exit;
-                    this.Hide();
-                    break;
-            }
-        }
-
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             this.Result = ConciergeWindowResult.Exit;
@@ -180,7 +156,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
             this.Languages.Add(this.ToLanguage());
             this.ClearFields();
 
-            this.ApplyChanges?.Invoke(this, new EventArgs());
+            this.InvokeApplyChanges();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
@@ -194,14 +170,6 @@ namespace Concierge.Interfaces.DetailsPageInterface
             if (this.NameComboBox.SelectedItem != null)
             {
                 this.FillFields(this.NameComboBox.SelectedItem as Language);
-            }
-        }
-
-        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            if (e.ChangedButton == MouseButton.Left)
-            {
-                this.DragMove();
             }
         }
     }

@@ -14,12 +14,13 @@ namespace Concierge.Interfaces.DetailsPageInterface
     using Concierge.Character.Characteristics;
     using Concierge.Character.Enums;
     using Concierge.Commands;
+    using Concierge.Interfaces.Components;
     using Concierge.Interfaces.Enums;
 
     /// <summary>
     /// Interaction logic for ModifyProficiencyWindow.xaml.
     /// </summary>
-    public partial class ModifyProficiencyWindow : Window, IConciergeModifyWindow
+    public partial class ModifyProficiencyWindow : ConciergeWindow, IConciergeModifyWindow
     {
         private readonly ConciergePage conciergePage;
 
@@ -30,10 +31,6 @@ namespace Concierge.Interfaces.DetailsPageInterface
             this.conciergePage = conciergePage;
         }
 
-        public delegate void ApplyChangesEventHandler(object sender, EventArgs e);
-
-        public event ApplyChangesEventHandler ApplyChanges;
-
         public bool ItemsAdded { get; private set; }
 
         private bool Editing { get; set; }
@@ -43,8 +40,6 @@ namespace Concierge.Interfaces.DetailsPageInterface
         private List<Proficiency> SelectedProficiencies { get; set; }
 
         private string HeaderText => $"{(this.Editing ? "Edit" : "Add")} Proficiency";
-
-        private ConciergeWindowResult Result { get; set; }
 
         public ConciergeWindowResult ShowWizardSetup()
         {
@@ -91,14 +86,6 @@ namespace Concierge.Interfaces.DetailsPageInterface
         public void UpdateCancelButton(string text)
         {
             this.CancelButton.Content = text;
-        }
-
-        protected override void OnClosing(CancelEventArgs e)
-        {
-            base.OnClosing(e);
-            e.Cancel = true;
-            this.Result = ConciergeWindowResult.Exit;
-            this.Hide();
         }
 
         private void SetEnabledState(bool isEnabled)
@@ -177,32 +164,13 @@ namespace Concierge.Interfaces.DetailsPageInterface
             this.SelectedProficiencies.Add(this.ToProficiency());
             this.ClearFields();
 
-            this.ApplyChanges?.Invoke(this, new EventArgs());
+            this.InvokeApplyChanges();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
             this.Result = ConciergeWindowResult.Cancel;
             this.Hide();
-        }
-
-        private void Window_KeyDown(object sender, KeyEventArgs e)
-        {
-            switch (e.Key)
-            {
-                case Key.Escape:
-                    this.Result = ConciergeWindowResult.Exit;
-                    this.Hide();
-                    break;
-            }
-        }
-
-        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            if (e.ChangedButton == MouseButton.Left)
-            {
-                this.DragMove();
-            }
         }
     }
 }

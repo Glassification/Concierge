@@ -14,13 +14,14 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
     using Concierge.Character.Enums;
     using Concierge.Character.Spellcasting;
     using Concierge.Commands;
+    using Concierge.Interfaces.Components;
     using Concierge.Interfaces.Enums;
     using Concierge.Utility;
 
     /// <summary>
     /// Interaction logic for ModifySpellClassWindow.xaml.
     /// </summary>
-    public partial class ModifySpellClassWindow : Window, IConciergeModifyWindow
+    public partial class ModifySpellClassWindow : ConciergeWindow, IConciergeModifyWindow
     {
         private readonly ConciergePage conciergePage;
 
@@ -31,10 +32,6 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
             this.AbilityComboBox.ItemsSource = Enum.GetValues(typeof(Abilities)).Cast<Abilities>();
             this.conciergePage = conciergePage;
         }
-
-        public delegate void ApplyChangesEventHandler(object sender, EventArgs e);
-
-        public event ApplyChangesEventHandler ApplyChanges;
 
         public bool ItemsAdded { get; private set; }
 
@@ -47,8 +44,6 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
         private MagicClass SelectedClass { get; set; }
 
         private List<MagicClass> MagicClasses { get; set; }
-
-        private ConciergeWindowResult Result { get; set; }
 
         public ConciergeWindowResult ShowWizardSetup()
         {
@@ -92,14 +87,6 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
         public void UpdateCancelButton(string text)
         {
             this.CancelButton.Content = text;
-        }
-
-        protected override void OnClosing(CancelEventArgs e)
-        {
-            base.OnClosing(e);
-            e.Cancel = true;
-            this.Result = ConciergeWindowResult.Exit;
-            this.Hide();
         }
 
         private void FillFields(MagicClass magicClass)
@@ -180,17 +167,6 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
             this.PreparedSpellsTextBlock.Text = Program.CcsFile.Character.Spells.Where(x => (x.Class?.Equals(this.ClassNameComboBox.SelectedItem.ToString()) ?? false) && x.Prepared).ToList().Count.ToString();
         }
 
-        private void Window_KeyDown(object sender, KeyEventArgs e)
-        {
-            switch (e.Key)
-            {
-                case Key.Escape:
-                    this.Result = ConciergeWindowResult.Exit;
-                    this.Hide();
-                    break;
-            }
-        }
-
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             this.Result = ConciergeWindowResult.Exit;
@@ -221,7 +197,7 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
             this.MagicClasses.Add(this.ToMagicClass());
             this.ClearFields();
 
-            this.ApplyChanges?.Invoke(this, new EventArgs());
+            this.InvokeApplyChanges();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
@@ -235,14 +211,6 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
             if (!this.SettingValues)
             {
                 this.RefreshFields();
-            }
-        }
-
-        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            if (e.ChangedButton == MouseButton.Left)
-            {
-                this.DragMove();
             }
         }
     }

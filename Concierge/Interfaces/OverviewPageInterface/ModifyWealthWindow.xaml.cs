@@ -10,12 +10,13 @@ namespace Concierge.Interfaces.OverviewPageInterface
 
     using Concierge.Character.Statuses;
     using Concierge.Commands;
+    using Concierge.Interfaces.Components;
     using Concierge.Interfaces.Enums;
 
     /// <summary>
     /// Interaction logic for ModifyWealthWindow.xaml.
     /// </summary>
-    public partial class ModifyWealthWindow : Window, IConciergeModifyWindow
+    public partial class ModifyWealthWindow : ConciergeWindow, IConciergeModifyWindow
     {
         private readonly ConciergePage conciergePage;
 
@@ -36,8 +37,6 @@ namespace Concierge.Interfaces.OverviewPageInterface
         private int PP { get; set; }
 
         private Wealth SelectedWealth { get; set; }
-
-        private ConciergeWindowResult Result { get; set; }
 
         public ConciergeWindowResult ShowWizardSetup()
         {
@@ -62,14 +61,6 @@ namespace Concierge.Interfaces.OverviewPageInterface
         public void UpdateCancelButton(string text)
         {
             this.CancelButton.Content = text;
-        }
-
-        protected override void OnClosing(CancelEventArgs e)
-        {
-            base.OnClosing(e);
-            e.Cancel = true;
-            this.Result = ConciergeWindowResult.Exit;
-            this.Hide();
         }
 
         private void ClearFields()
@@ -159,25 +150,6 @@ namespace Concierge.Interfaces.OverviewPageInterface
         {
             this.Result = ConciergeWindowResult.Cancel;
             this.Hide();
-        }
-
-        private void Window_KeyDown(object sender, KeyEventArgs e)
-        {
-            switch (e.Key)
-            {
-                case Key.Escape:
-                    this.Result = ConciergeWindowResult.Exit;
-                    this.Hide();
-                    break;
-            }
-        }
-
-        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            if (e.ChangedButton == MouseButton.Left)
-            {
-                this.DragMove();
-            }
         }
     }
 }

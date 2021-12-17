@@ -22,7 +22,7 @@ namespace Concierge.Interfaces.UtilityInterface
     /// <summary>
     /// Interaction logic for SearchWindow.xaml.
     /// </summary>
-    public partial class SearchWindow : Window
+    public partial class SearchWindow : ConciergeWindow
     {
         private readonly ConciergeSearch conciergeSearch;
         private readonly ConciergeNavigate conciergeNavigate;
@@ -53,8 +53,8 @@ namespace Concierge.Interfaces.UtilityInterface
         protected override void OnClosing(CancelEventArgs e)
         {
             base.OnClosing(e);
-            e.Cancel = true;
-            this.CloseWindow();
+            this.ClearHighlightedResults();
+            this.ClearFields();
         }
 
         private void ClearFields()
@@ -157,16 +157,11 @@ namespace Concierge.Interfaces.UtilityInterface
             return true;
         }
 
-        private void CloseWindow()
+        private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             this.ClearHighlightedResults();
             this.ClearFields();
             this.Hide();
-        }
-
-        private void CloseButton_Click(object sender, RoutedEventArgs e)
-        {
-            this.CloseWindow();
         }
 
         private void FindPreviousButton_Click(object sender, RoutedEventArgs e)
@@ -195,15 +190,9 @@ namespace Concierge.Interfaces.UtilityInterface
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            this.CloseWindow();
-        }
-
-        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            if (e.ChangedButton == MouseButton.Left)
-            {
-                this.DragMove();
-            }
+            this.ClearHighlightedResults();
+            this.ClearFields();
+            this.Hide();
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
@@ -211,7 +200,9 @@ namespace Concierge.Interfaces.UtilityInterface
             switch (e.Key)
             {
                 case Key.Escape:
-                    this.CloseWindow();
+                    this.ClearHighlightedResults();
+                    this.ClearFields();
+                    this.Hide();
                     break;
                 case Key.Enter:
                     this.FindNextButton_Click(this.FindNextButton, null);

@@ -11,12 +11,13 @@ namespace Concierge.Interfaces.OverviewPageInterface
 
     using Concierge.Character.Characteristics;
     using Concierge.Commands;
+    using Concierge.Interfaces.Components;
     using Concierge.Interfaces.Enums;
 
     /// <summary>
     /// Interaction logic for ModifyAttributesWindow.xaml.
     /// </summary>
-    public partial class ModifyAttributesWindow : Window, IConciergeModifyWindow
+    public partial class ModifyAttributesWindow : ConciergeWindow, IConciergeModifyWindow
     {
         private readonly ConciergePage conciergePage;
 
@@ -26,13 +27,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
             this.conciergePage = conciergePage;
         }
 
-        public delegate void ApplyChangesEventHandler(object sender, EventArgs e);
-
-        public event ApplyChangesEventHandler ApplyChanges;
-
         private Attributes Attributes { get; set; }
-
-        private ConciergeWindowResult Result { get; set; }
 
         public ConciergeWindowResult ShowWizardSetup()
         {
@@ -57,14 +52,6 @@ namespace Concierge.Interfaces.OverviewPageInterface
         public void UpdateCancelButton(string text)
         {
             this.CancelButton.Content = text;
-        }
-
-        protected override void OnClosing(CancelEventArgs e)
-        {
-            base.OnClosing(e);
-            e.Cancel = true;
-            this.Result = ConciergeWindowResult.Exit;
-            this.Hide();
         }
 
         private void FillFields()
@@ -98,17 +85,6 @@ namespace Concierge.Interfaces.OverviewPageInterface
             Program.UndoRedoService.AddCommand(new EditCommand<Attributes>(this.Attributes, oldItem, this.conciergePage));
         }
 
-        private void Window_KeyDown(object sender, KeyEventArgs e)
-        {
-            switch (e.Key)
-            {
-                case Key.Escape:
-                    this.Result = ConciergeWindowResult.Exit;
-                    this.Hide();
-                    break;
-            }
-        }
-
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Modify();
@@ -125,7 +101,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
 
             this.UpdateAttributes();
 
-            this.ApplyChanges?.Invoke(this, new EventArgs());
+            this.InvokeApplyChanges();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
@@ -138,14 +114,6 @@ namespace Concierge.Interfaces.OverviewPageInterface
         {
             this.Result = ConciergeWindowResult.Exit;
             this.Hide();
-        }
-
-        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            if (e.ChangedButton == MouseButton.Left)
-            {
-                this.DragMove();
-            }
         }
     }
 }

@@ -12,6 +12,7 @@ namespace Concierge.Utility.Colors
         static ConciergeColors()
         {
             ControlText = new SolidColorBrush(Color.FromArgb(255, 214, 214, 214));
+            WindowBackground = new SolidColorBrush(Color.FromArgb(255, 37, 37, 38));
 
             LightCarryCapacity = new SolidColorBrush(Color.FromArgb(255, 216, 228, 188));
             MediumCarryCapacity = new SolidColorBrush(Color.FromArgb(255, 252, 213, 180));
@@ -32,6 +33,8 @@ namespace Concierge.Utility.Colors
         }
 
         public static SolidColorBrush ControlText { get; }
+
+        public static SolidColorBrush WindowBackground { get; }
 
         public static LinearGradientBrush FailedSaveBrush { get; }
 

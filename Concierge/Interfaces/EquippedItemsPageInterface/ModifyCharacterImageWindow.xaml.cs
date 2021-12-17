@@ -14,6 +14,7 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
 
     using Concierge.Character.Characteristics;
     using Concierge.Commands;
+    using Concierge.Interfaces.Components;
     using Concierge.Interfaces.Enums;
     using Concierge.Services;
     using Concierge.Utility;
@@ -22,7 +23,7 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
     /// <summary>
     /// Interaction logic for ModifyCharacterImageWindow.xaml.
     /// </summary>
-    public partial class ModifyCharacterImageWindow : Window, IConciergeModifyWindow
+    public partial class ModifyCharacterImageWindow : ConciergeWindow, IConciergeModifyWindow
     {
         private readonly FileAccessService fileAccessService;
         private readonly BackgroundWorker toolTipTimer = new ();
@@ -44,12 +45,6 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
             this.toolTipTimer.DoWork += this.BackgroundWorker_DoWork;
             this.toolTipTimer.RunWorkerCompleted += this.BackgroundWorker_RunWorkerCompleted;
         }
-
-        public delegate void ApplyChangesEventHandler(object sender, EventArgs e);
-
-        public event ApplyChangesEventHandler ApplyChanges;
-
-        private ConciergeWindowResult Result { get; set; }
 
         private string OriginalFileName { get; set; }
 
@@ -85,10 +80,7 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
         protected override void OnClosing(CancelEventArgs e)
         {
             base.OnClosing(e);
-            e.Cancel = true;
-            this.Result = ConciergeWindowResult.Exit;
             (this.InformationHover.ToolTip as ToolTip).IsOpen = false;
-            this.Hide();
         }
 
         private void FillFields()
@@ -159,7 +151,7 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
             Program.Modify();
 
             this.UpdateCharacterImage();
-            this.ApplyChanges?.Invoke(this, new EventArgs());
+            this.InvokeApplyChanges();
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
@@ -181,9 +173,7 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
             switch (e.Key)
             {
                 case Key.Escape:
-                    this.Result = ConciergeWindowResult.Exit;
                     (this.InformationHover.ToolTip as ToolTip).IsOpen = false;
-                    this.Hide();
                     break;
             }
         }
@@ -222,14 +212,6 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
         private void BackgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             (this.InformationHover.ToolTip as ToolTip).IsOpen = false;
-        }
-
-        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            if (e.ChangedButton == MouseButton.Left)
-            {
-                this.DragMove();
-            }
         }
     }
 }
