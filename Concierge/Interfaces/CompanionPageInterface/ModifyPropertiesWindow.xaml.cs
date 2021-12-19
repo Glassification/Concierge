@@ -5,7 +5,6 @@
 namespace Concierge.Interfaces.CompanionPageInterface
 {
     using System;
-    using System.ComponentModel;
     using System.Linq;
     using System.Windows;
 
@@ -37,13 +36,6 @@ namespace Concierge.Interfaces.CompanionPageInterface
 
             this.FillFields();
             this.ShowConciergeWindow();
-        }
-
-        protected override void OnClosing(CancelEventArgs e)
-        {
-            base.OnClosing(e);
-            e.Cancel = true;
-            this.HideConciergeWindow();
         }
 
         private void FillFields()

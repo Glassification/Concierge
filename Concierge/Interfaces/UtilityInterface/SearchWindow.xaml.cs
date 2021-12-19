@@ -52,9 +52,9 @@ namespace Concierge.Interfaces.UtilityInterface
 
         protected override void OnClosing(CancelEventArgs e)
         {
-            base.OnClosing(e);
             this.ClearHighlightedResults();
             this.ClearFields();
+            base.OnClosing(e);
         }
 
         private void ClearFields()
@@ -202,7 +202,6 @@ namespace Concierge.Interfaces.UtilityInterface
                 case Key.Escape:
                     this.ClearHighlightedResults();
                     this.ClearFields();
-                    this.HideConciergeWindow();
                     break;
                 case Key.Enter:
                     this.FindNextButton_Click(this.FindNextButton, null);

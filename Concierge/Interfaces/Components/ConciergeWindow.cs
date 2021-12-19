@@ -7,6 +7,7 @@ namespace Concierge.Interfaces.Components
     using System;
     using System.ComponentModel;
     using System.Windows;
+    using System.Windows.Controls;
     using System.Windows.Input;
     using System.Windows.Media.Animation;
 
@@ -18,18 +19,45 @@ namespace Concierge.Interfaces.Components
     {
         private const double AnimationSpeed = 0.15;
 
+        private readonly DoubleAnimation openAnimation;
+        private readonly DoubleAnimation hideAnimation;
+
         public ConciergeWindow()
         {
             this.AllowsTransparency = true;
             this.ResizeMode = ResizeMode.NoResize;
             this.WindowStyle = WindowStyle.None;
-            this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            this.WindowStartupLocation = WindowStartupLocation.Manual;
+            this.Left = 0;
+            this.Top = 0;
             this.Background = ConciergeColors.WindowBackground;
             this.BorderBrush = ConciergeColors.RectangleBorderHighlight;
             this.BorderThickness = new Thickness(1);
 
             this.MouseDown += this.Window_MouseDown;
             this.KeyDown += this.Window_KeyDown;
+
+            this.openAnimation = new DoubleAnimation
+            {
+                From = 0,
+                To = 1,
+                Duration = new Duration(TimeSpan.FromSeconds(AnimationSpeed)),
+                FillBehavior = FillBehavior.Stop,
+            };
+            this.hideAnimation = new DoubleAnimation
+            {
+                From = 1,
+                To = 0,
+                Duration = new Duration(TimeSpan.FromSeconds(AnimationSpeed)),
+                FillBehavior = FillBehavior.Stop,
+            };
+            this.hideAnimation.Completed += (s, e) =>
+            {
+                this.Hide();
+            };
+
+            this.openAnimation.Freeze();
+            this.hideAnimation.Freeze();
         }
 
         public delegate void ApplyChangesEventHandler(object sender, EventArgs e);
@@ -49,13 +77,14 @@ namespace Concierge.Interfaces.Components
 
         protected void ShowConciergeWindow()
         {
-            this.OpeningAnimation();
+            this.SetOpenLocation();
+            this.BeginAnimation(OpacityProperty, this.openAnimation);
             this.ShowDialog();
         }
 
         protected void HideConciergeWindow()
         {
-            this.HidingAnimation();
+            this.BeginAnimation(OpacityProperty, this.hideAnimation);
         }
 
         protected void InvokeApplyChanges()
@@ -63,33 +92,15 @@ namespace Concierge.Interfaces.Components
             this.ApplyChanges?.Invoke(this, new EventArgs());
         }
 
-        private void OpeningAnimation()
+        private void SetOpenLocation()
         {
-            var hideAnimation = new DoubleAnimation
-            {
-                From = 0,
-                To = 1,
-                Duration = new Duration(TimeSpan.FromSeconds(AnimationSpeed)),
-            };
+            var properties = Program.GetMainWindowProperties();
+            var offset = properties.Location.X == 0 || properties.WindowState != WindowState.Maximized ? 0 : Math.Abs(properties.Location.X) - properties.ActualWidth;
 
-            this.BeginAnimation(OpacityProperty, hideAnimation);
-        }
+            offset = properties.Location.X > 0 ? -offset : offset;
 
-        private void HidingAnimation()
-        {
-            var hideAnimation = new DoubleAnimation
-            {
-                From = 1,
-                To = 0,
-                Duration = new Duration(TimeSpan.FromSeconds(AnimationSpeed)),
-            };
-
-            hideAnimation.Completed += (s, e) =>
-            {
-                this.Hide();
-            };
-
-            this.BeginAnimation(OpacityProperty, hideAnimation);
+            this.Left = properties.Location.X + offset + (properties.Center.X - (this.Width / 2));
+            this.Top = properties.Location.Y + (properties.Center.Y - (this.Height / 2));
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)

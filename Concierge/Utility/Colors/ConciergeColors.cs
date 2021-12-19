@@ -12,24 +12,55 @@ namespace Concierge.Utility.Colors
         static ConciergeColors()
         {
             ControlText = new SolidColorBrush(Color.FromArgb(255, 214, 214, 214));
+            ControlText.Freeze();
+
             WindowBackground = new SolidColorBrush(Color.FromArgb(255, 37, 37, 38));
+            WindowBackground.Freeze();
 
             LightCarryCapacity = new SolidColorBrush(Color.FromArgb(255, 216, 228, 188));
+            LightCarryCapacity.Freeze();
+
             MediumCarryCapacity = new SolidColorBrush(Color.FromArgb(255, 252, 213, 180));
+            MediumCarryCapacity.Freeze();
+
             HeavyCarryCapacity = new SolidColorBrush(Color.FromArgb(255, 187, 74, 67));
+            HeavyCarryCapacity.Freeze();
 
             UsedBoxBrush = new SolidColorBrush(Color.FromArgb(255, 62, 62, 66));
+            UsedBoxBrush.Freeze();
+
             TotalDarkBoxBrush = new SolidColorBrush(Color.FromArgb(255, 15, 15, 15));
+            TotalDarkBoxBrush.Freeze();
+
             TotalLightBoxBrush = new SolidColorBrush(Color.FromArgb(255, 51, 51, 51));
+            TotalLightBoxBrush.Freeze();
+
             ControlBackgroundBrush = new SolidColorBrush(Color.FromArgb(255, 63, 63, 63));
+            ControlBackgroundBrush.Freeze();
+
             ToggleBoxBrush = new SolidColorBrush(Color.FromArgb(255, 6, 1, 31));
+            ToggleBoxBrush.Freeze();
+
             RectangleBorderHighlight = new SolidColorBrush(Color.FromArgb(255, 34, 126, 169));
+            RectangleBorderHighlight.Freeze();
+
             RectangleBorder = new SolidColorBrush(Color.FromArgb(255, 0, 9, 23));
+            RectangleBorder.Freeze();
+
             Highlight = new SolidColorBrush(Color.FromArgb(255, 28, 57, 71));
+            Highlight.Freeze();
+
             NoteTreeItemHover = new SolidColorBrush(Color.FromArgb(255, 130, 223, 251));
+            NoteTreeItemHover.Freeze();
+
             FailedSaveBrush = ColorUtilities.GenerateGradientBrush(FailedDarkRed, FailedLightRed, new Point(0.5, 0), new Point(0.5, 1));
+            FailedSaveBrush.Freeze();
+
             SucceededSaveBrush = ColorUtilities.GenerateGradientBrush(SucceededDarkGreen, SucceededLightGreen, new Point(0.5, 0), new Point(0.5, 1));
+            SucceededSaveBrush.Freeze();
+
             ProficiencyBrush = ColorUtilities.GenerateGradientBrush(ProficiencyDarkBlue, ProficiencyLightBlue, new Point(0, 0), new Point(1, 1));
+            ProficiencyBrush.Freeze();
         }
 
         public static SolidColorBrush ControlText { get; }

@@ -79,8 +79,8 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
 
         protected override void OnClosing(CancelEventArgs e)
         {
-            base.OnClosing(e);
             (this.InformationHover.ToolTip as ToolTip).IsOpen = false;
+            base.OnClosing(e);
         }
 
         private void FillFields()
