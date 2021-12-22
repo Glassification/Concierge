@@ -14,7 +14,7 @@ namespace Concierge.Utility
     public static class Constants
     {
         public const int MaxLevel = 20;
-        public const int BaseDc = 8;
+        public const int BaseDC = 8;
         public const int CoinGroup = 50;
         public const int MaxScore = 30;
         public const int MinScore = 0;

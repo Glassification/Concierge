@@ -68,7 +68,7 @@
                     <Grid Grid.Column="0">
                         <TextBlock Text="Autosave:"
                                    Foreground="White"
-                                   FontSize="25"
+                                   FontSize="18"
                                    HorizontalAlignment="Left"
                                    VerticalAlignment="Center"
                                    Margin="10, 0, 0, 0"/>
@@ -94,7 +94,7 @@
                     <Grid Grid.Column="0">
                         <TextBlock Text="Coin Weight:"
                                    Foreground="White"
-                                   FontSize="20"
+                                   FontSize="18"
                                    HorizontalAlignment="Left"
                                    VerticalAlignment="Center"
                                    Margin="10, 0, 0, 0"/>
@@ -143,7 +143,7 @@
                         <TextBlock 
                             Text="Unit of Measurement:"
                             Foreground="White"
-                            FontSize="17"
+                            FontSize="18"
                             TextWrapping="Wrap"
                             HorizontalAlignment="Left"
                             VerticalAlignment="Center"
@@ -268,7 +268,7 @@
                         <TextBlock 
                             Text="Centre Windows:"
                             Foreground="White"
-                            FontSize="20"
+                            FontSize="18"
                             TextWrapping="Wrap"
                             HorizontalAlignment="Left"
                             VerticalAlignment="Top"

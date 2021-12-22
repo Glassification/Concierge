@@ -17,6 +17,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
     using Concierge.Interfaces.Enums;
     using Concierge.Utility;
     using Concierge.Utility.Enums;
+    using Concierge.Utility.Extensions;
     using Concierge.Utility.Units;
 
     /// <summary>
@@ -105,6 +106,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
             this.HeightUnits.Text = $"({UnitFormat.HeightPostfix})";
             this.WeightUnits.Text = $"({UnitFormat.WeightPostfix})";
 
+            this.UpdateColorPreviews();
             this.FillHeightFields();
         }
 
@@ -122,6 +124,13 @@ namespace Concierge.Interfaces.DetailsPageInterface
             this.Appearance.DistinguishingMarks = this.DistinguishingMarksTextBox.Text;
 
             Program.UndoRedoService.AddCommand(new EditCommand<Appearance>(this.Appearance, oldItem, this.conciergePage));
+        }
+
+        private void UpdateColorPreviews()
+        {
+            this.SkinColorPreview.Background = this.SkinColourTextBox.Text.ToBrush();
+            this.EyeColorPreview.Background = this.EyeColourTextBox.Text.ToBrush();
+            this.HairColorPreview.Background = this.HairColourTextBox.Text.ToBrush();
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
@@ -152,6 +161,21 @@ namespace Concierge.Interfaces.DetailsPageInterface
         {
             this.Result = ConciergeWindowResult.Cancel;
             this.HideConciergeWindow();
+        }
+
+        private void ColourTextBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            this.UpdateColorPreviews();
+        }
+
+        private void ColourTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.Key)
+            {
+                case Key.Enter:
+                    this.UpdateColorPreviews();
+                    break;
+            }
         }
     }
 }

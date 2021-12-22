@@ -7,7 +7,6 @@ namespace Concierge.Interfaces.Components
     using System;
     using System.ComponentModel;
     using System.Windows;
-    using System.Windows.Controls;
     using System.Windows.Input;
     using System.Windows.Media.Animation;
 
@@ -18,7 +17,7 @@ namespace Concierge.Interfaces.Components
 
     public class ConciergeWindow : Window
     {
-        private const double AnimationSpeed = 0.15;
+        private const double FadeAnimationSpeed = 0.15;
 
         private readonly DoubleAnimation openAnimation;
         private readonly DoubleAnimation hideAnimation;
@@ -42,14 +41,14 @@ namespace Concierge.Interfaces.Components
             {
                 From = 0,
                 To = 1,
-                Duration = new Duration(TimeSpan.FromSeconds(AnimationSpeed)),
+                Duration = new Duration(TimeSpan.FromSeconds(FadeAnimationSpeed)),
                 FillBehavior = FillBehavior.Stop,
             };
             this.hideAnimation = new DoubleAnimation
             {
                 From = 1,
                 To = 0,
-                Duration = new Duration(TimeSpan.FromSeconds(AnimationSpeed)),
+                Duration = new Duration(TimeSpan.FromSeconds(FadeAnimationSpeed)),
                 FillBehavior = FillBehavior.Stop,
             };
             this.hideAnimation.Completed += (s, e) =>

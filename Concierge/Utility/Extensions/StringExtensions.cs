@@ -11,6 +11,7 @@ namespace Concierge.Utility.Extensions
     using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Documents;
+    using System.Windows.Media;
 
     public static class StringExtensions
     {
@@ -111,6 +112,20 @@ namespace Concierge.Utility.Extensions
             }
 
             return true;
+        }
+
+        public static Brush ToBrush(this string colorName)
+        {
+            try
+            {
+                colorName = colorName.Strip(" ").Strip("-").Strip(".").Strip("'");
+                return new SolidColorBrush((Color)ColorConverter.ConvertFromString(colorName));
+            }
+            catch (Exception ex)
+            {
+                Program.Logger.Error(ex);
+                return Brushes.Transparent;
+            }
         }
     }
 }
