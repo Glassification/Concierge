@@ -13,6 +13,7 @@ namespace Concierge.Interfaces.Components
 
     using Concierge.Character.Enums;
     using Concierge.Interfaces.Enums;
+    using Concierge.Utility;
     using Concierge.Utility.Colors;
 
     public class ConciergeWindow : Window
@@ -27,7 +28,7 @@ namespace Concierge.Interfaces.Components
             this.AllowsTransparency = true;
             this.ResizeMode = ResizeMode.NoResize;
             this.WindowStyle = WindowStyle.None;
-            this.WindowStartupLocation = WindowStartupLocation.Manual;
+            this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             this.Left = 0;
             this.Top = 0;
             this.Background = ConciergeColors.WindowBackground;
@@ -94,6 +95,11 @@ namespace Concierge.Interfaces.Components
 
         private void SetOpenLocation()
         {
+            if (!ConciergeSettings.AttemptToCenterWindows)
+            {
+                return;
+            }
+
             var properties = Program.GetMainWindowProperties();
             var offset = properties.Location.X == 0 || properties.WindowState != WindowState.Maximized ? 0 : Math.Abs(properties.Location.X) - properties.ActualWidth;
 

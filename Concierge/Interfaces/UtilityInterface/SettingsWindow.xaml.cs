@@ -5,10 +5,8 @@
 namespace Concierge.Interfaces.UtilityInterface
 {
     using System;
-    using System.ComponentModel;
     using System.Linq;
     using System.Windows;
-    using System.Windows.Input;
 
     using Concierge.Commands;
     using Concierge.Interfaces.Components;
@@ -45,6 +43,7 @@ namespace Concierge.Interfaces.UtilityInterface
             this.EncumbranceCheckBox.UpdatingValue();
             this.MuteCheckBox.UpdatingValue();
             this.CheckVersionCheckBox.UpdatingValue();
+            this.CenterWindowsCheckBox.UpdatingValue();
 
             this.AutosaveCheckBox.IsChecked = ConciergeSettings.AutosaveEnabled;
             this.AutosaveInterval.Value = ConciergeSettings.AutosaveInterval;
@@ -54,6 +53,7 @@ namespace Concierge.Interfaces.UtilityInterface
             this.MuteCheckBox.IsChecked = ConciergeSettings.MuteSounds;
             this.CheckVersionCheckBox.IsChecked = ConciergeSettings.CheckVersion;
             this.UnitOfMeasurementComboBox.Text = ConciergeSettings.UnitOfMeasurement.ToString();
+            this.CenterWindowsCheckBox.IsChecked = ConciergeSettings.AttemptToCenterWindows;
 
             if (ConciergeSettings.AutosaveEnabled)
             {
@@ -69,6 +69,7 @@ namespace Concierge.Interfaces.UtilityInterface
             this.EncumbranceCheckBox.UpdatedValue();
             this.MuteCheckBox.UpdatedValue();
             this.CheckVersionCheckBox.UpdatedValue();
+            this.CenterWindowsCheckBox.UpdatedValue();
         }
 
         private bool UpdateSettings()
@@ -87,6 +88,7 @@ namespace Concierge.Interfaces.UtilityInterface
             var oldSettings = ConciergeSettings.ToConciergeSettingsDto();
             var conciergeSettings = new ConciergeSettingsDto()
             {
+                AttemptToCenterWindows = this.CenterWindowsCheckBox.IsChecked ?? false,
                 AutosaveEnabled = this.AutosaveCheckBox.IsChecked ?? false,
                 AutosaveInterval = (int)this.AutosaveInterval.Value,
                 CheckVersion = this.CheckVersionCheckBox.IsChecked ?? false,

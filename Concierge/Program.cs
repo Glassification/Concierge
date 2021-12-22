@@ -6,6 +6,7 @@ namespace Concierge
 {
     using System.Reflection;
     using System.Windows;
+
     using Concierge.Interfaces;
     using Concierge.Interfaces.UtilityInterface;
     using Concierge.Logging;

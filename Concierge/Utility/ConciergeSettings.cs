@@ -18,7 +18,7 @@ namespace Concierge.Utility
         private const bool DefaultMuteSounds = false;
         private const bool DefaultUseCoinWeight = false;
         private const bool DefaultUseEncumbrance = false;
-        private const bool DefaultDisplayWindowInCentre = false;
+        private const bool DefaultAttemptToCenterWindows = false;
 
         static ConciergeSettings()
         {
@@ -29,7 +29,7 @@ namespace Concierge.Utility
             UseCoinWeight = AppConfigReadWriter.Read(nameof(UseCoinWeight), DefaultUseCoinWeight);
             UseEncumbrance = AppConfigReadWriter.Read(nameof(UseEncumbrance), DefaultUseEncumbrance);
             UnitOfMeasurement = AppConfigReadWriter.Read<UnitTypes>(nameof(UnitOfMeasurement));
-            DisplayWindowInCentre = AppConfigReadWriter.Read(nameof(DisplayWindowInCentre), DefaultDisplayWindowInCentre);
+            AttemptToCenterWindows = AppConfigReadWriter.Read(nameof(AttemptToCenterWindows), DefaultAttemptToCenterWindows);
         }
 
         public delegate void UnitsChangedEventHandler(object sender, EventArgs e);
@@ -50,7 +50,7 @@ namespace Concierge.Utility
 
         public static UnitTypes UnitOfMeasurement { get; private set; }
 
-        public static bool DisplayWindowInCentre { get; private set; }
+        public static bool AttemptToCenterWindows { get; private set; }
 
         public static void UpdateSettings(ConciergeSettingsDto conciergeSettings)
         {
@@ -66,7 +66,7 @@ namespace Concierge.Utility
             UseCoinWeight = conciergeSettings.UseCoinWeight;
             UseEncumbrance = conciergeSettings.UseEncumbrance;
             UnitOfMeasurement = conciergeSettings.UnitOfMeasurement;
-            DisplayWindowInCentre = conciergeSettings.DisplayWindowInCentre;
+            AttemptToCenterWindows = conciergeSettings.AttemptToCenterWindows;
 
             // Can't change app.config during debug mode
             if (Program.IsDebug)
@@ -81,7 +81,7 @@ namespace Concierge.Utility
             AppConfigReadWriter.Write(nameof(UseCoinWeight), UseCoinWeight.ToString());
             AppConfigReadWriter.Write(nameof(UseEncumbrance), UseEncumbrance.ToString());
             AppConfigReadWriter.Write(nameof(UnitOfMeasurement), UnitOfMeasurement.ToString());
-            AppConfigReadWriter.Write(nameof(DisplayWindowInCentre), DisplayWindowInCentre.ToString());
+            AppConfigReadWriter.Write(nameof(AttemptToCenterWindows), AttemptToCenterWindows.ToString());
         }
 
         public static void RefreshUnits()
@@ -112,7 +112,7 @@ namespace Concierge.Utility
                         UseCoinWeight:[{UseCoinWeight}],
                         UseEncumbrance:[{UseEncumbrance}]
                         UnitOfMeasurement:[{UnitOfMeasurement}]
-                        DisplayWindowInCentre:[{DisplayWindowInCentre}]";
+                        AttemptToCenterWindows:[{AttemptToCenterWindows}]";
         }
     }
 }

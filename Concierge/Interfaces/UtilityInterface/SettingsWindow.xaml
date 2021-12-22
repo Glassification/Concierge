@@ -256,6 +256,40 @@
                             Style="{StaticResource CheckBoxStyle}"/>
                     </Grid>
                 </Grid>
+
+                <Grid Grid.Row="3">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="40*"/>
+                        <ColumnDefinition Width="60*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!--Title-->
+                    <Grid Grid.Column="0">
+                        <TextBlock 
+                            Text="Centre Windows:"
+                            Foreground="White"
+                            FontSize="20"
+                            TextWrapping="Wrap"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top"
+                            Margin="10, 0, 0, 0"/>
+                        <TextBlock 
+                            Text="(Experimental)"
+                            Foreground="Goldenrod"
+                            FontSize="12"
+                            TextWrapping="Wrap"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Bottom"
+                            Margin="10, 0, 0, 0"/>
+                    </Grid>
+
+                    <!--Value-->
+                    <Grid Grid.Column="1">
+                        <components:ConciergeCheckBox  
+                            x:Name="CenterWindowsCheckBox"
+                            Style="{StaticResource CheckBoxStyle}"/>
+                    </Grid>
+                </Grid>
             </Grid>
         </Grid>
 
