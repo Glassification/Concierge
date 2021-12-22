@@ -35,10 +35,22 @@ namespace Concierge.Interfaces
     /// <summary>
     /// Interaction logic for MainWindow.xaml.
     /// </summary>
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1401:Fields should be private", Justification = "Needs access from outside class.")]
     public partial class MainWindow : Window
     {
         public static readonly DependencyProperty ScaleValuePropertyX = DependencyProperty.Register("ScaleValueX", typeof(double), typeof(MainWindow), new UIPropertyMetadata(1.0, new PropertyChangedCallback(OnScaleValueChanged), new CoerceValueCallback(OnCoerceScaleValueX)));
         public static readonly DependencyProperty ScaleValuePropertyY = DependencyProperty.Register("ScaleValueY", typeof(double), typeof(MainWindow), new UIPropertyMetadata(1.0, new PropertyChangedCallback(OnScaleValueChanged), new CoerceValueCallback(OnCoerceScaleValueY)));
+
+        public readonly InventoryPage InventoryPage = new ();
+        public readonly AttackDefensePage AttackDefensePage = new ();
+        public readonly AbilitiesPage AbilitiesPage = new ();
+        public readonly OverviewPage OverviewPage = new ();
+        public readonly DetailsPage DetailsPage = new ();
+        public readonly NotesPage NotesPage = new ();
+        public readonly SpellcastingPage SpellcastingPage = new ();
+        public readonly ToolsPage ToolsPage = new ();
+        public readonly EquippedItemsPage EquippedItemsPage = new ();
+        public readonly CompanionPage CompanionPage = new ();
 
         private readonly FileAccessService fileAccessService = new ();
         private readonly CommandLineService commandLineService = new ();
@@ -64,18 +76,6 @@ namespace Concierge.Interfaces
             this.settingsWindow.ApplyChanges += this.Window_ApplyChanges;
             this.GridContent.Width = GridContentWidthClose;
             this.IgnoreListItemSelectionChanged = true;
-
-            this.InventoryPage = new InventoryPage();
-            this.AttackDefensePage = new AttackDefensePage();
-            this.AbilitiesPage = new AbilitiesPage();
-            this.OverviewPage = new OverviewPage();
-            this.DetailsPage = new DetailsPage();
-            this.NotesPage = new NotesPage();
-            this.SpellcastingPage = new SpellcastingPage();
-            this.ToolsPage = new ToolsPage();
-            this.EquippedItemsPage = new EquippedItemsPage();
-            this.CompanionPage = new CompanionPage();
-
             this.CollapseAll();
             this.GenerateListViewItems();
             this.ListViewMenu.SelectedIndex = 0;
@@ -94,32 +94,13 @@ namespace Concierge.Interfaces
             this.DrawAll();
 
             Program.Logger.Info($"{nameof(MainWindow)} loaded.");
+            Program.InitializeMainWindow(this);
             Program.Unmodify();
         }
 
         public static double GridContentWidthOpen => SystemParameters.PrimaryScreenWidth - 200;
 
         public static double GridContentWidthClose => SystemParameters.PrimaryScreenWidth - 60;
-
-        public InventoryPage InventoryPage { get; init; }
-
-        public AttackDefensePage AttackDefensePage { get; init; }
-
-        public AbilitiesPage AbilitiesPage { get; init; }
-
-        public OverviewPage OverviewPage { get; init; }
-
-        public DetailsPage DetailsPage { get; init; }
-
-        public NotesPage NotesPage { get; init; }
-
-        public SpellcastingPage SpellcastingPage { get; init; }
-
-        public ToolsPage ToolsPage { get; init; }
-
-        public EquippedItemsPage EquippedItemsPage { get; init; }
-
-        public CompanionPage CompanionPage { get; init; }
 
         public IConciergePage CurrentPage => (this.ListViewMenu.SelectedItem as ListViewItem).Tag as IConciergePage;
 
@@ -231,24 +212,13 @@ namespace Concierge.Interfaces
         public void SaveCharacterSheet()
         {
             Program.Logger.Info($"Save character sheet.");
-
-            if (!Program.CcsFile.AbsolutePath.IsNullOrWhiteSpace())
-            {
-                this.NotesPage.SaveTextBox();
-                this.fileAccessService.Save(Program.CcsFile, false);
-            }
-            else
-            {
-                this.SaveCharacterSheetAs();
-            }
+            this.Save(Program.CcsFile.AbsolutePath.IsNullOrWhiteSpace());
         }
 
         public void SaveCharacterSheetAs()
         {
             Program.Logger.Info($"Save as character sheet.");
-
-            this.NotesPage.SaveTextBox();
-            this.fileAccessService.Save(Program.CcsFile, true);
+            this.Save(true);
         }
 
         public void DrawAll()
@@ -362,9 +332,10 @@ namespace Concierge.Interfaces
             }
         }
 
-        private void MainGrid_SizeChanged(object sender, EventArgs e)
+        private void Save(bool saveAs)
         {
-            this.CalculateScale();
+            this.NotesPage.SaveTextBox();
+            this.fileAccessService.Save(Program.CcsFile, saveAs);
         }
 
         private void CalculateScale()
@@ -454,6 +425,11 @@ namespace Concierge.Interfaces
         private void MainWindow_ContentRendered(object sender, EventArgs e)
         {
             this.FrameContent.NavigationUIVisibility = NavigationUIVisibility.Hidden;
+        }
+
+        private void MainGrid_SizeChanged(object sender, EventArgs e)
+        {
+            this.CalculateScale();
         }
 
         private void MainWindow_KeyPress(object sender, KeyEventArgs e)

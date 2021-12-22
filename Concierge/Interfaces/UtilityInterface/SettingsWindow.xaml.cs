@@ -5,12 +5,11 @@
 namespace Concierge.Interfaces.UtilityInterface
 {
     using System;
-    using System.ComponentModel;
     using System.Linq;
     using System.Windows;
-    using System.Windows.Input;
 
     using Concierge.Commands;
+    using Concierge.Interfaces.Components;
     using Concierge.Interfaces.Enums;
     using Concierge.Tools.Interface;
     using Concierge.Utility;
@@ -21,7 +20,7 @@ namespace Concierge.Interfaces.UtilityInterface
     /// <summary>
     /// Interaction logic for SettingsWindow.xaml.
     /// </summary>
-    public partial class SettingsWindow : Window
+    public partial class SettingsWindow : ConciergeWindow
     {
         public SettingsWindow()
         {
@@ -29,23 +28,12 @@ namespace Concierge.Interfaces.UtilityInterface
             this.UnitOfMeasurementComboBox.ItemsSource = Enum.GetValues(typeof(UnitTypes)).Cast<UnitTypes>();
         }
 
-        public delegate void ApplyChangesEventHandler(object sender, EventArgs e);
-
-        public event ApplyChangesEventHandler ApplyChanges;
-
         private string FormattedInterval => $"Autosave Interval: {Constants.AutosaveIntervals[(int)this.AutosaveInterval.Value]} minute{((int)this.AutosaveInterval.Value > 0 ? "s" : string.Empty)}";
 
         public void ShowEdit()
         {
             this.FillFields();
-            this.ShowDialog();
-        }
-
-        protected override void OnClosing(CancelEventArgs e)
-        {
-            base.OnClosing(e);
-            e.Cancel = true;
-            this.Hide();
+            this.ShowConciergeWindow();
         }
 
         private void FillFields()
@@ -55,6 +43,7 @@ namespace Concierge.Interfaces.UtilityInterface
             this.EncumbranceCheckBox.UpdatingValue();
             this.MuteCheckBox.UpdatingValue();
             this.CheckVersionCheckBox.UpdatingValue();
+            this.CenterWindowsCheckBox.UpdatingValue();
 
             this.AutosaveCheckBox.IsChecked = ConciergeSettings.AutosaveEnabled;
             this.AutosaveInterval.Value = ConciergeSettings.AutosaveInterval;
@@ -64,6 +53,7 @@ namespace Concierge.Interfaces.UtilityInterface
             this.MuteCheckBox.IsChecked = ConciergeSettings.MuteSounds;
             this.CheckVersionCheckBox.IsChecked = ConciergeSettings.CheckVersion;
             this.UnitOfMeasurementComboBox.Text = ConciergeSettings.UnitOfMeasurement.ToString();
+            this.CenterWindowsCheckBox.IsChecked = ConciergeSettings.AttemptToCenterWindows;
 
             if (ConciergeSettings.AutosaveEnabled)
             {
@@ -79,6 +69,7 @@ namespace Concierge.Interfaces.UtilityInterface
             this.EncumbranceCheckBox.UpdatedValue();
             this.MuteCheckBox.UpdatedValue();
             this.CheckVersionCheckBox.UpdatedValue();
+            this.CenterWindowsCheckBox.UpdatedValue();
         }
 
         private bool UpdateSettings()
@@ -97,6 +88,7 @@ namespace Concierge.Interfaces.UtilityInterface
             var oldSettings = ConciergeSettings.ToConciergeSettingsDto();
             var conciergeSettings = new ConciergeSettingsDto()
             {
+                AttemptToCenterWindows = this.CenterWindowsCheckBox.IsChecked ?? false,
                 AutosaveEnabled = this.AutosaveCheckBox.IsChecked ?? false,
                 AutosaveInterval = (int)this.AutosaveInterval.Value,
                 CheckVersion = this.CheckVersionCheckBox.IsChecked ?? false,
@@ -128,37 +120,27 @@ namespace Concierge.Interfaces.UtilityInterface
             this.AutosaveInterval.Opacity = 0.5;
         }
 
-        private void Window_KeyDown(object sender, KeyEventArgs e)
-        {
-            switch (e.Key)
-            {
-                case Key.Escape:
-                    this.Hide();
-                    break;
-            }
-        }
-
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Hide();
+            this.HideConciergeWindow();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Hide();
+            this.HideConciergeWindow();
         }
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
             this.UpdateSettings();
-            this.ApplyChanges?.Invoke(this, new EventArgs());
+            this.InvokeApplyChanges();
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
             if (this.UpdateSettings())
             {
-                this.Hide();
+                this.HideConciergeWindow();
             }
         }
 
@@ -175,14 +157,6 @@ namespace Concierge.Interfaces.UtilityInterface
         private void AutosaveCheckBox_Unchecked(object sender, RoutedEventArgs e)
         {
             this.DisableAutosaveControls();
-        }
-
-        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            if (e.ChangedButton == MouseButton.Left)
-            {
-                this.DragMove();
-            }
         }
     }
 }

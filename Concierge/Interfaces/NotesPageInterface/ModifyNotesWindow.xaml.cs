@@ -11,13 +11,14 @@ namespace Concierge.Interfaces.NotesPageInterface
 
     using Concierge.Character.Notes;
     using Concierge.Commands;
+    using Concierge.Interfaces.Components;
     using Concierge.Interfaces.Enums;
     using Concierge.Utility.Extensions;
 
     /// <summary>
     /// Interaction logic for ModifyEquippedItemsWindow.xaml.
     /// </summary>
-    public partial class ModifyNotesWindow : Window
+    public partial class ModifyNotesWindow : ConciergeWindow
     {
         private const string NewChapter = "--New Chapter--";
 
@@ -28,10 +29,6 @@ namespace Concierge.Interfaces.NotesPageInterface
             this.InitializeComponent();
             this.conciergePage = conciergePage;
         }
-
-        public delegate void ApplyChangesEventHandler(object sender, EventArgs e);
-
-        public event ApplyChangesEventHandler ApplyChanges;
 
         private bool IsEdit { get; set; }
 
@@ -44,7 +41,7 @@ namespace Concierge.Interfaces.NotesPageInterface
             this.HeaderTextBlock.Text = "Add Note";
 
             this.SetupWindow(false);
-            this.ShowDialog();
+            this.ShowConciergeWindow();
         }
 
         public void ShowEdit(Chapter chapter)
@@ -57,7 +54,7 @@ namespace Concierge.Interfaces.NotesPageInterface
             this.CurrentChapter = chapter;
             this.CurrentDocument = null;
 
-            this.ShowDialog();
+            this.ShowConciergeWindow();
         }
 
         public void ShowEdit(Document document)
@@ -70,14 +67,7 @@ namespace Concierge.Interfaces.NotesPageInterface
             this.CurrentChapter = null;
             this.CurrentDocument = document;
 
-            this.ShowDialog();
-        }
-
-        protected override void OnClosing(CancelEventArgs e)
-        {
-            base.OnClosing(e);
-            e.Cancel = true;
-            this.Hide();
+            this.ShowConciergeWindow();
         }
 
         private void SetupWindow(bool isEdit)
@@ -166,13 +156,13 @@ namespace Concierge.Interfaces.NotesPageInterface
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Hide();
+            this.HideConciergeWindow();
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
             this.OkApplyChanges();
-            this.Hide();
+            this.HideConciergeWindow();
         }
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
@@ -194,30 +184,12 @@ namespace Concierge.Interfaces.NotesPageInterface
                 }
             }
 
-            this.ApplyChanges?.Invoke(this, new EventArgs());
+            this.InvokeApplyChanges();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Hide();
-        }
-
-        private void Window_KeyDown(object sender, KeyEventArgs e)
-        {
-            switch (e.Key)
-            {
-                case Key.Escape:
-                    this.Hide();
-                    break;
-            }
-        }
-
-        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            if (e.ChangedButton == MouseButton.Left)
-            {
-                this.DragMove();
-            }
+            this.HideConciergeWindow();
         }
     }
 }

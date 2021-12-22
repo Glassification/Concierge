@@ -5,20 +5,19 @@
 namespace Concierge.Interfaces.CompanionPageInterface
 {
     using System;
-    using System.ComponentModel;
     using System.Linq;
     using System.Windows;
-    using System.Windows.Input;
 
     using Concierge.Character.Characteristics;
     using Concierge.Character.Enums;
     using Concierge.Commands;
+    using Concierge.Interfaces.Components;
     using Concierge.Interfaces.Enums;
 
     /// <summary>
     /// Interaction logic for ModifyHealthWindow.xaml.
     /// </summary>
-    public partial class ModifyPropertiesWindow : Window
+    public partial class ModifyPropertiesWindow : ConciergeWindow
     {
         private readonly ConciergePage conciergePage;
 
@@ -29,10 +28,6 @@ namespace Concierge.Interfaces.CompanionPageInterface
             this.conciergePage = conciergePage;
         }
 
-        public delegate void ApplyChangesEventHandler(object sender, EventArgs e);
-
-        public event ApplyChangesEventHandler ApplyChanges;
-
         private CompanionProperties Properties { get; set; }
 
         public void ShowEdit(CompanionProperties properties)
@@ -40,14 +35,7 @@ namespace Concierge.Interfaces.CompanionPageInterface
             this.Properties = properties;
 
             this.FillFields();
-            this.ShowDialog();
-        }
-
-        protected override void OnClosing(CancelEventArgs e)
-        {
-            base.OnClosing(e);
-            e.Cancel = true;
-            this.Hide();
+            this.ShowConciergeWindow();
         }
 
         private void FillFields()
@@ -76,24 +64,14 @@ namespace Concierge.Interfaces.CompanionPageInterface
             Program.UndoRedoService.AddCommand(new EditCommand<CompanionProperties>(this.Properties, oldItem, this.conciergePage));
         }
 
-        private void Window_KeyDown(object sender, KeyEventArgs e)
-        {
-            switch (e.Key)
-            {
-                case Key.Escape:
-                    this.Hide();
-                    break;
-            }
-        }
-
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Hide();
+            this.HideConciergeWindow();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Hide();
+            this.HideConciergeWindow();
         }
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
@@ -102,7 +80,7 @@ namespace Concierge.Interfaces.CompanionPageInterface
 
             this.UpdateCompanion();
 
-            this.ApplyChanges?.Invoke(this, new EventArgs());
+            this.InvokeApplyChanges();
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
@@ -110,15 +88,7 @@ namespace Concierge.Interfaces.CompanionPageInterface
             Program.Modify();
 
             this.UpdateCompanion();
-            this.Hide();
-        }
-
-        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            if (e.ChangedButton == MouseButton.Left)
-            {
-                this.DragMove();
-            }
+            this.HideConciergeWindow();
         }
     }
 }

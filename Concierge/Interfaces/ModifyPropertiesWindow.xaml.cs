@@ -11,13 +11,14 @@ namespace Concierge.Interfaces
 
     using Concierge.Character.Characteristics;
     using Concierge.Commands;
+    using Concierge.Interfaces.Components;
     using Concierge.Interfaces.Enums;
     using Concierge.Utility;
 
     /// <summary>
     /// Interaction logic for ModifyPropertiesWindow.xaml.
     /// </summary>
-    public partial class ModifyPropertiesWindow : Window, IConciergeModifyWindow
+    public partial class ModifyPropertiesWindow : ConciergeWindow, IConciergeModifyWindow
     {
         public ModifyPropertiesWindow()
         {
@@ -32,18 +33,12 @@ namespace Concierge.Interfaces
             Program.Logger.Info($"Initialized {nameof(ModifyPropertiesWindow)}.");
         }
 
-        public delegate void ApplyChangesEventHandler(object sender, EventArgs e);
-
-        public event ApplyChangesEventHandler ApplyChanges;
-
-        private ConciergeWindowResult Result { get; set; }
-
         public ConciergeWindowResult ShowWizardSetup()
         {
             this.ApplyButton.Visibility = Visibility.Collapsed;
 
             this.FillFields();
-            this.ShowDialog();
+            this.ShowConciergeWindow();
 
             return this.Result;
         }
@@ -53,20 +48,12 @@ namespace Concierge.Interfaces
             this.ApplyButton.Visibility = Visibility.Visible;
 
             this.FillFields();
-            this.ShowDialog();
+            this.ShowConciergeWindow();
         }
 
         public void UpdateCancelButton(string text)
         {
             this.CancelButton.Content = text;
-        }
-
-        protected override void OnClosing(CancelEventArgs e)
-        {
-            base.OnClosing(e);
-            e.Cancel = true;
-            this.Result = ConciergeWindowResult.Exit;
-            this.Hide();
         }
 
         private void FillFields()
@@ -108,25 +95,13 @@ namespace Concierge.Interfaces
             Program.UndoRedoService.AddCommand(new EditCommand<CharacterProperties>(properties, oldItem, ConciergePage.None));
         }
 
-        private void Window_KeyDown(object sender, KeyEventArgs e)
-        {
-            switch (e.Key)
-            {
-                case Key.Escape:
-                    Program.Logger.Info($"Escape key pressed.");
-                    this.Result = ConciergeWindowResult.Exit;
-                    this.Hide();
-                    break;
-            }
-        }
-
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Modify();
             this.Result = ConciergeWindowResult.OK;
 
             this.UpdateProperties();
-            this.Hide();
+            this.HideConciergeWindow();
         }
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
@@ -134,29 +109,21 @@ namespace Concierge.Interfaces
             Program.Modify();
 
             this.UpdateProperties();
-            this.ApplyChanges?.Invoke(this, new EventArgs());
+            this.InvokeApplyChanges();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
             this.Result = ConciergeWindowResult.Cancel;
 
-            this.Hide();
+            this.HideConciergeWindow();
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             this.Result = ConciergeWindowResult.Exit;
 
-            this.Hide();
-        }
-
-        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            if (e.ChangedButton == MouseButton.Left)
-            {
-                this.DragMove();
-            }
+            this.HideConciergeWindow();
         }
     }
 }

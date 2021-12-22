@@ -26,6 +26,6 @@ namespace Concierge.Utility.Dtos
 
         public UnitTypes UnitOfMeasurement { get; init; }
 
-        public bool DisplayWindowInCentre { get; init; }
+        public bool AttemptToCenterWindows { get; init; }
     }
 }

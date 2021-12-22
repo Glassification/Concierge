@@ -10,10 +10,12 @@ namespace Concierge.Interfaces.UtilityInterface
     using System.Windows;
     using System.Windows.Input;
 
+    using Concierge.Interfaces.Components;
+
     /// <summary>
     /// Interaction logic for KonamiCodeWindow.xaml.
     /// </summary>
-    public partial class KonamiCodeWindow : Window
+    public partial class KonamiCodeWindow : ConciergeWindow
     {
         public KonamiCodeWindow()
         {
@@ -23,7 +25,7 @@ namespace Concierge.Interfaces.UtilityInterface
 
         public void ShowWindow()
         {
-            this.ShowDialog();
+            this.ShowConciergeWindow();
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
@@ -32,7 +34,6 @@ namespace Concierge.Interfaces.UtilityInterface
             {
                 case Key.Escape:
                     this.VideoControl.Stop();
-                    this.Hide();
                     break;
             }
         }
@@ -47,15 +48,7 @@ namespace Concierge.Interfaces.UtilityInterface
 
         private void VideoControl_MediaFailed(object sender, ExceptionRoutedEventArgs e)
         {
-            this.Hide();
-        }
-
-        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            if (e.ChangedButton == MouseButton.Left)
-            {
-                this.DragMove();
-            }
+            this.HideConciergeWindow();
         }
     }
 }

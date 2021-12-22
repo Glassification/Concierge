@@ -4,22 +4,20 @@
 
 namespace Concierge.Interfaces.AbilitiesPageInterface
 {
-    using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
     using System.Windows;
     using System.Windows.Controls;
-    using System.Windows.Input;
 
     using Concierge.Character.Characteristics;
     using Concierge.Commands;
+    using Concierge.Interfaces.Components;
     using Concierge.Interfaces.Enums;
     using Concierge.Utility;
 
     /// <summary>
     /// Interaction logic for ModifyAbilitiesWindow.xaml.
     /// </summary>
-    public partial class ModifyAbilitiesWindow : Window, IConciergeModifyWindow
+    public partial class ModifyAbilitiesWindow : ConciergeWindow, IConciergeModifyWindow
     {
         private readonly ConciergePage conciergePage;
 
@@ -31,10 +29,6 @@ namespace Concierge.Interfaces.AbilitiesPageInterface
             this.conciergePage = conciergePage;
         }
 
-        public delegate void ApplyChangesEventHandler(object sender, EventArgs e);
-
-        public event ApplyChangesEventHandler ApplyChanges;
-
         public bool ItemsAdded { get; private set; }
 
         private bool Editing { get; set; }
@@ -45,8 +39,6 @@ namespace Concierge.Interfaces.AbilitiesPageInterface
 
         private List<Ability> Abilities { get; set; }
 
-        private ConciergeWindowResult Result { get; set; }
-
         public ConciergeWindowResult ShowWizardSetup()
         {
             this.Editing = false;
@@ -56,7 +48,7 @@ namespace Concierge.Interfaces.AbilitiesPageInterface
             this.OkButton.Visibility = Visibility.Collapsed;
 
             this.ClearFields();
-            this.ShowDialog();
+            this.ShowConciergeWindow();
 
             return this.Result;
         }
@@ -70,7 +62,7 @@ namespace Concierge.Interfaces.AbilitiesPageInterface
             this.OkButton.Visibility = Visibility.Visible;
 
             this.FillFields(ability);
-            this.ShowDialog();
+            this.ShowConciergeWindow();
         }
 
         public void ShowAdd(List<Ability> abilities)
@@ -83,20 +75,12 @@ namespace Concierge.Interfaces.AbilitiesPageInterface
             this.ItemsAdded = false;
 
             this.ClearFields();
-            this.ShowDialog();
+            this.ShowConciergeWindow();
         }
 
         public void UpdateCancelButton(string text)
         {
             this.CancelButton.Content = text;
-        }
-
-        protected override void OnClosing(CancelEventArgs e)
-        {
-            base.OnClosing(e);
-            e.Cancel = true;
-            this.Result = ConciergeWindowResult.Exit;
-            this.Hide();
         }
 
         private void FillFields(Ability ability)
@@ -156,21 +140,10 @@ namespace Concierge.Interfaces.AbilitiesPageInterface
             Program.UndoRedoService.AddCommand(new EditCommand<Ability>(ability, oldItem, this.conciergePage));
         }
 
-        private void Window_KeyDown(object sender, KeyEventArgs e)
-        {
-            switch (e.Key)
-            {
-                case Key.Escape:
-                    this.Result = ConciergeWindowResult.Exit;
-                    this.Hide();
-                    break;
-            }
-        }
-
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             this.Result = ConciergeWindowResult.Exit;
-            this.Hide();
+            this.HideConciergeWindow();
         }
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
@@ -180,7 +153,7 @@ namespace Concierge.Interfaces.AbilitiesPageInterface
             this.Abilities.Add(this.ToAbility());
             this.ClearFields();
 
-            this.ApplyChanges?.Invoke(this, new EventArgs());
+            this.InvokeApplyChanges();
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
@@ -197,13 +170,13 @@ namespace Concierge.Interfaces.AbilitiesPageInterface
                 Program.CcsFile.Character.Abilities.Add(this.ToAbility());
             }
 
-            this.Hide();
+            this.HideConciergeWindow();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
             this.Result = ConciergeWindowResult.Cancel;
-            this.Hide();
+            this.HideConciergeWindow();
         }
 
         private void NameComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -211,14 +184,6 @@ namespace Concierge.Interfaces.AbilitiesPageInterface
             if (this.NameComboBox.SelectedItem != null)
             {
                 this.FillFields(this.NameComboBox.SelectedItem as Ability);
-            }
-        }
-
-        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            if (e.ChangedButton == MouseButton.Left)
-            {
-                this.DragMove();
             }
         }
     }

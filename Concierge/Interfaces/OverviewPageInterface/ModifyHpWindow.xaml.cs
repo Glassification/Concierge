@@ -10,12 +10,13 @@ namespace Concierge.Interfaces.OverviewPageInterface
 
     using Concierge.Character.Statuses;
     using Concierge.Commands;
+    using Concierge.Interfaces.Components;
     using Concierge.Interfaces.Enums;
 
     /// <summary>
     /// Interaction logic for ModifyHpWindow.xaml.
     /// </summary>
-    public partial class ModifyHpWindow : Window
+    public partial class ModifyHpWindow : ConciergeWindow
     {
         private readonly ConciergePage conciergePage;
 
@@ -29,8 +30,6 @@ namespace Concierge.Interfaces.OverviewPageInterface
 
         private string HeaderText => this.IsHealing ? "Heal" : "Damage";
 
-        private ConciergeWindowResult Result { get; set; }
-
         private int PreviousHeal { get; set; }
 
         private int PreviousDamage { get; set; }
@@ -43,7 +42,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
             this.HeaderTextBlock.Text = this.HeaderText;
             this.HpUpDown.Value = this.PreviousHeal;
 
-            this.ShowDialog();
+            this.ShowConciergeWindow();
             this.SetPreviousValue();
 
             if (this.Result == ConciergeWindowResult.OK)
@@ -60,7 +59,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
             this.HeaderTextBlock.Text = this.HeaderText;
             this.HpUpDown.Value = this.PreviousDamage;
 
-            this.ShowDialog();
+            this.ShowConciergeWindow();
             this.SetPreviousValue();
 
             if (this.Result == ConciergeWindowResult.OK)
@@ -69,14 +68,6 @@ namespace Concierge.Interfaces.OverviewPageInterface
                 vitality.Damage(this.HpUpDown.Value ?? 0);
                 Program.UndoRedoService.AddCommand(new EditCommand<Health>(vitality.Health, oldItem, this.conciergePage));
             }
-        }
-
-        protected override void OnClosing(CancelEventArgs e)
-        {
-            base.OnClosing(e);
-            e.Cancel = true;
-            this.Result = ConciergeWindowResult.Exit;
-            this.Hide();
         }
 
         private void SetPreviousValue()
@@ -91,27 +82,16 @@ namespace Concierge.Interfaces.OverviewPageInterface
             }
         }
 
-        private void Window_KeyDown(object sender, KeyEventArgs e)
-        {
-            switch (e.Key)
-            {
-                case Key.Escape:
-                    this.Result = ConciergeWindowResult.Exit;
-                    this.Hide();
-                    break;
-            }
-        }
-
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             this.Result = ConciergeWindowResult.Exit;
-            this.Hide();
+            this.HideConciergeWindow();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
             this.Result = ConciergeWindowResult.Cancel;
-            this.Hide();
+            this.HideConciergeWindow();
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
@@ -119,15 +99,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
             Program.Modify();
 
             this.Result = ConciergeWindowResult.OK;
-            this.Hide();
-        }
-
-        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            if (e.ChangedButton == MouseButton.Left)
-            {
-                this.DragMove();
-            }
+            this.HideConciergeWindow();
         }
     }
 }

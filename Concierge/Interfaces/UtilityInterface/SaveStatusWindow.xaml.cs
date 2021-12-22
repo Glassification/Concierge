@@ -8,10 +8,12 @@ namespace Concierge.Interfaces.UtilityInterface
     using System.Threading;
     using System.Windows;
 
+    using Concierge.Interfaces.Components;
+
     /// <summary>
     /// Interaction logic for SaveStatusWindow.xaml.
     /// </summary>
-    public partial class SaveStatusWindow : Window
+    public partial class SaveStatusWindow : ConciergeWindow
     {
         private const int MarginOffset = 10;
 
@@ -36,12 +38,12 @@ namespace Concierge.Interfaces.UtilityInterface
             this.Top = SystemParameters.PrimaryScreenHeight - this.Height - MarginOffset;
             this.ProgressBarFiller.RunWorkerAsync();
 
-            this.ShowDialog();
+            this.ShowConciergeWindow();
         }
 
         private void ProgressBarFiller_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            this.Hide();
+            this.HideConciergeWindow();
         }
 
         private void ProgressBarFiller_DoWork(object sender, DoWorkEventArgs e)

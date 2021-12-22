@@ -15,13 +15,14 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
     using Concierge.Character.Enums;
     using Concierge.Character.Spellcasting;
     using Concierge.Commands;
+    using Concierge.Interfaces.Components;
     using Concierge.Interfaces.Enums;
     using Concierge.Utility;
 
     /// <summary>
     /// Interaction logic for ModifySpellWindow.xaml.
     /// </summary>
-    public partial class ModifySpellWindow : Window, IConciergeModifyWindow
+    public partial class ModifySpellWindow : ConciergeWindow, IConciergeModifyWindow
     {
         private readonly ConciergePage conciergePage;
 
@@ -34,10 +35,6 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
             this.conciergePage = conciergePage;
         }
 
-        public delegate void ApplyChangesEventHandler(object sender, EventArgs e);
-
-        public event ApplyChangesEventHandler ApplyChanges;
-
         public bool ItemsAdded { get; private set; }
 
         private bool Editing { get; set; }
@@ -48,8 +45,6 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
 
         private List<Spell> Spells { get; set; }
 
-        private ConciergeWindowResult Result { get; set; }
-
         public ConciergeWindowResult ShowWizardSetup()
         {
             this.Editing = false;
@@ -59,7 +54,7 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
             this.Spells = Program.CcsFile.Character.Spells;
 
             this.ClearFields();
-            this.ShowDialog();
+            this.ShowConciergeWindow();
 
             return this.Result;
         }
@@ -74,7 +69,7 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
             this.ItemsAdded = false;
 
             this.ClearFields();
-            this.ShowDialog();
+            this.ShowConciergeWindow();
         }
 
         public void EditSpell(Spell spell)
@@ -86,20 +81,12 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
             this.OkButton.Visibility = Visibility.Visible;
 
             this.FillFields(spell);
-            this.ShowDialog();
+            this.ShowConciergeWindow();
         }
 
         public void UpdateCancelButton(string text)
         {
             this.CancelButton.Content = text;
-        }
-
-        protected override void OnClosing(CancelEventArgs e)
-        {
-            base.OnClosing(e);
-            e.Cancel = true;
-            this.Result = ConciergeWindowResult.Exit;
-            this.Hide();
         }
 
         private void FillFields(Spell spell)
@@ -214,18 +201,7 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             this.Result = ConciergeWindowResult.Exit;
-            this.Hide();
-        }
-
-        private void Window_KeyDown(object sender, KeyEventArgs e)
-        {
-            switch (e.Key)
-            {
-                case Key.Escape:
-                    this.Result = ConciergeWindowResult.Exit;
-                    this.Hide();
-                    break;
-            }
+            this.HideConciergeWindow();
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
@@ -242,7 +218,7 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
                 this.Spells.Add(this.ToSpell());
             }
 
-            this.Hide();
+            this.HideConciergeWindow();
         }
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
@@ -252,13 +228,13 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
             this.Spells.Add(this.ToSpell());
             this.ClearFields();
 
-            this.ApplyChanges?.Invoke(this, new EventArgs());
+            this.InvokeApplyChanges();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
             this.Result = ConciergeWindowResult.Cancel;
-            this.Hide();
+            this.HideConciergeWindow();
         }
 
         private void SpellNameComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -266,14 +242,6 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
             if (this.SpellNameComboBox.SelectedItem != null)
             {
                 this.FillFields(this.SpellNameComboBox.SelectedItem as Spell);
-            }
-        }
-
-        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            if (e.ChangedButton == MouseButton.Left)
-            {
-                this.DragMove();
             }
         }
     }

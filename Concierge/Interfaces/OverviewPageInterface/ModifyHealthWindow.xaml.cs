@@ -11,12 +11,13 @@ namespace Concierge.Interfaces.OverviewPageInterface
 
     using Concierge.Character.Statuses;
     using Concierge.Commands;
+    using Concierge.Interfaces.Components;
     using Concierge.Interfaces.Enums;
 
     /// <summary>
     /// Interaction logic for ModifyHealthWindow.xaml.
     /// </summary>
-    public partial class ModifyHealthWindow : Window, IConciergeModifyWindow
+    public partial class ModifyHealthWindow : ConciergeWindow, IConciergeModifyWindow
     {
         private readonly ConciergePage conciergePage;
 
@@ -26,13 +27,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
             this.conciergePage = conciergePage;
         }
 
-        public delegate void ApplyChangesEventHandler(object sender, EventArgs e);
-
-        public event ApplyChangesEventHandler ApplyChanges;
-
         private Health Health { get; set; }
-
-        private ConciergeWindowResult Result { get; set; }
 
         public ConciergeWindowResult ShowWizardSetup()
         {
@@ -40,7 +35,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
             this.ApplyButton.Visibility = Visibility.Collapsed;
 
             this.FillFields();
-            this.ShowDialog();
+            this.ShowConciergeWindow();
 
             return this.Result;
         }
@@ -51,20 +46,12 @@ namespace Concierge.Interfaces.OverviewPageInterface
             this.ApplyButton.Visibility = Visibility.Visible;
 
             this.FillFields();
-            this.ShowDialog();
+            this.ShowConciergeWindow();
         }
 
         public void UpdateCancelButton(string text)
         {
             this.CancelButton.Content = text;
-        }
-
-        protected override void OnClosing(CancelEventArgs e)
-        {
-            base.OnClosing(e);
-            e.Cancel = true;
-            this.Result = ConciergeWindowResult.Exit;
-            this.Hide();
         }
 
         private void FillFields()
@@ -92,27 +79,16 @@ namespace Concierge.Interfaces.OverviewPageInterface
             Program.UndoRedoService.AddCommand(new EditCommand<Health>(this.Health, oldItem, this.conciergePage));
         }
 
-        private void Window_KeyDown(object sender, KeyEventArgs e)
-        {
-            switch (e.Key)
-            {
-                case Key.Escape:
-                    this.Result = ConciergeWindowResult.Exit;
-                    this.Hide();
-                    break;
-            }
-        }
-
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             this.Result = ConciergeWindowResult.Exit;
-            this.Hide();
+            this.HideConciergeWindow();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
             this.Result = ConciergeWindowResult.Cancel;
-            this.Hide();
+            this.HideConciergeWindow();
         }
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
@@ -121,7 +97,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
 
             this.UpdateHealth();
 
-            this.ApplyChanges?.Invoke(this, new EventArgs());
+            this.InvokeApplyChanges();
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
@@ -130,7 +106,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
             this.Result = ConciergeWindowResult.OK;
 
             this.UpdateHealth();
-            this.Hide();
+            this.HideConciergeWindow();
         }
 
         private void TotalHpUpDown_ValueChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
@@ -142,14 +118,6 @@ namespace Concierge.Interfaces.OverviewPageInterface
 
             this.CurrentHpUpDown.Maximum = this.TotalHpUpDown.Value;
             this.CurrentHpUpDown.Minimum = -this.TotalHpUpDown.Value;
-        }
-
-        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            if (e.ChangedButton == MouseButton.Left)
-            {
-                this.DragMove();
-            }
         }
     }
 }

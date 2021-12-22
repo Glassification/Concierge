@@ -14,6 +14,7 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
     using Concierge.Character.Enums;
     using Concierge.Character.Statuses;
     using Concierge.Commands;
+    using Concierge.Interfaces.Components;
     using Concierge.Interfaces.Enums;
     using Concierge.Utility;
     using Concierge.Utility.Extensions;
@@ -21,7 +22,7 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
     /// <summary>
     /// Interaction logic for ModifyStatusEffectsWindow.xaml.
     /// </summary>
-    public partial class ModifyStatusEffectsWindow : Window, IConciergeModifyWindow
+    public partial class ModifyStatusEffectsWindow : ConciergeWindow, IConciergeModifyWindow
     {
         private readonly ConciergePage conciergePage;
 
@@ -34,10 +35,6 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
             this.conciergePage = conciergePage;
         }
 
-        public delegate void ApplyChangesEventHandler(object sender, EventArgs e);
-
-        public event ApplyChangesEventHandler ApplyChanges;
-
         public bool ItemsAdded { get; private set; }
 
         private bool Editing { get; set; }
@@ -48,8 +45,6 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
 
         private List<StatusEffect> StatusEffects { get; set; }
 
-        private ConciergeWindowResult Result { get; set; }
-
         public ConciergeWindowResult ShowWizardSetup()
         {
             this.Editing = false;
@@ -59,7 +54,7 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
             this.StatusEffects = Program.CcsFile.Character.StatusEffects;
 
             this.ClearFields();
-            this.ShowDialog();
+            this.ShowConciergeWindow();
 
             return this.Result;
         }
@@ -74,7 +69,7 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
             this.ItemsAdded = false;
 
             this.ClearFields();
-            this.ShowDialog();
+            this.ShowConciergeWindow();
         }
 
         public void ShowEdit(StatusEffect statusEffect)
@@ -86,20 +81,12 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
             this.SelectedEffect = statusEffect;
 
             this.FillFields(statusEffect);
-            this.ShowDialog();
+            this.ShowConciergeWindow();
         }
 
         public void UpdateCancelButton(string text)
         {
             this.CancelButton.Content = text;
-        }
-
-        protected override void OnClosing(CancelEventArgs e)
-        {
-            base.OnClosing(e);
-            e.Cancel = true;
-            this.Result = ConciergeWindowResult.Exit;
-            this.Hide();
         }
 
         private void FillFields(StatusEffect statusEffect)
@@ -146,7 +133,7 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             this.Result = ConciergeWindowResult.Exit;
-            this.Hide();
+            this.HideConciergeWindow();
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
@@ -163,7 +150,7 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
                 this.StatusEffects.Add(this.ToStatusEffect());
             }
 
-            this.Hide();
+            this.HideConciergeWindow();
         }
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
@@ -173,32 +160,13 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
             this.StatusEffects.Add(this.ToStatusEffect());
             this.ClearFields();
 
-            this.ApplyChanges?.Invoke(this, new EventArgs());
+            this.InvokeApplyChanges();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
             this.Result = ConciergeWindowResult.Cancel;
-            this.Hide();
-        }
-
-        private void Window_KeyDown(object sender, KeyEventArgs e)
-        {
-            switch (e.Key)
-            {
-                case Key.Escape:
-                    this.Result = ConciergeWindowResult.Exit;
-                    this.Hide();
-                    break;
-            }
-        }
-
-        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            if (e.ChangedButton == MouseButton.Left)
-            {
-                this.DragMove();
-            }
+            this.HideConciergeWindow();
         }
     }
 }
