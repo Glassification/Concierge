@@ -5,7 +5,7 @@
     <TargetFramework>net6.0-windows</TargetFramework>
     <RootNamespace>Concierge</RootNamespace>
     <UseWPF>true</UseWPF>
-    <Version>4.3.1</Version>
+    <Version>4.3.2</Version>
     <ApplicationIcon>dndnextlogo.ico</ApplicationIcon>
   </PropertyGroup>
 
@@ -58,10 +58,6 @@
     <None Update="Properties\Resources\Videos\hey-whats-going-on.wmv">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Utility\Enums\" />
   </ItemGroup>
 
 </Project>
