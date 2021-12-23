@@ -15,8 +15,6 @@ namespace Concierge.Interfaces.UtilityInterface
     /// </summary>
     public partial class SaveStatusWindow : ConciergeWindow
     {
-        private const int MarginOffset = 10;
-
         public SaveStatusWindow()
         {
             this.InitializeComponent();
@@ -34,8 +32,6 @@ namespace Concierge.Interfaces.UtilityInterface
 
         public void ShowWindow()
         {
-            this.Left = SystemParameters.PrimaryScreenWidth - this.Width - MarginOffset;
-            this.Top = SystemParameters.PrimaryScreenHeight - this.Height - MarginOffset;
             this.ProgressBarFiller.RunWorkerAsync();
 
             this.ShowConciergeWindow();

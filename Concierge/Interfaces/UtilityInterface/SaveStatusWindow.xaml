@@ -6,7 +6,7 @@
     Title="ConciergeMessageWindow"
     Height="50"
     Width="250"
-    WindowStartupLocation="Manual"
+    WindowStartupLocation="CenterOwner"
     Style="{StaticResource WindowXboxDasboardStyle}">
     <Grid>
         <Grid.RowDefinitions>
