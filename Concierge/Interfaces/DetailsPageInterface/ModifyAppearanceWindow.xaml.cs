@@ -16,9 +16,9 @@ namespace Concierge.Interfaces.DetailsPageInterface
     using Concierge.Interfaces.Components;
     using Concierge.Interfaces.Enums;
     using Concierge.Utility;
-    using Concierge.Utility.Enums;
     using Concierge.Utility.Extensions;
     using Concierge.Utility.Units;
+    using Concierge.Utility.Units.Enums;
 
     /// <summary>
     /// Interaction logic for ModifyAppearanceWindow.xaml.

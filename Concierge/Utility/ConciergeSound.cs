@@ -6,6 +6,8 @@ namespace Concierge.Utility
 {
     using System.Media;
 
+    using Concierge.Configuration;
+
     public static class ConciergeSound
     {
         private static int skipClickCount;
@@ -44,7 +46,7 @@ namespace Concierge.Utility
 
         public static void TapNavigation()
         {
-            if (ConciergeSettings.MuteSounds || SkipClick)
+            if (AppSettingsManager.Settings.MuteSounds || SkipClick)
             {
                 return;
             }
@@ -54,7 +56,7 @@ namespace Concierge.Utility
 
         public static void UpdateValue()
         {
-            if (ConciergeSettings.MuteSounds)
+            if (AppSettingsManager.Settings.MuteSounds)
             {
                 return;
             }
@@ -64,7 +66,7 @@ namespace Concierge.Utility
 
         public static void Warning()
         {
-            if (ConciergeSettings.MuteSounds)
+            if (AppSettingsManager.Settings.MuteSounds)
             {
                 return;
             }

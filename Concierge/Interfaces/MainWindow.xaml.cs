@@ -10,6 +10,7 @@ namespace Concierge.Interfaces
     using System.Windows.Input;
     using System.Windows.Navigation;
 
+    using Concierge.Configuration;
     using Concierge.Interfaces.AbilitiesPageInterface;
     using Concierge.Interfaces.AttackDefensePageInterface;
     using Concierge.Interfaces.CompanionPageInterface;
@@ -84,9 +85,9 @@ namespace Concierge.Interfaces
 
             this.DataContext = this;
 
-            if (ConciergeSettings.AutosaveEnabled)
+            if (AppSettingsManager.Settings.AutosaveEnabled)
             {
-                this.autosaveTimer.Start(Constants.AutosaveIntervals[ConciergeSettings.AutosaveInterval]);
+                this.autosaveTimer.Start(Constants.AutosaveIntervals[AppSettingsManager.Settings.AutosaveInterval]);
             }
 
             this.searchWindow = new SearchWindow(this);
@@ -201,9 +202,9 @@ namespace Concierge.Interfaces
             this.autosaveTimer.Stop();
 
             Program.CcsFile = ccsFile;
-            if (ConciergeSettings.AutosaveEnabled)
+            if (AppSettingsManager.Settings.AutosaveEnabled)
             {
-                this.autosaveTimer.Start(Constants.AutosaveIntervals[ConciergeSettings.AutosaveInterval]);
+                this.autosaveTimer.Start(Constants.AutosaveIntervals[AppSettingsManager.Settings.AutosaveInterval]);
             }
 
             this.DrawAll();
@@ -287,9 +288,9 @@ namespace Concierge.Interfaces
 
         public void StartStopAutosaveTimer()
         {
-            if (ConciergeSettings.AutosaveEnabled)
+            if (AppSettingsManager.Settings.AutosaveEnabled)
             {
-                this.autosaveTimer.Start(Constants.AutosaveIntervals[ConciergeSettings.AutosaveInterval]);
+                this.autosaveTimer.Start(Constants.AutosaveIntervals[AppSettingsManager.Settings.AutosaveInterval]);
             }
             else
             {

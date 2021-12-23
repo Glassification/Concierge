@@ -10,14 +10,15 @@ namespace Concierge.Interfaces.InventoryPageInterface
 
     using Concierge.Character.Items;
     using Concierge.Commands;
+    using Concierge.Configuration;
     using Concierge.Interfaces.Components;
     using Concierge.Interfaces.Enums;
     using Concierge.Primitives;
     using Concierge.Tools.Interface;
     using Concierge.Utility;
-    using Concierge.Utility.Enums;
     using Concierge.Utility.Extensions;
     using Concierge.Utility.Units;
+    using Concierge.Utility.Units.Enums;
 
     /// <summary>
     /// Interaction logic for ModifyInventoryWindow.xaml.
@@ -140,7 +141,7 @@ namespace Concierge.Interfaces.InventoryPageInterface
             {
                 Name = this.NameComboBox.Text,
                 Amount = this.AmountUpDown.Value ?? 0,
-                Weight = new ConciergeDouble(this.WeightUpDown.Value ?? 0.0, ConciergeSettings.UnitOfMeasurement, Measurements.Weight),
+                Weight = new ConciergeDouble(this.WeightUpDown.Value ?? 0.0, AppSettingsManager.Settings.UnitOfMeasurement, Measurements.Weight),
                 IsInBagOfHolding = this.BagOfHoldingCheckBox.IsChecked ?? false,
                 Note = this.NotesTextBox.Text,
             };

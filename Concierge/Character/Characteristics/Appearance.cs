@@ -6,7 +6,7 @@ namespace Concierge.Character.Characteristics
 {
     using Concierge.Primitives;
     using Concierge.Utility;
-    using Concierge.Utility.Enums;
+    using Concierge.Utility.Units.Enums;
 
     public class Appearance : ICopyable<Appearance>
     {

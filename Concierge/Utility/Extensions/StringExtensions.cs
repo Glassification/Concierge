@@ -13,6 +13,8 @@ namespace Concierge.Utility.Extensions
     using System.Windows.Documents;
     using System.Windows.Media;
 
+    using Concierge.Configuration;
+
     public static class StringExtensions
     {
         public static bool IsNullOrWhiteSpace(this string str)
@@ -119,6 +121,12 @@ namespace Concierge.Utility.Extensions
             try
             {
                 colorName = colorName.Strip(" ").Strip("-").Strip(".").Strip("'");
+
+                if (AppSettingsManager.CustomColors.ContainsKey(colorName))
+                {
+                    colorName = AppSettingsManager.CustomColors[colorName];
+                }
+
                 return new SolidColorBrush((Color)ColorConverter.ConvertFromString(colorName));
             }
             catch (Exception ex)

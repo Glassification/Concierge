@@ -4,7 +4,8 @@
 
 namespace Concierge.Utility.Units
 {
-    using Concierge.Utility.Enums;
+    using Concierge.Configuration;
+    using Concierge.Utility.Units.Enums;
 
     public static class UnitConvertion
     {
@@ -53,7 +54,7 @@ namespace Concierge.Utility.Units
 
         private static double GetStrengthMultiplier(int baseStrength)
         {
-            return ConciergeSettings.UnitOfMeasurement switch
+            return AppSettingsManager.Settings.UnitOfMeasurement switch
             {
                 UnitTypes.Imperial => baseStrength,
                 UnitTypes.Metric => (baseStrength / 2) + (baseStrength * 0.05),

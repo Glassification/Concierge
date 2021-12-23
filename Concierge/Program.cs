@@ -75,8 +75,8 @@ namespace Concierge
             {
                 Center = MainWindow is null ? new Point(0, 0) : new Point((int)(MainWindow.Width / 2), (int)(MainWindow.Height / 2)),
                 Location = MainWindow is null ? new Point(0, 0) : MainWindow.GetAbsolutePosition(),
-                ActualWidth = (int)MainWindow.ActualWidth,
-                WindowState = MainWindow.WindowState,
+                ActualWidth = MainWindow is null ? 0 : (int)MainWindow.ActualWidth,
+                WindowState = MainWindow is null ? WindowState.Maximized : MainWindow.WindowState,
             };
         }
 

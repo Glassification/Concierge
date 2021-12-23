@@ -9,13 +9,14 @@ namespace Concierge.Interfaces.UtilityInterface
     using System.Windows;
 
     using Concierge.Commands;
+    using Concierge.Configuration;
+    using Concierge.Configuration.Dtos;
     using Concierge.Interfaces.Components;
     using Concierge.Interfaces.Enums;
     using Concierge.Tools.Interface;
     using Concierge.Utility;
-    using Concierge.Utility.Dtos;
-    using Concierge.Utility.Enums;
     using Concierge.Utility.Extensions;
+    using Concierge.Utility.Units.Enums;
 
     /// <summary>
     /// Interaction logic for SettingsWindow.xaml.
@@ -45,17 +46,17 @@ namespace Concierge.Interfaces.UtilityInterface
             this.CheckVersionCheckBox.UpdatingValue();
             this.CenterWindowsCheckBox.UpdatingValue();
 
-            this.AutosaveCheckBox.IsChecked = ConciergeSettings.AutosaveEnabled;
-            this.AutosaveInterval.Value = ConciergeSettings.AutosaveInterval;
-            this.CoinWeightCheckBox.IsChecked = ConciergeSettings.UseCoinWeight;
-            this.EncumbranceCheckBox.IsChecked = ConciergeSettings.UseEncumbrance;
+            this.AutosaveCheckBox.IsChecked = AppSettingsManager.Settings.AutosaveEnabled;
+            this.AutosaveInterval.Value = AppSettingsManager.Settings.AutosaveInterval;
+            this.CoinWeightCheckBox.IsChecked = AppSettingsManager.Settings.UseCoinWeight;
+            this.EncumbranceCheckBox.IsChecked = AppSettingsManager.Settings.UseEncumbrance;
             this.IntervalTextBox.Text = this.FormattedInterval;
-            this.MuteCheckBox.IsChecked = ConciergeSettings.MuteSounds;
-            this.CheckVersionCheckBox.IsChecked = ConciergeSettings.CheckVersion;
-            this.UnitOfMeasurementComboBox.Text = ConciergeSettings.UnitOfMeasurement.ToString();
-            this.CenterWindowsCheckBox.IsChecked = ConciergeSettings.AttemptToCenterWindows;
+            this.MuteCheckBox.IsChecked = AppSettingsManager.Settings.MuteSounds;
+            this.CheckVersionCheckBox.IsChecked = AppSettingsManager.Settings.CheckVersion;
+            this.UnitOfMeasurementComboBox.Text = AppSettingsManager.Settings.UnitOfMeasurement.ToString();
+            this.CenterWindowsCheckBox.IsChecked = AppSettingsManager.Settings.AttemptToCenterWindows;
 
-            if (ConciergeSettings.AutosaveEnabled)
+            if (AppSettingsManager.Settings.AutosaveEnabled)
             {
                 this.EnableAutosaveControls();
             }
@@ -85,8 +86,8 @@ namespace Concierge.Interfaces.UtilityInterface
                 return false;
             }
 
-            var oldSettings = ConciergeSettings.ToConciergeSettingsDto();
-            var conciergeSettings = new ConciergeSettingsDto()
+            var oldSettings = AppSettingsManager.ToSettingsDto();
+            var conciergeSettings = new SettingsDto()
             {
                 AttemptToCenterWindows = this.CenterWindowsCheckBox.IsChecked ?? false,
                 AutosaveEnabled = this.AutosaveCheckBox.IsChecked ?? false,
@@ -99,7 +100,7 @@ namespace Concierge.Interfaces.UtilityInterface
             };
 
             Program.UndoRedoService.AddCommand(new UpdateSettingsCommand(oldSettings, conciergeSettings));
-            ConciergeSettings.UpdateSettings(conciergeSettings);
+            AppSettingsManager.UpdateSettings(conciergeSettings);
 
             return true;
         }

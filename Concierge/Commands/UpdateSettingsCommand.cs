@@ -4,16 +4,16 @@
 
 namespace Concierge.Commands
 {
+    using Concierge.Configuration;
+    using Concierge.Configuration.Dtos;
     using Concierge.Interfaces.Enums;
-    using Concierge.Utility;
-    using Concierge.Utility.Dtos;
 
     public class UpdateSettingsCommand : Command
     {
-        private readonly ConciergeSettingsDto oldSettingsDto;
-        private readonly ConciergeSettingsDto newSettingsDto;
+        private readonly SettingsDto oldSettingsDto;
+        private readonly SettingsDto newSettingsDto;
 
-        public UpdateSettingsCommand(ConciergeSettingsDto oldSettingsDto, ConciergeSettingsDto newSettingsDto)
+        public UpdateSettingsCommand(SettingsDto oldSettingsDto, SettingsDto newSettingsDto)
         {
             this.ConciergePage = ConciergePage.None;
             this.oldSettingsDto = oldSettingsDto;
@@ -22,12 +22,12 @@ namespace Concierge.Commands
 
         public override void Redo()
         {
-            ConciergeSettings.UpdateSettings(this.newSettingsDto);
+            AppSettingsManager.UpdateSettings(this.newSettingsDto);
         }
 
         public override void Undo()
         {
-            ConciergeSettings.UpdateSettings(this.oldSettingsDto);
+            AppSettingsManager.UpdateSettings(this.oldSettingsDto);
         }
     }
 }

@@ -1,14 +1,14 @@
-﻿// <copyright file="ConciergeSettingsDto.cs" company="Thomas Beckett">
+﻿// <copyright file="SettingsDto.cs" company="Thomas Beckett">
 // Copyright (c) Thomas Beckett. All rights reserved.
 // </copyright>
 
-namespace Concierge.Utility.Dtos
+namespace Concierge.Configuration.Dtos
 {
-    using Concierge.Utility.Enums;
+    using Concierge.Utility.Units.Enums;
 
-    public class ConciergeSettingsDto
+    public class SettingsDto
     {
-        public ConciergeSettingsDto()
+        public SettingsDto()
         {
         }
 

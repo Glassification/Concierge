@@ -16,6 +16,7 @@ namespace Concierge.Character
     using Concierge.Character.Notes;
     using Concierge.Character.Spellcasting;
     using Concierge.Character.Statuses;
+    using Concierge.Configuration;
     using Concierge.Utility;
     using Concierge.Utility.Units;
     using Newtonsoft.Json;
@@ -105,9 +106,9 @@ namespace Concierge.Character
                 weight += this.Armor.Weight.Value;
                 weight += this.Armor.ShieldWeight.Value;
 
-                if (ConciergeSettings.UseCoinWeight)
+                if (AppSettingsManager.Settings.UseCoinWeight)
                 {
-                    weight += UnitConvertion.Weight(ConciergeSettings.UnitOfMeasurement, this.Wealth.TotalCoins / Constants.CoinGroup);
+                    weight += UnitConvertion.Weight(AppSettingsManager.Settings.UnitOfMeasurement, this.Wealth.TotalCoins / Constants.CoinGroup);
                 }
 
                 weight += this.EquippedItems.Weight;

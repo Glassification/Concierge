@@ -7,6 +7,7 @@ namespace Concierge.Character.Statuses
     using System.Collections.Generic;
     using System.Linq;
 
+    using Concierge.Configuration;
     using Concierge.Utility;
     using Newtonsoft.Json;
 
@@ -66,7 +67,7 @@ namespace Concierge.Character.Statuses
                     str = "Encumbered";
                 }
 
-                if (ConciergeSettings.UseEncumbrance)
+                if (AppSettingsManager.Settings.UseEncumbrance)
                 {
                     if (Program.CcsFile.Character.CarryWeight > Program.CcsFile.Character.LightCarryCapacity && Program.CcsFile.Character.CarryWeight <= Program.CcsFile.Character.MediumCarryCapacity)
                     {

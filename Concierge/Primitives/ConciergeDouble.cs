@@ -6,10 +6,11 @@ namespace Concierge.Primitives
 {
     using System;
 
+    using Concierge.Configuration;
+    using Concierge.Configuration.Dtos;
     using Concierge.Utility;
-    using Concierge.Utility.Dtos;
-    using Concierge.Utility.Enums;
     using Concierge.Utility.Units;
+    using Concierge.Utility.Units.Enums;
 
     public class ConciergeDouble : ICopyable<ConciergeDouble>
     {
@@ -19,7 +20,7 @@ namespace Concierge.Primitives
             this.UnitType = unitType;
             this.Measurement = measurement;
 
-            ConciergeSettings.UnitsChanged += this.ConciergeDouble_UnitsChanged;
+            AppSettingsManager.UnitsChanged += this.ConciergeDouble_UnitsChanged;
         }
 
         public static ConciergeDouble Empty => new (0.0, UnitTypes.Imperial, Measurements.Weight);
@@ -62,7 +63,7 @@ namespace Concierge.Primitives
 
         private void ConciergeDouble_UnitsChanged(object sender, EventArgs e)
         {
-            var conciergeSettings = sender as ConciergeSettingsDto;
+            var conciergeSettings = sender as SettingsDto;
 
             this.Value = this.UnitType != conciergeSettings.UnitOfMeasurement
                     ? UnitConvertion.Convert(this.Measurement, conciergeSettings.UnitOfMeasurement, this.Value)

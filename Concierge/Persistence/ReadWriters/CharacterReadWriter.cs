@@ -8,9 +8,9 @@ namespace Concierge.Persistence.ReadWriters
     using System.IO;
     using System.Text.RegularExpressions;
 
+    using Concierge.Configuration;
     using Concierge.Interfaces.Enums;
     using Concierge.Tools.Interface;
-    using Concierge.Utility;
     using Concierge.Utility.Extensions;
     using Newtonsoft.Json;
 
@@ -25,7 +25,7 @@ namespace Concierge.Persistence.ReadWriters
 
                 ccsFile.AbsolutePath = file;
 
-                if (ConciergeSettings.CheckVersion && !CheckVersion(ccsFile.Version))
+                if (AppSettingsManager.Settings.CheckVersion && !CheckVersion(ccsFile.Version))
                 {
                     return new CcsFile();
                 }
@@ -33,7 +33,7 @@ namespace Concierge.Persistence.ReadWriters
                 Program.Unmodify();
                 Program.Logger.Info($"Successfully loaded {file}");
 
-                ConciergeSettings.RefreshUnits();
+                AppSettingsManager.RefreshUnits();
 
                 return ccsFile;
             }

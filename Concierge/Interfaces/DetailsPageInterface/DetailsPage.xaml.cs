@@ -15,6 +15,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
     using Concierge.Character.Enums;
     using Concierge.Character.Statuses;
     using Concierge.Commands;
+    using Concierge.Configuration;
     using Concierge.Interfaces.Components;
     using Concierge.Interfaces.Enums;
     using Concierge.Utility;
@@ -116,10 +117,10 @@ namespace Concierge.Interfaces.DetailsPageInterface
         {
             var character = Program.CcsFile.Character;
 
-            this.WeightCarriedField.Text = UnitFormat.FormatWeight(ConciergeSettings.UnitOfMeasurement, character.CarryWeight);
-            this.LightWeightField.Text = UnitFormat.FormatWeight(ConciergeSettings.UnitOfMeasurement, character.LightCarryCapacity, true);
-            this.MediumWeightField.Text = UnitFormat.FormatWeight(ConciergeSettings.UnitOfMeasurement, character.MediumCarryCapacity, true);
-            this.HeavyWeightField.Text = UnitFormat.FormatWeight(ConciergeSettings.UnitOfMeasurement, character.HeavyCarryCapacity, true);
+            this.WeightCarriedField.Text = UnitFormat.FormatWeight(AppSettingsManager.Settings.UnitOfMeasurement, character.CarryWeight);
+            this.LightWeightField.Text = UnitFormat.FormatWeight(AppSettingsManager.Settings.UnitOfMeasurement, character.LightCarryCapacity, true);
+            this.MediumWeightField.Text = UnitFormat.FormatWeight(AppSettingsManager.Settings.UnitOfMeasurement, character.MediumCarryCapacity, true);
+            this.HeavyWeightField.Text = UnitFormat.FormatWeight(AppSettingsManager.Settings.UnitOfMeasurement, character.HeavyCarryCapacity, true);
 
             this.FormatCarryWeight();
         }

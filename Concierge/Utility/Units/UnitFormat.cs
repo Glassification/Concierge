@@ -6,21 +6,22 @@ namespace Concierge.Utility.Units
 {
     using System;
 
+    using Concierge.Configuration;
     using Concierge.Primitives;
-    using Concierge.Utility.Enums;
+    using Concierge.Utility.Units.Enums;
 
     public static class UnitFormat
     {
-        public static string HeightPostfix => ConciergeSettings.UnitOfMeasurement == UnitTypes.Imperial ? "Feet/Inches" : "Centimetres";
+        public static string HeightPostfix => AppSettingsManager.Settings.UnitOfMeasurement == UnitTypes.Imperial ? "Feet/Inches" : "Centimetres";
 
-        public static string WeightPostfix => ConciergeSettings.UnitOfMeasurement == UnitTypes.Imperial ? "Pounds" : "Kilograms";
+        public static string WeightPostfix => AppSettingsManager.Settings.UnitOfMeasurement == UnitTypes.Imperial ? "Pounds" : "Kilograms";
 
         public static string ToString(ConciergeDouble value)
         {
             return value.Measurement switch
             {
-                Measurements.Height => FormatHeight(ConciergeSettings.UnitOfMeasurement, value.Value),
-                Measurements.Weight => FormatWeight(ConciergeSettings.UnitOfMeasurement, value.Value),
+                Measurements.Height => FormatHeight(AppSettingsManager.Settings.UnitOfMeasurement, value.Value),
+                Measurements.Weight => FormatWeight(AppSettingsManager.Settings.UnitOfMeasurement, value.Value),
                 _ => value.Value.ToString(),
             };
         }

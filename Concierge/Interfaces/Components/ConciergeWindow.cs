@@ -11,8 +11,8 @@ namespace Concierge.Interfaces.Components
     using System.Windows.Media.Animation;
 
     using Concierge.Character.Enums;
+    using Concierge.Configuration;
     using Concierge.Interfaces.Enums;
-    using Concierge.Utility;
     using Concierge.Utility.Colors;
 
     public class ConciergeWindow : Window
@@ -94,7 +94,7 @@ namespace Concierge.Interfaces.Components
 
         private void SetOpenLocation()
         {
-            if (!ConciergeSettings.AttemptToCenterWindows)
+            if (!AppSettingsManager.Settings.AttemptToCenterWindows)
             {
                 return;
             }

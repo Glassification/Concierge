@@ -6,21 +6,20 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
     using System.Linq;
     using System.Windows;
     using System.Windows.Controls;
-    using System.Windows.Input;
 
     using Concierge.Character.Enums;
     using Concierge.Character.Items;
     using Concierge.Commands;
+    using Concierge.Configuration;
     using Concierge.Interfaces.Components;
     using Concierge.Interfaces.Enums;
     using Concierge.Primitives;
     using Concierge.Utility;
-    using Concierge.Utility.Enums;
     using Concierge.Utility.Units;
+    using Concierge.Utility.Units.Enums;
 
     /// <summary>
     /// Interaction logic for ModifyWeaponWindow.xaml.
@@ -170,7 +169,7 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
                 Misc = this.MiscDamageTextBox.Text,
                 DamageType = (DamageTypes)Enum.Parse(typeof(DamageTypes), this.DamageTypeComboBox.Text),
                 Range = this.RangeTextBox.Text,
-                Weight = new ConciergeDouble(this.WeightUpDown.Value ?? 0.0, ConciergeSettings.UnitOfMeasurement, Measurements.Weight),
+                Weight = new ConciergeDouble(this.WeightUpDown.Value ?? 0.0, AppSettingsManager.Settings.UnitOfMeasurement, Measurements.Weight),
                 ProficiencyOverride = this.ProficencyOverrideCheckBox.IsChecked ?? false,
                 IsInBagOfHolding = this.BagOfHoldingCheckBox.IsChecked ?? false,
                 Note = this.NotesTextBox.Text,
