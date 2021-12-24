@@ -76,7 +76,6 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
-            Program.Modify();
             this.Result = ConciergeWindowResult.OK;
 
             if (!(this.ItemComboBox.SelectedItem is Inventory item) || this.SlotComboBox.Text.IsNullOrWhiteSpace())
@@ -92,12 +91,12 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
             Program.UndoRedoService.AddCommand(new EquipItemCommand(Program.CcsFile.Character.EquippedItems, newItem, slot));
 
             this.HideConciergeWindow();
+
+            Program.Modify();
         }
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
-            Program.Modify();
-
             if (!(this.ItemComboBox.SelectedItem is Inventory item) || this.SlotComboBox.Text.IsNullOrWhiteSpace())
             {
                 return;
@@ -111,8 +110,9 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
 
             this.ClearFields();
             this.ItemComboBox.ItemsSource = EquippedItems.Equipable;
-
             this.InvokeApplyChanges();
+
+            Program.Modify();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)

@@ -141,20 +141,20 @@ namespace Concierge.Interfaces.DetailsPageInterface
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
-            Program.Modify();
             this.Result = ConciergeWindowResult.OK;
 
             this.UpdateAppearance();
             this.HideConciergeWindow();
+
+            Program.Modify();
         }
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
-            Program.Modify();
-
             this.UpdateAppearance();
-
             this.InvokeApplyChanges();
+
+            Program.Modify();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)

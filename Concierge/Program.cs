@@ -4,9 +4,10 @@
 
 namespace Concierge
 {
+    using System;
     using System.Reflection;
     using System.Windows;
-
+    using Concierge.Character;
     using Concierge.Interfaces;
     using Concierge.Interfaces.UtilityInterface;
     using Concierge.Logging;
@@ -29,13 +30,16 @@ namespace Concierge
             InitializeLogger();
 
             SaveStatusWindow = new SaveStatusWindow();
-            Modified = true;
             Typing = false;
             ErrorService = new ErrorService(Logger);
             UndoRedoService = new UndoRedoService();
             CcsFile = new CcsFile();
             MainWindow = null;
         }
+
+        public delegate void ModifiedChangedEventHandler(object sender, EventArgs e);
+
+        public static event ModifiedChangedEventHandler ModifiedChanged;
 
         public static bool IsDebug { get; }
 
@@ -45,7 +49,7 @@ namespace Concierge
 
         public static bool Typing { get; set; }
 
-        public static bool Modified { get; private set; }
+        public static bool Modified => !BaseState.Equals(CcsFile.Character);
 
         public static Logger Logger { get; private set; }
 
@@ -61,6 +65,8 @@ namespace Concierge
                 return $"{version.Major}.{version.Minor}.{version.Build}";
             }
         }
+
+        private static ConciergeCharacter BaseState { get; set; }
 
         private static MainWindow MainWindow { get; set; }
 
@@ -82,12 +88,14 @@ namespace Concierge
 
         public static void Modify()
         {
-            Modified = true;
+            ModifiedChanged?.Invoke(Modified, new EventArgs());
         }
 
         public static void Unmodify()
         {
-            Modified = false;
+            BaseState = CcsFile.Character.DeepCopy();
+            ModifiedChanged?.Invoke(Modified, new EventArgs());
+            Logger.Info($"Updated Base State.");
         }
 
         private static void InitializeLogger()

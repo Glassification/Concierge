@@ -367,7 +367,6 @@ namespace Concierge.Interfaces.OverviewPageInterface
 
         private void SavingThrows_MouseDown(object sender, RoutedEventArgs e)
         {
-            Program.Modify();
             ConciergeSound.UpdateValue();
 
             var rectangle = sender as Rectangle;
@@ -403,11 +402,12 @@ namespace Concierge.Interfaces.OverviewPageInterface
 
             this.DrawSavingThrows();
             this.Draw();
+
+            Program.Modify();
         }
 
         private void SkillProficiency_MouseDown(object sender, RoutedEventArgs e)
         {
-            Program.Modify();
             ConciergeSound.UpdateValue();
 
             var rectangle = sender as Rectangle;
@@ -491,11 +491,12 @@ namespace Concierge.Interfaces.OverviewPageInterface
             }
 
             this.DrawSkills();
+
+            Program.Modify();
         }
 
         private void SkillExpertise_MouseDown(object sender, RoutedEventArgs e)
         {
-            Program.Modify();
             ConciergeSound.UpdateValue();
 
             var rectangle = sender as Rectangle;
@@ -578,6 +579,8 @@ namespace Concierge.Interfaces.OverviewPageInterface
             }
 
             this.DrawSkills();
+
+            Program.Modify();
         }
 
         private void ToggleBox_MouseEnter(object sender, MouseEventArgs e)
@@ -673,6 +676,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
             }
 
             Program.UndoRedoService.AddCommand(new EditCommand<HitDice>(hitDice, oldItem, this.ConciergePage));
+            Program.Modify();
 
             this.DrawHitDice();
         }
@@ -763,13 +767,13 @@ namespace Concierge.Interfaces.OverviewPageInterface
                 return;
             }
 
-            Program.Modify();
-
             var oldItem = character.Vitality.DeathSavingThrows.DeepCopy() as DeathSavingThrows;
             character.Vitality.DeathSavingThrows.MakeDeathSave(DeathSave.Success);
             Program.UndoRedoService.AddCommand(new EditCommand<DeathSavingThrows>(character.Vitality.DeathSavingThrows, oldItem, this.ConciergePage));
 
             this.DrawDeathSavingThrows();
+
+            Program.Modify();
         }
 
         private void FailSave_Click(object sender, RoutedEventArgs e)
@@ -780,8 +784,6 @@ namespace Concierge.Interfaces.OverviewPageInterface
             {
                 return;
             }
-
-            Program.Modify();
 
             var oldItem = character.Vitality.DeathSavingThrows.DeepCopy() as DeathSavingThrows;
             character.Vitality.DeathSavingThrows.MakeDeathSave(DeathSave.Failure);
@@ -794,19 +796,20 @@ namespace Concierge.Interfaces.OverviewPageInterface
                 DisplayCharacterDeathWindow(character);
                 this.DeathScreenShown = true;
             }
+
+            Program.Modify();
         }
 
         private void ResetSaves_Click(object sender, RoutedEventArgs e)
         {
-            Program.Modify();
-
             var oldItem = Program.CcsFile.Character.Vitality.DeathSavingThrows.DeepCopy() as DeathSavingThrows;
             Program.CcsFile.Character.Vitality.DeathSavingThrows.ResetDeathSaves();
             Program.UndoRedoService.AddCommand(new EditCommand<DeathSavingThrows>(Program.CcsFile.Character.Vitality.DeathSavingThrows, oldItem, this.ConciergePage));
 
             this.DrawDeathSavingThrows();
-
             this.DeathScreenShown = false;
+
+            Program.Modify();
         }
     }
 }

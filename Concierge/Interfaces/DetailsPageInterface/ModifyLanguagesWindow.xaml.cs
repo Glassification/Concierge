@@ -134,7 +134,6 @@ namespace Concierge.Interfaces.DetailsPageInterface
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
-            Program.Modify();
             this.Result = ConciergeWindowResult.OK;
 
             if (this.Editing)
@@ -147,16 +146,17 @@ namespace Concierge.Interfaces.DetailsPageInterface
             }
 
             this.HideConciergeWindow();
+
+            Program.Modify();
         }
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
-            Program.Modify();
-
             this.Languages.Add(this.ToLanguage());
             this.ClearFields();
-
             this.InvokeApplyChanges();
+
+            Program.Modify();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)

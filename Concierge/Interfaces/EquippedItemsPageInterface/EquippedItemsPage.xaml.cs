@@ -89,8 +89,6 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
 
         private void EquipmentDataGrid_Sorted(object sender, RoutedEventArgs e)
         {
-            Program.Modify();
-
             var dataGrid = sender as ConciergeDataGrid;
             var equippedItems = Utilities.GetPropertyValue<List<Inventory>>(Program.CcsFile.Character.EquippedItems, dataGrid.Tag as string);
             var oldList = new List<Inventory>(equippedItems);
@@ -107,6 +105,7 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
                     oldList,
                     new List<Inventory>(equippedItems),
                     this.ConciergePage));
+            Program.Modify();
         }
 
         private void EquipmentDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -219,8 +218,6 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
                 return;
             }
 
-            Program.Modify();
-
             var index = this.SelectedIndex;
             var slot = (EquipmentSlot)Enum.Parse(typeof(EquipmentSlot), this.SelectedDataGrid.Tag as string);
 
@@ -229,6 +226,8 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
 
             this.Draw();
             this.SelectedDataGrid.SetSelectedIndex(index);
+
+            Program.Modify();
         }
 
         private void Window_ApplyChanges(object sender, EventArgs e)

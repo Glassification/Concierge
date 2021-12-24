@@ -137,21 +137,20 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
-            Program.Modify();
-
             this.Result = ConciergeWindowResult.OK;
             this.UpdateCharacterImage();
             (this.InformationHover.ToolTip as ToolTip).IsOpen = false;
-
             this.HideConciergeWindow();
+
+            Program.Modify();
         }
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
-            Program.Modify();
-
             this.UpdateCharacterImage();
             this.InvokeApplyChanges();
+
+            Program.Modify();
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)

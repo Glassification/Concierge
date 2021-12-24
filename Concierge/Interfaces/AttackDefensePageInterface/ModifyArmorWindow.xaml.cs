@@ -112,20 +112,20 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
-            Program.Modify();
-
             this.UpdateArmor(this.SelectedArmor);
-
             this.InvokeApplyChanges();
+
+            Program.Modify();
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
-            Program.Modify();
             this.Result = ConciergeWindowResult.OK;
 
             this.UpdateArmor(this.SelectedArmor);
             this.HideConciergeWindow();
+
+            Program.Modify();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)

@@ -49,12 +49,12 @@ namespace Concierge.Character.Items
             return new Inventory()
             {
                 Name = this.Name,
-                Amount = 1,
+                Amount = this.Amount,
                 Weight = this.Weight.DeepCopy(),
-                IsInBagOfHolding = false,
+                IsInBagOfHolding = this.IsInBagOfHolding,
                 Attuned = this.Attuned,
                 Note = this.Note,
-                EquppedId = Guid.NewGuid(),
+                EquppedId = this.EquppedId,
                 Id = this.Id,
             };
         }

@@ -8,7 +8,14 @@ namespace Concierge.Commands
 
     public abstract class Command
     {
+        public Command()
+        {
+            this.ModifiedState = Program.Modified;
+        }
+
         public ConciergePage ConciergePage { get; set; }
+
+        public bool ModifiedState { get; set; }
 
         public abstract void Redo();
 

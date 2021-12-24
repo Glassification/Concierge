@@ -19,5 +19,18 @@ namespace Concierge.Utility.Extensions
         {
             return list.Count == 0;
         }
+
+        public static IList<T> DeepCopy<T>(this IList<T> list)
+            where T : ICopyable<T>
+        {
+            var copy = new List<T>();
+
+            foreach (var item in list)
+            {
+                copy.Add(item.DeepCopy());
+            }
+
+            return copy;
+        }
     }
 }

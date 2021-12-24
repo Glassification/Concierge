@@ -5,8 +5,9 @@
 namespace Concierge.Character.AbilitySkills
 {
     using Concierge.Character.AbilitySkills.SkillTypes;
+    using Concierge.Utility;
 
-    public class Skill
+    public class Skill : ICopyable<Skill>
     {
         public Skill()
         {
@@ -65,5 +66,30 @@ namespace Concierge.Character.AbilitySkills
         public Performance Performance { get; set; }
 
         public Persuasion Persuasion { get; set; }
+
+        public Skill DeepCopy()
+        {
+            return new Skill()
+            {
+                Athletics = (Athletics)this.Athletics.DeepCopy(),
+                Acrobatics = (Acrobatics)this.Acrobatics.DeepCopy(),
+                SleightOfHand = (SleightOfHand)this.SleightOfHand.DeepCopy(),
+                Stealth = (Stealth)this.Stealth.DeepCopy(),
+                Arcana = (Arcana)this.Arcana.DeepCopy(),
+                History = (History)this.History.DeepCopy(),
+                Investigation = (Investigation)this.Investigation.DeepCopy(),
+                Nature = (Nature)this.Nature.DeepCopy(),
+                Religion = (Religion)this.Religion.DeepCopy(),
+                AnimalHandling = (AnimalHandling)this.AnimalHandling.DeepCopy(),
+                Insight = (Insight)this.Insight.DeepCopy(),
+                Medicine = (Medicine)this.Medicine.DeepCopy(),
+                Perception = (Perception)this.Perception.DeepCopy(),
+                Survival = (Survival)this.Survival.DeepCopy(),
+                Deception = (Deception)this.Deception.DeepCopy(),
+                Intimidation = (Intimidation)this.Intimidation.DeepCopy(),
+                Performance = (Performance)this.Performance.DeepCopy(),
+                Persuasion = (Persuasion)this.Persuasion.DeepCopy(),
+            };
+        }
     }
 }

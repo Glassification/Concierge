@@ -6,9 +6,10 @@ namespace Concierge.Character.Statuses
 {
     using System;
 
+    using Concierge.Utility;
     using Newtonsoft.Json;
 
-    public class Vitality
+    public class Vitality : ICopyable<Vitality>
     {
         public Vitality()
         {
@@ -85,6 +86,17 @@ namespace Concierge.Character.Statuses
         public void Heal(int heal)
         {
             this.Health.BaseHealth += heal;
+        }
+
+        public Vitality DeepCopy()
+        {
+            return new Vitality()
+            {
+                Health = this.Health.DeepCopy(),
+                HitDice = this.HitDice.DeepCopy(),
+                Conditions = this.Conditions.DeepCopy(),
+                DeathSavingThrows = this.DeathSavingThrows.DeepCopy(),
+            };
         }
 
         private static int RegainHitDie(int spent)

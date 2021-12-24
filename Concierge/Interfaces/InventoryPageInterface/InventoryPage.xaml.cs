@@ -120,8 +120,6 @@ namespace Concierge.Interfaces.InventoryPageInterface
         {
             if (this.InventoryDataGrid.SelectedItem != null)
             {
-                Program.Modify();
-
                 var inventory = (Inventory)this.InventoryDataGrid.SelectedItem;
                 var index = this.InventoryDataGrid.SelectedIndex;
 
@@ -130,6 +128,8 @@ namespace Concierge.Interfaces.InventoryPageInterface
 
                 this.DrawInventory();
                 this.InventoryDataGrid.SetSelectedIndex(index);
+
+                Program.Modify();
             }
         }
 

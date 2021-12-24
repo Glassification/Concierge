@@ -45,8 +45,6 @@ namespace Concierge.Utility
                 return;
             }
 
-            Program.Modify();
-
             var oldList = new List<T>(list);
             list.Clear();
 
@@ -61,6 +59,7 @@ namespace Concierge.Utility
                     oldList,
                     new List<T>(list),
                     conciergePage));
+            Program.Modify();
         }
 
         public static List<string> FormatEnumForDisplay(Type enumType)
@@ -184,7 +183,6 @@ namespace Concierge.Utility
         {
             if (used < total)
             {
-                Program.Modify();
                 ConciergeSound.UpdateValue();
 
                 return used + 1;

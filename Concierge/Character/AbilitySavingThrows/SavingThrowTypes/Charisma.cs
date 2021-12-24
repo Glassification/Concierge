@@ -38,5 +38,10 @@ namespace Concierge.Character.AbilitySavingThrows.SavingThrowTypes
                 return this.bonus;
             }
         }
+
+        public override SavingThrows DeepCopy()
+        {
+            return new Charisma(this.Proficiency);
+        }
     }
 }

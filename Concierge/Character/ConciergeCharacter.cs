@@ -18,10 +18,11 @@ namespace Concierge.Character
     using Concierge.Character.Statuses;
     using Concierge.Configuration;
     using Concierge.Utility;
+    using Concierge.Utility.Extensions;
     using Concierge.Utility.Units;
     using Newtonsoft.Json;
 
-    public class ConciergeCharacter
+    public class ConciergeCharacter : ICopyable<ConciergeCharacter>
     {
         public ConciergeCharacter()
         {
@@ -194,6 +195,57 @@ namespace Concierge.Character
         public Chapter GetChapterByDocumentId(Guid id)
         {
             return this.Chapters.Single(x => x.Documents.Any(y => y.Id.Equals(id)));
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (obj is not ConciergeCharacter)
+            {
+                return false;
+            }
+
+            var character1 = JsonConvert.SerializeObject(obj as ConciergeCharacter, Formatting.Indented);
+            var character2 = JsonConvert.SerializeObject(this, Formatting.Indented);
+
+            return character1.Equals(character2);
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
+
+        public ConciergeCharacter DeepCopy()
+        {
+            return new ConciergeCharacter()
+            {
+                Abilities = this.Abilities.DeepCopy().ToList(),
+                Ammunitions = this.Ammunitions.DeepCopy().ToList(),
+                Appearance = this.Appearance.DeepCopy(),
+                Armor = this.Armor.DeepCopy(),
+                Attributes = this.Attributes.DeepCopy(),
+                Chapters = this.Chapters.DeepCopy().ToList(),
+                ClassResources = this.ClassResources.DeepCopy().ToList(),
+                Companion = this.Companion.DeepCopy(),
+                Senses = this.Senses.DeepCopy(),
+                Inventories = this.Inventories.DeepCopy().ToList(),
+                MagicClasses = this.MagicClasses.DeepCopy().ToList(),
+                Personality = this.Personality.DeepCopy(),
+                Proficiency = this.Proficiency.DeepCopy().ToList(),
+                SavingThrow = this.SavingThrow.DeepCopy(),
+                Skill = this.Skill.DeepCopy(),
+                Spells = this.Spells.DeepCopy().ToList(),
+                SpellSlots = this.SpellSlots.DeepCopy(),
+                Vitality = this.Vitality.DeepCopy(),
+                Wealth = this.Wealth.DeepCopy(),
+                Weapons = this.Weapons.DeepCopy().ToList(),
+                EquippedItems = this.EquippedItems.DeepCopy(),
+                CharacterImage = this.CharacterImage.DeepCopy(),
+                CharacterIcon = this.CharacterIcon.DeepCopy(),
+                StatusEffects = this.StatusEffects.DeepCopy().ToList(),
+                Properties = this.Properties.DeepCopy(),
+                Languages = this.Languages.DeepCopy().ToList(),
+            };
         }
 
         private void Initialize()

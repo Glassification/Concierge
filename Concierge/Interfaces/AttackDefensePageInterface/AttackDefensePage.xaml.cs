@@ -210,8 +210,6 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
         {
             if (this.AmmoDataGrid.SelectedItem != null)
             {
-                Program.Modify();
-
                 var ammo = (Ammunition)this.AmmoDataGrid.SelectedItem;
                 var index = this.AmmoDataGrid.SelectedIndex;
 
@@ -219,11 +217,11 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
                 Program.CcsFile.Character.Ammunitions.Remove(ammo);
                 this.DrawAmmoList();
                 this.AmmoDataGrid.SetSelectedIndex(index);
+
+                Program.Modify();
             }
             else if (this.WeaponDataGrid.SelectedItem != null)
             {
-                Program.Modify();
-
                 var weapon = (Weapon)this.WeaponDataGrid.SelectedItem;
                 var index = this.WeaponDataGrid.SelectedIndex;
 
@@ -231,6 +229,8 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
                 Program.CcsFile.Character.Weapons.Remove(weapon);
                 this.DrawWeaponList();
                 this.WeaponDataGrid.SetSelectedIndex(index);
+
+                Program.Modify();
             }
         }
 
@@ -300,8 +300,6 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
                 return;
             }
 
-            Program.Modify();
-
             var effect = (StatusEffect)this.StatusEffectsDataGrid.SelectedItem;
             var index = this.StatusEffectsDataGrid.SelectedIndex;
 
@@ -309,6 +307,8 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
             Program.CcsFile.Character.StatusEffects.Remove(effect);
             this.DrawStatusEffects();
             this.StatusEffectsDataGrid.SetSelectedIndex(index);
+
+            Program.Modify();
         }
 
         private void AddEffectsButton_Click(object sender, RoutedEventArgs e)

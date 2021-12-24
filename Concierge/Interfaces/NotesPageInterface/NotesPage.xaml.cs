@@ -321,8 +321,6 @@ namespace Concierge.Interfaces.NotesPageInterface
                 return;
             }
 
-            Program.Modify();
-
             if (this.NotesTreeView.SelectedItem is DocumentTreeViewItem)
             {
                 var item = this.NotesTreeView.SelectedItem as DocumentTreeViewItem;
@@ -353,6 +351,7 @@ namespace Concierge.Interfaces.NotesPageInterface
             }
 
             (this.NotesTreeView.SelectedItem as TreeViewItem).Focus();
+            Program.Modify();
         }
 
         private void SwapTreeViewItem<T>(IList<T> list, int oldIndex, int newIndex)
@@ -433,8 +432,6 @@ namespace Concierge.Interfaces.NotesPageInterface
                 return;
             }
 
-            Program.Modify();
-
             if (this.NotesTreeView.SelectedItem is ChapterTreeViewItem chapterTreeViewItem)
             {
                 var result = ConciergeMessageBox.Show(
@@ -472,6 +469,8 @@ namespace Concierge.Interfaces.NotesPageInterface
             }
 
             this.Draw();
+
+            Program.Modify();
         }
 
         private void Window_ApplyChanges(object sender, EventArgs e)

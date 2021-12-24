@@ -102,8 +102,6 @@ namespace Concierge.Interfaces.OverviewPageInterface
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
-            Program.Modify();
-
             this.Result = ConciergeWindowResult.OK;
             var oldItem = this.SelectedWealth.DeepCopy() as Wealth;
 
@@ -114,14 +112,13 @@ namespace Concierge.Interfaces.OverviewPageInterface
             this.SelectedWealth.Platinum = this.PP;
 
             Program.UndoRedoService.AddCommand(new EditCommand<Wealth>(this.SelectedWealth, oldItem, this.conciergePage));
+            Program.Modify();
 
             this.HideConciergeWindow();
         }
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
-            Program.Modify();
-
             if (this.CpRadioButton.IsChecked ?? false)
             {
                 this.CP += this.GetAmount();
@@ -144,6 +141,8 @@ namespace Concierge.Interfaces.OverviewPageInterface
             }
 
             this.FillFields();
+
+            Program.Modify();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)

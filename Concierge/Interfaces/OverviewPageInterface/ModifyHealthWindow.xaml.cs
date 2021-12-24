@@ -93,20 +93,20 @@ namespace Concierge.Interfaces.OverviewPageInterface
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
-            Program.Modify();
-
             this.UpdateHealth();
-
             this.InvokeApplyChanges();
+
+            Program.Modify();
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
-            Program.Modify();
             this.Result = ConciergeWindowResult.OK;
 
             this.UpdateHealth();
             this.HideConciergeWindow();
+
+            Program.Modify();
         }
 
         private void TotalHpUpDown_ValueChanged(object sender, RoutedPropertyChangedEventArgs<object> e)

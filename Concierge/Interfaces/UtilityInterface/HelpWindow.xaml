@@ -23,7 +23,7 @@
         <!--Header-->
         <Grid Grid.Row="0">
             <TextBlock 
-                Text="Concierge Help"
+                Text="Help"
                 x:Name="HeaderTextBlock"
                 Foreground="#227EA9"
                 FontSize="35"

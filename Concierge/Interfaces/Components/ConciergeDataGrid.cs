@@ -60,8 +60,6 @@ namespace Concierge.Interfaces.Components
                 return -1;
             }
 
-            Program.Modify();
-
             var item = (T)this.SelectedItem;
             var index = list.IndexOf(item);
 
@@ -72,6 +70,7 @@ namespace Concierge.Interfaces.Components
                 var newList = new List<T>(list);
 
                 Program.UndoRedoService.AddCommand(new ListOrderCommand<T>(list, oldList, newList, conciergePage));
+                Program.Modify();
 
                 return index + increment;
             }

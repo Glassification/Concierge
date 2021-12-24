@@ -9,9 +9,11 @@ namespace Concierge.Character.Items
     using System.Linq;
 
     using Concierge.Character.Enums;
+    using Concierge.Utility;
+    using Concierge.Utility.Extensions;
     using Newtonsoft.Json;
 
-    public class EquippedItems
+    public class EquippedItems : ICopyable<EquippedItems>
     {
         public EquippedItems()
         {
@@ -40,15 +42,15 @@ namespace Concierge.Character.Items
             }
         }
 
-        public List<Inventory> Head { get; }
+        public List<Inventory> Head { get; init; }
 
-        public List<Inventory> Torso { get; }
+        public List<Inventory> Torso { get; init; }
 
-        public List<Inventory> Hands { get; }
+        public List<Inventory> Hands { get; init; }
 
-        public List<Inventory> Legs { get; }
+        public List<Inventory> Legs { get; init; }
 
-        public List<Inventory> Feet { get; }
+        public List<Inventory> Feet { get; init; }
 
         [JsonIgnore]
         public double Weight
@@ -145,6 +147,18 @@ namespace Concierge.Character.Items
                                     : this.Legs.Any(x => x.EquppedId.Equals(item.EquppedId)) ? EquipmentSlot.Legs : EquipmentSlot.Feet;
         }
 
+        public EquippedItems DeepCopy()
+        {
+            return new EquippedItems()
+            {
+                Head = this.Head.DeepCopy().ToList(),
+                Torso = this.Torso.DeepCopy().ToList(),
+                Hands = this.Hands.DeepCopy().ToList(),
+                Legs = this.Legs.DeepCopy().ToList(),
+                Feet = this.Feet.DeepCopy().ToList(),
+            };
+        }
+
         private static double GetWeight(List<Inventory> list)
         {
             var weight = 0.0;
@@ -200,8 +214,9 @@ namespace Concierge.Character.Items
                 Program.CcsFile.Character.Inventories.Remove(item);
             }
 
-            var newItem = item.DeepCopy() as Inventory;
+            var newItem = item.DeepCopy();
             newItem.EquppedId = Guid.NewGuid();
+            newItem.Amount = 1;
 
             return newItem;
         }

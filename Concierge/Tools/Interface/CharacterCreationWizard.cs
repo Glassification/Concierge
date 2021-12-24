@@ -116,8 +116,6 @@ namespace Concierge.Tools.Interface
                 return;
             }
 
-            Program.Modify();
-
             do
             {
                 confirmExitResult = ConciergeWindowResult.NoResult;
@@ -140,6 +138,8 @@ namespace Concierge.Tools.Interface
                 }
             }
             while (confirmExitResult == ConciergeWindowResult.No);
+
+            Program.Modify();
         }
     }
 }
