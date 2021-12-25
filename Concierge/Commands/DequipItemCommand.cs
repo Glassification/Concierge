@@ -4,6 +4,8 @@
 
 namespace Concierge.Commands
 {
+    using System;
+
     using Concierge.Character.Enums;
     using Concierge.Character.Items;
     using Concierge.Interfaces.Enums;
@@ -12,6 +14,7 @@ namespace Concierge.Commands
     {
         private readonly EquippedItems equippedItems;
         private readonly EquipmentSlot slot;
+        private readonly Guid equippedId;
 
         public DequipItemCommand(EquippedItems equippedItems, Inventory item, EquipmentSlot slot)
         {
@@ -19,6 +22,7 @@ namespace Concierge.Commands
             this.equippedItems = equippedItems;
             this.Item = item;
             this.slot = slot;
+            this.equippedId = item.EquppedId;
         }
 
         private Inventory Item { get; set; }
@@ -31,6 +35,7 @@ namespace Concierge.Commands
         public override void Undo()
         {
             this.Item = this.equippedItems.Equip(this.Item, this.slot);
+            this.Item.EquppedId = this.equippedId;
         }
     }
 }

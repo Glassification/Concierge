@@ -1239,7 +1239,7 @@
       "Health": {
         "MaxHealth": 71,
         "TemporaryHealth": 0,
-        "BaseHealth": 69
+        "BaseHealth": 70
       },
       "HitDice": {
         "TotalD6": 0,
@@ -1550,5 +1550,5 @@
       }
     ]
   },
-  "Version": "4.3.3"
+  "Version": "4.3.5"
 }

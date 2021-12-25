@@ -4,10 +4,7 @@
 
 namespace Concierge.Interfaces.OverviewPageInterface
 {
-    using System;
-    using System.ComponentModel;
     using System.Windows;
-    using System.Windows.Input;
 
     using Concierge.Character.Statuses;
     using Concierge.Commands;

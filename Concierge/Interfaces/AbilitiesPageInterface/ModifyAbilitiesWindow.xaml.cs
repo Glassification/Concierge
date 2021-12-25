@@ -128,7 +128,7 @@ namespace Concierge.Interfaces.AbilitiesPageInterface
 
         private void UpdateAbility(Ability ability)
         {
-            var oldItem = ability.DeepCopy() as Ability;
+            var oldItem = ability.DeepCopy();
 
             ability.Name = this.NameComboBox.Text;
             ability.Level = this.LevelUpDown.Value ?? 0;

@@ -117,19 +117,19 @@ namespace Concierge.Character.Items
             switch (equipSlot)
             {
                 case EquipmentSlot.Head:
-                    this.Head.Remove(item);
+                    this.Head.RemoveAll(x => x.EquppedId.Equals(item.EquppedId));
                     break;
                 case EquipmentSlot.Torso:
-                    this.Torso.Remove(item);
+                    this.Torso.RemoveAll(x => x.EquppedId.Equals(item.EquppedId));
                     break;
                 case EquipmentSlot.Hands:
-                    this.Hands.Remove(item);
+                    this.Hands.RemoveAll(x => x.EquppedId.Equals(item.EquppedId));
                     break;
                 case EquipmentSlot.Legs:
-                    this.Legs.Remove(item);
+                    this.Legs.RemoveAll(x => x.EquppedId.Equals(item.EquppedId));
                     break;
                 case EquipmentSlot.Feet:
-                    this.Feet.Remove(item);
+                    this.Feet.RemoveAll(x => x.EquppedId.Equals(item.EquppedId));
                     break;
             }
 
@@ -193,9 +193,8 @@ namespace Concierge.Character.Items
 
             if (existingItem == null)
             {
-                item.EquppedId = Guid.Empty;
                 item.Attuned = false;
-                inventory.Add(item);
+                inventory.Insert(item.Index, item);
             }
             else
             {
@@ -205,18 +204,27 @@ namespace Concierge.Character.Items
 
         private static Inventory RemoveFromInventory(Inventory item)
         {
+            var index = 0;
+
             if (item.Amount > 1)
             {
                 item.Amount--;
             }
+            else if (Program.CcsFile.Character.Inventories.Any(x => x.Id.Equals(item.Id) && x.Amount > 1))
+            {
+                var itemInList = Program.CcsFile.Character.Inventories.Where(x => x.Id.Equals(item.Id) && x.Amount > 1).FirstOrDefault();
+                itemInList.Amount--;
+            }
             else
             {
-                Program.CcsFile.Character.Inventories.Remove(item);
+                index = Program.CcsFile.Character.Inventories.FindIndex(x => x.Id.Equals(item.Id));
+                Program.CcsFile.Character.Inventories.RemoveAll(x => x.Id.Equals(item.Id));
             }
 
             var newItem = item.DeepCopy();
             newItem.EquppedId = Guid.NewGuid();
             newItem.Amount = 1;
+            newItem.Index = index;
 
             return newItem;
         }
