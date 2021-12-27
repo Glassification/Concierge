@@ -5,7 +5,7 @@
     <TargetFramework>net6.0-windows</TargetFramework>
     <RootNamespace>Concierge</RootNamespace>
     <UseWPF>true</UseWPF>
-    <Version>4.4.1</Version>
+    <Version>4.4.2</Version>
     <ApplicationIcon>dndnextlogo.ico</ApplicationIcon>
   </PropertyGroup>
 

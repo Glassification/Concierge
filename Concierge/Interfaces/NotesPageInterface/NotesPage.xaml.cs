@@ -485,12 +485,12 @@ namespace Concierge.Interfaces.NotesPageInterface
 
         private void NotesTextBox_GotFocus(object sender, RoutedEventArgs e)
         {
-            Program.Typing = true;
+            Program.IsTyping = true;
         }
 
         private void NotesTextBox_LostFocus(object sender, RoutedEventArgs e)
         {
-            Program.Typing = false;
+            Program.IsTyping = false;
         }
 
         private void NotesTextBox_MouseEnter(object sender, MouseEventArgs e)

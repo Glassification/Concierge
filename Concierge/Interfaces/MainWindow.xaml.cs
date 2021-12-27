@@ -365,7 +365,7 @@ namespace Concierge.Interfaces
 
         private ConciergeWindowResult CheckSaveBeforeAction(string action)
         {
-            if (!Program.Modified)
+            if (!Program.IsModified)
             {
                 return ConciergeWindowResult.No;
             }
@@ -439,7 +439,7 @@ namespace Concierge.Interfaces
         {
             EasterEggController.KonamiCode(e.Key);
 
-            if (Program.Typing || !IsControl)
+            if (Program.IsTyping || !IsControl)
             {
                 return;
             }

@@ -121,7 +121,6 @@ namespace Concierge.Utility.Extensions
             try
             {
                 colorName = colorName.Strip(" ").Strip("-").Strip(".").Strip("'");
-
                 if (AppSettingsManager.CustomColors.ContainsKey(colorName))
                 {
                     colorName = AppSettingsManager.CustomColors[colorName];

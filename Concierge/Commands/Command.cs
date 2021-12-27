@@ -10,7 +10,7 @@ namespace Concierge.Commands
     {
         public Command()
         {
-            this.ModifiedState = Program.Modified;
+            this.ModifiedState = Program.IsModified;
         }
 
         public ConciergePage ConciergePage { get; set; }
