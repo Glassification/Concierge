@@ -68,6 +68,28 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
             this.ItemComboBox.Text = string.Empty;
         }
 
+        private void EquipItem()
+        {
+            if (this.ItemComboBox.SelectedItem is not Inventory item || this.SlotComboBox.Text.IsNullOrWhiteSpace())
+            {
+                return;
+            }
+
+            this.PreviousSlot = this.SlotComboBox.Text;
+            this.ItemsAdded = true;
+            var slot = (EquipmentSlot)Enum.Parse(typeof(EquipmentSlot), this.SlotComboBox.Text);
+            var originalEquipped = Program.CcsFile.Character.EquippedItems.DeepCopy();
+            var originalInventory = Program.CcsFile.Character.Inventories.DeepCopy().ToList();
+
+            Program.CcsFile.Character.EquippedItems.Equip(item, slot);
+            Program.UndoRedoService.AddCommand(
+                new EquipmentCommand(
+                    originalEquipped,
+                    originalInventory,
+                    Program.CcsFile.Character.EquippedItems.DeepCopy(),
+                    Program.CcsFile.Character.Inventories.DeepCopy().ToList()));
+        }
+
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             this.Result = ConciergeWindowResult.Exit;
@@ -78,18 +100,7 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
         {
             this.Result = ConciergeWindowResult.OK;
 
-            if (!(this.ItemComboBox.SelectedItem is Inventory item) || this.SlotComboBox.Text.IsNullOrWhiteSpace())
-            {
-                return;
-            }
-
-            this.PreviousSlot = this.SlotComboBox.Text;
-            var slot = (EquipmentSlot)Enum.Parse(typeof(EquipmentSlot), this.SlotComboBox.Text);
-            this.ItemsAdded = true;
-
-            var newItem = Program.CcsFile.Character.EquippedItems.Equip(item, slot);
-            Program.UndoRedoService.AddCommand(new EquipItemCommand(Program.CcsFile.Character.EquippedItems, newItem, slot));
-
+            this.EquipItem();
             this.HideConciergeWindow();
 
             Program.Modify();
@@ -97,17 +108,7 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
-            if (!(this.ItemComboBox.SelectedItem is Inventory item) || this.SlotComboBox.Text.IsNullOrWhiteSpace())
-            {
-                return;
-            }
-
-            this.PreviousSlot = this.SlotComboBox.Text;
-            var slot = (EquipmentSlot)Enum.Parse(typeof(EquipmentSlot), this.SlotComboBox.Text);
-
-            var newItem = Program.CcsFile.Character.EquippedItems.Equip(item, slot);
-            Program.UndoRedoService.AddCommand(new EquipItemCommand(Program.CcsFile.Character.EquippedItems, newItem, slot));
-
+            this.EquipItem();
             this.ClearFields();
             this.ItemComboBox.ItemsSource = EquippedItems.Equipable;
             this.InvokeApplyChanges();

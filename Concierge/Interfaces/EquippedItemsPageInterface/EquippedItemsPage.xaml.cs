@@ -6,6 +6,7 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Windows;
     using System.Windows.Controls;
 
@@ -16,6 +17,7 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
     using Concierge.Interfaces.Enums;
     using Concierge.Interfaces.InventoryPageInterface;
     using Concierge.Utility;
+    using Concierge.Utility.Extensions;
 
     /// <summary>
     /// Interaction logic for EquippedItemsPage.xaml.
@@ -220,9 +222,16 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
 
             var index = this.SelectedIndex;
             var slot = (EquipmentSlot)Enum.Parse(typeof(EquipmentSlot), this.SelectedDataGrid.Tag as string);
+            var originalEquipped = Program.CcsFile.Character.EquippedItems.DeepCopy();
+            var originalInventory = Program.CcsFile.Character.Inventories.DeepCopy().ToList();
 
             Program.CcsFile.Character.EquippedItems.Dequip(this.SelectedItem, slot);
-            Program.UndoRedoService.AddCommand(new DequipItemCommand(Program.CcsFile.Character.EquippedItems, this.SelectedItem, slot));
+            Program.UndoRedoService.AddCommand(
+                new EquipmentCommand(
+                    originalEquipped,
+                    originalInventory,
+                    Program.CcsFile.Character.EquippedItems.DeepCopy(),
+                    Program.CcsFile.Character.Inventories.DeepCopy().ToList()));
 
             this.Draw();
             this.SelectedDataGrid.SetSelectedIndex(index);

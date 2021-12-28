@@ -86,10 +86,9 @@ namespace Concierge.Character.Items
             }
         }
 
-        public Inventory Equip(Inventory item, EquipmentSlot equipSlot)
+        public void Equip(Inventory item, EquipmentSlot equipSlot)
         {
             var newItem = RemoveFromInventory(item);
-
             switch (equipSlot)
             {
                 case EquipmentSlot.Head:
@@ -108,8 +107,6 @@ namespace Concierge.Character.Items
                     this.Feet.Add(newItem);
                     break;
             }
-
-            return newItem;
         }
 
         public void Dequip(Inventory item, EquipmentSlot equipSlot)
@@ -136,17 +133,6 @@ namespace Concierge.Character.Items
             AddToInventory(item);
         }
 
-        public EquipmentSlot GetEquippedItemSlot(Inventory item)
-        {
-            return this.Head.Any(x => x.EquppedId.Equals(item.EquppedId))
-                ? EquipmentSlot.Head
-                : this.Torso.Any(x => x.EquppedId.Equals(item.EquppedId))
-                    ? EquipmentSlot.Torso
-                    : this.Hands.Any(x => x.EquppedId.Equals(item.EquppedId))
-                                    ? EquipmentSlot.Hands
-                                    : this.Legs.Any(x => x.EquppedId.Equals(item.EquppedId)) ? EquipmentSlot.Legs : EquipmentSlot.Feet;
-        }
-
         public EquippedItems DeepCopy()
         {
             return new EquippedItems()
@@ -162,7 +148,6 @@ namespace Concierge.Character.Items
         private static double GetWeight(List<Inventory> list)
         {
             var weight = 0.0;
-
             foreach (var item in list)
             {
                 weight += item.Weight.Value;
@@ -174,13 +159,9 @@ namespace Concierge.Character.Items
         private static int GetAttuned(List<Inventory> list)
         {
             var attuned = 0;
-
             foreach (var item in list)
             {
-                if (item.Attuned)
-                {
-                    attuned++;
-                }
+                attuned += item.Attuned ? 1 : 0;
             }
 
             return attuned;
@@ -194,6 +175,8 @@ namespace Concierge.Character.Items
             if (existingItem == null)
             {
                 item.Attuned = false;
+                item.EquppedId = Guid.Empty;
+                item.Index = 0;
                 inventory.Insert(item.Index, item);
             }
             else
@@ -204,20 +187,14 @@ namespace Concierge.Character.Items
 
         private static Inventory RemoveFromInventory(Inventory item)
         {
-            var index = 0;
+            var index = Program.CcsFile.Character.Inventories.FindIndex(x => x.Id.Equals(item.Id));
 
             if (item.Amount > 1)
             {
                 item.Amount--;
             }
-            else if (Program.CcsFile.Character.Inventories.Any(x => x.Id.Equals(item.Id) && x.Amount > 1))
-            {
-                var itemInList = Program.CcsFile.Character.Inventories.Where(x => x.Id.Equals(item.Id) && x.Amount > 1).FirstOrDefault();
-                itemInList.Amount--;
-            }
             else
             {
-                index = Program.CcsFile.Character.Inventories.FindIndex(x => x.Id.Equals(item.Id));
                 Program.CcsFile.Character.Inventories.RemoveAll(x => x.Id.Equals(item.Id));
             }
 
