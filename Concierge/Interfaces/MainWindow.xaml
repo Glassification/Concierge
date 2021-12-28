@@ -116,12 +116,24 @@
                 </StackPanel>
             </Grid>
 
-            <Grid x:Name="CharacterHeader" Grid.Column="1" Background="Black" MouseDown="CharacterHeader_MouseDown">
+            <Grid 
+                x:Name="CharacterHeader" 
+                Grid.Column="1" 
+                Background="Black" 
+                MouseDown="CharacterHeader_MouseDown">
                 <StackPanel x:Name="CharacterHeaderPanel" Orientation="Horizontal">
                 </StackPanel>
             </Grid>
 
             <Grid x:Name="OptionButtons" Grid.Column="2" Background="Black">
+                <materialDesign:PackIcon
+                    x:Name="ModifiedStatus"
+                    Kind="ContentSaveAlert" 
+                    Width="15" 
+                    Height="15"
+                    Foreground="SteelBlue"
+                    ToolTip="Unsaved Changes"
+                    Margin="-17, 2, 0, 0"/>
                 <StackPanel Orientation="Horizontal">
                     <components:ConciergeDesignButton 
                         Style="{StaticResource ConciergeDesignButtonStyle}"

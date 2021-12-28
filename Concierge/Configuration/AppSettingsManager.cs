@@ -43,7 +43,7 @@ namespace Concierge.Configuration
         {
             if (Settings.UnitOfMeasurement != settingsDto.UnitOfMeasurement)
             {
-                UnitsChanged?.Invoke(settingsDto, new EventArgs());
+                RefreshUnits(settingsDto);
             }
 
             Settings.AutosaveEnabled = settingsDto.AutosaveEnabled;
@@ -53,6 +53,7 @@ namespace Concierge.Configuration
             Settings.UseCoinWeight = settingsDto.UseCoinWeight;
             Settings.UseEncumbrance = settingsDto.UseEncumbrance;
             Settings.UnitOfMeasurement = settingsDto.UnitOfMeasurement;
+            Settings.AttemptToCenterWindows = settingsDto.AttemptToCenterWindows;
 
             if (Program.IsDebug)
             {
@@ -70,9 +71,9 @@ namespace Concierge.Configuration
             File.WriteAllText(appSettingsPath, config);
         }
 
-        public static void RefreshUnits()
+        public static void RefreshUnits(SettingsDto settingsDto = null)
         {
-            UnitsChanged?.Invoke(ToSettingsDto(), new EventArgs());
+            UnitsChanged?.Invoke(settingsDto is null ? ToSettingsDto() : settingsDto, new EventArgs());
         }
 
         public static SettingsDto ToSettingsDto()
@@ -86,6 +87,7 @@ namespace Concierge.Configuration
                 UseCoinWeight = Settings.UseCoinWeight,
                 UseEncumbrance = Settings.UseEncumbrance,
                 UnitOfMeasurement = Settings.UnitOfMeasurement,
+                AttemptToCenterWindows = Settings.AttemptToCenterWindows,
             };
         }
     }

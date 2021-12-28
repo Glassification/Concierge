@@ -107,20 +107,20 @@ namespace Concierge.Interfaces.OverviewPageInterface
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
-            Program.Modify();
-
             this.UpdateHitDice();
-
             this.InvokeApplyChanges();
+
+            Program.Modify();
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
-            Program.Modify();
             this.Result = ConciergeWindowResult.OK;
 
             this.UpdateHitDice();
             this.HideConciergeWindow();
+
+            Program.Modify();
         }
     }
 }

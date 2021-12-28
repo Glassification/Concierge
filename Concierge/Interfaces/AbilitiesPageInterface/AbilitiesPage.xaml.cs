@@ -122,8 +122,6 @@ namespace Concierge.Interfaces.AbilitiesPageInterface
         {
             if (this.AbilitiesDataGrid.SelectedItem != null)
             {
-                Program.Modify();
-
                 var ability = (Ability)this.AbilitiesDataGrid.SelectedItem;
                 var index = this.AbilitiesDataGrid.SelectedIndex;
 
@@ -131,6 +129,8 @@ namespace Concierge.Interfaces.AbilitiesPageInterface
                 Program.CcsFile.Character.Abilities.Remove(ability);
                 this.DrawAbilities();
                 this.AbilitiesDataGrid.SetSelectedIndex(index);
+
+                Program.Modify();
             }
         }
 

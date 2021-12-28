@@ -77,6 +77,7 @@ namespace Concierge.Character.Spellcasting
                 Description = this.Description,
                 Class = this.Class,
                 Id = this.Id,
+                Name = this.Name,
             };
         }
 

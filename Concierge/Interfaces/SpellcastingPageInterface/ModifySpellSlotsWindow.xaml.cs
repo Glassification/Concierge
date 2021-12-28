@@ -143,20 +143,20 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
-            Program.Modify();
             this.Result = ConciergeWindowResult.OK;
 
             this.UpdateSpellSlots();
             this.HideConciergeWindow();
+
+            Program.Modify();
         }
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
-            Program.Modify();
-
             this.UpdateSpellSlots();
-
             this.InvokeApplyChanges();
+
+            Program.Modify();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)

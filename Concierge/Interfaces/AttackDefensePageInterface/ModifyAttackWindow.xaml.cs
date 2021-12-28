@@ -194,17 +194,15 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
-            Program.Modify();
-
             this.Weapons.Add(this.ToWeapon());
             this.ClearFields();
-
             this.InvokeApplyChanges();
+
+            Program.Modify();
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
-            Program.Modify();
             this.Result = ConciergeWindowResult.OK;
 
             if (this.Editing)
@@ -217,6 +215,7 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
             }
 
             this.HideConciergeWindow();
+            Program.Modify();
         }
 
         private void AttackComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)

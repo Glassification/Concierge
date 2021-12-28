@@ -48,5 +48,10 @@ namespace Concierge.Character.AbilitySkills.SkillTypes
                 return this.bonus;
             }
         }
+
+        public override Skills DeepCopy()
+        {
+            return new AnimalHandling(this.Proficiency, this.Expertise);
+        }
     }
 }

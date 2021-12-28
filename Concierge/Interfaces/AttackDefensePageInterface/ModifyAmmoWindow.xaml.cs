@@ -151,7 +151,6 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
-            Program.Modify();
             this.Result = ConciergeWindowResult.OK;
 
             if (this.Editing)
@@ -164,16 +163,16 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
             }
 
             this.HideConciergeWindow();
+            Program.Modify();
         }
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
-            Program.Modify();
-
             this.Ammunitions.Add(this.ToAmmunition());
             this.ClearFields();
 
             this.InvokeApplyChanges();
+            Program.Modify();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)

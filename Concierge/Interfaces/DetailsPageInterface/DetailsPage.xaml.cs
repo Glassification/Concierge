@@ -227,8 +227,6 @@ namespace Concierge.Interfaces.DetailsPageInterface
                 return;
             }
 
-            Program.Modify();
-
             var item = dataGrid.SelectedItem as Proficiency;
             var index = dataGrid.SelectedIndex;
 
@@ -237,6 +235,8 @@ namespace Concierge.Interfaces.DetailsPageInterface
 
             this.DrawProficiencies();
             dataGrid.SetSelectedIndex(index);
+
+            Program.Modify();
         }
 
         private ConciergeDataGrid GetSelectedProficencyDataGrid()
@@ -382,8 +382,6 @@ namespace Concierge.Interfaces.DetailsPageInterface
         {
             if (this.LanguagesDataGrid.SelectedItem != null)
             {
-                Program.Modify();
-
                 var language = this.LanguagesDataGrid.SelectedItem as Language;
                 var index = this.LanguagesDataGrid.SelectedIndex;
 
@@ -391,6 +389,8 @@ namespace Concierge.Interfaces.DetailsPageInterface
                 Program.CcsFile.Character.Languages.Remove(language);
                 this.DrawLanguages();
                 this.LanguagesDataGrid.SetSelectedIndex(index);
+
+                Program.Modify();
             }
         }
 
@@ -398,8 +398,6 @@ namespace Concierge.Interfaces.DetailsPageInterface
         {
             if (this.ResourcesDataGrid.SelectedItem != null)
             {
-                Program.Modify();
-
                 var resource = this.ResourcesDataGrid.SelectedItem as ClassResource;
                 var index = this.ResourcesDataGrid.SelectedIndex;
 
@@ -407,6 +405,8 @@ namespace Concierge.Interfaces.DetailsPageInterface
                 Program.CcsFile.Character.ClassResources.Remove(resource);
                 this.DrawResources();
                 this.ResourcesDataGrid.SetSelectedIndex(index);
+
+                Program.Modify();
             }
         }
 
@@ -439,8 +439,6 @@ namespace Concierge.Interfaces.DetailsPageInterface
 
         private void ProficiencyDataGrid_Sorted(object sender, RoutedEventArgs e)
         {
-            Program.Modify();
-
             var oldList = new List<Proficiency>(Program.CcsFile.Character.Proficiency);
             Program.CcsFile.Character.Proficiency.Clear();
             this.SortProficiencyItems(Program.CcsFile.Character.Proficiency);
@@ -451,6 +449,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
                     oldList,
                     new List<Proficiency>(Program.CcsFile.Character.Proficiency),
                     this.ConciergePage));
+            Program.Modify();
         }
 
         private void LanguagesDataGrid_Sorted(object sender, RoutedEventArgs e)

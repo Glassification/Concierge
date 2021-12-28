@@ -48,5 +48,10 @@ namespace Concierge.Character.AbilitySkills.SkillTypes
                 return this.bonus;
             }
         }
+
+        public override Skills DeepCopy()
+        {
+            return new History(this.Proficiency, this.Expertise);
+        }
     }
 }

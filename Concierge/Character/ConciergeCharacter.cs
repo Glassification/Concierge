@@ -18,10 +18,11 @@ namespace Concierge.Character
     using Concierge.Character.Statuses;
     using Concierge.Configuration;
     using Concierge.Utility;
+    using Concierge.Utility.Extensions;
     using Concierge.Utility.Units;
     using Newtonsoft.Json;
 
-    public class ConciergeCharacter
+    public class ConciergeCharacter : ICopyable<ConciergeCharacter>
     {
         public ConciergeCharacter()
         {
@@ -30,53 +31,53 @@ namespace Concierge.Character
 
         public List<Ability> Abilities { get; set; }
 
-        public List<Ammunition> Ammunitions { get; private set; }
+        public List<Ammunition> Ammunitions { get; set; }
 
-        public Appearance Appearance { get; private set; }
+        public Appearance Appearance { get; set; }
 
-        public Armor Armor { get; private set; }
+        public Armor Armor { get; set; }
 
-        public Attributes Attributes { get; private set; }
+        public Attributes Attributes { get; set; }
 
-        public List<ClassResource> ClassResources { get; private set; }
+        public List<ClassResource> ClassResources { get; set; }
 
-        public Companion Companion { get; private set; }
+        public Companion Companion { get; set; }
 
-        public Senses Senses { get; private set; }
+        public Senses Senses { get; set; }
 
         public List<Chapter> Chapters { get; set; }
 
-        public List<Inventory> Inventories { get; private set; }
+        public List<Inventory> Inventories { get; set; }
 
-        public List<MagicClass> MagicClasses { get; private set; }
+        public List<MagicClass> MagicClasses { get; set; }
 
-        public Personality Personality { get; private set; }
+        public Personality Personality { get; set; }
 
         public List<Proficiency> Proficiency { get; set; }
 
-        public SavingThrow SavingThrow { get; private set; }
+        public SavingThrow SavingThrow { get; set; }
 
-        public Skill Skill { get; private set; }
+        public Skill Skill { get; set; }
 
-        public List<Spell> Spells { get; private set; }
+        public List<Spell> Spells { get; set; }
 
         public SpellSlots SpellSlots { get; set; }
 
-        public Vitality Vitality { get; private set; }
+        public Vitality Vitality { get; set; }
 
-        public Wealth Wealth { get; private set; }
+        public Wealth Wealth { get; set; }
 
-        public List<Weapon> Weapons { get; private set; }
+        public List<Weapon> Weapons { get; set; }
 
-        public EquippedItems EquippedItems { get; private set; }
+        public EquippedItems EquippedItems { get; set; }
 
-        public CharacterImage CharacterImage { get; private set; }
+        public CharacterImage CharacterImage { get; set; }
 
-        public CharacterImage CharacterIcon { get; private set; }
+        public CharacterImage CharacterIcon { get; set; }
 
-        public List<StatusEffect> StatusEffects { get; private set; }
+        public List<StatusEffect> StatusEffects { get; set; }
 
-        public CharacterProperties Properties { get; private set; }
+        public CharacterProperties Properties { get; set; }
 
         public List<Language> Languages { get; set; }
 
@@ -194,6 +195,57 @@ namespace Concierge.Character
         public Chapter GetChapterByDocumentId(Guid id)
         {
             return this.Chapters.Single(x => x.Documents.Any(y => y.Id.Equals(id)));
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (obj is not ConciergeCharacter)
+            {
+                return false;
+            }
+
+            var character1 = JsonConvert.SerializeObject(obj as ConciergeCharacter, Formatting.Indented);
+            var character2 = JsonConvert.SerializeObject(this, Formatting.Indented);
+
+            return character1.Equals(character2);
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
+
+        public ConciergeCharacter DeepCopy()
+        {
+            return new ConciergeCharacter()
+            {
+                Abilities = this.Abilities.DeepCopy().ToList(),
+                Ammunitions = this.Ammunitions.DeepCopy().ToList(),
+                Appearance = this.Appearance.DeepCopy(),
+                Armor = this.Armor.DeepCopy(),
+                Attributes = this.Attributes.DeepCopy(),
+                Chapters = this.Chapters.DeepCopy().ToList(),
+                ClassResources = this.ClassResources.DeepCopy().ToList(),
+                Companion = this.Companion.DeepCopy(),
+                Senses = this.Senses.DeepCopy(),
+                Inventories = this.Inventories.DeepCopy().ToList(),
+                MagicClasses = this.MagicClasses.DeepCopy().ToList(),
+                Personality = this.Personality.DeepCopy(),
+                Proficiency = this.Proficiency.DeepCopy().ToList(),
+                SavingThrow = this.SavingThrow.DeepCopy(),
+                Skill = this.Skill.DeepCopy(),
+                Spells = this.Spells.DeepCopy().ToList(),
+                SpellSlots = this.SpellSlots.DeepCopy(),
+                Vitality = this.Vitality.DeepCopy(),
+                Wealth = this.Wealth.DeepCopy(),
+                Weapons = this.Weapons.DeepCopy().ToList(),
+                EquippedItems = this.EquippedItems.DeepCopy(),
+                CharacterImage = this.CharacterImage.DeepCopy(),
+                CharacterIcon = this.CharacterIcon.DeepCopy(),
+                StatusEffects = this.StatusEffects.DeepCopy().ToList(),
+                Properties = this.Properties.DeepCopy(),
+                Languages = this.Languages.DeepCopy().ToList(),
+            };
         }
 
         private void Initialize()

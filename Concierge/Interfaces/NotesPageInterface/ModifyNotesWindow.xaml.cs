@@ -136,8 +136,6 @@ namespace Concierge.Interfaces.NotesPageInterface
 
         private void OkApplyChanges()
         {
-            Program.Modify();
-
             if ((this.ChapterComboBox.SelectedItem as Chapter) == null ||
                 this.DocumentTextBox.Text.IsNullOrWhiteSpace())
             {
@@ -152,6 +150,8 @@ namespace Concierge.Interfaces.NotesPageInterface
             {
                 this.ToNote();
             }
+
+            Program.Modify();
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)

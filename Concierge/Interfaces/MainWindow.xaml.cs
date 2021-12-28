@@ -71,6 +71,8 @@ namespace Concierge.Interfaces
             this.InitializeComponent();
 
             Program.UndoRedoService.StackChanged += this.UndoRedo_StackChanged;
+            Program.ModifiedChanged += this.MainWindow_ModifiedChanged;
+
             this.mainWindowService = new MainWindowService(this.ListViewItem_Selected);
             this.modifyPropertiesWindow.ApplyChanges += this.Window_ApplyChanges;
             this.modifyCharacterImageWindow.ApplyChanges += this.Window_ApplyChanges;
@@ -363,7 +365,7 @@ namespace Concierge.Interfaces
 
         private ConciergeWindowResult CheckSaveBeforeAction(string action)
         {
-            if (!Program.Modified)
+            if (!Program.IsModified)
             {
                 return ConciergeWindowResult.No;
             }
@@ -437,7 +439,7 @@ namespace Concierge.Interfaces
         {
             EasterEggController.KonamiCode(e.Key);
 
-            if (Program.Typing || !IsControl)
+            if (Program.IsTyping || !IsControl)
             {
                 return;
             }
@@ -718,6 +720,11 @@ namespace Concierge.Interfaces
         {
             this.helpWindow.ShowWindow();
             this.IgnoreSecondPress = true;
+        }
+
+        private void MainWindow_ModifiedChanged(object sender, EventArgs e)
+        {
+            this.ModifiedStatus.Visibility = ((bool)sender) ? Visibility.Visible : Visibility.Collapsed;
         }
     }
 }

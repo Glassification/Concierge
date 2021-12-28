@@ -128,7 +128,7 @@ namespace Concierge.Interfaces.AbilitiesPageInterface
 
         private void UpdateAbility(Ability ability)
         {
-            var oldItem = ability.DeepCopy() as Ability;
+            var oldItem = ability.DeepCopy();
 
             ability.Name = this.NameComboBox.Text;
             ability.Level = this.LevelUpDown.Value ?? 0;
@@ -148,17 +148,15 @@ namespace Concierge.Interfaces.AbilitiesPageInterface
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
-            Program.Modify();
-
             this.Abilities.Add(this.ToAbility());
             this.ClearFields();
-
             this.InvokeApplyChanges();
+
+            Program.Modify();
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
-            Program.Modify();
             this.Result = ConciergeWindowResult.OK;
 
             if (this.Editing)
@@ -171,6 +169,8 @@ namespace Concierge.Interfaces.AbilitiesPageInterface
             }
 
             this.HideConciergeWindow();
+
+            Program.Modify();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)

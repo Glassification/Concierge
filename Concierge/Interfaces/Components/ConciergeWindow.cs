@@ -77,6 +77,8 @@ namespace Concierge.Interfaces.Components
 
         protected void ShowConciergeWindow()
         {
+            Program.Logger.Info($"{this.Title} opened.");
+
             this.SetOpenLocation();
             this.BeginAnimation(OpacityProperty, this.openAnimation);
             this.ShowDialog();
@@ -84,6 +86,8 @@ namespace Concierge.Interfaces.Components
 
         protected void HideConciergeWindow()
         {
+            Program.Logger.Info($"{this.Title} closed.");
+
             this.BeginAnimation(OpacityProperty, this.hideAnimation);
         }
 

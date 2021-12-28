@@ -9,8 +9,9 @@ namespace Concierge.Character
     using Concierge.Character.Characteristics;
     using Concierge.Character.Items;
     using Concierge.Character.Statuses;
+    using Concierge.Utility;
 
-    public class Companion
+    public class Companion : ICopyable<Companion>
     {
         public Companion()
         {
@@ -27,5 +28,16 @@ namespace Concierge.Character
         public Attributes Attributes { get; set; }
 
         public List<Weapon> Attacks { get; set; }
+
+        public Companion DeepCopy()
+        {
+            return new Companion()
+            {
+                Vitality = this.Vitality.DeepCopy(),
+                Attributes = this.Attributes.DeepCopy(),
+                Attacks = new List<Weapon>(this.Attacks),
+                Properties = this.Properties.DeepCopy(),
+            };
+        }
     }
 }

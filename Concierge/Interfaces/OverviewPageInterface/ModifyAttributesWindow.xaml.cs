@@ -87,21 +87,20 @@ namespace Concierge.Interfaces.OverviewPageInterface
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
-            Program.Modify();
-
             this.Result = ConciergeWindowResult.OK;
 
             this.UpdateAttributes();
             this.HideConciergeWindow();
+
+            Program.Modify();
         }
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
-            Program.Modify();
-
             this.UpdateAttributes();
-
             this.InvokeApplyChanges();
+
+            Program.Modify();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)

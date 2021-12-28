@@ -152,7 +152,7 @@
         "Measurement": 1
       },
       "SkinColour": "White",
-      "EyeColour": "Sky Blue",
+      "EyeColour": "Ice Blue",
       "HairColour": "Black",
       "DistinguishingMarks": "Sideburns; Missing pinky on left hand; Small slanted scar on chin running from left to right. this is some more text. let's see if this scroll bar works. Hello, there. I think it's very nice to meet you!"
     },
@@ -330,6 +330,7 @@
         "IsInBagOfHolding": true,
         "Note": "Very old map oh a mountain range. It looks to be similar to the sunset mountains. Written in Dwarvish.",
         "Attuned": false,
+        "Index": 0,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
         "Id": "140b6c03-d69e-4419-ab53-511fa797be92"
       },
@@ -344,6 +345,7 @@
         "IsInBagOfHolding": true,
         "Note": "A bag containing 10,000 peices of candy.",
         "Attuned": false,
+        "Index": 0,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
         "Id": "bd50e9ea-8a05-442d-bb85-7f68ff56b0e7"
       },
@@ -358,6 +360,7 @@
         "IsInBagOfHolding": false,
         "Note": "The bag stores items in an extradimensional space. Can hold up to 500lbs, and 64 cubic feet. Turning the bag inside out will spill all its contents.",
         "Attuned": false,
+        "Index": 0,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
         "Id": "679aa1ac-53d8-434d-bd85-cd7c54cb4151"
       },
@@ -372,6 +375,7 @@
         "IsInBagOfHolding": true,
         "Note": "As an action, you can spill these tiny metal balls from their pouch to cover a level, square area that is 10 feet on a side. Moving across the covered area must succeed on a DC 10 Dexterity saving throw or fall prone. Moving through the area at half speed doesn't need a save.",
         "Attuned": false,
+        "Index": 0,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
         "Id": "46fcff28-d02b-43fb-a61e-16500e349d48"
       },
@@ -386,6 +390,7 @@
         "IsInBagOfHolding": true,
         "Note": "The potion will keep you clean for 24 hours. They brush your hair, teeth, and leave you smelling great. Has a small chance of bubbles coming out your mouth.",
         "Attuned": false,
+        "Index": 0,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
         "Id": "7da207a2-428b-4507-a9e7-8f7c130b297c"
       },
@@ -400,6 +405,7 @@
         "IsInBagOfHolding": true,
         "Note": "As an action, you can spread a bag of caltrops to cover a square area that is 5 feet on a side. Any creature that enters the area must succeed on a DC 15 Dexterity saving throw or stop moving this turn and take 1 piercing damage. Taking this damage reduces the creature's walking speed by 10 feet until the creature regains at least 1 hit point. A creature moving through the area at half speed doesn't need to make the save.",
         "Attuned": false,
+        "Index": 0,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
         "Id": "113c59de-d698-4fc1-ac56-357768439306"
       },
@@ -414,6 +420,7 @@
         "IsInBagOfHolding": true,
         "Note": "Contract to protect mage from danger.",
         "Attuned": false,
+        "Index": 0,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
         "Id": "9913acd2-d10d-48d2-b7b7-c2df25a9b637"
       },
@@ -428,6 +435,7 @@
         "IsInBagOfHolding": true,
         "Note": "Using a crowbar grants advantage to Strength checks where the crowbar's leverage can be applied.",
         "Attuned": false,
+        "Index": 0,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
         "Id": "16b54342-5d35-4284-b391-3a32d36ade79"
       },
@@ -442,6 +450,7 @@
         "IsInBagOfHolding": true,
         "Note": "An insignia representing membership with the Dragon Cult.",
         "Attuned": false,
+        "Index": 0,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
         "Id": "79213218-1999-44a1-8e3f-59c5ca1126cb"
       },
@@ -456,6 +465,7 @@
         "IsInBagOfHolding": true,
         "Note": "The beak of an eagle that was far too much trouble.",
         "Attuned": false,
+        "Index": 0,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
         "Id": "837aa570-4d4b-4ab7-845a-7d5a70c88059"
       },
@@ -470,6 +480,7 @@
         "IsInBagOfHolding": true,
         "Note": "A flask or tankard can hold 1 pint of liquid.",
         "Attuned": false,
+        "Index": 0,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
         "Id": "3615d25a-0dd7-4f5d-b142-ad2b006136dc"
       },
@@ -484,6 +495,7 @@
         "IsInBagOfHolding": true,
         "Note": "Woman's fur coat for keeping warm in cold climates.",
         "Attuned": false,
+        "Index": 0,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
         "Id": "6cdd98a6-b719-4c92-b865-8f10e49ce0ff"
       },
@@ -498,6 +510,7 @@
         "IsInBagOfHolding": true,
         "Note": "Empty vial. Can hold 7 doses of something (drugs).",
         "Attuned": false,
+        "Index": 0,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
         "Id": "d0676865-165f-4c43-857b-21cb30db2d13"
       },
@@ -512,6 +525,7 @@
         "IsInBagOfHolding": true,
         "Note": "This one-handed hammer with an iron head is useful for pounding pitons into a wall.",
         "Attuned": false,
+        "Index": 0,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
         "Id": "c435d0c5-0a37-4a59-a904-c00ed53b1ae4"
       },
@@ -526,6 +540,7 @@
         "IsInBagOfHolding": true,
         "Note": "Bonus action to use yourself, action to use on another person. 2d4 +2 HP restored.",
         "Attuned": false,
+        "Index": 0,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
         "Id": "4ed6d349-0757-4022-bc53-0b2b25f4269e"
       },
@@ -540,6 +555,7 @@
         "IsInBagOfHolding": true,
         "Note": "Casts bright light in 30 foot radius, dim light for additional 30 feet. Burns 6 hours on pint of oil. Lower hood to cast dim light in 5 foot radius.",
         "Attuned": false,
+        "Index": 0,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
         "Id": "37faed17-725b-4435-a2b1-72974a164b3e"
       },
@@ -554,6 +570,7 @@
         "IsInBagOfHolding": false,
         "Note": "Used to add a d10 to any d20 roll.",
         "Attuned": false,
+        "Index": 0,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
         "Id": "41254983-c7da-4972-80b9-ab165beb0297"
       },
@@ -568,6 +585,7 @@
         "IsInBagOfHolding": true,
         "Note": "Intel on the imperial forces.",
         "Attuned": false,
+        "Index": 0,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
         "Id": "a6192596-c095-4915-8eb5-ccb7a0cf0744"
       },
@@ -582,6 +600,7 @@
         "IsInBagOfHolding": true,
         "Note": "A thin stick thought to be magical in some way.",
         "Attuned": false,
+        "Index": 0,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
         "Id": "f3f80e26-07b3-4e0c-a10b-f7aed240be0a"
       },
@@ -596,6 +615,7 @@
         "IsInBagOfHolding": true,
         "Note": "Map to an unspecified location.",
         "Attuned": false,
+        "Index": 0,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
         "Id": "232563f7-331f-4e34-80bb-8b57b31acad5"
       },
@@ -610,6 +630,7 @@
         "IsInBagOfHolding": true,
         "Note": "Rod found in Bag of Holding (Might be a key).",
         "Attuned": false,
+        "Index": 0,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
         "Id": "72fb16a4-63ba-4dd4-92ef-1a22f1254559"
       },
@@ -624,6 +645,7 @@
         "IsInBagOfHolding": true,
         "Note": "Tusk of a fallen ogre.",
         "Attuned": false,
+        "Index": 0,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
         "Id": "06fc4ad6-0f00-4387-b6af-174e3d8df570"
       },
@@ -638,6 +660,7 @@
         "IsInBagOfHolding": true,
         "Note": "Very rich looking clothes. Black with red trim.",
         "Attuned": false,
+        "Index": 0,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
         "Id": "a76034ca-93ea-4a1c-bf85-eaab6022e589"
       },
@@ -652,6 +675,7 @@
         "IsInBagOfHolding": false,
         "Note": "Whisper into the crystal and another creature with the other in the pair will hear you. 1 action to use.",
         "Attuned": false,
+        "Index": 0,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
         "Id": "ae5a3f80-614c-418f-b5ce-8d3e6f11103a"
       },
@@ -666,6 +690,7 @@
         "IsInBagOfHolding": true,
         "Note": "When a wall doesn’t offer handholds and footholds, you can make your own. A piton is a steel spike with an eye through which you can loop a rope.",
         "Attuned": false,
+        "Index": 0,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
         "Id": "0a5c2ea6-b4d1-4f0e-9087-2fd2608ee92d"
       },
@@ -680,6 +705,7 @@
         "IsInBagOfHolding": true,
         "Note": "Contains chemicals and equipment to create poisons.",
         "Attuned": false,
+        "Index": 0,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
         "Id": "02bd3416-2e82-4c63-8b62-54bc47412d00"
       },
@@ -694,6 +720,7 @@
         "IsInBagOfHolding": true,
         "Note": "See spell: Detect Thoughts. One time use.",
         "Attuned": false,
+        "Index": 0,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
         "Id": "d1207f93-088b-4710-900d-3f8b1ff13d48"
       },
@@ -708,6 +735,7 @@
         "IsInBagOfHolding": true,
         "Note": "Grants resistance to fire",
         "Attuned": false,
+        "Index": 0,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
         "Id": "1378132a-f287-4779-bc67-ba0dde656c4e"
       },
@@ -722,6 +750,7 @@
         "IsInBagOfHolding": true,
         "Note": "If injested causes the poison condition. Creature must save on a CD 12 Constitution save. Causes 1d12 poison damage.",
         "Attuned": false,
+        "Index": 0,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
         "Id": "ce923a1a-7ccc-4b36-9f40-75963593c2a2"
       },
@@ -736,6 +765,7 @@
         "IsInBagOfHolding": false,
         "Note": "A quiver can hold up to 20 arrows.",
         "Attuned": false,
+        "Index": 0,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
         "Id": "0d60fbd8-10ff-459a-b819-c837a295baee"
       },
@@ -750,6 +780,7 @@
         "IsInBagOfHolding": true,
         "Note": "Rations consist of dry foods suitable for extended travel, including jerky, dried fruit, hardtack, and nuts.",
         "Attuned": false,
+        "Index": 0,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
         "Id": "4f96177b-14ad-4bee-b5f8-c0a1bd0454d2"
       },
@@ -764,6 +795,7 @@
         "IsInBagOfHolding": true,
         "Note": "Sacks containing some sort of chemicals that give off a lot of heat.",
         "Attuned": false,
+        "Index": 0,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
         "Id": "c4e74374-99da-41ba-a023-bcd66a9691ff"
       },
@@ -778,6 +810,7 @@
         "IsInBagOfHolding": true,
         "Note": "Rope, has 2 hit points and can be burst with a DC 17 Strength check.",
         "Attuned": false,
+        "Index": 0,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
         "Id": "fd469eae-f2f6-4d75-a1ca-a69fd890d1e4"
       },
@@ -792,6 +825,7 @@
         "IsInBagOfHolding": true,
         "Note": "Food for one person for a meal.",
         "Attuned": false,
+        "Index": 0,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
         "Id": "3147aa3b-5348-49f6-a59f-c253163820dc"
       },
@@ -806,6 +840,7 @@
         "IsInBagOfHolding": false,
         "Note": "Say the words 'trust is earned' to get all the perks befitting a lieutenant.",
         "Attuned": false,
+        "Index": 0,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
         "Id": "c64a4b48-1717-432d-b6eb-a9d35d4990af"
       },
@@ -820,6 +855,7 @@
         "IsInBagOfHolding": true,
         "Note": "A standard shovel used for digging.",
         "Attuned": false,
+        "Index": 0,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
         "Id": "f938f387-3cbb-442d-9fed-b5cf56b3c50d"
       },
@@ -834,6 +870,7 @@
         "IsInBagOfHolding": true,
         "Note": "A small marble like bead coloured a translucent green.",
         "Attuned": false,
+        "Index": 0,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
         "Id": "cfd40c35-af4d-47d0-b0ce-d27b0af3dffd"
       },
@@ -848,6 +885,7 @@
         "IsInBagOfHolding": true,
         "Note": "A 10-foot length of string, typically found in a burglar's pack.",
         "Attuned": false,
+        "Index": 0,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
         "Id": "3a032110-79cb-445a-8764-a6ecc2b67aad"
       },
@@ -862,6 +900,7 @@
         "IsInBagOfHolding": true,
         "Note": "The knife has a mouth on it that keeps repeating \"Eating a human is a mortal sin\".",
         "Attuned": false,
+        "Index": 0,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
         "Id": "b0ca94d3-2b65-4ce7-969e-ba68a49861c8"
       },
@@ -876,6 +915,7 @@
         "IsInBagOfHolding": true,
         "Note": "A simple and portable canvas shelter, a tent sleeps two.",
         "Attuned": false,
+        "Index": 0,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
         "Id": "52e1bae4-7c1c-4596-9796-c07f8bde3588"
       },
@@ -890,6 +930,7 @@
         "IsInBagOfHolding": true,
         "Note": "Small file, lock picks, mirror on metal handle, narrow bladed scissors, pliers.",
         "Attuned": false,
+        "Index": 0,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
         "Id": "662f8d13-7922-48f3-a5c9-16312ce021eb"
       },
@@ -904,6 +945,7 @@
         "IsInBagOfHolding": true,
         "Note": "The deck consists of 70 cards (plus two reference cards).",
         "Attuned": false,
+        "Index": 0,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
         "Id": "1f6e95d1-6693-4c74-8f90-bf1d9cd0ca1c"
       },
@@ -918,6 +960,7 @@
         "IsInBagOfHolding": true,
         "Note": "This small container holds flint, fire steel, and tinder (usually dry cloth soaked in light oil) used to kindle a fire. Using it to light a torch -- or anything else with abundant, exposed fuel -- takes an action. Lighting any other fire takes 1 minute.",
         "Attuned": false,
+        "Index": 0,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
         "Id": "6622dd17-864d-4477-85e6-be8551665dd5"
       },
@@ -932,6 +975,7 @@
         "IsInBagOfHolding": true,
         "Note": "A carved crystal that faintly glows in the moonlight. (Stolen from ruins in the Scaled Plains)",
         "Attuned": false,
+        "Index": 0,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
         "Id": "45c3a4fc-3de7-4444-a55a-4a949aaf8907"
       },
@@ -946,6 +990,7 @@
         "IsInBagOfHolding": true,
         "Note": "A box with 3 locks on it, all interconnected. Strong divination magic from within.",
         "Attuned": false,
+        "Index": 0,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
         "Id": "b59d4e95-e6ee-4ff8-8a59-b34f1ca67d54"
       },
@@ -960,6 +1005,7 @@
         "IsInBagOfHolding": true,
         "Note": "Test Item",
         "Attuned": false,
+        "Index": 0,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
         "Id": "b9344386-4577-4289-8244-dab70e72d2d2"
       },
@@ -974,6 +1020,7 @@
         "IsInBagOfHolding": true,
         "Note": "A wooden staff belonging to Declan",
         "Attuned": false,
+        "Index": 0,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
         "Id": "b4f2b56f-0335-47e7-b420-ddc96f54cec5"
       }
@@ -1047,19 +1094,19 @@
     ],
     "SavingThrow": {
       "Strength": {
-        "Proficiency": false
+        "Proficiency": true
       },
       "Dexterity": {
-        "Proficiency": true
+        "Proficiency": false
       },
       "Constitution": {
-        "Proficiency": false
-      },
-      "Intelligence": {
         "Proficiency": true
       },
-      "Wisdom": {
+      "Intelligence": {
         "Proficiency": false
+      },
+      "Wisdom": {
+        "Proficiency": true
       },
       "Charisma": {
         "Proficiency": false
@@ -1239,7 +1286,7 @@
       "Health": {
         "MaxHealth": 71,
         "TemporaryHealth": 0,
-        "BaseHealth": 69
+        "BaseHealth": 70
       },
       "HitDice": {
         "TotalD6": 0,
@@ -1269,10 +1316,10 @@
         "Unconscious": "Cured"
       },
       "DeathSavingThrows": {
-        "CurrentDeathSave": 0,
+        "CurrentDeathSave": 2,
         "DeathSaves": [
-          0,
-          0,
+          1,
+          1,
           0,
           0,
           0
@@ -1410,6 +1457,7 @@
           "IsInBagOfHolding": false,
           "Note": "Leather armor with a base AC of 13 + DEX modifier.",
           "Attuned": false,
+          "Index": 0,
           "EquppedId": "3bf7f256-6dd8-46a1-a1c3-b2ef882f8bfb",
           "Id": "3500be2f-4696-45e0-857d-496d4f6fdb16"
         },
@@ -1424,6 +1472,7 @@
           "IsInBagOfHolding": false,
           "Note": "Simple cloak with usable hood.",
           "Attuned": false,
+          "Index": 0,
           "EquppedId": "39c1b556-450c-40e4-87b1-e11f6061b598",
           "Id": "f6098477-f745-4b6a-b996-4a4a72fc557f"
         }
@@ -1440,6 +1489,7 @@
           "IsInBagOfHolding": false,
           "Note": "Use to cast create darkness. 1d4 uses per day.",
           "Attuned": true,
+          "Index": 0,
           "EquppedId": "14ecf6d6-df39-4dbe-9c76-f67684486509",
           "Id": "c5ada3d4-ba74-4015-988d-eefea2d3059f"
         },
@@ -1454,6 +1504,7 @@
           "IsInBagOfHolding": false,
           "Note": "Fancy pair of for hidding rings on ones hand.",
           "Attuned": false,
+          "Index": 0,
           "EquppedId": "b068ba66-97c2-4ca2-8822-4a7d0e4cf844",
           "Id": "652beb3a-4d8e-4600-8c2c-6f50860b9ded"
         }
@@ -1471,6 +1522,7 @@
           "IsInBagOfHolding": false,
           "Note": "High-top black leather boots.",
           "Attuned": false,
+          "Index": 0,
           "EquppedId": "09ff74e8-4893-404d-b5ee-bfac5028cfcc",
           "Id": "32616332-7a03-47c0-b877-ad2e2271b7e6"
         }
@@ -1550,5 +1602,5 @@
       }
     ]
   },
-  "Version": "4.3.1"
+  "Version": "4.4.3"
 }

@@ -81,6 +81,7 @@ namespace Concierge.Utility
             this.StackChanged?.Invoke(this, new EventArgs());
 
             Program.Logger.Info($"Redo {this.Current.GetType()}.");
+            Program.Modify();
         }
 
         public void Undo(MainWindow mainWindow)
@@ -104,6 +105,7 @@ namespace Concierge.Utility
             this.StackChanged?.Invoke(this, new EventArgs());
 
             Program.Logger.Info($"Undo {this.Current.GetType()}.");
+            Program.Modify();
         }
 
         public List<Command> GetRedoCommands()

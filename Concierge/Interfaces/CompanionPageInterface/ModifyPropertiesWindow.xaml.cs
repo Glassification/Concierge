@@ -76,19 +76,18 @@ namespace Concierge.Interfaces.CompanionPageInterface
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
-            Program.Modify();
-
             this.UpdateCompanion();
-
             this.InvokeApplyChanges();
+
+            Program.Modify();
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
-            Program.Modify();
-
             this.UpdateCompanion();
             this.HideConciergeWindow();
+
+            Program.Modify();
         }
     }
 }

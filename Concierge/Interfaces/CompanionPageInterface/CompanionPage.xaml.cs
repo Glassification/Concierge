@@ -227,8 +227,6 @@ namespace Concierge.Interfaces.CompanionPageInterface
         {
             if (this.WeaponDataGrid.SelectedItem != null)
             {
-                Program.Modify();
-
                 var weapon = this.WeaponDataGrid.SelectedItem as Weapon;
                 var index = this.WeaponDataGrid.SelectedIndex;
 
@@ -236,6 +234,8 @@ namespace Concierge.Interfaces.CompanionPageInterface
                 Program.CcsFile.Character.Companion.Attacks.Remove(weapon);
                 this.DrawAttacks();
                 this.WeaponDataGrid.SetSelectedIndex(index);
+
+                Program.Modify();
             }
         }
 
@@ -293,6 +293,7 @@ namespace Concierge.Interfaces.CompanionPageInterface
             }
 
             Program.UndoRedoService.AddCommand(new EditCommand<HitDice>(hitDice, oldItem, this.ConciergePage));
+            Program.Modify();
 
             this.DrawHitDice();
         }

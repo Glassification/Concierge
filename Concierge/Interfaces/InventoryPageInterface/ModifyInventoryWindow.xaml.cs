@@ -153,7 +153,7 @@ namespace Concierge.Interfaces.InventoryPageInterface
 
         private void UpdateInventory(Inventory inventory)
         {
-            var oldItem = inventory.DeepCopy() as Inventory;
+            var oldItem = inventory.DeepCopy();
 
             inventory.Name = this.NameComboBox.Text;
             inventory.Amount = this.AmountUpDown.Value ?? 0;
@@ -195,12 +195,11 @@ namespace Concierge.Interfaces.InventoryPageInterface
                 return;
             }
 
-            Program.Modify();
-
             this.Items.Add(this.ToInventory());
             this.ClearFields();
-
             this.InvokeApplyChanges();
+
+            Program.Modify();
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
@@ -210,9 +209,7 @@ namespace Concierge.Interfaces.InventoryPageInterface
                 this.HideConciergeWindow();
             }
 
-            Program.Modify();
             this.Result = ConciergeWindowResult.OK;
-
             if (this.Editing)
             {
                 this.UpdateInventory(this.SelectedItem);
@@ -223,6 +220,8 @@ namespace Concierge.Interfaces.InventoryPageInterface
             }
 
             this.HideConciergeWindow();
+
+            Program.Modify();
         }
 
         private void NameComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)

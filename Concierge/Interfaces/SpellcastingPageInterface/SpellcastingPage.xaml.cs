@@ -239,8 +239,6 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
         {
             if (this.MagicClassDataGrid.SelectedItem != null)
             {
-                Program.Modify();
-
                 var magicClass = (MagicClass)this.MagicClassDataGrid.SelectedItem;
                 var index = this.MagicClassDataGrid.SelectedIndex;
 
@@ -248,11 +246,11 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
                 Program.CcsFile.Character.MagicClasses.Remove(magicClass);
                 this.DrawMagicClasses();
                 this.MagicClassDataGrid.SetSelectedIndex(index);
+
+                Program.Modify();
             }
             else if (this.SpellListDataGrid.SelectedItem != null)
             {
-                Program.Modify();
-
                 var spell = (Spell)this.SpellListDataGrid.SelectedItem;
                 var index = this.SpellListDataGrid.SelectedIndex;
 
@@ -260,6 +258,8 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
                 Program.CcsFile.Character.Spells.Remove(spell);
                 this.DrawSpellList();
                 this.SpellListDataGrid.SetSelectedIndex(index);
+
+                Program.Modify();
             }
         }
 
@@ -342,6 +342,7 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
             }
 
             Program.UndoRedoService.AddCommand(new EditCommand<SpellSlots>(spellSlots, oldItem, this.ConciergePage));
+            Program.Modify();
 
             this.DrawTotalSpellSlots();
             this.DrawUsedSpellSlots();

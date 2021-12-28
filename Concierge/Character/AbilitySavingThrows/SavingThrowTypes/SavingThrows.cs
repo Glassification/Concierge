@@ -5,9 +5,10 @@
 namespace Concierge.Character.AbilitySavingThrows.SavingThrowTypes
 {
     using Concierge.Character.Enums;
+    using Concierge.Utility;
     using Newtonsoft.Json;
 
-    public abstract class SavingThrows
+    public abstract class SavingThrows : ICopyable<SavingThrows>
     {
         public bool Proficiency
         {
@@ -26,5 +27,7 @@ namespace Concierge.Character.AbilitySavingThrows.SavingThrowTypes
         {
             get;
         }
+
+        public abstract SavingThrows DeepCopy();
     }
 }

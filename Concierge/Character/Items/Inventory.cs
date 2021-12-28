@@ -35,6 +35,8 @@ namespace Concierge.Character.Items
         [JsonIgnore]
         public string AttunedText => this.Attuned ? "Yes" : "No";
 
+        public int Index { get; set; }
+
         public Guid EquppedId { get; set; }
 
         public Guid Id { get; init; }
@@ -49,12 +51,13 @@ namespace Concierge.Character.Items
             return new Inventory()
             {
                 Name = this.Name,
-                Amount = 1,
+                Amount = this.Amount,
                 Weight = this.Weight.DeepCopy(),
-                IsInBagOfHolding = false,
+                IsInBagOfHolding = this.IsInBagOfHolding,
                 Attuned = this.Attuned,
                 Note = this.Note,
-                EquppedId = Guid.NewGuid(),
+                Index = this.Index,
+                EquppedId = this.EquppedId,
                 Id = this.Id,
             };
         }

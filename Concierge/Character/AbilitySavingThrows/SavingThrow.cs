@@ -5,8 +5,9 @@
 namespace Concierge.Character.AbilitySavingThrows
 {
     using Concierge.Character.AbilitySavingThrows.SavingThrowTypes;
+    using Concierge.Utility;
 
-    public class SavingThrow
+    public class SavingThrow : ICopyable<SavingThrow>
     {
         public SavingThrow()
         {
@@ -29,5 +30,18 @@ namespace Concierge.Character.AbilitySavingThrows
         public Wisdom Wisdom { get; set; }
 
         public Charisma Charisma { get; set; }
+
+        public SavingThrow DeepCopy()
+        {
+            return new SavingThrow()
+            {
+                Strength = (Strength)this.Strength.DeepCopy(),
+                Dexterity = (Dexterity)this.Dexterity.DeepCopy(),
+                Constitution = (Constitution)this.Constitution.DeepCopy(),
+                Intelligence = (Intelligence)this.Intelligence.DeepCopy(),
+                Wisdom = (Wisdom)this.Wisdom.DeepCopy(),
+                Charisma = (Charisma)this.Charisma.DeepCopy(),
+            };
+        }
     }
 }

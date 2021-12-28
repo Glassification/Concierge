@@ -48,5 +48,10 @@ namespace Concierge.Character.AbilitySkills.SkillTypes
                 return this.bonus;
             }
         }
+
+        public override Skills DeepCopy()
+        {
+            return new Religion(this.Proficiency, this.Expertise);
+        }
     }
 }

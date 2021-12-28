@@ -5,9 +5,10 @@
 namespace Concierge.Character.AbilitySkills.SkillTypes
 {
     using Concierge.Character.Enums;
+    using Concierge.Utility;
     using Newtonsoft.Json;
 
-    public abstract class Skills
+    public abstract class Skills : ICopyable<Skills>
     {
         public bool Proficiency
         {
@@ -32,5 +33,7 @@ namespace Concierge.Character.AbilitySkills.SkillTypes
         {
             get;
         }
+
+        public abstract Skills DeepCopy();
     }
 }

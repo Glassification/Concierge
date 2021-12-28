@@ -96,10 +96,10 @@ namespace Concierge.Interfaces.OverviewPageInterface
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
-            Program.Modify();
-
             this.Result = ConciergeWindowResult.OK;
             this.HideConciergeWindow();
+
+            Program.Modify();
         }
     }
 }
