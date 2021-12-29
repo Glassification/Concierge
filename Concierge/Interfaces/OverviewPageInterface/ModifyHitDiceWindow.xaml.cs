@@ -4,10 +4,7 @@
 
 namespace Concierge.Interfaces.OverviewPageInterface
 {
-    using System;
-    using System.ComponentModel;
     using System.Windows;
-    using System.Windows.Input;
 
     using Concierge.Character.Statuses;
     using Concierge.Commands;
@@ -78,7 +75,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
 
         private void UpdateHitDice()
         {
-            var oldItem = this.HitDice.DeepCopy() as HitDice;
+            var oldItem = this.HitDice.DeepCopy();
 
             this.HitDice.TotalD6 = this.TotalD6UpDown.Value ?? 0;
             this.HitDice.TotalD8 = this.TotalD8UpDown.Value ?? 0;

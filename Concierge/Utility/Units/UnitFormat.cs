@@ -8,6 +8,7 @@ namespace Concierge.Utility.Units
 
     using Concierge.Configuration;
     using Concierge.Primitives;
+    using Concierge.Utility.Units.Dtos;
     using Concierge.Utility.Units.Enums;
 
     public static class UnitFormat
@@ -28,7 +29,7 @@ namespace Concierge.Utility.Units
 
         public static string FormatHeight(UnitTypes unitType, double value)
         {
-            var feetAndInches = Utilities.GetSeperateFeetAndInches(value);
+            var feetAndInches = GetSeperateFeetAndInches(value);
 
             return unitType switch
             {
@@ -48,6 +49,19 @@ namespace Concierge.Utility.Units
                 UnitTypes.Metric => $"{Math.Round(value, significantDigits)} kg",
                 _ => Math.Round(value, Constants.SignificantDigits).ToString(),
             };
+        }
+
+        public static double CombineFeetAndInches(double feet, double inches)
+        {
+            return (feet * 12) + inches;
+        }
+
+        public static FormattedFeetInchesDto GetSeperateFeetAndInches(double totalInches)
+        {
+            var feet = (int)(totalInches / 12);
+            var inches = totalInches - (feet * 12);
+
+            return new FormattedFeetInchesDto(feet, inches);
         }
 
         private static int GetSignificantDigits(double value)

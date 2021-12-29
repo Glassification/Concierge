@@ -222,16 +222,9 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
 
             var index = this.SelectedIndex;
             var slot = (EquipmentSlot)Enum.Parse(typeof(EquipmentSlot), this.SelectedDataGrid.Tag as string);
-            var originalEquipped = Program.CcsFile.Character.EquippedItems.DeepCopy();
-            var originalInventory = Program.CcsFile.Character.Inventories.DeepCopy().ToList();
 
+            Program.UndoRedoService.AddCommand(new DequipItemCommand(this.SelectedItem, slot));
             Program.CcsFile.Character.EquippedItems.Dequip(this.SelectedItem, slot);
-            Program.UndoRedoService.AddCommand(
-                new EquipmentCommand(
-                    originalEquipped,
-                    originalInventory,
-                    Program.CcsFile.Character.EquippedItems.DeepCopy(),
-                    Program.CcsFile.Character.Inventories.DeepCopy().ToList()));
 
             this.Draw();
             this.SelectedDataGrid.SetSelectedIndex(index);

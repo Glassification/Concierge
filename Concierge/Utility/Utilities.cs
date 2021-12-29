@@ -25,19 +25,6 @@ namespace Concierge.Utility
 
     public static class Utilities
     {
-        public static double CombineFeetAndInches(double feet, double inches)
-        {
-            return (feet * 12) + inches;
-        }
-
-        public static FormattedFeetInchesDto GetSeperateFeetAndInches(double totalInches)
-        {
-            var feet = (int)(totalInches / 12);
-            var inches = totalInches - (feet * 12);
-
-            return new FormattedFeetInchesDto(feet, inches);
-        }
-
         public static void SortListFromDataGrid<T>(ConciergeDataGrid dataGrid, List<T> list, ConciergePage conciergePage)
         {
             if (dataGrid.Items.IsEmpty)

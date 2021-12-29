@@ -64,7 +64,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
         {
             if (this.Appearance.Height.UnitType == UnitTypes.Imperial)
             {
-                var feedAndInches = Utilities.GetSeperateFeetAndInches(this.Appearance.Height.Value);
+                var feedAndInches = UnitFormat.GetSeperateFeetAndInches(this.Appearance.Height.Value);
 
                 this.MetricGrid.Visibility = Visibility.Collapsed;
                 this.ImperialGrid.Visibility = Visibility.Visible;
@@ -83,7 +83,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
         {
             if (this.Appearance.Height.UnitType == UnitTypes.Imperial)
             {
-                return Utilities.CombineFeetAndInches(this.FeetUpDown.Value ?? 0, this.InchesUpDown.Value ?? 0);
+                return UnitFormat.CombineFeetAndInches(this.FeetUpDown.Value ?? 0, this.InchesUpDown.Value ?? 0);
             }
             else
             {

@@ -29,7 +29,7 @@ namespace Concierge.Interfaces.UtilityInterface
 
         private void Read()
         {
-            this.VersionField.Text = Program.AssemblyVersion;
+            this.VersionField.Text = $"{Program.AssemblyVersion}{(Program.IsDebug ? " - Debug" : string.Empty)}";
             this.DesignerField.Text = Constants.Designer;
             this.LicenseField.Text = Constants.License;
             this.CopyrightField.Text = $"{CopyrightSymbol}{Constants.Copyright}";

@@ -189,17 +189,17 @@ namespace Concierge.Utility
             StatusEffects = new ReadOnlyCollection<string>(statusEffects);
         }
 
-        public static ReadOnlyCollection<int> AutosaveIntervals { get; private set; }
+        public static ReadOnlyCollection<int> AutosaveIntervals { get; }
 
-        public static ReadOnlyCollection<Weapon> Weapons { get; private set; }
+        public static ReadOnlyCollection<Weapon> Weapons { get; }
 
-        public static ReadOnlyCollection<Ammunition> Ammunitions { get; private set; }
+        public static ReadOnlyCollection<Ammunition> Ammunitions { get; }
 
-        public static ReadOnlyCollection<Spell> Spells { get; private set; }
+        public static ReadOnlyCollection<Spell> Spells { get; }
 
-        public static ReadOnlyCollection<Inventory> Inventories { get; private set; }
+        public static ReadOnlyCollection<Inventory> Inventories { get; }
 
-        public static ReadOnlyCollection<Language> Languages { get; private set; }
+        public static ReadOnlyCollection<Language> Languages { get; }
 
         public static ReadOnlyCollection<string> Alignment { get; }
 

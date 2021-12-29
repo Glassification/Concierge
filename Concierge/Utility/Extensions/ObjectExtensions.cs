@@ -8,9 +8,12 @@ namespace Concierge.Utility.Extensions
     using System.Collections;
     using System.Collections.Generic;
     using System.ComponentModel;
+    using System.Linq;
 
     public static class ObjectExtensions
     {
+        private static int Depth { get; set; }
+
         public static bool IsList(this object value)
         {
             if (value == null)
@@ -52,6 +55,46 @@ namespace Concierge.Utility.Extensions
             }
 
             return returnValue;
+        }
+
+        public static void SetProperties<T>(this object originalItem, object itemToCopy)
+        {
+            Depth = 0;
+            if (originalItem == null)
+            {
+                return;
+            }
+
+            SetPropertiesHelper<T>(itemToCopy, originalItem);
+        }
+
+        private static void SetPropertiesHelper<T>(object item, object originalItem)
+        {
+            Depth++;
+
+            var properties = item.GetType().GetProperties();
+            foreach (var property in properties)
+            {
+                if (property.CanWrite && property.CanRead)
+                {
+                    var propertyValue = property.GetValue(item);
+                    var isCopyable = propertyValue
+                        .GetType()
+                        .GetInterfaces()
+                        .Any(x => x.IsGenericType && x.GetGenericTypeDefinition() == typeof(ICopyable<>));
+
+                    if (isCopyable && Depth < Constants.MaxDepth)
+                    {
+                        SetPropertiesHelper<T>(propertyValue, property.GetValue(originalItem));
+                    }
+                    else
+                    {
+                        property.SetValue(originalItem, propertyValue);
+                    }
+                }
+            }
+
+            Depth--;
         }
     }
 }

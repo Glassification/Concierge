@@ -6,7 +6,6 @@ namespace Concierge.Interfaces.UtilityInterface
 {
     using System.ComponentModel;
     using System.Threading;
-    using System.Windows;
 
     using Concierge.Interfaces.Components;
 

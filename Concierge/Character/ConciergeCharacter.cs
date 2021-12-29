@@ -16,6 +16,7 @@ namespace Concierge.Character
     using Concierge.Character.Notes;
     using Concierge.Character.Spellcasting;
     using Concierge.Character.Statuses;
+    using Concierge.Commands;
     using Concierge.Configuration;
     using Concierge.Utility;
     using Concierge.Utility.Extensions;
@@ -159,6 +160,10 @@ namespace Concierge.Character
 
         public void LongRest()
         {
+            var oldVitality = this.Vitality.DeepCopy();
+            var oldSpellSlots = this.SpellSlots.DeepCopy();
+            var oldCompanionVitality = this.Companion.Vitality.DeepCopy();
+
             this.Vitality.ResetHealth();
             this.Vitality.RegainHitDice();
             this.Vitality.ResetDeathSaves();
@@ -166,6 +171,15 @@ namespace Concierge.Character
 
             this.Companion.Vitality.ResetHealth();
             this.Companion.Vitality.RegainHitDice();
+
+            Program.UndoRedoService.AddCommand(
+                new LongRestCommand(
+                    oldVitality,
+                    oldCompanionVitality,
+                    oldSpellSlots,
+                    this.Vitality.DeepCopy(),
+                    this.Companion.Vitality.DeepCopy(),
+                    this.SpellSlots.DeepCopy()));
         }
 
         public bool IsWeaponProficient(Weapon weapon)

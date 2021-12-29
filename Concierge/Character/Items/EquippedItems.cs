@@ -176,8 +176,8 @@ namespace Concierge.Character.Items
             {
                 item.Attuned = false;
                 item.EquppedId = Guid.Empty;
-                item.Index = 0;
                 inventory.Insert(item.Index, item);
+                item.Index = 0;
             }
             else
             {
@@ -187,21 +187,24 @@ namespace Concierge.Character.Items
 
         private static Inventory RemoveFromInventory(Inventory item)
         {
+            Inventory newItem;
             var index = Program.CcsFile.Character.Inventories.FindIndex(x => x.Id.Equals(item.Id));
 
             if (item.Amount > 1)
             {
                 item.Amount--;
+                newItem = item.DeepCopy();
+                newItem.EquppedId = Guid.NewGuid();
+                newItem.Amount = 1;
+                newItem.Index = index;
             }
             else
             {
                 Program.CcsFile.Character.Inventories.RemoveAll(x => x.Id.Equals(item.Id));
+                newItem = item;
+                newItem.EquppedId = Guid.NewGuid();
+                newItem.Index = index;
             }
-
-            var newItem = item.DeepCopy();
-            newItem.EquppedId = Guid.NewGuid();
-            newItem.Amount = 1;
-            newItem.Index = index;
 
             return newItem;
         }

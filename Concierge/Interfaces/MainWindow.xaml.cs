@@ -61,9 +61,9 @@ namespace Concierge.Interfaces
         private readonly AboutConciergeWindow aboutConciergeWindow = new ();
         private readonly HelpWindow helpWindow = new ();
         private readonly ModifyCharacterImageWindow modifyCharacterImageWindow = new ("50x50 image ratio is recommended.", ConciergePage.None);
-
         private readonly AutosaveTimer autosaveTimer = new ();
         private readonly CharacterCreationWizard characterCreationWizard = new ();
+        private readonly LongRestStatusWindow longRestStatusWindow = new ();
         private readonly SearchWindow searchWindow;
 
         public MainWindow()
@@ -244,8 +244,10 @@ namespace Concierge.Interfaces
         {
             Program.Logger.Info($"Long rest.");
             Program.CcsFile.Character.LongRest();
+            Program.Modify();
 
             this.DrawAll();
+            this.longRestStatusWindow.ShowWindow();
         }
 
         public void Search()

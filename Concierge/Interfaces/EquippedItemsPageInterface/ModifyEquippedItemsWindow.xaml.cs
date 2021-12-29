@@ -78,16 +78,9 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
             this.PreviousSlot = this.SlotComboBox.Text;
             this.ItemsAdded = true;
             var slot = (EquipmentSlot)Enum.Parse(typeof(EquipmentSlot), this.SlotComboBox.Text);
-            var originalEquipped = Program.CcsFile.Character.EquippedItems.DeepCopy();
-            var originalInventory = Program.CcsFile.Character.Inventories.DeepCopy().ToList();
 
             Program.CcsFile.Character.EquippedItems.Equip(item, slot);
-            Program.UndoRedoService.AddCommand(
-                new EquipmentCommand(
-                    originalEquipped,
-                    originalInventory,
-                    Program.CcsFile.Character.EquippedItems.DeepCopy(),
-                    Program.CcsFile.Character.Inventories.DeepCopy().ToList()));
+            Program.UndoRedoService.AddCommand(new EquipItemCommand(item, slot));
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
