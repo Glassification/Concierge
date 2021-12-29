@@ -122,7 +122,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
         {
             if (this.Editing)
             {
-                var oldItem = this.ClassResource.DeepCopy() as ClassResource;
+                var oldItem = this.ClassResource.DeepCopy();
 
                 this.ClassResource.Type = this.ResourceTextBox.Text;
                 this.ClassResource.Total = this.PoolUpDown.Value ?? 0;

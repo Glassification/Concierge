@@ -131,7 +131,7 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
 
         private void UpdateMagicClass(MagicClass magicClass)
         {
-            var oldItem = magicClass.DeepCopy() as MagicClass;
+            var oldItem = magicClass.DeepCopy();
 
             magicClass.Name = this.ClassNameComboBox.Text;
             magicClass.Ability = (Abilities)Enum.Parse(typeof(Abilities), this.AbilityComboBox.Text);

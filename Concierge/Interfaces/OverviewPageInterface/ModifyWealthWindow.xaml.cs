@@ -103,7 +103,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
             this.Result = ConciergeWindowResult.OK;
-            var oldItem = this.SelectedWealth.DeepCopy() as Wealth;
+            var oldItem = this.SelectedWealth.DeepCopy();
 
             this.SelectedWealth.Copper = this.CP;
             this.SelectedWealth.Silver = this.SP;

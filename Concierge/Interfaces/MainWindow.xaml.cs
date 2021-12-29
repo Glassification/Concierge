@@ -204,6 +204,7 @@ namespace Concierge.Interfaces
             this.autosaveTimer.Stop();
 
             Program.CcsFile = ccsFile;
+            Program.Unmodify();
             if (AppSettingsManager.Settings.AutosaveEnabled)
             {
                 this.autosaveTimer.Start(Constants.AutosaveIntervals[AppSettingsManager.Settings.AutosaveInterval]);

@@ -78,7 +78,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
 
         private void UpdateConditions()
         {
-            var oldItem = this.Conditions.DeepCopy() as Conditions;
+            var oldItem = this.Conditions.DeepCopy();
 
             this.Conditions.Blinded = this.BlindedComboBox.Text.Equals("Cured") ? "Cured" : "Blinded";
             this.Conditions.Charmed = this.CharmedComboBox.Text.Equals("Cured") ? "Cured" : "Charmed";

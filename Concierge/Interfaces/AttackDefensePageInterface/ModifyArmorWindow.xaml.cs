@@ -87,7 +87,7 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
 
         private void UpdateArmor(Armor armor)
         {
-            var oldItem = armor.DeepCopy() as Armor;
+            var oldItem = armor.DeepCopy();
 
             armor.Equiped = this.EquipedTextBox.Text;
             armor.Type = (ArmorType)Enum.Parse(typeof(ArmorType), this.TypeComboBox.Text);

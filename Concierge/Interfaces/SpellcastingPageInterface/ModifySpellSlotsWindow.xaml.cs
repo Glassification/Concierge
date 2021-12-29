@@ -108,7 +108,7 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
 
         private void UpdateSpellSlots()
         {
-            var oldItem = this.SpellSlots.DeepCopy() as SpellSlots;
+            var oldItem = this.SpellSlots.DeepCopy();
 
             this.SpellSlots.PactUsed = this.UsedPactUpDown.Value ?? 0;
             this.SpellSlots.FirstUsed = this.Used1UpDown.Value ?? 0;

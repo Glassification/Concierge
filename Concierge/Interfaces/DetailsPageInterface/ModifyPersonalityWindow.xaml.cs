@@ -67,7 +67,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
 
         private void UpdatePersonality()
         {
-            var oldItem = this.Personality.DeepCopy() as Personality;
+            var oldItem = this.Personality.DeepCopy();
 
             this.Personality.Trait1 = this.Trait1TextBox.Text;
             this.Personality.Trait2 = this.Trait2TextBox.Text;

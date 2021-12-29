@@ -120,7 +120,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
 
         private void UpdateProficiency(Proficiency proficiency)
         {
-            var oldItem = proficiency.DeepCopy() as Proficiency;
+            var oldItem = proficiency.DeepCopy();
 
             proficiency.Name = this.ProficiencyTextBox.Text;
             proficiency.ProficiencyType = (ProficiencyTypes)Enum.Parse(typeof(ProficiencyTypes), this.ProficiencyComboBox.Text);

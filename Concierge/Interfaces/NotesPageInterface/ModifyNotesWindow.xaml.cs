@@ -104,13 +104,13 @@ namespace Concierge.Interfaces.NotesPageInterface
         {
             if (this.CurrentChapter == null)
             {
-                var oldItem = this.CurrentDocument.DeepCopy() as Document;
+                var oldItem = this.CurrentDocument.DeepCopy();
                 this.CurrentDocument.Name = this.DocumentTextBox.Text;
                 Program.UndoRedoService.AddCommand(new EditCommand<Document>(this.CurrentDocument, oldItem, this.conciergePage));
             }
             else
             {
-                var oldItem = this.CurrentChapter.DeepCopy() as Chapter;
+                var oldItem = this.CurrentChapter.DeepCopy();
                 this.CurrentChapter.Name = this.DocumentTextBox.Text;
                 Program.UndoRedoService.AddCommand(new EditCommand<Chapter>(this.CurrentChapter, oldItem, this.conciergePage));
             }

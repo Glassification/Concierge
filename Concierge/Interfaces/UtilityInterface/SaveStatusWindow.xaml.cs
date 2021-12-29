@@ -31,6 +31,7 @@ namespace Concierge.Interfaces.UtilityInterface
 
         public void ShowWindow()
         {
+            this.SavingTextBlock.Text = $"Saving '{Program.CcsFile.FileName}'...";
             this.ProgressBarFiller.RunWorkerAsync();
 
             this.ShowConciergeWindow();

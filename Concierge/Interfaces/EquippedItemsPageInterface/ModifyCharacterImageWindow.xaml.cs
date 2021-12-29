@@ -98,7 +98,7 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
 
         private void UpdateCharacterImage()
         {
-            var oldItem = this.CharacterImage.DeepCopy() as CharacterImage;
+            var oldItem = this.CharacterImage.DeepCopy();
 
             if (!this.OriginalFileName.Equals(this.ImageSourceTextBox.Text))
             {

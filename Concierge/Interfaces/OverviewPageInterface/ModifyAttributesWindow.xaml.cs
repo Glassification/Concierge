@@ -73,7 +73,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
 
         private void UpdateAttributes()
         {
-            var oldItem = this.Attributes.DeepCopy() as Attributes;
+            var oldItem = this.Attributes.DeepCopy();
 
             this.Attributes.Strength = this.StrengthUpDown.Value ?? 0;
             this.Attributes.Dexterity = this.DexterityUpDown.Value ?? 0;

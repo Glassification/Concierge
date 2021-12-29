@@ -30,10 +30,8 @@ namespace Concierge.Persistence.ReadWriters
                     return new CcsFile();
                 }
 
-                Program.Unmodify();
-                Program.Logger.Info($"Successfully loaded {file}");
-
                 AppSettingsManager.RefreshUnits();
+                Program.Logger.Info($"Successfully loaded {file}");
 
                 return ccsFile;
             }

@@ -153,6 +153,24 @@ namespace Concierge.Character
         [JsonIgnore]
         public double HeavyCarryCapacity => this.Attributes.Strength * UnitConvertion.HeavyMultiplier;
 
+        public override bool Equals(object obj)
+        {
+            if (obj is not ConciergeCharacter)
+            {
+                return false;
+            }
+
+            var character1 = JsonConvert.SerializeObject(obj as ConciergeCharacter, Formatting.Indented);
+            var character2 = JsonConvert.SerializeObject(this, Formatting.Indented);
+
+            return character1.Equals(character2);
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
+
         public void Reset()
         {
             this.Initialize();
@@ -209,24 +227,6 @@ namespace Concierge.Character
         public Chapter GetChapterByDocumentId(Guid id)
         {
             return this.Chapters.Single(x => x.Documents.Any(y => y.Id.Equals(id)));
-        }
-
-        public override bool Equals(object obj)
-        {
-            if (obj is not ConciergeCharacter)
-            {
-                return false;
-            }
-
-            var character1 = JsonConvert.SerializeObject(obj as ConciergeCharacter, Formatting.Indented);
-            var character2 = JsonConvert.SerializeObject(this, Formatting.Indented);
-
-            return character1.Equals(character2);
-        }
-
-        public override int GetHashCode()
-        {
-            return base.GetHashCode();
         }
 
         public ConciergeCharacter DeepCopy()

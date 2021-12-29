@@ -53,7 +53,7 @@ namespace Concierge.Interfaces.CompanionPageInterface
 
         private void UpdateCompanion()
         {
-            var oldItem = this.Properties.DeepCopy() as CompanionProperties;
+            var oldItem = this.Properties.DeepCopy();
 
             this.Properties.Name = this.NameTextBox.Text;
             this.Properties.ArmorClass = this.AcUpDown.Value ?? 0;

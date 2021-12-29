@@ -139,7 +139,7 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
 
         private void UpdateWeapon(Weapon weapon)
         {
-            var oldItem = weapon.DeepCopy() as Weapon;
+            var oldItem = weapon.DeepCopy();
 
             weapon.Name = this.AttackComboBox.Text;
             weapon.WeaponType = (WeaponTypes)Enum.Parse(typeof(WeaponTypes), this.TypeComboBox.Text);

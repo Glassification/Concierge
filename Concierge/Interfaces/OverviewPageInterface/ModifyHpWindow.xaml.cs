@@ -47,7 +47,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
 
             if (this.Result == ConciergeWindowResult.OK)
             {
-                var oldItem = vitality.Health.DeepCopy() as Health;
+                var oldItem = vitality.Health.DeepCopy();
                 vitality.Heal(this.HpUpDown.Value ?? 0);
                 Program.UndoRedoService.AddCommand(new EditCommand<Health>(vitality.Health, oldItem, this.conciergePage));
             }
@@ -64,7 +64,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
 
             if (this.Result == ConciergeWindowResult.OK)
             {
-                var oldItem = vitality.Health.DeepCopy() as Health;
+                var oldItem = vitality.Health.DeepCopy();
                 vitality.Damage(this.HpUpDown.Value ?? 0);
                 Program.UndoRedoService.AddCommand(new EditCommand<Health>(vitality.Health, oldItem, this.conciergePage));
             }

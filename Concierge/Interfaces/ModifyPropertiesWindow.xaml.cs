@@ -79,7 +79,7 @@ namespace Concierge.Interfaces
         private void UpdateProperties()
         {
             var properties = Program.CcsFile.Character.Properties;
-            var oldItem = properties.DeepCopy() as CharacterProperties;
+            var oldItem = properties.DeepCopy();
 
             properties.Name = this.NameTextBox.Text;
             properties.Race = this.RaceComboBox.Text;

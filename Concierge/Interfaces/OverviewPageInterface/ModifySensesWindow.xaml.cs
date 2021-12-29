@@ -70,7 +70,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
         private void UpdateSenses()
         {
             var senses = Program.CcsFile.Character.Senses;
-            var oldItem = senses.DeepCopy() as Senses;
+            var oldItem = senses.DeepCopy();
 
             senses.InitiativeBonus = this.InitiativeBonusUpDown.Value ?? 0;
             senses.PerceptionBonus = this.PerceptionBonusUpDown.Value ?? 0;

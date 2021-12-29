@@ -67,7 +67,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
 
         private void UpdateHealth()
         {
-            var oldItem = this.Health.DeepCopy() as Health;
+            var oldItem = this.Health.DeepCopy();
 
             this.Health.MaxHealth = this.TotalHpUpDown.Value ?? 0;
             this.Health.BaseHealth = this.CurrentHpUpDown.Value ?? 0;

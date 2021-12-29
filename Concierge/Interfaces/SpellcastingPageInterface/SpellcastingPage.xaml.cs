@@ -294,7 +294,7 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
             }
 
             var spellSlots = Program.CcsFile.Character.SpellSlots;
-            var oldItem = spellSlots.DeepCopy() as SpellSlots;
+            var oldItem = spellSlots.DeepCopy();
             var usedBox = sender as Grid;
 
             switch (usedBox.Name)

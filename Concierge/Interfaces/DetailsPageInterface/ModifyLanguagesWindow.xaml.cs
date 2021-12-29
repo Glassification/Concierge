@@ -101,7 +101,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
 
         private void UpdateLanguage(Language language)
         {
-            var oldItem = language.DeepCopy() as Language;
+            var oldItem = language.DeepCopy();
 
             language.Name = this.NameComboBox.Text;
             language.Script = this.ScriptTextBox.Text;

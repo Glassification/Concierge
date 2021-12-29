@@ -149,7 +149,7 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
 
         private void UpdateSpell(Spell spell)
         {
-            var oldItem = spell.DeepCopy() as Spell;
+            var oldItem = spell.DeepCopy();
 
             spell.Name = this.SpellNameComboBox.Text;
             spell.Prepared = this.PreparedCheckBox.IsChecked ?? false;

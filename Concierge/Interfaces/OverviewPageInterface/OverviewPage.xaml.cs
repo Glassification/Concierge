@@ -618,7 +618,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
             }
 
             var hitDice = Program.CcsFile.Character.Vitality.HitDice;
-            var oldItem = hitDice.DeepCopy() as HitDice;
+            var oldItem = hitDice.DeepCopy();
             switch ((sender as Grid).Name)
             {
                 case "D6SpentBox":
@@ -731,7 +731,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
                 return;
             }
 
-            var oldItem = character.Vitality.DeathSavingThrows.DeepCopy() as DeathSavingThrows;
+            var oldItem = character.Vitality.DeathSavingThrows.DeepCopy();
             character.Vitality.DeathSavingThrows.MakeDeathSave(DeathSave.Success);
             Program.UndoRedoService.AddCommand(new EditCommand<DeathSavingThrows>(character.Vitality.DeathSavingThrows, oldItem, this.ConciergePage));
 
@@ -749,7 +749,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
                 return;
             }
 
-            var oldItem = character.Vitality.DeathSavingThrows.DeepCopy() as DeathSavingThrows;
+            var oldItem = character.Vitality.DeathSavingThrows.DeepCopy();
             character.Vitality.DeathSavingThrows.MakeDeathSave(DeathSave.Failure);
             Program.UndoRedoService.AddCommand(new EditCommand<DeathSavingThrows>(character.Vitality.DeathSavingThrows, oldItem, this.ConciergePage));
 
@@ -766,7 +766,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
 
         private void ResetSaves_Click(object sender, RoutedEventArgs e)
         {
-            var oldItem = Program.CcsFile.Character.Vitality.DeathSavingThrows.DeepCopy() as DeathSavingThrows;
+            var oldItem = Program.CcsFile.Character.Vitality.DeathSavingThrows.DeepCopy();
             Program.CcsFile.Character.Vitality.DeathSavingThrows.ResetDeathSaves();
             Program.UndoRedoService.AddCommand(new EditCommand<DeathSavingThrows>(Program.CcsFile.Character.Vitality.DeathSavingThrows, oldItem, this.ConciergePage));
 

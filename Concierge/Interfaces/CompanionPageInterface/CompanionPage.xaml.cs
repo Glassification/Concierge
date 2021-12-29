@@ -271,7 +271,7 @@ namespace Concierge.Interfaces.CompanionPageInterface
             }
 
             var hitDice = Program.CcsFile.Character.Companion.Vitality.HitDice;
-            var oldItem = hitDice.DeepCopy() as HitDice;
+            var oldItem = hitDice.DeepCopy();
             switch ((sender as Grid).Name)
             {
                 case "D6SpentBox":

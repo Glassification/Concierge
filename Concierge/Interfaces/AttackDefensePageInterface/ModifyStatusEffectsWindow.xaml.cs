@@ -105,7 +105,7 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
 
         private void UpdateStatusEffect()
         {
-            var oldItem = this.SelectedEffect.DeepCopy() as StatusEffect;
+            var oldItem = this.SelectedEffect.DeepCopy();
 
             this.SelectedEffect.Name = this.NameComboBox.Text;
             this.SelectedEffect.Type = (StatusEffectTypes)Enum.Parse(typeof(StatusEffectTypes), this.TypeComboBox.Text);

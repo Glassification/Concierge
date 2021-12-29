@@ -112,7 +112,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
 
         private void UpdateAppearance()
         {
-            var oldItem = this.Appearance.DeepCopy() as Appearance;
+            var oldItem = this.Appearance.DeepCopy();
 
             this.Appearance.Gender = this.GenderComboBox.Text;
             this.Appearance.Age = this.AgeUpDown.Value ?? 0;

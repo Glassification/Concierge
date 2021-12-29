@@ -114,7 +114,7 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
 
         private void UpdateAmmunition(Ammunition ammunition)
         {
-            var oldItem = ammunition.DeepCopy() as Ammunition;
+            var oldItem = ammunition.DeepCopy();
 
             ammunition.Name = this.NameComboBox.Text;
             ammunition.Quantity = this.QuantityUpDown.Value ?? 0;

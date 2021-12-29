@@ -59,12 +59,12 @@ namespace Concierge.Utility.Extensions
 
         public static void SetProperties<T>(this object originalItem, object itemToCopy)
         {
-            Depth = 0;
             if (originalItem == null)
             {
                 return;
             }
 
+            Depth = 0;
             SetPropertiesHelper<T>(itemToCopy, originalItem);
         }
 
