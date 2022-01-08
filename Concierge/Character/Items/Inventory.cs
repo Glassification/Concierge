@@ -39,7 +39,25 @@ namespace Concierge.Character.Items
 
         public Guid EquppedId { get; set; }
 
-        public Guid Id { get; init; }
+        public Guid Id { get; set; }
+
+        public override bool Equals(object obj)
+        {
+            if (obj is not Inventory)
+            {
+                return false;
+            }
+
+            var item = obj as Inventory;
+            return item.Name.Equals(this.Name) &&
+                item.Weight == this.Weight &&
+                item.Note.Equals(this.Note);
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
 
         public override string ToString()
         {

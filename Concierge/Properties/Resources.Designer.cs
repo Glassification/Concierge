@@ -73,6 +73,16 @@ namespace Concierge.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] AboutBanner {
+            get {
+                object obj = ResourceManager.GetObject("AboutBanner", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] Ammunition {
             get {
                 object obj = ResourceManager.GetObject("Ammunition", resourceCulture);

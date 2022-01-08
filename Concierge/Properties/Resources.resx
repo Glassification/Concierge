@@ -121,6 +121,9 @@
   <data name="Ability" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Json\Ability.json;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="AboutBanner" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Images\AboutBanner.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="Ammunition" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Json\Ammunition.json;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>

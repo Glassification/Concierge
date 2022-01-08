@@ -10,6 +10,10 @@ namespace Concierge.Utility.Dtos
     {
         public MainWindowDto()
         {
+            this.Center = new Point(0, 0);
+            this.Location = new Point(0, 0);
+            this.ActualWidth = 0;
+            this.WindowState = WindowState.Maximized;
         }
 
         public Point Center { get; set; }

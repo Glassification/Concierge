@@ -5,6 +5,7 @@
 namespace Concierge.Commands
 {
     using System;
+    using System.Linq;
 
     using Concierge.Character.Enums;
     using Concierge.Character.Items;
@@ -12,30 +13,31 @@ namespace Concierge.Commands
 
     public class EquipItemCommand : Command
     {
-        private readonly Inventory item;
         private readonly EquipmentSlot equipmentSlot;
         private readonly Guid equippedId;
+        private readonly Guid id;
         private readonly int index;
 
         public EquipItemCommand(Inventory item, EquipmentSlot equipmentSlot)
         {
             this.ConciergePage = ConciergePage.EquippedItems;
-            this.item = item;
             this.equipmentSlot = equipmentSlot;
             this.index = item.Index;
             this.equippedId = item.EquppedId;
+            this.id = item.Id;
         }
 
         public override void Redo()
         {
-            Program.CcsFile.Character.EquippedItems.Equip(this.item, this.equipmentSlot);
-            this.item.Index = this.index;
-            this.item.EquppedId = this.equippedId;
+            var item = Program.CcsFile.Character.Inventories.Where(x => x.Id.Equals(this.id)).FirstOrDefault();
+            item = Program.CcsFile.Character.EquippedItems.Equip(item, this.equipmentSlot);
+            item.Index = this.index;
+            item.EquppedId = this.equippedId;
         }
 
         public override void Undo()
         {
-            Program.CcsFile.Character.EquippedItems.Dequip(this.item, this.equipmentSlot);
+            Program.CcsFile.Character.EquippedItems.Dequip(this.id, this.equippedId, this.equipmentSlot);
         }
     }
 }

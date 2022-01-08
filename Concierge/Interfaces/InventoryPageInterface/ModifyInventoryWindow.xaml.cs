@@ -108,11 +108,17 @@ namespace Concierge.Interfaces.InventoryPageInterface
             {
                 this.BagOfHoldingText.Text = "Attuned:";
                 this.BagOfHoldingCheckBox.IsChecked = inventory.Attuned;
+                this.AmountTextBlock.Opacity = 0.5;
+                this.AmountUpDown.Opacity = 0.5;
+                this.AmountUpDown.IsEnabled = false;
             }
             else
             {
                 this.BagOfHoldingText.Text = "Bag of Holding:";
                 this.BagOfHoldingCheckBox.IsChecked = inventory.IsInBagOfHolding;
+                this.AmountTextBlock.Opacity = 1;
+                this.AmountUpDown.Opacity = 1;
+                this.AmountUpDown.IsEnabled = true;
             }
 
             this.BagOfHoldingCheckBox.UpdatedValue();

@@ -86,7 +86,7 @@ namespace Concierge.Character.Items
             }
         }
 
-        public void Equip(Inventory item, EquipmentSlot equipSlot)
+        public Inventory Equip(Inventory item, EquipmentSlot equipSlot)
         {
             var newItem = RemoveFromInventory(item);
             switch (equipSlot)
@@ -107,6 +107,33 @@ namespace Concierge.Character.Items
                     this.Feet.Add(newItem);
                     break;
             }
+
+            return newItem;
+        }
+
+        public void Dequip(Guid id, Guid equippedId, EquipmentSlot equipSlot)
+        {
+            Inventory item = null;
+            switch (equipSlot)
+            {
+                case EquipmentSlot.Head:
+                    item = this.Head.Where(x => x.Id.Equals(id) && x.EquppedId.Equals(equippedId)).FirstOrDefault();
+                    break;
+                case EquipmentSlot.Torso:
+                    item = this.Torso.Where(x => x.Id.Equals(id) && x.EquppedId.Equals(equippedId)).FirstOrDefault();
+                    break;
+                case EquipmentSlot.Hands:
+                    item = this.Hands.Where(x => x.Id.Equals(id) && x.EquppedId.Equals(equippedId)).FirstOrDefault();
+                    break;
+                case EquipmentSlot.Legs:
+                    item = this.Legs.Where(x => x.Id.Equals(id) && x.EquppedId.Equals(equippedId)).FirstOrDefault();
+                    break;
+                case EquipmentSlot.Feet:
+                    item = this.Feet.Where(x => x.Id.Equals(id) && x.EquppedId.Equals(equippedId)).FirstOrDefault();
+                    break;
+            }
+
+            this.Dequip(item, equipSlot);
         }
 
         public void Dequip(Inventory item, EquipmentSlot equipSlot)
@@ -176,6 +203,14 @@ namespace Concierge.Character.Items
             {
                 item.Attuned = false;
                 item.EquppedId = Guid.Empty;
+                inventory.Insert(item.Index, item);
+                item.Index = 0;
+            }
+            else if (!existingItem.Equals(item))
+            {
+                item.Attuned = false;
+                item.EquppedId = Guid.Empty;
+                item.Id = Guid.NewGuid();
                 inventory.Insert(item.Index, item);
                 item.Index = 0;
             }

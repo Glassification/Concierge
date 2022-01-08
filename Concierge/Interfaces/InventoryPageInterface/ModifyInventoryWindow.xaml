@@ -89,12 +89,14 @@
 
                 <!--Title-->
                 <Grid Grid.Column="0">
-                    <TextBlock Text="Amount:"
-                               Foreground="White"
-                               FontSize="20"
-                               HorizontalAlignment="Left"
-                               VerticalAlignment="Center"
-                               Margin="10, 0, 0, 0"/>
+                    <TextBlock
+                        x:Name="AmountTextBlock"
+                        Text="Amount:"
+                        Foreground="White"
+                        FontSize="20"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        Margin="10, 0, 0, 0"/>
                 </Grid>
 
                 <!--Value-->

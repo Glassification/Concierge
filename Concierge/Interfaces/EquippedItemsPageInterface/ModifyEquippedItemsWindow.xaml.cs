@@ -5,10 +5,8 @@
 namespace Concierge.Interfaces.EquippedItemsPageInterface
 {
     using System;
-    using System.ComponentModel;
     using System.Linq;
     using System.Windows;
-    using System.Windows.Input;
 
     using Concierge.Character.Enums;
     using Concierge.Character.Items;
@@ -79,8 +77,8 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
             this.ItemsAdded = true;
             var slot = (EquipmentSlot)Enum.Parse(typeof(EquipmentSlot), this.SlotComboBox.Text);
 
-            Program.CcsFile.Character.EquippedItems.Equip(item, slot);
-            Program.UndoRedoService.AddCommand(new EquipItemCommand(item, slot));
+            var newItem = Program.CcsFile.Character.EquippedItems.Equip(item, slot);
+            Program.UndoRedoService.AddCommand(new EquipItemCommand(newItem, slot));
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)

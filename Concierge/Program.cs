@@ -86,12 +86,17 @@ namespace Concierge
 
         public static MainWindowDto GetMainWindowProperties()
         {
+            if (MainWindow == null)
+            {
+                return new MainWindowDto();
+            }
+
             return new MainWindowDto()
             {
-                Center = MainWindow is null ? new Point(0, 0) : new Point((int)(MainWindow.Width / 2), (int)(MainWindow.Height / 2)),
-                Location = MainWindow is null ? new Point(0, 0) : MainWindow.GetAbsolutePosition(),
-                ActualWidth = MainWindow is null ? 0 : (int)MainWindow.ActualWidth,
-                WindowState = MainWindow is null ? WindowState.Maximized : MainWindow.WindowState,
+                Center = new Point((int)(MainWindow.Width / 2), (int)(MainWindow.Height / 2)),
+                Location = MainWindow.GetAbsolutePosition(),
+                ActualWidth = (int)MainWindow.ActualWidth,
+                WindowState = MainWindow.WindowState,
             };
         }
 
