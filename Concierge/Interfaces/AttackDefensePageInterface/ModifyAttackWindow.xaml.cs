@@ -132,6 +132,7 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
             this.ProficencyOverrideCheckBox.IsChecked = false;
             this.BagOfHoldingCheckBox.IsChecked = false;
             this.NotesTextBox.Text = string.Empty;
+            this.WeightUnits.Text = $"({UnitFormat.WeightPostfix})";
 
             this.BagOfHoldingCheckBox.UpdatedValue();
             this.ProficencyOverrideCheckBox.UpdatedValue();

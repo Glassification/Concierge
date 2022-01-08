@@ -10,12 +10,9 @@ namespace Concierge.Commands
     {
         public Command()
         {
-            this.ModifiedState = Program.IsModified;
         }
 
         public ConciergePage ConciergePage { get; set; }
-
-        public bool ModifiedState { get; set; }
 
         public abstract void Redo();
 

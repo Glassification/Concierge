@@ -8,7 +8,7 @@
     xmlns:components="clr-namespace:Concierge.Interfaces.Components" xmlns:viewmodels="clr-namespace:Concierge.Interfaces.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:ConciergeViewModel}"
     mc:Ignorable="d"
     Title="AboutConciergeWindow"
-    Height="385"
+    Height="315"
     Width="650"
     Style="{StaticResource WindowXboxDasboardStyle}">
     <Grid>
@@ -16,7 +16,6 @@
             <RowDefinition Height="45"/>
             <RowDefinition Height="135"/>
             <RowDefinition Height="135"/>
-            <RowDefinition Height="70"/>
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0">
@@ -172,12 +171,11 @@
         </Grid>
 
         <Grid Grid.Row="2">
-            <Image x:Name="BannerImage"/>
-        </Grid>
-        
-        <Grid Grid.Row="3">
+            <Image
+                x:Name="BannerImage"
+                Stretch="UniformToFill"/>
             <StackPanel Orientation="Horizontal"
-                        VerticalAlignment="Center"
+                        VerticalAlignment="Bottom"
                         HorizontalAlignment="Center">
                 <components:ConciergeTextButton 
                     x:Name="OkButton"
