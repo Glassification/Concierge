@@ -5,12 +5,14 @@
 namespace Concierge.Interfaces.AbilitiesPageInterface
 {
     using System;
+    using System.Collections.Generic;
     using System.Windows;
     using System.Windows.Controls;
 
     using Concierge.Character.Characteristics;
     using Concierge.Commands;
     using Concierge.Interfaces.Enums;
+    using Concierge.Services;
     using Concierge.Utility;
 
     /// <summary>
@@ -18,14 +20,11 @@ namespace Concierge.Interfaces.AbilitiesPageInterface
     /// </summary>
     public partial class AbilitiesPage : Page, IConciergePage
     {
-        private readonly ModifyAbilitiesWindow modifyAbilitiesWindow = new (ConciergePage.Abilities);
-
         public AbilitiesPage()
         {
             this.InitializeComponent();
 
             this.DataContext = this;
-            this.modifyAbilitiesWindow.ApplyChanges += this.Window_ApplyChanges;
 
             Program.Logger.Info($"Initialized {nameof(AbilitiesPage)}.");
         }
@@ -47,7 +46,11 @@ namespace Concierge.Interfaces.AbilitiesPageInterface
             }
 
             var index = this.AbilitiesDataGrid.SelectedIndex;
-            this.modifyAbilitiesWindow.ShowEdit(itemToEdit as Ability);
+            ConciergeWindowService.ShowEdit<Ability>(
+                itemToEdit as Ability,
+                typeof(ModifyAbilitiesWindow),
+                this.Window_ApplyChanges,
+                ConciergePage.Abilities);
             this.DrawAbilities();
             this.AbilitiesDataGrid.SetSelectedIndex(index);
         }
@@ -101,10 +104,14 @@ namespace Concierge.Interfaces.AbilitiesPageInterface
 
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
-            this.modifyAbilitiesWindow.ShowAdd(Program.CcsFile.Character.Abilities);
+            var added = ConciergeWindowService.ShowAdd<List<Ability>>(
+                Program.CcsFile.Character.Abilities,
+                typeof(ModifyAbilitiesWindow),
+                this.Window_ApplyChanges,
+                ConciergePage.Abilities);
             this.DrawAbilities();
 
-            if (this.modifyAbilitiesWindow.ItemsAdded)
+            if (added)
             {
                 this.AbilitiesDataGrid.SetSelectedIndex(this.AbilitiesDataGrid.LastIndex);
             }

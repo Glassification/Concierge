@@ -5,17 +5,20 @@
 namespace Concierge.Interfaces.CompanionPageInterface
 {
     using System;
+    using System.Collections.Generic;
     using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Input;
     using System.Windows.Media;
 
+    using Concierge.Character.Characteristics;
     using Concierge.Character.Items;
     using Concierge.Character.Statuses;
     using Concierge.Commands;
     using Concierge.Interfaces.AttackDefensePageInterface;
     using Concierge.Interfaces.Enums;
     using Concierge.Interfaces.OverviewPageInterface;
+    using Concierge.Services;
     using Concierge.Utility;
 
     /// <summary>
@@ -23,23 +26,9 @@ namespace Concierge.Interfaces.CompanionPageInterface
     /// </summary>
     public partial class CompanionPage : Page, IConciergePage
     {
-        private readonly ModifyAttributesWindow modifyAttributesWindow = new (ConciergePage.Companion);
-        private readonly ModifyHealthWindow modifyHealthWindow = new (ConciergePage.Companion);
-        private readonly ModifyHpWindow modifyHpWindow = new (ConciergePage.Companion);
-        private readonly ModifyHitDiceWindow modifyHitDiceWindow = new (ConciergePage.Companion);
-        private readonly ModifyAttackWindow modifyAttackWindow = new (ConciergePage.Companion);
-        private readonly ModifyPropertiesWindow modifyPropertiesWindow = new (ConciergePage.Companion);
-
         public CompanionPage()
         {
             this.InitializeComponent();
-
-            this.modifyAttributesWindow.ApplyChanges += this.Window_ApplyChanges;
-            this.modifyHealthWindow.ApplyChanges += this.Window_ApplyChanges;
-            this.modifyHitDiceWindow.ApplyChanges += this.Window_ApplyChanges;
-            this.modifyAttackWindow.ApplyChanges += this.Window_ApplyChanges;
-            this.modifyPropertiesWindow.ApplyChanges += this.Window_ApplyChanges;
-
             this.CurrentHitDiceBox = string.Empty;
         }
 
@@ -64,7 +53,11 @@ namespace Concierge.Interfaces.CompanionPageInterface
             }
 
             var index = this.WeaponDataGrid.SelectedIndex;
-            this.modifyAttackWindow.ShowEdit(itemToEdit as Weapon);
+            ConciergeWindowService.ShowEdit<Weapon>(
+                itemToEdit as Weapon,
+                typeof(ModifyAttackWindow),
+                this.Window_ApplyChanges,
+                ConciergePage.Companion);
             this.DrawAttacks();
             this.WeaponDataGrid.SetSelectedIndex(index);
         }
@@ -162,13 +155,21 @@ namespace Concierge.Interfaces.CompanionPageInterface
 
         private void EditAttributesButton_Click(object sender, RoutedEventArgs e)
         {
-            this.modifyAttributesWindow.EditAttributes(Program.CcsFile.Character.Companion.Attributes);
+            ConciergeWindowService.ShowEdit<Attributes>(
+                Program.CcsFile.Character.Companion.Attributes,
+                typeof(ModifyAttributesWindow),
+                this.Window_ApplyChanges,
+                ConciergePage.Companion);
             this.DrawAttributes();
         }
 
         private void EditHitDiceButton_Click(object sender, RoutedEventArgs e)
         {
-            this.modifyHitDiceWindow.ShowEdit(Program.CcsFile.Character.Companion.Vitality.HitDice);
+            ConciergeWindowService.ShowEdit<HitDice>(
+                Program.CcsFile.Character.Companion.Vitality.HitDice,
+                typeof(ModifyHitDiceWindow),
+                this.Window_ApplyChanges,
+                ConciergePage.Companion);
             this.DrawHitDice();
         }
 
@@ -206,10 +207,14 @@ namespace Concierge.Interfaces.CompanionPageInterface
 
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
-            this.modifyAttackWindow.ShowAdd(Program.CcsFile.Character.Companion.Attacks);
+            var added = ConciergeWindowService.ShowAdd<List<Weapon>>(
+                Program.CcsFile.Character.Companion.Attacks,
+                typeof(ModifyAttackWindow),
+                this.Window_ApplyChanges,
+                ConciergePage.Companion);
             this.DrawAttacks();
 
-            if (this.modifyAttackWindow.ItemsAdded)
+            if (added)
             {
                 this.WeaponDataGrid.SetSelectedIndex(this.WeaponDataGrid.LastIndex);
             }
@@ -241,25 +246,41 @@ namespace Concierge.Interfaces.CompanionPageInterface
 
         private void EditHealthButton_Click(object sender, RoutedEventArgs e)
         {
-            this.modifyHealthWindow.EditHealth(Program.CcsFile.Character.Companion.Vitality.Health);
+            ConciergeWindowService.ShowEdit<Health>(
+                Program.CcsFile.Character.Companion.Vitality.Health,
+                typeof(ModifyHealthWindow),
+                this.Window_ApplyChanges,
+                ConciergePage.Companion);
             this.DrawHealth();
         }
 
         private void TakeDamageButton_Click(object sender, RoutedEventArgs e)
         {
-            this.modifyHpWindow.ShowDamage(Program.CcsFile.Character.Companion.Vitality);
+            ConciergeWindowService.ShowDamage<Vitality>(
+                Program.CcsFile.Character.Companion.Vitality,
+                typeof(ModifyHpWindow),
+                this.Window_ApplyChanges,
+                ConciergePage.Companion);
             this.DrawHealth();
         }
 
         private void HealDamageButton_Click(object sender, RoutedEventArgs e)
         {
-            this.modifyHpWindow.ShowHeal(Program.CcsFile.Character.Companion.Vitality);
+            ConciergeWindowService.ShowHeal<Vitality>(
+                Program.CcsFile.Character.Companion.Vitality,
+                typeof(ModifyHpWindow),
+                this.Window_ApplyChanges,
+                ConciergePage.Companion);
             this.DrawHealth();
         }
 
         private void EditPropertiesButton_Click(object sender, RoutedEventArgs e)
         {
-            this.modifyPropertiesWindow.ShowEdit(Program.CcsFile.Character.Companion.Properties);
+            ConciergeWindowService.ShowEdit<CompanionProperties>(
+                Program.CcsFile.Character.Companion.Properties,
+                typeof(ModifyCompanionPropertiesWindow),
+                this.Window_ApplyChanges,
+                ConciergePage.Companion);
             this.DrawDetails();
         }
 

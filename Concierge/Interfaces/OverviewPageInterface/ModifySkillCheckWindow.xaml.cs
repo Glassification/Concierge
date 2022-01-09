@@ -19,9 +19,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
     /// </summary>
     public partial class ModifySkillCheckWindow : ConciergeWindow
     {
-        private readonly ConciergePage conciergePage;
-
-        public ModifySkillCheckWindow(ConciergePage conciergePage)
+        public ModifySkillCheckWindow()
         {
             this.InitializeComponent();
 
@@ -44,14 +42,15 @@ namespace Concierge.Interfaces.OverviewPageInterface
             this.PerformanceComboBox.ItemsSource = Enum.GetValues(typeof(StatusChecks)).Cast<StatusChecks>();
             this.PersuasionComboBox.ItemsSource = Enum.GetValues(typeof(StatusChecks)).Cast<StatusChecks>();
 
-            this.conciergePage = conciergePage;
+            this.ConciergePage = ConciergePage.None;
         }
 
         private Skill Skill { get; set; }
 
-        public void ShowEdit(Skill skill)
+        public override void ShowEdit<T>(T skill)
         {
-            this.Skill = skill;
+            var castItem = skill as Skill;
+            this.Skill = castItem;
 
             this.FillFields();
             this.ShowConciergeWindow();
@@ -102,7 +101,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
             this.Skill.Performance.CheckOverride = (StatusChecks)Enum.Parse(typeof(StatusChecks), this.PerformanceComboBox.Text);
             this.Skill.Persuasion.CheckOverride = (StatusChecks)Enum.Parse(typeof(StatusChecks), this.PersuasionComboBox.Text);
 
-            Program.UndoRedoService.AddCommand(new EditCommand<Skill>(this.Skill, oldSkill, this.conciergePage));
+            Program.UndoRedoService.AddCommand(new EditCommand<Skill>(this.Skill, oldSkill, this.ConciergePage));
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)

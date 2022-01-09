@@ -29,7 +29,7 @@ namespace Concierge.Character.AbilitySkills.SkillTypes
                 Program.CcsFile.Character.Vitality.Conditions.Frightened.Equals("Frightened") ||
                 Program.CcsFile.Character.Vitality.Conditions.Poisoned.Equals("Poisoned")
                 ? StatusChecks.Disadvantage
-                : Program.CcsFile.Character.Vitality.Conditions.Blinded.Equals("Blinded") 
+                : Program.CcsFile.Character.Vitality.Conditions.Blinded.Equals("Blinded")
                     ? StatusChecks.Fail
                     : StatusChecks.Normal;
 

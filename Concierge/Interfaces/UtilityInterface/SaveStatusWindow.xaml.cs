@@ -29,7 +29,7 @@ namespace Concierge.Interfaces.UtilityInterface
 
         private BackgroundWorker ProgressBarFiller { get; }
 
-        public void ShowWindow()
+        public override void ShowWindow()
         {
             this.SavingTextBlock.Text = $"Saving '{Program.CcsFile.FileName}'...";
             this.ProgressBarFiller.RunWorkerAsync();

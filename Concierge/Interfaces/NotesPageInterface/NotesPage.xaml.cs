@@ -21,6 +21,7 @@ namespace Concierge.Interfaces.NotesPageInterface
     using Concierge.Commands;
     using Concierge.Interfaces.Components;
     using Concierge.Interfaces.Enums;
+    using Concierge.Services;
     using Concierge.Tools.Interface;
     using Concierge.Utility.Colors;
     using Concierge.Utility.Extensions;
@@ -34,8 +35,6 @@ namespace Concierge.Interfaces.NotesPageInterface
     {
         private const int MaxUndoQueue = 10;
 
-        private readonly ModifyNotesWindow modifyNotesWindow = new (ConciergePage.Notes);
-
         public NotesPage()
         {
             this.InitializeComponent();
@@ -47,7 +46,6 @@ namespace Concierge.Interfaces.NotesPageInterface
 
             this.NotesTextBox.FontSize = 20;
             this.NotesTextBox.Foreground = Brushes.White;
-            this.modifyNotesWindow.ApplyChanges += this.Window_ApplyChanges;
         }
 
         public Document SelectedDocument { get; set; }
@@ -402,7 +400,11 @@ namespace Concierge.Interfaces.NotesPageInterface
 
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
-            this.modifyNotesWindow.ShowAdd();
+            var added = ConciergeWindowService.ShowAdd<string>(
+                string.Empty,
+                typeof(ModifyNotesWindow),
+                this.Window_ApplyChanges,
+                ConciergePage.Notes);
             this.Draw();
         }
 
@@ -415,11 +417,19 @@ namespace Concierge.Interfaces.NotesPageInterface
 
             if (this.NotesTreeView.SelectedItem is ChapterTreeViewItem chapterTreeViewItem)
             {
-                this.modifyNotesWindow.ShowEdit(chapterTreeViewItem.Chapter);
+                ConciergeWindowService.ShowEdit<Chapter>(
+                    chapterTreeViewItem.Chapter,
+                    typeof(ModifyNotesWindow),
+                    this.Window_ApplyChanges,
+                    ConciergePage.Notes);
             }
             else if (this.NotesTreeView.SelectedItem is DocumentTreeViewItem documentTreeViewItem)
             {
-                this.modifyNotesWindow.ShowEdit(documentTreeViewItem.Document);
+                ConciergeWindowService.ShowEdit<Document>(
+                    documentTreeViewItem.Document,
+                    typeof(ModifyNotesWindow),
+                    this.Window_ApplyChanges,
+                    ConciergePage.Notes);
             }
 
             this.Draw();

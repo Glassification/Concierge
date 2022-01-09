@@ -5,9 +5,7 @@
 namespace Concierge.Interfaces.OverviewPageInterface
 {
     using System;
-    using System.ComponentModel;
     using System.Windows;
-    using System.Windows.Input;
 
     using Concierge.Character.Characteristics;
     using Concierge.Commands;
@@ -17,22 +15,21 @@ namespace Concierge.Interfaces.OverviewPageInterface
     /// <summary>
     /// Interaction logic for ModifyAttributesWindow.xaml.
     /// </summary>
-    public partial class ModifyAttributesWindow : ConciergeWindow, IConciergeModifyWindow
+    public partial class ModifyAttributesWindow : ConciergeWindow
     {
-        private readonly ConciergePage conciergePage;
-
-        public ModifyAttributesWindow(ConciergePage conciergePage)
+        public ModifyAttributesWindow()
         {
             this.InitializeComponent();
-            this.conciergePage = conciergePage;
+            this.ConciergePage = ConciergePage.None;
         }
 
         private Attributes Attributes { get; set; }
 
-        public ConciergeWindowResult ShowWizardSetup()
+        public override ConciergeWindowResult ShowWizardSetup(string buttonText)
         {
             this.Attributes = Program.CcsFile.Character.Attributes;
             this.ApplyButton.Visibility = Visibility.Collapsed;
+            this.CancelButton.Content = buttonText;
 
             this.FillFields();
             this.ShowConciergeWindow();
@@ -40,18 +37,13 @@ namespace Concierge.Interfaces.OverviewPageInterface
             return this.Result;
         }
 
-        public void EditAttributes(Attributes attributes)
+        public override void ShowEdit<T>(T attributes)
         {
-            this.Attributes = attributes;
-            this.ApplyButton.Visibility = Visibility.Visible;
+            var castItem = attributes as Attributes;
+            this.Attributes = castItem;
 
             this.FillFields();
             this.ShowConciergeWindow();
-        }
-
-        public void UpdateCancelButton(string text)
-        {
-            this.CancelButton.Content = text;
         }
 
         private void FillFields()
@@ -82,7 +74,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
             this.Attributes.Wisdom = this.WisdomUpDown.Value ?? 0;
             this.Attributes.Charisma = this.CharismaUpDown.Value ?? 0;
 
-            Program.UndoRedoService.AddCommand(new EditCommand<Attributes>(this.Attributes, oldItem, this.conciergePage));
+            Program.UndoRedoService.AddCommand(new EditCommand<Attributes>(this.Attributes, oldItem, this.ConciergePage));
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)

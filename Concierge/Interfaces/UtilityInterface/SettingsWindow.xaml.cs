@@ -31,7 +31,7 @@ namespace Concierge.Interfaces.UtilityInterface
 
         private string FormattedInterval => $"Autosave Interval: {Constants.AutosaveIntervals[(int)this.AutosaveInterval.Value]} minute{((int)this.AutosaveInterval.Value > 0 ? "s" : string.Empty)}";
 
-        public void ShowEdit()
+        public override void ShowEdit<T>(T item)
         {
             this.FillFields();
             this.ShowConciergeWindow();

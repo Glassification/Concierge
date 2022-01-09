@@ -5,9 +5,7 @@
 namespace Concierge.Interfaces.SpellcastingPageInterface
 {
     using System;
-    using System.ComponentModel;
     using System.Windows;
-    using System.Windows.Input;
 
     using Concierge.Character.Spellcasting;
     using Concierge.Commands;
@@ -17,22 +15,21 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
     /// <summary>
     /// Interaction logic for ModifySpellSlotsWindow.xaml.
     /// </summary>
-    public partial class ModifySpellSlotsWindow : ConciergeWindow, IConciergeModifyWindow
+    public partial class ModifySpellSlotsWindow : ConciergeWindow
     {
-        private readonly ConciergePage conciergePage;
-
-        public ModifySpellSlotsWindow(ConciergePage conciergePage)
+        public ModifySpellSlotsWindow()
         {
             this.InitializeComponent();
-            this.conciergePage = conciergePage;
+            this.ConciergePage = ConciergePage.None;
         }
 
         private SpellSlots SpellSlots { get; set; }
 
-        public ConciergeWindowResult ShowWizardSetup()
+        public override ConciergeWindowResult ShowWizardSetup(string buttonText)
         {
             this.ApplyButton.Visibility = Visibility.Collapsed;
             this.SpellSlots = Program.CcsFile.Character.SpellSlots;
+            this.CancelButton.Content = buttonText;
 
             this.FillFields();
             this.ShowConciergeWindow();
@@ -40,18 +37,13 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
             return this.Result;
         }
 
-        public void ShowEdit(SpellSlots spellSlots)
+        public override void ShowEdit<T>(T spellSlots)
         {
-            this.ApplyButton.Visibility = Visibility.Visible;
-            this.SpellSlots = spellSlots;
+            var castItem = spellSlots as SpellSlots;
+            this.SpellSlots = castItem;
 
             this.FillFields();
             this.ShowConciergeWindow();
-        }
-
-        public void UpdateCancelButton(string text)
-        {
-            this.CancelButton.Content = text;
         }
 
         private void SetUpDownUpdating()
@@ -132,7 +124,7 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
             this.SpellSlots.EighthTotal = this.Total8UpDown.Value ?? 0;
             this.SpellSlots.NinethTotal = this.Total9UpDown.Value ?? 0;
 
-            Program.UndoRedoService.AddCommand(new EditCommand<SpellSlots>(this.SpellSlots, oldItem, this.conciergePage));
+            Program.UndoRedoService.AddCommand(new EditCommand<SpellSlots>(this.SpellSlots, oldItem, this.ConciergePage));
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)

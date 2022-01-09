@@ -23,7 +23,7 @@ namespace Concierge.Interfaces.UtilityInterface
             this.BannerImage.LoadFromByteArray(Properties.Resources.AboutBanner);
         }
 
-        public void ShowWindow()
+        public override void ShowWindow()
         {
             this.Read();
             this.ShowConciergeWindow();

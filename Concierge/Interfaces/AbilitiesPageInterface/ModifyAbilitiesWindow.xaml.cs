@@ -17,16 +17,14 @@ namespace Concierge.Interfaces.AbilitiesPageInterface
     /// <summary>
     /// Interaction logic for ModifyAbilitiesWindow.xaml.
     /// </summary>
-    public partial class ModifyAbilitiesWindow : ConciergeWindow, IConciergeModifyWindow
+    public partial class ModifyAbilitiesWindow : ConciergeWindow
     {
-        private readonly ConciergePage conciergePage;
-
-        public ModifyAbilitiesWindow(ConciergePage conciergePage)
+        public ModifyAbilitiesWindow()
         {
             this.InitializeComponent();
 
             this.NameComboBox.ItemsSource = Constants.Abilities;
-            this.conciergePage = conciergePage;
+            this.ConciergePage = ConciergePage.None;
         }
 
         public bool ItemsAdded { get; private set; }
@@ -39,13 +37,13 @@ namespace Concierge.Interfaces.AbilitiesPageInterface
 
         private List<Ability> Abilities { get; set; }
 
-        public ConciergeWindowResult ShowWizardSetup()
+        public override ConciergeWindowResult ShowWizardSetup(string buttonText)
         {
             this.Editing = false;
             this.HeaderTextBlock.Text = this.HeaderText;
             this.Abilities = Program.CcsFile.Character.Abilities;
-            this.ApplyButton.Visibility = Visibility.Visible;
             this.OkButton.Visibility = Visibility.Collapsed;
+            this.CancelButton.Content = buttonText;
 
             this.ClearFields();
             this.ShowConciergeWindow();
@@ -53,34 +51,30 @@ namespace Concierge.Interfaces.AbilitiesPageInterface
             return this.Result;
         }
 
-        public void ShowEdit(Ability ability)
+        public override void ShowEdit<T>(T ability)
         {
+            var castItem = ability as Ability;
             this.Editing = true;
             this.HeaderTextBlock.Text = this.HeaderText;
-            this.SelectedAbility = ability;
+            this.SelectedAbility = castItem;
             this.ApplyButton.Visibility = Visibility.Collapsed;
-            this.OkButton.Visibility = Visibility.Visible;
 
-            this.FillFields(ability);
+            this.FillFields(castItem);
             this.ShowConciergeWindow();
         }
 
-        public void ShowAdd(List<Ability> abilities)
+        public override bool ShowAdd<T>(T abilities)
         {
+            var castItem = abilities as List<Ability>;
             this.Editing = false;
             this.HeaderTextBlock.Text = this.HeaderText;
-            this.Abilities = abilities;
-            this.ApplyButton.Visibility = Visibility.Visible;
-            this.OkButton.Visibility = Visibility.Visible;
+            this.Abilities = castItem;
             this.ItemsAdded = false;
 
             this.ClearFields();
             this.ShowConciergeWindow();
-        }
 
-        public void UpdateCancelButton(string text)
-        {
-            this.CancelButton.Content = text;
+            return this.ItemsAdded;
         }
 
         private void FillFields(Ability ability)
@@ -121,7 +115,7 @@ namespace Concierge.Interfaces.AbilitiesPageInterface
                 Description = this.NotesTextBox.Text,
             };
 
-            Program.UndoRedoService.AddCommand(new AddCommand<Ability>(this.Abilities, ability, this.conciergePage));
+            Program.UndoRedoService.AddCommand(new AddCommand<Ability>(this.Abilities, ability, this.ConciergePage));
 
             return ability;
         }
@@ -137,7 +131,7 @@ namespace Concierge.Interfaces.AbilitiesPageInterface
             ability.Action = this.ActionTextBox.Text;
             ability.Description = this.NotesTextBox.Text;
 
-            Program.UndoRedoService.AddCommand(new EditCommand<Ability>(ability, oldItem, this.conciergePage));
+            Program.UndoRedoService.AddCommand(new EditCommand<Ability>(ability, oldItem, this.ConciergePage));
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)

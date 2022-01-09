@@ -23,7 +23,7 @@ namespace Concierge.Interfaces.UtilityInterface
             this.VideoControl.Source = new Uri(@$"{Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}\Properties\Resources\Videos\hey-whats-going-on.wmv");
         }
 
-        public void ShowWindow()
+        public override void ShowWindow()
         {
             this.ShowConciergeWindow();
         }

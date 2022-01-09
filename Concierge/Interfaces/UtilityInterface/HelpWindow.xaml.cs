@@ -18,7 +18,7 @@ namespace Concierge.Interfaces.UtilityInterface
             this.InitializeComponent();
         }
 
-        public void ShowWindow()
+        public override void ShowWindow()
         {
             this.ShowConciergeWindow();
         }

@@ -5,9 +5,7 @@
 namespace Concierge.Interfaces
 {
     using System;
-    using System.ComponentModel;
     using System.Windows;
-    using System.Windows.Input;
 
     using Concierge.Character.Characteristics;
     using Concierge.Commands;
@@ -18,7 +16,7 @@ namespace Concierge.Interfaces
     /// <summary>
     /// Interaction logic for ModifyPropertiesWindow.xaml.
     /// </summary>
-    public partial class ModifyPropertiesWindow : ConciergeWindow, IConciergeModifyWindow
+    public partial class ModifyPropertiesWindow : ConciergeWindow
     {
         public ModifyPropertiesWindow()
         {
@@ -33,9 +31,12 @@ namespace Concierge.Interfaces
             Program.Logger.Info($"Initialized {nameof(ModifyPropertiesWindow)}.");
         }
 
-        public ConciergeWindowResult ShowWizardSetup()
+        private CharacterProperties CharacterProperties { get; set; }
+
+        public override ConciergeWindowResult ShowWizardSetup(string buttonText)
         {
             this.ApplyButton.Visibility = Visibility.Collapsed;
+            this.CancelButton.Content = buttonText;
 
             this.FillFields();
             this.ShowConciergeWindow();
@@ -43,56 +44,49 @@ namespace Concierge.Interfaces
             return this.Result;
         }
 
-        public void ShowEdit()
+        public override void ShowEdit<T>(T properties)
         {
-            this.ApplyButton.Visibility = Visibility.Visible;
+            var castItem = properties as CharacterProperties;
+            this.CharacterProperties = castItem;
 
             this.FillFields();
             this.ShowConciergeWindow();
         }
 
-        public void UpdateCancelButton(string text)
-        {
-            this.CancelButton.Content = text;
-        }
-
         private void FillFields()
         {
-            var properties = Program.CcsFile.Character.Properties;
-
             this.Level1UpDown.UpdatingValue();
             this.Level2UpDown.UpdatingValue();
             this.Level3UpDown.UpdatingValue();
 
-            this.NameTextBox.Text = properties.Name;
-            this.RaceComboBox.Text = properties.Race;
-            this.BackgroundComboBox.Text = properties.Background;
-            this.AlignmentComboBox.Text = properties.Alignment;
-            this.Level1UpDown.Value = properties.Class1.Level;
-            this.Level2UpDown.Value = properties.Class2.Level;
-            this.Level3UpDown.Value = properties.Class3.Level;
-            this.Class1ComboBox.Text = properties.Class1.Name;
-            this.Class2ComboBox.Text = properties.Class2.Name;
-            this.Class3ComboBox.Text = properties.Class3.Name;
+            this.NameTextBox.Text = this.CharacterProperties.Name;
+            this.RaceComboBox.Text = this.CharacterProperties.Race;
+            this.BackgroundComboBox.Text = this.CharacterProperties.Background;
+            this.AlignmentComboBox.Text = this.CharacterProperties.Alignment;
+            this.Level1UpDown.Value = this.CharacterProperties.Class1.Level;
+            this.Level2UpDown.Value = this.CharacterProperties.Class2.Level;
+            this.Level3UpDown.Value = this.CharacterProperties.Class3.Level;
+            this.Class1ComboBox.Text = this.CharacterProperties.Class1.Name;
+            this.Class2ComboBox.Text = this.CharacterProperties.Class2.Name;
+            this.Class3ComboBox.Text = this.CharacterProperties.Class3.Name;
         }
 
         private void UpdateProperties()
         {
-            var properties = Program.CcsFile.Character.Properties;
-            var oldItem = properties.DeepCopy();
+            var oldItem = this.CharacterProperties.DeepCopy();
 
-            properties.Name = this.NameTextBox.Text;
-            properties.Race = this.RaceComboBox.Text;
-            properties.Background = this.BackgroundComboBox.Text;
-            properties.Alignment = this.AlignmentComboBox.Text;
-            properties.Class1.Level = this.Level1UpDown.Value ?? 0;
-            properties.Class2.Level = this.Level2UpDown.Value ?? 0;
-            properties.Class3.Level = this.Level3UpDown.Value ?? 0;
-            properties.Class1.Name = this.Class1ComboBox.Text;
-            properties.Class2.Name = this.Class2ComboBox.Text;
-            properties.Class3.Name = this.Class3ComboBox.Text;
+            this.CharacterProperties.Name = this.NameTextBox.Text;
+            this.CharacterProperties.Race = this.RaceComboBox.Text;
+            this.CharacterProperties.Background = this.BackgroundComboBox.Text;
+            this.CharacterProperties.Alignment = this.AlignmentComboBox.Text;
+            this.CharacterProperties.Class1.Level = this.Level1UpDown.Value ?? 0;
+            this.CharacterProperties.Class2.Level = this.Level2UpDown.Value ?? 0;
+            this.CharacterProperties.Class3.Level = this.Level3UpDown.Value ?? 0;
+            this.CharacterProperties.Class1.Name = this.Class1ComboBox.Text;
+            this.CharacterProperties.Class2.Name = this.Class2ComboBox.Text;
+            this.CharacterProperties.Class3.Name = this.Class3ComboBox.Text;
 
-            Program.UndoRedoService.AddCommand(new EditCommand<CharacterProperties>(properties, oldItem, ConciergePage.None));
+            Program.UndoRedoService.AddCommand(new EditCommand<CharacterProperties>(this.CharacterProperties, oldItem, ConciergePage.None));
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)

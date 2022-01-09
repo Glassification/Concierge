@@ -6,9 +6,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
     using System.Windows;
-    using System.Windows.Input;
 
     using Concierge.Character.Statuses;
     using Concierge.Commands;
@@ -18,14 +16,12 @@ namespace Concierge.Interfaces.DetailsPageInterface
     /// <summary>
     /// Interaction logic for ModifyProficiencyWindow.xaml.
     /// </summary>
-    public partial class ModifyClassResourceWindow : ConciergeWindow, IConciergeModifyWindow
+    public partial class ModifyClassResourceWindow : ConciergeWindow
     {
-        private readonly ConciergePage conciergePage;
-
-        public ModifyClassResourceWindow(ConciergePage conciergePage)
+        public ModifyClassResourceWindow()
         {
             this.InitializeComponent();
-            this.conciergePage = conciergePage;
+            this.ConciergePage = ConciergePage.None;
         }
 
         public bool ItemsAdded { get; private set; }
@@ -38,13 +34,13 @@ namespace Concierge.Interfaces.DetailsPageInterface
 
         private List<ClassResource> ClassResources { get; set; }
 
-        public ConciergeWindowResult ShowWizardSetup()
+        public override ConciergeWindowResult ShowWizardSetup(string buttonText)
         {
             this.Editing = false;
             this.HeaderTextBlock.Text = this.HeaderText;
             this.ClassResources = Program.CcsFile.Character.ClassResources;
             this.OkButton.Visibility = Visibility.Collapsed;
-            this.ApplyButton.Visibility = Visibility.Visible;
+            this.CancelButton.Content = buttonText;
 
             this.ClearFields();
             this.ShowConciergeWindow();
@@ -52,34 +48,30 @@ namespace Concierge.Interfaces.DetailsPageInterface
             return this.Result;
         }
 
-        public void ShowAdd(List<ClassResource> classResources)
+        public override bool ShowAdd<T>(T classResources)
         {
-            this.ClassResources = classResources;
+            var castItem = classResources as List<ClassResource>;
+            this.ClassResources = castItem;
             this.Editing = false;
             this.HeaderTextBlock.Text = this.HeaderText;
-            this.ApplyButton.Visibility = Visibility.Visible;
-            this.OkButton.Visibility = Visibility.Visible;
             this.ItemsAdded = false;
 
             this.ClearFields();
             this.ShowConciergeWindow();
+
+            return this.ItemsAdded;
         }
 
-        public void ShowEdit(ClassResource classResource)
+        public override void ShowEdit<T>(T classResource)
         {
+            var castItem = classResource as ClassResource;
             this.Editing = true;
             this.HeaderTextBlock.Text = this.HeaderText;
-            this.ClassResource = classResource;
+            this.ClassResource = castItem;
             this.ApplyButton.Visibility = Visibility.Collapsed;
-            this.OkButton.Visibility = Visibility.Visible;
 
             this.FillFields();
             this.ShowConciergeWindow();
-        }
-
-        public void UpdateCancelButton(string text)
-        {
-            this.CancelButton.Content = text;
         }
 
         private void FillFields()
@@ -113,7 +105,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
                 Spent = this.SpentUpDown.Value ?? 0,
             };
 
-            Program.UndoRedoService.AddCommand(new AddCommand<ClassResource>(this.ClassResources, resource, this.conciergePage));
+            Program.UndoRedoService.AddCommand(new AddCommand<ClassResource>(this.ClassResources, resource, this.ConciergePage));
 
             return resource;
         }
@@ -128,7 +120,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
                 this.ClassResource.Total = this.PoolUpDown.Value ?? 0;
                 this.ClassResource.Spent = this.SpentUpDown.Value ?? 0;
 
-                Program.UndoRedoService.AddCommand(new EditCommand<ClassResource>(this.ClassResource, oldItem, this.conciergePage));
+                Program.UndoRedoService.AddCommand(new EditCommand<ClassResource>(this.ClassResource, oldItem, this.ConciergePage));
             }
             else
             {

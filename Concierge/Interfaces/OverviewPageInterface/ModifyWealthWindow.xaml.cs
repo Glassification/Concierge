@@ -4,9 +4,7 @@
 
 namespace Concierge.Interfaces.OverviewPageInterface
 {
-    using System.ComponentModel;
     using System.Windows;
-    using System.Windows.Input;
 
     using Concierge.Character.Statuses;
     using Concierge.Commands;
@@ -16,14 +14,12 @@ namespace Concierge.Interfaces.OverviewPageInterface
     /// <summary>
     /// Interaction logic for ModifyWealthWindow.xaml.
     /// </summary>
-    public partial class ModifyWealthWindow : ConciergeWindow, IConciergeModifyWindow
+    public partial class ModifyWealthWindow : ConciergeWindow
     {
-        private readonly ConciergePage conciergePage;
-
-        public ModifyWealthWindow(ConciergePage conciergePage)
+        public ModifyWealthWindow()
         {
             this.InitializeComponent();
-            this.conciergePage = conciergePage;
+            this.ConciergePage = ConciergePage.None;
         }
 
         private int CP { get; set; }
@@ -38,9 +34,10 @@ namespace Concierge.Interfaces.OverviewPageInterface
 
         private Wealth SelectedWealth { get; set; }
 
-        public ConciergeWindowResult ShowWizardSetup()
+        public override ConciergeWindowResult ShowWizardSetup(string buttonText)
         {
             this.SelectedWealth = Program.CcsFile.Character.Wealth;
+            this.CancelButton.Content = buttonText;
 
             this.ClearFields();
             this.FillFields();
@@ -49,18 +46,14 @@ namespace Concierge.Interfaces.OverviewPageInterface
             return this.Result;
         }
 
-        public void ShowEdit(Wealth wealth)
+        public override void ShowEdit<T>(T wealth)
         {
-            this.SelectedWealth = wealth;
+            var castItem = wealth as Wealth;
+            this.SelectedWealth = castItem;
 
             this.ClearFields();
             this.FillFields();
             this.ShowConciergeWindow();
-        }
-
-        public void UpdateCancelButton(string text)
-        {
-            this.CancelButton.Content = text;
         }
 
         private void ClearFields()
@@ -111,7 +104,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
             this.SelectedWealth.Gold = this.GP;
             this.SelectedWealth.Platinum = this.PP;
 
-            Program.UndoRedoService.AddCommand(new EditCommand<Wealth>(this.SelectedWealth, oldItem, this.conciergePage));
+            Program.UndoRedoService.AddCommand(new EditCommand<Wealth>(this.SelectedWealth, oldItem, this.ConciergePage));
             Program.Modify();
 
             this.HideConciergeWindow();

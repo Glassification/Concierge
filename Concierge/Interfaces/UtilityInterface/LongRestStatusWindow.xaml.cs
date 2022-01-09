@@ -28,7 +28,7 @@ namespace Concierge.Interfaces.UtilityInterface
 
         private BackgroundWorker WindowDisplayTimer { get; }
 
-        public void ShowWindow()
+        public override void ShowWindow()
         {
             this.WindowDisplayTimer.RunWorkerAsync();
             this.ShowConciergeWindow();

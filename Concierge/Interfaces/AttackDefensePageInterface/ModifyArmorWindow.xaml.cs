@@ -5,10 +5,8 @@
 namespace Concierge.Interfaces.AttackDefensePageInterface
 {
     using System;
-    using System.ComponentModel;
     using System.Linq;
     using System.Windows;
-    using System.Windows.Input;
 
     using Concierge.Character.Enums;
     using Concierge.Character.Items;
@@ -20,24 +18,23 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
     /// <summary>
     /// Interaction logic for ModifyArmorWindow.xaml.
     /// </summary>
-    public partial class ModifyArmorWindow : ConciergeWindow, IConciergeModifyWindow
+    public partial class ModifyArmorWindow : ConciergeWindow
     {
-        private readonly ConciergePage conciergePage;
-
-        public ModifyArmorWindow(ConciergePage conciergePage)
+        public ModifyArmorWindow()
         {
             this.InitializeComponent();
             this.TypeComboBox.ItemsSource = Enum.GetValues(typeof(ArmorType)).Cast<ArmorType>();
             this.StealthComboBox.ItemsSource = Enum.GetValues(typeof(ArmorStealth)).Cast<ArmorStealth>();
-            this.conciergePage = conciergePage;
+            this.ConciergePage = ConciergePage.None;
         }
 
         private Armor SelectedArmor { get; set; }
 
-        public ConciergeWindowResult ShowWizardSetup()
+        public override ConciergeWindowResult ShowWizardSetup(string buttonText)
         {
             this.SelectedArmor = Program.CcsFile.Character.Armor;
             this.ApplyButton.Visibility = Visibility.Collapsed;
+            this.CancelButton.Content = buttonText;
 
             this.FillFields();
             this.ShowConciergeWindow();
@@ -45,18 +42,13 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
             return this.Result;
         }
 
-        public void ShowEdit(Armor armor)
+        public override void ShowEdit<T>(T armor)
         {
-            this.SelectedArmor = armor;
-            this.ApplyButton.Visibility = Visibility.Visible;
+            var castItem = armor as Armor;
+            this.SelectedArmor = castItem;
 
             this.FillFields();
             this.ShowConciergeWindow();
-        }
-
-        public void UpdateCancelButton(string text)
-        {
-            this.CancelButton.Content = text;
         }
 
         private void FillFields()
@@ -101,7 +93,7 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
             armor.MiscArmorClass = this.MiscArmorClassUpDown.Value ?? 0;
             armor.MagicArmorClass = this.MagicArmorClassUpDown.Value ?? 0;
 
-            Program.UndoRedoService.AddCommand(new EditCommand<Armor>(armor, oldItem, this.conciergePage));
+            Program.UndoRedoService.AddCommand(new EditCommand<Armor>(armor, oldItem, this.ConciergePage));
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)

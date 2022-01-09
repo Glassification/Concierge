@@ -5,9 +5,7 @@
 namespace Concierge.Interfaces.DetailsPageInterface
 {
     using System;
-    using System.ComponentModel;
     using System.Windows;
-    using System.Windows.Input;
 
     using Concierge.Character.Characteristics;
     using Concierge.Commands;
@@ -17,22 +15,21 @@ namespace Concierge.Interfaces.DetailsPageInterface
     /// <summary>
     /// Interaction logic for ModifyPersonalityWindow.xaml.
     /// </summary>
-    public partial class ModifyPersonalityWindow : ConciergeWindow, IConciergeModifyWindow
+    public partial class ModifyPersonalityWindow : ConciergeWindow
     {
-        private readonly ConciergePage conciergePage;
-
-        public ModifyPersonalityWindow(ConciergePage conciergePage)
+        public ModifyPersonalityWindow()
         {
             this.InitializeComponent();
-            this.conciergePage = conciergePage;
+            this.ConciergePage = ConciergePage.None;
         }
 
         private Personality Personality { get; set; }
 
-        public ConciergeWindowResult ShowWizardSetup()
+        public override ConciergeWindowResult ShowWizardSetup(string buttonText)
         {
             this.Personality = Program.CcsFile.Character.Personality;
             this.ApplyButton.Visibility = Visibility.Collapsed;
+            this.CancelButton.Content = buttonText;
 
             this.FillFields();
             this.ShowConciergeWindow();
@@ -40,18 +37,13 @@ namespace Concierge.Interfaces.DetailsPageInterface
             return this.Result;
         }
 
-        public void ShowEdit(Personality personality)
+        public override void ShowEdit<T>(T personality)
         {
-            this.Personality = personality;
-            this.ApplyButton.Visibility = Visibility.Visible;
+            var castItem = personality as Personality;
+            this.Personality = castItem;
 
             this.FillFields();
             this.ShowConciergeWindow();
-        }
-
-        public void UpdateCancelButton(string text)
-        {
-            this.CancelButton.Content = text;
         }
 
         private void FillFields()
@@ -77,7 +69,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
             this.Personality.Background = this.BackgroundTextBox.Text;
             this.Personality.Notes = this.NotesTextBox.Text;
 
-            Program.UndoRedoService.AddCommand(new EditCommand<Personality>(this.Personality, oldItem, this.conciergePage));
+            Program.UndoRedoService.AddCommand(new EditCommand<Personality>(this.Personality, oldItem, this.ConciergePage));
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)

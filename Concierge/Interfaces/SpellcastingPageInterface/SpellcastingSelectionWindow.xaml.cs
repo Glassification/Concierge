@@ -4,9 +4,7 @@
 
 namespace Concierge.Interfaces.SpellcastingPageInterface
 {
-    using System.ComponentModel;
     using System.Windows;
-    using System.Windows.Input;
 
     using Concierge.Character.Enums;
     using Concierge.Interfaces.Components;
@@ -21,7 +19,7 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
             this.InitializeComponent();
         }
 
-        public PopupButtons ShowPopup()
+        public override PopupButtons ShowPopup()
         {
             this.ShowConciergeWindow();
 

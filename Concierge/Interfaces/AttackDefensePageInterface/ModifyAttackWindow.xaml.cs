@@ -24,18 +24,16 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
     /// <summary>
     /// Interaction logic for ModifyWeaponWindow.xaml.
     /// </summary>
-    public partial class ModifyAttackWindow : ConciergeWindow, IConciergeModifyWindow
+    public partial class ModifyAttackWindow : ConciergeWindow
     {
-        private readonly ConciergePage conciergePage;
-
-        public ModifyAttackWindow(ConciergePage conciergePage)
+        public ModifyAttackWindow()
         {
             this.InitializeComponent();
             this.AttackComboBox.ItemsSource = Constants.Weapons;
             this.TypeComboBox.ItemsSource = Enum.GetValues(typeof(WeaponTypes)).Cast<WeaponTypes>();
             this.AbilityComboBox.ItemsSource = Enum.GetValues(typeof(Abilities)).Cast<Abilities>();
             this.DamageTypeComboBox.ItemsSource = Enum.GetValues(typeof(DamageTypes)).Cast<DamageTypes>();
-            this.conciergePage = conciergePage;
+            this.ConciergePage = ConciergePage.None;
         }
 
         public bool ItemsAdded { get; private set; }
@@ -48,13 +46,13 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
 
         private List<Weapon> Weapons { get; set; }
 
-        public ConciergeWindowResult ShowWizardSetup()
+        public override ConciergeWindowResult ShowWizardSetup(string buttonText)
         {
             this.Weapons = Program.CcsFile.Character.Weapons;
-            this.ApplyButton.Visibility = Visibility.Visible;
             this.OkButton.Visibility = Visibility.Collapsed;
             this.Editing = false;
             this.HeaderTextBlock.Text = this.HeaderText;
+            this.CancelButton.Content = buttonText;
 
             this.ClearFields();
             this.ShowConciergeWindow();
@@ -62,34 +60,30 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
             return this.Result;
         }
 
-        public void ShowAdd(List<Weapon> weapons)
+        public override bool ShowAdd<T>(T weapons)
         {
-            this.Weapons = weapons;
+            var castItem = weapons as List<Weapon>;
+            this.Weapons = castItem;
             this.Editing = false;
             this.HeaderTextBlock.Text = this.HeaderText;
-            this.ApplyButton.Visibility = Visibility.Visible;
-            this.OkButton.Visibility = Visibility.Visible;
             this.ItemsAdded = false;
 
             this.ClearFields();
             this.ShowConciergeWindow();
+
+            return this.ItemsAdded;
         }
 
-        public void ShowEdit(Weapon weapon)
+        public override void ShowEdit<T>(T weapon)
         {
+            var castItem = weapon as Weapon;
             this.Editing = true;
             this.HeaderTextBlock.Text = this.HeaderText;
-            this.SelectedAttack = weapon;
+            this.SelectedAttack = castItem;
             this.ApplyButton.Visibility = Visibility.Collapsed;
-            this.OkButton.Visibility = Visibility.Visible;
 
-            this.FillFields(weapon);
+            this.FillFields(castItem);
             this.ShowConciergeWindow();
-        }
-
-        public void UpdateCancelButton(string text)
-        {
-            this.CancelButton.Content = text;
         }
 
         private void FillFields(Weapon weapon)
@@ -154,7 +148,7 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
             weapon.IsInBagOfHolding = this.BagOfHoldingCheckBox.IsChecked ?? false;
             weapon.Note = this.NotesTextBox.Text;
 
-            Program.UndoRedoService.AddCommand(new EditCommand<Weapon>(weapon, oldItem, this.conciergePage));
+            Program.UndoRedoService.AddCommand(new EditCommand<Weapon>(weapon, oldItem, this.ConciergePage));
         }
 
         private Weapon ToWeapon()
@@ -176,7 +170,7 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
                 Note = this.NotesTextBox.Text,
             };
 
-            Program.UndoRedoService.AddCommand(new AddCommand<Weapon>(this.Weapons, weapon, this.conciergePage));
+            Program.UndoRedoService.AddCommand(new AddCommand<Weapon>(this.Weapons, weapon, this.ConciergePage));
 
             return weapon;
         }

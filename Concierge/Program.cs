@@ -67,9 +67,9 @@ namespace Concierge
             }
         }
 
-        private static ConciergeCharacter BaseState { get; set; }
+        public static MainWindow MainWindow { get; private set; }
 
-        private static MainWindow MainWindow { get; set; }
+        private static ConciergeCharacter BaseState { get; set; }
 
         public static void InitializeMainWindow(MainWindow mainWindow)
         {

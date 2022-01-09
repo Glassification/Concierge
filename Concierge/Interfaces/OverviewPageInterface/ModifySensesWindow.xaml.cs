@@ -5,10 +5,8 @@
 namespace Concierge.Interfaces.OverviewPageInterface
 {
     using System;
-    using System.ComponentModel;
     using System.Linq;
     using System.Windows;
-    using System.Windows.Input;
 
     using Concierge.Character.Characteristics;
     using Concierge.Character.Enums;
@@ -20,36 +18,30 @@ namespace Concierge.Interfaces.OverviewPageInterface
     /// <summary>
     /// Interaction logic for ModifySensesWindow.xaml.
     /// </summary>
-    public partial class ModifySensesWindow : ConciergeWindow, IConciergeModifyWindow
+    public partial class ModifySensesWindow : ConciergeWindow
     {
-        private readonly ConciergePage conciergePage;
-
-        public ModifySensesWindow(ConciergePage conciergePage)
+        public ModifySensesWindow()
         {
             this.InitializeComponent();
             this.VisionComboBox.ItemsSource = Enum.GetValues(typeof(VisionTypes)).Cast<VisionTypes>();
-            this.conciergePage = conciergePage;
+            this.ConciergePage = ConciergePage.None;
         }
 
-        public ConciergeWindowResult ShowWizardSetup()
+        public override ConciergeWindowResult ShowWizardSetup(string buttonText)
         {
             this.FillFields();
             this.ApplyButton.Visibility = Visibility.Collapsed;
+            this.CancelButton.Content = buttonText;
+
             this.ShowConciergeWindow();
 
             return this.Result;
         }
 
-        public void EditSenses()
+        public override void ShowEdit<T>(T item)
         {
-            this.ApplyButton.Visibility = Visibility.Visible;
             this.FillFields();
             this.ShowConciergeWindow();
-        }
-
-        public void UpdateCancelButton(string text)
-        {
-            this.CancelButton.Content = text;
         }
 
         private void FillFields()
@@ -77,7 +69,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
             senses.Vision = (VisionTypes)Enum.Parse(typeof(VisionTypes), this.VisionComboBox.Text);
             senses.BaseMovement = this.BaseMovementUpDown.Value ?? 0;
 
-            Program.UndoRedoService.AddCommand(new EditCommand<Senses>(senses, oldItem, this.conciergePage));
+            Program.UndoRedoService.AddCommand(new EditCommand<Senses>(senses, oldItem, this.ConciergePage));
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)

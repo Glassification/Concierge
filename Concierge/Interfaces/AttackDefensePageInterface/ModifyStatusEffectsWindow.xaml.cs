@@ -6,10 +6,8 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
     using System.Linq;
     using System.Windows;
-    using System.Windows.Input;
 
     using Concierge.Character.Enums;
     using Concierge.Character.Statuses;
@@ -22,17 +20,15 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
     /// <summary>
     /// Interaction logic for ModifyStatusEffectsWindow.xaml.
     /// </summary>
-    public partial class ModifyStatusEffectsWindow : ConciergeWindow, IConciergeModifyWindow
+    public partial class ModifyStatusEffectsWindow : ConciergeWindow
     {
-        private readonly ConciergePage conciergePage;
-
-        public ModifyStatusEffectsWindow(ConciergePage conciergePage)
+        public ModifyStatusEffectsWindow()
         {
             this.InitializeComponent();
 
             this.NameComboBox.ItemsSource = Constants.StatusEffects;
             this.TypeComboBox.ItemsSource = Enum.GetValues(typeof(StatusEffectTypes)).Cast<StatusEffectTypes>();
-            this.conciergePage = conciergePage;
+            this.ConciergePage = ConciergePage.None;
         }
 
         public bool ItemsAdded { get; private set; }
@@ -45,13 +41,13 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
 
         private List<StatusEffect> StatusEffects { get; set; }
 
-        public ConciergeWindowResult ShowWizardSetup()
+        public override ConciergeWindowResult ShowWizardSetup(string buttonText)
         {
             this.Editing = false;
             this.HeaderTextBlock.Text = this.HeaderText;
-            this.ApplyButton.Visibility = Visibility.Visible;
             this.OkButton.Visibility = Visibility.Collapsed;
             this.StatusEffects = Program.CcsFile.Character.StatusEffects;
+            this.CancelButton.Content = buttonText;
 
             this.ClearFields();
             this.ShowConciergeWindow();
@@ -59,34 +55,30 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
             return this.Result;
         }
 
-        public void ShowAdd(List<StatusEffect> statusEffects)
+        public override bool ShowAdd<T>(T statusEffects)
         {
+            var castItem = statusEffects as List<StatusEffect>;
             this.Editing = false;
             this.HeaderTextBlock.Text = this.HeaderText;
-            this.ApplyButton.Visibility = Visibility.Visible;
-            this.OkButton.Visibility = Visibility.Visible;
-            this.StatusEffects = statusEffects;
+            this.StatusEffects = castItem;
             this.ItemsAdded = false;
 
             this.ClearFields();
             this.ShowConciergeWindow();
+
+            return this.ItemsAdded;
         }
 
-        public void ShowEdit(StatusEffect statusEffect)
+        public override void ShowEdit<T>(T statusEffect)
         {
+            var castItem = statusEffect as StatusEffect;
             this.Editing = true;
             this.HeaderTextBlock.Text = this.HeaderText;
             this.ApplyButton.Visibility = Visibility.Collapsed;
-            this.OkButton.Visibility = Visibility.Visible;
-            this.SelectedEffect = statusEffect;
+            this.SelectedEffect = castItem;
 
-            this.FillFields(statusEffect);
+            this.FillFields(castItem);
             this.ShowConciergeWindow();
-        }
-
-        public void UpdateCancelButton(string text)
-        {
-            this.CancelButton.Content = text;
         }
 
         private void FillFields(StatusEffect statusEffect)
@@ -111,7 +103,7 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
             this.SelectedEffect.Type = (StatusEffectTypes)Enum.Parse(typeof(StatusEffectTypes), this.TypeComboBox.Text);
             this.SelectedEffect.Description = this.DescriptionTextBox.Text;
 
-            Program.UndoRedoService.AddCommand(new EditCommand<StatusEffect>(this.SelectedEffect, oldItem, this.conciergePage));
+            Program.UndoRedoService.AddCommand(new EditCommand<StatusEffect>(this.SelectedEffect, oldItem, this.ConciergePage));
         }
 
         private StatusEffect ToStatusEffect()
@@ -125,7 +117,7 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
                 Description = this.DescriptionTextBox.Text,
             };
 
-            Program.UndoRedoService.AddCommand(new AddCommand<StatusEffect>(this.StatusEffects, effect, this.conciergePage));
+            Program.UndoRedoService.AddCommand(new AddCommand<StatusEffect>(this.StatusEffects, effect, this.ConciergePage));
 
             return effect;
         }

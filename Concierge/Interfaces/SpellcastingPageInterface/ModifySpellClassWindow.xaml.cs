@@ -6,10 +6,8 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
     using System.Linq;
     using System.Windows;
-    using System.Windows.Input;
 
     using Concierge.Character.Enums;
     using Concierge.Character.Spellcasting;
@@ -21,16 +19,14 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
     /// <summary>
     /// Interaction logic for ModifySpellClassWindow.xaml.
     /// </summary>
-    public partial class ModifySpellClassWindow : ConciergeWindow, IConciergeModifyWindow
+    public partial class ModifySpellClassWindow : ConciergeWindow
     {
-        private readonly ConciergePage conciergePage;
-
-        public ModifySpellClassWindow(ConciergePage conciergePage)
+        public ModifySpellClassWindow()
         {
             this.InitializeComponent();
             this.ClassNameComboBox.ItemsSource = Constants.Classes;
             this.AbilityComboBox.ItemsSource = Enum.GetValues(typeof(Abilities)).Cast<Abilities>();
-            this.conciergePage = conciergePage;
+            this.ConciergePage = ConciergePage.None;
         }
 
         public bool ItemsAdded { get; private set; }
@@ -45,13 +41,13 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
 
         private List<MagicClass> MagicClasses { get; set; }
 
-        public ConciergeWindowResult ShowWizardSetup()
+        public override ConciergeWindowResult ShowWizardSetup(string buttonText)
         {
             this.Editing = false;
             this.HeaderTextBlock.Text = this.HeaderText;
-            this.ApplyButton.Visibility = Visibility.Visible;
             this.OkButton.Visibility = Visibility.Collapsed;
             this.MagicClasses = Program.CcsFile.Character.MagicClasses;
+            this.CancelButton.Content = buttonText;
 
             this.ClearFields();
             this.ShowConciergeWindow();
@@ -59,34 +55,30 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
             return this.Result;
         }
 
-        public void AddClass(List<MagicClass> magicClasses)
+        public override bool ShowAdd<T>(T magicClasses)
         {
+            var castItem = magicClasses as List<MagicClass>;
             this.Editing = false;
             this.HeaderTextBlock.Text = this.HeaderText;
-            this.ApplyButton.Visibility = Visibility.Visible;
-            this.OkButton.Visibility = Visibility.Visible;
-            this.MagicClasses = magicClasses;
+            this.MagicClasses = castItem;
             this.ItemsAdded = false;
 
             this.ClearFields();
             this.ShowConciergeWindow();
+
+            return this.ItemsAdded;
         }
 
-        public void EditClass(MagicClass magicClass)
+        public override void ShowEdit<T>(T magicClass)
         {
+            var castItem = magicClass as MagicClass;
             this.Editing = true;
             this.HeaderTextBlock.Text = this.HeaderText;
-            this.SelectedClass = magicClass;
+            this.SelectedClass = castItem;
             this.ApplyButton.Visibility = Visibility.Collapsed;
-            this.OkButton.Visibility = Visibility.Visible;
 
-            this.FillFields(magicClass);
+            this.FillFields(castItem);
             this.ShowConciergeWindow();
-        }
-
-        public void UpdateCancelButton(string text)
-        {
-            this.CancelButton.Content = text;
         }
 
         private void FillFields(MagicClass magicClass)
@@ -139,7 +131,7 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
             magicClass.KnownCantrips = this.CantripsUpDown.Value ?? 0;
             magicClass.KnownSpells = this.SpellsUpDown.Value ?? 0;
 
-            Program.UndoRedoService.AddCommand(new EditCommand<MagicClass>(magicClass, oldItem, this.conciergePage));
+            Program.UndoRedoService.AddCommand(new EditCommand<MagicClass>(magicClass, oldItem, this.ConciergePage));
         }
 
         private MagicClass ToMagicClass()
@@ -155,7 +147,7 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
                 KnownCantrips = this.CantripsUpDown.Value ?? 0,
             };
 
-            Program.UndoRedoService.AddCommand(new AddCommand<MagicClass>(this.MagicClasses, magicClass, this.conciergePage));
+            Program.UndoRedoService.AddCommand(new AddCommand<MagicClass>(this.MagicClasses, magicClass, this.ConciergePage));
 
             return magicClass;
         }

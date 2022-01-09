@@ -8,6 +8,7 @@ namespace Concierge.Tools.Interface
     using Concierge.Interfaces;
     using Concierge.Interfaces.AbilitiesPageInterface;
     using Concierge.Interfaces.AttackDefensePageInterface;
+    using Concierge.Interfaces.Components;
     using Concierge.Interfaces.DetailsPageInterface;
     using Concierge.Interfaces.Enums;
     using Concierge.Interfaces.EquippedItemsPageInterface;
@@ -17,29 +18,6 @@ namespace Concierge.Tools.Interface
 
     public class CharacterCreationWizard
     {
-        private readonly ModifyPropertiesWindow modifyCharacterPropertiesWindow = new ();
-        private readonly ModifyAttributesWindow modifyAttributesWindow = new (ConciergePage.None);
-        private readonly ModifySensesWindow modifySensesWindow = new (ConciergePage.None);
-        private readonly ModifyHealthWindow modifyHealthWindow = new (ConciergePage.None);
-        private readonly ModifyHitDiceWindow modifyHitDiceWindow = new (ConciergePage.None);
-        private readonly ModifyWealthWindow modifyWealthWindow = new (ConciergePage.None);
-        private readonly ModifyAppearanceWindow modifyAppearanceWindow = new (ConciergePage.None);
-        private readonly ModifyPersonalityWindow modifyPersonalityWindow = new (ConciergePage.None);
-        private readonly ModifyProficiencyWindow modifyProficiencyWindow = new (ConciergePage.None);
-        private readonly ModifyLanguagesWindow modifyLanguagesWindow = new (ConciergePage.None);
-        private readonly ModifyClassResourceWindow modifyClassResourceWindow = new (ConciergePage.None);
-        private readonly ModifyArmorWindow modifyArmorWindow = new (ConciergePage.None);
-        private readonly ModifyAttackWindow modifyAttackWindow = new (ConciergePage.None);
-        private readonly ModifyAmmoWindow modifyAmmoWindow = new (ConciergePage.None);
-        private readonly ModifyInventoryWindow modifyInventoryWindow = new (ConciergePage.None);
-        private readonly ModifyEquippedItemsWindow modifyEquippedItemsWindow = new ();
-        private readonly ModifySpellClassWindow modifySpellClassWindow = new (ConciergePage.None);
-        private readonly ModifySpellSlotsWindow modifySpellSlotsWindow = new (ConciergePage.None);
-        private readonly ModifySpellWindow modifySpellWindow = new (ConciergePage.None);
-        private readonly ModifyAbilitiesWindow modifyAbilitiesWindow = new (ConciergePage.None);
-        private readonly ModifyCharacterImageWindow modifyCharacterImageWindow = new ("768x1024 image ratio is recommended", ConciergePage.None);
-        private readonly ModifyStatusEffectsWindow modifyStatusEffectsWindow = new (ConciergePage.None);
-
         public CharacterCreationWizard()
         {
             this.IsStopped = false;
@@ -82,31 +60,31 @@ namespace Concierge.Tools.Interface
 
         private void RunSetupSteps()
         {
-            this.NextSetupStep(this.modifyCharacterPropertiesWindow, "Skip Section");
-            this.NextSetupStep(this.modifyAttributesWindow, "Skip Section");
-            this.NextSetupStep(this.modifySensesWindow, "Skip Section");
-            this.NextSetupStep(this.modifyHealthWindow, "Skip Section");
-            this.NextSetupStep(this.modifyHitDiceWindow, "Skip Section");
-            this.NextSetupStep(this.modifyWealthWindow, "Skip Section");
-            this.NextSetupStep(this.modifyAppearanceWindow, "Skip Section");
-            this.NextSetupStep(this.modifyPersonalityWindow, "Skip Section");
-            this.NextSetupStep(this.modifyProficiencyWindow, "Continue");
-            this.NextSetupStep(this.modifyLanguagesWindow, "Continue");
-            this.NextSetupStep(this.modifyClassResourceWindow, "Continue");
-            this.NextSetupStep(this.modifyAbilitiesWindow, "Continue");
-            this.NextSetupStep(this.modifyArmorWindow, "Skip Section");
-            this.NextSetupStep(this.modifyAttackWindow, "Continue");
-            this.NextSetupStep(this.modifyAmmoWindow, "Continue");
-            this.NextSetupStep(this.modifyInventoryWindow, "Continue");
-            this.NextSetupStep(this.modifyEquippedItemsWindow, "Continue");
-            this.NextSetupStep(this.modifyStatusEffectsWindow, "Continue");
-            this.NextSetupStep(this.modifyCharacterImageWindow, "Skip Section");
-            this.NextSetupStep(this.modifySpellClassWindow, "Continue");
-            this.NextSetupStep(this.modifySpellSlotsWindow, "Skip Section");
-            this.NextSetupStep(this.modifySpellWindow, "Continue");
+            this.NextSetupStep(new ModifyPropertiesWindow(), "Skip Section");
+            this.NextSetupStep(new ModifyAttributesWindow(), "Skip Section");
+            this.NextSetupStep(new ModifySensesWindow(), "Skip Section");
+            this.NextSetupStep(new ModifyHealthWindow(), "Skip Section");
+            this.NextSetupStep(new ModifyHitDiceWindow(), "Skip Section");
+            this.NextSetupStep(new ModifyWealthWindow(), "Skip Section");
+            this.NextSetupStep(new ModifyAppearanceWindow(), "Skip Section");
+            this.NextSetupStep(new ModifyPersonalityWindow(), "Skip Section");
+            this.NextSetupStep(new ModifyProficiencyWindow(), "Continue");
+            this.NextSetupStep(new ModifyLanguagesWindow(), "Continue");
+            this.NextSetupStep(new ModifyClassResourceWindow(), "Continue");
+            this.NextSetupStep(new ModifyAbilitiesWindow(), "Continue");
+            this.NextSetupStep(new ModifyArmorWindow(), "Skip Section");
+            this.NextSetupStep(new ModifyAttackWindow(), "Continue");
+            this.NextSetupStep(new ModifyAmmoWindow(), "Continue");
+            this.NextSetupStep(new ModifyInventoryWindow(), "Continue");
+            this.NextSetupStep(new ModifyEquippedItemsWindow(), "Continue");
+            this.NextSetupStep(new ModifyStatusEffectsWindow(), "Continue");
+            this.NextSetupStep(new ModifyCharacterImageWindow(), "Skip Section");
+            this.NextSetupStep(new ModifySpellClassWindow(), "Continue");
+            this.NextSetupStep(new ModifySpellSlotsWindow(), "Skip Section");
+            this.NextSetupStep(new ModifySpellWindow(), "Continue");
         }
 
-        private void NextSetupStep(IConciergeModifyWindow conciergeWindow, string buttonText)
+        private void NextSetupStep(ConciergeWindow conciergeWindow, string buttonText)
         {
             ConciergeWindowResult wizardResult;
             ConciergeWindowResult confirmExitResult;
@@ -119,9 +97,7 @@ namespace Concierge.Tools.Interface
             do
             {
                 confirmExitResult = ConciergeWindowResult.NoResult;
-
-                conciergeWindow.UpdateCancelButton(buttonText);
-                wizardResult = conciergeWindow.ShowWizardSetup();
+                wizardResult = conciergeWindow.ShowWizardSetup(buttonText);
 
                 if (wizardResult == ConciergeWindowResult.Exit)
                 {

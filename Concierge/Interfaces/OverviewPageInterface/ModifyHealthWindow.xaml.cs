@@ -14,22 +14,21 @@ namespace Concierge.Interfaces.OverviewPageInterface
     /// <summary>
     /// Interaction logic for ModifyHealthWindow.xaml.
     /// </summary>
-    public partial class ModifyHealthWindow : ConciergeWindow, IConciergeModifyWindow
+    public partial class ModifyHealthWindow : ConciergeWindow
     {
-        private readonly ConciergePage conciergePage;
-
-        public ModifyHealthWindow(ConciergePage conciergePage)
+        public ModifyHealthWindow()
         {
             this.InitializeComponent();
-            this.conciergePage = conciergePage;
+            this.ConciergePage = ConciergePage.None;
         }
 
         private Health Health { get; set; }
 
-        public ConciergeWindowResult ShowWizardSetup()
+        public override ConciergeWindowResult ShowWizardSetup(string buttonText)
         {
             this.Health = Program.CcsFile.Character.Vitality.Health;
             this.ApplyButton.Visibility = Visibility.Collapsed;
+            this.CancelButton.Content = buttonText;
 
             this.FillFields();
             this.ShowConciergeWindow();
@@ -37,18 +36,13 @@ namespace Concierge.Interfaces.OverviewPageInterface
             return this.Result;
         }
 
-        public void EditHealth(Health health)
+        public override void ShowEdit<T>(T health)
         {
-            this.Health = health;
-            this.ApplyButton.Visibility = Visibility.Visible;
+            var castItem = health as Health;
+            this.Health = castItem;
 
             this.FillFields();
             this.ShowConciergeWindow();
-        }
-
-        public void UpdateCancelButton(string text)
-        {
-            this.CancelButton.Content = text;
         }
 
         private void FillFields()
@@ -73,7 +67,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
             this.Health.BaseHealth = this.CurrentHpUpDown.Value ?? 0;
             this.Health.TemporaryHealth = this.TemporaryHpUpDown.Value ?? 0;
 
-            Program.UndoRedoService.AddCommand(new EditCommand<Health>(this.Health, oldItem, this.conciergePage));
+            Program.UndoRedoService.AddCommand(new EditCommand<Health>(this.Health, oldItem, this.ConciergePage));
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)

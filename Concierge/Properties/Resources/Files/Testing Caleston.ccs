@@ -1094,22 +1094,28 @@
     ],
     "SavingThrow": {
       "Strength": {
-        "Proficiency": true
+        "Proficiency": true,
+        "CheckOverride": 4
       },
       "Dexterity": {
-        "Proficiency": false
+        "Proficiency": false,
+        "CheckOverride": 4
       },
       "Constitution": {
-        "Proficiency": true
+        "Proficiency": true,
+        "CheckOverride": 4
       },
       "Intelligence": {
-        "Proficiency": false
+        "Proficiency": false,
+        "CheckOverride": 4
       },
       "Wisdom": {
-        "Proficiency": true
+        "Proficiency": true,
+        "CheckOverride": 4
       },
       "Charisma": {
-        "Proficiency": false
+        "Proficiency": false,
+        "CheckOverride": 4
       }
     },
     "Skill": {
@@ -1291,7 +1297,7 @@
       "NinethTotal": 0,
       "PactUsed": 0,
       "FirstUsed": 0,
-      "SecondUsed": 1,
+      "SecondUsed": 0,
       "ThirdUsed": 0,
       "FourthUsed": 0,
       "FifthUsed": 0,
@@ -1304,7 +1310,7 @@
       "Health": {
         "MaxHealth": 71,
         "TemporaryHealth": 0,
-        "BaseHealth": 70
+        "BaseHealth": 71
       },
       "HitDice": {
         "TotalD6": 0,
@@ -1312,7 +1318,7 @@
         "TotalD10": 0,
         "TotalD12": 0,
         "SpentD6": 0,
-        "SpentD8": 4,
+        "SpentD8": 2,
         "SpentD10": 0,
         "SpentD12": 0
       },
@@ -1334,10 +1340,10 @@
         "Unconscious": "Cured"
       },
       "DeathSavingThrows": {
-        "CurrentDeathSave": 2,
+        "CurrentDeathSave": 0,
         "DeathSaves": [
-          1,
-          1,
+          0,
+          0,
           0,
           0,
           0
@@ -1627,5 +1633,5 @@
       }
     ]
   },
-  "Version": "4.5.0"
+  "Version": "4.5.2"
 }

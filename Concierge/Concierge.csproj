@@ -5,7 +5,7 @@
     <TargetFramework>net6.0-windows</TargetFramework>
     <RootNamespace>Concierge</RootNamespace>
     <UseWPF>true</UseWPF>
-    <Version>4.5.1</Version>
+    <Version>4.5.2</Version>
     <ApplicationIcon>AppIconImage.ico</ApplicationIcon>
   </PropertyGroup>
 

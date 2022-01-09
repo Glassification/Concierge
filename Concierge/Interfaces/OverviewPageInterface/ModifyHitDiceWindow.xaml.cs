@@ -14,22 +14,21 @@ namespace Concierge.Interfaces.OverviewPageInterface
     /// <summary>
     /// Interaction logic for ModifyHitDiceWindow.xaml.
     /// </summary>
-    public partial class ModifyHitDiceWindow : ConciergeWindow, IConciergeModifyWindow
+    public partial class ModifyHitDiceWindow : ConciergeWindow
     {
-        private readonly ConciergePage conciergePage;
-
-        public ModifyHitDiceWindow(ConciergePage conciergePage)
+        public ModifyHitDiceWindow()
         {
             this.InitializeComponent();
-            this.conciergePage = conciergePage;
+            this.ConciergePage = ConciergePage.None;
         }
 
         private HitDice HitDice { get; set; }
 
-        public ConciergeWindowResult ShowWizardSetup()
+        public override ConciergeWindowResult ShowWizardSetup(string buttonText)
         {
             this.HitDice = Program.CcsFile.Character.Vitality.HitDice;
             this.ApplyButton.Visibility = Visibility.Collapsed;
+            this.CancelButton.Content = buttonText;
 
             this.FillFields();
             this.ShowConciergeWindow();
@@ -37,18 +36,13 @@ namespace Concierge.Interfaces.OverviewPageInterface
             return this.Result;
         }
 
-        public void ShowEdit(HitDice hitDice)
+        public override void ShowEdit<T>(T hitDice)
         {
-            this.HitDice = hitDice;
-            this.ApplyButton.Visibility = Visibility.Visible;
+            var castItem = hitDice as HitDice;
+            this.HitDice = castItem;
 
             this.FillFields();
             this.ShowConciergeWindow();
-        }
-
-        public void UpdateCancelButton(string text)
-        {
-            this.CancelButton.Content = text;
         }
 
         private void FillFields()
@@ -87,7 +81,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
             this.HitDice.SpentD10 = this.UsedD10UpDown.Value ?? 0;
             this.HitDice.SpentD12 = this.UsedD12UpDown.Value ?? 0;
 
-            Program.UndoRedoService.AddCommand(new EditCommand<HitDice>(this.HitDice, oldItem, this.conciergePage));
+            Program.UndoRedoService.AddCommand(new EditCommand<HitDice>(this.HitDice, oldItem, this.ConciergePage));
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)

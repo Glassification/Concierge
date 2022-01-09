@@ -4,9 +4,7 @@
 
 namespace Concierge.Interfaces.OverviewPageInterface
 {
-    using System.ComponentModel;
     using System.Windows;
-    using System.Windows.Input;
 
     using Concierge.Character.Statuses;
     using Concierge.Commands;
@@ -18,14 +16,12 @@ namespace Concierge.Interfaces.OverviewPageInterface
     /// </summary>
     public partial class ModifyHpWindow : ConciergeWindow
     {
-        private readonly ConciergePage conciergePage;
-
-        public ModifyHpWindow(ConciergePage conciergePage)
+        public ModifyHpWindow()
         {
             this.InitializeComponent();
             this.PreviousHeal = 0;
             this.PreviousDamage = 0;
-            this.conciergePage = conciergePage;
+            this.ConciergePage = ConciergePage.None;
         }
 
         private string HeaderText => this.IsHealing ? "Heal" : "Damage";
@@ -36,8 +32,9 @@ namespace Concierge.Interfaces.OverviewPageInterface
 
         private bool IsHealing { get; set; }
 
-        public void ShowHeal(Vitality vitality)
+        public override void ShowHeal<T>(T vitality)
         {
+            var castItem = vitality as Vitality;
             this.IsHealing = true;
             this.HeaderTextBlock.Text = this.HeaderText;
             this.HpUpDown.Value = this.PreviousHeal;
@@ -47,14 +44,15 @@ namespace Concierge.Interfaces.OverviewPageInterface
 
             if (this.Result == ConciergeWindowResult.OK)
             {
-                var oldItem = vitality.Health.DeepCopy();
-                vitality.Heal(this.HpUpDown.Value ?? 0);
-                Program.UndoRedoService.AddCommand(new EditCommand<Health>(vitality.Health, oldItem, this.conciergePage));
+                var oldItem = castItem.Health.DeepCopy();
+                castItem.Heal(this.HpUpDown.Value ?? 0);
+                Program.UndoRedoService.AddCommand(new EditCommand<Health>(castItem.Health, oldItem, this.ConciergePage));
             }
         }
 
-        public void ShowDamage(Vitality vitality)
+        public override void ShowDamage<T>(T vitality)
         {
+            var castItem = vitality as Vitality;
             this.IsHealing = false;
             this.HeaderTextBlock.Text = this.HeaderText;
             this.HpUpDown.Value = this.PreviousDamage;
@@ -64,9 +62,9 @@ namespace Concierge.Interfaces.OverviewPageInterface
 
             if (this.Result == ConciergeWindowResult.OK)
             {
-                var oldItem = vitality.Health.DeepCopy();
-                vitality.Damage(this.HpUpDown.Value ?? 0);
-                Program.UndoRedoService.AddCommand(new EditCommand<Health>(vitality.Health, oldItem, this.conciergePage));
+                var oldItem = castItem.Health.DeepCopy();
+                castItem.Damage(this.HpUpDown.Value ?? 0);
+                Program.UndoRedoService.AddCommand(new EditCommand<Health>(castItem.Health, oldItem, this.ConciergePage));
             }
         }
 

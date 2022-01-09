@@ -9,12 +9,14 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
     using System.Windows;
     using System.Windows.Controls;
 
+    using Concierge.Character.Characteristics;
     using Concierge.Character.Enums;
     using Concierge.Character.Items;
     using Concierge.Commands;
     using Concierge.Interfaces.Components;
     using Concierge.Interfaces.Enums;
     using Concierge.Interfaces.InventoryPageInterface;
+    using Concierge.Services;
     using Concierge.Utility;
 
     /// <summary>
@@ -22,17 +24,11 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
     /// </summary>
     public partial class EquippedItemsPage : Page, IConciergePage
     {
-        private readonly ModifyEquippedItemsWindow modifyEquippedItemsWindow = new ();
-        private readonly ModifyCharacterImageWindow modifyCharacterImageWindow = new ("768x1024 image ratio is recommended", ConciergePage.EquippedItems);
-        private readonly ModifyInventoryWindow modifyInventoryWindow = new (ConciergePage.EquippedItems);
-
         public EquippedItemsPage()
         {
             this.InitializeComponent();
 
             this.DataContext = this;
-            this.modifyEquippedItemsWindow.ApplyChanges += this.Window_ApplyChanges;
-            this.modifyCharacterImageWindow.ApplyChanges += this.Window_ApplyChanges;
         }
 
         public ConciergePage ConciergePage => ConciergePage.EquippedItems;
@@ -64,7 +60,12 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
             }
 
             var index = this.SelectedDataGrid.SelectedIndex;
-            this.modifyInventoryWindow.ShowEdit(itemToEdit as Inventory, true);
+            ConciergeWindowService.ShowEdit<Inventory>(
+                itemToEdit as Inventory,
+                true,
+                typeof(ModifyInventoryWindow),
+                this.Window_ApplyChanges,
+                ConciergePage.EquippedItems);
             this.Draw();
             this.SelectedDataGrid.SetSelectedIndex(index);
         }
@@ -192,10 +193,14 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
 
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
-            this.modifyEquippedItemsWindow.ShowAdd();
+            var added = ConciergeWindowService.ShowAdd<string>(
+                string.Empty,
+                typeof(ModifyEquippedItemsWindow),
+                this.Window_ApplyChanges,
+                ConciergePage.EquippedItems);
             this.Draw();
 
-            if (this.modifyEquippedItemsWindow.ItemsAdded)
+            if (added)
             {
                 this.SelectedDataGrid?.SetSelectedIndex(this.SelectedDataGrid.LastIndex);
             }
@@ -245,7 +250,11 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
 
         private void ImageEditButton_Click(object sender, RoutedEventArgs e)
         {
-            this.modifyCharacterImageWindow.ShowEdit(Program.CcsFile.Character.CharacterImage);
+            ConciergeWindowService.ShowEdit<CharacterImage>(
+                Program.CcsFile.Character.CharacterImage,
+                typeof(ModifyCharacterImageWindow),
+                this.Window_ApplyChanges,
+                ConciergePage.EquippedItems);
             this.Draw();
         }
     }
