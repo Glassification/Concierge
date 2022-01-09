@@ -19,7 +19,6 @@ namespace Concierge.Services
         private const string SaveFilter = "CCS (*.ccs)|*.ccs";
         private const string DefaultFileName = "New Character.ccs";
 
-        private readonly SaveStatusWindow saveStatusWindow = new ();
         private readonly OpenFileDialog ccsOpenFileDialog;
         private readonly OpenFileDialog imageOpenFileDialog;
         private readonly SaveFileDialog saveFileDialog;
@@ -65,13 +64,13 @@ namespace Concierge.Services
                 {
                     ccsFile.AbsolutePath = this.saveFileDialog.FileName;
                     CharacterReadWriter.Write(ccsFile);
-                    this.saveStatusWindow.ShowWindow();
+                    ConciergeWindowService.ShowWindow(typeof(SaveStatusWindow));
                 }
             }
             else
             {
                 CharacterReadWriter.Write(ccsFile);
-                this.saveStatusWindow.ShowWindow();
+                ConciergeWindowService.ShowWindow(typeof(SaveStatusWindow));
             }
         }
     }

@@ -37,6 +37,7 @@ namespace Concierge.Interfaces
         {
             this.ApplyButton.Visibility = Visibility.Collapsed;
             this.CancelButton.Content = buttonText;
+            this.CharacterProperties = Program.CcsFile.Character.Properties;
 
             this.FillFields();
             this.ShowConciergeWindow();

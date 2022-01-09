@@ -30,7 +30,6 @@ namespace Concierge
 
             InitializeLogger();
 
-            SaveStatusWindow = new SaveStatusWindow();
             IsTyping = false;
             ErrorService = new ErrorService(Logger);
             UndoRedoService = new UndoRedoService();
@@ -49,8 +48,6 @@ namespace Concierge
         public static bool IsModified => !BaseState.Equals(CcsFile.Character);
 
         public static CcsFile CcsFile { get; set; }
-
-        public static SaveStatusWindow SaveStatusWindow { get; }
 
         public static Logger Logger { get; private set; }
 
