@@ -22,12 +22,10 @@ namespace Concierge.Interfaces.NotesPageInterface
     {
         private const string NewChapter = "--New Chapter--";
 
-        private readonly ConciergePage conciergePage;
-
-        public ModifyNotesWindow(ConciergePage conciergePage)
+        public ModifyNotesWindow()
         {
             this.InitializeComponent();
-            this.conciergePage = conciergePage;
+            this.ConciergePage = ConciergePage.None;
         }
 
         private bool IsEdit { get; set; }
@@ -36,15 +34,29 @@ namespace Concierge.Interfaces.NotesPageInterface
 
         private Document CurrentDocument { get; set; }
 
-        public void ShowAdd()
+        public override bool ShowAdd<T>(T item)
         {
             this.HeaderTextBlock.Text = "Add Note";
 
             this.SetupWindow(false);
             this.ShowConciergeWindow();
+
+            return false;
         }
 
-        public void ShowEdit(Chapter chapter)
+        public override void ShowEdit<T>(T note)
+        {
+            if (note is Chapter)
+            {
+                this.EditChapter(note as Chapter);
+            }
+            else if (note is Document)
+            {
+                this.EditDocument(note as Document);
+            }
+        }
+
+        private void EditChapter(Chapter chapter)
         {
             this.SetupWindow(true);
 
@@ -57,7 +69,7 @@ namespace Concierge.Interfaces.NotesPageInterface
             this.ShowConciergeWindow();
         }
 
-        public void ShowEdit(Document document)
+        private void EditDocument(Document document)
         {
             this.SetupWindow(true);
 
@@ -106,13 +118,13 @@ namespace Concierge.Interfaces.NotesPageInterface
             {
                 var oldItem = this.CurrentDocument.DeepCopy();
                 this.CurrentDocument.Name = this.DocumentTextBox.Text;
-                Program.UndoRedoService.AddCommand(new EditCommand<Document>(this.CurrentDocument, oldItem, this.conciergePage));
+                Program.UndoRedoService.AddCommand(new EditCommand<Document>(this.CurrentDocument, oldItem, this.ConciergePage));
             }
             else
             {
                 var oldItem = this.CurrentChapter.DeepCopy();
                 this.CurrentChapter.Name = this.DocumentTextBox.Text;
-                Program.UndoRedoService.AddCommand(new EditCommand<Chapter>(this.CurrentChapter, oldItem, this.conciergePage));
+                Program.UndoRedoService.AddCommand(new EditCommand<Chapter>(this.CurrentChapter, oldItem, this.ConciergePage));
             }
         }
 
@@ -124,13 +136,13 @@ namespace Concierge.Interfaces.NotesPageInterface
             {
                 var newChapter = new Chapter(this.DocumentTextBox.Text);
                 Program.CcsFile.Character.Chapters.Add(newChapter);
-                Program.UndoRedoService.AddCommand(new AddCommand<Chapter>(Program.CcsFile.Character.Chapters, newChapter, this.conciergePage));
+                Program.UndoRedoService.AddCommand(new AddCommand<Chapter>(Program.CcsFile.Character.Chapters, newChapter, this.ConciergePage));
             }
             else
             {
                 var newDocument = new Document(this.DocumentTextBox.Text);
                 chapter.Documents.Add(newDocument);
-                Program.UndoRedoService.AddCommand(new AddCommand<Document>(chapter.Documents, newDocument, this.conciergePage));
+                Program.UndoRedoService.AddCommand(new AddCommand<Document>(chapter.Documents, newDocument, this.ConciergePage));
             }
         }
 

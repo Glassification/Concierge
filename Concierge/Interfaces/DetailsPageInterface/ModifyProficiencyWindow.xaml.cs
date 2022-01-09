@@ -6,10 +6,8 @@ namespace Concierge.Interfaces.DetailsPageInterface
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
     using System.Linq;
     using System.Windows;
-    using System.Windows.Input;
 
     using Concierge.Character.Characteristics;
     using Concierge.Character.Enums;
@@ -20,15 +18,13 @@ namespace Concierge.Interfaces.DetailsPageInterface
     /// <summary>
     /// Interaction logic for ModifyProficiencyWindow.xaml.
     /// </summary>
-    public partial class ModifyProficiencyWindow : ConciergeWindow, IConciergeModifyWindow
+    public partial class ModifyProficiencyWindow : ConciergeWindow
     {
-        private readonly ConciergePage conciergePage;
-
-        public ModifyProficiencyWindow(ConciergePage conciergePage)
+        public ModifyProficiencyWindow()
         {
             this.InitializeComponent();
             this.ProficiencyComboBox.ItemsSource = Enum.GetValues(typeof(ProficiencyTypes)).Cast<ProficiencyTypes>();
-            this.conciergePage = conciergePage;
+            this.ConciergePage = ConciergePage.None;
         }
 
         public bool ItemsAdded { get; private set; }
@@ -41,13 +37,13 @@ namespace Concierge.Interfaces.DetailsPageInterface
 
         private string HeaderText => $"{(this.Editing ? "Edit" : "Add")} Proficiency";
 
-        public ConciergeWindowResult ShowWizardSetup()
+        public override ConciergeWindowResult ShowWizardSetup(string buttonText)
         {
             this.Editing = false;
             this.HeaderTextBlock.Text = this.HeaderText;
-            this.ApplyButton.Visibility = Visibility.Visible;
             this.OkButton.Visibility = Visibility.Collapsed;
             this.SelectedProficiencies = Program.CcsFile.Character.Proficiency;
+            this.CancelButton.Content = buttonText;
 
             this.SetEnabledState(true);
             this.ClearFields();
@@ -56,36 +52,32 @@ namespace Concierge.Interfaces.DetailsPageInterface
             return this.Result;
         }
 
-        public void ShowAdd(List<Proficiency> proficiencies)
+        public override bool ShowAdd<T>(T proficiencies)
         {
+            var castItem = proficiencies as List<Proficiency>;
             this.Editing = false;
             this.HeaderTextBlock.Text = this.HeaderText;
-            this.SelectedProficiencies = proficiencies;
-            this.ApplyButton.Visibility = Visibility.Visible;
-            this.OkButton.Visibility = Visibility.Visible;
+            this.SelectedProficiencies = castItem;
             this.ItemsAdded = false;
 
             this.SetEnabledState(true);
             this.ClearFields();
             this.ShowConciergeWindow();
+
+            return this.ItemsAdded;
         }
 
-        public void ShowEdit(Proficiency proficiency)
+        public override void ShowEdit<T>(T proficiency)
         {
+            var castItem = proficiency as Proficiency;
             this.Editing = true;
-            this.SelectedProficiency = proficiency;
+            this.SelectedProficiency = castItem;
             this.HeaderTextBlock.Text = this.HeaderText;
             this.ApplyButton.Visibility = Visibility.Collapsed;
-            this.OkButton.Visibility = Visibility.Visible;
 
             this.SetEnabledState(false);
             this.FillFields();
             this.ShowConciergeWindow();
-        }
-
-        public void UpdateCancelButton(string text)
-        {
-            this.CancelButton.Content = text;
         }
 
         private void SetEnabledState(bool isEnabled)
@@ -113,7 +105,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
                 ProficiencyType = (ProficiencyTypes)Enum.Parse(typeof(ProficiencyTypes), this.ProficiencyComboBox.Text),
             };
 
-            Program.UndoRedoService.AddCommand(new AddCommand<Proficiency>(this.SelectedProficiencies, proficiency, this.conciergePage));
+            Program.UndoRedoService.AddCommand(new AddCommand<Proficiency>(this.SelectedProficiencies, proficiency, this.ConciergePage));
 
             return proficiency;
         }
@@ -125,7 +117,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
             proficiency.Name = this.ProficiencyTextBox.Text;
             proficiency.ProficiencyType = (ProficiencyTypes)Enum.Parse(typeof(ProficiencyTypes), this.ProficiencyComboBox.Text);
 
-            Program.UndoRedoService.AddCommand(new EditCommand<Proficiency>(proficiency, oldItem, this.conciergePage));
+            Program.UndoRedoService.AddCommand(new EditCommand<Proficiency>(proficiency, oldItem, this.ConciergePage));
         }
 
         private void ClearFields()

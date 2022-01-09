@@ -28,13 +28,13 @@ namespace Concierge.Interfaces.UtilityInterface
         private readonly ConciergeNavigate conciergeNavigate;
         private readonly MainWindow mainWindow;
 
-        public SearchWindow(MainWindow mainWindow)
+        public SearchWindow()
         {
             this.InitializeComponent();
-            this.conciergeSearch = new ConciergeSearch(mainWindow);
+            this.conciergeSearch = new ConciergeSearch(Program.MainWindow);
             this.conciergeNavigate = new ConciergeNavigate();
             this.SearchResults = new List<SearchResult>();
-            this.mainWindow = mainWindow;
+            this.mainWindow = Program.MainWindow;
             this.SearchDomainComboBox.ItemsSource = Utilities.FormatEnumForDisplay(typeof(SearchDomain));
             this.SearchDomainComboBox.Text = SearchDomain.CurrentPage.ToString().FormatFromEnum();
             this.SearchResultTextBlock.Text = string.Empty;
@@ -44,7 +44,7 @@ namespace Concierge.Interfaces.UtilityInterface
 
         private int SearchIndex { get; set; }
 
-        public void ShowWindow()
+        public override void ShowWindow()
         {
             this.SearchTextBox.Focus();
             this.ShowConciergeWindow();

@@ -13,10 +13,12 @@ namespace Concierge.Interfaces.OverviewPageInterface
     using Concierge.Character;
     using Concierge.Character.AbilitySavingThrows;
     using Concierge.Character.AbilitySkills;
+    using Concierge.Character.Characteristics;
     using Concierge.Character.Enums;
     using Concierge.Character.Statuses;
     using Concierge.Commands;
     using Concierge.Interfaces.Enums;
+    using Concierge.Services;
     using Concierge.Tools.Interface;
     using Concierge.Utility;
     using Concierge.Utility.Colors;
@@ -27,26 +29,9 @@ namespace Concierge.Interfaces.OverviewPageInterface
     /// </summary>
     public partial class OverviewPage : Page, IConciergePage
     {
-        private readonly ModifyAttributesWindow modifyAttributesWindow = new (ConciergePage.Overview);
-        private readonly ModifySensesWindow modifySensesWindow = new (ConciergePage.Overview);
-        private readonly ModifyHealthWindow modifyHealthWindow = new (ConciergePage.Overview);
-        private readonly ModifyHpWindow modifyHpWindow = new (ConciergePage.Overview);
-        private readonly ModifyHitDiceWindow modifyHitDiceWindow = new (ConciergePage.Overview);
-        private readonly ModifyWealthWindow modifyWealthWindow = new (ConciergePage.Overview);
-        private readonly ModifySkillCheckWindow modifySkillCheckWindow = new (ConciergePage.Overview);
-        private readonly ModifySavingThrowCheckWindow modifySavingThrowCheckWindow = new (ConciergePage.Overview);
-
         public OverviewPage()
         {
             this.InitializeComponent();
-
-            this.DataContext = this;
-            this.modifyAttributesWindow.ApplyChanges += this.Window_ApplyChanges;
-            this.modifySensesWindow.ApplyChanges += this.Window_ApplyChanges;
-            this.modifyHealthWindow.ApplyChanges += this.Window_ApplyChanges;
-            this.modifyHitDiceWindow.ApplyChanges += this.Window_ApplyChanges;
-            this.modifySkillCheckWindow.ApplyChanges += this.Window_ApplyChanges;
-            this.modifySavingThrowCheckWindow.ApplyChanges += this.Window_ApplyChanges;
 
             this.InitializeToggleBox(this.StrengthProficiencyBox, this.SavingThrows_MouseDown);
             this.InitializeToggleBox(this.DexterityProficiencyBox, this.SavingThrows_MouseDown);
@@ -93,6 +78,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
             this.InitializeToggleBox(this.PerformanceExpertieseBox, this.SkillExpertise_MouseDown);
             this.InitializeToggleBox(this.PersuasionExpertieseBox, this.SkillExpertise_MouseDown);
 
+            this.DataContext = this;
             this.CurrentHitDiceBox = string.Empty;
         }
 
@@ -571,7 +557,11 @@ namespace Concierge.Interfaces.OverviewPageInterface
 
         private void EditAttributesButton_Click(object sender, RoutedEventArgs e)
         {
-            this.modifyAttributesWindow.EditAttributes(Program.CcsFile.Character.Attributes);
+            ConciergeWindowService.ShowEdit<Attributes>(
+                Program.CcsFile.Character.Attributes,
+                typeof(ModifyAttributesWindow),
+                this.Window_ApplyChanges,
+                ConciergePage.Overview);
             this.DrawAttributes();
             this.DrawSavingThrows();
             this.DrawSkills();
@@ -579,19 +569,31 @@ namespace Concierge.Interfaces.OverviewPageInterface
 
         private void EditSensesButton_Click(object sender, RoutedEventArgs e)
         {
-            this.modifySensesWindow.EditSenses();
+            ConciergeWindowService.ShowEdit<Senses>(
+                Program.CcsFile.Character.Senses,
+                typeof(ModifySensesWindow),
+                this.Window_ApplyChanges,
+                ConciergePage.Overview);
             this.DrawDetails();
         }
 
         private void EditHealthButton_Click(object sender, RoutedEventArgs e)
         {
-            this.modifyHealthWindow.EditHealth(Program.CcsFile.Character.Vitality.Health);
+            ConciergeWindowService.ShowEdit<Health>(
+                Program.CcsFile.Character.Vitality.Health,
+                typeof(ModifyHealthWindow),
+                this.Window_ApplyChanges,
+                ConciergePage.Overview);
             this.DrawHealth();
         }
 
         private void EditHitDiceButton_Click(object sender, RoutedEventArgs e)
         {
-            this.modifyHitDiceWindow.ShowEdit(Program.CcsFile.Character.Vitality.HitDice);
+            ConciergeWindowService.ShowEdit<HitDice>(
+                Program.CcsFile.Character.Vitality.HitDice,
+                typeof(ModifyHitDiceWindow),
+                this.Window_ApplyChanges,
+                ConciergePage.Overview);
             this.DrawHitDice();
         }
 
@@ -599,7 +601,11 @@ namespace Concierge.Interfaces.OverviewPageInterface
         {
             var character = Program.CcsFile.Character;
 
-            this.modifyHpWindow.ShowDamage(character.Vitality);
+            ConciergeWindowService.ShowDamage<Vitality>(
+                Program.CcsFile.Character.Vitality,
+                typeof(ModifyHpWindow),
+                this.Window_ApplyChanges,
+                ConciergePage.Overview);
             this.DrawHealth();
 
             if (character.Vitality.IsDead)
@@ -610,7 +616,11 @@ namespace Concierge.Interfaces.OverviewPageInterface
 
         private void HealDamageButton_Click(object sender, RoutedEventArgs e)
         {
-            this.modifyHpWindow.ShowHeal(Program.CcsFile.Character.Vitality);
+            ConciergeWindowService.ShowHeal<Vitality>(
+                Program.CcsFile.Character.Vitality,
+                typeof(ModifyHpWindow),
+                this.Window_ApplyChanges,
+                ConciergePage.Overview);
             this.DrawHealth();
         }
 
@@ -703,7 +713,11 @@ namespace Concierge.Interfaces.OverviewPageInterface
 
         private void EditWealthButton_Click(object sender, RoutedEventArgs e)
         {
-            this.modifyWealthWindow.ShowEdit(Program.CcsFile.Character.Wealth);
+            ConciergeWindowService.ShowEdit<Wealth>(
+                Program.CcsFile.Character.Wealth,
+                typeof(ModifyWealthWindow),
+                this.Window_ApplyChanges,
+                ConciergePage.Overview);
             this.DrawWealth();
         }
 
@@ -788,13 +802,21 @@ namespace Concierge.Interfaces.OverviewPageInterface
 
         private void SkillCheckButton_Click(object sender, RoutedEventArgs e)
         {
-            this.modifySkillCheckWindow.ShowEdit(Program.CcsFile.Character.Skill);
+            ConciergeWindowService.ShowEdit<Skill>(
+                Program.CcsFile.Character.Skill,
+                typeof(ModifySkillCheckWindow),
+                this.Window_ApplyChanges,
+                ConciergePage.Overview);
             this.DrawSkills();
         }
 
         private void SavingThrowCheckButton_Click(object sender, RoutedEventArgs e)
         {
-            this.modifySavingThrowCheckWindow.ShowEdit(Program.CcsFile.Character.SavingThrow);
+            ConciergeWindowService.ShowEdit<SavingThrow>(
+                Program.CcsFile.Character.SavingThrow,
+                typeof(ModifySavingThrowCheckWindow),
+                this.Window_ApplyChanges,
+                ConciergePage.Overview);
             this.DrawSavingThrows();
         }
     }

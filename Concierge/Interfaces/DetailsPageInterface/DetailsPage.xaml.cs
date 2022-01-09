@@ -18,6 +18,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
     using Concierge.Configuration;
     using Concierge.Interfaces.Components;
     using Concierge.Interfaces.Enums;
+    using Concierge.Services;
     using Concierge.Utility;
     using Concierge.Utility.Colors;
     using Concierge.Utility.Units;
@@ -27,23 +28,9 @@ namespace Concierge.Interfaces.DetailsPageInterface
     /// </summary>
     public partial class DetailsPage : Page, IConciergePage
     {
-        private readonly ModifyProficiencyWindow modifyProficiencyWindow = new (ConciergePage.Details);
-        private readonly MondifyConditionsWindow mondifyConditionsWindow = new (ConciergePage.Details);
-        private readonly ModifyLanguagesWindow modifyLanguagesWindow = new (ConciergePage.Details);
-        private readonly ModifyAppearanceWindow modifyAppearanceWindow = new (ConciergePage.Details);
-        private readonly ModifyPersonalityWindow modifyPersonalityWindow = new (ConciergePage.Details);
-        private readonly ModifyClassResourceWindow modifyClassResourceWindow = new (ConciergePage.Details);
-
         public DetailsPage()
         {
             this.InitializeComponent();
-
-            this.modifyProficiencyWindow.ApplyChanges += this.Window_ApplyChanges;
-            this.mondifyConditionsWindow.ApplyChanges += this.Window_ApplyChanges;
-            this.modifyLanguagesWindow.ApplyChanges += this.Window_ApplyChanges;
-            this.modifyAppearanceWindow.ApplyChanges += this.Window_ApplyChanges;
-            this.modifyPersonalityWindow.ApplyChanges += this.Window_ApplyChanges;
-            this.modifyClassResourceWindow.ApplyChanges += this.Window_ApplyChanges;
         }
 
         public double ProficiencyGridSize => this.WeaponGrid.RenderSize.Height;
@@ -67,21 +54,33 @@ namespace Concierge.Interfaces.DetailsPageInterface
             {
                 var selectedDataGrid = this.GetSelectedProficencyDataGrid();
                 var index = selectedDataGrid.SelectedIndex;
-                this.modifyProficiencyWindow.ShowEdit(itemToEdit as Proficiency);
+                ConciergeWindowService.ShowEdit<Proficiency>(
+                    itemToEdit as Proficiency,
+                    typeof(ModifyProficiencyWindow),
+                    this.Window_ApplyChanges,
+                    ConciergePage.Details);
                 this.DrawProficiencies();
                 selectedDataGrid.SetSelectedIndex(index);
             }
             else if (itemToEdit is Language)
             {
                 var index = this.LanguagesDataGrid.SelectedIndex;
-                this.modifyLanguagesWindow.ShowEdit(itemToEdit as Language);
+                ConciergeWindowService.ShowEdit<Language>(
+                    itemToEdit as Language,
+                    typeof(ModifyLanguagesWindow),
+                    this.Window_ApplyChanges,
+                    ConciergePage.Details);
                 this.DrawLanguages();
                 this.LanguagesDataGrid.SetSelectedIndex(index);
             }
             else if (itemToEdit is ClassResource)
             {
                 var index = this.ResourcesDataGrid.SelectedIndex;
-                this.modifyClassResourceWindow.ShowEdit(itemToEdit as ClassResource);
+                ConciergeWindowService.ShowEdit<ClassResource>(
+                    itemToEdit as ClassResource,
+                    typeof(ModifyClassResourceWindow),
+                    this.Window_ApplyChanges,
+                    ConciergePage.Details);
                 this.DrawResources();
                 this.ResourcesDataGrid.SetSelectedIndex(index);
             }
@@ -278,7 +277,11 @@ namespace Concierge.Interfaces.DetailsPageInterface
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            this.modifyProficiencyWindow.ShowAdd(Program.CcsFile.Character.Proficiency);
+            var added = ConciergeWindowService.ShowAdd<List<Proficiency>>(
+                Program.CcsFile.Character.Proficiency,
+                typeof(ModifyProficiencyWindow),
+                this.Window_ApplyChanges,
+                ConciergePage.Details);
 
             this.DrawProficiencies();
         }
@@ -333,7 +336,11 @@ namespace Concierge.Interfaces.DetailsPageInterface
 
         private void EditConditionsButton_Click(object sender, RoutedEventArgs e)
         {
-            this.mondifyConditionsWindow.ShowEdit(Program.CcsFile.Character.Vitality.Conditions);
+            ConciergeWindowService.ShowEdit<Conditions>(
+                Program.CcsFile.Character.Vitality.Conditions,
+                typeof(MondifyConditionsWindow),
+                this.Window_ApplyChanges,
+                ConciergePage.Details);
             this.DrawConditions();
         }
 
@@ -358,10 +365,14 @@ namespace Concierge.Interfaces.DetailsPageInterface
 
         private void AddLanguagesButton_Click(object sender, RoutedEventArgs e)
         {
-            this.modifyLanguagesWindow.ShowAdd(Program.CcsFile.Character.Languages);
+            var added = ConciergeWindowService.ShowAdd<List<Language>>(
+                Program.CcsFile.Character.Languages,
+                typeof(ModifyLanguagesWindow),
+                this.Window_ApplyChanges,
+                ConciergePage.Details);
             this.DrawLanguages();
 
-            if (this.modifyLanguagesWindow.ItemsAdded)
+            if (added)
             {
                 this.LanguagesDataGrid.SetSelectedIndex(this.LanguagesDataGrid.LastIndex);
             }
@@ -369,10 +380,14 @@ namespace Concierge.Interfaces.DetailsPageInterface
 
         private void AddResourcesButton_Click(object sender, RoutedEventArgs e)
         {
-            this.modifyClassResourceWindow.ShowAdd(Program.CcsFile.Character.ClassResources);
+            var added = ConciergeWindowService.ShowAdd<List<ClassResource>>(
+                Program.CcsFile.Character.ClassResources,
+                typeof(ModifyLanguagesWindow),
+                this.Window_ApplyChanges,
+                ConciergePage.Details);
             this.DrawResources();
 
-            if (this.modifyClassResourceWindow.ItemsAdded)
+            if (added)
             {
                 this.ResourcesDataGrid.SetSelectedIndex(this.ResourcesDataGrid.LastIndex);
             }
@@ -427,13 +442,21 @@ namespace Concierge.Interfaces.DetailsPageInterface
 
         private void EditAppearanceButton_Click(object sender, RoutedEventArgs e)
         {
-            this.modifyAppearanceWindow.ShowEdit(Program.CcsFile.Character.Appearance);
+            ConciergeWindowService.ShowEdit<Appearance>(
+                Program.CcsFile.Character.Appearance,
+                typeof(ModifyAppearanceWindow),
+                this.Window_ApplyChanges,
+                ConciergePage.Details);
             this.DrawAppearance();
         }
 
         private void EditPersonalityButton_Click(object sender, RoutedEventArgs e)
         {
-            this.modifyPersonalityWindow.ShowEdit(Program.CcsFile.Character.Personality);
+            ConciergeWindowService.ShowEdit<Personality>(
+                Program.CcsFile.Character.Personality,
+                typeof(ModifyPersonalityWindow),
+                this.Window_ApplyChanges,
+                ConciergePage.Details);
             this.DrawPersonality();
         }
 

@@ -5,7 +5,6 @@
 namespace Concierge.Interfaces.DetailsPageInterface
 {
     using System;
-    using System.ComponentModel;
     using System.Linq;
     using System.Windows;
     using System.Windows.Input;
@@ -15,7 +14,6 @@ namespace Concierge.Interfaces.DetailsPageInterface
     using Concierge.Commands;
     using Concierge.Interfaces.Components;
     using Concierge.Interfaces.Enums;
-    using Concierge.Utility;
     using Concierge.Utility.Extensions;
     using Concierge.Utility.Units;
     using Concierge.Utility.Units.Enums;
@@ -23,41 +21,36 @@ namespace Concierge.Interfaces.DetailsPageInterface
     /// <summary>
     /// Interaction logic for ModifyAppearanceWindow.xaml.
     /// </summary>
-    public partial class ModifyAppearanceWindow : ConciergeWindow, IConciergeModifyWindow
+    public partial class ModifyAppearanceWindow : ConciergeWindow
     {
-        private readonly ConciergePage conciergePage;
-
-        public ModifyAppearanceWindow(ConciergePage conciergePage)
+        public ModifyAppearanceWindow()
         {
             this.InitializeComponent();
             this.GenderComboBox.ItemsSource = Enum.GetValues(typeof(Gender)).Cast<Gender>();
-            this.conciergePage = conciergePage;
+            this.ConciergePage = ConciergePage.None;
         }
 
         private Appearance Appearance { get; set; }
 
-        public ConciergeWindowResult ShowWizardSetup()
+        public override ConciergeWindowResult ShowWizardSetup(string buttonText)
         {
             this.Appearance = Program.CcsFile.Character.Appearance;
             this.ApplyButton.Visibility = Visibility.Collapsed;
+            this.CancelButton.Content = buttonText;
+
             this.FillFields();
             this.ShowConciergeWindow();
 
             return this.Result;
         }
 
-        public void ShowEdit(Appearance appearance)
+        public override void ShowEdit<T>(T appearance)
         {
-            this.Appearance = appearance;
-            this.ApplyButton.Visibility = Visibility.Visible;
+            var castItem = appearance as Appearance;
+            this.Appearance = castItem;
 
             this.FillFields();
             this.ShowConciergeWindow();
-        }
-
-        public void UpdateCancelButton(string text)
-        {
-            this.CancelButton.Content = text;
         }
 
         private void FillHeightFields()
@@ -123,7 +116,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
             this.Appearance.HairColour = this.HairColourTextBox.Text;
             this.Appearance.DistinguishingMarks = this.DistinguishingMarksTextBox.Text;
 
-            Program.UndoRedoService.AddCommand(new EditCommand<Appearance>(this.Appearance, oldItem, this.conciergePage));
+            Program.UndoRedoService.AddCommand(new EditCommand<Appearance>(this.Appearance, oldItem, this.ConciergePage));
         }
 
         private void UpdateColorPreviews()

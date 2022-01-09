@@ -45,7 +45,7 @@
     <Page Update="Interfaces\CompanionPageInterface\CompanionPage.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Interfaces\CompanionPageInterface\ModifyPropertiesWindow.xaml">
+    <Page Update="Interfaces\CompanionPageInterface\ModifyCompanionPropertiesWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Interfaces\DetailsPageInterface\DetailsPage.xaml">

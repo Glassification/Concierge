@@ -15,6 +15,7 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
     using Concierge.Commands;
     using Concierge.Interfaces.Components;
     using Concierge.Interfaces.Enums;
+    using Concierge.Services;
     using Concierge.Utility;
 
     /// <summary>
@@ -22,21 +23,10 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
     /// </summary>
     public partial class AttackDefensePage : Page, IConciergePage
     {
-        private readonly ModifyArmorWindow modifyArmorWindow = new (ConciergePage.AttackDefense);
-        private readonly ModifyAttackWindow modifyAttackWindow = new (ConciergePage.AttackDefense);
-        private readonly ModifyAmmoWindow modifyAmmoWindow = new (ConciergePage.AttackDefense);
-        private readonly AttacksPopupWindow attacksPopupWindow = new ();
-        private readonly ModifyStatusEffectsWindow modifyStatusEffectsWindow = new (ConciergePage.AttackDefense);
-
         public AttackDefensePage()
         {
             this.InitializeComponent();
-
             this.DataContext = this;
-            this.modifyAmmoWindow.ApplyChanges += this.Window_ApplyChanges;
-            this.modifyAttackWindow.ApplyChanges += this.Window_ApplyChanges;
-            this.modifyArmorWindow.ApplyChanges += this.Window_ApplyChanges;
-            this.modifyStatusEffectsWindow.ApplyChanges += this.Window_ApplyChanges;
         }
 
         private delegate void DrawList();
@@ -56,21 +46,33 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
             if (itemToEdit is Ammunition)
             {
                 var index = this.AmmoDataGrid.SelectedIndex;
-                this.modifyAmmoWindow.ShowEdit(itemToEdit as Ammunition);
+                ConciergeWindowService.ShowEdit<Ammunition>(
+                    itemToEdit as Ammunition,
+                    typeof(ModifyAmmoWindow),
+                    this.Window_ApplyChanges,
+                    ConciergePage.AttackDefense);
                 this.DrawAmmoList();
                 this.AmmoDataGrid.SetSelectedIndex(index);
             }
             else if (itemToEdit is Weapon)
             {
                 var index = this.WeaponDataGrid.SelectedIndex;
-                this.modifyAttackWindow.ShowEdit(itemToEdit as Weapon);
+                ConciergeWindowService.ShowEdit<Weapon>(
+                    itemToEdit as Weapon,
+                    typeof(ModifyAttackWindow),
+                    this.Window_ApplyChanges,
+                    ConciergePage.AttackDefense);
                 this.DrawWeaponList();
                 this.WeaponDataGrid.SetSelectedIndex(index);
             }
             else if (itemToEdit is StatusEffect)
             {
                 var index = this.StatusEffectsDataGrid.SelectedIndex;
-                this.modifyStatusEffectsWindow.ShowEdit(itemToEdit as StatusEffect);
+                ConciergeWindowService.ShowEdit<StatusEffect>(
+                    itemToEdit as StatusEffect,
+                    typeof(ModifyStatusEffectsWindow),
+                    this.Window_ApplyChanges,
+                    ConciergePage.AttackDefense);
                 this.DrawStatusEffects();
                 this.StatusEffectsDataGrid.SetSelectedIndex(index);
             }
@@ -169,23 +171,32 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
 
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
-            var popupButons = this.attacksPopupWindow.ShowPopup();
+            var popupButons = ConciergeWindowService.ShowPopup(typeof(AttacksPopupWindow));
+            bool added;
 
             switch (popupButons)
             {
                 case PopupButtons.AddWeapon:
-                    this.modifyAttackWindow.ShowAdd(Program.CcsFile.Character.Weapons);
+                    added = ConciergeWindowService.ShowAdd<List<Weapon>>(
+                        Program.CcsFile.Character.Weapons,
+                        typeof(ModifyAttackWindow),
+                        this.Window_ApplyChanges,
+                        ConciergePage.AttackDefense);
                     this.DrawWeaponList();
-                    if (this.modifyAttackWindow.ItemsAdded)
+                    if (added)
                     {
                         this.WeaponDataGrid.SetSelectedIndex(this.WeaponDataGrid.LastIndex);
                     }
 
                     break;
                 case PopupButtons.AddAmmo:
-                    this.modifyAmmoWindow.ShowAdd(Program.CcsFile.Character.Ammunitions);
+                    added = ConciergeWindowService.ShowAdd<List<Ammunition>>(
+                        Program.CcsFile.Character.Ammunitions,
+                        typeof(ModifyAttackWindow),
+                        this.Window_ApplyChanges,
+                        ConciergePage.AttackDefense);
                     this.DrawAmmoList();
-                    if (this.modifyAmmoWindow.ItemsAdded)
+                    if (added)
                     {
                         this.AmmoDataGrid.SetSelectedIndex(this.AmmoDataGrid.LastIndex);
                     }
@@ -252,7 +263,11 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
 
         private void EditDetailsButton_Click(object sender, RoutedEventArgs e)
         {
-            this.modifyArmorWindow.ShowEdit(Program.CcsFile.Character.Armor);
+            ConciergeWindowService.ShowEdit<Armor>(
+                Program.CcsFile.Character.Armor,
+                typeof(ModifyArmorWindow),
+                this.Window_ApplyChanges,
+                ConciergePage.AttackDefense);
             this.Draw();
         }
 
@@ -313,10 +328,14 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
 
         private void AddEffectsButton_Click(object sender, RoutedEventArgs e)
         {
-            this.modifyStatusEffectsWindow.ShowAdd(Program.CcsFile.Character.StatusEffects);
+            var added = ConciergeWindowService.ShowAdd<List<StatusEffect>>(
+                Program.CcsFile.Character.StatusEffects,
+                typeof(ModifyStatusEffectsWindow),
+                this.Window_ApplyChanges,
+                ConciergePage.AttackDefense);
             this.DrawStatusEffects();
 
-            if (this.modifyStatusEffectsWindow.ItemsAdded)
+            if (added)
             {
                 this.StatusEffectsDataGrid.SetSelectedIndex(this.StatusEffectsDataGrid.LastIndex);
             }

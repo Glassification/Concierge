@@ -5,7 +5,6 @@
 namespace Concierge.Interfaces.Components
 {
     using System;
-    using System.ComponentModel;
     using System.Windows;
     using System.Windows.Input;
     using System.Windows.Media.Animation;
@@ -53,7 +52,7 @@ namespace Concierge.Interfaces.Components
             };
             this.hideAnimation.Completed += (s, e) =>
             {
-                this.Hide();
+                this.Close();
             };
 
             this.openAnimation.Freeze();
@@ -64,15 +63,53 @@ namespace Concierge.Interfaces.Components
 
         public event ApplyChangesEventHandler ApplyChanges;
 
+        public ConciergePage ConciergePage { get; set; }
+
         protected PopupButtons ButtonPress { get; set; }
 
         protected ConciergeWindowResult Result { get; set; }
 
-        protected override void OnClosing(CancelEventArgs e)
+        public virtual bool ShowAdd<T>(T item)
         {
-            base.OnClosing(e);
-            e.Cancel = true;
-            this.HideConciergeWindow();
+            Program.Logger.Error($"No implemented ShowAdd method for {item}.");
+            return false;
+        }
+
+        public virtual void ShowEdit<T>(T item)
+        {
+            Program.Logger.Error($"No implemented ShowEdit method for {item}.");
+        }
+
+        public virtual void ShowEdit<T>(T item, bool equippedItem)
+        {
+            Program.Logger.Error($"No implemented ShowEdit method for {item}.");
+        }
+
+        public virtual ConciergeWindowResult ShowWizardSetup(string buttonText)
+        {
+            Program.Logger.Error("No implemented ShowWizardSetup method.");
+            return ConciergeWindowResult.NoResult;
+        }
+
+        public virtual void ShowHeal<T>(T item)
+        {
+            Program.Logger.Error($"No implemented ShowHeal method for {item}.");
+        }
+
+        public virtual void ShowDamage<T>(T item)
+        {
+            Program.Logger.Error($"No implemented ShowDamage method for {item}.");
+        }
+
+        public virtual PopupButtons ShowPopup()
+        {
+            Program.Logger.Error("No implemented ShowPopup method.");
+            return PopupButtons.None;
+        }
+
+        public virtual void ShowWindow()
+        {
+            Program.Logger.Error("No implemented ShowWindow method.");
         }
 
         protected void ShowConciergeWindow()

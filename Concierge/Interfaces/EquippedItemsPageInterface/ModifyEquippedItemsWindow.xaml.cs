@@ -18,46 +18,42 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
     /// <summary>
     /// Interaction logic for ModifyEquippedItemsWindow.xaml.
     /// </summary>
-    public partial class ModifyEquippedItemsWindow : ConciergeWindow, IConciergeModifyWindow
+    public partial class ModifyEquippedItemsWindow : ConciergeWindow
     {
         public ModifyEquippedItemsWindow()
         {
             this.InitializeComponent();
             this.SlotComboBox.ItemsSource = Enum.GetValues(typeof(EquipmentSlot)).Cast<EquipmentSlot>();
+            this.ConciergePage = ConciergePage.None;
         }
 
         public bool ItemsAdded { get; private set; }
 
         private string PreviousSlot { get; set; }
 
-        public ConciergeWindowResult ShowWizardSetup()
+        public override ConciergeWindowResult ShowWizardSetup(string buttonText)
         {
             this.PreviousSlot = string.Empty;
             this.ClearFields();
             this.ItemComboBox.ItemsSource = EquippedItems.Equipable;
-            this.ApplyButton.Visibility = Visibility.Visible;
             this.OkButton.Visibility = Visibility.Collapsed;
+            this.CancelButton.Content = buttonText;
 
             this.ShowConciergeWindow();
 
             return this.Result;
         }
 
-        public void ShowAdd()
+        public override bool ShowAdd<T>(T item)
         {
             this.PreviousSlot = string.Empty;
             this.ClearFields();
             this.ItemComboBox.ItemsSource = EquippedItems.Equipable;
-            this.ApplyButton.Visibility = Visibility.Visible;
-            this.OkButton.Visibility = Visibility.Visible;
             this.ItemsAdded = false;
 
             this.ShowConciergeWindow();
-        }
 
-        public void UpdateCancelButton(string text)
-        {
-            this.CancelButton.Content = text;
+            return this.ItemsAdded;
         }
 
         private void ClearFields()

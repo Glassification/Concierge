@@ -5,10 +5,8 @@
 namespace Concierge.Interfaces.DetailsPageInterface
 {
     using System;
-    using System.ComponentModel;
     using System.Linq;
     using System.Windows;
-    using System.Windows.Input;
 
     using Concierge.Character.Enums;
     using Concierge.Character.Statuses;
@@ -21,9 +19,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
     /// </summary>
     public partial class MondifyConditionsWindow : ConciergeWindow
     {
-        private readonly ConciergePage conciergePage;
-
-        public MondifyConditionsWindow(ConciergePage conciergePage)
+        public MondifyConditionsWindow()
         {
             this.InitializeComponent();
 
@@ -43,14 +39,15 @@ namespace Concierge.Interfaces.DetailsPageInterface
             this.StunnedComboBox.ItemsSource = Enum.GetValues(typeof(ConditionTypes)).Cast<ConditionTypes>();
             this.UnconsciousComboBox.ItemsSource = Enum.GetValues(typeof(ConditionTypes)).Cast<ConditionTypes>();
 
-            this.conciergePage = conciergePage;
+            this.ConciergePage = ConciergePage.None;
         }
 
         private Conditions Conditions { get; set; }
 
-        public void ShowEdit(Conditions conditions)
+        public override void ShowEdit<T>(T conditions)
         {
-            this.Conditions = conditions;
+            var castItem = conditions as Conditions;
+            this.Conditions = castItem;
 
             this.FillFields();
             this.ShowConciergeWindow();
@@ -96,7 +93,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
             this.Conditions.Stunned = this.StunnedComboBox.Text.Equals("Cured") ? "Cured" : "Stunned";
             this.Conditions.Unconscious = this.UnconsciousComboBox.Text.Equals("Cured") ? "Cured" : "Unconscious";
 
-            Program.UndoRedoService.AddCommand(new EditCommand<Conditions>(this.Conditions, oldItem, this.conciergePage));
+            Program.UndoRedoService.AddCommand(new EditCommand<Conditions>(this.Conditions, oldItem, this.ConciergePage));
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)

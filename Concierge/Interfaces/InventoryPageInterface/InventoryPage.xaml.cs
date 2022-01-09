@@ -5,6 +5,7 @@
 namespace Concierge.Interfaces.InventoryPageInterface
 {
     using System;
+    using System.Collections.Generic;
     using System.Windows;
     using System.Windows.Controls;
 
@@ -12,6 +13,7 @@ namespace Concierge.Interfaces.InventoryPageInterface
     using Concierge.Commands;
     using Concierge.Interfaces;
     using Concierge.Interfaces.Enums;
+    using Concierge.Services;
     using Concierge.Utility;
 
     /// <summary>
@@ -19,13 +21,10 @@ namespace Concierge.Interfaces.InventoryPageInterface
     /// </summary>
     public partial class InventoryPage : Page, IConciergePage
     {
-        private readonly ModifyInventoryWindow modifyInventoryWindow = new (ConciergePage.Inventory);
-
         public InventoryPage()
         {
             this.InitializeComponent();
             this.DataContext = this;
-            this.modifyInventoryWindow.ApplyChanges += this.Window_ApplyChanges;
         }
 
         public double InventoryHeight => SystemParameters.PrimaryScreenHeight - 100;
@@ -45,7 +44,12 @@ namespace Concierge.Interfaces.InventoryPageInterface
             }
 
             var index = this.InventoryDataGrid.SelectedIndex;
-            this.modifyInventoryWindow.ShowEdit(itemToEdit as Inventory);
+            ConciergeWindowService.ShowEdit<Inventory>(
+                itemToEdit as Inventory,
+                false,
+                typeof(ModifyInventoryWindow),
+                this.Window_ApplyChanges,
+                ConciergePage.Inventory);
             this.DrawInventory();
             this.InventoryDataGrid.SetSelectedIndex(index);
         }
@@ -99,10 +103,14 @@ namespace Concierge.Interfaces.InventoryPageInterface
 
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
-            this.modifyInventoryWindow.ShowAdd(Program.CcsFile.Character.Inventories);
+            var added = ConciergeWindowService.ShowAdd<List<Inventory>>(
+                Program.CcsFile.Character.Inventories,
+                typeof(ModifyInventoryWindow),
+                this.Window_ApplyChanges,
+                ConciergePage.Inventory);
             this.DrawInventory();
 
-            if (this.modifyInventoryWindow.ItemsAdded)
+            if (added)
             {
                 this.InventoryDataGrid.SetSelectedIndex(this.InventoryDataGrid.LastIndex);
             }

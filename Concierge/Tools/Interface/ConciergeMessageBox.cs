@@ -9,20 +9,14 @@ namespace Concierge.Tools.Interface
 
     public static class ConciergeMessageBox
     {
-        static ConciergeMessageBox()
-        {
-            ConciergeMessageWindow = new ConciergeMessageWindow();
-        }
-
-        private static ConciergeMessageWindow ConciergeMessageWindow { get; }
-
         public static ConciergeWindowResult Show(
             string message,
             string title,
             ConciergeWindowButtons messageWindowButtons,
             ConciergeWindowIcons messageWindowIcons)
         {
-            return ConciergeMessageWindow.ShowWindow(message, title, messageWindowButtons, messageWindowIcons);
+            var conciergeMessageWindow = new ConciergeMessageWindow();
+            return conciergeMessageWindow.ShowWindow(message, title, messageWindowButtons, messageWindowIcons);
         }
     }
 }

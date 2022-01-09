@@ -23,15 +23,13 @@ namespace Concierge.Interfaces.InventoryPageInterface
     /// <summary>
     /// Interaction logic for ModifyInventoryWindow.xaml.
     /// </summary>
-    public partial class ModifyInventoryWindow : ConciergeWindow, IConciergeModifyWindow
+    public partial class ModifyInventoryWindow : ConciergeWindow
     {
-        private readonly ConciergePage conciergePage;
-
-        public ModifyInventoryWindow(ConciergePage conciergePage)
+        public ModifyInventoryWindow()
         {
             this.InitializeComponent();
             this.NameComboBox.ItemsSource = Constants.Inventories;
-            this.conciergePage = conciergePage;
+            this.ConciergePage = ConciergePage.None;
         }
 
         public bool ItemsAdded { get; private set; }
@@ -46,13 +44,13 @@ namespace Concierge.Interfaces.InventoryPageInterface
 
         private List<Inventory> Items { get; set; }
 
-        public ConciergeWindowResult ShowWizardSetup()
+        public override ConciergeWindowResult ShowWizardSetup(string buttonText)
         {
             this.Editing = false;
             this.HeaderTextBlock.Text = this.HeaderText;
             this.Items = Program.CcsFile.Character.Inventories;
-            this.ApplyButton.Visibility = Visibility.Visible;
             this.OkButton.Visibility = Visibility.Collapsed;
+            this.CancelButton.Content = buttonText;
 
             this.ClearFields();
             this.ShowConciergeWindow();
@@ -60,36 +58,31 @@ namespace Concierge.Interfaces.InventoryPageInterface
             return this.Result;
         }
 
-        public void ShowEdit(Inventory inventory, bool equippedItem = false)
+        public override void ShowEdit<T>(T inventory, bool equippedItem)
         {
+            var castItem = inventory as Inventory;
             this.Editing = true;
             this.HeaderTextBlock.Text = this.HeaderText;
-            this.SelectedItem = inventory;
+            this.SelectedItem = castItem;
             this.EquippedItem = equippedItem;
             this.ApplyButton.Visibility = Visibility.Collapsed;
-            this.OkButton.Visibility = Visibility.Visible;
 
-            this.FillFields(inventory);
+            this.FillFields(castItem);
             this.ShowConciergeWindow();
         }
 
-        public void ShowAdd(List<Inventory> items)
+        public override bool ShowAdd<T>(T item)
         {
+            var castItem = item as List<Inventory>;
             this.Editing = false;
             this.HeaderTextBlock.Text = this.HeaderText;
-            this.Items = items;
+            this.Items = castItem;
             this.ItemsAdded = false;
-
-            this.ApplyButton.Visibility = Visibility.Visible;
-            this.OkButton.Visibility = Visibility.Visible;
 
             this.ClearFields();
             this.ShowConciergeWindow();
-        }
 
-        public void UpdateCancelButton(string text)
-        {
-            this.CancelButton.Content = text;
+            return this.ItemsAdded;
         }
 
         private void FillFields(Inventory inventory)
@@ -152,7 +145,7 @@ namespace Concierge.Interfaces.InventoryPageInterface
                 Note = this.NotesTextBox.Text,
             };
 
-            Program.UndoRedoService.AddCommand(new AddCommand<Inventory>(this.Items, item, this.conciergePage));
+            Program.UndoRedoService.AddCommand(new AddCommand<Inventory>(this.Items, item, this.ConciergePage));
 
             return item;
         }
@@ -185,7 +178,7 @@ namespace Concierge.Interfaces.InventoryPageInterface
                 inventory.IsInBagOfHolding = this.BagOfHoldingCheckBox.IsChecked ?? false;
             }
 
-            Program.UndoRedoService.AddCommand(new EditCommand<Inventory>(inventory, oldItem, this.conciergePage));
+            Program.UndoRedoService.AddCommand(new EditCommand<Inventory>(inventory, oldItem, this.ConciergePage));
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)

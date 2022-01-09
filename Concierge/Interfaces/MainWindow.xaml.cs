@@ -10,6 +10,7 @@ namespace Concierge.Interfaces
     using System.Windows.Input;
     using System.Windows.Navigation;
 
+    using Concierge.Character.Characteristics;
     using Concierge.Configuration;
     using Concierge.Interfaces.AbilitiesPageInterface;
     using Concierge.Interfaces.AttackDefensePageInterface;
@@ -56,15 +57,8 @@ namespace Concierge.Interfaces
         private readonly FileAccessService fileAccessService = new ();
         private readonly CommandLineService commandLineService = new ();
         private readonly MainWindowService mainWindowService;
-        private readonly SettingsWindow settingsWindow = new ();
-        private readonly ModifyPropertiesWindow modifyPropertiesWindow = new ();
-        private readonly AboutConciergeWindow aboutConciergeWindow = new ();
-        private readonly HelpWindow helpWindow = new ();
-        private readonly ModifyCharacterImageWindow modifyCharacterImageWindow = new ("50x50 image ratio is recommended.", ConciergePage.None);
         private readonly AutosaveTimer autosaveTimer = new ();
         private readonly CharacterCreationWizard characterCreationWizard = new ();
-        private readonly LongRestStatusWindow longRestStatusWindow = new ();
-        private readonly SearchWindow searchWindow;
 
         public MainWindow()
         {
@@ -74,9 +68,6 @@ namespace Concierge.Interfaces
             Program.ModifiedChanged += this.MainWindow_ModifiedChanged;
 
             this.mainWindowService = new MainWindowService(this.ListViewItem_Selected);
-            this.modifyPropertiesWindow.ApplyChanges += this.Window_ApplyChanges;
-            this.modifyCharacterImageWindow.ApplyChanges += this.Window_ApplyChanges;
-            this.settingsWindow.ApplyChanges += this.Window_ApplyChanges;
             this.GridContent.Width = GridContentWidthClose;
             this.IgnoreListItemSelectionChanged = true;
             this.CollapseAll();
@@ -92,7 +83,6 @@ namespace Concierge.Interfaces
                 this.autosaveTimer.Start(Constants.AutosaveIntervals[AppSettingsManager.Settings.AutosaveInterval]);
             }
 
-            this.searchWindow = new SearchWindow(this);
             this.commandLineService.ReadCommandLineArgs();
             this.DrawAll();
 
@@ -176,7 +166,11 @@ namespace Concierge.Interfaces
         {
             Program.Logger.Info($"Open settings.");
 
-            this.settingsWindow.ShowEdit();
+            ConciergeWindowService.ShowEdit<string>(
+                string.Empty,
+                typeof(SettingsWindow),
+                this.Window_ApplyChanges,
+                ConciergePage.None);
             this.DrawAll();
 
             this.StartStopAutosaveTimer();
@@ -248,12 +242,12 @@ namespace Concierge.Interfaces
             Program.Modify();
 
             this.DrawAll();
-            this.longRestStatusWindow.ShowWindow();
+            ConciergeWindowService.ShowWindow(typeof(LongRestStatusWindow));
         }
 
         public void Search()
         {
-            this.searchWindow.ShowWindow();
+            ConciergeWindowService.ShowWindow(typeof(SearchWindow));
             this.IgnoreSecondPress = true;
         }
 
@@ -453,13 +447,13 @@ namespace Concierge.Interfaces
             switch (e.Key)
             {
                 case Key.A:
-                    this.aboutConciergeWindow.ShowWindow();
+                    ConciergeWindowService.ShowWindow(typeof(AboutConciergeWindow));
                     break;
                 case Key.F:
                     this.Search();
                     break;
                 case Key.H:
-                    this.helpWindow.ShowWindow();
+                    ConciergeWindowService.ShowWindow(typeof(HelpWindow));
                     break;
                 case Key.I:
                     this.OpenSettings();
@@ -474,7 +468,11 @@ namespace Concierge.Interfaces
                     this.OpenCharacterSheet();
                     break;
                 case Key.P:
-                    this.modifyPropertiesWindow.ShowEdit();
+                    ConciergeWindowService.ShowEdit<CharacterProperties>(
+                        Program.CcsFile.Character.Properties,
+                        typeof(ModifyPropertiesWindow),
+                        this.Window_ApplyChanges,
+                        ConciergePage.None);
                     this.DrawAll();
                     break;
                 case Key.Q:
@@ -607,7 +605,11 @@ namespace Concierge.Interfaces
             ConciergeSound.TapNavigation();
             Program.Logger.Info($"Open properties.");
 
-            this.modifyPropertiesWindow.ShowEdit();
+            ConciergeWindowService.ShowEdit<CharacterProperties>(
+                Program.CcsFile.Character.Properties,
+                typeof(ModifyPropertiesWindow),
+                this.Window_ApplyChanges,
+                ConciergePage.None);
             this.DrawAll();
 
             this.IgnoreSecondPress = true;
@@ -625,7 +627,7 @@ namespace Concierge.Interfaces
             ConciergeSound.TapNavigation();
             Program.Logger.Info($"Open About.");
 
-            this.aboutConciergeWindow.ShowWindow();
+            ConciergeWindowService.ShowWindow(typeof(AboutConciergeWindow));
 
             this.IgnoreSecondPress = true;
         }
@@ -659,7 +661,11 @@ namespace Concierge.Interfaces
 
         private void IconButton_Click(object sender, RoutedEventArgs e)
         {
-            this.modifyCharacterImageWindow.ShowEdit(Program.CcsFile.Character.CharacterIcon);
+            ConciergeWindowService.ShowEdit<CharacterImage>(
+                Program.CcsFile.Character.CharacterIcon,
+                typeof(ModifyCharacterImageWindow),
+                this.Window_ApplyChanges,
+                ConciergePage.None);
             this.mainWindowService.GenerateCharacterStatusBar(this.CharacterHeaderPanel, Program.CcsFile.Character);
             this.IgnoreSecondPress = true;
         }
@@ -721,7 +727,7 @@ namespace Concierge.Interfaces
 
         private void HelpButton_Click(object sender, RoutedEventArgs e)
         {
-            this.helpWindow.ShowWindow();
+            ConciergeWindowService.ShowWindow(typeof(HelpWindow));
             this.IgnoreSecondPress = true;
         }
 

@@ -30,7 +30,6 @@ namespace Concierge
 
             InitializeLogger();
 
-            SaveStatusWindow = new SaveStatusWindow();
             IsTyping = false;
             ErrorService = new ErrorService(Logger);
             UndoRedoService = new UndoRedoService();
@@ -50,8 +49,6 @@ namespace Concierge
 
         public static CcsFile CcsFile { get; set; }
 
-        public static SaveStatusWindow SaveStatusWindow { get; }
-
         public static Logger Logger { get; private set; }
 
         public static ErrorService ErrorService { get; private set; }
@@ -67,9 +64,9 @@ namespace Concierge
             }
         }
 
-        private static ConciergeCharacter BaseState { get; set; }
+        public static MainWindow MainWindow { get; private set; }
 
-        private static MainWindow MainWindow { get; set; }
+        private static ConciergeCharacter BaseState { get; set; }
 
         public static void InitializeMainWindow(MainWindow mainWindow)
         {

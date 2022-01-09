@@ -92,16 +92,6 @@
                         HorizontalAlignment="Left"
                         VerticalAlignment="Top"
                         Margin="10, 20, 0, 0"/>
-                    <materialDesign:PackIcon
-                        x:Name="InformationHover"
-                        VerticalAlignment="Center"
-                        HorizontalAlignment="Right"
-                        Width="20"
-                        Height="20"
-                        Foreground="SteelBlue"
-                        Kind="Information"
-                        Margin="0,0,10,0"
-                        MouseDown="InformationHover_MouseDown"/>
                 </Grid>
 
                 <Grid Grid.Column="1">

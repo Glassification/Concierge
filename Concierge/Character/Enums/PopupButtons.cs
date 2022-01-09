@@ -15,5 +15,6 @@ namespace Concierge.Character.Enums
         AddSpell,
         AddChapter,
         AddPage,
+        None,
     }
 }

@@ -1,4 +1,4 @@
-﻿// <copyright file="ModifyPropertiesWindow.xaml.cs" company="Thomas Beckett">
+﻿// <copyright file="ModifyCompanionPropertiesWindow.xaml.cs" company="Thomas Beckett">
 // Copyright (c) Thomas Beckett. All rights reserved.
 // </copyright>
 
@@ -17,22 +17,21 @@ namespace Concierge.Interfaces.CompanionPageInterface
     /// <summary>
     /// Interaction logic for ModifyHealthWindow.xaml.
     /// </summary>
-    public partial class ModifyPropertiesWindow : ConciergeWindow
+    public partial class ModifyCompanionPropertiesWindow : ConciergeWindow
     {
-        private readonly ConciergePage conciergePage;
-
-        public ModifyPropertiesWindow(ConciergePage conciergePage)
+        public ModifyCompanionPropertiesWindow()
         {
             this.InitializeComponent();
             this.VisionComboBox.ItemsSource = Enum.GetValues(typeof(VisionTypes)).Cast<VisionTypes>();
-            this.conciergePage = conciergePage;
+            this.ConciergePage = ConciergePage.None;
         }
 
         private CompanionProperties Properties { get; set; }
 
-        public void ShowEdit(CompanionProperties properties)
+        public override void ShowEdit<T>(T properties)
         {
-            this.Properties = properties;
+            var castItem = properties as CompanionProperties;
+            this.Properties = castItem;
 
             this.FillFields();
             this.ShowConciergeWindow();
@@ -61,7 +60,7 @@ namespace Concierge.Interfaces.CompanionPageInterface
             this.Properties.Vision = (VisionTypes)Enum.Parse(typeof(VisionTypes), this.VisionComboBox.Text);
             this.Properties.Movement = this.MovementUpDown.Value ?? 0;
 
-            Program.UndoRedoService.AddCommand(new EditCommand<CompanionProperties>(this.Properties, oldItem, this.conciergePage));
+            Program.UndoRedoService.AddCommand(new EditCommand<CompanionProperties>(this.Properties, oldItem, this.ConciergePage));
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)

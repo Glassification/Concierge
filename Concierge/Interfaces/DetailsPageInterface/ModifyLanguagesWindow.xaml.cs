@@ -6,10 +6,8 @@ namespace Concierge.Interfaces.DetailsPageInterface
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
     using System.Windows;
     using System.Windows.Controls;
-    using System.Windows.Input;
 
     using Concierge.Character.Characteristics;
     using Concierge.Commands;
@@ -20,15 +18,13 @@ namespace Concierge.Interfaces.DetailsPageInterface
     /// <summary>
     /// Interaction logic for ModifyLanguagesWindow.xaml.
     /// </summary>
-    public partial class ModifyLanguagesWindow : ConciergeWindow, IConciergeModifyWindow
+    public partial class ModifyLanguagesWindow : ConciergeWindow
     {
-        private readonly ConciergePage conciergePage;
-
-        public ModifyLanguagesWindow(ConciergePage conciergePage)
+        public ModifyLanguagesWindow()
         {
             this.InitializeComponent();
             this.NameComboBox.ItemsSource = Constants.Languages;
-            this.conciergePage = conciergePage;
+            this.ConciergePage = ConciergePage.None;
         }
 
         public bool ItemsAdded { get; private set; }
@@ -41,13 +37,13 @@ namespace Concierge.Interfaces.DetailsPageInterface
 
         private List<Language> Languages { get; set; }
 
-        public ConciergeWindowResult ShowWizardSetup()
+        public override ConciergeWindowResult ShowWizardSetup(string buttonText)
         {
             this.Editing = false;
             this.HeaderTextBlock.Text = this.HeaderText;
             this.Languages = Program.CcsFile.Character.Languages;
-            this.ApplyButton.Visibility = Visibility.Visible;
             this.OkButton.Visibility = Visibility.Collapsed;
+            this.CancelButton.Content = buttonText;
 
             this.ClearFields();
             this.ShowConciergeWindow();
@@ -55,34 +51,30 @@ namespace Concierge.Interfaces.DetailsPageInterface
             return this.Result;
         }
 
-        public void ShowAdd(List<Language> languages)
+        public override bool ShowAdd<T>(T languages)
         {
+            var castItem = languages as List<Language>;
             this.Editing = false;
             this.HeaderTextBlock.Text = this.HeaderText;
-            this.Languages = languages;
-            this.ApplyButton.Visibility = Visibility.Visible;
-            this.OkButton.Visibility = Visibility.Visible;
+            this.Languages = castItem;
             this.ItemsAdded = false;
 
             this.ClearFields();
             this.ShowConciergeWindow();
+
+            return this.ItemsAdded;
         }
 
-        public void ShowEdit(Language language)
+        public override void ShowEdit<T>(T language)
         {
+            var castItem = language as Language;
             this.Editing = true;
             this.HeaderTextBlock.Text = this.HeaderText;
-            this.SelectedLanguage = language;
+            this.SelectedLanguage = castItem;
             this.ApplyButton.Visibility = Visibility.Collapsed;
-            this.OkButton.Visibility = Visibility.Visible;
 
-            this.FillFields(language);
+            this.FillFields(castItem);
             this.ShowConciergeWindow();
-        }
-
-        public void UpdateCancelButton(string text)
-        {
-            this.CancelButton.Content = text;
         }
 
         private void FillFields(Language language)
@@ -107,7 +99,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
             language.Script = this.ScriptTextBox.Text;
             language.Speakers = this.SpeakersTextBox.Text;
 
-            Program.UndoRedoService.AddCommand(new EditCommand<Language>(language, oldItem, this.conciergePage));
+            Program.UndoRedoService.AddCommand(new EditCommand<Language>(language, oldItem, this.ConciergePage));
         }
 
         private Language ToLanguage()
@@ -121,7 +113,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
                 Speakers = this.SpeakersTextBox.Text,
             };
 
-            Program.UndoRedoService.AddCommand(new AddCommand<Language>(this.Languages, language, this.conciergePage));
+            Program.UndoRedoService.AddCommand(new AddCommand<Language>(this.Languages, language, this.ConciergePage));
 
             return language;
         }

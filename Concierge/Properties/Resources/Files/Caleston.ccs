@@ -1094,22 +1094,28 @@
     ],
     "SavingThrow": {
       "Strength": {
-        "Proficiency": false
+        "Proficiency": false,
+        "CheckOverride": 4
       },
       "Dexterity": {
-        "Proficiency": true
+        "Proficiency": true,
+        "CheckOverride": 4
       },
       "Constitution": {
-        "Proficiency": false
+        "Proficiency": false,
+        "CheckOverride": 4
       },
       "Intelligence": {
-        "Proficiency": true
+        "Proficiency": true,
+        "CheckOverride": 4
       },
       "Wisdom": {
-        "Proficiency": false
+        "Proficiency": false,
+        "CheckOverride": 4
       },
       "Charisma": {
-        "Proficiency": false
+        "Proficiency": false,
+        "CheckOverride": 4
       }
     },
     "Skill": {
@@ -1614,5 +1620,5 @@
       }
     ]
   },
-  "Version": "4.5.0"
+  "Version": "4.5.3"
 }

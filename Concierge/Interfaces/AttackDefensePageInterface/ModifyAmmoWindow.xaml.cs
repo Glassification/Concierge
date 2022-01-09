@@ -6,11 +6,9 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
     using System.Linq;
     using System.Windows;
     using System.Windows.Controls;
-    using System.Windows.Input;
 
     using Concierge.Character.Enums;
     using Concierge.Character.Items;
@@ -22,16 +20,14 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
     /// <summary>
     /// Interaction logic for ModifyAmmoWindow.xaml.
     /// </summary>
-    public partial class ModifyAmmoWindow : ConciergeWindow, IConciergeModifyWindow
+    public partial class ModifyAmmoWindow : ConciergeWindow
     {
-        private readonly ConciergePage conciergePage;
-
-        public ModifyAmmoWindow(ConciergePage conciergePage)
+        public ModifyAmmoWindow()
         {
             this.InitializeComponent();
             this.NameComboBox.ItemsSource = Constants.Ammunitions;
             this.DamageTypeComboBox.ItemsSource = Enum.GetValues(typeof(DamageTypes)).Cast<DamageTypes>();
-            this.conciergePage = conciergePage;
+            this.ConciergePage = ConciergePage.None;
         }
 
         public bool ItemsAdded { get; private set; }
@@ -44,13 +40,13 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
 
         private List<Ammunition> Ammunitions { get; set; }
 
-        public ConciergeWindowResult ShowWizardSetup()
+        public override ConciergeWindowResult ShowWizardSetup(string buttonText)
         {
             this.Editing = false;
             this.HeaderTextBlock.Text = this.HeaderText;
             this.Ammunitions = Program.CcsFile.Character.Ammunitions;
-            this.ApplyButton.Visibility = Visibility.Visible;
             this.OkButton.Visibility = Visibility.Collapsed;
+            this.CancelButton.Content = buttonText;
 
             this.ClearFields();
             this.ShowConciergeWindow();
@@ -58,34 +54,30 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
             return this.Result;
         }
 
-        public void ShowAdd(List<Ammunition> ammunitions)
+        public override bool ShowAdd<T>(T ammunitions)
         {
+            var castItem = ammunitions as List<Ammunition>;
             this.Editing = false;
             this.HeaderTextBlock.Text = this.HeaderText;
-            this.Ammunitions = ammunitions;
-            this.ApplyButton.Visibility = Visibility.Visible;
-            this.OkButton.Visibility = Visibility.Visible;
+            this.Ammunitions = castItem;
             this.ItemsAdded = false;
 
             this.ClearFields();
             this.ShowConciergeWindow();
+
+            return this.ItemsAdded;
         }
 
-        public void ShowEdit(Ammunition ammunition)
+        public override void ShowEdit<T>(T ammunition)
         {
+            var castItem = ammunition as Ammunition;
             this.Editing = true;
             this.HeaderTextBlock.Text = this.HeaderText;
-            this.SelectedAmmo = ammunition;
+            this.SelectedAmmo = castItem;
             this.ApplyButton.Visibility = Visibility.Collapsed;
-            this.OkButton.Visibility = Visibility.Visible;
 
-            this.FillFields(ammunition);
+            this.FillFields(castItem);
             this.ShowConciergeWindow();
-        }
-
-        public void UpdateCancelButton(string text)
-        {
-            this.CancelButton.Content = text;
         }
 
         private void FillFields(Ammunition ammunition)
@@ -122,7 +114,7 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
             ammunition.DamageType = (DamageTypes)Enum.Parse(typeof(DamageTypes), this.DamageTypeComboBox.Text);
             ammunition.Used = this.UsedUpDown.Value ?? 0;
 
-            Program.UndoRedoService.AddCommand(new EditCommand<Ammunition>(ammunition, oldItem, this.conciergePage));
+            Program.UndoRedoService.AddCommand(new EditCommand<Ammunition>(ammunition, oldItem, this.ConciergePage));
         }
 
         private Ammunition ToAmmunition()
@@ -138,7 +130,7 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
                 Used = this.UsedUpDown.Value ?? 0,
             };
 
-            Program.UndoRedoService.AddCommand(new AddCommand<Ammunition>(this.Ammunitions, ammo, this.conciergePage));
+            Program.UndoRedoService.AddCommand(new AddCommand<Ammunition>(this.Ammunitions, ammo, this.ConciergePage));
 
             return ammo;
         }

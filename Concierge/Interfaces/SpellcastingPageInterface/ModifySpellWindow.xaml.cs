@@ -6,11 +6,9 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
     using System.Linq;
     using System.Windows;
     using System.Windows.Controls;
-    using System.Windows.Input;
 
     using Concierge.Character.Enums;
     using Concierge.Character.Spellcasting;
@@ -22,17 +20,15 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
     /// <summary>
     /// Interaction logic for ModifySpellWindow.xaml.
     /// </summary>
-    public partial class ModifySpellWindow : ConciergeWindow, IConciergeModifyWindow
+    public partial class ModifySpellWindow : ConciergeWindow
     {
-        private readonly ConciergePage conciergePage;
-
-        public ModifySpellWindow(ConciergePage conciergePage)
+        public ModifySpellWindow()
         {
             this.InitializeComponent();
             this.SpellNameComboBox.ItemsSource = Constants.Spells;
             this.SchoolComboBox.ItemsSource = Enum.GetValues(typeof(ArcaneSchools)).Cast<ArcaneSchools>();
             this.ClassComboBox.ItemsSource = Constants.Classes;
-            this.conciergePage = conciergePage;
+            this.ConciergePage = ConciergePage.None;
         }
 
         public bool ItemsAdded { get; private set; }
@@ -45,13 +41,13 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
 
         private List<Spell> Spells { get; set; }
 
-        public ConciergeWindowResult ShowWizardSetup()
+        public override ConciergeWindowResult ShowWizardSetup(string buttonText)
         {
             this.Editing = false;
             this.HeaderTextBlock.Text = this.HeaderText;
-            this.ApplyButton.Visibility = Visibility.Visible;
             this.OkButton.Visibility = Visibility.Collapsed;
             this.Spells = Program.CcsFile.Character.Spells;
+            this.CancelButton.Content = buttonText;
 
             this.ClearFields();
             this.ShowConciergeWindow();
@@ -59,34 +55,30 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
             return this.Result;
         }
 
-        public void AddSpell(List<Spell> spells)
+        public override bool ShowAdd<T>(T spells)
         {
+            var castItem = spells as List<Spell>;
             this.Editing = false;
             this.HeaderTextBlock.Text = this.HeaderText;
-            this.ApplyButton.Visibility = Visibility.Visible;
-            this.OkButton.Visibility = Visibility.Visible;
-            this.Spells = spells;
+            this.Spells = castItem;
             this.ItemsAdded = false;
 
             this.ClearFields();
             this.ShowConciergeWindow();
+
+            return this.ItemsAdded;
         }
 
-        public void EditSpell(Spell spell)
+        public override void ShowEdit<T>(T spell)
         {
+            var castItem = spell as Spell;
             this.Editing = true;
             this.HeaderTextBlock.Text = this.HeaderText;
-            this.SelectedSpell = spell;
+            this.SelectedSpell = castItem;
             this.ApplyButton.Visibility = Visibility.Collapsed;
-            this.OkButton.Visibility = Visibility.Visible;
 
-            this.FillFields(spell);
+            this.FillFields(castItem);
             this.ShowConciergeWindow();
-        }
-
-        public void UpdateCancelButton(string text)
-        {
-            this.CancelButton.Content = text;
         }
 
         private void FillFields(Spell spell)
@@ -167,7 +159,7 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
             spell.Description = this.NotesTextBox.Text;
             spell.Class = this.ClassComboBox.Text;
 
-            Program.UndoRedoService.AddCommand(new EditCommand<Spell>(spell, oldItem, this.conciergePage));
+            Program.UndoRedoService.AddCommand(new EditCommand<Spell>(spell, oldItem, this.ConciergePage));
         }
 
         private Spell ToSpell()
@@ -193,7 +185,7 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
                 Class = this.ClassComboBox.Text,
             };
 
-            Program.UndoRedoService.AddCommand(new AddCommand<Spell>(this.Spells, spell, this.conciergePage));
+            Program.UndoRedoService.AddCommand(new AddCommand<Spell>(this.Spells, spell, this.ConciergePage));
 
             return spell;
         }

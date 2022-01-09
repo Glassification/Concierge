@@ -19,7 +19,7 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
             this.InitializeComponent();
         }
 
-        public PopupButtons ShowPopup()
+        public override PopupButtons ShowPopup()
         {
             this.ShowConciergeWindow();
 

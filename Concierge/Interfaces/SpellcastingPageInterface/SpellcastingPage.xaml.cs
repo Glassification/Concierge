@@ -15,6 +15,7 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
     using Concierge.Commands;
     using Concierge.Interfaces.Components;
     using Concierge.Interfaces.Enums;
+    using Concierge.Services;
     using Concierge.Utility;
 
     /// <summary>
@@ -22,18 +23,9 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
     /// </summary>
     public partial class SpellcastingPage : Page, IConciergePage
     {
-        private readonly SpellcastingSelectionWindow spellcastingSelectionWindow = new ();
-        private readonly ModifySpellWindow modifySpellWindow = new (ConciergePage.Spellcasting);
-        private readonly ModifySpellClassWindow modifySpellClassWindow = new (ConciergePage.Spellcasting);
-        private readonly ModifySpellSlotsWindow modifySpellSlotsWindow = new (ConciergePage.Spellcasting);
-
         public SpellcastingPage()
         {
             this.InitializeComponent();
-
-            this.modifySpellWindow.ApplyChanges += this.Window_ApplyChanges;
-            this.modifySpellClassWindow.ApplyChanges += this.Window_ApplyChanges;
-            this.modifySpellSlotsWindow.ApplyChanges += this.Window_ApplyChanges;
 
             this.InitializeUsedSlot(this.UsedPactBox);
             this.InitializeUsedSlot(this.UsedFirstBox);
@@ -68,7 +60,11 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
             if (itemToEdit is Spell)
             {
                 var index = this.SpellListDataGrid.SelectedIndex;
-                this.modifySpellWindow.EditSpell(itemToEdit as Spell);
+                ConciergeWindowService.ShowEdit<Spell>(
+                    itemToEdit as Spell,
+                    typeof(ModifySpellWindow),
+                    this.Window_ApplyChanges,
+                    ConciergePage.Spellcasting);
                 this.DrawSpellList();
                 this.DrawMagicClasses();
                 this.SpellListDataGrid.SetSelectedIndex(index);
@@ -76,7 +72,11 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
             else if (itemToEdit is MagicClass)
             {
                 var index = this.MagicClassDataGrid.SelectedIndex;
-                this.modifySpellClassWindow.EditClass(itemToEdit as MagicClass);
+                ConciergeWindowService.ShowEdit<MagicClass>(
+                    itemToEdit as MagicClass,
+                    typeof(ModifySpellClassWindow),
+                    this.Window_ApplyChanges,
+                    ConciergePage.Spellcasting);
                 this.DrawMagicClasses();
                 this.MagicClassDataGrid.SetSelectedIndex(index);
             }
@@ -197,24 +197,33 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
 
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
-            var popupButton = this.spellcastingSelectionWindow.ShowPopup();
+            var popupButton = ConciergeWindowService.ShowPopup(typeof(SpellcastingSelectionWindow));
+            bool added;
 
             switch (popupButton)
             {
                 case PopupButtons.AddMagicClass:
-                    this.modifySpellClassWindow.AddClass(Program.CcsFile.Character.MagicClasses);
+                    added = ConciergeWindowService.ShowAdd<List<MagicClass>>(
+                        Program.CcsFile.Character.MagicClasses,
+                        typeof(ModifySpellClassWindow),
+                        this.Window_ApplyChanges,
+                        ConciergePage.Spellcasting);
                     this.DrawMagicClasses();
-                    if (this.modifySpellClassWindow.ItemsAdded)
+                    if (added)
                     {
                         this.MagicClassDataGrid.SetSelectedIndex(this.MagicClassDataGrid.LastIndex);
                     }
 
                     break;
                 case PopupButtons.AddSpell:
-                    this.modifySpellWindow.AddSpell(Program.CcsFile.Character.Spells);
+                    added = ConciergeWindowService.ShowAdd<List<Spell>>(
+                        Program.CcsFile.Character.Spells,
+                        typeof(ModifySpellWindow),
+                        this.Window_ApplyChanges,
+                        ConciergePage.Spellcasting);
                     this.DrawSpellList();
                     this.DrawMagicClasses();
-                    if (this.modifySpellWindow.ItemsAdded)
+                    if (added)
                     {
                         this.SpellListDataGrid.SetSelectedIndex(this.SpellListDataGrid.LastIndex);
                     }
@@ -281,7 +290,11 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
 
         private void LevelEditButton_Click(object sender, RoutedEventArgs e)
         {
-            this.modifySpellSlotsWindow.ShowEdit(Program.CcsFile.Character.SpellSlots);
+            ConciergeWindowService.ShowEdit<SpellSlots>(
+                    Program.CcsFile.Character.SpellSlots,
+                    typeof(ModifySpellSlotsWindow),
+                    this.Window_ApplyChanges,
+                    ConciergePage.Spellcasting);
             this.DrawTotalSpellSlots();
             this.DrawUsedSpellSlots();
         }
