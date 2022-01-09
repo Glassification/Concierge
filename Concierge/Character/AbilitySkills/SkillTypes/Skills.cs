@@ -10,29 +10,17 @@ namespace Concierge.Character.AbilitySkills.SkillTypes
 
     public abstract class Skills : ICopyable<Skills>
     {
-        public bool Proficiency
-        {
-            get;
-            set;
-        }
+        public bool Proficiency { get; set; }
 
-        public bool Expertise
-        {
-            get;
-            set;
-        }
+        public bool Expertise { get; set; }
+
+        public StatusChecks CheckOverride { get; set; }
 
         [JsonIgnore]
-        public abstract StatusChecks Checks
-        {
-            get;
-        }
+        public abstract StatusChecks Checks { get; }
 
         [JsonIgnore]
-        public abstract int Bonus
-        {
-            get;
-        }
+        public abstract int Bonus { get; }
 
         public abstract Skills DeepCopy();
     }

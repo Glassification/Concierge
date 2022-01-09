@@ -1115,75 +1115,93 @@
     "Skill": {
       "Athletics": {
         "Proficiency": false,
-        "Expertise": false
+        "Expertise": false,
+        "CheckOverride": 4
       },
       "Acrobatics": {
         "Proficiency": true,
-        "Expertise": false
+        "Expertise": false,
+        "CheckOverride": 4
       },
       "SleightOfHand": {
         "Proficiency": true,
-        "Expertise": false
+        "Expertise": false,
+        "CheckOverride": 4
       },
       "Stealth": {
         "Proficiency": true,
-        "Expertise": true
+        "Expertise": true,
+        "CheckOverride": 4
       },
       "Arcana": {
         "Proficiency": false,
-        "Expertise": false
+        "Expertise": false,
+        "CheckOverride": 4
       },
       "History": {
         "Proficiency": false,
-        "Expertise": false
+        "Expertise": false,
+        "CheckOverride": 4
       },
       "Investigation": {
         "Proficiency": false,
-        "Expertise": false
+        "Expertise": false,
+        "CheckOverride": 4
       },
       "Nature": {
         "Proficiency": false,
-        "Expertise": false
+        "Expertise": false,
+        "CheckOverride": 4
       },
       "Religion": {
         "Proficiency": false,
-        "Expertise": false
+        "Expertise": false,
+        "CheckOverride": 4
       },
       "AnimalHandling": {
         "Proficiency": false,
-        "Expertise": false
+        "Expertise": false,
+        "CheckOverride": 4
       },
       "Insight": {
         "Proficiency": true,
-        "Expertise": false
+        "Expertise": false,
+        "CheckOverride": 4
       },
       "Medicine": {
         "Proficiency": false,
-        "Expertise": false
+        "Expertise": false,
+        "CheckOverride": 4
       },
       "Perception": {
         "Proficiency": true,
-        "Expertise": true
+        "Expertise": true,
+        "CheckOverride": 4
       },
       "Survival": {
         "Proficiency": false,
-        "Expertise": false
+        "Expertise": false,
+        "CheckOverride": 4
       },
       "Deception": {
         "Proficiency": true,
-        "Expertise": true
+        "Expertise": true,
+        "CheckOverride": 4
       },
       "Intimidation": {
         "Proficiency": true,
-        "Expertise": false
+        "Expertise": false,
+        "CheckOverride": 4
       },
       "Performance": {
         "Proficiency": false,
-        "Expertise": false
+        "Expertise": false,
+        "CheckOverride": 4
       },
       "Persuasion": {
         "Proficiency": true,
-        "Expertise": true
+        "Expertise": true,
+        "CheckOverride": 4
       }
     },
     "Spells": [
@@ -1540,7 +1558,14 @@
       "Stretch": 3,
       "UseCustomImage": true
     },
-    "StatusEffects": [],
+    "StatusEffects": [
+      {
+        "Name": "Acid",
+        "Type": 1,
+        "Description": "Take no damage from acid.",
+        "Id": "74028803-8c54-40d0-bb83-5d70d1bf1377"
+      }
+    ],
     "Properties": {
       "Name": "Caleston Nailo",
       "Race": "Half-Elf",
@@ -1602,5 +1627,5 @@
       }
     ]
   },
-  "Version": "4.4.7"
+  "Version": "4.5.0"
 }

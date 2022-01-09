@@ -11,21 +11,27 @@ namespace Concierge.Character.AbilitySkills.SkillTypes
     {
         private int bonus;
 
-        public History(bool proficiency = false, bool expertise = false)
+        public History(bool proficiency = false, bool expertise = false, StatusChecks checkOverride = StatusChecks.None)
         {
             this.Proficiency = proficiency;
             this.Expertise = expertise;
+            this.CheckOverride = checkOverride;
         }
 
-        public override StatusChecks Checks => Program.CcsFile.Character.Vitality.Conditions.Fatigued.Equals("One") ||
-                    Program.CcsFile.Character.Vitality.Conditions.Fatigued.Equals("Two") ||
-                    Program.CcsFile.Character.Vitality.Conditions.Fatigued.Equals("Three") ||
-                    Program.CcsFile.Character.Vitality.Conditions.Fatigued.Equals("Four") ||
-                    Program.CcsFile.Character.Vitality.Conditions.Fatigued.Equals("Five") ||
-                    Program.CcsFile.Character.Vitality.Conditions.Frightened.Equals("Frightened") ||
-                    Program.CcsFile.Character.Vitality.Conditions.Poisoned.Equals("Poisoned")
-                    ? StatusChecks.Disadvantage
-                    : Program.CcsFile.Character.Vitality.Conditions.Blinded.Equals("Blinded") ? StatusChecks.Fail : StatusChecks.Normal;
+        public override StatusChecks Checks =>
+            this.CheckOverride != StatusChecks.None
+            ? this.CheckOverride
+            : Program.CcsFile.Character.Vitality.Conditions.Fatigued.Equals("One") ||
+                Program.CcsFile.Character.Vitality.Conditions.Fatigued.Equals("Two") ||
+                Program.CcsFile.Character.Vitality.Conditions.Fatigued.Equals("Three") ||
+                Program.CcsFile.Character.Vitality.Conditions.Fatigued.Equals("Four") ||
+                Program.CcsFile.Character.Vitality.Conditions.Fatigued.Equals("Five") ||
+                Program.CcsFile.Character.Vitality.Conditions.Frightened.Equals("Frightened") ||
+                Program.CcsFile.Character.Vitality.Conditions.Poisoned.Equals("Poisoned")
+                ? StatusChecks.Disadvantage
+                : Program.CcsFile.Character.Vitality.Conditions.Blinded.Equals("Blinded")
+                    ? StatusChecks.Fail
+                    : StatusChecks.Normal;
 
         public override int Bonus
         {
@@ -51,7 +57,7 @@ namespace Concierge.Character.AbilitySkills.SkillTypes
 
         public override Skills DeepCopy()
         {
-            return new History(this.Proficiency, this.Expertise);
+            return new History(this.Proficiency, this.Expertise, this.CheckOverride);
         }
     }
 }
