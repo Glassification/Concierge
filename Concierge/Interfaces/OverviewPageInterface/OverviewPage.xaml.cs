@@ -34,6 +34,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
         private readonly ModifyHitDiceWindow modifyHitDiceWindow = new (ConciergePage.Overview);
         private readonly ModifyWealthWindow modifyWealthWindow = new (ConciergePage.Overview);
         private readonly ModifySkillCheckWindow modifySkillCheckWindow = new (ConciergePage.Overview);
+        private readonly ModifySavingThrowCheckWindow modifySavingThrowCheckWindow = new (ConciergePage.Overview);
 
         public OverviewPage()
         {
@@ -45,6 +46,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
             this.modifyHealthWindow.ApplyChanges += this.Window_ApplyChanges;
             this.modifyHitDiceWindow.ApplyChanges += this.Window_ApplyChanges;
             this.modifySkillCheckWindow.ApplyChanges += this.Window_ApplyChanges;
+            this.modifySavingThrowCheckWindow.ApplyChanges += this.Window_ApplyChanges;
 
             this.InitializeToggleBox(this.StrengthProficiencyBox, this.SavingThrows_MouseDown);
             this.InitializeToggleBox(this.DexterityProficiencyBox, this.SavingThrows_MouseDown);
@@ -724,6 +726,9 @@ namespace Concierge.Interfaces.OverviewPageInterface
                 case "ModifySkillCheckWindow":
                     this.DrawSkills();
                     break;
+                case "ModifySavingThrowCheckWindow":
+                    this.DrawSavingThrows();
+                    break;
             }
         }
 
@@ -785,6 +790,12 @@ namespace Concierge.Interfaces.OverviewPageInterface
         {
             this.modifySkillCheckWindow.ShowEdit(Program.CcsFile.Character.Skill);
             this.DrawSkills();
+        }
+
+        private void SavingThrowCheckButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.modifySavingThrowCheckWindow.ShowEdit(Program.CcsFile.Character.SavingThrow);
+            this.DrawSavingThrows();
         }
     }
 }

@@ -13,6 +13,9 @@
     <Compile Update="Interfaces\EquippedItemsPageInterface\ModifyCharacterImageWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Interfaces\OverviewPageInterface\ModifySavingThrowCheckWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Interfaces\OverviewPageInterface\ModifySkillCheckWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -91,6 +94,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Interfaces\EquippedItemsPageInterface\ModifyEquippedItemsWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Interfaces\OverviewPageInterface\ModifySavingThrowCheckWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Interfaces\OverviewPageInterface\ModifySkillCheckWindow.xaml">

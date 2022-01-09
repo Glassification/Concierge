@@ -594,6 +594,16 @@
                             </Grid>
 
                             <Grid Grid.Column="1">
+                                <components:ConciergeDesignButton 
+                                    Style="{StaticResource ConciergeDesignButtonStyle}" 
+                                    x:Name="SavingThrowCheckButton"
+                                    Width="35"
+                                    HorizontalAlignment="Left"
+                                    Foreground="Khaki"
+                                    Click="SavingThrowCheckButton_Click"
+                                    ToolTip="Edit Saving Throw Checks">
+                                    <materialDesign:PackIcon Kind="PlaylistEdit" Width="25" Height="25"/>
+                                </components:ConciergeDesignButton>
                                 <components:ConciergeTextBlock Text="Saving Throws"
                                    Foreground="White"
                                    FontSize="23"

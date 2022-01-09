@@ -10,23 +10,15 @@ namespace Concierge.Character.AbilitySavingThrows.SavingThrowTypes
 
     public abstract class SavingThrows : ICopyable<SavingThrows>
     {
-        public bool Proficiency
-        {
-            get;
-            set;
-        }
+        public bool Proficiency { get; set; }
+
+        public StatusChecks CheckOverride { get; set; }
 
         [JsonIgnore]
-        public abstract StatusChecks StatusChecks
-        {
-            get;
-        }
+        public abstract StatusChecks StatusChecks { get; }
 
         [JsonIgnore]
-        public abstract int Bonus
-        {
-            get;
-        }
+        public abstract int Bonus { get; }
 
         public abstract SavingThrows DeepCopy();
     }
