@@ -49,7 +49,7 @@ namespace Concierge.Utility
 
         public void AddCommand(Command command)
         {
-            if (command is null)
+            if (!command?.ShouldAdd() ?? true)
             {
                 return;
             }

@@ -17,5 +17,10 @@ namespace Concierge.Commands
         public abstract void Redo();
 
         public abstract void Undo();
+
+        public virtual bool ShouldAdd()
+        {
+            return true;
+        }
     }
 }

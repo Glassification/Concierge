@@ -7,6 +7,7 @@ namespace Concierge.Commands
     using Concierge.Interfaces.Enums;
     using Concierge.Utility;
     using Concierge.Utility.Extensions;
+    using Newtonsoft.Json;
 
     public class EditCommand<T> : Command
     {
@@ -31,6 +32,14 @@ namespace Concierge.Commands
         public override void Undo()
         {
             this.OriginalItem.SetProperties<T>(this.oldItem);
+        }
+
+        public override bool ShouldAdd()
+        {
+            var oldItemString = JsonConvert.SerializeObject(this.oldItem, Formatting.Indented);
+            var newItemString = JsonConvert.SerializeObject(this.newItem, Formatting.Indented);
+
+            return !oldItemString.Equals(newItemString);
         }
     }
 }

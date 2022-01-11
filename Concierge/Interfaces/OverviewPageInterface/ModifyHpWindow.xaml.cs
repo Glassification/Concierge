@@ -47,6 +47,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
                 var oldItem = castItem.Health.DeepCopy();
                 castItem.Heal(this.HpUpDown.Value ?? 0);
                 Program.UndoRedoService.AddCommand(new EditCommand<Health>(castItem.Health, oldItem, this.ConciergePage));
+                Program.Modify();
             }
         }
 
@@ -65,6 +66,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
                 var oldItem = castItem.Health.DeepCopy();
                 castItem.Damage(this.HpUpDown.Value ?? 0);
                 Program.UndoRedoService.AddCommand(new EditCommand<Health>(castItem.Health, oldItem, this.ConciergePage));
+                Program.Modify();
             }
         }
 
@@ -96,8 +98,6 @@ namespace Concierge.Interfaces.OverviewPageInterface
         {
             this.Result = ConciergeWindowResult.OK;
             this.HideConciergeWindow();
-
-            Program.Modify();
         }
     }
 }

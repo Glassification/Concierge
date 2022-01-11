@@ -84,7 +84,7 @@ namespace Concierge.Interfaces.UtilityInterface
         {
             var settings = this.ToSettings();
 
-            if (this.conciergeSearch.SearchSettings.Equals(settings) && !Program.IsModified)
+            if (this.conciergeSearch.SearchSettings.Equals(settings))
             {
                 return;
             }
