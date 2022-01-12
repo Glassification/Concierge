@@ -59,7 +59,7 @@ namespace Concierge.Character.Items
 
         public string Note { get; set; }
 
-        public ConciergeDouble Weight { get; set; }
+        public UnitDouble Weight { get; set; }
 
         public WeaponTypes WeaponType { get; set; }
 

@@ -29,5 +29,10 @@ namespace Concierge.Commands
         {
             AppSettingsManager.UpdateSettings(this.oldSettingsDto);
         }
+
+        public override bool ShouldAdd()
+        {
+            return !this.newSettingsDto.Equals(this.oldSettingsDto);
+        }
     }
 }

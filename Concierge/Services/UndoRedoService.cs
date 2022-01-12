@@ -49,16 +49,14 @@ namespace Concierge.Utility
 
         public void AddCommand(Command command)
         {
-            if (!command?.ShouldAdd() ?? true)
+            if (command?.ShouldAdd() ?? false)
             {
-                return;
+                Program.Logger.Info($"Add new {command.GetType()}.");
+
+                this.UndoStack.Push(command);
+                this.RedoStack.Clear();
+                this.StackChanged?.Invoke(this, new EventArgs());
             }
-
-            Program.Logger.Info($"Add new {command.GetType()}.");
-
-            this.UndoStack.Push(command);
-            this.RedoStack.Clear();
-            this.StackChanged?.Invoke(this, new EventArgs());
         }
 
         public void Redo(MainWindow mainWindow)

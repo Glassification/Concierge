@@ -1318,7 +1318,7 @@
         "TotalD10": 0,
         "TotalD12": 0,
         "SpentD6": 0,
-        "SpentD8": 2,
+        "SpentD8": 1,
         "SpentD10": 0,
         "SpentD12": 0
       },
@@ -1633,5 +1633,5 @@
       }
     ]
   },
-  "Version": "4.5.4"
+  "Version": "4.5.6"
 }

@@ -9,6 +9,7 @@ namespace Concierge.Commands
     using Concierge.Character.Statuses;
     using Concierge.Interfaces.Enums;
     using Concierge.Utility.Extensions;
+    using Newtonsoft.Json;
 
     public class LongRestCommand : Command
     {
@@ -51,6 +52,18 @@ namespace Concierge.Commands
             this.character.Vitality.SetProperties<Vitality>(this.oldVitality);
             this.character.SpellSlots.SetProperties<SpellSlots>(this.oldSpellSlots);
             this.character.Companion.Vitality.SetProperties<Vitality>(this.oldCompanionVitality);
+        }
+
+        public override bool ShouldAdd()
+        {
+            var oldVitality = JsonConvert.SerializeObject(this.oldVitality, Formatting.Indented);
+            var oldSpellSlots = JsonConvert.SerializeObject(this.oldSpellSlots, Formatting.Indented);
+            var oldCompanion = JsonConvert.SerializeObject(this.oldCompanionVitality, Formatting.Indented);
+            var newVitality = JsonConvert.SerializeObject(this.newVitality, Formatting.Indented);
+            var newSpellSlots = JsonConvert.SerializeObject(this.newSpellSlots, Formatting.Indented);
+            var newCompanion = JsonConvert.SerializeObject(this.newCompanionVitality, Formatting.Indented);
+
+            return !(oldVitality.Equals(newVitality) && oldSpellSlots.Equals(newSpellSlots) && oldCompanion.Equals(newCompanion));
         }
     }
 }

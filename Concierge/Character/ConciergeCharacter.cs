@@ -200,6 +200,7 @@ namespace Concierge.Character
                     this.SpellSlots.DeepCopy()));
         }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0075:Simplify conditional expression", Justification = "Increase readability.")]
         public bool IsWeaponProficient(Weapon weapon)
         {
             var weaponName = Utilities.FormatName(weapon.WeaponType.ToString());

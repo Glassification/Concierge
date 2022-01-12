@@ -140,7 +140,7 @@ namespace Concierge.Interfaces.InventoryPageInterface
             {
                 Name = this.NameComboBox.Text,
                 Amount = this.AmountUpDown.Value ?? 0,
-                Weight = new ConciergeDouble(this.WeightUpDown.Value ?? 0.0, AppSettingsManager.Settings.UnitOfMeasurement, Measurements.Weight),
+                Weight = new UnitDouble(this.WeightUpDown.Value ?? 0.0, AppSettingsManager.Settings.UnitOfMeasurement, Measurements.Weight),
                 IsInBagOfHolding = this.BagOfHoldingCheckBox.IsChecked ?? false,
                 Note = this.NotesTextBox.Text,
             };

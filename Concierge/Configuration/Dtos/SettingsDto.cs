@@ -27,5 +27,30 @@ namespace Concierge.Configuration.Dtos
         public UnitTypes UnitOfMeasurement { get; init; }
 
         public bool AttemptToCenterWindows { get; init; }
+
+        public override bool Equals(object obj)
+        {
+            if (obj is not SettingsDto)
+            {
+                return false;
+            }
+
+            var settings = obj as SettingsDto;
+
+            return
+                settings.AutosaveInterval == this.AutosaveInterval &&
+                settings.AutosaveEnabled == this.AutosaveEnabled &&
+                settings.CheckVersion == this.CheckVersion &&
+                settings.MuteSounds == this.MuteSounds &&
+                settings.UseCoinWeight == this.UseCoinWeight &&
+                settings.UseEncumbrance == this.UseEncumbrance &&
+                settings.UnitOfMeasurement == this.UnitOfMeasurement &&
+                settings.AttemptToCenterWindows == this.AttemptToCenterWindows;
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
     }
 }

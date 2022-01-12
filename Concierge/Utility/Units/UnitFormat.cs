@@ -17,7 +17,7 @@ namespace Concierge.Utility.Units
 
         public static string WeightPostfix => AppSettingsManager.Settings.UnitOfMeasurement == UnitTypes.Imperial ? "Pounds" : "Kilograms";
 
-        public static string ToString(ConciergeDouble value)
+        public static string ToString(UnitDouble value)
         {
             return value.Measurement switch
             {
