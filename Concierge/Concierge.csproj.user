@@ -31,6 +31,9 @@
     <Compile Update="Interfaces\UtilityInterface\SearchWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Interfaces\UtilityInterface\SplashScreenWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="Interfaces\AbilitiesPageInterface\AbilitiesPage.xaml">
@@ -208,6 +211,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Interfaces\Dictionary\WindowFontDictionary.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Interfaces\UtilityInterface\SplashScreenWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

@@ -7,6 +7,8 @@ namespace Concierge
     using System.Windows;
 
     using Concierge.Exceptions.Enums;
+    using Concierge.Interfaces;
+    using Concierge.Interfaces.UtilityInterface;
 
     /// <summary>
     /// Interaction logic for App.xaml.
@@ -22,6 +24,15 @@ namespace Concierge
         {
             Program.ErrorService.LogError(e.Exception, Severity.Unhandled);
             e.Handled = true;
+        }
+
+        private void Application_Startup(object sender, StartupEventArgs e)
+        {
+            var splashScreen = new SplashScreenWindow();
+            var mainWindow = new MainWindow();
+
+            splashScreen.ShowWindow();
+            mainWindow.Show();
         }
     }
 }

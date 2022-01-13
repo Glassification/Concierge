@@ -192,7 +192,7 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
                 case PopupButtons.AddAmmo:
                     added = ConciergeWindowService.ShowAdd<List<Ammunition>>(
                         Program.CcsFile.Character.Ammunitions,
-                        typeof(ModifyAttackWindow),
+                        typeof(ModifyAmmoWindow),
                         this.Window_ApplyChanges,
                         ConciergePage.AttackDefense);
                     this.DrawAmmoList();
