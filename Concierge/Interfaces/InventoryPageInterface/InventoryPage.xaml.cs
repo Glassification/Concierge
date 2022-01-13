@@ -14,7 +14,7 @@ namespace Concierge.Interfaces.InventoryPageInterface
     using Concierge.Interfaces;
     using Concierge.Interfaces.Enums;
     using Concierge.Services;
-    using Concierge.Utility;
+    using Concierge.Utility.Utilities;
 
     /// <summary>
     /// Interaction logic for InventoryPage.xaml.
@@ -27,7 +27,7 @@ namespace Concierge.Interfaces.InventoryPageInterface
             this.DataContext = this;
         }
 
-        public double InventoryHeight => SystemParameters.PrimaryScreenHeight - 100;
+        public static double InventoryHeight => SystemParameters.PrimaryScreenHeight - 100;
 
         public ConciergePage ConciergePage => ConciergePage.Inventory;
 
@@ -143,7 +143,7 @@ namespace Concierge.Interfaces.InventoryPageInterface
 
         private void InventoryDataGrid_Sorted(object sender, RoutedEventArgs e)
         {
-            Utilities.SortListFromDataGrid(this.InventoryDataGrid, Program.CcsFile.Character.Inventories, this.ConciergePage);
+            DisplayUtility.SortListFromDataGrid(this.InventoryDataGrid, Program.CcsFile.Character.Inventories, this.ConciergePage);
         }
 
         private void Window_ApplyChanges(object sender, EventArgs e)

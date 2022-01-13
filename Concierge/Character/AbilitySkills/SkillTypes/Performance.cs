@@ -5,7 +5,7 @@
 namespace Concierge.Character.AbilitySkills.SkillTypes
 {
     using Concierge.Character.Enums;
-    using Concierge.Utility;
+    using Concierge.Utility.Utilities;
 
     public class Performance : Skills
     {
@@ -49,7 +49,7 @@ namespace Concierge.Character.AbilitySkills.SkillTypes
                     this.bonus += Program.CcsFile.Character.ProficiencyBonus;
                 }
 
-                this.bonus += Utilities.CalculateBonus(Program.CcsFile.Character.Attributes.Charisma);
+                this.bonus += CharacterUtility.CalculateBonus(Program.CcsFile.Character.Attributes.Charisma);
 
                 return this.bonus;
             }

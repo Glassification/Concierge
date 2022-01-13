@@ -4,24 +4,26 @@
 
 namespace Concierge.Interfaces.UtilityInterface
 {
+    using System;
     using System.ComponentModel;
     using System.Threading;
     using System.Windows;
 
-    using Concierge.Utility;
-    using Concierge.Utility.Extensions;
+    using Concierge.Utility.Colors;
+    using Concierge.Utility.Utilities;
 
     /// <summary>
     /// Interaction logic for SplashScreenWindow.xaml.
     /// </summary>
     public partial class SplashScreenWindow : Window
     {
-        private const int DisplayTime = 15;
+        private const int DisplayTime = 16;
+        private const int MinHoldTime = 110;
+        private const int MaxHoldTime = 190;
 
         public SplashScreenWindow()
         {
             this.InitializeComponent();
-            this.BannerImage.LoadFromByteArray(Properties.Resources.AboutBanner);
             this.WindowTimer = new BackgroundWorker()
             {
                 WorkerReportsProgress = true,
@@ -30,6 +32,8 @@ namespace Concierge.Interfaces.UtilityInterface
             this.WindowTimer.ProgressChanged += this.WindowTimer_ProgressChanged;
             this.WindowTimer.RunWorkerCompleted += this.WindowTimer_RunWorkerCompleted;
             this.Counter = 0;
+            this.VersionText.Text = $"v{Program.AssemblyVersion}{(Program.IsDebug ? " - Debug" : string.Empty)}";
+            this.Background = ConciergeColors.ProficiencyBrush;
         }
 
         private BackgroundWorker WindowTimer { get; }
@@ -49,7 +53,7 @@ namespace Concierge.Interfaces.UtilityInterface
                 this.Counter = 0;
             }
 
-            this.LoadingText.Text = $"Loading{Utilities.CreateCharacters(".", this.Counter)}";
+            this.LoadingText.Text = $"Loading{StringUtility.CreateCharacters(".", this.Counter)}";
 
             this.Counter++;
         }
@@ -61,10 +65,11 @@ namespace Concierge.Interfaces.UtilityInterface
 
         private void WindowTimer_DoWork(object sender, DoWorkEventArgs e)
         {
+            var random = new Random();
             for (int i = 0; i < DisplayTime; i++)
             {
                 (sender as BackgroundWorker).ReportProgress(i);
-                Thread.Sleep(150);
+                Thread.Sleep(random.Next(MinHoldTime, MaxHoldTime));
             }
         }
     }

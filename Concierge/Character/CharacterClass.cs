@@ -7,6 +7,7 @@ namespace Concierge.Character
     using System;
 
     using Concierge.Utility;
+    using Concierge.Utility.Utilities;
 
     public class CharacterClass : ICopyable<CharacterClass>
     {
@@ -30,7 +31,7 @@ namespace Concierge.Character
             {
                 if (value is <= Constants.MaxLevel and >= 0)
                 {
-                    if (Utilities.ValidateClassLevel(Program.CcsFile.Character, this.Id, value))
+                    if (CharacterUtility.ValidateClassLevel(Program.CcsFile.Character, this.Id, value))
                     {
                         this.level = value;
                     }

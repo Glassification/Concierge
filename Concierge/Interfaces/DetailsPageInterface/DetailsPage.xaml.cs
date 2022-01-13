@@ -19,9 +19,9 @@ namespace Concierge.Interfaces.DetailsPageInterface
     using Concierge.Interfaces.Components;
     using Concierge.Interfaces.Enums;
     using Concierge.Services;
-    using Concierge.Utility;
     using Concierge.Utility.Colors;
     using Concierge.Utility.Units;
+    using Concierge.Utility.Utilities;
 
     /// <summary>
     /// Interaction logic for DetailsPage.xaml.
@@ -477,12 +477,12 @@ namespace Concierge.Interfaces.DetailsPageInterface
 
         private void LanguagesDataGrid_Sorted(object sender, RoutedEventArgs e)
         {
-            Utilities.SortListFromDataGrid(this.LanguagesDataGrid, Program.CcsFile.Character.Languages, this.ConciergePage);
+            DisplayUtility.SortListFromDataGrid(this.LanguagesDataGrid, Program.CcsFile.Character.Languages, this.ConciergePage);
         }
 
         private void ResourcesDataGrid_Sorted(object sender, RoutedEventArgs e)
         {
-            Utilities.SortListFromDataGrid(this.ResourcesDataGrid, Program.CcsFile.Character.ClassResources, this.ConciergePage);
+            DisplayUtility.SortListFromDataGrid(this.ResourcesDataGrid, Program.CcsFile.Character.ClassResources, this.ConciergePage);
         }
 
         private void Window_ApplyChanges(object sender, EventArgs e)

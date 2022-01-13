@@ -9,6 +9,7 @@ namespace Concierge.Character.Spellcasting
 
     using Concierge.Character.Enums;
     using Concierge.Utility;
+    using Concierge.Utility.Utilities;
     using Newtonsoft.Json;
 
     public class MagicClass : ICopyable<MagicClass>
@@ -34,10 +35,10 @@ namespace Concierge.Character.Spellcasting
         public int PreparedSpells => Program.CcsFile.Character.Spells.Where(x => (x.Class?.Equals(this.Name) ?? false) && x.Prepared).ToList().Count;
 
         [JsonIgnore]
-        public int Attack => Utilities.CalculateBonusFromAbility(this.Ability, Program.CcsFile.Character);
+        public int Attack => CharacterUtility.CalculateBonusFromAbility(this.Ability, Program.CcsFile.Character);
 
         [JsonIgnore]
-        public int Save => Utilities.CalculateBonusFromAbility(this.Ability, Program.CcsFile.Character) + Constants.BaseDC;
+        public int Save => CharacterUtility.CalculateBonusFromAbility(this.Ability, Program.CcsFile.Character) + Constants.BaseDC;
 
         public MagicClass DeepCopy()
         {

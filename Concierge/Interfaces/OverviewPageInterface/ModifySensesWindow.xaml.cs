@@ -14,6 +14,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
     using Concierge.Interfaces.Components;
     using Concierge.Interfaces.Enums;
     using Concierge.Utility;
+    using Concierge.Utility.Utilities;
 
     /// <summary>
     /// Interaction logic for ModifySensesWindow.xaml.
@@ -105,7 +106,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
 
         private void IntegerUpDown_ValueChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
         {
-            this.InitiativeTextBlock.Text = (Utilities.CalculateBonus(Program.CcsFile.Character.Attributes.Dexterity) + (this.InitiativeBonusUpDown.Value ?? 0)).ToString();
+            this.InitiativeTextBlock.Text = (CharacterUtility.CalculateBonus(Program.CcsFile.Character.Attributes.Dexterity) + (this.InitiativeBonusUpDown.Value ?? 0)).ToString();
             this.PerceptionTextBlock.Text = (Constants.BasePerception + Program.CcsFile.Character.Skill.Perception.Bonus + (this.PerceptionBonusUpDown.Value ?? 0)).ToString();
             this.MovementTextBlock.Text = Senses.GetMovement(this.BaseMovementUpDown.Value ?? 0).ToString();
         }

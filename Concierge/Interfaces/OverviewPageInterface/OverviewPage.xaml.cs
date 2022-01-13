@@ -23,6 +23,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
     using Concierge.Utility;
     using Concierge.Utility.Colors;
     using Concierge.Utility.Extensions;
+    using Concierge.Utility.Utilities;
 
     /// <summary>
     /// Interaction logic for OverviewPage.xaml.
@@ -118,17 +119,17 @@ namespace Concierge.Interfaces.OverviewPageInterface
         private void DrawSpentHitDice(TextBlock spentField, Grid spentBox, Border border, int spent, int total)
         {
             spentField.Text = spent.ToString();
-            spentField.Foreground = Utilities.SetUsedTextStyle(total, spent);
-            spentBox.Background = Utilities.SetUsedBoxStyle(total, spent);
-            Utilities.SetBorderColour(spent, total, spentBox, border, this.CurrentHitDiceBox);
+            spentField.Foreground = DisplayUtility.SetUsedTextStyle(total, spent);
+            spentBox.Background = DisplayUtility.SetUsedBoxStyle(total, spent);
+            DisplayUtility.SetBorderColour(spent, total, spentBox, border, this.CurrentHitDiceBox);
         }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822:Mark members as static", Justification = "Consistency")]
         private void DrawTotalHitDice(TextBlock totalField, Grid totalBox, int spent, int total)
         {
             totalField.Text = total.ToString();
-            totalField.Foreground = Utilities.SetTotalTextStyle(total, spent);
-            totalBox.Background = Utilities.SetTotalBoxStyle(total, spent);
+            totalField.Foreground = DisplayUtility.SetTotalTextStyle(total, spent);
+            totalBox.Background = DisplayUtility.SetTotalBoxStyle(total, spent);
         }
 
         private void InitializeToggleBox(Rectangle toggleBox, MouseButtonEventHandler mouseButtonEventHandler)
@@ -142,12 +143,12 @@ namespace Concierge.Interfaces.OverviewPageInterface
         {
             var attributes = Program.CcsFile.Character.Attributes;
 
-            this.StrengthBonusField.Text = Utilities.CalculateBonus(attributes.Strength).ToString();
-            this.DexterityBonusField.Text = Utilities.CalculateBonus(attributes.Dexterity).ToString();
-            this.ConstitutionBonusField.Text = Utilities.CalculateBonus(attributes.Constitution).ToString();
-            this.IntelligenceBonusField.Text = Utilities.CalculateBonus(attributes.Intelligence).ToString();
-            this.WisdomBonusField.Text = Utilities.CalculateBonus(attributes.Wisdom).ToString();
-            this.CharismaBonusField.Text = Utilities.CalculateBonus(attributes.Charisma).ToString();
+            this.StrengthBonusField.Text = CharacterUtility.CalculateBonus(attributes.Strength).ToString();
+            this.DexterityBonusField.Text = CharacterUtility.CalculateBonus(attributes.Dexterity).ToString();
+            this.ConstitutionBonusField.Text = CharacterUtility.CalculateBonus(attributes.Constitution).ToString();
+            this.IntelligenceBonusField.Text = CharacterUtility.CalculateBonus(attributes.Intelligence).ToString();
+            this.WisdomBonusField.Text = CharacterUtility.CalculateBonus(attributes.Wisdom).ToString();
+            this.CharismaBonusField.Text = CharacterUtility.CalculateBonus(attributes.Charisma).ToString();
 
             this.StrengthScoreField.Text = attributes.Strength.ToString();
             this.DexterityScoreField.Text = attributes.Dexterity.ToString();
@@ -176,26 +177,26 @@ namespace Concierge.Interfaces.OverviewPageInterface
             this.WisdomSavingThrowField.Text = savingThrow.Wisdom.Bonus.ToString();
             this.CharismaSavingThrowField.Text = savingThrow.Charisma.Bonus.ToString();
 
-            Utilities.SetTextStyle(savingThrow.Strength.StatusChecks, this.StrengthSavingThrowField);
-            Utilities.SetTextStyle(savingThrow.Dexterity.StatusChecks, this.DexteritySavingThrowField);
-            Utilities.SetTextStyle(savingThrow.Constitution.StatusChecks, this.ConstitutionSavingThrowField);
-            Utilities.SetTextStyle(savingThrow.Intelligence.StatusChecks, this.IntelligenceSavingThrowField);
-            Utilities.SetTextStyle(savingThrow.Wisdom.StatusChecks, this.WisdomSavingThrowField);
-            Utilities.SetTextStyle(savingThrow.Charisma.StatusChecks, this.CharismaSavingThrowField);
+            DisplayUtility.SetTextStyle(savingThrow.Strength.StatusChecks, this.StrengthSavingThrowField);
+            DisplayUtility.SetTextStyle(savingThrow.Dexterity.StatusChecks, this.DexteritySavingThrowField);
+            DisplayUtility.SetTextStyle(savingThrow.Constitution.StatusChecks, this.ConstitutionSavingThrowField);
+            DisplayUtility.SetTextStyle(savingThrow.Intelligence.StatusChecks, this.IntelligenceSavingThrowField);
+            DisplayUtility.SetTextStyle(savingThrow.Wisdom.StatusChecks, this.WisdomSavingThrowField);
+            DisplayUtility.SetTextStyle(savingThrow.Charisma.StatusChecks, this.CharismaSavingThrowField);
 
-            Utilities.SetTextStyle(savingThrow.Strength.StatusChecks, this.StrengthSavingThrowName);
-            Utilities.SetTextStyle(savingThrow.Dexterity.StatusChecks, this.DexteritySavingThrowName);
-            Utilities.SetTextStyle(savingThrow.Constitution.StatusChecks, this.ConstitutionSavingThrowName);
-            Utilities.SetTextStyle(savingThrow.Intelligence.StatusChecks, this.IntelligenceSavingThrowName);
-            Utilities.SetTextStyle(savingThrow.Wisdom.StatusChecks, this.WisdomSavingThrowName);
-            Utilities.SetTextStyle(savingThrow.Charisma.StatusChecks, this.CharismaSavingThrowName);
+            DisplayUtility.SetTextStyle(savingThrow.Strength.StatusChecks, this.StrengthSavingThrowName);
+            DisplayUtility.SetTextStyle(savingThrow.Dexterity.StatusChecks, this.DexteritySavingThrowName);
+            DisplayUtility.SetTextStyle(savingThrow.Constitution.StatusChecks, this.ConstitutionSavingThrowName);
+            DisplayUtility.SetTextStyle(savingThrow.Intelligence.StatusChecks, this.IntelligenceSavingThrowName);
+            DisplayUtility.SetTextStyle(savingThrow.Wisdom.StatusChecks, this.WisdomSavingThrowName);
+            DisplayUtility.SetTextStyle(savingThrow.Charisma.StatusChecks, this.CharismaSavingThrowName);
 
-            Utilities.SetProficiencyBoxStyle(savingThrow.Strength.Proficiency, this.StrengthProficiencyBox);
-            Utilities.SetProficiencyBoxStyle(savingThrow.Dexterity.Proficiency, this.DexterityProficiencyBox);
-            Utilities.SetProficiencyBoxStyle(savingThrow.Constitution.Proficiency, this.ConstitutionProficiencyBox);
-            Utilities.SetProficiencyBoxStyle(savingThrow.Intelligence.Proficiency, this.IntelligenceProficiencyBox);
-            Utilities.SetProficiencyBoxStyle(savingThrow.Wisdom.Proficiency, this.WisdomProficiencyBox);
-            Utilities.SetProficiencyBoxStyle(savingThrow.Charisma.Proficiency, this.CharismaProficiencyBox);
+            DisplayUtility.SetProficiencyBoxStyle(savingThrow.Strength.Proficiency, this.StrengthProficiencyBox);
+            DisplayUtility.SetProficiencyBoxStyle(savingThrow.Dexterity.Proficiency, this.DexterityProficiencyBox);
+            DisplayUtility.SetProficiencyBoxStyle(savingThrow.Constitution.Proficiency, this.ConstitutionProficiencyBox);
+            DisplayUtility.SetProficiencyBoxStyle(savingThrow.Intelligence.Proficiency, this.IntelligenceProficiencyBox);
+            DisplayUtility.SetProficiencyBoxStyle(savingThrow.Wisdom.Proficiency, this.WisdomProficiencyBox);
+            DisplayUtility.SetProficiencyBoxStyle(savingThrow.Charisma.Proficiency, this.CharismaProficiencyBox);
         }
 
         private void DrawSkills()
@@ -221,81 +222,81 @@ namespace Concierge.Interfaces.OverviewPageInterface
             this.PerformanceSkillField.Text = skill.Performance.Bonus.ToString();
             this.PersuasionSkillField.Text = skill.Persuasion.Bonus.ToString();
 
-            Utilities.SetTextStyle(skill.Athletics.Checks, this.AthleticsSkillField);
-            Utilities.SetTextStyle(skill.Acrobatics.Checks, this.AcrobaticsSkillField);
-            Utilities.SetTextStyle(skill.SleightOfHand.Checks, this.SleightOfHandSkillField);
-            Utilities.SetTextStyle(skill.Stealth.Checks, this.StealthSkillField);
-            Utilities.SetTextStyle(skill.Arcana.Checks, this.ArcanaSkillField);
-            Utilities.SetTextStyle(skill.History.Checks, this.HistorySkillField);
-            Utilities.SetTextStyle(skill.Investigation.Checks, this.InvestigationSkillField);
-            Utilities.SetTextStyle(skill.Nature.Checks, this.NatureSkillField);
-            Utilities.SetTextStyle(skill.Religion.Checks, this.ReligionSkillField);
-            Utilities.SetTextStyle(skill.AnimalHandling.Checks, this.AnimalHandlingSkillField);
-            Utilities.SetTextStyle(skill.Insight.Checks, this.InsightSkillField);
-            Utilities.SetTextStyle(skill.Medicine.Checks, this.MedicineSkillField);
-            Utilities.SetTextStyle(skill.Perception.Checks, this.PerceptionSkillField);
-            Utilities.SetTextStyle(skill.Survival.Checks, this.SurvivalSkillField);
-            Utilities.SetTextStyle(skill.Deception.Checks, this.DeceptionSkillField);
-            Utilities.SetTextStyle(skill.Intimidation.Checks, this.IntimidationSkillField);
-            Utilities.SetTextStyle(skill.Performance.Checks, this.PerformanceSkillField);
-            Utilities.SetTextStyle(skill.Persuasion.Checks, this.PersuasionSkillField);
+            DisplayUtility.SetTextStyle(skill.Athletics.Checks, this.AthleticsSkillField);
+            DisplayUtility.SetTextStyle(skill.Acrobatics.Checks, this.AcrobaticsSkillField);
+            DisplayUtility.SetTextStyle(skill.SleightOfHand.Checks, this.SleightOfHandSkillField);
+            DisplayUtility.SetTextStyle(skill.Stealth.Checks, this.StealthSkillField);
+            DisplayUtility.SetTextStyle(skill.Arcana.Checks, this.ArcanaSkillField);
+            DisplayUtility.SetTextStyle(skill.History.Checks, this.HistorySkillField);
+            DisplayUtility.SetTextStyle(skill.Investigation.Checks, this.InvestigationSkillField);
+            DisplayUtility.SetTextStyle(skill.Nature.Checks, this.NatureSkillField);
+            DisplayUtility.SetTextStyle(skill.Religion.Checks, this.ReligionSkillField);
+            DisplayUtility.SetTextStyle(skill.AnimalHandling.Checks, this.AnimalHandlingSkillField);
+            DisplayUtility.SetTextStyle(skill.Insight.Checks, this.InsightSkillField);
+            DisplayUtility.SetTextStyle(skill.Medicine.Checks, this.MedicineSkillField);
+            DisplayUtility.SetTextStyle(skill.Perception.Checks, this.PerceptionSkillField);
+            DisplayUtility.SetTextStyle(skill.Survival.Checks, this.SurvivalSkillField);
+            DisplayUtility.SetTextStyle(skill.Deception.Checks, this.DeceptionSkillField);
+            DisplayUtility.SetTextStyle(skill.Intimidation.Checks, this.IntimidationSkillField);
+            DisplayUtility.SetTextStyle(skill.Performance.Checks, this.PerformanceSkillField);
+            DisplayUtility.SetTextStyle(skill.Persuasion.Checks, this.PersuasionSkillField);
 
-            Utilities.SetTextStyle(skill.Athletics.Checks, this.AthleticsSkillName);
-            Utilities.SetTextStyle(skill.Acrobatics.Checks, this.AcrobaticsSkillName);
-            Utilities.SetTextStyle(skill.SleightOfHand.Checks, this.SleightOfHandSkillName);
-            Utilities.SetTextStyle(skill.Stealth.Checks, this.StealthSkillName);
-            Utilities.SetTextStyle(skill.Arcana.Checks, this.ArcanaSkillName);
-            Utilities.SetTextStyle(skill.History.Checks, this.HistorySkillName);
-            Utilities.SetTextStyle(skill.Investigation.Checks, this.InvestigationSkillName);
-            Utilities.SetTextStyle(skill.Nature.Checks, this.NatureSkillName);
-            Utilities.SetTextStyle(skill.Religion.Checks, this.ReligionSkillName);
-            Utilities.SetTextStyle(skill.AnimalHandling.Checks, this.AnimalHandlingSkillName);
-            Utilities.SetTextStyle(skill.Insight.Checks, this.InsightSkillName);
-            Utilities.SetTextStyle(skill.Medicine.Checks, this.MedicineSkillName);
-            Utilities.SetTextStyle(skill.Perception.Checks, this.PerceptionSkillName);
-            Utilities.SetTextStyle(skill.Survival.Checks, this.SurvivalSkillName);
-            Utilities.SetTextStyle(skill.Deception.Checks, this.DeceptionSkillName);
-            Utilities.SetTextStyle(skill.Intimidation.Checks, this.IntimidationSkillName);
-            Utilities.SetTextStyle(skill.Performance.Checks, this.PerformanceSkillName);
-            Utilities.SetTextStyle(skill.Persuasion.Checks, this.PersuasionSkillName);
+            DisplayUtility.SetTextStyle(skill.Athletics.Checks, this.AthleticsSkillName);
+            DisplayUtility.SetTextStyle(skill.Acrobatics.Checks, this.AcrobaticsSkillName);
+            DisplayUtility.SetTextStyle(skill.SleightOfHand.Checks, this.SleightOfHandSkillName);
+            DisplayUtility.SetTextStyle(skill.Stealth.Checks, this.StealthSkillName);
+            DisplayUtility.SetTextStyle(skill.Arcana.Checks, this.ArcanaSkillName);
+            DisplayUtility.SetTextStyle(skill.History.Checks, this.HistorySkillName);
+            DisplayUtility.SetTextStyle(skill.Investigation.Checks, this.InvestigationSkillName);
+            DisplayUtility.SetTextStyle(skill.Nature.Checks, this.NatureSkillName);
+            DisplayUtility.SetTextStyle(skill.Religion.Checks, this.ReligionSkillName);
+            DisplayUtility.SetTextStyle(skill.AnimalHandling.Checks, this.AnimalHandlingSkillName);
+            DisplayUtility.SetTextStyle(skill.Insight.Checks, this.InsightSkillName);
+            DisplayUtility.SetTextStyle(skill.Medicine.Checks, this.MedicineSkillName);
+            DisplayUtility.SetTextStyle(skill.Perception.Checks, this.PerceptionSkillName);
+            DisplayUtility.SetTextStyle(skill.Survival.Checks, this.SurvivalSkillName);
+            DisplayUtility.SetTextStyle(skill.Deception.Checks, this.DeceptionSkillName);
+            DisplayUtility.SetTextStyle(skill.Intimidation.Checks, this.IntimidationSkillName);
+            DisplayUtility.SetTextStyle(skill.Performance.Checks, this.PerformanceSkillName);
+            DisplayUtility.SetTextStyle(skill.Persuasion.Checks, this.PersuasionSkillName);
 
-            Utilities.SetProficiencyBoxStyle(skill.Athletics.Proficiency, this.AthleticsProficiencyBox);
-            Utilities.SetProficiencyBoxStyle(skill.Acrobatics.Proficiency, this.AcrobaticsProficiencyBox);
-            Utilities.SetProficiencyBoxStyle(skill.SleightOfHand.Proficiency, this.SleightOfHandProficiencyBox);
-            Utilities.SetProficiencyBoxStyle(skill.Stealth.Proficiency, this.StealthProficiencyBox);
-            Utilities.SetProficiencyBoxStyle(skill.Arcana.Proficiency, this.ArcanaProficiencyBox);
-            Utilities.SetProficiencyBoxStyle(skill.History.Proficiency, this.HistoryProficiencyBox);
-            Utilities.SetProficiencyBoxStyle(skill.Investigation.Proficiency, this.InvestigationProficiencyBox);
-            Utilities.SetProficiencyBoxStyle(skill.Nature.Proficiency, this.NatureProficiencyBox);
-            Utilities.SetProficiencyBoxStyle(skill.Religion.Proficiency, this.ReligionProficiencyBox);
-            Utilities.SetProficiencyBoxStyle(skill.AnimalHandling.Proficiency, this.AnimalHandlingProficiencyBox);
-            Utilities.SetProficiencyBoxStyle(skill.Insight.Proficiency, this.InsightProficiencyBox);
-            Utilities.SetProficiencyBoxStyle(skill.Medicine.Proficiency, this.MedicineProficiencyBox);
-            Utilities.SetProficiencyBoxStyle(skill.Perception.Proficiency, this.PerceptionProficiencyBox);
-            Utilities.SetProficiencyBoxStyle(skill.Survival.Proficiency, this.SurvivalProficiencyBox);
-            Utilities.SetProficiencyBoxStyle(skill.Deception.Proficiency, this.DeceptionProficiencyBox);
-            Utilities.SetProficiencyBoxStyle(skill.Intimidation.Proficiency, this.IntimidationProficiencyBox);
-            Utilities.SetProficiencyBoxStyle(skill.Performance.Proficiency, this.PerformanceProficiencyBox);
-            Utilities.SetProficiencyBoxStyle(skill.Persuasion.Proficiency, this.PersuasionProficiencyBox);
+            DisplayUtility.SetProficiencyBoxStyle(skill.Athletics.Proficiency, this.AthleticsProficiencyBox);
+            DisplayUtility.SetProficiencyBoxStyle(skill.Acrobatics.Proficiency, this.AcrobaticsProficiencyBox);
+            DisplayUtility.SetProficiencyBoxStyle(skill.SleightOfHand.Proficiency, this.SleightOfHandProficiencyBox);
+            DisplayUtility.SetProficiencyBoxStyle(skill.Stealth.Proficiency, this.StealthProficiencyBox);
+            DisplayUtility.SetProficiencyBoxStyle(skill.Arcana.Proficiency, this.ArcanaProficiencyBox);
+            DisplayUtility.SetProficiencyBoxStyle(skill.History.Proficiency, this.HistoryProficiencyBox);
+            DisplayUtility.SetProficiencyBoxStyle(skill.Investigation.Proficiency, this.InvestigationProficiencyBox);
+            DisplayUtility.SetProficiencyBoxStyle(skill.Nature.Proficiency, this.NatureProficiencyBox);
+            DisplayUtility.SetProficiencyBoxStyle(skill.Religion.Proficiency, this.ReligionProficiencyBox);
+            DisplayUtility.SetProficiencyBoxStyle(skill.AnimalHandling.Proficiency, this.AnimalHandlingProficiencyBox);
+            DisplayUtility.SetProficiencyBoxStyle(skill.Insight.Proficiency, this.InsightProficiencyBox);
+            DisplayUtility.SetProficiencyBoxStyle(skill.Medicine.Proficiency, this.MedicineProficiencyBox);
+            DisplayUtility.SetProficiencyBoxStyle(skill.Perception.Proficiency, this.PerceptionProficiencyBox);
+            DisplayUtility.SetProficiencyBoxStyle(skill.Survival.Proficiency, this.SurvivalProficiencyBox);
+            DisplayUtility.SetProficiencyBoxStyle(skill.Deception.Proficiency, this.DeceptionProficiencyBox);
+            DisplayUtility.SetProficiencyBoxStyle(skill.Intimidation.Proficiency, this.IntimidationProficiencyBox);
+            DisplayUtility.SetProficiencyBoxStyle(skill.Performance.Proficiency, this.PerformanceProficiencyBox);
+            DisplayUtility.SetProficiencyBoxStyle(skill.Persuasion.Proficiency, this.PersuasionProficiencyBox);
 
-            Utilities.SetProficiencyBoxStyle(skill.Athletics.Expertise, this.AthleticsExpertieseBox);
-            Utilities.SetProficiencyBoxStyle(skill.Acrobatics.Expertise, this.AcrobaticsExpertieseBox);
-            Utilities.SetProficiencyBoxStyle(skill.SleightOfHand.Expertise, this.SleightOfHandExpertieseBox);
-            Utilities.SetProficiencyBoxStyle(skill.Stealth.Expertise, this.StealthExpertieseBox);
-            Utilities.SetProficiencyBoxStyle(skill.Arcana.Expertise, this.ArcanaExpertieseBox);
-            Utilities.SetProficiencyBoxStyle(skill.History.Expertise, this.HistoryExpertieseBox);
-            Utilities.SetProficiencyBoxStyle(skill.Investigation.Expertise, this.InvestigationExpertieseBox);
-            Utilities.SetProficiencyBoxStyle(skill.Nature.Expertise, this.NatureExpertieseBox);
-            Utilities.SetProficiencyBoxStyle(skill.Religion.Expertise, this.ReligionExpertieseBox);
-            Utilities.SetProficiencyBoxStyle(skill.AnimalHandling.Expertise, this.AnimalHandlingExpertieseBox);
-            Utilities.SetProficiencyBoxStyle(skill.Insight.Expertise, this.InsightExpertieseBox);
-            Utilities.SetProficiencyBoxStyle(skill.Medicine.Expertise, this.MedicineExpertieseBox);
-            Utilities.SetProficiencyBoxStyle(skill.Perception.Expertise, this.PerceptionExpertieseBox);
-            Utilities.SetProficiencyBoxStyle(skill.Survival.Expertise, this.SurvivalExpertieseBox);
-            Utilities.SetProficiencyBoxStyle(skill.Deception.Expertise, this.DeceptionExpertieseBox);
-            Utilities.SetProficiencyBoxStyle(skill.Intimidation.Expertise, this.IntimidationExpertieseBox);
-            Utilities.SetProficiencyBoxStyle(skill.Performance.Expertise, this.PerformanceExpertieseBox);
-            Utilities.SetProficiencyBoxStyle(skill.Persuasion.Expertise, this.PersuasionExpertieseBox);
+            DisplayUtility.SetProficiencyBoxStyle(skill.Athletics.Expertise, this.AthleticsExpertieseBox);
+            DisplayUtility.SetProficiencyBoxStyle(skill.Acrobatics.Expertise, this.AcrobaticsExpertieseBox);
+            DisplayUtility.SetProficiencyBoxStyle(skill.SleightOfHand.Expertise, this.SleightOfHandExpertieseBox);
+            DisplayUtility.SetProficiencyBoxStyle(skill.Stealth.Expertise, this.StealthExpertieseBox);
+            DisplayUtility.SetProficiencyBoxStyle(skill.Arcana.Expertise, this.ArcanaExpertieseBox);
+            DisplayUtility.SetProficiencyBoxStyle(skill.History.Expertise, this.HistoryExpertieseBox);
+            DisplayUtility.SetProficiencyBoxStyle(skill.Investigation.Expertise, this.InvestigationExpertieseBox);
+            DisplayUtility.SetProficiencyBoxStyle(skill.Nature.Expertise, this.NatureExpertieseBox);
+            DisplayUtility.SetProficiencyBoxStyle(skill.Religion.Expertise, this.ReligionExpertieseBox);
+            DisplayUtility.SetProficiencyBoxStyle(skill.AnimalHandling.Expertise, this.AnimalHandlingExpertieseBox);
+            DisplayUtility.SetProficiencyBoxStyle(skill.Insight.Expertise, this.InsightExpertieseBox);
+            DisplayUtility.SetProficiencyBoxStyle(skill.Medicine.Expertise, this.MedicineExpertieseBox);
+            DisplayUtility.SetProficiencyBoxStyle(skill.Perception.Expertise, this.PerceptionExpertieseBox);
+            DisplayUtility.SetProficiencyBoxStyle(skill.Survival.Expertise, this.SurvivalExpertieseBox);
+            DisplayUtility.SetProficiencyBoxStyle(skill.Deception.Expertise, this.DeceptionExpertieseBox);
+            DisplayUtility.SetProficiencyBoxStyle(skill.Intimidation.Expertise, this.IntimidationExpertieseBox);
+            DisplayUtility.SetProficiencyBoxStyle(skill.Performance.Expertise, this.PerformanceExpertieseBox);
+            DisplayUtility.SetProficiencyBoxStyle(skill.Persuasion.Expertise, this.PersuasionExpertieseBox);
         }
 
         private void DrawHealth()
@@ -305,8 +306,8 @@ namespace Concierge.Interfaces.OverviewPageInterface
             this.CurrentHpField.Text = vitality.CurrentHealth.ToString();
             this.TotalHpField.Text = "/" + vitality.Health.MaxHealth.ToString();
 
-            this.HpBackground.Foreground = Utilities.SetHealthStyle(vitality);
-            this.TotalHpField.Foreground = Utilities.SetHealthStyle(vitality);
+            this.HpBackground.Foreground = DisplayUtility.SetHealthStyle(vitality);
+            this.TotalHpField.Foreground = DisplayUtility.SetHealthStyle(vitality);
         }
 
         private void DrawArmorClass()
@@ -349,11 +350,11 @@ namespace Concierge.Interfaces.OverviewPageInterface
             var deathSaves = Program.CcsFile.Character.Vitality.DeathSavingThrows;
             deathSaves.LazyInitialize();
 
-            Utilities.SetRectangleStyle(this.DeathSave1, deathSaves.DeathSaves[0]);
-            Utilities.SetRectangleStyle(this.DeathSave2, deathSaves.DeathSaves[1]);
-            Utilities.SetRectangleStyle(this.DeathSave3, deathSaves.DeathSaves[2]);
-            Utilities.SetRectangleStyle(this.DeathSave4, deathSaves.DeathSaves[3]);
-            Utilities.SetRectangleStyle(this.DeathSave5, deathSaves.DeathSaves[4]);
+            DisplayUtility.SetRectangleStyle(this.DeathSave1, deathSaves.DeathSaves[0]);
+            DisplayUtility.SetRectangleStyle(this.DeathSave2, deathSaves.DeathSaves[1]);
+            DisplayUtility.SetRectangleStyle(this.DeathSave3, deathSaves.DeathSaves[2]);
+            DisplayUtility.SetRectangleStyle(this.DeathSave4, deathSaves.DeathSaves[3]);
+            DisplayUtility.SetRectangleStyle(this.DeathSave5, deathSaves.DeathSaves[4]);
         }
 
         private void SavingThrows_MouseDown(object sender, RoutedEventArgs e)
@@ -636,20 +637,20 @@ namespace Concierge.Interfaces.OverviewPageInterface
             switch ((sender as Grid).Name)
             {
                 case "D6SpentBox":
-                    hitDice.SpentD6 = Utilities.IncrementUsedSlots(hitDice.SpentD6, hitDice.TotalD6);
-                    Utilities.SetCursor(hitDice.SpentD6, hitDice.TotalD6, (x, y) => x == y, Cursors.Arrow);
+                    hitDice.SpentD6 = DisplayUtility.IncrementUsedSlots(hitDice.SpentD6, hitDice.TotalD6);
+                    DisplayUtility.SetCursor(hitDice.SpentD6, hitDice.TotalD6, (x, y) => x == y, Cursors.Arrow);
                     break;
                 case "D8SpentBox":
-                    hitDice.SpentD8 = Utilities.IncrementUsedSlots(hitDice.SpentD8, hitDice.TotalD8);
-                    Utilities.SetCursor(hitDice.SpentD8, hitDice.TotalD8, (x, y) => x == y, Cursors.Arrow);
+                    hitDice.SpentD8 = DisplayUtility.IncrementUsedSlots(hitDice.SpentD8, hitDice.TotalD8);
+                    DisplayUtility.SetCursor(hitDice.SpentD8, hitDice.TotalD8, (x, y) => x == y, Cursors.Arrow);
                     break;
                 case "D10SpentBox":
-                    hitDice.SpentD10 = Utilities.IncrementUsedSlots(hitDice.SpentD10, hitDice.TotalD10);
-                    Utilities.SetCursor(hitDice.SpentD10, hitDice.TotalD10, (x, y) => x == y, Cursors.Arrow);
+                    hitDice.SpentD10 = DisplayUtility.IncrementUsedSlots(hitDice.SpentD10, hitDice.TotalD10);
+                    DisplayUtility.SetCursor(hitDice.SpentD10, hitDice.TotalD10, (x, y) => x == y, Cursors.Arrow);
                     break;
                 case "D12SpentBox":
-                    hitDice.SpentD12 = Utilities.IncrementUsedSlots(hitDice.SpentD12, hitDice.TotalD12);
-                    Utilities.SetCursor(hitDice.SpentD12, hitDice.TotalD12, (x, y) => x == y, Cursors.Arrow);
+                    hitDice.SpentD12 = DisplayUtility.IncrementUsedSlots(hitDice.SpentD12, hitDice.TotalD12);
+                    DisplayUtility.SetCursor(hitDice.SpentD12, hitDice.TotalD12, (x, y) => x == y, Cursors.Arrow);
                     break;
             }
 
@@ -669,20 +670,20 @@ namespace Concierge.Interfaces.OverviewPageInterface
             switch (grid.Name)
             {
                 case "D6SpentBox":
-                    Utilities.SetCursor(hitDice.SpentD6, hitDice.TotalD6, (x, y) => x != y, Cursors.Hand);
-                    Utilities.SetBorderColour(hitDice.SpentD6, hitDice.TotalD6, grid, this.D6Border, this.CurrentHitDiceBox);
+                    DisplayUtility.SetCursor(hitDice.SpentD6, hitDice.TotalD6, (x, y) => x != y, Cursors.Hand);
+                    DisplayUtility.SetBorderColour(hitDice.SpentD6, hitDice.TotalD6, grid, this.D6Border, this.CurrentHitDiceBox);
                     break;
                 case "D8SpentBox":
-                    Utilities.SetCursor(hitDice.SpentD8, hitDice.TotalD8, (x, y) => x != y, Cursors.Hand);
-                    Utilities.SetBorderColour(hitDice.SpentD8, hitDice.TotalD8, grid, this.D8Border, this.CurrentHitDiceBox);
+                    DisplayUtility.SetCursor(hitDice.SpentD8, hitDice.TotalD8, (x, y) => x != y, Cursors.Hand);
+                    DisplayUtility.SetBorderColour(hitDice.SpentD8, hitDice.TotalD8, grid, this.D8Border, this.CurrentHitDiceBox);
                     break;
                 case "D10SpentBox":
-                    Utilities.SetCursor(hitDice.SpentD10, hitDice.TotalD10, (x, y) => x != y, Cursors.Hand);
-                    Utilities.SetBorderColour(hitDice.SpentD10, hitDice.TotalD10, grid, this.D10Border, this.CurrentHitDiceBox);
+                    DisplayUtility.SetCursor(hitDice.SpentD10, hitDice.TotalD10, (x, y) => x != y, Cursors.Hand);
+                    DisplayUtility.SetBorderColour(hitDice.SpentD10, hitDice.TotalD10, grid, this.D10Border, this.CurrentHitDiceBox);
                     break;
                 case "D12SpentBox":
-                    Utilities.SetCursor(hitDice.SpentD12, hitDice.TotalD12, (x, y) => x != y, Cursors.Hand);
-                    Utilities.SetBorderColour(hitDice.SpentD12, hitDice.TotalD12, grid, this.D12Border, this.CurrentHitDiceBox);
+                    DisplayUtility.SetCursor(hitDice.SpentD12, hitDice.TotalD12, (x, y) => x != y, Cursors.Hand);
+                    DisplayUtility.SetBorderColour(hitDice.SpentD12, hitDice.TotalD12, grid, this.D12Border, this.CurrentHitDiceBox);
                     break;
             }
         }

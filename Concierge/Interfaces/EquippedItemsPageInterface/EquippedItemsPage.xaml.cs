@@ -18,6 +18,7 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
     using Concierge.Interfaces.InventoryPageInterface;
     using Concierge.Services;
     using Concierge.Utility;
+    using Concierge.Utility.Utilities;
 
     /// <summary>
     /// Interaction logic for EquippedItemsPage.xaml.
@@ -91,7 +92,7 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
         private void EquipmentDataGrid_Sorted(object sender, RoutedEventArgs e)
         {
             var dataGrid = sender as ConciergeDataGrid;
-            var equippedItems = Utilities.GetPropertyValue<List<Inventory>>(Program.CcsFile.Character.EquippedItems, dataGrid.Tag as string);
+            var equippedItems = DisplayUtility.GetPropertyValue<List<Inventory>>(Program.CcsFile.Character.EquippedItems, dataGrid.Tag as string);
             var oldList = new List<Inventory>(equippedItems);
 
             equippedItems.Clear();
@@ -153,7 +154,7 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
                 return;
             }
 
-            var equippedItems = Utilities.GetPropertyValue<List<Inventory>>(Program.CcsFile.Character.EquippedItems, this.SelectedDataGrid.Tag as string);
+            var equippedItems = DisplayUtility.GetPropertyValue<List<Inventory>>(Program.CcsFile.Character.EquippedItems, this.SelectedDataGrid.Tag as string);
             var index = this.SelectedDataGrid.NextItem(equippedItems, 0, -1, this.ConciergePage);
 
             if (index != -1)
@@ -171,7 +172,7 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
                 return;
             }
 
-            var equippedItems = Utilities.GetPropertyValue<List<Inventory>>(Program.CcsFile.Character.EquippedItems, this.SelectedDataGrid.Tag as string);
+            var equippedItems = DisplayUtility.GetPropertyValue<List<Inventory>>(Program.CcsFile.Character.EquippedItems, this.SelectedDataGrid.Tag as string);
             var index = this.SelectedDataGrid.NextItem(equippedItems, equippedItems.Count - 1, 1, this.ConciergePage);
 
             if (index != -1)

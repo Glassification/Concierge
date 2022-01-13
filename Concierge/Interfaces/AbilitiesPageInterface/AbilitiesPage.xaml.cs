@@ -13,7 +13,7 @@ namespace Concierge.Interfaces.AbilitiesPageInterface
     using Concierge.Commands;
     using Concierge.Interfaces.Enums;
     using Concierge.Services;
-    using Concierge.Utility;
+    using Concierge.Utility.Utilities;
 
     /// <summary>
     /// Interaction logic for AbilitiesPage.xaml.
@@ -29,7 +29,7 @@ namespace Concierge.Interfaces.AbilitiesPageInterface
             Program.Logger.Info($"Initialized {nameof(AbilitiesPage)}.");
         }
 
-        public double AbilitiesHeight => SystemParameters.PrimaryScreenHeight - 100;
+        public static double AbilitiesHeight => SystemParameters.PrimaryScreenHeight - 100;
 
         public ConciergePage ConciergePage => ConciergePage.Abilities;
 
@@ -143,7 +143,7 @@ namespace Concierge.Interfaces.AbilitiesPageInterface
 
         private void AbilitiesDataGrid_Sorted(object sender, RoutedEventArgs e)
         {
-            Utilities.SortListFromDataGrid(this.AbilitiesDataGrid, Program.CcsFile.Character.Abilities, this.ConciergePage);
+            DisplayUtility.SortListFromDataGrid(this.AbilitiesDataGrid, Program.CcsFile.Character.Abilities, this.ConciergePage);
         }
 
         private void Window_ApplyChanges(object sender, EventArgs e)

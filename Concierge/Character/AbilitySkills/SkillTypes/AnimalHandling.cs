@@ -5,7 +5,7 @@
 namespace Concierge.Character.AbilitySkills.SkillTypes
 {
     using Concierge.Character.Enums;
-    using Concierge.Utility;
+    using Concierge.Utility.Utilities;
 
     public class AnimalHandling : Skills
     {
@@ -49,7 +49,7 @@ namespace Concierge.Character.AbilitySkills.SkillTypes
                     this.bonus += Program.CcsFile.Character.ProficiencyBonus;
                 }
 
-                this.bonus += Utilities.CalculateBonus(Program.CcsFile.Character.Attributes.Wisdom);
+                this.bonus += CharacterUtility.CalculateBonus(Program.CcsFile.Character.Attributes.Wisdom);
 
                 return this.bonus;
             }

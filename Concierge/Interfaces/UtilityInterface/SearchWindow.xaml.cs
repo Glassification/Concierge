@@ -16,8 +16,8 @@ namespace Concierge.Interfaces.UtilityInterface
     using Concierge.Search;
     using Concierge.Search.Enums;
     using Concierge.Tools.Interface;
-    using Concierge.Utility;
     using Concierge.Utility.Extensions;
+    using Concierge.Utility.Utilities;
 
     /// <summary>
     /// Interaction logic for SearchWindow.xaml.
@@ -35,7 +35,7 @@ namespace Concierge.Interfaces.UtilityInterface
             this.conciergeNavigate = new ConciergeNavigate();
             this.SearchResults = new List<SearchResult>();
             this.mainWindow = Program.MainWindow;
-            this.SearchDomainComboBox.ItemsSource = Utilities.FormatEnumForDisplay(typeof(SearchDomain));
+            this.SearchDomainComboBox.ItemsSource = StringUtility.FormatEnumForDisplay(typeof(SearchDomain));
             this.SearchDomainComboBox.Text = SearchDomain.CurrentPage.ToString().FormatFromEnum();
             this.SearchResultTextBlock.Text = string.Empty;
         }

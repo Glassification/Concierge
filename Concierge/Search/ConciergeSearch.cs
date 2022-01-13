@@ -15,6 +15,7 @@ namespace Concierge.Search
     using Concierge.Search.Enums;
     using Concierge.Utility;
     using Concierge.Utility.Extensions;
+    using Concierge.Utility.Utilities;
 
     public class ConciergeSearch
     {
@@ -107,7 +108,7 @@ namespace Concierge.Search
 
         private void SearchTextBlocks(IConciergePage conciergePage)
         {
-            var textBlocks = Utilities.FindVisualChildren<ConciergeTextBlock>(conciergePage as Page);
+            var textBlocks = DisplayUtility.FindVisualChildren<ConciergeTextBlock>(conciergePage as Page);
 
             foreach (var textBlock in textBlocks)
             {
@@ -120,7 +121,7 @@ namespace Concierge.Search
 
         private void SearchDataGrids(IConciergePage conciergePage)
         {
-            var dataGrids = Utilities.FindVisualChildren<ConciergeDataGrid>(conciergePage as Page);
+            var dataGrids = DisplayUtility.FindVisualChildren<ConciergeDataGrid>(conciergePage as Page);
 
             if (!dataGrids.Any())
             {

@@ -21,6 +21,7 @@ namespace Concierge.Character
     using Concierge.Utility;
     using Concierge.Utility.Extensions;
     using Concierge.Utility.Units;
+    using Concierge.Utility.Utilities;
     using Newtonsoft.Json;
 
     public class ConciergeCharacter : ICopyable<ConciergeCharacter>
@@ -126,7 +127,7 @@ namespace Concierge.Character
         public int PassivePerception => Constants.BasePerception + this.Skill.Perception.Bonus + this.Senses.PerceptionBonus;
 
         [JsonIgnore]
-        public int Initiative => Utilities.CalculateBonus(this.Attributes.Dexterity) + this.Senses.InitiativeBonus;
+        public int Initiative => CharacterUtility.CalculateBonus(this.Attributes.Dexterity) + this.Senses.InitiativeBonus;
 
         [JsonIgnore]
         public int CasterLevel
@@ -203,7 +204,7 @@ namespace Concierge.Character
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0075:Simplify conditional expression", Justification = "Increase readability.")]
         public bool IsWeaponProficient(Weapon weapon)
         {
-            var weaponName = Utilities.FormatName(weapon.WeaponType.ToString());
+            var weaponName = StringUtility.FormatName(weapon.WeaponType.ToString());
 
             return weapon.ProficiencyOverride
                 ? true

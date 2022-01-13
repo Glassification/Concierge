@@ -12,6 +12,7 @@ namespace Concierge.Interfaces.Components
 
     using Concierge.Utility;
     using Concierge.Utility.Colors;
+    using Concierge.Utility.Utilities;
     using Xceed.Wpf.Toolkit;
 
     public class ConciergeIntegerUpDown : IntegerUpDown
@@ -58,14 +59,14 @@ namespace Concierge.Interfaces.Components
 
         private void IntegerUpDown_MouseMove(object sender, MouseEventArgs e)
         {
-            if (Utilities.GetElementUnderMouse<RepeatButton>() != null)
+            if (DisplayUtility.GetElementUnderMouse<RepeatButton>() != null)
             {
                 if (Mouse.OverrideCursor != Cursors.Hand)
                 {
                     Mouse.OverrideCursor = Cursors.Hand;
                 }
             }
-            else if (Utilities.GetElementUnderMouse<TextBox>() != null)
+            else if (DisplayUtility.GetElementUnderMouse<TextBox>() != null)
             {
                 if (Mouse.OverrideCursor != Cursors.IBeam)
                 {

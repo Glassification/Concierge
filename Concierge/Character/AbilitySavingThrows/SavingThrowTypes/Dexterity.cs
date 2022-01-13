@@ -5,7 +5,7 @@
 namespace Concierge.Character.AbilitySavingThrows.SavingThrowTypes
 {
     using Concierge.Character.Enums;
-    using Concierge.Utility;
+    using Concierge.Utility.Utilities;
 
     public class Dexterity : SavingThrows
     {
@@ -41,7 +41,7 @@ namespace Concierge.Character.AbilitySavingThrows.SavingThrowTypes
                     this.bonus += Program.CcsFile.Character.ProficiencyBonus;
                 }
 
-                this.bonus += Utilities.CalculateBonus(Program.CcsFile.Character.Attributes.Dexterity);
+                this.bonus += CharacterUtility.CalculateBonus(Program.CcsFile.Character.Attributes.Dexterity);
 
                 return this.bonus;
             }

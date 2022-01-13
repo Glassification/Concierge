@@ -8,8 +8,8 @@ namespace Concierge.Search
 
     using Concierge.Interfaces.Components;
     using Concierge.Interfaces.NotesPageInterface;
-    using Concierge.Utility;
     using Concierge.Utility.Extensions;
+    using Concierge.Utility.Utilities;
 
     public class ConciergeNavigate
     {
@@ -41,7 +41,7 @@ namespace Concierge.Search
 
         private bool NavigateToDataGrid()
         {
-            var dataGrids = Utilities.FindVisualChildren<ConciergeDataGrid>(this.SearchResult.ConciergePage as Page);
+            var dataGrids = DisplayUtility.FindVisualChildren<ConciergeDataGrid>(this.SearchResult.ConciergePage as Page);
 
             foreach (var dataGrid in dataGrids)
             {
@@ -71,7 +71,7 @@ namespace Concierge.Search
 
         private bool NavigateToTreeView()
         {
-            var treeViews = Utilities.FindVisualChildren<TreeView>(this.SearchResult.ConciergePage as Page);
+            var treeViews = DisplayUtility.FindVisualChildren<TreeView>(this.SearchResult.ConciergePage as Page);
 
             foreach (var treeView in treeViews)
             {

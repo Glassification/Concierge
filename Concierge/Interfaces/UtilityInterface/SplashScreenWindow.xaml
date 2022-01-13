@@ -4,6 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:local="clr-namespace:Concierge.Interfaces.UtilityInterface"
     xmlns:viewmodels="clr-namespace:Concierge.Interfaces.ViewModels" 
     d:DataContext="{d:DesignInstance Type=viewmodels:ConciergeViewModel}"
@@ -15,37 +16,113 @@
     ShowInTaskbar="False"
     Height="250"
     Width="600"
-    Background="#67010C">
+    Background="#001233">
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="40*"/>
             <RowDefinition Height="50*"/>
-            <RowDefinition Height="50*"/>
+            <RowDefinition Height="10*"/>
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0">
             <TextBlock
                 Text="Concierge"
-                Foreground="White"
-                FontSize="40"
-                FontFamily="Castellar"
-                Margin="20,20,0,0">
+                Foreground="#227EA9"
+                FontSize="50"
+                FontFamily="Bahnschrift SemiBold"
+                Margin="20">
                 <TextBlock.Effect>
                     <DropShadowEffect Color="Black" />
                 </TextBlock.Effect>
             </TextBlock>
+            <Line
+                Stroke="#227EA9"
+                StrokeThickness="1"
+                VerticalAlignment="Bottom"
+                Stretch="Uniform"
+                X1="0" X2="1" Y1="0" Y2="0"
+                Margin="15,0,15,15"/>
         </Grid>
+
         <Grid Grid.Row="1">
-            <Image
-                x:Name="BannerImage"
-                Stretch="UniformToFill"/>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="30*"/>
+                <ColumnDefinition Width="70*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="0">
+                <materialDesign:PackIcon
+                    Kind="HexagonOutline"
+                    Foreground="#33415C"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Stretch"
+                    Height="auto"
+                    Width="auto"/>
+                <StackPanel
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Center">
+                    <TextBlock
+                        Text="5"
+                        Foreground="White"
+                        FontSize="50"
+                        FontFamily="Bahnschrift"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center"
+                        Margin="0,7,0,0"/>
+                    <TextBlock
+                        Text="E"
+                        Foreground="White"
+                        FontSize="40"
+                        FontFamily="Bahnschrift"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center"
+                        Margin="0,10,0,0"/>
+                </StackPanel>
+            </Grid>
+
+            <Grid Grid.Column="1">
+                <StackPanel
+                    Orientation="Vertical"
+                    VerticalAlignment="Center">
+                    <TextBlock
+                        Text="Dungeons &amp; Dragons"
+                        Foreground="White"
+                        FontSize="35"
+                        FontFamily="Bahnschrift Light"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center"
+                        Margin="-100,0,0,0"/>
+                    <TextBlock
+                        Text="Character Sheet"
+                        Foreground="White"
+                        FontSize="35"
+                        FontFamily="Bahnschrift Light"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center"
+                        Margin="-100,0,0,0"/>
+                </StackPanel>
+            </Grid>
+        </Grid>
+
+        <Grid Grid.Row="2">
             <TextBlock
                 x:Name="LoadingText"
                 Foreground="White"
                 FontSize="20"
                 Text="Loading"
                 FontFamily="Bahnschrift SemiLight"
-                VerticalAlignment="Bottom"
-                Margin="20,0,0,20"/>
+                VerticalAlignment="Center"
+                HorizontalAlignment="Left"
+                Margin="20,0,0,5"/>
+            <TextBlock
+                x:Name="VersionText"
+                Foreground="White"
+                FontSize="15"
+                Text="v0.0.0"
+                FontFamily="Bahnschrift SemiLight"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Right"
+                Margin="0,0,20,5"/>
         </Grid>
     </Grid>
 </Window>

@@ -1,42 +1,26 @@
-﻿// <copyright file="Utilities.cs" company="Thomas Beckett">
+﻿// <copyright file="DisplayUtility.cs" company="Thomas Beckett">
 // Copyright (c) Thomas Beckett. All rights reserved.
 // </copyright>
 
-namespace Concierge.Utility
+namespace Concierge.Utility.Utilities
 {
     using System;
     using System.Collections.Generic;
-    using System.Linq;
     using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Input;
     using System.Windows.Media;
     using System.Windows.Shapes;
 
-    using Concierge.Character;
     using Concierge.Character.Enums;
     using Concierge.Character.Statuses;
     using Concierge.Commands;
     using Concierge.Interfaces.Components;
     using Concierge.Interfaces.Enums;
     using Concierge.Utility.Colors;
-    using Concierge.Utility.Dtos;
-    using Concierge.Utility.Extensions;
 
-    public static class Utilities
+    public static class DisplayUtility
     {
-        public static string CreateCharacters(string character, int count)
-        {
-            var characters = string.Empty;
-
-            for (int i = 0; i < count; i++)
-            {
-                characters += character;
-            }
-
-            return characters;
-        }
-
         public static void SortListFromDataGrid<T>(ConciergeDataGrid dataGrid, List<T> list, ConciergePage conciergePage)
         {
             if (dataGrid.Items.IsEmpty)
@@ -59,18 +43,6 @@ namespace Concierge.Utility
                     new List<T>(list),
                     conciergePage));
             Program.Modify();
-        }
-
-        public static List<string> FormatEnumForDisplay(Type enumType)
-        {
-            var stringArray = Enum.GetNames(enumType);
-
-            for (int i = 0; i < stringArray.Length; i++)
-            {
-                stringArray[i] = stringArray[i].FormatFromEnum();
-            }
-
-            return stringArray.ToList();
         }
 
         public static T GetElementUnderMouse<T>()
@@ -209,57 +181,6 @@ namespace Concierge.Utility
         public static T GetPropertyValue<T>(object source, string propertyName)
         {
             return (T)source.GetType().GetProperty(propertyName).GetValue(source, null);
-        }
-
-        public static int CalculateBonus(int score)
-        {
-            return (int)Math.Floor((score - 10) / 2.0);
-        }
-
-        public static int CalculateBonusFromAbility(Abilities ability, ConciergeCharacter character)
-        {
-            int bonus = character.ProficiencyBonus;
-
-            return ability switch
-            {
-                Abilities.STR => CalculateBonus(character.Attributes.Strength) + bonus,
-                Abilities.DEX => CalculateBonus(character.Attributes.Dexterity) + bonus,
-                Abilities.CON => CalculateBonus(character.Attributes.Constitution) + bonus,
-                Abilities.INT => CalculateBonus(character.Attributes.Intelligence) + bonus,
-                Abilities.WIS => CalculateBonus(character.Attributes.Wisdom) + bonus,
-                Abilities.CHA => CalculateBonus(character.Attributes.Charisma) + bonus,
-                Abilities.NONE => bonus,
-                _ => throw new NotImplementedException(),
-            };
-        }
-
-        public static string FormatName(string name)
-        {
-            var ch = name.ToArray();
-            int offset = 0;
-
-            for (int i = 1; i < ch.Length; i++)
-            {
-                if (char.IsUpper(ch[i]))
-                {
-                    name = name.Insert(i + offset, " ");
-                    offset++;
-                }
-            }
-
-            return name;
-        }
-
-        public static bool ValidateClassLevel(ConciergeCharacter character, Guid id, int newValue)
-        {
-            var totalLevel =
-                (character.Properties.Class1.Id.Equals(id) ? 0 : character.Properties.Class1.Level) +
-                (character.Properties.Class2.Id.Equals(id) ? 0 : character.Properties.Class2.Level) +
-                (character.Properties.Class3.Id.Equals(id) ? 0 : character.Properties.Class3.Level);
-
-            totalLevel += newValue;
-
-            return totalLevel is <= Constants.MaxLevel and >= 0;
         }
 
         public static Brush SetUsedTextStyle(int total, int used)

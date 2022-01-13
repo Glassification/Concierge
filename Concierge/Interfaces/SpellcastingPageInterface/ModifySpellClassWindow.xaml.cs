@@ -15,6 +15,7 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
     using Concierge.Interfaces.Components;
     using Concierge.Interfaces.Enums;
     using Concierge.Utility;
+    using Concierge.Utility.Utilities;
 
     /// <summary>
     /// Interaction logic for ModifySpellClassWindow.xaml.
@@ -154,8 +155,8 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
 
         private void RefreshFields()
         {
-            this.AttackBonusTextBlock.Text = Utilities.CalculateBonusFromAbility((Abilities)Enum.Parse(typeof(Abilities), this.AbilityComboBox.SelectedItem.ToString()), Program.CcsFile.Character).ToString();
-            this.SpellSaveTextBlock.Text = (Utilities.CalculateBonusFromAbility((Abilities)Enum.Parse(typeof(Abilities), this.AbilityComboBox.SelectedItem.ToString()), Program.CcsFile.Character) + Constants.BaseDC).ToString();
+            this.AttackBonusTextBlock.Text = CharacterUtility.CalculateBonusFromAbility((Abilities)Enum.Parse(typeof(Abilities), this.AbilityComboBox.SelectedItem.ToString()), Program.CcsFile.Character).ToString();
+            this.SpellSaveTextBlock.Text = (CharacterUtility.CalculateBonusFromAbility((Abilities)Enum.Parse(typeof(Abilities), this.AbilityComboBox.SelectedItem.ToString()), Program.CcsFile.Character) + Constants.BaseDC).ToString();
             this.PreparedSpellsTextBlock.Text = Program.CcsFile.Character.Spells.Where(x => (x.Class?.Equals(this.ClassNameComboBox.SelectedItem.ToString()) ?? false) && x.Prepared).ToList().Count.ToString();
         }
 

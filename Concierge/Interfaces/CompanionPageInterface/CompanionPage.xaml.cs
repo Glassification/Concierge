@@ -19,7 +19,7 @@ namespace Concierge.Interfaces.CompanionPageInterface
     using Concierge.Interfaces.Enums;
     using Concierge.Interfaces.OverviewPageInterface;
     using Concierge.Services;
-    using Concierge.Utility;
+    using Concierge.Utility.Utilities;
 
     /// <summary>
     /// Interaction logic for ToolsPage.xaml.
@@ -75,28 +75,29 @@ namespace Concierge.Interfaces.CompanionPageInterface
         private void DrawSpentHitDice(TextBlock spentField, Grid spentBox, Border border, int spent, int total)
         {
             spentField.Text = spent.ToString();
-            spentField.Foreground = Utilities.SetUsedTextStyle(total, spent);
-            spentBox.Background = Utilities.SetUsedBoxStyle(total, spent);
-            Utilities.SetBorderColour(spent, total, spentBox, border, this.CurrentHitDiceBox);
+            spentField.Foreground = DisplayUtility.SetUsedTextStyle(total, spent);
+            spentBox.Background = DisplayUtility.SetUsedBoxStyle(total, spent);
+            DisplayUtility.SetBorderColour(spent, total, spentBox, border, this.CurrentHitDiceBox);
         }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822:Mark members as static", Justification = "Consistency.")]
         private void DrawTotalHitDice(TextBlock totalField, Grid totalBox, int spent, int total)
         {
             totalField.Text = total.ToString();
-            totalField.Foreground = Utilities.SetTotalTextStyle(total, spent);
-            totalBox.Background = Utilities.SetTotalBoxStyle(total, spent);
+            totalField.Foreground = DisplayUtility.SetTotalTextStyle(total, spent);
+            totalBox.Background = DisplayUtility.SetTotalBoxStyle(total, spent);
         }
 
         private void DrawAttributes()
         {
             var attributes = Program.CcsFile.Character.Companion.Attributes;
 
-            this.StrengthBonusField.Text = Utilities.CalculateBonus(attributes.Strength).ToString();
-            this.DexterityBonusField.Text = Utilities.CalculateBonus(attributes.Dexterity).ToString();
-            this.ConstitutionBonusField.Text = Utilities.CalculateBonus(attributes.Constitution).ToString();
-            this.IntelligenceBonusField.Text = Utilities.CalculateBonus(attributes.Intelligence).ToString();
-            this.WisdomBonusField.Text = Utilities.CalculateBonus(attributes.Wisdom).ToString();
-            this.CharismaBonusField.Text = Utilities.CalculateBonus(attributes.Charisma).ToString();
+            this.StrengthBonusField.Text = CharacterUtility.CalculateBonus(attributes.Strength).ToString();
+            this.DexterityBonusField.Text = CharacterUtility.CalculateBonus(attributes.Dexterity).ToString();
+            this.ConstitutionBonusField.Text = CharacterUtility.CalculateBonus(attributes.Constitution).ToString();
+            this.IntelligenceBonusField.Text = CharacterUtility.CalculateBonus(attributes.Intelligence).ToString();
+            this.WisdomBonusField.Text = CharacterUtility.CalculateBonus(attributes.Wisdom).ToString();
+            this.CharismaBonusField.Text = CharacterUtility.CalculateBonus(attributes.Charisma).ToString();
 
             this.StrengthScoreField.Text = attributes.Strength.ToString();
             this.DexterityScoreField.Text = attributes.Dexterity.ToString();
@@ -175,7 +176,7 @@ namespace Concierge.Interfaces.CompanionPageInterface
 
         private void WeaponDataGrid_Sorted(object sender, RoutedEventArgs e)
         {
-            Utilities.SortListFromDataGrid(this.WeaponDataGrid, Program.CcsFile.Character.Companion.Attacks, this.ConciergePage);
+            DisplayUtility.SortListFromDataGrid(this.WeaponDataGrid, Program.CcsFile.Character.Companion.Attacks, this.ConciergePage);
         }
 
         private void ButtonUp_Click(object sender, RoutedEventArgs e)
@@ -296,20 +297,20 @@ namespace Concierge.Interfaces.CompanionPageInterface
             switch ((sender as Grid).Name)
             {
                 case "D6SpentBox":
-                    hitDice.SpentD6 = Utilities.IncrementUsedSlots(hitDice.SpentD6, hitDice.TotalD6);
-                    Utilities.SetCursor(hitDice.SpentD6, hitDice.TotalD6, (x, y) => x == y, Cursors.Arrow);
+                    hitDice.SpentD6 = DisplayUtility.IncrementUsedSlots(hitDice.SpentD6, hitDice.TotalD6);
+                    DisplayUtility.SetCursor(hitDice.SpentD6, hitDice.TotalD6, (x, y) => x == y, Cursors.Arrow);
                     break;
                 case "D8SpentBox":
-                    hitDice.SpentD8 = Utilities.IncrementUsedSlots(hitDice.SpentD8, hitDice.TotalD8);
-                    Utilities.SetCursor(hitDice.SpentD8, hitDice.TotalD8, (x, y) => x == y, Cursors.Arrow);
+                    hitDice.SpentD8 = DisplayUtility.IncrementUsedSlots(hitDice.SpentD8, hitDice.TotalD8);
+                    DisplayUtility.SetCursor(hitDice.SpentD8, hitDice.TotalD8, (x, y) => x == y, Cursors.Arrow);
                     break;
                 case "D10SpentBox":
-                    hitDice.SpentD10 = Utilities.IncrementUsedSlots(hitDice.SpentD10, hitDice.TotalD10);
-                    Utilities.SetCursor(hitDice.SpentD10, hitDice.TotalD10, (x, y) => x == y, Cursors.Arrow);
+                    hitDice.SpentD10 = DisplayUtility.IncrementUsedSlots(hitDice.SpentD10, hitDice.TotalD10);
+                    DisplayUtility.SetCursor(hitDice.SpentD10, hitDice.TotalD10, (x, y) => x == y, Cursors.Arrow);
                     break;
                 case "D12SpentBox":
-                    hitDice.SpentD12 = Utilities.IncrementUsedSlots(hitDice.SpentD12, hitDice.TotalD12);
-                    Utilities.SetCursor(hitDice.SpentD12, hitDice.TotalD12, (x, y) => x == y, Cursors.Arrow);
+                    hitDice.SpentD12 = DisplayUtility.IncrementUsedSlots(hitDice.SpentD12, hitDice.TotalD12);
+                    DisplayUtility.SetCursor(hitDice.SpentD12, hitDice.TotalD12, (x, y) => x == y, Cursors.Arrow);
                     break;
             }
 
@@ -329,20 +330,20 @@ namespace Concierge.Interfaces.CompanionPageInterface
             switch (grid.Name)
             {
                 case "D6SpentBox":
-                    Utilities.SetCursor(hitDice.SpentD6, hitDice.TotalD6, (x, y) => x != y, Cursors.Hand);
-                    Utilities.SetBorderColour(hitDice.SpentD6, hitDice.TotalD6, grid, this.D6Border, this.CurrentHitDiceBox);
+                    DisplayUtility.SetCursor(hitDice.SpentD6, hitDice.TotalD6, (x, y) => x != y, Cursors.Hand);
+                    DisplayUtility.SetBorderColour(hitDice.SpentD6, hitDice.TotalD6, grid, this.D6Border, this.CurrentHitDiceBox);
                     break;
                 case "D8SpentBox":
-                    Utilities.SetCursor(hitDice.SpentD8, hitDice.TotalD8, (x, y) => x != y, Cursors.Hand);
-                    Utilities.SetBorderColour(hitDice.SpentD8, hitDice.TotalD8, grid, this.D8Border, this.CurrentHitDiceBox);
+                    DisplayUtility.SetCursor(hitDice.SpentD8, hitDice.TotalD8, (x, y) => x != y, Cursors.Hand);
+                    DisplayUtility.SetBorderColour(hitDice.SpentD8, hitDice.TotalD8, grid, this.D8Border, this.CurrentHitDiceBox);
                     break;
                 case "D10SpentBox":
-                    Utilities.SetCursor(hitDice.SpentD10, hitDice.TotalD10, (x, y) => x != y, Cursors.Hand);
-                    Utilities.SetBorderColour(hitDice.SpentD10, hitDice.TotalD10, grid, this.D10Border, this.CurrentHitDiceBox);
+                    DisplayUtility.SetCursor(hitDice.SpentD10, hitDice.TotalD10, (x, y) => x != y, Cursors.Hand);
+                    DisplayUtility.SetBorderColour(hitDice.SpentD10, hitDice.TotalD10, grid, this.D10Border, this.CurrentHitDiceBox);
                     break;
                 case "D12SpentBox":
-                    Utilities.SetCursor(hitDice.SpentD12, hitDice.TotalD12, (x, y) => x != y, Cursors.Hand);
-                    Utilities.SetBorderColour(hitDice.SpentD12, hitDice.TotalD12, grid, this.D12Border, this.CurrentHitDiceBox);
+                    DisplayUtility.SetCursor(hitDice.SpentD12, hitDice.TotalD12, (x, y) => x != y, Cursors.Hand);
+                    DisplayUtility.SetBorderColour(hitDice.SpentD12, hitDice.TotalD12, grid, this.D12Border, this.CurrentHitDiceBox);
                     break;
             }
         }

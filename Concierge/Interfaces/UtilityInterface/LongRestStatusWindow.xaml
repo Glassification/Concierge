@@ -5,6 +5,7 @@
     xmlns:components="clr-namespace:Concierge.Interfaces.Components"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     Title="LongRestStatusWindow"
+    ShowInTaskbar="False"
     Height="80"
     Width="250"
     WindowStartupLocation="CenterOwner"

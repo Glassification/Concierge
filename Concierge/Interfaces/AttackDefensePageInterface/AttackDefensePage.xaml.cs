@@ -16,7 +16,7 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
     using Concierge.Interfaces.Components;
     using Concierge.Interfaces.Enums;
     using Concierge.Services;
-    using Concierge.Utility;
+    using Concierge.Utility.Utilities;
 
     /// <summary>
     /// Interaction logic for EquipmentPage.xaml.
@@ -273,12 +273,12 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
 
         private void WeaponDataGrid_Sorted(object sender, RoutedEventArgs e)
         {
-            Utilities.SortListFromDataGrid(this.WeaponDataGrid, Program.CcsFile.Character.Weapons, this.ConciergePage);
+            DisplayUtility.SortListFromDataGrid(this.WeaponDataGrid, Program.CcsFile.Character.Weapons, this.ConciergePage);
         }
 
         private void AmmoDataGrid_Sorted(object sender, RoutedEventArgs e)
         {
-            Utilities.SortListFromDataGrid(this.AmmoDataGrid, Program.CcsFile.Character.Ammunitions, this.ConciergePage);
+            DisplayUtility.SortListFromDataGrid(this.AmmoDataGrid, Program.CcsFile.Character.Ammunitions, this.ConciergePage);
         }
 
         private void Window_ApplyChanges(object sender, EventArgs e)
@@ -353,7 +353,7 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
 
         private void StatusEffectsDataGrid_Sorted(object sender, RoutedEventArgs e)
         {
-            Utilities.SortListFromDataGrid(this.StatusEffectsDataGrid, Program.CcsFile.Character.StatusEffects, this.ConciergePage);
+            DisplayUtility.SortListFromDataGrid(this.StatusEffectsDataGrid, Program.CcsFile.Character.StatusEffects, this.ConciergePage);
         }
     }
 }

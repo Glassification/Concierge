@@ -13,8 +13,8 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
     using Concierge.Interfaces.Components;
     using Concierge.Interfaces.Enums;
     using Concierge.Services;
-    using Concierge.Utility;
     using Concierge.Utility.Extensions;
+    using Concierge.Utility.Utilities;
 
     /// <summary>
     /// Interaction logic for ModifyCharacterImageWindow.xaml.
@@ -28,7 +28,7 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
             this.InitializeComponent();
 
             this.fileAccessService = new FileAccessService();
-            this.FillTypeComboBox.ItemsSource = Utilities.FormatEnumForDisplay(typeof(Stretch));
+            this.FillTypeComboBox.ItemsSource = StringUtility.FormatEnumForDisplay(typeof(Stretch));
             this.ConciergePage = ConciergePage.None;
         }
 

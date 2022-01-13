@@ -9,6 +9,7 @@ namespace Concierge.Character.Items
     using Concierge.Character.Enums;
     using Concierge.Primitives;
     using Concierge.Utility;
+    using Concierge.Utility.Utilities;
     using Newtonsoft.Json;
 
     public class Weapon : ICopyable<Weapon>
@@ -35,12 +36,12 @@ namespace Concierge.Character.Items
 
                 return this.Ability switch
                 {
-                    Abilities.STR => Utilities.CalculateBonus(Program.CcsFile.Character.Attributes.Strength) + bonus,
-                    Abilities.DEX => Utilities.CalculateBonus(Program.CcsFile.Character.Attributes.Dexterity) + bonus,
-                    Abilities.CON => Utilities.CalculateBonus(Program.CcsFile.Character.Attributes.Constitution) + bonus,
-                    Abilities.INT => Utilities.CalculateBonus(Program.CcsFile.Character.Attributes.Intelligence) + bonus,
-                    Abilities.WIS => Utilities.CalculateBonus(Program.CcsFile.Character.Attributes.Wisdom) + bonus,
-                    Abilities.CHA => Utilities.CalculateBonus(Program.CcsFile.Character.Attributes.Charisma) + bonus,
+                    Abilities.STR => CharacterUtility.CalculateBonus(Program.CcsFile.Character.Attributes.Strength) + bonus,
+                    Abilities.DEX => CharacterUtility.CalculateBonus(Program.CcsFile.Character.Attributes.Dexterity) + bonus,
+                    Abilities.CON => CharacterUtility.CalculateBonus(Program.CcsFile.Character.Attributes.Constitution) + bonus,
+                    Abilities.INT => CharacterUtility.CalculateBonus(Program.CcsFile.Character.Attributes.Intelligence) + bonus,
+                    Abilities.WIS => CharacterUtility.CalculateBonus(Program.CcsFile.Character.Attributes.Wisdom) + bonus,
+                    Abilities.CHA => CharacterUtility.CalculateBonus(Program.CcsFile.Character.Attributes.Charisma) + bonus,
                     Abilities.NONE => bonus,
                     _ => throw new NotImplementedException(),
                 };
