@@ -8,7 +8,6 @@ namespace Concierge.Interfaces.UtilityInterface
 
     using Concierge.Interfaces.Components;
     using Concierge.Utility;
-    using Concierge.Utility.Extensions;
 
     /// <summary>
     /// Interaction logic for AboutConciergeWindow.xaml.
@@ -20,7 +19,6 @@ namespace Concierge.Interfaces.UtilityInterface
         public AboutConciergeWindow()
         {
             this.InitializeComponent();
-            this.BannerImage.LoadFromByteArray(Properties.Resources.AboutBanner);
         }
 
         public override void ShowWindow()
