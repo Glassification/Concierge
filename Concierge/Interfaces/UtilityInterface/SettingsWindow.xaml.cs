@@ -46,17 +46,17 @@ namespace Concierge.Interfaces.UtilityInterface
             this.CheckVersionCheckBox.UpdatingValue();
             this.CenterWindowsCheckBox.UpdatingValue();
 
-            this.AutosaveCheckBox.IsChecked = AppSettingsManager.Settings.AutosaveEnabled;
-            this.AutosaveInterval.Value = AppSettingsManager.Settings.AutosaveInterval;
-            this.CoinWeightCheckBox.IsChecked = AppSettingsManager.Settings.UseCoinWeight;
-            this.EncumbranceCheckBox.IsChecked = AppSettingsManager.Settings.UseEncumbrance;
+            this.AutosaveCheckBox.IsChecked = AppSettingsManager.UserSettings.AutosaveEnabled;
+            this.AutosaveInterval.Value = AppSettingsManager.UserSettings.AutosaveInterval;
+            this.CoinWeightCheckBox.IsChecked = AppSettingsManager.UserSettings.UseCoinWeight;
+            this.EncumbranceCheckBox.IsChecked = AppSettingsManager.UserSettings.UseEncumbrance;
             this.IntervalTextBox.Text = this.FormattedInterval;
-            this.MuteCheckBox.IsChecked = AppSettingsManager.Settings.MuteSounds;
-            this.CheckVersionCheckBox.IsChecked = AppSettingsManager.Settings.CheckVersion;
-            this.UnitOfMeasurementComboBox.Text = AppSettingsManager.Settings.UnitOfMeasurement.ToString();
-            this.CenterWindowsCheckBox.IsChecked = AppSettingsManager.Settings.AttemptToCenterWindows;
+            this.MuteCheckBox.IsChecked = AppSettingsManager.UserSettings.MuteSounds;
+            this.CheckVersionCheckBox.IsChecked = AppSettingsManager.UserSettings.CheckVersion;
+            this.UnitOfMeasurementComboBox.Text = AppSettingsManager.UserSettings.UnitOfMeasurement.ToString();
+            this.CenterWindowsCheckBox.IsChecked = AppSettingsManager.UserSettings.AttemptToCenterWindows;
 
-            if (AppSettingsManager.Settings.AutosaveEnabled)
+            if (AppSettingsManager.UserSettings.AutosaveEnabled)
             {
                 this.EnableAutosaveControls();
             }
@@ -86,8 +86,8 @@ namespace Concierge.Interfaces.UtilityInterface
                 return false;
             }
 
-            var oldSettings = AppSettingsManager.ToSettingsDto();
-            var conciergeSettings = new SettingsDto()
+            var oldSettings = AppSettingsManager.ToUserSettingsDto();
+            var conciergeSettings = new UserSettingsDto()
             {
                 AttemptToCenterWindows = this.CenterWindowsCheckBox.IsChecked ?? false,
                 AutosaveEnabled = this.AutosaveCheckBox.IsChecked ?? false,

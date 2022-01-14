@@ -25,7 +25,7 @@ namespace Concierge.Persistence.ReadWriters
 
                 ccsFile.AbsolutePath = file;
 
-                if (AppSettingsManager.Settings.CheckVersion && !CheckVersion(ccsFile.Version))
+                if (AppSettingsManager.UserSettings.CheckVersion && !CheckVersion(ccsFile.Version))
                 {
                     return new CcsFile();
                 }

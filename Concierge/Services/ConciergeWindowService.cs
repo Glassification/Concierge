@@ -41,22 +41,22 @@ namespace Concierge.Services
             conciergeWindow.ShowEdit<T>(item, equippedItem);
         }
 
-        public static void ShowHeal<T>(T item, Type typeOfWindow, ApplyChangesEventHandler applyEvent, ConciergePage conciergePage)
+        public static ConciergeWindowResult ShowHeal<T>(T item, Type typeOfWindow, ApplyChangesEventHandler applyEvent, ConciergePage conciergePage)
         {
             var conciergeWindow = (ConciergeWindow)Activator.CreateInstance(typeOfWindow);
             conciergeWindow.ApplyChanges += applyEvent;
             conciergeWindow.ConciergePage = conciergePage;
 
-            conciergeWindow.ShowHeal<T>(item);
+            return conciergeWindow.ShowHeal<T>(item);
         }
 
-        public static void ShowDamage<T>(T item, Type typeOfWindow, ApplyChangesEventHandler applyEvent, ConciergePage conciergePage)
+        public static ConciergeWindowResult ShowDamage<T>(T item, Type typeOfWindow, ApplyChangesEventHandler applyEvent, ConciergePage conciergePage)
         {
             var conciergeWindow = (ConciergeWindow)Activator.CreateInstance(typeOfWindow);
             conciergeWindow.ApplyChanges += applyEvent;
             conciergeWindow.ConciergePage = conciergePage;
 
-            conciergeWindow.ShowDamage<T>(item);
+            return conciergeWindow.ShowDamage<T>(item);
         }
 
         public static PopupButtons ShowPopup(Type typeOfWindow)

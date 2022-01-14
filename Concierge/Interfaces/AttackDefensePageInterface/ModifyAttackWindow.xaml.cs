@@ -164,7 +164,7 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
                 Misc = this.MiscDamageTextBox.Text,
                 DamageType = (DamageTypes)Enum.Parse(typeof(DamageTypes), this.DamageTypeComboBox.Text),
                 Range = this.RangeTextBox.Text,
-                Weight = new UnitDouble(this.WeightUpDown.Value ?? 0.0, AppSettingsManager.Settings.UnitOfMeasurement, Measurements.Weight),
+                Weight = new UnitDouble(this.WeightUpDown.Value ?? 0.0, AppSettingsManager.UserSettings.UnitOfMeasurement, Measurements.Weight),
                 ProficiencyOverride = this.ProficencyOverrideCheckBox.IsChecked ?? false,
                 IsInBagOfHolding = this.BagOfHoldingCheckBox.IsChecked ?? false,
                 Note = this.NotesTextBox.Text,

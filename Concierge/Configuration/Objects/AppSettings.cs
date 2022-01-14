@@ -12,8 +12,10 @@ namespace Concierge.Configuration.Objects
         {
         }
 
-        public Settings Settings { get; set; }
-
         public Dictionary<string, string> CustomColors { get; set; }
+
+        public StartUp StartUp { get; set; }
+
+        public UserSettings UserSettings { get; set; }
     }
 }

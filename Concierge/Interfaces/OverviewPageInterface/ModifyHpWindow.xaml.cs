@@ -32,7 +32,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
 
         private bool IsHealing { get; set; }
 
-        public override void ShowHeal<T>(T vitality)
+        public override ConciergeWindowResult ShowHeal<T>(T vitality)
         {
             var castItem = vitality as Vitality;
             this.IsHealing = true;
@@ -49,9 +49,11 @@ namespace Concierge.Interfaces.OverviewPageInterface
                 Program.UndoRedoService.AddCommand(new EditCommand<Health>(castItem.Health, oldItem, this.ConciergePage));
                 Program.Modify();
             }
+
+            return this.Result;
         }
 
-        public override void ShowDamage<T>(T vitality)
+        public override ConciergeWindowResult ShowDamage<T>(T vitality)
         {
             var castItem = vitality as Vitality;
             this.IsHealing = false;
@@ -68,6 +70,8 @@ namespace Concierge.Interfaces.OverviewPageInterface
                 Program.UndoRedoService.AddCommand(new EditCommand<Health>(castItem.Health, oldItem, this.ConciergePage));
                 Program.Modify();
             }
+
+            return this.Result;
         }
 
         private void SetPreviousValue()

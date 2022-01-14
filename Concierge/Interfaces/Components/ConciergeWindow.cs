@@ -91,14 +91,16 @@ namespace Concierge.Interfaces.Components
             return ConciergeWindowResult.NoResult;
         }
 
-        public virtual void ShowHeal<T>(T item)
+        public virtual ConciergeWindowResult ShowHeal<T>(T item)
         {
             Program.Logger.Error($"No implemented ShowHeal method for {item}.");
+            return ConciergeWindowResult.NoResult;
         }
 
-        public virtual void ShowDamage<T>(T item)
+        public virtual ConciergeWindowResult ShowDamage<T>(T item)
         {
             Program.Logger.Error($"No implemented ShowDamage method for {item}.");
+            return ConciergeWindowResult.NoResult;
         }
 
         public virtual PopupButtons ShowPopup()
@@ -135,7 +137,7 @@ namespace Concierge.Interfaces.Components
 
         private void SetOpenLocation()
         {
-            if (!AppSettingsManager.Settings.AttemptToCenterWindows)
+            if (!AppSettingsManager.UserSettings.AttemptToCenterWindows)
             {
                 return;
             }

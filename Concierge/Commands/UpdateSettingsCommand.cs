@@ -10,10 +10,10 @@ namespace Concierge.Commands
 
     public class UpdateSettingsCommand : Command
     {
-        private readonly SettingsDto oldSettingsDto;
-        private readonly SettingsDto newSettingsDto;
+        private readonly UserSettingsDto oldSettingsDto;
+        private readonly UserSettingsDto newSettingsDto;
 
-        public UpdateSettingsCommand(SettingsDto oldSettingsDto, SettingsDto newSettingsDto)
+        public UpdateSettingsCommand(UserSettingsDto oldSettingsDto, UserSettingsDto newSettingsDto)
         {
             this.ConciergePage = ConciergePage.None;
             this.oldSettingsDto = oldSettingsDto;

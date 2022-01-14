@@ -17,7 +17,7 @@ namespace Concierge.Interfaces.UtilityInterface
     /// </summary>
     public partial class SplashScreenWindow : Window
     {
-        private const int DisplayTime = 16;
+        private const int DisplayTime = 20;
         private const int MinHoldTime = 110;
         private const int MaxHoldTime = 190;
 

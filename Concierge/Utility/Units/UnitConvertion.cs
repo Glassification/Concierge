@@ -54,7 +54,7 @@ namespace Concierge.Utility.Units
 
         private static double GetStrengthMultiplier(int baseStrength)
         {
-            return AppSettingsManager.Settings.UnitOfMeasurement switch
+            return AppSettingsManager.UserSettings.UnitOfMeasurement switch
             {
                 UnitTypes.Imperial => baseStrength,
                 UnitTypes.Metric => (baseStrength / 2) + (baseStrength * 0.05),

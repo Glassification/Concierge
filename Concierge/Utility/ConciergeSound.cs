@@ -46,7 +46,7 @@ namespace Concierge.Utility
 
         public static void TapNavigation()
         {
-            if (AppSettingsManager.Settings.MuteSounds || SkipClick)
+            if (AppSettingsManager.UserSettings.MuteSounds || SkipClick)
             {
                 return;
             }
@@ -56,7 +56,7 @@ namespace Concierge.Utility
 
         public static void UpdateValue()
         {
-            if (AppSettingsManager.Settings.MuteSounds)
+            if (AppSettingsManager.UserSettings.MuteSounds)
             {
                 return;
             }
@@ -66,7 +66,7 @@ namespace Concierge.Utility
 
         public static void Warning()
         {
-            if (AppSettingsManager.Settings.MuteSounds)
+            if (AppSettingsManager.UserSettings.MuteSounds)
             {
                 return;
             }

@@ -116,10 +116,10 @@ namespace Concierge.Interfaces.DetailsPageInterface
         {
             var character = Program.CcsFile.Character;
 
-            this.WeightCarriedField.Text = UnitFormat.FormatWeight(AppSettingsManager.Settings.UnitOfMeasurement, character.CarryWeight);
-            this.LightWeightField.Text = UnitFormat.FormatWeight(AppSettingsManager.Settings.UnitOfMeasurement, character.LightCarryCapacity, true);
-            this.MediumWeightField.Text = UnitFormat.FormatWeight(AppSettingsManager.Settings.UnitOfMeasurement, character.MediumCarryCapacity, true);
-            this.HeavyWeightField.Text = UnitFormat.FormatWeight(AppSettingsManager.Settings.UnitOfMeasurement, character.HeavyCarryCapacity, true);
+            this.WeightCarriedField.Text = UnitFormat.FormatWeight(AppSettingsManager.UserSettings.UnitOfMeasurement, character.CarryWeight);
+            this.LightWeightField.Text = UnitFormat.FormatWeight(AppSettingsManager.UserSettings.UnitOfMeasurement, character.LightCarryCapacity, true);
+            this.MediumWeightField.Text = UnitFormat.FormatWeight(AppSettingsManager.UserSettings.UnitOfMeasurement, character.MediumCarryCapacity, true);
+            this.HeavyWeightField.Text = UnitFormat.FormatWeight(AppSettingsManager.UserSettings.UnitOfMeasurement, character.HeavyCarryCapacity, true);
 
             this.FormatCarryWeight();
         }
@@ -382,7 +382,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
         {
             var added = ConciergeWindowService.ShowAdd<List<ClassResource>>(
                 Program.CcsFile.Character.ClassResources,
-                typeof(ModifyLanguagesWindow),
+                typeof(ModifyClassResourceWindow),
                 this.Window_ApplyChanges,
                 ConciergePage.Details);
             this.DrawResources();

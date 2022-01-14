@@ -6,7 +6,6 @@ namespace Concierge.Interfaces.NotesPageInterface
 {
     using System;
     using System.Collections.Generic;
-    using System.DirectoryServices;
     using System.IO;
     using System.Linq;
     using System.Text;
@@ -35,6 +34,8 @@ namespace Concierge.Interfaces.NotesPageInterface
     {
         private const int MaxUndoQueue = 10;
 
+        private Document selectedDocument;
+
         public NotesPage()
         {
             this.InitializeComponent();
@@ -46,9 +47,22 @@ namespace Concierge.Interfaces.NotesPageInterface
 
             this.NotesTextBox.FontSize = 20;
             this.NotesTextBox.Foreground = Brushes.White;
+            this.NotesTextBox.IsEnabled = false;
         }
 
-        public Document SelectedDocument { get; set; }
+        public Document SelectedDocument
+        {
+            get
+            {
+                return this.selectedDocument;
+            }
+
+            set
+            {
+                this.selectedDocument = value;
+                this.NotesTextBox.IsEnabled = value != null;
+            }
+        }
 
         public ConciergePage ConciergePage => ConciergePage.Notes;
 
@@ -181,6 +195,19 @@ namespace Concierge.Interfaces.NotesPageInterface
                     this.NotesTextBox.IsUndoEnabled = true;
                     this.SelectedDocument = treeViewItem.Document;
                     this.LoadCurrentDocument(this.SelectedDocument.RTF);
+                    this.ResetUndoQueue();
+                }
+                else if (this.NotesTreeView?.SelectedItem is ChapterTreeViewItem)
+                {
+                    if (this.SelectedDocument != null)
+                    {
+                        this.SaveTextBox();
+                    }
+
+                    this.NotesTextBox.IsUndoEnabled = false;
+                    this.NotesTextBox.IsUndoEnabled = true;
+                    this.SelectedDocument = null;
+                    this.ClearTextBox();
                     this.ResetUndoQueue();
                 }
 

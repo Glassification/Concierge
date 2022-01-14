@@ -109,9 +109,9 @@ namespace Concierge.Character
                 weight += this.Armor.Weight.Value;
                 weight += this.Armor.ShieldWeight.Value;
 
-                if (AppSettingsManager.Settings.UseCoinWeight)
+                if (AppSettingsManager.UserSettings.UseCoinWeight)
                 {
-                    weight += UnitConvertion.Weight(AppSettingsManager.Settings.UnitOfMeasurement, this.Wealth.TotalCoins / Constants.CoinGroup);
+                    weight += UnitConvertion.Weight(AppSettingsManager.UserSettings.UnitOfMeasurement, this.Wealth.TotalCoins / Constants.CoinGroup);
                 }
 
                 weight += this.EquippedItems.Weight;

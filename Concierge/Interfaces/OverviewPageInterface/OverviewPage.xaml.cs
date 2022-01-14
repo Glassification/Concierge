@@ -600,18 +600,16 @@ namespace Concierge.Interfaces.OverviewPageInterface
 
         private void TakeDamageButton_Click(object sender, RoutedEventArgs e)
         {
-            var character = Program.CcsFile.Character;
-
-            ConciergeWindowService.ShowDamage<Vitality>(
+            var result = ConciergeWindowService.ShowDamage<Vitality>(
                 Program.CcsFile.Character.Vitality,
                 typeof(ModifyHpWindow),
                 this.Window_ApplyChanges,
                 ConciergePage.Overview);
             this.DrawHealth();
 
-            if (character.Vitality.IsDead)
+            if (Program.CcsFile.Character.Vitality.IsDead && result == ConciergeWindowResult.OK)
             {
-                DisplayCharacterDeathWindow(character);
+                DisplayCharacterDeathWindow(Program.CcsFile.Character);
             }
         }
 

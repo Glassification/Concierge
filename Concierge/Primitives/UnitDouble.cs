@@ -63,7 +63,7 @@ namespace Concierge.Primitives
 
         private void ConciergeDouble_UnitsChanged(object sender, EventArgs e)
         {
-            var conciergeSettings = sender as SettingsDto;
+            var conciergeSettings = sender as UserSettingsDto;
 
             this.Value = this.UnitType != conciergeSettings.UnitOfMeasurement
                     ? UnitConvertion.Convert(this.Measurement, conciergeSettings.UnitOfMeasurement, this.Value)

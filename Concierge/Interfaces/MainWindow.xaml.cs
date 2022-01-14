@@ -78,9 +78,9 @@ namespace Concierge.Interfaces
 
             this.DataContext = this;
 
-            if (AppSettingsManager.Settings.AutosaveEnabled)
+            if (AppSettingsManager.UserSettings.AutosaveEnabled)
             {
-                this.autosaveTimer.Start(Constants.AutosaveIntervals[AppSettingsManager.Settings.AutosaveInterval]);
+                this.autosaveTimer.Start(Constants.AutosaveIntervals[AppSettingsManager.UserSettings.AutosaveInterval]);
             }
 
             this.commandLineService.ReadCommandLineArgs();
@@ -199,9 +199,9 @@ namespace Concierge.Interfaces
 
             Program.CcsFile = ccsFile;
             Program.Unmodify();
-            if (AppSettingsManager.Settings.AutosaveEnabled)
+            if (AppSettingsManager.UserSettings.AutosaveEnabled)
             {
-                this.autosaveTimer.Start(Constants.AutosaveIntervals[AppSettingsManager.Settings.AutosaveInterval]);
+                this.autosaveTimer.Start(Constants.AutosaveIntervals[AppSettingsManager.UserSettings.AutosaveInterval]);
             }
 
             this.DrawAll();
@@ -287,9 +287,9 @@ namespace Concierge.Interfaces
 
         public void StartStopAutosaveTimer()
         {
-            if (AppSettingsManager.Settings.AutosaveEnabled)
+            if (AppSettingsManager.UserSettings.AutosaveEnabled)
             {
-                this.autosaveTimer.Start(Constants.AutosaveIntervals[AppSettingsManager.Settings.AutosaveInterval]);
+                this.autosaveTimer.Start(Constants.AutosaveIntervals[AppSettingsManager.UserSettings.AutosaveInterval]);
             }
             else
             {

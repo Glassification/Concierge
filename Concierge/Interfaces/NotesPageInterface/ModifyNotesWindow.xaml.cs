@@ -5,9 +5,8 @@
 namespace Concierge.Interfaces.NotesPageInterface
 {
     using System;
-    using System.ComponentModel;
     using System.Windows;
-    using System.Windows.Input;
+    using System.Windows.Controls;
 
     using Concierge.Character.Notes;
     using Concierge.Commands;
@@ -36,7 +35,8 @@ namespace Concierge.Interfaces.NotesPageInterface
 
         public override bool ShowAdd<T>(T item)
         {
-            this.HeaderTextBlock.Text = "Add Note";
+            this.HeaderTextBlock.Text = "Add Chapter/Page";
+            this.ChapterComboBox.SelectedIndex = 0;
 
             this.SetupWindow(false);
             this.ShowConciergeWindow();
@@ -65,6 +65,7 @@ namespace Concierge.Interfaces.NotesPageInterface
             this.DocumentTextBox.Text = chapter.Name;
             this.CurrentChapter = chapter;
             this.CurrentDocument = null;
+            this.NameTextBlock.Text = "Chapter Name:";
 
             this.ShowConciergeWindow();
         }
@@ -78,6 +79,7 @@ namespace Concierge.Interfaces.NotesPageInterface
             this.DocumentTextBox.Text = document.Name;
             this.CurrentChapter = null;
             this.CurrentDocument = document;
+            this.NameTextBlock.Text = "Page Name:";
 
             this.ShowConciergeWindow();
         }
@@ -202,6 +204,12 @@ namespace Concierge.Interfaces.NotesPageInterface
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
             this.HideConciergeWindow();
+        }
+
+        private void ChapterComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var chapter = this.ChapterComboBox.SelectedItem as Chapter;
+            this.NameTextBlock.Text = (chapter?.IsNewChapterPlaceholder ?? true) ? "Chapter Name:" : "Page Name:";
         }
     }
 }

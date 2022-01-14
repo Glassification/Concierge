@@ -17,12 +17,12 @@ namespace Concierge.Character.Characteristics
 
         public Attributes()
         {
-            this.strength = 0;
-            this.dexterity = 0;
-            this.constitution = 0;
-            this.intelligence = 0;
-            this.wisdom = 0;
-            this.charisma = 0;
+            this.strength = 10;
+            this.dexterity = 10;
+            this.constitution = 10;
+            this.intelligence = 10;
+            this.wisdom = 10;
+            this.charisma = 10;
         }
 
         public int Strength

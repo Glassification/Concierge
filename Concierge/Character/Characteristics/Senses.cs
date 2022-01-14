@@ -14,7 +14,7 @@ namespace Concierge.Character.Characteristics
         {
             this.InitiativeBonus = 0;
             this.PerceptionBonus = 0;
-            this.BaseMovement = 0;
+            this.BaseMovement = 30;
             this.Vision = VisionTypes.Normal;
         }
 

@@ -6,6 +6,7 @@ namespace Concierge
 {
     using System.Windows;
 
+    using Concierge.Configuration;
     using Concierge.Exceptions.Enums;
     using Concierge.Interfaces;
     using Concierge.Interfaces.UtilityInterface;
@@ -28,11 +29,12 @@ namespace Concierge
 
         private void Application_Startup(object sender, StartupEventArgs e)
         {
-            var splashScreen = new SplashScreenWindow();
-            var mainWindow = new MainWindow();
+            if (AppSettingsManager.StartUp.ShowSplashScreen)
+            {
+                new SplashScreenWindow().ShowWindow();
+            }
 
-            splashScreen.ShowWindow();
-            mainWindow.Show();
+            new MainWindow().Show();
         }
     }
 }

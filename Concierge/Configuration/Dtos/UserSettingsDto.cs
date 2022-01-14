@@ -1,4 +1,4 @@
-﻿// <copyright file="SettingsDto.cs" company="Thomas Beckett">
+﻿// <copyright file="UserSettingsDto.cs" company="Thomas Beckett">
 // Copyright (c) Thomas Beckett. All rights reserved.
 // </copyright>
 
@@ -6,9 +6,9 @@ namespace Concierge.Configuration.Dtos
 {
     using Concierge.Utility.Units.Enums;
 
-    public class SettingsDto
+    public class UserSettingsDto
     {
-        public SettingsDto()
+        public UserSettingsDto()
         {
         }
 
@@ -30,12 +30,12 @@ namespace Concierge.Configuration.Dtos
 
         public override bool Equals(object obj)
         {
-            if (obj is not SettingsDto)
+            if (obj is not UserSettingsDto)
             {
                 return false;
             }
 
-            var settings = obj as SettingsDto;
+            var settings = obj as UserSettingsDto;
 
             return
                 settings.AutosaveInterval == this.AutosaveInterval &&

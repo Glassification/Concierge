@@ -21,14 +21,15 @@
 
         <!--Header-->
         <Grid Grid.Row="0">
-            <TextBlock Text="Add Note"
-                       x:Name="HeaderTextBlock"
-                       Foreground="#227EA9"
-                       FontSize="27"
-                       HorizontalAlignment="Left"
-                       VerticalAlignment="Center"
-                       Margin="30, 0, 0, 0"
-                       FontWeight="Bold"/>
+            <TextBlock 
+                Text="Add Chapter/Document"
+                x:Name="HeaderTextBlock"
+                Foreground="#227EA9"
+                FontSize="27"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                Margin="30, 0, 0, 0"
+                FontWeight="Bold"/>
             <components:ConciergeDesignButton 
                 Style="{StaticResource ConciergeDesignButtonStyle}" 
                 x:Name="CloseButton"
@@ -72,7 +73,9 @@
                 <Grid Grid.Column="1">
                     <components:ConciergeComboBox
                         Style="{StaticResource ComboBoxStyle}"
-                        x:Name="ChapterComboBox"/>
+                        x:Name="ChapterComboBox"
+                        IsReadOnly="True"
+                        SelectionChanged="ChapterComboBox_SelectionChanged"/>
                 </Grid>
             </Grid>
 
@@ -84,12 +87,14 @@
 
                 <!--Title-->
                 <Grid Grid.Column="0">
-                    <TextBlock Text="Name:"
-                               Foreground="White"
-                               FontSize="20"
-                               HorizontalAlignment="Left"
-                               VerticalAlignment="Top"
-                               Margin="10, 20, 0, 0"/>
+                    <TextBlock 
+                        Text="Name:"
+                        x:Name="NameTextBlock"
+                        Foreground="White"
+                        FontSize="20"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        Margin="10, 20, 0, 0"/>
                 </Grid>
 
                 <!--Value-->

@@ -67,7 +67,7 @@ namespace Concierge.Character.Statuses
                     str = "Encumbered";
                 }
 
-                if (AppSettingsManager.Settings.UseEncumbrance)
+                if (AppSettingsManager.UserSettings.UseEncumbrance)
                 {
                     if (Program.CcsFile.Character.CarryWeight > Program.CcsFile.Character.LightCarryCapacity && Program.CcsFile.Character.CarryWeight <= Program.CcsFile.Character.MediumCarryCapacity)
                     {

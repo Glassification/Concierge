@@ -13,16 +13,16 @@ namespace Concierge.Utility.Units
 
     public static class UnitFormat
     {
-        public static string HeightPostfix => AppSettingsManager.Settings.UnitOfMeasurement == UnitTypes.Imperial ? "Feet/Inches" : "Centimetres";
+        public static string HeightPostfix => AppSettingsManager.UserSettings.UnitOfMeasurement == UnitTypes.Imperial ? "Feet/Inches" : "Centimetres";
 
-        public static string WeightPostfix => AppSettingsManager.Settings.UnitOfMeasurement == UnitTypes.Imperial ? "Pounds" : "Kilograms";
+        public static string WeightPostfix => AppSettingsManager.UserSettings.UnitOfMeasurement == UnitTypes.Imperial ? "Pounds" : "Kilograms";
 
         public static string ToString(UnitDouble value)
         {
             return value.Measurement switch
             {
-                Measurements.Height => FormatHeight(AppSettingsManager.Settings.UnitOfMeasurement, value.Value),
-                Measurements.Weight => FormatWeight(AppSettingsManager.Settings.UnitOfMeasurement, value.Value),
+                Measurements.Height => FormatHeight(AppSettingsManager.UserSettings.UnitOfMeasurement, value.Value),
+                Measurements.Weight => FormatWeight(AppSettingsManager.UserSettings.UnitOfMeasurement, value.Value),
                 _ => value.Value.ToString(),
             };
         }

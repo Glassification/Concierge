@@ -24,36 +24,41 @@ namespace Concierge.Configuration
                 .AddJsonFile("appsettings.json")
                 .Build();
 
-            section = config.GetSection(nameof(Settings));
-            Settings = section.Get<Settings>();
-
             section = config.GetSection(nameof(CustomColors));
             CustomColors = section.Get<Dictionary<string, string>>();
+
+            section = config.GetSection(nameof(StartUp));
+            StartUp = section.Get<StartUp>();
+
+            section = config.GetSection(nameof(UserSettings));
+            UserSettings = section.Get<UserSettings>();
         }
 
         public delegate void UnitsChangedEventHandler(object sender, EventArgs e);
 
         public static event UnitsChangedEventHandler UnitsChanged;
 
-        public static Settings Settings { get; private set; }
-
         public static Dictionary<string, string> CustomColors { get; private set; }
 
-        public static void UpdateSettings(SettingsDto settingsDto)
+        public static StartUp StartUp { get; private set; }
+
+        public static UserSettings UserSettings { get; private set; }
+
+        public static void UpdateSettings(UserSettingsDto userSettingsDto)
         {
-            if (Settings.UnitOfMeasurement != settingsDto.UnitOfMeasurement)
+            if (UserSettings.UnitOfMeasurement != userSettingsDto.UnitOfMeasurement)
             {
-                RefreshUnits(settingsDto);
+                RefreshUnits(userSettingsDto);
             }
 
-            Settings.AutosaveEnabled = settingsDto.AutosaveEnabled;
-            Settings.AutosaveInterval = settingsDto.AutosaveInterval;
-            Settings.CheckVersion = settingsDto.CheckVersion;
-            Settings.MuteSounds = settingsDto.MuteSounds;
-            Settings.UseCoinWeight = settingsDto.UseCoinWeight;
-            Settings.UseEncumbrance = settingsDto.UseEncumbrance;
-            Settings.UnitOfMeasurement = settingsDto.UnitOfMeasurement;
-            Settings.AttemptToCenterWindows = settingsDto.AttemptToCenterWindows;
+            UserSettings.AutosaveEnabled = userSettingsDto.AutosaveEnabled;
+            UserSettings.AutosaveInterval = userSettingsDto.AutosaveInterval;
+            UserSettings.CheckVersion = userSettingsDto.CheckVersion;
+            UserSettings.MuteSounds = userSettingsDto.MuteSounds;
+            UserSettings.UseCoinWeight = userSettingsDto.UseCoinWeight;
+            UserSettings.UseEncumbrance = userSettingsDto.UseEncumbrance;
+            UserSettings.UnitOfMeasurement = userSettingsDto.UnitOfMeasurement;
+            UserSettings.AttemptToCenterWindows = userSettingsDto.AttemptToCenterWindows;
 
             if (Program.IsDebug)
             {
@@ -62,8 +67,9 @@ namespace Concierge.Configuration
 
             var appSettings = new AppSettings()
             {
-                Settings = Settings,
+                UserSettings = UserSettings,
                 CustomColors = CustomColors,
+                StartUp = StartUp,
             };
 
             var config = JsonConvert.SerializeObject(appSettings, Formatting.Indented);
@@ -71,23 +77,23 @@ namespace Concierge.Configuration
             File.WriteAllText(appSettingsPath, config);
         }
 
-        public static void RefreshUnits(SettingsDto settingsDto = null)
+        public static void RefreshUnits(UserSettingsDto userSettingsDto = null)
         {
-            UnitsChanged?.Invoke(settingsDto is null ? ToSettingsDto() : settingsDto, new EventArgs());
+            UnitsChanged?.Invoke(userSettingsDto is null ? ToUserSettingsDto() : userSettingsDto, new EventArgs());
         }
 
-        public static SettingsDto ToSettingsDto()
+        public static UserSettingsDto ToUserSettingsDto()
         {
-            return new SettingsDto()
+            return new UserSettingsDto()
             {
-                AutosaveEnabled = Settings.AutosaveEnabled,
-                AutosaveInterval = Settings.AutosaveInterval,
-                CheckVersion = Settings.CheckVersion,
-                MuteSounds = Settings.MuteSounds,
-                UseCoinWeight = Settings.UseCoinWeight,
-                UseEncumbrance = Settings.UseEncumbrance,
-                UnitOfMeasurement = Settings.UnitOfMeasurement,
-                AttemptToCenterWindows = Settings.AttemptToCenterWindows,
+                AutosaveEnabled = UserSettings.AutosaveEnabled,
+                AutosaveInterval = UserSettings.AutosaveInterval,
+                CheckVersion = UserSettings.CheckVersion,
+                MuteSounds = UserSettings.MuteSounds,
+                UseCoinWeight = UserSettings.UseCoinWeight,
+                UseEncumbrance = UserSettings.UseEncumbrance,
+                UnitOfMeasurement = UserSettings.UnitOfMeasurement,
+                AttemptToCenterWindows = UserSettings.AttemptToCenterWindows,
             };
         }
     }

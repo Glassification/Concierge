@@ -124,7 +124,7 @@ namespace Concierge.Interfaces.InventoryPageInterface
             this.BagOfHoldingCheckBox.UpdatingValue();
 
             this.NameComboBox.Text = string.Empty;
-            this.AmountUpDown.Value = 0;
+            this.AmountUpDown.Value = 1;
             this.WeightUpDown.Value = 0.0;
             this.BagOfHoldingCheckBox.IsChecked = false;
             this.NotesTextBox.Text = string.Empty;
@@ -140,7 +140,7 @@ namespace Concierge.Interfaces.InventoryPageInterface
             {
                 Name = this.NameComboBox.Text,
                 Amount = this.AmountUpDown.Value ?? 0,
-                Weight = new UnitDouble(this.WeightUpDown.Value ?? 0.0, AppSettingsManager.Settings.UnitOfMeasurement, Measurements.Weight),
+                Weight = new UnitDouble(this.WeightUpDown.Value ?? 0.0, AppSettingsManager.UserSettings.UnitOfMeasurement, Measurements.Weight),
                 IsInBagOfHolding = this.BagOfHoldingCheckBox.IsChecked ?? false,
                 Note = this.NotesTextBox.Text,
             };
