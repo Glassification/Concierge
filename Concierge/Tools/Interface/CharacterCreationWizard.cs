@@ -4,6 +4,8 @@
 
 namespace Concierge.Tools.Interface
 {
+    using System;
+
     using Concierge.Character;
     using Concierge.Interfaces;
     using Concierge.Interfaces.AbilitiesPageInterface;
@@ -15,7 +17,6 @@ namespace Concierge.Tools.Interface
     using Concierge.Interfaces.InventoryPageInterface;
     using Concierge.Interfaces.OverviewPageInterface;
     using Concierge.Interfaces.SpellcastingPageInterface;
-    using System;
 
     public class CharacterCreationWizard
     {

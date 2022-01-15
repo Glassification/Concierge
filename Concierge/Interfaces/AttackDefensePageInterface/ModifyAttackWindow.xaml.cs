@@ -88,7 +88,6 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
 
         private void FillFields(Weapon weapon)
         {
-            this.WeightUpDown.UpdatingValue();
             this.BagOfHoldingCheckBox.UpdatingValue();
             this.ProficencyOverrideCheckBox.UpdatingValue();
 
@@ -111,7 +110,6 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
 
         private void ClearFields()
         {
-            this.WeightUpDown.UpdatingValue();
             this.BagOfHoldingCheckBox.UpdatingValue();
             this.ProficencyOverrideCheckBox.UpdatingValue();
 
@@ -143,7 +141,7 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
             weapon.Misc = this.MiscDamageTextBox.Text;
             weapon.DamageType = (DamageTypes)Enum.Parse(typeof(DamageTypes), this.DamageTypeComboBox.Text);
             weapon.Range = this.RangeTextBox.Text;
-            weapon.Weight.Value = this.WeightUpDown.Value ?? 0.0;
+            weapon.Weight.Value = this.WeightUpDown.Value;
             weapon.ProficiencyOverride = this.ProficencyOverrideCheckBox.IsChecked ?? false;
             weapon.IsInBagOfHolding = this.BagOfHoldingCheckBox.IsChecked ?? false;
             weapon.Note = this.NotesTextBox.Text;
@@ -164,7 +162,7 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
                 Misc = this.MiscDamageTextBox.Text,
                 DamageType = (DamageTypes)Enum.Parse(typeof(DamageTypes), this.DamageTypeComboBox.Text),
                 Range = this.RangeTextBox.Text,
-                Weight = new UnitDouble(this.WeightUpDown.Value ?? 0.0, AppSettingsManager.UserSettings.UnitOfMeasurement, Measurements.Weight),
+                Weight = new UnitDouble(this.WeightUpDown.Value, AppSettingsManager.UserSettings.UnitOfMeasurement, Measurements.Weight),
                 ProficiencyOverride = this.ProficencyOverrideCheckBox.IsChecked ?? false,
                 IsInBagOfHolding = this.BagOfHoldingCheckBox.IsChecked ?? false,
                 Note = this.NotesTextBox.Text,

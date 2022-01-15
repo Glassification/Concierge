@@ -47,15 +47,6 @@ namespace Concierge.Interfaces.OverviewPageInterface
 
         private void FillFields()
         {
-            this.TotalD6UpDown.UpdatingValue();
-            this.TotalD8UpDown.UpdatingValue();
-            this.TotalD10UpDown.UpdatingValue();
-            this.TotalD12UpDown.UpdatingValue();
-            this.UsedD6UpDown.UpdatingValue();
-            this.UsedD8UpDown.UpdatingValue();
-            this.UsedD10UpDown.UpdatingValue();
-            this.UsedD12UpDown.UpdatingValue();
-
             this.TotalD6UpDown.Value = this.HitDice.TotalD6;
             this.TotalD8UpDown.Value = this.HitDice.TotalD8;
             this.TotalD10UpDown.Value = this.HitDice.TotalD10;
@@ -71,15 +62,15 @@ namespace Concierge.Interfaces.OverviewPageInterface
         {
             var oldItem = this.HitDice.DeepCopy();
 
-            this.HitDice.TotalD6 = this.TotalD6UpDown.Value ?? 0;
-            this.HitDice.TotalD8 = this.TotalD8UpDown.Value ?? 0;
-            this.HitDice.TotalD10 = this.TotalD10UpDown.Value ?? 0;
-            this.HitDice.TotalD12 = this.TotalD12UpDown.Value ?? 0;
+            this.HitDice.TotalD6 = this.TotalD6UpDown.Value;
+            this.HitDice.TotalD8 = this.TotalD8UpDown.Value;
+            this.HitDice.TotalD10 = this.TotalD10UpDown.Value;
+            this.HitDice.TotalD12 = this.TotalD12UpDown.Value;
 
-            this.HitDice.SpentD6 = this.UsedD6UpDown.Value ?? 0;
-            this.HitDice.SpentD8 = this.UsedD8UpDown.Value ?? 0;
-            this.HitDice.SpentD10 = this.UsedD10UpDown.Value ?? 0;
-            this.HitDice.SpentD12 = this.UsedD12UpDown.Value ?? 0;
+            this.HitDice.SpentD6 = this.UsedD6UpDown.Value;
+            this.HitDice.SpentD8 = this.UsedD8UpDown.Value;
+            this.HitDice.SpentD10 = this.UsedD10UpDown.Value;
+            this.HitDice.SpentD12 = this.UsedD12UpDown.Value;
 
             Program.UndoRedoService.AddCommand(new EditCommand<HitDice>(this.HitDice, oldItem, this.ConciergePage));
         }

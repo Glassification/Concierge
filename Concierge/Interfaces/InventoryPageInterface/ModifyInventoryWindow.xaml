@@ -6,6 +6,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:components="clr-namespace:Concierge.Interfaces.Components" 
+    xmlns:controls="clr-namespace:Concierge.Interfaces.Controls"
     xmlns:viewmodels="clr-namespace:Concierge.Interfaces.ViewModels" 
     d:DataContext="{d:DesignInstance Type=viewmodels:ConciergeViewModel}"
     mc:Ignorable="d"
@@ -102,7 +103,7 @@
 
                 <!--Value-->
                 <Grid Grid.Column="1">
-                    <components:ConciergeIntegerUpDown x:Name="AmountUpDown"/>
+                    <controls:ConciergeIntegerUpDown x:Name="AmountUpDown"/>
                 </Grid>
             </Grid>
 
@@ -134,7 +135,7 @@
 
                 <!--Value-->
                 <Grid Grid.Column="1">
-                    <components:ConciergeDoubleUpDown x:Name="WeightUpDown"/>
+                    <controls:ConciergeDoubleUpDown x:Name="WeightUpDown"/>
                 </Grid>
             </Grid>
 

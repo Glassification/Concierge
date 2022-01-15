@@ -87,8 +87,6 @@ namespace Concierge.Interfaces.InventoryPageInterface
 
         private void FillFields(Inventory inventory)
         {
-            this.AmountUpDown.UpdatingValue();
-            this.WeightUpDown.UpdatingValue();
             this.BagOfHoldingCheckBox.UpdatingValue();
 
             this.NameComboBox.Text = inventory.Name;
@@ -119,8 +117,6 @@ namespace Concierge.Interfaces.InventoryPageInterface
 
         private void ClearFields()
         {
-            this.AmountUpDown.UpdatingValue();
-            this.WeightUpDown.UpdatingValue();
             this.BagOfHoldingCheckBox.UpdatingValue();
 
             this.NameComboBox.Text = string.Empty;
@@ -139,8 +135,8 @@ namespace Concierge.Interfaces.InventoryPageInterface
             var item = new Inventory()
             {
                 Name = this.NameComboBox.Text,
-                Amount = this.AmountUpDown.Value ?? 0,
-                Weight = new UnitDouble(this.WeightUpDown.Value ?? 0.0, AppSettingsManager.UserSettings.UnitOfMeasurement, Measurements.Weight),
+                Amount = this.AmountUpDown.Value,
+                Weight = new UnitDouble(this.WeightUpDown.Value, AppSettingsManager.UserSettings.UnitOfMeasurement, Measurements.Weight),
                 IsInBagOfHolding = this.BagOfHoldingCheckBox.IsChecked ?? false,
                 Note = this.NotesTextBox.Text,
             };
@@ -155,8 +151,8 @@ namespace Concierge.Interfaces.InventoryPageInterface
             var oldItem = inventory.DeepCopy();
 
             inventory.Name = this.NameComboBox.Text;
-            inventory.Amount = this.AmountUpDown.Value ?? 0;
-            inventory.Weight.Value = this.WeightUpDown.Value ?? 0.0;
+            inventory.Amount = this.AmountUpDown.Value;
+            inventory.Weight.Value = this.WeightUpDown.Value;
             inventory.Note = this.NotesTextBox.Text;
 
             if (this.EquippedItem)

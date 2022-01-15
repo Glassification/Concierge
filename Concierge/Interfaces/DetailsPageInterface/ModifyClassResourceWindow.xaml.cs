@@ -76,9 +76,6 @@ namespace Concierge.Interfaces.DetailsPageInterface
 
         private void FillFields()
         {
-            this.PoolUpDown.UpdatingValue();
-            this.SpentUpDown.UpdatingValue();
-
             this.ResourceTextBox.Text = this.ClassResource.Type;
             this.PoolUpDown.Value = this.ClassResource.Total;
             this.SpentUpDown.Value = this.ClassResource.Spent;
@@ -86,9 +83,6 @@ namespace Concierge.Interfaces.DetailsPageInterface
 
         private void ClearFields()
         {
-            this.PoolUpDown.UpdatingValue();
-            this.SpentUpDown.UpdatingValue();
-
             this.ResourceTextBox.Text = string.Empty;
             this.PoolUpDown.Value = 0;
             this.SpentUpDown.Value = 0;
@@ -101,8 +95,8 @@ namespace Concierge.Interfaces.DetailsPageInterface
             var resource = new ClassResource()
             {
                 Type = this.ResourceTextBox.Text,
-                Total = this.PoolUpDown.Value ?? 0,
-                Spent = this.SpentUpDown.Value ?? 0,
+                Total = this.PoolUpDown.Value,
+                Spent = this.SpentUpDown.Value,
             };
 
             Program.UndoRedoService.AddCommand(new AddCommand<ClassResource>(this.ClassResources, resource, this.ConciergePage));
@@ -117,8 +111,8 @@ namespace Concierge.Interfaces.DetailsPageInterface
                 var oldItem = this.ClassResource.DeepCopy();
 
                 this.ClassResource.Type = this.ResourceTextBox.Text;
-                this.ClassResource.Total = this.PoolUpDown.Value ?? 0;
-                this.ClassResource.Spent = this.SpentUpDown.Value ?? 0;
+                this.ClassResource.Total = this.PoolUpDown.Value;
+                this.ClassResource.Spent = this.SpentUpDown.Value;
 
                 Program.UndoRedoService.AddCommand(new EditCommand<ClassResource>(this.ClassResource, oldItem, this.ConciergePage));
             }

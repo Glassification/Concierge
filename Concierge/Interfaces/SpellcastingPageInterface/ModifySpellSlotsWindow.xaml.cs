@@ -46,35 +46,8 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
             this.ShowConciergeWindow();
         }
 
-        private void SetUpDownUpdating()
-        {
-            this.UsedPactUpDown.UpdatingValue();
-            this.Used1UpDown.UpdatingValue();
-            this.Used2UpDown.UpdatingValue();
-            this.Used3UpDown.UpdatingValue();
-            this.Used4UpDown.UpdatingValue();
-            this.Used5UpDown.UpdatingValue();
-            this.Used6UpDown.UpdatingValue();
-            this.Used7UpDown.UpdatingValue();
-            this.Used8UpDown.UpdatingValue();
-            this.Used9UpDown.UpdatingValue();
-
-            this.TotalPactUpDown.UpdatingValue();
-            this.Total1UpDown.UpdatingValue();
-            this.Total2UpDown.UpdatingValue();
-            this.Total3UpDown.UpdatingValue();
-            this.Total4UpDown.UpdatingValue();
-            this.Total5UpDown.UpdatingValue();
-            this.Total6UpDown.UpdatingValue();
-            this.Total7UpDown.UpdatingValue();
-            this.Total8UpDown.UpdatingValue();
-            this.Total9UpDown.UpdatingValue();
-        }
-
         private void FillFields()
         {
-            this.SetUpDownUpdating();
-
             this.UsedPactUpDown.Value = this.SpellSlots.PactUsed;
             this.Used1UpDown.Value = this.SpellSlots.FirstUsed;
             this.Used2UpDown.Value = this.SpellSlots.SecondUsed;
@@ -102,27 +75,27 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
         {
             var oldItem = this.SpellSlots.DeepCopy();
 
-            this.SpellSlots.PactUsed = this.UsedPactUpDown.Value ?? 0;
-            this.SpellSlots.FirstUsed = this.Used1UpDown.Value ?? 0;
-            this.SpellSlots.SecondUsed = this.Used2UpDown.Value ?? 0;
-            this.SpellSlots.ThirdUsed = this.Used3UpDown.Value ?? 0;
-            this.SpellSlots.FourthUsed = this.Used4UpDown.Value ?? 0;
-            this.SpellSlots.FifthUsed = this.Used5UpDown.Value ?? 0;
-            this.SpellSlots.SixthUsed = this.Used6UpDown.Value ?? 0;
-            this.SpellSlots.SeventhUsed = this.Used7UpDown.Value ?? 0;
-            this.SpellSlots.EighthUsed = this.Used8UpDown.Value ?? 0;
-            this.SpellSlots.NinethUsed = this.Used9UpDown.Value ?? 0;
+            this.SpellSlots.PactUsed = this.UsedPactUpDown.Value;
+            this.SpellSlots.FirstUsed = this.Used1UpDown.Value;
+            this.SpellSlots.SecondUsed = this.Used2UpDown.Value;
+            this.SpellSlots.ThirdUsed = this.Used3UpDown.Value;
+            this.SpellSlots.FourthUsed = this.Used4UpDown.Value;
+            this.SpellSlots.FifthUsed = this.Used5UpDown.Value;
+            this.SpellSlots.SixthUsed = this.Used6UpDown.Value;
+            this.SpellSlots.SeventhUsed = this.Used7UpDown.Value;
+            this.SpellSlots.EighthUsed = this.Used8UpDown.Value;
+            this.SpellSlots.NinethUsed = this.Used9UpDown.Value;
 
-            this.SpellSlots.PactTotal = this.TotalPactUpDown.Value ?? 0;
-            this.SpellSlots.FirstTotal = this.Total1UpDown.Value ?? 0;
-            this.SpellSlots.SecondTotal = this.Total2UpDown.Value ?? 0;
-            this.SpellSlots.ThirdTotal = this.Total3UpDown.Value ?? 0;
-            this.SpellSlots.FourthTotal = this.Total4UpDown.Value ?? 0;
-            this.SpellSlots.FifthTotal = this.Total5UpDown.Value ?? 0;
-            this.SpellSlots.SixthTotal = this.Total6UpDown.Value ?? 0;
-            this.SpellSlots.SeventhTotal = this.Total7UpDown.Value ?? 0;
-            this.SpellSlots.EighthTotal = this.Total8UpDown.Value ?? 0;
-            this.SpellSlots.NinethTotal = this.Total9UpDown.Value ?? 0;
+            this.SpellSlots.PactTotal = this.TotalPactUpDown.Value;
+            this.SpellSlots.FirstTotal = this.Total1UpDown.Value;
+            this.SpellSlots.SecondTotal = this.Total2UpDown.Value;
+            this.SpellSlots.ThirdTotal = this.Total3UpDown.Value;
+            this.SpellSlots.FourthTotal = this.Total4UpDown.Value;
+            this.SpellSlots.FifthTotal = this.Total5UpDown.Value;
+            this.SpellSlots.SixthTotal = this.Total6UpDown.Value;
+            this.SpellSlots.SeventhTotal = this.Total7UpDown.Value;
+            this.SpellSlots.EighthTotal = this.Total8UpDown.Value;
+            this.SpellSlots.NinethTotal = this.Total9UpDown.Value;
 
             Program.UndoRedoService.AddCommand(new EditCommand<SpellSlots>(this.SpellSlots, oldItem, this.ConciergePage));
         }

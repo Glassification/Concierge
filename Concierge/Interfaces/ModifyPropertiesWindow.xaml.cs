@@ -56,10 +56,6 @@ namespace Concierge.Interfaces
 
         private void FillFields()
         {
-            this.Level1UpDown.UpdatingValue();
-            this.Level2UpDown.UpdatingValue();
-            this.Level3UpDown.UpdatingValue();
-
             this.NameTextBox.Text = this.CharacterProperties.Name;
             this.RaceComboBox.Text = this.CharacterProperties.Race;
             this.BackgroundComboBox.Text = this.CharacterProperties.Background;
@@ -80,9 +76,9 @@ namespace Concierge.Interfaces
             this.CharacterProperties.Race = this.RaceComboBox.Text;
             this.CharacterProperties.Background = this.BackgroundComboBox.Text;
             this.CharacterProperties.Alignment = this.AlignmentComboBox.Text;
-            this.CharacterProperties.Class1.Level = this.Level1UpDown.Value ?? 0;
-            this.CharacterProperties.Class2.Level = this.Level2UpDown.Value ?? 0;
-            this.CharacterProperties.Class3.Level = this.Level3UpDown.Value ?? 0;
+            this.CharacterProperties.Class1.Level = this.Level1UpDown.Value;
+            this.CharacterProperties.Class2.Level = this.Level2UpDown.Value;
+            this.CharacterProperties.Class3.Level = this.Level3UpDown.Value;
             this.CharacterProperties.Class1.Name = this.Class1ComboBox.Text;
             this.CharacterProperties.Class2.Name = this.Class2ComboBox.Text;
             this.CharacterProperties.Class3.Name = this.Class3ComboBox.Text;

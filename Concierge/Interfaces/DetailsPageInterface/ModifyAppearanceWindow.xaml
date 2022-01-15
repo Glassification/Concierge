@@ -5,7 +5,10 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:components="clr-namespace:Concierge.Interfaces.Components"
-    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:viewmodels="clr-namespace:Concierge.Interfaces.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:ConciergeViewModel}"
+    xmlns:controls="clr-namespace:Concierge.Interfaces.Controls"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:viewmodels="clr-namespace:Concierge.Interfaces.ViewModels"
+    d:DataContext="{d:DesignInstance Type=viewmodels:ConciergeViewModel}"
     mc:Ignorable="d"
     Title="ModifyAppearanceWindow"
     Height="415"
@@ -104,7 +107,7 @@
 
                     <!--Value-->
                     <Grid Grid.Column="1">
-                        <components:ConciergeIntegerUpDown
+                        <controls:ConciergeIntegerUpDown
                             x:Name="AgeUpDown"/>
                     </Grid>
                 </Grid>
@@ -138,7 +141,7 @@
                     <!--Value-->
                     <Grid Grid.Column="1">
                         <Grid x:Name="MetricGrid">
-                            <components:ConciergeDoubleUpDown x:Name="HeightUpDown"/>
+                            <controls:ConciergeDoubleUpDown x:Name="HeightUpDown"/>
                         </Grid>
                         <Grid x:Name="ImperialGrid">
                             <Grid.ColumnDefinitions>
@@ -147,10 +150,10 @@
                             </Grid.ColumnDefinitions>
 
                             <Grid Grid.Column="0">
-                                <components:ConciergeDoubleUpDown x:Name="FeetUpDown"/>
+                                <controls:ConciergeDoubleUpDown x:Name="FeetUpDown"/>
                             </Grid>
                             <Grid Grid.Column="1">
-                                <components:ConciergeDoubleUpDown x:Name="InchesUpDown"/>
+                                <controls:ConciergeDoubleUpDown x:Name="InchesUpDown"/>
                             </Grid>
                         </Grid>
                     </Grid>
@@ -184,7 +187,7 @@
 
                     <!--Value-->
                     <Grid Grid.Column="1">
-                        <components:ConciergeDoubleUpDown
+                        <controls:ConciergeDoubleUpDown
                             x:Name="WeightUpDown"/>
                     </Grid>
                 </Grid>

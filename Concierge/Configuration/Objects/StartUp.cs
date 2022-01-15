@@ -10,6 +10,10 @@ namespace Concierge.Configuration.Objects
         {
         }
 
+        public bool ShowLongRestStatus { get; set; }
+
+        public bool ShowSaveStatus { get; set; }
+
         public bool ShowSplashScreen { get; set; }
     }
 }

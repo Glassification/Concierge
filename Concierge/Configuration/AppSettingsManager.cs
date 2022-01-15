@@ -26,6 +26,7 @@ namespace Concierge.Configuration
 
             section = config.GetSection(nameof(CustomColors));
             CustomColors = section.Get<Dictionary<string, string>>();
+            CustomColors = new Dictionary<string, string>(CustomColors, StringComparer.InvariantCultureIgnoreCase);
 
             section = config.GetSection(nameof(StartUp));
             StartUp = section.Get<StartUp>();

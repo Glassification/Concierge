@@ -83,8 +83,6 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
 
         private void FillFields(Spell spell)
         {
-            this.LevelUpDown.UpdatingValue();
-            this.PageUpDown.UpdatingValue();
             this.PreparedCheckBox.UpdatingValue();
             this.RitualCheckBox.UpdatingValue();
             this.ConcentrationCheckBox.UpdatingValue();
@@ -112,8 +110,6 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
 
         private void ClearFields()
         {
-            this.LevelUpDown.UpdatingValue();
-            this.PageUpDown.UpdatingValue();
             this.PreparedCheckBox.UpdatingValue();
             this.RitualCheckBox.UpdatingValue();
             this.ConcentrationCheckBox.UpdatingValue();
@@ -145,8 +141,8 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
 
             spell.Name = this.SpellNameComboBox.Text;
             spell.Prepared = this.PreparedCheckBox.IsChecked ?? false;
-            spell.Level = this.LevelUpDown.Value ?? 0;
-            spell.Page = this.PageUpDown.Value ?? 0;
+            spell.Level = this.LevelUpDown.Value;
+            spell.Page = this.PageUpDown.Value;
             spell.School = (ArcaneSchools)Enum.Parse(typeof(ArcaneSchools), this.SchoolComboBox.Text);
             spell.Ritual = this.RitualCheckBox.IsChecked ?? false;
             spell.Components = this.ComponentsTextBox.Text;
@@ -170,8 +166,8 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
             {
                 Name = this.SpellNameComboBox.Text,
                 Prepared = this.PreparedCheckBox.IsChecked ?? false,
-                Level = this.LevelUpDown.Value ?? 0,
-                Page = this.PageUpDown.Value ?? 0,
+                Level = this.LevelUpDown.Value,
+                Page = this.PageUpDown.Value,
                 School = (ArcaneSchools)Enum.Parse(typeof(ArcaneSchools), this.SchoolComboBox.Text),
                 Ritual = this.RitualCheckBox.IsChecked ?? false,
                 Components = this.ComponentsTextBox.Text,

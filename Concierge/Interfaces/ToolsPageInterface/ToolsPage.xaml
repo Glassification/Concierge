@@ -4,7 +4,10 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-      xmlns:components="clr-namespace:Concierge.Interfaces.Components" xmlns:viewmodels="clr-namespace:Concierge.Interfaces.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:ConciergeViewModel}"
+      xmlns:controls="clr-namespace:Concierge.Interfaces.Controls"
+      xmlns:components="clr-namespace:Concierge.Interfaces.Components"
+      xmlns:viewmodels="clr-namespace:Concierge.Interfaces.ViewModels"
+      d:DataContext="{d:DesignInstance Type=viewmodels:ConciergeViewModel}"
       mc:Ignorable="d"
       KeyDown="Page_KeyDown"
       d:DesignHeight="450" d:DesignWidth="800"
@@ -172,12 +175,16 @@
                         </Grid>
                         <!--Number-->
                         <Grid Grid.Column="1">
-                            <components:ConciergeIntegerUpDown 
-                                x:Name="D4NumberUpDown"
-                                Minimum="1"
+                            <Border
+                                BorderThickness="0.5"
                                 Background="DimGray"
-                                Height="30"
-                                Margin="3"/>
+                                Margin="3">
+                                <controls:ConciergeIntegerUpDown 
+                                    x:Name="D4NumberUpDown"
+                                    Minimum="1"
+                                    Height="30"
+                                    Margin="1,0,1,0"/>
+                            </Border>
                         </Grid>
                         <!--PlusMinus-->
                         <Grid Grid.Column="2">
@@ -196,11 +203,16 @@
                         </Grid>
                         <!--Modifier-->
                         <Grid Grid.Column="3">
-                            <components:ConciergeIntegerUpDown 
-                                x:Name="D4ModifierUpDown"
+                            <Border
+                                BorderThickness="0.5"
                                 Background="DimGray"
-                                Height="30"
-                                Margin="3,3,3.4,-11.4" VerticalAlignment="Top"/>
+                                Margin="3">
+                                <controls:ConciergeIntegerUpDown 
+                                    x:Name="D4ModifierUpDown"
+                                    Minimum="1"
+                                    Height="30"
+                                    Margin="1,0,1,0"/>
+                            </Border>
                         </Grid>
                         <!--Roll-->
                         <Grid Grid.Column="4">
@@ -247,12 +259,16 @@
                         </Grid>
                         <!--Number-->
                         <Grid Grid.Column="1">
-                            <components:ConciergeIntegerUpDown 
-                                x:Name="D6NumberUpDown"
-                                Minimum="1"
+                            <Border
+                                BorderThickness="0.5"
                                 Background="DimGray"
-                                Height="30"
-                                Margin="3"/>
+                                Margin="3">
+                                <controls:ConciergeIntegerUpDown 
+                                    x:Name="D6NumberUpDown"
+                                    Minimum="1"
+                                    Height="30"
+                                    Margin="1,0,1,0"/>
+                            </Border>
                         </Grid>
                         <!--PlusMinus-->
                         <Grid Grid.Column="2">
@@ -271,11 +287,16 @@
                         </Grid>
                         <!--Modifier-->
                         <Grid Grid.Column="3">
-                            <components:ConciergeIntegerUpDown 
-                                x:Name="D6ModifierUpDown"
+                            <Border
+                                BorderThickness="0.5"
                                 Background="DimGray"
-                                Height="30"
-                                Margin="3"/>
+                                Margin="3">
+                                <controls:ConciergeIntegerUpDown 
+                                    x:Name="D6ModifierUpDown"
+                                    Minimum="1"
+                                    Height="30"
+                                    Margin="1,0,1,0"/>
+                            </Border>
                         </Grid>
                         <!--Roll-->
                         <Grid Grid.Column="4">
@@ -322,12 +343,16 @@
                         </Grid>
                         <!--Number-->
                         <Grid Grid.Column="1">
-                            <components:ConciergeIntegerUpDown 
-                                x:Name="D8NumberUpDown"
+                            <Border
+                                BorderThickness="0.5"
                                 Background="DimGray"
-                                Minimum="1"
-                                Height="30"
-                                Margin="3"/>
+                                Margin="3">
+                                <controls:ConciergeIntegerUpDown 
+                                    x:Name="D8NumberUpDown"
+                                    Minimum="1"
+                                    Height="30"
+                                    Margin="1,0,1,0"/>
+                            </Border>
                         </Grid>
                         <!--PlusMinus-->
                         <Grid Grid.Column="2">
@@ -346,11 +371,16 @@
                         </Grid>
                         <!--Modifier-->
                         <Grid Grid.Column="3">
-                            <components:ConciergeIntegerUpDown 
-                                x:Name="D8ModifierUpDown"
+                            <Border
+                                BorderThickness="0.5"
                                 Background="DimGray"
-                                Height="30"
-                                Margin="3"/>
+                                Margin="3">
+                                <controls:ConciergeIntegerUpDown 
+                                    x:Name="D8ModifierUpDown"
+                                    Minimum="1"
+                                    Height="30"
+                                    Margin="1,0,1,0"/>
+                            </Border>
                         </Grid>
                         <!--Roll-->
                         <Grid Grid.Column="4">
@@ -397,12 +427,16 @@
                         </Grid>
                         <!--Number-->
                         <Grid Grid.Column="1">
-                            <components:ConciergeIntegerUpDown 
-                                x:Name="D10NumberUpDown"
+                            <Border
+                                BorderThickness="0.5"
                                 Background="DimGray"
-                                Minimum="1"
-                                Height="30"
-                                Margin="3"/>
+                                Margin="3">
+                                <controls:ConciergeIntegerUpDown 
+                                    x:Name="D10NumberUpDown"
+                                    Minimum="1"
+                                    Height="30"
+                                    Margin="1,0,1,0"/>
+                            </Border>
                         </Grid>
                         <!--PlusMinus-->
                         <Grid Grid.Column="2">
@@ -421,11 +455,16 @@
                         </Grid>
                         <!--Modifier-->
                         <Grid Grid.Column="3">
-                            <components:ConciergeIntegerUpDown 
-                                x:Name="D10ModifierUpDown"
+                            <Border
+                                BorderThickness="0.5"
                                 Background="DimGray"
-                                Height="30"
-                                Margin="3"/>
+                                Margin="3">
+                                <controls:ConciergeIntegerUpDown 
+                                    x:Name="D10ModifierUpDown"
+                                    Minimum="1"
+                                    Height="30"
+                                    Margin="1,0,1,0"/>
+                            </Border>
                         </Grid>
                         <!--Roll-->
                         <Grid Grid.Column="4">
@@ -472,12 +511,16 @@
                         </Grid>
                         <!--Number-->
                         <Grid Grid.Column="1">
-                            <components:ConciergeIntegerUpDown 
-                                x:Name="D100NumberUpDown"
+                            <Border
+                                BorderThickness="0.5"
                                 Background="DimGray"
-                                Minimum="1"
-                                Height="30"
-                                Margin="3"/>
+                                Margin="3">
+                                <controls:ConciergeIntegerUpDown 
+                                    x:Name="D100NumberUpDown"
+                                    Minimum="1"
+                                    Height="30"
+                                    Margin="1,0,1,0"/>
+                            </Border>
                         </Grid>
                         <!--PlusMinus-->
                         <Grid Grid.Column="2">
@@ -496,11 +539,16 @@
                         </Grid>
                         <!--Modifier-->
                         <Grid Grid.Column="3">
-                            <components:ConciergeIntegerUpDown 
-                                x:Name="D100ModifierUpDown"
+                            <Border
+                                BorderThickness="0.5"
                                 Background="DimGray"
-                                Height="30"
-                                Margin="3"/>
+                                Margin="3">
+                                <controls:ConciergeIntegerUpDown 
+                                    x:Name="D100ModifierUpDown"
+                                    Minimum="1"
+                                    Height="30"
+                                    Margin="1,0,1,0"/>
+                            </Border>
                         </Grid>
                         <!--Roll-->
                         <Grid Grid.Column="4">
@@ -547,12 +595,16 @@
                         </Grid>
                         <!--Number-->
                         <Grid Grid.Column="1">
-                            <components:ConciergeIntegerUpDown 
-                                x:Name="D12NumberUpDown"
+                            <Border
+                                BorderThickness="0.5"
                                 Background="DimGray"
-                                Minimum="1"
-                                Height="30"
-                                Margin="3"/>
+                                Margin="3">
+                                <controls:ConciergeIntegerUpDown 
+                                    x:Name="D12NumberUpDown"
+                                    Minimum="1"
+                                    Height="30"
+                                    Margin="1,0,1,0"/>
+                            </Border>
                         </Grid>
                         <!--PlusMinus-->
                         <Grid Grid.Column="2">
@@ -571,11 +623,16 @@
                         </Grid>
                         <!--Modifier-->
                         <Grid Grid.Column="3">
-                            <components:ConciergeIntegerUpDown 
-                                x:Name="D12ModifierUpDown"
+                            <Border
+                                BorderThickness="0.5"
                                 Background="DimGray"
-                                Height="30"
-                                Margin="3"/>
+                                Margin="3">
+                                <controls:ConciergeIntegerUpDown 
+                                    x:Name="D12ModifierUpDown"
+                                    Minimum="1"
+                                    Height="30"
+                                    Margin="1,0,1,0"/>
+                            </Border>
                         </Grid>
                         <!--Roll-->
                         <Grid Grid.Column="4">
@@ -622,12 +679,16 @@
                         </Grid>
                         <!--Number-->
                         <Grid Grid.Column="1">
-                            <components:ConciergeIntegerUpDown 
-                                x:Name="D20NumberUpDown"
-                                Minimum="1"
+                            <Border
+                                BorderThickness="0.5"
                                 Background="DimGray"
-                                Height="30"
-                                Margin="3"/>
+                                Margin="3">
+                                <controls:ConciergeIntegerUpDown 
+                                    x:Name="D20NumberUpDown"
+                                    Minimum="1"
+                                    Height="30"
+                                    Margin="1,0,1,0"/>
+                            </Border>
                         </Grid>
                         <!--PlusMinus-->
                         <Grid Grid.Column="2">
@@ -646,11 +707,16 @@
                         </Grid>
                         <!--Modifier-->
                         <Grid Grid.Column="3">
-                            <components:ConciergeIntegerUpDown 
-                                x:Name="D20ModifierUpDown"
+                            <Border
+                                BorderThickness="0.5"
                                 Background="DimGray"
-                                Height="30"
-                                Margin="3"/>
+                                Margin="3">
+                                <controls:ConciergeIntegerUpDown 
+                                    x:Name="D20ModifierUpDown"
+                                    Minimum="1"
+                                    Height="30"
+                                    Margin="1,0,1,0"/>
+                            </Border>
                         </Grid>
                         <!--Roll-->
                         <Grid Grid.Column="4">
@@ -689,21 +755,29 @@
 
                         <!--Die-->
                         <Grid Grid.Column="0">
-                            <components:ConciergeIntegerUpDown 
-                                x:Name="DxDieUpDown"
+                            <Border
+                                BorderThickness="0.5"
                                 Background="DimGray"
-                                Minimum="1"
-                                Height="30"
-                                Margin="3"/>
+                                Margin="3">
+                                <controls:ConciergeIntegerUpDown 
+                                    x:Name="DxDieUpDown"
+                                    Minimum="1"
+                                    Height="30"
+                                    Margin="1,0,1,0"/>
+                            </Border>
                         </Grid>
                         <!--Number-->
                         <Grid Grid.Column="1">
-                            <components:ConciergeIntegerUpDown 
-                                x:Name="DxNumberUpDown"
-                                Minimum="1"
+                            <Border
+                                BorderThickness="0.5"
                                 Background="DimGray"
-                                Height="30"
-                                Margin="3"/>
+                                Margin="3">
+                                <controls:ConciergeIntegerUpDown 
+                                    x:Name="DxNumberUpDown"
+                                    Minimum="1"
+                                    Height="30"
+                                    Margin="1,0,1,0"/>
+                            </Border>
                         </Grid>
                         <!--PlusMinus-->
                         <Grid Grid.Column="2">
@@ -722,11 +796,16 @@
                         </Grid>
                         <!--Modifier-->
                         <Grid Grid.Column="3">
-                            <components:ConciergeIntegerUpDown 
-                                x:Name="DxModifierUpDown"
+                            <Border
+                                BorderThickness="0.5"
                                 Background="DimGray"
-                                Height="30"
-                                Margin="3"/>
+                                Margin="3">
+                                <controls:ConciergeIntegerUpDown 
+                                    x:Name="DxModifierUpDown"
+                                    Minimum="1"
+                                    Height="30"
+                                    Margin="1,0,1,0"/>
+                            </Border>
                         </Grid>
                         <!--Roll-->
                         <Grid Grid.Column="4">

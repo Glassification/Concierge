@@ -5,7 +5,10 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:components="clr-namespace:Concierge.Interfaces.Components"
-    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:viewmodels="clr-namespace:Concierge.Interfaces.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:ConciergeViewModel}"
+    xmlns:controls="clr-namespace:Concierge.Interfaces.Controls"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:viewmodels="clr-namespace:Concierge.Interfaces.ViewModels"
+    d:DataContext="{d:DesignInstance Type=viewmodels:ConciergeViewModel}"
     mc:Ignorable="d"
     Title="ModifySpellClassWindow"
     Height="400"
@@ -202,7 +205,7 @@
 
                     <!--Value-->
                     <Grid Grid.Column="1">
-                        <components:ConciergeIntegerUpDown x:Name="LevelUpDown"/>
+                        <controls:ConciergeIntegerUpDown x:Name="LevelUpDown"/>
                     </Grid>
                 </Grid>
 
@@ -226,7 +229,7 @@
 
                     <!--Value-->
                     <Grid Grid.Column="1">
-                        <components:ConciergeIntegerUpDown x:Name="CantripsUpDown"/>
+                        <controls:ConciergeIntegerUpDown x:Name="CantripsUpDown"/>
                     </Grid>
                 </Grid>
 
@@ -250,7 +253,7 @@
 
                     <!--Value-->
                     <Grid Grid.Column="1">
-                        <components:ConciergeIntegerUpDown x:Name="SpellsUpDown"/>
+                        <controls:ConciergeIntegerUpDown x:Name="SpellsUpDown"/>
                     </Grid>
                 </Grid>
 

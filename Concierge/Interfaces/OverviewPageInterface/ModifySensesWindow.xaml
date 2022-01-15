@@ -5,7 +5,10 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-    xmlns:components="clr-namespace:Concierge.Interfaces.Components" xmlns:viewmodels="clr-namespace:Concierge.Interfaces.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:ConciergeViewModel}"
+    xmlns:controls="clr-namespace:Concierge.Interfaces.Controls"
+    xmlns:components="clr-namespace:Concierge.Interfaces.Components"
+    xmlns:viewmodels="clr-namespace:Concierge.Interfaces.ViewModels"
+    d:DataContext="{d:DesignInstance Type=viewmodels:ConciergeViewModel}"
     mc:Ignorable="d"
     Title="ModifySensesWindow"
     Height="500"
@@ -103,7 +106,9 @@
 
                 <!--Value-->
                 <Grid Grid.Column="1">
-                    <components:ConciergeIntegerUpDown x:Name="InitiativeBonusUpDown" ValueChanged="IntegerUpDown_ValueChanged"/>
+                    <controls:ConciergeIntegerUpDown
+                        x:Name="InitiativeBonusUpDown"
+                        ValueChanged="IntegerUpDown_ValueChanged"/>
                 </Grid>
             </Grid>
 
@@ -156,7 +161,9 @@
 
                 <!--Value-->
                 <Grid Grid.Column="1">
-                    <components:ConciergeIntegerUpDown x:Name="PerceptionBonusUpDown" ValueChanged="IntegerUpDown_ValueChanged"/>
+                    <controls:ConciergeIntegerUpDown
+                        x:Name="PerceptionBonusUpDown"
+                        ValueChanged="IntegerUpDown_ValueChanged"/>
                 </Grid>
             </Grid>
 
@@ -235,7 +242,10 @@
 
                 <!--Value-->
                 <Grid Grid.Column="1">
-                    <components:ConciergeIntegerUpDown x:Name="BaseMovementUpDown" ValueChanged="IntegerUpDown_ValueChanged"/>
+                    <controls:ConciergeIntegerUpDown
+                        x:Name="BaseMovementUpDown"
+                        Increment="5"
+                        ValueChanged="IntegerUpDown_ValueChanged"/>
                 </Grid>
             </Grid>
         </Grid>

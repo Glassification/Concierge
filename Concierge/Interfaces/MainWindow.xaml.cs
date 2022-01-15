@@ -242,7 +242,11 @@ namespace Concierge.Interfaces
             Program.Modify();
 
             this.DrawAll();
-            ConciergeWindowService.ShowWindow(typeof(LongRestStatusWindow));
+
+            if (AppSettingsManager.StartUp.ShowLongRestStatus)
+            {
+                ConciergeWindowService.ShowWindow(typeof(LongRestStatusWindow));
+            }
         }
 
         public void Search()
