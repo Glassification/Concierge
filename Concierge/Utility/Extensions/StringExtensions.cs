@@ -134,5 +134,19 @@ namespace Concierge.Utility.Extensions
                 return Brushes.Transparent;
             }
         }
+
+        public static Color ToColor(this string colorName)
+        {
+            try
+            {
+                colorName = colorName.Strip(" ").Strip("-").Strip(".").Strip("'");
+                return (Color)ColorConverter.ConvertFromString(colorName);
+            }
+            catch (Exception ex)
+            {
+                Program.Logger.Error(ex);
+                return Colors.Transparent;
+            }
+        }
     }
 }

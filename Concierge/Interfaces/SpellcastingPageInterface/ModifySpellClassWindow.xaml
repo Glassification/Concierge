@@ -205,7 +205,7 @@
 
                     <!--Value-->
                     <Grid Grid.Column="1">
-                        <controls:ConciergeIntegerUpDown x:Name="LevelUpDown"/>
+                        <controls:IntegerUpDown x:Name="LevelUpDown"/>
                     </Grid>
                 </Grid>
 
@@ -229,7 +229,7 @@
 
                     <!--Value-->
                     <Grid Grid.Column="1">
-                        <controls:ConciergeIntegerUpDown x:Name="CantripsUpDown"/>
+                        <controls:IntegerUpDown x:Name="CantripsUpDown"/>
                     </Grid>
                 </Grid>
 
@@ -253,7 +253,7 @@
 
                     <!--Value-->
                     <Grid Grid.Column="1">
-                        <controls:ConciergeIntegerUpDown x:Name="SpellsUpDown"/>
+                        <controls:IntegerUpDown x:Name="SpellsUpDown"/>
                     </Grid>
                 </Grid>
 

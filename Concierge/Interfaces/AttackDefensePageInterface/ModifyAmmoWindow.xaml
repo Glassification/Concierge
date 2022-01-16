@@ -100,7 +100,7 @@
 
                 <!--Value-->
                 <Grid Grid.Column="1">
-                    <controls:ConciergeIntegerUpDown x:Name="QuantityUpDown"/>
+                    <controls:IntegerUpDown x:Name="QuantityUpDown"/>
                 </Grid>
             </Grid>
 
@@ -176,7 +176,7 @@
 
                 <!--Value-->
                 <Grid Grid.Column="1">
-                    <controls:ConciergeIntegerUpDown x:Name="UsedUpDown"/>
+                    <controls:IntegerUpDown x:Name="UsedUpDown"/>
                 </Grid>
             </Grid>
         </Grid>

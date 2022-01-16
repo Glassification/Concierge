@@ -5,12 +5,27 @@
 namespace Concierge.Utility.Extensions
 {
     using System;
+    using System.Linq;
+    using System.Reflection;
     using System.Windows.Media;
 
-    using Concierge.Utility.Colors;
+    using Concierge.Utility.Utilities;
 
     public static class ColorExtensions
     {
+        public static string GetName(this Color color)
+        {
+            var properties = typeof(Colors).GetProperties().FirstOrDefault(p => Color.AreClose((Color)p.GetValue(null), color));
+            return properties != null ? properties.Name : color.ToString();
+        }
+
+        public static SolidColorBrush GetForeColor(this Color color)
+        {
+            var brightness = (int)Math.Sqrt((color.R * color.R * 0.241) + (color.G * color.G * 0.691) + (color.B * color.B * 0.068));
+
+            return brightness < 130 ? Brushes.White : Brushes.Black;
+        }
+
         public static double GetHue(this Color color)
         {
             double hue;
@@ -38,19 +53,19 @@ namespace Concierge.Utility.Extensions
 
         public static Color Invert(this Color color)
         {
-            var hsvColour = ColorUtilities.ToHsv(color);
+            var hsvColour = ColorUtility.ToHsv(color);
             hsvColour.Invert();
 
-            return ColorUtilities.FromHsv(hsvColour);
+            return ColorUtility.FromHsv(hsvColour);
         }
 
         public static Color SimpleInvert(this Color color)
         {
             return Color.FromArgb(
-                ColorUtilities.ColourSpace,
-                (byte)(ColorUtilities.ColourSpace - color.R),
-                (byte)(ColorUtilities.ColourSpace - color.G),
-                (byte)(ColorUtilities.ColourSpace - color.B));
+                ColorUtility.ColourSpace,
+                (byte)(ColorUtility.ColourSpace - color.R),
+                (byte)(ColorUtility.ColourSpace - color.G),
+                (byte)(ColorUtility.ColourSpace - color.B));
         }
     }
 }

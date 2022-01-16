@@ -135,7 +135,7 @@
 
                     <!--Value-->
                     <Grid Grid.Column="1">
-                        <controls:ConciergeIntegerUpDown x:Name="ArmorClassUpDown"/>
+                        <controls:IntegerUpDown x:Name="ArmorClassUpDown"/>
                     </Grid>
                 </Grid>
 
@@ -167,7 +167,7 @@
 
                     <!--Value-->
                     <Grid Grid.Column="1">
-                        <controls:ConciergeDoubleUpDown x:Name="WeightUpDown"/>
+                        <controls:DoubleUpDown x:Name="WeightUpDown"/>
                     </Grid>
                 </Grid>
 
@@ -190,7 +190,7 @@
 
                     <!--Value-->
                     <Grid Grid.Column="1">
-                        <controls:ConciergeIntegerUpDown x:Name="StrengthUpDown"/>
+                        <controls:IntegerUpDown x:Name="StrengthUpDown"/>
                     </Grid>
                 </Grid>
 
@@ -278,7 +278,7 @@
 
                     <!--Value-->
                     <Grid Grid.Column="1">
-                        <controls:ConciergeIntegerUpDown x:Name="ShieldArmorClassUpDown"/>
+                        <controls:IntegerUpDown x:Name="ShieldArmorClassUpDown"/>
                     </Grid>
                 </Grid>
 
@@ -310,7 +310,7 @@
 
                     <!--Value-->
                     <Grid Grid.Column="1">
-                        <controls:ConciergeDoubleUpDown x:Name="ShieldWeightUpDown"/>
+                        <controls:DoubleUpDown x:Name="ShieldWeightUpDown"/>
                     </Grid>
                 </Grid>
 
@@ -333,7 +333,7 @@
 
                     <!--Value-->
                     <Grid Grid.Column="1">
-                        <controls:ConciergeIntegerUpDown x:Name="MiscArmorClassUpDown"/>
+                        <controls:IntegerUpDown x:Name="MiscArmorClassUpDown"/>
                     </Grid>
                 </Grid>
 
@@ -356,7 +356,7 @@
 
                     <!--Value-->
                     <Grid Grid.Column="1">
-                        <controls:ConciergeIntegerUpDown x:Name="MagicArmorClassUpDown"/>
+                        <controls:IntegerUpDown x:Name="MagicArmorClassUpDown"/>
                     </Grid>
                 </Grid>
             </Grid>

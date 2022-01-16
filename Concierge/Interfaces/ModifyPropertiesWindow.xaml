@@ -203,19 +203,19 @@
                         </Grid.ColumnDefinitions>
 
                         <Grid Grid.Column="0">
-                            <controls:ConciergeIntegerUpDown 
+                            <controls:IntegerUpDown 
                                 x:Name="Level1UpDown"
                                 Margin="0, 0, 6, 0"
                                 Maximum="20"/>
                         </Grid>
                         <Grid Grid.Column="1">
-                            <controls:ConciergeIntegerUpDown 
+                            <controls:IntegerUpDown 
                                 x:Name="Level2UpDown"
                                 Margin="3, 0, 3, 0"
                                 Maximum="20"/>
                         </Grid>
                         <Grid Grid.Column="2">
-                            <controls:ConciergeIntegerUpDown 
+                            <controls:IntegerUpDown 
                                 x:Name="Level3UpDown"
                                 Maximum="20"
                                 Margin="6, 0, 0, 0"/>

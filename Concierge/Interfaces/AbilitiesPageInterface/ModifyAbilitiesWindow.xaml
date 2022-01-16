@@ -101,7 +101,7 @@
 
                 <!--Value-->
                 <Grid Grid.Column="1">
-                    <controls:ConciergeIntegerUpDown
+                    <controls:IntegerUpDown
                         x:Name="LevelUpDown"/>
                 </Grid>
             </Grid>

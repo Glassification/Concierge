@@ -179,7 +179,7 @@
                                 BorderThickness="0.5"
                                 Background="DimGray"
                                 Margin="3">
-                                <controls:ConciergeIntegerUpDown 
+                                <controls:IntegerUpDown 
                                     x:Name="D4NumberUpDown"
                                     Minimum="1"
                                     Height="30"
@@ -207,7 +207,7 @@
                                 BorderThickness="0.5"
                                 Background="DimGray"
                                 Margin="3">
-                                <controls:ConciergeIntegerUpDown 
+                                <controls:IntegerUpDown 
                                     x:Name="D4ModifierUpDown"
                                     Minimum="1"
                                     Height="30"
@@ -263,7 +263,7 @@
                                 BorderThickness="0.5"
                                 Background="DimGray"
                                 Margin="3">
-                                <controls:ConciergeIntegerUpDown 
+                                <controls:IntegerUpDown 
                                     x:Name="D6NumberUpDown"
                                     Minimum="1"
                                     Height="30"
@@ -291,7 +291,7 @@
                                 BorderThickness="0.5"
                                 Background="DimGray"
                                 Margin="3">
-                                <controls:ConciergeIntegerUpDown 
+                                <controls:IntegerUpDown 
                                     x:Name="D6ModifierUpDown"
                                     Minimum="1"
                                     Height="30"
@@ -347,7 +347,7 @@
                                 BorderThickness="0.5"
                                 Background="DimGray"
                                 Margin="3">
-                                <controls:ConciergeIntegerUpDown 
+                                <controls:IntegerUpDown 
                                     x:Name="D8NumberUpDown"
                                     Minimum="1"
                                     Height="30"
@@ -375,7 +375,7 @@
                                 BorderThickness="0.5"
                                 Background="DimGray"
                                 Margin="3">
-                                <controls:ConciergeIntegerUpDown 
+                                <controls:IntegerUpDown 
                                     x:Name="D8ModifierUpDown"
                                     Minimum="1"
                                     Height="30"
@@ -431,7 +431,7 @@
                                 BorderThickness="0.5"
                                 Background="DimGray"
                                 Margin="3">
-                                <controls:ConciergeIntegerUpDown 
+                                <controls:IntegerUpDown 
                                     x:Name="D10NumberUpDown"
                                     Minimum="1"
                                     Height="30"
@@ -459,7 +459,7 @@
                                 BorderThickness="0.5"
                                 Background="DimGray"
                                 Margin="3">
-                                <controls:ConciergeIntegerUpDown 
+                                <controls:IntegerUpDown 
                                     x:Name="D10ModifierUpDown"
                                     Minimum="1"
                                     Height="30"
@@ -515,7 +515,7 @@
                                 BorderThickness="0.5"
                                 Background="DimGray"
                                 Margin="3">
-                                <controls:ConciergeIntegerUpDown 
+                                <controls:IntegerUpDown 
                                     x:Name="D100NumberUpDown"
                                     Minimum="1"
                                     Height="30"
@@ -543,7 +543,7 @@
                                 BorderThickness="0.5"
                                 Background="DimGray"
                                 Margin="3">
-                                <controls:ConciergeIntegerUpDown 
+                                <controls:IntegerUpDown 
                                     x:Name="D100ModifierUpDown"
                                     Minimum="1"
                                     Height="30"
@@ -599,7 +599,7 @@
                                 BorderThickness="0.5"
                                 Background="DimGray"
                                 Margin="3">
-                                <controls:ConciergeIntegerUpDown 
+                                <controls:IntegerUpDown 
                                     x:Name="D12NumberUpDown"
                                     Minimum="1"
                                     Height="30"
@@ -627,7 +627,7 @@
                                 BorderThickness="0.5"
                                 Background="DimGray"
                                 Margin="3">
-                                <controls:ConciergeIntegerUpDown 
+                                <controls:IntegerUpDown 
                                     x:Name="D12ModifierUpDown"
                                     Minimum="1"
                                     Height="30"
@@ -683,7 +683,7 @@
                                 BorderThickness="0.5"
                                 Background="DimGray"
                                 Margin="3">
-                                <controls:ConciergeIntegerUpDown 
+                                <controls:IntegerUpDown 
                                     x:Name="D20NumberUpDown"
                                     Minimum="1"
                                     Height="30"
@@ -711,7 +711,7 @@
                                 BorderThickness="0.5"
                                 Background="DimGray"
                                 Margin="3">
-                                <controls:ConciergeIntegerUpDown 
+                                <controls:IntegerUpDown 
                                     x:Name="D20ModifierUpDown"
                                     Minimum="1"
                                     Height="30"
@@ -759,7 +759,7 @@
                                 BorderThickness="0.5"
                                 Background="DimGray"
                                 Margin="3">
-                                <controls:ConciergeIntegerUpDown 
+                                <controls:IntegerUpDown 
                                     x:Name="DxDieUpDown"
                                     Minimum="1"
                                     Height="30"
@@ -772,7 +772,7 @@
                                 BorderThickness="0.5"
                                 Background="DimGray"
                                 Margin="3">
-                                <controls:ConciergeIntegerUpDown 
+                                <controls:IntegerUpDown 
                                     x:Name="DxNumberUpDown"
                                     Minimum="1"
                                     Height="30"
@@ -800,7 +800,7 @@
                                 BorderThickness="0.5"
                                 Background="DimGray"
                                 Margin="3">
-                                <controls:ConciergeIntegerUpDown 
+                                <controls:IntegerUpDown 
                                     x:Name="DxModifierUpDown"
                                     Minimum="1"
                                     Height="30"

@@ -105,7 +105,7 @@
 
             <!--Amount-->
             <Grid Grid.Row="1">
-                <controls:ConciergeIntegerUpDown 
+                <controls:IntegerUpDown 
                     x:Name="AmountUpDown"
                     Margin="130, 0, 130, 0"/>
             </Grid>

@@ -59,8 +59,8 @@ namespace Concierge.Interfaces.ToolsPageInterface
         }
 
         private static void SetDieValue(
-            ConciergeIntegerUpDown dieNumber,
-            ConciergeIntegerUpDown modifierNumber,
+            IntegerUpDown dieNumber,
+            IntegerUpDown modifierNumber,
             RadioButton plusButton,
             TextBlock resultNumber)
         {

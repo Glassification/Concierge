@@ -1,4 +1,4 @@
-﻿// <copyright file="ConciergeIntegerUpDown.xaml.cs" company="Thomas Beckett">
+﻿// <copyright file="IntegerUpDown.xaml.cs" company="Thomas Beckett">
 // Copyright (c) Thomas Beckett. All rights reserved.
 // </copyright>
 
@@ -12,36 +12,36 @@ namespace Concierge.Interfaces.Controls
     using Concierge.Utility;
 
     /// <summary>
-    /// Interaction logic for ConciergeIntegerUpDown.xaml.
+    /// Interaction logic for IntegerUpDown.xaml.
     /// </summary>
-    public partial class ConciergeIntegerUpDown : UserControl
+    public partial class IntegerUpDown : UserControl
     {
         public static readonly DependencyProperty MinimumProperty =
             DependencyProperty.Register(
                 "Minimum",
                 typeof(int),
-                typeof(ConciergeIntegerUpDown),
+                typeof(IntegerUpDown),
                 new UIPropertyMetadata(0));
 
         public static readonly DependencyProperty MaximumProperty =
             DependencyProperty.Register(
                 "Maximum",
                 typeof(int),
-                typeof(ConciergeIntegerUpDown),
+                typeof(IntegerUpDown),
                 new UIPropertyMetadata(100));
 
         public static readonly DependencyProperty ValueProperty =
             DependencyProperty.Register(
                 "Value",
                 typeof(int),
-                typeof(ConciergeIntegerUpDown),
+                typeof(IntegerUpDown),
                 new PropertyMetadata(0, new PropertyChangedCallback(OnValuePropertyChanged)));
 
         public static readonly DependencyProperty IncrementProperty =
             DependencyProperty.Register(
                 "Increment",
                 typeof(int),
-                typeof(ConciergeIntegerUpDown),
+                typeof(IntegerUpDown),
                 new UIPropertyMetadata(1));
 
         private static readonly RoutedEvent ValueChangedEvent =
@@ -49,23 +49,23 @@ namespace Concierge.Interfaces.Controls
             "ValueChanged",
             RoutingStrategy.Bubble,
             typeof(RoutedEventHandler),
-            typeof(ConciergeIntegerUpDown));
+            typeof(IntegerUpDown));
 
         private static readonly RoutedEvent IncreaseClickedEvent =
             EventManager.RegisterRoutedEvent(
                 "IncreaseClicked",
                 RoutingStrategy.Bubble,
                 typeof(RoutedEventHandler),
-                typeof(ConciergeIntegerUpDown));
+                typeof(IntegerUpDown));
 
         private static readonly RoutedEvent DecreaseClickedEvent =
             EventManager.RegisterRoutedEvent(
                 "DecreaseClicked",
                 RoutingStrategy.Bubble,
                 typeof(RoutedEventHandler),
-                typeof(ConciergeIntegerUpDown));
+                typeof(IntegerUpDown));
 
-        public ConciergeIntegerUpDown()
+        public IntegerUpDown()
         {
             this.InitializeComponent();
             this.Minimum = 0;
@@ -134,7 +134,7 @@ namespace Concierge.Interfaces.Controls
 
         private static void OnValuePropertyChanged(DependencyObject target, DependencyPropertyChangedEventArgs e)
         {
-            var conciergeIntegerUpDown = target as ConciergeIntegerUpDown;
+            var conciergeIntegerUpDown = target as IntegerUpDown;
             conciergeIntegerUpDown.TextBoxValue.Text = e.NewValue.ToString();
         }
 

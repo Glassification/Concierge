@@ -107,7 +107,7 @@
 
                     <!--Value-->
                     <Grid Grid.Column="1">
-                        <controls:ConciergeIntegerUpDown
+                        <controls:IntegerUpDown
                             x:Name="AgeUpDown"/>
                     </Grid>
                 </Grid>
@@ -141,7 +141,7 @@
                     <!--Value-->
                     <Grid Grid.Column="1">
                         <Grid x:Name="MetricGrid">
-                            <controls:ConciergeDoubleUpDown x:Name="HeightUpDown"/>
+                            <controls:DoubleUpDown x:Name="HeightUpDown"/>
                         </Grid>
                         <Grid x:Name="ImperialGrid">
                             <Grid.ColumnDefinitions>
@@ -150,10 +150,10 @@
                             </Grid.ColumnDefinitions>
 
                             <Grid Grid.Column="0">
-                                <controls:ConciergeDoubleUpDown x:Name="FeetUpDown"/>
+                                <controls:DoubleUpDown x:Name="FeetUpDown"/>
                             </Grid>
                             <Grid Grid.Column="1">
-                                <controls:ConciergeDoubleUpDown x:Name="InchesUpDown"/>
+                                <controls:DoubleUpDown x:Name="InchesUpDown"/>
                             </Grid>
                         </Grid>
                     </Grid>
@@ -187,7 +187,7 @@
 
                     <!--Value-->
                     <Grid Grid.Column="1">
-                        <controls:ConciergeDoubleUpDown
+                        <controls:DoubleUpDown
                             x:Name="WeightUpDown"/>
                     </Grid>
                 </Grid>

@@ -238,7 +238,7 @@
 
                 <!--Value-->
                 <Grid Grid.Column="1">
-                    <controls:ConciergeIntegerUpDown x:Name="CurrentHpUpDown"/>
+                    <controls:IntegerUpDown x:Name="CurrentHpUpDown"/>
                 </Grid>
             </Grid>
 
@@ -261,7 +261,7 @@
 
                 <!--Value-->
                 <Grid Grid.Column="1">
-                    <controls:ConciergeIntegerUpDown x:Name="TemporaryHpUpDown"/>
+                    <controls:IntegerUpDown x:Name="TemporaryHpUpDown"/>
                 </Grid>
             </Grid>
 
@@ -284,7 +284,7 @@
 
                 <!--Value-->
                 <Grid Grid.Column="1">
-                    <controls:ConciergeIntegerUpDown 
+                    <controls:IntegerUpDown 
                         x:Name="TotalHpUpDown"
                         ValueChanged="TotalHpUpDown_ValueChanged"/>
                 </Grid>

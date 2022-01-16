@@ -135,7 +135,7 @@
 
                     <!--Value-->
                     <Grid Grid.Column="1">
-                        <controls:ConciergeIntegerUpDown 
+                        <controls:IntegerUpDown 
                             x:Name="LevelUpDown"
                             Maximum="9"/>
                     </Grid>
@@ -160,7 +160,7 @@
 
                     <!--Value-->
                     <Grid Grid.Column="1">
-                        <controls:ConciergeIntegerUpDown x:Name="PageUpDown"/>
+                        <controls:IntegerUpDown x:Name="PageUpDown"/>
                     </Grid>
                 </Grid>
 

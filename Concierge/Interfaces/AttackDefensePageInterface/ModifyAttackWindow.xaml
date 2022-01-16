@@ -296,7 +296,7 @@
 
                     <!--Value-->
                     <Grid Grid.Column="1">
-                        <controls:ConciergeDoubleUpDown x:Name="WeightUpDown"/>
+                        <controls:DoubleUpDown x:Name="WeightUpDown"/>
                     </Grid>
                 </Grid>
 

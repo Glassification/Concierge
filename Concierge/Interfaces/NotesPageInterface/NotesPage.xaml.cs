@@ -19,6 +19,7 @@ namespace Concierge.Interfaces.NotesPageInterface
     using Concierge.Character.Notes;
     using Concierge.Commands;
     using Concierge.Interfaces.Components;
+    using Concierge.Interfaces.Controls;
     using Concierge.Interfaces.Enums;
     using Concierge.Services;
     using Concierge.Tools.Interface;
@@ -300,7 +301,7 @@ namespace Concierge.Interfaces.NotesPageInterface
             this.FontSizeList.Text = obj == DependencyProperty.UnsetValue ? string.Empty : obj.ToString();
 
             obj = this.NotesTextBox.Selection.GetPropertyValue(TextElement.ForegroundProperty);
-            //this.ColorPicker.SelectedColor = obj == DependencyProperty.UnsetValue ? Colors.White : (Color)ColorConverter.ConvertFromString(obj.ToString());
+            this.ColorPicker.SelectedColor = obj == DependencyProperty.UnsetValue ? Colors.White : (Color)ColorConverter.ConvertFromString(obj.ToString());
 
             this.SelectionLock = false;
         }
@@ -329,16 +330,6 @@ namespace Concierge.Interfaces.NotesPageInterface
             {
                 this.NotesTextBox.Selection.ApplyPropertyValue(TextElement.FontSizeProperty, this.FontSizeList.Text);
             }
-        }
-
-        private void ColorPicker_SelectedColorChanged(object sender, RoutedPropertyChangedEventArgs<Color?> e)
-        {
-            if (this.SelectionLock)
-            {
-                return;
-            }
-
-            //this.NotesTextBox.Selection.ApplyPropertyValue(TextElement.ForegroundProperty, this.ColorPicker.SelectedColor.ToString());
         }
 
         private void ResetUndoQueue()
@@ -558,6 +549,16 @@ namespace Concierge.Interfaces.NotesPageInterface
         private void NotesTextBox_MouseLeave(object sender, MouseEventArgs e)
         {
             Mouse.OverrideCursor = Cursors.Arrow;
+        }
+
+        private void ColorPicker_ColorChanged(object sender, RoutedEventArgs e)
+        {
+            if (this.SelectionLock)
+            {
+                return;
+            }
+
+            this.NotesTextBox.Selection.ApplyPropertyValue(TextElement.ForegroundProperty, this.ColorPicker.SelectedColor.ToString());
         }
     }
 }

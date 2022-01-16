@@ -239,7 +239,7 @@
 
                 <!--Value-->
                 <Grid Grid.Column="1">
-                    <controls:ConciergeIntegerUpDown
+                    <controls:IntegerUpDown
                         x:Name="StrengthUpDown"
                         Maximum="30"/>
                 </Grid>
@@ -264,7 +264,7 @@
 
                 <!--Value-->
                 <Grid Grid.Column="1">
-                    <controls:ConciergeIntegerUpDown 
+                    <controls:IntegerUpDown 
                         x:Name="DexterityUpDown"
                         Maximum="30"/>
                 </Grid>
@@ -289,7 +289,7 @@
 
                 <!--Value-->
                 <Grid Grid.Column="1">
-                    <controls:ConciergeIntegerUpDown 
+                    <controls:IntegerUpDown 
                         x:Name="ConstitutionUpDown"
                         Maximum="30"/>
                 </Grid>
@@ -314,7 +314,7 @@
 
                 <!--Value-->
                 <Grid Grid.Column="1">
-                    <controls:ConciergeIntegerUpDown 
+                    <controls:IntegerUpDown 
                         x:Name="IntelligenceUpDown"
                         Maximum="30"/>
                 </Grid>
@@ -339,7 +339,7 @@
 
                 <!--Value-->
                 <Grid Grid.Column="1">
-                    <controls:ConciergeIntegerUpDown 
+                    <controls:IntegerUpDown 
                         x:Name="WisdomUpDown"
                         Maximum="30"/>
                 </Grid>
@@ -364,7 +364,7 @@
 
                 <!--Value-->
                 <Grid Grid.Column="1">
-                    <controls:ConciergeIntegerUpDown 
+                    <controls:IntegerUpDown 
                         x:Name="CharismaUpDown"
                         Maximum="30"/>
                 </Grid>

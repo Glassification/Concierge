@@ -10,10 +10,13 @@
     <Compile Update="Interfaces\AttackDefensePageInterface\ModifyStatusEffectsWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Interfaces\Controls\ConciergeDoubleUpDown.xaml.cs">
+    <Compile Update="Interfaces\Controls\ColorPicker.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Interfaces\Controls\ConciergeIntegerUpDown.xaml.cs">
+    <Compile Update="Interfaces\Controls\DoubleUpDown.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Interfaces\Controls\IntegerUpDown.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Interfaces\EquippedItemsPageInterface\ModifyCharacterImageWindow.xaml.cs">
@@ -57,10 +60,13 @@
     <Page Update="Interfaces\CompanionPageInterface\ModifyCompanionPropertiesWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Interfaces\Controls\ConciergeDoubleUpDown.xaml">
+    <Page Update="Interfaces\Controls\ColorPicker.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Interfaces\Controls\ConciergeIntegerUpDown.xaml">
+    <Page Update="Interfaces\Controls\DoubleUpDown.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Interfaces\Controls\IntegerUpDown.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Interfaces\DetailsPageInterface\DetailsPage.xaml">

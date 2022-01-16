@@ -249,7 +249,7 @@
                                Margin="10, 20, 0, 0"/>
                 </Grid>
                 <Grid Grid.Column="1">
-                    <controls:ConciergeIntegerUpDown
+                    <controls:IntegerUpDown
                         x:Name="PoolUpDown"/>
                 </Grid>
 
@@ -262,7 +262,7 @@
                                Margin="10, 20, 0, 0"/>
                 </Grid>
                 <Grid Grid.Column="3">
-                    <controls:ConciergeIntegerUpDown
+                    <controls:IntegerUpDown
                         x:Name="SpentUpDown"/>
                 </Grid>
             </Grid>

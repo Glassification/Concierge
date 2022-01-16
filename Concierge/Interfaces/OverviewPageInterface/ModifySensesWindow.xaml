@@ -106,7 +106,7 @@
 
                 <!--Value-->
                 <Grid Grid.Column="1">
-                    <controls:ConciergeIntegerUpDown
+                    <controls:IntegerUpDown
                         x:Name="InitiativeBonusUpDown"
                         ValueChanged="IntegerUpDown_ValueChanged"/>
                 </Grid>
@@ -161,7 +161,7 @@
 
                 <!--Value-->
                 <Grid Grid.Column="1">
-                    <controls:ConciergeIntegerUpDown
+                    <controls:IntegerUpDown
                         x:Name="PerceptionBonusUpDown"
                         ValueChanged="IntegerUpDown_ValueChanged"/>
                 </Grid>
@@ -242,7 +242,7 @@
 
                 <!--Value-->
                 <Grid Grid.Column="1">
-                    <controls:ConciergeIntegerUpDown
+                    <controls:IntegerUpDown
                         x:Name="BaseMovementUpDown"
                         Increment="5"
                         ValueChanged="IntegerUpDown_ValueChanged"/>
