@@ -53,14 +53,6 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
 
         private void FillFields()
         {
-            this.ArmorClassUpDown.UpdatingValue();
-            this.WeightUpDown.UpdatingValue();
-            this.StrengthUpDown.UpdatingValue();
-            this.ShieldArmorClassUpDown.UpdatingValue();
-            this.ShieldWeightUpDown.UpdatingValue();
-            this.MiscArmorClassUpDown.UpdatingValue();
-            this.MagicArmorClassUpDown.UpdatingValue();
-
             this.EquipedTextBox.Text = this.SelectedArmor.Equiped;
             this.TypeComboBox.Text = this.SelectedArmor.Type.ToString();
             this.ArmorClassUpDown.Value = this.SelectedArmor.ArmorClass;
@@ -83,15 +75,15 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
 
             armor.Equiped = this.EquipedTextBox.Text;
             armor.Type = (ArmorType)Enum.Parse(typeof(ArmorType), this.TypeComboBox.Text);
-            armor.ArmorClass = this.ArmorClassUpDown.Value ?? 0;
-            armor.Weight.Value = this.WeightUpDown.Value ?? 0.0;
-            armor.Strength = this.StrengthUpDown.Value ?? 0;
+            armor.ArmorClass = this.ArmorClassUpDown.Value;
+            armor.Weight.Value = this.WeightUpDown.Value;
+            armor.Strength = this.StrengthUpDown.Value;
             armor.Stealth = (ArmorStealth)Enum.Parse(typeof(ArmorStealth), this.StealthComboBox.Text);
             armor.Shield = this.ShieldTextBox.Text;
-            armor.ShieldArmorClass = this.ShieldArmorClassUpDown.Value ?? 0;
-            armor.ShieldWeight.Value = this.ShieldWeightUpDown.Value ?? 0.0;
-            armor.MiscArmorClass = this.MiscArmorClassUpDown.Value ?? 0;
-            armor.MagicArmorClass = this.MagicArmorClassUpDown.Value ?? 0;
+            armor.ShieldArmorClass = this.ShieldArmorClassUpDown.Value;
+            armor.ShieldWeight.Value = this.ShieldWeightUpDown.Value;
+            armor.MiscArmorClass = this.MiscArmorClassUpDown.Value;
+            armor.MagicArmorClass = this.MagicArmorClassUpDown.Value;
 
             Program.UndoRedoService.AddCommand(new EditCommand<Armor>(armor, oldItem, this.ConciergePage));
         }

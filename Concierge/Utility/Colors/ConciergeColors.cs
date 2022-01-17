@@ -7,6 +7,8 @@ namespace Concierge.Utility.Colors
     using System.Windows;
     using System.Windows.Media;
 
+    using Concierge.Utility.Utilities;
+
     public static class ConciergeColors
     {
         static ConciergeColors()
@@ -53,13 +55,13 @@ namespace Concierge.Utility.Colors
             NoteTreeItemHover = new SolidColorBrush(Color.FromArgb(255, 130, 223, 251));
             NoteTreeItemHover.Freeze();
 
-            FailedSaveBrush = ColorUtilities.GenerateGradientBrush(FailedDarkRed, FailedLightRed, new Point(0.5, 0), new Point(0.5, 1));
+            FailedSaveBrush = ColorUtility.GenerateGradientBrush(FailedDarkRed, FailedLightRed, new Point(0.5, 0), new Point(0.5, 1));
             FailedSaveBrush.Freeze();
 
-            SucceededSaveBrush = ColorUtilities.GenerateGradientBrush(SucceededDarkGreen, SucceededLightGreen, new Point(0.5, 0), new Point(0.5, 1));
+            SucceededSaveBrush = ColorUtility.GenerateGradientBrush(SucceededDarkGreen, SucceededLightGreen, new Point(0.5, 0), new Point(0.5, 1));
             SucceededSaveBrush.Freeze();
 
-            ProficiencyBrush = ColorUtilities.GenerateGradientBrush(ProficiencyDarkBlue, ProficiencyLightBlue, new Point(0, 0), new Point(1, 1));
+            ProficiencyBrush = ColorUtility.GenerateGradientBrush(ProficiencyDarkBlue, ProficiencyLightBlue, new Point(0, 0), new Point(1, 1));
             ProficiencyBrush.Freeze();
         }
 

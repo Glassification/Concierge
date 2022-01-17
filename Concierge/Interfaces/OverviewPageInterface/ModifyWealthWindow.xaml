@@ -5,7 +5,10 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-    xmlns:components="clr-namespace:Concierge.Interfaces.Components" xmlns:viewmodels="clr-namespace:Concierge.Interfaces.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:ConciergeViewModel}"
+    xmlns:controls="clr-namespace:Concierge.Interfaces.Controls"
+    xmlns:components="clr-namespace:Concierge.Interfaces.Components"
+    xmlns:viewmodels="clr-namespace:Concierge.Interfaces.ViewModels"
+    d:DataContext="{d:DesignInstance Type=viewmodels:ConciergeViewModel}"
     mc:Ignorable="d"
     Title="ModifyWealthWindow"
     Height="425"
@@ -102,7 +105,7 @@
 
             <!--Amount-->
             <Grid Grid.Row="1">
-                <components:ConciergeIntegerUpDown 
+                <controls:IntegerUpDown 
                     x:Name="AmountUpDown"
                     Margin="130, 0, 130, 0"/>
             </Grid>

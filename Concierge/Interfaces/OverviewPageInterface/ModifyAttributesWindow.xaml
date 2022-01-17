@@ -5,6 +5,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:components="clr-namespace:Concierge.Interfaces.Components"
+    xmlns:controls="clr-namespace:Concierge.Interfaces.Controls"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:viewmodels="clr-namespace:Concierge.Interfaces.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:ConciergeViewModel}"
     mc:Ignorable="d"
     Title="ModifyAttributesWindow"
@@ -238,7 +239,7 @@
 
                 <!--Value-->
                 <Grid Grid.Column="1">
-                    <components:ConciergeIntegerUpDown
+                    <controls:IntegerUpDown
                         x:Name="StrengthUpDown"
                         Maximum="30"/>
                 </Grid>
@@ -263,7 +264,7 @@
 
                 <!--Value-->
                 <Grid Grid.Column="1">
-                    <components:ConciergeIntegerUpDown 
+                    <controls:IntegerUpDown 
                         x:Name="DexterityUpDown"
                         Maximum="30"/>
                 </Grid>
@@ -288,7 +289,7 @@
 
                 <!--Value-->
                 <Grid Grid.Column="1">
-                    <components:ConciergeIntegerUpDown 
+                    <controls:IntegerUpDown 
                         x:Name="ConstitutionUpDown"
                         Maximum="30"/>
                 </Grid>
@@ -313,7 +314,7 @@
 
                 <!--Value-->
                 <Grid Grid.Column="1">
-                    <components:ConciergeIntegerUpDown 
+                    <controls:IntegerUpDown 
                         x:Name="IntelligenceUpDown"
                         Maximum="30"/>
                 </Grid>
@@ -338,7 +339,7 @@
 
                 <!--Value-->
                 <Grid Grid.Column="1">
-                    <components:ConciergeIntegerUpDown 
+                    <controls:IntegerUpDown 
                         x:Name="WisdomUpDown"
                         Maximum="30"/>
                 </Grid>
@@ -363,7 +364,7 @@
 
                 <!--Value-->
                 <Grid Grid.Column="1">
-                    <components:ConciergeIntegerUpDown 
+                    <controls:IntegerUpDown 
                         x:Name="CharismaUpDown"
                         Maximum="30"/>
                 </Grid>

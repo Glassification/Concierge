@@ -47,10 +47,6 @@ namespace Concierge.Interfaces.OverviewPageInterface
 
         private void FillFields()
         {
-            this.InitiativeBonusUpDown.UpdatingValue();
-            this.PerceptionBonusUpDown.UpdatingValue();
-            this.BaseMovementUpDown.UpdatingValue();
-
             this.InitiativeTextBlock.Text = Program.CcsFile.Character.Initiative.ToString();
             this.InitiativeBonusUpDown.Value = Program.CcsFile.Character.Senses.InitiativeBonus;
             this.PerceptionTextBlock.Text = Program.CcsFile.Character.PassivePerception.ToString();
@@ -65,10 +61,10 @@ namespace Concierge.Interfaces.OverviewPageInterface
             var senses = Program.CcsFile.Character.Senses;
             var oldItem = senses.DeepCopy();
 
-            senses.InitiativeBonus = this.InitiativeBonusUpDown.Value ?? 0;
-            senses.PerceptionBonus = this.PerceptionBonusUpDown.Value ?? 0;
+            senses.InitiativeBonus = this.InitiativeBonusUpDown.Value;
+            senses.PerceptionBonus = this.PerceptionBonusUpDown.Value;
             senses.Vision = (VisionTypes)Enum.Parse(typeof(VisionTypes), this.VisionComboBox.Text);
-            senses.BaseMovement = this.BaseMovementUpDown.Value ?? 0;
+            senses.BaseMovement = this.BaseMovementUpDown.Value;
 
             Program.UndoRedoService.AddCommand(new EditCommand<Senses>(senses, oldItem, this.ConciergePage));
         }
@@ -104,11 +100,11 @@ namespace Concierge.Interfaces.OverviewPageInterface
             this.HideConciergeWindow();
         }
 
-        private void IntegerUpDown_ValueChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
+        private void IntegerUpDown_ValueChanged(object sender, RoutedEventArgs e)
         {
-            this.InitiativeTextBlock.Text = (CharacterUtility.CalculateBonus(Program.CcsFile.Character.Attributes.Dexterity) + (this.InitiativeBonusUpDown.Value ?? 0)).ToString();
-            this.PerceptionTextBlock.Text = (Constants.BasePerception + Program.CcsFile.Character.Skill.Perception.Bonus + (this.PerceptionBonusUpDown.Value ?? 0)).ToString();
-            this.MovementTextBlock.Text = Senses.GetMovement(this.BaseMovementUpDown.Value ?? 0).ToString();
+            this.InitiativeTextBlock.Text = (CharacterUtility.CalculateBonus(Program.CcsFile.Character.Attributes.Dexterity) + this.InitiativeBonusUpDown.Value).ToString();
+            this.PerceptionTextBlock.Text = (Constants.BasePerception + Program.CcsFile.Character.Skill.Perception.Bonus + this.PerceptionBonusUpDown.Value).ToString();
+            this.MovementTextBlock.Text = Senses.GetMovement(this.BaseMovementUpDown.Value).ToString();
         }
     }
 }

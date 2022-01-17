@@ -1,19 +1,34 @@
-﻿// <copyright file="ColorUtilities.cs" company="Thomas Beckett">
+﻿// <copyright file="ColorUtility.cs" company="Thomas Beckett">
 // Copyright (c) Thomas Beckett. All rights reserved.
 // </copyright>
 
-namespace Concierge.Utility.Colors
+namespace Concierge.Utility.Utilities
 {
     using System;
+    using System.Collections.Generic;
     using System.Windows;
     using System.Windows.Media;
 
     using Concierge.Primitives;
     using Concierge.Utility.Extensions;
 
-    public static class ColorUtilities
+    public static class ColorUtility
     {
         public const byte ColourSpace = 255;
+
+        public static List<string> ListDotNetColors()
+        {
+            var colorList = new List<string>();
+            var color = typeof(System.Drawing.KnownColor);
+            var colors = Enum.GetValues(color);
+
+            for (int i = 27; i < colors.Length - 8; i++)
+            {
+                colorList.Add(colors.GetValue(i).ToString().FormatColorName());
+            }
+
+            return colorList;
+        }
 
         public static HsvColor ToHsv(Color color)
         {

@@ -5,7 +5,10 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       xmlns:components="clr-namespace:Concierge.Interfaces.Components"
-      xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" xmlns:viewmodels="clr-namespace:Concierge.Interfaces.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:ConciergeViewModel}"
+      xmlns:controls="clr-namespace:Concierge.Interfaces.Controls"
+      xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+      xmlns:viewmodels="clr-namespace:Concierge.Interfaces.ViewModels"
+      d:DataContext="{d:DesignInstance Type=viewmodels:ConciergeViewModel}"
       mc:Ignorable="d"
       d:DesignHeight="600" d:DesignWidth="1020"
       Title="NotesPage"
@@ -98,20 +101,25 @@
 
             <!--Notes Tree-->
             <Grid Grid.Column="0" Margin="0,0,0,0.5">
-                <TreeView x:Name="NotesTreeView"
-                          Margin="3"
-                          Background="#001233"
-                          SelectedItemChanged="NotesTreeView_SelectedItemChanged"
-                          BorderBrush="{x:Null}">
+                <TreeView 
+                    x:Name="NotesTreeView"
+                    Margin="3"
+                    Background="#001233"
+                    SelectedItemChanged="NotesTreeView_SelectedItemChanged"
+                    BorderBrush="{x:Null}">
                     <TreeView.Resources>
-                        <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}"
-                      Color="#1C3947" />
-                        <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}"
-                      Color="Transparent" />
-                        <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightBrushKey}"
-                      Color="Transparent" />
-                        <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightTextBrushKey}"
-                      Color="White" />
+                        <SolidColorBrush
+                            x:Key="{x:Static SystemColors.HighlightBrushKey}"
+                            Color="#1C3947" />
+                        <SolidColorBrush
+                            x:Key="{x:Static SystemColors.HighlightTextBrushKey}"
+                            Color="Transparent" />
+                        <SolidColorBrush
+                            x:Key="{x:Static SystemColors.InactiveSelectionHighlightBrushKey}"
+                            Color="Transparent" />
+                        <SolidColorBrush
+                            x:Key="{x:Static SystemColors.InactiveSelectionHighlightTextBrushKey}"
+                            Color="White" />
                     </TreeView.Resources>
                 </TreeView>
             </Grid>
@@ -119,7 +127,7 @@
             <!--Notes-->
             <Grid Grid.Column="1"
                   Margin="3,0,3,2.5"
-                  Background="#FF3e3e42" Grid.ColumnSpan="2">
+                  Background="#252526" Grid.ColumnSpan="2">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="10*"/>
                     <RowDefinition Height="90*"/>
@@ -127,7 +135,10 @@
 
                 <!--Toolbar-->
                 <Grid Grid.Row="0">
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                    <StackPanel
+                        x:Name="ToolbarStackPanel"
+                        Orientation="Horizontal"
+                        HorizontalAlignment="Left">
                         <components:ConciergeDesignButton 
                             Style="{StaticResource ConciergeDesignButtonStyle}" 
                             x:Name="ButtonCut"
@@ -212,18 +223,10 @@
                             IsEditable="True"
                             TextBoxBase.TextChanged="FontSizeList_TextChanged"
                             Margin="5, 0, 5, 0"/>
-                        <xctk:ColorPicker 
-                            Name="ColorPicker"
-                            Height="40"
-                            Width="60"
-                            Margin="5, 0, 5, 0"
-                            HorizontalAlignment="Center"
+                        <controls:ColorPicker
+                            x:Name="ColorPicker"
                             VerticalAlignment="Center"
-                            Background="#FF3F3F3F"
-                            BorderBrush="#FF97A0A5"
-                            BorderThickness="1"
-                            SelectedColorChanged="ColorPicker_SelectedColorChanged">
-                        </xctk:ColorPicker>
+                            ColorChanged="ColorPicker_ColorChanged"/>
                     </StackPanel>
                 </Grid>
 

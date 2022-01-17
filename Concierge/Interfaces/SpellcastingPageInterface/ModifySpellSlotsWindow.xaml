@@ -5,7 +5,10 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-    xmlns:components="clr-namespace:Concierge.Interfaces.Components" xmlns:viewmodels="clr-namespace:Concierge.Interfaces.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:ConciergeViewModel}"
+    xmlns:controls="clr-namespace:Concierge.Interfaces.Controls"
+    xmlns:components="clr-namespace:Concierge.Interfaces.Components"
+    xmlns:viewmodels="clr-namespace:Concierge.Interfaces.ViewModels"
+    d:DataContext="{d:DesignInstance Type=viewmodels:ConciergeViewModel}"
     mc:Ignorable="d"
     Title="ModifySpellSlotsWindow"
     Height="650"
@@ -245,52 +248,52 @@
 
                 <!--Used Pact-->
                 <Grid Grid.Row="1">
-                    <components:ConciergeIntegerUpDown x:Name="UsedPactUpDown" Margin="20,0,0,0"/>
+                    <controls:IntegerUpDown x:Name="UsedPactUpDown" Margin="20,0,0,0"/>
                 </Grid>
 
                 <!--Used 1st-->
                 <Grid Grid.Row="2">
-                    <components:ConciergeIntegerUpDown x:Name="Used1UpDown" Margin="20,0,0,0"/>
+                    <controls:IntegerUpDown x:Name="Used1UpDown" Margin="20,0,0,0"/>
                 </Grid>
 
                 <!--Used 2nd-->
                 <Grid Grid.Row="3">
-                    <components:ConciergeIntegerUpDown x:Name="Used2UpDown" Margin="20,0,0,0"/>
+                    <controls:IntegerUpDown x:Name="Used2UpDown" Margin="20,0,0,0"/>
                 </Grid>
 
                 <!--Used 3rd-->
                 <Grid Grid.Row="4">
-                    <components:ConciergeIntegerUpDown x:Name="Used3UpDown" Margin="20,0,0,0"/>
+                    <controls:IntegerUpDown x:Name="Used3UpDown" Margin="20,0,0,0"/>
                 </Grid>
 
                 <!--Used 4th-->
                 <Grid Grid.Row="5">
-                    <components:ConciergeIntegerUpDown x:Name="Used4UpDown" Margin="20,0,0,0"/>
+                    <controls:IntegerUpDown x:Name="Used4UpDown" Margin="20,0,0,0"/>
                 </Grid>
 
                 <!--Used 5th-->
                 <Grid Grid.Row="6">
-                    <components:ConciergeIntegerUpDown x:Name="Used5UpDown" Margin="20,0,0,0"/>
+                    <controls:IntegerUpDown x:Name="Used5UpDown" Margin="20,0,0,0"/>
                 </Grid>
 
                 <!--Used 6th-->
                 <Grid Grid.Row="7">
-                    <components:ConciergeIntegerUpDown x:Name="Used6UpDown" Margin="20,0,0,0"/>
+                    <controls:IntegerUpDown x:Name="Used6UpDown" Margin="20,0,0,0"/>
                 </Grid>
 
                 <!--Used 7th-->
                 <Grid Grid.Row="8">
-                    <components:ConciergeIntegerUpDown x:Name="Used7UpDown" Margin="20,0,0,0"/>
+                    <controls:IntegerUpDown x:Name="Used7UpDown" Margin="20,0,0,0"/>
                 </Grid>
 
                 <!--Used 8th-->
                 <Grid Grid.Row="9">
-                    <components:ConciergeIntegerUpDown x:Name="Used8UpDown" Margin="20,0,0,0"/>
+                    <controls:IntegerUpDown x:Name="Used8UpDown" Margin="20,0,0,0"/>
                 </Grid>
 
                 <!--Used 9th-->
                 <Grid Grid.Row="10">
-                    <components:ConciergeIntegerUpDown x:Name="Used9UpDown" Margin="20,0,0,0"/>
+                    <controls:IntegerUpDown x:Name="Used9UpDown" Margin="20,0,0,0"/>
                 </Grid>
             </Grid>
 
@@ -441,52 +444,52 @@
                 
                 <!--Total Pact-->
                 <Grid Grid.Row="1">
-                    <components:ConciergeIntegerUpDown x:Name="TotalPactUpDown" Margin="0,0,20,0"/>
+                    <controls:IntegerUpDown x:Name="TotalPactUpDown" Margin="0,0,20,0"/>
                 </Grid>
 
                 <!--Total 1st-->
                 <Grid Grid.Row="2">
-                    <components:ConciergeIntegerUpDown x:Name="Total1UpDown" Margin="0,0,20,0"/>
+                    <controls:IntegerUpDown x:Name="Total1UpDown" Margin="0,0,20,0"/>
                 </Grid>
 
                 <!--Total 2nd-->
                 <Grid Grid.Row="3">
-                    <components:ConciergeIntegerUpDown x:Name="Total2UpDown" Margin="0,0,20,0"/>
+                    <controls:IntegerUpDown x:Name="Total2UpDown" Margin="0,0,20,0"/>
                 </Grid>
 
                 <!--Total 3rd-->
                 <Grid Grid.Row="4">
-                    <components:ConciergeIntegerUpDown x:Name="Total3UpDown" Margin="0,0,20,0"/>
+                    <controls:IntegerUpDown x:Name="Total3UpDown" Margin="0,0,20,0"/>
                 </Grid>
 
                 <!--Total 4th-->
                 <Grid Grid.Row="5">
-                    <components:ConciergeIntegerUpDown x:Name="Total4UpDown" Margin="0,0,20,0"/>
+                    <controls:IntegerUpDown x:Name="Total4UpDown" Margin="0,0,20,0"/>
                 </Grid>
 
                 <!--Total 5th-->
                 <Grid Grid.Row="6">
-                    <components:ConciergeIntegerUpDown x:Name="Total5UpDown" Margin="0,0,20,0"/>
+                    <controls:IntegerUpDown x:Name="Total5UpDown" Margin="0,0,20,0"/>
                 </Grid>
 
                 <!--Total 6th-->
                 <Grid Grid.Row="7">
-                    <components:ConciergeIntegerUpDown x:Name="Total6UpDown" Margin="0,0,20,0"/>
+                    <controls:IntegerUpDown x:Name="Total6UpDown" Margin="0,0,20,0"/>
                 </Grid>
 
                 <!--Total 7th-->
                 <Grid Grid.Row="8">
-                    <components:ConciergeIntegerUpDown x:Name="Total7UpDown" Margin="0,0,20,0"/>
+                    <controls:IntegerUpDown x:Name="Total7UpDown" Margin="0,0,20,0"/>
                 </Grid>
 
                 <!--Total 8th-->
                 <Grid Grid.Row="9">
-                    <components:ConciergeIntegerUpDown x:Name="Total8UpDown" Margin="0,0,20,0"/>
+                    <controls:IntegerUpDown x:Name="Total8UpDown" Margin="0,0,20,0"/>
                 </Grid>
 
                 <!--Total 9th-->
                 <Grid Grid.Row="10">
-                    <components:ConciergeIntegerUpDown x:Name="Total9UpDown" Margin="0,0,20,0"/>
+                    <controls:IntegerUpDown x:Name="Total9UpDown" Margin="0,0,20,0"/>
                 </Grid>
             </Grid>
         </Grid>

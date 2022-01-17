@@ -79,8 +79,6 @@ namespace Concierge.Interfaces.AbilitiesPageInterface
 
         private void FillFields(Ability ability)
         {
-            this.LevelUpDown.UpdatingValue();
-
             this.NameComboBox.Text = ability.Name;
             this.LevelUpDown.Value = ability.Level;
             this.UsesTextBox.Text = ability.Uses;
@@ -91,8 +89,6 @@ namespace Concierge.Interfaces.AbilitiesPageInterface
 
         private void ClearFields()
         {
-            this.LevelUpDown.UpdatingValue();
-
             this.NameComboBox.Text = string.Empty;
             this.LevelUpDown.Value = 0;
             this.UsesTextBox.Text = string.Empty;
@@ -108,7 +104,7 @@ namespace Concierge.Interfaces.AbilitiesPageInterface
             var ability = new Ability()
             {
                 Name = this.NameComboBox.Text,
-                Level = this.LevelUpDown.Value ?? 0,
+                Level = this.LevelUpDown.Value,
                 Uses = this.UsesTextBox.Text,
                 Recovery = this.RecoveryTextBox.Text,
                 Action = this.ActionTextBox.Text,
@@ -125,7 +121,7 @@ namespace Concierge.Interfaces.AbilitiesPageInterface
             var oldItem = ability.DeepCopy();
 
             ability.Name = this.NameComboBox.Text;
-            ability.Level = this.LevelUpDown.Value ?? 0;
+            ability.Level = this.LevelUpDown.Value;
             ability.Uses = this.UsesTextBox.Text;
             ability.Recovery = this.RecoveryTextBox.Text;
             ability.Action = this.ActionTextBox.Text;

@@ -48,6 +48,7 @@ namespace Concierge.Interfaces.NotesPageInterface
             this.NotesTextBox.FontSize = 20;
             this.NotesTextBox.Foreground = Brushes.White;
             this.NotesTextBox.IsEnabled = false;
+            this.ToolbarStackPanel.IsEnabled = false;
         }
 
         public Document SelectedDocument
@@ -61,12 +62,16 @@ namespace Concierge.Interfaces.NotesPageInterface
             {
                 this.selectedDocument = value;
                 this.NotesTextBox.IsEnabled = value != null;
+                this.ToolbarStackPanel.IsEnabled = value != null;
+                this.ToolbarStackPanel.Opacity = value is null ? 0.5 : 1;
             }
         }
 
         public ConciergePage ConciergePage => ConciergePage.Notes;
 
         private bool Lock { get; set; }
+
+        private bool SelectionLock { get; set; }
 
         public void Draw()
         {
@@ -279,6 +284,7 @@ namespace Concierge.Interfaces.NotesPageInterface
 
         private void NotesTextBox_SelectionChanged(object sender, RoutedEventArgs e)
         {
+            this.SelectionLock = true;
             object obj;
 
             obj = this.NotesTextBox.Selection.GetPropertyValue(TextElement.FontWeightProperty);
@@ -298,10 +304,17 @@ namespace Concierge.Interfaces.NotesPageInterface
 
             obj = this.NotesTextBox.Selection.GetPropertyValue(TextElement.ForegroundProperty);
             this.ColorPicker.SelectedColor = obj == DependencyProperty.UnsetValue ? Colors.White : (Color)ColorConverter.ConvertFromString(obj.ToString());
+
+            this.SelectionLock = false;
         }
 
         private void FontFamilyList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            if (this.SelectionLock)
+            {
+                return;
+            }
+
             if (this.FontFamilyList.SelectedItem != null)
             {
                 this.NotesTextBox.Selection.ApplyPropertyValue(TextElement.FontFamilyProperty, this.FontFamilyList.SelectedItem);
@@ -310,15 +323,15 @@ namespace Concierge.Interfaces.NotesPageInterface
 
         private void FontSizeList_TextChanged(object sender, TextChangedEventArgs e)
         {
+            if (this.SelectionLock)
+            {
+                return;
+            }
+
             if (double.TryParse(this.FontSizeList.Text, out _))
             {
                 this.NotesTextBox.Selection.ApplyPropertyValue(TextElement.FontSizeProperty, this.FontSizeList.Text);
             }
-        }
-
-        private void ColorPicker_SelectedColorChanged(object sender, RoutedPropertyChangedEventArgs<Color?> e)
-        {
-            this.NotesTextBox.Selection.ApplyPropertyValue(TextElement.ForegroundProperty, this.ColorPicker.SelectedColor.ToString());
         }
 
         private void ResetUndoQueue()
@@ -538,6 +551,16 @@ namespace Concierge.Interfaces.NotesPageInterface
         private void NotesTextBox_MouseLeave(object sender, MouseEventArgs e)
         {
             Mouse.OverrideCursor = Cursors.Arrow;
+        }
+
+        private void ColorPicker_ColorChanged(object sender, RoutedEventArgs e)
+        {
+            if (this.SelectionLock)
+            {
+                return;
+            }
+
+            this.NotesTextBox.Selection.ApplyPropertyValue(TextElement.ForegroundProperty, this.ColorPicker.SelectedColor.ToString());
         }
     }
 }

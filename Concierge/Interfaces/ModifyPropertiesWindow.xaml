@@ -5,7 +5,10 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-    xmlns:components="clr-namespace:Concierge.Interfaces.Components" xmlns:viewmodels="clr-namespace:Concierge.Interfaces.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:ConciergeViewModel}"
+    xmlns:controls="clr-namespace:Concierge.Interfaces.Controls"
+    xmlns:components="clr-namespace:Concierge.Interfaces.Components"
+    xmlns:viewmodels="clr-namespace:Concierge.Interfaces.ViewModels"
+    d:DataContext="{d:DesignInstance Type=viewmodels:ConciergeViewModel}"
     mc:Ignorable="d"
     Title="ModifyPropertiesWindow"
     Height="400"
@@ -200,19 +203,19 @@
                         </Grid.ColumnDefinitions>
 
                         <Grid Grid.Column="0">
-                            <components:ConciergeIntegerUpDown 
+                            <controls:IntegerUpDown 
                                 x:Name="Level1UpDown"
                                 Margin="0, 0, 6, 0"
                                 Maximum="20"/>
                         </Grid>
                         <Grid Grid.Column="1">
-                            <components:ConciergeIntegerUpDown 
+                            <controls:IntegerUpDown 
                                 x:Name="Level2UpDown"
                                 Margin="3, 0, 3, 0"
                                 Maximum="20"/>
                         </Grid>
                         <Grid Grid.Column="2">
-                            <components:ConciergeIntegerUpDown 
+                            <controls:IntegerUpDown 
                                 x:Name="Level3UpDown"
                                 Maximum="20"
                                 Margin="6, 0, 0, 0"/>

@@ -86,10 +86,6 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
         {
             this.SettingValues = true;
 
-            this.LevelUpDown.UpdatingValue();
-            this.CantripsUpDown.UpdatingValue();
-            this.SpellsUpDown.UpdatingValue();
-
             this.ClassNameComboBox.Text = magicClass.Name;
             this.AbilityComboBox.Text = magicClass.Ability.ToString();
             this.AttackBonusTextBlock.Text = magicClass.Attack.ToString();
@@ -105,10 +101,6 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
         private void ClearFields()
         {
             this.SettingValues = true;
-
-            this.LevelUpDown.UpdatingValue();
-            this.CantripsUpDown.UpdatingValue();
-            this.SpellsUpDown.UpdatingValue();
 
             this.ClassNameComboBox.Text = string.Empty;
             this.AbilityComboBox.Text = Abilities.NONE.ToString();
@@ -128,9 +120,9 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
 
             magicClass.Name = this.ClassNameComboBox.Text;
             magicClass.Ability = (Abilities)Enum.Parse(typeof(Abilities), this.AbilityComboBox.Text);
-            magicClass.Level = this.LevelUpDown.Value ?? 0;
-            magicClass.KnownCantrips = this.CantripsUpDown.Value ?? 0;
-            magicClass.KnownSpells = this.SpellsUpDown.Value ?? 0;
+            magicClass.Level = this.LevelUpDown.Value;
+            magicClass.KnownCantrips = this.CantripsUpDown.Value;
+            magicClass.KnownSpells = this.SpellsUpDown.Value;
 
             Program.UndoRedoService.AddCommand(new EditCommand<MagicClass>(magicClass, oldItem, this.ConciergePage));
         }
@@ -143,9 +135,9 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
             {
                 Name = this.ClassNameComboBox.Text,
                 Ability = (Abilities)Enum.Parse(typeof(Abilities), this.AbilityComboBox.Text),
-                Level = this.LevelUpDown.Value ?? 0,
-                KnownSpells = this.SpellsUpDown.Value ?? 0,
-                KnownCantrips = this.CantripsUpDown.Value ?? 0,
+                Level = this.LevelUpDown.Value,
+                KnownSpells = this.SpellsUpDown.Value,
+                KnownCantrips = this.CantripsUpDown.Value,
             };
 
             Program.UndoRedoService.AddCommand(new AddCommand<MagicClass>(this.MagicClasses, magicClass, this.ConciergePage));

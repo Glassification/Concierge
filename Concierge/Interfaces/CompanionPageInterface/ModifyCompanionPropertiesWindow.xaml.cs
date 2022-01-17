@@ -39,10 +39,6 @@ namespace Concierge.Interfaces.CompanionPageInterface
 
         private void FillFields()
         {
-            this.AcUpDown.UpdatingValue();
-            this.PerceptionUpDown.UpdatingValue();
-            this.MovementUpDown.UpdatingValue();
-
             this.NameTextBox.Text = this.Properties.Name;
             this.AcUpDown.Value = this.Properties.ArmorClass;
             this.PerceptionUpDown.Value = this.Properties.Perception;
@@ -55,10 +51,10 @@ namespace Concierge.Interfaces.CompanionPageInterface
             var oldItem = this.Properties.DeepCopy();
 
             this.Properties.Name = this.NameTextBox.Text;
-            this.Properties.ArmorClass = this.AcUpDown.Value ?? 0;
-            this.Properties.Perception = this.PerceptionUpDown.Value ?? 0;
+            this.Properties.ArmorClass = this.AcUpDown.Value;
+            this.Properties.Perception = this.PerceptionUpDown.Value;
             this.Properties.Vision = (VisionTypes)Enum.Parse(typeof(VisionTypes), this.VisionComboBox.Text);
-            this.Properties.Movement = this.MovementUpDown.Value ?? 0;
+            this.Properties.Movement = this.MovementUpDown.Value;
 
             Program.UndoRedoService.AddCommand(new EditCommand<CompanionProperties>(this.Properties, oldItem, this.ConciergePage));
         }

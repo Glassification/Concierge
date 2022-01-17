@@ -82,9 +82,6 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
 
         private void FillFields(Ammunition ammunition)
         {
-            this.QuantityUpDown.UpdatingValue();
-            this.UsedUpDown.UpdatingValue();
-
             this.NameComboBox.Text = ammunition.Name;
             this.QuantityUpDown.Value = ammunition.Quantity;
             this.BonusTextBox.Text = ammunition.Bonus;
@@ -94,9 +91,6 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
 
         private void ClearFields()
         {
-            this.QuantityUpDown.UpdatingValue();
-            this.UsedUpDown.UpdatingValue();
-
             this.NameComboBox.Text = string.Empty;
             this.QuantityUpDown.Value = 0;
             this.BonusTextBox.Text = string.Empty;
@@ -109,10 +103,10 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
             var oldItem = ammunition.DeepCopy();
 
             ammunition.Name = this.NameComboBox.Text;
-            ammunition.Quantity = this.QuantityUpDown.Value ?? 0;
+            ammunition.Quantity = this.QuantityUpDown.Value;
             ammunition.Bonus = this.BonusTextBox.Text;
             ammunition.DamageType = (DamageTypes)Enum.Parse(typeof(DamageTypes), this.DamageTypeComboBox.Text);
-            ammunition.Used = this.UsedUpDown.Value ?? 0;
+            ammunition.Used = this.UsedUpDown.Value;
 
             Program.UndoRedoService.AddCommand(new EditCommand<Ammunition>(ammunition, oldItem, this.ConciergePage));
         }
@@ -124,10 +118,10 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
             var ammo = new Ammunition()
             {
                 Name = this.NameComboBox.Text,
-                Quantity = this.QuantityUpDown.Value ?? 0,
+                Quantity = this.QuantityUpDown.Value,
                 Bonus = this.BonusTextBox.Text,
                 DamageType = (DamageTypes)Enum.Parse(typeof(DamageTypes), this.DamageTypeComboBox.Text),
-                Used = this.UsedUpDown.Value ?? 0,
+                Used = this.UsedUpDown.Value,
             };
 
             Program.UndoRedoService.AddCommand(new AddCommand<Ammunition>(this.Ammunitions, ammo, this.ConciergePage));

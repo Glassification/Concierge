@@ -76,18 +76,16 @@ namespace Concierge.Interfaces.DetailsPageInterface
         {
             if (this.Appearance.Height.UnitType == UnitTypes.Imperial)
             {
-                return UnitFormat.CombineFeetAndInches(this.FeetUpDown.Value ?? 0, this.InchesUpDown.Value ?? 0);
+                return UnitFormat.CombineFeetAndInches(this.FeetUpDown.Value, this.InchesUpDown.Value);
             }
             else
             {
-                return this.HeightUpDown.Value ?? 0;
+                return this.HeightUpDown.Value;
             }
         }
 
         private void FillFields()
         {
-            this.AgeUpDown.UpdatingValue();
-
             this.GenderComboBox.Text = this.Appearance.Gender;
             this.AgeUpDown.Value = this.Appearance.Age;
             this.WeightUpDown.Value = this.Appearance.Weight.Value;
@@ -108,9 +106,9 @@ namespace Concierge.Interfaces.DetailsPageInterface
             var oldItem = this.Appearance.DeepCopy();
 
             this.Appearance.Gender = this.GenderComboBox.Text;
-            this.Appearance.Age = this.AgeUpDown.Value ?? 0;
+            this.Appearance.Age = this.AgeUpDown.Value;
             this.Appearance.Height.Value = this.UpdateHeight();
-            this.Appearance.Weight.Value = this.WeightUpDown.Value ?? 0;
+            this.Appearance.Weight.Value = this.WeightUpDown.Value;
             this.Appearance.SkinColour = this.SkinColourTextBox.Text;
             this.Appearance.EyeColour = this.EyeColourTextBox.Text;
             this.Appearance.HairColour = this.HairColourTextBox.Text;

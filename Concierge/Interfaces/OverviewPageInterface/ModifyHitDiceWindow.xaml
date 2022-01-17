@@ -5,7 +5,10 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-    xmlns:components="clr-namespace:Concierge.Interfaces.Components" xmlns:viewmodels="clr-namespace:Concierge.Interfaces.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:ConciergeViewModel}"
+    xmlns:controls="clr-namespace:Concierge.Interfaces.Controls"
+    xmlns:components="clr-namespace:Concierge.Interfaces.Components"
+    xmlns:viewmodels="clr-namespace:Concierge.Interfaces.ViewModels"
+    d:DataContext="{d:DesignInstance Type=viewmodels:ConciergeViewModel}"
     mc:Ignorable="d" 
     Title="ModifyHitDiceWindow"
     Height="400"
@@ -78,7 +81,7 @@
 
                     <!--Value-->
                     <Grid Grid.Column="1">
-                        <components:ConciergeIntegerUpDown x:Name="UsedD6UpDown"/>
+                        <controls:IntegerUpDown x:Name="UsedD6UpDown"/>
                     </Grid>
                 </Grid>
 
@@ -101,7 +104,7 @@
 
                     <!--Value-->
                     <Grid Grid.Column="1">
-                        <components:ConciergeIntegerUpDown x:Name="UsedD8UpDown"/>
+                        <controls:IntegerUpDown x:Name="UsedD8UpDown"/>
                     </Grid>
                 </Grid>
 
@@ -124,7 +127,7 @@
 
                     <!--Value-->
                     <Grid Grid.Column="1">
-                        <components:ConciergeIntegerUpDown x:Name="UsedD10UpDown"/>
+                        <controls:IntegerUpDown x:Name="UsedD10UpDown"/>
                     </Grid>
                 </Grid>
 
@@ -147,7 +150,7 @@
 
                     <!--Value-->
                     <Grid Grid.Column="1">
-                        <components:ConciergeIntegerUpDown x:Name="UsedD12UpDown"/>
+                        <controls:IntegerUpDown x:Name="UsedD12UpDown"/>
                     </Grid>
                 </Grid>
             </Grid>
@@ -180,7 +183,7 @@
 
                     <!--Value-->
                     <Grid Grid.Column="1">
-                        <components:ConciergeIntegerUpDown x:Name="TotalD6UpDown"/>
+                        <controls:IntegerUpDown x:Name="TotalD6UpDown"/>
                     </Grid>
                 </Grid>
 
@@ -203,7 +206,7 @@
 
                     <!--Value-->
                     <Grid Grid.Column="1">
-                        <components:ConciergeIntegerUpDown x:Name="TotalD8UpDown"/>
+                        <controls:IntegerUpDown x:Name="TotalD8UpDown"/>
                     </Grid>
                 </Grid>
 
@@ -226,7 +229,7 @@
 
                     <!--Value-->
                     <Grid Grid.Column="1">
-                        <components:ConciergeIntegerUpDown x:Name="TotalD10UpDown"/>
+                        <controls:IntegerUpDown x:Name="TotalD10UpDown"/>
                     </Grid>
                 </Grid>
 
@@ -249,7 +252,7 @@
 
                     <!--Value-->
                     <Grid Grid.Column="1">
-                        <components:ConciergeIntegerUpDown x:Name="TotalD12UpDown"/>
+                        <controls:IntegerUpDown x:Name="TotalD12UpDown"/>
                     </Grid>
                 </Grid>
 

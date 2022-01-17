@@ -58,8 +58,6 @@ namespace Concierge.Interfaces.OverviewPageInterface
 
         private void ClearFields()
         {
-            this.AmountUpDown.UpdatingValue();
-
             this.AddRadioButton.IsChecked = true;
             this.GpRadioButton.IsChecked = true;
             this.AmountUpDown.Value = 0;
@@ -83,8 +81,8 @@ namespace Concierge.Interfaces.OverviewPageInterface
         private int GetAmount()
         {
             return this.AddRadioButton.IsChecked ?? false
-                ? this.AmountUpDown.Value ?? 0
-                : this.SubtractRadioButton.IsChecked ?? false ? (this.AmountUpDown.Value ?? 0) * -1 : 0;
+                ? this.AmountUpDown.Value
+                : this.SubtractRadioButton.IsChecked ?? false ? this.AmountUpDown.Value * -1 : 0;
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)

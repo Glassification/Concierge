@@ -12,6 +12,8 @@ namespace Concierge.Configuration.Objects
         {
         }
 
+        public ColorPicker ColorPicker { get; set; }
+
         public Dictionary<string, string> CustomColors { get; set; }
 
         public StartUp StartUp { get; set; }

@@ -11,11 +11,11 @@ namespace Concierge.Interfaces.ToolsPageInterface
     using System.Windows.Input;
     using System.Windows.Media;
 
+    using Concierge.Interfaces.Controls;
     using Concierge.Interfaces.Enums;
     using Concierge.Tools;
     using Concierge.Tools.DivideLoot;
     using Concierge.Utility;
-    using Xceed.Wpf.Toolkit;
 
     /// <summary>
     /// Interaction logic for ToolsPage.xaml.
@@ -186,24 +186,6 @@ namespace Concierge.Interfaces.ToolsPageInterface
 
         private void SetDefaultDiceValues()
         {
-            this.D4NumberUpDown.UpdatingValue();
-            this.D4ModifierUpDown.UpdatingValue();
-            this.D6NumberUpDown.UpdatingValue();
-            this.D6ModifierUpDown.UpdatingValue();
-            this.D8NumberUpDown.UpdatingValue();
-            this.D8ModifierUpDown.UpdatingValue();
-            this.D10NumberUpDown.UpdatingValue();
-            this.D10ModifierUpDown.UpdatingValue();
-            this.D100NumberUpDown.UpdatingValue();
-            this.D100ModifierUpDown.UpdatingValue();
-            this.D12NumberUpDown.UpdatingValue();
-            this.D12ModifierUpDown.UpdatingValue();
-            this.D20NumberUpDown.UpdatingValue();
-            this.D20ModifierUpDown.UpdatingValue();
-            this.DxNumberUpDown.UpdatingValue();
-            this.DxModifierUpDown.UpdatingValue();
-            this.DxDieUpDown.UpdatingValue();
-
             SetDieValue(this.D4NumberUpDown, this.D4ModifierUpDown, this.D4Plus, this.D4Result);
             SetDieValue(this.D6NumberUpDown, this.D6ModifierUpDown, this.D6Plus, this.D6Result);
             SetDieValue(this.D8NumberUpDown, this.D8ModifierUpDown, this.D8Plus, this.D8Result);

@@ -11,7 +11,6 @@ namespace Concierge.Interfaces.Components
     using System.Windows.Media;
 
     using Concierge.Character.Notes;
-    using Concierge.Utility;
     using Concierge.Utility.Colors;
     using MaterialDesignThemes.Wpf;
 

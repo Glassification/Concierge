@@ -48,13 +48,6 @@ namespace Concierge.Interfaces.OverviewPageInterface
 
         private void FillFields()
         {
-            this.StrengthUpDown.UpdatingValue();
-            this.DexterityUpDown.UpdatingValue();
-            this.ConstitutionUpDown.UpdatingValue();
-            this.IntelligenceUpDown.UpdatingValue();
-            this.WisdomUpDown.UpdatingValue();
-            this.CharismaUpDown.UpdatingValue();
-
             this.StrengthUpDown.Value = this.Attributes.Strength;
             this.DexterityUpDown.Value = this.Attributes.Dexterity;
             this.ConstitutionUpDown.Value = this.Attributes.Constitution;
@@ -67,12 +60,12 @@ namespace Concierge.Interfaces.OverviewPageInterface
         {
             var oldItem = this.Attributes.DeepCopy();
 
-            this.Attributes.Strength = this.StrengthUpDown.Value ?? 0;
-            this.Attributes.Dexterity = this.DexterityUpDown.Value ?? 0;
-            this.Attributes.Constitution = this.ConstitutionUpDown.Value ?? 0;
-            this.Attributes.Intelligence = this.IntelligenceUpDown.Value ?? 0;
-            this.Attributes.Wisdom = this.WisdomUpDown.Value ?? 0;
-            this.Attributes.Charisma = this.CharismaUpDown.Value ?? 0;
+            this.Attributes.Strength = this.StrengthUpDown.Value;
+            this.Attributes.Dexterity = this.DexterityUpDown.Value;
+            this.Attributes.Constitution = this.ConstitutionUpDown.Value;
+            this.Attributes.Intelligence = this.IntelligenceUpDown.Value;
+            this.Attributes.Wisdom = this.WisdomUpDown.Value;
+            this.Attributes.Charisma = this.CharismaUpDown.Value;
 
             Program.UndoRedoService.AddCommand(new EditCommand<Attributes>(this.Attributes, oldItem, this.ConciergePage));
         }

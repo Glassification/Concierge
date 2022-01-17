@@ -47,10 +47,6 @@ namespace Concierge.Interfaces.OverviewPageInterface
 
         private void FillFields()
         {
-            this.CurrentHpUpDown.UpdatingValue();
-            this.TemporaryHpUpDown.UpdatingValue();
-            this.TotalHpUpDown.UpdatingValue();
-
             this.CurrentHpUpDown.Value = this.Health.BaseHealth;
             this.TemporaryHpUpDown.Value = this.Health.TemporaryHealth;
             this.TotalHpUpDown.Value = this.Health.MaxHealth;
@@ -63,9 +59,9 @@ namespace Concierge.Interfaces.OverviewPageInterface
         {
             var oldItem = this.Health.DeepCopy();
 
-            this.Health.MaxHealth = this.TotalHpUpDown.Value ?? 0;
-            this.Health.BaseHealth = this.CurrentHpUpDown.Value ?? 0;
-            this.Health.TemporaryHealth = this.TemporaryHpUpDown.Value ?? 0;
+            this.Health.MaxHealth = this.TotalHpUpDown.Value;
+            this.Health.BaseHealth = this.CurrentHpUpDown.Value;
+            this.Health.TemporaryHealth = this.TemporaryHpUpDown.Value;
 
             Program.UndoRedoService.AddCommand(new EditCommand<Health>(this.Health, oldItem, this.ConciergePage));
         }
@@ -100,7 +96,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
             Program.Modify();
         }
 
-        private void TotalHpUpDown_ValueChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
+        private void TotalHpUpDown_ValueChanged(object sender, RoutedEventArgs e)
         {
             if (this.TotalHpUpDown.Value < this.CurrentHpUpDown.Value)
             {

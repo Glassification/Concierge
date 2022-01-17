@@ -6,6 +6,7 @@ namespace Concierge.Utility.Extensions
 {
     using System;
     using System.IO;
+    using System.Linq;
     using System.Text;
     using System.Text.RegularExpressions;
     using System.Windows;
@@ -133,6 +134,37 @@ namespace Concierge.Utility.Extensions
                 Program.Logger.Error(ex);
                 return Brushes.Transparent;
             }
+        }
+
+        public static Color ToColor(this string colorName)
+        {
+            try
+            {
+                colorName = colorName.Strip(" ").Strip("-").Strip(".").Strip("'");
+                return (Color)ColorConverter.ConvertFromString(colorName);
+            }
+            catch (Exception ex)
+            {
+                Program.Logger.Error(ex);
+                return Colors.Transparent;
+            }
+        }
+
+        public static string FormatColorName(this string name)
+        {
+            var charArray = name.ToArray();
+            var offset = 0;
+
+            for (int i = 1; i < charArray.Length; i++)
+            {
+                if (char.IsUpper(charArray[i]))
+                {
+                    name = name.Insert(i + offset, " ");
+                    offset++;
+                }
+            }
+
+            return name;
         }
     }
 }
