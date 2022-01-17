@@ -127,6 +127,9 @@
   <data name="Ammunition" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Json\Ammunition.json;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="ColorPickerBackground" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Images\ColorPickerBackground.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="GenericTapSoundLoud" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Sounds\GenericTapSoundLoud.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>

@@ -13,6 +13,7 @@ namespace Concierge.Interfaces.Controls
 
     using Concierge.Configuration;
     using Concierge.Interfaces.Components;
+    using Concierge.Interfaces.UtilityInterface;
     using Concierge.Utility.Extensions;
     using Concierge.Utility.Utilities;
 
@@ -37,7 +38,6 @@ namespace Concierge.Interfaces.Controls
             this.DefaultColorList.ItemsSource = ColorUtility.ListDotNetColors();
             this.DefaultColorList.SelectedIndex = 0;
             this.SelectedColor = Colors.White;
-            this.SelectCustomColorButton.IsEnabled = false;
             this.LoadColorList();
             SetColorButtons(this.DefaultColorsStackPanel, AppSettingsManager.ColorPicker.DefaultColors);
             SetColorButtons(this.RecentColorsStackPanel, this.RecentColors);
@@ -145,6 +145,19 @@ namespace Concierge.Interfaces.Controls
         private void PickColorButton_Click(object sender, RoutedEventArgs e)
         {
             this.RaiseEvent(new RoutedEventArgs(ColorChangedEvent));
+        }
+
+        private void SelectCustomColorButton_Click(object sender, RoutedEventArgs e)
+        {
+            var result = new CustomColorWindow().ShowColorWindow(this.SelectedColor);
+            this.PopupToggleButton.IsChecked = false;
+
+            if (result != Colors.Transparent)
+            {
+                this.SelectedColor = result;
+                this.AddRecentColor(this.SelectedColor);
+                this.RaiseEvent(new RoutedEventArgs(ColorChangedEvent));
+            }
         }
     }
 }

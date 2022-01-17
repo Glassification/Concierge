@@ -7,6 +7,7 @@ namespace Concierge.Interfaces.Components
     using System;
     using System.Windows;
     using System.Windows.Input;
+    using System.Windows.Media;
     using System.Windows.Media.Animation;
 
     using Concierge.Character.Enums;
@@ -101,6 +102,12 @@ namespace Concierge.Interfaces.Components
         {
             Program.Logger.Error($"No implemented ShowDamage method for {item}.");
             return ConciergeWindowResult.NoResult;
+        }
+
+        public virtual Color ShowColorWindow(Color color)
+        {
+            Program.Logger.Error($"No implemented ShowColorWindow method for {color}.");
+            return Colors.Transparent;
         }
 
         public virtual PopupButtons ShowPopup()

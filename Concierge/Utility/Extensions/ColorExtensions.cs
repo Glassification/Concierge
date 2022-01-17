@@ -15,7 +15,7 @@ namespace Concierge.Utility.Extensions
         public static string GetName(this Color color)
         {
             var properties = typeof(Colors).GetProperties().FirstOrDefault(p => Color.AreClose((Color)p.GetValue(null), color));
-            return properties != null ? properties.Name.FormatColorName() : color.ToString();
+            return properties != null ? properties.Name.FormatColorName() : color.ToHexWithoutAlpha();
         }
 
         public static SolidColorBrush GetForeColor(this Color color)
@@ -65,6 +65,11 @@ namespace Concierge.Utility.Extensions
                 (byte)(ColorUtility.ColourSpace - color.R),
                 (byte)(ColorUtility.ColourSpace - color.G),
                 (byte)(ColorUtility.ColourSpace - color.B));
+        }
+
+        public static string ToHexWithoutAlpha(this Color color)
+        {
+            return color.ToString().Remove(1, 2);
         }
     }
 }

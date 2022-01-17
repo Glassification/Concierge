@@ -5,6 +5,7 @@
 namespace Concierge.Services
 {
     using System;
+    using System.Windows.Media;
 
     using Concierge.Character.Enums;
     using Concierge.Interfaces.Components;
@@ -57,6 +58,12 @@ namespace Concierge.Services
             conciergeWindow.ConciergePage = conciergePage;
 
             return conciergeWindow.ShowDamage<T>(item);
+        }
+
+        public static Color ShowColorWindow(Type typeOfWindow, Color color)
+        {
+            var conciergeWindow = (ConciergeWindow)Activator.CreateInstance(typeOfWindow);
+            return conciergeWindow.ShowColorWindow(color);
         }
 
         public static PopupButtons ShowPopup(Type typeOfWindow)

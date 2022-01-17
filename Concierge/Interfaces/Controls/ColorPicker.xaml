@@ -203,6 +203,7 @@
                                     VerticalAlignment="Stretch"
                                     HorizontalAlignment="Stretch"
                                     Content="Custom..."
+                                    Click="SelectCustomColorButton_Click"
                                     Style="{StaticResource ConciergeTextButtonStyle}"/>
                             </Grid>
                         </Grid>
