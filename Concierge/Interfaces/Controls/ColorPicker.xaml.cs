@@ -37,6 +37,7 @@ namespace Concierge.Interfaces.Controls
             this.DefaultColorList.ItemsSource = ColorUtility.ListDotNetColors();
             this.DefaultColorList.SelectedIndex = 0;
             this.SelectedColor = Colors.White;
+            this.SelectCustomColorButton.IsEnabled = false;
             this.LoadColorList();
             SetColorButtons(this.DefaultColorsStackPanel, AppSettingsManager.ColorPicker.DefaultColors);
             SetColorButtons(this.RecentColorsStackPanel, this.RecentColors);
