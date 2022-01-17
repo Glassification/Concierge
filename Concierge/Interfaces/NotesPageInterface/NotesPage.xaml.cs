@@ -19,7 +19,6 @@ namespace Concierge.Interfaces.NotesPageInterface
     using Concierge.Character.Notes;
     using Concierge.Commands;
     using Concierge.Interfaces.Components;
-    using Concierge.Interfaces.Controls;
     using Concierge.Interfaces.Enums;
     using Concierge.Services;
     using Concierge.Tools.Interface;
@@ -49,6 +48,7 @@ namespace Concierge.Interfaces.NotesPageInterface
             this.NotesTextBox.FontSize = 20;
             this.NotesTextBox.Foreground = Brushes.White;
             this.NotesTextBox.IsEnabled = false;
+            this.ToolbarStackPanel.IsEnabled = false;
         }
 
         public Document SelectedDocument
@@ -62,6 +62,8 @@ namespace Concierge.Interfaces.NotesPageInterface
             {
                 this.selectedDocument = value;
                 this.NotesTextBox.IsEnabled = value != null;
+                this.ToolbarStackPanel.IsEnabled = value != null;
+                this.ToolbarStackPanel.Opacity = value is null ? 0.5 : 1;
             }
         }
 

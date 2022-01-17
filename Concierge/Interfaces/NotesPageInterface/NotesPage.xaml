@@ -135,7 +135,10 @@
 
                 <!--Toolbar-->
                 <Grid Grid.Row="0">
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                    <StackPanel
+                        x:Name="ToolbarStackPanel"
+                        Orientation="Horizontal"
+                        HorizontalAlignment="Left">
                         <components:ConciergeDesignButton 
                             Style="{StaticResource ConciergeDesignButtonStyle}" 
                             x:Name="ButtonCut"
