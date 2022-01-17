@@ -127,7 +127,7 @@
             <!--Notes-->
             <Grid Grid.Column="1"
                   Margin="3,0,3,2.5"
-                  Background="#FF3e3e42" Grid.ColumnSpan="2">
+                  Background="#252526" Grid.ColumnSpan="2">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="10*"/>
                     <RowDefinition Height="90*"/>

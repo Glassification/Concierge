@@ -118,6 +118,30 @@
         </Style.Triggers>
     </Style>
 
+    <Style x:Key="ConciergeColorToggleButtonStyle" TargetType="{x:Type ToggleButton}">
+        <Setter Property="Background" Value="#333337" />
+        <Setter Property="BorderBrush" Value="Transparent"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ToggleButton}">
+                    <Border 
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="#1C3947"/>
+                <Setter Property="BorderBrush" Value="#227EA9"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
     <Style x:Key="ConciergePopupButtonStyle" TargetType="{x:Type Button}">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderBrush" Value="Transparent"/>

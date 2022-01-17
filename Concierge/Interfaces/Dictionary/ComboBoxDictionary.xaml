@@ -10,7 +10,7 @@
                   x:Name="Border"
                   Grid.ColumnSpan="2"
                   CornerRadius="0"
-                  Background="#FF3F3F3F"
+                  Background="#333337"
                   BorderBrush="Transparent"
                   BorderThickness="1" />
             <Border

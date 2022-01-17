@@ -6,7 +6,6 @@ namespace Concierge.Utility.Extensions
 {
     using System;
     using System.Linq;
-    using System.Reflection;
     using System.Windows.Media;
 
     using Concierge.Utility.Utilities;
@@ -16,7 +15,7 @@ namespace Concierge.Utility.Extensions
         public static string GetName(this Color color)
         {
             var properties = typeof(Colors).GetProperties().FirstOrDefault(p => Color.AreClose((Color)p.GetValue(null), color));
-            return properties != null ? properties.Name : color.ToString();
+            return properties != null ? properties.Name.FormatColorName() : color.ToString();
         }
 
         public static SolidColorBrush GetForeColor(this Color color)

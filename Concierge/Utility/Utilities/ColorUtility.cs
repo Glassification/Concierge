@@ -24,7 +24,7 @@ namespace Concierge.Utility.Utilities
 
             for (int i = 27; i < colors.Length - 8; i++)
             {
-                colorList.Add(colors.GetValue(i).ToString());
+                colorList.Add(colors.GetValue(i).ToString().FormatColorName());
             }
 
             return colorList;

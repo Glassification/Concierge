@@ -10,6 +10,7 @@ namespace Concierge.Interfaces.Components
     using System.Windows.Media;
 
     using Concierge.Utility;
+    using Concierge.Utility.Extensions;
 
     public class ConciergeColorButton : Button
     {
@@ -22,6 +23,7 @@ namespace Concierge.Interfaces.Components
             this.Height = 40;
             this.SnapsToDevicePixels = true;
             this.Margin = new Thickness(5, 0, 5, 0);
+            this.Index = -1;
 
             this.Click += this.Button_Click;
             this.MouseEnter += this.Button_MouseEnter;
@@ -39,8 +41,11 @@ namespace Concierge.Interfaces.Components
             {
                 this._color = value;
                 this.Background = new SolidColorBrush(value);
+                this.ToolTip = this._color.GetName();
             }
         }
+
+        public int Index { get; set; }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {

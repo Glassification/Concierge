@@ -11,13 +11,28 @@
     mc:Ignorable="d"
     BorderThickness="1">
     <Grid>
-        <StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <components:ConciergeColorButton
+                x:Name="PickColorButton"
+                Height="40"
+                Width="60"
+                Content="Colour"
+                Margin="5,0,0,0"
+                Click="PickColorButton_Click"
+                Style="{StaticResource ColorPickerButtonStyle}"/>
             <components:ConciergeColorToggleButton
                 x:Name="PopupToggleButton"
                 Height="40"
-                Width="60"
-                Style="{StaticResource ConciergeToggleButtonStyle}"
+                Width="20"
+                Style="{StaticResource ConciergeColorToggleButtonStyle}"
                 IsHitTestVisible="{Binding ElementName=ColorPopup, Path=IsOpen, Mode=OneWay, Converter={local:BoolInverter}}">
+                <Path
+                  x:Name="Arrow"
+                  Grid.Column="1"
+                  Fill="White"
+                  HorizontalAlignment="Center"
+                  VerticalAlignment="Center"
+                  Data="M0,0 L0,2 L4,6 L8,2 L8,0 L4,4 z"/>
             </components:ConciergeColorToggleButton>
             <Popup
                 x:Name="ColorPopup"
@@ -43,7 +58,7 @@
 
                         <Grid Grid.Row="0">
                             <TextBlock
-                                Text="Default Colors"
+                                Text="Default Colours"
                                 Foreground="White"
                                 FontSize="15"
                                 VerticalAlignment="Center"
@@ -52,6 +67,7 @@
                         </Grid>
                         <Grid Grid.Row="1">
                             <StackPanel
+                                x:Name="DefaultColorsStackPanel"
                                 Orientation="Horizontal"
                                 Margin="5,0,5,0"
                                 HorizontalAlignment="Center">
@@ -94,7 +110,7 @@
                         </Grid>
                         <Grid Grid.Row="2">
                             <TextBlock
-                                Text="Recent Colors"
+                                Text="Recent Colours"
                                 Foreground="White"
                                 FontSize="15"
                                 VerticalAlignment="Center"
@@ -103,42 +119,50 @@
                         </Grid>
                         <Grid Grid.Row="3">
                             <StackPanel
+                                x:Name="RecentColorsStackPanel"
                                 Orientation="Horizontal"
                                 Margin="5,0,5,0"
                                 HorizontalAlignment="Center">
                                 <components:ConciergeColorButton
                                     x:Name="RecentColor0"
                                     Color="Red"
+                                    Index="0"
                                     Click="ColorButton_Click"
                                     Style="{StaticResource ColorPickerButtonStyle}"/>
                                 <components:ConciergeColorButton
                                     x:Name="RecentColor1"
                                     Color="Green"
+                                    Index="1"
                                     Click="ColorButton_Click"
                                     Style="{StaticResource ColorPickerButtonStyle}"/>
                                 <components:ConciergeColorButton
                                     x:Name="RecentColor2"
                                     Color="Blue"
+                                    Index="2"
                                     Click="ColorButton_Click"
                                     Style="{StaticResource ColorPickerButtonStyle}"/>
                                 <components:ConciergeColorButton
                                     x:Name="RecentColor3"
                                     Color="Yellow"
+                                    Index="3"
                                     Click="ColorButton_Click"
                                     Style="{StaticResource ColorPickerButtonStyle}"/>
                                 <components:ConciergeColorButton
                                     x:Name="RecentColor4"
                                     Color="Orange"
+                                    Index="4"
                                     Click="ColorButton_Click"
                                     Style="{StaticResource ColorPickerButtonStyle}"/>
                                 <components:ConciergeColorButton
                                     x:Name="RecentColor5"
                                     Color="White"
+                                    Index="5"
                                     Click="ColorButton_Click"
                                     Style="{StaticResource ColorPickerButtonStyle}"/>
                                 <components:ConciergeColorButton
                                     x:Name="RecentColor6"
                                     Color="Black"
+                                    Index="6"
                                     Click="ColorButton_Click"
                                     Style="{StaticResource ColorPickerButtonStyle}"/>
                             </StackPanel>
@@ -162,6 +186,10 @@
                                 Grid.Column="1">
                                 <components:ConciergeTextButton
                                     x:Name="SelectDefaultColorButton"
+                                    Height="auto"
+                                    Width="auto"
+                                    VerticalAlignment="Stretch"
+                                    HorizontalAlignment="Stretch"
                                     Content="Select"
                                     Click="SelectDefaultColorButton_Click"
                                     Style="{StaticResource ConciergeTextButtonStyle}"/>
@@ -170,6 +198,10 @@
                                 Grid.Column="2">
                                 <components:ConciergeTextButton
                                     x:Name="SelectCustomColorButton"
+                                    Height="auto"
+                                    Width="auto"
+                                    VerticalAlignment="Stretch"
+                                    HorizontalAlignment="Stretch"
                                     Content="Custom..."
                                     Style="{StaticResource ConciergeTextButtonStyle}"/>
                             </Grid>
