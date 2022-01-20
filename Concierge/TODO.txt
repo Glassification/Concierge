@@ -1,2 +1,3 @@
 ﻿Add searching to Notes
 Create installer
+Add Save status to notes changes

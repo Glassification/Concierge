@@ -6,8 +6,10 @@ namespace Concierge.Character.Notes
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
 
     using Concierge.Utility;
+    using Concierge.Utility.Extensions;
     using Newtonsoft.Json;
 
     public class Chapter : ICopyable<Chapter>
@@ -35,7 +37,7 @@ namespace Concierge.Character.Notes
         {
             return new Chapter(this.Name)
             {
-                Documents = new List<Document>(this.Documents),
+                Documents = this.Documents.DeepCopy().ToList(),
                 IsExpanded = this.IsExpanded,
                 Id = this.Id,
             };

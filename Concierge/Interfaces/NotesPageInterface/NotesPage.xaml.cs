@@ -93,14 +93,8 @@ namespace Concierge.Interfaces.NotesPageInterface
         {
             if (this.SelectedDocument != null)
             {
-                var savedDocument = this.SaveCurrentDocument();
-
-                if (!savedDocument.Equals(this.SelectedDocument.RTF))
-                {
-                    Program.Modify();
-                }
-
-                this.SelectedDocument.RTF = savedDocument;
+                this.SelectedDocument.RTF = this.SaveCurrentDocument();
+                Program.Modify();
             }
         }
 

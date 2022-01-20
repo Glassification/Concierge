@@ -11,7 +11,6 @@ namespace Concierge.Interfaces.UtilityInterface
     using System.Windows.Media.Imaging;
 
     using Concierge.Interfaces.Components;
-    using Concierge.Interfaces.Enums;
     using Concierge.Utility.Extensions;
 
     /// <summary>
@@ -73,16 +72,24 @@ namespace Concierge.Interfaces.UtilityInterface
             this.BlueUpDown.Value = color.B;
         }
 
+        private void SetColorAtPoint(Point point)
+        {
+            var img = this.ColorPickerImage.Source as BitmapSource;
+
+            if (point.X > 0 && point.Y > 0 && point.X < img.PixelWidth && point.Y < img.PixelHeight)
+            {
+                this.UpdateRgbValues(this.ColorPickerImage.GetColorFromPoint(point));
+            }
+        }
+
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             this.SelectedColor = Colors.Transparent;
-            this.Result = ConciergeWindowResult.Exit;
             this.HideConciergeWindow();
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Result = ConciergeWindowResult.OK;
             this.HideConciergeWindow();
         }
 
@@ -123,13 +130,7 @@ namespace Concierge.Interfaces.UtilityInterface
                 return;
             }
 
-            var point = e.GetPosition(this.ColorPickerImage);
-            var img = this.ColorPickerImage.Source as BitmapSource;
-
-            if (point.X > 0 && point.Y > 0 && point.X < img.PixelWidth && point.Y < img.PixelHeight)
-            {
-                this.UpdateRgbValues(this.ColorPickerImage.GetColorFromPoint(point));
-            }
+            this.SetColorAtPoint(e.GetPosition(this.ColorPickerImage));
         }
 
         private void ColorPickerImage_MouseEnter(object sender, MouseEventArgs e)
@@ -145,6 +146,7 @@ namespace Concierge.Interfaces.UtilityInterface
         private void ColorPickerImage_MouseDown(object sender, MouseButtonEventArgs e)
         {
             Mouse.Capture(this.ColorPickerImage);
+            this.SetColorAtPoint(e.GetPosition(this.ColorPickerImage));
         }
 
         private void ColorPickerImage_MouseUp(object sender, MouseButtonEventArgs e)
