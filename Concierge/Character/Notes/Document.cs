@@ -12,8 +12,9 @@ namespace Concierge.Character.Notes
     {
         public Document(string name)
         {
-            this.Id = Guid.NewGuid();
             this.Name = name;
+            this.Id = Guid.NewGuid();
+            this.RTF = string.Empty;
         }
 
         public bool IsExpanded { get; set; }

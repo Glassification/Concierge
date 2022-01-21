@@ -10,6 +10,8 @@ namespace Concierge.Configuration.Objects
     {
         public ColorPicker()
         {
+            this.DefaultColors = new List<string>();
+            this.RecentColors = new List<string>();
         }
 
         public List<string> DefaultColors { get; set; }

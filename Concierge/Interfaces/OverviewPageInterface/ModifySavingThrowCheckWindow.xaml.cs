@@ -31,15 +31,19 @@ namespace Concierge.Interfaces.OverviewPageInterface
             this.CharismaComboBox.ItemsSource = Enum.GetValues(typeof(StatusChecks)).Cast<StatusChecks>();
 
             this.ConciergePage = ConciergePage.None;
+            this.SavingThrow = new SavingThrow();
         }
 
         private SavingThrow SavingThrow { get; set; }
 
         public override void ShowEdit<T>(T savingThrow)
         {
-            var castItem = savingThrow as SavingThrow;
-            this.SavingThrow = castItem;
+            if (savingThrow is not SavingThrow castItem)
+            {
+                return;
+            }
 
+            this.SavingThrow = castItem;
             this.FillFields();
             this.ShowConciergeWindow();
         }

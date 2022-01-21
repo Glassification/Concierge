@@ -27,18 +27,21 @@ namespace Concierge
             IsDebug = false;
 #endif
 
-            InitializeLogger();
+            Logger = new LocalLogger(IsDebug);
+            Logger.NewLine();
+            Logger.Info($"Starting Concierge v{AssemblyVersion}");
 
             IsTyping = false;
             ErrorService = new ErrorService(Logger);
             UndoRedoService = new UndoRedoService();
             CcsFile = new CcsFile();
             MainWindow = null;
+            BaseState = new ConciergeCharacter();
         }
 
         public delegate void ModifiedChangedEventHandler(object sender, EventArgs e);
 
-        public static event ModifiedChangedEventHandler ModifiedChanged;
+        public static event ModifiedChangedEventHandler? ModifiedChanged;
 
         public static bool IsDebug { get; }
 
@@ -59,11 +62,11 @@ namespace Concierge
             get
             {
                 var version = Assembly.GetExecutingAssembly().GetName().Version;
-                return $"{version.Major}.{version.Minor}.{version.Build}";
+                return $"{version?.Major}.{version?.Minor}.{version?.Build}";
             }
         }
 
-        public static MainWindow MainWindow { get; private set; }
+        public static MainWindow? MainWindow { get; private set; }
 
         private static ConciergeCharacter BaseState { get; set; }
 
@@ -106,14 +109,6 @@ namespace Concierge
             BaseState = CcsFile.Character.DeepCopy();
             ModifiedChanged?.Invoke(IsModified, new EventArgs());
             Logger.Info($"Updated Base State.");
-        }
-
-        private static void InitializeLogger()
-        {
-            Logger = new LocalLogger(IsDebug);
-
-            Logger.NewLine();
-            Logger.Info($"Starting Concierge v{AssemblyVersion}");
         }
     }
 }

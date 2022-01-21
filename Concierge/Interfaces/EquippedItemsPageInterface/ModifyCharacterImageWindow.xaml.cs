@@ -30,6 +30,8 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
             this.fileAccessService = new FileAccessService();
             this.FillTypeComboBox.ItemsSource = StringUtility.FormatEnumForDisplay(typeof(Stretch));
             this.ConciergePage = ConciergePage.None;
+            this.CharacterImage = new CharacterImage();
+            this.OriginalFileName = string.Empty;
         }
 
         private string OriginalFileName { get; set; }
@@ -52,9 +54,12 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
 
         public override void ShowEdit<T>(T characterImage)
         {
-            var castItem = characterImage as CharacterImage;
-            this.CharacterImage = castItem;
+            if (characterImage is not CharacterImage castItem)
+            {
+                return;
+            }
 
+            this.CharacterImage = castItem;
             this.FillFields();
             this.ShowConciergeWindow();
         }

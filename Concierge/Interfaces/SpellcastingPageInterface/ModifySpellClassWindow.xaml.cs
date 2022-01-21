@@ -28,6 +28,8 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
             this.ClassNameComboBox.ItemsSource = Constants.Classes;
             this.AbilityComboBox.ItemsSource = Enum.GetValues(typeof(Abilities)).Cast<Abilities>();
             this.ConciergePage = ConciergePage.None;
+            this.SelectedClass = new MagicClass();
+            this.MagicClasses = new List<MagicClass>();
         }
 
         public bool ItemsAdded { get; private set; }
@@ -58,7 +60,11 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
 
         public override bool ShowAdd<T>(T magicClasses)
         {
-            var castItem = magicClasses as List<MagicClass>;
+            if (magicClasses is not List<MagicClass> castItem)
+            {
+                return false;
+            }
+
             this.Editing = false;
             this.HeaderTextBlock.Text = this.HeaderText;
             this.MagicClasses = castItem;
@@ -72,7 +78,11 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
 
         public override void ShowEdit<T>(T magicClass)
         {
-            var castItem = magicClass as MagicClass;
+            if (magicClass is not MagicClass castItem)
+            {
+                return;
+            }
+
             this.Editing = true;
             this.HeaderTextBlock.Text = this.HeaderText;
             this.SelectedClass = castItem;
@@ -147,8 +157,9 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
 
         private void RefreshFields()
         {
-            this.AttackBonusTextBlock.Text = CharacterUtility.CalculateBonusFromAbility((Abilities)Enum.Parse(typeof(Abilities), this.AbilityComboBox.SelectedItem.ToString()), Program.CcsFile.Character).ToString();
-            this.SpellSaveTextBlock.Text = (CharacterUtility.CalculateBonusFromAbility((Abilities)Enum.Parse(typeof(Abilities), this.AbilityComboBox.SelectedItem.ToString()), Program.CcsFile.Character) + Constants.BaseDC).ToString();
+            string ability = this.AbilityComboBox.SelectedItem.ToString() ?? Abilities.NONE.ToString();
+            this.AttackBonusTextBlock.Text = CharacterUtility.CalculateBonusFromAbility((Abilities)Enum.Parse(typeof(Abilities), ability), Program.CcsFile.Character).ToString();
+            this.SpellSaveTextBlock.Text = (CharacterUtility.CalculateBonusFromAbility((Abilities)Enum.Parse(typeof(Abilities), ability), Program.CcsFile.Character) + Constants.BaseDC).ToString();
             this.PreparedSpellsTextBlock.Text = Program.CcsFile.Character.Spells.Where(x => (x.Class?.Equals(this.ClassNameComboBox.SelectedItem.ToString()) ?? false) && x.Prepared).ToList().Count.ToString();
         }
 

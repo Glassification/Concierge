@@ -47,14 +47,14 @@ namespace Concierge.Interfaces.CompanionPageInterface
 
         public void Edit(object itemToEdit)
         {
-            if (itemToEdit is not Weapon)
+            if (itemToEdit is not Weapon weapon)
             {
                 return;
             }
 
             var index = this.WeaponDataGrid.SelectedIndex;
             ConciergeWindowService.ShowEdit<Weapon>(
-                itemToEdit as Weapon,
+                weapon,
                 typeof(ModifyAttackWindow),
                 this.Window_ApplyChanges,
                 ConciergePage.Companion);
@@ -231,18 +231,18 @@ namespace Concierge.Interfaces.CompanionPageInterface
 
         private void ButtonDelete_Click(object sender, RoutedEventArgs e)
         {
-            if (this.WeaponDataGrid.SelectedItem != null)
+            if (this.WeaponDataGrid.SelectedItem is not Weapon weapon)
             {
-                var weapon = this.WeaponDataGrid.SelectedItem as Weapon;
-                var index = this.WeaponDataGrid.SelectedIndex;
-
-                Program.UndoRedoService.AddCommand(new DeleteCommand<Weapon>(Program.CcsFile.Character.Companion.Attacks, weapon, index, this.ConciergePage));
-                Program.CcsFile.Character.Companion.Attacks.Remove(weapon);
-                this.DrawAttacks();
-                this.WeaponDataGrid.SetSelectedIndex(index);
-
-                Program.Modify();
+                return;
             }
+
+            var index = this.WeaponDataGrid.SelectedIndex;
+            Program.UndoRedoService.AddCommand(new DeleteCommand<Weapon>(Program.CcsFile.Character.Companion.Attacks, weapon, index, this.ConciergePage));
+            Program.CcsFile.Character.Companion.Attacks.Remove(weapon);
+            this.DrawAttacks();
+            this.WeaponDataGrid.SetSelectedIndex(index);
+
+            Program.Modify();
         }
 
         private void EditHealthButton_Click(object sender, RoutedEventArgs e)
@@ -287,14 +287,14 @@ namespace Concierge.Interfaces.CompanionPageInterface
 
         private void SpentBox_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            if (e.ClickCount != 2)
+            if (e.ClickCount != 2 || sender is not Grid usedBox)
             {
                 return;
             }
 
             var hitDice = Program.CcsFile.Character.Companion.Vitality.HitDice;
             var oldItem = hitDice.DeepCopy();
-            switch ((sender as Grid).Name)
+            switch (usedBox.Name)
             {
                 case "D6SpentBox":
                     hitDice.SpentD6 = DisplayUtility.IncrementUsedSlots(hitDice.SpentD6, hitDice.TotalD6);
@@ -322,11 +322,13 @@ namespace Concierge.Interfaces.CompanionPageInterface
 
         private void SpentBox_MouseEnter(object sender, MouseEventArgs e)
         {
-            var grid = sender as Grid;
+            if (sender is not Grid grid)
+            {
+                return;
+            }
+
             var hitDice = Program.CcsFile.Character.Companion.Vitality.HitDice;
-
             this.CurrentHitDiceBox = grid.Name;
-
             switch (grid.Name)
             {
                 case "D6SpentBox":
@@ -350,7 +352,10 @@ namespace Concierge.Interfaces.CompanionPageInterface
 
         private void SpentBox_MouseLeave(object sender, MouseEventArgs e)
         {
-            var grid = sender as Grid;
+            if (sender is not Grid grid)
+            {
+                return;
+            }
 
             switch (grid.Name)
             {

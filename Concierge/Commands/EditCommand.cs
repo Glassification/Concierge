@@ -4,6 +4,8 @@
 
 namespace Concierge.Commands
 {
+    using System;
+
     using Concierge.Interfaces.Enums;
     using Concierge.Utility;
     using Concierge.Utility.Extensions;
@@ -16,22 +18,33 @@ namespace Concierge.Commands
 
         public EditCommand(T originalItem, T oldItem, ConciergePage conciergePage)
         {
+            if (originalItem is not ICopyable<T> newItem || oldItem is null)
+            {
+                throw new ArgumentException("Arguments are not valid");
+            }
+
             this.ConciergePage = conciergePage;
             this.OriginalItem = originalItem;
             this.oldItem = oldItem;
-            this.newItem = (originalItem as ICopyable<T>).DeepCopy();
+            this.newItem = newItem.DeepCopy();
         }
 
         private T OriginalItem { get; set; }
 
         public override void Redo()
         {
-            this.OriginalItem.SetProperties<T>(this.newItem);
+            if (this.newItem is not null)
+            {
+                this.OriginalItem?.SetProperties<T>(this.newItem);
+            }
         }
 
         public override void Undo()
         {
-            this.OriginalItem.SetProperties<T>(this.oldItem);
+            if (this.oldItem is not null)
+            {
+                this.OriginalItem?.SetProperties<T>(this.oldItem);
+            }
         }
 
         public override bool ShouldAdd()

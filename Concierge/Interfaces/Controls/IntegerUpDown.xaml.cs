@@ -134,8 +134,10 @@ namespace Concierge.Interfaces.Controls
 
         private static void OnValuePropertyChanged(DependencyObject target, DependencyPropertyChangedEventArgs e)
         {
-            var conciergeIntegerUpDown = target as IntegerUpDown;
-            conciergeIntegerUpDown.TextBoxValue.Text = e.NewValue.ToString();
+            if (target is IntegerUpDown conciergeIntegerUpDown)
+            {
+                conciergeIntegerUpDown.TextBoxValue.Text = e.NewValue.ToString();
+            }
         }
 
         private void SetIncreaseButtonStatus(int value, int max)

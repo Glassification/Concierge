@@ -7,14 +7,15 @@ namespace Concierge.Persistence
     using System.IO;
 
     using Concierge.Character;
-    using Concierge.Utility;
     using Newtonsoft.Json;
 
     public class CcsFile
     {
         public CcsFile()
         {
-            this.Default();
+            this.Character = new ConciergeCharacter();
+            this.Version = Program.AssemblyVersion;
+            this.AbsolutePath = string.Empty;
         }
 
         public ConciergeCharacter Character { get; set; }
@@ -25,15 +26,9 @@ namespace Concierge.Persistence
         public string FileName => Path.GetFileName(this.AbsolutePath);
 
         [JsonIgnore]
-        public string FilePath => Path.GetDirectoryName(this.AbsolutePath);
+        public string FilePath => Path.GetDirectoryName(this.AbsolutePath) ?? string.Empty;
 
         [JsonIgnore]
         public string AbsolutePath { get; set; }
-
-        public void Default()
-        {
-            this.Character = new ConciergeCharacter();
-            this.Version = Program.AssemblyVersion;
-        }
     }
 }

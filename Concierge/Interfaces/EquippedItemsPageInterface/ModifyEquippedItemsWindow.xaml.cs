@@ -25,6 +25,7 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
             this.InitializeComponent();
             this.SlotComboBox.ItemsSource = Enum.GetValues(typeof(EquipmentSlot)).Cast<EquipmentSlot>();
             this.ConciergePage = ConciergePage.None;
+            this.PreviousSlot = string.Empty;
         }
 
         public bool ItemsAdded { get; private set; }

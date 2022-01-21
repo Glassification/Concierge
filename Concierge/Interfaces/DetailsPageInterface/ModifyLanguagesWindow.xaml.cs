@@ -4,7 +4,6 @@
 
 namespace Concierge.Interfaces.DetailsPageInterface
 {
-    using System;
     using System.Collections.Generic;
     using System.Windows;
     using System.Windows.Controls;
@@ -25,6 +24,8 @@ namespace Concierge.Interfaces.DetailsPageInterface
             this.InitializeComponent();
             this.NameComboBox.ItemsSource = Constants.Languages;
             this.ConciergePage = ConciergePage.None;
+            this.SelectedLanguage = new Language();
+            this.Languages = new List<Language>();
         }
 
         public bool ItemsAdded { get; private set; }
@@ -53,7 +54,11 @@ namespace Concierge.Interfaces.DetailsPageInterface
 
         public override bool ShowAdd<T>(T languages)
         {
-            var castItem = languages as List<Language>;
+            if (languages is not List<Language> castItem)
+            {
+                return false;
+            }
+
             this.Editing = false;
             this.HeaderTextBlock.Text = this.HeaderText;
             this.Languages = castItem;
@@ -67,7 +72,11 @@ namespace Concierge.Interfaces.DetailsPageInterface
 
         public override void ShowEdit<T>(T language)
         {
-            var castItem = language as Language;
+            if (language is not Language castItem)
+            {
+                return;
+            }
+
             this.Editing = true;
             this.HeaderTextBlock.Text = this.HeaderText;
             this.SelectedLanguage = castItem;
@@ -159,9 +168,9 @@ namespace Concierge.Interfaces.DetailsPageInterface
 
         private void NameComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (this.NameComboBox.SelectedItem != null)
+            if (this.NameComboBox.SelectedItem is Language language)
             {
-                this.FillFields(this.NameComboBox.SelectedItem as Language);
+                this.FillFields(language);
             }
         }
     }

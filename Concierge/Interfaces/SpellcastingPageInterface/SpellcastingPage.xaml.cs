@@ -57,11 +57,11 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
 
         public void Edit(object itemToEdit)
         {
-            if (itemToEdit is Spell)
+            if (itemToEdit is Spell spell)
             {
                 var index = this.SpellListDataGrid.SelectedIndex;
                 ConciergeWindowService.ShowEdit<Spell>(
-                    itemToEdit as Spell,
+                    spell,
                     typeof(ModifySpellWindow),
                     this.Window_ApplyChanges,
                     ConciergePage.Spellcasting);
@@ -69,11 +69,11 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
                 this.DrawMagicClasses();
                 this.SpellListDataGrid.SetSelectedIndex(index);
             }
-            else if (itemToEdit is MagicClass)
+            else if (itemToEdit is MagicClass magicClass)
             {
                 var index = this.MagicClassDataGrid.SelectedIndex;
                 ConciergeWindowService.ShowEdit<MagicClass>(
-                    itemToEdit as MagicClass,
+                    magicClass,
                     typeof(ModifySpellClassWindow),
                     this.Window_ApplyChanges,
                     ConciergePage.Spellcasting);
@@ -301,15 +301,13 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
 
         private void UsedSlot_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            if (e.ClickCount != 2)
+            if (e.ClickCount != 2 || sender is not Grid usedBox)
             {
                 return;
             }
 
             var spellSlots = Program.CcsFile.Character.SpellSlots;
             var oldItem = spellSlots.DeepCopy();
-            var usedBox = sender as Grid;
-
             switch (usedBox.Name)
             {
                 case "UsedPactBox":
@@ -363,11 +361,13 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
 
         private void UsedSlot_MouseEnter(object sender, MouseEventArgs e)
         {
-            var grid = sender as Grid;
+            if (sender is not Grid grid)
+            {
+                return;
+            }
+
             var spellSlots = Program.CcsFile.Character.SpellSlots;
-
             this.CurrentSpellBox = grid.Name;
-
             switch (grid.Name)
             {
                 case "UsedPactBox":
@@ -415,7 +415,10 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
 
         private void UsedSlot_MouseLeave(object sender, MouseEventArgs e)
         {
-            var grid = sender as Grid;
+            if (sender is not Grid grid)
+            {
+                return;
+            }
 
             switch (grid.Name)
             {

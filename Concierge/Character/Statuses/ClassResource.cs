@@ -13,6 +13,7 @@ namespace Concierge.Character.Statuses
     {
         public ClassResource()
         {
+            this.Type = string.Empty;
             this.Id = Guid.NewGuid();
         }
 

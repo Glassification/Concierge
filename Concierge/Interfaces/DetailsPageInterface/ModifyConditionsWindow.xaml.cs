@@ -40,15 +40,19 @@ namespace Concierge.Interfaces.DetailsPageInterface
             this.UnconsciousComboBox.ItemsSource = Enum.GetValues(typeof(ConditionTypes)).Cast<ConditionTypes>();
 
             this.ConciergePage = ConciergePage.None;
+            this.Conditions = new Conditions();
         }
 
         private Conditions Conditions { get; set; }
 
         public override void ShowEdit<T>(T conditions)
         {
-            var castItem = conditions as Conditions;
-            this.Conditions = castItem;
+            if (conditions is not Conditions castItem)
+            {
+                return;
+            }
 
+            this.Conditions = castItem;
             this.FillFields();
             this.ShowConciergeWindow();
         }

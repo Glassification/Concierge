@@ -92,9 +92,9 @@ namespace Concierge.Tools.Interface
 
             do
             {
-                var conciergeWindow = (ConciergeWindow)Activator.CreateInstance(conciergeWindowType);
+                var conciergeWindow = (ConciergeWindow?)Activator.CreateInstance(conciergeWindowType);
                 confirmExitResult = ConciergeWindowResult.NoResult;
-                wizardResult = conciergeWindow.ShowWizardSetup(buttonText);
+                wizardResult = conciergeWindow?.ShowWizardSetup(buttonText) ?? ConciergeWindowResult.NoResult;
 
                 if (wizardResult == ConciergeWindowResult.Exit)
                 {

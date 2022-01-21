@@ -29,9 +29,9 @@ namespace Concierge.Utility.Extensions
             else
             {
                 var helper = new WindowInteropHelper(w);
-                IntPtr hmonitor = OSInterop.MonitorFromWindow(new HandleRef((object)null, helper.EnsureHandle()), 2);
+                IntPtr hmonitor = OSInterop.MonitorFromWindow(new HandleRef(null, helper.EnsureHandle()), 2);
                 var info = new OSInterop.MONITORINFOEX();
-                OSInterop.GetMonitorInfo(new HandleRef((object)null, hmonitor), info);
+                OSInterop.GetMonitorInfo(new HandleRef(null, hmonitor), info);
                 r = new Int32Rect(info.rcWork.left, info.rcWork.top, info.rcWork.width, info.rcWork.height);
             }
 

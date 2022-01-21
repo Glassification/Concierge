@@ -20,6 +20,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
         {
             this.InitializeComponent();
             this.ConciergePage = ConciergePage.None;
+            this.Health = new Health();
         }
 
         private Health Health { get; set; }
@@ -38,9 +39,12 @@ namespace Concierge.Interfaces.OverviewPageInterface
 
         public override void ShowEdit<T>(T health)
         {
-            var castItem = health as Health;
-            this.Health = castItem;
+            if (health is not Health castItem)
+            {
+                return;
+            }
 
+            this.Health = castItem;
             this.FillFields();
             this.ShowConciergeWindow();
         }

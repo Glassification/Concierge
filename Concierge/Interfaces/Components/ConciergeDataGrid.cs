@@ -36,7 +36,6 @@ namespace Concierge.Interfaces.Components
             this.BorderThickness = new Thickness(0);
             this.SelectionMode = DataGridSelectionMode.Single;
             this.SelectionUnit = DataGridSelectionUnit.FullRow;
-            this.TouchMove += this.DataGrid_TouchMove;
         }
 
         public event RoutedEventHandler Sorted
@@ -99,10 +98,6 @@ namespace Concierge.Interfaces.Components
         {
             base.OnSorting(eventArgs);
             this.RaiseSortedEvent();
-        }
-
-        private void DataGrid_TouchMove(object sender, System.Windows.Input.TouchEventArgs e)
-        {
         }
     }
 }

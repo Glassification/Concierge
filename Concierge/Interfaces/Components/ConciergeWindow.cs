@@ -62,7 +62,7 @@ namespace Concierge.Interfaces.Components
 
         public delegate void ApplyChangesEventHandler(object sender, EventArgs e);
 
-        public event ApplyChangesEventHandler ApplyChanges;
+        public event ApplyChangesEventHandler? ApplyChanges;
 
         public ConciergePage ConciergePage { get; set; }
 

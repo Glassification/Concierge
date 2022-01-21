@@ -7,11 +7,12 @@ namespace Concierge.Search
     using System.Text.RegularExpressions;
 
     using Concierge.Interfaces;
+    using Concierge.Interfaces.OverviewPageInterface;
 
     public class SearchResult
     {
         public SearchResult()
-            : this(string.Empty, null, null, null)
+            : this(string.Empty, new object(), new Regex(string.Empty), new OverviewPage())
         {
         }
 

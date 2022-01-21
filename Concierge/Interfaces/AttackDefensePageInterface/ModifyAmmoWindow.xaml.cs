@@ -28,6 +28,8 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
             this.NameComboBox.ItemsSource = Constants.Ammunitions;
             this.DamageTypeComboBox.ItemsSource = Enum.GetValues(typeof(DamageTypes)).Cast<DamageTypes>();
             this.ConciergePage = ConciergePage.None;
+            this.Ammunitions = new List<Ammunition>();
+            this.SelectedAmmo = new Ammunition();
         }
 
         public bool ItemsAdded { get; private set; }
@@ -56,7 +58,11 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
 
         public override bool ShowAdd<T>(T ammunitions)
         {
-            var castItem = ammunitions as List<Ammunition>;
+            if (ammunitions is not List<Ammunition> castItem)
+            {
+                return false;
+            }
+
             this.Editing = false;
             this.HeaderTextBlock.Text = this.HeaderText;
             this.Ammunitions = castItem;
@@ -70,7 +76,11 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
 
         public override void ShowEdit<T>(T ammunition)
         {
-            var castItem = ammunition as Ammunition;
+            if (ammunition is not Ammunition castItem)
+            {
+                return;
+            }
+
             this.Editing = true;
             this.HeaderTextBlock.Text = this.HeaderText;
             this.SelectedAmmo = castItem;
@@ -169,9 +179,9 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
 
         private void NameComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (this.NameComboBox.SelectedItem != null)
+            if (this.NameComboBox.SelectedItem is Ammunition ammunition)
             {
-                this.FillFields(this.NameComboBox.SelectedItem as Ammunition);
+                this.FillFields(ammunition);
             }
         }
     }

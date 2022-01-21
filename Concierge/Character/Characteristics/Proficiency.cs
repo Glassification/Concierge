@@ -13,6 +13,7 @@ namespace Concierge.Character.Characteristics
     {
         public Proficiency()
         {
+            this.Name = string.Empty;
             this.Id = Guid.NewGuid();
         }
 

@@ -23,8 +23,12 @@ namespace Concierge.Persistence.ReadWriters
                 var rawJson = File.ReadAllText(file);
                 var ccsFile = JsonConvert.DeserializeObject<CcsFile>(rawJson);
 
-                ccsFile.AbsolutePath = file;
+                if (ccsFile is null)
+                {
+                    throw new Exception($"{nameof(ccsFile)} is null.");
+                }
 
+                ccsFile.AbsolutePath = file;
                 if (AppSettingsManager.UserSettings.CheckVersion && !CheckVersion(ccsFile.Version))
                 {
                     return new CcsFile();

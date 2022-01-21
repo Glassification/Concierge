@@ -29,9 +29,9 @@ namespace Concierge.Interfaces.NotesPageInterface
 
         private bool IsEdit { get; set; }
 
-        private Chapter CurrentChapter { get; set; }
+        private Chapter? CurrentChapter { get; set; }
 
-        private Document CurrentDocument { get; set; }
+        private Document? CurrentDocument { get; set; }
 
         public override bool ShowAdd<T>(T item)
         {
@@ -46,13 +46,13 @@ namespace Concierge.Interfaces.NotesPageInterface
 
         public override void ShowEdit<T>(T note)
         {
-            if (note is Chapter)
+            if (note is Chapter chapter)
             {
-                this.EditChapter(note as Chapter);
+                this.EditChapter(chapter);
             }
-            else if (note is Document)
+            else if (note is Document document)
             {
-                this.EditDocument(note as Document);
+                this.EditDocument(document);
             }
         }
 
@@ -116,13 +116,13 @@ namespace Concierge.Interfaces.NotesPageInterface
 
         private void UpdateNote()
         {
-            if (this.CurrentChapter == null)
+            if (this.CurrentChapter is null && this.CurrentDocument is not null)
             {
                 var oldItem = this.CurrentDocument.DeepCopy();
                 this.CurrentDocument.Name = this.DocumentTextBox.Text;
                 Program.UndoRedoService.AddCommand(new EditCommand<Document>(this.CurrentDocument, oldItem, this.ConciergePage));
             }
-            else
+            else if (this.CurrentChapter is not null && this.CurrentDocument is null)
             {
                 var oldItem = this.CurrentChapter.DeepCopy();
                 this.CurrentChapter.Name = this.DocumentTextBox.Text;
@@ -132,7 +132,10 @@ namespace Concierge.Interfaces.NotesPageInterface
 
         private void ToNote()
         {
-            var chapter = this.ChapterComboBox.SelectedItem as Chapter;
+            if (this.ChapterComboBox.SelectedItem is not Chapter chapter)
+            {
+                return;
+            }
 
             if (chapter.IsNewChapterPlaceholder)
             {

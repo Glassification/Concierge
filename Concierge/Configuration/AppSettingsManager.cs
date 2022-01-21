@@ -47,7 +47,7 @@ namespace Concierge.Configuration
 
         public delegate void UnitsChangedEventHandler(object sender, EventArgs e);
 
-        public static event UnitsChangedEventHandler UnitsChanged;
+        public static event UnitsChangedEventHandler? UnitsChanged;
 
         public static ColorPicker ColorPicker { get; private set; }
 
@@ -96,7 +96,7 @@ namespace Concierge.Configuration
             WriteUpdatedSettingsToFile();
         }
 
-        public static void RefreshUnits(UserSettingsDto userSettingsDto = null)
+        public static void RefreshUnits(UserSettingsDto? userSettingsDto = null)
         {
             UnitsChanged?.Invoke(userSettingsDto is null ? ToUserSettingsDto() : userSettingsDto, new EventArgs());
         }

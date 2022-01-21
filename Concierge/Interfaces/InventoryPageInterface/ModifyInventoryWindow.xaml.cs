@@ -30,6 +30,8 @@ namespace Concierge.Interfaces.InventoryPageInterface
             this.InitializeComponent();
             this.NameComboBox.ItemsSource = Constants.Inventories;
             this.ConciergePage = ConciergePage.None;
+            this.SelectedItem = new Inventory();
+            this.Items = new List<Inventory>();
         }
 
         public bool ItemsAdded { get; private set; }
@@ -60,7 +62,11 @@ namespace Concierge.Interfaces.InventoryPageInterface
 
         public override void ShowEdit<T>(T inventory, bool equippedItem)
         {
-            var castItem = inventory as Inventory;
+            if (inventory is not Inventory castItem)
+            {
+                return;
+            }
+
             this.Editing = true;
             this.HeaderTextBlock.Text = this.HeaderText;
             this.SelectedItem = castItem;
@@ -73,7 +79,11 @@ namespace Concierge.Interfaces.InventoryPageInterface
 
         public override bool ShowAdd<T>(T item)
         {
-            var castItem = item as List<Inventory>;
+            if (item is not List<Inventory> castItem)
+            {
+                return false;
+            }
+
             this.Editing = false;
             this.HeaderTextBlock.Text = this.HeaderText;
             this.Items = castItem;
@@ -221,9 +231,9 @@ namespace Concierge.Interfaces.InventoryPageInterface
 
         private void NameComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (this.NameComboBox.SelectedItem != null)
+            if (this.NameComboBox.SelectedItem is Inventory inventory)
             {
-                this.FillFields(this.NameComboBox.SelectedItem as Inventory);
+                this.FillFields(inventory);
             }
         }
 

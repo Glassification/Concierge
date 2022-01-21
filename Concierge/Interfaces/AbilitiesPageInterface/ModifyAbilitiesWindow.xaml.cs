@@ -25,6 +25,8 @@ namespace Concierge.Interfaces.AbilitiesPageInterface
 
             this.NameComboBox.ItemsSource = Constants.Abilities;
             this.ConciergePage = ConciergePage.None;
+            this.Abilities = new List<Ability>();
+            this.SelectedAbility = new Ability();
         }
 
         public bool ItemsAdded { get; private set; }
@@ -53,7 +55,11 @@ namespace Concierge.Interfaces.AbilitiesPageInterface
 
         public override void ShowEdit<T>(T ability)
         {
-            var castItem = ability as Ability;
+            if (ability is not Ability castItem)
+            {
+                return;
+            }
+
             this.Editing = true;
             this.HeaderTextBlock.Text = this.HeaderText;
             this.SelectedAbility = castItem;
@@ -65,7 +71,11 @@ namespace Concierge.Interfaces.AbilitiesPageInterface
 
         public override bool ShowAdd<T>(T abilities)
         {
-            var castItem = abilities as List<Ability>;
+            if (abilities is not List<Ability> castItem)
+            {
+                return false;
+            }
+
             this.Editing = false;
             this.HeaderTextBlock.Text = this.HeaderText;
             this.Abilities = castItem;
@@ -171,9 +181,9 @@ namespace Concierge.Interfaces.AbilitiesPageInterface
 
         private void NameComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (this.NameComboBox.SelectedItem != null)
+            if (this.NameComboBox.SelectedItem is Ability ability)
             {
-                this.FillFields(this.NameComboBox.SelectedItem as Ability);
+                this.FillFields(ability);
             }
         }
     }

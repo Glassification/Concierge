@@ -24,15 +24,19 @@ namespace Concierge.Interfaces.CompanionPageInterface
             this.InitializeComponent();
             this.VisionComboBox.ItemsSource = Enum.GetValues(typeof(VisionTypes)).Cast<VisionTypes>();
             this.ConciergePage = ConciergePage.None;
+            this.Properties = new CompanionProperties();
         }
 
         private CompanionProperties Properties { get; set; }
 
         public override void ShowEdit<T>(T properties)
         {
-            var castItem = properties as CompanionProperties;
-            this.Properties = castItem;
+            if (properties is not CompanionProperties castItem)
+            {
+                return;
+            }
 
+            this.Properties = castItem;
             this.FillFields();
             this.ShowConciergeWindow();
         }

@@ -34,7 +34,7 @@ namespace Concierge.Interfaces.NotesPageInterface
     {
         private const int MaxUndoQueue = 10;
 
-        private Document selectedDocument;
+        private Document? selectedDocument;
 
         public NotesPage()
         {
@@ -51,7 +51,7 @@ namespace Concierge.Interfaces.NotesPageInterface
             this.ToolbarStackPanel.IsEnabled = false;
         }
 
-        public Document SelectedDocument
+        public Document? SelectedDocument
         {
             get
             {
@@ -182,9 +182,8 @@ namespace Concierge.Interfaces.NotesPageInterface
             {
                 this.Lock = true;
 
-                if (this.NotesTreeView?.SelectedItem is DocumentTreeViewItem)
+                if (this.NotesTreeView?.SelectedItem is DocumentTreeViewItem treeViewItem)
                 {
-                    var treeViewItem = this.NotesTreeView?.SelectedItem as DocumentTreeViewItem;
                     if (this.SelectedDocument != null)
                     {
                         this.SaveTextBox();
@@ -242,7 +241,7 @@ namespace Concierge.Interfaces.NotesPageInterface
 
         private void ButtonBold_Click(object sender, RoutedEventArgs e)
         {
-            if ((bool)this.ButtonBold.IsChecked)
+            if (this.ButtonBold.IsChecked ?? false)
             {
                 this.NotesTextBox.Selection.ApplyPropertyValue(TextElement.FontWeightProperty, FontWeights.Bold);
             }
@@ -254,7 +253,7 @@ namespace Concierge.Interfaces.NotesPageInterface
 
         private void ButtonItalic_Click(object sender, RoutedEventArgs e)
         {
-            if ((bool)this.ButtonItalic.IsChecked)
+            if (this.ButtonItalic.IsChecked ?? false)
             {
                 this.NotesTextBox.Selection.ApplyPropertyValue(TextElement.FontStyleProperty, FontStyles.Italic);
             }
@@ -266,7 +265,7 @@ namespace Concierge.Interfaces.NotesPageInterface
 
         private void ButtonUnderline_Click(object sender, RoutedEventArgs e)
         {
-            if ((bool)this.ButtonUnderline.IsChecked)
+            if (this.ButtonUnderline.IsChecked ?? false)
             {
                 this.NotesTextBox.Selection.ApplyPropertyValue(Inline.TextDecorationsProperty, TextDecorations.Underline);
             }
@@ -348,41 +347,44 @@ namespace Concierge.Interfaces.NotesPageInterface
 
         private void MoveTreeViewItem(int increment, bool useZero, Func<int, int, bool> func)
         {
-            if (this.NotesTreeView?.SelectedItem == null)
+            if (this.NotesTreeView.SelectedItem is DocumentTreeViewItem document && this.SelectedDocument is not null)
             {
-                return;
-            }
+                if (document.Parent is not ChapterTreeViewItem chapterItem)
+                {
+                    return;
+                }
 
-            if (this.NotesTreeView.SelectedItem is DocumentTreeViewItem)
-            {
-                var item = this.NotesTreeView.SelectedItem as DocumentTreeViewItem;
-                var chapterItem = item.Parent as ChapterTreeViewItem;
                 var chapterIndex = this.NotesTreeView.Items.IndexOf(chapterItem);
-                var index = chapterItem.Items.IndexOf(item);
+                var index = chapterItem.Items.IndexOf(document);
 
                 if (func(index, useZero ? 0 : chapterItem.Items.Count - 1))
                 {
                     this.SelectedDocument.RTF = this.SaveCurrentDocument();
                     this.SwapTreeViewItem(chapterItem.Chapter.Documents, index, index + increment);
 
-                    var newIndex = (this.NotesTreeView.Items[chapterIndex] as ChapterTreeViewItem).Items[index + increment];
-                    (newIndex as DocumentTreeViewItem).IsSelected = true;
+                    var newIndex = (this.NotesTreeView.Items[chapterIndex] as ChapterTreeViewItem)?.Items[index + increment];
+                    if (newIndex is DocumentTreeViewItem documentIndex)
+                    {
+                        documentIndex.IsSelected = true;
+                    }
                 }
             }
-            else
+            else if (this.NotesTreeView.SelectedItem is ChapterTreeViewItem chapter)
             {
-                var item = this.NotesTreeView.SelectedItem as ChapterTreeViewItem;
-                var index = this.NotesTreeView.Items.IndexOf(item);
+                var index = this.NotesTreeView.Items.IndexOf(chapter);
 
                 if (func(index, useZero ? 0 : this.NotesTreeView.Items.Count - 1))
                 {
                     this.SwapTreeViewItem(Program.CcsFile.Character.Chapters, index, index + increment);
                     var newIndex = this.NotesTreeView.Items[index + increment];
-                    (newIndex as ChapterTreeViewItem).IsSelected = true;
+                    if (newIndex is ChapterTreeViewItem chapterIndex)
+                    {
+                        chapterIndex.IsSelected = true;
+                    }
                 }
             }
 
-            (this.NotesTreeView.SelectedItem as TreeViewItem).Focus();
+            (this.NotesTreeView.SelectedItem as TreeViewItem)?.Focus();
             Program.Modify();
         }
 
@@ -401,28 +403,24 @@ namespace Concierge.Interfaces.NotesPageInterface
 
         private void TreeViewItem_Expanded(object sender, RoutedEventArgs e)
         {
-            if (sender is ChapterTreeViewItem)
+            if (sender is ChapterTreeViewItem chapterItem)
             {
-                var chapterItem = sender as ChapterTreeViewItem;
                 chapterItem.Chapter.IsExpanded = true;
             }
-            else
+            else if (sender is DocumentTreeViewItem documentItem)
             {
-                var documentItem = sender as DocumentTreeViewItem;
                 documentItem.Document.IsExpanded = true;
             }
         }
 
         private void TreeViewItem_Collapsed(object sender, RoutedEventArgs e)
         {
-            if (sender is ChapterTreeViewItem)
+            if (sender is ChapterTreeViewItem chapterItem)
             {
-                var chapterItem = sender as ChapterTreeViewItem;
                 chapterItem.Chapter.IsExpanded = false;
             }
-            else
+            else if (sender is DocumentTreeViewItem documentItem)
             {
-                var documentItem = sender as DocumentTreeViewItem;
                 documentItem.Document.IsExpanded = false;
             }
         }

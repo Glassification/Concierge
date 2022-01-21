@@ -4,8 +4,9 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>net6.0-windows</TargetFramework>
     <RootNamespace>Concierge</RootNamespace>
+	<Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
-    <Version>4.6.7</Version>
+    <Version>4.7.1</Version>
     <ApplicationIcon>AppIconImage.ico</ApplicationIcon>
   </PropertyGroup>
 

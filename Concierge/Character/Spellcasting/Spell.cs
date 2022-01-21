@@ -14,6 +14,15 @@ namespace Concierge.Character.Spellcasting
     {
         public Spell()
         {
+            this.Name = string.Empty;
+            this.Components = string.Empty;
+            this.Range = string.Empty;
+            this.Duration = string.Empty;
+            this.Area = string.Empty;
+            this.Save = string.Empty;
+            this.Damage = string.Empty;
+            this.Description = string.Empty;
+            this.Class = string.Empty;
             this.Id = Guid.NewGuid();
         }
 

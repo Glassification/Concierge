@@ -21,6 +21,7 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
         {
             this.InitializeComponent();
             this.ConciergePage = ConciergePage.None;
+            this.SpellSlots = new SpellSlots();
         }
 
         private SpellSlots SpellSlots { get; set; }
@@ -39,9 +40,12 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
 
         public override void ShowEdit<T>(T spellSlots)
         {
-            var castItem = spellSlots as SpellSlots;
-            this.SpellSlots = castItem;
+            if (spellSlots is not SpellSlots castItem)
+            {
+                return;
+            }
 
+            this.SpellSlots = castItem;
             this.FillFields();
             this.ShowConciergeWindow();
         }

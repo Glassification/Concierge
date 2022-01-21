@@ -284,31 +284,36 @@ namespace Concierge.Interfaces.ToolsPageInterface
 
         private void ButtonRoll_Click(object sender, RoutedEventArgs e)
         {
-            switch ((sender as Button).Name)
+            if (sender is not Button button)
+            {
+                return;
+            }
+
+            switch (button.Name)
             {
                 case "ButtonRollD4":
-                    this.D4Result.Text = this.RollDice((int)this.D4NumberUpDown.Value, 4, (int)this.D4ModifierUpDown.Value, (bool)this.D4Plus.IsChecked);
+                    this.D4Result.Text = this.RollDice(this.D4NumberUpDown.Value, 4, this.D4ModifierUpDown.Value, this.D4Plus.IsChecked ?? false);
                     break;
                 case "ButtonRollD6":
-                    this.D6Result.Text = this.RollDice((int)this.D6NumberUpDown.Value, 6, (int)this.D6ModifierUpDown.Value, (bool)this.D6Plus.IsChecked);
+                    this.D6Result.Text = this.RollDice(this.D6NumberUpDown.Value, 6, this.D6ModifierUpDown.Value, this.D6Plus.IsChecked ?? false);
                     break;
                 case "ButtonRollD8":
-                    this.D8Result.Text = this.RollDice((int)this.D8NumberUpDown.Value, 8, (int)this.D8ModifierUpDown.Value, (bool)this.D8Plus.IsChecked);
+                    this.D8Result.Text = this.RollDice(this.D8NumberUpDown.Value, 8, this.D8ModifierUpDown.Value, this.D8Plus.IsChecked ?? false);
                     break;
                 case "ButtonRollD10":
-                    this.D10Result.Text = this.RollDice((int)this.D10NumberUpDown.Value, 10, (int)this.D10ModifierUpDown.Value, (bool)this.D10Plus.IsChecked);
+                    this.D10Result.Text = this.RollDice(this.D10NumberUpDown.Value, 10, this.D10ModifierUpDown.Value, this.D10Plus.IsChecked ?? false);
                     break;
                 case "ButtonRollD100":
-                    this.D100Result.Text = this.RollDice((int)this.D100NumberUpDown.Value, 100, (int)this.D100ModifierUpDown.Value, (bool)this.D100Plus.IsChecked);
+                    this.D100Result.Text = this.RollDice(this.D100NumberUpDown.Value, 100, this.D100ModifierUpDown.Value, this.D100Plus.IsChecked ?? false);
                     break;
                 case "ButtonRollD12":
-                    this.D12Result.Text = this.RollDice((int)this.D12NumberUpDown.Value, 12, (int)this.D12ModifierUpDown.Value, (bool)this.D12Plus.IsChecked);
+                    this.D12Result.Text = this.RollDice(this.D12NumberUpDown.Value, 12, this.D12ModifierUpDown.Value, this.D12Plus.IsChecked ?? false);
                     break;
                 case "ButtonRollD20":
-                    this.D20Result.Text = this.RollDice((int)this.D20NumberUpDown.Value, 20, (int)this.D20ModifierUpDown.Value, (bool)this.D20Plus.IsChecked);
+                    this.D20Result.Text = this.RollDice(this.D20NumberUpDown.Value, 20, this.D20ModifierUpDown.Value, this.D20Plus.IsChecked ?? false);
                     break;
                 case "ButtonRollDx":
-                    this.DxResult.Text = this.RollDice((int)this.DxNumberUpDown.Value, (int)this.DxDieUpDown.Value, (int)this.DxModifierUpDown.Value, (bool)this.DxPlus.IsChecked);
+                    this.DxResult.Text = this.RollDice(this.DxNumberUpDown.Value, this.DxDieUpDown.Value, this.DxModifierUpDown.Value, this.DxPlus.IsChecked ?? false);
                     break;
             }
         }

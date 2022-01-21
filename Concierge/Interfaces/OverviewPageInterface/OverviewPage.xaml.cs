@@ -360,11 +360,13 @@ namespace Concierge.Interfaces.OverviewPageInterface
         private void SavingThrows_MouseDown(object sender, RoutedEventArgs e)
         {
             ConciergeSound.UpdateValue();
+            if (sender is not Rectangle rectangle)
+            {
+                return;
+            }
 
-            var rectangle = sender as Rectangle;
             var savingThrow = Program.CcsFile.Character.SavingThrow;
             var savingThrowCopy = savingThrow.DeepCopy();
-
             switch (rectangle.Name)
             {
                 case "StrengthProficiencyBox":
@@ -397,11 +399,13 @@ namespace Concierge.Interfaces.OverviewPageInterface
         private void SkillProficiency_MouseDown(object sender, RoutedEventArgs e)
         {
             ConciergeSound.UpdateValue();
+            if (sender is not Rectangle rectangle)
+            {
+                return;
+            }
 
-            var rectangle = sender as Rectangle;
             var skill = Program.CcsFile.Character.Skill;
             var skillCopy = skill.DeepCopy();
-
             switch (rectangle.Name)
             {
                 case "AthleticsProficiencyBox":
@@ -469,11 +473,13 @@ namespace Concierge.Interfaces.OverviewPageInterface
         private void SkillExpertise_MouseDown(object sender, RoutedEventArgs e)
         {
             ConciergeSound.UpdateValue();
+            if (sender is not Rectangle rectangle)
+            {
+                return;
+            }
 
-            var rectangle = sender as Rectangle;
             var skill = Program.CcsFile.Character.Skill;
             var skillCopy = skill.DeepCopy();
-
             switch (rectangle.Name)
             {
                 case "AthleticsExpertieseBox":
@@ -540,7 +546,11 @@ namespace Concierge.Interfaces.OverviewPageInterface
 
         private void ToggleBox_MouseEnter(object sender, MouseEventArgs e)
         {
-            var rectangle = sender as Rectangle;
+            if (sender is not Rectangle rectangle)
+            {
+                return;
+            }
+
             rectangle.Stroke = ConciergeColors.RectangleBorderHighlight;
             rectangle.StrokeThickness = 1;
 
@@ -549,7 +559,11 @@ namespace Concierge.Interfaces.OverviewPageInterface
 
         private void ToggleBox_MouseLeave(object sender, MouseEventArgs e)
         {
-            var rectangle = sender as Rectangle;
+            if (sender is not Rectangle rectangle)
+            {
+                return;
+            }
+
             rectangle.Stroke = ConciergeColors.RectangleBorder;
             rectangle.StrokeThickness = 1;
 
@@ -625,14 +639,14 @@ namespace Concierge.Interfaces.OverviewPageInterface
 
         private void SpentBox_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            if (e.ClickCount != 2)
+            if (e.ClickCount != 2 || sender is not Grid usedBox)
             {
                 return;
             }
 
             var hitDice = Program.CcsFile.Character.Vitality.HitDice;
             var oldItem = hitDice.DeepCopy();
-            switch ((sender as Grid).Name)
+            switch (usedBox.Name)
             {
                 case "D6SpentBox":
                     hitDice.SpentD6 = DisplayUtility.IncrementUsedSlots(hitDice.SpentD6, hitDice.TotalD6);
@@ -660,11 +674,13 @@ namespace Concierge.Interfaces.OverviewPageInterface
 
         private void SpentBox_MouseEnter(object sender, MouseEventArgs e)
         {
-            var grid = sender as Grid;
+            if (sender is not Grid grid)
+            {
+                return;
+            }
+
             var hitDice = Program.CcsFile.Character.Vitality.HitDice;
-
             this.CurrentHitDiceBox = grid.Name;
-
             switch (grid.Name)
             {
                 case "D6SpentBox":
@@ -688,7 +704,10 @@ namespace Concierge.Interfaces.OverviewPageInterface
 
         private void SpentBox_MouseLeave(object sender, MouseEventArgs e)
         {
-            var grid = sender as Grid;
+            if (sender is not Grid grid)
+            {
+                return;
+            }
 
             switch (grid.Name)
             {

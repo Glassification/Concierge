@@ -29,7 +29,7 @@ namespace Concierge.Commands
 
         public override void Redo()
         {
-            var item = Program.CcsFile.Character.Inventories.Where(x => x.Id.Equals(this.id)).FirstOrDefault();
+            var item = Program.CcsFile.Character.Inventories.Where(x => x.Id.Equals(this.id)).First();
             item = Program.CcsFile.Character.EquippedItems.Equip(item, this.equipmentSlot);
             item.Index = this.index;
             item.EquppedId = this.equippedId;

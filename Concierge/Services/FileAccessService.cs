@@ -47,7 +47,7 @@ namespace Concierge.Services
             };
         }
 
-        public CcsFile OpenCcs()
+        public CcsFile? OpenCcs()
         {
             return this.ccsOpenFileDialog.ShowDialog() ?? false ? CharacterReadWriter.Read(this.ccsOpenFileDialog.FileName) : null;
         }

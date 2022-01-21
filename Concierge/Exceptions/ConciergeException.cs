@@ -8,7 +8,7 @@ namespace Concierge.Exceptions
 
     public class ConciergeException : Exception
     {
-        public ConciergeException(string message, Exception innerException = null)
+        public ConciergeException(string message, Exception? innerException = null)
             : base(message, innerException)
         {
         }

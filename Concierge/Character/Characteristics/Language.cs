@@ -13,6 +13,9 @@ namespace Concierge.Character.Characteristics
     {
         public Language()
         {
+            this.Name = string.Empty;
+            this.Script = string.Empty;
+            this.Speakers = string.Empty;
             this.Id = Guid.NewGuid();
         }
 

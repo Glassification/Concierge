@@ -50,34 +50,39 @@ namespace Concierge.Interfaces.DetailsPageInterface
 
         public void Edit(object itemToEdit)
         {
-            if (itemToEdit is Proficiency)
+            if (itemToEdit is Proficiency proficiency)
             {
                 var selectedDataGrid = this.GetSelectedProficencyDataGrid();
+                if (selectedDataGrid is null)
+                {
+                    return;
+                }
+
                 var index = selectedDataGrid.SelectedIndex;
                 ConciergeWindowService.ShowEdit<Proficiency>(
-                    itemToEdit as Proficiency,
+                    proficiency,
                     typeof(ModifyProficiencyWindow),
                     this.Window_ApplyChanges,
                     ConciergePage.Details);
                 this.DrawProficiencies();
                 selectedDataGrid.SetSelectedIndex(index);
             }
-            else if (itemToEdit is Language)
+            else if (itemToEdit is Language language)
             {
                 var index = this.LanguagesDataGrid.SelectedIndex;
                 ConciergeWindowService.ShowEdit<Language>(
-                    itemToEdit as Language,
+                    language,
                     typeof(ModifyLanguagesWindow),
                     this.Window_ApplyChanges,
                     ConciergePage.Details);
                 this.DrawLanguages();
                 this.LanguagesDataGrid.SetSelectedIndex(index);
             }
-            else if (itemToEdit is ClassResource)
+            else if (itemToEdit is ClassResource resource)
             {
                 var index = this.ResourcesDataGrid.SelectedIndex;
                 ConciergeWindowService.ShowEdit<ClassResource>(
-                    itemToEdit as ClassResource,
+                    resource,
                     typeof(ModifyClassResourceWindow),
                     this.Window_ApplyChanges,
                     ConciergePage.Details);
@@ -86,11 +91,14 @@ namespace Concierge.Interfaces.DetailsPageInterface
             }
         }
 
-        private static void AddSortedToList(List<Proficiency> proficiency, ConciergeDataGrid dataGrid)
+        private static void AddSortedToList(List<Proficiency> proficiencies, ConciergeDataGrid dataGrid)
         {
             foreach (var item in dataGrid.Items)
             {
-                proficiency.Add(item as Proficiency);
+                if (item is Proficiency proficiency)
+                {
+                    proficiencies.Add(proficiency);
+                }
             }
         }
 
@@ -221,16 +229,14 @@ namespace Concierge.Interfaces.DetailsPageInterface
 
         private void DeleteProficiency(ConciergeDataGrid dataGrid)
         {
-            if (dataGrid?.SelectedItem is null)
+            if (dataGrid.SelectedItem is not Proficiency proficiency)
             {
                 return;
             }
 
-            var item = dataGrid.SelectedItem as Proficiency;
             var index = dataGrid.SelectedIndex;
-
-            Program.UndoRedoService.AddCommand(new DeleteCommand<Proficiency>(Program.CcsFile.Character.Proficiency, item, index, this.ConciergePage));
-            Program.CcsFile.Character.Proficiency.Remove(item);
+            Program.UndoRedoService.AddCommand(new DeleteCommand<Proficiency>(Program.CcsFile.Character.Proficiency, proficiency, index, this.ConciergePage));
+            Program.CcsFile.Character.Proficiency.Remove(proficiency);
 
             this.DrawProficiencies();
             dataGrid.SetSelectedIndex(index);
@@ -238,7 +244,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
             Program.Modify();
         }
 
-        private ConciergeDataGrid GetSelectedProficencyDataGrid()
+        private ConciergeDataGrid? GetSelectedProficencyDataGrid()
         {
             if (this.WeaponProficiencyDataGrid.SelectedItem != null)
             {
@@ -262,7 +268,12 @@ namespace Concierge.Interfaces.DetailsPageInterface
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
-            this.DeleteProficiency(this.GetSelectedProficencyDataGrid());
+            var selectedGrid = this.GetSelectedProficencyDataGrid();
+
+            if (selectedGrid is not null)
+            {
+                this.DeleteProficiency(selectedGrid);
+            }
         }
 
         private void EditButton_Click(object sender, RoutedEventArgs e)
@@ -395,34 +406,34 @@ namespace Concierge.Interfaces.DetailsPageInterface
 
         private void DeleteLanguagesButton_Click(object sender, RoutedEventArgs e)
         {
-            if (this.LanguagesDataGrid.SelectedItem != null)
+            if (this.LanguagesDataGrid.SelectedItem is not Language language)
             {
-                var language = this.LanguagesDataGrid.SelectedItem as Language;
-                var index = this.LanguagesDataGrid.SelectedIndex;
-
-                Program.UndoRedoService.AddCommand(new DeleteCommand<Language>(Program.CcsFile.Character.Languages, language, index, this.ConciergePage));
-                Program.CcsFile.Character.Languages.Remove(language);
-                this.DrawLanguages();
-                this.LanguagesDataGrid.SetSelectedIndex(index);
-
-                Program.Modify();
+                return;
             }
+
+            var index = this.LanguagesDataGrid.SelectedIndex;
+            Program.UndoRedoService.AddCommand(new DeleteCommand<Language>(Program.CcsFile.Character.Languages, language, index, this.ConciergePage));
+            Program.CcsFile.Character.Languages.Remove(language);
+            this.DrawLanguages();
+            this.LanguagesDataGrid.SetSelectedIndex(index);
+
+            Program.Modify();
         }
 
         private void DeleteResourcesButton_Click(object sender, RoutedEventArgs e)
         {
-            if (this.ResourcesDataGrid.SelectedItem != null)
+            if (this.ResourcesDataGrid.SelectedItem is not ClassResource resource)
             {
-                var resource = this.ResourcesDataGrid.SelectedItem as ClassResource;
-                var index = this.ResourcesDataGrid.SelectedIndex;
-
-                Program.UndoRedoService.AddCommand(new DeleteCommand<ClassResource>(Program.CcsFile.Character.ClassResources, resource, index, this.ConciergePage));
-                Program.CcsFile.Character.ClassResources.Remove(resource);
-                this.DrawResources();
-                this.ResourcesDataGrid.SetSelectedIndex(index);
-
-                Program.Modify();
+                return;
             }
+
+            var index = this.ResourcesDataGrid.SelectedIndex;
+            Program.UndoRedoService.AddCommand(new DeleteCommand<ClassResource>(Program.CcsFile.Character.ClassResources, resource, index, this.ConciergePage));
+            Program.CcsFile.Character.ClassResources.Remove(resource);
+            this.DrawResources();
+            this.ResourcesDataGrid.SetSelectedIndex(index);
+
+            Program.Modify();
         }
 
         private void ClearLanguagesButton_Click(object sender, RoutedEventArgs e)

@@ -26,7 +26,7 @@ namespace Concierge.Interfaces.Components
             this.MouseLeave += this.ComboBox_MouseLeave;
         }
 
-        private void ComboBox_DropDownOpened(object sender, EventArgs e)
+        private void ComboBox_DropDownOpened(object? sender, EventArgs e)
         {
             ConciergeSound.UpdateValue();
         }

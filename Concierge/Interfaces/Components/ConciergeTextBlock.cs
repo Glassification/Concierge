@@ -26,9 +26,9 @@ namespace Concierge.Interfaces.Components
 
         public bool IsHighlighted => this.OriginalBackgroundColor != null || this.OriginalForegroundColor != null;
 
-        private Brush OriginalBackgroundColor { get; set; }
+        private Brush? OriginalBackgroundColor { get; set; }
 
-        private Brush OriginalForegroundColor { get; set; }
+        private Brush? OriginalForegroundColor { get; set; }
 
         public void Highlight()
         {

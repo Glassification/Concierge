@@ -14,6 +14,9 @@ namespace Concierge.Character.Items
     {
         public Inventory()
         {
+            this.Name = string.Empty;
+            this.Note = string.Empty;
+            this.Weight = UnitDouble.Empty;
             this.Id = Guid.NewGuid();
         }
 
@@ -41,14 +44,13 @@ namespace Concierge.Character.Items
 
         public Guid Id { get; set; }
 
-        public override bool Equals(object obj)
+        public override bool Equals(object? obj)
         {
-            if (obj is not Inventory)
+            if (obj is not Inventory item)
             {
                 return false;
             }
 
-            var item = obj as Inventory;
             return item.Name.Equals(this.Name) &&
                 item.Weight == this.Weight &&
                 item.Note.Equals(this.Note);

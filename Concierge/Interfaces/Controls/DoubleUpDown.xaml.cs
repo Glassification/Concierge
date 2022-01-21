@@ -134,8 +134,10 @@ namespace Concierge.Interfaces.Controls
 
         private static void OnValuePropertyChanged(DependencyObject target, DependencyPropertyChangedEventArgs e)
         {
-            var conciergeDoubleUpDown = target as DoubleUpDown;
-            conciergeDoubleUpDown.TextBoxValue.Text = e.NewValue.ToString();
+            if (target is DoubleUpDown conciergeDoubleUpDown)
+            {
+                conciergeDoubleUpDown.TextBoxValue.Text = e.NewValue.ToString();
+            }
         }
 
         private void SetIncreaseButtonStatus(double value, double max)

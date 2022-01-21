@@ -46,7 +46,7 @@ namespace Concierge.Primitives
             return UnitFormat.ToString(this);
         }
 
-        public override bool Equals(object obj)
+        public override bool Equals(object? obj)
         {
             return ReferenceEquals(this, obj) || (obj is null ? false : throw new System.NotImplementedException());
         }
@@ -63,7 +63,10 @@ namespace Concierge.Primitives
 
         private void ConciergeDouble_UnitsChanged(object sender, EventArgs e)
         {
-            var conciergeSettings = sender as UserSettingsDto;
+            if (sender is not UserSettingsDto conciergeSettings)
+            {
+                return;
+            }
 
             this.Value = this.UnitType != conciergeSettings.UnitOfMeasurement
                     ? UnitConvertion.Convert(this.Measurement, conciergeSettings.UnitOfMeasurement, this.Value)

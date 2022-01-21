@@ -38,14 +38,14 @@ namespace Concierge.Interfaces.InventoryPageInterface
 
         public void Edit(object itemToEdit)
         {
-            if (itemToEdit is not Inventory)
+            if (itemToEdit is not Inventory inventory)
             {
                 return;
             }
 
             var index = this.InventoryDataGrid.SelectedIndex;
             ConciergeWindowService.ShowEdit<Inventory>(
-                itemToEdit as Inventory,
+                inventory,
                 false,
                 typeof(ModifyInventoryWindow),
                 this.Window_ApplyChanges,

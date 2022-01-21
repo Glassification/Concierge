@@ -29,6 +29,8 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
             this.SchoolComboBox.ItemsSource = Enum.GetValues(typeof(ArcaneSchools)).Cast<ArcaneSchools>();
             this.ClassComboBox.ItemsSource = Constants.Classes;
             this.ConciergePage = ConciergePage.None;
+            this.SelectedSpell = new Spell();
+            this.Spells = new List<Spell>();
         }
 
         public bool ItemsAdded { get; private set; }
@@ -57,7 +59,11 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
 
         public override bool ShowAdd<T>(T spells)
         {
-            var castItem = spells as List<Spell>;
+            if (spells is not List<Spell> castItem)
+            {
+                return false;
+            }
+
             this.Editing = false;
             this.HeaderTextBlock.Text = this.HeaderText;
             this.Spells = castItem;
@@ -71,7 +77,11 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
 
         public override void ShowEdit<T>(T spell)
         {
-            var castItem = spell as Spell;
+            if (spell is not Spell castItem)
+            {
+                return;
+            }
+
             this.Editing = true;
             this.HeaderTextBlock.Text = this.HeaderText;
             this.SelectedSpell = castItem;
@@ -227,9 +237,9 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
 
         private void SpellNameComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (this.SpellNameComboBox.SelectedItem != null)
+            if (this.SpellNameComboBox.SelectedItem is Spell spell)
             {
-                this.FillFields(this.SpellNameComboBox.SelectedItem as Spell);
+                this.FillFields(spell);
             }
         }
     }

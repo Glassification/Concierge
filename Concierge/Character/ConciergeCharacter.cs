@@ -28,7 +28,32 @@ namespace Concierge.Character
     {
         public ConciergeCharacter()
         {
-            this.Initialize();
+            this.Abilities = new List<Ability>();
+            this.Ammunitions = new List<Ammunition>();
+            this.Appearance = new Appearance();
+            this.Armor = new Armor();
+            this.Attributes = new Attributes();
+            this.Chapters = new List<Chapter>();
+            this.ClassResources = new List<ClassResource>();
+            this.Companion = new Companion();
+            this.Senses = new Senses();
+            this.Inventories = new List<Inventory>();
+            this.MagicClasses = new List<MagicClass>();
+            this.Personality = new Personality();
+            this.Proficiency = new List<Proficiency>();
+            this.SavingThrow = new SavingThrow();
+            this.Skill = new Skill();
+            this.Spells = new List<Spell>();
+            this.SpellSlots = new SpellSlots();
+            this.Vitality = new Vitality();
+            this.Wealth = new Wealth();
+            this.Weapons = new List<Weapon>();
+            this.EquippedItems = new EquippedItems();
+            this.CharacterImage = new CharacterImage();
+            this.CharacterIcon = new CharacterImage();
+            this.StatusEffects = new List<StatusEffect>();
+            this.Properties = new CharacterProperties();
+            this.Languages = new List<Language>();
         }
 
         public List<Ability> Abilities { get; set; }
@@ -154,7 +179,7 @@ namespace Concierge.Character
         [JsonIgnore]
         public double HeavyCarryCapacity => this.Attributes.Strength * UnitConvertion.HeavyMultiplier;
 
-        public override bool Equals(object obj)
+        public override bool Equals(object? obj)
         {
             if (obj is not ConciergeCharacter)
             {
@@ -170,11 +195,6 @@ namespace Concierge.Character
         public override int GetHashCode()
         {
             return base.GetHashCode();
-        }
-
-        public void Reset()
-        {
-            this.Initialize();
         }
 
         public void LongRest()
@@ -262,36 +282,6 @@ namespace Concierge.Character
                 Properties = this.Properties.DeepCopy(),
                 Languages = this.Languages.DeepCopy().ToList(),
             };
-        }
-
-        private void Initialize()
-        {
-            this.Abilities = new List<Ability>();
-            this.Ammunitions = new List<Ammunition>();
-            this.Appearance = new Appearance();
-            this.Armor = new Armor();
-            this.Attributes = new Attributes();
-            this.Chapters = new List<Chapter>();
-            this.ClassResources = new List<ClassResource>();
-            this.Companion = new Companion();
-            this.Senses = new Senses();
-            this.Inventories = new List<Inventory>();
-            this.MagicClasses = new List<MagicClass>();
-            this.Personality = new Personality();
-            this.Proficiency = new List<Proficiency>();
-            this.SavingThrow = new SavingThrow();
-            this.Skill = new Skill();
-            this.Spells = new List<Spell>();
-            this.SpellSlots = new SpellSlots();
-            this.Vitality = new Vitality();
-            this.Wealth = new Wealth();
-            this.Weapons = new List<Weapon>();
-            this.EquippedItems = new EquippedItems();
-            this.CharacterImage = new CharacterImage();
-            this.CharacterIcon = new CharacterImage();
-            this.StatusEffects = new List<StatusEffect>();
-            this.Properties = new CharacterProperties();
-            this.Languages = new List<Language>();
         }
     }
 }

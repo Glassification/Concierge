@@ -24,6 +24,7 @@ namespace Concierge.Search
             this.MainWindow = mainWindow;
             this.Results = new List<SearchResult>();
             this.SearchSettings = new SearchSettings();
+            this.Regex = new Regex(string.Empty);
         }
 
         public SearchSettings SearchSettings { get; private set; }
@@ -78,7 +79,11 @@ namespace Concierge.Search
             switch (this.SearchSettings.SearchDomain)
             {
                 case SearchDomain.CurrentPage:
-                    this.SearchPage(this.MainWindow.CurrentPage);
+                    if (this.MainWindow.CurrentPage is not null)
+                    {
+                        this.SearchPage(this.MainWindow.CurrentPage);
+                    }
+
                     break;
                 case SearchDomain.EntireSheet:
                     this.SearchPages();
@@ -108,8 +113,12 @@ namespace Concierge.Search
 
         private void SearchTextBlocks(IConciergePage conciergePage)
         {
-            var textBlocks = DisplayUtility.FindVisualChildren<ConciergeTextBlock>(conciergePage as Page);
+            if (conciergePage is not Page page)
+            {
+                return;
+            }
 
+            var textBlocks = DisplayUtility.FindVisualChildren<ConciergeTextBlock>(page);
             foreach (var textBlock in textBlocks)
             {
                 if (this.Regex.IsMatch(textBlock.Text))
@@ -121,8 +130,12 @@ namespace Concierge.Search
 
         private void SearchDataGrids(IConciergePage conciergePage)
         {
-            var dataGrids = DisplayUtility.FindVisualChildren<ConciergeDataGrid>(conciergePage as Page);
+            if (conciergePage is not Page page)
+            {
+                return;
+            }
 
+            var dataGrids = DisplayUtility.FindVisualChildren<ConciergeDataGrid>(page);
             if (!dataGrids.Any())
             {
                 return;
@@ -138,6 +151,11 @@ namespace Concierge.Search
         {
             foreach (var item in list)
             {
+                if (item is null)
+                {
+                    continue;
+                }
+
                 if (this.SearchListObject(item, conciergePage))
                 {
                     this.Results.Add(new SearchResult(this.SearchSettings.TextToSearch, item, this.Regex, conciergePage));
@@ -167,7 +185,7 @@ namespace Concierge.Search
                         this.SearchList(list, conciergePage);
                     }
 
-                    if (this.Regex.IsMatch(propertyValue.ToString()))
+                    if (this.Regex.IsMatch(propertyValue.ToString() ?? string.Empty))
                     {
                         return true;
                     }

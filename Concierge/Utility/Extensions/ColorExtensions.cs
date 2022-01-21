@@ -14,7 +14,11 @@ namespace Concierge.Utility.Extensions
     {
         public static string GetName(this Color color)
         {
-            var properties = typeof(Colors).GetProperties().FirstOrDefault(p => Color.AreClose((Color)p.GetValue(null), color));
+            var properties = typeof(Colors).GetProperties().FirstOrDefault(p =>
+            {
+                Color color1 = (Color)(p.GetValue(null) ?? Colors.Transparent);
+                return Color.AreClose(color1, color);
+            });
             return properties != null ? properties.Name.FormatColorName() : color.ToHexWithoutAlpha();
         }
 
