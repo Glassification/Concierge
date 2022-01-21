@@ -29,6 +29,8 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
             this.NameComboBox.ItemsSource = Constants.StatusEffects;
             this.TypeComboBox.ItemsSource = Enum.GetValues(typeof(StatusEffectTypes)).Cast<StatusEffectTypes>();
             this.ConciergePage = ConciergePage.None;
+            this.SelectedEffect = new StatusEffect();
+            this.StatusEffects = new List<StatusEffect>();
         }
 
         public bool ItemsAdded { get; private set; }
@@ -57,7 +59,11 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
 
         public override bool ShowAdd<T>(T statusEffects)
         {
-            var castItem = statusEffects as List<StatusEffect>;
+            if (statusEffects is not List<StatusEffect> castItem)
+            {
+                return false;
+            }
+
             this.Editing = false;
             this.HeaderTextBlock.Text = this.HeaderText;
             this.StatusEffects = castItem;
@@ -71,7 +77,11 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
 
         public override void ShowEdit<T>(T statusEffect)
         {
-            var castItem = statusEffect as StatusEffect;
+            if (statusEffect is not StatusEffect castItem)
+            {
+                return;
+            }
+
             this.Editing = true;
             this.HeaderTextBlock.Text = this.HeaderText;
             this.ApplyButton.Visibility = Visibility.Collapsed;

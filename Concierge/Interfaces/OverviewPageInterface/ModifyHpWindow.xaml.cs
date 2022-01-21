@@ -34,7 +34,11 @@ namespace Concierge.Interfaces.OverviewPageInterface
 
         public override ConciergeWindowResult ShowHeal<T>(T vitality)
         {
-            var castItem = vitality as Vitality;
+            if (vitality is not Vitality castItem)
+            {
+                return ConciergeWindowResult.NoResult;
+            }
+
             this.IsHealing = true;
             this.HeaderTextBlock.Text = this.HeaderText;
             this.HpUpDown.Value = this.PreviousHeal;
@@ -55,7 +59,11 @@ namespace Concierge.Interfaces.OverviewPageInterface
 
         public override ConciergeWindowResult ShowDamage<T>(T vitality)
         {
-            var castItem = vitality as Vitality;
+            if (vitality is not Vitality castItem)
+            {
+                return ConciergeWindowResult.NoResult;
+            }
+
             this.IsHealing = false;
             this.HeaderTextBlock.Text = this.HeaderText;
             this.HpUpDown.Value = this.PreviousDamage;

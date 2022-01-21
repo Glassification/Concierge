@@ -27,6 +27,7 @@ namespace Concierge.Interfaces
             this.Class1ComboBox.ItemsSource = Constants.Classes;
             this.Class2ComboBox.ItemsSource = Constants.Classes;
             this.Class3ComboBox.ItemsSource = Constants.Classes;
+            this.CharacterProperties = new CharacterProperties();
 
             Program.Logger.Info($"Initialized {nameof(ModifyPropertiesWindow)}.");
         }
@@ -47,9 +48,12 @@ namespace Concierge.Interfaces
 
         public override void ShowEdit<T>(T properties)
         {
-            var castItem = properties as CharacterProperties;
-            this.CharacterProperties = castItem;
+            if (properties is not CharacterProperties castItem)
+            {
+                return;
+            }
 
+            this.CharacterProperties = castItem;
             this.FillFields();
             this.ShowConciergeWindow();
         }

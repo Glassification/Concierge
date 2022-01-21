@@ -95,7 +95,7 @@ namespace Concierge.Interfaces
 
         public static double GridContentWidthClose => SystemParameters.PrimaryScreenWidth - 60;
 
-        public IConciergePage? CurrentPage => (this.ListViewMenu.SelectedItem as ListViewItem).Tag as IConciergePage;
+        public IConciergePage? CurrentPage => (this.ListViewMenu.SelectedItem as ListViewItem)?.Tag as IConciergePage;
 
         public double ScaleValueX
         {
@@ -267,9 +267,12 @@ namespace Concierge.Interfaces
             this.DrawAll();
         }
 
-        public void PageSelection(IConciergePage conciergePage)
+        public void PageSelection(IConciergePage? conciergePage)
         {
-            var page = conciergePage as Page;
+            if (conciergePage is not Page page)
+            {
+                return;
+            }
 
             this.CollapseAll();
             page.Visibility = Visibility.Visible;
@@ -601,7 +604,7 @@ namespace Concierge.Interfaces
         private void ListViewItem_Selected(object sender, RoutedEventArgs e)
         {
             ConciergeSound.TapNavigation();
-            this.PageSelection((sender as ListViewItem).Tag as IConciergePage);
+            this.PageSelection((sender as ListViewItem)?.Tag as IConciergePage);
         }
 
         private void PropertiesButton_Click(object sender, RoutedEventArgs e)
@@ -720,8 +723,10 @@ namespace Concierge.Interfaces
         {
             this.ButtonUndo.IsEnabled = Program.UndoRedoService.CanUndo;
             this.ButtonRedo.IsEnabled = Program.UndoRedoService.CanRedo;
-
-            var service = sender as UndoRedoService;
+            if (sender is not UndoRedoService service)
+            {
+                return;
+            }
 
             if (service.UpdateAutosaveTimer)
             {

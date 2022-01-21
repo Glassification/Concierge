@@ -13,16 +13,14 @@ namespace Concierge.Interfaces.Dictionary
     {
         private void DataGridRow_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            if (sender is not DataGridRow)
+            if (sender is not DataGridRow dataGridRow)
             {
                 return;
             }
 
-            var dataGridRow = sender as DataGridRow;
             var page = dataGridRow.Tag as IConciergePage;
-
             ConciergeSound.UpdateValue();
-            page.Edit(dataGridRow.DataContext);
+            page?.Edit(dataGridRow.DataContext);
         }
     }
 }

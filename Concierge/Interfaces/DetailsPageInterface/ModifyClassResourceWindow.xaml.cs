@@ -22,6 +22,8 @@ namespace Concierge.Interfaces.DetailsPageInterface
         {
             this.InitializeComponent();
             this.ConciergePage = ConciergePage.None;
+            this.ClassResource = new ClassResource();
+            this.ClassResources = new List<ClassResource>();
         }
 
         public bool ItemsAdded { get; private set; }
@@ -50,7 +52,11 @@ namespace Concierge.Interfaces.DetailsPageInterface
 
         public override bool ShowAdd<T>(T classResources)
         {
-            var castItem = classResources as List<ClassResource>;
+            if (classResources is not List<ClassResource> castItem)
+            {
+                return false;
+            }
+
             this.ClassResources = castItem;
             this.Editing = false;
             this.HeaderTextBlock.Text = this.HeaderText;
@@ -64,7 +70,11 @@ namespace Concierge.Interfaces.DetailsPageInterface
 
         public override void ShowEdit<T>(T classResource)
         {
-            var castItem = classResource as ClassResource;
+            if (classResource is not ClassResource castItem)
+            {
+                return;
+            }
+
             this.Editing = true;
             this.HeaderTextBlock.Text = this.HeaderText;
             this.ClassResource = castItem;

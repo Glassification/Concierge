@@ -21,6 +21,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
         {
             this.InitializeComponent();
             this.ConciergePage = ConciergePage.None;
+            this.Attributes = new Attributes();
         }
 
         private Attributes Attributes { get; set; }
@@ -39,9 +40,12 @@ namespace Concierge.Interfaces.OverviewPageInterface
 
         public override void ShowEdit<T>(T attributes)
         {
-            var castItem = attributes as Attributes;
-            this.Attributes = castItem;
+            if (attributes is not Attributes castItem)
+            {
+                return;
+            }
 
+            this.Attributes = castItem;
             this.FillFields();
             this.ShowConciergeWindow();
         }

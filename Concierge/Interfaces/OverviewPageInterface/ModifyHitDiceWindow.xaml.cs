@@ -20,6 +20,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
         {
             this.InitializeComponent();
             this.ConciergePage = ConciergePage.None;
+            this.HitDice = new HitDice();
         }
 
         private HitDice HitDice { get; set; }
@@ -38,9 +39,12 @@ namespace Concierge.Interfaces.OverviewPageInterface
 
         public override void ShowEdit<T>(T hitDice)
         {
-            var castItem = hitDice as HitDice;
-            this.HitDice = castItem;
+            if (hitDice is not HitDice castItem)
+            {
+                return;
+            }
 
+            this.HitDice = castItem;
             this.FillFields();
             this.ShowConciergeWindow();
         }

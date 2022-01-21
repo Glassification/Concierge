@@ -66,9 +66,7 @@ namespace Concierge.Interfaces.Components
         {
             foreach (var item in this.Items)
             {
-                var documentItem = item as DocumentTreeViewItem;
-
-                if (documentItem.Foreground == ConciergeColors.NoteTreeItemHover)
+                if (item is DocumentTreeViewItem documentItem && documentItem.Foreground == ConciergeColors.NoteTreeItemHover)
                 {
                     return true;
                 }

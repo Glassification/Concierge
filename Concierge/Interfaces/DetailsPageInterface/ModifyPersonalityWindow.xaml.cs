@@ -21,6 +21,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
         {
             this.InitializeComponent();
             this.ConciergePage = ConciergePage.None;
+            this.Personality = new Personality();
         }
 
         private Personality Personality { get; set; }
@@ -39,9 +40,12 @@ namespace Concierge.Interfaces.DetailsPageInterface
 
         public override void ShowEdit<T>(T personality)
         {
-            var castItem = personality as Personality;
-            this.Personality = castItem;
+            if (personality is not Personality castItem)
+            {
+                return;
+            }
 
+            this.Personality = castItem;
             this.FillFields();
             this.ShowConciergeWindow();
         }

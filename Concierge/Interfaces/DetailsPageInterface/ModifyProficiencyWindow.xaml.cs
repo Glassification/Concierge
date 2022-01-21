@@ -25,6 +25,8 @@ namespace Concierge.Interfaces.DetailsPageInterface
             this.InitializeComponent();
             this.ProficiencyComboBox.ItemsSource = Enum.GetValues(typeof(ProficiencyTypes)).Cast<ProficiencyTypes>();
             this.ConciergePage = ConciergePage.None;
+            this.SelectedProficiencies = new List<Proficiency>();
+            this.SelectedProficiency = new Proficiency();
         }
 
         public bool ItemsAdded { get; private set; }
@@ -54,7 +56,11 @@ namespace Concierge.Interfaces.DetailsPageInterface
 
         public override bool ShowAdd<T>(T proficiencies)
         {
-            var castItem = proficiencies as List<Proficiency>;
+            if (proficiencies is not List<Proficiency> castItem)
+            {
+                return false;
+            }
+
             this.Editing = false;
             this.HeaderTextBlock.Text = this.HeaderText;
             this.SelectedProficiencies = castItem;
@@ -69,7 +75,11 @@ namespace Concierge.Interfaces.DetailsPageInterface
 
         public override void ShowEdit<T>(T proficiency)
         {
-            var castItem = proficiency as Proficiency;
+            if (proficiency is not Proficiency castItem)
+            {
+                return;
+            }
+
             this.Editing = true;
             this.SelectedProficiency = castItem;
             this.HeaderTextBlock.Text = this.HeaderText;

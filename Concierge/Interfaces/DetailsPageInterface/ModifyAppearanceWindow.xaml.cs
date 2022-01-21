@@ -28,6 +28,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
             this.InitializeComponent();
             this.GenderComboBox.ItemsSource = Enum.GetValues(typeof(Gender)).Cast<Gender>();
             this.ConciergePage = ConciergePage.None;
+            this.Appearance = new Appearance();
         }
 
         private Appearance Appearance { get; set; }
@@ -46,9 +47,12 @@ namespace Concierge.Interfaces.DetailsPageInterface
 
         public override void ShowEdit<T>(T appearance)
         {
-            var castItem = appearance as Appearance;
-            this.Appearance = castItem;
+            if (appearance is not Appearance castItem)
+            {
+                return;
+            }
 
+            this.Appearance = castItem;
             this.FillFields();
             this.ShowConciergeWindow();
         }

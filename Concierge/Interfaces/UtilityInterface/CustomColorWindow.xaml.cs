@@ -74,7 +74,10 @@ namespace Concierge.Interfaces.UtilityInterface
 
         private void SetColorAtPoint(Point point)
         {
-            var img = this.ColorPickerImage.Source as BitmapSource;
+            if (this.ColorPickerImage.Source is not BitmapSource img)
+            {
+                return;
+            }
 
             if (point.X > 0 && point.Y > 0 && point.X < img.PixelWidth && point.Y < img.PixelHeight)
             {

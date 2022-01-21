@@ -46,7 +46,7 @@ namespace Concierge.Interfaces.UtilityInterface
             this.ShowDialog();
         }
 
-        private void WindowTimer_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        private void WindowTimer_ProgressChanged(object? sender, ProgressChangedEventArgs e)
         {
             if (this.Counter > 5)
             {
@@ -58,17 +58,22 @@ namespace Concierge.Interfaces.UtilityInterface
             this.Counter++;
         }
 
-        private void WindowTimer_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        private void WindowTimer_RunWorkerCompleted(object? sender, RunWorkerCompletedEventArgs e)
         {
             this.Close();
         }
 
-        private void WindowTimer_DoWork(object sender, DoWorkEventArgs e)
+        private void WindowTimer_DoWork(object? sender, DoWorkEventArgs e)
         {
+            if (sender is not BackgroundWorker worker)
+            {
+                return;
+            }
+
             var random = new Random();
             for (int i = 0; i < DisplayTime; i++)
             {
-                (sender as BackgroundWorker).ReportProgress(i);
+                worker.ReportProgress(i);
                 Thread.Sleep(random.Next(MinHoldTime, MaxHoldTime));
             }
         }

@@ -43,15 +43,19 @@ namespace Concierge.Interfaces.OverviewPageInterface
             this.PersuasionComboBox.ItemsSource = Enum.GetValues(typeof(StatusChecks)).Cast<StatusChecks>();
 
             this.ConciergePage = ConciergePage.None;
+            this.Skill = new Skill();
         }
 
         private Skill Skill { get; set; }
 
         public override void ShowEdit<T>(T skill)
         {
-            var castItem = skill as Skill;
-            this.Skill = castItem;
+            if (skill is not Skill castItem)
+            {
+                return;
+            }
 
+            this.Skill = castItem;
             this.FillFields();
             this.ShowConciergeWindow();
         }

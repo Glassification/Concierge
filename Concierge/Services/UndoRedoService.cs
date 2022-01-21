@@ -23,7 +23,7 @@ namespace Concierge.Utility
 
         public delegate void StackChangedEventHandler(object sender, EventArgs e);
 
-        public event StackChangedEventHandler StackChanged;
+        public event StackChangedEventHandler? StackChanged;
 
         public bool CanRedo => this.RedoStack.Count > 0;
 
@@ -31,7 +31,7 @@ namespace Concierge.Utility
 
         public bool UpdateAutosaveTimer { get; private set; }
 
-        private Command Current { get; set; }
+        private Command? Current { get; set; }
 
         private Stack<Command> RedoStack { get; set; }
 

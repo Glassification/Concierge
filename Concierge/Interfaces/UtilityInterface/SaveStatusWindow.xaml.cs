@@ -37,21 +37,26 @@ namespace Concierge.Interfaces.UtilityInterface
             this.ShowConciergeWindow();
         }
 
-        private void ProgressBarFiller_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        private void ProgressBarFiller_RunWorkerCompleted(object? sender, RunWorkerCompletedEventArgs e)
         {
             this.HideConciergeWindow();
         }
 
-        private void ProgressBarFiller_DoWork(object sender, DoWorkEventArgs e)
+        private void ProgressBarFiller_DoWork(object? sender, DoWorkEventArgs e)
         {
+            if (sender is not BackgroundWorker worker)
+            {
+                return;
+            }
+
             for (int i = 0; i <= 100; i++)
             {
-                (sender as BackgroundWorker).ReportProgress(i);
+                worker.ReportProgress(i);
                 Thread.Sleep(3);
             }
         }
 
-        private void ProgressBarFiller_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        private void ProgressBarFiller_ProgressChanged(object? sender, ProgressChangedEventArgs e)
         {
             this.SaveProgressBar.Value = e.ProgressPercentage;
         }

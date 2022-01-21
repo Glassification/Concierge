@@ -30,6 +30,11 @@ namespace Concierge.Interfaces.UtilityInterface
 
         public SearchWindow()
         {
+            if (Program.MainWindow is null)
+            {
+                throw new Exception($"{nameof(Program.MainWindow)} is null.");
+            }
+
             this.InitializeComponent();
             this.conciergeSearch = new ConciergeSearch(Program.MainWindow);
             this.conciergeNavigate = new ConciergeNavigate();
@@ -134,9 +139,9 @@ namespace Concierge.Interfaces.UtilityInterface
         {
             foreach (var result in this.SearchResults)
             {
-                if (result.Item is ConciergeTextBlock)
+                if (result.Item is ConciergeTextBlock item)
                 {
-                    (result.Item as ConciergeTextBlock).ResetHighlight();
+                    item.ResetHighlight();
                 }
             }
         }
@@ -157,14 +162,14 @@ namespace Concierge.Interfaces.UtilityInterface
             return true;
         }
 
-        private void CloseButton_Click(object sender, RoutedEventArgs e)
+        private void CloseButton_Click(object? sender, RoutedEventArgs e)
         {
             this.ClearHighlightedResults();
             this.ClearFields();
             this.HideConciergeWindow();
         }
 
-        private void FindPreviousButton_Click(object sender, RoutedEventArgs e)
+        private void FindPreviousButton_Click(object? sender, RoutedEventArgs e)
         {
             this.SearchIndex--;
             if (this.SearchIndex < 0)
@@ -176,7 +181,7 @@ namespace Concierge.Interfaces.UtilityInterface
             this.FormatResultText();
         }
 
-        private void FindNextButton_Click(object sender, RoutedEventArgs e)
+        private void FindNextButton_Click(object? sender, RoutedEventArgs e)
         {
             this.SearchIndex++;
             if (this.SearchIndex >= this.SearchResults.Count)
@@ -188,14 +193,14 @@ namespace Concierge.Interfaces.UtilityInterface
             this.FormatResultText();
         }
 
-        private void CancelButton_Click(object sender, RoutedEventArgs e)
+        private void CancelButton_Click(object? sender, RoutedEventArgs e)
         {
             this.ClearHighlightedResults();
             this.ClearFields();
             this.HideConciergeWindow();
         }
 
-        private void Window_KeyDown(object sender, KeyEventArgs e)
+        private void Window_KeyDown(object? sender, KeyEventArgs e)
         {
             switch (e.Key)
             {
@@ -204,12 +209,12 @@ namespace Concierge.Interfaces.UtilityInterface
                     this.ClearFields();
                     break;
                 case Key.Enter:
-                    this.FindNextButton_Click(this.FindNextButton, null);
+                    this.FindNextButton_Click(this.FindNextButton, new RoutedEventArgs());
                     break;
             }
         }
 
-        private void Window_MouseMove(object sender, MouseEventArgs e)
+        private void Window_MouseMove(object? sender, MouseEventArgs e)
         {
             if (this.Opacity < 1)
             {
@@ -217,7 +222,7 @@ namespace Concierge.Interfaces.UtilityInterface
             }
         }
 
-        private void UseRegexCheckBox_Checked(object sender, RoutedEventArgs e)
+        private void UseRegexCheckBox_Checked(object? sender, RoutedEventArgs e)
         {
             this.MatchWholeWordLabel.IsEnabled = false;
             this.MatchWholeWordCheckBox.IsEnabled = false;
@@ -226,7 +231,7 @@ namespace Concierge.Interfaces.UtilityInterface
             this.MatchWholeWordCheckBox.IsChecked = false;
         }
 
-        private void UseRegexCheckBox_Unchecked(object sender, RoutedEventArgs e)
+        private void UseRegexCheckBox_Unchecked(object? sender, RoutedEventArgs e)
         {
             this.MatchWholeWordLabel.IsEnabled = true;
             this.MatchWholeWordCheckBox.IsEnabled = true;

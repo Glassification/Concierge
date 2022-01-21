@@ -40,14 +40,14 @@ namespace Concierge.Interfaces.AbilitiesPageInterface
 
         public void Edit(object itemToEdit)
         {
-            if (itemToEdit is not Ability)
+            if (itemToEdit is not Ability ability)
             {
                 return;
             }
 
             var index = this.AbilitiesDataGrid.SelectedIndex;
             ConciergeWindowService.ShowEdit<Ability>(
-                itemToEdit as Ability,
+                ability,
                 typeof(ModifyAbilitiesWindow),
                 this.Window_ApplyChanges,
                 ConciergePage.Abilities);

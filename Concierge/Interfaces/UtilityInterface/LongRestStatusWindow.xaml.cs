@@ -34,12 +34,12 @@ namespace Concierge.Interfaces.UtilityInterface
             this.ShowConciergeWindow();
         }
 
-        private void ProgressBarFiller_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        private void ProgressBarFiller_RunWorkerCompleted(object? sender, RunWorkerCompletedEventArgs e)
         {
             this.HideConciergeWindow();
         }
 
-        private void ProgressBarFiller_DoWork(object sender, DoWorkEventArgs e)
+        private void ProgressBarFiller_DoWork(object? sender, DoWorkEventArgs e)
         {
             Thread.Sleep(1100);
         }

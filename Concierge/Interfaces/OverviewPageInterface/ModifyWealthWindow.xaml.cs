@@ -20,6 +20,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
         {
             this.InitializeComponent();
             this.ConciergePage = ConciergePage.None;
+            this.SelectedWealth = new Wealth();
         }
 
         private int CP { get; set; }
@@ -48,9 +49,12 @@ namespace Concierge.Interfaces.OverviewPageInterface
 
         public override void ShowEdit<T>(T wealth)
         {
-            var castItem = wealth as Wealth;
-            this.SelectedWealth = castItem;
+            if (wealth is not Wealth castItem)
+            {
+                return;
+            }
 
+            this.SelectedWealth = castItem;
             this.ClearFields();
             this.FillFields();
             this.ShowConciergeWindow();

@@ -28,7 +28,8 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
         public EquippedItemsPage()
         {
             this.InitializeComponent();
-
+            this.SelectedItem = new Inventory();
+            this.SelectedDataGrid = new ConciergeDataGrid();
             this.DataContext = this;
         }
 
@@ -55,14 +56,14 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
 
         public void Edit(object itemToEdit)
         {
-            if (itemToEdit is not Inventory)
+            if (itemToEdit is not Inventory inventory)
             {
                 return;
             }
 
             var index = this.SelectedDataGrid.SelectedIndex;
             ConciergeWindowService.ShowEdit<Inventory>(
-                itemToEdit as Inventory,
+                inventory,
                 true,
                 typeof(ModifyInventoryWindow),
                 this.Window_ApplyChanges,
@@ -91,14 +92,26 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
 
         private void EquipmentDataGrid_Sorted(object sender, RoutedEventArgs e)
         {
-            var dataGrid = sender as ConciergeDataGrid;
-            var equippedItems = DisplayUtility.GetPropertyValue<List<Inventory>>(Program.CcsFile.Character.EquippedItems, dataGrid.Tag as string);
+            if (sender is not ConciergeDataGrid dataGrid)
+            {
+                return;
+            }
+
+            if (dataGrid.Tag is not string tagString)
+            {
+                return;
+            }
+
+            var equippedItems = DisplayUtility.GetPropertyValue<List<Inventory>>(Program.CcsFile.Character.EquippedItems, tagString) ?? new List<Inventory>();
             var oldList = new List<Inventory>(equippedItems);
 
             equippedItems.Clear();
             foreach (var item in dataGrid.Items)
             {
-                equippedItems.Add(item as Inventory);
+                if (item is Inventory inventory)
+                {
+                    equippedItems.Add(inventory);
+                }
             }
 
             Program.UndoRedoService.AddCommand(
@@ -112,36 +125,45 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
 
         private void EquipmentDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var dataGrid = this.SelectedDataGrid = sender as ConciergeDataGrid;
-            this.SelectedItem = dataGrid.SelectedItem as Inventory;
-            this.SelectedIndex = dataGrid.SelectedIndex;
-
-            if (this.SelectedItem == null)
+            if (sender is not ConciergeDataGrid dataGrid)
             {
                 return;
             }
 
-            if (!(dataGrid.Tag as string).Equals(EquipmentSlot.Head.ToString()))
+            if (dataGrid.SelectedItem is not Inventory inventory)
+            {
+                return;
+            }
+
+            if (dataGrid.Tag is not string stringTag)
+            {
+                return;
+            }
+
+            this.SelectedItem = inventory;
+            this.SelectedIndex = dataGrid.SelectedIndex;
+
+            if (!stringTag.Equals(EquipmentSlot.Head.ToString()))
             {
                 this.HeadEquipmentDataGrid.UnselectAll();
             }
 
-            if (!(dataGrid.Tag as string).Equals(EquipmentSlot.Torso.ToString()))
+            if (!stringTag.Equals(EquipmentSlot.Torso.ToString()))
             {
                 this.TorsoEquipmentDataGrid.UnselectAll();
             }
 
-            if (!(dataGrid.Tag as string).Equals(EquipmentSlot.Hands.ToString()))
+            if (!stringTag.Equals(EquipmentSlot.Hands.ToString()))
             {
                 this.HandsEquipmentDataGrid.UnselectAll();
             }
 
-            if (!(dataGrid.Tag as string).Equals(EquipmentSlot.Legs.ToString()))
+            if (!stringTag.Equals(EquipmentSlot.Legs.ToString()))
             {
                 this.LegsEquipmentDataGrid.UnselectAll();
             }
 
-            if (!(dataGrid.Tag as string).Equals(EquipmentSlot.Feet.ToString()))
+            if (!stringTag.Equals(EquipmentSlot.Feet.ToString()))
             {
                 this.FeetEquipmentDataGrid.UnselectAll();
             }
@@ -149,14 +171,13 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
 
         private void ButtonUp_Click(object sender, RoutedEventArgs e)
         {
-            if (this.SelectedDataGrid == null)
+            if (this.SelectedDataGrid.Tag is not string stringTag)
             {
                 return;
             }
 
-            var equippedItems = DisplayUtility.GetPropertyValue<List<Inventory>>(Program.CcsFile.Character.EquippedItems, this.SelectedDataGrid.Tag as string);
+            var equippedItems = DisplayUtility.GetPropertyValue<List<Inventory>>(Program.CcsFile.Character.EquippedItems, stringTag) ?? new List<Inventory>();
             var index = this.SelectedDataGrid.NextItem(equippedItems, 0, -1, this.ConciergePage);
-
             if (index != -1)
             {
                 this.Draw();
@@ -167,14 +188,13 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
 
         private void ButtonDown_Click(object sender, RoutedEventArgs e)
         {
-            if (this.SelectedDataGrid == null)
+            if (this.SelectedDataGrid.Tag is not string stringTag)
             {
                 return;
             }
 
-            var equippedItems = DisplayUtility.GetPropertyValue<List<Inventory>>(Program.CcsFile.Character.EquippedItems, this.SelectedDataGrid.Tag as string);
+            var equippedItems = DisplayUtility.GetPropertyValue<List<Inventory>>(Program.CcsFile.Character.EquippedItems, stringTag) ?? new List<Inventory>();
             var index = this.SelectedDataGrid.NextItem(equippedItems, equippedItems.Count - 1, 1, this.ConciergePage);
-
             if (index != -1)
             {
                 this.Draw();
@@ -219,7 +239,7 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
 
         private void ButtonDelete_Click(object sender, RoutedEventArgs e)
         {
-            if (this.SelectedItem == null)
+            if (this.SelectedDataGrid.Tag is not string stringTag)
             {
                 return;
             }
@@ -227,7 +247,7 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
             var index = this.SelectedIndex;
             var equippedId = this.SelectedItem.EquppedId;
             var itemIndex = this.SelectedItem.Index;
-            var slot = (EquipmentSlot)Enum.Parse(typeof(EquipmentSlot), this.SelectedDataGrid.Tag as string);
+            var slot = (EquipmentSlot)Enum.Parse(typeof(EquipmentSlot), stringTag);
 
             Program.CcsFile.Character.EquippedItems.Dequip(this.SelectedItem, slot);
             Program.UndoRedoService.AddCommand(new DequipItemCommand(this.SelectedItem, itemIndex, equippedId, slot));

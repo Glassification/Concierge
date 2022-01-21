@@ -34,6 +34,8 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
             this.AbilityComboBox.ItemsSource = Enum.GetValues(typeof(Abilities)).Cast<Abilities>();
             this.DamageTypeComboBox.ItemsSource = Enum.GetValues(typeof(DamageTypes)).Cast<DamageTypes>();
             this.ConciergePage = ConciergePage.None;
+            this.Weapons = new List<Weapon>();
+            this.SelectedAttack = new Weapon();
         }
 
         public bool ItemsAdded { get; private set; }
@@ -62,7 +64,11 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
 
         public override bool ShowAdd<T>(T weapons)
         {
-            var castItem = weapons as List<Weapon>;
+            if (weapons is not List<Weapon> castItem)
+            {
+                return false;
+            }
+
             this.Weapons = castItem;
             this.Editing = false;
             this.HeaderTextBlock.Text = this.HeaderText;
@@ -76,7 +82,11 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
 
         public override void ShowEdit<T>(T weapon)
         {
-            var castItem = weapon as Weapon;
+            if (weapon is not Weapon castItem)
+            {
+                return;
+            }
+
             this.Editing = true;
             this.HeaderTextBlock.Text = this.HeaderText;
             this.SelectedAttack = castItem;
@@ -213,9 +223,9 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
 
         private void AttackComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (this.AttackComboBox.SelectedItem != null)
+            if (this.AttackComboBox.SelectedItem is Weapon weapon)
             {
-                this.FillFields(this.AttackComboBox.SelectedItem as Weapon);
+                this.FillFields(weapon);
             }
         }
     }

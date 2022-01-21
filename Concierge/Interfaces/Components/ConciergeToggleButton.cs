@@ -25,7 +25,7 @@ namespace Concierge.Interfaces.Components
             this.MouseLeave += this.Button_MouseLeave;
         }
 
-        private SolidColorBrush OriginalForeground { get; set; }
+        private SolidColorBrush? OriginalForeground { get; set; }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {

@@ -43,33 +43,33 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
 
         public void Edit(object itemToEdit)
         {
-            if (itemToEdit is Ammunition)
+            if (itemToEdit is Ammunition ammunition)
             {
                 var index = this.AmmoDataGrid.SelectedIndex;
                 ConciergeWindowService.ShowEdit<Ammunition>(
-                    itemToEdit as Ammunition,
+                    ammunition,
                     typeof(ModifyAmmoWindow),
                     this.Window_ApplyChanges,
                     ConciergePage.AttackDefense);
                 this.DrawAmmoList();
                 this.AmmoDataGrid.SetSelectedIndex(index);
             }
-            else if (itemToEdit is Weapon)
+            else if (itemToEdit is Weapon weapon)
             {
                 var index = this.WeaponDataGrid.SelectedIndex;
                 ConciergeWindowService.ShowEdit<Weapon>(
-                    itemToEdit as Weapon,
+                    weapon,
                     typeof(ModifyAttackWindow),
                     this.Window_ApplyChanges,
                     ConciergePage.AttackDefense);
                 this.DrawWeaponList();
                 this.WeaponDataGrid.SetSelectedIndex(index);
             }
-            else if (itemToEdit is StatusEffect)
+            else if (itemToEdit is StatusEffect statusEffect)
             {
                 var index = this.StatusEffectsDataGrid.SelectedIndex;
                 ConciergeWindowService.ShowEdit<StatusEffect>(
-                    itemToEdit as StatusEffect,
+                    statusEffect,
                     typeof(ModifyStatusEffectsWindow),
                     this.Window_ApplyChanges,
                     ConciergePage.AttackDefense);
