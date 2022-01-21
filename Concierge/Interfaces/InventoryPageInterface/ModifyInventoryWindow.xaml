@@ -158,7 +158,7 @@
                 </Grid>
 
                 <!--Value-->
-                <Grid Grid.Column="1">
+                <Grid Grid.Column="1" Margin="20,0,0,0">
                     <components:ConciergeCheckBox 
                         x:Name="BagOfHoldingCheckBox"
                         Style="{StaticResource CheckBoxStyle}"/>

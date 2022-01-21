@@ -78,7 +78,7 @@
                     </Grid>
 
                     <!--Value-->
-                    <Grid Grid.Column="1">
+                    <Grid Grid.Column="1" Margin="20,0,0,0">
                         <components:ConciergeCheckBox  
                             x:Name="AutosaveCheckBox"
                             Style="{StaticResource CheckBoxStyle}"
@@ -141,7 +141,7 @@
                     </Grid>
 
                     <!--Value-->
-                    <Grid Grid.Column="1">
+                    <Grid Grid.Column="1" Margin="20,0,0,0">
                         <components:ConciergeCheckBox 
                             x:Name="MuteCheckBox"
                             Style="{StaticResource CheckBoxStyle}"/>
@@ -202,7 +202,7 @@
                     </Grid>
 
                     <!--Value-->
-                    <Grid Grid.Column="1">
+                    <Grid Grid.Column="1" Margin="20,0,0,0">
                         <components:ConciergeCheckBox  
                             x:Name="CoinWeightCheckBox"
                             Style="{StaticResource CheckBoxStyle}"/>
@@ -227,7 +227,7 @@
                     </Grid>
 
                     <!--Value-->
-                    <Grid Grid.Column="1">
+                    <Grid Grid.Column="1"  Margin="20,0,0,0">
                         <components:ConciergeCheckBox  
                             x:Name="EncumbranceCheckBox"
                             Style="{StaticResource CheckBoxStyle}"/>
@@ -253,7 +253,7 @@
                     </Grid>
 
                     <!--Value-->
-                    <Grid Grid.Column="1">
+                    <Grid Grid.Column="1" Margin="20,0,0,0">
                         <components:ConciergeCheckBox  
                             x:Name="CheckVersionCheckBox"
                             Style="{StaticResource CheckBoxStyle}"/>
@@ -287,7 +287,7 @@
                     </Grid>
 
                     <!--Value-->
-                    <Grid Grid.Column="1">
+                    <Grid Grid.Column="1" Margin="20,0,0,0">
                         <components:ConciergeCheckBox  
                             x:Name="CenterWindowsCheckBox"
                             Style="{StaticResource CheckBoxStyle}"/>

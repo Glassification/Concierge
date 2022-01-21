@@ -70,7 +70,7 @@
                         Margin="10, 20, 0, 0"/>
                 </Grid>
 
-                <Grid Grid.Column="1">
+                <Grid Grid.Column="1" Margin="20,0,0,0">
                     <components:ConciergeCheckBox 
                         x:Name="UseCustomImageCheckBox"
                         Style="{StaticResource CheckBoxStyle}"

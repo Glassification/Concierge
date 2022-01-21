@@ -109,7 +109,7 @@
                     </Grid>
 
                     <!--Value-->
-                    <Grid Grid.Column="1">
+                    <Grid Grid.Column="1" Margin="20,0,0,0">
                         <components:ConciergeCheckBox 
                             x:Name="PreparedCheckBox"
                             Style="{StaticResource CheckBoxStyle}"/>
@@ -208,7 +208,7 @@
                     </Grid>
 
                     <!--Value-->
-                    <Grid Grid.Column="1">
+                    <Grid Grid.Column="1" Margin="20,0,0,0">
                         <components:ConciergeCheckBox  
                             x:Name="RitualCheckBox"
                             Style="{StaticResource CheckBoxStyle}"/>
@@ -260,7 +260,7 @@
                     </Grid>
 
                     <!--Value-->
-                    <Grid Grid.Column="1">
+                    <Grid Grid.Column="1" Margin="20,0,0,0">
                         <components:ConciergeCheckBox  
                             x:Name="ConcentrationCheckBox"
                             Style="{StaticResource CheckBoxStyle}"/>

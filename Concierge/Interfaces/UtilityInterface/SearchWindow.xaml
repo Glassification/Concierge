@@ -75,7 +75,7 @@
                 </Grid>
 
                 <!--Value-->
-                <Grid Grid.Column="1">
+                <Grid Grid.Column="1" Margin="20,0,0,0">
                     <components:ConciergeCheckBox  
                         x:Name="MatchCaseCheckBox"
                         Style="{StaticResource CheckBoxStyle}"/>
@@ -101,7 +101,7 @@
                 </Grid>
 
                 <!--Value-->
-                <Grid Grid.Column="1">
+                <Grid Grid.Column="1" Margin="20,0,0,0">
                     <components:ConciergeCheckBox  
                         x:Name="MatchWholeWordCheckBox"
                         Style="{StaticResource CheckBoxStyle}"/>
@@ -126,7 +126,7 @@
                 </Grid>
 
                 <!--Value-->
-                <Grid Grid.Column="1">
+                <Grid Grid.Column="1" Margin="20,0,0,0">
                     <components:ConciergeCheckBox  
                         x:Name="UseRegexCheckBox"
                         Checked="UseRegexCheckBox_Checked"

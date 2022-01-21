@@ -170,8 +170,8 @@
                         <Grid Grid.Row="4">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="50*"/>
-                                <ColumnDefinition Width="25*"/>
-                                <ColumnDefinition Width="25*"/>
+                                <ColumnDefinition Width="20*"/>
+                                <ColumnDefinition Width="30*"/>
                             </Grid.ColumnDefinitions>
 
                             <Grid Grid.Column="0">
