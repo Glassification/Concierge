@@ -45,24 +45,23 @@ namespace Concierge.Utility.Utilities
             Program.Modify();
         }
 
-        public static T GetElementUnderMouse<T>()
+        public static T? GetElementUnderMouse<T>()
             where T : UIElement
         {
             return FindVisualParent<T>(Mouse.DirectlyOver as UIElement);
         }
 
-        public static T FindVisualParent<T>(UIElement element)
+        public static T? FindVisualParent<T>(UIElement? element)
             where T : UIElement
         {
-            UIElement parent = element;
-            while (parent != null)
+            while (element != null)
             {
-                if (parent is T correctlyTyped)
+                if (element is T correctlyTyped)
                 {
                     return correctlyTyped;
                 }
 
-                parent = VisualTreeHelper.GetParent(parent) as UIElement;
+                element = VisualTreeHelper.GetParent(element) as UIElement;
             }
 
             return null;
@@ -178,9 +177,9 @@ namespace Concierge.Utility.Utilities
                 : grid.Background;
         }
 
-        public static T GetPropertyValue<T>(object source, string propertyName)
+        public static T? GetPropertyValue<T>(object source, string propertyName)
         {
-            return (T)source.GetType().GetProperty(propertyName).GetValue(source, null);
+            return (T?)source.GetType()?.GetProperty(propertyName)?.GetValue(source, null);
         }
 
         public static Brush SetUsedTextStyle(int total, int used)

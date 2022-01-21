@@ -95,7 +95,7 @@ namespace Concierge.Logging
             var rotatedPath = filePath.Replace(".log", $".{fileTime}");
             File.Move(filePath, rotatedPath);
 
-            var folderPath = Path.GetDirectoryName(rotatedPath);
+            var folderPath = Path.GetDirectoryName(rotatedPath) ?? string.Empty;
             var logFolderContent = new DirectoryInfo(folderPath).GetFileSystemInfos();
 
             var chunks = logFolderContent.Where(x => !x.Extension.Equals(".zip", StringComparison.OrdinalIgnoreCase));
@@ -104,7 +104,7 @@ namespace Concierge.Logging
                 return;
             }
 
-            var archiveFolderInfo = Directory.CreateDirectory(Path.Combine(Path.GetDirectoryName(rotatedPath), $"{Path.GetFileNameWithoutExtension(this.LogFileName)}_{fileTime}"));
+            var archiveFolderInfo = Directory.CreateDirectory(Path.Combine(Path.GetDirectoryName(rotatedPath) ?? string.Empty, $"{Path.GetFileNameWithoutExtension(this.LogFileName)}_{fileTime}"));
             foreach (var chunk in chunks)
             {
                 Directory.Move(chunk.FullName, Path.Combine(archiveFolderInfo.FullName, chunk.Name));

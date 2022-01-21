@@ -10,6 +10,10 @@ namespace Concierge.Configuration.Objects
     {
         public AppSettings()
         {
+            this.ColorPicker = new ColorPicker();
+            this.CustomColors = new Dictionary<string, string>();
+            this.StartUp = new StartUp();
+            this.UserSettings = new UserSettings();
         }
 
         public ColorPicker ColorPicker { get; set; }

@@ -10,29 +10,28 @@ namespace Concierge.Utility.Extensions
 
     public static class TreeViewExtensions
     {
-        public static TreeViewItem GetTreeViewItem(this TreeView treeView, object item)
+        public static TreeViewItem? GetTreeViewItem(this TreeView treeView, object item)
         {
             foreach (var item1 in treeView.Items)
             {
-                if (item1 is ChapterTreeViewItem)
+                if (item1 is ChapterTreeViewItem chapter)
                 {
-                    var chapter = item1 as ChapterTreeViewItem;
-
                     if (chapter.Chapter.Equals(item))
                     {
                         return chapter;
                     }
                 }
 
-                foreach (var item2 in (item1 as TreeViewItem).Items)
+                if (item1 is TreeViewItem treeViewItem1)
                 {
-                    if (item2 is DocumentTreeViewItem)
+                    foreach (var item2 in treeViewItem1.Items)
                     {
-                        var document = item2 as DocumentTreeViewItem;
-
-                        if (document.Document.Equals(item))
+                        if (item2 is DocumentTreeViewItem document)
                         {
-                            return document;
+                            if (document.Document.Equals(item))
+                            {
+                                return document;
+                            }
                         }
                     }
                 }
@@ -63,7 +62,11 @@ namespace Concierge.Utility.Extensions
             {
                 foreach (var childItem in parent.Items)
                 {
-                    var childControl = parent.ItemContainerGenerator.ContainerFromItem(childItem) as ItemsControl;
+                    if (parent.ItemContainerGenerator.ContainerFromItem(childItem) is not ItemsControl childControl)
+                    {
+                        continue;
+                    }
+
                     if (SetSelected(childControl, child))
                     {
                         return true;

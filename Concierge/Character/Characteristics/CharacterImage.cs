@@ -30,7 +30,7 @@ namespace Concierge.Character.Characteristics
 
         public bool UseCustomImage { get; set; }
 
-        public BitmapImage ToImage()
+        public BitmapImage? ToImage()
         {
             if (!this.UseCustomImage)
             {

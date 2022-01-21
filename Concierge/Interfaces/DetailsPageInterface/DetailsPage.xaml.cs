@@ -238,7 +238,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
             Program.Modify();
         }
 
-        private ConciergeDataGrid GetSelectedProficencyDataGrid()
+        private ConciergeDataGrid? GetSelectedProficencyDataGrid()
         {
             if (this.WeaponProficiencyDataGrid.SelectedItem != null)
             {

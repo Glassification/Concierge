@@ -37,7 +37,7 @@ namespace Concierge.Utility
             this.DispatcherTimer.Stop();
         }
 
-        private void DispatcherTimer_Autosave(object sender, EventArgs e)
+        private void DispatcherTimer_Autosave(object? sender, EventArgs e)
         {
             Program.Logger.Info($"Autosaving...");
 

@@ -95,7 +95,7 @@ namespace Concierge.Interfaces
 
         public static double GridContentWidthClose => SystemParameters.PrimaryScreenWidth - 60;
 
-        public IConciergePage CurrentPage => (this.ListViewMenu.SelectedItem as ListViewItem).Tag as IConciergePage;
+        public IConciergePage? CurrentPage => (this.ListViewMenu.SelectedItem as ListViewItem).Tag as IConciergePage;
 
         public double ScaleValueX
         {

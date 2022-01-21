@@ -38,7 +38,7 @@ namespace Concierge.Primitives
             return $"[{this.Hue}, {this.Saturation}, {this.Value}]";
         }
 
-        public override bool Equals(object obj)
+        public override bool Equals(object? obj)
         {
             return ReferenceEquals(this, obj) || (obj is null ? false : throw new System.NotImplementedException());
         }

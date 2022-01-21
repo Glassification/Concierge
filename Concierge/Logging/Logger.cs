@@ -104,7 +104,7 @@ namespace Concierge.Logging
             return $"[{DateTime.Now.ToString(CultureInfo.InvariantCulture)} {logType}] - {message}";
         }
 
-        protected virtual string UnwrapExceptionMessages(Exception ex)
+        protected virtual string UnwrapExceptionMessages(Exception? ex)
         {
             if (ex == null)
             {

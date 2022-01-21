@@ -16,6 +16,7 @@ namespace Concierge.Character.Spellcasting
     {
         public MagicClass()
         {
+            this.Name = string.Empty;
             this.Id = Guid.NewGuid();
         }
 

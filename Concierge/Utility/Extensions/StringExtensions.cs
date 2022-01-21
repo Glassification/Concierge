@@ -136,8 +136,13 @@ namespace Concierge.Utility.Extensions
             }
         }
 
-        public static Color ToColor(this string colorName)
+        public static Color ToColor(this string? colorName)
         {
+            if (colorName?.IsNullOrWhiteSpace() ?? true)
+            {
+                return Colors.Transparent;
+            }
+
             try
             {
                 colorName = colorName.Strip(" ").Strip("-").Strip(".").Strip("'");

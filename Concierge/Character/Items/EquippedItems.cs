@@ -113,7 +113,7 @@ namespace Concierge.Character.Items
 
         public void Dequip(Guid id, Guid equippedId, EquipmentSlot equipSlot)
         {
-            Inventory item = null;
+            Inventory? item = null;
             switch (equipSlot)
             {
                 case EquipmentSlot.Head:
@@ -133,7 +133,10 @@ namespace Concierge.Character.Items
                     break;
             }
 
-            this.Dequip(item, equipSlot);
+            if (item is not null)
+            {
+                this.Dequip(item, equipSlot);
+            }
         }
 
         public void Dequip(Inventory item, EquipmentSlot equipSlot)

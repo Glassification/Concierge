@@ -15,6 +15,7 @@ namespace Concierge.Search
     {
         public ConciergeNavigate()
         {
+            this.SearchResult = new SearchResult();
         }
 
         private SearchResult SearchResult { get; set; }
@@ -41,8 +42,12 @@ namespace Concierge.Search
 
         private bool NavigateToDataGrid()
         {
-            var dataGrids = DisplayUtility.FindVisualChildren<ConciergeDataGrid>(this.SearchResult.ConciergePage as Page);
+            if (this.SearchResult.ConciergePage is not Page conciergePage)
+            {
+                return false;
+            }
 
+            var dataGrids = DisplayUtility.FindVisualChildren<ConciergeDataGrid>(conciergePage);
             foreach (var dataGrid in dataGrids)
             {
                 var index = dataGrid.Items.IndexOf(this.SearchResult.Item);
@@ -59,20 +64,24 @@ namespace Concierge.Search
 
         private bool NavigateToTextBlock()
         {
-            if (this.SearchResult.Item is not ConciergeTextBlock)
+            if (this.SearchResult.Item is not ConciergeTextBlock textBlock)
             {
                 return false;
             }
 
-            (this.SearchResult.Item as ConciergeTextBlock).Highlight();
+            textBlock.Highlight();
 
             return true;
         }
 
         private bool NavigateToTreeView()
         {
-            var treeViews = DisplayUtility.FindVisualChildren<TreeView>(this.SearchResult.ConciergePage as Page);
+            if (this.SearchResult.ConciergePage is not Page conciergePage)
+            {
+                return false;
+            }
 
+            var treeViews = DisplayUtility.FindVisualChildren<TreeView>(conciergePage);
             foreach (var treeView in treeViews)
             {
                 var item = treeView.GetTreeViewItem(this.SearchResult.Item);
@@ -84,7 +93,7 @@ namespace Concierge.Search
 
                     if (item is DocumentTreeViewItem)
                     {
-                        (this.SearchResult.ConciergePage as NotesPage).HighlightSearchResults(this.SearchResult);
+                        (this.SearchResult.ConciergePage as NotesPage)?.HighlightSearchResults(this.SearchResult);
                     }
 
                     return true;

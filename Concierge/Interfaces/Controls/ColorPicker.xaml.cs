@@ -4,7 +4,6 @@
 
 namespace Concierge.Interfaces.Controls
 {
-    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Windows;
@@ -35,10 +34,15 @@ namespace Concierge.Interfaces.Controls
         {
             this.InitializeComponent();
             this.SelectedColor = Colors.White;
-            this.DefaultColorList.ItemsSource = ColorUtility.ListDotNetColors();
+            this.InitializeColorList();
             this.DefaultColorList.SelectedIndex = 0;
             this.SelectedColor = Colors.White;
-            this.LoadColorList();
+            this.RecentColors = new List<Color>();
+            foreach (var color in AppSettingsManager.ColorPicker.RecentColors)
+            {
+                this.RecentColors.Add(color.ToColor());
+            }
+
             SetColorButtons(this.DefaultColorsStackPanel, AppSettingsManager.ColorPicker.DefaultColors);
             SetColorButtons(this.RecentColorsStackPanel, this.RecentColors);
         }
@@ -88,6 +92,18 @@ namespace Concierge.Interfaces.Controls
             }
         }
 
+        private void InitializeColorList()
+        {
+            foreach (var color in ColorUtility.ListDotNetColors())
+            {
+                this.DefaultColorList.Items.Add(new ComboBoxItem()
+                {
+                    Content = color,
+                    Foreground = color.ToBrush(),
+                });
+            }
+        }
+
         private void UpdateRecentColors(int index)
         {
             var color = this.RecentColors[index];
@@ -107,25 +123,24 @@ namespace Concierge.Interfaces.Controls
             AppSettingsManager.UpdateRecentColors(this.RecentColors);
         }
 
-        private void LoadColorList()
-        {
-            this.RecentColors = new List<Color>();
-            foreach (var color in AppSettingsManager.ColorPicker.RecentColors)
-            {
-                this.RecentColors.Add(color.ToColor());
-            }
-        }
-
         private void DefaultColorList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var color = this.DefaultColorList.SelectedItem.ToString().ToColor();
-            this.SelectDefaultColorButton.Foreground = color.GetForeColor();
-            this.SelectDefaultColorButton.Background = new SolidColorBrush(color);
+            if (this.DefaultColorList.SelectedItem is not ComboBoxItem item)
+            {
+                return;
+            }
+
+            var color = item.Content.ToString().ToColor();
+            this.SelectDefaultColorButton.Color = color;
         }
 
         private void ColorButton_Click(object sender, RoutedEventArgs e)
         {
-            var button = sender as ConciergeColorButton;
+            if (sender is not ConciergeColorButton button)
+            {
+                return;
+            }
+
             this.SelectedColor = button.Color;
             this.PopupToggleButton.IsChecked = false;
 
@@ -137,7 +152,7 @@ namespace Concierge.Interfaces.Controls
 
         private void SelectDefaultColorButton_Click(object sender, RoutedEventArgs e)
         {
-            this.SelectedColor = (this.SelectDefaultColorButton.Background as SolidColorBrush).Color;
+            this.SelectedColor = this.SelectDefaultColorButton.Color;
             this.PopupToggleButton.IsChecked = false;
             this.AddRecentColor(this.SelectedColor);
         }

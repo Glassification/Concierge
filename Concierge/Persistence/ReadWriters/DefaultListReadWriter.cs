@@ -31,6 +31,13 @@ namespace Concierge.Persistence.ReadWriters
             {
                 Program.ErrorService.LogError(ex);
             }
+            finally
+            {
+                if (abilities is null)
+                {
+                    abilities = new List<Ability>();
+                }
+            }
 
             return abilities;
         }
@@ -49,6 +56,13 @@ namespace Concierge.Persistence.ReadWriters
             catch (Exception ex)
             {
                 Program.ErrorService.LogError(ex);
+            }
+            finally
+            {
+                if (ammunitions is null)
+                {
+                    ammunitions = new List<Ammunition>();
+                }
             }
 
             return ammunitions;
@@ -69,6 +83,13 @@ namespace Concierge.Persistence.ReadWriters
             {
                 Program.ErrorService.LogError(ex);
             }
+            finally
+            {
+                if (inventories is null)
+                {
+                    inventories = new List<Inventory>();
+                }
+            }
 
             return inventories;
         }
@@ -87,6 +108,13 @@ namespace Concierge.Persistence.ReadWriters
             catch (Exception ex)
             {
                 Program.ErrorService.LogError(ex);
+            }
+            finally
+            {
+                if (languages is null)
+                {
+                    languages = new List<Language>();
+                }
             }
 
             return languages;
@@ -107,6 +135,13 @@ namespace Concierge.Persistence.ReadWriters
             {
                 Program.ErrorService.LogError(ex);
             }
+            finally
+            {
+                if (spells is null)
+                {
+                    spells = new List<Spell>();
+                }
+            }
 
             return spells;
         }
@@ -125,6 +160,13 @@ namespace Concierge.Persistence.ReadWriters
             catch (Exception ex)
             {
                 Program.ErrorService.LogError(ex);
+            }
+            finally
+            {
+                if (weapons is null)
+                {
+                    weapons = new List<Weapon>();
+                }
             }
 
             return weapons;

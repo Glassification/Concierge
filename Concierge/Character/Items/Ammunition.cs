@@ -13,6 +13,8 @@ namespace Concierge.Character.Items
     {
         public Ammunition()
         {
+            this.Name = string.Empty;
+            this.Bonus = string.Empty;
             this.Id = Guid.NewGuid();
         }
 

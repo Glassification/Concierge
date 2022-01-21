@@ -16,6 +16,12 @@ namespace Concierge.Character.Items
     {
         public Weapon()
         {
+            this.Name = string.Empty;
+            this.Damage = string.Empty;
+            this.Misc = string.Empty;
+            this.Range = string.Empty;
+            this.Note = string.Empty;
+            this.Weight = UnitDouble.Empty;
             this.Id = Guid.NewGuid();
             this.ProficiencyOverride = false;
         }

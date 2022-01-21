@@ -15,6 +15,8 @@ namespace Concierge.Character.Statuses
     {
         public StatusEffect()
         {
+            this.Name = string.Empty;
+            this.Description = string.Empty;
             this.Id = Guid.NewGuid();
         }
 

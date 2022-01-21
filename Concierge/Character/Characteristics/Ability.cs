@@ -12,6 +12,12 @@ namespace Concierge.Character.Characteristics
     {
         public Ability()
         {
+            this.Name = string.Empty;
+            this.Uses = string.Empty;
+            this.Recovery = string.Empty;
+            this.Requirements = string.Empty;
+            this.Action = string.Empty;
+            this.Description = string.Empty;
             this.Id = Guid.NewGuid();
         }
 

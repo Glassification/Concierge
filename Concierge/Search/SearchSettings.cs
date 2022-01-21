@@ -32,16 +32,14 @@ namespace Concierge.Search
 
         public SearchDomain SearchDomain { get; set; }
 
-        public override bool Equals(object obj)
+        public override bool Equals(object? obj)
         {
-            if (obj is not SearchSettings)
+            if (obj is not SearchSettings searchSettings)
             {
                 return false;
             }
 
             var equals = true;
-            var searchSettings = obj as SearchSettings;
-
             equals &= searchSettings.MatchCase == this.MatchCase;
             equals &= searchSettings.MatchWholeWord == this.MatchWholeWord;
             equals &= searchSettings.UseRegex == this.UseRegex;

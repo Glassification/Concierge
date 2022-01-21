@@ -26,6 +26,7 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
             this.TypeComboBox.ItemsSource = Enum.GetValues(typeof(ArmorType)).Cast<ArmorType>();
             this.StealthComboBox.ItemsSource = Enum.GetValues(typeof(ArmorStealth)).Cast<ArmorStealth>();
             this.ConciergePage = ConciergePage.None;
+            this.SelectedArmor = new Armor();
         }
 
         private Armor SelectedArmor { get; set; }
@@ -44,9 +45,12 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
 
         public override void ShowEdit<T>(T armor)
         {
-            var castItem = armor as Armor;
-            this.SelectedArmor = castItem;
+            if (armor is not Armor castItem)
+            {
+                return;
+            }
 
+            this.SelectedArmor = castItem;
             this.FillFields();
             this.ShowConciergeWindow();
         }

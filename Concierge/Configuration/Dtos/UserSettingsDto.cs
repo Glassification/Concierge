@@ -28,14 +28,12 @@ namespace Concierge.Configuration.Dtos
 
         public bool AttemptToCenterWindows { get; init; }
 
-        public override bool Equals(object obj)
+        public override bool Equals(object? obj)
         {
-            if (obj is not UserSettingsDto)
+            if (obj is not UserSettingsDto settings)
             {
                 return false;
             }
-
-            var settings = obj as UserSettingsDto;
 
             return
                 settings.AutosaveInterval == this.AutosaveInterval &&
