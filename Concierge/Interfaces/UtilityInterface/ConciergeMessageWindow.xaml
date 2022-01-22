@@ -51,7 +51,7 @@
                     Kind="Solid" 
                     Foreground="White"
                     HorizontalAlignment="Center"
-                    VerticalAlignment="Top"
+                    VerticalAlignment="Center"
                     Width="60" 
                     Height="60"/>
             </Grid>
@@ -63,6 +63,7 @@
                         Text="Your message here"
                         Foreground="White"
                         FontSize="25"
+                        VerticalAlignment="Center"
                         TextWrapping="Wrap"
                         Margin="15"/>
                 </ScrollViewer>

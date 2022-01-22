@@ -30,6 +30,7 @@ namespace Concierge.Interfaces.Components
             this.HeadersVisibility = DataGridHeadersVisibility.Column;
             this.IsReadOnly = true;
             this.CanUserResizeColumns = false;
+            this.CanUserReorderColumns = false;
             this.HorizontalGridLinesBrush = Brushes.Transparent;
             this.VerticalGridLinesBrush = Brushes.Transparent;
             this.CanUserAddRows = false;

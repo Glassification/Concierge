@@ -57,15 +57,15 @@
                   Background="#000917"
                   Margin="3, 0, 3, 3">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="7*"/>
-                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="70*"/>
+                    <ColumnDefinition Width="30*"/>
                 </Grid.ColumnDefinitions>
 
                 <!--Roll Dice-->
                 <Grid Grid.Column="0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="12*" />
-                        <RowDefinition Height="11*"/>
+                        <RowDefinition Height="11*" />
                         <RowDefinition Height="11*" />
                         <RowDefinition Height="11*" />
                         <RowDefinition Height="11*" />
@@ -174,16 +174,15 @@
                                    VerticalAlignment="Center"/>
                         </Grid>
                         <!--Number-->
-                        <Grid Grid.Column="1">
+                        <Grid Grid.Column="1" Margin="3">
                             <Border
-                                BorderThickness="0.5"
-                                Background="DimGray"
-                                Margin="3">
+                                BorderThickness="1"
+                                Background="DimGray">
                                 <controls:IntegerUpDown 
                                     x:Name="D4NumberUpDown"
                                     Minimum="1"
-                                    Height="30"
-                                    Margin="1,0,1,0"/>
+                                    Height="auto"
+                                    Margin="1"/>
                             </Border>
                         </Grid>
                         <!--PlusMinus-->
@@ -202,16 +201,15 @@
                                 Margin="0, 0, 30, 0"/>
                         </Grid>
                         <!--Modifier-->
-                        <Grid Grid.Column="3">
+                        <Grid Grid.Column="3" Margin="3">
                             <Border
-                                BorderThickness="0.5"
-                                Background="DimGray"
-                                Margin="3">
+                                BorderThickness="1"
+                                Background="DimGray">
                                 <controls:IntegerUpDown 
                                     x:Name="D4ModifierUpDown"
                                     Minimum="1"
-                                    Height="30"
-                                    Margin="1,0,1,0"/>
+                                    Height="auto"
+                                    Margin="1"/>
                             </Border>
                         </Grid>
                         <!--Roll-->
@@ -258,16 +256,15 @@
                                    VerticalAlignment="Center"/>
                         </Grid>
                         <!--Number-->
-                        <Grid Grid.Column="1">
+                        <Grid Grid.Column="1" Margin="3">
                             <Border
-                                BorderThickness="0.5"
-                                Background="DimGray"
-                                Margin="3">
+                                BorderThickness="1"
+                                Background="DimGray">
                                 <controls:IntegerUpDown 
                                     x:Name="D6NumberUpDown"
                                     Minimum="1"
-                                    Height="30"
-                                    Margin="1,0,1,0"/>
+                                    Height="auto"
+                                    Margin="1"/>
                             </Border>
                         </Grid>
                         <!--PlusMinus-->
@@ -286,16 +283,15 @@
                                 Margin="0, 0, 30, 0"/>
                         </Grid>
                         <!--Modifier-->
-                        <Grid Grid.Column="3">
+                        <Grid Grid.Column="3" Margin="3">
                             <Border
-                                BorderThickness="0.5"
-                                Background="DimGray"
-                                Margin="3">
+                                BorderThickness="1"
+                                Background="DimGray">
                                 <controls:IntegerUpDown 
                                     x:Name="D6ModifierUpDown"
                                     Minimum="1"
-                                    Height="30"
-                                    Margin="1,0,1,0"/>
+                                    Height="auto"
+                                    Margin="1"/>
                             </Border>
                         </Grid>
                         <!--Roll-->
@@ -342,16 +338,15 @@
                                    VerticalAlignment="Center"/>
                         </Grid>
                         <!--Number-->
-                        <Grid Grid.Column="1">
+                        <Grid Grid.Column="1" Margin="3">
                             <Border
-                                BorderThickness="0.5"
-                                Background="DimGray"
-                                Margin="3">
+                                BorderThickness="1"
+                                Background="DimGray">
                                 <controls:IntegerUpDown 
                                     x:Name="D8NumberUpDown"
                                     Minimum="1"
-                                    Height="30"
-                                    Margin="1,0,1,0"/>
+                                    Height="auto"
+                                    Margin="1"/>
                             </Border>
                         </Grid>
                         <!--PlusMinus-->
@@ -370,16 +365,15 @@
                                 Margin="0, 0, 30, 0"/>
                         </Grid>
                         <!--Modifier-->
-                        <Grid Grid.Column="3">
+                        <Grid Grid.Column="3" Margin="3">
                             <Border
-                                BorderThickness="0.5"
-                                Background="DimGray"
-                                Margin="3">
+                                BorderThickness="1"
+                                Background="DimGray">
                                 <controls:IntegerUpDown 
                                     x:Name="D8ModifierUpDown"
                                     Minimum="1"
-                                    Height="30"
-                                    Margin="1,0,1,0"/>
+                                    Height="auto"
+                                    Margin="1"/>
                             </Border>
                         </Grid>
                         <!--Roll-->
@@ -426,16 +420,15 @@
                                    VerticalAlignment="Center"/>
                         </Grid>
                         <!--Number-->
-                        <Grid Grid.Column="1">
+                        <Grid Grid.Column="1" Margin="3">
                             <Border
-                                BorderThickness="0.5"
-                                Background="DimGray"
-                                Margin="3">
+                                BorderThickness="1"
+                                Background="DimGray">
                                 <controls:IntegerUpDown 
                                     x:Name="D10NumberUpDown"
                                     Minimum="1"
-                                    Height="30"
-                                    Margin="1,0,1,0"/>
+                                    Height="auto"
+                                    Margin="1"/>
                             </Border>
                         </Grid>
                         <!--PlusMinus-->
@@ -454,16 +447,15 @@
                                 Margin="0, 0, 30, 0"/>
                         </Grid>
                         <!--Modifier-->
-                        <Grid Grid.Column="3">
+                        <Grid Grid.Column="3" Margin="3">
                             <Border
-                                BorderThickness="0.5"
-                                Background="DimGray"
-                                Margin="3">
+                                BorderThickness="1"
+                                Background="DimGray">
                                 <controls:IntegerUpDown 
                                     x:Name="D10ModifierUpDown"
                                     Minimum="1"
-                                    Height="30"
-                                    Margin="1,0,1,0"/>
+                                    Height="auto"
+                                    Margin="1"/>
                             </Border>
                         </Grid>
                         <!--Roll-->
@@ -510,16 +502,15 @@
                                    VerticalAlignment="Center"/>
                         </Grid>
                         <!--Number-->
-                        <Grid Grid.Column="1">
+                        <Grid Grid.Column="1" Margin="3">
                             <Border
-                                BorderThickness="0.5"
-                                Background="DimGray"
-                                Margin="3">
+                                BorderThickness="1"
+                                Background="DimGray">
                                 <controls:IntegerUpDown 
                                     x:Name="D100NumberUpDown"
                                     Minimum="1"
-                                    Height="30"
-                                    Margin="1,0,1,0"/>
+                                    Height="auto"
+                                    Margin="1"/>
                             </Border>
                         </Grid>
                         <!--PlusMinus-->
@@ -538,16 +529,15 @@
                                 Margin="0, 0, 30, 0"/>
                         </Grid>
                         <!--Modifier-->
-                        <Grid Grid.Column="3">
+                        <Grid Grid.Column="3" Margin="3">
                             <Border
-                                BorderThickness="0.5"
-                                Background="DimGray"
-                                Margin="3">
+                                BorderThickness="1"
+                                Background="DimGray">
                                 <controls:IntegerUpDown 
                                     x:Name="D100ModifierUpDown"
                                     Minimum="1"
-                                    Height="30"
-                                    Margin="1,0,1,0"/>
+                                    Height="auto"
+                                    Margin="1"/>
                             </Border>
                         </Grid>
                         <!--Roll-->
@@ -594,16 +584,15 @@
                                    VerticalAlignment="Center"/>
                         </Grid>
                         <!--Number-->
-                        <Grid Grid.Column="1">
+                        <Grid Grid.Column="1" Margin="3">
                             <Border
-                                BorderThickness="0.5"
-                                Background="DimGray"
-                                Margin="3">
+                                BorderThickness="1"
+                                Background="DimGray">
                                 <controls:IntegerUpDown 
                                     x:Name="D12NumberUpDown"
                                     Minimum="1"
-                                    Height="30"
-                                    Margin="1,0,1,0"/>
+                                    Height="auto"
+                                    Margin="1"/>
                             </Border>
                         </Grid>
                         <!--PlusMinus-->
@@ -622,16 +611,15 @@
                                 Margin="0, 0, 30, 0"/>
                         </Grid>
                         <!--Modifier-->
-                        <Grid Grid.Column="3">
+                        <Grid Grid.Column="3" Margin="3">
                             <Border
-                                BorderThickness="0.5"
-                                Background="DimGray"
-                                Margin="3">
+                                BorderThickness="1"
+                                Background="DimGray">
                                 <controls:IntegerUpDown 
                                     x:Name="D12ModifierUpDown"
                                     Minimum="1"
-                                    Height="30"
-                                    Margin="1,0,1,0"/>
+                                    Height="auto"
+                                    Margin="1"/>
                             </Border>
                         </Grid>
                         <!--Roll-->
@@ -678,16 +666,15 @@
                                    VerticalAlignment="Center"/>
                         </Grid>
                         <!--Number-->
-                        <Grid Grid.Column="1">
+                        <Grid Grid.Column="1" Margin="3">
                             <Border
-                                BorderThickness="0.5"
-                                Background="DimGray"
-                                Margin="3">
+                                BorderThickness="1"
+                                Background="DimGray">
                                 <controls:IntegerUpDown 
                                     x:Name="D20NumberUpDown"
                                     Minimum="1"
-                                    Height="30"
-                                    Margin="1,0,1,0"/>
+                                    Height="auto"
+                                    Margin="1"/>
                             </Border>
                         </Grid>
                         <!--PlusMinus-->
@@ -706,16 +693,15 @@
                                 Margin="0, 0, 30, 0"/>
                         </Grid>
                         <!--Modifier-->
-                        <Grid Grid.Column="3">
+                        <Grid Grid.Column="3" Margin="3">
                             <Border
-                                BorderThickness="0.5"
-                                Background="DimGray"
-                                Margin="3">
+                                BorderThickness="1"
+                                Background="DimGray">
                                 <controls:IntegerUpDown 
                                     x:Name="D20ModifierUpDown"
                                     Minimum="1"
-                                    Height="30"
-                                    Margin="1,0,1,0"/>
+                                    Height="auto"
+                                    Margin="1"/>
                             </Border>
                         </Grid>
                         <!--Roll-->
@@ -754,29 +740,27 @@
                         </Grid.ColumnDefinitions>
 
                         <!--Die-->
-                        <Grid Grid.Column="0">
+                        <Grid Grid.Column="0" Margin="3">
                             <Border
-                                BorderThickness="0.5"
-                                Background="DimGray"
-                                Margin="3">
+                                BorderThickness="1"
+                                Background="DimGray">
                                 <controls:IntegerUpDown 
                                     x:Name="DxDieUpDown"
                                     Minimum="1"
-                                    Height="30"
-                                    Margin="1,0,1,0"/>
+                                    Height="auto"
+                                    Margin="1"/>
                             </Border>
                         </Grid>
                         <!--Number-->
-                        <Grid Grid.Column="1">
+                        <Grid Grid.Column="1" Margin="3">
                             <Border
-                                BorderThickness="0.5"
-                                Background="DimGray"
-                                Margin="3">
+                                BorderThickness="1"
+                                Background="DimGray">
                                 <controls:IntegerUpDown 
                                     x:Name="DxNumberUpDown"
                                     Minimum="1"
-                                    Height="30"
-                                    Margin="1,0,1,0"/>
+                                    Height="auto"
+                                    Margin="1"/>
                             </Border>
                         </Grid>
                         <!--PlusMinus-->
@@ -795,16 +779,15 @@
                                 Margin="0, 0, 30, 0"/>
                         </Grid>
                         <!--Modifier-->
-                        <Grid Grid.Column="3">
+                        <Grid Grid.Column="3" Margin="3">
                             <Border
-                                BorderThickness="0.5"
-                                Background="DimGray"
-                                Margin="3">
+                                BorderThickness="1"
+                                Background="DimGray">
                                 <controls:IntegerUpDown 
                                     x:Name="DxModifierUpDown"
                                     Minimum="1"
-                                    Height="30"
-                                    Margin="1,0,1,0"/>
+                                    Height="auto"
+                                    Margin="1"/>
                             </Border>
                         </Grid>
                         <!--Roll-->
