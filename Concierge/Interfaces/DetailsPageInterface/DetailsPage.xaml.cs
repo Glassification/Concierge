@@ -19,7 +19,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
     using Concierge.Interfaces.Components;
     using Concierge.Interfaces.Enums;
     using Concierge.Services;
-    using Concierge.Utility.Colors;
+    using Concierge.Utility;
     using Concierge.Utility.Units;
     using Concierge.Utility.Utilities;
 

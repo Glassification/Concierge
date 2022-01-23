@@ -13,7 +13,7 @@ namespace Concierge.Interfaces.Components
     using Concierge.Character.Enums;
     using Concierge.Configuration;
     using Concierge.Interfaces.Enums;
-    using Concierge.Utility.Colors;
+    using Concierge.Utility;
 
     public class ConciergeWindow : Window
     {

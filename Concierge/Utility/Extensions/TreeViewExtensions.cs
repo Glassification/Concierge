@@ -5,6 +5,7 @@
 namespace Concierge.Utility.Extensions
 {
     using System.Windows.Controls;
+    using System.Windows.Media;
 
     using Concierge.Interfaces.Components;
 
@@ -40,9 +41,15 @@ namespace Concierge.Utility.Extensions
             return null;
         }
 
-        public static bool SetSelectedItem(this TreeView treeView, object item)
+        public static TreeViewItem? GetSelectedTreeViewItemParent(this TreeViewItem item)
         {
-            return SetSelected(treeView, item);
+            var parent = VisualTreeHelper.GetParent(item);
+            while (!(parent is TreeViewItem || parent is TreeView))
+            {
+                parent = VisualTreeHelper.GetParent(parent);
+            }
+
+            return parent as TreeViewItem;
         }
 
         private static bool SetSelected(ItemsControl parent, object child)

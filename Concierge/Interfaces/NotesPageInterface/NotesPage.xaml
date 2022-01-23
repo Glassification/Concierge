@@ -105,6 +105,7 @@
                     x:Name="NotesTreeView"
                     Margin="3"
                     Background="#001233"
+                    ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                     SelectedItemChanged="NotesTreeView_SelectedItemChanged"
                     BorderBrush="{x:Null}">
                     <TreeView.Resources>

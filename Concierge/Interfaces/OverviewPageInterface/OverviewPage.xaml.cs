@@ -21,7 +21,6 @@ namespace Concierge.Interfaces.OverviewPageInterface
     using Concierge.Services;
     using Concierge.Tools.Interface;
     using Concierge.Utility;
-    using Concierge.Utility.Colors;
     using Concierge.Utility.Extensions;
     using Concierge.Utility.Utilities;
 

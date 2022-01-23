@@ -12,7 +12,7 @@ namespace Concierge.Services
     using Concierge.Character;
     using Concierge.Character.Characteristics;
     using Concierge.Interfaces;
-    using Concierge.Utility.Colors;
+    using Concierge.Utility;
     using Concierge.Utility.Extensions;
     using MaterialDesignThemes.Wpf;
 

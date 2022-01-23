@@ -22,7 +22,7 @@ namespace Concierge.Interfaces.NotesPageInterface
     using Concierge.Interfaces.Enums;
     using Concierge.Services;
     using Concierge.Tools.Interface;
-    using Concierge.Utility.Colors;
+    using Concierge.Utility;
     using Concierge.Utility.Extensions;
 
     using SearchResult = Concierge.Search.SearchResult;
@@ -140,7 +140,7 @@ namespace Concierge.Interfaces.NotesPageInterface
         {
             var dataFormat = DataFormats.Rtf;
 
-            if (text == null)
+            if (!text.IsRtf())
             {
                 text = string.Empty;
                 dataFormat = DataFormats.Text;

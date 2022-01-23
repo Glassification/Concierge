@@ -5,13 +5,8 @@
 namespace Concierge.Utility.Extensions
 {
     using System;
-    using System.IO;
     using System.Linq;
-    using System.Text;
     using System.Text.RegularExpressions;
-    using System.Windows;
-    using System.Windows.Controls;
-    using System.Windows.Documents;
     using System.Windows.Media;
 
     using Concierge.Configuration;
@@ -79,18 +74,6 @@ namespace Concierge.Utility.Extensions
             }
 
             return str;
-        }
-
-        public static string RtfToText(this string str)
-        {
-            var richTextBox = new RichTextBox();
-
-            var stream = new MemoryStream(Encoding.Default.GetBytes(str));
-            richTextBox.Selection.Load(stream, DataFormats.Rtf);
-
-            var textRange = new TextRange(richTextBox.Document.ContentStart, richTextBox.Document.ContentEnd);
-
-            return textRange.Text;
         }
 
         public static string Strip(this string str, string textToStrip)
@@ -170,6 +153,11 @@ namespace Concierge.Utility.Extensions
             }
 
             return name;
+        }
+
+        public static bool IsRtf(this string text)
+        {
+            return !text.IsNullOrWhiteSpace() && text.TrimStart().StartsWith(@"{\rtf", StringComparison.Ordinal);
         }
     }
 }

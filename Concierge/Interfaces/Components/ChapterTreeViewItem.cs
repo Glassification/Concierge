@@ -11,7 +11,7 @@ namespace Concierge.Interfaces.Components
     using System.Windows.Media;
 
     using Concierge.Character.Notes;
-    using Concierge.Utility.Colors;
+    using Concierge.Utility;
     using MaterialDesignThemes.Wpf;
 
     public class ChapterTreeViewItem : TreeViewItem
@@ -27,7 +27,7 @@ namespace Concierge.Interfaces.Components
             this.Header = this.CreateHeader();
             this.Foreground = Brushes.White;
             this.IsExpanded = chapter.IsExpanded;
-            this.Style = resourceDictionary["TreeViewItemStyling"] as Style;
+            this.Style = resourceDictionary["TreeViewItemFullWidthStyling"] as Style;
 
             this.MouseEnter += this.Item_MouseEnter;
             this.MouseLeave += this.Item_MouseLeave;
@@ -35,17 +35,23 @@ namespace Concierge.Interfaces.Components
 
         public Chapter Chapter { get; set; }
 
-        private StackPanel CreateHeader()
+        private Grid CreateHeader()
         {
-            var stackPanel = new StackPanel
+            var grid = new Grid();
+            grid.ColumnDefinitions.Add(new ColumnDefinition()
             {
-                Orientation = Orientation.Horizontal,
-            };
+                Width = new GridLength(30),
+            });
+            grid.ColumnDefinitions.Add(new ColumnDefinition()
+            {
+                Width = new GridLength(1, GridUnitType.Star),
+            });
 
             var textBlock = new TextBlock()
             {
                 Text = $" {this.Chapter.Name}",
                 FontWeight = FontWeights.Bold,
+                TextWrapping = TextWrapping.Wrap,
                 FontSize = 25,
             };
 
@@ -56,10 +62,13 @@ namespace Concierge.Interfaces.Components
                 Height = 25,
             };
 
-            stackPanel.Children.Add(packIcon);
-            stackPanel.Children.Add(textBlock);
+            grid.Children.Add(packIcon);
+            grid.Children.Add(textBlock);
 
-            return stackPanel;
+            Grid.SetColumn(packIcon, 0);
+            Grid.SetColumn(textBlock, 1);
+
+            return grid;
         }
 
         private bool IsHighlightedOnChild()

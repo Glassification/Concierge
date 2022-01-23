@@ -9,7 +9,7 @@ namespace Concierge.Interfaces.UtilityInterface
     using System.Threading;
     using System.Windows;
 
-    using Concierge.Utility.Colors;
+    using Concierge.Utility;
     using Concierge.Utility.Utilities;
 
     /// <summary>

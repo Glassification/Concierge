@@ -11,7 +11,8 @@ namespace Concierge.Interfaces.Components
     using System.Windows.Media;
 
     using Concierge.Character.Notes;
-    using Concierge.Utility.Colors;
+    using Concierge.Utility;
+    using Concierge.Utility.Extensions;
     using MaterialDesignThemes.Wpf;
 
     public class DocumentTreeViewItem : TreeViewItem
@@ -27,7 +28,7 @@ namespace Concierge.Interfaces.Components
             this.Header = this.CreateHeader();
             this.Foreground = Brushes.White;
             this.IsExpanded = document.IsExpanded;
-            this.Style = resourceDictionary["TreeViewItemStyling"] as Style;
+            this.Style = resourceDictionary["TreeViewItemFullWidthStyling"] as Style;
 
             this.MouseEnter += this.Item_MouseEnter;
             this.MouseLeave += this.Item_MouseLeave;
@@ -35,17 +36,23 @@ namespace Concierge.Interfaces.Components
 
         public Document Document { get; set; }
 
-        private StackPanel CreateHeader()
+        private Grid CreateHeader()
         {
-            var stackPanel = new StackPanel
+            var grid = new Grid();
+            grid.ColumnDefinitions.Add(new ColumnDefinition()
             {
-                Orientation = Orientation.Horizontal,
-            };
+                Width = new GridLength(30),
+            });
+            grid.ColumnDefinitions.Add(new ColumnDefinition()
+            {
+                Width = new GridLength(1, GridUnitType.Star),
+            });
 
             var textBlock = new TextBlock()
             {
                 Text = $" {this.Document.Name}",
-                FontWeight = FontWeights.Normal,
+                FontWeight = FontWeights.Bold,
+                TextWrapping = TextWrapping.Wrap,
                 FontSize = 20,
             };
 
@@ -56,22 +63,34 @@ namespace Concierge.Interfaces.Components
                 Height = 20,
             };
 
-            stackPanel.Children.Add(packIcon);
-            stackPanel.Children.Add(textBlock);
+            grid.Children.Add(packIcon);
+            grid.Children.Add(textBlock);
 
-            return stackPanel;
+            Grid.SetColumn(packIcon, 0);
+            Grid.SetColumn(textBlock, 1);
+
+            return grid;
+        }
+
+        private void DeselectParent(Brush color)
+        {
+            var item = this.GetSelectedTreeViewItemParent();
+            if (item is not null)
+            {
+                item.Foreground = color;
+            }
         }
 
         private void Item_MouseEnter(object sender, MouseEventArgs e)
         {
-            Mouse.OverrideCursor = Cursors.Hand;
             this.Foreground = ConciergeColors.NoteTreeItemHover;
+            this.DeselectParent(Brushes.White);
         }
 
         private void Item_MouseLeave(object sender, MouseEventArgs e)
         {
-            Mouse.OverrideCursor = Cursors.Arrow;
             this.Foreground = Brushes.White;
+            this.DeselectParent(ConciergeColors.NoteTreeItemHover);
         }
     }
 }

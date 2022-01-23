@@ -2,7 +2,7 @@
 // Copyright (c) Thomas Beckett. All rights reserved.
 // </copyright>
 
-namespace Concierge.Utility.Colors
+namespace Concierge.Utility
 {
     using System.Windows;
     using System.Windows.Media;

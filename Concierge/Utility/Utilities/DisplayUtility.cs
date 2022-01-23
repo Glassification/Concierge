@@ -17,7 +17,7 @@ namespace Concierge.Utility.Utilities
     using Concierge.Commands;
     using Concierge.Interfaces.Components;
     using Concierge.Interfaces.Enums;
-    using Concierge.Utility.Colors;
+    using Concierge.Utility;
 
     public static class DisplayUtility
     {

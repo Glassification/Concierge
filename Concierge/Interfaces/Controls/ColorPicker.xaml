@@ -186,7 +186,7 @@
                                 Grid.Column="1">
                                 <components:ConciergeColorButton
                                     x:Name="SelectDefaultColorButton"
-                                    Margin="5"
+                                    Margin="-5,5,5,5"
                                     Click="SelectDefaultColorButton_Click"
                                     Style="{StaticResource ColorPickerButtonStyle}"/>
                             </Grid>
