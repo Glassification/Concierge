@@ -29,12 +29,13 @@ namespace Concierge
 
         private void Application_Startup(object sender, StartupEventArgs e)
         {
+            var mainWindow = new MainWindow();
             if (AppSettingsManager.StartUp.ShowSplashScreen)
             {
                 new SplashScreenWindow().ShowWindow();
             }
 
-            new MainWindow().Show();
+            mainWindow.Show();
         }
     }
 }

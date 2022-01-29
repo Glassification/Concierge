@@ -9,6 +9,7 @@ namespace Concierge.Utility
     using Concierge.Character.Characteristics;
     using Concierge.Character.Items;
     using Concierge.Character.Spellcasting;
+    using Concierge.Configuration;
     using Concierge.Persistence.ReadWriters;
 
     public static class Constants
@@ -79,14 +80,12 @@ namespace Concierge.Utility
             "Dwarf",
             "Elf",
             "Genasi",
-            "Genasi",
             "Gnome",
             "Goliath",
             "Half-Elf",
             "Half-Orc",
             "Halfling",
             "Human",
-            "Kenku",
             "Kenku",
             "Tabaxi",
             "Tiefling",
@@ -216,5 +215,7 @@ namespace Concierge.Utility
         public static ReadOnlyCollection<Ability> Abilities { get; }
 
         public static ReadOnlyCollection<string> StatusEffects { get; }
+
+        public static int CurrentAutosaveInterval => AutosaveIntervals[AppSettingsManager.UserSettings.AutosaveInterval];
     }
 }

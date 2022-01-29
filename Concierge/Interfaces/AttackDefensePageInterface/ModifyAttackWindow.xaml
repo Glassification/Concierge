@@ -374,11 +374,13 @@
                     <Grid Grid.Column="1"
                       Background="#FF3F3F3F"
                       Margin="0, 10, 20, 0">
-                        <components:ConciergeTextBox 
-                            x:Name="NotesTextBox"
-                            TextWrapping="Wrap"
-                            VerticalAlignment="Stretch"
-                            FontSize="15"/>
+                        <ScrollViewer VerticalScrollBarVisibility="Auto">
+                            <components:ConciergeTextBox 
+                                x:Name="NotesTextBox"
+                                TextWrapping="Wrap"
+                                VerticalAlignment="Stretch"
+                                FontSize="15"/>
+                        </ScrollViewer>
                     </Grid>
                 </Grid>
 

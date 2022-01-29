@@ -45,8 +45,7 @@ namespace Concierge.Interfaces.NotesPageInterface
             this.FontSizeList.ItemsSource = new List<double>() { 8, 9, 10, 11, 12, 14, 16, 18, 20, 22, 24, 26, 28, 36, 48, 72 };
             this.NotesTextBox.UndoLimit = MaxUndoQueue;
 
-            this.NotesTextBox.FontSize = 20;
-            this.NotesTextBox.Foreground = Brushes.White;
+            this.SetDefaultFontStyle();
             this.NotesTextBox.IsEnabled = false;
             this.ToolbarStackPanel.IsEnabled = false;
         }
@@ -136,6 +135,13 @@ namespace Concierge.Interfaces.NotesPageInterface
             }
         }
 
+        private void SetDefaultFontStyle()
+        {
+            this.NotesTextBox.FontSize = 20;
+            this.NotesTextBox.FontFamily = new FontFamily("Calibri");
+            this.NotesTextBox.Foreground = Brushes.White;
+        }
+
         private void LoadCurrentDocument(string text)
         {
             var dataFormat = DataFormats.Rtf;
@@ -144,8 +150,7 @@ namespace Concierge.Interfaces.NotesPageInterface
             {
                 text = string.Empty;
                 dataFormat = DataFormats.Text;
-                this.NotesTextBox.FontSize = 20;
-                this.NotesTextBox.Foreground = Brushes.White;
+                this.SetDefaultFontStyle();
             }
 
             var stream = new MemoryStream(Encoding.Default.GetBytes(text));

@@ -80,7 +80,7 @@ namespace Concierge.Interfaces
 
             if (AppSettingsManager.UserSettings.AutosaveEnabled)
             {
-                this.autosaveTimer.Start(Constants.AutosaveIntervals[AppSettingsManager.UserSettings.AutosaveInterval]);
+                this.autosaveTimer.Start(Constants.CurrentAutosaveInterval);
             }
 
             this.commandLineService.ReadCommandLineArgs();
@@ -201,9 +201,10 @@ namespace Concierge.Interfaces
             Program.Unmodify();
             if (AppSettingsManager.UserSettings.AutosaveEnabled)
             {
-                this.autosaveTimer.Start(Constants.AutosaveIntervals[AppSettingsManager.UserSettings.AutosaveInterval]);
+                this.autosaveTimer.Start(Constants.CurrentAutosaveInterval);
             }
 
+            this.NotesPage.ClearTextBox();
             this.DrawAll();
         }
 
@@ -296,7 +297,7 @@ namespace Concierge.Interfaces
         {
             if (AppSettingsManager.UserSettings.AutosaveEnabled)
             {
-                this.autosaveTimer.Start(Constants.AutosaveIntervals[AppSettingsManager.UserSettings.AutosaveInterval]);
+                this.autosaveTimer.Start(Constants.CurrentAutosaveInterval);
             }
             else
             {
