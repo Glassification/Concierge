@@ -5,9 +5,10 @@
 namespace Concierge
 {
     using System.Windows;
+    using System.Windows.Threading;
 
     using Concierge.Configuration;
-    using Concierge.Exceptions.Enums;
+    using Concierge.Exceptions;
     using Concierge.Interfaces;
     using Concierge.Interfaces.UtilityInterface;
 
@@ -18,12 +19,12 @@ namespace Concierge
     {
         public App()
         {
-            this.Dispatcher.UnhandledException += this.OnDispatcherUnhandledException;
+            this.Dispatcher.UnhandledException += this.Dispatcher_UnhandledException;
         }
 
-        private void OnDispatcherUnhandledException(object sender, System.Windows.Threading.DispatcherUnhandledExceptionEventArgs e)
+        private void Dispatcher_UnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
         {
-            Program.ErrorService.LogError(e.Exception, Severity.Unhandled);
+            Program.ErrorService.LogError(new UnhandledException(e.Exception));
             e.Handled = true;
         }
 

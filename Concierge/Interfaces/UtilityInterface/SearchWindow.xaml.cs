@@ -11,6 +11,7 @@ namespace Concierge.Interfaces.UtilityInterface
     using System.Windows.Input;
     using System.Windows.Media;
 
+    using Concierge.Exceptions;
     using Concierge.Interfaces.Components;
     using Concierge.Interfaces.Enums;
     using Concierge.Search;
@@ -32,7 +33,7 @@ namespace Concierge.Interfaces.UtilityInterface
         {
             if (Program.MainWindow is null)
             {
-                throw new Exception($"{nameof(Program.MainWindow)} is null.");
+                throw new NullValueException(nameof(Program.MainWindow));
             }
 
             this.InitializeComponent();

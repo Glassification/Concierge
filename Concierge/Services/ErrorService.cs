@@ -5,7 +5,6 @@
 namespace Concierge.Services
 {
     using System;
-    using System.Diagnostics;
 
     using Concierge.Exceptions;
     using Concierge.Exceptions.Enums;
@@ -25,35 +24,43 @@ namespace Concierge.Services
 
         private Logger Logger { get; set; }
 
-        public void LogError(Exception ex, Severity severity = Severity.Release)
+        public void LogError(Exception ex)
         {
             Guard.IsNull(ex, nameof(ex));
 
-            string message = IsHandledException(ex) ? ex.Message : $"A generic error occurred: {ex.Message}";
+            ex = IsConciergeException(ex) ? ex : new GenericException(ex);
+            var severity = GetSeverity(ex);
 
             switch (severity)
             {
                 case Severity.Debug:
-#if DEBUG
-                    Debug.WriteLine($"{ex.Message}\n{ex.StackTrace}");
-                    ShowMessage(message);
-#endif
+                    if (Program.IsDebug)
+                    {
+                        ShowMessage(ex.Message);
+                    }
+
                     break;
                 case Severity.Release:
-                    ShowMessage(message);
-                    break;
-                case Severity.Unhandled:
-                    message = $"An unhandled exception occurred: {ex.Message}";
-                    ShowMessage(message);
+                    ShowMessage(ex.Message);
                     break;
             }
 
-            this.Logger.Error(message);
+            this.Logger.Error(ex);
         }
 
-        private static bool IsHandledException(Exception ex)
+        private static bool IsConciergeException(Exception ex)
         {
             return ex is ConciergeException;
+        }
+
+        private static Severity GetSeverity(Exception ex)
+        {
+            if (ex is ConciergeException conciergeException)
+            {
+                return conciergeException.Severity;
+            }
+
+            return Severity.Release;
         }
 
         private static void ShowMessage(string message)

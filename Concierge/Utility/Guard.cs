@@ -4,8 +4,7 @@
 
 namespace Concierge.Utility
 {
-    using System;
-
+    using Concierge.Exceptions;
     using Concierge.Utility.Extensions;
 
     public static class Guard
@@ -14,7 +13,7 @@ namespace Concierge.Utility
         {
             if (value == null)
             {
-                throw new ArgumentNullException(name);
+                throw new NullValueException(name);
             }
         }
 
@@ -22,7 +21,7 @@ namespace Concierge.Utility
         {
             if (value.IsNullOrEmpty())
             {
-                throw new ArgumentNullException(name);
+                throw new NullValueException(name);
             }
         }
 
@@ -30,7 +29,7 @@ namespace Concierge.Utility
         {
             if (value.IsNullOrWhiteSpace())
             {
-                throw new ArgumentNullException(name);
+                throw new NullValueException(name);
             }
         }
     }

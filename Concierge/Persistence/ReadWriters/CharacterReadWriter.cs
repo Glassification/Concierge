@@ -9,6 +9,7 @@ namespace Concierge.Persistence.ReadWriters
     using System.Text.RegularExpressions;
 
     using Concierge.Configuration;
+    using Concierge.Exceptions;
     using Concierge.Interfaces.Enums;
     using Concierge.Tools.Interface;
     using Concierge.Utility.Extensions;
@@ -25,7 +26,7 @@ namespace Concierge.Persistence.ReadWriters
 
                 if (ccsFile is null)
                 {
-                    throw new Exception($"{nameof(ccsFile)} is null.");
+                    throw new NullValueException(nameof(ccsFile));
                 }
 
                 ccsFile.AbsolutePath = file;

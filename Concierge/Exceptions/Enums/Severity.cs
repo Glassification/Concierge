@@ -8,6 +8,5 @@ namespace Concierge.Exceptions.Enums
     {
         Debug,
         Release,
-        Unhandled,
     }
 }

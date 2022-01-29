@@ -4,8 +4,7 @@
 
 namespace Concierge.Commands
 {
-    using System;
-
+    using Concierge.Exceptions;
     using Concierge.Interfaces.Enums;
     using Concierge.Utility;
     using Concierge.Utility.Extensions;
@@ -20,7 +19,7 @@ namespace Concierge.Commands
         {
             if (originalItem is not ICopyable<T> newItem || oldItem is null)
             {
-                throw new ArgumentException("Arguments are not valid");
+                throw new InvalidValueException($"{originalItem} or {oldItem}");
             }
 
             this.ConciergePage = conciergePage;

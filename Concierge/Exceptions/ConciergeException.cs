@@ -6,11 +6,16 @@ namespace Concierge.Exceptions
 {
     using System;
 
-    public class ConciergeException : Exception
+    using Concierge.Exceptions.Enums;
+
+    public abstract class ConciergeException : Exception
     {
-        public ConciergeException(string message, Exception? innerException = null)
+        public ConciergeException(string message, Severity severity, Exception? innerException = null)
             : base(message, innerException)
         {
+            this.Severity = severity;
         }
+
+        public Severity Severity { get; }
     }
 }
