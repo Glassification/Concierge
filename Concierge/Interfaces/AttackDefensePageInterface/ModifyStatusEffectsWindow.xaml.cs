@@ -91,6 +91,23 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
             this.ShowConciergeWindow();
         }
 
+        protected override void EnterAndClose()
+        {
+            this.Result = ConciergeWindowResult.OK;
+
+            if (this.Editing)
+            {
+                this.UpdateStatusEffect();
+            }
+            else if (!this.NameComboBox.Text.IsNullOrWhiteSpace())
+            {
+                this.StatusEffects.Add(this.ToStatusEffect());
+            }
+
+            this.CloseConciergeWindow();
+            Program.Modify();
+        }
+
         private void FillFields(StatusEffect statusEffect)
         {
             this.NameComboBox.Text = statusEffect.Name;
@@ -135,24 +152,12 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             this.Result = ConciergeWindowResult.Exit;
-            this.HideConciergeWindow();
+            this.CloseConciergeWindow();
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Result = ConciergeWindowResult.OK;
-
-            if (this.Editing)
-            {
-                this.UpdateStatusEffect();
-            }
-            else if (!this.NameComboBox.Text.IsNullOrWhiteSpace())
-            {
-                this.StatusEffects.Add(this.ToStatusEffect());
-            }
-
-            this.HideConciergeWindow();
-            Program.Modify();
+            this.EnterAndClose();
         }
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
@@ -167,7 +172,7 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
             this.Result = ConciergeWindowResult.Cancel;
-            this.HideConciergeWindow();
+            this.CloseConciergeWindow();
         }
     }
 }

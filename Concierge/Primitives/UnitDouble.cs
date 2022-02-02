@@ -48,7 +48,7 @@ namespace Concierge.Primitives
 
         public override bool Equals(object? obj)
         {
-            return ReferenceEquals(this, obj) || (obj is null ? false : throw new System.NotImplementedException());
+            return ReferenceEquals(this, obj) || (obj is null ? false : throw new NotImplementedException());
         }
 
         public override int GetHashCode()

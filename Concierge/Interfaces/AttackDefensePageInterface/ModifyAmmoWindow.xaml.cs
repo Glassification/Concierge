@@ -90,6 +90,23 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
             this.ShowConciergeWindow();
         }
 
+        protected override void EnterAndClose()
+        {
+            this.Result = ConciergeWindowResult.OK;
+
+            if (this.Editing)
+            {
+                this.UpdateAmmunition(this.SelectedAmmo);
+            }
+            else
+            {
+                this.Ammunitions.Add(this.ToAmmunition());
+            }
+
+            this.CloseConciergeWindow();
+            Program.Modify();
+        }
+
         private void FillFields(Ammunition ammunition)
         {
             this.NameComboBox.Text = ammunition.Name;
@@ -142,24 +159,12 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             this.Result = ConciergeWindowResult.Exit;
-            this.HideConciergeWindow();
+            this.CloseConciergeWindow();
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Result = ConciergeWindowResult.OK;
-
-            if (this.Editing)
-            {
-                this.UpdateAmmunition(this.SelectedAmmo);
-            }
-            else
-            {
-                this.Ammunitions.Add(this.ToAmmunition());
-            }
-
-            this.HideConciergeWindow();
-            Program.Modify();
+            this.EnterAndClose();
         }
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
@@ -174,7 +179,7 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
             this.Result = ConciergeWindowResult.Cancel;
-            this.HideConciergeWindow();
+            this.CloseConciergeWindow();
         }
 
         private void NameComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)

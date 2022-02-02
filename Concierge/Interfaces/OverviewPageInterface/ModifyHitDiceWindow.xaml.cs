@@ -49,6 +49,16 @@ namespace Concierge.Interfaces.OverviewPageInterface
             this.ShowConciergeWindow();
         }
 
+        protected override void EnterAndClose()
+        {
+            this.Result = ConciergeWindowResult.OK;
+
+            this.UpdateHitDice();
+            this.CloseConciergeWindow();
+
+            Program.Modify();
+        }
+
         private void FillFields()
         {
             this.TotalD6UpDown.Value = this.HitDice.TotalD6;
@@ -82,13 +92,13 @@ namespace Concierge.Interfaces.OverviewPageInterface
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             this.Result = ConciergeWindowResult.Exit;
-            this.HideConciergeWindow();
+            this.CloseConciergeWindow();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
             this.Result = ConciergeWindowResult.Cancel;
-            this.HideConciergeWindow();
+            this.CloseConciergeWindow();
         }
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
@@ -101,12 +111,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Result = ConciergeWindowResult.OK;
-
-            this.UpdateHitDice();
-            this.HideConciergeWindow();
-
-            Program.Modify();
+            this.EnterAndClose();
         }
     }
 }

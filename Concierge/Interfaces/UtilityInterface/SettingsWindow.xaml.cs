@@ -37,6 +37,14 @@ namespace Concierge.Interfaces.UtilityInterface
             this.ShowConciergeWindow();
         }
 
+        protected override void EnterAndClose()
+        {
+            if (this.UpdateSettings())
+            {
+                this.CloseConciergeWindow();
+            }
+        }
+
         private void FillFields()
         {
             this.AutosaveCheckBox.UpdatingValue();
@@ -123,12 +131,12 @@ namespace Concierge.Interfaces.UtilityInterface
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            this.HideConciergeWindow();
+            this.CloseConciergeWindow();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            this.HideConciergeWindow();
+            this.CloseConciergeWindow();
         }
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
@@ -139,10 +147,7 @@ namespace Concierge.Interfaces.UtilityInterface
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
-            if (this.UpdateSettings())
-            {
-                this.HideConciergeWindow();
-            }
+            this.EnterAndClose();
         }
 
         private void AutosaveInterval_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)

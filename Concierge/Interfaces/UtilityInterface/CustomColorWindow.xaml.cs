@@ -88,12 +88,12 @@ namespace Concierge.Interfaces.UtilityInterface
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             this.SelectedColor = Colors.Transparent;
-            this.HideConciergeWindow();
+            this.CloseConciergeWindow();
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
-            this.HideConciergeWindow();
+            this.EnterAndClose();
         }
 
         private void UpDown_ValueChanged(object sender, RoutedEventArgs e)

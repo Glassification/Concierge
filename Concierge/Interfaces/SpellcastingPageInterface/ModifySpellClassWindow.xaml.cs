@@ -92,6 +92,24 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
             this.ShowConciergeWindow();
         }
 
+        protected override void EnterAndClose()
+        {
+            this.Result = ConciergeWindowResult.OK;
+
+            if (this.Editing)
+            {
+                this.UpdateMagicClass(this.SelectedClass);
+            }
+            else
+            {
+                this.MagicClasses.Add(this.ToMagicClass());
+            }
+
+            this.CloseConciergeWindow();
+
+            Program.Modify();
+        }
+
         private void FillFields(MagicClass magicClass)
         {
             this.SettingValues = true;
@@ -166,25 +184,12 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             this.Result = ConciergeWindowResult.Exit;
-            this.HideConciergeWindow();
+            this.CloseConciergeWindow();
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Result = ConciergeWindowResult.OK;
-
-            if (this.Editing)
-            {
-                this.UpdateMagicClass(this.SelectedClass);
-            }
-            else
-            {
-                this.MagicClasses.Add(this.ToMagicClass());
-            }
-
-            this.HideConciergeWindow();
-
-            Program.Modify();
+            this.EnterAndClose();
         }
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
@@ -199,7 +204,7 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
             this.Result = ConciergeWindowResult.Cancel;
-            this.HideConciergeWindow();
+            this.CloseConciergeWindow();
         }
 
         private void ComboBox_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)

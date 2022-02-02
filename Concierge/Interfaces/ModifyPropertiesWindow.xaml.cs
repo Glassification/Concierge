@@ -58,6 +58,16 @@ namespace Concierge.Interfaces
             this.ShowConciergeWindow();
         }
 
+        protected override void EnterAndClose()
+        {
+            this.Result = ConciergeWindowResult.OK;
+
+            this.UpdateProperties();
+            this.CloseConciergeWindow();
+
+            Program.Modify();
+        }
+
         private void FillFields()
         {
             this.NameTextBox.Text = this.CharacterProperties.Name;
@@ -92,12 +102,7 @@ namespace Concierge.Interfaces
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Result = ConciergeWindowResult.OK;
-
-            this.UpdateProperties();
-            this.HideConciergeWindow();
-
-            Program.Modify();
+            this.EnterAndClose();
         }
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
@@ -112,14 +117,14 @@ namespace Concierge.Interfaces
         {
             this.Result = ConciergeWindowResult.Cancel;
 
-            this.HideConciergeWindow();
+            this.CloseConciergeWindow();
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             this.Result = ConciergeWindowResult.Exit;
 
-            this.HideConciergeWindow();
+            this.CloseConciergeWindow();
         }
     }
 }

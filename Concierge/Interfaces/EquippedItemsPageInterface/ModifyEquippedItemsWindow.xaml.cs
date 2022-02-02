@@ -57,6 +57,16 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
             return this.ItemsAdded;
         }
 
+        protected override void EnterAndClose()
+        {
+            this.Result = ConciergeWindowResult.OK;
+
+            this.EquipItem();
+            this.CloseConciergeWindow();
+
+            Program.Modify();
+        }
+
         private void ClearFields()
         {
             this.SlotComboBox.Text = this.PreviousSlot;
@@ -81,17 +91,12 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             this.Result = ConciergeWindowResult.Exit;
-            this.HideConciergeWindow();
+            this.CloseConciergeWindow();
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Result = ConciergeWindowResult.OK;
-
-            this.EquipItem();
-            this.HideConciergeWindow();
-
-            Program.Modify();
+            this.EnterAndClose();
         }
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
@@ -107,7 +112,7 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
             this.Result = ConciergeWindowResult.Cancel;
-            this.HideConciergeWindow();
+            this.CloseConciergeWindow();
         }
     }
 }

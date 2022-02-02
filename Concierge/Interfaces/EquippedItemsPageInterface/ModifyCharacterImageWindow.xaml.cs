@@ -64,6 +64,15 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
             this.ShowConciergeWindow();
         }
 
+        protected override void EnterAndClose()
+        {
+            this.Result = ConciergeWindowResult.OK;
+            this.UpdateCharacterImage();
+            this.CloseConciergeWindow();
+
+            Program.Modify();
+        }
+
         private void FillFields()
         {
             this.IsDrawing = true;
@@ -116,11 +125,7 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Result = ConciergeWindowResult.OK;
-            this.UpdateCharacterImage();
-            this.HideConciergeWindow();
-
-            Program.Modify();
+            this.EnterAndClose();
         }
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
@@ -134,13 +139,13 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             this.Result = ConciergeWindowResult.Exit;
-            this.HideConciergeWindow();
+            this.CloseConciergeWindow();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
             this.Result = ConciergeWindowResult.Cancel;
-            this.HideConciergeWindow();
+            this.CloseConciergeWindow();
         }
 
         private void UseCustomImageCheckBox_Checked(object sender, RoutedEventArgs e)

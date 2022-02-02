@@ -60,6 +60,23 @@ namespace Concierge.Interfaces.OverviewPageInterface
             this.ShowConciergeWindow();
         }
 
+        protected override void EnterAndClose()
+        {
+            this.Result = ConciergeWindowResult.OK;
+            var oldItem = this.SelectedWealth.DeepCopy();
+
+            this.SelectedWealth.Copper = this.CP;
+            this.SelectedWealth.Silver = this.SP;
+            this.SelectedWealth.Electrum = this.EP;
+            this.SelectedWealth.Gold = this.GP;
+            this.SelectedWealth.Platinum = this.PP;
+
+            Program.UndoRedoService.AddCommand(new EditCommand<Wealth>(this.SelectedWealth, oldItem, this.ConciergePage));
+            Program.Modify();
+
+            this.CloseConciergeWindow();
+        }
+
         private void ClearFields()
         {
             this.AddRadioButton.IsChecked = true;
@@ -92,24 +109,12 @@ namespace Concierge.Interfaces.OverviewPageInterface
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             this.Result = ConciergeWindowResult.Exit;
-            this.HideConciergeWindow();
+            this.CloseConciergeWindow();
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Result = ConciergeWindowResult.OK;
-            var oldItem = this.SelectedWealth.DeepCopy();
-
-            this.SelectedWealth.Copper = this.CP;
-            this.SelectedWealth.Silver = this.SP;
-            this.SelectedWealth.Electrum = this.EP;
-            this.SelectedWealth.Gold = this.GP;
-            this.SelectedWealth.Platinum = this.PP;
-
-            Program.UndoRedoService.AddCommand(new EditCommand<Wealth>(this.SelectedWealth, oldItem, this.ConciergePage));
-            Program.Modify();
-
-            this.HideConciergeWindow();
+            this.EnterAndClose();
         }
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
@@ -143,7 +148,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
             this.Result = ConciergeWindowResult.Cancel;
-            this.HideConciergeWindow();
+            this.CloseConciergeWindow();
         }
     }
 }

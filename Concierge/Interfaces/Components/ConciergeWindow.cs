@@ -121,6 +121,12 @@ namespace Concierge.Interfaces.Components
             Program.Logger.Error("No implemented ShowWindow method.");
         }
 
+        protected virtual void EnterAndClose()
+        {
+            this.Result = ConciergeWindowResult.OK;
+            this.CloseConciergeWindow();
+        }
+
         protected void ShowConciergeWindow()
         {
             Program.Logger.Info($"{this.Title} opened.");
@@ -130,7 +136,7 @@ namespace Concierge.Interfaces.Components
             this.ShowDialog();
         }
 
-        protected void HideConciergeWindow()
+        protected void CloseConciergeWindow()
         {
             Program.Logger.Info($"{this.Title} closed.");
 
@@ -160,12 +166,16 @@ namespace Concierge.Interfaces.Components
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
+            Program.Logger.Info($"{e.Key} key pressed.");
             switch (e.Key)
             {
                 case Key.Escape:
                     this.ButtonPress = PopupButtons.Cancel;
                     this.Result = ConciergeWindowResult.Exit;
-                    this.HideConciergeWindow();
+                    this.CloseConciergeWindow();
+                    break;
+                case Key.Enter:
+                    this.EnterAndClose();
                     break;
             }
         }

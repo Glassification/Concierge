@@ -57,6 +57,14 @@ namespace Concierge.Interfaces.DetailsPageInterface
             this.ShowConciergeWindow();
         }
 
+        protected override void EnterAndClose()
+        {
+            this.UpdateConditions();
+            this.CloseConciergeWindow();
+
+            Program.Modify();
+        }
+
         private void FillFields()
         {
             this.BlindedComboBox.Text = this.Conditions.Blinded.Equals("Cured") ? "Cured" : "Afflicted";
@@ -102,15 +110,12 @@ namespace Concierge.Interfaces.DetailsPageInterface
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            this.HideConciergeWindow();
+            this.CloseConciergeWindow();
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
-            this.UpdateConditions();
-            this.HideConciergeWindow();
-
-            Program.Modify();
+            this.EnterAndClose();
         }
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
@@ -123,7 +128,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            this.HideConciergeWindow();
+            this.CloseConciergeWindow();
         }
     }
 }

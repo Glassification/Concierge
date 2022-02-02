@@ -33,21 +33,22 @@ namespace Concierge.Character.Items
         {
             get
             {
-                int bonus = 0;
+                var bonus = 0;
+                var character = Program.CcsFile.Character;
 
-                if (Program.CcsFile.Character.IsWeaponProficient(this))
+                if (character.IsWeaponProficient(this))
                 {
-                    bonus = Program.CcsFile.Character.ProficiencyBonus;
+                    bonus = character.ProficiencyBonus;
                 }
 
                 return this.Ability switch
                 {
-                    Abilities.STR => CharacterUtility.CalculateBonus(Program.CcsFile.Character.Attributes.Strength) + bonus,
-                    Abilities.DEX => CharacterUtility.CalculateBonus(Program.CcsFile.Character.Attributes.Dexterity) + bonus,
-                    Abilities.CON => CharacterUtility.CalculateBonus(Program.CcsFile.Character.Attributes.Constitution) + bonus,
-                    Abilities.INT => CharacterUtility.CalculateBonus(Program.CcsFile.Character.Attributes.Intelligence) + bonus,
-                    Abilities.WIS => CharacterUtility.CalculateBonus(Program.CcsFile.Character.Attributes.Wisdom) + bonus,
-                    Abilities.CHA => CharacterUtility.CalculateBonus(Program.CcsFile.Character.Attributes.Charisma) + bonus,
+                    Abilities.STR => CharacterUtility.CalculateBonus(character.Attributes.Strength) + bonus,
+                    Abilities.DEX => CharacterUtility.CalculateBonus(character.Attributes.Dexterity) + bonus,
+                    Abilities.CON => CharacterUtility.CalculateBonus(character.Attributes.Constitution) + bonus,
+                    Abilities.INT => CharacterUtility.CalculateBonus(character.Attributes.Intelligence) + bonus,
+                    Abilities.WIS => CharacterUtility.CalculateBonus(character.Attributes.Wisdom) + bonus,
+                    Abilities.CHA => CharacterUtility.CalculateBonus(character.Attributes.Charisma) + bonus,
                     Abilities.NONE => bonus,
                     _ => throw new NotImplementedException(),
                 };

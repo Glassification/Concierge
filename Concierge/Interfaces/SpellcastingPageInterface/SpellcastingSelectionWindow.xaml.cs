@@ -26,28 +26,33 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
             return this.ButtonPress;
         }
 
+        protected override void EnterAndClose()
+        {
+            this.ButtonPress = PopupButtons.AddSpell;
+            this.CloseConciergeWindow();
+        }
+
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             this.ButtonPress = PopupButtons.Cancel;
-            this.HideConciergeWindow();
+            this.CloseConciergeWindow();
         }
 
         private void SpellClassButton_Click(object sender, RoutedEventArgs e)
         {
             this.ButtonPress = PopupButtons.AddMagicClass;
-            this.HideConciergeWindow();
+            this.CloseConciergeWindow();
         }
 
         private void SpellButton_Click(object sender, RoutedEventArgs e)
         {
-            this.ButtonPress = PopupButtons.AddSpell;
-            this.HideConciergeWindow();
+            this.EnterAndClose();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
             this.ButtonPress = PopupButtons.Cancel;
-            this.HideConciergeWindow();
+            this.CloseConciergeWindow();
         }
     }
 }

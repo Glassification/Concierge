@@ -37,12 +37,12 @@ namespace Concierge.Interfaces.UtilityInterface
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            this.HideConciergeWindow();
+            this.CloseConciergeWindow();
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
-            this.HideConciergeWindow();
+            this.EnterAndClose();
         }
     }
 }

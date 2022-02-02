@@ -50,6 +50,16 @@ namespace Concierge.Interfaces.DetailsPageInterface
             this.ShowConciergeWindow();
         }
 
+        protected override void EnterAndClose()
+        {
+            this.Result = ConciergeWindowResult.OK;
+
+            this.UpdatePersonality();
+            this.CloseConciergeWindow();
+
+            Program.Modify();
+        }
+
         private void FillFields()
         {
             this.Trait1TextBox.Text = this.Personality.Trait1;
@@ -79,17 +89,12 @@ namespace Concierge.Interfaces.DetailsPageInterface
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             this.Result = ConciergeWindowResult.Exit;
-            this.HideConciergeWindow();
+            this.CloseConciergeWindow();
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Result = ConciergeWindowResult.OK;
-
-            this.UpdatePersonality();
-            this.HideConciergeWindow();
-
-            Program.Modify();
+            this.EnterAndClose();
         }
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
@@ -103,7 +108,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
             this.Result = ConciergeWindowResult.Cancel;
-            this.HideConciergeWindow();
+            this.CloseConciergeWindow();
         }
     }
 }

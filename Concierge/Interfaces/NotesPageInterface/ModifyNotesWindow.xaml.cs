@@ -56,6 +56,12 @@ namespace Concierge.Interfaces.NotesPageInterface
             }
         }
 
+        protected override void EnterAndClose()
+        {
+            this.OkApplyChanges();
+            this.CloseConciergeWindow();
+        }
+
         private void EditChapter(Chapter chapter)
         {
             this.SetupWindow(true);
@@ -173,13 +179,12 @@ namespace Concierge.Interfaces.NotesPageInterface
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            this.HideConciergeWindow();
+            this.CloseConciergeWindow();
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
-            this.OkApplyChanges();
-            this.HideConciergeWindow();
+            this.EnterAndClose();
         }
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
@@ -188,7 +193,7 @@ namespace Concierge.Interfaces.NotesPageInterface
 
             if (!this.IsEdit)
             {
-                if (this.ChapterComboBox.Text.Equals(NewChapter))
+                if (this.ChapterComboBox.Text.Equals(NewChapter) && !this.DocumentTextBox.Text.IsNullOrWhiteSpace())
                 {
                     var chapterName = this.DocumentTextBox.Text;
                     this.ClearFields();
@@ -206,7 +211,7 @@ namespace Concierge.Interfaces.NotesPageInterface
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            this.HideConciergeWindow();
+            this.CloseConciergeWindow();
         }
 
         private void ChapterComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)

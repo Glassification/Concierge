@@ -96,6 +96,23 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
             this.ShowConciergeWindow();
         }
 
+        protected override void EnterAndClose()
+        {
+            this.Result = ConciergeWindowResult.OK;
+
+            if (this.Editing)
+            {
+                this.UpdateWeapon(this.SelectedAttack);
+            }
+            else
+            {
+                this.Weapons.Add(this.ToWeapon());
+            }
+
+            this.CloseConciergeWindow();
+            Program.Modify();
+        }
+
         private void FillFields(Weapon weapon)
         {
             this.BagOfHoldingCheckBox.UpdatingValue();
@@ -186,13 +203,13 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             this.Result = ConciergeWindowResult.Exit;
-            this.HideConciergeWindow();
+            this.CloseConciergeWindow();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
             this.Result = ConciergeWindowResult.Cancel;
-            this.HideConciergeWindow();
+            this.CloseConciergeWindow();
         }
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
@@ -206,19 +223,7 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Result = ConciergeWindowResult.OK;
-
-            if (this.Editing)
-            {
-                this.UpdateWeapon(this.SelectedAttack);
-            }
-            else
-            {
-                this.Weapons.Add(this.ToWeapon());
-            }
-
-            this.HideConciergeWindow();
-            Program.Modify();
+            this.EnterAndClose();
         }
 
         private void AttackComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)

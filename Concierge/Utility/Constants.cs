@@ -14,6 +14,8 @@ namespace Concierge.Utility
 
     public static class Constants
     {
+        public const byte ColorSpace = 255;
+
         public const int MaxLevel = 20;
         public const int BaseDC = 8;
         public const int CoinGroup = 50;
@@ -25,6 +27,7 @@ namespace Concierge.Utility
         public const int SignificantDigits = 2;
         public const int Currencies = 5;
         public const int MaxDepth = 10;
+        public const int BrightnessTransition = 130;
 
         public const string Designer = "Thomas Beckett";
         public const string License = "This program is provided as is. Thomas Beckett Inc. is not responsible for any injuries or TPKs that may result from the use of this product.";

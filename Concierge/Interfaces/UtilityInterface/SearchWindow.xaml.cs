@@ -63,6 +63,11 @@ namespace Concierge.Interfaces.UtilityInterface
             base.OnClosing(e);
         }
 
+        protected override void EnterAndClose()
+        {
+            // Do nothing
+        }
+
         private void ClearFields()
         {
             this.Opacity = 1;
@@ -167,7 +172,7 @@ namespace Concierge.Interfaces.UtilityInterface
         {
             this.ClearHighlightedResults();
             this.ClearFields();
-            this.HideConciergeWindow();
+            this.CloseConciergeWindow();
         }
 
         private void FindPreviousButton_Click(object? sender, RoutedEventArgs e)
@@ -198,7 +203,7 @@ namespace Concierge.Interfaces.UtilityInterface
         {
             this.ClearHighlightedResults();
             this.ClearFields();
-            this.HideConciergeWindow();
+            this.CloseConciergeWindow();
         }
 
         private void Window_KeyDown(object? sender, KeyEventArgs e)

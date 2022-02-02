@@ -41,6 +41,14 @@ namespace Concierge.Interfaces.CompanionPageInterface
             this.ShowConciergeWindow();
         }
 
+        protected override void EnterAndClose()
+        {
+            this.UpdateCompanion();
+            this.CloseConciergeWindow();
+
+            Program.Modify();
+        }
+
         private void FillFields()
         {
             this.NameTextBox.Text = this.Properties.Name;
@@ -65,12 +73,12 @@ namespace Concierge.Interfaces.CompanionPageInterface
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            this.HideConciergeWindow();
+            this.CloseConciergeWindow();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            this.HideConciergeWindow();
+            this.CloseConciergeWindow();
         }
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
@@ -83,10 +91,7 @@ namespace Concierge.Interfaces.CompanionPageInterface
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
-            this.UpdateCompanion();
-            this.HideConciergeWindow();
-
-            Program.Modify();
+            this.EnterAndClose();
         }
     }
 }

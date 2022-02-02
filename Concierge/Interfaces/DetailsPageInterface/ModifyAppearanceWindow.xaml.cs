@@ -57,6 +57,16 @@ namespace Concierge.Interfaces.DetailsPageInterface
             this.ShowConciergeWindow();
         }
 
+        protected override void EnterAndClose()
+        {
+            this.Result = ConciergeWindowResult.OK;
+
+            this.UpdateAppearance();
+            this.CloseConciergeWindow();
+
+            Program.Modify();
+        }
+
         private void FillHeightFields()
         {
             if (this.Appearance.Height.UnitType == UnitTypes.Imperial)
@@ -131,17 +141,12 @@ namespace Concierge.Interfaces.DetailsPageInterface
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             this.Result = ConciergeWindowResult.Exit;
-            this.HideConciergeWindow();
+            this.CloseConciergeWindow();
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Result = ConciergeWindowResult.OK;
-
-            this.UpdateAppearance();
-            this.HideConciergeWindow();
-
-            Program.Modify();
+            this.EnterAndClose();
         }
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
@@ -155,7 +160,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
             this.Result = ConciergeWindowResult.Cancel;
-            this.HideConciergeWindow();
+            this.CloseConciergeWindow();
         }
 
         private void ColourTextBox_LostFocus(object sender, RoutedEventArgs e)

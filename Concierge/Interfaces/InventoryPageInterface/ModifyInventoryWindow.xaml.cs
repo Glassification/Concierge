@@ -95,6 +95,28 @@ namespace Concierge.Interfaces.InventoryPageInterface
             return this.ItemsAdded;
         }
 
+        protected override void EnterAndClose()
+        {
+            if (this.NameComboBox.Text.IsNullOrWhiteSpace())
+            {
+                this.CloseConciergeWindow();
+            }
+
+            this.Result = ConciergeWindowResult.OK;
+            if (this.Editing)
+            {
+                this.UpdateInventory(this.SelectedItem);
+            }
+            else
+            {
+                this.Items.Add(this.ToInventory());
+            }
+
+            this.CloseConciergeWindow();
+
+            Program.Modify();
+        }
+
         private void FillFields(Inventory inventory)
         {
             this.BagOfHoldingCheckBox.UpdatingValue();
@@ -190,7 +212,7 @@ namespace Concierge.Interfaces.InventoryPageInterface
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             this.Result = ConciergeWindowResult.Exit;
-            this.HideConciergeWindow();
+            this.CloseConciergeWindow();
         }
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
@@ -209,24 +231,7 @@ namespace Concierge.Interfaces.InventoryPageInterface
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
-            if (this.NameComboBox.Text.IsNullOrWhiteSpace())
-            {
-                this.HideConciergeWindow();
-            }
-
-            this.Result = ConciergeWindowResult.OK;
-            if (this.Editing)
-            {
-                this.UpdateInventory(this.SelectedItem);
-            }
-            else
-            {
-                this.Items.Add(this.ToInventory());
-            }
-
-            this.HideConciergeWindow();
-
-            Program.Modify();
+            this.EnterAndClose();
         }
 
         private void NameComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -240,7 +245,7 @@ namespace Concierge.Interfaces.InventoryPageInterface
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
             this.Result = ConciergeWindowResult.Cancel;
-            this.HideConciergeWindow();
+            this.CloseConciergeWindow();
         }
     }
 }

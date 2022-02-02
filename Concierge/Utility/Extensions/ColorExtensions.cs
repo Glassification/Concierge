@@ -24,9 +24,12 @@ namespace Concierge.Utility.Extensions
 
         public static SolidColorBrush GetForeColor(this Color color)
         {
-            var brightness = (int)Math.Sqrt((color.R * color.R * 0.241) + (color.G * color.G * 0.691) + (color.B * color.B * 0.068));
+            return GetBrightness(color) < Constants.BrightnessTransition ? Brushes.White : Brushes.Black;
+        }
 
-            return brightness < 130 ? Brushes.White : Brushes.Black;
+        public static int GetBrightness(this Color color)
+        {
+            return (int)Math.Sqrt((color.R * color.R * 0.241) + (color.G * color.G * 0.691) + (color.B * color.B * 0.068));
         }
 
         public static double GetHue(this Color color)
@@ -65,10 +68,10 @@ namespace Concierge.Utility.Extensions
         public static Color SimpleInvert(this Color color)
         {
             return Color.FromArgb(
-                ColorUtility.ColourSpace,
-                (byte)(ColorUtility.ColourSpace - color.R),
-                (byte)(ColorUtility.ColourSpace - color.G),
-                (byte)(ColorUtility.ColourSpace - color.B));
+                Constants.ColorSpace,
+                (byte)(Constants.ColorSpace - color.R),
+                (byte)(Constants.ColorSpace - color.G),
+                (byte)(Constants.ColorSpace - color.B));
         }
 
         public static string ToHexWithoutAlpha(this Color color)

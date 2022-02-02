@@ -14,6 +14,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
     using Concierge.Commands;
     using Concierge.Interfaces.Components;
     using Concierge.Interfaces.Enums;
+    using Concierge.Utility.Extensions;
 
     /// <summary>
     /// Interaction logic for ModifyProficiencyWindow.xaml.
@@ -90,6 +91,24 @@ namespace Concierge.Interfaces.DetailsPageInterface
             this.ShowConciergeWindow();
         }
 
+        protected override void EnterAndClose()
+        {
+            this.Result = ConciergeWindowResult.OK;
+
+            if (this.Editing)
+            {
+                this.UpdateProficiency(this.SelectedProficiency);
+            }
+            else if (!this.ProficiencyComboBox.Text.IsNullOrWhiteSpace())
+            {
+                this.SelectedProficiencies.Add(this.ToProficiency());
+            }
+
+            this.CloseConciergeWindow();
+
+            Program.Modify();
+        }
+
         private void SetEnabledState(bool isEnabled)
         {
             this.ProficiencyComboBox.IsEnabled = isEnabled;
@@ -139,29 +158,21 @@ namespace Concierge.Interfaces.DetailsPageInterface
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             this.Result = ConciergeWindowResult.Exit;
-            this.HideConciergeWindow();
+            this.CloseConciergeWindow();
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Result = ConciergeWindowResult.OK;
-
-            if (this.Editing)
-            {
-                this.UpdateProficiency(this.SelectedProficiency);
-            }
-            else
-            {
-                this.SelectedProficiencies.Add(this.ToProficiency());
-            }
-
-            this.HideConciergeWindow();
-
-            Program.Modify();
+            this.EnterAndClose();
         }
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
+            if (this.ProficiencyComboBox.Text.IsNullOrWhiteSpace())
+            {
+                return;
+            }
+
             this.SelectedProficiencies.Add(this.ToProficiency());
             this.ClearFields();
             this.InvokeApplyChanges();
@@ -172,7 +183,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
             this.Result = ConciergeWindowResult.Cancel;
-            this.HideConciergeWindow();
+            this.CloseConciergeWindow();
         }
     }
 }

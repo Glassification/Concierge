@@ -22,12 +22,15 @@ namespace Concierge.Interfaces.UtilityInterface
             this.InitializeComponent();
         }
 
+        private bool IsOk { get; set; }
+
         public ConciergeWindowResult ShowWindow(
             string message,
             string title,
             ConciergeWindowButtons messageWindowButtons,
             ConciergeWindowIcons messageWindowIcons)
         {
+            this.IsOk = messageWindowButtons.ToString().Contains("Ok");
             this.MessageText.Text = message;
             this.MessageTitle.Text = title;
             this.SetMessageIcon(messageWindowIcons);
@@ -38,6 +41,12 @@ namespace Concierge.Interfaces.UtilityInterface
             this.ShowConciergeWindow();
 
             return this.Result;
+        }
+
+        protected override void EnterAndClose()
+        {
+            this.Result = this.IsOk ? ConciergeWindowResult.OK : ConciergeWindowResult.Yes;
+            this.CloseConciergeWindow();
         }
 
         private void SetMessageIcon(ConciergeWindowIcons messageWindowIcons)
@@ -130,37 +139,35 @@ namespace Concierge.Interfaces.UtilityInterface
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             this.Result = ConciergeWindowResult.Exit;
-            this.HideConciergeWindow();
+            this.CloseConciergeWindow();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
             this.Result = ConciergeWindowResult.Cancel;
-            this.HideConciergeWindow();
+            this.CloseConciergeWindow();
         }
 
         private void NoButton_Click(object sender, RoutedEventArgs e)
         {
             this.Result = ConciergeWindowResult.No;
-            this.HideConciergeWindow();
+            this.CloseConciergeWindow();
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Result = ConciergeWindowResult.OK;
-            this.HideConciergeWindow();
+            this.EnterAndClose();
         }
 
         private void YesButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Result = ConciergeWindowResult.Yes;
-            this.HideConciergeWindow();
+            this.EnterAndClose();
         }
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
             this.Result = ConciergeWindowResult.Apply;
-            this.HideConciergeWindow();
+            this.CloseConciergeWindow();
         }
     }
 }

@@ -60,6 +60,14 @@ namespace Concierge.Interfaces.OverviewPageInterface
             this.ShowConciergeWindow();
         }
 
+        protected override void EnterAndClose()
+        {
+            this.UpdateSkills();
+            this.CloseConciergeWindow();
+
+            Program.Modify();
+        }
+
         private void FillFields()
         {
             this.AthleticsComboBox.Text = this.Skill.Athletics.CheckOverride.ToString();
@@ -110,15 +118,12 @@ namespace Concierge.Interfaces.OverviewPageInterface
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            this.HideConciergeWindow();
+            this.CloseConciergeWindow();
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
-            this.UpdateSkills();
-            this.HideConciergeWindow();
-
-            Program.Modify();
+            this.EnterAndClose();
         }
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
@@ -131,7 +136,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            this.HideConciergeWindow();
+            this.CloseConciergeWindow();
         }
     }
 }

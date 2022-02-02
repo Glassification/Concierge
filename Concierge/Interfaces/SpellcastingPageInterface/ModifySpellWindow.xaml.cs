@@ -91,6 +91,24 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
             this.ShowConciergeWindow();
         }
 
+        protected override void EnterAndClose()
+        {
+            this.Result = ConciergeWindowResult.OK;
+
+            if (this.Editing)
+            {
+                this.UpdateSpell(this.SelectedSpell);
+            }
+            else
+            {
+                this.Spells.Add(this.ToSpell());
+            }
+
+            this.CloseConciergeWindow();
+
+            Program.Modify();
+        }
+
         private void FillFields(Spell spell)
         {
             this.PreparedCheckBox.UpdatingValue();
@@ -199,25 +217,12 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             this.Result = ConciergeWindowResult.Exit;
-            this.HideConciergeWindow();
+            this.CloseConciergeWindow();
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Result = ConciergeWindowResult.OK;
-
-            if (this.Editing)
-            {
-                this.UpdateSpell(this.SelectedSpell);
-            }
-            else
-            {
-                this.Spells.Add(this.ToSpell());
-            }
-
-            this.HideConciergeWindow();
-
-            Program.Modify();
+            this.EnterAndClose();
         }
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
@@ -232,7 +237,7 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
             this.Result = ConciergeWindowResult.Cancel;
-            this.HideConciergeWindow();
+            this.CloseConciergeWindow();
         }
 
         private void SpellNameComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)

@@ -14,8 +14,6 @@ namespace Concierge.Utility.Utilities
 
     public static class ColorUtility
     {
-        public const byte ColourSpace = 255;
-
         public static List<string> ListDotNetColors()
         {
             var colorList = new List<string>();

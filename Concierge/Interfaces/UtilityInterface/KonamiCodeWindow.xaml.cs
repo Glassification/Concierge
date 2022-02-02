@@ -48,7 +48,7 @@ namespace Concierge.Interfaces.UtilityInterface
 
         private void VideoControl_MediaFailed(object sender, ExceptionRoutedEventArgs e)
         {
-            this.HideConciergeWindow();
+            this.CloseConciergeWindow();
         }
     }
 }

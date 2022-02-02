@@ -37,9 +37,14 @@ namespace Concierge.Interfaces.UtilityInterface
             this.ShowConciergeWindow();
         }
 
+        protected override void EnterAndClose()
+        {
+            // Do nothing
+        }
+
         private void ProgressBarFiller_RunWorkerCompleted(object? sender, RunWorkerCompletedEventArgs e)
         {
-            this.HideConciergeWindow();
+            this.CloseConciergeWindow();
         }
 
         private void ProgressBarFiller_DoWork(object? sender, DoWorkEventArgs e)
