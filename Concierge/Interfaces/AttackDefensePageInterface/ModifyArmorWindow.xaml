@@ -45,8 +45,7 @@
         </Grid>
 
         <!--Fields-->
-        <Grid Grid.Row="1"
-              Margin="5, 20, 5, 20">
+        <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="5*"/>
                 <ColumnDefinition Width="5*"/>
@@ -55,12 +54,12 @@
             <!--Left-->
             <Grid Grid.Column="0">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="16*"/>
-                    <RowDefinition Height="16*"/>
-                    <RowDefinition Height="16*"/>
-                    <RowDefinition Height="16*"/>
-                    <RowDefinition Height="16*"/>
-                    <RowDefinition Height="16*"/>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="60"/>
                 </Grid.RowDefinitions>
 
                 <!--Equiped-->
@@ -81,13 +80,9 @@
                     </Grid>
 
                     <!--Value-->
-                    <Grid Grid.Column="1"
-                      Background="#FF3F3F3F"
-                      Margin="0, 8, 20, 8">
-                        <components:ConciergeTextBox 
-                            x:Name="EquipedTextBox"
-                            FontSize="15"/>
-                    </Grid>
+                    <components:ConciergeTextBoxBackground Grid.Column="1">
+                        <components:ConciergeTextBox x:Name="EquipedTextBox"/>
+                    </components:ConciergeTextBoxBackground>
                 </Grid>
 
                 <!--Type-->
@@ -154,7 +149,7 @@
                             FontSize="19"
                             HorizontalAlignment="Left"
                             VerticalAlignment="Top"
-                            Margin="10, 8, 0, 0"/>
+                            Margin="10, 10, 0, 0"/>
                         <TextBlock 
                             x:Name="WeightUnits"
                             Text="Measurement"
@@ -162,7 +157,7 @@
                             FontSize="12"
                             HorizontalAlignment="Left"
                             VerticalAlignment="Bottom"
-                            Margin="10, 0, 0, 8"/>
+                            Margin="10, 0, 0, 10"/>
                     </Grid>
 
                     <!--Value-->
@@ -250,13 +245,9 @@
                     </Grid>
 
                     <!--Value-->
-                    <Grid Grid.Column="1"
-                      Background="#FF3F3F3F"
-                      Margin="0, 8, 20, 8">
-                        <components:ConciergeTextBox 
-                            x:Name="ShieldTextBox"
-                            FontSize="15"/>
-                    </Grid>
+                    <components:ConciergeTextBoxBackground Grid.Column="1">
+                        <components:ConciergeTextBox x:Name="ShieldTextBox"/>
+                    </components:ConciergeTextBoxBackground>
                 </Grid>
 
                 <!--AC-->
@@ -297,7 +288,7 @@
                             FontSize="15"
                             HorizontalAlignment="Left"
                             VerticalAlignment="Top"
-                            Margin="10, 8, 0, 0"/>
+                            Margin="10, 12, 0, 0"/>
                         <TextBlock 
                             x:Name="ShieldWeightUnits"
                             Text="Measurement"
@@ -305,7 +296,7 @@
                             FontSize="12"
                             HorizontalAlignment="Left"
                             VerticalAlignment="Bottom"
-                            Margin="10, 0, 0, 8"/>
+                            Margin="10, 0, 0, 12"/>
                     </Grid>
 
                     <!--Value-->

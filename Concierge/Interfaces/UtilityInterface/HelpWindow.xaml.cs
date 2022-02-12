@@ -30,7 +30,7 @@ namespace Concierge.Interfaces.UtilityInterface
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
-            this.EnterAndClose();
+            this.ReturnAndClose();
         }
     }
 }

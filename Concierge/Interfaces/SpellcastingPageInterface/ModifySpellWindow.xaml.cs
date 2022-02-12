@@ -91,7 +91,7 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
             this.ShowConciergeWindow();
         }
 
-        protected override void EnterAndClose()
+        protected override void ReturnAndClose()
         {
             this.Result = ConciergeWindowResult.OK;
 
@@ -222,7 +222,7 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
-            this.EnterAndClose();
+            this.ReturnAndClose();
         }
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)

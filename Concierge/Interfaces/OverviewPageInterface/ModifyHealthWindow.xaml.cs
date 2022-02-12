@@ -49,7 +49,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
             this.ShowConciergeWindow();
         }
 
-        protected override void EnterAndClose()
+        protected override void ReturnAndClose()
         {
             this.Result = ConciergeWindowResult.OK;
 
@@ -102,7 +102,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
-            this.EnterAndClose();
+            this.ReturnAndClose();
         }
 
         private void TotalHpUpDown_ValueChanged(object sender, RoutedEventArgs e)

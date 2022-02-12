@@ -11,27 +11,28 @@
     d:DataContext="{d:DesignInstance Type=viewmodels:ConciergeViewModel}"
     mc:Ignorable="d"
     Title="ModifyAmmoWindow"
-    Height="475"
+    Height="415"
     Width="650"
     Style="{StaticResource WindowXboxDasboardStyle}">
 
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="45"/>
-            <RowDefinition Height="360"/>
+            <RowDefinition Height="300"/>
             <RowDefinition Height="70"/>
         </Grid.RowDefinitions>
 
         <!--Header-->
         <Grid Grid.Row="0">
-            <TextBlock Text="Add Ammunition"
-                       x:Name="HeaderTextBlock"
-                       Foreground="#227EA9"
-                       FontSize="35"
-                       HorizontalAlignment="Left"
-                       VerticalAlignment="Center"
-                       Margin="30, 0, 0, 0"
-                       FontWeight="Bold"/>
+            <TextBlock
+                Text="Add Ammunition"
+                x:Name="HeaderTextBlock"
+                Foreground="#227EA9"
+                FontSize="35"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                Margin="30, 0, 0, 0"
+                FontWeight="Bold"/>
             <components:ConciergeDesignButton 
                 Style="{StaticResource ConciergeDesignButtonStyle}" 
                 x:Name="CloseButton"
@@ -45,14 +46,13 @@
         </Grid>
 
         <!--Fields-->
-        <Grid Grid.Row="1"
-              Margin="5, 20, 5, 20">
+        <Grid Grid.Row="1">
             <Grid.RowDefinitions>
-                <RowDefinition Height="2*"/>
-                <RowDefinition Height="2*"/>
-                <RowDefinition Height="2*"/>
-                <RowDefinition Height="2*"/>
-                <RowDefinition Height="2*"/>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="60"/>
             </Grid.RowDefinitions>
 
             <!--Name-->
@@ -122,13 +122,9 @@
                 </Grid>
 
                 <!--Value-->
-                <Grid Grid.Column="1"
-                      Background="#FF3F3F3F"
-                      Margin="0, 10, 20, 10">
-                    <components:ConciergeTextBox 
-                        x:Name="BonusTextBox"
-                        FontSize="15"/>
-                </Grid>
+                <components:ConciergeTextBoxBackground Grid.Column="1">
+                    <components:ConciergeTextBox x:Name="BonusTextBox"/>
+                </components:ConciergeTextBoxBackground>
             </Grid>
 
             <!--Damage Type-->

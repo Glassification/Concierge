@@ -43,7 +43,7 @@ namespace Concierge.Interfaces.UtilityInterface
             return this.Result;
         }
 
-        protected override void EnterAndClose()
+        protected override void ReturnAndClose()
         {
             this.Result = this.IsOk ? ConciergeWindowResult.OK : ConciergeWindowResult.Yes;
             this.CloseConciergeWindow();
@@ -156,12 +156,12 @@ namespace Concierge.Interfaces.UtilityInterface
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
-            this.EnterAndClose();
+            this.ReturnAndClose();
         }
 
         private void YesButton_Click(object sender, RoutedEventArgs e)
         {
-            this.EnterAndClose();
+            this.ReturnAndClose();
         }
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)

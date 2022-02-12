@@ -21,6 +21,7 @@ namespace Concierge.Interfaces.Components
             this.VerticalAlignment = VerticalAlignment.Center;
             this.Margin = new Thickness(5);
             this.BorderThickness = new Thickness(0);
+            this.FontSize = 15;
 
             this.GotFocus += this.SoundEffect_GotFocus;
             this.MouseEnter += this.Button_MouseEnter;

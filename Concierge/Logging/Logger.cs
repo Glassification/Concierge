@@ -48,7 +48,7 @@ namespace Concierge.Logging
             catch (Exception ex)
             {
                 // Swallow the error
-                this.Log(ex.Message, LogType.ERR);
+                this.Error(ex);
             }
         }
 

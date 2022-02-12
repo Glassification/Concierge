@@ -95,7 +95,7 @@ namespace Concierge.Interfaces.InventoryPageInterface
             return this.ItemsAdded;
         }
 
-        protected override void EnterAndClose()
+        protected override void ReturnAndClose()
         {
             if (this.NameComboBox.Text.IsNullOrWhiteSpace())
             {
@@ -231,7 +231,7 @@ namespace Concierge.Interfaces.InventoryPageInterface
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
-            this.EnterAndClose();
+            this.ReturnAndClose();
         }
 
         private void NameComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)

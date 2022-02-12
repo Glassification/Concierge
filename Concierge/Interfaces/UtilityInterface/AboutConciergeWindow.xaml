@@ -10,13 +10,13 @@
     d:DataContext="{d:DesignInstance Type=viewmodels:ConciergeViewModel}"
     mc:Ignorable="d"
     Title="AboutConciergeWindow"
-    Height="250"
+    Height="295"
     Width="650"
     Style="{StaticResource WindowXboxDasboardStyle}">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="45"/>
-            <RowDefinition Height="135"/>
+            <RowDefinition Height="180"/>
             <RowDefinition Height="70"/>
         </Grid.RowDefinitions>
 
@@ -42,8 +42,8 @@
         
         <Grid Grid.Row="1">
             <Grid.RowDefinitions>
-                <RowDefinition Height="66*"/>
-                <RowDefinition Height="33*"/>
+                <RowDefinition Height="120"/>
+                <RowDefinition Height="60"/>
             </Grid.RowDefinitions>
 
             <Grid Grid.Row="0">

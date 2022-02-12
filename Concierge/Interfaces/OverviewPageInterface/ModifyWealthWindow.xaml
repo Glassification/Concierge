@@ -11,26 +11,27 @@
     d:DataContext="{d:DesignInstance Type=viewmodels:ConciergeViewModel}"
     mc:Ignorable="d"
     Title="ModifyWealthWindow"
-    Height="425"
+    Height="415"
     Width="650"
     Style="{StaticResource WindowXboxDasboardStyle}">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="45"/>
-            <RowDefinition Height="310"/>
+            <RowDefinition Height="300"/>
             <RowDefinition Height="70"/>
         </Grid.RowDefinitions>
 
         <!--Header-->
         <Grid Grid.Row="0">
-            <TextBlock Text="Edit Wealth"
-                       x:Name="HeaderTextBlock"
-                       Foreground="#227EA9"
-                       FontSize="35"
-                       HorizontalAlignment="Left"
-                       VerticalAlignment="Center"
-                       Margin="30, 0, 0, 0"
-                       FontWeight="Bold"/>
+            <TextBlock
+                Text="Edit Wealth"
+                x:Name="HeaderTextBlock"
+                Foreground="#227EA9"
+                FontSize="35"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                Margin="30, 0, 0, 0"
+                FontWeight="Bold"/>
             <components:ConciergeDesignButton 
                 Style="{StaticResource ConciergeDesignButtonStyle}" 
                 x:Name="CloseButton"
@@ -46,10 +47,10 @@
         <!--Values-->
         <Grid Grid.Row="1">
             <Grid.RowDefinitions>
-                <RowDefinition Height="20*"/>
-                <RowDefinition Height="20*"/>
-                <RowDefinition Height="20*"/>
-                <RowDefinition Height="40*"/>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="120"/>
             </Grid.RowDefinitions>
 
             <!--Add/Subtract-->

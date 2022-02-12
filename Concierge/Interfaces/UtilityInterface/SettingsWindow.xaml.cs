@@ -37,7 +37,7 @@ namespace Concierge.Interfaces.UtilityInterface
             this.ShowConciergeWindow();
         }
 
-        protected override void EnterAndClose()
+        protected override void ReturnAndClose()
         {
             if (this.UpdateSettings())
             {
@@ -147,7 +147,7 @@ namespace Concierge.Interfaces.UtilityInterface
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
-            this.EnterAndClose();
+            this.ReturnAndClose();
         }
 
         private void AutosaveInterval_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)

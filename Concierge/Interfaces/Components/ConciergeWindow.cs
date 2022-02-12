@@ -121,7 +121,7 @@ namespace Concierge.Interfaces.Components
             Program.Logger.Error("No implemented ShowWindow method.");
         }
 
-        protected virtual void EnterAndClose()
+        protected virtual void ReturnAndClose()
         {
             this.Result = ConciergeWindowResult.OK;
             this.CloseConciergeWindow();
@@ -156,7 +156,10 @@ namespace Concierge.Interfaces.Components
             }
 
             var properties = Program.GetMainWindowProperties();
-            var offset = properties.Location.X == 0 || properties.WindowState != WindowState.Maximized ? 0 : Math.Abs(properties.Location.X) - properties.ActualWidth;
+            var offset =
+                properties.Location.X == 0 || properties.WindowState != WindowState.Maximized ?
+                0 :
+                Math.Abs(properties.Location.X) - properties.ActualWidth;
 
             offset = properties.Location.X > 0 ? -offset : offset;
 
@@ -175,7 +178,7 @@ namespace Concierge.Interfaces.Components
                     this.CloseConciergeWindow();
                     break;
                 case Key.Enter:
-                    this.EnterAndClose();
+                    this.ReturnAndClose();
                     break;
             }
         }

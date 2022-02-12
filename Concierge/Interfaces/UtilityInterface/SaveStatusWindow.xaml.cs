@@ -37,7 +37,7 @@ namespace Concierge.Interfaces.UtilityInterface
             this.ShowConciergeWindow();
         }
 
-        protected override void EnterAndClose()
+        protected override void ReturnAndClose()
         {
             // Do nothing
         }

@@ -63,7 +63,7 @@ namespace Concierge.Interfaces.UtilityInterface
             base.OnClosing(e);
         }
 
-        protected override void EnterAndClose()
+        protected override void ReturnAndClose()
         {
             // Do nothing
         }

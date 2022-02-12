@@ -61,7 +61,7 @@
                             Content="{TemplateBinding SelectionBoxItem}"
                             ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
                             ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
-                            Margin="3,3,23,3"
+                            Margin="5"
                             VerticalAlignment="Center"
                             HorizontalAlignment="Left" />
                         <TextBox
@@ -70,7 +70,7 @@
                             Template="{StaticResource ComboBoxTextBox}"
                             HorizontalAlignment="Left"
                             VerticalAlignment="Center"
-                            Margin="13,3,23,3"
+                            Margin="5"
                             Focusable="True"
                             Background="#FF3F3F3F"
                             Foreground="White"

@@ -11,14 +11,14 @@
     d:DataContext="{d:DesignInstance Type=viewmodels:ConciergeViewModel}"
     mc:Ignorable="d"
     Title="ModifyPropertiesWindow"
-    Height="400"
+    Height="355"
     Width="650"
     Style="{StaticResource WindowXboxDasboardStyle}">
 
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="45"/>
-            <RowDefinition Height="285"/>
+            <RowDefinition Height="240"/>
             <RowDefinition Height="70"/>
         </Grid.RowDefinitions>
 
@@ -46,8 +46,7 @@
         </Grid>
 
         <!--Fields-->
-        <Grid Grid.Row="1"
-              Margin="5, 20, 5, 20">
+        <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="5*"/>
                 <ColumnDefinition Width="5*"/>
@@ -56,10 +55,10 @@
             <!--Left-->
             <Grid Grid.Column="0">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="25*"/>
-                    <RowDefinition Height="25*"/>
-                    <RowDefinition Height="25*"/>
-                    <RowDefinition Height="25*"/>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="60"/>
                 </Grid.RowDefinitions>
 
                 <!--Name-->
@@ -80,14 +79,9 @@
                     </Grid>
 
                     <!--Value-->
-                    <Grid Grid.Column="1"
-                      Background="#FF3F3F3F"
-                      Margin="0, 8, 20, 8">
-                        <components:ConciergeTextBox 
-                            x:Name="NameTextBox"
-                            FontSize="15"
-                            IsReadOnly="False"/>
-                    </Grid>
+                    <components:ConciergeTextBoxBackground Grid.Column="1">
+                        <components:ConciergeTextBox x:Name="NameTextBox"/>
+                    </components:ConciergeTextBoxBackground>
                 </Grid>
 
                 <!--Ability-->
@@ -171,10 +165,10 @@
             <!--Right-->
             <Grid Grid.Column="1">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="25*"/>
-                    <RowDefinition Height="25*"/>
-                    <RowDefinition Height="25*"/>
-                    <RowDefinition Height="25*"/>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="60"/>
                 </Grid.RowDefinitions>
 
                 <!--Level-->

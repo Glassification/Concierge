@@ -108,7 +108,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
-            this.EnterAndClose();
+            this.ReturnAndClose();
         }
     }
 }

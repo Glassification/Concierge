@@ -11,27 +11,28 @@
     d:DataContext="{d:DesignInstance Type=viewmodels:ConciergeViewModel}"
     mc:Ignorable="d"
     Title="ModifySensesWindow"
-    Height="500"
+    Height="535"
     Width="650"
     Style="{StaticResource WindowXboxDasboardStyle}">
 
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="45"/>
-            <RowDefinition Height="385"/>
+            <RowDefinition Height="420"/>
             <RowDefinition Height="70"/>
         </Grid.RowDefinitions>
 
         <!--Header-->
         <Grid Grid.Row="0">
-            <TextBlock Text="Edit Senses"
-                       x:Name="HeaderTextBlock"
-                       Foreground="#227EA9"
-                       FontSize="35"
-                       HorizontalAlignment="Left"
-                       VerticalAlignment="Center"
-                       Margin="30, 0, 0, 0"
-                       FontWeight="Bold"/>
+            <TextBlock
+                Text="Edit Senses"
+                x:Name="HeaderTextBlock"
+                Foreground="#227EA9"
+                FontSize="35"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                Margin="30, 0, 0, 0"
+                FontWeight="Bold"/>
             <components:ConciergeDesignButton 
                 Style="{StaticResource ConciergeDesignButtonStyle}" 
                 x:Name="CloseButton"
@@ -45,16 +46,15 @@
         </Grid>
 
         <!--Fields-->
-        <Grid Grid.Row="1"
-              Margin="5, 20, 5, 20">
+        <Grid Grid.Row="1">
             <Grid.RowDefinitions>
-                <RowDefinition Height="14.2*"/>
-                <RowDefinition Height="14.2*"/>
-                <RowDefinition Height="14.2*"/>
-                <RowDefinition Height="14.2*"/>
-                <RowDefinition Height="14.2*"/>
-                <RowDefinition Height="14.2*"/>
-                <RowDefinition Height="14.2*"/>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="60"/>
             </Grid.RowDefinitions>
 
             <!--Initiative-->

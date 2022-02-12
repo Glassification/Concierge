@@ -56,7 +56,7 @@ namespace Concierge.Interfaces.NotesPageInterface
             }
         }
 
-        protected override void EnterAndClose()
+        protected override void ReturnAndClose()
         {
             this.OkApplyChanges();
             this.CloseConciergeWindow();
@@ -184,7 +184,7 @@ namespace Concierge.Interfaces.NotesPageInterface
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
-            this.EnterAndClose();
+            this.ReturnAndClose();
         }
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)

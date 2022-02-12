@@ -11,14 +11,14 @@
     d:DataContext="{d:DesignInstance Type=viewmodels:ConciergeViewModel}"
     mc:Ignorable="d"
     Title="MondifyConditionsWindow"
-    Height="565"
+    Height="595"
     Width="650"
     Style="{StaticResource WindowXboxDasboardStyle}">
 
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="45"/>
-            <RowDefinition Height="450"/>
+            <RowDefinition Height="480"/>
             <RowDefinition Height="70"/>
         </Grid.RowDefinitions>
 
@@ -45,8 +45,7 @@
         </Grid>
 
         <!--Fields-->
-        <Grid Grid.Row="1"
-              Margin="5, 20, 5, 20">
+        <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="5*"/>
                 <ColumnDefinition Width="5*"/>
@@ -55,14 +54,14 @@
             <!--Left-->
             <Grid Grid.Column="0">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="12.5*"/>
-                    <RowDefinition Height="12.5*"/>
-                    <RowDefinition Height="12.5*"/>
-                    <RowDefinition Height="12.5*"/>
-                    <RowDefinition Height="12.5*"/>
-                    <RowDefinition Height="12.5*"/>
-                    <RowDefinition Height="12.5*"/>
-                    <RowDefinition Height="12.5*"/>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="60"/>
                 </Grid.RowDefinitions>
 
                 <!--Blinded-->
@@ -281,14 +280,14 @@
             <!--Right-->
             <Grid Grid.Column="1">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="12.5*"/>
-                    <RowDefinition Height="12.5*"/>
-                    <RowDefinition Height="12.5*"/>
-                    <RowDefinition Height="12.5*"/>
-                    <RowDefinition Height="12.5*"/>
-                    <RowDefinition Height="12.5*"/>
-                    <RowDefinition Height="12.5*"/>
-                    <RowDefinition Height="12.5*"/>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="60"/>
                 </Grid.RowDefinitions>
 
                 <!--Paralyzed-->
@@ -491,18 +490,11 @@
                     </Grid>
 
                     <!--Value-->
-                    <Grid Grid.Column="1"
-                      Background="#FF3F3F3F"
-                      Margin="0, 8, 20, 8">
-                        <TextBox x:Name="EncumbranceTextBox"
-                                 Background="#FF3F3F3F"
-                                 Margin="5"
-                                 BorderThickness="0"
-                                 Foreground="White"
-                                 FontSize="15"
-                                 VerticalContentAlignment="Center"
-                                 IsReadOnly="True"/>
-                    </Grid>
+                    <components:ConciergeTextBoxBackground Grid.Column="1">
+                        <components:ConciergeTextBox 
+                            x:Name="EncumbranceTextBox"
+                            IsReadOnly="True"/>
+                    </components:ConciergeTextBoxBackground>
                 </Grid>
             </Grid>
         </Grid>

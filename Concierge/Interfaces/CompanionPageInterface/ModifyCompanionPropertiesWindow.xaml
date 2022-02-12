@@ -9,14 +9,14 @@
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:viewmodels="clr-namespace:Concierge.Interfaces.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:ConciergeViewModel}"
     mc:Ignorable="d"
     Title="ModifyCompanionPropertiesWindow"
-    Height="325"
+    Height="295"
     Width="650"
     Style="{StaticResource WindowXboxDasboardStyle}">
 
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="45"/>
-            <RowDefinition Height="210"/>
+            <RowDefinition Height="180"/>
             <RowDefinition Height="70"/>
         </Grid.RowDefinitions>
 
@@ -44,12 +44,11 @@
         </Grid>
 
         <!--Fields-->
-        <Grid Grid.Row="1"
-              Margin="5, 20, 5, 20">
+        <Grid Grid.Row="1">
             <Grid.RowDefinitions>
-                <RowDefinition Height="33*"/>
-                <RowDefinition Height="33*"/>
-                <RowDefinition Height="33*"/>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="60"/>
             </Grid.RowDefinitions>
 
             <!--Name-->
@@ -71,13 +70,10 @@
                 </Grid>
 
                 <!--Value-->
-                <Grid Grid.Column="1"
-                      Background="#FF3F3F3F"
-                      Margin="0, 8, 20, 8">
+                <components:ConciergeTextBoxBackground Grid.Column="1">
                     <components:ConciergeTextBox 
-                        x:Name="NameTextBox"
-                        FontSize="15"/>
-                </Grid>
+                        x:Name="NameTextBox"/>
+                </components:ConciergeTextBoxBackground>
             </Grid>
 
             <Grid Grid.Row="1">

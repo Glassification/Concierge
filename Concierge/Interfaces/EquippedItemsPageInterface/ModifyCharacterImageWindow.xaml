@@ -11,14 +11,14 @@
     xmlns:viewmodels="clr-namespace:Concierge.Interfaces.ViewModels"
     d:DataContext="{d:DesignInstance Type=viewmodels:ConciergeViewModel}"
     Title="EquipedItemsWindow"
-    Height="325"
+    Height="300"
     Width="650"
     KeyDown="Window_KeyDown"
     Style="{StaticResource WindowXboxDasboardStyle}">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="45"/>
-            <RowDefinition Height="205"/>
+            <RowDefinition Height="180"/>
             <RowDefinition Height="70"/>
         </Grid.RowDefinitions>
 
@@ -48,9 +48,9 @@
         <!--Values-->
         <Grid Grid.Row="1">
             <Grid.RowDefinitions>
-                <RowDefinition Height="33*"/>
-                <RowDefinition Height="33*"/>
-                <RowDefinition Height="33*"/>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="60"/>
             </Grid.RowDefinitions>
 
             <Grid Grid.Row="0">
@@ -104,13 +104,11 @@
                     </Grid.ColumnDefinitions>
 
                     <!--Value-->
-                    <Grid Grid.Column="0"
-                      Background="#FF3F3F3F"
-                      Margin="0, 10, 0, 10">
-                        <components:ConciergeTextBox 
-                            x:Name="ImageSourceTextBox"
-                            FontSize="15"/>
-                    </Grid>
+                    <components:ConciergeTextBoxBackground
+                        Grid.Column="0"
+                        Margin="0, 10, 0, 10">
+                        <components:ConciergeTextBox x:Name="ImageSourceTextBox"/>
+                    </components:ConciergeTextBoxBackground>
 
                     <Grid Grid.Column="1">
                         <components:ConciergeDesignButton

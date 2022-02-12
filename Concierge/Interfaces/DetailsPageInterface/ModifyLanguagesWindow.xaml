@@ -11,27 +11,28 @@
     d:DataContext="{d:DesignInstance Type=viewmodels:ConciergeViewModel}"
     mc:Ignorable="d"
     Title="ModifyLanguagesWindow"
-    Height="415"
+    Height="355"
     Width="650"
     Style="{StaticResource WindowXboxDasboardStyle}">
 
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="45"/>
-            <RowDefinition Height="300"/>
+            <RowDefinition Height="240"/>
             <RowDefinition Height="70"/>
         </Grid.RowDefinitions>
 
         <!--Header-->
         <Grid Grid.Row="0">
-            <TextBlock Text="Add Language"
-                       x:Name="HeaderTextBlock"
-                       Foreground="#227EA9"
-                       FontSize="35"
-                       HorizontalAlignment="Left"
-                       VerticalAlignment="Center"
-                       Margin="30, 0, 0, 0"
-                       FontWeight="Bold"/>
+            <TextBlock
+                Text="Add Language"
+                x:Name="HeaderTextBlock"
+                Foreground="#227EA9"
+                FontSize="35"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                Margin="30, 0, 0, 0"
+                FontWeight="Bold"/>
             <components:ConciergeDesignButton 
                 Style="{StaticResource ConciergeDesignButtonStyle}"
                 x:Name="CloseButton"
@@ -45,12 +46,11 @@
         </Grid>
 
         <!--Fields-->
-        <Grid Grid.Row="1"
-              Margin="5, 20, 5, 20">
+        <Grid Grid.Row="1">
             <Grid.RowDefinitions>
-                <RowDefinition Height="25*"/>
-                <RowDefinition Height="25*"/>
-                <RowDefinition Height="50*"/>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="120"/>
             </Grid.RowDefinitions>
 
             <!--Name-->
@@ -97,13 +97,9 @@
                 </Grid>
 
                 <!--Value-->
-                <Grid Grid.Column="1"
-                      Background="#FF3F3F3F"
-                      Margin="0, 10, 20, 10">
-                    <components:ConciergeTextBox 
-                        x:Name="ScriptTextBox"
-                        FontSize="15"/>
-                </Grid>
+                <components:ConciergeTextBoxBackground Grid.Column="1">
+                    <components:ConciergeTextBox x:Name="ScriptTextBox"/>
+                </components:ConciergeTextBoxBackground>
             </Grid>
 
             <!--Speakers-->
@@ -124,15 +120,14 @@
                 </Grid>
 
                 <!--Value-->
-                <Grid Grid.Column="1"
-                      Background="#FF3F3F3F"
-                      Margin="0, 10, 20, 0">
-                    <components:ConciergeTextBox 
-                        x:Name="SpeakersTextBox"
-                        TextWrapping="Wrap"
-                        FontSize="15"
-                        VerticalAlignment="Stretch"/>
-                </Grid>
+                <components:ConciergeTextBoxBackground Grid.Column="1" >
+                    <ScrollViewer VerticalScrollBarVisibility="Auto">
+                        <components:ConciergeTextBox 
+                            x:Name="SpeakersTextBox"
+                            TextWrapping="Wrap"
+                            VerticalAlignment="Stretch"/>
+                    </ScrollViewer>
+                </components:ConciergeTextBoxBackground>
             </Grid>
         </Grid>
 

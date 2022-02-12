@@ -41,7 +41,7 @@ namespace Concierge.Interfaces.CompanionPageInterface
             this.ShowConciergeWindow();
         }
 
-        protected override void EnterAndClose()
+        protected override void ReturnAndClose()
         {
             this.UpdateCompanion();
             this.CloseConciergeWindow();
@@ -91,7 +91,7 @@ namespace Concierge.Interfaces.CompanionPageInterface
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
-            this.EnterAndClose();
+            this.ReturnAndClose();
         }
     }
 }

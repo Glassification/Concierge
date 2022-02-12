@@ -26,7 +26,7 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
             return this.ButtonPress;
         }
 
-        protected override void EnterAndClose()
+        protected override void ReturnAndClose()
         {
             this.ButtonPress = PopupButtons.AddSpell;
             this.CloseConciergeWindow();
@@ -46,7 +46,7 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
 
         private void SpellButton_Click(object sender, RoutedEventArgs e)
         {
-            this.EnterAndClose();
+            this.ReturnAndClose();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
