@@ -125,10 +125,12 @@
 
                 <!--Value-->
                 <components:ConciergeTextBoxBackground Grid.Column="1">
-                    <components:ConciergeTextBox 
+                    <ScrollViewer VerticalScrollBarVisibility="Auto">
+                        <components:ConciergeTextBox 
                             x:Name="DescriptionTextBox"
                             TextWrapping="Wrap"
                             VerticalAlignment="Stretch"/>
+                    </ScrollViewer>
                 </components:ConciergeTextBoxBackground>
             </Grid>
         </Grid>

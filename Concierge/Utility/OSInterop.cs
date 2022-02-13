@@ -5,6 +5,7 @@
 namespace Concierge.Utility
 {
     using System;
+    using System.Diagnostics.CodeAnalysis;
     using System.Runtime.InteropServices;
 
     public static class OSInterop
@@ -12,15 +13,19 @@ namespace Concierge.Utility
         public const int SM_CMONITORS = 80;
 
         [DllImport("user32.dll")]
+        [SuppressMessage("Interoperability", "CA1401:P/Invokes should not be visible", Justification = "The way she goes.")]
         public static extern int GetSystemMetrics(int smIndex);
 
         [DllImport("user32.dll")]
+        [SuppressMessage("Interoperability", "CA1401:P/Invokes should not be visible", Justification = "The way she goes.")]
         public static extern bool SystemParametersInfo(int nAction, int nParam, ref RECT rc, int nUpdate);
 
         [DllImport("user32.dll", CharSet = CharSet.Auto)]
+        [SuppressMessage("Interoperability", "CA1401:P/Invokes should not be visible", Justification = "The way she goes.")]
         public static extern bool GetMonitorInfo(HandleRef hmonitor, [In, Out] MONITORINFOEX info);
 
         [DllImport("user32.dll")]
+        [SuppressMessage("Interoperability", "CA1401:P/Invokes should not be visible", Justification = "The way she goes.")]
         public static extern IntPtr MonitorFromWindow(HandleRef handle, int flags);
 
         public struct RECT
@@ -30,18 +35,18 @@ namespace Concierge.Utility
             public int right;
             public int bottom;
 
-            public int width
+            public int Width
             {
                 get { return this.right - this.left; }
             }
 
-            public int height
+            public int Height
             {
                 get { return this.bottom - this.top; }
             }
         }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1401:Fields should be private", Justification = "The way she goes.")]
+        [SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1401:Fields should be private", Justification = "The way she goes.")]
         [StructLayout(LayoutKind.Sequential, Pack = 4, CharSet = CharSet.Auto)]
         public class MONITORINFOEX
         {

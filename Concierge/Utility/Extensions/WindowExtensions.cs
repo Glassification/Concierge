@@ -24,7 +24,7 @@ namespace Concierge.Utility.Extensions
             {
                 OSInterop.RECT rc = new ();
                 OSInterop.SystemParametersInfo(48, 0, ref rc, 0);
-                r = new Int32Rect(rc.left, rc.top, rc.width, rc.height);
+                r = new Int32Rect(rc.left, rc.top, rc.Width, rc.Height);
             }
             else
             {
@@ -32,7 +32,7 @@ namespace Concierge.Utility.Extensions
                 IntPtr hmonitor = OSInterop.MonitorFromWindow(new HandleRef(null, helper.EnsureHandle()), 2);
                 var info = new OSInterop.MONITORINFOEX();
                 OSInterop.GetMonitorInfo(new HandleRef(null, hmonitor), info);
-                r = new Int32Rect(info.rcWork.left, info.rcWork.top, info.rcWork.width, info.rcWork.height);
+                r = new Int32Rect(info.rcWork.left, info.rcWork.top, info.rcWork.Width, info.rcWork.Height);
             }
 
             return new Point(r.X, r.Y);

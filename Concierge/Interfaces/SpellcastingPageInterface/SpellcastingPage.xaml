@@ -97,9 +97,9 @@
         <Grid Grid.Row="1"
               Margin="0, 0, 0, 0">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="45*"/>
-                <ColumnDefinition Width="10*"/>
-                <ColumnDefinition Width="45*"/>
+                <ColumnDefinition Width="49*"/>
+                <ColumnDefinition Width="7*"/>
+                <ColumnDefinition Width="44*"/>
             </Grid.ColumnDefinitions>
 
             <!--Spell classes-->
@@ -162,24 +162,24 @@
 
                 <Grid Grid.Row="0"
                     Background="#000917">
-                    <components:ConciergeTextBlock Text="Caster Level"
-                                       Foreground="White"
-                                       FontSize="25"
-                                       FontWeight="Bold"
-                                       TextWrapping="Wrap"
-                                       HorizontalAlignment="Center"
-                                       VerticalAlignment="Center"
-                               Margin="3, 3, 3, 3"/>
+                    <components:ConciergeTextBlock
+                        Text="Caster Level"
+                        FontSize="25"
+                        FontWeight="Bold"
+                        TextWrapping="Wrap"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Margin="3, 3, 3, 3"/>
                 </Grid>
 
                 <Grid Grid.Row="1"
                     Background="#FF3e3e42">
-                    <components:ConciergeTextBlock x:Name="CasterLevelField"
-                                       Foreground="White"
-                                       TextWrapping="Wrap"
-                                       FontSize="40"
-                                       HorizontalAlignment="Center"
-                                       VerticalAlignment="Center"/>
+                    <components:ConciergeTextBlock
+                        x:Name="CasterLevelField"
+                        TextWrapping="Wrap"
+                        FontSize="40"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"/>
                 </Grid>
             </Grid>
 

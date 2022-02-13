@@ -6,7 +6,6 @@ namespace Concierge.Interfaces.Components
 {
     using System.Windows;
     using System.Windows.Controls;
-    using System.Windows.Input;
     using System.Windows.Media;
 
     using Concierge.Utility;
@@ -24,8 +23,6 @@ namespace Concierge.Interfaces.Components
             this.FontSize = 15;
 
             this.GotFocus += this.SoundEffect_GotFocus;
-            this.MouseEnter += this.Button_MouseEnter;
-            this.MouseLeave += this.Button_MouseLeave;
         }
 
         public bool IsUpdating { get; private set; }
@@ -48,16 +45,6 @@ namespace Concierge.Interfaces.Components
             }
 
             this.IsUpdating = false;
-        }
-
-        private void Button_MouseEnter(object sender, MouseEventArgs e)
-        {
-            Mouse.OverrideCursor = Cursors.IBeam;
-        }
-
-        private void Button_MouseLeave(object sender, MouseEventArgs e)
-        {
-            Mouse.OverrideCursor = Cursors.Arrow;
         }
     }
 }

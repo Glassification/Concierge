@@ -140,6 +140,7 @@
                             Text="0"
                             Foreground="White"
                             FontSize="25"
+                            Margin="20,0,0,0"
                             HorizontalAlignment="Left"
                             VerticalAlignment="Center"/>
                     </Grid>
@@ -170,6 +171,7 @@
                             Text="0"
                             Foreground="White"
                             FontSize="25"
+                            Margin="20,0,0,0"
                             HorizontalAlignment="Left"
                             VerticalAlignment="Center"/>
                     </Grid>
@@ -282,6 +284,7 @@
                             Text="0"
                             Foreground="White"
                             FontSize="25"
+                            Margin="20,0,0,0"
                             HorizontalAlignment="Left"
                             VerticalAlignment="Center"/>
                     </Grid>
