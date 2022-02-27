@@ -37,6 +37,8 @@ namespace Concierge.Interfaces.DetailsPageInterface
 
         public ConciergePage ConciergePage => ConciergePage.Details;
 
+        public bool HasEditableDataGrid => true;
+
         public void Draw()
         {
             this.DrawWeight();

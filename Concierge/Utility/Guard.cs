@@ -11,7 +11,7 @@ namespace Concierge.Utility
     {
         public static void IsNull(object value, string name)
         {
-            if (value == null)
+            if (value is null)
             {
                 throw new NullValueException(name);
             }

@@ -251,13 +251,9 @@
                     </Grid>
 
                     <!--Value-->
-                    <Grid Grid.Column="1"
-                      Background="#FF3F3F3F"
-                      Margin="0, 8, 20, 8">
-                        <components:ConciergeTextBox 
-                            x:Name="RangeTextBox"
-                            FontSize="15"/>
-                    </Grid>
+                    <components:ConciergeTextBoxBackground Grid.Column="1">
+                        <components:ConciergeTextBox x:Name="RangeTextBox"/>
+                    </components:ConciergeTextBoxBackground>
                 </Grid>
 
                 <!--Weight-->

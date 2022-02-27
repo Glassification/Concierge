@@ -34,6 +34,8 @@ namespace Concierge.Interfaces.CompanionPageInterface
 
         public ConciergePage ConciergePage => ConciergePage.Companion;
 
+        public bool HasEditableDataGrid => true;
+
         private string CurrentHitDiceBox { get; set; }
 
         public void Draw()

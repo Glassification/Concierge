@@ -123,7 +123,7 @@ namespace Concierge.Interfaces
         {
             var result = this.CheckSaveBeforeAction("closing");
 
-            if (result != ConciergeWindowResult.Cancel)
+            if (result != ConciergeWindowResult.Cancel && result != ConciergeWindowResult.Exit)
             {
                 this.Close();
             }
@@ -366,6 +366,15 @@ namespace Concierge.Interfaces
             this.ListViewMenu.Items.Add(this.mainWindowService.GenerateListViewItem(this.CompanionPage, "Companion", PackIconKind.PersonAdd));
             this.ListViewMenu.Items.Add(this.mainWindowService.GenerateListViewItem(this.ToolsPage, "Tools", PackIconKind.Tools));
             this.ListViewMenu.Items.Add(this.mainWindowService.GenerateListViewItem(this.NotesPage, "Notes", PackIconKind.Pen));
+            if (this.ShouldDisplayCanvas())
+            {
+                this.ListViewMenu.Items.Add(this.mainWindowService.GenerateListViewItem(this.NotesPage, "Canvas", PackIconKind.Draw));
+            }
+        }
+
+        private bool ShouldDisplayCanvas()
+        {
+            return Program.DeviceHasTouchInput;
         }
 
         private ConciergeWindowResult CheckSaveBeforeAction(string action)
@@ -376,7 +385,7 @@ namespace Concierge.Interfaces
             }
 
             var result = ConciergeMessageBox.Show(
-                $"You have unsaved changes. Would you like to save before {action}?",
+                $"Do you want to save the changes you made to '{Program.CcsFile.FileName}' before {action}?\n\nYour changes will be lost if you don't save them.",
                 "Warning",
                 ConciergeWindowButtons.YesNoCancel,
                 ConciergeWindowIcons.Warning);

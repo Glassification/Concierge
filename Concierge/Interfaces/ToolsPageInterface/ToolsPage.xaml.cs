@@ -41,11 +41,27 @@ namespace Concierge.Interfaces.ToolsPageInterface
 
         public ConciergePage ConciergePage => ConciergePage.Tools;
 
+        public bool HasEditableDataGrid => false;
+
         private List<Player> Players { get; set; }
 
         private List<DiceRoll> DiceHistory { get; }
 
         private Random Random { get; }
+
+        private bool DivideLootInputHasFocus
+        {
+            get
+            {
+                return
+                    this.CopperInput.IsFocused ||
+                    this.SilverInput.IsFocused ||
+                    this.ElectrumInput.IsFocused ||
+                    this.GoldInput.IsFocused ||
+                    this.PlatinumInput.IsFocused ||
+                    this.PlayersInput.IsFocused;
+            }
+        }
 
         public void Draw()
         {
@@ -55,7 +71,14 @@ namespace Concierge.Interfaces.ToolsPageInterface
 
         public void Edit(object itemToEdit)
         {
-            return;
+            if (itemToEdit is Player player)
+            {
+                Clipboard.SetText(player.Total.ToString());
+            }
+            else if (itemToEdit is DiceRoll diceRoll)
+            {
+                Clipboard.SetText(diceRoll.Total.ToString());
+            }
         }
 
         private static void SetDieValue(
@@ -233,16 +256,6 @@ namespace Concierge.Interfaces.ToolsPageInterface
             this.Players.Clear();
         }
 
-        private bool HasDivideLootInputFocus()
-        {
-            return this.CopperInput.IsFocused
-                || this.SilverInput.IsFocused
-                || this.ElectrumInput.IsFocused
-                || this.GoldInput.IsFocused
-                || this.PlatinumInput.IsFocused
-                || this.PlayersInput.IsFocused;
-        }
-
         private void ButtonDivideLoot_Click(object sender, RoutedEventArgs e)
         {
             this.DivideLoot();
@@ -323,14 +336,14 @@ namespace Concierge.Interfaces.ToolsPageInterface
             switch (e.Key)
             {
                 case Key.Enter:
-                    if (this.HasDivideLootInputFocus())
+                    if (this.DivideLootInputHasFocus)
                     {
                         this.DivideLoot();
                     }
 
                     break;
                 case Key.Escape:
-                    if (this.HasDivideLootInputFocus())
+                    if (this.DivideLootInputHasFocus)
                     {
                         this.ClearDivideLoot();
                     }

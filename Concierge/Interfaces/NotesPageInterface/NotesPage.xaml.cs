@@ -68,6 +68,8 @@ namespace Concierge.Interfaces.NotesPageInterface
 
         public ConciergePage ConciergePage => ConciergePage.Notes;
 
+        public bool HasEditableDataGrid => false;
+
         private bool Lock { get; set; }
 
         private bool SelectionLock { get; set; }

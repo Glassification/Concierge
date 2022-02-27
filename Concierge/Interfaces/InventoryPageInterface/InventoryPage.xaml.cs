@@ -31,6 +31,8 @@ namespace Concierge.Interfaces.InventoryPageInterface
 
         public ConciergePage ConciergePage => ConciergePage.Inventory;
 
+        public bool HasEditableDataGrid => true;
+
         public void Draw()
         {
             this.DrawInventory();

@@ -84,6 +84,8 @@ namespace Concierge.Interfaces.OverviewPageInterface
 
         public ConciergePage ConciergePage => ConciergePage.Overview;
 
+        public bool HasEditableDataGrid => false;
+
         private bool DeathScreenShown { get; set; }
 
         private string CurrentHitDiceBox { get; set; }

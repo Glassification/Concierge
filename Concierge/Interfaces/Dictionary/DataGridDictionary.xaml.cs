@@ -19,7 +19,11 @@ namespace Concierge.Interfaces.Dictionary
             }
 
             var page = dataGridRow.Tag as IConciergePage;
-            ConciergeSound.UpdateValue();
+            if (page?.HasEditableDataGrid ?? false)
+            {
+                ConciergeSound.UpdateValue();
+            }
+
             page?.Edit(dataGridRow.DataContext);
         }
     }

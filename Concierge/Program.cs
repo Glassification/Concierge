@@ -7,7 +7,7 @@ namespace Concierge
     using System;
     using System.Reflection;
     using System.Windows;
-
+    using System.Windows.Input;
     using Concierge.Character;
     using Concierge.Interfaces;
     using Concierge.Logging;
@@ -63,6 +63,22 @@ namespace Concierge
             {
                 var version = Assembly.GetExecutingAssembly().GetName().Version;
                 return $"{version?.Major}.{version?.Minor}.{version?.Build}";
+            }
+        }
+
+        public static bool DeviceHasTouchInput
+        {
+            get
+            {
+                foreach (TabletDevice tabletDevice in Tablet.TabletDevices)
+                {
+                    if (tabletDevice.Type == TabletDeviceType.Touch)
+                    {
+                        return true;
+                    }
+                }
+
+                return false;
             }
         }
 

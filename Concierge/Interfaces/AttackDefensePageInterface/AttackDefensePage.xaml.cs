@@ -33,6 +33,8 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
 
         public ConciergePage ConciergePage => ConciergePage.AttackDefense;
 
+        public bool HasEditableDataGrid => true;
+
         public void Draw()
         {
             this.DrawWeaponList();

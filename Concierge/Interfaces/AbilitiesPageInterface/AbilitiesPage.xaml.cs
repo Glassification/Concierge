@@ -33,6 +33,8 @@ namespace Concierge.Interfaces.AbilitiesPageInterface
 
         public ConciergePage ConciergePage => ConciergePage.Abilities;
 
+        public bool HasEditableDataGrid => true;
+
         public void Draw()
         {
             this.DrawAbilities();

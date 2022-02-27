@@ -8,13 +8,13 @@
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:viewmodels="clr-namespace:Concierge.Interfaces.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:ConciergeViewModel}"
     mc:Ignorable="d"
     Title="ConciergeMessageWindow"
-    Height="250"
+    Height="255"
     Width="650"
     Style="{StaticResource WindowXboxDasboardStyle}">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="45"/>
-            <RowDefinition Height="135"/>
+            <RowDefinition Height="140"/>
             <RowDefinition Height="70"/>
         </Grid.RowDefinitions>
 
@@ -62,7 +62,7 @@
                         x:Name="MessageText"
                         Text="Your message here"
                         Foreground="White"
-                        FontSize="25"
+                        FontSize="22"
                         VerticalAlignment="Center"
                         TextWrapping="Wrap"
                         Margin="15"/>

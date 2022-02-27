@@ -10,6 +10,8 @@ namespace Concierge.Interfaces
     {
         ConciergePage ConciergePage { get; }
 
+        bool HasEditableDataGrid { get; }
+
         void Draw();
 
         void Edit(object itemToEdit);

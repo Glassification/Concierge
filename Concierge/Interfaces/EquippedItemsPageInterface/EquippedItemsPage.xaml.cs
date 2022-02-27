@@ -35,6 +35,8 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
 
         public ConciergePage ConciergePage => ConciergePage.EquippedItems;
 
+        public bool HasEditableDataGrid => true;
+
         private Inventory SelectedItem { get; set; }
 
         private int SelectedIndex { get; set; }

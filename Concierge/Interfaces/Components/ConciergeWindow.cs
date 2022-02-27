@@ -169,15 +169,16 @@ namespace Concierge.Interfaces.Components
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
-            Program.Logger.Info($"{e.Key} key pressed.");
             switch (e.Key)
             {
                 case Key.Escape:
+                    Program.Logger.Info($"{e.Key} key pressed.");
                     this.ButtonPress = PopupButtons.Cancel;
                     this.Result = ConciergeWindowResult.Exit;
                     this.CloseConciergeWindow();
                     break;
                 case Key.Enter:
+                    Program.Logger.Info($"{e.Key} key pressed.");
                     this.ReturnAndClose();
                     break;
             }

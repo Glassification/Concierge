@@ -28,6 +28,9 @@ namespace Concierge
             e.Handled = true;
         }
 
+        /// <summary>
+        /// Main entry point to the application.
+        /// </summary>
         private void Application_Startup(object sender, StartupEventArgs e)
         {
             var mainWindow = new MainWindow();

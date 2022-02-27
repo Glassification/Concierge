@@ -45,6 +45,8 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
 
         public ConciergePage ConciergePage => ConciergePage.Spellcasting;
 
+        public bool HasEditableDataGrid => true;
+
         private string CurrentSpellBox { get; set; }
 
         public void Draw()
