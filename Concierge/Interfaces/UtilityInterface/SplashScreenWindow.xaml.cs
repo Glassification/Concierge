@@ -54,7 +54,6 @@ namespace Concierge.Interfaces.UtilityInterface
             }
 
             this.LoadingText.Text = $"Loading{StringUtility.CreateCharacters(".", this.Counter)}";
-
             this.Counter++;
         }
 

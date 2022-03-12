@@ -473,10 +473,44 @@
         <Grid Grid.Row="1">
 
             <!-- Content Area -->
-            <Grid x:Name="GridContent" HorizontalAlignment="Right" Width="1020" Background="Transparent">
-                <Frame Name="FrameContent" ContentRendered="MainWindow_ContentRendered">
-
-                </Frame>
+            <Grid
+                x:Name="GridContent"
+                HorizontalAlignment="Right"
+                Width="1020"
+                Background="Transparent">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="20" />
+                </Grid.RowDefinitions>
+                
+                <Frame
+                    Name="FrameContent"
+                    ContentRendered="MainWindow_ContentRendered"
+                    Grid.Row="0"/>
+                <Grid Grid.Row="1" x:Name="MessageBar" Margin="0,1,0,0">
+                    <TextBlock
+                        x:Name="CurrentPageNameTextBlock"
+                        Text="Overview Page"
+                        Foreground="White"
+                        FontSize="15"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Left"
+                        Margin="10,0,0,0"/>
+                    <TextBlock
+                        x:Name="AlertMessageTextBlock"
+                        Foreground="White"
+                        FontSize="15"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center"/>
+                    <TextBlock
+                        x:Name="DateTimeTextBlock"
+                        Text="6:28pm 2022-03-11"
+                        Foreground="White"
+                        FontSize="15"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Right"
+                        Margin="0,0,10,0"/>
+                </Grid>
             </Grid>
 
             <!-- Side Menu -->
@@ -496,5 +530,7 @@
                 </StackPanel>
             </Grid>
         </Grid>
+
+        
     </Grid>
 </Window>

@@ -60,11 +60,6 @@ namespace Concierge.Services
         public void Save(CcsFile ccsFile)
         {
             CharacterReadWriter.Write(ccsFile);
-
-            if (AppSettingsManager.StartUp.ShowSaveStatus)
-            {
-                ConciergeWindowService.ShowWindow(typeof(SaveStatusWindow));
-            }
         }
 
         public void SaveAs(CcsFile ccsFile)
@@ -73,11 +68,6 @@ namespace Concierge.Services
             {
                 ccsFile.AbsolutePath = this.saveFileDialog.FileName;
                 CharacterReadWriter.Write(ccsFile);
-
-                if (AppSettingsManager.StartUp.ShowSaveStatus)
-                {
-                    ConciergeWindowService.ShowWindow(typeof(SaveStatusWindow));
-                }
             }
         }
     }

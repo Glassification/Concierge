@@ -18,9 +18,15 @@ namespace Concierge.Utility.Utilities
     using Concierge.Interfaces.Components;
     using Concierge.Interfaces.Enums;
     using Concierge.Utility;
+    using Concierge.Utility.Extensions;
 
     public static class DisplayUtility
     {
+        public static string FormatConciergePageForDisplay(ConciergePage conciergePage)
+        {
+            return $"{conciergePage.ToString().FormatFromEnum()} Page";
+        }
+
         public static void SortListFromDataGrid<T>(ConciergeDataGrid dataGrid, List<T> list, ConciergePage conciergePage)
         {
             if (dataGrid.Items.IsEmpty)
