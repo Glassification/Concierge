@@ -343,7 +343,15 @@ namespace Concierge.Interfaces
         private void Save(bool saveAs)
         {
             this.NotesPage.SaveTextBox();
-            this.fileAccessService.Save(Program.CcsFile, saveAs);
+
+            if (saveAs)
+            {
+                this.fileAccessService.SaveAs(Program.CcsFile);
+            }
+            else
+            {
+                this.fileAccessService.Save(Program.CcsFile);
+            }
         }
 
         private void CalculateScale()
@@ -356,25 +364,19 @@ namespace Concierge.Interfaces
 
         private void GenerateListViewItems()
         {
-            this.ListViewMenu.Items.Add(this.mainWindowService.GenerateListViewItem(this.OverviewPage, "Overview", PackIconKind.Globe));
-            this.ListViewMenu.Items.Add(this.mainWindowService.GenerateListViewItem(this.DetailsPage, "Details", PackIconKind.Details));
-            this.ListViewMenu.Items.Add(this.mainWindowService.GenerateListViewItem(this.AttackDefensePage, "Attack and Defense", PackIconKind.ShieldHalfFull));
-            this.ListViewMenu.Items.Add(this.mainWindowService.GenerateListViewItem(this.AbilitiesPage, "Abilities", PackIconKind.Brain));
-            this.ListViewMenu.Items.Add(this.mainWindowService.GenerateListViewItem(this.EquippedItemsPage, "Equipped Items", PackIconKind.Person));
-            this.ListViewMenu.Items.Add(this.mainWindowService.GenerateListViewItem(this.InventoryPage, "Inventory", PackIconKind.Backpack));
-            this.ListViewMenu.Items.Add(this.mainWindowService.GenerateListViewItem(this.SpellcastingPage, "Spellcasting", PackIconKind.Magic));
-            this.ListViewMenu.Items.Add(this.mainWindowService.GenerateListViewItem(this.CompanionPage, "Companion", PackIconKind.PersonAdd));
-            this.ListViewMenu.Items.Add(this.mainWindowService.GenerateListViewItem(this.ToolsPage, "Tools", PackIconKind.Tools));
-            this.ListViewMenu.Items.Add(this.mainWindowService.GenerateListViewItem(this.NotesPage, "Notes", PackIconKind.Pen));
-            if (this.ShouldDisplayCanvas())
-            {
-                this.ListViewMenu.Items.Add(this.mainWindowService.GenerateListViewItem(this.NotesPage, "Canvas", PackIconKind.Draw));
-            }
-        }
+            var items = this.ListViewMenu.Items;
+            var service = this.mainWindowService;
 
-        private bool ShouldDisplayCanvas()
-        {
-            return Program.DeviceHasTouchInput;
+            items.Add(service.GenerateListViewItem(this.OverviewPage, "Overview", PackIconKind.Globe));
+            items.Add(service.GenerateListViewItem(this.DetailsPage, "Details", PackIconKind.Details));
+            items.Add(service.GenerateListViewItem(this.AttackDefensePage, "Attack and Defense", PackIconKind.ShieldHalfFull));
+            items.Add(service.GenerateListViewItem(this.AbilitiesPage, "Abilities", PackIconKind.Brain));
+            items.Add(service.GenerateListViewItem(this.EquippedItemsPage, "Equipped Items", PackIconKind.Person));
+            items.Add(service.GenerateListViewItem(this.InventoryPage, "Inventory", PackIconKind.Backpack));
+            items.Add(service.GenerateListViewItem(this.SpellcastingPage, "Spellcasting", PackIconKind.Magic));
+            items.Add(service.GenerateListViewItem(this.CompanionPage, "Companion", PackIconKind.PersonAdd));
+            items.Add(service.GenerateListViewItem(this.ToolsPage, "Tools", PackIconKind.Tools));
+            items.Add(service.GenerateListViewItem(this.NotesPage, "Notes", PackIconKind.Pen));
         }
 
         private ConciergeWindowResult CheckSaveBeforeAction(string action)

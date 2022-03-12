@@ -11,7 +11,19 @@ namespace Concierge.Tools
 
     public static class EasterEggController
     {
-        private static readonly Key[] KonamiCodeSequence = new Key[] { Key.Up, Key.Up, Key.Down, Key.Down, Key.Left, Key.Right, Key.Left, Key.Right, Key.B, Key.A };
+        private static readonly Key[] KonamiCodeSequence = new Key[]
+        {
+            Key.Up,
+            Key.Up,
+            Key.Down,
+            Key.Down,
+            Key.Left,
+            Key.Right,
+            Key.Left,
+            Key.Right,
+            Key.B,
+            Key.A,
+        };
 
         private static int KonamiCodeIndex { get; set; }
 

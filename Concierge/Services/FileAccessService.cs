@@ -57,23 +57,21 @@ namespace Concierge.Services
             return this.imageOpenFileDialog.ShowDialog() ?? false ? this.imageOpenFileDialog.FileName : string.Empty;
         }
 
-        public void Save(CcsFile ccsFile, bool saveAs)
+        public void Save(CcsFile ccsFile)
         {
-            if (saveAs)
-            {
-                if (this.saveFileDialog.ShowDialog() ?? false)
-                {
-                    ccsFile.AbsolutePath = this.saveFileDialog.FileName;
-                    CharacterReadWriter.Write(ccsFile);
+            CharacterReadWriter.Write(ccsFile);
 
-                    if (AppSettingsManager.StartUp.ShowSaveStatus)
-                    {
-                        ConciergeWindowService.ShowWindow(typeof(SaveStatusWindow));
-                    }
-                }
-            }
-            else
+            if (AppSettingsManager.StartUp.ShowSaveStatus)
             {
+                ConciergeWindowService.ShowWindow(typeof(SaveStatusWindow));
+            }
+        }
+
+        public void SaveAs(CcsFile ccsFile)
+        {
+            if (this.saveFileDialog.ShowDialog() ?? false)
+            {
+                ccsFile.AbsolutePath = this.saveFileDialog.FileName;
                 CharacterReadWriter.Write(ccsFile);
 
                 if (AppSettingsManager.StartUp.ShowSaveStatus)

@@ -207,7 +207,6 @@
                                 Background="DimGray">
                                 <controls:IntegerUpDown 
                                     x:Name="D4ModifierUpDown"
-                                    Minimum="1"
                                     Height="auto"
                                     Margin="1"/>
                             </Border>
@@ -289,7 +288,6 @@
                                 Background="DimGray">
                                 <controls:IntegerUpDown 
                                     x:Name="D6ModifierUpDown"
-                                    Minimum="1"
                                     Height="auto"
                                     Margin="1"/>
                             </Border>
@@ -371,7 +369,6 @@
                                 Background="DimGray">
                                 <controls:IntegerUpDown 
                                     x:Name="D8ModifierUpDown"
-                                    Minimum="1"
                                     Height="auto"
                                     Margin="1"/>
                             </Border>
@@ -453,7 +450,6 @@
                                 Background="DimGray">
                                 <controls:IntegerUpDown 
                                     x:Name="D10ModifierUpDown"
-                                    Minimum="1"
                                     Height="auto"
                                     Margin="1"/>
                             </Border>
@@ -535,7 +531,6 @@
                                 Background="DimGray">
                                 <controls:IntegerUpDown 
                                     x:Name="D100ModifierUpDown"
-                                    Minimum="1"
                                     Height="auto"
                                     Margin="1"/>
                             </Border>
@@ -617,7 +612,6 @@
                                 Background="DimGray">
                                 <controls:IntegerUpDown 
                                     x:Name="D12ModifierUpDown"
-                                    Minimum="1"
                                     Height="auto"
                                     Margin="1"/>
                             </Border>
@@ -699,7 +693,6 @@
                                 Background="DimGray">
                                 <controls:IntegerUpDown 
                                     x:Name="D20ModifierUpDown"
-                                    Minimum="1"
                                     Height="auto"
                                     Margin="1"/>
                             </Border>
@@ -785,7 +778,6 @@
                                 Background="DimGray">
                                 <controls:IntegerUpDown 
                                     x:Name="DxModifierUpDown"
-                                    Minimum="1"
                                     Height="auto"
                                     Margin="1"/>
                             </Border>

@@ -30,7 +30,7 @@ namespace Concierge.Utility
         public const int BrightnessTransition = 130;
 
         public const string Designer = "Thomas Beckett";
-        public const string License = "This program is provided as is. Thomas Beckett Inc. is not responsible for any injuries or TPKs that may result from the use of this product.";
+        public const string License = "This program is provided as is, without warranty. The end user is solely responsible for any injuries or TPKs that may result from the use of this product.";
         public const string Copyright = "2022 Most Rights Reserved.";
 
         private static readonly int[] levels =
