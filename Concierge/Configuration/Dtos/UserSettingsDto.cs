@@ -18,6 +18,8 @@ namespace Concierge.Configuration.Dtos
 
         public bool CheckVersion { get; init; }
 
+        public bool DisplayTaskBar { get; set; }
+
         public bool MuteSounds { get; init; }
 
         public bool UseCoinWeight { get; init; }
@@ -39,6 +41,7 @@ namespace Concierge.Configuration.Dtos
                 settings.AutosaveInterval == this.AutosaveInterval &&
                 settings.AutosaveEnabled == this.AutosaveEnabled &&
                 settings.CheckVersion == this.CheckVersion &&
+                settings.DisplayTaskBar == this.DisplayTaskBar &&
                 settings.MuteSounds == this.MuteSounds &&
                 settings.UseCoinWeight == this.UseCoinWeight &&
                 settings.UseEncumbrance == this.UseEncumbrance &&

@@ -53,6 +53,7 @@ namespace Concierge.Interfaces.UtilityInterface
             this.MuteCheckBox.UpdatingValue();
             this.CheckVersionCheckBox.UpdatingValue();
             this.CenterWindowsCheckBox.UpdatingValue();
+            this.DisplayTaskBarCheckBox.UpdatingValue();
 
             this.AutosaveCheckBox.IsChecked = AppSettingsManager.UserSettings.AutosaveEnabled;
             this.AutosaveInterval.Value = AppSettingsManager.UserSettings.AutosaveInterval;
@@ -63,6 +64,7 @@ namespace Concierge.Interfaces.UtilityInterface
             this.CheckVersionCheckBox.IsChecked = AppSettingsManager.UserSettings.CheckVersion;
             this.UnitOfMeasurementComboBox.Text = AppSettingsManager.UserSettings.UnitOfMeasurement.ToString();
             this.CenterWindowsCheckBox.IsChecked = AppSettingsManager.UserSettings.AttemptToCenterWindows;
+            this.DisplayTaskBarCheckBox.IsChecked = AppSettingsManager.UserSettings.DisplayTaskBar;
 
             if (AppSettingsManager.UserSettings.AutosaveEnabled)
             {
@@ -79,6 +81,7 @@ namespace Concierge.Interfaces.UtilityInterface
             this.MuteCheckBox.UpdatedValue();
             this.CheckVersionCheckBox.UpdatedValue();
             this.CenterWindowsCheckBox.UpdatedValue();
+            this.DisplayTaskBarCheckBox.UpdatedValue();
         }
 
         private bool UpdateSettings()
@@ -101,6 +104,7 @@ namespace Concierge.Interfaces.UtilityInterface
                 AutosaveEnabled = this.AutosaveCheckBox.IsChecked ?? false,
                 AutosaveInterval = (int)this.AutosaveInterval.Value,
                 CheckVersion = this.CheckVersionCheckBox.IsChecked ?? false,
+                DisplayTaskBar = this.DisplayTaskBarCheckBox.IsChecked ?? false,
                 MuteSounds = this.MuteCheckBox.IsChecked ?? false,
                 UseCoinWeight = this.CoinWeightCheckBox.IsChecked ?? false,
                 UseEncumbrance = this.EncumbranceCheckBox.IsChecked ?? false,

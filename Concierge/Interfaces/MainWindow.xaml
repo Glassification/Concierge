@@ -20,6 +20,7 @@
     Background="#252526"
     KeyDown="MainWindow_KeyPress"
     WindowState="Maximized"
+    AllowsTransparency="True"
     Style="{StaticResource WindowXboxDasboardStyle}">
 
     <Window.Resources>

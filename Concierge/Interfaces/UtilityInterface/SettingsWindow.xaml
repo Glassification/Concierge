@@ -11,27 +11,28 @@
     xmlns:viewmodels="clr-namespace:Concierge.Interfaces.ViewModels"
     d:DataContext="{d:DesignInstance Type=viewmodels:ConciergeViewModel}"
     Title="ModifyAppearanceWindow"
-    Height="355"
+    Height="415"
     Width="650"
     Style="{StaticResource WindowXboxDasboardStyle}">
 
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="45"/>
-            <RowDefinition Height="240"/>
+            <RowDefinition Height="300"/>
             <RowDefinition Height="70"/>
         </Grid.RowDefinitions>
 
         <!--Header-->
         <Grid Grid.Row="0">
-            <TextBlock Text="Settings"
-                       x:Name="HeaderTextBlock"
-                       Foreground="#227EA9"
-                       FontSize="35"
-                       HorizontalAlignment="Left"
-                       VerticalAlignment="Center"
-                       Margin="30, 0, 0, 0"
-                       FontWeight="Bold"/>
+            <TextBlock 
+                Text="Settings"
+                x:Name="HeaderTextBlock"
+                Foreground="#227EA9"
+                FontSize="35"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                Margin="30, 0, 0, 0"
+                FontWeight="Bold"/>
             <components:ConciergeDesignButton 
                 Style="{StaticResource ConciergeDesignButtonStyle}" 
                 x:Name="CloseButton"
@@ -54,6 +55,7 @@
             <!--Left-->
             <Grid Grid.Column="0">
                 <Grid.RowDefinitions>
+                    <RowDefinition Height="60"/>
                     <RowDefinition Height="60"/>
                     <RowDefinition Height="60"/>
                     <RowDefinition Height="60"/>
@@ -173,11 +175,46 @@
                             IsEditable="False"/>
                     </Grid>
                 </Grid>
+
+                <Grid Grid.Row="4">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="40*"/>
+                        <ColumnDefinition Width="60*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!--Title-->
+                    <Grid Grid.Column="0">
+                        <TextBlock 
+                            Text="Display Task Bar:"
+                            Foreground="White"
+                            FontSize="18"
+                            TextWrapping="Wrap"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top"
+                            Margin="10, 0, 0, 0"/>
+                        <TextBlock 
+                            Text="(Primary Display Only)"
+                            Foreground="Goldenrod"
+                            FontSize="10"
+                            TextWrapping="Wrap"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Bottom"
+                            Margin="10, 0, 0, 0"/>
+                    </Grid>
+
+                    <!--Value-->
+                    <Grid Grid.Column="1" Margin="20,0,0,0">
+                        <components:ConciergeCheckBox  
+                            x:Name="DisplayTaskBarCheckBox"
+                            Style="{StaticResource CheckBoxStyle}"/>
+                    </Grid>
+                </Grid>
             </Grid>
 
             <!--Right-->
             <Grid Grid.Column="1">
                 <Grid.RowDefinitions>
+                    <RowDefinition Height="60"/>
                     <RowDefinition Height="60"/>
                     <RowDefinition Height="60"/>
                     <RowDefinition Height="60"/>
@@ -278,7 +315,7 @@
                         <TextBlock 
                             Text="(Experimental)"
                             Foreground="Goldenrod"
-                            FontSize="12"
+                            FontSize="10"
                             TextWrapping="Wrap"
                             HorizontalAlignment="Left"
                             VerticalAlignment="Bottom"

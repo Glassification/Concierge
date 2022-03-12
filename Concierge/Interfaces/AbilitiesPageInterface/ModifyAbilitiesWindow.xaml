@@ -24,14 +24,23 @@
 
         <!--Header-->
         <Grid Grid.Row="0">
-            <TextBlock Text="Add Ability"
-                       x:Name="HeaderTextBlock"
-                       Foreground="#227EA9"
-                       FontSize="35"
-                       HorizontalAlignment="Left"
-                       VerticalAlignment="Center"
-                       Margin="30, 0, 0, 0"
-                       FontWeight="Bold"/>
+            <Line
+                Stroke="#227EA9"
+                StrokeThickness="1"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Bottom"
+                Stretch="Uniform"
+                X1="0" X2="1" Y1="0" Y2="0"
+                Margin="20,0,140,0"/>
+            <TextBlock
+                Text="Add Ability"
+                x:Name="HeaderTextBlock"
+                Foreground="#227EA9"
+                FontSize="35"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                Margin="30, 0, 0, 0"
+                FontWeight="Bold"/>
             <components:ConciergeDesignButton 
                 Style="{StaticResource ConciergeDesignButtonStyle}" 
                 x:Name="CloseButton"
@@ -42,6 +51,7 @@
                 Click="CloseButton_Click">
                 <materialDesign:PackIcon Kind="WindowClose" Width="25" Height="25"/>
             </components:ConciergeDesignButton>
+            
         </Grid>
 
         <!--Fields-->
