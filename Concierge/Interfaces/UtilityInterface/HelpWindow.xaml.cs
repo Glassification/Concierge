@@ -18,6 +18,8 @@ namespace Concierge.Interfaces.UtilityInterface
             this.InitializeComponent();
         }
 
+        public override string HeaderText => "Help";
+
         public override void ShowWindow()
         {
             this.ShowConciergeWindow();

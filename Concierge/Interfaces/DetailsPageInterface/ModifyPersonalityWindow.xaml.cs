@@ -24,6 +24,8 @@ namespace Concierge.Interfaces.DetailsPageInterface
             this.Personality = new Personality();
         }
 
+        public override string HeaderText => "Edit Personality";
+
         private Personality Personality { get; set; }
 
         public override ConciergeWindowResult ShowWizardSetup(string buttonText)

@@ -19,6 +19,8 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
             this.InitializeComponent();
         }
 
+        public override string HeaderText => "Spellcasting Selection";
+
         public override PopupButtons ShowPopup()
         {
             this.ShowConciergeWindow();

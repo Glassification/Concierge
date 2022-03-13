@@ -31,9 +31,9 @@ namespace Concierge.Interfaces.AbilitiesPageInterface
 
         public bool ItemsAdded { get; private set; }
 
-        private bool Editing { get; set; }
+        public override string HeaderText => $"{(this.Editing ? "Edit" : "Add")} Ability";
 
-        private string HeaderText => $"{(this.Editing ? "Edit" : "Add")} Ability";
+        private bool Editing { get; set; }
 
         private Ability SelectedAbility { get; set; }
 

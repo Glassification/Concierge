@@ -10,7 +10,7 @@
     xmlns:viewmodels="clr-namespace:Concierge.Interfaces.ViewModels"
     d:DataContext="{d:DesignInstance Type=viewmodels:ConciergeViewModel}"
     mc:Ignorable="d"
-    Title="EquipedItemsWindow"
+    Title="Modify Equipped Items"
     Height="235"
     Width="650"
     Style="{StaticResource WindowXboxDasboardStyle}">
@@ -25,7 +25,7 @@
         <!--Header-->
         <Grid Grid.Row="0">
             <TextBlock 
-                Text="Equip Item"
+                Text="Edit Equipped Items"
                 x:Name="HeaderTextBlock"
                 Foreground="#227EA9"
                 FontSize="27"

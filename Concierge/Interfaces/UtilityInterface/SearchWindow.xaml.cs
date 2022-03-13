@@ -46,6 +46,8 @@ namespace Concierge.Interfaces.UtilityInterface
             this.SearchResultTextBlock.Text = string.Empty;
         }
 
+        public override string HeaderText => "Search";
+
         private List<SearchResult> SearchResults { get; set; }
 
         private int SearchIndex { get; set; }

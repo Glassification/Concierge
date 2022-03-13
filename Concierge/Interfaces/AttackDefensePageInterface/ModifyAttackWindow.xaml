@@ -10,7 +10,7 @@
     xmlns:viewmodels="clr-namespace:Concierge.Interfaces.ViewModels"
     d:DataContext="{d:DesignInstance Type=viewmodels:ConciergeViewModel}"
     mc:Ignorable="d"
-    Title="ModifyWeaponWindow"
+    Title="Modify Attack"
     Height="475"
     Width="800"
     Style="{StaticResource WindowXboxDasboardStyle}">

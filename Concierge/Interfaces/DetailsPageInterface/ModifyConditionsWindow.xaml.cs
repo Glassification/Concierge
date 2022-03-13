@@ -43,6 +43,8 @@ namespace Concierge.Interfaces.DetailsPageInterface
             this.Conditions = new Conditions();
         }
 
+        public override string HeaderText => "Edit Conditions";
+
         private Conditions Conditions { get; set; }
 
         public override void ShowEdit<T>(T conditions)

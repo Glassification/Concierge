@@ -8,7 +8,7 @@
     xmlns:controls="clr-namespace:Concierge.Interfaces.Controls"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:viewmodels="clr-namespace:Concierge.Interfaces.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:ConciergeViewModel}"
     mc:Ignorable="d"
-    Title="ModifyCompanionPropertiesWindow"
+    Title="Modify Companion Properties"
     Height="295"
     Width="650"
     Style="{StaticResource WindowXboxDasboardStyle}">
@@ -23,7 +23,7 @@
         <!--Header-->
         <Grid Grid.Row="0">
             <TextBlock 
-                Text="Edit Properties"
+                Text="Edit Companion Properties"
                 x:Name="HeaderTextBlock"
                 Foreground="#227EA9"
                 FontSize="35"

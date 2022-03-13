@@ -27,6 +27,8 @@ namespace Concierge.Interfaces.UtilityInterface
             this.Lock = false;
         }
 
+        public override string HeaderText => "Colour Picker";
+
         public Color SelectedColor
         {
             get

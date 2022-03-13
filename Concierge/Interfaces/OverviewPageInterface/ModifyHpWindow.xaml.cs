@@ -24,7 +24,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
             this.ConciergePage = ConciergePage.None;
         }
 
-        private string HeaderText => this.IsHealing ? "Heal" : "Damage";
+        public override string HeaderText => this.IsHealing ? "Heal" : "Damage";
 
         private int PreviousHeal { get; set; }
 

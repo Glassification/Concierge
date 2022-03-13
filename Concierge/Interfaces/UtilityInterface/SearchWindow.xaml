@@ -10,7 +10,7 @@
     xmlns:viewmodels="clr-namespace:Concierge.Interfaces.ViewModels" 
     d:DataContext="{d:DesignInstance Type=viewmodels:ConciergeViewModel}"
     mc:Ignorable="d"
-    Title="SearchWindow"
+    Title="Concierge Search"
     Height="435"
     Width="650"
     MouseMove="Window_MouseMove"

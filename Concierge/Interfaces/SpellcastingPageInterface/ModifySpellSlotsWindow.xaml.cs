@@ -4,7 +4,6 @@
 
 namespace Concierge.Interfaces.SpellcastingPageInterface
 {
-    using System;
     using System.Windows;
 
     using Concierge.Character.Spellcasting;
@@ -23,6 +22,8 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
             this.ConciergePage = ConciergePage.None;
             this.SpellSlots = new SpellSlots();
         }
+
+        public override string HeaderText => "Edit Spell Slots";
 
         private SpellSlots SpellSlots { get; set; }
 

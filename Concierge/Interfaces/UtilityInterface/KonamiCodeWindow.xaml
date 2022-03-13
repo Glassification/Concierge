@@ -7,7 +7,7 @@
     xmlns:local="clr-namespace:Concierge.Interfaces.UtilityInterface"
     xmlns:components="clr-namespace:Concierge.Interfaces.Components" 
     mc:Ignorable="d"
-    Title="KonamiCodeWindow"
+    Title="Hey What's Goin' On"
     Height="360"
     Width="480"
     ShowInTaskbar="False"

@@ -32,6 +32,8 @@ namespace Concierge.Interfaces
             Program.Logger.Info($"Initialized {nameof(ModifyPropertiesWindow)}.");
         }
 
+        public override string HeaderText => "Edit Character Properties";
+
         private CharacterProperties CharacterProperties { get; set; }
 
         public override ConciergeWindowResult ShowWizardSetup(string buttonText)

@@ -38,11 +38,11 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
             this.SelectedAttack = new Weapon();
         }
 
+        public override string HeaderText => $"{(this.Editing ? "Edit" : "Add")} Attack";
+
         public bool ItemsAdded { get; private set; }
 
         private bool Editing { get; set; }
-
-        private string HeaderText => $"{(this.Editing ? "Edit" : "Add")} Attack";
 
         private Weapon SelectedAttack { get; set; }
 

@@ -447,12 +447,14 @@ namespace Concierge.Interfaces
                 this.MaximizeIcon.Kind = PackIconKind.WindowMaximize;
                 this.WindowState = WindowState.Normal;
                 this.MaximizeButton.ToolTip = "Maximize";
+                this.BorderThickness = new Thickness(1);
             }
             else
             {
                 this.MaximizeIcon.Kind = PackIconKind.WindowRestore;
                 this.WindowState = WindowState.Maximized;
                 this.MaximizeButton.ToolTip = "Restore Down";
+                this.BorderThickness = new Thickness(0);
             }
         }
 

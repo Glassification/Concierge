@@ -28,11 +28,11 @@ namespace Concierge.Interfaces.DetailsPageInterface
             this.Languages = new List<Language>();
         }
 
+        public override string HeaderText => $"{(this.Editing ? "Edit" : "Add")} Language";
+
         public bool ItemsAdded { get; private set; }
 
         private bool Editing { get; set; }
-
-        private string HeaderText => $"{(this.Editing ? "Edit" : "Add")} Language";
 
         private Language SelectedLanguage { get; set; }
 

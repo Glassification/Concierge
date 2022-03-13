@@ -34,13 +34,13 @@ namespace Concierge.Interfaces.InventoryPageInterface
             this.Items = new List<Inventory>();
         }
 
+        public override string HeaderText => $"{(this.Editing ? "Edit" : "Add")} Item";
+
         public bool ItemsAdded { get; private set; }
 
         private bool EquippedItem { get; set; }
 
         private bool Editing { get; set; }
-
-        private string HeaderText => $"{(this.Editing ? "Edit" : "Add")} Item";
 
         private Inventory SelectedItem { get; set; }
 

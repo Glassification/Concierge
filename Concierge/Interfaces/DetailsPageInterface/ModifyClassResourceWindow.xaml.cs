@@ -26,11 +26,11 @@ namespace Concierge.Interfaces.DetailsPageInterface
             this.ClassResources = new List<ClassResource>();
         }
 
+        public override string HeaderText => $"{(this.Editing ? "Edit" : "Add")} Resource";
+
         public bool ItemsAdded { get; private set; }
 
         private bool Editing { get; set; }
-
-        private string HeaderText => $"{(this.Editing ? "Edit" : "Add")} Resource";
 
         private ClassResource ClassResource { get; set; }
 

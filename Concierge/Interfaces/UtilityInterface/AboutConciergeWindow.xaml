@@ -9,7 +9,7 @@
     xmlns:viewmodels="clr-namespace:Concierge.Interfaces.ViewModels"
     d:DataContext="{d:DesignInstance Type=viewmodels:ConciergeViewModel}"
     mc:Ignorable="d"
-    Title="AboutConciergeWindow"
+    Title="About Concierge"
     Height="295"
     Width="650"
     Style="{StaticResource WindowXboxDasboardStyle}">

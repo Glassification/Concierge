@@ -23,6 +23,8 @@ namespace Concierge.Interfaces.OverviewPageInterface
             this.HitDice = new HitDice();
         }
 
+        public override string HeaderText => "Edit Hit Dice";
+
         private HitDice HitDice { get; set; }
 
         public override ConciergeWindowResult ShowWizardSetup(string buttonText)

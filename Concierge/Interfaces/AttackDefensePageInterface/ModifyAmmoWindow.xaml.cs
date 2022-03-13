@@ -32,11 +32,11 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
             this.SelectedAmmo = new Ammunition();
         }
 
+        public override string HeaderText => $"{(this.Editing ? "Edit" : "Add")} Ammunition";
+
         public bool ItemsAdded { get; private set; }
 
         private bool Editing { get; set; }
-
-        private string HeaderText => $"{(this.Editing ? "Edit" : "Add")} Ammunition";
 
         private Ammunition SelectedAmmo { get; set; }
 

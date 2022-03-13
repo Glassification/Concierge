@@ -27,6 +27,8 @@ namespace Concierge.Interfaces.CompanionPageInterface
             this.Properties = new CompanionProperties();
         }
 
+        public override string HeaderText => "Edit Companion Properties";
+
         private CompanionProperties Properties { get; set; }
 
         public override void ShowEdit<T>(T properties)

@@ -29,6 +29,8 @@ namespace Concierge.Interfaces.UtilityInterface
             this.UnitOfMeasurementComboBox.ItemsSource = Enum.GetValues(typeof(UnitTypes)).Cast<UnitTypes>();
         }
 
+        public override string HeaderText => "Settings";
+
         private string FormattedInterval => $"Autosave Interval: {Constants.AutosaveIntervals[(int)this.AutosaveInterval.Value]} minute{((int)this.AutosaveInterval.Value > 0 ? "s" : string.Empty)}";
 
         public override void ShowEdit<T>(T item)

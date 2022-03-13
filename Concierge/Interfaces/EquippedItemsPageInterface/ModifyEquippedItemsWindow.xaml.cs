@@ -28,6 +28,8 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
             this.PreviousSlot = string.Empty;
         }
 
+        public override string HeaderText => "Edit Equipped Items";
+
         public bool ItemsAdded { get; private set; }
 
         private string PreviousSlot { get; set; }
