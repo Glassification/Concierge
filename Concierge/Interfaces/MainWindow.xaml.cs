@@ -26,6 +26,8 @@ namespace Concierge.Interfaces
     using Concierge.Interfaces.UtilityInterface;
     using Concierge.Persistence;
     using Concierge.Services;
+    using Concierge.Services.Enums;
+    using Concierge.Services.WorkerServices;
     using Concierge.Tools;
     using Concierge.Tools.Interface;
     using Concierge.Utility;
@@ -58,9 +60,9 @@ namespace Concierge.Interfaces
         private readonly FileAccessService fileAccessService = new ();
         private readonly CommandLineService commandLineService = new ();
         private readonly MainWindowService mainWindowService;
-        private readonly AutosaveTimer autosaveTimer = new ();
-        private readonly DateTimeService dateTimeService = new ();
-        private readonly AlertMessageService alertMessageService = new ();
+        private readonly AutosaveService autosaveTimer = new ();
+        private readonly DateTimeWorkerService dateTimeService = new ();
+        private readonly AnimatedTextWorkerService animatedTextWorkerService = new (TextAnimations.None, 17);
         private readonly CharacterCreationWizard characterCreationWizard = new ();
 
         public MainWindow()
@@ -70,7 +72,7 @@ namespace Concierge.Interfaces
             Program.UndoRedoService.StackChanged += this.UndoRedo_StackChanged;
             Program.ModifiedChanged += this.MainWindow_ModifiedChanged;
             this.dateTimeService.TimeUpdated += this.MainWindow_TimeUpdated;
-            this.alertMessageService.MessageUpdated += this.MainWindow_MessageUpdated;
+            this.animatedTextWorkerService.TextUpdated += this.MainWindow_TextUpdated;
 
             this.mainWindowService = new MainWindowService(this.ListViewItem_Selected);
             this.GridContent.Width = GridContentWidthClose;
@@ -81,7 +83,7 @@ namespace Concierge.Interfaces
             this.ListViewMenu.SelectedIndex = 0;
             this.OverviewPage.Visibility = Visibility.Visible;
             this.FrameContent.Content = this.OverviewPage;
-            this.dateTimeService.StartTimer();
+            this.dateTimeService.StartWorker(string.Empty);
 
             this.DataContext = this;
 
@@ -250,7 +252,7 @@ namespace Concierge.Interfaces
             Program.CcsFile.Character.LongRest();
             Program.Modify();
 
-            this.alertMessageService.StartTimer("Long Rest Complete!   HP and Spell Slots Replenished.");
+            this.animatedTextWorkerService.StartWorker("Long Rest Complete!   HP and Spell Slots Replenished.");
             this.DrawAll();
         }
 
@@ -352,18 +354,18 @@ namespace Concierge.Interfaces
             if (saveAs)
             {
                 this.fileAccessService.SaveAs(Program.CcsFile);
-                this.alertMessageService.StartTimer($"Save As '{Program.CcsFile.AbsolutePath}'");
+                this.animatedTextWorkerService.StartWorker($"Save As '{Program.CcsFile.AbsolutePath}'");
             }
             else
             {
                 this.fileAccessService.Save(Program.CcsFile);
-                this.alertMessageService.StartTimer($"Save '{Program.CcsFile.AbsolutePath}'");
+                this.animatedTextWorkerService.StartWorker($"Save '{Program.CcsFile.AbsolutePath}'");
             }
         }
 
         private void UpdateStatusBar(ConciergePage conciergePage)
         {
-            this.DateTimeTextBlock.Text = DateTimeService.FormattedDateTimeNow;
+            this.DateTimeTextBlock.Text = DateTimeWorkerService.FormattedDateTimeNow;
             this.CurrentPageNameTextBlock.Text = DisplayUtility.FormatConciergePageForDisplay(conciergePage);
         }
 
@@ -778,11 +780,11 @@ namespace Concierge.Interfaces
             }
         }
 
-        private void MainWindow_MessageUpdated(object sender, EventArgs e)
+        private void MainWindow_TextUpdated(object sender, EventArgs e)
         {
-            if (sender is string alertMessage)
+            if (sender is string updatedText)
             {
-                this.AlertMessageTextBlock.Text = alertMessage;
+                this.AlertMessageTextBlock.Text = updatedText;
             }
         }
     }

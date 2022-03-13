@@ -1,16 +1,16 @@
-﻿// <copyright file="DateTimeService.cs" company="Thomas Beckett">
+﻿// <copyright file="DateTimeWorkerService.cs" company="Thomas Beckett">
 // Copyright (c) Thomas Beckett. All rights reserved.
 // </copyright>
 
-namespace Concierge.Services
+namespace Concierge.Services.WorkerServices
 {
     using System;
     using System.ComponentModel;
     using System.Threading;
 
-    public class DateTimeService
+    public class DateTimeWorkerService : IWorkerService
     {
-        public DateTimeService()
+        public DateTimeWorkerService()
         {
             this.UpdateTimer = new BackgroundWorker()
             {
@@ -32,12 +32,12 @@ namespace Concierge.Services
 
         private string CurrentSetDateTime { get; set; }
 
-        public void StartTimer()
+        public void StartWorker(string message)
         {
             this.UpdateTimer.RunWorkerAsync();
         }
 
-        public void StopTimer()
+        public void StopWorker()
         {
             this.UpdateTimer.CancelAsync();
         }
