@@ -33,11 +33,11 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
             this.Spells = new List<Spell>();
         }
 
+        public override string HeaderText => $"{(this.Editing ? "Edit" : "Add")} Spell";
+
         public bool ItemsAdded { get; private set; }
 
         private bool Editing { get; set; }
-
-        private string HeaderText => $"{(this.Editing ? "Edit" : "Add")} Spell";
 
         private Spell SelectedSpell { get; set; }
 

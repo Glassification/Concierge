@@ -28,6 +28,8 @@ namespace Concierge.Interfaces.OverviewPageInterface
             this.ConciergePage = ConciergePage.None;
         }
 
+        public override string HeaderText => "Edit Senses";
+
         public override ConciergeWindowResult ShowWizardSetup(string buttonText)
         {
             this.FillFields();

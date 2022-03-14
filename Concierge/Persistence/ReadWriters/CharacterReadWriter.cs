@@ -6,6 +6,7 @@ namespace Concierge.Persistence.ReadWriters
 {
     using System;
     using System.IO;
+    using System.Text;
     using System.Text.RegularExpressions;
 
     using Concierge.Configuration;
@@ -17,11 +18,14 @@ namespace Concierge.Persistence.ReadWriters
 
     public static class CharacterReadWriter
     {
+        private const string IsJsonSearchText = "\"Character\"";
+
         public static CcsFile Read(string file)
         {
             try
             {
                 var rawJson = File.ReadAllText(file);
+                rawJson = DecodeIfNeeded(rawJson);
                 var ccsFile = JsonConvert.DeserializeObject<CcsFile>(rawJson);
 
                 if (ccsFile is null)
@@ -55,6 +59,7 @@ namespace Concierge.Persistence.ReadWriters
             {
                 ccsFile.Version = Program.AssemblyVersion;
                 var rawJson = JsonConvert.SerializeObject(ccsFile, Formatting.Indented);
+                rawJson = EncodeIfNeeded(rawJson);
 
                 File.WriteAllText(ccsFile.AbsolutePath, rawJson);
 
@@ -70,6 +75,28 @@ namespace Concierge.Persistence.ReadWriters
 
                 return false;
             }
+        }
+
+        private static string EncodeIfNeeded(string rawJson)
+        {
+            if (AppSettingsManager.StartUp.EncodeCharacterSheet)
+            {
+                var byteArray = Encoding.UTF8.GetBytes(rawJson);
+                return Convert.ToBase64String(byteArray);
+            }
+
+            return rawJson;
+        }
+
+        private static string DecodeIfNeeded(string rawJson)
+        {
+            if (rawJson.Contains(IsJsonSearchText))
+            {
+                return rawJson;
+            }
+
+            var byteArray = Convert.FromBase64String(rawJson);
+            return Encoding.UTF8.GetString(byteArray);
         }
 
         private static bool CheckVersion(string version)

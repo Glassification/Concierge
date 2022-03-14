@@ -15,7 +15,7 @@ namespace Concierge.Interfaces.Components
     using Concierge.Interfaces.Enums;
     using Concierge.Utility;
 
-    public class ConciergeWindow : Window
+    public abstract class ConciergeWindow : Window
     {
         private const double FadeAnimationSpeed = 0.15;
 
@@ -63,6 +63,8 @@ namespace Concierge.Interfaces.Components
         public delegate void ApplyChangesEventHandler(object sender, EventArgs e);
 
         public event ApplyChangesEventHandler? ApplyChanges;
+
+        public abstract string HeaderText { get; }
 
         public ConciergePage ConciergePage { get; set; }
 
@@ -131,6 +133,7 @@ namespace Concierge.Interfaces.Components
         {
             Program.Logger.Info($"{this.Title} opened.");
 
+            this.Title = this.HeaderText;
             this.SetOpenLocation();
             this.BeginAnimation(OpacityProperty, this.openAnimation);
             this.ShowDialog();

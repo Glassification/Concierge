@@ -23,6 +23,8 @@ namespace Concierge.Interfaces.OverviewPageInterface
             this.Health = new Health();
         }
 
+        public override string HeaderText => "Edit Health";
+
         private Health Health { get; set; }
 
         public override ConciergeWindowResult ShowWizardSetup(string buttonText)

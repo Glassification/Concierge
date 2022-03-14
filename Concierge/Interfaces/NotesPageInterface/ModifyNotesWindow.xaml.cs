@@ -4,7 +4,6 @@
 
 namespace Concierge.Interfaces.NotesPageInterface
 {
-    using System;
     using System.Windows;
     using System.Windows.Controls;
 
@@ -27,7 +26,9 @@ namespace Concierge.Interfaces.NotesPageInterface
             this.ConciergePage = ConciergePage.None;
         }
 
-        private bool IsEdit { get; set; }
+        public override string HeaderText => $"{(this.Editing ? "Edit" : "Add")} Chapter/Page";
+
+        private bool Editing { get; set; }
 
         private Chapter? CurrentChapter { get; set; }
 
@@ -35,7 +36,7 @@ namespace Concierge.Interfaces.NotesPageInterface
 
         public override bool ShowAdd<T>(T item)
         {
-            this.HeaderTextBlock.Text = "Add Chapter/Page";
+            this.HeaderTextBlock.Text = this.HeaderText;
             this.ChapterComboBox.SelectedIndex = 0;
 
             this.SetupWindow(false);
@@ -92,7 +93,7 @@ namespace Concierge.Interfaces.NotesPageInterface
 
         private void SetupWindow(bool isEdit)
         {
-            this.IsEdit = isEdit;
+            this.Editing = isEdit;
             this.ClearFields();
             this.GenerateChapterComboBox();
             this.ChapterComboBox.IsEnabled = !isEdit;
@@ -165,7 +166,7 @@ namespace Concierge.Interfaces.NotesPageInterface
                 return;
             }
 
-            if (this.IsEdit)
+            if (this.Editing)
             {
                 this.UpdateNote();
             }
@@ -191,7 +192,7 @@ namespace Concierge.Interfaces.NotesPageInterface
         {
             this.OkApplyChanges();
 
-            if (!this.IsEdit)
+            if (!this.Editing)
             {
                 if (this.ChapterComboBox.Text.Equals(NewChapter) && !this.DocumentTextBox.Text.IsNullOrWhiteSpace())
                 {

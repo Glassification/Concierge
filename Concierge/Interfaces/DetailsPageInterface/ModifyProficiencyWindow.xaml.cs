@@ -30,6 +30,8 @@ namespace Concierge.Interfaces.DetailsPageInterface
             this.SelectedProficiency = new Proficiency();
         }
 
+        public override string HeaderText => $"{(this.Editing ? "Edit" : "Add")} Proficiency";
+
         public bool ItemsAdded { get; private set; }
 
         private bool Editing { get; set; }
@@ -37,8 +39,6 @@ namespace Concierge.Interfaces.DetailsPageInterface
         private Proficiency SelectedProficiency { get; set; }
 
         private List<Proficiency> SelectedProficiencies { get; set; }
-
-        private string HeaderText => $"{(this.Editing ? "Edit" : "Add")} Proficiency";
 
         public override ConciergeWindowResult ShowWizardSetup(string buttonText)
         {

@@ -32,11 +32,11 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
             this.MagicClasses = new List<MagicClass>();
         }
 
+        public override string HeaderText => $"{(this.Editing ? "Edit" : "Add")} Spellcasting Class";
+
         public bool ItemsAdded { get; private set; }
 
         private bool Editing { get; set; }
-
-        private string HeaderText => $"{(this.Editing ? "Edit" : "Add")} Magic Class";
 
         private bool SettingValues { get; set; }
 

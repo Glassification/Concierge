@@ -33,11 +33,11 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
             this.StatusEffects = new List<StatusEffect>();
         }
 
+        public override string HeaderText => $"{(this.Editing ? "Edit" : "Add")} Status Effect";
+
         public bool ItemsAdded { get; private set; }
 
         private bool Editing { get; set; }
-
-        private string HeaderText => $"{(this.Editing ? "Edit" : "Add")} Status Effect";
 
         private StatusEffect SelectedEffect { get; set; }
 

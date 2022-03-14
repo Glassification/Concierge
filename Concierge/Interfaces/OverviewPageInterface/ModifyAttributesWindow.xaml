@@ -8,7 +8,7 @@
     xmlns:controls="clr-namespace:Concierge.Interfaces.Controls"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:viewmodels="clr-namespace:Concierge.Interfaces.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:ConciergeViewModel}"
     mc:Ignorable="d"
-    Title="ModifyAttributesWindow"
+    Title="Modify Attributes"
     Height="475"
     Width="650"
     Style="{StaticResource WindowXboxDasboardStyle}">

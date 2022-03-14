@@ -31,6 +31,8 @@ namespace Concierge.Interfaces.DetailsPageInterface
             this.Appearance = new Appearance();
         }
 
+        public override string HeaderText => "Edit Appearance";
+
         private Appearance Appearance { get; set; }
 
         public override ConciergeWindowResult ShowWizardSetup(string buttonText)

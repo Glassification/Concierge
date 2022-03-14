@@ -34,6 +34,8 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
             this.OriginalFileName = string.Empty;
         }
 
+        public override string HeaderText => "Edit Image";
+
         private string OriginalFileName { get; set; }
 
         private bool IsDrawing { get; set; }

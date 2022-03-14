@@ -10,7 +10,7 @@
     xmlns:viewmodels="clr-namespace:Concierge.Interfaces.ViewModels"
     d:DataContext="{d:DesignInstance Type=viewmodels:ConciergeViewModel}"
     mc:Ignorable="d"
-    Title="ModifyArmorWindow"
+    Title="Modify Armor"
     Height="475"
     Width="650"
     Style="{StaticResource WindowXboxDasboardStyle}">
@@ -24,7 +24,7 @@
 
         <!--Header-->
         <Grid Grid.Row="0">
-            <TextBlock Text="Edit Armor Details"
+            <TextBlock Text="Edit Armor"
                        x:Name="HeaderTextBlock"
                        Foreground="#227EA9"
                        FontSize="35"

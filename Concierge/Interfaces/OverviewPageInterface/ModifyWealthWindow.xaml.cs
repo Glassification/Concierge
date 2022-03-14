@@ -23,6 +23,8 @@ namespace Concierge.Interfaces.OverviewPageInterface
             this.SelectedWealth = new Wealth();
         }
 
+        public override string HeaderText => "Edit Wealth";
+
         private int CP { get; set; }
 
         private int SP { get; set; }

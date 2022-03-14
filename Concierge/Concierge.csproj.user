@@ -37,9 +37,6 @@
     <Compile Update="Interfaces\UtilityInterface\KonamiCodeWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Interfaces\UtilityInterface\LongRestStatusWindow.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Update="Interfaces\UtilityInterface\SearchWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -139,12 +136,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Interfaces\UtilityInterface\KonamiCodeWindow.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Interfaces\UtilityInterface\LongRestStatusWindow.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Interfaces\UtilityInterface\SaveStatusWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Interfaces\UtilityInterface\SearchWindow.xaml">

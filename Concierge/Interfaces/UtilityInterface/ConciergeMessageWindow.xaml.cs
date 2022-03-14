@@ -22,6 +22,8 @@ namespace Concierge.Interfaces.UtilityInterface
             this.InitializeComponent();
         }
 
+        public override string HeaderText => "Concierge Message";
+
         private bool IsOk { get; set; }
 
         public ConciergeWindowResult ShowWindow(

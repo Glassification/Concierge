@@ -29,6 +29,8 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
             this.SelectedArmor = new Armor();
         }
 
+        public override string HeaderText => "Edit Armor";
+
         private Armor SelectedArmor { get; set; }
 
         public override ConciergeWindowResult ShowWizardSetup(string buttonText)

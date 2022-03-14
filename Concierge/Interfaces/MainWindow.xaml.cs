@@ -26,10 +26,13 @@ namespace Concierge.Interfaces
     using Concierge.Interfaces.UtilityInterface;
     using Concierge.Persistence;
     using Concierge.Services;
+    using Concierge.Services.Enums;
+    using Concierge.Services.WorkerServices;
     using Concierge.Tools;
     using Concierge.Tools.Interface;
     using Concierge.Utility;
     using Concierge.Utility.Extensions;
+    using Concierge.Utility.Utilities;
     using MaterialDesignThemes.Wpf;
 
     using Constants = Concierge.Utility.Constants;
@@ -57,7 +60,9 @@ namespace Concierge.Interfaces
         private readonly FileAccessService fileAccessService = new ();
         private readonly CommandLineService commandLineService = new ();
         private readonly MainWindowService mainWindowService;
-        private readonly AutosaveTimer autosaveTimer = new ();
+        private readonly AutosaveService autosaveTimer = new ();
+        private readonly DateTimeWorkerService dateTimeService = new ();
+        private readonly AnimatedTextWorkerService animatedTextWorkerService = new (TextAnimations.None, 17);
         private readonly CharacterCreationWizard characterCreationWizard = new ();
 
         public MainWindow()
@@ -66,15 +71,19 @@ namespace Concierge.Interfaces
 
             Program.UndoRedoService.StackChanged += this.UndoRedo_StackChanged;
             Program.ModifiedChanged += this.MainWindow_ModifiedChanged;
+            this.dateTimeService.TimeUpdated += this.MainWindow_TimeUpdated;
+            this.animatedTextWorkerService.TextUpdated += this.MainWindow_TextUpdated;
 
             this.mainWindowService = new MainWindowService(this.ListViewItem_Selected);
             this.GridContent.Width = GridContentWidthClose;
             this.IgnoreListItemSelectionChanged = true;
+            this.MessageBar.Background = ConciergeColors.ProficiencyBrush;
             this.CollapseAll();
             this.GenerateListViewItems();
             this.ListViewMenu.SelectedIndex = 0;
             this.OverviewPage.Visibility = Visibility.Visible;
             this.FrameContent.Content = this.OverviewPage;
+            this.dateTimeService.StartWorker(string.Empty);
 
             this.DataContext = this;
 
@@ -140,6 +149,7 @@ namespace Concierge.Interfaces
                 return;
             }
 
+            this.animatedTextWorkerService.StartWorker("Generated New Character Sheet!");
             this.ResetCharacterSheet();
             this.DrawAll();
 
@@ -204,6 +214,7 @@ namespace Concierge.Interfaces
                 this.autosaveTimer.Start(Constants.CurrentAutosaveInterval);
             }
 
+            this.animatedTextWorkerService.StartWorker($"Opened '{ccsFile.AbsolutePath}'");
             this.NotesPage.ClearTextBox();
             this.DrawAll();
         }
@@ -222,7 +233,10 @@ namespace Concierge.Interfaces
 
         public void DrawAll()
         {
+            Program.Logger.Info($"Draw all.");
+
             this.mainWindowService.GenerateCharacterStatusBar(this.CharacterHeaderPanel, Program.CcsFile.Character);
+            this.UpdateStatusBar(this.CurrentPage?.ConciergePage ?? ConciergePage.None);
 
             this.InventoryPage.Draw();
             this.AbilitiesPage.Draw();
@@ -242,12 +256,8 @@ namespace Concierge.Interfaces
             Program.CcsFile.Character.LongRest();
             Program.Modify();
 
+            this.animatedTextWorkerService.StartWorker("Long Rest Complete!   HP and Spell Slots Replenished.");
             this.DrawAll();
-
-            if (AppSettingsManager.StartUp.ShowLongRestStatus)
-            {
-                ConciergeWindowService.ShowWindow(typeof(LongRestStatusWindow));
-            }
         }
 
         public void Search()
@@ -276,6 +286,7 @@ namespace Concierge.Interfaces
             }
 
             this.CollapseAll();
+            this.UpdateStatusBar(conciergePage.ConciergePage);
             page.Visibility = Visibility.Visible;
             this.FrameContent.Content = page;
             conciergePage.Draw();
@@ -347,11 +358,20 @@ namespace Concierge.Interfaces
             if (saveAs)
             {
                 this.fileAccessService.SaveAs(Program.CcsFile);
+                this.animatedTextWorkerService.StartWorker($"Save As '{Program.CcsFile.AbsolutePath}'");
             }
             else
             {
                 this.fileAccessService.Save(Program.CcsFile);
+                this.animatedTextWorkerService.StartWorker($"Save '{Program.CcsFile.AbsolutePath}'");
             }
+        }
+
+        private void UpdateStatusBar(ConciergePage conciergePage)
+        {
+            this.DateTimeTextBlock.Text = ConciergeDateTime.StatusMenuNow;
+            this.DateTimeTextBlock.ToolTip = ConciergeDateTime.ToolTipNow;
+            this.CurrentPageNameTextBlock.Text = DisplayUtility.FormatConciergePageForDisplay(conciergePage);
         }
 
         private void CalculateScale()
@@ -432,12 +452,14 @@ namespace Concierge.Interfaces
                 this.MaximizeIcon.Kind = PackIconKind.WindowMaximize;
                 this.WindowState = WindowState.Normal;
                 this.MaximizeButton.ToolTip = "Maximize";
+                this.BorderThickness = new Thickness(1);
             }
             else
             {
                 this.MaximizeIcon.Kind = PackIconKind.WindowRestore;
                 this.WindowState = WindowState.Maximized;
                 this.MaximizeButton.ToolTip = "Restore Down";
+                this.BorderThickness = new Thickness(0);
             }
         }
 
@@ -755,6 +777,20 @@ namespace Concierge.Interfaces
         private void MainWindow_ModifiedChanged(object sender, EventArgs e)
         {
             this.ModifiedStatus.Visibility = ((bool)sender) ? Visibility.Visible : Visibility.Collapsed;
+        }
+
+        private void MainWindow_TimeUpdated(object sender, EventArgs e)
+        {
+            this.DateTimeTextBlock.Text = ConciergeDateTime.StatusMenuNow;
+            this.DateTimeTextBlock.ToolTip = ConciergeDateTime.ToolTipNow;
+        }
+
+        private void MainWindow_TextUpdated(object sender, EventArgs e)
+        {
+            if (sender is string updatedText)
+            {
+                this.AlertMessageTextBlock.Text = updatedText;
+            }
         }
     }
 }

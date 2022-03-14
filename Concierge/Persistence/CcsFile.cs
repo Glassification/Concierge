@@ -7,6 +7,7 @@ namespace Concierge.Persistence
     using System.IO;
 
     using Concierge.Character;
+    using Concierge.Utility;
     using Newtonsoft.Json;
 
     public class CcsFile
@@ -14,11 +15,14 @@ namespace Concierge.Persistence
         public CcsFile()
         {
             this.Character = new ConciergeCharacter();
+            this.OriginalCreationDate = ConciergeDateTime.OriginalCreationNow;
             this.Version = Program.AssemblyVersion;
             this.AbsolutePath = string.Empty;
         }
 
         public ConciergeCharacter Character { get; set; }
+
+        public string OriginalCreationDate { get; init; }
 
         public string Version { get; set; }
 

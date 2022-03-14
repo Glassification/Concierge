@@ -10,7 +10,7 @@
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:viewmodels="clr-namespace:Concierge.Interfaces.ViewModels"
     d:DataContext="{d:DesignInstance Type=viewmodels:ConciergeViewModel}"
-    Title="ModifyAppearanceWindow"
+    Title="Concierge Settings"
     Height="355"
     Width="650"
     Style="{StaticResource WindowXboxDasboardStyle}">

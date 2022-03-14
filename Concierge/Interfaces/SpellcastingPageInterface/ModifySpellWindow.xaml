@@ -10,7 +10,7 @@
     xmlns:viewmodels="clr-namespace:Concierge.Interfaces.ViewModels"
     d:DataContext="{d:DesignInstance Type=viewmodels:ConciergeViewModel}"
     mc:Ignorable="d"
-    Title="ModifySpellWindow"
+    Title="Modify Spell"
     Height="595"
     Width="800"
     Style="{StaticResource WindowXboxDasboardStyle}">

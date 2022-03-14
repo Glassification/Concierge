@@ -34,6 +34,8 @@ namespace Concierge.Interfaces.OverviewPageInterface
             this.SavingThrow = new SavingThrow();
         }
 
+        public override string HeaderText => "Edit Saving Throw Checks";
+
         private SavingThrow SavingThrow { get; set; }
 
         public override void ShowEdit<T>(T savingThrow)

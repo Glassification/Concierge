@@ -4,7 +4,6 @@
 
 namespace Concierge.Interfaces.OverviewPageInterface
 {
-    using System;
     using System.Windows;
 
     using Concierge.Character.Characteristics;
@@ -23,6 +22,8 @@ namespace Concierge.Interfaces.OverviewPageInterface
             this.ConciergePage = ConciergePage.None;
             this.Attributes = new Attributes();
         }
+
+        public override string HeaderText => "Edit Attributes";
 
         private Attributes Attributes { get; set; }
 

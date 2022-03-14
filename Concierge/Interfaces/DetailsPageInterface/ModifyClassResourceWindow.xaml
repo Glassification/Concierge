@@ -10,7 +10,7 @@
     xmlns:viewmodels="clr-namespace:Concierge.Interfaces.ViewModels"
     d:DataContext="{d:DesignInstance Type=viewmodels:ConciergeViewModel}"
     mc:Ignorable="d"
-    Title="ModifyClassResourceWindow"
+    Title="Modify Class Resource"
     Height="235"
     Width="650"
     Style="{StaticResource WindowXboxDasboardStyle}">

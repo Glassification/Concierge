@@ -19,6 +19,8 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
             this.InitializeComponent();
         }
 
+        public override string HeaderText => "Attack Selection";
+
         public override PopupButtons ShowPopup()
         {
             this.ShowConciergeWindow();

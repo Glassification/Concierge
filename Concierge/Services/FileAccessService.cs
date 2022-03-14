@@ -4,8 +4,6 @@
 
 namespace Concierge.Services
 {
-    using Concierge.Configuration;
-    using Concierge.Interfaces.UtilityInterface;
     using Concierge.Persistence;
     using Concierge.Persistence.ReadWriters;
     using Microsoft.Win32;
@@ -60,11 +58,6 @@ namespace Concierge.Services
         public void Save(CcsFile ccsFile)
         {
             CharacterReadWriter.Write(ccsFile);
-
-            if (AppSettingsManager.StartUp.ShowSaveStatus)
-            {
-                ConciergeWindowService.ShowWindow(typeof(SaveStatusWindow));
-            }
         }
 
         public void SaveAs(CcsFile ccsFile)
@@ -73,11 +66,6 @@ namespace Concierge.Services
             {
                 ccsFile.AbsolutePath = this.saveFileDialog.FileName;
                 CharacterReadWriter.Write(ccsFile);
-
-                if (AppSettingsManager.StartUp.ShowSaveStatus)
-                {
-                    ConciergeWindowService.ShowWindow(typeof(SaveStatusWindow));
-                }
             }
         }
     }

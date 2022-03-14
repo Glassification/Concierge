@@ -11,7 +11,7 @@
     xmlns:viewmodels="clr-namespace:Concierge.Interfaces.ViewModels"
     d:DataContext="{d:DesignInstance Type=viewmodels:ConciergeViewModel}"
     mc:Ignorable="d"
-    Title="ModifySkillCheckWindow"
+    Title="Modify Skill Checks"
     Height="655"
     Width="650"
     Style="{StaticResource WindowXboxDasboardStyle}">

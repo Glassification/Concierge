@@ -1,22 +1,22 @@
-﻿// <copyright file="AutosaveTimer.cs" company="Thomas Beckett">
+﻿// <copyright file="AutosaveService.cs" company="Thomas Beckett">
 // Copyright (c) Thomas Beckett. All rights reserved.
 // </copyright>
 
-namespace Concierge.Utility
+namespace Concierge.Services
 {
     using System;
     using System.Windows.Threading;
 
     using Concierge.Persistence.ReadWriters;
 
-    public class AutosaveTimer
+    public class AutosaveService
     {
-        public AutosaveTimer()
+        public AutosaveService()
         {
             this.DispatcherTimer = new DispatcherTimer();
             this.DispatcherTimer.Tick += this.DispatcherTimer_Autosave;
 
-            Program.Logger.Info($"Initialized {nameof(AutosaveTimer)}.");
+            Program.Logger.Info($"Initialized {nameof(AutosaveService)}.");
         }
 
         private DispatcherTimer DispatcherTimer { get; set; }

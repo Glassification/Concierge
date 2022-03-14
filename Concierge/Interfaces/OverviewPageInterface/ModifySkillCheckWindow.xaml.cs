@@ -46,6 +46,8 @@ namespace Concierge.Interfaces.OverviewPageInterface
             this.Skill = new Skill();
         }
 
+        public override string HeaderText => "Edit Skill Checks";
+
         private Skill Skill { get; set; }
 
         public override void ShowEdit<T>(T skill)
