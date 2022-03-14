@@ -10,6 +10,8 @@ namespace Concierge.Configuration.Objects
         {
         }
 
+        public bool EncodeCharacterSheet { get; set; }
+
         public bool ShowSplashScreen { get; set; }
     }
 }

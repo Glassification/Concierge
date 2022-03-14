@@ -8,6 +8,8 @@ namespace Concierge.Services.WorkerServices
     using System.ComponentModel;
     using System.Threading;
 
+    using Concierge.Utility;
+
     public class DateTimeWorkerService : IWorkerService
     {
         public DateTimeWorkerService()
@@ -26,8 +28,6 @@ namespace Concierge.Services.WorkerServices
 
         public event TimeUpdatedEventHandler? TimeUpdated;
 
-        public static string FormattedDateTimeNow => DateTime.Now.ToString("h:mm tt   yyyy-MM-dd");
-
         private BackgroundWorker UpdateTimer { get; }
 
         private string CurrentSetDateTime { get; set; }
@@ -44,7 +44,7 @@ namespace Concierge.Services.WorkerServices
 
         private void UpdateTimer_ProgressChanged(object? sender, ProgressChangedEventArgs e)
         {
-            var newDateTime = FormattedDateTimeNow;
+            var newDateTime = ConciergeDateTime.StatusMenuNow;
 
             if (!this.CurrentSetDateTime.Equals(newDateTime))
             {

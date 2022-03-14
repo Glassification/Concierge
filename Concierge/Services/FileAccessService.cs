@@ -4,8 +4,6 @@
 
 namespace Concierge.Services
 {
-    using Concierge.Configuration;
-    using Concierge.Interfaces.UtilityInterface;
     using Concierge.Persistence;
     using Concierge.Persistence.ReadWriters;
     using Microsoft.Win32;

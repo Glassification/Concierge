@@ -149,6 +149,7 @@ namespace Concierge.Interfaces
                 return;
             }
 
+            this.animatedTextWorkerService.StartWorker("Generated New Character Sheet!");
             this.ResetCharacterSheet();
             this.DrawAll();
 
@@ -213,6 +214,7 @@ namespace Concierge.Interfaces
                 this.autosaveTimer.Start(Constants.CurrentAutosaveInterval);
             }
 
+            this.animatedTextWorkerService.StartWorker($"Opened '{ccsFile.AbsolutePath}'");
             this.NotesPage.ClearTextBox();
             this.DrawAll();
         }
@@ -231,6 +233,8 @@ namespace Concierge.Interfaces
 
         public void DrawAll()
         {
+            Program.Logger.Info($"Draw all.");
+
             this.mainWindowService.GenerateCharacterStatusBar(this.CharacterHeaderPanel, Program.CcsFile.Character);
             this.UpdateStatusBar(this.CurrentPage?.ConciergePage ?? ConciergePage.None);
 
@@ -365,7 +369,8 @@ namespace Concierge.Interfaces
 
         private void UpdateStatusBar(ConciergePage conciergePage)
         {
-            this.DateTimeTextBlock.Text = DateTimeWorkerService.FormattedDateTimeNow;
+            this.DateTimeTextBlock.Text = ConciergeDateTime.StatusMenuNow;
+            this.DateTimeTextBlock.ToolTip = ConciergeDateTime.ToolTipNow;
             this.CurrentPageNameTextBlock.Text = DisplayUtility.FormatConciergePageForDisplay(conciergePage);
         }
 
@@ -776,10 +781,8 @@ namespace Concierge.Interfaces
 
         private void MainWindow_TimeUpdated(object sender, EventArgs e)
         {
-            if (sender is string currentDateTime)
-            {
-                this.DateTimeTextBlock.Text = currentDateTime;
-            }
+            this.DateTimeTextBlock.Text = ConciergeDateTime.StatusMenuNow;
+            this.DateTimeTextBlock.ToolTip = ConciergeDateTime.ToolTipNow;
         }
 
         private void MainWindow_TextUpdated(object sender, EventArgs e)
