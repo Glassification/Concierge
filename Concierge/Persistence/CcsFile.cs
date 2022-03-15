@@ -27,7 +27,7 @@ namespace Concierge.Persistence
         public string Version { get; set; }
 
         [JsonIgnore]
-        public string FileName => Path.GetFileName(this.AbsolutePath);
+        public string FileName => Path.GetFileName(this.AbsolutePath) ?? string.Empty;
 
         [JsonIgnore]
         public string FilePath => Path.GetDirectoryName(this.AbsolutePath) ?? string.Empty;

@@ -76,5 +76,20 @@ namespace Concierge.Utility.Utilities
 
             return new LinearGradientBrush(gradientStopCollection, startPoint, endPoint);
         }
+
+        public static string FormatHexString(string hex)
+        {
+            if (hex.Length < 1)
+            {
+                return string.Empty;
+            }
+
+            if (hex[0] == '#')
+            {
+                return hex;
+            }
+
+            return hex.Insert(0, "#");
+        }
     }
 }

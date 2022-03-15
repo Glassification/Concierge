@@ -5,6 +5,7 @@
 namespace Concierge
 {
     using System.Windows;
+    using System.Windows.Controls;
     using System.Windows.Threading;
 
     using Concierge.Configuration;
@@ -39,6 +40,7 @@ namespace Concierge
                 new SplashScreenWindow().ShowWindow();
             }
 
+            ToolTipService.ShowDurationProperty.OverrideMetadata(typeof(DependencyObject), new FrameworkPropertyMetadata(int.MaxValue));
             mainWindow.Show();
         }
     }

@@ -12,6 +12,8 @@ namespace Concierge.Services.WorkerServices
 
     public class DateTimeWorkerService : IWorkerService
     {
+        private const int OneSecond = 1000;
+
         public DateTimeWorkerService()
         {
             this.UpdateTimer = new BackgroundWorker()
@@ -63,7 +65,7 @@ namespace Concierge.Services.WorkerServices
             while (true)
             {
                 worker.ReportProgress(0);
-                Thread.Sleep(1000);
+                Thread.Sleep(OneSecond);
             }
         }
     }

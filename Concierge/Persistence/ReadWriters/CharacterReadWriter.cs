@@ -115,16 +115,12 @@ namespace Concierge.Persistence.ReadWriters
                     ConciergeWindowButtons.YesNo,
                     ConciergeWindowIcons.Alert);
 
-                switch (result)
+                Program.Logger.Info($"{(result == ConciergeWindowResult.OK ? "Continue" : "Cancel")} opening file.");
+                return result switch
                 {
-                    case ConciergeWindowResult.Yes:
-                        Program.Logger.Info("Continue opening file.");
-                        return true;
-                    case ConciergeWindowResult.No:
-                    default:
-                        Program.Logger.Info("Cancel opening file.");
-                        return false;
-                }
+                    ConciergeWindowResult.Yes => true,
+                    _ => false,
+                };
             }
 
             return true;

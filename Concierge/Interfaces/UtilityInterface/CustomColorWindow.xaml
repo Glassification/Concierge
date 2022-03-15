@@ -77,76 +77,121 @@
         <Grid Grid.Row="2" Margin="20,0,20,0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="60"/>
-                <RowDefinition Height="60"/>
-                <RowDefinition Height="60"/>
-                <RowDefinition Height="60"/>
+                <RowDefinition Height="180"/>
             </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="35*"/>
-                <ColumnDefinition Width="65*"/>
-            </Grid.ColumnDefinitions>
 
-            <TextBlock
-                Grid.Row="0"
-                Grid.Column="0"
-                Text="HEX Value:"
-                Foreground="White"
-                VerticalAlignment="Center"
-                FontSize="20"/>
-            <TextBlock
-                Grid.Row="1"
-                Grid.Column="0"
-                Text="Red:"
-                VerticalAlignment="Center"
-                Foreground="White"
-                FontSize="20"/>
-            <TextBlock
-                Grid.Row="2"
-                Grid.Column="0"
-                Text="Green:"
-                VerticalAlignment="Center"
-                Foreground="White"
-                FontSize="20"/>
-            <TextBlock
-                Grid.Row="3"
-                Grid.Column="0"
-                Text="Blue:"
-                VerticalAlignment="Center"
-                Foreground="White"
-                FontSize="20"/>
-            <components:ConciergeTextBoxBackground
-                Grid.Row="0"
-                Grid.Column="1"
-                Margin="0,10,0,10">
-                <components:ConciergeTextBox
-                    x:Name="HexTextBox"
-                    FontSize="24"
-                    VerticalContentAlignment="Center"
-                    HorizontalContentAlignment="Center"
-                    LostFocus="HexTextBox_LostFocus"
-                    KeyDown="HexTextBox_KeyDown"/>
-            </components:ConciergeTextBoxBackground>
-            <controls:IntegerUpDown
-                x:Name="RedUpDown"
-                Grid.Row="1"
-                Grid.Column="1"
-                Margin="0"
-                Maximum="255"
-                ValueChanged="UpDown_ValueChanged"/>
-            <controls:IntegerUpDown
-                x:Name="GreenUpDown"
-                Grid.Row="2"
-                Grid.Column="1"
-                Margin="0"
-                Maximum="255"
-                ValueChanged="UpDown_ValueChanged"/>
-            <controls:IntegerUpDown
-                x:Name="BlueUpDown"
-                Grid.Row="3"
-                Grid.Column="1"
-                Margin="0"
-                Maximum="255"
-                ValueChanged="UpDown_ValueChanged"/>
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="30*"/>
+                    <ColumnDefinition Width="70*"/>
+                </Grid.ColumnDefinitions>
+                
+                <TextBlock
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Text="HEX Value:"
+                    Foreground="White"
+                    VerticalAlignment="Center"
+                    FontSize="20"/>
+                <components:ConciergeTextBoxBackground
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    Margin="0,10,0,10">
+                    <components:ConciergeTextBox
+                        x:Name="HexTextBox"
+                        FontSize="24"
+                        VerticalContentAlignment="Center"
+                        HorizontalContentAlignment="Center"
+                        LostFocus="HexTextBox_LostFocus"
+                        KeyDown="HexTextBox_KeyDown"/>
+                </components:ConciergeTextBoxBackground>
+            </Grid>
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="60"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="15*"/>
+                    <ColumnDefinition Width="65*"/>
+                    <ColumnDefinition Width="20*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Text="Red:"
+                    VerticalAlignment="Center"
+                    Foreground="White"
+                    FontSize="20"/>
+                <TextBlock
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    Text="Green:"
+                    VerticalAlignment="Center"
+                    Foreground="White"
+                    FontSize="20"/>
+                <TextBlock
+                    Grid.Row="2"
+                    Grid.Column="0"
+                    Text="Blue:"
+                    VerticalAlignment="Center"
+                    Foreground="White"
+                    FontSize="20"/>
+
+                <Slider
+                    x:Name="RedSlider"
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Center"
+                    ValueChanged="Slider_ValueChanged"
+                    Minimum="0"
+                    Maximum="255"
+                    Margin="3,0,3,0"/>
+                <Slider
+                    x:Name="GreenSlider"
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Center"
+                    ValueChanged="Slider_ValueChanged"
+                    Minimum="0"
+                    Maximum="255"
+                    Margin="3,0,3,0"/>
+                <Slider
+                    x:Name="BlueSlider"
+                    Grid.Row="2"
+                    Grid.Column="1"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Center"
+                    ValueChanged="Slider_ValueChanged"
+                    Minimum="0"
+                    Maximum="255"
+                    Margin="3,0,3,0"/>
+
+                <controls:IntegerUpDown
+                    x:Name="RedUpDown"
+                    Grid.Row="0"
+                    Grid.Column="2"
+                    Margin="0"
+                    Maximum="255"
+                    ValueChanged="UpDown_ValueChanged"/>
+                <controls:IntegerUpDown
+                    x:Name="GreenUpDown"
+                    Grid.Row="1"
+                    Grid.Column="2"
+                    Margin="0"
+                    Maximum="255"
+                    ValueChanged="UpDown_ValueChanged"/>
+                <controls:IntegerUpDown
+                    x:Name="BlueUpDown"
+                    Grid.Row="2"
+                    Grid.Column="2"
+                    Margin="0"
+                    Maximum="255"
+                    ValueChanged="UpDown_ValueChanged"/>
+            </Grid>
         </Grid>
 
         <!--Buttons-->

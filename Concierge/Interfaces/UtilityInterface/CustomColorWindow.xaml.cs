@@ -12,6 +12,7 @@ namespace Concierge.Interfaces.UtilityInterface
 
     using Concierge.Interfaces.Components;
     using Concierge.Utility.Extensions;
+    using Concierge.Utility.Utilities;
 
     /// <summary>
     /// Interaction logic for CustomColorWindow.xaml.
@@ -24,7 +25,8 @@ namespace Concierge.Interfaces.UtilityInterface
         {
             this.InitializeComponent();
             this.ColorPickerImage.LoadFromByteArray(Properties.Resources.ColorPickerBackground);
-            this.Lock = false;
+            this.RgbValueLock = false;
+            this.RgbSliderLock = false;
         }
 
         public override string HeaderText => "Colour Picker";
@@ -43,11 +45,14 @@ namespace Concierge.Interfaces.UtilityInterface
             }
         }
 
-        private bool Lock { get; set; }
+        private bool RgbValueLock { get; set; }
+
+        private bool RgbSliderLock { get; set; }
 
         public override Color ShowColorWindow(Color startingColor)
         {
             this.UpdateRgbValues(startingColor);
+            this.UpdateRgbSlider(startingColor);
             this.ShowConciergeWindow();
 
             return this.SelectedColor;
@@ -57,7 +62,9 @@ namespace Concierge.Interfaces.UtilityInterface
         {
             try
             {
-                this.UpdateRgbValues((Color)ColorConverter.ConvertFromString(this.HexTextBox.Text));
+                var color = (Color)ColorConverter.ConvertFromString(ColorUtility.FormatHexString(this.HexTextBox.Text));
+                this.UpdateRgbValues(color);
+                this.UpdateRgbSlider(color);
             }
             catch (Exception)
             {
@@ -67,11 +74,20 @@ namespace Concierge.Interfaces.UtilityInterface
 
         private void UpdateRgbValues(Color color)
         {
-            this.Lock = true;
+            this.RgbValueLock = true;
             this.RedUpDown.Value = color.R;
             this.GreenUpDown.Value = color.G;
-            this.Lock = false;
+            this.RgbValueLock = false;
             this.BlueUpDown.Value = color.B;
+        }
+
+        private void UpdateRgbSlider(Color color)
+        {
+            this.RgbSliderLock = true;
+            this.RedSlider.Value = color.R;
+            this.GreenSlider.Value = color.G;
+            this.BlueSlider.Value = color.B;
+            this.RgbSliderLock = false;
         }
 
         private void SetColorAtPoint(Point point)
@@ -83,7 +99,9 @@ namespace Concierge.Interfaces.UtilityInterface
 
             if (point.X > 0 && point.Y > 0 && point.X < img.PixelWidth && point.Y < img.PixelHeight)
             {
-                this.UpdateRgbValues(this.ColorPickerImage.GetColorFromPoint(point));
+                var color = this.ColorPickerImage.GetColorFromPoint(point);
+                this.UpdateRgbValues(color);
+                this.UpdateRgbSlider(color);
             }
         }
 
@@ -100,7 +118,7 @@ namespace Concierge.Interfaces.UtilityInterface
 
         private void UpDown_ValueChanged(object sender, RoutedEventArgs e)
         {
-            if (this.Lock)
+            if (this.RgbValueLock)
             {
                 return;
             }
@@ -111,6 +129,7 @@ namespace Concierge.Interfaces.UtilityInterface
                 (byte)this.GreenUpDown.Value,
                 (byte)this.BlueUpDown.Value);
             this.HexTextBox.Text = this.SelectedColor.ToHexWithoutAlpha();
+            this.UpdateRgbSlider(this.SelectedColor);
         }
 
         private void HexTextBox_LostFocus(object sender, RoutedEventArgs e)
@@ -157,6 +176,22 @@ namespace Concierge.Interfaces.UtilityInterface
         private void ColorPickerImage_MouseUp(object sender, MouseButtonEventArgs e)
         {
             Mouse.Capture(null);
+        }
+
+        private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            if (this.RgbSliderLock)
+            {
+                return;
+            }
+
+            this.SelectedColor = Color.FromArgb(
+                255,
+                (byte)this.RedSlider.Value,
+                (byte)this.GreenSlider.Value,
+                (byte)this.BlueSlider.Value);
+            this.HexTextBox.Text = this.SelectedColor.ToHexWithoutAlpha();
+            this.UpdateRgbValues(this.SelectedColor);
         }
     }
 }

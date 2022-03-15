@@ -406,8 +406,9 @@ namespace Concierge.Interfaces
                 return ConciergeWindowResult.No;
             }
 
+            var name = Program.CcsFile.FileName;
             var result = ConciergeMessageBox.Show(
-                $"Do you want to save the changes you made to '{Program.CcsFile.FileName}' before {action}?\n\nYour changes will be lost if you don't save them.",
+                $"Do you want to save the changes you made to {(name.IsNullOrWhiteSpace() ? "this sheet" : name)} before {action}?\n\nYour changes will be lost if you don't save them.",
                 "Warning",
                 ConciergeWindowButtons.YesNoCancel,
                 ConciergeWindowIcons.Warning);
