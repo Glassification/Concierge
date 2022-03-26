@@ -201,6 +201,7 @@ namespace Concierge.Interfaces.NotesPageInterface
                     this.SelectedDocument = treeViewItem.Document;
                     this.LoadCurrentDocument(this.SelectedDocument.RTF);
                     this.ResetUndoQueue();
+                    ConciergeSound.TapNavigation();
                 }
                 else if (this.NotesTreeView?.SelectedItem is ChapterTreeViewItem)
                 {
@@ -214,6 +215,7 @@ namespace Concierge.Interfaces.NotesPageInterface
                     this.SelectedDocument = null;
                     this.ClearTextBox();
                     this.ResetUndoQueue();
+                    ConciergeSound.TapNavigation();
                 }
 
                 this.Lock = false;

@@ -139,36 +139,24 @@
                     Foreground="White"
                     FontSize="20"/>
 
-                <Slider
+                <components:ConciergeSlider
                     x:Name="RedSlider"
                     Grid.Row="0"
                     Grid.Column="1"
-                    HorizontalAlignment="Stretch"
-                    VerticalAlignment="Center"
                     ValueChanged="Slider_ValueChanged"
-                    Minimum="0"
-                    Maximum="255"
-                    Margin="3,0,3,0"/>
-                <Slider
+                    Maximum="255"/>
+                <components:ConciergeSlider
                     x:Name="GreenSlider"
                     Grid.Row="1"
                     Grid.Column="1"
-                    HorizontalAlignment="Stretch"
-                    VerticalAlignment="Center"
                     ValueChanged="Slider_ValueChanged"
-                    Minimum="0"
-                    Maximum="255"
-                    Margin="3,0,3,0"/>
-                <Slider
+                    Maximum="255"/>
+                <components:ConciergeSlider
                     x:Name="BlueSlider"
                     Grid.Row="2"
                     Grid.Column="1"
-                    HorizontalAlignment="Stretch"
-                    VerticalAlignment="Center"
                     ValueChanged="Slider_ValueChanged"
-                    Minimum="0"
-                    Maximum="255"
-                    Margin="3,0,3,0"/>
+                    Maximum="255"/>
 
                 <controls:IntegerUpDown
                     x:Name="RedUpDown"

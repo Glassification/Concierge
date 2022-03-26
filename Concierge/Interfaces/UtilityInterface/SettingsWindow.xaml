@@ -107,12 +107,9 @@
 
                     <!--Value-->
                     <Grid Grid.Column="1">
-                        <Slider
+                        <components:ConciergeSlider
                             x:Name="AutosaveInterval"
-                            Foreground="White"
-                            VerticalAlignment="Center"
                             Margin="0,0,20,0"
-                            Minimum="0"
                             Maximum="9"
                             Interval="1"
                             TickPlacement="BottomRight"
