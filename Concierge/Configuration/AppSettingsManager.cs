@@ -11,6 +11,7 @@ namespace Concierge.Configuration
 
     using Concierge.Configuration.Dtos;
     using Concierge.Configuration.Objects;
+    using Concierge.Persistence;
     using Concierge.Utility;
     using Concierge.Utility.Extensions;
     using Microsoft.Extensions.Configuration;
@@ -23,8 +24,8 @@ namespace Concierge.Configuration
             IConfigurationSection section;
 
             var config = new ConfigurationBuilder()
-                .SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
-                .AddJsonFile("appsettings.json")
+                .SetBasePath(ConciergeFiles.GetCorrectAppSettingsPath())
+                .AddJsonFile(ConciergeFiles.AppSettingsName)
                 .Build();
 
             section = config.GetSection(nameof(ColorPicker));
@@ -127,7 +128,7 @@ namespace Concierge.Configuration
             };
 
             var config = JsonConvert.SerializeObject(appSettings, Formatting.Indented);
-            var appSettingsPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "appsettings.json");
+            var appSettingsPath = Path.Combine(ConciergeFiles.GetCorrectAppSettingsPath(), ConciergeFiles.AppSettingsName);
             File.WriteAllText(appSettingsPath, config);
         }
     }

@@ -9,11 +9,11 @@ namespace Concierge.Logging
     using System.IO.Compression;
     using System.Linq;
 
+    using Concierge.Persistence;
     using Concierge.Utility.Extensions;
 
     public class LocalLogger : Logger
     {
-        private const string DefaultLoggingFolder = @"Concierge\Logging";
         private const string DefaultLogFileName = @"Concierge.log";
 
         public LocalLogger(bool isDebug = false)
@@ -74,7 +74,7 @@ namespace Concierge.Logging
         private static string FormatLogFilePath(string filePath)
         {
             return filePath.IsNullOrWhiteSpace() ?
-                Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), DefaultLoggingFolder) :
+                ConciergeFiles.LoggingDirectory :
                 filePath;
         }
 

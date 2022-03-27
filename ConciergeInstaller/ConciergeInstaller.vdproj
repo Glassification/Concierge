@@ -15,13 +15,19 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_9E37E15E554145538F2C6B6AA01AF562"
+        "MsmKey" = "8:_4E1E4B5736A344D8ACC71A6C981E4296"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_FA4EE951C1FD4EE98E495523F0467103"
+        "MsmKey" = "8:_6B7340EC3C624EF296FBD2AEAC1DB118"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_B17521D1ACFC478B91B087612067B3B3"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -43,6 +49,22 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.NetCore.CoreRuntime.6.0.x64"
+                    {
+                    "Name" = "8:.NET Runtime 6.0.3 (x64)"
+                    "ProductCode" = "8:Microsoft.NetCore.CoreRuntime.6.0.x64"
+                    }
+                }
+            }
         }
         "Release"
         {
@@ -111,10 +133,30 @@
         }
         "File"
         {
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_9E37E15E554145538F2C6B6AA01AF562"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_6B7340EC3C624EF296FBD2AEAC1DB118"
             {
-            "SourcePath" = "8:..\\Concierge\\AppIconImage.ico"
-            "TargetName" = "8:AppIconImage.ico"
+            "SourcePath" = "8:..\\Concierge\\appsettings.json"
+            "TargetName" = "8:appsettings.json"
+            "Tag" = "8:"
+            "Folder" = "8:_C1AEF417BC3E427E80E5EC844F54F1CC"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_B17521D1ACFC478B91B087612067B3B3"
+            {
+            "SourcePath" = "8:..\\Concierge\\AppIconImage64.ico"
+            "TargetName" = "8:AppIconImage64.ico"
             "Tag" = "8:"
             "Folder" = "8:_64A8DDAA7DF142C3BB15E7CE7DD0E65E"
             "Condition" = "8:"
@@ -139,7 +181,7 @@
         {
             "{3C67513D-01DD-4637-8A68-80971EB9504F}:_64A8DDAA7DF142C3BB15E7CE7DD0E65E"
             {
-            "DefaultLocation" = "8:[ProgramFilesFolder]\\[ProductName]"
+            "DefaultLocation" = "8:C:\\Program Files\\[ProductName]"
             "Name" = "8:#1925"
             "AlwaysCreate" = "11:FALSE"
             "Condition" = "8:"
@@ -158,6 +200,28 @@
             "Property" = "8:ProgramMenuFolder"
                 "Folders"
                 {
+                }
+            }
+            "{1525181F-901A-416C-8A58-119130FE478E}:_C26438603AB74627BF120D48DE439C39"
+            {
+            "Name" = "8:#1915"
+            "AlwaysCreate" = "11:FALSE"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Property" = "8:AppDataFolder"
+                "Folders"
+                {
+                    "{9EF0B969-E518-4E46-987F-47570745A589}:_C1AEF417BC3E427E80E5EC844F54F1CC"
+                    {
+                    "Name" = "8:Concierge"
+                    "AlwaysCreate" = "11:FALSE"
+                    "Condition" = "8:"
+                    "Transitive" = "11:FALSE"
+                    "Property" = "8:_04BA14ED32084BD3BC4AE06ACE739397"
+                        "Folders"
+                        {
+                        }
+                    }
                 }
             }
             "{1525181F-901A-416C-8A58-119130FE478E}:_C525169FBA3B4961844F5FA8336D8937"
@@ -188,7 +252,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Concierge"
         "ProductCode" = "8:{57BE1456-BD4C-49F6-B4F4-A94981F1E7A5}"
-        "PackageCode" = "8:{93D85480-D9F2-458D-A47E-646A580218F6}"
+        "PackageCode" = "8:{B2E115AB-1463-4599-A5F9-18D0752611B3}"
         "UpgradeCode" = "8:{B97675CD-5866-4110-B40B-B14CEF5B35C2}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
@@ -205,7 +269,7 @@
         "Keywords" = "8:"
         "ARPCOMMENTS" = "8:This will install the latest version of Concierge."
         "ARPURLINFOABOUT" = "8:"
-        "ARPPRODUCTICON" = "8:_9E37E15E554145538F2C6B6AA01AF562"
+        "ARPPRODUCTICON" = "8:_B17521D1ACFC478B91B087612067B3B3"
         "ARPIconIndex" = "3:0"
         "SearchPath" = "8:"
         "UseSystemSearchPath" = "11:TRUE"
@@ -308,7 +372,7 @@
         }
         "Shortcut"
         {
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_4486C1EC27FD4A3A9E668355D0E4A3F2"
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_C4C4EB99E36440AAB20C3D32E2D45551"
             {
             "Name" = "8:Concierge"
             "Arguments" = "8:"
@@ -316,24 +380,10 @@
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_FA4EE951C1FD4EE98E495523F0467103"
-            "Folder" = "8:_C525169FBA3B4961844F5FA8336D8937"
-            "WorkingFolder" = "8:_C525169FBA3B4961844F5FA8336D8937"
-            "Icon" = "8:_9E37E15E554145538F2C6B6AA01AF562"
-            "Feature" = "8:"
-            }
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_786468307B1B46F987B8DB4E39F9EA03"
-            {
-            "Name" = "8:Concierge"
-            "Arguments" = "8:"
-            "Description" = "8:"
-            "ShowCmd" = "3:1"
-            "IconIndex" = "3:0"
-            "Transitive" = "11:FALSE"
-            "Target" = "8:_FA4EE951C1FD4EE98E495523F0467103"
+            "Target" = "8:_4E1E4B5736A344D8ACC71A6C981E4296"
             "Folder" = "8:_7077A0A955BF4F8FA6982417E9780F13"
-            "WorkingFolder" = "8:_7077A0A955BF4F8FA6982417E9780F13"
-            "Icon" = "8:_9E37E15E554145538F2C6B6AA01AF562"
+            "WorkingFolder" = "8:_64A8DDAA7DF142C3BB15E7CE7DD0E65E"
+            "Icon" = "8:_B17521D1ACFC478B91B087612067B3B3"
             "Feature" = "8:"
             }
         }
@@ -735,7 +785,7 @@
         }
         "ProjectOutput"
         {
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_FA4EE951C1FD4EE98E495523F0467103"
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_4E1E4B5736A344D8ACC71A6C981E4296"
             {
             "SourcePath" = "8:..\\Concierge\\obj\\Release\\net6.0-windows\\apphost.exe"
             "TargetName" = "8:"
