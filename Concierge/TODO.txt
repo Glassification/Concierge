@@ -1,3 +1,2 @@
 ﻿Add searching to Notes
-Create installer
 Add object before/after on info log

@@ -10,6 +10,8 @@ namespace Concierge.Persistence
     public static class ConciergeFiles
     {
         public const string AppSettingsName = "appsettings.json";
+        public const string AppSettingsTestName = "appsettings.test.json";
+        public const string AppSettingsProdcutionName = "appsettings.production.json";
 
         private static readonly string applicationData;
 

@@ -8,6 +8,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{5FE4C2DD-579A-4597-8259-6EFA2FFEDBD4}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
+		README.md = README.md
 	EndProjectSection
 EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "ConciergeInstaller", "ConciergeInstaller\ConciergeInstaller.vdproj", "{53DD5690-EB1B-486E-A66F-EE52B5EC9CCC}"
