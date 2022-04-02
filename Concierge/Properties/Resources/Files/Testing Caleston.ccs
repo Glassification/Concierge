@@ -185,7 +185,15 @@
       "Wisdom": 16,
       "Charisma": 16
     },
-    "ClassResources": [],
+    "ClassResources": [
+      {
+        "Type": "Sorcery Points",
+        "Total": 4,
+        "Spent": 1,
+        "Recovery": "Recover all after long rest.",
+        "Id": "42e8f42c-59e8-4dfb-9878-7c6e5d5a2299"
+      }
+    ],
     "Companion": {
       "Properties": {
         "Name": "",
@@ -1634,5 +1642,5 @@
     ]
   },
   "OriginalCreationDate": "Sunday, 13 March 2022 06:59:30 PM",
-  "Version": "4.8.0"
+  "Version": "4.8.1"
 }

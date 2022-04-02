@@ -4,7 +4,6 @@
 
 namespace Concierge.Interfaces.DetailsPageInterface
 {
-    using System;
     using System.Collections.Generic;
     using System.Windows;
 
@@ -12,6 +11,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
     using Concierge.Commands;
     using Concierge.Interfaces.Components;
     using Concierge.Interfaces.Enums;
+    using Concierge.Utility;
 
     /// <summary>
     /// Interaction logic for ModifyProficiencyWindow.xaml.
@@ -22,6 +22,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
         {
             this.InitializeComponent();
             this.ConciergePage = ConciergePage.None;
+            this.ResourceNameComboBox.ItemsSource = Constants.Resources;
             this.ClassResource = new ClassResource();
             this.ClassResources = new List<ClassResource>();
         }
@@ -96,16 +97,18 @@ namespace Concierge.Interfaces.DetailsPageInterface
 
         private void FillFields()
         {
-            this.ResourceTextBox.Text = this.ClassResource.Type;
+            this.ResourceNameComboBox.Text = this.ClassResource.Type;
             this.PoolUpDown.Value = this.ClassResource.Total;
             this.SpentUpDown.Value = this.ClassResource.Spent;
+            this.RecoveryTextBox.Text = this.ClassResource.Recovery;
         }
 
         private void ClearFields()
         {
-            this.ResourceTextBox.Text = string.Empty;
+            this.ResourceNameComboBox.Text = string.Empty;
             this.PoolUpDown.Value = 0;
             this.SpentUpDown.Value = 0;
+            this.RecoveryTextBox.Text = string.Empty;
         }
 
         private ClassResource ToClassResource()
@@ -114,9 +117,10 @@ namespace Concierge.Interfaces.DetailsPageInterface
 
             var resource = new ClassResource()
             {
-                Type = this.ResourceTextBox.Text,
+                Type = this.ResourceNameComboBox.Text,
                 Total = this.PoolUpDown.Value,
                 Spent = this.SpentUpDown.Value,
+                Recovery = this.RecoveryTextBox.Text,
             };
 
             Program.UndoRedoService.AddCommand(new AddCommand<ClassResource>(this.ClassResources, resource, this.ConciergePage));
@@ -130,9 +134,10 @@ namespace Concierge.Interfaces.DetailsPageInterface
             {
                 var oldItem = this.ClassResource.DeepCopy();
 
-                this.ClassResource.Type = this.ResourceTextBox.Text;
+                this.ClassResource.Type = this.ResourceNameComboBox.Text;
                 this.ClassResource.Total = this.PoolUpDown.Value;
                 this.ClassResource.Spent = this.SpentUpDown.Value;
+                this.ClassResource.Recovery = this.RecoveryTextBox.Text;
 
                 Program.UndoRedoService.AddCommand(new EditCommand<ClassResource>(this.ClassResource, oldItem, this.ConciergePage));
             }

@@ -14,6 +14,7 @@ namespace Concierge.Character.Statuses
         public ClassResource()
         {
             this.Type = string.Empty;
+            this.Recovery = string.Empty;
             this.Id = Guid.NewGuid();
         }
 
@@ -23,8 +24,10 @@ namespace Concierge.Character.Statuses
 
         public int Spent { get; set; }
 
+        public string Recovery { get; set; }
+
         [JsonIgnore]
-        public string Description => $"{this.Type} - {this.Spent}/{this.Total} Used";
+        public string Description => $"{this.Type} - {this.Spent}/{this.Total} Used. {this.Recovery}";
 
         public Guid Id { get; init; }
 
@@ -35,6 +38,7 @@ namespace Concierge.Character.Statuses
                 Type = this.Type,
                 Total = this.Total,
                 Spent = this.Spent,
+                Recovery = this.Recovery,
                 Id = this.Id,
             };
         }

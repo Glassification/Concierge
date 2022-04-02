@@ -154,21 +154,33 @@ namespace Concierge.Utility
         private static readonly string[] statusEffects =
         {
             "Acid",
+            "Bludgeoning",
             "Cold",
             "Fire",
             "Force",
             "Lightning",
+            "Magic Weapons",
             "Necrotic",
+            "Nonmagical",
+            "Piercing",
             "Poison",
             "Psychic",
             "Radiant",
-            "Thunder",
-            "Nonmagical",
-            "Magic Weapons",
-            "Bludgeoning",
             "Slashing",
-            "Piercing",
             "Spells",
+            "Thunder",
+        };
+
+        private static readonly string[] resources =
+        {
+            "Bardic Inspiration",
+            "Divine Sense",
+            "Hemocraft Dice",
+            "Ki Points",
+            "Lay on Hands",
+            "Rages",
+            "Sorcery Points",
+            "Superiority Dice",
         };
 
         static Constants()
@@ -189,6 +201,7 @@ namespace Concierge.Utility
             Proficiencies = new ReadOnlyCollection<int>(proficiencies);
             Classes = new ReadOnlyCollection<string>(classes);
             StatusEffects = new ReadOnlyCollection<string>(statusEffects);
+            Resources = new ReadOnlyCollection<string>(resources);
         }
 
         public static ReadOnlyCollection<int> AutosaveIntervals { get; }
@@ -218,6 +231,8 @@ namespace Concierge.Utility
         public static ReadOnlyCollection<Ability> Abilities { get; }
 
         public static ReadOnlyCollection<string> StatusEffects { get; }
+
+        public static ReadOnlyCollection<string> Resources { get; }
 
         public static int CurrentAutosaveInterval => AutosaveIntervals[AppSettingsManager.UserSettings.AutosaveInterval];
     }

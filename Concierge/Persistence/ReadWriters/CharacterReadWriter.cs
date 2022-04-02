@@ -81,10 +81,12 @@ namespace Concierge.Persistence.ReadWriters
         {
             if (AppSettingsManager.StartUp.EncodeCharacterSheet)
             {
+                Program.Logger.Info("Encoding file.");
                 var byteArray = Encoding.UTF8.GetBytes(rawJson);
                 return Convert.ToBase64String(byteArray);
             }
 
+            Program.Logger.Info("Uncoded file.");
             return rawJson;
         }
 
@@ -92,10 +94,12 @@ namespace Concierge.Persistence.ReadWriters
         {
             if (rawJson.Contains(IsJsonSearchText))
             {
+                Program.Logger.Info("File is Uncoded.");
                 return rawJson;
             }
 
             var byteArray = Convert.FromBase64String(rawJson);
+            Program.Logger.Info("File is Encoded.");
             return Encoding.UTF8.GetString(byteArray);
         }
 
