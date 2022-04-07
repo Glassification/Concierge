@@ -95,6 +95,7 @@
                         Margin="10, 20, 0, 0"/>
                     <controls:IntegerUpDown
                         x:Name="PoolUpDown"
+                        ValueChanged="PoolSpentUpDown_ValueChanged"
                         Grid.Column="1"/>
                 </Grid>
 
@@ -114,6 +115,7 @@
                         Margin="10, 20, 0, 0"/>
                     <controls:IntegerUpDown
                         x:Name="SpentUpDown"
+                        ValueChanged="PoolSpentUpDown_ValueChanged"
                         Grid.Column="1"/>
                 </Grid>
             </Grid>

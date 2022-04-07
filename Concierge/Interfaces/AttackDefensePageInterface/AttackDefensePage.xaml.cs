@@ -80,6 +80,16 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
             }
         }
 
+        private static void ScrollDataGrid(ConciergeDataGrid dataGrid)
+        {
+            if (dataGrid.Items.Count > 0)
+            {
+                dataGrid.SelectedItem = dataGrid.Items[^1];
+                dataGrid.UpdateLayout();
+                dataGrid.ScrollIntoView(dataGrid.SelectedItem);
+            }
+        }
+
         private bool NextItem<T>(ConciergeDataGrid dataGrid, DrawList drawList, List<T> list, int limit, int increment)
         {
             var index = dataGrid.NextItem(list, limit, increment, this.ConciergePage);
@@ -136,16 +146,6 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
             foreach (var ammo in Program.CcsFile.Character.Ammunitions)
             {
                 this.AmmoDataGrid.Items.Add(ammo);
-            }
-        }
-
-        private void ScrollDataGrid(ConciergeDataGrid dataGrid)
-        {
-            if (dataGrid.Items.Count > 0)
-            {
-                dataGrid.SelectedItem = dataGrid.Items[^1];
-                dataGrid.UpdateLayout();
-                dataGrid.ScrollIntoView(dataGrid.SelectedItem);
             }
         }
 
@@ -216,6 +216,20 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
             else if (this.WeaponDataGrid.SelectedItem != null)
             {
                 this.Edit(this.WeaponDataGrid.SelectedItem);
+            }
+        }
+
+        private void UseButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (this.AmmoDataGrid.SelectedItem is Ammunition ammunition)
+            {
+                var oldItem = ammunition.DeepCopy();
+                var index = this.AmmoDataGrid.SelectedIndex;
+
+                ammunition.Used++;
+                this.DrawAmmoList();
+                this.AmmoDataGrid.SetSelectedIndex(index);
+                Program.UndoRedoService.AddCommand(new EditCommand<Ammunition>(ammunition, oldItem, this.ConciergePage));
             }
         }
 
@@ -292,15 +306,15 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
                     break;
                 case "ModifyStatusEffectsWindow":
                     this.DrawStatusEffects();
-                    this.ScrollDataGrid(this.StatusEffectsDataGrid);
+                    ScrollDataGrid(this.StatusEffectsDataGrid);
                     break;
                 case "ModifyAmmoWindow":
                     this.DrawAmmoList();
-                    this.ScrollDataGrid(this.AmmoDataGrid);
+                    ScrollDataGrid(this.AmmoDataGrid);
                     break;
                 case "ModifyAttackWindow":
                     this.DrawWeaponList();
-                    this.ScrollDataGrid(this.WeaponDataGrid);
+                    ScrollDataGrid(this.WeaponDataGrid);
                     break;
             }
         }

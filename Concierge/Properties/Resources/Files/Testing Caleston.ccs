@@ -1371,7 +1371,7 @@
         "Ability": 2,
         "Damage": "1d4 +5",
         "Misc": "",
-        "DamageType": 2,
+        "DamageType": 8,
         "Range": "20 / 60",
         "Note": "Finesse, Light, Thrown",
         "Weight": {
@@ -1389,7 +1389,7 @@
         "Ability": 2,
         "Damage": "1d4 +5",
         "Misc": "",
-        "DamageType": 2,
+        "DamageType": 8,
         "Range": "20 / 60",
         "Note": "Finesse, Light, Thrown",
         "Weight": {
@@ -1407,7 +1407,7 @@
         "Ability": 2,
         "Damage": "1d8 +5",
         "Misc": "+1",
-        "DamageType": 2,
+        "DamageType": 8,
         "Range": "5 / 5",
         "Note": "Finesse, Gain the Jump spell.",
         "Weight": {
@@ -1425,7 +1425,7 @@
         "Ability": 2,
         "Damage": "1d6 +5",
         "Misc": "",
-        "DamageType": 2,
+        "DamageType": 8,
         "Range": "80 / 320",
         "Note": "Ammo, Two-Handed",
         "Weight": {
@@ -1443,7 +1443,7 @@
         "Ability": 2,
         "Damage": "1d4",
         "Misc": "",
-        "DamageType": 2,
+        "DamageType": 8,
         "Range": "20 / 60",
         "Note": "Finesse, light, thrown",
         "Weight": {
@@ -1461,7 +1461,7 @@
         "Ability": 2,
         "Damage": "1d6 +5",
         "Misc": "1d4 Force",
-        "DamageType": 2,
+        "DamageType": 8,
         "Range": "80 / 320",
         "Note": "Ammunition, two-handed. When you see a creature casting a spell within 60' while holding this bow, can cast Spelldrinker. Cannot be used again until a short or long rest.",
         "Weight": {
@@ -1642,5 +1642,5 @@
     ]
   },
   "OriginalCreationDate": "Sunday, 13 March 2022 06:59:30 PM",
-  "Version": "4.8.1"
+  "Version": "4.8.2"
 }

@@ -11,6 +11,8 @@ namespace Concierge.Character.Items
 
     public class Ammunition : ICopyable<Ammunition>
     {
+        private int used;
+
         public Ammunition()
         {
             this.Name = string.Empty;
@@ -26,7 +28,21 @@ namespace Concierge.Character.Items
 
         public DamageTypes DamageType { get; set; }
 
-        public int Used { get; set; }
+        public int Used
+        {
+            get
+            {
+                return this.used;
+            }
+
+            set
+            {
+                if (value <= this.Quantity)
+                {
+                    this.used = value;
+                }
+            }
+        }
 
         public Guid Id { get; init; }
 

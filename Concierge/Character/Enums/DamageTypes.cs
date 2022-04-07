@@ -7,18 +7,18 @@ namespace Concierge.Character.Enums
     public enum DamageTypes
     {
         None,
-        Bludgeoning,
-        Piercing,
-        Slashing,
         Acid,
+        Bludgeoning,
         Cold,
         Fire,
         Force,
         Lightning,
         Necrotic,
+        Piercing,
         Poison,
         Psychic,
         Radiant,
+        Slashing,
         Thunder,
     }
 }

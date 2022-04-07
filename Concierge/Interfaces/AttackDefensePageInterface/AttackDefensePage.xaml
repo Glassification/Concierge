@@ -481,6 +481,15 @@
                     </components:ConciergeDesignButton>
                     <components:ConciergeDesignButton 
                         Style="{StaticResource ConciergeDesignButtonStyle}" 
+                        x:Name="UseButton"
+                        Width="60"
+                        Foreground="Coral"
+                        Click="UseButton_Click"
+                        ToolTip="Use Selected Item">
+                        <materialDesign:PackIcon Kind="MinusBox" Width="25" Height="25"/>
+                    </components:ConciergeDesignButton>
+                    <components:ConciergeDesignButton 
+                        Style="{StaticResource ConciergeDesignButtonStyle}" 
                         x:Name="ButtonDelete"
                         Width="60"
                         Foreground="IndianRed"

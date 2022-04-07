@@ -100,7 +100,9 @@
 
                 <!--Value-->
                 <Grid Grid.Column="1">
-                    <controls:IntegerUpDown x:Name="QuantityUpDown"/>
+                    <controls:IntegerUpDown
+                        x:Name="QuantityUpDown"
+                        ValueChanged="QuantityUsedUpDown_ValueChanged"/>
                 </Grid>
             </Grid>
 
@@ -172,7 +174,9 @@
 
                 <!--Value-->
                 <Grid Grid.Column="1">
-                    <controls:IntegerUpDown x:Name="UsedUpDown"/>
+                    <controls:IntegerUpDown
+                        x:Name="UsedUpDown"
+                        ValueChanged="QuantityUsedUpDown_ValueChanged"/>
                 </Grid>
             </Grid>
         </Grid>

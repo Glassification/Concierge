@@ -7,6 +7,7 @@ namespace Concierge.Interfaces.UtilityInterface
     using System;
     using System.Windows;
 
+    using Concierge.Services.Enums;
     using Concierge.Services.WorkerServices;
     using Concierge.Utility;
 
@@ -15,14 +16,14 @@ namespace Concierge.Interfaces.UtilityInterface
     /// </summary>
     public partial class SplashScreenWindow : Window
     {
-        private readonly AnimatedTextWorkerService animatedTextWorkerService = new (Services.Enums.TextAnimations.LoadingDots, 20);
+        private readonly AnimatedLoadingTextWorkerService animatedLoadingTextWorkerService = new (LoadingType.Random, 20);
 
         public SplashScreenWindow()
         {
             this.InitializeComponent();
 
-            this.animatedTextWorkerService.TextUpdated += this.SplashScreenWindow_TextUpdated;
-            this.animatedTextWorkerService.WorkerCompleted += this.SplashScreenWindow_WorkerCompleted;
+            this.animatedLoadingTextWorkerService.TextUpdated += this.SplashScreenWindow_TextUpdated;
+            this.animatedLoadingTextWorkerService.WorkerCompleted += this.SplashScreenWindow_WorkerCompleted;
 
             this.VersionText.Text = $"v{Program.AssemblyVersion}{(Program.IsDebug ? " - Debug" : string.Empty)}";
             this.Background = ConciergeColors.ProficiencyBrush;
@@ -30,7 +31,7 @@ namespace Concierge.Interfaces.UtilityInterface
 
         public void ShowWindow()
         {
-            this.animatedTextWorkerService.StartWorker("Loading");
+            this.animatedLoadingTextWorkerService.StartWorker("Loading");
             this.ShowDialog();
         }
 

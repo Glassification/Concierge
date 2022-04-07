@@ -132,6 +132,12 @@ namespace Concierge.Interfaces.Controls
             set { this.SetValue(IncrementProperty, value); }
         }
 
+        public void UpdateSpinnerStatus()
+        {
+            this.SetIncreaseButtonStatus(this.Value, this.Maximum);
+            this.SetDecreaseButtonStatus(this.Value, this.Minimum);
+        }
+
         private static void OnValuePropertyChanged(DependencyObject target, DependencyPropertyChangedEventArgs e)
         {
             if (target is IntegerUpDown conciergeIntegerUpDown)

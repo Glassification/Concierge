@@ -26,7 +26,6 @@ namespace Concierge.Interfaces
     using Concierge.Interfaces.UtilityInterface;
     using Concierge.Persistence;
     using Concierge.Services;
-    using Concierge.Services.Enums;
     using Concierge.Services.WorkerServices;
     using Concierge.Tools;
     using Concierge.Tools.Interface;
@@ -62,7 +61,7 @@ namespace Concierge.Interfaces
         private readonly MainWindowService mainWindowService;
         private readonly AutosaveService autosaveTimer = new ();
         private readonly DateTimeWorkerService dateTimeService = new ();
-        private readonly AnimatedTextWorkerService animatedTextWorkerService = new (TextAnimations.None, 17);
+        private readonly AnimatedTimedTextWorkerService animatedTimedTextWorkerService = new (17);
         private readonly CharacterCreationWizard characterCreationWizard = new ();
 
         public MainWindow()
@@ -72,7 +71,7 @@ namespace Concierge.Interfaces
             Program.UndoRedoService.StackChanged += this.UndoRedo_StackChanged;
             Program.ModifiedChanged += this.MainWindow_ModifiedChanged;
             this.dateTimeService.TimeUpdated += this.MainWindow_TimeUpdated;
-            this.animatedTextWorkerService.TextUpdated += this.MainWindow_TextUpdated;
+            this.animatedTimedTextWorkerService.TextUpdated += this.MainWindow_TextUpdated;
 
             this.mainWindowService = new MainWindowService(this.ListViewItem_Selected);
             this.GridContent.Width = GridContentWidthClose;
@@ -149,7 +148,7 @@ namespace Concierge.Interfaces
                 return;
             }
 
-            this.animatedTextWorkerService.StartWorker("Generated New Character Sheet!");
+            this.animatedTimedTextWorkerService.StartWorker("Generated New Character Sheet!");
             this.ResetCharacterSheet();
             this.DrawAll();
 
@@ -214,7 +213,7 @@ namespace Concierge.Interfaces
                 this.autosaveTimer.Start(Constants.CurrentAutosaveInterval);
             }
 
-            this.animatedTextWorkerService.StartWorker($"Opened '{ccsFile.AbsolutePath}'");
+            this.animatedTimedTextWorkerService.StartWorker($"Opened '{ccsFile.AbsolutePath}'");
             this.NotesPage.ClearTextBox();
             this.DrawAll();
         }
@@ -256,7 +255,7 @@ namespace Concierge.Interfaces
             Program.CcsFile.Character.LongRest();
             Program.Modify();
 
-            this.animatedTextWorkerService.StartWorker("Long Rest Complete!   HP and Spell Slots Replenished.");
+            this.animatedTimedTextWorkerService.StartWorker("Long Rest Complete!   HP and Spell Slots Replenished.");
             this.DrawAll();
         }
 
@@ -358,12 +357,12 @@ namespace Concierge.Interfaces
             if (saveAs)
             {
                 this.fileAccessService.SaveAs(Program.CcsFile);
-                this.animatedTextWorkerService.StartWorker($"Save As '{Program.CcsFile.AbsolutePath}'");
+                this.animatedTimedTextWorkerService.StartWorker($"Save As '{Program.CcsFile.AbsolutePath}'");
             }
             else
             {
                 this.fileAccessService.Save(Program.CcsFile);
-                this.animatedTextWorkerService.StartWorker($"Save '{Program.CcsFile.AbsolutePath}'");
+                this.animatedTimedTextWorkerService.StartWorker($"Save '{Program.CcsFile.AbsolutePath}'");
             }
         }
 

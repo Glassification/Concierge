@@ -114,6 +114,9 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
             this.BonusTextBox.Text = ammunition.Bonus;
             this.DamageTypeComboBox.Text = ammunition.DamageType.ToString();
             this.UsedUpDown.Value = ammunition.Used;
+
+            this.UsedUpDown.Maximum = this.QuantityUpDown.Value;
+            this.UsedUpDown.UpdateSpinnerStatus();
         }
 
         private void ClearFields()
@@ -188,6 +191,17 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
             {
                 this.FillFields(ammunition);
             }
+        }
+
+        private void QuantityUsedUpDown_ValueChanged(object sender, RoutedEventArgs e)
+        {
+            if (this.QuantityUpDown.Value < this.UsedUpDown.Value)
+            {
+                this.UsedUpDown.Value = this.QuantityUpDown.Value;
+            }
+
+            this.UsedUpDown.Maximum = this.QuantityUpDown.Value;
+            this.UsedUpDown.UpdateSpinnerStatus();
         }
     }
 }

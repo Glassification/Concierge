@@ -406,6 +406,20 @@ namespace Concierge.Interfaces.DetailsPageInterface
             }
         }
 
+        private void UseResourcesButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (this.ResourcesDataGrid.SelectedItem is ClassResource classResource)
+            {
+                var oldItem = classResource.DeepCopy();
+                var index = this.ResourcesDataGrid.SelectedIndex;
+
+                classResource.Spent++;
+                this.DrawResources();
+                this.ResourcesDataGrid.SetSelectedIndex(index);
+                Program.UndoRedoService.AddCommand(new EditCommand<ClassResource>(classResource, oldItem, this.ConciergePage));
+            }
+        }
+
         private void DeleteLanguagesButton_Click(object sender, RoutedEventArgs e)
         {
             if (this.LanguagesDataGrid.SelectedItem is not Language language)

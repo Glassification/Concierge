@@ -101,6 +101,9 @@ namespace Concierge.Interfaces.DetailsPageInterface
             this.PoolUpDown.Value = this.ClassResource.Total;
             this.SpentUpDown.Value = this.ClassResource.Spent;
             this.RecoveryTextBox.Text = this.ClassResource.Recovery;
+
+            this.SpentUpDown.Maximum = this.PoolUpDown.Value;
+            this.SpentUpDown.UpdateSpinnerStatus();
         }
 
         private void ClearFields()
@@ -176,6 +179,17 @@ namespace Concierge.Interfaces.DetailsPageInterface
         {
             this.Result = ConciergeWindowResult.Cancel;
             this.CloseConciergeWindow();
+        }
+
+        private void PoolSpentUpDown_ValueChanged(object sender, RoutedEventArgs e)
+        {
+            if (this.PoolUpDown.Value < this.SpentUpDown.Value)
+            {
+                this.SpentUpDown.Value = this.PoolUpDown.Value;
+            }
+
+            this.SpentUpDown.Maximum = this.PoolUpDown.Value;
+            this.SpentUpDown.UpdateSpinnerStatus();
         }
     }
 }

@@ -11,6 +11,8 @@ namespace Concierge.Character.Statuses
 
     public class ClassResource : ICopyable<ClassResource>
     {
+        private int spent;
+
         public ClassResource()
         {
             this.Type = string.Empty;
@@ -22,7 +24,21 @@ namespace Concierge.Character.Statuses
 
         public int Total { get; set; }
 
-        public int Spent { get; set; }
+        public int Spent
+        {
+            get
+            {
+                return this.spent;
+            }
+
+            set
+            {
+                if (value <= this.Total)
+                {
+                    this.spent = value;
+                }
+            }
+        }
 
         public string Recovery { get; set; }
 
