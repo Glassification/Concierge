@@ -36,7 +36,14 @@ namespace Concierge.Services.WorkerServices
 
         public void StartWorker(string message)
         {
-            this.UpdateTimer.RunWorkerAsync();
+            if (this.UpdateTimer.IsBusy)
+            {
+                this.UpdateTimer.CancelAsync();
+            }
+            else
+            {
+                this.UpdateTimer.RunWorkerAsync();
+            }
         }
 
         public void StopWorker()
@@ -64,6 +71,12 @@ namespace Concierge.Services.WorkerServices
 
             while (true)
             {
+                if (worker.CancellationPending == true)
+                {
+                    e.Cancel = true;
+                    return;
+                }
+
                 worker.ReportProgress(0);
                 Thread.Sleep(OneSecond);
             }

@@ -38,6 +38,16 @@ namespace Concierge.Search
             {
                 return;
             }
+
+            if (NavigateToRichTextBox())
+            {
+                return;
+            }
+        }
+
+        private bool NavigateToRichTextBox()
+        {
+            return false;
         }
 
         private bool NavigateToDataGrid()
@@ -93,6 +103,11 @@ namespace Concierge.Search
 
                     if (item is DocumentTreeViewItem)
                     {
+                        if (item.Parent is ChapterTreeViewItem parentItem)
+                        {
+                            parentItem.IsExpanded = true;
+                        }
+
                         (this.SearchResult.ConciergePage as NotesPage)?.HighlightSearchResults(this.SearchResult);
                     }
 

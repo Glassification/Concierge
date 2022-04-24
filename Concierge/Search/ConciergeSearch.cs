@@ -109,6 +109,62 @@ namespace Concierge.Search
         {
             this.SearchDataGrids(conciergePage);
             this.SearchTextBlocks(conciergePage);
+            this.SearchTreeView(conciergePage);
+        }
+
+        private void SearchTreeView(IConciergePage conciergePage)
+        {
+            if (conciergePage is not Page page)
+            {
+                return;
+            }
+
+            var treeViews = DisplayUtility.FindVisualChildren<TreeView>(page);
+            if (!treeViews.Any())
+            {
+                return;
+            }
+
+            foreach (var treeView in treeViews)
+            {
+                if (treeView.Items.Count == 0)
+                {
+                    continue;
+                }
+
+                foreach (TreeViewItem treeViewItem in treeView.Items)
+                {
+                    if (treeViewItem.Header is not Grid grid)
+                    {
+                        continue;
+                    }
+
+                    var textBlock = DisplayUtility.FindVisualChildren<TextBlock>(grid).FirstOrDefault();
+                    if (this.Regex.IsMatch(textBlock?.Text ?? string.Empty))
+                    {
+                        this.Results.Add(new SearchResult(this.SearchSettings.TextToSearch, treeViewItem, this.Regex, conciergePage));
+                    }
+
+                    if (treeViewItem.Items.Count == 0)
+                    {
+                        continue;
+                    }
+
+                    foreach (TreeViewItem treeViewItem2 in treeViewItem.Items)
+                    {
+                        if (treeViewItem2.Header is not Grid grid2)
+                        {
+                            continue;
+                        }
+
+                        var textBlock2 = DisplayUtility.FindVisualChildren<TextBlock>(grid2).FirstOrDefault();
+                        if (this.Regex.IsMatch(textBlock2?.Text ?? string.Empty))
+                        {
+                            this.Results.Add(new SearchResult(this.SearchSettings.TextToSearch, treeViewItem2, this.Regex, conciergePage));
+                        }
+                    }
+                }
+            }
         }
 
         private void SearchTextBlocks(IConciergePage conciergePage)
@@ -119,6 +175,11 @@ namespace Concierge.Search
             }
 
             var textBlocks = DisplayUtility.FindVisualChildren<ConciergeTextBlock>(page);
+            if (!textBlocks.Any())
+            {
+                return;
+            }
+
             foreach (var textBlock in textBlocks)
             {
                 if (this.Regex.IsMatch(textBlock.Text))

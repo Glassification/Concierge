@@ -15,9 +15,9 @@ namespace Concierge.Utility.Extensions
         {
             foreach (var item1 in treeView.Items)
             {
-                if (item1 is ChapterTreeViewItem chapter)
+                if (item1 is ChapterTreeViewItem chapter && item is ChapterTreeViewItem itemChapter)
                 {
-                    if (chapter.Chapter.Equals(item))
+                    if (chapter.Chapter.Id.Equals(itemChapter.Chapter.Id))
                     {
                         return chapter;
                     }
@@ -27,9 +27,9 @@ namespace Concierge.Utility.Extensions
                 {
                     foreach (var item2 in treeViewItem1.Items)
                     {
-                        if (item2 is DocumentTreeViewItem document)
+                        if (item2 is DocumentTreeViewItem document && item is DocumentTreeViewItem itemDocument)
                         {
-                            if (document.Document.Equals(item))
+                            if (document.Document.Id.Equals(itemDocument.Document.Id))
                             {
                                 return document;
                             }

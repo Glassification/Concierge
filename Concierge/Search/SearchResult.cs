@@ -31,5 +31,23 @@ namespace Concierge.Search
         public string SearchText { get; set; }
 
         public Regex SearchRegex { get; set; }
+
+        public override bool Equals(object? obj)
+        {
+            if (obj is not SearchResult searchResult)
+            {
+                return false;
+            }
+
+            return this.Item.Equals(searchResult.Item) &&
+                this.ConciergePage == searchResult.ConciergePage &&
+                this.SearchText.Equals(searchResult.SearchText) &&
+                this.SearchRegex.Equals(searchResult.SearchRegex);
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
     }
 }
