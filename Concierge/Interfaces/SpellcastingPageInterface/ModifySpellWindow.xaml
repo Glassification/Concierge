@@ -439,6 +439,7 @@
                             <components:ConciergeTextBox 
                                 x:Name="NotesTextBox"
                                 TextWrapping="Wrap"
+                                FontSize="13"
                                 VerticalAlignment="Stretch"/>
                         </ScrollViewer>
                     </components:ConciergeTextBoxBackground>

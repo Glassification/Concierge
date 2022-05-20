@@ -84,6 +84,7 @@
                             <components:ConciergeTextBox 
                                 x:Name="Trait1TextBox"
                                 VerticalAlignment="Stretch"
+                                FontSize="13"
                                 TextWrapping="Wrap"/>
                         </ScrollViewer>
                     </components:ConciergeTextBoxBackground>
@@ -113,6 +114,7 @@
                             <components:ConciergeTextBox 
                                 x:Name="Trait2TextBox"
                                 TextWrapping="Wrap"
+                                FontSize="13"
                                 VerticalAlignment="Stretch"/>
                         </ScrollViewer>
                     </components:ConciergeTextBoxBackground>
@@ -142,6 +144,7 @@
                             <components:ConciergeTextBox 
                                 x:Name="IdealTextBox"
                                 VerticalAlignment="Stretch"
+                                FontSize="13"
                                 TextWrapping="Wrap"/>
                         </ScrollViewer>
                     </components:ConciergeTextBoxBackground>
@@ -171,6 +174,7 @@
                             <components:ConciergeTextBox 
                                 x:Name="BondTextBox"
                                 VerticalAlignment="Stretch"
+                                FontSize="13"
                                 TextWrapping="Wrap"/>
                         </ScrollViewer>
                     </components:ConciergeTextBoxBackground>
@@ -209,6 +213,7 @@
                             <components:ConciergeTextBox 
                                 x:Name="FlawTextBox"
                                 VerticalAlignment="Stretch"
+                                FontSize="13"
                                 TextWrapping="Wrap"/>
                         </ScrollViewer>
                     </components:ConciergeTextBoxBackground>
@@ -238,6 +243,7 @@
                             <components:ConciergeTextBox 
                                 x:Name="BackgroundTextBox"
                                 VerticalAlignment="Stretch"
+                                FontSize="13"
                                 TextWrapping="Wrap"/>
                         </ScrollViewer>
                     </components:ConciergeTextBoxBackground>
@@ -267,6 +273,7 @@
                             <components:ConciergeTextBox 
                                 x:Name="NotesTextBox"
                                 VerticalAlignment="Stretch"
+                                FontSize="13"
                                 TextWrapping="Wrap"/>
                         </ScrollViewer>
                     </components:ConciergeTextBoxBackground>

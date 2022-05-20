@@ -11,6 +11,7 @@ namespace Concierge.Interfaces.UtilityInterface
     using System.Windows.Input;
     using System.Windows.Media;
 
+    using Concierge.Character.Notes;
     using Concierge.Exceptions;
     using Concierge.Interfaces.Components;
     using Concierge.Interfaces.Enums;
@@ -51,6 +52,10 @@ namespace Concierge.Interfaces.UtilityInterface
         private List<SearchResult> SearchResults { get; set; }
 
         private int SearchIndex { get; set; }
+
+        private SearchResult? CurrentResult => this.SearchResults.Count > 0 ? this.SearchResults[this.SearchIndex] : null;
+
+        private SearchResult? PreviousResult { get; set; }
 
         public override void ShowWindow()
         {
@@ -104,6 +109,7 @@ namespace Concierge.Interfaces.UtilityInterface
 
             this.SearchResults = this.conciergeSearch.Search(settings);
             this.SearchIndex = 0;
+            this.PreviousResult = null;
         }
 
         private void SelectSearchResult()
@@ -152,6 +158,11 @@ namespace Concierge.Interfaces.UtilityInterface
                     item.ResetHighlight();
                 }
             }
+
+            if (this.PreviousResult?.Item is Document || this.CurrentResult?.Item is Document)
+            {
+                Program.MainWindow?.NotesPage.ClearHighlightSelection();
+            }
         }
 
         private bool ValidateRegex()
@@ -179,6 +190,7 @@ namespace Concierge.Interfaces.UtilityInterface
 
         private void FindPreviousButton_Click(object? sender, RoutedEventArgs e)
         {
+            this.PreviousResult = this.SearchResults.Count > 0 ? this.SearchResults[this.SearchIndex] : null;
             this.SearchIndex--;
             if (this.SearchIndex < 0)
             {
@@ -191,6 +203,7 @@ namespace Concierge.Interfaces.UtilityInterface
 
         private void FindNextButton_Click(object? sender, RoutedEventArgs e)
         {
+            this.PreviousResult = this.SearchResults.Count > 0 ? this.SearchResults[this.SearchIndex] : null;
             this.SearchIndex++;
             if (this.SearchIndex >= this.SearchResults.Count)
             {

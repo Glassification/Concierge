@@ -86,7 +86,7 @@ namespace Concierge.Persistence.ReadWriters
                 return Convert.ToBase64String(byteArray);
             }
 
-            Program.Logger.Info("Uncoded file.");
+            Program.Logger.Info("Decoded file.");
             return rawJson;
         }
 
@@ -94,7 +94,7 @@ namespace Concierge.Persistence.ReadWriters
         {
             if (rawJson.Contains(IsJsonSearchText))
             {
-                Program.Logger.Info("File is Uncoded.");
+                Program.Logger.Info("File is Decoded.");
                 return rawJson;
             }
 

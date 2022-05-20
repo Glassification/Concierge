@@ -8,6 +8,7 @@ namespace Concierge.Interfaces
     using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Input;
+    using System.Windows.Media;
     using System.Windows.Navigation;
 
     using Concierge.Character.Characteristics;
@@ -440,7 +441,6 @@ namespace Concierge.Interfaces
             Program.UndoRedoService.Clear();
 
             this.NotesPage.ClearTextBox();
-            this.DrawAll();
 
             this.autosaveTimer.Stop();
         }

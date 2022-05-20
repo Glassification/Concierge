@@ -6,6 +6,7 @@ namespace Concierge.Interfaces.ToolsPageInterface
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Input;
@@ -33,7 +34,6 @@ namespace Concierge.Interfaces.ToolsPageInterface
 
             this.Players = new List<Player>();
             this.DiceHistory = new List<DiceRoll>();
-            this.Random = new Random();
 
             this.SetDefaultDivideValues();
             this.SetDefaultDiceValues();
@@ -46,8 +46,6 @@ namespace Concierge.Interfaces.ToolsPageInterface
         private List<Player> Players { get; set; }
 
         private List<DiceRoll> DiceHistory { get; }
-
-        private Random Random { get; }
 
         private bool DivideLootInputHasFocus
         {
@@ -222,15 +220,8 @@ namespace Concierge.Interfaces.ToolsPageInterface
 
         private string RollDice(int diceNumber, int diceSides, int modified, bool isPlus)
         {
-            var total = 0;
-            var rolledDice = new int[diceNumber];
-
-            for (int i = 0; i < diceNumber; i++)
-            {
-                var val = this.Random.Next(1, diceSides + 1);
-                total += val;
-                rolledDice[i] = val;
-            }
+            var rolledDice = DiceRoll.RollDice(diceNumber, diceSides);
+            var total = rolledDice.Sum();
 
             if (isPlus)
             {

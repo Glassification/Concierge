@@ -14,14 +14,14 @@ namespace Concierge.Character.Notes
         {
             this.Name = name;
             this.Id = Guid.NewGuid();
-            this.RTF = string.Empty;
+            this.Rtf = string.Empty;
         }
 
         public bool IsExpanded { get; set; }
 
         public string Name { get; set; }
 
-        public string RTF { get; set; }
+        public string Rtf { get; set; }
 
         public Guid Id { get; init; }
 
@@ -30,7 +30,7 @@ namespace Concierge.Character.Notes
             return new Document(this.Name)
             {
                 IsExpanded = this.IsExpanded,
-                RTF = this.RTF,
+                Rtf = this.Rtf,
                 Id = this.Id,
             };
         }

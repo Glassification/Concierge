@@ -5,7 +5,8 @@
 namespace Concierge.Utility
 {
     using System.Collections.ObjectModel;
-
+    using System.Reflection;
+    using System.Windows;
     using Concierge.Character.Characteristics;
     using Concierge.Character.Items;
     using Concierge.Character.Spellcasting;
@@ -26,7 +27,7 @@ namespace Concierge.Utility
         public const int MaxAttunedItems = 3;
         public const int SignificantDigits = 2;
         public const int Currencies = 5;
-        public const int MaxDepth = 10;
+        public const int MaxDepth = 20;
         public const int BrightnessTransition = 130;
 
         public const string Designer = "Thomas Beckett";
@@ -235,5 +236,23 @@ namespace Concierge.Utility
         public static ReadOnlyCollection<string> Resources { get; }
 
         public static int CurrentAutosaveInterval => AutosaveIntervals[AppSettingsManager.UserSettings.AutosaveInterval];
+
+        public static double DpiFactor
+        {
+            get
+            {
+                var dpiYProperty = typeof(SystemParameters).GetProperty("Dpi", BindingFlags.NonPublic | BindingFlags.Static);
+                var dpiY = (int?)dpiYProperty?.GetValue(null, null) ?? 96;
+
+                return dpiY switch
+                {
+                    96 => 1.25,
+                    120 => 1,
+                    144 => 0.75,
+                    168 => 0.50,
+                    _ => 1,
+                };
+            }
+        }
     }
 }

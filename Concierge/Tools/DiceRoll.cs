@@ -4,10 +4,13 @@
 
 namespace Concierge.Tools
 {
+    using System;
     using System.Collections.Generic;
 
     public class DiceRoll
     {
+        private static readonly Random random = new ();
+
         public DiceRoll(string roll, int[] list, int total)
         {
             this.Roll = roll;
@@ -35,5 +38,17 @@ namespace Concierge.Tools
         public int Total { get; init; }
 
         private List<int> DiceList { get; init; }
+
+        public static int[] RollDice(int diceNumber, int diceSides)
+        {
+            var rolledDice = new int[diceNumber];
+            for (int i = 0; i < diceNumber; i++)
+            {
+                var val = random.Next(1, diceSides + 1);
+                rolledDice[i] = val;
+            }
+
+            return rolledDice;
+        }
     }
 }

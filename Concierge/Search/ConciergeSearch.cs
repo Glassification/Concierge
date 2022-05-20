@@ -110,6 +110,33 @@ namespace Concierge.Search
             this.SearchDataGrids(conciergePage);
             this.SearchTextBlocks(conciergePage);
             this.SearchTreeView(conciergePage);
+            this.SearchDocuments(conciergePage);
+        }
+
+        private void SearchDocuments(IConciergePage conciergePage)
+        {
+            var chapters = Program.CcsFile.Character.Chapters;
+            if (!chapters.Any())
+            {
+                return;
+            }
+
+            foreach (var chapter in chapters)
+            {
+                var documents = chapter.Documents;
+                if (!documents.Any())
+                {
+                    continue;
+                }
+
+                foreach (var document in documents)
+                {
+                    if (this.Regex.IsMatch(document.Rtf.StripRichTextFormat() ?? string.Empty))
+                    {
+                        this.Results.Add(new SearchResult(this.SearchSettings.TextToSearch, document, this.Regex, conciergePage));
+                    }
+                }
+            }
         }
 
         private void SearchTreeView(IConciergePage conciergePage)
@@ -235,7 +262,7 @@ namespace Concierge.Search
                 {
                     var propertyValue = property.GetValue(item);
 
-                    if (propertyValue == null)
+                    if (propertyValue is null)
                     {
                         continue;
                     }
