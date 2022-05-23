@@ -808,21 +808,22 @@
                 <!--Roll History-->
                 <Grid Grid.Column="1"
                       Margin="3">
-                    <components:ConciergeDataGrid 
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="90*"/>
+                        <RowDefinition Height="10*"/>
+                    </Grid.RowDefinitions>
+                    
+                    <components:ConciergeDataGrid
+                        Grid.Row="0"
                         x:Name="RollDiceHistoryDataGrid"
                         Background="#001233"
                         MaxHeight="{Binding Path=AbilitiesHeight}"
                         Style="{DynamicResource ToolsDataGridStyle}">
                         <DataGrid.Columns>
                             <DataGridTextColumn
-                                Header="Roll"
-                                Binding="{Binding Roll}"
-                                Width="33*"
-                                ElementStyle="{StaticResource StandardColumnElementStyle}"/>
-                            <DataGridTextColumn
                                 Header="Dice"
                                 Binding="{Binding Dice}"
-                                Width="33*"
+                                Width="66*"
                                 ElementStyle="{StaticResource StandardColumnElementStyle}"/>
                             <DataGridTextColumn
                                 Header="Total"
@@ -831,6 +832,43 @@
                                 ElementStyle="{StaticResource StandardColumnElementStyle}"/>
                         </DataGrid.Columns>
                     </components:ConciergeDataGrid>
+                    
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="25"/>
+                        </Grid.ColumnDefinitions>
+
+                        <components:ConciergeTextBoxBackground
+                            Grid.Column="0"
+                            Margin="1">
+                            <components:ConciergeTextBox
+                                x:Name="CustomInputTextBox"
+                                VerticalContentAlignment="Center"
+                                Margin="10,1,10,1">
+                                <controls:WatermarkBuilder.Watermark>
+                                    <TextBlock
+                                        Text="Custom Roll eg. 4d6 + 1d4 + 5"
+                                        Foreground="White"
+                                        FontSize="13"
+                                        VerticalAlignment="Center"
+                                        HorizontalAlignment="Center"/>
+                                </controls:WatermarkBuilder.Watermark>
+                            </components:ConciergeTextBox>
+                        </components:ConciergeTextBoxBackground>
+                        <components:ConciergeDesignButton 
+                            Style="{StaticResource ConciergeDesignButtonStyle}" 
+                            Grid.Column="1"
+                            Margin="0"
+                            x:Name="ParseInputButton"
+                            VerticalAlignment="Stretch"
+                            HorizontalAlignment="Stretch"
+                            Foreground="SteelBlue"
+                            Click="ParseInputButton_Click"
+                            ToolTip="Calculate">
+                            <materialDesign:PackIcon Kind="CalculatorVariant" Height="auto" Width="auto"/>
+                        </components:ConciergeDesignButton>
+                    </Grid>
                 </Grid>
             </Grid>
         </Grid>

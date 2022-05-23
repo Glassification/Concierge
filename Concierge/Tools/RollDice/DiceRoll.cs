@@ -2,40 +2,46 @@
 // Copyright (c) Thomas Beckett. All rights reserved.
 // </copyright>
 
-namespace Concierge.Tools
+namespace Concierge.Tools.RollDice
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
 
-    public class DiceRoll
+    public class DiceRoll : IDiceRoll
     {
         private static readonly Random random = new ();
 
-        public DiceRoll(string roll, int[] list, int total)
+        public DiceRoll(int sides, int[] list, string modifier = "")
         {
-            this.Roll = roll;
+            this.Sides = sides;
+            this.Modifier = modifier;
             this.DiceList = new List<int>(list);
-            this.Total = total;
         }
 
-        public string Roll { get; init; }
+        public int Sides { get; init; }
+
+        public string Modifier { get; init; }
 
         public string Dice
         {
             get
             {
-                var str = string.Empty;
+                var str = $"{this.DiceList.Count}d{this.Sides}(";
 
                 foreach (int die in this.DiceList)
                 {
                     str += die + ", ";
                 }
 
-                return str.Trim(new char[] { ',', ' ' });
+                str = str.Trim(new char[] { ',', ' ' });
+                str = $"{str}){this.Modifier}";
+
+                return str;
             }
         }
 
-        public int Total { get; init; }
+        public int Total => Math.Max(this.DiceList.Sum(), 0);
 
         private List<int> DiceList { get; init; }
 

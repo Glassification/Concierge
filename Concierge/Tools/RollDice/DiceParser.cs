@@ -2,44 +2,31 @@
 // Copyright (c) Thomas Beckett. All rights reserved.
 // </copyright>
 
-namespace Concierge.Tools
+namespace Concierge.Tools.RollDice
 {
-    using System;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Text;
     using System.Text.RegularExpressions;
 
+    using Concierge.Exceptions;
     using Concierge.Utility.Extensions;
 
     public static class DiceParser
     {
-        private static readonly Regex patternSplit = new (@"(\+|\-)", RegexOptions.Compiled);
+        private static readonly Regex patternSplit = new (@"(\+|\-|\/|\*)", RegexOptions.Compiled);
 
-        public static DiceRoll? Parse(string input)
+        public static Stack<object> Parse(string input)
         {
             if (!IsValid(input))
             {
-                return null;
+                throw new InvalidExpressionException(input);
             }
 
             var list = SplitAndMaintainDelimiter(input);
             var objectList = Evaluate(list);
-            var totalValue = Compute(objectList);
+            var polishObjectList = ShuntingYard.ToPostfix(objectList);
 
-            return null;
-        }
-
-        private static int Compute(List<object> objectList)
-        {
-            int totalValue = 0;
-            while (!objectList.IsEmpty())
-            {
-                //var index = 
-
-            }
-
-            return totalValue;
+            return polishObjectList;
         }
 
         private static List<object> Evaluate(List<string> list)
@@ -78,7 +65,7 @@ namespace Concierge.Tools
                 }
 
                 var roll = DiceRoll.RollDice(number, sides);
-                objectList.Add(new DiceRoll($"{number}d{sides}", roll, roll.Sum()));
+                objectList.Add(new DiceRoll(sides, roll));
             }
 
             return objectList;
@@ -86,7 +73,7 @@ namespace Concierge.Tools
 
         private static bool IsValid(string input)
         {
-            return !input.IsNullOrWhiteSpace() && !(input.Contains('*') || input.Contains('/') || input.Contains('.'));
+            return !input.IsNullOrWhiteSpace() && (!input.Contains('.') && !input.Contains('*') && !input.Contains('/'));
         }
 
         private static List<string> SplitAndMaintainDelimiter(string input)

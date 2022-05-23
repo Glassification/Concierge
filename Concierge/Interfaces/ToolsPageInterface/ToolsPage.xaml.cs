@@ -14,8 +14,8 @@ namespace Concierge.Interfaces.ToolsPageInterface
 
     using Concierge.Interfaces.Controls;
     using Concierge.Interfaces.Enums;
-    using Concierge.Tools;
     using Concierge.Tools.DivideLoot;
+    using Concierge.Tools.RollDice;
     using Concierge.Utility;
 
     /// <summary>
@@ -33,7 +33,7 @@ namespace Concierge.Interfaces.ToolsPageInterface
             this.InitializeComponent();
 
             this.Players = new List<Player>();
-            this.DiceHistory = new List<DiceRoll>();
+            this.DiceHistory = new List<IDiceRoll>();
 
             this.SetDefaultDivideValues();
             this.SetDefaultDiceValues();
@@ -45,7 +45,7 @@ namespace Concierge.Interfaces.ToolsPageInterface
 
         private List<Player> Players { get; set; }
 
-        private List<DiceRoll> DiceHistory { get; }
+        private List<IDiceRoll> DiceHistory { get; }
 
         private bool DivideLootInputHasFocus
         {
@@ -234,7 +234,7 @@ namespace Concierge.Interfaces.ToolsPageInterface
 
             total = Math.Max(1, total);
 
-            this.DiceHistory.Add(new DiceRoll($"({diceNumber}d{diceSides}) {(isPlus ? "+" : "-")}{modified}", rolledDice, total));
+            this.DiceHistory.Add(new DiceRoll(diceSides, rolledDice, $" {(isPlus ? " + " : " - ")}{modified}"));
             this.DrawDiceHistory();
 
             return total.ToString();
@@ -245,6 +245,24 @@ namespace Concierge.Interfaces.ToolsPageInterface
             this.SetDefaultDivideValues();
             this.DivideLootDataGrid.Items.Clear();
             this.Players.Clear();
+        }
+
+        private void ParseCustomInput()
+        {
+            try
+            {
+                var input = this.CustomInputTextBox.Text;
+                var stack = DiceParser.Parse(input);
+                var result = new CustomDiceRoll(stack);
+
+                this.DiceHistory.Add(result);
+                this.DrawDiceHistory();
+                this.CustomInputTextBox.Text = string.Empty;
+            }
+            catch (Exception ex)
+            {
+                Program.ErrorService.LogError(ex);
+            }
         }
 
         private void ButtonDivideLoot_Click(object sender, RoutedEventArgs e)
@@ -284,6 +302,7 @@ namespace Concierge.Interfaces.ToolsPageInterface
             this.SetDefaultDiceValues();
             this.DiceHistory.Clear();
             this.DrawDiceHistory();
+            this.CustomInputTextBox.Text = string.Empty;
         }
 
         private void ButtonRoll_Click(object sender, RoutedEventArgs e)
@@ -331,6 +350,10 @@ namespace Concierge.Interfaces.ToolsPageInterface
                     {
                         this.DivideLoot();
                     }
+                    else if (this.CustomInputTextBox.IsFocused)
+                    {
+                        this.ParseCustomInput();
+                    }
 
                     break;
                 case Key.Escape:
@@ -356,6 +379,11 @@ namespace Concierge.Interfaces.ToolsPageInterface
                 this.RealNamesToggleButton.IsChecked = false;
                 this.RealNamesToggleButton.Visibility = Visibility.Hidden;
             }
+        }
+
+        private void ParseInputButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.ParseCustomInput();
         }
     }
 }
