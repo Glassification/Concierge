@@ -2,13 +2,14 @@
 // Copyright (c) Thomas Beckett. All rights reserved.
 // </copyright>
 
-namespace Concierge.Tools.RollDice
+namespace Concierge.Tools.DiceRolling
 {
     using System.Collections.Generic;
     using System.Linq;
     using System.Text.RegularExpressions;
 
     using Concierge.Exceptions;
+    using Concierge.Tools.DiceRolling.Dice;
     using Concierge.Utility.Extensions;
 
     public static class DiceParser
@@ -52,7 +53,7 @@ namespace Concierge.Tools.RollDice
                     continue;
                 }
 
-                var tokens = list[i].Split('d');
+                var tokens = list[i].Split('d').RemoveEmpty();
                 if (tokens.Length > 1)
                 {
                     number = int.Parse(tokens[0]);

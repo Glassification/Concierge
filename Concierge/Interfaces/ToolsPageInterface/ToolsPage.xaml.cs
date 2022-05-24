@@ -14,8 +14,9 @@ namespace Concierge.Interfaces.ToolsPageInterface
 
     using Concierge.Interfaces.Controls;
     using Concierge.Interfaces.Enums;
+    using Concierge.Tools.DiceRolling;
+    using Concierge.Tools.DiceRolling.Dice;
     using Concierge.Tools.DivideLoot;
-    using Concierge.Tools.RollDice;
     using Concierge.Utility;
 
     /// <summary>
@@ -33,7 +34,8 @@ namespace Concierge.Interfaces.ToolsPageInterface
             this.InitializeComponent();
 
             this.Players = new List<Player>();
-            this.DiceHistory = new List<IDiceRoll>();
+            this.RollHistory = new List<IDiceRoll>();
+            this.DiceHistory = new DiceHistory();
 
             this.SetDefaultDivideValues();
             this.SetDefaultDiceValues();
@@ -45,7 +47,9 @@ namespace Concierge.Interfaces.ToolsPageInterface
 
         private List<Player> Players { get; set; }
 
-        private List<IDiceRoll> DiceHistory { get; }
+        private List<IDiceRoll> RollHistory { get; }
+
+        private DiceHistory DiceHistory { get; set; }
 
         private bool DivideLootInputHasFocus
         {
@@ -192,7 +196,7 @@ namespace Concierge.Interfaces.ToolsPageInterface
         {
             this.RollDiceHistoryDataGrid.Items.Clear();
 
-            foreach (var dice in this.DiceHistory)
+            foreach (var dice in this.RollHistory)
             {
                 this.RollDiceHistoryDataGrid.Items.Add(dice);
             }
@@ -234,7 +238,7 @@ namespace Concierge.Interfaces.ToolsPageInterface
 
             total = Math.Max(1, total);
 
-            this.DiceHistory.Add(new DiceRoll(diceSides, rolledDice, $" {(isPlus ? " + " : " - ")}{modified}"));
+            this.RollHistory.Add(new DiceRoll(diceSides, rolledDice, $" {(isPlus ? " + " : " - ")}{modified}"));
             this.DrawDiceHistory();
 
             return total.ToString();
@@ -255,7 +259,8 @@ namespace Concierge.Interfaces.ToolsPageInterface
                 var stack = DiceParser.Parse(input);
                 var result = new CustomDiceRoll(stack);
 
-                this.DiceHistory.Add(result);
+                this.RollHistory.Add(result);
+                this.DiceHistory.Add(input);
                 this.DrawDiceHistory();
                 this.CustomInputTextBox.Text = string.Empty;
             }
@@ -300,7 +305,7 @@ namespace Concierge.Interfaces.ToolsPageInterface
         private void ButtonResetHistory_Click(object sender, RoutedEventArgs e)
         {
             this.SetDefaultDiceValues();
-            this.DiceHistory.Clear();
+            this.RollHistory.Clear();
             this.DrawDiceHistory();
             this.CustomInputTextBox.Text = string.Empty;
         }
@@ -384,6 +389,27 @@ namespace Concierge.Interfaces.ToolsPageInterface
         private void ParseInputButton_Click(object sender, RoutedEventArgs e)
         {
             this.ParseCustomInput();
+        }
+
+        private void CustomInputTextBox_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.Key)
+            {
+                case Key.Up:
+                    if (this.CustomInputTextBox.IsFocused)
+                    {
+                        this.CustomInputTextBox.Text = this.DiceHistory.Backward();
+                    }
+
+                    break;
+                case Key.Down:
+                    if (this.CustomInputTextBox.IsFocused)
+                    {
+                        this.CustomInputTextBox.Text = this.DiceHistory.Forward();
+                    }
+
+                    break;
+            }
         }
     }
 }

@@ -2,10 +2,12 @@
 // Copyright (c) Thomas Beckett. All rights reserved.
 // </copyright>
 
-namespace Concierge.Tools.RollDice
+namespace Concierge.Tools.DiceRolling
 {
     using System.Collections.Generic;
     using System.Linq;
+
+    using Concierge.Tools.DiceRolling.Dice;
 
     public static class ShuntingYard
     {

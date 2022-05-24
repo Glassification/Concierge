@@ -2,7 +2,7 @@
 // Copyright (c) Thomas Beckett. All rights reserved.
 // </copyright>
 
-namespace Concierge.Tools.RollDice
+namespace Concierge.Tools.DiceRolling.Dice
 {
     using System;
     using System.Collections.Generic;
@@ -74,7 +74,7 @@ namespace Concierge.Tools.RollDice
         {
             if (stack.Count == 1)
             {
-
+                stack.Push(this.GetValueAndAddToString(stack.Pop()));
             }
             else
             {

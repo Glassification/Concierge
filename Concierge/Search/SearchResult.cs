@@ -5,6 +5,7 @@
 namespace Concierge.Search
 {
     using System.Text.RegularExpressions;
+
     using Concierge.Interfaces;
     using Concierge.Interfaces.OverviewPageInterface;
 

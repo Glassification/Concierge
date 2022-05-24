@@ -355,5 +355,19 @@ namespace Concierge.Utility.Extensions
 
             return string.Join(string.Empty, outList.ToArray());
         }
+
+        public static string[] RemoveEmpty(this string[] list)
+        {
+            var newList = new List<string>();
+            for (int i = 0; i < list.Length; i++)
+            {
+                if (!list[i].Equals(string.Empty))
+                {
+                    newList.Add(list[i]);
+                }
+            }
+
+            return newList.ToArray();
+        }
     }
 }
