@@ -16,8 +16,8 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="5*"/>
-            <RowDefinition Height="5*" />
+            <RowDefinition Height="55*"/>
+            <RowDefinition Height="45*" />
         </Grid.RowDefinitions>
 
         <!--Dice Roller-->
@@ -64,15 +64,16 @@
                 <!--Roll Dice-->
                 <Grid Grid.Column="0">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="12*" />
-                        <RowDefinition Height="11*" />
-                        <RowDefinition Height="11*" />
-                        <RowDefinition Height="11*" />
-                        <RowDefinition Height="11*" />
-                        <RowDefinition Height="11*" />
-                        <RowDefinition Height="11*" />
-                        <RowDefinition Height="11*" />
-                        <RowDefinition Height="11*" />
+                        <RowDefinition Height="10*" />
+                        <RowDefinition Height="10*" />
+                        <RowDefinition Height="10*" />
+                        <RowDefinition Height="10*" />
+                        <RowDefinition Height="10*" />
+                        <RowDefinition Height="10*" />
+                        <RowDefinition Height="10*" />
+                        <RowDefinition Height="10*" />
+                        <RowDefinition Height="10*" />
+                        <RowDefinition Height="10*" />
                     </Grid.RowDefinitions>
 
                     <!--Header-->
@@ -719,10 +720,10 @@
                         </Grid>
                     </Grid>
 
-                    <!--Custom-->
+                    <!--Dx-->
                     <Grid Grid.Row="8"
                           Background="#FF3e3e42"
-                          Margin="3, 0, 3, 3">
+                          Margin="3, 0, 3, 0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="15*"/>
                             <ColumnDefinition Width="20*"/>
@@ -803,18 +804,83 @@
                                    VerticalAlignment="Center"/>
                         </Grid>
                     </Grid>
+                    
+                    <!--Custom-->
+                    <Grid Grid.Row="9"
+                          Background="#FF333333"
+                          Margin="3, 0, 3, 3">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="15*"/>
+                            <ColumnDefinition Width="50*"/>
+                            <ColumnDefinition Width="15*"/>
+                            <ColumnDefinition Width="20*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <!--Die-->
+                        <Grid Grid.Column="0">
+                            <components:ConciergeTextBlock 
+                                Text="Custom"
+                                Foreground="White"
+                                FontSize="23"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"/>
+                        </Grid>
+                        <Grid Grid.Column="1">
+                            <Border
+                                BorderThickness="1"
+                                Background="DimGray">
+                                <components:ConciergeTextBoxBackground
+                                    Background="#3F3F3F"
+                                    Height="auto"
+                                    VerticalAlignment="Stretch"
+                                    Margin="1"
+                                    ToolTip="Up/Down to Scroll History">
+                                    <components:ConciergeTextBox
+                                        x:Name="CustomInputTextBox"
+                                        VerticalContentAlignment="Center"
+                                        Margin="10,1,10,1"
+                                        FontSize="18"
+                                        Background="#3F3F3F"
+                                        PreviewKeyDown="CustomInputTextBox_PreviewKeyDown">
+                                        <controls:WatermarkBuilder.Watermark>
+                                            <TextBlock
+                                                Text="Custom Roll eg. 4d6 + 1d4 + 5"
+                                                Foreground="White"
+                                                FontSize="13"
+                                                VerticalAlignment="Center"
+                                                HorizontalAlignment="Center"/>
+                                        </controls:WatermarkBuilder.Watermark>
+                                    </components:ConciergeTextBox>
+                                </components:ConciergeTextBoxBackground>
+                            </Border>
+                        </Grid>
+                        <!--Roll-->
+                        <Grid Grid.Column="2">
+                            <components:ConciergeDesignButton 
+                                Style="{StaticResource ConciergeDesignButtonStyle}" 
+                                x:Name="CustomRollButton"
+                                Width="60"
+                                Foreground="#0D77D7"
+                                ToolTip="Roll Custom"
+                                Click="ParseInputButton_Click">
+                                <materialDesign:PackIcon Kind="CalculatorVariant" Height="25" Width="25"/>
+                            </components:ConciergeDesignButton>
+                        </Grid>
+                        <!--Result-->
+                        <Grid Grid.Column="3">
+                            <components:ConciergeTextBlock
+                                x:Name="CustomResult"
+                                Foreground="White"
+                                FontSize="25"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"/>
+                        </Grid>
+                    </Grid>
                 </Grid>
 
                 <!--Roll History-->
-                <Grid Grid.Column="1"
-                      Margin="3">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="90*"/>
-                        <RowDefinition Height="10*"/>
-                    </Grid.RowDefinitions>
-                    
+                <Grid Grid.Column="1" Margin="3">
                     <components:ConciergeDataGrid
-                        Grid.Row="0"
                         x:Name="RollDiceHistoryDataGrid"
                         Background="#001233"
                         MaxHeight="{Binding Path=AbilitiesHeight}"
@@ -832,45 +898,6 @@
                                 ElementStyle="{StaticResource StandardColumnElementStyle}"/>
                         </DataGrid.Columns>
                     </components:ConciergeDataGrid>
-                    
-                    <Grid Grid.Row="1">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="90*"/>
-                            <ColumnDefinition Width="10*"/>
-                        </Grid.ColumnDefinitions>
-
-                        <components:ConciergeTextBoxBackground
-                            Grid.Column="0"
-                            Margin="1">
-                            <components:ConciergeTextBox
-                                x:Name="CustomInputTextBox"
-                                VerticalContentAlignment="Center"
-                                Margin="10,1,10,1"
-                                FontSize="18"
-                                PreviewKeyDown="CustomInputTextBox_PreviewKeyDown">
-                                <controls:WatermarkBuilder.Watermark>
-                                    <TextBlock
-                                        Text="Custom Roll eg. 4d6 + 1d4 + 5"
-                                        Foreground="White"
-                                        FontSize="13"
-                                        VerticalAlignment="Center"
-                                        HorizontalAlignment="Center"/>
-                                </controls:WatermarkBuilder.Watermark>
-                            </components:ConciergeTextBox>
-                        </components:ConciergeTextBoxBackground>
-                        <components:ConciergeDesignButton 
-                            Style="{StaticResource ConciergeDesignButtonStyle}" 
-                            Grid.Column="1"
-                            Margin="0"
-                            x:Name="ParseInputButton"
-                            VerticalAlignment="Stretch"
-                            HorizontalAlignment="Stretch"
-                            Foreground="SteelBlue"
-                            Click="ParseInputButton_Click"
-                            ToolTip="Calculate">
-                            <materialDesign:PackIcon Kind="CalculatorVariant" Height="auto" Width="auto"/>
-                        </components:ConciergeDesignButton>
-                    </Grid>
                 </Grid>
             </Grid>
         </Grid>

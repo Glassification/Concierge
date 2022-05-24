@@ -18,6 +18,7 @@ namespace Concierge.Interfaces.ToolsPageInterface
     using Concierge.Tools.DiceRolling.Dice;
     using Concierge.Tools.DivideLoot;
     using Concierge.Utility;
+    using Concierge.Utility.Extensions;
 
     /// <summary>
     /// Interaction logic for ToolsPage.xaml.
@@ -220,6 +221,7 @@ namespace Concierge.Interfaces.ToolsPageInterface
             SetDieValue(this.D20NumberUpDown, this.D20ModifierUpDown, this.D20Plus, this.D20Result);
             SetDieValue(this.DxNumberUpDown, this.DxModifierUpDown, this.DxPlus, this.DxResult);
             this.DxDieUpDown.Value = 1;
+            this.CustomResult.Text = Zero;
         }
 
         private string RollDice(int diceNumber, int diceSides, int modified, bool isPlus)
@@ -253,9 +255,14 @@ namespace Concierge.Interfaces.ToolsPageInterface
 
         private void ParseCustomInput()
         {
+            var input = this.CustomInputTextBox.Text;
+            if (input.IsNullOrWhiteSpace())
+            {
+                return;
+            }
+
             try
             {
-                var input = this.CustomInputTextBox.Text;
                 var stack = DiceParser.Parse(input);
                 var result = new CustomDiceRoll(stack);
 
@@ -263,6 +270,7 @@ namespace Concierge.Interfaces.ToolsPageInterface
                 this.DiceHistory.Add(input);
                 this.DrawDiceHistory();
                 this.CustomInputTextBox.Text = string.Empty;
+                this.CustomResult.Text = result.Total.ToString();
             }
             catch (Exception ex)
             {
