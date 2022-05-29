@@ -92,6 +92,10 @@ namespace Concierge.Interfaces
                 this.autosaveTimer.Start(Constants.CurrentAutosaveInterval);
             }
 
+            this.PopupBoxButton.ResetScaling();
+            this.ButtonClose.ResetScaling();
+            this.ButtonMinimize.ResetScaling();
+            this.MaximizeButton.ResetScaling();
             this.commandLineService.ReadCommandLineArgs();
             this.DrawAll();
 

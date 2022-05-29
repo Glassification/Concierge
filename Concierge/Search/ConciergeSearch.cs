@@ -115,8 +115,13 @@ namespace Concierge.Search
 
         private void SearchDocuments(IConciergePage conciergePage)
         {
+            if (conciergePage is not Page page)
+            {
+                return;
+            }
+
             var chapters = Program.CcsFile.Character.Chapters;
-            if (!chapters.Any())
+            if (!chapters.Any() || !DisplayUtility.FindVisualChildren<RichTextBox>(page).Any())
             {
                 return;
             }

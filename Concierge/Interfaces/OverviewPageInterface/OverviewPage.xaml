@@ -41,7 +41,6 @@
                         <components:ConciergeDesignButton 
                             Style="{StaticResource ConciergeDesignButtonStyle}" 
                             x:Name="EditAttributesButton"
-                            Width="35"
                             HorizontalAlignment="Left"
                             Foreground="Khaki"
                             Click="EditAttributesButton_Click"

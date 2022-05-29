@@ -102,7 +102,7 @@
 
             <!--Notes Tree-->
             <Grid Grid.Column="0" Margin="0,0,0,0.5">
-                <TreeView 
+                <components:ConciergeTreeView 
                     x:Name="NotesTreeView"
                     Margin="3"
                     Background="#001233"
@@ -123,7 +123,7 @@
                             x:Key="{x:Static SystemColors.InactiveSelectionHighlightTextBrushKey}"
                             Color="White" />
                     </TreeView.Resources>
-                </TreeView>
+                </components:ConciergeTreeView>
             </Grid>
 
             <!--Notes-->

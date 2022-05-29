@@ -20,15 +20,20 @@ namespace Concierge.Interfaces.Components
             this.HorizontalAlignment = HorizontalAlignment.Center;
             this.VerticalAlignment = VerticalAlignment.Stretch;
 
+            var scaling = Constants.DpiFactor;
+            this.LayoutTransform = new ScaleTransform(scaling, scaling, 0.5, 0.5);
+
             this.Click += this.Button_Click;
             this.MouseEnter += this.Button_MouseEnter;
             this.MouseLeave += this.Button_MouseLeave;
-
-            var scaling = Constants.DpiFactor;
-            this.LayoutTransform = new ScaleTransform(scaling, scaling, 0.5, 0.5);
         }
 
         private SolidColorBrush? OriginalForeground { get; set; }
+
+        public void ResetScaling()
+        {
+            this.LayoutTransform = new ScaleTransform(1, 1, 0.5, 0.5);
+        }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
