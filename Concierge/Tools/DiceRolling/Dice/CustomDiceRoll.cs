@@ -7,6 +7,8 @@ namespace Concierge.Tools.DiceRolling.Dice
     using System;
     using System.Collections.Generic;
 
+    using Concierge.Exceptions;
+
     public class CustomDiceRoll : IDiceRoll
     {
         public CustomDiceRoll(Stack<object> stack)
@@ -72,6 +74,11 @@ namespace Concierge.Tools.DiceRolling.Dice
 
         private int Compute(Stack<object> stack)
         {
+            if (stack.Count == 0)
+            {
+                throw new EvaluationException();
+            }
+
             if (stack.Count == 1)
             {
                 stack.Push(this.GetValueAndAddToString(stack.Pop()));

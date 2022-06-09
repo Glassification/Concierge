@@ -90,7 +90,7 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="60" />
                 <ColumnDefinition Width="1*" />
-                <ColumnDefinition Width="240" />
+                <ColumnDefinition Width="245" />
             </Grid.ColumnDefinitions>
 
             <!-- Side Menu Toggle -->
@@ -99,8 +99,8 @@
                     <components:ConciergeDesignButton 
                         Style="{StaticResource ConciergeDesignButtonStyle}" 
                         x:Name="ButtonOpenMenu" 
-                        Height="50" 
-                        Width="60" 
+                        Width="60"
+                        Height="50"
                         Foreground="#D6D6D6" 
                         Click="ButtonOpenMenu_Click">
                         <materialDesign:PackIcon Kind="Menu" Width="25" Height="25"/>
@@ -108,9 +108,9 @@
                     <components:ConciergeDesignButton 
                         Style="{StaticResource ConciergeDesignButtonStyle}" 
                         x:Name="ButtonCloseMenu" 
-                        Visibility="Collapsed" 
-                        Height="50" 
+                        Visibility="Collapsed"
                         Width="60"
+                        Height="50"
                         Foreground="#D6D6D6" 
                         Click="ButtonCloseMenu_Click">
                         <materialDesign:PackIcon Kind="MenuOpen" Width="25" Height="25"/>

@@ -12,13 +12,25 @@
     <Compile Update="Interfaces\AttackDefensePageInterface\ModifyStatusEffectsWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Interfaces\Controls\AttributeDisplay.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Interfaces\Controls\ColorPicker.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Interfaces\Controls\DoubleUpDown.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Interfaces\Controls\HealthDisplay.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Interfaces\Controls\IntegerUpDown.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Interfaces\Controls\SavingThrowDisplay.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Interfaces\Controls\SkillDisplay.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Interfaces\EquippedItemsPageInterface\ModifyCharacterImageWindow.xaml.cs">
@@ -62,13 +74,25 @@
     <Page Update="Interfaces\CompanionPageInterface\ModifyCompanionPropertiesWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Interfaces\Controls\AttributeDisplay.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Interfaces\Controls\ColorPicker.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Interfaces\Controls\DoubleUpDown.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Interfaces\Controls\HealthDisplay.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Interfaces\Controls\IntegerUpDown.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Interfaces\Controls\SavingThrowDisplay.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Interfaces\Controls\SkillDisplay.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Interfaces\DetailsPageInterface\DetailsPage.xaml">

@@ -96,6 +96,9 @@ namespace Concierge.Interfaces
             this.ButtonClose.ResetScaling();
             this.ButtonMinimize.ResetScaling();
             this.MaximizeButton.ResetScaling();
+            this.ButtonCloseMenu.ResetScaling();
+            this.ButtonOpenMenu.ResetScaling();
+
             this.commandLineService.ReadCommandLineArgs();
             this.DrawAll();
 

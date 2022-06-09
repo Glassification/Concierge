@@ -5,6 +5,7 @@
 namespace Concierge.Search
 {
     using System.Windows.Controls;
+
     using Concierge.Character.Notes;
     using Concierge.Interfaces.Components;
     using Concierge.Interfaces.NotesPageInterface;

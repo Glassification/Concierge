@@ -7,6 +7,7 @@ namespace Concierge.Utility
     using System.Collections.ObjectModel;
     using System.Reflection;
     using System.Windows;
+
     using Concierge.Character.Characteristics;
     using Concierge.Character.Items;
     using Concierge.Character.Spellcasting;

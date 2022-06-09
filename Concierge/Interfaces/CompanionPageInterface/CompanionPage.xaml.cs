@@ -29,6 +29,15 @@ namespace Concierge.Interfaces.CompanionPageInterface
         public CompanionPage()
         {
             this.InitializeComponent();
+
+            this.StrengthAttributeDisplay.InitializeFontSize();
+            this.DexterityAttributeDisplay.InitializeFontSize();
+            this.ConstitutionAttributeDisplay.InitializeFontSize();
+            this.IntelligenceAttributeDisplay.InitializeFontSize();
+            this.WisdomAttributeDisplay.InitializeFontSize();
+            this.CharismaAttributeDisplay.InitializeFontSize();
+
+            this.HealthDisplay.InitializeDisplay();
             this.CurrentHitDiceBox = string.Empty;
         }
 
@@ -94,19 +103,19 @@ namespace Concierge.Interfaces.CompanionPageInterface
         {
             var attributes = Program.CcsFile.Character.Companion.Attributes;
 
-            this.StrengthBonusField.Text = CharacterUtility.CalculateBonus(attributes.Strength).ToString();
-            this.DexterityBonusField.Text = CharacterUtility.CalculateBonus(attributes.Dexterity).ToString();
-            this.ConstitutionBonusField.Text = CharacterUtility.CalculateBonus(attributes.Constitution).ToString();
-            this.IntelligenceBonusField.Text = CharacterUtility.CalculateBonus(attributes.Intelligence).ToString();
-            this.WisdomBonusField.Text = CharacterUtility.CalculateBonus(attributes.Wisdom).ToString();
-            this.CharismaBonusField.Text = CharacterUtility.CalculateBonus(attributes.Charisma).ToString();
+            this.StrengthAttributeDisplay.Bonus = CharacterUtility.CalculateBonus(attributes.Strength);
+            this.DexterityAttributeDisplay.Bonus = CharacterUtility.CalculateBonus(attributes.Dexterity);
+            this.ConstitutionAttributeDisplay.Bonus = CharacterUtility.CalculateBonus(attributes.Constitution);
+            this.IntelligenceAttributeDisplay.Bonus = CharacterUtility.CalculateBonus(attributes.Intelligence);
+            this.WisdomAttributeDisplay.Bonus = CharacterUtility.CalculateBonus(attributes.Wisdom);
+            this.CharismaAttributeDisplay.Bonus = CharacterUtility.CalculateBonus(attributes.Charisma);
 
-            this.StrengthScoreField.Text = attributes.Strength.ToString();
-            this.DexterityScoreField.Text = attributes.Dexterity.ToString();
-            this.ConstitutionScoreField.Text = attributes.Constitution.ToString();
-            this.IntelligenceScoreField.Text = attributes.Intelligence.ToString();
-            this.WisdomScoreField.Text = attributes.Wisdom.ToString();
-            this.CharismaScoreField.Text = attributes.Charisma.ToString();
+            this.StrengthAttributeDisplay.Score = attributes.Strength;
+            this.DexterityAttributeDisplay.Score = attributes.Dexterity;
+            this.ConstitutionAttributeDisplay.Score = attributes.Constitution;
+            this.IntelligenceAttributeDisplay.Score = attributes.Intelligence;
+            this.WisdomAttributeDisplay.Score = attributes.Wisdom;
+            this.CharismaAttributeDisplay.Score = attributes.Charisma;
         }
 
         private void DrawDetails()
@@ -122,11 +131,11 @@ namespace Concierge.Interfaces.CompanionPageInterface
 
         private void DrawHealth()
         {
-            this.CurrentHpField.Text = Program.CcsFile.Character.Companion.Vitality.CurrentHealth.ToString();
-            this.TotalHpField.Text = "/" + Program.CcsFile.Character.Companion.Vitality.Health.MaxHealth.ToString();
+            var vitality = Program.CcsFile.Character.Companion.Vitality;
 
-            this.HpBackground.Foreground = SetHealthStyle();
-            this.TotalHpField.Foreground = SetHealthStyle();
+            this.HealthDisplay.CurrentHealth = vitality.CurrentHealth;
+            this.HealthDisplay.TotalHealth = vitality.Health.MaxHealth;
+            this.HealthDisplay.SetHealthStyle(vitality);
         }
 
         private void DrawHitDice()

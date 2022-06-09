@@ -112,39 +112,6 @@ namespace Concierge.Utility.Utilities
             }
         }
 
-        public static void SetTextStyle(StatusChecks check, TextBlock textBlock)
-        {
-            switch (check)
-            {
-                case StatusChecks.Fail:
-                    textBlock.TextDecorations = TextDecorations.Strikethrough;
-                    textBlock.Foreground = Brushes.DarkGray;
-                    textBlock.ToolTip = "Automatic Fail";
-                    break;
-                case StatusChecks.Advantage:
-                    textBlock.TextDecorations = new TextDecorationCollection();
-                    textBlock.Foreground = Brushes.Green;
-                    textBlock.ToolTip = "Advantage";
-                    break;
-                case StatusChecks.Disadvantage:
-                    textBlock.TextDecorations = new TextDecorationCollection();
-                    textBlock.Foreground = Brushes.IndianRed;
-                    textBlock.ToolTip = "Disadvantage";
-                    break;
-                case StatusChecks.Normal:
-                default:
-                    textBlock.TextDecorations = new TextDecorationCollection();
-                    textBlock.Foreground = Brushes.White;
-                    textBlock.ToolTip = null;
-                    break;
-            }
-        }
-
-        public static void SetProficiencyBoxStyle(bool flag, Rectangle rectangle)
-        {
-            rectangle.Fill = flag ? ConciergeColors.ProficiencyBrush : Brushes.Transparent;
-        }
-
         public static Brush SetHealthStyle(Vitality vitality)
         {
             int third = vitality.Health.MaxHealth / 3;

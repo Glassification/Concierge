@@ -4,6 +4,7 @@
 
 namespace Concierge.Tools.DiceRolling
 {
+    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Text.RegularExpressions;
@@ -23,11 +24,18 @@ namespace Concierge.Tools.DiceRolling
                 throw new InvalidExpressionException(input);
             }
 
-            var list = SplitAndMaintainDelimiter(input);
-            var objectList = Evaluate(list);
-            var polishObjectList = ShuntingYard.ToPostfix(objectList);
+            try
+            {
+                var list = SplitAndMaintainDelimiter(input);
+                var objectList = Evaluate(list);
+                var polishObjectList = ShuntingYard.ToPostfix(objectList);
 
-            return polishObjectList;
+                return polishObjectList;
+            }
+            catch (Exception)
+            {
+                throw new InvalidExpressionException(input);
+            }
         }
 
         private static List<object> Evaluate(List<string> list)
