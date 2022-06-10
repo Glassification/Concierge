@@ -22,6 +22,9 @@ namespace Concierge.Interfaces.Components
 
             this.OriginalBackgroundColor = null;
             this.OriginalForegroundColor = null;
+
+            var scaling = Constants.DpiFactor;
+            this.LayoutTransform = new ScaleTransform(scaling, scaling, 0.5, 0.5);
         }
 
         public bool IsHighlighted => this.OriginalBackgroundColor != null || this.OriginalForegroundColor != null;

@@ -129,7 +129,7 @@
                         Header="Description"
                         Binding="{Binding Description}"
                         Width="0.4*"
-                        ElementStyle="{StaticResource StandardColumnElementStyle}"/>
+                        ElementStyle="{StaticResource WallOfTextColumnElementStyle}"/>
                 </DataGrid.Columns>
             </components:ConciergeDataGrid>
         </Grid>

@@ -6,6 +6,7 @@ namespace Concierge.Search
 {
     using System.Windows.Controls;
 
+    using Concierge.Character.Notes;
     using Concierge.Interfaces.Components;
     using Concierge.Interfaces.NotesPageInterface;
     using Concierge.Utility.Extensions;
@@ -29,25 +30,56 @@ namespace Concierge.Search
                 return;
             }
 
-            if (this.NavigateToTreeView())
-            {
-                return;
-            }
-
             if (this.NavigateToTextBlock())
             {
                 return;
             }
 
-            if (NavigateToRichTextBox())
+            if (this.NavigateToTreeView())
+            {
+                return;
+            }
+
+            if (this.NavigateToDocument())
             {
                 return;
             }
         }
 
-        private bool NavigateToRichTextBox()
+        private bool NavigateToDocument()
         {
-            return false;
+            if (this.SearchResult.ConciergePage is not Page conciergePage || this.SearchResult.Item is not Document document)
+            {
+                return false;
+            }
+
+            var treeViews = DisplayUtility.FindVisualChildren<TreeView>(conciergePage);
+            foreach (var treeView in treeViews)
+            {
+                var item = treeView.GetTreeViewItemByDocument(document);
+
+                if (item is null)
+                {
+                    return false;
+                }
+
+                item.IsSelected = true;
+                item.Focus();
+
+                if (item is DocumentTreeViewItem)
+                {
+                    if (item.Parent is ChapterTreeViewItem parentItem)
+                    {
+                        parentItem.IsExpanded = true;
+                    }
+
+                    (this.SearchResult.ConciergePage as NotesPage)?.HighlightSearchResults(this.SearchResult);
+                }
+
+                return true;
+            }
+
+            return true;
         }
 
         private bool NavigateToDataGrid()
@@ -96,23 +128,20 @@ namespace Concierge.Search
             {
                 var item = treeView.GetTreeViewItem(this.SearchResult.Item);
 
-                if (item is not null)
+                if (item is null)
                 {
-                    item.IsSelected = true;
-                    item.Focus();
-
-                    if (item is DocumentTreeViewItem)
-                    {
-                        if (item.Parent is ChapterTreeViewItem parentItem)
-                        {
-                            parentItem.IsExpanded = true;
-                        }
-
-                        (this.SearchResult.ConciergePage as NotesPage)?.HighlightSearchResults(this.SearchResult);
-                    }
-
-                    return true;
+                    return false;
                 }
+
+                item.IsSelected = true;
+                item.Focus();
+
+                if (item is DocumentTreeViewItem && item.Parent is ChapterTreeViewItem parentItem)
+                {
+                    parentItem.IsExpanded = true;
+                }
+
+                return true;
             }
 
             return false;

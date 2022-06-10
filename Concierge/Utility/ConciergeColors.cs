@@ -52,6 +52,9 @@ namespace Concierge.Utility
             Highlight = new SolidColorBrush(Color.FromArgb(255, 28, 57, 71));
             Highlight.Freeze();
 
+            HighlightRichTextBox = new SolidColorBrush(Colors.DarkOrchid);
+            HighlightRichTextBox.Freeze();
+
             NoteTreeItemHover = new SolidColorBrush(Color.FromArgb(255, 130, 223, 251));
             NoteTreeItemHover.Freeze();
 
@@ -90,6 +93,8 @@ namespace Concierge.Utility
         public static SolidColorBrush RectangleBorder { get; }
 
         public static SolidColorBrush Highlight { get; }
+
+        public static SolidColorBrush HighlightRichTextBox { get; }
 
         public static SolidColorBrush NoteTreeItemHover { get; }
 

@@ -9,7 +9,6 @@ namespace Concierge.Interfaces.DetailsPageInterface
     using System.Linq;
     using System.Windows;
     using System.Windows.Controls;
-    using System.Windows.Media;
 
     using Concierge.Character.Characteristics;
     using Concierge.Character.Enums;
@@ -19,8 +18,6 @@ namespace Concierge.Interfaces.DetailsPageInterface
     using Concierge.Interfaces.Components;
     using Concierge.Interfaces.Enums;
     using Concierge.Services;
-    using Concierge.Utility;
-    using Concierge.Utility.Units;
     using Concierge.Utility.Utilities;
 
     /// <summary>
@@ -124,41 +121,18 @@ namespace Concierge.Interfaces.DetailsPageInterface
 
         private void DrawWeight()
         {
-            var character = Program.CcsFile.Character;
-
-            this.WeightCarriedField.Text = UnitFormat.FormatWeight(AppSettingsManager.UserSettings.UnitOfMeasurement, character.CarryWeight);
-            this.LightWeightField.Text = UnitFormat.FormatWeight(AppSettingsManager.UserSettings.UnitOfMeasurement, character.LightCarryCapacity, true);
-            this.MediumWeightField.Text = UnitFormat.FormatWeight(AppSettingsManager.UserSettings.UnitOfMeasurement, character.MediumCarryCapacity, true);
-            this.HeavyWeightField.Text = UnitFormat.FormatWeight(AppSettingsManager.UserSettings.UnitOfMeasurement, character.HeavyCarryCapacity, true);
-
-            this.FormatCarryWeight();
+            this.WeightDisplay.SetWeightValues(Program.CcsFile.Character, AppSettingsManager.UserSettings.UnitOfMeasurement);
+            this.WeightDisplay.FormatCarryWeight(Program.CcsFile.Character);
         }
 
         private void DrawAppearance()
         {
-            var appearance = Program.CcsFile.Character.Appearance;
-
-            this.GenderField.Text = appearance.Gender;
-            this.AgeField.Text = appearance.Age.ToString();
-            this.HeightField.Text = appearance.Height.ToString();
-            this.WeightField.Text = appearance.Weight.ToString();
-            this.HairColourField.Text = appearance.HairColour;
-            this.SkinColourField.Text = appearance.SkinColour;
-            this.EyeColourField.Text = appearance.EyeColour;
-            this.MarksField.Text = appearance.DistinguishingMarks;
+            this.AppearanceDisplay.SetAppearance(Program.CcsFile.Character.Appearance);
         }
 
         private void DrawPersonality()
         {
-            var personality = Program.CcsFile.Character.Personality;
-
-            this.TraitField1.Text = personality.Trait1;
-            this.TraitField2.Text = personality.Trait2;
-            this.IdealField.Text = personality.Ideal;
-            this.BondField.Text = personality.Bond;
-            this.FlawField.Text = personality.Flaw;
-            this.BackgroundField.Text = personality.Background;
-            this.NotesField.Text = personality.Notes;
+            this.PersonalityDisplay.SetPersonality(Program.CcsFile.Character.Personality);
         }
 
         private void DrawProficiencies()
@@ -200,32 +174,6 @@ namespace Concierge.Interfaces.DetailsPageInterface
             foreach (var condition in Program.CcsFile.Character.Vitality.Conditions.ToList())
             {
                 this.ConditionsDataGrid.Items.Add(condition);
-            }
-        }
-
-        private void FormatCarryWeight()
-        {
-            var weight = Program.CcsFile.Character.CarryWeight;
-
-            if (weight <= Program.CcsFile.Character.LightCarryCapacity)
-            {
-                this.WeightCarriedField.Foreground = Brushes.Black;
-                this.WeightCarriedBox.Background = ConciergeColors.LightCarryCapacity;
-            }
-            else if (weight > Program.CcsFile.Character.LightCarryCapacity && weight <= Program.CcsFile.Character.MediumCarryCapacity)
-            {
-                this.WeightCarriedField.Foreground = ConciergeColors.HeavyCarryCapacity;
-                this.WeightCarriedBox.Background = ConciergeColors.MediumCarryCapacity;
-            }
-            else if (weight > Program.CcsFile.Character.MediumCarryCapacity && weight <= Program.CcsFile.Character.HeavyCarryCapacity)
-            {
-                this.WeightCarriedField.Foreground = Brushes.DarkRed;
-                this.WeightCarriedBox.Background = Brushes.Pink;
-            }
-            else
-            {
-                this.WeightCarriedField.Foreground = Brushes.Red;
-                this.WeightCarriedBox.Background = Brushes.DimGray;
             }
         }
 

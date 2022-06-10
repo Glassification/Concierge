@@ -21,7 +21,6 @@ namespace Concierge.Interfaces.Components
             this.Margin = new Thickness(5);
             this.BorderThickness = new Thickness(0);
             this.FontSize = 15;
-
             this.GotFocus += this.SoundEffect_GotFocus;
         }
 

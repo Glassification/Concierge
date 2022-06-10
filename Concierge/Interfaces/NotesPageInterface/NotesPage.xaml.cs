@@ -94,24 +94,53 @@ namespace Concierge.Interfaces.NotesPageInterface
         {
             if (this.SelectedDocument != null)
             {
-                this.SelectedDocument.RTF = this.SaveCurrentDocument();
+                this.SelectedDocument.Rtf = this.SaveCurrentDocument();
                 Program.Modify();
             }
         }
 
         public void HighlightSearchResults(SearchResult searchResult)
         {
+            this.ClearHighlightSelection();
+
+            var flowDocument = this.NotesTextBox.Document;
+            for (
+                var startPointer = flowDocument.ContentStart;
+                startPointer is not null && startPointer.CompareTo(flowDocument.ContentEnd) <= 0;
+                startPointer = startPointer?.GetNextContextPosition(LogicalDirection.Forward))
+            {
+                if (startPointer.CompareTo(flowDocument.ContentEnd) == 0)
+                {
+                    break;
+                }
+
+                var parsedString = startPointer.GetTextInRun(LogicalDirection.Forward);
+                if (parsedString.IsNullOrWhiteSpace())
+                {
+                    continue;
+                }
+
+                var match = searchResult.SearchRegex.Match(parsedString);
+                if (!match.Success)
+                {
+                    continue;
+                }
+
+                var indexOfParseString = match.Index;
+                startPointer = startPointer.GetPositionAtOffset(indexOfParseString);
+                if (startPointer is not null)
+                {
+                    var nextPointer = startPointer.GetPositionAtOffset(searchResult.SearchText.Length);
+                    var searchedTextRange = new TextRange(startPointer, nextPointer);
+                    searchedTextRange.ApplyPropertyValue(TextElement.BackgroundProperty, ConciergeColors.HighlightRichTextBox);
+                }
+            }
+        }
+
+        public void ClearHighlightSelection()
+        {
             this.NotesTextBox.SelectAll();
             this.NotesTextBox.Selection.ApplyPropertyValue(TextElement.BackgroundProperty, ConciergeColors.TotalLightBoxBrush);
-
-            foreach (Match match in searchResult.SearchRegex.Matches(this.NotesTextBox.Selection.Text))
-            {
-                var startHighlight = this.NotesTextBox.Document.ContentStart.GetPositionAtOffset(match.Index);
-                var endHighlight = this.NotesTextBox.Document.ContentEnd.GetPositionAtOffset(-(this.NotesTextBox.Selection.Text.Length - (match.Index + match.Length)));
-
-                this.NotesTextBox.Selection.Select(startHighlight, endHighlight);
-                this.NotesTextBox.Selection.ApplyPropertyValue(TextElement.BackgroundProperty, ConciergeColors.Highlight);
-            }
         }
 
         private void DrawTreeView()
@@ -199,7 +228,7 @@ namespace Concierge.Interfaces.NotesPageInterface
                     this.NotesTextBox.IsUndoEnabled = false;
                     this.NotesTextBox.IsUndoEnabled = true;
                     this.SelectedDocument = treeViewItem.Document;
-                    this.LoadCurrentDocument(this.SelectedDocument.RTF);
+                    this.LoadCurrentDocument(this.SelectedDocument.Rtf);
                     this.ResetUndoQueue();
                     ConciergeSound.TapNavigation();
                 }
@@ -368,7 +397,7 @@ namespace Concierge.Interfaces.NotesPageInterface
 
                 if (func(index, useZero ? 0 : chapterItem.Items.Count - 1))
                 {
-                    this.SelectedDocument.RTF = this.SaveCurrentDocument();
+                    this.SelectedDocument.Rtf = this.SaveCurrentDocument();
                     this.SwapTreeViewItem(chapterItem.Chapter.Documents, index, index + increment);
 
                     var newIndex = (this.NotesTreeView.Items[chapterIndex] as ChapterTreeViewItem)?.Items[index + increment];

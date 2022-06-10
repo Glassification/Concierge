@@ -9,7 +9,7 @@ namespace Concierge.Utility
 
     public static class Guard
     {
-        public static void IsNull(object value, string name)
+        public static void IsNull(object? value, string name)
         {
             if (value is null)
             {

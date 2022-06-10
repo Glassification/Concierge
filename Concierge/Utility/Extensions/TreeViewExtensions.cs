@@ -7,10 +7,33 @@ namespace Concierge.Utility.Extensions
     using System.Windows.Controls;
     using System.Windows.Media;
 
+    using Concierge.Character.Notes;
     using Concierge.Interfaces.Components;
 
     public static class TreeViewExtensions
     {
+        public static TreeViewItem? GetTreeViewItemByDocument(this TreeView treeView, Document document)
+        {
+            foreach (var item1 in treeView.Items)
+            {
+                if (item1 is TreeViewItem treeViewItem1)
+                {
+                    foreach (var item2 in treeViewItem1.Items)
+                    {
+                        if (item2 is DocumentTreeViewItem documentItem)
+                        {
+                            if (documentItem.Document.Id.Equals(document.Id))
+                            {
+                                return documentItem;
+                            }
+                        }
+                    }
+                }
+            }
+
+            return null;
+        }
+
         public static TreeViewItem? GetTreeViewItem(this TreeView treeView, object item)
         {
             foreach (var item1 in treeView.Items)

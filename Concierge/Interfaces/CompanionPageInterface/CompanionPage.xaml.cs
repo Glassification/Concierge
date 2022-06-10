@@ -8,8 +8,6 @@ namespace Concierge.Interfaces.CompanionPageInterface
     using System.Collections.Generic;
     using System.Windows;
     using System.Windows.Controls;
-    using System.Windows.Input;
-    using System.Windows.Media;
 
     using Concierge.Character.Characteristics;
     using Concierge.Character.Items;
@@ -29,14 +27,20 @@ namespace Concierge.Interfaces.CompanionPageInterface
         public CompanionPage()
         {
             this.InitializeComponent();
-            this.CurrentHitDiceBox = string.Empty;
+
+            this.StrengthAttributeDisplay.InitializeFontSize();
+            this.DexterityAttributeDisplay.InitializeFontSize();
+            this.ConstitutionAttributeDisplay.InitializeFontSize();
+            this.IntelligenceAttributeDisplay.InitializeFontSize();
+            this.WisdomAttributeDisplay.InitializeFontSize();
+            this.CharismaAttributeDisplay.InitializeFontSize();
+
+            this.HealthDisplay.InitializeDisplay();
         }
 
         public ConciergePage ConciergePage => ConciergePage.Companion;
 
         public bool HasEditableDataGrid => true;
-
-        private string CurrentHitDiceBox { get; set; }
 
         public void Draw()
         {
@@ -64,49 +68,23 @@ namespace Concierge.Interfaces.CompanionPageInterface
             this.WeaponDataGrid.SetSelectedIndex(index);
         }
 
-        private static Brush SetHealthStyle()
-        {
-            int third = Program.CcsFile.Character.Companion.Vitality.Health.MaxHealth / 3;
-            int hp = Program.CcsFile.Character.Companion.Vitality.CurrentHealth;
-
-            return hp < third && hp > 0
-                ? Brushes.IndianRed
-                : hp >= third * 2 ? Brushes.DarkGreen : hp <= 0 ? Brushes.DarkGray : Brushes.DarkOrange;
-        }
-
-        private void DrawSpentHitDice(TextBlock spentField, Grid spentBox, Border border, int spent, int total)
-        {
-            spentField.Text = spent.ToString();
-            spentField.Foreground = DisplayUtility.SetUsedTextStyle(total, spent);
-            spentBox.Background = DisplayUtility.SetUsedBoxStyle(total, spent);
-            DisplayUtility.SetBorderColour(spent, total, spentBox, border, this.CurrentHitDiceBox);
-        }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822:Mark members as static", Justification = "Consistency.")]
-        private void DrawTotalHitDice(TextBlock totalField, Grid totalBox, int spent, int total)
-        {
-            totalField.Text = total.ToString();
-            totalField.Foreground = DisplayUtility.SetTotalTextStyle(total, spent);
-            totalBox.Background = DisplayUtility.SetTotalBoxStyle(total, spent);
-        }
-
         private void DrawAttributes()
         {
             var attributes = Program.CcsFile.Character.Companion.Attributes;
 
-            this.StrengthBonusField.Text = CharacterUtility.CalculateBonus(attributes.Strength).ToString();
-            this.DexterityBonusField.Text = CharacterUtility.CalculateBonus(attributes.Dexterity).ToString();
-            this.ConstitutionBonusField.Text = CharacterUtility.CalculateBonus(attributes.Constitution).ToString();
-            this.IntelligenceBonusField.Text = CharacterUtility.CalculateBonus(attributes.Intelligence).ToString();
-            this.WisdomBonusField.Text = CharacterUtility.CalculateBonus(attributes.Wisdom).ToString();
-            this.CharismaBonusField.Text = CharacterUtility.CalculateBonus(attributes.Charisma).ToString();
+            this.StrengthAttributeDisplay.Bonus = CharacterUtility.CalculateBonus(attributes.Strength);
+            this.DexterityAttributeDisplay.Bonus = CharacterUtility.CalculateBonus(attributes.Dexterity);
+            this.ConstitutionAttributeDisplay.Bonus = CharacterUtility.CalculateBonus(attributes.Constitution);
+            this.IntelligenceAttributeDisplay.Bonus = CharacterUtility.CalculateBonus(attributes.Intelligence);
+            this.WisdomAttributeDisplay.Bonus = CharacterUtility.CalculateBonus(attributes.Wisdom);
+            this.CharismaAttributeDisplay.Bonus = CharacterUtility.CalculateBonus(attributes.Charisma);
 
-            this.StrengthScoreField.Text = attributes.Strength.ToString();
-            this.DexterityScoreField.Text = attributes.Dexterity.ToString();
-            this.ConstitutionScoreField.Text = attributes.Constitution.ToString();
-            this.IntelligenceScoreField.Text = attributes.Intelligence.ToString();
-            this.WisdomScoreField.Text = attributes.Wisdom.ToString();
-            this.CharismaScoreField.Text = attributes.Charisma.ToString();
+            this.StrengthAttributeDisplay.Score = attributes.Strength;
+            this.DexterityAttributeDisplay.Score = attributes.Dexterity;
+            this.ConstitutionAttributeDisplay.Score = attributes.Constitution;
+            this.IntelligenceAttributeDisplay.Score = attributes.Intelligence;
+            this.WisdomAttributeDisplay.Score = attributes.Wisdom;
+            this.CharismaAttributeDisplay.Score = attributes.Charisma;
         }
 
         private void DrawDetails()
@@ -122,28 +100,17 @@ namespace Concierge.Interfaces.CompanionPageInterface
 
         private void DrawHealth()
         {
-            this.CurrentHpField.Text = Program.CcsFile.Character.Companion.Vitality.CurrentHealth.ToString();
-            this.TotalHpField.Text = "/" + Program.CcsFile.Character.Companion.Vitality.Health.MaxHealth.ToString();
+            var vitality = Program.CcsFile.Character.Companion.Vitality;
 
-            this.HpBackground.Foreground = SetHealthStyle();
-            this.TotalHpField.Foreground = SetHealthStyle();
+            this.HealthDisplay.CurrentHealth = vitality.CurrentHealth;
+            this.HealthDisplay.TotalHealth = vitality.Health.MaxHealth;
+            this.HealthDisplay.SetHealthStyle(vitality);
         }
 
         private void DrawHitDice()
         {
-            var hitDice = Program.CcsFile.Character.Companion.Vitality.HitDice;
-
-            this.DrawSpentHitDice(this.D6SpentField, this.D6SpentBox, this.D6Border, hitDice.SpentD6, hitDice.TotalD6);
-            this.DrawTotalHitDice(this.D6TotalField, this.D6TotalBox, hitDice.SpentD6, hitDice.TotalD6);
-
-            this.DrawSpentHitDice(this.D8SpentField, this.D8SpentBox, this.D8Border, hitDice.SpentD8, hitDice.TotalD8);
-            this.DrawTotalHitDice(this.D8TotalField, this.D8TotalBox, hitDice.SpentD8, hitDice.TotalD8);
-
-            this.DrawSpentHitDice(this.D10SpentField, this.D10SpentBox, this.D10Border, hitDice.SpentD10, hitDice.TotalD10);
-            this.DrawTotalHitDice(this.D10TotalField, this.D10TotalBox, hitDice.SpentD10, hitDice.TotalD10);
-
-            this.DrawSpentHitDice(this.D12SpentField, this.D12SpentBox, this.D12Border, hitDice.SpentD12, hitDice.TotalD12);
-            this.DrawTotalHitDice(this.D12TotalField, this.D12TotalBox, hitDice.SpentD12, hitDice.TotalD12);
+            this.HitDiceDisplay.DrawSpentHitDice(Program.CcsFile.Character.Companion.Vitality.HitDice);
+            this.HitDiceDisplay.DrawTotalHitDice(Program.CcsFile.Character.Companion.Vitality.HitDice);
         }
 
         private void DrawAttacks()
@@ -287,98 +254,6 @@ namespace Concierge.Interfaces.CompanionPageInterface
             this.DrawDetails();
         }
 
-        private void SpentBox_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            if (e.ClickCount != 2 || sender is not Grid usedBox)
-            {
-                return;
-            }
-
-            var hitDice = Program.CcsFile.Character.Companion.Vitality.HitDice;
-            var oldItem = hitDice.DeepCopy();
-            switch (usedBox.Name)
-            {
-                case "D6SpentBox":
-                    hitDice.SpentD6 = DisplayUtility.IncrementUsedSlots(hitDice.SpentD6, hitDice.TotalD6);
-                    DisplayUtility.SetCursor(hitDice.SpentD6, hitDice.TotalD6, (x, y) => x == y, Cursors.Arrow);
-                    break;
-                case "D8SpentBox":
-                    hitDice.SpentD8 = DisplayUtility.IncrementUsedSlots(hitDice.SpentD8, hitDice.TotalD8);
-                    DisplayUtility.SetCursor(hitDice.SpentD8, hitDice.TotalD8, (x, y) => x == y, Cursors.Arrow);
-                    break;
-                case "D10SpentBox":
-                    hitDice.SpentD10 = DisplayUtility.IncrementUsedSlots(hitDice.SpentD10, hitDice.TotalD10);
-                    DisplayUtility.SetCursor(hitDice.SpentD10, hitDice.TotalD10, (x, y) => x == y, Cursors.Arrow);
-                    break;
-                case "D12SpentBox":
-                    hitDice.SpentD12 = DisplayUtility.IncrementUsedSlots(hitDice.SpentD12, hitDice.TotalD12);
-                    DisplayUtility.SetCursor(hitDice.SpentD12, hitDice.TotalD12, (x, y) => x == y, Cursors.Arrow);
-                    break;
-            }
-
-            Program.UndoRedoService.AddCommand(new EditCommand<HitDice>(hitDice, oldItem, this.ConciergePage));
-            Program.Modify();
-
-            this.DrawHitDice();
-        }
-
-        private void SpentBox_MouseEnter(object sender, MouseEventArgs e)
-        {
-            if (sender is not Grid grid)
-            {
-                return;
-            }
-
-            var hitDice = Program.CcsFile.Character.Companion.Vitality.HitDice;
-            this.CurrentHitDiceBox = grid.Name;
-            switch (grid.Name)
-            {
-                case "D6SpentBox":
-                    DisplayUtility.SetCursor(hitDice.SpentD6, hitDice.TotalD6, (x, y) => x != y, Cursors.Hand);
-                    DisplayUtility.SetBorderColour(hitDice.SpentD6, hitDice.TotalD6, grid, this.D6Border, this.CurrentHitDiceBox);
-                    break;
-                case "D8SpentBox":
-                    DisplayUtility.SetCursor(hitDice.SpentD8, hitDice.TotalD8, (x, y) => x != y, Cursors.Hand);
-                    DisplayUtility.SetBorderColour(hitDice.SpentD8, hitDice.TotalD8, grid, this.D8Border, this.CurrentHitDiceBox);
-                    break;
-                case "D10SpentBox":
-                    DisplayUtility.SetCursor(hitDice.SpentD10, hitDice.TotalD10, (x, y) => x != y, Cursors.Hand);
-                    DisplayUtility.SetBorderColour(hitDice.SpentD10, hitDice.TotalD10, grid, this.D10Border, this.CurrentHitDiceBox);
-                    break;
-                case "D12SpentBox":
-                    DisplayUtility.SetCursor(hitDice.SpentD12, hitDice.TotalD12, (x, y) => x != y, Cursors.Hand);
-                    DisplayUtility.SetBorderColour(hitDice.SpentD12, hitDice.TotalD12, grid, this.D12Border, this.CurrentHitDiceBox);
-                    break;
-            }
-        }
-
-        private void SpentBox_MouseLeave(object sender, MouseEventArgs e)
-        {
-            if (sender is not Grid grid)
-            {
-                return;
-            }
-
-            switch (grid.Name)
-            {
-                case "D6SpentBox":
-                    this.D6Border.BorderBrush = grid.Background;
-                    break;
-                case "D8SpentBox":
-                    this.D8Border.BorderBrush = grid.Background;
-                    break;
-                case "D10SpentBox":
-                    this.D10Border.BorderBrush = grid.Background;
-                    break;
-                case "D12SpentBox":
-                    this.D12Border.BorderBrush = grid.Background;
-                    break;
-            }
-
-            this.CurrentHitDiceBox = string.Empty;
-            Mouse.OverrideCursor = Cursors.Arrow;
-        }
-
         private void Window_ApplyChanges(object sender, EventArgs e)
         {
             switch (sender?.GetType()?.Name)
@@ -399,6 +274,11 @@ namespace Concierge.Interfaces.CompanionPageInterface
                     this.DrawDetails();
                     break;
             }
+        }
+
+        private void HitDiceDisplay_ValueChanged(object sender, RoutedEventArgs e)
+        {
+            this.DrawHitDice();
         }
     }
 }

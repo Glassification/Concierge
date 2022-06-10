@@ -107,16 +107,7 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
 
         private void DrawArmor()
         {
-            var armor = Program.CcsFile.Character.Armor;
-
-            this.AcField.Text = armor.TotalArmorClass.ToString();
-            this.ArmorWornField.Text = armor.Equiped;
-            this.ArmorTypeField.Text = armor.Type.ToString();
-            this.ArmorStealthField.Text = armor.Stealth.ToString();
-            this.ShieldWornField.Text = armor.Shield;
-            this.ShieldAcField.Text = armor.ShieldArmorClass.ToString();
-            this.MiscAcField.Text = armor.MiscArmorClass.ToString();
-            this.MagicAcField.Text = armor.MagicArmorClass.ToString();
+            this.ArmorDetailsDisplay.SetArmorDetails(Program.CcsFile.Character.Armor);
         }
 
         private void DrawWeaponList()

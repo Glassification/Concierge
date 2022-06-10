@@ -16,8 +16,8 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="5*"/>
-            <RowDefinition Height="5*" />
+            <RowDefinition Height="55*"/>
+            <RowDefinition Height="45*" />
         </Grid.RowDefinitions>
 
         <!--Dice Roller-->
@@ -64,15 +64,16 @@
                 <!--Roll Dice-->
                 <Grid Grid.Column="0">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="12*" />
-                        <RowDefinition Height="11*" />
-                        <RowDefinition Height="11*" />
-                        <RowDefinition Height="11*" />
-                        <RowDefinition Height="11*" />
-                        <RowDefinition Height="11*" />
-                        <RowDefinition Height="11*" />
-                        <RowDefinition Height="11*" />
-                        <RowDefinition Height="11*" />
+                        <RowDefinition Height="10*" />
+                        <RowDefinition Height="10*" />
+                        <RowDefinition Height="10*" />
+                        <RowDefinition Height="10*" />
+                        <RowDefinition Height="10*" />
+                        <RowDefinition Height="10*" />
+                        <RowDefinition Height="10*" />
+                        <RowDefinition Height="10*" />
+                        <RowDefinition Height="10*" />
+                        <RowDefinition Height="10*" />
                     </Grid.RowDefinitions>
 
                     <!--Header-->
@@ -153,676 +154,178 @@
                     </Grid>
 
                     <!--D4-->
-                    <Grid Grid.Row="1"
-                          Background="#FF333333"
-                          Margin="3, 0, 3, 0">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="15*"/>
-                            <ColumnDefinition Width="20*"/>
-                            <ColumnDefinition Width="15*"/>
-                            <ColumnDefinition Width="15*"/>
-                            <ColumnDefinition Width="15*"/>
-                            <ColumnDefinition Width="20*"/>
-                        </Grid.ColumnDefinitions>
-
-                        <!--Die-->
-                        <Grid Grid.Column="0">
-                            <components:ConciergeTextBlock Text="d4"
-                                   Foreground="White"
-                                   FontSize="25"
-                                   HorizontalAlignment="Center"
-                                   VerticalAlignment="Center"/>
-                        </Grid>
-                        <!--Number-->
-                        <Grid Grid.Column="1" Margin="3">
-                            <Border
-                                BorderThickness="1"
-                                Background="DimGray">
-                                <controls:IntegerUpDown 
-                                    x:Name="D4NumberUpDown"
-                                    Minimum="1"
-                                    Height="auto"
-                                    Margin="1"/>
-                            </Border>
-                        </Grid>
-                        <!--PlusMinus-->
-                        <Grid Grid.Column="2">
-                            <components:ConciergeRadioButton 
-                                Style="{StaticResource RadioButtonStyle}"
-                                x:Name="D4Plus"
-                                HorizontalAlignment="Left"
-                                VerticalAlignment="Center"
-                                Margin="30, 0, 0, 0"/>
-                            <components:ConciergeRadioButton 
-                                Style="{StaticResource RadioButtonStyle}"
-                                x:Name="D4Minus"
-                                HorizontalAlignment="Right"
-                                VerticalAlignment="Center"
-                                Margin="0, 0, 30, 0"/>
-                        </Grid>
-                        <!--Modifier-->
-                        <Grid Grid.Column="3" Margin="3">
-                            <Border
-                                BorderThickness="1"
-                                Background="DimGray">
-                                <controls:IntegerUpDown 
-                                    x:Name="D4ModifierUpDown"
-                                    Height="auto"
-                                    Margin="1"/>
-                            </Border>
-                        </Grid>
-                        <!--Roll-->
-                        <Grid Grid.Column="4">
-                            <components:ConciergeDesignButton 
-                                Style="{StaticResource ConciergeDesignButtonStyle}" 
-                                x:Name="ButtonRollD4"
-                                Width="60"
-                                Foreground="#0D77D7"
-                                ToolTip="Roll d4"
-                                Click="ButtonRoll_Click">
-                                <materialDesign:PackIcon Kind="DiceD4" Height="25" Width="25"/>
-                            </components:ConciergeDesignButton>
-                        </Grid>
-                        <!--Result-->
-                        <Grid Grid.Column="5">
-                            <components:ConciergeTextBlock x:Name="D4Result"
-                                   Foreground="White"
-                                   FontSize="25"
-                                   HorizontalAlignment="Center"
-                                   VerticalAlignment="Center"/>
-                        </Grid>
-                    </Grid>
+                    <controls:DiceRollDisplay
+                        Grid.Row="1"
+                        Background="#FF333333"
+                        x:Name="D4DiceRollDisplay"
+                        DiceName="d4"
+                        DiceSides="4"
+                        DiceSymbol="DiceD4"
+                        DiceToolTip="Roll a d4"
+                        DiceRolled="DiceRollDisplay_DiceRolled"/>
 
                     <!--D6-->
-                    <Grid Grid.Row="2"
-                          Background="#FF3e3e42"
-                          Margin="3, 0, 3, 0">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="15*"/>
-                            <ColumnDefinition Width="20*"/>
-                            <ColumnDefinition Width="15*"/>
-                            <ColumnDefinition Width="15*"/>
-                            <ColumnDefinition Width="15*"/>
-                            <ColumnDefinition Width="20*"/>
-                        </Grid.ColumnDefinitions>
-
-                        <!--Die-->
-                        <Grid Grid.Column="0">
-                            <components:ConciergeTextBlock Text="d6"
-                                   Foreground="White"
-                                   FontSize="25"
-                                   HorizontalAlignment="Center"
-                                   VerticalAlignment="Center"/>
-                        </Grid>
-                        <!--Number-->
-                        <Grid Grid.Column="1" Margin="3">
-                            <Border
-                                BorderThickness="1"
-                                Background="DimGray">
-                                <controls:IntegerUpDown 
-                                    x:Name="D6NumberUpDown"
-                                    Minimum="1"
-                                    Height="auto"
-                                    Margin="1"/>
-                            </Border>
-                        </Grid>
-                        <!--PlusMinus-->
-                        <Grid Grid.Column="2">
-                            <components:ConciergeRadioButton
-                                x:Name="D6Plus"
-                                Style="{StaticResource RadioButtonStyle}"
-                                HorizontalAlignment="Left"
-                                VerticalAlignment="Center"
-                                Margin="30, 0, 0, 0"/>
-                            <components:ConciergeRadioButton
-                                x:Name="D6Minus"
-                                Style="{StaticResource RadioButtonStyle}"
-                                HorizontalAlignment="Right"
-                                VerticalAlignment="Center"
-                                Margin="0, 0, 30, 0"/>
-                        </Grid>
-                        <!--Modifier-->
-                        <Grid Grid.Column="3" Margin="3">
-                            <Border
-                                BorderThickness="1"
-                                Background="DimGray">
-                                <controls:IntegerUpDown 
-                                    x:Name="D6ModifierUpDown"
-                                    Height="auto"
-                                    Margin="1"/>
-                            </Border>
-                        </Grid>
-                        <!--Roll-->
-                        <Grid Grid.Column="4">
-                            <components:ConciergeDesignButton 
-                                Style="{StaticResource ConciergeDesignButtonStyle}" 
-                                x:Name="ButtonRollD6"
-                                Width="60"
-                                Foreground="#0D77D7"
-                                ToolTip="Roll d6"
-                                Click="ButtonRoll_Click">
-                                <materialDesign:PackIcon Kind="DiceD6" Height="25" Width="25"/>
-                            </components:ConciergeDesignButton>
-                        </Grid>
-                        <!--Result-->
-                        <Grid Grid.Column="5">
-                            <components:ConciergeTextBlock x:Name="D6Result"
-                                   Foreground="White"
-                                   FontSize="25"
-                                   HorizontalAlignment="Center"
-                                   VerticalAlignment="Center"/>
-                        </Grid>
-                    </Grid>
+                    <controls:DiceRollDisplay
+                        Grid.Row="2"
+                        Background="#FF3e3e42"
+                        x:Name="D6DiceRollDisplay"
+                        DiceName="d6"
+                        DiceSides="6"
+                        DiceSymbol="DiceD6"
+                        DiceToolTip="Roll a d6"
+                        DiceRolled="DiceRollDisplay_DiceRolled"/>
 
                     <!--D8-->
-                    <Grid Grid.Row="3"
-                          Background="#FF333333"
-                          Margin="3, 0, 3, 0">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="15*"/>
-                            <ColumnDefinition Width="20*"/>
-                            <ColumnDefinition Width="15*"/>
-                            <ColumnDefinition Width="15*"/>
-                            <ColumnDefinition Width="15*"/>
-                            <ColumnDefinition Width="20*"/>
-                        </Grid.ColumnDefinitions>
-
-                        <!--Die-->
-                        <Grid Grid.Column="0">
-                            <components:ConciergeTextBlock Text="d8"
-                                   Foreground="White"
-                                   FontSize="25"
-                                   HorizontalAlignment="Center"
-                                   VerticalAlignment="Center"/>
-                        </Grid>
-                        <!--Number-->
-                        <Grid Grid.Column="1" Margin="3">
-                            <Border
-                                BorderThickness="1"
-                                Background="DimGray">
-                                <controls:IntegerUpDown 
-                                    x:Name="D8NumberUpDown"
-                                    Minimum="1"
-                                    Height="auto"
-                                    Margin="1"/>
-                            </Border>
-                        </Grid>
-                        <!--PlusMinus-->
-                        <Grid Grid.Column="2">
-                            <components:ConciergeRadioButton  
-                                x:Name="D8Plus"
-                                Style="{StaticResource RadioButtonStyle}"
-                                HorizontalAlignment="Left"
-                                VerticalAlignment="Center"
-                                Margin="30, 0, 0, 0"/>
-                            <components:ConciergeRadioButton 
-                                x:Name="D8Minus"
-                                Style="{StaticResource RadioButtonStyle}"
-                                HorizontalAlignment="Right"
-                                VerticalAlignment="Center"
-                                Margin="0, 0, 30, 0"/>
-                        </Grid>
-                        <!--Modifier-->
-                        <Grid Grid.Column="3" Margin="3">
-                            <Border
-                                BorderThickness="1"
-                                Background="DimGray">
-                                <controls:IntegerUpDown 
-                                    x:Name="D8ModifierUpDown"
-                                    Height="auto"
-                                    Margin="1"/>
-                            </Border>
-                        </Grid>
-                        <!--Roll-->
-                        <Grid Grid.Column="4">
-                            <components:ConciergeDesignButton 
-                                Style="{StaticResource ConciergeDesignButtonStyle}" 
-                                x:Name="ButtonRollD8"
-                                Width="60"
-                                Foreground="#0D77D7"
-                                ToolTip="Roll d8"
-                                Click="ButtonRoll_Click">
-                                <materialDesign:PackIcon Kind="DiceD8" Height="25" Width="25"/>
-                            </components:ConciergeDesignButton>
-                        </Grid>
-                        <!--Result-->
-                        <Grid Grid.Column="5">
-                            <components:ConciergeTextBlock x:Name="D8Result"
-                                   Foreground="White"
-                                   FontSize="25"
-                                   HorizontalAlignment="Center"
-                                   VerticalAlignment="Center"/>
-                        </Grid>
-                    </Grid>
+                    <controls:DiceRollDisplay
+                        Grid.Row="3"
+                        Background="#FF333333"
+                        x:Name="D8DiceRollDisplay"
+                        DiceName="d8"
+                        DiceSides="8"
+                        DiceSymbol="DiceD8"
+                        DiceToolTip="Roll a d8"
+                        DiceRolled="DiceRollDisplay_DiceRolled"/>
 
                     <!--D10-->
-                    <Grid Grid.Row="4"
-                          Background="#FF3e3e42"
-                          Margin="3, 0, 3, 0">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="15*"/>
-                            <ColumnDefinition Width="20*"/>
-                            <ColumnDefinition Width="15*"/>
-                            <ColumnDefinition Width="15*"/>
-                            <ColumnDefinition Width="15*"/>
-                            <ColumnDefinition Width="20*"/>
-                        </Grid.ColumnDefinitions>
-
-                        <!--Die-->
-                        <Grid Grid.Column="0">
-                            <components:ConciergeTextBlock Text="d10"
-                                   Foreground="White"
-                                   FontSize="25"
-                                   HorizontalAlignment="Center"
-                                   VerticalAlignment="Center"/>
-                        </Grid>
-                        <!--Number-->
-                        <Grid Grid.Column="1" Margin="3">
-                            <Border
-                                BorderThickness="1"
-                                Background="DimGray">
-                                <controls:IntegerUpDown 
-                                    x:Name="D10NumberUpDown"
-                                    Minimum="1"
-                                    Height="auto"
-                                    Margin="1"/>
-                            </Border>
-                        </Grid>
-                        <!--PlusMinus-->
-                        <Grid Grid.Column="2">
-                            <components:ConciergeRadioButton  
-                                x:Name="D10Plus"
-                                Style="{StaticResource RadioButtonStyle}"
-                                HorizontalAlignment="Left"
-                                VerticalAlignment="Center"
-                                Margin="30, 0, 0, 0"/>
-                            <components:ConciergeRadioButton  
-                                x:Name="D10Minus"
-                                Style="{StaticResource RadioButtonStyle}"
-                                HorizontalAlignment="Right"
-                                VerticalAlignment="Center"
-                                Margin="0, 0, 30, 0"/>
-                        </Grid>
-                        <!--Modifier-->
-                        <Grid Grid.Column="3" Margin="3">
-                            <Border
-                                BorderThickness="1"
-                                Background="DimGray">
-                                <controls:IntegerUpDown 
-                                    x:Name="D10ModifierUpDown"
-                                    Height="auto"
-                                    Margin="1"/>
-                            </Border>
-                        </Grid>
-                        <!--Roll-->
-                        <Grid Grid.Column="4">
-                            <components:ConciergeDesignButton 
-                                Style="{StaticResource ConciergeDesignButtonStyle}" 
-                                x:Name="ButtonRollD10"
-                                Width="60"
-                                Foreground="#0D77D7"
-                                ToolTip="Roll d10"
-                                Click="ButtonRoll_Click">
-                                <materialDesign:PackIcon Kind="DiceD10" Height="25" Width="25"/>
-                            </components:ConciergeDesignButton>
-                        </Grid>
-                        <!--Result-->
-                        <Grid Grid.Column="5">
-                            <components:ConciergeTextBlock x:Name="D10Result"
-                                   Foreground="White"
-                                   FontSize="25"
-                                   HorizontalAlignment="Center"
-                                   VerticalAlignment="Center"/>
-                        </Grid>
-                    </Grid>
+                    <controls:DiceRollDisplay
+                        Grid.Row="4"
+                        Background="#FF3e3e42"
+                        x:Name="D10DiceRollDisplay"
+                        DiceName="d10"
+                        DiceSides="10"
+                        DiceSymbol="DiceD10"
+                        DiceToolTip="Roll a d10"
+                        DiceRolled="DiceRollDisplay_DiceRolled"/>
 
                     <!--D100-->
-                    <Grid Grid.Row="5"
-                          Background="#FF333333"
-                          Margin="3, 0, 3, 0">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="15*"/>
-                            <ColumnDefinition Width="20*"/>
-                            <ColumnDefinition Width="15*"/>
-                            <ColumnDefinition Width="15*"/>
-                            <ColumnDefinition Width="15*"/>
-                            <ColumnDefinition Width="20*"/>
-                        </Grid.ColumnDefinitions>
-
-                        <!--Die-->
-                        <Grid Grid.Column="0">
-                            <components:ConciergeTextBlock Text="d100"
-                                   Foreground="White"
-                                   FontSize="25"
-                                   HorizontalAlignment="Center"
-                                   VerticalAlignment="Center"/>
-                        </Grid>
-                        <!--Number-->
-                        <Grid Grid.Column="1" Margin="3">
-                            <Border
-                                BorderThickness="1"
-                                Background="DimGray">
-                                <controls:IntegerUpDown 
-                                    x:Name="D100NumberUpDown"
-                                    Minimum="1"
-                                    Height="auto"
-                                    Margin="1"/>
-                            </Border>
-                        </Grid>
-                        <!--PlusMinus-->
-                        <Grid Grid.Column="2">
-                            <components:ConciergeRadioButton 
-                                x:Name="D100Plus"
-                                Style="{StaticResource RadioButtonStyle}"
-                                HorizontalAlignment="Left"
-                                VerticalAlignment="Center"
-                                Margin="30, 0, 0, 0"/>
-                            <components:ConciergeRadioButton  
-                                x:Name="D100Minus"
-                                Style="{StaticResource RadioButtonStyle}"
-                                HorizontalAlignment="Right"
-                                VerticalAlignment="Center"
-                                Margin="0, 0, 30, 0"/>
-                        </Grid>
-                        <!--Modifier-->
-                        <Grid Grid.Column="3" Margin="3">
-                            <Border
-                                BorderThickness="1"
-                                Background="DimGray">
-                                <controls:IntegerUpDown 
-                                    x:Name="D100ModifierUpDown"
-                                    Height="auto"
-                                    Margin="1"/>
-                            </Border>
-                        </Grid>
-                        <!--Roll-->
-                        <Grid Grid.Column="4">
-                            <components:ConciergeDesignButton 
-                                Style="{StaticResource ConciergeDesignButtonStyle}" 
-                                x:Name="ButtonRollD100"
-                                Width="60"
-                                Foreground="#0D77D7"
-                                ToolTip="Roll d100"
-                                Click="ButtonRoll_Click">
-                                <materialDesign:PackIcon Kind="DiceMultiple" Height="25" Width="25"/>
-                            </components:ConciergeDesignButton>
-                        </Grid>
-                        <!--Result-->
-                        <Grid Grid.Column="5">
-                            <components:ConciergeTextBlock x:Name="D100Result"
-                                   Foreground="White"
-                                   FontSize="25"
-                                   HorizontalAlignment="Center"
-                                   VerticalAlignment="Center"/>
-                        </Grid>
-                    </Grid>
+                    <controls:DiceRollDisplay
+                        Grid.Row="5"
+                        Background="#FF333333"
+                        x:Name="D100DiceRollDisplay"
+                        DiceName="d100"
+                        DiceSides="100"
+                        DiceSymbol="DiceMultiple"
+                        DiceToolTip="Roll a d100"
+                        DiceRolled="DiceRollDisplay_DiceRolled"/>
 
                     <!--D12-->
-                    <Grid Grid.Row="6"
-                          Background="#FF3e3e42"
-                          Margin="3, 0, 3, 0">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="15*"/>
-                            <ColumnDefinition Width="20*"/>
-                            <ColumnDefinition Width="15*"/>
-                            <ColumnDefinition Width="15*"/>
-                            <ColumnDefinition Width="15*"/>
-                            <ColumnDefinition Width="20*"/>
-                        </Grid.ColumnDefinitions>
-
-                        <!--Die-->
-                        <Grid Grid.Column="0">
-                            <components:ConciergeTextBlock Text="d12"
-                                   Foreground="White"
-                                   FontSize="25"
-                                   HorizontalAlignment="Center"
-                                   VerticalAlignment="Center"/>
-                        </Grid>
-                        <!--Number-->
-                        <Grid Grid.Column="1" Margin="3">
-                            <Border
-                                BorderThickness="1"
-                                Background="DimGray">
-                                <controls:IntegerUpDown 
-                                    x:Name="D12NumberUpDown"
-                                    Minimum="1"
-                                    Height="auto"
-                                    Margin="1"/>
-                            </Border>
-                        </Grid>
-                        <!--PlusMinus-->
-                        <Grid Grid.Column="2">
-                            <components:ConciergeRadioButton  
-                                x:Name="D12Plus"
-                                Style="{StaticResource RadioButtonStyle}"
-                                HorizontalAlignment="Left"
-                                VerticalAlignment="Center"
-                                Margin="30, 0, 0, 0"/>
-                            <components:ConciergeRadioButton  
-                                x:Name="D12Minus"
-                                Style="{StaticResource RadioButtonStyle}"
-                                HorizontalAlignment="Right"
-                                VerticalAlignment="Center"
-                                Margin="0, 0, 30, 0"/>
-                        </Grid>
-                        <!--Modifier-->
-                        <Grid Grid.Column="3" Margin="3">
-                            <Border
-                                BorderThickness="1"
-                                Background="DimGray">
-                                <controls:IntegerUpDown 
-                                    x:Name="D12ModifierUpDown"
-                                    Height="auto"
-                                    Margin="1"/>
-                            </Border>
-                        </Grid>
-                        <!--Roll-->
-                        <Grid Grid.Column="4">
-                            <components:ConciergeDesignButton 
-                                Style="{StaticResource ConciergeDesignButtonStyle}" 
-                                x:Name="ButtonRollD12"
-                                Width="60"
-                                Foreground="#0D77D7"
-                                ToolTip="Roll d12"
-                                Click="ButtonRoll_Click">
-                                <materialDesign:PackIcon Kind="DiceD12" Height="25" Width="25"/>
-                            </components:ConciergeDesignButton>
-                        </Grid>
-                        <!--Result-->
-                        <Grid Grid.Column="5">
-                            <components:ConciergeTextBlock x:Name="D12Result"
-                                   Foreground="White"
-                                   FontSize="25"
-                                   HorizontalAlignment="Center"
-                                   VerticalAlignment="Center"/>
-                        </Grid>
-                    </Grid>
+                    <controls:DiceRollDisplay
+                        Grid.Row="6"
+                        Background="#FF3e3e42"
+                        x:Name="D12DiceRollDisplay"
+                        DiceName="d12"
+                        DiceSides="12"
+                        DiceSymbol="DiceD12"
+                        DiceToolTip="Roll a d12"
+                        DiceRolled="DiceRollDisplay_DiceRolled"/>
 
                     <!--D20-->
-                    <Grid Grid.Row="7"
-                          Background="#FF333333"
-                          Margin="3, 0, 3, 0">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="15*"/>
-                            <ColumnDefinition Width="20*"/>
-                            <ColumnDefinition Width="15*"/>
-                            <ColumnDefinition Width="15*"/>
-                            <ColumnDefinition Width="15*"/>
-                            <ColumnDefinition Width="20*"/>
-                        </Grid.ColumnDefinitions>
+                    <controls:DiceRollDisplay
+                        Grid.Row="7"
+                        Background="#FF333333"
+                        x:Name="D20DiceRollDisplay"
+                        DiceName="d20"
+                        DiceSides="20"
+                        DiceSymbol="DiceD20"
+                        DiceToolTip="Roll a d20"
+                        DiceRolled="DiceRollDisplay_DiceRolled"/>
 
-                        <!--Die-->
-                        <Grid Grid.Column="0">
-                            <components:ConciergeTextBlock Text="d20"
-                                   Foreground="White"
-                                   FontSize="25"
-                                   HorizontalAlignment="Center"
-                                   VerticalAlignment="Center"/>
-                        </Grid>
-                        <!--Number-->
-                        <Grid Grid.Column="1" Margin="3">
-                            <Border
-                                BorderThickness="1"
-                                Background="DimGray">
-                                <controls:IntegerUpDown 
-                                    x:Name="D20NumberUpDown"
-                                    Minimum="1"
-                                    Height="auto"
-                                    Margin="1"/>
-                            </Border>
-                        </Grid>
-                        <!--PlusMinus-->
-                        <Grid Grid.Column="2">
-                            <components:ConciergeRadioButton 
-                                x:Name="D20Plus"
-                                Style="{StaticResource RadioButtonStyle}"
-                                HorizontalAlignment="Left"
-                                VerticalAlignment="Center"
-                                Margin="30, 0, 0, 0"/>
-                            <components:ConciergeRadioButton  
-                                x:Name="D20Minus"
-                                Style="{StaticResource RadioButtonStyle}"
-                                HorizontalAlignment="Right"
-                                VerticalAlignment="Center"
-                                Margin="0, 0, 30, 0"/>
-                        </Grid>
-                        <!--Modifier-->
-                        <Grid Grid.Column="3" Margin="3">
-                            <Border
-                                BorderThickness="1"
-                                Background="DimGray">
-                                <controls:IntegerUpDown 
-                                    x:Name="D20ModifierUpDown"
-                                    Height="auto"
-                                    Margin="1"/>
-                            </Border>
-                        </Grid>
-                        <!--Roll-->
-                        <Grid Grid.Column="4">
-                            <components:ConciergeDesignButton 
-                                Style="{StaticResource ConciergeDesignButtonStyle}" 
-                                x:Name="ButtonRollD20"
-                                Width="60"
-                                Foreground="#0D77D7"
-                                ToolTip="Roll d20"
-                                Click="ButtonRoll_Click">
-                                <materialDesign:PackIcon Kind="DiceD20" Height="25" Width="25"/>
-                            </components:ConciergeDesignButton>
-                        </Grid>
-                        <!--Result-->
-                        <Grid Grid.Column="5">
-                            <components:ConciergeTextBlock x:Name="D20Result"
-                                   Foreground="White"
-                                   FontSize="25"
-                                   HorizontalAlignment="Center"
-                                   VerticalAlignment="Center"/>
-                        </Grid>
-                    </Grid>
-
+                    <!--Dx-->
+                    <controls:DiceRollDisplay
+                        Grid.Row="8"
+                        Background="#FF3e3e42"
+                        x:Name="DxDiceRollDisplay"
+                        DiceName="dx"
+                        CustomSidesVisibility="Visible"
+                        DiceSymbol="DiceMultiple"
+                        DiceToolTip="Roll a dx"
+                        DiceRolled="DiceRollDisplay_DiceRolled"/>
+                    
                     <!--Custom-->
-                    <Grid Grid.Row="8"
-                          Background="#FF3e3e42"
+                    <Grid Grid.Row="9"
+                          Background="#FF333333"
                           Margin="3, 0, 3, 3">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="15*"/>
-                            <ColumnDefinition Width="20*"/>
-                            <ColumnDefinition Width="15*"/>
-                            <ColumnDefinition Width="15*"/>
+                            <ColumnDefinition Width="50*"/>
                             <ColumnDefinition Width="15*"/>
                             <ColumnDefinition Width="20*"/>
                         </Grid.ColumnDefinitions>
 
                         <!--Die-->
-                        <Grid Grid.Column="0" Margin="3">
+                        <Grid Grid.Column="0">
+                            <components:ConciergeTextBlock 
+                                Text="Custom"
+                                Foreground="White"
+                                FontSize="23"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"/>
+                        </Grid>
+                        <Grid Grid.Column="1">
                             <Border
                                 BorderThickness="1"
                                 Background="DimGray">
-                                <controls:IntegerUpDown 
-                                    x:Name="DxDieUpDown"
-                                    Minimum="1"
+                                <components:ConciergeTextBoxBackground
+                                    Background="#3F3F3F"
                                     Height="auto"
-                                    Margin="1"/>
-                            </Border>
-                        </Grid>
-                        <!--Number-->
-                        <Grid Grid.Column="1" Margin="3">
-                            <Border
-                                BorderThickness="1"
-                                Background="DimGray">
-                                <controls:IntegerUpDown 
-                                    x:Name="DxNumberUpDown"
-                                    Minimum="1"
-                                    Height="auto"
-                                    Margin="1"/>
-                            </Border>
-                        </Grid>
-                        <!--PlusMinus-->
-                        <Grid Grid.Column="2">
-                            <components:ConciergeRadioButton  
-                                x:Name="DxPlus"
-                                Style="{StaticResource RadioButtonStyle}"
-                                HorizontalAlignment="Left"
-                                VerticalAlignment="Center"
-                                Margin="30, 0, 0, 0"/>
-                            <components:ConciergeRadioButton  
-                                x:Name="DxMinus"
-                                Style="{StaticResource RadioButtonStyle}"
-                                HorizontalAlignment="Right"
-                                VerticalAlignment="Center"
-                                Margin="0, 0, 30, 0"/>
-                        </Grid>
-                        <!--Modifier-->
-                        <Grid Grid.Column="3" Margin="3">
-                            <Border
-                                BorderThickness="1"
-                                Background="DimGray">
-                                <controls:IntegerUpDown 
-                                    x:Name="DxModifierUpDown"
-                                    Height="auto"
-                                    Margin="1"/>
+                                    VerticalAlignment="Stretch"
+                                    Margin="1"
+                                    ToolTip="Up/Down to Scroll History">
+                                    <components:ConciergeTextBox
+                                        x:Name="CustomInputTextBox"
+                                        VerticalContentAlignment="Center"
+                                        Margin="10,1,10,1"
+                                        FontSize="18"
+                                        Background="#3F3F3F"
+                                        PreviewKeyDown="CustomInputTextBox_PreviewKeyDown">
+                                        <controls:WatermarkBuilder.Watermark>
+                                            <TextBlock
+                                                Text="Custom Roll eg. 4d6 + 1d4 + 5"
+                                                Foreground="White"
+                                                FontSize="13"
+                                                VerticalAlignment="Center"
+                                                HorizontalAlignment="Center"/>
+                                        </controls:WatermarkBuilder.Watermark>
+                                    </components:ConciergeTextBox>
+                                </components:ConciergeTextBoxBackground>
                             </Border>
                         </Grid>
                         <!--Roll-->
-                        <Grid Grid.Column="4">
+                        <Grid Grid.Column="2">
                             <components:ConciergeDesignButton 
                                 Style="{StaticResource ConciergeDesignButtonStyle}" 
-                                x:Name="ButtonRollDx"
+                                x:Name="CustomRollButton"
                                 Width="60"
                                 Foreground="#0D77D7"
-                                ToolTip="Roll dx"
-                                Click="ButtonRoll_Click">
-                                <materialDesign:PackIcon Kind="DiceMultiple" Height="25" Width="25"/>
+                                ToolTip="Roll Custom"
+                                Click="ParseInputButton_Click">
+                                <materialDesign:PackIcon Kind="CalculatorVariant" Height="25" Width="25"/>
                             </components:ConciergeDesignButton>
                         </Grid>
                         <!--Result-->
-                        <Grid Grid.Column="5">
-                            <components:ConciergeTextBlock x:Name="DxResult"
-                                   Foreground="White"
-                                   FontSize="25"
-                                   HorizontalAlignment="Center"
-                                   VerticalAlignment="Center"/>
+                        <Grid Grid.Column="3">
+                            <components:ConciergeTextBlock
+                                x:Name="CustomResult"
+                                Foreground="White"
+                                FontSize="25"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"/>
                         </Grid>
                     </Grid>
                 </Grid>
 
                 <!--Roll History-->
-                <Grid Grid.Column="1"
-                      Margin="3">
-                    <components:ConciergeDataGrid 
+                <Grid Grid.Column="1" Margin="3">
+                    <components:ConciergeDataGrid
                         x:Name="RollDiceHistoryDataGrid"
                         Background="#001233"
                         MaxHeight="{Binding Path=AbilitiesHeight}"
                         Style="{DynamicResource ToolsDataGridStyle}">
                         <DataGrid.Columns>
                             <DataGridTextColumn
-                                Header="Roll"
-                                Binding="{Binding Roll}"
-                                Width="33*"
-                                ElementStyle="{StaticResource StandardColumnElementStyle}"/>
-                            <DataGridTextColumn
                                 Header="Dice"
                                 Binding="{Binding Dice}"
-                                Width="33*"
+                                Width="66*"
                                 ElementStyle="{StaticResource StandardColumnElementStyle}"/>
                             <DataGridTextColumn
                                 Header="Total"

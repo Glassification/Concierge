@@ -11,6 +11,7 @@ namespace Concierge.Interfaces.Components
 
     using Concierge.Commands;
     using Concierge.Interfaces.Enums;
+    using Concierge.Utility;
     using Concierge.Utility.Extensions;
 
     public class ConciergeDataGrid : DataGrid
@@ -37,6 +38,9 @@ namespace Concierge.Interfaces.Components
             this.BorderThickness = new Thickness(0);
             this.SelectionMode = DataGridSelectionMode.Single;
             this.SelectionUnit = DataGridSelectionUnit.FullRow;
+
+            var scaling = Constants.DpiFactor;
+            this.LayoutTransform = new ScaleTransform(scaling, scaling, 0.5, 0.5);
         }
 
         public event RoutedEventHandler Sorted

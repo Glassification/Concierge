@@ -8,6 +8,7 @@ namespace Concierge.Interfaces
     using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Input;
+    using System.Windows.Media;
     using System.Windows.Navigation;
 
     using Concierge.Character.Characteristics;
@@ -90,6 +91,13 @@ namespace Concierge.Interfaces
             {
                 this.autosaveTimer.Start(Constants.CurrentAutosaveInterval);
             }
+
+            this.PopupBoxButton.ResetScaling();
+            this.ButtonClose.ResetScaling();
+            this.ButtonMinimize.ResetScaling();
+            this.MaximizeButton.ResetScaling();
+            this.ButtonCloseMenu.ResetScaling();
+            this.ButtonOpenMenu.ResetScaling();
 
             this.commandLineService.ReadCommandLineArgs();
             this.DrawAll();
@@ -440,7 +448,6 @@ namespace Concierge.Interfaces
             Program.UndoRedoService.Clear();
 
             this.NotesPage.ClearTextBox();
-            this.DrawAll();
 
             this.autosaveTimer.Stop();
         }
