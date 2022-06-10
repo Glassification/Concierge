@@ -10,10 +10,7 @@ namespace Concierge.Utility.Utilities
     using System.Windows.Controls;
     using System.Windows.Input;
     using System.Windows.Media;
-    using System.Windows.Shapes;
 
-    using Concierge.Character.Enums;
-    using Concierge.Character.Statuses;
     using Concierge.Commands;
     using Concierge.Interfaces.Components;
     using Concierge.Interfaces.Enums;
@@ -94,32 +91,6 @@ namespace Concierge.Utility.Utilities
                     }
                 }
             }
-        }
-
-        public static void SetRectangleStyle(Rectangle rectangle, DeathSave deathSave)
-        {
-            switch (deathSave)
-            {
-                case DeathSave.None:
-                    rectangle.Fill = ConciergeColors.TotalLightBoxBrush;
-                    break;
-                case DeathSave.Failure:
-                    rectangle.Fill = ConciergeColors.FailedSaveBrush;
-                    break;
-                case DeathSave.Success:
-                    rectangle.Fill = ConciergeColors.SucceededSaveBrush;
-                    break;
-            }
-        }
-
-        public static Brush SetHealthStyle(Vitality vitality)
-        {
-            int third = vitality.Health.MaxHealth / 3;
-            int hp = vitality.CurrentHealth;
-
-            return hp < third && hp > 0
-                ? Brushes.IndianRed
-                : hp >= third * 2 ? Brushes.DarkGreen : hp <= 0 ? Brushes.DarkGray : Brushes.DarkOrange;
         }
 
         public static int IncrementUsedSlots(int used, int total)

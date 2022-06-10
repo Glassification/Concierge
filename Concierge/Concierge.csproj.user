@@ -12,10 +12,19 @@
     <Compile Update="Interfaces\AttackDefensePageInterface\ModifyStatusEffectsWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Interfaces\Controls\AppearanceDisplay.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Interfaces\Controls\ArmorDetailsDisplay.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Interfaces\Controls\AttributeDisplay.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Interfaces\Controls\ColorPicker.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Interfaces\Controls\DiceRollDisplay.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Interfaces\Controls\DoubleUpDown.xaml.cs">
@@ -30,10 +39,16 @@
     <Compile Update="Interfaces\Controls\IntegerUpDown.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Interfaces\Controls\PersonalityDisplay.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Interfaces\Controls\SavingThrowDisplay.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Interfaces\Controls\SkillDisplay.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Interfaces\Controls\SpellSlotsDisplay.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Interfaces\Controls\WealthDisplay.xaml.cs">
@@ -83,10 +98,19 @@
     <Page Update="Interfaces\CompanionPageInterface\ModifyCompanionPropertiesWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Interfaces\Controls\AppearanceDisplay.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Interfaces\Controls\ArmorDetailsDisplay.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Interfaces\Controls\AttributeDisplay.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Interfaces\Controls\ColorPicker.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Interfaces\Controls\DiceRollDisplay.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Interfaces\Controls\DoubleUpDown.xaml">
@@ -101,10 +125,16 @@
     <Page Update="Interfaces\Controls\IntegerUpDown.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Interfaces\Controls\PersonalityDisplay.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Interfaces\Controls\SavingThrowDisplay.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Interfaces\Controls\SkillDisplay.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Interfaces\Controls\SpellSlotsDisplay.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Interfaces\Controls\WealthDisplay.xaml">

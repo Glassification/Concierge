@@ -6,13 +6,11 @@ namespace Concierge.Interfaces.ToolsPageInterface
 {
     using System;
     using System.Collections.Generic;
-    using System.Linq;
     using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Input;
     using System.Windows.Media;
 
-    using Concierge.Interfaces.Controls;
     using Concierge.Interfaces.Enums;
     using Concierge.Tools.DiceRolling;
     using Concierge.Tools.DiceRolling.Dice;
@@ -82,18 +80,6 @@ namespace Concierge.Interfaces.ToolsPageInterface
             {
                 Clipboard.SetText(diceRoll.Total.ToString());
             }
-        }
-
-        private static void SetDieValue(
-            IntegerUpDown dieNumber,
-            IntegerUpDown modifierNumber,
-            RadioButton plusButton,
-            TextBlock resultNumber)
-        {
-            dieNumber.Value = 1;
-            modifierNumber.Value = 0;
-            plusButton.IsChecked = true;
-            resultNumber.Text = Zero;
         }
 
         private void SetDefaultDivideValues()
@@ -212,38 +198,16 @@ namespace Concierge.Interfaces.ToolsPageInterface
 
         private void SetDefaultDiceValues()
         {
-            SetDieValue(this.D4NumberUpDown, this.D4ModifierUpDown, this.D4Plus, this.D4Result);
-            SetDieValue(this.D6NumberUpDown, this.D6ModifierUpDown, this.D6Plus, this.D6Result);
-            SetDieValue(this.D8NumberUpDown, this.D8ModifierUpDown, this.D8Plus, this.D8Result);
-            SetDieValue(this.D10NumberUpDown, this.D10ModifierUpDown, this.D10Plus, this.D10Result);
-            SetDieValue(this.D100NumberUpDown, this.D100ModifierUpDown, this.D100Plus, this.D100Result);
-            SetDieValue(this.D12NumberUpDown, this.D12ModifierUpDown, this.D12Plus, this.D12Result);
-            SetDieValue(this.D20NumberUpDown, this.D20ModifierUpDown, this.D20Plus, this.D20Result);
-            SetDieValue(this.DxNumberUpDown, this.DxModifierUpDown, this.DxPlus, this.DxResult);
-            this.DxDieUpDown.Value = 1;
+            this.D4DiceRollDisplay.ResetDiceValue();
+            this.D6DiceRollDisplay.ResetDiceValue();
+            this.D8DiceRollDisplay.ResetDiceValue();
+            this.D10DiceRollDisplay.ResetDiceValue();
+            this.D100DiceRollDisplay.ResetDiceValue();
+            this.D12DiceRollDisplay.ResetDiceValue();
+            this.D20DiceRollDisplay.ResetDiceValue();
+            this.DxDiceRollDisplay.ResetDiceValue();
+
             this.CustomResult.Text = Zero;
-        }
-
-        private string RollDice(int diceNumber, int diceSides, int modified, bool isPlus)
-        {
-            var rolledDice = DiceRoll.RollDice(diceNumber, diceSides);
-            var total = rolledDice.Sum();
-
-            if (isPlus)
-            {
-                total += modified;
-            }
-            else
-            {
-                total -= modified;
-            }
-
-            total = Math.Max(1, total);
-
-            this.RollHistory.Add(new DiceRoll(diceSides, rolledDice, $" {(isPlus ? " + " : " - ")}{modified}"));
-            this.DrawDiceHistory();
-
-            return total.ToString();
         }
 
         private void ClearDivideLoot()
@@ -318,42 +282,6 @@ namespace Concierge.Interfaces.ToolsPageInterface
             this.CustomInputTextBox.Text = string.Empty;
         }
 
-        private void ButtonRoll_Click(object sender, RoutedEventArgs e)
-        {
-            if (sender is not Button button)
-            {
-                return;
-            }
-
-            switch (button.Name)
-            {
-                case "ButtonRollD4":
-                    this.D4Result.Text = this.RollDice(this.D4NumberUpDown.Value, 4, this.D4ModifierUpDown.Value, this.D4Plus.IsChecked ?? false);
-                    break;
-                case "ButtonRollD6":
-                    this.D6Result.Text = this.RollDice(this.D6NumberUpDown.Value, 6, this.D6ModifierUpDown.Value, this.D6Plus.IsChecked ?? false);
-                    break;
-                case "ButtonRollD8":
-                    this.D8Result.Text = this.RollDice(this.D8NumberUpDown.Value, 8, this.D8ModifierUpDown.Value, this.D8Plus.IsChecked ?? false);
-                    break;
-                case "ButtonRollD10":
-                    this.D10Result.Text = this.RollDice(this.D10NumberUpDown.Value, 10, this.D10ModifierUpDown.Value, this.D10Plus.IsChecked ?? false);
-                    break;
-                case "ButtonRollD100":
-                    this.D100Result.Text = this.RollDice(this.D100NumberUpDown.Value, 100, this.D100ModifierUpDown.Value, this.D100Plus.IsChecked ?? false);
-                    break;
-                case "ButtonRollD12":
-                    this.D12Result.Text = this.RollDice(this.D12NumberUpDown.Value, 12, this.D12ModifierUpDown.Value, this.D12Plus.IsChecked ?? false);
-                    break;
-                case "ButtonRollD20":
-                    this.D20Result.Text = this.RollDice(this.D20NumberUpDown.Value, 20, this.D20ModifierUpDown.Value, this.D20Plus.IsChecked ?? false);
-                    break;
-                case "ButtonRollDx":
-                    this.DxResult.Text = this.RollDice(this.DxNumberUpDown.Value, this.DxDieUpDown.Value, this.DxModifierUpDown.Value, this.DxPlus.IsChecked ?? false);
-                    break;
-            }
-        }
-
         private void Page_KeyDown(object sender, KeyEventArgs e)
         {
             switch (e.Key)
@@ -417,6 +345,15 @@ namespace Concierge.Interfaces.ToolsPageInterface
                     }
 
                     break;
+            }
+        }
+
+        private void DiceRollDisplay_DiceRolled(object sender, RoutedEventArgs e)
+        {
+            if (e.OriginalSource is DiceRoll diceRoll)
+            {
+                this.RollHistory.Add(diceRoll);
+                this.DrawDiceHistory();
             }
         }
     }

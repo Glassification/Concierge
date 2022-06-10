@@ -127,29 +127,12 @@ namespace Concierge.Interfaces.DetailsPageInterface
 
         private void DrawAppearance()
         {
-            var appearance = Program.CcsFile.Character.Appearance;
-
-            this.GenderField.Text = appearance.Gender;
-            this.AgeField.Text = appearance.Age.ToString();
-            this.HeightField.Text = appearance.Height.ToString();
-            this.WeightField.Text = appearance.Weight.ToString();
-            this.HairColourField.Text = appearance.HairColour;
-            this.SkinColourField.Text = appearance.SkinColour;
-            this.EyeColourField.Text = appearance.EyeColour;
-            this.MarksField.Text = appearance.DistinguishingMarks;
+            this.AppearanceDisplay.SetAppearance(Program.CcsFile.Character.Appearance);
         }
 
         private void DrawPersonality()
         {
-            var personality = Program.CcsFile.Character.Personality;
-
-            this.TraitField1.Text = personality.Trait1;
-            this.TraitField2.Text = personality.Trait2;
-            this.IdealField.Text = personality.Ideal;
-            this.BondField.Text = personality.Bond;
-            this.FlawField.Text = personality.Flaw;
-            this.BackgroundField.Text = personality.Background;
-            this.NotesField.Text = personality.Notes;
+            this.PersonalityDisplay.SetPersonality(Program.CcsFile.Character.Personality);
         }
 
         private void DrawProficiencies()

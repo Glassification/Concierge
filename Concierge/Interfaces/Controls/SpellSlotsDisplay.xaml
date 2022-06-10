@@ -1,0 +1,630 @@
+﻿<UserControl
+    x:Class="Concierge.Interfaces.Controls.SpellSlotsDisplay"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:components="clr-namespace:Concierge.Interfaces.Components"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:local="clr-namespace:Concierge.Interfaces.Controls"
+    mc:Ignorable="d" 
+    d:DesignHeight="300" d:DesignWidth="1000">
+    <Grid Margin="3, 3, 3, 3" Background="#000917">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="9*"/>
+        </Grid.ColumnDefinitions>
+
+        <!--Headers-->
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="66*"/>
+                <RowDefinition Height="33*" />
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0">
+                <components:ConciergeDesignButton 
+                    Style="{StaticResource ConciergeDesignButtonStyle}" 
+                    x:Name="LevelEditButton"
+                    Height="35"
+                    Width="35"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Top"
+                    Foreground="Khaki"
+                    ToolTip="Edit Spell Slots"
+                    Click="LevelEditButton_Click">
+                    <materialDesign:PackIcon Kind="PlaylistEdit" Width="25" Height="25"/>
+                </components:ConciergeDesignButton>
+                <components:ConciergeTextBlock 
+                    Text="Spell Slots"
+                    Foreground="White"
+                    FontSize="15"
+                    FontWeight="Bold"
+                    TextWrapping="Wrap"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Margin="3, 3, 3, 3"/>
+            </Grid>
+
+            <Grid
+                Grid.Row="1"
+                Background="#33415C"
+                Margin="5, 15, 5, 15">
+                <components:ConciergeTextBlock 
+                    Text="Used"
+                    Foreground="White"
+                    FontSize="15"
+                    FontWeight="Bold"
+                    TextWrapping="Wrap"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"/>
+            </Grid>
+        </Grid>
+
+        <!--Slots-->
+        <Grid Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+
+            <!--Pact-->
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="4*"/>
+                    <RowDefinition Height="2*" />
+                    <RowDefinition Height="4*" />
+                </Grid.RowDefinitions>
+
+                <!--Total-->
+                <Grid
+                    Grid.Row="0"
+                    x:Name="TotalPactBox"
+                    Background="#FF333333"
+                    Margin="3, 3, 3, 0">
+                    <components:ConciergeTextBlock
+                        x:Name="TotalPactField"
+                        Foreground="White"
+                        FontSize="25"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"/>
+                </Grid>
+
+                <!--Name-->
+                <Grid
+                    Grid.Row="1"
+                    Background="#001233"
+                    Margin="3, 0, 3, 0">
+                    <components:ConciergeTextBlock
+                        Text="Pact"
+                        FontSize="18"
+                        FontWeight="Bold"
+                        Foreground="White"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"/>
+                </Grid>
+                <!--Used-->
+                <Border 
+                    Grid.Row="2"
+                    x:Name="UsedPactBorder"
+                    BorderBrush="#FF3e3e42"
+                    Margin="3, 0, 3, 0"
+                    BorderThickness="1">
+                    <Grid
+                        Background="#FF3e3e42"
+                        x:Name="UsedPactBox">
+                        <components:ConciergeTextBlock 
+                            x:Name="UsedPactField"
+                            Foreground="White"
+                            FontSize="25"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"/>
+                    </Grid>
+                </Border>
+            </Grid>
+
+            <!--1st-->
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="4*"/>
+                    <RowDefinition Height="2*" />
+                    <RowDefinition Height="4*" />
+                </Grid.RowDefinitions>
+
+                <!--Total-->
+                <Grid
+                    Grid.Row="0"
+                    x:Name="TotalFirstBox"
+                    Background="#FF333333"
+                    Margin="3, 3, 3, 0">
+                    <components:ConciergeTextBlock
+                        x:Name="TotalFirstField"
+                        Foreground="White"
+                        FontSize="25"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"/>
+                </Grid>
+
+                <!--Name-->
+                <Grid
+                    Grid.Row="1"
+                    Background="#001233"
+                    Margin="3, 0, 3, 0">
+                    <components:ConciergeTextBlock
+                        Text="1st"
+                        FontSize="18"
+                        FontWeight="Bold"
+                        Foreground="White"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"/>
+                </Grid>
+                <!--Used-->
+                <Border 
+                    Grid.Row="2"
+                    x:Name="UsedFirstBorder"
+                    BorderBrush="#FF3e3e42"
+                    Margin="3, 0, 3, 0"
+                    BorderThickness="1">
+                    <Grid
+                        Background="#FF3e3e42"
+                        x:Name="UsedFirstBox">
+                        <components:ConciergeTextBlock 
+                            x:Name="UsedFirstField"
+                            Foreground="White"
+                            FontSize="25"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"/>
+                    </Grid>
+                </Border>
+            </Grid>
+
+            <!--2nd-->
+            <Grid Grid.Column="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="4*"/>
+                    <RowDefinition Height="2*" />
+                    <RowDefinition Height="4*" />
+                </Grid.RowDefinitions>
+
+                <!--Total-->
+                <Grid
+                    Grid.Row="0"
+                    x:Name="TotalSecondBox"
+                    Background="#FF333333"
+                    Margin="3, 3, 3, 0">
+                    <components:ConciergeTextBlock
+                        x:Name="TotalSecondField"
+                        Foreground="White"
+                        FontSize="25"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"/>
+                </Grid>
+
+                <!--Name-->
+                <Grid
+                    Grid.Row="1"
+                    Background="#001233"
+                    Margin="3, 0, 3, 0">
+                    <components:ConciergeTextBlock
+                        Text="2nd"
+                        FontSize="18"
+                        FontWeight="Bold"
+                        Foreground="White"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"/>
+                </Grid>
+                <!--Used-->
+                <Border 
+                    Grid.Row="2"
+                    x:Name="UsedSecondBorder"
+                    BorderBrush="#FF3e3e42"
+                    Margin="3, 0, 3, 0"
+                    BorderThickness="1">
+                    <Grid
+                        Background="#FF3e3e42"
+                        x:Name="UsedSecondBox">
+                        <components:ConciergeTextBlock 
+                            x:Name="UsedSecondField"
+                            Foreground="White"
+                            FontSize="25"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"/>
+                    </Grid>
+                </Border>
+            </Grid>
+
+            <!--3rd-->
+            <Grid Grid.Column="3">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="4*"/>
+                    <RowDefinition Height="2*" />
+                    <RowDefinition Height="4*" />
+                </Grid.RowDefinitions>
+
+                <!--Total-->
+                <Grid
+                    Grid.Row="0"
+                    x:Name="TotalThirdBox"
+                    Background="#FF333333"
+                    Margin="3, 3, 3, 0">
+                    <components:ConciergeTextBlock
+                        x:Name="TotalThirdField"
+                        Foreground="White"
+                        FontSize="25"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"/>
+                </Grid>
+
+                <!--Name-->
+                <Grid
+                    Grid.Row="1"
+                    Background="#001233"
+                    Margin="3, 0, 3, 0">
+                    <components:ConciergeTextBlock
+                        Text="3rd"
+                        FontSize="18"
+                        FontWeight="Bold"
+                        Foreground="White"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"/>
+                </Grid>
+                <!--Used-->
+                <Border 
+                    Grid.Row="2"
+                    x:Name="UsedThirdBorder"
+                    BorderBrush="#FF3e3e42"
+                    Margin="3, 0, 3, 0"
+                    BorderThickness="1">
+                    <Grid
+                        Background="#FF3e3e42"
+                        x:Name="UsedThirdBox">
+                        <components:ConciergeTextBlock 
+                            x:Name="UsedThirdField"
+                            Foreground="White"
+                            FontSize="25"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"/>
+                    </Grid>
+                </Border>
+            </Grid>
+
+            <!--4th-->
+            <Grid Grid.Column="4">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="4*"/>
+                    <RowDefinition Height="2*" />
+                    <RowDefinition Height="4*" />
+                </Grid.RowDefinitions>
+
+                <!--Total-->
+                <Grid
+                    Grid.Row="0"
+                    x:Name="TotalFourthBox"
+                    Background="#FF333333"
+                    Margin="3, 3, 3, 0">
+                    <components:ConciergeTextBlock
+                        x:Name="TotalFourthField"
+                        Foreground="White"
+                        FontSize="25"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"/>
+                </Grid>
+
+                <!--Name-->
+                <Grid
+                    Grid.Row="1"
+                    Background="#001233"
+                    Margin="3, 0, 3, 0">
+                    <components:ConciergeTextBlock
+                        Text="4th"
+                        FontSize="18"
+                        FontWeight="Bold"
+                        Foreground="White"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"/>
+                </Grid>
+                <!--Used-->
+                <Border 
+                    Grid.Row="2"
+                    x:Name="UsedFourthBorder"
+                    BorderBrush="#FF3e3e42"
+                    Margin="3, 0, 3, 0"
+                    BorderThickness="1">
+                    <Grid
+                        Background="#FF3e3e42"
+                        x:Name="UsedFourthBox">
+                        <components:ConciergeTextBlock 
+                            x:Name="UsedFourthField"
+                            Foreground="White"
+                            FontSize="25"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"/>
+                    </Grid>
+                </Border>
+            </Grid>
+
+            <!--5th-->
+            <Grid Grid.Column="5">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="4*"/>
+                    <RowDefinition Height="2*" />
+                    <RowDefinition Height="4*" />
+                </Grid.RowDefinitions>
+
+                <!--Total-->
+                <Grid
+                    Grid.Row="0"
+                    x:Name="TotalFifthBox"
+                    Background="#FF333333"
+                    Margin="3, 3, 3, 0">
+                    <components:ConciergeTextBlock
+                        x:Name="TotalFifthField"
+                        Foreground="White"
+                        FontSize="25"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"/>
+                </Grid>
+
+                <!--Name-->
+                <Grid
+                    Grid.Row="1"
+                    Background="#001233"
+                    Margin="3, 0, 3, 0">
+                    <components:ConciergeTextBlock
+                        Text="5th"
+                        FontSize="18"
+                        FontWeight="Bold"
+                        Foreground="White"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"/>
+                </Grid>
+                <!--Used-->
+                <Border 
+                    Grid.Row="2"
+                    x:Name="UsedFifthBorder"
+                    BorderBrush="#FF3e3e42"
+                    Margin="3, 0, 3, 0"
+                    BorderThickness="1">
+                    <Grid
+                        Background="#FF3e3e42"
+                        x:Name="UsedFifthBox">
+                        <components:ConciergeTextBlock 
+                            x:Name="UsedFifthField"
+                            Foreground="White"
+                            FontSize="25"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"/>
+                    </Grid>
+                </Border>
+            </Grid>
+
+            <!--6th-->
+            <Grid Grid.Column="6">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="4*"/>
+                    <RowDefinition Height="2*" />
+                    <RowDefinition Height="4*" />
+                </Grid.RowDefinitions>
+
+                <!--Total-->
+                <Grid
+                    Grid.Row="0"
+                    x:Name="TotalSixthBox"
+                    Background="#FF333333"
+                    Margin="3, 3, 3, 0">
+                    <components:ConciergeTextBlock
+                        x:Name="TotalSixthField"
+                        Foreground="White"
+                        FontSize="25"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"/>
+                </Grid>
+
+                <!--Name-->
+                <Grid
+                    Grid.Row="1"
+                    Background="#001233"
+                    Margin="3, 0, 3, 0">
+                    <components:ConciergeTextBlock
+                        Text="6th"
+                        FontSize="18"
+                        FontWeight="Bold"
+                        Foreground="White"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"/>
+                </Grid>
+                <!--Used-->
+                <Border 
+                    Grid.Row="2"
+                    x:Name="UsedSixthBorder"
+                    BorderBrush="#FF3e3e42"
+                    Margin="3, 0, 3, 0"
+                    BorderThickness="1">
+                    <Grid
+                        Background="#FF3e3e42"
+                        x:Name="UsedSixthBox">
+                        <components:ConciergeTextBlock 
+                            x:Name="UsedSixthField"
+                            Foreground="White"
+                            FontSize="25"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"/>
+                    </Grid>
+                </Border>
+            </Grid>
+
+            <!--7th-->
+            <Grid Grid.Column="7">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="4*"/>
+                    <RowDefinition Height="2*" />
+                    <RowDefinition Height="4*" />
+                </Grid.RowDefinitions>
+
+                <!--Total-->
+                <Grid
+                    Grid.Row="0"
+                    x:Name="TotalSeventhBox"
+                    Background="#FF333333"
+                    Margin="3, 3, 3, 0">
+                    <components:ConciergeTextBlock
+                        x:Name="TotalSeventhField"
+                        Foreground="White"
+                        FontSize="25"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"/>
+                </Grid>
+
+                <!--Name-->
+                <Grid
+                    Grid.Row="1"
+                    Background="#001233"
+                    Margin="3, 0, 3, 0">
+                    <components:ConciergeTextBlock
+                        Text="7th"
+                        FontSize="18"
+                        FontWeight="Bold"
+                        Foreground="White"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"/>
+                </Grid>
+                <!--Used-->
+                <Border 
+                    Grid.Row="2"
+                    x:Name="UsedSeventhBorder"
+                    BorderBrush="#FF3e3e42"
+                    Margin="3, 0, 3, 0"
+                    BorderThickness="1">
+                    <Grid
+                        Background="#FF3e3e42"
+                        x:Name="UsedSeventhBox">
+                        <components:ConciergeTextBlock 
+                            x:Name="UsedSeventhField"
+                            Foreground="White"
+                            FontSize="25"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"/>
+                    </Grid>
+                </Border>
+            </Grid>
+
+            <!--8th-->
+            <Grid Grid.Column="8">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="4*"/>
+                    <RowDefinition Height="2*" />
+                    <RowDefinition Height="4*" />
+                </Grid.RowDefinitions>
+
+                <!--Total-->
+                <Grid
+                    Grid.Row="0"
+                    x:Name="TotalEighthBox"
+                    Background="#FF333333"
+                    Margin="3, 3, 3, 0">
+                    <components:ConciergeTextBlock
+                        x:Name="TotalEighthField"
+                        Foreground="White"
+                        FontSize="25"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"/>
+                </Grid>
+
+                <!--Name-->
+                <Grid
+                    Grid.Row="1"
+                    Background="#001233"
+                    Margin="3, 0, 3, 0">
+                    <components:ConciergeTextBlock
+                        Text="8th"
+                        FontSize="18"
+                        FontWeight="Bold"
+                        Foreground="White"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"/>
+                </Grid>
+                <!--Used-->
+                <Border 
+                    Grid.Row="2"
+                    x:Name="UsedEighthBorder"
+                    BorderBrush="#FF3e3e42"
+                    Margin="3, 0, 3, 0"
+                    BorderThickness="1">
+                    <Grid
+                        Background="#FF3e3e42"
+                        x:Name="UsedEighthBox">
+                        <components:ConciergeTextBlock 
+                            x:Name="UsedEighthField"
+                            Foreground="White"
+                            FontSize="25"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"/>
+                    </Grid>
+                </Border>
+            </Grid>
+
+            <!--9th-->
+            <Grid Grid.Column="9">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="4*"/>
+                    <RowDefinition Height="2*" />
+                    <RowDefinition Height="4*" />
+                </Grid.RowDefinitions>
+
+                <!--Total-->
+                <Grid
+                    Grid.Row="0"
+                    x:Name="TotalNinethBox"
+                    Background="#FF333333"
+                    Margin="3, 3, 3, 0">
+                    <components:ConciergeTextBlock
+                        x:Name="TotalNinethField"
+                        Foreground="White"
+                        FontSize="25"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"/>
+                </Grid>
+
+                <!--Name-->
+                <Grid
+                    Grid.Row="1"
+                    Background="#001233"
+                    Margin="3, 0, 3, 0">
+                    <components:ConciergeTextBlock
+                        Text="9th"
+                        FontSize="18"
+                        FontWeight="Bold"
+                        Foreground="White"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"/>
+                </Grid>
+                <!--Used-->
+                <Border 
+                    Grid.Row="2"
+                    x:Name="UsedNinethBorder"
+                    BorderBrush="#FF3e3e42"
+                    Margin="3, 0, 3, 0"
+                    BorderThickness="1">
+                    <Grid
+                        Background="#FF3e3e42"
+                        x:Name="UsedNinethBox">
+                        <components:ConciergeTextBlock 
+                            x:Name="UsedNinethField"
+                            Foreground="White"
+                            FontSize="25"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"/>
+                    </Grid>
+                </Border>
+            </Grid>
+        </Grid>
+    </Grid>
+</UserControl>

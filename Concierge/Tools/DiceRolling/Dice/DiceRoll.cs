@@ -12,7 +12,7 @@ namespace Concierge.Tools.DiceRolling.Dice
     {
         private static readonly Random random = new ();
 
-        public DiceRoll(int sides, int[] list, string modifier = "")
+        public DiceRoll(int sides, int[] list, int modifier)
         {
             this.Sides = sides;
             this.Modifier = modifier;
@@ -21,7 +21,7 @@ namespace Concierge.Tools.DiceRolling.Dice
 
         public int Sides { get; init; }
 
-        public string Modifier { get; init; }
+        public int Modifier { get; init; }
 
         public string Dice
         {
@@ -35,13 +35,13 @@ namespace Concierge.Tools.DiceRolling.Dice
                 }
 
                 str = str.Trim(new char[] { ',', ' ' });
-                str = $"{str}){this.Modifier}";
+                str = $"{str}) {(this.Modifier >= 0 ? " + " : " - ")}{this.Modifier}";
 
                 return str;
             }
         }
 
-        public int Total => Math.Max(this.DiceList.Sum(), 0);
+        public int Total => Math.Max(this.DiceList.Sum() + this.Modifier, 0);
 
         private List<int> DiceList { get; init; }
 

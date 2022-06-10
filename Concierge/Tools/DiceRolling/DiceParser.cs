@@ -74,7 +74,7 @@ namespace Concierge.Tools.DiceRolling
                 }
 
                 var roll = DiceRoll.RollDice(number, sides);
-                objectList.Add(new DiceRoll(sides, roll));
+                objectList.Add(new DiceRoll(sides, roll, 0));
             }
 
             return objectList;
