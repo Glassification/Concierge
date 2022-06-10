@@ -24,6 +24,9 @@
     <Compile Update="Interfaces\Controls\HealthDisplay.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Interfaces\Controls\HitDiceDisplay.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Interfaces\Controls\IntegerUpDown.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -31,6 +34,12 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Interfaces\Controls\SkillDisplay.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Interfaces\Controls\WealthDisplay.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Interfaces\Controls\WeightDisplay.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Interfaces\EquippedItemsPageInterface\ModifyCharacterImageWindow.xaml.cs">
@@ -86,6 +95,9 @@
     <Page Update="Interfaces\Controls\HealthDisplay.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Interfaces\Controls\HitDiceDisplay.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Interfaces\Controls\IntegerUpDown.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -93,6 +105,12 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Interfaces\Controls\SkillDisplay.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Interfaces\Controls\WealthDisplay.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Interfaces\Controls\WeightDisplay.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Interfaces\DetailsPageInterface\DetailsPage.xaml">
