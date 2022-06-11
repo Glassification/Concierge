@@ -27,6 +27,9 @@
     <Compile Update="Interfaces\Controls\DiceRollDisplay.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Interfaces\Controls\DivideLootInputDisplay.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Interfaces\Controls\DoubleUpDown.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -111,6 +114,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Interfaces\Controls\DiceRollDisplay.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Interfaces\Controls\DivideLootInputDisplay.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Interfaces\Controls\DoubleUpDown.xaml">

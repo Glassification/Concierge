@@ -34,8 +34,11 @@ namespace Concierge.Tools.DiceRolling.Dice
                     str += die + ", ";
                 }
 
-                str = str.Trim(new char[] { ',', ' ' });
-                str = $"{str}) {(this.Modifier >= 0 ? " + " : " - ")}{this.Modifier}";
+                str = $"{str.Trim(new char[] { ',', ' ' })})";
+                if (this.Modifier != 0)
+                {
+                    str = $"{str}{(this.Modifier > 0 ? " + " : " - ")}{this.Modifier}";
+                }
 
                 return str;
             }

@@ -11,9 +11,9 @@ namespace Concierge.Tools.DiceRolling
     {
         private readonly List<string> history;
 
-        public DiceHistory()
+        public DiceHistory(List<string> history)
         {
-            this.history = new List<string>();
+            this.history = history;
             this.Index = -1;
         }
 

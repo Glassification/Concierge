@@ -6,10 +6,10 @@ namespace Concierge.Logging
 {
     using System;
     using System.Collections.Generic;
-    using System.Globalization;
     using System.Threading;
 
     using Concierge.Logging.Enums;
+    using Concierge.Utility;
     using Concierge.Utility.Extensions;
     using Newtonsoft.Json;
 
@@ -101,7 +101,7 @@ namespace Concierge.Logging
 
         protected virtual string ComposeLogRow(string message, LogType logType)
         {
-            return $"[{DateTime.Now.ToString(CultureInfo.InvariantCulture)} {logType}] - {message}";
+            return $"[{ConciergeDateTime.LoggingNow} {logType}] - {message}";
         }
 
         protected virtual string UnwrapExceptionMessages(Exception? ex)

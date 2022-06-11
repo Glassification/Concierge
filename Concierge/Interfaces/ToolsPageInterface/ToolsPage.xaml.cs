@@ -9,9 +9,9 @@ namespace Concierge.Interfaces.ToolsPageInterface
     using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Input;
-    using System.Windows.Media;
 
     using Concierge.Interfaces.Enums;
+    using Concierge.Persistence.ReadWriters;
     using Concierge.Tools.DiceRolling;
     using Concierge.Tools.DiceRolling.Dice;
     using Concierge.Tools.DivideLoot;
@@ -23,18 +23,13 @@ namespace Concierge.Interfaces.ToolsPageInterface
     /// </summary>
     public partial class ToolsPage : Page, IConciergePage
     {
-        private const string Zero = "0";
-        private const string MagicNumber = "5";
-
-        private readonly string[] playerNames = new string[] { "Colby", "Daniel", "Kaleigh", "Thomas", "Travis" };
-
         public ToolsPage()
         {
             this.InitializeComponent();
 
             this.Players = new List<Player>();
             this.RollHistory = new List<IDiceRoll>();
-            this.DiceHistory = new DiceHistory();
+            this.DiceHistory = new DiceHistory(DiceHistoryReadWriter.Read());
 
             this.SetDefaultDivideValues();
             this.SetDefaultDiceValues();
@@ -76,7 +71,7 @@ namespace Concierge.Interfaces.ToolsPageInterface
             {
                 Clipboard.SetText(player.Total.ToString());
             }
-            else if (itemToEdit is DiceRoll diceRoll)
+            else if (itemToEdit is IDiceRoll diceRoll)
             {
                 Clipboard.SetText(diceRoll.Total.ToString());
             }
@@ -84,12 +79,12 @@ namespace Concierge.Interfaces.ToolsPageInterface
 
         private void SetDefaultDivideValues()
         {
-            this.PlayersInput.Text = Zero;
-            this.CopperInput.Text = Zero;
-            this.SilverInput.Text = Zero;
-            this.ElectrumInput.Text = Zero;
-            this.GoldInput.Text = Zero;
-            this.PlatinumInput.Text = Zero;
+            this.PlayersInput.ResetInputValue();
+            this.CopperInput.ResetInputValue();
+            this.SilverInput.ResetInputValue();
+            this.ElectrumInput.ResetInputValue();
+            this.GoldInput.ResetInputValue();
+            this.PlatinumInput.ResetInputValue();
         }
 
         private void DrawDivideLoot()
@@ -104,36 +99,21 @@ namespace Concierge.Interfaces.ToolsPageInterface
 
         private void GetPlayers()
         {
-            _ = int.TryParse(this.PlayersInput.Text, out int numPlayers);
-            numPlayers = Math.Max(0, numPlayers);
             this.Players.Clear();
 
-            for (int i = 0; i < numPlayers; i++)
+            for (int i = 0; i < this.PlayersInput.InputValue; i++)
             {
-                if (this.RealNamesToggleButton.IsChecked ?? false)
-                {
-                    this.Players.Add(new Player(this.playerNames[i]));
-                }
-                else
-                {
-                    this.Players.Add(new Player($"Player {i + 1}"));
-                }
+                this.Players.Add(new Player($"Player {i + 1}"));
             }
         }
 
         private Loot GetLoot()
         {
-            _ = int.TryParse(this.CopperInput.Text, out int cp);
-            _ = int.TryParse(this.SilverInput.Text, out int sp);
-            _ = int.TryParse(this.ElectrumInput.Text, out int ep);
-            _ = int.TryParse(this.GoldInput.Text, out int gp);
-            _ = int.TryParse(this.PlatinumInput.Text, out int pp);
-
-            cp = Math.Max(0, cp);
-            sp = Math.Max(0, sp);
-            ep = Math.Max(0, ep);
-            gp = Math.Max(0, gp);
-            pp = Math.Max(0, pp);
+            var cp = this.CopperInput.InputValue;
+            var sp = this.SilverInput.InputValue;
+            var ep = this.ElectrumInput.InputValue;
+            var gp = this.GoldInput.InputValue;
+            var pp = this.PlatinumInput.InputValue;
 
             return new Loot(cp, sp, ep, gp, pp);
         }
@@ -207,7 +187,7 @@ namespace Concierge.Interfaces.ToolsPageInterface
             this.D20DiceRollDisplay.ResetDiceValue();
             this.DxDiceRollDisplay.ResetDiceValue();
 
-            this.CustomResult.Text = Zero;
+            this.CustomResult.Text = "0";
         }
 
         private void ClearDivideLoot()
@@ -235,6 +215,8 @@ namespace Concierge.Interfaces.ToolsPageInterface
                 this.DrawDiceHistory();
                 this.CustomInputTextBox.Text = string.Empty;
                 this.CustomResult.Text = result.Total.ToString();
+
+                DiceHistoryReadWriter.Write(input);
             }
             catch (Exception ex)
             {
@@ -254,24 +236,6 @@ namespace Concierge.Interfaces.ToolsPageInterface
 
         private void DivideLootDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-        }
-
-        private void Input_GotFocus(object sender, RoutedEventArgs e)
-        {
-            if (((TextBox)sender).Text.Equals(Zero))
-            {
-                ((TextBox)sender).Text = string.Empty;
-            }
-        }
-
-        private void Input_LostFocus(object sender, RoutedEventArgs e)
-        {
-            var isNumber = int.TryParse(((TextBox)sender).Text, out int num);
-
-            if (!isNumber || num <= 0)
-            {
-                ((TextBox)sender).Text = Zero;
-            }
         }
 
         private void ButtonResetHistory_Click(object sender, RoutedEventArgs e)
@@ -304,21 +268,6 @@ namespace Concierge.Interfaces.ToolsPageInterface
                     }
 
                     break;
-            }
-        }
-
-        private void PlayersInput_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            if (this.PlayersInput.Text.Equals(MagicNumber))
-            {
-                this.RealNamesToggleButton.IsChecked = false;
-                this.RealNamesToggleButton.Foreground = Brushes.SteelBlue;
-                this.RealNamesToggleButton.Visibility = Visibility.Visible;
-            }
-            else
-            {
-                this.RealNamesToggleButton.IsChecked = false;
-                this.RealNamesToggleButton.Visibility = Visibility.Hidden;
             }
         }
 

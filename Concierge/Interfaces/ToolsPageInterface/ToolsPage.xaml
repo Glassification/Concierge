@@ -43,7 +43,7 @@
                         Style="{StaticResource ConciergeDesignButtonStyle}" 
                         x:Name="ButtonResetHistory"
                         Width="60"
-                        Foreground="SteelBlue"
+                        Foreground="IndianRed"
                         Click="ButtonResetHistory_Click"
                         Margin="10, 0, 60, 0"
                         ToolTip="Clear History">
@@ -341,8 +341,8 @@
         <!--Loot Splitter-->
         <Grid Grid.Row="1">
             <Grid.RowDefinitions>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="9*" />
+                <RowDefinition Height="13*"/>
+                <RowDefinition Height="87*" />
             </Grid.RowDefinitions>
 
             <!--Header-->
@@ -358,20 +358,11 @@
                     HorizontalAlignment="Left"
                     Margin="150, 0, 0, 0"/>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                    <components:ConciergeToggleButton
-                        Style="{StaticResource ConciergeToggleButtonStyle}"
-                        x:Name="RealNamesToggleButton"
-                        Width="60"
-                        Foreground="SteelBlue"
-                        Margin="10, 0, 10, 0"
-                        ToolTip="Use Real Names">
-                        <materialDesign:PackIcon Kind="AccountQuestion" Height="25" Width="25"/>
-                    </components:ConciergeToggleButton>
                     <components:ConciergeDesignButton 
                         Style="{StaticResource ConciergeDesignButtonStyle}" 
                         x:Name="ButtonDivideLoot"
                         Width="60"
-                        Foreground="SteelBlue"
+                        Foreground="PaleGreen"
                         Click="ButtonDivideLoot_Click"
                         Margin="10, 0, 10, 0"
                         ToolTip="Divide Loot">
@@ -381,7 +372,7 @@
                         Style="{StaticResource ConciergeDesignButtonStyle}" 
                         x:Name="ButtonResetLoot"
                         Width="60"
-                        Foreground="SteelBlue"
+                        Foreground="IndianRed"
                         Click="ButtonResetLoot_Click"
                         Margin="10, 0, 60, 0"
                         ToolTip="Clear Loot">
@@ -411,216 +402,47 @@
                     </Grid.RowDefinitions>
 
                     <!--Players-->
-                    <Grid Grid.Row="0">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="45*"/>
-                            <ColumnDefinition Width="55*"/>
-                        </Grid.ColumnDefinitions>
-
-                        <!--Label-->
-                        <Grid Grid.Column="0"
-                              Background="#33415C"
-                              Margin="3, 3, 0, 3">
-                            <components:ConciergeTextBlock 
-                                Text="Players"
-                                Foreground="White"
-                                FontSize="20"
-                                FontWeight="Bold"
-                                VerticalAlignment="Center"
-                                HorizontalAlignment="Left"
-                                Margin="10, 0, 0, 0"/>
-                        </Grid>
-
-                        <!--Input-->
-                        <Grid Grid.Column="1"
-                              Background="#FF3e3e42"
-                              Margin="0, 3, 3, 3">
-                            <components:ConciergeTextBox 
-                                x:Name="PlayersInput"
-                                Background="#ff3e3e42"
-                                FontSize="20"
-                                HorizontalContentAlignment="Center"
-                                MaxLength="5"
-                                GotFocus="Input_GotFocus"
-                                LostFocus="Input_LostFocus"
-                                TextChanged="PlayersInput_TextChanged"/>
-                        </Grid>
-                    </Grid>
+                    <controls:DivideLootInputDisplay
+                        x:Name="PlayersInput"
+                        Grid.Row="0"
+                        LabelColor="#33415C"
+                        LabelTextColor="White"
+                        LabelText="Players"/>
 
                     <!--Copper-->
-                    <Grid Grid.Row="1">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="45*"/>
-                            <ColumnDefinition Width="55*"/>
-                        </Grid.ColumnDefinitions>
-
-                        <!--Label-->
-                        <Grid Grid.Column="0"
-                              Background="#ffb87333"
-                              Margin="3, 3, 0, 3">
-                            <components:ConciergeTextBlock Text="Copper"
-                                       Foreground="Black"
-                                       FontSize="20"
-                                       FontWeight="Bold"
-                                       VerticalAlignment="Center"
-                                       HorizontalAlignment="Left"
-                                       Margin="10, 0, 0, 0"/>
-                        </Grid>
-
-                        <!--Input-->
-                        <Grid Grid.Column="1"
-                              Background="#FF3e3e42"
-                              Margin="0, 3, 3, 3">
-                            <components:ConciergeTextBox 
-                                x:Name="CopperInput"
-                                Background="#ff3e3e42"
-                                FontSize="20"
-                                HorizontalContentAlignment="Center"
-                                MaxLength="10"
-                                GotFocus="Input_GotFocus"
-                                LostFocus="Input_LostFocus"/>
-                        </Grid>
-                    </Grid>
+                    <controls:DivideLootInputDisplay
+                        x:Name="CopperInput"
+                        Grid.Row="1"
+                        LabelColor="#ffb87333"
+                        LabelText="Copper"/>
 
                     <!--Silver-->
-                    <Grid Grid.Row="2">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="45*"/>
-                            <ColumnDefinition Width="55*"/>
-                        </Grid.ColumnDefinitions>
-
-                        <!--Label-->
-                        <Grid Grid.Column="0"
-                              Background="Silver"
-                              Margin="3, 3, 0, 3">
-                            <components:ConciergeTextBlock Text="Silver"
-                                       Foreground="Black"
-                                       FontSize="20"
-                                       FontWeight="Bold"
-                                       VerticalAlignment="Center"
-                                       HorizontalAlignment="Left"
-                                       Margin="10, 0, 0, 0"/>
-                        </Grid>
-
-                        <!--Input-->
-                        <Grid Grid.Column="1"
-                              Background="#FF3e3e42"
-                              Margin="0, 3, 3, 3">
-                            <components:ConciergeTextBox 
-                                x:Name="SilverInput"
-                                Background="#ff3e3e42"
-                                FontSize="20"
-                                HorizontalContentAlignment="Center"
-                                MaxLength="10"
-                                GotFocus="Input_GotFocus"
-                                LostFocus="Input_LostFocus"/>
-                        </Grid>
-                    </Grid>
+                    <controls:DivideLootInputDisplay
+                        x:Name="SilverInput"
+                        Grid.Row="2"
+                        LabelColor="Silver"
+                        LabelText="Silver"/>
 
                     <!--Electrum-->
-                    <Grid Grid.Row="3">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="45*"/>
-                            <ColumnDefinition Width="55*"/>
-                        </Grid.ColumnDefinitions>
-
-                        <!--Label-->
-                        <Grid Grid.Column="0"
-                              Background="#ff50c878"
-                              Margin="3, 3, 0, 3">
-                            <components:ConciergeTextBlock Text="Electrum"
-                                       Foreground="Black"
-                                       FontSize="20"
-                                       FontWeight="Bold"
-                                       VerticalAlignment="Center"
-                                       HorizontalAlignment="Left"
-                                       Margin="10, 0, 0, 0"/>
-                        </Grid>
-
-                        <!--Input-->
-                        <Grid Grid.Column="1"
-                              Background="#FF3e3e42"
-                              Margin="0, 3, 3, 3">
-                            <components:ConciergeTextBox 
-                                x:Name="ElectrumInput"
-                                Background="#ff3e3e42"
-                                FontSize="20"
-                                HorizontalContentAlignment="Center"
-                                MaxLength="10"
-                                GotFocus="Input_GotFocus"
-                                LostFocus="Input_LostFocus"/>
-                        </Grid>
-                    </Grid>
+                    <controls:DivideLootInputDisplay
+                        x:Name="ElectrumInput"
+                        Grid.Row="3"
+                        LabelColor="#ff50c878"
+                        LabelText="Electrum"/>
 
                     <!--Gold-->
-                    <Grid Grid.Row="4">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="45*"/>
-                            <ColumnDefinition Width="55*"/>
-                        </Grid.ColumnDefinitions>
-
-                        <!--Label-->
-                        <Grid Grid.Column="0"
-                              Background="#ffCFB53B"
-                              Margin="3, 3, 0, 3">
-                            <components:ConciergeTextBlock Text="Gold"
-                                       Foreground="Black"
-                                       FontSize="20"
-                                       FontWeight="Bold"
-                                       VerticalAlignment="Center"
-                                       HorizontalAlignment="Left"
-                                       Margin="10, 0, 0, 0"/>
-                        </Grid>
-
-                        <!--Input-->
-                        <Grid Grid.Column="1"
-                              Background="#FF3e3e42"
-                              Margin="0, 3, 3, 3">
-                            <components:ConciergeTextBox 
-                                x:Name="GoldInput"
-                                Background="#ff3e3e42"
-                                FontSize="20"
-                                HorizontalContentAlignment="Center"
-                                MaxLength="10"
-                                GotFocus="Input_GotFocus"
-                                LostFocus="Input_LostFocus"/>
-                        </Grid>
-                    </Grid>
+                    <controls:DivideLootInputDisplay
+                        x:Name="GoldInput"
+                        Grid.Row="4"
+                        LabelColor="#ffCFB53B"
+                        LabelText="Gold"/>
 
                     <!--Platinum-->
-                    <Grid Grid.Row="5">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="45*"/>
-                            <ColumnDefinition Width="55*"/>
-                        </Grid.ColumnDefinitions>
-
-                        <!--Label-->
-                        <Grid Grid.Column="0"
-                              Background="#ffe5e4e2"
-                              Margin="3, 3, 0, 3">
-                            <components:ConciergeTextBlock Text="Platinum"
-                                       Foreground="Black"
-                                       FontSize="20"
-                                       FontWeight="Bold"
-                                       VerticalAlignment="Center"
-                                       HorizontalAlignment="Left"
-                                       Margin="10, 0, 0, 0"/>
-                        </Grid>
-
-                        <!--Input-->
-                        <Grid Grid.Column="1"
-                              Background="#FF3e3e42"
-                              Margin="0, 3, 3, 3">
-                            <components:ConciergeTextBox 
-                                x:Name="PlatinumInput"
-                                Background="#ff3e3e42"
-                                FontSize="20"
-                                HorizontalContentAlignment="Center"
-                                MaxLength="10"
-                                GotFocus="Input_GotFocus"
-                                LostFocus="Input_LostFocus"/>
-                        </Grid>
-                    </Grid>
+                    <controls:DivideLootInputDisplay
+                        x:Name="PlatinumInput"
+                        Grid.Row="5"
+                        LabelColor="#ffe5e4e2"
+                        LabelText="Platinum"/>
 
                 </Grid>
 

@@ -16,6 +16,13 @@ namespace Concierge.Interfaces.Controls
     /// </summary>
     public partial class IntegerUpDown : UserControl
     {
+        public static readonly DependencyProperty ValueFontSizeProperty =
+            DependencyProperty.Register(
+                "ValueFontSize",
+                typeof(int),
+                typeof(IntegerUpDown),
+                new UIPropertyMetadata(25));
+
         public static readonly DependencyProperty MinimumProperty =
             DependencyProperty.Register(
                 "Minimum",
@@ -91,6 +98,12 @@ namespace Concierge.Interfaces.Controls
         {
             add { this.AddHandler(DecreaseClickedEvent, value); }
             remove { this.RemoveHandler(DecreaseClickedEvent, value); }
+        }
+
+        public int ValueFontSize
+        {
+            get { return (int)this.GetValue(ValueFontSizeProperty); }
+            set { this.SetValue(ValueFontSizeProperty, value); }
         }
 
         public int Minimum
