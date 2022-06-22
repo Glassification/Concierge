@@ -68,13 +68,14 @@ namespace Concierge.Utility.Utilities
 
         public static LinearGradientBrush GenerateGradientBrush(Color startColor, Color endColor, Point startPoint, Point endPoint)
         {
-            var gradientStopCollection = new GradientStopCollection()
-            {
-                new GradientStop(startColor, 0.0),
-                new GradientStop(endColor, 1.0),
-            };
-
-            return new LinearGradientBrush(gradientStopCollection, startPoint, endPoint);
+            return new LinearGradientBrush(
+                new GradientStopCollection()
+                {
+                    new GradientStop(startColor, 0.0),
+                    new GradientStop(endColor, 1.0),
+                },
+                startPoint,
+                endPoint);
         }
 
         public static string FormatHexString(string hex)

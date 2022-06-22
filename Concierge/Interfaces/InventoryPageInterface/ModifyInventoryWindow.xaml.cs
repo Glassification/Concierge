@@ -4,10 +4,13 @@
 
 namespace Concierge.Interfaces.InventoryPageInterface
 {
+    using System;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Windows;
     using System.Windows.Controls;
 
+    using Concierge.Character.Enums;
     using Concierge.Character.Items;
     using Concierge.Commands;
     using Concierge.Configuration;
@@ -29,6 +32,8 @@ namespace Concierge.Interfaces.InventoryPageInterface
         {
             this.InitializeComponent();
             this.NameComboBox.ItemsSource = Constants.Inventories;
+            this.CategoryComboBox.ItemsSource = Constants.ItemCategories;
+            this.CoinTypeComboBox.ItemsSource = Enum.GetValues(typeof(CoinType)).Cast<CoinType>();
             this.ConciergePage = ConciergePage.None;
             this.SelectedItem = new Inventory();
             this.Items = new List<Inventory>();
@@ -124,8 +129,12 @@ namespace Concierge.Interfaces.InventoryPageInterface
             this.NameComboBox.Text = inventory.Name;
             this.AmountUpDown.Value = inventory.Amount;
             this.WeightUpDown.Value = inventory.Weight.Value;
-            this.NotesTextBox.Text = inventory.Note;
+            this.NotesTextBox.Text = inventory.Notes;
             this.WeightUnits.Text = $"({UnitFormat.WeightPostfix})";
+            this.DescriptionTextBox.Text = inventory.Description;
+            this.CategoryComboBox.Text = inventory.ItemCategory;
+            this.ValueUpDown.Value = inventory.Value;
+            this.CoinTypeComboBox.Text = inventory.CoinType.ToString();
 
             if (this.EquippedItem)
             {
@@ -137,7 +146,7 @@ namespace Concierge.Interfaces.InventoryPageInterface
             }
             else
             {
-                this.BagOfHoldingText.Text = "Bag of Holding:";
+                this.BagOfHoldingText.Text = "Ignore Weight:";
                 this.BagOfHoldingCheckBox.IsChecked = inventory.IsInBagOfHolding;
                 this.AmountTextBlock.Opacity = 1;
                 this.AmountUpDown.Opacity = 1;
@@ -157,6 +166,10 @@ namespace Concierge.Interfaces.InventoryPageInterface
             this.BagOfHoldingCheckBox.IsChecked = false;
             this.NotesTextBox.Text = string.Empty;
             this.WeightUnits.Text = $"({UnitFormat.WeightPostfix})";
+            this.DescriptionTextBox.Text = string.Empty;
+            this.CategoryComboBox.Text = Constants.ItemCategories[0];
+            this.ValueUpDown.Value = 0;
+            this.CoinTypeComboBox.Text = CoinType.None.ToString();
 
             this.BagOfHoldingCheckBox.UpdatedValue();
         }
@@ -170,7 +183,11 @@ namespace Concierge.Interfaces.InventoryPageInterface
                 Amount = this.AmountUpDown.Value,
                 Weight = new UnitDouble(this.WeightUpDown.Value, AppSettingsManager.UserSettings.UnitOfMeasurement, Measurements.Weight),
                 IsInBagOfHolding = this.BagOfHoldingCheckBox.IsChecked ?? false,
-                Note = this.NotesTextBox.Text,
+                Notes = this.NotesTextBox.Text,
+                Description = this.DescriptionTextBox.Text,
+                ItemCategory = this.CategoryComboBox.Text,
+                Value = this.ValueUpDown.Value,
+                CoinType = (CoinType)Enum.Parse(typeof(CoinType), this.CoinTypeComboBox.Text),
             };
 
             Program.UndoRedoService.AddCommand(new AddCommand<Inventory>(this.Items, item, this.ConciergePage));
@@ -185,7 +202,11 @@ namespace Concierge.Interfaces.InventoryPageInterface
             inventory.Name = this.NameComboBox.Text;
             inventory.Amount = this.AmountUpDown.Value;
             inventory.Weight.Value = this.WeightUpDown.Value;
-            inventory.Note = this.NotesTextBox.Text;
+            inventory.Notes = this.NotesTextBox.Text;
+            inventory.Description = this.DescriptionTextBox.Text;
+            inventory.ItemCategory = this.CategoryComboBox.Text;
+            inventory.Value = this.ValueUpDown.Value;
+            inventory.CoinType = (CoinType)Enum.Parse(typeof(CoinType), this.CoinTypeComboBox.Text);
 
             if (this.EquippedItem)
             {

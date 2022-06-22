@@ -15,8 +15,7 @@ namespace Concierge.Tools.Interface
             ConciergeWindowButtons messageWindowButtons,
             ConciergeWindowIcons messageWindowIcons)
         {
-            var conciergeMessageWindow = new ConciergeMessageWindow();
-            return conciergeMessageWindow.ShowWindow(message, title, messageWindowButtons, messageWindowIcons);
+            return new ConciergeMessageWindow().ShowWindow(message, title, messageWindowButtons, messageWindowIcons);
         }
     }
 }

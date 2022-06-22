@@ -162,7 +162,7 @@
 
                     <!--Value-->
                     <Grid Grid.Column="1">
-                        <controls:DoubleUpDown x:Name="WeightUpDown"/>
+                        <controls:DoubleUpDown x:Name="WeightUpDown"  Increment="0.5"/>
                     </Grid>
                 </Grid>
 
@@ -301,7 +301,7 @@
 
                     <!--Value-->
                     <Grid Grid.Column="1">
-                        <controls:DoubleUpDown x:Name="ShieldWeightUpDown"/>
+                        <controls:DoubleUpDown x:Name="ShieldWeightUpDown"  Increment="0.5"/>
                     </Grid>
                 </Grid>
 

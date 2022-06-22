@@ -31,9 +31,11 @@
                     BorderThickness="0"
                     FontSize="25"
                     LostFocus="TextBoxValue_LostFocus"
+                    GotFocus="TextBoxValue_GotFocus"
                     PreviewKeyDown="TextBoxValue_PreviewKeyDown"
                     MouseEnter="TextBox_MouseEnter"
-                    MouseLeave="Control_MouseLeave"/>
+                    MouseLeave="Control_MouseLeave"
+                    MouseWheel="TextBoxValue_MouseWheel"/>
             </Grid>
 
             <Grid Grid.Column="1">

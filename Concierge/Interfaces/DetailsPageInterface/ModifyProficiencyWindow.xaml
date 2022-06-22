@@ -97,9 +97,11 @@
                 </Grid>
 
                 <!--Value-->
-                <components:ConciergeTextBoxBackground Grid.Column="1">
-                    <components:ConciergeTextBox x:Name="ProficiencyTextBox"/>
-                </components:ConciergeTextBoxBackground>
+                <components:ConciergeComboBox
+                    Grid.Column="1"
+                    Style="{StaticResource ComboBoxStyle}"
+                    x:Name="ProficiencyTextComboBox"
+                    IsEditable="True"/>
             </Grid>
         </Grid>
 

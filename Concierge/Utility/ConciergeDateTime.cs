@@ -15,6 +15,6 @@ namespace Concierge.Utility
 
         public static string StatusMenuNow => DateTime.Now.ToString("h:mm tt   yyyy-MM-d");
 
-        public static string ToolTipNow => DateTime.Now.ToString("MMMM d, yyyy");
+        public static string ToolTipNow => DateTime.Now.ToString("dddd MMMM d, yyyy");
     }
 }

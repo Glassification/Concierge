@@ -78,6 +78,7 @@ namespace Concierge.Interfaces
             this.GridContent.Width = GridContentWidthClose;
             this.IgnoreListItemSelectionChanged = true;
             this.MessageBar.Background = ConciergeColors.ProficiencyBrush;
+            this.GridTitle.Background = ConciergeColors.TitleMenuBrush;
             this.CollapseAll();
             this.GenerateListViewItems();
             this.ListViewMenu.SelectedIndex = 0;

@@ -59,13 +59,16 @@ namespace Concierge.Interfaces.OverviewPageInterface
 
         private void FillFields()
         {
-            this.InitiativeTextBlock.Text = Program.CcsFile.Character.Initiative.ToString();
-            this.InitiativeBonusUpDown.Value = Program.CcsFile.Character.Senses.InitiativeBonus;
-            this.PerceptionTextBlock.Text = Program.CcsFile.Character.PassivePerception.ToString();
-            this.PerceptionBonusUpDown.Value = Program.CcsFile.Character.Senses.PerceptionBonus;
-            this.VisionComboBox.Text = Program.CcsFile.Character.Senses.Vision.ToString();
-            this.MovementTextBlock.Text = Program.CcsFile.Character.Senses.Movement.ToString();
-            this.BaseMovementUpDown.Value = Program.CcsFile.Character.Senses.BaseMovement;
+            var character = Program.CcsFile.Character;
+
+            this.InitiativeTextBlock.Text = character.Initiative.ToString();
+            this.InitiativeBonusUpDown.Value = character.Senses.InitiativeBonus;
+            this.PerceptionTextBlock.Text = character.PassivePerception.ToString();
+            this.PerceptionBonusUpDown.Value = character.Senses.PerceptionBonus;
+            this.VisionComboBox.Text = character.Senses.Vision.ToString();
+            this.MovementTextBlock.Text = character.Senses.Movement.ToString();
+            this.BaseMovementUpDown.Value = character.Senses.BaseMovement;
+            this.MovementBonusUpDown.Value = character.Senses.MovementBonus;
         }
 
         private void UpdateSenses()
@@ -77,6 +80,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
             senses.PerceptionBonus = this.PerceptionBonusUpDown.Value;
             senses.Vision = (VisionTypes)Enum.Parse(typeof(VisionTypes), this.VisionComboBox.Text);
             senses.BaseMovement = this.BaseMovementUpDown.Value;
+            senses.MovementBonus = this.MovementBonusUpDown.Value;
 
             Program.UndoRedoService.AddCommand(new EditCommand<Senses>(senses, oldItem, this.ConciergePage));
         }
@@ -111,7 +115,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
         {
             this.InitiativeTextBlock.Text = (CharacterUtility.CalculateBonus(Program.CcsFile.Character.Attributes.Dexterity) + this.InitiativeBonusUpDown.Value).ToString();
             this.PerceptionTextBlock.Text = (Constants.BasePerception + Program.CcsFile.Character.Skill.Perception.Bonus + this.PerceptionBonusUpDown.Value).ToString();
-            this.MovementTextBlock.Text = Senses.GetMovement(this.BaseMovementUpDown.Value).ToString();
+            this.MovementTextBlock.Text = Senses.GetMovement(this.BaseMovementUpDown.Value + this.MovementBonusUpDown.Value).ToString();
         }
     }
 }

@@ -254,6 +254,7 @@
       "InitiativeBonus": 5,
       "PerceptionBonus": 5,
       "BaseMovement": 30,
+      "MovementBonus": 10,
       "Vision": 2
     },
     "Chapters": [
@@ -336,7 +337,7 @@
           "Measurement": 1
         },
         "IsInBagOfHolding": true,
-        "Note": "Very old map oh a mountain range. It looks to be similar to the sunset mountains. Written in Dwarvish.",
+        "Description": "Very old map oh a mountain range. It looks to be similar to the sunset mountains. Written in Dwarvish.",
         "Attuned": false,
         "Index": 0,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
@@ -351,7 +352,7 @@
           "Measurement": 1
         },
         "IsInBagOfHolding": true,
-        "Note": "A bag containing 10,000 peices of candy.",
+        "Description": "A bag containing 10,000 peices of candy.",
         "Attuned": false,
         "Index": 0,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
@@ -366,7 +367,7 @@
           "Measurement": 1
         },
         "IsInBagOfHolding": false,
-        "Note": "The bag stores items in an extradimensional space. Can hold up to 500lbs, and 64 cubic feet. Turning the bag inside out will spill all its contents.",
+        "Description": "The bag stores items in an extradimensional space. Can hold up to 500lbs, and 64 cubic feet. Turning the bag inside out will spill all its contents.",
         "Attuned": false,
         "Index": 0,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
@@ -381,7 +382,7 @@
           "Measurement": 1
         },
         "IsInBagOfHolding": true,
-        "Note": "As an action, you can spill these tiny metal balls from their pouch to cover a level, square area that is 10 feet on a side. Moving across the covered area must succeed on a DC 10 Dexterity saving throw or fall prone. Moving through the area at half speed doesn't need a save.",
+        "Description": "As an action, you can spill these tiny metal balls from their pouch to cover a level, square area that is 10 feet on a side. Moving across the covered area must succeed on a DC 10 Dexterity saving throw or fall prone. Moving through the area at half speed doesn't need a save.",
         "Attuned": false,
         "Index": 0,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
@@ -396,7 +397,7 @@
           "Measurement": 1
         },
         "IsInBagOfHolding": true,
-        "Note": "The potion will keep you clean for 24 hours. They brush your hair, teeth, and leave you smelling great. Has a small chance of bubbles coming out your mouth.",
+        "Description": "The potion will keep you clean for 24 hours. They brush your hair, teeth, and leave you smelling great. Has a small chance of bubbles coming out your mouth.",
         "Attuned": false,
         "Index": 0,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
@@ -411,7 +412,7 @@
           "Measurement": 1
         },
         "IsInBagOfHolding": true,
-        "Note": "As an action, you can spread a bag of caltrops to cover a square area that is 5 feet on a side. Any creature that enters the area must succeed on a DC 15 Dexterity saving throw or stop moving this turn and take 1 piercing damage. Taking this damage reduces the creature's walking speed by 10 feet until the creature regains at least 1 hit point. A creature moving through the area at half speed doesn't need to make the save.",
+        "Description": "As an action, you can spread a bag of caltrops to cover a square area that is 5 feet on a side. Any creature that enters the area must succeed on a DC 15 Dexterity saving throw or stop moving this turn and take 1 piercing damage. Taking this damage reduces the creature's walking speed by 10 feet until the creature regains at least 1 hit point. A creature moving through the area at half speed doesn't need to make the save.",
         "Attuned": false,
         "Index": 0,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
@@ -426,7 +427,7 @@
           "Measurement": 1
         },
         "IsInBagOfHolding": true,
-        "Note": "Contract to protect mage from danger.",
+        "Description": "Contract to protect mage from danger.",
         "Attuned": false,
         "Index": 0,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
@@ -441,7 +442,7 @@
           "Measurement": 1
         },
         "IsInBagOfHolding": true,
-        "Note": "Using a crowbar grants advantage to Strength checks where the crowbar's leverage can be applied.",
+        "Description": "Using a crowbar grants advantage to Strength checks where the crowbar's leverage can be applied.",
         "Attuned": false,
         "Index": 0,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
@@ -456,7 +457,7 @@
           "Measurement": 1
         },
         "IsInBagOfHolding": true,
-        "Note": "An insignia representing membership with the Dragon Cult.",
+        "Description": "An insignia representing membership with the Dragon Cult.",
         "Attuned": false,
         "Index": 0,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
@@ -471,7 +472,7 @@
           "Measurement": 1
         },
         "IsInBagOfHolding": true,
-        "Note": "The beak of an eagle that was far too much trouble.",
+        "Description": "The beak of an eagle that was far too much trouble.",
         "Attuned": false,
         "Index": 0,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
@@ -486,7 +487,7 @@
           "Measurement": 1
         },
         "IsInBagOfHolding": true,
-        "Note": "A flask or tankard can hold 1 pint of liquid.",
+        "Description": "A flask or tankard can hold 1 pint of liquid.",
         "Attuned": false,
         "Index": 0,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
@@ -501,7 +502,7 @@
           "Measurement": 1
         },
         "IsInBagOfHolding": true,
-        "Note": "Woman's fur coat for keeping warm in cold climates.",
+        "Description": "Woman's fur coat for keeping warm in cold climates.",
         "Attuned": false,
         "Index": 0,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
@@ -516,7 +517,7 @@
           "Measurement": 1
         },
         "IsInBagOfHolding": true,
-        "Note": "Empty vial. Can hold 7 doses of something (drugs).",
+        "Description": "Empty vial. Can hold 7 doses of something (drugs).",
         "Attuned": false,
         "Index": 0,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
@@ -531,7 +532,7 @@
           "Measurement": 1
         },
         "IsInBagOfHolding": true,
-        "Note": "This one-handed hammer with an iron head is useful for pounding pitons into a wall.",
+        "Description": "This one-handed hammer with an iron head is useful for pounding pitons into a wall.",
         "Attuned": false,
         "Index": 0,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
@@ -546,7 +547,7 @@
           "Measurement": 1
         },
         "IsInBagOfHolding": true,
-        "Note": "Bonus action to use yourself, action to use on another person. 2d4 +2 HP restored.",
+        "Description": "Bonus action to use yourself, action to use on another person. 2d4 +2 HP restored.",
         "Attuned": false,
         "Index": 0,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
@@ -561,7 +562,7 @@
           "Measurement": 1
         },
         "IsInBagOfHolding": true,
-        "Note": "Casts bright light in 30 foot radius, dim light for additional 30 feet. Burns 6 hours on pint of oil. Lower hood to cast dim light in 5 foot radius.",
+        "Description": "Casts bright light in 30 foot radius, dim light for additional 30 feet. Burns 6 hours on pint of oil. Lower hood to cast dim light in 5 foot radius.",
         "Attuned": false,
         "Index": 0,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
@@ -576,7 +577,7 @@
           "Measurement": 1
         },
         "IsInBagOfHolding": false,
-        "Note": "Used to add a d10 to any d20 roll.",
+        "Description": "Used to add a d10 to any d20 roll.",
         "Attuned": false,
         "Index": 0,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
@@ -591,7 +592,7 @@
           "Measurement": 1
         },
         "IsInBagOfHolding": true,
-        "Note": "Intel on the imperial forces.",
+        "Description": "Intel on the imperial forces.",
         "Attuned": false,
         "Index": 0,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
@@ -606,7 +607,7 @@
           "Measurement": 1
         },
         "IsInBagOfHolding": true,
-        "Note": "A thin stick thought to be magical in some way.",
+        "Description": "A thin stick thought to be magical in some way.",
         "Attuned": false,
         "Index": 0,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
@@ -621,7 +622,7 @@
           "Measurement": 1
         },
         "IsInBagOfHolding": true,
-        "Note": "Map to an unspecified location.",
+        "Description": "Map to an unspecified location.",
         "Attuned": false,
         "Index": 0,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
@@ -636,7 +637,7 @@
           "Measurement": 1
         },
         "IsInBagOfHolding": true,
-        "Note": "Rod found in Bag of Holding (Might be a key).",
+        "Description": "Rod found in Bag of Holding (Might be a key).",
         "Attuned": false,
         "Index": 0,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
@@ -651,7 +652,7 @@
           "Measurement": 1
         },
         "IsInBagOfHolding": true,
-        "Note": "Tusk of a fallen ogre.",
+        "Description": "Tusk of a fallen ogre.",
         "Attuned": false,
         "Index": 0,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
@@ -666,7 +667,7 @@
           "Measurement": 1
         },
         "IsInBagOfHolding": true,
-        "Note": "Very rich looking clothes. Black with red trim.",
+        "Description": "Very rich looking clothes. Black with red trim.",
         "Attuned": false,
         "Index": 0,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
@@ -681,7 +682,7 @@
           "Measurement": 1
         },
         "IsInBagOfHolding": false,
-        "Note": "Whisper into the crystal and another creature with the other in the pair will hear you. 1 action to use.",
+        "Description": "Whisper into the crystal and another creature with the other in the pair will hear you. 1 action to use.",
         "Attuned": false,
         "Index": 0,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
@@ -696,7 +697,7 @@
           "Measurement": 1
         },
         "IsInBagOfHolding": true,
-        "Note": "When a wall doesn’t offer handholds and footholds, you can make your own. A piton is a steel spike with an eye through which you can loop a rope.",
+        "Description": "When a wall doesn’t offer handholds and footholds, you can make your own. A piton is a steel spike with an eye through which you can loop a rope.",
         "Attuned": false,
         "Index": 0,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
@@ -711,7 +712,7 @@
           "Measurement": 1
         },
         "IsInBagOfHolding": true,
-        "Note": "Contains chemicals and equipment to create poisons.",
+        "Description": "Contains chemicals and equipment to create poisons.",
         "Attuned": false,
         "Index": 0,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
@@ -726,7 +727,7 @@
           "Measurement": 1
         },
         "IsInBagOfHolding": true,
-        "Note": "See spell: Detect Thoughts. One time use.",
+        "Description": "See spell: Detect Thoughts. One time use.",
         "Attuned": false,
         "Index": 0,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
@@ -741,7 +742,7 @@
           "Measurement": 1
         },
         "IsInBagOfHolding": true,
-        "Note": "Grants resistance to fire",
+        "Description": "Grants resistance to fire",
         "Attuned": false,
         "Index": 0,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
@@ -756,7 +757,7 @@
           "Measurement": 1
         },
         "IsInBagOfHolding": true,
-        "Note": "If injested causes the poison condition. Creature must save on a CD 12 Constitution save. Causes 1d12 poison damage.",
+        "Description": "If injested causes the poison condition. Creature must save on a CD 12 Constitution save. Causes 1d12 poison damage.",
         "Attuned": false,
         "Index": 0,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
@@ -771,7 +772,7 @@
           "Measurement": 1
         },
         "IsInBagOfHolding": false,
-        "Note": "A quiver can hold up to 20 arrows.",
+        "Description": "A quiver can hold up to 20 arrows.",
         "Attuned": false,
         "Index": 0,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
@@ -786,7 +787,7 @@
           "Measurement": 1
         },
         "IsInBagOfHolding": true,
-        "Note": "Rations consist of dry foods suitable for extended travel, including jerky, dried fruit, hardtack, and nuts.",
+        "Description": "Rations consist of dry foods suitable for extended travel, including jerky, dried fruit, hardtack, and nuts.",
         "Attuned": false,
         "Index": 0,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
@@ -801,7 +802,7 @@
           "Measurement": 1
         },
         "IsInBagOfHolding": true,
-        "Note": "Sacks containing some sort of chemicals that give off a lot of heat.",
+        "Description": "Sacks containing some sort of chemicals that give off a lot of heat.",
         "Attuned": false,
         "Index": 0,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
@@ -816,7 +817,7 @@
           "Measurement": 1
         },
         "IsInBagOfHolding": true,
-        "Note": "Rope, has 2 hit points and can be burst with a DC 17 Strength check.",
+        "Description": "Rope, has 2 hit points and can be burst with a DC 17 Strength check.",
         "Attuned": false,
         "Index": 0,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
@@ -831,7 +832,7 @@
           "Measurement": 1
         },
         "IsInBagOfHolding": true,
-        "Note": "Food for one person for a meal.",
+        "Description": "Food for one person for a meal.",
         "Attuned": false,
         "Index": 0,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
@@ -846,7 +847,7 @@
           "Measurement": 1
         },
         "IsInBagOfHolding": false,
-        "Note": "Say the words 'trust is earned' to get all the perks befitting a lieutenant.",
+        "Description": "Say the words 'trust is earned' to get all the perks befitting a lieutenant.",
         "Attuned": false,
         "Index": 0,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
@@ -861,7 +862,7 @@
           "Measurement": 1
         },
         "IsInBagOfHolding": true,
-        "Note": "A standard shovel used for digging.",
+        "Description": "A standard shovel used for digging.",
         "Attuned": false,
         "Index": 0,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
@@ -876,7 +877,7 @@
           "Measurement": 1
         },
         "IsInBagOfHolding": true,
-        "Note": "A small marble like bead coloured a translucent green.",
+        "Description": "A small marble like bead coloured a translucent green.",
         "Attuned": false,
         "Index": 0,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
@@ -891,7 +892,7 @@
           "Measurement": 1
         },
         "IsInBagOfHolding": true,
-        "Note": "A 10-foot length of string, typically found in a burglar's pack.",
+        "Description": "A 10-foot length of string, typically found in a burglar's pack.",
         "Attuned": false,
         "Index": 0,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
@@ -906,7 +907,7 @@
           "Measurement": 1
         },
         "IsInBagOfHolding": true,
-        "Note": "The knife has a mouth on it that keeps repeating \"Eating a human is a mortal sin\".",
+        "Description": "The knife has a mouth on it that keeps repeating \"Eating a human is a mortal sin\".",
         "Attuned": false,
         "Index": 0,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
@@ -921,7 +922,7 @@
           "Measurement": 1
         },
         "IsInBagOfHolding": true,
-        "Note": "A simple and portable canvas shelter, a tent sleeps two.",
+        "Description": "A simple and portable canvas shelter, a tent sleeps two.",
         "Attuned": false,
         "Index": 0,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
@@ -936,7 +937,7 @@
           "Measurement": 1
         },
         "IsInBagOfHolding": true,
-        "Note": "Small file, lock picks, mirror on metal handle, narrow bladed scissors, pliers.",
+        "Description": "Small file, lock picks, mirror on metal handle, narrow bladed scissors, pliers.",
         "Attuned": false,
         "Index": 0,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
@@ -951,7 +952,7 @@
           "Measurement": 1
         },
         "IsInBagOfHolding": true,
-        "Note": "The deck consists of 70 cards (plus two reference cards).",
+        "Description": "The deck consists of 70 cards (plus two reference cards).",
         "Attuned": false,
         "Index": 0,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
@@ -966,7 +967,7 @@
           "Measurement": 1
         },
         "IsInBagOfHolding": true,
-        "Note": "This small container holds flint, fire steel, and tinder (usually dry cloth soaked in light oil) used to kindle a fire. Using it to light a torch -- or anything else with abundant, exposed fuel -- takes an action. Lighting any other fire takes 1 minute.",
+        "Description": "This small container holds flint, fire steel, and tinder (usually dry cloth soaked in light oil) used to kindle a fire. Using it to light a torch -- or anything else with abundant, exposed fuel -- takes an action. Lighting any other fire takes 1 minute.",
         "Attuned": false,
         "Index": 0,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
@@ -981,7 +982,7 @@
           "Measurement": 1
         },
         "IsInBagOfHolding": true,
-        "Note": "A carved crystal that faintly glows in the moonlight. (Stolen from ruins in the Scaled Plains)",
+        "Description": "A carved crystal that faintly glows in the moonlight. (Stolen from ruins in the Scaled Plains)",
         "Attuned": false,
         "Index": 0,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
@@ -996,7 +997,7 @@
           "Measurement": 1
         },
         "IsInBagOfHolding": true,
-        "Note": "A box with 3 locks on it, all interconnected. Strong divination magic from within.",
+        "Description": "A box with 3 locks on it, all interconnected. Strong divination magic from within.",
         "Attuned": false,
         "Index": 0,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
@@ -1011,7 +1012,7 @@
           "Measurement": 1
         },
         "IsInBagOfHolding": true,
-        "Note": "Test Item",
+        "Description": "Test Item",
         "Attuned": false,
         "Index": 0,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
@@ -1026,7 +1027,7 @@
           "Measurement": 1
         },
         "IsInBagOfHolding": true,
-        "Note": "A wooden staff belonging to Declan",
+        "Description": "A wooden staff belonging to Declan",
         "Attuned": false,
         "Index": 0,
         "EquppedId": "00000000-0000-0000-0000-000000000000",
@@ -1043,7 +1044,7 @@
       "Background": "Criminal Contact: Network of trustworthy contacts. Can use them to send and receive messages quickly over great distances.",
       "Notes": "Parents went missing on an expedition. Still looking into what happened to them."
     },
-    "Proficiency": [
+    "Proficiencies": [
       {
         "Name": "Light Armor",
         "ProficiencyType": 0,
@@ -1642,5 +1643,5 @@
     ]
   },
   "OriginalCreationDate": "Sunday, 13 March 2022 06:59:30 PM",
-  "Version": "4.9.0"
+  "Version": "4.9.2"
 }

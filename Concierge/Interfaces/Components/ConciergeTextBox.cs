@@ -21,7 +21,8 @@ namespace Concierge.Interfaces.Components
             this.Margin = new Thickness(5);
             this.BorderThickness = new Thickness(0);
             this.FontSize = 15;
-            this.GotFocus += this.SoundEffect_GotFocus;
+            this.GotFocus += this.ConciergeTextBox_GotFocus;
+            this.LostFocus += this.ConciergeTextBox_LostFocus;
         }
 
         public bool IsUpdating { get; private set; }
@@ -36,7 +37,7 @@ namespace Concierge.Interfaces.Components
             this.IsUpdating = false;
         }
 
-        private void SoundEffect_GotFocus(object sender, RoutedEventArgs e)
+        private void ConciergeTextBox_GotFocus(object sender, RoutedEventArgs e)
         {
             if (!this.IsUpdating)
             {
@@ -44,6 +45,12 @@ namespace Concierge.Interfaces.Components
             }
 
             this.IsUpdating = false;
+            Program.IsTyping = true;
+        }
+
+        private void ConciergeTextBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            Program.IsTyping = false;
         }
     }
 }

@@ -1,2 +1,1 @@
-﻿Add searching to Notes
-Add object before/after on info log
+﻿Add object before/after on info log

@@ -86,7 +86,11 @@
         <!-- Side Menu -->
 
         <!-- Title Menu -->
-        <Grid x:Name="GridTitle" Grid.Row="0" Grid.Column="1"  Background="#FF5F5F5F">
+        <Grid
+            x:Name="GridTitle"
+            Grid.Row="0"
+            Grid.Column="1"
+            MouseDown="CharacterHeader_MouseDown">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="60" />
                 <ColumnDefinition Width="1*" />
@@ -120,14 +124,12 @@
 
             <Grid 
                 x:Name="CharacterHeader" 
-                Grid.Column="1" 
-                Background="Black" 
-                MouseDown="CharacterHeader_MouseDown">
+                Grid.Column="1">
                 <StackPanel x:Name="CharacterHeaderPanel" Orientation="Horizontal">
                 </StackPanel>
             </Grid>
 
-            <Grid x:Name="OptionButtons" Grid.Column="2" Background="Black">
+            <Grid x:Name="OptionButtons" Grid.Column="2">
                 <materialDesign:PackIcon
                     x:Name="ModifiedStatus"
                     Kind="ContentSaveAlert" 

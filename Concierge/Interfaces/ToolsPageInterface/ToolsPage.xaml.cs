@@ -45,20 +45,6 @@ namespace Concierge.Interfaces.ToolsPageInterface
 
         private DiceHistory DiceHistory { get; set; }
 
-        private bool DivideLootInputHasFocus
-        {
-            get
-            {
-                return
-                    this.CopperInput.IsFocused ||
-                    this.SilverInput.IsFocused ||
-                    this.ElectrumInput.IsFocused ||
-                    this.GoldInput.IsFocused ||
-                    this.PlatinumInput.IsFocused ||
-                    this.PlayersInput.IsFocused;
-            }
-        }
-
         public void Draw()
         {
             this.DrawDivideLoot();
@@ -251,20 +237,9 @@ namespace Concierge.Interfaces.ToolsPageInterface
             switch (e.Key)
             {
                 case Key.Enter:
-                    if (this.DivideLootInputHasFocus)
-                    {
-                        this.DivideLoot();
-                    }
-                    else if (this.CustomInputTextBox.IsFocused)
+                    if (this.CustomInputTextBox.IsFocused)
                     {
                         this.ParseCustomInput();
-                    }
-
-                    break;
-                case Key.Escape:
-                    if (this.DivideLootInputHasFocus)
-                    {
-                        this.ClearDivideLoot();
                     }
 
                     break;
@@ -284,6 +259,7 @@ namespace Concierge.Interfaces.ToolsPageInterface
                     if (this.CustomInputTextBox.IsFocused)
                     {
                         this.CustomInputTextBox.Text = this.DiceHistory.Backward();
+                        this.CustomInputTextBox.Select(this.CustomInputTextBox.Text.Length, 0);
                     }
 
                     break;
@@ -291,6 +267,7 @@ namespace Concierge.Interfaces.ToolsPageInterface
                     if (this.CustomInputTextBox.IsFocused)
                     {
                         this.CustomInputTextBox.Text = this.DiceHistory.Forward();
+                        this.CustomInputTextBox.Select(this.CustomInputTextBox.Text.Length, 0);
                     }
 
                     break;

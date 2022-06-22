@@ -4,6 +4,7 @@
 
 namespace Concierge.Utility
 {
+    using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using System.Reflection;
     using System.Windows;
@@ -59,7 +60,7 @@ namespace Concierge.Utility
             0,
         };
 
-        private static readonly int[] proficiencies = { 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 6, 6, 6, 6 };
+        private static readonly int[] proficiencyLevels = { 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 6, 6, 6, 6 };
 
         private static readonly int[] autosaveIntervals = { 1, 5, 10, 15, 20, 30, 45, 60, 90, 120 };
 
@@ -185,6 +186,73 @@ namespace Concierge.Utility
             "Superiority Dice",
         };
 
+        private static readonly string[] tools =
+        {
+            "Alchemist's Supplies",
+            "Brewer's Supplies",
+            "Calligrapher's Supplies",
+            "Carpenter's Tools",
+            "Cartographer's Tools",
+            "Cobbler's Tools",
+            "Disguise Kit",
+            "Forgery Kit",
+            "Glassblower's Tools",
+            "Herbalism Kit",
+            "Herbalism Kit",
+            "Leatherworker's Tools",
+            "Mason's Tools",
+            "Navigator's Tools",
+            "Painter's Supplies",
+            "Poisoner's kit",
+            "Potter's Tools",
+            "Smith's Tools",
+            "Thieves' Tools",
+            "Tinker's Tools",
+            "Weaver's Tools",
+            "Woodcarver's Tools",
+        };
+
+        private static readonly string[] games =
+        {
+            "Dice Set",
+            "Dragonchess Set",
+            "Playing Card Set",
+            "Three-Dragon Ante Set",
+        };
+
+        private static readonly string[] instruments =
+        {
+            "Bagpipes",
+            "Drum",
+            "Dulcimer",
+            "Flute",
+            "Horn",
+            "Lute",
+            "Lyre",
+            "Pan Flute",
+            "Shawm",
+            "Viol",
+        };
+
+        private static readonly string[] itemCategories =
+        {
+            "Adventuring Gear",
+            "Arcane Focus",
+            "Druidic Focus",
+            "Equipment Pack",
+            "Gemstone",
+            "Heavy Armor",
+            "Holy Symbol",
+            "Light Armor",
+            "Medium Armor",
+            "Mount",
+            "Poison",
+            "Shield",
+            "Tool",
+            "Vehicle (Land)",
+            "Vehicle (Water)",
+        };
+
         static Constants()
         {
             AutosaveIntervals = new ReadOnlyCollection<int>(autosaveIntervals);
@@ -200,10 +268,14 @@ namespace Concierge.Utility
             Backgrounds = new ReadOnlyCollection<string>(backgrounds);
             Races = new ReadOnlyCollection<string>(races);
             Levels = new ReadOnlyCollection<int>(levels);
-            Proficiencies = new ReadOnlyCollection<int>(proficiencies);
+            ProficiencyLevels = new ReadOnlyCollection<int>(proficiencyLevels);
             Classes = new ReadOnlyCollection<string>(classes);
             StatusEffects = new ReadOnlyCollection<string>(statusEffects);
             Resources = new ReadOnlyCollection<string>(resources);
+            Tools = new ReadOnlyCollection<string>(tools);
+            Games = new ReadOnlyCollection<string>(games);
+            Instruments = new ReadOnlyCollection<string>(instruments);
+            ItemCategories = new ReadOnlyCollection<string>(itemCategories);
         }
 
         public static ReadOnlyCollection<int> AutosaveIntervals { get; }
@@ -226,7 +298,7 @@ namespace Concierge.Utility
 
         public static ReadOnlyCollection<int> Levels { get; }
 
-        public static ReadOnlyCollection<int> Proficiencies { get; }
+        public static ReadOnlyCollection<int> ProficiencyLevels { get; }
 
         public static ReadOnlyCollection<string> Classes { get; }
 
@@ -235,6 +307,14 @@ namespace Concierge.Utility
         public static ReadOnlyCollection<string> StatusEffects { get; }
 
         public static ReadOnlyCollection<string> Resources { get; }
+
+        public static ReadOnlyCollection<string> Tools { get; }
+
+        public static ReadOnlyCollection<string> Games { get; }
+
+        public static ReadOnlyCollection<string> Instruments { get; }
+
+        public static ReadOnlyCollection<string> ItemCategories { get; }
 
         public static int CurrentAutosaveInterval => AutosaveIntervals[AppSettingsManager.UserSettings.AutosaveInterval];
 

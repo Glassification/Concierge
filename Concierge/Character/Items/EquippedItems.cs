@@ -180,7 +180,10 @@ namespace Concierge.Character.Items
             var weight = 0.0;
             foreach (var item in list)
             {
-                weight += item.Weight.Value;
+                if (!item.ItemCategory.Contains("Armor"))
+                {
+                    weight += item.Weight.Value;
+                }
             }
 
             return weight;

@@ -11,14 +11,14 @@
     d:DataContext="{d:DesignInstance Type=viewmodels:ConciergeViewModel}"
     mc:Ignorable="d" 
     Title="Modify Hit Dice"
-    Height="355"
+    Height="385"
     Width="650"
     Style="{StaticResource WindowXboxDasboardStyle}">
 
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="45"/>
-            <RowDefinition Height="240"/>
+            <RowDefinition Height="270"/>
             <RowDefinition Height="70"/>
         </Grid.RowDefinitions>
 
@@ -48,221 +48,139 @@
         <!--Fields-->
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="5*"/>
-                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="40*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="40*"/>
             </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="60"/>
+            </Grid.RowDefinitions>
 
-            <!--Left-->
-            <Grid Grid.Column="0">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="60"/>
-                    <RowDefinition Height="60"/>
-                    <RowDefinition Height="60"/>
-                    <RowDefinition Height="60"/>
-                </Grid.RowDefinitions>
-
-                <!--Total D6-->
-                <Grid Grid.Row="0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="35*"/>
-                        <ColumnDefinition Width="65*"/>
-                    </Grid.ColumnDefinitions>
-
-                    <!--Title-->
-                    <Grid Grid.Column="0">
-                        <TextBlock Text="Used D6:"
-                                   Foreground="White"
-                                   FontSize="20"
-                                   HorizontalAlignment="Left"
-                                   VerticalAlignment="Center"
-                                   Margin="10, 0, 0, 0"/>
-                    </Grid>
-
-                    <!--Value-->
-                    <Grid Grid.Column="1">
-                        <controls:IntegerUpDown x:Name="UsedD6UpDown"/>
-                    </Grid>
-                </Grid>
-
-                <!--Total D8-->
-                <Grid Grid.Row="1">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="35*"/>
-                        <ColumnDefinition Width="65*"/>
-                    </Grid.ColumnDefinitions>
-
-                    <!--Title-->
-                    <Grid Grid.Column="0">
-                        <TextBlock Text="Used D8:"
-                                   Foreground="White"
-                                   FontSize="20"
-                                   HorizontalAlignment="Left"
-                                   VerticalAlignment="Center"
-                                   Margin="10, 0, 0, 0"/>
-                    </Grid>
-
-                    <!--Value-->
-                    <Grid Grid.Column="1">
-                        <controls:IntegerUpDown x:Name="UsedD8UpDown"/>
-                    </Grid>
-                </Grid>
-
-                <!--Total D10-->
-                <Grid Grid.Row="2">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="35*"/>
-                        <ColumnDefinition Width="65*"/>
-                    </Grid.ColumnDefinitions>
-
-                    <!--Title-->
-                    <Grid Grid.Column="0">
-                        <TextBlock Text="Used D10:"
-                                   Foreground="White"
-                                   FontSize="20"
-                                   HorizontalAlignment="Left"
-                                   VerticalAlignment="Center"
-                                   Margin="10, 0, 0, 0"/>
-                    </Grid>
-
-                    <!--Value-->
-                    <Grid Grid.Column="1">
-                        <controls:IntegerUpDown x:Name="UsedD10UpDown"/>
-                    </Grid>
-                </Grid>
-
-                <!--Total D12-->
-                <Grid Grid.Row="3">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="35*"/>
-                        <ColumnDefinition Width="65*"/>
-                    </Grid.ColumnDefinitions>
-
-                    <!--Title-->
-                    <Grid Grid.Column="0">
-                        <TextBlock Text="Used D12:"
-                                   Foreground="White"
-                                   FontSize="20"
-                                   HorizontalAlignment="Left"
-                                   VerticalAlignment="Center"
-                                   Margin="10, 0, 0, 0"/>
-                    </Grid>
-
-                    <!--Value-->
-                    <Grid Grid.Column="1">
-                        <controls:IntegerUpDown x:Name="UsedD12UpDown"/>
-                    </Grid>
-                </Grid>
+            <TextBlock 
+                Grid.Column="0"
+                Grid.Row="0"
+                Text="Used"
+                Foreground="White"
+                FontSize="25"
+                FontWeight="Bold"
+                Margin="20,0,0,0"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"/>
+            
+            <!--Total D6-->
+            <Grid Grid.Column="0" Grid.Row="1">
+                <controls:IntegerUpDown x:Name="UsedD6UpDown" Margin="20,0,0,0"/>
             </Grid>
 
-            <!--Right-->
-            <Grid Grid.Column="1">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="25*"/>
-                    <RowDefinition Height="25*"/>
-                    <RowDefinition Height="25*"/>
-                    <RowDefinition Height="25*"/>
-                </Grid.RowDefinitions>
-
-                <!--Used D6-->
-                <Grid Grid.Row="0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="35*"/>
-                        <ColumnDefinition Width="65*"/>
-                    </Grid.ColumnDefinitions>
-
-                    <!--Title-->
-                    <Grid Grid.Column="0">
-                        <TextBlock Text="Total D6:"
-                                   Foreground="White"
-                                   FontSize="20"
-                                   HorizontalAlignment="Left"
-                                   VerticalAlignment="Center"
-                                   Margin="10, 0, 0, 0"/>
-                    </Grid>
-
-                    <!--Value-->
-                    <Grid Grid.Column="1">
-                        <controls:IntegerUpDown x:Name="TotalD6UpDown"/>
-                    </Grid>
-                </Grid>
-
-                <!--Used D8-->
-                <Grid Grid.Row="1">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="35*"/>
-                        <ColumnDefinition Width="65*"/>
-                    </Grid.ColumnDefinitions>
-
-                    <!--Title-->
-                    <Grid Grid.Column="0">
-                        <TextBlock Text="Total D8:"
-                                   Foreground="White"
-                                   FontSize="20"
-                                   HorizontalAlignment="Left"
-                                   VerticalAlignment="Center"
-                                   Margin="10, 0, 0, 0"/>
-                    </Grid>
-
-                    <!--Value-->
-                    <Grid Grid.Column="1">
-                        <controls:IntegerUpDown x:Name="TotalD8UpDown"/>
-                    </Grid>
-                </Grid>
-
-                <!--Used D10-->
-                <Grid Grid.Row="2">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="35*"/>
-                        <ColumnDefinition Width="65*"/>
-                    </Grid.ColumnDefinitions>
-
-                    <!--Title-->
-                    <Grid Grid.Column="0">
-                        <TextBlock Text="Total D10:"
-                                   Foreground="White"
-                                   FontSize="20"
-                                   HorizontalAlignment="Left"
-                                   VerticalAlignment="Center"
-                                   Margin="10, 0, 0, 0"/>
-                    </Grid>
-
-                    <!--Value-->
-                    <Grid Grid.Column="1">
-                        <controls:IntegerUpDown x:Name="TotalD10UpDown"/>
-                    </Grid>
-                </Grid>
-
-                <!--Used D12-->
-                <Grid Grid.Row="3">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="35*"/>
-                        <ColumnDefinition Width="65*"/>
-                    </Grid.ColumnDefinitions>
-
-                    <!--Title-->
-                    <Grid Grid.Column="0">
-                        <TextBlock Text="Total D12:"
-                                   Foreground="White"
-                                   FontSize="20"
-                                   HorizontalAlignment="Left"
-                                   VerticalAlignment="Center"
-                                   Margin="10, 0, 0, 0"/>
-                    </Grid>
-
-                    <!--Value-->
-                    <Grid Grid.Column="1">
-                        <controls:IntegerUpDown x:Name="TotalD12UpDown"/>
-                    </Grid>
-                </Grid>
-
+            <!--Total D8-->
+            <Grid Grid.Column="0" Grid.Row="2">
+                <controls:IntegerUpDown x:Name="UsedD8UpDown" Margin="20,0,0,0"/>
             </Grid>
-        </Grid>
+
+            <!--Total D10-->
+            <Grid Grid.Column="0" Grid.Row="3">
+                <controls:IntegerUpDown x:Name="UsedD10UpDown" Margin="20,0,0,0"/>
+            </Grid>
+
+            <!--Total D12-->
+            <Grid Grid.Column="0" Grid.Row="4">
+                <controls:IntegerUpDown x:Name="UsedD12UpDown" Margin="20,0,0,0"/>
+            </Grid>
+
+            <TextBlock
+                Grid.Column="1"
+                Grid.Row="1"
+                Text="D6"
+                Foreground="White"
+                FontSize="25"
+                FontWeight="Bold"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"/>
+
+            <TextBlock
+                Grid.Column="1"
+                Grid.Row="2"
+                Text="D8"
+                Foreground="White"
+                FontSize="25"
+                FontWeight="Bold"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"/>
+
+            <TextBlock
+                Grid.Column="1"
+                Grid.Row="3"
+                Text="D10"
+                Foreground="White"
+                FontSize="25"
+                FontWeight="Bold"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"/>
+
+            <TextBlock
+                Grid.Column="1"
+                Grid.Row="4"
+                Text="D12"
+                Foreground="White"
+                FontSize="25"
+                FontWeight="Bold"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"/>
+
+            <TextBlock 
+                Grid.Column="2"
+                Grid.Row="0"
+                Text="Total"
+                Foreground="White"
+                FontSize="25"
+                FontWeight="Bold"
+                Margin="0,0,20,0"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"/>
+
+            <!--Used D6-->
+            <Grid Grid.Column="2" Grid.Row="1">
+                <controls:IntegerUpDown
+                    x:Name="TotalD6UpDown"
+                    Margin="0,0,20,0"
+                    ValueChanged="TotalUpDown_ValueChanged"/>
+            </Grid>
+
+            <!--Used D8-->
+            <Grid Grid.Column="2" Grid.Row="2">
+                <controls:IntegerUpDown
+                    x:Name="TotalD8UpDown"
+                    Margin="0,0,20,0"
+                    ValueChanged="TotalUpDown_ValueChanged"/>
+            </Grid>
+
+            <!--Used D10-->
+            <Grid Grid.Column="2" Grid.Row="3">
+                <controls:IntegerUpDown
+                    x:Name="TotalD10UpDown"
+                    Margin="0,0,20,0"
+                    ValueChanged="TotalUpDown_ValueChanged"/>
+            </Grid>
+
+            <!--Used D12-->
+            <Grid Grid.Column="2" Grid.Row="4">
+                <controls:IntegerUpDown
+                    x:Name="TotalD12UpDown"
+                    Margin="0,0,20,0"
+                    ValueChanged="TotalUpDown_ValueChanged"/>
+            </Grid>
+            </Grid>
 
         <!--Buttons-->
         <Grid Grid.Row="2">
-            <StackPanel Orientation="Horizontal"
-                        VerticalAlignment="Center"
-                        HorizontalAlignment="Center">
+            <StackPanel
+                Orientation="Horizontal"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center">
                 <components:ConciergeTextButton 
                     x:Name="OkButton"
                     Style="{StaticResource ConciergeTextButtonStyle}"

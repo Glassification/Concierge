@@ -40,7 +40,7 @@ namespace Concierge.Character
             this.Inventories = new List<Inventory>();
             this.MagicClasses = new List<MagicClass>();
             this.Personality = new Personality();
-            this.Proficiency = new List<Proficiency>();
+            this.Proficiencies = new List<Proficiency>();
             this.SavingThrow = new SavingThrow();
             this.Skill = new Skill();
             this.Spells = new List<Spell>();
@@ -80,7 +80,7 @@ namespace Concierge.Character
 
         public Personality Personality { get; set; }
 
-        public List<Proficiency> Proficiency { get; set; }
+        public List<Proficiency> Proficiencies { get; set; }
 
         public SavingThrow SavingThrow { get; set; }
 
@@ -146,7 +146,7 @@ namespace Concierge.Character
         }
 
         [JsonIgnore]
-        public int ProficiencyBonus => this.Properties.Level - 1 > 0 ? Constants.Proficiencies[this.Properties.Level - 1] : Constants.Proficiencies[0];
+        public int ProficiencyBonus => this.Properties.Level - 1 > 0 ? Constants.ProficiencyLevels[this.Properties.Level - 1] : Constants.ProficiencyLevels[0];
 
         [JsonIgnore]
         public int PassivePerception => Constants.BasePerception + this.Skill.Perception.Bonus + this.Senses.PerceptionBonus;
@@ -228,20 +228,20 @@ namespace Concierge.Character
 
             return weapon.ProficiencyOverride
                 ? true
-                : this.Proficiency.Any(x => x.Name.Equals(weaponName) && x.ProficiencyType == ProficiencyTypes.Weapon) ? true
+                : this.Proficiencies.Any(x => x.Name.Equals(weaponName) && x.ProficiencyType == ProficiencyTypes.Weapon) ? true
                 : weapon.WeaponType switch
             {
                 // Simple Ranged Weapons
-                WeaponTypes.LightCrossbow or WeaponTypes.Dart or WeaponTypes.Shortbow or WeaponTypes.Sling => this.Proficiency.Any(x => x.Name.Equals("Simple Ranged Weapons") && x.ProficiencyType == ProficiencyTypes.Weapon),
+                WeaponTypes.LightCrossbow or WeaponTypes.Dart or WeaponTypes.Shortbow or WeaponTypes.Sling => this.Proficiencies.Any(x => x.Name.Equals(Proficiency.SimpleRanged) && x.ProficiencyType == ProficiencyTypes.Weapon),
 
                 // Simple Melee Weapons
-                WeaponTypes.Club or WeaponTypes.Dagger or WeaponTypes.Greatclub or WeaponTypes.Handaxe or WeaponTypes.Javelin or WeaponTypes.LightHammer or WeaponTypes.Mace or WeaponTypes.Quarterstaff or WeaponTypes.Sickle or WeaponTypes.Spear => this.Proficiency.Any(x => x.Name.Equals("Simple Melee Weapons") && x.ProficiencyType == ProficiencyTypes.Weapon),
+                WeaponTypes.Club or WeaponTypes.Dagger or WeaponTypes.Greatclub or WeaponTypes.Handaxe or WeaponTypes.Javelin or WeaponTypes.LightHammer or WeaponTypes.Mace or WeaponTypes.Quarterstaff or WeaponTypes.Sickle or WeaponTypes.Spear => this.Proficiencies.Any(x => x.Name.Equals(Proficiency.SimpleMelee) && x.ProficiencyType == ProficiencyTypes.Weapon),
 
                 // Martial Ranged Weapons
-                WeaponTypes.Blowgun or WeaponTypes.HandCrossbow or WeaponTypes.HeavyCrossbow or WeaponTypes.Longbow or WeaponTypes.Net => this.Proficiency.Any(x => x.Name.Equals("Martial Ranged Weapons") && x.ProficiencyType == ProficiencyTypes.Weapon),
+                WeaponTypes.Blowgun or WeaponTypes.HandCrossbow or WeaponTypes.HeavyCrossbow or WeaponTypes.Longbow or WeaponTypes.Net => this.Proficiencies.Any(x => x.Name.Equals(Proficiency.MartialRanged) && x.ProficiencyType == ProficiencyTypes.Weapon),
 
                 // Martial Melee Weapons
-                WeaponTypes.Battleaxe or WeaponTypes.Flail or WeaponTypes.Glaive or WeaponTypes.Greataxe or WeaponTypes.Greatsword or WeaponTypes.Halberd or WeaponTypes.Lance or WeaponTypes.Longsword or WeaponTypes.Maul or WeaponTypes.Morningstar or WeaponTypes.Pike or WeaponTypes.Rapier or WeaponTypes.Scimitar or WeaponTypes.Shortsword or WeaponTypes.Trident or WeaponTypes.WarPick or WeaponTypes.Warhammer or WeaponTypes.Whip => this.Proficiency.Any(x => x.Name.Equals("Martial Melee Weapons") && x.ProficiencyType == ProficiencyTypes.Weapon),
+                WeaponTypes.Battleaxe or WeaponTypes.Flail or WeaponTypes.Glaive or WeaponTypes.Greataxe or WeaponTypes.Greatsword or WeaponTypes.Halberd or WeaponTypes.Lance or WeaponTypes.Longsword or WeaponTypes.Maul or WeaponTypes.Morningstar or WeaponTypes.Pike or WeaponTypes.Rapier or WeaponTypes.Scimitar or WeaponTypes.Shortsword or WeaponTypes.Trident or WeaponTypes.WarPick or WeaponTypes.Warhammer or WeaponTypes.Whip => this.Proficiencies.Any(x => x.Name.Equals(Proficiency.MartialMelee) && x.ProficiencyType == ProficiencyTypes.Weapon),
                 _ => false,
             };
         }
@@ -267,7 +267,7 @@ namespace Concierge.Character
                 Inventories = this.Inventories.DeepCopy().ToList(),
                 MagicClasses = this.MagicClasses.DeepCopy().ToList(),
                 Personality = this.Personality.DeepCopy(),
-                Proficiency = this.Proficiency.DeepCopy().ToList(),
+                Proficiencies = this.Proficiencies.DeepCopy().ToList(),
                 SavingThrow = this.SavingThrow.DeepCopy(),
                 Skill = this.Skill.DeepCopy(),
                 Spells = this.Spells.DeepCopy().ToList(),

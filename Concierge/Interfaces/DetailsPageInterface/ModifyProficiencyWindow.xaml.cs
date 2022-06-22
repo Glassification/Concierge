@@ -8,12 +8,15 @@ namespace Concierge.Interfaces.DetailsPageInterface
     using System.Collections.Generic;
     using System.Linq;
     using System.Windows;
+    using System.Windows.Controls;
+    using System.Windows.Data;
 
     using Concierge.Character.Characteristics;
     using Concierge.Character.Enums;
     using Concierge.Commands;
     using Concierge.Interfaces.Components;
     using Concierge.Interfaces.Enums;
+    using Concierge.Utility;
     using Concierge.Utility.Extensions;
 
     /// <summary>
@@ -25,6 +28,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
         {
             this.InitializeComponent();
             this.ProficiencyComboBox.ItemsSource = Enum.GetValues(typeof(ProficiencyTypes)).Cast<ProficiencyTypes>();
+            this.ProficiencyTextComboBox.ItemsSource = GenerateComboBoxItems();
             this.ConciergePage = ConciergePage.None;
             this.SelectedProficiencies = new List<Proficiency>();
             this.SelectedProficiency = new Proficiency();
@@ -45,7 +49,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
             this.Editing = false;
             this.HeaderTextBlock.Text = this.HeaderText;
             this.OkButton.Visibility = Visibility.Collapsed;
-            this.SelectedProficiencies = Program.CcsFile.Character.Proficiency;
+            this.SelectedProficiencies = Program.CcsFile.Character.Proficiencies;
             this.CancelButton.Content = buttonText;
 
             this.SetEnabledState(true);
@@ -109,6 +113,32 @@ namespace Concierge.Interfaces.DetailsPageInterface
             Program.Modify();
         }
 
+        private static CompositeCollection GenerateComboBoxItems()
+        {
+            var compositeCollection = new CompositeCollection
+            {
+                Proficiency.MartialMelee,
+                Proficiency.MartialRanged,
+                Proficiency.SimpleMelee,
+                Proficiency.SimpleRanged,
+                new Separator(),
+                new CollectionContainer() { Collection = Constants.Weapons },
+                new Separator(),
+                "Light Armor",
+                "Medium Armor",
+                "Heavy Armor",
+                "Massive Armor",
+                new Separator(),
+                new CollectionContainer() { Collection = Constants.Tools },
+                new Separator(),
+                new CollectionContainer() { Collection = Constants.Games },
+                new Separator(),
+                new CollectionContainer() { Collection = Constants.Instruments },
+            };
+
+            return compositeCollection;
+        }
+
         private void SetEnabledState(bool isEnabled)
         {
             this.ProficiencyComboBox.IsEnabled = isEnabled;
@@ -120,7 +150,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
 
         private void FillFields()
         {
-            this.ProficiencyTextBox.Text = this.SelectedProficiency.Name;
+            this.ProficiencyTextComboBox.Text = this.SelectedProficiency.Name;
             this.ProficiencyComboBox.Text = this.SelectedProficiency.ProficiencyType.ToString();
         }
 
@@ -130,7 +160,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
 
             var proficiency = new Proficiency()
             {
-                Name = this.ProficiencyTextBox.Text,
+                Name = this.ProficiencyTextComboBox.Text,
                 ProficiencyType = (ProficiencyTypes)Enum.Parse(typeof(ProficiencyTypes), this.ProficiencyComboBox.Text),
             };
 
@@ -143,7 +173,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
         {
             var oldItem = proficiency.DeepCopy();
 
-            proficiency.Name = this.ProficiencyTextBox.Text;
+            proficiency.Name = this.ProficiencyTextComboBox.Text;
             proficiency.ProficiencyType = (ProficiencyTypes)Enum.Parse(typeof(ProficiencyTypes), this.ProficiencyComboBox.Text);
 
             Program.UndoRedoService.AddCommand(new EditCommand<Proficiency>(proficiency, oldItem, this.ConciergePage));
@@ -151,8 +181,8 @@ namespace Concierge.Interfaces.DetailsPageInterface
 
         private void ClearFields()
         {
-            this.ProficiencyTextBox.Text = string.Empty;
-            this.ProficiencyComboBox.Text = string.Empty;
+            this.ProficiencyTextComboBox.Text = string.Empty;
+            this.ProficiencyComboBox.Text = ProficiencyTypes.Weapon.ToString();
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)

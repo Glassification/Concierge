@@ -9,7 +9,6 @@ namespace Concierge.Interfaces.NotesPageInterface
     using System.IO;
     using System.Linq;
     using System.Text;
-    using System.Text.RegularExpressions;
     using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Documents;
@@ -32,7 +31,7 @@ namespace Concierge.Interfaces.NotesPageInterface
     /// </summary>
     public partial class NotesPage : Page, IConciergePage
     {
-        private const int MaxUndoQueue = 10;
+        private const int MaxUndoQueue = 25;
 
         private Document? selectedDocument;
 
@@ -46,8 +45,7 @@ namespace Concierge.Interfaces.NotesPageInterface
             this.NotesTextBox.UndoLimit = MaxUndoQueue;
 
             this.SetDefaultFontStyle();
-            this.NotesTextBox.IsEnabled = false;
-            this.ToolbarStackPanel.IsEnabled = false;
+            this.ClearTextBox();
         }
 
         public Document? SelectedDocument
@@ -145,6 +143,7 @@ namespace Concierge.Interfaces.NotesPageInterface
 
         private void DrawTreeView()
         {
+            var selectedItem = this.NotesTreeView.SelectedItem;
             this.NotesTreeView.Items.Clear();
 
             foreach (var chapter in Program.CcsFile.Character.Chapters)
@@ -163,6 +162,17 @@ namespace Concierge.Interfaces.NotesPageInterface
                 }
 
                 this.NotesTreeView.Items.Add(treeViewChapter);
+            }
+
+            if (selectedItem is not null)
+            {
+                var item = this.NotesTreeView.GetTreeViewItem(selectedItem);
+
+                if (item is not null)
+                {
+                    item.IsSelected = true;
+                    item.Focus();
+                }
             }
         }
 
@@ -214,41 +224,43 @@ namespace Concierge.Interfaces.NotesPageInterface
 
         private void NotesTreeView_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
         {
-            if (!this.Lock)
+            if (this.Lock)
             {
-                this.Lock = true;
-
-                if (this.NotesTreeView?.SelectedItem is DocumentTreeViewItem treeViewItem)
-                {
-                    if (this.SelectedDocument != null)
-                    {
-                        this.SaveTextBox();
-                    }
-
-                    this.NotesTextBox.IsUndoEnabled = false;
-                    this.NotesTextBox.IsUndoEnabled = true;
-                    this.SelectedDocument = treeViewItem.Document;
-                    this.LoadCurrentDocument(this.SelectedDocument.Rtf);
-                    this.ResetUndoQueue();
-                    ConciergeSound.TapNavigation();
-                }
-                else if (this.NotesTreeView?.SelectedItem is ChapterTreeViewItem)
-                {
-                    if (this.SelectedDocument != null)
-                    {
-                        this.SaveTextBox();
-                    }
-
-                    this.NotesTextBox.IsUndoEnabled = false;
-                    this.NotesTextBox.IsUndoEnabled = true;
-                    this.SelectedDocument = null;
-                    this.ClearTextBox();
-                    this.ResetUndoQueue();
-                    ConciergeSound.TapNavigation();
-                }
-
-                this.Lock = false;
+                return;
             }
+
+            this.Lock = true;
+
+            if (this.NotesTreeView?.SelectedItem is DocumentTreeViewItem treeViewItem)
+            {
+                if (this.SelectedDocument != null)
+                {
+                    this.SaveTextBox();
+                }
+
+                this.NotesTextBox.IsUndoEnabled = false;
+                this.NotesTextBox.IsUndoEnabled = true;
+                this.SelectedDocument = treeViewItem.Document;
+                this.LoadCurrentDocument(this.SelectedDocument.Rtf);
+                this.ResetUndoQueue();
+                ConciergeSound.TapNavigation();
+            }
+            else if (this.NotesTreeView?.SelectedItem is ChapterTreeViewItem)
+            {
+                if (this.SelectedDocument != null)
+                {
+                    this.SaveTextBox();
+                }
+
+                this.NotesTextBox.IsUndoEnabled = false;
+                this.NotesTextBox.IsUndoEnabled = true;
+                this.SelectedDocument = null;
+                this.ClearTextBox();
+                this.ResetUndoQueue();
+                ConciergeSound.TapNavigation();
+            }
+
+            this.Lock = false;
         }
 
         private void ButtonCut_Click(object sender, RoutedEventArgs e)
@@ -371,7 +383,7 @@ namespace Concierge.Interfaces.NotesPageInterface
             this.NotesTextBox.UndoLimit = MaxUndoQueue;
         }
 
-        private void ButtonClear_Click(object sender, RoutedEventArgs e)
+        private void ClearWorkspace()
         {
             this.SaveTextBox();
             this.ClearTextBox();
@@ -381,6 +393,11 @@ namespace Concierge.Interfaces.NotesPageInterface
             {
                 item.IsSelected = false;
             }
+        }
+
+        private void ButtonClear_Click(object sender, RoutedEventArgs e)
+        {
+            this.ClearWorkspace();
         }
 
         private void MoveTreeViewItem(int increment, bool useZero, Func<int, int, bool> func)
@@ -548,6 +565,7 @@ namespace Concierge.Interfaces.NotesPageInterface
                 chapter.Documents.Remove(documentTreeViewItem.Document);
             }
 
+            this.ClearWorkspace();
             this.Draw();
 
             Program.Modify();

@@ -66,6 +66,9 @@ namespace Concierge.Utility
 
             ProficiencyBrush = ColorUtility.GenerateGradientBrush(ProficiencyDarkBlue, ProficiencyLightBlue, new Point(0, 0), new Point(1, 1));
             ProficiencyBrush.Freeze();
+
+            TitleMenuBrush = ColorUtility.GenerateGradientBrush(Color.FromArgb(255, 0, 0, 8), Color.FromArgb(255, 0, 0, 14), new Point(0, 0), new Point(0, 1));
+            TitleMenuBrush.Freeze();
         }
 
         public static SolidColorBrush ControlText { get; }
@@ -77,6 +80,8 @@ namespace Concierge.Utility
         public static LinearGradientBrush SucceededSaveBrush { get; }
 
         public static LinearGradientBrush ProficiencyBrush { get; }
+
+        public static LinearGradientBrush TitleMenuBrush { get; }
 
         public static SolidColorBrush TotalDarkBoxBrush { get; }
 

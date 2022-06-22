@@ -15,7 +15,7 @@ namespace Concierge.Tools.DiceRolling
 
     public static class DiceParser
     {
-        private static readonly Regex patternSplit = new (@"(\+|\-|\/|\*)", RegexOptions.Compiled);
+        private static readonly Regex patternSplit = new (@"(\+|\-)", RegexOptions.Compiled);
 
         public static Stack<object> Parse(string input)
         {
@@ -27,10 +27,10 @@ namespace Concierge.Tools.DiceRolling
             try
             {
                 var list = SplitAndMaintainDelimiter(input);
-                var objectList = Evaluate(list);
-                var polishObjectList = ShuntingYard.ToPostfix(objectList);
+                var infixObjectList = Evaluate(list);
+                var postfixObjectList = ShuntingYard.ToPostfix(infixObjectList);
 
-                return polishObjectList;
+                return postfixObjectList;
             }
             catch (Exception)
             {

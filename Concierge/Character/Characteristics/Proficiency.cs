@@ -11,6 +11,11 @@ namespace Concierge.Character.Characteristics
 
     public class Proficiency : ICopyable<Proficiency>
     {
+        public const string MartialMelee = "Martial Melee Weapons";
+        public const string MartialRanged = "Martial Ranged Weapons";
+        public const string SimpleMelee = "Simple Melee Weapons";
+        public const string SimpleRanged = "Simple Ranged Weapons";
+
         public Proficiency()
         {
             this.Name = string.Empty;

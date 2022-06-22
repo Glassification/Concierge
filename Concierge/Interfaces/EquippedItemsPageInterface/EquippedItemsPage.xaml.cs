@@ -28,8 +28,6 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
         public EquippedItemsPage()
         {
             this.InitializeComponent();
-            this.SelectedItem = new Inventory();
-            this.SelectedDataGrid = new ConciergeDataGrid();
             this.DataContext = this;
         }
 
@@ -37,11 +35,11 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
 
         public bool HasEditableDataGrid => true;
 
-        private Inventory SelectedItem { get; set; }
+        private Inventory? SelectedItem { get; set; }
 
         private int SelectedIndex { get; set; }
 
-        private ConciergeDataGrid SelectedDataGrid { get; set; }
+        private ConciergeDataGrid? SelectedDataGrid { get; set; }
 
         public void Draw()
         {
@@ -58,7 +56,7 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
 
         public void Edit(object itemToEdit)
         {
-            if (itemToEdit is not Inventory inventory)
+            if (itemToEdit is not Inventory inventory || this.SelectedDataGrid is null)
             {
                 return;
             }
@@ -143,6 +141,7 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
             }
 
             this.SelectedItem = inventory;
+            this.SelectedDataGrid = dataGrid;
             this.SelectedIndex = dataGrid.SelectedIndex;
 
             if (!stringTag.Equals(EquipmentSlot.Head.ToString()))
@@ -173,7 +172,7 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
 
         private void ButtonUp_Click(object sender, RoutedEventArgs e)
         {
-            if (this.SelectedDataGrid.Tag is not string stringTag)
+            if (this.SelectedDataGrid?.Tag is not string stringTag)
             {
                 return;
             }
@@ -190,7 +189,7 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
 
         private void ButtonDown_Click(object sender, RoutedEventArgs e)
         {
-            if (this.SelectedDataGrid.Tag is not string stringTag)
+            if (this.SelectedDataGrid?.Tag is not string stringTag)
             {
                 return;
             }
@@ -212,6 +211,9 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
             this.HandsEquipmentDataGrid.UnselectAll();
             this.LegsEquipmentDataGrid.UnselectAll();
             this.FeetEquipmentDataGrid.UnselectAll();
+
+            this.SelectedItem = null;
+            this.SelectedDataGrid = null;
         }
 
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
@@ -241,7 +243,7 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
 
         private void ButtonDelete_Click(object sender, RoutedEventArgs e)
         {
-            if (this.SelectedDataGrid.Tag is not string stringTag)
+            if (this.SelectedItem is null || this.SelectedDataGrid is null || this.SelectedDataGrid.Tag is not string stringTag)
             {
                 return;
             }
@@ -256,6 +258,12 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
 
             this.Draw();
             this.SelectedDataGrid.SetSelectedIndex(index);
+
+            if (this.SelectedDataGrid.Items.Count == 0)
+            {
+                this.SelectedItem = null;
+                this.SelectedDataGrid = null;
+            }
 
             Program.Modify();
         }

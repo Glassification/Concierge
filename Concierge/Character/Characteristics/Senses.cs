@@ -14,6 +14,7 @@ namespace Concierge.Character.Characteristics
         {
             this.InitiativeBonus = 0;
             this.PerceptionBonus = 0;
+            this.MovementBonus = 0;
             this.BaseMovement = 30;
             this.Vision = VisionTypes.Normal;
         }
@@ -24,10 +25,12 @@ namespace Concierge.Character.Characteristics
 
         public int BaseMovement { get; set; }
 
+        public int MovementBonus { get; set; }
+
         public VisionTypes Vision { get; set; }
 
         [JsonIgnore]
-        public int Movement => GetMovement(this.BaseMovement);
+        public int Movement => GetMovement(this.BaseMovement + this.MovementBonus);
 
         public static int GetMovement(int baseMovement)
         {
@@ -67,6 +70,7 @@ namespace Concierge.Character.Characteristics
             {
                 InitiativeBonus = this.InitiativeBonus,
                 PerceptionBonus = this.PerceptionBonus,
+                MovementBonus = this.MovementBonus,
                 BaseMovement = this.BaseMovement,
                 Vision = this.Vision,
             };

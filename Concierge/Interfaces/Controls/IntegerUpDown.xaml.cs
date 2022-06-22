@@ -108,14 +108,44 @@ namespace Concierge.Interfaces.Controls
 
         public int Minimum
         {
-            get { return (int)this.GetValue(MinimumProperty); }
-            set { this.SetValue(MinimumProperty, value); }
+            get
+            {
+                return (int)this.GetValue(MinimumProperty);
+            }
+
+            set
+            {
+                this.SetValue(MinimumProperty, value);
+                if (this.Value < value)
+                {
+                    this.Value = value;
+                }
+                else
+                {
+                    this.UpdateSpinnerStatus();
+                }
+            }
         }
 
         public int Maximum
         {
-            get { return (int)this.GetValue(MaximumProperty); }
-            set { this.SetValue(MaximumProperty, value); }
+            get
+            {
+                return (int)this.GetValue(MaximumProperty);
+            }
+
+            set
+            {
+                this.SetValue(MaximumProperty, value);
+                if (this.Value > value)
+                {
+                    this.Value = value;
+                }
+                else
+                {
+                    this.UpdateSpinnerStatus();
+                }
+            }
         }
 
         public int Value
@@ -131,9 +161,8 @@ namespace Concierge.Interfaces.Controls
                 value = Math.Max(value, this.Minimum);
                 this.TextBoxValue.Text = value.ToString();
 
-                this.SetIncreaseButtonStatus(value, this.Maximum);
-                this.SetDecreaseButtonStatus(value, this.Minimum);
                 this.SetValue(ValueProperty, value);
+                this.UpdateSpinnerStatus();
 
                 this.RaiseEvent(new RoutedEventArgs(ValueChangedEvent));
             }
@@ -145,18 +174,18 @@ namespace Concierge.Interfaces.Controls
             set { this.SetValue(IncrementProperty, value); }
         }
 
-        public void UpdateSpinnerStatus()
-        {
-            this.SetIncreaseButtonStatus(this.Value, this.Maximum);
-            this.SetDecreaseButtonStatus(this.Value, this.Minimum);
-        }
-
         private static void OnValuePropertyChanged(DependencyObject target, DependencyPropertyChangedEventArgs e)
         {
             if (target is IntegerUpDown conciergeIntegerUpDown)
             {
                 conciergeIntegerUpDown.TextBoxValue.Text = e.NewValue.ToString();
             }
+        }
+
+        private void UpdateSpinnerStatus()
+        {
+            this.SetIncreaseButtonStatus(this.Value, this.Maximum);
+            this.SetDecreaseButtonStatus(this.Value, this.Minimum);
         }
 
         private void SetIncreaseButtonStatus(int value, int max)
@@ -242,6 +271,7 @@ namespace Concierge.Interfaces.Controls
         private void TextBoxValue_LostFocus(object sender, RoutedEventArgs e)
         {
             this.AttemptToSetValue();
+            Program.IsTyping = false;
         }
 
         private void Button_MouseEnter(object sender, MouseEventArgs e)
@@ -257,6 +287,18 @@ namespace Concierge.Interfaces.Controls
         private void Control_MouseLeave(object sender, MouseEventArgs e)
         {
             Mouse.OverrideCursor = Cursors.Arrow;
+        }
+
+        private void TextBoxValue_MouseWheel(object sender, MouseWheelEventArgs e)
+        {
+            this.Value += (e.Delta > 0 ? 1 : -1) * this.Increment;
+            this.TextBoxValue.Select(this.TextBoxValue.Text.Length, 0);
+            ConciergeSound.UpdateValue();
+        }
+
+        private void TextBoxValue_GotFocus(object sender, RoutedEventArgs e)
+        {
+            Program.IsTyping = true;
         }
     }
 }

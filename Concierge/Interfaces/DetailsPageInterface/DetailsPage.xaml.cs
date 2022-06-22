@@ -139,10 +139,10 @@ namespace Concierge.Interfaces.DetailsPageInterface
         {
             var character = Program.CcsFile.Character;
 
-            DrawProficiency(this.WeaponProficiencyDataGrid, character.Proficiency.Where(x => x.ProficiencyType == ProficiencyTypes.Weapon).ToList());
-            DrawProficiency(this.ArmorProficiencyDataGrid, character.Proficiency.Where(x => x.ProficiencyType == ProficiencyTypes.Armor).ToList());
-            DrawProficiency(this.ShieldProficiencyDataGrid, character.Proficiency.Where(x => x.ProficiencyType == ProficiencyTypes.Shield).ToList());
-            DrawProficiency(this.ToolProficiencyDataGrid, character.Proficiency.Where(x => x.ProficiencyType == ProficiencyTypes.Tool).ToList());
+            DrawProficiency(this.WeaponProficiencyDataGrid, character.Proficiencies.Where(x => x.ProficiencyType == ProficiencyTypes.Weapon).ToList());
+            DrawProficiency(this.ArmorProficiencyDataGrid, character.Proficiencies.Where(x => x.ProficiencyType == ProficiencyTypes.Armor).ToList());
+            DrawProficiency(this.ShieldProficiencyDataGrid, character.Proficiencies.Where(x => x.ProficiencyType == ProficiencyTypes.Shield).ToList());
+            DrawProficiency(this.ToolProficiencyDataGrid, character.Proficiencies.Where(x => x.ProficiencyType == ProficiencyTypes.Tool).ToList());
 
             this.ProficiencyBonusField.Text = $"  Bonus: {Program.CcsFile.Character.ProficiencyBonus}  ";
         }
@@ -185,8 +185,8 @@ namespace Concierge.Interfaces.DetailsPageInterface
             }
 
             var index = dataGrid.SelectedIndex;
-            Program.UndoRedoService.AddCommand(new DeleteCommand<Proficiency>(Program.CcsFile.Character.Proficiency, proficiency, index, this.ConciergePage));
-            Program.CcsFile.Character.Proficiency.Remove(proficiency);
+            Program.UndoRedoService.AddCommand(new DeleteCommand<Proficiency>(Program.CcsFile.Character.Proficiencies, proficiency, index, this.ConciergePage));
+            Program.CcsFile.Character.Proficiencies.Remove(proficiency);
 
             this.DrawProficiencies();
             dataGrid.SetSelectedIndex(index);
@@ -239,7 +239,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
             var added = ConciergeWindowService.ShowAdd<List<Proficiency>>(
-                Program.CcsFile.Character.Proficiency,
+                Program.CcsFile.Character.Proficiencies,
                 typeof(ModifyProficiencyWindow),
                 this.Window_ApplyChanges,
                 ConciergePage.Details);
@@ -437,15 +437,15 @@ namespace Concierge.Interfaces.DetailsPageInterface
 
         private void ProficiencyDataGrid_Sorted(object sender, RoutedEventArgs e)
         {
-            var oldList = new List<Proficiency>(Program.CcsFile.Character.Proficiency);
-            Program.CcsFile.Character.Proficiency.Clear();
-            this.SortProficiencyItems(Program.CcsFile.Character.Proficiency);
+            var oldList = new List<Proficiency>(Program.CcsFile.Character.Proficiencies);
+            Program.CcsFile.Character.Proficiencies.Clear();
+            this.SortProficiencyItems(Program.CcsFile.Character.Proficiencies);
 
             Program.UndoRedoService.AddCommand(
                 new ListOrderCommand<Proficiency>(
-                    Program.CcsFile.Character.Proficiency,
+                    Program.CcsFile.Character.Proficiencies,
                     oldList,
-                    new List<Proficiency>(Program.CcsFile.Character.Proficiency),
+                    new List<Proficiency>(Program.CcsFile.Character.Proficiencies),
                     this.ConciergePage));
             Program.Modify();
         }

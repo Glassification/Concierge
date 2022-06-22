@@ -103,7 +103,6 @@ namespace Concierge.Interfaces.DetailsPageInterface
             this.RecoveryTextBox.Text = this.ClassResource.Recovery;
 
             this.SpentUpDown.Maximum = this.PoolUpDown.Value;
-            this.SpentUpDown.UpdateSpinnerStatus();
         }
 
         private void ClearFields()
@@ -183,13 +182,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
 
         private void PoolSpentUpDown_ValueChanged(object sender, RoutedEventArgs e)
         {
-            if (this.PoolUpDown.Value < this.SpentUpDown.Value)
-            {
-                this.SpentUpDown.Value = this.PoolUpDown.Value;
-            }
-
             this.SpentUpDown.Maximum = this.PoolUpDown.Value;
-            this.SpentUpDown.UpdateSpinnerStatus();
         }
     }
 }

@@ -101,27 +101,37 @@
                     <DataGridTextColumn
                         Header="Name"
                         Binding="{Binding Name}"
-                        Width="0.25*"
+                        Width="0.17*"
+                        ElementStyle="{StaticResource StandardColumnElementStyle}"/>
+                    <DataGridTextColumn
+                        Header="Category"
+                        Binding="{Binding ItemCategory}"
+                        Width="0.10*"
                         ElementStyle="{StaticResource StandardColumnElementStyle}"/>
                     <DataGridTextColumn
                         Header="Amount"
                         Binding="{Binding Amount}"
-                        Width="0.1*"
+                        Width="0.07*"
+                        ElementStyle="{StaticResource StandardColumnElementStyle}"/>
+                    <DataGridTextColumn
+                        Header="Value"
+                        Binding="{Binding ValueText}"
+                        Width="0.08*"
                         ElementStyle="{StaticResource StandardColumnElementStyle}"/>
                     <DataGridTextColumn
                         Header="Weight"
                         Binding="{Binding Weight}"
-                        Width="0.1*"
+                        Width="0.08*"
                         ElementStyle="{StaticResource StandardColumnElementStyle}"/>
                     <DataGridTextColumn
-                        Header="In Bag of Holding"
-                        Binding="{Binding InBagOfHoldingText}"
-                        Width="0.1*"
-                        ElementStyle="{StaticResource StandardColumnElementStyle}"/>
+                        Header="Notes"
+                        Binding="{Binding Notes}"
+                        Width="0.10*"
+                        ElementStyle="{StaticResource WallOfTextColumnElementStyle}"/>
                     <DataGridTextColumn
                         Header="Description"
-                        Binding="{Binding Note}"
-                        Width="0.55*"
+                        Binding="{Binding Description}"
+                        Width="0.40*"
                         ElementStyle="{StaticResource WallOfTextColumnElementStyle}"/>
                 </DataGrid.Columns>
             </components:ConciergeDataGrid>

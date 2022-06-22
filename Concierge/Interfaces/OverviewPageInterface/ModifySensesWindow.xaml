@@ -11,14 +11,14 @@
     d:DataContext="{d:DesignInstance Type=viewmodels:ConciergeViewModel}"
     mc:Ignorable="d"
     Title="Modify Senses"
-    Height="535"
+    Height="595"
     Width="650"
     Style="{StaticResource WindowXboxDasboardStyle}">
 
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="45"/>
-            <RowDefinition Height="420"/>
+            <RowDefinition Height="480"/>
             <RowDefinition Height="70"/>
         </Grid.RowDefinitions>
 
@@ -48,6 +48,7 @@
         <!--Fields-->
         <Grid Grid.Row="1">
             <Grid.RowDefinitions>
+                <RowDefinition Height="60"/>
                 <RowDefinition Height="60"/>
                 <RowDefinition Height="60"/>
                 <RowDefinition Height="60"/>
@@ -248,13 +249,41 @@
                         ValueChanged="IntegerUpDown_ValueChanged"/>
                 </Grid>
             </Grid>
+
+            <!--Movement Bonus-->
+            <Grid Grid.Row="7">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="35*"/>
+                    <ColumnDefinition Width="65*"/>
+                </Grid.ColumnDefinitions>
+
+                <!--Title-->
+                <Grid Grid.Column="0">
+                    <TextBlock
+                        Text="Movement Bonus:"
+                        Foreground="White"
+                        FontSize="20"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        Margin="10, 0, 0, 0"/>
+                </Grid>
+
+                <!--Value-->
+                <Grid Grid.Column="1">
+                    <controls:IntegerUpDown
+                        x:Name="MovementBonusUpDown"
+                        Increment="5"
+                        ValueChanged="IntegerUpDown_ValueChanged"/>
+                </Grid>
+            </Grid>
         </Grid>
 
         <!--Buttons-->
         <Grid Grid.Row="2">
-            <StackPanel Orientation="Horizontal"
-                        VerticalAlignment="Center"
-                        HorizontalAlignment="Center">
+            <StackPanel
+                Orientation="Horizontal"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center">
                 <components:ConciergeTextButton 
                     x:Name="OkButton"
                     Style="{StaticResource ConciergeTextButtonStyle}"

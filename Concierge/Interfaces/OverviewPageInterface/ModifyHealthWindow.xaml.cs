@@ -69,8 +69,6 @@ namespace Concierge.Interfaces.OverviewPageInterface
 
             this.CurrentHpUpDown.Maximum = this.TotalHpUpDown.Value;
             this.CurrentHpUpDown.Minimum = -this.TotalHpUpDown.Value;
-
-            this.CurrentHpUpDown.UpdateSpinnerStatus();
         }
 
         private void UpdateHealth()
@@ -111,14 +109,8 @@ namespace Concierge.Interfaces.OverviewPageInterface
 
         private void TotalHpUpDown_ValueChanged(object sender, RoutedEventArgs e)
         {
-            if (this.TotalHpUpDown.Value < this.CurrentHpUpDown.Value)
-            {
-                this.CurrentHpUpDown.Value = this.TotalHpUpDown.Value;
-            }
-
             this.CurrentHpUpDown.Maximum = this.TotalHpUpDown.Value;
             this.CurrentHpUpDown.Minimum = -this.TotalHpUpDown.Value;
-            this.CurrentHpUpDown.UpdateSpinnerStatus();
         }
     }
 }

@@ -11,14 +11,14 @@
     d:DataContext="{d:DesignInstance Type=viewmodels:ConciergeViewModel}"
     mc:Ignorable="d"
     Title="Modify Inventory"
-    Height="475"
+    Height="655"
     Width="650"
     Style="{StaticResource WindowXboxDasboardStyle}">
 
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="45"/>
-            <RowDefinition Height="360"/>
+            <RowDefinition Height="540"/>
             <RowDefinition Height="70"/>
         </Grid.RowDefinitions>
 
@@ -52,6 +52,9 @@
                 <RowDefinition Height="60"/>
                 <RowDefinition Height="60"/>
                 <RowDefinition Height="60"/>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="60"/>
                 <RowDefinition Height="120"/>
             </Grid.RowDefinitions>
 
@@ -81,8 +84,35 @@
                 </Grid>
             </Grid>
 
-            <!--Amount-->
+            <!--Category-->
             <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="35*"/>
+                    <ColumnDefinition Width="65*"/>
+                </Grid.ColumnDefinitions>
+
+                <!--Title-->
+                <Grid Grid.Column="0">
+                    <TextBlock
+                        Text="Category:"
+                        Foreground="White"
+                        FontSize="20"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        Margin="10, 0, 0, 0"/>
+                </Grid>
+
+                <!--Value-->
+                <Grid Grid.Column="1">
+                    <components:ConciergeComboBox
+                        Style="{StaticResource ComboBoxStyle}"
+                        IsEditable="False"
+                        x:Name="CategoryComboBox"/>
+                </Grid>
+            </Grid>
+
+            <!--Amount-->
+            <Grid Grid.Row="2">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="35*"/>
                     <ColumnDefinition Width="65*"/>
@@ -107,7 +137,7 @@
             </Grid>
 
             <!--Weight-->
-            <Grid Grid.Row="2">
+            <Grid Grid.Row="3">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="35*"/>
                     <ColumnDefinition Width="65*"/>
@@ -134,12 +164,12 @@
 
                 <!--Value-->
                 <Grid Grid.Column="1">
-                    <controls:DoubleUpDown x:Name="WeightUpDown"/>
+                    <controls:DoubleUpDown x:Name="WeightUpDown" Increment="0.5"/>
                 </Grid>
             </Grid>
 
             <!--Bag of Holding-->
-            <Grid Grid.Row="3">
+            <Grid Grid.Row="4">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="35*"/>
                     <ColumnDefinition Width="65*"/>
@@ -147,13 +177,14 @@
 
                 <!--Title-->
                 <Grid Grid.Column="0">
-                    <TextBlock Text="Bag of Holding:"
-                               x:Name="BagOfHoldingText"
-                               Foreground="White"
-                               FontSize="20"
-                               HorizontalAlignment="Left"
-                               VerticalAlignment="Center"
-                               Margin="10, 0, 0, 0"/>
+                    <TextBlock
+                        Text="Ignore Weight:"
+                        x:Name="BagOfHoldingText"
+                        Foreground="White"
+                        FontSize="20"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        Margin="10, 0, 0, 0"/>
                 </Grid>
 
                 <!--Value-->
@@ -164,8 +195,40 @@
                 </Grid>
             </Grid>
 
+            <!--Worth-->
+            <Grid Grid.Row="5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="35*"/>
+                    <ColumnDefinition Width="30*"/>
+                    <ColumnDefinition Width="35*"/>
+                </Grid.ColumnDefinitions>
+
+                <!--Title-->
+                <Grid Grid.Column="0">
+                    <TextBlock
+                        Text="Value:"
+                        Foreground="White"
+                        FontSize="20"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        Margin="10, 0, 0, 0"/>
+                </Grid>
+
+                <!--Value-->
+                <Grid Grid.Column="1">
+                    <controls:IntegerUpDown x:Name="ValueUpDown" Increment="1"/>
+                </Grid>
+                
+                <Grid Grid.Column="2">
+                    <components:ConciergeComboBox
+                        Style="{StaticResource ComboBoxStyle}"
+                        IsEditable="False"
+                        x:Name="CoinTypeComboBox"/>
+                </Grid>
+            </Grid>
+
             <!--Notes-->
-            <Grid Grid.Row="4">
+            <Grid Grid.Row="6">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="35*"/>
                     <ColumnDefinition Width="65*"/>
@@ -173,19 +236,47 @@
 
                 <!--Title-->
                 <Grid Grid.Column="0">
-                    <TextBlock Text="Description:"
-                               Foreground="White"
-                               FontSize="20"
-                               HorizontalAlignment="Left"
-                               VerticalAlignment="Top"
-                               Margin="10, 20, 0, 0"/>
+                    <TextBlock
+                        Text="Notes:"
+                        Foreground="White"
+                        FontSize="20"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        Margin="10, 0, 0, 0"/>
+                </Grid>
+
+                <!--Value-->
+                <components:ConciergeTextBoxBackground Grid.Column="1">
+                    <components:ConciergeTextBox 
+                        x:Name="NotesTextBox"
+                        FontSize="13"
+                        VerticalAlignment="Stretch"/>
+                </components:ConciergeTextBoxBackground>
+            </Grid>
+
+            <!--Description-->
+            <Grid Grid.Row="7">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="35*"/>
+                    <ColumnDefinition Width="65*"/>
+                </Grid.ColumnDefinitions>
+
+                <!--Title-->
+                <Grid Grid.Column="0">
+                    <TextBlock
+                        Text="Description:"
+                        Foreground="White"
+                        FontSize="20"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        Margin="10, 20, 0, 0"/>
                 </Grid>
 
                 <!--Value-->
                 <components:ConciergeTextBoxBackground Grid.Column="1">
                     <ScrollViewer VerticalScrollBarVisibility="Auto">
                         <components:ConciergeTextBox 
-                            x:Name="NotesTextBox"
+                            x:Name="DescriptionTextBox"
                             TextWrapping="Wrap"
                             FontSize="13"
                             VerticalAlignment="Stretch"/>
@@ -196,9 +287,10 @@
 
         <!--Buttons-->
         <Grid Grid.Row="2">
-            <StackPanel Orientation="Horizontal"
-                        VerticalAlignment="Center"
-                        HorizontalAlignment="Center">
+            <StackPanel
+                Orientation="Horizontal"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center">
                 <components:ConciergeTextButton 
                     x:Name="OkButton"
                     Style="{StaticResource ConciergeTextButtonStyle}"

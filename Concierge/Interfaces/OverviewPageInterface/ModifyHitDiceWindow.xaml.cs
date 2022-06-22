@@ -48,6 +48,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
 
             this.HitDice = castItem;
             this.FillFields();
+            this.SetUsedLimit();
             this.ShowConciergeWindow();
         }
 
@@ -91,6 +92,14 @@ namespace Concierge.Interfaces.OverviewPageInterface
             Program.UndoRedoService.AddCommand(new EditCommand<HitDice>(this.HitDice, oldItem, this.ConciergePage));
         }
 
+        private void SetUsedLimit()
+        {
+            this.UsedD6UpDown.Maximum = this.TotalD6UpDown.Value;
+            this.UsedD8UpDown.Maximum = this.TotalD8UpDown.Value;
+            this.UsedD10UpDown.Maximum = this.TotalD10UpDown.Value;
+            this.UsedD12UpDown.Maximum = this.TotalD12UpDown.Value;
+        }
+
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             this.Result = ConciergeWindowResult.Exit;
@@ -114,6 +123,11 @@ namespace Concierge.Interfaces.OverviewPageInterface
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
             this.ReturnAndClose();
+        }
+
+        private void TotalUpDown_ValueChanged(object sender, RoutedEventArgs e)
+        {
+            this.SetUsedLimit();
         }
     }
 }

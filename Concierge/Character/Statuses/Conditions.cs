@@ -113,9 +113,6 @@ namespace Concierge.Character.Statuses
 
         public string Unconscious { get; set; }
 
-        /// =========================================
-        /// GetDescription()
-        /// =========================================
         public static string GetDescription(string name)
         {
             const string Comma = ", ";
@@ -147,9 +144,6 @@ namespace Concierge.Character.Statuses
             };
         }
 
-        /// =========================================
-        /// ToArray()
-        /// =========================================
         public List<KeyValuePair<string, string>> ToList()
         {
             var keyValuePairs = new List<KeyValuePair<string, string>>

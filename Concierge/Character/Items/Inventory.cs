@@ -6,8 +6,10 @@ namespace Concierge.Character.Items
 {
     using System;
 
+    using Concierge.Character.Enums;
     using Concierge.Primitives;
     using Concierge.Utility;
+    using Concierge.Utility.Extensions;
     using Newtonsoft.Json;
 
     public class Inventory : ICopyable<Inventory>
@@ -15,8 +17,10 @@ namespace Concierge.Character.Items
         public Inventory()
         {
             this.Name = string.Empty;
-            this.Note = string.Empty;
+            this.Description = string.Empty;
             this.Weight = UnitDouble.Empty;
+            this.Notes = string.Empty;
+            this.ItemCategory = string.Empty;
             this.Id = Guid.NewGuid();
         }
 
@@ -31,7 +35,18 @@ namespace Concierge.Character.Items
         [JsonIgnore]
         public string InBagOfHoldingText => this.IsInBagOfHolding ? "Yes" : "No";
 
-        public string Note { get; set; }
+        public string ItemCategory { get; set; }
+
+        public int Value { get; set; }
+
+        public CoinType CoinType { get; set; }
+
+        [JsonIgnore]
+        public string ValueText => $"{this.Value} {this.CoinType.GetDescription()}";
+
+        public string Notes { get; set; }
+
+        public string Description { get; set; }
 
         public bool Attuned { get; set; }
 
@@ -53,7 +68,11 @@ namespace Concierge.Character.Items
 
             return item.Name.Equals(this.Name) &&
                 item.Weight == this.Weight &&
-                item.Note.Equals(this.Note);
+                item.CoinType == this.CoinType &&
+                item.Value == this.Value &&
+                item.ItemCategory.Equals(this.ItemCategory) &&
+                item.Notes.Equals(this.Notes) &&
+                item.Description.Equals(this.Description);
         }
 
         public override int GetHashCode()
@@ -75,7 +94,11 @@ namespace Concierge.Character.Items
                 Weight = this.Weight.DeepCopy(),
                 IsInBagOfHolding = this.IsInBagOfHolding,
                 Attuned = this.Attuned,
-                Note = this.Note,
+                Notes = this.Notes,
+                CoinType = this.CoinType,
+                Value = this.Value,
+                ItemCategory = this.ItemCategory,
+                Description = this.Description,
                 Index = this.Index,
                 EquppedId = this.EquppedId,
                 Id = this.Id,
