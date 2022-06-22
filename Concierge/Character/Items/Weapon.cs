@@ -26,7 +26,29 @@ namespace Concierge.Character.Items
             this.ProficiencyOverride = false;
         }
 
+        public Abilities Ability { get; set; }
+
+        public string Damage { get; set; }
+
+        public DamageTypes DamageType { get; set; }
+
+        public Guid Id { get; init; }
+
+        public bool IgnoreWeight { get; set; }
+
+        public string Misc { get; set; }
+
         public string Name { get; set; }
+
+        public string Note { get; set; }
+
+        public bool ProficiencyOverride { get; set; }
+
+        public string Range { get; set; }
+
+        public WeaponTypes WeaponType { get; set; }
+
+        public UnitDouble Weight { get; set; }
 
         [JsonIgnore]
         public int Attack
@@ -55,28 +77,6 @@ namespace Concierge.Character.Items
             }
         }
 
-        public Abilities Ability { get; set; }
-
-        public string Damage { get; set; }
-
-        public string Misc { get; set; }
-
-        public DamageTypes DamageType { get; set; }
-
-        public string Range { get; set; }
-
-        public string Note { get; set; }
-
-        public UnitDouble Weight { get; set; }
-
-        public WeaponTypes WeaponType { get; set; }
-
-        public bool ProficiencyOverride { get; set; }
-
-        public bool IsInBagOfHolding { get; set; }
-
-        public Guid Id { get; init; }
-
         public Weapon DeepCopy()
         {
             return new Weapon()
@@ -91,7 +91,7 @@ namespace Concierge.Character.Items
                 Weight = this.Weight.DeepCopy(),
                 WeaponType = this.WeaponType,
                 ProficiencyOverride = this.ProficiencyOverride,
-                IsInBagOfHolding = this.IsInBagOfHolding,
+                IgnoreWeight = this.IgnoreWeight,
                 Id = this.Id,
             };
         }

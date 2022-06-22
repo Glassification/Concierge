@@ -115,7 +115,7 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
 
         private void FillFields(Weapon weapon)
         {
-            this.BagOfHoldingCheckBox.UpdatingValue();
+            this.IgnoreWeightCheckBox.UpdatingValue();
             this.ProficencyOverrideCheckBox.UpdatingValue();
 
             this.AttackComboBox.Text = weapon.Name;
@@ -127,17 +127,17 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
             this.RangeTextBox.Text = weapon.Range;
             this.WeightUpDown.Value = weapon.Weight.Value;
             this.ProficencyOverrideCheckBox.IsChecked = weapon.ProficiencyOverride;
-            this.BagOfHoldingCheckBox.IsChecked = weapon.IsInBagOfHolding;
+            this.IgnoreWeightCheckBox.IsChecked = weapon.IgnoreWeight;
             this.NotesTextBox.Text = weapon.Note;
             this.WeightUnits.Text = $"({UnitFormat.WeightPostfix})";
 
-            this.BagOfHoldingCheckBox.UpdatedValue();
+            this.IgnoreWeightCheckBox.UpdatedValue();
             this.ProficencyOverrideCheckBox.UpdatedValue();
         }
 
         private void ClearFields()
         {
-            this.BagOfHoldingCheckBox.UpdatingValue();
+            this.IgnoreWeightCheckBox.UpdatingValue();
             this.ProficencyOverrideCheckBox.UpdatingValue();
 
             this.AttackComboBox.Text = string.Empty;
@@ -149,11 +149,11 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
             this.RangeTextBox.Text = string.Empty;
             this.WeightUpDown.Value = 0.0;
             this.ProficencyOverrideCheckBox.IsChecked = false;
-            this.BagOfHoldingCheckBox.IsChecked = false;
+            this.IgnoreWeightCheckBox.IsChecked = false;
             this.NotesTextBox.Text = string.Empty;
             this.WeightUnits.Text = $"({UnitFormat.WeightPostfix})";
 
-            this.BagOfHoldingCheckBox.UpdatedValue();
+            this.IgnoreWeightCheckBox.UpdatedValue();
             this.ProficencyOverrideCheckBox.UpdatedValue();
         }
 
@@ -170,7 +170,7 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
             weapon.Range = this.RangeTextBox.Text;
             weapon.Weight.Value = this.WeightUpDown.Value;
             weapon.ProficiencyOverride = this.ProficencyOverrideCheckBox.IsChecked ?? false;
-            weapon.IsInBagOfHolding = this.BagOfHoldingCheckBox.IsChecked ?? false;
+            weapon.IgnoreWeight = this.IgnoreWeightCheckBox.IsChecked ?? false;
             weapon.Note = this.NotesTextBox.Text;
 
             Program.UndoRedoService.AddCommand(new EditCommand<Weapon>(weapon, oldItem, this.ConciergePage));
@@ -191,7 +191,7 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
                 Range = this.RangeTextBox.Text,
                 Weight = new UnitDouble(this.WeightUpDown.Value, AppSettingsManager.UserSettings.UnitOfMeasurement, Measurements.Weight),
                 ProficiencyOverride = this.ProficencyOverrideCheckBox.IsChecked ?? false,
-                IsInBagOfHolding = this.BagOfHoldingCheckBox.IsChecked ?? false,
+                IgnoreWeight = this.IgnoreWeightCheckBox.IsChecked ?? false,
                 Note = this.NotesTextBox.Text,
             };
 

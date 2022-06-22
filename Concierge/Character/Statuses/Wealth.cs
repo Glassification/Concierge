@@ -4,7 +4,9 @@
 
 namespace Concierge.Character.Statuses
 {
+    using Concierge.Character.Items;
     using Concierge.Utility;
+    using Concierge.Utility.Utilities;
     using Newtonsoft.Json;
 
     public class Wealth : ICopyable<Wealth>
@@ -33,6 +35,21 @@ namespace Concierge.Character.Statuses
 
         [JsonIgnore]
         public int TotalCoins => this.Copper + this.Silver + this.Electrum + this.Gold + this.Platinum;
+
+        [JsonIgnore]
+        public double ItemValue
+        {
+            get
+            {
+                var itemValue = Program.CcsFile.Character.EquippedItems.Value;
+                foreach (Inventory item in Program.CcsFile.Character.Inventories)
+                {
+                    itemValue += CharacterUtility.GetGoldValue(item.Value, item.CoinType);
+                }
+
+                return itemValue;
+            }
+        }
 
         public Wealth DeepCopy()
         {

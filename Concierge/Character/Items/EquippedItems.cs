@@ -11,6 +11,7 @@ namespace Concierge.Character.Items
     using Concierge.Character.Enums;
     using Concierge.Utility;
     using Concierge.Utility.Extensions;
+    using Concierge.Utility.Utilities;
     using Newtonsoft.Json;
 
     public class EquippedItems : ICopyable<EquippedItems>
@@ -51,6 +52,23 @@ namespace Concierge.Character.Items
         public List<Inventory> Legs { get; init; }
 
         public List<Inventory> Feet { get; init; }
+
+        [JsonIgnore]
+        public double Value
+        {
+            get
+            {
+                var value = 0.0;
+
+                value += GetGold(this.Head);
+                value += GetGold(this.Torso);
+                value += GetGold(this.Hands);
+                value += GetGold(this.Legs);
+                value += GetGold(this.Feet);
+
+                return value;
+            }
+        }
 
         [JsonIgnore]
         public double Weight
@@ -180,7 +198,7 @@ namespace Concierge.Character.Items
             var weight = 0.0;
             foreach (var item in list)
             {
-                if (!item.ItemCategory.Contains("Armor"))
+                if (!item.IgnoreWeight)
                 {
                     weight += item.Weight.Value;
                 }
@@ -198,6 +216,20 @@ namespace Concierge.Character.Items
             }
 
             return attuned;
+        }
+
+        private static double GetGold(List<Inventory> list)
+        {
+            var value = 0.0;
+            foreach (var item in list)
+            {
+                if (!item.IgnoreWeight)
+                {
+                    value += CharacterUtility.GetGoldValue(item.Value, item.CoinType);
+                }
+            }
+
+            return value;
         }
 
         private static void AddToInventory(Inventory item)

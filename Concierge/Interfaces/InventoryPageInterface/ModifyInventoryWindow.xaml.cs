@@ -124,7 +124,8 @@ namespace Concierge.Interfaces.InventoryPageInterface
 
         private void FillFields(Inventory inventory)
         {
-            this.BagOfHoldingCheckBox.UpdatingValue();
+            this.AttunedCheckBox.UpdatingValue();
+            this.IgnoreWeightCheckBox.UpdatingValue();
 
             this.NameComboBox.Text = inventory.Name;
             this.AmountUpDown.Value = inventory.Amount;
@@ -135,35 +136,44 @@ namespace Concierge.Interfaces.InventoryPageInterface
             this.CategoryComboBox.Text = inventory.ItemCategory;
             this.ValueUpDown.Value = inventory.Value;
             this.CoinTypeComboBox.Text = inventory.CoinType.ToString();
+            this.IgnoreWeightCheckBox.IsChecked = inventory.IgnoreWeight;
+            this.AttunedCheckBox.IsChecked = inventory.Attuned;
 
             if (this.EquippedItem)
             {
-                this.BagOfHoldingText.Text = "Attuned:";
-                this.BagOfHoldingCheckBox.IsChecked = inventory.Attuned;
+                this.AttunedText.Opacity = 1;
+                this.AttunedCheckBox.Opacity = 1;
+                this.AttunedCheckBox.IsEnabled = true;
+
                 this.AmountTextBlock.Opacity = 0.5;
                 this.AmountUpDown.Opacity = 0.5;
                 this.AmountUpDown.IsEnabled = false;
             }
             else
             {
-                this.BagOfHoldingText.Text = "Ignore Weight:";
-                this.BagOfHoldingCheckBox.IsChecked = inventory.IsInBagOfHolding;
+                this.AttunedText.Opacity = 0.5;
+                this.AttunedCheckBox.Opacity = 0.5;
+                this.AttunedCheckBox.IsEnabled = false;
+
                 this.AmountTextBlock.Opacity = 1;
                 this.AmountUpDown.Opacity = 1;
                 this.AmountUpDown.IsEnabled = true;
             }
 
-            this.BagOfHoldingCheckBox.UpdatedValue();
+            this.AttunedCheckBox.UpdatedValue();
+            this.IgnoreWeightCheckBox.UpdatedValue();
         }
 
         private void ClearFields()
         {
-            this.BagOfHoldingCheckBox.UpdatingValue();
+            this.AttunedCheckBox.UpdatingValue();
+            this.IgnoreWeightCheckBox.UpdatingValue();
 
             this.NameComboBox.Text = string.Empty;
             this.AmountUpDown.Value = 1;
             this.WeightUpDown.Value = 0.0;
-            this.BagOfHoldingCheckBox.IsChecked = false;
+            this.IgnoreWeightCheckBox.IsChecked = false;
+            this.AttunedCheckBox.IsChecked = false;
             this.NotesTextBox.Text = string.Empty;
             this.WeightUnits.Text = $"({UnitFormat.WeightPostfix})";
             this.DescriptionTextBox.Text = string.Empty;
@@ -171,7 +181,8 @@ namespace Concierge.Interfaces.InventoryPageInterface
             this.ValueUpDown.Value = 0;
             this.CoinTypeComboBox.Text = CoinType.None.ToString();
 
-            this.BagOfHoldingCheckBox.UpdatedValue();
+            this.AttunedCheckBox.UpdatedValue();
+            this.IgnoreWeightCheckBox.UpdatedValue();
         }
 
         private Inventory ToInventory()
@@ -182,7 +193,8 @@ namespace Concierge.Interfaces.InventoryPageInterface
                 Name = this.NameComboBox.Text,
                 Amount = this.AmountUpDown.Value,
                 Weight = new UnitDouble(this.WeightUpDown.Value, AppSettingsManager.UserSettings.UnitOfMeasurement, Measurements.Weight),
-                IsInBagOfHolding = this.BagOfHoldingCheckBox.IsChecked ?? false,
+                IgnoreWeight = this.IgnoreWeightCheckBox.IsChecked ?? false,
+                Attuned = this.AttunedCheckBox.IsChecked ?? false,
                 Notes = this.NotesTextBox.Text,
                 Description = this.DescriptionTextBox.Text,
                 ItemCategory = this.CategoryComboBox.Text,
@@ -207,10 +219,11 @@ namespace Concierge.Interfaces.InventoryPageInterface
             inventory.ItemCategory = this.CategoryComboBox.Text;
             inventory.Value = this.ValueUpDown.Value;
             inventory.CoinType = (CoinType)Enum.Parse(typeof(CoinType), this.CoinTypeComboBox.Text);
+            inventory.IgnoreWeight = this.IgnoreWeightCheckBox.IsChecked ?? false;
 
             if (this.EquippedItem)
             {
-                inventory.Attuned = this.BagOfHoldingCheckBox.IsChecked ?? false;
+                inventory.Attuned = this.AttunedCheckBox.IsChecked ?? false;
 
                 if (Program.CcsFile.Character.EquippedItems.Attuned > Constants.MaxAttunedItems)
                 {
@@ -221,10 +234,6 @@ namespace Concierge.Interfaces.InventoryPageInterface
                         ConciergeWindowButtons.Ok,
                         ConciergeWindowIcons.Error);
                 }
-            }
-            else
-            {
-                inventory.IsInBagOfHolding = this.BagOfHoldingCheckBox.IsChecked ?? false;
             }
 
             Program.UndoRedoService.AddCommand(new EditCommand<Inventory>(inventory, oldItem, this.ConciergePage));

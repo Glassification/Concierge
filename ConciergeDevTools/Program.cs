@@ -35,7 +35,7 @@
                     Notes = tokens[4],
                     Description = tokens[5],
                     Amount = 1,
-                    IsInBagOfHolding = false,
+                    IgnoreWeight = false,
                     Attuned = false,
                     Index = 0,
                 });

@@ -35,6 +35,7 @@ namespace Concierge.Interfaces.Controls
         public void SetWealth(Wealth wealth)
         {
             this.TotalWealthField.Text = $"¤ {string.Format("{0:0.00}", wealth.TotalValue)}";
+            this.ItemWealthField.Text = $"¤ {string.Format("{0:0.00}", wealth.ItemValue)}";
 
             this.CopperField.Text = wealth.Copper.ToString();
             this.SilverField.Text = wealth.Silver.ToString();

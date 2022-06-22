@@ -44,5 +44,18 @@ namespace Concierge.Utility.Utilities
 
             return totalLevel is <= Constants.MaxLevel and >= 0;
         }
+
+        public static double GetGoldValue(double value, CoinType coinType)
+        {
+            return coinType switch
+            {
+                CoinType.Copper => value / 100.0,
+                CoinType.Silver => value / 10.0,
+                CoinType.Electrum => value / 2.0,
+                CoinType.Gold => value,
+                CoinType.Platinum => value * 10.0,
+                _ => 0,
+            };
+        }
     }
 }

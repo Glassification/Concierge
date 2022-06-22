@@ -20,13 +20,15 @@ namespace Concierge.Character.Items
             this.Id = Guid.NewGuid();
         }
 
-        public string Name { get; set; }
-
-        public int Quantity { get; set; }
-
         public string Bonus { get; set; }
 
         public DamageTypes DamageType { get; set; }
+
+        public Guid Id { get; init; }
+
+        public string Name { get; set; }
+
+        public int Quantity { get; set; }
 
         public int Used
         {
@@ -43,8 +45,6 @@ namespace Concierge.Character.Items
                 }
             }
         }
-
-        public Guid Id { get; init; }
 
         public Ammunition DeepCopy()
         {

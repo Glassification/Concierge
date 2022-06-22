@@ -29,17 +29,13 @@ namespace Concierge.Character.Items
             this.MagicArmorClass = 0;
         }
 
-        public string Equiped { get; set; }
-
-        public ArmorType Type { get; set; }
-
         public int ArmorClass { get; set; }
 
-        public int Strength { get; set; }
+        public string Equiped { get; set; }
 
-        public UnitDouble Weight { get; set; }
+        public int MagicArmorClass { get; set; }
 
-        public ArmorStealth Stealth { get; set; }
+        public int MiscArmorClass { get; set; }
 
         public string Shield { get; set; }
 
@@ -47,9 +43,13 @@ namespace Concierge.Character.Items
 
         public UnitDouble ShieldWeight { get; set; }
 
-        public int MiscArmorClass { get; set; }
+        public ArmorStealth Stealth { get; set; }
 
-        public int MagicArmorClass { get; set; }
+        public int Strength { get; set; }
+
+        public ArmorType Type { get; set; }
+
+        public UnitDouble Weight { get; set; }
 
         [JsonIgnore]
         public int TotalArmorClass

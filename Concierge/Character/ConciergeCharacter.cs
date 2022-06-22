@@ -66,15 +66,21 @@ namespace Concierge.Character
 
         public Attributes Attributes { get; set; }
 
+        public List<Chapter> Chapters { get; set; }
+
+        public CharacterImage CharacterIcon { get; set; }
+
+        public CharacterImage CharacterImage { get; set; }
+
         public List<ClassResource> ClassResources { get; set; }
 
         public Companion Companion { get; set; }
 
-        public Senses Senses { get; set; }
-
-        public List<Chapter> Chapters { get; set; }
+        public EquippedItems EquippedItems { get; set; }
 
         public List<Inventory> Inventories { get; set; }
+
+        public List<Language> Languages { get; set; }
 
         public List<MagicClass> MagicClasses { get; set; }
 
@@ -82,7 +88,11 @@ namespace Concierge.Character
 
         public List<Proficiency> Proficiencies { get; set; }
 
+        public CharacterProperties Properties { get; set; }
+
         public SavingThrow SavingThrow { get; set; }
+
+        public Senses Senses { get; set; }
 
         public Skill Skill { get; set; }
 
@@ -90,23 +100,13 @@ namespace Concierge.Character
 
         public SpellSlots SpellSlots { get; set; }
 
+        public List<StatusEffect> StatusEffects { get; set; }
+
         public Vitality Vitality { get; set; }
 
         public Wealth Wealth { get; set; }
 
         public List<Weapon> Weapons { get; set; }
-
-        public EquippedItems EquippedItems { get; set; }
-
-        public CharacterImage CharacterImage { get; set; }
-
-        public CharacterImage CharacterIcon { get; set; }
-
-        public List<StatusEffect> StatusEffects { get; set; }
-
-        public CharacterProperties Properties { get; set; }
-
-        public List<Language> Languages { get; set; }
 
         [JsonIgnore]
         public double CarryWeight
@@ -117,7 +117,7 @@ namespace Concierge.Character
 
                 foreach (var item in this.Inventories)
                 {
-                    if (!item.IsInBagOfHolding)
+                    if (!item.IgnoreWeight)
                     {
                         weight += item.Weight.Value * item.Amount;
                     }
@@ -125,7 +125,7 @@ namespace Concierge.Character
 
                 foreach (var weapon in this.Weapons)
                 {
-                    if (!weapon.IsInBagOfHolding)
+                    if (!weapon.IgnoreWeight)
                     {
                         weight += weapon.Weight.Value;
                     }
