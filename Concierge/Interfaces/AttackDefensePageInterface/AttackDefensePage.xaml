@@ -192,7 +192,7 @@
                         Width="60"
                         Foreground="Coral"
                         Click="UseButton_Click"
-                        ToolTip="Use Selected Item">
+                        ToolTip="Use Ammunition">
                         <materialDesign:PackIcon Kind="MinusBox" Width="25" Height="25"/>
                     </components:ConciergeDesignButton>
                     <components:ConciergeDesignButton 
@@ -221,27 +221,27 @@
                         <DataGridTextColumn
                             Header="Ammo"
                             Binding="{Binding Name}"
-                            Width="0.2*"
+                            Width="0.32*"
                             ElementStyle="{StaticResource StandardColumnElementStyle}"/>
                         <DataGridTextColumn
                             Header="Quantity"
                             Binding="{Binding Quantity}"
-                            Width="0.05*"
-                            ElementStyle="{StaticResource StandardColumnElementStyle}"/>
-                        <DataGridTextColumn
-                            Header="Damage Bonus"
-                            Binding="{Binding Bonus}"
-                            Width="0.1*"
-                            ElementStyle="{StaticResource StandardColumnElementStyle}"/>
-                        <DataGridTextColumn
-                            Header="Damage Type"
-                            Binding="{Binding DamageType}"
-                            Width="0.1*"
+                            Width="0.12*"
                             ElementStyle="{StaticResource StandardColumnElementStyle}"/>
                         <DataGridTextColumn
                             Header="Used"
                             Binding="{Binding Used}"
-                            Width="0.1*"
+                            Width="0.12*"
+                            ElementStyle="{StaticResource StandardColumnElementStyle}"/>
+                        <DataGridTextColumn
+                            Header="Damage Bonus"
+                            Binding="{Binding Bonus}"
+                            Width="0.22*"
+                            ElementStyle="{StaticResource StandardColumnElementStyle}"/>
+                        <DataGridTextColumn
+                            Header="Damage Type"
+                            Binding="{Binding DamageType}"
+                            Width="0.22*"
                             ElementStyle="{StaticResource StandardColumnElementStyle}"/>
                     </DataGrid.Columns>
                 </components:ConciergeDataGrid>
@@ -293,7 +293,7 @@
                             Width="0.1*"
                             ElementStyle="{StaticResource StandardColumnElementStyle}"/>
                         <DataGridTextColumn
-                            Header="Notes"
+                            Header="Description"
                             Binding="{Binding Note}"
                             Width="0.20*"
                             ElementStyle="{StaticResource StandardColumnElementStyle}"/>

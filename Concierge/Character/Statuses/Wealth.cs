@@ -37,6 +37,7 @@ namespace Concierge.Character.Statuses
         public int TotalCoins => this.Copper + this.Silver + this.Electrum + this.Gold + this.Platinum;
 
         [JsonIgnore]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822:Mark members as static", Justification = "Don't want this static.")]
         public double ItemValue
         {
             get
@@ -44,7 +45,17 @@ namespace Concierge.Character.Statuses
                 var itemValue = Program.CcsFile.Character.EquippedItems.Value;
                 foreach (Inventory item in Program.CcsFile.Character.Inventories)
                 {
-                    itemValue += CharacterUtility.GetGoldValue(item.Value, item.CoinType);
+                    itemValue += CharacterUtility.GetGoldValue(item.Value, item.CoinType) * item.Amount;
+                }
+
+                foreach (Weapon weapon in Program.CcsFile.Character.Weapons)
+                {
+                    itemValue += CharacterUtility.GetGoldValue(weapon.Value, weapon.CoinType);
+                }
+
+                foreach (Ammunition ammunition in Program.CcsFile.Character.Ammunitions)
+                {
+                    itemValue += CharacterUtility.GetGoldValue(ammunition.Value, ammunition.CoinType) * (ammunition.Quantity - ammunition.Used);
                 }
 
                 return itemValue;

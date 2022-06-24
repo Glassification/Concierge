@@ -1,0 +1,368 @@
+{
+  "Character": {
+    "Abilities": [],
+    "Ammunitions": [],
+    "Appearance": {
+      "Gender": "",
+      "Age": 0,
+      "Height": {
+        "Value": 0.0,
+        "UnitType": 0,
+        "Measurement": 0
+      },
+      "Weight": {
+        "Value": 0.0,
+        "UnitType": 0,
+        "Measurement": 1
+      },
+      "SkinColour": "",
+      "EyeColour": "",
+      "HairColour": "",
+      "DistinguishingMarks": ""
+    },
+    "Armor": {
+      "ArmorClass": 0,
+      "Equiped": "",
+      "MagicArmorClass": 0,
+      "MiscArmorClass": 0,
+      "Shield": "",
+      "ShieldArmorClass": 0,
+      "ShieldWeight": {
+        "Value": 0.0,
+        "UnitType": 0,
+        "Measurement": 1
+      },
+      "Stealth": 0,
+      "Strength": 0,
+      "Type": 0,
+      "Weight": {
+        "Value": 0.0,
+        "UnitType": 0,
+        "Measurement": 1
+      }
+    },
+    "Attributes": {
+      "Strength": 10,
+      "Dexterity": 10,
+      "Constitution": 10,
+      "Intelligence": 10,
+      "Wisdom": 10,
+      "Charisma": 10
+    },
+    "Chapters": [],
+    "CharacterIcon": {
+      "Encoded": "",
+      "Path": "",
+      "Stretch": 3,
+      "UseCustomImage": false
+    },
+    "CharacterImage": {
+      "Encoded": "",
+      "Path": "",
+      "Stretch": 3,
+      "UseCustomImage": false
+    },
+    "ClassResources": [],
+    "Companion": {
+      "Properties": {
+        "Name": "",
+        "ArmorClass": 0,
+        "Movement": 0,
+        "Perception": 0,
+        "Vision": 0
+      },
+      "Vitality": {
+        "Health": {
+          "MaxHealth": 0,
+          "TemporaryHealth": 0,
+          "BaseHealth": 0
+        },
+        "HitDice": {
+          "TotalD6": 0,
+          "TotalD8": 0,
+          "TotalD10": 0,
+          "TotalD12": 0,
+          "SpentD6": 0,
+          "SpentD8": 0,
+          "SpentD10": 0,
+          "SpentD12": 0
+        },
+        "Conditions": {
+          "Blinded": "Cured",
+          "Charmed": "Cured",
+          "Deafened": "Cured",
+          "Fatigued": "Normal",
+          "Frightened": "Cured",
+          "Grappled": "Cured",
+          "Incapacitated": "Cured",
+          "Invisible": "Cured",
+          "Paralyzed": "Cured",
+          "Petrified": "Cured",
+          "Poisoned": "Cured",
+          "Prone": "Cured",
+          "Restrained": "Cured",
+          "Stunned": "Cured",
+          "Unconscious": "Cured"
+        },
+        "DeathSavingThrows": {
+          "CurrentDeathSave": 0,
+          "DeathSaves": []
+        }
+      },
+      "Attributes": {
+        "Strength": 10,
+        "Dexterity": 10,
+        "Constitution": 10,
+        "Intelligence": 10,
+        "Wisdom": 10,
+        "Charisma": 10
+      },
+      "Attacks": []
+    },
+    "EquippedItems": {
+      "Head": [],
+      "Torso": [],
+      "Hands": [],
+      "Legs": [],
+      "Feet": []
+    },
+    "Inventories": [],
+    "Languages": [],
+    "MagicClasses": [],
+    "Personality": {
+      "Trait1": "",
+      "Trait2": "",
+      "Ideal": "",
+      "Bond": "",
+      "Flaw": "",
+      "Background": "",
+      "Notes": ""
+    },
+    "Proficiencies": [],
+    "Properties": {
+      "Name": "",
+      "Race": "",
+      "Background": "",
+      "Alignment": "",
+      "Experience": "",
+      "Class1": {
+        "Name": "",
+        "Id": "2ab6641e-35e0-47ec-850a-550e4de695d5",
+        "Level": 0
+      },
+      "Class2": {
+        "Name": "",
+        "Id": "f8086328-d70f-4fbc-beaf-b968e5698395",
+        "Level": 0
+      },
+      "Class3": {
+        "Name": "",
+        "Id": "21d494ae-b437-4058-913d-db57f5a6d64e",
+        "Level": 0
+      }
+    },
+    "SavingThrow": {
+      "Strength": {
+        "Proficiency": false,
+        "CheckOverride": 4
+      },
+      "Dexterity": {
+        "Proficiency": false,
+        "CheckOverride": 4
+      },
+      "Constitution": {
+        "Proficiency": false,
+        "CheckOverride": 4
+      },
+      "Intelligence": {
+        "Proficiency": false,
+        "CheckOverride": 4
+      },
+      "Wisdom": {
+        "Proficiency": false,
+        "CheckOverride": 4
+      },
+      "Charisma": {
+        "Proficiency": false,
+        "CheckOverride": 4
+      }
+    },
+    "Senses": {
+      "InitiativeBonus": 0,
+      "PerceptionBonus": 0,
+      "BaseMovement": 30,
+      "MovementBonus": 0,
+      "Vision": 0
+    },
+    "Skill": {
+      "Athletics": {
+        "Proficiency": false,
+        "Expertise": false,
+        "CheckOverride": 4
+      },
+      "Acrobatics": {
+        "Proficiency": false,
+        "Expertise": false,
+        "CheckOverride": 4
+      },
+      "SleightOfHand": {
+        "Proficiency": false,
+        "Expertise": false,
+        "CheckOverride": 4
+      },
+      "Stealth": {
+        "Proficiency": false,
+        "Expertise": false,
+        "CheckOverride": 4
+      },
+      "Arcana": {
+        "Proficiency": false,
+        "Expertise": false,
+        "CheckOverride": 4
+      },
+      "History": {
+        "Proficiency": false,
+        "Expertise": false,
+        "CheckOverride": 4
+      },
+      "Investigation": {
+        "Proficiency": false,
+        "Expertise": false,
+        "CheckOverride": 4
+      },
+      "Nature": {
+        "Proficiency": false,
+        "Expertise": false,
+        "CheckOverride": 4
+      },
+      "Religion": {
+        "Proficiency": false,
+        "Expertise": false,
+        "CheckOverride": 4
+      },
+      "AnimalHandling": {
+        "Proficiency": false,
+        "Expertise": false,
+        "CheckOverride": 4
+      },
+      "Insight": {
+        "Proficiency": false,
+        "Expertise": false,
+        "CheckOverride": 4
+      },
+      "Medicine": {
+        "Proficiency": false,
+        "Expertise": false,
+        "CheckOverride": 4
+      },
+      "Perception": {
+        "Proficiency": false,
+        "Expertise": false,
+        "CheckOverride": 4
+      },
+      "Survival": {
+        "Proficiency": false,
+        "Expertise": false,
+        "CheckOverride": 4
+      },
+      "Deception": {
+        "Proficiency": false,
+        "Expertise": false,
+        "CheckOverride": 4
+      },
+      "Intimidation": {
+        "Proficiency": false,
+        "Expertise": false,
+        "CheckOverride": 4
+      },
+      "Performance": {
+        "Proficiency": false,
+        "Expertise": false,
+        "CheckOverride": 4
+      },
+      "Persuasion": {
+        "Proficiency": false,
+        "Expertise": false,
+        "CheckOverride": 4
+      }
+    },
+    "Spells": [],
+    "SpellSlots": {
+      "PactTotal": 0,
+      "FirstTotal": 0,
+      "SecondTotal": 0,
+      "ThirdTotal": 0,
+      "FourthTotal": 0,
+      "FifthTotal": 0,
+      "SixthTotal": 0,
+      "SeventhTotal": 0,
+      "EighthTotal": 0,
+      "NinethTotal": 0,
+      "PactUsed": 0,
+      "FirstUsed": 0,
+      "SecondUsed": 0,
+      "ThirdUsed": 0,
+      "FourthUsed": 0,
+      "FifthUsed": 0,
+      "SixthUsed": 0,
+      "SeventhUsed": 0,
+      "EighthUsed": 0,
+      "NinethUsed": 0
+    },
+    "StatusEffects": [],
+    "Vitality": {
+      "Health": {
+        "MaxHealth": 0,
+        "TemporaryHealth": 0,
+        "BaseHealth": 0
+      },
+      "HitDice": {
+        "TotalD6": 0,
+        "TotalD8": 0,
+        "TotalD10": 0,
+        "TotalD12": 0,
+        "SpentD6": 0,
+        "SpentD8": 0,
+        "SpentD10": 0,
+        "SpentD12": 0
+      },
+      "Conditions": {
+        "Blinded": "Cured",
+        "Charmed": "Cured",
+        "Deafened": "Cured",
+        "Fatigued": "Normal",
+        "Frightened": "Cured",
+        "Grappled": "Cured",
+        "Incapacitated": "Cured",
+        "Invisible": "Cured",
+        "Paralyzed": "Cured",
+        "Petrified": "Cured",
+        "Poisoned": "Cured",
+        "Prone": "Cured",
+        "Restrained": "Cured",
+        "Stunned": "Cured",
+        "Unconscious": "Cured"
+      },
+      "DeathSavingThrows": {
+        "CurrentDeathSave": 0,
+        "DeathSaves": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    "Wealth": {
+      "Copper": 0,
+      "Silver": 0,
+      "Electrum": 0,
+      "Gold": 0,
+      "Platinum": 0
+    },
+    "Weapons": []
+  },
+  "OriginalCreationDate": "Wednesday, 22 June 2022 02:55:54 PM",
+  "Version": "4.9.6"
+}

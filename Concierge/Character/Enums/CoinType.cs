@@ -8,8 +8,6 @@ namespace Concierge.Character.Enums
 
     public enum CoinType
     {
-        [Description("")]
-        None,
         [Description("cp")]
         Copper,
         [Description("sp")]

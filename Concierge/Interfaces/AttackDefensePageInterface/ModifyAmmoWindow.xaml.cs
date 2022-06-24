@@ -27,6 +27,7 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
             this.InitializeComponent();
             this.NameComboBox.ItemsSource = Constants.Ammunitions;
             this.DamageTypeComboBox.ItemsSource = Enum.GetValues(typeof(DamageTypes)).Cast<DamageTypes>();
+            this.CoinTypeComboBox.ItemsSource = Enum.GetValues(typeof(CoinType)).Cast<CoinType>();
             this.ConciergePage = ConciergePage.None;
             this.Ammunitions = new List<Ammunition>();
             this.SelectedAmmo = new Ammunition();
@@ -114,6 +115,8 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
             this.BonusTextBox.Text = ammunition.Bonus;
             this.DamageTypeComboBox.Text = ammunition.DamageType.ToString();
             this.UsedUpDown.Value = ammunition.Used;
+            this.ValueUpDown.Value = ammunition.Value;
+            this.CoinTypeComboBox.Text = ammunition.CoinType.ToString();
 
             this.UsedUpDown.Maximum = this.QuantityUpDown.Value;
         }
@@ -125,6 +128,8 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
             this.BonusTextBox.Text = string.Empty;
             this.DamageTypeComboBox.Text = DamageTypes.None.ToString();
             this.UsedUpDown.Value = 0;
+            this.ValueUpDown.Value = 0;
+            this.CoinTypeComboBox.Text = CoinType.Copper.ToString();
         }
 
         private void UpdateAmmunition(Ammunition ammunition)
@@ -136,6 +141,8 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
             ammunition.Bonus = this.BonusTextBox.Text;
             ammunition.DamageType = (DamageTypes)Enum.Parse(typeof(DamageTypes), this.DamageTypeComboBox.Text);
             ammunition.Used = this.UsedUpDown.Value;
+            ammunition.Value = this.ValueUpDown.Value;
+            ammunition.CoinType = (CoinType)Enum.Parse(typeof(CoinType), this.CoinTypeComboBox.Text);
 
             Program.UndoRedoService.AddCommand(new EditCommand<Ammunition>(ammunition, oldItem, this.ConciergePage));
         }
@@ -151,6 +158,8 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
                 Bonus = this.BonusTextBox.Text,
                 DamageType = (DamageTypes)Enum.Parse(typeof(DamageTypes), this.DamageTypeComboBox.Text),
                 Used = this.UsedUpDown.Value,
+                Value = this.ValueUpDown.Value,
+                CoinType = (CoinType)Enum.Parse(typeof(CoinType), this.CoinTypeComboBox.Text),
             };
 
             Program.UndoRedoService.AddCommand(new AddCommand<Ammunition>(this.Ammunitions, ammo, this.ConciergePage));

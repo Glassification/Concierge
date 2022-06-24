@@ -22,6 +22,8 @@ namespace Concierge.Character.Items
 
         public string Bonus { get; set; }
 
+        public CoinType CoinType { get; set; }
+
         public DamageTypes DamageType { get; set; }
 
         public Guid Id { get; init; }
@@ -46,6 +48,8 @@ namespace Concierge.Character.Items
             }
         }
 
+        public int Value { get; set; }
+
         public Ammunition DeepCopy()
         {
             return new Ammunition()
@@ -56,6 +60,8 @@ namespace Concierge.Character.Items
                 DamageType = this.DamageType,
                 Used = this.Used,
                 Id = this.Id,
+                CoinType = this.CoinType,
+                Value = this.Value,
             };
         }
 

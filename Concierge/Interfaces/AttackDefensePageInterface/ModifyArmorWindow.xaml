@@ -12,7 +12,7 @@
     mc:Ignorable="d"
     Title="Modify Armor"
     Height="475"
-    Width="650"
+    Width="800"
     Style="{StaticResource WindowXboxDasboardStyle}">
 
     <Grid>
@@ -285,7 +285,7 @@
                         <TextBlock 
                             Text="Shield Weight:"
                             Foreground="White"
-                            FontSize="15"
+                            FontSize="19"
                             HorizontalAlignment="Left"
                             VerticalAlignment="Top"
                             Margin="10, 12, 0, 0"/>

@@ -11,13 +11,13 @@
     d:DataContext="{d:DesignInstance Type=viewmodels:ConciergeViewModel}"
     mc:Ignorable="d"
     Title="Modify Personality"
-    Height="595"
+    Height="675"
     Width="650"
     Style="{StaticResource WindowXboxDasboardStyle}">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="45"/>
-            <RowDefinition Height="480"/>
+            <RowDefinition Height="560"/>
             <RowDefinition Height="70"/>
         </Grid.RowDefinitions>
 
@@ -46,239 +46,231 @@
 
         <!--Fields-->
         <Grid Grid.Row="1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="5*"/>
-                <ColumnDefinition Width="5*"/>
-            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="80"/>
+                <RowDefinition Height="80"/>
+                <RowDefinition Height="80"/>
+                <RowDefinition Height="80"/>
+                <RowDefinition Height="80"/>
+                <RowDefinition Height="80"/>
+                <RowDefinition Height="80"/>
+            </Grid.RowDefinitions>
 
-            <!--Left-->
-            <Grid Grid.Column="0">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="120"/>
-                    <RowDefinition Height="120"/>
-                    <RowDefinition Height="120"/>
-                    <RowDefinition Height="120"/>
-                </Grid.RowDefinitions>
+            <!--Trait 1-->
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="35*"/>
+                    <ColumnDefinition Width="65*"/>
+                </Grid.ColumnDefinitions>
 
-                <!--Trait 1-->
-                <Grid Grid.Row="0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="35*"/>
-                        <ColumnDefinition Width="65*"/>
-                    </Grid.ColumnDefinitions>
-
-                    <!--Title-->
-                    <Grid Grid.Column="0">
-                        <TextBlock Text="Trait 1:"
-                                   Foreground="White"
-                                   FontSize="20"
-                                   HorizontalAlignment="Left"
-                                   VerticalAlignment="Top"
-                                   Margin="10, 20, 0, 0"
-                                   TextWrapping="Wrap"/>
-                    </Grid>
-
-                    <!--Value-->
-                    <components:ConciergeTextBoxBackground Grid.Column="1">
-                        <ScrollViewer VerticalScrollBarVisibility="Auto">
-                            <components:ConciergeTextBox 
-                                x:Name="Trait1TextBox"
-                                VerticalAlignment="Stretch"
-                                FontSize="13"
-                                TextWrapping="Wrap"/>
-                        </ScrollViewer>
-                    </components:ConciergeTextBoxBackground>
+                <!--Title-->
+                <Grid Grid.Column="0">
+                    <TextBlock
+                        Text="Trait 1:"
+                        Foreground="White"
+                        FontSize="25"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        Margin="10, 20, 0, 0"
+                        TextWrapping="Wrap"/>
                 </Grid>
 
-                <!--Trait 2-->
-                <Grid Grid.Row="1">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="35*"/>
-                        <ColumnDefinition Width="65*"/>
-                    </Grid.ColumnDefinitions>
-
-                    <!--Title-->
-                    <Grid Grid.Column="0">
-                        <TextBlock Text="Trait 2:"
-                                   Foreground="White"
-                                   FontSize="20"
-                                   HorizontalAlignment="Left"
-                                   VerticalAlignment="Top"
-                                   Margin="10, 20, 0, 0"
-                                   TextWrapping="Wrap"/>
-                    </Grid>
-
-                    <!--Value-->
-                    <components:ConciergeTextBoxBackground Grid.Column="1">
-                        <ScrollViewer VerticalScrollBarVisibility="Auto">
-                            <components:ConciergeTextBox 
-                                x:Name="Trait2TextBox"
-                                TextWrapping="Wrap"
-                                FontSize="13"
-                                VerticalAlignment="Stretch"/>
-                        </ScrollViewer>
-                    </components:ConciergeTextBoxBackground>
-                </Grid>
-
-                <!--Ideal-->
-                <Grid Grid.Row="2">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="35*"/>
-                        <ColumnDefinition Width="65*"/>
-                    </Grid.ColumnDefinitions>
-
-                    <!--Title-->
-                    <Grid Grid.Column="0">
-                        <TextBlock Text="Ideal:"
-                                   Foreground="White"
-                                   FontSize="20"
-                                   HorizontalAlignment="Left"
-                                   VerticalAlignment="Top"
-                                   Margin="10, 20, 0, 0"
-                                   TextWrapping="Wrap"/>
-                    </Grid>
-
-                    <!--Value-->
-                    <components:ConciergeTextBoxBackground Grid.Column="1">
-                        <ScrollViewer VerticalScrollBarVisibility="Auto">
-                            <components:ConciergeTextBox 
-                                x:Name="IdealTextBox"
-                                VerticalAlignment="Stretch"
-                                FontSize="13"
-                                TextWrapping="Wrap"/>
-                        </ScrollViewer>
-                    </components:ConciergeTextBoxBackground>
-                </Grid>
-
-                <!--Bond-->
-                <Grid Grid.Row="3">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="35*"/>
-                        <ColumnDefinition Width="65*"/>
-                    </Grid.ColumnDefinitions>
-
-                    <!--Title-->
-                    <Grid Grid.Column="0">
-                        <TextBlock Text="Bond:"
-                                   Foreground="White"
-                                   FontSize="20"
-                                   HorizontalAlignment="Left"
-                                   VerticalAlignment="Top"
-                                   Margin="10, 20, 0, 0"
-                                   TextWrapping="Wrap"/>
-                    </Grid>
-
-                    <!--Value-->
-                    <components:ConciergeTextBoxBackground Grid.Column="1">
-                        <ScrollViewer VerticalScrollBarVisibility="Auto">
-                            <components:ConciergeTextBox 
-                                x:Name="BondTextBox"
-                                VerticalAlignment="Stretch"
-                                FontSize="13"
-                                TextWrapping="Wrap"/>
-                        </ScrollViewer>
-                    </components:ConciergeTextBoxBackground>
-                </Grid>
+                <!--Value-->
+                <components:ConciergeTextBoxBackground Grid.Column="1">
+                    <ScrollViewer VerticalScrollBarVisibility="Auto">
+                        <components:ConciergeTextBox 
+                            x:Name="Trait1TextBox"
+                            VerticalAlignment="Stretch"
+                            FontSize="14"
+                            TextWrapping="Wrap"/>
+                    </ScrollViewer>
+                </components:ConciergeTextBoxBackground>
             </Grid>
 
-            <!--Right-->
-            <Grid Grid.Column="1">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="120"/>
-                    <RowDefinition Height="120"/>
-                    <RowDefinition Height="240"/>
-                </Grid.RowDefinitions>
+            <!--Trait 2-->
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="35*"/>
+                    <ColumnDefinition Width="65*"/>
+                </Grid.ColumnDefinitions>
 
-                <!--Flaw-->
-                <Grid Grid.Row="0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="35*"/>
-                        <ColumnDefinition Width="65*"/>
-                    </Grid.ColumnDefinitions>
-
-                    <!--Title-->
-                    <Grid Grid.Column="0">
-                        <TextBlock Text="Flaw:"
-                                   Foreground="White"
-                                   FontSize="20"
-                                   HorizontalAlignment="Left"
-                                   VerticalAlignment="Top"
-                                   Margin="10, 20, 0, 0"
-                                   TextWrapping="Wrap"/>
-                    </Grid>
-
-                    <!--Value-->
-                    <components:ConciergeTextBoxBackground Grid.Column="1">
-                        <ScrollViewer VerticalScrollBarVisibility="Auto">
-                            <components:ConciergeTextBox 
-                                x:Name="FlawTextBox"
-                                VerticalAlignment="Stretch"
-                                FontSize="13"
-                                TextWrapping="Wrap"/>
-                        </ScrollViewer>
-                    </components:ConciergeTextBoxBackground>
+                <!--Title-->
+                <Grid Grid.Column="0">
+                    <TextBlock
+                        Text="Trait 2:"
+                        Foreground="White"
+                        FontSize="25"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        Margin="10, 20, 0, 0"
+                        TextWrapping="Wrap"/>
                 </Grid>
 
-                <!--Background-->
-                <Grid Grid.Row="1">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="35*"/>
-                        <ColumnDefinition Width="65*"/>
-                    </Grid.ColumnDefinitions>
+                <!--Value-->
+                <components:ConciergeTextBoxBackground Grid.Column="1">
+                    <ScrollViewer VerticalScrollBarVisibility="Auto">
+                        <components:ConciergeTextBox 
+                            x:Name="Trait2TextBox"
+                            TextWrapping="Wrap"
+                            FontSize="14"
+                            VerticalAlignment="Stretch"/>
+                    </ScrollViewer>
+                </components:ConciergeTextBoxBackground>
+            </Grid>
 
-                    <!--Title-->
-                    <Grid Grid.Column="0">
-                        <TextBlock Text="Background:"
-                                   Foreground="White"
-                                   FontSize="17"
-                                   HorizontalAlignment="Left"
-                                   VerticalAlignment="Top"
-                                   Margin="10, 20, 0, 0"
-                                   TextWrapping="Wrap"/>
-                    </Grid>
+            <!--Ideal-->
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="35*"/>
+                    <ColumnDefinition Width="65*"/>
+                </Grid.ColumnDefinitions>
 
-                    <!--Value-->
-                    <components:ConciergeTextBoxBackground Grid.Column="1">
-                        <ScrollViewer VerticalScrollBarVisibility="Auto">
-                            <components:ConciergeTextBox 
-                                x:Name="BackgroundTextBox"
-                                VerticalAlignment="Stretch"
-                                FontSize="13"
-                                TextWrapping="Wrap"/>
-                        </ScrollViewer>
-                    </components:ConciergeTextBoxBackground>
+                <!--Title-->
+                <Grid Grid.Column="0">
+                    <TextBlock
+                        Text="Ideal:"
+                        Foreground="White"
+                        FontSize="25"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        Margin="10, 20, 0, 0"
+                        TextWrapping="Wrap"/>
                 </Grid>
 
-                <!--Notes-->
-                <Grid Grid.Row="3">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="35*"/>
-                        <ColumnDefinition Width="65*"/>
-                    </Grid.ColumnDefinitions>
+                <!--Value-->
+                <components:ConciergeTextBoxBackground Grid.Column="1">
+                    <ScrollViewer VerticalScrollBarVisibility="Auto">
+                        <components:ConciergeTextBox 
+                            x:Name="IdealTextBox"
+                            VerticalAlignment="Stretch"
+                            FontSize="14"
+                            TextWrapping="Wrap"/>
+                    </ScrollViewer>
+                </components:ConciergeTextBoxBackground>
+            </Grid>
 
-                    <!--Title-->
-                    <Grid Grid.Column="0">
-                        <TextBlock Text="Notes:"
-                                   Foreground="White"
-                                   FontSize="20"
-                                   HorizontalAlignment="Left"
-                                   VerticalAlignment="Top"
-                                   Margin="10, 20, 0, 0"
-                                   TextWrapping="Wrap"/>
-                    </Grid>
+            <!--Bond-->
+            <Grid Grid.Row="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="35*"/>
+                    <ColumnDefinition Width="65*"/>
+                </Grid.ColumnDefinitions>
 
-                    <!--Value-->
-                    <components:ConciergeTextBoxBackground Grid.Column="1">
-                        <ScrollViewer VerticalScrollBarVisibility="Auto">
-                            <components:ConciergeTextBox 
-                                x:Name="NotesTextBox"
-                                VerticalAlignment="Stretch"
-                                FontSize="13"
-                                TextWrapping="Wrap"/>
-                        </ScrollViewer>
-                    </components:ConciergeTextBoxBackground>
+                <!--Title-->
+                <Grid Grid.Column="0">
+                    <TextBlock
+                        Text="Bond:"
+                        Foreground="White"
+                        FontSize="25"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        Margin="10, 20, 0, 0"
+                        TextWrapping="Wrap"/>
                 </Grid>
 
+                <!--Value-->
+                <components:ConciergeTextBoxBackground Grid.Column="1">
+                    <ScrollViewer VerticalScrollBarVisibility="Auto">
+                        <components:ConciergeTextBox 
+                            x:Name="BondTextBox"
+                            VerticalAlignment="Stretch"
+                            FontSize="14"
+                            TextWrapping="Wrap"/>
+                    </ScrollViewer>
+                </components:ConciergeTextBoxBackground>
+            </Grid>
+
+            <!--Flaw-->
+            <Grid Grid.Row="4">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="35*"/>
+                    <ColumnDefinition Width="65*"/>
+                </Grid.ColumnDefinitions>
+
+                <!--Title-->
+                <Grid Grid.Column="0">
+                    <TextBlock
+                        Text="Flaw:"
+                        Foreground="White"
+                        FontSize="25"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        Margin="10, 20, 0, 0"
+                        TextWrapping="Wrap"/>
+                </Grid>
+
+                <!--Value-->
+                <components:ConciergeTextBoxBackground Grid.Column="1">
+                    <ScrollViewer VerticalScrollBarVisibility="Auto">
+                        <components:ConciergeTextBox 
+                            x:Name="FlawTextBox"
+                            VerticalAlignment="Stretch"
+                            FontSize="14"
+                            TextWrapping="Wrap"/>
+                    </ScrollViewer>
+                </components:ConciergeTextBoxBackground>
+            </Grid>
+
+            <!--Background-->
+            <Grid Grid.Row="5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="35*"/>
+                    <ColumnDefinition Width="65*"/>
+                </Grid.ColumnDefinitions>
+
+                <!--Title-->
+                <Grid Grid.Column="0">
+                    <TextBlock
+                        Text="Background:"
+                        Foreground="White"
+                        FontSize="25"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        Margin="10, 20, 0, 0"
+                        TextWrapping="Wrap"/>
+                </Grid>
+
+                <!--Value-->
+                <components:ConciergeTextBoxBackground Grid.Column="1">
+                    <ScrollViewer VerticalScrollBarVisibility="Auto">
+                        <components:ConciergeTextBox 
+                            x:Name="BackgroundTextBox"
+                            VerticalAlignment="Stretch"
+                            FontSize="14"
+                            TextWrapping="Wrap"/>
+                    </ScrollViewer>
+                </components:ConciergeTextBoxBackground>
+            </Grid>
+
+            <!--Notes-->
+            <Grid Grid.Row="6">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="35*"/>
+                    <ColumnDefinition Width="65*"/>
+                </Grid.ColumnDefinitions>
+
+                <!--Title-->
+                <Grid Grid.Column="0">
+                    <TextBlock
+                        Text="Notes:"
+                        Foreground="White"
+                        FontSize="25"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        Margin="10, 20, 0, 0"
+                        TextWrapping="Wrap"/>
+                </Grid>
+
+                <!--Value-->
+                <components:ConciergeTextBoxBackground Grid.Column="1">
+                    <ScrollViewer VerticalScrollBarVisibility="Auto">
+                        <components:ConciergeTextBox 
+                            x:Name="NotesTextBox"
+                            VerticalAlignment="Stretch"
+                            FontSize="14"
+                            TextWrapping="Wrap"/>
+                    </ScrollViewer>
+                </components:ConciergeTextBoxBackground>
             </Grid>
         </Grid>
 

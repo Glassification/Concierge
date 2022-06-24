@@ -33,6 +33,7 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
             this.TypeComboBox.ItemsSource = Enum.GetValues(typeof(WeaponTypes)).Cast<WeaponTypes>();
             this.AbilityComboBox.ItemsSource = Enum.GetValues(typeof(Abilities)).Cast<Abilities>();
             this.DamageTypeComboBox.ItemsSource = Enum.GetValues(typeof(DamageTypes)).Cast<DamageTypes>();
+            this.CoinTypeComboBox.ItemsSource = Enum.GetValues(typeof(CoinType)).Cast<CoinType>();
             this.ConciergePage = ConciergePage.None;
             this.Weapons = new List<Weapon>();
             this.SelectedAttack = new Weapon();
@@ -130,6 +131,8 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
             this.IgnoreWeightCheckBox.IsChecked = weapon.IgnoreWeight;
             this.NotesTextBox.Text = weapon.Note;
             this.WeightUnits.Text = $"({UnitFormat.WeightPostfix})";
+            this.ValueUpDown.Value = weapon.Value;
+            this.CoinTypeComboBox.Text = weapon.CoinType.ToString();
 
             this.IgnoreWeightCheckBox.UpdatedValue();
             this.ProficencyOverrideCheckBox.UpdatedValue();
@@ -152,6 +155,8 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
             this.IgnoreWeightCheckBox.IsChecked = false;
             this.NotesTextBox.Text = string.Empty;
             this.WeightUnits.Text = $"({UnitFormat.WeightPostfix})";
+            this.ValueUpDown.Value = 0;
+            this.CoinTypeComboBox.Text = CoinType.Copper.ToString();
 
             this.IgnoreWeightCheckBox.UpdatedValue();
             this.ProficencyOverrideCheckBox.UpdatedValue();
@@ -172,6 +177,8 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
             weapon.ProficiencyOverride = this.ProficencyOverrideCheckBox.IsChecked ?? false;
             weapon.IgnoreWeight = this.IgnoreWeightCheckBox.IsChecked ?? false;
             weapon.Note = this.NotesTextBox.Text;
+            weapon.Value = this.ValueUpDown.Value;
+            weapon.CoinType = (CoinType)Enum.Parse(typeof(CoinType), this.CoinTypeComboBox.Text);
 
             Program.UndoRedoService.AddCommand(new EditCommand<Weapon>(weapon, oldItem, this.ConciergePage));
         }
@@ -193,6 +200,8 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
                 ProficiencyOverride = this.ProficencyOverrideCheckBox.IsChecked ?? false,
                 IgnoreWeight = this.IgnoreWeightCheckBox.IsChecked ?? false,
                 Note = this.NotesTextBox.Text,
+                Value = this.ValueUpDown.Value,
+                CoinType = (CoinType)Enum.Parse(typeof(CoinType), this.CoinTypeComboBox.Text),
             };
 
             Program.UndoRedoService.AddCommand(new AddCommand<Weapon>(this.Weapons, weapon, this.ConciergePage));

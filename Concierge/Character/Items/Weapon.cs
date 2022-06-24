@@ -28,6 +28,8 @@ namespace Concierge.Character.Items
 
         public Abilities Ability { get; set; }
 
+        public CoinType CoinType { get; set; }
+
         public string Damage { get; set; }
 
         public DamageTypes DamageType { get; set; }
@@ -45,6 +47,8 @@ namespace Concierge.Character.Items
         public bool ProficiencyOverride { get; set; }
 
         public string Range { get; set; }
+
+        public int Value { get; set; }
 
         public WeaponTypes WeaponType { get; set; }
 
@@ -93,6 +97,8 @@ namespace Concierge.Character.Items
                 ProficiencyOverride = this.ProficiencyOverride,
                 IgnoreWeight = this.IgnoreWeight,
                 Id = this.Id,
+                CoinType = this.CoinType,
+                Value = this.Value,
             };
         }
 

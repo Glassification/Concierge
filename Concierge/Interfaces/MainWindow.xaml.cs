@@ -8,7 +8,6 @@ namespace Concierge.Interfaces
     using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Input;
-    using System.Windows.Media;
     using System.Windows.Navigation;
 
     using Concierge.Character.Characteristics;
@@ -101,6 +100,7 @@ namespace Concierge.Interfaces
             this.ButtonOpenMenu.ResetScaling();
 
             this.commandLineService.ReadCommandLineArgs();
+            this.SetActiveFileText();
             this.DrawAll();
 
             Program.Logger.Info($"{nameof(MainWindow)} loaded.");
@@ -160,6 +160,7 @@ namespace Concierge.Interfaces
             this.animatedTimedTextWorkerService.StartWorker("Generated New Character Sheet!");
             this.ResetCharacterSheet();
             this.DrawAll();
+            this.SetActiveFileText();
 
             Program.Unmodify();
         }
@@ -178,6 +179,7 @@ namespace Concierge.Interfaces
             this.ResetCharacterSheet();
             this.characterCreationWizard.Start();
             this.DrawAll();
+            this.SetActiveFileText();
         }
 
         public void OpenSettings()
@@ -225,18 +227,21 @@ namespace Concierge.Interfaces
             this.animatedTimedTextWorkerService.StartWorker($"Opened '{ccsFile.AbsolutePath}'");
             this.NotesPage.ClearTextBox();
             this.DrawAll();
+            this.SetActiveFileText();
         }
 
         public void SaveCharacterSheet()
         {
             Program.Logger.Info($"Save character sheet.");
             this.Save(Program.CcsFile.AbsolutePath.IsNullOrWhiteSpace());
+            this.SetActiveFileText();
         }
 
         public void SaveCharacterSheetAs()
         {
             Program.Logger.Info($"Save as character sheet.");
             this.Save(true);
+            this.SetActiveFileText();
         }
 
         public void DrawAll()
@@ -469,6 +474,11 @@ namespace Concierge.Interfaces
                 this.MaximizeButton.ToolTip = "Restore Down";
                 this.BorderThickness = new Thickness(0);
             }
+        }
+
+        private void SetActiveFileText()
+        {
+            this.ActiveFileNameTextBlock.Text = Program.CcsFile.FileName;
         }
 
         private void MainWindow_ContentRendered(object sender, EventArgs e)

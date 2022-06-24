@@ -178,7 +178,7 @@
                     <!--Title-->
                     <Grid Grid.Column="0">
                         <TextBlock 
-                            Text="Misc Damage:"
+                            Text="Misc Bonus:"
                             Foreground="White"
                             FontSize="20"
                             TextWrapping="Wrap"
@@ -260,7 +260,8 @@
                 <Grid Grid.Row="1">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="35*"/>
-                        <ColumnDefinition Width="65*"/>
+                        <ColumnDefinition Width="35*"/>
+                        <ColumnDefinition Width="30*"/>
                     </Grid.ColumnDefinitions>
 
                     <!--Title-->
@@ -285,6 +286,54 @@
                     <!--Value-->
                     <Grid Grid.Column="1">
                         <controls:DoubleUpDown x:Name="WeightUpDown"  Increment="0.5"/>
+                    </Grid>
+
+                    <Grid Grid.Column="2" Margin="20,0,0,0">
+                        <TextBlock 
+                            Text="Ignore:"
+                            Foreground="White"
+                            FontSize="20"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Margin="-20, 0, 0, 0"/>
+                        <components:ConciergeCheckBox
+                            x:Name="IgnoreWeightCheckBox"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Center"
+                            Margin="0,0,10,0"
+                            Style="{StaticResource CheckBoxStyle}"/>
+                    </Grid>
+                </Grid>
+
+                <!--Value-->
+                <Grid Grid.Row="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="35*"/>
+                        <ColumnDefinition Width="30*"/>
+                        <ColumnDefinition Width="35*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!--Title-->
+                    <Grid Grid.Column="0">
+                        <TextBlock
+                        Text="Value:"
+                        Foreground="White"
+                        FontSize="20"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        Margin="10, 0, 0, 0"/>
+                    </Grid>
+
+                    <!--Value-->
+                    <Grid Grid.Column="1">
+                        <controls:IntegerUpDown x:Name="ValueUpDown" Increment="1"/>
+                    </Grid>
+
+                    <Grid Grid.Column="2">
+                        <components:ConciergeComboBox
+                        Style="{StaticResource ComboBoxStyle}"
+                        IsEditable="False"
+                        x:Name="CoinTypeComboBox"/>
                     </Grid>
                 </Grid>
 
@@ -314,32 +363,6 @@
                     </Grid>
                 </Grid>
 
-                <Grid Grid.Row="2">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="35*"/>
-                        <ColumnDefinition Width="65*"/>
-                    </Grid.ColumnDefinitions>
-
-                    <!--Title-->
-                    <Grid Grid.Column="0">
-                        <TextBlock 
-                            Text="Ignore Weight:"
-                            Foreground="White"
-                            FontSize="20"
-                            TextWrapping="Wrap"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Center"
-                            Margin="10, 0, 0, 0"/>
-                    </Grid>
-
-                    <!--Value-->
-                    <Grid Grid.Column="1" Margin="20,0,0,0">
-                        <components:ConciergeCheckBox
-                            x:Name="IgnoreWeightCheckBox"
-                            Style="{StaticResource CheckBoxStyle}"/>
-                    </Grid>
-                </Grid>
-                
                 <!--Notes-->
                 <Grid Grid.Row="4">
                     <Grid.ColumnDefinitions>

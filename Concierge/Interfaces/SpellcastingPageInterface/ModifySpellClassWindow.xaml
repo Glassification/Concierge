@@ -12,7 +12,7 @@
     mc:Ignorable="d"
     Title="Modify Spellcasting Class"
     Height="355"
-    Width="650"
+    Width="800"
     Style="{StaticResource WindowXboxDasboardStyle}">
 
     <Grid>
@@ -72,7 +72,7 @@
                     <Grid Grid.Column="0">
                         <TextBlock Text="Name:"
                                    Foreground="White"
-                                   FontSize="20"
+                                   FontSize="19"
                                    HorizontalAlignment="Left"
                                    VerticalAlignment="Center"
                                    Margin="10, 0, 0, 0"/>
@@ -98,7 +98,7 @@
                     <Grid Grid.Column="0">
                         <TextBlock Text="Ability:"
                                    Foreground="White"
-                                   FontSize="20"
+                                   FontSize="19"
                                    HorizontalAlignment="Left"
                                    VerticalAlignment="Center"
                                    Margin="10, 0, 0, 0"/>
@@ -126,7 +126,7 @@
                         <TextBlock 
                             Text="Attack Bonus:"
                             Foreground="White"
-                            FontSize="20"
+                            FontSize="19"
                             TextWrapping="Wrap"
                             HorizontalAlignment="Left"
                             VerticalAlignment="Center"
@@ -157,7 +157,7 @@
                     <Grid Grid.Column="0">
                         <TextBlock Text="Spell Save:"
                                    Foreground="White"
-                                   FontSize="20"
+                                   FontSize="19"
                                    TextWrapping="Wrap"
                                    HorizontalAlignment="Left"
                                    VerticalAlignment="Center"
@@ -199,7 +199,7 @@
                     <Grid Grid.Column="0">
                         <TextBlock Text="Level:"
                                    Foreground="White"
-                                   FontSize="20"
+                                   FontSize="19"
                                    HorizontalAlignment="Left"
                                    VerticalAlignment="Center"
                                    Margin="10, 0, 0, 0"/>
@@ -222,7 +222,7 @@
                     <Grid Grid.Column="0">
                         <TextBlock Text="Known Cantrips:"
                                    Foreground="White"
-                                   FontSize="20"
+                                   FontSize="19"
                                    TextWrapping="Wrap"
                                    HorizontalAlignment="Left"
                                    VerticalAlignment="Center"
@@ -246,7 +246,7 @@
                     <Grid Grid.Column="0">
                         <TextBlock Text="Known Spells:"
                                    Foreground="White"
-                                   FontSize="20"
+                                   FontSize="19"
                                    TextWrapping="Wrap"
                                    HorizontalAlignment="Left"
                                    VerticalAlignment="Center"
@@ -270,7 +270,7 @@
                     <Grid Grid.Column="0">
                         <TextBlock Text="Prepared Spells:"
                                    Foreground="White"
-                                   FontSize="20"
+                                   FontSize="19"
                                    TextWrapping="Wrap"
                                    HorizontalAlignment="Left"
                                    VerticalAlignment="Center"

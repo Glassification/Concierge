@@ -54,7 +54,7 @@ namespace Concierge.Utility.Utilities
                 CoinType.Electrum => value / 2.0,
                 CoinType.Gold => value,
                 CoinType.Platinum => value * 10.0,
-                _ => 0,
+                _ => throw new NotImplementedException(),
             };
         }
     }

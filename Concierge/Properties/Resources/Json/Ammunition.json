@@ -3,40 +3,50 @@
     "Name": "Arrows",
     "Quantity": 20,
     "Bonus": "",
-    "DamageType": 0,
+    "DamageType": 8,
     "Used": 0,
+    "Value": 5,
+    "CoinType": 0,
     "Id": "00000000-0000-0000-0000-000000000000"
   },
   {
     "Name": "Blowgun needles",
     "Quantity": 50,
     "Bonus": "",
-    "DamageType": 0,
+    "DamageType": 8,
     "Used": 0,
+    "Value": 2,
+    "CoinType": 0,
     "Id": "00000000-0000-0000-0000-000000000000"
   },
   {
     "Name": "Crossbow bolts",
     "Quantity": 20,
     "Bonus": "",
-    "DamageType": 0,
+    "DamageType": 8,
     "Used": 0,
+    "Value": 5,
+    "CoinType": 0,
     "Id": "00000000-0000-0000-0000-000000000000"
   },
   {
     "Name": "Shuriken",
     "Quantity": 10,
     "Bonus": "",
-    "DamageType": 0,
+    "DamageType": 8,
     "Used": 0,
+    "Value": 1,
+    "CoinType": 1,
     "Id": "00000000-0000-0000-0000-000000000000"
   },
   {
     "Name": "Sling bullets",
     "Quantity": 20,
     "Bonus": "",
-    "DamageType": 0,
+    "DamageType": 2,
     "Used": 0,
+    "Value": 1,
+    "CoinType": 0,
     "Id": "00000000-0000-0000-0000-000000000000"
   }
 ]

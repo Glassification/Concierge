@@ -179,7 +179,7 @@ namespace Concierge.Interfaces.InventoryPageInterface
             this.DescriptionTextBox.Text = string.Empty;
             this.CategoryComboBox.Text = Constants.ItemCategories[0];
             this.ValueUpDown.Value = 0;
-            this.CoinTypeComboBox.Text = CoinType.None.ToString();
+            this.CoinTypeComboBox.Text = CoinType.Copper.ToString();
 
             this.AttunedCheckBox.UpdatedValue();
             this.IgnoreWeightCheckBox.UpdatedValue();

@@ -22,7 +22,7 @@
                     .Select(m => m.Value.Trim(new char[] { ',', '"' }))
                     .ToList();
                 var value = tokens[2].Equals("--") ? 0 : int.Parse(tokens[2].Split(' ')[0]);
-                var coinType = value == 0 ? CoinType.None : GetCoinType(tokens[2].Split(' ')[1]);
+                var coinType = value == 0 ? CoinType.Copper : GetCoinType(tokens[2].Split(' ')[1]);
                 var weight = tokens[3].Equals("--") ? 0 : double.Parse(tokens[3].Split(' ')[0]);
 
                 items.Add(new Inventory()
@@ -50,11 +50,11 @@
             return str switch
             {
                 "cp" => CoinType.Copper,
-                "sp" => CoinType.Copper,
-                "ep" => CoinType.Copper,
-                "gp" => CoinType.Copper,
-                "pp" => CoinType.Copper,
-                _ => CoinType.None,
+                "sp" => CoinType.Silver,
+                "ep" => CoinType.Electrum,
+                "gp" => CoinType.Gold,
+                "pp" => CoinType.Platinum,
+                _ => CoinType.Copper,
             };
         }
     }

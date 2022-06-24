@@ -12,7 +12,7 @@ namespace Concierge.Primitives
     using Concierge.Utility.Units;
     using Concierge.Utility.Units.Enums;
 
-    public class UnitDouble : ICopyable<UnitDouble>
+    public class UnitDouble : ICopyable<UnitDouble>, IComparable
     {
         public UnitDouble(double value, UnitTypes unitType, Measurements measurement)
         {
@@ -59,6 +59,16 @@ namespace Concierge.Primitives
         public UnitDouble DeepCopy()
         {
             return new UnitDouble(this.Value, this.UnitType, this.Measurement);
+        }
+
+        public int CompareTo(object? other)
+        {
+            if (other is not UnitDouble unit)
+            {
+                return -1;
+            }
+
+            return this.Value < unit.Value ? -1 : this.Value == unit.Value ? 0 : 1;
         }
 
         private void ConciergeDouble_UnitsChanged(object sender, EventArgs e)

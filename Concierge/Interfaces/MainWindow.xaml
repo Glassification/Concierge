@@ -493,12 +493,13 @@
                     Grid.Row="0"/>
                 <Grid Grid.Row="1" x:Name="MessageBar" Margin="0,1,0,0">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="76*"/>
+                        <ColumnDefinition Width="15*"/>
+                        <ColumnDefinition Width="61*"/>
                         <ColumnDefinition Width="12*"/>
                         <ColumnDefinition Width="12*"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock
-                        x:Name="AlertMessageTextBlock"
+                        x:Name="ActiveFileNameTextBlock"
                         Grid.Column="0"
                         Foreground="White"
                         FontSize="15"
@@ -506,8 +507,16 @@
                         HorizontalAlignment="Left"
                         Margin="10,0,0,0"/>
                     <TextBlock
-                        x:Name="CurrentPageNameTextBlock"
+                        x:Name="AlertMessageTextBlock"
                         Grid.Column="1"
+                        Foreground="White"
+                        FontSize="15"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Left"
+                        Margin="10,0,0,0"/>
+                    <TextBlock
+                        x:Name="CurrentPageNameTextBlock"
+                        Grid.Column="2"
                         Text="Overview Page"
                         Foreground="White"
                         FontSize="15"
@@ -516,7 +525,7 @@
                         Margin="0,0,10,0"/>
                     <TextBlock
                         x:Name="DateTimeTextBlock"
-                        Grid.Column="2"
+                        Grid.Column="3"
                         Text="6:28pm 2022-03-11"
                         Foreground="White"
                         FontSize="15"
