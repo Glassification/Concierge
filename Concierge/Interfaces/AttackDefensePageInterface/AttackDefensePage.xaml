@@ -82,7 +82,7 @@
                             Foreground="PaleGreen"
                             ToolTip="Add Status Effects"
                             Click="AddEffectsButton_Click">
-                            <materialDesign:PackIcon Kind="Add" Width="25" Height="25"/>
+                            <materialDesign:PackIcon Kind="AddBox" Width="25" Height="25"/>
                         </components:ConciergeDesignButton>
                         <components:ConciergeDesignButton 
                             Style="{StaticResource ConciergeDesignButtonStyle}" 
@@ -92,7 +92,7 @@
                             Foreground="Khaki"
                             ToolTip="Edit Status Effects"
                             Click="EditEffectsButton_Click">
-                            <materialDesign:PackIcon Kind="PlaylistEdit" Width="25" Height="25"/>
+                            <materialDesign:PackIcon Kind="TextBoxEdit" Width="25" Height="25"/>
                         </components:ConciergeDesignButton>
                     </StackPanel>
                 </Grid>
@@ -101,7 +101,6 @@
                     <components:ConciergeDataGrid 
                         x:Name="StatusEffectsDataGrid"
                         VerticalScrollBarVisibility="Hidden"
-                        Background="#001233"
                         Style="{DynamicResource StandardDataGridStyle}"
                         Sorted="StatusEffectsDataGrid_Sorted"
                         HeadersVisibility="None"
@@ -175,7 +174,7 @@
                         Foreground="PaleGreen"
                         Click="ButtonAdd_Click"
                         ToolTip="Add New Item">
-                        <materialDesign:PackIcon Kind="Add" Width="25" Height="25"/>
+                        <materialDesign:PackIcon Kind="AddBox" Width="25" Height="25"/>
                     </components:ConciergeDesignButton>
                     <components:ConciergeDesignButton 
                         Style="{StaticResource ConciergeDesignButtonStyle}" 
@@ -184,7 +183,7 @@
                         Foreground="Khaki"
                         Click="ButtonEdit_Click"
                         ToolTip="Edit Selected Item">
-                        <materialDesign:PackIcon Kind="PlaylistEdit" Width="25" Height="25"/>
+                        <materialDesign:PackIcon Kind="TextBoxEdit" Width="25" Height="25"/>
                     </components:ConciergeDesignButton>
                     <components:ConciergeDesignButton 
                         Style="{StaticResource ConciergeDesignButtonStyle}" 
@@ -211,7 +210,6 @@
             <Grid Grid.Row="1" Margin="3" x:Name="AmmoGrid">
                 <components:ConciergeDataGrid 
                     x:Name="AmmoDataGrid"
-                    Background="#001233"
                     Margin="0, 5, 0, 0"
                     Height="200"
                     Style="{DynamicResource StandardDataGridStyle}"
@@ -251,7 +249,6 @@
             <Grid Grid.Row="2" Margin="3" x:Name="WeaponGrid">
                 <components:ConciergeDataGrid 
                     x:Name="WeaponDataGrid"
-                    Background="#001233"
                     Margin="0, 5, 0, 0"
                     Style="{DynamicResource StandardDataGridStyle}"
                     SelectionChanged="WeaponDataGrid_SelectionChanged"

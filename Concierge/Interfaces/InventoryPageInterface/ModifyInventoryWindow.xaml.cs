@@ -181,6 +181,10 @@ namespace Concierge.Interfaces.InventoryPageInterface
             this.ValueUpDown.Value = 0;
             this.CoinTypeComboBox.Text = CoinType.Copper.ToString();
 
+            this.AttunedText.Opacity = 0.5;
+            this.AttunedCheckBox.Opacity = 0.5;
+            this.AttunedCheckBox.IsEnabled = false;
+
             this.AttunedCheckBox.UpdatedValue();
             this.IgnoreWeightCheckBox.UpdatedValue();
         }

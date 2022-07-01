@@ -15,9 +15,9 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="08*"/>
+            <RowDefinition Height="07*"/>
             <RowDefinition Height="23*" />
-            <RowDefinition Height="69*" />
+            <RowDefinition Height="70*" />
         </Grid.RowDefinitions>
 
         <!--Header-->
@@ -74,7 +74,7 @@
                     Foreground="PaleGreen"
                     Click="ButtonAdd_Click"
                     ToolTip="Add New Item">
-                    <materialDesign:PackIcon Kind="Add" Width="25" Height="25"/>
+                    <materialDesign:PackIcon Kind="AddBox" Width="25" Height="25"/>
                 </components:ConciergeDesignButton>
                 <components:ConciergeDesignButton 
                     Style="{StaticResource ConciergeDesignButtonStyle}" 
@@ -83,7 +83,7 @@
                     Foreground="Khaki"
                     Click="ButtonEdit_Click"
                     ToolTip="Edit Selected Item">
-                    <materialDesign:PackIcon Kind="PlaylistEdit" Width="25" Height="25"/>
+                    <materialDesign:PackIcon Kind="TextBoxEdit" Width="25" Height="25"/>
                 </components:ConciergeDesignButton>
                 <components:ConciergeDesignButton 
                     Style="{StaticResource ConciergeDesignButtonStyle}" 
@@ -111,7 +111,6 @@
                   Margin="3, 3, 3, 3">
                 <components:ConciergeDataGrid 
                     x:Name="MagicClassDataGrid"
-                    Background="#001233"
                     MaxHeight="{Binding Path=AbilitiesHeight}"
                     Style="{DynamicResource SpellcastingDataGridStyle}"
                     SelectionChanged="MagicClassDataGrid_SelectionChanged"
@@ -204,7 +203,6 @@
             </Grid.ColumnDefinitions>
             <components:ConciergeDataGrid 
                 x:Name="SpellListDataGrid"
-                Background="#001233"
                 MaxHeight="{Binding Path=AbilitiesHeight}"
                 Style="{DynamicResource SpellcastingDataGridStyle}"
                 SelectionChanged="SpellListDataGrid_SelectionChanged" Grid.ColumnSpan="2" Margin="0,0,0,0.4"

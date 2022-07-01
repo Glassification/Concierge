@@ -10,7 +10,7 @@
       Title="EquipedItemsPage"
       Style="{StaticResource PageXboxDasboardStyle}">
 
-    <Grid Margin="3">
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="7*"/>
             <RowDefinition Height="93*"/>
@@ -67,7 +67,7 @@
                     Foreground="PaleGreen"
                     Click="ButtonAdd_Click"
                     ToolTip="Add New Item">
-                    <materialDesign:PackIcon Kind="Add" Width="25" Height="25"/>
+                    <materialDesign:PackIcon Kind="AddBox" Width="25" Height="25"/>
                 </components:ConciergeDesignButton>
                 <components:ConciergeDesignButton 
                     Style="{StaticResource ConciergeDesignButtonStyle}" 
@@ -76,7 +76,7 @@
                     Foreground="Khaki"
                     Click="ButtonEdit_Click"
                     ToolTip="Edit Selected Item">
-                    <materialDesign:PackIcon Kind="PlaylistEdit" Width="25" Height="25"/>
+                    <materialDesign:PackIcon Kind="TextBoxEdit" Width="25" Height="25"/>
                 </components:ConciergeDesignButton>
                 <components:ConciergeDesignButton 
                     Style="{StaticResource ConciergeDesignButtonStyle}" 
@@ -124,7 +124,7 @@
                         Foreground="Khaki"
                         Click="ImageEditButton_Click"
                         ToolTip="Edit Character Image">
-                        <materialDesign:PackIcon Kind="PlaylistEdit" Width="25" Height="25"/>
+                        <materialDesign:PackIcon Kind="TextBoxEdit" Width="25" Height="25"/>
                     </components:ConciergeDesignButton>
 
                     <Grid 
@@ -165,7 +165,6 @@
                             x:Name="TorsoEquipmentDataGrid"
                             Tag="Torso"
                             VerticalScrollBarVisibility="Hidden"
-                            Background="#001233"
                             Style="{DynamicResource StandardDataGridStyle}"
                             Margin="1"
                             SelectionChanged="EquipmentDataGrid_SelectionChanged"
@@ -194,7 +193,6 @@
                             x:Name="LegsEquipmentDataGrid"
                             Tag="Legs"
                             VerticalScrollBarVisibility="Hidden"
-                            Background="#001233"
                             Style="{DynamicResource StandardDataGridStyle}"
                             Margin="1"
                             SelectionChanged="EquipmentDataGrid_SelectionChanged"
@@ -235,7 +233,6 @@
                             x:Name="HeadEquipmentDataGrid"
                             Tag="Head"
                             VerticalScrollBarVisibility="Hidden"
-                            Background="#001233"
                             Style="{DynamicResource StandardDataGridStyle}"
                             Margin="1"
                             SelectionChanged="EquipmentDataGrid_SelectionChanged"
@@ -264,7 +261,6 @@
                             x:Name="HandsEquipmentDataGrid"
                             Tag="Hands"
                             VerticalScrollBarVisibility="Hidden"
-                            Background="#001233"
                             Style="{DynamicResource StandardDataGridStyle}"
                             Margin="1"
                             SelectionChanged="EquipmentDataGrid_SelectionChanged"
@@ -293,7 +289,6 @@
                             x:Name="FeetEquipmentDataGrid"
                             Tag="Feet"
                             VerticalScrollBarVisibility="Hidden"
-                            Background="#001233"
                             Style="{DynamicResource StandardDataGridStyle}"
                             Margin="1"
                             SelectionChanged="EquipmentDataGrid_SelectionChanged"

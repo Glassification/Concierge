@@ -147,7 +147,7 @@
                                 Foreground="Khaki"
                                 Click="EditPropertiesButton_Click"
                                 ToolTip="Edit Details">
-                                <materialDesign:PackIcon Kind="PlaylistEdit" Width="25" Height="25"/>
+                                <materialDesign:PackIcon Kind="TextBoxEdit" Width="25" Height="25"/>
                             </components:ConciergeDesignButton>
 
                             <components:ConciergeTextBlock 
@@ -357,7 +357,7 @@
                         Foreground="PaleGreen"
                         Click="ButtonAdd_Click"
                         ToolTip="Add New Item">
-                        <materialDesign:PackIcon Kind="Add" Width="25" Height="25"/>
+                        <materialDesign:PackIcon Kind="AddBox" Width="25" Height="25"/>
                     </components:ConciergeDesignButton>
                     <components:ConciergeDesignButton 
                         Style="{StaticResource ConciergeDesignButtonStyle}" 
@@ -366,7 +366,7 @@
                         Foreground="Khaki"
                         Click="ButtonEdit_Click"
                         ToolTip="Edit Selected Item">
-                        <materialDesign:PackIcon Kind="PlaylistEdit" Width="25" Height="25"/>
+                        <materialDesign:PackIcon Kind="TextBoxEdit" Width="25" Height="25"/>
                     </components:ConciergeDesignButton>
                     <components:ConciergeDesignButton 
                         Style="{StaticResource ConciergeDesignButtonStyle}" 
@@ -383,7 +383,6 @@
             <Grid Grid.Row="1">
                 <components:ConciergeDataGrid 
                     x:Name="WeaponDataGrid"
-                    Background="#001233"
                     Margin="5, 5, 5, 5"
                     Style="{DynamicResource CompanionDataGridStyle}"
                     Sorted="WeaponDataGrid_Sorted">

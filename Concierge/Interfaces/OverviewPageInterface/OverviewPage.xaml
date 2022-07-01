@@ -112,7 +112,7 @@
                             Foreground="Khaki"
                             Click="EditSensesButton_Click"
                             ToolTip="Edit Senses">
-                            <materialDesign:PackIcon Kind="PlaylistEdit" Width="25" Height="25"/>
+                            <materialDesign:PackIcon Kind="TextBoxEdit" Width="25" Height="25"/>
                         </components:ConciergeDesignButton>
                         <components:ConciergeTextBlock
                             Text="Initiative"
@@ -266,7 +266,7 @@
                                     Foreground="Khaki"
                                     Click="SavingThrowCheckButton_Click"
                                     ToolTip="Edit Saving Throw Checks">
-                                    <materialDesign:PackIcon Kind="PlaylistEdit" Width="25" Height="25"/>
+                                    <materialDesign:PackIcon Kind="TextBoxEdit" Width="25" Height="25"/>
                                 </components:ConciergeDesignButton>
                                 <components:ConciergeTextBlock Text="Saving Throws"
                                    Foreground="White"
@@ -392,7 +392,7 @@
                                     Foreground="Khaki"
                                     Click="SkillCheckButton_Click"
                                     ToolTip="Edit Skill Checks">
-                                    <materialDesign:PackIcon Kind="PlaylistEdit" Width="25" Height="25"/>
+                                    <materialDesign:PackIcon Kind="TextBoxEdit" Width="25" Height="25"/>
                                 </components:ConciergeDesignButton>
                                 <components:ConciergeTextBlock
                                     Text="Skills"
@@ -617,12 +617,13 @@
 
                             <!--Header-->
                             <Grid Grid.Row="0" Margin="3, 3, 3, 0" Background="#000917">
-                                <components:ConciergeTextBlock Text="Armor Class"
-                                           Foreground="White"
-                                           FontSize="35"
-                                           FontWeight="Bold"
-                                           HorizontalAlignment="Center"
-                                           VerticalAlignment="Center"/>
+                                <components:ConciergeTextBlock
+                                    Text="Armor Class"
+                                    Foreground="White"
+                                    FontSize="35"
+                                    FontWeight="Bold"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"/>
                             </Grid>
 
                             <!--AC-->

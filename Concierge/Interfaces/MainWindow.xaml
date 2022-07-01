@@ -486,7 +486,7 @@
                     <RowDefinition Height="1*" />
                     <RowDefinition Height="20" />
                 </Grid.RowDefinitions>
-                
+
                 <Frame
                     Name="FrameContent"
                     ContentRendered="MainWindow_ContentRendered"
@@ -552,7 +552,5 @@
                 </StackPanel>
             </Grid>
         </Grid>
-
-        
     </Grid>
 </Window>

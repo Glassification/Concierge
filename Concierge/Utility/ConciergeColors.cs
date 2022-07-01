@@ -69,6 +69,12 @@ namespace Concierge.Utility
 
             TitleMenuBrush = ColorUtility.GenerateGradientBrush(Color.FromArgb(255, 0, 0, 8), Color.FromArgb(255, 0, 0, 14), new Point(0, 0), new Point(0, 1));
             TitleMenuBrush.Freeze();
+
+            DataGridViewBackground = ColorUtility.GenerateGradientBrush(ProficiencyLightBlue, Color.FromArgb(255, 0, 21, 62), new Point(0, 0), new Point(0, 1));
+            DataGridViewBackground.Freeze();
+
+            TreeViewBackground = ColorUtility.GenerateGradientBrush(ProficiencyLightBlue, Color.FromArgb(255, 51, 65, 92), new Point(0, 0), new Point(0, 1));
+            TreeViewBackground.Freeze();
         }
 
         public static SolidColorBrush ControlText { get; }
@@ -82,6 +88,10 @@ namespace Concierge.Utility
         public static LinearGradientBrush ProficiencyBrush { get; }
 
         public static LinearGradientBrush TitleMenuBrush { get; }
+
+        public static LinearGradientBrush DataGridViewBackground { get; }
+
+        public static LinearGradientBrush TreeViewBackground { get; }
 
         public static SolidColorBrush TotalDarkBoxBrush { get; }
 

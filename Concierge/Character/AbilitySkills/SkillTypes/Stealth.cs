@@ -27,7 +27,8 @@ namespace Concierge.Character.AbilitySkills.SkillTypes
                 Program.CcsFile.Character.Vitality.Conditions.Fatigued.Equals("Four") ||
                 Program.CcsFile.Character.Vitality.Conditions.Fatigued.Equals("Five") ||
                 Program.CcsFile.Character.Vitality.Conditions.Frightened.Equals("Frightened") ||
-                Program.CcsFile.Character.Vitality.Conditions.Poisoned.Equals("Poisoned")
+                Program.CcsFile.Character.Vitality.Conditions.Poisoned.Equals("Poisoned") ||
+                Program.CcsFile.Character.Armor.Stealth == ArmorStealth.Disadvantage
                 ? StatusChecks.Disadvantage
                 : Program.CcsFile.Character.Vitality.Conditions.Blinded.Equals("Blinded")
                     ? StatusChecks.Fail

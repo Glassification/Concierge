@@ -25,7 +25,7 @@
                 Visibility="{Binding Path=EnableEdit,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=UserControl}}"
                 Click="EditAttributesButton_Click"
                 ToolTip="Edit Attributes">
-                <materialDesign:PackIcon Kind="PlaylistEdit" Width="25" Height="25"/>
+                <materialDesign:PackIcon Kind="TextBoxEdit" Width="25" Height="25"/>
             </components:ConciergeDesignButton>
             <components:ConciergeTextBlock
                 x:Name="AttributeTitle"

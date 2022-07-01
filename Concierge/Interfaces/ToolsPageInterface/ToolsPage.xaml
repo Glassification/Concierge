@@ -451,7 +451,6 @@
                       Margin="3, 0, 3, 3">
                     <components:ConciergeDataGrid 
                         x:Name="DivideLootDataGrid"
-                        Background="#001233"
                         MaxHeight="{Binding Path=AbilitiesHeight}"
                         Style="{DynamicResource ToolsDataGridStyle}"
                         SelectionChanged="DivideLootDataGrid_SelectionChanged">

@@ -10,9 +10,9 @@
       Title="InventoryPage"
       Style="{StaticResource PageXboxDasboardStyle}">
 
-    <Grid Background="#000917" Margin="3">
+    <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="7*"/>
+            <RowDefinition Height="07*"/>
             <RowDefinition Height="93*"/>
         </Grid.RowDefinitions>
 
@@ -67,7 +67,7 @@
                     Foreground="PaleGreen"
                     Click="ButtonAdd_Click"
                     ToolTip="Add New Item">
-                    <materialDesign:PackIcon Kind="Add" Width="25" Height="25"/>
+                    <materialDesign:PackIcon Kind="AddBox" Width="25" Height="25"/>
                 </components:ConciergeDesignButton>
                 <components:ConciergeDesignButton 
                     Style="{StaticResource ConciergeDesignButtonStyle}" 
@@ -76,7 +76,7 @@
                     Foreground="Khaki"
                     Click="ButtonEdit_Click"
                     ToolTip="Edit Selected Item">
-                    <materialDesign:PackIcon Kind="PlaylistEdit" Width="25" Height="25"/>
+                    <materialDesign:PackIcon Kind="TextBoxEdit" Width="25" Height="25"/>
                 </components:ConciergeDesignButton>
                 <components:ConciergeDesignButton 
                     Style="{StaticResource ConciergeDesignButtonStyle}" 
@@ -91,10 +91,9 @@
         </Grid>
 
         <!--Inventory-->
-        <Grid Grid.Row="1">
+        <Grid Grid.Row="1" Margin="3">
             <components:ConciergeDataGrid 
                 x:Name="InventoryDataGrid"
-                Background="#001233"
                 Style="{DynamicResource StandardDataGridStyle}"
                 Sorted="InventoryDataGrid_Sorted">
                 <DataGrid.Columns>

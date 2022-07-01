@@ -43,6 +43,7 @@ namespace Concierge.Interfaces.NotesPageInterface
             this.FontFamilyList.ItemsSource = Fonts.SystemFontFamilies.OrderBy(f => f.Source);
             this.FontSizeList.ItemsSource = new List<double>() { 8, 9, 10, 11, 12, 14, 16, 18, 20, 22, 24, 26, 28, 36, 48, 72 };
             this.NotesTextBox.UndoLimit = MaxUndoQueue;
+            this.NotesTreeView.Background = ConciergeColors.TreeViewBackground;
 
             this.SetDefaultFontStyle();
             this.ClearTextBox();

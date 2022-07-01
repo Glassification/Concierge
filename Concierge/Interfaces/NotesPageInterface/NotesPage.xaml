@@ -70,7 +70,7 @@
                     Foreground="PaleGreen"
                     ToolTip="Add New Item"
                     Click="ButtonAdd_Click">
-                    <materialDesign:PackIcon Kind="Add" Width="25" Height="25"/>
+                    <materialDesign:PackIcon Kind="AddBox" Width="25" Height="25"/>
                 </components:ConciergeDesignButton>
                 <components:ConciergeDesignButton 
                     Style="{StaticResource ConciergeDesignButtonStyle}" 
@@ -79,7 +79,7 @@
                     Foreground="Khaki"
                     ToolTip="Edit Selected Item"
                     Click="ButtonEdit_Click">
-                    <materialDesign:PackIcon Kind="PlaylistEdit" Width="25" Height="25"/>
+                    <materialDesign:PackIcon Kind="TextBoxEdit" Width="25" Height="25"/>
                 </components:ConciergeDesignButton>
                 <components:ConciergeDesignButton 
                     Style="{StaticResource ConciergeDesignButtonStyle}" 

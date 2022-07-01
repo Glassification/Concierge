@@ -33,7 +33,7 @@
                     Foreground="Khaki"
                     ToolTip="Edit Spell Slots"
                     Click="LevelEditButton_Click">
-                    <materialDesign:PackIcon Kind="PlaylistEdit" Width="25" Height="25"/>
+                    <materialDesign:PackIcon Kind="TextBoxEdit" Width="25" Height="25"/>
                 </components:ConciergeDesignButton>
                 <components:ConciergeTextBlock 
                     Text="Spell Slots"

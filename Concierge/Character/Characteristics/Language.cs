@@ -7,6 +7,7 @@ namespace Concierge.Character.Characteristics
     using System;
 
     using Concierge.Utility;
+    using Concierge.Utility.Extensions;
     using Newtonsoft.Json;
 
     public class Language : ICopyable<Language>
@@ -28,7 +29,7 @@ namespace Concierge.Character.Characteristics
         public Guid Id { get; init; }
 
         [JsonIgnore]
-        public string Description => $"{this.Name} ({this.Script}), Spoken by: {this.Speakers}";
+        public string Description => $"{this.Name}{(IsValid(this.Script) ? $" ({this.Script})" : string.Empty)}, Spoken by: {this.Speakers}";
 
         public Language DeepCopy()
         {
@@ -44,6 +45,11 @@ namespace Concierge.Character.Characteristics
         public override string ToString()
         {
             return this.Name;
+        }
+
+        private static bool IsValid(string value)
+        {
+            return !value.IsNullOrWhiteSpace() && !value.Equals("-") && !value.Equals("--");
         }
     }
 }

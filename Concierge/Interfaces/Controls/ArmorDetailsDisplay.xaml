@@ -33,7 +33,7 @@
                 ToolTip="Edit Armor Details"
                 Click="EditDetailsButton_Click"
                 HorizontalAlignment="Right">
-                <materialDesign:PackIcon Kind="PlaylistEdit" Width="25" Height="25"/>
+                <materialDesign:PackIcon Kind="TextBoxEdit" Width="25" Height="25"/>
             </components:ConciergeDesignButton>
         </Grid>
 

@@ -62,6 +62,11 @@ namespace Concierge.Character.Statuses
             }
         }
 
+        public static string FormatGoldValue(double value)
+        {
+            return $"¤ {string.Format("{0:0.00}", value)}";
+        }
+
         public Wealth DeepCopy()
         {
             return new Wealth()
