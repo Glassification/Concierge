@@ -55,18 +55,22 @@ namespace Concierge.Services
             return this.imageOpenFileDialog.ShowDialog() ?? false ? this.imageOpenFileDialog.FileName : string.Empty;
         }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822:Mark members as static", Justification = "Keep consistent with Save As.")]
         public void Save(CcsFile ccsFile)
         {
             CharacterReadWriter.Write(ccsFile);
         }
 
-        public void SaveAs(CcsFile ccsFile)
+        public bool SaveAs(CcsFile ccsFile)
         {
             if (this.saveFileDialog.ShowDialog() ?? false)
             {
                 ccsFile.AbsolutePath = this.saveFileDialog.FileName;
                 CharacterReadWriter.Write(ccsFile);
+                return true;
             }
+
+            return false;
         }
     }
 }

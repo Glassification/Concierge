@@ -4,9 +4,11 @@
 
 namespace Concierge.Primitives
 {
+    using System;
+
     using Concierge.Utility;
 
-    public class HsvColor : ICopyable<HsvColor>
+    public class HsvColor : ICopyable<HsvColor>, IComparable
     {
         public HsvColor(double hue, double saturation, double value)
         {
@@ -56,6 +58,16 @@ namespace Concierge.Primitives
         public HsvColor DeepCopy()
         {
             return new HsvColor(this.Hue, this.Saturation, this.Value);
+        }
+
+        public int CompareTo(object? obj)
+        {
+            if (obj is not HsvColor color)
+            {
+                return -1;
+            }
+
+            return this.Value < color.Value ? -1 : this.Value == color.Value ? 0 : 1;
         }
     }
 }

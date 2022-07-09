@@ -277,6 +277,26 @@
                                 </Button>
                                 <Separator Foreground="White"/>
                                 <Button 
+                                    x:Name="LevelUpButton"
+                                    Click="LevelUpButton_Click"
+                                    Style="{StaticResource ConciergePopupButtonStyle}"
+                                    HorizontalAlignment="Stretch">
+                                    <StackPanel Orientation="Horizontal">
+                                        <materialDesign:PackIcon 
+                                            Kind="AccountStar" 
+                                            Foreground="#06d6a0" 
+                                            Height="25" 
+                                            Width="25" 
+                                            Margin="0 10"/>
+                                        <TextBlock 
+                                            Text="Level Up..." 
+                                            Foreground="White" 
+                                            VerticalAlignment="Center" 
+                                            HorizontalAlignment="Left" 
+                                            Margin="20 10"/>
+                                    </StackPanel>
+                                </Button>
+                                <Button 
                                     x:Name="ButtonLongRest" 
                                     Click="ButtonLongRest_Click"
                                     Style="{StaticResource ConciergePopupButtonStyle}"
@@ -494,8 +514,8 @@
                 <Grid Grid.Row="1" x:Name="MessageBar" Margin="0,1,0,0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="15*"/>
-                        <ColumnDefinition Width="61*"/>
-                        <ColumnDefinition Width="12*"/>
+                        <ColumnDefinition Width="58*"/>
+                        <ColumnDefinition Width="15*"/>
                         <ColumnDefinition Width="12*"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock

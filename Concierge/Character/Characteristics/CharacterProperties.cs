@@ -19,9 +19,9 @@ namespace Concierge.Character.Characteristics
             this.Background = string.Empty;
             this.Alignment = string.Empty;
             this.Experience = string.Empty;
-            this.Class1 = new CharacterClass();
-            this.Class2 = new CharacterClass();
-            this.Class3 = new CharacterClass();
+            this.Class1 = new CharacterClass(1);
+            this.Class2 = new CharacterClass(2);
+            this.Class3 = new CharacterClass(3);
         }
 
         public string Name { get; set; }
@@ -72,6 +72,16 @@ namespace Concierge.Character.Characteristics
                 Class1 = this.Class1.DeepCopy(),
                 Class2 = this.Class2.DeepCopy(),
                 Class3 = this.Class3.DeepCopy(),
+            };
+        }
+
+        public CharacterClass GetClassByNumber(int num)
+        {
+            return num switch
+            {
+                2 => this.Class2,
+                3 => this.Class3,
+                _ => this.Class1,
             };
         }
     }

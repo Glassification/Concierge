@@ -21,6 +21,7 @@ namespace Concierge.Interfaces
     using Concierge.Interfaces.InventoryPageInterface;
     using Concierge.Interfaces.NotesPageInterface;
     using Concierge.Interfaces.OverviewPageInterface;
+    using Concierge.Interfaces.PlayerHandbookPageInterface;
     using Concierge.Interfaces.SpellcastingPageInterface;
     using Concierge.Interfaces.ToolsPageInterface;
     using Concierge.Interfaces.UtilityInterface;
@@ -55,6 +56,7 @@ namespace Concierge.Interfaces
         public readonly ToolsPage ToolsPage = new ();
         public readonly EquippedItemsPage EquippedItemsPage = new ();
         public readonly CompanionPage CompanionPage = new ();
+        public readonly PlayerHandbookPage PlayerHandbookPage = new ();
 
         private readonly FileAccessService fileAccessService = new ();
         private readonly CommandLineService commandLineService = new ();
@@ -201,7 +203,6 @@ namespace Concierge.Interfaces
             Program.Logger.Info($"Opening character sheet.");
 
             var result = this.CheckSaveBeforeAction("opening");
-
             if (result == ConciergeWindowResult.Cancel)
             {
                 return;
@@ -209,7 +210,6 @@ namespace Concierge.Interfaces
 
             Program.UndoRedoService.Clear();
             var ccsFile = this.fileAccessService.OpenCcs();
-
             if (ccsFile == null)
             {
                 return;
@@ -230,18 +230,20 @@ namespace Concierge.Interfaces
             this.SetActiveFileText();
         }
 
-        public void SaveCharacterSheet()
+        public int SaveCharacterSheet()
         {
             Program.Logger.Info($"Save character sheet.");
             this.Save(Program.CcsFile.AbsolutePath.IsNullOrWhiteSpace());
             this.SetActiveFileText();
+            return 0;
         }
 
-        public void SaveCharacterSheetAs()
+        public int SaveCharacterSheetAs()
         {
             Program.Logger.Info($"Save as character sheet.");
             this.Save(true);
             this.SetActiveFileText();
+            return 0;
         }
 
         public void DrawAll()
@@ -270,6 +272,14 @@ namespace Concierge.Interfaces
             Program.Modify();
 
             this.animatedTimedTextWorkerService.StartWorker("Long Rest Complete!   HP and Spell Slots Replenished.");
+            this.DrawAll();
+        }
+
+        public void LevelUp()
+        {
+            Program.Logger.Info($"Level up.");
+            ConciergeWindowService.ShowWindow(typeof(LevelUpWindow));
+            Program.Modify();
             this.DrawAll();
         }
 
@@ -333,7 +343,7 @@ namespace Concierge.Interfaces
         {
             base.OnClosed(e);
 
-            Program.Logger.Info("Closing Concierge.");
+            Program.Logger.Stop();
             Application.Current.Shutdown();
         }
 
@@ -370,8 +380,10 @@ namespace Concierge.Interfaces
 
             if (saveAs)
             {
-                this.fileAccessService.SaveAs(Program.CcsFile);
-                this.animatedTimedTextWorkerService.StartWorker($"Save As '{Program.CcsFile.AbsolutePath}'");
+                if (this.fileAccessService.SaveAs(Program.CcsFile))
+                {
+                    this.animatedTimedTextWorkerService.StartWorker($"Save As '{Program.CcsFile.AbsolutePath}'");
+                }
             }
             else
             {
@@ -407,9 +419,10 @@ namespace Concierge.Interfaces
             items.Add(service.GenerateListViewItem(this.EquippedItemsPage, "Equipped Items", PackIconKind.Person));
             items.Add(service.GenerateListViewItem(this.InventoryPage, "Inventory", PackIconKind.Backpack));
             items.Add(service.GenerateListViewItem(this.SpellcastingPage, "Spellcasting", PackIconKind.Magic));
-            items.Add(service.GenerateListViewItem(this.CompanionPage, "Companion", PackIconKind.PersonAdd));
+            items.Add(service.GenerateListViewItem(this.CompanionPage, "Companion", PackIconKind.AccountSupervisor));
             items.Add(service.GenerateListViewItem(this.ToolsPage, "Tools", PackIconKind.Tools));
             items.Add(service.GenerateListViewItem(this.NotesPage, "Notes", PackIconKind.Pen));
+            items.Add(service.GenerateListViewItem(this.PlayerHandbookPage, "Players Handbook", PackIconKind.BookOpen));
         }
 
         private ConciergeWindowResult CheckSaveBeforeAction(string action)
@@ -538,15 +551,10 @@ namespace Concierge.Interfaces
                     this.CloseWindow();
                     break;
                 case Key.S:
-                    if (IsShift)
-                    {
-                        this.SaveCharacterSheetAs();
-                    }
-                    else
-                    {
-                        this.SaveCharacterSheet();
-                    }
-
+                    _ = IsShift ? this.SaveCharacterSheetAs() : this.SaveCharacterSheet();
+                    break;
+                case Key.U:
+                    this.LevelUp();
                     break;
                 case Key.OemMinus:
                     this.WindowState = WindowState.Minimized;
@@ -693,6 +701,7 @@ namespace Concierge.Interfaces
 
         private void ButtonMinimize_Click(object sender, RoutedEventArgs e)
         {
+            ConciergeSound.TapNavigation();
             this.WindowState = WindowState.Minimized;
         }
 
@@ -715,11 +724,13 @@ namespace Concierge.Interfaces
 
         private void MaximizeButton_Click(object sender, RoutedEventArgs e)
         {
+            ConciergeSound.TapNavigation();
             this.ChangeWindowState();
         }
 
         private void IconButton_Click(object sender, RoutedEventArgs e)
         {
+            ConciergeSound.TapNavigation();
             ConciergeWindowService.ShowEdit<CharacterImage>(
                 Program.CcsFile.Character.CharacterIcon,
                 typeof(ModifyCharacterImageWindow),
@@ -731,6 +742,7 @@ namespace Concierge.Interfaces
 
         private void SearchButton_Click(object sender, RoutedEventArgs e)
         {
+            ConciergeSound.TapNavigation();
             this.Search();
         }
 
@@ -761,12 +773,14 @@ namespace Concierge.Interfaces
 
         private void ButtonRedo_Click(object sender, RoutedEventArgs e)
         {
+            ConciergeSound.TapNavigation();
             this.Redo();
             this.IgnoreSecondPress = true;
         }
 
         private void ButtonUndo_Click(object sender, RoutedEventArgs e)
         {
+            ConciergeSound.TapNavigation();
             this.Undo();
             this.IgnoreSecondPress = true;
         }
@@ -788,6 +802,7 @@ namespace Concierge.Interfaces
 
         private void HelpButton_Click(object sender, RoutedEventArgs e)
         {
+            ConciergeSound.TapNavigation();
             ConciergeWindowService.ShowWindow(typeof(HelpWindow));
             this.IgnoreSecondPress = true;
         }
@@ -809,6 +824,13 @@ namespace Concierge.Interfaces
             {
                 this.AlertMessageTextBlock.Text = updatedText;
             }
+        }
+
+        private void LevelUpButton_Click(object sender, RoutedEventArgs e)
+        {
+            ConciergeSound.TapNavigation();
+            this.LevelUp();
+            this.IgnoreSecondPress = true;
         }
     }
 }

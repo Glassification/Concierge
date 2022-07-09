@@ -17,12 +17,18 @@ namespace Concierge.Character
         {
             this.level = 0;
             this.Name = string.Empty;
-            this.Id = Guid.NewGuid();
+            this.ClassNumber = 0;
+        }
+
+        public CharacterClass(int classNumber)
+            : this()
+        {
+            this.ClassNumber = classNumber;
         }
 
         public string Name { get; set; }
 
-        public Guid Id { get; init; }
+        public int ClassNumber { get; set; }
 
         public int Level
         {
@@ -31,7 +37,7 @@ namespace Concierge.Character
             {
                 if (value is <= Constants.MaxLevel and >= 0)
                 {
-                    if (CharacterUtility.ValidateClassLevel(Program.CcsFile.Character, this.Id, value))
+                    if (CharacterUtility.ValidateClassLevel(Program.CcsFile.Character, this.ClassNumber, value))
                     {
                         this.level = value;
                     }
@@ -45,7 +51,7 @@ namespace Concierge.Character
             {
                 Name = this.Name,
                 Level = this.Level,
-                Id = this.Id,
+                ClassNumber = this.ClassNumber,
             };
         }
     }

@@ -4,6 +4,7 @@
 
 namespace Concierge.Interfaces.NotesPageInterface
 {
+    using System.Collections.Generic;
     using System.Windows;
     using System.Windows.Controls;
 
@@ -18,17 +19,17 @@ namespace Concierge.Interfaces.NotesPageInterface
     /// </summary>
     public partial class ModifyNotesWindow : ConciergeWindow
     {
-        private const string NewChapter = "--New Chapter--";
-
         public ModifyNotesWindow()
         {
             this.InitializeComponent();
             this.ConciergePage = ConciergePage.None;
         }
 
-        public override string HeaderText => $"{(this.Editing ? "Edit" : "Add")} Chapter/Page";
+        public override string HeaderText => $"{(this.Editing ? "Edit" : "Add")} {this.TreeViewButtonType}";
 
         private bool Editing { get; set; }
+
+        private TreeViewButtonType TreeViewButtonType { get; set; }
 
         private Chapter? CurrentChapter { get; set; }
 
@@ -36,10 +37,20 @@ namespace Concierge.Interfaces.NotesPageInterface
 
         public override bool ShowAdd<T>(T item)
         {
-            this.HeaderTextBlock.Text = this.HeaderText;
-            this.ChapterComboBox.SelectedIndex = 0;
+            if (item is Chapter chapter)
+            {
+                this.TreeViewButtonType = TreeViewButtonType.Document;
+                this.CurrentChapter = chapter;
+            }
+            else
+            {
+                this.TreeViewButtonType = TreeViewButtonType.Chapter;
+                this.CurrentChapter = null;
+            }
 
-            this.SetupWindow(false);
+            this.Editing = false;
+            this.HeaderTextBlock.Text = this.HeaderText;
+
             this.ShowConciergeWindow();
 
             return false;
@@ -47,6 +58,7 @@ namespace Concierge.Interfaces.NotesPageInterface
 
         public override void ShowEdit<T>(T note)
         {
+            this.Editing = true;
             if (note is Chapter chapter)
             {
                 this.EditChapter(chapter);
@@ -65,60 +77,24 @@ namespace Concierge.Interfaces.NotesPageInterface
 
         private void EditChapter(Chapter chapter)
         {
-            this.SetupWindow(true);
-
-            this.HeaderTextBlock.Text = "Edit Chapter";
-            this.ChapterComboBox.Text = chapter.Name;
+            this.TreeViewButtonType = TreeViewButtonType.Chapter;
+            this.HeaderTextBlock.Text = this.HeaderText;
             this.DocumentTextBox.Text = chapter.Name;
             this.CurrentChapter = chapter;
             this.CurrentDocument = null;
-            this.NameTextBlock.Text = "Chapter Name:";
 
             this.ShowConciergeWindow();
         }
 
         private void EditDocument(Document document)
         {
-            this.SetupWindow(true);
-
-            this.HeaderTextBlock.Text = "Edit Page";
-            this.ChapterComboBox.Text = Program.CcsFile.Character.GetChapterByDocumentId(document.Id).Name;
+            this.TreeViewButtonType = TreeViewButtonType.Document;
+            this.HeaderTextBlock.Text = this.HeaderText;
             this.DocumentTextBox.Text = document.Name;
             this.CurrentChapter = null;
             this.CurrentDocument = document;
-            this.NameTextBlock.Text = "Page Name:";
 
             this.ShowConciergeWindow();
-        }
-
-        private void SetupWindow(bool isEdit)
-        {
-            this.Editing = isEdit;
-            this.ClearFields();
-            this.GenerateChapterComboBox();
-            this.ChapterComboBox.IsEnabled = !isEdit;
-            this.ChapterComboBox.Opacity = this.ChapterComboBox.IsEnabled ? 1 : 0.5;
-            this.ChapterLabel.Opacity = this.ChapterComboBox.IsEnabled ? 1 : 0.5;
-        }
-
-        private void GenerateChapterComboBox()
-        {
-            this.ChapterComboBox.Items.Clear();
-            this.ChapterComboBox.Items.Add(new Chapter(NewChapter)
-            {
-                IsNewChapterPlaceholder = true,
-            });
-
-            foreach (var chapter in Program.CcsFile.Character.Chapters)
-            {
-                this.ChapterComboBox.Items.Add(chapter);
-            }
-        }
-
-        private void ClearFields()
-        {
-            this.ChapterComboBox.Text = string.Empty;
-            this.DocumentTextBox.Text = string.Empty;
         }
 
         private void UpdateNote()
@@ -139,12 +115,7 @@ namespace Concierge.Interfaces.NotesPageInterface
 
         private void ToNote()
         {
-            if (this.ChapterComboBox.SelectedItem is not Chapter chapter)
-            {
-                return;
-            }
-
-            if (chapter.IsNewChapterPlaceholder)
+            if (this.TreeViewButtonType == TreeViewButtonType.Chapter)
             {
                 var newChapter = new Chapter(this.DocumentTextBox.Text);
                 Program.CcsFile.Character.Chapters.Add(newChapter);
@@ -153,15 +124,14 @@ namespace Concierge.Interfaces.NotesPageInterface
             else
             {
                 var newDocument = new Document(this.DocumentTextBox.Text);
-                chapter.Documents.Add(newDocument);
-                Program.UndoRedoService.AddCommand(new AddCommand<Document>(chapter.Documents, newDocument, this.ConciergePage));
+                this.CurrentChapter?.Documents.Add(newDocument);
+                Program.UndoRedoService.AddCommand(new AddCommand<Document>(this.CurrentChapter?.Documents ?? new List<Document>(), newDocument, this.ConciergePage));
             }
         }
 
         private void OkApplyChanges()
         {
-            if ((this.ChapterComboBox.SelectedItem as Chapter) == null ||
-                this.DocumentTextBox.Text.IsNullOrWhiteSpace())
+            if (this.DocumentTextBox.Text.IsNullOrWhiteSpace())
             {
                 return;
             }
@@ -191,21 +161,7 @@ namespace Concierge.Interfaces.NotesPageInterface
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
             this.OkApplyChanges();
-
-            if (!this.Editing)
-            {
-                if (this.ChapterComboBox.Text.Equals(NewChapter) && !this.DocumentTextBox.Text.IsNullOrWhiteSpace())
-                {
-                    var chapterName = this.DocumentTextBox.Text;
-                    this.ClearFields();
-                    this.GenerateChapterComboBox();
-                    this.ChapterComboBox.Text = chapterName;
-                }
-                else
-                {
-                    this.DocumentTextBox.Text = string.Empty;
-                }
-            }
+            this.DocumentTextBox.Text = string.Empty;
 
             this.InvokeApplyChanges();
         }
@@ -213,12 +169,6 @@ namespace Concierge.Interfaces.NotesPageInterface
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
             this.CloseConciergeWindow();
-        }
-
-        private void ChapterComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            var chapter = this.ChapterComboBox.SelectedItem as Chapter;
-            this.NameTextBlock.Text = (chapter?.IsNewChapterPlaceholder ?? true) ? "Chapter Name:" : "Page Name:";
         }
     }
 }

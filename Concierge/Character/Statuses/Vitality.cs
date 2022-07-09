@@ -5,7 +5,7 @@
 namespace Concierge.Character.Statuses
 {
     using System;
-
+    using Concierge.Character.Enums;
     using Concierge.Utility;
     using Newtonsoft.Json;
 
@@ -97,6 +97,25 @@ namespace Concierge.Character.Statuses
                 Conditions = this.Conditions.DeepCopy(),
                 DeathSavingThrows = this.DeathSavingThrows.DeepCopy(),
             };
+        }
+
+        public void AddHitDie(HitDie hitDie)
+        {
+            switch (hitDie)
+            {
+                case HitDie.D6:
+                    this.HitDice.TotalD6++;
+                    break;
+                case HitDie.D8:
+                    this.HitDice.TotalD8++;
+                    break;
+                case HitDie.D10:
+                    this.HitDice.TotalD10++;
+                    break;
+                case HitDie.D12:
+                    this.HitDice.TotalD12++;
+                    break;
+            }
         }
 
         private static int RegainHitDie(int spent)

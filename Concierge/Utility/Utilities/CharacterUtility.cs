@@ -8,6 +8,8 @@ namespace Concierge.Utility.Utilities
 
     using Concierge.Character;
     using Concierge.Character.Enums;
+    using Concierge.Utility.Dtos;
+    using Concierge.Utility.Helpers;
 
     public static class CharacterUtility
     {
@@ -33,12 +35,12 @@ namespace Concierge.Utility.Utilities
             };
         }
 
-        public static bool ValidateClassLevel(ConciergeCharacter character, Guid id, int newValue)
+        public static bool ValidateClassLevel(ConciergeCharacter character, int number, int newValue)
         {
             var totalLevel =
-                (character.Properties.Class1.Id.Equals(id) ? 0 : character.Properties.Class1.Level) +
-                (character.Properties.Class2.Id.Equals(id) ? 0 : character.Properties.Class2.Level) +
-                (character.Properties.Class3.Id.Equals(id) ? 0 : character.Properties.Class3.Level);
+                (character.Properties.Class1.ClassNumber == number ? 0 : character.Properties.Class1.Level) +
+                (character.Properties.Class2.ClassNumber == number ? 0 : character.Properties.Class2.Level) +
+                (character.Properties.Class3.ClassNumber == number ? 0 : character.Properties.Class3.Level);
 
             totalLevel += newValue;
 
@@ -55,6 +57,50 @@ namespace Concierge.Utility.Utilities
                 CoinType.Gold => value,
                 CoinType.Platinum => value * 10.0,
                 _ => throw new NotImplementedException(),
+            };
+        }
+
+        public static HitDie GetHitDice(string className)
+        {
+            switch (className)
+            {
+                case "Sorcerer":
+                case "Wizard":
+                default:
+                    return HitDie.D6;
+                case "Artificer":
+                case "Bard":
+                case "Cleric":
+                case "Druid":
+                case "Gunslinger":
+                case "Monk":
+                case "Rogue":
+                case "Warlock":
+                    return HitDie.D8;
+                case "Blood Hunter":
+                case "Fighter":
+                case "Paladin":
+                case "Ranger":
+                    return HitDie.D10;
+                case "Barbarian":
+                    return HitDie.D12;
+            }
+        }
+
+        public static SpellSlotDto GetSpellSlotIncrease(string className, int level)
+        {
+            return className switch
+            {
+                "Bard" => SpellSlotMapper.GetBardSpellSlotIncrease(level),
+                "Cleric" => SpellSlotMapper.GetClericSpellSlotIncrease(level),
+                "Druid" => SpellSlotMapper.GetDruidSpellSlotIncrease(level),
+                "Paladin" => SpellSlotMapper.GetPaladinSpellSlotIncrease(level),
+                "Ranger" => SpellSlotMapper.GetRangerSpellSlotIncrease(level),
+                "Rogue" => SpellSlotMapper.GetRogueSpellSlotIncrease(level),
+                "Sorcerer" => SpellSlotMapper.GetSorcererSpellSlotIncrease(level),
+                "Warlock" => SpellSlotMapper.GetWarlockSpellSlotIncrease(level),
+                "Wizard" => SpellSlotMapper.GetWizardSpellSlotIncrease(level),
+                _ => new SpellSlotDto(),
             };
         }
     }

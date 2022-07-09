@@ -69,6 +69,9 @@
     <Compile Update="Interfaces\OverviewPageInterface\ModifySkillCheckWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Interfaces\PlayerHandbookPageInterface\PlayerHandbookPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Interfaces\UtilityInterface\CustomColorWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -76,6 +79,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Interfaces\UtilityInterface\KonamiCodeWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Interfaces\UtilityInterface\LevelUpWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Interfaces\UtilityInterface\SearchWindow.xaml.cs">
@@ -203,6 +209,9 @@
     <Page Update="Interfaces\OverviewPageInterface\ModifySkillCheckWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Interfaces\PlayerHandbookPageInterface\PlayerHandbookPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Interfaces\UtilityInterface\AboutConciergeWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -216,6 +225,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Interfaces\UtilityInterface\KonamiCodeWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Interfaces\UtilityInterface\LevelUpWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Interfaces\UtilityInterface\SearchWindow.xaml">

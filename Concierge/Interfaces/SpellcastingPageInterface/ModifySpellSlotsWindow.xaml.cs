@@ -34,6 +34,7 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
             this.CancelButton.Content = buttonText;
 
             this.FillFields();
+            this.SetSpentLimit();
             this.ShowConciergeWindow();
 
             return this.Result;
@@ -48,6 +49,7 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
 
             this.SpellSlots = castItem;
             this.FillFields();
+            this.SetSpentLimit();
             this.ShowConciergeWindow();
         }
 
@@ -115,6 +117,20 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
             Program.UndoRedoService.AddCommand(new EditCommand<SpellSlots>(this.SpellSlots, oldItem, this.ConciergePage));
         }
 
+        private void SetSpentLimit()
+        {
+            this.UsedPactUpDown.Maximum = this.TotalPactUpDown.Value;
+            this.Used1UpDown.Maximum = this.Total1UpDown.Value;
+            this.Used2UpDown.Maximum = this.Total2UpDown.Value;
+            this.Used3UpDown.Maximum = this.Total3UpDown.Value;
+            this.Used4UpDown.Maximum = this.Total4UpDown.Value;
+            this.Used5UpDown.Maximum = this.Total5UpDown.Value;
+            this.Used6UpDown.Maximum = this.Total6UpDown.Value;
+            this.Used7UpDown.Maximum = this.Total7UpDown.Value;
+            this.Used8UpDown.Maximum = this.Total8UpDown.Value;
+            this.Used9UpDown.Maximum = this.Total9UpDown.Value;
+        }
+
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             this.Result = ConciergeWindowResult.Exit;
@@ -138,6 +154,11 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
         {
             this.Result = ConciergeWindowResult.Cancel;
             this.CloseConciergeWindow();
+        }
+
+        private void Total_ValueChanged(object sender, RoutedEventArgs e)
+        {
+            this.SetSpentLimit();
         }
     }
 }

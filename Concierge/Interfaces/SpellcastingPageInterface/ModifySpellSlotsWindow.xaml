@@ -279,52 +279,52 @@
                 
                 <!--Total Pact-->
                 <Grid Grid.Row="1">
-                    <controls:IntegerUpDown x:Name="TotalPactUpDown" Margin="0,0,20,0"/>
+                    <controls:IntegerUpDown x:Name="TotalPactUpDown" Margin="0,0,20,0" ValueChanged="Total_ValueChanged"/>
                 </Grid>
 
                 <!--Total 1st-->
                 <Grid Grid.Row="2">
-                    <controls:IntegerUpDown x:Name="Total1UpDown" Margin="0,0,20,0"/>
+                    <controls:IntegerUpDown x:Name="Total1UpDown" Margin="0,0,20,0" ValueChanged="Total_ValueChanged"/>
                 </Grid>
 
                 <!--Total 2nd-->
                 <Grid Grid.Row="3">
-                    <controls:IntegerUpDown x:Name="Total2UpDown" Margin="0,0,20,0"/>
+                    <controls:IntegerUpDown x:Name="Total2UpDown" Margin="0,0,20,0" ValueChanged="Total_ValueChanged"/>
                 </Grid>
 
                 <!--Total 3rd-->
                 <Grid Grid.Row="4">
-                    <controls:IntegerUpDown x:Name="Total3UpDown" Margin="0,0,20,0"/>
+                    <controls:IntegerUpDown x:Name="Total3UpDown" Margin="0,0,20,0" ValueChanged="Total_ValueChanged"/>
                 </Grid>
 
                 <!--Total 4th-->
                 <Grid Grid.Row="5">
-                    <controls:IntegerUpDown x:Name="Total4UpDown" Margin="0,0,20,0"/>
+                    <controls:IntegerUpDown x:Name="Total4UpDown" Margin="0,0,20,0" ValueChanged="Total_ValueChanged"/>
                 </Grid>
 
                 <!--Total 5th-->
                 <Grid Grid.Row="6">
-                    <controls:IntegerUpDown x:Name="Total5UpDown" Margin="0,0,20,0"/>
+                    <controls:IntegerUpDown x:Name="Total5UpDown" Margin="0,0,20,0" ValueChanged="Total_ValueChanged"/>
                 </Grid>
 
                 <!--Total 6th-->
                 <Grid Grid.Row="7">
-                    <controls:IntegerUpDown x:Name="Total6UpDown" Margin="0,0,20,0"/>
+                    <controls:IntegerUpDown x:Name="Total6UpDown" Margin="0,0,20,0" ValueChanged="Total_ValueChanged"/>
                 </Grid>
 
                 <!--Total 7th-->
                 <Grid Grid.Row="8">
-                    <controls:IntegerUpDown x:Name="Total7UpDown" Margin="0,0,20,0"/>
+                    <controls:IntegerUpDown x:Name="Total7UpDown" Margin="0,0,20,0" ValueChanged="Total_ValueChanged"/>
                 </Grid>
 
                 <!--Total 8th-->
                 <Grid Grid.Row="9">
-                    <controls:IntegerUpDown x:Name="Total8UpDown" Margin="0,0,20,0"/>
+                    <controls:IntegerUpDown x:Name="Total8UpDown" Margin="0,0,20,0" ValueChanged="Total_ValueChanged"/>
                 </Grid>
 
                 <!--Total 9th-->
                 <Grid Grid.Row="10">
-                    <controls:IntegerUpDown x:Name="Total9UpDown" Margin="0,0,20,0"/>
+                    <controls:IntegerUpDown x:Name="Total9UpDown" Margin="0,0,20,0" ValueChanged="Total_ValueChanged"/>
                 </Grid>
             </Grid>
         </Grid>

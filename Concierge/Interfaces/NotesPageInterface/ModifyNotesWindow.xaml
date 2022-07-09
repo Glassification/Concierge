@@ -11,14 +11,14 @@
     d:DataContext="{d:DesignInstance Type=viewmodels:ConciergeViewModel}"
     mc:Ignorable="d"
     Title="Modify Notes"
-    Height="235"
+    Height="175"
     Width="650"
     Style="{StaticResource WindowXboxDasboardStyle}">
 
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="45"/>
-            <RowDefinition Height="120"/>
+            <RowDefinition Height="60"/>
             <RowDefinition Height="70"/>
         </Grid.RowDefinitions>
 
@@ -49,38 +49,9 @@
         <Grid Grid.Row="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="60"/>
-                <RowDefinition Height="60"/>
             </Grid.RowDefinitions>
-
+            
             <Grid Grid.Row="0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="35*"/>
-                    <ColumnDefinition Width="65*"/>
-                </Grid.ColumnDefinitions>
-
-                <!--Title-->
-                <Grid Grid.Column="0">
-                    <TextBlock 
-                        x:Name="ChapterLabel"
-                        Text="Chapter:"
-                        Foreground="White"
-                        FontSize="20"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Top"
-                        Margin="10, 20, 0, 0"/>
-                </Grid>
-
-                <!--Value-->
-                <Grid Grid.Column="1">
-                    <components:ConciergeComboBox
-                        Style="{StaticResource ComboBoxStyle}"
-                        x:Name="ChapterComboBox"
-                        IsEditable="False"
-                        SelectionChanged="ChapterComboBox_SelectionChanged"/>
-                </Grid>
-            </Grid>
-
-            <Grid Grid.Row="1">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="35*"/>
                     <ColumnDefinition Width="65*"/>

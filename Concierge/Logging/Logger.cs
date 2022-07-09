@@ -30,9 +30,12 @@ namespace Concierge.Logging
             this.loggingThread.Start();
 
             this.IsDebug = isDebug;
+            this.IsStarted = false;
         }
 
         private bool IsDebug { get; init; }
+
+        private bool IsStarted { get; set; }
 
         public void Info(string message)
         {
@@ -78,6 +81,29 @@ namespace Concierge.Logging
         public void NewLine()
         {
             this.Log();
+        }
+
+        public void Start(string version)
+        {
+            if (this.IsStarted)
+            {
+                return;
+            }
+
+            this.NewLine();
+            this.Info($"Starting Concierge v{version}{(this.IsDebug ? " - Debug" : string.Empty)}");
+            this.IsStarted = true;
+        }
+
+        public void Stop()
+        {
+            if (!this.IsStarted)
+            {
+                return;
+            }
+
+            this.Info($"Stopping Concierge{(this.IsDebug ? " - Debug" : string.Empty)}");
+            this.IsStarted = false;
         }
 
         public override string ToString()

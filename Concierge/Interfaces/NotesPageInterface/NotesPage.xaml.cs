@@ -162,8 +162,11 @@ namespace Concierge.Interfaces.NotesPageInterface
                     treeViewChapter.Items.Add(treeViewDocument);
                 }
 
+                treeViewChapter.Items.Add(new ButtonTreeViewItem(this.AddDocumentButton_Click, chapter));
                 this.NotesTreeView.Items.Add(treeViewChapter);
             }
+
+            this.NotesTreeView.Items.Add(new ButtonTreeViewItem(this.AddChapterButton_Click, null));
 
             if (selectedItem is not null)
             {
@@ -413,7 +416,7 @@ namespace Concierge.Interfaces.NotesPageInterface
                 var chapterIndex = this.NotesTreeView.Items.IndexOf(chapterItem);
                 var index = chapterItem.Items.IndexOf(document);
 
-                if (func(index, useZero ? 0 : chapterItem.Items.Count - 1))
+                if (func(index, useZero ? 0 : chapterItem.Items.Count - 2))
                 {
                     this.SelectedDocument.Rtf = this.SaveCurrentDocument();
                     this.SwapTreeViewItem(chapterItem.Chapter.Documents, index, index + increment);
@@ -423,13 +426,16 @@ namespace Concierge.Interfaces.NotesPageInterface
                     {
                         documentIndex.IsSelected = true;
                     }
+
+                    (this.NotesTreeView.SelectedItem as TreeViewItem)?.Focus();
+                    Program.Modify();
                 }
             }
             else if (this.NotesTreeView.SelectedItem is ChapterTreeViewItem chapter)
             {
                 var index = this.NotesTreeView.Items.IndexOf(chapter);
 
-                if (func(index, useZero ? 0 : this.NotesTreeView.Items.Count - 1))
+                if (func(index, useZero ? 0 : this.NotesTreeView.Items.Count - 2))
                 {
                     this.SwapTreeViewItem(Program.CcsFile.Character.Chapters, index, index + increment);
                     var newIndex = this.NotesTreeView.Items[index + increment];
@@ -437,11 +443,11 @@ namespace Concierge.Interfaces.NotesPageInterface
                     {
                         chapterIndex.IsSelected = true;
                     }
+
+                    (this.NotesTreeView.SelectedItem as TreeViewItem)?.Focus();
+                    Program.Modify();
                 }
             }
-
-            (this.NotesTreeView.SelectedItem as TreeViewItem)?.Focus();
-            Program.Modify();
         }
 
         private void SwapTreeViewItem<T>(IList<T> list, int oldIndex, int newIndex)
@@ -486,10 +492,30 @@ namespace Concierge.Interfaces.NotesPageInterface
             this.MoveTreeViewItem(1, false, (x, y) => x < y);
         }
 
-        private void ButtonAdd_Click(object sender, RoutedEventArgs e)
+        private void AddChapterButton_Click(object sender, RoutedEventArgs e)
         {
-            var added = ConciergeWindowService.ShowAdd<string>(
-                string.Empty,
+            if (sender is not ConciergeDesignButton button)
+            {
+                return;
+            }
+
+            ConciergeWindowService.ShowAdd<Chapter?>(
+                button.Tag as Chapter,
+                typeof(ModifyNotesWindow),
+                this.Window_ApplyChanges,
+                ConciergePage.Notes);
+            this.Draw();
+        }
+
+        private void AddDocumentButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is not ConciergeDesignButton button)
+            {
+                return;
+            }
+
+            ConciergeWindowService.ShowAdd<Chapter?>(
+                button.Tag as Chapter,
                 typeof(ModifyNotesWindow),
                 this.Window_ApplyChanges,
                 ConciergePage.Notes);

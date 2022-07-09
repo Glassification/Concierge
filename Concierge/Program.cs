@@ -29,8 +29,7 @@ namespace Concierge
 #endif
 
             Logger = new LocalLogger(IsDebug);
-            Logger.NewLine();
-            Logger.Info($"Starting Concierge v{AssemblyVersion}");
+            Logger.Start(AssemblyVersion);
 
             IsTyping = false;
             ErrorService = new ErrorService(Logger);

@@ -167,7 +167,23 @@ namespace Concierge.Interfaces.DetailsPageInterface
 
         private void ColourTextBox_LostFocus(object sender, RoutedEventArgs e)
         {
-            this.UpdateColorPreviews();
+            if (sender is not ConciergeTextBox textBox)
+            {
+                return;
+            }
+
+            switch (textBox.Name)
+            {
+                case "SkinColourTextBox":
+                    this.SkinColorPreview.Background = this.SkinColourTextBox.Text.ToBrush();
+                    break;
+                case "EyeColourTextBox":
+                    this.EyeColorPreview.Background = this.EyeColourTextBox.Text.ToBrush();
+                    break;
+                case "HairColourTextBox":
+                    this.HairColorPreview.Background = this.HairColourTextBox.Text.ToBrush();
+                    break;
+            }
         }
 
         private void ColourTextBox_KeyDown(object sender, KeyEventArgs e)

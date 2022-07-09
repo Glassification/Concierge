@@ -30,6 +30,8 @@ namespace Concierge.Character.Spellcasting
 
         public int KnownSpells { get; set; }
 
+        public int SpellSlots { get; set; }
+
         public Guid Id { get; init; }
 
         [JsonIgnore]
@@ -50,6 +52,7 @@ namespace Concierge.Character.Spellcasting
                 Level = this.Level,
                 KnownCantrips = this.KnownCantrips,
                 KnownSpells = this.KnownSpells,
+                SpellSlots = this.SpellSlots,
                 Id = this.Id,
             };
         }

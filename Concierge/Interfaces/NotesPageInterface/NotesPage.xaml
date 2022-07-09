@@ -57,21 +57,13 @@
                     Click="ButtonClear_Click">
                     <materialDesign:PackIcon Kind="Cancel" Width="25" Height="25"/>
                 </components:ConciergeDesignButton>
-                <Label Height="50"
-                           Width="60"
-                           HorizontalAlignment="Center"
-                           VerticalAlignment="Center"
-                           Background="Transparent"
-                            />
-                <components:ConciergeDesignButton 
-                    Style="{StaticResource ConciergeDesignButtonStyle}" 
-                    x:Name="ButtonAdd"
+                <Label
+                    Height="50"
                     Width="60"
-                    Foreground="PaleGreen"
-                    ToolTip="Add New Item"
-                    Click="ButtonAdd_Click">
-                    <materialDesign:PackIcon Kind="AddBox" Width="25" Height="25"/>
-                </components:ConciergeDesignButton>
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Background="Transparent"
+                    />
                 <components:ConciergeDesignButton 
                     Style="{StaticResource ConciergeDesignButtonStyle}" 
                     x:Name="ButtonEdit"

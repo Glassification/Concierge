@@ -1437,16 +1437,19 @@
       "Experience": "",
       "Class1": {
         "Name": "Rogue",
+        "ClassNumber": 1,
         "Id": "55a0a82a-7e45-494a-b3ef-32481e92fc22",
         "Level": 9
       },
       "Class2": {
         "Name": "",
+        "ClassNumber": 2,
         "Id": "12b429ab-cd39-44da-8364-cfdeda8d9ee5",
         "Level": 0
       },
       "Class3": {
         "Name": "",
+        "ClassNumber": 3,
         "Id": "c6ad9ec1-236d-4703-b89c-4b530dddb054",
         "Level": 0
       }
@@ -1848,5 +1851,5 @@
     ]
   },
   "OriginalCreationDate": "Monday, 14 March 2022 08:19:44 PM",
-  "Version": "4.9.7"
+  "Version": "4.11.1"
 }

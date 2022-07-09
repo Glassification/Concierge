@@ -34,6 +34,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
             this.CancelButton.Content = buttonText;
 
             this.FillFields();
+            this.SetUsedLimit();
             this.ShowConciergeWindow();
 
             return this.Result;

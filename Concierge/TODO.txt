@@ -1,1 +1,2 @@
 ﻿Add object before/after on info log
+Level up spellcasting stats.

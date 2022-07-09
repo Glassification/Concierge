@@ -28,9 +28,7 @@ namespace Concierge.Persistence
 
         public static bool FileExistsAtLocation(string fileName, string fileLocation)
         {
-            var fullPath = Path.Combine(fileLocation, fileName);
-
-            return File.Exists(fullPath);
+            return File.Exists(Path.Combine(fileLocation, fileName));
         }
 
         public static string GetCorrectAppSettingsPath()

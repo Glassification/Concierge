@@ -79,14 +79,14 @@ namespace Concierge.Persistence.ReadWriters
 
         private static string EncodeIfNeeded(string rawJson)
         {
-            if (AppSettingsManager.StartUp.EncodeCharacterSheet)
+            if (AppSettingsManager.StartUp.EncodeCharacterSheet || !Program.IsDebug)
             {
                 Program.Logger.Info("Encoding file.");
                 var byteArray = Encoding.UTF8.GetBytes(rawJson);
                 return Convert.ToBase64String(byteArray);
             }
 
-            Program.Logger.Info("Decoded file.");
+            Program.Logger.Info("No encoding needed.");
             return rawJson;
         }
 
@@ -94,12 +94,12 @@ namespace Concierge.Persistence.ReadWriters
         {
             if (rawJson.Contains(IsJsonSearchText))
             {
-                Program.Logger.Info("File is Decoded.");
+                Program.Logger.Info("No decoding needed.");
                 return rawJson;
             }
 
             var byteArray = Convert.FromBase64String(rawJson);
-            Program.Logger.Info("File is Encoded.");
+            Program.Logger.Info("Decoding file.");
             return Encoding.UTF8.GetString(byteArray);
         }
 

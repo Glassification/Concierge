@@ -18,6 +18,7 @@ namespace Concierge.Character
     using Concierge.Character.Statuses;
     using Concierge.Commands;
     using Concierge.Configuration;
+    using Concierge.Tools.DiceRolling.Dice;
     using Concierge.Utility;
     using Concierge.Utility.Extensions;
     using Concierge.Utility.Units;
@@ -219,6 +220,28 @@ namespace Concierge.Character
                     this.Vitality.DeepCopy(),
                     this.Companion.Vitality.DeepCopy(),
                     this.SpellSlots.DeepCopy()));
+        }
+
+        public void LevelUp(HitDie hitDie, int classNumber, int bonusHp)
+        {
+            var levelClass = this.Properties.GetClassByNumber(classNumber);
+            var newHp = DiceRoll.RollDice(1, (int)hitDie).First() +
+                CharacterUtility.CalculateBonus(this.Attributes.Constitution) +
+                bonusHp;
+
+            var oldVitality = this.Vitality.DeepCopy();
+            var oldClass = levelClass.DeepCopy();
+
+            this.Vitality.Health.MaxHealth += newHp;
+            this.Vitality.AddHitDie(hitDie);
+            levelClass.Level++;
+
+            Program.UndoRedoService.AddCommand(
+                new LevelUpCommand(
+                    oldVitality,
+                    this.Vitality.DeepCopy(),
+                    oldClass,
+                    levelClass.DeepCopy()));
         }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0075:Simplify conditional expression", Justification = "Increase readability.")]

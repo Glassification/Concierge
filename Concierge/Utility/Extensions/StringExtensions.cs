@@ -6,6 +6,7 @@ namespace Concierge.Utility.Extensions
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel;
     using System.Linq;
     using System.Text.RegularExpressions;
     using System.Windows.Media;
@@ -169,21 +170,7 @@ namespace Concierge.Utility.Extensions
 
         public static Brush ToBrush(this string colorName)
         {
-            try
-            {
-                colorName = colorName.Strip(" ").Strip("-").Strip(".").Strip("'");
-                if (AppSettingsManager.CustomColors.ContainsKey(colorName))
-                {
-                    colorName = AppSettingsManager.CustomColors[colorName];
-                }
-
-                return new SolidColorBrush((Color)ColorConverter.ConvertFromString(colorName));
-            }
-            catch (Exception ex)
-            {
-                Program.Logger.Error(ex);
-                return Brushes.Transparent;
-            }
+            return new SolidColorBrush(colorName.ToColor());
         }
 
         public static Color ToColor(this string? colorName)
@@ -196,7 +183,14 @@ namespace Concierge.Utility.Extensions
             try
             {
                 colorName = colorName.Strip(" ").Strip("-").Strip(".").Strip("'");
-                return (Color)ColorConverter.ConvertFromString(colorName);
+                if (AppSettingsManager.CustomColors.ContainsKey(colorName))
+                {
+                    colorName = AppSettingsManager.CustomColors[colorName];
+                }
+
+                var cc = TypeDescriptor.GetConverter(typeof(Color));
+
+                return (Color?)cc?.ConvertFromString(colorName) ?? Colors.Transparent;
             }
             catch (Exception ex)
             {

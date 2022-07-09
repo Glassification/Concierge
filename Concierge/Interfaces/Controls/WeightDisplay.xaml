@@ -73,7 +73,7 @@
 
                 <Grid Grid.Row="1" Background="#ffd8e4bc">
                     <components:ConciergeTextBlock 
-                        FontSize="28"
+                        FontSize="26"
                         Foreground="Black"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
@@ -100,7 +100,7 @@
 
                 <Grid Grid.Row="1" Background="#fffcd6b4">
                     <components:ConciergeTextBlock 
-                        FontSize="28"
+                        FontSize="26"
                         Foreground="Black"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
@@ -127,7 +127,7 @@
 
                 <Grid Grid.Row="1" Background="Pink">
                     <components:ConciergeTextBlock 
-                        FontSize="28"
+                        FontSize="26"
                         Foreground="Black"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"

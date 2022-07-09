@@ -16,6 +16,7 @@ namespace Concierge.Interfaces.Enums
         Companion,
         Tools,
         Notes,
+        PlayerHandbook,
         None,
     }
 }
