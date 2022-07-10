@@ -70,9 +70,9 @@ namespace Concierge.Services
         {
             stackPanel.Children.Clear();
 
-            if (character.CharacterIcon?.UseCustomImage ?? false)
+            if (character.Properties.CharacterIcon?.UseCustomImage ?? false)
             {
-                stackPanel.Children.Add(GenerateCharacterIcon(character.CharacterIcon));
+                stackPanel.Children.Add(GenerateCharacterIcon(character.Properties.CharacterIcon));
             }
 
             if (!character.Properties.Name.IsNullOrWhiteSpace())

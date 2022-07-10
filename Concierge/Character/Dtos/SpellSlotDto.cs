@@ -2,7 +2,7 @@
 // Copyright (c) Thomas Beckett. All rights reserved.
 // </copyright>
 
-namespace Concierge.Utility.Dtos
+namespace Concierge.Character.Dtos
 {
     public class SpellSlotDto
     {

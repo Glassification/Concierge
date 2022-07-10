@@ -7,6 +7,7 @@ namespace Concierge.Character.Spellcasting
     using System;
     using System.Linq;
 
+    using Concierge.Character.Dtos;
     using Concierge.Character.Enums;
     using Concierge.Utility;
     using Concierge.Utility.Utilities;
@@ -55,6 +56,14 @@ namespace Concierge.Character.Spellcasting
                 SpellSlots = this.SpellSlots,
                 Id = this.Id,
             };
+        }
+
+        public void LevelUp(SpellSlotDto spellSlotDto)
+        {
+            this.Level++;
+            this.KnownSpells += spellSlotDto.Known;
+            this.KnownCantrips += spellSlotDto.Cantrip;
+            this.SpellSlots += spellSlotDto.Slots;
         }
 
         public override string ToString()

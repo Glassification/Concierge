@@ -4,6 +4,7 @@
 
 namespace Concierge.Character.Spellcasting
 {
+    using Concierge.Character.Dtos;
     using Concierge.Utility;
 
     public class SpellSlots : ICopyable<SpellSlots>
@@ -103,6 +104,20 @@ namespace Concierge.Character.Spellcasting
             this.SeventhUsed = 0;
             this.EighthUsed = 0;
             this.NinethUsed = 0;
+        }
+
+        public void LevelUp(SpellSlotDto spellSlotDto)
+        {
+            this.PactTotal += spellSlotDto.Pact;
+            this.FirstTotal += spellSlotDto.First;
+            this.SecondTotal += spellSlotDto.Second;
+            this.ThirdTotal += spellSlotDto.Third;
+            this.FourthTotal += spellSlotDto.Fourth;
+            this.FifthTotal += spellSlotDto.Fifth;
+            this.SixthTotal += spellSlotDto.Sixth;
+            this.SeventhTotal += spellSlotDto.Seventh;
+            this.EighthTotal += spellSlotDto.Eighth;
+            this.NinethTotal += spellSlotDto.Nineth;
         }
     }
 }

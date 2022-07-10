@@ -5,6 +5,7 @@
 namespace Concierge.Tools.Interface
 {
     using System;
+    using System.Linq;
 
     using Concierge.Character;
     using Concierge.Interfaces;
@@ -14,9 +15,9 @@ namespace Concierge.Tools.Interface
     using Concierge.Interfaces.DetailsPageInterface;
     using Concierge.Interfaces.Enums;
     using Concierge.Interfaces.EquippedItemsPageInterface;
-    using Concierge.Interfaces.InventoryPageInterface;
     using Concierge.Interfaces.OverviewPageInterface;
     using Concierge.Interfaces.SpellcastingPageInterface;
+    using Concierge.Utility.Utilities;
 
     public class CharacterCreationWizard
     {
@@ -44,6 +45,7 @@ namespace Concierge.Tools.Interface
             }
 
             this.RunSetupSteps();
+            RunDefinitions();
             Program.UndoRedoService.Clear();
         }
 
@@ -52,6 +54,28 @@ namespace Concierge.Tools.Interface
             this.IsStopped = true;
             Program.CcsFile.Character = new ConciergeCharacter();
             Program.Unmodify();
+        }
+
+        private static void RunDefinitions()
+        {
+            var character = Program.CcsFile.Character;
+
+            if (character.Properties.Class1.Level > 0)
+            {
+                character.Proficiencies.AddRange(CharacterUtility.GetProficiencies(character.Properties.Class1.Name, false));
+            }
+
+            if (character.Properties.Class2.Level > 0)
+            {
+                character.Proficiencies.AddRange(CharacterUtility.GetProficiencies(character.Properties.Class2.Name, true));
+            }
+
+            if (character.Properties.Class3.Level > 0)
+            {
+                character.Proficiencies.AddRange(CharacterUtility.GetProficiencies(character.Properties.Class3.Name, true));
+            }
+
+            character.Proficiencies = character.Proficiencies.Distinct().ToList();
         }
 
         private void RunSetupSteps()
@@ -64,15 +88,11 @@ namespace Concierge.Tools.Interface
             this.NextSetupStep(typeof(ModifyWealthWindow), "Skip Section");
             this.NextSetupStep(typeof(ModifyAppearanceWindow), "Skip Section");
             this.NextSetupStep(typeof(ModifyPersonalityWindow), "Skip Section");
-            this.NextSetupStep(typeof(ModifyProficiencyWindow), "Continue");
             this.NextSetupStep(typeof(ModifyLanguagesWindow), "Continue");
             this.NextSetupStep(typeof(ModifyClassResourceWindow), "Continue");
             this.NextSetupStep(typeof(ModifyAbilitiesWindow), "Continue");
-            this.NextSetupStep(typeof(ModifyArmorWindow), "Skip Section");
             this.NextSetupStep(typeof(ModifyAttackWindow), "Continue");
             this.NextSetupStep(typeof(ModifyAmmoWindow), "Continue");
-            this.NextSetupStep(typeof(ModifyInventoryWindow), "Continue");
-            this.NextSetupStep(typeof(ModifyEquippedItemsWindow), "Continue");
             this.NextSetupStep(typeof(ModifyStatusEffectsWindow), "Continue");
             this.NextSetupStep(typeof(ModifyCharacterImageWindow), "Skip Section");
             this.NextSetupStep(typeof(ModifySpellClassWindow), "Continue");

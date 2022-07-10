@@ -5,11 +5,13 @@
 namespace Concierge.Utility.Utilities
 {
     using System;
+    using System.Collections.Generic;
 
     using Concierge.Character;
+    using Concierge.Character.Characteristics;
+    using Concierge.Character.Definitions;
+    using Concierge.Character.Dtos;
     using Concierge.Character.Enums;
-    using Concierge.Utility.Dtos;
-    using Concierge.Utility.Helpers;
 
     public static class CharacterUtility
     {
@@ -91,16 +93,36 @@ namespace Concierge.Utility.Utilities
         {
             return className switch
             {
-                "Bard" => SpellSlotMapper.GetBardSpellSlotIncrease(level),
-                "Cleric" => SpellSlotMapper.GetClericSpellSlotIncrease(level),
-                "Druid" => SpellSlotMapper.GetDruidSpellSlotIncrease(level),
-                "Paladin" => SpellSlotMapper.GetPaladinSpellSlotIncrease(level),
-                "Ranger" => SpellSlotMapper.GetRangerSpellSlotIncrease(level),
-                "Rogue" => SpellSlotMapper.GetRogueSpellSlotIncrease(level),
-                "Sorcerer" => SpellSlotMapper.GetSorcererSpellSlotIncrease(level),
-                "Warlock" => SpellSlotMapper.GetWarlockSpellSlotIncrease(level),
-                "Wizard" => SpellSlotMapper.GetWizardSpellSlotIncrease(level),
+                "Bard" => SpellSlotDefinitions.GetBardSpellSlotIncrease(level),
+                "Cleric" => SpellSlotDefinitions.GetClericSpellSlotIncrease(level),
+                "Druid" => SpellSlotDefinitions.GetDruidSpellSlotIncrease(level),
+                "Paladin" => SpellSlotDefinitions.GetPaladinSpellSlotIncrease(level),
+                "Ranger" => SpellSlotDefinitions.GetRangerSpellSlotIncrease(level),
+                "Rogue" => SpellSlotDefinitions.GetRogueSpellSlotIncrease(level),
+                "Sorcerer" => SpellSlotDefinitions.GetSorcererSpellSlotIncrease(level),
+                "Warlock" => SpellSlotDefinitions.GetWarlockSpellSlotIncrease(level),
+                "Wizard" => SpellSlotDefinitions.GetWizardSpellSlotIncrease(level),
                 _ => new SpellSlotDto(),
+            };
+        }
+
+        public static List<Proficiency> GetProficiencies(string className, bool multiClass)
+        {
+            return className switch
+            {
+                "Barbarian" => ClassProficiencyDefinitions.GetBarbarianProficiencies(multiClass),
+                "Bard" => ClassProficiencyDefinitions.GetBardProficiencies(multiClass),
+                "Cleric" => ClassProficiencyDefinitions.GetClericProficiencies(multiClass),
+                "Druid" => ClassProficiencyDefinitions.GetDruidProficiencies(multiClass),
+                "Fighter" => ClassProficiencyDefinitions.GetFighterProficiencies(multiClass),
+                "Monk" => ClassProficiencyDefinitions.GetMonkProficiencies(multiClass),
+                "Paladin" => ClassProficiencyDefinitions.GetPaladinProficiencies(multiClass),
+                "Ranger" => ClassProficiencyDefinitions.GetRangerProficiencies(multiClass),
+                "Rogue" => ClassProficiencyDefinitions.GetRogueProficiencies(multiClass),
+                "Sorcerer" => ClassProficiencyDefinitions.GetSorcererProficiencies(multiClass),
+                "Warlock" => ClassProficiencyDefinitions.GetWarlockProficiencies(multiClass),
+                "Wizard" => ClassProficiencyDefinitions.GetWizardProficiencies(multiClass),
+                _ => new List<Proficiency>(),
             };
         }
     }

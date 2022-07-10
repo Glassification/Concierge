@@ -42,7 +42,6 @@ namespace Concierge.Interfaces.UtilityInterface
         }
 
         private static void FillClass(
-            ConciergeTextBlock classTitle,
             ConciergeTextBox className,
             ConciergeTextBoxBackground classNameBackground,
             ConciergeComboBox hitDice,
@@ -55,8 +54,6 @@ namespace Concierge.Interfaces.UtilityInterface
 
             if (characterClass.Name.IsNullOrWhiteSpace())
             {
-                classTitle.IsEnabled = false;
-                classTitle.Opacity = 0.5;
                 classNameBackground.IsEnabled = false;
                 classNameBackground.Opacity = 0.5;
                 className.IsEnabled = false;
@@ -67,6 +64,10 @@ namespace Concierge.Interfaces.UtilityInterface
                 modifier.Opacity = 0.5;
                 button.IsEnabled = false;
                 button.Opacity = 0.5;
+            }
+            else
+            {
+                button.Content = $"Level Up ({characterClass.Level + 1})";
             }
         }
 
@@ -83,7 +84,6 @@ namespace Concierge.Interfaces.UtilityInterface
             var character = Program.CcsFile.Character;
 
             FillClass(
-                this.Class1TitleTextBlock,
                 this.Class1NameTextBox,
                 this.Class1NameTextBoxBackground,
                 this.Class1DiceComboBox,
@@ -91,7 +91,6 @@ namespace Concierge.Interfaces.UtilityInterface
                 this.Class1LevelUpButton,
                 character.Properties.Class1);
             FillClass(
-                this.Class2TitleTextBlock,
                 this.Class2NameTextBox,
                 this.Class2NameTextBoxBackground,
                 this.Class2DiceComboBox,
@@ -99,7 +98,6 @@ namespace Concierge.Interfaces.UtilityInterface
                 this.Class2LevelUpButton,
                 character.Properties.Class2);
             FillClass(
-                this.Class3TitleTextBlock,
                 this.Class3NameTextBox,
                 this.Class3NameTextBoxBackground,
                 this.Class3DiceComboBox,

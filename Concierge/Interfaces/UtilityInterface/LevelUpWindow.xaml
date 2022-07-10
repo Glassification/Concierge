@@ -54,64 +54,59 @@
             <!--Header-->
             <Grid Grid.Row="0">
                 <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="30*"/>
+                    <ColumnDefinition Width="30*"/>
                     <ColumnDefinition Width="20*"/>
-                    <ColumnDefinition Width="25*"/>
-                    <ColumnDefinition Width="25*"/>
-                    <ColumnDefinition Width="15*"/>
-                    <ColumnDefinition Width="15*"/>
+                    <ColumnDefinition Width="20*"/>
                 </Grid.ColumnDefinitions>
 
                 <components:ConciergeTextBlock
-                    Grid.Column="1"
+                    Grid.Column="0"
                     Text="Name"
-                    Margin="0,0,20,0"
-                    FontSize="25"/>
+                    Margin="20,0,0,0"
+                    FontSize="20"/>
+                <components:ConciergeTextBlock
+                    Grid.Column="1"
+                    Text="Hit Die"
+                    Margin="20,0,20,0"
+                    FontSize="20"/>
                 <components:ConciergeTextBlock
                     Grid.Column="2"
-                    Text="Hit Die"
-                    Margin="0,0,20,0"
-                    FontSize="25"/>
-                <components:ConciergeTextBlock
-                    Grid.Column="3"
                     Text="Health Modifier"
                     Margin="0,0,20,0"
-                    FontSize="20"/>
+                    FontSize="18"/>
             </Grid>
             
             <!--Class 1-->
             <Grid Grid.Row="1">
                 <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="30*"/>
+                    <ColumnDefinition Width="30*"/>
                     <ColumnDefinition Width="20*"/>
-                    <ColumnDefinition Width="25*"/>
-                    <ColumnDefinition Width="25*"/>
-                    <ColumnDefinition Width="15*"/>
-                    <ColumnDefinition Width="15*"/>
+                    <ColumnDefinition Width="20*"/>
                 </Grid.ColumnDefinitions>
 
-                <components:ConciergeTextBlock
-                    x:Name="Class1TitleTextBlock"
-                    Grid.Column="0"
-                    FontSize="25"
-                    Text="Class 1:"/>
                 <components:ConciergeTextBoxBackground
                     x:Name="Class1NameTextBoxBackground"
-                    Grid.Column="1">
+                    Margin="20,10,0,10"
+                    Grid.Column="0">
                     <components:ConciergeTextBox
                         x:Name="Class1NameTextBox"
                         IsReadOnly="True"/>
                 </components:ConciergeTextBoxBackground>
                 <components:ConciergeComboBox
                     x:Name="Class1DiceComboBox"
-                    Grid.Column="2"
+                    Grid.Column="1"
+                    Margin="20,10,20,10"
                     IsEditable="False"
                     Style="{StaticResource ComboBoxStyle}"/>
                 <controls:IntegerUpDown
                     x:Name="Class1ModIntegerUpDown"
-                    Grid.Column="3"/>
+                    Grid.Column="2"/>
                 <components:ConciergeTextButton
                     x:Name="Class1LevelUpButton"
-                    Grid.Column="4"
-                    Margin="0,7,20,7"
+                    Grid.Column="3"
+                    Margin="0,10,20,10"
                     Width="auto"
                     HorizontalAlignment="Stretch"
                     Height="auto"
@@ -124,37 +119,33 @@
             <!--Class 2-->
             <Grid Grid.Row="2">
                 <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="30*"/>
+                    <ColumnDefinition Width="30*"/>
                     <ColumnDefinition Width="20*"/>
-                    <ColumnDefinition Width="25*"/>
-                    <ColumnDefinition Width="25*"/>
-                    <ColumnDefinition Width="15*"/>
-                    <ColumnDefinition Width="15*"/>
+                    <ColumnDefinition Width="20*"/>
                 </Grid.ColumnDefinitions>
 
-                <components:ConciergeTextBlock
-                    x:Name="Class2TitleTextBlock"
-                    Grid.Column="0"
-                    FontSize="25"
-                    Text="Class 2:"/>
                 <components:ConciergeTextBoxBackground
                     x:Name="Class2NameTextBoxBackground"
-                    Grid.Column="1">
+                    Margin="20,10,0,10"
+                    Grid.Column="0">
                     <components:ConciergeTextBox
                         x:Name="Class2NameTextBox"
                         IsReadOnly="True"/>
                 </components:ConciergeTextBoxBackground>
                 <components:ConciergeComboBox
                     x:Name="Class2DiceComboBox"
-                    Grid.Column="2"
+                    Grid.Column="1"
+                    Margin="20,10,20,10"
                     IsEditable="False"
                     Style="{StaticResource ComboBoxStyle}"/>
                 <controls:IntegerUpDown
                     x:Name="Class2ModIntegerUpDown"
-                    Grid.Column="3"/>
+                    Grid.Column="2"/>
                 <components:ConciergeTextButton
                     x:Name="Class2LevelUpButton"
-                    Grid.Column="4"
-                    Margin="0,7,20,7"
+                    Grid.Column="3"
+                    Margin="0,10,20,10"
                     Width="auto"
                     HorizontalAlignment="Stretch"
                     Height="auto"
@@ -167,37 +158,33 @@
             <!--Class 3-->
             <Grid Grid.Row="3">
                 <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="30*"/>
+                    <ColumnDefinition Width="30*"/>
                     <ColumnDefinition Width="20*"/>
-                    <ColumnDefinition Width="25*"/>
-                    <ColumnDefinition Width="25*"/>
-                    <ColumnDefinition Width="15*"/>
-                    <ColumnDefinition Width="15*"/>
+                    <ColumnDefinition Width="20*"/>
                 </Grid.ColumnDefinitions>
 
-                <components:ConciergeTextBlock
-                    x:Name="Class3TitleTextBlock"
-                    Grid.Column="0"
-                    FontSize="25"
-                    Text="Class 3:"/>
                 <components:ConciergeTextBoxBackground
                     x:Name="Class3NameTextBoxBackground"
-                    Grid.Column="1">
+                    Margin="20,10,0,10"
+                    Grid.Column="0">
                     <components:ConciergeTextBox
                         x:Name="Class3NameTextBox"
                         IsReadOnly="True"/>
                 </components:ConciergeTextBoxBackground>
                 <components:ConciergeComboBox
                     x:Name="Class3DiceComboBox"
-                    Grid.Column="2"
+                    Grid.Column="1"
+                    Margin="20,10,20,10"
                     IsEditable="False"
                     Style="{StaticResource ComboBoxStyle}"/>
                 <controls:IntegerUpDown
                     x:Name="Class3ModIntegerUpDown"
-                    Grid.Column="3"/>
+                    Grid.Column="2"/>
                 <components:ConciergeTextButton
                     x:Name="Class3LevelUpButton"
-                    Grid.Column="4"
-                    Margin="0,7,20,7"
+                    Grid.Column="3"
+                    Margin="0,10,20,10"
                     Width="auto"
                     HorizontalAlignment="Stretch"
                     Height="auto"

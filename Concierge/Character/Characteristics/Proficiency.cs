@@ -22,6 +22,12 @@ namespace Concierge.Character.Characteristics
             this.Id = Guid.NewGuid();
         }
 
+        public Proficiency(string name, ProficiencyTypes type)
+        {
+            this.Name = name;
+            this.ProficiencyType = type;
+        }
+
         public string Name { get; set; }
 
         public ProficiencyTypes ProficiencyType { get; set; }
@@ -36,6 +42,21 @@ namespace Concierge.Character.Characteristics
                 ProficiencyType = this.ProficiencyType,
                 Id = this.Id,
             };
+        }
+
+        public override bool Equals(object? obj)
+        {
+            if (obj is not Proficiency proficiency)
+            {
+                return false;
+            }
+
+            return proficiency.Name.Equals(this.Name) && proficiency.ProficiencyType == this.ProficiencyType;
+        }
+
+        public override int GetHashCode()
+        {
+            return $"{this.Name}|{this.ProficiencyType}".GetHashCode();
         }
 
         public override string ToString()

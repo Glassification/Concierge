@@ -5,6 +5,7 @@
 namespace Concierge.Character.Statuses
 {
     using System;
+
     using Concierge.Character.Enums;
     using Concierge.Utility;
     using Newtonsoft.Json;
@@ -99,8 +100,9 @@ namespace Concierge.Character.Statuses
             };
         }
 
-        public void AddHitDie(HitDie hitDie)
+        public void LevelUp(HitDie hitDie, int newHp)
         {
+            this.Health.MaxHealth += newHp;
             switch (hitDie)
             {
                 case HitDie.D6:

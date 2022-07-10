@@ -728,18 +728,6 @@ namespace Concierge.Interfaces
             this.ChangeWindowState();
         }
 
-        private void IconButton_Click(object sender, RoutedEventArgs e)
-        {
-            ConciergeSound.TapNavigation();
-            ConciergeWindowService.ShowEdit<CharacterImage>(
-                Program.CcsFile.Character.CharacterIcon,
-                typeof(ModifyCharacterImageWindow),
-                this.Window_ApplyChanges,
-                ConciergePage.None);
-            this.mainWindowService.GenerateCharacterStatusBar(this.CharacterHeaderPanel, Program.CcsFile.Character);
-            this.IgnoreSecondPress = true;
-        }
-
         private void SearchButton_Click(object sender, RoutedEventArgs e)
         {
             ConciergeSound.TapNavigation();

@@ -190,6 +190,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
             this.DrawAttributes();
             this.DrawSavingThrows();
             this.DrawSkills();
+            this.DrawDetails();
         }
 
         private void EditSensesButton_Click(object sender, RoutedEventArgs e)

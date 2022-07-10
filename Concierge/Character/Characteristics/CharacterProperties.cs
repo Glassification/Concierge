@@ -22,6 +22,7 @@ namespace Concierge.Character.Characteristics
             this.Class1 = new CharacterClass(1);
             this.Class2 = new CharacterClass(2);
             this.Class3 = new CharacterClass(3);
+            this.CharacterIcon = new CharacterImage();
         }
 
         public string Name { get; set; }
@@ -39,6 +40,8 @@ namespace Concierge.Character.Characteristics
         public CharacterClass Class2 { get; set; }
 
         public CharacterClass Class3 { get; set; }
+
+        public CharacterImage CharacterIcon { get; set; }
 
         [JsonIgnore]
         public int Level => this.Class1.Level + this.Class2.Level + this.Class3.Level;
@@ -72,6 +75,7 @@ namespace Concierge.Character.Characteristics
                 Class1 = this.Class1.DeepCopy(),
                 Class2 = this.Class2.DeepCopy(),
                 Class3 = this.Class3.DeepCopy(),
+                CharacterIcon = this.CharacterIcon.DeepCopy(),
             };
         }
 

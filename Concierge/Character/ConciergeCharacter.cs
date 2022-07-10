@@ -51,7 +51,6 @@ namespace Concierge.Character
             this.Weapons = new List<Weapon>();
             this.EquippedItems = new EquippedItems();
             this.CharacterImage = new CharacterImage();
-            this.CharacterIcon = new CharacterImage();
             this.StatusEffects = new List<StatusEffect>();
             this.Properties = new CharacterProperties();
             this.Languages = new List<Language>();
@@ -68,8 +67,6 @@ namespace Concierge.Character
         public Attributes Attributes { get; set; }
 
         public List<Chapter> Chapters { get; set; }
-
-        public CharacterImage CharacterIcon { get; set; }
 
         public CharacterImage CharacterImage { get; set; }
 
@@ -225,23 +222,35 @@ namespace Concierge.Character
         public void LevelUp(HitDie hitDie, int classNumber, int bonusHp)
         {
             var levelClass = this.Properties.GetClassByNumber(classNumber);
+            var magicClass = this.MagicClasses.Where(x => x.Name.Equals(levelClass.Name)).FirstOrDefault();
             var newHp = DiceRoll.RollDice(1, (int)hitDie).First() +
                 CharacterUtility.CalculateBonus(this.Attributes.Constitution) +
                 bonusHp;
 
             var oldVitality = this.Vitality.DeepCopy();
             var oldClass = levelClass.DeepCopy();
+            var oldSpellSlots = this.SpellSlots.DeepCopy();
+            var oldMagicClass = magicClass?.DeepCopy();
 
-            this.Vitality.Health.MaxHealth += newHp;
-            this.Vitality.AddHitDie(hitDie);
+            this.Vitality.LevelUp(hitDie, newHp);
             levelClass.Level++;
+            if (magicClass is not null)
+            {
+                var spellSlots = CharacterUtility.GetSpellSlotIncrease(levelClass.Name, levelClass.Level);
+                magicClass.LevelUp(spellSlots);
+                this.SpellSlots.LevelUp(spellSlots);
+            }
 
             Program.UndoRedoService.AddCommand(
                 new LevelUpCommand(
                     oldVitality,
                     this.Vitality.DeepCopy(),
                     oldClass,
-                    levelClass.DeepCopy()));
+                    levelClass.DeepCopy(),
+                    oldMagicClass,
+                    magicClass?.DeepCopy(),
+                    oldSpellSlots,
+                    this.SpellSlots.DeepCopy()));
         }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0075:Simplify conditional expression", Justification = "Increase readability.")]
@@ -300,7 +309,6 @@ namespace Concierge.Character
                 Weapons = this.Weapons.DeepCopy().ToList(),
                 EquippedItems = this.EquippedItems.DeepCopy(),
                 CharacterImage = this.CharacterImage.DeepCopy(),
-                CharacterIcon = this.CharacterIcon.DeepCopy(),
                 StatusEffects = this.StatusEffects.DeepCopy().ToList(),
                 Properties = this.Properties.DeepCopy(),
                 Languages = this.Languages.DeepCopy().ToList(),

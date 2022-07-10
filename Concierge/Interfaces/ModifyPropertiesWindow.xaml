@@ -11,7 +11,7 @@
     d:DataContext="{d:DesignInstance Type=viewmodels:ConciergeViewModel}"
     mc:Ignorable="d"
     Title="Modify Character Properties"
-    Height="355"
+    Height="415"
     Width="800"
     Style="{StaticResource WindowXboxDasboardStyle}">
 
@@ -19,6 +19,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="45"/>
             <RowDefinition Height="240"/>
+            <RowDefinition Height="60"/>
             <RowDefinition Height="70"/>
         </Grid.RowDefinitions>
 
@@ -276,12 +277,13 @@
 
                     <!--Title-->
                     <Grid Grid.Column="0">
-                        <TextBlock Text="Class:"
-                                   Foreground="White"
-                                   FontSize="20"
-                                   HorizontalAlignment="Left"
-                                   VerticalAlignment="Center"
-                                   Margin="10, 0, 0, 0"/>
+                        <TextBlock
+                            Text="Class:"
+                            Foreground="White"
+                            FontSize="20"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Margin="10, 0, 0, 0"/>
                     </Grid>
 
                     <!--Value-->
@@ -294,8 +296,63 @@
             </Grid>
         </Grid>
         
-        <!--Buttons-->
+        <!--Icon-->
         <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="17.5*"/>
+                <ColumnDefinition Width="7*"/>
+                <ColumnDefinition Width="75.5*"/>
+            </Grid.ColumnDefinitions>
+
+            <!--Title-->
+            <Grid Grid.Column="0">
+                <TextBlock
+                    x:Name="ImageSourceLabel"
+                    Text="Icon:"
+                    Foreground="White"
+                    FontSize="20"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    Margin="10, 0, 0, 0"/>
+            </Grid>
+
+            <Grid Grid.Column="1" Margin="0,0,0,0">
+                <components:ConciergeCheckBox 
+                    x:Name="UseCustomImageCheckBox"
+                    Style="{StaticResource CheckBoxStyle}"
+                    Checked="UseCustomImageCheckBox_Checked"
+                    Unchecked="UseCustomImageCheckBox_Unchecked"/>
+            </Grid>
+
+            <Grid Grid.Column="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="88*"/>
+                    <ColumnDefinition Width="12*"/>
+                </Grid.ColumnDefinitions>
+
+                <!--Value-->
+                <components:ConciergeTextBoxBackground
+                    Grid.Column="0"
+                    x:Name="ImageSourceTextBoxBackground"
+                    Margin="0, 10, 0, 10">
+                    <components:ConciergeTextBox x:Name="ImageSourceTextBox"/>
+                </components:ConciergeTextBoxBackground>
+
+                <Grid Grid.Column="1">
+                    <components:ConciergeDesignButton
+                        Style="{StaticResource ConciergeTextButtonStyle}"
+                        x:Name="OpenImageButton"
+                        Content="..."
+                        HorizontalAlignment="Stretch"
+                        Foreground="White"
+                        Margin="10, 10, 20, 10"
+                        Click="OpenImageButton_Click"/>
+                </Grid>
+            </Grid>
+        </Grid>
+        
+        <!--Buttons-->
+        <Grid Grid.Row="3">
             <StackPanel Orientation="Horizontal"
                         VerticalAlignment="Center"
                         HorizontalAlignment="Center">
