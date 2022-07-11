@@ -272,8 +272,8 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
         {
             switch (sender?.GetType()?.Name)
             {
-                case "ModifyCharacterImageWindow":
-                case "ModifyEquippedItemsWindow":
+                case nameof(ModifyCharacterImageWindow):
+                case nameof(ModifyEquippedItemsWindow):
                     this.Draw();
                     break;
             }

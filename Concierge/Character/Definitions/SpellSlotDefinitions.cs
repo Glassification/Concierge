@@ -8,6 +8,34 @@ namespace Concierge.Character.Definitions
 
     public static class SpellSlotDefinitions
     {
+        public static SpellSlotDto GetArtificerSpellSlotIncrease(int level)
+        {
+            return $"Artificer {level}" switch
+            {
+                "Artificer 1" => new SpellSlotDto(known: 2, slots: 2, cantrip: 2, first: 2),
+                "Artificer 2" => new SpellSlotDto(),
+                "Artificer 3" => new SpellSlotDto(known: 1, first: 1),
+                "Artificer 4" => new SpellSlotDto(),
+                "Artificer 5" => new SpellSlotDto(known: 3, first: 1, second: 2),
+                "Artificer 6" => new SpellSlotDto(),
+                "Artificer 7" => new SpellSlotDto(known: 1, first: 1),
+                "Artificer 8" => new SpellSlotDto(),
+                "Artificer 9" => new SpellSlotDto(known: 2, third: 2),
+                "Artificer 10" => new SpellSlotDto(cantrip: 1),
+                "Artificer 11" => new SpellSlotDto(known: 1, third: 1),
+                "Artificer 12" => new SpellSlotDto(),
+                "Artificer 13" => new SpellSlotDto(known: 1, fourth: 1),
+                "Artificer 14" => new SpellSlotDto(cantrip: 1),
+                "Artificer 15" => new SpellSlotDto(known: 1, fourth: 1),
+                "Artificer 16" => new SpellSlotDto(),
+                "Artificer 17" => new SpellSlotDto(known: 2, fourth: 1, fifth: 1),
+                "Artificer 18" => new SpellSlotDto(),
+                "Artificer 19" => new SpellSlotDto(known: 1, fifth: 1),
+                "Artificer 20" => new SpellSlotDto(),
+                _ => new SpellSlotDto(),
+            };
+        }
+
         public static SpellSlotDto GetBardSpellSlotIncrease(int level)
         {
             return $"Bard {level}" switch
@@ -32,6 +60,34 @@ namespace Concierge.Character.Definitions
                 "Bard 18" => new SpellSlotDto(known: 2, slots: 1, fifth: 1),
                 "Bard 19" => new SpellSlotDto(slots: 1, sixth: 1),
                 "Bard 20" => new SpellSlotDto(slots: 1, seventh: 1),
+                _ => new SpellSlotDto(),
+            };
+        }
+
+        public static SpellSlotDto GetBloodHunterSpellSlotIncrease(int level)
+        {
+            return $"Blood Hunter {level}" switch
+            {
+                "Blood Hunter 1" => new SpellSlotDto(known: 1),
+                "Blood Hunter 2" => new SpellSlotDto(),
+                "Blood Hunter 3" => new SpellSlotDto(),
+                "Blood Hunter 4" => new SpellSlotDto(),
+                "Blood Hunter 5" => new SpellSlotDto(),
+                "Blood Hunter 6" => new SpellSlotDto(known: 1),
+                "Blood Hunter 7" => new SpellSlotDto(),
+                "Blood Hunter 8" => new SpellSlotDto(),
+                "Blood Hunter 9" => new SpellSlotDto(),
+                "Blood Hunter 10" => new SpellSlotDto(known: 1),
+                "Blood Hunter 11" => new SpellSlotDto(),
+                "Blood Hunter 12" => new SpellSlotDto(),
+                "Blood Hunter 13" => new SpellSlotDto(),
+                "Blood Hunter 14" => new SpellSlotDto(known: 1),
+                "Blood Hunter 15" => new SpellSlotDto(),
+                "Blood Hunter 16" => new SpellSlotDto(),
+                "Blood Hunter 17" => new SpellSlotDto(),
+                "Blood Hunter 18" => new SpellSlotDto(known: 1),
+                "Blood Hunter 19" => new SpellSlotDto(),
+                "Blood Hunter 20" => new SpellSlotDto(),
                 _ => new SpellSlotDto(),
             };
         }

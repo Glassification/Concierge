@@ -12,12 +12,15 @@ namespace Concierge
     using Concierge.Exceptions;
     using Concierge.Interfaces;
     using Concierge.Interfaces.UtilityInterface;
+    using Concierge.Services;
 
     /// <summary>
     /// Interaction logic for App.xaml.
     /// </summary>
     public partial class App : Application
     {
+        private readonly CommandLineService commandLineService = new ();
+
         public App()
         {
             this.Dispatcher.UnhandledException += this.Dispatcher_UnhandledException;
@@ -42,6 +45,11 @@ namespace Concierge
 
             ToolTipService.ShowDurationProperty.OverrideMetadata(typeof(DependencyObject), new FrameworkPropertyMetadata(int.MaxValue));
             mainWindow.Show();
+
+            this.commandLineService.ReadCommandLineArgs();
+            mainWindow.SetActiveFileText();
+            mainWindow.DrawAll();
+            Program.Unmodify();
         }
     }
 }

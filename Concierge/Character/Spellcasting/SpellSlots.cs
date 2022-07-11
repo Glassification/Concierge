@@ -118,6 +118,8 @@ namespace Concierge.Character.Spellcasting
             this.SeventhTotal += spellSlotDto.Seventh;
             this.EighthTotal += spellSlotDto.Eighth;
             this.NinethTotal += spellSlotDto.Nineth;
+
+            this.Reset();
         }
     }
 }

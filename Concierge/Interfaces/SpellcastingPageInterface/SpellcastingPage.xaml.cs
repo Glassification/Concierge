@@ -251,14 +251,14 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
         {
             switch (sender?.GetType()?.Name)
             {
-                case "ModifySpellClassWindow":
+                case nameof(ModifySpellClassWindow):
                     this.DrawMagicClasses();
                     break;
-                case "ModifySpellWindow":
+                case nameof(ModifySpellWindow):
                     this.DrawSpellList();
                     this.DrawMagicClasses();
                     break;
-                case "ModifySpellSlotsWindow":
+                case nameof(ModifySpellSlotsWindow):
                     this.DrawSpellSlots();
                     break;
             }

@@ -103,6 +103,8 @@ namespace Concierge.Character.Statuses
         public void LevelUp(HitDie hitDie, int newHp)
         {
             this.Health.MaxHealth += newHp;
+            this.ResetHealth();
+            this.RegainHitDice();
             switch (hitDie)
             {
                 case HitDie.D6:

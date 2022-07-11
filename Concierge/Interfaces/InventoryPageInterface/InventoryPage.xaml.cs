@@ -152,7 +152,7 @@ namespace Concierge.Interfaces.InventoryPageInterface
         {
             switch (sender?.GetType()?.Name)
             {
-                case "ModifyInventoryWindow":
+                case nameof(ModifyInventoryWindow):
                     this.DrawInventory();
                     this.ScrollInventory();
                     break;

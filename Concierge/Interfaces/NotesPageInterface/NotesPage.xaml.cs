@@ -586,7 +586,7 @@ namespace Concierge.Interfaces.NotesPageInterface
                     return;
                 }
 
-                var chapter = Program.CcsFile.Character.GetChapterByDocumentId(documentTreeViewItem.Document.Id);
+                var chapter = Program.CcsFile.Character.GetChapter(documentTreeViewItem.Document.Id);
                 var index = chapter.Documents.IndexOf(documentTreeViewItem.Document);
                 Program.UndoRedoService.AddCommand(new DeleteCommand<Document>(chapter.Documents, documentTreeViewItem.Document, index, this.ConciergePage));
                 chapter.Documents.Remove(documentTreeViewItem.Document);
@@ -602,7 +602,7 @@ namespace Concierge.Interfaces.NotesPageInterface
         {
             switch (sender?.GetType()?.Name)
             {
-                case "ModifyNotesWindow":
+                case nameof(ModifyNotesWindow):
                     this.DrawTreeView();
                     break;
             }

@@ -9,14 +9,14 @@
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:viewmodels="clr-namespace:Concierge.Interfaces.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:ConciergeViewModel}"
     mc:Ignorable="d"
     Title="Modify Companion Properties"
-    Height="295"
+    Height="355"
     Width="650"
     Style="{StaticResource WindowXboxDasboardStyle}">
 
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="45"/>
-            <RowDefinition Height="180"/>
+            <RowDefinition Height="240"/>
             <RowDefinition Height="70"/>
         </Grid.RowDefinitions>
 
@@ -46,6 +46,7 @@
         <!--Fields-->
         <Grid Grid.Row="1">
             <Grid.RowDefinitions>
+                <RowDefinition Height="60"/>
                 <RowDefinition Height="60"/>
                 <RowDefinition Height="60"/>
                 <RowDefinition Height="60"/>
@@ -147,6 +148,31 @@
                 <Grid Grid.Column="3">
                     <controls:IntegerUpDown 
                         x:Name="MovementUpDown"/>
+                </Grid>
+            </Grid>
+
+            <Grid Grid.Row="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="15*"/>
+                    <ColumnDefinition Width="35*"/>
+                    <ColumnDefinition Width="15*"/>
+                    <ColumnDefinition Width="35*"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid Grid.Column="0">
+                    <TextBlock 
+                        Text="Size:"
+                        Foreground="White"
+                        FontSize="20"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        Margin="10, 20, 0, 0"/>
+                </Grid>
+                <Grid Grid.Column="1">
+                    <components:ConciergeComboBox
+                        Style="{StaticResource ComboBoxStyle}"
+                        x:Name="CreatureSizeComboBox"
+                        IsEditable="False"/>
                 </Grid>
             </Grid>
         </Grid>

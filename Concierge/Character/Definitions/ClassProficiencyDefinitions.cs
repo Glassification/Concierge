@@ -11,13 +11,39 @@ namespace Concierge.Character.Definitions
 
     public static class ClassProficiencyDefinitions
     {
+        public static List<Proficiency> GetArtificerProficiencies(bool multiClass)
+        {
+            if (multiClass)
+            {
+                return new List<Proficiency>()
+                {
+                    new Proficiency("Light Armor", ProficiencyTypes.Armor),
+                    new Proficiency(Proficiency.SimpleMelee, ProficiencyTypes.Weapon),
+                    new Proficiency(Proficiency.SimpleRanged, ProficiencyTypes.Weapon),
+                    new Proficiency("Thieves' Tools", ProficiencyTypes.Tool),
+                    new Proficiency("Tinker's Tools", ProficiencyTypes.Tool),
+                };
+            }
+
+            return new List<Proficiency>()
+            {
+                new Proficiency("Light Armor", ProficiencyTypes.Armor),
+                new Proficiency("Medium Armor", ProficiencyTypes.Armor),
+                new Proficiency("Shields", ProficiencyTypes.Armor),
+                new Proficiency(Proficiency.SimpleMelee, ProficiencyTypes.Weapon),
+                new Proficiency(Proficiency.SimpleRanged, ProficiencyTypes.Weapon),
+                new Proficiency("Thieves' Tools", ProficiencyTypes.Tool),
+                new Proficiency("Tinker's Tools", ProficiencyTypes.Tool),
+            };
+        }
+
         public static List<Proficiency> GetBarbarianProficiencies(bool multiClass)
         {
             if (multiClass)
             {
                 return new List<Proficiency>()
                 {
-                    new Proficiency("Shields", ProficiencyTypes.Shield),
+                    new Proficiency("Shields", ProficiencyTypes.Armor),
                     new Proficiency(Proficiency.SimpleMelee, ProficiencyTypes.Weapon),
                     new Proficiency(Proficiency.SimpleRanged, ProficiencyTypes.Weapon),
                     new Proficiency(Proficiency.MartialMelee, ProficiencyTypes.Weapon),
@@ -29,7 +55,7 @@ namespace Concierge.Character.Definitions
             {
                 new Proficiency("Light Armor", ProficiencyTypes.Armor),
                 new Proficiency("Medium Armor", ProficiencyTypes.Armor),
-                new Proficiency("Shields", ProficiencyTypes.Shield),
+                new Proficiency("Shields", ProficiencyTypes.Armor),
                 new Proficiency(Proficiency.SimpleMelee, ProficiencyTypes.Weapon),
                 new Proficiency(Proficiency.SimpleRanged, ProficiencyTypes.Weapon),
                 new Proficiency(Proficiency.MartialMelee, ProficiencyTypes.Weapon),
@@ -59,6 +85,32 @@ namespace Concierge.Character.Definitions
             };
         }
 
+        public static List<Proficiency> GetBloodHunterProficiencies(bool multiClass)
+        {
+            if (multiClass)
+            {
+                return new List<Proficiency>()
+                {
+                    new Proficiency("Light Armor", ProficiencyTypes.Armor),
+                    new Proficiency(Proficiency.SimpleMelee, ProficiencyTypes.Weapon),
+                    new Proficiency(Proficiency.SimpleRanged, ProficiencyTypes.Weapon),
+                    new Proficiency("Alchemist's Supplies", ProficiencyTypes.Tool),
+                };
+            }
+
+            return new List<Proficiency>()
+            {
+                new Proficiency("Light Armor", ProficiencyTypes.Armor),
+                new Proficiency("Medium Armor", ProficiencyTypes.Armor),
+                new Proficiency("Shields", ProficiencyTypes.Armor),
+                new Proficiency(Proficiency.SimpleMelee, ProficiencyTypes.Weapon),
+                new Proficiency(Proficiency.SimpleRanged, ProficiencyTypes.Weapon),
+                new Proficiency(Proficiency.MartialMelee, ProficiencyTypes.Weapon),
+                new Proficiency(Proficiency.MartialRanged, ProficiencyTypes.Weapon),
+                new Proficiency("Alchemist's Supplies", ProficiencyTypes.Tool),
+            };
+        }
+
         public static List<Proficiency> GetClericProficiencies(bool multiClass)
         {
             if (multiClass)
@@ -67,7 +119,7 @@ namespace Concierge.Character.Definitions
                 {
                     new Proficiency("Light Armor", ProficiencyTypes.Armor),
                     new Proficiency("Medium Armor", ProficiencyTypes.Armor),
-                    new Proficiency("Shields", ProficiencyTypes.Shield),
+                    new Proficiency("Shields", ProficiencyTypes.Armor),
                 };
             }
 
@@ -75,7 +127,7 @@ namespace Concierge.Character.Definitions
             {
                 new Proficiency("Light Armor", ProficiencyTypes.Armor),
                 new Proficiency("Medium Armor", ProficiencyTypes.Armor),
-                new Proficiency("Shields", ProficiencyTypes.Shield),
+                new Proficiency("Shields", ProficiencyTypes.Armor),
                 new Proficiency(Proficiency.SimpleMelee, ProficiencyTypes.Weapon),
                 new Proficiency(Proficiency.SimpleRanged, ProficiencyTypes.Weapon),
             };
@@ -89,7 +141,7 @@ namespace Concierge.Character.Definitions
                 {
                     new Proficiency("Light Armor", ProficiencyTypes.Armor),
                     new Proficiency("Medium Armor", ProficiencyTypes.Armor),
-                    new Proficiency("Shields", ProficiencyTypes.Shield),
+                    new Proficiency("Shields", ProficiencyTypes.Armor),
                 };
             }
 
@@ -97,7 +149,7 @@ namespace Concierge.Character.Definitions
             {
                 new Proficiency("Light Armor", ProficiencyTypes.Armor),
                 new Proficiency("Medium Armor", ProficiencyTypes.Armor),
-                new Proficiency("Shields", ProficiencyTypes.Shield),
+                new Proficiency("Shields", ProficiencyTypes.Armor),
                 new Proficiency("Club", ProficiencyTypes.Weapon),
                 new Proficiency("Dagger", ProficiencyTypes.Weapon),
                 new Proficiency("Dart", ProficiencyTypes.Weapon),
@@ -120,7 +172,7 @@ namespace Concierge.Character.Definitions
                 {
                     new Proficiency("Light Armor", ProficiencyTypes.Armor),
                     new Proficiency("Medium Armor", ProficiencyTypes.Armor),
-                    new Proficiency("Shields", ProficiencyTypes.Shield),
+                    new Proficiency("Shields", ProficiencyTypes.Armor),
                     new Proficiency(Proficiency.SimpleMelee, ProficiencyTypes.Weapon),
                     new Proficiency(Proficiency.SimpleRanged, ProficiencyTypes.Weapon),
                     new Proficiency(Proficiency.MartialMelee, ProficiencyTypes.Weapon),
@@ -134,7 +186,7 @@ namespace Concierge.Character.Definitions
                 new Proficiency("Medium Armor", ProficiencyTypes.Armor),
                 new Proficiency("Heavy Armor", ProficiencyTypes.Armor),
                 new Proficiency("Massive Armor", ProficiencyTypes.Armor),
-                new Proficiency("Shields", ProficiencyTypes.Shield),
+                new Proficiency("Shields", ProficiencyTypes.Armor),
                 new Proficiency(Proficiency.SimpleMelee, ProficiencyTypes.Weapon),
                 new Proficiency(Proficiency.SimpleRanged, ProficiencyTypes.Weapon),
                 new Proficiency(Proficiency.MartialMelee, ProficiencyTypes.Weapon),
@@ -170,7 +222,7 @@ namespace Concierge.Character.Definitions
                 {
                     new Proficiency("Light Armor", ProficiencyTypes.Armor),
                     new Proficiency("Medium Armor", ProficiencyTypes.Armor),
-                    new Proficiency("Shields", ProficiencyTypes.Shield),
+                    new Proficiency("Shields", ProficiencyTypes.Armor),
                     new Proficiency(Proficiency.SimpleMelee, ProficiencyTypes.Weapon),
                     new Proficiency(Proficiency.SimpleRanged, ProficiencyTypes.Weapon),
                     new Proficiency(Proficiency.MartialMelee, ProficiencyTypes.Weapon),
@@ -184,7 +236,7 @@ namespace Concierge.Character.Definitions
                 new Proficiency("Medium Armor", ProficiencyTypes.Armor),
                 new Proficiency("Heavy Armor", ProficiencyTypes.Armor),
                 new Proficiency("Massive Armor", ProficiencyTypes.Armor),
-                new Proficiency("Shields", ProficiencyTypes.Shield),
+                new Proficiency("Shields", ProficiencyTypes.Armor),
                 new Proficiency(Proficiency.SimpleMelee, ProficiencyTypes.Weapon),
                 new Proficiency(Proficiency.SimpleRanged, ProficiencyTypes.Weapon),
                 new Proficiency(Proficiency.MartialMelee, ProficiencyTypes.Weapon),
@@ -200,7 +252,7 @@ namespace Concierge.Character.Definitions
                 {
                     new Proficiency("Light Armor", ProficiencyTypes.Armor),
                     new Proficiency("Medium Armor", ProficiencyTypes.Armor),
-                    new Proficiency("Shields", ProficiencyTypes.Shield),
+                    new Proficiency("Shields", ProficiencyTypes.Armor),
                     new Proficiency(Proficiency.SimpleMelee, ProficiencyTypes.Weapon),
                     new Proficiency(Proficiency.SimpleRanged, ProficiencyTypes.Weapon),
                     new Proficiency(Proficiency.MartialMelee, ProficiencyTypes.Weapon),
@@ -212,7 +264,7 @@ namespace Concierge.Character.Definitions
             {
                 new Proficiency("Light Armor", ProficiencyTypes.Armor),
                 new Proficiency("Medium Armor", ProficiencyTypes.Armor),
-                new Proficiency("Shields", ProficiencyTypes.Shield),
+                new Proficiency("Shields", ProficiencyTypes.Armor),
                 new Proficiency(Proficiency.SimpleMelee, ProficiencyTypes.Weapon),
                 new Proficiency(Proficiency.SimpleRanged, ProficiencyTypes.Weapon),
                 new Proficiency(Proficiency.MartialMelee, ProficiencyTypes.Weapon),

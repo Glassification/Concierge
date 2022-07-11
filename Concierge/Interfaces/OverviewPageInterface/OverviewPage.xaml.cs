@@ -262,22 +262,22 @@ namespace Concierge.Interfaces.OverviewPageInterface
         {
             switch (sender?.GetType()?.Name)
             {
-                case "ModifyAttributesWindow":
+                case nameof(ModifyAttributesWindow):
                     this.DrawAttributes();
                     break;
-                case "ModifySensesWindow":
+                case nameof(ModifySensesWindow):
                     this.DrawDetails();
                     break;
-                case "ModifyHealthWindow":
+                case nameof(ModifyHealthWindow):
                     this.DrawHealth();
                     break;
-                case "ModifyHitDiceWindow":
+                case nameof(ModifyHitDiceWindow):
                     this.DrawHitDice();
                     break;
-                case "ModifySkillCheckWindow":
+                case nameof(ModifySkillCheckWindow):
                     this.DrawSkills();
                     break;
-                case "ModifySavingThrowCheckWindow":
+                case nameof(ModifySavingThrowCheckWindow):
                     this.DrawSavingThrows();
                     break;
             }

@@ -5,6 +5,7 @@
 namespace Concierge.Character.AbilitySavingThrows
 {
     using Concierge.Character.AbilitySavingThrows.SavingThrowTypes;
+    using Concierge.Character.Dtos;
     using Concierge.Utility;
 
     public class SavingThrow : ICopyable<SavingThrow>
@@ -42,6 +43,16 @@ namespace Concierge.Character.AbilitySavingThrows
                 Wisdom = (Wisdom)this.Wisdom.DeepCopy(),
                 Charisma = (Charisma)this.Charisma.DeepCopy(),
             };
+        }
+
+        public void SetProficiency(SavingThrowDto savingThrowDto)
+        {
+            this.Strength.Proficiency = savingThrowDto.Strength.Proficiency;
+            this.Dexterity.Proficiency = savingThrowDto.Dexterity.Proficiency;
+            this.Constitution.Proficiency = savingThrowDto.Constitution.Proficiency;
+            this.Intelligence.Proficiency = savingThrowDto.Intelligence.Proficiency;
+            this.Wisdom.Proficiency = savingThrowDto.Wisdom.Proficiency;
+            this.Charisma.Proficiency = savingThrowDto.Charisma.Proficiency;
         }
     }
 }

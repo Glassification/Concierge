@@ -292,18 +292,18 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
         {
             switch (sender?.GetType()?.Name)
             {
-                case "ModifyArmorWindow":
+                case nameof(ModifyArmorWindow):
                     this.DrawArmor();
                     break;
-                case "ModifyStatusEffectsWindow":
+                case nameof(ModifyStatusEffectsWindow):
                     this.DrawStatusEffects();
                     ScrollDataGrid(this.StatusEffectsDataGrid);
                     break;
-                case "ModifyAmmoWindow":
+                case nameof(ModifyAmmoWindow):
                     this.DrawAmmoList();
                     ScrollDataGrid(this.AmmoDataGrid);
                     break;
-                case "ModifyAttackWindow":
+                case nameof(ModifyAttackWindow):
                     this.DrawWeaponList();
                     ScrollDataGrid(this.WeaponDataGrid);
                     break;

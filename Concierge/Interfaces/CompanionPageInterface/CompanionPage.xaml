@@ -13,68 +13,242 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="22*"/>
-            <RowDefinition Height="31*"/>
-            <RowDefinition Height="47*"/>
+            <RowDefinition Height="07*"/>
+            <RowDefinition Height="28*"/>
+            <RowDefinition Height="20*"/>
+            <RowDefinition Height="45*"/>
         </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0">
+        <Grid
+            Grid.Row="0"
+            Background="#000917"
+            Margin="3">
+            <components:ConciergeTextBlock 
+                Text="Companion"
+                FontSize="25"
+                HorizontalAlignment="Left"
+                Margin="150, 0, 0, 0"/>
+            <StackPanel
+                Orientation="Horizontal"
+                HorizontalAlignment="Right"
+                Margin="3">
+                <components:ConciergeDesignButton 
+                    Style="{StaticResource ConciergeDesignButtonStyle}" 
+                    x:Name="EditPropertiesButton"
+                    Width="60"
+                    Foreground="Khaki"
+                    Click="EditPropertiesButton_Click"
+                    ToolTip="Edit Companion Details">
+                    <materialDesign:PackIcon Kind="TextBoxEdit" Width="25" Height="25"/>
+                </components:ConciergeDesignButton>
+                <components:ConciergeDesignButton 
+                    Style="{StaticResource ConciergeDesignButtonStyle}" 
+                    x:Name="ImageEditButton"
+                    Width="60"
+                    Foreground="Khaki"
+                    Click="ImageEditButton_Click"
+                    ToolTip="Edit Companion Image">
+                    <materialDesign:PackIcon Kind="ImageEdit" Width="25" Height="25"/>
+                </components:ConciergeDesignButton>
+            </StackPanel>
+        </Grid>
+        
+        <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="15*"/>
-                <ColumnDefinition Width="15*"/>
-                <ColumnDefinition Width="15*"/>
-                <ColumnDefinition Width="15*"/>
-                <ColumnDefinition Width="15*"/>
-                <ColumnDefinition Width="15*"/>
-                <ColumnDefinition Width="10*"/>
+                <ColumnDefinition Width="30*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="18*"/>
+                <ColumnDefinition Width="32*"/>
             </Grid.ColumnDefinitions>
 
-            <!--Strength-->
-            <controls:AttributeDisplay
-                x:Name="StrengthAttributeDisplay"
-                Title="Strength"
-                EnableEdit="Visible"
-                DisplaySize="Medium"
-                EditClicked="EditAttributesButton_Click"
-                Grid.Column="0"/>
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50*"/>
+                    <RowDefinition Height="50*"/>
+                </Grid.RowDefinitions>
 
-            <!--Dexterity-->
-            <controls:AttributeDisplay
-                x:Name="DexterityAttributeDisplay"
-                Title="Dexterity"
-                DisplaySize="Medium"
-                Grid.Column="1"/>
+                <Grid Grid.Row="0">
+                    <!--Name-->
+                    <Grid Margin="3,3,3,15">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="30*"/>
+                            <ColumnDefinition Width="70*"/>
+                        </Grid.ColumnDefinitions>
 
-            <!--Constitution-->
-            <controls:AttributeDisplay
-                x:Name="ConstitutionAttributeDisplay"
-                Title="Constitution"
-                DisplaySize="Medium"
-                Grid.Column="2"/>
+                        <!--Name-->
+                        <Grid Grid.Column="0" Background="#000917">
+                            <components:ConciergeTextBlock 
+                                Text="Name"
+                                Foreground="White"
+                                FontSize="30"
+                                FontWeight="Bold"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                TextWrapping="Wrap"/>
+                        </Grid>
 
-            <!--Intelligence-->
-            <controls:AttributeDisplay
-                x:Name="IntelligenceAttributeDisplay"
-                Title="Intelligence"
-                DisplaySize="Medium"
-                Grid.Column="3"/>
+                        <!--Value-->
+                        <Grid Grid.Column="1" Background="#001233">
+                            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                                <components:ConciergeTextBlock 
+                                    x:Name="NameField"
+                                    Foreground="White"
+                                    FontSize="22"
+                                    FontWeight="Bold"
+                                    TextWrapping="Wrap"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"/>
+                            </ScrollViewer>
+                        </Grid>
+                    </Grid>
+                </Grid>
 
-            <!--Wisdom-->
-            <controls:AttributeDisplay
-                x:Name="WisdomAttributeDisplay"
-                Title="Wisdom"
-                DisplaySize="Medium"
-                Grid.Column="4"/>
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="33*"/>
+                        <ColumnDefinition Width="33*"/>
+                        <ColumnDefinition Width="33*"/>
+                    </Grid.ColumnDefinitions>
 
-            <!--Charisma-->
-            <controls:AttributeDisplay
-                x:Name="CharismaAttributeDisplay"
-                Title="Charisma"
-                DisplaySize="Medium"
-                Grid.Column="5"/>
+                    <!--Size-->
+                    <Grid Grid.Column="0" Margin="3,10,3,3">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="25*"/>
+                            <RowDefinition Height="75*"/>
+                        </Grid.RowDefinitions>
+
+                        <!--Name-->
+                        <Grid Grid.Row="0" Background="#000917">
+                            <components:ConciergeTextBlock 
+                                Text="Creature Size"
+                                Foreground="White"
+                                FontSize="15"
+                                FontWeight="Bold"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                TextWrapping="Wrap"/>
+                        </Grid>
+
+                        <!--Value-->
+                        <Grid Grid.Row="1" Background="#001233">
+                            <components:ConciergeTextBlock 
+                                x:Name="CreatureSizeField"
+                                Foreground="White"
+                                FontSize="28"
+                                FontWeight="Bold"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"/>
+                        </Grid>
+                    </Grid>
+
+                    <!--Vision-->
+                    <Grid Grid.Column="1" Margin="3,10,3,3">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="25*"/>
+                            <RowDefinition Height="75*"/>
+                        </Grid.RowDefinitions>
+
+                        <!--Name-->
+                        <Grid Grid.Row="0" Background="#000917">
+                            <components:ConciergeTextBlock 
+                                Text="Vision"
+                                Foreground="White"
+                                FontSize="15"
+                                FontWeight="Bold"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                TextWrapping="Wrap"/>
+                        </Grid>
+
+                        <!--Value-->
+                        <Grid Grid.Row="1" Background="#001233">
+                            <components:ConciergeTextBlock 
+                                x:Name="VisionField"
+                                Foreground="White"
+                                FontSize="25"
+                                FontWeight="Bold"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"/>
+                        </Grid>
+                    </Grid>
+
+                    <!--Perception-->
+                    <Grid Grid.Column="2" Margin="3,10,3,3">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="25*"/>
+                            <RowDefinition Height="75*"/>
+                        </Grid.RowDefinitions>
+
+                        <!--Name-->
+                        <Grid Grid.Row="0" Background="#000917">
+                            <components:ConciergeTextBlock 
+                                Text="Perception"
+                                Foreground="White"
+                                FontSize="15"
+                                FontWeight="Bold"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                TextWrapping="Wrap"/>
+                        </Grid>
+
+                        <!--Value-->
+                        <Grid Grid.Row="1" Background="#001233">
+                            <components:ConciergeTextBlock 
+                                x:Name="PerceptionField"
+                                Foreground="White"
+                                FontSize="28"
+                                FontWeight="Bold"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"/>
+                        </Grid>
+                    </Grid>
+                </Grid>
+            </Grid>
+
+            <Grid Grid.Column="1">
+                <Image x:Name="CompanionImage" Margin="3"/>
+                <materialDesign:PackIcon
+                    x:Name="DefaultCompanionImage"
+                    Kind="Bird"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Stretch"
+                    Height="auto"
+                    Width="auto"
+                    Foreground="#161223"/>
+            </Grid>
+            
+            <!--Health-->
+            <controls:HealthDisplay
+                Grid.Column="2"
+                x:Name="HealthDisplay"
+                DeathSavesEnabled="False"
+                HealClicked="HealDamageButton_Click"
+                DamageClicked="TakeDamageButton_Click"
+                EditClicked="EditHealthButton_Click"/>
+
+            <!--HitDice-->
+            <controls:HitDiceDisplay
+                Grid.Column="3"
+                x:Name="HitDiceDisplay"
+                ConciergePage="Companion"
+                EditClicked="EditHitDiceButton_Click"
+                ValueChanged="HitDiceDisplay_ValueChanged"/>
+        </Grid>
+        
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="11*"/>
+                <ColumnDefinition Width="11*"/>
+                <ColumnDefinition Width="13*"/>
+                <ColumnDefinition Width="13*"/>
+                <ColumnDefinition Width="13*"/>
+                <ColumnDefinition Width="13*"/>
+                <ColumnDefinition Width="13*"/>
+                <ColumnDefinition Width="13*"/>
+            </Grid.ColumnDefinitions>
 
             <!--AC-->
-            <Grid Grid.Column="6">
+            <Grid Grid.Column="0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="20*"/>
                     <RowDefinition Height="80*"/>
@@ -113,191 +287,88 @@
                         FontWeight="Bold"/>
                 </Grid>
             </Grid>
-        </Grid>
 
-        <Grid Grid.Row="1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="37*"/>
-                <ColumnDefinition Width="25*"/>
-                <ColumnDefinition Width="38*"/>
-            </Grid.ColumnDefinitions>
-
-            <Grid Grid.Column="0">
+            <!--Movement-->
+            <Grid Grid.Column="1">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="50*"/>
-                    <RowDefinition Height="50*"/>
+                    <RowDefinition Height="20*"/>
+                    <RowDefinition Height="80*"/>
                 </Grid.RowDefinitions>
 
-                <Grid Grid.Row="0">
-                    <!--Name-->
-                    <Grid Margin="3,15,3,15">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="30*"/>
-                            <ColumnDefinition Width="70*"/>
-                        </Grid.ColumnDefinitions>
-
-                        <!--Name-->
-                        <Grid Grid.Column="0" Background="#000917">
-                            <components:ConciergeDesignButton 
-                                Style="{StaticResource ConciergeDesignButtonStyle}" 
-                                x:Name="EditPropertiesButton"
-                                Width="30"
-                                HorizontalAlignment="Left"
-                                VerticalAlignment="Top"
-                                Foreground="Khaki"
-                                Click="EditPropertiesButton_Click"
-                                ToolTip="Edit Details">
-                                <materialDesign:PackIcon Kind="TextBoxEdit" Width="25" Height="25"/>
-                            </components:ConciergeDesignButton>
-
-                            <components:ConciergeTextBlock 
-                                Text="Name"
-                                Foreground="White"
-                                FontSize="30"
-                                FontWeight="Bold"
-                                HorizontalAlignment="Center"
-                                VerticalAlignment="Center"
-                                TextWrapping="Wrap"/>
-                        </Grid>
-
-                        <!--Value-->
-                        <Grid Grid.Column="1" Background="#001233">
-                            <ScrollViewer VerticalScrollBarVisibility="Auto">
-                                <components:ConciergeTextBlock 
-                                    x:Name="NameField"
-                                    Foreground="White"
-                                    FontSize="22"
-                                    FontWeight="Bold"
-                                    TextWrapping="Wrap"
-                                    HorizontalAlignment="Center"
-                                    VerticalAlignment="Center"/>
-                            </ScrollViewer>
-                        </Grid>
-                    </Grid>
+                <!--Header-->
+                <Grid Grid.Row="0" Margin="3, 3, 3, 0" Background="#000917">
+                    <components:ConciergeTextBlock 
+                        Text="Movement"
+                        Foreground="White"
+                        FontSize="23"
+                        FontWeight="Bold"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"/>
                 </Grid>
 
-                <Grid Grid.Row="1">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="33*"/>
-                        <ColumnDefinition Width="33*"/>
-                        <ColumnDefinition Width="33*"/>
-                    </Grid.ColumnDefinitions>
-
-                    <!--Perception-->
-                    <Grid Grid.Column="0" Margin="3,10,3,10">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="25*"/>
-                            <RowDefinition Height="75*"/>
-                        </Grid.RowDefinitions>
-
-                        <!--Name-->
-                        <Grid Grid.Row="0" Background="#000917">
-                            <components:ConciergeTextBlock 
-                                Text="Perception"
-                                Foreground="White"
-                                FontSize="15"
-                                FontWeight="Bold"
-                                HorizontalAlignment="Center"
-                                VerticalAlignment="Center"
-                                TextWrapping="Wrap"/>
-                        </Grid>
-
-                        <!--Value-->
-                        <Grid Grid.Row="1" Background="#001233">
-                            <components:ConciergeTextBlock 
-                                x:Name="PerceptionField"
-                                Foreground="White"
-                                FontSize="28"
-                                FontWeight="Bold"
-                                HorizontalAlignment="Center"
-                                VerticalAlignment="Center"/>
-                        </Grid>
-                    </Grid>
-                    
-                    <!--Vision-->
-                    <Grid Grid.Column="1" Margin="3,10,3,10">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="25*"/>
-                            <RowDefinition Height="75*"/>
-                        </Grid.RowDefinitions>
-
-                        <!--Name-->
-                        <Grid Grid.Row="0" Background="#000917">
-                            <components:ConciergeTextBlock 
-                                Text="Vision"
-                                Foreground="White"
-                                FontSize="15"
-                                FontWeight="Bold"
-                                HorizontalAlignment="Center"
-                                VerticalAlignment="Center"
-                                TextWrapping="Wrap"/>
-                        </Grid>
-
-                        <!--Value-->
-                        <Grid Grid.Row="1" Background="#001233">
-                            <components:ConciergeTextBlock 
-                                x:Name="VisionField"
-                                Foreground="White"
-                                FontSize="25"
-                                FontWeight="Bold"
-                                HorizontalAlignment="Center"
-                                VerticalAlignment="Center"/>
-                        </Grid>
-                    </Grid>
-
-                    <!--Movement-->
-                    <Grid Grid.Column="2" Margin="3,10,3,10">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="25*"/>
-                            <RowDefinition Height="75*"/>
-                        </Grid.RowDefinitions>
-
-                        <!--Name-->
-                        <Grid Grid.Row="0" Background="#000917">
-                            <components:ConciergeTextBlock 
-                                Text="Movement"
-                                Foreground="White"
-                                FontSize="15"
-                                FontWeight="Bold"
-                                HorizontalAlignment="Center"
-                                VerticalAlignment="Center"
-                                TextWrapping="Wrap"/>
-                        </Grid>
-
-                        <!--Value-->
-                        <Grid Grid.Row="1" Background="#001233">
-                            <components:ConciergeTextBlock 
-                                x:Name="MovementField"
-                                Foreground="White"
-                                FontSize="28"
-                                FontWeight="Bold"
-                                HorizontalAlignment="Center"
-                                VerticalAlignment="Center"/>
-                        </Grid>
-                    </Grid>
+                <!--AC-->
+                <Grid 
+                    Grid.Row="1"
+                    Margin="3, 0, 3, 3"
+                    Background="#001233"
+                    x:Name="PerceptionBox">
+                    <components:ConciergeTextBlock 
+                        x:Name="MovementField"
+                        Foreground="White"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        FontSize="60"
+                        FontWeight="Bold"/>
                 </Grid>
             </Grid>
-            
-            <!--Health-->
-            <controls:HealthDisplay
-                Grid.Column="1"
-                x:Name="HealthDisplay"
-                DeathSavesEnabled="False"
-                HealClicked="HealDamageButton_Click"
-                DamageClicked="TakeDamageButton_Click"
-                EditClicked="EditHealthButton_Click"/>
 
-            <!--HitDice-->
-            <controls:HitDiceDisplay
-                Grid.Column="2"
-                x:Name="HitDiceDisplay"
-                ConciergePage="Companion"
-                EditClicked="EditHitDiceButton_Click"
-                ValueChanged="HitDiceDisplay_ValueChanged"/>
+            <!--Strength-->
+            <controls:AttributeDisplay
+                x:Name="StrengthAttributeDisplay"
+                Title="Strength"
+                EnableEdit="Visible"
+                DisplaySize="Medium"
+                EditClicked="EditAttributesButton_Click"
+                Grid.Column="2"/>
+
+            <!--Dexterity-->
+            <controls:AttributeDisplay
+                x:Name="DexterityAttributeDisplay"
+                Title="Dexterity"
+                DisplaySize="Medium"
+                Grid.Column="3"/>
+
+            <!--Constitution-->
+            <controls:AttributeDisplay
+                x:Name="ConstitutionAttributeDisplay"
+                Title="Constitution"
+                DisplaySize="Medium"
+                Grid.Column="4"/>
+
+            <!--Intelligence-->
+            <controls:AttributeDisplay
+                x:Name="IntelligenceAttributeDisplay"
+                Title="Intelligence"
+                DisplaySize="Medium"
+                Grid.Column="5"/>
+
+            <!--Wisdom-->
+            <controls:AttributeDisplay
+                x:Name="WisdomAttributeDisplay"
+                Title="Wisdom"
+                DisplaySize="Medium"
+                Grid.Column="6"/>
+
+            <!--Charisma-->
+            <controls:AttributeDisplay
+                x:Name="CharismaAttributeDisplay"
+                Title="Charisma"
+                DisplaySize="Medium"
+                Grid.Column="7"/>
         </Grid>
-        
+
         <!--Weapons-->
-        <Grid Grid.Row="2" Margin="3" x:Name="WeaponGrid" Background="#000917">
+        <Grid Grid.Row="3" Margin="3" x:Name="WeaponGrid" Background="#000917">
             <Grid.RowDefinitions>
                 <RowDefinition Height="15*"/>
                 <RowDefinition Height="85*"/>

@@ -152,7 +152,7 @@ namespace Concierge.Interfaces.AbilitiesPageInterface
         {
             switch (sender?.GetType()?.Name)
             {
-                case "ModifyAbilitiesWindow":
+                case nameof(ModifyAbilitiesWindow):
                     this.DrawAbilities();
                     this.ScrollAbilities();
                     break;

@@ -223,9 +223,7 @@ namespace Concierge.Character
         {
             var levelClass = this.Properties.GetClassByNumber(classNumber);
             var magicClass = this.MagicClasses.Where(x => x.Name.Equals(levelClass.Name)).FirstOrDefault();
-            var newHp = DiceRoll.RollDice(1, (int)hitDie).First() +
-                CharacterUtility.CalculateBonus(this.Attributes.Constitution) +
-                bonusHp;
+            var newHp = DiceRoll.RollHitDie(hitDie) + CharacterUtility.CalculateBonus(this.Attributes.Constitution) + bonusHp;
 
             var oldVitality = this.Vitality.DeepCopy();
             var oldClass = levelClass.DeepCopy();
@@ -278,9 +276,9 @@ namespace Concierge.Character
             };
         }
 
-        public Chapter GetChapterByDocumentId(Guid id)
+        public Chapter GetChapter(Guid documentId)
         {
-            return this.Chapters.Single(x => x.Documents.Any(y => y.Id.Equals(id)));
+            return this.Chapters.Single(x => x.Documents.Any(y => y.Id.Equals(documentId)));
         }
 
         public ConciergeCharacter DeepCopy()

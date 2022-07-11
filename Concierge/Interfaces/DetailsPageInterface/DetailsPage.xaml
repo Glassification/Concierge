@@ -123,10 +123,9 @@
                       Background="#000917"
                       Margin="3, 0, 3, 3">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="25*"/>
-                        <ColumnDefinition Width="25*"/>
-                        <ColumnDefinition Width="25*"/>
-                        <ColumnDefinition Width="25*"/>
+                        <ColumnDefinition Width="33*"/>
+                        <ColumnDefinition Width="33*"/>
+                        <ColumnDefinition Width="33*"/>
                     </Grid.ColumnDefinitions>
 
                     <!--Weapons-->
@@ -167,27 +166,8 @@
                         </components:ConciergeDataGrid>
                     </Grid>
 
-                    <!--Shields-->
-                    <Grid Grid.Column="2"  Margin="3, 0, 3, 3" x:Name="ShieldGrid">
-                        <components:ConciergeDataGrid 
-                            x:Name="ShieldProficiencyDataGrid"
-                            VerticalScrollBarVisibility="Hidden"
-                            MaxHeight="{Binding Path=ProficiencyGridSize}"
-                            Style="{DynamicResource DetailsDataGridStyle}"
-                            SelectionChanged="ShieldProficiencyDataGrid_SelectionChanged"
-                            Sorted="ProficiencyDataGrid_Sorted">
-                            <DataGrid.Columns>
-                                <DataGridTextColumn 
-                                    Header="Shields"
-                                    Width="100*"
-                                    Binding="{Binding Name}"
-                                    ElementStyle="{StaticResource DetailsColumnElementStyle}"/>
-                            </DataGrid.Columns>
-                        </components:ConciergeDataGrid>
-                    </Grid>
-
                     <!--Tools-->
-                    <Grid Grid.Column="3"  Margin="3, 0, 3, 3" x:Name="ToolsGrid">
+                    <Grid Grid.Column="2"  Margin="3, 0, 3, 3" x:Name="ToolsGrid">
                         <components:ConciergeDataGrid 
                             x:Name="ToolProficiencyDataGrid"
                             VerticalScrollBarVisibility="Hidden"

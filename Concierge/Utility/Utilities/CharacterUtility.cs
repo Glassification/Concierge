@@ -62,6 +62,7 @@ namespace Concierge.Utility.Utilities
             };
         }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0066:Convert switch statement to expression", Justification = "Improve Readability.")]
         public static HitDie GetHitDice(string className)
         {
             switch (className)
@@ -93,7 +94,9 @@ namespace Concierge.Utility.Utilities
         {
             return className switch
             {
+                "Artificer" => SpellSlotDefinitions.GetArtificerSpellSlotIncrease(level),
                 "Bard" => SpellSlotDefinitions.GetBardSpellSlotIncrease(level),
+                "Blood Hunter" => SpellSlotDefinitions.GetBloodHunterSpellSlotIncrease(level),
                 "Cleric" => SpellSlotDefinitions.GetClericSpellSlotIncrease(level),
                 "Druid" => SpellSlotDefinitions.GetDruidSpellSlotIncrease(level),
                 "Paladin" => SpellSlotDefinitions.GetPaladinSpellSlotIncrease(level),
@@ -110,8 +113,10 @@ namespace Concierge.Utility.Utilities
         {
             return className switch
             {
+                "Artificer" => ClassProficiencyDefinitions.GetArtificerProficiencies(multiClass),
                 "Barbarian" => ClassProficiencyDefinitions.GetBarbarianProficiencies(multiClass),
                 "Bard" => ClassProficiencyDefinitions.GetBardProficiencies(multiClass),
+                "Blood Hunter" => ClassProficiencyDefinitions.GetBloodHunterProficiencies(multiClass),
                 "Cleric" => ClassProficiencyDefinitions.GetClericProficiencies(multiClass),
                 "Druid" => ClassProficiencyDefinitions.GetDruidProficiencies(multiClass),
                 "Fighter" => ClassProficiencyDefinitions.GetFighterProficiencies(multiClass),
@@ -123,6 +128,28 @@ namespace Concierge.Utility.Utilities
                 "Warlock" => ClassProficiencyDefinitions.GetWarlockProficiencies(multiClass),
                 "Wizard" => ClassProficiencyDefinitions.GetWizardProficiencies(multiClass),
                 _ => new List<Proficiency>(),
+            };
+        }
+
+        public static SavingThrowDto GetSavingThrows(string className)
+        {
+            return className switch
+            {
+                "Artificer" => SavingThrowDefinitions.GetArtificerSavingThrows(),
+                "Barbarian" => SavingThrowDefinitions.GetBarbarianSavingThrows(),
+                "Bard" => SavingThrowDefinitions.GetBardSavingThrows(),
+                "Blood Hunter" => SavingThrowDefinitions.GetBlooodHunterSavingThrows(),
+                "Cleric" => SavingThrowDefinitions.GetClericSavingThrows(),
+                "Druid" => SavingThrowDefinitions.GetDruidSavingThrows(),
+                "Fighter" => SavingThrowDefinitions.GetFighterSavingThrows(),
+                "Monk" => SavingThrowDefinitions.GetMonkSavingThrows(),
+                "Paladin" => SavingThrowDefinitions.GetPaladinSavingThrows(),
+                "Ranger" => SavingThrowDefinitions.GetRangerSavingThrows(),
+                "Rogue" => SavingThrowDefinitions.GetRogueSavingThrows(),
+                "Sorcerer" => SavingThrowDefinitions.GetSorcererSavingThrows(),
+                "Warlock" => SavingThrowDefinitions.GetWarlockSavingThrows(),
+                "Wizard" => SavingThrowDefinitions.GetWizardSavingThrows(),
+                _ => new SavingThrowDto(),
             };
         }
     }

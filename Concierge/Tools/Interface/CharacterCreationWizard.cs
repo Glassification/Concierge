@@ -15,6 +15,7 @@ namespace Concierge.Tools.Interface
     using Concierge.Interfaces.DetailsPageInterface;
     using Concierge.Interfaces.Enums;
     using Concierge.Interfaces.EquippedItemsPageInterface;
+    using Concierge.Interfaces.InventoryPageInterface;
     using Concierge.Interfaces.OverviewPageInterface;
     using Concierge.Interfaces.SpellcastingPageInterface;
     using Concierge.Utility.Utilities;
@@ -63,6 +64,7 @@ namespace Concierge.Tools.Interface
             if (character.Properties.Class1.Level > 0)
             {
                 character.Proficiencies.AddRange(CharacterUtility.GetProficiencies(character.Properties.Class1.Name, false));
+                character.SavingThrow.SetProficiency(CharacterUtility.GetSavingThrows(character.Properties.Class1.Name));
             }
 
             if (character.Properties.Class2.Level > 0)
@@ -91,6 +93,7 @@ namespace Concierge.Tools.Interface
             this.NextSetupStep(typeof(ModifyLanguagesWindow), "Continue");
             this.NextSetupStep(typeof(ModifyClassResourceWindow), "Continue");
             this.NextSetupStep(typeof(ModifyAbilitiesWindow), "Continue");
+            this.NextSetupStep(typeof(ModifyInventoryWindow), "Continue");
             this.NextSetupStep(typeof(ModifyAttackWindow), "Continue");
             this.NextSetupStep(typeof(ModifyAmmoWindow), "Continue");
             this.NextSetupStep(typeof(ModifyStatusEffectsWindow), "Continue");

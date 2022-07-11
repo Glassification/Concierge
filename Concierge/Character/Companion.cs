@@ -19,9 +19,12 @@ namespace Concierge.Character
             this.Attributes = new Attributes();
             this.Attacks = new List<Weapon>();
             this.Properties = new CompanionProperties();
+            this.CompanionImage = new CharacterImage();
         }
 
         public CompanionProperties Properties { get; set; }
+
+        public CharacterImage CompanionImage { get; set; }
 
         public Vitality Vitality { get; set; }
 
@@ -37,6 +40,7 @@ namespace Concierge.Character
                 Attributes = this.Attributes.DeepCopy(),
                 Attacks = new List<Weapon>(this.Attacks),
                 Properties = this.Properties.DeepCopy(),
+                CompanionImage = this.CompanionImage.DeepCopy(),
             };
         }
     }

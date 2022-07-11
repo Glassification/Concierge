@@ -7,7 +7,6 @@ namespace Concierge.Character.Enums
     public enum ProficiencyTypes
     {
         Armor,
-        Shield,
         Tool,
         Weapon,
     }

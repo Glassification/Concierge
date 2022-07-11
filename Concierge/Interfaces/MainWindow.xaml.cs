@@ -59,7 +59,6 @@ namespace Concierge.Interfaces
         public readonly PlayerHandbookPage PlayerHandbookPage = new ();
 
         private readonly FileAccessService fileAccessService = new ();
-        private readonly CommandLineService commandLineService = new ();
         private readonly MainWindowService mainWindowService;
         private readonly AutosaveService autosaveTimer = new ();
         private readonly DateTimeWorkerService dateTimeService = new ();
@@ -101,13 +100,8 @@ namespace Concierge.Interfaces
             this.ButtonCloseMenu.ResetScaling();
             this.ButtonOpenMenu.ResetScaling();
 
-            this.commandLineService.ReadCommandLineArgs();
-            this.SetActiveFileText();
-            this.DrawAll();
-
             Program.Logger.Info($"{nameof(MainWindow)} loaded.");
             Program.InitializeMainWindow(this);
-            Program.Unmodify();
         }
 
         public static double GridContentWidthOpen => SystemParameters.PrimaryScreenWidth - 200;
@@ -339,6 +333,11 @@ namespace Concierge.Interfaces
             }
         }
 
+        public void SetActiveFileText()
+        {
+            this.ActiveFileNameTextBlock.Text = Program.CcsFile.FileName;
+        }
+
         protected override void OnClosed(EventArgs e)
         {
             base.OnClosed(e);
@@ -487,11 +486,6 @@ namespace Concierge.Interfaces
                 this.MaximizeButton.ToolTip = "Restore Down";
                 this.BorderThickness = new Thickness(0);
             }
-        }
-
-        private void SetActiveFileText()
-        {
-            this.ActiveFileNameTextBlock.Text = Program.CcsFile.FileName;
         }
 
         private void MainWindow_ContentRendered(object sender, EventArgs e)
@@ -738,9 +732,9 @@ namespace Concierge.Interfaces
         {
             switch (sender?.GetType()?.Name)
             {
-                case "ModifyCharacterImageWindow":
-                case "ModifyPropertiesWindow":
-                case "SettingsWindow":
+                case nameof(ModifyCharacterImageWindow):
+                case nameof(ModifyPropertiesWindow):
+                case nameof(SettingsWindow):
                     this.DrawAll();
                     break;
             }

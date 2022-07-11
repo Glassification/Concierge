@@ -15,6 +15,7 @@ namespace Concierge.Interfaces.CompanionPageInterface
     using Concierge.Commands;
     using Concierge.Interfaces.AttackDefensePageInterface;
     using Concierge.Interfaces.Enums;
+    using Concierge.Interfaces.EquippedItemsPageInterface;
     using Concierge.Interfaces.OverviewPageInterface;
     using Concierge.Services;
     using Concierge.Utility.Utilities;
@@ -49,6 +50,7 @@ namespace Concierge.Interfaces.CompanionPageInterface
             this.DrawHealth();
             this.DrawHitDice();
             this.DrawAttacks();
+            this.LoadImage();
         }
 
         public void Edit(object itemToEdit)
@@ -96,6 +98,7 @@ namespace Concierge.Interfaces.CompanionPageInterface
             this.VisionField.Text = properties.Vision.ToString();
             this.MovementField.Text = properties.Movement.ToString();
             this.ArmorClassField.Text = properties.ArmorClass.ToString();
+            this.CreatureSizeField.Text = properties.CreatureSize.ToString();
         }
 
         private void DrawHealth()
@@ -121,6 +124,14 @@ namespace Concierge.Interfaces.CompanionPageInterface
             {
                 this.WeaponDataGrid.Items.Add(weapon);
             }
+        }
+
+        private void LoadImage()
+        {
+            this.CompanionImage.Source = Program.CcsFile.Character.Companion.CompanionImage.ToImage();
+            this.CompanionImage.Stretch = Program.CcsFile.Character.Companion.CompanionImage.Stretch;
+
+            this.DefaultCompanionImage.Visibility = this.CompanionImage.Source == null ? Visibility.Visible : Visibility.Hidden;
         }
 
         private void EditAttributesButton_Click(object sender, RoutedEventArgs e)
@@ -258,20 +269,23 @@ namespace Concierge.Interfaces.CompanionPageInterface
         {
             switch (sender?.GetType()?.Name)
             {
-                case "ModifyAttributesWindow":
+                case nameof(ModifyAttributesWindow):
                     this.DrawAttributes();
                     break;
-                case "ModifyHealthWindow":
+                case nameof(ModifyHealthWindow):
                     this.DrawHealth();
                     break;
-                case "ModifyHitDiceWindow":
+                case nameof(ModifyHitDiceWindow):
                     this.DrawHitDice();
                     break;
-                case "ModifyWeaponWindow":
+                case nameof(ModifyAttackWindow):
                     this.DrawAttacks();
                     break;
-                case "ModifyPropertiesWindow":
+                case nameof(ModifyCompanionPropertiesWindow):
                     this.DrawDetails();
+                    break;
+                case nameof(ModifyCharacterImageWindow):
+                    this.LoadImage();
                     break;
             }
         }
@@ -279,6 +293,16 @@ namespace Concierge.Interfaces.CompanionPageInterface
         private void HitDiceDisplay_ValueChanged(object sender, RoutedEventArgs e)
         {
             this.DrawHitDice();
+        }
+
+        private void ImageEditButton_Click(object sender, RoutedEventArgs e)
+        {
+            ConciergeWindowService.ShowEdit<CharacterImage>(
+                Program.CcsFile.Character.Companion.CompanionImage,
+                typeof(ModifyCharacterImageWindow),
+                this.Window_ApplyChanges,
+                ConciergePage.EquippedItems);
+            this.LoadImage();
         }
     }
 }

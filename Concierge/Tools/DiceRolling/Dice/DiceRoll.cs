@@ -8,6 +8,8 @@ namespace Concierge.Tools.DiceRolling.Dice
     using System.Collections.Generic;
     using System.Linq;
 
+    using Concierge.Character.Enums;
+
     public class DiceRoll : IDiceRoll
     {
         private static readonly Random random = new ();
@@ -58,6 +60,17 @@ namespace Concierge.Tools.DiceRolling.Dice
             }
 
             return rolledDice;
+        }
+
+        public static int RollHitDie(HitDie hitDie)
+        {
+            var val = 1;
+            while (val == 1)
+            {
+                val = random.Next(1, (int)hitDie + 1);
+            }
+
+            return val;
         }
     }
 }

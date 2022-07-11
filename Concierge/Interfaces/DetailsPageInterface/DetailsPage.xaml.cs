@@ -115,7 +115,6 @@ namespace Concierge.Interfaces.DetailsPageInterface
         {
             AddSortedToList(proficiency, this.WeaponProficiencyDataGrid);
             AddSortedToList(proficiency, this.ArmorProficiencyDataGrid);
-            AddSortedToList(proficiency, this.ShieldProficiencyDataGrid);
             AddSortedToList(proficiency, this.ToolProficiencyDataGrid);
         }
 
@@ -141,7 +140,6 @@ namespace Concierge.Interfaces.DetailsPageInterface
 
             DrawProficiency(this.WeaponProficiencyDataGrid, character.Proficiencies.Where(x => x.ProficiencyType == ProficiencyTypes.Weapon).ToList());
             DrawProficiency(this.ArmorProficiencyDataGrid, character.Proficiencies.Where(x => x.ProficiencyType == ProficiencyTypes.Armor).ToList());
-            DrawProficiency(this.ShieldProficiencyDataGrid, character.Proficiencies.Where(x => x.ProficiencyType == ProficiencyTypes.Shield).ToList());
             DrawProficiency(this.ToolProficiencyDataGrid, character.Proficiencies.Where(x => x.ProficiencyType == ProficiencyTypes.Tool).ToList());
 
             this.ProficiencyBonusField.Text = $"  Bonus: {Program.CcsFile.Character.ProficiencyBonus}  ";
@@ -204,10 +202,6 @@ namespace Concierge.Interfaces.DetailsPageInterface
             {
                 return this.ArmorProficiencyDataGrid;
             }
-            else if (this.ShieldProficiencyDataGrid.SelectedItem != null)
-            {
-                return this.ShieldProficiencyDataGrid;
-            }
             else if (this.ToolProficiencyDataGrid.SelectedItem != null)
             {
                 return this.ToolProficiencyDataGrid;
@@ -251,7 +245,6 @@ namespace Concierge.Interfaces.DetailsPageInterface
         {
             this.WeaponProficiencyDataGrid.UnselectAll();
             this.ArmorProficiencyDataGrid.UnselectAll();
-            this.ShieldProficiencyDataGrid.UnselectAll();
             this.ToolProficiencyDataGrid.UnselectAll();
         }
 
@@ -260,7 +253,6 @@ namespace Concierge.Interfaces.DetailsPageInterface
             if (this.WeaponProficiencyDataGrid.SelectedItem != null)
             {
                 this.ArmorProficiencyDataGrid.UnselectAll();
-                this.ShieldProficiencyDataGrid.UnselectAll();
                 this.ToolProficiencyDataGrid.UnselectAll();
             }
         }
@@ -270,17 +262,6 @@ namespace Concierge.Interfaces.DetailsPageInterface
             if (this.ArmorProficiencyDataGrid.SelectedItem != null)
             {
                 this.WeaponProficiencyDataGrid.UnselectAll();
-                this.ShieldProficiencyDataGrid.UnselectAll();
-                this.ToolProficiencyDataGrid.UnselectAll();
-            }
-        }
-
-        private void ShieldProficiencyDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (this.ShieldProficiencyDataGrid.SelectedItem != null)
-            {
-                this.WeaponProficiencyDataGrid.UnselectAll();
-                this.ArmorProficiencyDataGrid.UnselectAll();
                 this.ToolProficiencyDataGrid.UnselectAll();
             }
         }
@@ -291,7 +272,6 @@ namespace Concierge.Interfaces.DetailsPageInterface
             {
                 this.WeaponProficiencyDataGrid.UnselectAll();
                 this.ArmorProficiencyDataGrid.UnselectAll();
-                this.ShieldProficiencyDataGrid.UnselectAll();
             }
         }
 
@@ -464,22 +444,22 @@ namespace Concierge.Interfaces.DetailsPageInterface
         {
             switch (sender?.GetType()?.Name)
             {
-                case "ModifyAppearanceWindow":
+                case nameof(ModifyAppearanceWindow):
                     this.DrawAppearance();
                     break;
-                case "ModifyClassResourceWindow":
+                case nameof(ModifyClassResourceWindow):
                     this.DrawResources();
                     break;
-                case "MondifyConditionsWindow":
+                case nameof(MondifyConditionsWindow):
                     this.DrawConditions();
                     break;
-                case "ModifyLanguagesWindow":
+                case nameof(ModifyLanguagesWindow):
                     this.DrawLanguages();
                     break;
-                case "ModifyPersonalityWindow":
+                case nameof(ModifyPersonalityWindow):
                     this.DrawPersonality();
                     break;
-                case "ModifyProficiencyWindow":
+                case nameof(ModifyProficiencyWindow):
                     this.DrawProficiencies();
                     break;
             }

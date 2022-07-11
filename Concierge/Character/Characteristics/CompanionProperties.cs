@@ -15,14 +15,17 @@ namespace Concierge.Character.Characteristics
             this.ArmorClass = 0;
             this.Movement = 0;
             this.Perception = 0;
+            this.CreatureSize = CreatureSizes.Medium;
             this.Vision = VisionTypes.Normal;
         }
 
-        public string Name { get; set; }
-
         public int ArmorClass { get; set; }
 
+        public CreatureSizes CreatureSize { get; set; }
+
         public int Movement { get; set; }
+
+        public string Name { get; set; }
 
         public int Perception { get; set; }
 
@@ -36,6 +39,7 @@ namespace Concierge.Character.Characteristics
                 ArmorClass = this.ArmorClass,
                 Movement = this.Movement,
                 Perception = this.Perception,
+                CreatureSize = this.CreatureSize,
                 Vision = this.Vision,
             };
         }
