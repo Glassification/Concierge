@@ -12,7 +12,7 @@
     d:DataContext="{d:DesignInstance Type=viewmodels:ConciergeViewModel}"
     Title="Concierge Settings"
     Height="355"
-    Width="650"
+    Width="800"
     Style="{StaticResource WindowXboxDasboardStyle}">
 
     <Grid>
@@ -68,12 +68,13 @@
 
                     <!--Title-->
                     <Grid Grid.Column="0">
-                        <TextBlock Text="Autosave:"
-                                   Foreground="White"
-                                   FontSize="18"
-                                   HorizontalAlignment="Left"
-                                   VerticalAlignment="Center"
-                                   Margin="10, 0, 0, 0"/>
+                        <TextBlock
+                            Text="Autosave:"
+                            Foreground="White"
+                            FontSize="20"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Margin="10, 0, 0, 0"/>
                     </Grid>
 
                     <!--Value-->
@@ -128,12 +129,13 @@
 
                     <!--Title-->
                     <Grid Grid.Column="0">
-                        <TextBlock Text="Mute Sounds:"
-                                   Foreground="White"
-                                   FontSize="18"
-                                   HorizontalAlignment="Left"
-                                   VerticalAlignment="Center"
-                                   Margin="10, 0, 0, 0"/>
+                        <TextBlock
+                            Text="Mute Sounds:"
+                            Foreground="White"
+                            FontSize="20"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Margin="10, 0, 0, 0"/>
                     </Grid>
 
                     <!--Value-->
@@ -155,7 +157,7 @@
                         <TextBlock 
                             Text="Units:"
                             Foreground="White"
-                            FontSize="18"
+                            FontSize="20"
                             TextWrapping="Wrap"
                             HorizontalAlignment="Left"
                             VerticalAlignment="Center"
@@ -189,12 +191,13 @@
 
                     <!--Title-->
                     <Grid Grid.Column="0">
-                        <TextBlock Text="Coin Weight:"
-                                   Foreground="White"
-                                   FontSize="18"
-                                   HorizontalAlignment="Left"
-                                   VerticalAlignment="Center"
-                                   Margin="10, 0, 0, 0"/>
+                        <TextBlock
+                            Text="Coin Weight:"
+                            Foreground="White"
+                            FontSize="20"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Margin="10, 0, 0, 0"/>
                     </Grid>
 
                     <!--Value-->
@@ -216,7 +219,7 @@
                         <TextBlock 
                             Text="Encumbrance:"
                             Foreground="White"
-                            FontSize="18"
+                            FontSize="20"
                             HorizontalAlignment="Left"
                             VerticalAlignment="Center"
                             Margin="10, 0, 0, 0"/>
@@ -241,7 +244,7 @@
                         <TextBlock 
                             Text="Check Version:"
                             Foreground="White"
-                            FontSize="18"
+                            FontSize="20"
                             TextWrapping="Wrap"
                             HorizontalAlignment="Left"
                             VerticalAlignment="Center"
@@ -271,7 +274,7 @@
                             TextWrapping="Wrap"
                             HorizontalAlignment="Left"
                             VerticalAlignment="Top"
-                            Margin="10, 0, 0, 0"/>
+                            Margin="10, 8, 0, 0"/>
                         <TextBlock 
                             Text="(Experimental)"
                             Foreground="Goldenrod"
@@ -279,7 +282,7 @@
                             TextWrapping="Wrap"
                             HorizontalAlignment="Left"
                             VerticalAlignment="Bottom"
-                            Margin="10, 0, 0, 0"/>
+                            Margin="10, 0, 0, 8"/>
                     </Grid>
 
                     <!--Value-->

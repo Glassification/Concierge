@@ -6,7 +6,6 @@ namespace Concierge.Persistence.ReadWriters
 {
     using System;
     using System.IO;
-    using System.Text;
     using System.Text.RegularExpressions;
 
     using Concierge.Configuration;
@@ -24,9 +23,19 @@ namespace Concierge.Persistence.ReadWriters
         {
             try
             {
+                CcsFile? ccsFile;
                 var rawJson = File.ReadAllText(file);
-                rawJson = DecodeIfNeeded(rawJson);
-                var ccsFile = JsonConvert.DeserializeObject<CcsFile>(rawJson);
+                if (rawJson.Contains(IsJsonSearchText))
+                {
+                    Program.Logger.Info("No Decompressing needed.");
+                    ccsFile = JsonConvert.DeserializeObject<CcsFile>(rawJson);
+                }
+                else
+                {
+                    Program.Logger.Info("Decompressing file.");
+                    var compressedJson = File.ReadAllBytes(file);
+                    ccsFile = JsonConvert.DeserializeObject<CcsFile>(CcsCompression.Unzip(compressedJson));
+                }
 
                 if (ccsFile is null)
                 {
@@ -59,9 +68,17 @@ namespace Concierge.Persistence.ReadWriters
             {
                 ccsFile.Version = Program.AssemblyVersion;
                 var rawJson = JsonConvert.SerializeObject(ccsFile, Formatting.Indented);
-                rawJson = EncodeIfNeeded(rawJson);
 
-                File.WriteAllText(ccsFile.AbsolutePath, rawJson);
+                if (AppSettingsManager.StartUp.CompressCharacterSheet || !Program.IsDebug)
+                {
+                    Program.Logger.Info("Compressing file.");
+                    File.WriteAllBytes(ccsFile.AbsolutePath, CcsCompression.Zip(rawJson));
+                }
+                else
+                {
+                    Program.Logger.Info("No Compressing needed.");
+                    File.WriteAllText(ccsFile.AbsolutePath, rawJson);
+                }
 
                 Program.Unmodify();
                 Program.Logger.Info($"Successfully saved to {ccsFile.AbsolutePath}");
@@ -75,32 +92,6 @@ namespace Concierge.Persistence.ReadWriters
 
                 return false;
             }
-        }
-
-        private static string EncodeIfNeeded(string rawJson)
-        {
-            if (AppSettingsManager.StartUp.EncodeCharacterSheet || !Program.IsDebug)
-            {
-                Program.Logger.Info("Encoding file.");
-                var byteArray = Encoding.UTF8.GetBytes(rawJson);
-                return Convert.ToBase64String(byteArray);
-            }
-
-            Program.Logger.Info("No encoding needed.");
-            return rawJson;
-        }
-
-        private static string DecodeIfNeeded(string rawJson)
-        {
-            if (rawJson.Contains(IsJsonSearchText))
-            {
-                Program.Logger.Info("No decoding needed.");
-                return rawJson;
-            }
-
-            var byteArray = Convert.FromBase64String(rawJson);
-            Program.Logger.Info("Decoding file.");
-            return Encoding.UTF8.GetString(byteArray);
         }
 
         private static bool CheckVersion(string version)
