@@ -1,14 +1,19 @@
-﻿namespace ConciergeDevTools
+﻿// <copyright file="ParseScrubbedData.cs" company="Thomas Beckett">
+// Copyright (c) Thomas Beckett. All rights reserved.
+// </copyright>
+
+namespace ConciergeDevTools
 {
+    using System.Text.RegularExpressions;
+
     using Concierge.Character.Enums;
     using Concierge.Character.Items;
     using Concierge.Primitives;
     using Newtonsoft.Json;
-    using System.Text.RegularExpressions;
 
     public static class ParseScrubbedData
     {
-        private static readonly Regex CommaSplit = new("(?:^|,)(\"(?:[^\"])*\"|[^,]*)", RegexOptions.Compiled);
+        private static readonly Regex CommaSplit = new ("(?:^|,)(\"(?:[^\"])*\"|[^,]*)", RegexOptions.Compiled);
 
         public static void Parse(string file)
         {

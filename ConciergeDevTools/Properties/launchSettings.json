@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "ConciergeDevTools": {
+      "commandName": "Project",
+      "commandLineArgs": "--ScrubbedData \"this is a string\""
+    }
+  }
+}

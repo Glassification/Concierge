@@ -415,7 +415,7 @@ namespace Concierge.Interfaces
             items.Add(service.GenerateListViewItem(this.DetailsPage, "Details", PackIconKind.Details));
             items.Add(service.GenerateListViewItem(this.AttackDefensePage, "Attack and Defense", PackIconKind.ShieldHalfFull));
             items.Add(service.GenerateListViewItem(this.AbilitiesPage, "Abilities", PackIconKind.Brain));
-            items.Add(service.GenerateListViewItem(this.EquippedItemsPage, "Equipped Items", PackIconKind.Person));
+            items.Add(service.GenerateListViewItem(this.EquippedItemsPage, "Equipped Items", PackIconKind.HumanMaleHeight));
             items.Add(service.GenerateListViewItem(this.InventoryPage, "Inventory", PackIconKind.Backpack));
             items.Add(service.GenerateListViewItem(this.SpellcastingPage, "Spellcasting", PackIconKind.Magic));
             items.Add(service.GenerateListViewItem(this.CompanionPage, "Companion", PackIconKind.AccountSupervisor));

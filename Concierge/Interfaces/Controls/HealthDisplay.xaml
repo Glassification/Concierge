@@ -9,17 +9,19 @@
     xmlns:local="clr-namespace:Concierge.Interfaces.Controls"
     mc:Ignorable="d" 
     d:DesignHeight="400" d:DesignWidth="450">
-    <Grid x:Name="MainHealthGrid" Grid.Column="0">
+    <Grid
+        x:Name="MainHealthGrid"
+        Grid.Column="0"
+        Margin="3">
         <Grid.RowDefinitions>
             <RowDefinition Height="20*"/>
-            <RowDefinition Height="80*"/>
-            <RowDefinition Height="20*"/>
+            <RowDefinition Height="65*"/>
+            <RowDefinition Height="15*"/>
         </Grid.RowDefinitions>
 
         <!--Current HP-->
         <Grid
             Grid.Row="1"
-            Margin="3, 0, 3, 0"
             Background="#001233"
             x:Name="HealthBox">
             <materialDesign:PackIcon 
@@ -72,7 +74,7 @@
         </Grid>
 
         <!--Total HP-->
-        <Grid Grid.Row="0" Margin="3, 3, 3, 0" Background="#000917">
+        <Grid Grid.Row="0" Background="#000917">
             <components:ConciergeDesignButton
                 Style="{StaticResource ConciergeDesignButtonStyle}" 
                 x:Name="EditHealthButton"
@@ -94,7 +96,10 @@
                 VerticalAlignment="Center"/>
         </Grid>
 
-        <Grid x:Name="DeathSaveGrid" Grid.Row="2" Background="#000917" Margin="3,0,3,3">
+        <Grid
+            x:Name="DeathSaveGrid"
+            Grid.Row="2"
+            Background="#000917">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="12.5*"/>
                 <ColumnDefinition Width="12.5*"/>

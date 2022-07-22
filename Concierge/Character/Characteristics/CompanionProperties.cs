@@ -17,11 +17,14 @@ namespace Concierge.Character.Characteristics
             this.Perception = 0;
             this.CreatureSize = CreatureSizes.Medium;
             this.Vision = VisionTypes.Normal;
+            this.Initiative = 0;
         }
 
         public int ArmorClass { get; set; }
 
         public CreatureSizes CreatureSize { get; set; }
+
+        public int Initiative { get; set; }
 
         public int Movement { get; set; }
 
@@ -41,6 +44,7 @@ namespace Concierge.Character.Characteristics
                 Perception = this.Perception,
                 CreatureSize = this.CreatureSize,
                 Vision = this.Vision,
+                Initiative = this.Initiative,
             };
         }
     }

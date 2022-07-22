@@ -124,7 +124,7 @@
                         Foreground="Khaki"
                         Click="ImageEditButton_Click"
                         ToolTip="Edit Character Image">
-                        <materialDesign:PackIcon Kind="TextBoxEdit" Width="25" Height="25"/>
+                        <materialDesign:PackIcon Kind="ImageEdit" Width="25" Height="25"/>
                     </components:ConciergeDesignButton>
 
                     <Grid 

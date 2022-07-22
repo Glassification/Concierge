@@ -127,7 +127,7 @@
                     <Grid Grid.Column="1" Background="#001233" >
                         <components:ConciergeTextBlock 
                             x:Name="InitiativeField"
-                            FontSize="22"/>
+                            FontSize="35"/>
                     </Grid>
                 </Grid>
 
@@ -140,23 +140,25 @@
 
                     <!--Name-->
                     <Grid Grid.Column="0" Background="#000917">
-                        <components:ConciergeTextBlock Text="Passive Perception"
-                                   Foreground="White"
-                                   FontSize="20"
-                                   FontWeight="Bold"
-                                   HorizontalAlignment="Center"
-                                   VerticalAlignment="Center"
-                                   TextWrapping="Wrap"/>
+                        <components:ConciergeTextBlock
+                            Text="Passive Perception"
+                            Foreground="White"
+                            FontSize="20"
+                            FontWeight="Bold"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            TextWrapping="Wrap"/>
                     </Grid>
 
                     <!--Value-->
                     <Grid Grid.Column="1" Background="#001233">
-                        <components:ConciergeTextBlock x:Name="PassivePerceptionField"
-                                   Foreground="White"
-                                   FontSize="22"
-                                   FontWeight="Bold"
-                                   HorizontalAlignment="Center"
-                                   VerticalAlignment="Center"/>
+                        <components:ConciergeTextBlock
+                            x:Name="PassivePerceptionField"
+                            Foreground="White"
+                            FontSize="35"
+                            FontWeight="Bold"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"/>
                     </Grid>
                 </Grid>
 
@@ -169,23 +171,25 @@
 
                     <!--Name-->
                     <Grid Grid.Column="0" Background="#000917">
-                        <components:ConciergeTextBlock Text="Vision"
-                                   Foreground="White"
-                                   FontSize="20"
-                                   FontWeight="Bold"
-                                   HorizontalAlignment="Center"
-                                   VerticalAlignment="Center"
-                                   TextWrapping="Wrap"/>
+                        <components:ConciergeTextBlock
+                            Text="Vision"
+                            Foreground="White"
+                            FontSize="20"
+                            FontWeight="Bold"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            TextWrapping="Wrap"/>
                     </Grid>
 
                     <!--Value-->
                     <Grid Grid.Column="1" Background="#001233">
-                        <components:ConciergeTextBlock x:Name="VisionField"
-                                   Foreground="White"
-                                   FontSize="22"
-                                   FontWeight="Bold"
-                                   HorizontalAlignment="Center"
-                                   VerticalAlignment="Center"/>
+                        <components:ConciergeTextBlock
+                            x:Name="VisionField"
+                            Foreground="White"
+                            FontSize="22"
+                            FontWeight="Bold"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"/>
                     </Grid>
                 </Grid>
 
@@ -198,23 +202,25 @@
 
                     <!--Name-->
                     <Grid Grid.Column="0" Background="#000917">
-                        <components:ConciergeTextBlock Text="Movement Speed"
-                                   Foreground="White"
-                                   FontSize="20"
-                                   FontWeight="Bold"
-                                   HorizontalAlignment="Center"
-                                   VerticalAlignment="Center"
-                                   TextWrapping="Wrap"/>
+                        <components:ConciergeTextBlock
+                            Text="Movement Speed"
+                            Foreground="White"
+                            FontSize="20"
+                            FontWeight="Bold"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            TextWrapping="Wrap"/>
                     </Grid>
 
                     <!--Value-->
                     <Grid Grid.Column="1" Background="#001233">
-                        <components:ConciergeTextBlock x:Name="MovementSpeedField"
-                                   Foreground="White"
-                                   FontSize="22"
-                                   FontWeight="Bold"
-                                   HorizontalAlignment="Center"
-                                   VerticalAlignment="Center"/>
+                        <components:ConciergeTextBlock
+                            x:Name="MovementSpeedField"
+                            Foreground="White"
+                            FontSize="35"
+                            FontWeight="Bold"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"/>
                     </Grid>
                 </Grid>
             </Grid>
@@ -643,7 +649,7 @@
                                     Foreground="White"
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"
-                                    FontSize="65"
+                                    FontSize="75"
                                     FontWeight="Bold" Margin="0,0,0,0"/>
                             </Grid>
                         </Grid>

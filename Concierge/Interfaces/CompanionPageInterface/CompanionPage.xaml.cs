@@ -99,6 +99,7 @@ namespace Concierge.Interfaces.CompanionPageInterface
             this.MovementField.Text = properties.Movement.ToString();
             this.ArmorClassField.Text = properties.ArmorClass.ToString();
             this.CreatureSizeField.Text = properties.CreatureSize.ToString();
+            this.InitiativeField.Text = properties.Initiative.ToString();
         }
 
         private void DrawHealth()

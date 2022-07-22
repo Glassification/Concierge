@@ -60,6 +60,7 @@ namespace Concierge.Interfaces.CompanionPageInterface
             this.VisionComboBox.Text = this.Properties.Vision.ToString();
             this.MovementUpDown.Value = this.Properties.Movement;
             this.CreatureSizeComboBox.Text = this.Properties.CreatureSize.ToString();
+            this.InitiativeUpDown.Value = this.Properties.Initiative;
         }
 
         private void UpdateCompanion()
@@ -72,6 +73,7 @@ namespace Concierge.Interfaces.CompanionPageInterface
             this.Properties.Vision = (VisionTypes)Enum.Parse(typeof(VisionTypes), this.VisionComboBox.Text);
             this.Properties.Movement = this.MovementUpDown.Value;
             this.Properties.CreatureSize = (CreatureSizes)Enum.Parse(typeof(CreatureSizes), this.CreatureSizeComboBox.Text);
+            this.Properties.Initiative = this.InitiativeUpDown.Value;
 
             Program.UndoRedoService.AddCommand(new EditCommand<CompanionProperties>(this.Properties, oldItem, this.ConciergePage));
         }
