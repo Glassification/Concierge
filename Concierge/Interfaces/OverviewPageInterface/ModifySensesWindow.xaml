@@ -67,25 +67,24 @@
 
                 <!--Title-->
                 <Grid Grid.Column="0">
-                    <TextBlock Text="Initiative:"
-                               Foreground="White"
-                               FontSize="20"
-                               HorizontalAlignment="Left"
-                               VerticalAlignment="Center"
-                               Margin="10, 0, 0, 0"/>
-                </Grid>
-
-                <!--Value-->
-                <Grid Grid.Column="1">
-                    <TextBlock 
-                        Text="20"
-                        Name="InitiativeTextBlock"
+                    <TextBlock
+                        Text="Initiative:"
                         Foreground="White"
-                        FontSize="25"
+                        FontSize="20"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Center"
                         Margin="10, 0, 0, 0"/>
                 </Grid>
+
+                <!--Value-->
+                <components:ConciergeTextBoxBackground
+                    Grid.Column="1"
+                    IsEnabled="False">
+                    <components:ConciergeTextBox
+                        x:Name="InitiativeTextBlock"
+                        FontSize="25"
+                        Margin="20, 0, 0, 0"/>
+                </components:ConciergeTextBoxBackground>
             </Grid>
             
             <!--Initiative Bonus-->
@@ -122,25 +121,24 @@
 
                 <!--Title-->
                 <Grid Grid.Column="0">
-                    <TextBlock Text="Perception:"
-                               Foreground="White"
-                               FontSize="20"
-                               HorizontalAlignment="Left"
-                               VerticalAlignment="Center"
-                               Margin="10, 0, 0, 0"/>
+                    <TextBlock
+                        Text="Perception:"
+                        Foreground="White"
+                        FontSize="20"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        Margin="10, 0, 0, 0"/>
                 </Grid>
 
                 <!--Value-->
-                <Grid Grid.Column="1">
-                    <TextBlock 
-                        Text="20"
-                        Name="PerceptionTextBlock"
-                        Foreground="White"
+                <components:ConciergeTextBoxBackground
+                    Grid.Column="1"
+                    IsEnabled="False">
+                    <components:ConciergeTextBox
+                        x:Name="PerceptionTextBlock"
                         FontSize="25"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Center"
                         Margin="20, 0, 0, 0"/>
-                </Grid>
+                </components:ConciergeTextBoxBackground>
             </Grid>
 
             <!--Perception Bonus-->
@@ -203,25 +201,25 @@
 
                 <!--Title-->
                 <Grid Grid.Column="0">
-                    <TextBlock Text="Movement:"
-                               Foreground="White"
-                               FontSize="20"
-                               HorizontalAlignment="Left"
-                               VerticalAlignment="Center"
-                               Margin="10, 0, 0, 0"/>
+                    <TextBlock
+                        Text="Movement:"
+                        Foreground="White"
+                        FontSize="20"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        Margin="10, 0, 0, 0"/>
                 </Grid>
 
                 <!--Value-->
-                <Grid Grid.Column="1">
-                    <TextBlock 
-                        Text="20"
-                        Name="MovementTextBlock"
-                        Foreground="White"
+                <components:ConciergeTextBoxBackground
+                    Grid.Column="1"
+                    IsEnabled="False">
+                    <components:ConciergeTextBox
+                        x:Name="MovementTextBlock"
                         FontSize="25"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Center"
-                        Margin="20, 0, 0, 0"/>
-                </Grid>
+                        Margin="20, 0, 0, 0"
+                        VerticalAlignment="Center"/>
+                </components:ConciergeTextBoxBackground>
             </Grid>
 
             <!--Base Movement-->

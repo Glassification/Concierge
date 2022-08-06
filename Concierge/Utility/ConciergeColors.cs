@@ -13,9 +13,6 @@ namespace Concierge.Utility
     {
         static ConciergeColors()
         {
-            ControlText = new SolidColorBrush(Color.FromArgb(255, 214, 214, 214));
-            ControlText.Freeze();
-
             WindowBackground = new SolidColorBrush(Color.FromArgb(255, 37, 37, 38));
             WindowBackground.Freeze();
 
@@ -76,8 +73,6 @@ namespace Concierge.Utility
             TreeViewBackground = ColorUtility.GenerateGradientBrush(ProficiencyLightBlue, Color.FromArgb(255, 51, 65, 92), new Point(0, 0), new Point(0, 1));
             TreeViewBackground.Freeze();
         }
-
-        public static SolidColorBrush ControlText { get; }
 
         public static SolidColorBrush WindowBackground { get; }
 

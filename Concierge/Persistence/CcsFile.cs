@@ -18,13 +18,13 @@ namespace Concierge.Persistence
             this.OriginalCreationDate = ConciergeDateTime.OriginalCreationNow;
             this.Version = Program.AssemblyVersion;
             this.AbsolutePath = string.Empty;
+            this.Hash = string.Empty;
         }
 
+        [JsonIgnore]
+        public string AbsolutePath { get; set; }
+
         public ConciergeCharacter Character { get; set; }
-
-        public string OriginalCreationDate { get; init; }
-
-        public string Version { get; set; }
 
         [JsonIgnore]
         public string FileName => Path.GetFileName(this.AbsolutePath) ?? string.Empty;
@@ -32,7 +32,10 @@ namespace Concierge.Persistence
         [JsonIgnore]
         public string FilePath => Path.GetDirectoryName(this.AbsolutePath) ?? string.Empty;
 
-        [JsonIgnore]
-        public string AbsolutePath { get; set; }
+        public string Hash { get; set; }
+
+        public string OriginalCreationDate { get; init; }
+
+        public string Version { get; set; }
     }
 }

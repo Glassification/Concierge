@@ -37,7 +37,7 @@ namespace Concierge.Primitives
 
         public override string ToString()
         {
-            return $"[{this.Hue}, {this.Saturation}, {this.Value}]";
+            return $"[Hue={this.Hue}, Saturation={this.Saturation}, Value={this.Value}]";
         }
 
         public override bool Equals(object? obj)

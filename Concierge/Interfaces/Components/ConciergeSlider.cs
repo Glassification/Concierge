@@ -13,7 +13,6 @@ namespace Concierge.Interfaces.Components
         public ConciergeSlider()
             : base()
         {
-            this.IsDragging = false;
             this.Minimum = 0;
             this.Margin = new Thickness(5, 0, 5, 0);
             this.IsMoveToPointEnabled = true;
@@ -23,8 +22,6 @@ namespace Concierge.Interfaces.Components
             this.MouseEnter += this.Slider_MouseEnter;
             this.MouseLeave += this.Slider_MouseLeave;
         }
-
-        private bool IsDragging { get; set; }
 
         private void Slider_MouseEnter(object sender, MouseEventArgs e)
         {

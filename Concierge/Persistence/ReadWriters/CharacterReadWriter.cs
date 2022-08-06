@@ -13,6 +13,7 @@ namespace Concierge.Persistence.ReadWriters
     using Concierge.Interfaces.Enums;
     using Concierge.Tools.Interface;
     using Concierge.Utility.Extensions;
+    using global::Persistence;
     using Newtonsoft.Json;
 
     public static class CharacterReadWriter
@@ -43,7 +44,7 @@ namespace Concierge.Persistence.ReadWriters
                 }
 
                 ccsFile.AbsolutePath = file;
-                if (AppSettingsManager.UserSettings.CheckVersion && !CheckVersion(ccsFile.Version))
+                if (!CheckHash(ccsFile) || (AppSettingsManager.UserSettings.CheckVersion && !CheckVersion(ccsFile.Version)))
                 {
                     return new CcsFile();
                 }
@@ -67,6 +68,7 @@ namespace Concierge.Persistence.ReadWriters
             try
             {
                 ccsFile.Version = Program.AssemblyVersion;
+                ccsFile.Hash = CcsHashing.HashCharacter(ccsFile.Character);
                 var rawJson = JsonConvert.SerializeObject(ccsFile, Formatting.Indented);
 
                 if (AppSettingsManager.StartUp.CompressCharacterSheet || !Program.IsDebug)
@@ -119,6 +121,30 @@ namespace Concierge.Persistence.ReadWriters
             }
 
             return true;
+        }
+
+        private static bool CheckHash(CcsFile ccsFile)
+        {
+            if (CcsHashing.CheckHash(ccsFile))
+            {
+                return true;
+            }
+
+            var message = "The integrity of this file cannot be verified.\nContinue loading?";
+
+            Program.Logger.Warning(message);
+            var result = ConciergeMessageBox.Show(
+                Regex.Unescape(message),
+                "Warning",
+                ConciergeWindowButtons.YesNo,
+                ConciergeWindowIcons.Alert);
+
+            Program.Logger.Info($"{(result == ConciergeWindowResult.OK ? "Continue" : "Cancel")} opening file.");
+            return result switch
+            {
+                ConciergeWindowResult.Yes => true,
+                _ => false,
+            };
         }
 
         private static bool CompareMajorMinorVersion(string fileVersion)

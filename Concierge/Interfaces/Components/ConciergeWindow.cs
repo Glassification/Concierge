@@ -8,8 +8,8 @@ namespace Concierge.Interfaces.Components
     using System.Windows;
     using System.Windows.Input;
     using System.Windows.Media;
-    using System.Windows.Media.Animation;
 
+    using Concierge.Animations;
     using Concierge.Character.Enums;
     using Concierge.Configuration;
     using Concierge.Interfaces.Enums;
@@ -17,10 +17,7 @@ namespace Concierge.Interfaces.Components
 
     public abstract class ConciergeWindow : Window
     {
-        private const double FadeAnimationSpeed = 0.15;
-
-        private readonly DoubleAnimation openAnimation;
-        private readonly DoubleAnimation hideAnimation;
+        private readonly WindowAnimation windowAnimation;
 
         public ConciergeWindow()
         {
@@ -37,27 +34,7 @@ namespace Concierge.Interfaces.Components
             this.MouseDown += this.Window_MouseDown;
             this.KeyDown += this.Window_KeyDown;
 
-            this.openAnimation = new DoubleAnimation
-            {
-                From = 0,
-                To = 1,
-                Duration = new Duration(TimeSpan.FromSeconds(FadeAnimationSpeed)),
-                FillBehavior = FillBehavior.Stop,
-            };
-            this.hideAnimation = new DoubleAnimation
-            {
-                From = 1,
-                To = 0,
-                Duration = new Duration(TimeSpan.FromSeconds(FadeAnimationSpeed)),
-                FillBehavior = FillBehavior.Stop,
-            };
-            this.hideAnimation.Completed += (s, e) =>
-            {
-                this.Close();
-            };
-
-            this.openAnimation.Freeze();
-            this.hideAnimation.Freeze();
+            this.windowAnimation = new WindowAnimation(WindowAnimation.DefaultAnimationSpeed, this.Window_OnClose);
         }
 
         public delegate void ApplyChangesEventHandler(object sender, EventArgs e);
@@ -135,7 +112,7 @@ namespace Concierge.Interfaces.Components
 
             this.Title = this.HeaderText;
             this.SetOpenLocation();
-            this.BeginAnimation(OpacityProperty, this.openAnimation);
+            this.BeginAnimation(OpacityProperty, this.windowAnimation.Open);
             this.ShowDialog();
         }
 
@@ -143,7 +120,7 @@ namespace Concierge.Interfaces.Components
         {
             Program.Logger.Info($"{this.Title} closed.");
 
-            this.BeginAnimation(OpacityProperty, this.hideAnimation);
+            this.BeginAnimation(OpacityProperty, this.windowAnimation.Close);
         }
 
         protected void InvokeApplyChanges()
@@ -193,6 +170,11 @@ namespace Concierge.Interfaces.Components
             {
                 this.DragMove();
             }
+        }
+
+        private void Window_OnClose(object? sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

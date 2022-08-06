@@ -51,6 +51,7 @@ namespace Concierge.Interfaces.NotesPageInterface
             this.Editing = false;
             this.HeaderTextBlock.Text = this.HeaderText;
 
+            this.DocumentTextBox.Focus();
             this.ShowConciergeWindow();
 
             return false;

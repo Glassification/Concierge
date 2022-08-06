@@ -8,6 +8,7 @@ namespace Concierge.Interfaces
     using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Input;
+    using System.Windows.Media.Animation;
     using System.Windows.Navigation;
 
     using Concierge.Character.Characteristics;
@@ -76,6 +77,7 @@ namespace Concierge.Interfaces
 
             this.mainWindowService = new MainWindowService(this.ListViewItem_Selected);
             this.GridContent.Width = GridContentWidthClose;
+            this.IsMenuOpen = false;
             this.IgnoreListItemSelectionChanged = true;
             this.MessageBar.Background = ConciergeColors.ProficiencyBrush;
             this.GridTitle.Background = ConciergeColors.TitleMenuBrush;
@@ -123,6 +125,8 @@ namespace Concierge.Interfaces
 
             set => this.SetValue(ScaleValuePropertyY, value);
         }
+
+        public bool IsMenuOpen { get; set; }
 
         private static bool IsControl => (Keyboard.Modifiers & ModifierKeys.Control) == ModifierKeys.Control;
 
@@ -488,29 +492,44 @@ namespace Concierge.Interfaces
             }
         }
 
-        private void MainWindow_ContentRendered(object sender, EventArgs e)
+        private void ShiftPlusKeyPress(KeyEventArgs keyEvent)
         {
-            this.FrameContent.NavigationUIVisibility = NavigationUIVisibility.Hidden;
-        }
-
-        private void MainGrid_SizeChanged(object sender, EventArgs e)
-        {
-            this.CalculateScale();
-        }
-
-        private void MainWindow_KeyPress(object sender, KeyEventArgs e)
-        {
-            EasterEggController.KonamiCode(e.Key);
-
-            if (Program.IsTyping || !IsControl)
+            if (!IsShift)
             {
                 return;
             }
 
-            // Move off Side Bar to avoid reset
-            this.FrameContent.Focus();
+            var keyPressed = keyEvent.Key;
+            if (keyEvent.Key == Key.System)
+            {
+                keyPressed = keyEvent.SystemKey;
+            }
 
-            switch (e.Key)
+            switch (keyPressed)
+            {
+                case Key.Tab:
+                    this.PopupBoxControl.IsPopupOpen = !this.PopupBoxControl.IsPopupOpen;
+                    break;
+                case Key.CapsLock:
+                    this.OpenMenu();
+                    break;
+            }
+        }
+
+        private void ControlPlusKeyPress(KeyEventArgs keyEvent)
+        {
+            if (!IsControl)
+            {
+                return;
+            }
+
+            var keyPressed = keyEvent.Key;
+            if (keyEvent.Key == Key.System)
+            {
+                keyPressed = keyEvent.SystemKey;
+            }
+
+            switch (keyPressed)
             {
                 case Key.A:
                     ConciergeWindowService.ShowWindow(typeof(AboutConciergeWindow));
@@ -593,6 +612,31 @@ namespace Concierge.Interfaces
                     this.MoveSelection(ConciergePage.Notes);
                     break;
             }
+        }
+
+        private void MainWindow_ContentRendered(object sender, EventArgs e)
+        {
+            this.FrameContent.NavigationUIVisibility = NavigationUIVisibility.Hidden;
+        }
+
+        private void MainGrid_SizeChanged(object sender, EventArgs e)
+        {
+            this.CalculateScale();
+        }
+
+        private void MainWindow_KeyPress(object sender, KeyEventArgs e)
+        {
+            EasterEggController.KonamiCode(e.Key);
+            if (Program.IsTyping)
+            {
+                return;
+            }
+
+            // Move off Side Bar to avoid reset
+            this.FrameContent.Focus();
+
+            this.ControlPlusKeyPress(e);
+            this.ShiftPlusKeyPress(e);
         }
 
         private void ButtonOpenMenu_Click(object sender, RoutedEventArgs e)
@@ -813,6 +857,18 @@ namespace Concierge.Interfaces
             ConciergeSound.TapNavigation();
             this.LevelUp();
             this.IgnoreSecondPress = true;
+        }
+
+        private void OpenMenu()
+        {
+            var sb = this.FindResource("OpenMenu") as Storyboard;
+            sb?.Begin();
+        }
+
+        private void CloseMenu()
+        {
+            var sb = this.FindResource("CloseMenu") as Storyboard;
+            sb?.Begin();
         }
     }
 }

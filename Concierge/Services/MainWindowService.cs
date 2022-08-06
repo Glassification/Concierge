@@ -8,6 +8,7 @@ namespace Concierge.Services
     using System.Windows.Controls;
     using System.Windows.Input;
     using System.Windows.Media;
+    using System.Windows.Media.Animation;
 
     using Concierge.Character;
     using Concierge.Character.Characteristics;
@@ -33,7 +34,7 @@ namespace Concierge.Services
             var packIcon = new PackIcon()
             {
                 Kind = packIconKind,
-                Foreground = ConciergeColors.ControlText,
+                Foreground = Brushes.White,
                 Height = 28,
                 Width = 28,
                 Margin = new Thickness(10),

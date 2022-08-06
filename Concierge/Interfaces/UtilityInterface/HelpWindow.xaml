@@ -5,18 +5,19 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-    xmlns:components="clr-namespace:Concierge.Interfaces.Components" 
-    xmlns:viewmodels="clr-namespace:Concierge.Interfaces.ViewModels" 
+    xmlns:components="clr-namespace:Concierge.Interfaces.Components"
+    xmlns:viewmodels="clr-namespace:Concierge.Interfaces.ViewModels"
+    xmlns:controls="clr-namespace:Interfaces.Controls"
     d:DataContext="{d:DesignInstance Type=viewmodels:ConciergeViewModel}"
     mc:Ignorable="d"
     Title="Concierge Help"
-    Height="420"
+    Height="495"
     Width="650"
     Style="{StaticResource WindowXboxDasboardStyle}">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="45"/>
-            <RowDefinition Height="305"/>
+            <RowDefinition Height="380"/>
             <RowDefinition Height="70"/>
         </Grid.RowDefinitions>
 
@@ -46,21 +47,22 @@
         <!--Content-->
         <Grid Grid.Row="1">
             <Grid.RowDefinitions>
-                <RowDefinition Height="94*"/>
-                <RowDefinition Height="6*"/>
+                <RowDefinition Height="360"/>
+                <RowDefinition Height="20"/>
             </Grid.RowDefinitions>
             
             <!--Shortcuts-->
             <Grid Grid.Row="0">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="12.5*"/>
-                    <RowDefinition Height="12.5*"/>
-                    <RowDefinition Height="12.5*"/>
-                    <RowDefinition Height="12.5*"/>
-                    <RowDefinition Height="12.5*"/>
-                    <RowDefinition Height="12.5*"/>
-                    <RowDefinition Height="12.5*"/>
-                    <RowDefinition Height="12.5*"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="40"/>
                 </Grid.RowDefinitions>
 
                 <Grid Grid.Row="0">
@@ -68,71 +70,15 @@
                         <ColumnDefinition Width="50*"/>
                         <ColumnDefinition Width="50*"/>
                     </Grid.ColumnDefinitions>
-
-                    <Grid Grid.Column="0">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="100*"/>
-                            <ColumnDefinition Width="Auto"/>
-                        </Grid.ColumnDefinitions>
-                        <TextBlock
-                            Grid.Column="0"
-                            Text="New Character"
-                            Foreground="White"
-                            FontSize="18"
-                            VerticalAlignment="Center"
-                            HorizontalAlignment="Left"
-                            Margin="15,0,0,0"/>
-                        <Line  
-                            Grid.Column="1"
-                            Stretch="Uniform"
-                            X1="0" X2="1" Y1="0" Y2="0"
-                            Stroke="#227EA9" 
-                            StrokeDashArray="4, 2"
-                            StrokeThickness="1"
-                            VerticalAlignment="Center"
-                            Margin="5,0,5,0"/>
-                        <TextBlock
-                            Grid.Column="2"
-                            Text="Ctrl-N"
-                            Foreground="White"
-                            FontSize="18"
-                            VerticalAlignment="Center"
-                            HorizontalAlignment="Right"
-                            Margin="0,0,15,0"/>
-                    </Grid>
-                    <Grid Grid.Column="1">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="100*"/>
-                            <ColumnDefinition Width="Auto"/>
-                        </Grid.ColumnDefinitions>
-                        <TextBlock
-                            Grid.Column="0"
-                            Text="Open Character"
-                            Foreground="White"
-                            FontSize="18"
-                            VerticalAlignment="Center"
-                            HorizontalAlignment="Left"
-                            Margin="15,0,0,0"/>
-                        <Line  
-                            Grid.Column="1"
-                            Stretch="Uniform"
-                            X1="0" X2="1" Y1="0" Y2="0"
-                            Stroke="#227EA9" 
-                            StrokeDashArray="4, 2"
-                            StrokeThickness="1"
-                            VerticalAlignment="Center"
-                            Margin="5,0,5,0"/>
-                        <TextBlock
-                            Grid.Column="2"
-                            Text="Ctrl-O"
-                            Foreground="White"
-                            FontSize="18"
-                            VerticalAlignment="Center"
-                            HorizontalAlignment="Right"
-                            Margin="0,0,15,0"/>
-                    </Grid>
+                    
+                    <controls:KeyboardShotcutDisplay
+                        Grid.Column="0"
+                        ShortcutName="New Character"
+                        CommandName="Ctrl-N"/>
+                    <controls:KeyboardShotcutDisplay
+                        Grid.Column="1"
+                        ShortcutName="Open Character"
+                        CommandName="Ctrl-O"/>
                 </Grid>
 
                 <Grid Grid.Row="1">
@@ -141,70 +87,14 @@
                         <ColumnDefinition Width="50*"/>
                     </Grid.ColumnDefinitions>
 
-                    <Grid Grid.Column="0">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="100*"/>
-                            <ColumnDefinition Width="Auto"/>
-                        </Grid.ColumnDefinitions>
-                        <TextBlock
-                            Grid.Column="0"
-                            Text="Long Rest"
-                            Foreground="White"
-                            FontSize="18"
-                            VerticalAlignment="Center"
-                            HorizontalAlignment="Left"
-                            Margin="15,0,0,0"/>
-                        <Line  
-                            Grid.Column="1"
-                            Stretch="Uniform"
-                            X1="0" X2="1" Y1="0" Y2="0"
-                            Stroke="#227EA9" 
-                            StrokeDashArray="4, 2"
-                            StrokeThickness="1"
-                            VerticalAlignment="Center"
-                            Margin="5,0,5,0"/>
-                        <TextBlock
-                            Grid.Column="2"
-                            Text="Ctrl-L"
-                            Foreground="White"
-                            FontSize="18"
-                            VerticalAlignment="Center"
-                            HorizontalAlignment="Right"
-                            Margin="0,0,15,0"/>
-                    </Grid>
-                    <Grid Grid.Column="1">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="100*"/>
-                            <ColumnDefinition Width="Auto"/>
-                        </Grid.ColumnDefinitions>
-                        <TextBlock
-                            Grid.Column="0"
-                            Text="Open Properties"
-                            Foreground="White"
-                            FontSize="18"
-                            VerticalAlignment="Center"
-                            HorizontalAlignment="Left"
-                            Margin="15,0,0,0"/>
-                        <Line  
-                            Grid.Column="1"
-                            Stretch="Uniform"
-                            X1="0" X2="1" Y1="0" Y2="0"
-                            Stroke="#227EA9" 
-                            StrokeDashArray="4, 2"
-                            StrokeThickness="1"
-                            VerticalAlignment="Center"
-                            Margin="5,0,5,0"/>
-                        <TextBlock
-                            Grid.Column="2"
-                            Text="Ctrl-P"
-                            Foreground="White"
-                            FontSize="18"
-                            VerticalAlignment="Center"
-                            HorizontalAlignment="Right"
-                            Margin="0,0,15,0"/>
-                    </Grid>
+                    <controls:KeyboardShotcutDisplay
+                        Grid.Column="0"
+                        ShortcutName="Long Rest"
+                        CommandName="Ctrl-L"/>
+                    <controls:KeyboardShotcutDisplay
+                        Grid.Column="1"
+                        ShortcutName="Open Properties"
+                        CommandName="Ctrl-P"/>
                 </Grid>
 
                 <Grid Grid.Row="2">
@@ -213,70 +103,14 @@
                         <ColumnDefinition Width="50*"/>
                     </Grid.ColumnDefinitions>
 
-                    <Grid Grid.Column="0">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="100*"/>
-                            <ColumnDefinition Width="Auto"/>
-                        </Grid.ColumnDefinitions>
-                        <TextBlock
-                            Grid.Column="0"
-                            Text="Save"
-                            Foreground="White"
-                            FontSize="18"
-                            VerticalAlignment="Center"
-                            HorizontalAlignment="Left"
-                            Margin="15,0,0,0"/>
-                        <Line  
-                            Grid.Column="1"
-                            Stretch="Uniform"
-                            X1="0" X2="1" Y1="0" Y2="0"
-                            Stroke="#227EA9" 
-                            StrokeDashArray="4, 2"
-                            StrokeThickness="1"
-                            VerticalAlignment="Center"
-                            Margin="5,0,5,0"/>
-                        <TextBlock
-                            Grid.Column="2"
-                            Text="Ctrl-S"
-                            Foreground="White"
-                            FontSize="18"
-                            VerticalAlignment="Center"
-                            HorizontalAlignment="Right"
-                            Margin="0,0,15,0"/>
-                    </Grid>
-                    <Grid Grid.Column="1">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="100*"/>
-                            <ColumnDefinition Width="Auto"/>
-                        </Grid.ColumnDefinitions>
-                        <TextBlock
-                            Grid.Column="0"
-                            Text="Save As"
-                            Foreground="White"
-                            FontSize="18"
-                            VerticalAlignment="Center"
-                            HorizontalAlignment="Left"
-                            Margin="15,0,0,0"/>
-                        <Line  
-                            Grid.Column="1"
-                            Stretch="Uniform"
-                            X1="0" X2="1" Y1="0" Y2="0"
-                            Stroke="#227EA9" 
-                            StrokeDashArray="4, 2"
-                            StrokeThickness="1"
-                            VerticalAlignment="Center"
-                            Margin="5,0,5,0"/>
-                        <TextBlock
-                            Grid.Column="2"
-                            Text="Ctrl-Shift-S"
-                            Foreground="White"
-                            FontSize="18"
-                            VerticalAlignment="Center"
-                            HorizontalAlignment="Right"
-                            Margin="0,0,15,0"/>
-                    </Grid>
+                    <controls:KeyboardShotcutDisplay
+                        Grid.Column="0"
+                        ShortcutName="Save"
+                        CommandName="Ctrl-S"/>
+                    <controls:KeyboardShotcutDisplay
+                        Grid.Column="1"
+                        ShortcutName="Save As"
+                        CommandName="Ctrl-Shift-S"/>
                 </Grid>
 
                 <Grid Grid.Row="3">
@@ -285,70 +119,14 @@
                         <ColumnDefinition Width="50*"/>
                     </Grid.ColumnDefinitions>
 
-                    <Grid Grid.Column="0" Width="Auto">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="100*"/>
-                            <ColumnDefinition Width="Auto"/>
-                        </Grid.ColumnDefinitions>
-                        <TextBlock
-                            Grid.Column="0"
-                            Text="Open Find"
-                            Foreground="White"
-                            FontSize="18"
-                            VerticalAlignment="Center"
-                            HorizontalAlignment="Left"
-                            Margin="15,0,0,0"/>
-                        <Line  
-                            Grid.Column="1"
-                            Stretch="Uniform"
-                            X1="0" X2="1" Y1="0" Y2="0"
-                            Stroke="#227EA9" 
-                            StrokeDashArray="4, 2"
-                            StrokeThickness="1"
-                            VerticalAlignment="Center"
-                            Margin="5,0,5,0"/>
-                        <TextBlock
-                            Grid.Column="2"
-                            Text="Ctrl-F"
-                            Foreground="White"
-                            FontSize="18"
-                            VerticalAlignment="Center"
-                            HorizontalAlignment="Right"
-                            Margin="0,0,15,0"/>
-                    </Grid>
-                    <Grid Grid.Column="1">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="100*"/>
-                            <ColumnDefinition Width="Auto"/>
-                        </Grid.ColumnDefinitions>
-                        <TextBlock
-                            Grid.Column="0"
-                            Text="Open Settings"
-                            Foreground="White"
-                            FontSize="18"
-                            VerticalAlignment="Center"
-                            HorizontalAlignment="Left"
-                            Margin="15,0,0,0"/>
-                        <Line  
-                            Grid.Column="1"
-                            Stretch="Uniform"
-                            X1="0" X2="1" Y1="0" Y2="0"
-                            Stroke="#227EA9" 
-                            StrokeDashArray="4, 2"
-                            StrokeThickness="1"
-                            VerticalAlignment="Center"
-                            Margin="5,0,5,0"/>
-                        <TextBlock
-                            Grid.Column="2"
-                            Text="Ctrl-I"
-                            Foreground="White"
-                            FontSize="18"
-                            VerticalAlignment="Center"
-                            HorizontalAlignment="Right"
-                            Margin="0,0,15,0"/>
-                    </Grid>
+                    <controls:KeyboardShotcutDisplay
+                        Grid.Column="0"
+                        ShortcutName="Open Find"
+                        CommandName="Ctrl-F"/>
+                    <controls:KeyboardShotcutDisplay
+                        Grid.Column="1"
+                        ShortcutName="Open Settings"
+                        CommandName="Ctrl-I"/>
                 </Grid>
 
                 <Grid Grid.Row="4">
@@ -357,70 +135,14 @@
                         <ColumnDefinition Width="50*"/>
                     </Grid.ColumnDefinitions>
 
-                    <Grid Grid.Column="0" Width="Auto">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="100*"/>
-                            <ColumnDefinition Width="Auto"/>
-                        </Grid.ColumnDefinitions>
-                        <TextBlock
-                            Grid.Column="0"
-                            Text="Open About"
-                            Foreground="White"
-                            FontSize="18"
-                            VerticalAlignment="Center"
-                            HorizontalAlignment="Left"
-                            Margin="15,0,0,0"/>
-                        <Line  
-                            Grid.Column="1"
-                            Stretch="Uniform"
-                            X1="0" X2="1" Y1="0" Y2="0"
-                            Stroke="#227EA9" 
-                            StrokeDashArray="4, 2"
-                            StrokeThickness="1"
-                            VerticalAlignment="Center"
-                            Margin="5,0,5,0"/>
-                        <TextBlock
-                            Grid.Column="2"
-                            Text="Ctrl-A"
-                            Foreground="White"
-                            FontSize="18"
-                            VerticalAlignment="Center"
-                            HorizontalAlignment="Right"
-                            Margin="0,0,15,0"/>
-                    </Grid>
-                    <Grid Grid.Column="1">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="100*"/>
-                            <ColumnDefinition Width="Auto"/>
-                        </Grid.ColumnDefinitions>
-                        <TextBlock
-                            Grid.Column="0"
-                            Text="Open Help"
-                            Foreground="White"
-                            FontSize="18"
-                            VerticalAlignment="Center"
-                            HorizontalAlignment="Left"
-                            Margin="15,0,0,0"/>
-                        <Line  
-                            Grid.Column="1"
-                            Stretch="Uniform"
-                            X1="0" X2="1" Y1="0" Y2="0"
-                            Stroke="#227EA9" 
-                            StrokeDashArray="4, 2"
-                            StrokeThickness="1"
-                            VerticalAlignment="Center"
-                            Margin="5,0,5,0"/>
-                        <TextBlock
-                            Grid.Column="2"
-                            Text="Ctrl-H"
-                            Foreground="White"
-                            FontSize="18"
-                            VerticalAlignment="Center"
-                            HorizontalAlignment="Right"
-                            Margin="0,0,15,0"/>
-                    </Grid>
+                    <controls:KeyboardShotcutDisplay
+                        Grid.Column="0"
+                        ShortcutName="Open About"
+                        CommandName="Ctrl-A"/>
+                    <controls:KeyboardShotcutDisplay
+                        Grid.Column="1"
+                        ShortcutName="Open Help"
+                        CommandName="Ctrl-H"/>
                 </Grid>
 
                 <Grid Grid.Row="5">
@@ -429,70 +151,14 @@
                         <ColumnDefinition Width="50*"/>
                     </Grid.ColumnDefinitions>
 
-                    <Grid Grid.Column="0">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="100*"/>
-                            <ColumnDefinition Width="Auto"/>
-                        </Grid.ColumnDefinitions>
-                        <TextBlock
-                            Grid.Column="0"
-                            Text="Undo"
-                            Foreground="White"
-                            FontSize="18"
-                            VerticalAlignment="Center"
-                            HorizontalAlignment="Left"
-                            Margin="15,0,0,0"/>
-                        <Line  
-                            Grid.Column="1"
-                            Stretch="Uniform"
-                            X1="0" X2="1" Y1="0" Y2="0"
-                            Stroke="#227EA9" 
-                            StrokeDashArray="4, 2"
-                            StrokeThickness="1"
-                            VerticalAlignment="Center"
-                            Margin="5,0,5,0"/>
-                        <TextBlock
-                            Grid.Column="2"
-                            Text="Ctrl-Z"
-                            Foreground="White"
-                            FontSize="18"
-                            VerticalAlignment="Center"
-                            HorizontalAlignment="Right"
-                            Margin="0,0,15,0"/>
-                    </Grid>
-                    <Grid Grid.Column="1">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="100*"/>
-                            <ColumnDefinition Width="Auto"/>
-                        </Grid.ColumnDefinitions>
-                        <TextBlock
-                            Grid.Column="0"
-                            Text="Redo"
-                            Foreground="White"
-                            FontSize="18"
-                            VerticalAlignment="Center"
-                            HorizontalAlignment="Left"
-                            Margin="15,0,0,0"/>
-                        <Line  
-                            Grid.Column="1"
-                            Stretch="Uniform"
-                            X1="0" X2="1" Y1="0" Y2="0"
-                            Stroke="#227EA9" 
-                            StrokeDashArray="4, 2"
-                            StrokeThickness="1"
-                            VerticalAlignment="Center"
-                            Margin="5,0,5,0"/>
-                        <TextBlock
-                            Grid.Column="2"
-                            Text="Ctrl-Y"
-                            Foreground="White"
-                            FontSize="18"
-                            VerticalAlignment="Center"
-                            HorizontalAlignment="Right"
-                            Margin="0,0,15,0"/>
-                    </Grid>
+                    <controls:KeyboardShotcutDisplay
+                        Grid.Column="0"
+                        ShortcutName="Undo"
+                        CommandName="Ctrl-Z"/>
+                    <controls:KeyboardShotcutDisplay
+                        Grid.Column="1"
+                        ShortcutName="Redo"
+                        CommandName="Ctrl-Y"/>
                 </Grid>
 
                 <Grid Grid.Row="6">
@@ -501,70 +167,14 @@
                         <ColumnDefinition Width="50*"/>
                     </Grid.ColumnDefinitions>
 
-                    <Grid Grid.Column="0">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="100*"/>
-                            <ColumnDefinition Width="Auto"/>
-                        </Grid.ColumnDefinitions>
-                        <TextBlock
-                            Grid.Column="0"
-                            Text="Minimize"
-                            Foreground="White"
-                            FontSize="18"
-                            VerticalAlignment="Center"
-                            HorizontalAlignment="Left"
-                            Margin="15,0,0,0"/>
-                        <Line  
-                            Grid.Column="1"
-                            Stretch="Uniform"
-                            X1="0" X2="1" Y1="0" Y2="0"
-                            Stroke="#227EA9" 
-                            StrokeDashArray="4, 2"
-                            StrokeThickness="1"
-                            VerticalAlignment="Center"
-                            Margin="5,0,5,0"/>
-                        <TextBlock
-                            Grid.Column="2"
-                            Text="Ctrl-Minus"
-                            Foreground="White"
-                            FontSize="18"
-                            VerticalAlignment="Center"
-                            HorizontalAlignment="Right"
-                            Margin="0,0,15,0"/>
-                    </Grid>
-                    <Grid Grid.Column="1">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="100*"/>
-                            <ColumnDefinition Width="Auto"/>
-                        </Grid.ColumnDefinitions>
-                        <TextBlock
-                            Grid.Column="0"
-                            Text="Maximize"
-                            Foreground="White"
-                            FontSize="18"
-                            VerticalAlignment="Center"
-                            HorizontalAlignment="Left"
-                            Margin="15,0,0,0"/>
-                        <Line  
-                            Grid.Column="1"
-                            Stretch="Uniform"
-                            X1="0" X2="1" Y1="0" Y2="0"
-                            Stroke="#227EA9" 
-                            StrokeDashArray="4, 2"
-                            StrokeThickness="1"
-                            VerticalAlignment="Center"
-                            Margin="5,0,5,0"/>
-                        <TextBlock
-                            Grid.Column="2"
-                            Text="Ctrl-Plus"
-                            Foreground="White"
-                            FontSize="18"
-                            VerticalAlignment="Center"
-                            HorizontalAlignment="Right"
-                            Margin="0,0,15,0"/>
-                    </Grid>
+                    <controls:KeyboardShotcutDisplay
+                        Grid.Column="0"
+                        ShortcutName="Options"
+                        CommandName="Shift-Tab"/>
+                    <controls:KeyboardShotcutDisplay
+                        Grid.Column="1"
+                        ShortcutName="Toggle Sidebar"
+                        CommandName="Shift-Caps"/>
                 </Grid>
 
                 <Grid Grid.Row="7">
@@ -573,70 +183,30 @@
                         <ColumnDefinition Width="50*"/>
                     </Grid.ColumnDefinitions>
 
-                    <Grid Grid.Column="0">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="100*"/>
-                            <ColumnDefinition Width="Auto"/>
-                        </Grid.ColumnDefinitions>
-                        <TextBlock
-                            Grid.Column="0"
-                            Text="Open Page"
-                            Foreground="White"
-                            FontSize="18"
-                            VerticalAlignment="Center"
-                            HorizontalAlignment="Left"
-                            Margin="15,0,0,0"/>
-                        <Line  
-                            Grid.Column="1"
-                            Stretch="Uniform"
-                            X1="0" X2="1" Y1="0" Y2="0"
-                            Stroke="#227EA9" 
-                            StrokeDashArray="4, 2"
-                            StrokeThickness="1"
-                            VerticalAlignment="Center"
-                            Margin="5,0,5,0"/>
-                        <TextBlock
-                            Grid.Column="2"
-                            Text="Ctrl-0 to 9"
-                            Foreground="White"
-                            FontSize="18"
-                            VerticalAlignment="Center"
-                            HorizontalAlignment="Right"
-                            Margin="0,0,15,0"/>
-                    </Grid>
-                    <Grid Grid.Column="1">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="100*"/>
-                            <ColumnDefinition Width="Auto"/>
-                        </Grid.ColumnDefinitions>
-                        <TextBlock
-                            Grid.Column="0"
-                            Text="Quit"
-                            Foreground="White"
-                            FontSize="18"
-                            VerticalAlignment="Center"
-                            HorizontalAlignment="Left"
-                            Margin="15,0,0,0"/>
-                        <Line  
-                            Grid.Column="1"
-                            Stretch="Uniform"
-                            X1="0" X2="1" Y1="0" Y2="0"
-                            Stroke="#227EA9" 
-                            StrokeDashArray="4, 2"
-                            StrokeThickness="1"
-                            VerticalAlignment="Center"
-                            Margin="5,0,5,0"/>
-                        <TextBlock
-                            Grid.Column="2"
-                            Text="Ctrl-Q/Alt-F4"
-                            Foreground="White"
-                            FontSize="18"
-                            VerticalAlignment="Center"
-                            HorizontalAlignment="Right"
-                            Margin="0,0,15,0"/>
-                    </Grid>
+                    <controls:KeyboardShotcutDisplay
+                        Grid.Column="0"
+                        ShortcutName="Minimize"
+                        CommandName="Ctrl-Minus"/>
+                    <controls:KeyboardShotcutDisplay
+                        Grid.Column="1"
+                        ShortcutName="Maximize"
+                        CommandName="Ctrl-Plus"/>
+                </Grid>
+
+                <Grid Grid.Row="8">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50*"/>
+                        <ColumnDefinition Width="50*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <controls:KeyboardShotcutDisplay
+                        Grid.Column="0"
+                        ShortcutName="Open Page"
+                        CommandName="Ctrl-0 to 9"/>
+                    <controls:KeyboardShotcutDisplay
+                        Grid.Column="1"
+                        ShortcutName="Quit"
+                        CommandName="Ctrl-Q/Alt-F4"/>
                 </Grid>
             </Grid>
 

@@ -4,6 +4,7 @@
 
 namespace Concierge.Interfaces.UtilityInterface
 {
+    using System;
     using System.Windows;
     using System.Windows.Media;
 
@@ -32,7 +33,7 @@ namespace Concierge.Interfaces.UtilityInterface
             ConciergeWindowButtons messageWindowButtons,
             ConciergeWindowIcons messageWindowIcons)
         {
-            this.IsOk = messageWindowButtons.ToString().Contains("Ok");
+            this.IsOk = messageWindowButtons.ToString().Contains("Ok", StringComparison.InvariantCultureIgnoreCase);
             this.MessageText.Text = message;
             this.MessageTitle.Text = title;
             this.SetMessageIcon(messageWindowIcons);

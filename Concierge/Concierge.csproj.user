@@ -42,6 +42,9 @@
     <Compile Update="Interfaces\Controls\IntegerUpDown.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Interfaces\Controls\KeyboardShotcutDisplay.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Interfaces\Controls\PersonalityDisplay.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -135,6 +138,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Interfaces\Controls\IntegerUpDown.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Interfaces\Controls\KeyboardShotcutDisplay.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Interfaces\Controls\PersonalityDisplay.xaml">
