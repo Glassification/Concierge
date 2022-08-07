@@ -1,0 +1,16 @@
+﻿Adventuring Gear
+Arcane Focus
+Clothing
+Druidic Focus
+Equipment Pack
+Gemstone
+Heavy Armor
+Holy Symbol
+Light Armor
+Medium Armor
+Mount
+Poison
+Shield
+Tool
+Vehicle (Land)
+Vehicle (Water)

@@ -1,0 +1,30 @@
+﻿Acolyte
+Anthropologist
+Archaeologist
+Caravan Specialist
+Charlatan
+City Watch
+Cloistered Scholar
+Courtier
+Criminal
+Dissenter
+Entertainer
+Folk Hero
+Gladiator
+Guild Artisan
+Guild Merchant
+Harborfolk
+Haunted One
+Hermit
+Inheritor
+Initiate
+Inquisitor
+Investigator
+Knight
+Noble
+Outlander
+Pirate
+Sage
+Sailor
+Soldier
+Urchin

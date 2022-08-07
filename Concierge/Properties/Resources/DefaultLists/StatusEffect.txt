@@ -1,0 +1,16 @@
+﻿Acid
+Bludgeoning
+Cold
+Fire
+Force
+Lightning
+Magic Weapons
+Necrotic
+Nonmagical
+Piercing
+Poison
+Psychic
+Radiant
+Slashing
+Spells
+Thunder

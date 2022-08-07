@@ -64,219 +64,42 @@ namespace Concierge.Utility
 
         private static readonly int[] autosaveIntervals = { 1, 5, 10, 15, 20, 30, 45, 60, 90, 120 };
 
-        private static readonly string[] alignment =
-        {
-            "Lawful Good",
-            "Neutral Good",
-            "Chaotic Good",
-            "Lawful Neutral",
-            "True Neutral",
-            "Chaotic Neutral",
-            "Lawful Evil",
-            "Neutral Evil",
-            "Chaotic Evil",
-        };
-
-        private static readonly string[] races =
-        {
-            "Aarakocra",
-            "Aasimar",
-            "Bugbear",
-            "Dragonborn",
-            "Dwarf",
-            "Elf",
-            "Genasi",
-            "Gnome",
-            "Goliath",
-            "Half-Elf",
-            "Half-Orc",
-            "Halfling",
-            "Human",
-            "Kenku",
-            "Tabaxi",
-            "Tiefling",
-            "Tortle",
-            "Triton",
-            "Warforged",
-            "Yuan-ti-Pureblood",
-        };
-
-        private static readonly string[] backgrounds =
-        {
-            "Acolyte",
-            "Anthropologist",
-            "Archaeologist",
-            "Caravan Specialist",
-            "Charlatan",
-            "City Watch",
-            "Cloistered Scholar",
-            "Courtier",
-            "Criminal",
-            "Dissenter",
-            "Entertainer",
-            "Folk Hero",
-            "Gladiator",
-            "Guild Artisan",
-            "Guild Merchant",
-            "Harborfolk",
-            "Haunted One",
-            "Hermit",
-            "Inheritor",
-            "Initiate",
-            "Inquisitor",
-            "Investigator",
-            "Knight",
-            "Noble",
-            "Outlander",
-            "Pirate",
-            "Sage",
-            "Sailor",
-            "Soldier",
-            "Urchin",
-        };
-
-        private static readonly string[] classes =
-        {
-            "Artificer",
-            "Barbarian",
-            "Bard",
-            "Blood Hunter",
-            "Cleric",
-            "Druid",
-            "Fighter",
-            "Monk",
-            "Paladin",
-            "Ranger",
-            "Rogue",
-            "Sorcerer",
-            "Warlock",
-            "Wizard",
-        };
-
-        private static readonly string[] statusEffects =
-        {
-            "Acid",
-            "Bludgeoning",
-            "Cold",
-            "Fire",
-            "Force",
-            "Lightning",
-            "Magic Weapons",
-            "Necrotic",
-            "Nonmagical",
-            "Piercing",
-            "Poison",
-            "Psychic",
-            "Radiant",
-            "Slashing",
-            "Spells",
-            "Thunder",
-        };
-
-        private static readonly string[] resources =
-        {
-            "Bardic Inspiration",
-            "Divine Sense",
-            "Hemocraft Dice",
-            "Infusions",
-            "Ki Points",
-            "Lay on Hands",
-            "Rages",
-            "Sneak Attack Dice",
-            "Sorcery Points",
-            "Superiority Dice",
-        };
-
-        private static readonly string[] tools =
-        {
-            "Alchemist's Supplies",
-            "Brewer's Supplies",
-            "Calligrapher's Supplies",
-            "Carpenter's Tools",
-            "Cartographer's Tools",
-            "Cobbler's Tools",
-            "Disguise Kit",
-            "Forgery Kit",
-            "Glassblower's Tools",
-            "Herbalism Kit",
-            "Herbalism Kit",
-            "Leatherworker's Tools",
-            "Mason's Tools",
-            "Navigator's Tools",
-            "Painter's Supplies",
-            "Poisoner's kit",
-            "Potter's Tools",
-            "Smith's Tools",
-            "Thieves' Tools",
-            "Tinker's Tools",
-            "Weaver's Tools",
-            "Woodcarver's Tools",
-        };
-
-        private static readonly string[] games =
-        {
-            "Dice Set",
-            "Dragonchess Set",
-            "Playing Card Set",
-            "Three-Dragon Ante Set",
-        };
-
-        private static readonly string[] instruments =
-        {
-            "Bagpipes",
-            "Drum",
-            "Dulcimer",
-            "Flute",
-            "Horn",
-            "Lute",
-            "Lyre",
-            "Pan Flute",
-            "Shawm",
-            "Viol",
-        };
-
-        private static readonly string[] itemCategories =
-        {
-            "Adventuring Gear",
-            "Arcane Focus",
-            "Druidic Focus",
-            "Equipment Pack",
-            "Gemstone",
-            "Heavy Armor",
-            "Holy Symbol",
-            "Light Armor",
-            "Medium Armor",
-            "Mount",
-            "Poison",
-            "Shield",
-            "Tool",
-            "Vehicle (Land)",
-            "Vehicle (Water)",
-        };
-
         static Constants()
         {
             AutosaveIntervals = new ReadOnlyCollection<int>(autosaveIntervals);
 
-            Weapons = new ReadOnlyCollection<Weapon>(DefaultListReadWriter.ReadWeaponList());
-            Ammunitions = new ReadOnlyCollection<Ammunition>(DefaultListReadWriter.ReadAmmunitionList());
-            Spells = new ReadOnlyCollection<Spell>(DefaultListReadWriter.ReadSpellList());
-            Inventories = new ReadOnlyCollection<Inventory>(DefaultListReadWriter.ReadInventoryList());
-            Languages = new ReadOnlyCollection<Language>(DefaultListReadWriter.ReadLanguageList());
-            Abilities = new ReadOnlyCollection<Ability>(DefaultListReadWriter.ReadAbilityList());
+            Weapons = new ReadOnlyCollection<Weapon>(DefaultListReadWriter.ReadJson<Weapon>(Properties.Resources.Weapon));
+            Ammunitions = new ReadOnlyCollection<Ammunition>(DefaultListReadWriter.ReadJson<Ammunition>(Properties.Resources.Ammunition));
+            Spells = new ReadOnlyCollection<Spell>(DefaultListReadWriter.ReadJson<Spell>(Properties.Resources.Spell));
+            Inventories = new ReadOnlyCollection<Inventory>(DefaultListReadWriter.ReadJson<Inventory>(Properties.Resources.Inventory));
+            Languages = new ReadOnlyCollection<Language>(DefaultListReadWriter.ReadJson<Language>(Properties.Resources.Language));
+            Abilities = new ReadOnlyCollection<Ability>(DefaultListReadWriter.ReadJson<Ability>(Properties.Resources.Ability));
 
-            Alignment = new ReadOnlyCollection<string>(alignment);
-            Backgrounds = new ReadOnlyCollection<string>(backgrounds);
-            Races = new ReadOnlyCollection<string>(races);
+            /*Alignment = new ReadOnlyCollection<string>(DefaultListReadWriter.ReadStrings(Properties.Resources.Alignment));
+            Backgrounds = new ReadOnlyCollection<string>(DefaultListReadWriter.ReadStrings(Properties.Resources.Background));
+            Races = new ReadOnlyCollection<string>(DefaultListReadWriter.ReadStrings(Properties.Resources.Race));
             Levels = new ReadOnlyCollection<int>(levels);
             ProficiencyLevels = new ReadOnlyCollection<int>(proficiencyLevels);
-            Classes = new ReadOnlyCollection<string>(classes);
-            StatusEffects = new ReadOnlyCollection<string>(statusEffects);
-            Resources = new ReadOnlyCollection<string>(resources);
-            Tools = new ReadOnlyCollection<string>(tools);
-            Games = new ReadOnlyCollection<string>(games);
-            Instruments = new ReadOnlyCollection<string>(instruments);
-            ItemCategories = new ReadOnlyCollection<string>(itemCategories);
+            Classes = new ReadOnlyCollection<string>(DefaultListReadWriter.ReadStrings(Properties.Resources.Class));
+            StatusEffects = new ReadOnlyCollection<string>(DefaultListReadWriter.ReadStrings(Properties.Resources.StatusEffect));
+            Resources = new ReadOnlyCollection<string>(DefaultListReadWriter.ReadStrings(Properties.Resources.ClassResource));
+            Tools = new ReadOnlyCollection<string>(DefaultListReadWriter.ReadStrings(Properties.Resources.Tool));
+            Games = new ReadOnlyCollection<string>(DefaultListReadWriter.ReadStrings(Properties.Resources.Game));
+            Instruments = new ReadOnlyCollection<string>(DefaultListReadWriter.ReadStrings(Properties.Resources.Intrument));
+            ItemCategories = new ReadOnlyCollection<string>(DefaultListReadWriter.ReadStrings(Properties.Resources.Category));*/
+
+            Alignment = new ReadOnlyCollection<string>(new List<string>());
+            Backgrounds = new ReadOnlyCollection<string>(new List<string>());
+            Races = new ReadOnlyCollection<string>(new List<string>());
+            Levels = new ReadOnlyCollection<int>(levels);
+            ProficiencyLevels = new ReadOnlyCollection<int>(proficiencyLevels);
+            Classes = new ReadOnlyCollection<string>(new List<string>());
+            StatusEffects = new ReadOnlyCollection<string>(new List<string>());
+            Resources = new ReadOnlyCollection<string>(new List<string>());
+            Tools = new ReadOnlyCollection<string>(new List<string>());
+            Games = new ReadOnlyCollection<string>(new List<string>());
+            Instruments = new ReadOnlyCollection<string>(new List<string>());
+            ItemCategories = new ReadOnlyCollection<string>(new List<string>());
         }
 
         public static ReadOnlyCollection<int> AutosaveIntervals { get; }
@@ -318,23 +141,5 @@ namespace Concierge.Utility
         public static ReadOnlyCollection<string> ItemCategories { get; }
 
         public static int CurrentAutosaveInterval => AutosaveIntervals[AppSettingsManager.UserSettings.AutosaveInterval];
-
-        public static double DpiFactor
-        {
-            get
-            {
-                var dpiYProperty = typeof(SystemParameters).GetProperty("Dpi", BindingFlags.NonPublic | BindingFlags.Static);
-                var dpiY = (int?)dpiYProperty?.GetValue(null, null) ?? 96;
-
-                return dpiY switch
-                {
-                    96 => 1.25,
-                    120 => 1,
-                    144 => 0.75,
-                    168 => 0.50,
-                    _ => 1,
-                };
-            }
-        }
     }
 }

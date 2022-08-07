@@ -14,7 +14,7 @@ namespace Concierge.Interfaces.Components
         public ConciergeTreeView()
             : base()
         {
-            var scaling = Constants.DpiFactor;
+            var scaling = ResolutionScaling.DpiFactor;
             this.LayoutTransform = new ScaleTransform(scaling, scaling, 0.5, 0.5);
         }
     }

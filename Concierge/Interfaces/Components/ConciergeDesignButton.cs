@@ -20,7 +20,7 @@ namespace Concierge.Interfaces.Components
             this.HorizontalAlignment = HorizontalAlignment.Center;
             this.VerticalAlignment = VerticalAlignment.Stretch;
 
-            var scaling = Constants.DpiFactor;
+            var scaling = ResolutionScaling.DpiFactor;
             this.LayoutTransform = new ScaleTransform(scaling, scaling, 0.5, 0.5);
 
             this.Click += this.Button_Click;

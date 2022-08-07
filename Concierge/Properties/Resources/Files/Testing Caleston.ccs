@@ -385,7 +385,7 @@
           "Name": "Blue Cloak with Hood",
           "IgnoreWeight": false,
           "Index": 0,
-          "ItemCategory": "Adventuring Gear",
+          "ItemCategory": "Clothing",
           "Notes": "Clothing",
           "Value": 5,
           "Weight": {
@@ -425,7 +425,7 @@
           "Name": "Black Onyx Leather Gloves",
           "IgnoreWeight": false,
           "Index": 0,
-          "ItemCategory": "Adventuring Gear",
+          "ItemCategory": "Clothing",
           "Notes": "Clothing",
           "Value": 1,
           "Weight": {
@@ -447,7 +447,7 @@
           "Name": "Leather Boots",
           "IgnoreWeight": false,
           "Index": 0,
-          "ItemCategory": "Adventuring Gear",
+          "ItemCategory": "Clothing",
           "Notes": "Clothing",
           "Value": 2,
           "Weight": {
@@ -678,7 +678,7 @@
         "Name": "Clothing, cold weather",
         "IgnoreWeight": true,
         "Index": 0,
-        "ItemCategory": "Adventuring Gear",
+        "ItemCategory": "Clothing",
         "Notes": "Exploration, Outerwear, Utility",
         "Value": 10,
         "Weight": {
@@ -887,7 +887,7 @@
         "Name": "Clothes, Fine",
         "IgnoreWeight": true,
         "Index": 0,
-        "ItemCategory": "Adventuring Gear",
+        "ItemCategory": "Clothing",
         "Notes": "Outerwear, Social",
         "Value": 15,
         "Weight": {
@@ -1876,7 +1876,7 @@
       }
     ]
   },
-  "Hash": "B04C452694D5CCE8A42FFE9AF73E1CCE76E7526DE8997FBFA8FB71F62E33EB5E",
+  "Hash": "EA8C61C4111B77B99EF72CB98318438E97861A9E12B2AEBDAFEEF926937FF56A",
   "OriginalCreationDate": "Monday, 14 March 2022 08:19:44 PM",
   "Version": "4.12.4"
 }
