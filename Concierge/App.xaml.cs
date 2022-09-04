@@ -34,8 +34,8 @@ namespace Concierge
 
             try
             {
-                var testResult = Concierge.Properties.Resources.LevelExp;
-                isValid = true;
+                var testResult = Concierge.Properties.Resources.ResourceValidation;
+                isValid = testResult.Equals("Success");
             }
             catch (Exception ex)
             {

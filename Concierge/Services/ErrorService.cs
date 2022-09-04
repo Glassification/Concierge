@@ -35,12 +35,12 @@ namespace Concierge.Services
                 case Severity.Debug:
                     if (Program.IsDebug)
                     {
-                        ShowMessage(conciergeException.Message, conciergeException.IsFatal);
+                        ShowMessage(conciergeException);
                     }
 
                     break;
                 case Severity.Release:
-                    ShowMessage(conciergeException.Message, conciergeException.IsFatal);
+                    ShowMessage(conciergeException);
                     break;
             }
 
@@ -66,11 +66,11 @@ namespace Concierge.Services
             }
         }
 
-        private static void ShowMessage(string message, bool isFatal)
+        private static void ShowMessage(ConciergeException ex)
         {
             ConciergeMessageBox.Show(
-                message,
-                isFatal ? "Fatal Error" : "Error",
+                ex.Message,
+                ex.IsFatal ? "Fatal Error" : "Error",
                 ConciergeWindowButtons.Ok,
                 ConciergeWindowIcons.Error);
         }

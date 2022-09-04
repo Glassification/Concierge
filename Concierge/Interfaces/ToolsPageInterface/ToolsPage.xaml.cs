@@ -9,7 +9,7 @@ namespace Concierge.Interfaces.ToolsPageInterface
     using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Input;
-
+    using Concierge.Character.Statuses;
     using Concierge.Interfaces.Enums;
     using Concierge.Persistence.ReadWriters;
     using Concierge.Tools.DiceRolling;
@@ -75,12 +75,18 @@ namespace Concierge.Interfaces.ToolsPageInterface
 
         private void DrawDivideLoot()
         {
+            var totalValue = 0.0;
             this.DivideLootDataGrid.Items.Clear();
 
             foreach (var player in this.Players)
             {
                 this.DivideLootDataGrid.Items.Add(player);
+                totalValue += player.Total;
             }
+
+            this.TotalSplitGoldField.Text = this.Players.IsEmpty() ?
+                string.Empty :
+                $"Total Gold: {Wealth.FormatGoldValue(totalValue)}";
         }
 
         private void GetPlayers()
@@ -181,6 +187,7 @@ namespace Concierge.Interfaces.ToolsPageInterface
             this.SetDefaultDivideValues();
             this.DivideLootDataGrid.Items.Clear();
             this.Players.Clear();
+            this.TotalSplitGoldField.Text = string.Empty;
         }
 
         private void ParseCustomInput()
