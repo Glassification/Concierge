@@ -258,12 +258,12 @@ namespace Concierge.Utility
         {
             AutosaveIntervals = new ReadOnlyCollection<int>(autosaveIntervals);
 
-            Weapons = new ReadOnlyCollection<Weapon>(DefaultListReadWriter.ReadWeaponList());
-            Ammunitions = new ReadOnlyCollection<Ammunition>(DefaultListReadWriter.ReadAmmunitionList());
-            Spells = new ReadOnlyCollection<Spell>(DefaultListReadWriter.ReadSpellList());
-            Inventories = new ReadOnlyCollection<Inventory>(DefaultListReadWriter.ReadInventoryList());
-            Languages = new ReadOnlyCollection<Language>(DefaultListReadWriter.ReadLanguageList());
-            Abilities = new ReadOnlyCollection<Ability>(DefaultListReadWriter.ReadAbilityList());
+            Weapons = new ReadOnlyCollection<Weapon>(DefaultListReadWriter.ReadJson<Weapon>(Properties.Resources.Weapon));
+            Ammunitions = new ReadOnlyCollection<Ammunition>(DefaultListReadWriter.ReadJson<Ammunition>(Properties.Resources.Ammunition));
+            Spells = new ReadOnlyCollection<Spell>(DefaultListReadWriter.ReadJson<Spell>(Properties.Resources.Spell));
+            Inventories = new ReadOnlyCollection<Inventory>(DefaultListReadWriter.ReadJson<Inventory>(Properties.Resources.Inventory));
+            Languages = new ReadOnlyCollection<Language>(DefaultListReadWriter.ReadJson<Language>(Properties.Resources.Language));
+            Abilities = new ReadOnlyCollection<Ability>(DefaultListReadWriter.ReadJson<Ability>(Properties.Resources.Ability));
 
             Alignment = new ReadOnlyCollection<string>(alignment);
             Backgrounds = new ReadOnlyCollection<string>(backgrounds);
@@ -318,23 +318,5 @@ namespace Concierge.Utility
         public static ReadOnlyCollection<string> ItemCategories { get; }
 
         public static int CurrentAutosaveInterval => AutosaveIntervals[AppSettingsManager.UserSettings.AutosaveInterval];
-
-        public static double DpiFactor
-        {
-            get
-            {
-                var dpiYProperty = typeof(SystemParameters).GetProperty("Dpi", BindingFlags.NonPublic | BindingFlags.Static);
-                var dpiY = (int?)dpiYProperty?.GetValue(null, null) ?? 96;
-
-                return dpiY switch
-                {
-                    96 => 1.25,
-                    120 => 1,
-                    144 => 0.75,
-                    168 => 0.50,
-                    _ => 1,
-                };
-            }
-        }
     }
 }

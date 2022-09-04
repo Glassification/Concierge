@@ -6,26 +6,23 @@ namespace Concierge.Persistence.ReadWriters
 {
     using System;
     using System.Collections.Generic;
-    using System.IO;
     using System.Text;
 
-    using Concierge.Character.Characteristics;
-    using Concierge.Character.Items;
-    using Concierge.Character.Spellcasting;
+    using global::Utility.Utilities;
     using Newtonsoft.Json;
 
     public static class DefaultListReadWriter
     {
-        public static List<Ability> ReadAbilityList()
+        public static List<T> ReadJson<T>(byte[] resource)
         {
-            var abilities = new List<Ability>();
+            var defaultList = new List<T>();
 
             try
             {
-                var rawJson = Encoding.Default.GetString(Properties.Resources.Ability);
-                abilities = JsonConvert.DeserializeObject<List<Ability>>(rawJson);
+                var rawJson = Encoding.Default.GetString(resource);
+                defaultList = JsonConvert.DeserializeObject<List<T>>(rawJson);
 
-                Program.Logger.Info("Abilities loaded successfully.");
+                Program.Logger.Info($"{typeof(T)} loaded successfully.");
             }
             catch (Exception ex)
             {
@@ -33,143 +30,35 @@ namespace Concierge.Persistence.ReadWriters
             }
             finally
             {
-                if (abilities is null)
+                if (defaultList is null)
                 {
-                    abilities = new List<Ability>();
+                    defaultList = new List<T>();
                 }
             }
 
-            return abilities;
+            return defaultList;
         }
 
-        public static List<Ammunition> ReadAmmunitionList()
+        public static List<T> ReadGenericList<T>(string resource)
         {
-            var ammunitions = new List<Ammunition>();
+            var defaultList = new List<T>();
 
             try
             {
-                var rawJson = Encoding.Default.GetString(Properties.Resources.Ammunition);
-                ammunitions = JsonConvert.DeserializeObject<List<Ammunition>>(rawJson);
+                var items = resource.Split('\n');
+                foreach (var item in items)
+                {
+                    defaultList.Add(ObjectUtility.ConvertToType<T>(item));
+                }
 
-                Program.Logger.Info("Ammunition loaded successfully.");
+                Program.Logger.Info($"List file loaded successfully.");
             }
             catch (Exception ex)
             {
                 Program.ErrorService.LogError(ex);
             }
-            finally
-            {
-                if (ammunitions is null)
-                {
-                    ammunitions = new List<Ammunition>();
-                }
-            }
 
-            return ammunitions;
-        }
-
-        public static List<Inventory> ReadInventoryList()
-        {
-            var inventories = new List<Inventory>();
-
-            try
-            {
-                var rawJson = Encoding.Default.GetString(Properties.Resources.Inventory);
-                inventories = JsonConvert.DeserializeObject<List<Inventory>>(rawJson);
-
-                Program.Logger.Info("Items loaded successfully.");
-            }
-            catch (Exception ex)
-            {
-                Program.ErrorService.LogError(ex);
-            }
-            finally
-            {
-                if (inventories is null)
-                {
-                    inventories = new List<Inventory>();
-                }
-            }
-
-            return inventories;
-        }
-
-        public static List<Language> ReadLanguageList()
-        {
-            var languages = new List<Language>();
-
-            try
-            {
-                var rawJson = Encoding.Default.GetString(Properties.Resources.Language);
-                languages = JsonConvert.DeserializeObject<List<Language>>(rawJson);
-
-                Program.Logger.Info("Languages loaded successfully.");
-            }
-            catch (Exception ex)
-            {
-                Program.ErrorService.LogError(ex);
-            }
-            finally
-            {
-                if (languages is null)
-                {
-                    languages = new List<Language>();
-                }
-            }
-
-            return languages;
-        }
-
-        public static List<Spell> ReadSpellList()
-        {
-            var spells = new List<Spell>();
-
-            try
-            {
-                var rawJson = Encoding.Default.GetString(Properties.Resources.Spell);
-                spells = JsonConvert.DeserializeObject<List<Spell>>(rawJson);
-
-                Program.Logger.Info("Spells loaded successfully.");
-            }
-            catch (Exception ex)
-            {
-                Program.ErrorService.LogError(ex);
-            }
-            finally
-            {
-                if (spells is null)
-                {
-                    spells = new List<Spell>();
-                }
-            }
-
-            return spells;
-        }
-
-        public static List<Weapon> ReadWeaponList()
-        {
-            var weapons = new List<Weapon>();
-
-            try
-            {
-                var rawJson = Encoding.Default.GetString(Properties.Resources.Weapon);
-                weapons = JsonConvert.DeserializeObject<List<Weapon>>(rawJson);
-
-                Program.Logger.Info("Weapons loaded successfully.");
-            }
-            catch (Exception ex)
-            {
-                Program.ErrorService.LogError(ex);
-            }
-            finally
-            {
-                if (weapons is null)
-                {
-                    weapons = new List<Weapon>();
-                }
-            }
-
-            return weapons;
+            return defaultList;
         }
     }
 }
