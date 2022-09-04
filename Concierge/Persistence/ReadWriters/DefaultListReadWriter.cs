@@ -22,7 +22,7 @@ namespace Concierge.Persistence.ReadWriters
                 var rawJson = Encoding.Default.GetString(resource);
                 defaultList = JsonConvert.DeserializeObject<List<T>>(rawJson);
 
-                Program.Logger.Info($"{typeof(T)} loaded successfully.");
+                Program.Logger.Info($"{typeof(T).Name} file loaded successfully.");
             }
             catch (Exception ex)
             {
@@ -45,13 +45,13 @@ namespace Concierge.Persistence.ReadWriters
 
             try
             {
-                var items = resource.Split('\n');
+                var items = resource.Split("\r\n");
                 foreach (var item in items)
                 {
                     defaultList.Add(ObjectUtility.ConvertToType<T>(item));
                 }
 
-                Program.Logger.Info($"List file loaded successfully.");
+                Program.Logger.Info($"{typeof(T).Name} list file loaded successfully.");
             }
             catch (Exception ex)
             {

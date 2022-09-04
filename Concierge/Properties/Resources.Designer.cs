@@ -81,6 +81,23 @@ namespace Concierge.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Lawful Good
+        ///Neutral Good
+        ///Chaotic Good
+        ///Lawful Neutral
+        ///True Neutral
+        ///Chaotic Neutral
+        ///Lawful Evil
+        ///Neutral Evil
+        ///Chaotic Evil.
+        /// </summary>
+        internal static string Alignment {
+            get {
+                return ResourceManager.GetString("Alignment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
         internal static byte[] Ammunition {
@@ -91,12 +108,144 @@ namespace Concierge.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 1
+        ///5
+        ///10
+        ///15
+        ///20
+        ///30
+        ///45
+        ///60
+        ///90
+        ///120.
+        /// </summary>
+        internal static string AutosaveInterval {
+            get {
+                return ResourceManager.GetString("AutosaveInterval", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Acolyte
+        ///Anthropologist
+        ///Archaeologist
+        ///Caravan Specialist
+        ///Charlatan
+        ///City Watch
+        ///Cloistered Scholar
+        ///Courtier
+        ///Criminal
+        ///Dissenter
+        ///Entertainer
+        ///Folk Hero
+        ///Gladiator
+        ///Guild Artisan
+        ///Guild Merchant
+        ///Harborfolk
+        ///Haunted One
+        ///Hermit
+        ///Inheritor
+        ///Initiate
+        ///Inquisitor
+        ///Investigator
+        ///Knight
+        ///Noble
+        ///Outlander
+        ///Pirate
+        ///Sage
+        ///Sailor
+        ///Soldier
+        ///Urchin.
+        /// </summary>
+        internal static string Background {
+            get {
+                return ResourceManager.GetString("Background", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Adventuring Gear
+        ///Arcane Focus
+        ///Clothing
+        ///Druidic Focus
+        ///Equipment Pack
+        ///Gemstone
+        ///Heavy Armor
+        ///Holy Symbol
+        ///Light Armor
+        ///Medium Armor
+        ///Mount
+        ///Poison
+        ///Shield
+        ///Tool
+        ///Vehicle (Land)
+        ///Vehicle (Water).
+        /// </summary>
+        internal static string Category {
+            get {
+                return ResourceManager.GetString("Category", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Artificer
+        ///Barbarian
+        ///Bard
+        ///Blood Hunter
+        ///Cleric
+        ///Druid
+        ///Fighter
+        ///Monk
+        ///Paladin
+        ///Ranger
+        ///Rogue
+        ///Sorcerer
+        ///Warlock
+        ///Wizard.
+        /// </summary>
+        internal static string ClassName {
+            get {
+                return ResourceManager.GetString("ClassName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bardic Inspiration
+        ///Divine Sense
+        ///Hemocraft Dice
+        ///Infusions
+        ///Ki Points
+        ///Lay on Hands
+        ///Rages
+        ///Sneak Attack Dice
+        ///Sorcery Points
+        ///Superiority Dice.
+        /// </summary>
+        internal static string ClassResource {
+            get {
+                return ResourceManager.GetString("ClassResource", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
         internal static byte[] ColorPickerBackground {
             get {
                 object obj = ResourceManager.GetObject("ColorPickerBackground", resourceCulture);
                 return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dice Set
+        ///Dragonchess Set
+        ///Playing Card Set
+        ///Three-Dragon Ante Set.
+        /// </summary>
+        internal static string Game {
+            get {
+                return ResourceManager.GetString("Game", resourceCulture);
             }
         }
         
@@ -138,6 +287,24 @@ namespace Concierge.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Bagpipes
+        ///Drum
+        ///Dulcimer
+        ///Flute
+        ///Horn
+        ///Lute
+        ///Lyre
+        ///Pan Flute
+        ///Shawm
+        ///Viol.
+        /// </summary>
+        internal static string Instrument {
+            get {
+                return ResourceManager.GetString("Instrument", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
         internal static byte[] Inventory {
@@ -158,12 +325,150 @@ namespace Concierge.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 300
+        ///900
+        ///2700
+        ///6500
+        ///14000
+        ///23000
+        ///34000
+        ///48000
+        ///64000
+        ///85000
+        ///100000
+        ///120000
+        ///140000
+        ///165000
+        ///195000
+        ///225000
+        ///265000
+        ///305000
+        ///355000
+        ///0.
+        /// </summary>
+        internal static string LevelExp {
+            get {
+                return ResourceManager.GetString("LevelExp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 2
+        ///2
+        ///2
+        ///2
+        ///3
+        ///3
+        ///3
+        ///3
+        ///4
+        ///4
+        ///4
+        ///4
+        ///5
+        ///5
+        ///5
+        ///5
+        ///6
+        ///6
+        ///6
+        ///6.
+        /// </summary>
+        internal static string ProficiencyLevel {
+            get {
+                return ResourceManager.GetString("ProficiencyLevel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Aarakocra
+        ///Aasimar
+        ///Bugbear
+        ///Dragonborn
+        ///Dwarf
+        ///Elf
+        ///Genasi
+        ///Gnome
+        ///Goliath
+        ///Half-Elf
+        ///Half-Orc
+        ///Halfling
+        ///Human
+        ///Kenku
+        ///Tabaxi
+        ///Tiefling
+        ///Tortle
+        ///Triton
+        ///Warforged
+        ///Yuan-ti-Pureblood.
+        /// </summary>
+        internal static string Race {
+            get {
+                return ResourceManager.GetString("Race", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
         internal static byte[] Spell {
             get {
                 object obj = ResourceManager.GetObject("Spell", resourceCulture);
                 return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Acid
+        ///Bludgeoning
+        ///Cold
+        ///Fire
+        ///Force
+        ///Lightning
+        ///Magic Weapons
+        ///Necrotic
+        ///Nonmagical
+        ///Piercing
+        ///Poison
+        ///Psychic
+        ///Radiant
+        ///Slashing
+        ///Spells
+        ///Thunder.
+        /// </summary>
+        internal static string StatusEffect {
+            get {
+                return ResourceManager.GetString("StatusEffect", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Alchemist&apos;s Supplies
+        ///Brewer&apos;s Supplies
+        ///Calligrapher&apos;s Supplies
+        ///Carpenter&apos;s Tools
+        ///Cartographer&apos;s Tools
+        ///Cobbler&apos;s Tools
+        ///Disguise Kit
+        ///Forgery Kit
+        ///Glassblower&apos;s Tools
+        ///Herbalism Kit
+        ///Herbalism Kit
+        ///Leatherworker&apos;s Tools
+        ///Mason&apos;s Tools
+        ///Navigator&apos;s Tools
+        ///Painter&apos;s Supplies
+        ///Poisoner&apos;s kit
+        ///Potter&apos;s Tools
+        ///Smith&apos;s Tools
+        ///Thieves&apos; Tools
+        ///Tinker&apos;s Tools
+        ///Weaver&apos;s Tools
+        ///Woodcarver&apos;s Tools.
+        /// </summary>
+        internal static string Tool {
+            get {
+                return ResourceManager.GetString("Tool", resourceCulture);
             }
         }
         
