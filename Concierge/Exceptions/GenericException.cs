@@ -11,7 +11,7 @@ namespace Concierge.Exceptions
     public class GenericException : ConciergeException
     {
         public GenericException(Exception ex, Severity severity = Severity.Release)
-            : base($"A generic error occurred: {ex.Message}", severity, ex)
+            : base($"A generic error occurred: {ex.Message}", severity, false, ex)
         {
         }
     }

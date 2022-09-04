@@ -9,7 +9,7 @@ namespace Concierge.Exceptions
     public class NullValueException : ConciergeException
     {
         public NullValueException(string name, Severity severity = Severity.Release)
-            : base($"'{name}' is null.", severity)
+            : base($"'{name}' is null.", severity, false)
         {
         }
     }

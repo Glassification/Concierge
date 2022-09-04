@@ -5,6 +5,7 @@
 namespace Concierge.Services
 {
     using System;
+    using System.Windows;
 
     using Concierge.Exceptions;
     using Concierge.Exceptions.Enums;
@@ -28,46 +29,48 @@ namespace Concierge.Services
         {
             Guard.IsNull(ex, nameof(ex));
 
-            ex = IsConciergeException(ex) ? ex : new GenericException(ex);
-            var severity = GetSeverity(ex);
-
-            switch (severity)
+            var conciergeException = GetConciergeException(ex);
+            switch (conciergeException.Severity)
             {
                 case Severity.Debug:
                     if (Program.IsDebug)
                     {
-                        ShowMessage(ex.Message);
+                        ShowMessage(conciergeException.Message, conciergeException.IsFatal);
                     }
 
                     break;
                 case Severity.Release:
-                    ShowMessage(ex.Message);
+                    ShowMessage(conciergeException.Message, conciergeException.IsFatal);
                     break;
             }
 
-            this.Logger.Error(ex);
+            this.Logger.Error(conciergeException);
+            IsFatalException(conciergeException);
         }
 
-        private static bool IsConciergeException(Exception ex)
-        {
-            return ex is ConciergeException;
-        }
-
-        private static Severity GetSeverity(Exception ex)
+        private static ConciergeException GetConciergeException(Exception ex)
         {
             if (ex is ConciergeException conciergeException)
             {
-                return conciergeException.Severity;
+                return conciergeException;
             }
 
-            return Severity.Release;
+            return new GenericException(ex);
         }
 
-        private static void ShowMessage(string message)
+        private static void IsFatalException(ConciergeException ex)
+        {
+            if (ex.IsFatal)
+            {
+                Application.Current.Shutdown();
+            }
+        }
+
+        private static void ShowMessage(string message, bool isFatal)
         {
             ConciergeMessageBox.Show(
                 message,
-                "Error",
+                isFatal ? "Fatal Error" : "Error",
                 ConciergeWindowButtons.Ok,
                 ConciergeWindowIcons.Error);
         }

@@ -4,6 +4,7 @@
 
 namespace Concierge.Utility
 {
+    using System;
     using System.Media;
 
     using Concierge.Configuration;
@@ -14,16 +15,23 @@ namespace Concierge.Utility
 
         static ConciergeSound()
         {
-            HighPitchTapSound = new SoundPlayer(Properties.Resources.HighPitchTapSoundLoud);
-            TapSound = new SoundPlayer(Properties.Resources.GenericTapSoundLoud);
-            WarningSound = new SoundPlayer(Properties.Resources.GenericWarning);
+            try
+            {
+                HighPitchTapSound = new SoundPlayer(Properties.Resources.HighPitchTapSoundLoud);
+                TapSound = new SoundPlayer(Properties.Resources.GenericTapSoundLoud);
+                WarningSound = new SoundPlayer(Properties.Resources.GenericWarning);
+            }
+            catch (Exception)
+            {
+                // We are currently handling this error. Just swallow it.
+            }
         }
 
-        private static SoundPlayer HighPitchTapSound { get; set; }
+        private static SoundPlayer? HighPitchTapSound { get; set; }
 
-        private static SoundPlayer TapSound { get; set; }
+        private static SoundPlayer? TapSound { get; set; }
 
-        private static SoundPlayer WarningSound { get; set; }
+        private static SoundPlayer? WarningSound { get; set; }
 
         private static bool SkipClick
         {
@@ -51,7 +59,7 @@ namespace Concierge.Utility
                 return;
             }
 
-            TapSound.Play();
+            TapSound?.Play();
         }
 
         public static void UpdateValue()
@@ -61,7 +69,7 @@ namespace Concierge.Utility
                 return;
             }
 
-            HighPitchTapSound.Play();
+            HighPitchTapSound?.Play();
         }
 
         public static void Warning()
@@ -71,7 +79,7 @@ namespace Concierge.Utility
                 return;
             }
 
-            WarningSound.Play();
+            WarningSound?.Play();
         }
     }
 }

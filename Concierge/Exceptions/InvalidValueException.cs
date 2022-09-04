@@ -9,7 +9,7 @@ namespace Concierge.Exceptions
     public class InvalidValueException : ConciergeException
     {
         public InvalidValueException(string name, Severity severity = Severity.Release)
-            : base($"'{name}' is an invalid argument.", severity)
+            : base($"'{name}' is an invalid argument.", severity, false)
         {
         }
     }

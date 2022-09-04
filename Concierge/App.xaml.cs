@@ -4,6 +4,7 @@
 
 namespace Concierge
 {
+    using System;
     using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Threading;
@@ -13,6 +14,7 @@ namespace Concierge
     using Concierge.Interfaces;
     using Concierge.Interfaces.UtilityInterface;
     using Concierge.Services;
+    using global::Exceptions;
 
     /// <summary>
     /// Interaction logic for App.xaml.
@@ -26,6 +28,24 @@ namespace Concierge
             this.Dispatcher.UnhandledException += this.Dispatcher_UnhandledException;
         }
 
+        private static bool VerifyResourceManager()
+        {
+            bool isValid;
+
+            try
+            {
+                var testResult = Concierge.Properties.Resources.LevelExp;
+                isValid = true;
+            }
+            catch (Exception ex)
+            {
+                Program.ErrorService.LogError(new ResourceManagerException(ex));
+                isValid = false;
+            }
+
+            return isValid;
+        }
+
         private void Dispatcher_UnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
         {
             Program.ErrorService.LogError(new UnhandledException(e.Exception));
@@ -37,6 +57,11 @@ namespace Concierge
         /// </summary>
         private void Application_Startup(object sender, StartupEventArgs e)
         {
+            if (!VerifyResourceManager())
+            {
+                return;
+            }
+
             var mainWindow = new MainWindow();
             if (AppSettingsManager.StartUp.ShowSplashScreen)
             {
