@@ -11,7 +11,7 @@ namespace Concierge.Exceptions
     public class UnhandledException : ConciergeException
     {
         public UnhandledException(Exception exception, Severity severity = Severity.Release)
-            : base($"An unhandled exception occurred '{exception.Message}'", severity, exception)
+            : base($"An unhandled exception occurred '{exception.Message}'", severity, true, exception)
         {
         }
     }

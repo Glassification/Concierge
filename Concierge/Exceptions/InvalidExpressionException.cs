@@ -9,7 +9,7 @@ namespace Concierge.Exceptions
     public class InvalidExpressionException : ConciergeException
     {
         public InvalidExpressionException(string expression, Severity severity = Severity.Release)
-            : base($"'{expression}' is an invalid expression.", severity)
+            : base($"'{expression}' is an invalid expression.", severity, false)
         {
         }
     }

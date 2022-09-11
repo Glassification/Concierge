@@ -1,18 +1,27 @@
-﻿// <copyright file="ImageExtensions.cs" company="Thomas Beckett">
+﻿// <copyright file="ConciergeImage.cs" company="Thomas Beckett">
 // Copyright (c) Thomas Beckett. All rights reserved.
 // </copyright>
 
-namespace Concierge.Utility.Extensions
+namespace Concierge.Interfaces.Components
 {
     using System.IO;
     using System.Windows;
-    using System.Windows.Controls;
     using System.Windows.Media;
     using System.Windows.Media.Imaging;
 
-    public static class ImageExtensions
+    using Concierge.Utility;
+
+    using Image = System.Windows.Controls.Image;
+
+    public class ConciergeImage : Image
     {
-        public static void LoadFromByteArray(this Image image, byte[] array)
+        private RenderTargetBitmap? renderTargetBitmap;
+
+        public ConciergeImage()
+        {
+        }
+
+        public void LoadFromByteArray(byte[] array)
         {
             if (array == null || array.Length == 0)
             {
@@ -32,23 +41,21 @@ namespace Concierge.Utility.Extensions
             }
 
             bitmapImage.Freeze();
-            image.Source = bitmapImage;
+            this.Source = bitmapImage;
         }
 
-        public static Color GetColorFromPoint(this Image image, Point point)
+        public Color GetColorFromPoint(Point point)
         {
-            var renderTargetBitmap = new RenderTargetBitmap(
-                (int)image.ActualWidth,
-                (int)image.ActualHeight,
-                96,
-                96,
-                PixelFormats.Default);
+            if (this.renderTargetBitmap is null)
+            {
+                this.renderTargetBitmap = this.GeneratePointRender();
+                this.renderTargetBitmap.Render(this);
+            }
 
-            renderTargetBitmap.Render(image);
-            if ((point.X <= renderTargetBitmap.PixelWidth) && (point.Y <= renderTargetBitmap.PixelHeight))
+            if ((point.X <= this.renderTargetBitmap.PixelWidth) && (point.Y <= this.renderTargetBitmap.PixelHeight))
             {
                 var croppedBitmap = new CroppedBitmap(
-                    renderTargetBitmap,
+                    this.renderTargetBitmap,
                     new Int32Rect((int)point.X, (int)point.Y, 1, 1));
 
                 var pixels = new byte[4];
@@ -58,6 +65,16 @@ namespace Concierge.Utility.Extensions
             }
 
             return Colors.Transparent;
+        }
+
+        private RenderTargetBitmap GeneratePointRender()
+        {
+            return new RenderTargetBitmap(
+                (int)this.ActualWidth,
+                (int)this.ActualHeight,
+                ResolutionScaling.Dpi,
+                ResolutionScaling.Dpi,
+                PixelFormats.Default);
         }
     }
 }

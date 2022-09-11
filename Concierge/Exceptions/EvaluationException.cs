@@ -9,7 +9,7 @@ namespace Concierge.Exceptions
     public class EvaluationException : ConciergeException
     {
         public EvaluationException(Severity severity = Severity.Release)
-            : base("There is nothing to evaluate.", severity)
+            : base("There is nothing to evaluate.", severity, false)
         {
         }
     }

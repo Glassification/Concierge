@@ -124,11 +124,32 @@
   <data name="AboutBanner" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Images\AboutBanner.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="Alignment" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Constants\Alignment.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
   <data name="Ammunition" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Json\Ammunition.json;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="AutosaveInterval" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Constants\AutosaveInterval.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="Background" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Constants\Background.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="Category" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Constants\Category.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="ClassName" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Constants\ClassName.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="ClassResource" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Constants\ClassResource.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
   <data name="ColorPickerBackground" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Images\ColorPickerBackground.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Game" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Constants\Game.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="GenericTapSoundLoud" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Sounds\GenericTapSoundLoud.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -142,14 +163,35 @@
   <data name="HighPitchTapSoundLoud" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Sounds\HighPitchTapSoundLoud.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="Instrument" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Constants\Instrument.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
   <data name="Inventory" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Json\Inventory.json;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="Language" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Json\Language.json;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="LevelExp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Constants\LevelExp.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="ProficiencyLevel" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Constants\ProficiencyLevel.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="Race" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Constants\Race.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="ResourceValidation" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\ResourceValidation.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
   <data name="Spell" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Json\Spell.json;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="StatusEffect" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Constants\StatusEffect.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="Tool" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Constants\Tool.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="Weapon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Json\Weapon.json;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>

@@ -10,9 +10,7 @@ namespace Concierge.Utility.Extensions
     {
         public static void Swap<T>(this IList<T> list, int indexA, int indexB)
         {
-            T tmp = list[indexA];
-            list[indexA] = list[indexB];
-            list[indexB] = tmp;
+            (list[indexB], list[indexA]) = (list[indexA], list[indexB]);
         }
 
         public static bool IsEmpty<T>(this IList<T> list)

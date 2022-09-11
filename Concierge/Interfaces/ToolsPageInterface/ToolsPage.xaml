@@ -277,6 +277,7 @@
                                         Margin="10,1,10,1"
                                         FontSize="18"
                                         Background="#3F3F3F"
+                                        MouseWheel="CustomInputTextBox_MouseWheel"
                                         PreviewKeyDown="CustomInputTextBox_PreviewKeyDown">
                                         <controls:WatermarkBuilder.Watermark>
                                             <TextBlock
@@ -346,9 +347,10 @@
             </Grid.RowDefinitions>
 
             <!--Header-->
-            <Grid Grid.Row="0"
-                    Background="#000917"
-                    Margin="3, 3, 3, 0">
+            <Grid
+                Grid.Row="0"
+                Background="#000917"
+                Margin="3, 3, 3, 0">
                 <components:ConciergeTextBlock 
                     Text="Divide Loot"
                     Foreground="White"
@@ -357,6 +359,15 @@
                     VerticalAlignment="Center"
                     HorizontalAlignment="Left"
                     Margin="150, 0, 0, 0"/>
+                <components:ConciergeTextBlock 
+                    Text="Total Gold:"
+                    x:Name="TotalSplitGoldField"
+                    Foreground="White"
+                    FontSize="23"
+                    FontWeight="Bold"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                    Margin="0, 0, 0, 0"/>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                     <components:ConciergeDesignButton 
                         Style="{StaticResource ConciergeDesignButtonStyle}" 
