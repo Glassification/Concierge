@@ -9,14 +9,20 @@ namespace Concierge.Utility
 
     public static class ResolutionScaling
     {
-        public static double DpiFactor
+        public static int Dpi
         {
             get
             {
                 var dpiYProperty = typeof(SystemParameters).GetProperty("Dpi", BindingFlags.NonPublic | BindingFlags.Static);
-                var dpiY = (int?)dpiYProperty?.GetValue(null, null) ?? 96;
+                return (int?)dpiYProperty?.GetValue(null, null) ?? 96;
+            }
+        }
 
-                return dpiY switch
+        public static double DpiFactor
+        {
+            get
+            {
+                return Dpi switch
                 {
                     96 => 1.25,
                     120 => 1,

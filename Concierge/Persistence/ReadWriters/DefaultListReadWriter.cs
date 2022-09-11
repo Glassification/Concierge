@@ -30,10 +30,7 @@ namespace Concierge.Persistence.ReadWriters
             }
             finally
             {
-                if (defaultList is null)
-                {
-                    defaultList = new List<T>();
-                }
+                defaultList ??= new List<T>();
             }
 
             return defaultList;

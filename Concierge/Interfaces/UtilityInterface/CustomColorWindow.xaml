@@ -7,7 +7,9 @@
     xmlns:local="clr-namespace:Concierge.Interfaces.UtilityInterface"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:components="clr-namespace:Concierge.Interfaces.Components"
-    xmlns:viewmodels="clr-namespace:Concierge.Interfaces.ViewModels" xmlns:controls="clr-namespace:Concierge.Interfaces.Controls"
+    xmlns:viewmodels="clr-namespace:Concierge.Interfaces.ViewModels"
+    xmlns:controls="clr-namespace:Concierge.Interfaces.Controls"
+    
     d:DataContext="{d:DesignInstance Type=viewmodels:ConciergeViewModel}"
     Style="{StaticResource WindowXboxDasboardStyle}"
     mc:Ignorable="d"
@@ -52,7 +54,7 @@
             </Grid.ColumnDefinitions>
 
             <Grid Grid.Column="0" Margin="20, 20, 0, 0">
-                <Image
+                <components:ConciergeImage
                     x:Name="ColorPickerImage"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"

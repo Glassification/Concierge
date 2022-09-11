@@ -9,6 +9,7 @@ namespace Concierge.Interfaces.ToolsPageInterface
     using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Input;
+
     using Concierge.Character.Statuses;
     using Concierge.Interfaces.Enums;
     using Concierge.Persistence.ReadWriters;
@@ -17,6 +18,7 @@ namespace Concierge.Interfaces.ToolsPageInterface
     using Concierge.Tools.DivideLoot;
     using Concierge.Utility;
     using Concierge.Utility.Extensions;
+    using global::Interfaces.Enums;
 
     /// <summary>
     /// Interaction logic for ToolsPage.xaml.
@@ -217,6 +219,26 @@ namespace Concierge.Interfaces.ToolsPageInterface
             }
         }
 
+        private void ScrollCustomInputHistory(HistoryDirection direction)
+        {
+            if (!this.CustomInputTextBox.IsFocused)
+            {
+                return;
+            }
+
+            switch (direction)
+            {
+                case HistoryDirection.Backward:
+                    this.CustomInputTextBox.Text = this.DiceHistory.Backward();
+                    this.CustomInputTextBox.Select(this.CustomInputTextBox.Text.Length, 0);
+                    break;
+                case HistoryDirection.Forward:
+                    this.CustomInputTextBox.Text = this.DiceHistory.Forward();
+                    this.CustomInputTextBox.Select(this.CustomInputTextBox.Text.Length, 0);
+                    break;
+            }
+        }
+
         private void ButtonDivideLoot_Click(object sender, RoutedEventArgs e)
         {
             this.DivideLoot();
@@ -260,25 +282,7 @@ namespace Concierge.Interfaces.ToolsPageInterface
 
         private void CustomInputTextBox_PreviewKeyDown(object sender, KeyEventArgs e)
         {
-            switch (e.Key)
-            {
-                case Key.Up:
-                    if (this.CustomInputTextBox.IsFocused)
-                    {
-                        this.CustomInputTextBox.Text = this.DiceHistory.Backward();
-                        this.CustomInputTextBox.Select(this.CustomInputTextBox.Text.Length, 0);
-                    }
-
-                    break;
-                case Key.Down:
-                    if (this.CustomInputTextBox.IsFocused)
-                    {
-                        this.CustomInputTextBox.Text = this.DiceHistory.Forward();
-                        this.CustomInputTextBox.Select(this.CustomInputTextBox.Text.Length, 0);
-                    }
-
-                    break;
-            }
+            this.ScrollCustomInputHistory(e.Key == Key.Up ? HistoryDirection.Backward : e.Key == Key.Down ? HistoryDirection.Forward : HistoryDirection.None);
         }
 
         private void DiceRollDisplay_DiceRolled(object sender, RoutedEventArgs e)
@@ -288,6 +292,11 @@ namespace Concierge.Interfaces.ToolsPageInterface
                 this.RollHistory.Add(diceRoll);
                 this.DrawDiceHistory();
             }
+        }
+
+        private void CustomInputTextBox_MouseWheel(object sender, MouseWheelEventArgs e)
+        {
+            this.ScrollCustomInputHistory(e.Delta < 0 ? HistoryDirection.Forward : HistoryDirection.Backward);
         }
     }
 }
