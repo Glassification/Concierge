@@ -9,6 +9,7 @@ namespace Concierge.Character.Statuses.ConditionStatus
 
     using Concierge.Character.Enums;
     using Concierge.Utility;
+    using Newtonsoft.Json;
 
     public class Conditions : ICopyable<Conditions>
     {
@@ -49,6 +50,7 @@ namespace Concierge.Character.Statuses.ConditionStatus
             this.Unconscious = new GenericCondition(false, UnconsciousDescription, nameof(this.Unconscious));
         }
 
+        [JsonIgnore]
         public EncumbranceCondition Encumbrance { get; set; }
 
         public GenericCondition Blinded { get; set; }
@@ -81,29 +83,29 @@ namespace Concierge.Character.Statuses.ConditionStatus
 
         public GenericCondition Unconscious { get; set; }
 
-        public List<KeyValuePair<bool, string>> ToList()
+        public List<Condition> ToList()
         {
-            var keyValuePairs = new List<KeyValuePair<bool, string>>
+            var conditions = new List<Condition>
             {
-                new KeyValuePair<bool, string>(this.Blinded.IsAfflicted(), this.Blinded.ToString()),
-                new KeyValuePair<bool, string>(this.Charmed.IsAfflicted(), this.Charmed.ToString()),
-                new KeyValuePair<bool, string>(this.Deafened.IsAfflicted(), this.Deafened.ToString()),
-                new KeyValuePair<bool, string>(this.Encumbrance.IsAfflicted(), this.Encumbrance.ToString()),
-                new KeyValuePair<bool, string>(this.Fatigued.IsAfflicted(), this.Fatigued.ToString()),
-                new KeyValuePair<bool, string>(this.Frightened.IsAfflicted(), this.Frightened.ToString()),
-                new KeyValuePair<bool, string>(this.Grappled.IsAfflicted(), this.Grappled.ToString()),
-                new KeyValuePair<bool, string>(this.Incapacitated.IsAfflicted(), this.Incapacitated.ToString()),
-                new KeyValuePair<bool, string>(this.Invisible.IsAfflicted(), this.Invisible.ToString()),
-                new KeyValuePair<bool, string>(this.Paralyzed.IsAfflicted(), this.Paralyzed.ToString()),
-                new KeyValuePair<bool, string>(this.Petrified.IsAfflicted(), this.Petrified.ToString()),
-                new KeyValuePair<bool, string>(this.Poisoned.IsAfflicted(), this.Poisoned.ToString()),
-                new KeyValuePair<bool, string>(this.Prone.IsAfflicted(), this.Prone.ToString()),
-                new KeyValuePair<bool, string>(this.Restrained.IsAfflicted(), this.Restrained.ToString()),
-                new KeyValuePair<bool, string>(this.Stunned.IsAfflicted(), this.Stunned.ToString()),
-                new KeyValuePair<bool, string>(this.Unconscious.IsAfflicted(), this.Unconscious.ToString()),
+                this.Blinded,
+                this.Charmed,
+                this.Deafened,
+                this.Encumbrance,
+                this.Fatigued,
+                this.Frightened,
+                this.Grappled,
+                this.Incapacitated,
+                this.Invisible,
+                this.Paralyzed,
+                this.Petrified,
+                this.Poisoned,
+                this.Prone,
+                this.Restrained,
+                this.Stunned,
+                this.Unconscious,
             };
 
-            return keyValuePairs.Where(x => x.Key).ToList();
+            return conditions.Where(x => x.IsAfflicted()).ToList();
         }
 
         public Conditions DeepCopy()

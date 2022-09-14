@@ -21,6 +21,8 @@ namespace Concierge.Character.Statuses.ConditionStatus
         {
         }
 
+        public override string Value => $"{this.EncumbranceLevel} - {this.Description}";
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822:Mark members as static", Justification = "Code style.")]
         public EncumbranceLevel EncumbranceLevel
         {
@@ -49,19 +51,14 @@ namespace Concierge.Character.Statuses.ConditionStatus
             }
         }
 
-        public override string ToString()
+        public override bool IsAfflicted()
         {
-            return $"{this.EncumbranceLevel} - {this.Description}";
+            return this.EncumbranceLevel != EncumbranceLevel.Normal;
         }
 
         public EncumbranceCondition DeepCopy()
         {
             return new EncumbranceCondition(this.Description, this.Name);
-        }
-
-        public override bool IsAfflicted()
-        {
-            return this.EncumbranceLevel != EncumbranceLevel.Normal;
         }
     }
 }

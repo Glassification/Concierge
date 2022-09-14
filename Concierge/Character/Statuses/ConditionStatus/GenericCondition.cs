@@ -19,21 +19,18 @@ namespace Concierge.Character.Statuses.ConditionStatus
             this.Afflicted = afflicted;
         }
 
+        public override string Value => $"{this.Name} - {this.Description}";
+
         public bool Afflicted { get; set; }
 
-        public override string ToString()
+        public override bool IsAfflicted()
         {
-            return $"{this.Name} - {this.Description}";
+            return this.Afflicted;
         }
 
         public GenericCondition DeepCopy()
         {
             return new GenericCondition(this.Afflicted, this.Description, this.Name);
-        }
-
-        public override bool IsAfflicted()
-        {
-            return this.Afflicted;
         }
     }
 }
