@@ -7,6 +7,7 @@ namespace Concierge.Character.Statuses
     using System;
 
     using Concierge.Character.Enums;
+    using Concierge.Character.Statuses.ConditionStatus;
     using Concierge.Utility;
     using Newtonsoft.Json;
 
@@ -25,14 +26,14 @@ namespace Concierge.Character.Statuses
         {
             get
             {
-                if (this.Conditions.Fatigued.Equals("Four") || this.Conditions.Fatigued.Equals("Five"))
+                if (this.Conditions.Fatigued.ExhaustionLevel == ExhaustionLevel.Four || this.Conditions.Fatigued.ExhaustionLevel == ExhaustionLevel.Five)
                 {
                     if (this.Health.BaseHealth > this.Health.MaxHealth / 2)
                     {
                         return this.Health.MaxHealth / 2;
                     }
                 }
-                else if (this.Conditions.Fatigued.Equals("Six"))
+                else if (this.Conditions.Fatigued.ExhaustionLevel == ExhaustionLevel.Six)
                 {
                     return 0;
                 }

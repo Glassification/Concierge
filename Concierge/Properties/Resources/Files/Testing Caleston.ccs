@@ -300,23 +300,6 @@
           "SpentD10": 0,
           "SpentD12": 0
         },
-        "Conditions": {
-          "Blinded": "Cured",
-          "Charmed": "Cured",
-          "Deafened": "Cured",
-          "Fatigued": "Normal",
-          "Frightened": "Cured",
-          "Grappled": "Cured",
-          "Incapacitated": "Cured",
-          "Invisible": "Cured",
-          "Paralyzed": "Cured",
-          "Petrified": "Cured",
-          "Poisoned": "Cured",
-          "Prone": "Cured",
-          "Restrained": "Cured",
-          "Stunned": "Cured",
-          "Unconscious": "Cured"
-        },
         "DeathSavingThrows": {
           "CurrentDeathSave": 0,
           "DeathSaves": []
@@ -1717,23 +1700,6 @@
         "SpentD8": 4,
         "SpentD10": 0,
         "SpentD12": 0
-      },
-      "Conditions": {
-        "Blinded": "Cured",
-        "Charmed": "Cured",
-        "Deafened": "Cured",
-        "Fatigued": "Normal",
-        "Frightened": "Cured",
-        "Grappled": "Cured",
-        "Incapacitated": "Cured",
-        "Invisible": "Cured",
-        "Paralyzed": "Cured",
-        "Petrified": "Cured",
-        "Poisoned": "Cured",
-        "Prone": "Cured",
-        "Restrained": "Cured",
-        "Stunned": "Cured",
-        "Unconscious": "Cured"
       },
       "DeathSavingThrows": {
         "CurrentDeathSave": 0,

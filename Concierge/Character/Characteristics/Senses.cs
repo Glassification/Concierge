@@ -36,26 +36,26 @@ namespace Concierge.Character.Characteristics
         {
             var conditions = Program.CcsFile.Character.Vitality.Conditions;
 
-            if (conditions.Fatigued.Equals("Five") ||
-                conditions.Grappled.Equals("Grappled") ||
-                conditions.Restrained.Equals("Restrained"))
+            if (conditions.Fatigued.ExhaustionLevel == ExhaustionLevel.Five ||
+                conditions.Grappled.Afflicted ||
+                conditions.Restrained.Afflicted)
             {
                 return 0;
             }
             else
             {
-                if (Statuses.Conditions.Encumbrance.Equals("Encumbered"))
+                if (conditions.Encumbrance.EncumbranceLevel == EncumbranceLevel.Encumbered)
                 {
                     baseMovement -= 10;
                 }
-                else if (Statuses.Conditions.Encumbrance.Equals("Heavily Encumbered"))
+                else if (conditions.Encumbrance.EncumbranceLevel == EncumbranceLevel.HeavilyEncumbered)
                 {
                     baseMovement -= 20;
                 }
 
-                if (conditions.Fatigued.Equals("Two") ||
-                    conditions.Fatigued.Equals("Three") ||
-                    conditions.Fatigued.Equals("Four"))
+                if (conditions.Fatigued.ExhaustionLevel == ExhaustionLevel.Two ||
+                    conditions.Fatigued.ExhaustionLevel == ExhaustionLevel.Three ||
+                    conditions.Fatigued.ExhaustionLevel == ExhaustionLevel.Four)
                 {
                     baseMovement /= 2;
                 }

@@ -13,6 +13,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
     using Concierge.Character.Characteristics;
     using Concierge.Character.Enums;
     using Concierge.Character.Statuses;
+    using Concierge.Character.Statuses.ConditionStatus;
     using Concierge.Commands;
     using Concierge.Configuration;
     using Concierge.Interfaces.Components;

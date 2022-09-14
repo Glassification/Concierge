@@ -20,9 +20,9 @@ namespace Concierge.Character.AbilitySavingThrows.SavingThrowTypes
         public override StatusChecks StatusChecks =>
             this.CheckOverride != StatusChecks.None
             ? this.CheckOverride
-            : Program.CcsFile.Character.Vitality.Conditions.Fatigued.Equals("Three") ||
-                Program.CcsFile.Character.Vitality.Conditions.Fatigued.Equals("Four") ||
-                Program.CcsFile.Character.Vitality.Conditions.Fatigued.Equals("Five")
+            : Program.CcsFile.Character.Vitality.Conditions.Fatigued.ExhaustionLevel == ExhaustionLevel.Three ||
+                Program.CcsFile.Character.Vitality.Conditions.Fatigued.ExhaustionLevel == ExhaustionLevel.Four ||
+                Program.CcsFile.Character.Vitality.Conditions.Fatigued.ExhaustionLevel == ExhaustionLevel.Five
                     ? StatusChecks.Disadvantage
                     : StatusChecks.Normal;
 

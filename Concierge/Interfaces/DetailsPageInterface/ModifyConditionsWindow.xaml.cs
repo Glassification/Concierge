@@ -9,7 +9,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
     using System.Windows;
 
     using Concierge.Character.Enums;
-    using Concierge.Character.Statuses;
+    using Concierge.Character.Statuses.ConditionStatus;
     using Concierge.Commands;
     using Concierge.Interfaces.Components;
     using Concierge.Interfaces.Enums;
@@ -23,22 +23,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
         {
             this.InitializeComponent();
 
-            this.BlindedComboBox.ItemsSource = Enum.GetValues(typeof(ConditionTypes)).Cast<ConditionTypes>();
-            this.CharmedComboBox.ItemsSource = Enum.GetValues(typeof(ConditionTypes)).Cast<ConditionTypes>();
-            this.DeafenedComboBox.ItemsSource = Enum.GetValues(typeof(ConditionTypes)).Cast<ConditionTypes>();
             this.FatiguedComboBox.ItemsSource = Enum.GetValues(typeof(ExhaustionLevel)).Cast<ExhaustionLevel>();
-            this.FrightenedComboBox.ItemsSource = Enum.GetValues(typeof(ConditionTypes)).Cast<ConditionTypes>();
-            this.GrappledComboBox.ItemsSource = Enum.GetValues(typeof(ConditionTypes)).Cast<ConditionTypes>();
-            this.IncapacitatedComboBox.ItemsSource = Enum.GetValues(typeof(ConditionTypes)).Cast<ConditionTypes>();
-            this.InvisibleComboBox.ItemsSource = Enum.GetValues(typeof(ConditionTypes)).Cast<ConditionTypes>();
-            this.ParalyzedComboBox.ItemsSource = Enum.GetValues(typeof(ConditionTypes)).Cast<ConditionTypes>();
-            this.PetrifiedComboBox.ItemsSource = Enum.GetValues(typeof(ConditionTypes)).Cast<ConditionTypes>();
-            this.PoisonedComboBox.ItemsSource = Enum.GetValues(typeof(ConditionTypes)).Cast<ConditionTypes>();
-            this.ProneComboBox.ItemsSource = Enum.GetValues(typeof(ConditionTypes)).Cast<ConditionTypes>();
-            this.RestrainedComboBox.ItemsSource = Enum.GetValues(typeof(ConditionTypes)).Cast<ConditionTypes>();
-            this.StunnedComboBox.ItemsSource = Enum.GetValues(typeof(ConditionTypes)).Cast<ConditionTypes>();
-            this.UnconsciousComboBox.ItemsSource = Enum.GetValues(typeof(ConditionTypes)).Cast<ConditionTypes>();
-
             this.ConciergePage = ConciergePage.None;
             this.Conditions = new Conditions();
         }
@@ -69,43 +54,43 @@ namespace Concierge.Interfaces.DetailsPageInterface
 
         private void FillFields()
         {
-            this.BlindedComboBox.Text = this.Conditions.Blinded.Equals("Cured") ? "Cured" : "Afflicted";
-            this.CharmedComboBox.Text = this.Conditions.Charmed.Equals("Cured") ? "Cured" : "Afflicted";
-            this.DeafenedComboBox.Text = this.Conditions.Deafened.Equals("Cured") ? "Cured" : "Afflicted";
-            this.FatiguedComboBox.Text = this.Conditions.Fatigued;
-            this.FrightenedComboBox.Text = this.Conditions.Frightened.Equals("Cured") ? "Cured" : "Afflicted";
-            this.GrappledComboBox.Text = this.Conditions.Grappled.Equals("Cured") ? "Cured" : "Afflicted";
-            this.IncapacitatedComboBox.Text = this.Conditions.Incapacitated.Equals("Cured") ? "Cured" : "Afflicted";
-            this.InvisibleComboBox.Text = this.Conditions.Invisible.Equals("Cured") ? "Cured" : "Afflicted";
-            this.ParalyzedComboBox.Text = this.Conditions.Paralyzed.Equals("Cured") ? "Cured" : "Afflicted";
-            this.PetrifiedComboBox.Text = this.Conditions.Petrified.Equals("Cured") ? "Cured" : "Afflicted";
-            this.PoisonedComboBox.Text = this.Conditions.Poisoned.Equals("Cured") ? "Cured" : "Afflicted";
-            this.ProneComboBox.Text = this.Conditions.Prone.Equals("Cured") ? "Cured" : "Afflicted";
-            this.RestrainedComboBox.Text = this.Conditions.Restrained.Equals("Cured") ? "Cured" : "Afflicted";
-            this.StunnedComboBox.Text = this.Conditions.Stunned.Equals("Cured") ? "Cured" : "Afflicted";
-            this.UnconsciousComboBox.Text = this.Conditions.Unconscious.Equals("Cured") ? "Cured" : "Afflicted";
-            this.EncumbranceTextBox.Text = Conditions.Encumbrance;
+            this.BlindedCheckBox.IsChecked = this.Conditions.Blinded.Afflicted;
+            this.CharmedCheckBox.IsChecked = this.Conditions.Charmed.Afflicted;
+            this.DeafenedCheckBox.IsChecked = this.Conditions.Deafened.Afflicted;
+            this.FatiguedComboBox.Text = this.Conditions.Fatigued.ExhaustionLevel.ToString();
+            this.FrightenedCheckBox.IsChecked = this.Conditions.Frightened.Afflicted;
+            this.GrappledCheckBox.IsChecked = this.Conditions.Grappled.Afflicted;
+            this.IncapacitatedCheckBox.IsChecked = this.Conditions.Incapacitated.Afflicted;
+            this.InvisibleCheckBox.IsChecked = this.Conditions.Invisible.Afflicted;
+            this.ParalyzedCheckBox.IsChecked = this.Conditions.Paralyzed.Afflicted;
+            this.PetrifiedCheckBox.IsChecked = this.Conditions.Petrified.Afflicted;
+            this.PoisonedCheckBox.IsChecked = this.Conditions.Poisoned.Afflicted;
+            this.ProneCheckBox.IsChecked = this.Conditions.Prone.Afflicted;
+            this.RestrainedCheckBox.IsChecked = this.Conditions.Restrained.Afflicted;
+            this.StunnedCheckBox.IsChecked = this.Conditions.Stunned.Afflicted;
+            this.UnconsciousCheckBox.IsChecked = this.Conditions.Unconscious.Afflicted;
+            this.EncumbranceTextBox.Text = this.Conditions.Encumbrance.EncumbranceLevel.ToString();
         }
 
         private void UpdateConditions()
         {
             var oldItem = this.Conditions.DeepCopy();
 
-            this.Conditions.Blinded = this.BlindedComboBox.Text.Equals("Cured") ? "Cured" : "Blinded";
-            this.Conditions.Charmed = this.CharmedComboBox.Text.Equals("Cured") ? "Cured" : "Charmed";
-            this.Conditions.Deafened = this.DeafenedComboBox.Text.Equals("Cured") ? "Cured" : "Deafened";
-            this.Conditions.Fatigued = this.FatiguedComboBox.Text;
-            this.Conditions.Frightened = this.FrightenedComboBox.Text.Equals("Cured") ? "Cured" : "Frightened";
-            this.Conditions.Grappled = this.GrappledComboBox.Text.Equals("Cured") ? "Cured" : "Grappled";
-            this.Conditions.Incapacitated = this.IncapacitatedComboBox.Text.Equals("Cured") ? "Cured" : "Incapacitated";
-            this.Conditions.Invisible = this.InvisibleComboBox.Text.Equals("Cured") ? "Cured" : "Invisible";
-            this.Conditions.Paralyzed = this.ParalyzedComboBox.Text.Equals("Cured") ? "Cured" : "Paralyzed";
-            this.Conditions.Petrified = this.PetrifiedComboBox.Text.Equals("Cured") ? "Cured" : "Petrified";
-            this.Conditions.Poisoned = this.PoisonedComboBox.Text.Equals("Cured") ? "Cured" : "Poisoned";
-            this.Conditions.Prone = this.ProneComboBox.Text.Equals("Cured") ? "Cured" : "Prone";
-            this.Conditions.Restrained = this.RestrainedComboBox.Text.Equals("Cured") ? "Cured" : "Restrained";
-            this.Conditions.Stunned = this.StunnedComboBox.Text.Equals("Cured") ? "Cured" : "Stunned";
-            this.Conditions.Unconscious = this.UnconsciousComboBox.Text.Equals("Cured") ? "Cured" : "Unconscious";
+            this.Conditions.Blinded.Afflicted = this.BlindedCheckBox.IsChecked ?? false;
+            this.Conditions.Charmed.Afflicted = this.CharmedCheckBox.IsChecked ?? false;
+            this.Conditions.Deafened.Afflicted = this.DeafenedCheckBox.IsChecked ?? false;
+            this.Conditions.Fatigued.ExhaustionLevel = (ExhaustionLevel)Enum.Parse(typeof(ExhaustionLevel), this.FatiguedComboBox.Text);
+            this.Conditions.Frightened.Afflicted = this.FrightenedCheckBox.IsChecked ?? false;
+            this.Conditions.Grappled.Afflicted = this.GrappledCheckBox.IsChecked ?? false;
+            this.Conditions.Incapacitated.Afflicted = this.IncapacitatedCheckBox.IsChecked ?? false;
+            this.Conditions.Invisible.Afflicted = this.InvisibleCheckBox.IsChecked ?? false;
+            this.Conditions.Paralyzed.Afflicted = this.ParalyzedCheckBox.IsChecked ?? false;
+            this.Conditions.Petrified.Afflicted = this.PetrifiedCheckBox.IsChecked ?? false;
+            this.Conditions.Poisoned.Afflicted = this.PoisonedCheckBox.IsChecked ?? false;
+            this.Conditions.Prone.Afflicted = this.ProneCheckBox.IsChecked ?? false;
+            this.Conditions.Restrained.Afflicted = this.RestrainedCheckBox.IsChecked ?? false;
+            this.Conditions.Stunned.Afflicted = this.StunnedCheckBox.IsChecked ?? false;
+            this.Conditions.Unconscious.Afflicted = this.UnconsciousCheckBox.IsChecked ?? false;
 
             Program.UndoRedoService.AddCommand(new EditCommand<Conditions>(this.Conditions, oldItem, this.ConciergePage));
         }

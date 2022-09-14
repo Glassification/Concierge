@@ -73,20 +73,21 @@
 
                     <!--Title-->
                     <Grid Grid.Column="0">
-                        <TextBlock Text="Blinded:"
-                                   Foreground="White"
-                                   FontSize="15"
-                                   HorizontalAlignment="Left"
-                                   VerticalAlignment="Center"
-                                   Margin="10, 0, 0, 0"/>
+                        <TextBlock
+                            Text="Blinded:"
+                            Foreground="White"
+                            FontSize="17"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Margin="10, 0, 0, 0"/>
                     </Grid>
 
                     <!--Value-->
                     <Grid Grid.Column="1">
-                        <components:ConciergeComboBox
-                            Style="{StaticResource ComboBoxStyle}"
-                            x:Name="BlindedComboBox"
-                            IsEditable="False"/>
+                        <components:ConciergeCheckBox
+                            Style="{StaticResource CheckBoxStyle}"
+                            Margin="20,15,0,0"
+                            x:Name="BlindedCheckBox"/>
                     </Grid>
                 </Grid>
 
@@ -99,20 +100,21 @@
 
                     <!--Title-->
                     <Grid Grid.Column="0">
-                        <TextBlock Text="Charmed:"
-                                   Foreground="White"
-                                   FontSize="15"
-                                   HorizontalAlignment="Left"
-                                   VerticalAlignment="Center"
-                                   Margin="10, 0, 0, 0"/>
+                        <TextBlock
+                            Text="Charmed:"
+                            Foreground="White"
+                            FontSize="17"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Margin="10, 0, 0, 0"/>
                     </Grid>
 
                     <!--Value-->
                     <Grid Grid.Column="1">
-                        <components:ConciergeComboBox
-                            Style="{StaticResource ComboBoxStyle}"
-                            x:Name="CharmedComboBox"
-                            IsEditable="False"/>
+                        <components:ConciergeCheckBox
+                            Style="{StaticResource CheckBoxStyle}"
+                            Margin="20,15,0,0"
+                            x:Name="CharmedCheckBox"/>
                     </Grid>
                 </Grid>
 
@@ -125,20 +127,21 @@
 
                     <!--Title-->
                     <Grid Grid.Column="0">
-                        <TextBlock Text="Deafened:"
-                                   Foreground="White"
-                                   FontSize="15"
-                                   HorizontalAlignment="Left"
-                                   VerticalAlignment="Center"
-                                   Margin="10, 0, 0, 0"/>
+                        <TextBlock
+                            Text="Deafened:"
+                            Foreground="White"
+                            FontSize="17"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Margin="10, 0, 0, 0"/>
                     </Grid>
 
                     <!--Value-->
                     <Grid Grid.Column="1">
-                        <components:ConciergeComboBox
-                            Style="{StaticResource ComboBoxStyle}"
-                            x:Name="DeafenedComboBox"
-                            IsEditable="False"/>
+                        <components:ConciergeCheckBox
+                            Style="{StaticResource CheckBoxStyle}"
+                            Margin="20,15,0,0"
+                            x:Name="DeafenedCheckBox"/>
                     </Grid>
                 </Grid>
 
@@ -151,12 +154,13 @@
 
                     <!--Title-->
                     <Grid Grid.Column="0">
-                        <TextBlock Text="Fatigued:"
-                                   Foreground="White"
-                                   FontSize="15"
-                                   HorizontalAlignment="Left"
-                                   VerticalAlignment="Center"
-                                   Margin="10, 0, 0, 0"/>
+                        <TextBlock
+                            Text="Fatigued:"
+                                Foreground="White"
+                                FontSize="17"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center"
+                                Margin="10, 0, 0, 0"/>
                     </Grid>
 
                     <!--Value-->
@@ -181,20 +185,21 @@
                             <ColumnDefinition Width="9*"/>
                             <ColumnDefinition Width="47*"/>
                         </Grid.ColumnDefinitions>
-                        <TextBlock Text="Frightened:"
-                                   Foreground="White"
-                                   FontSize="15"
-                                   HorizontalAlignment="Left"
-                                   VerticalAlignment="Center"
-                                   Margin="10,0,0,0" Grid.ColumnSpan="2"/>
+                        <TextBlock
+                            Text="Frightened:"
+                            Foreground="White"
+                            FontSize="17"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Margin="10,0,0,0" Grid.ColumnSpan="2"/>
                     </Grid>
 
                     <!--Value-->
                     <Grid Grid.Column="1">
-                        <components:ConciergeComboBox
-                            Style="{StaticResource ComboBoxStyle}"
-                            x:Name="FrightenedComboBox"
-                            IsEditable="False"/>
+                        <components:ConciergeCheckBox
+                            Style="{StaticResource CheckBoxStyle}"
+                            Margin="20,15,0,0"
+                            x:Name="FrightenedCheckBox"/>
                     </Grid>
                 </Grid>
 
@@ -207,20 +212,21 @@
 
                     <!--Title-->
                     <Grid Grid.Column="0">
-                        <TextBlock Text="Grappled:"
-                                   Foreground="White"
-                                   FontSize="15"
-                                   HorizontalAlignment="Left"
-                                   VerticalAlignment="Center"
-                                   Margin="10, 0, 0, 0"/>
+                        <TextBlock
+                            Text="Grappled:"
+                            Foreground="White"
+                            FontSize="17"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Margin="10, 0, 0, 0"/>
                     </Grid>
 
                     <!--Value-->
                     <Grid Grid.Column="1">
-                        <components:ConciergeComboBox
-                            Style="{StaticResource ComboBoxStyle}"
-                            x:Name="GrappledComboBox"
-                            IsEditable="False"/>
+                        <components:ConciergeCheckBox
+                            Style="{StaticResource CheckBoxStyle}"
+                            Margin="20,15,0,0"
+                            x:Name="GrappledCheckBox"/>
                     </Grid>
                 </Grid>
 
@@ -233,20 +239,21 @@
 
                     <!--Title-->
                     <Grid Grid.Column="0">
-                        <TextBlock Text="Incapacitated:"
-                                   Foreground="White"
-                                   FontSize="15"
-                                   HorizontalAlignment="Left"
-                                   VerticalAlignment="Center"
-                                   Margin="10, 0, 0, 0"/>
+                        <TextBlock
+                            Text="Incapacitated:"
+                            Foreground="White"
+                            FontSize="17"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Margin="10, 0, 0, 0"/>
                     </Grid>
 
                     <!--Value-->
                     <Grid Grid.Column="1">
-                        <components:ConciergeComboBox
-                            Style="{StaticResource ComboBoxStyle}"
-                            x:Name="IncapacitatedComboBox"
-                            IsEditable="False"/>
+                        <components:ConciergeCheckBox
+                            Style="{StaticResource CheckBoxStyle}"
+                            Margin="20,15,0,0"
+                            x:Name="IncapacitatedCheckBox"/>
                     </Grid>
                 </Grid>
 
@@ -259,20 +266,21 @@
 
                     <!--Title-->
                     <Grid Grid.Column="0">
-                        <TextBlock Text="Invisible:"
-                                   Foreground="White"
-                                   FontSize="15"
-                                   HorizontalAlignment="Left"
-                                   VerticalAlignment="Center"
-                                   Margin="10, 0, 0, 0"/>
+                        <TextBlock
+                            Text="Invisible:"
+                            Foreground="White"
+                            FontSize="17"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Margin="10, 0, 0, 0"/>
                     </Grid>
 
                     <!--Value-->
                     <Grid Grid.Column="1">
-                        <components:ConciergeComboBox
-                            Style="{StaticResource ComboBoxStyle}"
-                            x:Name="InvisibleComboBox"
-                            IsEditable="False"/>
+                        <components:ConciergeCheckBox
+                            Style="{StaticResource CheckBoxStyle}"
+                            Margin="20,15,0,0"
+                            x:Name="InvisibleCheckBox"/>
                     </Grid>
                 </Grid>
             </Grid>
@@ -299,20 +307,21 @@
 
                     <!--Title-->
                     <Grid Grid.Column="0">
-                        <TextBlock Text="Paralyzed:"
-                                   Foreground="White"
-                                   FontSize="15"
-                                   HorizontalAlignment="Left"
-                                   VerticalAlignment="Center"
-                                   Margin="10, 0, 0, 0"/>
+                        <TextBlock
+                            Text="Paralyzed:"
+                            Foreground="White"
+                            FontSize="17"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Margin="10, 0, 0, 0"/>
                     </Grid>
 
                     <!--Value-->
                     <Grid Grid.Column="1">
-                        <components:ConciergeComboBox
-                            Style="{StaticResource ComboBoxStyle}"
-                            x:Name="ParalyzedComboBox"
-                            IsEditable="False"/>
+                        <components:ConciergeCheckBox
+                            Style="{StaticResource CheckBoxStyle}"
+                            Margin="20,15,0,0"
+                            x:Name="ParalyzedCheckBox"/>
                     </Grid>
                 </Grid>
 
@@ -325,20 +334,21 @@
 
                     <!--Title-->
                     <Grid Grid.Column="0">
-                        <TextBlock Text="Petrified:"
-                                   Foreground="White"
-                                   FontSize="15"
-                                   HorizontalAlignment="Left"
-                                   VerticalAlignment="Center"
-                                   Margin="10, 0, 0, 0"/>
+                        <TextBlock
+                            Text="Petrified:"
+                            Foreground="White"
+                            FontSize="17"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Margin="10, 0, 0, 0"/>
                     </Grid>
 
                     <!--Value-->
                     <Grid Grid.Column="1">
-                        <components:ConciergeComboBox
-                            Style="{StaticResource ComboBoxStyle}"
-                            x:Name="PetrifiedComboBox"
-                            IsEditable="False"/>
+                        <components:ConciergeCheckBox
+                            Style="{StaticResource CheckBoxStyle}"
+                            Margin="20,15,0,0"
+                            x:Name="PetrifiedCheckBox"/>
                     </Grid>
                 </Grid>
 
@@ -351,20 +361,21 @@
 
                     <!--Title-->
                     <Grid Grid.Column="0">
-                        <TextBlock Text="Poisoned:"
-                                   Foreground="White"
-                                   FontSize="15"
-                                   HorizontalAlignment="Left"
-                                   VerticalAlignment="Center"
-                                   Margin="10, 0, 0, 0"/>
+                        <TextBlock
+                            Text="Poisoned:"
+                            Foreground="White"
+                            FontSize="17"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Margin="10, 0, 0, 0"/>
                     </Grid>
 
                     <!--Value-->
                     <Grid Grid.Column="1">
-                        <components:ConciergeComboBox
-                            Style="{StaticResource ComboBoxStyle}"
-                            x:Name="PoisonedComboBox"
-                            IsEditable="False"/>
+                        <components:ConciergeCheckBox
+                            Style="{StaticResource CheckBoxStyle}"
+                            Margin="20,15,0,0"
+                            x:Name="PoisonedCheckBox"/>
                     </Grid>
                 </Grid>
 
@@ -377,20 +388,21 @@
 
                     <!--Title-->
                     <Grid Grid.Column="0">
-                        <TextBlock Text="Prone:"
-                                   Foreground="White"
-                                   FontSize="15"
-                                   HorizontalAlignment="Left"
-                                   VerticalAlignment="Center"
-                                   Margin="10, 0, 0, 0"/>
+                        <TextBlock
+                            Text="Prone:"
+                            Foreground="White"
+                            FontSize="17"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Margin="10, 0, 0, 0"/>
                     </Grid>
 
                     <!--Value-->
                     <Grid Grid.Column="1">
-                        <components:ConciergeComboBox
-                            Style="{StaticResource ComboBoxStyle}"
-                            x:Name="ProneComboBox"
-                            IsEditable="False"/>
+                        <components:ConciergeCheckBox
+                            Style="{StaticResource CheckBoxStyle}"
+                            Margin="20,15,0,0"
+                            x:Name="ProneCheckBox"/>
                     </Grid>
                 </Grid>
 
@@ -403,20 +415,21 @@
 
                     <!--Title-->
                     <Grid Grid.Column="0">
-                        <TextBlock Text="Restrained:"
-                                   Foreground="White"
-                                   FontSize="15"
-                                   HorizontalAlignment="Left"
-                                   VerticalAlignment="Center"
-                                   Margin="10, 0, 0, 0"/>
+                        <TextBlock
+                            Text="Restrained:"
+                            Foreground="White"
+                            FontSize="17"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Margin="10, 0, 0, 0"/>
                     </Grid>
 
                     <!--Value-->
                     <Grid Grid.Column="1">
-                        <components:ConciergeComboBox
-                            Style="{StaticResource ComboBoxStyle}"
-                            x:Name="RestrainedComboBox"
-                            IsEditable="False"/>
+                        <components:ConciergeCheckBox
+                            Style="{StaticResource CheckBoxStyle}"
+                            Margin="20,15,0,0"
+                            x:Name="RestrainedCheckBox"/>
                     </Grid>
                 </Grid>
 
@@ -429,20 +442,21 @@
 
                     <!--Title-->
                     <Grid Grid.Column="0">
-                        <TextBlock Text="Stunned:"
-                                   Foreground="White"
-                                   FontSize="15"
-                                   HorizontalAlignment="Left"
-                                   VerticalAlignment="Center"
-                                   Margin="10, 0, 0, 0"/>
+                        <TextBlock
+                            Text="Stunned:"
+                            Foreground="White"
+                            FontSize="17"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Margin="10, 0, 0, 0"/>
                     </Grid>
 
                     <!--Value-->
                     <Grid Grid.Column="1">
-                        <components:ConciergeComboBox
-                            Style="{StaticResource ComboBoxStyle}"
-                            x:Name="StunnedComboBox"
-                            IsEditable="False"/>
+                        <components:ConciergeCheckBox
+                            Style="{StaticResource CheckBoxStyle}"
+                            Margin="20,15,0,0"
+                            x:Name="StunnedCheckBox"/>
                     </Grid>
                 </Grid>
 
@@ -455,20 +469,21 @@
 
                     <!--Title-->
                     <Grid Grid.Column="0">
-                        <TextBlock Text="Unconscious:"
-                                   Foreground="White"
-                                   FontSize="15"
-                                   HorizontalAlignment="Left"
-                                   VerticalAlignment="Center"
-                                   Margin="10, 0, 0, 0"/>
+                        <TextBlock
+                            Text="Unconscious:"
+                            Foreground="White"
+                            FontSize="17"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Margin="10, 0, 0, 0"/>
                     </Grid>
 
                     <!--Value-->
                     <Grid Grid.Column="1">
-                        <components:ConciergeComboBox
-                            Style="{StaticResource ComboBoxStyle}"
-                            x:Name="UnconsciousComboBox"
-                            IsEditable="False"/>
+                        <components:ConciergeCheckBox
+                            Style="{StaticResource CheckBoxStyle}"
+                            Margin="20,15,0,0"
+                            x:Name="UnconsciousCheckBox"/>
                     </Grid>
                 </Grid>
 
@@ -481,12 +496,13 @@
 
                     <!--Title-->
                     <Grid Grid.Column="0">
-                        <TextBlock Text="Encumbrance:"
-                                   Foreground="White"
-                                   FontSize="15"
-                                   HorizontalAlignment="Left"
-                                   VerticalAlignment="Center"
-                                   Margin="10, 0, 0, 0"/>
+                        <TextBlock
+                            Text="Encumbrance:"
+                            Foreground="White"
+                            FontSize="15"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Margin="10, 0, 0, 0"/>
                     </Grid>
 
                     <!--Value-->
