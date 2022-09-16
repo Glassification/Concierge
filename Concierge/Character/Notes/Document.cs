@@ -8,7 +8,7 @@ namespace Concierge.Character.Notes
 
     using Concierge.Utility;
 
-    public class Document : ICopyable<Document>
+    public sealed class Document : ICopyable<Document>
     {
         public Document(string name)
         {

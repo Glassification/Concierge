@@ -6,7 +6,7 @@ namespace Concierge.Configuration.Objects
 {
     using System.Collections.Generic;
 
-    public class ColorPicker
+    public sealed class ColorPicker
     {
         public ColorPicker()
         {

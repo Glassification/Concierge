@@ -10,7 +10,7 @@ namespace Concierge.Persistence
     using Concierge.Utility;
     using Newtonsoft.Json;
 
-    public class CcsFile
+    public sealed class CcsFile
     {
         public CcsFile()
         {

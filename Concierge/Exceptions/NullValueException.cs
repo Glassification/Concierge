@@ -6,7 +6,7 @@ namespace Concierge.Exceptions
 {
     using Concierge.Exceptions.Enums;
 
-    public class NullValueException : ConciergeException
+    public sealed class NullValueException : ConciergeException
     {
         public NullValueException(string name, Severity severity = Severity.Release)
             : base($"'{name}' is null.", severity, false)

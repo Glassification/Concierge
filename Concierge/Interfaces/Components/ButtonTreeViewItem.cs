@@ -12,7 +12,7 @@ namespace Concierge.Interfaces.Components
     using Concierge.Character.Notes;
     using MaterialDesignThemes.Wpf;
 
-    public class ButtonTreeViewItem : TreeViewItem
+    public sealed class ButtonTreeViewItem : TreeViewItem
     {
         public ButtonTreeViewItem(RoutedEventHandler clickEvent, Chapter? chapter)
         {

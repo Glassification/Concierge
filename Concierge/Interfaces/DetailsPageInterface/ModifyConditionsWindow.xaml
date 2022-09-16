@@ -11,14 +11,14 @@
     d:DataContext="{d:DesignInstance Type=viewmodels:ConciergeViewModel}"
     mc:Ignorable="d"
     Title="Mondify Conditions"
-    Height="595"
+    Height="665"
     Width="650"
     Style="{StaticResource WindowXboxDasboardStyle}">
 
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="45"/>
-            <RowDefinition Height="480"/>
+            <RowDefinition Height="550"/>
             <RowDefinition Height="70"/>
         </Grid.RowDefinitions>
 
@@ -61,6 +61,8 @@
                     <RowDefinition Height="60"/>
                     <RowDefinition Height="60"/>
                     <RowDefinition Height="60"/>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="10"/>
                     <RowDefinition Height="60"/>
                 </Grid.RowDefinitions>
 
@@ -118,8 +120,35 @@
                     </Grid>
                 </Grid>
 
-                <!--Deafened-->
+                <!--Death-->
                 <Grid Grid.Row="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="35*"/>
+                        <ColumnDefinition Width="65*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!--Title-->
+                    <Grid Grid.Column="0">
+                        <TextBlock
+                            Text="Dead:"
+                            Foreground="White"
+                            FontSize="17"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Margin="10, 0, 0, 0"/>
+                    </Grid>
+
+                    <!--Value-->
+                    <Grid Grid.Column="1">
+                        <components:ConciergeCheckBox
+                            Style="{StaticResource CheckBoxStyle}"
+                            Margin="20,15,0,0"
+                            x:Name="DeathCheckBox"/>
+                    </Grid>
+                </Grid>
+
+                <!--Deafened-->
+                <Grid Grid.Row="3">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="35*"/>
                         <ColumnDefinition Width="65*"/>
@@ -146,7 +175,7 @@
                 </Grid>
 
                 <!--Fatigued-->
-                <Grid Grid.Row="3">
+                <Grid Grid.Row="4">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="35*"/>
                         <ColumnDefinition Width="65*"/>
@@ -156,11 +185,11 @@
                     <Grid Grid.Column="0">
                         <TextBlock
                             Text="Fatigued:"
-                                Foreground="White"
-                                FontSize="17"
-                                HorizontalAlignment="Left"
-                                VerticalAlignment="Center"
-                                Margin="10, 0, 0, 0"/>
+                            Foreground="White"
+                            FontSize="17"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Margin="10, 0, 0, 0"/>
                     </Grid>
 
                     <!--Value-->
@@ -173,7 +202,7 @@
                 </Grid>
 
                 <!--Frightened-->
-                <Grid Grid.Row="4">
+                <Grid Grid.Row="5">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="35*"/>
                         <ColumnDefinition Width="65*"/>
@@ -204,7 +233,7 @@
                 </Grid>
 
                 <!--Grappled-->
-                <Grid Grid.Row="5">
+                <Grid Grid.Row="6">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="35*"/>
                         <ColumnDefinition Width="65*"/>
@@ -231,7 +260,7 @@
                 </Grid>
 
                 <!--Incapacitated-->
-                <Grid Grid.Row="6">
+                <Grid Grid.Row="7">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="35*"/>
                         <ColumnDefinition Width="65*"/>
@@ -257,8 +286,61 @@
                     </Grid>
                 </Grid>
 
+                <Line  
+                    Grid.Column="1"
+                    Grid.Row="8"
+                    Stretch="Uniform"
+                    X1="0" X2="1" Y1="0" Y2="0"
+                    Stroke="#227EA9"
+                    StrokeThickness="1"
+                    VerticalAlignment="Center"
+                    Margin="5,0,0,0"/>
+                
+                <!--Encumbrance-->
+                <Grid Grid.Row="9">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="35*"/>
+                        <ColumnDefinition Width="65*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!--Title-->
+                    <Grid Grid.Column="0">
+                        <TextBlock
+                            Text="Encumbrance:"
+                            Foreground="White"
+                            FontSize="15"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Margin="10, 0, 0, 0"/>
+                    </Grid>
+
+                    <!--Value-->
+                    <Grid Grid.Column="1">
+                        <components:ConciergeComboBox
+                            Style="{StaticResource ComboBoxStyle}"
+                            x:Name="EncumbranceComboBox"
+                            IsEditable="False"/>
+                    </Grid>
+                </Grid>
+            </Grid>
+
+            <!--Right-->
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="10"/>
+                    <RowDefinition Height="60"/>
+                </Grid.RowDefinitions>
+
                 <!--Invisible-->
-                <Grid Grid.Row="7">
+                <Grid Grid.Row="0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="35*"/>
                         <ColumnDefinition Width="65*"/>
@@ -283,23 +365,9 @@
                             x:Name="InvisibleCheckBox"/>
                     </Grid>
                 </Grid>
-            </Grid>
-
-            <!--Right-->
-            <Grid Grid.Column="1">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="60"/>
-                    <RowDefinition Height="60"/>
-                    <RowDefinition Height="60"/>
-                    <RowDefinition Height="60"/>
-                    <RowDefinition Height="60"/>
-                    <RowDefinition Height="60"/>
-                    <RowDefinition Height="60"/>
-                    <RowDefinition Height="60"/>
-                </Grid.RowDefinitions>
-
+                
                 <!--Paralyzed-->
-                <Grid Grid.Row="0">
+                <Grid Grid.Row="1">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="35*"/>
                         <ColumnDefinition Width="65*"/>
@@ -326,7 +394,7 @@
                 </Grid>
 
                 <!--Petrified-->
-                <Grid Grid.Row="1">
+                <Grid Grid.Row="2">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="35*"/>
                         <ColumnDefinition Width="65*"/>
@@ -353,7 +421,7 @@
                 </Grid>
 
                 <!--Poisoned-->
-                <Grid Grid.Row="2">
+                <Grid Grid.Row="3">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="35*"/>
                         <ColumnDefinition Width="65*"/>
@@ -380,7 +448,7 @@
                 </Grid>
 
                 <!--Prone-->
-                <Grid Grid.Row="3">
+                <Grid Grid.Row="4">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="35*"/>
                         <ColumnDefinition Width="65*"/>
@@ -407,7 +475,7 @@
                 </Grid>
 
                 <!--Restrained-->
-                <Grid Grid.Row="4">
+                <Grid Grid.Row="5">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="35*"/>
                         <ColumnDefinition Width="65*"/>
@@ -434,7 +502,7 @@
                 </Grid>
 
                 <!--Stunned-->
-                <Grid Grid.Row="5">
+                <Grid Grid.Row="6">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="35*"/>
                         <ColumnDefinition Width="65*"/>
@@ -461,7 +529,7 @@
                 </Grid>
 
                 <!--Unconscious-->
-                <Grid Grid.Row="6">
+                <Grid Grid.Row="7">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="35*"/>
                         <ColumnDefinition Width="65*"/>
@@ -487,8 +555,18 @@
                     </Grid>
                 </Grid>
 
+                <Line  
+                    Grid.Column="1"
+                    Grid.Row="8"
+                    Stretch="Uniform"
+                    X1="0" X2="1" Y1="0" Y2="0"
+                    Stroke="#227EA9"
+                    StrokeThickness="1"
+                    VerticalAlignment="Center"
+                    Margin="-1,0,5,0"/>
+
                 <!--Encumbrance-->
-                <Grid Grid.Row="7">
+                <Grid Grid.Row="9">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="35*"/>
                         <ColumnDefinition Width="65*"/>
@@ -497,20 +575,22 @@
                     <!--Title-->
                     <Grid Grid.Column="0">
                         <TextBlock
-                            Text="Encumbrance:"
+                            Text="Override:"
                             Foreground="White"
-                            FontSize="15"
+                            FontSize="17"
                             HorizontalAlignment="Left"
                             VerticalAlignment="Center"
                             Margin="10, 0, 0, 0"/>
                     </Grid>
 
                     <!--Value-->
-                    <components:ConciergeTextBoxBackground Grid.Column="1">
-                        <components:ConciergeTextBox 
-                            x:Name="EncumbranceTextBox"
-                            IsReadOnly="True"/>
-                    </components:ConciergeTextBoxBackground>
+                    <components:ConciergeCheckBox
+                        Style="{StaticResource CheckBoxStyle}"
+                        Grid.Column="2"
+                        Margin="20,15,0,0"
+                        Checked="EncumbranceCheckBox_Checked"
+                        Unchecked="EncumbranceCheckBox_Unchecked"
+                        x:Name="EncumbranceCheckBox"/>
                 </Grid>
             </Grid>
         </Grid>

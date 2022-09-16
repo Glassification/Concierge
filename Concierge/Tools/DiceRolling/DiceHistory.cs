@@ -7,7 +7,7 @@ namespace Concierge.Tools.DiceRolling
     using System;
     using System.Collections.Generic;
 
-    public class DiceHistory
+    public sealed class DiceHistory
     {
         private readonly List<string> history;
 

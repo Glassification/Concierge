@@ -11,7 +11,7 @@ namespace Concierge.Character.Statuses
     using Concierge.Utility.Extensions;
     using Newtonsoft.Json;
 
-    public class DeathSavingThrows : ICopyable<DeathSavingThrows>
+    public sealed class DeathSavingThrows : ICopyable<DeathSavingThrows>
     {
         private const int MaxDeathSaves = 5;
         private const int SavesInARow = 3;

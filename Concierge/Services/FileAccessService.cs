@@ -8,7 +8,7 @@ namespace Concierge.Services
     using Concierge.Persistence.ReadWriters;
     using Microsoft.Win32;
 
-    public class FileAccessService
+    public sealed class FileAccessService
     {
         private const string DefaultCcsOpenExtension = "ccs";
         private const string DefaultImageOpenExtension = "jpg";

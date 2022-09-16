@@ -8,8 +8,9 @@ namespace Concierge.Character.Statuses.ConditionStatus
     using Concierge.Character.Enums;
     using Concierge.Configuration;
     using Concierge.Utility;
+    using Concierge.Utility.Extensions;
 
-    public class EncumbranceCondition : Condition, ICopyable<EncumbranceCondition>
+    public sealed class EncumbranceCondition : Condition, ICopyable<EncumbranceCondition>
     {
         public EncumbranceCondition()
             : base(string.Empty, string.Empty)
@@ -19,15 +20,20 @@ namespace Concierge.Character.Statuses.ConditionStatus
         public EncumbranceCondition(string description, string name)
             : base(description, name)
         {
+            this.OverrideEncumbrance = false;
         }
 
-        public override string Value => $"{this.EncumbranceLevel} - {this.Description}";
+        public override string Value => $"{this.EncumbranceLevel.ToString().FormatFromEnum()} - {this.Description}";
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822:Mark members as static", Justification = "Code style.")]
         public EncumbranceLevel EncumbranceLevel
         {
             get
             {
+                if (this.OverrideEncumbrance)
+                {
+                    return this.EncumbranceLevelOverride;
+                }
+
                 var encumbrance = EncumbranceLevel.Normal;
 
                 if (Program.CcsFile.Character.Armor.Strength > Program.CcsFile.Character.Attributes.Strength)
@@ -50,6 +56,10 @@ namespace Concierge.Character.Statuses.ConditionStatus
                 return encumbrance;
             }
         }
+
+        public EncumbranceLevel EncumbranceLevelOverride { get; set; }
+
+        public bool OverrideEncumbrance { get; set; }
 
         public override bool IsAfflicted()
         {

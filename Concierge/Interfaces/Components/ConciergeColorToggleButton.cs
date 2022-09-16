@@ -10,7 +10,7 @@ namespace Concierge.Interfaces.Components
 
     using Concierge.Utility;
 
-    public class ConciergeColorToggleButton : ToggleButton
+    public sealed class ConciergeColorToggleButton : ToggleButton
     {
         public ConciergeColorToggleButton()
             : base()

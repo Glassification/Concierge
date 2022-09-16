@@ -8,7 +8,7 @@ namespace Concierge.Commands
     using Concierge.Configuration.Dtos;
     using Concierge.Interfaces.Enums;
 
-    public class UpdateSettingsCommand : Command
+    public sealed class UpdateSettingsCommand : Command
     {
         private readonly UserSettingsDto oldSettingsDto;
         private readonly UserSettingsDto newSettingsDto;

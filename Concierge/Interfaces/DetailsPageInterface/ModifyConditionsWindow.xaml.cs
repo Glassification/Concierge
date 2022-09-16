@@ -13,6 +13,8 @@ namespace Concierge.Interfaces.DetailsPageInterface
     using Concierge.Commands;
     using Concierge.Interfaces.Components;
     using Concierge.Interfaces.Enums;
+    using Concierge.Utility.Extensions;
+    using Concierge.Utility.Utilities;
 
     /// <summary>
     /// Interaction logic for MondifyConditionsWindow.xaml.
@@ -24,6 +26,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
             this.InitializeComponent();
 
             this.FatiguedComboBox.ItemsSource = Enum.GetValues(typeof(ExhaustionLevel)).Cast<ExhaustionLevel>();
+            this.EncumbranceComboBox.ItemsSource = StringUtility.FormatEnumForDisplay(typeof(EncumbranceLevel));
             this.ConciergePage = ConciergePage.None;
             this.Conditions = new Conditions();
         }
@@ -57,6 +60,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
             this.BlindedCheckBox.IsChecked = this.Conditions.Blinded.Afflicted;
             this.CharmedCheckBox.IsChecked = this.Conditions.Charmed.Afflicted;
             this.DeafenedCheckBox.IsChecked = this.Conditions.Deafened.Afflicted;
+            this.DeathCheckBox.IsChecked = this.Conditions.Dead.Afflicted;
             this.FatiguedComboBox.Text = this.Conditions.Fatigued.ExhaustionLevel.ToString();
             this.FrightenedCheckBox.IsChecked = this.Conditions.Frightened.Afflicted;
             this.GrappledCheckBox.IsChecked = this.Conditions.Grappled.Afflicted;
@@ -69,7 +73,9 @@ namespace Concierge.Interfaces.DetailsPageInterface
             this.RestrainedCheckBox.IsChecked = this.Conditions.Restrained.Afflicted;
             this.StunnedCheckBox.IsChecked = this.Conditions.Stunned.Afflicted;
             this.UnconsciousCheckBox.IsChecked = this.Conditions.Unconscious.Afflicted;
-            this.EncumbranceTextBox.Text = this.Conditions.Encumbrance.EncumbranceLevel.ToString();
+            this.EncumbranceComboBox.Text = this.Conditions.Encumbered.EncumbranceLevel.ToString().FormatFromEnum();
+            this.EncumbranceCheckBox.IsChecked = this.Conditions.Encumbered.OverrideEncumbrance;
+            this.SetEncumbranceEnableState(this.Conditions.Encumbered.OverrideEncumbrance);
         }
 
         private void UpdateConditions()
@@ -78,6 +84,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
 
             this.Conditions.Blinded.Afflicted = this.BlindedCheckBox.IsChecked ?? false;
             this.Conditions.Charmed.Afflicted = this.CharmedCheckBox.IsChecked ?? false;
+            this.Conditions.Dead.Afflicted = this.DeathCheckBox.IsChecked ?? false;
             this.Conditions.Deafened.Afflicted = this.DeafenedCheckBox.IsChecked ?? false;
             this.Conditions.Fatigued.ExhaustionLevel = (ExhaustionLevel)Enum.Parse(typeof(ExhaustionLevel), this.FatiguedComboBox.Text);
             this.Conditions.Frightened.Afflicted = this.FrightenedCheckBox.IsChecked ?? false;
@@ -91,8 +98,20 @@ namespace Concierge.Interfaces.DetailsPageInterface
             this.Conditions.Restrained.Afflicted = this.RestrainedCheckBox.IsChecked ?? false;
             this.Conditions.Stunned.Afflicted = this.StunnedCheckBox.IsChecked ?? false;
             this.Conditions.Unconscious.Afflicted = this.UnconsciousCheckBox.IsChecked ?? false;
+            this.Conditions.Encumbered.OverrideEncumbrance = this.EncumbranceCheckBox.IsChecked ?? false;
+
+            if (this.Conditions.Encumbered.OverrideEncumbrance)
+            {
+                this.Conditions.Encumbered.EncumbranceLevelOverride = (EncumbranceLevel)Enum.Parse(typeof(EncumbranceLevel), this.EncumbranceComboBox.Text.Strip(" "));
+            }
 
             Program.UndoRedoService.AddCommand(new EditCommand<Conditions>(this.Conditions, oldItem, this.ConciergePage));
+        }
+
+        private void SetEncumbranceEnableState(bool state)
+        {
+            this.EncumbranceComboBox.IsEnabled = state;
+            this.EncumbranceComboBox.Opacity = state ? 1 : 0.5;
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
@@ -116,6 +135,16 @@ namespace Concierge.Interfaces.DetailsPageInterface
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
             this.CloseConciergeWindow();
+        }
+
+        private void EncumbranceCheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            this.SetEncumbranceEnableState(true);
+        }
+
+        private void EncumbranceCheckBox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            this.SetEncumbranceEnableState(false);
         }
     }
 }

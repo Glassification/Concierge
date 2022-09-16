@@ -8,7 +8,7 @@ namespace Concierge.Animations
     using System.Windows;
     using System.Windows.Media.Animation;
 
-    public class SideMenuAnimation
+    public sealed class SideMenuAnimation
     {
         public SideMenuAnimation()
         {

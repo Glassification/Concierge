@@ -10,7 +10,7 @@ namespace Concierge.Character.Characteristics
     using Concierge.Utility.Extensions;
     using Newtonsoft.Json;
 
-    public class Language : ICopyable<Language>
+    public sealed class Language : ICopyable<Language>
     {
         public Language()
         {

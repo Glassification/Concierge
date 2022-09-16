@@ -12,7 +12,7 @@ namespace Concierge.Character.Characteristics
     using Concierge.Utility;
     using Concierge.Utility.Extensions;
 
-    public class CharacterImage : ICopyable<CharacterImage>
+    public sealed class CharacterImage : ICopyable<CharacterImage>
     {
         public CharacterImage()
         {

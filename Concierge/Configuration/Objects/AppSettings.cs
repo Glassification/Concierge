@@ -6,7 +6,7 @@ namespace Concierge.Configuration.Objects
 {
     using System.Collections.Generic;
 
-    public class AppSettings
+    public sealed class AppSettings
     {
         public AppSettings()
         {

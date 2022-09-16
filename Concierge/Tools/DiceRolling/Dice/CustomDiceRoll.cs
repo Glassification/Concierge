@@ -9,7 +9,7 @@ namespace Concierge.Tools.DiceRolling.Dice
 
     using Concierge.Exceptions;
 
-    public class CustomDiceRoll : IDiceRoll
+    public sealed class CustomDiceRoll : IDiceRoll
     {
         public CustomDiceRoll(Stack<object> stack)
         {

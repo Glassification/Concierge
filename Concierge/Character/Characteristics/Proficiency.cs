@@ -9,7 +9,7 @@ namespace Concierge.Character.Characteristics
     using Concierge.Character.Enums;
     using Concierge.Utility;
 
-    public class Proficiency : ICopyable<Proficiency>
+    public sealed class Proficiency : ICopyable<Proficiency>
     {
         public const string MartialMelee = "Martial Melee Weapons";
         public const string MartialRanged = "Martial Ranged Weapons";

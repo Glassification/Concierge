@@ -17,7 +17,7 @@ namespace Concierge.Search
     using Concierge.Utility.Extensions;
     using Concierge.Utility.Utilities;
 
-    public class ConciergeSearch
+    public sealed class ConciergeSearch
     {
         public ConciergeSearch(MainWindow mainWindow)
         {

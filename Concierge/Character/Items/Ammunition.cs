@@ -9,7 +9,7 @@ namespace Concierge.Character.Items
     using Concierge.Character.Enums;
     using Concierge.Utility;
 
-    public class Ammunition : ICopyable<Ammunition>
+    public sealed class Ammunition : ICopyable<Ammunition>
     {
         private int used;
 

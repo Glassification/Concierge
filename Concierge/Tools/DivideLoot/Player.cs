@@ -4,7 +4,7 @@
 
 namespace Concierge.Tools.DivideLoot
 {
-    public class Player : RewardPool
+    public sealed class Player : RewardPool
     {
         public Player(string name)
             : base()

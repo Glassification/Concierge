@@ -7,7 +7,7 @@ namespace Concierge.Character.Statuses.ConditionStatus
     using Concierge.Character.Enums;
     using Concierge.Utility;
 
-    public class ExhaustionCondition : Condition, ICopyable<ExhaustionCondition>
+    public sealed class ExhaustionCondition : Condition, ICopyable<ExhaustionCondition>
     {
         public const string Exausted1 = "Disadvantage on Ability Checks";
         public const string Exausted2 = "Speed halved";

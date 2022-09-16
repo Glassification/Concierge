@@ -10,7 +10,7 @@ namespace Concierge.Character.Spellcasting
     using Concierge.Utility;
     using Newtonsoft.Json;
 
-    public class Spell : ICopyable<Spell>
+    public sealed class Spell : ICopyable<Spell>
     {
         public Spell()
         {

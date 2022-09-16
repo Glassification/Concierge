@@ -7,7 +7,7 @@ namespace Concierge.Character.AbilitySkills
     using Concierge.Character.AbilitySkills.SkillTypes;
     using Concierge.Utility;
 
-    public class Skill : ICopyable<Skill>
+    public sealed class Skill : ICopyable<Skill>
     {
         public Skill()
         {

@@ -11,7 +11,7 @@ namespace Concierge.Interfaces.Components
 
     using Concierge.Utility;
 
-    public class ConciergeTextButton : Button
+    public sealed class ConciergeTextButton : Button
     {
         public ConciergeTextButton()
             : base()

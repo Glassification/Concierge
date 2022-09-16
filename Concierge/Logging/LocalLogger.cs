@@ -12,7 +12,7 @@ namespace Concierge.Logging
     using Concierge.Persistence;
     using Concierge.Utility.Extensions;
 
-    public class LocalLogger : Logger
+    public sealed class LocalLogger : Logger
     {
         private const string DefaultLogFileName = @"Concierge.log";
 

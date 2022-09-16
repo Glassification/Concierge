@@ -12,7 +12,7 @@ namespace Concierge.Commands
     using Concierge.Interfaces.Enums;
     using Concierge.Utility.Extensions;
 
-    public class LevelUpCommand : Command
+    public sealed class LevelUpCommand : Command
     {
         private readonly Vitality oldVitality;
         private readonly Vitality newVitality;

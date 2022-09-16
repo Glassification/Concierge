@@ -11,7 +11,7 @@ namespace Concierge.Interfaces.Components
 
     using Concierge.Utility;
 
-    public class ConciergeComboBox : ComboBox
+    public sealed class ConciergeComboBox : ComboBox
     {
         public ConciergeComboBox()
             : base()

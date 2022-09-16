@@ -13,7 +13,7 @@ namespace Concierge.Interfaces.Components
 
     using Image = System.Windows.Controls.Image;
 
-    public class ConciergeImage : Image
+    public sealed class ConciergeImage : Image
     {
         private RenderTargetBitmap? renderTargetBitmap;
 

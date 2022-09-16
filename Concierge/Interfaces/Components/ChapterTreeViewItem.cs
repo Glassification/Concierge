@@ -14,7 +14,7 @@ namespace Concierge.Interfaces.Components
     using Concierge.Utility;
     using MaterialDesignThemes.Wpf;
 
-    public class ChapterTreeViewItem : TreeViewItem
+    public sealed class ChapterTreeViewItem : TreeViewItem
     {
         public ChapterTreeViewItem(Chapter chapter)
         {

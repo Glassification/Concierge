@@ -10,7 +10,7 @@ namespace Concierge.Interfaces.Components
 
     using Concierge.Utility;
 
-    public class ConciergeTextBox : TextBox
+    public sealed class ConciergeTextBox : TextBox
     {
         public ConciergeTextBox()
             : base()

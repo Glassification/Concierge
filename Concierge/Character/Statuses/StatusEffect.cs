@@ -11,7 +11,7 @@ namespace Concierge.Character.Statuses
     using Concierge.Utility.Extensions;
     using Newtonsoft.Json;
 
-    public class StatusEffect : ICopyable<StatusEffect>
+    public sealed class StatusEffect : ICopyable<StatusEffect>
     {
         public StatusEffect()
         {

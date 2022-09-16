@@ -8,7 +8,7 @@ namespace Concierge.Services
 
     using Concierge.Persistence.ReadWriters;
 
-    public class CommandLineService
+    public sealed class CommandLineService
     {
         private readonly string[] commandLineArgs;
 

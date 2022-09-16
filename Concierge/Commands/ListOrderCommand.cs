@@ -8,7 +8,7 @@ namespace Concierge.Commands
 
     using Concierge.Interfaces.Enums;
 
-    public class ListOrderCommand<T> : Command
+    public sealed class ListOrderCommand<T> : Command
     {
         private readonly List<T> sourceList;
         private readonly List<T> oldListOrder;

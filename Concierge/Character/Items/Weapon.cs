@@ -12,7 +12,7 @@ namespace Concierge.Character.Items
     using Concierge.Utility.Utilities;
     using Newtonsoft.Json;
 
-    public class Weapon : ICopyable<Weapon>
+    public sealed class Weapon : ICopyable<Weapon>
     {
         public Weapon()
         {

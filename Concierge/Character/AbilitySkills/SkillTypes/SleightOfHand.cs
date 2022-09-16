@@ -7,7 +7,7 @@ namespace Concierge.Character.AbilitySkills.SkillTypes
     using Concierge.Character.Enums;
     using Concierge.Utility.Utilities;
 
-    public class SleightOfHand : Skills
+    public sealed class SleightOfHand : Skills
     {
         private int bonus;
 

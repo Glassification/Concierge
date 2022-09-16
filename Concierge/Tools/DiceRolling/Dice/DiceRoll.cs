@@ -10,7 +10,7 @@ namespace Concierge.Tools.DiceRolling.Dice
 
     using Concierge.Character.Enums;
 
-    public class DiceRoll : IDiceRoll
+    public sealed class DiceRoll : IDiceRoll
     {
         private static readonly Random random = new ();
 

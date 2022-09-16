@@ -7,7 +7,7 @@ namespace Concierge.Character.AbilitySavingThrows.SavingThrowTypes
     using Concierge.Character.Enums;
     using Concierge.Utility.Utilities;
 
-    public class Constitution : SavingThrows
+    public sealed class Constitution : SavingThrows
     {
         private int bonus;
 

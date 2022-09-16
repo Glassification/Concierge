@@ -11,7 +11,7 @@ namespace Concierge.Commands
     using Concierge.Utility.Extensions;
     using Newtonsoft.Json;
 
-    public class LongRestCommand : Command
+    public sealed class LongRestCommand : Command
     {
         private readonly Vitality oldVitality;
         private readonly Vitality newVitality;

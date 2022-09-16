@@ -302,76 +302,97 @@
         },
         "Conditions": {
           "Blinded": {
+            "Value": "Blinded - Automatically fail any ability checks. Attack rolls against you have advantage, your attacks have disadvantage.",
             "Afflicted": false,
             "Description": "Automatically fail any ability checks. Attack rolls against you have advantage, your attacks have disadvantage.",
             "Name": "Blinded"
           },
           "Charmed": {
+            "Value": "Charmed - You cannot attack the charmer. The charmer has advantage on ability checks when interacting socially.",
             "Afflicted": false,
             "Description": "You cannot attack the charmer. The charmer has advantage on ability checks when interacting socially.",
             "Name": "Charmed"
           },
+          "Dead": {
+            "Value": "Dead - You must succeed on 3 death saving throws, before failing 3. Succeeding will stabilize at 0 HP.",
+            "Afflicted": false,
+            "Description": "You must succeed on 3 death saving throws, before failing 3. Succeeding will stabilize at 0 HP.",
+            "Name": "Dead"
+          },
           "Deafened": {
+            "Value": "Deafened - You cannot hear and automatically fails any ability check that requires hearing.",
             "Afflicted": false,
             "Description": "You cannot hear and automatically fails any ability check that requires hearing.",
             "Name": "Deafened"
           },
           "Fatigued": {
+            "Value": " - Exhaustion levels stack up to 6. A long rest reduces the level by 1. .",
             "ExhaustionLevel": 0,
             "Description": "Exhaustion levels stack up to 6. A long rest reduces the level by 1.",
             "Name": "Fatigued"
           },
           "Frightened": {
+            "Value": "Frightened - You have disadvantage on Ability Checks and Attack rolls while the source of fear is within line of sight. You can’t willingly move closer to the source.",
             "Afflicted": false,
             "Description": "You have disadvantage on Ability Checks and Attack rolls while the source of fear is within line of sight. You can’t willingly move closer to the source.",
             "Name": "Frightened"
           },
           "Grappled": {
+            "Value": "Grappled - Your speed becomes 0. It ends when the grappler is incapacitated or you are thrown away.",
             "Afflicted": false,
             "Description": "Your speed becomes 0. It ends when the grappler is incapacitated or you are thrown away.",
             "Name": "Grappled"
           },
           "Incapacitated": {
+            "Value": "Incapacitated - You Cannot take Actions or reactions.",
             "Afflicted": false,
             "Description": "You Cannot take Actions or reactions.",
             "Name": "Incapacitated"
           },
           "Invisible": {
+            "Value": "Invisible - You are impossible to see without the aid of magic or a Special sense. Attacks against you have disadvantage, your attacks have advantage.",
             "Afflicted": false,
             "Description": "You are impossible to see without the aid of magic or a Special sense. Attacks against you have disadvantage, your attacks have advantage.",
             "Name": "Invisible"
           },
           "Paralyzed": {
+            "Value": "Paralyzed - You are incapacitated and automatically fail Strength and Dexterity Saving Throws. Attacks have advantage, and melee are auto crit.",
             "Afflicted": false,
             "Description": "You are incapacitated and automatically fail Strength and Dexterity Saving Throws. Attacks have advantage, and melee are auto crit.",
             "Name": "Paralyzed"
           },
           "Petrified": {
+            "Value": "Petrified - You are transformed into an inanimate substance and are incapacitated. Resistant to all damage and immune to poison and disease.",
             "Afflicted": false,
             "Description": "You are transformed into an inanimate substance and are incapacitated. Resistant to all damage and immune to poison and disease.",
             "Name": "Petrified"
           },
           "Poisoned": {
+            "Value": "Poisoned - You have disadvantage on Attack rolls and Ability Checks",
             "Afflicted": false,
             "Description": "You have disadvantage on Attack rolls and Ability Checks",
             "Name": "Poisoned"
           },
           "Prone": {
+            "Value": "Prone - Your only movement option is to crawl and have disadvantage on attacks. Melee attack is advantage, ranged is disadvantage.",
             "Afflicted": false,
             "Description": "Your only movement option is to crawl and have disadvantage on attacks. Melee attack is advantage, ranged is disadvantage.",
             "Name": "Prone"
           },
           "Restrained": {
+            "Value": "Restrained - Your speed becomes 0. Your attacks have disadvantage, enemies have advantage. Dexterity Saving Throws are disadvantage.",
             "Afflicted": false,
             "Description": "Your speed becomes 0. Your attacks have disadvantage, enemies have advantage. Dexterity Saving Throws are disadvantage.",
             "Name": "Restrained"
           },
           "Stunned": {
+            "Value": "Stunned - You are incapacitated and speak falteringly, and automatically fail Strength and Dexterity Saving Throws. Attacks against have advantage.",
             "Afflicted": false,
             "Description": "You are incapacitated and speak falteringly, and automatically fail Strength and Dexterity Saving Throws. Attacks against have advantage.",
             "Name": "Stunned"
           },
           "Unconscious": {
+            "Value": "Unconscious - You are incapacitated, drop what you're holding, and fall prone. Attacks against have advantage and hits are auto crit.",
             "Afflicted": false,
             "Description": "You are incapacitated, drop what you're holding, and fall prone. Attacks against have advantage and hits are auto crit.",
             "Name": "Unconscious"
@@ -1780,76 +1801,97 @@
       },
       "Conditions": {
         "Blinded": {
+          "Value": "Blinded - Automatically fail any ability checks. Attack rolls against you have advantage, your attacks have disadvantage.",
           "Afflicted": false,
           "Description": "Automatically fail any ability checks. Attack rolls against you have advantage, your attacks have disadvantage.",
           "Name": "Blinded"
         },
         "Charmed": {
+          "Value": "Charmed - You cannot attack the charmer. The charmer has advantage on ability checks when interacting socially.",
           "Afflicted": false,
           "Description": "You cannot attack the charmer. The charmer has advantage on ability checks when interacting socially.",
           "Name": "Charmed"
         },
+        "Dead": {
+          "Value": "Dead - You must succeed on 3 death saving throws, before failing 3. Succeeding will stabilize at 0 HP.",
+          "Afflicted": false,
+          "Description": "You must succeed on 3 death saving throws, before failing 3. Succeeding will stabilize at 0 HP.",
+          "Name": "Dead"
+        },
         "Deafened": {
+          "Value": "Deafened - You cannot hear and automatically fails any ability check that requires hearing.",
           "Afflicted": false,
           "Description": "You cannot hear and automatically fails any ability check that requires hearing.",
           "Name": "Deafened"
         },
         "Fatigued": {
+          "Value": " - Exhaustion levels stack up to 6. A long rest reduces the level by 1. .",
           "ExhaustionLevel": 0,
           "Description": "Exhaustion levels stack up to 6. A long rest reduces the level by 1.",
           "Name": "Fatigued"
         },
         "Frightened": {
+          "Value": "Frightened - You have disadvantage on Ability Checks and Attack rolls while the source of fear is within line of sight. You can’t willingly move closer to the source.",
           "Afflicted": false,
           "Description": "You have disadvantage on Ability Checks and Attack rolls while the source of fear is within line of sight. You can’t willingly move closer to the source.",
           "Name": "Frightened"
         },
         "Grappled": {
+          "Value": "Grappled - Your speed becomes 0. It ends when the grappler is incapacitated or you are thrown away.",
           "Afflicted": false,
           "Description": "Your speed becomes 0. It ends when the grappler is incapacitated or you are thrown away.",
           "Name": "Grappled"
         },
         "Incapacitated": {
+          "Value": "Incapacitated - You Cannot take Actions or reactions.",
           "Afflicted": false,
           "Description": "You Cannot take Actions or reactions.",
           "Name": "Incapacitated"
         },
         "Invisible": {
+          "Value": "Invisible - You are impossible to see without the aid of magic or a Special sense. Attacks against you have disadvantage, your attacks have advantage.",
           "Afflicted": false,
           "Description": "You are impossible to see without the aid of magic or a Special sense. Attacks against you have disadvantage, your attacks have advantage.",
           "Name": "Invisible"
         },
         "Paralyzed": {
+          "Value": "Paralyzed - You are incapacitated and automatically fail Strength and Dexterity Saving Throws. Attacks have advantage, and melee are auto crit.",
           "Afflicted": false,
           "Description": "You are incapacitated and automatically fail Strength and Dexterity Saving Throws. Attacks have advantage, and melee are auto crit.",
           "Name": "Paralyzed"
         },
         "Petrified": {
+          "Value": "Petrified - You are transformed into an inanimate substance and are incapacitated. Resistant to all damage and immune to poison and disease.",
           "Afflicted": false,
           "Description": "You are transformed into an inanimate substance and are incapacitated. Resistant to all damage and immune to poison and disease.",
           "Name": "Petrified"
         },
         "Poisoned": {
+          "Value": "Poisoned - You have disadvantage on Attack rolls and Ability Checks",
           "Afflicted": false,
           "Description": "You have disadvantage on Attack rolls and Ability Checks",
           "Name": "Poisoned"
         },
         "Prone": {
+          "Value": "Prone - Your only movement option is to crawl and have disadvantage on attacks. Melee attack is advantage, ranged is disadvantage.",
           "Afflicted": false,
           "Description": "Your only movement option is to crawl and have disadvantage on attacks. Melee attack is advantage, ranged is disadvantage.",
           "Name": "Prone"
         },
         "Restrained": {
+          "Value": "Restrained - Your speed becomes 0. Your attacks have disadvantage, enemies have advantage. Dexterity Saving Throws are disadvantage.",
           "Afflicted": false,
           "Description": "Your speed becomes 0. Your attacks have disadvantage, enemies have advantage. Dexterity Saving Throws are disadvantage.",
           "Name": "Restrained"
         },
         "Stunned": {
+          "Value": "Stunned - You are incapacitated and speak falteringly, and automatically fail Strength and Dexterity Saving Throws. Attacks against have advantage.",
           "Afflicted": false,
           "Description": "You are incapacitated and speak falteringly, and automatically fail Strength and Dexterity Saving Throws. Attacks against have advantage.",
           "Name": "Stunned"
         },
         "Unconscious": {
+          "Value": "Unconscious - You are incapacitated, drop what you're holding, and fall prone. Attacks against have advantage and hits are auto crit.",
           "Afflicted": false,
           "Description": "You are incapacitated, drop what you're holding, and fall prone. Attacks against have advantage and hits are auto crit.",
           "Name": "Unconscious"
@@ -1996,7 +2038,7 @@
       }
     ]
   },
-  "Hash": "A2D33DE19F20E974C0DE25A5206FABDE05831388751C7AC71663883906AD848B",
+  "Hash": "1434037E9B5A28CF521C6379A6509FD9070C1F8511850173DC9205D04D170B05",
   "OriginalCreationDate": "Monday, 14 March 2022 08:19:44 PM",
-  "Version": "4.13.1"
+  "Version": "4.13.2"
 }

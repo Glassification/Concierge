@@ -9,7 +9,7 @@ namespace Exceptions
     using Concierge.Exceptions;
     using Concierge.Exceptions.Enums;
 
-    public class ResourceManagerException : ConciergeException
+    public sealed class ResourceManagerException : ConciergeException
     {
         public ResourceManagerException(Exception ex, Severity severity = Severity.Release)
             : base("The resource manager was not generated correctly.", severity, true, ex)

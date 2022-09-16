@@ -8,7 +8,7 @@ namespace Concierge.Animations
     using System.Windows;
     using System.Windows.Media.Animation;
 
-    public class WindowAnimation
+    public sealed class WindowAnimation
     {
         public const double DefaultAnimationSpeed = 0.15;
 

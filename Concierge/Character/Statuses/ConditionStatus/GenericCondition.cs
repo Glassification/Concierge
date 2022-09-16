@@ -6,7 +6,7 @@ namespace Concierge.Character.Statuses.ConditionStatus
 {
     using Concierge.Utility;
 
-    public class GenericCondition : Condition, ICopyable<GenericCondition>
+    public sealed class GenericCondition : Condition, ICopyable<GenericCondition>
     {
         public GenericCondition()
             : base(string.Empty, string.Empty)

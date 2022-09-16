@@ -7,7 +7,7 @@ namespace Concierge.Character.AbilitySkills.SkillTypes
     using Concierge.Character.Enums;
     using Concierge.Utility.Utilities;
 
-    public class Persuasion : Skills
+    public sealed class Persuasion : Skills
     {
         private int bonus;
 

@@ -17,11 +17,11 @@ namespace Concierge.Character.Statuses.ConditionStatus
             this.Name = name;
         }
 
-        public abstract string Value { get; }
-
         public string Description { get; set; }
 
         public string Name { get; set; }
+
+        public abstract string Value { get; }
 
         public abstract bool IsAfflicted();
     }

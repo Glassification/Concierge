@@ -48,7 +48,7 @@ namespace Concierge.Utility
 
         [SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1401:Fields should be private", Justification = "The way she goes.")]
         [StructLayout(LayoutKind.Sequential, Pack = 4, CharSet = CharSet.Auto)]
-        public class MONITORINFOEX
+        public sealed class MONITORINFOEX
         {
             public int cbSize = Marshal.SizeOf(typeof(MONITORINFOEX));
             public RECT rcMonitor = default;

@@ -6,7 +6,7 @@ namespace Concierge.Exceptions
 {
     using Concierge.Exceptions.Enums;
 
-    public class InvalidExpressionException : ConciergeException
+    public sealed class InvalidExpressionException : ConciergeException
     {
         public InvalidExpressionException(string expression, Severity severity = Severity.Release)
             : base($"'{expression}' is an invalid expression.", severity, false)

@@ -9,7 +9,7 @@ namespace Concierge.Search
     using Concierge.Interfaces;
     using Concierge.Interfaces.OverviewPageInterface;
 
-    public class SearchResult
+    public sealed class SearchResult
     {
         public SearchResult()
             : this(string.Empty, new object(), new Regex(string.Empty), new OverviewPage())

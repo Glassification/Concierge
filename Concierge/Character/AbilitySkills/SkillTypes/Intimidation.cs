@@ -7,7 +7,7 @@ namespace Concierge.Character.AbilitySkills.SkillTypes
     using Concierge.Character.Enums;
     using Concierge.Utility.Utilities;
 
-    public class Intimidation : Skills
+    public sealed class Intimidation : Skills
     {
         private int bonus;
 

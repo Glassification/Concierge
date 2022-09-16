@@ -4,7 +4,7 @@
 
 namespace Concierge.Utility.Dtos
 {
-    public class StackEntryDto
+    public sealed class StackEntryDto
     {
         public StackEntryDto(int numberOfCharactersToSkip, bool ignorable)
         {

@@ -4,7 +4,7 @@
 
 namespace Concierge.Tools.Interface
 {
-    public class ConciergeDefaultScale
+    public sealed class ConciergeDefaultScale
     {
         public ConciergeDefaultScale()
         {

@@ -14,7 +14,7 @@ namespace Concierge.Interfaces.Components
     using Concierge.Utility;
     using Concierge.Utility.Extensions;
 
-    public class ConciergeDataGrid : DataGrid
+    public sealed class ConciergeDataGrid : DataGrid
     {
         public static readonly RoutedEvent SortedEvent = EventManager.RegisterRoutedEvent(
             "Sorted",

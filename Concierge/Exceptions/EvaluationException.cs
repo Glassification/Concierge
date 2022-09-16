@@ -6,7 +6,7 @@ namespace Concierge.Exceptions
 {
     using Concierge.Exceptions.Enums;
 
-    public class EvaluationException : ConciergeException
+    public sealed class EvaluationException : ConciergeException
     {
         public EvaluationException(Severity severity = Severity.Release)
             : base("There is nothing to evaluate.", severity, false)

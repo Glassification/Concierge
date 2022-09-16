@@ -10,7 +10,7 @@ namespace Concierge.Character.Characteristics
     using Concierge.Utility.Extensions;
     using Newtonsoft.Json;
 
-    public class CharacterProperties : ICopyable<CharacterProperties>
+    public sealed class CharacterProperties : ICopyable<CharacterProperties>
     {
         public CharacterProperties()
         {

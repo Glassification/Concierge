@@ -6,7 +6,7 @@ namespace Concierge.Character.Characteristics
 {
     using Concierge.Utility;
 
-    public class Attributes : ICopyable<Attributes>
+    public sealed class Attributes : ICopyable<Attributes>
     {
         private int strength;
         private int dexterity;

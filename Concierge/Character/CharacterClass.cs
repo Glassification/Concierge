@@ -9,7 +9,7 @@ namespace Concierge.Character
     using Concierge.Utility;
     using Concierge.Utility.Utilities;
 
-    public class CharacterClass : ICopyable<CharacterClass>
+    public sealed class CharacterClass : ICopyable<CharacterClass>
     {
         private int level;
 

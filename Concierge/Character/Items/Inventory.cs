@@ -12,7 +12,7 @@ namespace Concierge.Character.Items
     using Concierge.Utility.Extensions;
     using Newtonsoft.Json;
 
-    public class Inventory : ICopyable<Inventory>
+    public sealed class Inventory : ICopyable<Inventory>
     {
         public Inventory()
         {

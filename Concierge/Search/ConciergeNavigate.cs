@@ -12,7 +12,7 @@ namespace Concierge.Search
     using Concierge.Utility.Extensions;
     using Concierge.Utility.Utilities;
 
-    public class ConciergeNavigate
+    public sealed class ConciergeNavigate
     {
         public ConciergeNavigate()
         {

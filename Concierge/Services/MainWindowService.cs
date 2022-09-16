@@ -17,7 +17,7 @@ namespace Concierge.Services
     using Concierge.Utility.Extensions;
     using MaterialDesignThemes.Wpf;
 
-    public class MainWindowService
+    public sealed class MainWindowService
     {
         public MainWindowService(RoutedEventHandler selectedEvent)
         {

@@ -7,7 +7,7 @@ namespace Concierge.Character.AbilitySkills.SkillTypes
     using Concierge.Character.Enums;
     using Concierge.Utility.Utilities;
 
-    public class Arcana : Skills
+    public sealed class Arcana : Skills
     {
         private int bonus;
 

@@ -13,7 +13,7 @@ namespace Concierge.Interfaces.Controls
     /// <summary>
     /// Adorner for the watermark.
     /// </summary>
-    public class WatermarkAdorner : Adorner
+    public sealed class WatermarkAdorner : Adorner
     {
         /// <summary>
         /// <see cref="ContentPresenter"/> that holds the watermark.

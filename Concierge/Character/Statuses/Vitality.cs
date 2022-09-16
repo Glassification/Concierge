@@ -11,7 +11,7 @@ namespace Concierge.Character.Statuses
     using Concierge.Utility;
     using Newtonsoft.Json;
 
-    public class Vitality : ICopyable<Vitality>
+    public sealed class Vitality : ICopyable<Vitality>
     {
         public Vitality()
         {
