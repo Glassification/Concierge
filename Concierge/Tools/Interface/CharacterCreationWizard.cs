@@ -20,7 +20,7 @@ namespace Concierge.Tools.Interface
     using Concierge.Interfaces.SpellcastingPageInterface;
     using Concierge.Utility.Utilities;
 
-    public class CharacterCreationWizard
+    public sealed class CharacterCreationWizard
     {
         public CharacterCreationWizard()
         {

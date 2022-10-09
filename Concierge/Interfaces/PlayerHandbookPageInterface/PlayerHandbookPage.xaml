@@ -9,7 +9,8 @@
     xmlns:wv2="clr-namespace:Microsoft.Web.WebView2.Wpf;assembly=Microsoft.Web.WebView2.Wpf"
     mc:Ignorable="d" 
     d:DesignHeight="600" d:DesignWidth="1020"
-    Title="PlayerHandbookPage">
+    Title="PlayerHandbookPage"
+    Style="{StaticResource PageFontStyle}">
 
     <Grid>
         <wv2:WebView2 Name="PdfViewer" Source="https://www.bing.com/"/>

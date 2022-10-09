@@ -8,7 +8,7 @@ namespace Concierge.Character.Characteristics
     using Concierge.Utility;
     using Newtonsoft.Json;
 
-    public class Senses : ICopyable<Senses>
+    public sealed class Senses : ICopyable<Senses>
     {
         public Senses()
         {
@@ -44,11 +44,11 @@ namespace Concierge.Character.Characteristics
             }
             else
             {
-                if (conditions.Encumbrance.EncumbranceLevel == EncumbranceLevel.Encumbered)
+                if (conditions.Encumbered.EncumbranceLevel == EncumbranceLevel.Encumbered)
                 {
                     baseMovement -= 10;
                 }
-                else if (conditions.Encumbrance.EncumbranceLevel == EncumbranceLevel.HeavilyEncumbered)
+                else if (conditions.Encumbered.EncumbranceLevel == EncumbranceLevel.HeavilyEncumbered)
                 {
                     baseMovement -= 20;
                 }

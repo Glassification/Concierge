@@ -311,9 +311,6 @@
     <Page Update="Interfaces\Dictionary\DataGridDictionary.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Interfaces\Dictionary\PageFontDictionary.xaml">
-      <SubType>Designer</SubType>
-    </Page>
     <Page Update="Interfaces\Dictionary\RadioButtonDictionary.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -323,7 +320,7 @@
     <Page Update="Interfaces\Dictionary\TreeViewDictionary.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Interfaces\Dictionary\WindowFontDictionary.xaml">
+    <Page Update="Interfaces\Dictionary\FontDictionary.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Interfaces\UtilityInterface\SplashScreenWindow.xaml">

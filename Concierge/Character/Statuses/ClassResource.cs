@@ -9,7 +9,7 @@ namespace Concierge.Character.Statuses
     using Concierge.Utility;
     using Newtonsoft.Json;
 
-    public class ClassResource : ICopyable<ClassResource>
+    public sealed class ClassResource : ICopyable<ClassResource>
     {
         private int spent;
 

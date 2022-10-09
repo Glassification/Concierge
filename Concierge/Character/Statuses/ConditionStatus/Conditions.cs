@@ -11,12 +11,13 @@ namespace Concierge.Character.Statuses.ConditionStatus
     using Concierge.Utility;
     using Newtonsoft.Json;
 
-    public class Conditions : ICopyable<Conditions>
+    public sealed class Conditions : ICopyable<Conditions>
     {
         public const string BlindedDescription = "Automatically fail any ability checks. Attack rolls against you have advantage, your attacks have disadvantage.";
         public const string CharmedDescription = "You cannot attack the charmer. The charmer has advantage on ability checks when interacting socially.";
+        public const string DeathDescription = "You must succeed on 3 death saving throws, before failing 3. Succeeding will stabilize at 0 HP.";
         public const string DeafenedDescription = "You cannot hear and automatically fails any ability check that requires hearing.";
-        public const string EncumbranceDescription = "A carry weight exceeding 5 and 10 times Strength will reduce speed by 10 and 20 respectively.";
+        public const string EncumberedDescription = "A carry weight exceeding 5 and 10 times Strength will reduce speed by 10 and 20 respectively.";
         public const string FatiguedDescription = "Exhaustion levels stack up to 6. A long rest reduces the level by 1.";
         public const string FrightenedDescription = "You have disadvantage on Ability Checks and Attack rolls while the source of fear is within line of sight. You can’t willingly move closer to the source.";
         public const string GrappledDescription = "Your speed becomes 0. It ends when the grappler is incapacitated or you are thrown away.";
@@ -34,8 +35,9 @@ namespace Concierge.Character.Statuses.ConditionStatus
         {
             this.Blinded = new GenericCondition(false, BlindedDescription, nameof(this.Blinded));
             this.Charmed = new GenericCondition(false, CharmedDescription, nameof(this.Charmed));
+            this.Dead = new GenericCondition(false, DeathDescription, nameof(this.Dead));
             this.Deafened = new GenericCondition(false, DeafenedDescription, nameof(this.Deafened));
-            this.Encumbrance = new EncumbranceCondition(EncumbranceDescription, nameof(this.Encumbrance));
+            this.Encumbered = new EncumbranceCondition(EncumberedDescription, nameof(this.Encumbered));
             this.Fatigued = new ExhaustionCondition(ExhaustionLevel.Normal, FatiguedDescription, nameof(this.Fatigued));
             this.Frightened = new GenericCondition(false, FrightenedDescription, nameof(this.Frightened));
             this.Grappled = new GenericCondition(false, GrappledDescription, nameof(this.Grappled));
@@ -51,11 +53,13 @@ namespace Concierge.Character.Statuses.ConditionStatus
         }
 
         [JsonIgnore]
-        public EncumbranceCondition Encumbrance { get; set; }
+        public EncumbranceCondition Encumbered { get; set; }
 
         public GenericCondition Blinded { get; set; }
 
         public GenericCondition Charmed { get; set; }
+
+        public GenericCondition Dead { get; set; }
 
         public GenericCondition Deafened { get; set; }
 
@@ -89,8 +93,9 @@ namespace Concierge.Character.Statuses.ConditionStatus
             {
                 this.Blinded,
                 this.Charmed,
+                this.Dead,
                 this.Deafened,
-                this.Encumbrance,
+                this.Encumbered,
                 this.Fatigued,
                 this.Frightened,
                 this.Grappled,
@@ -114,6 +119,7 @@ namespace Concierge.Character.Statuses.ConditionStatus
             {
                 Blinded = this.Blinded.DeepCopy(),
                 Charmed = this.Charmed.DeepCopy(),
+                Dead = this.Dead.DeepCopy(),
                 Deafened = this.Deafened.DeepCopy(),
                 Fatigued = this.Fatigued.DeepCopy(),
                 Frightened = this.Frightened.DeepCopy(),

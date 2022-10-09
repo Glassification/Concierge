@@ -8,7 +8,7 @@ namespace Concierge.Character.Statuses
 
     using Concierge.Utility;
 
-    public class Health : ICopyable<Health>
+    public sealed class Health : ICopyable<Health>
     {
         private int baseHealthField;
 

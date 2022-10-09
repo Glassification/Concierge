@@ -7,7 +7,7 @@
     xmlns:components="clr-namespace:Concierge.Interfaces.Components"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:local="clr-namespace:Concierge.Interfaces.Controls"
-    mc:Ignorable="d" 
+    mc:Ignorable="d"
     d:DesignHeight="400" d:DesignWidth="450">
     <Grid
         x:Name="MainHealthGrid"
@@ -37,14 +37,15 @@
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
                 FontSize="65"
-                FontWeight="Bold"/>
+                FontWeight="DemiBold"
+                FontFamily="Sergoe UI Variable"/>
             <components:ConciergeTextBlock 
                 x:Name="TotalHpField"
                 Foreground="White"
                 FontSize="30"
                 HorizontalAlignment="Right"
                 VerticalAlignment="Bottom"
-                FontWeight="Bold"
+                FontFamily="Sergoe UI SemiLight"
                 Margin="5, 5, 15, 10"/>
 
             <components:ConciergeDesignButton 
@@ -91,7 +92,7 @@
                 Text="Health"
                 Foreground="White"
                 FontSize="35"
-                FontWeight="Bold"
+                FontFamily="Sergoe UI SemiLight"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"/>
         </Grid>

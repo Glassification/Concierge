@@ -10,7 +10,7 @@ namespace Concierge.Commands
     using Concierge.Utility.Extensions;
     using Newtonsoft.Json;
 
-    public class EditCommand<T> : Command
+    public sealed class EditCommand<T> : Command
     {
         private readonly T oldItem;
         private readonly T newItem;

@@ -10,12 +10,12 @@ namespace Concierge.Character.Characteristics
     using Concierge.Utility.Extensions;
     using Newtonsoft.Json;
 
-    public class CharacterProperties : ICopyable<CharacterProperties>
+    public sealed class CharacterProperties : ICopyable<CharacterProperties>
     {
         public CharacterProperties()
         {
             this.Name = string.Empty;
-            this.Race = string.Empty;
+            this.Race = new Race();
             this.Background = string.Empty;
             this.Alignment = string.Empty;
             this.Experience = string.Empty;
@@ -27,7 +27,7 @@ namespace Concierge.Character.Characteristics
 
         public string Name { get; set; }
 
-        public string Race { get; set; }
+        public Race Race { get; set; }
 
         public string Background { get; set; }
 
@@ -53,9 +53,9 @@ namespace Concierge.Character.Characteristics
             {
                 var classes = new StringBuilder();
 
-                classes.Append(this.Class1.Name.IsNullOrWhiteSpace() ? string.Empty : $"{this.Class1.Name}, ");
-                classes.Append(this.Class2.Name.IsNullOrWhiteSpace() ? string.Empty : $"{this.Class2.Name}, ");
-                classes.Append(this.Class3.Name.IsNullOrWhiteSpace() ? string.Empty : this.Class3.Name);
+                classes.Append(this.Class1.Name.IsNullOrWhiteSpace() ? string.Empty : $"{this.Class1}, ");
+                classes.Append(this.Class2.Name.IsNullOrWhiteSpace() ? string.Empty : $"{this.Class2}, ");
+                classes.Append(this.Class3.Name.IsNullOrWhiteSpace() ? string.Empty : this.Class3);
 
                 var classString = classes.ToString().Trim(new char[] { ' ', ',' });
 
@@ -68,7 +68,7 @@ namespace Concierge.Character.Characteristics
             return new CharacterProperties()
             {
                 Name = this.Name,
-                Race = this.Race,
+                Race = this.Race.DeepCopy(),
                 Background = this.Background,
                 Alignment = this.Alignment,
                 Experience = this.Experience,

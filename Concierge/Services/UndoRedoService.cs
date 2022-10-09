@@ -12,7 +12,7 @@ namespace Concierge.Utility
     using Concierge.Interfaces;
     using Concierge.Interfaces.Enums;
 
-    public class UndoRedoService
+    public sealed class UndoRedoService
     {
         public UndoRedoService()
         {

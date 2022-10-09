@@ -10,7 +10,7 @@ namespace Concierge.Interfaces.Components
 
     using Concierge.Utility;
 
-    public class ConciergeTextBlock : TextBlock
+    public sealed class ConciergeTextBlock : TextBlock
     {
         public ConciergeTextBlock()
             : base()

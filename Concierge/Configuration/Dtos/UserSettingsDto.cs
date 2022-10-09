@@ -6,7 +6,7 @@ namespace Concierge.Configuration.Dtos
 {
     using Concierge.Utility.Units.Enums;
 
-    public class UserSettingsDto
+    public sealed class UserSettingsDto
     {
         public UserSettingsDto()
         {

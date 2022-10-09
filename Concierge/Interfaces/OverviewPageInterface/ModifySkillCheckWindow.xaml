@@ -14,7 +14,7 @@
     Title="Modify Skill Checks"
     Height="655"
     Width="650"
-    Style="{StaticResource WindowXboxDasboardStyle}">
+    Style="{StaticResource WindowFontStyle}">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="45"/>

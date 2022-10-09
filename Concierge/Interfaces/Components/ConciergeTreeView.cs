@@ -9,7 +9,7 @@ namespace Concierge.Interfaces.Components
 
     using Concierge.Utility;
 
-    public class ConciergeTreeView : TreeView
+    public sealed class ConciergeTreeView : TreeView
     {
         public ConciergeTreeView()
             : base()

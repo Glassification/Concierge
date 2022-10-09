@@ -9,7 +9,7 @@ namespace Concierge.Interfaces.Controls
     using System.Windows.Data;
     using System.Windows.Markup;
 
-    public class BoolInverter : MarkupExtension, IValueConverter
+    public sealed class BoolInverter : MarkupExtension, IValueConverter
     {
         public override object ProvideValue(IServiceProvider serviceProvider)
         {

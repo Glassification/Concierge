@@ -8,7 +8,7 @@ namespace Concierge.Services.WorkerServices
     using System.ComponentModel;
     using System.Threading;
 
-    public class AnimatedSpinningTextWorkerService : IWorkerService
+    public sealed class AnimatedSpinningTextWorkerService : IWorkerService
     {
         private const int SleepTime = 150;
 

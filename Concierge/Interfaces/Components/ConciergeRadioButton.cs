@@ -10,7 +10,7 @@ namespace Concierge.Interfaces.Components
 
     using Concierge.Utility;
 
-    public class ConciergeRadioButton : RadioButton
+    public sealed class ConciergeRadioButton : RadioButton
     {
         public ConciergeRadioButton()
             : base()

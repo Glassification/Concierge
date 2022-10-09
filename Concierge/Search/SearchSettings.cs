@@ -6,7 +6,7 @@ namespace Concierge.Search
 {
     using Concierge.Search.Enums;
 
-    public class SearchSettings
+    public sealed class SearchSettings
     {
         public SearchSettings()
             : this(string.Empty, false, false, false, SearchDomain.CurrentPage)

@@ -9,7 +9,7 @@ namespace Concierge.Character.Statuses
     using Concierge.Utility.Utilities;
     using Newtonsoft.Json;
 
-    public class Wealth : ICopyable<Wealth>
+    public sealed class Wealth : ICopyable<Wealth>
     {
         public Wealth()
         {

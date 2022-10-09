@@ -14,7 +14,7 @@ namespace Concierge.Character.Items
     using Concierge.Utility.Utilities;
     using Newtonsoft.Json;
 
-    public class EquippedItems : ICopyable<EquippedItems>
+    public sealed class EquippedItems : ICopyable<EquippedItems>
     {
         public EquippedItems()
         {

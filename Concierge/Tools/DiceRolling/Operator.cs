@@ -4,7 +4,7 @@
 
 namespace Concierge.Tools.DiceRolling
 {
-    public class Operator
+    public sealed class Operator
     {
         public Operator(string symbol, int precedence, bool rightAssociative)
         {

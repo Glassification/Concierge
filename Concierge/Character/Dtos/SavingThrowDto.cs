@@ -6,7 +6,7 @@ namespace Concierge.Character.Dtos
 {
     using Concierge.Character.AbilitySavingThrows.SavingThrowTypes;
 
-    public class SavingThrowDto
+    public sealed class SavingThrowDto
     {
         public SavingThrowDto(
             bool strength = false,

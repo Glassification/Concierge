@@ -7,7 +7,7 @@ namespace Concierge.Character.AbilitySkills.SkillTypes
     using Concierge.Character.Enums;
     using Concierge.Utility.Utilities;
 
-    public class Survival : Skills
+    public sealed class Survival : Skills
     {
         private int bonus;
 

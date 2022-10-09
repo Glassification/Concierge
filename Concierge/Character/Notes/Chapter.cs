@@ -12,7 +12,7 @@ namespace Concierge.Character.Notes
     using Concierge.Utility.Extensions;
     using Newtonsoft.Json;
 
-    public class Chapter : ICopyable<Chapter>
+    public sealed class Chapter : ICopyable<Chapter>
     {
         public Chapter(string name)
         {

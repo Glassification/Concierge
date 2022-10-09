@@ -14,7 +14,7 @@ namespace Concierge.Services
     using Concierge.Tools.Interface;
     using Concierge.Utility;
 
-    public class ErrorService
+    public sealed class ErrorService
     {
         public ErrorService(Logger logger)
         {

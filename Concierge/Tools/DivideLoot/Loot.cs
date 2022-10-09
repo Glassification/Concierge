@@ -6,7 +6,7 @@ namespace Concierge.Tools.DivideLoot
 {
     using Concierge.Tools.Enums;
 
-    public class Loot : RewardPool
+    public sealed class Loot : RewardPool
     {
         public Loot(int cp, int sp, int ep, int gp, int pp)
             : base()

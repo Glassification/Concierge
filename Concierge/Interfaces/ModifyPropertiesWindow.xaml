@@ -11,14 +11,15 @@
     d:DataContext="{d:DesignInstance Type=viewmodels:ConciergeViewModel}"
     mc:Ignorable="d"
     Title="Modify Character Properties"
-    Height="415"
+    Height="535"
     Width="800"
-    Style="{StaticResource WindowXboxDasboardStyle}">
+    Style="{StaticResource WindowFontStyle}">
 
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="45"/>
-            <RowDefinition Height="240"/>
+            <RowDefinition Height="180"/>
+            <RowDefinition Height="180"/>
             <RowDefinition Height="60"/>
             <RowDefinition Height="70"/>
         </Grid.RowDefinitions>
@@ -59,7 +60,6 @@
                     <RowDefinition Height="60"/>
                     <RowDefinition Height="60"/>
                     <RowDefinition Height="60"/>
-                    <RowDefinition Height="60"/>
                 </Grid.RowDefinitions>
 
                 <!--Name-->
@@ -71,12 +71,13 @@
 
                     <!--Title-->
                     <Grid Grid.Column="0">
-                        <TextBlock Text="Name:"
-                                   Foreground="White"
-                                   FontSize="20"
-                                   HorizontalAlignment="Left"
-                                   VerticalAlignment="Center"
-                                   Margin="10, 0, 0, 0"/>
+                        <TextBlock
+                            Text="Name:"
+                            Foreground="White"
+                            FontSize="20"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Margin="10, 0, 0, 0"/>
                     </Grid>
 
                     <!--Value-->
@@ -85,191 +86,8 @@
                     </components:ConciergeTextBoxBackground>
                 </Grid>
 
-                <!--Ability-->
+                <!--Race-->
                 <Grid Grid.Row="1">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="35*"/>
-                        <ColumnDefinition Width="65*"/>
-                    </Grid.ColumnDefinitions>
-
-                    <!--Title-->
-                    <Grid Grid.Column="0">
-                        <TextBlock Text="Race:"
-                                   Foreground="White"
-                                   FontSize="20"
-                                   HorizontalAlignment="Left"
-                                   VerticalAlignment="Center"
-                                   Margin="10, 0, 0, 0"/>
-                    </Grid>
-
-                    <!--Value-->
-                    <Grid Grid.Column="1">
-                        <components:ConciergeComboBox
-                            Style="{StaticResource ComboBoxStyle}"
-                            x:Name="RaceComboBox"/>
-                    </Grid>
-                </Grid>
-
-                <!--Attack Bonus-->
-                <Grid Grid.Row="2">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="35*"/>
-                        <ColumnDefinition Width="65*"/>
-                    </Grid.ColumnDefinitions>
-
-                    <!--Title-->
-                    <Grid Grid.Column="0">
-                        <TextBlock Text="Background:"
-                                   Foreground="White"
-                                   FontSize="20"
-                                   HorizontalAlignment="Left"
-                                   VerticalAlignment="Center"
-                                   Margin="10, 0, 0, 0"/>
-                    </Grid>
-
-                    <!--Value-->
-                    <Grid Grid.Column="1">
-                        <components:ConciergeComboBox
-                            Style="{StaticResource ComboBoxStyle}"
-                            x:Name="BackgroundComboBox"/>
-                    </Grid>
-                </Grid>
-
-                <!--Save-->
-                <Grid Grid.Row="3">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="35*"/>
-                        <ColumnDefinition Width="65*"/>
-                    </Grid.ColumnDefinitions>
-
-                    <!--Title-->
-                    <Grid Grid.Column="0">
-                        <TextBlock Text="Alignment:"
-                                   Foreground="White"
-                                   FontSize="20"
-                                   HorizontalAlignment="Left"
-                                   VerticalAlignment="Center"
-                                   Margin="10, 0, 0, 0"/>
-                    </Grid>
-
-                    <!--Value-->
-                    <Grid Grid.Column="1">
-                        <components:ConciergeComboBox
-                            Style="{StaticResource ComboBoxStyle}"
-                            x:Name="AlignmentComboBox"
-                            IsEditable="False"/>
-                    </Grid>
-                </Grid>
-
-            </Grid>
-
-            <!--Right-->
-            <Grid Grid.Column="1">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="60"/>
-                    <RowDefinition Height="60"/>
-                    <RowDefinition Height="60"/>
-                    <RowDefinition Height="60"/>
-                </Grid.RowDefinitions>
-
-                <!--Level-->
-                <Grid Grid.Row="0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="35*"/>
-                        <ColumnDefinition Width="65*"/>
-                    </Grid.ColumnDefinitions>
-
-                    <!--Title-->
-                    <Grid Grid.Column="0">
-                        <TextBlock Text="Levels:"
-                                   Foreground="White"
-                                   FontSize="20"
-                                   HorizontalAlignment="Left"
-                                   VerticalAlignment="Center"
-                                   Margin="10, 0, 0, 0"/>
-                    </Grid>
-
-                    <!--Value-->
-                    <Grid Grid.Column="1" Margin="0,0,20,0">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="33*"/>
-                            <ColumnDefinition Width="33*"/>
-                            <ColumnDefinition Width="33*"/>
-                        </Grid.ColumnDefinitions>
-
-                        <Grid Grid.Column="0">
-                            <controls:IntegerUpDown 
-                                x:Name="Level1UpDown"
-                                Margin="0, 0, 6, 0"
-                                Maximum="20"/>
-                        </Grid>
-                        <Grid Grid.Column="1">
-                            <controls:IntegerUpDown 
-                                x:Name="Level2UpDown"
-                                Margin="3, 0, 3, 0"
-                                Maximum="20"/>
-                        </Grid>
-                        <Grid Grid.Column="2">
-                            <controls:IntegerUpDown 
-                                x:Name="Level3UpDown"
-                                Maximum="20"
-                                Margin="6, 0, 0, 0"/>
-                        </Grid>
-                    </Grid>
-                </Grid>
-
-                <!--Known Cantrips-->
-                <Grid Grid.Row="1">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="35*"/>
-                        <ColumnDefinition Width="65*"/>
-                    </Grid.ColumnDefinitions>
-
-                    <!--Title-->
-                    <Grid Grid.Column="0">
-                        <TextBlock Text="Class:"
-                                   Foreground="White"
-                                   FontSize="20"
-                                   HorizontalAlignment="Left"
-                                   VerticalAlignment="Center"
-                                   Margin="10, 0, 0, 0"/>
-                    </Grid>
-
-                    <!--Value-->
-                    <Grid Grid.Column="1">
-                        <components:ConciergeComboBox
-                            Style="{StaticResource ComboBoxStyle}"
-                            x:Name="Class1ComboBox"/>
-                    </Grid>
-                </Grid>
-
-                <!--Known Spells-->
-                <Grid Grid.Row="2">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="35*"/>
-                        <ColumnDefinition Width="65*"/>
-                    </Grid.ColumnDefinitions>
-
-                    <!--Title-->
-                    <Grid Grid.Column="0">
-                        <TextBlock Text="Class:"
-                                   Foreground="White"
-                                   FontSize="20"
-                                   HorizontalAlignment="Left"
-                                   VerticalAlignment="Center"
-                                   Margin="10, 0, 0, 0"/>
-                    </Grid>
-
-                    <!--Value-->
-                    <Grid Grid.Column="1">
-                        <components:ConciergeComboBox
-                            Style="{StaticResource ComboBoxStyle}"
-                            x:Name="Class2ComboBox"/>
-                    </Grid>
-                </Grid>
-
-                <!--Prepared Spells-->
-                <Grid Grid.Row="4">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="35*"/>
                         <ColumnDefinition Width="65*"/>
@@ -278,7 +96,7 @@
                     <!--Title-->
                     <Grid Grid.Column="0">
                         <TextBlock
-                            Text="Class:"
+                            Text="Race:"
                             Foreground="White"
                             FontSize="20"
                             HorizontalAlignment="Left"
@@ -290,14 +108,205 @@
                     <Grid Grid.Column="1">
                         <components:ConciergeComboBox
                             Style="{StaticResource ComboBoxStyle}"
-                            x:Name="Class3ComboBox"/>
+                            x:Name="RaceComboBox"/>
+                    </Grid>
+                </Grid>
+
+                <!--Background-->
+                <Grid Grid.Row="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="35*"/>
+                        <ColumnDefinition Width="65*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!--Title-->
+                    <Grid Grid.Column="0">
+                        <TextBlock
+                            Text="Background:"
+                            Foreground="White"
+                            FontSize="20"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Margin="10, 0, 0, 0"/>
+                    </Grid>
+
+                    <!--Value-->
+                    <Grid Grid.Column="1">
+                        <components:ConciergeComboBox
+                            Style="{StaticResource ComboBoxStyle}"
+                            x:Name="BackgroundComboBox"/>
+                    </Grid>
+                </Grid>
+            </Grid>
+
+            <!--Right-->
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="60"/>
+                </Grid.RowDefinitions>
+
+                <!--Alignment-->
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="35*"/>
+                        <ColumnDefinition Width="65*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!--Alignment-->
+                    <Grid Grid.Column="0">
+                        <TextBlock
+                            Text="Alignment:"
+                            Foreground="White"
+                            FontSize="20"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Margin="10, 0, 0, 0"/>
+                    </Grid>
+
+                    <!--Value-->
+                    <Grid Grid.Column="1">
+                        <components:ConciergeComboBox
+                            Style="{StaticResource ComboBoxStyle}"
+                            x:Name="AlignmentComboBox"
+                            IsEditable="False"/>
+                    </Grid>
+                </Grid>
+
+                <!--Sub-Race-->
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="35*"/>
+                        <ColumnDefinition Width="65*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!--Title-->
+                    <Grid Grid.Column="0">
+                        <TextBlock
+                            Text="Sub-race:"
+                            Foreground="White"
+                            FontSize="20"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Margin="10, 0, 0, 0"/>
+                    </Grid>
+
+                    <!--Value-->
+                    <Grid Grid.Column="1">
+                        <components:ConciergeComboBox
+                            Style="{StaticResource ComboBoxStyle}"
+                            x:Name="SubRaceComboBox"
+                            SelectionChanged="SubRaceComboBox_SelectionChanged"/>
                     </Grid>
                 </Grid>
             </Grid>
         </Grid>
         
-        <!--Icon-->
+        <!--Classes-->
         <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="17.5*"/>
+                <ColumnDefinition Width="15*"/>
+                <ColumnDefinition Width="33.75*"/>
+                <ColumnDefinition Width="33.75*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="60"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock
+                Grid.Column="0"
+                Grid.Row="0"
+                Text="Class 1:"
+                Foreground="White"
+                FontSize="20"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                Margin="10, 0, 0, 0"/>
+
+            <TextBlock
+                Grid.Column="0"
+                Grid.Row="1"
+                Text="Class 2:"
+                Foreground="White"
+                FontSize="20"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                Margin="10, 0, 0, 0"/>
+
+            <TextBlock
+                Grid.Column="0"
+                Grid.Row="2"
+                Text="Class 3:"
+                Foreground="White"
+                FontSize="20"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                Margin="10, 0, 0, 0"/>
+
+            <controls:IntegerUpDown
+                Grid.Column="1"
+                Grid.Row="0"
+                x:Name="Class1Level"
+                Maximum="20"/>
+
+            <controls:IntegerUpDown
+                Grid.Column="1"
+                Grid.Row="1"
+                x:Name="Class2Level"
+                Maximum="20"/>
+
+            <controls:IntegerUpDown
+                Grid.Column="1"
+                Grid.Row="2"
+                x:Name="Class3Level"
+                Maximum="20"/>
+
+            <components:ConciergeComboBox
+                Grid.Column="2"
+                Grid.Row="0"
+                x:Name="Class1Class"
+                Style="{StaticResource ComboBoxStyle}"/>
+
+            <components:ConciergeComboBox
+                Grid.Column="2"
+                Grid.Row="1"
+                x:Name="Class2Class"
+                Style="{StaticResource ComboBoxStyle}"/>
+
+            <components:ConciergeComboBox
+                Grid.Column="2"
+                Grid.Row="2"
+                x:Name="Class3Class"
+                Style="{StaticResource ComboBoxStyle}"/>
+
+            <components:ConciergeComboBox
+                Grid.Column="3"
+                Grid.Row="0"
+                x:Name="Class1Subclass"
+                Style="{StaticResource ComboBoxStyle}"
+                SelectionChanged="SubclassComboBox_SelectionChanged"/>
+
+            <components:ConciergeComboBox
+                Grid.Column="3"
+                Grid.Row="1"
+                x:Name="Class2Subclass"
+                Style="{StaticResource ComboBoxStyle}"
+                SelectionChanged="SubclassComboBox_SelectionChanged"/>
+
+            <components:ConciergeComboBox
+                Grid.Column="3"
+                Grid.Row="2"
+                x:Name="Class3Subclass"
+                Style="{StaticResource ComboBoxStyle}"
+                SelectionChanged="SubclassComboBox_SelectionChanged"/>
+        </Grid>
+        
+        <!--Icon-->
+        <Grid Grid.Row="3">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="17.5*"/>
                 <ColumnDefinition Width="7*"/>
@@ -352,7 +361,7 @@
         </Grid>
         
         <!--Buttons-->
-        <Grid Grid.Row="3">
+        <Grid Grid.Row="4">
             <StackPanel Orientation="Horizontal"
                         VerticalAlignment="Center"
                         HorizontalAlignment="Center">

@@ -13,7 +13,7 @@
     Title="Modify Inventory"
     Height="655"
     Width="650"
-    Style="{StaticResource WindowXboxDasboardStyle}">
+    Style="{StaticResource WindowFontStyle}">
 
     <Grid>
         <Grid.RowDefinitions>

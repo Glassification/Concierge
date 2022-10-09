@@ -4,7 +4,7 @@
 
 namespace Concierge.Utility.Units.Dtos
 {
-    public class FormattedFeetInchesDto
+    public sealed class FormattedFeetInchesDto
     {
         public FormattedFeetInchesDto(int feet, double inches)
         {

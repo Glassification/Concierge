@@ -8,7 +8,7 @@ namespace Concierge.Commands
 
     using Concierge.Interfaces.Enums;
 
-    public class DeleteCommand<T> : Command
+    public sealed class DeleteCommand<T> : Command
     {
         private readonly List<T> list;
         private readonly T item;

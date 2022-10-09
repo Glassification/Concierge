@@ -8,7 +8,7 @@ namespace Concierge.Character.Characteristics
 
     using Concierge.Utility;
 
-    public class Ability : ICopyable<Ability>
+    public sealed class Ability : ICopyable<Ability>
     {
         public Ability()
         {

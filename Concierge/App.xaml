@@ -7,8 +7,7 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Interfaces/Dictionary/WindowFontDictionary.xaml"/>
-                <ResourceDictionary Source="Interfaces/Dictionary/PageFontDictionary.xaml"/>
+                <ResourceDictionary Source="Interfaces/Dictionary/FontDictionary.xaml"/>
                 <ResourceDictionary Source="Interfaces/Dictionary/ButtonDictionary.xaml"/>
                 <ResourceDictionary Source="Interfaces/Dictionary/ComboBoxDictionary.xaml"/>
                 <ResourceDictionary Source="Interfaces/Dictionary/DataGridDictionary.xaml"/>

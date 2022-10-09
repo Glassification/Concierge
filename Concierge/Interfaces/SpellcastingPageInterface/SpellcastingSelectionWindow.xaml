@@ -10,7 +10,7 @@
     Title="Spellcasting Selection"
     Height="225"
     Width="650"
-    Style="{StaticResource WindowXboxDasboardStyle}">
+    Style="{StaticResource WindowFontStyle}">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="45"/>

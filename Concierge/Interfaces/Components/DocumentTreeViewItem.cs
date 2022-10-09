@@ -15,7 +15,7 @@ namespace Concierge.Interfaces.Components
     using Concierge.Utility.Extensions;
     using MaterialDesignThemes.Wpf;
 
-    public class DocumentTreeViewItem : TreeViewItem
+    public sealed class DocumentTreeViewItem : TreeViewItem
     {
         public DocumentTreeViewItem(Document document)
         {

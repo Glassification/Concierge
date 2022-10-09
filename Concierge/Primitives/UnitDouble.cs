@@ -12,7 +12,7 @@ namespace Concierge.Primitives
     using Concierge.Utility.Units;
     using Concierge.Utility.Units.Enums;
 
-    public class UnitDouble : ICopyable<UnitDouble>, IComparable
+    public sealed class UnitDouble : ICopyable<UnitDouble>, IComparable
     {
         public UnitDouble(double value, UnitTypes unitType, Measurements measurement)
         {

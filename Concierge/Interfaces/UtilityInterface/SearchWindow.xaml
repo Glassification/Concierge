@@ -15,7 +15,7 @@
     Width="650"
     MouseMove="Window_MouseMove"
     KeyDown="Window_KeyDown"
-    Style="{StaticResource WindowXboxDasboardStyle}">
+    Style="{StaticResource WindowFontStyle}">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="45"/>

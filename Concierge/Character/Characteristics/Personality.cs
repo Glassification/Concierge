@@ -6,7 +6,7 @@ namespace Concierge.Character.Characteristics
 {
     using Concierge.Utility;
 
-    public class Personality : ICopyable<Personality>
+    public sealed class Personality : ICopyable<Personality>
     {
         public Personality()
         {

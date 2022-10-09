@@ -8,7 +8,7 @@ namespace Concierge.Exceptions
 
     using Concierge.Exceptions.Enums;
 
-    public class UnhandledException : ConciergeException
+    public sealed class UnhandledException : ConciergeException
     {
         public UnhandledException(Exception exception, Severity severity = Severity.Release)
             : base($"An unhandled exception occurred '{exception.Message}'", severity, true, exception)

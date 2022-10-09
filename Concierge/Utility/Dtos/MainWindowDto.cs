@@ -6,7 +6,7 @@ namespace Concierge.Utility.Dtos
 {
     using System.Windows;
 
-    public class MainWindowDto
+    public sealed class MainWindowDto
     {
         public MainWindowDto()
         {

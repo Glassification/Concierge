@@ -11,7 +11,7 @@ namespace Concierge.Character
     using Concierge.Character.Statuses;
     using Concierge.Utility;
 
-    public class Companion : ICopyable<Companion>
+    public sealed class Companion : ICopyable<Companion>
     {
         public Companion()
         {

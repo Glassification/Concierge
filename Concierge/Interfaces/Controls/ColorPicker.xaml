@@ -8,6 +8,7 @@
     xmlns:components="clr-namespace:Concierge.Interfaces.Components"
     xmlns:viewmodels="clr-namespace:Concierge.Interfaces.ViewModels"
     d:DataContext="{d:DesignInstance Type=viewmodels:ConciergeViewModel}"
+    Style="{StaticResource UserControlFontStyle}"
     mc:Ignorable="d"
     BorderThickness="1">
     <Grid>

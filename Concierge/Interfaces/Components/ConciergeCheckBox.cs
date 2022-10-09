@@ -10,7 +10,7 @@ namespace Concierge.Interfaces.Components
 
     using Concierge.Utility;
 
-    public class ConciergeCheckBox : CheckBox
+    public sealed class ConciergeCheckBox : CheckBox
     {
         public ConciergeCheckBox()
             : base()

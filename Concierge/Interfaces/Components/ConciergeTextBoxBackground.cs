@@ -12,7 +12,7 @@ namespace Concierge.Interfaces.Components
     using Concierge.Utility;
     using Concierge.Utility.Utilities;
 
-    public class ConciergeTextBoxBackground : Grid
+    public sealed class ConciergeTextBoxBackground : Grid
     {
         public ConciergeTextBoxBackground()
         {

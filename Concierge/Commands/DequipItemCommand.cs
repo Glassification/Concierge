@@ -11,7 +11,7 @@ namespace Concierge.Commands
     using Concierge.Character.Items;
     using Concierge.Interfaces.Enums;
 
-    public class DequipItemCommand : Command
+    public sealed class DequipItemCommand : Command
     {
         private readonly EquipmentSlot equipmentSlot;
         private readonly Guid equippedId;

@@ -9,7 +9,7 @@ namespace Concierge.Services
 
     using Concierge.Persistence.ReadWriters;
 
-    public class AutosaveService
+    public sealed class AutosaveService
     {
         public AutosaveService()
         {

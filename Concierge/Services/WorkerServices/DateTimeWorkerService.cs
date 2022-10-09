@@ -10,7 +10,7 @@ namespace Concierge.Services.WorkerServices
 
     using Concierge.Utility;
 
-    public class DateTimeWorkerService : IWorkerService
+    public sealed class DateTimeWorkerService : IWorkerService
     {
         private const int OneSecond = 1000;
 

@@ -4,12 +4,13 @@
 
 namespace Concierge.Character
 {
-    using System;
+    using System.Text.RegularExpressions;
 
     using Concierge.Utility;
+    using Concierge.Utility.Extensions;
     using Concierge.Utility.Utilities;
 
-    public class CharacterClass : ICopyable<CharacterClass>
+    public sealed class CharacterClass : ICopyable<CharacterClass>
     {
         private int level;
 
@@ -17,6 +18,7 @@ namespace Concierge.Character
         {
             this.level = 0;
             this.Name = string.Empty;
+            this.Subclass = string.Empty;
             this.ClassNumber = 0;
         }
 
@@ -27,6 +29,8 @@ namespace Concierge.Character
         }
 
         public string Name { get; set; }
+
+        public string Subclass { get; set; }
 
         public int ClassNumber { get; set; }
 
@@ -45,11 +49,22 @@ namespace Concierge.Character
             }
         }
 
+        public static string FormatSubclass(string subclass)
+        {
+            return Regex.Replace(subclass, @"\((.*?)\)", string.Empty).Trim(new char[] { '-', ' ' });
+        }
+
+        public override string ToString()
+        {
+            return $"{this.Name}{(this.Subclass.IsNullOrWhiteSpace() ? string.Empty : $" ({this.Subclass})")}";
+        }
+
         public CharacterClass DeepCopy()
         {
             return new CharacterClass()
             {
                 Name = this.Name,
+                Subclass = this.Subclass,
                 Level = this.Level,
                 ClassNumber = this.ClassNumber,
             };

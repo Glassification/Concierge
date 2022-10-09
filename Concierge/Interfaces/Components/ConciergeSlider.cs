@@ -8,7 +8,7 @@ namespace Concierge.Interfaces.Components
     using System.Windows.Controls;
     using System.Windows.Input;
 
-    public class ConciergeSlider : Slider
+    public sealed class ConciergeSlider : Slider
     {
         public ConciergeSlider()
             : base()

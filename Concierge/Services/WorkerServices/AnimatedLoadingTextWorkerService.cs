@@ -11,7 +11,7 @@ namespace Concierge.Services.WorkerServices
     using Concierge.Services.Enums;
     using Concierge.Utility.Utilities;
 
-    public class AnimatedLoadingTextWorkerService : IWorkerService
+    public sealed class AnimatedLoadingTextWorkerService : IWorkerService
     {
         private readonly LoadingType loadingType;
         private readonly int displayTime;

@@ -13,7 +13,7 @@ namespace Concierge.Character.Spellcasting
     using Concierge.Utility.Utilities;
     using Newtonsoft.Json;
 
-    public class MagicClass : ICopyable<MagicClass>
+    public sealed class MagicClass : ICopyable<MagicClass>
     {
         public MagicClass()
         {

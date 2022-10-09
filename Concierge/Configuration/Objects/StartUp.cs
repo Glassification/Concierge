@@ -4,7 +4,7 @@
 
 namespace Concierge.Configuration.Objects
 {
-    public class StartUp
+    public sealed class StartUp
     {
         public StartUp()
         {

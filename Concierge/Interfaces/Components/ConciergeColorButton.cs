@@ -12,7 +12,7 @@ namespace Concierge.Interfaces.Components
     using Concierge.Utility;
     using Concierge.Utility.Extensions;
 
-    public class ConciergeColorButton : Button
+    public sealed class ConciergeColorButton : Button
     {
         private Color _color;
 

@@ -8,7 +8,7 @@ namespace Concierge.Commands
 
     using Concierge.Interfaces.Enums;
 
-    public class AddCommand<T> : Command
+    public sealed class AddCommand<T> : Command
     {
         private readonly List<T> list;
         private readonly T item;

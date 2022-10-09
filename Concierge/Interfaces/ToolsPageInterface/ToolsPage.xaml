@@ -12,7 +12,7 @@
       KeyDown="Page_KeyDown"
       d:DesignHeight="450" d:DesignWidth="800"
       Title="ToolsPage"
-      Style="{StaticResource PageXboxDasboardStyle}">
+      Style="{StaticResource PageFontStyle}">
 
     <Grid>
         <Grid.RowDefinitions>

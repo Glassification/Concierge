@@ -10,7 +10,7 @@
       mc:Ignorable="d"
       d:DesignHeight="600" d:DesignWidth="1020"
       Title="AbilitiesPage"
-      Style="{StaticResource PageXboxDasboardStyle}">
+      Style="{StaticResource PageFontStyle}">
 
     <Grid>
         <Grid.RowDefinitions>

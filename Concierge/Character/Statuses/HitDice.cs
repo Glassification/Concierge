@@ -6,7 +6,7 @@ namespace Concierge.Character.Statuses
 {
     using Concierge.Utility;
 
-    public class HitDice : ICopyable<HitDice>
+    public sealed class HitDice : ICopyable<HitDice>
     {
         public HitDice()
         {

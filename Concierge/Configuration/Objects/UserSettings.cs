@@ -6,7 +6,7 @@ namespace Concierge.Configuration.Objects
 {
     using Concierge.Utility.Units.Enums;
 
-    public class UserSettings
+    public sealed class UserSettings
     {
         public UserSettings()
         {

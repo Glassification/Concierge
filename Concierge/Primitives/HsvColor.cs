@@ -8,7 +8,7 @@ namespace Concierge.Primitives
 
     using Concierge.Utility;
 
-    public class HsvColor : ICopyable<HsvColor>, IComparable
+    public sealed class HsvColor : ICopyable<HsvColor>, IComparable
     {
         public HsvColor(double hue, double saturation, double value)
         {

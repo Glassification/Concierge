@@ -4,7 +4,7 @@
 
 namespace Concierge.Character.Dtos
 {
-    public class SpellSlotDto
+    public sealed class SpellSlotDto
     {
         public SpellSlotDto(
             int known = 0,

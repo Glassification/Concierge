@@ -8,7 +8,7 @@ namespace Concierge.Character.Characteristics
     using Concierge.Utility;
     using Concierge.Utility.Units.Enums;
 
-    public class Appearance : ICopyable<Appearance>
+    public sealed class Appearance : ICopyable<Appearance>
     {
         public Appearance()
         {
