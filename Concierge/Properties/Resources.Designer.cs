@@ -389,6 +389,7 @@ namespace Concierge.Properties {
         ///Elf
         ///Genasi
         ///Gnome
+        ///Goblin
         ///Goliath
         ///Half-Elf
         ///Half-Orc
@@ -448,6 +449,26 @@ namespace Concierge.Properties {
         internal static string StatusEffect {
             get {
                 return ResourceManager.GetString("StatusEffect", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Subclass {
+            get {
+                object obj = ResourceManager.GetObject("Subclass", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Subrace {
+            get {
+                object obj = ResourceManager.GetObject("Subrace", resourceCulture);
+                return ((byte[])(obj));
             }
         }
         

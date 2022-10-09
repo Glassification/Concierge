@@ -12,8 +12,8 @@
     mc:Ignorable="d"
     Title="Modify Appearance"
     Height="415"
-    Width="650"
-    Style="{StaticResource WindowXboxDasboardStyle}">
+    Width="800"
+    Style="{StaticResource WindowFontStyle}">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="45"/>

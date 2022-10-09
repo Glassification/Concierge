@@ -1,0 +1,362 @@
+[
+  {
+    "Name": "Artificer",
+    "Category": "Alchemist"
+  },
+  {
+    "Name": "Artificer",
+    "Category": "Artillerist"
+  },
+  {
+    "Name": "Artificer",
+    "Category": "Battle Smith"
+  },
+  {
+    "Name": "Barbarian",
+    "Category": "Path of the Ancestral Guardian"
+  },
+  {
+    "Name": "Barbarian",
+    "Category": "Path of the Battlerager"
+  },
+  {
+    "Name": "Barbarian",
+    "Category": "Path of the Berserker"
+  },
+  {
+    "Name": "Barbarian",
+    "Category": "Path of the Storm Herald"
+  },
+  {
+    "Name": "Barbarian",
+    "Category": "Path of the Totem Warrior"
+  },
+  {
+    "Name": "Barbarian",
+    "Category": "Path of the Zealot"
+  },
+  {
+    "Name": "Bard",
+    "Category": "College of Eloquence"
+  },
+  {
+    "Name": "Bard",
+    "Category": "College of Glamour"
+  },
+  {
+    "Name": "Bard",
+    "Category": "College of Lore"
+  },
+  {
+    "Name": "Bard",
+    "Category": "College of Swords"
+  },
+  {
+    "Name": "Bard",
+    "Category": "College of Valor"
+  },
+  {
+    "Name": "Bard",
+    "Category": "College of Whispers"
+  },
+  {
+    "Name": "Cleric",
+    "Category": "Arcana Domain"
+  },
+  {
+    "Name": "Cleric",
+    "Category": "Death Domain"
+  },
+  {
+    "Name": "Cleric",
+    "Category": "Forge Domain"
+  },
+  {
+    "Name": "Cleric",
+    "Category": "Grave Domain"
+  },
+  {
+    "Name": "Cleric",
+    "Category": "Knowledge Domain"
+  },
+  {
+    "Name": "Cleric",
+    "Category": "Life Domain"
+  },
+  {
+    "Name": "Cleric",
+    "Category": "Light Domain"
+  },
+  {
+    "Name": "Cleric",
+    "Category": "Love Domain"
+  },
+  {
+    "Name": "Cleric",
+    "Category": "Nature Domain"
+  },
+  {
+    "Name": "Cleric",
+    "Category": "Order Domain"
+  },
+  {
+    "Name": "Cleric",
+    "Category": "Tempest Domain"
+  },
+  {
+    "Name": "Cleric",
+    "Category": "Trickery Domain"
+  },
+  {
+    "Name": "Cleric",
+    "Category": "War Domain"
+  },
+  {
+    "Name": "Druid",
+    "Category": "Circle of Dreams"
+  },
+  {
+    "Name": "Druid",
+    "Category": "Circle of Spores"
+  },
+  {
+    "Name": "Druid",
+    "Category": "Circle of the Land"
+  },
+  {
+    "Name": "Druid",
+    "Category": "Circle of the Moon"
+  },
+  {
+    "Name": "Druid",
+    "Category": "Circle of the Shepherd"
+  },
+  {
+    "Name": "Fighter",
+    "Category": "Arcane Archer"
+  },
+  {
+    "Name": "Fighter",
+    "Category": "Battle Master"
+  },
+  {
+    "Name": "Fighter",
+    "Category": "Cavalier"
+  },
+  {
+    "Name": "Fighter",
+    "Category": "Champion"
+  },
+  {
+    "Name": "Fighter",
+    "Category": "Echo Knight"
+  },
+  {
+    "Name": "Fighter",
+    "Category": "Eldritch Knight"
+  },
+  {
+    "Name": "Fighter",
+    "Category": "Samurai"
+  },
+  {
+    "Name": "Monk",
+    "Category": "Way of Shadow"
+  },
+  {
+    "Name": "Monk",
+    "Category": "Way of the Drunken Master"
+  },
+  {
+    "Name": "Monk",
+    "Category": "Way of the Four Elements"
+  },
+  {
+    "Name": "Monk",
+    "Category": "Way of the Kensei"
+  },
+  {
+    "Name": "Monk",
+    "Category": "Way of the Long Death"
+  },
+  {
+    "Name": "Monk",
+    "Category": "Way of the Open Hand"
+  },
+  {
+    "Name": "Monk",
+    "Category": "Way of the Sun Soul"
+  },
+  {
+    "Name": "Paladin",
+    "Category": "Oath of Conquest"
+  },
+  {
+    "Name": "Paladin",
+    "Category": "Oath of Devotion"
+  },
+  {
+    "Name": "Paladin",
+    "Category": "Oath of Glory"
+  },
+  {
+    "Name": "Paladin",
+    "Category": "Oath of Redemption"
+  },
+  {
+    "Name": "Paladin",
+    "Category": "Oath of Vengeance"
+  },
+  {
+    "Name": "Paladin",
+    "Category": "Oath of the Ancients"
+  },
+  {
+    "Name": "Paladin",
+    "Category": "Oath of the Crown"
+  },
+  {
+    "Name": "Paladin",
+    "Category": "Oathbreaker"
+  },
+  {
+    "Name": "Ranger",
+    "Category": "Beast Master"
+  },
+  {
+    "Name": "Ranger",
+    "Category": "Gloom Stalker"
+  },
+  {
+    "Name": "Ranger",
+    "Category": "Horizon Walker"
+  },
+  {
+    "Name": "Ranger",
+    "Category": "Hunter"
+  },
+  {
+    "Name": "Ranger",
+    "Category": "Monster Slayer"
+  },
+  {
+    "Name": "Rogue",
+    "Category": "Arcane Trickster"
+  },
+  {
+    "Name": "Rogue",
+    "Category": "Assassin"
+  },
+  {
+    "Name": "Rogue",
+    "Category": "Inquisitive"
+  },
+  {
+    "Name": "Rogue",
+    "Category": "Mastermind"
+  },
+  {
+    "Name": "Rogue",
+    "Category": "Scout"
+  },
+  {
+    "Name": "Rogue",
+    "Category": "Swashbuckler"
+  },
+  {
+    "Name": "Rogue",
+    "Category": "Thief"
+  },
+  {
+    "Name": "Sorcerer",
+    "Category": "Divine Soul"
+  },
+  {
+    "Name": "Sorcerer",
+    "Category": "Draconic Bloodline"
+  },
+  {
+    "Name": "Sorcerer",
+    "Category": "Shadow Magic"
+  },
+  {
+    "Name": "Sorcerer",
+    "Category": "Storm Sorcery"
+  },
+  {
+    "Name": "Sorcerer",
+    "Category": "Wild Magic"
+  },
+  {
+    "Name": "Warlock",
+    "Category": "The Archfey"
+  },
+  {
+    "Name": "Warlock",
+    "Category": "The Celestial"
+  },
+  {
+    "Name": "Warlock",
+    "Category": "The Fiend"
+  },
+  {
+    "Name": "Warlock",
+    "Category": "The Great Old One"
+  },
+  {
+    "Name": "Warlock",
+    "Category": "The Hexblade"
+  },
+  {
+    "Name": "Warlock",
+    "Category": "The Undying"
+  },
+  {
+    "Name": "Wizard",
+    "Category": "Bladesinging"
+  },
+  {
+    "Name": "Wizard",
+    "Category": "Chronurgy Magic"
+  },
+  {
+    "Name": "Wizard",
+    "Category": "Graviturgy Magic"
+  },
+  {
+    "Name": "Wizard",
+    "Category": "School of Abjuration"
+  },
+  {
+    "Name": "Wizard",
+    "Category": "School of Conjuration"
+  },
+  {
+    "Name": "Wizard",
+    "Category": "School of Divination"
+  },
+  {
+    "Name": "Wizard",
+    "Category": "School of Enchantment"
+  },
+  {
+    "Name": "Wizard",
+    "Category": "School of Evocation"
+  },
+  {
+    "Name": "Wizard",
+    "Category": "School of Illusion"
+  },
+  {
+    "Name": "Wizard",
+    "Category": "School of Necromancy"
+  },
+  {
+    "Name": "Wizard",
+    "Category": "School of Transmutation"
+  },
+  {
+    "Name": "Wizard",
+    "Category": "War Magic"
+  }
+]

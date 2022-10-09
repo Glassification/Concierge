@@ -8,12 +8,9 @@ namespace Concierge.Services
     using System.Windows.Controls;
     using System.Windows.Input;
     using System.Windows.Media;
-    using System.Windows.Media.Animation;
 
-    using Concierge.Character;
     using Concierge.Character.Characteristics;
     using Concierge.Interfaces;
-    using Concierge.Utility;
     using Concierge.Utility.Extensions;
     using MaterialDesignThemes.Wpf;
 
@@ -67,43 +64,44 @@ namespace Concierge.Services
             return listViewItem;
         }
 
-        public void GenerateCharacterStatusBar(StackPanel stackPanel, ConciergeCharacter character)
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822:Mark members as static", Justification = "Code styling.")]
+        public void GenerateCharacterStatusBar(StackPanel stackPanel, CharacterProperties properties)
         {
             stackPanel.Children.Clear();
 
-            if (character.Properties.CharacterIcon?.UseCustomImage ?? false)
+            if (properties.CharacterIcon?.UseCustomImage ?? false)
             {
-                stackPanel.Children.Add(GenerateCharacterIcon(character.Properties.CharacterIcon));
+                stackPanel.Children.Add(GenerateCharacterIcon(properties.CharacterIcon));
             }
 
-            if (!character.Properties.Name.IsNullOrWhiteSpace())
+            if (!properties.Name.IsNullOrWhiteSpace())
             {
-                stackPanel.Children.Add(GenerateTextBlock(character.Properties.Name));
+                stackPanel.Children.Add(GenerateTextBlock(properties.Name));
             }
 
-            if (!character.Properties.Race.IsNullOrWhiteSpace())
+            if (!properties.Race.Name.IsNullOrWhiteSpace())
             {
-                stackPanel.Children.Add(GenerateTextBlock(character.Properties.Race));
+                stackPanel.Children.Add(GenerateTextBlock(properties.Race.ToString()));
             }
 
-            if (!character.Properties.Background.IsNullOrWhiteSpace())
+            if (!properties.Background.IsNullOrWhiteSpace())
             {
-                stackPanel.Children.Add(GenerateTextBlock(character.Properties.Background));
+                stackPanel.Children.Add(GenerateTextBlock(properties.Background));
             }
 
-            if (!character.Properties.Alignment.IsNullOrWhiteSpace())
+            if (!properties.Alignment.IsNullOrWhiteSpace())
             {
-                stackPanel.Children.Add(GenerateTextBlock(character.Properties.Alignment));
+                stackPanel.Children.Add(GenerateTextBlock(properties.Alignment));
             }
 
-            if (character.Properties.Level > 0)
+            if (properties.Level > 0)
             {
-                stackPanel.Children.Add(GenerateTextBlock($"Level {character.Properties.Level}"));
+                stackPanel.Children.Add(GenerateTextBlock($"Level {properties.Level}"));
             }
 
-            if (!character.Properties.GetClasses.IsNullOrWhiteSpace())
+            if (!properties.GetClasses.IsNullOrWhiteSpace())
             {
-                stackPanel.Children.Add(GenerateTextBlock(character.Properties.GetClasses));
+                stackPanel.Children.Add(GenerateTextBlock(properties.GetClasses));
             }
         }
 

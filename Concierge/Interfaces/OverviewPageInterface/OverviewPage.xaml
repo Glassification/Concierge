@@ -11,7 +11,7 @@
       mc:Ignorable="d"
       d:DesignHeight="600" d:DesignWidth="1020"
       Title="OverviewPage"
-      Style="{StaticResource PageXboxDasboardStyle}">
+      Style="{StaticResource PageFontStyle}">
 
     <Grid>
         <Grid.ColumnDefinitions>

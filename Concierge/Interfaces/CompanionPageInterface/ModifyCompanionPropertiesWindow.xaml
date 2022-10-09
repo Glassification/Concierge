@@ -11,7 +11,7 @@
     Title="Modify Companion Properties"
     Height="355"
     Width="650"
-    Style="{StaticResource WindowXboxDasboardStyle}">
+    Style="{StaticResource WindowFontStyle}">
 
     <Grid>
         <Grid.RowDefinitions>

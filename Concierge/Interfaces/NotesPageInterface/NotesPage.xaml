@@ -13,7 +13,7 @@
     d:DesignHeight="600"
     d:DesignWidth="1020"
     Title="NotesPage"
-    Style="{StaticResource PageXboxDasboardStyle}">
+    Style="{StaticResource PageFontStyle}">
 
     <Grid Background="#000917" Margin="3">
         <Grid.RowDefinitions>

@@ -22,7 +22,7 @@
     BorderThickness="0"
     KeyDown="MainWindow_KeyPress"
     WindowState="Maximized"
-    Style="{StaticResource WindowXboxDasboardStyle}">
+    Style="{StaticResource WindowFontStyle}">
 
     <Window.Resources>
         <ObjectDataProvider 

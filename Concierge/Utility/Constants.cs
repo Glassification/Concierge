@@ -11,6 +11,7 @@ namespace Concierge.Utility
     using Concierge.Character.Spellcasting;
     using Concierge.Configuration;
     using Concierge.Persistence.ReadWriters;
+    using Concierge.Primitives;
 
     public static class Constants
     {
@@ -41,6 +42,8 @@ namespace Concierge.Utility
             Inventories = new ReadOnlyCollection<Inventory>(DefaultListReadWriter.ReadJson<Inventory>(Properties.Resources.Inventory));
             Languages = new ReadOnlyCollection<Language>(DefaultListReadWriter.ReadJson<Language>(Properties.Resources.Language));
             Abilities = new ReadOnlyCollection<Ability>(DefaultListReadWriter.ReadJson<Ability>(Properties.Resources.Ability));
+            Subrace = new ReadOnlyCollection<CategoryItem>(DefaultListReadWriter.ReadJson<CategoryItem>(Properties.Resources.Subrace));
+            Subclass = new ReadOnlyCollection<CategoryItem>(DefaultListReadWriter.ReadJson<CategoryItem>(Properties.Resources.Subclass));
 
             AutosaveIntervals = new ReadOnlyCollection<int>(DefaultListReadWriter.ReadGenericList<int>(Properties.Resources.AutosaveInterval));
             Alignment = new ReadOnlyCollection<string>(DefaultListReadWriter.ReadGenericList<string>(Properties.Resources.Alignment));
@@ -94,6 +97,10 @@ namespace Concierge.Utility
         public static ReadOnlyCollection<string> Instruments { get; }
 
         public static ReadOnlyCollection<string> ItemCategories { get; }
+
+        public static ReadOnlyCollection<CategoryItem> Subrace { get; }
+
+        public static ReadOnlyCollection<CategoryItem> Subclass { get; }
 
         public static int CurrentAutosaveInterval => AutosaveIntervals[AppSettingsManager.UserSettings.AutosaveInterval];
     }

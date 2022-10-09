@@ -248,7 +248,7 @@ namespace Concierge.Interfaces
         {
             Program.Logger.Info($"Draw all.");
 
-            this.mainWindowService.GenerateCharacterStatusBar(this.CharacterHeaderPanel, Program.CcsFile.Character);
+            this.mainWindowService.GenerateCharacterStatusBar(this.CharacterHeaderPanel, Program.CcsFile.Character.Properties);
             this.UpdateStatusBar(this.CurrentPage?.ConciergePage ?? ConciergePage.None);
 
             this.InventoryPage.Draw();

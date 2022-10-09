@@ -7,7 +7,8 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:local="clr-namespace:Concierge.Interfaces.Controls"
              mc:Ignorable="d" 
-             d:DesignHeight="100" d:DesignWidth="100">
+             d:DesignHeight="100" d:DesignWidth="100"
+             Style="{StaticResource UserControlFontStyle}">
     <Grid Grid.Row="0" Margin="3">
         <Grid.RowDefinitions>
             <RowDefinition Height="2*"/>
@@ -25,7 +26,7 @@
                 Visibility="{Binding Path=EnableEdit,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=UserControl}}"
                 Click="EditAttributesButton_Click"
                 ToolTip="Edit Attributes">
-                <materialDesign:PackIcon Kind="TextBoxEdit" Width="25" Height="25"/>
+                <materialDesign:PackIcon Kind="TextBoxEdit" Width="20" Height="20"/>
             </components:ConciergeDesignButton>
             <components:ConciergeTextBlock
                 x:Name="AttributeTitle"

@@ -4,9 +4,13 @@
 
 namespace Concierge.Interfaces
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
     using System.Windows;
+    using System.Windows.Controls;
     using System.Windows.Media;
-
+    using Concierge.Character;
     using Concierge.Character.Characteristics;
     using Concierge.Commands;
     using Concierge.Interfaces.Components;
@@ -28,10 +32,14 @@ namespace Concierge.Interfaces
             this.fileAccessService = new FileAccessService();
             this.AlignmentComboBox.ItemsSource = Constants.Alignment;
             this.RaceComboBox.ItemsSource = Constants.Races;
+            this.SubRaceComboBox.ItemsSource = Constants.Subrace;
             this.BackgroundComboBox.ItemsSource = Constants.Backgrounds;
-            this.Class1ComboBox.ItemsSource = Constants.Classes;
-            this.Class2ComboBox.ItemsSource = Constants.Classes;
-            this.Class3ComboBox.ItemsSource = Constants.Classes;
+            this.Class1Class.ItemsSource = Constants.Classes;
+            this.Class2Class.ItemsSource = Constants.Classes;
+            this.Class3Class.ItemsSource = Constants.Classes;
+            this.Class1Subclass.ItemsSource = Constants.Subclass;
+            this.Class2Subclass.ItemsSource = Constants.Subclass;
+            this.Class3Subclass.ItemsSource = Constants.Subclass;
             this.CharacterProperties = new CharacterProperties();
             this.OriginalFileName = string.Empty;
 
@@ -45,6 +53,8 @@ namespace Concierge.Interfaces
         private string OriginalFileName { get; set; }
 
         private bool IsDrawing { get; set; }
+
+        private bool IsChanging { get; set; }
 
         public override ConciergeWindowResult ShowWizardSetup(string buttonText)
         {
@@ -85,15 +95,19 @@ namespace Concierge.Interfaces
             this.IsDrawing = true;
 
             this.NameTextBox.Text = this.CharacterProperties.Name;
-            this.RaceComboBox.Text = this.CharacterProperties.Race;
+            this.RaceComboBox.Text = this.CharacterProperties.Race.Name;
+            this.SubRaceComboBox.Text = this.CharacterProperties.Race.Subrace;
             this.BackgroundComboBox.Text = this.CharacterProperties.Background;
             this.AlignmentComboBox.Text = this.CharacterProperties.Alignment;
-            this.Level1UpDown.Value = this.CharacterProperties.Class1.Level;
-            this.Level2UpDown.Value = this.CharacterProperties.Class2.Level;
-            this.Level3UpDown.Value = this.CharacterProperties.Class3.Level;
-            this.Class1ComboBox.Text = this.CharacterProperties.Class1.Name;
-            this.Class2ComboBox.Text = this.CharacterProperties.Class2.Name;
-            this.Class3ComboBox.Text = this.CharacterProperties.Class3.Name;
+            this.Class1Level.Value = this.CharacterProperties.Class1.Level;
+            this.Class2Level.Value = this.CharacterProperties.Class2.Level;
+            this.Class3Level.Value = this.CharacterProperties.Class3.Level;
+            this.Class1Class.Text = this.CharacterProperties.Class1.Name;
+            this.Class2Class.Text = this.CharacterProperties.Class2.Name;
+            this.Class3Class.Text = this.CharacterProperties.Class3.Name;
+            this.Class1Subclass.Text = this.CharacterProperties.Class1.Subclass;
+            this.Class2Subclass.Text = this.CharacterProperties.Class2.Subclass;
+            this.Class3Subclass.Text = this.CharacterProperties.Class3.Subclass;
             this.ImageSourceTextBox.Text = this.OriginalFileName = this.CharacterProperties.CharacterIcon.Path;
             this.UseCustomImageCheckBox.IsChecked = this.CharacterProperties.CharacterIcon.UseCustomImage;
 
@@ -107,15 +121,19 @@ namespace Concierge.Interfaces
             var oldItem = this.CharacterProperties.DeepCopy();
 
             this.CharacterProperties.Name = this.NameTextBox.Text;
-            this.CharacterProperties.Race = this.RaceComboBox.Text;
+            this.CharacterProperties.Race.Name = this.RaceComboBox.Text;
+            this.CharacterProperties.Race.Subrace = this.SubRaceComboBox.Text;
             this.CharacterProperties.Background = this.BackgroundComboBox.Text;
             this.CharacterProperties.Alignment = this.AlignmentComboBox.Text;
-            this.CharacterProperties.Class1.Level = this.Level1UpDown.Value;
-            this.CharacterProperties.Class2.Level = this.Level2UpDown.Value;
-            this.CharacterProperties.Class3.Level = this.Level3UpDown.Value;
-            this.CharacterProperties.Class1.Name = this.Class1ComboBox.Text;
-            this.CharacterProperties.Class2.Name = this.Class2ComboBox.Text;
-            this.CharacterProperties.Class3.Name = this.Class3ComboBox.Text;
+            this.CharacterProperties.Class1.Level = this.Class1Level.Value;
+            this.CharacterProperties.Class2.Level = this.Class2Level.Value;
+            this.CharacterProperties.Class3.Level = this.Class3Level.Value;
+            this.CharacterProperties.Class1.Name = this.Class1Class.Text;
+            this.CharacterProperties.Class2.Name = this.Class2Class.Text;
+            this.CharacterProperties.Class3.Name = this.Class3Class.Text;
+            this.CharacterProperties.Class1.Subclass = this.Class1Subclass.Text;
+            this.CharacterProperties.Class2.Subclass = this.Class2Subclass.Text;
+            this.CharacterProperties.Class3.Subclass = this.Class3Subclass.Text;
 
             this.CharacterProperties.CharacterIcon.UseCustomImage = this.UseCustomImageCheckBox.IsChecked ?? false;
             this.CharacterProperties.CharacterIcon.Stretch = Stretch.UniformToFill;
@@ -129,12 +147,10 @@ namespace Concierge.Interfaces
 
         private void SetEnabledState(bool isEnabled)
         {
-            this.ImageSourceTextBox.IsEnabled = isEnabled;
             this.OpenImageButton.IsEnabled = isEnabled;
             this.ImageSourceTextBoxBackground.IsEnabled = isEnabled;
 
             this.OpenImageButton.Opacity = isEnabled ? 1 : 0.5;
-            this.ImageSourceLabel.Opacity = isEnabled ? 1 : 0.5;
             this.ImageSourceTextBoxBackground.Opacity = isEnabled ? 1 : 0.5;
         }
 
@@ -189,6 +205,45 @@ namespace Concierge.Interfaces
             {
                 this.ImageSourceTextBox.Text = fileName;
             }
+        }
+
+        private void SubRaceComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var changedText = string.Empty;
+            foreach (var item in e.AddedItems)
+            {
+                changedText = item.ToString() ?? string.Empty;
+            }
+
+            if (changedText.IsNullOrWhiteSpace())
+            {
+                return;
+            }
+
+            Action a = () => this.SubRaceComboBox.Text = Race.FormatSubRace(changedText);
+            this.Dispatcher.BeginInvoke(a);
+        }
+
+        private void SubclassComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (sender is not ConciergeComboBox comboBox)
+            {
+                return;
+            }
+
+            var changedText = string.Empty;
+            foreach (var item in e.AddedItems)
+            {
+                changedText = item.ToString() ?? string.Empty;
+            }
+
+            if (changedText.IsNullOrWhiteSpace())
+            {
+                return;
+            }
+
+            Action a = () => comboBox.Text = CharacterClass.FormatSubclass(changedText);
+            this.Dispatcher.BeginInvoke(a);
         }
     }
 }

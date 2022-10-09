@@ -1535,22 +1535,28 @@
     ],
     "Properties": {
       "Name": "Caleston Nailo",
-      "Race": "Half-Elf",
+      "Race": {
+        "Name": "Half-Elf",
+        "Subrace": "High"
+      },
       "Background": "Criminal",
       "Alignment": "Chaotic Good",
       "Experience": "",
       "Class1": {
         "Name": "Rogue",
+        "Subclass": "Assassin",
         "ClassNumber": 1,
         "Level": 9
       },
       "Class2": {
         "Name": "",
+        "Subclass": "",
         "ClassNumber": 2,
         "Level": 0
       },
       "Class3": {
         "Name": "",
+        "Subclass": "",
         "ClassNumber": 3,
         "Level": 0
       },
@@ -2038,7 +2044,7 @@
       }
     ]
   },
-  "Hash": "1434037E9B5A28CF521C6379A6509FD9070C1F8511850173DC9205D04D170B05",
+  "Hash": "D859BC299E83DA27C95FE4BD750A0900CB97E1868AEC71371B7B3677BED4CA4F",
   "OriginalCreationDate": "Monday, 14 March 2022 08:19:44 PM",
-  "Version": "4.13.2"
+  "Version": "4.13.6"
 }

@@ -190,6 +190,12 @@
   <data name="StatusEffect" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Constants\StatusEffect.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
+  <data name="Subclass" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Json\Subclass.json;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Subrace" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Json\Subrace.json;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="Tool" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Constants\Tool.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>

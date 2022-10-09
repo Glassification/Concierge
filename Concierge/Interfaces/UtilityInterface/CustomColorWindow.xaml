@@ -11,7 +11,7 @@
     xmlns:controls="clr-namespace:Concierge.Interfaces.Controls"
     
     d:DataContext="{d:DesignInstance Type=viewmodels:ConciergeViewModel}"
-    Style="{StaticResource WindowXboxDasboardStyle}"
+    Style="{StaticResource WindowFontStyle}"
     mc:Ignorable="d"
     Title="Custom Color Picker"
     Height="625"

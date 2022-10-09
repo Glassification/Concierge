@@ -9,6 +9,7 @@
     xmlns:controls="clr-namespace:Concierge.Interfaces.Controls"
     xmlns:local="clr-namespace:Concierge.Interfaces.Controls"
     mc:Ignorable="d" 
+    Style="{StaticResource UserControlFontStyle}"
     d:DesignHeight="100" d:DesignWidth="800">
     <Grid>
         <Grid.ColumnDefinitions>

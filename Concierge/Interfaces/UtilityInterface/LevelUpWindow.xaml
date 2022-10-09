@@ -11,7 +11,7 @@
     xmlns:local="clr-namespace:Concierge.Interfaces.UtilityInterface"
     mc:Ignorable="d"
     Title="LevelUpWindow" Height="355" Width="650"
-    Style="{StaticResource WindowXboxDasboardStyle}">
+    Style="{StaticResource WindowFontStyle}">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="45"/>
@@ -203,7 +203,7 @@
                     HorizontalAlignment="Center">
                 <components:ConciergeTextButton 
                     x:Name="CancelButton"
-                    Content="Cancel"
+                    Content="OK"
                     Click="CancelButton_Click"
                     Style="{StaticResource ConciergeTextButtonStyle}">
                 </components:ConciergeTextButton>

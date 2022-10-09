@@ -6,6 +6,7 @@ Dwarf
 Elf
 Genasi
 Gnome
+Goblin
 Goliath
 Half-Elf
 Half-Orc

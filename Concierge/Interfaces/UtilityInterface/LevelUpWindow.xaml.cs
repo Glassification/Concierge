@@ -76,7 +76,7 @@ namespace Concierge.Interfaces.UtilityInterface
             var character = Program.CcsFile.Character;
             var hitDieEnum = (HitDie)Enum.Parse(typeof(HitDie), hitDice.Text);
 
-            character.LevelUp(hitDieEnum, characterClass.Level, modifier.Value);
+            character.LevelUp(hitDieEnum, characterClass.ClassNumber, modifier.Value);
         }
 
         private void FillFields()

@@ -8,7 +8,8 @@
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:local="clr-namespace:Concierge.Interfaces.Controls"
     mc:Ignorable="d" 
-    d:DesignHeight="600" d:DesignWidth="400">
+    d:DesignHeight="600" d:DesignWidth="400"
+    Style="{StaticResource UserControlFontStyle}">
     <Grid Background="#000917" Margin="3">
         <Grid.RowDefinitions>
             <RowDefinition Height="11*"/>

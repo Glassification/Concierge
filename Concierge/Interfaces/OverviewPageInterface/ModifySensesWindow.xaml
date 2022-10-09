@@ -11,14 +11,14 @@
     d:DataContext="{d:DesignInstance Type=viewmodels:ConciergeViewModel}"
     mc:Ignorable="d"
     Title="Modify Senses"
-    Height="595"
-    Width="650"
-    Style="{StaticResource WindowXboxDasboardStyle}">
+    Height="355"
+    Width="800"
+    Style="{StaticResource WindowFontStyle}">
 
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="45"/>
-            <RowDefinition Height="480"/>
+            <RowDefinition Height="240"/>
             <RowDefinition Height="70"/>
         </Grid.RowDefinitions>
 
@@ -47,231 +47,250 @@
 
         <!--Fields-->
         <Grid Grid.Row="1">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="60"/>
-                <RowDefinition Height="60"/>
-                <RowDefinition Height="60"/>
-                <RowDefinition Height="60"/>
-                <RowDefinition Height="60"/>
-                <RowDefinition Height="60"/>
-                <RowDefinition Height="60"/>
-                <RowDefinition Height="60"/>
-            </Grid.RowDefinitions>
-
-            <!--Initiative-->
-            <Grid Grid.Row="0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="35*"/>
-                    <ColumnDefinition Width="65*"/>
-                </Grid.ColumnDefinitions>
-
-                <!--Title-->
-                <Grid Grid.Column="0">
-                    <TextBlock
-                        Text="Initiative:"
-                        Foreground="White"
-                        FontSize="20"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Center"
-                        Margin="10, 0, 0, 0"/>
-                </Grid>
-
-                <!--Value-->
-                <components:ConciergeTextBoxBackground
-                    Grid.Column="1"
-                    IsEnabled="False">
-                    <components:ConciergeTextBox
-                        x:Name="InitiativeTextBlock"
-                        FontSize="25"
-                        Margin="20, 0, 0, 0"/>
-                </components:ConciergeTextBoxBackground>
-            </Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50*"/>
+                <ColumnDefinition Width="50*"/>
+            </Grid.ColumnDefinitions>
             
-            <!--Initiative Bonus-->
-            <Grid Grid.Row="1">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="35*"/>
-                    <ColumnDefinition Width="65*"/>
-                </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="60"/>
+                </Grid.RowDefinitions>
 
-                <!--Title-->
-                <Grid Grid.Column="0">
-                    <TextBlock Text="Initiative Bonus:"
-                               Foreground="White"
-                               FontSize="20"
-                               HorizontalAlignment="Left"
-                               VerticalAlignment="Center"
-                               Margin="10, 0, 0, 0"/>
+                <!--Initiative-->
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="35*"/>
+                        <ColumnDefinition Width="32.5*"/>
+                        <ColumnDefinition Width="32.5*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!--Title-->
+                    <Grid Grid.Column="0">
+                        <TextBlock
+                            Text="Initiative:"
+                            Foreground="White"
+                            FontSize="18"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Margin="10, 0, 0, 0"/>
+                    </Grid>
+
+                    <!--Value-->
+                    <components:ConciergeTextBoxBackground
+                        Grid.Column="1"
+                        IsEnabled="False">
+                        <components:ConciergeTextBox
+                            x:Name="InitiativeTextBlock"
+                            FontSize="25"
+                            HorizontalContentAlignment="Center"/>
+                    </components:ConciergeTextBoxBackground>
                 </Grid>
 
-                <!--Value-->
-                <Grid Grid.Column="1">
-                    <controls:IntegerUpDown
-                        x:Name="InitiativeBonusUpDown"
-                        ValueChanged="IntegerUpDown_ValueChanged"/>
-                </Grid>
-            </Grid>
+                <!--Perception-->
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="35*"/>
+                        <ColumnDefinition Width="32.5*"/>
+                        <ColumnDefinition Width="32.5*"/>
+                    </Grid.ColumnDefinitions>
 
-            <!--Perception-->
-            <Grid Grid.Row="2">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="35*"/>
-                    <ColumnDefinition Width="65*"/>
-                </Grid.ColumnDefinitions>
+                    <!--Title-->
+                    <Grid Grid.Column="0">
+                        <TextBlock
+                            Text="Perception:"
+                            Foreground="White"
+                            FontSize="18"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Margin="10, 0, 0, 0"/>
+                    </Grid>
 
-                <!--Title-->
-                <Grid Grid.Column="0">
-                    <TextBlock
-                        Text="Perception:"
-                        Foreground="White"
-                        FontSize="20"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Center"
-                        Margin="10, 0, 0, 0"/>
-                </Grid>
-
-                <!--Value-->
-                <components:ConciergeTextBoxBackground
-                    Grid.Column="1"
-                    IsEnabled="False">
-                    <components:ConciergeTextBox
-                        x:Name="PerceptionTextBlock"
-                        FontSize="25"
-                        Margin="20, 0, 0, 0"/>
-                </components:ConciergeTextBoxBackground>
-            </Grid>
-
-            <!--Perception Bonus-->
-            <Grid Grid.Row="3">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="35*"/>
-                    <ColumnDefinition Width="65*"/>
-                </Grid.ColumnDefinitions>
-
-                <!--Title-->
-                <Grid Grid.Column="0">
-                    <TextBlock Text="Perception Bonus:"
-                               Foreground="White"
-                               FontSize="20"
-                               HorizontalAlignment="Left"
-                               VerticalAlignment="Center"
-                               Margin="10, 0, 0, 0"/>
+                    <!--Value-->
+                    <components:ConciergeTextBoxBackground
+                        Grid.Column="1"
+                        IsEnabled="False">
+                        <components:ConciergeTextBox
+                            x:Name="PerceptionTextBlock"
+                            FontSize="25"
+                            HorizontalContentAlignment="Center"/>
+                    </components:ConciergeTextBoxBackground>
                 </Grid>
 
-                <!--Value-->
-                <Grid Grid.Column="1">
-                    <controls:IntegerUpDown
-                        x:Name="PerceptionBonusUpDown"
-                        ValueChanged="IntegerUpDown_ValueChanged"/>
-                </Grid>
-            </Grid>
+                <!--Vision-->
+                <Grid Grid.Row="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="35*"/>
+                        <ColumnDefinition Width="65*"/>
+                    </Grid.ColumnDefinitions>
 
-            <!--Vision-->
-            <Grid Grid.Row="4">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="35*"/>
-                    <ColumnDefinition Width="65*"/>
-                </Grid.ColumnDefinitions>
+                    <!--Title-->
+                    <Grid Grid.Column="0">
+                        <TextBlock
+                            Text="Vision:"
+                            Foreground="White"
+                            FontSize="18"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Margin="10, 0, 0, 0"/>
+                    </Grid>
 
-                <!--Title-->
-                <Grid Grid.Column="0">
-                    <TextBlock Text="Vision:"
-                                   Foreground="White"
-                                   FontSize="20"
-                                   HorizontalAlignment="Left"
-                                   VerticalAlignment="Center"
-                                   Margin="10, 0, 0, 0"/>
-                </Grid>
-
-                <!--Value-->
-                <Grid Grid.Column="1">
-                    <components:ConciergeComboBox
-                        Style="{StaticResource ComboBoxStyle}"
-                        x:Name="VisionComboBox"
-                        IsEditable="False"/>
-                </Grid>
-            </Grid>
-
-            <!--Movement-->
-            <Grid Grid.Row="5">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="35*"/>
-                    <ColumnDefinition Width="65*"/>
-                </Grid.ColumnDefinitions>
-
-                <!--Title-->
-                <Grid Grid.Column="0">
-                    <TextBlock
-                        Text="Movement:"
-                        Foreground="White"
-                        FontSize="20"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Center"
-                        Margin="10, 0, 0, 0"/>
+                    <!--Value-->
+                    <Grid Grid.Column="1">
+                        <components:ConciergeComboBox
+                            Style="{StaticResource ComboBoxStyle}"
+                            x:Name="VisionComboBox"
+                            IsEditable="False"/>
+                    </Grid>
                 </Grid>
 
-                <!--Value-->
-                <components:ConciergeTextBoxBackground
-                    Grid.Column="1"
-                    IsEnabled="False">
-                    <components:ConciergeTextBox
-                        x:Name="MovementTextBlock"
-                        FontSize="25"
-                        Margin="20, 0, 0, 0"
-                        VerticalAlignment="Center"/>
-                </components:ConciergeTextBoxBackground>
-            </Grid>
+                <!--Base Movement-->
+                <Grid Grid.Row="3">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="35*"/>
+                        <ColumnDefinition Width="65*"/>
+                    </Grid.ColumnDefinitions>
 
-            <!--Base Movement-->
-            <Grid Grid.Row="6">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="35*"/>
-                    <ColumnDefinition Width="65*"/>
-                </Grid.ColumnDefinitions>
+                    <!--Title-->
+                    <Grid Grid.Column="0">
+                        <TextBlock
+                            Text="Base Movement:"
+                            Foreground="White"
+                            FontSize="16"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Margin="10, 0, 0, 0"/>
+                    </Grid>
 
-                <!--Title-->
-                <Grid Grid.Column="0">
-                    <TextBlock Text="Base Movement:"
-                               Foreground="White"
-                               FontSize="20"
-                               HorizontalAlignment="Left"
-                               VerticalAlignment="Center"
-                               Margin="10, 0, 0, 0"/>
-                </Grid>
-
-                <!--Value-->
-                <Grid Grid.Column="1">
-                    <controls:IntegerUpDown
-                        x:Name="BaseMovementUpDown"
-                        Increment="5"
-                        ValueChanged="IntegerUpDown_ValueChanged"/>
+                    <!--Value-->
+                    <Grid Grid.Column="1">
+                        <controls:IntegerUpDown
+                            x:Name="BaseMovementUpDown"
+                            Increment="5"
+                            ValueChanged="IntegerUpDown_ValueChanged"/>
+                    </Grid>
                 </Grid>
             </Grid>
 
-            <!--Movement Bonus-->
-            <Grid Grid.Row="7">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="35*"/>
-                    <ColumnDefinition Width="65*"/>
-                </Grid.ColumnDefinitions>
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="60"/>
+                </Grid.RowDefinitions>
 
-                <!--Title-->
-                <Grid Grid.Column="0">
-                    <TextBlock
-                        Text="Movement Bonus:"
-                        Foreground="White"
-                        FontSize="20"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Center"
-                        Margin="10, 0, 0, 0"/>
+                <!--Initiative Bonus-->
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="35*"/>
+                        <ColumnDefinition Width="65*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!--Title-->
+                    <Grid Grid.Column="0">
+                        <TextBlock
+                            Text="Initiative Bonus:"
+                            Foreground="White"
+                            FontSize="18"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Margin="10, 0, 0, 0"/>
+                    </Grid>
+
+                    <!--Value-->
+                    <Grid Grid.Column="1">
+                        <controls:IntegerUpDown
+                            x:Name="InitiativeBonusUpDown"
+                            ValueChanged="IntegerUpDown_ValueChanged"/>
+                    </Grid>
                 </Grid>
 
-                <!--Value-->
-                <Grid Grid.Column="1">
-                    <controls:IntegerUpDown
-                        x:Name="MovementBonusUpDown"
-                        Increment="5"
-                        ValueChanged="IntegerUpDown_ValueChanged"/>
+                <!--Perception Bonus-->
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="35*"/>
+                        <ColumnDefinition Width="65*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!--Title-->
+                    <Grid Grid.Column="0">
+                        <TextBlock
+                            Text="Perception Bonus:"
+                            Foreground="White"
+                            FontSize="16"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Margin="10, 0, 0, 0"/>
+                    </Grid>
+
+                    <!--Value-->
+                    <Grid Grid.Column="1">
+                        <controls:IntegerUpDown
+                            x:Name="PerceptionBonusUpDown"
+                            ValueChanged="IntegerUpDown_ValueChanged"/>
+                    </Grid>
+                </Grid>
+
+                <!--Movement-->
+                <Grid Grid.Row="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="35*"/>
+                        <ColumnDefinition Width="32.5*"/>
+                        <ColumnDefinition Width="32.5*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!--Title-->
+                    <Grid Grid.Column="0">
+                        <TextBlock
+                            Text="Movement:"
+                            Foreground="White"
+                            FontSize="18"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Margin="10, 0, 0, 0"/>
+                    </Grid>
+
+                    <!--Value-->
+                    <components:ConciergeTextBoxBackground
+                        Grid.Column="1"
+                        IsEnabled="False">
+                        <components:ConciergeTextBox
+                            x:Name="MovementTextBlock"
+                            FontSize="25"
+                            HorizontalContentAlignment="Center"
+                            VerticalAlignment="Center"/>
+                    </components:ConciergeTextBoxBackground>
+                </Grid>
+
+                <!--Movement Bonus-->
+                <Grid Grid.Row="3">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="35*"/>
+                        <ColumnDefinition Width="65*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!--Title-->
+                    <Grid Grid.Column="0">
+                        <TextBlock
+                            Text="Movement Bonus:"
+                            Foreground="White"
+                            FontSize="16"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Margin="10, 0, 0, 0"/>
+                    </Grid>
+
+                    <!--Value-->
+                    <Grid Grid.Column="1">
+                        <controls:IntegerUpDown
+                            x:Name="MovementBonusUpDown"
+                            Increment="5"
+                            ValueChanged="IntegerUpDown_ValueChanged"/>
+                    </Grid>
                 </Grid>
             </Grid>
         </Grid>

@@ -13,7 +13,7 @@
     Title="Modify Spellcasting Class"
     Height="355"
     Width="800"
-    Style="{StaticResource WindowXboxDasboardStyle}">
+    Style="{StaticResource WindowFontStyle}">
 
     <Grid>
         <Grid.RowDefinitions>
