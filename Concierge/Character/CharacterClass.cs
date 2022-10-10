@@ -41,9 +41,11 @@ namespace Concierge.Character
             {
                 if (value is <= Constants.MaxLevel and >= 0)
                 {
-                    if (CharacterUtility.ValidateClassLevel(Program.CcsFile.Character, this.ClassNumber, value))
+                    var oldLevel = this.level;
+                    this.level = value;
+                    if (!CharacterUtility.ValidateClassLevel(Program.CcsFile.Character, this.ClassNumber, value))
                     {
-                        this.level = value;
+                        this.level = oldLevel;
                     }
                 }
             }

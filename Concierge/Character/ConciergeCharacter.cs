@@ -18,6 +18,7 @@ namespace Concierge.Character
     using Concierge.Character.Statuses;
     using Concierge.Commands;
     using Concierge.Configuration;
+    using Concierge.Leveling;
     using Concierge.Tools.DiceRolling.Dice;
     using Concierge.Utility;
     using Concierge.Utility.Extensions;
@@ -27,6 +28,8 @@ namespace Concierge.Character
 
     public sealed class ConciergeCharacter : ICopyable<ConciergeCharacter>
     {
+        private readonly ConciergeLeveler conciergeLeveler;
+
         public ConciergeCharacter()
         {
             this.Abilities = new List<Ability>();
@@ -54,6 +57,8 @@ namespace Concierge.Character
             this.StatusEffects = new List<StatusEffect>();
             this.Properties = new CharacterProperties();
             this.Languages = new List<Language>();
+
+            this.conciergeLeveler = new ConciergeLeveler(this);
         }
 
         public List<Ability> Abilities { get; set; }
@@ -221,34 +226,7 @@ namespace Concierge.Character
 
         public void LevelUp(HitDie hitDie, int classNumber, int bonusHp)
         {
-            var levelClass = this.Properties.GetClassByNumber(classNumber);
-            var magicClass = this.MagicClasses.Where(x => x.Name.Equals(levelClass.Name)).FirstOrDefault();
-            var newHp = DiceRoll.RollHitDie(hitDie) + CharacterUtility.CalculateBonus(this.Attributes.Constitution) + bonusHp;
-
-            var oldVitality = this.Vitality.DeepCopy();
-            var oldClass = levelClass.DeepCopy();
-            var oldSpellSlots = this.SpellSlots.DeepCopy();
-            var oldMagicClass = magicClass?.DeepCopy();
-
-            this.Vitality.LevelUp(hitDie, newHp);
-            levelClass.Level++;
-            if (magicClass is not null)
-            {
-                var spellSlots = CharacterUtility.GetSpellSlotIncrease(levelClass.Name, levelClass.Level);
-                magicClass.LevelUp(spellSlots);
-                this.SpellSlots.LevelUp(spellSlots);
-            }
-
-            Program.UndoRedoService.AddCommand(
-                new LevelUpCommand(
-                    oldVitality,
-                    this.Vitality.DeepCopy(),
-                    oldClass,
-                    levelClass.DeepCopy(),
-                    oldMagicClass,
-                    magicClass?.DeepCopy(),
-                    oldSpellSlots,
-                    this.SpellSlots.DeepCopy()));
+            this.conciergeLeveler.LevelUp(hitDie, classNumber, bonusHp);
         }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0075:Simplify conditional expression", Justification = "Increase readability.")]

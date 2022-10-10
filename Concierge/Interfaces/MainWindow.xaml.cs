@@ -276,7 +276,7 @@ namespace Concierge.Interfaces
         public void LevelUp()
         {
             Program.Logger.Info($"Level up.");
-            ConciergeWindowService.ShowWindow(typeof(LevelUpWindow));
+            ConciergeWindowService.ShowWindow(typeof(LevelUpWindow), this.Window_ApplyChanges);
             Program.Modify();
             this.DrawAll();
         }
@@ -289,12 +289,22 @@ namespace Concierge.Interfaces
 
         public void Redo()
         {
+            if (!Program.UndoRedoService.CanRedo)
+            {
+                return;
+            }
+
             Program.UndoRedoService.Redo(this);
             this.DrawAll();
         }
 
         public void Undo()
         {
+            if (!Program.UndoRedoService.CanUndo)
+            {
+                return;
+            }
+
             Program.UndoRedoService.Undo(this);
             this.DrawAll();
         }
@@ -776,6 +786,7 @@ namespace Concierge.Interfaces
         {
             switch (sender?.GetType()?.Name)
             {
+                case nameof(LevelUpWindow):
                 case nameof(ModifyCharacterImageWindow):
                 case nameof(ModifyPropertiesWindow):
                 case nameof(SettingsWindow):

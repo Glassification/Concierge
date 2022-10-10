@@ -5,11 +5,10 @@
 namespace Concierge.Interfaces
 {
     using System;
-    using System.Collections.Generic;
-    using System.Linq;
     using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Media;
+
     using Concierge.Character;
     using Concierge.Character.Characteristics;
     using Concierge.Commands;

@@ -36,7 +36,7 @@
                 Foreground="Black"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
-                FontSize="65"
+                FontSize="57"
                 FontWeight="DemiBold"
                 FontFamily="Sergoe UI Variable"/>
             <components:ConciergeTextBlock 

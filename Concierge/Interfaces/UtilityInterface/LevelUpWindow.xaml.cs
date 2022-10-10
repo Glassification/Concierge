@@ -6,12 +6,15 @@ namespace Concierge.Interfaces.UtilityInterface
 {
     using System;
     using System.Linq;
+    using System.Reflection.Metadata;
+    using System.Runtime.CompilerServices;
     using System.Windows;
 
     using Concierge.Character;
     using Concierge.Character.Enums;
     using Concierge.Interfaces.Components;
     using Concierge.Interfaces.Controls;
+    using Concierge.Utility;
     using Concierge.Utility.Extensions;
     using Concierge.Utility.Utilities;
 
@@ -67,7 +70,12 @@ namespace Concierge.Interfaces.UtilityInterface
             }
             else
             {
-                button.Content = $"Level Up ({characterClass.Level + 1})";
+                button.Content = $"Level Up ({Math.Min(characterClass.Level + 1, Constants.MaxLevel)})";
+                if (!CanLevelUp(characterClass))
+                {
+                    button.IsEnabled = false;
+                    button.Opacity = 0.5;
+                }
             }
         }
 
@@ -77,6 +85,11 @@ namespace Concierge.Interfaces.UtilityInterface
             var hitDieEnum = (HitDie)Enum.Parse(typeof(HitDie), hitDice.Text);
 
             character.LevelUp(hitDieEnum, characterClass.ClassNumber, modifier.Value);
+        }
+
+        private static bool CanLevelUp(CharacterClass characterClass)
+        {
+            return characterClass.Level < Constants.MaxLevel && Program.CcsFile.Character.Properties.Level < Constants.MaxLevel;
         }
 
         private void FillFields()
@@ -124,20 +137,21 @@ namespace Concierge.Interfaces.UtilityInterface
                 return;
             }
 
-            if (button.Name.Contains('1'))
+            if (button.Name.Contains('1') && CanLevelUp(Program.CcsFile.Character.Properties.Class1))
             {
                 LevelUpClass(this.Class1DiceComboBox, this.Class1ModIntegerUpDown, Program.CcsFile.Character.Properties.Class1);
             }
-            else if (button.Name.Contains('2'))
+            else if (button.Name.Contains('2') && CanLevelUp(Program.CcsFile.Character.Properties.Class2))
             {
                 LevelUpClass(this.Class2DiceComboBox, this.Class2ModIntegerUpDown, Program.CcsFile.Character.Properties.Class2);
             }
-            else
+            else if (CanLevelUp(Program.CcsFile.Character.Properties.Class3))
             {
                 LevelUpClass(this.Class3DiceComboBox, this.Class3ModIntegerUpDown, Program.CcsFile.Character.Properties.Class3);
             }
 
-            this.CloseConciergeWindow();
+            this.FillFields();
+            this.InvokeApplyChanges();
         }
     }
 }

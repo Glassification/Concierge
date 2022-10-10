@@ -2,7 +2,7 @@
 // Copyright (c) Thomas Beckett. All rights reserved.
 // </copyright>
 
-namespace Concierge.Character.Dtos
+namespace Concierge.Leveling.Dtos
 {
     using Concierge.Character.AbilitySavingThrows.SavingThrowTypes;
 

@@ -2,9 +2,9 @@
 // Copyright (c) Thomas Beckett. All rights reserved.
 // </copyright>
 
-namespace Concierge.Character.Definitions
+namespace Concierge.Leveling.Definitions
 {
-    using Concierge.Character.Dtos;
+    using Concierge.Leveling.Dtos;
 
     public static class SavingThrowDefinitions
     {

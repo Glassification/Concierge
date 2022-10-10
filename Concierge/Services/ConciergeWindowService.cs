@@ -117,5 +117,18 @@ namespace Concierge.Services
 
             conciergeWindow.ShowWindow();
         }
+
+        public static void ShowWindow(Type typeOfWindow, ApplyChangesEventHandler applyEvent)
+        {
+            var conciergeWindow = (ConciergeWindow?)Activator.CreateInstance(typeOfWindow);
+            if (conciergeWindow is null)
+            {
+                return;
+            }
+
+            conciergeWindow.ApplyChanges += applyEvent;
+
+            conciergeWindow.ShowWindow();
+        }
     }
 }

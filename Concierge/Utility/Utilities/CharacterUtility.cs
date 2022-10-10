@@ -9,9 +9,9 @@ namespace Concierge.Utility.Utilities
 
     using Concierge.Character;
     using Concierge.Character.Characteristics;
-    using Concierge.Character.Definitions;
-    using Concierge.Character.Dtos;
     using Concierge.Character.Enums;
+    using Concierge.Leveling.Definitions;
+    using Concierge.Leveling.Dtos;
 
     public static class CharacterUtility
     {
@@ -43,8 +43,6 @@ namespace Concierge.Utility.Utilities
                 (character.Properties.Class1.ClassNumber == number ? 0 : character.Properties.Class1.Level) +
                 (character.Properties.Class2.ClassNumber == number ? 0 : character.Properties.Class2.Level) +
                 (character.Properties.Class3.ClassNumber == number ? 0 : character.Properties.Class3.Level);
-
-            totalLevel += newValue;
 
             return totalLevel is <= Constants.MaxLevel and >= 0;
         }

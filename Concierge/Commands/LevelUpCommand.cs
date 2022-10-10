@@ -10,6 +10,7 @@ namespace Concierge.Commands
     using Concierge.Character.Spellcasting;
     using Concierge.Character.Statuses;
     using Concierge.Interfaces.Enums;
+    using Concierge.Leveling.Dtos;
     using Concierge.Utility.Extensions;
 
     public sealed class LevelUpCommand : Command
@@ -25,24 +26,16 @@ namespace Concierge.Commands
 
         private readonly ConciergeCharacter character;
 
-        public LevelUpCommand(
-            Vitality oldVitality,
-            Vitality newVitality,
-            CharacterClass oldClass,
-            CharacterClass newClass,
-            MagicClass? oldMagicClass,
-            MagicClass? newMagicClass,
-            SpellSlots oldSpellSlots,
-            SpellSlots newSpellSlots)
+        public LevelUpCommand(CharacterClassDto characterClass, MagicClassDto magicClass, SpellSlotsDto spellSlots, VitalityDto vitality)
         {
-            this.oldVitality = oldVitality;
-            this.newVitality = newVitality;
-            this.oldClass = oldClass;
-            this.newClass = newClass;
-            this.oldMagicClass = oldMagicClass;
-            this.newMagicClass = newMagicClass;
-            this.oldSpellSlots = oldSpellSlots;
-            this.newSpellSlots = newSpellSlots;
+            this.oldVitality = vitality.Old;
+            this.newVitality = vitality.New;
+            this.oldClass = characterClass.Old;
+            this.newClass = characterClass.New;
+            this.oldMagicClass = magicClass.Old;
+            this.newMagicClass = magicClass.New;
+            this.oldSpellSlots = spellSlots.Old;
+            this.newSpellSlots = spellSlots.New;
 
             this.ConciergePage = ConciergePage.None;
             this.character = Program.CcsFile.Character;
