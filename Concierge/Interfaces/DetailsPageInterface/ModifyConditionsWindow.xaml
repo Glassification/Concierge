@@ -75,13 +75,9 @@
 
                     <!--Title-->
                     <Grid Grid.Column="0">
-                        <TextBlock
+                        <components:ConciergeLabel
                             Text="Blinded:"
-                            Foreground="White"
-                            FontSize="17"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Center"
-                            Margin="10, 0, 0, 0"/>
+                            FontSize="17"/>
                     </Grid>
 
                     <!--Value-->
@@ -102,13 +98,9 @@
 
                     <!--Title-->
                     <Grid Grid.Column="0">
-                        <TextBlock
+                        <components:ConciergeLabel
                             Text="Charmed:"
-                            Foreground="White"
-                            FontSize="17"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Center"
-                            Margin="10, 0, 0, 0"/>
+                            FontSize="17"/>
                     </Grid>
 
                     <!--Value-->
@@ -129,13 +121,9 @@
 
                     <!--Title-->
                     <Grid Grid.Column="0">
-                        <TextBlock
+                        <components:ConciergeLabel
                             Text="Dead:"
-                            Foreground="White"
-                            FontSize="17"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Center"
-                            Margin="10, 0, 0, 0"/>
+                            FontSize="17"/>
                     </Grid>
 
                     <!--Value-->
@@ -156,13 +144,9 @@
 
                     <!--Title-->
                     <Grid Grid.Column="0">
-                        <TextBlock
+                        <components:ConciergeLabel
                             Text="Deafened:"
-                            Foreground="White"
-                            FontSize="17"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Center"
-                            Margin="10, 0, 0, 0"/>
+                            FontSize="17"/>
                     </Grid>
 
                     <!--Value-->
@@ -183,13 +167,9 @@
 
                     <!--Title-->
                     <Grid Grid.Column="0">
-                        <TextBlock
+                        <components:ConciergeLabel
                             Text="Fatigued:"
-                            Foreground="White"
-                            FontSize="17"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Center"
-                            Margin="10, 0, 0, 0"/>
+                            FontSize="17"/>
                     </Grid>
 
                     <!--Value-->
@@ -214,13 +194,9 @@
                             <ColumnDefinition Width="9*"/>
                             <ColumnDefinition Width="47*"/>
                         </Grid.ColumnDefinitions>
-                        <TextBlock
+                        <components:ConciergeLabel
                             Text="Frightened:"
-                            Foreground="White"
-                            FontSize="17"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Center"
-                            Margin="10,0,0,0" Grid.ColumnSpan="2"/>
+                            FontSize="17" Grid.ColumnSpan="2"/>
                     </Grid>
 
                     <!--Value-->
@@ -241,13 +217,9 @@
 
                     <!--Title-->
                     <Grid Grid.Column="0">
-                        <TextBlock
+                        <components:ConciergeLabel
                             Text="Grappled:"
-                            Foreground="White"
-                            FontSize="17"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Center"
-                            Margin="10, 0, 0, 0"/>
+                            FontSize="17"/>
                     </Grid>
 
                     <!--Value-->
@@ -268,13 +240,9 @@
 
                     <!--Title-->
                     <Grid Grid.Column="0">
-                        <TextBlock
+                        <components:ConciergeLabel
                             Text="Incapacitated:"
-                            Foreground="White"
-                            FontSize="17"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Center"
-                            Margin="10, 0, 0, 0"/>
+                            FontSize="17"/>
                     </Grid>
 
                     <!--Value-->
@@ -305,13 +273,9 @@
 
                     <!--Title-->
                     <Grid Grid.Column="0">
-                        <TextBlock
+                        <components:ConciergeLabel
                             Text="Encumbrance:"
-                            Foreground="White"
-                            FontSize="15"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Center"
-                            Margin="10, 0, 0, 0"/>
+                            FontSize="15"/>
                     </Grid>
 
                     <!--Value-->
@@ -348,13 +312,9 @@
 
                     <!--Title-->
                     <Grid Grid.Column="0">
-                        <TextBlock
+                        <components:ConciergeLabel
                             Text="Invisible:"
-                            Foreground="White"
-                            FontSize="17"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Center"
-                            Margin="10, 0, 0, 0"/>
+                            FontSize="17"/>
                     </Grid>
 
                     <!--Value-->
@@ -375,13 +335,9 @@
 
                     <!--Title-->
                     <Grid Grid.Column="0">
-                        <TextBlock
+                        <components:ConciergeLabel
                             Text="Paralyzed:"
-                            Foreground="White"
-                            FontSize="17"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Center"
-                            Margin="10, 0, 0, 0"/>
+                            FontSize="17"/>
                     </Grid>
 
                     <!--Value-->
@@ -402,13 +358,9 @@
 
                     <!--Title-->
                     <Grid Grid.Column="0">
-                        <TextBlock
+                        <components:ConciergeLabel
                             Text="Petrified:"
-                            Foreground="White"
-                            FontSize="17"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Center"
-                            Margin="10, 0, 0, 0"/>
+                            FontSize="17"/>
                     </Grid>
 
                     <!--Value-->
@@ -429,13 +381,9 @@
 
                     <!--Title-->
                     <Grid Grid.Column="0">
-                        <TextBlock
+                        <components:ConciergeLabel
                             Text="Poisoned:"
-                            Foreground="White"
-                            FontSize="17"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Center"
-                            Margin="10, 0, 0, 0"/>
+                            FontSize="17"/>
                     </Grid>
 
                     <!--Value-->
@@ -456,13 +404,9 @@
 
                     <!--Title-->
                     <Grid Grid.Column="0">
-                        <TextBlock
+                        <components:ConciergeLabel
                             Text="Prone:"
-                            Foreground="White"
-                            FontSize="17"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Center"
-                            Margin="10, 0, 0, 0"/>
+                            FontSize="17"/>
                     </Grid>
 
                     <!--Value-->
@@ -483,13 +427,9 @@
 
                     <!--Title-->
                     <Grid Grid.Column="0">
-                        <TextBlock
+                        <components:ConciergeLabel
                             Text="Restrained:"
-                            Foreground="White"
-                            FontSize="17"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Center"
-                            Margin="10, 0, 0, 0"/>
+                            FontSize="17"/>
                     </Grid>
 
                     <!--Value-->
@@ -510,13 +450,9 @@
 
                     <!--Title-->
                     <Grid Grid.Column="0">
-                        <TextBlock
+                        <components:ConciergeLabel
                             Text="Stunned:"
-                            Foreground="White"
-                            FontSize="17"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Center"
-                            Margin="10, 0, 0, 0"/>
+                            FontSize="17"/>
                     </Grid>
 
                     <!--Value-->
@@ -537,13 +473,9 @@
 
                     <!--Title-->
                     <Grid Grid.Column="0">
-                        <TextBlock
+                        <components:ConciergeLabel
                             Text="Unconscious:"
-                            Foreground="White"
-                            FontSize="17"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Center"
-                            Margin="10, 0, 0, 0"/>
+                            FontSize="17"/>
                     </Grid>
 
                     <!--Value-->
@@ -574,13 +506,9 @@
 
                     <!--Title-->
                     <Grid Grid.Column="0">
-                        <TextBlock
+                        <components:ConciergeLabel
                             Text="Override:"
-                            Foreground="White"
-                            FontSize="17"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Center"
-                            Margin="10, 0, 0, 0"/>
+                            FontSize="17"/>
                     </Grid>
 
                     <!--Value-->

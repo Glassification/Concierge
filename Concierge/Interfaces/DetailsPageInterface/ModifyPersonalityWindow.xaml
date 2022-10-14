@@ -65,14 +65,9 @@
 
                 <!--Title-->
                 <Grid Grid.Column="0">
-                    <TextBlock
+                    <components:ConciergeLabel
                         Text="Trait 1:"
-                        Foreground="White"
-                        FontSize="25"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Top"
-                        Margin="10, 20, 0, 0"
-                        TextWrapping="Wrap"/>
+                        FontSize="25"/>
                 </Grid>
 
                 <!--Value-->
@@ -96,14 +91,9 @@
 
                 <!--Title-->
                 <Grid Grid.Column="0">
-                    <TextBlock
+                    <components:ConciergeLabel
                         Text="Trait 2:"
-                        Foreground="White"
-                        FontSize="25"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Top"
-                        Margin="10, 20, 0, 0"
-                        TextWrapping="Wrap"/>
+                        FontSize="25"/>
                 </Grid>
 
                 <!--Value-->
@@ -127,14 +117,9 @@
 
                 <!--Title-->
                 <Grid Grid.Column="0">
-                    <TextBlock
+                    <components:ConciergeLabel
                         Text="Ideal:"
-                        Foreground="White"
-                        FontSize="25"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Top"
-                        Margin="10, 20, 0, 0"
-                        TextWrapping="Wrap"/>
+                        FontSize="25"/>
                 </Grid>
 
                 <!--Value-->
@@ -158,14 +143,9 @@
 
                 <!--Title-->
                 <Grid Grid.Column="0">
-                    <TextBlock
+                    <components:ConciergeLabel
                         Text="Bond:"
-                        Foreground="White"
-                        FontSize="25"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Top"
-                        Margin="10, 20, 0, 0"
-                        TextWrapping="Wrap"/>
+                        FontSize="25"/>
                 </Grid>
 
                 <!--Value-->
@@ -189,14 +169,9 @@
 
                 <!--Title-->
                 <Grid Grid.Column="0">
-                    <TextBlock
+                    <components:ConciergeLabel
                         Text="Flaw:"
-                        Foreground="White"
-                        FontSize="25"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Top"
-                        Margin="10, 20, 0, 0"
-                        TextWrapping="Wrap"/>
+                        FontSize="25"/>
                 </Grid>
 
                 <!--Value-->
@@ -220,14 +195,9 @@
 
                 <!--Title-->
                 <Grid Grid.Column="0">
-                    <TextBlock
+                    <components:ConciergeLabel
                         Text="Background:"
-                        Foreground="White"
-                        FontSize="25"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Top"
-                        Margin="10, 20, 0, 0"
-                        TextWrapping="Wrap"/>
+                        FontSize="25"/>
                 </Grid>
 
                 <!--Value-->
@@ -251,14 +221,9 @@
 
                 <!--Title-->
                 <Grid Grid.Column="0">
-                    <TextBlock
+                    <components:ConciergeLabel
                         Text="Notes:"
-                        Foreground="White"
-                        FontSize="25"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Top"
-                        Margin="10, 20, 0, 0"
-                        TextWrapping="Wrap"/>
+                        FontSize="25"/>
                 </Grid>
 
                 <!--Value-->

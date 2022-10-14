@@ -65,17 +65,13 @@
                         <ColumnDefinition Width="65*"/>
                     </Grid.ColumnDefinitions>
 
-                    <TextBlock
+                    <components:ConciergeLabel
                         Text="Type:"
-                        Grid.Column="0"
-                        Foreground="White"
-                        FontSize="20"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Top"
-                        Margin="10, 20, 0, 0"/>
+                        Grid.Column="0"/>
                     <components:ConciergeComboBox
                         Grid.Column="1"
                         x:Name="ResourceNameComboBox"
+                        SelectionChanged="ResourceNameComboBox_SelectionChanged"
                         Style="{StaticResource ComboBoxStyle}"/>
                 </Grid>
 
@@ -85,14 +81,9 @@
                         <ColumnDefinition Width="65*"/>
                     </Grid.ColumnDefinitions>
 
-                    <TextBlock
+                    <components:ConciergeLabel
                         Text="Pool:"
-                        Grid.Column="0"
-                        Foreground="White"
-                        FontSize="20"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Top"
-                        Margin="10, 20, 0, 0"/>
+                        Grid.Column="0"/>
                     <controls:IntegerUpDown
                         x:Name="PoolUpDown"
                         ValueChanged="PoolSpentUpDown_ValueChanged"
@@ -105,14 +96,9 @@
                         <ColumnDefinition Width="65*"/>
                     </Grid.ColumnDefinitions>
 
-                    <TextBlock
+                    <components:ConciergeLabel
                         Text="Spent:"
-                        Grid.Column="0"
-                        Foreground="White"
-                        FontSize="20"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Top"
-                        Margin="10, 20, 0, 0"/>
+                        Grid.Column="0"/>
                     <controls:IntegerUpDown
                         x:Name="SpentUpDown"
                         ValueChanged="PoolSpentUpDown_ValueChanged"
@@ -121,30 +107,50 @@
             </Grid>
 
             <Grid Grid.Column="1">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="35*"/>
-                    <ColumnDefinition Width="65*"/>
-                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="120"/>
+                </Grid.RowDefinitions>
 
-                <TextBlock
-                    Text="Recovery:"
-                    Grid.Column="0"
-                    Foreground="White"
-                    FontSize="20"
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Top"
-                    Margin="10, 20, 0, 0"/>
-                <components:ConciergeTextBoxBackground
-                    Grid.Column="1"
-                    Margin="20,10">
-                    <ScrollViewer VerticalScrollBarVisibility="Auto">
-                        <components:ConciergeTextBox 
-                            x:Name="RecoveryTextBox"
-                            TextWrapping="Wrap"
-                            FontSize="13"
-                            VerticalAlignment="Stretch"/>
-                    </ScrollViewer>
-                </components:ConciergeTextBoxBackground>
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="35*"/>
+                        <ColumnDefinition Width="65*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <components:ConciergeLabel
+                        Text="Recovery:"
+                        Grid.Column="0"/>
+                    <components:ConciergeComboBox
+                        Grid.Column="1"
+                        x:Name="RecoveryComboBox"
+                        IsEditable="False"
+                        Style="{StaticResource ComboBoxStyle}"/>
+                </Grid>
+
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="35*"/>
+                        <ColumnDefinition Width="65*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <components:ConciergeLabel
+                        Text="Notes:"
+                        Grid.Column="0"
+                        VerticalAlignment="Top"
+                        Margin="10, 20, 0, 0"/>
+                    <components:ConciergeTextBoxBackground
+                        Grid.Column="1"
+                        Margin="0,10,20,10">
+                        <ScrollViewer VerticalScrollBarVisibility="Auto">
+                            <components:ConciergeTextBox 
+                                x:Name="NotesTextBox"
+                                TextWrapping="Wrap"
+                                FontSize="13"
+                                VerticalAlignment="Stretch"/>
+                        </ScrollViewer>
+                    </components:ConciergeTextBoxBackground>
+                </Grid>
             </Grid>
         </Grid>
 

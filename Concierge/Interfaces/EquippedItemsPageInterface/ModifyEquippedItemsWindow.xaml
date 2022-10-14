@@ -60,12 +60,8 @@
 
                 <!--Title-->
                 <Grid Grid.Column="0">
-                    <TextBlock Text="Slot:"
-                               Foreground="White"
-                               FontSize="20"
-                               HorizontalAlignment="Left"
-                               VerticalAlignment="Top"
-                               Margin="10, 20, 0, 0"/>
+                    <components:ConciergeLabel
+                        Text="Slot:"/>
                 </Grid>
 
                 <!--Value-->
@@ -85,12 +81,8 @@
 
                 <!--Title-->
                 <Grid Grid.Column="0">
-                    <TextBlock Text="Item:"
-                               Foreground="White"
-                               FontSize="20"
-                               HorizontalAlignment="Left"
-                               VerticalAlignment="Top"
-                               Margin="10, 20, 0, 0"/>
+                    <components:ConciergeLabel
+                        Text="Item:"/>
                 </Grid>
 
                 <!--Value-->

@@ -142,9 +142,6 @@
   <data name="ClassName" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Constants\ClassName.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
-  <data name="ClassResource" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\Constants\ClassResource.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
-  </data>
   <data name="ColorPickerBackground" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Images\ColorPickerBackground.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
@@ -180,6 +177,9 @@
   </data>
   <data name="Race" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Constants\Race.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="Resource" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Json\Resource.json;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="ResourceValidation" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\ResourceValidation.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>

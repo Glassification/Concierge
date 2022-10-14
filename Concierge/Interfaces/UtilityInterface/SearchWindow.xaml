@@ -65,13 +65,8 @@
 
                 <!--Title-->
                 <Grid Grid.Column="0">
-                    <TextBlock 
-                        Text="Match Case:"
-                        Foreground="White"
-                        FontSize="20"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Center"
-                        Margin="10, 0, 0, 0"/>
+                    <components:ConciergeLabel 
+                        Text="Match Case:"/>
                 </Grid>
 
                 <!--Value-->
@@ -90,14 +85,9 @@
 
                 <!--Title-->
                 <Grid Grid.Column="0">
-                    <TextBlock 
+                    <components:ConciergeLabel 
                         x:Name="MatchWholeWordLabel"
-                        Text="Match Whole Word:"
-                        Foreground="White"
-                        FontSize="20"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Center"
-                        Margin="10, 0, 0, 0"/>
+                        Text="Match Whole Word:"/>
                 </Grid>
 
                 <!--Value-->
@@ -116,13 +106,8 @@
 
                 <!--Title-->
                 <Grid Grid.Column="0">
-                    <TextBlock 
-                        Text="Use Regex:"
-                        Foreground="White"
-                        FontSize="20"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Center"
-                        Margin="10, 0, 0, 0"/>
+                    <components:ConciergeLabel 
+                        Text="Use Regex:"/>
                 </Grid>
 
                 <!--Value-->
@@ -143,13 +128,8 @@
 
                 <!--Title-->
                 <Grid Grid.Column="0">
-                    <TextBlock 
-                        Text="Look in:"
-                        Foreground="White"
-                        FontSize="20"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Center"
-                        Margin="10, 0, 0, 0"/>
+                    <components:ConciergeLabel 
+                        Text="Look in:"/>
                 </Grid>
 
                 <!--Value-->
@@ -169,13 +149,8 @@
 
                 <!--Title-->
                 <Grid Grid.Column="0">
-                    <TextBlock 
-                        Text="Text to Search:"
-                        Foreground="White"
-                        FontSize="20"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Center"
-                        Margin="10, 0, 0, 0"/>
+                    <components:ConciergeLabel 
+                        Text="Text to Search:"/>
                 </Grid>
 
                 <!--Value-->

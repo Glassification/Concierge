@@ -70,12 +70,9 @@
 
                     <!--Title-->
                     <Grid Grid.Column="0">
-                        <TextBlock Text="Name:"
-                                   Foreground="White"
-                                   FontSize="19"
-                                   HorizontalAlignment="Left"
-                                   VerticalAlignment="Center"
-                                   Margin="10, 0, 0, 0"/>
+                        <components:ConciergeLabel
+                            Text="Name:"
+                            FontSize="19"/>
                     </Grid>
 
                     <!--Value-->
@@ -96,12 +93,9 @@
 
                     <!--Title-->
                     <Grid Grid.Column="0">
-                        <TextBlock Text="Ability:"
-                                   Foreground="White"
-                                   FontSize="19"
-                                   HorizontalAlignment="Left"
-                                   VerticalAlignment="Center"
-                                   Margin="10, 0, 0, 0"/>
+                        <components:ConciergeLabel
+                            Text="Ability:"
+                            FontSize="19"/>
                     </Grid>
 
                     <!--Value-->
@@ -123,14 +117,9 @@
 
                     <!--Title-->
                     <Grid Grid.Column="0">
-                        <TextBlock 
+                        <components:ConciergeLabel 
                             Text="Attack Bonus:"
-                            Foreground="White"
-                            FontSize="19"
-                            TextWrapping="Wrap"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Center"
-                            Margin="10, 0, 0, 0"/>
+                            FontSize="19"/>
                     </Grid>
 
                     <!--Value-->
@@ -155,13 +144,9 @@
 
                     <!--Title-->
                     <Grid Grid.Column="0">
-                        <TextBlock Text="Spell Save:"
-                                   Foreground="White"
-                                   FontSize="19"
-                                   TextWrapping="Wrap"
-                                   HorizontalAlignment="Left"
-                                   VerticalAlignment="Center"
-                                   Margin="10, 0, 0, 0"/>
+                        <components:ConciergeLabel
+                            Text="Spell Save:"
+                            FontSize="19"/>
                     </Grid>
 
                     <!--Value-->
@@ -197,12 +182,9 @@
 
                     <!--Title-->
                     <Grid Grid.Column="0">
-                        <TextBlock Text="Level:"
-                                   Foreground="White"
-                                   FontSize="19"
-                                   HorizontalAlignment="Left"
-                                   VerticalAlignment="Center"
-                                   Margin="10, 0, 0, 0"/>
+                        <components:ConciergeLabel
+                            Text="Level:"
+                            FontSize="19"/>
                     </Grid>
 
                     <!--Value-->
@@ -220,13 +202,9 @@
 
                     <!--Title-->
                     <Grid Grid.Column="0">
-                        <TextBlock Text="Known Cantrips:"
-                                   Foreground="White"
-                                   FontSize="19"
-                                   TextWrapping="Wrap"
-                                   HorizontalAlignment="Left"
-                                   VerticalAlignment="Center"
-                                   Margin="10, 0, 0, 0"/>
+                        <components:ConciergeLabel
+                            Text="Known Cantrips:"
+                            FontSize="19"/>
                     </Grid>
 
                     <!--Value-->
@@ -244,13 +222,9 @@
 
                     <!--Title-->
                     <Grid Grid.Column="0">
-                        <TextBlock Text="Known Spells:"
-                                   Foreground="White"
-                                   FontSize="19"
-                                   TextWrapping="Wrap"
-                                   HorizontalAlignment="Left"
-                                   VerticalAlignment="Center"
-                                   Margin="10, 0, 0, 0"/>
+                        <components:ConciergeLabel
+                            Text="Known Spells:"
+                            FontSize="19"/>
                     </Grid>
 
                     <!--Value-->
@@ -268,13 +242,9 @@
 
                     <!--Title-->
                     <Grid Grid.Column="0">
-                        <TextBlock Text="Prepared Spells:"
-                                   Foreground="White"
-                                   FontSize="19"
-                                   TextWrapping="Wrap"
-                                   HorizontalAlignment="Left"
-                                   VerticalAlignment="Center"
-                                   Margin="10, 0, 0, 0"/>
+                        <components:ConciergeLabel
+                            Text="Prepared Spells:"
+                            FontSize="19"/>
                     </Grid>
 
                     <!--Value-->
@@ -294,9 +264,10 @@
 
         <!--Buttons-->
         <Grid Grid.Row="2">
-            <StackPanel Orientation="Horizontal"
-                        VerticalAlignment="Center"
-                        HorizontalAlignment="Center">
+            <StackPanel
+                Orientation="Horizontal"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center">
                 <components:ConciergeTextButton
                     x:Name="OkButton"
                     Style="{StaticResource ConciergeTextButtonStyle}"

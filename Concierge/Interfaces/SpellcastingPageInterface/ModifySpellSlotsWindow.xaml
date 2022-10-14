@@ -71,14 +71,11 @@
 
                 <!--Header-->
                 <Grid Grid.Row="0">
-                    <TextBlock 
+                    <components:ConciergeLabel 
                         Text="Used"
-                        Foreground="White"
                         FontSize="25"
-                        FontWeight="Bold"
                         Margin="20,0,0,0"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"/>
+                        HorizontalAlignment="Center"/>
                 </Grid>
 
                 <!--Used Pact-->
@@ -150,102 +147,82 @@
 
                 <!--Pact-->
                 <Grid Grid.Row="1">
-                    <TextBlock Text="Pact"
-                               Foreground="White"
-                               FontSize="25"
-                               FontWeight="Bold"
-                               HorizontalAlignment="Center"
-                               VerticalAlignment="Center"/>
+                    <components:ConciergeLabel
+                        Text="Pact"
+                        FontSize="25"
+                        HorizontalAlignment="Center"/>
                 </Grid>
 
                 <!--1st-->
                 <Grid Grid.Row="2">
-                    <TextBlock Text="1st"
-                               Foreground="White"
-                               FontSize="25"
-                               FontWeight="Bold"
-                               HorizontalAlignment="Center"
-                               VerticalAlignment="Center"/>
+                    <components:ConciergeLabel
+                        Text="1st"
+                        FontSize="25"
+                        HorizontalAlignment="Center"/>
                 </Grid>
 
                 <!--2nd-->
                 <Grid Grid.Row="3">
-                    <TextBlock Text="2nd"
-                               Foreground="White"
-                               FontSize="25"
-                               FontWeight="Bold"
-                               HorizontalAlignment="Center"
-                               VerticalAlignment="Center"/>
+                    <components:ConciergeLabel
+                        Text="2nd"
+                        FontSize="25"
+                        HorizontalAlignment="Center"/>
                 </Grid>
 
                 <!--3rd-->
                 <Grid Grid.Row="4">
-                    <TextBlock Text="3rd"
-                               Foreground="White"
-                               FontSize="25"
-                               FontWeight="Bold"
-                               HorizontalAlignment="Center"
-                               VerticalAlignment="Center"/>
+                    <components:ConciergeLabel
+                        Text="3rd"
+                        FontSize="25"
+                        HorizontalAlignment="Center"/>
                 </Grid>
 
                 <!--4th-->
                 <Grid Grid.Row="5">
-                    <TextBlock Text="4th"
-                               Foreground="White"
-                               FontSize="25"
-                               FontWeight="Bold"
-                               HorizontalAlignment="Center"
-                               VerticalAlignment="Center"/>
+                    <components:ConciergeLabel
+                        Text="4th"
+                        FontSize="25"
+                        HorizontalAlignment="Center"/>
                 </Grid>
 
                 <!--5th-->
                 <Grid Grid.Row="6">
-                    <TextBlock Text="5th"
-                               Foreground="White"
-                               FontSize="25"
-                               FontWeight="Bold"
-                               HorizontalAlignment="Center"
-                               VerticalAlignment="Center"/>
+                    <components:ConciergeLabel
+                        Text="5th"
+                        FontSize="25"
+                        HorizontalAlignment="Center"/>
                 </Grid>
 
                 <!--6th-->
                 <Grid Grid.Row="7">
-                    <TextBlock Text="6th"
-                               Foreground="White"
-                               FontSize="25"
-                               FontWeight="Bold"
-                               HorizontalAlignment="Center"
-                               VerticalAlignment="Center"/>
+                    <components:ConciergeLabel
+                        Text="6th"
+                        FontSize="25"
+                        HorizontalAlignment="Center"/>
                 </Grid>
 
                 <!--7th-->
                 <Grid Grid.Row="8">
-                    <TextBlock Text="7th"
-                               Foreground="White"
-                               FontSize="25"
-                               FontWeight="Bold"
-                               HorizontalAlignment="Center"
-                               VerticalAlignment="Center"/>
+                    <components:ConciergeLabel
+                        Text="7th"
+                        FontSize="25"
+                        HorizontalAlignment="Center"/>
                 </Grid>
 
                 <!--8th-->
                 <Grid Grid.Row="9">
-                    <TextBlock Text="8th"
-                               Foreground="White"
-                               FontSize="25"
-                               FontWeight="Bold"
-                               HorizontalAlignment="Center"
-                               VerticalAlignment="Center"/>
+                    <components:ConciergeLabel
+                        Text="8th"
+                        FontSize="25"
+                        HorizontalAlignment="Center"/>
                 </Grid>
 
                 <!--9th-->
                 <Grid Grid.Row="10">
-                    <TextBlock Text="9th"
-                               Foreground="White"
-                               FontSize="25"
-                               FontWeight="Bold"
-                               HorizontalAlignment="Center"
-                               VerticalAlignment="Center"/>
+                    <components:ConciergeLabel
+                        Text="9th"
+                        FontSize="25"
+                        HorizontalAlignment="Center"/>
                 </Grid>
             </Grid>
 
@@ -267,14 +244,11 @@
 
                 <!--Header-->
                 <Grid Grid.Row="0">
-                    <TextBlock 
+                    <components:ConciergeLabel 
                         Text="Total"
-                        Foreground="White"
                         FontSize="25"
-                        FontWeight="Bold"
                         Margin="0,0,20,0"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"/>
+                        HorizontalAlignment="Center"/>
                 </Grid>
                 
                 <!--Total Pact-->

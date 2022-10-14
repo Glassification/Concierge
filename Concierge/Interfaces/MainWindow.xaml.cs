@@ -563,12 +563,7 @@ namespace Concierge.Interfaces
                     this.OpenCharacterSheet();
                     break;
                 case Key.P:
-                    ConciergeWindowService.ShowEdit<CharacterProperties>(
-                        Program.CcsFile.Character.Properties,
-                        typeof(ModifyPropertiesWindow),
-                        this.Window_ApplyChanges,
-                        ConciergePage.None);
-                    this.DrawAll();
+                    this.OpenCharacterProperties();
                     break;
                 case Key.Q:
                     this.CloseWindow();
@@ -584,6 +579,9 @@ namespace Concierge.Interfaces
                     break;
                 case Key.OemPlus:
                     this.WindowState = WindowState.Maximized;
+                    break;
+                case Key.W:
+                    this.CreateCharacterWizard();
                     break;
                 case Key.Y:
                     this.Redo();
@@ -715,9 +713,8 @@ namespace Concierge.Interfaces
             this.PageSelection((sender as ListViewItem)?.Tag as IConciergePage);
         }
 
-        private void PropertiesButton_Click(object sender, RoutedEventArgs e)
+        private void OpenCharacterProperties()
         {
-            ConciergeSound.TapNavigation();
             Program.Logger.Info($"Open properties.");
 
             ConciergeWindowService.ShowEdit<CharacterProperties>(
@@ -725,8 +722,14 @@ namespace Concierge.Interfaces
                 typeof(ModifyPropertiesWindow),
                 this.Window_ApplyChanges,
                 ConciergePage.None);
-            this.DrawAll();
 
+            this.DrawAll();
+        }
+
+        private void PropertiesButton_Click(object sender, RoutedEventArgs e)
+        {
+            ConciergeSound.TapNavigation();
+            this.OpenCharacterProperties();
             this.IgnoreSecondPress = true;
         }
 

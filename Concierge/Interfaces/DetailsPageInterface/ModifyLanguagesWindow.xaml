@@ -67,13 +67,8 @@
 
                     <!--Title-->
                     <Grid Grid.Column="0">
-                        <TextBlock
-                            Text="Name:"
-                            Foreground="White"
-                            FontSize="20"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Center"
-                            Margin="10, 0, 0, 0"/>
+                        <components:ConciergeLabel
+                            Text="Name:"/>
                     </Grid>
 
                     <!--Value-->
@@ -94,13 +89,8 @@
 
                     <!--Title-->
                     <Grid Grid.Column="0">
-                        <TextBlock
-                            Text="Script:"
-                            Foreground="White"
-                            FontSize="20"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Top"
-                            Margin="10, 20, 0, 0"/>
+                        <components:ConciergeLabel
+                            Text="Script:"/>
                     </Grid>
 
                     <!--Value-->
@@ -119,11 +109,8 @@
 
                 <!--Title-->
                 <Grid Grid.Column="0">
-                    <TextBlock
+                    <components:ConciergeLabel
                         Text="Speakers:"
-                        Foreground="White"
-                        FontSize="20"
-                        HorizontalAlignment="Left"
                         VerticalAlignment="Top"
                         Margin="10, 20, 0, 0"/>
                 </Grid>

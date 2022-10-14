@@ -210,24 +210,6 @@ namespace Concierge.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Bardic Inspiration
-        ///Divine Sense
-        ///Hemocraft Dice
-        ///Infusions
-        ///Ki Points
-        ///Lay on Hands
-        ///Rages
-        ///Sneak Attack Dice
-        ///Sorcery Points
-        ///Superiority Dice.
-        /// </summary>
-        internal static string ClassResource {
-            get {
-                return ResourceManager.GetString("ClassResource", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
         internal static byte[] ColorPickerBackground {
@@ -406,6 +388,16 @@ namespace Concierge.Properties {
         internal static string Race {
             get {
                 return ResourceManager.GetString("Race", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Resource {
+            get {
+                object obj = ResourceManager.GetObject("Resource", resourceCulture);
+                return ((byte[])(obj));
             }
         }
         

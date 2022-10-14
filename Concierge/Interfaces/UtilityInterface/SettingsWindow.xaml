@@ -24,14 +24,15 @@
 
         <!--Header-->
         <Grid Grid.Row="0">
-            <TextBlock Text="Settings"
-                       x:Name="HeaderTextBlock"
-                       Foreground="#227EA9"
-                       FontSize="35"
-                       HorizontalAlignment="Left"
-                       VerticalAlignment="Center"
-                       Margin="30, 0, 0, 0"
-                       FontWeight="Bold"/>
+            <TextBlock
+                Text="Settings"
+                x:Name="HeaderTextBlock"
+                Foreground="#227EA9"
+                FontSize="35"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                Margin="30, 0, 0, 0"
+                FontWeight="Bold"/>
             <components:ConciergeDesignButton 
                 Style="{StaticResource ConciergeDesignButtonStyle}" 
                 x:Name="CloseButton"
@@ -68,13 +69,8 @@
 
                     <!--Title-->
                     <Grid Grid.Column="0">
-                        <TextBlock
-                            Text="Autosave:"
-                            Foreground="White"
-                            FontSize="20"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Center"
-                            Margin="10, 0, 0, 0"/>
+                        <components:ConciergeLabel
+                            Text="Autosave:"/>
                     </Grid>
 
                     <!--Value-->
@@ -95,15 +91,10 @@
 
                     <!--Title-->
                     <Grid Grid.Column="0">
-                        <TextBlock 
+                        <components:ConciergeLabel 
                             x:Name="IntervalTextBox"
                             Text="Autosave Interval (minutes):"
-                            Foreground="White"
-                            FontSize="18"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Center"
-                            Margin="10, 0, 0, 0"
-                            TextWrapping="Wrap"/>
+                            FontSize="18"/>
                     </Grid>
 
                     <!--Value-->
@@ -129,13 +120,8 @@
 
                     <!--Title-->
                     <Grid Grid.Column="0">
-                        <TextBlock
-                            Text="Mute Sounds:"
-                            Foreground="White"
-                            FontSize="20"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Center"
-                            Margin="10, 0, 0, 0"/>
+                        <components:ConciergeLabel
+                            Text="Mute Sounds:"/>
                     </Grid>
 
                     <!--Value-->
@@ -154,14 +140,8 @@
 
                     <!--Title-->
                     <Grid Grid.Column="0">
-                        <TextBlock 
-                            Text="Units:"
-                            Foreground="White"
-                            FontSize="20"
-                            TextWrapping="Wrap"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Center"
-                            Margin="10, 0, 0, 0"/>
+                        <components:ConciergeLabel 
+                            Text="Units:"/>
                     </Grid>
 
                     <!--Value-->
@@ -191,13 +171,8 @@
 
                     <!--Title-->
                     <Grid Grid.Column="0">
-                        <TextBlock
-                            Text="Coin Weight:"
-                            Foreground="White"
-                            FontSize="20"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Center"
-                            Margin="10, 0, 0, 0"/>
+                        <components:ConciergeLabel
+                            Text="Coin Weight:"/>
                     </Grid>
 
                     <!--Value-->
@@ -216,13 +191,8 @@
 
                     <!--Title-->
                     <Grid Grid.Column="0">
-                        <TextBlock 
-                            Text="Encumbrance:"
-                            Foreground="White"
-                            FontSize="20"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Center"
-                            Margin="10, 0, 0, 0"/>
+                        <components:ConciergeLabel 
+                            Text="Encumbrance:"/>
                     </Grid>
 
                     <!--Value-->
@@ -241,14 +211,8 @@
 
                     <!--Title-->
                     <Grid Grid.Column="0">
-                        <TextBlock 
-                            Text="Check Version:"
-                            Foreground="White"
-                            FontSize="20"
-                            TextWrapping="Wrap"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Center"
-                            Margin="10, 0, 0, 0"/>
+                        <components:ConciergeLabel 
+                            Text="Check Version:"/>
                     </Grid>
 
                     <!--Value-->

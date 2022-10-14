@@ -55,9 +55,10 @@
 
         <!--Buttons-->
         <Grid Grid.Row="2">
-            <StackPanel Orientation="Horizontal"
-                        VerticalAlignment="Center"
-                        HorizontalAlignment="Center">
+            <StackPanel
+                Orientation="Horizontal"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center">
                 <components:ConciergeTextButton 
                     x:Name="OkButton"
                     Style="{StaticResource ConciergeTextButtonStyle}"

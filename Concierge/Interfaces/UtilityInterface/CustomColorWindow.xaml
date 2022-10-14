@@ -87,14 +87,11 @@
                     <ColumnDefinition Width="30*"/>
                     <ColumnDefinition Width="70*"/>
                 </Grid.ColumnDefinitions>
-                
-                <TextBlock
+
+                <components:ConciergeLabel
                     Grid.Row="0"
                     Grid.Column="0"
-                    Text="HEX Value:"
-                    Foreground="White"
-                    VerticalAlignment="Center"
-                    FontSize="20"/>
+                    Text="HEX Value:"/>
                 <components:ConciergeTextBoxBackground
                     Grid.Row="0"
                     Grid.Column="1"
@@ -119,27 +116,19 @@
                     <ColumnDefinition Width="65*"/>
                     <ColumnDefinition Width="20*"/>
                 </Grid.ColumnDefinitions>
-                <TextBlock
+                
+                <components:ConciergeLabel
                     Grid.Row="0"
                     Grid.Column="0"
-                    Text="Red:"
-                    VerticalAlignment="Center"
-                    Foreground="White"
-                    FontSize="20"/>
-                <TextBlock
+                    Text="Red:"/>
+                <components:ConciergeLabel
                     Grid.Row="1"
                     Grid.Column="0"
-                    Text="Green:"
-                    VerticalAlignment="Center"
-                    Foreground="White"
-                    FontSize="20"/>
-                <TextBlock
+                    Text="Green:"/>
+                <components:ConciergeLabel
                     Grid.Row="2"
                     Grid.Column="0"
-                    Text="Blue:"
-                    VerticalAlignment="Center"
-                    Foreground="White"
-                    FontSize="20"/>
+                    Text="Blue:"/>
 
                 <components:ConciergeSlider
                     x:Name="RedSlider"

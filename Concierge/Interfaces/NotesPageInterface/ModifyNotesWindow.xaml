@@ -59,14 +59,9 @@
 
                 <!--Title-->
                 <Grid Grid.Column="0">
-                    <TextBlock 
+                    <components:ConciergeLabel 
                         Text="Name:"
-                        x:Name="NameTextBlock"
-                        Foreground="White"
-                        FontSize="20"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Top"
-                        Margin="10, 20, 0, 0"/>
+                        x:Name="NameTextBlock"/>
                 </Grid>
 
                 <!--Value-->
@@ -78,9 +73,10 @@
 
         <!--Buttons-->
         <Grid Grid.Row="2">
-            <StackPanel Orientation="Horizontal"
-                        VerticalAlignment="Center"
-                        HorizontalAlignment="Center">
+            <StackPanel
+                Orientation="Horizontal"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center">
                 <components:ConciergeTextButton 
                     x:Name="OkButton"
                     Style="{StaticResource ConciergeTextButtonStyle}"

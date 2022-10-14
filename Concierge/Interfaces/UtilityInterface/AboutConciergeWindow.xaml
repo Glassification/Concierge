@@ -67,13 +67,8 @@
 
                         <!--Title-->
                         <Grid Grid.Column="0">
-                            <TextBlock 
-                            Text="Version:"
-                            Foreground="White"
-                            FontSize="20"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Center"
-                            Margin="10, 0, 0, 0"/>
+                            <components:ConciergeLabel 
+                                Text="Version:"/>
                         </Grid>
 
                         <!--Value-->
@@ -98,25 +93,15 @@
 
                         <!--Title-->
                         <Grid Grid.Column="0">
-                            <TextBlock 
-                            Text="Designed By:"
-                            Foreground="White"
-                            FontSize="20"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Center"
-                            Margin="10, 0, 0, 0"/>
+                            <components:ConciergeLabel 
+                                Text="Designed By:"/>
                         </Grid>
 
                         <!--Value-->
                         <Grid Grid.Column="1">
-                            <TextBlock
-                            x:Name="DesignerField"
-                            Text="Tommy"
-                            Foreground="White"
-                            FontSize="20"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Center"
-                            Margin="10, 0, 0, 0"/>
+                            <components:ConciergeLabel
+                                x:Name="DesignerField"
+                                Text="Tommy"/>
                         </Grid>
                     </Grid>
                 </Grid>
@@ -146,13 +131,8 @@
 
                     <!--Title-->
                     <Grid Grid.Column="0">
-                        <TextBlock 
-                            Text="Copyright:"
-                            Foreground="White"
-                            FontSize="20"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Center"
-                            Margin="10, 0, 0, 0"/>
+                        <components:ConciergeLabel 
+                            Text="Copyright:"/>
                     </Grid>
 
                     <!--Value-->
@@ -173,9 +153,10 @@
         </Grid>
 
         <Grid Grid.Row="2">
-            <StackPanel Orientation="Horizontal"
-                        VerticalAlignment="Bottom"
-                        HorizontalAlignment="Center">
+            <StackPanel
+                Orientation="Horizontal"
+                VerticalAlignment="Bottom"
+                HorizontalAlignment="Center">
                 <components:ConciergeTextButton 
                     x:Name="OkButton"
                     Style="{StaticResource ConciergeTextButtonStyle}"

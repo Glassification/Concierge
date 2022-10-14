@@ -4,14 +4,18 @@
 
 namespace Concierge.Interfaces.DetailsPageInterface
 {
+    using System;
     using System.Collections.Generic;
     using System.Windows;
 
+    using Concierge.Character.Enums;
     using Concierge.Character.Statuses;
     using Concierge.Commands;
     using Concierge.Interfaces.Components;
     using Concierge.Interfaces.Enums;
     using Concierge.Utility;
+    using Concierge.Utility.Extensions;
+    using Concierge.Utility.Utilities;
 
     /// <summary>
     /// Interaction logic for ModifyProficiencyWindow.xaml.
@@ -23,6 +27,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
             this.InitializeComponent();
             this.ConciergePage = ConciergePage.None;
             this.ResourceNameComboBox.ItemsSource = Constants.Resources;
+            this.RecoveryComboBox.ItemsSource = StringUtility.FormatEnumForDisplay(typeof(Recovery));
             this.ClassResource = new ClassResource();
             this.ClassResources = new List<ClassResource>();
         }
@@ -81,7 +86,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
             this.ClassResource = castItem;
             this.ApplyButton.Visibility = Visibility.Collapsed;
 
-            this.FillFields();
+            this.FillFields(this.ClassResource);
             this.ShowConciergeWindow();
         }
 
@@ -95,12 +100,13 @@ namespace Concierge.Interfaces.DetailsPageInterface
             Program.Modify();
         }
 
-        private void FillFields()
+        private void FillFields(ClassResource resource)
         {
-            this.ResourceNameComboBox.Text = this.ClassResource.Type;
-            this.PoolUpDown.Value = this.ClassResource.Total;
-            this.SpentUpDown.Value = this.ClassResource.Spent;
-            this.RecoveryTextBox.Text = this.ClassResource.Recovery;
+            this.ResourceNameComboBox.Text = resource.Type;
+            this.PoolUpDown.Value = resource.Total;
+            this.SpentUpDown.Value = resource.Spent;
+            this.RecoveryComboBox.Text = resource.Recovery.ToString().FormatFromEnum();
+            this.NotesTextBox.Text = resource.Note;
 
             this.SpentUpDown.Maximum = this.PoolUpDown.Value;
         }
@@ -110,7 +116,8 @@ namespace Concierge.Interfaces.DetailsPageInterface
             this.ResourceNameComboBox.Text = string.Empty;
             this.PoolUpDown.Value = 0;
             this.SpentUpDown.Value = 0;
-            this.RecoveryTextBox.Text = string.Empty;
+            this.RecoveryComboBox.Text = Recovery.None.ToString().FormatFromEnum();
+            this.NotesTextBox.Text = string.Empty;
         }
 
         private ClassResource ToClassResource()
@@ -122,7 +129,8 @@ namespace Concierge.Interfaces.DetailsPageInterface
                 Type = this.ResourceNameComboBox.Text,
                 Total = this.PoolUpDown.Value,
                 Spent = this.SpentUpDown.Value,
-                Recovery = this.RecoveryTextBox.Text,
+                Recovery = (Recovery)Enum.Parse(typeof(Recovery), this.RecoveryComboBox.Text.Strip(" ")),
+                Note = this.NotesTextBox.Text,
             };
 
             Program.UndoRedoService.AddCommand(new AddCommand<ClassResource>(this.ClassResources, resource, this.ConciergePage));
@@ -139,7 +147,8 @@ namespace Concierge.Interfaces.DetailsPageInterface
                 this.ClassResource.Type = this.ResourceNameComboBox.Text;
                 this.ClassResource.Total = this.PoolUpDown.Value;
                 this.ClassResource.Spent = this.SpentUpDown.Value;
-                this.ClassResource.Recovery = this.RecoveryTextBox.Text;
+                this.ClassResource.Recovery = (Recovery)Enum.Parse(typeof(Recovery), this.RecoveryComboBox.Text.Strip(" "));
+                this.ClassResource.Note = this.NotesTextBox.Text;
 
                 Program.UndoRedoService.AddCommand(new EditCommand<ClassResource>(this.ClassResource, oldItem, this.ConciergePage));
             }
@@ -183,6 +192,14 @@ namespace Concierge.Interfaces.DetailsPageInterface
         private void PoolSpentUpDown_ValueChanged(object sender, RoutedEventArgs e)
         {
             this.SpentUpDown.Maximum = this.PoolUpDown.Value;
+        }
+
+        private void ResourceNameComboBox_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+            if (this.ResourceNameComboBox.SelectedItem is ClassResource resource)
+            {
+                this.FillFields(resource);
+            }
         }
     }
 }

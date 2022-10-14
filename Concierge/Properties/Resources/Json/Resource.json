@@ -1,0 +1,66 @@
+[
+  {
+    "Type": "Bardic Inspiration",
+    "Total": 0,
+    "Spent": 0,
+    "Note": "Creature gains one d6.",
+    "Recovery": 1,
+    "Id": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "Type": "Divine Sense",
+    "Total": 0,
+    "Spent": 0,
+    "Note": "Detects within 60 feet.",
+    "Recovery": 1,
+    "Id": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "Type": "Infusions",
+    "Total": 0,
+    "Spent": 0,
+    "Note": "Infuse an item.",
+    "Recovery": 1,
+    "Id": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "Type": "Ki Points",
+    "Total": 0,
+    "Spent": 0,
+    "Note": "Fuels Ki features.",
+    "Recovery": 3,
+    "Id": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "Type": "Rages",
+    "Total": 0,
+    "Spent": 0,
+    "Note": "+2 to damage.",
+    "Recovery": 1,
+    "Id": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "Type": "Sneak Attack Dice",
+    "Total": 1,
+    "Spent": 0,
+    "Note": "Uses d6.",
+    "Recovery": 0,
+    "Id": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "Type": "Sorcery Points",
+    "Total": 0,
+    "Spent": 0,
+    "Note": "Used to power spells.",
+    "Recovery": 1,
+    "Id": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "Type": "Superiority Dice",
+    "Total": 0,
+    "Spent": 0,
+    "Note": "Used to increase attacks.",
+    "Recovery": 3,
+    "Id": "00000000-0000-0000-0000-000000000000"
+  }
+]

@@ -70,13 +70,9 @@
 
                     <!--Title-->
                     <Grid Grid.Column="0">
-                        <TextBlock
+                        <components:ConciergeLabel
                             Text="Initiative:"
-                            Foreground="White"
-                            FontSize="18"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Center"
-                            Margin="10, 0, 0, 0"/>
+                            FontSize="18"/>
                     </Grid>
 
                     <!--Value-->
@@ -100,13 +96,9 @@
 
                     <!--Title-->
                     <Grid Grid.Column="0">
-                        <TextBlock
+                        <components:ConciergeLabel
                             Text="Perception:"
-                            Foreground="White"
-                            FontSize="18"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Center"
-                            Margin="10, 0, 0, 0"/>
+                            FontSize="18"/>
                     </Grid>
 
                     <!--Value-->
@@ -129,13 +121,9 @@
 
                     <!--Title-->
                     <Grid Grid.Column="0">
-                        <TextBlock
+                        <components:ConciergeLabel
                             Text="Vision:"
-                            Foreground="White"
-                            FontSize="18"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Center"
-                            Margin="10, 0, 0, 0"/>
+                            FontSize="18"/>
                     </Grid>
 
                     <!--Value-->
@@ -156,13 +144,9 @@
 
                     <!--Title-->
                     <Grid Grid.Column="0">
-                        <TextBlock
+                        <components:ConciergeLabel
                             Text="Base Movement:"
-                            Foreground="White"
-                            FontSize="16"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Center"
-                            Margin="10, 0, 0, 0"/>
+                            FontSize="16"/>
                     </Grid>
 
                     <!--Value-->
@@ -192,13 +176,9 @@
 
                     <!--Title-->
                     <Grid Grid.Column="0">
-                        <TextBlock
+                        <components:ConciergeLabel
                             Text="Initiative Bonus:"
-                            Foreground="White"
-                            FontSize="18"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Center"
-                            Margin="10, 0, 0, 0"/>
+                            FontSize="18"/>
                     </Grid>
 
                     <!--Value-->
@@ -218,13 +198,9 @@
 
                     <!--Title-->
                     <Grid Grid.Column="0">
-                        <TextBlock
+                        <components:ConciergeLabel
                             Text="Perception Bonus:"
-                            Foreground="White"
-                            FontSize="16"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Center"
-                            Margin="10, 0, 0, 0"/>
+                            FontSize="16"/>
                     </Grid>
 
                     <!--Value-->
@@ -245,13 +221,9 @@
 
                     <!--Title-->
                     <Grid Grid.Column="0">
-                        <TextBlock
+                        <components:ConciergeLabel
                             Text="Movement:"
-                            Foreground="White"
-                            FontSize="18"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Center"
-                            Margin="10, 0, 0, 0"/>
+                            FontSize="18"/>
                     </Grid>
 
                     <!--Value-->
@@ -275,13 +247,9 @@
 
                     <!--Title-->
                     <Grid Grid.Column="0">
-                        <TextBlock
+                        <components:ConciergeLabel
                             Text="Movement Bonus:"
-                            Foreground="White"
-                            FontSize="16"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Center"
-                            Margin="10, 0, 0, 0"/>
+                            FontSize="16"/>
                     </Grid>
 
                     <!--Value-->

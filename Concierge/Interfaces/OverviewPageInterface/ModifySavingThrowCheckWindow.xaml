@@ -67,13 +67,9 @@
 
                     <!--Title-->
                     <Grid Grid.Column="0">
-                        <TextBlock 
+                        <components:ConciergeLabel 
                             Text="Strength:"
-                            Foreground="White"
-                            FontSize="15"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Center"
-                            Margin="10, 0, 0, 0"/>
+                            FontSize="15"/>
                     </Grid>
 
                     <!--Value-->
@@ -94,13 +90,9 @@
 
                     <!--Title-->
                     <Grid Grid.Column="0">
-                        <TextBlock 
+                        <components:ConciergeLabel 
                             Text="Dexterity:"
-                            Foreground="White"
-                            FontSize="15"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Center"
-                            Margin="10, 0, 0, 0"/>
+                            FontSize="15"/>
                     </Grid>
 
                     <!--Value-->
@@ -121,13 +113,9 @@
 
                     <!--Title-->
                     <Grid Grid.Column="0">
-                        <TextBlock 
+                        <components:ConciergeLabel 
                             Text="Constitution:"
-                            Foreground="White"
-                            FontSize="15"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Center"
-                            Margin="10, 0, 0, 0"/>
+                            FontSize="15"/>
                     </Grid>
 
                     <!--Value-->
@@ -157,13 +145,9 @@
 
                     <!--Title-->
                     <Grid Grid.Column="0">
-                        <TextBlock 
+                        <components:ConciergeLabel 
                             Text="Intelligence:"
-                            Foreground="White"
-                            FontSize="15"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Center"
-                            Margin="10, 0, 0, 0"/>
+                            FontSize="15"/>
                     </Grid>
 
                     <!--Value-->
@@ -184,13 +168,9 @@
 
                     <!--Title-->
                     <Grid Grid.Column="0">
-                        <TextBlock 
+                        <components:ConciergeLabel 
                             Text="Wisdom:"
-                            Foreground="White"
-                            FontSize="15"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Center"
-                            Margin="10, 0, 0, 0"/>
+                            FontSize="15"/>
                     </Grid>
 
                     <!--Value-->
@@ -211,13 +191,9 @@
 
                     <!--Title-->
                     <Grid Grid.Column="0">
-                        <TextBlock 
+                        <components:ConciergeLabel 
                             Text="Charisma:"
-                            Foreground="White"
-                            FontSize="15"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Center"
-                            Margin="10, 0, 0, 0"/>
+                            FontSize="15"/>
                     </Grid>
 
                     <!--Value-->

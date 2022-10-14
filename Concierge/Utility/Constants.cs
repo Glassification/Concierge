@@ -9,6 +9,7 @@ namespace Concierge.Utility
     using Concierge.Character.Characteristics;
     using Concierge.Character.Items;
     using Concierge.Character.Spellcasting;
+    using Concierge.Character.Statuses;
     using Concierge.Configuration;
     using Concierge.Persistence.ReadWriters;
     using Concierge.Primitives;
@@ -44,6 +45,7 @@ namespace Concierge.Utility
             Abilities = new ReadOnlyCollection<Ability>(DefaultListReadWriter.ReadJson<Ability>(Properties.Resources.Ability));
             Subrace = new ReadOnlyCollection<CategoryItem>(DefaultListReadWriter.ReadJson<CategoryItem>(Properties.Resources.Subrace));
             Subclass = new ReadOnlyCollection<CategoryItem>(DefaultListReadWriter.ReadJson<CategoryItem>(Properties.Resources.Subclass));
+            Resources = new ReadOnlyCollection<ClassResource>(DefaultListReadWriter.ReadJson<ClassResource>(Properties.Resources.Resource));
 
             AutosaveIntervals = new ReadOnlyCollection<int>(DefaultListReadWriter.ReadGenericList<int>(Properties.Resources.AutosaveInterval));
             Alignment = new ReadOnlyCollection<string>(DefaultListReadWriter.ReadGenericList<string>(Properties.Resources.Alignment));
@@ -53,7 +55,6 @@ namespace Concierge.Utility
             ProficiencyLevels = new ReadOnlyCollection<int>(DefaultListReadWriter.ReadGenericList<int>(Properties.Resources.ProficiencyLevel));
             Classes = new ReadOnlyCollection<string>(DefaultListReadWriter.ReadGenericList<string>(Properties.Resources.ClassName));
             StatusEffects = new ReadOnlyCollection<string>(DefaultListReadWriter.ReadGenericList<string>(Properties.Resources.StatusEffect));
-            Resources = new ReadOnlyCollection<string>(DefaultListReadWriter.ReadGenericList<string>(Properties.Resources.ClassResource));
             Tools = new ReadOnlyCollection<string>(DefaultListReadWriter.ReadGenericList<string>(Properties.Resources.Tool));
             Games = new ReadOnlyCollection<string>(DefaultListReadWriter.ReadGenericList<string>(Properties.Resources.Game));
             Instruments = new ReadOnlyCollection<string>(DefaultListReadWriter.ReadGenericList<string>(Properties.Resources.Instrument));
@@ -88,7 +89,7 @@ namespace Concierge.Utility
 
         public static ReadOnlyCollection<string> StatusEffects { get; }
 
-        public static ReadOnlyCollection<string> Resources { get; }
+        public static ReadOnlyCollection<ClassResource> Resources { get; }
 
         public static ReadOnlyCollection<string> Tools { get; }
 

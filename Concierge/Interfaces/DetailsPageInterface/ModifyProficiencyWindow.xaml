@@ -60,14 +60,9 @@
 
                 <!--Title-->
                 <Grid Grid.Column="0">
-                    <TextBlock 
+                    <components:ConciergeLabel 
                         Text="Type:"
-                        x:Name="TypeLabel"
-                        Foreground="White"
-                        FontSize="20"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Top"
-                        Margin="10, 20, 0, 0"/>
+                        x:Name="TypeLabel"/>
                 </Grid>
 
                 <!--Value-->
@@ -87,13 +82,8 @@
 
                 <!--Title-->
                 <Grid Grid.Column="0">
-                    <TextBlock
-                        Text="Name:"
-                        Foreground="White"
-                        FontSize="20"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Top"
-                        Margin="10, 20, 0, 0"/>
+                    <components:ConciergeLabel
+                        Text="Name:"/>
                 </Grid>
 
                 <!--Value-->

@@ -11,13 +11,13 @@
     d:DataContext="{d:DesignInstance Type=viewmodels:ConciergeViewModel}"
     mc:Ignorable="d"
     Title="Concierge Help"
-    Height="495"
+    Height="535"
     Width="650"
     Style="{StaticResource WindowFontStyle}">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="45"/>
-            <RowDefinition Height="380"/>
+            <RowDefinition Height="420"/>
             <RowDefinition Height="70"/>
         </Grid.RowDefinitions>
 
@@ -47,13 +47,14 @@
         <!--Content-->
         <Grid Grid.Row="1">
             <Grid.RowDefinitions>
-                <RowDefinition Height="360"/>
+                <RowDefinition Height="400"/>
                 <RowDefinition Height="20"/>
             </Grid.RowDefinitions>
             
             <!--Shortcuts-->
             <Grid Grid.Row="0">
                 <Grid.RowDefinitions>
+                    <RowDefinition Height="40"/>
                     <RowDefinition Height="40"/>
                     <RowDefinition Height="40"/>
                     <RowDefinition Height="40"/>
@@ -105,12 +106,12 @@
 
                     <controls:KeyboardShotcutDisplay
                         Grid.Column="0"
-                        ShortcutName="Save"
-                        CommandName="Ctrl-S"/>
+                        ShortcutName="Level Up"
+                        CommandName="Ctrl-U"/>
                     <controls:KeyboardShotcutDisplay
                         Grid.Column="1"
-                        ShortcutName="Save As"
-                        CommandName="Ctrl-Shift-S"/>
+                        ShortcutName="Create Character"
+                        CommandName="Ctrl-W"/>
                 </Grid>
 
                 <Grid Grid.Row="3">
@@ -121,7 +122,23 @@
 
                     <controls:KeyboardShotcutDisplay
                         Grid.Column="0"
-                        ShortcutName="Open Find"
+                        ShortcutName="Save"
+                        CommandName="Ctrl-S"/>
+                    <controls:KeyboardShotcutDisplay
+                        Grid.Column="1"
+                        ShortcutName="Save As"
+                        CommandName="Ctrl-Shift-S"/>
+                </Grid>
+
+                <Grid Grid.Row="4">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50*"/>
+                        <ColumnDefinition Width="50*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <controls:KeyboardShotcutDisplay
+                        Grid.Column="0"
+                        ShortcutName="Open Search"
                         CommandName="Ctrl-F"/>
                     <controls:KeyboardShotcutDisplay
                         Grid.Column="1"
@@ -129,7 +146,7 @@
                         CommandName="Ctrl-I"/>
                 </Grid>
 
-                <Grid Grid.Row="4">
+                <Grid Grid.Row="5">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="50*"/>
                         <ColumnDefinition Width="50*"/>
@@ -145,7 +162,7 @@
                         CommandName="Ctrl-H"/>
                 </Grid>
 
-                <Grid Grid.Row="5">
+                <Grid Grid.Row="6">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="50*"/>
                         <ColumnDefinition Width="50*"/>
@@ -161,7 +178,7 @@
                         CommandName="Ctrl-Y"/>
                 </Grid>
 
-                <Grid Grid.Row="6">
+                <Grid Grid.Row="7">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="50*"/>
                         <ColumnDefinition Width="50*"/>
@@ -177,7 +194,7 @@
                         CommandName="Shift-Caps"/>
                 </Grid>
 
-                <Grid Grid.Row="7">
+                <Grid Grid.Row="8">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="50*"/>
                         <ColumnDefinition Width="50*"/>
@@ -193,7 +210,7 @@
                         CommandName="Ctrl-Plus"/>
                 </Grid>
 
-                <Grid Grid.Row="8">
+                <Grid Grid.Row="9">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="50*"/>
                         <ColumnDefinition Width="50*"/>

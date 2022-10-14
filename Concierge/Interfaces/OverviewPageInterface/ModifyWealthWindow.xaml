@@ -63,12 +63,10 @@
                 </Grid.ColumnDefinitions>
 
                 <Grid Grid.Column="0">
-                    <TextBlock 
+                    <components:ConciergeLabel 
                         Text="Add"
-                        Foreground="White"
                         FontSize="25"
-                        HorizontalAlignment="Right"
-                        VerticalAlignment="Center"/>
+                        HorizontalAlignment="Right"/>
                 </Grid>
                 <Grid Grid.Column="1">
                     <components:ConciergeRadioButton 
@@ -95,12 +93,9 @@
                     </components:ConciergeRadioButton>
                 </Grid>
                 <Grid Grid.Column="3">
-                    <TextBlock 
+                    <components:ConciergeLabel 
                         Text="Subtract"
-                        Foreground="White"
-                        FontSize="25"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Center"/>
+                        FontSize="25"/>
                 </Grid>
             </Grid>
 
