@@ -4,13 +4,14 @@
 
 namespace Concierge.Leveling
 {
+    using System;
     using System.Linq;
 
     using Concierge.Character;
     using Concierge.Character.Enums;
     using Concierge.Character.Spellcasting;
     using Concierge.Commands;
-    using Concierge.Leveling.Dtos;
+    using Concierge.Leveling.Dtos.Leveler;
     using Concierge.Tools.DiceRolling.Dice;
     using Concierge.Utility.Utilities;
 
@@ -29,8 +30,10 @@ namespace Concierge.Leveling
             var classDto = this.LevelUpCharacterClass(classNumber);
             var magicClassDto = this.LevelUpMagicClass(classDto.New);
             var spellSlotsDto = this.LevelUpSpellSlots(magicClassDto.New);
+            var resourceDto = this.LevelUpClassResource(classDto.New);
 
-            Program.UndoRedoService.AddCommand(new LevelUpCommand(classDto, magicClassDto, spellSlotsDto, vitalityDto));
+            Program.UndoRedoService.AddCommand(
+                new LevelUpCommand(classDto, resourceDto, magicClassDto, spellSlotsDto, vitalityDto));
         }
 
         private CharacterClassDto LevelUpCharacterClass(int classNumber)
@@ -54,6 +57,20 @@ namespace Concierge.Leveling
             }
 
             return new MagicClassDto(oldMagicClass, magicClass?.DeepCopy());
+        }
+
+        private ClassResourcesDto LevelUpClassResource(CharacterClass newClass)
+        {
+            var resourceIncrease = CharacterUtility.GetResourceIncrease(newClass.Name, newClass.Subclass, newClass.Level);
+            var resource = this.character.ClassResources.Where(x => x.Type.Equals(resourceIncrease.Name, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
+            var oldResource = resource?.DeepCopy();
+
+            if (resource is not null)
+            {
+                resource.Total += resourceIncrease.Increase;
+            }
+
+            return new ClassResourcesDto(oldResource, resource?.DeepCopy());
         }
 
         private SpellSlotsDto LevelUpSpellSlots(MagicClass? newClass)

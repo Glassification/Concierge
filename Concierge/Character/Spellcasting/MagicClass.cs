@@ -8,7 +8,7 @@ namespace Concierge.Character.Spellcasting
     using System.Linq;
 
     using Concierge.Character.Enums;
-    using Concierge.Leveling.Dtos;
+    using Concierge.Leveling.Dtos.Definitions;
     using Concierge.Utility;
     using Concierge.Utility.Utilities;
     using Newtonsoft.Json;

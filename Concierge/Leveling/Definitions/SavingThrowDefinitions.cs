@@ -4,7 +4,7 @@
 
 namespace Concierge.Leveling.Definitions
 {
-    using Concierge.Leveling.Dtos;
+    using Concierge.Leveling.Dtos.Definitions;
 
     public static class SavingThrowDefinitions
     {

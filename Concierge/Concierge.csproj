@@ -6,7 +6,7 @@
     <RootNamespace>Concierge</RootNamespace>
 	<Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
-    <Version>4.13.11</Version>
+    <Version>4.14.0</Version>
     <ApplicationIcon>AppIconImage.ico</ApplicationIcon>
   </PropertyGroup>
 

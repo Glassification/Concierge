@@ -113,7 +113,7 @@
                 FontFamily="Segoe UI SemiLight"
                 VerticalAlignment="Center"
                 HorizontalAlignment="Left"
-                Margin="20,0,0,5"/>
+                Margin="20,-5,0,0"/>
             <TextBlock
                 x:Name="VersionText"
                 Foreground="White"
@@ -122,7 +122,7 @@
                 FontFamily="Segoe UI SemiLight"
                 VerticalAlignment="Center"
                 HorizontalAlignment="Right"
-                Margin="0,0,20,5"/>
+                Margin="0,-5,20,0"/>
         </Grid>
     </Grid>
 </Window>

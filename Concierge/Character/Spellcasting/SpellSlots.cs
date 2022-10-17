@@ -4,7 +4,7 @@
 
 namespace Concierge.Character.Spellcasting
 {
-    using Concierge.Leveling.Dtos;
+    using Concierge.Leveling.Dtos.Definitions;
     using Concierge.Utility;
 
     public sealed class SpellSlots : ICopyable<SpellSlots>

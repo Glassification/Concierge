@@ -29,7 +29,7 @@
         "Requirements": null,
         "Action": "--",
         "Description": "Avtg on saving throws against being charmed. Magic cannot put me to sleep",
-        "Id": "7a820cd6-7e30-4004-9058-100e0de7f79b"
+        "Id": "7a820cd6-7e30-4004-9058-100e0de7f79c"
       },
       {
         "Name": "Thieves' Cant",
@@ -267,7 +267,16 @@
       "Stretch": 3,
       "UseCustomImage": true
     },
-    "ClassResources": [],
+    "ClassResources": [
+      {
+        "Type": "Sneak Attack Dice",
+        "Total": 5,
+        "Spent": 0,
+        "Note": "Uses d6.",
+        "Recovery": 0,
+        "Id": "bdfcf4c4-ac79-448b-9840-a76222aa22f5"
+      }
+    ],
     "Companion": {
       "Properties": {
         "ArmorClass": 13,
@@ -2044,7 +2053,7 @@
       }
     ]
   },
-  "Hash": "D859BC299E83DA27C95FE4BD750A0900CB97E1868AEC71371B7B3677BED4CA4F",
+  "Hash": "F5CDD9D57E2A50E1DECB84319D1665A8CA3BBBF19534E569EE51AA9DF57453D5",
   "OriginalCreationDate": "Monday, 14 March 2022 08:19:44 PM",
-  "Version": "4.13.6"
+  "Version": "4.12.11"
 }

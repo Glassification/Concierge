@@ -11,7 +11,7 @@ namespace Concierge.Utility.Utilities
     using Concierge.Character.Characteristics;
     using Concierge.Character.Enums;
     using Concierge.Leveling.Definitions;
-    using Concierge.Leveling.Dtos;
+    using Concierge.Leveling.Dtos.Definitions;
 
     public static class CharacterUtility
     {
@@ -33,11 +33,11 @@ namespace Concierge.Utility.Utilities
                 Abilities.WIS => CalculateBonus(character.Attributes.Wisdom) + bonus,
                 Abilities.CHA => CalculateBonus(character.Attributes.Charisma) + bonus,
                 Abilities.NONE => bonus,
-                _ => throw new NotImplementedException(),
+                _ => bonus,
             };
         }
 
-        public static bool ValidateClassLevel(ConciergeCharacter character, int number, int newValue)
+        public static bool ValidateClassLevel(ConciergeCharacter character, int number)
         {
             var totalLevel =
                 (character.Properties.Class1.ClassNumber == number ? 0 : character.Properties.Class1.Level) +
@@ -56,7 +56,7 @@ namespace Concierge.Utility.Utilities
                 CoinType.Electrum => value / 2.0,
                 CoinType.Gold => value,
                 CoinType.Platinum => value * 10.0,
-                _ => throw new NotImplementedException(),
+                _ => value,
             };
         }
 
@@ -148,6 +148,21 @@ namespace Concierge.Utility.Utilities
                 "Warlock" => SavingThrowDefinitions.GetWarlockSavingThrows(),
                 "Wizard" => SavingThrowDefinitions.GetWizardSavingThrows(),
                 _ => new SavingThrowDto(),
+            };
+        }
+
+        public static ClassResourceDto GetResourceIncrease(string className, string subclass, int level)
+        {
+            return className switch
+            {
+                "Artificer" => ClassResourceDefinitions.GetArtificerResourceIncrease(level),
+                "Barbarian" => ClassResourceDefinitions.GetBarbarianResourceIncrease(level),
+                "Bard" => ClassResourceDefinitions.GetBardResourceIncrease(level),
+                "Fighter" => subclass.Equals("Champion") ? ClassResourceDefinitions.GetFighterResourceIncrease(level) : new ClassResourceDto(),
+                "Monk" => ClassResourceDefinitions.GetMonkResourceIncrease(level),
+                "Rogue" => ClassResourceDefinitions.GetRogueResourceIncrease(level),
+                "Sorcerer" => ClassResourceDefinitions.GetSorcererResourceIncrease(level),
+                _ => new ClassResourceDto(),
             };
         }
     }
