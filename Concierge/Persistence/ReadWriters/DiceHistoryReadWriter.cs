@@ -25,7 +25,7 @@ namespace Concierge.Persistence.ReadWriters
 
             try
             {
-                CreateFileIfNotExists();
+                CreateFileIfMissing();
 
                 var lines = File.ReadAllLines(diceHistoryFile);
                 foreach (var line in lines)
@@ -55,7 +55,7 @@ namespace Concierge.Persistence.ReadWriters
             }
         }
 
-        private static void CreateFileIfNotExists()
+        private static void CreateFileIfMissing()
         {
             if (!File.Exists(diceHistoryFile))
             {

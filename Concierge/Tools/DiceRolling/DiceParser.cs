@@ -16,10 +16,11 @@ namespace Concierge.Tools.DiceRolling
     public static class DiceParser
     {
         private static readonly Regex patternSplit = new (@"(\+|\-)", RegexOptions.Compiled);
+        private static readonly Regex hasNumber = new ("[0-9]", RegexOptions.Compiled);
 
         public static Stack<object> Parse(string input)
         {
-            if (!IsValid(input))
+            if (!IsValidInput(input))
             {
                 throw new InvalidExpressionException(input);
             }
@@ -29,6 +30,8 @@ namespace Concierge.Tools.DiceRolling
                 var list = SplitAndMaintainDelimiter(input);
                 var infixObjectList = Evaluate(list);
                 var postfixObjectList = ShuntingYard.ToPostfix(infixObjectList);
+
+                IsValidPostFix(postfixObjectList);
 
                 return postfixObjectList;
             }
@@ -80,9 +83,27 @@ namespace Concierge.Tools.DiceRolling
             return objectList;
         }
 
-        private static bool IsValid(string input)
+        private static bool IsValidInput(string input)
         {
-            return !input.IsNullOrWhiteSpace() && (!input.Contains('.') && !input.Contains('*') && !input.Contains('/'));
+            return
+                !input.IsNullOrWhiteSpace() &&
+                !input.Contains('.') &&
+                !input.Contains('*') &&
+                !input.Contains('/') &&
+                hasNumber.Match(input).Success;
+        }
+
+        private static void IsValidPostFix(Stack<object> postfix)
+        {
+            if (postfix.Count > 1)
+            {
+                return;
+            }
+
+            if (postfix.FirstOrDefault() is string)
+            {
+                throw new Exception();
+            }
         }
 
         private static List<string> SplitAndMaintainDelimiter(string input)

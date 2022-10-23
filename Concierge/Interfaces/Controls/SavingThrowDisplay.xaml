@@ -22,7 +22,7 @@
                 x:Name="ProficiencyBox"
                 Stroke="#000917"
                 Stretch="Uniform"
-                Margin="3"
+                Margin="45,3,3,3"
                 MouseDown="SavingThrowProficiency_MouseDown"
                 MouseEnter="ToggleBox_MouseEnter"
                 MouseLeave="ToggleBox_MouseLeave"/>

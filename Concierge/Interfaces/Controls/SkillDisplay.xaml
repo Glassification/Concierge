@@ -23,7 +23,7 @@
                 x:Name="ProficiencyBox"
                 Stroke="#000917"
                 Stretch="Uniform"
-                Margin="3"
+                Margin="50,3,3,3"
                 MouseDown="SkillProficiency_MouseDown"
                 MouseEnter="ToggleBox_MouseEnter"
                 MouseLeave="ToggleBox_MouseLeave"/>
@@ -35,7 +35,7 @@
                 x:Name="ExpertiseBox"
                 Stroke="#000917"
                 Stretch="Uniform"
-                Margin="3"
+                Margin="50,3,3,3"
                 MouseDown="SkillExpertise_MouseDown"
                 MouseEnter="ToggleBox_MouseEnter"
                 MouseLeave="ToggleBox_MouseLeave"/>
