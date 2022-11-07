@@ -287,5 +287,10 @@ namespace Concierge.Interfaces.Controls
         {
             Program.IsTyping = true;
         }
+
+        private void TextBoxValue_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            Clipboard.SetText(this.TextBoxValue.Text);
+        }
     }
 }

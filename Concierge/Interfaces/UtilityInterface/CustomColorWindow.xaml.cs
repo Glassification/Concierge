@@ -11,6 +11,7 @@ namespace Concierge.Interfaces.UtilityInterface
     using System.Windows.Media.Imaging;
 
     using Concierge.Interfaces.Components;
+    using Concierge.Primitives;
     using Concierge.Utility.Extensions;
     using Concierge.Utility.Utilities;
 
@@ -49,13 +50,21 @@ namespace Concierge.Interfaces.UtilityInterface
 
         private bool RgbSliderLock { get; set; }
 
-        public override Color ShowColorWindow(Color startingColor)
+        public override CustomColor ShowColorWindow(CustomColor startingColor)
         {
-            this.UpdateRgbValues(startingColor);
-            this.UpdateRgbSlider(startingColor);
+            this.NameTextBox.Text = startingColor.Name;
+            this.UpdateRgbValues(startingColor.Color);
+            this.UpdateRgbSlider(startingColor.Color);
             this.ShowConciergeWindow();
 
-            return this.SelectedColor;
+            if (this.SelectedColor == Colors.Transparent)
+            {
+                return CustomColor.Empty;
+            }
+            else
+            {
+                return new CustomColor(this.NameTextBox.Text, this.SelectedColor.R, this.SelectedColor.G, this.SelectedColor.B);
+            }
         }
 
         private void ParseHexValue()

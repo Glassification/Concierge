@@ -36,7 +36,8 @@
                     PreviewKeyDown="TextBoxValue_PreviewKeyDown"
                     MouseEnter="TextBox_MouseEnter"
                     MouseLeave="Control_MouseLeave"
-                    MouseWheel="TextBoxValue_MouseWheel"/>
+                    MouseWheel="TextBoxValue_MouseWheel"
+                    MouseDoubleClick="TextBoxValue_MouseDoubleClick"/>
             </Grid>
 
             <Grid Grid.Column="1">

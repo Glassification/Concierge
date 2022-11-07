@@ -16,9 +16,9 @@ namespace Concierge.Character.Characteristics
             this.Age = 0;
             this.Height = new UnitDouble(0, UnitTypes.Imperial, Measurements.Height);
             this.Weight = new UnitDouble(0, UnitTypes.Imperial, Measurements.Weight);
-            this.SkinColour = string.Empty;
-            this.EyeColour = string.Empty;
-            this.HairColour = string.Empty;
+            this.SkinColour = CustomColor.Empty;
+            this.EyeColour = CustomColor.Empty;
+            this.HairColour = CustomColor.Empty;
             this.DistinguishingMarks = string.Empty;
         }
 
@@ -30,11 +30,11 @@ namespace Concierge.Character.Characteristics
 
         public UnitDouble Weight { get; set; }
 
-        public string SkinColour { get; set; }
+        public CustomColor SkinColour { get; set; }
 
-        public string EyeColour { get; set; }
+        public CustomColor EyeColour { get; set; }
 
-        public string HairColour { get; set; }
+        public CustomColor HairColour { get; set; }
 
         public string DistinguishingMarks { get; set; }
 
@@ -46,9 +46,9 @@ namespace Concierge.Character.Characteristics
                 Age = this.Age,
                 Height = this.Height.DeepCopy(),
                 Weight = this.Weight.DeepCopy(),
-                SkinColour = this.SkinColour,
-                EyeColour = this.EyeColour,
-                HairColour = this.HairColour,
+                SkinColour = this.SkinColour.DeepCopy(),
+                EyeColour = this.EyeColour.DeepCopy(),
+                HairColour = this.HairColour.DeepCopy(),
                 DistinguishingMarks = this.DistinguishingMarks,
             };
         }

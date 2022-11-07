@@ -159,7 +159,7 @@
                                     HorizontalAlignment="Stretch">
                                     <StackPanel Orientation="Horizontal">
                                         <materialDesign:PackIcon 
-                                            Kind="FileDocument" 
+                                            Kind="FolderPlus" 
                                             Foreground="#6a4c93" 
                                             Height="25" 
                                             Width="25" 
@@ -179,7 +179,7 @@
                                     HorizontalAlignment="Stretch">
                                     <StackPanel Orientation="Horizontal">
                                         <materialDesign:PackIcon 
-                                            Kind="Folder" 
+                                            Kind="FolderOpen" 
                                             Foreground="#6a4c93"
                                             Height="25" 
                                             Width="25" 
@@ -303,7 +303,7 @@
                                     HorizontalAlignment="Stretch">
                                     <StackPanel Orientation="Horizontal">
                                         <materialDesign:PackIcon 
-                                            Kind="AccountStar" 
+                                            Kind="AccountArrowUp" 
                                             Foreground="#06d6a0" 
                                             Height="25" 
                                             Width="25" 
@@ -323,7 +323,7 @@
                                     HorizontalAlignment="Stretch">
                                     <StackPanel Orientation="Horizontal">
                                         <materialDesign:PackIcon 
-                                            Kind="Sleep" 
+                                            Kind="BedClock" 
                                             Foreground="#06d6a0" 
                                             Height="25" 
                                             Width="25" 

@@ -38,9 +38,9 @@ namespace Concierge.Interfaces.Controls
             this.AgeField.Text = appearance.Age.ToString();
             this.HeightField.Text = appearance.Height.ToString();
             this.WeightField.Text = appearance.Weight.ToString();
-            this.HairColourField.Text = appearance.HairColour;
-            this.SkinColourField.Text = appearance.SkinColour;
-            this.EyeColourField.Text = appearance.EyeColour;
+            this.HairColourField.Text = appearance.HairColour.Name;
+            this.SkinColourField.Text = appearance.SkinColour.Name;
+            this.EyeColourField.Text = appearance.EyeColour.Name;
             this.MarksField.Text = appearance.DistinguishingMarks;
         }
 

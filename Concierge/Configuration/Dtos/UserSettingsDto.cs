@@ -26,8 +26,6 @@ namespace Concierge.Configuration.Dtos
 
         public UnitTypes UnitOfMeasurement { get; init; }
 
-        public bool AttemptToCenterWindows { get; init; }
-
         public override bool Equals(object? obj)
         {
             if (obj is not UserSettingsDto settings)
@@ -42,8 +40,7 @@ namespace Concierge.Configuration.Dtos
                 settings.MuteSounds == this.MuteSounds &&
                 settings.UseCoinWeight == this.UseCoinWeight &&
                 settings.UseEncumbrance == this.UseEncumbrance &&
-                settings.UnitOfMeasurement == this.UnitOfMeasurement &&
-                settings.AttemptToCenterWindows == this.AttemptToCenterWindows;
+                settings.UnitOfMeasurement == this.UnitOfMeasurement;
         }
 
         public override int GetHashCode()

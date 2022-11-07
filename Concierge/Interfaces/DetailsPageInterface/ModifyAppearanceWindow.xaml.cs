@@ -7,13 +7,15 @@ namespace Concierge.Interfaces.DetailsPageInterface
     using System;
     using System.Linq;
     using System.Windows;
-    using System.Windows.Input;
 
     using Concierge.Character.Characteristics;
     using Concierge.Character.Enums;
     using Concierge.Commands;
     using Concierge.Interfaces.Components;
     using Concierge.Interfaces.Enums;
+    using Concierge.Interfaces.UtilityInterface;
+    using Concierge.Primitives;
+    using Concierge.Services;
     using Concierge.Utility.Extensions;
     using Concierge.Utility.Units;
     using Concierge.Utility.Units.Enums;
@@ -23,17 +25,69 @@ namespace Concierge.Interfaces.DetailsPageInterface
     /// </summary>
     public partial class ModifyAppearanceWindow : ConciergeWindow
     {
+        private CustomColor? _eyeColor;
+        private CustomColor? _hairColor;
+        private CustomColor? _skinColor;
+
         public ModifyAppearanceWindow()
         {
             this.InitializeComponent();
             this.GenderComboBox.ItemsSource = Enum.GetValues(typeof(Gender)).Cast<Gender>();
             this.ConciergePage = ConciergePage.None;
             this.Appearance = new Appearance();
+            this.EyeColor = CustomColor.Empty;
+            this.HairColor = CustomColor.Empty;
+            this.SkinColor = CustomColor.Empty;
         }
 
         public override string HeaderText => "Edit Appearance";
 
         private Appearance Appearance { get; set; }
+
+        private CustomColor EyeColor
+        {
+            get
+            {
+                return this._eyeColor ?? CustomColor.Empty;
+            }
+
+            set
+            {
+                this._eyeColor = value;
+                this.EyeColourTextBox.Text = this._eyeColor.Name;
+                this.EyeColorPreview.Color = this._eyeColor.Color;
+            }
+        }
+
+        private CustomColor HairColor
+        {
+            get
+            {
+                return this._hairColor ?? CustomColor.Empty;
+            }
+
+            set
+            {
+                this._hairColor = value;
+                this.HairColourTextBox.Text = this._hairColor.Name;
+                this.HairColorPreview.Color = this._hairColor.Color;
+            }
+        }
+
+        private CustomColor SkinColor
+        {
+            get
+            {
+                return this._skinColor ?? CustomColor.Empty;
+            }
+
+            set
+            {
+                this._skinColor = value;
+                this.SkinColourTextBox.Text = this._skinColor.Name;
+                this.SkinColorPreview.Color = this._skinColor.Color;
+            }
+        }
 
         public override ConciergeWindowResult ShowWizardSetup(string buttonText)
         {
@@ -105,9 +159,8 @@ namespace Concierge.Interfaces.DetailsPageInterface
             this.GenderComboBox.Text = this.Appearance.Gender;
             this.AgeUpDown.Value = this.Appearance.Age;
             this.WeightUpDown.Value = this.Appearance.Weight.Value;
-            this.SkinColourTextBox.Text = this.Appearance.SkinColour;
-            this.EyeColourTextBox.Text = this.Appearance.EyeColour;
-            this.HairColourTextBox.Text = this.Appearance.HairColour;
+            this.EyeColor = this.Appearance.EyeColour;
+            this.HairColor = this.Appearance.HairColour;
             this.DistinguishingMarksTextBox.Text = this.Appearance.DistinguishingMarks;
 
             this.HeightUnits.Text = $"({UnitFormat.HeightPostfix})";
@@ -125,9 +178,9 @@ namespace Concierge.Interfaces.DetailsPageInterface
             this.Appearance.Age = this.AgeUpDown.Value;
             this.Appearance.Height.Value = this.UpdateHeight();
             this.Appearance.Weight.Value = this.WeightUpDown.Value;
-            this.Appearance.SkinColour = this.SkinColourTextBox.Text;
-            this.Appearance.EyeColour = this.EyeColourTextBox.Text;
-            this.Appearance.HairColour = this.HairColourTextBox.Text;
+            this.Appearance.SkinColour = this.SkinColor;
+            this.Appearance.EyeColour = this.EyeColor;
+            this.Appearance.HairColour = this.HairColor;
             this.Appearance.DistinguishingMarks = this.DistinguishingMarksTextBox.Text;
 
             Program.UndoRedoService.AddCommand(new EditCommand<Appearance>(this.Appearance, oldItem, this.ConciergePage));
@@ -165,33 +218,26 @@ namespace Concierge.Interfaces.DetailsPageInterface
             this.CloseConciergeWindow();
         }
 
-        private void ColourTextBox_LostFocus(object sender, RoutedEventArgs e)
+        private void ColorButton_Click(object sender, RoutedEventArgs e)
         {
-            if (sender is not ConciergeTextBox textBox)
+            if (sender is not ConciergeColorButton button)
             {
                 return;
             }
 
-            switch (textBox.Name)
+            switch (button.Name)
             {
-                case "SkinColourTextBox":
-                    this.SkinColorPreview.Background = this.SkinColourTextBox.Text.ToBrush();
+                case "SkinColorPreview":
+                    var skinColor = ConciergeWindowService.ShowColorWindow(typeof(CustomColorWindow), this.SkinColor);
+                    this.SkinColor = skinColor.IsValid ? skinColor : this.SkinColor;
                     break;
-                case "EyeColourTextBox":
-                    this.EyeColorPreview.Background = this.EyeColourTextBox.Text.ToBrush();
+                case "EyeColorPreview":
+                    var eyeColor = ConciergeWindowService.ShowColorWindow(typeof(CustomColorWindow), this.EyeColor);
+                    this.EyeColor = eyeColor.IsValid ? eyeColor : this.EyeColor;
                     break;
-                case "HairColourTextBox":
-                    this.HairColorPreview.Background = this.HairColourTextBox.Text.ToBrush();
-                    break;
-            }
-        }
-
-        private void ColourTextBox_KeyDown(object sender, KeyEventArgs e)
-        {
-            switch (e.Key)
-            {
-                case Key.Enter:
-                    this.UpdateColorPreviews();
+                case "HairColorPreview":
+                    var hairColor = ConciergeWindowService.ShowColorWindow(typeof(CustomColorWindow), this.HairColor);
+                    this.HairColor = hairColor.IsValid ? hairColor : this.HairColor;
                     break;
             }
         }

@@ -206,15 +206,15 @@ namespace Concierge.Interfaces
                 return;
             }
 
-            Program.UndoRedoService.Clear();
             var ccsFile = this.fileAccessService.OpenCcs();
-            if (ccsFile == null)
+            if (ccsFile?.AbsolutePath.IsNullOrWhiteSpace() ?? true)
             {
                 return;
             }
 
             this.autosaveTimer.Stop();
 
+            Program.UndoRedoService.Clear();
             Program.CcsFile = ccsFile;
             Program.Unmodify();
             if (AppSettingsManager.UserSettings.AutosaveEnabled)
@@ -238,7 +238,7 @@ namespace Concierge.Interfaces
 
         public int SaveCharacterSheetAs()
         {
-            Program.Logger.Info($"Save as character sheet.");
+            Program.Logger.Info($"Save character sheet as.");
             this.Save(true);
             this.SetActiveFileText();
             return 0;

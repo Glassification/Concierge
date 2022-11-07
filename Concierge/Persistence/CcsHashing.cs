@@ -2,14 +2,13 @@
 // Copyright (c) Thomas Beckett. All rights reserved.
 // </copyright>
 
-namespace Persistence
+namespace Concierge.Persistence
 {
     using System;
     using System.Security.Cryptography;
     using System.Text;
 
     using Concierge.Character;
-    using Concierge.Persistence;
     using Newtonsoft.Json;
 
     public static class CcsHashing

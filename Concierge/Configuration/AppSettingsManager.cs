@@ -87,7 +87,6 @@ namespace Concierge.Configuration
             UserSettings.UseCoinWeight = userSettingsDto.UseCoinWeight;
             UserSettings.UseEncumbrance = userSettingsDto.UseEncumbrance;
             UserSettings.UnitOfMeasurement = userSettingsDto.UnitOfMeasurement;
-            UserSettings.AttemptToCenterWindows = userSettingsDto.AttemptToCenterWindows;
 
             if (Program.IsDebug)
             {
@@ -113,7 +112,6 @@ namespace Concierge.Configuration
                 UseCoinWeight = UserSettings.UseCoinWeight,
                 UseEncumbrance = UserSettings.UseEncumbrance,
                 UnitOfMeasurement = UserSettings.UnitOfMeasurement,
-                AttemptToCenterWindows = UserSettings.AttemptToCenterWindows,
             };
         }
 

@@ -13,19 +13,18 @@ namespace Concierge.Persistence.ReadWriters
     using Concierge.Interfaces.Enums;
     using Concierge.Tools.Interface;
     using Concierge.Utility.Extensions;
-    using global::Persistence;
     using Newtonsoft.Json;
 
     public static class CharacterReadWriter
     {
         private const string IsJsonSearchText = "\"Character\"";
 
-        public static CcsFile Read(string file)
+        public static CcsFile Read(string fileName)
         {
             try
             {
                 CcsFile? ccsFile;
-                var rawJson = File.ReadAllText(file);
+                var rawJson = File.ReadAllText(fileName);
                 if (rawJson.Contains(IsJsonSearchText))
                 {
                     Program.Logger.Info("No Decompressing needed.");
@@ -34,7 +33,7 @@ namespace Concierge.Persistence.ReadWriters
                 else
                 {
                     Program.Logger.Info("Decompressing file.");
-                    var compressedJson = File.ReadAllBytes(file);
+                    var compressedJson = File.ReadAllBytes(fileName);
                     ccsFile = JsonConvert.DeserializeObject<CcsFile>(CcsCompression.Unzip(compressedJson));
                 }
 
@@ -43,14 +42,14 @@ namespace Concierge.Persistence.ReadWriters
                     throw new NullValueException(nameof(ccsFile));
                 }
 
-                ccsFile.AbsolutePath = file;
+                ccsFile.AbsolutePath = fileName;
                 if (!CheckHash(ccsFile) || (AppSettingsManager.UserSettings.CheckVersion && !CheckVersion(ccsFile.Version)))
                 {
                     return new CcsFile();
                 }
 
                 AppSettingsManager.RefreshUnits();
-                Program.Logger.Info($"Successfully loaded {file}");
+                Program.Logger.Info($"Successfully loaded {fileName}");
 
                 return ccsFile;
             }
@@ -68,6 +67,7 @@ namespace Concierge.Persistence.ReadWriters
             try
             {
                 ccsFile.Version = Program.AssemblyVersion;
+                ccsFile.LastSaveDate = DateTime.Now;
                 ccsFile.Hash = CcsHashing.HashCharacter(ccsFile.Character);
                 var rawJson = JsonConvert.SerializeObject(ccsFile, Formatting.Indented);
 

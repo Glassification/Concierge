@@ -99,22 +99,6 @@ namespace Concierge
             }
         }
 
-        public static MainWindowDto GetMainWindowProperties()
-        {
-            if (MainWindow == null)
-            {
-                return new MainWindowDto();
-            }
-
-            return new MainWindowDto()
-            {
-                Center = new Point((int)(MainWindow.Width / 2), (int)(MainWindow.Height / 2)),
-                Location = MainWindow.GetAbsolutePosition(),
-                ActualWidth = (int)MainWindow.ActualWidth,
-                WindowState = MainWindow.WindowState,
-            };
-        }
-
         public static void Modify()
         {
             ModifiedChanged?.Invoke(IsModified, new EventArgs());

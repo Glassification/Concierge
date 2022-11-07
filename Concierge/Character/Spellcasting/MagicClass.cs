@@ -21,28 +21,33 @@ namespace Concierge.Character.Spellcasting
             this.Id = Guid.NewGuid();
         }
 
-        public string Name { get; set; }
-
         public Abilities Ability { get; set; }
 
-        public int Level { get; set; }
+        [JsonIgnore]
+        public int Attack => CharacterUtility.CalculateBonusFromAbility(this.Ability, Program.CcsFile.Character);
+
+        public Guid Id { get; init; }
 
         public int KnownCantrips { get; set; }
 
         public int KnownSpells { get; set; }
 
-        public int SpellSlots { get; set; }
+        public int Level { get; set; }
 
-        public Guid Id { get; init; }
+        public string Name { get; set; }
 
         [JsonIgnore]
         public int PreparedSpells => Program.CcsFile.Character.Spells.Where(x => (x.Class?.Equals(this.Name) ?? false) && x.Prepared).ToList().Count;
 
         [JsonIgnore]
-        public int Attack => CharacterUtility.CalculateBonusFromAbility(this.Ability, Program.CcsFile.Character);
-
-        [JsonIgnore]
         public int Save => CharacterUtility.CalculateBonusFromAbility(this.Ability, Program.CcsFile.Character) + Constants.BaseDC;
+
+        public int SpellSlots { get; set; }
+
+        public override string ToString()
+        {
+            return this.Name;
+        }
 
         public MagicClass DeepCopy()
         {
@@ -64,11 +69,6 @@ namespace Concierge.Character.Spellcasting
             this.KnownSpells += spellSlotDto.Known;
             this.KnownCantrips += spellSlotDto.Cantrip;
             this.SpellSlots += spellSlotDto.Slots;
-        }
-
-        public override string ToString()
-        {
-            return this.Name;
         }
     }
 }

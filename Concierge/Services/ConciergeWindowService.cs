@@ -5,11 +5,11 @@
 namespace Concierge.Services
 {
     using System;
-    using System.Windows.Media;
 
     using Concierge.Character.Enums;
     using Concierge.Interfaces.Components;
     using Concierge.Interfaces.Enums;
+    using Concierge.Primitives;
 
     using static Concierge.Interfaces.Components.ConciergeWindow;
 
@@ -85,12 +85,12 @@ namespace Concierge.Services
             return conciergeWindow.ShowDamage<T>(item);
         }
 
-        public static Color ShowColorWindow(Type typeOfWindow, Color color)
+        public static CustomColor ShowColorWindow(Type typeOfWindow, CustomColor color)
         {
             var conciergeWindow = (ConciergeWindow?)Activator.CreateInstance(typeOfWindow);
             if (conciergeWindow is null)
             {
-                return Colors.Transparent;
+                return CustomColor.Empty;
             }
 
             return conciergeWindow.ShowColorWindow(color);

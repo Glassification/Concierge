@@ -13,6 +13,7 @@ namespace Concierge.Interfaces.Components
     using Concierge.Character.Enums;
     using Concierge.Configuration;
     using Concierge.Interfaces.Enums;
+    using Concierge.Primitives;
     using Concierge.Utility;
 
     public abstract class ConciergeWindow : Window
@@ -83,10 +84,10 @@ namespace Concierge.Interfaces.Components
             return ConciergeWindowResult.NoResult;
         }
 
-        public virtual Color ShowColorWindow(Color color)
+        public virtual CustomColor ShowColorWindow(CustomColor color)
         {
             Program.Logger.Error($"No implemented ShowColorWindow method for {color}.");
-            return Colors.Transparent;
+            return CustomColor.Empty;
         }
 
         public virtual PopupButtons ShowPopup()
@@ -111,7 +112,6 @@ namespace Concierge.Interfaces.Components
             Program.Logger.Info($"{this.Title} opened.");
 
             this.Title = this.HeaderText;
-            this.SetOpenLocation();
             this.BeginAnimation(OpacityProperty, this.windowAnimation.Open);
             this.ShowDialog();
         }
@@ -126,25 +126,6 @@ namespace Concierge.Interfaces.Components
         protected void InvokeApplyChanges()
         {
             this.ApplyChanges?.Invoke(this, new EventArgs());
-        }
-
-        private void SetOpenLocation()
-        {
-            if (!AppSettingsManager.UserSettings.AttemptToCenterWindows)
-            {
-                return;
-            }
-
-            var properties = Program.GetMainWindowProperties();
-            var offset =
-                properties.Location.X == 0 || properties.WindowState != WindowState.Maximized ?
-                0 :
-                Math.Abs(properties.Location.X) - properties.ActualWidth;
-
-            offset = properties.Location.X > 0 ? -offset : offset;
-
-            this.Left = properties.Location.X + offset + (properties.Center.X - (this.Width / 2));
-            this.Top = properties.Location.Y + (properties.Center.Y - (this.Height / 2));
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)

@@ -236,113 +236,115 @@ namespace Concierge.Utility.Extensions
 
             MatchCollection matches = rtfRegex.Matches(inputRtf);
 
-            if (matches.Count > 0)
+            if (matches.Count == 0)
             {
-                foreach (Match match in matches)
+                return string.Empty;
+            }
+
+            foreach (Match match in matches.Cast<Match>())
+            {
+                string word = match.Groups[1].Value;
+                string arg = match.Groups[2].Value;
+                string hex = match.Groups[3].Value;
+                string character = match.Groups[4].Value;
+                string brace = match.Groups[5].Value;
+                string tchar = match.Groups[6].Value;
+
+                if (!brace.IsNullOrEmpty())
                 {
-                    string word = match.Groups[1].Value;
-                    string arg = match.Groups[2].Value;
-                    string hex = match.Groups[3].Value;
-                    string character = match.Groups[4].Value;
-                    string brace = match.Groups[5].Value;
-                    string tchar = match.Groups[6].Value;
-
-                    if (!brace.IsNullOrEmpty())
+                    curskip = 0;
+                    if (brace == "{")
                     {
-                        curskip = 0;
-                        if (brace == "{")
+                        stack.Push(new StackEntryDto(ucskip, ignorable));
+                    }
+                    else if (brace == "}")
+                    {
+                        var entry = stack.Pop();
+                        ucskip = entry.NumberOfCharactersToSkip;
+                        ignorable = entry.Ignorable;
+                    }
+                }
+                else if (!character.IsNullOrEmpty())
+                {
+                    curskip = 0;
+                    if (character == "~")
+                    {
+                        if (!ignorable)
                         {
-                            stack.Push(new StackEntryDto(ucskip, ignorable));
-                        }
-                        else if (brace == "}")
-                        {
-                            var entry = stack.Pop();
-                            ucskip = entry.NumberOfCharactersToSkip;
-                            ignorable = entry.Ignorable;
+                            outList.Add("\xA0");
                         }
                     }
-                    else if (!character.IsNullOrEmpty())
+                    else if ("{}\\".Contains(character))
                     {
-                        curskip = 0;
-                        if (character == "~")
+                        if (!ignorable)
                         {
-                            if (!ignorable)
-                            {
-                                outList.Add("\xA0");
-                            }
-                        }
-                        else if ("{}\\".Contains(character))
-                        {
-                            if (!ignorable)
-                            {
-                                outList.Add(character);
-                            }
-                        }
-                        else if (character == "*")
-                        {
-                            ignorable = true;
+                            outList.Add(character);
                         }
                     }
-                    else if (!word.IsNullOrEmpty())
+                    else if (character == "*")
                     {
-                        curskip = 0;
-                        if (destinations.Contains(word))
-                        {
-                            ignorable = true;
-                        }
-                        else if (ignorable)
-                        {
-                        }
-                        else if (specialCharacters.ContainsKey(word))
-                        {
-                            outList.Add(specialCharacters[word]);
-                        }
-                        else if (word == "uc")
-                        {
-                            ucskip = int.Parse(arg);
-                        }
-                        else if (word == "u")
-                        {
-                            int c = int.Parse(arg);
-                            if (c < 0)
-                            {
-                                c += 0x10000;
-                            }
-
-                            if (c >= 0x000000 && c <= 0x10ffff && (c < 0x00d800 || c > 0x00dfff))
-                            {
-                                outList.Add(char.ConvertFromUtf32(c));
-                            }
-                            else
-                            {
-                                outList.Add("?");
-                            }
-
-                            curskip = ucskip;
-                        }
+                        ignorable = true;
                     }
-                    else if (!hex.IsNullOrEmpty())
+                }
+                else if (!word.IsNullOrEmpty())
+                {
+                    curskip = 0;
+                    if (destinations.Contains(word))
                     {
-                        if (curskip > 0)
+                        ignorable = true;
+                    }
+                    else if (ignorable)
+                    {
+                    }
+                    else if (specialCharacters.ContainsKey(word))
+                    {
+                        outList.Add(specialCharacters[word]);
+                    }
+                    else if (word == "uc")
+                    {
+                        ucskip = int.Parse(arg);
+                    }
+                    else if (word == "u")
+                    {
+                        int c = int.Parse(arg);
+                        if (c < 0)
                         {
-                            curskip -= 1;
+                            c += 0x10000;
                         }
-                        else if (!ignorable)
+
+                        if (c >= 0x000000 && c <= 0x10ffff && (c < 0x00d800 || c > 0x00dfff))
                         {
-                            int c = int.Parse(hex, System.Globalization.NumberStyles.HexNumber);
                             outList.Add(char.ConvertFromUtf32(c));
                         }
+                        else
+                        {
+                            outList.Add("?");
+                        }
+
+                        curskip = ucskip;
                     }
-                    else if (!tchar.IsNullOrEmpty())
+                }
+                else if (!hex.IsNullOrEmpty())
+                {
+                    if (curskip > 0)
                     {
-                        if (curskip > 0)
-                        {
-                            curskip -= 1;
-                        }
-                        else if (!ignorable)
-                        {
-                            outList.Add(tchar);
-                        }
+                        curskip -= 1;
+                    }
+                    else if (!ignorable)
+                    {
+                        int c = int.Parse(hex, System.Globalization.NumberStyles.HexNumber);
+                        outList.Add(char.ConvertFromUtf32(c));
+                    }
+                }
+                else if (!tchar.IsNullOrEmpty())
+                {
+                    if (curskip > 0)
+                    {
+                        curskip -= 1;
+                    }
+                    else if (!ignorable)
+                    {
+                        outList.Add(tchar);
                     }
                 }
             }

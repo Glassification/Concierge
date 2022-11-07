@@ -12,8 +12,6 @@ namespace Concierge.Configuration.Objects
         {
         }
 
-        public bool AttemptToCenterWindows { get; set; }
-
         public bool AutosaveEnabled { get; set; }
 
         public int AutosaveInterval { get; set; }

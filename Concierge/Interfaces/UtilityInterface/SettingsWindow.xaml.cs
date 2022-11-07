@@ -54,7 +54,6 @@ namespace Concierge.Interfaces.UtilityInterface
             this.EncumbranceCheckBox.UpdatingValue();
             this.MuteCheckBox.UpdatingValue();
             this.CheckVersionCheckBox.UpdatingValue();
-            this.CenterWindowsCheckBox.UpdatingValue();
 
             this.AutosaveCheckBox.IsChecked = AppSettingsManager.UserSettings.AutosaveEnabled;
             this.AutosaveInterval.Value = AppSettingsManager.UserSettings.AutosaveInterval;
@@ -64,7 +63,6 @@ namespace Concierge.Interfaces.UtilityInterface
             this.MuteCheckBox.IsChecked = AppSettingsManager.UserSettings.MuteSounds;
             this.CheckVersionCheckBox.IsChecked = AppSettingsManager.UserSettings.CheckVersion;
             this.UnitOfMeasurementComboBox.Text = AppSettingsManager.UserSettings.UnitOfMeasurement.ToString();
-            this.CenterWindowsCheckBox.IsChecked = AppSettingsManager.UserSettings.AttemptToCenterWindows;
 
             if (AppSettingsManager.UserSettings.AutosaveEnabled)
             {
@@ -80,12 +78,11 @@ namespace Concierge.Interfaces.UtilityInterface
             this.EncumbranceCheckBox.UpdatedValue();
             this.MuteCheckBox.UpdatedValue();
             this.CheckVersionCheckBox.UpdatedValue();
-            this.CenterWindowsCheckBox.UpdatedValue();
         }
 
         private bool UpdateSettings()
         {
-            if (Program.CcsFile.AbsolutePath.IsNullOrWhiteSpace() && (this.AutosaveCheckBox.IsChecked ?? false))
+            if (Program.CcsFile.IsFileSaved(this.AutosaveCheckBox.IsChecked))
             {
                 ConciergeMessageBox.Show(
                     "You must save this sheet before enabling autosave.",
@@ -99,7 +96,6 @@ namespace Concierge.Interfaces.UtilityInterface
             var oldSettings = AppSettingsManager.ToUserSettingsDto();
             var conciergeSettings = new UserSettingsDto()
             {
-                AttemptToCenterWindows = this.CenterWindowsCheckBox.IsChecked ?? false,
                 AutosaveEnabled = this.AutosaveCheckBox.IsChecked ?? false,
                 AutosaveInterval = (int)this.AutosaveInterval.Value,
                 CheckVersion = this.CheckVersionCheckBox.IsChecked ?? false,

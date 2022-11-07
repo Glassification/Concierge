@@ -13,6 +13,7 @@ namespace Concierge.Interfaces.Controls
     using Concierge.Configuration;
     using Concierge.Interfaces.Components;
     using Concierge.Interfaces.UtilityInterface;
+    using Concierge.Primitives;
     using Concierge.Utility.Extensions;
     using Concierge.Utility.Utilities;
 
@@ -164,12 +165,12 @@ namespace Concierge.Interfaces.Controls
 
         private void SelectCustomColorButton_Click(object sender, RoutedEventArgs e)
         {
-            var result = new CustomColorWindow().ShowColorWindow(this.SelectedColor);
+            var result = new CustomColorWindow().ShowColorWindow(new CustomColor(string.Empty, this.SelectedColor.R, this.SelectedColor.G, this.SelectedColor.B));
             this.PopupToggleButton.IsChecked = false;
 
-            if (result != Colors.Transparent)
+            if (result.IsValid)
             {
-                this.SelectedColor = result;
+                this.SelectedColor = result.Color;
                 this.AddRecentColor(this.SelectedColor);
                 this.RaiseEvent(new RoutedEventArgs(ColorChangedEvent));
             }

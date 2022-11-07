@@ -4,10 +4,12 @@
 
 namespace Concierge.Persistence
 {
+    using System;
     using System.IO;
 
     using Concierge.Character;
     using Concierge.Utility;
+    using Concierge.Utility.Extensions;
     using Newtonsoft.Json;
 
     public sealed class CcsFile
@@ -36,6 +38,13 @@ namespace Concierge.Persistence
 
         public string OriginalCreationDate { get; init; }
 
+        public DateTime LastSaveDate { get; set; }
+
         public string Version { get; set; }
+
+        public bool IsFileSaved(bool? autosaveChecked)
+        {
+            return this.AbsolutePath.IsNullOrWhiteSpace() && (autosaveChecked ?? false);
+        }
     }
 }
