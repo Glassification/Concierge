@@ -12,7 +12,6 @@ namespace Concierge.Configuration
     using Concierge.Configuration.Dtos;
     using Concierge.Configuration.Objects;
     using Concierge.Persistence;
-    using Concierge.Utility;
     using Concierge.Utility.Extensions;
     using Microsoft.Extensions.Configuration;
     using Newtonsoft.Json;
@@ -29,21 +28,17 @@ namespace Concierge.Configuration
                 .Build();
 
             section = config.GetSection(nameof(ColorPicker));
-            ColorPicker = section.Get<ColorPicker>();
-            Guard.IsNull(ColorPicker, nameof(ColorPicker));
+            ColorPicker = section.Get<ColorPicker>() ?? new ColorPicker();
 
             section = config.GetSection(nameof(CustomColors));
-            CustomColors = section.Get<Dictionary<string, string>>();
-            Guard.IsNull(CustomColors, nameof(CustomColors));
+            CustomColors = section.Get<Dictionary<string, string>>() ?? new Dictionary<string, string>();
             CustomColors = new Dictionary<string, string>(CustomColors, StringComparer.InvariantCultureIgnoreCase);
 
             section = config.GetSection(nameof(StartUp));
-            StartUp = section.Get<StartUp>();
-            Guard.IsNull(StartUp, nameof(StartUp));
+            StartUp = section.Get<StartUp>() ?? new StartUp();
 
             section = config.GetSection(nameof(UserSettings));
-            UserSettings = section.Get<UserSettings>();
-            Guard.IsNull(UserSettings, nameof(UserSettings));
+            UserSettings = section.Get<UserSettings>() ?? new UserSettings();
         }
 
         public delegate void UnitsChangedEventHandler(object sender, EventArgs e);
