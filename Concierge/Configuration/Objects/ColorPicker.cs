@@ -6,16 +6,18 @@ namespace Concierge.Configuration.Objects
 {
     using System.Collections.Generic;
 
+    using Concierge.Primitives;
+
     public sealed class ColorPicker
     {
         public ColorPicker()
         {
-            this.DefaultColors = new List<string>();
-            this.RecentColors = new List<string>();
+            this.DefaultColors = new List<CustomColor>();
+            this.RecentColors = new List<CustomColor>();
         }
 
-        public List<string> DefaultColors { get; set; }
+        public List<CustomColor> DefaultColors { get; set; }
 
-        public List<string> RecentColors { get; set; }
+        public List<CustomColor> RecentColors { get; set; }
     }
 }

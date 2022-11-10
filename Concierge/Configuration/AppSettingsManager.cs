@@ -7,12 +7,11 @@ namespace Concierge.Configuration
     using System;
     using System.Collections.Generic;
     using System.IO;
-    using System.Windows.Media;
 
     using Concierge.Configuration.Dtos;
     using Concierge.Configuration.Objects;
     using Concierge.Persistence;
-    using Concierge.Utility.Extensions;
+    using Concierge.Primitives;
     using Microsoft.Extensions.Configuration;
     using Newtonsoft.Json;
 
@@ -30,10 +29,6 @@ namespace Concierge.Configuration
             section = config.GetSection(nameof(ColorPicker));
             ColorPicker = section.Get<ColorPicker>() ?? new ColorPicker();
 
-            section = config.GetSection(nameof(CustomColors));
-            CustomColors = section.Get<Dictionary<string, string>>() ?? new Dictionary<string, string>();
-            CustomColors = new Dictionary<string, string>(CustomColors, StringComparer.InvariantCultureIgnoreCase);
-
             section = config.GetSection(nameof(StartUp));
             StartUp = section.Get<StartUp>() ?? new StartUp();
 
@@ -47,17 +42,15 @@ namespace Concierge.Configuration
 
         public static ColorPicker ColorPicker { get; private set; }
 
-        public static Dictionary<string, string> CustomColors { get; private set; }
-
         public static StartUp StartUp { get; private set; }
 
         public static UserSettings UserSettings { get; private set; }
 
-        public static void UpdateRecentColors(List<Color> colors)
+        public static void UpdateRecentColors(List<CustomColor> colors)
         {
             for (int i = 0; i < colors.Count; i++)
             {
-                ColorPicker.RecentColors[i] = colors[i].GetName();
+                ColorPicker.RecentColors[i] = colors[i];
             }
 
             if (Program.IsDebug)
@@ -115,7 +108,6 @@ namespace Concierge.Configuration
             var appSettings = new AppSettings()
             {
                 ColorPicker = ColorPicker,
-                CustomColors = CustomColors,
                 StartUp = StartUp,
                 UserSettings = UserSettings,
             };

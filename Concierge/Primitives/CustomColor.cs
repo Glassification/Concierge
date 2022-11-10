@@ -22,6 +22,17 @@ namespace Concierge.Primitives
         {
         }
 
+        public CustomColor(string name)
+        {
+            var color = (Color)ColorConverter.ConvertFromString(name);
+            this._name = name;
+            this.IsValid = true;
+            this.Hex = RgbToHex(new byte[] { color.R, color.G, color.B });
+            this.R = color.R;
+            this.G = color.G;
+            this.B = color.B;
+        }
+
         public CustomColor(string name, string hex)
         {
             var rgb = HexToRgb(hex);
@@ -52,6 +63,9 @@ namespace Concierge.Primitives
 
         [JsonIgnore]
         public static CustomColor Empty => new (false);
+
+        [JsonIgnore]
+        public static CustomColor White => new ("White", 255, 255, 255);
 
         [JsonIgnore]
         public Color Color => Color.FromArgb(255, this.R, this.G, this.B);

@@ -55,7 +55,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
             {
                 this._eyeColor = value;
                 this.EyeColourTextBox.Text = this._eyeColor.Name;
-                this.EyeColorPreview.Color = this._eyeColor.Color;
+                this.EyeColorPreview.Color = this._eyeColor;
             }
         }
 
@@ -70,7 +70,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
             {
                 this._hairColor = value;
                 this.HairColourTextBox.Text = this._hairColor.Name;
-                this.HairColorPreview.Color = this._hairColor.Color;
+                this.HairColorPreview.Color = this._hairColor;
             }
         }
 
@@ -85,7 +85,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
             {
                 this._skinColor = value;
                 this.SkinColourTextBox.Text = this._skinColor.Name;
-                this.SkinColorPreview.Color = this._skinColor.Color;
+                this.SkinColorPreview.Color = this._skinColor;
             }
         }
 
@@ -166,7 +166,6 @@ namespace Concierge.Interfaces.DetailsPageInterface
             this.HeightUnits.Text = $"({UnitFormat.HeightPostfix})";
             this.WeightUnits.Text = $"({UnitFormat.WeightPostfix})";
 
-            this.UpdateColorPreviews();
             this.FillHeightFields();
         }
 
@@ -184,13 +183,6 @@ namespace Concierge.Interfaces.DetailsPageInterface
             this.Appearance.DistinguishingMarks = this.DistinguishingMarksTextBox.Text;
 
             Program.UndoRedoService.AddCommand(new EditCommand<Appearance>(this.Appearance, oldItem, this.ConciergePage));
-        }
-
-        private void UpdateColorPreviews()
-        {
-            this.SkinColorPreview.Background = this.SkinColourTextBox.Text.ToBrush();
-            this.EyeColorPreview.Background = this.EyeColourTextBox.Text.ToBrush();
-            this.HairColorPreview.Background = this.HairColourTextBox.Text.ToBrush();
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)

@@ -29,19 +29,19 @@ namespace Concierge.Interfaces.Controls
             typeof(RoutedEventHandler),
             typeof(ColorPicker));
 
-        private Color _selectedColor;
+        private CustomColor? _selectedColor;
 
         public ColorPicker()
         {
             this.InitializeComponent();
-            this.SelectedColor = Colors.White;
+            this.SelectedColor = CustomColor.White;
             this.InitializeColorList();
             this.DefaultColorList.SelectedIndex = 0;
-            this.SelectedColor = Colors.White;
-            this.RecentColors = new List<Color>();
+            this.SelectedColor = CustomColor.White;
+            this.RecentColors = new List<CustomColor>();
             foreach (var color in AppSettingsManager.ColorPicker.RecentColors)
             {
-                this.RecentColors.Add(color.ToColor());
+                this.RecentColors.Add(color);
             }
 
             SetColorButtons(this.DefaultColorsStackPanel, AppSettingsManager.ColorPicker.DefaultColors);
@@ -54,42 +54,32 @@ namespace Concierge.Interfaces.Controls
             remove { this.RemoveHandler(ColorChangedEvent, value); }
         }
 
-        public Color SelectedColor
+        public CustomColor SelectedColor
         {
             get
             {
-                return this._selectedColor;
+                return this._selectedColor ?? CustomColor.Empty;
             }
 
             set
             {
                 this._selectedColor = value;
-                this.PickColorButton.Foreground = this._selectedColor.GetForeColor();
-                this.PickColorButton.Background = new SolidColorBrush(this._selectedColor);
-                this.PickColorButton.ToolTip = this._selectedColor.GetName();
+                this.PickColorButton.Foreground = this._selectedColor.Color.GetForeColor();
+                this.PickColorButton.Background = new SolidColorBrush(this._selectedColor.Color);
+                this.PickColorButton.ToolTip = this._selectedColor.Name;
                 this.RaiseEvent(new RoutedEventArgs(ColorChangedEvent));
             }
         }
 
-        private List<Color> RecentColors { get; set; }
+        private List<CustomColor> RecentColors { get; set; }
 
-        private static void SetColorButtons(StackPanel stackPanel, List<Color> colors)
+        private static void SetColorButtons(StackPanel stackPanel, List<CustomColor> colors)
         {
             var buttons = DisplayUtility.FindVisualChildren<ConciergeColorButton>(stackPanel).ToList();
 
             for (int i = 0; i < colors.Count; i++)
             {
                 buttons[i].Color = colors[i];
-            }
-        }
-
-        private static void SetColorButtons(StackPanel stackPanel, List<string> colors)
-        {
-            var buttons = DisplayUtility.FindVisualChildren<ConciergeColorButton>(stackPanel).ToList();
-
-            for (int i = 0; i < colors.Count; i++)
-            {
-                buttons[i].Color = colors[i].ToColor();
             }
         }
 
@@ -115,7 +105,7 @@ namespace Concierge.Interfaces.Controls
             AppSettingsManager.UpdateRecentColors(this.RecentColors);
         }
 
-        private void AddRecentColor(Color color)
+        private void AddRecentColor(CustomColor color)
         {
             this.RecentColors.RemoveAt(this.RecentColors.Count - 1);
             this.RecentColors.Insert(0, color);
@@ -132,7 +122,7 @@ namespace Concierge.Interfaces.Controls
             }
 
             var color = item.Content.ToString().ToColor();
-            this.SelectDefaultColorButton.Color = color;
+            this.SelectDefaultColorButton.Color = new CustomColor(item.Content.ToString() ?? string.Empty, color.R, color.G, color.B);
         }
 
         private void ColorButton_Click(object sender, RoutedEventArgs e)
@@ -165,12 +155,12 @@ namespace Concierge.Interfaces.Controls
 
         private void SelectCustomColorButton_Click(object sender, RoutedEventArgs e)
         {
-            var result = new CustomColorWindow().ShowColorWindow(new CustomColor(string.Empty, this.SelectedColor.R, this.SelectedColor.G, this.SelectedColor.B));
+            var result = new CustomColorWindow().ShowColorWindow(this.SelectedColor);
             this.PopupToggleButton.IsChecked = false;
 
             if (result.IsValid)
             {
-                this.SelectedColor = result.Color;
+                this.SelectedColor = result;
                 this.AddRecentColor(this.SelectedColor);
                 this.RaiseEvent(new RoutedEventArgs(ColorChangedEvent));
             }

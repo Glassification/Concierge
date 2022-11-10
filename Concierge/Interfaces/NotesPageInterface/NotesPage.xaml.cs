@@ -19,6 +19,7 @@ namespace Concierge.Interfaces.NotesPageInterface
     using Concierge.Commands;
     using Concierge.Interfaces.Components;
     using Concierge.Interfaces.Enums;
+    using Concierge.Primitives;
     using Concierge.Services;
     using Concierge.Tools.Interface;
     using Concierge.Utility;
@@ -350,7 +351,7 @@ namespace Concierge.Interfaces.NotesPageInterface
             this.FontSizeList.Text = obj == DependencyProperty.UnsetValue ? string.Empty : obj.ToString();
 
             obj = this.NotesTextBox.Selection.GetPropertyValue(TextElement.ForegroundProperty);
-            this.ColorPicker.SelectedColor = obj == DependencyProperty.UnsetValue ? Colors.White : (Color)ColorConverter.ConvertFromString(obj.ToString());
+            this.ColorPicker.SelectedColor = obj == DependencyProperty.UnsetValue ? CustomColor.White : new CustomColor(obj.ToString() ?? "White");
 
             this.SelectionLock = false;
         }
@@ -635,7 +636,7 @@ namespace Concierge.Interfaces.NotesPageInterface
                 return;
             }
 
-            this.NotesTextBox.Selection.ApplyPropertyValue(TextElement.ForegroundProperty, this.ColorPicker.SelectedColor.ToString());
+            this.NotesTextBox.Selection.ApplyPropertyValue(TextElement.ForegroundProperty, this.ColorPicker.SelectedColor.Color.ToString());
         }
     }
 }

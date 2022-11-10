@@ -74,37 +74,30 @@
                                 HorizontalAlignment="Center">
                                 <components:ConciergeColorButton
                                     x:Name="DefaultColor0"
-                                    Color="Red"
                                     Click="ColorButton_Click"
                                     Style="{StaticResource ColorPickerButtonStyle}"/>
                                 <components:ConciergeColorButton
                                     x:Name="DefaultColor1"
-                                    Color="Green"
                                     Click="ColorButton_Click"
                                     Style="{StaticResource ColorPickerButtonStyle}"/>
                                 <components:ConciergeColorButton
                                     x:Name="DefaultColor2"
-                                    Color="Blue"
                                     Click="ColorButton_Click"
                                     Style="{StaticResource ColorPickerButtonStyle}"/>
                                 <components:ConciergeColorButton
                                     x:Name="DefaultColor3"
-                                    Color="Yellow"
                                     Click="ColorButton_Click"
                                     Style="{StaticResource ColorPickerButtonStyle}"/>
                                 <components:ConciergeColorButton
                                     x:Name="DefaultColor4"
-                                    Color="Orange"
                                     Click="ColorButton_Click"
                                     Style="{StaticResource ColorPickerButtonStyle}"/>
                                 <components:ConciergeColorButton
                                     x:Name="DefaultColor5"
-                                    Color="White"
                                     Click="ColorButton_Click"
                                     Style="{StaticResource ColorPickerButtonStyle}"/>
                                 <components:ConciergeColorButton
                                     x:Name="DefaultColor6"
-                                    Color="Black"
                                     Click="ColorButton_Click"
                                     Style="{StaticResource ColorPickerButtonStyle}"/>
                             </StackPanel>
@@ -126,43 +119,36 @@
                                 HorizontalAlignment="Center">
                                 <components:ConciergeColorButton
                                     x:Name="RecentColor0"
-                                    Color="Red"
                                     Index="0"
                                     Click="ColorButton_Click"
                                     Style="{StaticResource ColorPickerButtonStyle}"/>
                                 <components:ConciergeColorButton
                                     x:Name="RecentColor1"
-                                    Color="Green"
                                     Index="1"
                                     Click="ColorButton_Click"
                                     Style="{StaticResource ColorPickerButtonStyle}"/>
                                 <components:ConciergeColorButton
                                     x:Name="RecentColor2"
-                                    Color="Blue"
                                     Index="2"
                                     Click="ColorButton_Click"
                                     Style="{StaticResource ColorPickerButtonStyle}"/>
                                 <components:ConciergeColorButton
                                     x:Name="RecentColor3"
-                                    Color="Yellow"
                                     Index="3"
                                     Click="ColorButton_Click"
                                     Style="{StaticResource ColorPickerButtonStyle}"/>
                                 <components:ConciergeColorButton
                                     x:Name="RecentColor4"
-                                    Color="Orange"
                                     Index="4"
                                     Click="ColorButton_Click"
                                     Style="{StaticResource ColorPickerButtonStyle}"/>
                                 <components:ConciergeColorButton
                                     x:Name="RecentColor5"
-                                    Color="White"
                                     Index="5"
                                     Click="ColorButton_Click"
                                     Style="{StaticResource ColorPickerButtonStyle}"/>
                                 <components:ConciergeColorButton
                                     x:Name="RecentColor6"
-                                    Color="Black"
                                     Index="6"
                                     Click="ColorButton_Click"
                                     Style="{StaticResource ColorPickerButtonStyle}"/>

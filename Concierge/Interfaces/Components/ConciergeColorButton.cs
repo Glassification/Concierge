@@ -9,12 +9,12 @@ namespace Concierge.Interfaces.Components
     using System.Windows.Input;
     using System.Windows.Media;
 
+    using Concierge.Primitives;
     using Concierge.Utility;
-    using Concierge.Utility.Extensions;
 
     public sealed class ConciergeColorButton : Button
     {
-        private Color _color;
+        private CustomColor _color;
 
         public ConciergeColorButton()
             : base()
@@ -24,13 +24,14 @@ namespace Concierge.Interfaces.Components
             this.SnapsToDevicePixels = true;
             this.Margin = new Thickness(5, 0, 5, 0);
             this.Index = -1;
+            this._color = CustomColor.Empty;
 
             this.Click += this.Button_Click;
             this.MouseEnter += this.Button_MouseEnter;
             this.MouseLeave += this.Button_MouseLeave;
         }
 
-        public Color Color
+        public CustomColor Color
         {
             get
             {
@@ -40,8 +41,8 @@ namespace Concierge.Interfaces.Components
             set
             {
                 this._color = value;
-                this.Background = new SolidColorBrush(value);
-                this.ToolTip = this._color.GetName();
+                this.Background = new SolidColorBrush(this._color.Color);
+                this.ToolTip = this._color.Name;
             }
         }
 

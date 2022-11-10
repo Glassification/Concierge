@@ -11,7 +11,6 @@ namespace Concierge.Utility.Extensions
     using System.Text.RegularExpressions;
     using System.Windows.Media;
 
-    using Concierge.Configuration;
     using Concierge.Utility.Dtos;
 
     public static class StringExtensions
@@ -183,11 +182,6 @@ namespace Concierge.Utility.Extensions
             try
             {
                 colorName = colorName.Strip(" ").Strip("-").Strip(".").Strip("'");
-                if (AppSettingsManager.CustomColors.ContainsKey(colorName))
-                {
-                    colorName = AppSettingsManager.CustomColors[colorName];
-                }
-
                 var cc = TypeDescriptor.GetConverter(typeof(Color));
 
                 return (Color?)cc?.ConvertFromString(colorName) ?? Colors.Transparent;
@@ -296,9 +290,9 @@ namespace Concierge.Utility.Extensions
                     else if (ignorable)
                     {
                     }
-                    else if (specialCharacters.ContainsKey(word))
+                    else if (specialCharacters.TryGetValue(word, out string? value))
                     {
-                        outList.Add(specialCharacters[word]);
+                        outList.Add(value);
                     }
                     else if (word == "uc")
                     {
