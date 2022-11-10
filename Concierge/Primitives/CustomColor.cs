@@ -15,6 +15,7 @@ namespace Concierge.Primitives
 
     public sealed class CustomColor : ICopyable<CustomColor>
     {
+        private static readonly Regex _formatHex = new (@"(.{2})", RegexOptions.Compiled);
         private string _name;
 
         public CustomColor()
@@ -113,7 +114,7 @@ namespace Concierge.Primitives
 
         private static byte[] HexToRgb(string hex)
         {
-            var cleanHex = Regex.Replace(hex.Strip("#"), @"(.{2})", "$1 ").Trim();
+            var cleanHex = _formatHex.Replace(hex.Strip("#"), "$1 ").Trim();
             var result = cleanHex
                 .Split(' ')
                 .Select(item => Convert.ToByte(item, 16))
