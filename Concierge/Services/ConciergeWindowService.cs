@@ -90,7 +90,7 @@ namespace Concierge.Services
             var conciergeWindow = (ConciergeWindow?)Activator.CreateInstance(typeOfWindow);
             if (conciergeWindow is null)
             {
-                return CustomColor.Empty;
+                return CustomColor.Invalid;
             }
 
             return conciergeWindow.ShowColorWindow(color);

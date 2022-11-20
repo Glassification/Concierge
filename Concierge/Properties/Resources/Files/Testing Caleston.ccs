@@ -158,22 +158,25 @@
         "Measurement": 1
       },
       "SkinColour": {
+        "A": 255,
         "R": 255,
-        "G": 227,
-        "B": 213,
-        "Hex": "#FFE3D5",
+        "G": 233,
+        "B": 220,
+        "Hex": "#FFE9DC",
         "IsValid": true,
         "Name": "White"
       },
       "EyeColour": {
-        "R": 72,
-        "G": 137,
+        "A": 255,
+        "R": 65,
+        "G": 130,
         "B": 255,
-        "Hex": "#4889FF",
+        "Hex": "#4182FF",
         "IsValid": true,
         "Name": "Ice Blue"
       },
       "HairColour": {
+        "A": 255,
         "R": 0,
         "G": 0,
         "B": 0,
@@ -236,7 +239,7 @@
           {
             "IsExpanded": false,
             "Name": "The Two Towers",
-            "Rtf": "{\\rtf1\\ansi\\ansicpg1252\\uc1\\htmautsp\\deff2{\\fonttbl{\\f0\\fcharset0 Times New Roman;}{\\f2\\fcharset0 Bahnschrift SemiLight;}{\\f3\\fcharset0 Microsoft Sans Serif;}}{\\colortbl\\red0\\green0\\blue0;\\red255\\green255\\blue255;\\red0\\green128\\blue255;\\red0\\green255\\blue255;\\red255\\green128\\blue128;\\red255\\green128\\blue0;\\red128\\green0\\blue128;}\\loch\\hich\\dbch\\pard\\plain\\ltrpar\\itap0{\\lang1033\\fs29\\f3\\cf0 \\cf0\\ql{\\fs30\\f3 {\\cf1\\ltrch We pressed on, making it to the first tower and discovered it in ruins. After entering the abandoned building, we all jumped down a pit into a small underground lake (except }{\\cf2\\ltrch Kus}{\\cf1\\ltrch , who decided to take the hidden staircase) and found a small island with a treasure chest on it. Trying to take some gold caused the ghost to appear and we were forced to deal with him using the power of song. He granted us several silvered weapons and a special bow. We then trekked to the second tower, entered stealthfully, and killed the first person we saw blowing our cover. The fight was difficult, and }{\\cf3\\ltrch Silverpine }{\\cf1\\ltrch managed to escape (although is likely dead on the other side). We discovered a magical anomaly that absorbed items put into it.}\\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n{\\fs30\\f3 {\\ltrch }\\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n{\\fs30\\f3 {\\cf1\\ltrch The battle concluded, we closed to the anomaly with the }{\\i\\cf4\\ltrch Immovable Rod }{\\cf1\\ltrch and gathered some new weapons. }{\\cf3\\ltrch Erwin }{\\cf1\\ltrch decided to go back to }{\\cf5\\ltrch Aveburry}{\\cf1\\ltrch , and }{\\cf3\\ltrch Filbin }{\\cf1\\ltrch and the rest of us went to find the crashed meteorite. We reached the location and found the remains of a battle, with the meteor already looted. A clue was found on a dead }{\\cf6\\ltrch Cult of the Dragon }{\\cf1\\ltrch member that contained reference to a camp near the *** mountains. Despite }{\\cf2\\ltrch Caleston's}{\\cf1\\ltrch  protests, the group set out for the camp. After an encounter with an unknown monster, being attacked by snakes, and finding an impaled family, we fought another epic battle. }\\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n}\r\n}",
+            "Rtf": "{\\rtf1\\ansi\\ansicpg1252\\uc1\\htmautsp\\deff2{\\fonttbl{\\f0\\fcharset0 Times New Roman;}{\\f2\\fcharset0 Calibri;}{\\f3\\fcharset0 Microsoft Sans Serif;}}{\\colortbl\\red0\\green0\\blue0;\\red255\\green255\\blue255;}\\loch\\hich\\dbch\\pard\\plain\\ltrpar\\itap0{\\lang1033\\fs30\\f3\\cf1 \\cf1\\ql{\\f3 {\\ltrch We pressed on, making it to the first tower and discovered it in ruins. After entering the abandoned building, we all jumped down a pit into a small underground lake (except Kus, who decided to take the hidden staircase) and found a small island with a treasure chest on it. Trying to take some gold caused the ghost to appear and we were forced to deal with him using the power of song. He granted us several silvered weapons and a special bow. We then trekked to the second tower, entered stealthfully, and killed the first person we saw blowing our cover. The fight was difficult, and Silverpine managed to escape (although is likely dead on the other side). We discovered a magical anomaly that absorbed items put into it.}\\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n{\\f3 \\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n{\\f3 {\\ltrch The battle concluded, we closed to the anomaly with the }{\\i\\ltrch Immovable Rod }{\\ltrch and gathered some new weapons. Erwin decided to go back to Aveburry, and Filbin and the rest of us went to find the crashed meteorite. We reached the location and found the remains of a battle, with the meteor already looted. A clue was found on a dead Cult of the Dragon member that contained reference to a camp near the *** mountains. Despite Caleston's protests, the group set out for the camp. After an encounter with an unknown monster, being attacked by snakes, and finding an impaled family, we fought another epic battle. }\\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n}\r\n}",
             "Id": "5cf5d376-1618-42ac-a5a7-c62daf40c644"
           },
           {
@@ -2074,7 +2077,8 @@
       }
     ]
   },
-  "Hash": "AF81C14AFFDFAA57CBF3B29399A025C723F0BF2A00349AEB1F324281CC64183B",
+  "Hash": "26B1F4F6E05591C9EC95BA5CBE59899CAF927F47BD17635DC938479BF0762961",
   "OriginalCreationDate": "Monday, 14 March 2022 08:19:44 PM",
-  "Version": "4.15.0"
+  "LastSaveDate": "2022-11-15T16:47:41.8491871-06:00",
+  "Version": "4.15.3"
 }

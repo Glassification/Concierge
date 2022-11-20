@@ -58,7 +58,7 @@ namespace Concierge.Interfaces.Controls
         {
             get
             {
-                return this._selectedColor ?? CustomColor.Empty;
+                return this._selectedColor ?? CustomColor.Invalid;
             }
 
             set

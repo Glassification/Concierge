@@ -16,7 +16,6 @@ namespace Concierge.Interfaces.DetailsPageInterface
     using Concierge.Interfaces.UtilityInterface;
     using Concierge.Primitives;
     using Concierge.Services;
-    using Concierge.Utility.Extensions;
     using Concierge.Utility.Units;
     using Concierge.Utility.Units.Enums;
 
@@ -35,9 +34,9 @@ namespace Concierge.Interfaces.DetailsPageInterface
             this.GenderComboBox.ItemsSource = Enum.GetValues(typeof(Gender)).Cast<Gender>();
             this.ConciergePage = ConciergePage.None;
             this.Appearance = new Appearance();
-            this.EyeColor = CustomColor.Empty;
-            this.HairColor = CustomColor.Empty;
-            this.SkinColor = CustomColor.Empty;
+            this.EyeColor = CustomColor.Invalid;
+            this.HairColor = CustomColor.Invalid;
+            this.SkinColor = CustomColor.Invalid;
         }
 
         public override string HeaderText => "Edit Appearance";
@@ -48,7 +47,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
         {
             get
             {
-                return this._eyeColor ?? CustomColor.Empty;
+                return this._eyeColor ?? CustomColor.Invalid;
             }
 
             set
@@ -63,7 +62,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
         {
             get
             {
-                return this._hairColor ?? CustomColor.Empty;
+                return this._hairColor ?? CustomColor.Invalid;
             }
 
             set
@@ -78,7 +77,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
         {
             get
             {
-                return this._skinColor ?? CustomColor.Empty;
+                return this._skinColor ?? CustomColor.Invalid;
             }
 
             set
@@ -159,6 +158,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
             this.GenderComboBox.Text = this.Appearance.Gender;
             this.AgeUpDown.Value = this.Appearance.Age;
             this.WeightUpDown.Value = this.Appearance.Weight.Value;
+            this.SkinColor = this.Appearance.SkinColour;
             this.EyeColor = this.Appearance.EyeColour;
             this.HairColor = this.Appearance.HairColour;
             this.DistinguishingMarksTextBox.Text = this.Appearance.DistinguishingMarks;

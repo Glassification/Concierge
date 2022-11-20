@@ -15,18 +15,16 @@ namespace Concierge.Primitives
 
     public sealed class CustomColor : ICopyable<CustomColor>
     {
-        private static readonly Regex _formatHex = new (@"(.{2})", RegexOptions.Compiled);
-        private string _name;
+        private const byte MaxColor = 255;
+        private const byte MinColor = 0;
 
-        public CustomColor()
-            : this("White", "#FFFFFF")
-        {
-        }
+        private static readonly Regex _formatHex = new (@"(.{2})", RegexOptions.Compiled);
+        private string? _name;
 
         public CustomColor(string name)
         {
             var color = (Color)ColorConverter.ConvertFromString(name);
-            this._name = name;
+            this.Name = name;
             this.IsValid = true;
             this.Hex = RgbToHex(new byte[] { color.R, color.G, color.B });
             this.R = color.R;
@@ -37,39 +35,52 @@ namespace Concierge.Primitives
         public CustomColor(string name, string hex)
         {
             var rgb = HexToRgb(hex);
+            var alphaOffset = rgb.Length - 3;
 
-            this._name = name;
+            this.A = rgb.Length == 4 ? rgb[0] : MaxColor;
+            this.Name = name;
             this.IsValid = true;
             this.Hex = hex;
-            this.R = rgb[0];
-            this.G = rgb[1];
-            this.B = rgb[2];
+            this.R = rgb[0 + alphaOffset];
+            this.G = rgb[1 + alphaOffset];
+            this.B = rgb[2 + alphaOffset];
         }
 
-        public CustomColor(string name, byte r, byte g, byte b)
+        public CustomColor(string name, byte r, byte g, byte b, byte a = MaxColor)
         {
-            this._name = name;
+            this.Name = name;
             this.IsValid = true;
             this.Hex = RgbToHex(new byte[] { r, g, b });
+            this.A = a;
             this.R = r;
             this.G = g;
             this.B = b;
         }
 
+        private CustomColor()
+            : this("Color Uninitialized", "#FF0000")
+        {
+        }
+
         private CustomColor(bool isValid)
-            : this("White", "#FFFFFF")
+            : this("Invalid", "#FF0000")
         {
             this.IsValid = isValid;
         }
 
         [JsonIgnore]
-        public static CustomColor Empty => new (false);
+        public static CustomColor Invalid => new (false);
 
         [JsonIgnore]
-        public static CustomColor White => new ("White", 255, 255, 255);
+        public static CustomColor White => new ("White", MaxColor, MaxColor, MaxColor);
 
         [JsonIgnore]
-        public Color Color => Color.FromArgb(255, this.R, this.G, this.B);
+        public static CustomColor Black => new ("Black", MinColor, MinColor, MinColor);
+
+        [JsonIgnore]
+        public Color Color => Color.FromArgb(this.A, this.R, this.G, this.B);
+
+        public byte A { get; set; }
 
         public byte R { get; set; }
 
@@ -85,7 +96,7 @@ namespace Concierge.Primitives
         {
             get
             {
-                return this._name.IsNullOrWhiteSpace() ? this.Color.GetName() : this._name;
+                return this._name.IsNullOrWhiteSpace() ? this.Color.GetName() : (this._name ?? this.Color.GetName());
             }
 
             set
@@ -94,15 +105,41 @@ namespace Concierge.Primitives
             }
         }
 
+        public static bool operator ==(CustomColor left, CustomColor right)
+        {
+            return left.A == right.A && left.R == right.R && left.G == right.G && left.B == right.B;
+        }
+
+        public static bool operator !=(CustomColor left, CustomColor right)
+        {
+            return left.A != right.A || left.R != right.R || left.G != right.G || left.B != right.B;
+        }
+
         public override string ToString()
         {
             return this.Name;
+        }
+
+        public override bool Equals(object? obj)
+        {
+            if (obj is CustomColor color)
+            {
+                return color == this;
+            }
+
+            return false;
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
         }
 
         public CustomColor DeepCopy()
         {
             return new CustomColor()
             {
+                A = this.A,
                 R = this.R,
                 G = this.G,
                 B = this.B,

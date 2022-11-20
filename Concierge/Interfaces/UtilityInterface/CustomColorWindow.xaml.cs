@@ -59,7 +59,7 @@ namespace Concierge.Interfaces.UtilityInterface
 
             if (this.SelectedColor == Colors.Transparent)
             {
-                return CustomColor.Empty;
+                return CustomColor.Invalid;
             }
             else
             {

@@ -16,9 +16,9 @@ namespace Concierge.Character.Characteristics
             this.Age = 0;
             this.Height = new UnitDouble(0, UnitTypes.Imperial, Measurements.Height);
             this.Weight = new UnitDouble(0, UnitTypes.Imperial, Measurements.Weight);
-            this.SkinColour = CustomColor.Empty;
-            this.EyeColour = CustomColor.Empty;
-            this.HairColour = CustomColor.Empty;
+            this.SkinColour = CustomColor.Invalid;
+            this.EyeColour = CustomColor.Invalid;
+            this.HairColour = CustomColor.Invalid;
             this.DistinguishingMarks = string.Empty;
         }
 

@@ -10,6 +10,7 @@ namespace ConciergeDevTools
     {
         public static void Main(string[] args)
         {
+            /*
             var scrubbedDataOption = new Option<string>(
                 name: "--ScrubbedData",
                 description: "The file to parse the data from.");
@@ -38,6 +39,8 @@ namespace ConciergeDevTools
                 encodeFileOption);
 
             rootCommand.Invoke(args);
+            */
+            SerializeColorPicker.Save();
         }
 
         private static void ParseScrubbedDataHandler(string fileName)

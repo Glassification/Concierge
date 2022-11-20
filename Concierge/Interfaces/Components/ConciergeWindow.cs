@@ -87,7 +87,7 @@ namespace Concierge.Interfaces.Components
         public virtual CustomColor ShowColorWindow(CustomColor color)
         {
             Program.Logger.Error($"No implemented ShowColorWindow method for {color}.");
-            return CustomColor.Empty;
+            return CustomColor.Invalid;
         }
 
         public virtual PopupButtons ShowPopup()

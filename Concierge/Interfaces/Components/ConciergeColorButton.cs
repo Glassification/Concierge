@@ -24,7 +24,7 @@ namespace Concierge.Interfaces.Components
             this.SnapsToDevicePixels = true;
             this.Margin = new Thickness(5, 0, 5, 0);
             this.Index = -1;
-            this._color = CustomColor.Empty;
+            this._color = CustomColor.Invalid;
 
             this.Click += this.Button_Click;
             this.MouseEnter += this.Button_MouseEnter;

@@ -80,7 +80,7 @@ namespace Concierge.Utility.Extensions
             { "rdblquote", "\u201D" },
         };
 
-        public static bool IsNullOrWhiteSpace(this string str)
+        public static bool IsNullOrWhiteSpace(this string? str)
         {
             return string.IsNullOrWhiteSpace(str);
         }
