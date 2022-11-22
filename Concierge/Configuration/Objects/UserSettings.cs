@@ -18,6 +18,8 @@ namespace Concierge.Configuration.Objects
 
         public bool CheckVersion { get; set; }
 
+        public int MaxCustomColors { get; set; }
+
         public bool MuteSounds { get; set; }
 
         public UnitTypes UnitOfMeasurement { get; set; }

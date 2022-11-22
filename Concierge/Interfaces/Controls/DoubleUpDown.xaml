@@ -49,6 +49,7 @@
                 <RepeatButton
                     x:Name="Increase"
                     Margin="-1, -1, -1, -0.5"
+                    ToolTip="Increase"
                     Click="Increase_Click"
                     VerticalAlignment="Stretch"
                     HorizontalAlignment="Stretch"
@@ -71,6 +72,7 @@
                 <RepeatButton
                     x:Name="Decrease"
                     Margin="-1, -0.5, -1, -1"
+                    ToolTip="Decrease"
                     VerticalAlignment="Stretch"
                     HorizontalAlignment="Stretch"
                     Height="auto"

@@ -8,6 +8,7 @@ namespace Concierge.Services
     using System.IO;
     using System.Linq;
 
+    using Concierge.Configuration;
     using Concierge.Persistence;
     using Concierge.Persistence.ReadWriters;
     using Concierge.Primitives;
@@ -48,8 +49,14 @@ namespace Concierge.Services
 
         public void AddCustomColor(CustomColor color)
         {
-            this.CustomColors.Add(color);
+            this.CustomColors.Insert(0, color);
             this.Update();
+        }
+
+        public List<CustomColor> GetLimitedCustomColors()
+        {
+            var limit = AppSettingsManager.UserSettings.MaxCustomColors;
+            return limit <= 0 ? this.CustomColors : this.CustomColors.GetRange(0, limit);
         }
 
         public void UpdateRecentColors(int index)

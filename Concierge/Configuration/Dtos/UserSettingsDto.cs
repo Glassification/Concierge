@@ -18,6 +18,8 @@ namespace Concierge.Configuration.Dtos
 
         public bool CheckVersion { get; init; }
 
+        public int MaxCustomColors { get; set; }
+
         public bool MuteSounds { get; init; }
 
         public bool UseCoinWeight { get; init; }
@@ -37,6 +39,7 @@ namespace Concierge.Configuration.Dtos
                 settings.AutosaveInterval == this.AutosaveInterval &&
                 settings.AutosaveEnabled == this.AutosaveEnabled &&
                 settings.CheckVersion == this.CheckVersion &&
+                settings.MaxCustomColors == this.MaxCustomColors &&
                 settings.MuteSounds == this.MuteSounds &&
                 settings.UseCoinWeight == this.UseCoinWeight &&
                 settings.UseEncumbrance == this.UseEncumbrance &&

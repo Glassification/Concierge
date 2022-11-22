@@ -40,7 +40,7 @@ namespace Concierge.Interfaces.Controls
             this.SelectedColor = CustomColor.White;
 
             InitializeColorList(this.CustomColorService.DotNetColors, this.DefaultColorList);
-            InitializeColorList(this.CustomColorService.CustomColors, this.CustomColorList);
+            InitializeColorList(this.CustomColorService.GetLimitedCustomColors(), this.CustomColorList);
             SetColorButtons(this.DefaultColorsStackPanel, this.CustomColorService.DefaultColors);
             SetColorButtons(this.RecentColorsStackPanel, this.CustomColorService.RecentColors);
         }

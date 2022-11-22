@@ -222,6 +222,26 @@
                             Style="{StaticResource CheckBoxStyle}"/>
                     </Grid>
                 </Grid>
+
+                <Grid Grid.Row="3">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="40*"/>
+                        <ColumnDefinition Width="60*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!--Title-->
+                    <Grid Grid.Column="0">
+                        <components:ConciergeLabel 
+                            Text="Custom Colour Limit:"
+                            TextWrapping="Wrap"/>
+                    </Grid>
+
+                    <!--Value-->
+                    <Grid Grid.Column="1" Margin="20,0,0,0">
+                        <controls:IntegerUpDown
+                            x:Name="MaxCustomColorsUpDown"/>
+                    </Grid>
+                </Grid>
             </Grid>
         </Grid>
 

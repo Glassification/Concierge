@@ -49,6 +49,7 @@ namespace Concierge.Configuration
             UserSettings.AutosaveEnabled = userSettingsDto.AutosaveEnabled;
             UserSettings.AutosaveInterval = userSettingsDto.AutosaveInterval;
             UserSettings.CheckVersion = userSettingsDto.CheckVersion;
+            UserSettings.MaxCustomColors = userSettingsDto.MaxCustomColors;
             UserSettings.MuteSounds = userSettingsDto.MuteSounds;
             UserSettings.UseCoinWeight = userSettingsDto.UseCoinWeight;
             UserSettings.UseEncumbrance = userSettingsDto.UseEncumbrance;
@@ -74,6 +75,7 @@ namespace Concierge.Configuration
                 AutosaveEnabled = UserSettings.AutosaveEnabled,
                 AutosaveInterval = UserSettings.AutosaveInterval,
                 CheckVersion = UserSettings.CheckVersion,
+                MaxCustomColors = UserSettings.MaxCustomColors,
                 MuteSounds = UserSettings.MuteSounds,
                 UseCoinWeight = UserSettings.UseCoinWeight,
                 UseEncumbrance = UserSettings.UseEncumbrance,

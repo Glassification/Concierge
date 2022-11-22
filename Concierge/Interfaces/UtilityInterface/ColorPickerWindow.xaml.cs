@@ -28,7 +28,7 @@ namespace Concierge.Interfaces.UtilityInterface
             this.SelectedColor = CustomColor.Invalid;
 
             InitializeColorList(this.CustomColorService.DotNetColors, this.DefaultColorList);
-            InitializeColorList(this.CustomColorService.CustomColors, this.CustomColorList);
+            InitializeColorList(this.CustomColorService.GetLimitedCustomColors(), this.CustomColorList);
             SetColorButtons(this.DefaultColorsStackPanel, this.CustomColorService.DefaultColors);
             SetColorButtons(this.RecentColorsStackPanel, this.CustomColorService.RecentColors);
         }
