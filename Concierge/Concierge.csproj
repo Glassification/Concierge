@@ -6,7 +6,7 @@
     <RootNamespace>Concierge</RootNamespace>
 	<Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
-    <Version>4.15.3</Version>
+    <Version>4.15.5</Version>
     <ApplicationIcon>AppIconImage.ico</ApplicationIcon>
   </PropertyGroup>
 
@@ -62,6 +62,9 @@
 
   <ItemGroup>
     <None Update="appsettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="CustomColors.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="Properties\Resources\Pdfs\DnD5ePlayersHandbook.pdf">

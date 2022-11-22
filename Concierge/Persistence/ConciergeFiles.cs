@@ -11,7 +11,8 @@ namespace Concierge.Persistence
     {
         public const string AppSettingsName = "appsettings.json";
         public const string AppSettingsTestName = "appsettings.test.json";
-        public const string AppSettingsProdcutionName = "appsettings.production.json";
+        public const string AppSettingsProductionName = "appsettings.production.json";
+        public const string CustomColorsName = "CustomColors.json";
 
         private static readonly string applicationData;
 
@@ -39,6 +40,18 @@ namespace Concierge.Persistence
             }
 
             return FileExistsAtLocation(AppSettingsName, AppDataDirectory) ?
+                AppDataDirectory :
+                BaseDirectory;
+        }
+
+        public static string GetCorrectCustomColorsPath()
+        {
+            if (Program.IsDebug)
+            {
+                return BaseDirectory;
+            }
+
+            return FileExistsAtLocation(CustomColorsName, AppDataDirectory) ?
                 AppDataDirectory :
                 BaseDirectory;
         }

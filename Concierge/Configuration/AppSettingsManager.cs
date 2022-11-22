@@ -5,13 +5,11 @@
 namespace Concierge.Configuration
 {
     using System;
-    using System.Collections.Generic;
     using System.IO;
 
     using Concierge.Configuration.Dtos;
     using Concierge.Configuration.Objects;
     using Concierge.Persistence;
-    using Concierge.Primitives;
     using Microsoft.Extensions.Configuration;
     using Newtonsoft.Json;
 
@@ -26,9 +24,6 @@ namespace Concierge.Configuration
                 .AddJsonFile(ConciergeFiles.AppSettingsName)
                 .Build();
 
-            section = config.GetSection(nameof(ColorPicker));
-            ColorPicker = section.Get<ColorPicker>() ?? new ColorPicker();
-
             section = config.GetSection(nameof(StartUp));
             StartUp = section.Get<StartUp>() ?? new StartUp();
 
@@ -40,26 +35,9 @@ namespace Concierge.Configuration
 
         public static event UnitsChangedEventHandler? UnitsChanged;
 
-        public static ColorPicker ColorPicker { get; private set; }
-
         public static StartUp StartUp { get; private set; }
 
         public static UserSettings UserSettings { get; private set; }
-
-        public static void UpdateRecentColors(List<CustomColor> colors)
-        {
-            for (int i = 0; i < colors.Count; i++)
-            {
-                ColorPicker.RecentColors[i] = colors[i];
-            }
-
-            if (Program.IsDebug)
-            {
-                return;
-            }
-
-            WriteUpdatedSettingsToFile();
-        }
 
         public static void UpdateSettings(UserSettingsDto userSettingsDto)
         {
@@ -107,7 +85,6 @@ namespace Concierge.Configuration
         {
             var appSettings = new AppSettings()
             {
-                ColorPicker = ColorPicker,
                 StartUp = StartUp,
                 UserSettings = UserSettings,
             };

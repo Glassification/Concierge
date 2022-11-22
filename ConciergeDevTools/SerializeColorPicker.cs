@@ -12,13 +12,14 @@ namespace ConciergeDevTools
 
     using Concierge.Configuration.Objects;
     using Concierge.Primitives;
+    using Concierge.Services;
     using Newtonsoft.Json;
 
     public static class SerializeColorPicker
     {
         public static void Save()
         {
-            var colorPicker = new ColorPicker()
+            var colorPicker = new CustomColorService()
             {
                 DefaultColors = new List<CustomColor>()
                 {
@@ -40,10 +41,15 @@ namespace ConciergeDevTools
                     new CustomColor("Steel Blue", 70, 130, 180),
                     new CustomColor("Firebrick", 178, 34, 34),
                 },
+                CustomColors = new List<CustomColor>()
+                {
+                    new CustomColor("White", 255, 233, 220),
+                    new CustomColor("Ice Blue", 65, 130, 255),
+                },
             };
 
             var rawString = JsonConvert.SerializeObject(colorPicker, Formatting.Indented);
-            File.WriteAllText(@"C:\\Users\\TomBe\\Documents\\DnD\\ColorPicker.json", rawString);
+            File.WriteAllText(@"C:\\Users\\TomBe\\Documents\\My Games\\CustomColorService.json", rawString);
         }
     }
 }

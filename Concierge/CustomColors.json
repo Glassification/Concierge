@@ -1,0 +1,152 @@
+﻿{
+  "CustomColors": [
+    {
+      "A": 255,
+      "R": 255,
+      "G": 233,
+      "B": 220,
+      "Hex": "#FFE9DC",
+      "IsValid": true,
+      "Name": "White"
+    },
+    {
+      "A": 255,
+      "R": 65,
+      "G": 130,
+      "B": 255,
+      "Hex": "#4182FF",
+      "IsValid": true,
+      "Name": "Ice Blue"
+    }
+  ],
+  "DefaultColors": [
+    {
+      "A": 255,
+      "R": 255,
+      "G": 0,
+      "B": 0,
+      "Hex": "#FF0000",
+      "IsValid": true,
+      "Name": "Red"
+    },
+    {
+      "A": 255,
+      "R": 0,
+      "G": 255,
+      "B": 0,
+      "Hex": "#00FF00",
+      "IsValid": true,
+      "Name": "Green"
+    },
+    {
+      "A": 255,
+      "R": 0,
+      "G": 0,
+      "B": 255,
+      "Hex": "#0000FF",
+      "IsValid": true,
+      "Name": "Blue"
+    },
+    {
+      "A": 255,
+      "R": 255,
+      "G": 255,
+      "B": 0,
+      "Hex": "#FFFF00",
+      "IsValid": true,
+      "Name": "Yellow"
+    },
+    {
+      "A": 255,
+      "R": 255,
+      "G": 165,
+      "B": 0,
+      "Hex": "#FFA500",
+      "IsValid": true,
+      "Name": "Orange"
+    },
+    {
+      "A": 255,
+      "R": 255,
+      "G": 255,
+      "B": 255,
+      "Hex": "#FFFFFF",
+      "IsValid": true,
+      "Name": "White"
+    },
+    {
+      "A": 255,
+      "R": 0,
+      "G": 0,
+      "B": 0,
+      "Hex": "#000000",
+      "IsValid": true,
+      "Name": "Black"
+    }
+  ],
+  "RecentColors": [
+    {
+      "A": 255,
+      "R": 205,
+      "G": 133,
+      "B": 63,
+      "Hex": "#CD853F",
+      "IsValid": true,
+      "Name": "Peru"
+    },
+    {
+      "A": 255,
+      "R": 199,
+      "G": 21,
+      "B": 133,
+      "Hex": "#C71585",
+      "IsValid": true,
+      "Name": "Medium Violet Red"
+    },
+    {
+      "A": 255,
+      "R": 238,
+      "G": 232,
+      "B": 170,
+      "Hex": "#EEE8AA",
+      "IsValid": true,
+      "Name": "Goldenrod"
+    },
+    {
+      "A": 255,
+      "R": 21,
+      "G": 71,
+      "B": 52,
+      "Hex": "#154734",
+      "IsValid": true,
+      "Name": "Dark Green"
+    },
+    {
+      "A": 255,
+      "R": 128,
+      "G": 0,
+      "B": 128,
+      "Hex": "#800080",
+      "IsValid": true,
+      "Name": "Purple"
+    },
+    {
+      "A": 255,
+      "R": 70,
+      "G": 130,
+      "B": 180,
+      "Hex": "#4682B4",
+      "IsValid": true,
+      "Name": "Steel Blue"
+    },
+    {
+      "A": 255,
+      "R": 178,
+      "G": 34,
+      "B": 34,
+      "Hex": "#B22222",
+      "IsValid": true,
+      "Name": "Firebrick"
+    }
+  ]
+}

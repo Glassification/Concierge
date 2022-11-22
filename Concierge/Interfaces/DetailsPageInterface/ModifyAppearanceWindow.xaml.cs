@@ -220,15 +220,15 @@ namespace Concierge.Interfaces.DetailsPageInterface
             switch (button.Name)
             {
                 case "SkinColorPreview":
-                    var skinColor = ConciergeWindowService.ShowColorWindow(typeof(CustomColorWindow), this.SkinColor);
+                    var skinColor = ConciergeWindowService.ShowColorWindow(typeof(ColorPickerWindow), this.SkinColor);
                     this.SkinColor = skinColor.IsValid ? skinColor : this.SkinColor;
                     break;
                 case "EyeColorPreview":
-                    var eyeColor = ConciergeWindowService.ShowColorWindow(typeof(CustomColorWindow), this.EyeColor);
+                    var eyeColor = ConciergeWindowService.ShowColorWindow(typeof(ColorPickerWindow), this.EyeColor);
                     this.EyeColor = eyeColor.IsValid ? eyeColor : this.EyeColor;
                     break;
                 case "HairColorPreview":
-                    var hairColor = ConciergeWindowService.ShowColorWindow(typeof(CustomColorWindow), this.HairColor);
+                    var hairColor = ConciergeWindowService.ShowColorWindow(typeof(ColorPickerWindow), this.HairColor);
                     this.HairColor = hairColor.IsValid ? hairColor : this.HairColor;
                     break;
             }

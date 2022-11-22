@@ -30,7 +30,7 @@ namespace Concierge.Interfaces.UtilityInterface
             this.RgbSliderLock = false;
         }
 
-        public override string HeaderText => "Colour Picker";
+        public override string HeaderText => "Custom Colour";
 
         public Color SelectedColor
         {

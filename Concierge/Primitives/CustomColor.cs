@@ -21,15 +21,16 @@ namespace Concierge.Primitives
         private static readonly Regex _formatHex = new (@"(.{2})", RegexOptions.Compiled);
         private string? _name;
 
-        public CustomColor(string name)
+        public CustomColor(string name, bool isHex = false)
         {
             var color = (Color)ColorConverter.ConvertFromString(name);
-            this.Name = name;
             this.IsValid = true;
             this.Hex = RgbToHex(new byte[] { color.R, color.G, color.B });
+            this.A = MaxColor;
             this.R = color.R;
             this.G = color.G;
             this.B = color.B;
+            this.Name = isHex ? this.Color.GetName() : name.FormatColorName();
         }
 
         public CustomColor(string name, string hex)

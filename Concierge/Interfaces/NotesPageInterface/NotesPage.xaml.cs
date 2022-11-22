@@ -351,7 +351,7 @@ namespace Concierge.Interfaces.NotesPageInterface
             this.FontSizeList.Text = obj == DependencyProperty.UnsetValue ? string.Empty : obj.ToString();
 
             obj = this.NotesTextBox.Selection.GetPropertyValue(TextElement.ForegroundProperty);
-            this.ColorPicker.SelectedColor = obj == DependencyProperty.UnsetValue ? CustomColor.White : new CustomColor(obj.ToString() ?? "White");
+            this.ColorPicker.SelectedColor = obj == DependencyProperty.UnsetValue ? CustomColor.White : new CustomColor(obj.ToString() ?? "White", true);
 
             this.SelectionLock = false;
         }

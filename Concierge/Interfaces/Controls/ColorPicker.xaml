@@ -21,6 +21,7 @@
                 Margin="5,0,0,0"
                 Click="PickColorButton_Click"
                 Style="{StaticResource ColorPickerButtonStyle}"/>
+            
             <components:ConciergeColorToggleButton
                 x:Name="PopupToggleButton"
                 Height="40"
@@ -35,6 +36,7 @@
                   VerticalAlignment="Center"
                   Data="M0,0 L0,2 L4,6 L8,2 L8,0 L4,4 z"/>
             </components:ConciergeColorToggleButton>
+            
             <Popup
                 x:Name="ColorPopup"
                 Placement="Bottom"
@@ -42,8 +44,8 @@
                 Focusable="False"
                 IsOpen="{Binding IsChecked, ElementName=PopupToggleButton}"
                 StaysOpen="False"
-                Width="352"
-                Height="250"
+                Width="400"
+                Height="265"
                 PopupAnimation="Slide">
                 <Border
                     BorderBrush="#888888"
@@ -54,7 +56,9 @@
                             <RowDefinition Height="30*"/>
                             <RowDefinition Height="10*"/>
                             <RowDefinition Height="30*"/>
-                            <RowDefinition Height="20*"/>
+                            <RowDefinition Height="10*"/>
+                            <RowDefinition Height="30*"/>
+                            <RowDefinition Height="30*"/>
                         </Grid.RowDefinitions>
 
                         <Grid Grid.Row="0">
@@ -66,6 +70,7 @@
                                 HorizontalAlignment="Left"
                                 Margin="20,0,0,0"/>
                         </Grid>
+                        
                         <Grid Grid.Row="1">
                             <StackPanel
                                 x:Name="DefaultColorsStackPanel"
@@ -102,6 +107,7 @@
                                     Style="{StaticResource ColorPickerButtonStyle}"/>
                             </StackPanel>
                         </Grid>
+                        
                         <Grid Grid.Row="2">
                             <TextBlock
                                 Text="Recent Colours"
@@ -111,6 +117,7 @@
                                 HorizontalAlignment="Left"
                                 Margin="20,0,0,0"/>
                         </Grid>
+                        
                         <Grid Grid.Row="3">
                             <StackPanel
                                 x:Name="RecentColorsStackPanel"
@@ -154,36 +161,61 @@
                                     Style="{StaticResource ColorPickerButtonStyle}"/>
                             </StackPanel>
                         </Grid>
+
                         <Grid Grid.Row="4">
+                            <TextBlock
+                                Text="Built-In Colours"
+                                Foreground="White"
+                                FontSize="15"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Left"
+                                Margin="20,0,0,0"/>
+
+                            <TextBlock
+                                Text="Custom Colours"
+                                Foreground="White"
+                                FontSize="15"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Right"
+                                Margin="0,0,20,0"/>
+                        </Grid>
+
+                        <Grid Grid.Row="5">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="52*"/>
-                                <ColumnDefinition Width="18*"/>
-                                <ColumnDefinition Width="30*"/>
+                                <ColumnDefinition Width="175"/>
+                                <ColumnDefinition Width="50"/>
+                                <ColumnDefinition Width="175"/>
                             </Grid.ColumnDefinitions>
 
                             <Grid Grid.Column="0">
                                 <components:ConciergeComboBox
                                     x:Name="DefaultColorList"
                                     IsEditable="False"
-                                    Margin="5,0,0,0"
+                                    Margin="5,0,5,0"
                                     Style="{StaticResource ComboBoxStyle}"
-                                    SelectionChanged="DefaultColorList_SelectionChanged"/>
+                                    SelectionChanged="ColorList_SelectionChanged"/>
                             </Grid>
-                            <Grid
-                                Grid.Column="1">
+                            <Grid Grid.Column="1">
                                 <components:ConciergeColorButton
                                     x:Name="SelectDefaultColorButton"
-                                    Margin="-5,5,5,5"
                                     Click="SelectDefaultColorButton_Click"
                                     Style="{StaticResource ColorPickerButtonStyle}"/>
                             </Grid>
-                            <Grid
-                                Grid.Column="2">
+                            <Grid Grid.Column="2">
+                                <components:ConciergeComboBox
+                                    x:Name="CustomColorList"
+                                    IsEditable="False"
+                                    Margin="5,0,5,0"
+                                    Style="{StaticResource ComboBoxStyle}"
+                                    SelectionChanged="ColorList_SelectionChanged"/>
+                            </Grid>
+                        </Grid>
+
+                        <Grid Grid.Row="6">
+                            <Grid Grid.Column="2">
                                 <components:ConciergeTextButton
                                     x:Name="SelectCustomColorButton"
-                                    Height="auto"
                                     Width="auto"
-                                    VerticalAlignment="Stretch"
                                     HorizontalAlignment="Stretch"
                                     Content="Custom..."
                                     Click="SelectCustomColorButton_Click"

@@ -5,6 +5,7 @@
 namespace Concierge
 {
     using System;
+    using System.IO;
     using System.Reflection;
     using System.Windows;
     using System.Windows.Input;
@@ -13,6 +14,7 @@ namespace Concierge
     using Concierge.Interfaces;
     using Concierge.Logging;
     using Concierge.Persistence;
+    using Concierge.Persistence.ReadWriters;
     using Concierge.Services;
     using Concierge.Utility;
     using Concierge.Utility.Dtos;
@@ -37,6 +39,7 @@ namespace Concierge
             CcsFile = new CcsFile();
             MainWindow = null;
             BaseState = new ConciergeCharacter();
+            CustomColorService = CustomColorReadWriter.Read(Path.Combine(ConciergeFiles.GetCorrectCustomColorsPath(), ConciergeFiles.CustomColorsName));
         }
 
         public delegate void ModifiedChangedEventHandler(object sender, EventArgs e);
@@ -56,6 +59,8 @@ namespace Concierge
         public static ErrorService ErrorService { get; private set; }
 
         public static UndoRedoService UndoRedoService { get; private set; }
+
+        public static CustomColorService CustomColorService { get; private set; }
 
         public static string AssemblyVersion
         {

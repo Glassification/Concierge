@@ -27,7 +27,7 @@
         <!--Header-->
         <Grid Grid.Row="0">
             <TextBlock 
-                Text="Colour Picker"
+                Text="Custom Colour"
                 x:Name="HeaderTextBlock"
                 Foreground="#227EA9"
                 FontSize="35"
