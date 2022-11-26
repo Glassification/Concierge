@@ -8,6 +8,7 @@ namespace Concierge.Interfaces.UtilityInterface
 
     using Concierge.Interfaces.Components;
     using Concierge.Utility;
+    using Concierge.Utility.Utilities;
 
     /// <summary>
     /// Interaction logic for AboutConciergeWindow.xaml.
@@ -34,7 +35,8 @@ namespace Concierge.Interfaces.UtilityInterface
             this.VersionField.Text = $"{Program.AssemblyVersion}{(Program.IsDebug ? " - Debug" : string.Empty)}";
             this.DesignerField.Text = Constants.Designer;
             this.LicenseField.Text = Constants.License;
-            this.CopyrightField.Text = $"{CopyrightSymbol}{Constants.Copyright}";
+            this.CopyrightField.Text = Program.IsDebug ? GitUtility.BranchName : $"{CopyrightSymbol}{Constants.Copyright}";
+            this.CopyrightLabel.Text = Program.IsDebug ? "Git Branch:" : "Copyright:";
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)

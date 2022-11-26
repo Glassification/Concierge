@@ -6,6 +6,7 @@ namespace Concierge.Persistence
 {
     using System;
     using System.IO;
+    using System.Reflection;
 
     public static class ConciergeFiles
     {
@@ -26,6 +27,8 @@ namespace Concierge.Persistence
         public static string LoggingDirectory => Path.Combine(applicationData, @"Concierge\Logging");
 
         public static string BaseDirectory => AppDomain.CurrentDomain.BaseDirectory;
+
+        public static string ExecutingDirectory => Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) ?? string.Empty;
 
         public static bool FileExistsAtLocation(string fileName, string fileLocation)
         {
