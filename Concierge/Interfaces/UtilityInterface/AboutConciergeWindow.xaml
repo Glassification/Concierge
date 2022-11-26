@@ -131,7 +131,8 @@
 
                     <!--Title-->
                     <Grid Grid.Column="0">
-                        <components:ConciergeLabel 
+                        <components:ConciergeLabel
+                            x:Name="CopyrightLabel"
                             Text="Copyright:"/>
                     </Grid>
 

@@ -16,6 +16,7 @@ namespace Concierge
     using Concierge.Persistence.ReadWriters;
     using Concierge.Services;
     using Concierge.Utility;
+    using Concierge.Utility.Utilities;
 
     public static class Program
     {
@@ -37,6 +38,8 @@ namespace Concierge
             MainWindow = null;
             BaseState = new ConciergeCharacter();
             CustomColorService = CustomColorReadWriter.Read(Path.Combine(ConciergeFiles.GetCorrectCustomColorsPath(), ConciergeFiles.CustomColorsName));
+
+            GitUtility.Initialize();
         }
 
         public delegate void ModifiedChangedEventHandler(object sender, EventArgs e);
