@@ -6,6 +6,7 @@ namespace Concierge.Interfaces.CompanionPageInterface
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Windows;
     using System.Windows.Controls;
 
@@ -18,6 +19,7 @@ namespace Concierge.Interfaces.CompanionPageInterface
     using Concierge.Interfaces.EquippedItemsPageInterface;
     using Concierge.Interfaces.OverviewPageInterface;
     using Concierge.Services;
+    using Concierge.Utility.Extensions;
     using Concierge.Utility.Utilities;
 
     /// <summary>
@@ -37,11 +39,15 @@ namespace Concierge.Interfaces.CompanionPageInterface
             this.CharismaAttributeDisplay.InitializeFontSize();
 
             this.HealthDisplay.InitializeDisplay();
+
+            this.SearchFilter.FilterChanged += this.AttackDataGrid_Filtered;
         }
 
         public ConciergePage ConciergePage => ConciergePage.Companion;
 
         public bool HasEditableDataGrid => true;
+
+        private List<Weapon> DisplayList => Program.CcsFile.Character.Companion.Attacks.Filter(this.SearchFilter.FilterText).ToList();
 
         public void Draw()
         {
@@ -121,7 +127,7 @@ namespace Concierge.Interfaces.CompanionPageInterface
         {
             this.WeaponDataGrid.Items.Clear();
 
-            foreach (var weapon in Program.CcsFile.Character.Companion.Attacks)
+            foreach (var weapon in this.DisplayList)
             {
                 this.WeaponDataGrid.Items.Add(weapon);
             }
@@ -304,6 +310,14 @@ namespace Concierge.Interfaces.CompanionPageInterface
                 this.Window_ApplyChanges,
                 ConciergePage.EquippedItems);
             this.LoadImage();
+        }
+
+        private void AttackDataGrid_Filtered(object sender, RoutedEventArgs e)
+        {
+            this.SearchFilter.SetButtonEnableState(this.ButtonUp);
+            this.SearchFilter.SetButtonEnableState(this.ButtonDown);
+
+            this.DrawAttacks();
         }
     }
 }

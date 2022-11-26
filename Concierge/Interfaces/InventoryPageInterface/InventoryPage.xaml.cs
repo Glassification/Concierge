@@ -6,6 +6,7 @@ namespace Concierge.Interfaces.InventoryPageInterface
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Windows;
     using System.Windows.Controls;
 
@@ -14,6 +15,7 @@ namespace Concierge.Interfaces.InventoryPageInterface
     using Concierge.Interfaces;
     using Concierge.Interfaces.Enums;
     using Concierge.Services;
+    using Concierge.Utility.Extensions;
     using Concierge.Utility.Utilities;
 
     /// <summary>
@@ -25,6 +27,7 @@ namespace Concierge.Interfaces.InventoryPageInterface
         {
             this.InitializeComponent();
             this.DataContext = this;
+            this.SearchFilter.FilterChanged += this.InventoryDataGrid_Filtered;
         }
 
         public static double InventoryHeight => SystemParameters.PrimaryScreenHeight - 100;
@@ -32,6 +35,8 @@ namespace Concierge.Interfaces.InventoryPageInterface
         public ConciergePage ConciergePage => ConciergePage.Inventory;
 
         public bool HasEditableDataGrid => true;
+
+        private List<Inventory> DisplayList => Program.CcsFile.Character.Inventories.Filter(this.SearchFilter.FilterText).ToList();
 
         public void Draw()
         {
@@ -60,7 +65,7 @@ namespace Concierge.Interfaces.InventoryPageInterface
         {
             this.InventoryDataGrid.Items.Clear();
 
-            foreach (var inventory in Program.CcsFile.Character.Inventories)
+            foreach (var inventory in this.DisplayList)
             {
                 this.InventoryDataGrid.Items.Add(inventory);
             }
@@ -146,6 +151,14 @@ namespace Concierge.Interfaces.InventoryPageInterface
         private void InventoryDataGrid_Sorted(object sender, RoutedEventArgs e)
         {
             DisplayUtility.SortListFromDataGrid(this.InventoryDataGrid, Program.CcsFile.Character.Inventories, this.ConciergePage);
+        }
+
+        private void InventoryDataGrid_Filtered(object sender, RoutedEventArgs e)
+        {
+            this.SearchFilter.SetButtonEnableState(this.ButtonUp);
+            this.SearchFilter.SetButtonEnableState(this.ButtonDown);
+
+            this.DrawInventory();
         }
 
         private void Window_ApplyChanges(object sender, EventArgs e)

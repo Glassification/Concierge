@@ -30,5 +30,24 @@ namespace Concierge.Utility.Extensions
 
             return copy;
         }
+
+        public static IList<T> Filter<T>(this IList<T> list, string filterText)
+        {
+            if (filterText.IsNullOrWhiteSpace())
+            {
+                return list;
+            }
+
+            var filteredList = new List<T>();
+            foreach (var item in list)
+            {
+                if (item?.SearchObject(filterText) ?? false)
+                {
+                    filteredList.Add(item);
+                }
+            }
+
+            return filteredList;
+        }
     }
 }

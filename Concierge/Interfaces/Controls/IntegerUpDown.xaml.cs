@@ -271,7 +271,7 @@ namespace Concierge.Interfaces.Controls
         private void TextBoxValue_LostFocus(object sender, RoutedEventArgs e)
         {
             this.AttemptToSetValue();
-            Program.IsTyping = false;
+            Program.NotTyping();
         }
 
         private void Button_MouseEnter(object sender, MouseEventArgs e)
@@ -298,7 +298,7 @@ namespace Concierge.Interfaces.Controls
 
         private void TextBoxValue_GotFocus(object sender, RoutedEventArgs e)
         {
-            Program.IsTyping = true;
+            Program.Typing();
         }
 
         private void TextBoxValue_MouseDoubleClick(object sender, MouseButtonEventArgs e)

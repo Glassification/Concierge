@@ -51,6 +51,9 @@
     <Compile Update="Interfaces\Controls\SavingThrowDisplay.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Interfaces\Controls\SearchFilter.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Interfaces\Controls\SkillDisplay.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -150,6 +153,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Interfaces\Controls\SavingThrowDisplay.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Interfaces\Controls\SearchFilter.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Interfaces\Controls\SkillDisplay.xaml">

@@ -4,6 +4,7 @@
 
 namespace Concierge.Utility.Extensions
 {
+    using System;
     using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
@@ -33,6 +34,34 @@ namespace Concierge.Utility.Extensions
 
             Depth = 0;
             SetPropertiesHelper<T>(itemToCopy, originalItem);
+        }
+
+        public static bool SearchObject(this object item, string filter)
+        {
+            try
+            {
+                var properties = item.GetType().GetProperties();
+                foreach (var property in properties)
+                {
+                    var propertyValue = property.GetValue(item);
+
+                    if (propertyValue is null)
+                    {
+                        continue;
+                    }
+
+                    if (propertyValue?.ToString()?.Contains(filter, StringComparison.InvariantCultureIgnoreCase) ?? false)
+                    {
+                        return true;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Program.ErrorService.LogError(ex);
+            }
+
+            return false;
         }
 
         private static void SetPropertiesHelper<T>(object item, object? originalItem)

@@ -7,7 +7,6 @@ namespace Concierge
     using System;
     using System.IO;
     using System.Reflection;
-    using System.Windows;
     using System.Windows.Input;
 
     using Concierge.Character;
@@ -17,8 +16,6 @@ namespace Concierge
     using Concierge.Persistence.ReadWriters;
     using Concierge.Services;
     using Concierge.Utility;
-    using Concierge.Utility.Dtos;
-    using Concierge.Utility.Extensions;
 
     public static class Program
     {
@@ -48,7 +45,7 @@ namespace Concierge
 
         public static bool IsDebug { get; }
 
-        public static bool IsTyping { get; set; }
+        public static bool IsTyping { get; private set; }
 
         public static bool IsModified => !BaseState.Equals(CcsFile.Character);
 
@@ -114,6 +111,16 @@ namespace Concierge
             BaseState = CcsFile.Character.DeepCopy();
             ModifiedChanged?.Invoke(IsModified, new EventArgs());
             Logger.Info($"Updated Base State.");
+        }
+
+        public static void Typing()
+        {
+            IsTyping = true;
+        }
+
+        public static void NotTyping()
+        {
+            IsTyping = false;
         }
     }
 }

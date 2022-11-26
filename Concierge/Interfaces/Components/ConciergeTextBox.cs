@@ -45,12 +45,12 @@ namespace Concierge.Interfaces.Components
             }
 
             this.IsUpdating = false;
-            Program.IsTyping = true;
+            Program.Typing();
         }
 
         private void ConciergeTextBox_LostFocus(object sender, RoutedEventArgs e)
         {
-            Program.IsTyping = false;
+            Program.NotTyping();
         }
     }
 }

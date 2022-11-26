@@ -6,6 +6,7 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Windows;
     using System.Windows.Controls;
 
@@ -18,6 +19,7 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
     using Concierge.Interfaces.InventoryPageInterface;
     using Concierge.Services;
     using Concierge.Utility;
+    using Concierge.Utility.Extensions;
     using Concierge.Utility.Utilities;
 
     /// <summary>
@@ -29,6 +31,7 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
         {
             this.InitializeComponent();
             this.DataContext = this;
+            this.SearchFilter.FilterChanged += this.EquippedItemsDataGrid_Filtered;
         }
 
         public ConciergePage ConciergePage => ConciergePage.EquippedItems;
@@ -41,15 +44,25 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
 
         private ConciergeDataGrid? SelectedDataGrid { get; set; }
 
+        private List<Inventory> HeadDisplayList => Program.CcsFile.Character.EquippedItems.Head.Filter(this.SearchFilter.FilterText).ToList();
+
+        private List<Inventory> TorsoDisplayList => Program.CcsFile.Character.EquippedItems.Torso.Filter(this.SearchFilter.FilterText).ToList();
+
+        private List<Inventory> HandsDisplayList => Program.CcsFile.Character.EquippedItems.Hands.Filter(this.SearchFilter.FilterText).ToList();
+
+        private List<Inventory> LegsDisplayList => Program.CcsFile.Character.EquippedItems.Legs.Filter(this.SearchFilter.FilterText).ToList();
+
+        private List<Inventory> FeetDisplayList => Program.CcsFile.Character.EquippedItems.Feet.Filter(this.SearchFilter.FilterText).ToList();
+
         public void Draw()
         {
             this.UsedAttunement.Text = $"{Program.CcsFile.Character.EquippedItems.Attuned}/{Constants.MaxAttunedItems}";
 
-            ReadEquippedItems(Program.CcsFile.Character.EquippedItems.Head, this.HeadEquipmentDataGrid);
-            ReadEquippedItems(Program.CcsFile.Character.EquippedItems.Torso, this.TorsoEquipmentDataGrid);
-            ReadEquippedItems(Program.CcsFile.Character.EquippedItems.Hands, this.HandsEquipmentDataGrid);
-            ReadEquippedItems(Program.CcsFile.Character.EquippedItems.Legs, this.LegsEquipmentDataGrid);
-            ReadEquippedItems(Program.CcsFile.Character.EquippedItems.Feet, this.FeetEquipmentDataGrid);
+            ReadEquippedItems(this.HeadDisplayList, this.HeadEquipmentDataGrid);
+            ReadEquippedItems(this.TorsoDisplayList, this.TorsoEquipmentDataGrid);
+            ReadEquippedItems(this.HandsDisplayList, this.HandsEquipmentDataGrid);
+            ReadEquippedItems(this.LegsDisplayList, this.LegsEquipmentDataGrid);
+            ReadEquippedItems(this.FeetDisplayList, this.FeetEquipmentDataGrid);
 
             this.LoadImage();
         }
@@ -286,6 +299,14 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
                 typeof(ModifyCharacterImageWindow),
                 this.Window_ApplyChanges,
                 ConciergePage.EquippedItems);
+            this.Draw();
+        }
+
+        private void EquippedItemsDataGrid_Filtered(object sender, RoutedEventArgs e)
+        {
+            this.SearchFilter.SetButtonEnableState(this.ButtonUp);
+            this.SearchFilter.SetButtonEnableState(this.ButtonDown);
+
             this.Draw();
         }
     }

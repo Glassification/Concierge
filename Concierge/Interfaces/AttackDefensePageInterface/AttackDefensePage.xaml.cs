@@ -6,6 +6,7 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Windows;
     using System.Windows.Controls;
 
@@ -16,6 +17,7 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
     using Concierge.Interfaces.Components;
     using Concierge.Interfaces.Enums;
     using Concierge.Services;
+    using Concierge.Utility.Extensions;
     using Concierge.Utility.Utilities;
 
     /// <summary>
@@ -27,6 +29,7 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
         {
             this.InitializeComponent();
             this.DataContext = this;
+            this.SearchFilter.FilterChanged += this.AmmoWeaponDataGrid_Filtered;
         }
 
         private delegate void DrawList();
@@ -34,6 +37,10 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
         public ConciergePage ConciergePage => ConciergePage.AttackDefense;
 
         public bool HasEditableDataGrid => true;
+
+        private List<Ammunition> AmmunitionDisplayList => Program.CcsFile.Character.Ammunitions.Filter(this.SearchFilter.FilterText).ToList();
+
+        private List<Weapon> WeaponDisplayList => Program.CcsFile.Character.Weapons.Filter(this.SearchFilter.FilterText).ToList();
 
         public void Draw()
         {
@@ -114,7 +121,7 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
         {
             this.WeaponDataGrid.Items.Clear();
 
-            foreach (var weapon in Program.CcsFile.Character.Weapons)
+            foreach (var weapon in this.WeaponDisplayList)
             {
                 this.WeaponDataGrid.Items.Add(weapon);
             }
@@ -134,7 +141,7 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
         {
             this.AmmoDataGrid.Items.Clear();
 
-            foreach (var ammo in Program.CcsFile.Character.Ammunitions)
+            foreach (var ammo in this.AmmunitionDisplayList)
             {
                 this.AmmoDataGrid.Items.Add(ammo);
             }
@@ -361,6 +368,15 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
         private void StatusEffectsDataGrid_Sorted(object sender, RoutedEventArgs e)
         {
             DisplayUtility.SortListFromDataGrid(this.StatusEffectsDataGrid, Program.CcsFile.Character.StatusEffects, this.ConciergePage);
+        }
+
+        private void AmmoWeaponDataGrid_Filtered(object sender, RoutedEventArgs e)
+        {
+            this.SearchFilter.SetButtonEnableState(this.ButtonUp);
+            this.SearchFilter.SetButtonEnableState(this.ButtonDown);
+
+            this.DrawAmmoList();
+            this.DrawWeaponList();
         }
     }
 }

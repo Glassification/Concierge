@@ -67,6 +67,7 @@ namespace Concierge.Primitives
             : this("Invalid", "#FF0000")
         {
             this.IsValid = isValid;
+            this.A = 85;
         }
 
         [JsonIgnore]

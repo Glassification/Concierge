@@ -6,13 +6,16 @@ namespace Concierge.Interfaces.AbilitiesPageInterface
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Windows;
     using System.Windows.Controls;
 
     using Concierge.Character.Characteristics;
+    using Concierge.Character.Items;
     using Concierge.Commands;
     using Concierge.Interfaces.Enums;
     using Concierge.Services;
+    using Concierge.Utility.Extensions;
     using Concierge.Utility.Utilities;
 
     /// <summary>
@@ -23,10 +26,8 @@ namespace Concierge.Interfaces.AbilitiesPageInterface
         public AbilitiesPage()
         {
             this.InitializeComponent();
-
             this.DataContext = this;
-
-            Program.Logger.Info($"Initialized {nameof(AbilitiesPage)}.");
+            this.SearchFilter.FilterChanged += this.AbilityDataGrid_Filtered;
         }
 
         public static double AbilitiesHeight => SystemParameters.PrimaryScreenHeight - 100;
@@ -34,6 +35,8 @@ namespace Concierge.Interfaces.AbilitiesPageInterface
         public ConciergePage ConciergePage => ConciergePage.Abilities;
 
         public bool HasEditableDataGrid => true;
+
+        private List<Ability> DisplayList => Program.CcsFile.Character.Abilities.Filter(this.SearchFilter.FilterText).ToList();
 
         public void Draw()
         {
@@ -61,7 +64,7 @@ namespace Concierge.Interfaces.AbilitiesPageInterface
         {
             this.AbilitiesDataGrid.Items.Clear();
 
-            foreach (var ability in Program.CcsFile.Character.Abilities)
+            foreach (var ability in this.DisplayList)
             {
                 this.AbilitiesDataGrid.Items.Add(ability);
             }
@@ -146,6 +149,14 @@ namespace Concierge.Interfaces.AbilitiesPageInterface
         private void AbilitiesDataGrid_Sorted(object sender, RoutedEventArgs e)
         {
             DisplayUtility.SortListFromDataGrid(this.AbilitiesDataGrid, Program.CcsFile.Character.Abilities, this.ConciergePage);
+        }
+
+        private void AbilityDataGrid_Filtered(object sender, RoutedEventArgs e)
+        {
+            this.SearchFilter.SetButtonEnableState(this.ButtonUp);
+            this.SearchFilter.SetButtonEnableState(this.ButtonDown);
+
+            this.DrawAbilities();
         }
 
         private void Window_ApplyChanges(object sender, EventArgs e)

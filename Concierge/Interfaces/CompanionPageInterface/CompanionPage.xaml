@@ -434,14 +434,23 @@
                 Grid.Row="0"
                 Background="#000917"
                 Margin="3, 3, 3, 0">
-                <components:ConciergeTextBlock 
-                    Text="Attacks"
-                    Foreground="White"
-                    HorizontalAlignment="Left"
-                    VerticalAlignment="Center"
-                    FontSize="30"
-                    FontWeight="Bold"
-                    Margin="150, 0, 0, 0"/>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                    <components:ConciergeTextBlock 
+                        Text="Attacks"
+                        Foreground="White"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        FontSize="30"
+                        FontWeight="Bold"
+                        Margin="150, 0, 0, 0"/>
+                    <controls:SearchFilter
+                        x:Name="SearchFilter"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Width="300"
+                        Margin="150,10,0,10"/>
+                </StackPanel>
+
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                     <components:ConciergeDesignButton 
                         Style="{StaticResource ConciergeDesignButtonStyle}" 

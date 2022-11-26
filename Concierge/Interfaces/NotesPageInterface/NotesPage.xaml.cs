@@ -611,12 +611,12 @@ namespace Concierge.Interfaces.NotesPageInterface
 
         private void NotesTextBox_GotFocus(object sender, RoutedEventArgs e)
         {
-            Program.IsTyping = true;
+            Program.Typing();
         }
 
         private void NotesTextBox_LostFocus(object sender, RoutedEventArgs e)
         {
-            Program.IsTyping = false;
+            Program.NotTyping();
         }
 
         private void NotesTextBox_MouseEnter(object sender, MouseEventArgs e)

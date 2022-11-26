@@ -6,15 +6,18 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Windows;
     using System.Windows.Controls;
 
     using Concierge.Character.Enums;
+    using Concierge.Character.Items;
     using Concierge.Character.Spellcasting;
     using Concierge.Commands;
     using Concierge.Interfaces.Components;
     using Concierge.Interfaces.Enums;
     using Concierge.Services;
+    using Concierge.Utility.Extensions;
     using Concierge.Utility.Utilities;
 
     /// <summary>
@@ -25,8 +28,8 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
         public SpellcastingPage()
         {
             this.InitializeComponent();
-
             this.SpellSlotsDisplay.InitializeUsedSlot();
+            this.SearchFilter.FilterChanged += this.MagicClassSpellsDataGrid_Filtered;
         }
 
         private delegate void DrawList();
@@ -34,6 +37,10 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
         public ConciergePage ConciergePage => ConciergePage.Spellcasting;
 
         public bool HasEditableDataGrid => true;
+
+        private List<MagicClass> MagicClassDisplayList => Program.CcsFile.Character.MagicClasses.Filter(this.SearchFilter.FilterText).ToList();
+
+        private List<Spell> SpellDisplayList => Program.CcsFile.Character.Spells.Filter(this.SearchFilter.FilterText).ToList();
 
         public void Draw()
         {
@@ -88,7 +95,7 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
         {
             this.SpellListDataGrid.Items.Clear();
 
-            foreach (var spell in Program.CcsFile.Character.Spells)
+            foreach (var spell in this.SpellDisplayList)
             {
                 this.SpellListDataGrid.Items.Add(spell);
             }
@@ -98,7 +105,7 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
         {
             this.MagicClassDataGrid.Items.Clear();
 
-            foreach (var magicClass in Program.CcsFile.Character.MagicClasses)
+            foreach (var magicClass in this.MagicClassDisplayList)
             {
                 this.MagicClassDataGrid.Items.Add(magicClass);
             }
@@ -267,6 +274,15 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
         private void SpellSlotsDisplay_ValueChanged(object sender, RoutedEventArgs e)
         {
             this.DrawSpellSlots();
+        }
+
+        private void MagicClassSpellsDataGrid_Filtered(object sender, RoutedEventArgs e)
+        {
+            this.SearchFilter.SetButtonEnableState(this.ButtonUp);
+            this.SearchFilter.SetButtonEnableState(this.ButtonDown);
+
+            this.DrawMagicClasses();
+            this.DrawSpellList();
         }
     }
 }
