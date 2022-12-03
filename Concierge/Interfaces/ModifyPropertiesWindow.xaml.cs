@@ -28,6 +28,8 @@ namespace Concierge.Interfaces
         public ModifyPropertiesWindow()
         {
             this.InitializeComponent();
+            this.ForceRoundedCorners();
+
             this.fileAccessService = new FileAccessService();
             this.AlignmentComboBox.ItemsSource = Constants.Alignment;
             this.RaceComboBox.ItemsSource = Constants.Races;

@@ -16,6 +16,7 @@ namespace Concierge.Interfaces.UtilityInterface
         public HelpWindow()
         {
             this.InitializeComponent();
+            this.ForceRoundedCorners();
         }
 
         public override string HeaderText => "Help";

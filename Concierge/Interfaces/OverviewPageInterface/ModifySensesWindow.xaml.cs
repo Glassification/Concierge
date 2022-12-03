@@ -24,6 +24,8 @@ namespace Concierge.Interfaces.OverviewPageInterface
         public ModifySensesWindow()
         {
             this.InitializeComponent();
+            this.ForceRoundedCorners();
+
             this.VisionComboBox.ItemsSource = Enum.GetValues(typeof(VisionTypes)).Cast<VisionTypes>();
             this.ConciergePage = ConciergePage.None;
         }

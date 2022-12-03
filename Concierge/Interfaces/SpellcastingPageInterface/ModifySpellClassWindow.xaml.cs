@@ -25,6 +25,8 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
         public ModifySpellClassWindow()
         {
             this.InitializeComponent();
+            this.ForceRoundedCorners();
+
             this.ClassNameComboBox.ItemsSource = Constants.Classes;
             this.AbilityComboBox.ItemsSource = Enum.GetValues(typeof(Abilities)).Cast<Abilities>();
             this.ConciergePage = ConciergePage.None;

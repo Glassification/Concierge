@@ -20,6 +20,7 @@ namespace Concierge.Interfaces.UtilityInterface
         public AboutConciergeWindow()
         {
             this.InitializeComponent();
+            this.ForceRoundedCorners();
         }
 
         public override string HeaderText => "About Concierge";

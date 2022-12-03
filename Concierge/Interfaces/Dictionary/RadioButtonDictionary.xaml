@@ -11,7 +11,7 @@
                             <Grid Width="15" Height="15">
                                 <Ellipse x:Name="Border" StrokeThickness="1">
                                     <Ellipse.Stroke>
-                                        <SolidColorBrush Color="#333337"/>
+                                        <SolidColorBrush Color="#2B2B2B"/>
                                     </Ellipse.Stroke>
                                     <Ellipse.Fill>
                                         <SolidColorBrush Color="DimGray"/>

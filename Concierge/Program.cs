@@ -71,22 +71,6 @@ namespace Concierge
             }
         }
 
-        public static bool DeviceHasTouchInput
-        {
-            get
-            {
-                foreach (TabletDevice tabletDevice in Tablet.TabletDevices)
-                {
-                    if (tabletDevice.Type == TabletDeviceType.Touch)
-                    {
-                        return true;
-                    }
-                }
-
-                return false;
-            }
-        }
-
         public static MainWindow? MainWindow { get; private set; }
 
         private static ConciergeCharacter BaseState { get; set; }

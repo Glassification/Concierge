@@ -266,7 +266,7 @@
                                 BorderThickness="1"
                                 Background="DimGray">
                                 <components:ConciergeTextBoxBackground
-                                    Background="#3F3F3F"
+                                    Background="#373737"
                                     Height="auto"
                                     VerticalAlignment="Stretch"
                                     Margin="1"
@@ -276,7 +276,7 @@
                                         VerticalContentAlignment="Center"
                                         Margin="10,1,10,1"
                                         FontSize="18"
-                                        Background="#3F3F3F"
+                                        Background="#373737"
                                         MouseWheel="CustomInputTextBox_MouseWheel"
                                         PreviewKeyDown="CustomInputTextBox_PreviewKeyDown">
                                         <controls:WatermarkBuilder.Watermark>

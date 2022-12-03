@@ -4,6 +4,7 @@
 
 namespace Concierge.Interfaces.AbilitiesPageInterface
 {
+    using System;
     using System.Collections.Generic;
     using System.Windows;
     using System.Windows.Controls;
@@ -22,6 +23,7 @@ namespace Concierge.Interfaces.AbilitiesPageInterface
         public ModifyAbilitiesWindow()
         {
             this.InitializeComponent();
+            this.ForceRoundedCorners();
 
             this.NameComboBox.ItemsSource = Constants.Abilities;
             this.ConciergePage = ConciergePage.None;

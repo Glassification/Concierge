@@ -4,8 +4,10 @@
 
 namespace Concierge.Utility.Utilities
 {
+    using System;
     using System.Diagnostics;
 
+    using Concierge.Exceptions;
     using Concierge.Persistence;
 
     public static class GitUtility
@@ -20,38 +22,46 @@ namespace Concierge.Utility.Utilities
                 return _branchName ?? string.Empty;
             }
 
-            set
+            private set
             {
                 _branchName = value;
             }
         }
 
-        private static bool IsInitialized { get; set; }
+        public static bool IsInitialized { get; private set; }
 
         public static void Initialize()
         {
-            if (IsInitialized)
+            if (IsInitialized || !Program.IsDebug)
             {
                 return;
             }
 
-            var startInfo = new ProcessStartInfo("git.exe")
+            try
             {
-                UseShellExecute = false,
-                WorkingDirectory = ConciergeFiles.ExecutingDirectory,
-                RedirectStandardInput = true,
-                RedirectStandardOutput = true,
-                Arguments = "rev-parse --abbrev-ref HEAD",
-            };
+                var startInfo = new ProcessStartInfo("git.exe")
+                {
+                    UseShellExecute = false,
+                    WorkingDirectory = ConciergeFiles.ExecutingDirectory,
+                    RedirectStandardInput = true,
+                    RedirectStandardOutput = true,
+                    Arguments = "rev-parse --abbrev-ref HEAD",
+                };
 
-            var process = new Process
+                var process = new Process
+                {
+                    StartInfo = startInfo,
+                };
+
+                process.Start();
+                BranchName = process.StandardOutput.ReadLine() ?? string.Empty;
+                process.Dispose();
+            }
+            catch (Exception ex)
             {
-                StartInfo = startInfo,
-            };
+                Program.ErrorService.LogError(new GitException(ex));
+            }
 
-            process.Start();
-
-            BranchName = process.StandardOutput.ReadLine() ?? string.Empty;
             IsInitialized = true;
         }
     }

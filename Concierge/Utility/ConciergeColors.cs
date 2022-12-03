@@ -13,7 +13,7 @@ namespace Concierge.Utility
     {
         static ConciergeColors()
         {
-            WindowBackground = new SolidColorBrush(Color.FromArgb(255, 37, 37, 38));
+            WindowBackground = new SolidColorBrush(Color.FromArgb(255, 32, 32, 32));
             WindowBackground.Freeze();
 
             LightCarryCapacity = new SolidColorBrush(Color.FromArgb(255, 216, 228, 188));
@@ -31,10 +31,10 @@ namespace Concierge.Utility
             TotalDarkBoxBrush = new SolidColorBrush(Color.FromArgb(255, 15, 15, 15));
             TotalDarkBoxBrush.Freeze();
 
-            TotalLightBoxBrush = new SolidColorBrush(Color.FromArgb(255, 51, 51, 51));
+            TotalLightBoxBrush = new SolidColorBrush(Color.FromArgb(255, 55, 55, 55));
             TotalLightBoxBrush.Freeze();
 
-            ControlBackgroundBrush = new SolidColorBrush(Color.FromArgb(255, 63, 63, 63));
+            ControlBackgroundBrush = new SolidColorBrush(Color.FromArgb(255, 55, 55, 55));
             ControlBackgroundBrush.Freeze();
 
             ToggleBoxBrush = new SolidColorBrush(Color.FromArgb(255, 6, 1, 31));

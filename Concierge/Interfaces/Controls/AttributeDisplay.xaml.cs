@@ -137,6 +137,7 @@ namespace Concierge.Interfaces.Controls
                     this.AttributeScoreField.FontSize = 18;
                     break;
                 case DisplaySize.Large:
+                    Program.Logger.Warning("Large attribute font is not implemented.");
                     break;
             }
         }

@@ -19,6 +19,8 @@ namespace Concierge.Interfaces.OverviewPageInterface
         public ModifyHpWindow()
         {
             this.InitializeComponent();
+            this.ForceRoundedCorners();
+
             this.PreviousHeal = 0;
             this.PreviousDamage = 0;
             this.ConciergePage = ConciergePage.None;

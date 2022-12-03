@@ -17,6 +17,7 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
         public SpellcastingSelectionWindow()
         {
             this.InitializeComponent();
+            this.ForceRoundedCorners();
         }
 
         public override string HeaderText => "Spellcasting Selection";

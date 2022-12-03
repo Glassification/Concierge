@@ -31,6 +31,8 @@ namespace Concierge.Interfaces.DetailsPageInterface
         public ModifyAppearanceWindow()
         {
             this.InitializeComponent();
+            this.ForceRoundedCorners();
+
             this.GenderComboBox.ItemsSource = Enum.GetValues(typeof(Gender)).Cast<Gender>();
             this.ConciergePage = ConciergePage.None;
             this.Appearance = new Appearance();

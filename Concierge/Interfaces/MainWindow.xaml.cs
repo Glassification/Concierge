@@ -5,9 +5,11 @@
 namespace Concierge.Interfaces
 {
     using System;
+    using System.Runtime.InteropServices;
     using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Input;
+    using System.Windows.Interop;
     using System.Windows.Media.Animation;
     using System.Windows.Navigation;
 
@@ -352,6 +354,13 @@ namespace Concierge.Interfaces
             this.ActiveFileNameTextBlock.Text = Program.CcsFile.FileName;
         }
 
+        [LibraryImport("dwmapi.dll", EntryPoint = "DwmSetWindowAttribute")]
+        internal static partial int DwmSetWindowAttribute(
+            IntPtr hwnd,
+            DWMWINDOWATTRIBUTE attribute,
+            ref DWM_WINDOW_CORNER_PREFERENCE pvAttribute,
+            uint cbAttribute);
+
         protected override void OnClosed(EventArgs e)
         {
             base.OnClosed(e);
@@ -367,6 +376,14 @@ namespace Concierge.Interfaces
 
         protected virtual void OnScaleValueChanged(double oldValue, double newValue)
         {
+        }
+
+        protected void ForceRoundedCorners()
+        {
+            IntPtr hWnd = new WindowInteropHelper(GetWindow(this)).EnsureHandle();
+            var attribute = DWMWINDOWATTRIBUTE.DWMWA_WINDOW_CORNER_PREFERENCE;
+            var preference = DWM_WINDOW_CORNER_PREFERENCE.DWMWCP_ROUND;
+            Marshal.ThrowExceptionForHR(DwmSetWindowAttribute(hWnd, attribute, ref preference, sizeof(uint)));
         }
 
         private static object OnCoerceScaleValueX(DependencyObject o, object value)

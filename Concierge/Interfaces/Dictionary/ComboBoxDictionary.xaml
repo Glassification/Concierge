@@ -10,14 +10,14 @@
                   x:Name="Border"
                   Grid.ColumnSpan="2"
                   CornerRadius="0"
-                  Background="#333337"
+                  Background="#2B2B2B"
                   BorderBrush="Transparent"
                   BorderThickness="1" />
             <Border
                   Grid.Column="0"
                   CornerRadius="0"
                   Margin="1"
-                  Background="#FF3F3F3F"
+                  Background="#373737"
                   BorderBrush="#888888"
                   BorderThickness="0,0,1,0" />
             <Path
@@ -72,7 +72,7 @@
                             VerticalAlignment="Center"
                             Margin="5"
                             Focusable="True"
-                            Background="#FF3F3F3F"
+                            Background="#373737"
                             Foreground="White"
                             Visibility="Hidden"
                             IsReadOnly="{TemplateBinding IsReadOnly}"/>
@@ -90,7 +90,7 @@
                               MaxHeight="{TemplateBinding MaxDropDownHeight}">
                                 <Border
                                     x:Name="DropDownBorder"
-                                    Background="#FF3F3F3F"
+                                    Background="#373737"
                                     BorderThickness="1"
                                     BorderBrush="#888888"/>
                                     <ScrollViewer Margin="4,6,4,6" SnapsToDevicePixels="True">

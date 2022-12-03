@@ -20,6 +20,8 @@ namespace Concierge.Interfaces.UtilityInterface
         public KonamiCodeWindow()
         {
             this.InitializeComponent();
+            this.ForceRoundedCorners();
+
             this.VideoControl.Source = new Uri(@$"{Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}\Properties\Resources\Videos\hey-whats-going-on.wmv");
         }
 

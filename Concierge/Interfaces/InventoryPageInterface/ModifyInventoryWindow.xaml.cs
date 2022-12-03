@@ -31,6 +31,8 @@ namespace Concierge.Interfaces.InventoryPageInterface
         public ModifyInventoryWindow()
         {
             this.InitializeComponent();
+            this.ForceRoundedCorners();
+
             this.NameComboBox.ItemsSource = Constants.Inventories;
             this.CategoryComboBox.ItemsSource = Constants.ItemCategories;
             this.CoinTypeComboBox.ItemsSource = Enum.GetValues(typeof(CoinType)).Cast<CoinType>();

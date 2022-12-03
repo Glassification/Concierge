@@ -21,6 +21,7 @@ namespace Concierge.Interfaces.UtilityInterface
         public ConciergeMessageWindow()
         {
             this.InitializeComponent();
+            this.ForceRoundedCorners();
         }
 
         public override string HeaderText => "Concierge Message";

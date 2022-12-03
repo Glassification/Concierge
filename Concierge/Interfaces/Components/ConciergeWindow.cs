@@ -5,18 +5,18 @@
 namespace Concierge.Interfaces.Components
 {
     using System;
+    using System.Runtime.InteropServices;
     using System.Windows;
     using System.Windows.Input;
-    using System.Windows.Media;
+    using System.Windows.Interop;
 
     using Concierge.Animations;
     using Concierge.Character.Enums;
-    using Concierge.Configuration;
     using Concierge.Interfaces.Enums;
     using Concierge.Primitives;
     using Concierge.Utility;
 
-    public abstract class ConciergeWindow : Window
+    public abstract partial class ConciergeWindow : Window
     {
         private readonly WindowAnimation windowAnimation;
 
@@ -101,6 +101,13 @@ namespace Concierge.Interfaces.Components
             Program.Logger.Error("No implemented ShowWindow method.");
         }
 
+        [LibraryImport("dwmapi.dll", EntryPoint = "DwmSetWindowAttribute")]
+        internal static partial int DwmSetWindowAttribute(
+            IntPtr hwnd,
+            DWMWINDOWATTRIBUTE attribute,
+            ref DWM_WINDOW_CORNER_PREFERENCE pvAttribute,
+            uint cbAttribute);
+
         protected virtual void ReturnAndClose()
         {
             this.Result = ConciergeWindowResult.OK;
@@ -126,6 +133,14 @@ namespace Concierge.Interfaces.Components
         protected void InvokeApplyChanges()
         {
             this.ApplyChanges?.Invoke(this, new EventArgs());
+        }
+
+        protected void ForceRoundedCorners()
+        {
+            IntPtr hWnd = new WindowInteropHelper(GetWindow(this)).EnsureHandle();
+            var attribute = DWMWINDOWATTRIBUTE.DWMWA_WINDOW_CORNER_PREFERENCE;
+            var preference = DWM_WINDOW_CORNER_PREFERENCE.DWMWCP_ROUND;
+            Marshal.ThrowExceptionForHR(DwmSetWindowAttribute(hWnd, attribute, ref preference, sizeof(uint)));
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)

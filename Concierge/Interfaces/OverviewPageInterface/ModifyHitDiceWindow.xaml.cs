@@ -19,6 +19,8 @@ namespace Concierge.Interfaces.OverviewPageInterface
         public ModifyHitDiceWindow()
         {
             this.InitializeComponent();
+            this.ForceRoundedCorners();
+
             this.ConciergePage = ConciergePage.None;
             this.HitDice = new HitDice();
         }

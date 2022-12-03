@@ -25,6 +25,8 @@ namespace Concierge.Interfaces.DetailsPageInterface
         public ModifyClassResourceWindow()
         {
             this.InitializeComponent();
+            this.ForceRoundedCorners();
+
             this.ConciergePage = ConciergePage.None;
             this.ResourceNameComboBox.ItemsSource = Constants.Resources;
             this.RecoveryComboBox.ItemsSource = StringUtility.FormatEnumForDisplay(typeof(Recovery));

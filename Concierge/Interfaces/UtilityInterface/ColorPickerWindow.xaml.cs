@@ -23,6 +23,7 @@ namespace Concierge.Interfaces.UtilityInterface
         public ColorPickerWindow()
         {
             this.InitializeComponent();
+            this.ForceRoundedCorners();
 
             this.CustomColorService = Program.CustomColorService;
             this.SelectedColor = CustomColor.Invalid;

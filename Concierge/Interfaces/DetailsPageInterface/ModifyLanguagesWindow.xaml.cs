@@ -22,6 +22,8 @@ namespace Concierge.Interfaces.DetailsPageInterface
         public ModifyLanguagesWindow()
         {
             this.InitializeComponent();
+            this.ForceRoundedCorners();
+
             this.NameComboBox.ItemsSource = Constants.Languages;
             this.ConciergePage = ConciergePage.None;
             this.SelectedLanguage = new Language();

@@ -19,6 +19,8 @@ namespace Concierge.Interfaces.OverviewPageInterface
         public ModifyWealthWindow()
         {
             this.InitializeComponent();
+            this.ForceRoundedCorners();
+
             this.ConciergePage = ConciergePage.None;
             this.SelectedWealth = new Wealth();
         }
