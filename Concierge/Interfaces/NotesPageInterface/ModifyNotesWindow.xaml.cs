@@ -22,7 +22,7 @@ namespace Concierge.Interfaces.NotesPageInterface
         public ModifyNotesWindow()
         {
             this.InitializeComponent();
-            this.ForceRoundedCorners();
+            this.UseRoundedCorners();
 
             this.ConciergePage = ConciergePage.None;
         }

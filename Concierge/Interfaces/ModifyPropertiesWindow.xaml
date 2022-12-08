@@ -72,7 +72,22 @@
                     <!--Title-->
                     <Grid Grid.Column="0">
                         <components:ConciergeLabel
-                            Text="Name:"/>
+                            Text="Name:"
+                            HorizontalAlignment="Left"/>
+                        <components:ConciergeDesignButton
+                            x:Name="GenerateNameButton"
+                            Style="{StaticResource ConciergeDesignButtonStyle}"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Center"
+                            Margin="0,0,5,0"
+                            ToolTip="Generate Random Name"
+                            Click="GenerateNameButton_Click">
+                            <materialDesign:PackIcon
+                                Kind="Autorenew"
+                                Foreground="SteelBlue"
+                                Width="25"
+                                Height="25"/>
+                        </components:ConciergeDesignButton>
                     </Grid>
 
                     <!--Value-->

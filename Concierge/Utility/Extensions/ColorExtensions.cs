@@ -24,12 +24,8 @@ namespace Concierge.Utility.Extensions
 
         public static SolidColorBrush GetForeColor(this Color color)
         {
-            return GetBrightness(color) < Constants.BrightnessTransition ? Brushes.White : Brushes.Black;
-        }
-
-        public static int GetBrightness(this Color color)
-        {
-            return (int)Math.Sqrt((color.R * color.R * 0.241) + (color.G * color.G * 0.691) + (color.B * color.B * 0.068));
+            var brightness = (int)Math.Sqrt((color.R * color.R * 0.241) + (color.G * color.G * 0.691) + (color.B * color.B * 0.068));
+            return brightness < Constants.BrightnessTransition ? Brushes.White : Brushes.Black;
         }
 
         public static double GetHue(this Color color)

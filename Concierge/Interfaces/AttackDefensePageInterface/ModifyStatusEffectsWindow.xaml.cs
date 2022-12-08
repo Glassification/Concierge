@@ -25,7 +25,7 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
         public ModifyStatusEffectsWindow()
         {
             this.InitializeComponent();
-            this.ForceRoundedCorners();
+            this.UseRoundedCorners();
 
             this.NameComboBox.ItemsSource = Constants.StatusEffects;
             this.TypeComboBox.ItemsSource = Enum.GetValues(typeof(StatusEffectTypes)).Cast<StatusEffectTypes>();

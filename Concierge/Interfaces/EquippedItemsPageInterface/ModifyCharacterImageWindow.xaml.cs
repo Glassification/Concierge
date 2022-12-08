@@ -26,7 +26,7 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
         public ModifyCharacterImageWindow()
         {
             this.InitializeComponent();
-            this.ForceRoundedCorners();
+            this.UseRoundedCorners();
 
             this.fileAccessService = new FileAccessService();
             this.FillTypeComboBox.ItemsSource = StringUtility.FormatEnumForDisplay(typeof(Stretch));

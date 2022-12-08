@@ -123,6 +123,7 @@ namespace Concierge.Interfaces.Controls
         {
             var roll = this.RollDice();
             this.DiceResult.Text = roll.Total.ToString();
+            Clipboard.SetText(this.DiceResult.Text);
 
             this.RaiseEvent(new RoutedEventArgs(DiceRolledEvent, roll));
         }

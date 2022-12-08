@@ -26,7 +26,7 @@ namespace Concierge.Interfaces.UtilityInterface
         public LevelUpWindow()
         {
             this.InitializeComponent();
-            this.ForceRoundedCorners();
+            this.UseRoundedCorners();
 
             this.Class1DiceComboBox.ItemsSource = Enum.GetValues(typeof(HitDie)).Cast<HitDie>();
             this.Class2DiceComboBox.ItemsSource = Enum.GetValues(typeof(HitDie)).Cast<HitDie>();

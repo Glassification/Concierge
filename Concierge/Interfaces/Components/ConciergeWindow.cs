@@ -12,6 +12,7 @@ namespace Concierge.Interfaces.Components
 
     using Concierge.Animations;
     using Concierge.Character.Enums;
+    using Concierge.Exceptions;
     using Concierge.Interfaces.Enums;
     using Concierge.Primitives;
     using Concierge.Utility;
@@ -52,53 +53,53 @@ namespace Concierge.Interfaces.Components
 
         public virtual bool ShowAdd<T>(T item)
         {
-            Program.Logger.Error($"No implemented ShowAdd method for {item}.");
+            Program.Logger.Error(new ImplementedMethodException(nameof(this.ShowAdd), item));
             return false;
         }
 
         public virtual void ShowEdit<T>(T item)
         {
-            Program.Logger.Error($"No implemented ShowEdit method for {item}.");
+            Program.Logger.Error(new ImplementedMethodException(nameof(this.ShowEdit), item));
         }
 
         public virtual void ShowEdit<T>(T item, bool equippedItem)
         {
-            Program.Logger.Error($"No implemented ShowEdit method for {item}.");
+            Program.Logger.Error(new ImplementedMethodException(nameof(this.ShowEdit), item));
         }
 
         public virtual ConciergeWindowResult ShowWizardSetup(string buttonText)
         {
-            Program.Logger.Error("No implemented ShowWizardSetup method.");
+            Program.Logger.Error(new ImplementedMethodException(nameof(this.ShowWizardSetup)));
             return ConciergeWindowResult.NoResult;
         }
 
         public virtual ConciergeWindowResult ShowHeal<T>(T item)
         {
-            Program.Logger.Error($"No implemented ShowHeal method for {item}.");
+            Program.Logger.Error(new ImplementedMethodException(nameof(this.ShowHeal), item));
             return ConciergeWindowResult.NoResult;
         }
 
         public virtual ConciergeWindowResult ShowDamage<T>(T item)
         {
-            Program.Logger.Error($"No implemented ShowDamage method for {item}.");
+            Program.Logger.Error(new ImplementedMethodException(nameof(this.ShowDamage), item));
             return ConciergeWindowResult.NoResult;
         }
 
         public virtual CustomColor ShowColorWindow(CustomColor color)
         {
-            Program.Logger.Error($"No implemented ShowColorWindow method for {color}.");
+            Program.Logger.Error(new ImplementedMethodException(nameof(this.ShowColorWindow), color));
             return CustomColor.Invalid;
         }
 
         public virtual PopupButtons ShowPopup()
         {
-            Program.Logger.Error("No implemented ShowPopup method.");
+            Program.Logger.Error(new ImplementedMethodException(nameof(this.ShowPopup)));
             return PopupButtons.None;
         }
 
         public virtual void ShowWindow()
         {
-            Program.Logger.Error("No implemented ShowWindow method.");
+            Program.Logger.Error(new ImplementedMethodException(nameof(this.ShowWindow)));
         }
 
         [LibraryImport("dwmapi.dll", EntryPoint = "DwmSetWindowAttribute")]
@@ -135,7 +136,7 @@ namespace Concierge.Interfaces.Components
             this.ApplyChanges?.Invoke(this, new EventArgs());
         }
 
-        protected void ForceRoundedCorners()
+        protected void UseRoundedCorners()
         {
             IntPtr hWnd = new WindowInteropHelper(GetWindow(this)).EnsureHandle();
             var attribute = DWMWINDOWATTRIBUTE.DWMWA_WINDOW_CORNER_PREFERENCE;

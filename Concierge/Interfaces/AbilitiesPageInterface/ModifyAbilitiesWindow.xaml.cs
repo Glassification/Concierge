@@ -23,7 +23,7 @@ namespace Concierge.Interfaces.AbilitiesPageInterface
         public ModifyAbilitiesWindow()
         {
             this.InitializeComponent();
-            this.ForceRoundedCorners();
+            this.UseRoundedCorners();
 
             this.NameComboBox.ItemsSource = Constants.Abilities;
             this.ConciergePage = ConciergePage.None;
@@ -105,6 +105,13 @@ namespace Concierge.Interfaces.AbilitiesPageInterface
             this.CloseConciergeWindow();
 
             Program.Modify();
+        }
+
+        protected override void OnSourceInitialized(EventArgs e)
+        {
+            base.OnSourceInitialized(e);
+
+            // FrostedGlass.ExtendGlassFrame(this, new Thickness(-1));
         }
 
         private void FillFields(Ability ability)

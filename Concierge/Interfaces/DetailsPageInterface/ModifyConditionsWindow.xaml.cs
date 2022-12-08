@@ -24,7 +24,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
         public MondifyConditionsWindow()
         {
             this.InitializeComponent();
-            this.ForceRoundedCorners();
+            this.UseRoundedCorners();
 
             this.FatiguedComboBox.ItemsSource = Enum.GetValues(typeof(ExhaustionLevel)).Cast<ExhaustionLevel>();
             this.EncumbranceComboBox.ItemsSource = StringUtility.FormatEnumForDisplay(typeof(EncumbranceLevel));

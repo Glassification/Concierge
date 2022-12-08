@@ -172,6 +172,9 @@
   <data name="LevelExp" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Constants\LevelExp.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
+  <data name="Names" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Json\Names.json;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="ProficiencyLevel" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Constants\ProficiencyLevel.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>

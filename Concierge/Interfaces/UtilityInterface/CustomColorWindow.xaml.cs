@@ -25,7 +25,7 @@ namespace Concierge.Interfaces.UtilityInterface
         public CustomColorWindow()
         {
             this.InitializeComponent();
-            this.ForceRoundedCorners();
+            this.UseRoundedCorners();
 
             this.ColorPickerImage.LoadFromByteArray(Properties.Resources.ColorPickerBackground);
             this.RgbValueLock = false;

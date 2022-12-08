@@ -53,7 +53,7 @@ namespace Concierge.Services
             this.Update();
         }
 
-        public List<CustomColor> GetLimitedCustomColors()
+        public List<CustomColor> GetFilteredCustomColors()
         {
             var limit = AppSettingsManager.UserSettings.MaxCustomColors;
             return limit <= 0 ? this.CustomColors : this.CustomColors.GetRange(0, limit);

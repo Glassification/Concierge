@@ -22,7 +22,7 @@ namespace Concierge.Interfaces.CompanionPageInterface
         public ModifyCompanionPropertiesWindow()
         {
             this.InitializeComponent();
-            this.ForceRoundedCorners();
+            this.UseRoundedCorners();
 
             this.VisionComboBox.ItemsSource = Enum.GetValues(typeof(VisionTypes)).Cast<VisionTypes>();
             this.CreatureSizeComboBox.ItemsSource = Enum.GetValues(typeof(CreatureSizes)).Cast<CreatureSizes>();

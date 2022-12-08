@@ -23,13 +23,13 @@ namespace Concierge.Interfaces.UtilityInterface
         public ColorPickerWindow()
         {
             this.InitializeComponent();
-            this.ForceRoundedCorners();
+            this.UseRoundedCorners();
 
             this.CustomColorService = Program.CustomColorService;
             this.SelectedColor = CustomColor.Invalid;
 
             InitializeColorList(this.CustomColorService.DotNetColors, this.DefaultColorList);
-            InitializeColorList(this.CustomColorService.GetLimitedCustomColors(), this.CustomColorList);
+            InitializeColorList(this.CustomColorService.GetFilteredCustomColors(), this.CustomColorList);
             SetColorButtons(this.DefaultColorsStackPanel, this.CustomColorService.DefaultColors);
             SetColorButtons(this.RecentColorsStackPanel, this.CustomColorService.RecentColors);
         }
@@ -80,10 +80,15 @@ namespace Concierge.Interfaces.UtilityInterface
                 return;
             }
 
-            if (button.Index > 0)
+            if (button.Index >= 0)
             {
                 this.SelectedColor = button.Color;
                 this.CustomColorService.UpdateRecentColors(button.Index);
+                this.CloseConciergeWindow();
+            }
+            else
+            {
+                this.SelectedColor = button.Color;
                 this.CloseConciergeWindow();
             }
         }

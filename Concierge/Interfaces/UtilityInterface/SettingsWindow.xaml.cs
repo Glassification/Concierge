@@ -25,7 +25,7 @@ namespace Concierge.Interfaces.UtilityInterface
         public SettingsWindow()
         {
             this.InitializeComponent();
-            this.ForceRoundedCorners();
+            this.UseRoundedCorners();
 
             this.UnitOfMeasurementComboBox.ItemsSource = Enum.GetValues(typeof(UnitTypes)).Cast<UnitTypes>();
         }

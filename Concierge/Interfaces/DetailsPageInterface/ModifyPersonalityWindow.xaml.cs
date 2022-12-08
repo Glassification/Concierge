@@ -20,7 +20,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
         public ModifyPersonalityWindow()
         {
             this.InitializeComponent();
-            this.ForceRoundedCorners();
+            this.UseRoundedCorners();
 
             this.ConciergePage = ConciergePage.None;
             this.Personality = new Personality();

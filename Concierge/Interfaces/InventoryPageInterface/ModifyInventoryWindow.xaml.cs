@@ -31,7 +31,7 @@ namespace Concierge.Interfaces.InventoryPageInterface
         public ModifyInventoryWindow()
         {
             this.InitializeComponent();
-            this.ForceRoundedCorners();
+            this.UseRoundedCorners();
 
             this.NameComboBox.ItemsSource = Constants.Inventories;
             this.CategoryComboBox.ItemsSource = Constants.ItemCategories;

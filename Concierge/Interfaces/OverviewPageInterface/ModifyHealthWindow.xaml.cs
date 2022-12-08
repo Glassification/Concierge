@@ -19,7 +19,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
         public ModifyHealthWindow()
         {
             this.InitializeComponent();
-            this.ForceRoundedCorners();
+            this.UseRoundedCorners();
 
             this.ConciergePage = ConciergePage.None;
             this.Health = new Health();

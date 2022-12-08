@@ -22,7 +22,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
         public ModifySkillCheckWindow()
         {
             this.InitializeComponent();
-            this.ForceRoundedCorners();
+            this.UseRoundedCorners();
 
             this.AthleticsComboBox.ItemsSource = Enum.GetValues(typeof(StatusChecks)).Cast<StatusChecks>();
             this.AcrobaticsComboBox.ItemsSource = Enum.GetValues(typeof(StatusChecks)).Cast<StatusChecks>();

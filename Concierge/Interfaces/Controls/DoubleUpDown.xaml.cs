@@ -46,10 +46,10 @@ namespace Concierge.Interfaces.Controls
 
         private static readonly RoutedEvent ValueChangedEvent =
             EventManager.RegisterRoutedEvent(
-            "ValueChanged",
-            RoutingStrategy.Bubble,
-            typeof(RoutedEventHandler),
-            typeof(DoubleUpDown));
+                "ValueChanged",
+                RoutingStrategy.Bubble,
+                typeof(RoutedEventHandler),
+                typeof(DoubleUpDown));
 
         private static readonly RoutedEvent IncreaseClickedEvent =
             EventManager.RegisterRoutedEvent(

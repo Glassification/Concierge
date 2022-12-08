@@ -22,7 +22,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
         public ModifyLanguagesWindow()
         {
             this.InitializeComponent();
-            this.ForceRoundedCorners();
+            this.UseRoundedCorners();
 
             this.NameComboBox.ItemsSource = Constants.Languages;
             this.ConciergePage = ConciergePage.None;

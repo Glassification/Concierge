@@ -40,7 +40,8 @@ namespace ConciergeDevTools
 
             rootCommand.Invoke(args);
             */
-            SerializeColorPicker.Save();
+            //SerializeColorPicker.Save();
+            GenerateNames.Generate();
         }
 
         private static void ParseScrubbedDataHandler(string fileName)

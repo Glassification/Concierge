@@ -27,7 +27,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
         public ModifyProficiencyWindow()
         {
             this.InitializeComponent();
-            this.ForceRoundedCorners();
+            this.UseRoundedCorners();
 
             this.ProficiencyComboBox.ItemsSource = Enum.GetValues(typeof(ProficiencyTypes)).Cast<ProficiencyTypes>();
             this.ProficiencyTextComboBox.ItemsSource = GenerateComboBoxItems();

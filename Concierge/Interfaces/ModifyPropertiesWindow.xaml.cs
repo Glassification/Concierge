@@ -11,10 +11,12 @@ namespace Concierge.Interfaces
 
     using Concierge.Character;
     using Concierge.Character.Characteristics;
+    using Concierge.Character.Enums;
     using Concierge.Commands;
     using Concierge.Interfaces.Components;
     using Concierge.Interfaces.Enums;
     using Concierge.Services;
+    using Concierge.Tools;
     using Concierge.Utility;
     using Concierge.Utility.Extensions;
 
@@ -24,13 +26,16 @@ namespace Concierge.Interfaces
     public partial class ModifyPropertiesWindow : ConciergeWindow
     {
         private readonly FileAccessService fileAccessService;
+        private readonly NameGenerator nameGenerator;
 
         public ModifyPropertiesWindow()
         {
             this.InitializeComponent();
-            this.ForceRoundedCorners();
+            this.UseRoundedCorners();
 
             this.fileAccessService = new FileAccessService();
+            this.nameGenerator = new NameGenerator();
+
             this.AlignmentComboBox.ItemsSource = Constants.Alignment;
             this.RaceComboBox.ItemsSource = Constants.Races;
             this.SubRaceComboBox.ItemsSource = Constants.Subrace;
@@ -245,6 +250,19 @@ namespace Concierge.Interfaces
 
             Action a = () => comboBox.Text = CharacterClass.FormatSubclass(changedText);
             this.Dispatcher.BeginInvoke(a);
+        }
+
+        private void GenerateNameButton_Click(object sender, RoutedEventArgs e)
+        {
+            var genderText = Program.CcsFile.Character.Appearance.Gender;
+            var gender = genderText switch
+            {
+                "Male" => Gender.Male,
+                "Female" => Gender.Female,
+                _ => Gender.Other,
+            };
+
+            this.NameTextBox.Text = this.nameGenerator.FullName(gender);
         }
     }
 }

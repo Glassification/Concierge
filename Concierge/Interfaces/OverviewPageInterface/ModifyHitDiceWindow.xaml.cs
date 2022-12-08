@@ -19,7 +19,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
         public ModifyHitDiceWindow()
         {
             this.InitializeComponent();
-            this.ForceRoundedCorners();
+            this.UseRoundedCorners();
 
             this.ConciergePage = ConciergePage.None;
             this.HitDice = new HitDice();

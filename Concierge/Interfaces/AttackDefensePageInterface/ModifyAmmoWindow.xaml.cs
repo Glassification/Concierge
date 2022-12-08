@@ -25,7 +25,7 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
         public ModifyAmmoWindow()
         {
             this.InitializeComponent();
-            this.ForceRoundedCorners();
+            this.UseRoundedCorners();
 
             this.NameComboBox.ItemsSource = Constants.Ammunitions;
             this.DamageTypeComboBox.ItemsSource = Enum.GetValues(typeof(DamageTypes)).Cast<DamageTypes>();

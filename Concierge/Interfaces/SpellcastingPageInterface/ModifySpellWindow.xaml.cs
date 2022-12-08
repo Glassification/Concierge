@@ -25,7 +25,7 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
         public ModifySpellWindow()
         {
             this.InitializeComponent();
-            this.ForceRoundedCorners();
+            this.UseRoundedCorners();
 
             this.SpellNameComboBox.ItemsSource = Constants.Spells;
             this.SchoolComboBox.ItemsSource = Enum.GetValues(typeof(ArcaneSchools)).Cast<ArcaneSchools>();

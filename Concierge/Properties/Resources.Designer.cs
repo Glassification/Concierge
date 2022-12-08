@@ -335,6 +335,16 @@ namespace Concierge.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Names {
+            get {
+                object obj = ResourceManager.GetObject("Names", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 2
         ///2
         ///2

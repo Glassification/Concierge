@@ -19,7 +19,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
         public ModifyAttributesWindow()
         {
             this.InitializeComponent();
-            this.ForceRoundedCorners();
+            this.UseRoundedCorners();
 
             this.ConciergePage = ConciergePage.None;
             this.Attributes = new Attributes();

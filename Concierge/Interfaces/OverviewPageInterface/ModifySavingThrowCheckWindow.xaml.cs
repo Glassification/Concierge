@@ -22,7 +22,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
         public ModifySavingThrowCheckWindow()
         {
             this.InitializeComponent();
-            this.ForceRoundedCorners();
+            this.UseRoundedCorners();
 
             this.StrengthComboBox.ItemsSource = Enum.GetValues(typeof(StatusChecks)).Cast<StatusChecks>();
             this.DexterityComboBox.ItemsSource = Enum.GetValues(typeof(StatusChecks)).Cast<StatusChecks>();

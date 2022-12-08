@@ -38,7 +38,7 @@ namespace Concierge.Interfaces.UtilityInterface
             }
 
             this.InitializeComponent();
-            this.ForceRoundedCorners();
+            this.UseRoundedCorners();
 
             this.conciergeSearch = new ConciergeSearch(Program.MainWindow);
             this.conciergeNavigate = new ConciergeNavigate();

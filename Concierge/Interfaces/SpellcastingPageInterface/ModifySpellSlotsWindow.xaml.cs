@@ -19,7 +19,7 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
         public ModifySpellSlotsWindow()
         {
             this.InitializeComponent();
-            this.ForceRoundedCorners();
+            this.UseRoundedCorners();
 
             this.ConciergePage = ConciergePage.None;
             this.SpellSlots = new SpellSlots();

@@ -23,7 +23,7 @@ namespace Concierge.Interfaces.EquippedItemsPageInterface
         public ModifyEquippedItemsWindow()
         {
             this.InitializeComponent();
-            this.ForceRoundedCorners();
+            this.UseRoundedCorners();
 
             this.SlotComboBox.ItemsSource = Enum.GetValues(typeof(EquipmentSlot)).Cast<EquipmentSlot>();
             this.ConciergePage = ConciergePage.None;
