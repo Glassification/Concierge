@@ -107,15 +107,15 @@ namespace Concierge.Services
             return conciergeWindow.ShowPopup();
         }
 
-        public static void ShowWindow(Type typeOfWindow)
+        public static object? ShowWindow(Type typeOfWindow)
         {
             var conciergeWindow = (ConciergeWindow?)Activator.CreateInstance(typeOfWindow);
             if (conciergeWindow is null)
             {
-                return;
+                return null;
             }
 
-            conciergeWindow.ShowWindow();
+            return conciergeWindow.ShowWindow();
         }
 
         public static void ShowWindow(Type typeOfWindow, ApplyChangesEventHandler applyEvent)

@@ -27,9 +27,10 @@ namespace Concierge.Interfaces.UtilityInterface
 
         public override string HeaderText => "Hey What's Goin' On";
 
-        public override void ShowWindow()
+        public override object? ShowWindow()
         {
             this.ShowConciergeWindow();
+            return null;
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)

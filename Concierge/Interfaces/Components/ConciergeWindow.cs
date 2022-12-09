@@ -97,9 +97,10 @@ namespace Concierge.Interfaces.Components
             return PopupButtons.None;
         }
 
-        public virtual void ShowWindow()
+        public virtual object? ShowWindow()
         {
             Program.Logger.Error(new ImplementedMethodException(nameof(this.ShowWindow)));
+            return null;
         }
 
         [LibraryImport("dwmapi.dll", EntryPoint = "DwmSetWindowAttribute")]

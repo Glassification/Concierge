@@ -59,10 +59,12 @@ namespace Concierge.Interfaces.UtilityInterface
 
         private SearchResult? PreviousResult { get; set; }
 
-        public override void ShowWindow()
+        public override object? ShowWindow()
         {
             this.SearchTextBox.Focus();
             this.ShowConciergeWindow();
+
+            return null;
         }
 
         protected override void OnClosing(CancelEventArgs e)

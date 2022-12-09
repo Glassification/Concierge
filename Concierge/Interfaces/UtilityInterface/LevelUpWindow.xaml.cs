@@ -39,10 +39,12 @@ namespace Concierge.Interfaces.UtilityInterface
 
         public override string HeaderText => "Level Up";
 
-        public override void ShowWindow()
+        public override object? ShowWindow()
         {
             this.FillFields();
             this.ShowConciergeWindow();
+
+            return null;
         }
 
         private static void FillClass(

@@ -93,6 +93,9 @@
     <Compile Update="Interfaces\UtilityInterface\LevelUpWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Interfaces\UtilityInterface\NameGeneratorWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Interfaces\UtilityInterface\SearchWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -246,6 +249,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Interfaces\UtilityInterface\LevelUpWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Interfaces\UtilityInterface\NameGeneratorWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Interfaces\UtilityInterface\SearchWindow.xaml">

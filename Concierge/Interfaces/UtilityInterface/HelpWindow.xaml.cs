@@ -21,9 +21,10 @@ namespace Concierge.Interfaces.UtilityInterface
 
         public override string HeaderText => "Help";
 
-        public override void ShowWindow()
+        public override object? ShowWindow()
         {
             this.ShowConciergeWindow();
+            return null;
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)

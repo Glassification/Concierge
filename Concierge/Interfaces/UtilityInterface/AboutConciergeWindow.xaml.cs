@@ -25,10 +25,12 @@ namespace Concierge.Interfaces.UtilityInterface
 
         public override string HeaderText => "About Concierge";
 
-        public override void ShowWindow()
+        public override object? ShowWindow()
         {
             this.Read();
             this.ShowConciergeWindow();
+
+            return null;
         }
 
         private void Read()

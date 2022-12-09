@@ -2,7 +2,7 @@
 // Copyright (c) Thomas Beckett. All rights reserved.
 // </copyright>
 
-namespace Interfaces.Enums
+namespace Concierge.Tools.Enums
 {
     public enum HistoryDirection
     {

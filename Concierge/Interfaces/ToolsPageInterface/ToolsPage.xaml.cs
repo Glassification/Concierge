@@ -13,12 +13,13 @@ namespace Concierge.Interfaces.ToolsPageInterface
     using Concierge.Character.Statuses;
     using Concierge.Interfaces.Enums;
     using Concierge.Persistence.ReadWriters;
+    using Concierge.Tools;
     using Concierge.Tools.DiceRolling;
     using Concierge.Tools.DiceRolling.Dice;
     using Concierge.Tools.DivideLoot;
+    using Concierge.Tools.Enums;
     using Concierge.Utility;
     using Concierge.Utility.Extensions;
-    using global::Interfaces.Enums;
 
     /// <summary>
     /// Interaction logic for ToolsPage.xaml.
@@ -31,7 +32,7 @@ namespace Concierge.Interfaces.ToolsPageInterface
 
             this.Players = new List<Player>();
             this.RollHistory = new List<IDiceRoll>();
-            this.DiceHistory = new DiceHistory(DiceHistoryReadWriter.Read());
+            this.DiceHistory = new History(DiceHistoryReadWriter.Read());
 
             this.SetDefaultDivideValues();
             this.SetDefaultDiceValues();
@@ -45,7 +46,7 @@ namespace Concierge.Interfaces.ToolsPageInterface
 
         private List<IDiceRoll> RollHistory { get; }
 
-        private DiceHistory DiceHistory { get; set; }
+        private History DiceHistory { get; set; }
 
         public void Draw()
         {

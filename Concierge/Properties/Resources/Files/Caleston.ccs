@@ -158,6 +158,7 @@
         "Measurement": 1
       },
       "SkinColour": {
+        "A": 85,
         "R": 255,
         "G": 255,
         "B": 255,
@@ -166,6 +167,7 @@
         "Name": "White"
       },
       "EyeColour": {
+        "A": 85,
         "R": 86,
         "G": 167,
         "B": 255,
@@ -174,6 +176,7 @@
         "Name": "Ice Blue"
       },
       "HairColour": {
+        "A": 85,
         "R": 0,
         "G": 0,
         "B": 0,
@@ -2053,8 +2056,8 @@
       }
     ]
   },
-  "Hash": "0FC45F92F49B93C700E3A69F9992B24F91C902EC25255630C4C7CD505C39E767",
+  "Hash": "47CD10474B4C29D473BC5D47440AC90144FA110B11D938301527851FB8C31310",
   "OriginalCreationDate": "Monday, 14 March 2022 08:19:44 PM",
-  "LastSaveDate": "2022-11-06T20:02:18.8076611-06:00",
-  "Version": "4.15.0"
+  "LastSaveDate": "2022-12-08T14:00:49.0133719-06:00",
+  "Version": "4.16.1"
 }

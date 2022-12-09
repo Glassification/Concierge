@@ -122,7 +122,7 @@ namespace Concierge.Interfaces.UtilityInterface
 
         private void SelectCustomColorButton_Click(object sender, RoutedEventArgs e)
         {
-            var result = new CustomColorWindow().ShowColorWindow(this.SelectedColor);
+            var result = ConciergeWindowService.ShowColorWindow(typeof(CustomColorWindow), this.SelectedColor);
 
             if (result.IsValid)
             {

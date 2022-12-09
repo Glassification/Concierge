@@ -40,7 +40,6 @@ namespace ConciergeDevTools
 
             rootCommand.Invoke(args);
             */
-            //SerializeColorPicker.Save();
             GenerateNames.Generate();
         }
 

@@ -1,17 +1,23 @@
-﻿// <copyright file="DiceHistory.cs" company="Thomas Beckett">
+﻿// <copyright file="History.cs" company="Thomas Beckett">
 // Copyright (c) Thomas Beckett. All rights reserved.
 // </copyright>
 
-namespace Concierge.Tools.DiceRolling
+namespace Concierge.Tools
 {
     using System;
     using System.Collections.Generic;
 
-    public sealed class DiceHistory
+    public sealed class History
     {
         private readonly List<string> history;
 
-        public DiceHistory(List<string> history)
+        public History()
+        {
+            this.history = new List<string>();
+            this.Index = -1;
+        }
+
+        public History(List<string> history)
         {
             this.history = history;
             this.Index = -1;
