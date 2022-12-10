@@ -10,6 +10,8 @@ namespace Concierge.Interfaces.OverviewPageInterface
     using Concierge.Commands;
     using Concierge.Interfaces.Components;
     using Concierge.Interfaces.Enums;
+    using Concierge.Interfaces.UtilityInterface;
+    using Concierge.Services;
 
     /// <summary>
     /// Interaction logic for ModifyAttributesWindow.xaml.
@@ -110,6 +112,11 @@ namespace Concierge.Interfaces.OverviewPageInterface
         {
             this.Result = ConciergeWindowResult.Exit;
             this.CloseConciergeWindow();
+        }
+
+        private void GenerateAttributesButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.NonBlockingWindow = ConciergeWindowService.ShowNonBlockingWindow(typeof(AttributeRollWindow));
         }
     }
 }

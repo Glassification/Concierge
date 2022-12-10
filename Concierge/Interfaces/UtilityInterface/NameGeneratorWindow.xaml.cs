@@ -14,7 +14,8 @@ namespace Concierge.Interfaces.UtilityInterface
     using Concierge.Interfaces.Enums;
     using Concierge.Tools;
     using Concierge.Tools.Enums;
-    using Concierge.Tools.NameGeneration;
+    using Concierge.Tools.Generators;
+    using Concierge.Tools.Generators.Names;
     using Concierge.Utility;
 
     /// <summary>
@@ -22,7 +23,7 @@ namespace Concierge.Interfaces.UtilityInterface
     /// </summary>
     public partial class NameGeneratorWindow : ConciergeWindow
     {
-        private readonly NameGenerator nameGenerator;
+        private readonly IGenerator nameGenerator;
 
         public NameGeneratorWindow()
         {
@@ -103,14 +104,18 @@ namespace Concierge.Interfaces.UtilityInterface
 
         private void GenerateButton_Click(object sender, RoutedEventArgs e)
         {
-            var settings = new GeneratorSettings(
+            var settings = new NameSettings(
                 this.FilterGenderCheckBox.IsChecked ?? false,
                 this.GetGenderText(),
                 this.FilterRaceCheckBox.IsChecked ?? false,
                 this.RaceComboBox.Text);
 
-            this.NameTextBox.Text = this.nameGenerator.FullName(settings);
-            this.History.Add(this.NameTextBox.Text);
+            var result = this.nameGenerator.Generate(settings);
+            if (result is NameResult nameResult)
+            {
+                this.NameTextBox.Text = nameResult.FullName;
+                this.History.Add(this.NameTextBox.Text);
+            }
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)

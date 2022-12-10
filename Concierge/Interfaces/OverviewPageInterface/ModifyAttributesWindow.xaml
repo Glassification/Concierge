@@ -22,14 +22,34 @@
 
         <!--Header-->
         <Grid Grid.Row="0">
-            <TextBlock
-                Text="Edit Attributes"
-                x:Name="HeaderTextBlock"
-                Foreground="#227EA9"
-                FontSize="35"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Center"
-                Margin="30, 0, 0, 0"/>
+            <StackPanel
+                Orientation="Horizontal"
+                VerticalAlignment="Center">
+                <TextBlock
+                    Text="Edit Attributes"
+                    x:Name="HeaderTextBlock"
+                    Foreground="#227EA9"
+                    FontSize="35"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    Margin="30, 0, 0, 0"/>
+
+                <components:ConciergeDesignButton
+                    x:Name="GenerateAttributesButton"
+                    Style="{StaticResource ConciergeDesignButtonStyle}"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Center"
+                    Margin="20,3,0,0"
+                    ToolTip="Roll Attributes"
+                    Click="GenerateAttributesButton_Click">
+                    <materialDesign:PackIcon
+                        Kind="Autorenew"
+                        Foreground="SteelBlue"
+                        Width="25"
+                        Height="25"/>
+                </components:ConciergeDesignButton>
+            </StackPanel>
+            
             <components:ConciergeDesignButton 
                 Style="{StaticResource ConciergeDesignButtonStyle}" 
                 x:Name="CloseButton"

@@ -2,18 +2,17 @@
 // Copyright (c) Thomas Beckett. All rights reserved.
 // </copyright>
 
-namespace Concierge.Tools.NameGeneration
+namespace Concierge.Tools.Generators.Names
 {
     using System;
     using System.Collections.Generic;
     using System.Linq;
 
-    using Concierge.Character.Enums;
     using Concierge.Persistence.ReadWriters;
     using Concierge.Tools.Enums;
     using Concierge.Utility.Extensions;
 
-    public sealed class NameGenerator
+    public sealed class NameGenerator : IGenerator
     {
         private readonly List<Name> names;
         private readonly Random randomName = new ();
@@ -23,9 +22,22 @@ namespace Concierge.Tools.NameGeneration
             this.names = DefaultListReadWriter.ReadJson<Name>(Properties.Resources.Names);
         }
 
-        public string FirstName(GeneratorSettings settings)
+        public IGeneratorResult Generate(IGeneratorSettings generatorSettings)
         {
-            var sublist = this.GetSubList(settings, NameType.First);
+            if (generatorSettings is NameSettings nameSettings)
+            {
+                var firstName = this.GetName(nameSettings, NameType.First);
+                var lastName = this.GetName(nameSettings, NameType.Last);
+
+                return new NameResult(firstName, lastName);
+            }
+
+            return new NameResult();
+        }
+
+        private string GetName(NameSettings settings, NameType nameType)
+        {
+            var sublist = this.GetSubList(settings, nameType);
             if (sublist.IsEmpty())
             {
                 return string.Empty;
@@ -34,23 +46,7 @@ namespace Concierge.Tools.NameGeneration
             return sublist[this.randomName.Next(0, sublist.Count)].Value;
         }
 
-        public string LastName(GeneratorSettings settings)
-        {
-            var sublist = this.GetSubList(settings, NameType.Last);
-            if (sublist.IsEmpty())
-            {
-                return string.Empty;
-            }
-
-            return sublist[this.randomName.Next(0, sublist.Count)].Value;
-        }
-
-        public string FullName(GeneratorSettings settings)
-        {
-            return $"{this.FirstName(settings)} {this.LastName(settings)}".Trim();
-        }
-
-        private List<Name> GetSubList(GeneratorSettings settings, NameType nameType)
+        private List<Name> GetSubList(NameSettings settings, NameType nameType)
         {
             return nameType == NameType.Last ?
                 settings.FilterRace ?

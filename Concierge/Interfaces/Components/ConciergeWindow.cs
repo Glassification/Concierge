@@ -51,6 +51,8 @@ namespace Concierge.Interfaces.Components
 
         protected ConciergeWindowResult Result { get; set; }
 
+        protected ConciergeWindow? NonBlockingWindow { get; set; }
+
         public virtual bool ShowAdd<T>(T item)
         {
             Program.Logger.Error(new ImplementedMethodException(nameof(this.ShowAdd), item));
@@ -103,6 +105,12 @@ namespace Concierge.Interfaces.Components
             return null;
         }
 
+        public virtual ConciergeWindow? ShowNonBlockingWindow()
+        {
+            Program.Logger.Error(new ImplementedMethodException(nameof(this.ShowWindow)));
+            return null;
+        }
+
         [LibraryImport("dwmapi.dll", EntryPoint = "DwmSetWindowAttribute")]
         internal static partial int DwmSetWindowAttribute(
             IntPtr hwnd,
@@ -125,10 +133,20 @@ namespace Concierge.Interfaces.Components
             this.ShowDialog();
         }
 
+        protected void ShowNonBlockingConciergeWindow()
+        {
+            Program.Logger.Info($"{this.Title} opened.");
+
+            this.Title = this.HeaderText;
+            this.BeginAnimation(OpacityProperty, this.windowAnimation.Open);
+            this.Show();
+        }
+
         protected void CloseConciergeWindow()
         {
             Program.Logger.Info($"{this.Title} closed.");
 
+            this.NonBlockingWindow?.CloseConciergeWindow();
             this.BeginAnimation(OpacityProperty, this.windowAnimation.Close);
         }
 

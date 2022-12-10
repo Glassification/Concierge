@@ -78,6 +78,9 @@
     <Compile Update="Interfaces\PlayerHandbookPageInterface\PlayerHandbookPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Interfaces\UtilityInterface\AttributeRollWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Interfaces\UtilityInterface\ColorPickerWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -231,6 +234,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Interfaces\UtilityInterface\AboutConciergeWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Interfaces\UtilityInterface\AttributeRollWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Interfaces\UtilityInterface\ColorPickerWindow.xaml">

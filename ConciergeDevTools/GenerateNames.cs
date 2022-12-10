@@ -8,7 +8,7 @@ namespace ConciergeDevTools
 
     using Concierge.Character.Enums;
     using Concierge.Tools.Enums;
-    using Concierge.Tools.NameGeneration;
+    using Concierge.Tools.Generators.Names;
     using Concierge.Utility;
     using Concierge.Utility.Utilities;
     using Newtonsoft.Json;

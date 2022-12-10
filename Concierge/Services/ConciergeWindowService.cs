@@ -130,5 +130,16 @@ namespace Concierge.Services
 
             conciergeWindow.ShowWindow();
         }
+
+        public static ConciergeWindow? ShowNonBlockingWindow(Type typeOfWindow)
+        {
+            var conciergeWindow = (ConciergeWindow?)Activator.CreateInstance(typeOfWindow);
+            if (conciergeWindow is null)
+            {
+                return null;
+            }
+
+            return conciergeWindow.ShowNonBlockingWindow();
+        }
     }
 }

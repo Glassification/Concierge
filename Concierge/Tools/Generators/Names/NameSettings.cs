@@ -1,14 +1,14 @@
-﻿// <copyright file="GeneratorSettings.cs" company="Thomas Beckett">
+﻿// <copyright file="NameSettings.cs" company="Thomas Beckett">
 // Copyright (c) Thomas Beckett. All rights reserved.
 // </copyright>
 
-namespace Concierge.Tools.NameGeneration
+namespace Concierge.Tools.Generators.Names
 {
     using Concierge.Character.Enums;
 
-    public sealed class GeneratorSettings
+    public sealed class NameSettings : IGeneratorSettings
     {
-        public GeneratorSettings(bool filterGender, Gender gender, bool filterRace, string race)
+        public NameSettings(bool filterGender, Gender gender, bool filterRace, string race)
         {
             this.FilterGender = filterGender;
             this.FilterRace = filterRace;

@@ -1,0 +1,122 @@
+﻿<components:ConciergeWindow 
+    x:Class="Concierge.Interfaces.UtilityInterface.AttributeRollWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="clr-namespace:Concierge.Interfaces.UtilityInterface"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:components="clr-namespace:Concierge.Interfaces.Components"
+    mc:Ignorable="d"
+    Title="Roll Attributes"
+    Height="175"
+    Width="650"
+    Topmost="True"
+    Style="{StaticResource WindowFontStyle}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="70"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <TextBlock
+                Text="Roll Attributes"
+                FontSize="35"
+                Foreground="#227EA9"
+                Margin="30, 0, 0, 0"
+                FontWeight="Bold"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Left"/>
+            <components:ConciergeDesignButton Style="{StaticResource ConciergeDesignButtonStyle}" 
+                x:Name="CloseButton"
+                Width="60"
+                Foreground="White"
+                ToolTip="Close"
+                HorizontalAlignment="Right"
+                Click="CloseButton_Click">
+                <materialDesign:PackIcon Kind="WindowClose" Width="25" Height="25"/>
+            </components:ConciergeDesignButton>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="16.67*"/>
+                <ColumnDefinition Width="16.67*"/>
+                <ColumnDefinition Width="16.67*"/>
+                <ColumnDefinition Width="16.67*"/>
+                <ColumnDefinition Width="16.67*"/>
+                <ColumnDefinition Width="16.67*"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock
+                x:Name="Roll1Label"
+                Grid.Column="0"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                Foreground="White"
+                FontSize="30"
+                Text="10"/>
+
+            <TextBlock
+                x:Name="Roll2Label"
+                Grid.Column="1"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                Foreground="White"
+                FontSize="30"
+                Text="10"/>
+
+            <TextBlock
+                x:Name="Roll3Label"
+                Grid.Column="2"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                Foreground="White"
+                FontSize="30"
+                Text="10"/>
+
+            <TextBlock
+                x:Name="Roll4Label"
+                Grid.Column="3"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                Foreground="White"
+                FontSize="30"
+                Text="10"/>
+
+            <TextBlock
+                x:Name="Roll5Label"
+                Grid.Column="4"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                Foreground="White"
+                FontSize="30"
+                Text="10"/>
+
+            <TextBlock
+                x:Name="Roll6Label"
+                Grid.Column="5"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                Foreground="White"
+                FontSize="30"
+                Text="10"/>
+        </Grid>
+
+        <Grid Grid.Row="2">
+            <StackPanel
+                Orientation="Horizontal"
+                VerticalAlignment="Bottom"
+                HorizontalAlignment="Center">
+                <components:ConciergeTextButton 
+                    x:Name="RollDiceButton"
+                    Style="{StaticResource ConciergeTextButtonStyle}"
+                    Content="Roll Dice"
+                    Click="RollDiceButton_Click">
+                </components:ConciergeTextButton>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</components:ConciergeWindow>

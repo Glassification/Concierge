@@ -2,7 +2,7 @@
 // Copyright (c) Thomas Beckett. All rights reserved.
 // </copyright>
 
-namespace Concierge.Tools.NameGeneration
+namespace Concierge.Tools.Generators.Names
 {
     using Concierge.Character.Enums;
     using Concierge.Tools.Enums;
