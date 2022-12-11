@@ -43,10 +43,10 @@ namespace Concierge.Character.Items
         public string Name { get; set; }
 
         [JsonIgnore]
-        public Brush IconColor => this.GetPackIconColor();
+        public Brush IconColor => this.GetCategoryValue().Brush;
 
         [JsonIgnore]
-        public PackIconKind IconKind => this.GetPackIconKind();
+        public PackIconKind IconKind => this.GetCategoryValue().IconKind;
 
         public bool IgnoreWeight { get; set; }
 
@@ -109,35 +109,30 @@ namespace Concierge.Character.Items
             };
         }
 
-        private PackIconKind GetPackIconKind()
+        private (PackIconKind IconKind, Brush Brush) GetCategoryValue()
         {
             return this.ItemCategory switch
             {
-                "Adventuring Gear" => PackIconKind.Mountain,
-                "Arcane Focus" => PackIconKind.MagicWand,
-                "Clothing" => PackIconKind.TshirtCrew,
-                "Consumables" => PackIconKind.FoodDrumstick,
-                "Druidic Focus" => PackIconKind.MagicStaff,
-                "Equipment Pack" => PackIconKind.Toolbox,
-                "Gemstone" => PackIconKind.DiamondStone,
-                "Heavy Armor" => PackIconKind.Wall,
-                "Holy Symbol" => PackIconKind.Christianity,
-                "Light Armor" => PackIconKind.Wall,
-                "Medium Armor" => PackIconKind.Wall,
-                "Mount" => PackIconKind.HorsebackRiding,
-                "Poison" => PackIconKind.Poison,
-                "Potion" => PackIconKind.HealthPotion,
-                "Shield" => PackIconKind.ShieldPerson,
-                "Tool" => PackIconKind.Screwdriver,
-                "Vehicle (Land)" => PackIconKind.Caravan,
-                "Vehicle (Water)" => PackIconKind.SailBoat,
-                _ => PackIconKind.Error,
+                "Adventuring Gear" => (IconKind: PackIconKind.Mountain, Brush: Brushes.LightBlue),
+                "Arcane Focus" => (IconKind: PackIconKind.MagicWand, Brush: Brushes.LightBlue),
+                "Clothing" => (IconKind: PackIconKind.TshirtCrew, Brush: Brushes.LightBlue),
+                "Consumables" => (IconKind: PackIconKind.FoodDrumstick, Brush: Brushes.LightBlue),
+                "Druidic Focus" => (IconKind: PackIconKind.MagicStaff, Brush: Brushes.LightBlue),
+                "Equipment Pack" => (IconKind: PackIconKind.Toolbox, Brush: Brushes.LightBlue),
+                "Gemstone" => (IconKind: PackIconKind.DiamondStone, Brush: Brushes.LightBlue),
+                "Heavy Armor" => (IconKind: PackIconKind.Wall, Brush: Brushes.LightBlue),
+                "Holy Symbol" => (IconKind: PackIconKind.Christianity, Brush: Brushes.LightBlue),
+                "Light Armor" => (IconKind: PackIconKind.Wall, Brush: Brushes.LightBlue),
+                "Medium Armor" => (IconKind: PackIconKind.Wall, Brush: Brushes.LightBlue),
+                "Mount" => (IconKind: PackIconKind.HorsebackRiding, Brush: Brushes.LightBlue),
+                "Poison" => (IconKind: PackIconKind.Poison, Brush: Brushes.LightBlue),
+                "Potion" => (IconKind: PackIconKind.HealthPotion, Brush: Brushes.LightBlue),
+                "Shield" => (IconKind: PackIconKind.ShieldPerson, Brush: Brushes.LightBlue),
+                "Tool" => (IconKind: PackIconKind.Screwdriver, Brush: Brushes.LightBlue),
+                "Vehicle (Land)" => (IconKind: PackIconKind.Caravan, Brush: Brushes.LightBlue),
+                "Vehicle (Water)" => (IconKind: PackIconKind.SailBoat, Brush: Brushes.LightBlue),
+                _ => (IconKind: PackIconKind.Error, Brush: Brushes.IndianRed),
             };
-        }
-
-        private Brush GetPackIconColor()
-        {
-            return Brushes.Purple;
         }
     }
 }
