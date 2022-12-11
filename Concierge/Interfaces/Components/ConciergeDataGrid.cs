@@ -65,8 +65,8 @@ namespace Concierge.Interfaces.Components
                 return -1;
             }
 
-            var item = (T)this.SelectedItem;
-            var index = list.IndexOf(item);
+            var item = this.SelectedItem;
+            var index = list.IndexOf((T)item);
 
             if (index != limit)
             {

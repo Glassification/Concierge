@@ -7,6 +7,7 @@ namespace Concierge.Tools.Generators.Attributes
     using System.Linq;
 
     using Concierge.Tools.DiceRolling.Dice;
+    using Concierge.Utility;
 
     public sealed class AttributeGenerator : IGenerator
     {
@@ -18,10 +19,14 @@ namespace Concierge.Tools.Generators.Attributes
 
         public IGeneratorResult Generate(IGeneratorSettings generatorSettings)
         {
-            for (int i = 0; i < this.attributeRolls.Length; i++)
+            do
             {
-                this.attributeRolls[i] = CalculateAttribute();
+                for (int i = 0; i < this.attributeRolls.Length; i++)
+                {
+                    this.attributeRolls[i] = CalculateAttribute();
+                }
             }
+            while (this.attributeRolls.Sum() <= Constants.MinAttributeTotal);
 
             return new AttributeResult(this.attributeRolls);
         }

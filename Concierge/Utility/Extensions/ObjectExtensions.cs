@@ -13,6 +13,14 @@ namespace Concierge.Utility.Extensions
     {
         private static int Depth { get; set; }
 
+        public static bool IsTypeOf(this object value, Type type)
+        {
+            return value
+                .GetType()
+                .GetInterfaces()
+                .Any(x => x.IsGenericType && x.GetGenericTypeDefinition() == type);
+        }
+
         public static bool IsList(this object value)
         {
             if (value == null)
@@ -78,12 +86,7 @@ namespace Concierge.Utility.Extensions
                         continue;
                     }
 
-                    var isCopyable = propertyValue
-                        .GetType()
-                        .GetInterfaces()
-                        .Any(x => x.IsGenericType && x.GetGenericTypeDefinition() == typeof(ICopyable<>));
-
-                    if (isCopyable && Depth < Constants.MaxDepth)
+                    if (propertyValue.IsTypeOf(typeof(ICopyable<>)) && Depth < Constants.MaxDepth)
                     {
                         SetPropertiesHelper<T>(propertyValue, property.GetValue(originalItem));
                     }

@@ -167,6 +167,7 @@ namespace Concierge.Properties {
         ///   Looks up a localized string similar to Adventuring Gear
         ///Arcane Focus
         ///Clothing
+        ///Consumables
         ///Druidic Focus
         ///Equipment Pack
         ///Gemstone
@@ -176,6 +177,7 @@ namespace Concierge.Properties {
         ///Medium Armor
         ///Mount
         ///Poison
+        ///Potion
         ///Shield
         ///Tool
         ///Vehicle (Land)

@@ -42,7 +42,7 @@ namespace Concierge.Utility
             window.Background = Brushes.Transparent;
             HwndSource.FromHwnd(hwnd).CompositionTarget.BackgroundColor = Colors.Transparent;
 
-            MARGINS margins = new MARGINS(margin);
+            MARGINS margins = new (margin);
             DwmExtendFrameIntoClientArea(hwnd, ref margins);
 
             return true;

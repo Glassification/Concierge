@@ -5,11 +5,12 @@
 namespace Concierge.Character.Items
 {
     using System;
-
+    using System.Windows.Media;
     using Concierge.Character.Enums;
     using Concierge.Primitives;
     using Concierge.Utility;
     using Concierge.Utility.Extensions;
+    using MaterialDesignThemes.Wpf;
     using Newtonsoft.Json;
 
     public sealed class Inventory : ICopyable<Inventory>
@@ -40,6 +41,12 @@ namespace Concierge.Character.Items
         public Guid Id { get; set; }
 
         public string Name { get; set; }
+
+        [JsonIgnore]
+        public Brush IconColor => this.GetPackIconColor();
+
+        [JsonIgnore]
+        public PackIconKind IconKind => this.GetPackIconKind();
 
         public bool IgnoreWeight { get; set; }
 
@@ -100,6 +107,37 @@ namespace Concierge.Character.Items
                 EquppedId = this.EquppedId,
                 Id = this.Id,
             };
+        }
+
+        private PackIconKind GetPackIconKind()
+        {
+            return this.ItemCategory switch
+            {
+                "Adventuring Gear" => PackIconKind.Mountain,
+                "Arcane Focus" => PackIconKind.MagicWand,
+                "Clothing" => PackIconKind.TshirtCrew,
+                "Consumables" => PackIconKind.FoodDrumstick,
+                "Druidic Focus" => PackIconKind.MagicStaff,
+                "Equipment Pack" => PackIconKind.Toolbox,
+                "Gemstone" => PackIconKind.DiamondStone,
+                "Heavy Armor" => PackIconKind.Wall,
+                "Holy Symbol" => PackIconKind.Christianity,
+                "Light Armor" => PackIconKind.Wall,
+                "Medium Armor" => PackIconKind.Wall,
+                "Mount" => PackIconKind.HorsebackRiding,
+                "Poison" => PackIconKind.Poison,
+                "Potion" => PackIconKind.HealthPotion,
+                "Shield" => PackIconKind.ShieldPerson,
+                "Tool" => PackIconKind.Screwdriver,
+                "Vehicle (Land)" => PackIconKind.Caravan,
+                "Vehicle (Water)" => PackIconKind.SailBoat,
+                _ => PackIconKind.Error,
+            };
+        }
+
+        private Brush GetPackIconColor()
+        {
+            return Brushes.Purple;
         }
     }
 }

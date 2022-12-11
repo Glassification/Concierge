@@ -1,6 +1,7 @@
 ﻿Adventuring Gear
 Arcane Focus
 Clothing
+Consumables
 Druidic Focus
 Equipment Pack
 Gemstone
@@ -10,6 +11,7 @@ Light Armor
 Medium Armor
 Mount
 Poison
+Potion
 Shield
 Tool
 Vehicle (Land)

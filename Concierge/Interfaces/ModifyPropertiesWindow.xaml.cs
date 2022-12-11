@@ -13,6 +13,7 @@ namespace Concierge.Interfaces
     using Concierge.Character.Characteristics;
     using Concierge.Commands;
     using Concierge.Interfaces.Components;
+    using Concierge.Interfaces.Controls;
     using Concierge.Interfaces.Enums;
     using Concierge.Interfaces.UtilityInterface;
     using Concierge.Services;
@@ -93,6 +94,20 @@ namespace Concierge.Interfaces
             Program.Modify();
         }
 
+        private static void SetClassEnableState(IntegerUpDown classLevel, ConciergeComboBox classComboBox, ConciergeComboBox subclassComboBox)
+        {
+            var level = classLevel.Value;
+
+            classComboBox.IsEnabled = level > 0;
+            subclassComboBox.IsEnabled = level > 0;
+
+            classComboBox.Opacity = level > 0 ? 1 : 0.5;
+            subclassComboBox.Opacity = level > 0 ? 1 : 0.5;
+
+            classComboBox.Text = level > 0 ? classComboBox.Text : string.Empty;
+            subclassComboBox.Text = level > 0 ? subclassComboBox.Text : string.Empty;
+        }
+
         private void FillFields()
         {
             this.IsDrawing = true;
@@ -114,7 +129,10 @@ namespace Concierge.Interfaces
             this.ImageSourceTextBox.Text = this.OriginalFileName = this.CharacterProperties.CharacterIcon.Path;
             this.UseCustomImageCheckBox.IsChecked = this.CharacterProperties.CharacterIcon.UseCustomImage;
 
-            this.SetEnabledState(this.CharacterProperties.CharacterIcon.UseCustomImage);
+            this.SetImageEnabledState(this.CharacterProperties.CharacterIcon.UseCustomImage);
+            SetClassEnableState(this.Class1Level, this.Class1Class, this.Class1Subclass);
+            SetClassEnableState(this.Class2Level, this.Class2Class, this.Class2Subclass);
+            SetClassEnableState(this.Class3Level, this.Class3Class, this.Class3Subclass);
 
             this.IsDrawing = false;
         }
@@ -148,7 +166,7 @@ namespace Concierge.Interfaces
             Program.UndoRedoService.AddCommand(new EditCommand<CharacterProperties>(this.CharacterProperties, oldItem, ConciergePage.None));
         }
 
-        private void SetEnabledState(bool isEnabled)
+        private void SetImageEnabledState(bool isEnabled)
         {
             this.OpenImageButton.IsEnabled = isEnabled;
             this.ImageSourceTextBoxBackground.IsEnabled = isEnabled;
@@ -188,7 +206,7 @@ namespace Concierge.Interfaces
         {
             if (!this.IsDrawing)
             {
-                this.SetEnabledState(true);
+                this.SetImageEnabledState(true);
             }
         }
 
@@ -196,7 +214,7 @@ namespace Concierge.Interfaces
         {
             if (!this.IsDrawing)
             {
-                this.SetEnabledState(false);
+                this.SetImageEnabledState(false);
             }
         }
 
@@ -255,6 +273,13 @@ namespace Concierge.Interfaces
             {
                 this.NameTextBox.Text = name;
             }
+        }
+
+        private void ClassLevel_ValueChanged(object sender, RoutedEventArgs e)
+        {
+            SetClassEnableState(this.Class1Level, this.Class1Class, this.Class1Subclass);
+            SetClassEnableState(this.Class2Level, this.Class2Class, this.Class2Subclass);
+            SetClassEnableState(this.Class3Level, this.Class3Class, this.Class3Subclass);
         }
     }
 }

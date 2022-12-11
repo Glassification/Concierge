@@ -91,7 +91,7 @@
                     <!--Title-->
                     <Grid Grid.Column="0">
                         <components:ConciergeLabel
-                            Text="Quantity:"/>
+                            Text="Amount:"/>
                     </Grid>
 
                     <!--Value-->

@@ -581,7 +581,7 @@
         "Name": "Bag of Candy",
         "IgnoreWeight": true,
         "Index": 0,
-        "ItemCategory": "Adventuring Gear",
+        "ItemCategory": "Consumables",
         "Notes": "Food",
         "Value": 10,
         "Weight": {
@@ -638,8 +638,8 @@
         "Name": "Bath Potions",
         "IgnoreWeight": true,
         "Index": 0,
-        "ItemCategory": "Adventuring Gear",
-        "Notes": "Potion, Magic Item",
+        "ItemCategory": "Potion",
+        "Notes": "Magic Item",
         "Value": 20,
         "Weight": {
           "Value": 0.5,
@@ -662,6 +662,44 @@
         "Value": 1,
         "Weight": {
           "Value": 2.0,
+          "UnitType": 0,
+          "Measurement": 1
+        }
+      },
+      {
+        "Amount": 1,
+        "Attuned": false,
+        "CoinType": 3,
+        "Description": "This set of clothes is designed specifically to be expensive and to show it, including fancy, tailored clothes in whatever fashion happens to be the current style in the courts of the nobles. Precious metals and gems could be worked into the clothing.",
+        "EquppedId": "00000000-0000-0000-0000-000000000000",
+        "Id": "a76034ca-93ea-4a1c-bf85-eaab6022e589",
+        "Name": "Clothes, Fine",
+        "IgnoreWeight": true,
+        "Index": 0,
+        "ItemCategory": "Clothing",
+        "Notes": "Outerwear, Social",
+        "Value": 15,
+        "Weight": {
+          "Value": 6.0,
+          "UnitType": 0,
+          "Measurement": 1
+        }
+      },
+      {
+        "Amount": 1,
+        "Attuned": false,
+        "CoinType": 3,
+        "Description": " Woman's fur coat found in abandoned farm house",
+        "EquppedId": "00000000-0000-0000-0000-000000000000",
+        "Id": "6cdd98a6-b719-4c92-b865-8f10e49ce0ff",
+        "Name": "Clothing, cold weather",
+        "IgnoreWeight": true,
+        "Index": 0,
+        "ItemCategory": "Clothing",
+        "Notes": "Exploration, Outerwear, Utility",
+        "Value": 10,
+        "Weight": {
+          "Value": 5.0,
           "UnitType": 0,
           "Measurement": 1
         }
@@ -746,63 +784,6 @@
         "Amount": 1,
         "Attuned": false,
         "CoinType": 3,
-        "Description": "Oil usually comes in a clay flask that holds 1 pint. As an action, you can splash the oil in this flask onto a creature within 5 feet of you or throw it up to 20 feet, shattering it on impact. Make a ranged attack against a target creature or object, treating the oil as an improvised weapon. On a hit, the target is covered in oil. If the target takes any fire damage before the oil dries (after 1 minute), the target takes an additional 5 fire damage from the burning oil. You can also pour a flask of oil on the ground to cover a 5-foot-square area, provided that the surface is level. If lit, the oil burns for 2 rounds and deals 5 fire damage to any creature that enters the area or ends its turn in the area. A creature can take this damage only once per turn.",
-        "EquppedId": "00000000-0000-0000-0000-000000000000",
-        "Id": "3615d25a-0dd7-4f5d-b142-ad2b006136dc",
-        "Name": "Oil (flask)",
-        "IgnoreWeight": true,
-        "Index": 0,
-        "ItemCategory": "Adventuring Gear",
-        "Notes": "Combat, Damage, Utility",
-        "Value": 1,
-        "Weight": {
-          "Value": 1.0,
-          "UnitType": 0,
-          "Measurement": 1
-        }
-      },
-      {
-        "Amount": 1,
-        "Attuned": false,
-        "CoinType": 3,
-        "Description": " Woman's fur coat found in abandoned farm house",
-        "EquppedId": "00000000-0000-0000-0000-000000000000",
-        "Id": "6cdd98a6-b719-4c92-b865-8f10e49ce0ff",
-        "Name": "Clothing, cold weather",
-        "IgnoreWeight": true,
-        "Index": 0,
-        "ItemCategory": "Adventuring Gear",
-        "Notes": "Exploration, Outerwear, Utility",
-        "Value": 10,
-        "Weight": {
-          "Value": 5.0,
-          "UnitType": 0,
-          "Measurement": 1
-        }
-      },
-      {
-        "Amount": 5,
-        "Attuned": false,
-        "CoinType": 3,
-        "Description": "A vial can hold 4 ounces of liquid or 7 doses of drugs.",
-        "EquppedId": "00000000-0000-0000-0000-000000000000",
-        "Id": "d0676865-165f-4c43-857b-21cb30db2d13",
-        "Name": "Vial",
-        "IgnoreWeight": true,
-        "Index": 0,
-        "ItemCategory": "Adventuring Gear",
-        "Notes": "Container, Glass",
-        "Value": 1,
-        "Weight": {
-          "Value": 0.0,
-          "UnitType": 0,
-          "Measurement": 1
-        }
-      },
-      {
-        "Amount": 1,
-        "Attuned": false,
-        "CoinType": 3,
         "Description": "This one-handed hammer with an iron head is useful for pounding pitons into a wall.",
         "EquppedId": "00000000-0000-0000-0000-000000000000",
         "Id": "c435d0c5-0a37-4a59-a904-c00ed53b1ae4",
@@ -828,30 +809,11 @@
         "Name": "Health Potion",
         "IgnoreWeight": true,
         "Index": 0,
-        "ItemCategory": "Adventuring Gear",
-        "Notes": "Potion",
+        "ItemCategory": "Potion",
+        "Notes": "",
         "Value": 10,
         "Weight": {
           "Value": 0.5,
-          "UnitType": 0,
-          "Measurement": 1
-        }
-      },
-      {
-        "Amount": 1,
-        "Attuned": false,
-        "CoinType": 3,
-        "Description": "A hooded lantern casts bright light in a 30-foot radius and dim light for an additional 30 feet. Once lit, it burns for 6 hours on a flask (1 pint) of oil. As an action, you can lower the hood, reducing the light to dim light in a 5-foot radius.",
-        "EquppedId": "00000000-0000-0000-0000-000000000000",
-        "Id": "37faed17-725b-4435-a2b1-72974a164b3e",
-        "Name": "Lantern, Hooded",
-        "IgnoreWeight": true,
-        "Index": 0,
-        "ItemCategory": "Adventuring Gear",
-        "Notes": "Exploration, Utility",
-        "Value": 5,
-        "Weight": {
-          "Value": 2.0,
           "UnitType": 0,
           "Measurement": 1
         }
@@ -890,6 +852,25 @@
         "Value": 0,
         "Weight": {
           "Value": 0.0,
+          "UnitType": 0,
+          "Measurement": 1
+        }
+      },
+      {
+        "Amount": 1,
+        "Attuned": false,
+        "CoinType": 3,
+        "Description": "A hooded lantern casts bright light in a 30-foot radius and dim light for an additional 30 feet. Once lit, it burns for 6 hours on a flask (1 pint) of oil. As an action, you can lower the hood, reducing the light to dim light in a 5-foot radius.",
+        "EquppedId": "00000000-0000-0000-0000-000000000000",
+        "Id": "37faed17-725b-4435-a2b1-72974a164b3e",
+        "Name": "Lantern, Hooded",
+        "IgnoreWeight": true,
+        "Index": 0,
+        "ItemCategory": "Adventuring Gear",
+        "Notes": "Exploration, Utility",
+        "Value": 5,
+        "Weight": {
+          "Value": 2.0,
           "UnitType": 0,
           "Measurement": 1
         }
@@ -974,17 +955,17 @@
         "Amount": 1,
         "Attuned": false,
         "CoinType": 3,
-        "Description": "This set of clothes is designed specifically to be expensive and to show it, including fancy, tailored clothes in whatever fashion happens to be the current style in the courts of the nobles. Precious metals and gems could be worked into the clothing.",
+        "Description": "Oil usually comes in a clay flask that holds 1 pint. As an action, you can splash the oil in this flask onto a creature within 5 feet of you or throw it up to 20 feet, shattering it on impact. Make a ranged attack against a target creature or object, treating the oil as an improvised weapon. On a hit, the target is covered in oil. If the target takes any fire damage before the oil dries (after 1 minute), the target takes an additional 5 fire damage from the burning oil. You can also pour a flask of oil on the ground to cover a 5-foot-square area, provided that the surface is level. If lit, the oil burns for 2 rounds and deals 5 fire damage to any creature that enters the area or ends its turn in the area. A creature can take this damage only once per turn.",
         "EquppedId": "00000000-0000-0000-0000-000000000000",
-        "Id": "a76034ca-93ea-4a1c-bf85-eaab6022e589",
-        "Name": "Clothes, Fine",
+        "Id": "3615d25a-0dd7-4f5d-b142-ad2b006136dc",
+        "Name": "Oil (flask)",
         "IgnoreWeight": true,
         "Index": 0,
         "ItemCategory": "Adventuring Gear",
-        "Notes": "Outerwear, Social",
-        "Value": 15,
+        "Notes": "Combat, Damage, Utility",
+        "Value": 1,
         "Weight": {
-          "Value": 6.0,
+          "Value": 1.0,
           "UnitType": 0,
           "Measurement": 1
         }
@@ -1056,8 +1037,8 @@
         "Name": "Potion of Detect Thoughts",
         "IgnoreWeight": true,
         "Index": 0,
-        "ItemCategory": "Adventuring Gear",
-        "Notes": "Potion, Utility",
+        "ItemCategory": "Potion",
+        "Notes": "Utility",
         "Value": 50,
         "Weight": {
           "Value": 0.5,
@@ -1075,8 +1056,8 @@
         "Name": "Potion of Heat Resistance",
         "IgnoreWeight": true,
         "Index": 0,
-        "ItemCategory": "Adventuring Gear",
-        "Notes": "Potioon, Utility",
+        "ItemCategory": "Potion",
+        "Notes": "Utility",
         "Value": 30,
         "Weight": {
           "Value": 0.5,
@@ -1132,7 +1113,7 @@
         "Name": "Rations (1 day)",
         "IgnoreWeight": true,
         "Index": 0,
-        "ItemCategory": "Adventuring Gear",
+        "ItemCategory": "Consumables",
         "Notes": "Consumable, Social, Utility",
         "Value": 5,
         "Weight": {
@@ -1189,7 +1170,7 @@
         "Name": "Salted Meat",
         "IgnoreWeight": true,
         "Index": 0,
-        "ItemCategory": "Adventuring Gear",
+        "ItemCategory": "Consumables",
         "Notes": "Consumable, Social, Utility",
         "Value": 5,
         "Weight": {
@@ -1408,6 +1389,25 @@
         }
       },
       {
+        "Amount": 5,
+        "Attuned": false,
+        "CoinType": 3,
+        "Description": "A vial can hold 4 ounces of liquid or 7 doses of drugs.",
+        "EquppedId": "00000000-0000-0000-0000-000000000000",
+        "Id": "d0676865-165f-4c43-857b-21cb30db2d13",
+        "Name": "Vial",
+        "IgnoreWeight": true,
+        "Index": 0,
+        "ItemCategory": "Adventuring Gear",
+        "Notes": "Container, Glass",
+        "Value": 1,
+        "Weight": {
+          "Value": 0.0,
+          "UnitType": 0,
+          "Measurement": 1
+        }
+      },
+      {
         "Amount": 1,
         "Attuned": false,
         "CoinType": 3,
@@ -1417,7 +1417,7 @@
         "Name": "Waterskin",
         "IgnoreWeight": true,
         "Index": 0,
-        "ItemCategory": "Adventuring Gear",
+        "ItemCategory": "Consumables",
         "Notes": "Container",
         "Value": 2,
         "Weight": {
@@ -2056,8 +2056,8 @@
       }
     ]
   },
-  "Hash": "47CD10474B4C29D473BC5D47440AC90144FA110B11D938301527851FB8C31310",
+  "Hash": "514AFE1E7C554DC5EC21B883BF21410AA2501C515EE8BFED399FB8CD00AB9DF4",
   "OriginalCreationDate": "Monday, 14 March 2022 08:19:44 PM",
-  "LastSaveDate": "2022-12-08T14:00:49.0133719-06:00",
-  "Version": "4.16.1"
+  "LastSaveDate": "2022-12-10T17:10:37.9876419-06:00",
+  "Version": "4.16.5"
 }

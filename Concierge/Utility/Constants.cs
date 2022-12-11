@@ -19,6 +19,7 @@ namespace Concierge.Utility
         public const byte ColorSpace = 255;
 
         public const int MaxLevel = 20;
+        public const int MinAttributeTotal = 60;
         public const int BaseDC = 8;
         public const int CoinGroup = 50;
         public const int MaxScore = 30;

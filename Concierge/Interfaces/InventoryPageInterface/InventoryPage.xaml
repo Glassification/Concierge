@@ -109,6 +109,20 @@
                 Style="{DynamicResource StandardDataGridStyle}"
                 Sorted="InventoryDataGrid_Sorted">
                 <DataGrid.Columns>
+                    <DataGridTemplateColumn
+                        Width="0.02*">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <materialDesign:PackIcon
+                                    Kind="{Binding IconKind}"
+                                    Foreground="{Binding IconColor}"
+                                    Height="auto"
+                                    Width="auto"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
                     <DataGridTextColumn
                         Header="Name"
                         Binding="{Binding Name}"
@@ -122,17 +136,17 @@
                     <DataGridTextColumn
                         Header="Amount"
                         Binding="{Binding Amount}"
-                        Width="0.07*"
+                        Width="0.06*"
                         ElementStyle="{StaticResource StandardColumnElementStyle}"/>
                     <DataGridTextColumn
                         Header="Value"
                         Binding="{Binding ValueText}"
-                        Width="0.08*"
+                        Width="0.07*"
                         ElementStyle="{StaticResource StandardColumnElementStyle}"/>
                     <DataGridTextColumn
                         Header="Weight"
                         Binding="{Binding Weight}"
-                        Width="0.08*"
+                        Width="0.07*"
                         ElementStyle="{StaticResource StandardColumnElementStyle}"/>
                     <DataGridTextColumn
                         Header="Notes"
