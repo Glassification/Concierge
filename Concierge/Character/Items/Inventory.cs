@@ -6,6 +6,7 @@ namespace Concierge.Character.Items
 {
     using System;
     using System.Windows.Media;
+
     using Concierge.Character.Enums;
     using Concierge.Primitives;
     using Concierge.Utility;
@@ -114,23 +115,23 @@ namespace Concierge.Character.Items
             return this.ItemCategory switch
             {
                 "Adventuring Gear" => (IconKind: PackIconKind.Mountain, Brush: Brushes.LightBlue),
-                "Arcane Focus" => (IconKind: PackIconKind.MagicWand, Brush: Brushes.LightBlue),
-                "Clothing" => (IconKind: PackIconKind.TshirtCrew, Brush: Brushes.LightBlue),
-                "Consumables" => (IconKind: PackIconKind.FoodDrumstick, Brush: Brushes.LightBlue),
-                "Druidic Focus" => (IconKind: PackIconKind.MagicStaff, Brush: Brushes.LightBlue),
-                "Equipment Pack" => (IconKind: PackIconKind.Toolbox, Brush: Brushes.LightBlue),
-                "Gemstone" => (IconKind: PackIconKind.DiamondStone, Brush: Brushes.LightBlue),
-                "Heavy Armor" => (IconKind: PackIconKind.Wall, Brush: Brushes.LightBlue),
-                "Holy Symbol" => (IconKind: PackIconKind.Christianity, Brush: Brushes.LightBlue),
-                "Light Armor" => (IconKind: PackIconKind.Wall, Brush: Brushes.LightBlue),
-                "Medium Armor" => (IconKind: PackIconKind.Wall, Brush: Brushes.LightBlue),
-                "Mount" => (IconKind: PackIconKind.HorsebackRiding, Brush: Brushes.LightBlue),
-                "Poison" => (IconKind: PackIconKind.Poison, Brush: Brushes.LightBlue),
-                "Potion" => (IconKind: PackIconKind.HealthPotion, Brush: Brushes.LightBlue),
-                "Shield" => (IconKind: PackIconKind.ShieldPerson, Brush: Brushes.LightBlue),
-                "Tool" => (IconKind: PackIconKind.Screwdriver, Brush: Brushes.LightBlue),
-                "Vehicle (Land)" => (IconKind: PackIconKind.Caravan, Brush: Brushes.LightBlue),
-                "Vehicle (Water)" => (IconKind: PackIconKind.SailBoat, Brush: Brushes.LightBlue),
+                "Arcane Focus" => (IconKind: PackIconKind.MagicWand, Brush: Brushes.Magenta),
+                "Clothing" => (IconKind: PackIconKind.TshirtCrew, Brush: Brushes.Coral),
+                "Druidic Focus" => (IconKind: PackIconKind.MagicStaff, Brush: Brushes.Magenta),
+                "Equipment Pack" => (IconKind: PackIconKind.Toolbox, Brush: Brushes.RosyBrown),
+                "Food/Drink" => (IconKind: PackIconKind.FoodVariant, Brush: Brushes.PaleVioletRed),
+                "Gemstone" => (IconKind: PackIconKind.DiamondStone, Brush: Brushes.Cyan),
+                "Heavy Armor" => (IconKind: PackIconKind.Wall, Brush: Brushes.LightGray),
+                "Holy Symbol" => (IconKind: PackIconKind.Christianity, Brush: Brushes.PaleGoldenrod),
+                "Light Armor" => (IconKind: PackIconKind.Wall, Brush: Brushes.LightGray),
+                "Medium Armor" => (IconKind: PackIconKind.Wall, Brush: Brushes.LightGray),
+                "Mount" => (IconKind: PackIconKind.HorsebackRiding, Brush: Brushes.SandyBrown),
+                "Poison" => (IconKind: PackIconKind.Poison, Brush: Brushes.LightGreen),
+                "Potion" => (IconKind: PackIconKind.HealthPotion, Brush: Brushes.Pink),
+                "Shield" => (IconKind: PackIconKind.ShieldPerson, Brush: Brushes.LightSlateGray),
+                "Tool" => (IconKind: PackIconKind.Screwdriver, Brush: Brushes.LightYellow),
+                "Vehicle (Land)" => (IconKind: PackIconKind.Caravan, Brush: Brushes.SaddleBrown),
+                "Vehicle (Water)" => (IconKind: PackIconKind.SailBoat, Brush: Brushes.LightSkyBlue),
                 _ => (IconKind: PackIconKind.Error, Brush: Brushes.IndianRed),
             };
         }

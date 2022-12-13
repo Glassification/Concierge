@@ -47,7 +47,7 @@
     "Name": "Alchemist's Fire (flask)",
     "IgnoreWeight": false,
     "Index": 0,
-    "ItemCategory": "Adventuring Gear",
+    "ItemCategory": "Potion",
     "Notes": "Combat, Consumable, Damage, Utility",
     "Value": 50,
     "Weight": {
@@ -180,7 +180,7 @@
     "Name": "Antitoxin",
     "IgnoreWeight": false,
     "Index": 0,
-    "ItemCategory": "Adventuring Gear",
+    "ItemCategory": "Potion",
     "Notes": "Healing, Utility",
     "Value": 50,
     "Weight": {
@@ -712,7 +712,7 @@
     "Name": "Boots",
     "IgnoreWeight": false,
     "Index": 0,
-    "ItemCategory": "Adventuring Gear",
+    "ItemCategory": "Clothing",
     "Notes": "",
     "Value": 0,
     "Weight": {
@@ -1320,7 +1320,7 @@
     "Name": "Clothes, Fine",
     "IgnoreWeight": false,
     "Index": 0,
-    "ItemCategory": "Adventuring Gear",
+    "ItemCategory": "Clothing",
     "Notes": "Outerwear, Social",
     "Value": 15,
     "Weight": {
@@ -1358,7 +1358,7 @@
     "Name": "Clothing, cold weather",
     "IgnoreWeight": false,
     "Index": 0,
-    "ItemCategory": "Adventuring Gear",
+    "ItemCategory": "Clothing",
     "Notes": "Exploration, Outerwear, Utility",
     "Value": 10,
     "Weight": {
@@ -3505,7 +3505,7 @@
     "Name": "Rations (1 day)",
     "IgnoreWeight": false,
     "Index": 0,
-    "ItemCategory": "Adventuring Gear",
+    "ItemCategory": "Food/Drink",
     "Notes": "Consumable, Social, Utility",
     "Value": 5,
     "Weight": {
@@ -4645,7 +4645,7 @@
     "Name": "Vestments",
     "IgnoreWeight": false,
     "Index": 0,
-    "ItemCategory": "Adventuring Gear",
+    "ItemCategory": "Clothing",
     "Notes": "Social, Utility",
     "Value": 0,
     "Weight": {

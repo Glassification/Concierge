@@ -136,7 +136,7 @@
                     <DataGridTextColumn
                         Header="Amount"
                         Binding="{Binding Amount}"
-                        Width="0.06*"
+                        Width="0.07*"
                         ElementStyle="{StaticResource StandardColumnElementStyle}"/>
                     <DataGridTextColumn
                         Header="Value"
@@ -151,7 +151,7 @@
                     <DataGridTextColumn
                         Header="Notes"
                         Binding="{Binding Notes}"
-                        Width="0.10*"
+                        Width="0.09*"
                         ElementStyle="{StaticResource WallOfTextColumnElementStyle}"/>
                     <DataGridTextColumn
                         Header="Description"

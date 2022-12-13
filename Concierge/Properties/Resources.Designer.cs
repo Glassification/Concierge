@@ -167,9 +167,9 @@ namespace Concierge.Properties {
         ///   Looks up a localized string similar to Adventuring Gear
         ///Arcane Focus
         ///Clothing
-        ///Consumables
         ///Druidic Focus
         ///Equipment Pack
+        ///Food/Drink
         ///Gemstone
         ///Heavy Armor
         ///Holy Symbol
