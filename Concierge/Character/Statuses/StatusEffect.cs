@@ -11,7 +11,7 @@ namespace Concierge.Character.Statuses
     using Concierge.Utility.Extensions;
     using Newtonsoft.Json;
 
-    public sealed class StatusEffect : ICopyable<StatusEffect>
+    public sealed class StatusEffect : ICopyable<StatusEffect>, IUnique
     {
         public StatusEffect()
         {
@@ -26,7 +26,7 @@ namespace Concierge.Character.Statuses
 
         public string Description { get; set; }
 
-        public Guid Id { get; init; }
+        public Guid Id { get; set; }
 
         [JsonIgnore]
         public string Display => $"{this.Name}{(this.Type == StatusEffectTypes.None ? string.Empty : $" {this.Type}")}{(this.Description.IsNullOrWhiteSpace() ? string.Empty : " - ")}{this.Description}";

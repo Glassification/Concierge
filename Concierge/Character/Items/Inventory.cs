@@ -10,11 +10,12 @@ namespace Concierge.Character.Items
     using Concierge.Character.Enums;
     using Concierge.Primitives;
     using Concierge.Utility;
+    using Concierge.Utility.Attributes;
     using Concierge.Utility.Extensions;
     using MaterialDesignThemes.Wpf;
     using Newtonsoft.Json;
 
-    public sealed class Inventory : ICopyable<Inventory>
+    public sealed class Inventory : ICopyable<Inventory>, IUnique
     {
         public Inventory()
         {
@@ -37,16 +38,20 @@ namespace Concierge.Character.Items
 
         public string Description { get; set; }
 
+        [SearchIgnore]
         public Guid EquppedId { get; set; }
 
+        [SearchIgnore]
         public Guid Id { get; set; }
 
         public string Name { get; set; }
 
         [JsonIgnore]
+        [SearchIgnore]
         public Brush IconColor => this.GetCategoryValue().Brush;
 
         [JsonIgnore]
+        [SearchIgnore]
         public PackIconKind IconKind => this.GetCategoryValue().IconKind;
 
         public bool IgnoreWeight { get; set; }
@@ -114,7 +119,7 @@ namespace Concierge.Character.Items
         {
             return this.ItemCategory switch
             {
-                "Adventuring Gear" => (IconKind: PackIconKind.Mountain, Brush: Brushes.LightBlue),
+                "Adventuring Gear" => (IconKind: PackIconKind.Map, Brush: Brushes.LightBlue),
                 "Arcane Focus" => (IconKind: PackIconKind.MagicWand, Brush: Brushes.Magenta),
                 "Clothing" => (IconKind: PackIconKind.TshirtCrew, Brush: Brushes.Coral),
                 "Druidic Focus" => (IconKind: PackIconKind.MagicStaff, Brush: Brushes.Magenta),

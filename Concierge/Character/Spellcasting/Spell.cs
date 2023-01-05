@@ -5,12 +5,15 @@
 namespace Concierge.Character.Spellcasting
 {
     using System;
+    using System.Windows.Media;
 
     using Concierge.Character.Enums;
     using Concierge.Utility;
+    using Concierge.Utility.Attributes;
+    using MaterialDesignThemes.Wpf;
     using Newtonsoft.Json;
 
-    public sealed class Spell : ICopyable<Spell>
+    public sealed class Spell : ICopyable<Spell>, IUnique
     {
         public Spell()
         {
@@ -43,7 +46,15 @@ namespace Concierge.Character.Spellcasting
 
         public string Duration { get; set; }
 
-        public Guid Id { get; init; }
+        [JsonIgnore]
+        [SearchIgnore]
+        public Brush IconColor => this.GetCategoryValue().Brush;
+
+        [JsonIgnore]
+        [SearchIgnore]
+        public PackIconKind IconKind => this.GetCategoryValue().IconKind;
+
+        public Guid Id { get; set; }
 
         public int Level { get; set; }
 
@@ -92,6 +103,23 @@ namespace Concierge.Character.Spellcasting
                 Class = this.Class,
                 Id = this.Id,
                 Name = this.Name,
+            };
+        }
+
+        private (PackIconKind IconKind, Brush Brush) GetCategoryValue()
+        {
+            return this.School switch
+            {
+                ArcaneSchools.Abjuration => (IconKind: PackIconKind.ShieldSun, Brush: Brushes.LightBlue),
+                ArcaneSchools.Conjuration => (IconKind: PackIconKind.Flare, Brush: Brushes.LightYellow),
+                ArcaneSchools.Divination => (IconKind: PackIconKind.EyeCircle, Brush: Brushes.SlateGray),
+                ArcaneSchools.Enchantment => (IconKind: PackIconKind.HeadCog, Brush: Brushes.LightPink),
+                ArcaneSchools.Evocation => (IconKind: PackIconKind.Flash, Brush: Brushes.IndianRed),
+                ArcaneSchools.Illusion => (IconKind: PackIconKind.AppleIcloud, Brush: Brushes.MediumPurple),
+                ArcaneSchools.Necromancy => (IconKind: PackIconKind.Coffin, Brush: Brushes.LightGreen),
+                ArcaneSchools.Transmutation => (IconKind: PackIconKind.CircleOpacity, Brush: Brushes.Orange),
+                ArcaneSchools.Universal => (IconKind: PackIconKind.Earth, Brush: Brushes.White),
+                _ => (IconKind: PackIconKind.Error, Brush: Brushes.Red),
             };
         }
     }

@@ -10,7 +10,7 @@ namespace Concierge.Character.Characteristics
     using Concierge.Utility.Extensions;
     using Newtonsoft.Json;
 
-    public sealed class Language : ICopyable<Language>
+    public sealed class Language : ICopyable<Language>, IUnique
     {
         public Language()
         {
@@ -26,7 +26,7 @@ namespace Concierge.Character.Characteristics
 
         public string Speakers { get; set; }
 
-        public Guid Id { get; init; }
+        public Guid Id { get; set; }
 
         [JsonIgnore]
         public string Description => $"{this.Name}{(IsValid(this.Script) ? $" ({this.Script})" : string.Empty)}, Spoken by: {this.Speakers}";

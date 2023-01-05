@@ -18,8 +18,6 @@ namespace Concierge.Services
     {
         public ErrorService(Logger logger)
         {
-            Guard.IsNull(logger, nameof(logger));
-
             this.Logger = logger;
         }
 
@@ -27,8 +25,6 @@ namespace Concierge.Services
 
         public void LogError(Exception ex)
         {
-            Guard.IsNull(ex, nameof(ex));
-
             var conciergeException = GetConciergeException(ex);
             switch (conciergeException.Severity)
             {

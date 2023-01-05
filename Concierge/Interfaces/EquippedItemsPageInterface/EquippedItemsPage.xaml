@@ -181,14 +181,29 @@
                             SelectionChanged="EquipmentDataGrid_SelectionChanged"
                             Sorted="EquipmentDataGrid_Sorted">
                             <DataGrid.Columns>
+                                <DataGridTemplateColumn
+                                    Width="0.02*">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <materialDesign:PackIcon
+                                                Margin="2,0,-2,0"
+                                                Kind="{Binding IconKind}"
+                                                Foreground="{Binding IconColor}"
+                                                Height="auto"
+                                                Width="auto"
+                                                HorizontalAlignment="Center"
+                                                VerticalAlignment="Center"/>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
                                 <DataGridTextColumn 
                                     Header="Torso"
-                                    Width="75*"
+                                    Width="74*"
                                     Binding="{Binding Name}"
                                     ElementStyle="{StaticResource StandardColumnElementStyle}"/>
                                 <DataGridTextColumn 
                                     Header="Attuned"
-                                    Width="25*"
+                                    Width="24*"
                                     Binding="{Binding AttunedText}"
                                     ElementStyle="{StaticResource StandardColumnElementStyle}"/>
                             </DataGrid.Columns>
@@ -209,14 +224,29 @@
                             SelectionChanged="EquipmentDataGrid_SelectionChanged"
                             Sorted="EquipmentDataGrid_Sorted">
                             <DataGrid.Columns>
+                                <DataGridTemplateColumn
+                                    Width="0.02*">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <materialDesign:PackIcon
+                                                Margin="2,0,-2,0"
+                                                Kind="{Binding IconKind}"
+                                                Foreground="{Binding IconColor}"
+                                                Height="auto"
+                                                Width="auto"
+                                                HorizontalAlignment="Center"
+                                                VerticalAlignment="Center"/>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
                                 <DataGridTextColumn 
                                     Header="Legs"
-                                    Width="75*"
+                                    Width="74*"
                                     Binding="{Binding Name}"
                                     ElementStyle="{StaticResource StandardColumnElementStyle}"/>
                                 <DataGridTextColumn 
                                     Header="Attuned"
-                                    Width="25*"
+                                    Width="24*"
                                     Binding="{Binding AttunedText}"
                                     ElementStyle="{StaticResource StandardColumnElementStyle}"/>
                             </DataGrid.Columns>
@@ -249,14 +279,29 @@
                             SelectionChanged="EquipmentDataGrid_SelectionChanged"
                             Sorted="EquipmentDataGrid_Sorted">
                             <DataGrid.Columns>
+                                <DataGridTemplateColumn
+                                    Width="0.02*">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <materialDesign:PackIcon
+                                                Margin="2,0,-2,0"
+                                                Kind="{Binding IconKind}"
+                                                Foreground="{Binding IconColor}"
+                                                Height="auto"
+                                                Width="auto"
+                                                HorizontalAlignment="Center"
+                                                VerticalAlignment="Center"/>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
                                 <DataGridTextColumn 
                                     Header="Head"
-                                    Width="75*"
+                                    Width="74*"
                                     Binding="{Binding Name}"
                                     ElementStyle="{StaticResource StandardColumnElementStyle}"/>
                                 <DataGridTextColumn 
                                     Header="Attuned"
-                                    Width="25*"
+                                    Width="24*"
                                     Binding="{Binding AttunedText}"
                                     ElementStyle="{StaticResource StandardColumnElementStyle}"/>
                             </DataGrid.Columns>
@@ -277,14 +322,29 @@
                             SelectionChanged="EquipmentDataGrid_SelectionChanged"
                             Sorted="EquipmentDataGrid_Sorted">
                             <DataGrid.Columns>
+                                <DataGridTemplateColumn
+                                    Width="0.02*">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <materialDesign:PackIcon
+                                                Margin="2,0,-2,0"
+                                                Kind="{Binding IconKind}"
+                                                Foreground="{Binding IconColor}"
+                                                Height="auto"
+                                                Width="auto"
+                                                HorizontalAlignment="Center"
+                                                VerticalAlignment="Center"/>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
                                 <DataGridTextColumn 
                                     Header="Hands"
-                                    Width="75*"
+                                    Width="74*"
                                     Binding="{Binding Name}"
                                     ElementStyle="{StaticResource StandardColumnElementStyle}"/>
                                 <DataGridTextColumn 
                                     Header="Attuned"
-                                    Width="25*"
+                                    Width="24*"
                                     Binding="{Binding AttunedText}"
                                     ElementStyle="{StaticResource StandardColumnElementStyle}"/>
                             </DataGrid.Columns>
@@ -305,14 +365,29 @@
                             SelectionChanged="EquipmentDataGrid_SelectionChanged"
                             Sorted="EquipmentDataGrid_Sorted">
                             <DataGrid.Columns>
+                                <DataGridTemplateColumn
+                                    Width="0.02*">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <materialDesign:PackIcon
+                                                Margin="2,0,-2,0"
+                                                Kind="{Binding IconKind}"
+                                                Foreground="{Binding IconColor}"
+                                                Height="auto"
+                                                Width="auto"
+                                                HorizontalAlignment="Center"
+                                                VerticalAlignment="Center"/>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
                                 <DataGridTextColumn 
                                     Header="Feet"
-                                    Width="75*"
+                                    Width="74*"
                                     Binding="{Binding Name}"
                                     ElementStyle="{StaticResource StandardColumnElementStyle}"/>
                                 <DataGridTextColumn 
                                     Header="Attuned"
-                                    Width="25*"
+                                    Width="24*"
                                     Binding="{Binding AttunedText}"
                                     ElementStyle="{StaticResource StandardColumnElementStyle}"/>
                             </DataGrid.Columns>

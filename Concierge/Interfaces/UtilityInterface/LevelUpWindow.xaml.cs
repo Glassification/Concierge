@@ -6,14 +6,13 @@ namespace Concierge.Interfaces.UtilityInterface
 {
     using System;
     using System.Linq;
-    using System.Reflection.Metadata;
-    using System.Runtime.CompilerServices;
     using System.Windows;
 
     using Concierge.Character;
     using Concierge.Character.Enums;
     using Concierge.Interfaces.Components;
     using Concierge.Interfaces.Controls;
+    using Concierge.Interfaces.Enums;
     using Concierge.Utility;
     using Concierge.Utility.Extensions;
     using Concierge.Utility.Utilities;
@@ -38,6 +37,14 @@ namespace Concierge.Interfaces.UtilityInterface
         }
 
         public override string HeaderText => "Level Up";
+
+        public override ConciergeWindowResult ShowWizardSetup(string buttonText)
+        {
+            this.FillFields();
+            this.ShowConciergeWindow();
+
+            return this.Result;
+        }
 
         public override object? ShowWindow()
         {
@@ -125,11 +132,13 @@ namespace Concierge.Interfaces.UtilityInterface
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             this.CloseConciergeWindow();
+            this.Result = ConciergeWindowResult.Exit;
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
             this.CloseConciergeWindow();
+            this.Result = ConciergeWindowResult.Cancel;
         }
 
         private void LevelUpButton_Click(object sender, RoutedEventArgs e)

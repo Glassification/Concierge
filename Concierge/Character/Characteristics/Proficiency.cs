@@ -9,7 +9,7 @@ namespace Concierge.Character.Characteristics
     using Concierge.Character.Enums;
     using Concierge.Utility;
 
-    public sealed class Proficiency : ICopyable<Proficiency>
+    public sealed class Proficiency : ICopyable<Proficiency>, IUnique
     {
         public const string MartialMelee = "Martial Melee Weapons";
         public const string MartialRanged = "Martial Ranged Weapons";
@@ -32,7 +32,7 @@ namespace Concierge.Character.Characteristics
 
         public ProficiencyTypes ProficiencyType { get; set; }
 
-        public Guid Id { get; init; }
+        public Guid Id { get; set; }
 
         public Proficiency DeepCopy()
         {

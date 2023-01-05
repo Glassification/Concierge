@@ -118,7 +118,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
             this.ResourceNameComboBox.Text = string.Empty;
             this.PoolUpDown.Value = 0;
             this.SpentUpDown.Value = 0;
-            this.RecoveryComboBox.Text = Recovery.None.ToString().FormatFromEnum();
+            this.RecoveryComboBox.Text = Recovery.None.ToString();
             this.NotesTextBox.Text = string.Empty;
         }
 

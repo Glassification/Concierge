@@ -15,6 +15,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
     using Concierge.Interfaces.Controls;
     using Concierge.Interfaces.Enums;
     using Concierge.Services;
+    using Concierge.Utility.Extensions;
     using Concierge.Utility.Utilities;
 
     /// <summary>
@@ -81,7 +82,7 @@ namespace Concierge.Interfaces.OverviewPageInterface
         {
             this.InitiativeField.Text = Program.CcsFile.Character.Initiative.ToString();
             this.PassivePerceptionField.Text = Program.CcsFile.Character.PassivePerception.ToString();
-            this.VisionField.Text = Program.CcsFile.Character.Senses.Vision.ToString();
+            this.VisionField.Text = Program.CcsFile.Character.Senses.Vision.ToString().FormatFromEnum();
             this.MovementSpeedField.Text = Program.CcsFile.Character.Senses.Movement.ToString();
         }
 

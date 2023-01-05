@@ -193,6 +193,26 @@
                                     </StackPanel>
                                 </Button>
                                 <Button 
+                                    x:Name="ButtonImportCharacter" 
+                                    Click="ButtonImportCharacter_Click"
+                                    Style="{StaticResource ConciergePopupButtonStyle}"
+                                    HorizontalAlignment="Stretch">
+                                    <StackPanel Orientation="Horizontal">
+                                        <materialDesign:PackIcon 
+                                            Kind="Import" 
+                                            Foreground="#6a4c93"
+                                            Height="25" 
+                                            Width="25" 
+                                            Margin="0 10"/>
+                                        <TextBlock 
+                                            Text="Import..." 
+                                            Foreground="White" 
+                                            VerticalAlignment="Center" 
+                                            HorizontalAlignment="Left" 
+                                            Margin="20 10"/>
+                                    </StackPanel>
+                                </Button>
+                                <Button 
                                     x:Name="ButtonSaveCharacter" 
                                     Click="ButtonSaveCharacter_Click"
                                     Style="{StaticResource ConciergePopupButtonStyle}"

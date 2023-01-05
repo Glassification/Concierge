@@ -10,16 +10,14 @@ namespace Concierge.Character.Notes
 
     using Concierge.Utility;
     using Concierge.Utility.Extensions;
-    using Newtonsoft.Json;
 
-    public sealed class Chapter : ICopyable<Chapter>
+    public sealed class Chapter : ICopyable<Chapter>, IUnique
     {
         public Chapter(string name)
         {
             this.Documents = new List<Document>();
             this.Id = Guid.NewGuid();
             this.Name = name;
-            this.IsNewChapterPlaceholder = false;
         }
 
         public List<Document> Documents { get; set; }
@@ -28,10 +26,7 @@ namespace Concierge.Character.Notes
 
         public bool IsExpanded { get; set; }
 
-        [JsonIgnore]
-        public bool IsNewChapterPlaceholder { get; set; }
-
-        public Guid Id { get; init; }
+        public Guid Id { get; set; }
 
         public Chapter DeepCopy()
         {

@@ -19,7 +19,6 @@ namespace Concierge.Character
     using Concierge.Commands;
     using Concierge.Configuration;
     using Concierge.Leveling;
-    using Concierge.Tools.DiceRolling.Dice;
     using Concierge.Utility;
     using Concierge.Utility.Extensions;
     using Concierge.Utility.Units;
@@ -232,12 +231,12 @@ namespace Concierge.Character
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0075:Simplify conditional expression", Justification = "Increase readability.")]
         public bool IsWeaponProficient(Weapon weapon)
         {
-            var weaponName = StringUtility.FormatName(weapon.WeaponType.ToString());
+            var weaponName = StringUtility.FormatName(weapon.Type.ToString());
 
             return weapon.ProficiencyOverride
                 ? true
                 : this.Proficiencies.Any(x => x.Name.Equals(weaponName) && x.ProficiencyType == ProficiencyTypes.Weapon) ? true
-                : weapon.WeaponType switch
+                : weapon.Type switch
             {
                 // Simple Ranged Weapons
                 WeaponTypes.LightCrossbow or WeaponTypes.Dart or WeaponTypes.Shortbow or WeaponTypes.Sling => this.Proficiencies.Any(x => x.Name.Equals(Proficiency.SimpleRanged) && x.ProficiencyType == ProficiencyTypes.Weapon),

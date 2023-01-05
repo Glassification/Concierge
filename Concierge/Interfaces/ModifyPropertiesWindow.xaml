@@ -226,22 +226,19 @@
                 Grid.Column="1"
                 Grid.Row="0"
                 x:Name="Class1Level"
-                Maximum="20"
-                ValueChanged="ClassLevel_ValueChanged"/>
+                Maximum="20"/>
 
             <controls:IntegerUpDown
                 Grid.Column="1"
                 Grid.Row="1"
                 x:Name="Class2Level"
-                Maximum="20"
-                ValueChanged="ClassLevel_ValueChanged"/>
+                Maximum="20"/>
 
             <controls:IntegerUpDown
                 Grid.Column="1"
                 Grid.Row="2"
                 x:Name="Class3Level"
-                Maximum="20"
-                ValueChanged="ClassLevel_ValueChanged"/>
+                Maximum="20"/>
 
             <components:ConciergeComboBox
                 Grid.Column="2"

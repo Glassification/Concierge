@@ -18,6 +18,7 @@ namespace Concierge.Tools.Interface
     using Concierge.Interfaces.InventoryPageInterface;
     using Concierge.Interfaces.OverviewPageInterface;
     using Concierge.Interfaces.SpellcastingPageInterface;
+    using Concierge.Interfaces.UtilityInterface;
     using Concierge.Utility.Utilities;
 
     public sealed class CharacterCreationWizard
@@ -46,7 +47,7 @@ namespace Concierge.Tools.Interface
             }
 
             this.RunSetupSteps();
-            RunDefinitions();
+            RemoveDuplicates();
             Program.UndoRedoService.Clear();
         }
 
@@ -77,12 +78,24 @@ namespace Concierge.Tools.Interface
                 character.Proficiencies.AddRange(CharacterUtility.GetProficiencies(character.Properties.Class3.Name, true));
             }
 
+            var senses = CharacterUtility.GetRaceSenses(character.Properties.Race);
+            character.Senses.BaseMovement = senses.Movement;
+            character.Senses.Vision = senses.VisionType;
+        }
+
+        private static void RemoveDuplicates()
+        {
+            var character = Program.CcsFile.Character;
+
             character.Proficiencies = character.Proficiencies.Distinct().ToList();
         }
 
         private void RunSetupSteps()
         {
             this.NextSetupStep(typeof(ModifyPropertiesWindow), "Skip Section");
+            this.NextSetupStep(typeof(ModifySpellClassWindow), "Continue");
+            this.NextSetupStep(typeof(LevelUpWindow), "Skip Section");
+            RunDefinitions();
             this.NextSetupStep(typeof(ModifyAttributesWindow), "Skip Section");
             this.NextSetupStep(typeof(ModifySensesWindow), "Skip Section");
             this.NextSetupStep(typeof(ModifyHealthWindow), "Skip Section");
@@ -98,7 +111,6 @@ namespace Concierge.Tools.Interface
             this.NextSetupStep(typeof(ModifyAmmoWindow), "Continue");
             this.NextSetupStep(typeof(ModifyStatusEffectsWindow), "Continue");
             this.NextSetupStep(typeof(ModifyCharacterImageWindow), "Skip Section");
-            this.NextSetupStep(typeof(ModifySpellClassWindow), "Continue");
             this.NextSetupStep(typeof(ModifySpellSlotsWindow), "Skip Section");
             this.NextSetupStep(typeof(ModifySpellWindow), "Continue");
         }

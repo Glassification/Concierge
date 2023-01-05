@@ -216,6 +216,20 @@
                 SelectionChanged="SpellListDataGrid_SelectionChanged" Grid.ColumnSpan="2" Margin="0,0,0,0.4"
                 Sorted="SpellListDataGrid_Sorted">
                 <DataGrid.Columns>
+                    <DataGridTemplateColumn
+                        Width="0.02*">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <materialDesign:PackIcon
+                                    Kind="{Binding IconKind}"
+                                    Foreground="{Binding IconColor}"
+                                    Height="auto"
+                                    Width="auto"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
                     <DataGridTextColumn
                         Header="Preped"
                         Binding="{Binding PreparedDisplay}"
@@ -244,7 +258,7 @@
                     <DataGridTextColumn
                         Header="Comp"
                         Binding="{Binding Components}"
-                        Width="0.09*"
+                        Width="0.08*"
                         ElementStyle="{StaticResource SpellcastingColumnElementStyle}"/>
                     <DataGridTextColumn
                         Header="Concen"
@@ -279,7 +293,7 @@
                     <DataGridTextColumn
                         Header="Description"
                         Binding="{Binding Description}"
-                        Width="0.17*"
+                        Width="0.16*"
                         ElementStyle="{StaticResource SpellcastingColumnElementStyle}"/>
                 </DataGrid.Columns>
             </components:ConciergeDataGrid>

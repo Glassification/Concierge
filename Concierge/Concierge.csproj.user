@@ -90,6 +90,9 @@
     <Compile Update="Interfaces\UtilityInterface\HelpWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Interfaces\UtilityInterface\ImportCharacterWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Interfaces\UtilityInterface\KonamiCodeWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -200,9 +203,6 @@
     <Page Update="Interfaces\AttackDefensePageInterface\AttackDefensePage.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Interfaces\AttackDefensePageInterface\AttacksPopupWindow.xaml">
-      <SubType>Designer</SubType>
-    </Page>
     <Page Update="Interfaces\AttackDefensePageInterface\ModifyAmmoWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -249,6 +249,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Interfaces\UtilityInterface\HelpWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Interfaces\UtilityInterface\ImportCharacterWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Interfaces\UtilityInterface\KonamiCodeWindow.xaml">

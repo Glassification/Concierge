@@ -108,14 +108,33 @@
                 Style="{DynamicResource StandardDataGridStyle}"
                 Sorted="AbilitiesDataGrid_Sorted">
                 <DataGrid.Columns>
+                    <DataGridTemplateColumn
+                        Width="0.02*">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <materialDesign:PackIcon
+                                    Kind="{Binding IconKind}"
+                                    Foreground="{Binding IconColor}"
+                                    Height="auto"
+                                    Width="auto"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
                     <DataGridTextColumn
                         Header="Name"
                         Binding="{Binding Name}"
-                        Width="0.2*"
+                        Width="0.15*"
                         ElementStyle="{StaticResource StandardColumnElementStyle}"/>
                     <DataGridTextColumn
                         Header="Level"
                         Binding="{Binding Level}"
+                        Width="0.05*"
+                        ElementStyle="{StaticResource StandardColumnElementStyle}"/>
+                    <DataGridTextColumn
+                        Header="Type"
+                        Binding="{Binding TypeDisplay}"
                         Width="0.1*"
                         ElementStyle="{StaticResource StandardColumnElementStyle}"/>
                     <DataGridTextColumn
@@ -136,7 +155,7 @@
                     <DataGridTextColumn
                         Header="Description"
                         Binding="{Binding Description}"
-                        Width="0.4*"
+                        Width="0.38*"
                         ElementStyle="{StaticResource WallOfTextColumnElementStyle}"/>
                 </DataGrid.Columns>
             </components:ConciergeDataGrid>

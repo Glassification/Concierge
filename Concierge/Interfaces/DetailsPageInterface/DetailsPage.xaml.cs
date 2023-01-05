@@ -12,10 +12,12 @@ namespace Concierge.Interfaces.DetailsPageInterface
 
     using Concierge.Character.Characteristics;
     using Concierge.Character.Enums;
+    using Concierge.Character.Items;
     using Concierge.Character.Statuses;
     using Concierge.Character.Statuses.ConditionStatus;
     using Concierge.Commands;
     using Concierge.Configuration;
+    using Concierge.Interfaces.AttackDefensePageInterface;
     using Concierge.Interfaces.Components;
     using Concierge.Interfaces.Enums;
     using Concierge.Services;
@@ -39,6 +41,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
 
         public void Draw()
         {
+            this.DrawArmor();
             this.DrawWeight();
             this.DrawAppearance();
             this.DrawPersonality();
@@ -154,6 +157,11 @@ namespace Concierge.Interfaces.DetailsPageInterface
             {
                 this.LanguagesDataGrid.Items.Add(language);
             }
+        }
+
+        private void DrawArmor()
+        {
+            this.ArmorDetailsDisplay.SetArmorDetails(Program.CcsFile.Character.Armor);
         }
 
         private void DrawResources()
@@ -274,6 +282,16 @@ namespace Concierge.Interfaces.DetailsPageInterface
                 this.WeaponProficiencyDataGrid.UnselectAll();
                 this.ArmorProficiencyDataGrid.UnselectAll();
             }
+        }
+
+        private void EditDetailsButton_Click(object sender, RoutedEventArgs e)
+        {
+            ConciergeWindowService.ShowEdit<Armor>(
+                Program.CcsFile.Character.Armor,
+                typeof(ModifyArmorWindow),
+                this.Window_ApplyChanges,
+                ConciergePage.AttackDefense);
+            this.Draw();
         }
 
         private void EditConditionsButton_Click(object sender, RoutedEventArgs e)
@@ -445,6 +463,9 @@ namespace Concierge.Interfaces.DetailsPageInterface
         {
             switch (sender?.GetType()?.Name)
             {
+                case nameof(ModifyArmorWindow):
+                    this.DrawArmor();
+                    break;
                 case nameof(ModifyAppearanceWindow):
                     this.DrawAppearance();
                     break;

@@ -2,6 +2,7 @@
   "Character": {
     "Abilities": [
       {
+        "Type": 0,
         "Name": "Alert",
         "Level": 1,
         "Uses": "--",
@@ -12,6 +13,7 @@
         "Id": "78a4e6e2-97fc-4374-a551-fb44e590a901"
       },
       {
+        "Type": 0,
         "Name": "Expertise",
         "Level": 1,
         "Uses": "--",
@@ -22,6 +24,7 @@
         "Id": "26842e17-6aec-4e5f-bd9c-27340e2d8b62"
       },
       {
+        "Type": 0,
         "Name": "Fey Ancestry",
         "Level": 1,
         "Uses": "--",
@@ -32,6 +35,7 @@
         "Id": "7a820cd6-7e30-4004-9058-100e0de7f79c"
       },
       {
+        "Type": 0,
         "Name": "Thieves' Cant",
         "Level": 1,
         "Uses": "--",
@@ -42,6 +46,7 @@
         "Id": "9fbdd976-d053-473a-ae95-9b6d630dc34b"
       },
       {
+        "Type": 0,
         "Name": "Sneak Attack",
         "Level": 1,
         "Uses": "1 Per Turn",
@@ -52,6 +57,7 @@
         "Id": "411b76eb-833a-4c7f-af1d-1391a4be6e8b"
       },
       {
+        "Type": 0,
         "Name": "Cunning Action",
         "Level": 2,
         "Uses": "--",
@@ -62,6 +68,7 @@
         "Id": "6d9ebff6-4d8a-4f64-a8ce-b7a805a0730c"
       },
       {
+        "Type": 0,
         "Name": "Assassinate",
         "Level": 3,
         "Uses": "1 Per Turn",
@@ -72,6 +79,7 @@
         "Id": "20920921-ba5b-4857-94a3-9194aeb26288"
       },
       {
+        "Type": 0,
         "Name": "Uncanny Dodge",
         "Level": 5,
         "Uses": "1 Per Round",
@@ -82,6 +90,7 @@
         "Id": "d2eb92fa-6349-4e17-b251-70cc263e0fe0"
       },
       {
+        "Type": 0,
         "Name": "Evasion",
         "Level": 7,
         "Uses": "--",
@@ -92,6 +101,7 @@
         "Id": "2b94439f-08fa-4d2b-93b8-793f2bcb5bb1"
       },
       {
+        "Type": 0,
         "Name": "Observant",
         "Level": 8,
         "Uses": "--",
@@ -102,6 +112,7 @@
         "Id": "58138e3e-aefa-45b1-aff7-57e8341017bf"
       },
       {
+        "Type": 0,
         "Name": "Infiltration Expertise",
         "Level": 9,
         "Uses": "--",
@@ -457,8 +468,8 @@
           "Note": "Literally what you think.",
           "ProficiencyOverride": true,
           "Range": "5 / 5",
+          "Type": 0,
           "Value": 0,
-          "WeaponType": 0,
           "Weight": {
             "Value": 0.0,
             "UnitType": 0,
@@ -1967,8 +1978,8 @@
         "Note": "Finesse, Light, Thrown",
         "ProficiencyOverride": false,
         "Range": "20 / 60",
+        "Type": 0,
         "Value": 2,
-        "WeaponType": 4,
         "Weight": {
           "Value": 1.0,
           "UnitType": 0,
@@ -1987,8 +1998,8 @@
         "Note": "Finesse, Light, Thrown",
         "ProficiencyOverride": false,
         "Range": "20 / 60",
+        "Type": 0,
         "Value": 2,
-        "WeaponType": 4,
         "Weight": {
           "Value": 1.0,
           "UnitType": 0,
@@ -2007,8 +2018,8 @@
         "Note": "Finesse, Gain the Jump spell.",
         "ProficiencyOverride": false,
         "Range": "5 / 5",
+        "Type": 0,
         "Value": 200,
-        "WeaponType": 27,
         "Weight": {
           "Value": 2.0,
           "UnitType": 0,
@@ -2027,8 +2038,8 @@
         "Note": "Ammo, Two-Handed",
         "ProficiencyOverride": false,
         "Range": "80 / 320",
+        "Type": 0,
         "Value": 25,
-        "WeaponType": 29,
         "Weight": {
           "Value": 2.0,
           "UnitType": 0,
@@ -2047,8 +2058,8 @@
         "Note": "Finesse, light, thrown",
         "ProficiencyOverride": false,
         "Range": "20 / 60",
+        "Type": 0,
         "Value": 102,
-        "WeaponType": 4,
         "Weight": {
           "Value": 1.0,
           "UnitType": 0,
@@ -2067,8 +2078,8 @@
         "Note": "Ammunition, two-handed. Wen you see a creature casting a spell within 60' while holding this bow, can cast Spelldrinker. Cannot be used again until a short or long rest.",
         "ProficiencyOverride": false,
         "Range": "80 / 320",
+        "Type": 0,
         "Value": 900,
-        "WeaponType": 29,
         "Weight": {
           "Value": 2.0,
           "UnitType": 0,
@@ -2077,8 +2088,8 @@
       }
     ]
   },
-  "Hash": "1522E1E0300CF304F92428EA83AAE9016F5534B9A84D676766AA0CEA60246108",
+  "Hash": "FA1424D6A01A9C2B08CCE299830B1E9687CB9DDAB2FA71AAB1EC8A87480C79A7",
   "OriginalCreationDate": "Monday, 14 March 2022 08:19:44 PM",
-  "LastSaveDate": "2022-12-10T14:09:18.1425805-06:00",
-  "Version": "4.16.5"
+  "LastSaveDate": "2023-01-02T15:58:17.7759945-06:00",
+  "Version": "4.17.2"
 }

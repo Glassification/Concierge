@@ -122,7 +122,7 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
             this.ProficencyOverrideCheckBox.UpdatingValue();
 
             this.AttackComboBox.Text = weapon.Name;
-            this.TypeComboBox.Text = weapon.WeaponType.ToString();
+            this.TypeComboBox.Text = weapon.Type.ToString();
             this.AbilityComboBox.Text = weapon.Ability.ToString();
             this.DamageTextBox.Text = weapon.Damage;
             this.MiscDamageTextBox.Text = weapon.Misc;
@@ -169,7 +169,7 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
             var oldItem = weapon.DeepCopy();
 
             weapon.Name = this.AttackComboBox.Text;
-            weapon.WeaponType = (WeaponTypes)Enum.Parse(typeof(WeaponTypes), this.TypeComboBox.Text);
+            weapon.Type = (WeaponTypes)Enum.Parse(typeof(WeaponTypes), this.TypeComboBox.Text);
             weapon.Ability = (Abilities)Enum.Parse(typeof(Abilities), this.AbilityComboBox.Text);
             weapon.Damage = this.DamageTextBox.Text;
             weapon.Misc = this.MiscDamageTextBox.Text;
@@ -192,7 +192,7 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
             var weapon = new Weapon()
             {
                 Name = this.AttackComboBox.Text,
-                WeaponType = (WeaponTypes)Enum.Parse(typeof(WeaponTypes), this.TypeComboBox.Text),
+                Type = (WeaponTypes)Enum.Parse(typeof(WeaponTypes), this.TypeComboBox.Text),
                 Ability = (Abilities)Enum.Parse(typeof(Abilities), this.AbilityComboBox.Text),
                 Damage = this.DamageTextBox.Text,
                 Misc = this.MiscDamageTextBox.Text,

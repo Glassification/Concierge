@@ -71,7 +71,6 @@ namespace Concierge.Interfaces.DetailsPageInterface
             this.IdealTextBox.Text = this.Personality.Ideal;
             this.BondTextBox.Text = this.Personality.Bond;
             this.FlawTextBox.Text = this.Personality.Flaw;
-            this.BackgroundTextBox.Text = this.Personality.Background;
             this.NotesTextBox.Text = this.Personality.Notes;
         }
 
@@ -84,7 +83,6 @@ namespace Concierge.Interfaces.DetailsPageInterface
             this.Personality.Ideal = this.IdealTextBox.Text;
             this.Personality.Bond = this.BondTextBox.Text;
             this.Personality.Flaw = this.FlawTextBox.Text;
-            this.Personality.Background = this.BackgroundTextBox.Text;
             this.Personality.Notes = this.NotesTextBox.Text;
 
             Program.UndoRedoService.AddCommand(new EditCommand<Personality>(this.Personality, oldItem, this.ConciergePage));

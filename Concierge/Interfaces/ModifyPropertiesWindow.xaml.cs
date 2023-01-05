@@ -66,6 +66,10 @@ namespace Concierge.Interfaces
             this.CancelButton.Content = buttonText;
             this.CharacterProperties = Program.CcsFile.Character.Properties;
 
+            SetLevelEnableState(this.Class1Level, false);
+            SetLevelEnableState(this.Class2Level, false);
+            SetLevelEnableState(this.Class3Level, false);
+
             this.FillFields();
             this.ShowConciergeWindow();
 
@@ -94,18 +98,10 @@ namespace Concierge.Interfaces
             Program.Modify();
         }
 
-        private static void SetClassEnableState(IntegerUpDown classLevel, ConciergeComboBox classComboBox, ConciergeComboBox subclassComboBox)
+        private static void SetLevelEnableState(IntegerUpDown level, bool isEnabled)
         {
-            var level = classLevel.Value;
-
-            classComboBox.IsEnabled = level > 0;
-            subclassComboBox.IsEnabled = level > 0;
-
-            classComboBox.Opacity = level > 0 ? 1 : 0.5;
-            subclassComboBox.Opacity = level > 0 ? 1 : 0.5;
-
-            classComboBox.Text = level > 0 ? classComboBox.Text : string.Empty;
-            subclassComboBox.Text = level > 0 ? subclassComboBox.Text : string.Empty;
+            level.IsEnabled = isEnabled;
+            level.Opacity = isEnabled ? 1 : 0.5;
         }
 
         private void FillFields()
@@ -130,9 +126,6 @@ namespace Concierge.Interfaces
             this.UseCustomImageCheckBox.IsChecked = this.CharacterProperties.CharacterIcon.UseCustomImage;
 
             this.SetImageEnabledState(this.CharacterProperties.CharacterIcon.UseCustomImage);
-            SetClassEnableState(this.Class1Level, this.Class1Class, this.Class1Subclass);
-            SetClassEnableState(this.Class2Level, this.Class2Class, this.Class2Subclass);
-            SetClassEnableState(this.Class3Level, this.Class3Class, this.Class3Subclass);
 
             this.IsDrawing = false;
         }
@@ -273,13 +266,6 @@ namespace Concierge.Interfaces
             {
                 this.NameTextBox.Text = name;
             }
-        }
-
-        private void ClassLevel_ValueChanged(object sender, RoutedEventArgs e)
-        {
-            SetClassEnableState(this.Class1Level, this.Class1Class, this.Class1Subclass);
-            SetClassEnableState(this.Class2Level, this.Class2Class, this.Class2Subclass);
-            SetClassEnableState(this.Class3Level, this.Class3Class, this.Class3Subclass);
         }
     }
 }

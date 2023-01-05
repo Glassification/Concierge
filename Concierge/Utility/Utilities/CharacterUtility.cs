@@ -88,9 +88,9 @@ namespace Concierge.Utility.Utilities
             }
         }
 
-        public static SpellSlotDto GetSpellSlotIncrease(string className, int level)
+        public static SpellSlotDto GetSpellSlotIncrease(string className, string subclassName, int level)
         {
-            return className switch
+            var spellSlots = className switch
             {
                 "Artificer" => SpellSlotDefinitions.GetArtificerSpellSlotIncrease(level),
                 "Bard" => SpellSlotDefinitions.GetBardSpellSlotIncrease(level),
@@ -99,12 +99,30 @@ namespace Concierge.Utility.Utilities
                 "Druid" => SpellSlotDefinitions.GetDruidSpellSlotIncrease(level),
                 "Paladin" => SpellSlotDefinitions.GetPaladinSpellSlotIncrease(level),
                 "Ranger" => SpellSlotDefinitions.GetRangerSpellSlotIncrease(level),
-                "Rogue" => SpellSlotDefinitions.GetRogueSpellSlotIncrease(level),
+                "Arcane Trickster" => SpellSlotDefinitions.GetRogueSpellSlotIncrease(level),
                 "Sorcerer" => SpellSlotDefinitions.GetSorcererSpellSlotIncrease(level),
                 "Warlock" => SpellSlotDefinitions.GetWarlockSpellSlotIncrease(level),
                 "Wizard" => SpellSlotDefinitions.GetWizardSpellSlotIncrease(level),
                 _ => new SpellSlotDto(),
             };
+
+            spellSlots = subclassName switch
+            {
+                "Artificer" => SpellSlotDefinitions.GetArtificerSpellSlotIncrease(level),
+                "Bard" => SpellSlotDefinitions.GetBardSpellSlotIncrease(level),
+                "Blood Hunter" => SpellSlotDefinitions.GetBloodHunterSpellSlotIncrease(level),
+                "Cleric" => SpellSlotDefinitions.GetClericSpellSlotIncrease(level),
+                "Druid" => SpellSlotDefinitions.GetDruidSpellSlotIncrease(level),
+                "Paladin" => SpellSlotDefinitions.GetPaladinSpellSlotIncrease(level),
+                "Ranger" => SpellSlotDefinitions.GetRangerSpellSlotIncrease(level),
+                "Arcane Trickster" => SpellSlotDefinitions.GetRogueSpellSlotIncrease(level),
+                "Sorcerer" => SpellSlotDefinitions.GetSorcererSpellSlotIncrease(level),
+                "Warlock" => SpellSlotDefinitions.GetWarlockSpellSlotIncrease(level),
+                "Wizard" => SpellSlotDefinitions.GetWizardSpellSlotIncrease(level),
+                _ => spellSlots,
+            };
+
+            return spellSlots;
         }
 
         public static List<Proficiency> GetProficiencies(string className, bool multiClass)
@@ -163,6 +181,23 @@ namespace Concierge.Utility.Utilities
                 "Rogue" => ClassResourceDefinitions.GetRogueResourceIncrease(level),
                 "Sorcerer" => ClassResourceDefinitions.GetSorcererResourceIncrease(level),
                 _ => new ClassResourceDto(),
+            };
+        }
+
+        public static SensesDto GetRaceSenses(Race race)
+        {
+            return race.Name switch
+            {
+                "Dwarf" => RaceSensesDefinition.GetDwarfSenses(),
+                "Elf" => RaceSensesDefinition.GetElfSenses(race.Subrace),
+                "Halfling" => RaceSensesDefinition.GetHalflingSenses(),
+                "Human" => RaceSensesDefinition.GetHumanSenses(),
+                "Dragonborn" => RaceSensesDefinition.GetDragonbornSenses(),
+                "Gnome" => RaceSensesDefinition.GetGnomeSenses(),
+                "Half-Elf" => RaceSensesDefinition.GetHalfElfSenses(),
+                "Half-Orc" => RaceSensesDefinition.GetHalfOrcSenses(),
+                "Tiefling" => RaceSensesDefinition.GetTieflingSenses(),
+                _ => new SensesDto(),
             };
         }
     }

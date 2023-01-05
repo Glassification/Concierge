@@ -15,7 +15,6 @@ namespace Concierge.Character.Characteristics
             this.Ideal = string.Empty;
             this.Bond = string.Empty;
             this.Flaw = string.Empty;
-            this.Background = string.Empty;
             this.Notes = string.Empty;
         }
 
@@ -29,8 +28,6 @@ namespace Concierge.Character.Characteristics
 
         public string Flaw { get; set; }
 
-        public string Background { get; set; }
-
         public string Notes { get; set; }
 
         public Personality DeepCopy()
@@ -42,7 +39,6 @@ namespace Concierge.Character.Characteristics
                 Ideal = this.Ideal,
                 Bond = this.Bond,
                 Flaw = this.Flaw,
-                Background = this.Background,
                 Notes = this.Notes,
             };
         }

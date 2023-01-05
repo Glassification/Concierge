@@ -6,14 +6,18 @@ namespace Concierge.Interfaces.AbilitiesPageInterface
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Windows;
     using System.Windows.Controls;
 
     using Concierge.Character.Characteristics;
+    using Concierge.Character.Enums;
     using Concierge.Commands;
     using Concierge.Interfaces.Components;
     using Concierge.Interfaces.Enums;
     using Concierge.Utility;
+    using Concierge.Utility.Extensions;
+    using Concierge.Utility.Utilities;
 
     /// <summary>
     /// Interaction logic for ModifyAbilitiesWindow.xaml.
@@ -26,6 +30,7 @@ namespace Concierge.Interfaces.AbilitiesPageInterface
             this.UseRoundedCorners();
 
             this.NameComboBox.ItemsSource = Constants.Abilities;
+            this.TypeComboBox.ItemsSource = StringUtility.FormatEnumForDisplay(typeof(AbilityTypes));
             this.ConciergePage = ConciergePage.None;
             this.Abilities = new List<Ability>();
             this.SelectedAbility = new Ability();
@@ -110,13 +115,12 @@ namespace Concierge.Interfaces.AbilitiesPageInterface
         protected override void OnSourceInitialized(EventArgs e)
         {
             base.OnSourceInitialized(e);
-
-            // FrostedGlass.ExtendGlassFrame(this, new Thickness(-1));
         }
 
         private void FillFields(Ability ability)
         {
             this.NameComboBox.Text = ability.Name;
+            this.TypeComboBox.Text = ability.Type.ToString().FormatFromEnum();
             this.LevelUpDown.Value = ability.Level;
             this.UsesTextBox.Text = ability.Uses;
             this.RecoveryTextBox.Text = ability.Recovery;
@@ -127,6 +131,7 @@ namespace Concierge.Interfaces.AbilitiesPageInterface
         private void ClearFields()
         {
             this.NameComboBox.Text = string.Empty;
+            this.TypeComboBox.Text = AbilityTypes.None.ToString();
             this.LevelUpDown.Value = 0;
             this.UsesTextBox.Text = string.Empty;
             this.RecoveryTextBox.Text = string.Empty;
@@ -141,6 +146,7 @@ namespace Concierge.Interfaces.AbilitiesPageInterface
             var ability = new Ability()
             {
                 Name = this.NameComboBox.Text,
+                Type = (AbilityTypes)Enum.Parse(typeof(AbilityTypes), this.TypeComboBox.Text.Strip(" ")),
                 Level = this.LevelUpDown.Value,
                 Uses = this.UsesTextBox.Text,
                 Recovery = this.RecoveryTextBox.Text,
@@ -158,6 +164,7 @@ namespace Concierge.Interfaces.AbilitiesPageInterface
             var oldItem = ability.DeepCopy();
 
             ability.Name = this.NameComboBox.Text;
+            ability.Type = (AbilityTypes)Enum.Parse(typeof(AbilityTypes), this.TypeComboBox.Text.Strip(" "));
             ability.Level = this.LevelUpDown.Value;
             ability.Uses = this.UsesTextBox.Text;
             ability.Recovery = this.RecoveryTextBox.Text;

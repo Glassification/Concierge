@@ -478,8 +478,8 @@
           "Name": "Blue Cloak with Hood",
           "IgnoreWeight": false,
           "Index": 0,
-          "ItemCategory": "Adventuring Gear",
-          "Notes": "Clothing",
+          "ItemCategory": "Clothing",
+          "Notes": "",
           "Value": 5,
           "Weight": {
             "Value": 1.0,
@@ -499,7 +499,7 @@
           "Name": "Calamari Ring",
           "IgnoreWeight": false,
           "Index": 0,
-          "ItemCategory": "Adventuring Gear",
+          "ItemCategory": "Clothing",
           "Notes": "Magical",
           "Value": 0,
           "Weight": {
@@ -518,8 +518,8 @@
           "Name": "Black Onyx Leather Gloves",
           "IgnoreWeight": false,
           "Index": 0,
-          "ItemCategory": "Adventuring Gear",
-          "Notes": "Clothing",
+          "ItemCategory": "Clothing",
+          "Notes": "",
           "Value": 1,
           "Weight": {
             "Value": 0.5,
@@ -540,8 +540,8 @@
           "Name": "Leather Boots",
           "IgnoreWeight": false,
           "Index": 0,
-          "ItemCategory": "Adventuring Gear",
-          "Notes": "Clothing",
+          "ItemCategory": "Clothing",
+          "Notes": "",
           "Value": 2,
           "Weight": {
             "Value": 0.0,
@@ -993,7 +993,7 @@
         "Amount": 1,
         "Attuned": false,
         "CoinType": 1,
-        "Description": "When a wall doesn�t offer handholds and footholds, you can make your own. A piton is a steel spike with an eye through which you can loop a rope.",
+        "Description": "When a wall doesn't offer handholds and footholds, you can make your own. A piton is a steel spike with an eye through which you can loop a rope.",
         "EquppedId": "00000000-0000-0000-0000-000000000000",
         "Id": "0a5c2ea6-b4d1-4f0e-9087-2fd2608ee92d",
         "Name": "Piton",
@@ -2056,8 +2056,8 @@
       }
     ]
   },
-  "Hash": "F4E63DADD0B64E2F67729DFE85C8E9816C4CCA6CF97C484759B365DD0E719B0B",
+  "Hash": "B42F84159B079D1C4753B93E2880A5A6B45F54333B021AA09F4496E7ECBBADB0",
   "OriginalCreationDate": "Monday, 14 March 2022 08:19:44 PM",
-  "LastSaveDate": "2022-12-11T11:48:31.0731577-06:00",
+  "LastSaveDate": "2022-12-12T21:28:59.1815882-06:00",
   "Version": "4.16.5"
 }

@@ -230,6 +230,20 @@ namespace Concierge.Interfaces
             this.SetActiveFileText();
         }
 
+        public void ImportCharacter()
+        {
+            Program.Logger.Info($"Importing from character sheet.");
+
+            var result = ConciergeWindowService.ShowWindow(typeof(ImportCharacterWindow));
+
+            if (result is bool imported && imported)
+            {
+                Program.UndoRedoService.Clear();
+                this.animatedTimedTextWorkerService.StartWorker("Imported Character Sheet!");
+                this.DrawAll();
+            }
+        }
+
         public int SaveCharacterSheet()
         {
             Program.Logger.Info($"Save character sheet.");
@@ -700,6 +714,13 @@ namespace Concierge.Interfaces
         {
             ConciergeSound.TapNavigation();
             this.OpenCharacterSheet();
+            this.IgnoreSecondPress = true;
+        }
+
+        private void ButtonImportCharacter_Click(object sender, RoutedEventArgs e)
+        {
+            ConciergeSound.TapNavigation();
+            this.ImportCharacter();
             this.IgnoreSecondPress = true;
         }
 

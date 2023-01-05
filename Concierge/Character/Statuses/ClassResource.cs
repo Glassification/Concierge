@@ -11,7 +11,7 @@ namespace Concierge.Character.Statuses
     using Concierge.Utility.Extensions;
     using Newtonsoft.Json;
 
-    public sealed class ClassResource : ICopyable<ClassResource>
+    public sealed class ClassResource : ICopyable<ClassResource>, IUnique
     {
         private int spent;
 
@@ -50,7 +50,7 @@ namespace Concierge.Character.Statuses
         [JsonIgnore]
         public string Description => $"{this.Type} - {this.Spent}/{this.Total} Used.{(this.Recovery == Recovery.None ? string.Empty : $" Recovers after {this.Recovery.GetDescription()}.")} {this.Note}";
 
-        public Guid Id { get; init; }
+        public Guid Id { get; set; }
 
         public override string ToString()
         {

@@ -5,13 +5,20 @@
 namespace Concierge.Character.Characteristics
 {
     using System;
+    using System.Windows.Media;
 
+    using Concierge.Character.Enums;
     using Concierge.Utility;
+    using Concierge.Utility.Attributes;
+    using Concierge.Utility.Extensions;
+    using MaterialDesignThemes.Wpf;
+    using Newtonsoft.Json;
 
-    public sealed class Ability : ICopyable<Ability>
+    public sealed class Ability : ICopyable<Ability>, IUnique
     {
         public Ability()
         {
+            this.Type = AbilityTypes.None;
             this.Name = string.Empty;
             this.Uses = string.Empty;
             this.Recovery = string.Empty;
@@ -20,6 +27,11 @@ namespace Concierge.Character.Characteristics
             this.Description = string.Empty;
             this.Id = Guid.NewGuid();
         }
+
+        public AbilityTypes Type { get; set; }
+
+        [JsonIgnore]
+        public string TypeDisplay => this.Type.ToString().FormatFromEnum();
 
         public string Name { get; set; }
 
@@ -35,12 +47,21 @@ namespace Concierge.Character.Characteristics
 
         public string Description { get; set; }
 
-        public Guid Id { get; init; }
+        public Guid Id { get; set; }
+
+        [JsonIgnore]
+        [SearchIgnore]
+        public Brush IconColor => this.GetCategoryValue().Brush;
+
+        [JsonIgnore]
+        [SearchIgnore]
+        public PackIconKind IconKind => this.GetCategoryValue().IconKind;
 
         public Ability DeepCopy()
         {
             return new Ability()
             {
+                Type = this.Type,
                 Name = this.Name,
                 Level = this.Level,
                 Uses = this.Uses,
@@ -55,6 +76,19 @@ namespace Concierge.Character.Characteristics
         public override string ToString()
         {
             return this.Name;
+        }
+
+        private (PackIconKind IconKind, Brush Brush) GetCategoryValue()
+        {
+            return this.Type switch
+            {
+                AbilityTypes.Background => (IconKind: PackIconKind.ArrangeSendBackward, Brush: Brushes.LightBlue),
+                AbilityTypes.Feat => (IconKind: PackIconKind.StarCircleOutline, Brush: Brushes.MediumPurple),
+                AbilityTypes.ClassFeature => (IconKind: PackIconKind.BookVariant, Brush: Brushes.Orange),
+                AbilityTypes.RaceFeature => (IconKind: PackIconKind.BookVariant, Brush: Brushes.IndianRed),
+                AbilityTypes.None => (IconKind: PackIconKind.BorderNone, Brush: Brushes.SlateGray),
+                _ => (IconKind: PackIconKind.Error, Brush: Brushes.Red),
+            };
         }
     }
 }

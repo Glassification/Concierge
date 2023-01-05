@@ -9,6 +9,7 @@ namespace Concierge.Character.Enums
         Normal,
         Blindsight,
         Darkvision,
+        SuperiorDarkvision,
         Tremrsense,
         Truesight,
     }

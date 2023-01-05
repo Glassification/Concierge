@@ -11,13 +11,13 @@
     d:DataContext="{d:DesignInstance Type=viewmodels:ConciergeViewModel}"
     mc:Ignorable="d"
     Title="Modify Personality"
-    Height="675"
+    Height="595"
     Width="650"
     Style="{StaticResource WindowFontStyle}">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="45"/>
-            <RowDefinition Height="560"/>
+            <RowDefinition Height="480"/>
             <RowDefinition Height="70"/>
         </Grid.RowDefinitions>
 
@@ -47,7 +47,6 @@
         <!--Fields-->
         <Grid Grid.Row="1">
             <Grid.RowDefinitions>
-                <RowDefinition Height="80"/>
                 <RowDefinition Height="80"/>
                 <RowDefinition Height="80"/>
                 <RowDefinition Height="80"/>
@@ -186,34 +185,8 @@
                 </components:ConciergeTextBoxBackground>
             </Grid>
 
-            <!--Background-->
-            <Grid Grid.Row="5">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="35*"/>
-                    <ColumnDefinition Width="65*"/>
-                </Grid.ColumnDefinitions>
-
-                <!--Title-->
-                <Grid Grid.Column="0">
-                    <components:ConciergeLabel
-                        Text="Background:"
-                        FontSize="25"/>
-                </Grid>
-
-                <!--Value-->
-                <components:ConciergeTextBoxBackground Grid.Column="1">
-                    <ScrollViewer VerticalScrollBarVisibility="Auto">
-                        <components:ConciergeTextBox 
-                            x:Name="BackgroundTextBox"
-                            VerticalAlignment="Stretch"
-                            FontSize="14"
-                            TextWrapping="Wrap"/>
-                    </ScrollViewer>
-                </components:ConciergeTextBoxBackground>
-            </Grid>
-
             <!--Notes-->
-            <Grid Grid.Row="6">
+            <Grid Grid.Row="5">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="35*"/>
                     <ColumnDefinition Width="65*"/>

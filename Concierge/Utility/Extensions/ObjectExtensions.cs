@@ -8,6 +8,9 @@ namespace Concierge.Utility.Extensions
     using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Reflection;
+
+    using Concierge.Utility.Attributes;
 
     public static class ObjectExtensions
     {
@@ -52,8 +55,7 @@ namespace Concierge.Utility.Extensions
                 foreach (var property in properties)
                 {
                     var propertyValue = property.GetValue(item);
-
-                    if (propertyValue is null)
+                    if (propertyValue is null || HasIgnoreProperty(property))
                     {
                         continue;
                     }
@@ -70,6 +72,11 @@ namespace Concierge.Utility.Extensions
             }
 
             return false;
+        }
+
+        private static bool HasIgnoreProperty(PropertyInfo propertyInfo)
+        {
+            return propertyInfo.GetCustomAttribute(typeof(SearchIgnore)) is not null;
         }
 
         private static void SetPropertiesHelper<T>(object item, object? originalItem)

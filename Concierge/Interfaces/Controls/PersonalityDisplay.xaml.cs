@@ -39,7 +39,6 @@ namespace Concierge.Interfaces.Controls
             this.IdealField.Text = personality.Ideal;
             this.BondField.Text = personality.Bond;
             this.FlawField.Text = personality.Flaw;
-            this.BackgroundField.Text = personality.Background;
             this.NotesField.Text = personality.Notes;
         }
 

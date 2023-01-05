@@ -34,7 +34,7 @@ namespace Concierge.Utility
 
         public const string Designer = "Thomas Beckett";
         public const string License = "This program is provided as is, without warranty. The end user is solely responsible for any injuries or TPKs that may result from the use of this product.";
-        public const string Copyright = "2018-2022 Most Rights Reserved.";
+        public const string Copyright = "2018-2023 Most Rights Reserved.";
 
         static Constants()
         {
@@ -55,6 +55,7 @@ namespace Concierge.Utility
             Levels = new ReadOnlyCollection<int>(DefaultListReadWriter.ReadGenericList<int>(Properties.Resources.LevelExp));
             ProficiencyLevels = new ReadOnlyCollection<int>(DefaultListReadWriter.ReadGenericList<int>(Properties.Resources.ProficiencyLevel));
             Classes = new ReadOnlyCollection<string>(DefaultListReadWriter.ReadGenericList<string>(Properties.Resources.ClassName));
+            MagicClasses = new ReadOnlyCollection<string>(DefaultListReadWriter.ReadGenericList<string>(Properties.Resources.MagicClassName));
             StatusEffects = new ReadOnlyCollection<string>(DefaultListReadWriter.ReadGenericList<string>(Properties.Resources.StatusEffect));
             Tools = new ReadOnlyCollection<string>(DefaultListReadWriter.ReadGenericList<string>(Properties.Resources.Tool));
             Games = new ReadOnlyCollection<string>(DefaultListReadWriter.ReadGenericList<string>(Properties.Resources.Game));
@@ -85,6 +86,8 @@ namespace Concierge.Utility
         public static ReadOnlyCollection<int> ProficiencyLevels { get; }
 
         public static ReadOnlyCollection<string> Classes { get; }
+
+        public static ReadOnlyCollection<string> MagicClasses { get; }
 
         public static ReadOnlyCollection<Ability> Abilities { get; }
 

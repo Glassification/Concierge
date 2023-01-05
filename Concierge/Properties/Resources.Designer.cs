@@ -337,6 +337,29 @@ namespace Concierge.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Arcane Trickster
+        ///Artificer
+        ///Barbarian
+        ///Bard
+        ///Blood Hunter
+        ///Cleric
+        ///Druid
+        ///Fighter
+        ///Monk
+        ///Paladin
+        ///Ranger
+        ///Rogue
+        ///Sorcerer
+        ///Warlock
+        ///Wizard.
+        /// </summary>
+        internal static string MagicClassName {
+            get {
+                return ResourceManager.GetString("MagicClassName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
         internal static byte[] Names {

@@ -11,7 +11,6 @@ namespace Concierge.Interfaces.SpellcastingPageInterface
     using System.Windows.Controls;
 
     using Concierge.Character.Enums;
-    using Concierge.Character.Items;
     using Concierge.Character.Spellcasting;
     using Concierge.Commands;
     using Concierge.Interfaces.Components;

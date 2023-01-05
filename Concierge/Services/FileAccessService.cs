@@ -50,6 +50,11 @@ namespace Concierge.Services
             return this.ccsOpenFileDialog.ShowDialog() ?? false ? CharacterReadWriter.Read(this.ccsOpenFileDialog.FileName) : null;
         }
 
+        public string OpenCcsName()
+        {
+            return this.ccsOpenFileDialog.ShowDialog() ?? false ? this.ccsOpenFileDialog.FileName : string.Empty;
+        }
+
         public string OpenImage()
         {
             return this.imageOpenFileDialog.ShowDialog() ?? false ? this.imageOpenFileDialog.FileName : string.Empty;

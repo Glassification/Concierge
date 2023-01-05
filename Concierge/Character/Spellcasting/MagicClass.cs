@@ -13,7 +13,7 @@ namespace Concierge.Character.Spellcasting
     using Concierge.Utility.Utilities;
     using Newtonsoft.Json;
 
-    public sealed class MagicClass : ICopyable<MagicClass>
+    public sealed class MagicClass : ICopyable<MagicClass>, IUnique
     {
         public MagicClass()
         {
@@ -26,7 +26,7 @@ namespace Concierge.Character.Spellcasting
         [JsonIgnore]
         public int Attack => CharacterUtility.CalculateBonusFromAbility(this.Ability, Program.CcsFile.Character);
 
-        public Guid Id { get; init; }
+        public Guid Id { get; set; }
 
         public int KnownCantrips { get; set; }
 
@@ -37,7 +37,7 @@ namespace Concierge.Character.Spellcasting
         public string Name { get; set; }
 
         [JsonIgnore]
-        public int PreparedSpells => Program.CcsFile.Character.Spells.Where(x => (x.Class?.Equals(this.Name) ?? false) && x.Prepared).ToList().Count;
+        public int PreparedSpells => Program.CcsFile.Character.Spells.Where(x => (x.Class?.Equals(this.Name) ?? false) && x.Level > 0 && x.Prepared).ToList().Count;
 
         [JsonIgnore]
         public int Save => CharacterUtility.CalculateBonusFromAbility(this.Ability, Program.CcsFile.Character) + Constants.BaseDC;

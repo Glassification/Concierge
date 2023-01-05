@@ -13,14 +13,9 @@
     <Grid Background="#000917" Margin="3">
         <Grid.RowDefinitions>
             <RowDefinition Height="11*"/>
-            <RowDefinition Height="10*"/>
-            <RowDefinition Height="10*"/>
-            <RowDefinition Height="10*"/>
-            <RowDefinition Height="10*"/>
-            <RowDefinition Height="10*"/>
-            <RowDefinition Height="10*"/>
-            <RowDefinition Height="10*"/>
-            <RowDefinition Height="19*"/>
+            <RowDefinition Height="30*"/>
+            <RowDefinition Height="30*"/>
+            <RowDefinition Height="29*"/>
         </Grid.RowDefinitions>
 
         <!--Header-->
@@ -46,269 +41,226 @@
                 VerticalAlignment="Center"/>
         </Grid>
 
-        <!--Gender-->
         <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30*"/>
+                <RowDefinition Height="70*"/>
+            </Grid.RowDefinitions>
+            
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="25*"/>
-                <ColumnDefinition Width="75*"/>
+                <ColumnDefinition Width="25*"/>
+                <ColumnDefinition Width="25*"/>
+                <ColumnDefinition Width="25*"/>
             </Grid.ColumnDefinitions>
 
             <Grid
                 Grid.Column="0"
+                Grid.Row="0"
                 Background="#001233"
-                Margin="3, 3, 0, 3">
+                Margin="3, 3, 1.5, 3">
                 <components:ConciergeTextBlock
                     Text="Gender"
                     Foreground="White"
-                    FontSize="20"
-                    FontWeight="Bold"
-                    HorizontalAlignment="Left"
-                    VerticalAlignment="Center"
-                    Margin="10, 0, 0, 0"/>
+                    FontSize="18"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"/>
             </Grid>
 
             <Grid
-                Grid.Column="1"
+                Grid.Column="0"
+                Grid.Row="1"
                 Background="#FF3e3e42"
-                Margin="0, 3, 3, 3">
+                Margin="3, 3, 1.5, 3">
                 <components:ConciergeTextBlock
                     x:Name="GenderField"
                     Foreground="White"
-                    FontSize="16"
-                    HorizontalAlignment="Left"
+                    FontSize="20"
+                    HorizontalAlignment="Center"
                     VerticalAlignment="Center"
-                    Margin="10, 0, 0, 0"
                     TextWrapping="Wrap"/>
             </Grid>
-        </Grid>
-
-        <!--Age-->
-        <Grid Grid.Row="2">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="25*"/>
-                <ColumnDefinition Width="75*"/>
-            </Grid.ColumnDefinitions>
 
             <Grid
-                Grid.Column="0"
+                Grid.Column="1"
+                Grid.Row="0"
                 Background="#001233"
-                Margin="3, 3, 0, 3">
+                Margin="1.5, 3, 1.5, 3">
                 <components:ConciergeTextBlock
                     Text="Age"
                     Foreground="White"
-                    FontSize="20"
-                    FontWeight="Bold"
-                    HorizontalAlignment="Left"
-                    VerticalAlignment="Center"
-                    Margin="10, 0, 0, 0"/>
+                    FontSize="18"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"/>
             </Grid>
 
             <Grid
                 Grid.Column="1"
+                Grid.Row="1"
                 Background="#FF3e3e42"
-                Margin="0, 3, 3, 3">
+                Margin="1.5, 3, 1.5, 3">
                 <components:ConciergeTextBlock
                     x:Name="AgeField"
                     Foreground="White"
-                    FontSize="16"
-                    HorizontalAlignment="Left"
+                    FontSize="20"
+                    HorizontalAlignment="Center"
                     VerticalAlignment="Center"
-                    Margin="10, 0, 0, 0"
                     TextWrapping="Wrap"/>
             </Grid>
-        </Grid>
-
-        <!--Height-->
-        <Grid Grid.Row="3">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="25*"/>
-                <ColumnDefinition Width="75*"/>
-            </Grid.ColumnDefinitions>
 
             <Grid
-                Grid.Column="0"
+                Grid.Column="2"
+                Grid.Row="0"
                 Background="#001233"
-                Margin="3, 3, 0, 3">
+                Margin="1.5, 3, 1.5, 3">
                 <components:ConciergeTextBlock
                     Text="Height"
                     Foreground="White"
-                    FontSize="20"
-                    FontWeight="Bold"
-                    HorizontalAlignment="Left"
-                    VerticalAlignment="Center"
-                    Margin="10, 0, 0, 0"/>
+                    FontSize="18"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"/>
             </Grid>
 
             <Grid
-                Grid.Column="1"
+                Grid.Column="2"
+                Grid.Row="1"
                 Background="#FF3e3e42"
-                Margin="0, 3, 3, 3">
+                Margin="1.5, 3, 1.5, 3">
                 <components:ConciergeTextBlock
                     x:Name="HeightField"
                     Foreground="White"
-                    FontSize="16"
-                    HorizontalAlignment="Left"
+                    FontSize="20"
+                    HorizontalAlignment="Center"
                     VerticalAlignment="Center"
-                    Margin="10, 0, 0, 0"
                     TextWrapping="Wrap"/>
             </Grid>
-        </Grid>
-
-        <!--Weight-->
-        <Grid Grid.Row="4">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="25*"/>
-                <ColumnDefinition Width="75*"/>
-            </Grid.ColumnDefinitions>
 
             <Grid
-                Grid.Column="0"
+                Grid.Column="3"
+                Grid.Row="0"
                 Background="#001233"
-                Margin="3, 3, 0, 3">
+                Margin="1.5, 3, 3, 3">
                 <components:ConciergeTextBlock
                     Text="Weight"
                     Foreground="White"
-                    FontSize="20"
-                    FontWeight="Bold"
-                    HorizontalAlignment="Left"
-                    VerticalAlignment="Center"
-                    Margin="10, 0, 0, 0"/>
+                    FontSize="18"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"/>
             </Grid>
 
             <Grid
-                Grid.Column="1"
+                Grid.Column="3"
+                Grid.Row="1"
                 Background="#FF3e3e42"
-                Margin="0, 3, 3, 3">
+                Margin="1.5, 3, 3, 3">
                 <components:ConciergeTextBlock
                     x:Name="WeightField"
                     Foreground="White"
-                    FontSize="16"
-                    HorizontalAlignment="Left"
+                    FontSize="20"
+                    HorizontalAlignment="Center"
                     VerticalAlignment="Center"
-                    Margin="10, 0, 0, 0"
                     TextWrapping="Wrap"/>
             </Grid>
         </Grid>
 
-        <!--Hair Colour-->
-        <Grid Grid.Row="5">
+        <Grid Grid.Row="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30*"/>
+                <RowDefinition Height="70*"/>
+            </Grid.RowDefinitions>
+
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="35*"/>
-                <ColumnDefinition Width="65*"/>
+                <ColumnDefinition Width="33*"/>
+                <ColumnDefinition Width="33*"/>
+                <ColumnDefinition Width="33*"/>
             </Grid.ColumnDefinitions>
 
             <Grid
                 Grid.Column="0"
+                Grid.Row="0"
                 Background="#001233"
-                Margin="3, 3, 0, 3">
+                Margin="3, 3, 1.5, 3">
                 <components:ConciergeTextBlock
                     Text="Hair Colour"
                     Foreground="White"
+                    FontSize="18"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"/>
+            </Grid>
+
+            <Grid
+                Grid.Column="0"
+                Grid.Row="1"
+                Background="#FF3e3e42"
+                Margin="3, 3, 1.5, 3">
+                <components:ConciergeTextBlock 
+                    x:Name="HairColourField"
+                    Foreground="White"
                     FontSize="20"
-                    FontWeight="Bold"
-                    HorizontalAlignment="Left"
+                    HorizontalAlignment="Center"
                     VerticalAlignment="Center"
-                    Margin="10, 0, 0, 0"/>
+                    TextWrapping="Wrap"/>
             </Grid>
 
             <Grid
                 Grid.Column="1"
-                Background="#FF3e3e42"
-                Margin="0, 3, 3, 3">
-                <ScrollViewer VerticalScrollBarVisibility="Auto">
-                    <components:ConciergeTextBlock 
-                        x:Name="HairColourField"
-                        Foreground="White"
-                        FontSize="16"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Center"
-                        Margin="10, 0, 0, 0"
-                        TextWrapping="Wrap"/>
-                </ScrollViewer>
-            </Grid>
-        </Grid>
-
-        <!--Skin Colour-->
-        <Grid Grid.Row="6">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="35*"/>
-                <ColumnDefinition Width="65*"/>
-            </Grid.ColumnDefinitions>
-
-            <Grid
-                Grid.Column="0"
+                Grid.Row="0"
                 Background="#001233"
-                Margin="3, 3, 0, 3">
+                Margin="1.5, 3, 1.5, 3">
                 <components:ConciergeTextBlock
                     Text="Skin Colour"
                     Foreground="White"
-                    FontSize="20"
-                    FontWeight="Bold"
-                    HorizontalAlignment="Left"
-                    VerticalAlignment="Center"
-                    Margin="10, 0, 0, 0"/>
+                    FontSize="18"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"/>
             </Grid>
 
             <Grid
                 Grid.Column="1"
+                Grid.Row="1"
                 Background="#FF3e3e42"
-                Margin="0, 3, 3, 3">
-                <ScrollViewer VerticalScrollBarVisibility="Auto">
-                    <components:ConciergeTextBlock 
-                        x:Name="SkinColourField"
-                        Foreground="White"
-                        FontSize="16"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Center"
-                        Margin="10, 0, 0, 0"
-                        TextWrapping="Wrap"/>
-                </ScrollViewer>
+                Margin="1.5, 3, 1.5, 3">
+                <components:ConciergeTextBlock 
+                    x:Name="SkinColourField"
+                    Foreground="White"
+                    FontSize="20"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    TextWrapping="Wrap"/>
             </Grid>
-        </Grid>
-
-        <!--Eye Colour-->
-        <Grid Grid.Row="7">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="35*"/>
-                <ColumnDefinition Width="65*"/>
-            </Grid.ColumnDefinitions>
 
             <Grid
-                Grid.Column="0"
+                Grid.Column="2"
+                Grid.Row="0"
                 Background="#001233"
-                Margin="3, 3, 0, 3">
+                Margin="1.5, 3, 3, 3">
                 <components:ConciergeTextBlock
                     Text="Eye Colour"
                     Foreground="White"
-                    FontSize="20"
-                    FontWeight="Bold"
-                    HorizontalAlignment="Left"
-                    VerticalAlignment="Center"
-                    Margin="10, 0, 0, 0"/>
+                    FontSize="18"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"/>
             </Grid>
 
             <Grid
-                Grid.Column="1"
+                Grid.Column="2"
+                Grid.Row="1"
                 Background="#FF3e3e42"
-                Margin="0, 3, 3, 3">
-                <ScrollViewer VerticalScrollBarVisibility="Auto">
-                    <components:ConciergeTextBlock 
-                        x:Name="EyeColourField"
-                        Foreground="White"
-                        FontSize="16"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Center"
-                        Margin="10, 0, 0, 0"
-                        TextWrapping="Wrap"/>
-                </ScrollViewer>
+                Margin="1.5, 3, 3, 3">
+                <components:ConciergeTextBlock 
+                    x:Name="EyeColourField"
+                    Foreground="White"
+                    FontSize="20"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    TextWrapping="Wrap"/>
             </Grid>
         </Grid>
 
-        <!--Marks-->
-        <Grid Grid.Row="8">
+        <Grid Grid.Row="3">
             <Grid.RowDefinitions>
-                <RowDefinition Height="35*"/>
-                <RowDefinition Height="65*"/>
+                <RowDefinition Height="30*"/>
+                <RowDefinition Height="70*"/>
             </Grid.RowDefinitions>
 
             <Grid
@@ -319,7 +271,6 @@
                     Text="Distinguishing Marks"
                     Foreground="White"
                     FontSize="18"
-                    FontWeight="Bold"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"/>
             </Grid>
@@ -332,7 +283,7 @@
                     <components:ConciergeTextBlock 
                         x:Name="MarksField"
                         Foreground="White"
-                        FontSize="14"
+                        FontSize="16"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Center"
                         Margin="10, 0, 0, 0"

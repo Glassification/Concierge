@@ -5,11 +5,15 @@
 namespace Concierge.Character.Items
 {
     using System;
+    using System.Windows.Media;
 
     using Concierge.Character.Enums;
     using Concierge.Utility;
+    using Concierge.Utility.Attributes;
+    using MaterialDesignThemes.Wpf;
+    using Newtonsoft.Json;
 
-    public sealed class Ammunition : ICopyable<Ammunition>
+    public sealed class Ammunition : ICopyable<Ammunition>, IUnique
     {
         private int used;
 
@@ -26,7 +30,15 @@ namespace Concierge.Character.Items
 
         public DamageTypes DamageType { get; set; }
 
-        public Guid Id { get; init; }
+        [JsonIgnore]
+        [SearchIgnore]
+        public Brush IconColor => this.GetCategoryValue().Brush;
+
+        [JsonIgnore]
+        [SearchIgnore]
+        public PackIconKind IconKind => this.GetCategoryValue().IconKind;
+
+        public Guid Id { get; set; }
 
         public string Name { get; set; }
 
@@ -68,6 +80,19 @@ namespace Concierge.Character.Items
         public override string ToString()
         {
             return this.Name;
+        }
+
+        private (PackIconKind IconKind, Brush Brush) GetCategoryValue()
+        {
+            return this.Name switch
+            {
+                string a when a.Contains("arrows", StringComparison.InvariantCultureIgnoreCase) => (IconKind: PackIconKind.ArrowProjectile, Brush: Brushes.IndianRed),
+                string b when b.Contains("needles", StringComparison.InvariantCultureIgnoreCase) => (IconKind: PackIconKind.SignPole, Brush: Brushes.LightGreen),
+                string c when c.Contains("bolts", StringComparison.InvariantCultureIgnoreCase) => (IconKind: PackIconKind.RayStartArrow, Brush: Brushes.LightBlue),
+                string d when d.Contains("shuriken", StringComparison.InvariantCultureIgnoreCase) => (IconKind: PackIconKind.Shuriken, Brush: Brushes.Orange),
+                string e when e.Contains("bullets", StringComparison.InvariantCultureIgnoreCase) => (IconKind: PackIconKind.SquareSmall, Brush: Brushes.MediumPurple),
+                _ => (IconKind: PackIconKind.ArrowProjectileMultiple, Brush: Brushes.SlateGray),
+            };
         }
     }
 }

@@ -8,7 +8,7 @@ namespace Concierge.Character.Notes
 
     using Concierge.Utility;
 
-    public sealed class Document : ICopyable<Document>
+    public sealed class Document : ICopyable<Document>, IUnique
     {
         public Document(string name)
         {
@@ -23,7 +23,7 @@ namespace Concierge.Character.Notes
 
         public string Rtf { get; set; }
 
-        public Guid Id { get; init; }
+        public Guid Id { get; set; }
 
         public Document DeepCopy()
         {
