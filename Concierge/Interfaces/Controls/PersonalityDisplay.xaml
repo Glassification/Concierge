@@ -25,10 +25,9 @@
             <components:ConciergeDesignButton 
                 Style="{StaticResource ConciergeDesignButtonStyle}" 
                 x:Name="EditPersonalityButton"
-                Height="50"
                 Width="60"
                 HorizontalAlignment="Right"
-                VerticalAlignment="Center"
+                VerticalAlignment="Stretch"
                 Foreground="Khaki"
                 ToolTip="Edit Personality"
                 Click="EditPersonalityButton_Click">

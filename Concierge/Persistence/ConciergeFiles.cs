@@ -14,6 +14,8 @@ namespace Concierge.Persistence
         public const string AppSettingsTestName = "appsettings.test.json";
         public const string AppSettingsProductionName = "appsettings.production.json";
         public const string CustomColorsName = "CustomColors.json";
+        public const string DiceHistoryName = "DiceHistory.txt";
+        public const string ConsoleHistoryName = "ConsoleHistory.txt";
 
         private static readonly string applicationData;
 

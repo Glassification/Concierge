@@ -11,34 +11,36 @@ namespace Concierge.Tools
     {
         private readonly List<string> history;
 
-        public History()
+        public History(string defaultText)
+            : this(new List<string>(), defaultText)
         {
-            this.history = new List<string>();
-            this.Index = -1;
         }
 
-        public History(List<string> history)
+        public History(List<string> history, string defaultText)
         {
             this.history = history;
             this.Index = -1;
+            this.DefaultText = defaultText;
         }
 
         public int Index { get; private set; }
 
         public int Count => this.history.Count;
 
+        public string DefaultText { get; private set; }
+
         public string Forward()
         {
             if (this.Count == 0)
             {
-                return string.Empty;
+                return this.DefaultText;
             }
 
             this.Index--;
             this.Index = Math.Max(this.Index, -1);
             if (this.Index == -1)
             {
-                return string.Empty;
+                return this.DefaultText;
             }
 
             return this.history[this.Index];
@@ -48,7 +50,7 @@ namespace Concierge.Tools
         {
             if (this.Count == 0)
             {
-                return string.Empty;
+                return this.DefaultText;
             }
 
             this.Index++;

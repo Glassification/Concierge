@@ -1517,7 +1517,6 @@
       "Ideal": "Freedom: Chains are meant to be broken, as are those who would forge them. (Chaotic)",
       "Bond": "Parents left on an expedition, and never returned. I don't like letting things go.",
       "Flaw": "I'm a sucker for a pretty face.",
-      "Background": "Criminal Contact: Network of trustworthy contacts. Can use them to send and receive messages quickly over great distances.",
       "Notes": "Parents went missing on an expedition. Still looking into what happened to them."
     },
     "Proficiencies": [
@@ -2088,8 +2087,8 @@
       }
     ]
   },
-  "Hash": "FA1424D6A01A9C2B08CCE299830B1E9687CB9DDAB2FA71AAB1EC8A87480C79A7",
+  "Hash": "CF2D9AEEE1DFDE35B0AEB9C875819521A01E8D7C211C8CD3383C097ED97402F0",
   "OriginalCreationDate": "Monday, 14 March 2022 08:19:44 PM",
-  "LastSaveDate": "2023-01-02T15:58:17.7759945-06:00",
-  "Version": "4.17.2"
+  "LastSaveDate": "2023-01-05T11:04:09.2041892-06:00",
+  "Version": "4.18.0"
 }

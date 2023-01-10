@@ -15,6 +15,7 @@ namespace Concierge.Interfaces.InventoryPageInterface
     using Concierge.Interfaces;
     using Concierge.Interfaces.Enums;
     using Concierge.Services;
+    using Concierge.Utility;
     using Concierge.Utility.Extensions;
     using Concierge.Utility.Utilities;
 
@@ -63,6 +64,9 @@ namespace Concierge.Interfaces.InventoryPageInterface
 
         private void DrawInventory()
         {
+            var count = Program.CcsFile.Character.Inventories.Count;
+
+            this.ItemTotalField.Text = $"({count} Item{(count == 1 ? string.Empty : "s")})";
             this.InventoryDataGrid.Items.Clear();
 
             foreach (var inventory in this.DisplayList)

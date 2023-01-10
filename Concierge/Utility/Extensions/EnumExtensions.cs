@@ -14,22 +14,24 @@ namespace Concierge.Utility.Extensions
         public static string GetDescription<T>(this T e)
             where T : IConvertible
         {
-            if (e is Enum)
+            if (e is not Enum)
             {
-                Type type = e.GetType();
-                Array values = Enum.GetValues(type);
+                return string.Empty;
+            }
 
-                foreach (int val in values)
+            Type type = e.GetType();
+            Array values = Enum.GetValues(type);
+
+            foreach (int val in values)
+            {
+                if (val == e.ToInt32(CultureInfo.InvariantCulture))
                 {
-                    if (val == e.ToInt32(CultureInfo.InvariantCulture))
+                    var memInfo = type.GetMember(type.GetEnumName(val) ?? string.Empty);
+                    if (memInfo[0]
+                        .GetCustomAttributes(typeof(DescriptionAttribute), false)
+                        .FirstOrDefault() is DescriptionAttribute descriptionAttribute)
                     {
-                        var memInfo = type.GetMember(type.GetEnumName(val) ?? string.Empty);
-                        if (memInfo[0]
-                            .GetCustomAttributes(typeof(DescriptionAttribute), false)
-                            .FirstOrDefault() is DescriptionAttribute descriptionAttribute)
-                        {
-                            return descriptionAttribute.Description;
-                        }
+                        return descriptionAttribute.Description;
                     }
                 }
             }

@@ -6,7 +6,7 @@
     <RootNamespace>Concierge</RootNamespace>
 	<Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
-    <Version>4.18.0</Version>
+    <Version>4.18.2</Version>
     <ApplicationIcon>AppIconImage.ico</ApplicationIcon>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
@@ -36,9 +36,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="MaterialDesignThemes" Version="4.6.1" />
+    <PackageReference Include="MaterialDesignThemes" Version="4.7.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="7.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="7.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="7.0.1" />
     <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="7.0.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="7.0.0" />
     <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.1462.37" />

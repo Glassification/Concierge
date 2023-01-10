@@ -116,7 +116,7 @@
                             HorizontalAlignment="Left"
                             VerticalAlignment="Top"
                             TextWrapping="Wrap"
-                            Margin="10, 0, 0, 0"/>
+                            Margin="10"/>
                     </Grid>
                 </Grid>
             </Grid>

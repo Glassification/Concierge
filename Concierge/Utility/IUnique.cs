@@ -9,5 +9,7 @@ namespace Concierge.Utility
     public interface IUnique
     {
         Guid Id { get; set; }
+
+        string Name { get; set; }
     }
 }

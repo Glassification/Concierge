@@ -290,7 +290,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
                 Program.CcsFile.Character.Armor,
                 typeof(ModifyArmorWindow),
                 this.Window_ApplyChanges,
-                ConciergePage.AttackDefense);
+                ConciergePage.Attacks);
             this.Draw();
         }
 

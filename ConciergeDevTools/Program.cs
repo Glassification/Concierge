@@ -40,7 +40,8 @@ namespace ConciergeDevTools
 
             rootCommand.Invoke(args);
             */
-            GenerateNames.Generate();
+            //GenerateNames.Generate();
+            GenerateBackgrounds.Generate();
         }
 
         private static void ParseScrubbedDataHandler(string fileName)

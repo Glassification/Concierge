@@ -359,5 +359,15 @@ namespace Concierge.Utility.Extensions
 
             return newList.ToArray();
         }
+
+        public static string FirstLetterToUpperCase(this string str)
+        {
+            if (str.IsNullOrEmpty())
+            {
+                return str;
+            }
+
+            return char.ToUpper(str[0]) + str.Substring(1);
+        }
     }
 }

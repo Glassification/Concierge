@@ -33,7 +33,7 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
 
         private delegate void DrawList();
 
-        public ConciergePage ConciergePage => ConciergePage.AttackDefense;
+        public ConciergePage ConciergePage => ConciergePage.Attacks;
 
         public bool HasEditableDataGrid => true;
 
@@ -55,7 +55,7 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
                     ammunition,
                     typeof(ModifyAmmoWindow),
                     this.Window_ApplyChanges,
-                    ConciergePage.AttackDefense);
+                    ConciergePage.Attacks);
                 this.DrawAmmoList();
                 this.AmmoDataGrid.SetSelectedIndex(index);
             }
@@ -66,7 +66,7 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
                     weapon,
                     typeof(ModifyAttackWindow),
                     this.Window_ApplyChanges,
-                    ConciergePage.AttackDefense);
+                    ConciergePage.Attacks);
                 this.DrawWeaponList();
                 this.WeaponDataGrid.SetSelectedIndex(index);
             }
@@ -77,7 +77,7 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
                     statusEffect,
                     typeof(ModifyStatusEffectsWindow),
                     this.Window_ApplyChanges,
-                    ConciergePage.AttackDefense);
+                    ConciergePage.Attacks);
                 this.DrawStatusEffects();
                 this.StatusEffectsDataGrid.SetSelectedIndex(index);
             }
@@ -174,7 +174,7 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
                 Program.CcsFile.Character.Ammunitions,
                 typeof(ModifyAmmoWindow),
                 this.Window_ApplyChanges,
-                ConciergePage.AttackDefense);
+                ConciergePage.Attacks);
 
             this.DrawAmmoList();
             if (added)
@@ -189,7 +189,7 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
                 Program.CcsFile.Character.Weapons,
                 typeof(ModifyAttackWindow),
                 this.Window_ApplyChanges,
-                ConciergePage.AttackDefense);
+                ConciergePage.Attacks);
 
             this.DrawWeaponList();
             if (added)
@@ -266,22 +266,6 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
             Program.Modify();
         }
 
-        private void AmmoDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (this.AmmoDataGrid.SelectedItem != null)
-            {
-                this.WeaponDataGrid.UnselectAll();
-            }
-        }
-
-        private void WeaponDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (this.WeaponDataGrid.SelectedItem != null)
-            {
-                this.AmmoDataGrid.UnselectAll();
-            }
-        }
-
         private void WeaponDataGrid_Sorted(object sender, RoutedEventArgs e)
         {
             DisplayUtility.SortListFromDataGrid(this.WeaponDataGrid, Program.CcsFile.Character.Weapons, this.ConciergePage);
@@ -340,7 +324,7 @@ namespace Concierge.Interfaces.AttackDefensePageInterface
                 Program.CcsFile.Character.StatusEffects,
                 typeof(ModifyStatusEffectsWindow),
                 this.Window_ApplyChanges,
-                ConciergePage.AttackDefense);
+                ConciergePage.Attacks);
             this.DrawStatusEffects();
 
             if (added)

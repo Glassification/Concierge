@@ -4,12 +4,19 @@
 
 namespace Concierge.Character.Enums
 {
+    using System.ComponentModel;
+
     public enum ArmorType
     {
+        [Description("None")]
         None,
+        [Description("Light Armor")]
         Light,
+        [Description("Medium Armor")]
         Medium,
+        [Description("Heavy Armor")]
         Heavy,
+        [Description("Massive Armor")]
         Massive,
     }
 }

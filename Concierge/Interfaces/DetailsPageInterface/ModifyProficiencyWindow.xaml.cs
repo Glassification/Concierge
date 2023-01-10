@@ -117,7 +117,7 @@ namespace Concierge.Interfaces.DetailsPageInterface
 
         private static CompositeCollection GenerateComboBoxItems()
         {
-            var compositeCollection = new CompositeCollection
+            return new CompositeCollection
             {
                 Proficiency.MartialMelee,
                 Proficiency.MartialRanged,
@@ -126,10 +126,10 @@ namespace Concierge.Interfaces.DetailsPageInterface
                 new Separator(),
                 new CollectionContainer() { Collection = Constants.Weapons },
                 new Separator(),
-                "Light Armor",
-                "Medium Armor",
-                "Heavy Armor",
-                "Massive Armor",
+                ArmorType.Light.GetDescription(),
+                ArmorType.Medium.GetDescription(),
+                ArmorType.Heavy.GetDescription(),
+                ArmorType.Massive.GetDescription(),
                 new Separator(),
                 new CollectionContainer() { Collection = Constants.Tools },
                 new Separator(),
@@ -137,8 +137,6 @@ namespace Concierge.Interfaces.DetailsPageInterface
                 new Separator(),
                 new CollectionContainer() { Collection = Constants.Instruments },
             };
-
-            return compositeCollection;
         }
 
         private void SetEnabledState(bool isEnabled)

@@ -77,12 +77,21 @@
                     Background="Transparent"/>
                 <components:ConciergeDesignButton 
                     Style="{StaticResource ConciergeDesignButtonStyle}" 
-                    x:Name="ButtonAdd"
+                    x:Name="AddMagicClassButton"
                     Width="60"
                     Foreground="PaleGreen"
-                    Click="ButtonAdd_Click"
-                    ToolTip="Add New Item">
-                    <materialDesign:PackIcon Kind="AddBox" Width="25" Height="25"/>
+                    Click="AddMagicClassButton_Click"
+                    ToolTip="Add New Magic Class">
+                    <materialDesign:PackIcon Kind="AccountBox" Width="25" Height="25"/>
+                </components:ConciergeDesignButton>
+                <components:ConciergeDesignButton 
+                    Style="{StaticResource ConciergeDesignButtonStyle}" 
+                    x:Name="AddSpellButton"
+                    Width="60"
+                    Foreground="PaleGreen"
+                    Click="AddSpellButton_Click"
+                    ToolTip="Add New Spell">
+                    <materialDesign:PackIcon Kind="StarBox" Width="25" Height="25"/>
                 </components:ConciergeDesignButton>
                 <components:ConciergeDesignButton 
                     Style="{StaticResource ConciergeDesignButtonStyle}" 
@@ -204,7 +213,7 @@
 
         <!--Spell list-->
         <Grid Grid.Row="2"
-              Margin="0, 3, 0, 0">
+              Margin="3">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="17*"/>
                 <ColumnDefinition Width="143*"/>

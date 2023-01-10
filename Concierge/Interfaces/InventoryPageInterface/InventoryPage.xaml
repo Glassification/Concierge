@@ -30,6 +30,13 @@
                     HorizontalAlignment="Left"
                     Margin="150, 0, 0, 0"/>
 
+                <components:ConciergeTextBlock 
+                    x:Name="ItemTotalField"
+                    Text="(69 Items)"
+                    FontSize="18"
+                    HorizontalAlignment="Left"
+                    Margin="25, 0, 0, 0"/>
+
                 <controls:SearchFilter
                     x:Name="SearchFilter"
                     HorizontalAlignment="Center"

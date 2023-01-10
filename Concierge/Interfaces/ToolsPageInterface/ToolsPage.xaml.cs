@@ -6,12 +6,14 @@ namespace Concierge.Interfaces.ToolsPageInterface
 {
     using System;
     using System.Collections.Generic;
+    using System.IO;
     using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Input;
 
     using Concierge.Character.Statuses;
     using Concierge.Interfaces.Enums;
+    using Concierge.Persistence;
     using Concierge.Persistence.ReadWriters;
     using Concierge.Tools;
     using Concierge.Tools.DiceRolling;
@@ -26,13 +28,15 @@ namespace Concierge.Interfaces.ToolsPageInterface
     /// </summary>
     public partial class ToolsPage : Page, IConciergePage
     {
+        private readonly string diceHistoryFile = Path.Combine(ConciergeFiles.AppDataDirectory, ConciergeFiles.DiceHistoryName);
+
         public ToolsPage()
         {
             this.InitializeComponent();
 
             this.Players = new List<Player>();
             this.RollHistory = new List<IDiceRoll>();
-            this.DiceHistory = new History(DiceHistoryReadWriter.Read());
+            this.DiceHistory = new History(HistoryReadWriter.Read(this.diceHistoryFile), string.Empty);
 
             this.SetDefaultDivideValues();
             this.SetDefaultDiceValues();
@@ -212,7 +216,7 @@ namespace Concierge.Interfaces.ToolsPageInterface
                 this.CustomInputTextBox.Text = string.Empty;
                 this.CustomResult.Text = result.Total.ToString();
 
-                DiceHistoryReadWriter.Write(input);
+                HistoryReadWriter.Write(this.diceHistoryFile, input);
             }
             catch (Exception ex)
             {

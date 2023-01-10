@@ -112,7 +112,8 @@
                 <Grid Grid.Row="2">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="35*"/>
-                        <ColumnDefinition Width="65*"/>
+                        <ColumnDefinition Width="32.5*"/>
+                        <ColumnDefinition Width="32.5*"/>
                     </Grid.ColumnDefinitions>
 
                     <!--Title-->
@@ -123,23 +124,22 @@
                     </Grid>
 
                     <!--Value-->
-                    <Grid Grid.Column="1">
-                        <TextBlock
+                    <components:ConciergeTextBoxBackground
+                        Grid.Column="1"
+                        IsEnabled="False">
+                        <components:ConciergeTextBox
                             x:Name="AttackBonusTextBlock"
-                            Text="0"
-                            Foreground="White"
                             FontSize="25"
-                            Margin="20,0,0,0"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Center"/>
-                    </Grid>
+                            HorizontalContentAlignment="Center"/>
+                    </components:ConciergeTextBoxBackground>
                 </Grid>
 
                 <!--Save-->
                 <Grid Grid.Row="3">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="35*"/>
-                        <ColumnDefinition Width="65*"/>
+                        <ColumnDefinition Width="32.5*"/>
+                        <ColumnDefinition Width="32.5*"/>
                     </Grid.ColumnDefinitions>
 
                     <!--Title-->
@@ -150,16 +150,14 @@
                     </Grid>
 
                     <!--Value-->
-                    <Grid Grid.Column="1">
-                        <TextBlock
+                    <components:ConciergeTextBoxBackground
+                        Grid.Column="1"
+                        IsEnabled="False">
+                        <components:ConciergeTextBox
                             x:Name="SpellSaveTextBlock"
-                            Text="0"
-                            Foreground="White"
                             FontSize="25"
-                            Margin="20,0,0,0"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Center"/>
-                    </Grid>
+                            HorizontalContentAlignment="Center"/>
+                    </components:ConciergeTextBoxBackground>
                 </Grid>
 
             </Grid>
@@ -237,27 +235,27 @@
                 <Grid Grid.Row="4">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="35*"/>
-                        <ColumnDefinition Width="65*"/>
+                        <ColumnDefinition Width="32.5*"/>
+                        <ColumnDefinition Width="32.5*"/>
                     </Grid.ColumnDefinitions>
 
                     <!--Title-->
                     <Grid Grid.Column="0">
                         <components:ConciergeLabel
-                            Text="Prepared Spells:"
-                            FontSize="19"/>
+                            Text="Prepared  Spells:"
+                            FontSize="19"
+                            TextWrapping="Wrap"/>
                     </Grid>
 
                     <!--Value-->
-                    <Grid Grid.Column="1">
-                        <TextBlock
+                    <components:ConciergeTextBoxBackground
+                        Grid.Column="1"
+                        IsEnabled="False">
+                        <components:ConciergeTextBox
                             x:Name="PreparedSpellsTextBlock"
-                            Text="0"
-                            Foreground="White"
                             FontSize="25"
-                            Margin="20,0,0,0"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Center"/>
-                    </Grid>
+                            HorizontalContentAlignment="Center"/>
+                    </components:ConciergeTextBoxBackground>
                 </Grid>
             </Grid>
         </Grid>

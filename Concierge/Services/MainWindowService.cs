@@ -31,7 +31,6 @@ namespace Concierge.Services
             var packIcon = new PackIcon()
             {
                 Kind = packIconKind,
-                Foreground = Brushes.White,
                 Height = 28,
                 Width = 28,
                 Margin = new Thickness(10),
@@ -111,7 +110,7 @@ namespace Concierge.Services
             {
                 FontSize = 20,
                 Margin = new Thickness(25, 0, 25, 0),
-                Foreground = Brushes.White,
+                Foreground = Brushes.LightCyan,
                 VerticalAlignment = VerticalAlignment.Center,
                 HorizontalAlignment = HorizontalAlignment.Center,
                 Text = contents,

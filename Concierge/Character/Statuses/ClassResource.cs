@@ -23,6 +23,13 @@ namespace Concierge.Character.Statuses
             this.Id = Guid.NewGuid();
         }
 
+        [JsonIgnore]
+        public string Name
+        {
+            get => this.Type;
+            set => this.Type = value;
+        }
+
         public string Type { get; set; }
 
         public int Total { get; set; }

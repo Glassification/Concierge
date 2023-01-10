@@ -8,7 +8,7 @@ namespace Concierge.Interfaces.Enums
     {
         Overview,
         Details,
-        AttackDefense,
+        Attacks,
         Abilities,
         EquippedItems,
         Inventory,

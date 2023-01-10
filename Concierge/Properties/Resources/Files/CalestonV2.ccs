@@ -791,25 +791,6 @@
       {
         "Amount": 1,
         "Attuned": false,
-        "CoinType": 0,
-        "Description": "The beak of an eagle that was far too much trouble.",
-        "EquppedId": "00000000-0000-0000-0000-000000000000",
-        "Id": "837aa570-4d4b-4ab7-845a-7d5a70c88059",
-        "Name": "Eagle Beak",
-        "IgnoreWeight": true,
-        "Index": 0,
-        "ItemCategory": "Adventuring Gear",
-        "Notes": "",
-        "Value": 0,
-        "Weight": {
-          "Value": 0.5,
-          "UnitType": 0,
-          "Measurement": 1
-        }
-      },
-      {
-        "Amount": 1,
-        "Attuned": false,
         "CoinType": 3,
         "Description": "This one-handed hammer with an iron head is useful for pounding pitons into a wall.",
         "EquppedId": "00000000-0000-0000-0000-000000000000",
@@ -933,25 +914,6 @@
         "Index": 0,
         "ItemCategory": "Adventuring Gear",
         "Notes": "Plot Item",
-        "Value": 0,
-        "Weight": {
-          "Value": 1.0,
-          "UnitType": 0,
-          "Measurement": 1
-        }
-      },
-      {
-        "Amount": 1,
-        "Attuned": false,
-        "CoinType": 0,
-        "Description": "Tusk of a fallen ogre.",
-        "EquppedId": "00000000-0000-0000-0000-000000000000",
-        "Id": "06fc4ad6-0f00-4387-b6af-174e3d8df570",
-        "Name": "Ogre Tusk",
-        "IgnoreWeight": true,
-        "Index": 0,
-        "ItemCategory": "Adventuring Gear",
-        "Notes": "",
         "Value": 0,
         "Weight": {
           "Value": 1.0,
@@ -1183,25 +1145,6 @@
         "Value": 0,
         "Weight": {
           "Value": 0.0,
-          "UnitType": 0,
-          "Measurement": 1
-        }
-      },
-      {
-        "Amount": 1,
-        "Attuned": false,
-        "CoinType": 3,
-        "Description": "A standard shovel used for digging.",
-        "EquppedId": "00000000-0000-0000-0000-000000000000",
-        "Id": "f938f387-3cbb-442d-9fed-b5cf56b3c50d",
-        "Name": "Shovel",
-        "IgnoreWeight": true,
-        "Index": 0,
-        "ItemCategory": "Adventuring Gear",
-        "Notes": "Utility",
-        "Value": 2,
-        "Weight": {
-          "Value": 5.0,
           "UnitType": 0,
           "Measurement": 1
         }
@@ -2153,8 +2096,8 @@
       }
     ]
   },
-  "Hash": "A1C1BC300599F5F153382D6AE767616D6E0B86E659328E9504FB4B5B9E8E107F",
+  "Hash": "26238EED6997FE8955BB4C8A6C00DB8F4F6C7174095A00E5380C840DFB11DFAC",
   "OriginalCreationDate": "Saturday, 17 December 2022 07:58:23 AM",
-  "LastSaveDate": "2023-01-04T22:33:37.56126-06:00",
-  "Version": "4.18.0"
+  "LastSaveDate": "2023-01-05T18:02:25.6149413-06:00",
+  "Version": "4.18.1"
 }

@@ -33,7 +33,7 @@ namespace Concierge.Interfaces.UtilityInterface
             this.RaceComboBox.ItemsSource = Constants.Races;
             this.GenderComboBox.ItemsSource = Enum.GetValues(typeof(Gender)).Cast<Gender>();
             this.nameGenerator = new NameGenerator();
-            this.History = new History();
+            this.History = new History(string.Empty);
 
             this.SetGenderState(false);
             this.SetRaceState(false);

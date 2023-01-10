@@ -9,6 +9,7 @@ namespace Concierge.Interfaces.AbilitiesPageInterface
     using System.Linq;
     using System.Windows;
     using System.Windows.Controls;
+    using System.Windows.Data;
 
     using Concierge.Character.Characteristics;
     using Concierge.Character.Enums;
@@ -29,7 +30,7 @@ namespace Concierge.Interfaces.AbilitiesPageInterface
             this.InitializeComponent();
             this.UseRoundedCorners();
 
-            this.NameComboBox.ItemsSource = Constants.Abilities;
+            this.NameComboBox.ItemsSource = GenerateComboBoxItems();
             this.TypeComboBox.ItemsSource = StringUtility.FormatEnumForDisplay(typeof(AbilityTypes));
             this.ConciergePage = ConciergePage.None;
             this.Abilities = new List<Ability>();
@@ -115,6 +116,16 @@ namespace Concierge.Interfaces.AbilitiesPageInterface
         protected override void OnSourceInitialized(EventArgs e)
         {
             base.OnSourceInitialized(e);
+        }
+
+        private static CompositeCollection GenerateComboBoxItems()
+        {
+            return new CompositeCollection
+            {
+                new CollectionContainer() { Collection = Constants.Abilities.Where(x => x.Type == AbilityTypes.Feat).OrderBy(x => x.Name).ToList() },
+                new Separator(),
+                new CollectionContainer() { Collection = Constants.Abilities.Where(x => x.Type == AbilityTypes.Background).OrderBy(x => x.Name).ToList() },
+            };
         }
 
         private void FillFields(Ability ability)

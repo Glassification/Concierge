@@ -32,6 +32,7 @@ namespace Concierge.Interfaces.Components
             this.Background = ConciergeColors.WindowBackground;
             this.BorderBrush = ConciergeColors.RectangleBorderHighlight;
             this.BorderThickness = new Thickness(1);
+            this.HandleEnter = false;
 
             this.MouseDown += this.Window_MouseDown;
             this.KeyDown += this.Window_KeyDown;
@@ -52,6 +53,8 @@ namespace Concierge.Interfaces.Components
         protected ConciergeWindowResult Result { get; set; }
 
         protected ConciergeWindow? NonBlockingWindow { get; set; }
+
+        protected bool HandleEnter { get; set; }
 
         public virtual bool ShowAdd<T>(T item)
         {
@@ -175,7 +178,11 @@ namespace Concierge.Interfaces.Components
                     break;
                 case Key.Enter:
                     Program.Logger.Info($"{e.Key} key pressed.");
-                    this.ReturnAndClose();
+                    if (!this.HandleEnter)
+                    {
+                        this.ReturnAndClose();
+                    }
+
                     break;
             }
         }

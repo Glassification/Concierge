@@ -19,7 +19,7 @@
         <!--Header-->
         <Grid Grid.Row="0">
             <components:ConciergeTextBlock
-                Text="Armor Details"
+                Text="Armor"
                 Foreground="White"
                 FontSize="28"
                 FontWeight="Bold"
@@ -33,7 +33,8 @@
                 Foreground="Khaki"
                 ToolTip="Edit Armor Details"
                 Click="EditDetailsButton_Click"
-                HorizontalAlignment="Right">
+                HorizontalAlignment="Right"
+                VerticalAlignment="Stretch">
                 <materialDesign:PackIcon Kind="TextBoxEdit" Width="25" Height="25"/>
             </components:ConciergeDesignButton>
         </Grid>

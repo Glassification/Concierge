@@ -81,8 +81,12 @@ namespace Concierge.Interfaces
             this.GridContent.Width = GridContentWidthClose;
             this.IsMenuOpen = false;
             this.IgnoreListItemSelectionChanged = true;
-            this.MessageBar.Background = ConciergeColors.ProficiencyBrush;
+            this.MessageBar.Background = ConciergeColors.TitleMenuBrush;
             this.GridTitle.Background = ConciergeColors.TitleMenuBrush;
+            this.GridMenu.Background = ConciergeColors.TitleMenuBrush;
+            this.GridMenuButton.Background = ConciergeColors.TitleMenuBrush;
+            this.ListViewMenu.Background = ConciergeColors.TitleMenuBrush;
+
             this.CollapseAll();
             this.GenerateListViewItems();
             this.ListViewMenu.SelectedIndex = 0;
@@ -458,7 +462,7 @@ namespace Concierge.Interfaces
 
             items.Add(service.GenerateListViewItem(this.OverviewPage, "Overview", PackIconKind.Globe));
             items.Add(service.GenerateListViewItem(this.DetailsPage, "Details", PackIconKind.Details));
-            items.Add(service.GenerateListViewItem(this.AttackDefensePage, "Attack and Defense", PackIconKind.ShieldHalfFull));
+            items.Add(service.GenerateListViewItem(this.AttackDefensePage, "Attacks", PackIconKind.SwordCross));
             items.Add(service.GenerateListViewItem(this.AbilitiesPage, "Abilities", PackIconKind.Brain));
             items.Add(service.GenerateListViewItem(this.EquippedItemsPage, "Equipped Items", PackIconKind.HumanMaleHeight));
             items.Add(service.GenerateListViewItem(this.InventoryPage, "Inventory", PackIconKind.Backpack));
@@ -575,6 +579,9 @@ namespace Concierge.Interfaces
                 case Key.A:
                     ConciergeWindowService.ShowWindow(typeof(AboutConciergeWindow));
                     break;
+                case Key.C:
+                    ConciergeWindowService.ShowWindow(typeof(ConciergeConsoleWindow));
+                    break;
                 case Key.F:
                     this.Search();
                     break;
@@ -627,7 +634,7 @@ namespace Concierge.Interfaces
                     this.MoveSelection(ConciergePage.Details);
                     break;
                 case Key.D3:
-                    this.MoveSelection(ConciergePage.AttackDefense);
+                    this.MoveSelection(ConciergePage.Attacks);
                     break;
                 case Key.D4:
                     this.MoveSelection(ConciergePage.Abilities);

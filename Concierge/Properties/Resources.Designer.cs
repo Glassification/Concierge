@@ -129,18 +129,18 @@ namespace Concierge.Properties {
         ///   Looks up a localized string similar to Acolyte
         ///Anthropologist
         ///Archaeologist
+        ///Athlete 
         ///Caravan Specialist
         ///Charlatan
         ///City Watch
         ///Cloistered Scholar
         ///Courtier
         ///Criminal
-        ///Dissenter
         ///Entertainer
+        ///Failed Merchant
         ///Folk Hero
-        ///Gladiator
+        ///Gambler
         ///Guild Artisan
-        ///Guild Merchant
         ///Harborfolk
         ///Haunted One
         ///Hermit

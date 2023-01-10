@@ -120,7 +120,6 @@
                     <components:ConciergeDataGrid 
                         x:Name="AmmoDataGrid"
                         Style="{DynamicResource StandardDataGridStyle}"
-                        SelectionChanged="AmmoDataGrid_SelectionChanged"
                         Sorted="AmmoDataGrid_Sorted">
                         <DataGrid.Columns>
                             <DataGridTemplateColumn
@@ -254,8 +253,8 @@
         <!--Weapons-->
         <Grid Grid.Row="1" Background="#000917" Margin="3">
             <Grid.RowDefinitions>
-                <RowDefinition Height="8*"/>
-                <RowDefinition Height="92*"/>
+                <RowDefinition Height="8.47*"/>
+                <RowDefinition Height="91.53*"/>
             </Grid.RowDefinitions>
 
             <!--Header-->
@@ -344,7 +343,6 @@
                 <components:ConciergeDataGrid 
                     x:Name="WeaponDataGrid"
                     Style="{DynamicResource StandardDataGridStyle}"
-                    SelectionChanged="WeaponDataGrid_SelectionChanged"
                     Sorted="WeaponDataGrid_Sorted">
                     <DataGrid.Columns>
                         <DataGridTemplateColumn
