@@ -14,7 +14,7 @@ namespace Concierge.Console.Scripts
     using Concierge.Utility.Extensions;
 
     public sealed class ListScript<T> : IScript
-        where T : IUnique, new()
+        where T : IUnique, ICopyable<T>, new()
     {
         private readonly Regex textInParentheses = new (@"\(.*?\)", RegexOptions.Compiled);
 
@@ -103,7 +103,16 @@ namespace Concierge.Console.Scripts
 
         private T? GetDefaultItem(string name)
         {
-            return this.DefaultList.Where(x => x.Name.Equals(name, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
+            var item = this.DefaultList.Where(x => x.Name.Equals(name, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
+            if (item is null)
+            {
+                return item;
+            }
+
+            var newItem = item.DeepCopy();
+            newItem.Id = Guid.NewGuid();
+
+            return newItem;
         }
 
         private T? GetCharacterItem(string name)

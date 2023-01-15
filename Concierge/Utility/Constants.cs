@@ -35,6 +35,7 @@ namespace Concierge.Utility
         public const string Designer = "Thomas Beckett";
         public const string License = "This program is provided as is, without warranty. The end user is solely responsible for any injuries or TPKs that may result from the use of this product.";
         public const string Copyright = "2018-2023 Most Rights Reserved.";
+        public const string ConsolePrompt = "CS> ";
 
         static Constants()
         {

@@ -5,18 +5,13 @@
 namespace Concierge.Console
 {
     using System;
-    using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using System.ComponentModel;
     using System.IO;
     using System.Linq;
 
-    using Concierge.Character.Characteristics;
-    using Concierge.Character.Items;
-    using Concierge.Character.Spellcasting;
-    using Concierge.Character.Statuses;
     using Concierge.Console.Enums;
-    using Concierge.Console.Scripts;
+    using Concierge.Console.Services;
     using Concierge.Persistence;
     using Concierge.Persistence.ReadWriters;
     using Concierge.Tools;
@@ -25,31 +20,17 @@ namespace Concierge.Console
 
     public sealed class ConciergeConsole : INotifyPropertyChanged
     {
-        public const string Prompt = "CS> ";
-
         private readonly string consoleHistoryFile = Path.Combine(ConciergeFiles.AppDataDirectory, ConciergeFiles.ConsoleHistoryName);
-        private readonly string[] listScripts = new string[]
-        {
-            "Inventory",
-            "Weapons",
-            "Ammunition",
-            "Spells",
-            "MagicClasses",
-            "Ability",
-            "Language",
-            "ClassResource",
-            "StatusEffect",
-            "All",
-        };
 
-        private string consoleInput = Prompt;
+        private string consoleInput = Constants.ConsolePrompt;
         private ObservableCollection<ConsoleResult> consoleOutput = new ();
 
         public ConciergeConsole()
         {
             this.GenerateHeader();
 
-            this.History = new History(HistoryReadWriter.Read(this.consoleHistoryFile), Prompt);
+            this.History = new History(HistoryReadWriter.Read(this.consoleHistoryFile), Constants.ConsolePrompt);
+            this.WriteOutput = false;
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;
@@ -84,40 +65,27 @@ namespace Concierge.Console
             }
         }
 
-        public void Run()
-        {
-            var ignoreResult = false;
-            var command = this.ConsoleInput;
-            var result = new ConsoleResult($"Error: '{command.Strip(Prompt)}' does not contain a valid command.", ResultType.Error);
+        private bool WriteOutput { get; set; }
 
-            if (command.IsNullOrWhiteSpace())
+        public void Execute()
+        {
+            if (IsEmpty(this.ConsoleInput))
             {
+                this.ConsoleOutput.Add(ConsoleResult.Empty);
                 return;
             }
 
-            this.ConsoleOutput.Add(new ConsoleResult(command, ResultType.Information));
-            var script = GetScript(command);
+            this.ConsoleOutput.Add(new ConsoleResult(this.ConsoleInput, ResultType.Information));
 
-            if (this.listScripts.Contains(script))
-            {
-                result = RunListScript(command, script);
-            }
+            var script = GetScript(this.ConsoleInput);
+            var result = this.GetScriptService(script).Run(this.ConsoleInput, script);
 
-            if (script.Equals("Clear", StringComparison.InvariantCultureIgnoreCase))
-            {
-                this.ConsoleOutput.Clear();
-                this.GenerateHeader();
-                ignoreResult = true;
-            }
+            this.WriteResult(result);
+        }
 
-            HistoryReadWriter.Write(this.consoleHistoryFile, command);
-            this.History.Add(command);
-            this.ConsoleInput = Prompt;
-
-            if (!ignoreResult)
-            {
-                this.ConsoleOutput.Add(result);
-            }
+        private static bool IsEmpty(string command)
+        {
+            return command.Strip(Constants.ConsolePrompt).IsNullOrWhiteSpace();
         }
 
         private static string GetScript(string command)
@@ -126,21 +94,20 @@ namespace Concierge.Console
             return token.FirstLetterToUpperCase();
         }
 
-        private static ConsoleResult RunListScript(string command, string name)
+        private IScriptService GetScriptService(string script)
         {
-            return name switch
+            if (ListScriptService.ListScripts.Contains(script))
             {
-                "Inventory" => new ListScript<Inventory>(Constants.Inventories.ToList(), Program.CcsFile.Character.Inventories, name).Evaluate(command),
-                "Weapons" => new ListScript<Weapon>(Constants.Weapons.ToList(), Program.CcsFile.Character.Weapons, name).Evaluate(command),
-                "Ammunition" => new ListScript<Ammunition>(Constants.Ammunitions.ToList(), Program.CcsFile.Character.Ammunitions, name).Evaluate(command),
-                "Spells" => new ListScript<Spell>(Constants.Spells.ToList(), Program.CcsFile.Character.Spells, name).Evaluate(command),
-                "MagicClasses" => new ListScript<MagicClass>(new List<MagicClass>(), Program.CcsFile.Character.MagicClasses, name).Evaluate(command),
-                "Ability" => new ListScript<Ability>(Constants.Abilities.ToList(), Program.CcsFile.Character.Abilities, name).Evaluate(command),
-                "Language" => new ListScript<Language>(Constants.Languages.ToList(), Program.CcsFile.Character.Languages, name).Evaluate(command),
-                "ClassResource" => new ListScript<ClassResource>(new List<ClassResource>(), Program.CcsFile.Character.ClassResources, name).Evaluate(command),
-                "StatusEffect" => new ListScript<StatusEffect>(new List<StatusEffect>(), Program.CcsFile.Character.StatusEffects, name).Evaluate(command),
-                _ => new ConsoleResult($"Error: '{command}' does not contain a valid command.", ResultType.Error),
-            };
+                return new ListScriptService();
+            }
+            else if (script.Equals("Clear", StringComparison.InvariantCultureIgnoreCase))
+            {
+                this.ConsoleOutput.Clear();
+                this.GenerateHeader();
+                this.WriteOutput = true;
+            }
+
+            return new UnknownScriptService();
         }
 
         private void GenerateHeader()
@@ -148,6 +115,18 @@ namespace Concierge.Console
             this.ConsoleOutput.Add(new ConsoleResult($"Concierge [Version {Program.AssemblyVersion}]", ResultType.Information));
             this.ConsoleOutput.Add(new ConsoleResult("Starting console...", ResultType.Information));
             this.ConsoleOutput.Add(new ConsoleResult(string.Empty, ResultType.Information));
+        }
+
+        private void WriteResult(ConsoleResult result)
+        {
+            HistoryReadWriter.Write(this.consoleHistoryFile, this.ConsoleInput);
+            this.History.Add(this.ConsoleInput);
+            this.ConsoleInput = Constants.ConsolePrompt;
+
+            if (!this.WriteOutput)
+            {
+                this.ConsoleOutput.Add(result);
+            }
         }
 
         private void OnPropertyChanged(string propertyName)

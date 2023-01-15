@@ -10,6 +10,7 @@ namespace Concierge.Interfaces.UtilityInterface
     using Concierge.Console;
     using Concierge.Interfaces.Components;
     using Concierge.Interfaces.Enums;
+    using Concierge.Utility;
 
     /// <summary>
     /// Interaction logic for ConciergeConsoleWindow.xaml.
@@ -41,7 +42,7 @@ namespace Concierge.Interfaces.UtilityInterface
 
         private void LimitBackspace(KeyEventArgs e)
         {
-            if (this.InputBlock.CaretIndex <= ConciergeConsole.Prompt.Length)
+            if (this.InputBlock.CaretIndex <= Constants.ConsolePrompt.Length)
             {
                 e.Handled = true;
             }
@@ -65,7 +66,7 @@ namespace Concierge.Interfaces.UtilityInterface
             {
                 case Key.Enter:
                     this.Console.ConsoleInput = this.InputBlock.Text;
-                    this.Console.Run();
+                    this.Console.Execute();
                     this.InputBlock.Focus();
                     this.InputBlock.CaretIndex = this.InputBlock.Text.Length;
                     this.ConsoleScroller.ScrollToBottom();
@@ -99,9 +100,9 @@ namespace Concierge.Interfaces.UtilityInterface
             }
 
             this.CaretChanging = true;
-            if (this.InputBlock.CaretIndex < ConciergeConsole.Prompt.Length)
+            if (this.InputBlock.CaretIndex < Constants.ConsolePrompt.Length)
             {
-                this.InputBlock.CaretIndex = ConciergeConsole.Prompt.Length;
+                this.InputBlock.CaretIndex = Constants.ConsolePrompt.Length;
             }
 
             this.CaretChanging = false;

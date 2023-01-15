@@ -7,6 +7,8 @@ namespace Concierge.Console
     using System.Windows.Media;
 
     using Concierge.Console.Enums;
+    using Concierge.Utility;
+    using Concierge.Utility.Extensions;
 
     public sealed class ConsoleResult
     {
@@ -18,7 +20,7 @@ namespace Concierge.Console
             this.Type = type;
         }
 
-        public static ConsoleResult Empty => new ("No Result", ResultType.Error);
+        public static ConsoleResult Empty => new (Constants.ConsolePrompt, ResultType.Information);
 
         public string Message
         {
@@ -44,9 +46,15 @@ namespace Concierge.Console
                     ResultType.Success => Brushes.LightGreen,
                     ResultType.Warning => Brushes.Orange,
                     ResultType.Error => Brushes.IndianRed,
+                    ResultType.Information => Brushes.White,
                     _ => Brushes.White,
                 };
             }
+        }
+
+        public static ConsoleResult Default(string command)
+        {
+            return new ConsoleResult($"Error: '{command.Strip(Constants.ConsolePrompt)}' does not contain a valid command.", ResultType.Error);
         }
     }
 }
