@@ -10,9 +10,9 @@ namespace Concierge.Console.Services
         {
         }
 
-        public ConsoleResult Run(string command, string name)
+        public ConsoleResult Run(ConsoleCommand command)
         {
-            return ConsoleResult.Default(command);
+            return ConsoleResult.Default(command.Command);
         }
     }
 }

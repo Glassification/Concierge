@@ -6,6 +6,6 @@ namespace Concierge.Console.Services
 {
     public interface IScriptService
     {
-        ConsoleResult Run(string command, string name);
+        ConsoleResult Run(ConsoleCommand command);
     }
 }

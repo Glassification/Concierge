@@ -6,6 +6,6 @@ namespace Concierge.Console.Scripts
 {
     public interface IScript
     {
-        ConsoleResult Evaluate(string command);
+        ConsoleResult Evaluate(ConsoleCommand command);
     }
 }

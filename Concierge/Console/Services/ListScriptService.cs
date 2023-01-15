@@ -35,30 +35,30 @@ namespace Concierge.Console.Services
         {
         }
 
-        public ConsoleResult Run(string command, string name)
+        public ConsoleResult Run(ConsoleCommand command)
         {
-            return RunListScript(command, name);
+            return RunListScript(command);
         }
 
-        private static ConsoleResult RunListScript(string command, string name)
+        private static ConsoleResult RunListScript(ConsoleCommand command)
         {
-            return name switch
+            return command.Name.ToLower() switch
             {
-                "Inventory" => new ListScript<Inventory>(Constants.Inventories.ToList(), Program.CcsFile.Character.Inventories, name).Evaluate(command),
-                "Weapons" => new ListScript<Weapon>(Constants.Weapons.ToList(), Program.CcsFile.Character.Weapons, name).Evaluate(command),
-                "Ammunition" => new ListScript<Ammunition>(Constants.Ammunitions.ToList(), Program.CcsFile.Character.Ammunitions, name).Evaluate(command),
-                "Spells" => new ListScript<Spell>(Constants.Spells.ToList(), Program.CcsFile.Character.Spells, name).Evaluate(command),
-                "MagicClasses" => new ListScript<MagicClass>(new List<MagicClass>(), Program.CcsFile.Character.MagicClasses, name).Evaluate(command),
-                "Ability" => new ListScript<Ability>(Constants.Abilities.ToList(), Program.CcsFile.Character.Abilities, name).Evaluate(command),
-                "Language" => new ListScript<Language>(Constants.Languages.ToList(), Program.CcsFile.Character.Languages, name).Evaluate(command),
-                "ClassResource" => new ListScript<ClassResource>(new List<ClassResource>(), Program.CcsFile.Character.ClassResources, name).Evaluate(command),
-                "StatusEffect" => new ListScript<StatusEffect>(new List<StatusEffect>(), Program.CcsFile.Character.StatusEffects, name).Evaluate(command),
-                "All" => RunAllListScripts(command),
+                "inventory" => new ListScript<Inventory>(Constants.Inventories.ToList(), Program.CcsFile.Character.Inventories).Evaluate(command),
+                "weapons" => new ListScript<Weapon>(Constants.Weapons.ToList(), Program.CcsFile.Character.Weapons).Evaluate(command),
+                "ammunition" => new ListScript<Ammunition>(Constants.Ammunitions.ToList(), Program.CcsFile.Character.Ammunitions).Evaluate(command),
+                "spells" => new ListScript<Spell>(Constants.Spells.ToList(), Program.CcsFile.Character.Spells).Evaluate(command),
+                "magicclasses" => new ListScript<MagicClass>(new List<MagicClass>(), Program.CcsFile.Character.MagicClasses).Evaluate(command),
+                "ability" => new ListScript<Ability>(Constants.Abilities.ToList(), Program.CcsFile.Character.Abilities).Evaluate(command),
+                "language" => new ListScript<Language>(Constants.Languages.ToList(), Program.CcsFile.Character.Languages).Evaluate(command),
+                "classresource" => new ListScript<ClassResource>(new List<ClassResource>(), Program.CcsFile.Character.ClassResources).Evaluate(command),
+                "statuseffect" => new ListScript<StatusEffect>(new List<StatusEffect>(), Program.CcsFile.Character.StatusEffects).Evaluate(command),
+                "all" => RunAllListScripts(command),
                 _ => new ConsoleResult($"Error: '{command}' does not contain a valid command.", ResultType.Error),
             };
         }
 
-        private static ConsoleResult RunAllListScripts(string command)
+        private static ConsoleResult RunAllListScripts(ConsoleCommand command)
         {
             var scriptList = ListScripts.ToList();
             var result = true;
@@ -66,7 +66,7 @@ namespace Concierge.Console.Services
             scriptList.Remove("All");
             foreach (var script in scriptList)
             {
-                result &= RunListScript(command, script).Type == ResultType.Success;
+                result &= RunListScript(new ConsoleCommand($"{script}.{command.Action}({command.Argument})")).Type == ResultType.Success;
             }
 
             return result ?

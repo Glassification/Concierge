@@ -7,7 +7,6 @@ namespace Concierge.Console.Scripts
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Text.RegularExpressions;
 
     using Concierge.Console.Enums;
     using Concierge.Utility;
@@ -16,86 +15,81 @@ namespace Concierge.Console.Scripts
     public sealed class ListScript<T> : IScript
         where T : IUnique, ICopyable<T>, new()
     {
-        private readonly Regex textInParentheses = new (@"\(.*?\)", RegexOptions.Compiled);
-
-        public ListScript(List<T> defaultList, List<T> characterList, string listName)
+        public ListScript(List<T> defaultList, List<T> characterList)
         {
             this.DefaultList = defaultList;
             this.CharacterList = characterList;
-            this.ListName = listName;
         }
 
         private List<T> DefaultList { get; set; }
 
         private List<T> CharacterList { get; set; }
 
-        private string ListName { get; set; }
-
-        public ConsoleResult Evaluate(string command)
+        public ConsoleResult Evaluate(ConsoleCommand command)
         {
-            if (command.Contains("AddItem", StringComparison.InvariantCultureIgnoreCase))
+            if (command.Action.Equals("AddItem", StringComparison.InvariantCultureIgnoreCase))
             {
-                return this.AddItem(this.textInParentheses.Match(command).Value.Strip("(").Strip(")"));
+                return this.AddItem(command);
             }
 
-            if (command.Contains("RemoveItem", StringComparison.InvariantCultureIgnoreCase))
+            if (command.Action.Equals("RemoveItem", StringComparison.InvariantCultureIgnoreCase))
             {
-                return this.RemoveItem(this.textInParentheses.Match(command).Value.Strip("(").Strip(")"));
+                return this.RemoveItem(command);
             }
 
-            if (command.Contains("Count", StringComparison.InvariantCultureIgnoreCase))
+            if (command.Action.Equals("Count", StringComparison.InvariantCultureIgnoreCase))
             {
-                return this.Count(this.textInParentheses.Match(command).Value.Strip("(").Strip(")"));
+                return this.Count(command);
             }
 
             return new ConsoleResult($"Implementation for '{command}' not found.", ResultType.Error);
         }
 
-        private ConsoleResult AddItem(string name)
+        private ConsoleResult AddItem(ConsoleCommand command)
         {
-            if (name.IsNullOrWhiteSpace())
+            if (command.Argument.IsNullOrWhiteSpace())
             {
                 this.CharacterList.AddRange(this.DefaultList);
-                return new ConsoleResult($"All default items added to {this.ListName}", ResultType.Success);
+                return new ConsoleResult($"All default items added to {command.Name}", ResultType.Success);
             }
 
-            var item = this.GetDefaultItem(name);
+            var item = this.GetDefaultItem(command.Argument);
             if (item is null)
             {
                 this.CharacterList.Add(new T()
                 {
-                    Name = name,
+                    Name = command.Argument,
                 });
-                return new ConsoleResult($"Default item '{name}' could not be found. Added new item to {this.ListName}.", ResultType.Warning);
+                return new ConsoleResult($"Default item '{command.Argument}' could not be found. Added new item to {command.Name}.", ResultType.Warning);
             }
 
             this.CharacterList.Add(item);
-            return new ConsoleResult($"Added '{name}' to {this.ListName}.", ResultType.Success);
+            return new ConsoleResult($"Added '{command.Argument}' to {command.Argument}.", ResultType.Success);
         }
 
-        private ConsoleResult RemoveItem(string name)
+        private ConsoleResult RemoveItem(ConsoleCommand command)
         {
-            if (name.IsNullOrWhiteSpace())
+            if (command.Argument.IsNullOrWhiteSpace())
             {
                 this.CharacterList.Clear();
-                return new ConsoleResult($"All items removed from {this.ListName}.", ResultType.Success);
+                return new ConsoleResult($"All items removed from {command.Name}.", ResultType.Success);
             }
 
-            var item = this.GetCharacterItem(name);
+            var item = this.GetCharacterItem(command.Argument);
             if (item is null)
             {
-                return new ConsoleResult($"Item '{name}' could not be found.", ResultType.Error);
+                return new ConsoleResult($"Item '{command.Argument}' could not be found.", ResultType.Error);
             }
 
             this.CharacterList.Remove(item);
-            return new ConsoleResult($"Removed '{name}' from {this.ListName}.", ResultType.Success);
+            return new ConsoleResult($"Removed '{command.Argument}' from {command.Name}.", ResultType.Success);
         }
 
-        private ConsoleResult Count(string name)
+        private ConsoleResult Count(ConsoleCommand command)
         {
-            if (name.IsNullOrWhiteSpace())
+            if (command.Argument.IsNullOrWhiteSpace())
             {
-                return new ConsoleResult($"{this.CharacterList.Count} items in {this.ListName}.", ResultType.Success);
+                return new ConsoleResult($"{this.CharacterList.Count} items in {command.Name}.", ResultType.Success);
             }
 
             return new ConsoleResult($"Counting specific items is not implemented.", ResultType.Error);

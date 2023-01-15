@@ -581,6 +581,7 @@ namespace Concierge.Interfaces
                     break;
                 case Key.C:
                     ConciergeWindowService.ShowWindow(typeof(ConciergeConsoleWindow));
+                    this.DrawAll();
                     break;
                 case Key.F:
                     this.Search();

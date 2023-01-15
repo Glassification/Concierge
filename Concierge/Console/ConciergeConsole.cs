@@ -77,8 +77,14 @@ namespace Concierge.Console
 
             this.ConsoleOutput.Add(new ConsoleResult(this.ConsoleInput, ResultType.Information));
 
-            var script = GetScript(this.ConsoleInput);
-            var result = this.GetScriptService(script).Run(this.ConsoleInput, script);
+            var command = new ConsoleCommand(this.ConsoleInput);
+            if (!command.IsValid)
+            {
+                this.WriteResult(ConsoleResult.Default(this.ConsoleInput));
+                return;
+            }
+
+            var result = this.GetScriptService(command.Name).Run(command);
 
             this.WriteResult(result);
         }
@@ -88,19 +94,13 @@ namespace Concierge.Console
             return command.Strip(Constants.ConsolePrompt).IsNullOrWhiteSpace();
         }
 
-        private static string GetScript(string command)
+        private IScriptService GetScriptService(string name)
         {
-            var token = command.Split(' ').LastOrDefault(string.Empty).Split('.').FirstOrDefault(string.Empty);
-            return token.FirstLetterToUpperCase();
-        }
-
-        private IScriptService GetScriptService(string script)
-        {
-            if (ListScriptService.ListScripts.Contains(script))
+            if (ListScriptService.ListScripts.Contains(name, StringComparer.InvariantCultureIgnoreCase))
             {
                 return new ListScriptService();
             }
-            else if (script.Equals("Clear", StringComparison.InvariantCultureIgnoreCase))
+            else if (name.Equals("Clear", StringComparison.InvariantCultureIgnoreCase))
             {
                 this.ConsoleOutput.Clear();
                 this.GenerateHeader();
