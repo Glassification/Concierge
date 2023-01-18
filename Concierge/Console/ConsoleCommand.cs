@@ -8,6 +8,7 @@ namespace Concierge.Console
 
     using Concierge.Utility;
     using Concierge.Utility.Extensions;
+    using Newtonsoft.Json;
 
     public class ConsoleCommand
     {
@@ -18,7 +19,7 @@ namespace Concierge.Console
             this.Name = string.Empty;
             this.Action = string.Empty;
             this.Argument = string.Empty;
-            this.Command = command;
+            this.Command = string.Empty;
 
             this.Parse(command);
         }
@@ -27,17 +28,23 @@ namespace Concierge.Console
 
         public string Argument { get; set; }
 
-        public string Command { get; init; }
+        public string Command { get; private set; }
 
         public bool IsValid { get; private set; }
 
         public string Name { get; set; }
 
+        public override string ToString()
+        {
+            return JsonConvert.SerializeObject(this, Formatting.None);
+        }
+
         private void Parse(string command)
         {
             command = command.Strip(Constants.ConsolePrompt);
+            this.Command = command;
 
-            var tokens = command.Split('.');
+            var tokens = command.Split('.', 2);
             if (tokens.Length < 1)
             {
                 this.IsValid = false;
@@ -54,7 +61,7 @@ namespace Concierge.Console
             if (tokens[1].Contains('('))
             {
                 this.Action = tokens[1][..tokens[1].IndexOf('(')];
-                this.Argument = this.textInParentheses.Match(tokens[0]).Value.Strip("(").Strip(")");
+                this.Argument = this.textInParentheses.Match(tokens[1]).Value.Strip("(").Strip(")");
             }
             else
             {

@@ -40,7 +40,6 @@ namespace ConciergeDevTools
 
             rootCommand.Invoke(args);
             */
-            //GenerateNames.Generate();
             GenerateBackgrounds.Generate();
         }
 

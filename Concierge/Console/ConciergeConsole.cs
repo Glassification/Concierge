@@ -78,6 +78,7 @@ namespace Concierge.Console
             this.ConsoleOutput.Add(new ConsoleResult(this.ConsoleInput, ResultType.Information));
 
             var command = new ConsoleCommand(this.ConsoleInput);
+            Program.Logger.Info($"Executing command: {command}");
             if (!command.IsValid)
             {
                 this.WriteResult(ConsoleResult.Default(this.ConsoleInput));
@@ -85,6 +86,7 @@ namespace Concierge.Console
             }
 
             var result = this.GetScriptService(command.Name).Run(command);
+            Program.Logger.Info($"Command result: {result}");
 
             this.WriteResult(result);
         }
@@ -99,6 +101,14 @@ namespace Concierge.Console
             if (ListScriptService.ListScripts.Contains(name, StringComparer.InvariantCultureIgnoreCase))
             {
                 return new ListScriptService();
+            }
+            else if (WealthScriptService.WealthScripts.Contains(name, StringComparer.InvariantCultureIgnoreCase))
+            {
+                return new WealthScriptService();
+            }
+            else if (ReadWriterScriptService.ReadWriteScripts.Contains(name, StringComparer.InvariantCultureIgnoreCase))
+            {
+                return new ReadWriterScriptService();
             }
             else if (name.Equals("Clear", StringComparison.InvariantCultureIgnoreCase))
             {

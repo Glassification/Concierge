@@ -66,7 +66,8 @@ namespace Concierge.Console.Services
             scriptList.Remove("All");
             foreach (var script in scriptList)
             {
-                result &= RunListScript(new ConsoleCommand($"{script}.{command.Action}({command.Argument})")).Type == ResultType.Success;
+                var consoleResult = RunListScript(new ConsoleCommand($"{script}.{command.Action}({command.Argument})"));
+                result &= consoleResult.Type == ResultType.Success || consoleResult.Type == ResultType.Warning;
             }
 
             return result ?

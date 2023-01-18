@@ -9,6 +9,7 @@ namespace Concierge.Console
     using Concierge.Console.Enums;
     using Concierge.Utility;
     using Concierge.Utility.Extensions;
+    using Newtonsoft.Json;
 
     public sealed class ConsoleResult
     {
@@ -20,6 +21,13 @@ namespace Concierge.Console
             this.Type = type;
         }
 
+        public ConsoleResult(string message, ResultType type, object value)
+            : this(message, type)
+        {
+            this.Value = value;
+        }
+
+        [JsonIgnore]
         public static ConsoleResult Empty => new (Constants.ConsolePrompt, ResultType.Information);
 
         public string Message
@@ -37,6 +45,10 @@ namespace Concierge.Console
 
         public ResultType Type { get; set; }
 
+        [JsonIgnore]
+        public object? Value { get; init; }
+
+        [JsonIgnore]
         public Brush TextColor
         {
             get
@@ -55,6 +67,11 @@ namespace Concierge.Console
         public static ConsoleResult Default(string command)
         {
             return new ConsoleResult($"Error: '{command.Strip(Constants.ConsolePrompt)}' does not contain a valid command.", ResultType.Error);
+        }
+
+        public override string ToString()
+        {
+            return JsonConvert.SerializeObject(this, Formatting.None);
         }
     }
 }

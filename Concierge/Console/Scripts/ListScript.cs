@@ -42,7 +42,7 @@ namespace Concierge.Console.Scripts
                 return this.Count(command);
             }
 
-            return new ConsoleResult($"Implementation for '{command}' not found.", ResultType.Error);
+            return new ConsoleResult($"Implementation for '{command.Action}' not found.", ResultType.Error);
         }
 
         private ConsoleResult AddItem(ConsoleCommand command)

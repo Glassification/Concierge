@@ -369,5 +369,24 @@ namespace Concierge.Utility.Extensions
 
             return char.ToUpper(str[0]) + str.Substring(1);
         }
+
+        public static string[] Split(this string str, char delimiter, Regex regex)
+        {
+            var list = new List<string>();
+            string curr;
+
+            foreach (Match match in regex.Matches(str))
+            {
+                curr = match.Value;
+                if (curr.Length == 0)
+                {
+                    list.Add(string.Empty);
+                }
+
+                list.Add(curr.TrimStart(delimiter));
+            }
+
+            return list.ToArray();
+        }
     }
 }
