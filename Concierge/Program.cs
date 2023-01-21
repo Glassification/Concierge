@@ -7,7 +7,6 @@ namespace Concierge
     using System;
     using System.IO;
     using System.Reflection;
-    using System.Windows.Input;
 
     using Concierge.Character;
     using Concierge.Interfaces;
@@ -38,6 +37,8 @@ namespace Concierge
             MainWindow = null;
             BaseState = new ConciergeCharacter();
             CustomColorService = CustomColorReadWriter.Read(Path.Combine(ConciergeFiles.GetCorrectCustomColorsPath(), ConciergeFiles.CustomColorsName));
+
+            ConsoleReadWriter.Clear(Path.Combine(ConciergeFiles.AppDataDirectory, ConciergeFiles.ConsoleOutput));
 
             GitUtility.Initialize();
         }

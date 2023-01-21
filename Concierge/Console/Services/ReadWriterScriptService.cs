@@ -51,6 +51,7 @@ namespace Concierge.Console.Services
         {
             "Read",
             "Write",
+            "New",
         };
 
         public ReadWriterScriptService()
@@ -102,10 +103,6 @@ namespace Concierge.Console.Services
         private static ConsoleResult RunForCharacterSheet(ConsoleCommand command)
         {
             var result = new ReadWriterScript<CcsFile>(Program.CcsFile).Evaluate(command);
-            if (result.Value is CcsFile ccsFile)
-            {
-                Program.CcsFile = ccsFile;
-            }
 
             return result;
         }

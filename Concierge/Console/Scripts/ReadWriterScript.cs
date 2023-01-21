@@ -39,6 +39,11 @@ namespace Concierge.Console.Scripts
                 return this.Write(command);
             }
 
+            if (command.Action.Equals("New", StringComparison.InvariantCultureIgnoreCase))
+            {
+                return this.New(command);
+            }
+
             return new ConsoleResult($"Implementation for '{command.Action}' not found.", ResultType.Error);
         }
 
@@ -56,9 +61,8 @@ namespace Concierge.Console.Scripts
 
             try
             {
-                var item = CharacterReadWriter.Read(command.Argument);
-
-                return new ConsoleResult($"Read {command.Name} from {command.Argument}.", ResultType.Success, item);
+                Program.MainWindow?.OpenCharacterSheet(command.Argument);
+                return new ConsoleResult($"Read {command.Name} from {command.Argument}.", ResultType.Success);
             }
             catch (Exception ex)
             {
@@ -79,6 +83,24 @@ namespace Concierge.Console.Scripts
                 File.WriteAllText(command.Argument, rawItem);
 
                 return new ConsoleResult($"Wrote {command.Name} to {command.Argument}.", ResultType.Success);
+            }
+            catch (Exception ex)
+            {
+                return new ConsoleResult(ex.Message, ResultType.Error);
+            }
+        }
+
+        private ConsoleResult New(ConsoleCommand command)
+        {
+            if (this.Item is not CcsFile)
+            {
+                return new ConsoleResult($"{this.Item?.GetType()?.Name} does not support new.", ResultType.Error);
+            }
+
+            try
+            {
+                Program.MainWindow?.NewCharacterSheet();
+                return new ConsoleResult($"New {command.Name} sheet.", ResultType.Success);
             }
             catch (Exception ex)
             {

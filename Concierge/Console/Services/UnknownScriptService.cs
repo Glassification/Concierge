@@ -18,7 +18,7 @@ namespace Concierge.Console.Services
 
         public override ConsoleResult Run(ConsoleCommand command)
         {
-            return ConsoleResult.Default(command.Command);
+            return ConsoleResult.DefaultError(command.Command);
         }
 
         public override string List()

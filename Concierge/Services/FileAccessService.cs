@@ -6,6 +6,7 @@ namespace Concierge.Services
 {
     using Concierge.Persistence;
     using Concierge.Persistence.ReadWriters;
+    using Concierge.Utility.Extensions;
     using Microsoft.Win32;
 
     public sealed class FileAccessService
@@ -45,9 +46,13 @@ namespace Concierge.Services
             };
         }
 
-        public CcsFile? OpenCcs()
+        public CcsFile? OpenCcs(string file)
         {
-            return this.ccsOpenFileDialog.ShowDialog() ?? false ? CharacterReadWriter.Read(this.ccsOpenFileDialog.FileName) : null;
+            return file.IsNullOrWhiteSpace() ?
+                this.ccsOpenFileDialog.ShowDialog() ?? false ?
+                    CharacterReadWriter.Read(this.ccsOpenFileDialog.FileName) :
+                    null :
+                CharacterReadWriter.Read(file);
         }
 
         public string OpenCcsName()

@@ -15,6 +15,11 @@ namespace Concierge.Console
     {
         private string message = string.Empty;
 
+        public ConsoleResult()
+            : this(string.Empty, ResultType.Information)
+        {
+        }
+
         public ConsoleResult(string message, ResultType type)
         {
             this.Message = message;
@@ -64,7 +69,7 @@ namespace Concierge.Console
             }
         }
 
-        public static ConsoleResult Default(string command)
+        public static ConsoleResult DefaultError(string command)
         {
             return new ConsoleResult($"Error: '{command.Strip(Constants.ConsolePrompt)}' does not contain a valid command.", ResultType.Error);
         }

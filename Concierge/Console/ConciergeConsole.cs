@@ -8,7 +8,6 @@ namespace Concierge.Console
     using System.Collections.ObjectModel;
     using System.ComponentModel;
     using System.IO;
-    using System.Linq;
 
     using Concierge.Console.Enums;
     using Concierge.Console.Services;
@@ -21,6 +20,7 @@ namespace Concierge.Console
     public sealed class ConciergeConsole : INotifyPropertyChanged
     {
         private readonly string consoleHistoryFile = Path.Combine(ConciergeFiles.HistoryDirectory, ConciergeFiles.ConsoleHistoryName);
+        private readonly string consoleOutputFile = Path.Combine(ConciergeFiles.AppDataDirectory, ConciergeFiles.ConsoleOutput);
 
         private string consoleInput = Constants.ConsolePrompt;
         private ObservableCollection<ConsoleResult> consoleOutput = new ();
@@ -28,6 +28,7 @@ namespace Concierge.Console
         public ConciergeConsole()
         {
             this.GenerateHeader();
+            this.LoadConsoleOutput();
 
             this.History = new History(HistoryReadWriter.Read(this.consoleHistoryFile), Constants.ConsolePrompt);
             this.WriteOutput = true;
@@ -75,18 +76,18 @@ namespace Concierge.Console
         {
             if (IsEmpty(this.ConsoleInput))
             {
-                this.ConsoleOutput.Add(ConsoleResult.Empty);
+                this.AddConsoleOutput(ConsoleResult.Empty);
                 return;
             }
 
-            this.ConsoleOutput.Add(new ConsoleResult(this.ConsoleInput, ResultType.Information));
+            this.AddConsoleOutput(new ConsoleResult(this.ConsoleInput, ResultType.Information));
             this.WriteOutput = true;
 
             var command = new ConsoleCommand(this.ConsoleInput);
             Program.Logger.Info($"Executing command: {command}");
             if (!command.IsValid)
             {
-                this.WriteResult(ConsoleResult.Default(this.ConsoleInput));
+                this.WriteResult(ConsoleResult.DefaultError(this.ConsoleInput));
                 return;
             }
 
@@ -126,9 +127,7 @@ namespace Concierge.Console
             }
             else if (name.Equals("Clear", StringComparison.InvariantCultureIgnoreCase))
             {
-                this.ConsoleOutput.Clear();
-                this.GenerateHeader();
-                this.WriteOutput = false;
+                this.ClearConsoleOutput();
             }
             else if (name.Equals("Exit", StringComparison.InvariantCultureIgnoreCase))
             {
@@ -154,7 +153,7 @@ namespace Concierge.Console
 
             if (this.WriteOutput)
             {
-                this.ConsoleOutput.Add(result);
+                this.AddConsoleOutput(result);
             }
         }
 
@@ -166,6 +165,30 @@ namespace Concierge.Console
             }
 
             this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        private void AddConsoleOutput(ConsoleResult result)
+        {
+            this.ConsoleOutput.Add(result);
+            ConsoleReadWriter.Write(this.consoleOutputFile, result);
+        }
+
+        private void LoadConsoleOutput()
+        {
+            var list = ConsoleReadWriter.Read(this.consoleOutputFile);
+            foreach (var item in list)
+            {
+                this.ConsoleOutput.Add(item);
+            }
+        }
+
+        private void ClearConsoleOutput()
+        {
+            ConsoleReadWriter.Clear(this.consoleOutputFile);
+
+            this.ConsoleOutput.Clear();
+            this.GenerateHeader();
+            this.WriteOutput = false;
         }
     }
 }

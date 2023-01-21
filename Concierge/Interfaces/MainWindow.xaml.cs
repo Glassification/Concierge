@@ -202,7 +202,7 @@ namespace Concierge.Interfaces
             this.StartStopAutosaveTimer();
         }
 
-        public void OpenCharacterSheet()
+        public void OpenCharacterSheet(string file = "")
         {
             Program.Logger.Info($"Opening character sheet.");
 
@@ -212,7 +212,7 @@ namespace Concierge.Interfaces
                 return;
             }
 
-            var ccsFile = this.fileAccessService.OpenCcs();
+            var ccsFile = this.fileAccessService.OpenCcs(file);
             if (ccsFile?.AbsolutePath.IsNullOrWhiteSpace() ?? true)
             {
                 return;
