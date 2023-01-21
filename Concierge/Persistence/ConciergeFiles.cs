@@ -16,6 +16,7 @@ namespace Concierge.Persistence
         public const string CustomColorsName = "CustomColors.json";
         public const string DiceHistoryName = "DiceHistory.txt";
         public const string ConsoleHistoryName = "ConsoleHistory.txt";
+        public const string NameGeneratorHistoryName = "NameHistory.txt";
 
         private static readonly string applicationData;
 
@@ -25,6 +26,8 @@ namespace Concierge.Persistence
         }
 
         public static string AppDataDirectory => Path.Combine(applicationData, "Concierge");
+
+        public static string HistoryDirectory => Path.Combine(applicationData, @"Concierge\History");
 
         public static string LoggingDirectory => Path.Combine(applicationData, @"Concierge\Logging");
 

@@ -4,6 +4,7 @@
 
 namespace Concierge.Interfaces.UtilityInterface
 {
+    using System;
     using System.Windows;
     using System.Windows.Input;
 
@@ -26,6 +27,8 @@ namespace Concierge.Interfaces.UtilityInterface
             this.DataContext = this.Console;
             this.HandleEnter = true;
             this.CaretChanging = false;
+
+            this.Console.Exited += this.ConciergeConsole_Exited;
         }
 
         public override string HeaderText => "Console";
@@ -106,6 +109,12 @@ namespace Concierge.Interfaces.UtilityInterface
             }
 
             this.CaretChanging = false;
+        }
+
+        private void ConciergeConsole_Exited(object sender, EventArgs e)
+        {
+            this.Result = ConciergeWindowResult.Exit;
+            this.CloseConciergeWindow();
         }
     }
 }

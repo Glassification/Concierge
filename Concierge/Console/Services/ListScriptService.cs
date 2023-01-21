@@ -15,9 +15,9 @@ namespace Concierge.Console.Services
     using Concierge.Console.Scripts;
     using Concierge.Utility;
 
-    public class ListScriptService : IScriptService
+    public class ListScriptService : ScriptService
     {
-        public static readonly string[] ListScripts = new string[]
+        private static readonly string[] names = new string[]
         {
             "Inventory",
             "Weapons",
@@ -31,42 +31,61 @@ namespace Concierge.Console.Services
             "All",
         };
 
+        private static readonly string[] actions = new string[]
+        {
+            "AddItem",
+            "RemoveItem",
+            "Count",
+        };
+
         public ListScriptService()
+            : this(true)
         {
         }
 
-        public ConsoleResult Run(ConsoleCommand command)
+        public ListScriptService(bool isFirst)
         {
-            return RunListScript(command);
+            this.IsFirstList = isFirst;
         }
 
-        private static ConsoleResult RunListScript(ConsoleCommand command)
+        public override string[] Names => names;
+
+        public override string[] Actions => actions;
+
+        public override ConsoleResult Run(ConsoleCommand command)
         {
+            return this.RunListScript(command);
+        }
+
+        private ConsoleResult RunListScript(ConsoleCommand command)
+        {
+            var character = Program.CcsFile.Character;
+
             return command.Name.ToLower() switch
             {
-                "inventory" => new ListScript<Inventory>(Constants.Inventories.ToList(), Program.CcsFile.Character.Inventories).Evaluate(command),
-                "weapons" => new ListScript<Weapon>(Constants.Weapons.ToList(), Program.CcsFile.Character.Weapons).Evaluate(command),
-                "ammunition" => new ListScript<Ammunition>(Constants.Ammunitions.ToList(), Program.CcsFile.Character.Ammunitions).Evaluate(command),
-                "spells" => new ListScript<Spell>(Constants.Spells.ToList(), Program.CcsFile.Character.Spells).Evaluate(command),
-                "magicclasses" => new ListScript<MagicClass>(new List<MagicClass>(), Program.CcsFile.Character.MagicClasses).Evaluate(command),
-                "ability" => new ListScript<Ability>(Constants.Abilities.ToList(), Program.CcsFile.Character.Abilities).Evaluate(command),
-                "language" => new ListScript<Language>(Constants.Languages.ToList(), Program.CcsFile.Character.Languages).Evaluate(command),
-                "classresource" => new ListScript<ClassResource>(new List<ClassResource>(), Program.CcsFile.Character.ClassResources).Evaluate(command),
-                "statuseffect" => new ListScript<StatusEffect>(new List<StatusEffect>(), Program.CcsFile.Character.StatusEffects).Evaluate(command),
-                "all" => RunAllListScripts(command),
+                "inventory" => new ListScript<Inventory>(Constants.Inventories.ToList(), character.Inventories).Evaluate(command),
+                "weapons" => new ListScript<Weapon>(Constants.Weapons.ToList(), character.Weapons).Evaluate(command),
+                "ammunition" => new ListScript<Ammunition>(Constants.Ammunitions.ToList(), character.Ammunitions).Evaluate(command),
+                "spells" => new ListScript<Spell>(Constants.Spells.ToList(), character.Spells).Evaluate(command),
+                "magicclasses" => new ListScript<MagicClass>(new List<MagicClass>(), character.MagicClasses).Evaluate(command),
+                "ability" => new ListScript<Ability>(Constants.Abilities.ToList(), character.Abilities).Evaluate(command),
+                "language" => new ListScript<Language>(Constants.Languages.ToList(), character.Languages).Evaluate(command),
+                "classresource" => new ListScript<ClassResource>(new List<ClassResource>(), character.ClassResources).Evaluate(command),
+                "statuseffect" => new ListScript<StatusEffect>(new List<StatusEffect>(), character.StatusEffects).Evaluate(command),
+                "all" => this.RunAllListScripts(command),
                 _ => new ConsoleResult($"Error: '{command}' does not contain a valid command.", ResultType.Error),
             };
         }
 
-        private static ConsoleResult RunAllListScripts(ConsoleCommand command)
+        private ConsoleResult RunAllListScripts(ConsoleCommand command)
         {
-            var scriptList = ListScripts.ToList();
+            var scriptList = this.Names.ToList();
             var result = true;
 
             scriptList.Remove("All");
             foreach (var script in scriptList)
             {
-                var consoleResult = RunListScript(new ConsoleCommand($"{script}.{command.Action}({command.Argument})"));
+                var consoleResult = this.RunListScript(new ConsoleCommand($"{script}.{command.Action}({command.Argument})"));
                 result &= consoleResult.Type == ResultType.Success || consoleResult.Type == ResultType.Warning;
             }
 

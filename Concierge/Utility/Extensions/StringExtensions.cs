@@ -109,18 +109,6 @@ namespace Concierge.Utility.Extensions
             return count;
         }
 
-        public static string ReplaceMultiple(this string str, string newCharacter, params string[] oldCharacters)
-        {
-            var cleanedString = str;
-
-            foreach (var character in oldCharacters)
-            {
-                cleanedString = cleanedString.Replace(character, newCharacter);
-            }
-
-            return cleanedString;
-        }
-
         public static string FormatFromEnum(this string str)
         {
             if (str.IsNullOrWhiteSpace())
@@ -165,11 +153,6 @@ namespace Concierge.Utility.Extensions
             }
 
             return true;
-        }
-
-        public static Brush ToBrush(this string colorName)
-        {
-            return new SolidColorBrush(colorName.ToColor());
         }
 
         public static Color ToColor(this string? colorName)
@@ -360,33 +343,14 @@ namespace Concierge.Utility.Extensions
             return newList.ToArray();
         }
 
-        public static string FirstLetterToUpperCase(this string str)
+        public static string ReplaceLast(this string str, string from, string to)
         {
-            if (str.IsNullOrEmpty())
-            {
-                return str;
-            }
+            var index = str.LastIndexOf(from);
+            var newStr = str.Remove(index, from.Length);
 
-            return char.ToUpper(str[0]) + str.Substring(1);
-        }
+            newStr = newStr.Insert(index, to);
 
-        public static string[] Split(this string str, char delimiter, Regex regex)
-        {
-            var list = new List<string>();
-            string curr;
-
-            foreach (Match match in regex.Matches(str))
-            {
-                curr = match.Value;
-                if (curr.Length == 0)
-                {
-                    list.Add(string.Empty);
-                }
-
-                list.Add(curr.TrimStart(delimiter));
-            }
-
-            return list.ToArray();
+            return newStr;
         }
     }
 }

@@ -11,12 +11,12 @@
     Loaded="ConciergeWindow_Loaded"
     Style="{StaticResource WindowFontStyle}"
     Title="Console Window"
-    Height="500"
+    Height="600"
     Width="1100">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="45"/>
-            <RowDefinition Height="455"/>
+            <RowDefinition Height="555"/>
         </Grid.RowDefinitions>
 
         <!--Header-->
@@ -45,9 +45,8 @@
         <Grid Grid.Row="1">
             <ScrollViewer
                 x:Name="ConsoleScroller"
-                Margin="10"
                 Background="#373737">
-                <StackPanel Margin="5">
+                <StackPanel Margin="10">
                     <ItemsControl
                         ItemsSource="{Binding ConsoleOutput, Mode=OneWay}">
                         <ItemsControl.ItemTemplate>

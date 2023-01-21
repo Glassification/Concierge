@@ -4,15 +4,26 @@
 
 namespace Concierge.Console.Services
 {
-    public class UnknownScriptService : IScriptService
+    using System;
+
+    public class UnknownScriptService : ScriptService
     {
         public UnknownScriptService()
         {
         }
 
-        public ConsoleResult Run(ConsoleCommand command)
+        public override string[] Names => throw new NotImplementedException();
+
+        public override string[] Actions => throw new NotImplementedException();
+
+        public override ConsoleResult Run(ConsoleCommand command)
         {
             return ConsoleResult.Default(command.Command);
+        }
+
+        public override string List()
+        {
+            return string.Empty;
         }
     }
 }

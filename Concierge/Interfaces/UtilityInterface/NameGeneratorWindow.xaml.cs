@@ -5,6 +5,7 @@
 namespace Concierge.Interfaces.UtilityInterface
 {
     using System;
+    using System.IO;
     using System.Linq;
     using System.Windows;
     using System.Windows.Input;
@@ -12,6 +13,8 @@ namespace Concierge.Interfaces.UtilityInterface
     using Concierge.Character.Enums;
     using Concierge.Interfaces.Components;
     using Concierge.Interfaces.Enums;
+    using Concierge.Persistence;
+    using Concierge.Persistence.ReadWriters;
     using Concierge.Tools;
     using Concierge.Tools.Enums;
     using Concierge.Tools.Generators;
@@ -23,6 +26,7 @@ namespace Concierge.Interfaces.UtilityInterface
     /// </summary>
     public partial class NameGeneratorWindow : ConciergeWindow
     {
+        private readonly string nameHistoryFile = Path.Combine(ConciergeFiles.HistoryDirectory, ConciergeFiles.NameGeneratorHistoryName);
         private readonly IGenerator nameGenerator;
 
         public NameGeneratorWindow()
@@ -33,7 +37,7 @@ namespace Concierge.Interfaces.UtilityInterface
             this.RaceComboBox.ItemsSource = Constants.Races;
             this.GenderComboBox.ItemsSource = Enum.GetValues(typeof(Gender)).Cast<Gender>();
             this.nameGenerator = new NameGenerator();
-            this.History = new History(string.Empty);
+            this.History = new History(HistoryReadWriter.Read(this.nameHistoryFile), string.Empty);
 
             this.SetGenderState(false);
             this.SetRaceState(false);
@@ -113,8 +117,11 @@ namespace Concierge.Interfaces.UtilityInterface
             var result = this.nameGenerator.Generate(settings);
             if (result is NameResult nameResult)
             {
-                this.NameTextBox.Text = nameResult.FullName;
-                this.History.Add(this.NameTextBox.Text);
+                var name = nameResult.FullName;
+
+                this.NameTextBox.Text = name;
+                HistoryReadWriter.Write(this.nameHistoryFile, name);
+                this.History.Add(name);
             }
         }
 

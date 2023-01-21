@@ -17,9 +17,9 @@ namespace Concierge.Console.Services
     using Concierge.Tools.Generators.Names;
     using Concierge.Utility;
 
-    public class ReadWriterScriptService : IScriptService
+    public class ReadWriterScriptService : ScriptService
     {
-        public static readonly string[] ReadWriteScripts = new string[]
+        private static readonly string[] names = new string[]
         {
             "Ability",
             "Ammunition",
@@ -47,11 +47,27 @@ namespace Concierge.Console.Services
             "Character",
         };
 
+        private static readonly string[] actions = new string[]
+        {
+            "Read",
+            "Write",
+        };
+
         public ReadWriterScriptService()
+            : this(true)
         {
         }
 
-        public ConsoleResult Run(ConsoleCommand command)
+        public ReadWriterScriptService(bool isFirst)
+        {
+            this.IsFirstList = isFirst;
+        }
+
+        public override string[] Names => names;
+
+        public override string[] Actions => actions;
+
+        public override ConsoleResult Run(ConsoleCommand command)
         {
             return command.Name.ToLower() switch
             {

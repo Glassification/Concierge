@@ -6,14 +6,13 @@ namespace Concierge.Console.Services
 {
     using System;
     using System.Linq;
-    using System.Text;
 
     using Concierge.Console.Enums;
     using Concierge.Console.Scripts;
 
-    public class WealthScriptService : IScriptService
+    public class WealthScriptService : ScriptService
     {
-        public static readonly string[] WealthScripts = new string[]
+        private static readonly string[] names = new string[]
         {
             "Copper",
             "Silver",
@@ -23,13 +22,30 @@ namespace Concierge.Console.Services
             "All",
         };
 
+        private static readonly string[] actions = new string[]
+        {
+            "Add",
+            "Subtract",
+            "Count",
+        };
+
         public WealthScriptService()
+            : this(true)
         {
         }
 
-        public ConsoleResult Run(ConsoleCommand command)
+        public WealthScriptService(bool isFirst)
         {
-            return command.Name.Equals("All", StringComparison.InvariantCultureIgnoreCase) ? RunAllWealthScripts(command) : RunWealthScript(command);
+            this.IsFirstList = isFirst;
+        }
+
+        public override string[] Names => names;
+
+        public override string[] Actions => actions;
+
+        public override ConsoleResult Run(ConsoleCommand command)
+        {
+            return command.Name.Equals("All", StringComparison.InvariantCultureIgnoreCase) ? this.RunAllWealthScripts(command) : RunWealthScript(command);
         }
 
         private static ConsoleResult RunWealthScript(ConsoleCommand command)
@@ -37,9 +53,9 @@ namespace Concierge.Console.Services
             return new WealthScript(Program.CcsFile.Character.Wealth).Evaluate(command);
         }
 
-        private static ConsoleResult RunAllWealthScripts(ConsoleCommand command)
+        private ConsoleResult RunAllWealthScripts(ConsoleCommand command)
         {
-            var scriptList = WealthScripts.ToList();
+            var scriptList = this.Names.ToList();
             var result = true;
 
             scriptList.Remove("All");

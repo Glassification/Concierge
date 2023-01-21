@@ -28,7 +28,7 @@ namespace Concierge.Interfaces.ToolsPageInterface
     /// </summary>
     public partial class ToolsPage : Page, IConciergePage
     {
-        private readonly string diceHistoryFile = Path.Combine(ConciergeFiles.AppDataDirectory, ConciergeFiles.DiceHistoryName);
+        private readonly string diceHistoryFile = Path.Combine(ConciergeFiles.HistoryDirectory, ConciergeFiles.DiceHistoryName);
 
         public ToolsPage()
         {

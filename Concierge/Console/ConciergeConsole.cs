@@ -20,7 +20,7 @@ namespace Concierge.Console
 
     public sealed class ConciergeConsole : INotifyPropertyChanged
     {
-        private readonly string consoleHistoryFile = Path.Combine(ConciergeFiles.AppDataDirectory, ConciergeFiles.ConsoleHistoryName);
+        private readonly string consoleHistoryFile = Path.Combine(ConciergeFiles.HistoryDirectory, ConciergeFiles.ConsoleHistoryName);
 
         private string consoleInput = Constants.ConsolePrompt;
         private ObservableCollection<ConsoleResult> consoleOutput = new ();
@@ -30,10 +30,14 @@ namespace Concierge.Console
             this.GenerateHeader();
 
             this.History = new History(HistoryReadWriter.Read(this.consoleHistoryFile), Constants.ConsolePrompt);
-            this.WriteOutput = false;
+            this.WriteOutput = true;
         }
 
+        public delegate void ExitedEventHandler(object sender, EventArgs e);
+
         public event PropertyChangedEventHandler? PropertyChanged;
+
+        public event ExitedEventHandler? Exited;
 
         public History History { get; private set; }
 
@@ -76,6 +80,7 @@ namespace Concierge.Console
             }
 
             this.ConsoleOutput.Add(new ConsoleResult(this.ConsoleInput, ResultType.Information));
+            this.WriteOutput = true;
 
             var command = new ConsoleCommand(this.ConsoleInput);
             Program.Logger.Info($"Executing command: {command}");
@@ -85,7 +90,7 @@ namespace Concierge.Console
                 return;
             }
 
-            var result = this.GetScriptService(command.Name).Run(command);
+            var result = this.GetScriptService(command).Run(command);
             Program.Logger.Info($"Command result: {result}");
 
             this.WriteResult(result);
@@ -96,25 +101,39 @@ namespace Concierge.Console
             return command.Strip(Constants.ConsolePrompt).IsNullOrWhiteSpace();
         }
 
-        private IScriptService GetScriptService(string name)
+        private ScriptService GetScriptService(ConsoleCommand command)
         {
-            if (ListScriptService.ListScripts.Contains(name, StringComparer.InvariantCultureIgnoreCase))
+            var name = command.Name;
+            var listScriptService = new ListScriptService();
+            var wealthScriptService = new WealthScriptService();
+            var readWriterScriptService = new ReadWriterScriptService();
+
+            if (listScriptService.Contains(name))
             {
-                return new ListScriptService();
+                return listScriptService;
             }
-            else if (WealthScriptService.WealthScripts.Contains(name, StringComparer.InvariantCultureIgnoreCase))
+            else if (wealthScriptService.Contains(name))
             {
-                return new WealthScriptService();
+                return wealthScriptService;
             }
-            else if (ReadWriterScriptService.ReadWriteScripts.Contains(name, StringComparer.InvariantCultureIgnoreCase))
+            else if (readWriterScriptService.Contains(name))
             {
-                return new ReadWriterScriptService();
+                return readWriterScriptService;
+            }
+            else if (name.Equals("List", StringComparison.InvariantCultureIgnoreCase))
+            {
+                return new ListCommandsScriptService();
             }
             else if (name.Equals("Clear", StringComparison.InvariantCultureIgnoreCase))
             {
                 this.ConsoleOutput.Clear();
                 this.GenerateHeader();
-                this.WriteOutput = true;
+                this.WriteOutput = false;
+            }
+            else if (name.Equals("Exit", StringComparison.InvariantCultureIgnoreCase))
+            {
+                this.WriteOutput = false;
+                this.Exited?.Invoke(command, new EventArgs());
             }
 
             return new UnknownScriptService();
@@ -133,7 +152,7 @@ namespace Concierge.Console
             this.History.Add(this.ConsoleInput);
             this.ConsoleInput = Constants.ConsolePrompt;
 
-            if (!this.WriteOutput)
+            if (this.WriteOutput)
             {
                 this.ConsoleOutput.Add(result);
             }
