@@ -9,11 +9,16 @@ namespace Concierge.Console.Services
 
     public class ListCommandsScriptService : ScriptService
     {
+        private static readonly string[] names = new string[]
+        {
+            "List",
+        };
+
         public ListCommandsScriptService()
         {
         }
 
-        public override string[] Names => throw new NotImplementedException();
+        public override string[] Names => names;
 
         public override string[] Actions => throw new NotImplementedException();
 

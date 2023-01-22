@@ -64,7 +64,7 @@ namespace Concierge.Console.Scripts
             }
 
             this.CharacterList.Add(item);
-            return new ConsoleResult($"Added '{command.Argument}' to {command.Argument}.", ResultType.Success);
+            return new ConsoleResult($"Added '{command.Argument}' to {command.Name}.", ResultType.Success);
         }
 
         private ConsoleResult RemoveItem(ConsoleCommand command)
