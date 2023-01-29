@@ -9,11 +9,10 @@ namespace Concierge.Console.Services
     using System.Text;
 
     using Concierge.Utility.Extensions;
-    using Concierge.Utility.Utilities;
 
     public abstract class ScriptService
     {
-        private const string Indent = "   ";
+        protected const string Indent = "   ";
 
         public abstract string[] Names { get; }
 

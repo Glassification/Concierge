@@ -5,7 +5,14 @@
 namespace Concierge.Console.Services
 {
     using System;
+    using System.IO;
     using System.Text;
+
+    using Concierge.Console.Enums;
+    using Concierge.Persistence;
+    using Concierge.Persistence.ReadWriters;
+    using Concierge.Utility;
+    using Concierge.Utility.Extensions;
 
     public class ListCommandsScriptService : ScriptService
     {
@@ -14,17 +21,41 @@ namespace Concierge.Console.Services
             "List",
         };
 
+        private static readonly string[] actions = new string[]
+        {
+            "Commands",
+            "History",
+            "Log",
+        };
+
+        private readonly string consoleHistoryFile = Path.Combine(ConciergeFiles.HistoryDirectory, ConciergeFiles.ConsoleHistoryName);
+
         public ListCommandsScriptService()
         {
         }
 
         public override string[] Names => names;
 
-        public override string[] Actions => throw new NotImplementedException();
+        public override string[] Actions => actions;
 
         public override ConsoleResult Run(ConsoleCommand command)
         {
-            return new ConsoleResult(this.List(), Enums.ResultType.Success);
+            if (command.Action.Equals("Commands", StringComparison.InvariantCultureIgnoreCase))
+            {
+                return new ConsoleResult(this.List(), ResultType.Success);
+            }
+
+            if (command.Action.Equals("History", StringComparison.InvariantCultureIgnoreCase))
+            {
+                return new ConsoleResult(this.History(), ResultType.Success);
+            }
+
+            if (command.Action.Equals("Log", StringComparison.InvariantCultureIgnoreCase))
+            {
+                return new ConsoleResult(Log(), ResultType.Success);
+            }
+
+            return new ConsoleResult($"Implementation for '{command.Action}' not found.", ResultType.Error);
         }
 
         public override string List()
@@ -34,6 +65,34 @@ namespace Concierge.Console.Services
             builder.Append(new ListScriptService().List());
             builder.Append(new WealthScriptService(false).List());
             builder.Append(new ReadWriterScriptService(false).List());
+            builder.Append(base.List());
+
+            return builder.ToString();
+        }
+
+        private static string Log()
+        {
+            var builder = new StringBuilder();
+
+            for (int i = 0; i < Program.Logger.SessionLog.Count; i++)
+            {
+                var indent = i > 0 ? Indent : string.Empty;
+                builder.AppendLine($"{indent}{Program.Logger.SessionLog[i]}");
+            }
+
+            return builder.ToString();
+        }
+
+        private string History()
+        {
+            var history = HistoryReadWriter.Read(this.consoleHistoryFile);
+            var builder = new StringBuilder();
+
+            for (int i = history.Count - 1; i >= 0; i--)
+            {
+                var indent = i < history.Count - 1 ? Indent : string.Empty;
+                builder.AppendLine($"{indent}{history[i].Strip(Constants.ConsolePrompt)}");
+            }
 
             return builder.ToString();
         }

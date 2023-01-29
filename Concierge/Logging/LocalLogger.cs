@@ -14,7 +14,7 @@ namespace Concierge.Logging
 
     public sealed class LocalLogger : Logger
     {
-        private const string DefaultLogFileName = @"Concierge.log";
+        public const string DefaultLogFileName = @"Concierge.log";
 
         public LocalLogger(bool isDebug = false)
         : this(string.Empty, string.Empty, isDebug)
@@ -50,6 +50,7 @@ namespace Concierge.Logging
             return $"{base.ToString()}, Chunk Size: {this.MaxLogFileSize}, Max chunk count: {this.MaxLogFiles}, Max log archive count: {this.MaxLogArchives}, Cleanup period: {this.MaxLogRetentionDays} days]";
         }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0063:Use simple 'using' statement", Justification = "Improve readability.")]
         protected override void CreateLog(string message)
         {
             if (!Directory.Exists(this.LogLocation))
@@ -60,8 +61,10 @@ namespace Concierge.Logging
             var logFilePath = Path.Combine(this.LogLocation, this.LogFileName);
             this.Rotate(logFilePath);
 
-            using var streamWriter = File.AppendText(logFilePath);
-            streamWriter.WriteLine(message);
+            using (var streamWriter = File.AppendText(logFilePath))
+            {
+                streamWriter.WriteLine(message);
+            }
         }
 
         private static string FormatLogFileName(string logName)

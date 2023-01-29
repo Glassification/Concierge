@@ -31,7 +31,10 @@ namespace Concierge.Logging
 
             this.IsDebug = isDebug;
             this.IsStarted = false;
+            this.SessionLog = new List<string>();
         }
+
+        public List<string> SessionLog { get; private set; }
 
         private bool IsDebug { get; init; }
 
@@ -178,6 +181,7 @@ namespace Concierge.Logging
             }
 
             var logRow = this.ComposeLogRow(message, logType);
+            this.SessionLog.Add(logRow);
 
             if (this.IsDebug)
             {
