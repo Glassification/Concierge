@@ -5,6 +5,7 @@
 namespace Concierge.Console
 {
     using System;
+    using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using System.ComponentModel;
     using System.IO;
@@ -91,10 +92,27 @@ namespace Concierge.Console
                 return;
             }
 
-            var result = this.GetScriptService(command).Run(command);
+            var scripts = this.GetScriptService(command);
+            var result = RunAllScripts(command, scripts);
             Program.Logger.Info($"Command result: {result}");
 
             this.WriteResult(result);
+        }
+
+        private static ConsoleResult RunAllScripts(ConsoleCommand command, List<ScriptService> services)
+        {
+            var result = ConsoleResult.Empty;
+
+            foreach (var service in services)
+            {
+                result = service.Run(command);
+                if (result.Type != ResultType.Error)
+                {
+                    break;
+                }
+            }
+
+            return result;
         }
 
         private static bool IsEmpty(string command)
@@ -102,40 +120,52 @@ namespace Concierge.Console
             return command.Strip(Constants.ConsolePrompt).IsNullOrWhiteSpace();
         }
 
-        private ScriptService GetScriptService(ConsoleCommand command)
+        private List<ScriptService> GetScriptService(ConsoleCommand command)
         {
-            var name = command.Name;
+            var matchingScripts = new List<ScriptService>();
+
             var listScriptService = new ListScriptService();
             var wealthScriptService = new WealthScriptService();
             var readWriterScriptService = new ReadWriterScriptService();
+            var listCommandScriptService = new ListCommandsScriptService();
 
-            if (listScriptService.Contains(name))
+            if (listScriptService.Contains(command.Name))
             {
-                return listScriptService;
+                matchingScripts.Add(listScriptService);
             }
-            else if (wealthScriptService.Contains(name))
+
+            if (wealthScriptService.Contains(command.Name))
             {
-                return wealthScriptService;
+                matchingScripts.Add(wealthScriptService);
             }
-            else if (readWriterScriptService.Contains(name))
+
+            if (readWriterScriptService.Contains(command.Name))
             {
-                return readWriterScriptService;
+                matchingScripts.Add(readWriterScriptService);
             }
-            else if (name.Equals("List", StringComparison.InvariantCultureIgnoreCase))
+
+            if (listCommandScriptService.Contains(command.Name))
             {
-                return new ListCommandsScriptService();
+                matchingScripts.Add(listCommandScriptService);
             }
-            else if (name.Equals("Clear", StringComparison.InvariantCultureIgnoreCase))
+
+            if (command.Name.Equals("Clear", StringComparison.InvariantCultureIgnoreCase))
             {
                 this.ClearConsoleOutput();
             }
-            else if (name.Equals("Exit", StringComparison.InvariantCultureIgnoreCase))
+
+            if (command.Name.Equals("Exit", StringComparison.InvariantCultureIgnoreCase))
             {
                 this.WriteOutput = false;
                 this.Exited?.Invoke(command, new EventArgs());
             }
 
-            return new UnknownScriptService();
+            if (matchingScripts.IsEmpty())
+            {
+                matchingScripts.Add(new UnknownScriptService());
+            }
+
+            return matchingScripts;
         }
 
         private void GenerateHeader()
