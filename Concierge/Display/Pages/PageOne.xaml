@@ -396,6 +396,43 @@
                     </Grid>
                 </Border>
             </Grid>
+
+            <Grid Grid.Column="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="25*"/>
+                    <RowDefinition Height="25*"/>
+                    <RowDefinition Height="25*"/>
+                    <RowDefinition Height="25*"/>
+                </Grid.RowDefinitions>
+
+                <Border
+                    Grid.Row="0"
+                    BorderBrush="#2B2B2B"
+                    BorderThickness="5"
+                    CornerRadius="10"
+                    Margin="5">
+                    <Grid Background="#2B2B2B">
+                    </Grid>
+                </Border>
+
+                <Border
+                    Grid.Row="1"
+                    BorderBrush="#2B2B2B"
+                    BorderThickness="5"
+                    CornerRadius="10"
+                    Margin="5">
+                    <Grid Background="#2B2B2B">
+                    </Grid>
+                </Border>
+
+                <controls:WealthControl
+                    Grid.Row="2"
+                    x:Name="WealthDisplay"/>
+
+                <controls:WeightControl
+                    Grid.Row="3"
+                    x:Name="WeightDisplay"/>
+            </Grid>
         </Grid>
     </Grid>
 </Page>

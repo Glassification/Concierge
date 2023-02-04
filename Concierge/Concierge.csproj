@@ -64,6 +64,12 @@
     <Compile Update="Display\Controls\SkillControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Display\Controls\WealthControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Display\Controls\WeightControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Properties\Resources.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>

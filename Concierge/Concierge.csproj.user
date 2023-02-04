@@ -131,6 +131,12 @@
     <Page Update="Display\Controls\SkillControl.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Display\Controls\WealthControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Display\Controls\WeightControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Display\Dictionaries\ButtonDictionary.xaml">
       <SubType>Designer</SubType>
     </Page>

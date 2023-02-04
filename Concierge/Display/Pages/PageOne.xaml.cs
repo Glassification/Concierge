@@ -7,6 +7,7 @@ namespace Concierge.Display.Pages
     using System.Windows;
     using System.Windows.Controls;
 
+    using Concierge.Configuration;
     using Concierge.Interfaces;
     using Concierge.Utility.Extensions;
     using Concierge.Utility.Utilities;
@@ -31,6 +32,8 @@ namespace Concierge.Display.Pages
             this.DrawAttributes();
             this.DrawSavingThrows();
             this.DrawSkills();
+            this.DrawWealth();
+            this.DrawWeight();
         }
 
         public void DrawDetails()
@@ -120,6 +123,17 @@ namespace Concierge.Display.Pages
             this.IntimidationSkill.SetStyle(skill.Intimidation.Proficiency, skill.Intimidation.Expertise, skill.Intimidation.Checks);
             this.PerformanceSkill.SetStyle(skill.Performance.Proficiency, skill.Performance.Expertise, skill.Performance.Checks);
             this.PersuasionSkill.SetStyle(skill.Persuasion.Proficiency, skill.Persuasion.Expertise, skill.Persuasion.Checks);
+        }
+
+        public void DrawWealth()
+        {
+            this.WealthDisplay.SetWealth(Program.CcsFile.Character.Wealth);
+        }
+
+        public void DrawWeight()
+        {
+            this.WeightDisplay.SetWeightValues(Program.CcsFile.Character, AppSettingsManager.UserSettings.UnitOfMeasurement);
+            this.WeightDisplay.FormatCarryWeight(Program.CcsFile.Character);
         }
 
         public void Edit(object itemToEdit)
