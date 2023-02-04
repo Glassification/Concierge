@@ -28,6 +28,11 @@ namespace Concierge.Commands
             this.newItem = newItem.DeepCopy();
         }
 
+        public EditCommand(T originalItem, T oldItem, Concierge.Display.Enums.ConciergePage conciergePage)
+            : this(originalItem, oldItem, ConciergePage.None)
+        {
+        }
+
         private T OriginalItem { get; set; }
 
         public override void Redo()

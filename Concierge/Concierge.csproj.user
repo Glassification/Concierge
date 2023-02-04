@@ -9,6 +9,12 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="Display\Controls\LabelControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Display\Pages\PageOne.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Interfaces\AttackDefensePageInterface\ModifyStatusEffectsWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -113,6 +119,48 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="Display\Controls\AttributeControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Display\Controls\LabelControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Display\Controls\SavingThrowControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Display\Controls\SkillControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Display\Dictionaries\ButtonDictionary.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Display\Dictionaries\CheckBoxDictionary.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Display\Dictionaries\ComboBoxDictionary.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Display\Dictionaries\DataGridDictionary.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Display\Dictionaries\FontDictionary.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Display\Dictionaries\RadioButtonDictionary.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Display\Dictionaries\ScrollbarDictionary.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Display\Dictionaries\ToolTipDictionary.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Display\Dictionaries\TreeViewDictionary.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Display\Pages\PageOne.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Interfaces\AbilitiesPageInterface\AbilitiesPage.xaml">
       <SubType>Designer</SubType>
     </Page>

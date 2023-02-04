@@ -60,6 +60,7 @@ namespace Concierge.Interfaces
         public readonly EquippedItemsPage EquippedItemsPage = new ();
         public readonly CompanionPage CompanionPage = new ();
         public readonly PlayerHandbookPage PlayerHandbookPage = new ();
+        public readonly Concierge.Display.Pages.PageOne TestPage = new ();
 
         private readonly FileAccessService fileAccessService = new ();
         private readonly MainWindowService mainWindowService;
@@ -460,7 +461,7 @@ namespace Concierge.Interfaces
             var items = this.ListViewMenu.Items;
             var service = this.mainWindowService;
 
-            items.Add(service.GenerateListViewItem(this.OverviewPage, "Overview", PackIconKind.Globe));
+            items.Add(service.GenerateListViewItem(this.TestPage, "Overview", PackIconKind.Globe));
             items.Add(service.GenerateListViewItem(this.DetailsPage, "Details", PackIconKind.Details));
             items.Add(service.GenerateListViewItem(this.AttackDefensePage, "Attacks", PackIconKind.SwordCross));
             items.Add(service.GenerateListViewItem(this.AbilitiesPage, "Abilities", PackIconKind.Brain));
