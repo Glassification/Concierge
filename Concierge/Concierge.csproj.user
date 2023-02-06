@@ -12,7 +12,19 @@
     <Compile Update="Display\Controls\LabelControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Display\Pages\PageOne.xaml.cs">
+    <Compile Update="Display\Pages\AbilityPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Display\Pages\AttacksPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Display\Pages\DetailsPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Display\Pages\OverviewPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Display\Pages\InventoryPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Interfaces\AttackDefensePageInterface\ModifyStatusEffectsWindow.xaml.cs">
@@ -119,13 +131,31 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="Display\Controls\AppearanceControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Display\Controls\ArmorControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Display\Controls\AttributeControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Display\Controls\HealthControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Display\Controls\HitDiceControl.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Display\Controls\LabelControl.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Display\Controls\PersonalityControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Display\Controls\SavingThrowControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Display\Controls\SearchFilterControl.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Display\Controls\SkillControl.xaml">
@@ -164,7 +194,19 @@
     <Page Update="Display\Dictionaries\TreeViewDictionary.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Display\Pages\PageOne.xaml">
+    <Page Update="Display\Pages\AbilityPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Display\Pages\AttacksPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Display\Pages\DetailsPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Display\Pages\OverviewPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Display\Pages\InventoryPage.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Interfaces\AbilitiesPageInterface\AbilitiesPage.xaml">
@@ -267,9 +309,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Interfaces\AttackDefensePageInterface\ModifyAttackWindow.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Interfaces\Dictionary\ToolTipDictionary.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Interfaces\EquippedItemsPageInterface\EquippedItemsPage.xaml">
@@ -381,30 +420,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Interfaces\ToolsPageInterface\ToolsPage.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Interfaces\Dictionary\ButtonDictionary.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Interfaces\Dictionary\CheckBoxDictionary.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Interfaces\Dictionary\ComboBoxDictionary.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Interfaces\Dictionary\DataGridDictionary.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Interfaces\Dictionary\RadioButtonDictionary.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Interfaces\Dictionary\ScrollbarDictionary.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Interfaces\Dictionary\TreeViewDictionary.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Interfaces\Dictionary\FontDictionary.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Interfaces\UtilityInterface\SplashScreenWindow.xaml">

@@ -72,6 +72,12 @@ namespace Concierge.Utility
 
             TreeViewBackground = ColorUtility.GenerateGradientBrush(ProficiencyLightBlue, Color.FromArgb(255, 51, 65, 92), new Point(0, 0), new Point(0, 1));
             TreeViewBackground.Freeze();
+
+            ControlForeGray = new SolidColorBrush(Color.FromArgb(255, 51, 51, 51));
+            ControlForeGray.Freeze();
+
+            ControlBackGray = new SolidColorBrush(Color.FromArgb(255, 43, 43, 43));
+            ControlBackGray.Freeze();
         }
 
         public static SolidColorBrush WindowBackground { get; }
@@ -113,6 +119,10 @@ namespace Concierge.Utility
         public static SolidColorBrush MediumCarryCapacity { get; }
 
         public static SolidColorBrush HeavyCarryCapacity { get; }
+
+        public static SolidColorBrush ControlForeGray { get; }
+
+        public static SolidColorBrush ControlBackGray { get; }
 
         private static Color FailedLightRed => Color.FromArgb(255, 245, 133, 143);
 

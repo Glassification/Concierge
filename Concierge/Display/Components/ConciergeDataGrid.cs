@@ -38,7 +38,6 @@ namespace Concierge.Display.Components
             this.BorderThickness = new Thickness(0);
             this.SelectionMode = DataGridSelectionMode.Single;
             this.SelectionUnit = DataGridSelectionUnit.FullRow;
-            this.Background = ConciergeColors.DataGridViewBackground;
 
             var scaling = ResolutionScaling.DpiFactor;
             this.LayoutTransform = new ScaleTransform(scaling, scaling, 0.5, 0.5);

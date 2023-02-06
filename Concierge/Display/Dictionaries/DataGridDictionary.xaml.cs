@@ -18,7 +18,7 @@ namespace Concierge.Display.Dictionaries
                 return;
             }
 
-            var page = dataGridRow.Tag as IConciergePage;
+            var page = dataGridRow.Tag as Interfaces.IConciergePage;
             if (page?.HasEditableDataGrid ?? false)
             {
                 ConciergeSound.UpdateValue();

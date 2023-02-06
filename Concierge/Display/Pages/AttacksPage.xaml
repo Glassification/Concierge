@@ -1,0 +1,462 @@
+﻿<Page
+    x:Class="Concierge.Display.Pages.AttacksPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:components="clr-namespace:Concierge.Display.Components"
+    xmlns:controls="clr-namespace:Concierge.Display.Controls"
+    xmlns:local="clr-namespace:Concierge.Display.Pages"
+    mc:Ignorable="d" 
+    d:DesignHeight="600"
+    d:DesignWidth="1020"
+    Title="AttacksPage"
+    Style="{StaticResource PageFontStyle}">
+
+    <Grid Background="#202020">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="32*"/>
+            <RowDefinition Height="68*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="80*"/>
+                <ColumnDefinition Width="20*"/>
+            </Grid.ColumnDefinitions>
+
+            <Border
+                Grid.Column="0"
+                BorderBrush="#2B2B2B"
+                BorderThickness="5"
+                CornerRadius="10"
+                Margin="5">
+                <Grid
+                    Grid.Row="1"
+                    Margin="-1"
+                    Background="#2B2B2B">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="18*"/>
+                        <RowDefinition Height="82*"/>
+                    </Grid.RowDefinitions>
+
+                    <Border
+                        Grid.Row="0"
+                        BorderBrush="#333333"
+                        BorderThickness="5"
+                        CornerRadius="10">
+                        <Grid
+                            Background="#333333"
+                            Margin="-1">
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                                <components:ConciergeTextBlock 
+                                    Text="Ammunition"
+                                    HorizontalAlignment="Left"
+                                    FontSize="30"
+                                    Margin="90, 0, 0, 0"/>
+                            </StackPanel>
+
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                <components:ConciergeDesignButton 
+                                    Style="{StaticResource ConciergeDesignButtonStyle}" 
+                                    x:Name="AmmoUpButton"
+                                    Width="60"
+                                    Foreground="SteelBlue"
+                                    Click="AmmoUpButton_Click"
+                                    ToolTip="Move Ammunition Up">
+                                    <materialDesign:PackIcon Kind="ArrowUpBox" Width="25" Height="25"/>
+                                </components:ConciergeDesignButton>
+                                <components:ConciergeDesignButton 
+                                    Style="{StaticResource ConciergeDesignButtonStyle}" 
+                                    x:Name="AmmonDownButton"
+                                    Width="60"
+                                    Foreground="SteelBlue"
+                                    Click="AmmonDownButton_Click"
+                                    ToolTip="Move Ammunition Down">
+                                    <materialDesign:PackIcon Kind="ArrowDownBox" Width="25" Height="25"/>
+                                </components:ConciergeDesignButton>
+                                <components:ConciergeDesignButton 
+                                    Style="{StaticResource ConciergeDesignButtonStyle}" 
+                                    x:Name="AmmoClearButton"
+                                    Width="60"
+                                    Foreground="Silver"
+                                    Click="AmmoClearButton_Click"
+                                    ToolTip="Clear Selected Ammunition">
+                                    <materialDesign:PackIcon Kind="Cancel" Width="25" Height="25"/>
+                                </components:ConciergeDesignButton>
+                                <Label
+                                    Height="50"
+                                    Width="60"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Background="Transparent"/>
+                                <components:ConciergeDesignButton 
+                                    Style="{StaticResource ConciergeDesignButtonStyle}"
+                                    x:Name="AmmoAddButton"
+                                    Width="60"
+                                    Foreground="PaleGreen"
+                                    Click="AmmoAddButton_Click"
+                                    ToolTip="Add New Ammunition">
+                                    <materialDesign:PackIcon Kind="AddBox" Width="25" Height="25"/>
+                                </components:ConciergeDesignButton>
+                                <components:ConciergeDesignButton 
+                                    Style="{StaticResource ConciergeDesignButtonStyle}" 
+                                    x:Name="AmmoEditButton"
+                                    Width="60"
+                                    Foreground="Khaki"
+                                    Click="AmmoEditButton_Click"
+                                    ToolTip="Edit Selected Ammunition">
+                                    <materialDesign:PackIcon Kind="TextBoxEdit" Width="25" Height="25"/>
+                                </components:ConciergeDesignButton>
+                                <components:ConciergeDesignButton 
+                                    Style="{StaticResource ConciergeDesignButtonStyle}" 
+                                    x:Name="AmmoUseButton"
+                                    Width="60"
+                                    Foreground="Coral"
+                                    Click="AmmoUseButton_Click"
+                                    ToolTip="Use Ammunition">
+                                    <materialDesign:PackIcon Kind="MinusBox" Width="25" Height="25"/>
+                                </components:ConciergeDesignButton>
+                                <components:ConciergeDesignButton 
+                                    Style="{StaticResource ConciergeDesignButtonStyle}" 
+                                    x:Name="AmmoDeleteButton"
+                                    Width="60"
+                                    Foreground="IndianRed"
+                                    Click="AmmoDeleteButton_Click"
+                                    ToolTip="Delete Selected Ammunition">
+                                    <materialDesign:PackIcon Kind="Delete" Width="25" Height="25"/>
+                                </components:ConciergeDesignButton>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+
+                    <!--Ammo-->
+                    <Grid
+                        Grid.Row="1"
+                        x:Name="AmmoGrid"
+                        Margin="5,0,5,0">
+                        <components:ConciergeDataGrid 
+                            x:Name="AmmoDataGrid"
+                            Style="{DynamicResource StandardDataGridStyle}"
+                            Sorted="AmmoDataGrid_Sorted">
+                            <DataGrid.Columns>
+                                <DataGridTemplateColumn
+                                Width="0.02*">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <materialDesign:PackIcon
+                                                Kind="{Binding IconKind}"
+                                                Foreground="{Binding IconColor}"
+                                                Height="auto"
+                                                Width="auto"
+                                                HorizontalAlignment="Center"
+                                                VerticalAlignment="Center"/>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTextColumn
+                                    Header="Ammo"
+                                    Binding="{Binding Name}"
+                                    Width="0.3*"
+                                    ElementStyle="{StaticResource StandardColumnElementStyle}"/>
+                                <DataGridTextColumn
+                                    Header="Quantity"
+                                    Binding="{Binding Quantity}"
+                                    Width="0.12*"
+                                    ElementStyle="{StaticResource StandardColumnElementStyle}"/>
+                                <DataGridTextColumn
+                                    Header="Used"
+                                    Binding="{Binding Used}"
+                                    Width="0.12*"
+                                    ElementStyle="{StaticResource StandardColumnElementStyle}"/>
+                                <DataGridTextColumn
+                                    Header="Damage Bonus"
+                                    Binding="{Binding Bonus}"
+                                    Width="0.22*"
+                                    ElementStyle="{StaticResource StandardColumnElementStyle}"/>
+                                <DataGridTextColumn
+                                    Header="Damage Type"
+                                    Binding="{Binding DamageType}"
+                                    Width="0.22*"
+                                    ElementStyle="{StaticResource StandardColumnElementStyle}"/>
+                            </DataGrid.Columns>
+                        </components:ConciergeDataGrid>
+                    </Grid>
+                </Grid>
+            </Border>
+
+            <Border
+                Grid.Column="1"
+                BorderBrush="#2B2B2B"
+                BorderThickness="5"
+                CornerRadius="10"
+                Margin="5">
+                <Grid
+                    Grid.Row="1"
+                    Margin="-1"
+                    Background="#2B2B2B">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="18*"/>
+                        <RowDefinition Height="82*"/>
+                    </Grid.RowDefinitions>
+
+                    <Border
+                        Grid.Row="0"
+                        BorderBrush="#333333"
+                        BorderThickness="5"
+                        CornerRadius="10">
+                        <Grid
+                            Background="#333333"
+                            Margin="-1">
+                            <components:ConciergeTextBlock
+                                Text="Effects"
+                                Foreground="White"
+                                FontSize="25"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Center"/>
+                            <StackPanel 
+                                Orientation="Horizontal"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Stretch">
+                                <components:ConciergeDesignButton Style="{StaticResource ConciergeDesignButtonStyle}" 
+                                    x:Name="ClearEffectsButton"
+                                    Width="35"
+                                    HorizontalAlignment="Left"
+                                    Foreground="Silver"
+                                    ToolTip="Clear Status Effects"
+                                    Click="ClearEffectsButton_Click">
+                                    <materialDesign:PackIcon Kind="Cancel" Width="25" Height="25"/>
+                                </components:ConciergeDesignButton>
+                                <components:ConciergeDesignButton 
+                                    Style="{StaticResource ConciergeDesignButtonStyle}" 
+                                    x:Name="DeleteEffectsButton"
+                                    Width="35"
+                                    HorizontalAlignment="Left"
+                                    Foreground="IndianRed"
+                                    ToolTip="Delete Status Effects"
+                                    Click="DeleteEffectsButton_Click">
+                                    <materialDesign:PackIcon Kind="Delete" Width="25" Height="25"/>
+                                </components:ConciergeDesignButton>
+                            </StackPanel>
+                            <StackPanel 
+                                Orientation="Horizontal"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Stretch">
+                                <components:ConciergeDesignButton 
+                                    Style="{StaticResource ConciergeDesignButtonStyle}" 
+                                    x:Name="AddEffectsButton"
+                                    Width="35"
+                                    HorizontalAlignment="Center"
+                                    Foreground="PaleGreen"
+                                    ToolTip="Add Status Effects"
+                                    Click="AddEffectsButton_Click">
+                                    <materialDesign:PackIcon Kind="AddBox" Width="25" Height="25"/>
+                                </components:ConciergeDesignButton>
+                                <components:ConciergeDesignButton 
+                                    Style="{StaticResource ConciergeDesignButtonStyle}" 
+                                    x:Name="EditEffectsButton"
+                                    Width="35"
+                                    HorizontalAlignment="Right"
+                                    Foreground="Khaki"
+                                    ToolTip="Edit Status Effects"
+                                    Click="EditEffectsButton_Click">
+                                    <materialDesign:PackIcon Kind="TextBoxEdit" Width="25" Height="25"/>
+                                </components:ConciergeDesignButton>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+
+                    <Grid
+                        Grid.Row="1"
+                        Margin="5,0,5,0">
+                        <components:ConciergeDataGrid 
+                            x:Name="StatusEffectsDataGrid"
+                            VerticalScrollBarVisibility="Hidden"
+                            Style="{DynamicResource StandardDataGridStyle}"
+                            Sorted="StatusEffectsDataGrid_Sorted"
+                            HeadersVisibility="None"
+                            Grid.ColumnSpan="2">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn
+                                    Width="100*"
+                                    Binding="{Binding Display}"
+                                    ElementStyle="{StaticResource StandardColumnElementStyle}"/>
+                            </DataGrid.Columns>
+                        </components:ConciergeDataGrid>
+                    </Grid>
+                </Grid>
+            </Border>
+        </Grid>
+
+        <Border
+            Grid.Row="1"
+            BorderBrush="#2B2B2B"
+            BorderThickness="5"
+            CornerRadius="10"
+            Margin="5">
+            <Grid
+                Margin="-1"
+                Background="#2B2B2B">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="8.47*"/>
+                    <RowDefinition Height="91.53*"/>
+                </Grid.RowDefinitions>
+
+                <Border
+                    Grid.Row="0"
+                    BorderBrush="#333333"
+                    BorderThickness="5"
+                    CornerRadius="10">
+                    <Grid
+                        Margin="-1"
+                        Background="#333333">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                            <components:ConciergeTextBlock 
+                                Text="Attacks"
+                                HorizontalAlignment="Left"
+                                FontSize="30"
+                                Margin="90, 0, 0, 0"/>
+                            <controls:SearchFilterControl
+                                x:Name="SearchFilter"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Width="300"
+                                Margin="90,5,0,5"
+                                FilterChanged="AttackDataGrid_Filtered"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                            <components:ConciergeDesignButton 
+                                Style="{StaticResource ConciergeDesignButtonStyle}" 
+                                x:Name="AttacksUpButton"
+                                Width="60"
+                                Foreground="SteelBlue"
+                                Click="AttacksUpButton_Click"
+                                ToolTip="Move Attack Up">
+                                <materialDesign:PackIcon Kind="ArrowUpBox" Width="25" Height="25"/>
+                            </components:ConciergeDesignButton>
+                            <components:ConciergeDesignButton 
+                                Style="{StaticResource ConciergeDesignButtonStyle}" 
+                                x:Name="AttacksDownButton"
+                                Width="60"
+                                Foreground="SteelBlue"
+                                Click="AttacksDownButton_Click"
+                                ToolTip="Move Attack Down">
+                                <materialDesign:PackIcon Kind="ArrowDownBox" Width="25" Height="25"/>
+                            </components:ConciergeDesignButton>
+                            <components:ConciergeDesignButton 
+                                Style="{StaticResource ConciergeDesignButtonStyle}" 
+                                x:Name="AttacksClearButton"
+                                Width="60"
+                                Foreground="Silver"
+                                Click="AttacksClearButton_Click"
+                                ToolTip="Clear Selected Attack">
+                                <materialDesign:PackIcon Kind="Cancel" Width="25" Height="25"/>
+                            </components:ConciergeDesignButton>
+                            <Label
+                                Height="50"
+                                Width="60"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Background="Transparent"/>
+                            <components:ConciergeDesignButton 
+                                Style="{StaticResource ConciergeDesignButtonStyle}"
+                                x:Name="AttacksAddButton"
+                                Width="60"
+                                Foreground="PaleGreen"
+                                Click="AttacksAddButton_Click"
+                                ToolTip="Add New Attack">
+                                <materialDesign:PackIcon Kind="AddBox" Width="25" Height="25"/>
+                            </components:ConciergeDesignButton>
+                            <components:ConciergeDesignButton 
+                                Style="{StaticResource ConciergeDesignButtonStyle}" 
+                                x:Name="AttacksEditButton"
+                                Width="60"
+                                Foreground="Khaki"
+                                Click="AttacksEditButton_Click"
+                                ToolTip="Edit Selected Attack">
+                                <materialDesign:PackIcon Kind="TextBoxEdit" Width="25" Height="25"/>
+                            </components:ConciergeDesignButton>
+                            <components:ConciergeDesignButton 
+                                Style="{StaticResource ConciergeDesignButtonStyle}" 
+                                x:Name="AttacksDeleteButton"
+                                Width="60"
+                                Foreground="IndianRed"
+                                Click="AttacksDeleteButton_Click"
+                                ToolTip="Delete Selected Attack">
+                                <materialDesign:PackIcon Kind="Delete" Width="25" Height="25"/>
+                            </components:ConciergeDesignButton>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+
+                <Grid
+                    Grid.Row="1"
+                    x:Name="WeaponGrid"
+                    Margin="5,0,5,0">
+                    <components:ConciergeDataGrid 
+                        x:Name="WeaponDataGrid"
+                        Style="{DynamicResource StandardDataGridStyle}"
+                        Sorted="WeaponDataGrid_Sorted">
+                        <DataGrid.Columns>
+                            <DataGridTemplateColumn Width="0.02*">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <materialDesign:PackIcon
+                                            Kind="{Binding IconKind}"
+                                            Foreground="{Binding IconColor}"
+                                            Height="auto"
+                                            Width="auto"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTextColumn
+                                Header="Attack"
+                                Binding="{Binding Name}"
+                                Width="0.19*"
+                                ElementStyle="{StaticResource StandardColumnElementStyle}"/>
+                            <DataGridTextColumn
+                                Header="Attack Bonus"
+                                Binding="{Binding Attack}"
+                                Width="0.1*"
+                                ElementStyle="{StaticResource StandardColumnElementStyle}"/>
+                            <DataGridTextColumn
+                                Header="Ability"
+                                Binding="{Binding Ability}"
+                                Width="0.1*"
+                                ElementStyle="{StaticResource StandardColumnElementStyle}"/>
+                            <DataGridTextColumn
+                                Header="Damage"
+                                Binding="{Binding Damage}"
+                                Width="0.1*"
+                                ElementStyle="{StaticResource StandardColumnElementStyle}"/>
+                            <DataGridTextColumn
+                                Header="Misc Bonus"
+                                Binding="{Binding Misc}"
+                                Width="0.1*"
+                                ElementStyle="{StaticResource StandardColumnElementStyle}"/>
+                            <DataGridTextColumn
+                                Header="Damage Type"
+                                Binding="{Binding DamageType}"
+                                Width="0.1*"
+                                ElementStyle="{StaticResource StandardColumnElementStyle}"/>
+                            <DataGridTextColumn
+                                Header="Range"
+                                Binding="{Binding Range}"
+                                Width="0.1*"
+                                ElementStyle="{StaticResource StandardColumnElementStyle}"/>
+                            <DataGridTextColumn
+                                Header="Description"
+                                Binding="{Binding Note}"
+                                Width="0.19*"
+                                ElementStyle="{StaticResource StandardColumnElementStyle}"/>
+                        </DataGrid.Columns>
+                    </components:ConciergeDataGrid>
+                </Grid>
+            </Grid>
+        </Border>
+    </Grid>
+</Page>

@@ -60,7 +60,11 @@ namespace Concierge.Interfaces
         public readonly EquippedItemsPage EquippedItemsPage = new ();
         public readonly CompanionPage CompanionPage = new ();
         public readonly PlayerHandbookPage PlayerHandbookPage = new ();
-        public readonly Concierge.Display.Pages.PageOne TestPage = new ();
+        public readonly Concierge.Display.Pages.OverviewPage PageOne = new ();
+        public readonly Concierge.Display.Pages.InventoryPage PageTwo = new ();
+        public readonly Concierge.Display.Pages.AbilityPage PageThree = new ();
+        public readonly Concierge.Display.Pages.AttacksPage PageFour = new ();
+        public readonly Concierge.Display.Pages.DetailsPage PageFive = new ();
 
         private readonly FileAccessService fileAccessService = new ();
         private readonly MainWindowService mainWindowService;
@@ -461,12 +465,12 @@ namespace Concierge.Interfaces
             var items = this.ListViewMenu.Items;
             var service = this.mainWindowService;
 
-            items.Add(service.GenerateListViewItem(this.TestPage, "Overview", PackIconKind.Globe));
-            items.Add(service.GenerateListViewItem(this.DetailsPage, "Details", PackIconKind.Details));
-            items.Add(service.GenerateListViewItem(this.AttackDefensePage, "Attacks", PackIconKind.SwordCross));
-            items.Add(service.GenerateListViewItem(this.AbilitiesPage, "Abilities", PackIconKind.Brain));
+            items.Add(service.GenerateListViewItem(this.PageOne, "Overview", PackIconKind.Globe));
+            items.Add(service.GenerateListViewItem(this.PageFive, "Details", PackIconKind.Details));
+            items.Add(service.GenerateListViewItem(this.PageFour, "Attacks", PackIconKind.SwordCross));
+            items.Add(service.GenerateListViewItem(this.PageThree, "Abilities", PackIconKind.Brain));
             items.Add(service.GenerateListViewItem(this.EquippedItemsPage, "Equipped Items", PackIconKind.HumanMaleHeight));
-            items.Add(service.GenerateListViewItem(this.InventoryPage, "Inventory", PackIconKind.Backpack));
+            items.Add(service.GenerateListViewItem(this.PageTwo, "Inventory", PackIconKind.Backpack));
             items.Add(service.GenerateListViewItem(this.SpellcastingPage, "Spellcasting", PackIconKind.Magic));
             items.Add(service.GenerateListViewItem(this.CompanionPage, "Companion", PackIconKind.AccountSupervisor));
             items.Add(service.GenerateListViewItem(this.ToolsPage, "Tools", PackIconKind.Tools));

@@ -9,11 +9,11 @@
         <Setter Property="Tag" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type Page}}}"/>
         <Style.Triggers>
             <Trigger Property="ItemsControl.AlternationIndex" Value="0">
-                <Setter Property="Background" Value="#FF333333"/>
+                <Setter Property="Background" Value="#FF3e3e42"/>
                 <Setter Property="Foreground" Value="White"/>
             </Trigger>
             <Trigger Property="ItemsControl.AlternationIndex" Value="1">
-                <Setter Property="Background" Value="#FF3e3e42"/>
+                <Setter Property="Background" Value="#2B2B2B"/>
                 <Setter Property="Foreground" Value="White"/>
             </Trigger>
             <Trigger Property="IsSelected" Value="True">
@@ -46,7 +46,7 @@
     <!--Standard-->
     <Style x:Key="StandardDataGridStyle" TargetType="DataGrid">
         <Setter Property="ColumnHeaderStyle" Value="{DynamicResource StandardDataGridHeaderStyle}"/>
-        <Setter Property="Background" Value="#ff1c1636" />
+        <Setter Property="Background" Value="#2B2B2B" />
         <Setter Property="AlternationCount" Value="2" />
         <Setter Property="ScrollViewer.IsEnabled" Value="True"/>
         <Setter Property="ScrollViewer.PanningDeceleration" Value="1000" />
@@ -55,7 +55,7 @@
     </Style>
     <Style x:Key="StandardDataGridHeaderStyle" TargetType="DataGridColumnHeader">
         <Setter Property="Height" Value="40"/>
-        <Setter Property="Background" Value="#001233" />
+        <Setter Property="Background" Value="#2B2B2B" />
         <Setter Property="Foreground" Value="White"/>
         <Setter Property="FontSize" Value="18" />
         <Setter Property="FontWeight" Value="Bold"/>

@@ -55,10 +55,28 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Display\Controls\AppearanceControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Display\Controls\ArmorControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Display\Controls\AttributeControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Display\Controls\HealthControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Display\Controls\HitDiceControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Display\Controls\PersonalityControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Display\Controls\SavingThrowControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Display\Controls\SearchFilterControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Display\Controls\SkillControl.xaml.cs">

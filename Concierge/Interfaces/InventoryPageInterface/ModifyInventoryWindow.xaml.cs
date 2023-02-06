@@ -166,12 +166,12 @@ namespace Concierge.Interfaces.InventoryPageInterface
             this.IgnoreWeightCheckBox.UpdatedValue();
         }
 
-        private void ClearFields()
+        private void ClearFields(string name = "")
         {
             this.AttunedCheckBox.UpdatingValue();
             this.IgnoreWeightCheckBox.UpdatingValue();
 
-            this.NameComboBox.Text = string.Empty;
+            this.NameComboBox.Text = name;
             this.AmountUpDown.Value = 1;
             this.WeightUpDown.Value = 0.0;
             this.IgnoreWeightCheckBox.IsChecked = false;
@@ -275,6 +275,10 @@ namespace Concierge.Interfaces.InventoryPageInterface
             if (this.NameComboBox.SelectedItem is Inventory inventory)
             {
                 this.FillFields(inventory);
+            }
+            else
+            {
+                this.ClearFields(this.NameComboBox.Text);
             }
         }
 

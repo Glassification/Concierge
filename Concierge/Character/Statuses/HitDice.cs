@@ -36,6 +36,35 @@ namespace Concierge.Character.Statuses
 
         public int SpentD12 { get; set; }
 
+        public int Increment(string name)
+        {
+            if (name.Contains("d6", System.StringComparison.InvariantCultureIgnoreCase) && this.SpentD6 < this.TotalD6)
+            {
+                this.SpentD6++;
+                return this.SpentD6;
+            }
+
+            if (name.Contains("d8", System.StringComparison.InvariantCultureIgnoreCase) && this.SpentD8 < this.TotalD8)
+            {
+                this.SpentD8++;
+                return this.SpentD8;
+            }
+
+            if (name.Contains("d10", System.StringComparison.InvariantCultureIgnoreCase) && this.SpentD10 < this.TotalD10)
+            {
+                this.SpentD10++;
+                return this.SpentD10;
+            }
+
+            if (name.Contains("d12", System.StringComparison.InvariantCultureIgnoreCase) && this.SpentD12 < this.TotalD12)
+            {
+                this.SpentD12++;
+                return this.SpentD12;
+            }
+
+            return 0;
+        }
+
         public HitDice DeepCopy()
         {
             return new HitDice()

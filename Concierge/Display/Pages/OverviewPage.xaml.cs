@@ -1,23 +1,28 @@
-﻿// <copyright file="PageOne.xaml.cs" company="Thomas Beckett">
+﻿// <copyright file="OverviewPage.xaml.cs" company="Thomas Beckett">
 // Copyright (c) Thomas Beckett. All rights reserved.
 // </copyright>
 
 namespace Concierge.Display.Pages
 {
+    using System;
     using System.Windows;
     using System.Windows.Controls;
 
+    using Concierge.Character.Statuses;
     using Concierge.Configuration;
     using Concierge.Interfaces;
+    using Concierge.Interfaces.Enums;
+    using Concierge.Interfaces.OverviewPageInterface;
+    using Concierge.Services;
     using Concierge.Utility.Extensions;
     using Concierge.Utility.Utilities;
 
     /// <summary>
-    /// Interaction logic for PageOne.xaml.
+    /// Interaction logic for OverviewPage.xaml.
     /// </summary>
-    public partial class PageOne : Page, Concierge.Interfaces.IConciergePage
+    public partial class OverviewPage : Page, Concierge.Interfaces.IConciergePage
     {
-        public PageOne()
+        public OverviewPage()
         {
             this.InitializeComponent();
         }
@@ -32,6 +37,9 @@ namespace Concierge.Display.Pages
             this.DrawAttributes();
             this.DrawSavingThrows();
             this.DrawSkills();
+            this.DrawHealth();
+            this.DrawArmorClass();
+            this.DrawHitDice();
             this.DrawWealth();
             this.DrawWeight();
         }
@@ -125,6 +133,25 @@ namespace Concierge.Display.Pages
             this.PersuasionSkill.SetStyle(skill.Persuasion.Proficiency, skill.Persuasion.Expertise, skill.Persuasion.Checks);
         }
 
+        public void DrawHealth()
+        {
+            var vitality = Program.CcsFile.Character.Vitality;
+
+            this.HealthDisplay.CurrentHealth = vitality.CurrentHealth;
+            this.HealthDisplay.TotalHealth = vitality.Health.MaxHealth;
+            this.HealthDisplay.SetHealthStyle(vitality);
+        }
+
+        public void DrawArmorClass()
+        {
+            this.ArmorClassField.Text = Program.CcsFile.Character.Armor.TotalArmorClass.ToString();
+        }
+
+        public void DrawHitDice()
+        {
+            this.HitDiceDisplay.DrawHitDice(Program.CcsFile.Character.Vitality.HitDice);
+        }
+
         public void DrawWealth()
         {
             this.WealthDisplay.SetWealth(Program.CcsFile.Character.Wealth);
@@ -138,6 +165,35 @@ namespace Concierge.Display.Pages
 
         public void Edit(object itemToEdit)
         {
+            throw new NotImplementedException();
+        }
+
+        private void DrawDeathSavingThrows()
+        {
+            var deathSaves = Program.CcsFile.Character.Vitality.DeathSavingThrows;
+            deathSaves.LazyInitialize();
+
+            this.HealthDisplay.SetDeathSaveStyle(deathSaves);
+        }
+
+        private void TakeDamageButton_Click(object sender, RoutedEventArgs e)
+        {
+            var result = ConciergeWindowService.ShowDamage<Vitality>(
+                Program.CcsFile.Character.Vitality,
+                typeof(ModifyHpWindow),
+                this.Window_ApplyChanges,
+                ConciergePage.Overview);
+            this.DrawHealth();
+        }
+
+        private void HealDamageButton_Click(object sender, RoutedEventArgs e)
+        {
+            ConciergeWindowService.ShowHeal<Vitality>(
+                Program.CcsFile.Character.Vitality,
+                typeof(ModifyHpWindow),
+                this.Window_ApplyChanges,
+                ConciergePage.Overview);
+            this.DrawHealth();
         }
 
         private void SavingThrow_ToggleClicked(object sender, RoutedEventArgs e)
@@ -149,6 +205,51 @@ namespace Concierge.Display.Pages
         {
             this.DrawDetails();
             this.DrawSkills();
+        }
+
+        private void HitDiceDisplay_ValueChanged(object sender, RoutedEventArgs e)
+        {
+            this.DrawHitDice();
+        }
+
+        private void HealthDisplay_SaveClicked(object sender, RoutedEventArgs e)
+        {
+            this.DrawDeathSavingThrows();
+        }
+
+        private void EditHealth_Click(object sender, RoutedEventArgs e)
+        {
+            ConciergeWindowService.ShowEdit<Health>(
+                Program.CcsFile.Character.Vitality.Health,
+                typeof(ModifyHealthWindow),
+                this.Window_ApplyChanges,
+                ConciergePage.Overview);
+            this.DrawHealth();
+        }
+
+        private void Window_ApplyChanges(object sender, EventArgs e)
+        {
+            switch (sender?.GetType()?.Name)
+            {
+                case nameof(ModifyAttributesWindow):
+                    this.DrawAttributes();
+                    break;
+                case nameof(ModifySensesWindow):
+                    this.DrawDetails();
+                    break;
+                case nameof(ModifyHealthWindow):
+                    this.DrawHealth();
+                    break;
+                case nameof(ModifyHitDiceWindow):
+                    this.DrawHitDice();
+                    break;
+                case nameof(ModifySkillCheckWindow):
+                    this.DrawSkills();
+                    break;
+                case nameof(ModifySavingThrowCheckWindow):
+                    this.DrawSavingThrows();
+                    break;
+            }
         }
     }
 }

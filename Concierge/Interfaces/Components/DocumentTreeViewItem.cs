@@ -21,7 +21,7 @@ namespace Concierge.Interfaces.Components
         {
             var resourceDictionary = new ResourceDictionary
             {
-                Source = new Uri("Interfaces/Dictionary/TreeViewDictionary.xaml", UriKind.RelativeOrAbsolute),
+                Source = new Uri("Display/Dictionaries/TreeViewDictionary.xaml", UriKind.RelativeOrAbsolute),
             };
 
             this.Document = document;

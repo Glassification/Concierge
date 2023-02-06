@@ -47,7 +47,7 @@ namespace Concierge.Display.Controls
             DependencyProperty.Register(
                 "FillBrush",
                 typeof(Brush),
-                typeof(PageOne));
+                typeof(OverviewPage));
 
         public SavingThrowControl()
         {

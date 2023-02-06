@@ -1,8 +1,4 @@
-﻿// <copyright file="InventoryPage.xaml.cs" company="Thomas Beckett">
-// Copyright (c) Thomas Beckett. All rights reserved.
-// </copyright>
-
-namespace Concierge.Interfaces.InventoryPageInterface
+﻿namespace Concierge.Display.Pages
 {
     using System;
     using System.Collections.Generic;
@@ -12,29 +8,26 @@ namespace Concierge.Interfaces.InventoryPageInterface
 
     using Concierge.Character.Items;
     using Concierge.Commands;
-    using Concierge.Interfaces;
-    using Concierge.Interfaces.Enums;
+    using Concierge.Display.Enums;
+    using Concierge.Interfaces.InventoryPageInterface;
     using Concierge.Services;
-    using Concierge.Utility;
     using Concierge.Utility.Extensions;
-    using Concierge.Utility.Utilities;
 
     /// <summary>
     /// Interaction logic for InventoryPage.xaml.
     /// </summary>
-    public partial class InventoryPage : Page, IConciergePage
+    public partial class InventoryPage : Page, Concierge.Interfaces.IConciergePage
     {
         public InventoryPage()
         {
             this.InitializeComponent();
-            this.DataContext = this;
         }
 
-        public static double InventoryHeight => SystemParameters.PrimaryScreenHeight - 100;
-
-        public ConciergePage ConciergePage => ConciergePage.Inventory;
-
         public bool HasEditableDataGrid => true;
+
+        public Interfaces.Enums.ConciergePage ConciergePage => Interfaces.Enums.ConciergePage.Inventory;
+
+        public ConciergePage ConciergePage2 => Display.Enums.ConciergePage.Inventory;
 
         private List<Inventory> DisplayList => Program.CcsFile.Character.Inventories.Filter(this.SearchFilter.FilterText).ToList();
 
@@ -56,12 +49,12 @@ namespace Concierge.Interfaces.InventoryPageInterface
                 false,
                 typeof(ModifyInventoryWindow),
                 this.Window_ApplyChanges,
-                ConciergePage.Inventory);
+                Interfaces.Enums.ConciergePage.Inventory);
             this.DrawInventory();
             this.InventoryDataGrid.SetSelectedIndex(index);
         }
 
-        private void DrawInventory()
+        public void DrawInventory()
         {
             var count = Program.CcsFile.Character.Inventories.Count;
 
@@ -84,9 +77,9 @@ namespace Concierge.Interfaces.InventoryPageInterface
             }
         }
 
-        private void ButtonUp_Click(object sender, RoutedEventArgs e)
+        private void UpButton_Click(object sender, RoutedEventArgs e)
         {
-            var index = this.InventoryDataGrid.NextItem(Program.CcsFile.Character.Inventories, 0, -1, this.ConciergePage);
+            var index = this.InventoryDataGrid.NextItem(Program.CcsFile.Character.Inventories, 0, -1, this.ConciergePage2);
 
             if (index != -1)
             {
@@ -95,9 +88,9 @@ namespace Concierge.Interfaces.InventoryPageInterface
             }
         }
 
-        private void ButtonDown_Click(object sender, RoutedEventArgs e)
+        private void DownButton_Click(object sender, RoutedEventArgs e)
         {
-            var index = this.InventoryDataGrid.NextItem(Program.CcsFile.Character.Inventories, Program.CcsFile.Character.Inventories.Count - 1, 1, this.ConciergePage);
+            var index = this.InventoryDataGrid.NextItem(Program.CcsFile.Character.Inventories, Program.CcsFile.Character.Inventories.Count - 1, 1, this.ConciergePage2);
 
             if (index != -1)
             {
@@ -106,18 +99,18 @@ namespace Concierge.Interfaces.InventoryPageInterface
             }
         }
 
-        private void ButtonClear_Click(object sender, RoutedEventArgs e)
+        private void ClearButton_Click(object sender, RoutedEventArgs e)
         {
             this.InventoryDataGrid.UnselectAll();
         }
 
-        private void ButtonAdd_Click(object sender, RoutedEventArgs e)
+        private void AddButton_Click(object sender, RoutedEventArgs e)
         {
             var added = ConciergeWindowService.ShowAdd<List<Inventory>>(
                 Program.CcsFile.Character.Inventories,
                 typeof(ModifyInventoryWindow),
                 this.Window_ApplyChanges,
-                ConciergePage.Inventory);
+                Interfaces.Enums.ConciergePage.Inventory);
             this.DrawInventory();
 
             if (added)
@@ -126,7 +119,7 @@ namespace Concierge.Interfaces.InventoryPageInterface
             }
         }
 
-        private void ButtonEdit_Click(object sender, RoutedEventArgs e)
+        private void EditButton_Click(object sender, RoutedEventArgs e)
         {
             if (this.InventoryDataGrid.SelectedItem != null)
             {
@@ -134,7 +127,7 @@ namespace Concierge.Interfaces.InventoryPageInterface
             }
         }
 
-        private void ButtonDelete_Click(object sender, RoutedEventArgs e)
+        private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
             if (this.InventoryDataGrid.SelectedItem != null)
             {
@@ -153,13 +146,13 @@ namespace Concierge.Interfaces.InventoryPageInterface
 
         private void InventoryDataGrid_Sorted(object sender, RoutedEventArgs e)
         {
-            DisplayUtility.SortListFromDataGrid(this.InventoryDataGrid, Program.CcsFile.Character.Inventories, this.ConciergePage);
+            //DisplayUtility.SortListFromDataGrid(this.InventoryDataGrid, Program.CcsFile.Character.Inventories, this.ConciergePage);
         }
 
         private void InventoryDataGrid_Filtered(object sender, RoutedEventArgs e)
         {
-            this.SearchFilter.SetButtonEnableState(this.ButtonUp);
-            this.SearchFilter.SetButtonEnableState(this.ButtonDown);
+            this.SearchFilter.SetButtonEnableState(this.UpButton);
+            this.SearchFilter.SetButtonEnableState(this.DownButton);
 
             this.DrawInventory();
         }
