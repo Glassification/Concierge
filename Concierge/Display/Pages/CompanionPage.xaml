@@ -27,6 +27,294 @@
                 <ColumnDefinition Width="40*"/>
             </Grid.ColumnDefinitions>
 
+            <Border
+                Margin="5"
+                Grid.Column="0"
+                BorderBrush="#2B2B2B"
+                BorderThickness="5"
+                CornerRadius="10">
+                <Grid
+                    Background="#2B2B2B"
+                    Margin="-1">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="25*"/>
+                        <RowDefinition Height="75*"/>
+                    </Grid.RowDefinitions>
+
+                    <Border
+                        Margin="5"
+                        Grid.Row="0"
+                        BorderBrush="#333333"
+                        BorderThickness="5"
+                        CornerRadius="10">
+                        <Grid
+                            Margin="-1"
+                            Background="#333333">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="30*"/>
+                                <ColumnDefinition Width="70*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <components:ConciergeTextBlock 
+                                Grid.Column="0"
+                                Text="Name"
+                                FontSize="30"
+                                TextWrapping="Wrap"/>
+                            <Line
+                                Grid.Column="0"
+                                Stroke="#227EA9"
+                                StrokeThickness="2"
+                                Stretch="Uniform"
+                                X1="0" X2="0" Y1="0" Y2="1"
+                                HorizontalAlignment="Right"
+                                StrokeStartLineCap="Round"
+                                StrokeEndLineCap="Round"/>
+                            <components:ConciergeTextBlock 
+                                Grid.Column="1"
+                                x:Name="NameField"
+                                Text="0"
+                                TextWrapping="Wrap"
+                                FontSize="30"/>
+                        </Grid>
+                    </Border>
+
+                    <Grid Grid.Row="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="33*"/>
+                            <RowDefinition Height="33*"/>
+                            <RowDefinition Height="33*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="50*"/>
+                            <ColumnDefinition Width="50*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Border
+                            Margin="5"
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            BorderBrush="#333333"
+                            BorderThickness="5"
+                            CornerRadius="10">
+                            <Grid
+                                Background="#333333"
+                                Margin="-1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="40*"/>
+                                    <ColumnDefinition Width="60*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <components:ConciergeTextBlock 
+                                    Grid.Column="0"
+                                    Text="Initiative"
+                                    FontSize="20"
+                                    TextWrapping="Wrap"/>
+                                <Line
+                                    Grid.Column="0"
+                                    Stroke="#227EA9"
+                                    StrokeThickness="2"
+                                    Stretch="Uniform"
+                                    X1="0" X2="0" Y1="0" Y2="1"
+                                    HorizontalAlignment="Right"
+                                    StrokeStartLineCap="Round"
+                                    StrokeEndLineCap="Round"/>
+                                <components:ConciergeTextBlock 
+                                    Grid.Column="1"
+                                    x:Name="InitiativeField"
+                                    Text="0"
+                                    FontSize="30"/>
+                            </Grid>
+                        </Border>
+
+                        <Border
+                            Margin="5"
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            BorderBrush="#333333"
+                            BorderThickness="5"
+                            CornerRadius="10">
+                            <Grid
+                                Background="#333333"
+                                Margin="-1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="40*"/>
+                                    <ColumnDefinition Width="60*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <components:ConciergeTextBlock 
+                                    Grid.Column="0"
+                                    Text="Perception"
+                                    FontSize="20"
+                                    TextWrapping="Wrap"/>
+                                <Line
+                                    Grid.Column="0"
+                                    Stroke="#227EA9"
+                                    StrokeThickness="2"
+                                    Stretch="Uniform"
+                                    X1="0" X2="0" Y1="0" Y2="1"
+                                    HorizontalAlignment="Right"
+                                    StrokeStartLineCap="Round"
+                                    StrokeEndLineCap="Round"/>
+                                <components:ConciergeTextBlock 
+                                    Grid.Column="1"
+                                    x:Name="PerceptionField"
+                                    Text="0"
+                                    FontSize="30"/>
+                            </Grid>
+                        </Border>
+
+                        <Border
+                            Margin="5"
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            BorderBrush="#333333"
+                            BorderThickness="5"
+                            CornerRadius="10">
+                            <Grid
+                                Background="#333333"
+                                Margin="-1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="40*"/>
+                                    <ColumnDefinition Width="60*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <components:ConciergeTextBlock 
+                                    Grid.Column="0"
+                                    Text="Vision"
+                                    FontSize="20"
+                                    TextWrapping="Wrap"/>
+                                <Line
+                                    Grid.Column="0"
+                                    Stroke="#227EA9"
+                                    StrokeThickness="2"
+                                    Stretch="Uniform"
+                                    X1="0" X2="0" Y1="0" Y2="1"
+                                    HorizontalAlignment="Right"
+                                    StrokeStartLineCap="Round"
+                                    StrokeEndLineCap="Round"/>
+                                <components:ConciergeTextBlock 
+                                    Grid.Column="1"
+                                    x:Name="VisionField"
+                                    Text="0"
+                                    FontSize="30"/>
+                            </Grid>
+                        </Border>
+
+                        <Border
+                            Margin="5"
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            BorderBrush="#333333"
+                            BorderThickness="5"
+                            CornerRadius="10">
+                            <Grid
+                                Background="#333333"
+                                Margin="-1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="40*"/>
+                                    <ColumnDefinition Width="60*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <components:ConciergeTextBlock 
+                                    Grid.Column="0"
+                                    Text="Movement"
+                                    FontSize="20"
+                                    TextWrapping="Wrap"/>
+                                <Line
+                                    Grid.Column="0"
+                                    Stroke="#227EA9"
+                                    StrokeThickness="2"
+                                    Stretch="Uniform"
+                                    X1="0" X2="0" Y1="0" Y2="1"
+                                    HorizontalAlignment="Right"
+                                    StrokeStartLineCap="Round"
+                                    StrokeEndLineCap="Round"/>
+                                <components:ConciergeTextBlock 
+                                    Grid.Column="1"
+                                    x:Name="MovementField"
+                                    Text="0"
+                                    FontSize="30"/>
+                            </Grid>
+                        </Border>
+
+                        <Border
+                            Margin="5"
+                            Grid.Row="2"
+                            Grid.Column="0"
+                            BorderBrush="#333333"
+                            BorderThickness="5"
+                            CornerRadius="10">
+                            <Grid
+                                Background="#333333"
+                                Margin="-1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="40*"/>
+                                    <ColumnDefinition Width="60*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <components:ConciergeTextBlock 
+                                    Grid.Column="0"
+                                    Text="Armor Class"
+                                    FontSize="20"
+                                    TextWrapping="Wrap"/>
+                                <Line
+                                    Grid.Column="0"
+                                    Stroke="#227EA9"
+                                    StrokeThickness="2"
+                                    Stretch="Uniform"
+                                    X1="0" X2="0" Y1="0" Y2="1"
+                                    HorizontalAlignment="Right"
+                                    StrokeStartLineCap="Round"
+                                    StrokeEndLineCap="Round"/>
+                                <components:ConciergeTextBlock 
+                                    Grid.Column="1"
+                                    x:Name="ArmorClassField"
+                                    Text="0"
+                                    FontSize="30"/>
+                            </Grid>
+                        </Border>
+
+                        <Border
+                            Margin="5"
+                            Grid.Row="2"
+                            Grid.Column="1"
+                            BorderBrush="#333333"
+                            BorderThickness="5"
+                            CornerRadius="10">
+                            <Grid
+                                Background="#333333"
+                                Margin="-1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="40*"/>
+                                    <ColumnDefinition Width="60*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <components:ConciergeTextBlock 
+                                    Grid.Column="0"
+                                    Text="Creature Size"
+                                    FontSize="20"
+                                    TextWrapping="Wrap"/>
+                                <Line
+                                    Grid.Column="0"
+                                    Stroke="#227EA9"
+                                    StrokeThickness="2"
+                                    Stretch="Uniform"
+                                    X1="0" X2="0" Y1="0" Y2="1"
+                                    HorizontalAlignment="Right"
+                                    StrokeStartLineCap="Round"
+                                    StrokeEndLineCap="Round"/>
+                                <components:ConciergeTextBlock 
+                                    Grid.Column="1"
+                                    x:Name="CreatureSizeField"
+                                    Text="0"
+                                    FontSize="30"/>
+                            </Grid>
+                        </Border>
+                    </Grid>
+                </Grid>
+            </Border>
+
             <Grid Grid.Column="1">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="33*"/>
@@ -98,6 +386,15 @@
                         <Grid
                             Background="#2B2B2B"
                             Margin="-1">
+                            <Image x:Name="CompanionImage"/>
+                            <materialDesign:PackIcon
+                                x:Name="DefaultCompanionImage"
+                                Kind="Bird"
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Stretch"
+                                Height="auto"
+                                Width="auto"
+                                Foreground="#33415C"/>
                         </Grid>
                     </Border>
                 </Grid>

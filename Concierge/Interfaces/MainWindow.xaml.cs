@@ -68,6 +68,7 @@ namespace Concierge.Interfaces
         public readonly Concierge.Display.Pages.SpellcastingPage PageSix = new ();
         public readonly Concierge.Display.Pages.EquipmentPage PageSeven = new ();
         public readonly Concierge.Display.Pages.CompanionPage PageEight = new ();
+        public readonly Concierge.Display.Pages.ToolsPage PageNine = new ();
 
         private readonly FileAccessService fileAccessService = new ();
         private readonly MainWindowService mainWindowService;
@@ -476,7 +477,7 @@ namespace Concierge.Interfaces
             items.Add(service.GenerateListViewItem(this.PageTwo, "Inventory", PackIconKind.Backpack));
             items.Add(service.GenerateListViewItem(this.PageSix, "Spellcasting", PackIconKind.Magic));
             items.Add(service.GenerateListViewItem(this.PageEight, "Companion", PackIconKind.AccountSupervisor));
-            items.Add(service.GenerateListViewItem(this.ToolsPage, "Tools", PackIconKind.Tools));
+            items.Add(service.GenerateListViewItem(this.PageNine, "Tools", PackIconKind.Tools));
             items.Add(service.GenerateListViewItem(this.NotesPage, "Notes", PackIconKind.Pen));
             items.Add(service.GenerateListViewItem(this.PlayerHandbookPage, "Players Handbook", PackIconKind.BookOpen));
         }

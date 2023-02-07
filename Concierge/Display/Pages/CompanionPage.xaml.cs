@@ -10,19 +10,14 @@ namespace Concierge.Display.Pages
     using System.Windows;
     using System.Windows.Controls;
 
-    using Concierge.Character.Characteristics;
-    using Concierge.Character.Enums;
     using Concierge.Character.Items;
     using Concierge.Character.Statuses;
     using Concierge.Commands;
-    using Concierge.Display.Components;
     using Concierge.Interfaces.AttackDefensePageInterface;
     using Concierge.Interfaces.CompanionPageInterface;
     using Concierge.Interfaces.EquippedItemsPageInterface;
-    using Concierge.Interfaces.InventoryPageInterface;
     using Concierge.Interfaces.OverviewPageInterface;
     using Concierge.Services;
-    using Concierge.Utility;
     using Concierge.Utility.Extensions;
     using Concierge.Utility.Utilities;
 
@@ -48,11 +43,11 @@ namespace Concierge.Display.Pages
         public void Draw()
         {
             this.DrawAttributes();
-            //this.DrawDetails();
+            this.DrawDetails();
             this.DrawHealth();
             this.DrawHitDice();
             this.DrawAttacks();
-            //this.LoadImage();
+            this.DrawImage();
         }
 
         public void Edit(object itemToEdit)
@@ -70,6 +65,19 @@ namespace Concierge.Display.Pages
                 Interfaces.Enums.ConciergePage.Companion);
             this.DrawAttacks();
             this.WeaponDataGrid.SetSelectedIndex(index);
+        }
+
+        public void DrawDetails()
+        {
+            var properties = Program.CcsFile.Character.Companion.Properties;
+
+            this.NameField.Text = properties.Name;
+            this.PerceptionField.Text = properties.Perception.ToString();
+            this.VisionField.Text = properties.Vision.ToString();
+            this.MovementField.Text = properties.Movement.ToString();
+            this.ArmorClassField.Text = properties.ArmorClass.ToString();
+            this.CreatureSizeField.Text = properties.CreatureSize.ToString();
+            this.InitiativeField.Text = properties.Initiative.ToString();
         }
 
         public void DrawAttributes()
@@ -98,6 +106,14 @@ namespace Concierge.Display.Pages
             this.HealthDisplay.CurrentHealth = vitality.CurrentHealth;
             this.HealthDisplay.TotalHealth = vitality.Health.MaxHealth;
             this.HealthDisplay.SetHealthStyle(vitality);
+        }
+
+        public void DrawImage()
+        {
+            this.CompanionImage.Source = Program.CcsFile.Character.Companion.CompanionImage.ToImage();
+            this.CompanionImage.Stretch = Program.CcsFile.Character.Companion.CompanionImage.Stretch;
+
+            this.DefaultCompanionImage.Visibility = this.CompanionImage.Source == null ? Visibility.Visible : Visibility.Hidden;
         }
 
         public void DrawHitDice()
@@ -223,10 +239,10 @@ namespace Concierge.Display.Pages
                     this.DrawAttacks();
                     break;
                 case nameof(ModifyCompanionPropertiesWindow):
-                    //this.DrawDetails();
+                    this.DrawDetails();
                     break;
                 case nameof(ModifyCharacterImageWindow):
-                    //this.LoadImage();
+                    this.DrawImage();
                     break;
             }
         }

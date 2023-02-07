@@ -36,6 +36,9 @@
     <Compile Update="Display\Pages\SpellcastingPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Display\Pages\ToolsPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Interfaces\AttackDefensePageInterface\ModifyStatusEffectsWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -149,10 +152,22 @@
     <Page Update="Display\Controls\AttributeControl.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Display\Controls\DiceRollControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Display\Controls\DivideLootInputControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Display\Controls\DoubleUpDownControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Display\Controls\HealthControl.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Display\Controls\HitDiceControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Display\Controls\IntegerUpDownControl.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Display\Controls\LabelControl.xaml">
@@ -228,6 +243,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Display\Pages\SpellcastingPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Display\Pages\ToolsPage.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Interfaces\AbilitiesPageInterface\AbilitiesPage.xaml">

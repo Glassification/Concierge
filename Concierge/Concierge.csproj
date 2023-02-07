@@ -64,10 +64,22 @@
     <Compile Update="Display\Controls\AttributeControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Display\Controls\DiceRollControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Display\Controls\DivideLootInputControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Display\Controls\DoubleUpDownControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Display\Controls\HealthControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Display\Controls\HitDiceControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Display\Controls\IntegerUpDownControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Display\Controls\PersonalityControl.xaml.cs">
