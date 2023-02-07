@@ -72,7 +72,6 @@ namespace Concierge.Display.Controls
         public HealthControl()
         {
             this.InitializeComponent();
-            this.DeathScreenShown = false;
         }
 
         public event RoutedEventHandler HealClicked
@@ -133,14 +132,13 @@ namespace Concierge.Display.Controls
             set { this.SetValue(DeathSavesEnabledProperty, value); }
         }
 
-        private bool DeathScreenShown { get; set; }
-
         public void InitializeDisplay()
         {
             if (!this.DeathSavesEnabled)
             {
                 this.MainHealthGrid.RowDefinitions.RemoveAt(2);
                 this.DeathSaveGrid.Visibility = Visibility.Collapsed;
+                this.DeathSaveBorder.Visibility = Visibility.Collapsed;
             }
         }
 
@@ -224,7 +222,6 @@ namespace Concierge.Display.Controls
             Program.UndoRedoService.AddCommand(new EditCommand<DeathSavingThrows>(Program.CcsFile.Character.Vitality.DeathSavingThrows, oldItem, ConciergePage.Overview));
 
             this.RaiseEvent(new RoutedEventArgs(SaveClickedEvent));
-            this.DeathScreenShown = false;
 
             Program.Modify();
         }

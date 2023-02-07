@@ -18,7 +18,13 @@
     <Compile Update="Display\Pages\AttacksPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Display\Pages\CompanionPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Display\Pages\DetailsPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Display\Pages\EquipmentPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Display\Pages\OverviewPage.xaml.cs">
@@ -206,7 +212,13 @@
     <Page Update="Display\Pages\AttacksPage.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Display\Pages\CompanionPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Display\Pages\DetailsPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Display\Pages\EquipmentPage.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Display\Pages\OverviewPage.xaml">

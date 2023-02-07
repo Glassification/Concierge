@@ -66,6 +66,8 @@ namespace Concierge.Interfaces
         public readonly Concierge.Display.Pages.AttacksPage PageFour = new ();
         public readonly Concierge.Display.Pages.DetailsPage PageFive = new ();
         public readonly Concierge.Display.Pages.SpellcastingPage PageSix = new ();
+        public readonly Concierge.Display.Pages.EquipmentPage PageSeven = new ();
+        public readonly Concierge.Display.Pages.CompanionPage PageEight = new ();
 
         private readonly FileAccessService fileAccessService = new ();
         private readonly MainWindowService mainWindowService;
@@ -470,10 +472,10 @@ namespace Concierge.Interfaces
             items.Add(service.GenerateListViewItem(this.PageFive, "Details", PackIconKind.Details));
             items.Add(service.GenerateListViewItem(this.PageFour, "Attacks", PackIconKind.SwordCross));
             items.Add(service.GenerateListViewItem(this.PageThree, "Abilities", PackIconKind.Brain));
-            items.Add(service.GenerateListViewItem(this.EquippedItemsPage, "Equipped Items", PackIconKind.HumanMaleHeight));
+            items.Add(service.GenerateListViewItem(this.PageSeven, "Equipped Items", PackIconKind.HumanMaleHeight));
             items.Add(service.GenerateListViewItem(this.PageTwo, "Inventory", PackIconKind.Backpack));
             items.Add(service.GenerateListViewItem(this.PageSix, "Spellcasting", PackIconKind.Magic));
-            items.Add(service.GenerateListViewItem(this.CompanionPage, "Companion", PackIconKind.AccountSupervisor));
+            items.Add(service.GenerateListViewItem(this.PageEight, "Companion", PackIconKind.AccountSupervisor));
             items.Add(service.GenerateListViewItem(this.ToolsPage, "Tools", PackIconKind.Tools));
             items.Add(service.GenerateListViewItem(this.NotesPage, "Notes", PackIconKind.Pen));
             items.Add(service.GenerateListViewItem(this.PlayerHandbookPage, "Players Handbook", PackIconKind.BookOpen));

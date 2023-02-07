@@ -10,7 +10,7 @@ namespace Concierge.Display.Enums
         Details,
         Attacks,
         Abilities,
-        EquippedItems,
+        Equipment,
         Inventory,
         Spellcasting,
         Companion,

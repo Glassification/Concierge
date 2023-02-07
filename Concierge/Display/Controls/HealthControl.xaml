@@ -95,6 +95,7 @@
                 </Grid>
 
                 <Border
+                    x:Name="DeathSaveBorder"
                     Margin="5"
                     Grid.Row="2"
                     BorderBrush="#FF333333"
