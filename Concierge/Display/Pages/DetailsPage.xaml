@@ -12,6 +12,7 @@
     d:DesignHeight="600"
     d:DesignWidth="1020"
     Title="DetailsPage"
+    
     Style="{StaticResource PageFontStyle}">
 
     <Grid Background="#202020">
@@ -57,6 +58,170 @@
                         Grid.Row="1"
                         Margin="-1"
                         Background="#2B2B2B">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="20*"/>
+                            <RowDefinition Height="80*"/>
+                        </Grid.RowDefinitions>
+
+                        <Border
+                            Grid.Row="0"
+                            BorderBrush="#333333"
+                            BorderThickness="5"
+                            CornerRadius="10">
+                            <Grid
+                                Background="#333333"
+                                Margin="-1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="10*"/>
+                                    <ColumnDefinition Width="90*"/>
+                                </Grid.ColumnDefinitions>
+                                
+                                <components:ConciergeTextBlock 
+                                    Grid.Column="1"
+                                    Margin="-150,0,0,0"
+                                    Text="Proficiencies"
+                                    Foreground="White"
+                                    FontSize="24"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"/>
+                                <Border
+                                    Grid.Column="0"
+                                    BorderBrush="#33415C"
+                                    BorderThickness="5"
+                                    VerticalAlignment="Center"
+                                    CornerRadius="10">
+                                    <Grid
+                                        Background="#33415C"
+                                        Margin="-1">
+                                        <components:ConciergeTextBlock 
+                                            x:Name="ProficiencyBonusField"
+                                            Foreground="White"
+                                            FontSize="24"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"/>
+                                    </Grid>
+                                </Border>
+                                <StackPanel
+                                    Orientation="Horizontal"
+                                    HorizontalAlignment="Right"
+                                    Grid.Column="1">
+                                    <components:ConciergeDesignButton 
+                                        Style="{StaticResource ConciergeDesignButtonStyle}" 
+                                        x:Name="ClearProficencyButton"
+                                        Width="60"
+                                        HorizontalAlignment="Center"
+                                        Foreground="Silver"
+                                        Click="ClearProficencyButton_Click"
+                                        ToolTip="Clear Selected Item">
+                                        <materialDesign:PackIcon Kind="Cancel" Width="25" Height="25"/>
+                                    </components:ConciergeDesignButton>
+                                    <components:ConciergeDesignButton 
+                                        Style="{StaticResource ConciergeDesignButtonStyle}" 
+                                        x:Name="AddProficencyButton"
+                                        Width="60"
+                                        HorizontalAlignment="Center"
+                                        Foreground="PaleGreen"
+                                        Click="AddProficencyButton_Click"
+                                        ToolTip="Add New Item">
+                                        <materialDesign:PackIcon Kind="AddBox" Width="25" Height="25"/>
+                                    </components:ConciergeDesignButton>
+                                    <components:ConciergeDesignButton 
+                                        Style="{StaticResource ConciergeDesignButtonStyle}" 
+                                        x:Name="EditProficencyButton"
+                                        Width="60"
+                                        HorizontalAlignment="Center"
+                                        Foreground="Khaki"
+                                        Click="EditProficencyButton_Click"
+                                        ToolTip="Edit Selected Item">
+                                        <materialDesign:PackIcon Kind="TextBoxEdit" Width="25" Height="25"/>
+                                    </components:ConciergeDesignButton>
+                                    <components:ConciergeDesignButton 
+                                        Style="{StaticResource ConciergeDesignButtonStyle}" 
+                                        x:Name="DeleteProficencyButton"
+                                        Width="60"
+                                        HorizontalAlignment="Center"
+                                        Foreground="IndianRed"
+                                        Click="DeleteProficencyButton_Click"
+                                        ToolTip="Delete Selected Item">
+                                        <materialDesign:PackIcon Kind="Delete" Width="25" Height="25"/>
+                                    </components:ConciergeDesignButton>
+                                </StackPanel>
+                            </Grid>
+                        </Border>
+
+                        <Grid Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="33*"/>
+                                <ColumnDefinition Width="33*"/>
+                                <ColumnDefinition Width="33*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <components:ConciergeDataGrid 
+                                Margin="5,0,2.5,0"
+                                Grid.Column="0"
+                                x:Name="WeaponProficiencyDataGrid"
+                                Style="{DynamicResource DetailsDataGridStyle}"
+                                SelectionChanged="WeaponProficiencyDataGrid_SelectionChanged"
+                                Sorted="ProficiencyDataGrid_Sorted">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn 
+                                    Header="Weapons"
+                                    Width="100*"
+                                    Binding="{Binding Name}"
+                                    ElementStyle="{StaticResource DetailsColumnElementStyle}"/>
+                                </DataGrid.Columns>
+                            </components:ConciergeDataGrid>
+                            <Line
+                                Grid.Column="0"
+                                Stroke="#227EA9"
+                                StrokeThickness="1"
+                                Margin="0,5,-2.5,5"
+                                Stretch="Uniform"
+                                X1="0" X2="0" Y1="0" Y2="1"
+                                HorizontalAlignment="Right"
+                                StrokeStartLineCap="Round"
+                                StrokeEndLineCap="Round"/>
+                            <components:ConciergeDataGrid 
+                                Grid.Column="1"
+                                Margin="5,0,2.5,0"
+                                x:Name="ArmorProficiencyDataGrid"
+                                Style="{DynamicResource DetailsDataGridStyle}"
+                                SelectionChanged="ArmorProficiencyDataGrid_SelectionChanged"
+                                Sorted="ProficiencyDataGrid_Sorted">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn
+                                        Header="Armor"
+                                        Width="100*"
+                                        Binding="{Binding Name}"
+                                        ElementStyle="{StaticResource DetailsColumnElementStyle}"/>
+                                </DataGrid.Columns>
+                            </components:ConciergeDataGrid>
+                            <Line
+                                Grid.Column="1"
+                                Stroke="#227EA9"
+                                StrokeThickness="1"
+                                Margin="0,5,-2.5,5"
+                                Stretch="Uniform"
+                                X1="0" X2="0" Y1="0" Y2="1"
+                                HorizontalAlignment="Right"
+                                StrokeStartLineCap="Round"
+                                StrokeEndLineCap="Round"/>
+                            <components:ConciergeDataGrid 
+                                Grid.Column="2"
+                                Margin="5,0,2.5,0"
+                                x:Name="ToolProficiencyDataGrid"
+                                Style="{DynamicResource DetailsDataGridStyle}"
+                                SelectionChanged="ToolProficiencyDataGrid_SelectionChanged"
+                                Sorted="ProficiencyDataGrid_Sorted">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn 
+                                        Header="Tools"
+                                        Width="100*"
+                                        Binding="{Binding Name}"
+                                        ElementStyle="{StaticResource DetailsColumnElementStyle}"/>
+                                </DataGrid.Columns>
+                            </components:ConciergeDataGrid>
+                        </Grid>
                     </Grid>
                 </Border>
             </Grid>
@@ -79,6 +244,73 @@
                     Grid.Row="1"
                     Margin="-1"
                     Background="#2B2B2B">
+                    <components:ConciergeDataGrid 
+                        x:Name="ResourcesDataGrid"
+                        Style="{DynamicResource DetailsDataGridStyle}"
+                        Sorted="ResourcesDataGrid_Sorted">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn 
+                                Header="Resources"
+                                Width="100*"
+                                Binding="{Binding Description}"
+                                ElementStyle="{StaticResource DetailsColumnElementStyle}"/>
+                        </DataGrid.Columns>
+                    </components:ConciergeDataGrid>
+
+                    <StackPanel 
+                        Orientation="Horizontal"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top">
+                        <components:ConciergeDesignButton Style="{StaticResource ConciergeDesignButtonStyle}" 
+                            x:Name="ClearResourcesButton"
+                            Width="35"
+                            HorizontalAlignment="Left"
+                            Foreground="Silver"
+                            ToolTip="Clear Resource"
+                            Click="ClearResourcesButton_Click"
+                            Margin="0, 0, 3, 3">
+                            <materialDesign:PackIcon Kind="Cancel" Width="25" Height="25"/>
+                        </components:ConciergeDesignButton>
+                        <components:ConciergeDesignButton 
+                            Style="{StaticResource ConciergeDesignButtonStyle}" 
+                            x:Name="DeleteResourcesButton"
+                            Width="35"
+                            HorizontalAlignment="Left"
+                            Foreground="IndianRed"
+                            ToolTip="Delete Resource"
+                            Click="DeleteResourcesButton_Click"
+                            Margin="0, 0, 3, 3">
+                            <materialDesign:PackIcon Kind="Delete" Width="25" Height="25"/>
+                        </components:ConciergeDesignButton>
+                    </StackPanel>
+                    
+                    <StackPanel 
+                        Orientation="Horizontal"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Top">
+                        <components:ConciergeDesignButton 
+                            Style="{StaticResource ConciergeDesignButtonStyle}" 
+                            x:Name="AddResourcesButton"
+                            Width="35"
+                            HorizontalAlignment="Center"
+                            Foreground="PaleGreen"
+                            ToolTip="Add Resource"
+                            Click="AddResourcesButton_Click"
+                            Margin="0, 0, 3, 3">
+                            <materialDesign:PackIcon Kind="AddBox" Width="25" Height="25"/>
+                        </components:ConciergeDesignButton>
+                        <components:ConciergeDesignButton 
+                            Style="{StaticResource ConciergeDesignButtonStyle}" 
+                            x:Name="EditResourcesButton"
+                            Width="35"
+                            HorizontalAlignment="Right"
+                            Foreground="Khaki"
+                            ToolTip="Edit Resources"
+                            Click="EditResourcesButton_Click"
+                            Margin="0, 0, 3, 3">
+                            <materialDesign:PackIcon Kind="TextBoxEdit" Width="25" Height="25"/>
+                        </components:ConciergeDesignButton>
+                    </StackPanel>
                 </Grid>
             </Border>
 
@@ -92,6 +324,74 @@
                     Grid.Row="1"
                     Margin="-1"
                     Background="#2B2B2B">
+                    <components:ConciergeDataGrid 
+                        x:Name="LanguagesDataGrid"
+                        Style="{DynamicResource DetailsDataGridStyle}"
+                        Sorted="LanguagesDataGrid_Sorted">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn 
+                                Header="Languages"
+                                Width="100*"
+                                Binding="{Binding Description}"
+                                ElementStyle="{StaticResource DetailsColumnElementStyle}"/>
+                        </DataGrid.Columns>
+                    </components:ConciergeDataGrid>
+                    
+                    <StackPanel
+                        Orientation="Horizontal"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top">
+                        <components:ConciergeDesignButton 
+                            Style="{StaticResource ConciergeDesignButtonStyle}"
+                            x:Name="ClearLanguagesButton"
+                            Width="35"
+                            HorizontalAlignment="Left"
+                            Foreground="Silver"
+                            ToolTip="Clear Language"
+                            Click="ClearLanguagesButton_Click"
+                            Margin="0, 0, 3, 3">
+                            <materialDesign:PackIcon Kind="Cancel" Width="25" Height="25"/>
+                        </components:ConciergeDesignButton>
+                        <components:ConciergeDesignButton 
+                            Style="{StaticResource ConciergeDesignButtonStyle}" 
+                            x:Name="DeleteLanguagesButton"
+                            Width="35"
+                            HorizontalAlignment="Left"
+                            Foreground="IndianRed"
+                            ToolTip="Delete Language"
+                            Click="DeleteLanguagesButton_Click"
+                            Margin="0, 0, 3, 3">
+                            <materialDesign:PackIcon Kind="Delete" Width="25" Height="25"/>
+                        </components:ConciergeDesignButton>
+                    </StackPanel>
+                    
+                    <StackPanel
+                        Orientation="Horizontal"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Top">
+                        <components:ConciergeDesignButton 
+                            Style="{StaticResource ConciergeDesignButtonStyle}"
+                            x:Name="AddLanguagesButton"
+                            Width="35"
+                            HorizontalAlignment="Center"
+                            Foreground="PaleGreen"
+                            ToolTip="Add Language"
+                            Click="AddLanguagesButton_Click"
+                            Margin="0, 0, 3, 3">
+                            <materialDesign:PackIcon Kind="AddBox" Width="25" Height="25"/>
+                        </components:ConciergeDesignButton>
+                        <components:ConciergeDesignButton 
+                            Style="{StaticResource ConciergeDesignButtonStyle}" 
+                            x:Name="EditLanguagesButton"
+                            Width="35"
+                            HorizontalAlignment="Right"
+                            Foreground="Khaki"
+                            ToolTip="Edit Language"
+                            Click="EditLanguagesButton_Click"
+                            Margin="0, 0, 3, 3">
+                            <materialDesign:PackIcon Kind="TextBoxEdit" Width="25" Height="25"/>
+                        </components:ConciergeDesignButton>
+                    </StackPanel>
                 </Grid>
             </Border>
 
@@ -105,6 +405,46 @@
                     Grid.Row="1"
                     Margin="-1"
                     Background="#2B2B2B">
+                    <components:ConciergeDataGrid 
+                        x:Name="ConditionsDataGrid"
+                        Style="{DynamicResource DetailsDataGridStyle}"
+                        SelectionMode="Single">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn 
+                                Header="Conditions"
+                                Width="100*"
+                                Binding="{Binding Value}"
+                                ElementStyle="{StaticResource DetailsColumnElementStyle}"/>
+                        </DataGrid.Columns>
+                    </components:ConciergeDataGrid>
+                    
+                    <StackPanel
+                        Orientation="Horizontal"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Right">
+                        <components:ConciergeDesignButton 
+                            Style="{StaticResource ConciergeDesignButtonStyle}" 
+                            x:Name="ClearConditionsButton"
+                            Width="35"
+                            HorizontalAlignment="Left"
+                            Foreground="Silver"
+                            ToolTip="Clear Conditions"
+                            Click="ClearConditionsButton_Click"
+                            Margin="0, 0, 3, 3">
+                            <materialDesign:PackIcon Kind="Cancel" Width="25" Height="25"/>
+                        </components:ConciergeDesignButton>
+                        <components:ConciergeDesignButton 
+                            Style="{StaticResource ConciergeDesignButtonStyle}" 
+                            x:Name="EditConditionsButton"
+                            Width="35"
+                            HorizontalAlignment="Right"
+                            Foreground="Khaki"
+                            ToolTip="Edit Conditions"
+                            Click="EditConditionsButton_Click"
+                            Margin="0, 0, 3, 3">
+                            <materialDesign:PackIcon Kind="TextBoxEdit" Width="25" Height="25"/>
+                        </components:ConciergeDesignButton>
+                    </StackPanel>
                 </Grid>
             </Border>
         </Grid>

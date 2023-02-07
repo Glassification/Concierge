@@ -104,12 +104,12 @@
     <!--Details-->
     <Style x:Key="DetailsDataGridStyle" TargetType="{x:Type DataGrid}">
         <Setter Property="ColumnHeaderStyle" Value="{DynamicResource DetailsDataGridHeaderStyle}"/>
-        <Setter Property="Background" Value="#ff06011f" />
+        <Setter Property="Background" Value="#2B2B2B" />
         <Setter Property="AlternationCount" Value="2" />
     </Style>
     <Style x:Key="DetailsDataGridHeaderStyle" TargetType="DataGridColumnHeader">
         <Setter Property="Height" Value="35"/>
-        <Setter Property="Background" Value="#001233" />
+        <Setter Property="Background" Value="#2B2B2B" />
         <Setter Property="Foreground" Value="White"/>
         <Setter Property="FontSize" Value="18" />
         <Setter Property="FontWeight" Value="Bold"/>
@@ -125,12 +125,12 @@
     <!--Spellcasting-->
     <Style x:Key="SpellcastingDataGridStyle" TargetType="{x:Type DataGrid}">
         <Setter Property="ColumnHeaderStyle" Value="{DynamicResource SpellcastingDataGridHeaderStyle}"/>
-        <Setter Property="Background" Value="#ff1c1636" />
+        <Setter Property="Background" Value="#2B2B2B" />
         <Setter Property="AlternationCount" Value="2" />
     </Style>
     <Style x:Key="SpellcastingDataGridHeaderStyle" TargetType="DataGridColumnHeader">
         <Setter Property="Height" Value="50"/>
-        <Setter Property="Background" Value="#001233" />
+        <Setter Property="Background" Value="#2B2B2B" />
         <Setter Property="Foreground" Value="White"/>
         <Setter Property="FontSize" Value="12" />
         <Setter Property="FontWeight" Value="Bold"/>
@@ -152,12 +152,12 @@
     <!--Tools-->
     <Style x:Key="ToolsDataGridStyle" TargetType="{x:Type DataGrid}">
         <Setter Property="ColumnHeaderStyle" Value="{DynamicResource ToolsDataGridHeaderStyle}"/>
-        <Setter Property="Background" Value="#ff1c1636" />
+        <Setter Property="Background" Value="#2B2B2B" />
         <Setter Property="AlternationCount" Value="2" />
     </Style>
     <Style x:Key="ToolsDataGridHeaderStyle" TargetType="DataGridColumnHeader">
         <Setter Property="Height" Value="50"/>
-        <Setter Property="Background" Value="#001233" />
+        <Setter Property="Background" Value="#2B2B2B" />
         <Setter Property="Foreground" Value="White"/>
         <Setter Property="FontSize" Value="20" />
         <Setter Property="FontWeight" Value="Bold"/>

@@ -1,0 +1,281 @@
+﻿// <copyright file="SpellcastingPage.xaml.cs" company="Thomas Beckett">
+// Copyright (c) Thomas Beckett. All rights reserved.
+// </copyright>
+
+namespace Concierge.Display.Pages
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Windows;
+    using System.Windows.Controls;
+
+    using Concierge.Character.Spellcasting;
+    using Concierge.Commands;
+    using Concierge.Display.Components;
+    using Concierge.Interfaces.Enums;
+    using Concierge.Interfaces.SpellcastingPageInterface;
+    using Concierge.Services;
+    using Concierge.Utility.Extensions;
+    using Concierge.Utility.Utilities;
+
+    /// <summary>
+    /// Interaction logic for SpellcastingPage.xaml.
+    /// </summary>
+    public partial class SpellcastingPage : Page, Concierge.Interfaces.IConciergePage
+    {
+        public SpellcastingPage()
+        {
+            this.InitializeComponent();
+        }
+
+        private delegate void DrawList();
+
+        public ConciergePage ConciergePage => Interfaces.Enums.ConciergePage.Spellcasting;
+
+        public Display.Enums.ConciergePage ConciergePage2 => Display.Enums.ConciergePage.Spellcasting;
+
+
+        public bool HasEditableDataGrid => true;
+
+        private List<MagicClass> MagicClassDisplayList => Program.CcsFile.Character.MagicClasses.Filter(this.SearchFilter.FilterText).ToList();
+
+        private List<Spell> SpellDisplayList => Program.CcsFile.Character.Spells.Filter(this.SearchFilter.FilterText).ToList();
+
+        public void Draw()
+        {
+            this.DrawMagicClasses();
+            this.DrawSpellList();
+            this.DrawSpellSlots();
+        }
+
+        public void Edit(object itemToEdit)
+        {
+            if (itemToEdit is Spell spell)
+            {
+                var index = this.SpellListDataGrid.SelectedIndex;
+                ConciergeWindowService.ShowEdit<Spell>(
+                    spell,
+                    typeof(ModifySpellWindow),
+                    this.Window_ApplyChanges,
+                    ConciergePage.Spellcasting);
+                this.DrawSpellList();
+                this.DrawMagicClasses();
+                this.SpellListDataGrid.SetSelectedIndex(index);
+            }
+            else if (itemToEdit is MagicClass magicClass)
+            {
+                var index = this.MagicClassDataGrid.SelectedIndex;
+                ConciergeWindowService.ShowEdit<MagicClass>(
+                    magicClass,
+                    typeof(ModifySpellClassWindow),
+                    this.Window_ApplyChanges,
+                    ConciergePage.Spellcasting);
+                this.DrawMagicClasses();
+                this.MagicClassDataGrid.SetSelectedIndex(index);
+            }
+        }
+
+        public void DrawSpellList()
+        {
+            this.SpellListDataGrid.Items.Clear();
+
+            foreach (var spell in this.SpellDisplayList)
+            {
+                this.SpellListDataGrid.Items.Add(spell);
+            }
+        }
+
+        public void DrawMagicClasses()
+        {
+            this.MagicClassDataGrid.Items.Clear();
+
+            foreach (var magicClass in this.MagicClassDisplayList)
+            {
+                this.MagicClassDataGrid.Items.Add(magicClass);
+            }
+
+            this.CasterLevelField.Text = $"(Caster Level {Program.CcsFile.Character.CasterLevel})";
+        }
+
+        public void DrawSpellSlots()
+        {
+            this.SpellSlotsDisplay.FillSpellSlot(Program.CcsFile.Character.SpellSlots);
+        }
+
+        private bool NextItem<T>(ConciergeDataGrid dataGrid, DrawList drawList, List<T> list, int limit, int increment)
+        {
+            var index = dataGrid.NextItem(list, limit, increment, this.ConciergePage2);
+
+            if (index != -1)
+            {
+                drawList();
+                dataGrid.SetSelectedIndex(index);
+
+                return true;
+            }
+
+            return false;
+        }
+
+        private void MagicClassUpButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.NextItem(this.MagicClassDataGrid, this.DrawMagicClasses, Program.CcsFile.Character.MagicClasses, 0, -1);
+        }
+
+        private void SpellUpButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.NextItem(this.SpellListDataGrid, this.DrawSpellList, Program.CcsFile.Character.Spells, 0, -1);
+        }
+
+        private void MagicClassDownButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.NextItem(this.MagicClassDataGrid, this.DrawMagicClasses, Program.CcsFile.Character.MagicClasses, Program.CcsFile.Character.MagicClasses.Count - 1, 1);
+        }
+
+        private void SpellDownButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.NextItem(this.SpellListDataGrid, this.DrawSpellList, Program.CcsFile.Character.Spells, Program.CcsFile.Character.Spells.Count - 1, 1);
+        }
+
+        private void MagicClassClearButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.MagicClassDataGrid.UnselectAll();
+        }
+
+        private void SpellClearButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.SpellListDataGrid.UnselectAll();
+        }
+
+        private void MagicClassAddButton_Click(object sender, RoutedEventArgs e)
+        {
+            var added = ConciergeWindowService.ShowAdd<List<MagicClass>>(
+                Program.CcsFile.Character.MagicClasses,
+                typeof(ModifySpellClassWindow),
+                this.Window_ApplyChanges,
+                ConciergePage.Spellcasting);
+
+            this.DrawMagicClasses();
+            if (added)
+            {
+                this.MagicClassDataGrid.SetSelectedIndex(this.MagicClassDataGrid.LastIndex);
+            }
+        }
+
+        private void SpellAddButton_Click(object sender, RoutedEventArgs e)
+        {
+            var added = ConciergeWindowService.ShowAdd<List<Spell>>(
+                Program.CcsFile.Character.Spells,
+                typeof(ModifySpellWindow),
+                this.Window_ApplyChanges,
+                ConciergePage.Spellcasting);
+
+            this.DrawSpellList();
+            this.DrawMagicClasses();
+            if (added)
+            {
+                this.SpellListDataGrid.SetSelectedIndex(this.SpellListDataGrid.LastIndex);
+            }
+        }
+
+        private void MagicClassEditButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Edit(this.MagicClassDataGrid.SelectedItem);
+        }
+
+        private void SpellEditButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Edit(this.SpellListDataGrid.SelectedItem);
+        }
+
+        private void MagicClassDeleteButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (this.MagicClassDataGrid.SelectedItem != null)
+            {
+                var magicClass = (MagicClass)this.MagicClassDataGrid.SelectedItem;
+                var index = this.MagicClassDataGrid.SelectedIndex;
+
+                Program.UndoRedoService.AddCommand(new DeleteCommand<MagicClass>(Program.CcsFile.Character.MagicClasses, magicClass, index, this.ConciergePage));
+                Program.CcsFile.Character.MagicClasses.Remove(magicClass);
+                this.DrawMagicClasses();
+                this.MagicClassDataGrid.SetSelectedIndex(index);
+
+                Program.Modify();
+            }
+        }
+
+        private void SpellDeleteButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (this.SpellListDataGrid.SelectedItem != null)
+            {
+                var spell = (Spell)this.SpellListDataGrid.SelectedItem;
+                var index = this.SpellListDataGrid.SelectedIndex;
+
+                Program.UndoRedoService.AddCommand(new DeleteCommand<Spell>(Program.CcsFile.Character.Spells, spell, index, this.ConciergePage));
+                Program.CcsFile.Character.Spells.Remove(spell);
+                this.DrawSpellList();
+                this.SpellListDataGrid.SetSelectedIndex(index);
+
+                Program.Modify();
+            }
+        }
+
+        private void MagicClassDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (this.MagicClassDataGrid.SelectedItem != null)
+            {
+                this.SpellListDataGrid.UnselectAll();
+            }
+        }
+
+        private void SpellListDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (this.SpellListDataGrid.SelectedItem != null)
+            {
+                this.MagicClassDataGrid.UnselectAll();
+            }
+        }
+
+        private void SpellListDataGrid_Sorted(object sender, RoutedEventArgs e)
+        {
+            //DisplayUtility.SortListFromDataGrid(this.SpellListDataGrid, Program.CcsFile.Character.Spells, this.ConciergePage);
+        }
+
+        private void MagicClassDataGrid_Sorted(object sender, RoutedEventArgs e)
+        {
+            //DisplayUtility.SortListFromDataGrid(this.MagicClassDataGrid, Program.CcsFile.Character.MagicClasses, this.ConciergePage);
+        }
+
+        private void Window_ApplyChanges(object sender, EventArgs e)
+        {
+            switch (sender?.GetType()?.Name)
+            {
+                case nameof(ModifySpellClassWindow):
+                    this.DrawMagicClasses();
+                    break;
+                case nameof(ModifySpellWindow):
+                    this.DrawSpellList();
+                    this.DrawMagicClasses();
+                    break;
+                case nameof(ModifySpellSlotsWindow):
+                    this.DrawSpellSlots();
+                    break;
+            }
+        }
+
+        private void SpellSlotsDisplay_ValueChanged(object sender, RoutedEventArgs e)
+        {
+            this.DrawSpellSlots();
+        }
+
+        private void SpellListDataGrid_Filtered(object sender, RoutedEventArgs e)
+        {
+            this.SearchFilter.SetButtonEnableState(this.SpellUpButton);
+            this.SearchFilter.SetButtonEnableState(this.SpellDownButton);
+
+            this.DrawMagicClasses();
+            this.DrawSpellList();
+        }
+    }
+}

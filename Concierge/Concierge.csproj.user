@@ -27,6 +27,9 @@
     <Compile Update="Display\Pages\InventoryPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Display\Pages\SpellcastingPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Interfaces\AttackDefensePageInterface\ModifyStatusEffectsWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -161,6 +164,9 @@
     <Page Update="Display\Controls\SkillControl.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Display\Controls\SpellSlotsControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Display\Controls\WealthControl.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -207,6 +213,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Display\Pages\InventoryPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Display\Pages\SpellcastingPage.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Interfaces\AbilitiesPageInterface\AbilitiesPage.xaml">

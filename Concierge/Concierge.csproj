@@ -82,6 +82,9 @@
     <Compile Update="Display\Controls\SkillControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Display\Controls\SpellSlotsControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Display\Controls\WealthControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
