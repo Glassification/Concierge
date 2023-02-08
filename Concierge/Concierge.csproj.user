@@ -27,6 +27,9 @@
     <Compile Update="Display\Pages\EquipmentPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Display\Pages\JournalPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Display\Pages\OverviewPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -105,9 +108,6 @@
     <Compile Update="Interfaces\OverviewPageInterface\ModifySkillCheckWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Interfaces\PlayerHandbookPageInterface\PlayerHandbookPage.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Update="Interfaces\UtilityInterface\AttributeRollWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -150,6 +150,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Display\Controls\AttributeControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Display\Controls\ColorPickerControl.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Display\Controls\DiceRollControl.xaml">
@@ -234,6 +237,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Display\Pages\EquipmentPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Display\Pages\JournalPage.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Display\Pages\OverviewPage.xaml">
@@ -363,9 +369,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Interfaces\OverviewPageInterface\ModifySkillCheckWindow.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Interfaces\PlayerHandbookPageInterface\PlayerHandbookPage.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Interfaces\UtilityInterface\AboutConciergeWindow.xaml">

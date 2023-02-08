@@ -24,7 +24,6 @@ namespace Concierge.Interfaces
     using Concierge.Interfaces.InventoryPageInterface;
     using Concierge.Interfaces.NotesPageInterface;
     using Concierge.Interfaces.OverviewPageInterface;
-    using Concierge.Interfaces.PlayerHandbookPageInterface;
     using Concierge.Interfaces.SpellcastingPageInterface;
     using Concierge.Interfaces.ToolsPageInterface;
     using Concierge.Interfaces.UtilityInterface;
@@ -59,7 +58,6 @@ namespace Concierge.Interfaces
         public readonly ToolsPage ToolsPage = new ();
         public readonly EquippedItemsPage EquippedItemsPage = new ();
         public readonly CompanionPage CompanionPage = new ();
-        public readonly PlayerHandbookPage PlayerHandbookPage = new ();
         public readonly Concierge.Display.Pages.OverviewPage PageOne = new ();
         public readonly Concierge.Display.Pages.InventoryPage PageTwo = new ();
         public readonly Concierge.Display.Pages.AbilityPage PageThree = new ();
@@ -69,6 +67,7 @@ namespace Concierge.Interfaces
         public readonly Concierge.Display.Pages.EquipmentPage PageSeven = new ();
         public readonly Concierge.Display.Pages.CompanionPage PageEight = new ();
         public readonly Concierge.Display.Pages.ToolsPage PageNine = new ();
+        public readonly Concierge.Display.Pages.JournalPage PageTen = new ();
 
         private readonly FileAccessService fileAccessService = new ();
         private readonly MainWindowService mainWindowService;
@@ -478,8 +477,7 @@ namespace Concierge.Interfaces
             items.Add(service.GenerateListViewItem(this.PageSix, "Spellcasting", PackIconKind.Magic));
             items.Add(service.GenerateListViewItem(this.PageEight, "Companion", PackIconKind.AccountSupervisor));
             items.Add(service.GenerateListViewItem(this.PageNine, "Tools", PackIconKind.Tools));
-            items.Add(service.GenerateListViewItem(this.NotesPage, "Notes", PackIconKind.Pen));
-            items.Add(service.GenerateListViewItem(this.PlayerHandbookPage, "Players Handbook", PackIconKind.BookOpen));
+            items.Add(service.GenerateListViewItem(this.PageTen, "Notes", PackIconKind.Pen));
         }
 
         private ConciergeWindowResult CheckSaveBeforeAction(string action)

@@ -18,7 +18,7 @@ namespace Concierge.Display.Components
         {
             var resourceDictionary = new ResourceDictionary
             {
-                Source = new Uri("Interfaces/Dictionary/ButtonDictionary.xaml", UriKind.RelativeOrAbsolute),
+                Source = new Uri("Display/Dictionaries/ButtonDictionary.xaml", UriKind.RelativeOrAbsolute),
             };
 
             var button = new ConciergeDesignButton()

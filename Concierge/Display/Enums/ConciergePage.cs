@@ -15,7 +15,7 @@ namespace Concierge.Display.Enums
         Spellcasting,
         Companion,
         Tools,
-        Notes,
+        Journal,
         PlayerHandbook,
         None,
     }
