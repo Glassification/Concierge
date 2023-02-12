@@ -139,9 +139,9 @@ namespace Concierge.Display.Windows
             this.NotesTextBox.Text = ability.Description;
         }
 
-        private void ClearFields()
+        private void ClearFields(string name = "")
         {
-            this.NameComboBox.Text = string.Empty;
+            this.NameComboBox.Text = name;
             this.TypeComboBox.Text = AbilityTypes.None.ToString();
             this.LevelUpDown.Value = 0;
             this.UsesTextBox.Text = string.Empty;
@@ -216,6 +216,10 @@ namespace Concierge.Display.Windows
             if (this.NameComboBox.SelectedItem is Ability ability)
             {
                 this.FillFields(ability);
+            }
+            else
+            {
+                this.ClearFields(this.NameComboBox.Text);
             }
         }
     }

@@ -22,14 +22,14 @@
 
         <Grid Grid.Row="0">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="40*"/>
                 <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="40*"/>
                 <ColumnDefinition Width="40*"/>
             </Grid.ColumnDefinitions>
 
             <Border
                 Margin="5"
-                Grid.Column="0"
+                Grid.Column="1"
                 BorderBrush="#2B2B2B"
                 BorderThickness="5"
                 CornerRadius="10">
@@ -322,7 +322,7 @@
                 </Grid>
             </Border>
 
-            <Grid Grid.Column="1">
+            <Grid Grid.Column="0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="33*"/>
                     <RowDefinition Height="33*"/>

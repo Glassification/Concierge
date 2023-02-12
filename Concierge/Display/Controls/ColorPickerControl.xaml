@@ -213,6 +213,7 @@
                             <Grid Grid.Column="2">
                                 <components:ConciergeTextButton
                                     x:Name="SelectCustomColorButton"
+                                    Margin="0,1,0,1"
                                     ToolTip="Create Custom Colour"
                                     Width="auto"
                                     HorizontalAlignment="Stretch"

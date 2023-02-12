@@ -113,9 +113,9 @@ namespace Concierge.Display.Windows
             this.SpeakersTextBox.Text = language.Speakers;
         }
 
-        private void ClearFields()
+        private void ClearFields(string name = "")
         {
-            this.NameComboBox.Text = string.Empty;
+            this.NameComboBox.Text = name;
             this.ScriptTextBox.Text = string.Empty;
             this.SpeakersTextBox.Text = string.Empty;
         }
@@ -178,6 +178,10 @@ namespace Concierge.Display.Windows
             if (this.NameComboBox.SelectedItem is Language language)
             {
                 this.FillFields(language);
+            }
+            else
+            {
+                this.ClearFields(this.NameComboBox.Text);
             }
         }
     }

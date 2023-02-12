@@ -140,12 +140,12 @@ namespace Concierge.Display.Windows
             this.ProficencyOverrideCheckBox.UpdatedValue();
         }
 
-        private void ClearFields()
+        private void ClearFields(string name = "")
         {
             this.IgnoreWeightCheckBox.UpdatingValue();
             this.ProficencyOverrideCheckBox.UpdatingValue();
 
-            this.AttackComboBox.Text = string.Empty;
+            this.AttackComboBox.Text = name;
             this.TypeComboBox.Text = WeaponTypes.None.ToString();
             this.AbilityComboBox.Text = Abilities.NONE.ToString();
             this.DamageTextBox.Text = string.Empty;
@@ -242,6 +242,10 @@ namespace Concierge.Display.Windows
             if (this.AttackComboBox.SelectedItem is Weapon weapon)
             {
                 this.FillFields(weapon);
+            }
+            else
+            {
+                this.ClearFields(this.AttackComboBox.Text);
             }
         }
     }

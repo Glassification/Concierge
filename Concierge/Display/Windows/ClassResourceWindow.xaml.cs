@@ -113,9 +113,9 @@ namespace Concierge.Display.Windows
             this.SpentUpDown.Maximum = this.PoolUpDown.Value;
         }
 
-        private void ClearFields()
+        private void ClearFields(string name = "")
         {
-            this.ResourceNameComboBox.Text = string.Empty;
+            this.ResourceNameComboBox.Text = name;
             this.PoolUpDown.Value = 0;
             this.SpentUpDown.Value = 0;
             this.RecoveryComboBox.Text = Recovery.None.ToString();
@@ -201,6 +201,10 @@ namespace Concierge.Display.Windows
             if (this.ResourceNameComboBox.SelectedItem is ClassResource resource)
             {
                 this.FillFields(resource);
+            }
+            else
+            {
+                this.ClearFields(this.ResourceNameComboBox.Text);
             }
         }
     }

@@ -23,6 +23,12 @@ namespace Concierge.Persistence
             this.Hash = string.Empty;
         }
 
+        public CcsFile(bool empty)
+            : this()
+        {
+            this.IsEmpty = empty;
+        }
+
         [JsonIgnore]
         public string AbsolutePath { get; set; }
 
@@ -41,6 +47,8 @@ namespace Concierge.Persistence
         public DateTime LastSaveDate { get; set; }
 
         public string Version { get; set; }
+
+        public bool IsEmpty { get; }
 
         public bool IsFileSaved(bool? autosaveChecked)
         {

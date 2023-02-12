@@ -58,7 +58,7 @@ namespace Concierge.Persistence.ReadWriters
                 Program.ErrorService.LogError(ex);
                 Program.Modify();
 
-                return new CcsFile();
+                return new CcsFile(true);
             }
         }
 

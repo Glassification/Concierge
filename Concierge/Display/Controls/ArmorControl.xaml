@@ -267,8 +267,8 @@
                                     Background="#FF333333"
                                     Margin="-1">
                                     <Grid.RowDefinitions>
-                                        <RowDefinition Height="30*"/>
-                                        <RowDefinition Height="70*"/>
+                                        <RowDefinition Height="35*"/>
+                                        <RowDefinition Height="65*"/>
                                     </Grid.RowDefinitions>
 
                                     <components:ConciergeTextBlock
@@ -277,9 +277,10 @@
                                         Foreground="White"
                                         FontSize="16"
                                         HorizontalAlignment="Center"
-                                        VerticalAlignment="Bottom"/>
+                                        VerticalAlignment="Top"/>
                                     <Line
                                         Grid.Row="0"
+                                        Margin="0,0,0,-1"
                                         Stroke="#227EA9"
                                         StrokeThickness="2"
                                         Stretch="Uniform"
@@ -308,8 +309,8 @@
                                     Background="#FF333333"
                                     Margin="-1">
                                     <Grid.RowDefinitions>
-                                        <RowDefinition Height="30*"/>
-                                        <RowDefinition Height="70*"/>
+                                        <RowDefinition Height="35*"/>
+                                        <RowDefinition Height="65*"/>
                                     </Grid.RowDefinitions>
 
                                     <components:ConciergeTextBlock
@@ -318,9 +319,10 @@
                                         Foreground="White"
                                         FontSize="16"
                                         HorizontalAlignment="Center"
-                                        VerticalAlignment="Bottom"/>
+                                        VerticalAlignment="Top"/>
                                     <Line
                                         Grid.Row="0"
+                                        Margin="0,0,0,-1"
                                         Stroke="#227EA9"
                                         StrokeThickness="2"
                                         Stretch="Uniform"
@@ -349,8 +351,8 @@
                                     Background="#FF333333"
                                     Margin="-1">
                                     <Grid.RowDefinitions>
-                                        <RowDefinition Height="30*"/>
-                                        <RowDefinition Height="70*"/>
+                                        <RowDefinition Height="35*"/>
+                                        <RowDefinition Height="65*"/>
                                     </Grid.RowDefinitions>
 
                                     <components:ConciergeTextBlock
@@ -359,10 +361,11 @@
                                         Foreground="White"
                                         FontSize="16"
                                         HorizontalAlignment="Center"
-                                        VerticalAlignment="Bottom"/>
+                                        VerticalAlignment="Top"/>
                                     <Line
                                         Grid.Row="0"
                                         Stroke="#227EA9"
+                                        Margin="0,0,0,-1"
                                         StrokeThickness="2"
                                         Stretch="Uniform"
                                         X1="0" X2="1" Y1="0" Y2="0"
@@ -390,8 +393,8 @@
                                     Background="#FF333333"
                                     Margin="-1">
                                     <Grid.RowDefinitions>
-                                        <RowDefinition Height="30*"/>
-                                        <RowDefinition Height="70*"/>
+                                        <RowDefinition Height="35*"/>
+                                        <RowDefinition Height="65*"/>
                                     </Grid.RowDefinitions>
 
                                     <components:ConciergeTextBlock
@@ -400,10 +403,11 @@
                                         Foreground="White"
                                         FontSize="16"
                                         HorizontalAlignment="Center"
-                                        VerticalAlignment="Bottom"/>
+                                        VerticalAlignment="Top"/>
                                     <Line
                                         Grid.Row="0"
                                         Stroke="#227EA9"
+                                        Margin="0,0,0,-1"
                                         StrokeThickness="2"
                                         Stretch="Uniform"
                                         X1="0" X2="1" Y1="0" Y2="0"

@@ -24,7 +24,7 @@
         <!--Header-->
         <Grid Grid.Row="0">
             <TextBlock 
-                Text="Import Character Details"
+                Text="Import Details"
                 x:Name="HeaderTextBlock"
                 Foreground="#227EA9"
                 FontSize="35"

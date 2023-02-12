@@ -20,16 +20,23 @@ namespace Concierge.Tools.Import
             this.character = character;
         }
 
-        public void Import(ImportSettings importSettings)
+        public bool Import(ImportSettings importSettings)
         {
-            var importFile = CharacterReadWriter.Read(importSettings.File).Character;
+            var importFile = CharacterReadWriter.Read(importSettings.File);
+            if (importFile.IsEmpty)
+            {
+                return false;
+            }
 
-            this.ImportAbilities(importFile, importSettings.ImportAbilities);
-            this.ImportAmmo(importFile, importSettings.ImportAmmo);
-            this.ImportInventory(importFile, importSettings.ImportInventory);
-            this.ImportNotes(importFile, importSettings.ImportNotes);
-            this.ImportSpells(importFile, importSettings.ImportSpells);
-            this.ImportWeapons(importFile, importSettings.ImportWeapons);
+            var character = importFile.Character;
+            this.ImportAbilities(character, importSettings.ImportAbilities);
+            this.ImportAmmo(character, importSettings.ImportAmmo);
+            this.ImportInventory(character, importSettings.ImportInventory);
+            this.ImportNotes(character, importSettings.ImportNotes);
+            this.ImportSpells(character, importSettings.ImportSpells);
+            this.ImportWeapons(character, importSettings.ImportWeapons);
+
+            return true;
         }
 
         private static void CycleGuids(IEnumerable<IUnique> list)

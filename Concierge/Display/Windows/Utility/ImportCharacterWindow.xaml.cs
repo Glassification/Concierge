@@ -30,7 +30,7 @@ namespace Concierge.Display.Utility
             this.characterImporter = new CharacterImporter(Program.CcsFile.Character);
         }
 
-        public override string HeaderText => "Import Character Details";
+        public override string HeaderText => "Import Details";
 
         private bool Imported { get; set; }
 
@@ -84,9 +84,13 @@ namespace Concierge.Display.Utility
             }
 
             var settings = this.GenerateImportSettings();
-            this.characterImporter.Import(settings);
-            this.Imported = true;
+            var isSuccess = this.characterImporter.Import(settings);
+            if (!isSuccess)
+            {
+                return;
+            }
 
+            this.Imported = true;
             this.ReturnAndClose();
         }
 

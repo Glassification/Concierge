@@ -138,13 +138,13 @@ namespace Concierge.Display.Windows
             this.ConcentrationCheckBox.UpdatedValue();
         }
 
-        private void ClearFields()
+        private void ClearFields(string name = "")
         {
             this.PreparedCheckBox.UpdatingValue();
             this.RitualCheckBox.UpdatingValue();
             this.ConcentrationCheckBox.UpdatingValue();
 
-            this.SpellNameComboBox.Text = string.Empty;
+            this.SpellNameComboBox.Text = name;
             this.PreparedCheckBox.IsChecked = false;
             this.LevelUpDown.Value = 0;
             this.PageUpDown.Value = 0;
@@ -247,6 +247,10 @@ namespace Concierge.Display.Windows
             if (this.SpellNameComboBox.SelectedItem is Spell spell)
             {
                 this.FillFields(spell);
+            }
+            else
+            {
+                this.ClearFields(this.SpellNameComboBox.Text);
             }
         }
     }

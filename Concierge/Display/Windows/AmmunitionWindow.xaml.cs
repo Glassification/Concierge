@@ -123,9 +123,9 @@ namespace Concierge.Display.Windows
             this.UsedUpDown.Maximum = this.QuantityUpDown.Value;
         }
 
-        private void ClearFields()
+        private void ClearFields(string name = "")
         {
-            this.NameComboBox.Text = string.Empty;
+            this.NameComboBox.Text = name;
             this.QuantityUpDown.Value = 0;
             this.BonusTextBox.Text = string.Empty;
             this.DamageTypeComboBox.Text = DamageTypes.None.ToString();
@@ -200,6 +200,10 @@ namespace Concierge.Display.Windows
             if (this.NameComboBox.SelectedItem is Ammunition ammunition)
             {
                 this.FillFields(ammunition);
+            }
+            else
+            {
+                this.ClearFields(this.NameComboBox.Text);
             }
         }
 

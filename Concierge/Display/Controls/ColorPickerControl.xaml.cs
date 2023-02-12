@@ -11,6 +11,7 @@ namespace Concierge.Display.Controls
     using System.Windows.Media;
 
     using Concierge.Display.Components;
+    using Concierge.Display.Utility;
     using Concierge.Primitives;
     using Concierge.Services;
     using Concierge.Utility.Extensions;
@@ -146,7 +147,7 @@ namespace Concierge.Display.Controls
 
         private void SelectCustomColorButton_Click(object sender, RoutedEventArgs e)
         {
-            /*var result = new CustomColorWindow().ShowColorWindow(this.SelectedColor);
+            var result = new CustomColorWindow().ShowColorWindow(this.SelectedColor);
             this.PopupToggleButton.IsChecked = false;
 
             if (result.IsValid)
@@ -156,7 +157,7 @@ namespace Concierge.Display.Controls
                 this.CustomColorService.AddCustomColor(this.SelectedColor);
                 SetColorButtons(this.RecentColorsStackPanel, this.CustomColorService.RecentColors);
                 this.RaiseEvent(new RoutedEventArgs(ColorChangedEvent));
-            }*/
+            }
         }
     }
 }
