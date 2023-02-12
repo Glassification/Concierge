@@ -37,9 +37,6 @@ namespace Concierge.Utility
             ControlBackgroundBrush = new SolidColorBrush(Color.FromArgb(255, 55, 55, 55));
             ControlBackgroundBrush.Freeze();
 
-            ToggleBoxBrush = new SolidColorBrush(Color.FromArgb(255, 6, 1, 31));
-            ToggleBoxBrush.Freeze();
-
             RectangleBorderHighlight = new SolidColorBrush(Color.FromArgb(255, 34, 126, 169));
             RectangleBorderHighlight.Freeze();
 
@@ -64,15 +61,6 @@ namespace Concierge.Utility
             ProficiencyBrush = ColorUtility.GenerateGradientBrush(ProficiencyDarkBlue, ProficiencyLightBlue, new Point(0, 0), new Point(1, 1));
             ProficiencyBrush.Freeze();
 
-            TitleMenuBrush = ColorUtility.GenerateGradientBrush(Color.FromArgb(255, 0, 0, 8), Color.FromArgb(255, 0, 0, 14), new Point(0, 0), new Point(0, 1));
-            TitleMenuBrush.Freeze();
-
-            DataGridViewBackground = ColorUtility.GenerateGradientBrush(ProficiencyLightBlue, Color.FromArgb(255, 0, 21, 62), new Point(0, 0), new Point(0, 1));
-            DataGridViewBackground.Freeze();
-
-            TreeViewBackground = ColorUtility.GenerateGradientBrush(ProficiencyLightBlue, Color.FromArgb(255, 51, 65, 92), new Point(0, 0), new Point(0, 1));
-            TreeViewBackground.Freeze();
-
             ControlForeGray = new SolidColorBrush(Color.FromArgb(255, 51, 51, 51));
             ControlForeGray.Freeze();
 
@@ -88,12 +76,6 @@ namespace Concierge.Utility
 
         public static LinearGradientBrush ProficiencyBrush { get; }
 
-        public static LinearGradientBrush TitleMenuBrush { get; }
-
-        public static LinearGradientBrush DataGridViewBackground { get; }
-
-        public static LinearGradientBrush TreeViewBackground { get; }
-
         public static SolidColorBrush TotalDarkBoxBrush { get; }
 
         public static SolidColorBrush TotalLightBoxBrush { get; }
@@ -101,8 +83,6 @@ namespace Concierge.Utility
         public static SolidColorBrush ControlBackgroundBrush { get; }
 
         public static SolidColorBrush UsedBoxBrush { get; }
-
-        public static SolidColorBrush ToggleBoxBrush { get; }
 
         public static SolidColorBrush RectangleBorderHighlight { get; }
 

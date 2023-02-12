@@ -8,6 +8,7 @@ namespace Concierge.Display.Pages
     using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Input;
+
     using Concierge.Character.AbilitySavingThrows;
     using Concierge.Character.AbilitySkills;
     using Concierge.Character.Characteristics;

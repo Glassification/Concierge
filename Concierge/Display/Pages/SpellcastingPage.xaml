@@ -193,7 +193,8 @@
                     Margin="-1">
                     <controls:SpellSlotsControl
                         x:Name="SpellSlotsDisplay"
-                        ValueChanged="SpellSlotsDisplay_ValueChanged"/>
+                        ValueChanged="SpellSlotsDisplay_ValueChanged"
+                        EditClicked="SpellSlotsDisplay_EditClicked"/>
                 </Grid>
             </Border>
         </Grid>

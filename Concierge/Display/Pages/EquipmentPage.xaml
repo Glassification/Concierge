@@ -264,7 +264,8 @@
                 CornerRadius="10">
                 <Grid
                     Background="#2B2B2B"
-                    Margin="-1">
+                    Margin="-1"
+                    MouseUp="CharacterImage_MouseUp">
                     <materialDesign:PackIcon
                         x:Name="DefaultCharacterImage"
                         Kind="HumanHandsdown"

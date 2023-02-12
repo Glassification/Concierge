@@ -12,6 +12,7 @@ namespace Concierge.Display.Pages
 
     using Concierge.Character.Characteristics;
     using Concierge.Character.Enums;
+    using Concierge.Character.Items;
     using Concierge.Character.Statuses;
     using Concierge.Character.Statuses.ConditionStatus;
     using Concierge.Commands;
@@ -402,6 +403,36 @@ namespace Concierge.Display.Pages
         private void ResourcesDataGrid_Sorted(object sender, RoutedEventArgs e)
         {
             DisplayUtility.SortListFromDataGrid(this.ResourcesDataGrid, Program.CcsFile.Character.ClassResources, this.ConciergePage);
+        }
+
+        private void AppearanceDisplay_EditClicked(object sender, RoutedEventArgs e)
+        {
+            ConciergeWindowService.ShowEdit<Appearance>(
+                Program.CcsFile.Character.Appearance,
+                typeof(AppearanceWindow),
+                this.Window_ApplyChanges,
+                ConciergePage.Details);
+            this.DrawAppearance();
+        }
+
+        private void PersonalityDisplay_EditClicked(object sender, RoutedEventArgs e)
+        {
+            ConciergeWindowService.ShowEdit<Personality>(
+                Program.CcsFile.Character.Personality,
+                typeof(PersonalityWindow),
+                this.Window_ApplyChanges,
+                ConciergePage.Details);
+            this.DrawPersonality();
+        }
+
+        private void ArmorDisplay_EditClicked(object sender, RoutedEventArgs e)
+        {
+            ConciergeWindowService.ShowEdit<Armor>(
+                Program.CcsFile.Character.Armor,
+                typeof(ArmorWindow),
+                this.Window_ApplyChanges,
+                ConciergePage.Details);
+            this.DrawArmor();
         }
 
         private void Window_ApplyChanges(object sender, EventArgs e)

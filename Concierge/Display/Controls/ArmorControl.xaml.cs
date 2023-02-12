@@ -6,6 +6,7 @@ namespace Concierge.Display.Controls
 {
     using System.Windows;
     using System.Windows.Controls;
+    using System.Windows.Input;
 
     using Concierge.Character.Items;
 
@@ -44,7 +45,7 @@ namespace Concierge.Display.Controls
             this.MagicAcField.Text = armor.MagicArmorClass.ToString();
         }
 
-        private void EditDetailsButton_Click(object sender, RoutedEventArgs e)
+        private void Grid_MouseUp(object sender, MouseButtonEventArgs e)
         {
             this.RaiseEvent(new RoutedEventArgs(EditClickedEvent));
         }

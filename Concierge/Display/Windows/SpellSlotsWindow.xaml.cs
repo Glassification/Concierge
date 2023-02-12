@@ -67,6 +67,12 @@ namespace Concierge.Display.Windows
 
         private void FillFields()
         {
+            this.FillTotal();
+            this.FillUsed();
+        }
+
+        private void FillUsed()
+        {
             this.UsedPactUpDown.Value = this.SpellSlots.PactUsed;
             this.Used1UpDown.Value = this.SpellSlots.FirstUsed;
             this.Used2UpDown.Value = this.SpellSlots.SecondUsed;
@@ -77,7 +83,10 @@ namespace Concierge.Display.Windows
             this.Used7UpDown.Value = this.SpellSlots.SeventhUsed;
             this.Used8UpDown.Value = this.SpellSlots.EighthUsed;
             this.Used9UpDown.Value = this.SpellSlots.NinethUsed;
+        }
 
+        private void FillTotal()
+        {
             this.TotalPactUpDown.Value = this.SpellSlots.PactTotal;
             this.Total1UpDown.Value = this.SpellSlots.FirstTotal;
             this.Total2UpDown.Value = this.SpellSlots.SecondTotal;

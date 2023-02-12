@@ -30,8 +30,6 @@ namespace Concierge.Display.Components
             this.Left = 0;
             this.Top = 0;
             this.Background = ConciergeColors.WindowBackground;
-            this.BorderBrush = ConciergeColors.RectangleBorderHighlight;
-            this.BorderThickness = new Thickness(1);
             this.HandleEnter = false;
 
             this.MouseDown += this.Window_MouseDown;

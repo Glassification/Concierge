@@ -244,6 +244,30 @@ namespace Concierge.Display.Pages
             DisplayUtility.SortListFromDataGrid(this.MagicClassDataGrid, Program.CcsFile.Character.MagicClasses, this.ConciergePage);
         }
 
+        private void SpellSlotsDisplay_ValueChanged(object sender, RoutedEventArgs e)
+        {
+            this.DrawSpellSlots();
+        }
+
+        private void SpellListDataGrid_Filtered(object sender, RoutedEventArgs e)
+        {
+            this.SearchFilter.SetButtonEnableState(this.SpellUpButton);
+            this.SearchFilter.SetButtonEnableState(this.SpellDownButton);
+
+            this.DrawMagicClasses();
+            this.DrawSpellList();
+        }
+
+        private void SpellSlotsDisplay_EditClicked(object sender, RoutedEventArgs e)
+        {
+            ConciergeWindowService.ShowEdit<SpellSlots>(
+                Program.CcsFile.Character.SpellSlots,
+                typeof(SpellSlotsWindow),
+                this.Window_ApplyChanges,
+                ConciergePage.Spellcasting);
+            this.DrawSpellSlots();
+        }
+
         private void Window_ApplyChanges(object sender, EventArgs e)
         {
             switch (sender?.GetType()?.Name)
@@ -259,20 +283,6 @@ namespace Concierge.Display.Pages
                     this.DrawSpellSlots();
                     break;
             }
-        }
-
-        private void SpellSlotsDisplay_ValueChanged(object sender, RoutedEventArgs e)
-        {
-            this.DrawSpellSlots();
-        }
-
-        private void SpellListDataGrid_Filtered(object sender, RoutedEventArgs e)
-        {
-            this.SearchFilter.SetButtonEnableState(this.SpellUpButton);
-            this.SearchFilter.SetButtonEnableState(this.SpellDownButton);
-
-            this.DrawMagicClasses();
-            this.DrawSpellList();
         }
     }
 }

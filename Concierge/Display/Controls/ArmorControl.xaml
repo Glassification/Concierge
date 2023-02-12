@@ -25,15 +25,16 @@
                 </Grid.RowDefinitions>
 
                 <!--Header-->
-                <components:ConciergeTextBlock
+                <Grid
                     Grid.Row="0"
-                    Text="Armor"
-                    Foreground="White"
-                    FontSize="30"
-                    FontWeight="Bold"
-                    VerticalAlignment="Center"
-                    HorizontalAlignment="Center"/>
-
+                    MouseUp="Grid_MouseUp">
+                    <components:ConciergeTextBlock
+                        Text="Armor"
+                        Foreground="White"
+                        FontSize="30"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center"/>
+                </Grid>
                 <!--Armor Details-->
                 <Grid Grid.Row="1">
                     <Grid.ColumnDefinitions>

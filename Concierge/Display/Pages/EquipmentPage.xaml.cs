@@ -9,7 +9,7 @@ namespace Concierge.Display.Pages
     using System.Linq;
     using System.Windows;
     using System.Windows.Controls;
-
+    using Concierge.Character.Characteristics;
     using Concierge.Character.Enums;
     using Concierge.Character.Items;
     using Concierge.Commands;
@@ -278,6 +278,24 @@ namespace Concierge.Display.Pages
             Program.Modify();
         }
 
+        private void EquippedItemsDataGrid_Filtered(object sender, RoutedEventArgs e)
+        {
+            this.SearchFilter.SetButtonEnableState(this.UpButton);
+            this.SearchFilter.SetButtonEnableState(this.DownButton);
+
+            this.Draw();
+        }
+
+        private void CharacterImage_MouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            ConciergeWindowService.ShowEdit<CharacterImage>(
+                Program.CcsFile.Character.CharacterImage,
+                typeof(ImageWindow),
+                this.Window_ApplyChanges,
+                ConciergePage.Equipment);
+            this.LoadImage();
+        }
+
         private void Window_ApplyChanges(object sender, EventArgs e)
         {
             switch (sender?.GetType()?.Name)
@@ -287,14 +305,6 @@ namespace Concierge.Display.Pages
                     this.Draw();
                     break;
             }
-        }
-
-        private void EquippedItemsDataGrid_Filtered(object sender, RoutedEventArgs e)
-        {
-            this.SearchFilter.SetButtonEnableState(this.UpButton);
-            this.SearchFilter.SetButtonEnableState(this.DownButton);
-
-            this.Draw();
         }
     }
 }

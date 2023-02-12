@@ -60,7 +60,8 @@
                                 Grid.Column="0"
                                 Text="Name"
                                 FontSize="30"
-                                TextWrapping="Wrap"/>
+                                TextWrapping="Wrap"
+                                MouseUp="CompanionDetails_MouseUp"/>
                             <Line
                                 Grid.Column="0"
                                 Stroke="#227EA9"
@@ -109,7 +110,8 @@
                                     Grid.Column="0"
                                     Text="Initiative"
                                     FontSize="18"
-                                    TextWrapping="Wrap"/>
+                                    TextWrapping="Wrap"
+                                    MouseUp="CompanionDetails_MouseUp"/>
                                 <Line
                                     Grid.Column="0"
                                     Stroke="#227EA9"
@@ -146,7 +148,8 @@
                                     Grid.Column="0"
                                     Text="Perception"
                                     FontSize="18"
-                                    TextWrapping="Wrap"/>
+                                    TextWrapping="Wrap"
+                                    MouseUp="CompanionDetails_MouseUp"/>
                                 <Line
                                     Grid.Column="0"
                                     Stroke="#227EA9"
@@ -183,7 +186,8 @@
                                     Grid.Column="0"
                                     Text="Vision"
                                     FontSize="18"
-                                    TextWrapping="Wrap"/>
+                                    TextWrapping="Wrap"
+                                    MouseUp="CompanionDetails_MouseUp"/>
                                 <Line
                                     Grid.Column="0"
                                     Stroke="#227EA9"
@@ -220,7 +224,8 @@
                                     Grid.Column="0"
                                     Text="Movement"
                                     FontSize="18"
-                                    TextWrapping="Wrap"/>
+                                    TextWrapping="Wrap"
+                                    MouseUp="CompanionDetails_MouseUp"/>
                                 <Line
                                     Grid.Column="0"
                                     Stroke="#227EA9"
@@ -257,7 +262,8 @@
                                     Grid.Column="0"
                                     Text="Armor Class"
                                     FontSize="18"
-                                    TextWrapping="Wrap"/>
+                                    TextWrapping="Wrap"
+                                    MouseUp="CompanionDetails_MouseUp"/>
                                 <Line
                                     Grid.Column="0"
                                     Stroke="#227EA9"
@@ -294,7 +300,8 @@
                                     Grid.Column="0"
                                     Text="Creature Size"
                                     FontSize="18"
-                                    TextWrapping="Wrap"/>
+                                    TextWrapping="Wrap"
+                                    MouseUp="CompanionDetails_MouseUp"/>
                                 <Line
                                     Grid.Column="0"
                                     Stroke="#227EA9"
@@ -330,31 +337,37 @@
                     Grid.Row="0"
                     Grid.Column="0"
                     x:Name="StrengthAttributeDisplay"
+                    EditClicked="AttributeDisplay_EditClicked"
                     Title="Strength"/>
                 <controls:AttributeControl
                     Grid.Row="0"
                     Grid.Column="1"
                     x:Name="DexterityAttributeDisplay"
+                    EditClicked="AttributeDisplay_EditClicked"
                     Title="Dexterity"/>
                 <controls:AttributeControl
                     Grid.Row="1"
                     Grid.Column="0"
                     x:Name="ConstitutionAttributeDisplay"
+                    EditClicked="AttributeDisplay_EditClicked"
                     Title="Constitution"/>
                 <controls:AttributeControl
                     Grid.Row="1"
                     Grid.Column="1"
                     x:Name="IntelligenceAttributeDisplay"
+                    EditClicked="AttributeDisplay_EditClicked"
                     Title="Intelligence"/>
                 <controls:AttributeControl
                     Grid.Row="2"
                     Grid.Column="0"
                     x:Name="WisdomAttributeDisplay"
+                    EditClicked="AttributeDisplay_EditClicked"
                     Title="Wisdom"/>
                 <controls:AttributeControl
                     Grid.Row="2"
                     Grid.Column="1"
                     x:Name="CharismaAttributeDisplay"
+                    EditClicked="AttributeDisplay_EditClicked"
                     Title="Charisma"/>
             </Grid>
             
@@ -375,7 +388,8 @@
                         x:Name="HealthDisplay"
                         DeathSavesEnabled="False"
                         HealClicked="HealDamageButton_Click"
-                        DamageClicked="TakeDamageButton_Click"/>
+                        DamageClicked="TakeDamageButton_Click"
+                        EditClicked="HealthDisplay_EditClicked"/>
 
                     <Border
                         Margin="5"
@@ -385,8 +399,8 @@
                         CornerRadius="10">
                         <Grid
                             Background="#2B2B2B"
-                            Margin="-1">
-                            <Image x:Name="CompanionImage"/>
+                            Margin="-1"
+                            MouseUp="CompanionImage_MouseUp">
                             <materialDesign:PackIcon
                                 x:Name="DefaultCompanionImage"
                                 Kind="Bird"
@@ -395,6 +409,7 @@
                                 Height="auto"
                                 Width="auto"
                                 Foreground="#33415C"/>
+                            <Image x:Name="CompanionImage"/>
                         </Grid>
                     </Border>
                 </Grid>
@@ -403,6 +418,7 @@
                     Grid.Row="1"
                     x:Name="HitDiceDisplay"
                     ValueChanged="HitDiceDisplay_ValueChanged"
+                    EditClicked="HitDiceDisplay_EditClicked"
                     ConciergePage="Companion"/>
             </Grid>
         </Grid>

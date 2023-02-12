@@ -9,7 +9,7 @@ namespace Concierge.Display.Pages
     using System.Linq;
     using System.Windows;
     using System.Windows.Controls;
-
+    using Concierge.Character.Characteristics;
     using Concierge.Character.Items;
     using Concierge.Character.Statuses;
     using Concierge.Commands;
@@ -218,6 +218,69 @@ namespace Concierge.Display.Pages
             this.DrawHealth();
         }
 
+        private void HitDiceDisplay_ValueChanged(object sender, RoutedEventArgs e)
+        {
+            this.DrawHitDice();
+        }
+
+        private void AttackDataGrid_Filtered(object sender, RoutedEventArgs e)
+        {
+            this.SearchFilter.SetButtonEnableState(this.AttacksUpButton);
+            this.SearchFilter.SetButtonEnableState(this.AttacksDownButton);
+
+            this.DrawAttacks();
+        }
+
+        private void HealthDisplay_EditClicked(object sender, RoutedEventArgs e)
+        {
+            ConciergeWindowService.ShowEdit<Health>(
+                Program.CcsFile.Character.Companion.Vitality.Health,
+                typeof(HealthWindow),
+                this.Window_ApplyChanges,
+                ConciergePage.Companion);
+            this.DrawHealth();
+        }
+
+        private void HitDiceDisplay_EditClicked(object sender, RoutedEventArgs e)
+        {
+            ConciergeWindowService.ShowEdit<HitDice>(
+                Program.CcsFile.Character.Companion.Vitality.HitDice,
+                typeof(HitDiceWindow),
+                this.Window_ApplyChanges,
+                ConciergePage.Companion);
+            this.DrawHealth();
+        }
+
+        private void AttributeDisplay_EditClicked(object sender, RoutedEventArgs e)
+        {
+            ConciergeWindowService.ShowEdit<Attributes>(
+                Program.CcsFile.Character.Companion.Attributes,
+                typeof(AttributesWindow),
+                this.Window_ApplyChanges,
+                ConciergePage.Companion);
+            this.DrawAttributes();
+        }
+
+        private void CompanionDetails_MouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            ConciergeWindowService.ShowEdit<CompanionProperties>(
+                Program.CcsFile.Character.Companion.Properties,
+                typeof(CompanionWindow),
+                this.Window_ApplyChanges,
+                ConciergePage.Companion);
+            this.DrawDetails();
+        }
+
+        private void CompanionImage_MouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            ConciergeWindowService.ShowEdit<CharacterImage>(
+                Program.CcsFile.Character.Companion.CompanionImage,
+                typeof(ImageWindow),
+                this.Window_ApplyChanges,
+                ConciergePage.Companion);
+            this.DrawImage();
+        }
+
         private void Window_ApplyChanges(object sender, EventArgs e)
         {
             switch (sender?.GetType()?.Name)
@@ -241,19 +304,6 @@ namespace Concierge.Display.Pages
                     this.DrawImage();
                     break;
             }
-        }
-
-        private void HitDiceDisplay_ValueChanged(object sender, RoutedEventArgs e)
-        {
-            this.DrawHitDice();
-        }
-
-        private void AttackDataGrid_Filtered(object sender, RoutedEventArgs e)
-        {
-            this.SearchFilter.SetButtonEnableState(this.AttacksUpButton);
-            this.SearchFilter.SetButtonEnableState(this.AttacksDownButton);
-
-            this.DrawAttacks();
         }
     }
 }

@@ -36,16 +36,19 @@
 
                 <controls:AppearanceControl
                     Grid.Column="0"
-                    x:Name="AppearanceDisplay"/>
+                    x:Name="AppearanceDisplay"
+                    EditClicked="AppearanceDisplay_EditClicked"/>
 
                 <controls:PersonalityControl
                     Grid.Column="1"
-                    x:Name="PersonalityDisplay"/>
+                    x:Name="PersonalityDisplay"
+                    EditClicked="PersonalityDisplay_EditClicked"/>
             </Grid>
 
             <controls:ArmorControl
                 Grid.Row="1"
-                x:Name="ArmorDisplay"/>
+                x:Name="ArmorDisplay"
+                EditClicked="ArmorDisplay_EditClicked"/>
 
             <Grid Grid.Row="2">
                 <Border
