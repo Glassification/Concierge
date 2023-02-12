@@ -8,9 +8,7 @@
     xmlns:components="clr-namespace:Concierge.Display.Components"
     xmlns:controls="clr-namespace:Concierge.Display.Controls"
     xmlns:local="clr-namespace:Concierge.Display.Pages"
-    mc:Ignorable="d" 
-    d:DesignHeight="600"
-    d:DesignWidth="1020"
+    mc:Ignorable="d"
     Title="OverviewPage"
     Style="{StaticResource PageFontStyle}">
 

@@ -15,7 +15,7 @@
     ResizeMode="NoResize"
     WindowStartupLocation="CenterScreen"
     WindowStyle="None"
-    Background="#252526"
+    Background="#0F0F0F"
     BorderBrush="#227EA9"
     BorderThickness="0"
     KeyDown="MainWindow_KeyPress"
@@ -23,7 +23,9 @@
     Style="{StaticResource WindowFontStyle}">
 
     <!-- Main Grid Area -->
-    <Grid x:Name="MainGrid" SizeChanged="MainGrid_SizeChanged">
+    <Grid
+        x:Name="MainGrid"
+        SizeChanged="MainGrid_SizeChanged">
         <Grid.LayoutTransform>
             <ScaleTransform 
                 x:Name="ApplicationScaleTransform"
@@ -36,55 +38,30 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
             <RowDefinition Height="1*" />
+            <RowDefinition Height="20" />
         </Grid.RowDefinitions>
-
-        <!-- Side Menu -->
 
         <!-- Title Menu -->
         <Grid
+            Background="#0F0F0F"
             x:Name="GridTitle"
             Grid.Row="0"
             Grid.Column="1"
             MouseDown="CharacterHeader_MouseDown">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="60" />
                 <ColumnDefinition Width="1*" />
                 <ColumnDefinition Width="245" />
             </Grid.ColumnDefinitions>
 
-            <!-- Side Menu Toggle  Background="#FF191919" -->
-            <Grid x:Name="GridMenuButton" Grid.Column="0">
-                <StackPanel>
-                    <components:ConciergeDesignButton 
-                        Style="{StaticResource ConciergeDesignButtonStyle}" 
-                        x:Name="ButtonOpenMenu" 
-                        Width="60"
-                        Height="50"
-                        Foreground="LightCyan" 
-                        Click="ButtonOpenMenu_Click">
-                        <materialDesign:PackIcon Kind="Menu" Width="25" Height="25"/>
-                    </components:ConciergeDesignButton>
-                    <components:ConciergeDesignButton 
-                        Style="{StaticResource ConciergeDesignButtonStyle}" 
-                        x:Name="ButtonCloseMenu" 
-                        Visibility="Collapsed"
-                        Width="60"
-                        Height="50"
-                        Foreground="LightCyan" 
-                        Click="ButtonCloseMenu_Click">
-                        <materialDesign:PackIcon Kind="MenuOpen" Width="25" Height="25"/>
-                    </components:ConciergeDesignButton>
-                </StackPanel>
-            </Grid>
-
             <Grid 
                 x:Name="CharacterHeader" 
-                Grid.Column="1">
-                <StackPanel x:Name="CharacterHeaderPanel" Orientation="Horizontal">
-                </StackPanel>
+                Grid.Column="0">
+                <StackPanel
+                    x:Name="CharacterHeaderPanel"
+                    Orientation="Horizontal"/>
             </Grid>
 
-            <Grid x:Name="OptionButtons" Grid.Column="2">
+            <Grid x:Name="OptionButtons" Grid.Column="1">
                 <materialDesign:PackIcon
                     x:Name="ModifiedStatus"
                     Kind="ContentSaveAlert" 
@@ -393,26 +370,6 @@
                                             Margin="20 10"/>
                                     </StackPanel>
                                 </Button>
-                                <Button 
-                                    x:Name="HelpButton"
-                                    Click="HelpButton_Click"
-                                    Style="{StaticResource ConciergePopupButtonStyle}"
-                                    HorizontalAlignment="Stretch">
-                                    <StackPanel Orientation="Horizontal">
-                                        <materialDesign:PackIcon 
-                                            Kind="HelpCircle" 
-                                            Foreground="#ef476f" 
-                                            Height="25"
-                                            Width="25" 
-                                            Margin="0 10"/>
-                                        <TextBlock 
-                                            Text="Help..." 
-                                            Foreground="White" 
-                                            VerticalAlignment="Center" 
-                                            HorizontalAlignment="Left" 
-                                            Margin="20 10"/>
-                                    </StackPanel>
-                                </Button>
                             </StackPanel>
                         </materialDesign:PopupBox>
                     </components:ConciergeDesignButton>
@@ -448,81 +405,263 @@
             </Grid>
         </Grid>
 
-        <!--  -->
-        <Grid Grid.Row="1">
+        <Grid
+            Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="80"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
 
-            <!-- Content Area -->
+            <ListView
+                Background="#0F0F0F"
+                Grid.Column="0"
+                Foreground="White"
+                x:Name="ListViewMenu" 
+                BorderThickness="0" 
+                ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                SelectionMode="Single">
+
+                <ListViewItem
+                    Height="90"
+                    MouseEnter="ListViewItem_MouseEnter"
+                    MouseLeave="ListViewItem_MouseLeave"
+                    Selected="ListViewItem_Selected">
+                    <StackPanel Orientation="Vertical">
+                        <materialDesign:PackIcon
+                            Foreground="#227EA9" 
+                            Margin="5"
+                            Kind="Globe"
+                            Width="auto"           
+                            Height="auto"/>
+                        <TextBlock
+                            Text="Overview"
+                            HorizontalAlignment="Center"
+                            FontSize="13"/>
+                    </StackPanel>
+                </ListViewItem>
+                <ListViewItem
+                    Height="90"
+                    MouseEnter="ListViewItem_MouseEnter"
+                    MouseLeave="ListViewItem_MouseLeave"
+                    Selected="ListViewItem_Selected">
+                    <StackPanel Orientation="Vertical">
+                        <materialDesign:PackIcon
+                            Foreground="#227EA9" 
+                            Margin="5"
+                            Kind="Details"
+                            Width="auto"           
+                            Height="auto"/>
+                        <TextBlock
+                            Text="Details"
+                            HorizontalAlignment="Center"
+                            FontSize="13"/>
+                    </StackPanel>
+                </ListViewItem>
+                <ListViewItem
+                    Height="90"
+                    MouseEnter="ListViewItem_MouseEnter"
+                    MouseLeave="ListViewItem_MouseLeave"
+                    Selected="ListViewItem_Selected">
+                    <StackPanel Orientation="Vertical">
+                        <materialDesign:PackIcon
+                            Foreground="#227EA9" 
+                            Margin="5"
+                            Kind="SwordCross"
+                            Width="auto"           
+                            Height="auto"/>
+                        <TextBlock
+                            Text="Attacks"
+                            HorizontalAlignment="Center"
+                            FontSize="13"/>
+                    </StackPanel>
+                </ListViewItem>
+                <ListViewItem
+                    Height="90"
+                    MouseEnter="ListViewItem_MouseEnter"
+                    MouseLeave="ListViewItem_MouseLeave"
+                    Selected="ListViewItem_Selected">
+                    <StackPanel Orientation="Vertical">
+                        <materialDesign:PackIcon
+                            Foreground="#227EA9" 
+                            Margin="5"
+                            Kind="Brain"
+                            Width="auto"           
+                            Height="auto"/>
+                        <TextBlock
+                            Text="Abilities"
+                            HorizontalAlignment="Center"
+                            FontSize="13"/>
+                    </StackPanel>
+                </ListViewItem>
+                <ListViewItem
+                    Height="90"
+                    MouseEnter="ListViewItem_MouseEnter"
+                    MouseLeave="ListViewItem_MouseLeave"
+                    Selected="ListViewItem_Selected">
+                    <StackPanel Orientation="Vertical">
+                        <materialDesign:PackIcon
+                            Foreground="#227EA9" 
+                            Margin="5"
+                            Kind="HumanMaleHeight"
+                            Width="auto"           
+                            Height="auto"/>
+                        <TextBlock
+                            Text="Equipment"
+                            HorizontalAlignment="Center"
+                            FontSize="13"/>
+                    </StackPanel>
+                </ListViewItem>
+                <ListViewItem
+                    Height="90"
+                    MouseEnter="ListViewItem_MouseEnter"
+                    MouseLeave="ListViewItem_MouseLeave"
+                    Selected="ListViewItem_Selected">
+                    <StackPanel Orientation="Vertical">
+                        <materialDesign:PackIcon
+                            Foreground="#227EA9" 
+                            Margin="5"
+                            Kind="Backpack"
+                            Width="auto"           
+                            Height="auto"/>
+                        <TextBlock
+                            Text="Inventory"
+                            HorizontalAlignment="Center"
+                            FontSize="13"/>
+                    </StackPanel>
+                </ListViewItem>
+                <ListViewItem
+                    Height="90"
+                    MouseEnter="ListViewItem_MouseEnter"
+                    MouseLeave="ListViewItem_MouseLeave"
+                    Selected="ListViewItem_Selected">
+                    <StackPanel Orientation="Vertical">
+                        <materialDesign:PackIcon
+                            Foreground="#227EA9" 
+                            Margin="5"
+                            Kind="Magic"
+                            Width="auto"           
+                            Height="auto"/>
+                        <TextBlock
+                            Text="Spellcasting"
+                            HorizontalAlignment="Center"
+                            FontSize="13"/>
+                    </StackPanel>
+                </ListViewItem>
+                <ListViewItem
+                    Height="90"
+                    MouseEnter="ListViewItem_MouseEnter"
+                    MouseLeave="ListViewItem_MouseLeave"
+                    Selected="ListViewItem_Selected">
+                    <StackPanel Orientation="Vertical">
+                        <materialDesign:PackIcon
+                            Foreground="#227EA9" 
+                            Margin="5"
+                            Kind="AccountSupervisor"
+                            Width="auto"           
+                            Height="auto"/>
+                        <TextBlock
+                            Text="Companion"
+                            HorizontalAlignment="Center"
+                            FontSize="13"/>
+                    </StackPanel>
+                </ListViewItem>
+                <ListViewItem
+                    Height="90"
+                    MouseEnter="ListViewItem_MouseEnter"
+                    MouseLeave="ListViewItem_MouseLeave"
+                    Selected="ListViewItem_Selected">
+                    <StackPanel Orientation="Vertical">
+                        <materialDesign:PackIcon
+                            Foreground="#227EA9" 
+                            Margin="5"
+                            Kind="Tools"
+                            Width="auto"           
+                            Height="auto"/>
+                        <TextBlock
+                            Text="Tools"
+                            HorizontalAlignment="Center"
+                            FontSize="13"/>
+                    </StackPanel>
+                </ListViewItem>
+                <ListViewItem
+                    Height="90"
+                    MouseEnter="ListViewItem_MouseEnter"
+                    MouseLeave="ListViewItem_MouseLeave"
+                    Selected="ListViewItem_Selected">
+                    <StackPanel Orientation="Vertical">
+                        <materialDesign:PackIcon
+                            Foreground="#227EA9" 
+                            Margin="5"
+                            Kind="Journal"
+                            Width="auto"           
+                            Height="auto"/>
+                        <TextBlock
+                            Text="Journal"
+                            HorizontalAlignment="Center"
+                            FontSize="13"/>
+                    </StackPanel>
+                </ListViewItem>
+            </ListView>
+
             <Grid
+                Grid.Column="1"
                 x:Name="GridContent"
-                HorizontalAlignment="Right"
-                Width="1020"
                 Background="Transparent">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="1*" />
-                    <RowDefinition Height="20" />
-                </Grid.RowDefinitions>
 
                 <Frame
+                    Margin="0,0,20,0"
                     Name="FrameContent"
-                    ContentRendered="MainWindow_ContentRendered"
-                    Grid.Row="0"/>
-                <Grid Grid.Row="1" x:Name="MessageBar" Margin="0,1,0,0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="15*"/>
-                        <ColumnDefinition Width="58*"/>
-                        <ColumnDefinition Width="15*"/>
-                        <ColumnDefinition Width="12*"/>
-                    </Grid.ColumnDefinitions>
-                    <TextBlock
-                        x:Name="ActiveFileNameTextBlock"
-                        Grid.Column="0"
-                        Foreground="LightCyan"
-                        FontSize="15"
-                        VerticalAlignment="Center"
-                        HorizontalAlignment="Left"
-                        Margin="10,0,0,0"/>
-                    <TextBlock
-                        x:Name="AlertMessageTextBlock"
-                        Grid.Column="1"
-                        Foreground="LightCyan"
-                        FontSize="15"
-                        VerticalAlignment="Center"
-                        HorizontalAlignment="Left"
-                        Margin="10,0,0,0"/>
-                    <TextBlock
-                        x:Name="CurrentPageNameTextBlock"
-                        Grid.Column="2"
-                        Text="Overview Page"
-                        Foreground="LightCyan"
-                        FontSize="15"
-                        VerticalAlignment="Center"
-                        HorizontalAlignment="Center"
-                        Margin="0,0,10,0"/>
-                    <TextBlock
-                        x:Name="DateTimeTextBlock"
-                        Grid.Column="3"
-                        Text="6:28pm 2022-03-11"
-                        Foreground="LightCyan"
-                        FontSize="15"
-                        VerticalAlignment="Center"
-                        HorizontalAlignment="Center"
-                        Margin="0,0,0,0"/>
-                </Grid>
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Stretch"
+                    ContentRendered="MainWindow_ContentRendered"/>
             </Grid>
 
-            <!-- Side Menu Background="#FF191919"-->
-            <Grid x:Name="GridMenu" HorizontalAlignment="Left" Width="60">
+        </Grid>
 
-                <StackPanel>
-                    <ListView 
-                        x:Name="ListViewMenu" 
-                        BorderThickness="0" 
-                        Foreground="LightCyan" 
-                        ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                        SelectionMode="Single">
-                    </ListView>
-                </StackPanel>
-            </Grid>
+        <Grid
+            Grid.Row="2"
+            x:Name="MessageBar"
+            Background="#0F0F0F">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="15*"/>
+                <ColumnDefinition Width="58*"/>
+                <ColumnDefinition Width="15*"/>
+                <ColumnDefinition Width="12*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock
+                x:Name="ActiveFileNameTextBlock"
+                Grid.Column="0"
+                Foreground="White"
+                FontSize="13"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Left"
+                Margin="10,0,0,0"/>
+            <TextBlock
+                x:Name="AlertMessageTextBlock"
+                Grid.Column="1"
+                Foreground="White"
+                FontSize="13"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Left"
+                Margin="10,0,0,0"/>
+            <TextBlock
+                x:Name="CurrentPageNameTextBlock"
+                Grid.Column="2"
+                Text="Overview Page"
+                Foreground="White"
+                FontSize="13"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                Margin="0,0,10,0"/>
+            <TextBlock
+                x:Name="DateTimeTextBlock"
+                Grid.Column="3"
+                Text="6:28pm 2022-03-11"
+                Foreground="White"
+                FontSize="13"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                Margin="0,0,0,0"/>
         </Grid>
     </Grid>
 </Window>

@@ -53,110 +53,14 @@
     <None Include="..\.editorconfig" Link=".editorconfig" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Compile Update="Display\Controls\AppearanceControl.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Display\Controls\ArmorControl.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Display\Controls\AttributeControl.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Display\Controls\ColorPickerControl.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Display\Controls\DiceRollControl.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Display\Controls\DivideLootInputControl.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Display\Controls\DoubleUpDownControl.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Display\Controls\HealthControl.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Display\Controls\HitDiceControl.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Display\Controls\IntegerUpDownControl.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Display\Controls\PersonalityControl.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Display\Controls\SavingThrowControl.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Display\Controls\SearchFilterControl.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Display\Controls\SkillControl.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Display\Controls\SpellSlotsControl.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Display\Controls\WealthControl.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Display\Controls\WeightControl.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Display\Windows\ImageWindow.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Display\Windows\StatusEffectsWindow.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Display\Windows\SavingThrowWindow.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Display\Windows\SkillWindow.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Display\Windows\Utility\AttributeRollWindow.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Display\Windows\Utility\ColorPickerWindow.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Display\Windows\Utility\ConciergeConsoleWindow.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Display\Windows\Utility\CustomColorWindow.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Display\Windows\Utility\HelpWindow.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Display\Windows\Utility\ImportCharacterWindow.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Display\Windows\Utility\KonamiCodeWindow.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Display\Windows\Utility\LevelUpWindow.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Display\Windows\Utility\NameGeneratorWindow.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Display\Windows\Utility\SearchWindow.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Display\Windows\Utility\SplashScreenWindow.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Properties\Resources.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-  </ItemGroup>
-
+	<ItemGroup>
+		<Compile Update="Properties\Resources.Designer.cs">
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>Resources.resx</DependentUpon>
+		</Compile>
+	</ItemGroup>
+	
   <ItemGroup>
     <EmbeddedResource Update="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -177,10 +81,6 @@
     <None Update="Properties\Resources\Videos\hey-whats-going-on.wmv">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Controllers\" />
   </ItemGroup>
 
 </Project>

@@ -9,9 +9,6 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
-    <Compile Update="Display\Controls\KeyboardShortcutControl.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Update="Display\Controls\LabelControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -75,9 +72,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Display\Controls\IntegerUpDownControl.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Display\Controls\KeyboardShortcutControl.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Display\Controls\LabelControl.xaml">
@@ -261,9 +255,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Display\Windows\Utility\CustomColorWindow.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Display\Windows\Utility\HelpWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Display\Windows\Utility\ImportCharacterWindow.xaml">

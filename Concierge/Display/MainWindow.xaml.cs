@@ -10,7 +10,6 @@ namespace Concierge.Display
     using System.Windows.Controls;
     using System.Windows.Input;
     using System.Windows.Interop;
-    using System.Windows.Media.Animation;
     using System.Windows.Navigation;
 
     using Concierge.Character.Characteristics;
@@ -67,18 +66,13 @@ namespace Concierge.Display
             this.dateTimeService.TimeUpdated += this.MainWindow_TimeUpdated;
             this.animatedTimedTextWorkerService.TextUpdated += this.MainWindow_TextUpdated;
 
-            this.mainWindowService = new MainWindowService(this.ListViewItem_Selected);
+            this.mainWindowService = new MainWindowService();
             this.GridContent.Width = GridContentWidthClose;
             this.IsMenuOpen = false;
             this.IgnoreListItemSelectionChanged = true;
-            this.MessageBar.Background = ConciergeColors.TitleMenuBrush;
-            this.GridTitle.Background = ConciergeColors.TitleMenuBrush;
-            this.GridMenu.Background = ConciergeColors.TitleMenuBrush;
-            this.GridMenuButton.Background = ConciergeColors.TitleMenuBrush;
-            this.ListViewMenu.Background = ConciergeColors.TitleMenuBrush;
 
+            this.SetListViewItemTag();
             this.CollapseAll();
-            this.GenerateListViewItems();
             this.ListViewMenu.SelectedIndex = 0;
             this.OverviewPage.Visibility = Visibility.Visible;
             this.FrameContent.Content = this.OverviewPage;
@@ -95,8 +89,6 @@ namespace Concierge.Display
             this.ButtonClose.ResetScaling();
             this.ButtonMinimize.ResetScaling();
             this.MaximizeButton.ResetScaling();
-            this.ButtonCloseMenu.ResetScaling();
-            this.ButtonOpenMenu.ResetScaling();
 
             Program.Logger.Info($"{nameof(MainWindow)} loaded.");
             Program.InitializeMainWindow(this);
@@ -445,23 +437,6 @@ namespace Concierge.Display
             this.ScaleValueY = (double)OnCoerceScaleValueY(this.MainGrid, yScale);
         }
 
-        private void GenerateListViewItems()
-        {
-            var items = this.ListViewMenu.Items;
-            var service = this.mainWindowService;
-
-            items.Add(service.GenerateListViewItem(this.OverviewPage, "Overview", PackIconKind.Globe));
-            items.Add(service.GenerateListViewItem(this.DetailsPage, "Details", PackIconKind.Details));
-            items.Add(service.GenerateListViewItem(this.AttacksPage, "Attacks", PackIconKind.SwordCross));
-            items.Add(service.GenerateListViewItem(this.AbilityPage, "Abilities", PackIconKind.Brain));
-            items.Add(service.GenerateListViewItem(this.EquipmentPage, "Equipped Items", PackIconKind.HumanMaleHeight));
-            items.Add(service.GenerateListViewItem(this.InventoryPage, "Inventory", PackIconKind.Backpack));
-            items.Add(service.GenerateListViewItem(this.SpellcastingPage, "Spellcasting", PackIconKind.Magic));
-            items.Add(service.GenerateListViewItem(this.CompanionPage, "Companion", PackIconKind.AccountSupervisor));
-            items.Add(service.GenerateListViewItem(this.ToolsPage, "Tools", PackIconKind.Tools));
-            items.Add(service.GenerateListViewItem(this.JournalPage, "Notes", PackIconKind.Pen));
-        }
-
         private ConciergeWindowResult CheckSaveBeforeAction(string action)
         {
             if (!Program.IsModified)
@@ -508,6 +483,30 @@ namespace Concierge.Display
             this.autosaveTimer.Stop();
         }
 
+        private void SetListViewItemTag()
+        {
+            this.GetListViewItem(0).Tag = this.OverviewPage;
+            this.GetListViewItem(1).Tag = this.DetailsPage;
+            this.GetListViewItem(2).Tag = this.AttacksPage;
+            this.GetListViewItem(3).Tag = this.AbilityPage;
+            this.GetListViewItem(4).Tag = this.EquipmentPage;
+            this.GetListViewItem(5).Tag = this.InventoryPage;
+            this.GetListViewItem(6).Tag = this.SpellcastingPage;
+            this.GetListViewItem(7).Tag = this.CompanionPage;
+            this.GetListViewItem(8).Tag = this.ToolsPage;
+            this.GetListViewItem(9).Tag = this.JournalPage;
+        }
+
+        private ListViewItem GetListViewItem(int index)
+        {
+            if (this.ListViewMenu.Items[index] is ListViewItem item)
+            {
+                return item;
+            }
+
+            return new ListViewItem();
+        }
+
         private void ChangeWindowState()
         {
             if (this.WindowState == WindowState.Maximized)
@@ -544,9 +543,6 @@ namespace Concierge.Display
                 case Key.Tab:
                     this.PopupBoxControl.IsPopupOpen = !this.PopupBoxControl.IsPopupOpen;
                     break;
-                case Key.CapsLock:
-                    this.OpenMenu();
-                    break;
             }
         }
 
@@ -574,9 +570,6 @@ namespace Concierge.Display
                     break;
                 case Key.F:
                     this.Search();
-                    break;
-                case Key.H:
-                    ConciergeWindowService.ShowWindow(typeof(HelpWindow));
                     break;
                 case Key.I:
                     this.OpenSettings();
@@ -673,26 +666,6 @@ namespace Concierge.Display
 
             this.ControlPlusKeyPress(e);
             this.ShiftPlusKeyPress(e);
-        }
-
-        private void ButtonOpenMenu_Click(object sender, RoutedEventArgs e)
-        {
-            Program.Logger.Info($"Expand sidebar.");
-
-            this.ButtonCloseMenu.Visibility = Visibility.Visible;
-            this.ButtonOpenMenu.Visibility = Visibility.Collapsed;
-
-            this.GridContent.Width = GridContentWidthOpen;
-        }
-
-        private void ButtonCloseMenu_Click(object sender, RoutedEventArgs e)
-        {
-            Program.Logger.Info($"Collapse sidebar.");
-
-            this.ButtonCloseMenu.Visibility = Visibility.Collapsed;
-            this.ButtonOpenMenu.Visibility = Visibility.Visible;
-
-            this.GridContent.Width = GridContentWidthClose;
         }
 
         private void ButtonClose_Click(object sender, RoutedEventArgs e)
@@ -875,13 +848,6 @@ namespace Concierge.Display
             }
         }
 
-        private void HelpButton_Click(object sender, RoutedEventArgs e)
-        {
-            ConciergeSound.TapNavigation();
-            ConciergeWindowService.ShowWindow(typeof(HelpWindow));
-            this.IgnoreSecondPress = true;
-        }
-
         private void MainWindow_ModifiedChanged(object sender, EventArgs e)
         {
             this.ModifiedStatus.Visibility = ((bool)sender) ? Visibility.Visible : Visibility.Collapsed;
@@ -908,16 +874,14 @@ namespace Concierge.Display
             this.IgnoreSecondPress = true;
         }
 
-        private void OpenMenu()
+        private void ListViewItem_MouseEnter(object sender, MouseEventArgs e)
         {
-            var sb = this.FindResource("OpenMenu") as Storyboard;
-            sb?.Begin();
+            Mouse.OverrideCursor = Cursors.Hand;
         }
 
-        private void CloseMenu()
+        private void ListViewItem_MouseLeave(object sender, MouseEventArgs e)
         {
-            var sb = this.FindResource("CloseMenu") as Storyboard;
-            sb?.Begin();
+            Mouse.OverrideCursor = Cursors.Arrow;
         }
     }
 }

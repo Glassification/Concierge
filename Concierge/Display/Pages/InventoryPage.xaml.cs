@@ -1,4 +1,8 @@
-﻿namespace Concierge.Display.Pages
+﻿// <copyright file="InventoryPage.xaml.cs" company="Thomas Beckett">
+// Copyright (c) Thomas Beckett. All rights reserved.
+// </copyright>
+
+namespace Concierge.Display.Pages
 {
     using System;
     using System.Collections.Generic;
