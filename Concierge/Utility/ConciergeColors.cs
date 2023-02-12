@@ -40,9 +40,6 @@ namespace Concierge.Utility
             RectangleBorderHighlight = new SolidColorBrush(Color.FromArgb(255, 34, 126, 169));
             RectangleBorderHighlight.Freeze();
 
-            RectangleBorder = new SolidColorBrush(Color.FromArgb(255, 0, 9, 23));
-            RectangleBorder.Freeze();
-
             Highlight = new SolidColorBrush(Color.FromArgb(255, 28, 57, 71));
             Highlight.Freeze();
 
@@ -58,14 +55,14 @@ namespace Concierge.Utility
             SucceededSaveBrush = ColorUtility.GenerateGradientBrush(SucceededDarkGreen, SucceededLightGreen, new Point(0.5, 0), new Point(0.5, 1));
             SucceededSaveBrush.Freeze();
 
-            ProficiencyBrush = ColorUtility.GenerateGradientBrush(ProficiencyDarkBlue, ProficiencyLightBlue, new Point(0, 0), new Point(1, 1));
-            ProficiencyBrush.Freeze();
-
             ControlForeGray = new SolidColorBrush(Color.FromArgb(255, 51, 51, 51));
             ControlForeGray.Freeze();
 
             ControlBackGray = new SolidColorBrush(Color.FromArgb(255, 43, 43, 43));
             ControlBackGray.Freeze();
+
+            DarkSlateBlue = new SolidColorBrush(Color.FromArgb(255, 51, 65, 92));
+            DarkSlateBlue.Freeze();
         }
 
         public static SolidColorBrush WindowBackground { get; }
@@ -74,7 +71,7 @@ namespace Concierge.Utility
 
         public static LinearGradientBrush SucceededSaveBrush { get; }
 
-        public static LinearGradientBrush ProficiencyBrush { get; }
+        public static SolidColorBrush DarkSlateBlue { get; }
 
         public static SolidColorBrush TotalDarkBoxBrush { get; }
 
@@ -85,8 +82,6 @@ namespace Concierge.Utility
         public static SolidColorBrush UsedBoxBrush { get; }
 
         public static SolidColorBrush RectangleBorderHighlight { get; }
-
-        public static SolidColorBrush RectangleBorder { get; }
 
         public static SolidColorBrush Highlight { get; }
 

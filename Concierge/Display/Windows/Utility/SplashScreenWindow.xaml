@@ -35,7 +35,7 @@
                 <Grid Grid.Row="0">
                     <TextBlock
                         Text="Concierge"
-                        Foreground="#227EA9"
+                        Foreground="#33415C"
                         FontSize="50"
                         FontFamily="Segoe UI SemiBold"
                         Margin="20,10,20,20">
@@ -44,7 +44,7 @@
                         </TextBlock.Effect>
                     </TextBlock>
                     <Line
-                        Stroke="#227EA9"
+                        Stroke="#33415C"
                         StrokeThickness="1"
                         VerticalAlignment="Bottom"
                         Stretch="Uniform"

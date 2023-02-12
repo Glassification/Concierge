@@ -26,7 +26,7 @@
                 <Grid Grid.Column="0">
                     <Ellipse
                         x:Name="ProficiencyBox"
-                        Stroke="#000917"
+                        Stroke="#33415C"
                         Stretch="Uniform"
                         Margin="50,0,0,0"
                         MouseDown="SkillProficiency_MouseDown"
@@ -38,7 +38,7 @@
                 <Grid Grid.Column="1">
                     <Ellipse
                         x:Name="ExpertiseBox"
-                        Stroke="#000917"
+                        Stroke="#33415C"
                         Stretch="Uniform"
                         Margin="50,0,0,0"
                         MouseDown="SkillExpertise_MouseDown"

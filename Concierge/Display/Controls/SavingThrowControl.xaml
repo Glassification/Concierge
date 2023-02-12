@@ -25,7 +25,7 @@
                 <Grid Grid.Column="0">
                     <Ellipse
                         x:Name="ProficiencyBox"
-                        Stroke="#000917"
+                        Stroke="#33415C"
                         Stretch="Uniform"
                         Margin="45,3,3,3"
                         MouseDown="SavingThrowProficiency_MouseDown"

@@ -460,7 +460,7 @@
                             <materialDesign:PackIcon
                                 Grid.Row="1"
                                 Kind="Shield"
-                                Foreground="SlateGray"
+                                Foreground="#33415C"
                                 HorizontalAlignment="Stretch"
                                 VerticalAlignment="Stretch"
                                 Height="auto"

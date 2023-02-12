@@ -9,6 +9,7 @@ namespace Concierge.Display.Pages
     using System.Linq;
     using System.Windows;
     using System.Windows.Controls;
+
     using Concierge.Character.Characteristics;
     using Concierge.Character.Enums;
     using Concierge.Character.Items;

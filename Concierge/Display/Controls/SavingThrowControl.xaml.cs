@@ -99,7 +99,7 @@ namespace Concierge.Display.Controls
 
         public void SetStyle(bool proficiencyFlag, StatusChecks check)
         {
-            this.ProficiencyBox.Fill = proficiencyFlag ? ConciergeColors.ProficiencyBrush : Brushes.Transparent;
+            this.ProficiencyBox.Fill = proficiencyFlag ? ConciergeColors.DarkSlateBlue : Brushes.Transparent;
 
             SetTextStyleHelper(check, this.SavingThrowNameField);
             SetTextStyleHelper(check, this.SavingThrowBonusField);
@@ -153,7 +153,7 @@ namespace Concierge.Display.Controls
                 return;
             }
 
-            ellipse.Stroke = ConciergeColors.RectangleBorder;
+            ellipse.Stroke = ConciergeColors.DarkSlateBlue;
             ellipse.StrokeThickness = 1;
 
             Mouse.OverrideCursor = Cursors.Arrow;

@@ -75,8 +75,8 @@
                                 Background="#333333"
                                 Margin="-1">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="10*"/>
-                                    <ColumnDefinition Width="90*"/>
+                                    <ColumnDefinition Width="15*"/>
+                                    <ColumnDefinition Width="85*"/>
                                 </Grid.ColumnDefinitions>
                                 
                                 <components:ConciergeTextBlock 

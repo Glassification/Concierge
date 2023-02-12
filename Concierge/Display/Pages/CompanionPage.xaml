@@ -573,7 +573,7 @@
                                 Width="0.1*"
                                 ElementStyle="{StaticResource StandardColumnElementStyle}"/>
                             <DataGridTextColumn
-                                Header="Damage Type"
+                                Header="Type"
                                 Binding="{Binding DamageType}"
                                 Width="0.1*"
                                 ElementStyle="{StaticResource StandardColumnElementStyle}"/>
