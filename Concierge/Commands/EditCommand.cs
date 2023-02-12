@@ -4,8 +4,8 @@
 
 namespace Concierge.Commands
 {
+    using Concierge.Display.Enums;
     using Concierge.Exceptions;
-    using Concierge.Interfaces.Enums;
     using Concierge.Utility;
     using Concierge.Utility.Extensions;
     using Newtonsoft.Json;
@@ -26,11 +26,6 @@ namespace Concierge.Commands
             this.OriginalItem = originalItem;
             this.oldItem = oldItem;
             this.newItem = newItem.DeepCopy();
-        }
-
-        public EditCommand(T originalItem, T oldItem, Concierge.Display.Enums.ConciergePage conciergePage)
-            : this(originalItem, oldItem, ConciergePage.None)
-        {
         }
 
         private T OriginalItem { get; set; }

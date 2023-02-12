@@ -105,6 +105,51 @@
     <Compile Update="Display\Controls\WeightControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Display\Windows\ImageWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Display\Windows\StatusEffectsWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Display\Windows\SavingThrowWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Display\Windows\SkillWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Display\Windows\Utility\AttributeRollWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Display\Windows\Utility\ColorPickerWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Display\Windows\Utility\ConciergeConsoleWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Display\Windows\Utility\CustomColorWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Display\Windows\Utility\HelpWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Display\Windows\Utility\ImportCharacterWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Display\Windows\Utility\KonamiCodeWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Display\Windows\Utility\LevelUpWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Display\Windows\Utility\NameGeneratorWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Display\Windows\Utility\SearchWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Display\Windows\Utility\SplashScreenWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Properties\Resources.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -136,7 +181,6 @@
 
   <ItemGroup>
     <Folder Include="Controllers\" />
-    <Folder Include="Display\Windows\Utility\" />
   </ItemGroup>
 
 </Project>

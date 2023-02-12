@@ -1,0 +1,185 @@
+﻿<components:ConciergeWindow
+    x:Class="Concierge.Display.Windows.HitDiceWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:controls="clr-namespace:Concierge.Display.Controls"
+    xmlns:components="clr-namespace:Concierge.Display.Components"
+    mc:Ignorable="d" 
+    Title="Modify Hit Dice"
+    Height="385"
+    Width="650"
+    Style="{StaticResource WindowFontStyle}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="270"/>
+            <RowDefinition Height="70"/>
+        </Grid.RowDefinitions>
+
+        <!--Header-->
+        <Grid Grid.Row="0">
+            <TextBlock 
+                Text="Edit Hit Dice"
+                x:Name="HeaderTextBlock"
+                Foreground="#227EA9"
+                FontSize="35"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                Margin="30, 0, 0, 0"
+                FontWeight="Bold"/>
+            <components:ConciergeDesignButton 
+                Style="{StaticResource ConciergeDesignButtonStyle}" 
+                x:Name="CloseButton"
+                Width="60"
+                Foreground="White"
+                ToolTip="Close"
+                HorizontalAlignment="Right"
+                Click="CloseButton_Click">
+                <materialDesign:PackIcon Kind="WindowClose" Width="25" Height="25"/>
+            </components:ConciergeDesignButton>
+        </Grid>
+
+        <!--Fields-->
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="40*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="40*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="60"/>
+            </Grid.RowDefinitions>
+
+            <components:ConciergeLabel 
+                Grid.Column="0"
+                Grid.Row="0"
+                Text="Used"
+                FontSize="25"
+                Margin="20,0,0,0"
+                HorizontalAlignment="Center"/>
+            
+            <!--Total D6-->
+            <Grid Grid.Column="0" Grid.Row="1">
+                <controls:IntegerUpDownControl x:Name="UsedD6UpDown" Margin="20,0,0,0"/>
+            </Grid>
+
+            <!--Total D8-->
+            <Grid Grid.Column="0" Grid.Row="2">
+                <controls:IntegerUpDownControl x:Name="UsedD8UpDown" Margin="20,0,0,0"/>
+            </Grid>
+
+            <!--Total D10-->
+            <Grid Grid.Column="0" Grid.Row="3">
+                <controls:IntegerUpDownControl x:Name="UsedD10UpDown" Margin="20,0,0,0"/>
+            </Grid>
+
+            <!--Total D12-->
+            <Grid Grid.Column="0" Grid.Row="4">
+                <controls:IntegerUpDownControl x:Name="UsedD12UpDown" Margin="20,0,0,0"/>
+            </Grid>
+
+            <components:ConciergeLabel
+                Grid.Column="1"
+                Grid.Row="1"
+                Text="D6"
+                FontSize="25"
+                HorizontalAlignment="Center"/>
+
+            <components:ConciergeLabel
+                Grid.Column="1"
+                Grid.Row="2"
+                Text="D8"
+                FontSize="25"
+                HorizontalAlignment="Center"/>
+
+            <components:ConciergeLabel
+                Grid.Column="1"
+                Grid.Row="3"
+                Text="D10"
+                FontSize="25"
+                HorizontalAlignment="Center"/>
+
+            <components:ConciergeLabel
+                Grid.Column="1"
+                Grid.Row="4"
+                Text="D12"
+                FontSize="25"
+                HorizontalAlignment="Center"/>
+
+            <components:ConciergeLabel 
+                Grid.Column="2"
+                Grid.Row="0"
+                Text="Total"
+                FontSize="25"
+                Margin="0,0,20,0"
+                HorizontalAlignment="Center"/>
+
+            <!--Used D6-->
+            <Grid Grid.Column="2" Grid.Row="1">
+                <controls:IntegerUpDownControl
+                    x:Name="TotalD6UpDown"
+                    Margin="0,0,20,0"
+                    ValueChanged="TotalUpDown_ValueChanged"/>
+            </Grid>
+
+            <!--Used D8-->
+            <Grid Grid.Column="2" Grid.Row="2">
+                <controls:IntegerUpDownControl
+                    x:Name="TotalD8UpDown"
+                    Margin="0,0,20,0"
+                    ValueChanged="TotalUpDown_ValueChanged"/>
+            </Grid>
+
+            <!--Used D10-->
+            <Grid Grid.Column="2" Grid.Row="3">
+                <controls:IntegerUpDownControl
+                    x:Name="TotalD10UpDown"
+                    Margin="0,0,20,0"
+                    ValueChanged="TotalUpDown_ValueChanged"/>
+            </Grid>
+
+            <!--Used D12-->
+            <Grid Grid.Column="2" Grid.Row="4">
+                <controls:IntegerUpDownControl
+                    x:Name="TotalD12UpDown"
+                    Margin="0,0,20,0"
+                    ValueChanged="TotalUpDown_ValueChanged"/>
+            </Grid>
+            </Grid>
+
+        <!--Buttons-->
+        <Grid Grid.Row="2">
+            <StackPanel
+                Orientation="Horizontal"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center">
+                <components:ConciergeTextButton 
+                    x:Name="OkButton"
+                    Style="{StaticResource ConciergeTextButtonStyle}"
+                    Content="OK"
+                    Click="OkButton_Click">
+                </components:ConciergeTextButton>
+                <components:ConciergeTextButton 
+                    x:Name="ApplyButton"
+                    Style="{StaticResource ConciergeTextButtonStyle}"
+                    Content="Apply"
+                    Click="ApplyButton_Click">
+                </components:ConciergeTextButton>
+                <components:ConciergeTextButton 
+                    x:Name="CancelButton"
+                    Content="Cancel"
+                    Click="CancelButton_Click"
+                    Style="{StaticResource ConciergeTextButtonStyle}">
+                </components:ConciergeTextButton>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</components:ConciergeWindow>

@@ -9,7 +9,7 @@ namespace Concierge.Commands
 
     using Concierge.Character.Enums;
     using Concierge.Character.Items;
-    using Concierge.Interfaces.Enums;
+    using Concierge.Display.Enums;
 
     public sealed class DequipItemCommand : Command
     {
@@ -20,7 +20,7 @@ namespace Concierge.Commands
 
         public DequipItemCommand(Inventory item, int index, Guid equippedId, EquipmentSlot equipmentSlot)
         {
-            this.ConciergePage = ConciergePage.EquippedItems;
+            this.ConciergePage = ConciergePage.Equipment;
             this.equipmentSlot = equipmentSlot;
             this.index = index;
             this.equippedId = equippedId;

@@ -14,7 +14,8 @@ namespace Concierge.Display.Pages
     using Concierge.Character.Statuses;
     using Concierge.Commands;
     using Concierge.Display.Components;
-    using Concierge.Interfaces.AttackDefensePageInterface;
+    using Concierge.Display.Enums;
+    using Concierge.Display.Windows;
     using Concierge.Services;
     using Concierge.Utility.Extensions;
     using Concierge.Utility.Utilities;
@@ -22,7 +23,7 @@ namespace Concierge.Display.Pages
     /// <summary>
     /// Interaction logic for AttacksPage.xaml.
     /// </summary>
-    public partial class AttacksPage : Page, Concierge.Interfaces.IConciergePage
+    public partial class AttacksPage : Page, IConciergePage
     {
         public AttacksPage()
         {
@@ -33,9 +34,7 @@ namespace Concierge.Display.Pages
 
         public bool HasEditableDataGrid => true;
 
-        public Interfaces.Enums.ConciergePage ConciergePage => Interfaces.Enums.ConciergePage.Attacks;
-
-        public Display.Enums.ConciergePage ConciergePage2 => Display.Enums.ConciergePage.Attacks;
+        public ConciergePage ConciergePage => ConciergePage.Attacks;
 
         private List<Weapon> WeaponDisplayList => Program.CcsFile.Character.Weapons.Filter(this.SearchFilter.FilterText).ToList();
 
@@ -53,9 +52,9 @@ namespace Concierge.Display.Pages
                 var index = this.AmmoDataGrid.SelectedIndex;
                 ConciergeWindowService.ShowEdit<Ammunition>(
                     ammunition,
-                    typeof(ModifyAmmoWindow),
+                    typeof(AmmunitionWindow),
                     this.Window_ApplyChanges,
-                    Interfaces.Enums.ConciergePage.Attacks);
+                    ConciergePage.Attacks);
                 this.DrawAmmoList();
                 this.AmmoDataGrid.SetSelectedIndex(index);
             }
@@ -64,9 +63,9 @@ namespace Concierge.Display.Pages
                 var index = this.WeaponDataGrid.SelectedIndex;
                 ConciergeWindowService.ShowEdit<Weapon>(
                     weapon,
-                    typeof(ModifyAttackWindow),
+                    typeof(AttacksWindow),
                     this.Window_ApplyChanges,
-                    Interfaces.Enums.ConciergePage.Attacks);
+                    ConciergePage.Attacks);
                 this.DrawWeaponList();
                 this.WeaponDataGrid.SetSelectedIndex(index);
             }
@@ -75,9 +74,9 @@ namespace Concierge.Display.Pages
                 var index = this.StatusEffectsDataGrid.SelectedIndex;
                 ConciergeWindowService.ShowEdit<StatusEffect>(
                     statusEffect,
-                    typeof(ModifyStatusEffectsWindow),
+                    typeof(StatusEffectsWindow),
                     this.Window_ApplyChanges,
-                    Interfaces.Enums.ConciergePage.Attacks);
+                    ConciergePage.Attacks);
                 this.DrawStatusEffects();
                 this.StatusEffectsDataGrid.SetSelectedIndex(index);
             }
@@ -95,7 +94,7 @@ namespace Concierge.Display.Pages
 
         private bool NextItem<T>(ConciergeDataGrid dataGrid, DrawList drawList, List<T> list, int limit, int increment)
         {
-            var index = dataGrid.NextItem(list, limit, increment, this.ConciergePage2);
+            var index = dataGrid.NextItem(list, limit, increment, this.ConciergePage);
 
             if (index != -1)
             {
@@ -172,9 +171,9 @@ namespace Concierge.Display.Pages
         {
             var added = ConciergeWindowService.ShowAdd<List<Ammunition>>(
                 Program.CcsFile.Character.Ammunitions,
-                typeof(ModifyAmmoWindow),
+                typeof(AmmunitionWindow),
                 this.Window_ApplyChanges,
-                Interfaces.Enums.ConciergePage.Attacks);
+                ConciergePage.Attacks);
 
             this.DrawAmmoList();
             if (added)
@@ -187,9 +186,9 @@ namespace Concierge.Display.Pages
         {
             var added = ConciergeWindowService.ShowAdd<List<Weapon>>(
                 Program.CcsFile.Character.Weapons,
-                typeof(ModifyAttackWindow),
+                typeof(AttacksWindow),
                 this.Window_ApplyChanges,
-                Interfaces.Enums.ConciergePage.Attacks);
+                ConciergePage.Attacks);
 
             this.DrawWeaponList();
             if (added)
@@ -268,27 +267,27 @@ namespace Concierge.Display.Pages
 
         private void WeaponDataGrid_Sorted(object sender, RoutedEventArgs e)
         {
-            //DisplayUtility.SortListFromDataGrid(this.WeaponDataGrid, Program.CcsFile.Character.Weapons, this.ConciergePage);
+            DisplayUtility.SortListFromDataGrid(this.WeaponDataGrid, Program.CcsFile.Character.Weapons, this.ConciergePage);
         }
 
         private void AmmoDataGrid_Sorted(object sender, RoutedEventArgs e)
         {
-            //DisplayUtility.SortListFromDataGrid(this.AmmoDataGrid, Program.CcsFile.Character.Ammunitions, this.ConciergePage);
+            DisplayUtility.SortListFromDataGrid(this.AmmoDataGrid, Program.CcsFile.Character.Ammunitions, this.ConciergePage);
         }
 
         private void Window_ApplyChanges(object sender, EventArgs e)
         {
             switch (sender?.GetType()?.Name)
             {
-                case nameof(ModifyStatusEffectsWindow):
+                case nameof(StatusEffectsWindow):
                     this.DrawStatusEffects();
                     ScrollDataGrid(this.StatusEffectsDataGrid);
                     break;
-                case nameof(ModifyAmmoWindow):
+                case nameof(AmmunitionWindow):
                     this.DrawAmmoList();
                     ScrollDataGrid(this.AmmoDataGrid);
                     break;
-                case nameof(ModifyAttackWindow):
+                case nameof(AttacksWindow):
                     this.DrawWeaponList();
                     ScrollDataGrid(this.WeaponDataGrid);
                     break;
@@ -322,9 +321,9 @@ namespace Concierge.Display.Pages
         {
             var added = ConciergeWindowService.ShowAdd<List<StatusEffect>>(
                 Program.CcsFile.Character.StatusEffects,
-                typeof(ModifyStatusEffectsWindow),
+                typeof(StatusEffectsWindow),
                 this.Window_ApplyChanges,
-                Interfaces.Enums.ConciergePage.Attacks);
+                ConciergePage.Attacks);
             this.DrawStatusEffects();
 
             if (added)
@@ -345,7 +344,7 @@ namespace Concierge.Display.Pages
 
         private void StatusEffectsDataGrid_Sorted(object sender, RoutedEventArgs e)
         {
-            //DisplayUtility.SortListFromDataGrid(this.StatusEffectsDataGrid, Program.CcsFile.Character.StatusEffects, this.ConciergePage);
+            DisplayUtility.SortListFromDataGrid(this.StatusEffectsDataGrid, Program.CcsFile.Character.StatusEffects, this.ConciergePage);
         }
 
         private void AttackDataGrid_Filtered(object sender, RoutedEventArgs e)

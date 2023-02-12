@@ -7,7 +7,6 @@ namespace Concierge.Commands
     using System.Collections.Generic;
 
     using Concierge.Display.Enums;
-    using Concierge.Interfaces.Enums;
 
     public sealed class ListOrderCommand<T> : Command
     {
@@ -15,17 +14,9 @@ namespace Concierge.Commands
         private readonly List<T> oldListOrder;
         private readonly List<T> newListOrder;
 
-        public ListOrderCommand(List<T> sourceList, List<T> oldListOrder, List<T> newListOrder, Interfaces.Enums.ConciergePage conciergePage)
+        public ListOrderCommand(List<T> sourceList, List<T> oldListOrder, List<T> newListOrder, ConciergePage conciergePage)
         {
             this.ConciergePage = conciergePage;
-            this.sourceList = sourceList;
-            this.oldListOrder = oldListOrder;
-            this.newListOrder = newListOrder;
-        }
-
-        public ListOrderCommand(List<T> sourceList, List<T> oldListOrder, List<T> newListOrder, Display.Enums.ConciergePage conciergePage)
-        {
-            //this.ConciergePage = conciergePage;
             this.sourceList = sourceList;
             this.oldListOrder = oldListOrder;
             this.newListOrder = newListOrder;

@@ -10,7 +10,7 @@ namespace Concierge.Services
     using System.Windows.Media;
 
     using Concierge.Character.Characteristics;
-    using Concierge.Interfaces;
+    using Concierge.Display;
     using Concierge.Utility.Extensions;
     using MaterialDesignThemes.Wpf;
 

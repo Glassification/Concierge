@@ -9,7 +9,7 @@ namespace Concierge
     using System.Reflection;
 
     using Concierge.Character;
-    using Concierge.Interfaces;
+    using Concierge.Display;
     using Concierge.Logging;
     using Concierge.Persistence;
     using Concierge.Persistence.ReadWriters;

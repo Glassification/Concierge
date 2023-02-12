@@ -18,19 +18,19 @@ namespace Concierge.Display.Pages
     using Concierge.Character.Notes;
     using Concierge.Commands;
     using Concierge.Display.Components;
-    using Concierge.Interfaces.Enums;
-    using Concierge.Interfaces.NotesPageInterface;
+    using Concierge.Display.Enums;
+    using Concierge.Display.Windows;
     using Concierge.Primitives;
     using Concierge.Search;
     using Concierge.Services;
-    using Concierge.Tools.Interface;
+    using Concierge.Tools.Display;
     using Concierge.Utility;
     using Concierge.Utility.Extensions;
 
     /// <summary>
     /// Interaction logic for JournalPage.xaml.
     /// </summary>
-    public partial class JournalPage : Page, Concierge.Interfaces.IConciergePage
+    public partial class JournalPage : Page, IConciergePage
     {
         private const int MaxUndoQueue = 25;
 
@@ -50,9 +50,7 @@ namespace Concierge.Display.Pages
             this.ClearTextBox();
         }
 
-        public ConciergePage ConciergePage => Interfaces.Enums.ConciergePage.Notes;
-
-        public Display.Enums.ConciergePage ConciergePage2 => Display.Enums.ConciergePage.Journal;
+        public ConciergePage ConciergePage => ConciergePage.Journal;
 
         public bool HasEditableDataGrid => false;
 
@@ -499,9 +497,9 @@ namespace Concierge.Display.Pages
 
             ConciergeWindowService.ShowAdd<Chapter?>(
                 button.Tag as Chapter,
-                typeof(ModifyNotesWindow),
+                typeof(JournalWindow),
                 this.Window_ApplyChanges,
-                ConciergePage.Notes);
+                ConciergePage.Journal);
             this.Draw();
         }
 
@@ -514,9 +512,9 @@ namespace Concierge.Display.Pages
 
             ConciergeWindowService.ShowAdd<Chapter?>(
                 button.Tag as Chapter,
-                typeof(ModifyNotesWindow),
+                typeof(JournalWindow),
                 this.Window_ApplyChanges,
-                ConciergePage.Notes);
+                ConciergePage.Journal);
             this.Draw();
         }
 
@@ -531,17 +529,17 @@ namespace Concierge.Display.Pages
             {
                 ConciergeWindowService.ShowEdit<Chapter>(
                     chapterTreeViewItem.Chapter,
-                    typeof(ModifyNotesWindow),
+                    typeof(JournalWindow),
                     this.Window_ApplyChanges,
-                    ConciergePage.Notes);
+                    ConciergePage.Journal);
             }
             else if (this.NotesTreeView.SelectedItem is DocumentTreeViewItem documentTreeViewItem)
             {
                 ConciergeWindowService.ShowEdit<Document>(
                     documentTreeViewItem.Document,
-                    typeof(ModifyNotesWindow),
+                    typeof(JournalWindow),
                     this.Window_ApplyChanges,
-                    ConciergePage.Notes);
+                    ConciergePage.Journal);
             }
 
             this.Draw();
@@ -635,7 +633,7 @@ namespace Concierge.Display.Pages
         {
             switch (sender?.GetType()?.Name)
             {
-                case nameof(ModifyNotesWindow):
+                case nameof(JournalWindow):
                     this.DrawTreeView();
                     break;
             }

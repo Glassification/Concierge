@@ -10,9 +10,9 @@ namespace Concierge
     using System.Windows.Threading;
 
     using Concierge.Configuration;
+    using Concierge.Display;
+    using Concierge.Display.Utility;
     using Concierge.Exceptions;
-    using Concierge.Interfaces;
-    using Concierge.Interfaces.UtilityInterface;
     using Concierge.Services;
 
     using global::Exceptions;

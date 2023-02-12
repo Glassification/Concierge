@@ -13,10 +13,8 @@ namespace Concierge.Display.Pages
     using Concierge.Character.Items;
     using Concierge.Character.Statuses;
     using Concierge.Commands;
-    using Concierge.Interfaces.AttackDefensePageInterface;
-    using Concierge.Interfaces.CompanionPageInterface;
-    using Concierge.Interfaces.EquippedItemsPageInterface;
-    using Concierge.Interfaces.OverviewPageInterface;
+    using Concierge.Display.Enums;
+    using Concierge.Display.Windows;
     using Concierge.Services;
     using Concierge.Utility.Extensions;
     using Concierge.Utility.Utilities;
@@ -24,7 +22,7 @@ namespace Concierge.Display.Pages
     /// <summary>
     /// Interaction logic for CompanionPage.xaml.
     /// </summary>
-    public partial class CompanionPage : Page, Concierge.Interfaces.IConciergePage
+    public partial class CompanionPage : Page, Concierge.Display.IConciergePage
     {
         public CompanionPage()
         {
@@ -32,9 +30,7 @@ namespace Concierge.Display.Pages
             this.HealthDisplay.InitializeDisplay();
         }
 
-        public Interfaces.Enums.ConciergePage ConciergePage => Interfaces.Enums.ConciergePage.Companion;
-
-        public Display.Enums.ConciergePage ConciergePage2 => Display.Enums.ConciergePage.Companion;
+        public ConciergePage ConciergePage => ConciergePage.Companion;
 
         public bool HasEditableDataGrid => true;
 
@@ -60,9 +56,9 @@ namespace Concierge.Display.Pages
             var index = this.WeaponDataGrid.SelectedIndex;
             ConciergeWindowService.ShowEdit<Weapon>(
                 weapon,
-                typeof(ModifyAttackWindow),
+                typeof(AttacksWindow),
                 this.Window_ApplyChanges,
-                Interfaces.Enums.ConciergePage.Companion);
+                ConciergePage.Companion);
             this.DrawAttacks();
             this.WeaponDataGrid.SetSelectedIndex(index);
         }
@@ -133,12 +129,12 @@ namespace Concierge.Display.Pages
 
         private void WeaponDataGrid_Sorted(object sender, RoutedEventArgs e)
         {
-            //DisplayUtility.SortListFromDataGrid(this.WeaponDataGrid, Program.CcsFile.Character.Companion.Attacks, this.ConciergePage);
+            DisplayUtility.SortListFromDataGrid(this.WeaponDataGrid, Program.CcsFile.Character.Companion.Attacks, this.ConciergePage);
         }
 
         private void AttacksUpButton_Click(object sender, RoutedEventArgs e)
         {
-            var index = this.WeaponDataGrid.NextItem(Program.CcsFile.Character.Companion.Attacks, 0, -1, this.ConciergePage2);
+            var index = this.WeaponDataGrid.NextItem(Program.CcsFile.Character.Companion.Attacks, 0, -1, this.ConciergePage);
 
             if (index != -1)
             {
@@ -149,7 +145,7 @@ namespace Concierge.Display.Pages
 
         private void AttacksDownButton_Click(object sender, RoutedEventArgs e)
         {
-            var index = this.WeaponDataGrid.NextItem(Program.CcsFile.Character.Companion.Attacks, Program.CcsFile.Character.Companion.Attacks.Count - 1, 1, this.ConciergePage2);
+            var index = this.WeaponDataGrid.NextItem(Program.CcsFile.Character.Companion.Attacks, Program.CcsFile.Character.Companion.Attacks.Count - 1, 1, this.ConciergePage);
 
             if (index != -1)
             {
@@ -167,9 +163,9 @@ namespace Concierge.Display.Pages
         {
             var added = ConciergeWindowService.ShowAdd<List<Weapon>>(
                 Program.CcsFile.Character.Companion.Attacks,
-                typeof(ModifyAttackWindow),
+                typeof(AttacksWindow),
                 this.Window_ApplyChanges,
-                Interfaces.Enums.ConciergePage.Companion);
+                ConciergePage.Companion);
             this.DrawAttacks();
 
             if (added)
@@ -206,9 +202,9 @@ namespace Concierge.Display.Pages
         {
             ConciergeWindowService.ShowDamage<Vitality>(
                 Program.CcsFile.Character.Companion.Vitality,
-                typeof(ModifyHpWindow),
+                typeof(HpWindow),
                 this.Window_ApplyChanges,
-                Interfaces.Enums.ConciergePage.Companion);
+                ConciergePage.Companion);
             this.DrawHealth();
         }
 
@@ -216,9 +212,9 @@ namespace Concierge.Display.Pages
         {
             ConciergeWindowService.ShowHeal<Vitality>(
                 Program.CcsFile.Character.Companion.Vitality,
-                typeof(ModifyHpWindow),
+                typeof(HpWindow),
                 this.Window_ApplyChanges,
-                Interfaces.Enums.ConciergePage.Companion);
+                ConciergePage.Companion);
             this.DrawHealth();
         }
 
@@ -226,22 +222,22 @@ namespace Concierge.Display.Pages
         {
             switch (sender?.GetType()?.Name)
             {
-                case nameof(ModifyAttributesWindow):
+                case nameof(AttributesWindow):
                     this.DrawAttributes();
                     break;
-                case nameof(ModifyHealthWindow):
+                case nameof(HealthWindow):
                     this.DrawHealth();
                     break;
-                case nameof(ModifyHitDiceWindow):
+                case nameof(HitDiceWindow):
                     this.DrawHitDice();
                     break;
-                case nameof(ModifyAttackWindow):
+                case nameof(AttacksWindow):
                     this.DrawAttacks();
                     break;
-                case nameof(ModifyCompanionPropertiesWindow):
+                case nameof(CompanionWindow):
                     this.DrawDetails();
                     break;
-                case nameof(ModifyCharacterImageWindow):
+                case nameof(ImageWindow):
                     this.DrawImage();
                     break;
             }

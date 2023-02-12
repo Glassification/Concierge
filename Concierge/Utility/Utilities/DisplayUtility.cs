@@ -12,8 +12,8 @@ namespace Concierge.Utility.Utilities
     using System.Windows.Media;
 
     using Concierge.Commands;
-    using Concierge.Interfaces.Components;
-    using Concierge.Interfaces.Enums;
+    using Concierge.Display.Components;
+    using Concierge.Display.Enums;
     using Concierge.Utility;
     using Concierge.Utility.Extensions;
 

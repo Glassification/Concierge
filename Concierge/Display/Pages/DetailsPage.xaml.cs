@@ -16,22 +16,22 @@ namespace Concierge.Display.Pages
     using Concierge.Character.Statuses.ConditionStatus;
     using Concierge.Commands;
     using Concierge.Display.Components;
-    using Concierge.Interfaces.AttackDefensePageInterface;
-    using Concierge.Interfaces.DetailsPageInterface;
+    using Concierge.Display.Enums;
+    using Concierge.Display.Windows;
     using Concierge.Services;
     using Concierge.Utility.Utilities;
 
     /// <summary>
     /// Interaction logic for DetailsPage.xaml.
     /// </summary>
-    public partial class DetailsPage : Page, Concierge.Interfaces.IConciergePage
+    public partial class DetailsPage : Page, IConciergePage
     {
         public DetailsPage()
         {
             this.InitializeComponent();
         }
 
-        public Interfaces.Enums.ConciergePage ConciergePage => Interfaces.Enums.ConciergePage.Details;
+        public ConciergePage ConciergePage => ConciergePage.Details;
 
         public bool HasEditableDataGrid => true;
 
@@ -59,9 +59,9 @@ namespace Concierge.Display.Pages
                 var index = selectedDataGrid.SelectedIndex;
                 ConciergeWindowService.ShowEdit<Proficiency>(
                     proficiency,
-                    typeof(ModifyProficiencyWindow),
+                    typeof(ProficiencyWindow),
                     this.Window_ApplyChanges,
-                    Interfaces.Enums.ConciergePage.Details);
+                    ConciergePage.Details);
                 this.DrawProficiencies();
                 selectedDataGrid.SetSelectedIndex(index);
             }
@@ -70,9 +70,9 @@ namespace Concierge.Display.Pages
                 var index = this.LanguagesDataGrid.SelectedIndex;
                 ConciergeWindowService.ShowEdit<Language>(
                     language,
-                    typeof(ModifyLanguagesWindow),
+                    typeof(LanguagesWindow),
                     this.Window_ApplyChanges,
-                    Interfaces.Enums.ConciergePage.Details);
+                    ConciergePage.Details);
                 this.DrawLanguages();
                 this.LanguagesDataGrid.SetSelectedIndex(index);
             }
@@ -81,9 +81,9 @@ namespace Concierge.Display.Pages
                 var index = this.ResourcesDataGrid.SelectedIndex;
                 ConciergeWindowService.ShowEdit<ClassResource>(
                     resource,
-                    typeof(ModifyClassResourceWindow),
+                    typeof(ClassResourceWindow),
                     this.Window_ApplyChanges,
-                    Interfaces.Enums.ConciergePage.Details);
+                    ConciergePage.Details);
                 this.DrawResources();
                 this.ResourcesDataGrid.SetSelectedIndex(index);
             }
@@ -232,9 +232,9 @@ namespace Concierge.Display.Pages
         {
             var added = ConciergeWindowService.ShowAdd<List<Proficiency>>(
                 Program.CcsFile.Character.Proficiencies,
-                typeof(ModifyProficiencyWindow),
+                typeof(ProficiencyWindow),
                 this.Window_ApplyChanges,
-                Interfaces.Enums.ConciergePage.Details);
+                ConciergePage.Details);
 
             this.DrawProficiencies();
         }
@@ -292,9 +292,9 @@ namespace Concierge.Display.Pages
         {
             ConciergeWindowService.ShowEdit<Conditions>(
                 Program.CcsFile.Character.Vitality.Conditions,
-                typeof(MondifyConditionsWindow),
+                typeof(ConditionsWindow),
                 this.Window_ApplyChanges,
-                Interfaces.Enums.ConciergePage.Details);
+                ConciergePage.Details);
             this.DrawConditions();
         }
 
@@ -321,9 +321,9 @@ namespace Concierge.Display.Pages
         {
             var added = ConciergeWindowService.ShowAdd<List<Language>>(
                 Program.CcsFile.Character.Languages,
-                typeof(ModifyLanguagesWindow),
+                typeof(LanguagesWindow),
                 this.Window_ApplyChanges,
-                Interfaces.Enums.ConciergePage.Details);
+                ConciergePage.Details);
             this.DrawLanguages();
 
             if (added)
@@ -336,9 +336,9 @@ namespace Concierge.Display.Pages
         {
             var added = ConciergeWindowService.ShowAdd<List<ClassResource>>(
                 Program.CcsFile.Character.ClassResources,
-                typeof(ModifyClassResourceWindow),
+                typeof(ClassResourceWindow),
                 this.Window_ApplyChanges,
-                Interfaces.Enums.ConciergePage.Details);
+                ConciergePage.Details);
             this.DrawResources();
 
             if (added)
@@ -396,37 +396,37 @@ namespace Concierge.Display.Pages
 
         private void LanguagesDataGrid_Sorted(object sender, RoutedEventArgs e)
         {
-            //DisplayUtility.SortListFromDataGrid(this.LanguagesDataGrid, Program.CcsFile.Character.Languages, this.ConciergePage);
+            DisplayUtility.SortListFromDataGrid(this.LanguagesDataGrid, Program.CcsFile.Character.Languages, this.ConciergePage);
         }
 
         private void ResourcesDataGrid_Sorted(object sender, RoutedEventArgs e)
         {
-            //DisplayUtility.SortListFromDataGrid(this.ResourcesDataGrid, Program.CcsFile.Character.ClassResources, this.ConciergePage);
+            DisplayUtility.SortListFromDataGrid(this.ResourcesDataGrid, Program.CcsFile.Character.ClassResources, this.ConciergePage);
         }
 
         private void Window_ApplyChanges(object sender, EventArgs e)
         {
             switch (sender?.GetType()?.Name)
             {
-                case nameof(ModifyArmorWindow):
+                case nameof(ArmorWindow):
                     this.DrawArmor();
                     break;
-                case nameof(ModifyAppearanceWindow):
+                case nameof(AppearanceWindow):
                     this.DrawAppearance();
                     break;
-                case nameof(ModifyClassResourceWindow):
+                case nameof(ClassResourceWindow):
                     this.DrawResources();
                     break;
-                case nameof(MondifyConditionsWindow):
+                case nameof(ConditionsWindow):
                     this.DrawConditions();
                     break;
-                case nameof(ModifyLanguagesWindow):
+                case nameof(LanguagesWindow):
                     this.DrawLanguages();
                     break;
-                case nameof(ModifyPersonalityWindow):
+                case nameof(PersonalityWindow):
                     this.DrawPersonality();
                     break;
-                case nameof(ModifyProficiencyWindow):
+                case nameof(ProficiencyWindow):
                     this.DrawProficiencies();
                     break;
             }

@@ -6,8 +6,8 @@ namespace Concierge.Search
 {
     using System.Text.RegularExpressions;
 
-    using Concierge.Interfaces;
-    using Concierge.Interfaces.OverviewPageInterface;
+    using Concierge.Display;
+    using Concierge.Display.Pages;
 
     public sealed class SearchResult
     {

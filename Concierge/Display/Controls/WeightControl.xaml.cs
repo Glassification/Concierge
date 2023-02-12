@@ -1,4 +1,4 @@
-﻿// <copyright file="WeightDisplay.xaml.cs" company="Thomas Beckett">
+﻿// <copyright file="WeightControl.xaml.cs" company="Thomas Beckett">
 // Copyright (c) Thomas Beckett. All rights reserved.
 // </copyright>
 

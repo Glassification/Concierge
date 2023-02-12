@@ -10,8 +10,8 @@ namespace Concierge.Search
     using System.Text.RegularExpressions;
     using System.Windows.Controls;
 
-    using Concierge.Interfaces;
-    using Concierge.Interfaces.Components;
+    using Concierge.Display;
+    using Concierge.Display.Components;
     using Concierge.Search.Enums;
     using Concierge.Utility;
     using Concierge.Utility.Extensions;
@@ -95,14 +95,14 @@ namespace Concierge.Search
         {
             this.SearchPage(this.MainWindow.OverviewPage);
             this.SearchPage(this.MainWindow.DetailsPage);
-            this.SearchPage(this.MainWindow.AttackDefensePage);
-            this.SearchPage(this.MainWindow.AbilitiesPage);
-            this.SearchPage(this.MainWindow.EquippedItemsPage);
+            this.SearchPage(this.MainWindow.AttacksPage);
+            this.SearchPage(this.MainWindow.AbilityPage);
+            this.SearchPage(this.MainWindow.EquipmentPage);
             this.SearchPage(this.MainWindow.InventoryPage);
             this.SearchPage(this.MainWindow.SpellcastingPage);
             this.SearchPage(this.MainWindow.CompanionPage);
             this.SearchPage(this.MainWindow.ToolsPage);
-            this.SearchPage(this.MainWindow.NotesPage);
+            this.SearchPage(this.MainWindow.JournalPage);
         }
 
         private void SearchPage(IConciergePage conciergePage)

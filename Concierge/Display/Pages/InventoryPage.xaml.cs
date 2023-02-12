@@ -9,14 +9,15 @@
     using Concierge.Character.Items;
     using Concierge.Commands;
     using Concierge.Display.Enums;
-    using Concierge.Interfaces.InventoryPageInterface;
+    using Concierge.Display.Windows;
     using Concierge.Services;
     using Concierge.Utility.Extensions;
+    using Concierge.Utility.Utilities;
 
     /// <summary>
     /// Interaction logic for InventoryPage.xaml.
     /// </summary>
-    public partial class InventoryPage : Page, Concierge.Interfaces.IConciergePage
+    public partial class InventoryPage : Page, IConciergePage
     {
         public InventoryPage()
         {
@@ -25,9 +26,7 @@
 
         public bool HasEditableDataGrid => true;
 
-        public Interfaces.Enums.ConciergePage ConciergePage => Interfaces.Enums.ConciergePage.Inventory;
-
-        public ConciergePage ConciergePage2 => Display.Enums.ConciergePage.Inventory;
+        public ConciergePage ConciergePage => ConciergePage.Inventory;
 
         private List<Inventory> DisplayList => Program.CcsFile.Character.Inventories.Filter(this.SearchFilter.FilterText).ToList();
 
@@ -47,9 +46,9 @@
             ConciergeWindowService.ShowEdit<Inventory>(
                 inventory,
                 false,
-                typeof(ModifyInventoryWindow),
+                typeof(InventoryWindow),
                 this.Window_ApplyChanges,
-                Interfaces.Enums.ConciergePage.Inventory);
+                ConciergePage.Inventory);
             this.DrawInventory();
             this.InventoryDataGrid.SetSelectedIndex(index);
         }
@@ -79,7 +78,7 @@
 
         private void UpButton_Click(object sender, RoutedEventArgs e)
         {
-            var index = this.InventoryDataGrid.NextItem(Program.CcsFile.Character.Inventories, 0, -1, this.ConciergePage2);
+            var index = this.InventoryDataGrid.NextItem(Program.CcsFile.Character.Inventories, 0, -1, this.ConciergePage);
 
             if (index != -1)
             {
@@ -90,7 +89,7 @@
 
         private void DownButton_Click(object sender, RoutedEventArgs e)
         {
-            var index = this.InventoryDataGrid.NextItem(Program.CcsFile.Character.Inventories, Program.CcsFile.Character.Inventories.Count - 1, 1, this.ConciergePage2);
+            var index = this.InventoryDataGrid.NextItem(Program.CcsFile.Character.Inventories, Program.CcsFile.Character.Inventories.Count - 1, 1, this.ConciergePage);
 
             if (index != -1)
             {
@@ -108,9 +107,9 @@
         {
             var added = ConciergeWindowService.ShowAdd<List<Inventory>>(
                 Program.CcsFile.Character.Inventories,
-                typeof(ModifyInventoryWindow),
+                typeof(InventoryWindow),
                 this.Window_ApplyChanges,
-                Interfaces.Enums.ConciergePage.Inventory);
+                ConciergePage.Inventory);
             this.DrawInventory();
 
             if (added)
@@ -146,7 +145,7 @@
 
         private void InventoryDataGrid_Sorted(object sender, RoutedEventArgs e)
         {
-            //DisplayUtility.SortListFromDataGrid(this.InventoryDataGrid, Program.CcsFile.Character.Inventories, this.ConciergePage);
+            DisplayUtility.SortListFromDataGrid(this.InventoryDataGrid, Program.CcsFile.Character.Inventories, this.ConciergePage);
         }
 
         private void InventoryDataGrid_Filtered(object sender, RoutedEventArgs e)
@@ -161,7 +160,7 @@
         {
             switch (sender?.GetType()?.Name)
             {
-                case nameof(ModifyInventoryWindow):
+                case nameof(InventoryWindow):
                     this.DrawInventory();
                     this.ScrollInventory();
                     break;

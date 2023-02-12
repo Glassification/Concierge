@@ -7,8 +7,9 @@ namespace Concierge.Search
     using System.Windows.Controls;
 
     using Concierge.Character.Notes;
-    using Concierge.Interfaces.Components;
-    using Concierge.Interfaces.NotesPageInterface;
+    using Concierge.Display.Components;
+    using Concierge.Display.Pages;
+    using Concierge.Display.Windows;
     using Concierge.Utility.Extensions;
     using Concierge.Utility.Utilities;
 
@@ -73,7 +74,7 @@ namespace Concierge.Search
                         parentItem.IsExpanded = true;
                     }
 
-                    (this.SearchResult.ConciergePage as NotesPage)?.HighlightSearchResults(this.SearchResult);
+                    (this.SearchResult.ConciergePage as JournalPage)?.HighlightSearchResults(this.SearchResult);
                 }
 
                 return true;

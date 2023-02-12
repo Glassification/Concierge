@@ -9,9 +9,9 @@ namespace Concierge.Persistence.ReadWriters
     using System.Text.RegularExpressions;
 
     using Concierge.Configuration;
+    using Concierge.Display.Enums;
     using Concierge.Exceptions;
-    using Concierge.Interfaces.Enums;
-    using Concierge.Tools.Interface;
+    using Concierge.Tools.Display;
     using Concierge.Utility.Extensions;
     using Newtonsoft.Json;
 
