@@ -1,0 +1,498 @@
+﻿<Page
+    x:Class="Concierge.Display.Pages.OverviewPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:components="clr-namespace:Concierge.Display.Components"
+    xmlns:controls="clr-namespace:Concierge.Display.Controls"
+    xmlns:local="clr-namespace:Concierge.Display.Pages"
+    mc:Ignorable="d"
+    Title="OverviewPage"
+    Style="{StaticResource PageFontStyle}">
+
+    <Grid Background="#202020">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="40*"/>
+                <ColumnDefinition Width="40*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40*"/>
+                    <RowDefinition Height="60*"/>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="25*"/>
+                        <RowDefinition Height="25*"/>
+                        <RowDefinition Height="25*"/>
+                        <RowDefinition Height="25*"/>
+                    </Grid.RowDefinitions>
+
+                    <controls:LabelControl
+                        Grid.Row="0"
+                        x:Name="InitiativeLabel"
+                        Title="Initiative"
+                        ValueSize="30"
+                        EditClicked="Label_EditClicked"/>
+
+                    <controls:LabelControl
+                        Grid.Row="1"
+                        x:Name="PerceptionLabel"
+                        Title="Passive Perception"
+                        ValueSize="30"
+                        EditClicked="Label_EditClicked"/>
+
+                    <controls:LabelControl
+                        Grid.Row="2"
+                        x:Name="VisionLabel"
+                        Title="Vision"
+                        ValueSize="20"
+                        EditClicked="Label_EditClicked"/>
+
+                    <controls:LabelControl
+                        Grid.Row="3"
+                        x:Name="MovementLabel"
+                        Title="Movement Speed"
+                        ValueSize="30"
+                        EditClicked="Label_EditClicked"/>
+                </Grid>
+                
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50*"/>
+                        <ColumnDefinition Width="50*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="33*"/>
+                        <RowDefinition Height="33*"/>
+                        <RowDefinition Height="33*"/>
+                    </Grid.RowDefinitions>
+                    
+                    <controls:AttributeControl
+                        x:Name="StrengthAttributeDisplay"
+                        Grid.Column="0"
+                        Grid.Row="0"
+                        Title="Strength"
+                        EditClicked="AttributeDisplay_EditClicked"/>
+                    <controls:AttributeControl
+                        x:Name="DexterityAttributeDisplay"
+                        Grid.Column="1"
+                        Grid.Row="0"
+                        Title="Dexterity"
+                        EditClicked="AttributeDisplay_EditClicked"/>
+                    <controls:AttributeControl
+                        x:Name="ConstitutionAttributeDisplay"
+                        Grid.Column="0"
+                        Grid.Row="1"
+                        Title="Constitution"
+                        EditClicked="AttributeDisplay_EditClicked"/>
+                    <controls:AttributeControl
+                        x:Name="IntelligenceAttributeDisplay"
+                        Grid.Column="1"
+                        Grid.Row="1"
+                        Title="Intelligence"
+                        EditClicked="AttributeDisplay_EditClicked"/>
+                    <controls:AttributeControl
+                        x:Name="WisdomAttributeDisplay"
+                        Grid.Column="0"
+                        Grid.Row="2"
+                        Title="Wisdom"
+                        EditClicked="AttributeDisplay_EditClicked"/>
+                    <controls:AttributeControl
+                        x:Name="CharismaAttributeDisplay"
+                        Grid.Column="1"
+                        Grid.Row="2"
+                        Title="Charisma"
+                        EditClicked="AttributeDisplay_EditClicked"/>
+                </Grid>
+            </Grid>
+
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30*"/>
+                    <RowDefinition Height="70*"/>
+                </Grid.RowDefinitions>
+
+                <Border
+                    Grid.Row="0"
+                    BorderBrush="#2B2B2B"
+                    BorderThickness="5"
+                    CornerRadius="10"
+                    Margin="5">
+                    <Grid Background="#2B2B2B">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="16*"/>
+                            <RowDefinition Height="14*"/>
+                            <RowDefinition Height="14*"/>
+                            <RowDefinition Height="14*"/>
+                            <RowDefinition Height="14*"/>
+                            <RowDefinition Height="14*"/>
+                            <RowDefinition Height="14*"/>
+                        </Grid.RowDefinitions>
+
+                        <Grid
+                            Grid.Row="0"
+                            MouseUp="Grid_SavingThrowMouseUp">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="15*"/>
+                                <ColumnDefinition Width="65*"/>
+                                <ColumnDefinition Width="20*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Grid
+                                Grid.Column="0"
+                                Margin="0,0,0,5">
+                                <components:ConciergeTextBlock Text="Proficiency"
+                                   Foreground="White"
+                                   FontSize="15"
+                                   FontWeight="Bold"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"/>
+                            </Grid>
+
+                            <Grid Grid.Column="1">
+                                <components:ConciergeTextBlock Text="Saving Throws"
+                                   Foreground="White"
+                                   FontSize="23"
+                                   FontWeight="Bold"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"/>
+                            </Grid>
+
+                            <Grid Grid.Column="20">
+                                <components:ConciergeTextBlock Text="Bonus"
+                                   Foreground="White"
+                                   FontSize="15"
+                                   FontWeight="Bold"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"/>
+                            </Grid>
+                        </Grid>
+
+                        <!--Strength-->
+                        <controls:SavingThrowControl
+                            Grid.Row="1"
+                            x:Name="StrengthSavingThrow"
+                            FillBrush="#FF333333"
+                            SavingThrowName="Strength"
+                            ToggleClicked="SavingThrow_ToggleClicked"/>
+                        <!--Dexterity-->
+                        <controls:SavingThrowControl
+                            Grid.Row="2"
+                            x:Name="DexteritySavingThrow"
+                            SavingThrowName="Dexterity"
+                            ToggleClicked="SavingThrow_ToggleClicked"/>
+                        <!--Constitution-->
+                        <controls:SavingThrowControl
+                            Grid.Row="3"
+                            x:Name="ConstitutionSavingThrow"
+                            FillBrush="#FF333333"
+                            SavingThrowName="Constitution"
+                            ToggleClicked="SavingThrow_ToggleClicked"/>
+                        <!--Intelligence-->
+                        <controls:SavingThrowControl
+                            Grid.Row="4"
+                            x:Name="IntelligenceSavingThrow"
+                            SavingThrowName="Intelligence"
+                            ToggleClicked="SavingThrow_ToggleClicked"/>
+                        <!--Wisdom-->
+                        <controls:SavingThrowControl
+                            Grid.Row="5"
+                            x:Name="WisdomSavingThrow"
+                            FillBrush="#FF333333"
+                            SavingThrowName="Wisdom"
+                            ToggleClicked="SavingThrow_ToggleClicked"/>
+                        <!--Charisma-->
+                        <controls:SavingThrowControl
+                            Grid.Row="6"
+                            x:Name="CharismaSavingThrow"
+                            SavingThrowName="Charisma"
+                            ToggleClicked="SavingThrow_ToggleClicked"/>
+                    </Grid>
+                </Border>
+                
+                <Border
+                    Grid.Row="1"
+                    BorderBrush="#2B2B2B"
+                    BorderThickness="5"
+                    CornerRadius="10"
+                    Margin="5">
+                    <Grid Background="#2B2B2B">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="6.4*"/>
+                            <RowDefinition Height="5.2*"/>
+                            <RowDefinition Height="5.2*"/>
+                            <RowDefinition Height="5.2*"/>
+                            <RowDefinition Height="5.2*"/>
+                            <RowDefinition Height="5.2*"/>
+                            <RowDefinition Height="5.2*"/>
+                            <RowDefinition Height="5.2*"/>
+                            <RowDefinition Height="5.2*"/>
+                            <RowDefinition Height="5.2*"/>
+                            <RowDefinition Height="5.2*"/>
+                            <RowDefinition Height="5.2*"/>
+                            <RowDefinition Height="5.2*"/>
+                            <RowDefinition Height="5.2*"/>
+                            <RowDefinition Height="5.2*"/>
+                            <RowDefinition Height="5.2*"/>
+                            <RowDefinition Height="5.2*"/>
+                            <RowDefinition Height="5.2*"/>
+                            <RowDefinition Height="5.2*"/>
+                        </Grid.RowDefinitions>
+
+                        <Grid
+                            Grid.Row="0"
+                            Margin="0,0,0,5"
+                            MouseUp="Grid_SkillMouseUp">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="15*"/>
+                                <ColumnDefinition Width="15*"/>
+                                <ColumnDefinition Width="55*"/>
+                                <ColumnDefinition Width="15*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <components:ConciergeTextBlock
+                                Grid.Column="0"
+                                Text="Proficiency"
+                                Foreground="White"
+                                FontSize="15"
+                                FontWeight="Bold"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"/>
+                            <components:ConciergeTextBlock
+                                Grid.Column="1"
+                                Text="Expertise"
+                                Foreground="White"
+                                FontSize="15"
+                                FontWeight="Bold"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"/>
+                            <components:ConciergeTextBlock
+                                Grid.Column="2"
+                                Text="Skills"
+                                Foreground="White"
+                                FontSize="23"
+                                FontWeight="Bold"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"/>
+                            <components:ConciergeTextBlock
+                                Grid.Column="3"
+                                Text="Bonus"
+                                Foreground="White"
+                                FontSize="15"
+                                FontWeight="Bold"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"/>
+                            </Grid>
+                        
+                        <!--Athletics-->
+                        <controls:SkillControl
+                            Grid.Row="1"
+                            x:Name="AthleticsSkill"
+                            FillBrush="#FF333333"
+                            SkillName="Athletics"
+                            ToggleClicked="Skill_ToggleClicked"/>
+                        <!--Acrobatics-->
+                        <controls:SkillControl
+                            Grid.Row="2"
+                            x:Name="AcrobaticsSkill"
+                            SkillName="Acrobatics"
+                            ToggleClicked="Skill_ToggleClicked"/>
+                        <!--Sleight of Hand-->
+                        <controls:SkillControl
+                            Grid.Row="3"
+                            x:Name="SleightOfHandSkill"
+                            FillBrush="#FF333333"
+                            SkillName="Sleight Of Hand"
+                            ToggleClicked="Skill_ToggleClicked"/>
+                        <!--Stealth-->
+                        <controls:SkillControl
+                            Grid.Row="4"
+                            x:Name="StealthSkill"
+                            SkillName="Stealth"
+                            ToggleClicked="Skill_ToggleClicked"/>
+                        <!--Arcana-->
+                        <controls:SkillControl
+                            Grid.Row="5"
+                            x:Name="ArcanaSkill"
+                            FillBrush="#FF333333"
+                            SkillName="Arcana"
+                            ToggleClicked="Skill_ToggleClicked"/>
+                        <!--History-->
+                        <controls:SkillControl
+                            Grid.Row="6"
+                            x:Name="HistorySkill"
+                            SkillName="History"
+                            ToggleClicked="Skill_ToggleClicked"/>
+                        <!--Investigation-->
+                        <controls:SkillControl
+                            Grid.Row="7"
+                            x:Name="InvestigationSkill"
+                            FillBrush="#FF333333"
+                            SkillName="Investigation"
+                            ToggleClicked="Skill_ToggleClicked"/>
+                        <!--Nature-->
+                        <controls:SkillControl
+                            Grid.Row="8"
+                            x:Name="NatureSkill"
+                            SkillName="Nature"
+                            ToggleClicked="Skill_ToggleClicked"/>
+                        <!--Religion-->
+                        <controls:SkillControl
+                            Grid.Row="9"
+                            x:Name="ReligionSkill"
+                            FillBrush="#FF333333"
+                            SkillName="Religion"
+                            ToggleClicked="Skill_ToggleClicked"/>
+                        <!--Animal Handling-->
+                        <controls:SkillControl
+                            Grid.Row="10"
+                            x:Name="AnimalHandlingSkill"
+                            SkillName="Animal Handling"
+                            ToggleClicked="Skill_ToggleClicked"/>
+                        <!--Insight-->
+                        <controls:SkillControl
+                            Grid.Row="11"
+                            x:Name="InsightSkill"
+                            FillBrush="#FF333333"
+                            SkillName="Insight"
+                            ToggleClicked="Skill_ToggleClicked"/>
+                        <!--Medicine-->
+                        <controls:SkillControl
+                            Grid.Row="12"
+                            x:Name="MedicineSkill"
+                            SkillName="Medicine"
+                            ToggleClicked="Skill_ToggleClicked"/>
+                        <!--Perception-->
+                        <controls:SkillControl
+                            Grid.Row="13"
+                            x:Name="PerceptionSkill"
+                            FillBrush="#FF333333"
+                            SkillName="Perception"
+                            ToggleClicked="Skill_ToggleClicked"/>
+                        <!--Survival-->
+                        <controls:SkillControl
+                            Grid.Row="14"
+                            x:Name="SurvivalSkill"
+                            SkillName="Survival"
+                            ToggleClicked="Skill_ToggleClicked"/>
+                        <!--Deception-->
+                        <controls:SkillControl
+                            Grid.Row="15"
+                            x:Name="DeceptionSkill"
+                            FillBrush="#FF333333"
+                            SkillName="Deception"
+                            ToggleClicked="Skill_ToggleClicked"/>
+                        <!--Intimidation-->
+                        <controls:SkillControl
+                            Grid.Row="16"
+                            x:Name="IntimidationSkill"
+                            SkillName="Intimidation"
+                            ToggleClicked="Skill_ToggleClicked"/>
+                        <!--Performance-->
+                        <controls:SkillControl
+                            Grid.Row="17"
+                            x:Name="PerformanceSkill"
+                            FillBrush="#FF333333"
+                            SkillName="Performance"
+                            ToggleClicked="Skill_ToggleClicked"/>
+                        <!--Persuasion-->
+                        <controls:SkillControl
+                            Grid.Row="18"
+                            x:Name="PersuasionSkill"
+                            SkillName="Persuasion"
+                            ToggleClicked="Skill_ToggleClicked"/>
+                    </Grid>
+                </Border>
+            </Grid>
+
+            <Grid Grid.Column="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="25*"/>
+                    <RowDefinition Height="25*"/>
+                    <RowDefinition Height="25*"/>
+                    <RowDefinition Height="25*"/>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50*"/>
+                        <ColumnDefinition Width="50*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <controls:HealthControl
+                        Grid.Column="0"
+                        x:Name="HealthDisplay"
+                        HealClicked="HealDamageButton_Click"
+                        DamageClicked="TakeDamageButton_Click"
+                        SaveClicked="HealthDisplay_SaveClicked"
+                        EditClicked="EditHealth_Click"/>
+
+                    <Border
+                        Grid.Column="1"
+                        BorderBrush="#2B2B2B"
+                        BorderThickness="5"
+                        CornerRadius="10"
+                        Margin="5">
+                        <Grid
+                            Grid.Row="1"
+                            Margin="-1"
+                            Background="#2B2B2B">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="15*"/>
+                                <RowDefinition Height="85*"/>
+                            </Grid.RowDefinitions>
+
+                            <components:ConciergeTextBlock
+                                Grid.Row="0"
+                                Text="Armor Class"
+                                Foreground="White"
+                                FontSize="30"
+                                FontFamily="Sergoe UI SemiLight"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"/>
+                            <materialDesign:PackIcon
+                                Grid.Row="1"
+                                Kind="Shield"
+                                Foreground="#33415C"
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Stretch"
+                                Height="auto"
+                                Width="auto"
+                                Margin="0,0,0,0"/>
+                            <components:ConciergeTextBlock 
+                                Grid.Row="1"
+                                x:Name="ArmorClassField"
+                                Foreground="White"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                FontSize="75"
+                                FontWeight="Bold" Margin="0,0,0,0"/>
+                        </Grid>
+                    </Border>
+                </Grid>
+
+                <controls:HitDiceControl
+                    Grid.Row="1"
+                    x:Name="HitDiceDisplay"
+                    EditClicked="HitDiceDisplay_EditClicked"
+                    ValueChanged="HitDiceDisplay_ValueChanged"/>
+
+                <controls:WealthControl
+                    Grid.Row="2"
+                    EditClicked="WealthDisplay_EditClicked"
+                    x:Name="WealthDisplay"/>
+
+                <controls:WeightControl
+                    Grid.Row="3"
+                    x:Name="WeightDisplay"/>
+            </Grid>
+        </Grid>
+    </Grid>
+</Page>

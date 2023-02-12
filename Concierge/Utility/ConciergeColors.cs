@@ -37,14 +37,8 @@ namespace Concierge.Utility
             ControlBackgroundBrush = new SolidColorBrush(Color.FromArgb(255, 55, 55, 55));
             ControlBackgroundBrush.Freeze();
 
-            ToggleBoxBrush = new SolidColorBrush(Color.FromArgb(255, 6, 1, 31));
-            ToggleBoxBrush.Freeze();
-
             RectangleBorderHighlight = new SolidColorBrush(Color.FromArgb(255, 34, 126, 169));
             RectangleBorderHighlight.Freeze();
-
-            RectangleBorder = new SolidColorBrush(Color.FromArgb(255, 0, 9, 23));
-            RectangleBorder.Freeze();
 
             Highlight = new SolidColorBrush(Color.FromArgb(255, 28, 57, 71));
             Highlight.Freeze();
@@ -61,17 +55,14 @@ namespace Concierge.Utility
             SucceededSaveBrush = ColorUtility.GenerateGradientBrush(SucceededDarkGreen, SucceededLightGreen, new Point(0.5, 0), new Point(0.5, 1));
             SucceededSaveBrush.Freeze();
 
-            ProficiencyBrush = ColorUtility.GenerateGradientBrush(ProficiencyDarkBlue, ProficiencyLightBlue, new Point(0, 0), new Point(1, 1));
-            ProficiencyBrush.Freeze();
+            ControlForeGray = new SolidColorBrush(Color.FromArgb(255, 51, 51, 51));
+            ControlForeGray.Freeze();
 
-            TitleMenuBrush = ColorUtility.GenerateGradientBrush(Color.FromArgb(255, 0, 0, 8), Color.FromArgb(255, 0, 0, 14), new Point(0, 0), new Point(0, 1));
-            TitleMenuBrush.Freeze();
+            ControlBackGray = new SolidColorBrush(Color.FromArgb(255, 43, 43, 43));
+            ControlBackGray.Freeze();
 
-            DataGridViewBackground = ColorUtility.GenerateGradientBrush(ProficiencyLightBlue, Color.FromArgb(255, 0, 21, 62), new Point(0, 0), new Point(0, 1));
-            DataGridViewBackground.Freeze();
-
-            TreeViewBackground = ColorUtility.GenerateGradientBrush(ProficiencyLightBlue, Color.FromArgb(255, 51, 65, 92), new Point(0, 0), new Point(0, 1));
-            TreeViewBackground.Freeze();
+            DarkSlateBlue = new SolidColorBrush(Color.FromArgb(255, 51, 65, 92));
+            DarkSlateBlue.Freeze();
         }
 
         public static SolidColorBrush WindowBackground { get; }
@@ -80,13 +71,7 @@ namespace Concierge.Utility
 
         public static LinearGradientBrush SucceededSaveBrush { get; }
 
-        public static LinearGradientBrush ProficiencyBrush { get; }
-
-        public static LinearGradientBrush TitleMenuBrush { get; }
-
-        public static LinearGradientBrush DataGridViewBackground { get; }
-
-        public static LinearGradientBrush TreeViewBackground { get; }
+        public static SolidColorBrush DarkSlateBlue { get; }
 
         public static SolidColorBrush TotalDarkBoxBrush { get; }
 
@@ -96,11 +81,7 @@ namespace Concierge.Utility
 
         public static SolidColorBrush UsedBoxBrush { get; }
 
-        public static SolidColorBrush ToggleBoxBrush { get; }
-
         public static SolidColorBrush RectangleBorderHighlight { get; }
-
-        public static SolidColorBrush RectangleBorder { get; }
 
         public static SolidColorBrush Highlight { get; }
 
@@ -113,6 +94,10 @@ namespace Concierge.Utility
         public static SolidColorBrush MediumCarryCapacity { get; }
 
         public static SolidColorBrush HeavyCarryCapacity { get; }
+
+        public static SolidColorBrush ControlForeGray { get; }
+
+        public static SolidColorBrush ControlBackGray { get; }
 
         private static Color FailedLightRed => Color.FromArgb(255, 245, 133, 143);
 

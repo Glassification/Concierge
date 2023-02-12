@@ -7,15 +7,16 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Interfaces/Dictionary/FontDictionary.xaml"/>
-                <ResourceDictionary Source="Interfaces/Dictionary/ButtonDictionary.xaml"/>
-                <ResourceDictionary Source="Interfaces/Dictionary/ComboBoxDictionary.xaml"/>
-                <ResourceDictionary Source="Interfaces/Dictionary/DataGridDictionary.xaml"/>
-                <ResourceDictionary Source="Interfaces/Dictionary/TreeViewDictionary.xaml"/>
-                <ResourceDictionary Source="Interfaces/Dictionary/CheckBoxDictionary.xaml"/>
-                <ResourceDictionary Source="Interfaces/Dictionary/RadioButtonDictionary.xaml"/>
-                <ResourceDictionary Source="Interfaces/Dictionary/ScrollbarDictionary.xaml"/>
-                <ResourceDictionary Source="Interfaces/Dictionary/ToolTipDictionary.xaml"/>
+                <ResourceDictionary Source="Display/Dictionaries/FontDictionary.xaml"/>
+                <ResourceDictionary Source="Display/Dictionaries/ButtonDictionary.xaml"/>
+                <ResourceDictionary Source="Display/Dictionaries/ComboBoxDictionary.xaml"/>
+                <ResourceDictionary Source="Display/Dictionaries/DataGridDictionary.xaml"/>
+                <ResourceDictionary Source="Display/Dictionaries/DataGridDictionary.xaml"/>
+                <ResourceDictionary Source="Display/Dictionaries/TreeViewDictionary.xaml"/>
+                <ResourceDictionary Source="Display/Dictionaries/CheckBoxDictionary.xaml"/>
+                <ResourceDictionary Source="Display/Dictionaries/RadioButtonDictionary.xaml"/>
+                <ResourceDictionary Source="Display/Dictionaries/ScrollbarDictionary.xaml"/>
+                <ResourceDictionary Source="Display/Dictionaries/ToolTipDictionary.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

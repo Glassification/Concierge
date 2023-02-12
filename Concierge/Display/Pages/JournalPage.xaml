@@ -1,0 +1,261 @@
+﻿<Page
+    x:Class="Concierge.Display.Pages.JournalPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:components="clr-namespace:Concierge.Display.Components"
+    xmlns:controls="clr-namespace:Concierge.Display.Controls"
+    xmlns:local="clr-namespace:Concierge.Display.Pages"
+    mc:Ignorable="d" 
+    d:DesignHeight="600"
+    d:DesignWidth="1020"
+    Title="JournalPage"
+    Style="{StaticResource PageFontStyle}">
+
+    <Grid Background="#202020">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="25*"/>
+            <ColumnDefinition Width="75*"/>
+        </Grid.ColumnDefinitions>
+
+        <Border
+            Margin="5"
+            Grid.Column="0"
+            BorderBrush="#2B2B2B"
+            BorderThickness="5"
+            CornerRadius="10">
+            <Grid
+                Grid.Column="0"
+                Background="#2B2B2B"
+                Margin="-1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="7*"/>
+                    <RowDefinition Height="93*"/>
+                </Grid.RowDefinitions>
+
+                <Border
+                    Grid.Row="0"
+                    Margin="5"
+                    BorderBrush="#FF333333"
+                    BorderThickness="5"
+                    CornerRadius="10">
+                    <Grid
+                        Background="#FF333333"
+                        Margin="-1">
+                        <StackPanel
+                            Orientation="Horizontal"
+                            HorizontalAlignment="Center">
+                            <components:ConciergeDesignButton 
+                                Style="{StaticResource ConciergeDesignButtonStyle}" 
+                                x:Name="UpButton"
+                                Width="60"
+                                Foreground="SteelBlue"
+                                Click="UpButton_Click"
+                                ToolTip="Move Item Up">
+                                <materialDesign:PackIcon Kind="ArrowUpBox" Width="25" Height="25"/>
+                            </components:ConciergeDesignButton>
+                            <components:ConciergeDesignButton 
+                                Style="{StaticResource ConciergeDesignButtonStyle}" 
+                                x:Name="DownButton"
+                                Width="60"
+                                Foreground="SteelBlue"
+                                Click="DownButton_Click"
+                                ToolTip="Move Item Down">
+                                <materialDesign:PackIcon Kind="ArrowDownBox" Width="25" Height="25"/>
+                            </components:ConciergeDesignButton>
+                            <components:ConciergeDesignButton 
+                                Style="{StaticResource ConciergeDesignButtonStyle}" 
+                                x:Name="ClearButton"
+                                Width="60"
+                                Foreground="Silver"
+                                Click="ClearButton_Click"
+                                ToolTip="Clear Selected Item">
+                                <materialDesign:PackIcon Kind="Cancel" Width="25" Height="25"/>
+                            </components:ConciergeDesignButton>
+                            <components:ConciergeDesignButton 
+                                Style="{StaticResource ConciergeDesignButtonStyle}" 
+                                x:Name="EditButton"
+                                Width="60"
+                                Foreground="Khaki"
+                                Click="EditButton_Click"
+                                ToolTip="Edit Selected Item">
+                                <materialDesign:PackIcon Kind="TextBoxEdit" Width="25" Height="25"/>
+                            </components:ConciergeDesignButton>
+                            <components:ConciergeDesignButton 
+                                Style="{StaticResource ConciergeDesignButtonStyle}" 
+                                x:Name="DeleteButton"
+                                Width="60"
+                                Foreground="IndianRed"
+                                Click="DeleteButton_Click"
+                                ToolTip="Delete Selected Item">
+                                <materialDesign:PackIcon Kind="Delete" Width="25" Height="25"/>
+                            </components:ConciergeDesignButton>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+
+                <components:ConciergeTreeView 
+                    Grid.Row="1"
+                    x:Name="NotesTreeView"
+                    Margin="3"
+                    Background="#2B2B2B"
+                    BorderBrush="{x:Null}"
+                    SelectedItemChanged="NotesTreeView_SelectedItemChanged">
+                    <TreeView.Resources>
+                        <SolidColorBrush
+                            x:Key="{x:Static SystemColors.HighlightBrushKey}"
+                            Color="#1C3947" />
+                        <SolidColorBrush
+                            x:Key="{x:Static SystemColors.HighlightTextBrushKey}"
+                            Color="Transparent" />
+                        <SolidColorBrush
+                            x:Key="{x:Static SystemColors.InactiveSelectionHighlightBrushKey}"
+                            Color="Transparent" />
+                        <SolidColorBrush
+                            x:Key="{x:Static SystemColors.InactiveSelectionHighlightTextBrushKey}"
+                            Color="White" />
+                    </TreeView.Resources>
+                </components:ConciergeTreeView>
+            </Grid>
+        </Border>
+
+        <Border
+            Margin="5"
+            Grid.Column="1"
+            BorderBrush="#2B2B2B"
+            BorderThickness="5"
+            CornerRadius="10">
+            <Grid
+                Grid.Column="0"
+                Background="#2B2B2B"
+                Margin="-1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="7*"/>
+                    <RowDefinition Height="93*"/>
+                </Grid.RowDefinitions>
+
+                <Border
+                    Grid.Row="0"
+                    Margin="5"
+                    BorderBrush="#FF333333"
+                    BorderThickness="5"
+                    CornerRadius="10">
+                    <Grid
+                        Background="#FF333333"
+                        Margin="-1">
+                    
+                        <StackPanel
+                            x:Name="ToolbarStackPanel"
+                            Orientation="Horizontal"
+                            HorizontalAlignment="Left">
+                            <components:ConciergeDesignButton 
+                                Style="{StaticResource ConciergeDesignButtonStyle}" 
+                                x:Name="CutButton"
+                                Width="60"
+                                Foreground="#118ab2"
+                                Click="CutButton_Click"
+                                ToolTip="Cut">
+                                <materialDesign:PackIcon Kind="Scissors" Width="25" Height="25"/>
+                            </components:ConciergeDesignButton>
+                            <components:ConciergeDesignButton 
+                                Style="{StaticResource ConciergeDesignButtonStyle}" 
+                                x:Name="CopyButton"
+                                Width="60"
+                                Foreground="#118ab2"
+                                Click="CopyButton_Click"
+                                ToolTip="Copy">
+                                <materialDesign:PackIcon Kind="ContentCopy" Width="25" Height="25"/>
+                            </components:ConciergeDesignButton>
+                            <components:ConciergeDesignButton 
+                                Style="{StaticResource ConciergeDesignButtonStyle}" 
+                                x:Name="PasteButton"
+                                Width="60"
+                                Foreground="#118ab2"
+                                Click="PasteButton_Click"
+                                ToolTip="Paste">
+                                <materialDesign:PackIcon Kind="ContentPaste" Width="25" Height="25"/>
+                            </components:ConciergeDesignButton>
+                            <components:ConciergeDesignButton 
+                                Style="{StaticResource ConciergeDesignButtonStyle}" 
+                                x:Name="UndoButton"
+                                Width="60"
+                                Foreground="#06d6a0"
+                                Click="UndoButton_Click"
+                                ToolTip="Undo">
+                                <materialDesign:PackIcon Kind="Undo" Width="25" Height="25"/>
+                            </components:ConciergeDesignButton>
+                            <components:ConciergeDesignButton 
+                                Style="{StaticResource ConciergeDesignButtonStyle}" 
+                                x:Name="RedoButton"
+                                Width="60"
+                                Foreground="#06d6a0"
+                                Click="RedoButton_Click"
+                                ToolTip="Redo">
+                                <materialDesign:PackIcon Kind="Redo" Width="25" Height="25"/>
+                            </components:ConciergeDesignButton>
+                            <components:ConciergeToggleButton 
+                                x:Name="BoldButton"
+                                Style="{StaticResource ConciergeToggleButtonStyle}"
+                                Width="60"
+                                Foreground="#ffd166"
+                                Click="BoldButton_Click"
+                                ToolTip="Bold">
+                                <materialDesign:PackIcon Kind="FormatBold" Width="25" Height="25"/>
+                            </components:ConciergeToggleButton>
+                            <components:ConciergeToggleButton 
+                                x:Name="ItalicButton"
+                                Style="{StaticResource ConciergeToggleButtonStyle}"
+                                Width="60"
+                                Foreground="#ffd166"
+                                Click="ItalicButton_Click"
+                                ToolTip="Italic">
+                                <materialDesign:PackIcon Kind="FormatItalic" Width="25" Height="25"/>
+                            </components:ConciergeToggleButton>
+                            <components:ConciergeToggleButton 
+                                x:Name="UnderlineButton"
+                                Style="{StaticResource ConciergeToggleButtonStyle}"
+                                Width="60"
+                                Foreground="#ffd166"
+                                Click="UnderlineButton_Click"
+                                ToolTip="Underline">
+                                <materialDesign:PackIcon Kind="FormatUnderline" Width="25" Height="25"/>
+                            </components:ConciergeToggleButton>
+                            <components:ConciergeComboBox 
+                                x:Name="FontFamilyList"
+                                Width="200"
+                                Style="{StaticResource ComboBoxStyle}"
+                                SelectionChanged="FontFamilyList_SelectionChanged"
+                                Margin="5, 0, 5, 0"/>
+                            <components:ConciergeComboBox 
+                                x:Name="FontSizeList"
+                                Style="{StaticResource ComboBoxStyle}"
+                                IsEditable="True"
+                                TextBoxBase.TextChanged="FontSizeList_TextChanged"
+                                Margin="5, 0, 5, 0"/>
+                            <controls:ColorPickerControl
+                                x:Name="ColorPicker"
+                                VerticalAlignment="Center"
+                                ColorChanged="ColorPicker_ColorChanged"/>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+
+                <RichTextBox 
+                    Grid.Row="1"
+                    x:Name="NotesTextBox"
+                    Background="#2B2B2B"
+                    Margin="3"
+                    BorderBrush="{x:Null}"
+                    SpellCheck.IsEnabled="True"
+                    GotFocus="NotesTextBox_GotFocus"
+                    LostFocus="NotesTextBox_LostFocus"
+                    MouseEnter="NotesTextBox_MouseEnter"
+                    MouseLeave="NotesTextBox_MouseLeave"
+                    SelectionChanged="NotesTextBox_SelectionChanged">
+                </RichTextBox>
+            </Grid>
+        </Border>
+    </Grid>
+</Page>

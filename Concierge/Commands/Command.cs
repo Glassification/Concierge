@@ -4,7 +4,7 @@
 
 namespace Concierge.Commands
 {
-    using Concierge.Interfaces.Enums;
+    using Concierge.Display.Enums;
 
     public abstract class Command
     {

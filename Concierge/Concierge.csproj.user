@@ -9,351 +9,276 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
-    <Compile Update="Interfaces\AttackDefensePageInterface\ModifyStatusEffectsWindow.xaml.cs">
+    <Compile Update="Display\Controls\LabelControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Interfaces\Controls\AppearanceDisplay.xaml.cs">
+    <Compile Update="Display\Pages\AbilityPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Interfaces\Controls\ArmorDetailsDisplay.xaml.cs">
+    <Compile Update="Display\Pages\AttacksPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Interfaces\Controls\AttributeDisplay.xaml.cs">
+    <Compile Update="Display\Pages\CompanionPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Interfaces\Controls\ColorPicker.xaml.cs">
+    <Compile Update="Display\Pages\DetailsPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Interfaces\Controls\DiceRollDisplay.xaml.cs">
+    <Compile Update="Display\Pages\EquipmentPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Interfaces\Controls\DivideLootInputDisplay.xaml.cs">
+    <Compile Update="Display\Pages\JournalPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Interfaces\Controls\DoubleUpDown.xaml.cs">
+    <Compile Update="Display\Pages\OverviewPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Interfaces\Controls\HealthDisplay.xaml.cs">
+    <Compile Update="Display\Pages\InventoryPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Interfaces\Controls\HitDiceDisplay.xaml.cs">
+    <Compile Update="Display\Pages\SpellcastingPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Interfaces\Controls\IntegerUpDown.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Interfaces\Controls\KeyboardShotcutDisplay.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Interfaces\Controls\PersonalityDisplay.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Interfaces\Controls\SavingThrowDisplay.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Interfaces\Controls\SearchFilter.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Interfaces\Controls\SkillDisplay.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Interfaces\Controls\SpellSlotsDisplay.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Interfaces\Controls\WealthDisplay.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Interfaces\Controls\WeightDisplay.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Interfaces\EquippedItemsPageInterface\ModifyCharacterImageWindow.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Interfaces\OverviewPageInterface\ModifySavingThrowCheckWindow.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Interfaces\OverviewPageInterface\ModifySkillCheckWindow.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Interfaces\PlayerHandbookPageInterface\PlayerHandbookPage.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Interfaces\UtilityInterface\AttributeRollWindow.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Interfaces\UtilityInterface\ColorPickerWindow.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Interfaces\UtilityInterface\ConciergeConsoleWindow.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Interfaces\UtilityInterface\CustomColorWindow.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Interfaces\UtilityInterface\HelpWindow.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Interfaces\UtilityInterface\ImportCharacterWindow.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Interfaces\UtilityInterface\KonamiCodeWindow.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Interfaces\UtilityInterface\LevelUpWindow.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Interfaces\UtilityInterface\NameGeneratorWindow.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Interfaces\UtilityInterface\SearchWindow.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Interfaces\UtilityInterface\SplashScreenWindow.xaml.cs">
+    <Compile Update="Display\Pages\ToolsPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="Interfaces\AbilitiesPageInterface\AbilitiesPage.xaml">
+    <Page Update="Display\Controls\AppearanceControl.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Interfaces\AbilitiesPageInterface\ModifyAbilitiesWindow.xaml">
+    <Page Update="Display\Controls\ArmorControl.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Interfaces\AttackDefensePageInterface\ModifyStatusEffectsWindow.xaml">
+    <Page Update="Display\Controls\AttributeControl.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Interfaces\CompanionPageInterface\CompanionPage.xaml">
+    <Page Update="Display\Controls\ColorPickerControl.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Interfaces\CompanionPageInterface\ModifyCompanionPropertiesWindow.xaml">
+    <Page Update="Display\Controls\DiceRollControl.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Interfaces\Controls\AppearanceDisplay.xaml">
+    <Page Update="Display\Controls\DivideLootInputControl.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Interfaces\Controls\ArmorDetailsDisplay.xaml">
+    <Page Update="Display\Controls\DoubleUpDownControl.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Interfaces\Controls\AttributeDisplay.xaml">
+    <Page Update="Display\Controls\HealthControl.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Interfaces\Controls\ColorPicker.xaml">
+    <Page Update="Display\Controls\HitDiceControl.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Interfaces\Controls\DiceRollDisplay.xaml">
+    <Page Update="Display\Controls\IntegerUpDownControl.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Interfaces\Controls\DivideLootInputDisplay.xaml">
+    <Page Update="Display\Controls\LabelControl.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Interfaces\Controls\DoubleUpDown.xaml">
+    <Page Update="Display\Controls\PersonalityControl.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Interfaces\Controls\HealthDisplay.xaml">
+    <Page Update="Display\Controls\SavingThrowControl.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Interfaces\Controls\HitDiceDisplay.xaml">
+    <Page Update="Display\Controls\SearchFilterControl.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Interfaces\Controls\IntegerUpDown.xaml">
+    <Page Update="Display\Controls\SkillControl.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Interfaces\Controls\KeyboardShotcutDisplay.xaml">
+    <Page Update="Display\Controls\SpellSlotsControl.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Interfaces\Controls\PersonalityDisplay.xaml">
+    <Page Update="Display\Controls\WealthControl.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Interfaces\Controls\SavingThrowDisplay.xaml">
+    <Page Update="Display\Controls\WeightControl.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Interfaces\Controls\SearchFilter.xaml">
+    <Page Update="Display\Dictionaries\ButtonDictionary.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Interfaces\Controls\SkillDisplay.xaml">
+    <Page Update="Display\Dictionaries\CheckBoxDictionary.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Interfaces\Controls\SpellSlotsDisplay.xaml">
+    <Page Update="Display\Dictionaries\ComboBoxDictionary.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Interfaces\Controls\WealthDisplay.xaml">
+    <Page Update="Display\Dictionaries\DataGridDictionary.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Interfaces\Controls\WeightDisplay.xaml">
+    <Page Update="Display\Dictionaries\FontDictionary.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Interfaces\DetailsPageInterface\DetailsPage.xaml">
+    <Page Update="Display\Dictionaries\RadioButtonDictionary.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Interfaces\DetailsPageInterface\ModifyAppearanceWindow.xaml">
+    <Page Update="Display\Dictionaries\ScrollbarDictionary.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Interfaces\DetailsPageInterface\ModifyClassResourceWindow.xaml">
+    <Page Update="Display\Dictionaries\ToolTipDictionary.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Interfaces\DetailsPageInterface\ModifyConditionsWindow.xaml">
+    <Page Update="Display\Dictionaries\TreeViewDictionary.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Interfaces\DetailsPageInterface\ModifyLanguagesWindow.xaml">
+    <Page Update="Display\MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Interfaces\DetailsPageInterface\ModifyPersonalityWindow.xaml">
+    <Page Update="Display\Pages\AbilityPage.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Interfaces\DetailsPageInterface\ModifyProficiencyWindow.xaml">
+    <Page Update="Display\Pages\AttacksPage.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Interfaces\AttackDefensePageInterface\AttackDefensePage.xaml">
+    <Page Update="Display\Pages\CompanionPage.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Interfaces\AttackDefensePageInterface\ModifyAmmoWindow.xaml">
+    <Page Update="Display\Pages\DetailsPage.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Interfaces\AttackDefensePageInterface\ModifyArmorWindow.xaml">
+    <Page Update="Display\Pages\EquipmentPage.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Interfaces\AttackDefensePageInterface\ModifyAttackWindow.xaml">
+    <Page Update="Display\Pages\JournalPage.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Interfaces\Dictionary\ToolTipDictionary.xaml">
+    <Page Update="Display\Pages\OverviewPage.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Interfaces\EquippedItemsPageInterface\EquippedItemsPage.xaml">
+    <Page Update="Display\Pages\InventoryPage.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Interfaces\EquippedItemsPageInterface\ModifyCharacterImageWindow.xaml">
+    <Page Update="Display\Pages\SpellcastingPage.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Interfaces\EquippedItemsPageInterface\ModifyEquippedItemsWindow.xaml">
+    <Page Update="Display\Pages\ToolsPage.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Interfaces\OverviewPageInterface\ModifySavingThrowCheckWindow.xaml">
+    <Page Update="Display\Windows\AttributesWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Interfaces\OverviewPageInterface\ModifySkillCheckWindow.xaml">
+    <Page Update="Display\Windows\HealthWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Interfaces\PlayerHandbookPageInterface\PlayerHandbookPage.xaml">
+    <Page Update="Display\Windows\HitDiceWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Interfaces\UtilityInterface\AboutConciergeWindow.xaml">
+    <Page Update="Display\Windows\HpWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Interfaces\UtilityInterface\AttributeRollWindow.xaml">
+    <Page Update="Display\Windows\AbilitiesWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Interfaces\UtilityInterface\ColorPickerWindow.xaml">
+    <Page Update="Display\Windows\AmmunitionWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Interfaces\UtilityInterface\ConciergeConsoleWindow.xaml">
+    <Page Update="Display\Windows\AppearanceWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Interfaces\UtilityInterface\ConciergeMessageWindow.xaml">
+    <Page Update="Display\Windows\ArmorWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Interfaces\UtilityInterface\CustomColorWindow.xaml">
+    <Page Update="Display\Windows\AttacksWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Interfaces\UtilityInterface\HelpWindow.xaml">
+    <Page Update="Display\Windows\ImageWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Interfaces\UtilityInterface\ImportCharacterWindow.xaml">
+    <Page Update="Display\Windows\ClassResourceWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Interfaces\UtilityInterface\KonamiCodeWindow.xaml">
+    <Page Update="Display\Windows\CompanionWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Interfaces\UtilityInterface\LevelUpWindow.xaml">
+    <Page Update="Display\Windows\ConditionsWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Interfaces\UtilityInterface\NameGeneratorWindow.xaml">
+    <Page Update="Display\Windows\EquipmentWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Interfaces\UtilityInterface\SearchWindow.xaml">
+    <Page Update="Display\Windows\InventoryWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Interfaces\UtilityInterface\SettingsWindow.xaml">
+    <Page Update="Display\Windows\LanguagesWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Interfaces\InventoryPageInterface\InventoryPage.xaml">
+    <Page Update="Display\Windows\JournalWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Interfaces\InventoryPageInterface\ModifyInventoryWindow.xaml">
+    <Page Update="Display\Windows\PersonalityWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Interfaces\MainWindow.xaml">
+    <Page Update="Display\Windows\ProficiencyWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Interfaces\ModifyPropertiesWindow.xaml">
+    <Page Update="Display\Windows\PropertiesWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Interfaces\NotesPageInterface\ModifyNotesWindow.xaml">
+    <Page Update="Display\Windows\MagicClassWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Interfaces\NotesPageInterface\NotesPage.xaml">
+    <Page Update="Display\Windows\SpellSlotsWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Interfaces\OverviewPageInterface\ModifyAttributesWindow.xaml">
+    <Page Update="Display\Windows\SpellWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Interfaces\OverviewPageInterface\ModifyHealthWindow.xaml">
+    <Page Update="Display\Windows\StatusEffectsWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Interfaces\OverviewPageInterface\ModifyHitDiceWindow.xaml">
+    <Page Update="Display\Windows\SavingThrowWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Interfaces\OverviewPageInterface\ModifyHpWindow.xaml">
+    <Page Update="Display\Windows\SensesWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Interfaces\OverviewPageInterface\ModifySensesWindow.xaml">
+    <Page Update="Display\Windows\SkillWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Interfaces\OverviewPageInterface\ModifyWealthWindow.xaml">
+    <Page Update="Display\Windows\Utility\AboutConciergeWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Interfaces\OverviewPageInterface\OverviewPage.xaml">
+    <Page Update="Display\Windows\Utility\AttributeRollWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Interfaces\SpellcastingPageInterface\ModifySpellClassWindow.xaml">
+    <Page Update="Display\Windows\Utility\ColorPickerWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Interfaces\SpellcastingPageInterface\ModifySpellSlotsWindow.xaml">
+    <Page Update="Display\Windows\Utility\ConciergeConsoleWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Interfaces\SpellcastingPageInterface\ModifySpellWindow.xaml">
+    <Page Update="Display\Windows\Utility\ConciergeMessageWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Interfaces\SpellcastingPageInterface\SpellcastingPage.xaml">
+    <Page Update="Display\Windows\Utility\CustomColorWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Interfaces\ToolsPageInterface\ToolsPage.xaml">
+    <Page Update="Display\Windows\Utility\ImportCharacterWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Interfaces\Dictionary\ButtonDictionary.xaml">
+    <Page Update="Display\Windows\Utility\KonamiCodeWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Interfaces\Dictionary\CheckBoxDictionary.xaml">
+    <Page Update="Display\Windows\Utility\LevelUpWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Interfaces\Dictionary\ComboBoxDictionary.xaml">
+    <Page Update="Display\Windows\Utility\NameGeneratorWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Interfaces\Dictionary\DataGridDictionary.xaml">
+    <Page Update="Display\Windows\Utility\SearchWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Interfaces\Dictionary\RadioButtonDictionary.xaml">
+    <Page Update="Display\Windows\Utility\SettingsWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Interfaces\Dictionary\ScrollbarDictionary.xaml">
+    <Page Update="Display\Windows\Utility\SplashScreenWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Interfaces\Dictionary\TreeViewDictionary.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Interfaces\Dictionary\FontDictionary.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Interfaces\UtilityInterface\SplashScreenWindow.xaml">
+    <Page Update="Display\Windows\WealthWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

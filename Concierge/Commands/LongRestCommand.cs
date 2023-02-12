@@ -7,7 +7,7 @@ namespace Concierge.Commands
     using Concierge.Character;
     using Concierge.Character.Spellcasting;
     using Concierge.Character.Statuses;
-    using Concierge.Interfaces.Enums;
+    using Concierge.Display.Enums;
     using Concierge.Utility.Extensions;
     using Newtonsoft.Json;
 

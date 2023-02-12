@@ -1,0 +1,200 @@
+﻿<UserControl
+    x:Class="Concierge.Display.Controls.WeightControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:components="clr-namespace:Concierge.Display.Components"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:local="clr-namespace:Concierge.Display.Controls"
+    mc:Ignorable="d" 
+    Style="{StaticResource UserControlFontStyle}"
+    d:DesignHeight="450" d:DesignWidth="800">
+    <Grid
+        Grid.Row="0"
+        Margin="5"
+        Background="Transparent">
+        <Border
+            BorderBrush="#2B2B2B"
+            BorderThickness="5"
+            CornerRadius="10">
+        
+            <Grid Background="#2B2B2B">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="45*"/>
+                    <RowDefinition Height="55*"/>
+                </Grid.RowDefinitions>
+
+                <!--Total Weight-->
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50*"/>
+                        <ColumnDefinition Width="50*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid Grid.Column="0">
+                        <components:ConciergeTextBlock 
+                            Text="Weight Carried"
+                            Foreground="White"
+                            FontSize="30"
+                            FontWeight="Bold"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"/>
+                    </Grid>
+
+                    <Border
+                        Margin="10"
+                        Grid.Column="1"
+                        BorderBrush="#ffd8e4bc"
+                        BorderThickness="5"
+                        CornerRadius="10">
+                        <Grid
+                            Margin="-1"
+                            x:Name="WeightCarriedBox"
+                            Background="#ffd8e4bc">
+                            <components:ConciergeTextBlock 
+                                Text="70"
+                                Foreground="Black"
+                                FontSize="40"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                x:Name="WeightCarriedField"/>
+                        </Grid>
+                    </Border>
+                </Grid>
+
+                <!--Capacity-->
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="33*"/>
+                        <ColumnDefinition Width="33*"/>
+                        <ColumnDefinition Width="33*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!--Light-->
+                    <Border
+                        Margin="3"
+                        Grid.Column="0"
+                        BorderBrush="#ffd8e4bc"
+                        BorderThickness="5"
+                        CornerRadius="10">
+                        <Grid Margin="-1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="45*"/>
+                                <RowDefinition Height="55*"/>
+                            </Grid.RowDefinitions>
+
+                            <Grid Grid.Row="0" Background="#ffd8e4bc">
+                                <components:ConciergeTextBlock
+                                    Text="Light"
+                                    FontSize="25"
+                                    Foreground="Black"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"/>
+                            </Grid>
+                            <Line
+                                Grid.Row="0"
+                                Stroke="#227EA9"
+                                StrokeThickness="2"
+                                Stretch="Uniform"
+                                X1="0" X2="1" Y1="0" Y2="0"
+                                VerticalAlignment="Bottom"
+                                StrokeStartLineCap="Round"
+                                StrokeEndLineCap="Round"/>
+                            <Grid Grid.Row="1" Background="#ffd8e4bc">
+                                <components:ConciergeTextBlock 
+                                    FontSize="26"
+                                    Foreground="Black"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    x:Name="LightWeightField"/>
+                            </Grid>
+                        </Grid>
+                    </Border>
+                   
+                    <!--Medium-->
+                    <Border
+                        Margin="3"
+                        Grid.Column="1"
+                        BorderBrush="#fffcd6b4"
+                        BorderThickness="5"
+                        CornerRadius="10">
+                        <Grid Margin="-1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="45*"/>
+                                <RowDefinition Height="55*"/>
+                            </Grid.RowDefinitions>
+
+                            <Grid Grid.Row="0" Background="#fffcd6b4">
+                                <components:ConciergeTextBlock
+                                    Text="Medium"
+                                    FontSize="25"
+                                    Foreground="Black"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"/>
+                            </Grid>
+                            <Line
+                                Grid.Row="0"
+                                Stroke="#227EA9"
+                                StrokeThickness="2"
+                                Stretch="Uniform"
+                                X1="0" X2="1" Y1="0" Y2="0"
+                                VerticalAlignment="Bottom"
+                                StrokeStartLineCap="Round"
+                                StrokeEndLineCap="Round"/>
+                            <Grid Grid.Row="1" Background="#fffcd6b4">
+                                <components:ConciergeTextBlock 
+                                    FontSize="26"
+                                    Foreground="Black"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    x:Name="MediumWeightField"/>
+                            </Grid>
+                        </Grid>
+                    </Border>
+
+                    <!--Heavy-->
+                    <Border
+                        Margin="3"
+                        Grid.Column="2"
+                        BorderBrush="Pink"
+                        BorderThickness="5"
+                        CornerRadius="10">
+                        <Grid Margin="-1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="45*"/>
+                                <RowDefinition Height="55*"/>
+                            </Grid.RowDefinitions>
+
+                            <Grid Grid.Row="0" Background="Pink">
+                                <components:ConciergeTextBlock
+                                    Text="Heavy"
+                                    FontSize="25"
+                                    Foreground="Black"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"/>
+                            </Grid>
+                            <Line
+                                Grid.Row="0"
+                                Stroke="#227EA9"
+                                StrokeThickness="2"
+                                Stretch="Uniform"
+                                X1="0" X2="1" Y1="0" Y2="0"
+                                VerticalAlignment="Bottom"
+                                StrokeStartLineCap="Round"
+                                StrokeEndLineCap="Round"/>
+                            <Grid Grid.Row="1" Background="Pink">
+                                <components:ConciergeTextBlock 
+                                    FontSize="26"
+                                    Foreground="Black"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    x:Name="HeavyWeightField"/>
+                            </Grid>
+                        </Grid>
+                    </Border>
+                </Grid>
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>

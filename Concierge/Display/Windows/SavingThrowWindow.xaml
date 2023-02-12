@@ -1,0 +1,234 @@
+﻿<components:ConciergeWindow  
+    x:Class="Concierge.Display.Windows.SavingThrowWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:components="clr-namespace:Concierge.Display.Components" 
+    mc:Ignorable="d"
+    Title="Modify Saving Throw Checks"
+    Height="295"
+    Width="650"
+    Style="{StaticResource WindowFontStyle}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="180"/>
+            <RowDefinition Height="70"/>
+        </Grid.RowDefinitions>
+
+        <!--Header-->
+        <Grid Grid.Row="0">
+            <TextBlock 
+                Text="Edit Saving Throw Checks"
+                x:Name="HeaderTextBlock"
+                Foreground="#227EA9"
+                FontSize="35"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                Margin="30, 0, 0, 0"
+                FontWeight="Bold"/>
+            <components:ConciergeDesignButton 
+                Style="{StaticResource ConciergeDesignButtonStyle}" 
+                x:Name="CloseButton"
+                Width="60"
+                Foreground="White"
+                ToolTip="Close"
+                HorizontalAlignment="Right"
+                Click="CloseButton_Click">
+                <materialDesign:PackIcon Kind="WindowClose" Width="25" Height="25"/>
+            </components:ConciergeDesignButton>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="5*"/>
+            </Grid.ColumnDefinitions>
+
+            <!--Left-->
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="60"/>
+                </Grid.RowDefinitions>
+
+                <!--Strength-->
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="35*"/>
+                        <ColumnDefinition Width="65*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!--Title-->
+                    <Grid Grid.Column="0">
+                        <components:ConciergeLabel 
+                            Text="Strength:"
+                            FontSize="15"/>
+                    </Grid>
+
+                    <!--Value-->
+                    <Grid Grid.Column="1">
+                        <components:ConciergeComboBox
+                            Style="{StaticResource ComboBoxStyle}"
+                            x:Name="StrengthComboBox"
+                            IsEditable="False"/>
+                    </Grid>
+                </Grid>
+
+                <!--Dexterity-->
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="35*"/>
+                        <ColumnDefinition Width="65*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!--Title-->
+                    <Grid Grid.Column="0">
+                        <components:ConciergeLabel 
+                            Text="Dexterity:"
+                            FontSize="15"/>
+                    </Grid>
+
+                    <!--Value-->
+                    <Grid Grid.Column="1">
+                        <components:ConciergeComboBox
+                            Style="{StaticResource ComboBoxStyle}"
+                            x:Name="DexterityComboBox"
+                            IsEditable="False"/>
+                    </Grid>
+                </Grid>
+
+                <!--Constitution-->
+                <Grid Grid.Row="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="35*"/>
+                        <ColumnDefinition Width="65*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!--Title-->
+                    <Grid Grid.Column="0">
+                        <components:ConciergeLabel 
+                            Text="Constitution:"
+                            FontSize="15"/>
+                    </Grid>
+
+                    <!--Value-->
+                    <Grid Grid.Column="1">
+                        <components:ConciergeComboBox
+                            Style="{StaticResource ComboBoxStyle}"
+                            x:Name="ConstitutionComboBox"
+                            IsEditable="False"/>
+                    </Grid>
+                </Grid>
+            </Grid>
+
+            <!--Right-->
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="33*"/>
+                    <RowDefinition Height="33*"/>
+                    <RowDefinition Height="33*"/>
+                </Grid.RowDefinitions>
+
+                <!--Intelligence-->
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="35*"/>
+                        <ColumnDefinition Width="65*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!--Title-->
+                    <Grid Grid.Column="0">
+                        <components:ConciergeLabel 
+                            Text="Intelligence:"
+                            FontSize="15"/>
+                    </Grid>
+
+                    <!--Value-->
+                    <Grid Grid.Column="1">
+                        <components:ConciergeComboBox
+                            Style="{StaticResource ComboBoxStyle}"
+                            x:Name="IntelligenceComboBox"
+                            IsEditable="False"/>
+                    </Grid>
+                </Grid>
+
+                <!--Wisdom-->
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="35*"/>
+                        <ColumnDefinition Width="65*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!--Title-->
+                    <Grid Grid.Column="0">
+                        <components:ConciergeLabel 
+                            Text="Wisdom:"
+                            FontSize="15"/>
+                    </Grid>
+
+                    <!--Value-->
+                    <Grid Grid.Column="1">
+                        <components:ConciergeComboBox
+                            Style="{StaticResource ComboBoxStyle}"
+                            x:Name="WisdomComboBox"
+                            IsEditable="False"/>
+                    </Grid>
+                </Grid>
+
+                <!--Charisma-->
+                <Grid Grid.Row="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="35*"/>
+                        <ColumnDefinition Width="65*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!--Title-->
+                    <Grid Grid.Column="0">
+                        <components:ConciergeLabel 
+                            Text="Charisma:"
+                            FontSize="15"/>
+                    </Grid>
+
+                    <!--Value-->
+                    <Grid Grid.Column="1">
+                        <components:ConciergeComboBox
+                            Style="{StaticResource ComboBoxStyle}"
+                            x:Name="CharismaComboBox"
+                            IsEditable="False"/>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </Grid>
+        
+        <!--Buttons-->
+        <Grid Grid.Row="2">
+            <StackPanel 
+                Orientation="Horizontal"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center">
+                <components:ConciergeTextButton 
+                    x:Name="OkButton"
+                    Style="{StaticResource ConciergeTextButtonStyle}"
+                    Content="OK"
+                    Click="OkButton_Click">
+                </components:ConciergeTextButton>
+                <components:ConciergeTextButton 
+                    x:Name="ApplyButton"
+                    Style="{StaticResource ConciergeTextButtonStyle}"
+                    Content="Apply"
+                    Click="ApplyButton_Click">
+                </components:ConciergeTextButton>
+                <components:ConciergeTextButton 
+                    x:Name="CancelButton"
+                    Content="Cancel"
+                    Click="CancelButton_Click"
+                    Style="{StaticResource ConciergeTextButtonStyle}">
+                </components:ConciergeTextButton>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</components:ConciergeWindow>

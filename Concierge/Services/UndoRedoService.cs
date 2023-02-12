@@ -9,8 +9,8 @@ namespace Concierge.Utility
     using System.Linq;
 
     using Concierge.Commands;
-    using Concierge.Interfaces;
-    using Concierge.Interfaces.Enums;
+    using Concierge.Display;
+    using Concierge.Display.Enums;
 
     public sealed class UndoRedoService
     {

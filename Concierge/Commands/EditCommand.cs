@@ -4,8 +4,8 @@
 
 namespace Concierge.Commands
 {
+    using Concierge.Display.Enums;
     using Concierge.Exceptions;
-    using Concierge.Interfaces.Enums;
     using Concierge.Utility;
     using Concierge.Utility.Extensions;
     using Newtonsoft.Json;
