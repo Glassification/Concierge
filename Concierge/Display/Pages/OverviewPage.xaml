@@ -38,25 +38,29 @@
                         Grid.Row="0"
                         x:Name="InitiativeLabel"
                         Title="Initiative"
-                        ValueSize="30"/>
+                        ValueSize="30"
+                        EditClicked="Label_EditClicked"/>
 
                     <controls:LabelControl
                         Grid.Row="1"
                         x:Name="PerceptionLabel"
                         Title="Passive Perception"
-                        ValueSize="30"/>
+                        ValueSize="30"
+                        EditClicked="Label_EditClicked"/>
 
                     <controls:LabelControl
                         Grid.Row="2"
                         x:Name="VisionLabel"
                         Title="Vision"
-                        ValueSize="20"/>
+                        ValueSize="20"
+                        EditClicked="Label_EditClicked"/>
 
                     <controls:LabelControl
                         Grid.Row="3"
                         x:Name="MovementLabel"
                         Title="Movement Speed"
-                        ValueSize="30"/>
+                        ValueSize="30"
+                        EditClicked="Label_EditClicked"/>
                 </Grid>
                 
                 <Grid Grid.Row="1">
@@ -74,32 +78,38 @@
                         x:Name="StrengthAttributeDisplay"
                         Grid.Column="0"
                         Grid.Row="0"
-                        Title="Strength"/>
+                        Title="Strength"
+                        EditClicked="AttributeDisplay_EditClicked"/>
                     <controls:AttributeControl
                         x:Name="DexterityAttributeDisplay"
                         Grid.Column="1"
                         Grid.Row="0"
-                        Title="Dexterity"/>
+                        Title="Dexterity"
+                        EditClicked="AttributeDisplay_EditClicked"/>
                     <controls:AttributeControl
                         x:Name="ConstitutionAttributeDisplay"
                         Grid.Column="0"
                         Grid.Row="1"
-                        Title="Constitution"/>
+                        Title="Constitution"
+                        EditClicked="AttributeDisplay_EditClicked"/>
                     <controls:AttributeControl
                         x:Name="IntelligenceAttributeDisplay"
                         Grid.Column="1"
                         Grid.Row="1"
-                        Title="Intelligence"/>
+                        Title="Intelligence"
+                        EditClicked="AttributeDisplay_EditClicked"/>
                     <controls:AttributeControl
                         x:Name="WisdomAttributeDisplay"
                         Grid.Column="0"
                         Grid.Row="2"
-                        Title="Wisdom"/>
+                        Title="Wisdom"
+                        EditClicked="AttributeDisplay_EditClicked"/>
                     <controls:AttributeControl
                         x:Name="CharismaAttributeDisplay"
                         Grid.Column="1"
                         Grid.Row="2"
-                        Title="Charisma"/>
+                        Title="Charisma"
+                        EditClicked="AttributeDisplay_EditClicked"/>
                 </Grid>
             </Grid>
 
@@ -126,14 +136,18 @@
                             <RowDefinition Height="14*"/>
                         </Grid.RowDefinitions>
 
-                        <Grid Grid.Row="0">
+                        <Grid
+                            Grid.Row="0"
+                            MouseUp="Grid_SavingThrowMouseUp">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="15*"/>
                                 <ColumnDefinition Width="65*"/>
                                 <ColumnDefinition Width="20*"/>
                             </Grid.ColumnDefinitions>
 
-                            <Grid Grid.Column="0" Margin="0,0,0,5">
+                            <Grid
+                                Grid.Column="0"
+                                Margin="0,0,0,5">
                                 <components:ConciergeTextBlock Text="Proficiency"
                                    Foreground="White"
                                    FontSize="15"
@@ -232,7 +246,10 @@
                             <RowDefinition Height="5.2*"/>
                         </Grid.RowDefinitions>
 
-                        <Grid Grid.Row="0" Margin="0,0,0,5">
+                        <Grid
+                            Grid.Row="0"
+                            Margin="0,0,0,5"
+                            MouseUp="Grid_SkillMouseUp">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="15*"/>
                                 <ColumnDefinition Width="15*"/>
@@ -464,10 +481,12 @@
                 <controls:HitDiceControl
                     Grid.Row="1"
                     x:Name="HitDiceDisplay"
+                    EditClicked="HitDiceDisplay_EditClicked"
                     ValueChanged="HitDiceDisplay_ValueChanged"/>
 
                 <controls:WealthControl
                     Grid.Row="2"
+                    EditClicked="WealthDisplay_EditClicked"
                     x:Name="WealthDisplay"/>
 
                 <controls:WeightControl

@@ -7,6 +7,7 @@ namespace Concierge.Display.Controls
     using System.ComponentModel;
     using System.Windows;
     using System.Windows.Controls;
+    using System.Windows.Input;
 
     using Concierge.Display.Enums;
 
@@ -151,6 +152,11 @@ namespace Concierge.Display.Controls
         private void OnPropertyChanged(string property)
         {
             this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(property));
+        }
+
+        private void Grid_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            this.RaiseEvent(new RoutedEventArgs(EditClickedEvent));
         }
     }
 }

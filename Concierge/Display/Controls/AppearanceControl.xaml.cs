@@ -6,6 +6,7 @@ namespace Concierge.Display.Controls
 {
     using System.Windows;
     using System.Windows.Controls;
+    using System.Windows.Input;
 
     using Concierge.Character.Characteristics;
 
@@ -44,7 +45,7 @@ namespace Concierge.Display.Controls
             this.MarksField.Text = appearance.DistinguishingMarks;
         }
 
-        private void EditAppearanceButton_Click(object sender, RoutedEventArgs e)
+        private void Grid_MouseUp(object sender, MouseButtonEventArgs e)
         {
             this.RaiseEvent(new RoutedEventArgs(EditClickedEvent));
         }

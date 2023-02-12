@@ -12,7 +12,7 @@
     d:DesignHeight="300" d:DesignWidth="1000">
     <Grid
         Grid.Row="0"
-        Margin="5"
+        Margin="2"
         Background="Transparent">
         <Border
             BorderBrush="#2B2B2B"
@@ -42,7 +42,7 @@
                     </Grid>
 
                     <Border
-                        Margin="5"
+                        Margin="2"
                         Grid.Row="1"
                         BorderBrush="#FF333333"
                         BorderThickness="5"
@@ -84,7 +84,7 @@
 
                         <Border
                             x:Name="PactHeaderBorder"
-                            Margin="5"
+                            Margin="2"
                             Grid.Row="0"
                             BorderBrush="#FF333333"
                             BorderThickness="5"
@@ -106,7 +106,7 @@
                         </Border>
 
                         <Border
-                            Margin="5"
+                            Margin="2"
                             Grid.Row="1"
                             BorderBrush="#FF333333"
                             BorderThickness="5"
@@ -157,7 +157,7 @@
 
                         <Border
                             x:Name="FirstHeaderBorder"
-                            Margin="5"
+                            Margin="2"
                             Grid.Row="0"
                             BorderBrush="#FF333333"
                             BorderThickness="5"
@@ -179,7 +179,7 @@
                         </Border>
 
                         <Border
-                            Margin="5"
+                            Margin="2"
                             Grid.Row="1"
                             BorderBrush="#FF333333"
                             BorderThickness="5"
@@ -230,7 +230,7 @@
 
                         <Border
                             x:Name="SecondHeaderBorder"
-                            Margin="5"
+                            Margin="2"
                             Grid.Row="0"
                             BorderBrush="#FF333333"
                             BorderThickness="5"
@@ -252,7 +252,7 @@
                         </Border>
 
                         <Border
-                            Margin="5"
+                            Margin="2"
                             Grid.Row="1"
                             BorderBrush="#FF333333"
                             BorderThickness="5"
@@ -303,7 +303,7 @@
 
                         <Border
                             x:Name="ThirdHeaderBorder"
-                            Margin="5"
+                            Margin="2"
                             Grid.Row="0"
                             BorderBrush="#FF333333"
                             BorderThickness="5"
@@ -325,7 +325,7 @@
                         </Border>
 
                         <Border
-                            Margin="5"
+                            Margin="2"
                             Grid.Row="1"
                             BorderBrush="#FF333333"
                             BorderThickness="5"
@@ -376,7 +376,7 @@
 
                         <Border
                             x:Name="FourthHeaderBorder"
-                            Margin="5"
+                            Margin="2"
                             Grid.Row="0"
                             BorderBrush="#FF333333"
                             BorderThickness="5"
@@ -398,7 +398,7 @@
                         </Border>
 
                         <Border
-                            Margin="5"
+                            Margin="2"
                             Grid.Row="1"
                             BorderBrush="#FF333333"
                             BorderThickness="5"
@@ -449,7 +449,7 @@
 
                         <Border
                             x:Name="FifthHeaderBorder"
-                            Margin="5"
+                            Margin="2"
                             Grid.Row="0"
                             BorderBrush="#FF333333"
                             BorderThickness="5"
@@ -471,7 +471,7 @@
                         </Border>
 
                         <Border
-                            Margin="5"
+                            Margin="2"
                             Grid.Row="1"
                             BorderBrush="#FF333333"
                             BorderThickness="5"
@@ -522,7 +522,7 @@
 
                         <Border
                             x:Name="SixthHeaderBorder"
-                            Margin="5"
+                            Margin="2"
                             Grid.Row="0"
                             BorderBrush="#FF333333"
                             BorderThickness="5"
@@ -544,7 +544,7 @@
                         </Border>
 
                         <Border
-                            Margin="5"
+                            Margin="2"
                             Grid.Row="1"
                             BorderBrush="#FF333333"
                             BorderThickness="5"
@@ -595,7 +595,7 @@
 
                         <Border
                             x:Name="SeventhHeaderBorder"
-                            Margin="5"
+                            Margin="2"
                             Grid.Row="0"
                             BorderBrush="#FF333333"
                             BorderThickness="5"
@@ -617,7 +617,7 @@
                         </Border>
 
                         <Border
-                            Margin="5"
+                            Margin="2"
                             Grid.Row="1"
                             BorderBrush="#FF333333"
                             BorderThickness="5"
@@ -668,7 +668,7 @@
 
                         <Border
                             x:Name="EighthHeaderBorder"
-                            Margin="5"
+                            Margin="2"
                             Grid.Row="0"
                             BorderBrush="#FF333333"
                             BorderThickness="5"
@@ -690,7 +690,7 @@
                         </Border>
 
                         <Border
-                            Margin="5"
+                            Margin="2"
                             Grid.Row="1"
                             BorderBrush="#FF333333"
                             BorderThickness="5"
@@ -741,7 +741,7 @@
 
                         <Border
                             x:Name="NinethHeaderBorder"
-                            Margin="5"
+                            Margin="2"
                             Grid.Row="0"
                             BorderBrush="#FF333333"
                             BorderThickness="5"
@@ -763,7 +763,7 @@
                         </Border>
 
                         <Border
-                            Margin="5"
+                            Margin="2"
                             Grid.Row="1"
                             BorderBrush="#FF333333"
                             BorderThickness="5"

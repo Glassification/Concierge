@@ -147,7 +147,7 @@ namespace Concierge.Display.Controls
             Mouse.OverrideCursor = Cursors.Arrow;
         }
 
-        private void EditHitDiceButton_Click(object sender, RoutedEventArgs e)
+        private void Grid_MouseUp(object sender, MouseButtonEventArgs e)
         {
             this.RaiseEvent(new RoutedEventArgs(EditClickedEvent));
         }

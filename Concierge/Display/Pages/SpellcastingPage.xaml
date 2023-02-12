@@ -59,6 +59,7 @@
                                     HorizontalAlignment="Left"
                                     Margin="90,0,0,0"/>
                                 <components:ConciergeTextBlock
+                                    Visibility="Collapsed"
                                     Text="(Caster Level 3)"
                                     x:Name="CasterLevelField"
                                     Foreground="White"

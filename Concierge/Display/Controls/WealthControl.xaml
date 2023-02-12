@@ -26,7 +26,9 @@
                 </Grid.RowDefinitions>
 
                 <!--Header-->
-                <Grid Grid.Row="0">
+                <Grid
+                    Grid.Row="0"
+                    MouseUp="Grid_MouseUp">
                     <components:ConciergeTextBlock
                         Text="Wealth"
                         Foreground="White"
@@ -65,7 +67,7 @@
                             <components:ConciergeTextBlock
                                 Text="Gold Value"
                                 Foreground="White"
-                                FontSize="20"
+                                FontSize="15"
                                 HorizontalAlignment="Left"
                                 VerticalAlignment="Center"/>
                         </Grid>
@@ -94,7 +96,7 @@
                             <components:ConciergeTextBlock
                                 Text="Item Value"
                                 Foreground="White"
-                                FontSize="20"
+                                FontSize="15"
                                 HorizontalAlignment="Left"
                                 VerticalAlignment="Center"/>
                         </Grid>

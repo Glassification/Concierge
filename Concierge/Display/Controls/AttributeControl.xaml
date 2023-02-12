@@ -21,7 +21,9 @@
                 </Grid.RowDefinitions>
 
                 <!--Name-->
-                <Grid Grid.Row="0">
+                <Grid
+                    Grid.Row="0"
+                    MouseUp="Grid_MouseUp">
                     <components:ConciergeTextBlock
                         x:Name="AttributeTitle"
                         Text="{Binding Path=Title,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=UserControl}}"

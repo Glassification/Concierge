@@ -7,7 +7,10 @@ namespace Concierge.Display.Pages
     using System;
     using System.Windows;
     using System.Windows.Controls;
-
+    using System.Windows.Input;
+    using Concierge.Character.AbilitySavingThrows;
+    using Concierge.Character.AbilitySkills;
+    using Concierge.Character.Characteristics;
     using Concierge.Character.Statuses;
     using Concierge.Configuration;
     using Concierge.Display;
@@ -225,6 +228,66 @@ namespace Concierge.Display.Pages
                 this.Window_ApplyChanges,
                 ConciergePage.Overview);
             this.DrawHealth();
+        }
+
+        private void HitDiceDisplay_EditClicked(object sender, RoutedEventArgs e)
+        {
+            ConciergeWindowService.ShowEdit<HitDice>(
+                Program.CcsFile.Character.Vitality.HitDice,
+                typeof(HitDiceWindow),
+                this.Window_ApplyChanges,
+                ConciergePage.Overview);
+            this.DrawHitDice();
+        }
+
+        private void WealthDisplay_EditClicked(object sender, RoutedEventArgs e)
+        {
+            ConciergeWindowService.ShowEdit<Wealth>(
+                Program.CcsFile.Character.Wealth,
+                typeof(WealthWindow),
+                this.Window_ApplyChanges,
+                ConciergePage.Overview);
+            this.DrawWealth();
+        }
+
+        private void Grid_SavingThrowMouseUp(object sender, MouseButtonEventArgs e)
+        {
+            ConciergeWindowService.ShowEdit<SavingThrow>(
+                Program.CcsFile.Character.SavingThrow,
+                typeof(SavingThrowWindow),
+                this.Window_ApplyChanges,
+                ConciergePage.Overview);
+            this.DrawSavingThrows();
+        }
+
+        private void Grid_SkillMouseUp(object sender, MouseButtonEventArgs e)
+        {
+            ConciergeWindowService.ShowEdit<Skill>(
+                Program.CcsFile.Character.Skill,
+                typeof(SkillWindow),
+                this.Window_ApplyChanges,
+                ConciergePage.Overview);
+            this.DrawSkills();
+        }
+
+        private void Label_EditClicked(object sender, RoutedEventArgs e)
+        {
+            ConciergeWindowService.ShowEdit<Senses>(
+                Program.CcsFile.Character.Senses,
+                typeof(SensesWindow),
+                this.Window_ApplyChanges,
+                ConciergePage.Overview);
+            this.DrawDetails();
+        }
+
+        private void AttributeDisplay_EditClicked(object sender, RoutedEventArgs e)
+        {
+            ConciergeWindowService.ShowEdit<Attributes>(
+                Program.CcsFile.Character.Attributes,
+                typeof(AttributesWindow),
+                this.Window_ApplyChanges,
+                ConciergePage.Overview);
+            this.DrawAttributes();
         }
 
         private void Window_ApplyChanges(object sender, EventArgs e)

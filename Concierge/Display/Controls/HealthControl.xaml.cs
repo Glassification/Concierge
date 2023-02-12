@@ -6,6 +6,7 @@ namespace Concierge.Display.Controls
 {
     using System.Windows;
     using System.Windows.Controls;
+    using System.Windows.Input;
     using System.Windows.Media;
     using System.Windows.Shapes;
 
@@ -236,7 +237,7 @@ namespace Concierge.Display.Controls
             this.RaiseEvent(new RoutedEventArgs(DamageClickedEvent));
         }
 
-        private void Grid_MouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        private void Grid_MouseUp(object sender, MouseButtonEventArgs e)
         {
             this.RaiseEvent(new RoutedEventArgs(EditClickedEvent));
         }

@@ -419,186 +419,197 @@
                 x:Name="ListViewMenu" 
                 BorderThickness="0" 
                 ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                ScrollViewer.VerticalScrollBarVisibility="Disabled"
                 SelectionMode="Single">
 
                 <ListViewItem
-                    Height="90"
+                    Height="80"
                     MouseEnter="ListViewItem_MouseEnter"
                     MouseLeave="ListViewItem_MouseLeave"
                     Selected="ListViewItem_Selected">
                     <StackPanel Orientation="Vertical">
                         <materialDesign:PackIcon
                             Foreground="#227EA9" 
-                            Margin="5"
+                            Margin="10"
                             Kind="Globe"
                             Width="auto"           
                             Height="auto"/>
                         <TextBlock
+                            Margin="0,-10,0,0"
                             Text="Overview"
                             HorizontalAlignment="Center"
-                            FontSize="13"/>
+                            FontSize="12"/>
                     </StackPanel>
                 </ListViewItem>
                 <ListViewItem
-                    Height="90"
+                    Height="80"
                     MouseEnter="ListViewItem_MouseEnter"
                     MouseLeave="ListViewItem_MouseLeave"
                     Selected="ListViewItem_Selected">
                     <StackPanel Orientation="Vertical">
                         <materialDesign:PackIcon
                             Foreground="#227EA9" 
-                            Margin="5"
+                            Margin="10"
                             Kind="Details"
                             Width="auto"           
                             Height="auto"/>
                         <TextBlock
+                            Margin="0,-10,0,0"
                             Text="Details"
                             HorizontalAlignment="Center"
-                            FontSize="13"/>
+                            FontSize="12"/>
                     </StackPanel>
                 </ListViewItem>
                 <ListViewItem
-                    Height="90"
+                    Height="80"
                     MouseEnter="ListViewItem_MouseEnter"
                     MouseLeave="ListViewItem_MouseLeave"
                     Selected="ListViewItem_Selected">
                     <StackPanel Orientation="Vertical">
                         <materialDesign:PackIcon
                             Foreground="#227EA9" 
-                            Margin="5"
+                            Margin="10"
                             Kind="SwordCross"
                             Width="auto"           
                             Height="auto"/>
                         <TextBlock
+                            Margin="0,-10,0,0"
                             Text="Attacks"
                             HorizontalAlignment="Center"
-                            FontSize="13"/>
+                            FontSize="12"/>
                     </StackPanel>
                 </ListViewItem>
                 <ListViewItem
-                    Height="90"
+                    Height="80"
                     MouseEnter="ListViewItem_MouseEnter"
                     MouseLeave="ListViewItem_MouseLeave"
                     Selected="ListViewItem_Selected">
                     <StackPanel Orientation="Vertical">
                         <materialDesign:PackIcon
                             Foreground="#227EA9" 
-                            Margin="5"
+                            Margin="10"
                             Kind="Brain"
                             Width="auto"           
                             Height="auto"/>
                         <TextBlock
+                            Margin="0,-10,0,0"
                             Text="Abilities"
                             HorizontalAlignment="Center"
-                            FontSize="13"/>
+                            FontSize="12"/>
                     </StackPanel>
                 </ListViewItem>
                 <ListViewItem
-                    Height="90"
+                    Height="80"
                     MouseEnter="ListViewItem_MouseEnter"
                     MouseLeave="ListViewItem_MouseLeave"
                     Selected="ListViewItem_Selected">
                     <StackPanel Orientation="Vertical">
                         <materialDesign:PackIcon
                             Foreground="#227EA9" 
-                            Margin="5"
+                            Margin="10"
                             Kind="HumanMaleHeight"
                             Width="auto"           
                             Height="auto"/>
                         <TextBlock
+                            Margin="0,-10,0,0"
                             Text="Equipment"
                             HorizontalAlignment="Center"
-                            FontSize="13"/>
+                            FontSize="12"/>
                     </StackPanel>
                 </ListViewItem>
                 <ListViewItem
-                    Height="90"
+                    Height="80"
                     MouseEnter="ListViewItem_MouseEnter"
                     MouseLeave="ListViewItem_MouseLeave"
                     Selected="ListViewItem_Selected">
                     <StackPanel Orientation="Vertical">
                         <materialDesign:PackIcon
                             Foreground="#227EA9" 
-                            Margin="5"
+                            Margin="10"
                             Kind="Backpack"
                             Width="auto"           
                             Height="auto"/>
                         <TextBlock
+                            Margin="0,-10,0,0"
                             Text="Inventory"
                             HorizontalAlignment="Center"
-                            FontSize="13"/>
+                            FontSize="12"/>
                     </StackPanel>
                 </ListViewItem>
                 <ListViewItem
-                    Height="90"
+                    Height="80"
                     MouseEnter="ListViewItem_MouseEnter"
                     MouseLeave="ListViewItem_MouseLeave"
                     Selected="ListViewItem_Selected">
                     <StackPanel Orientation="Vertical">
                         <materialDesign:PackIcon
                             Foreground="#227EA9" 
-                            Margin="5"
+                            Margin="10"
                             Kind="Magic"
                             Width="auto"           
                             Height="auto"/>
                         <TextBlock
+                            Margin="0,-10,0,0"
                             Text="Spellcasting"
                             HorizontalAlignment="Center"
-                            FontSize="13"/>
+                            FontSize="12"/>
                     </StackPanel>
                 </ListViewItem>
                 <ListViewItem
-                    Height="90"
+                    Height="80"
                     MouseEnter="ListViewItem_MouseEnter"
                     MouseLeave="ListViewItem_MouseLeave"
                     Selected="ListViewItem_Selected">
                     <StackPanel Orientation="Vertical">
                         <materialDesign:PackIcon
                             Foreground="#227EA9" 
-                            Margin="5"
+                            Margin="10"
                             Kind="AccountSupervisor"
                             Width="auto"           
                             Height="auto"/>
                         <TextBlock
+                            Margin="0,-10,0,0"
                             Text="Companion"
                             HorizontalAlignment="Center"
-                            FontSize="13"/>
+                            FontSize="12"/>
                     </StackPanel>
                 </ListViewItem>
                 <ListViewItem
-                    Height="90"
+                    Height="80"
                     MouseEnter="ListViewItem_MouseEnter"
                     MouseLeave="ListViewItem_MouseLeave"
                     Selected="ListViewItem_Selected">
                     <StackPanel Orientation="Vertical">
                         <materialDesign:PackIcon
                             Foreground="#227EA9" 
-                            Margin="5"
+                            Margin="10"
                             Kind="Tools"
                             Width="auto"           
                             Height="auto"/>
                         <TextBlock
+                            Margin="0,-10,0,0"
                             Text="Tools"
                             HorizontalAlignment="Center"
-                            FontSize="13"/>
+                            FontSize="12"/>
                     </StackPanel>
                 </ListViewItem>
                 <ListViewItem
-                    Height="90"
+                    Height="80"
                     MouseEnter="ListViewItem_MouseEnter"
                     MouseLeave="ListViewItem_MouseLeave"
                     Selected="ListViewItem_Selected">
                     <StackPanel Orientation="Vertical">
                         <materialDesign:PackIcon
                             Foreground="#227EA9" 
-                            Margin="5"
+                            Margin="10"
                             Kind="Journal"
                             Width="auto"           
                             Height="auto"/>
                         <TextBlock
+                            Margin="0,-10,0,0"
                             Text="Journal"
                             HorizontalAlignment="Center"
-                            FontSize="13"/>
+                            FontSize="12"/>
                     </StackPanel>
                 </ListViewItem>
             </ListView>

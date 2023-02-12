@@ -43,7 +43,7 @@
                 <Grid
                     Grid.Column="1"
                     Background="#FF3e3e42"
-                    Margin="0, 3, 3, 3">
+                    Margin="1">
                     <controls:IntegerUpDownControl 
                         x:Name="InputUpDown"
                         Minimum="0"

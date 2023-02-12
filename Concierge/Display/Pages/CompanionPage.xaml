@@ -75,7 +75,7 @@
                                 x:Name="NameField"
                                 Text="0"
                                 TextWrapping="Wrap"
-                                FontSize="30"/>
+                                FontSize="28"/>
                         </Grid>
                     </Border>
 
@@ -108,7 +108,7 @@
                                 <components:ConciergeTextBlock 
                                     Grid.Column="0"
                                     Text="Initiative"
-                                    FontSize="20"
+                                    FontSize="18"
                                     TextWrapping="Wrap"/>
                                 <Line
                                     Grid.Column="0"
@@ -145,7 +145,7 @@
                                 <components:ConciergeTextBlock 
                                     Grid.Column="0"
                                     Text="Perception"
-                                    FontSize="20"
+                                    FontSize="18"
                                     TextWrapping="Wrap"/>
                                 <Line
                                     Grid.Column="0"
@@ -182,7 +182,7 @@
                                 <components:ConciergeTextBlock 
                                     Grid.Column="0"
                                     Text="Vision"
-                                    FontSize="20"
+                                    FontSize="18"
                                     TextWrapping="Wrap"/>
                                 <Line
                                     Grid.Column="0"
@@ -197,7 +197,7 @@
                                     Grid.Column="1"
                                     x:Name="VisionField"
                                     Text="0"
-                                    FontSize="30"/>
+                                    FontSize="25"/>
                             </Grid>
                         </Border>
 
@@ -219,7 +219,7 @@
                                 <components:ConciergeTextBlock 
                                     Grid.Column="0"
                                     Text="Movement"
-                                    FontSize="20"
+                                    FontSize="18"
                                     TextWrapping="Wrap"/>
                                 <Line
                                     Grid.Column="0"
@@ -256,7 +256,7 @@
                                 <components:ConciergeTextBlock 
                                     Grid.Column="0"
                                     Text="Armor Class"
-                                    FontSize="20"
+                                    FontSize="18"
                                     TextWrapping="Wrap"/>
                                 <Line
                                     Grid.Column="0"
@@ -293,7 +293,7 @@
                                 <components:ConciergeTextBlock 
                                     Grid.Column="0"
                                     Text="Creature Size"
-                                    FontSize="20"
+                                    FontSize="18"
                                     TextWrapping="Wrap"/>
                                 <Line
                                     Grid.Column="0"
@@ -308,7 +308,7 @@
                                     Grid.Column="1"
                                     x:Name="CreatureSizeField"
                                     Text="0"
-                                    FontSize="30"/>
+                                    FontSize="25"/>
                             </Grid>
                         </Border>
                     </Grid>

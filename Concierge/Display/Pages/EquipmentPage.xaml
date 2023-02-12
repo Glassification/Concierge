@@ -40,7 +40,7 @@
                         x:Name="SearchFilter"
                         HorizontalAlignment="Center"
                         Width="300"
-                        Margin="150,10,0,10"/>
+                        Margin="150,5,0,5"/>
                 </StackPanel>
 
 

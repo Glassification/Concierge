@@ -7,6 +7,7 @@ namespace Concierge.Display.Controls
     using System.ComponentModel;
     using System.Windows;
     using System.Windows.Controls;
+    using System.Windows.Input;
 
     /// <summary>
     /// Interaction logic for LabelControl.xaml.
@@ -41,12 +42,25 @@ namespace Concierge.Display.Controls
                 typeof(LabelControl),
                 new UIPropertyMetadata(15));
 
+        public static readonly RoutedEvent EditClickedEvent =
+            EventManager.RegisterRoutedEvent(
+                "EditClicked",
+                RoutingStrategy.Bubble,
+                typeof(RoutedEventHandler),
+                typeof(LabelControl));
+
         public LabelControl()
         {
             this.InitializeComponent();
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;
+
+        public event RoutedEventHandler EditClicked
+        {
+            add { this.AddHandler(EditClickedEvent, value); }
+            remove { this.RemoveHandler(EditClickedEvent, value); }
+        }
 
         public int TitleSize
         {
@@ -84,6 +98,11 @@ namespace Concierge.Display.Controls
         private void OnPropertyChanged(string property)
         {
             this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(property));
+        }
+
+        private void Grid_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            this.RaiseEvent(new RoutedEventArgs(EditClickedEvent));
         }
     }
 }

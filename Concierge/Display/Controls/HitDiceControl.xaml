@@ -31,7 +31,9 @@
                         <RowDefinition Height="40*"/>
                     </Grid.RowDefinitions>
 
-                    <Grid Grid.Row="0">
+                    <Grid
+                        Grid.Row="0"
+                        MouseUp="Grid_MouseUp">
                         <components:ConciergeTextBlock
                             Text="Hit Dice"
                             Foreground="White"

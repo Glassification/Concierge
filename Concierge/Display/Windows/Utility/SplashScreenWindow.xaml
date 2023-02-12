@@ -14,113 +14,125 @@
     ShowInTaskbar="False"
     Height="250"
     Width="600"
-    Background="#001233">
+    AllowsTransparency="True"
+    Background="Transparent">
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="40*"/>
-            <RowDefinition Height="50*"/>
-            <RowDefinition Height="10*"/>
-        </Grid.RowDefinitions>
+        <Border
+            Grid.Row="0"
+            BorderBrush="#2B2B2B"
+            BorderThickness="5"
+            CornerRadius="10"
+            Margin="5">
+            <Grid
+                Background="#2B2B2B"
+                Margin="-1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40*"/>
+                    <RowDefinition Height="50*"/>
+                    <RowDefinition Height="10*"/>
+                </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0">
-            <TextBlock
-                Text="Concierge"
-                Foreground="#227EA9"
-                FontSize="50"
-                FontFamily="Segoe UI SemiBold"
-                Margin="20,10,20,20">
-                <TextBlock.Effect>
-                    <DropShadowEffect Color="Black" />
-                </TextBlock.Effect>
-            </TextBlock>
-            <Line
-                Stroke="#227EA9"
-                StrokeThickness="1"
-                VerticalAlignment="Bottom"
-                Stretch="Uniform"
-                X1="0" X2="1" Y1="0" Y2="0"
-                Margin="15,0,15,15"/>
-        </Grid>
-
-        <Grid Grid.Row="1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="30*"/>
-                <ColumnDefinition Width="70*"/>
-            </Grid.ColumnDefinitions>
-
-            <Grid Grid.Column="0">
-                <materialDesign:PackIcon
-                    Kind="HexagonOutline"
-                    Foreground="#33415C"
-                    HorizontalAlignment="Stretch"
-                    VerticalAlignment="Stretch"
-                    Height="auto"
-                    Width="auto"/>
-                <StackPanel
-                    Orientation="Horizontal"
-                    HorizontalAlignment="Center">
+                <Grid Grid.Row="0">
                     <TextBlock
-                        Text="5"
-                        Foreground="White"
+                        Text="Concierge"
+                        Foreground="#227EA9"
                         FontSize="50"
-                        FontFamily="Segoe UI"
-                        VerticalAlignment="Center"
-                        HorizontalAlignment="Center"
-                        Margin="0,0,0,0"/>
-                    <TextBlock
-                        Text="E"
-                        Foreground="White"
-                        FontSize="40"
-                        FontFamily="Segoe UI"
-                        VerticalAlignment="Center"
-                        HorizontalAlignment="Center"
-                        Margin="0,4,0,0"/>
-                </StackPanel>
-            </Grid>
+                        FontFamily="Segoe UI SemiBold"
+                        Margin="20,10,20,20">
+                        <TextBlock.Effect>
+                            <DropShadowEffect Color="Black" />
+                        </TextBlock.Effect>
+                    </TextBlock>
+                    <Line
+                        Stroke="#227EA9"
+                        StrokeThickness="1"
+                        VerticalAlignment="Bottom"
+                        Stretch="Uniform"
+                        X1="0" X2="1" Y1="0" Y2="0"
+                        Margin="15,0,15,15"/>
+                </Grid>
 
-            <Grid Grid.Column="1">
-                <StackPanel
-                    Orientation="Vertical"
-                    VerticalAlignment="Center">
-                    <TextBlock
-                        Text="Dungeons &amp; Dragons"
-                        Foreground="White"
-                        FontSize="35"
-                        FontFamily="Segoe UI Light"
-                        VerticalAlignment="Center"
-                        HorizontalAlignment="Center"
-                        Margin="-100,0,0,0"/>
-                    <TextBlock
-                        Text="Character Sheet"
-                        Foreground="White"
-                        FontSize="35"
-                        FontFamily="Segoe UI Light"
-                        VerticalAlignment="Center"
-                        HorizontalAlignment="Center"
-                        Margin="-100,0,0,0"/>
-                </StackPanel>
-            </Grid>
-        </Grid>
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="30*"/>
+                        <ColumnDefinition Width="70*"/>
+                    </Grid.ColumnDefinitions>
 
-        <Grid Grid.Row="2">
-            <TextBlock
-                x:Name="LoadingText"
-                Foreground="White"
-                FontSize="20"
-                Text="Loading"
-                FontFamily="Segoe UI SemiLight"
-                VerticalAlignment="Center"
-                HorizontalAlignment="Left"
-                Margin="20,-5,0,0"/>
-            <TextBlock
-                x:Name="VersionText"
-                Foreground="White"
-                FontSize="15"
-                Text="v0.0.0"
-                FontFamily="Segoe UI SemiLight"
-                VerticalAlignment="Center"
-                HorizontalAlignment="Right"
-                Margin="0,-5,20,0"/>
-        </Grid>
+                    <Grid Grid.Column="0">
+                        <materialDesign:PackIcon
+                            Kind="HexagonOutline"
+                            Foreground="#33415C"
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Stretch"
+                            Height="auto"
+                            Width="auto"/>
+                        <StackPanel
+                            Orientation="Horizontal"
+                            HorizontalAlignment="Center">
+                            <TextBlock
+                                Text="5"
+                                Foreground="White"
+                                FontSize="50"
+                                FontFamily="Segoe UI"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Center"
+                                Margin="0,0,0,0"/>
+                            <TextBlock
+                                Text="E"
+                                Foreground="White"
+                                FontSize="40"
+                                FontFamily="Segoe UI"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Center"
+                                Margin="0,4,0,0"/>
+                        </StackPanel>
+                    </Grid>
+
+                    <Grid Grid.Column="1">
+                        <StackPanel
+                            Orientation="Vertical"
+                            VerticalAlignment="Center">
+                            <TextBlock
+                                Text="Dungeons &amp; Dragons"
+                                Foreground="White"
+                                FontSize="35"
+                                FontFamily="Segoe UI Light"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Center"
+                                Margin="-100,0,0,0"/>
+                            <TextBlock
+                                Text="Character Sheet"
+                                Foreground="White"
+                                FontSize="35"
+                                FontFamily="Segoe UI Light"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Center"
+                                Margin="-100,0,0,0"/>
+                        </StackPanel>
+                    </Grid>
+                </Grid>
+
+                <Grid Grid.Row="2">
+                    <TextBlock
+                        x:Name="LoadingText"
+                        Foreground="White"
+                        FontSize="20"
+                        Text="Loading"
+                        FontFamily="Segoe UI SemiLight"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Left"
+                        Margin="20,-5,0,0"/>
+                    <TextBlock
+                        x:Name="VersionText"
+                        Foreground="White"
+                        FontSize="15"
+                        Text="v0.0.0"
+                        FontFamily="Segoe UI SemiLight"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Right"
+                        Margin="0,-5,20,0"/>
+                </Grid>
+            </Grid>
+        </Border>
     </Grid>
 </Window>

@@ -26,7 +26,6 @@ namespace Concierge.Display.Utility
             this.animatedLoadingTextWorkerService.WorkerCompleted += this.SplashScreenWindow_WorkerCompleted;
 
             this.VersionText.Text = $"v{Program.AssemblyVersion}{(Program.IsDebug ? " - Debug" : string.Empty)}";
-            this.Background = ConciergeColors.ProficiencyBrush;
         }
 
         public void ShowWindow()
