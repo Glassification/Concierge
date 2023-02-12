@@ -12,7 +12,7 @@ namespace Concierge.Display.Controls
     using Concierge.Character.Spellcasting;
     using Concierge.Character.Statuses;
     using Concierge.Commands;
-    using Concierge.Interfaces.Enums;
+    using Concierge.Display.Enums;
     using Concierge.Utility;
     using Concierge.Utility.Utilities;
 

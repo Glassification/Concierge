@@ -14,8 +14,8 @@ namespace Concierge.Display.Pages
     using Concierge.Character.Items;
     using Concierge.Commands;
     using Concierge.Display.Components;
-    using Concierge.Interfaces.EquippedItemsPageInterface;
-    using Concierge.Interfaces.InventoryPageInterface;
+    using Concierge.Display.Enums;
+    using Concierge.Display.Windows;
     using Concierge.Services;
     using Concierge.Utility;
     using Concierge.Utility.Extensions;
@@ -24,16 +24,14 @@ namespace Concierge.Display.Pages
     /// <summary>
     /// Interaction logic for EquipmentPage.xaml.
     /// </summary>
-    public partial class EquipmentPage : Page, Concierge.Interfaces.IConciergePage
+    public partial class EquipmentPage : Page, IConciergePage
     {
         public EquipmentPage()
         {
             this.InitializeComponent();
         }
 
-        public Interfaces.Enums.ConciergePage ConciergePage => Interfaces.Enums.ConciergePage.EquippedItems;
-
-        public Display.Enums.ConciergePage ConciergePage2 => Display.Enums.ConciergePage.Equipment;
+        public ConciergePage ConciergePage => ConciergePage.Equipment;
 
         public bool HasEditableDataGrid => true;
 
@@ -77,9 +75,9 @@ namespace Concierge.Display.Pages
             ConciergeWindowService.ShowEdit<Inventory>(
                 inventory,
                 true,
-                typeof(ModifyInventoryWindow),
+                typeof(InventoryWindow),
                 this.Window_ApplyChanges,
-                Interfaces.Enums.ConciergePage.EquippedItems);
+                ConciergePage.Equipment);
             this.Draw();
             this.SelectedDataGrid.SetSelectedIndex(index);
         }
@@ -190,7 +188,7 @@ namespace Concierge.Display.Pages
             }
 
             var equippedItems = DisplayUtility.GetPropertyValue<List<Inventory>>(Program.CcsFile.Character.EquippedItems, stringTag) ?? new List<Inventory>();
-            var index = this.SelectedDataGrid.NextItem(equippedItems, 0, -1, this.ConciergePage2);
+            var index = this.SelectedDataGrid.NextItem(equippedItems, 0, -1, this.ConciergePage);
             if (index != -1)
             {
                 this.Draw();
@@ -207,7 +205,7 @@ namespace Concierge.Display.Pages
             }
 
             var equippedItems = DisplayUtility.GetPropertyValue<List<Inventory>>(Program.CcsFile.Character.EquippedItems, stringTag) ?? new List<Inventory>();
-            var index = this.SelectedDataGrid.NextItem(equippedItems, equippedItems.Count - 1, 1, this.ConciergePage2);
+            var index = this.SelectedDataGrid.NextItem(equippedItems, equippedItems.Count - 1, 1, this.ConciergePage);
             if (index != -1)
             {
                 this.Draw();
@@ -232,9 +230,9 @@ namespace Concierge.Display.Pages
         {
             var added = ConciergeWindowService.ShowAdd<string>(
                 string.Empty,
-                typeof(ModifyEquippedItemsWindow),
+                typeof(EquipmentWindow),
                 this.Window_ApplyChanges,
-                Interfaces.Enums.ConciergePage.EquippedItems);
+                ConciergePage.Equipment);
             this.Draw();
 
             if (added)
@@ -284,8 +282,8 @@ namespace Concierge.Display.Pages
         {
             switch (sender?.GetType()?.Name)
             {
-                case nameof(ModifyCharacterImageWindow):
-                case nameof(ModifyEquippedItemsWindow):
+                case nameof(ImageWindow):
+                case nameof(EquipmentWindow):
                     this.Draw();
                     break;
             }

@@ -10,9 +10,9 @@ namespace Concierge.Display.Pages
 
     using Concierge.Character.Statuses;
     using Concierge.Configuration;
-    using Concierge.Interfaces;
-    using Concierge.Interfaces.Enums;
-    using Concierge.Interfaces.OverviewPageInterface;
+    using Concierge.Display;
+    using Concierge.Display.Enums;
+    using Concierge.Display.Windows;
     using Concierge.Services;
     using Concierge.Utility.Extensions;
     using Concierge.Utility.Utilities;
@@ -20,7 +20,7 @@ namespace Concierge.Display.Pages
     /// <summary>
     /// Interaction logic for OverviewPage.xaml.
     /// </summary>
-    public partial class OverviewPage : Page, Concierge.Interfaces.IConciergePage
+    public partial class OverviewPage : Page, IConciergePage
     {
         public OverviewPage()
         {
@@ -29,7 +29,7 @@ namespace Concierge.Display.Pages
 
         public bool HasEditableDataGrid => false;
 
-        Interfaces.Enums.ConciergePage IConciergePage.ConciergePage => Interfaces.Enums.ConciergePage.Overview;
+        public ConciergePage ConciergePage => ConciergePage.Overview;
 
         public void Draw()
         {
@@ -180,7 +180,7 @@ namespace Concierge.Display.Pages
         {
             var result = ConciergeWindowService.ShowDamage<Vitality>(
                 Program.CcsFile.Character.Vitality,
-                typeof(ModifyHpWindow),
+                typeof(HpWindow),
                 this.Window_ApplyChanges,
                 ConciergePage.Overview);
             this.DrawHealth();
@@ -190,7 +190,7 @@ namespace Concierge.Display.Pages
         {
             ConciergeWindowService.ShowHeal<Vitality>(
                 Program.CcsFile.Character.Vitality,
-                typeof(ModifyHpWindow),
+                typeof(HpWindow),
                 this.Window_ApplyChanges,
                 ConciergePage.Overview);
             this.DrawHealth();
@@ -221,7 +221,7 @@ namespace Concierge.Display.Pages
         {
             ConciergeWindowService.ShowEdit<Health>(
                 Program.CcsFile.Character.Vitality.Health,
-                typeof(ModifyHealthWindow),
+                typeof(HealthWindow),
                 this.Window_ApplyChanges,
                 ConciergePage.Overview);
             this.DrawHealth();
@@ -231,22 +231,22 @@ namespace Concierge.Display.Pages
         {
             switch (sender?.GetType()?.Name)
             {
-                case nameof(ModifyAttributesWindow):
+                case nameof(AttributesWindow):
                     this.DrawAttributes();
                     break;
-                case nameof(ModifySensesWindow):
+                case nameof(SensesWindow):
                     this.DrawDetails();
                     break;
-                case nameof(ModifyHealthWindow):
+                case nameof(HealthWindow):
                     this.DrawHealth();
                     break;
-                case nameof(ModifyHitDiceWindow):
+                case nameof(HitDiceWindow):
                     this.DrawHitDice();
                     break;
-                case nameof(ModifySkillCheckWindow):
+                case nameof(SkillWindow):
                     this.DrawSkills();
                     break;
-                case nameof(ModifySavingThrowCheckWindow):
+                case nameof(SavingThrowWindow):
                     this.DrawSavingThrows();
                     break;
             }

@@ -6,7 +6,7 @@ namespace Concierge.Tools
 {
     using System.Windows.Input;
 
-    using Concierge.Interfaces.UtilityInterface;
+    using Concierge.Display.Utility;
     using Concierge.Services;
 
     public static class EasterEggController

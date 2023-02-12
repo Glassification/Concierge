@@ -13,8 +13,7 @@ namespace Concierge.Display.Pages
     using Concierge.Character.Characteristics;
     using Concierge.Commands;
     using Concierge.Display.Enums;
-    using Concierge.Interfaces.AbilitiesPageInterface;
-    using Concierge.Interfaces.InventoryPageInterface;
+    using Concierge.Display.Windows;
     using Concierge.Services;
     using Concierge.Utility.Extensions;
     using Concierge.Utility.Utilities;
@@ -22,7 +21,7 @@ namespace Concierge.Display.Pages
     /// <summary>
     /// Interaction logic for AbilityPage.xaml.
     /// </summary>
-    public partial class AbilityPage : Page, Concierge.Interfaces.IConciergePage
+    public partial class AbilityPage : Page, IConciergePage
     {
         public AbilityPage()
         {
@@ -31,9 +30,7 @@ namespace Concierge.Display.Pages
 
         public bool HasEditableDataGrid => true;
 
-        public Interfaces.Enums.ConciergePage ConciergePage => Interfaces.Enums.ConciergePage.Inventory;
-
-        public ConciergePage ConciergePage2 => Display.Enums.ConciergePage.Inventory;
+        public ConciergePage ConciergePage => ConciergePage.Inventory;
 
         private List<Ability> DisplayList => Program.CcsFile.Character.Abilities.Filter(this.SearchFilter.FilterText).ToList();
 
@@ -52,9 +49,9 @@ namespace Concierge.Display.Pages
             var index = this.AbilitiesDataGrid.SelectedIndex;
             ConciergeWindowService.ShowEdit<Ability>(
                 ability,
-                typeof(ModifyAbilitiesWindow),
+                typeof(AbilitiesWindow),
                 this.Window_ApplyChanges,
-                Interfaces.Enums.ConciergePage.Abilities);
+                ConciergePage.Abilities);
             this.DrawAbilities();
             this.AbilitiesDataGrid.SetSelectedIndex(index);
         }
@@ -81,7 +78,7 @@ namespace Concierge.Display.Pages
 
         private void UpButton_Click(object sender, RoutedEventArgs e)
         {
-            var index = this.AbilitiesDataGrid.NextItem(Program.CcsFile.Character.Abilities, 0, -1, this.ConciergePage2);
+            var index = this.AbilitiesDataGrid.NextItem(Program.CcsFile.Character.Abilities, 0, -1, this.ConciergePage);
 
             if (index != -1)
             {
@@ -92,7 +89,7 @@ namespace Concierge.Display.Pages
 
         private void DownButton_Click(object sender, RoutedEventArgs e)
         {
-            var index = this.AbilitiesDataGrid.NextItem(Program.CcsFile.Character.Abilities, Program.CcsFile.Character.Abilities.Count - 1, 1, this.ConciergePage2);
+            var index = this.AbilitiesDataGrid.NextItem(Program.CcsFile.Character.Abilities, Program.CcsFile.Character.Abilities.Count - 1, 1, this.ConciergePage);
 
             if (index != -1)
             {
@@ -110,9 +107,9 @@ namespace Concierge.Display.Pages
         {
             var added = ConciergeWindowService.ShowAdd<List<Ability>>(
                 Program.CcsFile.Character.Abilities,
-                typeof(ModifyAbilitiesWindow),
+                typeof(AbilitiesWindow),
                 this.Window_ApplyChanges,
-                Interfaces.Enums.ConciergePage.Abilities);
+                ConciergePage.Abilities);
             this.DrawAbilities();
 
             if (added)
@@ -147,7 +144,7 @@ namespace Concierge.Display.Pages
 
         private void AbilitiesDataGrid_Sorted(object sender, RoutedEventArgs e)
         {
-            //DisplayUtility.SortListFromDataGrid(this.AbilitiesDataGrid, Program.CcsFile.Character.Abilities, this.ConciergePage);
+            DisplayUtility.SortListFromDataGrid(this.AbilitiesDataGrid, Program.CcsFile.Character.Abilities, this.ConciergePage);
         }
 
         private void AbilityDataGrid_Filtered(object sender, RoutedEventArgs e)
@@ -162,7 +159,7 @@ namespace Concierge.Display.Pages
         {
             switch (sender?.GetType()?.Name)
             {
-                case nameof(ModifyAbilitiesWindow):
+                case nameof(AbilitiesWindow):
                     this.DrawAbilities();
                     this.ScrollAbilities();
                     break;

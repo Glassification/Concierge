@@ -7,11 +7,11 @@ namespace Concierge.Services
     using System;
 
     using Concierge.Character.Enums;
-    using Concierge.Interfaces.Components;
-    using Concierge.Interfaces.Enums;
+    using Concierge.Display.Components;
+    using Concierge.Display.Enums;
     using Concierge.Primitives;
 
-    using static Concierge.Interfaces.Components.ConciergeWindow;
+    using static Concierge.Display.Components.ConciergeWindow;
 
     public static class ConciergeWindowService
     {

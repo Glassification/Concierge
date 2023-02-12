@@ -8,7 +8,7 @@ namespace Concierge.Utility.Extensions
     using System.Windows.Media;
 
     using Concierge.Character.Notes;
-    using Concierge.Interfaces.Components;
+    using Concierge.Display.Components;
 
     public static class TreeViewExtensions
     {

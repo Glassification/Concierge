@@ -6,7 +6,7 @@ namespace Concierge.Commands
 {
     using Concierge.Configuration;
     using Concierge.Configuration.Dtos;
-    using Concierge.Interfaces.Enums;
+    using Concierge.Display.Enums;
 
     public sealed class UpdateSettingsCommand : Command
     {

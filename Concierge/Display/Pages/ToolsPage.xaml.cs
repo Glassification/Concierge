@@ -12,7 +12,7 @@ namespace Concierge.Display.Pages
     using System.Windows.Input;
 
     using Concierge.Character.Statuses;
-    using Concierge.Interfaces.Enums;
+    using Concierge.Display.Enums;
     using Concierge.Persistence;
     using Concierge.Persistence.ReadWriters;
     using Concierge.Tools;
@@ -26,7 +26,7 @@ namespace Concierge.Display.Pages
     /// <summary>
     /// Interaction logic for ToolsPage.xaml.
     /// </summary>
-    public partial class ToolsPage : Page, Concierge.Interfaces.IConciergePage
+    public partial class ToolsPage : Page, IConciergePage
     {
         private readonly string diceHistoryFile = Path.Combine(ConciergeFiles.HistoryDirectory, ConciergeFiles.DiceHistoryName);
 
@@ -42,9 +42,7 @@ namespace Concierge.Display.Pages
             this.SetDefaultDivideValues();
         }
 
-        public ConciergePage ConciergePage => Interfaces.Enums.ConciergePage.Tools;
-
-        public Display.Enums.ConciergePage ConciergePage2 => Display.Enums.ConciergePage.Tools;
+        public ConciergePage ConciergePage => ConciergePage.Tools;
 
         public bool HasEditableDataGrid => false;
 

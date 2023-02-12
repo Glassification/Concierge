@@ -6,7 +6,7 @@ namespace Concierge.Commands
 {
     using System.Collections.Generic;
 
-    using Concierge.Interfaces.Enums;
+    using Concierge.Display.Enums;
 
     public sealed class DeleteCommand<T> : Command
     {

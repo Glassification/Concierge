@@ -13,8 +13,8 @@ namespace Concierge.Display.Pages
     using Concierge.Character.Spellcasting;
     using Concierge.Commands;
     using Concierge.Display.Components;
-    using Concierge.Interfaces.Enums;
-    using Concierge.Interfaces.SpellcastingPageInterface;
+    using Concierge.Display.Enums;
+    using Concierge.Display.Windows;
     using Concierge.Services;
     using Concierge.Utility.Extensions;
     using Concierge.Utility.Utilities;
@@ -22,7 +22,7 @@ namespace Concierge.Display.Pages
     /// <summary>
     /// Interaction logic for SpellcastingPage.xaml.
     /// </summary>
-    public partial class SpellcastingPage : Page, Concierge.Interfaces.IConciergePage
+    public partial class SpellcastingPage : Page, IConciergePage
     {
         public SpellcastingPage()
         {
@@ -31,10 +31,7 @@ namespace Concierge.Display.Pages
 
         private delegate void DrawList();
 
-        public ConciergePage ConciergePage => Interfaces.Enums.ConciergePage.Spellcasting;
-
-        public Display.Enums.ConciergePage ConciergePage2 => Display.Enums.ConciergePage.Spellcasting;
-
+        public ConciergePage ConciergePage => ConciergePage.Spellcasting;
 
         public bool HasEditableDataGrid => true;
 
@@ -56,7 +53,7 @@ namespace Concierge.Display.Pages
                 var index = this.SpellListDataGrid.SelectedIndex;
                 ConciergeWindowService.ShowEdit<Spell>(
                     spell,
-                    typeof(ModifySpellWindow),
+                    typeof(SpellWindow),
                     this.Window_ApplyChanges,
                     ConciergePage.Spellcasting);
                 this.DrawSpellList();
@@ -68,7 +65,7 @@ namespace Concierge.Display.Pages
                 var index = this.MagicClassDataGrid.SelectedIndex;
                 ConciergeWindowService.ShowEdit<MagicClass>(
                     magicClass,
-                    typeof(ModifySpellClassWindow),
+                    typeof(MagicClassWindow),
                     this.Window_ApplyChanges,
                     ConciergePage.Spellcasting);
                 this.DrawMagicClasses();
@@ -105,7 +102,7 @@ namespace Concierge.Display.Pages
 
         private bool NextItem<T>(ConciergeDataGrid dataGrid, DrawList drawList, List<T> list, int limit, int increment)
         {
-            var index = dataGrid.NextItem(list, limit, increment, this.ConciergePage2);
+            var index = dataGrid.NextItem(list, limit, increment, this.ConciergePage);
 
             if (index != -1)
             {
@@ -152,7 +149,7 @@ namespace Concierge.Display.Pages
         {
             var added = ConciergeWindowService.ShowAdd<List<MagicClass>>(
                 Program.CcsFile.Character.MagicClasses,
-                typeof(ModifySpellClassWindow),
+                typeof(MagicClassWindow),
                 this.Window_ApplyChanges,
                 ConciergePage.Spellcasting);
 
@@ -167,7 +164,7 @@ namespace Concierge.Display.Pages
         {
             var added = ConciergeWindowService.ShowAdd<List<Spell>>(
                 Program.CcsFile.Character.Spells,
-                typeof(ModifySpellWindow),
+                typeof(SpellWindow),
                 this.Window_ApplyChanges,
                 ConciergePage.Spellcasting);
 
@@ -239,26 +236,26 @@ namespace Concierge.Display.Pages
 
         private void SpellListDataGrid_Sorted(object sender, RoutedEventArgs e)
         {
-            //DisplayUtility.SortListFromDataGrid(this.SpellListDataGrid, Program.CcsFile.Character.Spells, this.ConciergePage);
+            DisplayUtility.SortListFromDataGrid(this.SpellListDataGrid, Program.CcsFile.Character.Spells, this.ConciergePage);
         }
 
         private void MagicClassDataGrid_Sorted(object sender, RoutedEventArgs e)
         {
-            //DisplayUtility.SortListFromDataGrid(this.MagicClassDataGrid, Program.CcsFile.Character.MagicClasses, this.ConciergePage);
+            DisplayUtility.SortListFromDataGrid(this.MagicClassDataGrid, Program.CcsFile.Character.MagicClasses, this.ConciergePage);
         }
 
         private void Window_ApplyChanges(object sender, EventArgs e)
         {
             switch (sender?.GetType()?.Name)
             {
-                case nameof(ModifySpellClassWindow):
+                case nameof(MagicClassWindow):
                     this.DrawMagicClasses();
                     break;
-                case nameof(ModifySpellWindow):
+                case nameof(SpellWindow):
                     this.DrawSpellList();
                     this.DrawMagicClasses();
                     break;
-                case nameof(ModifySpellSlotsWindow):
+                case nameof(SpellSlotsWindow):
                     this.DrawSpellSlots();
                     break;
             }

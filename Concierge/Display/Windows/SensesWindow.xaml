@@ -1,0 +1,291 @@
+﻿<components:ConciergeWindow
+    x:Class="Concierge.Display.Windows.SensesWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:controls="clr-namespace:Concierge.Display.Controls"
+    xmlns:components="clr-namespace:Concierge.Display.Components"
+    mc:Ignorable="d"
+    Title="Modify Senses"
+    Height="355"
+    Width="800"
+    Style="{StaticResource WindowFontStyle}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="240"/>
+            <RowDefinition Height="70"/>
+        </Grid.RowDefinitions>
+
+        <!--Header-->
+        <Grid Grid.Row="0">
+            <TextBlock
+                Text="Edit Senses"
+                x:Name="HeaderTextBlock"
+                Foreground="#227EA9"
+                FontSize="35"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                Margin="30, 0, 0, 0"
+                FontWeight="Bold"/>
+            <components:ConciergeDesignButton 
+                Style="{StaticResource ConciergeDesignButtonStyle}" 
+                x:Name="CloseButton"
+                Width="60"
+                Foreground="White"
+                ToolTip="Close"
+                HorizontalAlignment="Right"
+                Click="CloseButton_Click">
+                <materialDesign:PackIcon Kind="WindowClose" Width="25" Height="25"/>
+            </components:ConciergeDesignButton>
+        </Grid>
+
+        <!--Fields-->
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50*"/>
+                <ColumnDefinition Width="50*"/>
+            </Grid.ColumnDefinitions>
+            
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="60"/>
+                </Grid.RowDefinitions>
+
+                <!--Initiative-->
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="35*"/>
+                        <ColumnDefinition Width="32.5*"/>
+                        <ColumnDefinition Width="32.5*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!--Title-->
+                    <Grid Grid.Column="0">
+                        <components:ConciergeLabel
+                            Text="Initiative:"
+                            FontSize="18"/>
+                    </Grid>
+
+                    <!--Value-->
+                    <components:ConciergeTextBoxBackground
+                        Grid.Column="1"
+                        IsEnabled="False">
+                        <components:ConciergeTextBox
+                            x:Name="InitiativeTextBlock"
+                            FontSize="25"
+                            HorizontalContentAlignment="Center"/>
+                    </components:ConciergeTextBoxBackground>
+                </Grid>
+
+                <!--Perception-->
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="35*"/>
+                        <ColumnDefinition Width="32.5*"/>
+                        <ColumnDefinition Width="32.5*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!--Title-->
+                    <Grid Grid.Column="0">
+                        <components:ConciergeLabel
+                            Text="Perception:"
+                            FontSize="18"/>
+                    </Grid>
+
+                    <!--Value-->
+                    <components:ConciergeTextBoxBackground
+                        Grid.Column="1"
+                        IsEnabled="False">
+                        <components:ConciergeTextBox
+                            x:Name="PerceptionTextBlock"
+                            FontSize="25"
+                            HorizontalContentAlignment="Center"/>
+                    </components:ConciergeTextBoxBackground>
+                </Grid>
+
+                <!--Vision-->
+                <Grid Grid.Row="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="35*"/>
+                        <ColumnDefinition Width="65*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!--Title-->
+                    <Grid Grid.Column="0">
+                        <components:ConciergeLabel
+                            Text="Vision:"
+                            FontSize="18"/>
+                    </Grid>
+
+                    <!--Value-->
+                    <Grid Grid.Column="1">
+                        <components:ConciergeComboBox
+                            Style="{StaticResource ComboBoxStyle}"
+                            x:Name="VisionComboBox"
+                            IsEditable="False"/>
+                    </Grid>
+                </Grid>
+
+                <!--Base Movement-->
+                <Grid Grid.Row="3">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="35*"/>
+                        <ColumnDefinition Width="65*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!--Title-->
+                    <Grid Grid.Column="0">
+                        <components:ConciergeLabel
+                            Text="Base Movement:"
+                            FontSize="16"/>
+                    </Grid>
+
+                    <!--Value-->
+                    <Grid Grid.Column="1">
+                        <controls:IntegerUpDownControl
+                            x:Name="BaseMovementUpDown"
+                            Increment="5"
+                            ValueChanged="IntegerUpDown_ValueChanged"/>
+                    </Grid>
+                </Grid>
+            </Grid>
+
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="60"/>
+                </Grid.RowDefinitions>
+
+                <!--Initiative Bonus-->
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="35*"/>
+                        <ColumnDefinition Width="65*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!--Title-->
+                    <Grid Grid.Column="0">
+                        <components:ConciergeLabel
+                            Text="Initiative Bonus:"
+                            FontSize="18"/>
+                    </Grid>
+
+                    <!--Value-->
+                    <Grid Grid.Column="1">
+                        <controls:IntegerUpDownControl
+                            x:Name="InitiativeBonusUpDown"
+                            ValueChanged="IntegerUpDown_ValueChanged"/>
+                    </Grid>
+                </Grid>
+
+                <!--Perception Bonus-->
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="35*"/>
+                        <ColumnDefinition Width="65*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!--Title-->
+                    <Grid Grid.Column="0">
+                        <components:ConciergeLabel
+                            Text="Perception Bonus:"
+                            FontSize="16"/>
+                    </Grid>
+
+                    <!--Value-->
+                    <Grid Grid.Column="1">
+                        <controls:IntegerUpDownControl
+                            x:Name="PerceptionBonusUpDown"
+                            ValueChanged="IntegerUpDown_ValueChanged"/>
+                    </Grid>
+                </Grid>
+
+                <!--Movement-->
+                <Grid Grid.Row="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="35*"/>
+                        <ColumnDefinition Width="32.5*"/>
+                        <ColumnDefinition Width="32.5*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!--Title-->
+                    <Grid Grid.Column="0">
+                        <components:ConciergeLabel
+                            Text="Movement:"
+                            FontSize="18"/>
+                    </Grid>
+
+                    <!--Value-->
+                    <components:ConciergeTextBoxBackground
+                        Grid.Column="1"
+                        IsEnabled="False">
+                        <components:ConciergeTextBox
+                            x:Name="MovementTextBlock"
+                            FontSize="25"
+                            HorizontalContentAlignment="Center"
+                            VerticalAlignment="Center"/>
+                    </components:ConciergeTextBoxBackground>
+                </Grid>
+
+                <!--Movement Bonus-->
+                <Grid Grid.Row="3">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="35*"/>
+                        <ColumnDefinition Width="65*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!--Title-->
+                    <Grid Grid.Column="0">
+                        <components:ConciergeLabel
+                            Text="Movement Bonus:"
+                            FontSize="16"/>
+                    </Grid>
+
+                    <!--Value-->
+                    <Grid Grid.Column="1">
+                        <controls:IntegerUpDownControl
+                            x:Name="MovementBonusUpDown"
+                            Increment="5"
+                            ValueChanged="IntegerUpDown_ValueChanged"/>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </Grid>
+
+        <!--Buttons-->
+        <Grid Grid.Row="2">
+            <StackPanel
+                Orientation="Horizontal"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center">
+                <components:ConciergeTextButton 
+                    x:Name="OkButton"
+                    Style="{StaticResource ConciergeTextButtonStyle}"
+                    Content="OK"
+                    Click="OkButton_Click">
+                </components:ConciergeTextButton>
+                <components:ConciergeTextButton 
+                    x:Name="ApplyButton"
+                    Style="{StaticResource ConciergeTextButtonStyle}"
+                    Content="Apply"
+                    Click="ApplyButton_Click">
+                </components:ConciergeTextButton>
+                <components:ConciergeTextButton 
+                    x:Name="CancelButton"
+                    Content="Cancel"
+                    Click="CancelButton_Click"
+                    Style="{StaticResource ConciergeTextButtonStyle}">
+                </components:ConciergeTextButton>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</components:ConciergeWindow>
