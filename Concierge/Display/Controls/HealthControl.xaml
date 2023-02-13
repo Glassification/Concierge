@@ -43,7 +43,7 @@
                         Foreground="Black"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
-                        FontSize="57"
+                        FontSize="45"
                         FontWeight="DemiBold"
                         FontFamily="Sergoe UI Variable"/>
                     <components:ConciergeTextBlock 
@@ -122,35 +122,35 @@
                             Fill="#2B2B2B"
                             Stroke="#2B2B2B"
                             Stretch="Uniform"
-                            Margin="3"/>
+                            Margin="0"/>
                         <Ellipse
                             Grid.Column="1"
                             x:Name="DeathSave2"
                             Fill="#2B2B2B"
                             Stroke="#2B2B2B"
                             Stretch="Uniform"
-                            Margin="3"/>
+                            Margin="0"/>
                         <Ellipse
                             Grid.Column="2"
                             x:Name="DeathSave3"
                             Fill="#2B2B2B"
                             Stroke="#2B2B2B"
                             Stretch="Uniform"
-                            Margin="3"/>
+                            Margin="0"/>
                         <Ellipse
                             Grid.Column="3"
                             x:Name="DeathSave4"
                             Fill="#2B2B2B"
                             Stroke="#2B2B2B"
                             Stretch="Uniform"
-                            Margin="3"/>
+                            Margin="0"/>
                         <Ellipse
                             Grid.Column="4"
                             x:Name="DeathSave5"
                             Fill="#2B2B2B"
                             Stroke="#2B2B2B"
                             Stretch="Uniform"
-                            Margin="3"/>
+                            Margin="0"/>
 
                         <components:ConciergeDesignButton 
                             Grid.Column="5"
@@ -163,7 +163,7 @@
                             Foreground="PaleGreen"
                             ToolTip="Succeed on Death Save"
                             Click="PassSave_Click">
-                            <materialDesign:PackIcon Kind="CheckCircle" Width="22" Height="22"/>
+                            <materialDesign:PackIcon Kind="CheckCircle" Width="20" Height="20"/>
                         </components:ConciergeDesignButton>
                         <components:ConciergeDesignButton 
                             Grid.Column="6"
@@ -176,7 +176,7 @@
                             Foreground="IndianRed"
                             ToolTip="Fail on Death Save"
                             Click="FailSave_Click">
-                            <materialDesign:PackIcon Kind="CloseCircle" Width="22" Height="22"/>
+                            <materialDesign:PackIcon Kind="CloseCircle" Width="20" Height="20"/>
                         </components:ConciergeDesignButton>
                         <components:ConciergeDesignButton
                             Grid.Column="7"
@@ -189,7 +189,7 @@
                             Foreground="SteelBlue"
                             ToolTip="Reset Death Saves"
                             Click="ResetSaves_Click">
-                            <materialDesign:PackIcon Kind="RefreshCircle" Width="22" Height="22"/>
+                            <materialDesign:PackIcon Kind="RefreshCircle" Width="20" Height="20"/>
                         </components:ConciergeDesignButton>
                         </Grid>
                 </Border>

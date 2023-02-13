@@ -39,6 +39,7 @@ namespace Concierge.Character.Statuses
 
         public void MakeDeathSave(DeathSave deathSave)
         {
+            this.LazyInitialize();
             if (this.CurrentDeathSave < MaxDeathSaves)
             {
                 this.DeathSaves[this.CurrentDeathSave] = deathSave;

@@ -144,6 +144,7 @@ namespace Concierge.Display.Pages
             this.HealthDisplay.CurrentHealth = vitality.CurrentHealth;
             this.HealthDisplay.TotalHealth = vitality.Health.MaxHealth;
             this.HealthDisplay.SetHealthStyle(vitality);
+            this.DrawDeathSavingThrows();
         }
 
         public void DrawArmorClass()

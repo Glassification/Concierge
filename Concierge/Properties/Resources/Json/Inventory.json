@@ -3347,7 +3347,7 @@
     "Amount": 1,
     "Attuned": false,
     "CoinType": 3,
-    "Description": "A character who drinks the magical red fluid in this vial regains 2d4 + 2 hit points. Drinking or administering a potion takes an action.",
+    "Description": "A character who drinks the magical red fluid in this vial regains 2d4 + 2 hit points. Drinking or administering a potion takes an action for automatic 10 hp, bonus action will roll for hp.",
     "EquppedId": "00000000-0000-0000-0000-000000000000",
     "Id": "730f2b89-31e9-497c-8e96-843a743c60b5",
     "Name": "Potion of Healing",
@@ -3356,6 +3356,63 @@
     "ItemCategory": "Potion",
     "Notes": "Combat, Consumable, Healing",
     "Value": 50,
+    "Weight": {
+      "Value": 0.5,
+      "UnitType": 0,
+      "Measurement": 1
+    }
+  },
+  {
+    "Amount": 1,
+    "Attuned": false,
+    "CoinType": 3,
+    "Description": "A character who drinks the magical red fluid in this vial regains 4d4 + 4 hit points. Drinking or administering a potion takes an action for automatic 20 hp, bonus action will roll for hp.",
+    "EquppedId": "00000000-0000-0000-0000-000000000000",
+    "Id": "730f2b89-31e9-497c-8e96-843a743c60b6",
+    "Name": "Potion of Healing, Greater",
+    "IgnoreWeight": false,
+    "Index": 0,
+    "ItemCategory": "Potion",
+    "Notes": "Combat, Consumable, Healing",
+    "Value": 100,
+    "Weight": {
+      "Value": 0.5,
+      "UnitType": 0,
+      "Measurement": 1
+    }
+  },
+  {
+    "Amount": 1,
+    "Attuned": false,
+    "CoinType": 3,
+    "Description": "A character who drinks the magical red fluid in this vial regains 8d4 + 8 hit points. Drinking or administering a potion takes an action for automatic 40 hp, bonus action will roll for hp.",
+    "EquppedId": "00000000-0000-0000-0000-000000000000",
+    "Id": "730f2b89-31e9-497c-8e96-843a743c60b7",
+    "Name": "Potion of Healing, Superior",
+    "IgnoreWeight": false,
+    "Index": 0,
+    "ItemCategory": "Potion",
+    "Notes": "Combat, Consumable, Healing",
+    "Value": 500,
+    "Weight": {
+      "Value": 0.5,
+      "UnitType": 0,
+      "Measurement": 1
+    }
+  },
+  {
+    "Amount": 1,
+    "Attuned": false,
+    "CoinType": 3,
+    "Description": "A character who drinks the magical red fluid in this vial regains 10d4 + 20 hit points. Drinking or administering a potion takes an action for automatic 60 hp, bonus action will roll for hp.",
+    "EquppedId": "00000000-0000-0000-0000-000000000000",
+    "Id": "730f2b89-31e9-497c-8e96-843a743c60b8",
+    "Name": "Potion of Healing, Supreme",
+    "IgnoreWeight": false,
+    "Index": 0,
+    "ItemCategory": "Potion",
+    "Notes": "Combat, Consumable, Healing",
+    "Value": 5000,
     "Weight": {
       "Value": 0.5,
       "UnitType": 0,

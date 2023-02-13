@@ -493,8 +493,8 @@ namespace Concierge.Display
             this.GetListViewItem(5).Tag = this.InventoryPage;
             this.GetListViewItem(6).Tag = this.SpellcastingPage;
             this.GetListViewItem(7).Tag = this.CompanionPage;
-            this.GetListViewItem(8).Tag = this.ToolsPage;
-            this.GetListViewItem(9).Tag = this.JournalPage;
+            this.GetListViewItem(8).Tag = this.JournalPage;
+            this.GetListViewItem(9).Tag = this.ToolsPage;
         }
 
         private ListViewItem GetListViewItem(int index)
@@ -635,10 +635,10 @@ namespace Concierge.Display
                     this.MoveSelection(ConciergePage.Companion);
                     break;
                 case Key.D9:
-                    this.MoveSelection(ConciergePage.Tools);
+                    this.MoveSelection(ConciergePage.Journal);
                     break;
                 case Key.D0:
-                    this.MoveSelection(ConciergePage.Journal);
+                    this.MoveSelection(ConciergePage.Tools);
                     break;
             }
         }

@@ -145,7 +145,7 @@ namespace Concierge.Character.Items
                 WeaponTypes.Mace => (IconKind: PackIconKind.Mace, Brush: Brushes.LightPink),
                 WeaponTypes.Maul => (IconKind: PackIconKind.Mace, Brush: Brushes.LightPink),
                 WeaponTypes.Morningstar => (IconKind: PackIconKind.Mace, Brush: Brushes.LightPink),
-                WeaponTypes.Net => (IconKind: PackIconKind.GridLarge, Brush: Brushes.MediumPurple),
+                WeaponTypes.Net => (IconKind: PackIconKind.SpiderWeb, Brush: Brushes.MediumPurple),
                 WeaponTypes.Pike => (IconKind: PackIconKind.Spear, Brush: Brushes.LightBlue),
                 WeaponTypes.Quarterstaff => (IconKind: PackIconKind.MagicStaff, Brush: Brushes.Cyan),
                 WeaponTypes.Rapier => (IconKind: PackIconKind.Fencing, Brush: Brushes.LightGreen),
@@ -153,12 +153,12 @@ namespace Concierge.Character.Items
                 WeaponTypes.Shortbow => (IconKind: PackIconKind.BowArrow, Brush: Brushes.Orange),
                 WeaponTypes.Shortsword => (IconKind: PackIconKind.Sword, Brush: Brushes.LightGreen),
                 WeaponTypes.Sickle => (IconKind: PackIconKind.Sickle, Brush: Brushes.MediumPurple),
-                WeaponTypes.Sling => (IconKind: PackIconKind.Error, Brush: Brushes.MediumPurple),
+                WeaponTypes.Sling => (IconKind: PackIconKind.Gesture, Brush: Brushes.MediumPurple),
                 WeaponTypes.Spear => (IconKind: PackIconKind.Spear, Brush: Brushes.LightBlue),
                 WeaponTypes.Trident => (IconKind: PackIconKind.SilverwareFork, Brush: Brushes.MediumPurple),
                 WeaponTypes.Warhammer => (IconKind: PackIconKind.Hammer, Brush: Brushes.Cyan),
                 WeaponTypes.WarPick => (IconKind: PackIconKind.Pickaxe, Brush: Brushes.MediumPurple),
-                WeaponTypes.Whip => (IconKind: PackIconKind.VectorCircleVariant, Brush: Brushes.MediumPurple),
+                WeaponTypes.Whip => (IconKind: PackIconKind.JumpRope, Brush: Brushes.MediumPurple),
                 _ => (IconKind: PackIconKind.ArmFlex, Brush: Brushes.SlateGray),
             };
         }

@@ -25,6 +25,7 @@ namespace Concierge.Character.Items
             this.Notes = string.Empty;
             this.ItemCategory = string.Empty;
             this.Id = Guid.NewGuid();
+            this.CreationDate = DateTime.Now;
         }
 
         public int Amount { get; set; }
@@ -35,6 +36,8 @@ namespace Concierge.Character.Items
         public string AttunedText => this.Attuned ? "Yes" : "No";
 
         public CoinType CoinType { get; set; }
+
+        public DateTime CreationDate { get; set; }
 
         public string Description { get; set; }
 
@@ -112,6 +115,7 @@ namespace Concierge.Character.Items
                 Index = this.Index,
                 EquppedId = this.EquppedId,
                 Id = this.Id,
+                CreationDate = this.CreationDate,
             };
         }
 
@@ -119,12 +123,12 @@ namespace Concierge.Character.Items
         {
             return this.ItemCategory switch
             {
-                "Adventuring Gear" => (IconKind: PackIconKind.Map, Brush: Brushes.LightBlue),
+                "Adventuring Gear" => (IconKind: PackIconKind.MapLegend, Brush: Brushes.LightBlue),
                 "Arcane Focus" => (IconKind: PackIconKind.MagicWand, Brush: Brushes.Magenta),
-                "Clothing" => (IconKind: PackIconKind.TshirtCrew, Brush: Brushes.Coral),
+                "Clothing" => (IconKind: PackIconKind.TshirtV, Brush: Brushes.Coral),
                 "Druidic Focus" => (IconKind: PackIconKind.MagicStaff, Brush: Brushes.Magenta),
                 "Equipment Pack" => (IconKind: PackIconKind.Toolbox, Brush: Brushes.RosyBrown),
-                "Food/Drink" => (IconKind: PackIconKind.FoodVariant, Brush: Brushes.PaleVioletRed),
+                "Food/Drink" => (IconKind: PackIconKind.SilverwareVariant, Brush: Brushes.PaleVioletRed),
                 "Gemstone" => (IconKind: PackIconKind.DiamondStone, Brush: Brushes.Cyan),
                 "Heavy Armor" => (IconKind: PackIconKind.Wall, Brush: Brushes.LightGray),
                 "Holy Symbol" => (IconKind: PackIconKind.Christianity, Brush: Brushes.PaleGoldenrod),
@@ -134,7 +138,7 @@ namespace Concierge.Character.Items
                 "Poison" => (IconKind: PackIconKind.Poison, Brush: Brushes.LightGreen),
                 "Potion" => (IconKind: PackIconKind.HealthPotion, Brush: Brushes.Pink),
                 "Shield" => (IconKind: PackIconKind.ShieldPerson, Brush: Brushes.LightSlateGray),
-                "Tool" => (IconKind: PackIconKind.Screwdriver, Brush: Brushes.LightYellow),
+                "Tool" => (IconKind: PackIconKind.RulerSquareCompass, Brush: Brushes.LightYellow),
                 "Vehicle (Land)" => (IconKind: PackIconKind.Caravan, Brush: Brushes.SaddleBrown),
                 "Vehicle (Water)" => (IconKind: PackIconKind.SailBoat, Brush: Brushes.LightSkyBlue),
                 _ => (IconKind: PackIconKind.Error, Brush: Brushes.IndianRed),
