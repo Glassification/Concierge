@@ -222,6 +222,7 @@ namespace Concierge.Display.Pages
         private void HitDiceDisplay_ValueChanged(object sender, RoutedEventArgs e)
         {
             this.DrawHitDice();
+            this.DrawHealth();
         }
 
         private void AttackDataGrid_Filtered(object sender, RoutedEventArgs e)

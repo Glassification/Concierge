@@ -7,6 +7,7 @@ namespace Concierge.Character.Statuses
     using System;
 
     using Concierge.Utility;
+    using Newtonsoft.Json;
 
     public sealed class Health : ICopyable<Health>
     {
@@ -22,6 +23,9 @@ namespace Concierge.Character.Statuses
         public int MaxHealth { get; set; }
 
         public int TemporaryHealth { get; set; }
+
+        [JsonIgnore]
+        public bool IsFull => this.BaseHealth >= this.MaxHealth;
 
         public int BaseHealth
         {

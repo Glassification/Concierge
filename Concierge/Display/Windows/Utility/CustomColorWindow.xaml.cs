@@ -12,6 +12,7 @@ namespace Concierge.Display.Utility
 
     using Concierge.Display.Components;
     using Concierge.Primitives;
+    using Concierge.Utility;
     using Concierge.Utility.Extensions;
     using Concierge.Utility.Utilities;
 
@@ -110,7 +111,8 @@ namespace Concierge.Display.Utility
 
             if (point.X > 0 && point.Y > 0 && point.X < img.PixelWidth && point.Y < img.PixelHeight)
             {
-                var color = this.ColorPickerImage.GetColorFromPoint(point);
+                var color = this.ColorPickerImage.GetColorFromPoint(point.Multiply(ResolutionScaling.ImageFactor));
+                // var color = this.ColorPickerImage.GetColorFromPoint(point);
                 this.UpdateRgbValues(color);
                 this.UpdateRgbSlider(color);
             }

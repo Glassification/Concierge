@@ -32,5 +32,20 @@ namespace Concierge.Utility
                 };
             }
         }
+
+        public static double ImageFactor
+        {
+            get
+            {
+                return Dpi switch
+                {
+                    96 => 1,
+                    120 => 1.25,
+                    144 => 1.50,
+                    168 => 1.75,
+                    _ => 1,
+                };
+            }
+        }
     }
 }

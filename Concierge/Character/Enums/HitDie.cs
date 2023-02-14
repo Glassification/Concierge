@@ -6,6 +6,7 @@ namespace Concierge.Character.Enums
 {
     public enum HitDie
     {
+        None = 0,
         D6 = 6,
         D8 = 8,
         D10 = 10,

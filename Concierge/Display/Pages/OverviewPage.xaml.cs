@@ -215,6 +215,7 @@ namespace Concierge.Display.Pages
         private void HitDiceDisplay_ValueChanged(object sender, RoutedEventArgs e)
         {
             this.DrawHitDice();
+            this.DrawHealth();
         }
 
         private void HealthDisplay_SaveClicked(object sender, RoutedEventArgs e)

@@ -8,7 +8,8 @@ namespace Concierge.Display.Controls
     using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Input;
-
+    using Concierge.Character.Characteristics;
+    using Concierge.Character.Enums;
     using Concierge.Character.Statuses;
     using Concierge.Commands;
     using Concierge.Display.Enums;
@@ -80,12 +81,21 @@ namespace Concierge.Display.Controls
             grid.Background = border.BorderBrush = DisplayUtility.SetTotalBoxStyle(total, spent);
         }
 
-        private HitDice GetHitDice()
+        private Vitality GetVitality()
         {
             return this.ConciergePage switch
             {
-                ConciergePage.Companion => Program.CcsFile.Character.Companion.Vitality.HitDice,
-                _ => Program.CcsFile.Character.Vitality.HitDice,
+                ConciergePage.Companion => Program.CcsFile.Character.Companion.Vitality,
+                _ => Program.CcsFile.Character.Vitality,
+            };
+        }
+
+        private Attributes GetAttributes()
+        {
+            return this.ConciergePage switch
+            {
+                ConciergePage.Companion => Program.CcsFile.Character.Companion.Attributes,
+                _ => Program.CcsFile.Character.Attributes,
             };
         }
 
@@ -96,16 +106,24 @@ namespace Concierge.Display.Controls
                 return;
             }
 
-            var hitDice = this.GetHitDice();
-            var oldItem = hitDice.DeepCopy();
-
-            var result = hitDice.Increment(border.Name);
-            if (result == 0)
+            var vitality = this.GetVitality();
+            if (vitality.Health.IsFull)
             {
                 return;
             }
 
-            Program.UndoRedoService.AddCommand(new EditCommand<HitDice>(hitDice, oldItem, this.ConciergePage));
+            var oldItem = vitality.DeepCopy();
+
+            var result = vitality.HitDice.Increment(border.Name);
+            if (result == HitDie.None)
+            {
+                return;
+            }
+
+            var attributes = this.GetAttributes();
+            vitality.RollHitDice(result, attributes);
+
+            Program.UndoRedoService.AddCommand(new EditCommand<Vitality>(vitality, oldItem, this.ConciergePage));
             Program.Modify();
 
             this.RaiseEvent(new RoutedEventArgs(ValueChangedEvent));

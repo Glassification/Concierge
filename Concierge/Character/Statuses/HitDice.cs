@@ -4,6 +4,7 @@
 
 namespace Concierge.Character.Statuses
 {
+    using Concierge.Character.Enums;
     using Concierge.Utility;
 
     public sealed class HitDice : ICopyable<HitDice>
@@ -36,33 +37,33 @@ namespace Concierge.Character.Statuses
 
         public int SpentD12 { get; set; }
 
-        public int Increment(string name)
+        public HitDie Increment(string name)
         {
             if (name.Contains("d6", System.StringComparison.InvariantCultureIgnoreCase) && this.SpentD6 < this.TotalD6)
             {
                 this.SpentD6++;
-                return this.SpentD6;
+                return HitDie.D6;
             }
 
             if (name.Contains("d8", System.StringComparison.InvariantCultureIgnoreCase) && this.SpentD8 < this.TotalD8)
             {
                 this.SpentD8++;
-                return this.SpentD8;
+                return HitDie.D8;
             }
 
             if (name.Contains("d10", System.StringComparison.InvariantCultureIgnoreCase) && this.SpentD10 < this.TotalD10)
             {
                 this.SpentD10++;
-                return this.SpentD10;
+                return HitDie.D10;
             }
 
             if (name.Contains("d12", System.StringComparison.InvariantCultureIgnoreCase) && this.SpentD12 < this.TotalD12)
             {
                 this.SpentD12++;
-                return this.SpentD12;
+                return HitDie.D12;
             }
 
-            return 0;
+            return HitDie.None;
         }
 
         public HitDice DeepCopy()
