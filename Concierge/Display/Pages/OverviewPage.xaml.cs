@@ -247,6 +247,7 @@ namespace Concierge.Display.Pages
         {
             ConciergeWindowService.ShowEdit<Wealth>(
                 Program.CcsFile.Character.Wealth,
+                sender,
                 typeof(WealthWindow),
                 this.Window_ApplyChanges,
                 ConciergePage.Overview);

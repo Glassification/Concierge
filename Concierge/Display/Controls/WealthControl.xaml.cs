@@ -7,7 +7,7 @@ namespace Concierge.Display.Controls
     using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Input;
-
+    using Concierge.Character.Enums;
     using Concierge.Character.Statuses;
 
     /// <summary>
@@ -33,6 +33,8 @@ namespace Concierge.Display.Controls
             remove { this.RemoveHandler(EditClickedEvent, value); }
         }
 
+        public CoinType SelectedCoin { get; private set; }
+
         public void SetWealth(Wealth wealth)
         {
             this.TotalWealthField.Text = Wealth.FormatGoldValue(wealth.TotalValue);
@@ -47,7 +49,13 @@ namespace Concierge.Display.Controls
 
         private void Grid_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            this.RaiseEvent(new RoutedEventArgs(EditClickedEvent));
+            if (sender is not Grid grid)
+            {
+                return;
+            }
+
+            this.SelectedCoin = Wealth.GetCoinType(grid.Name);
+            this.RaiseEvent(new RoutedEventArgs(EditClickedEvent, this));
         }
     }
 }

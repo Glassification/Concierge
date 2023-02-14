@@ -43,6 +43,20 @@ namespace Concierge.Services
             conciergeWindow.ShowEdit<T>(item);
         }
 
+        public static void ShowEdit<T>(T item, object sender, Type typeOfWindow, ApplyChangesEventHandler applyEvent, ConciergePage conciergePage)
+        {
+            var conciergeWindow = (ConciergeWindow?)Activator.CreateInstance(typeOfWindow);
+            if (conciergeWindow is null)
+            {
+                return;
+            }
+
+            conciergeWindow.ApplyChanges += applyEvent;
+            conciergeWindow.ConciergePage = conciergePage;
+
+            conciergeWindow.ShowEdit<T>(item, sender);
+        }
+
         public static void ShowEdit<T>(T item, bool equippedItem, Type typeOfWindow, ApplyChangesEventHandler applyEvent, ConciergePage conciergePage)
         {
             var conciergeWindow = (ConciergeWindow?)Activator.CreateInstance(typeOfWindow);

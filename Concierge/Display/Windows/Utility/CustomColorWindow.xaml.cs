@@ -104,53 +104,28 @@ namespace Concierge.Display.Utility
             this.RgbSliderLock = false;
         }
 
-        private void SetColorAtPoint(Point point)
+        private void SetColorAtPoint()
         {
             if (this.ColorPickerImage.Source is not BitmapSource img)
             {
                 return;
             }
 
-            try
+            var point = Mouse.GetPosition(this.ColorPickerCanvas);
+            if (point.X <= 0 || point.Y <= 0 || point.X >= img.PixelWidth || point.Y >= img.PixelHeight)
             {
-                CroppedBitmap cb = new CroppedBitmap(ColorPickerImage.Source as BitmapSource,
-                    new Int32Rect((int)Mouse.GetPosition(ColorPickerCanvas).X,
-                        (int)Mouse.GetPosition(ColorPickerCanvas).Y, 1, 1));
-
-                byte[] pixels = new byte[4];
-
-                try
-                {
-                    cb.CopyPixels(pixels, 4, 0);
-                }
-                catch (Exception ex)
-                {
-                    //Ooops
-                }
-
-                //Ok now, so update the mouse cursor position and the SelectedColor
-
-                ColorPickerCanvas.InvalidateVisual();
-                var color = Color.FromArgb(255,
-                                                pixels[2], pixels[1], pixels[0]);
-
-                this.UpdateRgbValues(color);
-                this.UpdateRgbSlider(color);
-            }
-            catch (Exception exc)
-            {
-                //not much we can do
+                return;
             }
 
-            /*Debug.WriteLine(point);
+            var cb = new CroppedBitmap(this.ColorPickerImage.Source as BitmapSource, new Int32Rect((int)point.X, (int)point.Y, 1, 1));
+            var pixels = new byte[4];
 
-            if (point.X > 0 && point.Y > 0 && point.X < img.PixelWidth && point.Y < img.PixelHeight)
-            {
-                // var color = this.ColorPickerImage.GetColorFromPoint(point.Multiply(ResolutionScaling.DpiFactor));
-                var color = this.ColorPickerImage.GetColorFromPoint(point);
-                this.UpdateRgbValues(color);
-                this.UpdateRgbSlider(color);
-            }*/
+            cb.CopyPixels(pixels, 4, 0);
+            this.ColorPickerCanvas.InvalidateVisual();
+
+            var color = Color.FromArgb(Constants.ColorSpace, pixels[2], pixels[1], pixels[0]);
+            this.UpdateRgbValues(color);
+            this.UpdateRgbSlider(color);
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
@@ -202,7 +177,7 @@ namespace Concierge.Display.Utility
                 return;
             }
 
-            this.SetColorAtPoint(e.GetPosition(this.ColorPickerImage));
+            this.SetColorAtPoint();
         }
 
         private void ColorPickerImage_MouseEnter(object sender, MouseEventArgs e)
@@ -218,7 +193,7 @@ namespace Concierge.Display.Utility
         private void ColorPickerImage_MouseDown(object sender, MouseButtonEventArgs e)
         {
             Mouse.Capture(this.ColorPickerCanvas);
-            this.SetColorAtPoint(e.GetPosition(this.ColorPickerImage));
+            this.SetColorAtPoint();
         }
 
         private void ColorPickerImage_MouseUp(object sender, MouseButtonEventArgs e)

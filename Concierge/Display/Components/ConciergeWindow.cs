@@ -65,6 +65,11 @@ namespace Concierge.Display.Components
             Program.Logger.Error(new ImplementedMethodException(nameof(this.ShowEdit), item));
         }
 
+        public virtual void ShowEdit<T>(T item, object sender)
+        {
+            Program.Logger.Error(new ImplementedMethodException(nameof(this.ShowEdit), item));
+        }
+
         public virtual void ShowEdit<T>(T item, bool equippedItem)
         {
             Program.Logger.Error(new ImplementedMethodException(nameof(this.ShowEdit), item));
