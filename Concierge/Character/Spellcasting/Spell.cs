@@ -54,6 +54,14 @@ namespace Concierge.Character.Spellcasting
         [SearchIgnore]
         public PackIconKind IconKind => this.GetCategoryValue().IconKind;
 
+        [JsonIgnore]
+        [SearchIgnore]
+        public Brush PreparedIconColor => this.GetPreparedValue().Brush;
+
+        [JsonIgnore]
+        [SearchIgnore]
+        public PackIconKind PreparedIconKind => this.GetPreparedValue().IconKind;
+
         public Guid Id { get; set; }
 
         public int Level { get; set; }
@@ -63,9 +71,6 @@ namespace Concierge.Character.Spellcasting
         public int Page { get; set; }
 
         public bool Prepared { get; set; }
-
-        [JsonIgnore]
-        public string PreparedDisplay => this.Prepared ? "Yes" : "No";
 
         public string Range { get; set; }
 
@@ -121,6 +126,13 @@ namespace Concierge.Character.Spellcasting
                 ArcaneSchools.Universal => (IconKind: PackIconKind.Earth, Brush: Brushes.White),
                 _ => (IconKind: PackIconKind.Error, Brush: Brushes.Red),
             };
+        }
+
+        private (PackIconKind IconKind, Brush Brush) GetPreparedValue()
+        {
+            return this.Prepared ?
+                (IconKind: PackIconKind.RadioButtonChecked, Brush: Brushes.PaleGreen) :
+                (IconKind: PackIconKind.RadioButtonUnchecked, Brush: Brushes.PaleGoldenrod);
         }
     }
 }

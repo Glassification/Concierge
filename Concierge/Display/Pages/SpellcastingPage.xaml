@@ -327,14 +327,9 @@
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
                         <DataGridTextColumn
-                            Header="Preped"
-                            Binding="{Binding PreparedDisplay}"
-                            Width="0.05*"
-                            ElementStyle="{StaticResource SpellcastingColumnElementStyle}"/>
-                        <DataGridTextColumn
                             Header="Name"
                             Binding="{Binding Name}"
-                            Width="0.1*"
+                            Width="0.10*"
                             ElementStyle="{StaticResource SpellcastingColumnElementStyle}"/>
                         <DataGridTextColumn
                             Header="Level"
@@ -389,8 +384,22 @@
                         <DataGridTextColumn
                             Header="Description"
                             Binding="{Binding Description}"
-                            Width="0.16*"
+                            Width="0.19*"
                             ElementStyle="{StaticResource SpellcastingColumnElementStyle}"/>
+                        <DataGridTemplateColumn
+                            Width="0.02*">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <materialDesign:PackIcon
+                                        Kind="{Binding PreparedIconKind}"
+                                        Foreground="{Binding PreparedIconColor}"
+                                        Height="auto"
+                                        Width="auto"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
                     </DataGrid.Columns>
                 </components:ConciergeDataGrid>
             </Grid>

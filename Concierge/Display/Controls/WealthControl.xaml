@@ -133,8 +133,7 @@
                             <Grid Grid.Row="0" Background="#ffb87333">
                                 <components:ConciergeTextBlock 
                                     Text="Copper"
-                                    Foreground="Black"
-                                    FontWeight="Bold"    
+                                    Foreground="Black"  
                                     FontSize="20"
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"/>
@@ -182,7 +181,6 @@
                                     Text="Silver"
                                     Foreground="Black"
                                     FontSize="20"
-                                    FontWeight="Bold"
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"/>
                             </Grid>
@@ -229,7 +227,6 @@
                                     Text="Electrum"
                                     Foreground="Black"
                                     FontSize="20"
-                                    FontWeight="Bold"
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"/>
                             </Grid>
@@ -276,7 +273,6 @@
                                     Text="Gold"
                                     Foreground="Black"
                                     FontSize="20"
-                                    FontWeight="Bold"
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"/>
                             </Grid>
@@ -323,7 +319,6 @@
                                     Text="Platinum"
                                     Foreground="Black"
                                     FontSize="20"
-                                    FontWeight="Bold"
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"/>
                             </Grid>

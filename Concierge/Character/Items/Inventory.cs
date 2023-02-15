@@ -32,9 +32,6 @@ namespace Concierge.Character.Items
 
         public bool Attuned { get; set; }
 
-        [JsonIgnore]
-        public string AttunedText => this.Attuned ? "Yes" : "No";
-
         public CoinType CoinType { get; set; }
 
         public DateTime CreationDate { get; set; }
@@ -48,6 +45,14 @@ namespace Concierge.Character.Items
         public Guid Id { get; set; }
 
         public string Name { get; set; }
+
+        [JsonIgnore]
+        [SearchIgnore]
+        public Brush AttunedIconColor => this.GetAttunedValue().Brush;
+
+        [JsonIgnore]
+        [SearchIgnore]
+        public PackIconKind AttunedIconKind => this.GetAttunedValue().IconKind;
 
         [JsonIgnore]
         [SearchIgnore]
@@ -143,6 +148,13 @@ namespace Concierge.Character.Items
                 "Vehicle (Water)" => (IconKind: PackIconKind.SailBoat, Brush: Brushes.LightSkyBlue),
                 _ => (IconKind: PackIconKind.Error, Brush: Brushes.IndianRed),
             };
+        }
+
+        private (PackIconKind IconKind, Brush Brush) GetAttunedValue()
+        {
+            return this.Attuned ?
+                (IconKind: PackIconKind.RadioButtonChecked, Brush: Brushes.PaleGreen) :
+                (IconKind: PackIconKind.RadioButtonUnchecked, Brush: Brushes.PaleGoldenrod);
         }
     }
 }

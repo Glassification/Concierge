@@ -354,6 +354,11 @@ namespace Concierge.Display
             this.ActiveFileNameTextBlock.Text = Program.CcsFile.FileName;
         }
 
+        public void DisplayStatusText(string message)
+        {
+            this.animatedTimedTextWorkerService.StartWorker(message);
+        }
+
         [LibraryImport("dwmapi.dll", EntryPoint = "DwmSetWindowAttribute")]
         internal static partial int DwmSetWindowAttribute(
             IntPtr hwnd,

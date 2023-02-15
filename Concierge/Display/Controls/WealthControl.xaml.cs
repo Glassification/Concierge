@@ -7,6 +7,7 @@ namespace Concierge.Display.Controls
     using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Input;
+
     using Concierge.Character.Enums;
     using Concierge.Character.Statuses;
 

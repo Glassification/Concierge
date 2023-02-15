@@ -76,6 +76,8 @@ namespace Concierge.Display.Windows
             this.Result = ConciergeWindowResult.OK;
             var oldItem = this.SelectedWealth.DeepCopy();
 
+            this.AddSelectedAmount();
+
             this.SelectedWealth.Copper = this.CP;
             this.SelectedWealth.Silver = this.SP;
             this.SelectedWealth.Electrum = this.EP;
@@ -140,18 +142,7 @@ namespace Concierge.Display.Windows
                 : this.SubtractRadioButton.IsChecked ?? false ? this.AmountUpDown.Value * -1 : 0;
         }
 
-        private void CloseButton_Click(object sender, RoutedEventArgs e)
-        {
-            this.Result = ConciergeWindowResult.Exit;
-            this.CloseConciergeWindow();
-        }
-
-        private void OkButton_Click(object sender, RoutedEventArgs e)
-        {
-            this.ReturnAndClose();
-        }
-
-        private void ApplyButton_Click(object sender, RoutedEventArgs e)
+        private void AddSelectedAmount()
         {
             if (this.CpRadioButton.IsChecked ?? false)
             {
@@ -173,7 +164,22 @@ namespace Concierge.Display.Windows
             {
                 this.PP += this.GetAmount();
             }
+        }
 
+        private void CloseButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Result = ConciergeWindowResult.Exit;
+            this.CloseConciergeWindow();
+        }
+
+        private void OkButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.ReturnAndClose();
+        }
+
+        private void ApplyButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.AddSelectedAmount();
             this.FillFields();
 
             Program.Modify();

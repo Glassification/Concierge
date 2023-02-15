@@ -72,5 +72,10 @@ namespace Concierge.Tools.DiceRolling.Dice
 
             return val;
         }
+
+        public override string ToString()
+        {
+            return $"[{this.Dice}] Total {this.Total}";
+        }
     }
 }

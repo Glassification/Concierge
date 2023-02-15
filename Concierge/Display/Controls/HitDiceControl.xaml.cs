@@ -122,8 +122,9 @@ namespace Concierge.Display.Controls
             }
 
             var attributes = this.GetAttributes();
-            vitality.RollHitDice(result, attributes);
+            var roll = vitality.RollHitDice(result, attributes);
 
+            Program.MainWindow?.DisplayStatusText($"Rolled Hit Die: {roll}");
             Program.UndoRedoService.AddCommand(new EditCommand<Vitality>(vitality, oldItem, this.ConciergePage));
             Program.Modify();
 

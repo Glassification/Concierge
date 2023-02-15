@@ -45,12 +45,13 @@
                     <Border
                         Margin="10"
                         Grid.Column="1"
+                        x:Name="WeightCarriedBorder"
                         BorderBrush="#ffd8e4bc"
                         BorderThickness="5"
                         CornerRadius="10">
                         <Grid
                             Margin="-1"
-                            x:Name="WeightCarriedBox"
+                            x:Name="WeightCarriedGrid"
                             Background="#ffd8e4bc">
                             <components:ConciergeTextBlock 
                                 Text="70"

@@ -45,7 +45,8 @@
                         VerticalAlignment="Center"
                         FontSize="45"
                         FontWeight="DemiBold"
-                        FontFamily="Sergoe UI Variable"/>
+                        FontFamily="Sergoe UI Variable"
+                        MouseUp="Grid_MouseUp"/>
                     <components:ConciergeTextBlock 
                         x:Name="TotalHpField"
                         Foreground="White"
