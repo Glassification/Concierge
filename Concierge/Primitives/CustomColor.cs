@@ -64,7 +64,7 @@ namespace Concierge.Primitives
         }
 
         private CustomColor(bool isValid)
-            : this("Invalid", "#FF0000")
+            : this("Not Set", "#FF0000")
         {
             this.IsValid = isValid;
             this.A = 85;

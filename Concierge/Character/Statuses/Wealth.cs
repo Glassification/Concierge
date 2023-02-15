@@ -4,6 +4,9 @@
 
 namespace Concierge.Character.Statuses
 {
+    using System;
+
+    using Concierge.Character.Enums;
     using Concierge.Character.Items;
     using Concierge.Utility;
     using Concierge.Utility.Utilities;
@@ -65,6 +68,31 @@ namespace Concierge.Character.Statuses
         public static string FormatGoldValue(double value)
         {
             return $"¤ {string.Format("{0:0.00}", value)}";
+        }
+
+        public static CoinType GetCoinType(string name)
+        {
+            if (name.Contains(CoinType.Copper.ToString(), StringComparison.InvariantCultureIgnoreCase))
+            {
+                return CoinType.Copper;
+            }
+
+            if (name.Contains(CoinType.Silver.ToString(), StringComparison.InvariantCultureIgnoreCase))
+            {
+                return CoinType.Silver;
+            }
+
+            if (name.Contains(CoinType.Electrum.ToString(), StringComparison.InvariantCultureIgnoreCase))
+            {
+                return CoinType.Electrum;
+            }
+
+            if (name.Contains(CoinType.Platinum.ToString(), StringComparison.InvariantCultureIgnoreCase))
+            {
+                return CoinType.Platinum;
+            }
+
+            return CoinType.Gold;
         }
 
         public Wealth DeepCopy()

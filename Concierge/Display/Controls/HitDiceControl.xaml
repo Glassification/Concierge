@@ -50,7 +50,8 @@
                         CornerRadius="10">
                         <Grid
                             Background="#FF333333"
-                            Margin="-1">
+                            Margin="-1"
+                            MouseUp="Grid_MouseUp">
                             <components:ConciergeTextBlock
                                 Text="Spent"
                                 Foreground="White"

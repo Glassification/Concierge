@@ -46,9 +46,6 @@ namespace Concierge.Character.Statuses
             }
         }
 
-        [JsonIgnore]
-        public bool IsDead => this.CurrentHealth == -this.Health.MaxHealth;
-
         public Health Health { get; set; }
 
         public HitDice HitDice { get; set; }
@@ -127,9 +124,14 @@ namespace Concierge.Character.Statuses
             }
         }
 
-        public void RollHitDice(HitDie hitDie, Attributes attributes)
+        public DiceRoll RollHitDice(HitDie hitDie, Attributes attributes)
         {
-            this.Heal(DiceRoll.RollDice(1, (int)hitDie).FirstOrDefault(0) + CharacterUtility.CalculateBonus(attributes.Constitution));
+            var roll = DiceRoll.RollDice(1, (int)hitDie);
+            var modifier = CharacterUtility.CalculateBonus(attributes.Constitution);
+
+            this.Heal(roll.FirstOrDefault(0) + modifier);
+
+            return new DiceRoll((int)hitDie, roll, modifier);
         }
 
         private static int RegainHitDie(int spent)

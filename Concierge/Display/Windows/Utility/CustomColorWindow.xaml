@@ -51,18 +51,26 @@
             </Grid.ColumnDefinitions>
 
             <Grid Grid.Column="0" Margin="20, 20, 0, 0">
-                <components:ConciergeImage
-                    x:Name="ColorPickerImage"
+
+                <Canvas
+                    x:Name="ColorPickerCanvas"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
-                    Stretch="Fill"
                     Height="240"
                     Width="320"
                     MouseMove="ColorPickerImage_MouseMove"
                     MouseDown="ColorPickerImage_MouseDown"
                     MouseUp="ColorPickerImage_MouseUp"
                     MouseEnter="ColorPickerImage_MouseEnter"
-                    MouseLeave="ColorPickerImage_MouseLeave"/>
+                    MouseLeave="ColorPickerImage_MouseLeave">
+                    <components:ConciergeImage
+                        x:Name="ColorPickerImage"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        Stretch="Fill"
+                        Height="240"
+                        Width="320"/>
+                </Canvas>
             </Grid>
             <Grid
                 Grid.Column="1"

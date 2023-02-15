@@ -28,6 +28,7 @@
                 <!--Header-->
                 <Grid
                     Grid.Row="0"
+                    x:Name="HeaderGrid"
                     MouseUp="Grid_MouseUp">
                     <components:ConciergeTextBlock
                         Text="Wealth"
@@ -120,7 +121,10 @@
                         BorderBrush="#ffb87333"
                         BorderThickness="5"
                         CornerRadius="10">
-                        <Grid Margin="-1">
+                        <Grid
+                            x:Name="CopperGrid"
+                            Margin="-1"
+                            MouseUp="Grid_MouseUp">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="40*"/>
                                 <RowDefinition Height="60*"/>
@@ -129,8 +133,7 @@
                             <Grid Grid.Row="0" Background="#ffb87333">
                                 <components:ConciergeTextBlock 
                                     Text="Copper"
-                                    Foreground="Black"
-                                    FontWeight="Bold"    
+                                    Foreground="Black"  
                                     FontSize="20"
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"/>
@@ -164,7 +167,10 @@
                         BorderBrush="Silver"
                         BorderThickness="5"
                         CornerRadius="10">
-                        <Grid Margin="-1">
+                        <Grid
+                            x:Name="SilverGrid"
+                            Margin="-1"
+                            MouseUp="Grid_MouseUp">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="40*"/>
                                 <RowDefinition Height="60*"/>
@@ -175,7 +181,6 @@
                                     Text="Silver"
                                     Foreground="Black"
                                     FontSize="20"
-                                    FontWeight="Bold"
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"/>
                             </Grid>
@@ -208,7 +213,10 @@
                         BorderBrush="#ff50c878"
                         BorderThickness="5"
                         CornerRadius="10">
-                        <Grid Margin="-1">
+                        <Grid
+                            x:Name="ElectrumGrid"
+                            Margin="-1"
+                            MouseUp="Grid_MouseUp">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="40*"/>
                                 <RowDefinition Height="60*"/>
@@ -219,7 +227,6 @@
                                     Text="Electrum"
                                     Foreground="Black"
                                     FontSize="20"
-                                    FontWeight="Bold"
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"/>
                             </Grid>
@@ -252,7 +259,10 @@
                         BorderBrush="#ffCFB53B"
                         BorderThickness="5"
                         CornerRadius="10">
-                        <Grid Margin="-1">
+                        <Grid
+                            x:Name="GoldGrid"
+                            Margin="-1"
+                            MouseUp="Grid_MouseUp">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="40*"/>
                                 <RowDefinition Height="60*"/>
@@ -263,7 +273,6 @@
                                     Text="Gold"
                                     Foreground="Black"
                                     FontSize="20"
-                                    FontWeight="Bold"
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"/>
                             </Grid>
@@ -296,7 +305,10 @@
                         BorderBrush="#ffe5e4e2"
                         BorderThickness="5"
                         CornerRadius="10">
-                        <Grid Margin="-1">
+                        <Grid
+                            x:Name="PlatinumGrid"
+                            Margin="-1"
+                            MouseUp="Grid_MouseUp">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="40*"/>
                                 <RowDefinition Height="60*"/>
@@ -307,7 +319,6 @@
                                     Text="Platinum"
                                     Foreground="Black"
                                     FontSize="20"
-                                    FontWeight="Bold"
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"/>
                             </Grid>

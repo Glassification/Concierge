@@ -75,7 +75,7 @@
                         Style="{StaticResource ConciergeDesignButtonStyle}"
                         x:Name="PopupBoxButton"
                         Width="60"
-                        Foreground="LightCyan"
+                        Foreground="White"
                         ToolTip="Options"
                         Click="PopupBoxButton_Click">
                         <materialDesign:PopupBox
@@ -378,7 +378,7 @@
                         Style="{StaticResource ConciergeDesignButtonStyle}" 
                         x:Name="ButtonMinimize" 
                         Width="60"
-                        Foreground="LightCyan"
+                        Foreground="White"
                         ToolTip="Minimize"
                         Click="ButtonMinimize_Click">
                         <materialDesign:PackIcon Kind="WindowMinimize" Width="25" Height="25"/>
@@ -387,7 +387,7 @@
                         Style="{StaticResource ConciergeDesignButtonStyle}" 
                         x:Name="MaximizeButton"
                         Width="60"
-                        Foreground="LightCyan"
+                        Foreground="White"
                         ToolTip="Restore Down"
                         Click="MaximizeButton_Click">
                         <materialDesign:PackIcon x:Name="MaximizeIcon" Kind="WindowRestore" Width="25" Height="25"/>
@@ -396,7 +396,7 @@
                         Style="{StaticResource ConciergeDesignButtonStyle}" 
                         x:Name="ButtonClose" 
                         Width="60"
-                        Foreground="LightCyan"
+                        Foreground="White"
                         ToolTip="Close"
                         Click="ButtonClose_Click">
                         <materialDesign:PackIcon Kind="WindowClose" Width="25" Height="25"/>

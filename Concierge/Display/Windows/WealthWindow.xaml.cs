@@ -6,9 +6,11 @@ namespace Concierge.Display.Windows
 {
     using System.Windows;
 
+    using Concierge.Character.Enums;
     using Concierge.Character.Statuses;
     using Concierge.Commands;
     using Concierge.Display.Components;
+    using Concierge.Display.Controls;
     using Concierge.Display.Enums;
 
     /// <summary>
@@ -51,15 +53,20 @@ namespace Concierge.Display.Windows
             return this.Result;
         }
 
-        public override void ShowEdit<T>(T wealth)
+        public override void ShowEdit<T>(T wealth, object sender)
         {
             if (wealth is not Wealth castItem)
             {
                 return;
             }
 
+            if (sender is not WealthControl wealthControl)
+            {
+                return;
+            }
+
             this.SelectedWealth = castItem;
-            this.ClearFields();
+            this.ClearFields(wealthControl.SelectedCoin);
             this.FillFields();
             this.ShowConciergeWindow();
         }
@@ -68,6 +75,8 @@ namespace Concierge.Display.Windows
         {
             this.Result = ConciergeWindowResult.OK;
             var oldItem = this.SelectedWealth.DeepCopy();
+
+            this.AddSelectedAmount();
 
             this.SelectedWealth.Copper = this.CP;
             this.SelectedWealth.Silver = this.SP;
@@ -81,10 +90,10 @@ namespace Concierge.Display.Windows
             this.CloseConciergeWindow();
         }
 
-        private void ClearFields()
+        private void ClearFields(CoinType coinType = CoinType.Gold)
         {
             this.AddRadioButton.IsChecked = true;
-            this.GpRadioButton.IsChecked = true;
+            this.SelectCoinTypeRadioButton(coinType);
             this.AmountUpDown.Value = 0;
 
             this.CP = this.SelectedWealth.Copper;
@@ -103,6 +112,29 @@ namespace Concierge.Display.Windows
             this.PlatinumField.Text = this.PP.ToString();
         }
 
+        private void SelectCoinTypeRadioButton(CoinType coinType)
+        {
+            switch (coinType)
+            {
+                case CoinType.Copper:
+                    this.CpRadioButton.IsChecked = true;
+                    break;
+                case CoinType.Silver:
+                    this.SpRadioButton.IsChecked = true;
+                    break;
+                case CoinType.Electrum:
+                    this.EpRadioButton.IsChecked = true;
+                    break;
+                case CoinType.Gold:
+                default:
+                    this.GpRadioButton.IsChecked = true;
+                    break;
+                case CoinType.Platinum:
+                    this.PpRadioButton.IsChecked = true;
+                    break;
+            }
+        }
+
         private int GetAmount()
         {
             return this.AddRadioButton.IsChecked ?? false
@@ -110,18 +142,7 @@ namespace Concierge.Display.Windows
                 : this.SubtractRadioButton.IsChecked ?? false ? this.AmountUpDown.Value * -1 : 0;
         }
 
-        private void CloseButton_Click(object sender, RoutedEventArgs e)
-        {
-            this.Result = ConciergeWindowResult.Exit;
-            this.CloseConciergeWindow();
-        }
-
-        private void OkButton_Click(object sender, RoutedEventArgs e)
-        {
-            this.ReturnAndClose();
-        }
-
-        private void ApplyButton_Click(object sender, RoutedEventArgs e)
+        private void AddSelectedAmount()
         {
             if (this.CpRadioButton.IsChecked ?? false)
             {
@@ -143,7 +164,22 @@ namespace Concierge.Display.Windows
             {
                 this.PP += this.GetAmount();
             }
+        }
 
+        private void CloseButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Result = ConciergeWindowResult.Exit;
+            this.CloseConciergeWindow();
+        }
+
+        private void OkButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.ReturnAndClose();
+        }
+
+        private void ApplyButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.AddSelectedAmount();
             this.FillFields();
 
             Program.Modify();

@@ -525,7 +525,7 @@
       "Hands": [
         {
           "Amount": 1,
-          "Attuned": false,
+          "Attuned": true,
           "CoinType": 0,
           "CreationDate": "2023-02-12T13:29:58.4435502-06:00",
           "Description": "Use to cast create darkness. 1d4 uses per day.",
@@ -2276,9 +2276,9 @@
       }
     ]
   },
-  "Hash": "F84533EADF319FDBA90EFF55BFC9C09557A37A5B70D14B7A2E2328A0F15DE3D3",
+  "Hash": "68AC7013732426AFFBC0E86E8E7A5187893A2A7041291609BF34CAB71C02E890",
   "OriginalCreationDate": "Saturday, 17 December 2022 07:58:23 AM",
-  "LastSaveDate": "2023-02-12T14:19:19.6103448-06:00",
-  "Version": "5.0.1",
+  "LastSaveDate": "2023-02-14T15:51:30.2746703-06:00",
+  "Version": "5.0.3",
   "IsEmpty": false
 }
