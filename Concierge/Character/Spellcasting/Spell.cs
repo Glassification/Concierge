@@ -37,9 +37,6 @@ namespace Concierge.Character.Spellcasting
 
         public bool Concentration { get; set; }
 
-        [JsonIgnore]
-        public string ConcentrationDisplay => this.Concentration ? "Yes" : "No";
-
         public string Damage { get; set; }
 
         public string Description { get; set; }
@@ -62,6 +59,14 @@ namespace Concierge.Character.Spellcasting
         [SearchIgnore]
         public PackIconKind PreparedIconKind => this.GetPreparedValue().IconKind;
 
+        [JsonIgnore]
+        [SearchIgnore]
+        public PackIconKind ConcentrationIcon => GetCheckBox(this.Concentration);
+
+        [JsonIgnore]
+        [SearchIgnore]
+        public PackIconKind RitualIcon => GetCheckBox(this.Ritual);
+
         public Guid Id { get; set; }
 
         public int Level { get; set; }
@@ -75,9 +80,6 @@ namespace Concierge.Character.Spellcasting
         public string Range { get; set; }
 
         public bool Ritual { get; set; }
-
-        [JsonIgnore]
-        public string RitualDisplay => this.Ritual ? "Yes" : "No";
 
         public string Save { get; set; }
 
@@ -109,6 +111,13 @@ namespace Concierge.Character.Spellcasting
                 Id = this.Id,
                 Name = this.Name,
             };
+        }
+
+        private static PackIconKind GetCheckBox(bool isChecked)
+        {
+            return isChecked ?
+                PackIconKind.CheckBox :
+                PackIconKind.CheckboxBlank;
         }
 
         private (PackIconKind IconKind, Brush Brush) GetCategoryValue()

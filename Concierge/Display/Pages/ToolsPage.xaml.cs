@@ -300,6 +300,16 @@ namespace Concierge.Display.Pages
             this.ClearDivideLoot();
         }
 
+        private void ClearLootButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.DivideLootDataGrid.UnselectAll();
+        }
+
+        private void ClearHistoryButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.RollDiceHistoryDataGrid.UnselectAll();
+        }
+
         private void DivideLootDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
         }

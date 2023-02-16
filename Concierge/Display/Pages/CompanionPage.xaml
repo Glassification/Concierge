@@ -410,8 +410,19 @@
                                 Width="auto"
                                 Foreground="#33415C"/>
                             <Image x:Name="CompanionImage"/>
+                            <Border
+                                Margin="0"
+                                BorderBrush="#2B2B2B"
+                                BorderThickness="5"
+                                CornerRadius="10"/>
                         </Grid>
                     </Border>
+                    <Border
+                        Margin="5"
+                        Grid.Column="1"
+                        BorderBrush="#2B2B2B"
+                        BorderThickness="6"
+                        CornerRadius="10"/>
                 </Grid>
                 
                 <controls:HitDiceControl

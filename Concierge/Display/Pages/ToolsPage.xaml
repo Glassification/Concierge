@@ -56,12 +56,22 @@
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                             <components:ConciergeDesignButton 
                                 Style="{StaticResource ConciergeDesignButtonStyle}" 
+                                x:Name="ClearHistoryButton"
+                                Width="60"
+                                Foreground="Silver"
+                                Margin="0, 0, 0, 0"
+                                Click="ClearHistoryButton_Click"
+                                ToolTip="Clear History">
+                                <materialDesign:PackIcon Kind="Cancel" Height="25" Width="25"/>
+                            </components:ConciergeDesignButton>
+                            <components:ConciergeDesignButton 
+                                Style="{StaticResource ConciergeDesignButtonStyle}" 
                                 x:Name="ResetHistoryButton"
                                 Width="60"
                                 Foreground="IndianRed"
-                                Margin="10, 0, 60, 0"
+                                Margin="0, 0, 60, 0"
                                 Click="ResetHistoryButton_Click"
-                                ToolTip="Clear History">
+                                ToolTip="Reset History">
                                 <materialDesign:PackIcon Kind="RefreshCircle" Height="25" Width="25"/>
                             </components:ConciergeDesignButton>
                         </StackPanel>
@@ -384,9 +394,19 @@
                                 Width="60"
                                 Foreground="PaleGreen"
                                 Click="DivideLootButton_Click"
-                                Margin="10, 0, 10, 0"
+                                Margin="0, 0, 0, 0"
                                 ToolTip="Divide Loot">
                                 <materialDesign:PackIcon Kind="Calculator" Height="25" Width="25"/>
+                            </components:ConciergeDesignButton>
+                            <components:ConciergeDesignButton 
+                                Style="{StaticResource ConciergeDesignButtonStyle}" 
+                                x:Name="ClearLootButton"
+                                Width="60"
+                                Foreground="Silver"
+                                Margin="0, 0, 0, 0"
+                                Click="ClearLootButton_Click"
+                                ToolTip="Clear Loot">
+                                <materialDesign:PackIcon Kind="Cancel" Height="25" Width="25"/>
                             </components:ConciergeDesignButton>
                             <components:ConciergeDesignButton 
                                 Style="{StaticResource ConciergeDesignButtonStyle}" 
@@ -394,8 +414,8 @@
                                 Width="60"
                                 Foreground="IndianRed"
                                 Click="ResetLootButton_Click"
-                                Margin="10, 0, 60, 0"
-                                ToolTip="Clear Loot">
+                                Margin="0, 0, 60, 0"
+                                ToolTip="Reset Loot">
                                 <materialDesign:PackIcon Kind="RefreshCircle" Height="25" Width="25"/>
                             </components:ConciergeDesignButton>
                         </StackPanel>

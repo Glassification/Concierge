@@ -276,7 +276,7 @@
                     </Grid>
                 </Border>
             </Grid>
-            
+
             <Border
                 Margin="5"
                 Grid.Column="2"
@@ -296,8 +296,19 @@
                         Width="auto"
                         Foreground="#33415C"/>
                     <Image x:Name="CharacterImage"/>
+                    <Border
+                        Margin="0"
+                        BorderBrush="#2B2B2B"
+                        BorderThickness="5"
+                        CornerRadius="10"/>
                 </Grid>
             </Border>
+            <Border
+                Margin="5"
+                Grid.Column="2"
+                BorderBrush="#2B2B2B"
+                BorderThickness="6"
+                CornerRadius="10"/>
 
             <Grid Grid.Column="1">
                 <Grid.RowDefinitions>

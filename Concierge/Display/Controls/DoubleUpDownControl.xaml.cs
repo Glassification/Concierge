@@ -286,6 +286,10 @@ namespace Concierge.Display.Controls
         private void TextBoxValue_GotFocus(object sender, RoutedEventArgs e)
         {
             Program.Typing();
+            if (this.TextBoxValue.Text.Equals("0"))
+            {
+                this.TextBoxValue.Text = string.Empty;
+            }
         }
 
         private void TextBoxValue_MouseDoubleClick(object sender, MouseButtonEventArgs e)

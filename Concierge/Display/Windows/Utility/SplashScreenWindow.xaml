@@ -35,7 +35,7 @@
                 <Grid Grid.Row="0">
                     <TextBlock
                         Text="Concierge"
-                        Foreground="#33415C"
+                        Foreground="SteelBlue"
                         FontSize="50"
                         FontFamily="Segoe UI SemiBold"
                         Margin="20,0,20,20">
@@ -44,7 +44,7 @@
                         </TextBlock.Effect>
                     </TextBlock>
                     <Line
-                        Stroke="#33415C"
+                        Stroke="#227EA9"
                         StrokeThickness="1"
                         VerticalAlignment="Bottom"
                         Stretch="Uniform"
@@ -61,7 +61,7 @@
                     <Grid Grid.Column="0">
                         <materialDesign:PackIcon
                             Kind="HexagonOutline"
-                            Foreground="#33415C"
+                            Foreground="SteelBlue"
                             HorizontalAlignment="Stretch"
                             VerticalAlignment="Stretch"
                             Height="auto"

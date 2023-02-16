@@ -341,21 +341,43 @@
                             Binding="{Binding School}"
                             Width="0.09*"
                             ElementStyle="{StaticResource SpellcastingColumnElementStyle}"/>
-                        <DataGridTextColumn
+                        <DataGridTemplateColumn
                             Header="Ritual"
-                            Binding="{Binding RitualDisplay}"
-                            Width="0.05*"
-                            ElementStyle="{StaticResource SpellcastingColumnElementStyle}"/>
+                            Width="0.05*">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <materialDesign:PackIcon
+                                        Kind="{Binding RitualIcon}"
+                                        Margin="0,10,0,0"
+                                        Foreground="White"
+                                        Height="18"
+                                        Width="18"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Top"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
                         <DataGridTextColumn
                             Header="Comp"
                             Binding="{Binding Components}"
                             Width="0.08*"
                             ElementStyle="{StaticResource SpellcastingColumnElementStyle}"/>
-                        <DataGridTextColumn
+                        <DataGridTemplateColumn
                             Header="Concen"
-                            Binding="{Binding ConcentrationDisplay}"
-                            Width="0.05*"
-                            ElementStyle="{StaticResource SpellcastingColumnElementStyle}"/>
+                            Width="0.05*">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <materialDesign:PackIcon
+                                        Kind="{Binding ConcentrationIcon}"
+                                        Margin="0,10,0,0"
+                                        Foreground="White"
+                                        Height="18"
+                                        Width="18"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Top"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
                         <DataGridTextColumn
                             Header="Range"
                             Binding="{Binding Range}"
@@ -384,15 +406,16 @@
                         <DataGridTextColumn
                             Header="Description"
                             Binding="{Binding Description}"
-                            Width="0.19*"
+                            Width="0.20*"
                             ElementStyle="{StaticResource SpellcastingColumnElementStyle}"/>
                         <DataGridTemplateColumn
-                            Width="0.02*">
+                            Width="0.01*">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <materialDesign:PackIcon
                                         Kind="{Binding PreparedIconKind}"
                                         Foreground="{Binding PreparedIconColor}"
+                                        Margin="0,0,3,0"
                                         Height="auto"
                                         Width="auto"
                                         HorizontalAlignment="Center"
