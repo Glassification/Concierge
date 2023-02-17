@@ -64,7 +64,7 @@
                                     Width="60"
                                     Foreground="SteelBlue"
                                     Click="AmmoUpButton_Click"
-                                    ToolTip="Move Ammunition Up">
+                                    ToolTip="Move Selected Ammunition Up">
                                     <materialDesign:PackIcon Kind="ArrowUpBox" Width="25" Height="25"/>
                                 </components:ConciergeDesignButton>
                                 <components:ConciergeDesignButton 
@@ -73,7 +73,7 @@
                                     Width="60"
                                     Foreground="SteelBlue"
                                     Click="AmmonDownButton_Click"
-                                    ToolTip="Move Ammunition Down">
+                                    ToolTip="Move Selected Ammunition Down">
                                     <materialDesign:PackIcon Kind="ArrowDownBox" Width="25" Height="25"/>
                                 </components:ConciergeDesignButton>
                                 <components:ConciergeDesignButton 
@@ -83,7 +83,7 @@
                                     Foreground="Silver"
                                     Click="AmmoClearButton_Click"
                                     ToolTip="Clear Selected Ammunition">
-                                    <materialDesign:PackIcon Kind="Cancel" Width="25" Height="25"/>
+                                    <materialDesign:PackIcon Kind="NotificationClearAll" Width="25" Height="25"/>
                                 </components:ConciergeDesignButton>
                                 <Label
                                     Height="50"
@@ -224,9 +224,9 @@
                                     Width="35"
                                     HorizontalAlignment="Left"
                                     Foreground="Silver"
-                                    ToolTip="Clear Status Effects"
+                                    ToolTip="Clear Selected Status Effect"
                                     Click="ClearEffectsButton_Click">
-                                    <materialDesign:PackIcon Kind="Cancel" Width="25" Height="25"/>
+                                    <materialDesign:PackIcon Kind="NotificationClearAll" Width="25" Height="25"/>
                                 </components:ConciergeDesignButton>
                                 <components:ConciergeDesignButton 
                                     Style="{StaticResource ConciergeDesignButtonStyle}" 
@@ -234,7 +234,7 @@
                                     Width="35"
                                     HorizontalAlignment="Left"
                                     Foreground="IndianRed"
-                                    ToolTip="Delete Status Effects"
+                                    ToolTip="Delete Selected Status Effect"
                                     Click="DeleteEffectsButton_Click">
                                     <materialDesign:PackIcon Kind="Delete" Width="25" Height="25"/>
                                 </components:ConciergeDesignButton>
@@ -249,7 +249,7 @@
                                     Width="35"
                                     HorizontalAlignment="Center"
                                     Foreground="PaleGreen"
-                                    ToolTip="Add Status Effects"
+                                    ToolTip="Add New Status Effect"
                                     Click="AddEffectsButton_Click">
                                     <materialDesign:PackIcon Kind="AddBox" Width="25" Height="25"/>
                                 </components:ConciergeDesignButton>
@@ -259,7 +259,7 @@
                                     Width="35"
                                     HorizontalAlignment="Right"
                                     Foreground="Khaki"
-                                    ToolTip="Edit Status Effects"
+                                    ToolTip="Edit Selected Status Effect"
                                     Click="EditEffectsButton_Click">
                                     <materialDesign:PackIcon Kind="TextBoxEdit" Width="25" Height="25"/>
                                 </components:ConciergeDesignButton>
@@ -333,7 +333,7 @@
                                 Width="60"
                                 Foreground="SteelBlue"
                                 Click="AttacksUpButton_Click"
-                                ToolTip="Move Attack Up">
+                                ToolTip="Move Selected Attack Up">
                                 <materialDesign:PackIcon Kind="ArrowUpBox" Width="25" Height="25"/>
                             </components:ConciergeDesignButton>
                             <components:ConciergeDesignButton 
@@ -342,7 +342,7 @@
                                 Width="60"
                                 Foreground="SteelBlue"
                                 Click="AttacksDownButton_Click"
-                                ToolTip="Move Attack Down">
+                                ToolTip="Move Selected Attack Down">
                                 <materialDesign:PackIcon Kind="ArrowDownBox" Width="25" Height="25"/>
                             </components:ConciergeDesignButton>
                             <components:ConciergeDesignButton 
@@ -352,7 +352,7 @@
                                 Foreground="Silver"
                                 Click="AttacksClearButton_Click"
                                 ToolTip="Clear Selected Attack">
-                                <materialDesign:PackIcon Kind="Cancel" Width="25" Height="25"/>
+                                <materialDesign:PackIcon Kind="NotificationClearAll" Width="25" Height="25"/>
                             </components:ConciergeDesignButton>
                             <Label
                                 Height="50"
@@ -416,7 +416,7 @@
                             <DataGridTextColumn
                                 Header="Attack"
                                 Binding="{Binding Name}"
-                                Width="0.19*"
+                                Width="0.18*"
                                 ElementStyle="{StaticResource StandardColumnElementStyle}"/>
                             <DataGridTextColumn
                                 Header="Attack Bonus"
@@ -453,6 +453,20 @@
                                 Binding="{Binding Note}"
                                 Width="0.19*"
                                 ElementStyle="{StaticResource StandardColumnElementStyle}"/>
+                            <DataGridTemplateColumn Width="0.01*">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <materialDesign:PackIcon
+                                            Margin="0,0,3,0"
+                                            Kind="{Binding ProficiencyIconKind}"
+                                            Foreground="{Binding ProficiencyIconColor}"
+                                            Height="auto"
+                                            Width="auto"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
                         </DataGrid.Columns>
                     </components:ConciergeDataGrid>
                 </Grid>

@@ -74,9 +74,13 @@ namespace Concierge.Display.Pages
 
         private bool SelectionLock { get; set; }
 
-        public void Draw()
+        public void Draw(bool isNewCharacterSheet = false)
         {
             this.DrawTreeView();
+            if (isNewCharacterSheet)
+            {
+                this.ClearTextBox();
+            }
         }
 
         public void Edit(object itemToEdit)

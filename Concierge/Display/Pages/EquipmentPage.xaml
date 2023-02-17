@@ -51,7 +51,7 @@
                         Click="UpButton_Click"
                         Width="60"
                         Foreground="SteelBlue"
-                        ToolTip="Move Item Up">
+                        ToolTip="Move Selected Item Up">
                         <materialDesign:PackIcon Kind="ArrowUpBox" Width="25" Height="25"/>
                     </components:ConciergeDesignButton>
                     <components:ConciergeDesignButton 
@@ -60,7 +60,7 @@
                         Click="DownButton_Click"
                         Width="60"
                         Foreground="SteelBlue"
-                        ToolTip="Move Item Down">
+                        ToolTip="Move Selected Item Down">
                         <materialDesign:PackIcon Kind="ArrowDownBox" Width="25" Height="25"/>
                     </components:ConciergeDesignButton>
                     <components:ConciergeDesignButton 
@@ -70,7 +70,7 @@
                         Width="60"
                         Foreground="Silver"
                         ToolTip="Clear Selected Item">
-                        <materialDesign:PackIcon Kind="Cancel" Width="25" Height="25"/>
+                        <materialDesign:PackIcon Kind="NotificationClearAll" Width="25" Height="25"/>
                     </components:ConciergeDesignButton>
                     <Label
                         Height="50"

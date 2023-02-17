@@ -34,7 +34,7 @@ namespace Concierge.Display.Pages
 
         private List<Inventory> DisplayList => Program.CcsFile.Character.Inventories.Filter(this.SearchFilter.FilterText).ToList();
 
-        public void Draw()
+        public void Draw(bool isNewCharacterSheet = false)
         {
             this.DrawInventory();
         }

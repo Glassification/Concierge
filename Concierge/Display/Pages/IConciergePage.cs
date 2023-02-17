@@ -12,7 +12,7 @@ namespace Concierge.Display
 
         bool HasEditableDataGrid { get; }
 
-        void Draw();
+        void Draw(bool isNewCharacterSheet = false);
 
         void Edit(object itemToEdit);
     }

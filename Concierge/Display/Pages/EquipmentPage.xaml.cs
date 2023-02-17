@@ -55,7 +55,7 @@ namespace Concierge.Display.Pages
 
         private List<Inventory> FeetDisplayList => Program.CcsFile.Character.EquippedItems.Feet.Filter(this.SearchFilter.FilterText).ToList();
 
-        public void Draw()
+        public void Draw(bool isNewCharacterSheet = false)
         {
             this.UsedAttunement.Text = $"{Program.CcsFile.Character.EquippedItems.Attuned}/{Constants.MaxAttunedItems}";
 

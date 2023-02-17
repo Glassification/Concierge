@@ -35,7 +35,7 @@ namespace Concierge.Display.Pages
 
         public ConciergePage ConciergePage => ConciergePage.Overview;
 
-        public void Draw()
+        public void Draw(bool isNewCharacterSheet = false)
         {
             this.DrawDetails();
             this.DrawAttributes();

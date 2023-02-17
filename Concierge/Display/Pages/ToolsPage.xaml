@@ -61,8 +61,8 @@
                                 Foreground="Silver"
                                 Margin="0, 0, 0, 0"
                                 Click="ClearHistoryButton_Click"
-                                ToolTip="Clear History">
-                                <materialDesign:PackIcon Kind="Cancel" Height="25" Width="25"/>
+                                ToolTip="Clear Selected History">
+                                <materialDesign:PackIcon Kind="NotificationClearAll" Height="25" Width="25"/>
                             </components:ConciergeDesignButton>
                             <components:ConciergeDesignButton 
                                 Style="{StaticResource ConciergeDesignButtonStyle}" 
@@ -405,8 +405,8 @@
                                 Foreground="Silver"
                                 Margin="0, 0, 0, 0"
                                 Click="ClearLootButton_Click"
-                                ToolTip="Clear Loot">
-                                <materialDesign:PackIcon Kind="Cancel" Height="25" Width="25"/>
+                                ToolTip="Clear Selected Loot">
+                                <materialDesign:PackIcon Kind="NotificationClearAll" Height="25" Width="25"/>
                             </components:ConciergeDesignButton>
                             <components:ConciergeDesignButton 
                                 Style="{StaticResource ConciergeDesignButtonStyle}" 

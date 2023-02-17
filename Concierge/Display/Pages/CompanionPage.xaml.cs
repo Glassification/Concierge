@@ -23,7 +23,7 @@ namespace Concierge.Display.Pages
     /// <summary>
     /// Interaction logic for CompanionPage.xaml.
     /// </summary>
-    public partial class CompanionPage : Page, Concierge.Display.IConciergePage
+    public partial class CompanionPage : Page, IConciergePage
     {
         public CompanionPage()
         {
@@ -37,7 +37,7 @@ namespace Concierge.Display.Pages
 
         private List<Weapon> DisplayList => Program.CcsFile.Character.Companion.Attacks.Filter(this.SearchFilter.FilterText).ToList();
 
-        public void Draw()
+        public void Draw(bool isNewCharacterSheet = false)
         {
             this.DrawAttributes();
             this.DrawDetails();

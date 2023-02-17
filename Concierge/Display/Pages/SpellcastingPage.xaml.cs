@@ -39,7 +39,7 @@ namespace Concierge.Display.Pages
 
         private List<Spell> SpellDisplayList => Program.CcsFile.Character.Spells.Filter(this.SearchFilter.FilterText).ToList();
 
-        public void Draw()
+        public void Draw(bool isNewCharacterSheet = false)
         {
             this.DrawMagicClasses();
             this.DrawSpellList();

@@ -36,7 +36,7 @@ namespace Concierge.Display.Pages
 
         public bool HasEditableDataGrid => true;
 
-        public void Draw()
+        public void Draw(bool isNewCharacterSheet = false)
         {
             this.DrawAppearance();
             this.DrawPersonality();

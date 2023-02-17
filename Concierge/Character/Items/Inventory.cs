@@ -62,6 +62,10 @@ namespace Concierge.Character.Items
         [SearchIgnore]
         public PackIconKind IconKind => this.GetCategoryValue().IconKind;
 
+        [JsonIgnore]
+        [SearchIgnore]
+        public PackIconKind IgnoreWeightIcon => this.GetWeightIgnoreValue();
+
         public bool IgnoreWeight { get; set; }
 
         public int Index { get; set; }
@@ -155,6 +159,13 @@ namespace Concierge.Character.Items
             return this.Attuned ?
                 (IconKind: PackIconKind.RadioButtonChecked, Brush: Brushes.PaleGreen) :
                 (IconKind: PackIconKind.RadioButtonUnchecked, Brush: Brushes.PaleGoldenrod);
+        }
+
+        private PackIconKind GetWeightIgnoreValue()
+        {
+            return this.IgnoreWeight ?
+                PackIconKind.CheckboxBlank :
+                PackIconKind.CheckBox;
         }
     }
 }

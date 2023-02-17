@@ -478,7 +478,7 @@
                                 Width="60"
                                 Foreground="SteelBlue"
                                 Click="AttacksUpButton_Click"
-                                ToolTip="Move Attack Up">
+                                ToolTip="Move Selected Attack Up">
                                 <materialDesign:PackIcon Kind="ArrowUpBox" Width="25" Height="25"/>
                             </components:ConciergeDesignButton>
                             <components:ConciergeDesignButton 
@@ -487,7 +487,7 @@
                                 Width="60"
                                 Foreground="SteelBlue"
                                 Click="AttacksDownButton_Click"
-                                ToolTip="Move Attack Down">
+                                ToolTip="Move Selected Attack Down">
                                 <materialDesign:PackIcon Kind="ArrowDownBox" Width="25" Height="25"/>
                             </components:ConciergeDesignButton>
                             <components:ConciergeDesignButton 
@@ -497,7 +497,7 @@
                                 Foreground="Silver"
                                 Click="AttacksClearButton_Click"
                                 ToolTip="Clear Selected Attack">
-                                <materialDesign:PackIcon Kind="Cancel" Width="25" Height="25"/>
+                                <materialDesign:PackIcon Kind="NotificationClearAll" Width="25" Height="25"/>
                             </components:ConciergeDesignButton>
                             <Label
                                 Height="50"

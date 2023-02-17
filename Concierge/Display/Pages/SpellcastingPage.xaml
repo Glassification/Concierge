@@ -76,7 +76,7 @@
                                     Width="60"
                                     Foreground="SteelBlue"
                                     Click="MagicClassUpButton_Click"
-                                    ToolTip="Move Item Up">
+                                    ToolTip="Move Selected Class Up">
                                     <materialDesign:PackIcon Kind="ArrowUpBox" Width="25" Height="25"/>
                                 </components:ConciergeDesignButton>
                                 <components:ConciergeDesignButton 
@@ -85,7 +85,7 @@
                                     Width="60"
                                     Foreground="SteelBlue"
                                     Click="MagicClassDownButton_Click"
-                                    ToolTip="Move Item Down">
+                                    ToolTip="Move Selected Class Down">
                                     <materialDesign:PackIcon Kind="ArrowDownBox" Width="25" Height="25"/>
                                 </components:ConciergeDesignButton>
                                 <components:ConciergeDesignButton 
@@ -94,8 +94,8 @@
                                     Width="60"
                                     Foreground="Silver"
                                     Click="MagicClassClearButton_Click"
-                                    ToolTip="Clear Selected Item">
-                                    <materialDesign:PackIcon Kind="Cancel" Width="25" Height="25"/>
+                                    ToolTip="Clear Selected Class">
+                                    <materialDesign:PackIcon Kind="NotificationClearAll" Width="25" Height="25"/>
                                 </components:ConciergeDesignButton>
                                 <Label
                                     Height="50"
@@ -109,7 +109,7 @@
                                     Width="60"
                                     Foreground="PaleGreen"
                                     Click="MagicClassAddButton_Click"
-                                    ToolTip="Add New Magic Class">
+                                    ToolTip="Add New Class">
                                     <materialDesign:PackIcon Kind="AddBox" Width="25" Height="25"/>
                                 </components:ConciergeDesignButton>
                                 <components:ConciergeDesignButton 
@@ -118,7 +118,7 @@
                                     Width="60"
                                     Foreground="Khaki"
                                     Click="MagicClassEditButton_Click"
-                                    ToolTip="Edit Selected Item">
+                                    ToolTip="Edit Selected Class">
                                     <materialDesign:PackIcon Kind="TextBoxEdit" Width="25" Height="25"/>
                                 </components:ConciergeDesignButton>
                                 <components:ConciergeDesignButton 
@@ -127,7 +127,7 @@
                                     Width="60"
                                     Foreground="IndianRed"
                                     Click="MagicClassDeleteButton_Click"
-                                    ToolTip="Delete Selected Item">
+                                    ToolTip="Delete Selected Class">
                                     <materialDesign:PackIcon Kind="Delete" Width="25" Height="25"/>
                                 </components:ConciergeDesignButton>
                             </StackPanel>
@@ -247,7 +247,7 @@
                                 Width="60"
                                 Foreground="SteelBlue"
                                 Click="SpellUpButton_Click"
-                                ToolTip="Move Item Up">
+                                ToolTip="Move Selected Spell Up">
                                 <materialDesign:PackIcon Kind="ArrowUpBox" Width="25" Height="25"/>
                             </components:ConciergeDesignButton>
                             <components:ConciergeDesignButton 
@@ -256,7 +256,7 @@
                                 Width="60"
                                 Foreground="SteelBlue"
                                 Click="SpellDownButton_Click"
-                                ToolTip="Move Item Down">
+                                ToolTip="Move Selected Spell Down">
                                 <materialDesign:PackIcon Kind="ArrowDownBox" Width="25" Height="25"/>
                             </components:ConciergeDesignButton>
                             <components:ConciergeDesignButton 
@@ -265,8 +265,8 @@
                                 Width="60"
                                 Foreground="Silver"
                                 Click="SpellClearButton_Click"
-                                ToolTip="Clear Selected Item">
-                                <materialDesign:PackIcon Kind="Cancel" Width="25" Height="25"/>
+                                ToolTip="Clear Selected Spell">
+                                <materialDesign:PackIcon Kind="NotificationClearAll" Width="25" Height="25"/>
                             </components:ConciergeDesignButton>
                             <Label
                                 Height="50"
@@ -280,7 +280,7 @@
                                 Width="60"
                                 Foreground="PaleGreen"
                                 Click="SpellAddButton_Click"
-                                ToolTip="Add New Magic Class">
+                                ToolTip="Add New Spell">
                                 <materialDesign:PackIcon Kind="AddBox" Width="25" Height="25"/>
                             </components:ConciergeDesignButton>
                             <components:ConciergeDesignButton 
@@ -289,7 +289,7 @@
                                 Width="60"
                                 Foreground="Khaki"
                                 Click="SpellEditButton_Click"
-                                ToolTip="Edit Selected Item">
+                                ToolTip="Edit Selected Spell">
                                 <materialDesign:PackIcon Kind="TextBoxEdit" Width="25" Height="25"/>
                             </components:ConciergeDesignButton>
                             <components:ConciergeDesignButton 
@@ -298,7 +298,7 @@
                                 Width="60"
                                 Foreground="IndianRed"
                                 Click="SpellDeleteButton_Click"
-                                ToolTip="Delete Selected Item">
+                                ToolTip="Delete Selected Spell">
                                 <materialDesign:PackIcon Kind="Delete" Width="25" Height="25"/>
                             </components:ConciergeDesignButton>
                         </StackPanel>
@@ -349,7 +349,7 @@
                                     <materialDesign:PackIcon
                                         Kind="{Binding RitualIcon}"
                                         Margin="0,10,0,0"
-                                        Foreground="White"
+                                        Foreground="#227EA9"
                                         Height="18"
                                         Width="18"
                                         HorizontalAlignment="Center"
@@ -370,7 +370,7 @@
                                     <materialDesign:PackIcon
                                         Kind="{Binding ConcentrationIcon}"
                                         Margin="0,10,0,0"
-                                        Foreground="White"
+                                        Foreground="#227EA9"
                                         Height="18"
                                         Width="18"
                                         HorizontalAlignment="Center"

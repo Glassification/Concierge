@@ -53,7 +53,7 @@
                                 Width="60"
                                 Foreground="SteelBlue"
                                 Click="UpButton_Click"
-                                ToolTip="Move Item Up">
+                                ToolTip="Move Selected Entry Up">
                                 <materialDesign:PackIcon Kind="ArrowUpBox" Width="25" Height="25"/>
                             </components:ConciergeDesignButton>
                             <components:ConciergeDesignButton 
@@ -62,7 +62,7 @@
                                 Width="60"
                                 Foreground="SteelBlue"
                                 Click="DownButton_Click"
-                                ToolTip="Move Item Down">
+                                ToolTip="Move Selected Entry Down">
                                 <materialDesign:PackIcon Kind="ArrowDownBox" Width="25" Height="25"/>
                             </components:ConciergeDesignButton>
                             <components:ConciergeDesignButton 
@@ -71,8 +71,8 @@
                                 Width="60"
                                 Foreground="Silver"
                                 Click="ClearButton_Click"
-                                ToolTip="Clear Selected Item">
-                                <materialDesign:PackIcon Kind="Cancel" Width="25" Height="25"/>
+                                ToolTip="Clear Selected Entry">
+                                <materialDesign:PackIcon Kind="NotificationClearAll" Width="25" Height="25"/>
                             </components:ConciergeDesignButton>
                             <components:ConciergeDesignButton 
                                 Style="{StaticResource ConciergeDesignButtonStyle}" 
@@ -80,7 +80,7 @@
                                 Width="60"
                                 Foreground="Khaki"
                                 Click="EditButton_Click"
-                                ToolTip="Edit Selected Item">
+                                ToolTip="Edit Selected Entry">
                                 <materialDesign:PackIcon Kind="TextBoxEdit" Width="25" Height="25"/>
                             </components:ConciergeDesignButton>
                             <components:ConciergeDesignButton 
@@ -89,7 +89,7 @@
                                 Width="60"
                                 Foreground="IndianRed"
                                 Click="DeleteButton_Click"
-                                ToolTip="Delete Selected Item">
+                                ToolTip="Delete Selected Entry">
                                 <materialDesign:PackIcon Kind="Delete" Width="25" Height="25"/>
                             </components:ConciergeDesignButton>
                         </StackPanel>

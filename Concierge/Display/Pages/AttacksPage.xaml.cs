@@ -38,7 +38,7 @@ namespace Concierge.Display.Pages
 
         private List<Weapon> WeaponDisplayList => Program.CcsFile.Character.Weapons.Filter(this.SearchFilter.FilterText).ToList();
 
-        public void Draw()
+        public void Draw(bool isNewCharacterSheet = false)
         {
             this.DrawWeaponList();
             this.DrawAmmoList();

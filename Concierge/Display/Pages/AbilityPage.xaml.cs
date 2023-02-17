@@ -34,7 +34,7 @@ namespace Concierge.Display.Pages
 
         private List<Ability> DisplayList => Program.CcsFile.Character.Abilities.Filter(this.SearchFilter.FilterText).ToList();
 
-        public void Draw()
+        public void Draw(bool isNewCharacterSheet = false)
         {
             this.DrawAbilities();
         }

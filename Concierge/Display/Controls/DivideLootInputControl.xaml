@@ -17,7 +17,7 @@
         <Border
             x:Name="DivideLootBorder"
             BorderThickness="5"
-            CornerRadius="10">
+            CornerRadius="10,0,0,10">
             <Grid
                 x:Name="DivideLootGrid"
                 Margin="-1">

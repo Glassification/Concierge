@@ -55,6 +55,14 @@ namespace Concierge.Character.Items
 
         public string Note { get; set; }
 
+        [JsonIgnore]
+        [SearchIgnore]
+        public Brush ProficiencyIconColor => this.GetProficientValue().Brush;
+
+        [JsonIgnore]
+        [SearchIgnore]
+        public PackIconKind ProficiencyIconKind => this.GetProficientValue().IconKind;
+
         public bool ProficiencyOverride { get; set; }
 
         public string Range { get; set; }
@@ -161,6 +169,13 @@ namespace Concierge.Character.Items
                 WeaponTypes.Whip => (IconKind: PackIconKind.JumpRope, Brush: Brushes.MediumPurple),
                 _ => (IconKind: PackIconKind.ArmFlex, Brush: Brushes.SlateGray),
             };
+        }
+
+        private (PackIconKind IconKind, Brush Brush) GetProficientValue()
+        {
+            return Program.CcsFile.Character.IsWeaponProficient(this) ?
+                (IconKind: PackIconKind.RadioButtonChecked, Brush: Brushes.PaleGreen) :
+                (IconKind: PackIconKind.RadioButtonUnchecked, Brush: Brushes.PaleGoldenrod);
         }
     }
 }

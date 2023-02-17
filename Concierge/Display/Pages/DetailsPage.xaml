@@ -115,8 +115,8 @@
                                         HorizontalAlignment="Center"
                                         Foreground="Silver"
                                         Click="ClearProficencyButton_Click"
-                                        ToolTip="Clear Selected Item">
-                                        <materialDesign:PackIcon Kind="Cancel" Width="25" Height="25"/>
+                                        ToolTip="Clear Selected Proficiency">
+                                        <materialDesign:PackIcon Kind="NotificationClearAll" Width="25" Height="25"/>
                                     </components:ConciergeDesignButton>
                                     <components:ConciergeDesignButton 
                                         Style="{StaticResource ConciergeDesignButtonStyle}" 
@@ -125,7 +125,7 @@
                                         HorizontalAlignment="Center"
                                         Foreground="PaleGreen"
                                         Click="AddProficencyButton_Click"
-                                        ToolTip="Add New Item">
+                                        ToolTip="Add New Proficiency">
                                         <materialDesign:PackIcon Kind="AddBox" Width="25" Height="25"/>
                                     </components:ConciergeDesignButton>
                                     <components:ConciergeDesignButton 
@@ -135,7 +135,7 @@
                                         HorizontalAlignment="Center"
                                         Foreground="Khaki"
                                         Click="EditProficencyButton_Click"
-                                        ToolTip="Edit Selected Item">
+                                        ToolTip="Edit Selected Proficiency">
                                         <materialDesign:PackIcon Kind="TextBoxEdit" Width="25" Height="25"/>
                                     </components:ConciergeDesignButton>
                                     <components:ConciergeDesignButton 
@@ -145,7 +145,7 @@
                                         HorizontalAlignment="Center"
                                         Foreground="IndianRed"
                                         Click="DeleteProficencyButton_Click"
-                                        ToolTip="Delete Selected Item">
+                                        ToolTip="Delete Selected Proficiency">
                                         <materialDesign:PackIcon Kind="Delete" Width="25" Height="25"/>
                                     </components:ConciergeDesignButton>
                                 </StackPanel>
@@ -269,10 +269,10 @@
                             Width="35"
                             HorizontalAlignment="Left"
                             Foreground="Silver"
-                            ToolTip="Clear Resource"
+                            ToolTip="Clear Selected Resource"
                             Click="ClearResourcesButton_Click"
                             Margin="0, 0, 3, 3">
-                            <materialDesign:PackIcon Kind="Cancel" Width="25" Height="25"/>
+                            <materialDesign:PackIcon Kind="NotificationClearAll" Width="25" Height="25"/>
                         </components:ConciergeDesignButton>
                         <components:ConciergeDesignButton 
                             Style="{StaticResource ConciergeDesignButtonStyle}" 
@@ -280,7 +280,7 @@
                             Width="35"
                             HorizontalAlignment="Left"
                             Foreground="IndianRed"
-                            ToolTip="Delete Resource"
+                            ToolTip="Delete Selected Resource"
                             Click="DeleteResourcesButton_Click"
                             Margin="0, 0, 3, 3">
                             <materialDesign:PackIcon Kind="Delete" Width="25" Height="25"/>
@@ -297,7 +297,7 @@
                             Width="35"
                             HorizontalAlignment="Center"
                             Foreground="PaleGreen"
-                            ToolTip="Add Resource"
+                            ToolTip="Add New Resource"
                             Click="AddResourcesButton_Click"
                             Margin="0, 0, 3, 3">
                             <materialDesign:PackIcon Kind="AddBox" Width="25" Height="25"/>
@@ -308,7 +308,7 @@
                             Width="35"
                             HorizontalAlignment="Right"
                             Foreground="Khaki"
-                            ToolTip="Edit Resources"
+                            ToolTip="Edit Selected Resources"
                             Click="EditResourcesButton_Click"
                             Margin="0, 0, 3, 3">
                             <materialDesign:PackIcon Kind="TextBoxEdit" Width="25" Height="25"/>
@@ -350,10 +350,10 @@
                             Width="35"
                             HorizontalAlignment="Left"
                             Foreground="Silver"
-                            ToolTip="Clear Language"
+                            ToolTip="Clear Selected Language"
                             Click="ClearLanguagesButton_Click"
                             Margin="0, 0, 3, 3">
-                            <materialDesign:PackIcon Kind="Cancel" Width="25" Height="25"/>
+                            <materialDesign:PackIcon Kind="NotificationClearAll" Width="25" Height="25"/>
                         </components:ConciergeDesignButton>
                         <components:ConciergeDesignButton 
                             Style="{StaticResource ConciergeDesignButtonStyle}" 
@@ -361,7 +361,7 @@
                             Width="35"
                             HorizontalAlignment="Left"
                             Foreground="IndianRed"
-                            ToolTip="Delete Language"
+                            ToolTip="Delete Selected Language"
                             Click="DeleteLanguagesButton_Click"
                             Margin="0, 0, 3, 3">
                             <materialDesign:PackIcon Kind="Delete" Width="25" Height="25"/>
@@ -378,7 +378,7 @@
                             Width="35"
                             HorizontalAlignment="Center"
                             Foreground="PaleGreen"
-                            ToolTip="Add Language"
+                            ToolTip="Add New Language"
                             Click="AddLanguagesButton_Click"
                             Margin="0, 0, 3, 3">
                             <materialDesign:PackIcon Kind="AddBox" Width="25" Height="25"/>
@@ -389,7 +389,7 @@
                             Width="35"
                             HorizontalAlignment="Right"
                             Foreground="Khaki"
-                            ToolTip="Edit Language"
+                            ToolTip="Edit Selected Language"
                             Click="EditLanguagesButton_Click"
                             Margin="0, 0, 3, 3">
                             <materialDesign:PackIcon Kind="TextBoxEdit" Width="25" Height="25"/>
@@ -431,10 +431,10 @@
                             Width="35"
                             HorizontalAlignment="Left"
                             Foreground="Silver"
-                            ToolTip="Clear Conditions"
+                            ToolTip="Clear Selected Condition"
                             Click="ClearConditionsButton_Click"
                             Margin="0, 0, 3, 3">
-                            <materialDesign:PackIcon Kind="Cancel" Width="25" Height="25"/>
+                            <materialDesign:PackIcon Kind="NotificationClearAll" Width="25" Height="25"/>
                         </components:ConciergeDesignButton>
                         <components:ConciergeDesignButton 
                             Style="{StaticResource ConciergeDesignButtonStyle}" 

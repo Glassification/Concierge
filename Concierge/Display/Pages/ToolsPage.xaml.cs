@@ -52,7 +52,7 @@ namespace Concierge.Display.Pages
 
         private History DiceHistory { get; set; }
 
-        public void Draw()
+        public void Draw(bool isNewCharacterSheet = false)
         {
             this.DrawDiceHistory();
             this.DrawDivideLoot();

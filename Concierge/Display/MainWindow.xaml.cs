@@ -212,7 +212,7 @@ namespace Concierge.Display
 
             this.animatedTimedTextWorkerService.StartWorker($"Opened '{ccsFile.AbsolutePath}'");
             this.JournalPage.ClearTextBox();
-            this.DrawAll();
+            this.DrawAll(true);
             this.SetActiveFileText();
         }
 
@@ -246,7 +246,7 @@ namespace Concierge.Display
             return 0;
         }
 
-        public void DrawAll()
+        public void DrawAll(bool isNewCharacterSheet = false)
         {
             Program.Logger.Info($"Draw all.");
 
@@ -258,7 +258,7 @@ namespace Concierge.Display
             this.AttacksPage.Draw();
             this.OverviewPage.Draw();
             this.DetailsPage.Draw();
-            this.JournalPage.Draw();
+            this.JournalPage.Draw(isNewCharacterSheet);
             this.SpellcastingPage.Draw();
             this.ToolsPage.Draw();
             this.EquipmentPage.Draw();
