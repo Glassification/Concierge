@@ -214,7 +214,7 @@
                 <!--Title-->
                 <Grid Grid.Column="0">
                     <components:ConciergeLabel
-                        Text="Import Notes:"/>
+                        Text="Import Journal:"/>
                 </Grid>
 
                 <!--Value-->

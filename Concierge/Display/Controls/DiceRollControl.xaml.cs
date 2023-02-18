@@ -4,6 +4,7 @@
 
 namespace Concierge.Display.Controls
 {
+    using System;
     using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Media;
@@ -146,7 +147,14 @@ namespace Concierge.Display.Controls
         {
             var roll = this.RollDice();
             this.DiceResult.Text = roll.Total.ToString();
-            Clipboard.SetText(this.DiceResult.Text);
+            try
+            {
+                Clipboard.SetText(this.DiceResult.Text);
+            }
+            catch (Exception ex)
+            {
+                Program.Logger.Error(ex);
+            }
 
             this.RaiseEvent(new RoutedEventArgs(DiceRolledEvent, roll));
         }

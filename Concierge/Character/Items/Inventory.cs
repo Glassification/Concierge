@@ -157,8 +157,8 @@ namespace Concierge.Character.Items
         private (PackIconKind IconKind, Brush Brush) GetAttunedValue()
         {
             return this.Attuned ?
-                (IconKind: PackIconKind.RadioButtonChecked, Brush: Brushes.PaleGreen) :
-                (IconKind: PackIconKind.RadioButtonUnchecked, Brush: Brushes.PaleGoldenrod);
+                (IconKind: PackIconKind.RadioButtonChecked, Brush: ConciergeBrushes.Mint) :
+                (IconKind: PackIconKind.RadioButtonUnchecked, Brush: ConciergeBrushes.Deer);
         }
 
         private PackIconKind GetWeightIgnoreValue()

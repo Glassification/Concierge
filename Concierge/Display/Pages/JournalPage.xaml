@@ -78,7 +78,7 @@
                                 Style="{StaticResource ConciergeDesignButtonStyle}" 
                                 x:Name="EditButton"
                                 Width="60"
-                                Foreground="Khaki"
+                                Foreground="#B98748"
                                 Click="EditButton_Click"
                                 ToolTip="Edit Selected Entry">
                                 <materialDesign:PackIcon Kind="TextBoxEdit" Width="25" Height="25"/>
@@ -154,7 +154,7 @@
                                 Style="{StaticResource ConciergeDesignButtonStyle}" 
                                 x:Name="CutButton"
                                 Width="60"
-                                Foreground="#118ab2"
+                                Foreground="SteelBlue"
                                 Click="CutButton_Click"
                                 ToolTip="Cut">
                                 <materialDesign:PackIcon Kind="Scissors" Width="25" Height="25"/>
@@ -163,7 +163,7 @@
                                 Style="{StaticResource ConciergeDesignButtonStyle}" 
                                 x:Name="CopyButton"
                                 Width="60"
-                                Foreground="#118ab2"
+                                Foreground="SteelBlue"
                                 Click="CopyButton_Click"
                                 ToolTip="Copy">
                                 <materialDesign:PackIcon Kind="ContentCopy" Width="25" Height="25"/>
@@ -172,7 +172,7 @@
                                 Style="{StaticResource ConciergeDesignButtonStyle}" 
                                 x:Name="PasteButton"
                                 Width="60"
-                                Foreground="#118ab2"
+                                Foreground="SteelBlue"
                                 Click="PasteButton_Click"
                                 ToolTip="Paste">
                                 <materialDesign:PackIcon Kind="ContentPaste" Width="25" Height="25"/>
@@ -181,7 +181,7 @@
                                 Style="{StaticResource ConciergeDesignButtonStyle}" 
                                 x:Name="UndoButton"
                                 Width="60"
-                                Foreground="#06d6a0"
+                                Foreground="#48B987"
                                 Click="UndoButton_Click"
                                 ToolTip="Undo">
                                 <materialDesign:PackIcon Kind="Undo" Width="25" Height="25"/>
@@ -190,7 +190,7 @@
                                 Style="{StaticResource ConciergeDesignButtonStyle}" 
                                 x:Name="RedoButton"
                                 Width="60"
-                                Foreground="#06d6a0"
+                                Foreground="#48B987"
                                 Click="RedoButton_Click"
                                 ToolTip="Redo">
                                 <materialDesign:PackIcon Kind="Redo" Width="25" Height="25"/>
@@ -199,7 +199,7 @@
                                 x:Name="BoldButton"
                                 Style="{StaticResource ConciergeToggleButtonStyle}"
                                 Width="60"
-                                Foreground="#ffd166"
+                                Foreground="#B98748"
                                 Click="BoldButton_Click"
                                 ToolTip="Bold">
                                 <materialDesign:PackIcon Kind="FormatBold" Width="25" Height="25"/>
@@ -208,7 +208,7 @@
                                 x:Name="ItalicButton"
                                 Style="{StaticResource ConciergeToggleButtonStyle}"
                                 Width="60"
-                                Foreground="#ffd166"
+                                Foreground="#B98748"
                                 Click="ItalicButton_Click"
                                 ToolTip="Italic">
                                 <materialDesign:PackIcon Kind="FormatItalic" Width="25" Height="25"/>
@@ -217,7 +217,7 @@
                                 x:Name="UnderlineButton"
                                 Style="{StaticResource ConciergeToggleButtonStyle}"
                                 Width="60"
-                                Foreground="#ffd166"
+                                Foreground="#B98748"
                                 Click="UnderlineButton_Click"
                                 ToolTip="Underline">
                                 <materialDesign:PackIcon Kind="FormatUnderline" Width="25" Height="25"/>

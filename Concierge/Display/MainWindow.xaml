@@ -625,6 +625,11 @@
                     HorizontalAlignment="Stretch"
                     VerticalAlignment="Stretch"
                     ContentRendered="MainWindow_ContentRendered"/>
+                <Border
+                    BorderBrush="#0F0F0F"
+                    BorderThickness="5"
+                    CornerRadius="10"
+                    Margin="-5,-5,15,-5"/>
             </Grid>
 
         </Grid>

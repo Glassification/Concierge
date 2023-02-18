@@ -16,7 +16,7 @@ namespace Concierge.Display.Components
     {
         public ConciergeTextBoxBackground()
         {
-            this.Background = ConciergeColors.ControlBackgroundBrush;
+            this.Background = ConciergeBrushes.ControlBackground;
             this.Margin = new Thickness(0, 10, 20, 10);
 
             this.MouseDown += this.Control_MouseDown;

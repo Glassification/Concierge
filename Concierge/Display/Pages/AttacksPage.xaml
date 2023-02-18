@@ -95,7 +95,7 @@
                                     Style="{StaticResource ConciergeDesignButtonStyle}"
                                     x:Name="AmmoAddButton"
                                     Width="60"
-                                    Foreground="PaleGreen"
+                                    Foreground="#48B987"
                                     Click="AmmoAddButton_Click"
                                     ToolTip="Add New Ammunition">
                                     <materialDesign:PackIcon Kind="AddBox" Width="25" Height="25"/>
@@ -104,7 +104,7 @@
                                     Style="{StaticResource ConciergeDesignButtonStyle}" 
                                     x:Name="AmmoEditButton"
                                     Width="60"
-                                    Foreground="Khaki"
+                                    Foreground="#B98748"
                                     Click="AmmoEditButton_Click"
                                     ToolTip="Edit Selected Ammunition">
                                     <materialDesign:PackIcon Kind="TextBoxEdit" Width="25" Height="25"/>
@@ -113,7 +113,7 @@
                                     Style="{StaticResource ConciergeDesignButtonStyle}" 
                                     x:Name="AmmoUseButton"
                                     Width="60"
-                                    Foreground="Coral"
+                                    Foreground="#B9487B"
                                     Click="AmmoUseButton_Click"
                                     ToolTip="Use Ammunition">
                                     <materialDesign:PackIcon Kind="MinusBox" Width="25" Height="25"/>
@@ -248,7 +248,7 @@
                                     x:Name="AddEffectsButton"
                                     Width="35"
                                     HorizontalAlignment="Center"
-                                    Foreground="PaleGreen"
+                                    Foreground="#48B987"
                                     ToolTip="Add New Status Effect"
                                     Click="AddEffectsButton_Click">
                                     <materialDesign:PackIcon Kind="AddBox" Width="25" Height="25"/>
@@ -258,7 +258,7 @@
                                     x:Name="EditEffectsButton"
                                     Width="35"
                                     HorizontalAlignment="Right"
-                                    Foreground="Khaki"
+                                    Foreground="#B98748"
                                     ToolTip="Edit Selected Status Effect"
                                     Click="EditEffectsButton_Click">
                                     <materialDesign:PackIcon Kind="TextBoxEdit" Width="25" Height="25"/>
@@ -364,7 +364,7 @@
                                 Style="{StaticResource ConciergeDesignButtonStyle}"
                                 x:Name="AttacksAddButton"
                                 Width="60"
-                                Foreground="PaleGreen"
+                                Foreground="#48B987"
                                 Click="AttacksAddButton_Click"
                                 ToolTip="Add New Attack">
                                 <materialDesign:PackIcon Kind="AddBox" Width="25" Height="25"/>
@@ -373,7 +373,7 @@
                                 Style="{StaticResource ConciergeDesignButtonStyle}" 
                                 x:Name="AttacksEditButton"
                                 Width="60"
-                                Foreground="Khaki"
+                                Foreground="#B98748"
                                 Click="AttacksEditButton_Click"
                                 ToolTip="Edit Selected Attack">
                                 <materialDesign:PackIcon Kind="TextBoxEdit" Width="25" Height="25"/>

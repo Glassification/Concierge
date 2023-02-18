@@ -160,7 +160,7 @@
             <Grid Grid.Row="5">
                 <TextBlock
                     x:Name="SearchResultTextBlock"
-                    Foreground="PaleGreen"
+                    Foreground="#48B987"
                     FontSize="15"
                     Text="Found 0/3 results."
                     VerticalAlignment="Center"

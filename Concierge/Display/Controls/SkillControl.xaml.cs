@@ -100,8 +100,8 @@ namespace Concierge.Display.Controls
 
         public void SetStyle(bool proficiencyFlag, bool expertiseFlag, StatusChecks check)
         {
-            this.ProficiencyBox.Fill = proficiencyFlag ? ConciergeColors.DarkSlateBlue : Brushes.Transparent;
-            this.ExpertiseBox.Fill = expertiseFlag ? ConciergeColors.DarkSlateBlue : Brushes.Transparent;
+            this.ProficiencyBox.Fill = proficiencyFlag ? ConciergeBrushes.Verdigris : Brushes.Transparent;
+            this.ExpertiseBox.Fill = expertiseFlag ? ConciergeBrushes.Verdigris : Brushes.Transparent;
 
             SetTextStyleHelper(check, this.SkillNameField);
             SetTextStyleHelper(check, this.SkillBonusField);
@@ -142,7 +142,7 @@ namespace Concierge.Display.Controls
                 return;
             }
 
-            ellipse.Stroke = ConciergeColors.RectangleBorderHighlight;
+            ellipse.Stroke = ConciergeBrushes.BorderHighlight;
             ellipse.StrokeThickness = 1;
 
             Mouse.OverrideCursor = Cursors.Hand;
@@ -155,7 +155,7 @@ namespace Concierge.Display.Controls
                 return;
             }
 
-            ellipse.Stroke = ConciergeColors.DarkSlateBlue;
+            ellipse.Stroke = ConciergeBrushes.Verdigris;
             ellipse.StrokeThickness = 1;
 
             Mouse.OverrideCursor = Cursors.Arrow;

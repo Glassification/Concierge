@@ -95,7 +95,7 @@
                             </Grid>
                             <Line
                                 Grid.Row="0"
-                                Stroke="#227EA9"
+                                Stroke="#48B3B9"
                                 StrokeThickness="2"
                                 Stretch="Uniform"
                                 X1="0" X2="1" Y1="0" Y2="0"
@@ -136,7 +136,7 @@
                             </Grid>
                             <Line
                                 Grid.Row="0"
-                                Stroke="#227EA9"
+                                Stroke="#48B3B9"
                                 StrokeThickness="2"
                                 Stretch="Uniform"
                                 X1="0" X2="1" Y1="0" Y2="0"
@@ -177,7 +177,7 @@
                             </Grid>
                             <Line
                                 Grid.Row="0"
-                                Stroke="#227EA9"
+                                Stroke="#48B3B9"
                                 StrokeThickness="2"
                                 Stretch="Uniform"
                                 X1="0" X2="1" Y1="0" Y2="0"

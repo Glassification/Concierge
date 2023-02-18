@@ -109,8 +109,8 @@ namespace Concierge.Display.Controls
                 return;
             }
 
-            border.BorderBrush = ConciergeColors.RectangleBorderHighlight;
-            grid.Background = ConciergeColors.RectangleBorderHighlight;
+            border.BorderBrush = ConciergeBrushes.BorderHighlight;
+            grid.Background = ConciergeBrushes.BorderHighlight;
             Mouse.OverrideCursor = Cursors.Hand;
         }
 
@@ -127,8 +127,8 @@ namespace Concierge.Display.Controls
                 return;
             }
 
-            border.BorderBrush = ConciergeColors.ControlForeGray;
-            grid.Background = ConciergeColors.ControlForeGray;
+            border.BorderBrush = ConciergeBrushes.ControlForeGray;
+            grid.Background = ConciergeBrushes.ControlForeGray;
             Mouse.OverrideCursor = Cursors.Arrow;
         }
 

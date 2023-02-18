@@ -83,14 +83,14 @@ namespace Concierge.Display.Components
 
         private void Item_MouseEnter(object sender, MouseEventArgs e)
         {
-            this.Foreground = ConciergeColors.NoteTreeItemHover;
+            this.Foreground = ConciergeBrushes.TreeItemHover;
             this.DeselectParent(Brushes.White);
         }
 
         private void Item_MouseLeave(object sender, MouseEventArgs e)
         {
             this.Foreground = Brushes.White;
-            this.DeselectParent(ConciergeColors.NoteTreeItemHover);
+            this.DeselectParent(ConciergeBrushes.TreeItemHover);
         }
     }
 }

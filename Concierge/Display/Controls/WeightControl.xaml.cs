@@ -37,14 +37,14 @@ namespace Concierge.Display.Controls
             if (weight <= character.LightCarryCapacity)
             {
                 this.WeightCarriedField.Foreground = Brushes.Black;
-                this.WeightCarriedGrid.Background = ConciergeColors.LightCarryCapacity;
-                this.WeightCarriedBorder.BorderBrush = ConciergeColors.LightCarryCapacity;
+                this.WeightCarriedGrid.Background = ConciergeBrushes.LightCarryCapacity;
+                this.WeightCarriedBorder.BorderBrush = ConciergeBrushes.LightCarryCapacity;
             }
             else if (weight > character.LightCarryCapacity && weight <= character.MediumCarryCapacity)
             {
-                this.WeightCarriedField.Foreground = ConciergeColors.HeavyCarryCapacity;
-                this.WeightCarriedGrid.Background = ConciergeColors.MediumCarryCapacity;
-                this.WeightCarriedBorder.BorderBrush = ConciergeColors.MediumCarryCapacity;
+                this.WeightCarriedField.Foreground = ConciergeBrushes.HeavyCarryCapacity;
+                this.WeightCarriedGrid.Background = ConciergeBrushes.MediumCarryCapacity;
+                this.WeightCarriedBorder.BorderBrush = ConciergeBrushes.MediumCarryCapacity;
             }
             else if (weight > character.MediumCarryCapacity && weight <= character.HeavyCarryCapacity)
             {

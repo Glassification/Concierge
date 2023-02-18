@@ -123,7 +123,7 @@
                                         x:Name="AddProficencyButton"
                                         Width="60"
                                         HorizontalAlignment="Center"
-                                        Foreground="PaleGreen"
+                                        Foreground="#48B987"
                                         Click="AddProficencyButton_Click"
                                         ToolTip="Add New Proficiency">
                                         <materialDesign:PackIcon Kind="AddBox" Width="25" Height="25"/>
@@ -133,7 +133,7 @@
                                         x:Name="EditProficencyButton"
                                         Width="60"
                                         HorizontalAlignment="Center"
-                                        Foreground="Khaki"
+                                        Foreground="#B98748"
                                         Click="EditProficencyButton_Click"
                                         ToolTip="Edit Selected Proficiency">
                                         <materialDesign:PackIcon Kind="TextBoxEdit" Width="25" Height="25"/>
@@ -176,7 +176,7 @@
                             </components:ConciergeDataGrid>
                             <Line
                                 Grid.Column="0"
-                                Stroke="#227EA9"
+                                Stroke="#48B3B9"
                                 StrokeThickness="1"
                                 Margin="0,5,-2.5,5"
                                 Stretch="Uniform"
@@ -201,7 +201,7 @@
                             </components:ConciergeDataGrid>
                             <Line
                                 Grid.Column="1"
-                                Stroke="#227EA9"
+                                Stroke="#48B3B9"
                                 StrokeThickness="1"
                                 Margin="0,5,-2.5,5"
                                 Stretch="Uniform"
@@ -296,7 +296,7 @@
                             x:Name="AddResourcesButton"
                             Width="35"
                             HorizontalAlignment="Center"
-                            Foreground="PaleGreen"
+                            Foreground="#48B987"
                             ToolTip="Add New Resource"
                             Click="AddResourcesButton_Click"
                             Margin="0, 0, 3, 3">
@@ -307,7 +307,7 @@
                             x:Name="EditResourcesButton"
                             Width="35"
                             HorizontalAlignment="Right"
-                            Foreground="Khaki"
+                            Foreground="#B98748"
                             ToolTip="Edit Selected Resources"
                             Click="EditResourcesButton_Click"
                             Margin="0, 0, 3, 3">
@@ -377,7 +377,7 @@
                             x:Name="AddLanguagesButton"
                             Width="35"
                             HorizontalAlignment="Center"
-                            Foreground="PaleGreen"
+                            Foreground="#48B987"
                             ToolTip="Add New Language"
                             Click="AddLanguagesButton_Click"
                             Margin="0, 0, 3, 3">
@@ -388,7 +388,7 @@
                             x:Name="EditLanguagesButton"
                             Width="35"
                             HorizontalAlignment="Right"
-                            Foreground="Khaki"
+                            Foreground="#B98748"
                             ToolTip="Edit Selected Language"
                             Click="EditLanguagesButton_Click"
                             Margin="0, 0, 3, 3">
@@ -441,7 +441,7 @@
                             x:Name="EditConditionsButton"
                             Width="35"
                             HorizontalAlignment="Right"
-                            Foreground="Khaki"
+                            Foreground="#B98748"
                             ToolTip="Edit Conditions"
                             Click="EditConditionsButton_Click"
                             Margin="0, 0, 3, 3">

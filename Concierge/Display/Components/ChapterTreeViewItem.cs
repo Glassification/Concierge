@@ -75,7 +75,7 @@ namespace Concierge.Display.Components
         {
             foreach (var item in this.Items)
             {
-                if (item is DocumentTreeViewItem documentItem && documentItem.Foreground == ConciergeColors.NoteTreeItemHover)
+                if (item is DocumentTreeViewItem documentItem && documentItem.Foreground == ConciergeBrushes.TreeItemHover)
                 {
                     return true;
                 }
@@ -87,7 +87,7 @@ namespace Concierge.Display.Components
         private void Item_MouseEnter(object sender, MouseEventArgs e)
         {
             Mouse.OverrideCursor = Cursors.Hand;
-            this.Foreground = this.IsHighlightedOnChild() ? Brushes.White : ConciergeColors.NoteTreeItemHover;
+            this.Foreground = this.IsHighlightedOnChild() ? Brushes.White : ConciergeBrushes.TreeItemHover;
         }
 
         private void Item_MouseLeave(object sender, MouseEventArgs e)

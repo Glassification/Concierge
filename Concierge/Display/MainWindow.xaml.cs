@@ -490,21 +490,21 @@ namespace Concierge.Display
 
         private void SetListViewItemTag()
         {
-            this.GetListViewItem(0).Tag = this.OverviewPage;
-            this.GetListViewItem(1).Tag = this.DetailsPage;
-            this.GetListViewItem(2).Tag = this.AttacksPage;
-            this.GetListViewItem(3).Tag = this.AbilityPage;
-            this.GetListViewItem(4).Tag = this.EquipmentPage;
-            this.GetListViewItem(5).Tag = this.InventoryPage;
-            this.GetListViewItem(6).Tag = this.SpellcastingPage;
-            this.GetListViewItem(7).Tag = this.CompanionPage;
-            this.GetListViewItem(8).Tag = this.JournalPage;
-            this.GetListViewItem(9).Tag = this.ToolsPage;
+            this.GetListViewItem(ConciergePage.Overview).Tag = this.OverviewPage;
+            this.GetListViewItem(ConciergePage.Details).Tag = this.DetailsPage;
+            this.GetListViewItem(ConciergePage.Attacks).Tag = this.AttacksPage;
+            this.GetListViewItem(ConciergePage.Abilities).Tag = this.AbilityPage;
+            this.GetListViewItem(ConciergePage.Equipment).Tag = this.EquipmentPage;
+            this.GetListViewItem(ConciergePage.Inventory).Tag = this.InventoryPage;
+            this.GetListViewItem(ConciergePage.Spellcasting).Tag = this.SpellcastingPage;
+            this.GetListViewItem(ConciergePage.Companion).Tag = this.CompanionPage;
+            this.GetListViewItem(ConciergePage.Journal).Tag = this.JournalPage;
+            this.GetListViewItem(ConciergePage.Tools).Tag = this.ToolsPage;
         }
 
-        private ListViewItem GetListViewItem(int index)
+        private ListViewItem GetListViewItem(ConciergePage page)
         {
-            if (this.ListViewMenu.Items[index] is ListViewItem item)
+            if (this.ListViewMenu.Items[(int)page] is ListViewItem item)
             {
                 return item;
             }

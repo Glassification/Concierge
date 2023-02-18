@@ -167,18 +167,12 @@ namespace Concierge.Display.Controls
 
         private static void SetDeathSaveStyleHelper(Ellipse ellipse, DeathSave deathSave)
         {
-            switch (deathSave)
+            ellipse.Fill = deathSave switch
             {
-                case DeathSave.None:
-                    ellipse.Fill = ConciergeColors.ControlBackGray;
-                    break;
-                case DeathSave.Failure:
-                    ellipse.Fill = ConciergeColors.FailedSaveBrush;
-                    break;
-                case DeathSave.Success:
-                    ellipse.Fill = ConciergeColors.SucceededSaveBrush;
-                    break;
-            }
+                DeathSave.Failure => Brushes.IndianRed,
+                DeathSave.Success => ConciergeBrushes.Mint,
+                _ => ConciergeBrushes.ControlBackGray,
+            };
         }
 
         private void PassSave_Click(object sender, RoutedEventArgs e)

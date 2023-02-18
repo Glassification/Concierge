@@ -71,10 +71,11 @@
                                     TextWrapping="Wrap"
                                     HorizontalAlignment="Left"
                                     VerticalAlignment="Center"
-                                    Margin="10, 0, 0, 0"/>
+                                    Margin="10, 0, 0, 0"
+                                    MouseUp="Grid_MouseUp"/>
                                 <Line
                                     Grid.Column="0"
-                                    Stroke="#227EA9"
+                                    Stroke="#48B3B9"
                                     StrokeThickness="2"
                                     Stretch="Uniform"
                                     X1="0" X2="0" Y1="0" Y2="1"
@@ -118,10 +119,11 @@
                                     TextWrapping="Wrap"
                                     HorizontalAlignment="Left"
                                     VerticalAlignment="Center"
-                                    Margin="10, 0, 0, 0"/>
+                                    Margin="10, 0, 0, 0"
+                                    MouseUp="Grid_MouseUp"/>
                                 <Line
                                     Grid.Column="0"
-                                    Stroke="#227EA9"
+                                    Stroke="#48B3B9"
                                     StrokeThickness="2"
                                     Stretch="Uniform"
                                     X1="0" X2="0" Y1="0" Y2="1"
@@ -178,10 +180,11 @@
                                         TextWrapping="Wrap"
                                         HorizontalAlignment="Left"
                                         VerticalAlignment="Center"
-                                        Margin="10, 0, 0, 0"/>
+                                        Margin="10, 0, 0, 0"
+                                        MouseUp="Grid_MouseUp"/>
                                     <Line
                                         Grid.Column="0"
-                                        Stroke="#227EA9"
+                                        Stroke="#48B3B9"
                                         StrokeThickness="2"
                                         Stretch="Uniform"
                                         X1="0" X2="0" Y1="0" Y2="1"
@@ -224,10 +227,11 @@
                                         TextWrapping="Wrap"
                                         HorizontalAlignment="Left"
                                         VerticalAlignment="Center"
-                                        Margin="10, 0, 0, 0"/>
+                                        Margin="10, 0, 0, 0"
+                                        MouseUp="Grid_MouseUp"/>
                                     <Line
                                         Grid.Column="0"
-                                        Stroke="#227EA9"
+                                        Stroke="#48B3B9"
                                         StrokeThickness="2"
                                         Stretch="Uniform"
                                         X1="0" X2="0" Y1="0" Y2="1"
@@ -277,11 +281,12 @@
                                         Foreground="White"
                                         FontSize="16"
                                         HorizontalAlignment="Center"
-                                        VerticalAlignment="Top"/>
+                                        VerticalAlignment="Top"
+                                        MouseUp="Grid_MouseUp"/>
                                     <Line
                                         Grid.Row="0"
                                         Margin="0,0,0,-1"
-                                        Stroke="#227EA9"
+                                        Stroke="#48B3B9"
                                         StrokeThickness="2"
                                         Stretch="Uniform"
                                         X1="0" X2="1" Y1="0" Y2="0"
@@ -319,11 +324,12 @@
                                         Foreground="White"
                                         FontSize="16"
                                         HorizontalAlignment="Center"
-                                        VerticalAlignment="Top"/>
+                                        VerticalAlignment="Top"
+                                        MouseUp="Grid_MouseUp"/>
                                     <Line
                                         Grid.Row="0"
                                         Margin="0,0,0,-1"
-                                        Stroke="#227EA9"
+                                        Stroke="#48B3B9"
                                         StrokeThickness="2"
                                         Stretch="Uniform"
                                         X1="0" X2="1" Y1="0" Y2="0"
@@ -361,10 +367,11 @@
                                         Foreground="White"
                                         FontSize="16"
                                         HorizontalAlignment="Center"
-                                        VerticalAlignment="Top"/>
+                                        VerticalAlignment="Top"
+                                        MouseUp="Grid_MouseUp"/>
                                     <Line
                                         Grid.Row="0"
-                                        Stroke="#227EA9"
+                                        Stroke="#48B3B9"
                                         Margin="0,0,0,-1"
                                         StrokeThickness="2"
                                         Stretch="Uniform"
@@ -403,10 +410,11 @@
                                         Foreground="White"
                                         FontSize="16"
                                         HorizontalAlignment="Center"
-                                        VerticalAlignment="Top"/>
+                                        VerticalAlignment="Top"
+                                        MouseUp="Grid_MouseUp"/>
                                     <Line
                                         Grid.Row="0"
-                                        Stroke="#227EA9"
+                                        Stroke="#48B3B9"
                                         Margin="0,0,0,-1"
                                         StrokeThickness="2"
                                         Stretch="Uniform"

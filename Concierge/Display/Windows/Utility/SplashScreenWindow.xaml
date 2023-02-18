@@ -44,7 +44,7 @@
                         </TextBlock.Effect>
                     </TextBlock>
                     <Line
-                        Stroke="#227EA9"
+                        Stroke="#48B3B9"
                         StrokeThickness="1"
                         VerticalAlignment="Bottom"
                         Stretch="Uniform"

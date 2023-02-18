@@ -63,10 +63,11 @@
                             HorizontalAlignment="Left"
                             VerticalAlignment="Center"
                             Margin="10, 0, 0, 0"
-                            TextWrapping="Wrap"/>
+                            TextWrapping="Wrap"
+                            MouseUp="Grid_MouseUp"/>
                         <Line
                             Grid.Column="0"
-                            Stroke="#227EA9"
+                            Stroke="#48B3B9"
                             StrokeThickness="2"
                             Stretch="Uniform"
                             X1="0" X2="0" Y1="0" Y2="1"
@@ -130,10 +131,10 @@
                             HorizontalAlignment="Left"
                             VerticalAlignment="Center"
                             Margin="10, 0, 0, 0"
-                            TextWrapping="Wrap"/>
+                            MouseUp="Grid_MouseUp"/>
                         <Line
                             Grid.Column="0"
-                            Stroke="#227EA9"
+                            Stroke="#48B3B9"
                             StrokeThickness="2"
                             Stretch="Uniform"
                             X1="0" X2="0" Y1="0" Y2="1"
@@ -178,10 +179,10 @@
                             HorizontalAlignment="Left"
                             VerticalAlignment="Center"
                             Margin="10, 0, 0, 0"
-                            TextWrapping="Wrap"/>
+                            MouseUp="Grid_MouseUp"/>
                         <Line
                             Grid.Column="0"
-                            Stroke="#227EA9"
+                            Stroke="#48B3B9"
                             StrokeThickness="2"
                             Stretch="Uniform"
                             X1="0" X2="0" Y1="0" Y2="1"
@@ -226,10 +227,10 @@
                             HorizontalAlignment="Left"
                             VerticalAlignment="Center"
                             Margin="10, 0, 0, 0"
-                            TextWrapping="Wrap"/>
+                            MouseUp="Grid_MouseUp"/>
                         <Line
                             Grid.Column="0"
-                            Stroke="#227EA9"
+                            Stroke="#48B3B9"
                             StrokeThickness="2"
                             Stretch="Uniform"
                             X1="0" X2="0" Y1="0" Y2="1"
@@ -274,10 +275,10 @@
                             HorizontalAlignment="Left"
                             VerticalAlignment="Center"
                             Margin="10, 0, 0, 0"
-                            TextWrapping="Wrap"/>
+                            MouseUp="Grid_MouseUp"/>
                         <Line
                             Grid.Column="0"
-                            Stroke="#227EA9"
+                            Stroke="#48B3B9"
                             StrokeThickness="2"
                             Stretch="Uniform"
                             X1="0" X2="0" Y1="0" Y2="1"

@@ -144,7 +144,7 @@ namespace Concierge.Display.Pages
         public void ClearHighlightSelection()
         {
             this.NotesTextBox.SelectAll();
-            this.NotesTextBox.Selection.ApplyPropertyValue(TextElement.BackgroundProperty, ConciergeColors.TotalLightBoxBrush);
+            this.NotesTextBox.Selection.ApplyPropertyValue(TextElement.BackgroundProperty, ConciergeColors.TotalLightBox);
         }
 
         private void DrawTreeView()

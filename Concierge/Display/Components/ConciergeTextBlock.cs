@@ -43,8 +43,8 @@ namespace Concierge.Display.Components
             this.OriginalBackgroundColor = this.Background;
             this.OriginalForegroundColor = this.Foreground;
 
-            this.Foreground = ConciergeColors.RectangleBorderHighlight;
-            this.Background = ConciergeColors.Highlight;
+            this.Foreground = ConciergeBrushes.BorderHighlight;
+            this.Background = ConciergeBrushes.Highlight;
         }
 
         public void ResetHighlight()

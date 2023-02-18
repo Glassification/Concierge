@@ -174,8 +174,8 @@ namespace Concierge.Character.Items
         private (PackIconKind IconKind, Brush Brush) GetProficientValue()
         {
             return Program.CcsFile.Character.IsWeaponProficient(this) ?
-                (IconKind: PackIconKind.RadioButtonChecked, Brush: Brushes.PaleGreen) :
-                (IconKind: PackIconKind.RadioButtonUnchecked, Brush: Brushes.PaleGoldenrod);
+                (IconKind: PackIconKind.RadioButtonChecked, Brush: ConciergeBrushes.Mint) :
+                (IconKind: PackIconKind.RadioButtonUnchecked, Brush: ConciergeBrushes.Deer);
         }
     }
 }

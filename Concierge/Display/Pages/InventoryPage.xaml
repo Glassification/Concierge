@@ -91,7 +91,7 @@
                         x:Name="AddButton"
                         Click="AddButton_Click"
                         Width="60"
-                        Foreground="PaleGreen"
+                        Foreground="#48B987"
                         ToolTip="Add New Item">
                         <materialDesign:PackIcon Kind="AddBox" Width="25" Height="25"/>
                     </components:ConciergeDesignButton>
@@ -100,7 +100,7 @@
                         x:Name="EditButton"
                         Click="EditButton_Click"
                         Width="60"
-                        Foreground="Khaki"
+                        Foreground="#B98748"
                         ToolTip="Edit Selected Item">
                         <materialDesign:PackIcon Kind="TextBoxEdit" Width="25" Height="25"/>
                     </components:ConciergeDesignButton>

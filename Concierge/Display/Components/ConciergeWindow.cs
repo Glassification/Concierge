@@ -29,7 +29,7 @@ namespace Concierge.Display.Components
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             this.Left = 0;
             this.Top = 0;
-            this.Background = ConciergeColors.WindowBackground;
+            this.Background = ConciergeBrushes.WindowBackground;
             this.HandleEnter = false;
 
             this.MouseDown += this.Window_MouseDown;

@@ -117,7 +117,7 @@ namespace Concierge.Utility.Utilities
         {
             border.BorderBrush =
                 spent != total && currentName.Equals(grid.Name)
-                ? ConciergeColors.RectangleBorderHighlight
+                ? ConciergeBrushes.BorderHighlight
                 : grid.Background;
         }
 
@@ -133,7 +133,7 @@ namespace Concierge.Utility.Utilities
 
         public static Brush SetUsedBoxStyle(int total, int used)
         {
-            return total <= used ? Brushes.IndianRed : ConciergeColors.UsedBoxBrush;
+            return total <= used ? Brushes.IndianRed : ConciergeBrushes.UsedBox;
         }
 
         public static Brush SetTotalTextStyle(int total, int used)
@@ -143,7 +143,7 @@ namespace Concierge.Utility.Utilities
 
         public static Brush SetTotalBoxStyle(int total, int used)
         {
-            return total <= used ? ConciergeColors.TotalDarkBoxBrush : ConciergeColors.TotalLightBoxBrush;
+            return total <= used ? ConciergeBrushes.TotalDarkBox : ConciergeBrushes.TotalLightBox;
         }
     }
 }
