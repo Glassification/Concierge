@@ -11,7 +11,7 @@ namespace Concierge.Character
     using Concierge.Character.Statuses;
     using Concierge.Utility;
 
-    public sealed class Companion : ICopyable<Companion>
+    public sealed class Companion : ICopyable<Companion>, ICreature
     {
         public Companion()
         {
@@ -42,6 +42,11 @@ namespace Concierge.Character
                 Properties = this.Properties.DeepCopy(),
                 CompanionImage = this.CompanionImage.DeepCopy(),
             };
+        }
+
+        public bool IsWeaponProficient(Weapon weapon)
+        {
+            return weapon.ProficiencyOverride;
         }
     }
 }

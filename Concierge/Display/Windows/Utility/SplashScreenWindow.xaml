@@ -44,7 +44,7 @@
                         </TextBlock.Effect>
                     </TextBlock>
                     <Line
-                        Stroke="#48B3B9"
+                        Stroke="SteelBlue"
                         StrokeThickness="1"
                         VerticalAlignment="Bottom"
                         Stretch="Uniform"
@@ -61,7 +61,7 @@
                     <Grid Grid.Column="0">
                         <materialDesign:PackIcon
                             Kind="HexagonOutline"
-                            Foreground="SteelBlue"
+                            Foreground="#33415C"
                             HorizontalAlignment="Stretch"
                             VerticalAlignment="Stretch"
                             Height="auto"

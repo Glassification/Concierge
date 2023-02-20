@@ -42,6 +42,11 @@ namespace Concierge.Console.Scripts
                 return this.Count(command);
             }
 
+            if (command.Action.Equals("AddCategory", StringComparison.InvariantCultureIgnoreCase))
+            {
+                return this.AddCategory(command);
+            }
+
             return new ConsoleResult($"Implementation for '{command.Action}' not found.", ResultType.Error);
         }
 
@@ -93,6 +98,32 @@ namespace Concierge.Console.Scripts
             }
 
             return new ConsoleResult($"Counting specific items is not implemented.", ResultType.Error);
+        }
+
+        private ConsoleResult AddCategory(ConsoleCommand command)
+        {
+            try
+            {
+                if (command.Argument.IsNullOrWhiteSpace())
+                {
+                    this.CharacterList.AddRange(this.DefaultList.DistinctBy(x => x.GetCategory().Name));
+                    return new ConsoleResult($"All default item categories added to {command.Name}", ResultType.Success);
+                }
+
+                var items = this.DefaultList.Where(x => x.GetCategory().Name.Equals(command.Argument, StringComparison.InvariantCultureIgnoreCase)).ToList();
+                if (items.Count > 0)
+                {
+                    this.CharacterList.AddRange(items);
+                    return new ConsoleResult($"All default items with a category of {command.Argument} added to {command.Name}", ResultType.Success);
+                }
+
+                return new ConsoleResult($"Specified category is not implemented.", ResultType.Error);
+            }
+            catch (Exception ex)
+            {
+                Program.Logger.Warning(ex.Message);
+                return new ConsoleResult($"Specified list does not have a category implemented.", ResultType.Warning);
+            }
         }
 
         private T? GetDefaultItem(string name)

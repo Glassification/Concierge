@@ -5,9 +5,11 @@
 namespace Concierge.Character.Characteristics
 {
     using System;
+    using System.Windows.Media;
 
     using Concierge.Utility;
     using Concierge.Utility.Extensions;
+    using MaterialDesignThemes.Wpf;
     using Newtonsoft.Json;
 
     public sealed class Language : ICopyable<Language>, IUnique
@@ -45,6 +47,11 @@ namespace Concierge.Character.Characteristics
         public override string ToString()
         {
             return this.Name;
+        }
+
+        public (PackIconKind IconKind, Brush Brush, string Name) GetCategory()
+        {
+            throw new NotImplementedException();
         }
 
         private static bool IsValid(string value)

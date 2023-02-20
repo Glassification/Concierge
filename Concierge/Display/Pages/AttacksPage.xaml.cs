@@ -188,7 +188,8 @@ namespace Concierge.Display.Pages
                 Program.CcsFile.Character.Weapons,
                 typeof(AttacksWindow),
                 this.Window_ApplyChanges,
-                ConciergePage.Attacks);
+                ConciergePage.Attacks,
+                Program.CcsFile.Character);
 
             this.DrawWeaponList();
             if (added)

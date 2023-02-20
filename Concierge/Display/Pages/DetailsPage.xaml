@@ -176,9 +176,9 @@
                             </components:ConciergeDataGrid>
                             <Line
                                 Grid.Column="0"
-                                Stroke="#48B3B9"
+                                Stroke="SteelBlue"
                                 StrokeThickness="1"
-                                Margin="0,5,-2.5,5"
+                                Margin="0,5,-2.5,0"
                                 Stretch="Uniform"
                                 X1="0" X2="0" Y1="0" Y2="1"
                                 HorizontalAlignment="Right"
@@ -201,9 +201,9 @@
                             </components:ConciergeDataGrid>
                             <Line
                                 Grid.Column="1"
-                                Stroke="#48B3B9"
+                                Stroke="SteelBlue"
                                 StrokeThickness="1"
-                                Margin="0,5,-2.5,5"
+                                Margin="0,5,-2.5,0"
                                 Stretch="Uniform"
                                 X1="0" X2="0" Y1="0" Y2="1"
                                 HorizontalAlignment="Right"

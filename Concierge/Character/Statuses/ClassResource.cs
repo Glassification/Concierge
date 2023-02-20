@@ -5,10 +5,12 @@
 namespace Concierge.Character.Statuses
 {
     using System;
+    using System.Windows.Media;
 
     using Concierge.Character.Enums;
     using Concierge.Utility;
     using Concierge.Utility.Extensions;
+    using MaterialDesignThemes.Wpf;
     using Newtonsoft.Json;
 
     public sealed class ClassResource : ICopyable<ClassResource>, IUnique
@@ -75,6 +77,11 @@ namespace Concierge.Character.Statuses
                 Recovery = this.Recovery,
                 Id = this.Id,
             };
+        }
+
+        public (PackIconKind IconKind, Brush Brush, string Name) GetCategory()
+        {
+            throw new NotImplementedException();
         }
     }
 }

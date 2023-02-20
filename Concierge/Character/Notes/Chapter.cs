@@ -7,9 +7,11 @@ namespace Concierge.Character.Notes
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Windows.Media;
 
     using Concierge.Utility;
     using Concierge.Utility.Extensions;
+    using MaterialDesignThemes.Wpf;
 
     public sealed class Chapter : ICopyable<Chapter>, IUnique
     {
@@ -36,6 +38,11 @@ namespace Concierge.Character.Notes
                 IsExpanded = this.IsExpanded,
                 Id = this.Id,
             };
+        }
+
+        public (PackIconKind IconKind, Brush Brush, string Name) GetCategory()
+        {
+            throw new NotImplementedException();
         }
 
         public override string ToString()

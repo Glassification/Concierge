@@ -99,7 +99,7 @@ namespace Concierge.Display.Controls
 
         public void SetStyle(bool proficiencyFlag, StatusChecks check)
         {
-            this.ProficiencyBox.Fill = proficiencyFlag ? ConciergeBrushes.Verdigris : Brushes.Transparent;
+            this.ProficiencyBox.Fill = proficiencyFlag ? Brushes.SteelBlue : Brushes.Transparent;
 
             SetTextStyleHelper(check, this.SavingThrowNameField);
             SetTextStyleHelper(check, this.SavingThrowBonusField);
@@ -141,6 +141,7 @@ namespace Concierge.Display.Controls
             }
 
             ellipse.Stroke = ConciergeBrushes.BorderHighlight;
+            ellipse.Fill = ConciergeBrushes.BorderHighlight;
             ellipse.StrokeThickness = 1;
 
             Mouse.OverrideCursor = Cursors.Hand;
@@ -153,7 +154,10 @@ namespace Concierge.Display.Controls
                 return;
             }
 
-            ellipse.Stroke = ConciergeBrushes.Verdigris;
+            var save = Program.CcsFile.Character.SavingThrow.GetSavingThrow(this.SavingThrowName);
+
+            ellipse.Stroke = Brushes.SteelBlue;
+            ellipse.Fill = save.Proficiency ? Brushes.SteelBlue : Brushes.Transparent;
             ellipse.StrokeThickness = 1;
 
             Mouse.OverrideCursor = Cursors.Arrow;
@@ -166,27 +170,8 @@ namespace Concierge.Display.Controls
             var savingThrow = Program.CcsFile.Character.SavingThrow;
             var savingThrowCopy = savingThrow.DeepCopy();
 
-            switch (this.SavingThrowName)
-            {
-                case "Strength":
-                    savingThrow.Strength.Proficiency = !savingThrow.Strength.Proficiency;
-                    break;
-                case "Dexterity":
-                    savingThrow.Dexterity.Proficiency = !savingThrow.Dexterity.Proficiency;
-                    break;
-                case "Constitution":
-                    savingThrow.Constitution.Proficiency = !savingThrow.Constitution.Proficiency;
-                    break;
-                case "Intelligence":
-                    savingThrow.Intelligence.Proficiency = !savingThrow.Intelligence.Proficiency;
-                    break;
-                case "Wisdom":
-                    savingThrow.Wisdom.Proficiency = !savingThrow.Wisdom.Proficiency;
-                    break;
-                case "Charisma":
-                    savingThrow.Charisma.Proficiency = !savingThrow.Charisma.Proficiency;
-                    break;
-            }
+            var save = savingThrow.GetSavingThrow(this.SavingThrowName);
+            save.Proficiency = !save.Proficiency;
 
             this.RaiseEvent(new RoutedEventArgs(ToggleClickedEvent));
 

@@ -45,11 +45,11 @@ namespace Concierge.Character.Spellcasting
 
         [JsonIgnore]
         [SearchIgnore]
-        public Brush IconColor => this.GetCategoryValue().Brush;
+        public Brush IconColor => this.GetCategory().Brush;
 
         [JsonIgnore]
         [SearchIgnore]
-        public PackIconKind IconKind => this.GetCategoryValue().IconKind;
+        public PackIconKind IconKind => this.GetCategory().IconKind;
 
         [JsonIgnore]
         [SearchIgnore]
@@ -113,28 +113,28 @@ namespace Concierge.Character.Spellcasting
             };
         }
 
+        public (PackIconKind IconKind, Brush Brush, string Name) GetCategory()
+        {
+            return this.School switch
+            {
+                ArcaneSchools.Abjuration => (IconKind: PackIconKind.ShieldSun, Brush: Brushes.LightBlue, Name: this.School.ToString()),
+                ArcaneSchools.Conjuration => (IconKind: PackIconKind.Flare, Brush: Brushes.LightYellow, Name: this.School.ToString()),
+                ArcaneSchools.Divination => (IconKind: PackIconKind.EyeCircle, Brush: Brushes.SlateGray, Name: this.School.ToString()),
+                ArcaneSchools.Enchantment => (IconKind: PackIconKind.HeadCog, Brush: Brushes.LightPink, Name: this.School.ToString()),
+                ArcaneSchools.Evocation => (IconKind: PackIconKind.Flash, Brush: Brushes.IndianRed, Name: this.School.ToString()),
+                ArcaneSchools.Illusion => (IconKind: PackIconKind.AppleIcloud, Brush: Brushes.MediumPurple, Name: this.School.ToString()),
+                ArcaneSchools.Necromancy => (IconKind: PackIconKind.Coffin, Brush: Brushes.LightGreen, Name: this.School.ToString()),
+                ArcaneSchools.Transmutation => (IconKind: PackIconKind.CircleOpacity, Brush: Brushes.Orange, Name: this.School.ToString()),
+                ArcaneSchools.Universal => (IconKind: PackIconKind.Earth, Brush: Brushes.White, Name: this.School.ToString()),
+                _ => (IconKind: PackIconKind.Error, Brush: Brushes.Red, Name: this.School.ToString()),
+            };
+        }
+
         private static PackIconKind GetCheckBox(bool isChecked)
         {
             return isChecked ?
                 PackIconKind.CheckBox :
                 PackIconKind.CheckboxBlank;
-        }
-
-        private (PackIconKind IconKind, Brush Brush) GetCategoryValue()
-        {
-            return this.School switch
-            {
-                ArcaneSchools.Abjuration => (IconKind: PackIconKind.ShieldSun, Brush: Brushes.LightBlue),
-                ArcaneSchools.Conjuration => (IconKind: PackIconKind.Flare, Brush: Brushes.LightYellow),
-                ArcaneSchools.Divination => (IconKind: PackIconKind.EyeCircle, Brush: Brushes.SlateGray),
-                ArcaneSchools.Enchantment => (IconKind: PackIconKind.HeadCog, Brush: Brushes.LightPink),
-                ArcaneSchools.Evocation => (IconKind: PackIconKind.Flash, Brush: Brushes.IndianRed),
-                ArcaneSchools.Illusion => (IconKind: PackIconKind.AppleIcloud, Brush: Brushes.MediumPurple),
-                ArcaneSchools.Necromancy => (IconKind: PackIconKind.Coffin, Brush: Brushes.LightGreen),
-                ArcaneSchools.Transmutation => (IconKind: PackIconKind.CircleOpacity, Brush: Brushes.Orange),
-                ArcaneSchools.Universal => (IconKind: PackIconKind.Earth, Brush: Brushes.White),
-                _ => (IconKind: PackIconKind.Error, Brush: Brushes.Red),
-            };
         }
 
         private (PackIconKind IconKind, Brush Brush) GetPreparedValue()

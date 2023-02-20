@@ -29,6 +29,12 @@ namespace Concierge.Character.Items
             this.ProficiencyOverride = false;
         }
 
+        public Weapon(ICreature creature)
+            : this()
+        {
+            this.Creature = creature;
+        }
+
         public Abilities Ability { get; set; }
 
         public CoinType CoinType { get; set; }
@@ -39,11 +45,11 @@ namespace Concierge.Character.Items
 
         [JsonIgnore]
         [SearchIgnore]
-        public Brush IconColor => this.GetCategoryValue().Brush;
+        public Brush IconColor => this.GetCategory().Brush;
 
         [JsonIgnore]
         [SearchIgnore]
-        public PackIconKind IconKind => this.GetCategoryValue().IconKind;
+        public PackIconKind IconKind => this.GetCategory().IconKind;
 
         public Guid Id { get; set; }
 
@@ -79,30 +85,31 @@ namespace Concierge.Character.Items
             get
             {
                 var bonus = 0;
-                var character = Program.CcsFile.Character;
 
-                if (character.IsWeaponProficient(this))
+                if (this.Creature?.IsWeaponProficient(this) ?? false)
                 {
-                    bonus = character.ProficiencyBonus;
+                    bonus = Program.CcsFile.Character.ProficiencyBonus;
                 }
 
                 return this.Ability switch
                 {
-                    Abilities.STR => CharacterUtility.CalculateBonus(character.Attributes.Strength) + bonus,
-                    Abilities.DEX => CharacterUtility.CalculateBonus(character.Attributes.Dexterity) + bonus,
-                    Abilities.CON => CharacterUtility.CalculateBonus(character.Attributes.Constitution) + bonus,
-                    Abilities.INT => CharacterUtility.CalculateBonus(character.Attributes.Intelligence) + bonus,
-                    Abilities.WIS => CharacterUtility.CalculateBonus(character.Attributes.Wisdom) + bonus,
-                    Abilities.CHA => CharacterUtility.CalculateBonus(character.Attributes.Charisma) + bonus,
+                    Abilities.STR => CharacterUtility.CalculateBonus(this.Creature?.Attributes.Strength ?? 10) + bonus,
+                    Abilities.DEX => CharacterUtility.CalculateBonus(this.Creature?.Attributes.Dexterity ?? 10) + bonus,
+                    Abilities.CON => CharacterUtility.CalculateBonus(this.Creature?.Attributes.Constitution ?? 10) + bonus,
+                    Abilities.INT => CharacterUtility.CalculateBonus(this.Creature?.Attributes.Intelligence ?? 10) + bonus,
+                    Abilities.WIS => CharacterUtility.CalculateBonus(this.Creature?.Attributes.Wisdom ?? 10) + bonus,
+                    Abilities.CHA => CharacterUtility.CalculateBonus(this.Creature?.Attributes.Charisma ?? 10) + bonus,
                     Abilities.NONE => bonus,
                     _ => throw new NotImplementedException(),
                 };
             }
         }
 
+        private ICreature? Creature { get; set; }
+
         public Weapon DeepCopy()
         {
-            return new Weapon()
+            return new Weapon(this.Creature)
             {
                 Name = this.Name,
                 Ability = this.Ability,
@@ -121,53 +128,58 @@ namespace Concierge.Character.Items
             };
         }
 
+        public void Initialize(ICreature creature)
+        {
+            this.Creature = creature;
+        }
+
         public override string ToString()
         {
             return this.Name;
         }
 
-        private (PackIconKind IconKind, Brush Brush) GetCategoryValue()
+        public (PackIconKind IconKind, Brush Brush, string Name) GetCategory()
         {
             return this.Type switch
             {
-                WeaponTypes.Battleaxe => (IconKind: PackIconKind.AxeBattle, Brush: Brushes.IndianRed),
-                WeaponTypes.Blowgun => (IconKind: PackIconKind.SignPole, Brush: Brushes.Magenta),
-                WeaponTypes.Club => (IconKind: PackIconKind.Oar, Brush: Brushes.Cyan),
-                WeaponTypes.Dagger => (IconKind: PackIconKind.KnifeMilitary, Brush: Brushes.LightGreen),
-                WeaponTypes.Dart => (IconKind: PackIconKind.SignPole, Brush: Brushes.Magenta),
-                WeaponTypes.Flail => (IconKind: PackIconKind.Mace, Brush: Brushes.LightPink),
-                WeaponTypes.Glaive => (IconKind: PackIconKind.AxeBattle, Brush: Brushes.IndianRed),
-                WeaponTypes.Greataxe => (IconKind: PackIconKind.AxeBattle, Brush: Brushes.IndianRed),
-                WeaponTypes.Greatclub => (IconKind: PackIconKind.Oar, Brush: Brushes.Cyan),
-                WeaponTypes.Greatsword => (IconKind: PackIconKind.Sword, Brush: Brushes.LightGreen),
-                WeaponTypes.Halberd => (IconKind: PackIconKind.AxeBattle, Brush: Brushes.IndianRed),
-                WeaponTypes.Handaxe => (IconKind: PackIconKind.Axe, Brush: Brushes.IndianRed),
-                WeaponTypes.HandCrossbow => (IconKind: PackIconKind.BowArrow, Brush: Brushes.Orange),
-                WeaponTypes.HeavyCrossbow => (IconKind: PackIconKind.BowArrow, Brush: Brushes.Orange),
-                WeaponTypes.Javelin => (IconKind: PackIconKind.Spear, Brush: Brushes.LightBlue),
-                WeaponTypes.Lance => (IconKind: PackIconKind.Spear, Brush: Brushes.LightBlue),
-                WeaponTypes.LightCrossbow => (IconKind: PackIconKind.BowArrow, Brush: Brushes.Orange),
-                WeaponTypes.LightHammer => (IconKind: PackIconKind.Hammer, Brush: Brushes.Cyan),
-                WeaponTypes.Longbow => (IconKind: PackIconKind.BowArrow, Brush: Brushes.Orange),
-                WeaponTypes.Longsword => (IconKind: PackIconKind.Sword, Brush: Brushes.LightGreen),
-                WeaponTypes.Mace => (IconKind: PackIconKind.Mace, Brush: Brushes.LightPink),
-                WeaponTypes.Maul => (IconKind: PackIconKind.Mace, Brush: Brushes.LightPink),
-                WeaponTypes.Morningstar => (IconKind: PackIconKind.Mace, Brush: Brushes.LightPink),
-                WeaponTypes.Net => (IconKind: PackIconKind.SpiderWeb, Brush: Brushes.MediumPurple),
-                WeaponTypes.Pike => (IconKind: PackIconKind.Spear, Brush: Brushes.LightBlue),
-                WeaponTypes.Quarterstaff => (IconKind: PackIconKind.MagicStaff, Brush: Brushes.Cyan),
-                WeaponTypes.Rapier => (IconKind: PackIconKind.Fencing, Brush: Brushes.LightGreen),
-                WeaponTypes.Scimitar => (IconKind: PackIconKind.Sword, Brush: Brushes.LightGreen),
-                WeaponTypes.Shortbow => (IconKind: PackIconKind.BowArrow, Brush: Brushes.Orange),
-                WeaponTypes.Shortsword => (IconKind: PackIconKind.Sword, Brush: Brushes.LightGreen),
-                WeaponTypes.Sickle => (IconKind: PackIconKind.Sickle, Brush: Brushes.MediumPurple),
-                WeaponTypes.Sling => (IconKind: PackIconKind.Gesture, Brush: Brushes.MediumPurple),
-                WeaponTypes.Spear => (IconKind: PackIconKind.Spear, Brush: Brushes.LightBlue),
-                WeaponTypes.Trident => (IconKind: PackIconKind.SilverwareFork, Brush: Brushes.MediumPurple),
-                WeaponTypes.Warhammer => (IconKind: PackIconKind.Hammer, Brush: Brushes.Cyan),
-                WeaponTypes.WarPick => (IconKind: PackIconKind.Pickaxe, Brush: Brushes.MediumPurple),
-                WeaponTypes.Whip => (IconKind: PackIconKind.JumpRope, Brush: Brushes.MediumPurple),
-                _ => (IconKind: PackIconKind.ArmFlex, Brush: Brushes.SlateGray),
+                WeaponTypes.Battleaxe => (IconKind: PackIconKind.AxeBattle, Brush: Brushes.IndianRed, Name: this.Type.ToString()),
+                WeaponTypes.Blowgun => (IconKind: PackIconKind.SignPole, Brush: Brushes.Magenta, Name: this.Type.ToString()),
+                WeaponTypes.Club => (IconKind: PackIconKind.Oar, Brush: Brushes.Cyan, Name: this.Type.ToString()),
+                WeaponTypes.Dagger => (IconKind: PackIconKind.KnifeMilitary, Brush: Brushes.LightGreen, Name: this.Type.ToString()),
+                WeaponTypes.Dart => (IconKind: PackIconKind.SignPole, Brush: Brushes.Magenta, Name: this.Type.ToString()),
+                WeaponTypes.Flail => (IconKind: PackIconKind.Mace, Brush: Brushes.LightPink, Name: this.Type.ToString()),
+                WeaponTypes.Glaive => (IconKind: PackIconKind.AxeBattle, Brush: Brushes.IndianRed, Name: this.Type.ToString()),
+                WeaponTypes.Greataxe => (IconKind: PackIconKind.AxeBattle, Brush: Brushes.IndianRed, Name: this.Type.ToString()),
+                WeaponTypes.Greatclub => (IconKind: PackIconKind.Oar, Brush: Brushes.Cyan, Name: this.Type.ToString()),
+                WeaponTypes.Greatsword => (IconKind: PackIconKind.Sword, Brush: Brushes.LightGreen, Name: this.Type.ToString()),
+                WeaponTypes.Halberd => (IconKind: PackIconKind.AxeBattle, Brush: Brushes.IndianRed, Name: this.Type.ToString()),
+                WeaponTypes.Handaxe => (IconKind: PackIconKind.Axe, Brush: Brushes.IndianRed, Name: this.Type.ToString()),
+                WeaponTypes.HandCrossbow => (IconKind: PackIconKind.BowArrow, Brush: Brushes.Orange, Name: this.Type.ToString()),
+                WeaponTypes.HeavyCrossbow => (IconKind: PackIconKind.BowArrow, Brush: Brushes.Orange, Name: this.Type.ToString()),
+                WeaponTypes.Javelin => (IconKind: PackIconKind.Spear, Brush: Brushes.LightBlue, Name: this.Type.ToString()),
+                WeaponTypes.Lance => (IconKind: PackIconKind.Spear, Brush: Brushes.LightBlue, Name: this.Type.ToString()),
+                WeaponTypes.LightCrossbow => (IconKind: PackIconKind.BowArrow, Brush: Brushes.Orange, Name: this.Type.ToString()),
+                WeaponTypes.LightHammer => (IconKind: PackIconKind.Hammer, Brush: Brushes.Cyan, Name: this.Type.ToString()),
+                WeaponTypes.Longbow => (IconKind: PackIconKind.BowArrow, Brush: Brushes.Orange, Name: this.Type.ToString()),
+                WeaponTypes.Longsword => (IconKind: PackIconKind.Sword, Brush: Brushes.LightGreen, Name: this.Type.ToString()),
+                WeaponTypes.Mace => (IconKind: PackIconKind.Mace, Brush: Brushes.LightPink, Name: this.Type.ToString()),
+                WeaponTypes.Maul => (IconKind: PackIconKind.Mace, Brush: Brushes.LightPink, Name: this.Type.ToString()),
+                WeaponTypes.Morningstar => (IconKind: PackIconKind.Mace, Brush: Brushes.LightPink, Name: this.Type.ToString()),
+                WeaponTypes.Net => (IconKind: PackIconKind.SpiderWeb, Brush: Brushes.MediumPurple, Name: this.Type.ToString()),
+                WeaponTypes.Pike => (IconKind: PackIconKind.Spear, Brush: Brushes.LightBlue, Name: this.Type.ToString()),
+                WeaponTypes.Quarterstaff => (IconKind: PackIconKind.MagicStaff, Brush: Brushes.Cyan, Name: this.Type.ToString()),
+                WeaponTypes.Rapier => (IconKind: PackIconKind.Fencing, Brush: Brushes.LightGreen, Name: this.Type.ToString()),
+                WeaponTypes.Scimitar => (IconKind: PackIconKind.Sword, Brush: Brushes.LightGreen, Name: this.Type.ToString()),
+                WeaponTypes.Shortbow => (IconKind: PackIconKind.BowArrow, Brush: Brushes.Orange, Name: this.Type.ToString()),
+                WeaponTypes.Shortsword => (IconKind: PackIconKind.Sword, Brush: Brushes.LightGreen, Name: this.Type.ToString()),
+                WeaponTypes.Sickle => (IconKind: PackIconKind.Sickle, Brush: Brushes.MediumPurple, Name: this.Type.ToString()),
+                WeaponTypes.Sling => (IconKind: PackIconKind.Gesture, Brush: Brushes.MediumPurple, Name: this.Type.ToString()),
+                WeaponTypes.Spear => (IconKind: PackIconKind.Spear, Brush: Brushes.LightBlue, Name: this.Type.ToString()),
+                WeaponTypes.Trident => (IconKind: PackIconKind.SilverwareFork, Brush: Brushes.MediumPurple, Name: this.Type.ToString()),
+                WeaponTypes.Warhammer => (IconKind: PackIconKind.Hammer, Brush: Brushes.Cyan, Name: this.Type.ToString()),
+                WeaponTypes.WarPick => (IconKind: PackIconKind.Pickaxe, Brush: Brushes.MediumPurple, Name: this.Type.ToString()),
+                WeaponTypes.Whip => (IconKind: PackIconKind.JumpRope, Brush: Brushes.MediumPurple, Name: this.Type.ToString()),
+                _ => (IconKind: PackIconKind.ArmFlex, Brush: Brushes.SlateGray, Name: this.Type.ToString()),
             };
         }
 

@@ -51,11 +51,11 @@ namespace Concierge.Character.Characteristics
 
         [JsonIgnore]
         [SearchIgnore]
-        public Brush IconColor => this.GetCategoryValue().Brush;
+        public Brush IconColor => this.GetCategory().Brush;
 
         [JsonIgnore]
         [SearchIgnore]
-        public PackIconKind IconKind => this.GetCategoryValue().IconKind;
+        public PackIconKind IconKind => this.GetCategory().IconKind;
 
         public Ability DeepCopy()
         {
@@ -78,16 +78,16 @@ namespace Concierge.Character.Characteristics
             return this.Name;
         }
 
-        private (PackIconKind IconKind, Brush Brush) GetCategoryValue()
+        public (PackIconKind IconKind, Brush Brush, string Name) GetCategory()
         {
             return this.Type switch
             {
-                AbilityTypes.Background => (IconKind: PackIconKind.ArrangeSendBackward, Brush: Brushes.LightBlue),
-                AbilityTypes.Feat => (IconKind: PackIconKind.StarCircleOutline, Brush: Brushes.MediumPurple),
-                AbilityTypes.ClassFeature => (IconKind: PackIconKind.BookVariant, Brush: Brushes.Orange),
-                AbilityTypes.RaceFeature => (IconKind: PackIconKind.BookVariant, Brush: Brushes.IndianRed),
-                AbilityTypes.None => (IconKind: PackIconKind.BorderNone, Brush: Brushes.SlateGray),
-                _ => (IconKind: PackIconKind.Error, Brush: Brushes.Red),
+                AbilityTypes.Background => (IconKind: PackIconKind.ArrangeSendBackward, Brush: Brushes.LightBlue, Name: this.Type.ToString()),
+                AbilityTypes.Feat => (IconKind: PackIconKind.StarCircleOutline, Brush: Brushes.MediumPurple, Name: this.Type.ToString()),
+                AbilityTypes.ClassFeature => (IconKind: PackIconKind.BookVariant, Brush: Brushes.Orange, Name: this.Type.ToString()),
+                AbilityTypes.RaceFeature => (IconKind: PackIconKind.BookVariant, Brush: Brushes.IndianRed, Name: this.Type.ToString()),
+                AbilityTypes.None => (IconKind: PackIconKind.BorderNone, Brush: Brushes.SlateGray, Name: this.Type.ToString()),
+                _ => (IconKind: PackIconKind.Error, Brush: Brushes.Red, Name: this.Type.ToString()),
             };
         }
     }

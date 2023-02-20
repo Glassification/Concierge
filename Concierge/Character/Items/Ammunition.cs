@@ -32,11 +32,11 @@ namespace Concierge.Character.Items
 
         [JsonIgnore]
         [SearchIgnore]
-        public Brush IconColor => this.GetCategoryValue().Brush;
+        public Brush IconColor => this.GetCategory().Brush;
 
         [JsonIgnore]
         [SearchIgnore]
-        public PackIconKind IconKind => this.GetCategoryValue().IconKind;
+        public PackIconKind IconKind => this.GetCategory().IconKind;
 
         public Guid Id { get; set; }
 
@@ -82,16 +82,16 @@ namespace Concierge.Character.Items
             return this.Name;
         }
 
-        private (PackIconKind IconKind, Brush Brush) GetCategoryValue()
+        public (PackIconKind IconKind, Brush Brush, string Name) GetCategory()
         {
             return this.Name switch
             {
-                string a when a.Contains("arrows", StringComparison.InvariantCultureIgnoreCase) => (IconKind: PackIconKind.ArrowProjectile, Brush: Brushes.IndianRed),
-                string b when b.Contains("needles", StringComparison.InvariantCultureIgnoreCase) => (IconKind: PackIconKind.SignPole, Brush: Brushes.LightGreen),
-                string c when c.Contains("bolts", StringComparison.InvariantCultureIgnoreCase) => (IconKind: PackIconKind.RayStartArrow, Brush: Brushes.LightBlue),
-                string d when d.Contains("shuriken", StringComparison.InvariantCultureIgnoreCase) => (IconKind: PackIconKind.Shuriken, Brush: Brushes.Orange),
-                string e when e.Contains("bullets", StringComparison.InvariantCultureIgnoreCase) => (IconKind: PackIconKind.SquareSmall, Brush: Brushes.MediumPurple),
-                _ => (IconKind: PackIconKind.ArrowProjectileMultiple, Brush: Brushes.SlateGray),
+                string a when a.Contains("arrows", StringComparison.InvariantCultureIgnoreCase) => (IconKind: PackIconKind.ArrowProjectile, Brush: Brushes.IndianRed, this.Name),
+                string b when b.Contains("needles", StringComparison.InvariantCultureIgnoreCase) => (IconKind: PackIconKind.SignPole, Brush: Brushes.LightGreen, this.Name),
+                string c when c.Contains("bolts", StringComparison.InvariantCultureIgnoreCase) => (IconKind: PackIconKind.RayStartArrow, Brush: Brushes.LightBlue, this.Name),
+                string d when d.Contains("shuriken", StringComparison.InvariantCultureIgnoreCase) => (IconKind: PackIconKind.Shuriken, Brush: Brushes.Orange, this.Name),
+                string e when e.Contains("bullets", StringComparison.InvariantCultureIgnoreCase) => (IconKind: PackIconKind.SquareSmall, Brush: Brushes.MediumPurple, this.Name),
+                _ => (IconKind: PackIconKind.ArrowProjectileMultiple, Brush: Brushes.SlateGray, this.Name),
             };
         }
     }

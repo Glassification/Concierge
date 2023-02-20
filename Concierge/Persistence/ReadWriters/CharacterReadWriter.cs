@@ -6,8 +6,9 @@ namespace Concierge.Persistence.ReadWriters
 {
     using System;
     using System.IO;
+    using System.Runtime.CompilerServices;
     using System.Text.RegularExpressions;
-
+    using Concierge.Character;
     using Concierge.Configuration;
     using Concierge.Display.Enums;
     using Concierge.Exceptions;
@@ -50,6 +51,8 @@ namespace Concierge.Persistence.ReadWriters
 
                 AppSettingsManager.RefreshUnits();
                 Program.Logger.Info($"Successfully loaded {fileName}");
+
+                Initialize(ccsFile.Character);
 
                 return ccsFile;
             }
@@ -163,6 +166,19 @@ namespace Concierge.Persistence.ReadWriters
             }
 
             return false;
+        }
+
+        private static void Initialize(ConciergeCharacter character)
+        {
+            foreach (var weapon in character.Weapons)
+            {
+                weapon.Initialize(character);
+            }
+
+            foreach (var weapon in character.Companion.Attacks)
+            {
+                weapon.Initialize(character.Companion);
+            }
         }
     }
 }

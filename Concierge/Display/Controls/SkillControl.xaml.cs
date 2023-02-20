@@ -4,6 +4,7 @@
 
 namespace Concierge.Display.Controls
 {
+    using System;
     using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Input;
@@ -100,8 +101,8 @@ namespace Concierge.Display.Controls
 
         public void SetStyle(bool proficiencyFlag, bool expertiseFlag, StatusChecks check)
         {
-            this.ProficiencyBox.Fill = proficiencyFlag ? ConciergeBrushes.Verdigris : Brushes.Transparent;
-            this.ExpertiseBox.Fill = expertiseFlag ? ConciergeBrushes.Verdigris : Brushes.Transparent;
+            this.ProficiencyBox.Fill = proficiencyFlag ? Brushes.SteelBlue : Brushes.Transparent;
+            this.ExpertiseBox.Fill = expertiseFlag ? Brushes.SteelBlue : Brushes.Transparent;
 
             SetTextStyleHelper(check, this.SkillNameField);
             SetTextStyleHelper(check, this.SkillBonusField);
@@ -143,6 +144,7 @@ namespace Concierge.Display.Controls
             }
 
             ellipse.Stroke = ConciergeBrushes.BorderHighlight;
+            ellipse.Fill = ConciergeBrushes.BorderHighlight;
             ellipse.StrokeThickness = 1;
 
             Mouse.OverrideCursor = Cursors.Hand;
@@ -155,7 +157,11 @@ namespace Concierge.Display.Controls
                 return;
             }
 
-            ellipse.Stroke = ConciergeBrushes.Verdigris;
+            var save = Program.CcsFile.Character.Skill.GetSkill(this.SkillName.Strip(" "));
+            var check = ellipse.Name.Contains("Proficiency", StringComparison.InvariantCultureIgnoreCase) ? save.Proficiency : save.Expertise;
+
+            ellipse.Stroke = Brushes.SteelBlue;
+            ellipse.Fill = check ? Brushes.SteelBlue : Brushes.Transparent;
             ellipse.StrokeThickness = 1;
 
             Mouse.OverrideCursor = Cursors.Arrow;
@@ -168,63 +174,8 @@ namespace Concierge.Display.Controls
             var skill = Program.CcsFile.Character.Skill;
             var skillCopy = skill.DeepCopy();
 
-            switch (this.SkillName.Strip(" "))
-            {
-                case "Athletics":
-                    skill.Athletics.Proficiency = !skill.Athletics.Proficiency;
-                    break;
-                case "Acrobatics":
-                    skill.Acrobatics.Proficiency = !skill.Acrobatics.Proficiency;
-                    break;
-                case "SleightOfHand":
-                    skill.SleightOfHand.Proficiency = !skill.SleightOfHand.Proficiency;
-                    break;
-                case "Stealth":
-                    skill.Stealth.Proficiency = !skill.Stealth.Proficiency;
-                    break;
-                case "Arcana":
-                    skill.Arcana.Proficiency = !skill.Arcana.Proficiency;
-                    break;
-                case "History":
-                    skill.History.Proficiency = !skill.History.Proficiency;
-                    break;
-                case "Investigation":
-                    skill.Investigation.Proficiency = !skill.Investigation.Proficiency;
-                    break;
-                case "Nature":
-                    skill.Nature.Proficiency = !skill.Nature.Proficiency;
-                    break;
-                case "Religion":
-                    skill.Religion.Proficiency = !skill.Religion.Proficiency;
-                    break;
-                case "AnimalHandling":
-                    skill.AnimalHandling.Proficiency = !skill.AnimalHandling.Proficiency;
-                    break;
-                case "Insight":
-                    skill.Insight.Proficiency = !skill.Insight.Proficiency;
-                    break;
-                case "Medicine":
-                    skill.Medicine.Proficiency = !skill.Medicine.Proficiency;
-                    break;
-                case "Perception":
-                    skill.Perception.Proficiency = !skill.Perception.Proficiency;
-                    break;
-                case "Survival":
-                    skill.Survival.Proficiency = !skill.Survival.Proficiency;
-                    break;
-                case "Deception":
-                    skill.Deception.Proficiency = !skill.Deception.Proficiency;
-                    break;
-                case "Intimidation":
-                    skill.Intimidation.Proficiency = !skill.Intimidation.Proficiency;
-                    break;
-                case "Performance":
-                    skill.Performance.Proficiency = !skill.Performance.Proficiency;
-                    break;
-                case "Persuasion":
-                    skill.Persuasion.Proficiency = !skill.Persuasion.Proficiency;
-                    break;
-            }
+            var save = skill.GetSkill(this.SkillName.Strip(" "));
+            save.Proficiency = !save.Proficiency;
 
             this.RaiseEvent(new RoutedEventArgs(ToggleClickedEvent));
 
@@ -239,63 +190,8 @@ namespace Concierge.Display.Controls
             var skill = Program.CcsFile.Character.Skill;
             var skillCopy = skill.DeepCopy();
 
-            switch (this.SkillName.Strip(" "))
-            {
-                case "Athletics":
-                    skill.Athletics.Expertise = !skill.Athletics.Expertise;
-                    break;
-                case "Acrobatics":
-                    skill.Acrobatics.Expertise = !skill.Acrobatics.Expertise;
-                    break;
-                case "SleightOfHand":
-                    skill.SleightOfHand.Expertise = !skill.SleightOfHand.Expertise;
-                    break;
-                case "Stealth":
-                    skill.Stealth.Expertise = !skill.Stealth.Expertise;
-                    break;
-                case "Arcana":
-                    skill.Arcana.Expertise = !skill.Arcana.Expertise;
-                    break;
-                case "History":
-                    skill.History.Expertise = !skill.History.Expertise;
-                    break;
-                case "Investigation":
-                    skill.Investigation.Expertise = !skill.Investigation.Expertise;
-                    break;
-                case "Nature":
-                    skill.Nature.Expertise = !skill.Nature.Expertise;
-                    break;
-                case "Religion":
-                    skill.Religion.Expertise = !skill.Religion.Expertise;
-                    break;
-                case "AnimalHandling":
-                    skill.AnimalHandling.Expertise = !skill.AnimalHandling.Expertise;
-                    break;
-                case "Insight":
-                    skill.Insight.Expertise = !skill.Insight.Expertise;
-                    break;
-                case "Medicine":
-                    skill.Medicine.Expertise = !skill.Medicine.Expertise;
-                    break;
-                case "Perception":
-                    skill.Perception.Expertise = !skill.Perception.Expertise;
-                    break;
-                case "Survival":
-                    skill.Survival.Expertise = !skill.Survival.Expertise;
-                    break;
-                case "Deception":
-                    skill.Deception.Expertise = !skill.Deception.Expertise;
-                    break;
-                case "Intimidation":
-                    skill.Intimidation.Expertise = !skill.Intimidation.Expertise;
-                    break;
-                case "Performance":
-                    skill.Performance.Expertise = !skill.Performance.Expertise;
-                    break;
-                case "Persuasion":
-                    skill.Persuasion.Expertise = !skill.Persuasion.Expertise;
-                    break;
-            }
+            var save = skill.GetSkill(this.SkillName.Strip(" "));
+            save.Expertise = !save.Expertise;
 
             this.RaiseEvent(new RoutedEventArgs(ToggleClickedEvent));
 

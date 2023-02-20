@@ -145,7 +145,7 @@
                             TextWrapping="Wrap"/>
                         <Line
                             Grid.Column="0"
-                            Stroke="#48B3B9"
+                            Stroke="SteelBlue"
                             StrokeThickness="2"
                             Stretch="Uniform"
                             X1="0" X2="0" Y1="0" Y2="1"

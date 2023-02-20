@@ -166,7 +166,8 @@ namespace Concierge.Display.Pages
                 Program.CcsFile.Character.Companion.Attacks,
                 typeof(AttacksWindow),
                 this.Window_ApplyChanges,
-                ConciergePage.Companion);
+                ConciergePage.Companion,
+                Program.CcsFile.Character.Companion);
             this.DrawAttacks();
 
             if (added)
@@ -251,6 +252,7 @@ namespace Concierge.Display.Pages
                 this.Window_ApplyChanges,
                 ConciergePage.Companion);
             this.DrawHealth();
+            this.DrawHitDice();
         }
 
         private void AttributeDisplay_EditClicked(object sender, RoutedEventArgs e)
@@ -261,6 +263,7 @@ namespace Concierge.Display.Pages
                 this.Window_ApplyChanges,
                 ConciergePage.Companion);
             this.DrawAttributes();
+            this.DrawDetails();
         }
 
         private void CompanionDetails_MouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)

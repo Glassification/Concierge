@@ -9,7 +9,7 @@ namespace Concierge.Display.Windows
     using System.Linq;
     using System.Windows;
     using System.Windows.Controls;
-
+    using Concierge.Character;
     using Concierge.Character.Enums;
     using Concierge.Character.Items;
     using Concierge.Commands;
@@ -51,6 +51,8 @@ namespace Concierge.Display.Windows
 
         private List<Weapon> Weapons { get; set; }
 
+        private ICreature Creature { get; set; }
+
         public override ConciergeWindowResult ShowWizardSetup(string buttonText)
         {
             this.Weapons = Program.CcsFile.Character.Weapons;
@@ -65,7 +67,7 @@ namespace Concierge.Display.Windows
             return this.Result;
         }
 
-        public override bool ShowAdd<T>(T weapons)
+        public override bool ShowAdd<T>(T weapons, ICreature creature)
         {
             if (weapons is not List<Weapon> castItem)
             {
@@ -76,6 +78,7 @@ namespace Concierge.Display.Windows
             this.Editing = false;
             this.HeaderTextBlock.Text = this.HeaderText;
             this.ItemsAdded = false;
+            this.Creature = creature;
 
             this.ClearFields();
             this.ShowConciergeWindow();
@@ -189,7 +192,7 @@ namespace Concierge.Display.Windows
         {
             this.ItemsAdded = true;
 
-            var weapon = new Weapon()
+            var weapon = new Weapon(this.Creature)
             {
                 Name = this.AttackComboBox.Text,
                 Type = (WeaponTypes)Enum.Parse(typeof(WeaponTypes), this.TypeComboBox.Text),

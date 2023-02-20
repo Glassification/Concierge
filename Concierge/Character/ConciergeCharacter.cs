@@ -25,7 +25,7 @@ namespace Concierge.Character
     using Concierge.Utility.Utilities;
     using Newtonsoft.Json;
 
-    public sealed class ConciergeCharacter : ICopyable<ConciergeCharacter>
+    public sealed class ConciergeCharacter : ICopyable<ConciergeCharacter>, ICreature
     {
         private readonly ConciergeLeveler conciergeLeveler;
 

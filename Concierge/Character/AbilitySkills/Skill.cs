@@ -4,6 +4,8 @@
 
 namespace Concierge.Character.AbilitySkills
 {
+    using System;
+
     using Concierge.Character.AbilitySkills.SkillTypes;
     using Concierge.Utility;
 
@@ -89,6 +91,32 @@ namespace Concierge.Character.AbilitySkills
                 Intimidation = (Intimidation)this.Intimidation.DeepCopy(),
                 Performance = (Performance)this.Performance.DeepCopy(),
                 Persuasion = (Persuasion)this.Persuasion.DeepCopy(),
+            };
+        }
+
+        public Skills GetSkill(string name)
+        {
+            return name.ToLower() switch
+            {
+                "athletics" => this.Athletics,
+                "acrobatics" => this.Acrobatics,
+                "sleightofhand" => this.SleightOfHand,
+                "stealth" => this.Stealth,
+                "arcana" => this.Arcana,
+                "history" => this.History,
+                "investigation" => this.Investigation,
+                "nature" => this.Nature,
+                "religion" => this.Religion,
+                "animalhandling" => this.AnimalHandling,
+                "insight" => this.Insight,
+                "medicine" => this.Medicine,
+                "perception" => this.Perception,
+                "survival" => this.Survival,
+                "deception" => this.Deception,
+                "intimidation" => this.Intimidation,
+                "performance" => this.Performance,
+                "persuasion" => this.Persuasion,
+                _ => throw new NotImplementedException(),
             };
         }
     }

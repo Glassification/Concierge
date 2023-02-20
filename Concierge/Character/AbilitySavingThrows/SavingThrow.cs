@@ -4,6 +4,8 @@
 
 namespace Concierge.Character.AbilitySavingThrows
 {
+    using System;
+
     using Concierge.Character.AbilitySavingThrows.SavingThrowTypes;
     using Concierge.Leveling.Dtos.Definitions;
     using Concierge.Utility;
@@ -53,6 +55,20 @@ namespace Concierge.Character.AbilitySavingThrows
             this.Intelligence.Proficiency = savingThrowDto.Intelligence.Proficiency;
             this.Wisdom.Proficiency = savingThrowDto.Wisdom.Proficiency;
             this.Charisma.Proficiency = savingThrowDto.Charisma.Proficiency;
+        }
+
+        public SavingThrows GetSavingThrow(string name)
+        {
+            return name.ToLower() switch
+            {
+                "strength" => this.Strength,
+                "dexterity" => this.Dexterity,
+                "constitution" => this.Constitution,
+                "intelligence" => this.Intelligence,
+                "wisdom" => this.Wisdom,
+                "charisma" => this.Charisma,
+                _ => throw new NotImplementedException(),
+            };
         }
     }
 }

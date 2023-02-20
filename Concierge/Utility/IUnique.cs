@@ -5,11 +5,16 @@
 namespace Concierge.Utility
 {
     using System;
+    using System.Windows.Media;
+
+    using MaterialDesignThemes.Wpf;
 
     public interface IUnique
     {
         Guid Id { get; set; }
 
         string Name { get; set; }
+
+        (PackIconKind IconKind, Brush Brush, string Name) GetCategory();
     }
 }

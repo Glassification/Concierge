@@ -6,6 +6,7 @@ namespace Concierge.Services
 {
     using System;
 
+    using Concierge.Character;
     using Concierge.Character.Enums;
     using Concierge.Display.Components;
     using Concierge.Display.Enums;
@@ -27,6 +28,20 @@ namespace Concierge.Services
             conciergeWindow.ConciergePage = conciergePage;
 
             return conciergeWindow.ShowAdd<T>(item);
+        }
+
+        public static bool ShowAdd<T>(T item, Type typeOfWindow, ApplyChangesEventHandler applyEvent, ConciergePage conciergePage, ICreature creature)
+        {
+            var conciergeWindow = (ConciergeWindow?)Activator.CreateInstance(typeOfWindow);
+            if (conciergeWindow is null)
+            {
+                return false;
+            }
+
+            conciergeWindow.ApplyChanges += applyEvent;
+            conciergeWindow.ConciergePage = conciergePage;
+
+            return conciergeWindow.ShowAdd<T>(item, creature);
         }
 
         public static void ShowEdit<T>(T item, Type typeOfWindow, ApplyChangesEventHandler applyEvent, ConciergePage conciergePage)

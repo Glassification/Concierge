@@ -5,8 +5,10 @@
 namespace Concierge.Character.Notes
 {
     using System;
+    using System.Windows.Media;
 
     using Concierge.Utility;
+    using MaterialDesignThemes.Wpf;
 
     public sealed class Document : ICopyable<Document>, IUnique
     {
@@ -33,6 +35,11 @@ namespace Concierge.Character.Notes
                 Rtf = this.Rtf,
                 Id = this.Id,
             };
+        }
+
+        public (PackIconKind IconKind, Brush Brush, string Name) GetCategory()
+        {
+            throw new NotImplementedException();
         }
 
         public override string ToString()

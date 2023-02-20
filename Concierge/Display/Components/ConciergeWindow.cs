@@ -11,6 +11,7 @@ namespace Concierge.Display.Components
     using System.Windows.Interop;
 
     using Concierge.Animations;
+    using Concierge.Character;
     using Concierge.Character.Enums;
     using Concierge.Display.Enums;
     using Concierge.Exceptions;
@@ -55,6 +56,12 @@ namespace Concierge.Display.Components
         protected bool HandleEnter { get; set; }
 
         public virtual bool ShowAdd<T>(T item)
+        {
+            Program.Logger.Error(new ImplementedMethodException(nameof(this.ShowAdd), item));
+            return false;
+        }
+
+        public virtual bool ShowAdd<T>(T item, ICreature creature)
         {
             Program.Logger.Error(new ImplementedMethodException(nameof(this.ShowAdd), item));
             return false;
