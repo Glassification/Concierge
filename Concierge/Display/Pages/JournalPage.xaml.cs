@@ -15,7 +15,7 @@ namespace Concierge.Display.Pages
     using System.Windows.Input;
     using System.Windows.Media;
 
-    using Concierge.Character.Notes;
+    using Concierge.Character.Journal;
     using Concierge.Commands;
     using Concierge.Display.Components;
     using Concierge.Display.Enums;

@@ -155,6 +155,14 @@ namespace Concierge.Display.Controls
                 this.SelectedColor = result;
                 this.CustomColorService.AddRecentColor(this.SelectedColor);
                 this.CustomColorService.AddCustomColor(this.SelectedColor);
+
+                this.CustomColorList.Items.Insert(0, new ComboBoxItem()
+                {
+                    Content = result.Name,
+                    Foreground = new SolidColorBrush(result.Color),
+                    Tag = result,
+                });
+
                 SetColorButtons(this.RecentColorsStackPanel, this.CustomColorService.RecentColors);
                 this.RaiseEvent(new RoutedEventArgs(ColorChangedEvent));
             }

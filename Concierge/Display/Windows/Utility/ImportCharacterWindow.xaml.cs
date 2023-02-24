@@ -49,7 +49,9 @@ namespace Concierge.Display.Utility
                 ImportAbilities = this.AbilitiesCheckBox.IsChecked ?? false,
                 ImportAmmo = this.AmmoCheckBox.IsChecked ?? false,
                 ImportInventory = this.InventoryCheckBox.IsChecked ?? false,
-                ImportNotes = this.NotesCheckBox.IsChecked ?? false,
+                ImportJournal = this.NotesCheckBox.IsChecked ?? false,
+                ImportLanguage = this.LanguageCheckBox.IsChecked ?? false,
+                ImportProficiency = this.ProficiencyCheckBox.IsChecked ?? false,
                 ImportSpells = this.SpellsCheckBox.IsChecked ?? false,
                 ImportWeapons = this.WeaponsCheckBox.IsChecked ?? false,
             };
@@ -90,6 +92,7 @@ namespace Concierge.Display.Utility
                 return;
             }
 
+            Program.Modify();
             this.Imported = true;
             this.ReturnAndClose();
         }

@@ -8,6 +8,7 @@ namespace Concierge.Character.Items
     using System.Windows.Media;
 
     using Concierge.Character.Enums;
+    using Concierge.Exceptions;
     using Concierge.Primitives;
     using Concierge.Utility;
     using Concierge.Utility.Attributes;
@@ -109,7 +110,7 @@ namespace Concierge.Character.Items
 
         public Weapon DeepCopy()
         {
-            return new Weapon(this.Creature)
+            return new Weapon(this.Creature ?? throw new NullValueException(nameof(this.Creature)))
             {
                 Name = this.Name,
                 Ability = this.Ability,

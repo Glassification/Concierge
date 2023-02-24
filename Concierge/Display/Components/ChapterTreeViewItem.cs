@@ -10,7 +10,7 @@ namespace Concierge.Display.Components
     using System.Windows.Input;
     using System.Windows.Media;
 
-    using Concierge.Character.Notes;
+    using Concierge.Character.Journal;
     using Concierge.Utility;
     using MaterialDesignThemes.Wpf;
 

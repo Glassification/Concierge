@@ -19,7 +19,11 @@ namespace Concierge.Tools.Import
 
         public bool ImportInventory { get; set; }
 
-        public bool ImportNotes { get; set; }
+        public bool ImportJournal { get; set; }
+
+        public bool ImportLanguage { get; set; }
+
+        public bool ImportProficiency { get; set; }
 
         public bool ImportSpells { get; set; }
 

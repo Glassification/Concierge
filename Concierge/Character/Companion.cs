@@ -7,9 +7,11 @@ namespace Concierge.Character
     using System.Collections.Generic;
 
     using Concierge.Character.Characteristics;
+    using Concierge.Character.Enums;
     using Concierge.Character.Items;
     using Concierge.Character.Statuses;
     using Concierge.Utility;
+    using Newtonsoft.Json;
 
     public sealed class Companion : ICopyable<Companion>, ICreature
     {
@@ -31,6 +33,9 @@ namespace Concierge.Character
         public Attributes Attributes { get; set; }
 
         public List<Weapon> Attacks { get; set; }
+
+        [JsonIgnore]
+        public CreatureType CreatureType => CreatureType.Companion;
 
         public Companion DeepCopy()
         {

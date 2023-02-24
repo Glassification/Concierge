@@ -370,6 +370,26 @@
                                             Margin="20 10"/>
                                     </StackPanel>
                                 </Button>
+                                <Button 
+                                    x:Name="GlossaryButton" 
+                                    Click="GlossaryButton_Click"
+                                    Style="{StaticResource ConciergePopupButtonStyle}"
+                                    HorizontalAlignment="Stretch">
+                                    <StackPanel Orientation="Horizontal">
+                                        <materialDesign:PackIcon 
+                                            Kind="Bookshelf" 
+                                            Foreground="#ef476f" 
+                                            Height="25"
+                                            Width="25" 
+                                            Margin="0 10"/>
+                                        <TextBlock 
+                                            Text="Glossary..." 
+                                            Foreground="White" 
+                                            VerticalAlignment="Center" 
+                                            HorizontalAlignment="Left" 
+                                            Margin="20 10"/>
+                                    </StackPanel>
+                                </Button>
                             </StackPanel>
                         </materialDesign:PopupBox>
                     </components:ConciergeDesignButton>

@@ -13,7 +13,7 @@ namespace Concierge.Character
     using Concierge.Character.Characteristics;
     using Concierge.Character.Enums;
     using Concierge.Character.Items;
-    using Concierge.Character.Notes;
+    using Concierge.Character.Journal;
     using Concierge.Character.Spellcasting;
     using Concierge.Character.Statuses;
     using Concierge.Commands;
@@ -181,6 +181,9 @@ namespace Concierge.Character
         [JsonIgnore]
         public double HeavyCarryCapacity => this.Attributes.Strength * UnitConvertion.HeavyMultiplier;
 
+        [JsonIgnore]
+        public CreatureType CreatureType => CreatureType.Character;
+
         public override bool Equals(object? obj)
         {
             if (obj is not ConciergeCharacter)
@@ -188,8 +191,8 @@ namespace Concierge.Character
                 return false;
             }
 
-            var character1 = JsonConvert.SerializeObject(obj as ConciergeCharacter, Formatting.Indented);
-            var character2 = JsonConvert.SerializeObject(this, Formatting.Indented);
+            var character1 = JsonConvert.SerializeObject(obj as ConciergeCharacter);
+            var character2 = JsonConvert.SerializeObject(this);
 
             return character1.Equals(character2);
         }

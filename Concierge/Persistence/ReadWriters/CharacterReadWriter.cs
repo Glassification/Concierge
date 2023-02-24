@@ -8,6 +8,7 @@ namespace Concierge.Persistence.ReadWriters
     using System.IO;
     using System.Runtime.CompilerServices;
     using System.Text.RegularExpressions;
+
     using Concierge.Character;
     using Concierge.Configuration;
     using Concierge.Display.Enums;

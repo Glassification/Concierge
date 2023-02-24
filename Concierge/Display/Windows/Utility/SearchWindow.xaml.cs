@@ -11,7 +11,7 @@ namespace Concierge.Display.Utility
     using System.Windows.Input;
     using System.Windows.Media;
 
-    using Concierge.Character.Notes;
+    using Concierge.Character.Journal;
     using Concierge.Display.Components;
     using Concierge.Display.Enums;
     using Concierge.Exceptions;

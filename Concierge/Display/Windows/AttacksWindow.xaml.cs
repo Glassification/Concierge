@@ -9,6 +9,7 @@ namespace Concierge.Display.Windows
     using System.Linq;
     using System.Windows;
     using System.Windows.Controls;
+
     using Concierge.Character;
     using Concierge.Character.Enums;
     using Concierge.Character.Items;
@@ -16,6 +17,7 @@ namespace Concierge.Display.Windows
     using Concierge.Configuration;
     using Concierge.Display.Components;
     using Concierge.Display.Enums;
+    using Concierge.Exceptions;
     using Concierge.Primitives;
     using Concierge.Utility;
     using Concierge.Utility.Units;
@@ -51,7 +53,7 @@ namespace Concierge.Display.Windows
 
         private List<Weapon> Weapons { get; set; }
 
-        private ICreature Creature { get; set; }
+        private ICreature? Creature { get; set; }
 
         public override ConciergeWindowResult ShowWizardSetup(string buttonText)
         {
@@ -192,7 +194,7 @@ namespace Concierge.Display.Windows
         {
             this.ItemsAdded = true;
 
-            var weapon = new Weapon(this.Creature)
+            var weapon = new Weapon(this.Creature ?? throw new NullValueException(nameof(this.Creature)))
             {
                 Name = this.AttackComboBox.Text,
                 Type = (WeaponTypes)Enum.Parse(typeof(WeaponTypes), this.TypeComboBox.Text),

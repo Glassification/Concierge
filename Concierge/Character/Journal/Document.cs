@@ -2,30 +2,19 @@
 // Copyright (c) Thomas Beckett. All rights reserved.
 // </copyright>
 
-namespace Concierge.Character.Notes
+namespace Concierge.Character.Journal
 {
-    using System;
-    using System.Windows.Media;
-
     using Concierge.Utility;
-    using MaterialDesignThemes.Wpf;
 
-    public sealed class Document : ICopyable<Document>, IUnique
+    public sealed class Document : Entry, ICopyable<Document>
     {
         public Document(string name)
+            : base(name)
         {
-            this.Name = name;
-            this.Id = Guid.NewGuid();
             this.Rtf = string.Empty;
         }
 
-        public bool IsExpanded { get; set; }
-
-        public string Name { get; set; }
-
         public string Rtf { get; set; }
-
-        public Guid Id { get; set; }
 
         public Document DeepCopy()
         {
@@ -34,12 +23,8 @@ namespace Concierge.Character.Notes
                 IsExpanded = this.IsExpanded,
                 Rtf = this.Rtf,
                 Id = this.Id,
+                Created = this.Created,
             };
-        }
-
-        public (PackIconKind IconKind, Brush Brush, string Name) GetCategory()
-        {
-            throw new NotImplementedException();
         }
 
         public override string ToString()

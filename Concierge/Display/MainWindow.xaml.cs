@@ -18,6 +18,7 @@ namespace Concierge.Display
     using Concierge.Display.Pages;
     using Concierge.Display.Utility;
     using Concierge.Display.Windows;
+    using Concierge.Display.Windows.Utility;
     using Concierge.Persistence;
     using Concierge.Services;
     using Concierge.Services.WorkerServices;
@@ -182,6 +183,13 @@ namespace Concierge.Display
             this.DrawAll();
 
             this.StartStopAutosaveTimer();
+        }
+
+        public void OpenGlossary()
+        {
+            Program.Logger.Info($"Open glossary.");
+
+            ConciergeWindowService.ShowWindow(typeof(GlossaryWindow));
         }
 
         public void OpenCharacterSheet(string file = "")
@@ -576,6 +584,9 @@ namespace Concierge.Display
                 case Key.F:
                     this.Search();
                     break;
+                case Key.G:
+                    this.OpenGlossary();
+                    break;
                 case Key.I:
                     this.OpenSettings();
                     break;
@@ -887,6 +898,13 @@ namespace Concierge.Display
         private void ListViewItem_MouseLeave(object sender, MouseEventArgs e)
         {
             Mouse.OverrideCursor = Cursors.Arrow;
+        }
+
+        private void GlossaryButton_Click(object sender, RoutedEventArgs e)
+        {
+            ConciergeSound.TapNavigation();
+            this.OpenGlossary();
+            this.IgnoreSecondPress = true;
         }
     }
 }

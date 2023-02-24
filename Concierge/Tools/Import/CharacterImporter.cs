@@ -32,7 +32,9 @@ namespace Concierge.Tools.Import
             this.ImportAbilities(character, importSettings.ImportAbilities);
             this.ImportAmmo(character, importSettings.ImportAmmo);
             this.ImportInventory(character, importSettings.ImportInventory);
-            this.ImportNotes(character, importSettings.ImportNotes);
+            this.ImportJournal(character, importSettings.ImportJournal);
+            this.ImportLanguage(character, importSettings.ImportLanguage);
+            this.ImportProficiency(character, importSettings.ImportProficiency);
             this.ImportSpells(character, importSettings.ImportSpells);
             this.ImportWeapons(character, importSettings.ImportWeapons);
 
@@ -77,13 +79,33 @@ namespace Concierge.Tools.Import
             }
         }
 
-        private void ImportNotes(ConciergeCharacter importCharacter, bool importNotes)
+        private void ImportJournal(ConciergeCharacter importCharacter, bool importJournal)
         {
-            if (importNotes)
+            if (importJournal)
             {
-                Program.Logger.Info($"Import notes.");
+                Program.Logger.Info($"Import journal.");
                 CycleGuids(importCharacter.Chapters);
                 this.character.Chapters.AddRange(importCharacter.Chapters);
+            }
+        }
+
+        private void ImportLanguage(ConciergeCharacter importCharacter, bool importLanguage)
+        {
+            if (importLanguage)
+            {
+                Program.Logger.Info($"Import language.");
+                CycleGuids(importCharacter.Languages);
+                this.character.Languages.AddRange(importCharacter.Languages);
+            }
+        }
+
+        private void ImportProficiency(ConciergeCharacter importCharacter, bool importProficiency)
+        {
+            if (importProficiency)
+            {
+                Program.Logger.Info($"Import proficiency.");
+                CycleGuids(importCharacter.Proficiencies);
+                this.character.Proficiencies.AddRange(importCharacter.Proficiencies);
             }
         }
 

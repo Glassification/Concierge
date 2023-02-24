@@ -24,7 +24,7 @@
                 Text="Add Status Effect"
                 x:Name="HeaderTextBlock"
                 Foreground="#227EA9"
-                FontSize="27"
+                FontSize="35"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Center"
                 Margin="30, 0, 0, 0"

@@ -5,6 +5,7 @@
 namespace Concierge.Character
 {
     using Concierge.Character.Characteristics;
+    using Concierge.Character.Enums;
     using Concierge.Character.Items;
     using Concierge.Character.Statuses;
 
@@ -13,6 +14,8 @@ namespace Concierge.Character
         Attributes Attributes { get; set; }
 
         Vitality Vitality { get; set; }
+
+        CreatureType CreatureType { get; }
 
         bool IsWeaponProficient(Weapon weapon);
     }
