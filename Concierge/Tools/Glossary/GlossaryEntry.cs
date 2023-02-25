@@ -9,9 +9,14 @@ namespace Concierge.Tools.Glossary
     public sealed class GlossaryEntry
     {
         public GlossaryEntry()
+            : this(string.Empty, string.Empty)
         {
-            this.Name = string.Empty;
-            this.Markdown = string.Empty;
+        }
+
+        public GlossaryEntry(string name, string markdown)
+        {
+            this.Name = name;
+            this.Markdown = markdown;
             this.GlossaryEntries = new List<GlossaryEntry>();
         }
 

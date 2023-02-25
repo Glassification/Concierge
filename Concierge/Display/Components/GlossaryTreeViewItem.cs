@@ -52,7 +52,7 @@ namespace Concierge.Display.Components
             {
                 Text = $" {this.GlossaryEntry.Name}",
                 TextWrapping = TextWrapping.Wrap,
-                FontSize = 20,
+                FontSize = 15,
             };
 
             var packIcon = new PackIcon()

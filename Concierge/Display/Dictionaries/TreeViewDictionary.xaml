@@ -75,7 +75,8 @@
                                 Padding="{TemplateBinding Control.Padding}"
                                 Background="{TemplateBinding Panel.Background}"
                                 SnapsToDevicePixels="True"
-                                Grid.Column="1">
+                                Grid.Column="1"
+                                Grid.ColumnSpan="2">
                                 <ContentPresenter
                                     x:Name="PART_Header"
                                     Content="{TemplateBinding HeaderedContentControl.Header}"

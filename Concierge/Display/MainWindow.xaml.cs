@@ -189,7 +189,7 @@ namespace Concierge.Display
         {
             Program.Logger.Info($"Open glossary.");
 
-            ConciergeWindowService.ShowWindow(typeof(GlossaryWindow));
+            ConciergeWindowService.ShowNonBlockingWindow(typeof(GlossaryWindow));
         }
 
         public void OpenCharacterSheet(string file = "")
