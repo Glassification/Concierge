@@ -8,6 +8,7 @@
     xmlns:components="clr-namespace:Concierge.Display.Components"
     xmlns:controls="clr-namespace:Concierge.Display.Controls"
     xmlns:local="clr-namespace:Concierge.Display.Windows.Utility"
+    xmlns:mdxaml="clr-namespace:MdXaml;assembly=MdXaml"
     mc:Ignorable="d"
     Title="GlossaryWindow"
     Height="595"
@@ -52,12 +53,13 @@
                 Background="#2B2B2B"
                 BorderBrush="{x:Null}"/>
 
-            <RichTextBox
+            <mdxaml:MarkdownScrollViewer
+                x:Name="MarkdownViewer"
                 Grid.Column="1"
-                Background="#2B2B2B"
                 Margin="3"
-                BorderBrush="{x:Null}"
-                SpellCheck.IsEnabled="True"/>
+                Foreground="White"
+                Background="#2B2B2B"
+                xml:space="preserve"/>
         </Grid>
         
     </Grid>

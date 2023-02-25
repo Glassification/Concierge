@@ -4,10 +4,13 @@
 
 namespace Concierge.Display.Windows.Utility
 {
+    using System.IO;
+    using System.Text;
     using System.Windows;
 
     using Concierge.Display.Components;
     using Concierge.Display.Enums;
+    using Concierge.Utility.Extensions;
 
     /// <summary>
     /// Interaction logic for GlossaryWindow.xaml.
@@ -24,6 +27,7 @@ namespace Concierge.Display.Windows.Utility
 
         public override object? ShowWindow()
         {
+            this.MarkdownViewer.Markdown = File.ReadAllText("C:\\Users\\TomBe\\source\\repos\\Strength.md");
             this.ShowConciergeWindow();
             return null;
         }
