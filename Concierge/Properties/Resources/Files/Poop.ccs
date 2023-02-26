@@ -1,0 +1,586 @@
+{
+  "Character": {
+    "Abilities": [],
+    "Ammunitions": [],
+    "Appearance": {
+      "Gender": "",
+      "Age": 0,
+      "Height": {
+        "Value": 0.0,
+        "UnitType": 0,
+        "Measurement": 0
+      },
+      "Weight": {
+        "Value": 0.0,
+        "UnitType": 0,
+        "Measurement": 1
+      },
+      "SkinColour": {
+        "A": 85,
+        "R": 255,
+        "G": 0,
+        "B": 0,
+        "Hex": "#FF0000",
+        "IsValid": false,
+        "Name": "Not Set"
+      },
+      "EyeColour": {
+        "A": 85,
+        "R": 255,
+        "G": 0,
+        "B": 0,
+        "Hex": "#FF0000",
+        "IsValid": false,
+        "Name": "Not Set"
+      },
+      "HairColour": {
+        "A": 85,
+        "R": 255,
+        "G": 0,
+        "B": 0,
+        "Hex": "#FF0000",
+        "IsValid": false,
+        "Name": "Not Set"
+      },
+      "DistinguishingMarks": ""
+    },
+    "Armor": {
+      "ArmorClass": 0,
+      "Equiped": "",
+      "MagicArmorClass": 0,
+      "MiscArmorClass": 0,
+      "Shield": "",
+      "ShieldArmorClass": 0,
+      "ShieldWeight": {
+        "Value": 0.0,
+        "UnitType": 0,
+        "Measurement": 1
+      },
+      "Stealth": 0,
+      "Strength": 0,
+      "Type": 0,
+      "Weight": {
+        "Value": 0.0,
+        "UnitType": 0,
+        "Measurement": 1
+      }
+    },
+    "Attributes": {
+      "Strength": 10,
+      "Dexterity": 10,
+      "Constitution": 10,
+      "Intelligence": 10,
+      "Wisdom": 10,
+      "Charisma": 10
+    },
+    "Chapters": [
+      {
+        "Documents": [
+          {
+            "Rtf": "{\\rtf1\\ansi\\ansicpg1252\\uc1\\htmautsp\\deff2{\\fonttbl{\\f0\\fcharset0 Times New Roman;}{\\f2\\fcharset0 Calibri;}}{\\colortbl\\red0\\green0\\blue0;\\red255\\green255\\blue255;}\\loch\\hich\\dbch\\pard\\plain\\ltrpar\\itap0{\\lang1033\\fs30\\f2\\cf1 \\cf1\\ql{\\f2 {\\ltrch <p>Strength measures bodily power, athletic training, and the extent to which you can exert raw physical force.</p>}\\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n{\\f2 {\\ltrch <h2>Strength Checks</h2>}\\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n{\\f2 {\\ltrch <p>A Strength check can model any attempt to lift, push, pull, or break something, to force your body through a space, or to otherwise apply brute force to a situation. The Athletics skill reflects aptitude in certain kinds of Strength checks.</p>}\\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n{\\f2 {\\ltrch <h2>Athletics</h2>}\\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n{\\f2 {\\ltrch <p>Your Strength (Athletics) check covers difficult situations you encounter while climbing, jumping, or swimming. Examples include the following activities:</p>}\\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n{\\f2 {\\ltrch <ul>}\\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n{\\f2 {\\ltrch <li>You attempt to climb a sheer or slippery cliff, avoid hazards while scaling a wall, or cling to a surface while something is trying to knock you off.</li>}\\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n{\\f2 {\\ltrch <li>You try to jump an unusually long distance or pull off a stunt midjump.</li>}\\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n{\\f2 {\\ltrch <li>You struggle to swim or stay afloat in treacherous currents, storm-tossed waves, or areas of thick seaweed. Or another creature tries to push or pull you underwater or otherwise interfere with your swimming.</li>}\\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n{\\f2 {\\ltrch </ul>}\\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n{\\f2 {\\ltrch <h2>Other Strength Checks</h2>}\\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n{\\f2 {\\ltrch <p>The DM might also call for a Strength check when you try to accomplish tasks like the following:</p>}\\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n{\\f2 {\\ltrch <ul>}\\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n{\\f2 {\\ltrch <li>Force open a stuck, locked, or barred door</li>}\\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n{\\f2 {\\ltrch <li>Break free of bonds</li>}\\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n{\\f2 {\\ltrch <li>Push through a tunnel that is too small</li>}\\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n{\\f2 {\\ltrch <li>Hang on to a wagon while being dragged behind it</li>}\\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n{\\f2 {\\ltrch <li>Tip over a statue</li>}\\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n{\\f2 {\\ltrch <li>Keep a boulder from rolling</li>}\\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n{\\f2 {\\ltrch </ul>}\\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n{\\f2 {\\ltrch <h2>Attack Rolls and Damage</h2>}\\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n{\\f2 {\\ltrch <p>You add your Strength modifier to your attack roll and your damage roll when attacking with a melee weapon such as a mace, a battleaxe, or a javelin. You use melee weapons to make melee attacks in hand-to-hand combat, and some of them can be thrown to make a ranged attack.</p>}\\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n{\\f2 {\\ltrch <h2>Lifting and Carrying</h2>}\\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n{\\f2 {\\ltrch <p>Your Strength score determines the amount of weight you can bear. The following terms define what you can lift or carry.</p>}\\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n{\\f2 {\\ltrch <p><strong>Carrying Capacity</strong>. Your carrying capacity is your Strength score multiplied by 15. This is the weight (in pounds) that you can carry, which is high enough that most characters don't usually have to worry about it.</p>}\\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n{\\f2 {\\ltrch <p><strong>Push, Drag, or Lift</strong>. You can push, drag, or lift a weight in pounds up to twice your carrying capacity (or 30 times your Strength score). While pushing or dragging weight in excess of your carrying capacity, your speed drops to 5 feet.</p>}\\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n{\\f2 {\\ltrch <p><strong>Size and Strength</strong>. Larger creatures can bear more weight, whereas Tiny creatures can carry less. For each size category above Medium, double the creature's carrying capacity and the amount it can push, drag, or lift. For a Tiny creature, halve these weights.</p>}\\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n{\\f2 {\\ltrch <h2>Variant: Encumbrance</h2>}\\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n{\\f2 {\\ltrch <p>The rules for lifting and carrying are intentionally simple. Here is a variant if you are looking for more detailed rules for determining how a character is hindered by the weight of equipment.</p>}\\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n{\\f2 {\\ltrch <p>If you carry weight in excess of 5 times your Strength score, you are encumbered, which means your speed drops by 10 feet.</p>}\\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n{\\f2 {\\ltrch <p>If you carry weight in excess of 10 times your Strength score, up to your maximum carrying capacity, you are instead heavily encumbered, which means your speed drops by 20 feet and you have disadvantage on ability checks, attack rolls, and saving throws that use Strength, Dexterity, or Constitution.</p>}\\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n{\\f2 {\\ltrch }\\li0\\ri0\\sa0\\sb0\\fi0\\ql\\par}\r\n}\r\n}",
+            "Created": "Friday, 24 February 2023 10:26:58 PM",
+            "Id": "dd5fd079-ec26-472d-a29e-581840557eaa",
+            "IsExpanded": false,
+            "Name": "dasdasd"
+          }
+        ],
+        "Created": "Friday, 24 February 2023 10:26:54 PM",
+        "Id": "43c83f64-43fb-45ca-bba4-cfbbf4fe90d7",
+        "IsExpanded": true,
+        "Name": "asd"
+      }
+    ],
+    "CharacterImage": {
+      "Encoded": "",
+      "Path": "",
+      "Stretch": 3,
+      "UseCustomImage": false
+    },
+    "ClassResources": [],
+    "Companion": {
+      "Properties": {
+        "ArmorClass": 0,
+        "CreatureSize": 4,
+        "Initiative": 0,
+        "Movement": 0,
+        "Name": "",
+        "Perception": 0,
+        "Vision": 0
+      },
+      "CompanionImage": {
+        "Encoded": "",
+        "Path": "",
+        "Stretch": 3,
+        "UseCustomImage": false
+      },
+      "Vitality": {
+        "Health": {
+          "MaxHealth": 0,
+          "TemporaryHealth": 0,
+          "BaseHealth": 0
+        },
+        "HitDice": {
+          "TotalD6": 0,
+          "TotalD8": 0,
+          "TotalD10": 0,
+          "TotalD12": 0,
+          "SpentD6": 0,
+          "SpentD8": 0,
+          "SpentD10": 0,
+          "SpentD12": 0
+        },
+        "Conditions": {
+          "Blinded": {
+            "Value": "Blinded - Automatically fail any ability checks. Attack rolls against you have advantage, your attacks have disadvantage.",
+            "Afflicted": false,
+            "Description": "Automatically fail any ability checks. Attack rolls against you have advantage, your attacks have disadvantage.",
+            "Name": "Blinded"
+          },
+          "Charmed": {
+            "Value": "Charmed - You cannot attack the charmer. The charmer has advantage on ability checks when interacting socially.",
+            "Afflicted": false,
+            "Description": "You cannot attack the charmer. The charmer has advantage on ability checks when interacting socially.",
+            "Name": "Charmed"
+          },
+          "Dead": {
+            "Value": "Dead - You must succeed on 3 death saving throws, before failing 3. Succeeding will stabilize at 0 HP.",
+            "Afflicted": false,
+            "Description": "You must succeed on 3 death saving throws, before failing 3. Succeeding will stabilize at 0 HP.",
+            "Name": "Dead"
+          },
+          "Deafened": {
+            "Value": "Deafened - You cannot hear and automatically fails any ability check that requires hearing.",
+            "Afflicted": false,
+            "Description": "You cannot hear and automatically fails any ability check that requires hearing.",
+            "Name": "Deafened"
+          },
+          "Fatigued": {
+            "Value": " - Exhaustion levels stack up to 6. A long rest reduces the level by 1. .",
+            "ExhaustionLevel": 0,
+            "Description": "Exhaustion levels stack up to 6. A long rest reduces the level by 1.",
+            "Name": "Fatigued"
+          },
+          "Frightened": {
+            "Value": "Frightened - You have disadvantage on Ability Checks and Attack rolls while the source of fear is within line of sight. You can’t willingly move closer to the source.",
+            "Afflicted": false,
+            "Description": "You have disadvantage on Ability Checks and Attack rolls while the source of fear is within line of sight. You can’t willingly move closer to the source.",
+            "Name": "Frightened"
+          },
+          "Grappled": {
+            "Value": "Grappled - Your speed becomes 0. It ends when the grappler is incapacitated or you are thrown away.",
+            "Afflicted": false,
+            "Description": "Your speed becomes 0. It ends when the grappler is incapacitated or you are thrown away.",
+            "Name": "Grappled"
+          },
+          "Incapacitated": {
+            "Value": "Incapacitated - You Cannot take Actions or reactions.",
+            "Afflicted": false,
+            "Description": "You Cannot take Actions or reactions.",
+            "Name": "Incapacitated"
+          },
+          "Invisible": {
+            "Value": "Invisible - You are impossible to see without the aid of magic or a Special sense. Attacks against you have disadvantage, your attacks have advantage.",
+            "Afflicted": false,
+            "Description": "You are impossible to see without the aid of magic or a Special sense. Attacks against you have disadvantage, your attacks have advantage.",
+            "Name": "Invisible"
+          },
+          "Paralyzed": {
+            "Value": "Paralyzed - You are incapacitated and automatically fail Strength and Dexterity Saving Throws. Attacks have advantage, and melee are auto crit.",
+            "Afflicted": false,
+            "Description": "You are incapacitated and automatically fail Strength and Dexterity Saving Throws. Attacks have advantage, and melee are auto crit.",
+            "Name": "Paralyzed"
+          },
+          "Petrified": {
+            "Value": "Petrified - You are transformed into an inanimate substance and are incapacitated. Resistant to all damage and immune to poison and disease.",
+            "Afflicted": false,
+            "Description": "You are transformed into an inanimate substance and are incapacitated. Resistant to all damage and immune to poison and disease.",
+            "Name": "Petrified"
+          },
+          "Poisoned": {
+            "Value": "Poisoned - You have disadvantage on Attack rolls and Ability Checks",
+            "Afflicted": false,
+            "Description": "You have disadvantage on Attack rolls and Ability Checks",
+            "Name": "Poisoned"
+          },
+          "Prone": {
+            "Value": "Prone - Your only movement option is to crawl and have disadvantage on attacks. Melee attack is advantage, ranged is disadvantage.",
+            "Afflicted": false,
+            "Description": "Your only movement option is to crawl and have disadvantage on attacks. Melee attack is advantage, ranged is disadvantage.",
+            "Name": "Prone"
+          },
+          "Restrained": {
+            "Value": "Restrained - Your speed becomes 0. Your attacks have disadvantage, enemies have advantage. Dexterity Saving Throws are disadvantage.",
+            "Afflicted": false,
+            "Description": "Your speed becomes 0. Your attacks have disadvantage, enemies have advantage. Dexterity Saving Throws are disadvantage.",
+            "Name": "Restrained"
+          },
+          "Stunned": {
+            "Value": "Stunned - You are incapacitated and speak falteringly, and automatically fail Strength and Dexterity Saving Throws. Attacks against have advantage.",
+            "Afflicted": false,
+            "Description": "You are incapacitated and speak falteringly, and automatically fail Strength and Dexterity Saving Throws. Attacks against have advantage.",
+            "Name": "Stunned"
+          },
+          "Unconscious": {
+            "Value": "Unconscious - You are incapacitated, drop what you're holding, and fall prone. Attacks against have advantage and hits are auto crit.",
+            "Afflicted": false,
+            "Description": "You are incapacitated, drop what you're holding, and fall prone. Attacks against have advantage and hits are auto crit.",
+            "Name": "Unconscious"
+          }
+        },
+        "DeathSavingThrows": {
+          "CurrentDeathSave": 0,
+          "DeathSaves": []
+        }
+      },
+      "Attributes": {
+        "Strength": 10,
+        "Dexterity": 10,
+        "Constitution": 10,
+        "Intelligence": 10,
+        "Wisdom": 10,
+        "Charisma": 10
+      },
+      "Attacks": []
+    },
+    "EquippedItems": {
+      "Head": [],
+      "Torso": [],
+      "Hands": [],
+      "Legs": [],
+      "Feet": []
+    },
+    "Inventories": [],
+    "Languages": [],
+    "MagicClasses": [],
+    "Personality": {
+      "Trait1": "",
+      "Trait2": "",
+      "Ideal": "",
+      "Bond": "",
+      "Flaw": "",
+      "Notes": ""
+    },
+    "Proficiencies": [],
+    "Properties": {
+      "Name": "",
+      "Race": {
+        "Name": "",
+        "Subrace": ""
+      },
+      "Background": "",
+      "Alignment": "",
+      "Experience": "",
+      "Class1": {
+        "Name": "",
+        "Subclass": "",
+        "ClassNumber": 1,
+        "Level": 0
+      },
+      "Class2": {
+        "Name": "",
+        "Subclass": "",
+        "ClassNumber": 2,
+        "Level": 0
+      },
+      "Class3": {
+        "Name": "",
+        "Subclass": "",
+        "ClassNumber": 3,
+        "Level": 0
+      },
+      "CharacterIcon": {
+        "Encoded": "",
+        "Path": "",
+        "Stretch": 3,
+        "UseCustomImage": false
+      }
+    },
+    "SavingThrow": {
+      "Strength": {
+        "Proficiency": false,
+        "CheckOverride": 4
+      },
+      "Dexterity": {
+        "Proficiency": false,
+        "CheckOverride": 4
+      },
+      "Constitution": {
+        "Proficiency": false,
+        "CheckOverride": 4
+      },
+      "Intelligence": {
+        "Proficiency": false,
+        "CheckOverride": 4
+      },
+      "Wisdom": {
+        "Proficiency": false,
+        "CheckOverride": 4
+      },
+      "Charisma": {
+        "Proficiency": false,
+        "CheckOverride": 4
+      }
+    },
+    "Senses": {
+      "InitiativeBonus": 0,
+      "PerceptionBonus": 0,
+      "BaseMovement": 30,
+      "MovementBonus": 0,
+      "Vision": 0
+    },
+    "Skill": {
+      "Athletics": {
+        "Proficiency": false,
+        "Expertise": false,
+        "CheckOverride": 4
+      },
+      "Acrobatics": {
+        "Proficiency": false,
+        "Expertise": false,
+        "CheckOverride": 4
+      },
+      "SleightOfHand": {
+        "Proficiency": false,
+        "Expertise": false,
+        "CheckOverride": 4
+      },
+      "Stealth": {
+        "Proficiency": false,
+        "Expertise": false,
+        "CheckOverride": 4
+      },
+      "Arcana": {
+        "Proficiency": false,
+        "Expertise": false,
+        "CheckOverride": 4
+      },
+      "History": {
+        "Proficiency": false,
+        "Expertise": false,
+        "CheckOverride": 4
+      },
+      "Investigation": {
+        "Proficiency": false,
+        "Expertise": false,
+        "CheckOverride": 4
+      },
+      "Nature": {
+        "Proficiency": false,
+        "Expertise": false,
+        "CheckOverride": 4
+      },
+      "Religion": {
+        "Proficiency": false,
+        "Expertise": false,
+        "CheckOverride": 4
+      },
+      "AnimalHandling": {
+        "Proficiency": false,
+        "Expertise": false,
+        "CheckOverride": 4
+      },
+      "Insight": {
+        "Proficiency": false,
+        "Expertise": false,
+        "CheckOverride": 4
+      },
+      "Medicine": {
+        "Proficiency": false,
+        "Expertise": false,
+        "CheckOverride": 4
+      },
+      "Perception": {
+        "Proficiency": false,
+        "Expertise": false,
+        "CheckOverride": 4
+      },
+      "Survival": {
+        "Proficiency": false,
+        "Expertise": false,
+        "CheckOverride": 4
+      },
+      "Deception": {
+        "Proficiency": false,
+        "Expertise": false,
+        "CheckOverride": 4
+      },
+      "Intimidation": {
+        "Proficiency": false,
+        "Expertise": false,
+        "CheckOverride": 4
+      },
+      "Performance": {
+        "Proficiency": false,
+        "Expertise": false,
+        "CheckOverride": 4
+      },
+      "Persuasion": {
+        "Proficiency": false,
+        "Expertise": false,
+        "CheckOverride": 4
+      }
+    },
+    "Spells": [],
+    "SpellSlots": {
+      "PactTotal": 0,
+      "FirstTotal": 0,
+      "SecondTotal": 0,
+      "ThirdTotal": 0,
+      "FourthTotal": 0,
+      "FifthTotal": 0,
+      "SixthTotal": 0,
+      "SeventhTotal": 0,
+      "EighthTotal": 0,
+      "NinethTotal": 0,
+      "PactUsed": 0,
+      "FirstUsed": 0,
+      "SecondUsed": 0,
+      "ThirdUsed": 0,
+      "FourthUsed": 0,
+      "FifthUsed": 0,
+      "SixthUsed": 0,
+      "SeventhUsed": 0,
+      "EighthUsed": 0,
+      "NinethUsed": 0
+    },
+    "StatusEffects": [],
+    "Vitality": {
+      "Health": {
+        "MaxHealth": 0,
+        "TemporaryHealth": 0,
+        "BaseHealth": 0
+      },
+      "HitDice": {
+        "TotalD6": 0,
+        "TotalD8": 0,
+        "TotalD10": 0,
+        "TotalD12": 0,
+        "SpentD6": 0,
+        "SpentD8": 0,
+        "SpentD10": 0,
+        "SpentD12": 0
+      },
+      "Conditions": {
+        "Blinded": {
+          "Value": "Blinded - Automatically fail any ability checks. Attack rolls against you have advantage, your attacks have disadvantage.",
+          "Afflicted": false,
+          "Description": "Automatically fail any ability checks. Attack rolls against you have advantage, your attacks have disadvantage.",
+          "Name": "Blinded"
+        },
+        "Charmed": {
+          "Value": "Charmed - You cannot attack the charmer. The charmer has advantage on ability checks when interacting socially.",
+          "Afflicted": false,
+          "Description": "You cannot attack the charmer. The charmer has advantage on ability checks when interacting socially.",
+          "Name": "Charmed"
+        },
+        "Dead": {
+          "Value": "Dead - You must succeed on 3 death saving throws, before failing 3. Succeeding will stabilize at 0 HP.",
+          "Afflicted": false,
+          "Description": "You must succeed on 3 death saving throws, before failing 3. Succeeding will stabilize at 0 HP.",
+          "Name": "Dead"
+        },
+        "Deafened": {
+          "Value": "Deafened - You cannot hear and automatically fails any ability check that requires hearing.",
+          "Afflicted": false,
+          "Description": "You cannot hear and automatically fails any ability check that requires hearing.",
+          "Name": "Deafened"
+        },
+        "Fatigued": {
+          "Value": " - Exhaustion levels stack up to 6. A long rest reduces the level by 1. .",
+          "ExhaustionLevel": 0,
+          "Description": "Exhaustion levels stack up to 6. A long rest reduces the level by 1.",
+          "Name": "Fatigued"
+        },
+        "Frightened": {
+          "Value": "Frightened - You have disadvantage on Ability Checks and Attack rolls while the source of fear is within line of sight. You can’t willingly move closer to the source.",
+          "Afflicted": false,
+          "Description": "You have disadvantage on Ability Checks and Attack rolls while the source of fear is within line of sight. You can’t willingly move closer to the source.",
+          "Name": "Frightened"
+        },
+        "Grappled": {
+          "Value": "Grappled - Your speed becomes 0. It ends when the grappler is incapacitated or you are thrown away.",
+          "Afflicted": false,
+          "Description": "Your speed becomes 0. It ends when the grappler is incapacitated or you are thrown away.",
+          "Name": "Grappled"
+        },
+        "Incapacitated": {
+          "Value": "Incapacitated - You Cannot take Actions or reactions.",
+          "Afflicted": false,
+          "Description": "You Cannot take Actions or reactions.",
+          "Name": "Incapacitated"
+        },
+        "Invisible": {
+          "Value": "Invisible - You are impossible to see without the aid of magic or a Special sense. Attacks against you have disadvantage, your attacks have advantage.",
+          "Afflicted": false,
+          "Description": "You are impossible to see without the aid of magic or a Special sense. Attacks against you have disadvantage, your attacks have advantage.",
+          "Name": "Invisible"
+        },
+        "Paralyzed": {
+          "Value": "Paralyzed - You are incapacitated and automatically fail Strength and Dexterity Saving Throws. Attacks have advantage, and melee are auto crit.",
+          "Afflicted": false,
+          "Description": "You are incapacitated and automatically fail Strength and Dexterity Saving Throws. Attacks have advantage, and melee are auto crit.",
+          "Name": "Paralyzed"
+        },
+        "Petrified": {
+          "Value": "Petrified - You are transformed into an inanimate substance and are incapacitated. Resistant to all damage and immune to poison and disease.",
+          "Afflicted": false,
+          "Description": "You are transformed into an inanimate substance and are incapacitated. Resistant to all damage and immune to poison and disease.",
+          "Name": "Petrified"
+        },
+        "Poisoned": {
+          "Value": "Poisoned - You have disadvantage on Attack rolls and Ability Checks",
+          "Afflicted": false,
+          "Description": "You have disadvantage on Attack rolls and Ability Checks",
+          "Name": "Poisoned"
+        },
+        "Prone": {
+          "Value": "Prone - Your only movement option is to crawl and have disadvantage on attacks. Melee attack is advantage, ranged is disadvantage.",
+          "Afflicted": false,
+          "Description": "Your only movement option is to crawl and have disadvantage on attacks. Melee attack is advantage, ranged is disadvantage.",
+          "Name": "Prone"
+        },
+        "Restrained": {
+          "Value": "Restrained - Your speed becomes 0. Your attacks have disadvantage, enemies have advantage. Dexterity Saving Throws are disadvantage.",
+          "Afflicted": false,
+          "Description": "Your speed becomes 0. Your attacks have disadvantage, enemies have advantage. Dexterity Saving Throws are disadvantage.",
+          "Name": "Restrained"
+        },
+        "Stunned": {
+          "Value": "Stunned - You are incapacitated and speak falteringly, and automatically fail Strength and Dexterity Saving Throws. Attacks against have advantage.",
+          "Afflicted": false,
+          "Description": "You are incapacitated and speak falteringly, and automatically fail Strength and Dexterity Saving Throws. Attacks against have advantage.",
+          "Name": "Stunned"
+        },
+        "Unconscious": {
+          "Value": "Unconscious - You are incapacitated, drop what you're holding, and fall prone. Attacks against have advantage and hits are auto crit.",
+          "Afflicted": false,
+          "Description": "You are incapacitated, drop what you're holding, and fall prone. Attacks against have advantage and hits are auto crit.",
+          "Name": "Unconscious"
+        }
+      },
+      "DeathSavingThrows": {
+        "CurrentDeathSave": 0,
+        "DeathSaves": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    "Wealth": {
+      "Copper": 0,
+      "Silver": 0,
+      "Electrum": 0,
+      "Gold": 0,
+      "Platinum": 0
+    },
+    "Weapons": []
+  },
+  "Hash": "F0FD96FE5BDEDDB4F7087572155DF7FE97756A657FE25DFA92AF58A83FB23CD8",
+  "OriginalCreationDate": "Friday, 24 February 2023 10:26:50 PM",
+  "LastSaveDate": "2023-02-24T22:27:22.3377101-06:00",
+  "Version": "5.1.0",
+  "IsEmpty": false
+}

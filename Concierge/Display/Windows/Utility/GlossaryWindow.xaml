@@ -8,6 +8,7 @@
     xmlns:components="clr-namespace:Concierge.Display.Components"
     xmlns:controls="clr-namespace:Concierge.Display.Controls"
     xmlns:local="clr-namespace:Concierge.Display.Windows.Utility"
+    xmlns:mdxaml="clr-namespace:MdXaml;assembly=MdXaml"
     mc:Ignorable="d"
     Title="GlossaryWindow"
     Height="595"
@@ -40,24 +41,100 @@
             </components:ConciergeDesignButton>
         </Grid>
         
-        <Grid Grid.Row="1">
+        <Grid Grid.Row="1" Margin="0,3,0,0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="25*"/>
                 <ColumnDefinition Width="50*"/>
             </Grid.ColumnDefinitions>
-            
-            <components:ConciergeTreeView
-                Grid.Column="0"
-                Margin="3"
-                Background="#2B2B2B"
-                BorderBrush="{x:Null}"/>
 
-            <RichTextBox
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="35"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+
+                <StackPanel
+                    Grid.Row="0"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Center">
+                    <components:ConciergeDesignButton 
+                        Margin="0,0,5,0"
+                        Style="{StaticResource ConciergeDesignButtonStyle}" 
+                        x:Name="ExpandButton"
+                        Width="30"
+                        Foreground="#48B987"
+                        ToolTip="Expand All"
+                        HorizontalAlignment="Left"
+                        Click="ExpandButton_Click">
+                        <materialDesign:PackIcon Kind="ExpandAll" Width="25" Height="25"/>
+                    </components:ConciergeDesignButton>
+                    <components:ConciergeDesignButton 
+                        Margin="5,0,5,0"
+                        Style="{StaticResource ConciergeDesignButtonStyle}" 
+                        x:Name="CollapseButton"
+                        Width="30"
+                        Foreground="IndianRed"
+                        ToolTip="Collapse All"
+                        HorizontalAlignment="Center"
+                        Click="CollapseButton_Click">
+                        <materialDesign:PackIcon Kind="CollapseAll" Width="25" Height="25"/>
+                    </components:ConciergeDesignButton>
+                    <components:ConciergeDesignButton 
+                        Margin="5,0,0,0"
+                        Style="{StaticResource ConciergeDesignButtonStyle}" 
+                        x:Name="ClearButton"
+                        Width="30"
+                        Foreground="Silver"
+                        ToolTip="Clear Selection"
+                        HorizontalAlignment="Right"
+                        Click="ClearButton_Click">
+                        <materialDesign:PackIcon Kind="NotificationClearAll" Width="25" Height="25"/>
+                    </components:ConciergeDesignButton>
+                </StackPanel>
+
+                <components:ConciergeTreeView
+                    Grid.Row="1"
+                    Margin="0,0,-1,0"
+                    x:Name="GlossaryTreeView"
+                    Background="#202020"
+                    BorderBrush="{x:Null}"
+                    SelectedItemChanged="GlossaryTreeView_SelectedItemChanged"
+                    ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                    <TreeView.Resources>
+                        <SolidColorBrush
+                            x:Key="{x:Static SystemColors.HighlightBrushKey}"
+                            Color="#1C3947" />
+                        <SolidColorBrush
+                            x:Key="{x:Static SystemColors.HighlightTextBrushKey}"
+                            Color="Transparent" />
+                        <SolidColorBrush
+                            x:Key="{x:Static SystemColors.InactiveSelectionHighlightBrushKey}"
+                            Color="Transparent" />
+                        <SolidColorBrush
+                            x:Key="{x:Static SystemColors.InactiveSelectionHighlightTextBrushKey}"
+                            Color="White" />
+                    </TreeView.Resources>
+                </components:ConciergeTreeView>
+            </Grid>
+
+            <Line
+                Grid.Row="1"
+                Stroke="SteelBlue"
+                StrokeThickness="1"
+                Stretch="Uniform"
+                X1="0" X2="0" Y1="0" Y2="1"
+                Margin="0,5,2,5"
+                HorizontalAlignment="Right"
+                StrokeStartLineCap="Round"
+                StrokeEndLineCap="Round"/>
+
+            <mdxaml:MarkdownScrollViewer
+                x:Name="MarkdownViewer"
                 Grid.Column="1"
+                Margin="3,3,0,3"
+                Foreground="White"
                 Background="#2B2B2B"
-                Margin="3"
-                BorderBrush="{x:Null}"
-                SpellCheck.IsEnabled="True"/>
+                xml:space="preserve"/>
         </Grid>
         
     </Grid>

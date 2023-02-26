@@ -185,11 +185,12 @@ namespace Concierge.Display
             this.StartStopAutosaveTimer();
         }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822:Mark members as static", Justification = "The way she goes.")]
         public void OpenGlossary()
         {
             Program.Logger.Info($"Open glossary.");
 
-            ConciergeWindowService.ShowWindow(typeof(GlossaryWindow));
+            ConciergeWindowService.ShowNonBlockingWindow(typeof(GlossaryWindow));
         }
 
         public void OpenCharacterSheet(string file = "")

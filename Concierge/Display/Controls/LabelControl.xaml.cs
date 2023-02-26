@@ -9,6 +9,8 @@ namespace Concierge.Display.Controls
     using System.Windows.Controls;
     using System.Windows.Input;
 
+    using MaterialDesignThemes.Wpf;
+
     /// <summary>
     /// Interaction logic for LabelControl.xaml.
     /// </summary>
@@ -26,7 +28,7 @@ namespace Concierge.Display.Controls
                 "Value",
                 typeof(string),
                 typeof(LabelControl),
-                new UIPropertyMetadata("Value"));
+                new UIPropertyMetadata(string.Empty));
 
         public static readonly DependencyProperty TitleSizeProperty =
             DependencyProperty.Register(
@@ -42,6 +44,13 @@ namespace Concierge.Display.Controls
                 typeof(LabelControl),
                 new UIPropertyMetadata(15));
 
+        public static readonly DependencyProperty IsIconProperty =
+           DependencyProperty.Register(
+               "IsIcon",
+               typeof(bool),
+               typeof(LabelControl),
+               new UIPropertyMetadata(false));
+
         public static readonly RoutedEvent EditClickedEvent =
             EventManager.RegisterRoutedEvent(
                 "EditClicked",
@@ -49,9 +58,14 @@ namespace Concierge.Display.Controls
                 typeof(RoutedEventHandler),
                 typeof(LabelControl));
 
+        private PackIconKind iconKind;
+
         public LabelControl()
         {
             this.InitializeComponent();
+
+            this.LabelValue.Visibility = Visibility.Visible;
+            this.LabelIcon.Visibility = Visibility.Collapsed;
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;
@@ -60,6 +74,20 @@ namespace Concierge.Display.Controls
         {
             add { this.AddHandler(EditClickedEvent, value); }
             remove { this.RemoveHandler(EditClickedEvent, value); }
+        }
+
+        public PackIconKind IconKind
+        {
+            get
+            {
+                return this.iconKind;
+            }
+
+            set
+            {
+                this.iconKind = value;
+                this.LabelIcon.Kind = value;
+            }
         }
 
         public int TitleSize
@@ -91,6 +119,21 @@ namespace Concierge.Display.Controls
             {
                 this.SetValue(ValueProperty, value);
                 this.LabelValue.Text = value;
+            }
+        }
+
+        public bool IsIcon
+        {
+            get
+            {
+                return (bool)this.GetValue(IsIconProperty);
+            }
+
+            set
+            {
+                this.SetValue(IsIconProperty, value);
+                this.LabelValue.Visibility = value ? Visibility.Collapsed : Visibility.Visible;
+                this.LabelIcon.Visibility = value ? Visibility.Visible : Visibility.Collapsed;
             }
         }
 

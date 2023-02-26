@@ -1700,6 +1700,7 @@
     },
     "Senses": {
       "InitiativeBonus": 0,
+      "Inspiration": false,
       "PerceptionBonus": 0,
       "BaseMovement": 30,
       "MovementBonus": 0,
@@ -2289,9 +2290,9 @@
       }
     ]
   },
-  "Hash": "8C807040F2D861A0C99C06654E8478652E22D7B032152CBF5DAF6EFAA0D60149",
+  "Hash": "DD8FAF454212FF83E6B628145A3BF67CE99A87B9A6BAEFA3882583EF3D37E011",
   "OriginalCreationDate": "Saturday, 17 December 2022 07:58:23 AM",
-  "LastSaveDate": "2023-02-22T21:37:19.5619855-06:00",
-  "Version": "5.0.4",
+  "LastSaveDate": "2023-02-26T13:55:24.7166127-06:00",
+  "Version": "5.1.0",
   "IsEmpty": false
 }

@@ -14,6 +14,7 @@ namespace Concierge.Utility
     using Concierge.Persistence.ReadWriters;
     using Concierge.Primitives;
     using Concierge.Tools.Generators.Names;
+    using Concierge.Tools.Glossary;
 
     public static class Constants
     {
@@ -50,6 +51,7 @@ namespace Concierge.Utility
             Subclass = new ReadOnlyCollection<CategoryItem>(DefaultListReadWriter.ReadJson<CategoryItem>(Properties.Resources.Subclass));
             Resources = new ReadOnlyCollection<ClassResource>(DefaultListReadWriter.ReadJson<ClassResource>(Properties.Resources.Resource));
             Names = new ReadOnlyCollection<Name>(DefaultListReadWriter.ReadJson<Name>(Properties.Resources.Names));
+            Glossary = new ReadOnlyCollection<GlossaryEntry>(DefaultListReadWriter.ReadJson<GlossaryEntry>(Properties.Resources.Glossary));
 
             AutosaveIntervals = new ReadOnlyCollection<int>(DefaultListReadWriter.ReadGenericList<int>(Properties.Resources.AutosaveInterval));
             Alignment = new ReadOnlyCollection<string>(DefaultListReadWriter.ReadGenericList<string>(Properties.Resources.Alignment));
@@ -111,6 +113,8 @@ namespace Concierge.Utility
         public static ReadOnlyCollection<CategoryItem> Subclass { get; }
 
         public static ReadOnlyCollection<Name> Names { get; }
+
+        public static ReadOnlyCollection<GlossaryEntry> Glossary { get; }
 
         public static int CurrentAutosaveInterval => AutosaveIntervals[AppSettingsManager.UserSettings.AutosaveInterval];
     }

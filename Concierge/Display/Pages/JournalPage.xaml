@@ -102,7 +102,8 @@
                     Margin="3"
                     Background="#2B2B2B"
                     BorderBrush="{x:Null}"
-                    SelectedItemChanged="NotesTreeView_SelectedItemChanged">
+                    SelectedItemChanged="NotesTreeView_SelectedItemChanged"
+                    ScrollViewer.HorizontalScrollBarVisibility="Disabled">
                     <TreeView.Resources>
                         <SolidColorBrush
                             x:Key="{x:Static SystemColors.HighlightBrushKey}"
@@ -153,7 +154,7 @@
                             <components:ConciergeDesignButton 
                                 Style="{StaticResource ConciergeDesignButtonStyle}" 
                                 x:Name="CutButton"
-                                Width="60"
+                                Width="50"
                                 Foreground="SteelBlue"
                                 Click="CutButton_Click"
                                 ToolTip="Cut">
@@ -162,7 +163,7 @@
                             <components:ConciergeDesignButton 
                                 Style="{StaticResource ConciergeDesignButtonStyle}" 
                                 x:Name="CopyButton"
-                                Width="60"
+                                Width="50"
                                 Foreground="SteelBlue"
                                 Click="CopyButton_Click"
                                 ToolTip="Copy">
@@ -171,7 +172,7 @@
                             <components:ConciergeDesignButton 
                                 Style="{StaticResource ConciergeDesignButtonStyle}" 
                                 x:Name="PasteButton"
-                                Width="60"
+                                Width="50"
                                 Foreground="SteelBlue"
                                 Click="PasteButton_Click"
                                 ToolTip="Paste">
@@ -180,7 +181,7 @@
                             <components:ConciergeDesignButton 
                                 Style="{StaticResource ConciergeDesignButtonStyle}" 
                                 x:Name="UndoButton"
-                                Width="60"
+                                Width="50"
                                 Foreground="#48B987"
                                 Click="UndoButton_Click"
                                 ToolTip="Undo">
@@ -189,7 +190,7 @@
                             <components:ConciergeDesignButton 
                                 Style="{StaticResource ConciergeDesignButtonStyle}" 
                                 x:Name="RedoButton"
-                                Width="60"
+                                Width="50"
                                 Foreground="#48B987"
                                 Click="RedoButton_Click"
                                 ToolTip="Redo">
@@ -198,7 +199,7 @@
                             <components:ConciergeToggleButton 
                                 x:Name="BoldButton"
                                 Style="{StaticResource ConciergeToggleButtonStyle}"
-                                Width="60"
+                                Width="50"
                                 Foreground="#B98748"
                                 Click="BoldButton_Click"
                                 ToolTip="Bold">
@@ -207,7 +208,7 @@
                             <components:ConciergeToggleButton 
                                 x:Name="ItalicButton"
                                 Style="{StaticResource ConciergeToggleButtonStyle}"
-                                Width="60"
+                                Width="50"
                                 Foreground="#B98748"
                                 Click="ItalicButton_Click"
                                 ToolTip="Italic">
@@ -216,7 +217,7 @@
                             <components:ConciergeToggleButton 
                                 x:Name="UnderlineButton"
                                 Style="{StaticResource ConciergeToggleButtonStyle}"
-                                Width="60"
+                                Width="50"
                                 Foreground="#B98748"
                                 Click="UnderlineButton_Click"
                                 ToolTip="Underline">

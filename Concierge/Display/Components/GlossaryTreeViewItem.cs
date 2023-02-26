@@ -1,4 +1,4 @@
-﻿// <copyright file="DocumentTreeViewItem.cs" company="Thomas Beckett">
+﻿// <copyright file="GlossaryTreeViewItem.cs" company="Thomas Beckett">
 // Copyright (c) Thomas Beckett. All rights reserved.
 // </copyright>
 
@@ -10,31 +10,31 @@ namespace Concierge.Display.Components
     using System.Windows.Input;
     using System.Windows.Media;
 
-    using Concierge.Character.Journal;
+    using Concierge.Tools.Glossary;
     using Concierge.Utility;
     using Concierge.Utility.Extensions;
     using MaterialDesignThemes.Wpf;
 
-    public sealed class DocumentTreeViewItem : TreeViewItem
+    public sealed class GlossaryTreeViewItem : TreeViewItem
     {
-        public DocumentTreeViewItem(Document document)
+        public GlossaryTreeViewItem(GlossaryEntry glossaryEntry)
         {
             var resourceDictionary = new ResourceDictionary
             {
                 Source = new Uri("Display/Dictionaries/TreeViewDictionary.xaml", UriKind.RelativeOrAbsolute),
             };
 
-            this.Document = document;
+            this.GlossaryEntry = glossaryEntry;
             this.Header = this.CreateHeader();
             this.Foreground = Brushes.White;
-            this.IsExpanded = document.IsExpanded;
+            this.IsExpanded = glossaryEntry.IsExpanded;
             this.Style = resourceDictionary["TreeViewItemFullWidthStyling"] as Style;
 
             this.MouseEnter += this.Item_MouseEnter;
             this.MouseLeave += this.Item_MouseLeave;
         }
 
-        public Document Document { get; set; }
+        public GlossaryEntry GlossaryEntry { get; set; }
 
         private Grid CreateHeader()
         {
@@ -50,15 +50,14 @@ namespace Concierge.Display.Components
 
             var textBlock = new TextBlock()
             {
-                Text = $" {this.Document.Name}",
-                FontWeight = FontWeights.Bold,
+                Text = $" {this.GlossaryEntry.Name}",
                 TextWrapping = TextWrapping.Wrap,
-                FontSize = 20,
+                FontSize = 15,
             };
 
             var packIcon = new PackIcon()
             {
-                Kind = PackIconKind.PaperOutline,
+                Kind = PackIconKind.BookOpen,
                 Foreground = Brushes.SteelBlue,
                 Width = 20,
                 Height = 20,

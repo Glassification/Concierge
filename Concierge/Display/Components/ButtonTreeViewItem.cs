@@ -7,9 +7,9 @@ namespace Concierge.Display.Components
     using System;
     using System.Windows;
     using System.Windows.Controls;
-    using System.Windows.Media;
 
     using Concierge.Character.Journal;
+    using Concierge.Utility;
     using MaterialDesignThemes.Wpf;
 
     public sealed class ButtonTreeViewItem : TreeViewItem
@@ -28,7 +28,7 @@ namespace Concierge.Display.Components
                 {
                     Kind = PackIconKind.PlusBox,
                 },
-                Foreground = Brushes.LightGreen,
+                Foreground = ConciergeBrushes.Mint,
                 Width = 30,
                 Height = 30,
                 Tag = chapter,
