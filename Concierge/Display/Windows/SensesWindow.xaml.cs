@@ -71,6 +71,7 @@ namespace Concierge.Display.Windows
             this.MovementTextBlock.Text = character.Senses.Movement.ToString();
             this.BaseMovementUpDown.Value = character.Senses.BaseMovement;
             this.MovementBonusUpDown.Value = character.Senses.MovementBonus;
+            this.InspirationCheckBox.IsChecked = character.Senses.Inspiration;
         }
 
         private void UpdateSenses()
@@ -83,6 +84,7 @@ namespace Concierge.Display.Windows
             senses.Vision = (VisionTypes)Enum.Parse(typeof(VisionTypes), this.VisionComboBox.Text);
             senses.BaseMovement = this.BaseMovementUpDown.Value;
             senses.MovementBonus = this.MovementBonusUpDown.Value;
+            senses.Inspiration = this.InspirationCheckBox.IsChecked ?? false;
 
             Program.UndoRedoService.AddCommand(new EditCommand<Senses>(senses, oldItem, this.ConciergePage));
         }

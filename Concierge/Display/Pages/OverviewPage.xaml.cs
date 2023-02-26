@@ -20,6 +20,7 @@ namespace Concierge.Display.Pages
     using Concierge.Services;
     using Concierge.Utility.Extensions;
     using Concierge.Utility.Utilities;
+    using MaterialDesignThemes.Wpf;
 
     /// <summary>
     /// Interaction logic for OverviewPage.xaml.
@@ -29,6 +30,7 @@ namespace Concierge.Display.Pages
         public OverviewPage()
         {
             this.InitializeComponent();
+            this.InspirationLabel.IsIcon = true;
         }
 
         public bool HasEditableDataGrid => false;
@@ -50,10 +52,13 @@ namespace Concierge.Display.Pages
 
         public void DrawDetails()
         {
-            this.InitiativeLabel.Value = Program.CcsFile.Character.Initiative.ToString();
-            this.PerceptionLabel.Value = Program.CcsFile.Character.PassivePerception.ToString();
-            this.VisionLabel.Value = Program.CcsFile.Character.Senses.Vision.ToString().FormatFromEnum();
-            this.MovementLabel.Value = Program.CcsFile.Character.Senses.Movement.ToString();
+            var character = Program.CcsFile.Character;
+
+            this.InitiativeLabel.Value = character.Initiative.ToString();
+            this.PerceptionLabel.Value = character.PassivePerception.ToString();
+            this.VisionLabel.Value = character.Senses.Vision.ToString().FormatFromEnum();
+            this.MovementLabel.Value = character.Senses.Movement.ToString();
+            this.InspirationLabel.IconKind = character.Senses.Inspiration ? PackIconKind.WeatherSunset : PackIconKind.None;
         }
 
         public void DrawAttributes()

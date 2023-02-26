@@ -96,7 +96,7 @@
   {
     "GlossaryEntries": [],
     "IsExpanded": false,
-    "Markdown": "Rests",
+    "Markdown": "## %{color:steelblue}Short Rest%\r\n\r\nA short rest is a period of downtime, at least 1 hour long, during which a character does nothing more strenuous than eating, drinking, reading, and tending to wounds.\r\n\r\n## %{color:steelblue}Long Rest%\r\n\r\nA long rest is a period of extended downtime, at least 8 hours long, during which a character sleeps for at least 6 hours and performs no more than 2 hours of light activity, such as reading, talking, eating, or standing watch.\r\n\r\nIf the rest is interrupted by a period of strenuous activity — at least 1 hour of walking, fighting, casting spells, or similar adventuring activity — the characters must begin the rest again to gain any benefit from it.",
     "Name": "Resting"
   },
   {

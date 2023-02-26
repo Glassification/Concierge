@@ -57,7 +57,8 @@ namespace Concierge.Display.Components
 
             var packIcon = new PackIcon()
             {
-                Kind = PackIconKind.BookAlphabet,
+                Kind = PackIconKind.BookOpen,
+                Foreground = Brushes.SteelBlue,
                 Width = 20,
                 Height = 20,
             };

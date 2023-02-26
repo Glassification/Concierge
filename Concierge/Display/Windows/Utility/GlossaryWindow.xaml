@@ -47,7 +47,7 @@
                 <ColumnDefinition Width="50*"/>
             </Grid.ColumnDefinitions>
 
-            <Grid Grid.Column="0" Background="#333333">
+            <Grid Grid.Column="0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="35"/>
                     <RowDefinition Height="1*"/>
@@ -63,7 +63,7 @@
                         x:Name="ExpandButton"
                         Width="30"
                         Foreground="#48B987"
-                        ToolTip="Close"
+                        ToolTip="Expand All"
                         HorizontalAlignment="Left"
                         Click="ExpandButton_Click">
                         <materialDesign:PackIcon Kind="ExpandAll" Width="25" Height="25"/>
@@ -74,7 +74,7 @@
                         x:Name="CollapseButton"
                         Width="30"
                         Foreground="IndianRed"
-                        ToolTip="Close"
+                        ToolTip="Collapse All"
                         HorizontalAlignment="Center"
                         Click="CollapseButton_Click">
                         <materialDesign:PackIcon Kind="CollapseAll" Width="25" Height="25"/>
@@ -85,7 +85,7 @@
                         x:Name="ClearButton"
                         Width="30"
                         Foreground="Silver"
-                        ToolTip="Close"
+                        ToolTip="Clear Selection"
                         HorizontalAlignment="Right"
                         Click="ClearButton_Click">
                         <materialDesign:PackIcon Kind="NotificationClearAll" Width="25" Height="25"/>
@@ -96,7 +96,7 @@
                     Grid.Row="1"
                     Margin="0,0,-1,0"
                     x:Name="GlossaryTreeView"
-                    Background="#2B2B2B"
+                    Background="#202020"
                     BorderBrush="{x:Null}"
                     SelectedItemChanged="GlossaryTreeView_SelectedItemChanged"
                     ScrollViewer.HorizontalScrollBarVisibility="Disabled">
@@ -116,7 +116,17 @@
                     </TreeView.Resources>
                 </components:ConciergeTreeView>
             </Grid>
-            
+
+            <Line
+                Grid.Row="1"
+                Stroke="SteelBlue"
+                StrokeThickness="1"
+                Stretch="Uniform"
+                X1="0" X2="0" Y1="0" Y2="1"
+                Margin="0,5,2,5"
+                HorizontalAlignment="Right"
+                StrokeStartLineCap="Round"
+                StrokeEndLineCap="Round"/>
 
             <mdxaml:MarkdownScrollViewer
                 x:Name="MarkdownViewer"

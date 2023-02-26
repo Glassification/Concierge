@@ -9,14 +9,14 @@
     xmlns:components="clr-namespace:Concierge.Display.Components"
     mc:Ignorable="d"
     Title="Modify Senses"
-    Height="355"
+    Height="415"
     Width="800"
     Style="{StaticResource WindowFontStyle}">
 
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="45"/>
-            <RowDefinition Height="240"/>
+            <RowDefinition Height="300"/>
             <RowDefinition Height="70"/>
         </Grid.RowDefinitions>
 
@@ -56,6 +56,7 @@
                     <RowDefinition Height="60"/>
                     <RowDefinition Height="60"/>
                     <RowDefinition Height="60"/>
+                    <RowDefinition Height="60"/>
                 </Grid.RowDefinitions>
 
                 <!--Initiative-->
@@ -70,7 +71,7 @@
                     <Grid Grid.Column="0">
                         <components:ConciergeLabel
                             Text="Initiative:"
-                            FontSize="18"/>
+                            FontSize="19"/>
                     </Grid>
 
                     <!--Value-->
@@ -96,7 +97,7 @@
                     <Grid Grid.Column="0">
                         <components:ConciergeLabel
                             Text="Perception:"
-                            FontSize="18"/>
+                            FontSize="19"/>
                     </Grid>
 
                     <!--Value-->
@@ -110,27 +111,31 @@
                     </components:ConciergeTextBoxBackground>
                 </Grid>
 
-                <!--Vision-->
+                <!--Movement-->
                 <Grid Grid.Row="2">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="35*"/>
-                        <ColumnDefinition Width="65*"/>
+                        <ColumnDefinition Width="32.5*"/>
+                        <ColumnDefinition Width="32.5*"/>
                     </Grid.ColumnDefinitions>
 
                     <!--Title-->
                     <Grid Grid.Column="0">
                         <components:ConciergeLabel
-                            Text="Vision:"
-                            FontSize="18"/>
+                            Text="Movement:"
+                            FontSize="19"/>
                     </Grid>
 
                     <!--Value-->
-                    <Grid Grid.Column="1">
-                        <components:ConciergeComboBox
-                            Style="{StaticResource ComboBoxStyle}"
-                            x:Name="VisionComboBox"
-                            IsEditable="False"/>
-                    </Grid>
+                    <components:ConciergeTextBoxBackground
+                        Grid.Column="1"
+                        IsEnabled="False">
+                        <components:ConciergeTextBox
+                            x:Name="MovementTextBlock"
+                            FontSize="25"
+                            HorizontalContentAlignment="Center"
+                            VerticalAlignment="Center"/>
+                    </components:ConciergeTextBoxBackground>
                 </Grid>
 
                 <!--Base Movement-->
@@ -144,7 +149,8 @@
                     <Grid Grid.Column="0">
                         <components:ConciergeLabel
                             Text="Base Movement:"
-                            FontSize="16"/>
+                            FontSize="19"
+                            TextWrapping="Wrap"/>
                     </Grid>
 
                     <!--Value-->
@@ -155,10 +161,34 @@
                             ValueChanged="IntegerUpDown_ValueChanged"/>
                     </Grid>
                 </Grid>
-            </Grid>
 
+                <!--Vision-->
+                <Grid Grid.Row="4">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="35*"/>
+                        <ColumnDefinition Width="65*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!--Title-->
+                    <Grid Grid.Column="0">
+                        <components:ConciergeLabel
+                            Text="Vision:"
+                            FontSize="19"/>
+                    </Grid>
+
+                    <!--Value-->
+                    <Grid Grid.Column="1">
+                        <components:ConciergeComboBox
+                            Style="{StaticResource ComboBoxStyle}"
+                            x:Name="VisionComboBox"
+                            IsEditable="False"/>
+                    </Grid>
+                </Grid>
+            </Grid>
+            
             <Grid Grid.Column="1">
                 <Grid.RowDefinitions>
+                    <RowDefinition Height="60"/>
                     <RowDefinition Height="60"/>
                     <RowDefinition Height="60"/>
                     <RowDefinition Height="60"/>
@@ -175,8 +205,8 @@
                     <!--Title-->
                     <Grid Grid.Column="0">
                         <components:ConciergeLabel
-                            Text="Initiative Bonus:"
-                            FontSize="18"/>
+                            Text="Initiative  Bonus:"
+                            FontSize="19"/>
                     </Grid>
 
                     <!--Value-->
@@ -198,7 +228,7 @@
                     <Grid Grid.Column="0">
                         <components:ConciergeLabel
                             Text="Perception Bonus:"
-                            FontSize="16"/>
+                            FontSize="19"/>
                     </Grid>
 
                     <!--Value-->
@@ -209,35 +239,8 @@
                     </Grid>
                 </Grid>
 
-                <!--Movement-->
-                <Grid Grid.Row="2">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="35*"/>
-                        <ColumnDefinition Width="32.5*"/>
-                        <ColumnDefinition Width="32.5*"/>
-                    </Grid.ColumnDefinitions>
-
-                    <!--Title-->
-                    <Grid Grid.Column="0">
-                        <components:ConciergeLabel
-                            Text="Movement:"
-                            FontSize="18"/>
-                    </Grid>
-
-                    <!--Value-->
-                    <components:ConciergeTextBoxBackground
-                        Grid.Column="1"
-                        IsEnabled="False">
-                        <components:ConciergeTextBox
-                            x:Name="MovementTextBlock"
-                            FontSize="25"
-                            HorizontalContentAlignment="Center"
-                            VerticalAlignment="Center"/>
-                    </components:ConciergeTextBoxBackground>
-                </Grid>
-
                 <!--Movement Bonus-->
-                <Grid Grid.Row="3">
+                <Grid Grid.Row="2">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="35*"/>
                         <ColumnDefinition Width="65*"/>
@@ -247,7 +250,7 @@
                     <Grid Grid.Column="0">
                         <components:ConciergeLabel
                             Text="Movement Bonus:"
-                            FontSize="16"/>
+                            FontSize="19"/>
                     </Grid>
 
                     <!--Value-->
@@ -257,6 +260,25 @@
                             Increment="5"
                             ValueChanged="IntegerUpDown_ValueChanged"/>
                     </Grid>
+                </Grid>
+
+                <Grid Grid.Row="3">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="35*"/>
+                        <ColumnDefinition Width="65*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <components:ConciergeLabel
+                        Grid.Column="0"
+                        Text="Inspiration:"
+                        FontSize="19"/>
+
+                    <components:ConciergeCheckBox
+                        Grid.Column="1"
+                        x:Name="InspirationCheckBox"
+                        Margin="20,0,0,0"
+                        VerticalAlignment="Center"
+                        Style="{StaticResource CheckBoxStyle}"/>
                 </Grid>
             </Grid>
         </Grid>

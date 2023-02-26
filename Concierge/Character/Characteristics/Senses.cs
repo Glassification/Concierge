@@ -21,6 +21,8 @@ namespace Concierge.Character.Characteristics
 
         public int InitiativeBonus { get; set; }
 
+        public bool Inspiration { get; set; }
+
         public int PerceptionBonus { get; set; }
 
         public int BaseMovement { get; set; }
@@ -69,6 +71,7 @@ namespace Concierge.Character.Characteristics
             return new Senses()
             {
                 InitiativeBonus = this.InitiativeBonus,
+                Inspiration = this.Inspiration,
                 PerceptionBonus = this.PerceptionBonus,
                 MovementBonus = this.MovementBonus,
                 BaseMovement = this.BaseMovement,
