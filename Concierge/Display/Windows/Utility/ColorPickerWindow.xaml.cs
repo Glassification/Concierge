@@ -29,7 +29,7 @@ namespace Concierge.Display.Utility
             this.SelectedColor = CustomColor.Invalid;
 
             InitializeColorList(this.CustomColorService.DotNetColors, this.DefaultColorList);
-            InitializeColorList(this.CustomColorService.GetFilteredCustomColors(), this.CustomColorList);
+            InitializeColorList(this.CustomColorService.CustomColors, this.CustomColorList);
             SetColorButtons(this.DefaultColorsStackPanel, this.CustomColorService.DefaultColors);
             SetColorButtons(this.RecentColorsStackPanel, this.CustomColorService.RecentColors);
         }

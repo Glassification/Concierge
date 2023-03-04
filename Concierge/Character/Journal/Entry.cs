@@ -5,10 +5,9 @@
 namespace Concierge.Character.Journal
 {
     using System;
-    using System.Windows.Media;
 
     using Concierge.Utility;
-    using MaterialDesignThemes.Wpf;
+    using Concierge.Utility.Dtos;
 
     public abstract class Entry : IUnique
     {
@@ -34,7 +33,7 @@ namespace Concierge.Character.Journal
 
         public string Name { get; set; }
 
-        public (PackIconKind IconKind, Brush Brush, string Name) GetCategory()
+        public CategoryDto GetCategory()
         {
             throw new NotImplementedException();
         }

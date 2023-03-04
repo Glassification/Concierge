@@ -10,6 +10,7 @@ namespace Concierge.Character.Items
     using Concierge.Character.Enums;
     using Concierge.Utility;
     using Concierge.Utility.Attributes;
+    using Concierge.Utility.Dtos;
     using MaterialDesignThemes.Wpf;
     using Newtonsoft.Json;
 
@@ -82,16 +83,16 @@ namespace Concierge.Character.Items
             return this.Name;
         }
 
-        public (PackIconKind IconKind, Brush Brush, string Name) GetCategory()
+        public CategoryDto GetCategory()
         {
             return this.Name switch
             {
-                string a when a.Contains("arrows", StringComparison.InvariantCultureIgnoreCase) => (IconKind: PackIconKind.ArrowProjectile, Brush: Brushes.IndianRed, this.Name),
-                string b when b.Contains("needles", StringComparison.InvariantCultureIgnoreCase) => (IconKind: PackIconKind.SignPole, Brush: Brushes.LightGreen, this.Name),
-                string c when c.Contains("bolts", StringComparison.InvariantCultureIgnoreCase) => (IconKind: PackIconKind.RayStartArrow, Brush: Brushes.LightBlue, this.Name),
-                string d when d.Contains("shuriken", StringComparison.InvariantCultureIgnoreCase) => (IconKind: PackIconKind.Shuriken, Brush: Brushes.Orange, this.Name),
-                string e when e.Contains("bullets", StringComparison.InvariantCultureIgnoreCase) => (IconKind: PackIconKind.SquareSmall, Brush: Brushes.MediumPurple, this.Name),
-                _ => (IconKind: PackIconKind.ArrowProjectileMultiple, Brush: Brushes.SlateGray, this.Name),
+                string a when a.Contains("arrows", StringComparison.InvariantCultureIgnoreCase) => new CategoryDto(PackIconKind.ArrowProjectile, Brushes.IndianRed, this.Name),
+                string b when b.Contains("needles", StringComparison.InvariantCultureIgnoreCase) => new CategoryDto(PackIconKind.SignPole, Brushes.LightGreen, this.Name),
+                string c when c.Contains("bolts", StringComparison.InvariantCultureIgnoreCase) => new CategoryDto(PackIconKind.RayStartArrow, Brushes.LightBlue, this.Name),
+                string d when d.Contains("shuriken", StringComparison.InvariantCultureIgnoreCase) => new CategoryDto(PackIconKind.Shuriken, Brushes.Orange, this.Name),
+                string e when e.Contains("bullets", StringComparison.InvariantCultureIgnoreCase) => new CategoryDto(PackIconKind.SquareSmall, Brushes.MediumPurple, this.Name),
+                _ => new CategoryDto(),
             };
         }
     }

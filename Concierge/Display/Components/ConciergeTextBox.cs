@@ -6,6 +6,7 @@ namespace Concierge.Display.Components
 {
     using System.Windows;
     using System.Windows.Controls;
+    using System.Windows.Input;
     using System.Windows.Media;
 
     using Concierge.Utility;
@@ -23,6 +24,7 @@ namespace Concierge.Display.Components
             this.FontSize = 15;
             this.GotFocus += this.ConciergeTextBox_GotFocus;
             this.LostFocus += this.ConciergeTextBox_LostFocus;
+            this.PreviewMouseDown += this.ConciergeTextBox_MouseDown;
         }
 
         public bool IsUpdating { get; private set; }
@@ -51,6 +53,15 @@ namespace Concierge.Display.Components
         private void ConciergeTextBox_LostFocus(object sender, RoutedEventArgs e)
         {
             Program.NotTyping();
+        }
+
+        private void ConciergeTextBox_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ClickCount == 3)
+            {
+                this.SelectAll();
+                e.Handled = true;
+            }
         }
     }
 }

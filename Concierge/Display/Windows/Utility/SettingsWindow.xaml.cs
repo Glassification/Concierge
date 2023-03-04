@@ -61,7 +61,6 @@ namespace Concierge.Display.Utility
             this.CoinWeightCheckBox.IsChecked = AppSettingsManager.UserSettings.UseCoinWeight;
             this.EncumbranceCheckBox.IsChecked = AppSettingsManager.UserSettings.UseEncumbrance;
             this.IntervalTextBox.Text = this.FormattedInterval;
-            this.MaxCustomColorsUpDown.Value = AppSettingsManager.UserSettings.MaxCustomColors;
             this.MuteCheckBox.IsChecked = AppSettingsManager.UserSettings.MuteSounds;
             this.CheckVersionCheckBox.IsChecked = AppSettingsManager.UserSettings.CheckVersion;
             this.UnitOfMeasurementComboBox.Text = AppSettingsManager.UserSettings.UnitOfMeasurement.ToString();
@@ -101,7 +100,6 @@ namespace Concierge.Display.Utility
                 AutosaveEnabled = this.AutosaveCheckBox.IsChecked ?? false,
                 AutosaveInterval = (int)this.AutosaveInterval.Value,
                 CheckVersion = this.CheckVersionCheckBox.IsChecked ?? false,
-                MaxCustomColors = this.MaxCustomColorsUpDown.Value,
                 MuteSounds = this.MuteCheckBox.IsChecked ?? false,
                 UseCoinWeight = this.CoinWeightCheckBox.IsChecked ?? false,
                 UseEncumbrance = this.EncumbranceCheckBox.IsChecked ?? false,

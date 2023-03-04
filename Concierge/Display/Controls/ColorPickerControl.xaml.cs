@@ -40,7 +40,7 @@ namespace Concierge.Display.Controls
             this.SelectedColor = CustomColor.White;
 
             InitializeColorList(this.CustomColorService.DotNetColors, this.DefaultColorList);
-            InitializeColorList(this.CustomColorService.GetFilteredCustomColors(), this.CustomColorList);
+            InitializeColorList(this.CustomColorService.CustomColors, this.CustomColorList);
             SetColorButtons(this.DefaultColorsStackPanel, this.CustomColorService.DefaultColors);
             SetColorButtons(this.RecentColorsStackPanel, this.CustomColorService.RecentColors);
         }
@@ -165,6 +165,26 @@ namespace Concierge.Display.Controls
 
                 SetColorButtons(this.RecentColorsStackPanel, this.CustomColorService.RecentColors);
                 this.RaiseEvent(new RoutedEventArgs(ColorChangedEvent));
+            }
+        }
+
+        private void PopupToggleButton_Click(object sender, RoutedEventArgs e)
+        {
+            var missingColors = this.CustomColorService.GetMissingColors(this.CustomColorList.ToList<CustomColor>());
+            if (missingColors.IsEmpty())
+            {
+                return;
+            }
+
+            missingColors.Reverse();
+            foreach (var color in missingColors)
+            {
+                this.CustomColorList.Items.Insert(0, new ComboBoxItem()
+                {
+                    Content = color.Name,
+                    Foreground = new SolidColorBrush(color.Color),
+                    Tag = color,
+                });
             }
         }
     }

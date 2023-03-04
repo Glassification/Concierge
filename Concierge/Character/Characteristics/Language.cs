@@ -5,11 +5,10 @@
 namespace Concierge.Character.Characteristics
 {
     using System;
-    using System.Windows.Media;
 
     using Concierge.Utility;
+    using Concierge.Utility.Dtos;
     using Concierge.Utility.Extensions;
-    using MaterialDesignThemes.Wpf;
     using Newtonsoft.Json;
 
     public sealed class Language : ICopyable<Language>, IUnique
@@ -49,7 +48,7 @@ namespace Concierge.Character.Characteristics
             return this.Name;
         }
 
-        public (PackIconKind IconKind, Brush Brush, string Name) GetCategory()
+        public CategoryDto GetCategory()
         {
             throw new NotImplementedException();
         }

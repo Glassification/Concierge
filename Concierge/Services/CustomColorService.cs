@@ -8,7 +8,6 @@ namespace Concierge.Services
     using System.IO;
     using System.Linq;
 
-    using Concierge.Configuration;
     using Concierge.Persistence;
     using Concierge.Persistence.ReadWriters;
     using Concierge.Primitives;
@@ -53,12 +52,6 @@ namespace Concierge.Services
             this.Update();
         }
 
-        public List<CustomColor> GetFilteredCustomColors()
-        {
-            var limit = AppSettingsManager.UserSettings.MaxCustomColors;
-            return limit <= 0 ? this.CustomColors : this.CustomColors.GetRange(0, limit);
-        }
-
         public void UpdateRecentColors(int index)
         {
             if (this.RecentColors.Count == 0)
@@ -71,6 +64,20 @@ namespace Concierge.Services
             this.RecentColors.RemoveAt(index);
             this.RecentColors.Insert(0, color);
             this.Update();
+        }
+
+        public List<CustomColor> GetMissingColors(List<CustomColor> customColors)
+        {
+            var missingColors = new List<CustomColor>();
+            foreach (var color in this.CustomColors)
+            {
+                if (!customColors.Any(x => x.Id.Equals(color.Id)))
+                {
+                    missingColors.Add(color);
+                }
+            }
+
+            return missingColors;
         }
 
         private void Update()

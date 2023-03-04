@@ -6,11 +6,11 @@ namespace Concierge.Character.Spellcasting
 {
     using System;
     using System.Linq;
-    using System.Windows.Media;
 
     using Concierge.Character.Enums;
     using Concierge.Leveling.Dtos.Definitions;
     using Concierge.Utility;
+    using Concierge.Utility.Dtos;
     using Concierge.Utility.Utilities;
     using Newtonsoft.Json;
 
@@ -72,7 +72,7 @@ namespace Concierge.Character.Spellcasting
             this.SpellSlots += spellSlotDto.Slots;
         }
 
-        public (MaterialDesignThemes.Wpf.PackIconKind IconKind, Brush Brush, string Name) GetCategory()
+        public CategoryDto GetCategory()
         {
             throw new NotImplementedException();
         }

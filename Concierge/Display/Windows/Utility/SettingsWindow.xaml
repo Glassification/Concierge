@@ -221,7 +221,7 @@
                     </Grid>
                 </Grid>
 
-                <Grid Grid.Row="3">
+                <Grid Grid.Row="3" Visibility="Hidden">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="40*"/>
                         <ColumnDefinition Width="60*"/>

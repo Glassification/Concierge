@@ -5,6 +5,7 @@
 namespace Concierge.Display.Components
 {
     using System;
+    using System.Collections.Generic;
     using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Input;
@@ -24,6 +25,20 @@ namespace Concierge.Display.Components
             this.DropDownOpened += this.ComboBox_DropDownOpened;
             this.MouseEnter += this.ComboBox_MouseEnter;
             this.MouseLeave += this.ComboBox_MouseLeave;
+        }
+
+        public List<T> ToList<T>()
+        {
+            var items = new List<T>();
+            foreach (var item in this.Items)
+            {
+                if (item is ComboBoxItem comboBoxItem && comboBoxItem.Tag is T genericItem)
+                {
+                    items.Add(genericItem);
+                }
+            }
+
+            return items;
         }
 
         private void ComboBox_DropDownOpened(object? sender, EventArgs e)

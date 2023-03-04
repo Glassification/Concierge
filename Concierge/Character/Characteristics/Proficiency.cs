@@ -5,11 +5,10 @@
 namespace Concierge.Character.Characteristics
 {
     using System;
-    using System.Windows.Media;
 
     using Concierge.Character.Enums;
     using Concierge.Utility;
-    using MaterialDesignThemes.Wpf;
+    using Concierge.Utility.Dtos;
 
     public sealed class Proficiency : ICopyable<Proficiency>, IUnique
     {
@@ -56,7 +55,7 @@ namespace Concierge.Character.Characteristics
             return proficiency.Name.Equals(this.Name) && proficiency.ProficiencyType == this.ProficiencyType;
         }
 
-        public (PackIconKind IconKind, Brush Brush, string Name) GetCategory()
+        public CategoryDto GetCategory()
         {
             throw new NotImplementedException();
         }

@@ -25,6 +25,7 @@
                 Height="40"
                 Width="20"
                 Style="{StaticResource ConciergeColorToggleButtonStyle}"
+                Click="PopupToggleButton_Click"
                 IsHitTestVisible="{Binding ElementName=ColorPopup, Path=IsOpen, Mode=OneWay, Converter={local:BoolInverter}}">
                 <Path
                   x:Name="Arrow"

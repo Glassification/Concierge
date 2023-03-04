@@ -5,12 +5,11 @@
 namespace Concierge.Character.Statuses
 {
     using System;
-    using System.Windows.Media;
 
     using Concierge.Character.Enums;
     using Concierge.Utility;
+    using Concierge.Utility.Dtos;
     using Concierge.Utility.Extensions;
-    using MaterialDesignThemes.Wpf;
     using Newtonsoft.Json;
 
     public sealed class StatusEffect : ICopyable<StatusEffect>, IUnique
@@ -44,7 +43,7 @@ namespace Concierge.Character.Statuses
             };
         }
 
-        public (PackIconKind IconKind, Brush Brush, string Name) GetCategory()
+        public CategoryDto GetCategory()
         {
             throw new NotImplementedException();
         }

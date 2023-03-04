@@ -5,9 +5,8 @@
 namespace Concierge.Utility
 {
     using System;
-    using System.Windows.Media;
 
-    using MaterialDesignThemes.Wpf;
+    using Concierge.Utility.Dtos;
 
     public interface IUnique
     {
@@ -15,6 +14,6 @@ namespace Concierge.Utility
 
         string Name { get; set; }
 
-        (PackIconKind IconKind, Brush Brush, string Name) GetCategory();
+        CategoryDto GetCategory();
     }
 }

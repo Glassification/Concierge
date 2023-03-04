@@ -10,10 +10,11 @@ namespace Concierge.Primitives
     using System.Windows.Media;
 
     using Concierge.Utility;
+    using Concierge.Utility.Dtos;
     using Concierge.Utility.Extensions;
     using Newtonsoft.Json;
 
-    public sealed class CustomColor : ICopyable<CustomColor>
+    public sealed class CustomColor : ICopyable<CustomColor>, IUnique
     {
         private const byte MaxColor = 255;
         private const byte MinColor = 0;
@@ -31,6 +32,7 @@ namespace Concierge.Primitives
             this.G = color.G;
             this.B = color.B;
             this.Name = isHex ? this.Color.GetName() : name.FormatColorName();
+            this.Id = Guid.NewGuid();
         }
 
         public CustomColor(string name, string hex)
@@ -45,6 +47,7 @@ namespace Concierge.Primitives
             this.R = rgb[0 + alphaOffset];
             this.G = rgb[1 + alphaOffset];
             this.B = rgb[2 + alphaOffset];
+            this.Id = Guid.NewGuid();
         }
 
         public CustomColor(string name, byte r, byte g, byte b, byte a = MaxColor)
@@ -56,6 +59,7 @@ namespace Concierge.Primitives
             this.R = r;
             this.G = g;
             this.B = b;
+            this.Id = Guid.NewGuid();
         }
 
         private CustomColor()
@@ -107,6 +111,8 @@ namespace Concierge.Primitives
             }
         }
 
+        public Guid Id { get; set; }
+
         public static bool operator ==(CustomColor left, CustomColor right)
         {
             return left.A == right.A && left.R == right.R && left.G == right.G && left.B == right.B;
@@ -148,7 +154,13 @@ namespace Concierge.Primitives
                 Hex = this.Hex,
                 Name = this.Name,
                 IsValid = this.IsValid,
+                Id = this.Id,
             };
+        }
+
+        public CategoryDto GetCategory()
+        {
+            throw new NotImplementedException();
         }
 
         private static byte[] HexToRgb(string hex)

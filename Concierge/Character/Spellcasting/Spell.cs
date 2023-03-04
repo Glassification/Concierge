@@ -10,6 +10,7 @@ namespace Concierge.Character.Spellcasting
     using Concierge.Character.Enums;
     using Concierge.Utility;
     using Concierge.Utility.Attributes;
+    using Concierge.Utility.Dtos;
     using MaterialDesignThemes.Wpf;
     using Newtonsoft.Json;
 
@@ -113,20 +114,20 @@ namespace Concierge.Character.Spellcasting
             };
         }
 
-        public (PackIconKind IconKind, Brush Brush, string Name) GetCategory()
+        public CategoryDto GetCategory()
         {
             return this.School switch
             {
-                ArcaneSchools.Abjuration => (IconKind: PackIconKind.ShieldSun, Brush: Brushes.LightBlue, Name: this.School.ToString()),
-                ArcaneSchools.Conjuration => (IconKind: PackIconKind.Flare, Brush: Brushes.LightYellow, Name: this.School.ToString()),
-                ArcaneSchools.Divination => (IconKind: PackIconKind.EyeCircle, Brush: Brushes.SlateGray, Name: this.School.ToString()),
-                ArcaneSchools.Enchantment => (IconKind: PackIconKind.HeadCog, Brush: Brushes.LightPink, Name: this.School.ToString()),
-                ArcaneSchools.Evocation => (IconKind: PackIconKind.Flash, Brush: Brushes.IndianRed, Name: this.School.ToString()),
-                ArcaneSchools.Illusion => (IconKind: PackIconKind.AppleIcloud, Brush: Brushes.MediumPurple, Name: this.School.ToString()),
-                ArcaneSchools.Necromancy => (IconKind: PackIconKind.Coffin, Brush: Brushes.LightGreen, Name: this.School.ToString()),
-                ArcaneSchools.Transmutation => (IconKind: PackIconKind.CircleOpacity, Brush: Brushes.Orange, Name: this.School.ToString()),
-                ArcaneSchools.Universal => (IconKind: PackIconKind.Earth, Brush: Brushes.White, Name: this.School.ToString()),
-                _ => (IconKind: PackIconKind.Error, Brush: Brushes.Red, Name: this.School.ToString()),
+                ArcaneSchools.Abjuration => new CategoryDto(PackIconKind.ShieldSun, Brushes.LightBlue, this.School.ToString()),
+                ArcaneSchools.Conjuration => new CategoryDto(PackIconKind.Flare, Brushes.LightYellow, this.School.ToString()),
+                ArcaneSchools.Divination => new CategoryDto(PackIconKind.EyeCircle, Brushes.SlateGray, this.School.ToString()),
+                ArcaneSchools.Enchantment => new CategoryDto(PackIconKind.HeadCog, Brushes.LightPink, this.School.ToString()),
+                ArcaneSchools.Evocation => new CategoryDto(PackIconKind.Flash, Brushes.IndianRed, this.School.ToString()),
+                ArcaneSchools.Illusion => new CategoryDto(PackIconKind.AppleIcloud, Brushes.MediumPurple, this.School.ToString()),
+                ArcaneSchools.Necromancy => new CategoryDto(PackIconKind.Coffin, Brushes.LightGreen, this.School.ToString()),
+                ArcaneSchools.Transmutation => new CategoryDto(PackIconKind.CircleOpacity, Brushes.Orange, this.School.ToString()),
+                ArcaneSchools.Universal => new CategoryDto(PackIconKind.Earth, Brushes.White, this.School.ToString()),
+                _ => new CategoryDto(),
             };
         }
 

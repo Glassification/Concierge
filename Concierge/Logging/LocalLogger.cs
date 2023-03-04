@@ -10,6 +10,7 @@ namespace Concierge.Logging
     using System.Linq;
 
     using Concierge.Persistence;
+    using Concierge.Utility;
     using Concierge.Utility.Extensions;
 
     public sealed class LocalLogger : Logger
@@ -31,6 +32,8 @@ namespace Concierge.Logging
             this.MaxLogFiles = 5;
             this.MaxLogArchives = 5;
             this.MaxLogRetentionDays = 90;
+
+            this.Rotate(Path.Combine(this.LogLocation, this.LogFileName));
         }
 
         public int MaxLogFileSize { get; set; }
@@ -59,8 +62,6 @@ namespace Concierge.Logging
             }
 
             var logFilePath = Path.Combine(this.LogLocation, this.LogFileName);
-            this.Rotate(logFilePath);
-
             using (var streamWriter = File.AppendText(logFilePath))
             {
                 streamWriter.WriteLine(message);
@@ -94,8 +95,8 @@ namespace Concierge.Logging
                 return;
             }
 
-            var fileTime = DateTime.Now.ToString("dd_MM_yy_h_m_s");
-            var rotatedPath = filePath.Replace(".log", $".{fileTime}");
+            var fileTime = ConciergeDateTime.RotateLog;
+            var rotatedPath = filePath.Replace(".log", $".{fileTime}.log");
             File.Move(filePath, rotatedPath);
 
             var folderPath = Path.GetDirectoryName(rotatedPath) ?? string.Empty;
@@ -107,7 +108,7 @@ namespace Concierge.Logging
                 return;
             }
 
-            var archiveFolderInfo = Directory.CreateDirectory(Path.Combine(Path.GetDirectoryName(rotatedPath) ?? string.Empty, $"{Path.GetFileNameWithoutExtension(this.LogFileName)}_{fileTime}"));
+            var archiveFolderInfo = Directory.CreateDirectory(Path.Combine(Path.GetDirectoryName(rotatedPath) ?? string.Empty, $"{Path.GetFileNameWithoutExtension(this.LogFileName)}.{fileTime}"));
             foreach (var chunk in chunks)
             {
                 Directory.Move(chunk.FullName, Path.Combine(archiveFolderInfo.FullName, chunk.Name));
@@ -117,7 +118,7 @@ namespace Concierge.Logging
             Directory.Delete(archiveFolderInfo.FullName, true);
 
             var archives = logFolderContent.Where(x => x.Extension.Equals(".zip", StringComparison.OrdinalIgnoreCase)).ToArray();
-            if (archives.Length <= this.MaxLogArchives)
+            if (archives.Length + 1 <= this.MaxLogArchives)
             {
                 return;
             }

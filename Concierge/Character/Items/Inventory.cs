@@ -11,6 +11,7 @@ namespace Concierge.Character.Items
     using Concierge.Primitives;
     using Concierge.Utility;
     using Concierge.Utility.Attributes;
+    using Concierge.Utility.Dtos;
     using Concierge.Utility.Extensions;
     using MaterialDesignThemes.Wpf;
     using Newtonsoft.Json;
@@ -128,29 +129,29 @@ namespace Concierge.Character.Items
             };
         }
 
-        public (PackIconKind IconKind, Brush Brush, string Name) GetCategory()
+        public CategoryDto GetCategory()
         {
             return this.ItemCategory switch
             {
-                "Adventuring Gear" => (IconKind: PackIconKind.MapLegend, Brush: Brushes.LightBlue, Name: this.ItemCategory),
-                "Arcane Focus" => (IconKind: PackIconKind.MagicWand, Brush: Brushes.Magenta, Name: this.ItemCategory),
-                "Clothing" => (IconKind: PackIconKind.TshirtV, Brush: Brushes.Coral, Name: this.ItemCategory),
-                "Druidic Focus" => (IconKind: PackIconKind.MagicStaff, Brush: Brushes.Magenta, Name: this.ItemCategory),
-                "Equipment Pack" => (IconKind: PackIconKind.Toolbox, Brush: Brushes.RosyBrown, Name: this.ItemCategory),
-                "Food/Drink" => (IconKind: PackIconKind.SilverwareVariant, Brush: Brushes.PaleVioletRed, Name: this.ItemCategory),
-                "Gemstone" => (IconKind: PackIconKind.DiamondStone, Brush: Brushes.Cyan, Name: this.ItemCategory),
-                "Heavy Armor" => (IconKind: PackIconKind.Wall, Brush: Brushes.LightGray, Name: this.ItemCategory),
-                "Holy Symbol" => (IconKind: PackIconKind.Christianity, Brush: Brushes.PaleGoldenrod, Name: this.ItemCategory),
-                "Light Armor" => (IconKind: PackIconKind.Wall, Brush: Brushes.LightGray, Name: this.ItemCategory),
-                "Medium Armor" => (IconKind: PackIconKind.Wall, Brush: Brushes.LightGray, Name: this.ItemCategory),
-                "Mount" => (IconKind: PackIconKind.HorsebackRiding, Brush: Brushes.SandyBrown, Name: this.ItemCategory),
-                "Poison" => (IconKind: PackIconKind.Poison, Brush: Brushes.LightGreen, Name: this.ItemCategory),
-                "Potion" => (IconKind: PackIconKind.HealthPotion, Brush: Brushes.Pink, Name: this.ItemCategory),
-                "Shield" => (IconKind: PackIconKind.ShieldPerson, Brush: Brushes.LightSlateGray, Name: this.ItemCategory),
-                "Tool" => (IconKind: PackIconKind.RulerSquareCompass, Brush: Brushes.LightYellow, Name: this.ItemCategory),
-                "Vehicle (Land)" => (IconKind: PackIconKind.Caravan, Brush: Brushes.SaddleBrown, Name: this.ItemCategory),
-                "Vehicle (Water)" => (IconKind: PackIconKind.SailBoat, Brush: Brushes.LightSkyBlue, Name: this.ItemCategory),
-                _ => (IconKind: PackIconKind.Error, Brush: Brushes.IndianRed, Name: this.ItemCategory),
+                "Adventuring Gear" => new CategoryDto(PackIconKind.MapLegend, Brushes.LightBlue, this.ItemCategory),
+                "Arcane Focus" => new CategoryDto(PackIconKind.MagicWand, Brushes.Magenta, this.ItemCategory),
+                "Clothing" => new CategoryDto(PackIconKind.TshirtV, Brushes.Coral, this.ItemCategory),
+                "Druidic Focus" => new CategoryDto(PackIconKind.MagicStaff, Brushes.Magenta, this.ItemCategory),
+                "Equipment Pack" => new CategoryDto(PackIconKind.Toolbox, Brushes.RosyBrown, this.ItemCategory),
+                "Food/Drink" => new CategoryDto(PackIconKind.SilverwareVariant, Brushes.PaleVioletRed, this.ItemCategory),
+                "Gemstone" => new CategoryDto(PackIconKind.DiamondStone, Brushes.Cyan, this.ItemCategory),
+                "Heavy Armor" => new CategoryDto(PackIconKind.Wall, Brushes.LightGray, this.ItemCategory),
+                "Holy Symbol" => new CategoryDto(PackIconKind.Christianity, Brushes.PaleGoldenrod, this.ItemCategory),
+                "Light Armor" => new CategoryDto(PackIconKind.Wall, Brushes.LightGray, this.ItemCategory),
+                "Medium Armor" => new CategoryDto(PackIconKind.Wall, Brushes.LightGray, this.ItemCategory),
+                "Mount" => new CategoryDto(PackIconKind.HorsebackRiding, Brushes.SandyBrown, this.ItemCategory),
+                "Poison" => new CategoryDto(PackIconKind.Poison, Brushes.LightGreen, this.ItemCategory),
+                "Potion" => new CategoryDto(PackIconKind.HealthPotion, Brushes.Pink, this.ItemCategory),
+                "Shield" => new CategoryDto(PackIconKind.ShieldPerson, Brushes.LightSlateGray, this.ItemCategory),
+                "Tool" => new CategoryDto(PackIconKind.RulerSquareCompass, Brushes.LightYellow, this.ItemCategory),
+                "Vehicle (Land)" => new CategoryDto(PackIconKind.Caravan, Brushes.SaddleBrown, this.ItemCategory),
+                "Vehicle (Water)" => new CategoryDto(PackIconKind.SailBoat, Brushes.LightSkyBlue, this.ItemCategory),
+                _ => new CategoryDto(),
             };
         }
 

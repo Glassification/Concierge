@@ -10,6 +10,7 @@ namespace Concierge.Character.Characteristics
     using Concierge.Character.Enums;
     using Concierge.Utility;
     using Concierge.Utility.Attributes;
+    using Concierge.Utility.Dtos;
     using Concierge.Utility.Extensions;
     using MaterialDesignThemes.Wpf;
     using Newtonsoft.Json;
@@ -78,16 +79,16 @@ namespace Concierge.Character.Characteristics
             return this.Name;
         }
 
-        public (PackIconKind IconKind, Brush Brush, string Name) GetCategory()
+        public CategoryDto GetCategory()
         {
             return this.Type switch
             {
-                AbilityTypes.Background => (IconKind: PackIconKind.ArrangeSendBackward, Brush: Brushes.LightBlue, Name: this.Type.ToString()),
-                AbilityTypes.Feat => (IconKind: PackIconKind.StarCircleOutline, Brush: Brushes.MediumPurple, Name: this.Type.ToString()),
-                AbilityTypes.ClassFeature => (IconKind: PackIconKind.BookVariant, Brush: Brushes.Orange, Name: this.Type.ToString()),
-                AbilityTypes.RaceFeature => (IconKind: PackIconKind.BookVariant, Brush: Brushes.IndianRed, Name: this.Type.ToString()),
-                AbilityTypes.None => (IconKind: PackIconKind.BorderNone, Brush: Brushes.SlateGray, Name: this.Type.ToString()),
-                _ => (IconKind: PackIconKind.Error, Brush: Brushes.Red, Name: this.Type.ToString()),
+                AbilityTypes.Background => new CategoryDto(PackIconKind.ArrangeSendBackward, Brushes.LightBlue, this.Type.ToString()),
+                AbilityTypes.Feat => new CategoryDto(PackIconKind.StarCircleOutline, Brushes.MediumPurple, this.Type.ToString()),
+                AbilityTypes.ClassFeature => new CategoryDto(PackIconKind.BookVariant, Brushes.Orange, this.Type.ToString()),
+                AbilityTypes.RaceFeature => new CategoryDto(PackIconKind.BookVariant, Brushes.IndianRed, this.Type.ToString()),
+                AbilityTypes.None => new CategoryDto(PackIconKind.BorderNone, Brushes.SlateGray, this.Type.ToString()),
+                _ => new CategoryDto(),
             };
         }
     }
