@@ -33,6 +33,7 @@ namespace Concierge.Logging
             this.MaxLogArchives = 5;
             this.MaxLogRetentionDays = 90;
 
+            Directory.CreateDirectory(this.LogLocation);
             this.Rotate(Path.Combine(this.LogLocation, this.LogFileName));
         }
 
@@ -56,11 +57,6 @@ namespace Concierge.Logging
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0063:Use simple 'using' statement", Justification = "Improve readability.")]
         protected override void CreateLog(string message)
         {
-            if (!Directory.Exists(this.LogLocation))
-            {
-                Directory.CreateDirectory(this.LogLocation);
-            }
-
             var logFilePath = Path.Combine(this.LogLocation, this.LogFileName);
             using (var streamWriter = File.AppendText(logFilePath))
             {

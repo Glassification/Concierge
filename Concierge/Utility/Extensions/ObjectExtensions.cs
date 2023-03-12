@@ -74,6 +74,11 @@ namespace Concierge.Utility.Extensions
             return false;
         }
 
+        public static string GetDescription(this object item)
+        {
+            return string.Empty;
+        }
+
         private static bool HasIgnoreProperty(PropertyInfo propertyInfo)
         {
             return propertyInfo.GetCustomAttribute(typeof(SearchIgnore)) is not null;

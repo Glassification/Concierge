@@ -40,6 +40,7 @@ namespace Concierge
             MainWindow = null;
             BaseState = new ConciergeCharacter();
             CustomColorService = CustomColorReadWriter.Read(Path.Combine(ConciergeFiles.GetCorrectCustomColorsPath(), ConciergeFiles.CustomColorsName));
+            PropertyDescriptionService = new PropertyDescriptionService();
 
             ConsoleReadWriter.Clear(Path.Combine(ConciergeFiles.AppDataDirectory, ConciergeFiles.ConsoleOutput));
 
@@ -65,6 +66,8 @@ namespace Concierge
         public static UndoRedoService UndoRedoService { get; private set; }
 
         public static CustomColorService CustomColorService { get; private set; }
+
+        public static PropertyDescriptionService PropertyDescriptionService { get; private set; }
 
         public static string AssemblyVersion
         {

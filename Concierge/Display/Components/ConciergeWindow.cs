@@ -32,6 +32,7 @@ namespace Concierge.Display.Components
             this.Top = 0;
             this.Background = ConciergeBrushes.WindowBackground;
             this.HandleEnter = false;
+            this.Description = string.Empty;
 
             this.MouseDown += this.Window_MouseDown;
             this.KeyDown += this.Window_KeyDown;
@@ -54,6 +55,8 @@ namespace Concierge.Display.Components
         protected ConciergeWindow? NonBlockingWindow { get; set; }
 
         protected bool HandleEnter { get; set; }
+
+        protected string Description { get; set; }
 
         public virtual bool ShowAdd<T>(T item)
         {
@@ -179,6 +182,11 @@ namespace Concierge.Display.Components
             var attribute = DWMWINDOWATTRIBUTE.DWMWA_WINDOW_CORNER_PREFERENCE;
             var preference = DWM_WINDOW_CORNER_PREFERENCE.DWMWCP_ROUND;
             Marshal.ThrowExceptionForHR(DwmSetWindowAttribute(hWnd, attribute, ref preference, sizeof(uint)));
+        }
+
+        protected void Control_GotFocus(object sender, RoutedEventArgs e)
+        {
+
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
