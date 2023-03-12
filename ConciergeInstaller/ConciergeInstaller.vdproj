@@ -64,10 +64,10 @@
             "ComponentsUrl" = "8:"
                 "Items"
                 {
-                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.NetCore.CoreRuntime.6.0.x64"
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.NetCore.CoreRuntime.7.0.x64"
                     {
-                    "Name" = "8:.NET Runtime 6.0.3 (x64)"
-                    "ProductCode" = "8:Microsoft.NetCore.CoreRuntime.6.0.x64"
+                    "Name" = "8:.NET Runtime 7.0.3 (x64)"
+                    "ProductCode" = "8:Microsoft.NetCore.CoreRuntime.7.0.x64"
                     }
                 }
             }
@@ -96,15 +96,10 @@
             "ComponentsUrl" = "8:"
                 "Items"
                 {
-                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.5.2"
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.NetCore.CoreRuntime.7.0.x64"
                     {
-                    "Name" = "8:Microsoft .NET Framework 4.5.2 (x86 and x64)"
-                    "ProductCode" = "8:.NETFramework,Version=v4.5.2"
-                    }
-                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.NetCore.CoreRuntime.6.0.x64"
-                    {
-                    "Name" = "8:.NET Runtime 6.0.3 (x64)"
-                    "ProductCode" = "8:Microsoft.NetCore.CoreRuntime.6.0.x64"
+                    "Name" = "8:.NET Runtime 7.0.3 (x64)"
+                    "ProductCode" = "8:Microsoft.NetCore.CoreRuntime.7.0.x64"
                     }
                 }
             }
@@ -278,7 +273,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Concierge"
         "ProductCode" = "8:{657D5304-C4FD-4BB3-A883-FB1234DBD10B}"
-        "PackageCode" = "8:{1454C66E-DACC-4578-BC8B-EC5102ABFE06}"
+        "PackageCode" = "8:{7B95E2A6-5036-42FF-B2CB-A363DC081AFD}"
         "UpgradeCode" = "8:{B97675CD-5866-4110-B40B-B14CEF5B35C2}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
@@ -799,7 +794,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_2A7AAF72C58940F2956B9985560921AB"
             {
-            "SourcePath" = "8:..\\Concierge\\obj\\Debug\\net7.0-windows\\apphost.exe"
+            "SourcePath" = "8:..\\Concierge\\obj\\Release\\net7.0-windows\\apphost.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_64A8DDAA7DF142C3BB15E7CE7DD0E65E"

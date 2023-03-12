@@ -26,6 +26,10 @@ namespace Concierge.Persistence
         static ConciergeFiles()
         {
             applicationData = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+
+            Directory.CreateDirectory(AppDataDirectory);
+            Directory.CreateDirectory(HistoryDirectory);
+            Directory.CreateDirectory(LoggingDirectory);
         }
 
         public static string AppDataDirectory => Path.Combine(applicationData, "Concierge");

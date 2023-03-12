@@ -16,9 +16,12 @@ namespace Concierge
     using Concierge.Services;
     using Concierge.Utility;
     using Concierge.Utility.Utilities;
+    using Microsoft.Win32;
 
     public static class Program
     {
+        private static int buildNumber = -1;
+
         static Program()
         {
 #if DEBUG
@@ -69,6 +72,28 @@ namespace Concierge
             {
                 var version = Assembly.GetExecutingAssembly().GetName().Version;
                 return $"{version?.Major}.{version?.Minor}.{version?.Build}";
+            }
+        }
+
+        public static bool IsWindows11
+        {
+            get
+            {
+                if (buildNumber >= 0)
+                {
+                    return buildNumber >= 22000;
+                }
+
+                var reg = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows NT\CurrentVersion");
+
+                var currentBuildStr = reg?.GetValue("CurrentBuild") as string;
+                if (int.TryParse(currentBuildStr, out int currentBuild))
+                {
+                    buildNumber = currentBuild;
+                    return currentBuild >= 22000;
+                }
+
+                return false;
             }
         }
 

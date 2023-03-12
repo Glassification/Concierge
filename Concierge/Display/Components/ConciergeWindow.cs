@@ -170,6 +170,11 @@ namespace Concierge.Display.Components
 
         protected void UseRoundedCorners()
         {
+            if (!Program.IsWindows11)
+            {
+                return;
+            }
+
             IntPtr hWnd = new WindowInteropHelper(GetWindow(this)).EnsureHandle();
             var attribute = DWMWINDOWATTRIBUTE.DWMWA_WINDOW_CORNER_PREFERENCE;
             var preference = DWM_WINDOW_CORNER_PREFERENCE.DWMWCP_ROUND;
