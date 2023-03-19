@@ -43,6 +43,8 @@ namespace Concierge.Display.Windows
 
         public override string HeaderText => "Edit Appearance";
 
+        public override string WindowName => nameof(AppearanceWindow);
+
         private Appearance Appearance { get; set; }
 
         private CustomColor EyeColor

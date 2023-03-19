@@ -61,6 +61,69 @@ namespace Concierge.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Trigger for activating this ability..
+        /// </summary>
+        internal static string AbilitiesWindow_ActionTextBox {
+            get {
+                return ResourceManager.GetString("AbilitiesWindow_ActionTextBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Level required for learning this ability..
+        /// </summary>
+        internal static string AbilitiesWindow_LevelUpDown {
+            get {
+                return ResourceManager.GetString("AbilitiesWindow_LevelUpDown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The name..
+        /// </summary>
+        internal static string AbilitiesWindow_NameComboBox {
+            get {
+                return ResourceManager.GetString("AbilitiesWindow_NameComboBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Any extra information describing the ability..
+        /// </summary>
+        internal static string AbilitiesWindow_NotesTextBox {
+            get {
+                return ResourceManager.GetString("AbilitiesWindow_NotesTextBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to How to replenish uses for this ability..
+        /// </summary>
+        internal static string AbilitiesWindow_RecoveryTextBox {
+            get {
+                return ResourceManager.GetString("AbilitiesWindow_RecoveryTextBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Which category list this ability comes from..
+        /// </summary>
+        internal static string AbilitiesWindow_TypeComboBox {
+            get {
+                return ResourceManager.GetString("AbilitiesWindow_TypeComboBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Amount of times this ability can be used before it is exhausted..
+        /// </summary>
+        internal static string AbilitiesWindow_UsesTextBox {
+            get {
+                return ResourceManager.GetString("AbilitiesWindow_UsesTextBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
         internal static byte[] Ability {

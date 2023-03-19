@@ -37,6 +37,8 @@ namespace Concierge.Display.Windows
 
         public override string HeaderText => "Edit Image";
 
+        public override string WindowName => nameof(ImageWindow);
+
         private string OriginalFileName { get; set; }
 
         private bool IsDrawing { get; set; }

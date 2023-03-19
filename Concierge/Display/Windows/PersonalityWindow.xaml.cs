@@ -28,6 +28,8 @@ namespace Concierge.Display.Windows
 
         public override string HeaderText => "Edit Personality";
 
+        public override string WindowName => nameof(PersonalityWindow);
+
         private Personality Personality { get; set; }
 
         public override ConciergeWindowResult ShowWizardSetup(string buttonText)

@@ -32,6 +32,8 @@ namespace Concierge.Display.Utility
 
         public override string HeaderText => "Import Details";
 
+        public override string WindowName => nameof(ImportCharacterWindow);
+
         private bool Imported { get; set; }
 
         public override object? ShowWindow()

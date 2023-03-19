@@ -49,6 +49,8 @@ namespace Concierge.Display.Windows
 
         public override string HeaderText => "Edit Skill Checks";
 
+        public override string WindowName => nameof(SkillWindow);
+
         private Skill Skill { get; set; }
 
         public override void ShowEdit<T>(T skill)

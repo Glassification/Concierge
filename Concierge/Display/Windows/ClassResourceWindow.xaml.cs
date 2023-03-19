@@ -36,6 +36,8 @@ namespace Concierge.Display.Windows
 
         public override string HeaderText => $"{(this.Editing ? "Edit" : "Add")} Resource";
 
+        public override string WindowName => nameof(ClassResourceWindow);
+
         public bool ItemsAdded { get; private set; }
 
         private bool Editing { get; set; }

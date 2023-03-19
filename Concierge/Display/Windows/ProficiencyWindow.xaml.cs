@@ -16,6 +16,7 @@ namespace Concierge.Display.Windows
     using Concierge.Commands;
     using Concierge.Display.Components;
     using Concierge.Display.Enums;
+    using Concierge.Display.Utility;
     using Concierge.Utility;
     using Concierge.Utility.Extensions;
 
@@ -37,6 +38,8 @@ namespace Concierge.Display.Windows
         }
 
         public override string HeaderText => $"{(this.Editing ? "Edit" : "Add")} Proficiency";
+
+        public override string WindowName => nameof(ProficiencyWindow);
 
         public bool ItemsAdded { get; private set; }
 

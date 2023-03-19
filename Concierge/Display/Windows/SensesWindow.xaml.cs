@@ -32,6 +32,8 @@ namespace Concierge.Display.Windows
 
         public override string HeaderText => "Edit Senses";
 
+        public override string WindowName => nameof(SensesWindow);
+
         public override ConciergeWindowResult ShowWizardSetup(string buttonText)
         {
             this.FillFields();

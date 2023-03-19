@@ -29,6 +29,8 @@ namespace Concierge.Display.Windows
 
         public override string HeaderText => "Edit Attributes";
 
+        public override string WindowName => nameof(AttributesWindow);
+
         private Attributes Attributes { get; set; }
 
         public override ConciergeWindowResult ShowWizardSetup(string buttonText)

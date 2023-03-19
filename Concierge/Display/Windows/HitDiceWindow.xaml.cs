@@ -27,6 +27,8 @@ namespace Concierge.Display.Windows
 
         public override string HeaderText => "Edit Hit Dice";
 
+        public override string WindowName => nameof(HitDiceWindow);
+
         private HitDice HitDice { get; set; }
 
         public override ConciergeWindowResult ShowWizardSetup(string buttonText)

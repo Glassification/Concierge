@@ -11,6 +11,7 @@ namespace Concierge.Display.Utility
     using System.Windows.Input;
 
     using Concierge.Display.Components;
+    using Concierge.Display.Windows.Utility;
 
     /// <summary>
     /// Interaction logic for KonamiCodeWindow.xaml.
@@ -26,6 +27,8 @@ namespace Concierge.Display.Utility
         }
 
         public override string HeaderText => "Hey What's Goin' On";
+
+        public override string WindowName => nameof(KonamiCodeWindow);
 
         public override object? ShowWindow()
         {

@@ -9,6 +9,7 @@ namespace Concierge.Display.Windows.Utility
 
     using Concierge.Display.Components;
     using Concierge.Display.Enums;
+    using Concierge.Display.Utility;
     using Concierge.Tools.Glossary;
     using Concierge.Utility;
     using Concierge.Utility.Extensions;
@@ -25,6 +26,8 @@ namespace Concierge.Display.Windows.Utility
         }
 
         public override string HeaderText => "Glossary";
+
+        public override string WindowName => nameof(GlossaryWindow);
 
         public override ConciergeWindow? ShowNonBlockingWindow()
         {

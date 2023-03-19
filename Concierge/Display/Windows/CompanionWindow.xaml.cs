@@ -32,6 +32,8 @@ namespace Concierge.Display.Windows
 
         public override string HeaderText => "Edit Companion Properties";
 
+        public override string WindowName => nameof(CompanionWindow);
+
         private CompanionProperties Properties { get; set; }
 
         public override void ShowEdit<T>(T properties)

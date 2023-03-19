@@ -33,6 +33,8 @@ namespace Concierge.Display.Utility
 
         public override string HeaderText => "Console";
 
+        public override string WindowName => nameof(ConciergeConsoleWindow);
+
         private ConciergeConsole Console { get; set; }
 
         private bool CaretChanging { get; set; }

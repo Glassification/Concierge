@@ -33,6 +33,8 @@ namespace Concierge.Display.Windows
 
         public override string HeaderText => "Edit Armor";
 
+        public override string WindowName => nameof(ArmorWindow);
+
         private Armor SelectedArmor { get; set; }
 
         public override ConciergeWindowResult ShowWizardSetup(string buttonText)

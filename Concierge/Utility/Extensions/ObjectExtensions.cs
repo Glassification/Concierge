@@ -47,6 +47,14 @@ namespace Concierge.Utility.Extensions
             SetPropertiesHelper<T>(itemToCopy, originalItem);
         }
 
+        public static string GetProperty(this object item, string name)
+        {
+            var properties = item.GetType().GetProperties();
+            var property = properties.Where(x => x.Name.Equals(name)).FirstOrDefault();
+
+            return property?.GetValue(item)?.ToString() ?? string.Empty;
+        }
+
         public static bool SearchObject(this object item, string filter)
         {
             try

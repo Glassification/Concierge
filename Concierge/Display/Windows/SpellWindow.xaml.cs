@@ -37,6 +37,8 @@ namespace Concierge.Display.Windows
 
         public override string HeaderText => $"{(this.Editing ? "Edit" : "Add")} Spell";
 
+        public override string WindowName => nameof(SpellWindow);
+
         public bool ItemsAdded { get; private set; }
 
         private bool Editing { get; set; }

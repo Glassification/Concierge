@@ -52,6 +52,8 @@ namespace Concierge.Display.Windows
 
         public override string HeaderText => "Edit Character Properties";
 
+        public override string WindowName => nameof(PropertiesWindow);
+
         private CharacterProperties CharacterProperties { get; set; }
 
         private string OriginalFileName { get; set; }

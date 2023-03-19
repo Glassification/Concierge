@@ -37,6 +37,8 @@ namespace Concierge.Display.Utility
 
         public override string HeaderText => "Custom Colour";
 
+        public override string WindowName => nameof(CustomColorWindow);
+
         public Color SelectedColor
         {
             get

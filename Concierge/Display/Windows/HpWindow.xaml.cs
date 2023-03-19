@@ -28,6 +28,8 @@ namespace Concierge.Display.Windows
 
         public override string HeaderText => this.IsHealing ? "Heal" : "Damage";
 
+        public override string WindowName => nameof(HpWindow);
+
         private int PreviousHeal { get; set; }
 
         private int PreviousDamage { get; set; }

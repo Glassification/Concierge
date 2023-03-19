@@ -32,6 +32,8 @@ namespace Concierge.Display.Windows
 
         public override string HeaderText => "Edit Equipped Items";
 
+        public override string WindowName => nameof(EquipmentWindow);
+
         public bool ItemsAdded { get; private set; }
 
         private string PreviousSlot { get; set; }

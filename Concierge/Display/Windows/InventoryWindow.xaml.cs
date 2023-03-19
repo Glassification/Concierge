@@ -43,6 +43,8 @@ namespace Concierge.Display.Windows
 
         public override string HeaderText => $"{(this.Editing ? "Edit" : "Add")} Item";
 
+        public override string WindowName => nameof(InventoryWindow);
+
         public bool ItemsAdded { get; private set; }
 
         private bool EquippedItem { get; set; }

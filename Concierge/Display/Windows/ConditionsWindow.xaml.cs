@@ -34,6 +34,8 @@ namespace Concierge.Display.Windows
 
         public override string HeaderText => "Edit Conditions";
 
+        public override string WindowName => nameof(ConditionsWindow);
+
         private Conditions Conditions { get; set; }
 
         public override void ShowEdit<T>(T conditions)

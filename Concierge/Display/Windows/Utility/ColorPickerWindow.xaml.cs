@@ -11,6 +11,7 @@ namespace Concierge.Display.Utility
     using System.Windows.Media;
 
     using Concierge.Display.Components;
+    using Concierge.Display.Windows;
     using Concierge.Primitives;
     using Concierge.Services;
     using Concierge.Utility.Utilities;
@@ -35,6 +36,8 @@ namespace Concierge.Display.Utility
         }
 
         public override string HeaderText => "Colour Picker";
+
+        public override string WindowName => nameof(ColorPickerWindow);
 
         private CustomColor SelectedColor { get; set; }
 

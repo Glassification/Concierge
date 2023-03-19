@@ -26,6 +26,8 @@ namespace Concierge.Display.Utility
 
         public override string HeaderText => "Concierge Message";
 
+        public override string WindowName => nameof(ConciergeMessageWindow);
+
         private bool IsOk { get; set; }
 
         public ConciergeWindowResult ShowWindow(

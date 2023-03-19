@@ -7,6 +7,7 @@ namespace Concierge.Display.Utility
     using System.Windows;
 
     using Concierge.Display.Components;
+    using Concierge.Display.Windows;
     using Concierge.Utility;
     using Concierge.Utility.Utilities;
 
@@ -24,6 +25,8 @@ namespace Concierge.Display.Utility
         }
 
         public override string HeaderText => "About Concierge";
+
+        public override string WindowName => nameof(AboutConciergeWindow);
 
         public override object? ShowWindow()
         {

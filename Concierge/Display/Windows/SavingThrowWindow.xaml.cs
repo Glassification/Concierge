@@ -37,6 +37,8 @@ namespace Concierge.Display.Windows
 
         public override string HeaderText => "Edit Saving Throw Checks";
 
+        public override string WindowName => nameof(SavingThrowWindow);
+
         private SavingThrow SavingThrow { get; set; }
 
         public override void ShowEdit<T>(T savingThrow)

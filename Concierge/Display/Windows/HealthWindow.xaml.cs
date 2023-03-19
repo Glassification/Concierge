@@ -27,6 +27,8 @@ namespace Concierge.Display.Windows
 
         public override string HeaderText => "Edit Health";
 
+        public override string WindowName => nameof(HealthWindow);
+
         private Health Health { get; set; }
 
         public override ConciergeWindowResult ShowWizardSetup(string buttonText)

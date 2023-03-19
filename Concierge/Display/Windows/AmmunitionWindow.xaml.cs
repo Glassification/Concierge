@@ -15,6 +15,7 @@ namespace Concierge.Display.Windows
     using Concierge.Commands;
     using Concierge.Display.Components;
     using Concierge.Display.Enums;
+    using Concierge.Display.Utility;
     using Concierge.Utility;
 
     /// <summary>
@@ -36,6 +37,8 @@ namespace Concierge.Display.Windows
         }
 
         public override string HeaderText => $"{(this.Editing ? "Edit" : "Add")} Ammunition";
+
+        public override string WindowName => nameof(AmmunitionWindow);
 
         public bool ItemsAdded { get; private set; }
 

@@ -29,6 +29,8 @@ namespace Concierge.Display.Windows
 
         public override string HeaderText => "Edit Wealth";
 
+        public override string WindowName => nameof(WealthWindow);
+
         private int CP { get; set; }
 
         private int SP { get; set; }

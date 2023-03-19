@@ -32,6 +32,8 @@ namespace Concierge.Display.Utility
 
         public override string HeaderText => "Settings";
 
+        public override string WindowName => nameof(SettingsWindow);
+
         private string FormattedInterval => $"Autosave Interval:  {Constants.AutosaveIntervals[(int)this.AutosaveInterval.Value]} minute{((int)this.AutosaveInterval.Value > 0 ? "s" : string.Empty)}";
 
         public override void ShowEdit<T>(T item)

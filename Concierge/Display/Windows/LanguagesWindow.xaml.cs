@@ -32,6 +32,8 @@ namespace Concierge.Display.Windows
 
         public override string HeaderText => $"{(this.Editing ? "Edit" : "Add")} Language";
 
+        public override string WindowName => nameof(LanguagesWindow);
+
         public bool ItemsAdded { get; private set; }
 
         private bool Editing { get; set; }

@@ -14,13 +14,17 @@ namespace Concierge.Display.Components
     using Concierge.Character;
     using Concierge.Character.Enums;
     using Concierge.Display.Enums;
+    using Concierge.Display.Windows.Helpers;
     using Concierge.Exceptions;
     using Concierge.Primitives;
+    using Concierge.Services;
     using Concierge.Utility;
+    using Concierge.Utility.Extensions;
 
     public abstract partial class ConciergeWindow : Window
     {
         private readonly WindowAnimation windowAnimation;
+        private readonly StringResourceService stringResourceService;
 
         public ConciergeWindow()
         {
@@ -32,12 +36,13 @@ namespace Concierge.Display.Components
             this.Top = 0;
             this.Background = ConciergeBrushes.WindowBackground;
             this.HandleEnter = false;
-            this.Description = string.Empty;
+            this.Description = new NotifiableText();
 
             this.MouseDown += this.Window_MouseDown;
             this.KeyDown += this.Window_KeyDown;
 
             this.windowAnimation = new WindowAnimation(WindowAnimation.DefaultAnimationSpeed, this.Window_OnClose);
+            this.stringResourceService = new StringResourceService();
         }
 
         public delegate void ApplyChangesEventHandler(object sender, EventArgs e);
@@ -45,6 +50,8 @@ namespace Concierge.Display.Components
         public event ApplyChangesEventHandler? ApplyChanges;
 
         public abstract string HeaderText { get; }
+
+        public abstract string WindowName { get; }
 
         public ConciergePage ConciergePage { get; set; }
 
@@ -56,7 +63,7 @@ namespace Concierge.Display.Components
 
         protected bool HandleEnter { get; set; }
 
-        protected string Description { get; set; }
+        protected NotifiableText Description { get; set; }
 
         public virtual bool ShowAdd<T>(T item)
         {
@@ -184,9 +191,20 @@ namespace Concierge.Display.Components
             Marshal.ThrowExceptionForHR(DwmSetWindowAttribute(hWnd, attribute, ref preference, sizeof(uint)));
         }
 
+        protected void SetFocusEvents(UIElement element)
+        {
+            element.GotFocus += this.Control_GotFocus;
+            element.LostFocus += this.Control_LostFocus;
+        }
+
         protected void Control_GotFocus(object sender, RoutedEventArgs e)
         {
+            this.Description.Text = this.stringResourceService.GetPropertyDescription(this.WindowName, sender.GetProperty("Name"));
+        }
 
+        protected void Control_LostFocus(object sender, RoutedEventArgs e)
+        {
+            this.Description.Text = string.Empty;
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)

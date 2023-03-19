@@ -10,6 +10,7 @@ namespace Concierge.Display.Windows
     using Concierge.Commands;
     using Concierge.Display.Components;
     using Concierge.Display.Enums;
+    using Concierge.Display.Utility;
 
     /// <summary>
     /// Interaction logic for SpellSlotsWindow.xaml.
@@ -26,6 +27,8 @@ namespace Concierge.Display.Windows
         }
 
         public override string HeaderText => "Edit Spell Slots";
+
+        public override string WindowName => nameof(SpellSlotsWindow);
 
         private SpellSlots SpellSlots { get; set; }
 

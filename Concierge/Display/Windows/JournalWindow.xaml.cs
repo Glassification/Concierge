@@ -28,6 +28,8 @@ namespace Concierge.Display.Windows
 
         public override string HeaderText => $"{(this.Editing ? "Edit" : "Add")} {this.TreeViewButtonType}";
 
+        public override string WindowName => nameof(JournalWindow);
+
         private bool Editing { get; set; }
 
         private TreeViewButtonType TreeViewButtonType { get; set; }

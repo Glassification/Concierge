@@ -14,6 +14,7 @@ namespace Concierge.Display.Utility
     using Concierge.Character.Journal;
     using Concierge.Display.Components;
     using Concierge.Display.Enums;
+    using Concierge.Display.Windows;
     using Concierge.Exceptions;
     using Concierge.Search;
     using Concierge.Search.Enums;
@@ -50,6 +51,8 @@ namespace Concierge.Display.Utility
         }
 
         public override string HeaderText => "Search";
+
+        public override string WindowName => nameof(SearchWindow);
 
         private List<SearchResult> SearchResults { get; set; }
 
