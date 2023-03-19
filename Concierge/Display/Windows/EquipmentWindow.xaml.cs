@@ -28,6 +28,10 @@ namespace Concierge.Display.Windows
             this.SlotComboBox.ItemsSource = Enum.GetValues(typeof(EquipmentSlot)).Cast<EquipmentSlot>();
             this.ConciergePage = ConciergePage.None;
             this.PreviousSlot = string.Empty;
+            this.DescriptionTextBlock.DataContext = this.Description;
+
+            this.SetFocusEvents(this.SlotComboBox);
+            this.SetFocusEvents(this.ItemComboBox);
         }
 
         public override string HeaderText => "Edit Equipped Items";

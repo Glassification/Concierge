@@ -23,6 +23,11 @@ namespace Concierge.Display.Windows
 
             this.ConciergePage = ConciergePage.None;
             this.Health = new Health();
+            this.DescriptionTextBlock.DataContext = this.Description;
+
+            this.SetFocusEvents(this.TotalHpUpDown);
+            this.SetFocusEvents(this.CurrentHpUpDown);
+            this.SetFocusEvents(this.TemporaryHpUpDown);
         }
 
         public override string HeaderText => "Edit Health";

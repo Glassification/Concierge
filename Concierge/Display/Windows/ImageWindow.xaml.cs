@@ -33,6 +33,11 @@ namespace Concierge.Display.Windows
             this.ConciergePage = ConciergePage.None;
             this.CharacterImage = new CharacterImage();
             this.OriginalFileName = string.Empty;
+            this.DescriptionTextBlock.DataContext = this.Description;
+
+            this.SetFocusEvents(this.UseCustomImageCheckBox);
+            this.SetFocusEvents(this.ImageSourceTextBox);
+            this.SetFocusEvents(this.FillTypeComboBox);
         }
 
         public override string HeaderText => "Edit Image";

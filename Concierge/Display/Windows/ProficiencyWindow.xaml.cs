@@ -35,6 +35,11 @@ namespace Concierge.Display.Windows
             this.ConciergePage = ConciergePage.None;
             this.SelectedProficiencies = new List<Proficiency>();
             this.SelectedProficiency = new Proficiency();
+
+            this.DescriptionTextBlock.DataContext = this.Description;
+
+            this.SetFocusEvents(this.ProficiencyComboBox);
+            this.SetFocusEvents(this.ProficiencyTextComboBox);
         }
 
         public override string HeaderText => $"{(this.Editing ? "Edit" : "Add")} Proficiency";

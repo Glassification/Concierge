@@ -39,6 +39,18 @@ namespace Concierge.Display.Windows
             this.ConciergePage = ConciergePage.None;
             this.SelectedItem = new Inventory();
             this.Items = new List<Inventory>();
+            this.DescriptionTextBlock.DataContext = this.Description;
+
+            this.SetFocusEvents(this.NameComboBox);
+            this.SetFocusEvents(this.CategoryComboBox);
+            this.SetFocusEvents(this.AmountUpDown);
+            this.SetFocusEvents(this.WeightUpDown);
+            this.SetFocusEvents(this.IgnoreWeightCheckBox);
+            this.SetFocusEvents(this.AttunedCheckBox);
+            this.SetFocusEvents(this.ValueUpDown);
+            this.SetFocusEvents(this.CoinTypeComboBox);
+            this.SetFocusEvents(this.NotesTextBox);
+            this.SetFocusEvents(this.DescriptionTextBox);
         }
 
         public override string HeaderText => $"{(this.Editing ? "Edit" : "Add")} Item";

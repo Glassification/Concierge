@@ -25,6 +25,16 @@ namespace Concierge.Display.Windows
 
             this.ConciergePage = ConciergePage.None;
             this.SelectedWealth = new Wealth();
+            this.DescriptionTextBlock.DataContext = this.Description;
+
+            this.SetFocusEvents(this.AddRadioButton);
+            this.SetFocusEvents(this.SubtractRadioButton);
+            this.SetFocusEvents(this.AmountUpDown);
+            this.SetFocusEvents(this.CpRadioButton);
+            this.SetFocusEvents(this.SpRadioButton);
+            this.SetFocusEvents(this.EpRadioButton);
+            this.SetFocusEvents(this.GpRadioButton);
+            this.SetFocusEvents(this.PpRadioButton);
         }
 
         public override string HeaderText => "Edit Wealth";

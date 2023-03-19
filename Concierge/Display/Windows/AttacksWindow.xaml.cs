@@ -17,7 +17,6 @@ namespace Concierge.Display.Windows
     using Concierge.Configuration;
     using Concierge.Display.Components;
     using Concierge.Display.Enums;
-    using Concierge.Display.Utility;
     using Concierge.Exceptions;
     using Concierge.Primitives;
     using Concierge.Utility;
@@ -42,6 +41,21 @@ namespace Concierge.Display.Windows
             this.ConciergePage = ConciergePage.None;
             this.Weapons = new List<Weapon>();
             this.SelectedAttack = new Weapon();
+            this.DescriptionTextBlock.DataContext = this.Description;
+
+            this.SetFocusEvents(this.AttackComboBox);
+            this.SetFocusEvents(this.TypeComboBox);
+            this.SetFocusEvents(this.AbilityComboBox);
+            this.SetFocusEvents(this.DamageTextBox);
+            this.SetFocusEvents(this.MiscDamageTextBox);
+            this.SetFocusEvents(this.DamageTypeComboBox);
+            this.SetFocusEvents(this.RangeTextBox);
+            this.SetFocusEvents(this.WeightUpDown);
+            this.SetFocusEvents(this.IgnoreWeightCheckBox);
+            this.SetFocusEvents(this.ValueUpDown);
+            this.SetFocusEvents(this.CoinTypeComboBox);
+            this.SetFocusEvents(this.ProficencyOverrideCheckBox);
+            this.SetFocusEvents(this.NotesTextBox);
         }
 
         public override string HeaderText => $"{(this.Editing ? "Edit" : "Add")} Attack";

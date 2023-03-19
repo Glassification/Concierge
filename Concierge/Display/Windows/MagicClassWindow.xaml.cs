@@ -33,6 +33,13 @@ namespace Concierge.Display.Windows
             this.ConciergePage = ConciergePage.None;
             this.SelectedClass = new MagicClass();
             this.MagicClasses = new List<MagicClass>();
+            this.DescriptionTextBlock.DataContext = this.Description;
+
+            this.SetFocusEvents(this.ClassNameComboBox);
+            this.SetFocusEvents(this.AbilityComboBox);
+            this.SetFocusEvents(this.CantripsUpDown);
+            this.SetFocusEvents(this.SpellsUpDown);
+            this.SetFocusEvents(this.LevelUpDown);
         }
 
         public override string HeaderText => $"{(this.Editing ? "Edit" : "Add")} Spellcasting Class";

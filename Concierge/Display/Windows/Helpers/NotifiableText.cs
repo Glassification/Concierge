@@ -6,6 +6,8 @@ namespace Concierge.Display.Windows.Helpers
 {
     using System.ComponentModel;
 
+    using Concierge.Utility.Extensions;
+
     public sealed class NotifiableText : INotifyPropertyChanged
     {
         private string text = string.Empty;
@@ -29,6 +31,8 @@ namespace Concierge.Display.Windows.Helpers
                 this.OnPropertyChanged(nameof(this.Text));
             }
         }
+
+        public bool IsEmpty => this.Text.IsNullOrWhiteSpace();
 
         private void OnPropertyChanged(string propertyName)
         {

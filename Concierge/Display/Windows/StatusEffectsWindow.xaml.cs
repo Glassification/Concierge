@@ -32,6 +32,11 @@ namespace Concierge.Display.Windows
             this.ConciergePage = ConciergePage.None;
             this.SelectedEffect = new StatusEffect();
             this.StatusEffects = new List<StatusEffect>();
+            this.DescriptionTextBlock.DataContext = this.Description;
+
+            this.SetFocusEvents(this.NameComboBox);
+            this.SetFocusEvents(this.TypeComboBox);
+            this.SetFocusEvents(this.DescriptionTextBox);
         }
 
         public override string HeaderText => $"{(this.Editing ? "Edit" : "Add")} Status Effect";

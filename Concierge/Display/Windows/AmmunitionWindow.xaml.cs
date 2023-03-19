@@ -15,7 +15,6 @@ namespace Concierge.Display.Windows
     using Concierge.Commands;
     using Concierge.Display.Components;
     using Concierge.Display.Enums;
-    using Concierge.Display.Utility;
     using Concierge.Utility;
 
     /// <summary>
@@ -34,6 +33,15 @@ namespace Concierge.Display.Windows
             this.ConciergePage = ConciergePage.None;
             this.Ammunitions = new List<Ammunition>();
             this.SelectedAmmo = new Ammunition();
+            this.DescriptionTextBlock.DataContext = this.Description;
+
+            this.SetFocusEvents(this.NameComboBox);
+            this.SetFocusEvents(this.QuantityUpDown);
+            this.SetFocusEvents(this.UsedUpDown);
+            this.SetFocusEvents(this.ValueUpDown);
+            this.SetFocusEvents(this.CoinTypeComboBox);
+            this.SetFocusEvents(this.BonusTextBox);
+            this.SetFocusEvents(this.DamageTypeComboBox);
         }
 
         public override string HeaderText => $"{(this.Editing ? "Edit" : "Add")} Ammunition";

@@ -221,7 +221,7 @@
             BorderBrush="#29303E"
             BorderThickness="5"
             CornerRadius="10"
-            Margin="20,5,20,5">
+            Margin="10,5,20,5">
             <Grid
                 Background="#29303E"
                 Margin="-1">
@@ -231,6 +231,7 @@
                         HorizontalAlignment="Left"
                         FontSize="11"
                         Opacity="0.80"
+                        Margin="10,3,10,3"
                         Text="{Binding UpdateSourceTrigger=PropertyChanged, Path=Text}"/>
                 </ScrollViewer>
             </Grid>

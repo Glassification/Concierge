@@ -24,6 +24,9 @@ namespace Concierge.Display.Windows
 
             this.ConciergePage = ConciergePage.None;
             this.CurrentEntry = Entry.Empty;
+            this.DescriptionTextBlock.DataContext = this.Description;
+
+            this.SetFocusEvents(this.DocumentTextBox);
         }
 
         public override string HeaderText => $"{(this.Editing ? "Edit" : "Add")} {this.TreeViewButtonType}";

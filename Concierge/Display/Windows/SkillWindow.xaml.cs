@@ -45,6 +45,26 @@ namespace Concierge.Display.Windows
 
             this.ConciergePage = ConciergePage.None;
             this.Skill = new Skill();
+            this.DescriptionTextBlock.DataContext = this.Description;
+
+            this.SetFocusEvents(this.AthleticsComboBox);
+            this.SetFocusEvents(this.AcrobaticsComboBox);
+            this.SetFocusEvents(this.SleightOfHandComboBox);
+            this.SetFocusEvents(this.StealthComboBox);
+            this.SetFocusEvents(this.ArcanaComboBox);
+            this.SetFocusEvents(this.HistoryComboBox);
+            this.SetFocusEvents(this.InvestigationComboBox);
+            this.SetFocusEvents(this.NatureComboBox);
+            this.SetFocusEvents(this.ReligionComboBox);
+            this.SetFocusEvents(this.AnimalHandlingComboBox);
+            this.SetFocusEvents(this.InsightComboBox);
+            this.SetFocusEvents(this.MedicineComboBox);
+            this.SetFocusEvents(this.PerceptionComboBox);
+            this.SetFocusEvents(this.SurvivalComboBox);
+            this.SetFocusEvents(this.DeceptionComboBox);
+            this.SetFocusEvents(this.IntimidationComboBox);
+            this.SetFocusEvents(this.PerformanceComboBox);
+            this.SetFocusEvents(this.PersuasionComboBox);
         }
 
         public override string HeaderText => "Edit Skill Checks";

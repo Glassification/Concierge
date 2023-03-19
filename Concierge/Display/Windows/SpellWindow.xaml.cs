@@ -33,6 +33,24 @@ namespace Concierge.Display.Windows
             this.ConciergePage = ConciergePage.None;
             this.SelectedSpell = new Spell();
             this.Spells = new List<Spell>();
+            this.DescriptionTextBlock.DataContext = this.Description;
+
+            this.SetFocusEvents(this.SpellNameComboBox);
+            this.SetFocusEvents(this.PreparedCheckBox);
+            this.SetFocusEvents(this.LevelUpDown);
+            this.SetFocusEvents(this.PageUpDown);
+            this.SetFocusEvents(this.LevelUpDown);
+            this.SetFocusEvents(this.SchoolComboBox);
+            this.SetFocusEvents(this.RitualCheckBox);
+            this.SetFocusEvents(this.ComponentsTextBox);
+            this.SetFocusEvents(this.ConcentrationCheckBox);
+            this.SetFocusEvents(this.RangeTextBox);
+            this.SetFocusEvents(this.DurationTextBox);
+            this.SetFocusEvents(this.AreaTextBox);
+            this.SetFocusEvents(this.SaveTextBox);
+            this.SetFocusEvents(this.DamageTextBox);
+            this.SetFocusEvents(this.ClassComboBox);
+            this.SetFocusEvents(this.NotesTextBox);
         }
 
         public override string HeaderText => $"{(this.Editing ? "Edit" : "Add")} Spell";

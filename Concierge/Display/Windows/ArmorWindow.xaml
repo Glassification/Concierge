@@ -9,7 +9,7 @@
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     mc:Ignorable="d"
     Title="Modify Armor"
-    Height="475"
+    Height="535"
     Width="800"
     Style="{StaticResource WindowFontStyle}">
 
@@ -17,19 +17,21 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="45"/>
             <RowDefinition Height="360"/>
+            <RowDefinition Height="60"/>
             <RowDefinition Height="70"/>
         </Grid.RowDefinitions>
 
         <!--Header-->
         <Grid Grid.Row="0">
-            <TextBlock Text="Edit Armor"
-                       x:Name="HeaderTextBlock"
-                       Foreground="#227EA9"
-                       FontSize="35"
-                       HorizontalAlignment="Left"
-                       VerticalAlignment="Center"
-                       Margin="30, 0, 0, 0"
-                       FontWeight="Bold"/>
+            <TextBlock
+                Text="Edit Armor"
+                x:Name="HeaderTextBlock"
+                Foreground="#227EA9"
+                FontSize="35"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                Margin="30, 0, 0, 0"
+                FontWeight="Bold"/>
             <components:ConciergeDesignButton 
                 Style="{StaticResource ConciergeDesignButtonStyle}" 
                 x:Name="CloseButton"
@@ -315,8 +317,29 @@
             </Grid>
         </Grid>
 
+        <Border
+            Grid.Row="2"
+            BorderBrush="#29303E"
+            BorderThickness="5"
+            CornerRadius="10"
+            Margin="10,5,20,5">
+            <Grid
+                Background="#29303E"
+                Margin="-1">
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <components:ConciergeTextBlock
+                        x:Name="DescriptionTextBlock"
+                        HorizontalAlignment="Left"
+                        FontSize="11"
+                        Opacity="0.80"
+                        Margin="10,3,10,3"
+                        Text="{Binding UpdateSourceTrigger=PropertyChanged, Path=Text}"/>
+                </ScrollViewer>
+            </Grid>
+        </Border>
+
         <!--Buttons-->
-        <Grid Grid.Row="2">
+        <Grid Grid.Row="3">
             <StackPanel Orientation="Horizontal"
                         VerticalAlignment="Center"
                         HorizontalAlignment="Center">

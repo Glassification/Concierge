@@ -29,6 +29,19 @@ namespace Concierge.Display.Windows
             this.StealthComboBox.ItemsSource = Enum.GetValues(typeof(ArmorStealth)).Cast<ArmorStealth>();
             this.ConciergePage = ConciergePage.None;
             this.SelectedArmor = new Armor();
+            this.DescriptionTextBlock.DataContext = this.Description;
+
+            this.SetFocusEvents(this.EquipedTextBox);
+            this.SetFocusEvents(this.TypeComboBox);
+            this.SetFocusEvents(this.ArmorClassUpDown);
+            this.SetFocusEvents(this.WeightUpDown);
+            this.SetFocusEvents(this.StrengthUpDown);
+            this.SetFocusEvents(this.StealthComboBox);
+            this.SetFocusEvents(this.ShieldTextBox);
+            this.SetFocusEvents(this.ShieldArmorClassUpDown);
+            this.SetFocusEvents(this.ShieldWeightUpDown);
+            this.SetFocusEvents(this.MiscArmorClassUpDown);
+            this.SetFocusEvents(this.MagicArmorClassUpDown);
         }
 
         public override string HeaderText => "Edit Armor";

@@ -46,6 +46,24 @@ namespace Concierge.Display.Windows
             this.Class3Subclass.ItemsSource = Constants.Subclass;
             this.CharacterProperties = new CharacterProperties();
             this.OriginalFileName = string.Empty;
+            this.DescriptionTextBlock.DataContext = this.Description;
+
+            this.SetFocusEvents(this.NameTextBox);
+            this.SetFocusEvents(this.RaceComboBox);
+            this.SetFocusEvents(this.BackgroundComboBox);
+            this.SetFocusEvents(this.AlignmentComboBox);
+            this.SetFocusEvents(this.SubRaceComboBox);
+            this.SetFocusEvents(this.Class1Level);
+            this.SetFocusEvents(this.Class2Level);
+            this.SetFocusEvents(this.Class3Level);
+            this.SetFocusEvents(this.Class1Class);
+            this.SetFocusEvents(this.Class2Class);
+            this.SetFocusEvents(this.Class3Class);
+            this.SetFocusEvents(this.Class1Subclass);
+            this.SetFocusEvents(this.Class2Subclass);
+            this.SetFocusEvents(this.Class3Subclass);
+            this.SetFocusEvents(this.ImageSourceTextBox);
+            this.SetFocusEvents(this.UseCustomImageCheckBox);
 
             Program.Logger.Info($"Initialized {nameof(PropertiesWindow)}.");
         }

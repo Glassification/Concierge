@@ -199,11 +199,17 @@ namespace Concierge.Display.Components
 
         protected void Control_GotFocus(object sender, RoutedEventArgs e)
         {
-            this.Description.Text = this.stringResourceService.GetPropertyDescription(this.WindowName, sender.GetProperty("Name"));
+            var controlName = sender.GetProperty("Name");
+            this.Description.Text = this.stringResourceService.GetPropertyDescription(this.WindowName, controlName, controlName);
         }
 
         protected void Control_LostFocus(object sender, RoutedEventArgs e)
         {
+            if (this.Description.IsEmpty)
+            {
+                return;
+            }
+
             this.Description.Text = string.Empty;
         }
 
