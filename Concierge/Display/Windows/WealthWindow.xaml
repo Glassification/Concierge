@@ -334,7 +334,7 @@
                         HorizontalAlignment="Left"
                         FontSize="11"
                         Opacity="0.80"
-                        Margin="10,3,10,3"
+                        Margin="10,2,10,2"
                         Text="{Binding UpdateSourceTrigger=PropertyChanged, Path=Text}"/>
                 </ScrollViewer>
             </Grid>

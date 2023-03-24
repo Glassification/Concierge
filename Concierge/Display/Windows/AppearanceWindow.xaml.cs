@@ -45,7 +45,7 @@ namespace Concierge.Display.Windows
             this.SetFocusEvents(this.AgeUpDown);
             this.SetFocusEvents(this.FeetUpDown);
             this.SetFocusEvents(this.InchesUpDown);
-            this.SetFocusEvents(this.InchesUpDown);
+            this.SetFocusEvents(this.WeightUpDown);
             this.SetFocusEvents(this.SkinColourTextBox);
             this.SetFocusEvents(this.EyeColourTextBox);
             this.SetFocusEvents(this.HairColourTextBox);

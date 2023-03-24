@@ -79,7 +79,7 @@ namespace Concierge.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The name..
+        ///   Looks up a localized string similar to Every ability probably has a name..
         /// </summary>
         internal static string AbilitiesWindow_NameComboBox {
             get {
@@ -167,6 +167,240 @@ namespace Concierge.Properties {
             get {
                 object obj = ResourceManager.GetObject("Ammunition", resourceCulture);
                 return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A character should be older than 0, and probably at least the age of majority for their race..
+        /// </summary>
+        internal static string AppearanceWindow_AgeUpDown {
+            get {
+                return ResourceManager.GetString("AppearanceWindow_AgeUpDown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Give the character an unusual or memorable physical characteristic. Such as a scar, limp, or tattoo..
+        /// </summary>
+        internal static string AppearanceWindow_DistinguishingMarksTextBox {
+            get {
+                return ResourceManager.GetString("AppearanceWindow_DistinguishingMarksTextBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select a distinctive eye colour..
+        /// </summary>
+        internal static string AppearanceWindow_EyeColourTextBox {
+            get {
+                return ResourceManager.GetString("AppearanceWindow_EyeColourTextBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A stong and tough character might be tall or just heavy..
+        /// </summary>
+        internal static string AppearanceWindow_FeetUpDown {
+            get {
+                return ResourceManager.GetString("AppearanceWindow_FeetUpDown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Male, female, or even &apos;other&apos; characters don&apos;t gain any special benifits or hindrances..
+        /// </summary>
+        internal static string AppearanceWindow_GenderComboBox {
+            get {
+                return ResourceManager.GetString("AppearanceWindow_GenderComboBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Choose an interesting hair colour..
+        /// </summary>
+        internal static string AppearanceWindow_HairColourTextBox {
+            get {
+                return ResourceManager.GetString("AppearanceWindow_HairColourTextBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A stong and tough character might be tall or just heavy..
+        /// </summary>
+        internal static string AppearanceWindow_InchesUpDown {
+            get {
+                return ResourceManager.GetString("AppearanceWindow_InchesUpDown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select a reasonable skin colour. Or don&apos;t. I&apos;m just text, I can&apos;t stop you..
+        /// </summary>
+        internal static string AppearanceWindow_SkinColourTextBox {
+            get {
+                return ResourceManager.GetString("AppearanceWindow_SkinColourTextBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A weak but agile character might be thin..
+        /// </summary>
+        internal static string AppearanceWindow_WeightUpDown {
+            get {
+                return ResourceManager.GetString("AppearanceWindow_WeightUpDown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The armor&apos;s base AC without any modifiers added..
+        /// </summary>
+        internal static string ArmorWindow_ArmorClassUpDown {
+            get {
+                return ResourceManager.GetString("ArmorWindow_ArmorClassUpDown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Armor might have a snazzy title..
+        /// </summary>
+        internal static string ArmorWindow_EquipedTextBox {
+            get {
+                return ResourceManager.GetString("ArmorWindow_EquipedTextBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total of any magic bonuses that affect Armor Class..
+        /// </summary>
+        internal static string ArmorWindow_MagicArmorClassUpDown {
+            get {
+                return ResourceManager.GetString("ArmorWindow_MagicArmorClassUpDown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total of any status bonuses that affect Armor Class..
+        /// </summary>
+        internal static string ArmorWindow_MiscArmorClassUpDown {
+            get {
+                return ResourceManager.GetString("ArmorWindow_MiscArmorClassUpDown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Weilding a shield normally increases AC by 2..
+        /// </summary>
+        internal static string ArmorWindow_ShieldArmorClassUpDown {
+            get {
+                return ResourceManager.GetString("ArmorWindow_ShieldArmorClassUpDown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Usually made from wood or metal and carried in one hand..
+        /// </summary>
+        internal static string ArmorWindow_ShieldTextBox {
+            get {
+                return ResourceManager.GetString("ArmorWindow_ShieldTextBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Generally weighs more than 0..
+        /// </summary>
+        internal static string ArmorWindow_ShieldWeightUpDown {
+            get {
+                return ResourceManager.GetString("ArmorWindow_ShieldWeightUpDown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Determines if the wearer has disadvantage on stealth checks..
+        /// </summary>
+        internal static string ArmorWindow_StealthComboBox {
+            get {
+                return ResourceManager.GetString("ArmorWindow_StealthComboBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Armor reduces speed by 10 unless the strength score is equal to or greater than listed score..
+        /// </summary>
+        internal static string ArmorWindow_StrengthUpDown {
+            get {
+                return ResourceManager.GetString("ArmorWindow_StrengthUpDown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Light, Medium, or Heavy armor..
+        /// </summary>
+        internal static string ArmorWindow_TypeComboBox {
+            get {
+                return ResourceManager.GetString("ArmorWindow_TypeComboBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Contrary to popular belief, heavy armor will weigh more..
+        /// </summary>
+        internal static string ArmorWindow_WeightUpDown {
+            get {
+                return ResourceManager.GetString("ArmorWindow_WeightUpDown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Measures: Confidence, eloquence, leadership. Maximum of 30, but cannot be raised above 20 without special traits or equipment..
+        /// </summary>
+        internal static string AttributesWindow_CharismaUpDown {
+            get {
+                return ResourceManager.GetString("AttributesWindow_CharismaUpDown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Measures: Health, stamina, vital force. Maximum of 30, but cannot be raised above 20 without special traits or equipment..
+        /// </summary>
+        internal static string AttributesWindow_ConstitutionUpDown {
+            get {
+                return ResourceManager.GetString("AttributesWindow_ConstitutionUpDown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Measures: Physical agility, reflexes, balance, poise. Maximum of 30, but cannot be raised above 20 without special traits or equipment..
+        /// </summary>
+        internal static string AttributesWindow_DexterityUpDown {
+            get {
+                return ResourceManager.GetString("AttributesWindow_DexterityUpDown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Measures: Mental acuity, information recall, analytical skill. Maximum of 30, but cannot be raised above 20 without special traits or equipment..
+        /// </summary>
+        internal static string AttributesWindow_IntelligenceUpDown {
+            get {
+                return ResourceManager.GetString("AttributesWindow_IntelligenceUpDown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Measures: Natural athleticism, bodily power. Maximum of 30, but cannot be raised above 20 without special traits or equipment..
+        /// </summary>
+        internal static string AttributesWindow_StrengthUpDown {
+            get {
+                return ResourceManager.GetString("AttributesWindow_StrengthUpDown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Measures: Awareness, intuition, insight. Maximum of 30, but cannot be raised above 20 without special traits or equipment..
+        /// </summary>
+        internal static string AttributesWindow_WisdomUpDown {
+            get {
+                return ResourceManager.GetString("AttributesWindow_WisdomUpDown", resourceCulture);
             }
         }
         
@@ -285,6 +519,249 @@ namespace Concierge.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Total Armor Class of the companion..
+        /// </summary>
+        internal static string CompanionWindow_AcUpDown {
+            get {
+                return ResourceManager.GetString("CompanionWindow_AcUpDown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to In Soviet Russia, companion ride you..
+        /// </summary>
+        internal static string CompanionWindow_CreatureSizeComboBox {
+            get {
+                return ResourceManager.GetString("CompanionWindow_CreatureSizeComboBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total initiative score for the companion..
+        /// </summary>
+        internal static string CompanionWindow_InitiativeUpDown {
+            get {
+                return ResourceManager.GetString("CompanionWindow_InitiativeUpDown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total movement speed for the companion..
+        /// </summary>
+        internal static string CompanionWindow_MovementUpDown {
+            get {
+                return ResourceManager.GetString("CompanionWindow_MovementUpDown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to For example, an albino owl might be called &quot;Al&quot;..
+        /// </summary>
+        internal static string CompanionWindow_NameTextBox {
+            get {
+                return ResourceManager.GetString("CompanionWindow_NameTextBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total score to a companion&apos;s awareness..
+        /// </summary>
+        internal static string CompanionWindow_PerceptionUpDown {
+            get {
+                return ResourceManager.GetString("CompanionWindow_PerceptionUpDown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Visual traits granted to the companion..
+        /// </summary>
+        internal static string CompanionWindow_VisionComboBox {
+            get {
+                return ResourceManager.GetString("CompanionWindow_VisionComboBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Automatically fail any ability checks. Attack rolls against your character have advantage, your attacks have disadvantage..
+        /// </summary>
+        internal static string ConditionsWindow_BlindedCheckBox {
+            get {
+                return ResourceManager.GetString("ConditionsWindow_BlindedCheckBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your character cannot attack the charmer. The charmer has advantage on ability checks when interacting socially..
+        /// </summary>
+        internal static string ConditionsWindow_CharmedCheckBox {
+            get {
+                return ResourceManager.GetString("ConditionsWindow_CharmedCheckBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your character cannot hear and automatically fails any ability check that requires hearing..
+        /// </summary>
+        internal static string ConditionsWindow_DeafenedCheckBox {
+            get {
+                return ResourceManager.GetString("ConditionsWindow_DeafenedCheckBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your character must succeed on 3 death saving throws, before failing 3. Succeeding will stabilize at 0 HP..
+        /// </summary>
+        internal static string ConditionsWindow_DeathCheckBox {
+            get {
+                return ResourceManager.GetString("ConditionsWindow_DeathCheckBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Override the automatically calculated encumbrance status..
+        /// </summary>
+        internal static string ConditionsWindow_EncumbranceCheckBox {
+            get {
+                return ResourceManager.GetString("ConditionsWindow_EncumbranceCheckBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A carry weight exceeding 5 and 10 times Strength will reduce speed by 10 and 20 respectively..
+        /// </summary>
+        internal static string ConditionsWindow_EncumbranceComboBox {
+            get {
+                return ResourceManager.GetString("ConditionsWindow_EncumbranceComboBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Some special abilities and environmental hazards, such as starvation and the long-term effects of freezing or scorching temperatures, can lead to exhaustion. Exhaustion is measured in six levels..
+        /// </summary>
+        internal static string ConditionsWindow_FatiguedComboBox {
+            get {
+                return ResourceManager.GetString("ConditionsWindow_FatiguedComboBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your character has disadvantage on Ability Checks and Attack rolls while the source of fear is within line of sight. You can’t willingly move closer to the source..
+        /// </summary>
+        internal static string ConditionsWindow_FrightenedCheckBox {
+            get {
+                return ResourceManager.GetString("ConditionsWindow_FrightenedCheckBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your character speed becomes 0. It ends when the grappler is incapacitated or you are thrown away..
+        /// </summary>
+        internal static string ConditionsWindow_GrappledCheckBox {
+            get {
+                return ResourceManager.GetString("ConditionsWindow_GrappledCheckBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your character cannot react or take an action..
+        /// </summary>
+        internal static string ConditionsWindow_IncapacitatedCheckBox {
+            get {
+                return ResourceManager.GetString("ConditionsWindow_IncapacitatedCheckBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You are impossible to see without the aid of magic or a Special sense. Attacks against you have disadvantage, your attacks have advantage..
+        /// </summary>
+        internal static string ConditionsWindow_InvisibleCheckBox {
+            get {
+                return ResourceManager.GetString("ConditionsWindow_InvisibleCheckBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your character is incapacitated and automatically fail Strength and Dexterity Saving Throws. Attacks have advantage, and melee are auto crit..
+        /// </summary>
+        internal static string ConditionsWindow_ParalyzedCheckBox {
+            get {
+                return ResourceManager.GetString("ConditionsWindow_ParalyzedCheckBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Transforms your character into an inanimate substance and are incapacitated. Resistant to all damage and immune to poison and disease..
+        /// </summary>
+        internal static string ConditionsWindow_PetrifiedCheckBox {
+            get {
+                return ResourceManager.GetString("ConditionsWindow_PetrifiedCheckBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You have disadvantage on Attack rolls and Ability Checks.
+        /// </summary>
+        internal static string ConditionsWindow_PoisonedCheckBox {
+            get {
+                return ResourceManager.GetString("ConditionsWindow_PoisonedCheckBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your only movement option is to crawl like a little bitch and have disadvantage on attacks. Melee attack is advantage, ranged is disadvantage..
+        /// </summary>
+        internal static string ConditionsWindow_ProneCheckBox {
+            get {
+                return ResourceManager.GetString("ConditionsWindow_ProneCheckBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your speed becomes 0. Your attacks have disadvantage, enemies have advantage. Dexterity Saving Throws are disadvantage..
+        /// </summary>
+        internal static string ConditionsWindow_RestrainedCheckBox {
+            get {
+                return ResourceManager.GetString("ConditionsWindow_RestrainedCheckBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You are incapacitated and speak falteringly, and automatically fail Strength and Dexterity Saving Throws. Attacks against have advantage..
+        /// </summary>
+        internal static string ConditionsWindow_StunnedCheckBox {
+            get {
+                return ResourceManager.GetString("ConditionsWindow_StunnedCheckBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your character is incapacitated, drop what you&apos;re holding, and fall prone. Attacks against have advantage and hits are auto crit..
+        /// </summary>
+        internal static string ConditionsWindow_UnconsciousCheckBox {
+            get {
+                return ResourceManager.GetString("ConditionsWindow_UnconsciousCheckBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This item will be removed from your inventory to this page..
+        /// </summary>
+        internal static string EquipmentWindow_ItemComboBox {
+            get {
+                return ResourceManager.GetString("EquipmentWindow_ItemComboBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Choose a location to equip the item to your character..
+        /// </summary>
+        internal static string EquipmentWindow_SlotComboBox {
+            get {
+                return ResourceManager.GetString("EquipmentWindow_SlotComboBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Dice Set
         ///Dragonchess Set
         ///Playing Card Set
@@ -325,6 +802,33 @@ namespace Concierge.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Current health from your pool remaning..
+        /// </summary>
+        internal static string HealthWindow_CurrentHpUpDown {
+            get {
+                return ResourceManager.GetString("HealthWindow_CurrentHpUpDown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Temporary bonus to HP. This might allow you to increase health beyond the normal maximum. Damage will drain from this pool first..
+        /// </summary>
+        internal static string HealthWindow_TemporaryHpUpDown {
+            get {
+                return ResourceManager.GetString("HealthWindow_TemporaryHpUpDown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The maximim health your character can heal to..
+        /// </summary>
+        internal static string HealthWindow_TotalHpUpDown {
+            get {
+                return ResourceManager.GetString("HealthWindow_TotalHpUpDown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
         internal static byte[] hey_whats_going_on {
@@ -340,6 +844,87 @@ namespace Concierge.Properties {
         internal static System.IO.UnmanagedMemoryStream HighPitchTapSoundLoud {
             get {
                 return ResourceManager.GetStream("HighPitchTapSoundLoud", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Maximum d10 hit dice..
+        /// </summary>
+        internal static string HitDiceWindow_TotalD10UpDown {
+            get {
+                return ResourceManager.GetString("HitDiceWindow_TotalD10UpDown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Maximum d12 hit dice..
+        /// </summary>
+        internal static string HitDiceWindow_TotalD12UpDown {
+            get {
+                return ResourceManager.GetString("HitDiceWindow_TotalD12UpDown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Maximum d6 hit dice..
+        /// </summary>
+        internal static string HitDiceWindow_TotalD6UpDown {
+            get {
+                return ResourceManager.GetString("HitDiceWindow_TotalD6UpDown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Maximum d8 hit dice..
+        /// </summary>
+        internal static string HitDiceWindow_TotalD8UpDown {
+            get {
+                return ResourceManager.GetString("HitDiceWindow_TotalD8UpDown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Expended d10 hit dice..
+        /// </summary>
+        internal static string HitDiceWindow_UsedD10UpDown {
+            get {
+                return ResourceManager.GetString("HitDiceWindow_UsedD10UpDown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Expended d12 hit dice..
+        /// </summary>
+        internal static string HitDiceWindow_UsedD12UpDown {
+            get {
+                return ResourceManager.GetString("HitDiceWindow_UsedD12UpDown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Expended d6 hit dice..
+        /// </summary>
+        internal static string HitDiceWindow_UsedD6UpDown {
+            get {
+                return ResourceManager.GetString("HitDiceWindow_UsedD6UpDown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Expended d8 hit dice..
+        /// </summary>
+        internal static string HitDiceWindow_UsedD8UpDown {
+            get {
+                return ResourceManager.GetString("HitDiceWindow_UsedD8UpDown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The amount of healthing or damage to take. 10 points to Gryffindor!.
+        /// </summary>
+        internal static string HpWindow_HpUpDown {
+            get {
+                return ResourceManager.GetString("HpWindow_HpUpDown", resourceCulture);
             }
         }
         
@@ -378,6 +963,33 @@ namespace Concierge.Properties {
             get {
                 object obj = ResourceManager.GetObject("Language", resourceCulture);
                 return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Race indicates the languages a character can speak by default, and a background might give access to one or more additional languages..
+        /// </summary>
+        internal static string LanguagesWindow_NameComboBox {
+            get {
+                return ResourceManager.GetString("LanguagesWindow_NameComboBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The style of characters are used to write this language. Some languages are only spoken, and may not have a unique script..
+        /// </summary>
+        internal static string LanguagesWindow_ScriptTextBox {
+            get {
+                return ResourceManager.GetString("LanguagesWindow_ScriptTextBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The races that are likely to speak a given language..
+        /// </summary>
+        internal static string LanguagesWindow_SpeakersTextBox {
+            get {
+                return ResourceManager.GetString("LanguagesWindow_SpeakersTextBox", resourceCulture);
             }
         }
         
@@ -443,6 +1055,60 @@ namespace Concierge.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Bonds represent a character&apos;s connections to people, places, and events in the world..
+        /// </summary>
+        internal static string PersonalityWindow_BondTextBox {
+            get {
+                return ResourceManager.GetString("PersonalityWindow_BondTextBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Character flaws represent some vice, compulsion, fear, or weakness. Anything that someone else could exploit to cause you to act against your best interests..
+        /// </summary>
+        internal static string PersonalityWindow_FlawTextBox {
+            get {
+                return ResourceManager.GetString("PersonalityWindow_FlawTextBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ideals are things that you believe in most strongly, the fundamental moral and ethical principles that compel you to act as you do..
+        /// </summary>
+        internal static string PersonalityWindow_IdealTextBox {
+            get {
+                return ResourceManager.GetString("PersonalityWindow_IdealTextBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Extra descriptions about a character&apos;s history..
+        /// </summary>
+        internal static string PersonalityWindow_NotesTextBox {
+            get {
+                return ResourceManager.GetString("PersonalityWindow_NotesTextBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to They should be self-descriptions that are specific about what makes a character stand out..
+        /// </summary>
+        internal static string PersonalityWindow_Trait1TextBox {
+            get {
+                return ResourceManager.GetString("PersonalityWindow_Trait1TextBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to They should be self-descriptions that are specific about what makes a character stand out..
+        /// </summary>
+        internal static string PersonalityWindow_Trait2TextBox {
+            get {
+                return ResourceManager.GetString("PersonalityWindow_Trait2TextBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 2
         ///2
         ///2
@@ -467,6 +1133,24 @@ namespace Concierge.Properties {
         internal static string ProficiencyLevel {
             get {
                 return ResourceManager.GetString("ProficiencyLevel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A character can be proficient in armors, weapons, or tools..
+        /// </summary>
+        internal static string ProficiencyWindow_ProficiencyComboBox {
+            get {
+                return ResourceManager.GetString("ProficiencyWindow_ProficiencyComboBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The name of the armors, weapons, or tools that a characters is proficient in..
+        /// </summary>
+        internal static string ProficiencyWindow_ProficiencyTextComboBox {
+            get {
+                return ResourceManager.GetString("ProficiencyWindow_ProficiencyTextComboBox", resourceCulture);
             }
         }
         
@@ -515,6 +1199,60 @@ namespace Concierge.Properties {
         internal static string ResourceValidation {
             get {
                 return ResourceManager.GetString("ResourceValidation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Maximum a character may move on a given turn..
+        /// </summary>
+        internal static string SensesWindow_BaseMovementUpDown {
+            get {
+                return ResourceManager.GetString("SensesWindow_BaseMovementUpDown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Extra bonus to initiative..
+        /// </summary>
+        internal static string SensesWindow_InitiativeBonusUpDown {
+            get {
+                return ResourceManager.GetString("SensesWindow_InitiativeBonusUpDown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Determins if the player can roll an insperation die..
+        /// </summary>
+        internal static string SensesWindow_InspirationCheckBox {
+            get {
+                return ResourceManager.GetString("SensesWindow_InspirationCheckBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Additional increase to a players maximum movement speed..
+        /// </summary>
+        internal static string SensesWindow_MovementBonusUpDown {
+            get {
+                return ResourceManager.GetString("SensesWindow_MovementBonusUpDown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bonus to a characters awareness..
+        /// </summary>
+        internal static string SensesWindow_PerceptionBonusUpDown {
+            get {
+                return ResourceManager.GetString("SensesWindow_PerceptionBonusUpDown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Visual traits granted to the player..
+        /// </summary>
+        internal static string SensesWindow_VisionComboBox {
+            get {
+                return ResourceManager.GetString("SensesWindow_VisionComboBox", resourceCulture);
             }
         }
         
@@ -599,6 +1337,78 @@ namespace Concierge.Properties {
         internal static string Tool {
             get {
                 return ResourceManager.GetString("Tool", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Money can be exchanged for goods and services..
+        /// </summary>
+        internal static string WealthWindow_AddRadioButton {
+            get {
+                return ResourceManager.GetString("WealthWindow_AddRadioButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wealth appears in many forms in the world. Coins, gemstones, trade goods, art objects, animals, and property can reflect your character’s financial well-being..
+        /// </summary>
+        internal static string WealthWindow_AmountUpDown {
+            get {
+                return ResourceManager.GetString("WealthWindow_AmountUpDown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to One silver piece is worth ten copper pieces, which are common among laborers and beggars. A single copper piece buys a candle, a torch, or a piece of chalk..
+        /// </summary>
+        internal static string WealthWindow_CpRadioButton {
+            get {
+                return ResourceManager.GetString("WealthWindow_CpRadioButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The electrum piece originates from fallen empires and lost kingdoms, and they sometimes arouse suspicion and skepticism when used in transactions. An electrum piece is worth five silver pieces..
+        /// </summary>
+        internal static string WealthWindow_EpRadioButton {
+            get {
+                return ResourceManager.GetString("WealthWindow_EpRadioButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to With one gold piece, a character can buy a bedroll or 50 feet of good rope. A skilled artisan can earn one gold piece a day. The gold piece is the standard unit of measure for wealth, even if the coin itself is not commonly used..
+        /// </summary>
+        internal static string WealthWindow_GpRadioButton {
+            get {
+                return ResourceManager.GetString("WealthWindow_GpRadioButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The platinum piece originates from fallen empires and lost kingdoms, and they sometimes arouse suspicion and skepticism when used in transactions. A platinum piece is worth ten gold pieces..
+        /// </summary>
+        internal static string WealthWindow_PpRadioButton {
+            get {
+                return ResourceManager.GetString("WealthWindow_PpRadioButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to One gold piece is worth ten silver pieces, the most prevalent coin among commoners. A silver piece buys a laborer&apos;s work for half a day, a flask of lamp oil, or a night&apos;s rest in a poor inn..
+        /// </summary>
+        internal static string WealthWindow_SpRadioButton {
+            get {
+                return ResourceManager.GetString("WealthWindow_SpRadioButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Why couldn&apos;t I have 3 money and no kids?.
+        /// </summary>
+        internal static string WealthWindow_SubtractRadioButton {
+            get {
+                return ResourceManager.GetString("WealthWindow_SubtractRadioButton", resourceCulture);
             }
         }
         
