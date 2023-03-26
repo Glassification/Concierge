@@ -6,7 +6,6 @@ namespace Concierge.Persistence.ReadWriters
 {
     using System;
     using System.IO;
-    using System.Runtime.CompilerServices;
     using System.Text.RegularExpressions;
 
     using Concierge.Character;
@@ -59,6 +58,8 @@ namespace Concierge.Persistence.ReadWriters
             }
             catch (Exception ex)
             {
+                ex = ex.TryConvertToReadWriterException(fileName);
+
                 Program.ErrorService.LogError(ex);
                 Program.Modify();
 

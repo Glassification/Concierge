@@ -9,6 +9,7 @@ namespace Concierge.Persistence.ReadWriters
     using System.IO;
 
     using Concierge.Utility;
+    using Concierge.Utility.Extensions;
 
     public static class HistoryReadWriter
     {
@@ -29,6 +30,7 @@ namespace Concierge.Persistence.ReadWriters
             }
             catch (Exception ex)
             {
+                ex = ex.TryConvertToReadWriterException(filePath);
                 Program.ErrorService.LogError(ex);
             }
 

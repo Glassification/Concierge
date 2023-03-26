@@ -8,6 +8,7 @@ namespace Concierge.Persistence.ReadWriters
     using System.Collections.Generic;
     using System.Text;
 
+    using Concierge.Utility.Extensions;
     using global::Utility.Utilities;
     using Newtonsoft.Json;
 
@@ -26,6 +27,7 @@ namespace Concierge.Persistence.ReadWriters
             }
             catch (Exception ex)
             {
+                ex = ex.TryConvertToReadWriterException(typeof(T).Name);
                 Program.ErrorService.LogError(ex);
             }
             finally

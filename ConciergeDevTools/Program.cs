@@ -4,8 +4,6 @@
 
 namespace ConciergeDevTools
 {
-    using System.CommandLine;
-
     public class Program
     {
         public static void Main(string[] args)
@@ -41,19 +39,6 @@ namespace ConciergeDevTools
             rootCommand.Invoke(args);
             */
             GlossaryGenerator.Generate();
-        }
-
-        private static void ParseScrubbedDataHandler(string fileName)
-        {
-            ParseScrubbedData.Parse(fileName);
-        }
-
-        private static void DecodeFile(string fileName)
-        {
-        }
-
-        private static void EncodeFile(string fileName)
-        {
         }
     }
 }

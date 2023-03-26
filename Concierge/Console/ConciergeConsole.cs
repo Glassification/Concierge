@@ -128,6 +128,7 @@ namespace Concierge.Console
             var wealthScriptService = new WealthScriptService();
             var readWriterScriptService = new ReadWriterScriptService();
             var listCommandScriptService = new ListCommandsScriptService();
+            var ccsCompressionScriptService = new CcsCompressionScriptService();
 
             if (listScriptService.Contains(command.Name))
             {
@@ -147,6 +148,16 @@ namespace Concierge.Console
             if (listCommandScriptService.Contains(command.Name))
             {
                 matchingScripts.Add(listCommandScriptService);
+            }
+
+            if (ccsCompressionScriptService.Contains(command.Name))
+            {
+                matchingScripts.Add(ccsCompressionScriptService);
+            }
+
+            if (command.Name.Equals("Help", StringComparison.InvariantCultureIgnoreCase))
+            {
+                matchingScripts.Add(new HelpScriptService());
             }
 
             if (command.Name.Equals("Clear", StringComparison.InvariantCultureIgnoreCase))
