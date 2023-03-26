@@ -37,7 +37,7 @@ namespace Concierge.Display.Windows
             this.SetFocusEvents(this.ResourceNameComboBox);
             this.SetFocusEvents(this.PoolUpDown);
             this.SetFocusEvents(this.SpentUpDown);
-            this.SetFocusEvents(this.SpentUpDown);
+            this.SetFocusEvents(this.RecoveryComboBox);
             this.SetFocusEvents(this.NotesTextBox);
         }
 

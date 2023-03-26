@@ -4,7 +4,10 @@
 
 namespace Concierge.Tools.Glossary
 {
+    using System;
     using System.Collections.Generic;
+
+    using Concierge.Utility.Extensions;
 
     public sealed class GlossaryEntry
     {
@@ -27,5 +30,21 @@ namespace Concierge.Tools.Glossary
         public string Markdown { get; set; }
 
         public string Name { get; set; }
+
+        public bool Search(string text)
+        {
+            if (text.IsNullOrWhiteSpace())
+            {
+                return true;
+            }
+
+            var containsText =
+                this.Name.Contains(text, StringComparison.InvariantCultureIgnoreCase) ||
+                this.Markdown.Contains(text, StringComparison.InvariantCultureIgnoreCase);
+
+            this.GlossaryEntries.ForEach(x => containsText |= x.Search(text));
+
+            return containsText;
+        }
     }
 }

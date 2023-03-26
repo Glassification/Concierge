@@ -171,6 +171,69 @@ namespace Concierge.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add any extra damage, status effects, or behaviours here..
+        /// </summary>
+        internal static string AmmunitionWindow_BonusTextBox {
+            get {
+                return ResourceManager.GetString("AmmunitionWindow_BonusTextBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Specify the denomination so you don&apos;t have to worry about math..
+        /// </summary>
+        internal static string AmmunitionWindow_CoinTypeComboBox {
+            get {
+                return ResourceManager.GetString("AmmunitionWindow_CoinTypeComboBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set the type of wound this projectile will cause..
+        /// </summary>
+        internal static string AmmunitionWindow_DamageTypeComboBox {
+            get {
+                return ResourceManager.GetString("AmmunitionWindow_DamageTypeComboBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You can use a weapon that has the ammunition property to make a ranged attack only if you have ammunition to fire from the weapon. Drawing the ammunition from a quiver, case, or other container is part of the attack..
+        /// </summary>
+        internal static string AmmunitionWindow_NameComboBox {
+            get {
+                return ResourceManager.GetString("AmmunitionWindow_NameComboBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to At the end of the battle, you can recover half your expended ammunition by taking a minute to search the battlefield..
+        /// </summary>
+        internal static string AmmunitionWindow_QuantityUpDown {
+            get {
+                return ResourceManager.GetString("AmmunitionWindow_QuantityUpDown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Each time you attack with the weapon, you expend one piece of ammunition..
+        /// </summary>
+        internal static string AmmunitionWindow_UsedUpDown {
+            get {
+                return ResourceManager.GetString("AmmunitionWindow_UsedUpDown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The worth of 1 piece of this ammunition type..
+        /// </summary>
+        internal static string AmmunitionWindow_ValueUpDown {
+            get {
+                return ResourceManager.GetString("AmmunitionWindow_ValueUpDown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to A character should be older than 0, and probably at least the age of majority for their race..
         /// </summary>
         internal static string AppearanceWindow_AgeUpDown {
@@ -351,6 +414,123 @@ namespace Concierge.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Most weapons require strength to use, but finesse weapons allow a character to use their dexterity score. Special weapons or statuses might allow other abilities to be used instead..
+        /// </summary>
+        internal static string AttacksWindow_AbilityComboBox {
+            get {
+                return ResourceManager.GetString("AttacksWindow_AbilityComboBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your race, class, and feats can grant you proficiency with certain weapons or categories of weapons..
+        /// </summary>
+        internal static string AttacksWindow_AttackComboBox {
+            get {
+                return ResourceManager.GetString("AttacksWindow_AttackComboBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Specify the denomination so you don&apos;t have to worry about math..
+        /// </summary>
+        internal static string AttacksWindow_CoinTypeComboBox {
+            get {
+                return ResourceManager.GetString("AttacksWindow_CoinTypeComboBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to List the damage rolls and proficiency bonus to attacking with this weapon..
+        /// </summary>
+        internal static string AttacksWindow_DamageTextBox {
+            get {
+                return ResourceManager.GetString("AttacksWindow_DamageTextBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Some creatures and objects are exceedingly difficult or unusually easy to hurt with certain types of damage..
+        /// </summary>
+        internal static string AttacksWindow_DamageTypeComboBox {
+            get {
+                return ResourceManager.GetString("AttacksWindow_DamageTypeComboBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This is generally used to &apos;place&apos; the weapon in a bag of holding..
+        /// </summary>
+        internal static string AttacksWindow_IgnoreWeightCheckBox {
+            get {
+                return ResourceManager.GetString("AttacksWindow_IgnoreWeightCheckBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Here, you can use my plus 1 mace..
+        /// </summary>
+        internal static string AttacksWindow_MiscDamageTextBox {
+            get {
+                return ResourceManager.GetString("AttacksWindow_MiscDamageTextBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Many weapons have special properties related to their use, as shown in the Weapons table..
+        /// </summary>
+        internal static string AttacksWindow_NotesTextBox {
+            get {
+                return ResourceManager.GetString("AttacksWindow_NotesTextBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Force this weapon to add your character&apos;s proficiency bonus..
+        /// </summary>
+        internal static string AttacksWindow_ProficencyOverrideCheckBox {
+            get {
+                return ResourceManager.GetString("AttacksWindow_ProficencyOverrideCheckBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to How far you can strike enemies with this weapon. Ranged weapons have minimum and maximum effective ranges..
+        /// </summary>
+        internal static string AttacksWindow_RangeTextBox {
+            get {
+                return ResourceManager.GetString("AttacksWindow_RangeTextBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Specifying the type of weapon allows Concierge to automatically attempt to calculate proficiency bonuses. Most people can use simple weapons with proficiency, however, martial weapons require more specialized training to use effectively..
+        /// </summary>
+        internal static string AttacksWindow_TypeComboBox {
+            get {
+                return ResourceManager.GetString("AttacksWindow_TypeComboBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The worth of this weapon. Even your fists have value to someone..
+        /// </summary>
+        internal static string AttacksWindow_ValueUpDown {
+            get {
+                return ResourceManager.GetString("AttacksWindow_ValueUpDown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bro, do you even lift?.
+        /// </summary>
+        internal static string AttacksWindow_WeightUpDown {
+            get {
+                return ResourceManager.GetString("AttacksWindow_WeightUpDown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Measures: Confidence, eloquence, leadership. Maximum of 30, but cannot be raised above 20 without special traits or equipment..
         /// </summary>
         internal static string AttributesWindow_CharismaUpDown {
@@ -505,6 +685,51 @@ namespace Concierge.Properties {
         internal static string ClassName {
             get {
                 return ResourceManager.GetString("ClassName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Any extra information to help Danial so he remembers to rage..
+        /// </summary>
+        internal static string ClassResourceWindow_NotesTextBox {
+            get {
+                return ResourceManager.GetString("ClassResourceWindow_NotesTextBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Maximum available resources..
+        /// </summary>
+        internal static string ClassResourceWindow_PoolUpDown {
+            get {
+                return ResourceManager.GetString("ClassResourceWindow_PoolUpDown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to How fast can your character recover their spent resources..
+        /// </summary>
+        internal static string ClassResourceWindow_RecoveryComboBox {
+            get {
+                return ResourceManager.GetString("ClassResourceWindow_RecoveryComboBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Not every class has resources to spend. Only the cool ones..
+        /// </summary>
+        internal static string ClassResourceWindow_ResourceNameComboBox {
+            get {
+                return ResourceManager.GetString("ClassResourceWindow_ResourceNameComboBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Currently used resources..
+        /// </summary>
+        internal static string ClassResourceWindow_SpentUpDown {
+            get {
+                return ResourceManager.GetString("ClassResourceWindow_SpentUpDown", resourceCulture);
             }
         }
         
@@ -920,11 +1145,38 @@ namespace Concierge.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The amount of healthing or damage to take. 10 points to Gryffindor!.
+        ///   Looks up a localized string similar to The amount of healing or damage to take. 10 points to Gryffindor!.
         /// </summary>
         internal static string HpWindow_HpUpDown {
             get {
                 return ResourceManager.GetString("HpWindow_HpUpDown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Change how the image is stretched to fill the canvas..
+        /// </summary>
+        internal static string ImageWindow_FillTypeComboBox {
+            get {
+                return ResourceManager.GetString("ImageWindow_FillTypeComboBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You can safely delete the image after loading it into Concierge..
+        /// </summary>
+        internal static string ImageWindow_ImageSourceTextBox {
+            get {
+                return ResourceManager.GetString("ImageWindow_ImageSourceTextBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unchecking this won&apos;t delete a selected image..
+        /// </summary>
+        internal static string ImageWindow_UseCustomImageCheckBox {
+            get {
+                return ResourceManager.GetString("ImageWindow_UseCustomImageCheckBox", resourceCulture);
             }
         }
         
@@ -953,6 +1205,105 @@ namespace Concierge.Properties {
             get {
                 object obj = ResourceManager.GetObject("Inventory", resourceCulture);
                 return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        internal static string InventoryWindow_AmountUpDown {
+            get {
+                return ResourceManager.GetString("InventoryWindow_AmountUpDown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Spend time attuning to this item, allowing the use of special abilities. Your character can only attune to 3 items at a time..
+        /// </summary>
+        internal static string InventoryWindow_AttunedCheckBox {
+            get {
+                return ResourceManager.GetString("InventoryWindow_AttunedCheckBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        internal static string InventoryWindow_CategoryComboBox {
+            get {
+                return ResourceManager.GetString("InventoryWindow_CategoryComboBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Specify the denomination so you don&apos;t have to worry about math..
+        /// </summary>
+        internal static string InventoryWindow_CoinTypeComboBox {
+            get {
+                return ResourceManager.GetString("InventoryWindow_CoinTypeComboBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Describe, in detail, why your character looted this item..
+        /// </summary>
+        internal static string InventoryWindow_DescriptionTextBox {
+            get {
+                return ResourceManager.GetString("InventoryWindow_DescriptionTextBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This is generally used to &apos;place&apos; the item in a bag of holding..
+        /// </summary>
+        internal static string InventoryWindow_IgnoreWeightCheckBox {
+            get {
+                return ResourceManager.GetString("InventoryWindow_IgnoreWeightCheckBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        internal static string InventoryWindow_NameComboBox {
+            get {
+                return ResourceManager.GetString("InventoryWindow_NameComboBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        internal static string InventoryWindow_NotesTextBox {
+            get {
+                return ResourceManager.GetString("InventoryWindow_NotesTextBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The worth of this item. Lisa, I&apos;d like to buy your rock..
+        /// </summary>
+        internal static string InventoryWindow_ValueUpDown {
+            get {
+                return ResourceManager.GetString("InventoryWindow_ValueUpDown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Is this item portable or luggable?.
+        /// </summary>
+        internal static string InventoryWindow_WeightUpDown {
+            get {
+                return ResourceManager.GetString("InventoryWindow_WeightUpDown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to When we last left our heroes, Sir Schmoopy and Eluamus Nailo were searching for a magical herb to cure Schmoopy&apos;s dying grandmother....
+        /// </summary>
+        internal static string JournalWindow_DocumentTextBox {
+            get {
+                return ResourceManager.GetString("JournalWindow_DocumentTextBox", resourceCulture);
             }
         }
         
@@ -1287,6 +1638,33 @@ namespace Concierge.Properties {
         internal static string StatusEffect {
             get {
                 return ResourceManager.GetString("StatusEffect", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Resistance and then vulnerability are applied after all other modifiers to damage. Multiple instances of resistance or vulnerability that affect the same damage type count as only one instance..
+        /// </summary>
+        internal static string StatusEffectsWindow_DescriptionTextBox {
+            get {
+                return ResourceManager.GetString("StatusEffectsWindow_DescriptionTextBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Some creatures and objects are exceedingly difficult or unusually easy to hurt with certain types of damage..
+        /// </summary>
+        internal static string StatusEffectsWindow_NameComboBox {
+            get {
+                return ResourceManager.GetString("StatusEffectsWindow_NameComboBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Having resistance to a damage type, damage of that type is halved against it. If a creature or an object has vulnerability to a damage type, damage of that type is doubled against it..
+        /// </summary>
+        internal static string StatusEffectsWindow_TypeComboBox {
+            get {
+                return ResourceManager.GetString("StatusEffectsWindow_TypeComboBox", resourceCulture);
             }
         }
         

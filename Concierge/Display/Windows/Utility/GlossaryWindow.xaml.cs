@@ -9,7 +9,6 @@ namespace Concierge.Display.Windows.Utility
 
     using Concierge.Display.Components;
     using Concierge.Display.Enums;
-    using Concierge.Display.Utility;
     using Concierge.Tools.Glossary;
     using Concierge.Utility;
     using Concierge.Utility.Extensions;
@@ -42,6 +41,11 @@ namespace Concierge.Display.Windows.Utility
             this.GlossaryTreeView.Items.Clear();
             foreach (var item in Constants.Glossary)
             {
+                if (!item.Search(this.SearchFilter.FilterText))
+                {
+                    continue;
+                }
+
                 var treeViewItem = new GlossaryTreeViewItem(item);
 
                 if (!item.GlossaryEntries.IsEmpty())
@@ -57,6 +61,11 @@ namespace Concierge.Display.Windows.Utility
         {
             foreach (var item in entry.GlossaryEntries)
             {
+                if (!item.Search(this.SearchFilter.FilterText))
+                {
+                    continue;
+                }
+
                 var treeViewItem = new GlossaryTreeViewItem(item);
 
                 if (!item.GlossaryEntries.IsEmpty())
@@ -65,6 +74,15 @@ namespace Concierge.Display.Windows.Utility
                 }
 
                 itemCollection.Add(treeViewItem);
+            }
+        }
+
+        private void ClearSelection()
+        {
+            if (this.GlossaryTreeView.SelectedItem is TreeViewItem item)
+            {
+                item.IsSelected = false;
+                this.MarkdownViewer.Markdown = string.Empty;
             }
         }
 
@@ -111,11 +129,13 @@ namespace Concierge.Display.Windows.Utility
 
         private void ClearButton_Click(object sender, RoutedEventArgs e)
         {
-            if (this.GlossaryTreeView.SelectedItem is TreeViewItem item)
-            {
-                item.IsSelected = false;
-                this.MarkdownViewer.Markdown = string.Empty;
-            }
+            this.ClearSelection();
+        }
+
+        private void GlossaryTreeView_Filtered(object sender, RoutedEventArgs e)
+        {
+            this.ClearSelection();
+            this.LoadTreeView();
         }
     }
 }

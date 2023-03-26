@@ -83,11 +83,11 @@ namespace Concierge.Display.Windows
             this.ItemComboBox.Text = string.Empty;
         }
 
-        private void EquipItem()
+        private bool EquipItem()
         {
             if (this.ItemComboBox.SelectedItem is not Inventory item || this.SlotComboBox.Text.IsNullOrWhiteSpace())
             {
-                return;
+                return false;
             }
 
             this.PreviousSlot = this.SlotComboBox.Text;
@@ -96,6 +96,8 @@ namespace Concierge.Display.Windows
 
             var newItem = Program.CcsFile.Character.EquippedItems.Equip(item, slot);
             Program.UndoRedoService.AddCommand(new EquipItemCommand(newItem, slot));
+
+            return true;
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
@@ -111,7 +113,11 @@ namespace Concierge.Display.Windows
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
-            this.EquipItem();
+            if (!this.EquipItem())
+            {
+                return;
+            }
+
             this.ClearFields();
             this.ItemComboBox.ItemsSource = EquippedItems.Equipable;
             this.InvokeApplyChanges();

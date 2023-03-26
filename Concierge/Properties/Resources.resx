@@ -151,6 +151,27 @@
   <data name="Ammunition" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Json\Ammunition.json;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="AmmunitionWindow_BonusTextBox" xml:space="preserve">
+    <value>Add any extra damage, status effects, or behaviours here.</value>
+  </data>
+  <data name="AmmunitionWindow_CoinTypeComboBox" xml:space="preserve">
+    <value>Specify the denomination so you don't have to worry about math.</value>
+  </data>
+  <data name="AmmunitionWindow_DamageTypeComboBox" xml:space="preserve">
+    <value>Set the type of wound this projectile will cause.</value>
+  </data>
+  <data name="AmmunitionWindow_NameComboBox" xml:space="preserve">
+    <value>You can use a weapon that has the ammunition property to make a ranged attack only if you have ammunition to fire from the weapon. Drawing the ammunition from a quiver, case, or other container is part of the attack.</value>
+  </data>
+  <data name="AmmunitionWindow_QuantityUpDown" xml:space="preserve">
+    <value>At the end of the battle, you can recover half your expended ammunition by taking a minute to search the battlefield.</value>
+  </data>
+  <data name="AmmunitionWindow_UsedUpDown" xml:space="preserve">
+    <value>Each time you attack with the weapon, you expend one piece of ammunition.</value>
+  </data>
+  <data name="AmmunitionWindow_ValueUpDown" xml:space="preserve">
+    <value>The worth of 1 piece of this ammunition type.</value>
+  </data>
   <data name="AppearanceWindow_AgeUpDown" xml:space="preserve">
     <value>A character should be older than 0, and probably at least the age of majority for their race.</value>
   </data>
@@ -211,6 +232,45 @@
   <data name="ArmorWindow_WeightUpDown" xml:space="preserve">
     <value>Contrary to popular belief, heavy armor will weigh more.</value>
   </data>
+  <data name="AttacksWindow_AbilityComboBox" xml:space="preserve">
+    <value>Most weapons require strength to use, but finesse weapons allow a character to use their dexterity score. Special weapons or statuses might allow other abilities to be used instead.</value>
+  </data>
+  <data name="AttacksWindow_AttackComboBox" xml:space="preserve">
+    <value>Your race, class, and feats can grant you proficiency with certain weapons or categories of weapons.</value>
+  </data>
+  <data name="AttacksWindow_CoinTypeComboBox" xml:space="preserve">
+    <value>Specify the denomination so you don't have to worry about math.</value>
+  </data>
+  <data name="AttacksWindow_DamageTextBox" xml:space="preserve">
+    <value>List the damage rolls and proficiency bonus to attacking with this weapon.</value>
+  </data>
+  <data name="AttacksWindow_DamageTypeComboBox" xml:space="preserve">
+    <value>Some creatures and objects are exceedingly difficult or unusually easy to hurt with certain types of damage.</value>
+  </data>
+  <data name="AttacksWindow_IgnoreWeightCheckBox" xml:space="preserve">
+    <value>This is generally used to 'place' the weapon in a bag of holding.</value>
+  </data>
+  <data name="AttacksWindow_MiscDamageTextBox" xml:space="preserve">
+    <value>Here, you can use my plus 1 mace.</value>
+  </data>
+  <data name="AttacksWindow_NotesTextBox" xml:space="preserve">
+    <value>Many weapons have special properties related to their use, as shown in the Weapons table.</value>
+  </data>
+  <data name="AttacksWindow_ProficencyOverrideCheckBox" xml:space="preserve">
+    <value>Force this weapon to add your character's proficiency bonus.</value>
+  </data>
+  <data name="AttacksWindow_RangeTextBox" xml:space="preserve">
+    <value>How far you can strike enemies with this weapon. Ranged weapons have minimum and maximum effective ranges.</value>
+  </data>
+  <data name="AttacksWindow_TypeComboBox" xml:space="preserve">
+    <value>Specifying the type of weapon allows Concierge to automatically attempt to calculate proficiency bonuses. Most people can use simple weapons with proficiency, however, martial weapons require more specialized training to use effectively.</value>
+  </data>
+  <data name="AttacksWindow_ValueUpDown" xml:space="preserve">
+    <value>The worth of this weapon. Even your fists have value to someone.</value>
+  </data>
+  <data name="AttacksWindow_WeightUpDown" xml:space="preserve">
+    <value>Bro, do you even lift?</value>
+  </data>
   <data name="AttributesWindow_CharismaUpDown" xml:space="preserve">
     <value>Measures: Confidence, eloquence, leadership. Maximum of 30, but cannot be raised above 20 without special traits or equipment.</value>
   </data>
@@ -240,6 +300,21 @@
   </data>
   <data name="ClassName" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Constants\ClassName.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="ClassResourceWindow_NotesTextBox" xml:space="preserve">
+    <value>Any extra information to help Danial so he remembers to rage.</value>
+  </data>
+  <data name="ClassResourceWindow_PoolUpDown" xml:space="preserve">
+    <value>Maximum available resources.</value>
+  </data>
+  <data name="ClassResourceWindow_RecoveryComboBox" xml:space="preserve">
+    <value>How fast can your character recover their spent resources.</value>
+  </data>
+  <data name="ClassResourceWindow_ResourceNameComboBox" xml:space="preserve">
+    <value>Not every class has resources to spend. Only the cool ones.</value>
+  </data>
+  <data name="ClassResourceWindow_SpentUpDown" xml:space="preserve">
+    <value>Currently used resources.</value>
   </data>
   <data name="ColorPickerBackground" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Images\ColorPickerBackground.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -335,7 +410,7 @@
     <value>Resources\Sounds\GenericWarning.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="Glossary" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\Json\Glossary.json;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Resources\Glossary.json;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="HealthWindow_CurrentHpUpDown" xml:space="preserve">
     <value>Current health from your pool remaning.</value>
@@ -377,13 +452,55 @@
     <value>Expended d8 hit dice.</value>
   </data>
   <data name="HpWindow_HpUpDown" xml:space="preserve">
-    <value>The amount of healthing or damage to take. 10 points to Gryffindor!</value>
+    <value>The amount of healing or damage to take. 10 points to Gryffindor!</value>
+  </data>
+  <data name="ImageWindow_FillTypeComboBox" xml:space="preserve">
+    <value>Change how the image is stretched to fill the canvas.</value>
+  </data>
+  <data name="ImageWindow_ImageSourceTextBox" xml:space="preserve">
+    <value>You can safely delete the image after loading it into Concierge.</value>
+  </data>
+  <data name="ImageWindow_UseCustomImageCheckBox" xml:space="preserve">
+    <value>Unchecking this won't delete a selected image.</value>
   </data>
   <data name="Instrument" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Constants\Instrument.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="Inventory" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Json\Inventory.json;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="InventoryWindow_AmountUpDown" xml:space="preserve">
+    <value />
+  </data>
+  <data name="InventoryWindow_AttunedCheckBox" xml:space="preserve">
+    <value>Spend time attuning to this item, allowing the use of special abilities. Your character can only attune to 3 items at a time.</value>
+  </data>
+  <data name="InventoryWindow_CategoryComboBox" xml:space="preserve">
+    <value />
+  </data>
+  <data name="InventoryWindow_CoinTypeComboBox" xml:space="preserve">
+    <value>Specify the denomination so you don't have to worry about math.</value>
+  </data>
+  <data name="InventoryWindow_DescriptionTextBox" xml:space="preserve">
+    <value>Describe, in detail, why your character looted this item.</value>
+  </data>
+  <data name="InventoryWindow_IgnoreWeightCheckBox" xml:space="preserve">
+    <value>This is generally used to 'place' the item in a bag of holding.</value>
+  </data>
+  <data name="InventoryWindow_NameComboBox" xml:space="preserve">
+    <value />
+  </data>
+  <data name="InventoryWindow_NotesTextBox" xml:space="preserve">
+    <value />
+  </data>
+  <data name="InventoryWindow_ValueUpDown" xml:space="preserve">
+    <value>The worth of this item. Lisa, I'd like to buy your rock.</value>
+  </data>
+  <data name="InventoryWindow_WeightUpDown" xml:space="preserve">
+    <value>Is this item portable or luggable?</value>
+  </data>
+  <data name="JournalWindow_DocumentTextBox" xml:space="preserve">
+    <value>When we last left our heroes, Sir Schmoopy and Eluamus Nailo were searching for a magical herb to cure Schmoopy's dying grandmother...</value>
   </data>
   <data name="Language" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Json\Language.json;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -465,6 +582,15 @@
   </data>
   <data name="StatusEffect" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Constants\StatusEffect.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="StatusEffectsWindow_DescriptionTextBox" xml:space="preserve">
+    <value>Resistance and then vulnerability are applied after all other modifiers to damage. Multiple instances of resistance or vulnerability that affect the same damage type count as only one instance.</value>
+  </data>
+  <data name="StatusEffectsWindow_NameComboBox" xml:space="preserve">
+    <value>Some creatures and objects are exceedingly difficult or unusually easy to hurt with certain types of damage.</value>
+  </data>
+  <data name="StatusEffectsWindow_TypeComboBox" xml:space="preserve">
+    <value>Having resistance to a damage type, damage of that type is halved against it. If a creature or an object has vulnerability to a damage type, damage of that type is doubled against it.</value>
   </data>
   <data name="Subclass" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Json\Subclass.json;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
