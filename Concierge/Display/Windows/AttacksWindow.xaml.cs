@@ -66,6 +66,8 @@ namespace Concierge.Display.Windows
 
         private bool Editing { get; set; }
 
+        private bool EquippedItem { get; set; }
+
         private Weapon SelectedAttack { get; set; }
 
         private List<Weapon> Weapons { get; set; }
@@ -105,6 +107,23 @@ namespace Concierge.Display.Windows
             return this.ItemsAdded;
         }
 
+        public override void ShowEdit<T>(T weapon, bool equippedItem)
+        {
+            if (weapon is not Weapon castItem)
+            {
+                return;
+            }
+
+            this.Editing = true;
+            this.HeaderTextBlock.Text = this.HeaderText;
+            this.SelectedAttack = castItem;
+            this.EquippedItem = equippedItem;
+            this.ApplyButton.Visibility = Visibility.Collapsed;
+
+            this.FillFields(castItem);
+            this.ShowConciergeWindow();
+        }
+
         public override void ShowEdit<T>(T weapon)
         {
             if (weapon is not Weapon castItem)
@@ -140,6 +159,7 @@ namespace Concierge.Display.Windows
 
         private void FillFields(Weapon weapon)
         {
+            this.AttunedCheckBox.UpdatingValue();
             this.IgnoreWeightCheckBox.UpdatingValue();
             this.ProficencyOverrideCheckBox.UpdatingValue();
 
@@ -157,17 +177,34 @@ namespace Concierge.Display.Windows
             this.WeightUnits.Text = $"({UnitFormat.WeightPostfix})";
             this.ValueUpDown.Value = weapon.Value;
             this.CoinTypeComboBox.Text = weapon.CoinType.ToString();
+            this.AttunedCheckBox.IsChecked = weapon.Attuned;
 
+            if (this.EquippedItem)
+            {
+                this.AttunedText.Opacity = 1;
+                this.AttunedCheckBox.Opacity = 1;
+                this.AttunedCheckBox.IsEnabled = true;
+            }
+            else
+            {
+                this.AttunedText.Opacity = 0.5;
+                this.AttunedCheckBox.Opacity = 0.5;
+                this.AttunedCheckBox.IsEnabled = false;
+            }
+
+            this.AttunedCheckBox.UpdatedValue();
             this.IgnoreWeightCheckBox.UpdatedValue();
             this.ProficencyOverrideCheckBox.UpdatedValue();
         }
 
         private void ClearFields(string name = "")
         {
+            this.AttunedCheckBox.UpdatingValue();
             this.IgnoreWeightCheckBox.UpdatingValue();
             this.ProficencyOverrideCheckBox.UpdatingValue();
 
             this.AttackComboBox.Text = name;
+            this.AttunedCheckBox.IsChecked = false;
             this.TypeComboBox.Text = WeaponTypes.None.ToString();
             this.AbilityComboBox.Text = Abilities.NONE.ToString();
             this.DamageTextBox.Text = string.Empty;
@@ -182,6 +219,7 @@ namespace Concierge.Display.Windows
             this.ValueUpDown.Value = 0;
             this.CoinTypeComboBox.Text = CoinType.Copper.ToString();
 
+            this.AttunedCheckBox.UpdatedValue();
             this.IgnoreWeightCheckBox.UpdatedValue();
             this.ProficencyOverrideCheckBox.UpdatedValue();
         }
@@ -200,6 +238,7 @@ namespace Concierge.Display.Windows
             weapon.Weight.Value = this.WeightUpDown.Value;
             weapon.ProficiencyOverride = this.ProficencyOverrideCheckBox.IsChecked ?? false;
             weapon.IgnoreWeight = this.IgnoreWeightCheckBox.IsChecked ?? false;
+            weapon.Attuned = this.AttunedCheckBox.IsChecked ?? false;
             weapon.Note = this.NotesTextBox.Text;
             weapon.Value = this.ValueUpDown.Value;
             weapon.CoinType = (CoinType)Enum.Parse(typeof(CoinType), this.CoinTypeComboBox.Text);
@@ -225,6 +264,7 @@ namespace Concierge.Display.Windows
                 IgnoreWeight = this.IgnoreWeightCheckBox.IsChecked ?? false,
                 Note = this.NotesTextBox.Text,
                 Value = this.ValueUpDown.Value,
+                Attuned = this.AttunedCheckBox.IsChecked ?? false,
                 CoinType = (CoinType)Enum.Parse(typeof(CoinType), this.CoinTypeComboBox.Text),
             };
 

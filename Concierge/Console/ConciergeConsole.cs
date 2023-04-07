@@ -106,7 +106,7 @@ namespace Concierge.Console
             foreach (var service in services)
             {
                 result = service.Run(command);
-                if (result.Type != ResultType.Error)
+                if (result.Type != ResultType.NotImplemented)
                 {
                     break;
                 }

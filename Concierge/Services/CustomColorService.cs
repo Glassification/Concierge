@@ -41,6 +41,11 @@ namespace Concierge.Services
                 return;
             }
 
+            if (this.RecentColors.Any(x => x.Id.Equals(color.Id)))
+            {
+                return;
+            }
+
             this.RecentColors.RemoveAt(this.RecentColors.Count - 1);
             this.RecentColors.Insert(0, color);
             this.Update();

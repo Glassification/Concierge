@@ -9,14 +9,14 @@
     xmlns:controls="clr-namespace:Concierge.Display.Controls"
     mc:Ignorable="d"
     Title="Modify Attack"
-    Height="535"
+    Height="595"
     Width="800"
     Style="{StaticResource WindowFontStyle}">
 
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="45"/>
-            <RowDefinition Height="360"/>
+            <RowDefinition Height="420"/>
             <RowDefinition Height="60"/>
             <RowDefinition Height="70"/>
         </Grid.RowDefinitions>
@@ -54,6 +54,7 @@
             <!--Left-->
             <Grid Grid.Column="0">
                 <Grid.RowDefinitions>
+                    <RowDefinition Height="60"/>
                     <RowDefinition Height="60"/>
                     <RowDefinition Height="60"/>
                     <RowDefinition Height="60"/>
@@ -187,6 +188,28 @@
                             IsEditable="False"/>
                     </Grid>
                 </Grid>
+
+                <!--Attuned-->
+                <Grid Grid.Row="6">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="35*"/>
+                        <ColumnDefinition Width="65*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!--Title-->
+                    <Grid Grid.Column="0">
+                        <components:ConciergeLabel
+                            Text="Attuned:"
+                            x:Name="AttunedText"/>
+                    </Grid>
+
+                    <!--Value-->
+                    <Grid Grid.Column="1" Margin="20,0,0,0">
+                        <components:ConciergeCheckBox 
+                            x:Name="AttunedCheckBox"
+                            Style="{StaticResource CheckBoxStyle}"/>
+                    </Grid>
+                </Grid>
             </Grid>
 
             <!--Right-->
@@ -196,7 +219,7 @@
                     <RowDefinition Height="60"/>
                     <RowDefinition Height="60"/>
                     <RowDefinition Height="60"/>
-                    <RowDefinition Height="120"/>
+                    <RowDefinition Height="180"/>
                 </Grid.RowDefinitions>
 
                 <!--Range-->

@@ -63,6 +63,7 @@ namespace Concierge.Console
                     ResultType.Success => Brushes.LightGreen,
                     ResultType.Warning => Brushes.Orange,
                     ResultType.Error => Brushes.IndianRed,
+                    ResultType.NotImplemented => Brushes.IndianRed,
                     ResultType.Information => Brushes.White,
                     _ => Brushes.White,
                 };

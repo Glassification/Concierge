@@ -4,6 +4,8 @@
 
 namespace ConciergeDevTools
 {
+    using Newtonsoft.Json;
+
     public class Program
     {
         public static void Main(string[] args)

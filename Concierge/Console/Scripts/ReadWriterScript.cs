@@ -44,7 +44,7 @@ namespace Concierge.Console.Scripts
                 return this.New(command);
             }
 
-            return new ConsoleResult($"Implementation for '{command.Action}' not found.", ResultType.Error);
+            return new ConsoleResult($"Implementation for '{command.Action}' not found.", ResultType.NotImplemented);
         }
 
         private ConsoleResult Read(ConsoleCommand command)

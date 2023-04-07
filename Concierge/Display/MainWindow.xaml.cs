@@ -91,6 +91,22 @@ namespace Concierge.Display
             this.ButtonMinimize.ResetScaling();
             this.MaximizeButton.ResetScaling();
 
+            this.NewCharacterButton.AddClickEvent(this.NewCharacterButton_Click);
+            this.OpenCharacterButton.AddClickEvent(this.OpenCharacterButton_Click);
+            this.ImportCharacterButton.AddClickEvent(this.ImportCharacterButton_Click);
+            this.SaveCharacterButton.AddClickEvent(this.SaveCharacterButton_Click);
+            this.SaveCharacterAsButton.AddClickEvent(this.SaveCharacterAsButton_Click);
+            this.UndoButton.AddClickEvent(this.UndoButton_Click);
+            this.RedoButton.AddClickEvent(this.RedoButton_Click);
+            this.CharacterCreationButton.AddClickEvent(this.CharacterCreationButton_Click);
+            this.LevelUpButton.AddClickEvent(this.LevelUpButton_Click);
+            this.LongRestButton.AddClickEvent(this.LongRestButton_Click);
+            this.CharacterPropertiesButton.AddClickEvent(this.PropertiesButton_Click);
+            this.SearchButton.AddClickEvent(this.SearchButton_Click);
+            this.SettingsButton.AddClickEvent(this.SettingsButton_Click);
+            this.AboutButton.AddClickEvent(this.AboutButton_Click);
+            this.GlossaryButton.AddClickEvent(this.GlossaryButton_Click);
+
             Program.Logger.Info($"{nameof(MainWindow)} loaded.");
             Program.InitializeMainWindow(this);
         }
@@ -690,42 +706,42 @@ namespace Concierge.Display
             this.CloseWindow();
         }
 
-        private void ButtonNewCharacter_Click(object sender, RoutedEventArgs e)
+        private void NewCharacterButton_Click(object sender, RoutedEventArgs e)
         {
             ConciergeSound.TapNavigation();
             this.NewCharacterSheet();
             this.IgnoreSecondPress = true;
         }
 
-        private void ButtonOpenCharacter_Click(object sender, RoutedEventArgs e)
+        private void OpenCharacterButton_Click(object sender, RoutedEventArgs e)
         {
             ConciergeSound.TapNavigation();
             this.OpenCharacterSheet();
             this.IgnoreSecondPress = true;
         }
 
-        private void ButtonImportCharacter_Click(object sender, RoutedEventArgs e)
+        private void ImportCharacterButton_Click(object sender, RoutedEventArgs e)
         {
             ConciergeSound.TapNavigation();
             this.ImportCharacter();
             this.IgnoreSecondPress = true;
         }
 
-        private void ButtonSaveCharacter_Click(object sender, RoutedEventArgs e)
+        private void SaveCharacterButton_Click(object sender, RoutedEventArgs e)
         {
             ConciergeSound.TapNavigation();
             this.SaveCharacterSheet();
             this.IgnoreSecondPress = true;
         }
 
-        private void ButtonSaveCharacterAs_Click(object sender, RoutedEventArgs e)
+        private void SaveCharacterAsButton_Click(object sender, RoutedEventArgs e)
         {
             ConciergeSound.TapNavigation();
             this.SaveCharacterSheetAs();
             this.IgnoreSecondPress = true;
         }
 
-        private void ButtonLongRest_Click(object sender, RoutedEventArgs e)
+        private void LongRestButton_Click(object sender, RoutedEventArgs e)
         {
             ConciergeSound.TapNavigation();
             this.LongRest();
@@ -836,14 +852,14 @@ namespace Concierge.Display
             }
         }
 
-        private void ButtonRedo_Click(object sender, RoutedEventArgs e)
+        private void RedoButton_Click(object sender, RoutedEventArgs e)
         {
             ConciergeSound.TapNavigation();
             this.Redo();
             this.IgnoreSecondPress = true;
         }
 
-        private void ButtonUndo_Click(object sender, RoutedEventArgs e)
+        private void UndoButton_Click(object sender, RoutedEventArgs e)
         {
             ConciergeSound.TapNavigation();
             this.Undo();
@@ -852,8 +868,8 @@ namespace Concierge.Display
 
         private void UndoRedo_StackChanged(object sender, EventArgs e)
         {
-            this.ButtonUndo.IsEnabled = Program.UndoRedoService.CanUndo;
-            this.ButtonRedo.IsEnabled = Program.UndoRedoService.CanRedo;
+            this.UndoButton.IsEnabled = Program.UndoRedoService.CanUndo;
+            this.RedoButton.IsEnabled = Program.UndoRedoService.CanRedo;
             if (sender is not UndoRedoService service)
             {
                 return;

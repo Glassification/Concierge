@@ -55,7 +55,7 @@ namespace Concierge.Console.Services
                 return new ConsoleResult(Log(), ResultType.Success);
             }
 
-            return new ConsoleResult($"Implementation for '{command.Action}' not found.", ResultType.Error);
+            return new ConsoleResult($"Implementation for '{command.Action}' not found.", ResultType.NotImplemented);
         }
 
         public override string List()

@@ -4,282 +4,123 @@
 
 namespace Concierge.Character.Items
 {
-    using System;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Windows.Controls;
+    using System.Windows.Data;
 
     using Concierge.Character.Enums;
-    using Concierge.Utility;
     using Concierge.Utility.Extensions;
-    using Concierge.Utility.Utilities;
-    using Newtonsoft.Json;
 
-    public sealed class EquippedItems : ICopyable<EquippedItems>
+    public sealed class EquippedItems
     {
-        public EquippedItems()
+        private readonly List<Inventory> inventory;
+        private readonly List<Weapon> weapons;
+
+        public EquippedItems(List<Inventory> inventory, List<Weapon> weapons)
         {
-            this.Head = new List<Inventory>();
-            this.Torso = new List<Inventory>();
-            this.Hands = new List<Inventory>();
-            this.Legs = new List<Inventory>();
-            this.Feet = new List<Inventory>();
+            this.inventory = inventory;
+            this.weapons = weapons;
         }
 
-        [JsonIgnore]
-        public static List<Inventory> Equipable
-        {
-            get
-            {
-                var list = new List<Inventory>();
-                foreach (var item in Program.CcsFile.Character.Inventories)
-                {
-                    if (item.Amount > 0)
-                    {
-                        list.Add(item);
-                    }
-                }
+        public CompositeCollection Equipable => this.GetEquipableItems();
 
-                return list;
-            }
-        }
+        public List<IEquipable> Head => this.GetEquippedItems(EquipmentSlot.Head);
 
-        public List<Inventory> Head { get; init; }
+        public List<IEquipable> Torso => this.GetEquippedItems(EquipmentSlot.Torso);
 
-        public List<Inventory> Torso { get; init; }
+        public List<IEquipable> Hands => this.GetEquippedItems(EquipmentSlot.Hands);
 
-        public List<Inventory> Hands { get; init; }
+        public List<IEquipable> Legs => this.GetEquippedItems(EquipmentSlot.Legs);
 
-        public List<Inventory> Legs { get; init; }
+        public List<IEquipable> Feet => this.GetEquippedItems(EquipmentSlot.Feet);
 
-        public List<Inventory> Feet { get; init; }
-
-        [JsonIgnore]
-        public double Value
-        {
-            get
-            {
-                var value = 0.0;
-
-                value += GetGold(this.Head);
-                value += GetGold(this.Torso);
-                value += GetGold(this.Hands);
-                value += GetGold(this.Legs);
-                value += GetGold(this.Feet);
-
-                return value;
-            }
-        }
-
-        [JsonIgnore]
-        public double Weight
-        {
-            get
-            {
-                var weight = 0.0;
-
-                weight += GetWeight(this.Head);
-                weight += GetWeight(this.Torso);
-                weight += GetWeight(this.Hands);
-                weight += GetWeight(this.Legs);
-                weight += GetWeight(this.Feet);
-
-                return weight;
-            }
-        }
-
-        [JsonIgnore]
         public int Attuned
         {
             get
             {
                 var attuned = 0;
+                foreach (var inventory in this.inventory)
+                {
+                    if (inventory.Attuned)
+                    {
+                        attuned++;
+                    }
+                }
 
-                attuned += GetAttuned(this.Head);
-                attuned += GetAttuned(this.Torso);
-                attuned += GetAttuned(this.Hands);
-                attuned += GetAttuned(this.Legs);
-                attuned += GetAttuned(this.Feet);
+                foreach (var weapon in this.weapons)
+                {
+                    if (weapon.Attuned)
+                    {
+                        attuned++;
+                    }
+                }
 
                 return attuned;
             }
         }
 
-        public Inventory Equip(Inventory item, EquipmentSlot equipSlot)
+        public static void Equip(IEquipable equipable, EquipmentSlot slot)
         {
-            var newItem = RemoveFromInventory(item);
-            switch (equipSlot)
+            if (!equipable.IsEquipped)
             {
-                case EquipmentSlot.Head:
-                    this.Head.Add(newItem);
-                    break;
-                case EquipmentSlot.Torso:
-                    this.Torso.Add(newItem);
-                    break;
-                case EquipmentSlot.Hands:
-                    this.Hands.Add(newItem);
-                    break;
-                case EquipmentSlot.Legs:
-                    this.Legs.Add(newItem);
-                    break;
-                case EquipmentSlot.Feet:
-                    this.Feet.Add(newItem);
-                    break;
-            }
-
-            return newItem;
-        }
-
-        public void Dequip(Guid id, Guid equippedId, EquipmentSlot equipSlot)
-        {
-            Inventory? item = null;
-            switch (equipSlot)
-            {
-                case EquipmentSlot.Head:
-                    item = this.Head.Where(x => x.Id.Equals(id) && x.EquppedId.Equals(equippedId)).FirstOrDefault();
-                    break;
-                case EquipmentSlot.Torso:
-                    item = this.Torso.Where(x => x.Id.Equals(id) && x.EquppedId.Equals(equippedId)).FirstOrDefault();
-                    break;
-                case EquipmentSlot.Hands:
-                    item = this.Hands.Where(x => x.Id.Equals(id) && x.EquppedId.Equals(equippedId)).FirstOrDefault();
-                    break;
-                case EquipmentSlot.Legs:
-                    item = this.Legs.Where(x => x.Id.Equals(id) && x.EquppedId.Equals(equippedId)).FirstOrDefault();
-                    break;
-                case EquipmentSlot.Feet:
-                    item = this.Feet.Where(x => x.Id.Equals(id) && x.EquppedId.Equals(equippedId)).FirstOrDefault();
-                    break;
-            }
-
-            if (item is not null)
-            {
-                this.Dequip(item, equipSlot);
+                equipable.EquipmentSlot = slot;
             }
         }
 
-        public void Dequip(Inventory item, EquipmentSlot equipSlot)
+        public static void Dequip(IEquipable equipable)
         {
-            switch (equipSlot)
+            if (equipable.IsEquipped)
             {
-                case EquipmentSlot.Head:
-                    this.Head.RemoveAll(x => x.EquppedId.Equals(item.EquppedId));
-                    break;
-                case EquipmentSlot.Torso:
-                    this.Torso.RemoveAll(x => x.EquppedId.Equals(item.EquppedId));
-                    break;
-                case EquipmentSlot.Hands:
-                    this.Hands.RemoveAll(x => x.EquppedId.Equals(item.EquppedId));
-                    break;
-                case EquipmentSlot.Legs:
-                    this.Legs.RemoveAll(x => x.EquppedId.Equals(item.EquppedId));
-                    break;
-                case EquipmentSlot.Feet:
-                    this.Feet.RemoveAll(x => x.EquppedId.Equals(item.EquppedId));
-                    break;
+                equipable.EquipmentSlot = EquipmentSlot.None;
+                equipable.Attuned = false;
+            }
+        }
+
+        private CompositeCollection GetEquipableItems()
+        {
+            var collection = new CompositeCollection();
+            var unequippedItems = this.inventory.Where(x => x.EquipmentSlot == EquipmentSlot.None).ToList();
+            var unequippedWeapons = this.weapons.Where(x => x.EquipmentSlot == EquipmentSlot.None).ToList();
+
+            if (!unequippedItems.IsEmpty())
+            {
+                collection.Add(new CollectionContainer() { Collection = unequippedItems });
             }
 
-            AddToInventory(item);
+            if (!unequippedWeapons.IsEmpty())
+            {
+                collection.Add(new CollectionContainer() { Collection = unequippedWeapons });
+            }
+
+            if (collection.Count == 2)
+            {
+                collection.Insert(1, new Separator());
+            }
+
+            return collection;
         }
 
-        public EquippedItems DeepCopy()
+        private List<IEquipable> GetEquippedItems(EquipmentSlot slot)
         {
-            return new EquippedItems()
+            var items = new List<IEquipable>();
+            foreach (var inventory in this.inventory)
             {
-                Head = this.Head.DeepCopy().ToList(),
-                Torso = this.Torso.DeepCopy().ToList(),
-                Hands = this.Hands.DeepCopy().ToList(),
-                Legs = this.Legs.DeepCopy().ToList(),
-                Feet = this.Feet.DeepCopy().ToList(),
-            };
-        }
-
-        private static double GetWeight(List<Inventory> list)
-        {
-            var weight = 0.0;
-            foreach (var item in list)
-            {
-                if (!item.IgnoreWeight)
+                if (inventory.EquipmentSlot == slot)
                 {
-                    weight += item.Weight.Value;
+                    items.Add(inventory);
                 }
             }
 
-            return weight;
-        }
-
-        private static int GetAttuned(List<Inventory> list)
-        {
-            var attuned = 0;
-            foreach (var item in list)
+            foreach (var weapon in this.weapons)
             {
-                attuned += item.Attuned ? 1 : 0;
-            }
-
-            return attuned;
-        }
-
-        private static double GetGold(List<Inventory> list)
-        {
-            var value = 0.0;
-            foreach (var item in list)
-            {
-                if (!item.IgnoreWeight)
+                if (weapon.EquipmentSlot == slot)
                 {
-                    value += CharacterUtility.GetGoldValue(item.Value, item.CoinType);
+                    items.Add(weapon);
                 }
             }
 
-            return value;
-        }
-
-        private static void AddToInventory(Inventory item)
-        {
-            var inventory = Program.CcsFile.Character.Inventories;
-            var existingItem = inventory.SingleOrDefault(x => x.Id.Equals(item.Id));
-
-            if (existingItem == null)
-            {
-                item.Attuned = false;
-                item.EquppedId = Guid.Empty;
-                inventory.Insert(item.Index, item);
-                item.Index = 0;
-            }
-            else if (!existingItem.Equals(item))
-            {
-                item.Attuned = false;
-                item.EquppedId = Guid.Empty;
-                item.Id = Guid.NewGuid();
-                inventory.Insert(item.Index, item);
-                item.Index = 0;
-            }
-            else
-            {
-                existingItem.Amount++;
-            }
-        }
-
-        private static Inventory RemoveFromInventory(Inventory item)
-        {
-            Inventory newItem;
-            var index = Program.CcsFile.Character.Inventories.FindIndex(x => x.Id.Equals(item.Id));
-
-            if (item.Amount > 1)
-            {
-                item.Amount--;
-                newItem = item.DeepCopy();
-                newItem.EquppedId = Guid.NewGuid();
-                newItem.Amount = 1;
-                newItem.Index = index;
-            }
-            else
-            {
-                Program.CcsFile.Character.Inventories.RemoveAll(x => x.Id.Equals(item.Id));
-                newItem = item;
-                newItem.EquppedId = Guid.NewGuid();
-                newItem.Index = index;
-            }
-
-            return newItem;
+            return items;
         }
     }
 }

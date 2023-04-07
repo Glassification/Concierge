@@ -36,6 +36,8 @@ namespace Concierge.Console.Services
             "AddItem",
             "RemoveItem",
             "Count",
+            "AddCategory",
+            "GetId",
         };
 
         public ListScriptService()

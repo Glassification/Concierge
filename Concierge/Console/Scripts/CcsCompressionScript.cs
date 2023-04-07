@@ -29,7 +29,7 @@ namespace Concierge.Console.Scripts
                 return Unzip(command);
             }
 
-            return new ConsoleResult($"Implementation for '{command.Action}' not found.", ResultType.Error);
+            return new ConsoleResult($"Implementation for '{command.Action}' not found.", ResultType.NotImplemented);
         }
 
         private static string CreateOutputFilePath(string path, string action)

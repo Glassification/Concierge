@@ -21,7 +21,6 @@ namespace Concierge.Display.Pages
     using Concierge.Services;
     using Concierge.Utility;
     using Concierge.Utility.Extensions;
-    using Concierge.Utility.Utilities;
 
     /// <summary>
     /// Interaction logic for EquipmentPage.xaml.
@@ -45,16 +44,6 @@ namespace Concierge.Display.Pages
 
         private ConciergeDataGrid? SelectedDataGrid { get; set; }
 
-        private List<Inventory> HeadDisplayList => Program.CcsFile.Character.EquippedItems.Head.Filter(this.SearchFilter.FilterText).ToList();
-
-        private List<Inventory> TorsoDisplayList => Program.CcsFile.Character.EquippedItems.Torso.Filter(this.SearchFilter.FilterText).ToList();
-
-        private List<Inventory> HandsDisplayList => Program.CcsFile.Character.EquippedItems.Hands.Filter(this.SearchFilter.FilterText).ToList();
-
-        private List<Inventory> LegsDisplayList => Program.CcsFile.Character.EquippedItems.Legs.Filter(this.SearchFilter.FilterText).ToList();
-
-        private List<Inventory> FeetDisplayList => Program.CcsFile.Character.EquippedItems.Feet.Filter(this.SearchFilter.FilterText).ToList();
-
         public void Draw(bool isNewCharacterSheet = false)
         {
             this.UsedAttunement.Text = $"{Program.CcsFile.Character.EquippedItems.Attuned}/{Constants.MaxAttunedItems}";
@@ -66,11 +55,13 @@ namespace Concierge.Display.Pages
 
         public void DrawEquippedItems()
         {
-            DrawEquippedItem(this.HeadDisplayList, this.HeadEquipmentDataGrid);
-            DrawEquippedItem(this.TorsoDisplayList, this.TorsoEquipmentDataGrid);
-            DrawEquippedItem(this.HandsDisplayList, this.HandsEquipmentDataGrid);
-            DrawEquippedItem(this.LegsDisplayList, this.LegsEquipmentDataGrid);
-            DrawEquippedItem(this.FeetDisplayList, this.FeetEquipmentDataGrid);
+            var equippedItems = Program.CcsFile.Character.EquippedItems;
+
+            DrawEquippedItem(equippedItems.Head, this.HeadEquipmentDataGrid);
+            DrawEquippedItem(equippedItems.Torso, this.TorsoEquipmentDataGrid);
+            DrawEquippedItem(equippedItems.Hands, this.HandsEquipmentDataGrid);
+            DrawEquippedItem(equippedItems.Legs, this.LegsEquipmentDataGrid);
+            DrawEquippedItem(equippedItems.Feet, this.FeetEquipmentDataGrid);
         }
 
         public void DrawImage()
@@ -107,6 +98,18 @@ namespace Concierge.Display.Pages
                 this.Draw();
                 this.SelectedDataGrid.SetSelectedIndex(index);
             }
+            else if (itemToEdit is Weapon weapon && this.SelectedDataGrid is not null)
+            {
+                var index = this.SelectedDataGrid.SelectedIndex;
+                ConciergeWindowService.ShowEdit<Weapon>(
+                    weapon,
+                    true,
+                    typeof(AttacksWindow),
+                    this.Window_ApplyChanges,
+                    ConciergePage.Equipment);
+                this.Draw();
+                this.SelectedDataGrid.SetSelectedIndex(index);
+            }
             else if (itemToEdit is Spell spell && this.SelectedDataGrid is not null)
             {
                 var index = this.SelectedDataGrid.SelectedIndex;
@@ -120,7 +123,7 @@ namespace Concierge.Display.Pages
             }
         }
 
-        private static void DrawEquippedItem(List<Inventory> items, ConciergeDataGrid dataGrid)
+        private static void DrawEquippedItem(List<IEquipable> items, ConciergeDataGrid dataGrid)
         {
             dataGrid.Items.Clear();
 
@@ -130,37 +133,18 @@ namespace Concierge.Display.Pages
             }
         }
 
-        private void EquipmentDataGrid_Sorted(object sender, RoutedEventArgs e)
+        private void DequipInventory(Inventory item)
         {
-            if (sender is not ConciergeDataGrid dataGrid)
-            {
-                return;
-            }
+            var oldItem = item.DeepCopy();
+            EquippedItems.Dequip(item);
+            Program.UndoRedoService.AddCommand(new EditCommand<Inventory>(item, oldItem, this.ConciergePage));
+        }
 
-            if (dataGrid.Tag is not string tagString)
-            {
-                return;
-            }
-
-            var equippedItems = DisplayUtility.GetPropertyValue<List<Inventory>>(Program.CcsFile.Character.EquippedItems, tagString) ?? new List<Inventory>();
-            var oldList = new List<Inventory>(equippedItems);
-
-            equippedItems.Clear();
-            foreach (var item in dataGrid.Items)
-            {
-                if (item is Inventory inventory)
-                {
-                    equippedItems.Add(inventory);
-                }
-            }
-
-            Program.UndoRedoService.AddCommand(
-                new ListOrderCommand<Inventory>(
-                    equippedItems,
-                    oldList,
-                    new List<Inventory>(equippedItems),
-                    this.ConciergePage));
-            Program.Modify();
+        private void DequipWeapon(Weapon weapon)
+        {
+            var oldItem = weapon.DeepCopy();
+            EquippedItems.Dequip(weapon);
+            Program.UndoRedoService.AddCommand(new EditCommand<Weapon>(weapon, oldItem, this.ConciergePage));
         }
 
         private void EquipmentDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -218,50 +202,6 @@ namespace Concierge.Display.Pages
             this.IsSelecting = false;
         }
 
-        private void UpButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (this.SelectedDataGrid?.Tag is not string stringTag)
-            {
-                return;
-            }
-
-            if (this.SelectedItem is not Inventory)
-            {
-                return;
-            }
-
-            var equippedItems = DisplayUtility.GetPropertyValue<List<Inventory>>(Program.CcsFile.Character.EquippedItems, stringTag) ?? new List<Inventory>();
-            var index = this.SelectedDataGrid.NextItem(equippedItems, 0, -1, this.ConciergePage);
-            if (index != -1)
-            {
-                this.Draw();
-                this.SelectedDataGrid.SelectedIndex = index;
-                this.SelectedDataGrid.ScrollIntoView(this.SelectedDataGrid.SelectedItem);
-            }
-        }
-
-        private void DownButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (this.SelectedDataGrid?.Tag is not string stringTag)
-            {
-                return;
-            }
-
-            if (this.SelectedItem is not Inventory)
-            {
-                return;
-            }
-
-            var equippedItems = DisplayUtility.GetPropertyValue<List<Inventory>>(Program.CcsFile.Character.EquippedItems, stringTag) ?? new List<Inventory>();
-            var index = this.SelectedDataGrid.NextItem(equippedItems, equippedItems.Count - 1, 1, this.ConciergePage);
-            if (index != -1)
-            {
-                this.Draw();
-                this.SelectedDataGrid.SelectedIndex = index;
-                this.SelectedDataGrid.ScrollIntoView(this.SelectedDataGrid.SelectedItem);
-            }
-        }
-
         private void ClearButton_Click(object sender, RoutedEventArgs e)
         {
             this.HeadEquipmentDataGrid.UnselectAll();
@@ -302,23 +242,25 @@ namespace Concierge.Display.Pages
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
-            if (this.SelectedItem is null || this.SelectedDataGrid is null || this.SelectedDataGrid.Tag is not string stringTag)
+            if (this.SelectedItem is null || this.SelectedDataGrid is null)
             {
                 return;
             }
 
-            if (this.SelectedItem is not Inventory item)
+            if (this.SelectedItem is not Inventory && this.SelectedItem is not Weapon)
             {
                 return;
             }
 
             var index = this.SelectedIndex;
-            var equippedId = item.EquppedId;
-            var itemIndex = item.Index;
-            var slot = (EquipmentSlot)Enum.Parse(typeof(EquipmentSlot), stringTag);
-
-            Program.CcsFile.Character.EquippedItems.Dequip(item, slot);
-            Program.UndoRedoService.AddCommand(new DequipItemCommand(item, itemIndex, equippedId, slot));
+            if (this.SelectedItem is Inventory inventory)
+            {
+                this.DequipInventory(inventory);
+            }
+            else if (this.SelectedItem is Weapon weapon)
+            {
+                this.DequipWeapon(weapon);
+            }
 
             this.Draw();
             this.SelectedDataGrid.SetSelectedIndex(index);
@@ -330,14 +272,6 @@ namespace Concierge.Display.Pages
             }
 
             Program.Modify();
-        }
-
-        private void EquippedItemsDataGrid_Filtered(object sender, RoutedEventArgs e)
-        {
-            this.SearchFilter.SetButtonEnableState(this.UpButton);
-            this.SearchFilter.SetButtonEnableState(this.DownButton);
-
-            this.Draw();
         }
 
         private void CharacterImage_MouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)

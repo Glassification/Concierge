@@ -45,7 +45,7 @@ namespace Concierge.Character.Statuses
         {
             get
             {
-                var itemValue = Program.CcsFile.Character.EquippedItems.Value;
+                var itemValue = 0.0;
                 foreach (Inventory item in Program.CcsFile.Character.Inventories)
                 {
                     itemValue += CharacterUtility.GetGoldValue(item.Value, item.CoinType) * item.Amount;

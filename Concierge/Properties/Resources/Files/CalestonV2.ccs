@@ -494,116 +494,6 @@
       },
       "Attacks": []
     },
-    "EquippedItems": {
-      "Head": [],
-      "Torso": [
-        {
-          "Amount": 1,
-          "Attuned": false,
-          "CoinType": 3,
-          "CreationDate": "2023-02-12T13:29:58.4435251-06:00",
-          "Description": "Made from tough but flexible leather, studded leather is reinforced with close-set rivets or spikes. Base AC of 13 + DEX modifier.",
-          "EquppedId": "ccc4b63d-c61e-4e2c-bb3a-8b15483c1189",
-          "Id": "9f3f7f83-3702-4f41-b218-b286fc895059",
-          "Name": "Studded Leather",
-          "IgnoreWeight": true,
-          "Index": 46,
-          "ItemCategory": "Light Armor",
-          "Notes": "Warding",
-          "Value": 45,
-          "Weight": {
-            "Value": 13.0,
-            "UnitType": 0,
-            "Measurement": 1
-          }
-        },
-        {
-          "Amount": 1,
-          "Attuned": false,
-          "CoinType": 3,
-          "CreationDate": "2023-02-12T13:29:58.4435421-06:00",
-          "Description": "Simple cloak with usable hood. Used to hide facial features.",
-          "EquppedId": "6b037273-5ee3-488d-b98e-0d319d15c332",
-          "Id": "bf86082e-5444-4a30-9991-f5b778c2b003",
-          "Name": "Blue Cloak with Hood",
-          "IgnoreWeight": false,
-          "Index": 46,
-          "ItemCategory": "Clothing",
-          "Notes": "",
-          "Value": 5,
-          "Weight": {
-            "Value": 0.5,
-            "UnitType": 0,
-            "Measurement": 1
-          }
-        }
-      ],
-      "Hands": [
-        {
-          "Amount": 1,
-          "Attuned": true,
-          "CoinType": 0,
-          "CreationDate": "2023-02-12T13:29:58.4435502-06:00",
-          "Description": "Use to cast create darkness. 1d4 uses per day.",
-          "EquppedId": "da6d9a57-1797-4cc7-acff-0da434ee4491",
-          "Id": "499c1bae-2758-46dc-ae38-08c9134311db",
-          "Name": "Calamari Ring",
-          "IgnoreWeight": false,
-          "Index": 46,
-          "ItemCategory": "Clothing",
-          "Notes": "Magical",
-          "Value": 0,
-          "Weight": {
-            "Value": 0.1,
-            "UnitType": 0,
-            "Measurement": 1
-          }
-        },
-        {
-          "Amount": 1,
-          "Attuned": false,
-          "CoinType": 3,
-          "CreationDate": "2023-02-12T13:29:58.4435567-06:00",
-          "Description": "Stylish black gloves. Currently hiding rings on one hand.",
-          "EquppedId": "c0675c7b-fa83-421a-8366-94ddab69fe56",
-          "Id": "417630d4-6e46-4861-adea-a180a22f6a66",
-          "Name": "Black Onyx Leather Gloves",
-          "IgnoreWeight": false,
-          "Index": 46,
-          "ItemCategory": "Clothing",
-          "Notes": "",
-          "Value": 1,
-          "Weight": {
-            "Value": 0.2,
-            "UnitType": 0,
-            "Measurement": 1
-          }
-        }
-      ],
-      "Legs": [],
-      "Feet": [
-        {
-          "Amount": 1,
-          "Attuned": false,
-          "CoinType": 3,
-          "CreationDate": "2023-02-12T13:29:58.4435648-06:00",
-          "Description": "A pair of high-top black boots.",
-          "EquppedId": "04319f96-81ed-4876-814e-35447ad06d6c",
-          "Id": "a46b9b80-3632-4bf2-9a91-e272143f0021",
-          "Name": "Leather Boots",
-          "IgnoreWeight": false,
-          "Index": 46,
-          "ItemCategory": "Clothing",
-          "Notes": "",
-          "Value": 2,
-          "Weight": {
-            "Value": 1.0,
-            "UnitType": 0,
-            "Measurement": 1
-          }
-        }
-      ]
-    },
     "Inventories": [
       {
         "Amount": 1,
@@ -623,7 +513,9 @@
           "Value": 0.0,
           "UnitType": 0,
           "Measurement": 1
-        }
+        },
+        "IsEquipped": false,
+        "EquipmentSlot": 5
       },
       {
         "Amount": 1,
@@ -643,7 +535,9 @@
           "Value": 1.0,
           "UnitType": 0,
           "Measurement": 1
-        }
+        },
+        "IsEquipped": false,
+        "EquipmentSlot": 5
       },
       {
         "Amount": 1,
@@ -663,7 +557,9 @@
           "Value": 5.0,
           "UnitType": 0,
           "Measurement": 1
-        }
+        },
+        "IsEquipped": false,
+        "EquipmentSlot": 5
       },
       {
         "Amount": 1,
@@ -683,7 +579,9 @@
           "Value": 2.0,
           "UnitType": 0,
           "Measurement": 1
-        }
+        },
+        "IsEquipped": false,
+        "EquipmentSlot": 5
       },
       {
         "Amount": 2,
@@ -703,7 +601,75 @@
           "Value": 0.1,
           "UnitType": 0,
           "Measurement": 1
-        }
+        },
+        "IsEquipped": false,
+        "EquipmentSlot": 5
+      },
+      {
+        "Amount": 1,
+        "Attuned": false,
+        "CoinType": 3,
+        "CreationDate": "2023-02-12T13:29:58.4435567-06:00",
+        "Description": "Stylish black gloves. Currently hiding rings on one hand.",
+        "EquppedId": "c0675c7b-fa83-421a-8366-94ddab69fe56",
+        "Id": "417630d4-6e46-4861-adea-a180a22f6a66",
+        "Name": "Black Onyx Leather Gloves",
+        "IgnoreWeight": false,
+        "Index": 46,
+        "ItemCategory": "Clothing",
+        "Notes": "",
+        "Value": 1,
+        "Weight": {
+          "Value": 0.2,
+          "UnitType": 0,
+          "Measurement": 1
+        },
+        "IsEquipped": true,
+        "EquipmentSlot": 2
+      },
+      {
+        "Amount": 1,
+        "Attuned": false,
+        "CoinType": 3,
+        "CreationDate": "2023-02-12T13:29:58.4435421-06:00",
+        "Description": "Simple cloak with usable hood. Used to hide facial features.",
+        "EquppedId": "6b037273-5ee3-488d-b98e-0d319d15c332",
+        "Id": "bf86082e-5444-4a30-9991-f5b778c2b003",
+        "Name": "Blue Cloak with Hood",
+        "IgnoreWeight": false,
+        "Index": 46,
+        "ItemCategory": "Clothing",
+        "Notes": "",
+        "Value": 5,
+        "Weight": {
+          "Value": 0.5,
+          "UnitType": 0,
+          "Measurement": 1
+        },
+        "IsEquipped": true,
+        "EquipmentSlot": 1
+      },
+      {
+        "Amount": 1,
+        "Attuned": true,
+        "CoinType": 0,
+        "CreationDate": "2023-02-12T13:29:58.4435502-06:00",
+        "Description": "Use to cast create darkness. 1d4 uses per day.",
+        "EquppedId": "da6d9a57-1797-4cc7-acff-0da434ee4491",
+        "Id": "499c1bae-2758-46dc-ae38-08c9134311db",
+        "Name": "Calamari Ring",
+        "IgnoreWeight": false,
+        "Index": 46,
+        "ItemCategory": "Clothing",
+        "Notes": "Magical",
+        "Value": 0,
+        "Weight": {
+          "Value": 0.1,
+          "UnitType": 0,
+          "Measurement": 1
+        },
+        "IsEquipped": true,
+        "EquipmentSlot": 2
       },
       {
         "Amount": 1,
@@ -723,7 +689,9 @@
           "Value": 2.0,
           "UnitType": 0,
           "Measurement": 1
-        }
+        },
+        "IsEquipped": false,
+        "EquipmentSlot": 5
       },
       {
         "Amount": 1,
@@ -743,7 +711,9 @@
           "Value": 6.0,
           "UnitType": 0,
           "Measurement": 1
-        }
+        },
+        "IsEquipped": false,
+        "EquipmentSlot": 5
       },
       {
         "Amount": 1,
@@ -763,7 +733,9 @@
           "Value": 6.0,
           "UnitType": 0,
           "Measurement": 1
-        }
+        },
+        "IsEquipped": false,
+        "EquipmentSlot": 5
       },
       {
         "Amount": 1,
@@ -783,7 +755,9 @@
           "Value": 5.0,
           "UnitType": 0,
           "Measurement": 1
-        }
+        },
+        "IsEquipped": false,
+        "EquipmentSlot": 5
       },
       {
         "Amount": 1,
@@ -803,7 +777,9 @@
           "Value": 0.0,
           "UnitType": 0,
           "Measurement": 1
-        }
+        },
+        "IsEquipped": false,
+        "EquipmentSlot": 5
       },
       {
         "Amount": 1,
@@ -823,7 +799,9 @@
           "Value": 5.0,
           "UnitType": 0,
           "Measurement": 1
-        }
+        },
+        "IsEquipped": false,
+        "EquipmentSlot": 5
       },
       {
         "Amount": 1,
@@ -843,7 +821,9 @@
           "Value": 0.0,
           "UnitType": 0,
           "Measurement": 1
-        }
+        },
+        "IsEquipped": false,
+        "EquipmentSlot": 5
       },
       {
         "Amount": 1,
@@ -863,7 +843,9 @@
           "Value": 3.0,
           "UnitType": 0,
           "Measurement": 1
-        }
+        },
+        "IsEquipped": false,
+        "EquipmentSlot": 5
       },
       {
         "Amount": 1,
@@ -883,7 +865,9 @@
           "Value": 0.0,
           "UnitType": 0,
           "Measurement": 1
-        }
+        },
+        "IsEquipped": false,
+        "EquipmentSlot": 5
       },
       {
         "Amount": 1,
@@ -903,7 +887,31 @@
           "Value": 2.0,
           "UnitType": 0,
           "Measurement": 1
-        }
+        },
+        "IsEquipped": false,
+        "EquipmentSlot": 5
+      },
+      {
+        "Amount": 1,
+        "Attuned": false,
+        "CoinType": 3,
+        "CreationDate": "2023-02-12T13:29:58.4435648-06:00",
+        "Description": "A pair of high-top black boots.",
+        "EquppedId": "04319f96-81ed-4876-814e-35447ad06d6c",
+        "Id": "a46b9b80-3632-4bf2-9a91-e272143f0021",
+        "Name": "Leather Boots",
+        "IgnoreWeight": false,
+        "Index": 46,
+        "ItemCategory": "Clothing",
+        "Notes": "",
+        "Value": 2,
+        "Weight": {
+          "Value": 1.0,
+          "UnitType": 0,
+          "Measurement": 1
+        },
+        "IsEquipped": true,
+        "EquipmentSlot": 4
       },
       {
         "Amount": 1,
@@ -923,7 +931,9 @@
           "Value": 0.5,
           "UnitType": 0,
           "Measurement": 1
-        }
+        },
+        "IsEquipped": false,
+        "EquipmentSlot": 5
       },
       {
         "Amount": 1,
@@ -943,7 +953,9 @@
           "Value": 0.0,
           "UnitType": 0,
           "Measurement": 1
-        }
+        },
+        "IsEquipped": false,
+        "EquipmentSlot": 5
       },
       {
         "Amount": 1,
@@ -963,7 +975,9 @@
           "Value": 1.0,
           "UnitType": 0,
           "Measurement": 1
-        }
+        },
+        "IsEquipped": false,
+        "EquipmentSlot": 5
       },
       {
         "Amount": 1,
@@ -983,7 +997,9 @@
           "Value": 1.0,
           "UnitType": 0,
           "Measurement": 1
-        }
+        },
+        "IsEquipped": false,
+        "EquipmentSlot": 5
       },
       {
         "Amount": 1,
@@ -1003,7 +1019,9 @@
           "Value": 0.1,
           "UnitType": 0,
           "Measurement": 1
-        }
+        },
+        "IsEquipped": false,
+        "EquipmentSlot": 5
       },
       {
         "Amount": 1,
@@ -1023,7 +1041,9 @@
           "Value": 0.24,
           "UnitType": 0,
           "Measurement": 1
-        }
+        },
+        "IsEquipped": false,
+        "EquipmentSlot": 5
       },
       {
         "Amount": 1,
@@ -1043,7 +1063,9 @@
           "Value": 0.0,
           "UnitType": 0,
           "Measurement": 1
-        }
+        },
+        "IsEquipped": false,
+        "EquipmentSlot": 5
       },
       {
         "Amount": 1,
@@ -1063,7 +1085,9 @@
           "Value": 0.5,
           "UnitType": 0,
           "Measurement": 1
-        }
+        },
+        "IsEquipped": false,
+        "EquipmentSlot": 5
       },
       {
         "Amount": 2,
@@ -1083,7 +1107,9 @@
           "Value": 0.1,
           "UnitType": 0,
           "Measurement": 1
-        }
+        },
+        "IsEquipped": false,
+        "EquipmentSlot": 5
       },
       {
         "Amount": 2,
@@ -1103,7 +1129,9 @@
           "Value": 0.1,
           "UnitType": 0,
           "Measurement": 1
-        }
+        },
+        "IsEquipped": false,
+        "EquipmentSlot": 5
       },
       {
         "Amount": 1,
@@ -1123,7 +1151,9 @@
           "Value": 0.5,
           "UnitType": 0,
           "Measurement": 1
-        }
+        },
+        "IsEquipped": false,
+        "EquipmentSlot": 5
       },
       {
         "Amount": 1,
@@ -1143,7 +1173,9 @@
           "Value": 0.5,
           "UnitType": 0,
           "Measurement": 1
-        }
+        },
+        "IsEquipped": false,
+        "EquipmentSlot": 5
       },
       {
         "Amount": 1,
@@ -1163,7 +1195,9 @@
           "Value": 1.0,
           "UnitType": 0,
           "Measurement": 1
-        }
+        },
+        "IsEquipped": false,
+        "EquipmentSlot": 5
       },
       {
         "Amount": 1,
@@ -1183,7 +1217,9 @@
           "Value": 2.0,
           "UnitType": 0,
           "Measurement": 1
-        }
+        },
+        "IsEquipped": false,
+        "EquipmentSlot": 5
       },
       {
         "Amount": 3,
@@ -1203,7 +1239,9 @@
           "Value": 0.1,
           "UnitType": 0,
           "Measurement": 1
-        }
+        },
+        "IsEquipped": false,
+        "EquipmentSlot": 5
       },
       {
         "Amount": 1,
@@ -1223,7 +1261,9 @@
           "Value": 10.0,
           "UnitType": 0,
           "Measurement": 1
-        }
+        },
+        "IsEquipped": false,
+        "EquipmentSlot": 5
       },
       {
         "Amount": 14,
@@ -1243,7 +1283,9 @@
           "Value": 0.1,
           "UnitType": 0,
           "Measurement": 1
-        }
+        },
+        "IsEquipped": false,
+        "EquipmentSlot": 5
       },
       {
         "Amount": 1,
@@ -1263,7 +1305,9 @@
           "Value": 0.1,
           "UnitType": 0,
           "Measurement": 1
-        }
+        },
+        "IsEquipped": false,
+        "EquipmentSlot": 5
       },
       {
         "Amount": 1,
@@ -1283,7 +1327,9 @@
           "Value": 0.0,
           "UnitType": 0,
           "Measurement": 1
-        }
+        },
+        "IsEquipped": false,
+        "EquipmentSlot": 5
       },
       {
         "Amount": 1,
@@ -1303,7 +1349,9 @@
           "Value": 0.1,
           "UnitType": 0,
           "Measurement": 1
-        }
+        },
+        "IsEquipped": false,
+        "EquipmentSlot": 5
       },
       {
         "Amount": 1,
@@ -1323,7 +1371,31 @@
           "Value": 0.0,
           "UnitType": 0,
           "Measurement": 1
-        }
+        },
+        "IsEquipped": false,
+        "EquipmentSlot": 5
+      },
+      {
+        "Amount": 1,
+        "Attuned": false,
+        "CoinType": 3,
+        "CreationDate": "2023-02-12T13:29:58.4435251-06:00",
+        "Description": "Made from tough but flexible leather, studded leather is reinforced with close-set rivets or spikes. Base AC of 13 + DEX modifier.",
+        "EquppedId": "ccc4b63d-c61e-4e2c-bb3a-8b15483c1189",
+        "Id": "9f3f7f83-3702-4f41-b218-b286fc895059",
+        "Name": "Studded Leather",
+        "IgnoreWeight": true,
+        "Index": 46,
+        "ItemCategory": "Light Armor",
+        "Notes": "Warding",
+        "Value": 45,
+        "Weight": {
+          "Value": 13.0,
+          "UnitType": 0,
+          "Measurement": 1
+        },
+        "IsEquipped": true,
+        "EquipmentSlot": 1
       },
       {
         "Amount": 1,
@@ -1343,7 +1415,9 @@
           "Value": 0.25,
           "UnitType": 0,
           "Measurement": 1
-        }
+        },
+        "IsEquipped": false,
+        "EquipmentSlot": 5
       },
       {
         "Amount": 1,
@@ -1363,7 +1437,9 @@
           "Value": 20.0,
           "UnitType": 0,
           "Measurement": 1
-        }
+        },
+        "IsEquipped": false,
+        "EquipmentSlot": 5
       },
       {
         "Amount": 1,
@@ -1383,7 +1459,9 @@
           "Value": 1.0,
           "UnitType": 0,
           "Measurement": 1
-        }
+        },
+        "IsEquipped": false,
+        "EquipmentSlot": 5
       },
       {
         "Amount": 1,
@@ -1403,7 +1481,9 @@
           "Value": 0.0,
           "UnitType": 0,
           "Measurement": 1
-        }
+        },
+        "IsEquipped": false,
+        "EquipmentSlot": 5
       },
       {
         "Amount": 1,
@@ -1423,7 +1503,9 @@
           "Value": 1.0,
           "UnitType": 0,
           "Measurement": 1
-        }
+        },
+        "IsEquipped": false,
+        "EquipmentSlot": 5
       },
       {
         "Amount": 1,
@@ -1443,7 +1525,9 @@
           "Value": 0.5,
           "UnitType": 0,
           "Measurement": 1
-        }
+        },
+        "IsEquipped": false,
+        "EquipmentSlot": 5
       },
       {
         "Amount": 1,
@@ -1463,7 +1547,9 @@
           "Value": 2.0,
           "UnitType": 0,
           "Measurement": 1
-        }
+        },
+        "IsEquipped": false,
+        "EquipmentSlot": 5
       },
       {
         "Amount": 5,
@@ -1483,7 +1569,9 @@
           "Value": 0.0,
           "UnitType": 0,
           "Measurement": 1
-        }
+        },
+        "IsEquipped": false,
+        "EquipmentSlot": 5
       },
       {
         "Amount": 1,
@@ -1503,7 +1591,9 @@
           "Value": 5.0,
           "UnitType": 0,
           "Measurement": 1
-        }
+        },
+        "IsEquipped": false,
+        "EquipmentSlot": 5
       },
       {
         "Amount": 1,
@@ -1523,7 +1613,9 @@
           "Value": 1.0,
           "UnitType": 0,
           "Measurement": 1
-        }
+        },
+        "IsEquipped": false,
+        "EquipmentSlot": 5
       }
     ],
     "Languages": [
@@ -2212,6 +2304,10 @@
     },
     "Weapons": [
       {
+        "Amount": 1,
+        "Attuned": false,
+        "IsEquipped": false,
+        "EquipmentSlot": 5,
         "Ability": 2,
         "CoinType": 3,
         "Damage": "1d4 +5",
@@ -2232,6 +2328,10 @@
         }
       },
       {
+        "Amount": 1,
+        "Attuned": false,
+        "IsEquipped": true,
+        "EquipmentSlot": 2,
         "Ability": 2,
         "CoinType": 3,
         "Damage": "1d8 +5",
@@ -2252,6 +2352,10 @@
         }
       },
       {
+        "Amount": 1,
+        "Attuned": false,
+        "IsEquipped": false,
+        "EquipmentSlot": 5,
         "Ability": 2,
         "CoinType": 3,
         "Damage": "1d4 +5",
@@ -2272,6 +2376,10 @@
         }
       },
       {
+        "Amount": 1,
+        "Attuned": false,
+        "IsEquipped": true,
+        "EquipmentSlot": 2,
         "Ability": 2,
         "CoinType": 3,
         "Damage": "1d6 +5",
@@ -2293,9 +2401,9 @@
       }
     ]
   },
-  "Hash": "7118A3CC300B77593D61AF5F1B1B966235D48A4A23061D4D1B7EFFB81E13EC39",
+  "Hash": "582A6DF2B1EFB51325B896347E0B107635B45172A9F8A8408BBD7638AA84B586",
   "OriginalCreationDate": "Saturday, 17 December 2022 07:58:23 AM",
-  "LastSaveDate": "2023-03-23T22:51:50.4049873-05:00",
-  "Version": "5.1.2",
+  "LastSaveDate": "2023-04-05T17:20:32.9218818-05:00",
+  "Version": "5.2.0",
   "IsEmpty": false
 }

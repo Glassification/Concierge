@@ -16,7 +16,7 @@ namespace Concierge.Character.Items
     using MaterialDesignThemes.Wpf;
     using Newtonsoft.Json;
 
-    public sealed class Inventory : ICopyable<Inventory>, IUnique
+    public sealed class Inventory : ICopyable<Inventory>, IUnique, IEquipable
     {
         public Inventory()
         {
@@ -24,9 +24,10 @@ namespace Concierge.Character.Items
             this.Description = string.Empty;
             this.Weight = UnitDouble.Empty;
             this.Notes = string.Empty;
-            this.ItemCategory = string.Empty;
+            this.ItemCategory = "Adventuring Gear";
             this.Id = Guid.NewGuid();
             this.CreationDate = DateTime.Now;
+            this.EquipmentSlot = EquipmentSlot.None;
         }
 
         public int Amount { get; set; }
@@ -82,6 +83,10 @@ namespace Concierge.Character.Items
 
         public UnitDouble Weight { get; set; }
 
+        public bool IsEquipped { get; set; }
+
+        public EquipmentSlot EquipmentSlot { get; set; }
+
         public override bool Equals(object? obj)
         {
             if (obj is not Inventory item)
@@ -126,6 +131,8 @@ namespace Concierge.Character.Items
                 EquppedId = this.EquppedId,
                 Id = this.Id,
                 CreationDate = this.CreationDate,
+                IsEquipped = this.IsEquipped,
+                EquipmentSlot = this.EquipmentSlot,
             };
         }
 
