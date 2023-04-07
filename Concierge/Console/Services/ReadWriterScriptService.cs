@@ -17,7 +17,7 @@ namespace Concierge.Console.Services
     using Concierge.Tools.Generators.Names;
     using Concierge.Utility;
 
-    public class ReadWriterScriptService : ScriptService
+    public sealed class ReadWriterScriptService : ScriptService
     {
         private static readonly string[] names = new string[]
         {

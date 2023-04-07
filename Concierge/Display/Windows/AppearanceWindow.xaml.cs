@@ -39,9 +39,22 @@ namespace Concierge.Display.Windows
             this.EyeColor = CustomColor.Invalid;
             this.HairColor = CustomColor.Invalid;
             this.SkinColor = CustomColor.Invalid;
+            this.DescriptionTextBlock.DataContext = this.Description;
+
+            this.SetFocusEvents(this.GenderComboBox);
+            this.SetFocusEvents(this.AgeUpDown);
+            this.SetFocusEvents(this.FeetUpDown);
+            this.SetFocusEvents(this.InchesUpDown);
+            this.SetFocusEvents(this.WeightUpDown);
+            this.SetFocusEvents(this.SkinColourTextBox);
+            this.SetFocusEvents(this.EyeColourTextBox);
+            this.SetFocusEvents(this.HairColourTextBox);
+            this.SetFocusEvents(this.DistinguishingMarksTextBox);
         }
 
         public override string HeaderText => "Edit Appearance";
+
+        public override string WindowName => nameof(AppearanceWindow);
 
         private Appearance Appearance { get; set; }
 

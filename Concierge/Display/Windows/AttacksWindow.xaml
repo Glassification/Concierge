@@ -9,14 +9,15 @@
     xmlns:controls="clr-namespace:Concierge.Display.Controls"
     mc:Ignorable="d"
     Title="Modify Attack"
-    Height="475"
+    Height="595"
     Width="800"
     Style="{StaticResource WindowFontStyle}">
 
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="45"/>
-            <RowDefinition Height="360"/>
+            <RowDefinition Height="420"/>
+            <RowDefinition Height="60"/>
             <RowDefinition Height="70"/>
         </Grid.RowDefinitions>
 
@@ -53,6 +54,7 @@
             <!--Left-->
             <Grid Grid.Column="0">
                 <Grid.RowDefinitions>
+                    <RowDefinition Height="60"/>
                     <RowDefinition Height="60"/>
                     <RowDefinition Height="60"/>
                     <RowDefinition Height="60"/>
@@ -186,6 +188,28 @@
                             IsEditable="False"/>
                     </Grid>
                 </Grid>
+
+                <!--Attuned-->
+                <Grid Grid.Row="6">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="35*"/>
+                        <ColumnDefinition Width="65*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!--Title-->
+                    <Grid Grid.Column="0">
+                        <components:ConciergeLabel
+                            Text="Attuned:"
+                            x:Name="AttunedText"/>
+                    </Grid>
+
+                    <!--Value-->
+                    <Grid Grid.Column="1" Margin="20,0,0,0">
+                        <components:ConciergeCheckBox 
+                            x:Name="AttunedCheckBox"
+                            Style="{StaticResource CheckBoxStyle}"/>
+                    </Grid>
+                </Grid>
             </Grid>
 
             <!--Right-->
@@ -195,7 +219,7 @@
                     <RowDefinition Height="60"/>
                     <RowDefinition Height="60"/>
                     <RowDefinition Height="60"/>
-                    <RowDefinition Height="120"/>
+                    <RowDefinition Height="180"/>
                 </Grid.RowDefinitions>
 
                 <!--Range-->
@@ -340,8 +364,29 @@
             </Grid>
         </Grid>
 
+        <Border
+            Grid.Row="2"
+            BorderBrush="#29303E"
+            BorderThickness="5"
+            CornerRadius="10"
+            Margin="10,5,20,5">
+            <Grid
+                Background="#29303E"
+                Margin="-1">
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <components:ConciergeTextBlock
+                        x:Name="DescriptionTextBlock"
+                        HorizontalAlignment="Left"
+                        FontSize="11"
+                        Opacity="0.80"
+                        Margin="10,2,10,2"
+                        Text="{Binding UpdateSourceTrigger=PropertyChanged, Path=Text}"/>
+                </ScrollViewer>
+            </Grid>
+        </Border>
+
         <!--Buttons-->
-        <Grid Grid.Row="2">
+        <Grid Grid.Row="3">
             <StackPanel Orientation="Horizontal"
                         VerticalAlignment="Center"
                         HorizontalAlignment="Center">

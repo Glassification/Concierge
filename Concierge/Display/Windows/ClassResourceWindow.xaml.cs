@@ -32,9 +32,18 @@ namespace Concierge.Display.Windows
             this.RecoveryComboBox.ItemsSource = StringUtility.FormatEnumForDisplay(typeof(Recovery));
             this.ClassResource = new ClassResource();
             this.ClassResources = new List<ClassResource>();
+            this.DescriptionTextBlock.DataContext = this.Description;
+
+            this.SetFocusEvents(this.ResourceNameComboBox);
+            this.SetFocusEvents(this.PoolUpDown);
+            this.SetFocusEvents(this.SpentUpDown);
+            this.SetFocusEvents(this.RecoveryComboBox);
+            this.SetFocusEvents(this.NotesTextBox);
         }
 
         public override string HeaderText => $"{(this.Editing ? "Edit" : "Add")} Resource";
+
+        public override string WindowName => nameof(ClassResourceWindow);
 
         public bool ItemsAdded { get; private set; }
 

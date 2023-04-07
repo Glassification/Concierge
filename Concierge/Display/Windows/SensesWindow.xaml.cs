@@ -28,9 +28,19 @@ namespace Concierge.Display.Windows
 
             this.VisionComboBox.ItemsSource = Enum.GetValues(typeof(VisionTypes)).Cast<VisionTypes>();
             this.ConciergePage = ConciergePage.None;
+            this.DescriptionTextBlock.DataContext = this.Description;
+
+            this.SetFocusEvents(this.BaseMovementUpDown);
+            this.SetFocusEvents(this.VisionComboBox);
+            this.SetFocusEvents(this.InitiativeBonusUpDown);
+            this.SetFocusEvents(this.PerceptionBonusUpDown);
+            this.SetFocusEvents(this.MovementBonusUpDown);
+            this.SetFocusEvents(this.InspirationCheckBox);
         }
 
         public override string HeaderText => "Edit Senses";
+
+        public override string WindowName => nameof(SensesWindow);
 
         public override ConciergeWindowResult ShowWizardSetup(string buttonText)
         {

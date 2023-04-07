@@ -30,9 +30,31 @@ namespace Concierge.Display.Windows
             this.EncumbranceComboBox.ItemsSource = StringUtility.FormatEnumForDisplay(typeof(EncumbranceLevel));
             this.ConciergePage = ConciergePage.None;
             this.Conditions = new Conditions();
+            this.DescriptionTextBlock.DataContext = this.Description;
+
+            this.SetFocusEvents(this.BlindedCheckBox);
+            this.SetFocusEvents(this.CharmedCheckBox);
+            this.SetFocusEvents(this.DeathCheckBox);
+            this.SetFocusEvents(this.DeafenedCheckBox);
+            this.SetFocusEvents(this.FatiguedComboBox);
+            this.SetFocusEvents(this.FrightenedCheckBox);
+            this.SetFocusEvents(this.GrappledCheckBox);
+            this.SetFocusEvents(this.IncapacitatedCheckBox);
+            this.SetFocusEvents(this.InvisibleCheckBox);
+            this.SetFocusEvents(this.ParalyzedCheckBox);
+            this.SetFocusEvents(this.PetrifiedCheckBox);
+            this.SetFocusEvents(this.PoisonedCheckBox);
+            this.SetFocusEvents(this.RestrainedCheckBox);
+            this.SetFocusEvents(this.ProneCheckBox);
+            this.SetFocusEvents(this.StunnedCheckBox);
+            this.SetFocusEvents(this.UnconsciousCheckBox);
+            this.SetFocusEvents(this.EncumbranceComboBox);
+            this.SetFocusEvents(this.EncumbranceCheckBox);
         }
 
         public override string HeaderText => "Edit Conditions";
+
+        public override string WindowName => nameof(ConditionsWindow);
 
         private Conditions Conditions { get; set; }
 

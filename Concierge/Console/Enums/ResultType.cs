@@ -10,5 +10,6 @@ namespace Concierge.Console.Enums
         Error,
         Warning,
         Information,
+        NotImplemented,
     }
 }

@@ -224,8 +224,7 @@
                                     x:Name="SelectCustomColorButton"
                                     Margin="0,1,0,1"
                                     ToolTip="Create Custom Colour"
-                                    Width="auto"
-                                    HorizontalAlignment="Stretch"
+                                    HorizontalAlignment="Center"
                                     Content="Custom..."
                                     Click="SelectCustomColorButton_Click"
                                     Style="{StaticResource ConciergeTextButtonStyle}"/>

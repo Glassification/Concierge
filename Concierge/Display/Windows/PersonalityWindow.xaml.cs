@@ -24,9 +24,19 @@ namespace Concierge.Display.Windows
 
             this.ConciergePage = ConciergePage.None;
             this.Personality = new Personality();
+            this.DescriptionTextBlock.DataContext = this.Description;
+
+            this.SetFocusEvents(this.Trait1TextBox);
+            this.SetFocusEvents(this.Trait2TextBox);
+            this.SetFocusEvents(this.IdealTextBox);
+            this.SetFocusEvents(this.BondTextBox);
+            this.SetFocusEvents(this.FlawTextBox);
+            this.SetFocusEvents(this.NotesTextBox);
         }
 
         public override string HeaderText => "Edit Personality";
+
+        public override string WindowName => nameof(PersonalityWindow);
 
         private Personality Personality { get; set; }
 

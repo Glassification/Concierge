@@ -12,6 +12,9 @@
     <Compile Update="Display\Controls\LabelControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Display\Controls\PopupButton.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Display\Pages\AbilityPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -81,6 +84,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Display\Controls\PersonalityControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Display\Controls\PopupButton.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Display\Controls\SavingThrowControl.xaml">

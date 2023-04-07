@@ -53,10 +53,10 @@ namespace Concierge.Display.Controls
 
         private static readonly RoutedEvent ValueChangedEvent =
             EventManager.RegisterRoutedEvent(
-            "ValueChanged",
-            RoutingStrategy.Bubble,
-            typeof(RoutedEventHandler),
-            typeof(IntegerUpDownControl));
+                "ValueChanged",
+                RoutingStrategy.Bubble,
+                typeof(RoutedEventHandler),
+                typeof(IntegerUpDownControl));
 
         private static readonly RoutedEvent IncreaseClickedEvent =
             EventManager.RegisterRoutedEvent(
@@ -75,6 +75,7 @@ namespace Concierge.Display.Controls
         public IntegerUpDownControl()
         {
             this.InitializeComponent();
+
             this.Minimum = 0;
             this.Increment = 1;
             this.Maximum = int.MaxValue;

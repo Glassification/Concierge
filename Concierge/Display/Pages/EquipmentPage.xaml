@@ -36,33 +36,10 @@
                         FontSize="25"
                         HorizontalAlignment="Left"
                         Margin="150, 0, 0, 0"/>
-                    <controls:SearchFilterControl
-                        x:Name="SearchFilter"
-                        HorizontalAlignment="Center"
-                        Width="300"
-                        Margin="150,5,0,5"/>
                 </StackPanel>
 
 
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                    <components:ConciergeDesignButton 
-                        Style="{StaticResource ConciergeDesignButtonStyle}" 
-                        x:Name="UpButton"
-                        Click="UpButton_Click"
-                        Width="60"
-                        Foreground="SteelBlue"
-                        ToolTip="Move Selected Item Up">
-                        <materialDesign:PackIcon Kind="ArrowUpBox" Width="25" Height="25"/>
-                    </components:ConciergeDesignButton>
-                    <components:ConciergeDesignButton 
-                        Style="{StaticResource ConciergeDesignButtonStyle}" 
-                        x:Name="DownButton"
-                        Click="DownButton_Click"
-                        Width="60"
-                        Foreground="SteelBlue"
-                        ToolTip="Move Selected Item Down">
-                        <materialDesign:PackIcon Kind="ArrowDownBox" Width="25" Height="25"/>
-                    </components:ConciergeDesignButton>
                     <components:ConciergeDesignButton 
                         Style="{StaticResource ConciergeDesignButtonStyle}" 
                         x:Name="ClearButton"
@@ -175,8 +152,7 @@
                             VerticalScrollBarVisibility="Hidden"
                             Style="{DynamicResource StandardDataGridStyle}"
                             Margin="1"
-                            SelectionChanged="EquipmentDataGrid_SelectionChanged"
-                            Sorted="EquipmentDataGrid_Sorted">
+                            SelectionChanged="EquipmentDataGrid_SelectionChanged">
                             <DataGrid.Columns>
                                 <DataGridTemplateColumn
                                     Width="0.02*">
@@ -233,8 +209,7 @@
                             VerticalScrollBarVisibility="Hidden"
                             Style="{DynamicResource StandardDataGridStyle}"
                             Margin="1"
-                            SelectionChanged="EquipmentDataGrid_SelectionChanged"
-                            Sorted="EquipmentDataGrid_Sorted">
+                            SelectionChanged="EquipmentDataGrid_SelectionChanged">
                             <DataGrid.Columns>
                                 <DataGridTemplateColumn
                                     Width="0.02*">
@@ -332,8 +307,7 @@
                             VerticalScrollBarVisibility="Hidden"
                             Style="{DynamicResource StandardDataGridStyle}"
                             Margin="1"
-                            SelectionChanged="EquipmentDataGrid_SelectionChanged"
-                            Sorted="EquipmentDataGrid_Sorted">
+                            SelectionChanged="EquipmentDataGrid_SelectionChanged">
                             <DataGrid.Columns>
                                 <DataGridTemplateColumn
                                     Width="0.02*">
@@ -390,8 +364,7 @@
                             VerticalScrollBarVisibility="Hidden"
                             Style="{DynamicResource StandardDataGridStyle}"
                             Margin="1"
-                            SelectionChanged="EquipmentDataGrid_SelectionChanged"
-                            Sorted="EquipmentDataGrid_Sorted">
+                            SelectionChanged="EquipmentDataGrid_SelectionChanged">
                             <DataGrid.Columns>
                                 <DataGridTemplateColumn
                                     Width="0.02*">
@@ -448,8 +421,7 @@
                             VerticalScrollBarVisibility="Hidden"
                             Style="{DynamicResource StandardDataGridStyle}"
                             Margin="1"
-                            SelectionChanged="EquipmentDataGrid_SelectionChanged"
-                            Sorted="EquipmentDataGrid_Sorted">
+                            SelectionChanged="EquipmentDataGrid_SelectionChanged">
                             <DataGrid.Columns>
                                 <DataGridTemplateColumn
                                     Width="0.02*">

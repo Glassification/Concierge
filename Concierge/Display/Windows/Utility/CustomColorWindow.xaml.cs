@@ -37,6 +37,8 @@ namespace Concierge.Display.Utility
 
         public override string HeaderText => "Custom Colour";
 
+        public override string WindowName => nameof(CustomColorWindow);
+
         public Color SelectedColor
         {
             get
@@ -57,7 +59,7 @@ namespace Concierge.Display.Utility
 
         public override CustomColor ShowColorWindow(CustomColor startingColor)
         {
-            this.NameTextBox.Text = startingColor.Name;
+            this.NameTextBox.Text = startingColor.IsValid ? startingColor.Name : string.Empty;
             this.UpdateRgbValues(startingColor.Color);
             this.UpdateRgbSlider(startingColor.Color);
             this.ShowConciergeWindow();
@@ -147,7 +149,7 @@ namespace Concierge.Display.Utility
             }
 
             this.SelectedColor = Color.FromArgb(
-                255,
+                Constants.ColorSpace,
                 (byte)this.RedUpDown.Value,
                 (byte)this.GreenUpDown.Value,
                 (byte)this.BlueUpDown.Value);
@@ -209,7 +211,7 @@ namespace Concierge.Display.Utility
             }
 
             this.SelectedColor = Color.FromArgb(
-                255,
+                Constants.ColorSpace,
                 (byte)this.RedSlider.Value,
                 (byte)this.GreenSlider.Value,
                 (byte)this.BlueSlider.Value);

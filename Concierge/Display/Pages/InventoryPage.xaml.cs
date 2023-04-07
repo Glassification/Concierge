@@ -53,6 +53,7 @@ namespace Concierge.Display.Pages
                 typeof(InventoryWindow),
                 this.Window_ApplyChanges,
                 ConciergePage.Inventory);
+
             this.DrawInventory();
             this.InventoryDataGrid.SetSelectedIndex(index);
         }

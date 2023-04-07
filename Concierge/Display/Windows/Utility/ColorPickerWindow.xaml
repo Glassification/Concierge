@@ -214,8 +214,7 @@
                     <components:ConciergeTextButton
                         x:Name="SelectCustomColorButton"
                         ToolTip="Create Custom Colour"
-                        Width="auto"
-                        HorizontalAlignment="Stretch"
+                        HorizontalAlignment="Center"
                         Content="Custom..."
                         Click="SelectCustomColorButton_Click"
                         Style="{StaticResource ConciergeTextButtonStyle}"/>

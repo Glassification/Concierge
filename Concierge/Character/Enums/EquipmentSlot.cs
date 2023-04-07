@@ -11,5 +11,6 @@ namespace Concierge.Character.Enums
         Hands,
         Legs,
         Feet,
+        None,
     }
 }

@@ -14,6 +14,7 @@ namespace Concierge.Display.Windows
     using Concierge.Commands;
     using Concierge.Display.Components;
     using Concierge.Display.Enums;
+    using Concierge.Display.Utility;
     using Concierge.Utility;
     using Concierge.Utility.Utilities;
 
@@ -32,9 +33,18 @@ namespace Concierge.Display.Windows
             this.ConciergePage = ConciergePage.None;
             this.SelectedClass = new MagicClass();
             this.MagicClasses = new List<MagicClass>();
+            this.DescriptionTextBlock.DataContext = this.Description;
+
+            this.SetFocusEvents(this.ClassNameComboBox);
+            this.SetFocusEvents(this.AbilityComboBox);
+            this.SetFocusEvents(this.CantripsUpDown);
+            this.SetFocusEvents(this.SpellsUpDown);
+            this.SetFocusEvents(this.LevelUpDown);
         }
 
         public override string HeaderText => $"{(this.Editing ? "Edit" : "Add")} Spellcasting Class";
+
+        public override string WindowName => nameof(MagicClassWindow);
 
         public bool ItemsAdded { get; private set; }
 

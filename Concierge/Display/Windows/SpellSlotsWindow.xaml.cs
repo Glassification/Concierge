@@ -10,6 +10,7 @@ namespace Concierge.Display.Windows
     using Concierge.Commands;
     using Concierge.Display.Components;
     using Concierge.Display.Enums;
+    using Concierge.Display.Utility;
 
     /// <summary>
     /// Interaction logic for SpellSlotsWindow.xaml.
@@ -23,9 +24,33 @@ namespace Concierge.Display.Windows
 
             this.ConciergePage = ConciergePage.None;
             this.SpellSlots = new SpellSlots();
+            this.DescriptionTextBlock.DataContext = this.Description;
+
+            this.SetFocusEvents(this.UsedPactUpDown);
+            this.SetFocusEvents(this.Used1UpDown);
+            this.SetFocusEvents(this.Used2UpDown);
+            this.SetFocusEvents(this.Used3UpDown);
+            this.SetFocusEvents(this.Used4UpDown);
+            this.SetFocusEvents(this.Used5UpDown);
+            this.SetFocusEvents(this.Used6UpDown);
+            this.SetFocusEvents(this.Used7UpDown);
+            this.SetFocusEvents(this.Used8UpDown);
+            this.SetFocusEvents(this.Used9UpDown);
+            this.SetFocusEvents(this.TotalPactUpDown);
+            this.SetFocusEvents(this.Total1UpDown);
+            this.SetFocusEvents(this.Total2UpDown);
+            this.SetFocusEvents(this.Total3UpDown);
+            this.SetFocusEvents(this.Total4UpDown);
+            this.SetFocusEvents(this.Total5UpDown);
+            this.SetFocusEvents(this.Total6UpDown);
+            this.SetFocusEvents(this.Total7UpDown);
+            this.SetFocusEvents(this.Total8UpDown);
+            this.SetFocusEvents(this.Total9UpDown);
         }
 
         public override string HeaderText => "Edit Spell Slots";
+
+        public override string WindowName => nameof(SpellSlotsWindow);
 
         private SpellSlots SpellSlots { get; set; }
 

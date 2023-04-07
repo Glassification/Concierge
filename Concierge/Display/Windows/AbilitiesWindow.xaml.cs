@@ -35,11 +35,22 @@ namespace Concierge.Display.Windows
             this.ConciergePage = ConciergePage.None;
             this.Abilities = new List<Ability>();
             this.SelectedAbility = new Ability();
+            this.DescriptionTextBlock.DataContext = this.Description;
+
+            this.SetFocusEvents(this.NameComboBox);
+            this.SetFocusEvents(this.TypeComboBox);
+            this.SetFocusEvents(this.UsesTextBox);
+            this.SetFocusEvents(this.ActionTextBox);
+            this.SetFocusEvents(this.LevelUpDown);
+            this.SetFocusEvents(this.RecoveryTextBox);
+            this.SetFocusEvents(this.NotesTextBox);
         }
 
         public bool ItemsAdded { get; private set; }
 
         public override string HeaderText => $"{(this.Editing ? "Edit" : "Add")} Ability";
+
+        public override string WindowName => nameof(AbilitiesWindow);
 
         private bool Editing { get; set; }
 

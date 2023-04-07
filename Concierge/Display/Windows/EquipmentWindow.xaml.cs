@@ -25,12 +25,18 @@ namespace Concierge.Display.Windows
             this.InitializeComponent();
             this.UseRoundedCorners();
 
-            this.SlotComboBox.ItemsSource = Enum.GetValues(typeof(EquipmentSlot)).Cast<EquipmentSlot>();
+            this.SlotComboBox.ItemsSource = Enum.GetValues(typeof(EquipmentSlot)).Cast<EquipmentSlot>().ToList().GetRange(0, (int)EquipmentSlot.None);
             this.ConciergePage = ConciergePage.None;
             this.PreviousSlot = string.Empty;
+            this.DescriptionTextBlock.DataContext = this.Description;
+
+            this.SetFocusEvents(this.SlotComboBox);
+            this.SetFocusEvents(this.ItemComboBox);
         }
 
         public override string HeaderText => "Edit Equipped Items";
+
+        public override string WindowName => nameof(EquipmentWindow);
 
         public bool ItemsAdded { get; private set; }
 
@@ -40,7 +46,7 @@ namespace Concierge.Display.Windows
         {
             this.PreviousSlot = string.Empty;
             this.ClearFields();
-            this.ItemComboBox.ItemsSource = EquippedItems.Equipable;
+            this.ItemComboBox.ItemsSource = Program.CcsFile.Character.EquippedItems.Equipable;
             this.OkButton.Visibility = Visibility.Collapsed;
             this.CancelButton.Content = buttonText;
 
@@ -53,7 +59,7 @@ namespace Concierge.Display.Windows
         {
             this.PreviousSlot = string.Empty;
             this.ClearFields();
-            this.ItemComboBox.ItemsSource = EquippedItems.Equipable;
+            this.ItemComboBox.ItemsSource = Program.CcsFile.Character.EquippedItems.Equipable;
             this.ItemsAdded = false;
 
             this.ShowConciergeWindow();
@@ -77,19 +83,42 @@ namespace Concierge.Display.Windows
             this.ItemComboBox.Text = string.Empty;
         }
 
-        private void EquipItem()
+        private bool EquipItem()
         {
-            if (this.ItemComboBox.SelectedItem is not Inventory item || this.SlotComboBox.Text.IsNullOrWhiteSpace())
+            var item = this.ItemComboBox.SelectedItem;
+            if ((item is not Inventory && item is not Weapon) || this.SlotComboBox.Text.IsNullOrWhiteSpace())
             {
-                return;
+                return false;
             }
 
             this.PreviousSlot = this.SlotComboBox.Text;
             this.ItemsAdded = true;
             var slot = (EquipmentSlot)Enum.Parse(typeof(EquipmentSlot), this.SlotComboBox.Text);
 
-            var newItem = Program.CcsFile.Character.EquippedItems.Equip(item, slot);
-            Program.UndoRedoService.AddCommand(new EquipItemCommand(newItem, slot));
+            if (item is Inventory inventory)
+            {
+                this.EquipInventory(inventory, slot);
+            }
+            else if (item is Weapon weapon)
+            {
+                this.EquipWeapon(weapon, slot);
+            }
+
+            return true;
+        }
+
+        private void EquipInventory(Inventory item, EquipmentSlot slot)
+        {
+            var oldItem = item.DeepCopy();
+            EquippedItems.Equip(item, slot);
+            Program.UndoRedoService.AddCommand(new EditCommand<Inventory>(item, oldItem, this.ConciergePage));
+        }
+
+        private void EquipWeapon(Weapon weapon, EquipmentSlot slot)
+        {
+            var oldItem = weapon.DeepCopy();
+            EquippedItems.Equip(weapon, slot);
+            Program.UndoRedoService.AddCommand(new EditCommand<Weapon>(weapon, oldItem, this.ConciergePage));
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
@@ -105,9 +134,13 @@ namespace Concierge.Display.Windows
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
-            this.EquipItem();
+            if (!this.EquipItem())
+            {
+                return;
+            }
+
             this.ClearFields();
-            this.ItemComboBox.ItemsSource = EquippedItems.Equipable;
+            this.ItemComboBox.ItemsSource = Program.CcsFile.Character.EquippedItems.Equipable;
             this.InvokeApplyChanges();
 
             Program.Modify();

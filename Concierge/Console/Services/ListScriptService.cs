@@ -15,7 +15,7 @@ namespace Concierge.Console.Services
     using Concierge.Console.Scripts;
     using Concierge.Utility;
 
-    public class ListScriptService : ScriptService
+    public sealed class ListScriptService : ScriptService
     {
         private static readonly string[] names = new string[]
         {
@@ -36,6 +36,8 @@ namespace Concierge.Console.Services
             "AddItem",
             "RemoveItem",
             "Count",
+            "AddCategory",
+            "GetId",
         };
 
         public ListScriptService()

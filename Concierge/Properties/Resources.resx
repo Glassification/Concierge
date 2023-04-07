@@ -117,6 +117,27 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AbilitiesWindow_ActionTextBox" xml:space="preserve">
+    <value>Trigger for activating this ability.</value>
+  </data>
+  <data name="AbilitiesWindow_LevelUpDown" xml:space="preserve">
+    <value>Level required for learning this ability.</value>
+  </data>
+  <data name="AbilitiesWindow_NameComboBox" xml:space="preserve">
+    <value>Every ability probably has a name.</value>
+  </data>
+  <data name="AbilitiesWindow_NotesTextBox" xml:space="preserve">
+    <value>Any extra information describing the ability.</value>
+  </data>
+  <data name="AbilitiesWindow_RecoveryTextBox" xml:space="preserve">
+    <value>How to replenish uses for this ability.</value>
+  </data>
+  <data name="AbilitiesWindow_TypeComboBox" xml:space="preserve">
+    <value>Which category list this ability comes from.</value>
+  </data>
+  <data name="AbilitiesWindow_UsesTextBox" xml:space="preserve">
+    <value>Amount of times this ability can be used before it is exhausted.</value>
+  </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="Ability" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Json\Ability.json;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -130,6 +151,144 @@
   <data name="Ammunition" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Json\Ammunition.json;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="AmmunitionWindow_BonusTextBox" xml:space="preserve">
+    <value>Add any extra damage, status effects, or behaviours here.</value>
+  </data>
+  <data name="AmmunitionWindow_CoinTypeComboBox" xml:space="preserve">
+    <value>Specify the denomination so you don't have to worry about math.</value>
+  </data>
+  <data name="AmmunitionWindow_DamageTypeComboBox" xml:space="preserve">
+    <value>Set the type of wound this projectile will cause.</value>
+  </data>
+  <data name="AmmunitionWindow_NameComboBox" xml:space="preserve">
+    <value>You can use a weapon that has the ammunition property to make a ranged attack only if you have ammunition to fire from the weapon. Drawing the ammunition from a quiver, case, or other container is part of the attack.</value>
+  </data>
+  <data name="AmmunitionWindow_QuantityUpDown" xml:space="preserve">
+    <value>At the end of the battle, you can recover half your expended ammunition by taking a minute to search the battlefield.</value>
+  </data>
+  <data name="AmmunitionWindow_UsedUpDown" xml:space="preserve">
+    <value>Each time you attack with the weapon, you expend one piece of ammunition.</value>
+  </data>
+  <data name="AmmunitionWindow_ValueUpDown" xml:space="preserve">
+    <value>The worth of 1 piece of this ammunition type.</value>
+  </data>
+  <data name="AppearanceWindow_AgeUpDown" xml:space="preserve">
+    <value>A character should be older than 0, and probably at least the age of majority for their race.</value>
+  </data>
+  <data name="AppearanceWindow_DistinguishingMarksTextBox" xml:space="preserve">
+    <value>Give the character an unusual or memorable physical characteristic. Such as a scar, limp, or tattoo.</value>
+  </data>
+  <data name="AppearanceWindow_EyeColourTextBox" xml:space="preserve">
+    <value>Select a distinctive eye colour.</value>
+  </data>
+  <data name="AppearanceWindow_FeetUpDown" xml:space="preserve">
+    <value>A stong and tough character might be tall or just heavy.</value>
+  </data>
+  <data name="AppearanceWindow_GenderComboBox" xml:space="preserve">
+    <value>Male, female, or even 'other' characters don't gain any special benifits or hindrances.</value>
+  </data>
+  <data name="AppearanceWindow_HairColourTextBox" xml:space="preserve">
+    <value>Choose an interesting hair colour.</value>
+  </data>
+  <data name="AppearanceWindow_InchesUpDown" xml:space="preserve">
+    <value>A stong and tough character might be tall or just heavy.</value>
+  </data>
+  <data name="AppearanceWindow_SkinColourTextBox" xml:space="preserve">
+    <value>Select a reasonable skin colour. Or don't. I'm just text, I can't stop you.</value>
+  </data>
+  <data name="AppearanceWindow_WeightUpDown" xml:space="preserve">
+    <value>A weak but agile character might be thin.</value>
+  </data>
+  <data name="ArmorWindow_ArmorClassUpDown" xml:space="preserve">
+    <value>The armor's base AC without any modifiers added.</value>
+  </data>
+  <data name="ArmorWindow_EquipedTextBox" xml:space="preserve">
+    <value>Armor might have a snazzy title.</value>
+  </data>
+  <data name="ArmorWindow_MagicArmorClassUpDown" xml:space="preserve">
+    <value>Total of any magic bonuses that affect Armor Class.</value>
+  </data>
+  <data name="ArmorWindow_MiscArmorClassUpDown" xml:space="preserve">
+    <value>Total of any status bonuses that affect Armor Class.</value>
+  </data>
+  <data name="ArmorWindow_ShieldArmorClassUpDown" xml:space="preserve">
+    <value>Weilding a shield normally increases AC by 2.</value>
+  </data>
+  <data name="ArmorWindow_ShieldTextBox" xml:space="preserve">
+    <value>Usually made from wood or metal and carried in one hand.</value>
+  </data>
+  <data name="ArmorWindow_ShieldWeightUpDown" xml:space="preserve">
+    <value>Generally weighs more than 0.</value>
+  </data>
+  <data name="ArmorWindow_StealthComboBox" xml:space="preserve">
+    <value>Determines if the wearer has disadvantage on stealth checks.</value>
+  </data>
+  <data name="ArmorWindow_StrengthUpDown" xml:space="preserve">
+    <value>Armor reduces speed by 10 unless the strength score is equal to or greater than listed score.</value>
+  </data>
+  <data name="ArmorWindow_TypeComboBox" xml:space="preserve">
+    <value>Light, Medium, or Heavy armor.</value>
+  </data>
+  <data name="ArmorWindow_WeightUpDown" xml:space="preserve">
+    <value>Contrary to popular belief, heavy armor will weigh more.</value>
+  </data>
+  <data name="AttacksWindow_AbilityComboBox" xml:space="preserve">
+    <value>Most weapons require strength to use, but finesse weapons allow a character to use their dexterity score. Special weapons or statuses might allow other abilities to be used instead.</value>
+  </data>
+  <data name="AttacksWindow_AttackComboBox" xml:space="preserve">
+    <value>Your race, class, and feats can grant you proficiency with certain weapons or categories of weapons.</value>
+  </data>
+  <data name="AttacksWindow_CoinTypeComboBox" xml:space="preserve">
+    <value>Specify the denomination so you don't have to worry about math.</value>
+  </data>
+  <data name="AttacksWindow_DamageTextBox" xml:space="preserve">
+    <value>List the damage rolls and proficiency bonus to attacking with this weapon.</value>
+  </data>
+  <data name="AttacksWindow_DamageTypeComboBox" xml:space="preserve">
+    <value>Some creatures and objects are exceedingly difficult or unusually easy to hurt with certain types of damage.</value>
+  </data>
+  <data name="AttacksWindow_IgnoreWeightCheckBox" xml:space="preserve">
+    <value>This is generally used to 'place' the weapon in a bag of holding.</value>
+  </data>
+  <data name="AttacksWindow_MiscDamageTextBox" xml:space="preserve">
+    <value>Here, you can use my plus 1 mace.</value>
+  </data>
+  <data name="AttacksWindow_NotesTextBox" xml:space="preserve">
+    <value>Many weapons have special properties related to their use, as shown in the Weapons table.</value>
+  </data>
+  <data name="AttacksWindow_ProficencyOverrideCheckBox" xml:space="preserve">
+    <value>Force this weapon to add your character's proficiency bonus.</value>
+  </data>
+  <data name="AttacksWindow_RangeTextBox" xml:space="preserve">
+    <value>How far you can strike enemies with this weapon. Ranged weapons have minimum and maximum effective ranges.</value>
+  </data>
+  <data name="AttacksWindow_TypeComboBox" xml:space="preserve">
+    <value>Specifying the type of weapon allows Concierge to automatically attempt to calculate proficiency bonuses. Most people can use simple weapons with proficiency, however, martial weapons require more specialized training to use effectively.</value>
+  </data>
+  <data name="AttacksWindow_ValueUpDown" xml:space="preserve">
+    <value>The worth of this weapon. Even your fists have value to someone.</value>
+  </data>
+  <data name="AttacksWindow_WeightUpDown" xml:space="preserve">
+    <value>Bro, do you even lift?</value>
+  </data>
+  <data name="AttributesWindow_CharismaUpDown" xml:space="preserve">
+    <value>Measures: Confidence, eloquence, leadership. Maximum of 30, but cannot be raised above 20 without special traits or equipment.</value>
+  </data>
+  <data name="AttributesWindow_ConstitutionUpDown" xml:space="preserve">
+    <value>Measures: Health, stamina, vital force. Maximum of 30, but cannot be raised above 20 without special traits or equipment.</value>
+  </data>
+  <data name="AttributesWindow_DexterityUpDown" xml:space="preserve">
+    <value>Measures: Physical agility, reflexes, balance, poise. Maximum of 30, but cannot be raised above 20 without special traits or equipment.</value>
+  </data>
+  <data name="AttributesWindow_IntelligenceUpDown" xml:space="preserve">
+    <value>Measures: Mental acuity, information recall, analytical skill. Maximum of 30, but cannot be raised above 20 without special traits or equipment.</value>
+  </data>
+  <data name="AttributesWindow_StrengthUpDown" xml:space="preserve">
+    <value>Measures: Natural athleticism, bodily power. Maximum of 30, but cannot be raised above 20 without special traits or equipment.</value>
+  </data>
+  <data name="AttributesWindow_WisdomUpDown" xml:space="preserve">
+    <value>Measures: Awareness, intuition, insight. Maximum of 30, but cannot be raised above 20 without special traits or equipment.</value>
+  </data>
   <data name="AutosaveInterval" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Constants\AutosaveInterval.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
@@ -142,8 +301,104 @@
   <data name="ClassName" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Constants\ClassName.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
+  <data name="ClassResourceWindow_NotesTextBox" xml:space="preserve">
+    <value>Any extra information to help Danial so he remembers to rage.</value>
+  </data>
+  <data name="ClassResourceWindow_PoolUpDown" xml:space="preserve">
+    <value>Maximum available resources.</value>
+  </data>
+  <data name="ClassResourceWindow_RecoveryComboBox" xml:space="preserve">
+    <value>How fast can your character recover their spent resources.</value>
+  </data>
+  <data name="ClassResourceWindow_ResourceNameComboBox" xml:space="preserve">
+    <value>Not every class has resources to spend. Only the cool ones.</value>
+  </data>
+  <data name="ClassResourceWindow_SpentUpDown" xml:space="preserve">
+    <value>Currently used resources.</value>
+  </data>
   <data name="ColorPickerBackground" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Images\ColorPickerBackground.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="CompanionWindow_AcUpDown" xml:space="preserve">
+    <value>Total Armor Class of the companion.</value>
+  </data>
+  <data name="CompanionWindow_CreatureSizeComboBox" xml:space="preserve">
+    <value>In Soviet Russia, companion ride you.</value>
+  </data>
+  <data name="CompanionWindow_InitiativeUpDown" xml:space="preserve">
+    <value>Total initiative score for the companion.</value>
+  </data>
+  <data name="CompanionWindow_MovementUpDown" xml:space="preserve">
+    <value>Total movement speed for the companion.</value>
+  </data>
+  <data name="CompanionWindow_NameTextBox" xml:space="preserve">
+    <value>For example, an albino owl might be called "Al".</value>
+  </data>
+  <data name="CompanionWindow_PerceptionUpDown" xml:space="preserve">
+    <value>Total score to a companion's awareness.</value>
+  </data>
+  <data name="CompanionWindow_VisionComboBox" xml:space="preserve">
+    <value>Visual traits granted to the companion.</value>
+  </data>
+  <data name="ConditionsWindow_BlindedCheckBox" xml:space="preserve">
+    <value>Automatically fail any ability checks. Attack rolls against your character have advantage, your attacks have disadvantage.</value>
+  </data>
+  <data name="ConditionsWindow_CharmedCheckBox" xml:space="preserve">
+    <value>Your character cannot attack the charmer. The charmer has advantage on ability checks when interacting socially.</value>
+  </data>
+  <data name="ConditionsWindow_DeafenedCheckBox" xml:space="preserve">
+    <value>Your character cannot hear and automatically fails any ability check that requires hearing.</value>
+  </data>
+  <data name="ConditionsWindow_DeathCheckBox" xml:space="preserve">
+    <value>Your character must succeed on 3 death saving throws, before failing 3. Succeeding will stabilize at 0 HP.</value>
+  </data>
+  <data name="ConditionsWindow_EncumbranceCheckBox" xml:space="preserve">
+    <value>Override the automatically calculated encumbrance status.</value>
+  </data>
+  <data name="ConditionsWindow_EncumbranceComboBox" xml:space="preserve">
+    <value>A carry weight exceeding 5 and 10 times Strength will reduce speed by 10 and 20 respectively.</value>
+  </data>
+  <data name="ConditionsWindow_FatiguedComboBox" xml:space="preserve">
+    <value>Some special abilities and environmental hazards, such as starvation and the long-term effects of freezing or scorching temperatures, can lead to exhaustion. Exhaustion is measured in six levels.</value>
+  </data>
+  <data name="ConditionsWindow_FrightenedCheckBox" xml:space="preserve">
+    <value>Your character has disadvantage on Ability Checks and Attack rolls while the source of fear is within line of sight. You can’t willingly move closer to the source.</value>
+  </data>
+  <data name="ConditionsWindow_GrappledCheckBox" xml:space="preserve">
+    <value>Your character speed becomes 0. It ends when the grappler is incapacitated or you are thrown away.</value>
+  </data>
+  <data name="ConditionsWindow_IncapacitatedCheckBox" xml:space="preserve">
+    <value>Your character cannot react or take an action.</value>
+  </data>
+  <data name="ConditionsWindow_InvisibleCheckBox" xml:space="preserve">
+    <value>You are impossible to see without the aid of magic or a Special sense. Attacks against you have disadvantage, your attacks have advantage.</value>
+  </data>
+  <data name="ConditionsWindow_ParalyzedCheckBox" xml:space="preserve">
+    <value>Your character is incapacitated and automatically fail Strength and Dexterity Saving Throws. Attacks have advantage, and melee are auto crit.</value>
+  </data>
+  <data name="ConditionsWindow_PetrifiedCheckBox" xml:space="preserve">
+    <value>Transforms your character into an inanimate substance and are incapacitated. Resistant to all damage and immune to poison and disease.</value>
+  </data>
+  <data name="ConditionsWindow_PoisonedCheckBox" xml:space="preserve">
+    <value>You have disadvantage on Attack rolls and Ability Checks</value>
+  </data>
+  <data name="ConditionsWindow_ProneCheckBox" xml:space="preserve">
+    <value>Your only movement option is to crawl like a little bitch and have disadvantage on attacks. Melee attack is advantage, ranged is disadvantage.</value>
+  </data>
+  <data name="ConditionsWindow_RestrainedCheckBox" xml:space="preserve">
+    <value>Your speed becomes 0. Your attacks have disadvantage, enemies have advantage. Dexterity Saving Throws are disadvantage.</value>
+  </data>
+  <data name="ConditionsWindow_StunnedCheckBox" xml:space="preserve">
+    <value>You are incapacitated and speak falteringly, and automatically fail Strength and Dexterity Saving Throws. Attacks against have advantage.</value>
+  </data>
+  <data name="ConditionsWindow_UnconsciousCheckBox" xml:space="preserve">
+    <value>Your character is incapacitated, drop what you're holding, and fall prone. Attacks against have advantage and hits are auto crit.</value>
+  </data>
+  <data name="EquipmentWindow_ItemComboBox" xml:space="preserve">
+    <value>This item will be removed from your inventory to this page.</value>
+  </data>
+  <data name="EquipmentWindow_SlotComboBox" xml:space="preserve">
+    <value>Choose a location to equip the item to your character.</value>
   </data>
   <data name="Game" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Constants\Game.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
@@ -155,7 +410,16 @@
     <value>Resources\Sounds\GenericWarning.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="Glossary" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\Json\Glossary.json;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Resources\Glossary.json;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="HealthWindow_CurrentHpUpDown" xml:space="preserve">
+    <value>Current health from your pool remaning.</value>
+  </data>
+  <data name="HealthWindow_TemporaryHpUpDown" xml:space="preserve">
+    <value>Temporary bonus to HP. This might allow you to increase health beyond the normal maximum. Damage will drain from this pool first.</value>
+  </data>
+  <data name="HealthWindow_TotalHpUpDown" xml:space="preserve">
+    <value>The maximim health your character can heal to.</value>
   </data>
   <data name="hey-whats-going-on" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Videos\hey-whats-going-on.wmv;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -163,14 +427,92 @@
   <data name="HighPitchTapSoundLoud" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Sounds\HighPitchTapSoundLoud.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="HitDiceWindow_TotalD10UpDown" xml:space="preserve">
+    <value>Maximum d10 hit dice.</value>
+  </data>
+  <data name="HitDiceWindow_TotalD12UpDown" xml:space="preserve">
+    <value>Maximum d12 hit dice.</value>
+  </data>
+  <data name="HitDiceWindow_TotalD6UpDown" xml:space="preserve">
+    <value>Maximum d6 hit dice.</value>
+  </data>
+  <data name="HitDiceWindow_TotalD8UpDown" xml:space="preserve">
+    <value>Maximum d8 hit dice.</value>
+  </data>
+  <data name="HitDiceWindow_UsedD10UpDown" xml:space="preserve">
+    <value>Expended d10 hit dice.</value>
+  </data>
+  <data name="HitDiceWindow_UsedD12UpDown" xml:space="preserve">
+    <value>Expended d12 hit dice.</value>
+  </data>
+  <data name="HitDiceWindow_UsedD6UpDown" xml:space="preserve">
+    <value>Expended d6 hit dice.</value>
+  </data>
+  <data name="HitDiceWindow_UsedD8UpDown" xml:space="preserve">
+    <value>Expended d8 hit dice.</value>
+  </data>
+  <data name="HpWindow_HpUpDown" xml:space="preserve">
+    <value>The amount of healing or damage to take. 10 points to Gryffindor!</value>
+  </data>
+  <data name="ImageWindow_FillTypeComboBox" xml:space="preserve">
+    <value>Change how the image is stretched to fill the canvas.</value>
+  </data>
+  <data name="ImageWindow_ImageSourceTextBox" xml:space="preserve">
+    <value>You can safely delete the image after loading it into Concierge.</value>
+  </data>
+  <data name="ImageWindow_UseCustomImageCheckBox" xml:space="preserve">
+    <value>Unchecking this won't delete a selected image.</value>
+  </data>
   <data name="Instrument" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Constants\Instrument.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="Inventory" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Json\Inventory.json;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="InventoryWindow_AmountUpDown" xml:space="preserve">
+    <value />
+  </data>
+  <data name="InventoryWindow_AttunedCheckBox" xml:space="preserve">
+    <value>Spend time attuning to this item, allowing the use of special abilities. Your character can only attune to 3 items at a time.</value>
+  </data>
+  <data name="InventoryWindow_CategoryComboBox" xml:space="preserve">
+    <value />
+  </data>
+  <data name="InventoryWindow_CoinTypeComboBox" xml:space="preserve">
+    <value>Specify the denomination so you don't have to worry about math.</value>
+  </data>
+  <data name="InventoryWindow_DescriptionTextBox" xml:space="preserve">
+    <value>Describe, in detail, why your character looted this item.</value>
+  </data>
+  <data name="InventoryWindow_IgnoreWeightCheckBox" xml:space="preserve">
+    <value>This is generally used to 'place' the item in a bag of holding.</value>
+  </data>
+  <data name="InventoryWindow_NameComboBox" xml:space="preserve">
+    <value />
+  </data>
+  <data name="InventoryWindow_NotesTextBox" xml:space="preserve">
+    <value />
+  </data>
+  <data name="InventoryWindow_ValueUpDown" xml:space="preserve">
+    <value>The worth of this item. Lisa, I'd like to buy your rock.</value>
+  </data>
+  <data name="InventoryWindow_WeightUpDown" xml:space="preserve">
+    <value>Is this item portable or luggable?</value>
+  </data>
+  <data name="JournalWindow_DocumentTextBox" xml:space="preserve">
+    <value>When we last left our heroes, Sir Schmoopy and Eluamus Nailo were searching for a magical herb to cure Schmoopy's dying grandmother...</value>
+  </data>
   <data name="Language" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Json\Language.json;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="LanguagesWindow_NameComboBox" xml:space="preserve">
+    <value>Race indicates the languages a character can speak by default, and a background might give access to one or more additional languages.</value>
+  </data>
+  <data name="LanguagesWindow_ScriptTextBox" xml:space="preserve">
+    <value>The style of characters are used to write this language. Some languages are only spoken, and may not have a unique script.</value>
+  </data>
+  <data name="LanguagesWindow_SpeakersTextBox" xml:space="preserve">
+    <value>The races that are likely to speak a given language.</value>
   </data>
   <data name="LevelExp" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Constants\LevelExp.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
@@ -181,8 +523,32 @@
   <data name="Names" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Json\Names.json;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="PersonalityWindow_BondTextBox" xml:space="preserve">
+    <value>Bonds represent a character's connections to people, places, and events in the world.</value>
+  </data>
+  <data name="PersonalityWindow_FlawTextBox" xml:space="preserve">
+    <value>Character flaws represent some vice, compulsion, fear, or weakness. Anything that someone else could exploit to cause you to act against your best interests.</value>
+  </data>
+  <data name="PersonalityWindow_IdealTextBox" xml:space="preserve">
+    <value>Ideals are things that you believe in most strongly, the fundamental moral and ethical principles that compel you to act as you do.</value>
+  </data>
+  <data name="PersonalityWindow_NotesTextBox" xml:space="preserve">
+    <value>Extra descriptions about a character's history.</value>
+  </data>
+  <data name="PersonalityWindow_Trait1TextBox" xml:space="preserve">
+    <value>They should be self-descriptions that are specific about what makes a character stand out.</value>
+  </data>
+  <data name="PersonalityWindow_Trait2TextBox" xml:space="preserve">
+    <value>They should be self-descriptions that are specific about what makes a character stand out.</value>
+  </data>
   <data name="ProficiencyLevel" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Constants\ProficiencyLevel.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="ProficiencyWindow_ProficiencyComboBox" xml:space="preserve">
+    <value>A character can be proficient in armors, weapons, or tools.</value>
+  </data>
+  <data name="ProficiencyWindow_ProficiencyTextComboBox" xml:space="preserve">
+    <value>The name of the armors, weapons, or tools that a characters is proficient in.</value>
   </data>
   <data name="Race" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Constants\Race.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
@@ -193,11 +559,38 @@
   <data name="ResourceValidation" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\ResourceValidation.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
+  <data name="SensesWindow_BaseMovementUpDown" xml:space="preserve">
+    <value>Maximum a character may move on a given turn.</value>
+  </data>
+  <data name="SensesWindow_InitiativeBonusUpDown" xml:space="preserve">
+    <value>Extra bonus to initiative.</value>
+  </data>
+  <data name="SensesWindow_InspirationCheckBox" xml:space="preserve">
+    <value>Determins if the player can roll an insperation die.</value>
+  </data>
+  <data name="SensesWindow_MovementBonusUpDown" xml:space="preserve">
+    <value>Additional increase to a players maximum movement speed.</value>
+  </data>
+  <data name="SensesWindow_PerceptionBonusUpDown" xml:space="preserve">
+    <value>Bonus to a characters awareness.</value>
+  </data>
+  <data name="SensesWindow_VisionComboBox" xml:space="preserve">
+    <value>Visual traits granted to the player.</value>
+  </data>
   <data name="Spell" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Json\Spell.json;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="StatusEffect" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Constants\StatusEffect.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="StatusEffectsWindow_DescriptionTextBox" xml:space="preserve">
+    <value>Resistance and then vulnerability are applied after all other modifiers to damage. Multiple instances of resistance or vulnerability that affect the same damage type count as only one instance.</value>
+  </data>
+  <data name="StatusEffectsWindow_NameComboBox" xml:space="preserve">
+    <value>Some creatures and objects are exceedingly difficult or unusually easy to hurt with certain types of damage.</value>
+  </data>
+  <data name="StatusEffectsWindow_TypeComboBox" xml:space="preserve">
+    <value>Having resistance to a damage type, damage of that type is halved against it. If a creature or an object has vulnerability to a damage type, damage of that type is doubled against it.</value>
   </data>
   <data name="Subclass" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Json\Subclass.json;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -207,6 +600,30 @@
   </data>
   <data name="Tool" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Constants\Tool.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="WealthWindow_AddRadioButton" xml:space="preserve">
+    <value>Money can be exchanged for goods and services.</value>
+  </data>
+  <data name="WealthWindow_AmountUpDown" xml:space="preserve">
+    <value>Wealth appears in many forms in the world. Coins, gemstones, trade goods, art objects, animals, and property can reflect your character’s financial well-being.</value>
+  </data>
+  <data name="WealthWindow_CpRadioButton" xml:space="preserve">
+    <value>One silver piece is worth ten copper pieces, which are common among laborers and beggars. A single copper piece buys a candle, a torch, or a piece of chalk.</value>
+  </data>
+  <data name="WealthWindow_EpRadioButton" xml:space="preserve">
+    <value>The electrum piece originates from fallen empires and lost kingdoms, and they sometimes arouse suspicion and skepticism when used in transactions. An electrum piece is worth five silver pieces.</value>
+  </data>
+  <data name="WealthWindow_GpRadioButton" xml:space="preserve">
+    <value>With one gold piece, a character can buy a bedroll or 50 feet of good rope. A skilled artisan can earn one gold piece a day. The gold piece is the standard unit of measure for wealth, even if the coin itself is not commonly used.</value>
+  </data>
+  <data name="WealthWindow_PpRadioButton" xml:space="preserve">
+    <value>The platinum piece originates from fallen empires and lost kingdoms, and they sometimes arouse suspicion and skepticism when used in transactions. A platinum piece is worth ten gold pieces.</value>
+  </data>
+  <data name="WealthWindow_SpRadioButton" xml:space="preserve">
+    <value>One gold piece is worth ten silver pieces, the most prevalent coin among commoners. A silver piece buys a laborer's work for half a day, a flask of lamp oil, or a night's rest in a poor inn.</value>
+  </data>
+  <data name="WealthWindow_SubtractRadioButton" xml:space="preserve">
+    <value>Why couldn't I have 3 money and no kids?</value>
   </data>
   <data name="Weapon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Json\Weapon.json;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>

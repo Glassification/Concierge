@@ -28,9 +28,20 @@ namespace Concierge.Display.Windows
             this.CreatureSizeComboBox.ItemsSource = Enum.GetValues(typeof(CreatureSizes)).Cast<CreatureSizes>();
             this.ConciergePage = ConciergePage.None;
             this.Properties = new CompanionProperties();
+            this.DescriptionTextBlock.DataContext = this.Description;
+
+            this.SetFocusEvents(this.NameTextBox);
+            this.SetFocusEvents(this.AcUpDown);
+            this.SetFocusEvents(this.VisionComboBox);
+            this.SetFocusEvents(this.CreatureSizeComboBox);
+            this.SetFocusEvents(this.PerceptionUpDown);
+            this.SetFocusEvents(this.MovementUpDown);
+            this.SetFocusEvents(this.InitiativeUpDown);
         }
 
         public override string HeaderText => "Edit Companion Properties";
+
+        public override string WindowName => nameof(CompanionWindow);
 
         private CompanionProperties Properties { get; set; }
 

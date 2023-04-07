@@ -25,9 +25,19 @@ namespace Concierge.Display.Windows
 
             this.ConciergePage = ConciergePage.None;
             this.Attributes = new Attributes();
+            this.DescriptionTextBlock.DataContext = this.Description;
+
+            this.SetFocusEvents(this.StrengthUpDown);
+            this.SetFocusEvents(this.DexterityUpDown);
+            this.SetFocusEvents(this.ConstitutionUpDown);
+            this.SetFocusEvents(this.IntelligenceUpDown);
+            this.SetFocusEvents(this.WisdomUpDown);
+            this.SetFocusEvents(this.CharismaUpDown);
         }
 
         public override string HeaderText => "Edit Attributes";
+
+        public override string WindowName => nameof(AttributesWindow);
 
         private Attributes Attributes { get; set; }
 

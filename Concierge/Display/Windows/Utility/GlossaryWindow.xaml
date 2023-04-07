@@ -11,13 +11,13 @@
     xmlns:mdxaml="clr-namespace:MdXaml;assembly=MdXaml"
     mc:Ignorable="d"
     Title="GlossaryWindow"
-    Height="595"
-    Width="800"
+    Height="645"
+    Width="850"
     Style="{StaticResource WindowFontStyle}">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="45"/>
-            <RowDefinition Height="550"/>
+            <RowDefinition Height="600"/>
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0">
@@ -43,12 +43,13 @@
         
         <Grid Grid.Row="1" Margin="0,3,0,0">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="25*"/>
-                <ColumnDefinition Width="50*"/>
+                <ColumnDefinition Width="35*"/>
+                <ColumnDefinition Width="65*"/>
             </Grid.ColumnDefinitions>
 
             <Grid Grid.Column="0">
                 <Grid.RowDefinitions>
+                    <RowDefinition Height="35"/>
                     <RowDefinition Height="35"/>
                     <RowDefinition Height="1*"/>
                 </Grid.RowDefinitions>
@@ -56,44 +57,48 @@
                 <StackPanel
                     Grid.Row="0"
                     Orientation="Horizontal"
-                    HorizontalAlignment="Center">
-                    <components:ConciergeDesignButton 
-                        Margin="0,0,5,0"
+                    HorizontalAlignment="Right"
+                    Margin="0,0,5,0">
+                    <components:ConciergeDesignButton
                         Style="{StaticResource ConciergeDesignButtonStyle}" 
+                        Margin="0,0,5,0"
                         x:Name="ExpandButton"
                         Width="30"
                         Foreground="#48B987"
                         ToolTip="Expand All"
-                        HorizontalAlignment="Left"
                         Click="ExpandButton_Click">
                         <materialDesign:PackIcon Kind="ExpandAll" Width="25" Height="25"/>
                     </components:ConciergeDesignButton>
-                    <components:ConciergeDesignButton 
-                        Margin="5,0,5,0"
+                    <components:ConciergeDesignButton
                         Style="{StaticResource ConciergeDesignButtonStyle}" 
+                        Margin="5,0,5,0"
                         x:Name="CollapseButton"
                         Width="30"
                         Foreground="IndianRed"
                         ToolTip="Collapse All"
-                        HorizontalAlignment="Center"
                         Click="CollapseButton_Click">
                         <materialDesign:PackIcon Kind="CollapseAll" Width="25" Height="25"/>
                     </components:ConciergeDesignButton>
                     <components:ConciergeDesignButton 
-                        Margin="5,0,0,0"
                         Style="{StaticResource ConciergeDesignButtonStyle}" 
+                        Margin="5,0,0,0"
                         x:Name="ClearButton"
                         Width="30"
                         Foreground="Silver"
                         ToolTip="Clear Selection"
-                        HorizontalAlignment="Right"
                         Click="ClearButton_Click">
                         <materialDesign:PackIcon Kind="NotificationClearAll" Width="25" Height="25"/>
                     </components:ConciergeDesignButton>
                 </StackPanel>
 
-                <components:ConciergeTreeView
+                <controls:SearchFilterControl
                     Grid.Row="1"
+                    x:Name="SearchFilter"
+                    Margin="5,0,5,0"
+                    FilterChanged="GlossaryTreeView_Filtered"/>
+
+                <components:ConciergeTreeView
+                    Grid.Row="2"
                     Margin="0,0,-1,0"
                     x:Name="GlossaryTreeView"
                     Background="#202020"
@@ -131,7 +136,7 @@
             <mdxaml:MarkdownScrollViewer
                 x:Name="MarkdownViewer"
                 Grid.Column="1"
-                Margin="3,3,0,3"
+                Margin="5,3,0,5"
                 Foreground="White"
                 Background="#2B2B2B"
                 xml:space="preserve"/>

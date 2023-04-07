@@ -39,7 +39,7 @@
                         LostFocus="FilterTextBox_LostFocus">
                         <local:WatermarkBuilder.Watermark>
                             <TextBlock
-                                Text="List Filter"
+                                Text="Filter"
                                 Foreground="White"
                                 FontSize="25"
                                 VerticalAlignment="Center"

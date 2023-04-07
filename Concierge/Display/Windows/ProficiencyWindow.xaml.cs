@@ -16,6 +16,7 @@ namespace Concierge.Display.Windows
     using Concierge.Commands;
     using Concierge.Display.Components;
     using Concierge.Display.Enums;
+    using Concierge.Display.Utility;
     using Concierge.Utility;
     using Concierge.Utility.Extensions;
 
@@ -34,9 +35,16 @@ namespace Concierge.Display.Windows
             this.ConciergePage = ConciergePage.None;
             this.SelectedProficiencies = new List<Proficiency>();
             this.SelectedProficiency = new Proficiency();
+
+            this.DescriptionTextBlock.DataContext = this.Description;
+
+            this.SetFocusEvents(this.ProficiencyComboBox);
+            this.SetFocusEvents(this.ProficiencyTextComboBox);
         }
 
         public override string HeaderText => $"{(this.Editing ? "Edit" : "Add")} Proficiency";
+
+        public override string WindowName => nameof(ProficiencyWindow);
 
         public bool ItemsAdded { get; private set; }
 

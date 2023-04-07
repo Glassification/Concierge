@@ -14,7 +14,7 @@ namespace Concierge.Console.Services
     using Concierge.Utility;
     using Concierge.Utility.Extensions;
 
-    public class ListCommandsScriptService : ScriptService
+    public sealed class ListCommandsScriptService : ScriptService
     {
         private static readonly string[] names = new string[]
         {
@@ -55,7 +55,7 @@ namespace Concierge.Console.Services
                 return new ConsoleResult(Log(), ResultType.Success);
             }
 
-            return new ConsoleResult($"Implementation for '{command.Action}' not found.", ResultType.Error);
+            return new ConsoleResult($"Implementation for '{command.Action}' not found.", ResultType.NotImplemented);
         }
 
         public override string List()
@@ -65,6 +65,7 @@ namespace Concierge.Console.Services
             builder.Append(new ListScriptService().List());
             builder.Append(new WealthScriptService(false).List());
             builder.Append(new ReadWriterScriptService(false).List());
+            builder.Append(new CcsCompressionScriptService(false).List());
             builder.Append(base.List());
 
             return builder.ToString();

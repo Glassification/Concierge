@@ -7,6 +7,7 @@ namespace Concierge.Console.Scripts
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Text;
 
     using Concierge.Console.Enums;
     using Concierge.Utility;
@@ -47,7 +48,12 @@ namespace Concierge.Console.Scripts
                 return this.AddCategory(command);
             }
 
-            return new ConsoleResult($"Implementation for '{command.Action}' not found.", ResultType.Error);
+            if (command.Action.Equals("GetId", StringComparison.InvariantCultureIgnoreCase))
+            {
+                return this.GetId(command);
+            }
+
+            return new ConsoleResult($"Implementation for '{command.Action}' not found.", ResultType.NotImplemented);
         }
 
         private ConsoleResult AddItem(ConsoleCommand command)
@@ -124,6 +130,26 @@ namespace Concierge.Console.Scripts
                 Program.Logger.Warning(ex.Message);
                 return new ConsoleResult($"Specified list does not have a category implemented.", ResultType.Warning);
             }
+        }
+
+        private ConsoleResult GetId(ConsoleCommand command)
+        {
+            if (command.Argument.IsNullOrWhiteSpace())
+            {
+                var builder = new StringBuilder();
+                builder.AppendLine($"Listing Id for all {command.Name}:");
+                this.CharacterList.ForEach(x => builder.AppendLine($"Id for '{x.Name}' is [{x.Id}]."));
+
+                return new ConsoleResult(builder.ToString(), ResultType.Success);
+            }
+
+            var item = this.GetCharacterItem(command.Argument);
+            if (item is null)
+            {
+                return new ConsoleResult($"Item '{command.Argument}' could not be found.", ResultType.Error);
+            }
+
+            return new ConsoleResult($"Id for '{command.Argument}' is [{item.Id}].", ResultType.Success);
         }
 
         private T? GetDefaultItem(string name)

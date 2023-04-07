@@ -35,7 +35,7 @@ namespace Concierge.Display.Controls
 
         public void SetArmorDetails(Armor armor)
         {
-            this.AcField.Text = armor.TotalArmorClass.ToString();
+            this.AcField.Text = armor.ArmorClass.ToString();
             this.ArmorWornField.Text = armor.Equiped;
             this.ArmorTypeField.Text = armor.Type.ToString();
             this.ArmorStealthField.Text = armor.Stealth.ToString();

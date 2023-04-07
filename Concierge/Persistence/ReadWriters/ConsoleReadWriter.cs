@@ -9,6 +9,7 @@ namespace Concierge.Persistence.ReadWriters
     using System.IO;
 
     using Concierge.Console;
+    using Concierge.Utility.Extensions;
     using Newtonsoft.Json;
 
     public static class ConsoleReadWriter
@@ -31,6 +32,7 @@ namespace Concierge.Persistence.ReadWriters
             }
             catch (Exception ex)
             {
+                ex = ex.TryConvertToReadWriterException(fileName);
                 Program.ErrorService.LogError(ex);
             }
 

@@ -6,7 +6,7 @@ namespace Concierge.Console.Services
 {
     using System;
 
-    public class UnknownScriptService : ScriptService
+    public sealed class UnknownScriptService : ScriptService
     {
         public UnknownScriptService()
         {

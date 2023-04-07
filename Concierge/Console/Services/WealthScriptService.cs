@@ -10,7 +10,7 @@ namespace Concierge.Console.Services
     using Concierge.Console.Enums;
     using Concierge.Console.Scripts;
 
-    public class WealthScriptService : ScriptService
+    public sealed class WealthScriptService : ScriptService
     {
         private static readonly string[] names = new string[]
         {

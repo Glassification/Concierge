@@ -33,9 +33,19 @@ namespace Concierge.Display.Windows
 
             this.ConciergePage = ConciergePage.None;
             this.SavingThrow = new SavingThrow();
+            this.DescriptionTextBlock.DataContext = this.Description;
+
+            this.SetFocusEvents(this.StrengthComboBox);
+            this.SetFocusEvents(this.DexterityComboBox);
+            this.SetFocusEvents(this.ConstitutionComboBox);
+            this.SetFocusEvents(this.IntelligenceComboBox);
+            this.SetFocusEvents(this.WisdomComboBox);
+            this.SetFocusEvents(this.CharismaComboBox);
         }
 
         public override string HeaderText => "Edit Saving Throw Checks";
+
+        public override string WindowName => nameof(SavingThrowWindow);
 
         private SavingThrow SavingThrow { get; set; }
 

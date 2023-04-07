@@ -38,6 +38,8 @@ namespace Concierge.Display.Utility
 
         public override string HeaderText => "Level Up";
 
+        public override string WindowName => nameof(LevelUpWindow);
+
         public override ConciergeWindowResult ShowWizardSetup(string buttonText)
         {
             this.FillFields();

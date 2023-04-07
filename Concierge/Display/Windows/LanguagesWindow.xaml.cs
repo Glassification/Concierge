@@ -28,9 +28,16 @@ namespace Concierge.Display.Windows
             this.ConciergePage = ConciergePage.None;
             this.SelectedLanguage = new Language();
             this.Languages = new List<Language>();
+            this.DescriptionTextBlock.DataContext = this.Description;
+
+            this.SetFocusEvents(this.NameComboBox);
+            this.SetFocusEvents(this.ScriptTextBox);
+            this.SetFocusEvents(this.SpeakersTextBox);
         }
 
         public override string HeaderText => $"{(this.Editing ? "Edit" : "Add")} Language";
+
+        public override string WindowName => nameof(LanguagesWindow);
 
         public bool ItemsAdded { get; private set; }
 

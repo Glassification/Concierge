@@ -4,7 +4,7 @@
 
 namespace ConciergeDevTools
 {
-    using System.CommandLine;
+    using Newtonsoft.Json;
 
     public class Program
     {
@@ -41,19 +41,6 @@ namespace ConciergeDevTools
             rootCommand.Invoke(args);
             */
             GlossaryGenerator.Generate();
-        }
-
-        private static void ParseScrubbedDataHandler(string fileName)
-        {
-            ParseScrubbedData.Parse(fileName);
-        }
-
-        private static void DecodeFile(string fileName)
-        {
-        }
-
-        private static void EncodeFile(string fileName)
-        {
         }
     }
 }

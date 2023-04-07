@@ -8,7 +8,6 @@
     xmlns:components="clr-namespace:Concierge.Display.Components"
     mc:Ignorable="d"
     Loaded="ConciergeWindow_Loaded"
-    Style="{StaticResource WindowFontStyle}"
     Title="Console Window"
     Height="600"
     Width="1100">
@@ -28,7 +27,8 @@
                 HorizontalAlignment="Left"
                 VerticalAlignment="Center"
                 Margin="30, 0, 0, 0"
-                FontWeight="Bold"/>
+                FontWeight="Bold"
+                FontFamily="Segoe UI SemiLight"/>
             <components:ConciergeDesignButton 
                 Style="{StaticResource ConciergeDesignButtonStyle}" 
                 x:Name="CloseButton"
@@ -54,7 +54,8 @@
                                     Text="{Binding Path=Message}"
                                     FontSize="18"
                                     Foreground="{Binding Path=TextColor}"
-                                    FontFamily="Consolas"/>
+                                    FontFamily="Consolas"
+                                    TextWrapping="Wrap"/>
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
                     </ItemsControl>
@@ -68,6 +69,7 @@
                         KeyDown="InputBlock_KeyDown"
                         SelectionChanged="InputBlock_SelectionChanged"
                         PreviewKeyDown="InputBlock_PreviewKeyDown"
+                        TextWrapping="Wrap"
                         BorderBrush="{x:Null}" />
                 </StackPanel>
             </ScrollViewer>

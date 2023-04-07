@@ -471,6 +471,10 @@
       },
       "Attacks": [
         {
+          "Amount": 1,
+          "Attuned": false,
+          "IsEquipped": false,
+          "EquipmentSlot": 5,
           "Ability": 1,
           "CoinType": 0,
           "Damage": "1d8",
@@ -484,116 +488,6 @@
           "Range": "5 / 5",
           "Type": 0,
           "Value": 0,
-          "Weight": {
-            "Value": 0.0,
-            "UnitType": 0,
-            "Measurement": 1
-          }
-        }
-      ]
-    },
-    "EquippedItems": {
-      "Head": [],
-      "Torso": [
-        {
-          "Amount": 1,
-          "Attuned": false,
-          "CoinType": 3,
-          "CreationDate": "2023-02-12T13:35:15.3230075-06:00",
-          "Description": "Made from tough but flexible leather, studded leather is reinforced with close-set rivets or spikes. Base AC of 13 + DEX modifier.",
-          "EquppedId": "3bf7f256-6dd8-46a1-a1c3-b2ef882f8bfb",
-          "Id": "3500be2f-4696-45e0-857d-496d4f6fdb16",
-          "Name": "Studded Leather",
-          "IgnoreWeight": true,
-          "Index": 0,
-          "ItemCategory": "Light Armor",
-          "Notes": "Warding",
-          "Value": 45,
-          "Weight": {
-            "Value": 13.0,
-            "UnitType": 0,
-            "Measurement": 1
-          }
-        },
-        {
-          "Amount": 1,
-          "Attuned": false,
-          "CoinType": 3,
-          "CreationDate": "2023-02-12T13:35:15.3261388-06:00",
-          "Description": "Simple cloak with usable hood. Used to hide facial features.",
-          "EquppedId": "39c1b556-450c-40e4-87b1-e11f6061b598",
-          "Id": "f6098477-f745-4b6a-b996-4a4a72fc557f",
-          "Name": "Blue Cloak with Hood",
-          "IgnoreWeight": false,
-          "Index": 0,
-          "ItemCategory": "Adventuring Gear",
-          "Notes": "Clothing",
-          "Value": 5,
-          "Weight": {
-            "Value": 1.0,
-            "UnitType": 0,
-            "Measurement": 1
-          }
-        }
-      ],
-      "Hands": [
-        {
-          "Amount": 1,
-          "Attuned": true,
-          "CoinType": 0,
-          "CreationDate": "2023-02-12T13:35:15.3263133-06:00",
-          "Description": "Use to cast create darkness. 1d4 uses per day.",
-          "EquppedId": "14ecf6d6-df39-4dbe-9c76-f67684486509",
-          "Id": "c5ada3d4-ba74-4015-988d-eefea2d3059f",
-          "Name": "Calamari Ring",
-          "IgnoreWeight": false,
-          "Index": 0,
-          "ItemCategory": "Adventuring Gear",
-          "Notes": "Magical",
-          "Value": 0,
-          "Weight": {
-            "Value": 0.1,
-            "UnitType": 0,
-            "Measurement": 1
-          }
-        },
-        {
-          "Amount": 1,
-          "Attuned": false,
-          "CoinType": 3,
-          "CreationDate": "2023-02-12T13:35:15.3263444-06:00",
-          "Description": "Stylish black gloves. Currently hiding rings on one hand.",
-          "EquppedId": "b068ba66-97c2-4ca2-8822-4a7d0e4cf844",
-          "Id": "652beb3a-4d8e-4600-8c2c-6f50860b9ded",
-          "Name": "Black Onyx Leather Gloves",
-          "IgnoreWeight": false,
-          "Index": 0,
-          "ItemCategory": "Adventuring Gear",
-          "Notes": "Clothing",
-          "Value": 1,
-          "Weight": {
-            "Value": 0.5,
-            "UnitType": 0,
-            "Measurement": 1
-          }
-        }
-      ],
-      "Legs": [],
-      "Feet": [
-        {
-          "Amount": 1,
-          "Attuned": false,
-          "CoinType": 3,
-          "CreationDate": "2023-02-12T13:35:15.3265988-06:00",
-          "Description": "A pair of high-top black boots.",
-          "EquppedId": "09ff74e8-4893-404d-b5ee-bfac5028cfcc",
-          "Id": "32616332-7a03-47c0-b877-ad2e2271b7e6",
-          "Name": "Leather Boots",
-          "IgnoreWeight": false,
-          "Index": 0,
-          "ItemCategory": "Adventuring Gear",
-          "Notes": "Clothing",
-          "Value": 2,
           "Weight": {
             "Value": 0.0,
             "UnitType": 0,
@@ -621,7 +515,9 @@
           "Value": 0.0,
           "UnitType": 0,
           "Measurement": 1
-        }
+        },
+        "IsEquipped": false,
+        "EquipmentSlot": 5
       },
       {
         "Amount": 1,
@@ -641,7 +537,9 @@
           "Value": 1.0,
           "UnitType": 0,
           "Measurement": 1
-        }
+        },
+        "IsEquipped": false,
+        "EquipmentSlot": 5
       },
       {
         "Amount": 1,
@@ -661,7 +559,9 @@
           "Value": 5.0,
           "UnitType": 0,
           "Measurement": 1
-        }
+        },
+        "IsEquipped": false,
+        "EquipmentSlot": 5
       },
       {
         "Amount": 1,
@@ -681,7 +581,9 @@
           "Value": 2.0,
           "UnitType": 0,
           "Measurement": 1
-        }
+        },
+        "IsEquipped": false,
+        "EquipmentSlot": 5
       },
       {
         "Amount": 2,
@@ -701,7 +603,9 @@
           "Value": 0.5,
           "UnitType": 0,
           "Measurement": 1
-        }
+        },
+        "IsEquipped": false,
+        "EquipmentSlot": 5
       },
       {
         "Amount": 1,
@@ -721,7 +625,9 @@
           "Value": 2.0,
           "UnitType": 0,
           "Measurement": 1
-        }
+        },
+        "IsEquipped": false,
+        "EquipmentSlot": 5
       },
       {
         "Amount": 1,
@@ -741,7 +647,9 @@
           "Value": 0.0,
           "UnitType": 0,
           "Measurement": 1
-        }
+        },
+        "IsEquipped": false,
+        "EquipmentSlot": 5
       },
       {
         "Amount": 1,
@@ -761,7 +669,9 @@
           "Value": 5.0,
           "UnitType": 0,
           "Measurement": 1
-        }
+        },
+        "IsEquipped": false,
+        "EquipmentSlot": 5
       },
       {
         "Amount": 1,
@@ -781,7 +691,9 @@
           "Value": 0.0,
           "UnitType": 0,
           "Measurement": 1
-        }
+        },
+        "IsEquipped": false,
+        "EquipmentSlot": 5
       },
       {
         "Amount": 1,
@@ -801,7 +713,9 @@
           "Value": 0.5,
           "UnitType": 0,
           "Measurement": 1
-        }
+        },
+        "IsEquipped": false,
+        "EquipmentSlot": 5
       },
       {
         "Amount": 1,
@@ -821,7 +735,9 @@
           "Value": 1.0,
           "UnitType": 0,
           "Measurement": 1
-        }
+        },
+        "IsEquipped": false,
+        "EquipmentSlot": 5
       },
       {
         "Amount": 1,
@@ -841,7 +757,9 @@
           "Value": 5.0,
           "UnitType": 0,
           "Measurement": 1
-        }
+        },
+        "IsEquipped": false,
+        "EquipmentSlot": 5
       },
       {
         "Amount": 5,
@@ -861,7 +779,9 @@
           "Value": 0.0,
           "UnitType": 0,
           "Measurement": 1
-        }
+        },
+        "IsEquipped": false,
+        "EquipmentSlot": 5
       },
       {
         "Amount": 1,
@@ -881,7 +801,9 @@
           "Value": 3.0,
           "UnitType": 0,
           "Measurement": 1
-        }
+        },
+        "IsEquipped": false,
+        "EquipmentSlot": 5
       },
       {
         "Amount": 2,
@@ -901,7 +823,9 @@
           "Value": 0.5,
           "UnitType": 0,
           "Measurement": 1
-        }
+        },
+        "IsEquipped": false,
+        "EquipmentSlot": 5
       },
       {
         "Amount": 1,
@@ -921,7 +845,9 @@
           "Value": 2.0,
           "UnitType": 0,
           "Measurement": 1
-        }
+        },
+        "IsEquipped": false,
+        "EquipmentSlot": 5
       },
       {
         "Amount": 1,
@@ -941,7 +867,9 @@
           "Value": 0.0,
           "UnitType": 0,
           "Measurement": 1
-        }
+        },
+        "IsEquipped": false,
+        "EquipmentSlot": 5
       },
       {
         "Amount": 1,
@@ -961,7 +889,9 @@
           "Value": 0.0,
           "UnitType": 0,
           "Measurement": 1
-        }
+        },
+        "IsEquipped": false,
+        "EquipmentSlot": 5
       },
       {
         "Amount": 1,
@@ -981,7 +911,9 @@
           "Value": 0.5,
           "UnitType": 0,
           "Measurement": 1
-        }
+        },
+        "IsEquipped": false,
+        "EquipmentSlot": 5
       },
       {
         "Amount": 1,
@@ -1001,7 +933,9 @@
           "Value": 0.0,
           "UnitType": 0,
           "Measurement": 1
-        }
+        },
+        "IsEquipped": false,
+        "EquipmentSlot": 5
       },
       {
         "Amount": 1,
@@ -1021,7 +955,9 @@
           "Value": 1.0,
           "UnitType": 0,
           "Measurement": 1
-        }
+        },
+        "IsEquipped": false,
+        "EquipmentSlot": 5
       },
       {
         "Amount": 1,
@@ -1041,7 +977,9 @@
           "Value": 1.0,
           "UnitType": 0,
           "Measurement": 1
-        }
+        },
+        "IsEquipped": false,
+        "EquipmentSlot": 5
       },
       {
         "Amount": 1,
@@ -1061,7 +999,9 @@
           "Value": 6.0,
           "UnitType": 0,
           "Measurement": 1
-        }
+        },
+        "IsEquipped": false,
+        "EquipmentSlot": 5
       },
       {
         "Amount": 1,
@@ -1081,7 +1021,9 @@
           "Value": 0.1,
           "UnitType": 0,
           "Measurement": 1
-        }
+        },
+        "IsEquipped": false,
+        "EquipmentSlot": 5
       },
       {
         "Amount": 1,
@@ -1101,7 +1043,9 @@
           "Value": 0.24,
           "UnitType": 0,
           "Measurement": 1
-        }
+        },
+        "IsEquipped": false,
+        "EquipmentSlot": 5
       },
       {
         "Amount": 1,
@@ -1121,7 +1065,9 @@
           "Value": 2.0,
           "UnitType": 0,
           "Measurement": 1
-        }
+        },
+        "IsEquipped": false,
+        "EquipmentSlot": 5
       },
       {
         "Amount": 1,
@@ -1141,7 +1087,9 @@
           "Value": 0.5,
           "UnitType": 0,
           "Measurement": 1
-        }
+        },
+        "IsEquipped": false,
+        "EquipmentSlot": 5
       },
       {
         "Amount": 1,
@@ -1161,7 +1109,9 @@
           "Value": 0.5,
           "UnitType": 0,
           "Measurement": 1
-        }
+        },
+        "IsEquipped": false,
+        "EquipmentSlot": 5
       },
       {
         "Amount": 1,
@@ -1181,7 +1131,9 @@
           "Value": 0.5,
           "UnitType": 0,
           "Measurement": 1
-        }
+        },
+        "IsEquipped": false,
+        "EquipmentSlot": 5
       },
       {
         "Amount": 1,
@@ -1201,7 +1153,9 @@
           "Value": 1.0,
           "UnitType": 0,
           "Measurement": 1
-        }
+        },
+        "IsEquipped": false,
+        "EquipmentSlot": 5
       },
       {
         "Amount": 1,
@@ -1221,7 +1175,9 @@
           "Value": 2.0,
           "UnitType": 0,
           "Measurement": 1
-        }
+        },
+        "IsEquipped": false,
+        "EquipmentSlot": 5
       },
       {
         "Amount": 3,
@@ -1241,7 +1197,9 @@
           "Value": 0.1,
           "UnitType": 0,
           "Measurement": 1
-        }
+        },
+        "IsEquipped": false,
+        "EquipmentSlot": 5
       },
       {
         "Amount": 1,
@@ -1261,7 +1219,9 @@
           "Value": 10.0,
           "UnitType": 0,
           "Measurement": 1
-        }
+        },
+        "IsEquipped": false,
+        "EquipmentSlot": 5
       },
       {
         "Amount": 14,
@@ -1281,7 +1241,9 @@
           "Value": 0.1,
           "UnitType": 0,
           "Measurement": 1
-        }
+        },
+        "IsEquipped": false,
+        "EquipmentSlot": 5
       },
       {
         "Amount": 1,
@@ -1301,7 +1263,9 @@
           "Value": 0.0,
           "UnitType": 0,
           "Measurement": 1
-        }
+        },
+        "IsEquipped": false,
+        "EquipmentSlot": 5
       },
       {
         "Amount": 1,
@@ -1321,7 +1285,9 @@
           "Value": 5.0,
           "UnitType": 0,
           "Measurement": 1
-        }
+        },
+        "IsEquipped": false,
+        "EquipmentSlot": 5
       },
       {
         "Amount": 1,
@@ -1341,7 +1307,9 @@
           "Value": 0.1,
           "UnitType": 0,
           "Measurement": 1
-        }
+        },
+        "IsEquipped": false,
+        "EquipmentSlot": 5
       },
       {
         "Amount": 1,
@@ -1361,7 +1329,9 @@
           "Value": 0.0,
           "UnitType": 0,
           "Measurement": 1
-        }
+        },
+        "IsEquipped": false,
+        "EquipmentSlot": 5
       },
       {
         "Amount": 1,
@@ -1381,7 +1351,9 @@
           "Value": 0.25,
           "UnitType": 0,
           "Measurement": 1
-        }
+        },
+        "IsEquipped": false,
+        "EquipmentSlot": 5
       },
       {
         "Amount": 1,
@@ -1401,7 +1373,9 @@
           "Value": 20.0,
           "UnitType": 0,
           "Measurement": 1
-        }
+        },
+        "IsEquipped": false,
+        "EquipmentSlot": 5
       },
       {
         "Amount": 1,
@@ -1421,7 +1395,9 @@
           "Value": 1.0,
           "UnitType": 0,
           "Measurement": 1
-        }
+        },
+        "IsEquipped": false,
+        "EquipmentSlot": 5
       },
       {
         "Amount": 1,
@@ -1441,7 +1417,9 @@
           "Value": 0.0,
           "UnitType": 0,
           "Measurement": 1
-        }
+        },
+        "IsEquipped": false,
+        "EquipmentSlot": 5
       },
       {
         "Amount": 1,
@@ -1461,7 +1439,9 @@
           "Value": 1.0,
           "UnitType": 0,
           "Measurement": 1
-        }
+        },
+        "IsEquipped": false,
+        "EquipmentSlot": 5
       },
       {
         "Amount": 1,
@@ -1481,7 +1461,9 @@
           "Value": 0.5,
           "UnitType": 0,
           "Measurement": 1
-        }
+        },
+        "IsEquipped": false,
+        "EquipmentSlot": 5
       },
       {
         "Amount": 1,
@@ -1501,7 +1483,9 @@
           "Value": 2.0,
           "UnitType": 0,
           "Measurement": 1
-        }
+        },
+        "IsEquipped": false,
+        "EquipmentSlot": 5
       },
       {
         "Amount": 1,
@@ -1521,7 +1505,9 @@
           "Value": 5.0,
           "UnitType": 0,
           "Measurement": 1
-        }
+        },
+        "IsEquipped": false,
+        "EquipmentSlot": 5
       },
       {
         "Amount": 1,
@@ -1541,7 +1527,9 @@
           "Value": 1.0,
           "UnitType": 0,
           "Measurement": 1
-        }
+        },
+        "IsEquipped": false,
+        "EquipmentSlot": 5
       }
     ],
     "Languages": [
@@ -2033,6 +2021,10 @@
     },
     "Weapons": [
       {
+        "Amount": 1,
+        "Attuned": false,
+        "IsEquipped": false,
+        "EquipmentSlot": 5,
         "Ability": 2,
         "CoinType": 3,
         "Damage": "1d4 +5",
@@ -2053,6 +2045,10 @@
         }
       },
       {
+        "Amount": 1,
+        "Attuned": false,
+        "IsEquipped": false,
+        "EquipmentSlot": 5,
         "Ability": 2,
         "CoinType": 3,
         "Damage": "1d4 +5",
@@ -2073,6 +2069,10 @@
         }
       },
       {
+        "Amount": 1,
+        "Attuned": false,
+        "IsEquipped": false,
+        "EquipmentSlot": 5,
         "Ability": 2,
         "CoinType": 3,
         "Damage": "1d8 +5",
@@ -2093,6 +2093,10 @@
         }
       },
       {
+        "Amount": 1,
+        "Attuned": false,
+        "IsEquipped": false,
+        "EquipmentSlot": 5,
         "Ability": 2,
         "CoinType": 3,
         "Damage": "1d6 +5",
@@ -2113,6 +2117,10 @@
         }
       },
       {
+        "Amount": 1,
+        "Attuned": false,
+        "IsEquipped": false,
+        "EquipmentSlot": 5,
         "Ability": 2,
         "CoinType": 3,
         "Damage": "1d4",
@@ -2133,6 +2141,10 @@
         }
       },
       {
+        "Amount": 1,
+        "Attuned": false,
+        "IsEquipped": false,
+        "EquipmentSlot": 5,
         "Ability": 2,
         "CoinType": 3,
         "Damage": "1d6 +5",
@@ -2154,9 +2166,9 @@
       }
     ]
   },
-  "Hash": "95AE4F66C1B35FBD5F2193B447AC1FF3D1D47E6B78714D9E5B47E0DEE059B423",
+  "Hash": "812AAB058368F408F7224F7C824D790E9688889F32EF673BD50225910EC8CB74",
   "OriginalCreationDate": "Monday, 14 March 2022 08:19:44 PM",
-  "LastSaveDate": "2023-03-04T13:55:17.078026-06:00",
-  "Version": "5.1.0",
+  "LastSaveDate": "2023-04-05T17:25:01.999935-05:00",
+  "Version": "5.2.0",
   "IsEmpty": false
 }

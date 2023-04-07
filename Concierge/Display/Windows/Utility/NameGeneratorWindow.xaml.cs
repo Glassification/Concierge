@@ -45,6 +45,8 @@ namespace Concierge.Display.Utility
 
         public override string HeaderText => "Name Generator";
 
+        public override string WindowName => nameof(NameGeneratorWindow);
+
         private History History { get; set; }
 
         public override object? ShowWindow()

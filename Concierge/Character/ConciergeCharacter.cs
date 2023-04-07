@@ -51,13 +51,13 @@ namespace Concierge.Character
             this.Vitality = new Vitality();
             this.Wealth = new Wealth();
             this.Weapons = new List<Weapon>();
-            this.EquippedItems = new EquippedItems();
             this.CharacterImage = new CharacterImage();
             this.StatusEffects = new List<StatusEffect>();
             this.Properties = new CharacterProperties();
             this.Languages = new List<Language>();
 
             this.conciergeLeveler = new ConciergeLeveler(this);
+            this.EquippedItems = new EquippedItems(this.Inventories, this.Weapons);
         }
 
         public List<Ability> Abilities { get; set; }
@@ -78,6 +78,7 @@ namespace Concierge.Character
 
         public Companion Companion { get; set; }
 
+        [JsonIgnore]
         public EquippedItems EquippedItems { get; set; }
 
         public List<Inventory> Inventories { get; set; }
@@ -140,8 +141,6 @@ namespace Concierge.Character
                 {
                     weight += UnitConvertion.Weight(AppSettingsManager.UserSettings.UnitOfMeasurement, this.Wealth.TotalCoins / Constants.CoinGroup);
                 }
-
-                weight += this.EquippedItems.Weight;
 
                 return weight;
             }
@@ -285,7 +284,6 @@ namespace Concierge.Character
                 Vitality = this.Vitality.DeepCopy(),
                 Wealth = this.Wealth.DeepCopy(),
                 Weapons = this.Weapons.DeepCopy().ToList(),
-                EquippedItems = this.EquippedItems.DeepCopy(),
                 CharacterImage = this.CharacterImage.DeepCopy(),
                 StatusEffects = this.StatusEffects.DeepCopy().ToList(),
                 Properties = this.Properties.DeepCopy(),

@@ -9,6 +9,7 @@ namespace Concierge.Persistence.ReadWriters
 
     using Concierge.Exceptions;
     using Concierge.Services;
+    using Concierge.Utility.Extensions;
     using Newtonsoft.Json;
 
     public static class CustomColorReadWriter
@@ -31,6 +32,7 @@ namespace Concierge.Persistence.ReadWriters
             }
             catch (Exception ex)
             {
+                ex = ex.TryConvertToReadWriterException(fileName);
                 Program.ErrorService.LogError(ex);
                 return new CustomColorService();
             }

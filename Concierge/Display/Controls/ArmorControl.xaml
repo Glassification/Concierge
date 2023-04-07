@@ -271,8 +271,8 @@
                                     Background="#FF333333"
                                     Margin="-1">
                                     <Grid.RowDefinitions>
-                                        <RowDefinition Height="35*"/>
-                                        <RowDefinition Height="65*"/>
+                                        <RowDefinition Height="40*"/>
+                                        <RowDefinition Height="60*"/>
                                     </Grid.RowDefinitions>
 
                                     <components:ConciergeTextBlock
@@ -314,8 +314,8 @@
                                     Background="#FF333333"
                                     Margin="-1">
                                     <Grid.RowDefinitions>
-                                        <RowDefinition Height="35*"/>
-                                        <RowDefinition Height="65*"/>
+                                        <RowDefinition Height="40*"/>
+                                        <RowDefinition Height="60*"/>
                                     </Grid.RowDefinitions>
 
                                     <components:ConciergeTextBlock
@@ -357,8 +357,8 @@
                                     Background="#FF333333"
                                     Margin="-1">
                                     <Grid.RowDefinitions>
-                                        <RowDefinition Height="35*"/>
-                                        <RowDefinition Height="65*"/>
+                                        <RowDefinition Height="40*"/>
+                                        <RowDefinition Height="60*"/>
                                     </Grid.RowDefinitions>
 
                                     <components:ConciergeTextBlock
@@ -400,8 +400,8 @@
                                     Background="#FF333333"
                                     Margin="-1">
                                     <Grid.RowDefinitions>
-                                        <RowDefinition Height="35*"/>
-                                        <RowDefinition Height="65*"/>
+                                        <RowDefinition Height="40*"/>
+                                        <RowDefinition Height="60*"/>
                                     </Grid.RowDefinitions>
 
                                     <components:ConciergeTextBlock

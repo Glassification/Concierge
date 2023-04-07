@@ -7,6 +7,7 @@ namespace Concierge.Display.Utility
     using System.Windows;
 
     using Concierge.Display.Components;
+    using Concierge.Display.Windows;
     using Concierge.Tools.Generators;
     using Concierge.Tools.Generators.Attributes;
 
@@ -26,6 +27,8 @@ namespace Concierge.Display.Utility
         }
 
         public override string HeaderText => "Roll Attributes";
+
+        public override string WindowName => nameof(AttributeRollWindow);
 
         public override ConciergeWindow? ShowNonBlockingWindow()
         {

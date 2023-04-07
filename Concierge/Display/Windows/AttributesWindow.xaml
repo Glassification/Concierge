@@ -9,7 +9,7 @@
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     mc:Ignorable="d"
     Title="Modify Attributes"
-    Height="295"
+    Height="355"
     Width="650"
     Style="{StaticResource WindowFontStyle}">
 
@@ -17,6 +17,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="45"/>
             <RowDefinition Height="180"/>
+            <RowDefinition Height="60"/>
             <RowDefinition Height="70"/>
         </Grid.RowDefinitions>
 
@@ -218,8 +219,29 @@
             </Grid>
         </Grid>
 
+        <Border
+            Grid.Row="2"
+            BorderBrush="#29303E"
+            BorderThickness="5"
+            CornerRadius="10"
+            Margin="10,5,20,5">
+            <Grid
+                Background="#29303E"
+                Margin="-1">
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <components:ConciergeTextBlock
+                        x:Name="DescriptionTextBlock"
+                        HorizontalAlignment="Left"
+                        FontSize="11"
+                        Opacity="0.80"
+                        Margin="10,2,10,2"
+                        Text="{Binding UpdateSourceTrigger=PropertyChanged, Path=Text}"/>
+                </ScrollViewer>
+            </Grid>
+        </Border>
+
         <!--Buttons-->
-        <Grid Grid.Row="2">
+        <Grid Grid.Row="3">
             <StackPanel Orientation="Horizontal"
                         VerticalAlignment="Center"
                         HorizontalAlignment="Center">

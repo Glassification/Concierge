@@ -170,6 +170,8 @@ namespace Concierge.Display.Controls
 
         private void PopupToggleButton_Click(object sender, RoutedEventArgs e)
         {
+            SetColorButtons(this.RecentColorsStackPanel, this.CustomColorService.RecentColors);
+
             var missingColors = this.CustomColorService.GetMissingColors(this.CustomColorList.ToList<CustomColor>());
             if (missingColors.IsEmpty())
             {

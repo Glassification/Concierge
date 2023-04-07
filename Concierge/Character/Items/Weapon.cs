@@ -17,7 +17,7 @@ namespace Concierge.Character.Items
     using MaterialDesignThemes.Wpf;
     using Newtonsoft.Json;
 
-    public sealed class Weapon : ICopyable<Weapon>, IUnique
+    public sealed class Weapon : ICopyable<Weapon>, IUnique, IEquipable
     {
         public Weapon()
         {
@@ -28,7 +28,8 @@ namespace Concierge.Character.Items
             this.Note = string.Empty;
             this.Weight = UnitDouble.Empty;
             this.Id = Guid.NewGuid();
-            this.ProficiencyOverride = false;
+            this.EquipmentSlot = EquipmentSlot.None;
+            this.Amount = 1;
         }
 
         public Weapon(ICreature creature)
@@ -36,6 +37,14 @@ namespace Concierge.Character.Items
         {
             this.Creature = creature;
         }
+
+        public int Amount { get; set; }
+
+        public bool Attuned { get; set; }
+
+        public bool IsEquipped { get; set; }
+
+        public EquipmentSlot EquipmentSlot { get; set; }
 
         public Abilities Ability { get; set; }
 
@@ -70,6 +79,14 @@ namespace Concierge.Character.Items
         [JsonIgnore]
         [SearchIgnore]
         public PackIconKind ProficiencyIconKind => this.GetProficientValue().IconKind;
+
+        [JsonIgnore]
+        [SearchIgnore]
+        public Brush AttunedIconColor => this.GetAttunedValue().Brush;
+
+        [JsonIgnore]
+        [SearchIgnore]
+        public PackIconKind AttunedIconKind => this.GetAttunedValue().IconKind;
 
         public bool ProficiencyOverride { get; set; }
 
@@ -126,7 +143,11 @@ namespace Concierge.Character.Items
                 IgnoreWeight = this.IgnoreWeight,
                 Id = this.Id,
                 CoinType = this.CoinType,
+                Attuned = this.Attuned,
                 Value = this.Value,
+                IsEquipped = this.IsEquipped,
+                Amount = this.Amount,
+                EquipmentSlot = this.EquipmentSlot,
             };
         }
 
@@ -183,6 +204,13 @@ namespace Concierge.Character.Items
                 WeaponTypes.Whip => new CategoryDto(PackIconKind.JumpRope, Brushes.MediumPurple, this.Type.ToString()),
                 _ => new CategoryDto(),
             };
+        }
+
+        private (PackIconKind IconKind, Brush Brush) GetAttunedValue()
+        {
+            return this.Attuned ?
+                (IconKind: PackIconKind.RadioButtonChecked, Brush: ConciergeBrushes.Mint) :
+                (IconKind: PackIconKind.RadioButtonUnchecked, Brush: ConciergeBrushes.Deer);
         }
 
         private (PackIconKind IconKind, Brush Brush) GetProficientValue()
