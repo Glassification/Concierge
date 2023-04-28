@@ -52,6 +52,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Concierge.Common\Concierge.Common.csproj" />
+    <ProjectReference Include="..\Concierge.Logging\Concierge.Logging.csproj" />
     <ProjectReference Include="..\Concierge.Tools\Concierge.Tools.csproj" />
   </ItemGroup>
 

@@ -14,11 +14,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Concierge.Installer", "Concierge.Installer\ConciergeInstaller.vdproj", "{53DD5690-EB1B-486E-A66F-EE52B5EC9CCC}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Concierge.DevTools", "Concierge.DevTools\Concierge.DevTools.csproj", "{6073B770-C372-4354-8136-B81A31CC9725}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Concierge.Dev", "Concierge.Dev\Concierge.Dev.csproj", "{6073B770-C372-4354-8136-B81A31CC9725}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Concierge.Common", "Concierge.Common\Concierge.Common.csproj", "{23C970C2-319D-4001-9944-700C896245B5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Concierge.Tools", "Concierge.Tools\Concierge.Tools.csproj", "{53A7812F-3FC5-40FC-B797-ADFA03AE6A86}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Concierge.Tools", "Concierge.Tools\Concierge.Tools.csproj", "{53A7812F-3FC5-40FC-B797-ADFA03AE6A86}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Concierge.Logging", "Concierge.Logging\Concierge.Logging.csproj", "{E81BE159-0670-4214-B070-71D1598AD668}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -44,6 +46,10 @@ Global
 		{53A7812F-3FC5-40FC-B797-ADFA03AE6A86}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{53A7812F-3FC5-40FC-B797-ADFA03AE6A86}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{53A7812F-3FC5-40FC-B797-ADFA03AE6A86}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E81BE159-0670-4214-B070-71D1598AD668}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E81BE159-0670-4214-B070-71D1598AD668}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E81BE159-0670-4214-B070-71D1598AD668}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E81BE159-0670-4214-B070-71D1598AD668}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

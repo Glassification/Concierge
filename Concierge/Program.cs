@@ -30,7 +30,7 @@ namespace Concierge
             IsDebug = false;
 #endif
 
-            Logger = new LocalLogger(IsDebug);
+            Logger = new LocalLogger(ConciergeFiles.LoggingDirectory, IsDebug);
             Logger.Start(AssemblyVersion);
 
             IsTyping = false;

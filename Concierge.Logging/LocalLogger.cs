@@ -11,21 +11,20 @@ namespace Concierge.Logging
 
     using Concierge.Common;
     using Concierge.Common.Extensions;
-    using Concierge.Persistence;
 
     public sealed class LocalLogger : Logger
     {
         public const string DefaultLogFileName = @"Concierge.log";
 
-        public LocalLogger(bool isDebug = false)
-        : this(string.Empty, string.Empty, isDebug)
+        public LocalLogger(string logPath, bool isDebug = false)
+        : this(logPath, string.Empty, isDebug)
         {
         }
 
         public LocalLogger(string logPath, string logName, bool isDebug = false)
         : base(isDebug)
         {
-            this.LogLocation = FormatLogFilePath(logPath);
+            this.LogLocation = logPath;
             this.LogFileName = FormatLogFileName(logName);
 
             this.MaxLogFileSize = 5000000;
@@ -69,13 +68,6 @@ namespace Concierge.Logging
             return logName.IsNullOrWhiteSpace() ?
                 DefaultLogFileName :
                 logName;
-        }
-
-        private static string FormatLogFilePath(string filePath)
-        {
-            return filePath.IsNullOrWhiteSpace() ?
-                ConciergeFiles.LoggingDirectory :
-                filePath;
         }
 
         private void Rotate(string filePath)
