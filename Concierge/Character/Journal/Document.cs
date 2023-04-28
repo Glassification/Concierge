@@ -4,7 +4,7 @@
 
 namespace Concierge.Character.Journal
 {
-    using Concierge.Utility;
+    using Concierge.Common;
 
     public sealed class Document : Entry, ICopyable<Document>
     {

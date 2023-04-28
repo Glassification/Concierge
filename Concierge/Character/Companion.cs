@@ -10,7 +10,7 @@ namespace Concierge.Character
     using Concierge.Character.Enums;
     using Concierge.Character.Items;
     using Concierge.Character.Statuses;
-    using Concierge.Utility;
+    using Concierge.Common;
     using Newtonsoft.Json;
 
     public sealed class Companion : ICopyable<Companion>, ICreature

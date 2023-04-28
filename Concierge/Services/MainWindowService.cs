@@ -10,8 +10,8 @@ namespace Concierge.Services
     using System.Windows.Media;
 
     using Concierge.Character.Characteristics;
+    using Concierge.Common.Extensions;
     using Concierge.Display;
-    using Concierge.Utility.Extensions;
     using MaterialDesignThemes.Wpf;
 
     public sealed class MainWindowService

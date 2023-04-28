@@ -6,8 +6,8 @@ namespace Concierge.Character.Journal
 {
     using System;
 
-    using Concierge.Utility;
-    using Concierge.Utility.Dtos;
+    using Concierge.Common;
+    using Concierge.Common.Dtos;
 
     public abstract class Entry : IUnique
     {

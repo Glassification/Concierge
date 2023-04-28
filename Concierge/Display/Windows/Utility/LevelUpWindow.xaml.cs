@@ -10,12 +10,12 @@ namespace Concierge.Display.Utility
 
     using Concierge.Character;
     using Concierge.Character.Enums;
+    using Concierge.Character.Statuses;
+    using Concierge.Common;
+    using Concierge.Common.Extensions;
     using Concierge.Display.Components;
     using Concierge.Display.Controls;
     using Concierge.Display.Enums;
-    using Concierge.Utility;
-    using Concierge.Utility.Extensions;
-    using Concierge.Utility.Utilities;
 
     /// <summary>
     /// Interaction logic for LevelUpWindow.xaml.
@@ -65,7 +65,7 @@ namespace Concierge.Display.Utility
             CharacterClass characterClass)
         {
             className.Text = characterClass.Name;
-            hitDice.Text = CharacterUtility.GetHitDice(characterClass.Name).ToString();
+            hitDice.Text = HitDice.GetHitDice(characterClass.Name).ToString();
 
             if (characterClass.Name.IsNullOrWhiteSpace())
             {

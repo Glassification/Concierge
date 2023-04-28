@@ -9,7 +9,7 @@ namespace Concierge.Display.Components
     using System.Windows.Controls;
 
     using Concierge.Character.Journal;
-    using Concierge.Utility;
+    using Concierge.Common;
     using MaterialDesignThemes.Wpf;
 
     public sealed class ButtonTreeViewItem : TreeViewItem

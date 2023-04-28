@@ -14,9 +14,10 @@ namespace Concierge.Display.Controls
     using Concierge.Character.AbilitySkills;
     using Concierge.Character.Enums;
     using Concierge.Commands;
+    using Concierge.Common;
+    using Concierge.Common.Extensions;
     using Concierge.Display.Enums;
-    using Concierge.Utility;
-    using Concierge.Utility.Extensions;
+    using Concierge.Persistence;
 
     /// <summary>
     /// Interaction logic for SkillControl.xaml.

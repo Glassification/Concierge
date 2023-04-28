@@ -17,12 +17,13 @@ namespace Concierge.Character
     using Concierge.Character.Spellcasting;
     using Concierge.Character.Statuses;
     using Concierge.Commands;
+    using Concierge.Common;
+    using Concierge.Common.Extensions;
+    using Concierge.Common.Utilities;
     using Concierge.Configuration;
     using Concierge.Leveling;
-    using Concierge.Utility;
-    using Concierge.Utility.Extensions;
-    using Concierge.Utility.Units;
-    using Concierge.Utility.Utilities;
+    using Concierge.Persistence;
+    using Concierge.Primitives.Units;
     using Newtonsoft.Json;
 
     public sealed class ConciergeCharacter : ICopyable<ConciergeCharacter>, ICreature
@@ -147,13 +148,13 @@ namespace Concierge.Character
         }
 
         [JsonIgnore]
-        public int ProficiencyBonus => this.Properties.Level - 1 > 0 ? Constants.ProficiencyLevels[this.Properties.Level - 1] : Constants.ProficiencyLevels[0];
+        public int ProficiencyBonus => this.Properties.Level - 1 > 0 ? Defaults.ProficiencyLevels[this.Properties.Level - 1] : Defaults.ProficiencyLevels[0];
 
         [JsonIgnore]
         public int PassivePerception => Constants.BasePerception + this.Skill.Perception.Bonus + this.Senses.PerceptionBonus;
 
         [JsonIgnore]
-        public int Initiative => CharacterUtility.CalculateBonus(this.Attributes.Dexterity) + this.Senses.InitiativeBonus;
+        public int Initiative => Constants.CalculateBonus(this.Attributes.Dexterity) + this.Senses.InitiativeBonus;
 
         [JsonIgnore]
         public int CasterLevel
@@ -199,6 +200,31 @@ namespace Concierge.Character
         public override int GetHashCode()
         {
             return base.GetHashCode();
+        }
+
+        public int CalculateBonusFromAbility(Abilities ability)
+        {
+            return ability switch
+            {
+                Enums.Abilities.STR => Constants.CalculateBonus(this.Attributes.Strength) + this.ProficiencyBonus,
+                Enums.Abilities.DEX => Constants.CalculateBonus(this.Attributes.Dexterity) + this.ProficiencyBonus,
+                Enums.Abilities.CON => Constants.CalculateBonus(this.Attributes.Constitution) + this.ProficiencyBonus,
+                Enums.Abilities.INT => Constants.CalculateBonus(this.Attributes.Intelligence) + this.ProficiencyBonus,
+                Enums.Abilities.WIS => Constants.CalculateBonus(this.Attributes.Wisdom) + this.ProficiencyBonus,
+                Enums.Abilities.CHA => Constants.CalculateBonus(this.Attributes.Charisma) + this.ProficiencyBonus,
+                Enums.Abilities.NONE => this.ProficiencyBonus,
+                _ => this.ProficiencyBonus,
+            };
+        }
+
+        public bool ValidateClassLevel(int number)
+        {
+            var totalLevel =
+                (this.Properties.Class1.ClassNumber == number ? 0 : this.Properties.Class1.Level) +
+                (this.Properties.Class2.ClassNumber == number ? 0 : this.Properties.Class2.Level) +
+                (this.Properties.Class3.ClassNumber == number ? 0 : this.Properties.Class3.Level);
+
+            return totalLevel is <= Constants.MaxLevel and >= 0;
         }
 
         public void LongRest()

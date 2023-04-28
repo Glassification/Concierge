@@ -7,9 +7,9 @@ namespace Concierge.Persistence.ReadWriters
     using System;
     using System.IO;
 
-    using Concierge.Exceptions;
+    using Concierge.Common.Exceptions;
+    using Concierge.Common.Extensions;
     using Concierge.Services;
-    using Concierge.Utility.Extensions;
     using Newtonsoft.Json;
 
     public static class CustomColorReadWriter

@@ -13,9 +13,9 @@ namespace Concierge.Display.Utility
     using Concierge.Configuration.Dtos;
     using Concierge.Display.Components;
     using Concierge.Display.Enums;
+    using Concierge.Persistence;
+    using Concierge.Primitives.Units.Enums;
     using Concierge.Tools.Display;
-    using Concierge.Utility;
-    using Concierge.Utility.Units.Enums;
 
     /// <summary>
     /// Interaction logic for SettingsWindow.xaml.
@@ -34,7 +34,7 @@ namespace Concierge.Display.Utility
 
         public override string WindowName => nameof(SettingsWindow);
 
-        private string FormattedInterval => $"Autosave Interval:  {Constants.AutosaveIntervals[(int)this.AutosaveInterval.Value]} minute{((int)this.AutosaveInterval.Value > 0 ? "s" : string.Empty)}";
+        private string FormattedInterval => $"Autosave Interval:  {Defaults.AutosaveIntervals[(int)this.AutosaveInterval.Value]} minute{((int)this.AutosaveInterval.Value > 0 ? "s" : string.Empty)}";
 
         public override void ShowEdit<T>(T item)
         {

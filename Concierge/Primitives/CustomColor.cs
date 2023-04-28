@@ -9,9 +9,9 @@ namespace Concierge.Primitives
     using System.Text.RegularExpressions;
     using System.Windows.Media;
 
-    using Concierge.Utility;
-    using Concierge.Utility.Dtos;
-    using Concierge.Utility.Extensions;
+    using Concierge.Common;
+    using Concierge.Common.Dtos;
+    using Concierge.Common.Extensions;
     using Newtonsoft.Json;
 
     public sealed class CustomColor : ICopyable<CustomColor>, IUnique

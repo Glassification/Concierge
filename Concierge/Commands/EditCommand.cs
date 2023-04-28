@@ -4,10 +4,10 @@
 
 namespace Concierge.Commands
 {
+    using Concierge.Common;
+    using Concierge.Common.Exceptions;
+    using Concierge.Common.Extensions;
     using Concierge.Display.Enums;
-    using Concierge.Exceptions;
-    using Concierge.Utility;
-    using Concierge.Utility.Extensions;
     using Newtonsoft.Json;
 
     public sealed class EditCommand<T> : Command

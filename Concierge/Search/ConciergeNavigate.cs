@@ -7,11 +7,11 @@ namespace Concierge.Search
     using System.Windows.Controls;
 
     using Concierge.Character.Journal;
+    using Concierge.Common.Extensions;
+    using Concierge.Common.Utilities;
     using Concierge.Display.Components;
     using Concierge.Display.Pages;
     using Concierge.Display.Windows;
-    using Concierge.Utility.Extensions;
-    using Concierge.Utility.Utilities;
 
     public sealed class ConciergeNavigate
     {
@@ -54,7 +54,7 @@ namespace Concierge.Search
                 return false;
             }
 
-            var treeViews = DisplayUtility.FindVisualChildren<TreeView>(conciergePage);
+            var treeViews = DisplayUtility.FindVisualChildren<ConciergeTreeView>(conciergePage);
             foreach (var treeView in treeViews)
             {
                 var item = treeView.GetTreeViewItemByDocument(document);
@@ -124,7 +124,7 @@ namespace Concierge.Search
                 return false;
             }
 
-            var treeViews = DisplayUtility.FindVisualChildren<TreeView>(conciergePage);
+            var treeViews = DisplayUtility.FindVisualChildren<ConciergeTreeView>(conciergePage);
             foreach (var treeView in treeViews)
             {
                 var item = treeView.GetTreeViewItem(this.SearchResult.Item);

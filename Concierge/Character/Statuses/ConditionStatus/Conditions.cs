@@ -8,7 +8,7 @@ namespace Concierge.Character.Statuses.ConditionStatus
     using System.Linq;
 
     using Concierge.Character.Enums;
-    using Concierge.Utility;
+    using Concierge.Common;
     using Newtonsoft.Json;
 
     public sealed class Conditions : ICopyable<Conditions>

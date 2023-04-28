@@ -12,6 +12,8 @@ namespace Concierge.Display.Pages
     using System.Windows.Input;
 
     using Concierge.Character.Statuses;
+    using Concierge.Common;
+    using Concierge.Common.Extensions;
     using Concierge.Display.Enums;
     using Concierge.Persistence;
     using Concierge.Persistence.ReadWriters;
@@ -20,8 +22,6 @@ namespace Concierge.Display.Pages
     using Concierge.Tools.DiceRolling.Dice;
     using Concierge.Tools.DivideLoot;
     using Concierge.Tools.Enums;
-    using Concierge.Utility;
-    using Concierge.Utility.Extensions;
 
     /// <summary>
     /// Interaction logic for ToolsPage.xaml.

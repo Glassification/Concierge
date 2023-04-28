@@ -6,9 +6,9 @@ namespace Concierge.Character.Statuses.ConditionStatus
 {
     using Concierge;
     using Concierge.Character.Enums;
+    using Concierge.Common;
+    using Concierge.Common.Extensions;
     using Concierge.Configuration;
-    using Concierge.Utility;
-    using Concierge.Utility.Extensions;
 
     public sealed class EncumbranceCondition : Condition, ICopyable<EncumbranceCondition>
     {

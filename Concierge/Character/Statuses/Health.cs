@@ -6,7 +6,7 @@ namespace Concierge.Character.Statuses
 {
     using System;
 
-    using Concierge.Utility;
+    using Concierge.Common;
     using Newtonsoft.Json;
 
     public sealed class Health : ICopyable<Health>

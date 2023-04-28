@@ -7,7 +7,8 @@ namespace Concierge.Display.Components
     using System.Windows.Controls;
     using System.Windows.Media;
 
-    using Concierge.Utility;
+    using Concierge.Character.Journal;
+    using Concierge.Common;
 
     public sealed class ConciergeTreeView : TreeView
     {
@@ -16,6 +17,58 @@ namespace Concierge.Display.Components
         {
             var scaling = ResolutionScaling.DpiFactor;
             this.LayoutTransform = new ScaleTransform(scaling, scaling, 0.5, 0.5);
+        }
+
+        public TreeViewItem? GetTreeViewItem(object item)
+        {
+            foreach (var item1 in this.Items)
+            {
+                if (item1 is ChapterTreeViewItem chapter && item is ChapterTreeViewItem itemChapter)
+                {
+                    if (chapter.Chapter.Id.Equals(itemChapter.Chapter.Id))
+                    {
+                        return chapter;
+                    }
+                }
+
+                if (item1 is TreeViewItem treeViewItem1)
+                {
+                    foreach (var item2 in treeViewItem1.Items)
+                    {
+                        if (item2 is DocumentTreeViewItem document && item is DocumentTreeViewItem itemDocument)
+                        {
+                            if (document.Document.Id.Equals(itemDocument.Document.Id))
+                            {
+                                return document;
+                            }
+                        }
+                    }
+                }
+            }
+
+            return null;
+        }
+
+        public TreeViewItem? GetTreeViewItemByDocument(Document document)
+        {
+            foreach (var item1 in this.Items)
+            {
+                if (item1 is TreeViewItem treeViewItem1)
+                {
+                    foreach (var item2 in treeViewItem1.Items)
+                    {
+                        if (item2 is DocumentTreeViewItem documentItem)
+                        {
+                            if (documentItem.Document.Id.Equals(document.Id))
+                            {
+                                return documentItem;
+                            }
+                        }
+                    }
+                }
+            }
+
+            return null;
         }
 
         public void ExpandAll()

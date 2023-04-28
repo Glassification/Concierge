@@ -8,8 +8,8 @@ namespace Concierge.Tools.Import
     using System.Collections.Generic;
 
     using Concierge.Character;
+    using Concierge.Common;
     using Concierge.Persistence.ReadWriters;
-    using Concierge.Utility;
 
     public sealed class CharacterImporter
     {

@@ -17,15 +17,16 @@ namespace Concierge.Display.Pages
 
     using Concierge.Character.Journal;
     using Concierge.Commands;
+    using Concierge.Common;
+    using Concierge.Common.Extensions;
     using Concierge.Display.Components;
     using Concierge.Display.Enums;
     using Concierge.Display.Windows;
+    using Concierge.Persistence;
     using Concierge.Primitives;
     using Concierge.Search;
     using Concierge.Services;
     using Concierge.Tools.Display;
-    using Concierge.Utility;
-    using Concierge.Utility.Extensions;
 
     /// <summary>
     /// Interaction logic for JournalPage.xaml.

@@ -7,8 +7,8 @@ namespace Concierge.Character.Characteristics
     using System;
 
     using Concierge.Character.Enums;
-    using Concierge.Utility;
-    using Concierge.Utility.Dtos;
+    using Concierge.Common;
+    using Concierge.Common.Dtos;
 
     public sealed class Proficiency : ICopyable<Proficiency>, IUnique
     {

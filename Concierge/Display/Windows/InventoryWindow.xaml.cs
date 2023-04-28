@@ -13,15 +13,16 @@ namespace Concierge.Display.Windows
     using Concierge.Character.Enums;
     using Concierge.Character.Items;
     using Concierge.Commands;
+    using Concierge.Common;
+    using Concierge.Common.Extensions;
     using Concierge.Configuration;
     using Concierge.Display.Components;
     using Concierge.Display.Enums;
+    using Concierge.Persistence;
     using Concierge.Primitives;
+    using Concierge.Primitives.Units;
+    using Concierge.Primitives.Units.Enums;
     using Concierge.Tools.Display;
-    using Concierge.Utility;
-    using Concierge.Utility.Extensions;
-    using Concierge.Utility.Units;
-    using Concierge.Utility.Units.Enums;
 
     /// <summary>
     /// Interaction logic for InventoryWindow.xaml.
@@ -33,8 +34,8 @@ namespace Concierge.Display.Windows
             this.InitializeComponent();
             this.UseRoundedCorners();
 
-            this.NameComboBox.ItemsSource = Constants.Inventories;
-            this.CategoryComboBox.ItemsSource = Constants.ItemCategories;
+            this.NameComboBox.ItemsSource = Defaults.Inventories;
+            this.CategoryComboBox.ItemsSource = Defaults.ItemCategories;
             this.CoinTypeComboBox.ItemsSource = Enum.GetValues(typeof(CoinType)).Cast<CoinType>();
             this.ConciergePage = ConciergePage.None;
             this.SelectedItem = new Inventory();
@@ -193,7 +194,7 @@ namespace Concierge.Display.Windows
             this.NotesTextBox.Text = string.Empty;
             this.WeightUnits.Text = $"({UnitFormat.WeightPostfix})";
             this.DescriptionTextBox.Text = string.Empty;
-            this.CategoryComboBox.Text = Constants.ItemCategories[0];
+            this.CategoryComboBox.Text = Defaults.ItemCategories[0];
             this.ValueUpDown.Value = 0;
             this.CoinTypeComboBox.Text = CoinType.Copper.ToString();
 

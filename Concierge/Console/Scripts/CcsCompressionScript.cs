@@ -7,9 +7,9 @@ namespace Concierge.Console.Scripts
     using System;
     using System.IO;
 
+    using Concierge.Common.Extensions;
     using Concierge.Console.Enums;
     using Concierge.Persistence;
-    using Concierge.Utility.Extensions;
 
     public sealed class CcsCompressionScript : IScript
     {

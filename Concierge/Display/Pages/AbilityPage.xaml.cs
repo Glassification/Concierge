@@ -12,11 +12,11 @@ namespace Concierge.Display.Pages
 
     using Concierge.Character.Characteristics;
     using Concierge.Commands;
+    using Concierge.Common.Extensions;
+    using Concierge.Common.Utilities;
     using Concierge.Display.Enums;
     using Concierge.Display.Windows;
     using Concierge.Services;
-    using Concierge.Utility.Extensions;
-    using Concierge.Utility.Utilities;
 
     /// <summary>
     /// Interaction logic for AbilityPage.xaml.
@@ -144,7 +144,7 @@ namespace Concierge.Display.Pages
 
         private void AbilitiesDataGrid_Sorted(object sender, RoutedEventArgs e)
         {
-            DisplayUtility.SortListFromDataGrid(this.AbilitiesDataGrid, Program.CcsFile.Character.Abilities, this.ConciergePage);
+            this.AbilitiesDataGrid.SortListFromDataGrid(Program.CcsFile.Character.Abilities, this.ConciergePage);
         }
 
         private void AbilityDataGrid_Filtered(object sender, RoutedEventArgs e)

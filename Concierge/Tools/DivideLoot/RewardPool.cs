@@ -6,8 +6,8 @@ namespace Concierge.Tools.DivideLoot
 {
     using System;
 
+    using Concierge.Common;
     using Concierge.Tools.Enums;
-    using Concierge.Utility;
 
     public abstract class RewardPool
     {

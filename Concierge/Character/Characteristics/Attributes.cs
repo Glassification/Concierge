@@ -4,7 +4,7 @@
 
 namespace Concierge.Character.Characteristics
 {
-    using Concierge.Utility;
+    using Concierge.Common;
 
     public sealed class Attributes : ICopyable<Attributes>
     {

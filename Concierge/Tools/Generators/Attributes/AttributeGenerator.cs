@@ -6,8 +6,8 @@ namespace Concierge.Tools.Generators.Attributes
 {
     using System.Linq;
 
+    using Concierge.Common;
     using Concierge.Tools.DiceRolling.Dice;
-    using Concierge.Utility;
 
     public sealed class AttributeGenerator : IGenerator
     {

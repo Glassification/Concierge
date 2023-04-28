@@ -11,10 +11,9 @@ namespace Concierge.Display.Windows
     using Concierge.Character.Characteristics;
     using Concierge.Character.Enums;
     using Concierge.Commands;
+    using Concierge.Common;
     using Concierge.Display.Components;
     using Concierge.Display.Enums;
-    using Concierge.Utility;
-    using Concierge.Utility.Utilities;
 
     /// <summary>
     /// Interaction logic for SensesWindow.xaml.
@@ -127,7 +126,7 @@ namespace Concierge.Display.Windows
 
         private void IntegerUpDown_ValueChanged(object sender, RoutedEventArgs e)
         {
-            this.InitiativeTextBlock.Text = (CharacterUtility.CalculateBonus(Program.CcsFile.Character.Attributes.Dexterity) + this.InitiativeBonusUpDown.Value).ToString();
+            this.InitiativeTextBlock.Text = (Constants.CalculateBonus(Program.CcsFile.Character.Attributes.Dexterity) + this.InitiativeBonusUpDown.Value).ToString();
             this.PerceptionTextBlock.Text = (Constants.BasePerception + Program.CcsFile.Character.Skill.Perception.Bonus + this.PerceptionBonusUpDown.Value).ToString();
             this.MovementTextBlock.Text = Senses.GetMovement(this.BaseMovementUpDown.Value + this.MovementBonusUpDown.Value).ToString();
         }

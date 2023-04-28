@@ -8,10 +8,9 @@ namespace Concierge.Character.Spellcasting
     using System.Linq;
 
     using Concierge.Character.Enums;
+    using Concierge.Common;
+    using Concierge.Common.Dtos;
     using Concierge.Leveling.Dtos.Definitions;
-    using Concierge.Utility;
-    using Concierge.Utility.Dtos;
-    using Concierge.Utility.Utilities;
     using Newtonsoft.Json;
 
     public sealed class MagicClass : ICopyable<MagicClass>, IUnique
@@ -25,7 +24,7 @@ namespace Concierge.Character.Spellcasting
         public Abilities Ability { get; set; }
 
         [JsonIgnore]
-        public int Attack => CharacterUtility.CalculateBonusFromAbility(this.Ability, Program.CcsFile.Character);
+        public int Attack => Program.CcsFile.Character.CalculateBonusFromAbility(this.Ability);
 
         public Guid Id { get; set; }
 
@@ -41,7 +40,7 @@ namespace Concierge.Character.Spellcasting
         public int PreparedSpells => Program.CcsFile.Character.Spells.Where(x => (x.Class?.Equals(this.Name) ?? false) && x.Level > 0 && x.Prepared).ToList().Count;
 
         [JsonIgnore]
-        public int Save => CharacterUtility.CalculateBonusFromAbility(this.Ability, Program.CcsFile.Character) + Constants.BaseDC;
+        public int Save => Program.CcsFile.Character.CalculateBonusFromAbility(this.Ability) + Constants.BaseDC;
 
         public int SpellSlots { get; set; }
 

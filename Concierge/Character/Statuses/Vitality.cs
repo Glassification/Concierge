@@ -10,9 +10,9 @@ namespace Concierge.Character.Statuses
     using Concierge.Character.Characteristics;
     using Concierge.Character.Enums;
     using Concierge.Character.Statuses.ConditionStatus;
+    using Concierge.Common;
+    using Concierge.Common.Utilities;
     using Concierge.Tools.DiceRolling.Dice;
-    using Concierge.Utility;
-    using Concierge.Utility.Utilities;
     using Newtonsoft.Json;
 
     public sealed class Vitality : ICopyable<Vitality>
@@ -127,7 +127,7 @@ namespace Concierge.Character.Statuses
         public DiceRoll RollHitDice(HitDie hitDie, Attributes attributes)
         {
             var roll = DiceRoll.RollDice(1, (int)hitDie);
-            var modifier = CharacterUtility.CalculateBonus(attributes.Constitution);
+            var modifier = Constants.CalculateBonus(attributes.Constitution);
 
             this.Heal(roll.FirstOrDefault(0) + modifier);
 

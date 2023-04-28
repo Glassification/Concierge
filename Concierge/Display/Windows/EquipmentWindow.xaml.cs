@@ -11,9 +11,9 @@ namespace Concierge.Display.Windows
     using Concierge.Character.Enums;
     using Concierge.Character.Items;
     using Concierge.Commands;
+    using Concierge.Common.Extensions;
     using Concierge.Display.Components;
     using Concierge.Display.Enums;
-    using Concierge.Utility.Extensions;
 
     /// <summary>
     /// Interaction logic for EquipmentWindow.xaml.

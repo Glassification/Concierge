@@ -7,7 +7,7 @@ namespace Concierge.Tools.DiceRolling.Dice
     using System;
     using System.Collections.Generic;
 
-    using Concierge.Exceptions;
+    using Concierge.Common.Exceptions;
 
     public sealed class CustomDiceRoll : IDiceRoll
     {

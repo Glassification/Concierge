@@ -9,9 +9,9 @@ namespace Concierge.Console.Scripts
     using System.Linq;
     using System.Text;
 
+    using Concierge.Common;
+    using Concierge.Common.Extensions;
     using Concierge.Console.Enums;
-    using Concierge.Utility;
-    using Concierge.Utility.Extensions;
 
     public sealed class ListScript<T> : IScript
         where T : IUnique, ICopyable<T>, new()

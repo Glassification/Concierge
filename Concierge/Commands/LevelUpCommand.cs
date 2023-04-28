@@ -10,9 +10,9 @@ namespace Concierge.Commands
     using Concierge.Character;
     using Concierge.Character.Spellcasting;
     using Concierge.Character.Statuses;
+    using Concierge.Common.Extensions;
     using Concierge.Display.Enums;
     using Concierge.Leveling.Dtos.Leveler;
-    using Concierge.Utility.Extensions;
 
     public sealed class LevelUpCommand : Command
     {

@@ -8,7 +8,7 @@ namespace Concierge.Console.Services
     using System.Linq;
     using System.Text;
 
-    using Concierge.Utility.Extensions;
+    using Concierge.Common.Extensions;
 
     public abstract class ScriptService
     {

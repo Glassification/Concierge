@@ -4,7 +4,7 @@
 
 namespace Concierge.Character.Statuses.ConditionStatus
 {
-    using Concierge.Utility;
+    using Concierge.Common;
 
     public sealed class GenericCondition : Condition, ICopyable<GenericCondition>
     {

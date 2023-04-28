@@ -6,9 +6,9 @@ namespace Concierge.Console
 {
     using System.Windows.Media;
 
+    using Concierge.Common;
+    using Concierge.Common.Extensions;
     using Concierge.Console.Enums;
-    using Concierge.Utility;
-    using Concierge.Utility.Extensions;
     using Newtonsoft.Json;
 
     public sealed class ConsoleResult

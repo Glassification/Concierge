@@ -12,12 +12,12 @@ namespace Concierge.Display.Pages
 
     using Concierge.Character.Spellcasting;
     using Concierge.Commands;
+    using Concierge.Common.Extensions;
+    using Concierge.Common.Utilities;
     using Concierge.Display.Components;
     using Concierge.Display.Enums;
     using Concierge.Display.Windows;
     using Concierge.Services;
-    using Concierge.Utility.Extensions;
-    using Concierge.Utility.Utilities;
 
     /// <summary>
     /// Interaction logic for SpellcastingPage.xaml.
@@ -236,12 +236,12 @@ namespace Concierge.Display.Pages
 
         private void SpellListDataGrid_Sorted(object sender, RoutedEventArgs e)
         {
-            DisplayUtility.SortListFromDataGrid(this.SpellListDataGrid, Program.CcsFile.Character.Spells, this.ConciergePage);
+            this.SpellListDataGrid.SortListFromDataGrid(Program.CcsFile.Character.Spells, this.ConciergePage);
         }
 
         private void MagicClassDataGrid_Sorted(object sender, RoutedEventArgs e)
         {
-            DisplayUtility.SortListFromDataGrid(this.MagicClassDataGrid, Program.CcsFile.Character.MagicClasses, this.ConciergePage);
+            this.MagicClassDataGrid.SortListFromDataGrid(Program.CcsFile.Character.MagicClasses, this.ConciergePage);
         }
 
         private void SpellSlotsDisplay_ValueChanged(object sender, RoutedEventArgs e)

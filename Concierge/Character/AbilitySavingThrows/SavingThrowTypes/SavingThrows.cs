@@ -5,7 +5,7 @@
 namespace Concierge.Character.AbilitySavingThrows.SavingThrowTypes
 {
     using Concierge.Character.Enums;
-    using Concierge.Utility;
+    using Concierge.Common;
     using Newtonsoft.Json;
 
     public abstract class SavingThrows : ICopyable<SavingThrows>

@@ -6,12 +6,12 @@ namespace Concierge.Display.Utility
 {
     using System.Windows;
 
+    using Concierge.Common.Extensions;
     using Concierge.Display.Components;
     using Concierge.Display.Enums;
     using Concierge.Services;
     using Concierge.Tools.Display;
     using Concierge.Tools.Import;
-    using Concierge.Utility.Extensions;
 
     /// <summary>
     /// Interaction logic for ImportCharacterWindow.xaml.

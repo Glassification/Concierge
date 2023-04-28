@@ -9,9 +9,9 @@ namespace Concierge.Logging
     using System.IO.Compression;
     using System.Linq;
 
+    using Concierge.Common;
+    using Concierge.Common.Extensions;
     using Concierge.Persistence;
-    using Concierge.Utility;
-    using Concierge.Utility.Extensions;
 
     public sealed class LocalLogger : Logger
     {

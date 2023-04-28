@@ -8,8 +8,8 @@ namespace Concierge.Persistence.ReadWriters
     using System.Collections.Generic;
     using System.Text;
 
-    using Concierge.Utility.Extensions;
-    using global::Utility.Utilities;
+    using Concierge.Common.Extensions;
+    using Concierge.Common.Utilities;
     using Newtonsoft.Json;
 
     public static class DefaultListReadWriter

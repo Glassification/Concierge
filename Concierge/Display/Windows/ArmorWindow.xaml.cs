@@ -13,7 +13,7 @@ namespace Concierge.Display.Windows
     using Concierge.Commands;
     using Concierge.Display.Components;
     using Concierge.Display.Enums;
-    using Concierge.Utility.Units;
+    using Concierge.Primitives.Units;
 
     /// <summary>
     /// Interaction logic for ArmorWindow.xaml.

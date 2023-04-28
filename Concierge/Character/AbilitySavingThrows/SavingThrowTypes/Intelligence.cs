@@ -5,7 +5,7 @@
 namespace Concierge.Character.AbilitySavingThrows.SavingThrowTypes
 {
     using Concierge.Character.Enums;
-    using Concierge.Utility.Utilities;
+    using Concierge.Common;
 
     public sealed class Intelligence : SavingThrows
     {
@@ -37,7 +37,7 @@ namespace Concierge.Character.AbilitySavingThrows.SavingThrowTypes
                     this.bonus += Program.CcsFile.Character.ProficiencyBonus;
                 }
 
-                this.bonus += CharacterUtility.CalculateBonus(Program.CcsFile.Character.Attributes.Intelligence);
+                this.bonus += Constants.CalculateBonus(Program.CcsFile.Character.Attributes.Intelligence);
 
                 return this.bonus;
             }

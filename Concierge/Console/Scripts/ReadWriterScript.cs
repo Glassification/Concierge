@@ -12,10 +12,10 @@ namespace Concierge.Console.Scripts
     using System.Threading.Tasks;
 
     using Concierge.Character;
+    using Concierge.Common.Extensions;
     using Concierge.Console.Enums;
     using Concierge.Persistence;
     using Concierge.Persistence.ReadWriters;
-    using Concierge.Utility.Extensions;
     using Newtonsoft.Json;
 
     public class ReadWriterScript<T> : IScript

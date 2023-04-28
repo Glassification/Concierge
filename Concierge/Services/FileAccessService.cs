@@ -4,9 +4,9 @@
 
 namespace Concierge.Services
 {
+    using Concierge.Common.Extensions;
     using Concierge.Persistence;
     using Concierge.Persistence.ReadWriters;
-    using Concierge.Utility.Extensions;
     using Microsoft.Win32;
 
     public sealed class FileAccessService

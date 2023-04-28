@@ -12,10 +12,10 @@ namespace Concierge.Display.Windows
     using Concierge.Character.Enums;
     using Concierge.Character.Statuses;
     using Concierge.Commands;
+    using Concierge.Common.Extensions;
     using Concierge.Display.Components;
     using Concierge.Display.Enums;
-    using Concierge.Utility;
-    using Concierge.Utility.Extensions;
+    using Concierge.Persistence;
 
     /// <summary>
     /// Interaction logic for StatusEffectsWindow.xaml.
@@ -27,7 +27,7 @@ namespace Concierge.Display.Windows
             this.InitializeComponent();
             this.UseRoundedCorners();
 
-            this.NameComboBox.ItemsSource = Constants.StatusEffects;
+            this.NameComboBox.ItemsSource = Defaults.StatusEffects;
             this.TypeComboBox.ItemsSource = Enum.GetValues(typeof(StatusEffectTypes)).Cast<StatusEffectTypes>();
             this.ConciergePage = ConciergePage.None;
             this.SelectedEffect = new StatusEffect();

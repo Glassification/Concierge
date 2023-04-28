@@ -8,9 +8,9 @@ namespace Concierge.Display.Controls
     using System.Windows.Media;
 
     using Concierge.Character;
-    using Concierge.Utility;
-    using Concierge.Utility.Units;
-    using Concierge.Utility.Units.Enums;
+    using Concierge.Common;
+    using Concierge.Primitives.Units;
+    using Concierge.Primitives.Units.Enums;
 
     /// <summary>
     /// Interaction logic for WeightDisplay.xaml.

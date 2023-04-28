@@ -12,11 +12,11 @@ namespace Concierge.Display.Pages
 
     using Concierge.Character.Items;
     using Concierge.Commands;
+    using Concierge.Common.Extensions;
+    using Concierge.Common.Utilities;
     using Concierge.Display.Enums;
     using Concierge.Display.Windows;
     using Concierge.Services;
-    using Concierge.Utility.Extensions;
-    using Concierge.Utility.Utilities;
 
     /// <summary>
     /// Interaction logic for InventoryPage.xaml.
@@ -150,7 +150,7 @@ namespace Concierge.Display.Pages
 
         private void InventoryDataGrid_Sorted(object sender, RoutedEventArgs e)
         {
-            DisplayUtility.SortListFromDataGrid(this.InventoryDataGrid, Program.CcsFile.Character.Inventories, this.ConciergePage);
+            this.InventoryDataGrid.SortListFromDataGrid(Program.CcsFile.Character.Inventories, this.ConciergePage);
         }
 
         private void InventoryDataGrid_Filtered(object sender, RoutedEventArgs e)

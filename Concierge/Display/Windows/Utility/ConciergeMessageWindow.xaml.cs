@@ -10,7 +10,7 @@ namespace Concierge.Display.Utility
 
     using Concierge.Display.Components;
     using Concierge.Display.Enums;
-    using Concierge.Utility;
+    using Concierge.Persistence;
     using MaterialDesignThemes.Wpf;
 
     /// <summary>

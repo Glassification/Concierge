@@ -6,9 +6,9 @@ namespace Concierge.Character
 {
     using System.Text.RegularExpressions;
 
-    using Concierge.Utility;
-    using Concierge.Utility.Extensions;
-    using Concierge.Utility.Utilities;
+    using Concierge.Common;
+
+    using Concierge.Common.Extensions;
 
     public sealed class CharacterClass : ICopyable<CharacterClass>
     {
@@ -43,7 +43,7 @@ namespace Concierge.Character
                 {
                     var oldLevel = this.level;
                     this.level = value;
-                    if (!CharacterUtility.ValidateClassLevel(Program.CcsFile.Character, this.ClassNumber))
+                    if (!Program.CcsFile.Character.ValidateClassLevel(this.ClassNumber))
                     {
                         this.level = oldLevel;
                     }

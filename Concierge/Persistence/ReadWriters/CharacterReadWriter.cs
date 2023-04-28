@@ -9,11 +9,11 @@ namespace Concierge.Persistence.ReadWriters
     using System.Text.RegularExpressions;
 
     using Concierge.Character;
+    using Concierge.Common.Exceptions;
+    using Concierge.Common.Extensions;
     using Concierge.Configuration;
     using Concierge.Display.Enums;
-    using Concierge.Exceptions;
     using Concierge.Tools.Display;
-    using Concierge.Utility.Extensions;
     using Newtonsoft.Json;
 
     public static class CharacterReadWriter

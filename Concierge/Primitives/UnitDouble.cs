@@ -6,11 +6,11 @@ namespace Concierge.Primitives
 {
     using System;
 
+    using Concierge.Common;
     using Concierge.Configuration;
     using Concierge.Configuration.Dtos;
-    using Concierge.Utility;
-    using Concierge.Utility.Units;
-    using Concierge.Utility.Units.Enums;
+    using Concierge.Primitives.Units;
+    using Concierge.Primitives.Units.Enums;
 
     public sealed class UnitDouble : ICopyable<UnitDouble>, IComparable
     {

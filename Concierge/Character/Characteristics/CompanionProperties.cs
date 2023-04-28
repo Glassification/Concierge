@@ -5,7 +5,7 @@
 namespace Concierge.Character.Characteristics
 {
     using Concierge.Character.Enums;
-    using Concierge.Utility;
+    using Concierge.Common;
 
     public sealed class CompanionProperties : ICopyable<CompanionProperties>
     {

@@ -16,11 +16,11 @@ namespace Concierge.Display.Pages
     using Concierge.Character.Statuses;
     using Concierge.Character.Statuses.ConditionStatus;
     using Concierge.Commands;
+    using Concierge.Common.Utilities;
     using Concierge.Display.Components;
     using Concierge.Display.Enums;
     using Concierge.Display.Windows;
     using Concierge.Services;
-    using Concierge.Utility.Utilities;
 
     /// <summary>
     /// Interaction logic for DetailsPage.xaml.
@@ -397,12 +397,12 @@ namespace Concierge.Display.Pages
 
         private void LanguagesDataGrid_Sorted(object sender, RoutedEventArgs e)
         {
-            DisplayUtility.SortListFromDataGrid(this.LanguagesDataGrid, Program.CcsFile.Character.Languages, this.ConciergePage);
+            this.LanguagesDataGrid.SortListFromDataGrid(Program.CcsFile.Character.Languages, this.ConciergePage);
         }
 
         private void ResourcesDataGrid_Sorted(object sender, RoutedEventArgs e)
         {
-            DisplayUtility.SortListFromDataGrid(this.ResourcesDataGrid, Program.CcsFile.Character.ClassResources, this.ConciergePage);
+            this.ResourcesDataGrid.SortListFromDataGrid(Program.CcsFile.Character.ClassResources, this.ConciergePage);
         }
 
         private void AppearanceDisplay_EditClicked(object sender, RoutedEventArgs e)

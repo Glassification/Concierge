@@ -14,11 +14,10 @@ namespace Concierge.Display.Windows
     using Concierge.Character.Characteristics;
     using Concierge.Character.Enums;
     using Concierge.Commands;
+    using Concierge.Common.Extensions;
     using Concierge.Display.Components;
     using Concierge.Display.Enums;
-    using Concierge.Display.Utility;
-    using Concierge.Utility;
-    using Concierge.Utility.Extensions;
+    using Concierge.Persistence;
 
     /// <summary>
     /// Interaction logic for ProficiencyWindow.xaml.
@@ -132,18 +131,18 @@ namespace Concierge.Display.Windows
                 Proficiency.SimpleMelee,
                 Proficiency.SimpleRanged,
                 new Separator(),
-                new CollectionContainer() { Collection = Constants.Weapons },
+                new CollectionContainer() { Collection = Defaults.Weapons },
                 new Separator(),
                 ArmorType.Light.GetDescription(),
                 ArmorType.Medium.GetDescription(),
                 ArmorType.Heavy.GetDescription(),
                 ArmorType.Massive.GetDescription(),
                 new Separator(),
-                new CollectionContainer() { Collection = Constants.Tools },
+                new CollectionContainer() { Collection = Defaults.Tools },
                 new Separator(),
-                new CollectionContainer() { Collection = Constants.Games },
+                new CollectionContainer() { Collection = Defaults.Games },
                 new Separator(),
-                new CollectionContainer() { Collection = Constants.Instruments },
+                new CollectionContainer() { Collection = Defaults.Instruments },
             };
         }
 

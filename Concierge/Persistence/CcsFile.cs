@@ -8,8 +8,8 @@ namespace Concierge.Persistence
     using System.IO;
 
     using Concierge.Character;
-    using Concierge.Utility;
-    using Concierge.Utility.Extensions;
+    using Concierge.Common;
+    using Concierge.Common.Extensions;
     using Newtonsoft.Json;
 
     public sealed class CcsFile

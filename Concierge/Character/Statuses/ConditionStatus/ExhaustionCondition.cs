@@ -5,7 +5,7 @@
 namespace Concierge.Character.Statuses.ConditionStatus
 {
     using Concierge.Character.Enums;
-    using Concierge.Utility;
+    using Concierge.Common;
 
     public sealed class ExhaustionCondition : Condition, ICopyable<ExhaustionCondition>
     {

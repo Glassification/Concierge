@@ -10,12 +10,12 @@ namespace Concierge.Search
     using System.Text.RegularExpressions;
     using System.Windows.Controls;
 
+    using Concierge.Common;
+    using Concierge.Common.Extensions;
+    using Concierge.Common.Utilities;
     using Concierge.Display;
     using Concierge.Display.Components;
     using Concierge.Search.Enums;
-    using Concierge.Utility;
-    using Concierge.Utility.Extensions;
-    using Concierge.Utility.Utilities;
 
     public sealed class ConciergeSearch
     {

@@ -8,12 +8,11 @@ namespace Concierge.Tools.Display
     using System.Linq;
 
     using Concierge.Character;
-    using Concierge.Display;
     using Concierge.Display.Components;
     using Concierge.Display.Enums;
     using Concierge.Display.Utility;
     using Concierge.Display.Windows;
-    using Concierge.Utility.Utilities;
+    using Concierge.Leveling;
 
     public sealed class CharacterCreationWizard
     {
@@ -58,21 +57,21 @@ namespace Concierge.Tools.Display
 
             if (character.Properties.Class1.Level > 0)
             {
-                character.Proficiencies.AddRange(CharacterUtility.GetProficiencies(character.Properties.Class1.Name, false));
-                character.SavingThrow.SetProficiency(CharacterUtility.GetSavingThrows(character.Properties.Class1.Name));
+                character.Proficiencies.AddRange(LevelingMap.GetProficiencies(character.Properties.Class1.Name, false));
+                character.SavingThrow.SetProficiency(LevelingMap.GetSavingThrows(character.Properties.Class1.Name));
             }
 
             if (character.Properties.Class2.Level > 0)
             {
-                character.Proficiencies.AddRange(CharacterUtility.GetProficiencies(character.Properties.Class2.Name, true));
+                character.Proficiencies.AddRange(LevelingMap.GetProficiencies(character.Properties.Class2.Name, true));
             }
 
             if (character.Properties.Class3.Level > 0)
             {
-                character.Proficiencies.AddRange(CharacterUtility.GetProficiencies(character.Properties.Class3.Name, true));
+                character.Proficiencies.AddRange(LevelingMap.GetProficiencies(character.Properties.Class3.Name, true));
             }
 
-            var senses = CharacterUtility.GetRaceSenses(character.Properties.Race);
+            var senses = LevelingMap.GetRaceSenses(character.Properties.Race);
             character.Senses.BaseMovement = senses.Movement;
             character.Senses.Vision = senses.VisionType;
         }

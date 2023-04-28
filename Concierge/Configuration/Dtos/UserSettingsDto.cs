@@ -4,7 +4,7 @@
 
 namespace Concierge.Configuration.Dtos
 {
-    using Concierge.Utility.Units.Enums;
+    using Concierge.Primitives.Units.Enums;
 
     public sealed class UserSettingsDto
     {

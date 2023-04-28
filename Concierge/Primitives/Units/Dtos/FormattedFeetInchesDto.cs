@@ -1,0 +1,19 @@
+﻿// <copyright file="FormattedFeetInchesDto.cs" company="Thomas Beckett">
+// Copyright (c) Thomas Beckett. All rights reserved.
+// </copyright>
+
+namespace Concierge.Primitives.Units.Dtos
+{
+    public sealed class FormattedFeetInchesDto
+    {
+        public FormattedFeetInchesDto(int feet, double inches)
+        {
+            this.Feet = feet;
+            this.Inches = inches;
+        }
+
+        public int Feet { get; set; }
+
+        public double Inches { get; set; }
+    }
+}

@@ -15,7 +15,7 @@ namespace Concierge.Display.Windows
     using Concierge.Commands;
     using Concierge.Display.Components;
     using Concierge.Display.Enums;
-    using Concierge.Utility;
+    using Concierge.Persistence;
 
     /// <summary>
     /// Interaction logic for AmmunitionWindow.xaml.
@@ -27,7 +27,7 @@ namespace Concierge.Display.Windows
             this.InitializeComponent();
             this.UseRoundedCorners();
 
-            this.NameComboBox.ItemsSource = Constants.Ammunitions;
+            this.NameComboBox.ItemsSource = Defaults.Ammunitions;
             this.DamageTypeComboBox.ItemsSource = Enum.GetValues(typeof(DamageTypes)).Cast<DamageTypes>();
             this.CoinTypeComboBox.ItemsSource = Enum.GetValues(typeof(CoinType)).Cast<CoinType>();
             this.ConciergePage = ConciergePage.None;

@@ -12,9 +12,9 @@ namespace Concierge.Display.Controls
     using Concierge.Character.Spellcasting;
     using Concierge.Character.Statuses;
     using Concierge.Commands;
+    using Concierge.Common;
+    using Concierge.Common.Utilities;
     using Concierge.Display.Enums;
-    using Concierge.Utility;
-    using Concierge.Utility.Utilities;
 
     /// <summary>
     /// Interaction logic for SpellSlotsControl.xaml.

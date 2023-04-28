@@ -7,11 +7,11 @@ namespace Concierge.Display.Windows.Utility
     using System.Windows;
     using System.Windows.Controls;
 
+    using Concierge.Common.Extensions;
     using Concierge.Display.Components;
     using Concierge.Display.Enums;
+    using Concierge.Persistence;
     using Concierge.Tools.Glossary;
-    using Concierge.Utility;
-    using Concierge.Utility.Extensions;
 
     /// <summary>
     /// Interaction logic for GlossaryWindow.xaml.
@@ -39,7 +39,7 @@ namespace Concierge.Display.Windows.Utility
         private void LoadTreeView()
         {
             this.GlossaryTreeView.Items.Clear();
-            foreach (var item in Constants.Glossary)
+            foreach (var item in Defaults.Glossary)
             {
                 if (!item.Search(this.SearchFilter.FilterText))
                 {

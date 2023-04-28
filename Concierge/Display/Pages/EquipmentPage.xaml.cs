@@ -15,12 +15,12 @@ namespace Concierge.Display.Pages
     using Concierge.Character.Items;
     using Concierge.Character.Spellcasting;
     using Concierge.Commands;
+    using Concierge.Common;
+    using Concierge.Common.Extensions;
     using Concierge.Display.Components;
     using Concierge.Display.Enums;
     using Concierge.Display.Windows;
     using Concierge.Services;
-    using Concierge.Utility;
-    using Concierge.Utility.Extensions;
 
     /// <summary>
     /// Interaction logic for EquipmentPage.xaml.

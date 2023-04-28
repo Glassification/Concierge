@@ -10,7 +10,7 @@ namespace Concierge.Character.Items
     using System.Windows.Data;
 
     using Concierge.Character.Enums;
-    using Concierge.Utility.Extensions;
+    using Concierge.Common.Extensions;
 
     public sealed class EquippedItems
     {

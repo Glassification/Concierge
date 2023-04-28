@@ -11,9 +11,9 @@ namespace Concierge.Leveling
     using Concierge.Character.Enums;
     using Concierge.Character.Spellcasting;
     using Concierge.Commands;
+    using Concierge.Common;
     using Concierge.Leveling.Dtos.Leveler;
     using Concierge.Tools.DiceRolling.Dice;
-    using Concierge.Utility.Utilities;
 
     public sealed class ConciergeLeveler
     {
@@ -56,14 +56,14 @@ namespace Concierge.Leveling
             var magicClass = this.character.MagicClasses.Where(x => x.Name.Equals(newClass.Name)).FirstOrDefault();
             var oldMagicClass = magicClass?.DeepCopy();
 
-            magicClass?.LevelUp(CharacterUtility.GetSpellSlotIncrease(newClass.Name, newClass.Subclass, newClass.Level));
+            magicClass?.LevelUp(LevelingMap.GetSpellSlotIncrease(newClass.Name, newClass.Subclass, newClass.Level));
 
             return new MagicClassDto(oldMagicClass, magicClass?.DeepCopy());
         }
 
         private ClassResourcesDto LevelUpClassResource(CharacterClass newClass)
         {
-            var resourceIncrease = CharacterUtility.GetResourceIncrease(newClass.Name, newClass.Subclass, newClass.Level);
+            var resourceIncrease = LevelingMap.GetResourceIncrease(newClass.Name, newClass.Subclass, newClass.Level);
             var resource = this.character.ClassResources.Where(x => x.Type.Equals(resourceIncrease.Name, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
             var oldResource = resource?.DeepCopy();
 
@@ -81,7 +81,7 @@ namespace Concierge.Leveling
 
             if (newClass is not null)
             {
-                this.character.SpellSlots.LevelUp(CharacterUtility.GetSpellSlotIncrease(newClass.Name, string.Empty, newClass.Level));
+                this.character.SpellSlots.LevelUp(LevelingMap.GetSpellSlotIncrease(newClass.Name, string.Empty, newClass.Level));
             }
 
             return new SpellSlotsDto(oldSpellSlots, this.character.SpellSlots.DeepCopy());
@@ -89,7 +89,7 @@ namespace Concierge.Leveling
 
         private VitalityDto LevelUpVitality(HitDie hitDie, int bonusHp)
         {
-            var newHp = DiceRoll.RollHitDie(hitDie) + CharacterUtility.CalculateBonus(this.character.Attributes.Constitution) + bonusHp;
+            var newHp = DiceRoll.RollHitDie(hitDie) + Constants.CalculateBonus(this.character.Attributes.Constitution) + bonusHp;
             var oldVitality = this.character.Vitality.DeepCopy();
 
             this.character.Vitality.LevelUp(hitDie, newHp);

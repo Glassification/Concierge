@@ -8,9 +8,9 @@ namespace Concierge.Tools.Generators.Names
     using System.Collections.Generic;
     using System.Linq;
 
+    using Concierge.Common.Extensions;
+    using Concierge.Persistence;
     using Concierge.Tools.Enums;
-    using Concierge.Utility;
-    using Concierge.Utility.Extensions;
 
     public sealed class NameGenerator : IGenerator
     {
@@ -37,15 +37,15 @@ namespace Concierge.Tools.Generators.Names
         {
             return nameType == NameType.Last ?
                 settings.FilterRace ?
-                    Constants.Names.Where(x => x.Race.Equals(settings.Race) && x.NameType == nameType).ToList() :
-                    Constants.Names.Where(x => x.NameType == nameType).ToList() :
+                    Defaults.Names.Where(x => x.Race.Equals(settings.Race) && x.NameType == nameType).ToList() :
+                    Defaults.Names.Where(x => x.NameType == nameType).ToList() :
                 settings.FilterRace ?
                     settings.FilterGender ?
-                        Constants.Names.Where(x => x.Race.Equals(settings.Race) && x.Gender == settings.Gender && x.NameType == nameType).ToList() :
-                        Constants.Names.Where(x => x.Race.Equals(settings.Race) && x.NameType == nameType).ToList() :
+                        Defaults.Names.Where(x => x.Race.Equals(settings.Race) && x.Gender == settings.Gender && x.NameType == nameType).ToList() :
+                        Defaults.Names.Where(x => x.Race.Equals(settings.Race) && x.NameType == nameType).ToList() :
                     settings.FilterGender ?
-                        Constants.Names.Where(x => x.Gender == settings.Gender && x.NameType == nameType).ToList() :
-                        Constants.Names.Where(x => x.NameType == nameType).ToList();
+                        Defaults.Names.Where(x => x.Gender == settings.Gender && x.NameType == nameType).ToList() :
+                        Defaults.Names.Where(x => x.NameType == nameType).ToList();
         }
 
         private string GetName(NameSettings settings, NameType nameType)

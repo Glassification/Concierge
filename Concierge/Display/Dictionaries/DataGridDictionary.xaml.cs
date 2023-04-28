@@ -7,7 +7,7 @@ namespace Concierge.Display.Dictionaries
     using System.Windows.Controls;
     using System.Windows.Input;
 
-    using Concierge.Utility;
+    using Concierge.Persistence;
 
     public partial class DataGridDictionary
     {

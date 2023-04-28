@@ -13,12 +13,12 @@ namespace Concierge.Display.Pages
     using Concierge.Character.Items;
     using Concierge.Character.Statuses;
     using Concierge.Commands;
+    using Concierge.Common.Extensions;
+    using Concierge.Common.Utilities;
     using Concierge.Display.Components;
     using Concierge.Display.Enums;
     using Concierge.Display.Windows;
     using Concierge.Services;
-    using Concierge.Utility.Extensions;
-    using Concierge.Utility.Utilities;
 
     /// <summary>
     /// Interaction logic for AttacksPage.xaml.
@@ -268,12 +268,12 @@ namespace Concierge.Display.Pages
 
         private void WeaponDataGrid_Sorted(object sender, RoutedEventArgs e)
         {
-            DisplayUtility.SortListFromDataGrid(this.WeaponDataGrid, Program.CcsFile.Character.Weapons, this.ConciergePage);
+            this.WeaponDataGrid.SortListFromDataGrid(Program.CcsFile.Character.Weapons, this.ConciergePage);
         }
 
         private void AmmoDataGrid_Sorted(object sender, RoutedEventArgs e)
         {
-            DisplayUtility.SortListFromDataGrid(this.AmmoDataGrid, Program.CcsFile.Character.Ammunitions, this.ConciergePage);
+            this.AmmoDataGrid.SortListFromDataGrid(Program.CcsFile.Character.Ammunitions, this.ConciergePage);
         }
 
         private void Window_ApplyChanges(object sender, EventArgs e)
@@ -345,7 +345,7 @@ namespace Concierge.Display.Pages
 
         private void StatusEffectsDataGrid_Sorted(object sender, RoutedEventArgs e)
         {
-            DisplayUtility.SortListFromDataGrid(this.StatusEffectsDataGrid, Program.CcsFile.Character.StatusEffects, this.ConciergePage);
+            this.StatusEffectsDataGrid.SortListFromDataGrid(Program.CcsFile.Character.StatusEffects, this.ConciergePage);
         }
 
         private void AttackDataGrid_Filtered(object sender, RoutedEventArgs e)

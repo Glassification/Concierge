@@ -11,8 +11,8 @@ namespace Concierge.Display.Components
     using System.Windows.Media;
 
     using Concierge.Character.Journal;
-    using Concierge.Utility;
-    using Concierge.Utility.Extensions;
+    using Concierge.Common;
+    using Concierge.Common.Extensions;
     using MaterialDesignThemes.Wpf;
 
     public sealed class DocumentTreeViewItem : TreeViewItem

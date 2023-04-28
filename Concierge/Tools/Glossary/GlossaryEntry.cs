@@ -7,7 +7,7 @@ namespace Concierge.Tools.Glossary
     using System;
     using System.Collections.Generic;
 
-    using Concierge.Utility.Extensions;
+    using Concierge.Common.Extensions;
 
     public sealed class GlossaryEntry
     {

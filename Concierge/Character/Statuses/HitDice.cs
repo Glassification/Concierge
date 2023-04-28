@@ -5,7 +5,7 @@
 namespace Concierge.Character.Statuses
 {
     using Concierge.Character.Enums;
-    using Concierge.Utility;
+    using Concierge.Common;
 
     public sealed class HitDice : ICopyable<HitDice>
     {
@@ -36,6 +36,34 @@ namespace Concierge.Character.Statuses
         public int SpentD10 { get; set; }
 
         public int SpentD12 { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0066:Convert switch statement to expression", Justification = "Improve Readability.")]
+        public static HitDie GetHitDice(string className)
+        {
+            switch (className)
+            {
+                case "Sorcerer":
+                case "Wizard":
+                default:
+                    return HitDie.D6;
+                case "Artificer":
+                case "Bard":
+                case "Cleric":
+                case "Druid":
+                case "Gunslinger":
+                case "Monk":
+                case "Rogue":
+                case "Warlock":
+                    return HitDie.D8;
+                case "Blood Hunter":
+                case "Fighter":
+                case "Paladin":
+                case "Ranger":
+                    return HitDie.D10;
+                case "Barbarian":
+                    return HitDie.D12;
+            }
+        }
 
         public HitDie Increment(string name)
         {

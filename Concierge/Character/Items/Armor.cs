@@ -7,9 +7,9 @@ namespace Concierge.Character.Items
     using System;
 
     using Concierge.Character.Enums;
+    using Concierge.Common;
+    using Concierge.Common.Utilities;
     using Concierge.Primitives;
-    using Concierge.Utility;
-    using Concierge.Utility.Utilities;
     using Newtonsoft.Json;
 
     public sealed class Armor : ICopyable<Armor>
@@ -69,10 +69,10 @@ namespace Concierge.Character.Items
 
                         break;
                     case ArmorType.Light:
-                        ac += CharacterUtility.CalculateBonus(Program.CcsFile.Character.Attributes.Dexterity);
+                        ac += Constants.CalculateBonus(Program.CcsFile.Character.Attributes.Dexterity);
                         break;
                     case ArmorType.Medium:
-                        ac += Math.Min(2, CharacterUtility.CalculateBonus(Program.CcsFile.Character.Attributes.Dexterity));
+                        ac += Math.Min(2, Constants.CalculateBonus(Program.CcsFile.Character.Attributes.Dexterity));
                         break;
                     case ArmorType.Heavy:
                     case ArmorType.Massive:

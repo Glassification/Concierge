@@ -8,10 +8,10 @@ namespace Concierge.Character.Characteristics
     using System.Windows.Media;
 
     using Concierge.Character.Enums;
-    using Concierge.Utility;
-    using Concierge.Utility.Attributes;
-    using Concierge.Utility.Dtos;
-    using Concierge.Utility.Extensions;
+    using Concierge.Common;
+    using Concierge.Common.Attributes;
+    using Concierge.Common.Dtos;
+    using Concierge.Common.Extensions;
     using MaterialDesignThemes.Wpf;
     using Newtonsoft.Json;
 

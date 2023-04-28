@@ -13,7 +13,7 @@ namespace Concierge.Console.Services
     using Concierge.Character.Statuses;
     using Concierge.Console.Enums;
     using Concierge.Console.Scripts;
-    using Concierge.Utility;
+    using Concierge.Persistence;
 
     public sealed class ListScriptService : ScriptService
     {
@@ -65,13 +65,13 @@ namespace Concierge.Console.Services
 
             return command.Name.ToLower() switch
             {
-                "inventory" => new ListScript<Inventory>(Constants.Inventories.ToList(), character.Inventories).Evaluate(command),
-                "weapons" => new ListScript<Weapon>(Constants.Weapons.ToList(), character.Weapons).Evaluate(command),
-                "ammunition" => new ListScript<Ammunition>(Constants.Ammunitions.ToList(), character.Ammunitions).Evaluate(command),
-                "spells" => new ListScript<Spell>(Constants.Spells.ToList(), character.Spells).Evaluate(command),
+                "inventory" => new ListScript<Inventory>(Defaults.Inventories.ToList(), character.Inventories).Evaluate(command),
+                "weapons" => new ListScript<Weapon>(Defaults.Weapons.ToList(), character.Weapons).Evaluate(command),
+                "ammunition" => new ListScript<Ammunition>(Defaults.Ammunitions.ToList(), character.Ammunitions).Evaluate(command),
+                "spells" => new ListScript<Spell>(Defaults.Spells.ToList(), character.Spells).Evaluate(command),
                 "magicclasses" => new ListScript<MagicClass>(new List<MagicClass>(), character.MagicClasses).Evaluate(command),
-                "ability" => new ListScript<Ability>(Constants.Abilities.ToList(), character.Abilities).Evaluate(command),
-                "language" => new ListScript<Language>(Constants.Languages.ToList(), character.Languages).Evaluate(command),
+                "ability" => new ListScript<Ability>(Defaults.Abilities.ToList(), character.Abilities).Evaluate(command),
+                "language" => new ListScript<Language>(Defaults.Languages.ToList(), character.Languages).Evaluate(command),
                 "classresource" => new ListScript<ClassResource>(new List<ClassResource>(), character.ClassResources).Evaluate(command),
                 "statuseffect" => new ListScript<StatusEffect>(new List<StatusEffect>(), character.StatusEffects).Evaluate(command),
                 "all" => this.RunAllListScripts(command),

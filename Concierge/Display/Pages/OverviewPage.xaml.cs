@@ -13,14 +13,15 @@ namespace Concierge.Display.Pages
     using Concierge.Character.AbilitySkills;
     using Concierge.Character.Characteristics;
     using Concierge.Character.Statuses;
+    using Concierge.Common.Extensions;
     using Concierge.Configuration;
     using Concierge.Display;
     using Concierge.Display.Enums;
     using Concierge.Display.Windows;
     using Concierge.Services;
-    using Concierge.Utility.Extensions;
-    using Concierge.Utility.Utilities;
     using MaterialDesignThemes.Wpf;
+
+    using Constants = Concierge.Common.Constants;
 
     /// <summary>
     /// Interaction logic for OverviewPage.xaml.
@@ -65,12 +66,12 @@ namespace Concierge.Display.Pages
         {
             var attributes = Program.CcsFile.Character.Attributes;
 
-            this.StrengthAttributeDisplay.Bonus = CharacterUtility.CalculateBonus(attributes.Strength);
-            this.DexterityAttributeDisplay.Bonus = CharacterUtility.CalculateBonus(attributes.Dexterity);
-            this.ConstitutionAttributeDisplay.Bonus = CharacterUtility.CalculateBonus(attributes.Constitution);
-            this.IntelligenceAttributeDisplay.Bonus = CharacterUtility.CalculateBonus(attributes.Intelligence);
-            this.WisdomAttributeDisplay.Bonus = CharacterUtility.CalculateBonus(attributes.Wisdom);
-            this.CharismaAttributeDisplay.Bonus = CharacterUtility.CalculateBonus(attributes.Charisma);
+            this.StrengthAttributeDisplay.Bonus = Constants.CalculateBonus(attributes.Strength);
+            this.DexterityAttributeDisplay.Bonus = Constants.CalculateBonus(attributes.Dexterity);
+            this.ConstitutionAttributeDisplay.Bonus = Constants.CalculateBonus(attributes.Constitution);
+            this.IntelligenceAttributeDisplay.Bonus = Constants.CalculateBonus(attributes.Intelligence);
+            this.WisdomAttributeDisplay.Bonus = Constants.CalculateBonus(attributes.Wisdom);
+            this.CharismaAttributeDisplay.Bonus = Constants.CalculateBonus(attributes.Charisma);
 
             this.StrengthAttributeDisplay.Score = attributes.Strength;
             this.DexterityAttributeDisplay.Score = attributes.Dexterity;

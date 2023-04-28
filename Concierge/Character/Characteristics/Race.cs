@@ -6,8 +6,8 @@ namespace Concierge.Character.Characteristics
 {
     using System.Text.RegularExpressions;
 
-    using Concierge.Utility;
-    using Concierge.Utility.Extensions;
+    using Concierge.Common;
+    using Concierge.Common.Extensions;
 
     public class Race : ICopyable<Race>
     {

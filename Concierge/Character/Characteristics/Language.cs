@@ -6,9 +6,9 @@ namespace Concierge.Character.Characteristics
 {
     using System;
 
-    using Concierge.Utility;
-    using Concierge.Utility.Dtos;
-    using Concierge.Utility.Extensions;
+    using Concierge.Common;
+    using Concierge.Common.Dtos;
+    using Concierge.Common.Extensions;
     using Newtonsoft.Json;
 
     public sealed class Language : ICopyable<Language>, IUnique

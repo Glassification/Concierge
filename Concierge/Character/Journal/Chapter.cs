@@ -7,8 +7,8 @@ namespace Concierge.Character.Journal
     using System.Collections.Generic;
     using System.Linq;
 
-    using Concierge.Utility;
-    using Concierge.Utility.Extensions;
+    using Concierge.Common;
+    using Concierge.Common.Extensions;
 
     public sealed class Chapter : Entry, ICopyable<Chapter>
     {

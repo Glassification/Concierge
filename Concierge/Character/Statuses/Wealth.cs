@@ -8,8 +8,7 @@ namespace Concierge.Character.Statuses
 
     using Concierge.Character.Enums;
     using Concierge.Character.Items;
-    using Concierge.Utility;
-    using Concierge.Utility.Utilities;
+    using Concierge.Common;
     using Newtonsoft.Json;
 
     public sealed class Wealth : ICopyable<Wealth>
@@ -48,21 +47,34 @@ namespace Concierge.Character.Statuses
                 var itemValue = 0.0;
                 foreach (Inventory item in Program.CcsFile.Character.Inventories)
                 {
-                    itemValue += CharacterUtility.GetGoldValue(item.Value, item.CoinType) * item.Amount;
+                    itemValue += Wealth.GetGoldValue(item.Value, item.CoinType) * item.Amount;
                 }
 
                 foreach (Weapon weapon in Program.CcsFile.Character.Weapons)
                 {
-                    itemValue += CharacterUtility.GetGoldValue(weapon.Value, weapon.CoinType);
+                    itemValue += Wealth.GetGoldValue(weapon.Value, weapon.CoinType);
                 }
 
                 foreach (Ammunition ammunition in Program.CcsFile.Character.Ammunitions)
                 {
-                    itemValue += CharacterUtility.GetGoldValue(ammunition.Value, ammunition.CoinType) * (ammunition.Quantity - ammunition.Used);
+                    itemValue += Wealth.GetGoldValue(ammunition.Value, ammunition.CoinType) * (ammunition.Quantity - ammunition.Used);
                 }
 
                 return itemValue;
             }
+        }
+
+        public static double GetGoldValue(double value, CoinType coinType)
+        {
+            return coinType switch
+            {
+                CoinType.Copper => value / 100.0,
+                CoinType.Silver => value / 10.0,
+                CoinType.Electrum => value / 2.0,
+                CoinType.Gold => value,
+                CoinType.Platinum => value * 10.0,
+                _ => value,
+            };
         }
 
         public static string FormatGoldValue(double value)

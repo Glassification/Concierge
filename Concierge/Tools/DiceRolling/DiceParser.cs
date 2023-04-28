@@ -9,9 +9,9 @@ namespace Concierge.Tools.DiceRolling
     using System.Linq;
     using System.Text.RegularExpressions;
 
-    using Concierge.Exceptions;
+    using Concierge.Common.Exceptions;
+    using Concierge.Common.Extensions;
     using Concierge.Tools.DiceRolling.Dice;
-    using Concierge.Utility.Extensions;
 
     public static class DiceParser
     {

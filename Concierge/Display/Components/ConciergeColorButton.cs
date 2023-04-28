@@ -9,8 +9,8 @@ namespace Concierge.Display.Components
     using System.Windows.Input;
     using System.Windows.Media;
 
+    using Concierge.Persistence;
     using Concierge.Primitives;
-    using Concierge.Utility;
 
     public sealed class ConciergeColorButton : Button
     {

@@ -5,7 +5,7 @@
 namespace Concierge.Character.AbilitySavingThrows.SavingThrowTypes
 {
     using Concierge.Character.Enums;
-    using Concierge.Utility.Utilities;
+    using Concierge.Common;
 
     public sealed class Strength : SavingThrows
     {
@@ -40,7 +40,7 @@ namespace Concierge.Character.AbilitySavingThrows.SavingThrowTypes
                     this.bonus += Program.CcsFile.Character.ProficiencyBonus;
                 }
 
-                this.bonus += CharacterUtility.CalculateBonus(Program.CcsFile.Character.Attributes.Strength);
+                this.bonus += Constants.CalculateBonus(Program.CcsFile.Character.Attributes.Strength);
 
                 return this.bonus;
             }

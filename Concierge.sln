@@ -9,11 +9,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
 		README.md = README.md
+		stylecop.json = stylecop.json
 	EndProjectSection
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "ConciergeInstaller", "ConciergeInstaller\ConciergeInstaller.vdproj", "{53DD5690-EB1B-486E-A66F-EE52B5EC9CCC}"
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Concierge.Installer", "Concierge.Installer\ConciergeInstaller.vdproj", "{53DD5690-EB1B-486E-A66F-EE52B5EC9CCC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConciergeDevTools", "ConciergeDevTools\ConciergeDevTools.csproj", "{6073B770-C372-4354-8136-B81A31CC9725}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Concierge.DevTools", "Concierge.DevTools\Concierge.DevTools.csproj", "{6073B770-C372-4354-8136-B81A31CC9725}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Concierge.Common", "Concierge.Common\Concierge.Common.csproj", "{23C970C2-319D-4001-9944-700C896245B5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,6 +34,10 @@ Global
 		{6073B770-C372-4354-8136-B81A31CC9725}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6073B770-C372-4354-8136-B81A31CC9725}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6073B770-C372-4354-8136-B81A31CC9725}.Release|Any CPU.Build.0 = Release|Any CPU
+		{23C970C2-319D-4001-9944-700C896245B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23C970C2-319D-4001-9944-700C896245B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23C970C2-319D-4001-9944-700C896245B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23C970C2-319D-4001-9944-700C896245B5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

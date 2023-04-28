@@ -15,9 +15,9 @@ namespace Concierge.Display.Windows
     using Concierge.Display.Enums;
     using Concierge.Display.Utility;
     using Concierge.Primitives;
+    using Concierge.Primitives.Units;
+    using Concierge.Primitives.Units.Enums;
     using Concierge.Services;
-    using Concierge.Utility.Units;
-    using Concierge.Utility.Units.Enums;
 
     /// <summary>
     /// Interaction logic for AppearanceWindow.xaml.

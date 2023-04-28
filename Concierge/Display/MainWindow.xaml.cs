@@ -13,6 +13,8 @@ namespace Concierge.Display
     using System.Windows.Navigation;
 
     using Concierge.Character.Characteristics;
+    using Concierge.Common;
+    using Concierge.Common.Extensions;
     using Concierge.Configuration;
     using Concierge.Display.Enums;
     using Concierge.Display.Pages;
@@ -24,12 +26,7 @@ namespace Concierge.Display
     using Concierge.Services.WorkerServices;
     using Concierge.Tools;
     using Concierge.Tools.Display;
-    using Concierge.Utility;
-    using Concierge.Utility.Extensions;
-    using Concierge.Utility.Utilities;
     using MaterialDesignThemes.Wpf;
-
-    using Constants = Concierge.Utility.Constants;
 
     /// <summary>
     /// Interaction logic for MainWindow.xaml.
@@ -83,7 +80,7 @@ namespace Concierge.Display
 
             if (AppSettingsManager.UserSettings.AutosaveEnabled)
             {
-                this.autosaveTimer.Start(Constants.CurrentAutosaveInterval);
+                this.autosaveTimer.Start(Defaults.CurrentAutosaveInterval);
             }
 
             this.PopupBoxButton.ResetScaling();
@@ -232,7 +229,7 @@ namespace Concierge.Display
             Program.Unmodify();
             if (AppSettingsManager.UserSettings.AutosaveEnabled)
             {
-                this.autosaveTimer.Start(Constants.CurrentAutosaveInterval);
+                this.autosaveTimer.Start(Defaults.CurrentAutosaveInterval);
             }
 
             this.animatedTimedTextWorkerService.StartWorker($"Opened '{ccsFile.AbsolutePath}'");
@@ -366,7 +363,7 @@ namespace Concierge.Display
         {
             if (AppSettingsManager.UserSettings.AutosaveEnabled)
             {
-                this.autosaveTimer.Start(Constants.CurrentAutosaveInterval);
+                this.autosaveTimer.Start(Defaults.CurrentAutosaveInterval);
             }
             else
             {
@@ -456,7 +453,7 @@ namespace Concierge.Display
         {
             this.DateTimeTextBlock.Text = ConciergeDateTime.StatusMenuNow;
             this.DateTimeTextBlock.ToolTip = ConciergeDateTime.ToolTipNow;
-            this.CurrentPageNameTextBlock.Text = DisplayUtility.FormatConciergePageForDisplay(conciergePage);
+            this.CurrentPageNameTextBlock.Text = $"{conciergePage.ToString().FormatFromEnum()} Page";
         }
 
         private void CalculateScale()

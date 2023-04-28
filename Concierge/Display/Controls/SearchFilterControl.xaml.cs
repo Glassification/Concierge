@@ -8,8 +8,8 @@ namespace Concierge.Display.Controls
     using System.Windows.Controls;
     using System.Windows.Input;
 
+    using Concierge.Common.Extensions;
     using Concierge.Display.Components;
-    using Concierge.Utility.Extensions;
 
     /// <summary>
     /// Interaction logic for SearchFilterControl.xaml.

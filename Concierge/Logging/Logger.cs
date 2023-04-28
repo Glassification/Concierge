@@ -8,9 +8,9 @@ namespace Concierge.Logging
     using System.Collections.Generic;
     using System.Threading;
 
+    using Concierge.Common;
+    using Concierge.Common.Extensions;
     using Concierge.Logging.Enums;
-    using Concierge.Utility;
-    using Concierge.Utility.Extensions;
     using Newtonsoft.Json;
 
     public abstract class Logger : IDisposable

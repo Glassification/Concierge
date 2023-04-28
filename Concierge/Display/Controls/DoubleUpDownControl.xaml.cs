@@ -9,7 +9,7 @@ namespace Concierge.Display.Controls
     using System.Windows.Controls;
     using System.Windows.Input;
 
-    using Concierge.Utility;
+    using Concierge.Persistence;
 
     /// <summary>
     /// Interaction logic for DoubleUpDown.xaml.

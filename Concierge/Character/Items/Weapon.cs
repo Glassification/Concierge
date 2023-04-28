@@ -8,14 +8,15 @@ namespace Concierge.Character.Items
     using System.Windows.Media;
 
     using Concierge.Character.Enums;
-    using Concierge.Exceptions;
+    using Concierge.Common;
+    using Concierge.Common.Attributes;
+    using Concierge.Common.Dtos;
+    using Concierge.Common.Exceptions;
     using Concierge.Primitives;
-    using Concierge.Utility;
-    using Concierge.Utility.Attributes;
-    using Concierge.Utility.Dtos;
-    using Concierge.Utility.Utilities;
     using MaterialDesignThemes.Wpf;
     using Newtonsoft.Json;
+
+    using Constants = Concierge.Common.Constants;
 
     public sealed class Weapon : ICopyable<Weapon>, IUnique, IEquipable
     {
@@ -112,12 +113,12 @@ namespace Concierge.Character.Items
 
                 return this.Ability switch
                 {
-                    Abilities.STR => CharacterUtility.CalculateBonus(this.Creature?.Attributes.Strength ?? 10) + bonus,
-                    Abilities.DEX => CharacterUtility.CalculateBonus(this.Creature?.Attributes.Dexterity ?? 10) + bonus,
-                    Abilities.CON => CharacterUtility.CalculateBonus(this.Creature?.Attributes.Constitution ?? 10) + bonus,
-                    Abilities.INT => CharacterUtility.CalculateBonus(this.Creature?.Attributes.Intelligence ?? 10) + bonus,
-                    Abilities.WIS => CharacterUtility.CalculateBonus(this.Creature?.Attributes.Wisdom ?? 10) + bonus,
-                    Abilities.CHA => CharacterUtility.CalculateBonus(this.Creature?.Attributes.Charisma ?? 10) + bonus,
+                    Abilities.STR => Constants.CalculateBonus(this.Creature?.Attributes.Strength ?? 10) + bonus,
+                    Abilities.DEX => Constants.CalculateBonus(this.Creature?.Attributes.Dexterity ?? 10) + bonus,
+                    Abilities.CON => Constants.CalculateBonus(this.Creature?.Attributes.Constitution ?? 10) + bonus,
+                    Abilities.INT => Constants.CalculateBonus(this.Creature?.Attributes.Intelligence ?? 10) + bonus,
+                    Abilities.WIS => Constants.CalculateBonus(this.Creature?.Attributes.Wisdom ?? 10) + bonus,
+                    Abilities.CHA => Constants.CalculateBonus(this.Creature?.Attributes.Charisma ?? 10) + bonus,
                     Abilities.NONE => bonus,
                     _ => throw new NotImplementedException(),
                 };

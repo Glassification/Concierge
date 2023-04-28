@@ -7,8 +7,8 @@ namespace Concierge.Character.AbilitySavingThrows
     using System;
 
     using Concierge.Character.AbilitySavingThrows.SavingThrowTypes;
+    using Concierge.Common;
     using Concierge.Leveling.Dtos.Definitions;
-    using Concierge.Utility;
 
     public sealed class SavingThrow : ICopyable<SavingThrow>
     {

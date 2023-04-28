@@ -12,7 +12,7 @@ namespace Concierge.Display.Windows
     using Concierge.Commands;
     using Concierge.Display.Components;
     using Concierge.Display.Enums;
-    using Concierge.Utility;
+    using Concierge.Persistence;
 
     /// <summary>
     /// Interaction logic for LanguagesWindow.xaml.
@@ -24,7 +24,7 @@ namespace Concierge.Display.Windows
             this.InitializeComponent();
             this.UseRoundedCorners();
 
-            this.NameComboBox.ItemsSource = Constants.Languages;
+            this.NameComboBox.ItemsSource = Defaults.Languages;
             this.ConciergePage = ConciergePage.None;
             this.SelectedLanguage = new Language();
             this.Languages = new List<Language>();

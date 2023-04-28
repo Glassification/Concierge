@@ -9,13 +9,13 @@ namespace Concierge
     using System.Reflection;
 
     using Concierge.Character;
+    using Concierge.Common;
+    using Concierge.Common.Utilities;
     using Concierge.Display;
     using Concierge.Logging;
     using Concierge.Persistence;
     using Concierge.Persistence.ReadWriters;
     using Concierge.Services;
-    using Concierge.Utility;
-    using Concierge.Utility.Utilities;
     using Microsoft.Win32;
 
     public static class Program
@@ -42,8 +42,6 @@ namespace Concierge
             CustomColorService = CustomColorReadWriter.Read(Path.Combine(ConciergeFiles.GetCorrectCustomColorsPath(), ConciergeFiles.CustomColorsName));
 
             ConsoleReadWriter.Clear(Path.Combine(ConciergeFiles.AppDataDirectory, ConciergeFiles.ConsoleOutput));
-
-            GitUtility.Initialize();
         }
 
         public delegate void ModifiedChangedEventHandler(object sender, EventArgs e);

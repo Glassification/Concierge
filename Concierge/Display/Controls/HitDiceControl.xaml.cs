@@ -13,9 +13,9 @@ namespace Concierge.Display.Controls
     using Concierge.Character.Enums;
     using Concierge.Character.Statuses;
     using Concierge.Commands;
+    using Concierge.Common;
+    using Concierge.Common.Utilities;
     using Concierge.Display.Enums;
-    using Concierge.Utility;
-    using Concierge.Utility.Utilities;
 
     /// <summary>
     /// Interaction logic for HitDiceDisplay.xaml.

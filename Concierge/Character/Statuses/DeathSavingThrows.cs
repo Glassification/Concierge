@@ -7,8 +7,8 @@ namespace Concierge.Character.Statuses
     using System.Collections.Generic;
 
     using Concierge.Character.Enums;
-    using Concierge.Utility;
-    using Concierge.Utility.Extensions;
+    using Concierge.Common;
+    using Concierge.Common.Extensions;
     using Newtonsoft.Json;
 
     public sealed class DeathSavingThrows : ICopyable<DeathSavingThrows>
