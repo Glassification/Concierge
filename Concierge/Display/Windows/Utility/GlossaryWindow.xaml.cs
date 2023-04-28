@@ -11,7 +11,7 @@ namespace Concierge.Display.Windows.Utility
     using Concierge.Display.Components;
     using Concierge.Display.Enums;
     using Concierge.Persistence;
-    using Concierge.Tools.Glossary;
+    using Concierge.Primitives;
 
     /// <summary>
     /// Interaction logic for GlossaryWindow.xaml.

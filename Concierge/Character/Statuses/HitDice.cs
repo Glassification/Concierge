@@ -4,8 +4,8 @@
 
 namespace Concierge.Character.Statuses
 {
-    using Concierge.Character.Enums;
     using Concierge.Common;
+    using Concierge.Common.Enums;
 
     public sealed class HitDice : ICopyable<HitDice>
     {

@@ -9,7 +9,7 @@ namespace Concierge.Display.Controls
     using System.Windows.Controls;
     using System.Windows.Media;
 
-    using Concierge.Tools.DiceRolling.Dice;
+    using Concierge.Tools.DiceRoller;
     using MaterialDesignThemes.Wpf;
 
     /// <summary>

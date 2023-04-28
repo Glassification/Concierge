@@ -18,10 +18,9 @@ namespace Concierge.Display.Pages
     using Concierge.Persistence;
     using Concierge.Persistence.ReadWriters;
     using Concierge.Tools;
-    using Concierge.Tools.DiceRolling;
-    using Concierge.Tools.DiceRolling.Dice;
-    using Concierge.Tools.DivideLoot;
+    using Concierge.Tools.DiceRoller;
     using Concierge.Tools.Enums;
+    using Concierge.Tools.LootDivider;
 
     /// <summary>
     /// Interaction logic for ToolsPage.xaml.

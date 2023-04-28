@@ -15,12 +15,12 @@ namespace Concierge.Display.Utility
     using Concierge.Common.Exceptions;
     using Concierge.Common.Extensions;
     using Concierge.Common.Utilities;
+    using Concierge.Display;
     using Concierge.Display.Components;
     using Concierge.Display.Enums;
     using Concierge.Display.Windows;
     using Concierge.Search;
     using Concierge.Search.Enums;
-    using Concierge.Tools.Display;
 
     /// <summary>
     /// Interaction logic for SearchWindow.xaml.

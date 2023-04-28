@@ -14,7 +14,6 @@ namespace Concierge.Persistence
     using Concierge.Persistence.ReadWriters;
     using Concierge.Primitives;
     using Concierge.Tools.Generators.Names;
-    using Concierge.Tools.Glossary;
 
     public static class Defaults
     {

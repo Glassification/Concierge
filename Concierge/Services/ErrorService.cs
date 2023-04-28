@@ -10,9 +10,9 @@ namespace Concierge.Services
     using Concierge.Common;
     using Concierge.Common.Enums;
     using Concierge.Common.Exceptions;
+    using Concierge.Display;
     using Concierge.Display.Enums;
     using Concierge.Logging;
-    using Concierge.Tools.Display;
 
     public sealed class ErrorService
     {

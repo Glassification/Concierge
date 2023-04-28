@@ -11,8 +11,8 @@ namespace Concierge.Character.Statuses
     using Concierge.Character.Enums;
     using Concierge.Character.Statuses.ConditionStatus;
     using Concierge.Common;
-    using Concierge.Common.Utilities;
-    using Concierge.Tools.DiceRolling.Dice;
+    using Concierge.Common.Enums;
+    using Concierge.Tools.DiceRoller;
     using Newtonsoft.Json;
 
     public sealed class Vitality : ICopyable<Vitality>

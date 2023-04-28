@@ -10,10 +10,10 @@ namespace Concierge.Display.Controls
     using System.Windows.Input;
 
     using Concierge.Character.Characteristics;
-    using Concierge.Character.Enums;
     using Concierge.Character.Statuses;
     using Concierge.Commands;
     using Concierge.Common;
+    using Concierge.Common.Enums;
     using Concierge.Common.Utilities;
     using Concierge.Display.Enums;
 

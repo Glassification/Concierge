@@ -12,8 +12,8 @@ namespace Concierge.Persistence.ReadWriters
     using Concierge.Common.Exceptions;
     using Concierge.Common.Extensions;
     using Concierge.Configuration;
+    using Concierge.Display;
     using Concierge.Display.Enums;
-    using Concierge.Tools.Display;
     using Newtonsoft.Json;
 
     public static class CharacterReadWriter

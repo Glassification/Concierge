@@ -19,6 +19,7 @@ namespace Concierge.Display.Pages
     using Concierge.Commands;
     using Concierge.Common;
     using Concierge.Common.Extensions;
+    using Concierge.Display;
     using Concierge.Display.Components;
     using Concierge.Display.Enums;
     using Concierge.Display.Windows;
@@ -26,7 +27,6 @@ namespace Concierge.Display.Pages
     using Concierge.Primitives;
     using Concierge.Search;
     using Concierge.Services;
-    using Concierge.Tools.Display;
 
     /// <summary>
     /// Interaction logic for JournalPage.xaml.

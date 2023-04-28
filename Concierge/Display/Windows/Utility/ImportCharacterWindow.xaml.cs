@@ -7,11 +7,11 @@ namespace Concierge.Display.Utility
     using System.Windows;
 
     using Concierge.Common.Extensions;
+    using Concierge.Display;
     using Concierge.Display.Components;
     using Concierge.Display.Enums;
     using Concierge.Services;
-    using Concierge.Tools.Display;
-    using Concierge.Tools.Import;
+    using Concierge.Services.ImportService;
 
     /// <summary>
     /// Interaction logic for ImportCharacterWindow.xaml.
@@ -19,7 +19,7 @@ namespace Concierge.Display.Utility
     public partial class ImportCharacterWindow : ConciergeWindow
     {
         private readonly FileAccessService fileAccessService;
-        private readonly CharacterImporter characterImporter;
+        private readonly CharacterImportService characterImporter;
 
         public ImportCharacterWindow()
         {
@@ -27,7 +27,7 @@ namespace Concierge.Display.Utility
             this.UseRoundedCorners();
 
             this.fileAccessService = new FileAccessService();
-            this.characterImporter = new CharacterImporter(Program.CcsFile.Character);
+            this.characterImporter = new CharacterImportService(Program.CcsFile.Character);
         }
 
         public override string HeaderText => "Import Details";

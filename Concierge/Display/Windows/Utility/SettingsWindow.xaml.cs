@@ -11,11 +11,11 @@ namespace Concierge.Display.Utility
     using Concierge.Commands;
     using Concierge.Configuration;
     using Concierge.Configuration.Dtos;
+    using Concierge.Display;
     using Concierge.Display.Components;
     using Concierge.Display.Enums;
     using Concierge.Persistence;
     using Concierge.Primitives.Units.Enums;
-    using Concierge.Tools.Display;
 
     /// <summary>
     /// Interaction logic for SettingsWindow.xaml.

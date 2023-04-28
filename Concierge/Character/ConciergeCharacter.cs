@@ -18,6 +18,7 @@ namespace Concierge.Character
     using Concierge.Character.Statuses;
     using Concierge.Commands;
     using Concierge.Common;
+    using Concierge.Common.Enums;
     using Concierge.Common.Extensions;
     using Concierge.Common.Utilities;
     using Concierge.Configuration;

@@ -9,7 +9,7 @@ namespace Concierge.DevTools
     using System.IO;
     using System.Linq;
 
-    using Concierge.Character.Enums;
+    using Concierge.Common.Enums;
     using Concierge.Common.Utilities;
     using Concierge.Persistence;
     using Concierge.Tools.Enums;

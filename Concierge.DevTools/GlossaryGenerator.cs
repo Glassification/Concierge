@@ -7,7 +7,7 @@ namespace Concierge.DevTools
     using System.Collections.Generic;
     using System.IO;
 
-    using Concierge.Tools.Glossary;
+    using Concierge.Primitives;
     using Newtonsoft.Json;
 
     public static class GlossaryGenerator

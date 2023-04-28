@@ -8,12 +8,12 @@ namespace Concierge.Leveling
     using System.Linq;
 
     using Concierge.Character;
-    using Concierge.Character.Enums;
     using Concierge.Character.Spellcasting;
     using Concierge.Commands;
     using Concierge.Common;
+    using Concierge.Common.Enums;
     using Concierge.Leveling.Dtos.Leveler;
-    using Concierge.Tools.DiceRolling.Dice;
+    using Concierge.Tools.DiceRoller;
 
     public sealed class ConciergeLeveler
     {
