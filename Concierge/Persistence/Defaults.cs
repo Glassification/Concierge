@@ -11,8 +11,8 @@ namespace Concierge.Persistence
     using Concierge.Character.Spellcasting;
     using Concierge.Character.Statuses;
     using Concierge.Configuration;
+    using Concierge.Data;
     using Concierge.Persistence.ReadWriters;
-    using Concierge.Primitives;
     using Concierge.Tools.Generators.Names;
 
     public static class Defaults

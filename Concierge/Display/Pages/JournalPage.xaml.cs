@@ -19,12 +19,12 @@ namespace Concierge.Display.Pages
     using Concierge.Commands;
     using Concierge.Common;
     using Concierge.Common.Extensions;
+    using Concierge.Data;
     using Concierge.Display;
     using Concierge.Display.Components;
     using Concierge.Display.Enums;
     using Concierge.Display.Windows;
     using Concierge.Persistence;
-    using Concierge.Primitives;
     using Concierge.Search;
     using Concierge.Services;
 

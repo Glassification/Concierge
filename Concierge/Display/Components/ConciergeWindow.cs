@@ -16,9 +16,9 @@ namespace Concierge.Display.Components
     using Concierge.Common;
     using Concierge.Common.Exceptions;
     using Concierge.Common.Extensions;
+    using Concierge.Data;
     using Concierge.Display.Enums;
     using Concierge.Display.Windows.Helpers;
-    using Concierge.Primitives;
     using Concierge.Services;
 
     public abstract partial class ConciergeWindow : Window

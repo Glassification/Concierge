@@ -14,15 +14,15 @@ namespace Concierge.Display.Windows
     using Concierge.Character.Items;
     using Concierge.Commands;
     using Concierge.Common;
+    using Concierge.Common.Enums;
     using Concierge.Common.Extensions;
     using Concierge.Configuration;
+    using Concierge.Data;
+    using Concierge.Data.Units;
     using Concierge.Display;
     using Concierge.Display.Components;
     using Concierge.Display.Enums;
     using Concierge.Persistence;
-    using Concierge.Primitives;
-    using Concierge.Primitives.Units;
-    using Concierge.Primitives.Units.Enums;
 
     /// <summary>
     /// Interaction logic for InventoryWindow.xaml.

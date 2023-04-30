@@ -10,7 +10,6 @@ namespace Concierge
 
     using Concierge.Character;
     using Concierge.Common;
-    using Concierge.Common.Utilities;
     using Concierge.Display;
     using Concierge.Logging;
     using Concierge.Persistence;

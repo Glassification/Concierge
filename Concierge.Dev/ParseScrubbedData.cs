@@ -11,8 +11,8 @@ namespace Concierge.DevTools
 
     using Concierge.Character.Enums;
     using Concierge.Character.Items;
-    using Concierge.Primitives;
-    using Concierge.Primitives.Units.Enums;
+    using Concierge.Common.Enums;
+    using Concierge.Data;
     using Newtonsoft.Json;
 
     public static class ParseScrubbedData

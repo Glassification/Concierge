@@ -11,12 +11,11 @@ namespace Concierge.Display.Windows
     using Concierge.Character.Characteristics;
     using Concierge.Commands;
     using Concierge.Common.Enums;
+    using Concierge.Data;
+    using Concierge.Data.Units;
     using Concierge.Display.Components;
     using Concierge.Display.Enums;
     using Concierge.Display.Utility;
-    using Concierge.Primitives;
-    using Concierge.Primitives.Units;
-    using Concierge.Primitives.Units.Enums;
     using Concierge.Services;
 
     /// <summary>

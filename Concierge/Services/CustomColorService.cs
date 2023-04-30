@@ -7,11 +7,10 @@ namespace Concierge.Services
     using System.Collections.Generic;
     using System.IO;
     using System.Linq;
-
+    using Concierge.Common;
     using Concierge.Common.Utilities;
-    using Concierge.Persistence;
+    using Concierge.Data;
     using Concierge.Persistence.ReadWriters;
-    using Concierge.Primitives;
     using Newtonsoft.Json;
 
     public sealed class CustomColorService

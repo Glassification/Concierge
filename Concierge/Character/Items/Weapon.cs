@@ -12,7 +12,7 @@ namespace Concierge.Character.Items
     using Concierge.Common.Attributes;
     using Concierge.Common.Dtos;
     using Concierge.Common.Exceptions;
-    using Concierge.Primitives;
+    using Concierge.Data;
     using MaterialDesignThemes.Wpf;
     using Newtonsoft.Json;
 

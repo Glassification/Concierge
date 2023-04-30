@@ -12,8 +12,8 @@ namespace Concierge.Console.Services
     using Concierge.Character.Statuses;
     using Concierge.Console.Enums;
     using Concierge.Console.Scripts;
+    using Concierge.Data;
     using Concierge.Persistence;
-    using Concierge.Primitives;
     using Concierge.Tools.Generators.Names;
 
     public sealed class ReadWriterScriptService : ScriptService

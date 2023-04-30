@@ -9,13 +9,13 @@ namespace Concierge.Display.Utility
     using System.Windows;
 
     using Concierge.Commands;
+    using Concierge.Common.Enums;
     using Concierge.Configuration;
     using Concierge.Configuration.Dtos;
     using Concierge.Display;
     using Concierge.Display.Components;
     using Concierge.Display.Enums;
     using Concierge.Persistence;
-    using Concierge.Primitives.Units.Enums;
 
     /// <summary>
     /// Interaction logic for SettingsWindow.xaml.
@@ -109,7 +109,7 @@ namespace Concierge.Display.Utility
             };
 
             Program.UndoRedoService.AddCommand(new UpdateSettingsCommand(oldSettings, conciergeSettings));
-            AppSettingsManager.UpdateSettings(conciergeSettings);
+            AppSettingsManager.UpdateSettings(conciergeSettings, Program.IsDebug);
 
             return true;
         }

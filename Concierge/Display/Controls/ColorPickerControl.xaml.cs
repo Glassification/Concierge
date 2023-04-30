@@ -12,9 +12,9 @@ namespace Concierge.Display.Controls
 
     using Concierge.Common.Extensions;
     using Concierge.Common.Utilities;
+    using Concierge.Data;
     using Concierge.Display.Components;
     using Concierge.Display.Utility;
-    using Concierge.Primitives;
     using Concierge.Services;
 
     /// <summary>

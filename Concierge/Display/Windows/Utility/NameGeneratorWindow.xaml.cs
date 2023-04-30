@@ -10,6 +10,7 @@ namespace Concierge.Display.Utility
     using System.Windows;
     using System.Windows.Input;
 
+    using Concierge.Common;
     using Concierge.Common.Enums;
     using Concierge.Display.Components;
     using Concierge.Display.Enums;

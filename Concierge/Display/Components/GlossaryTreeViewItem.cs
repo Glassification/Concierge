@@ -12,7 +12,7 @@ namespace Concierge.Display.Components
 
     using Concierge.Common;
     using Concierge.Common.Extensions;
-    using Concierge.Primitives;
+    using Concierge.Data;
     using MaterialDesignThemes.Wpf;
 
     public sealed class GlossaryTreeViewItem : TreeViewItem

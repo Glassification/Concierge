@@ -8,10 +8,10 @@ namespace Concierge.Display.Windows.Utility
     using System.Windows.Controls;
 
     using Concierge.Common.Extensions;
+    using Concierge.Data;
     using Concierge.Display.Components;
     using Concierge.Display.Enums;
     using Concierge.Persistence;
-    using Concierge.Primitives;
 
     /// <summary>
     /// Interaction logic for GlossaryWindow.xaml.

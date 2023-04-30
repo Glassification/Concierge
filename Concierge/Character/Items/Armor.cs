@@ -8,8 +8,7 @@ namespace Concierge.Character.Items
 
     using Concierge.Character.Enums;
     using Concierge.Common;
-    using Concierge.Common.Utilities;
-    using Concierge.Primitives;
+    using Concierge.Data;
     using Newtonsoft.Json;
 
     public sealed class Armor : ICopyable<Armor>

@@ -22,9 +22,9 @@ namespace Concierge.Character
     using Concierge.Common.Extensions;
     using Concierge.Common.Utilities;
     using Concierge.Configuration;
+    using Concierge.Data.Units;
     using Concierge.Leveling;
     using Concierge.Persistence;
-    using Concierge.Primitives.Units;
     using Newtonsoft.Json;
 
     public sealed class ConciergeCharacter : ICopyable<ConciergeCharacter>, ICreature
@@ -141,7 +141,7 @@ namespace Concierge.Character
 
                 if (AppSettingsManager.UserSettings.UseCoinWeight)
                 {
-                    weight += UnitConvertion.Weight(AppSettingsManager.UserSettings.UnitOfMeasurement, this.Wealth.TotalCoins / Constants.CoinGroup);
+                    weight += UnitConversion.Weight(AppSettingsManager.UserSettings.UnitOfMeasurement, this.Wealth.TotalCoins / Constants.CoinGroup);
                 }
 
                 return weight;
@@ -174,13 +174,13 @@ namespace Concierge.Character
         }
 
         [JsonIgnore]
-        public double LightCarryCapacity => this.Attributes.Strength * UnitConvertion.LightMultiplier;
+        public double LightCarryCapacity => this.Attributes.Strength * UnitConversion.LightMultiplier;
 
         [JsonIgnore]
-        public double MediumCarryCapacity => this.Attributes.Strength * UnitConvertion.MediumMultiplier;
+        public double MediumCarryCapacity => this.Attributes.Strength * UnitConversion.MediumMultiplier;
 
         [JsonIgnore]
-        public double HeavyCarryCapacity => this.Attributes.Strength * UnitConvertion.HeavyMultiplier;
+        public double HeavyCarryCapacity => this.Attributes.Strength * UnitConversion.HeavyMultiplier;
 
         [JsonIgnore]
         public CreatureType CreatureType => CreatureType.Character;
