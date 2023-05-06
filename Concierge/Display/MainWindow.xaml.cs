@@ -12,7 +12,7 @@ namespace Concierge.Display
     using System.Windows.Interop;
     using System.Windows.Navigation;
 
-    using Concierge.Character.Characteristics;
+    using Concierge.Character;
     using Concierge.Common;
     using Concierge.Common.Extensions;
     using Concierge.Configuration;

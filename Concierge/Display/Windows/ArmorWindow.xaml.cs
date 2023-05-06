@@ -9,7 +9,7 @@ namespace Concierge.Display.Windows
     using System.Windows;
 
     using Concierge.Character.Enums;
-    using Concierge.Character.Items;
+    using Concierge.Character.Equipable;
     using Concierge.Commands;
     using Concierge.Data.Units;
     using Concierge.Display.Components;
@@ -52,7 +52,7 @@ namespace Concierge.Display.Windows
 
         public override ConciergeWindowResult ShowWizardSetup(string buttonText)
         {
-            this.SelectedArmor = Program.CcsFile.Character.Armor;
+            this.SelectedArmor = Program.CcsFile.Character.Equipment.Armor;
             this.ApplyButton.Visibility = Visibility.Collapsed;
             this.CancelButton.Content = buttonText;
 

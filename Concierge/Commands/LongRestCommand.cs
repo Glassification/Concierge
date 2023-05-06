@@ -6,7 +6,7 @@ namespace Concierge.Commands
 {
     using Concierge.Character;
     using Concierge.Character.Spellcasting;
-    using Concierge.Character.Statuses;
+    using Concierge.Character.Vitals;
     using Concierge.Common.Extensions;
     using Concierge.Display.Enums;
     using Newtonsoft.Json;
@@ -43,14 +43,14 @@ namespace Concierge.Commands
         public override void Redo()
         {
             this.character.Vitality.SetProperties<Vitality>(this.newVitality);
-            this.character.SpellSlots.SetProperties<SpellSlots>(this.newSpellSlots);
+            this.character.Magic.SpellSlots.SetProperties<SpellSlots>(this.newSpellSlots);
             this.character.Companion.Vitality.SetProperties<Vitality>(this.newCompanionVitality);
         }
 
         public override void Undo()
         {
             this.character.Vitality.SetProperties<Vitality>(this.oldVitality);
-            this.character.SpellSlots.SetProperties<SpellSlots>(this.oldSpellSlots);
+            this.character.Magic.SpellSlots.SetProperties<SpellSlots>(this.oldSpellSlots);
             this.character.Companion.Vitality.SetProperties<Vitality>(this.oldCompanionVitality);
         }
 

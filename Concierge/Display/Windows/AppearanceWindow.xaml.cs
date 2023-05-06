@@ -104,7 +104,7 @@ namespace Concierge.Display.Windows
 
         public override ConciergeWindowResult ShowWizardSetup(string buttonText)
         {
-            this.Appearance = Program.CcsFile.Character.Appearance;
+            this.Appearance = Program.CcsFile.Character.Characteristic.Appearance;
             this.ApplyButton.Visibility = Visibility.Collapsed;
             this.CancelButton.Content = buttonText;
 

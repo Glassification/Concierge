@@ -15,7 +15,7 @@ namespace Concierge.Display.Pages
     using System.Windows.Input;
     using System.Windows.Media;
 
-    using Concierge.Character.Journal;
+    using Concierge.Character.Journals;
     using Concierge.Commands;
     using Concierge.Common;
     using Concierge.Common.Extensions;
@@ -153,7 +153,7 @@ namespace Concierge.Display.Pages
             var selectedItem = this.NotesTreeView.SelectedItem;
             this.NotesTreeView.Items.Clear();
 
-            foreach (var chapter in Program.CcsFile.Character.Chapters)
+            foreach (var chapter in Program.CcsFile.Character.Journal.Chapters)
             {
                 var treeViewChapter = new ChapterTreeViewItem(chapter);
                 treeViewChapter.Expanded += this.TreeViewItem_Expanded;
@@ -283,7 +283,7 @@ namespace Concierge.Display.Pages
 
                 if (func(index, useZero ? 0 : this.NotesTreeView.Items.Count - 2))
                 {
-                    this.SwapTreeViewItem(Program.CcsFile.Character.Chapters, index, index + increment);
+                    this.SwapTreeViewItem(Program.CcsFile.Character.Journal.Chapters, index, index + increment);
                     var newIndex = this.NotesTreeView.Items[index + increment];
                     if (newIndex is ChapterTreeViewItem chapterIndex)
                     {
@@ -570,9 +570,9 @@ namespace Concierge.Display.Pages
                     return;
                 }
 
-                var index = Program.CcsFile.Character.Chapters.IndexOf(chapterTreeViewItem.Chapter);
-                Program.UndoRedoService.AddCommand(new DeleteCommand<Chapter>(Program.CcsFile.Character.Chapters, chapterTreeViewItem.Chapter, index, this.ConciergePage));
-                Program.CcsFile.Character.Chapters.Remove(chapterTreeViewItem.Chapter);
+                var index = Program.CcsFile.Character.Journal.Chapters.IndexOf(chapterTreeViewItem.Chapter);
+                Program.UndoRedoService.AddCommand(new DeleteCommand<Chapter>(Program.CcsFile.Character.Journal.Chapters, chapterTreeViewItem.Chapter, index, this.ConciergePage));
+                Program.CcsFile.Character.Journal.Chapters.Remove(chapterTreeViewItem.Chapter);
             }
             else if (this.NotesTreeView.SelectedItem is DocumentTreeViewItem documentTreeViewItem)
             {
@@ -587,7 +587,7 @@ namespace Concierge.Display.Pages
                     return;
                 }
 
-                var chapter = Program.CcsFile.Character.GetChapter(documentTreeViewItem.Document.Id);
+                var chapter = Program.CcsFile.Character.Journal.GetChapter(documentTreeViewItem.Document.Id);
                 var index = chapter.Documents.IndexOf(documentTreeViewItem.Document);
                 Program.UndoRedoService.AddCommand(new DeleteCommand<Document>(chapter.Documents, documentTreeViewItem.Document, index, this.ConciergePage));
                 chapter.Documents.Remove(documentTreeViewItem.Document);

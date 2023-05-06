@@ -10,7 +10,7 @@ namespace Concierge.DevTools
     using System.Text.RegularExpressions;
 
     using Concierge.Character.Enums;
-    using Concierge.Character.Items;
+    using Concierge.Character.Equipable;
     using Concierge.Common.Enums;
     using Concierge.Data;
     using Newtonsoft.Json;

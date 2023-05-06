@@ -10,7 +10,7 @@ namespace Concierge.Display.Windows
     using System.Windows;
 
     using Concierge.Character.Enums;
-    using Concierge.Character.Statuses;
+    using Concierge.Character.Vitals;
     using Concierge.Commands;
     using Concierge.Common.Extensions;
     using Concierge.Display.Components;
@@ -56,7 +56,7 @@ namespace Concierge.Display.Windows
             this.Editing = false;
             this.HeaderTextBlock.Text = this.HeaderText;
             this.OkButton.Visibility = Visibility.Collapsed;
-            this.StatusEffects = Program.CcsFile.Character.StatusEffects;
+            this.StatusEffects = Program.CcsFile.Character.Vitality.StatusEffects;
             this.CancelButton.Content = buttonText;
 
             this.ClearFields();

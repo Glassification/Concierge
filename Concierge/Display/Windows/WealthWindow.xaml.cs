@@ -6,8 +6,8 @@ namespace Concierge.Display.Windows
 {
     using System.Windows;
 
+    using Concierge.Character;
     using Concierge.Character.Enums;
-    using Concierge.Character.Statuses;
     using Concierge.Commands;
     using Concierge.Display.Components;
     using Concierge.Display.Controls;

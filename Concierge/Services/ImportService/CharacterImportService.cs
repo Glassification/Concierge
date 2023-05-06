@@ -54,8 +54,8 @@ namespace Concierge.Services.ImportService
             if (importAbilities)
             {
                 Program.Logger.Info($"Import abilities.");
-                CycleGuids(importCharacter.Abilities);
-                this.character.Abilities.AddRange(importCharacter.Abilities);
+                CycleGuids(importCharacter.Characteristic.Abilities);
+                this.character.Characteristic.Abilities.AddRange(importCharacter.Characteristic.Abilities);
             }
         }
 
@@ -64,8 +64,8 @@ namespace Concierge.Services.ImportService
             if (importAmmo)
             {
                 Program.Logger.Info($"Import ammo.");
-                CycleGuids(importCharacter.Ammunitions);
-                this.character.Ammunitions.AddRange(importCharacter.Ammunitions);
+                CycleGuids(importCharacter.Equipment.Ammunition);
+                this.character.Equipment.Ammunition.AddRange(importCharacter.Equipment.Ammunition);
             }
         }
 
@@ -74,8 +74,8 @@ namespace Concierge.Services.ImportService
             if (importInventory)
             {
                 Program.Logger.Info($"Import inventory.");
-                CycleGuids(importCharacter.Inventories);
-                this.character.Inventories.AddRange(importCharacter.Inventories);
+                CycleGuids(importCharacter.Equipment.Inventory);
+                this.character.Equipment.Inventory.AddRange(importCharacter.Equipment.Inventory);
             }
         }
 
@@ -84,8 +84,8 @@ namespace Concierge.Services.ImportService
             if (importJournal)
             {
                 Program.Logger.Info($"Import journal.");
-                CycleGuids(importCharacter.Chapters);
-                this.character.Chapters.AddRange(importCharacter.Chapters);
+                CycleGuids(importCharacter.Journal.Chapters);
+                this.character.Journal.Chapters.AddRange(importCharacter.Journal.Chapters);
             }
         }
 
@@ -94,8 +94,8 @@ namespace Concierge.Services.ImportService
             if (importLanguage)
             {
                 Program.Logger.Info($"Import language.");
-                CycleGuids(importCharacter.Languages);
-                this.character.Languages.AddRange(importCharacter.Languages);
+                CycleGuids(importCharacter.Characteristic.Languages);
+                this.character.Characteristic.Languages.AddRange(importCharacter.Characteristic.Languages);
             }
         }
 
@@ -104,8 +104,8 @@ namespace Concierge.Services.ImportService
             if (importProficiency)
             {
                 Program.Logger.Info($"Import proficiency.");
-                CycleGuids(importCharacter.Proficiencies);
-                this.character.Proficiencies.AddRange(importCharacter.Proficiencies);
+                CycleGuids(importCharacter.Characteristic.Proficiencies);
+                this.character.Characteristic.Proficiencies.AddRange(importCharacter.Characteristic.Proficiencies);
             }
         }
 
@@ -114,8 +114,8 @@ namespace Concierge.Services.ImportService
             if (importSpells)
             {
                 Program.Logger.Info($"Import spells.");
-                CycleGuids(importCharacter.Spells);
-                this.character.Spells.AddRange(importCharacter.Spells);
+                CycleGuids(importCharacter.Magic.Spells);
+                this.character.Magic.Spells.AddRange(importCharacter.Magic.Spells);
             }
         }
 
@@ -124,8 +124,8 @@ namespace Concierge.Services.ImportService
             if (importWeapons)
             {
                 Program.Logger.Info($"Import weapons.");
-                CycleGuids(importCharacter.Weapons);
-                this.character.Weapons.AddRange(importCharacter.Weapons);
+                CycleGuids(importCharacter.Equipment.Weapons);
+                this.character.Equipment.Weapons.AddRange(importCharacter.Equipment.Weapons);
             }
         }
     }

@@ -6,12 +6,10 @@ namespace Concierge.Search
 {
     using System.Windows.Controls;
 
-    using Concierge.Character.Journal;
-    using Concierge.Common.Extensions;
+    using Concierge.Character.Journals;
     using Concierge.Common.Utilities;
     using Concierge.Display.Components;
     using Concierge.Display.Pages;
-    using Concierge.Display.Windows;
 
     public sealed class ConciergeNavigate
     {

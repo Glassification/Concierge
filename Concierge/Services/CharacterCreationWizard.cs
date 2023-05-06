@@ -58,30 +58,30 @@ namespace Concierge.Services
 
             if (character.Properties.Class1.Level > 0)
             {
-                character.Proficiencies.AddRange(LevelingMap.GetProficiencies(character.Properties.Class1.Name, false));
-                character.SavingThrow.SetProficiency(LevelingMap.GetSavingThrows(character.Properties.Class1.Name));
+                character.Characteristic.Proficiencies.AddRange(LevelingMap.GetProficiencies(character.Properties.Class1.Name, false));
+                character.SavingThrows.SetProficiency(LevelingMap.GetSavingThrows(character.Properties.Class1.Name));
             }
 
             if (character.Properties.Class2.Level > 0)
             {
-                character.Proficiencies.AddRange(LevelingMap.GetProficiencies(character.Properties.Class2.Name, true));
+                character.Characteristic.Proficiencies.AddRange(LevelingMap.GetProficiencies(character.Properties.Class2.Name, true));
             }
 
             if (character.Properties.Class3.Level > 0)
             {
-                character.Proficiencies.AddRange(LevelingMap.GetProficiencies(character.Properties.Class3.Name, true));
+                character.Characteristic.Proficiencies.AddRange(LevelingMap.GetProficiencies(character.Properties.Class3.Name, true));
             }
 
             var senses = LevelingMap.GetRaceSenses(character.Properties.Race);
-            character.Senses.BaseMovement = senses.Movement;
-            character.Senses.Vision = senses.VisionType;
+            character.Characteristic.Senses.BaseMovement = senses.Movement;
+            character.Characteristic.Senses.Vision = senses.VisionType;
         }
 
         private static void RemoveDuplicates()
         {
             var character = Program.CcsFile.Character;
 
-            character.Proficiencies = character.Proficiencies.Distinct().ToList();
+            character.Characteristic.Proficiencies = character.Characteristic.Proficiencies.Distinct().ToList();
         }
 
         private void RunSetupSteps()

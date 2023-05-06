@@ -9,7 +9,7 @@ namespace Concierge.Display.Utility
     using System.Windows;
 
     using Concierge.Character;
-    using Concierge.Character.Statuses;
+    using Concierge.Character.Vitals;
     using Concierge.Common;
     using Concierge.Common.Enums;
     using Concierge.Common.Extensions;

@@ -8,7 +8,7 @@ namespace Concierge.Display.Windows
     using System.Linq;
     using System.Windows;
 
-    using Concierge.Character.AbilitySavingThrows;
+    using Concierge.Character.AbilitySaves;
     using Concierge.Character.Enums;
     using Concierge.Commands;
     using Concierge.Display.Components;
@@ -32,7 +32,7 @@ namespace Concierge.Display.Windows
             this.CharismaComboBox.ItemsSource = Enum.GetValues(typeof(StatusChecks)).Cast<StatusChecks>();
 
             this.ConciergePage = ConciergePage.None;
-            this.SavingThrow = new SavingThrow();
+            this.SavingThrow = new SavingThrows();
             this.DescriptionTextBlock.DataContext = this.Description;
 
             this.SetFocusEvents(this.StrengthComboBox);
@@ -47,11 +47,11 @@ namespace Concierge.Display.Windows
 
         public override string WindowName => nameof(SavingThrowWindow);
 
-        private SavingThrow SavingThrow { get; set; }
+        private SavingThrows SavingThrow { get; set; }
 
         public override void ShowEdit<T>(T savingThrow)
         {
-            if (savingThrow is not SavingThrow castItem)
+            if (savingThrow is not SavingThrows castItem)
             {
                 return;
             }
@@ -90,7 +90,7 @@ namespace Concierge.Display.Windows
             this.SavingThrow.Wisdom.CheckOverride = (StatusChecks)Enum.Parse(typeof(StatusChecks), this.WisdomComboBox.Text);
             this.SavingThrow.Charisma.CheckOverride = (StatusChecks)Enum.Parse(typeof(StatusChecks), this.CharismaComboBox.Text);
 
-            Program.UndoRedoService.AddCommand(new EditCommand<SavingThrow>(this.SavingThrow, oldSavingThrow, this.ConciergePage));
+            Program.UndoRedoService.AddCommand(new EditCommand<SavingThrows>(this.SavingThrow, oldSavingThrow, this.ConciergePage));
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)

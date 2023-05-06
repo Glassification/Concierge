@@ -62,7 +62,7 @@ namespace Concierge.Display.Windows
         {
             this.Editing = false;
             this.HeaderTextBlock.Text = this.HeaderText;
-            this.Abilities = Program.CcsFile.Character.Abilities;
+            this.Abilities = Program.CcsFile.Character.Characteristic.Abilities;
             this.OkButton.Visibility = Visibility.Collapsed;
             this.CancelButton.Content = buttonText;
 
@@ -116,7 +116,7 @@ namespace Concierge.Display.Windows
             }
             else
             {
-                Program.CcsFile.Character.Abilities.Add(this.ToAbility());
+                Program.CcsFile.Character.Characteristic.Abilities.Add(this.ToAbility());
             }
 
             this.CloseConciergeWindow();

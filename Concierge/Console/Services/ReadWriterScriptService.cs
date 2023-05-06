@@ -7,9 +7,9 @@ namespace Concierge.Console.Services
     using System.Collections.ObjectModel;
 
     using Concierge.Character.Characteristics;
-    using Concierge.Character.Items;
+    using Concierge.Character.Equipable;
     using Concierge.Character.Spellcasting;
-    using Concierge.Character.Statuses;
+    using Concierge.Character.Vitals;
     using Concierge.Console.Enums;
     using Concierge.Console.Scripts;
     using Concierge.Data;
@@ -72,8 +72,8 @@ namespace Concierge.Console.Services
             return command.Name.ToLower() switch
             {
                 "ability" => new ReadWriterScript<ReadOnlyCollection<Ability>>(Defaults.Abilities).Evaluate(command),
-                "ammunition" => new ReadWriterScript<ReadOnlyCollection<Ammunition>>(Defaults.Ammunitions).Evaluate(command),
-                "inventory" => new ReadWriterScript<ReadOnlyCollection<Inventory>>(Defaults.Inventories).Evaluate(command),
+                "ammunition" => new ReadWriterScript<ReadOnlyCollection<Ammunition>>(Defaults.Ammunition).Evaluate(command),
+                "inventory" => new ReadWriterScript<ReadOnlyCollection<Inventory>>(Defaults.Inventory).Evaluate(command),
                 "language" => new ReadWriterScript<ReadOnlyCollection<Language>>(Defaults.Languages).Evaluate(command),
                 "names" => new ReadWriterScript<ReadOnlyCollection<Name>>(Defaults.Names).Evaluate(command),
                 "resources" => new ReadWriterScript<ReadOnlyCollection<ClassResource>>(Defaults.Resources).Evaluate(command),

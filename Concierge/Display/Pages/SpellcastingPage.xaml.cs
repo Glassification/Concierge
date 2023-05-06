@@ -35,9 +35,9 @@ namespace Concierge.Display.Pages
 
         public bool HasEditableDataGrid => true;
 
-        private List<MagicClass> MagicClassDisplayList => Program.CcsFile.Character.MagicClasses.Filter(this.SearchFilter.FilterText).ToList();
+        private List<MagicClass> MagicClassDisplayList => Program.CcsFile.Character.Magic.MagicClasses.Filter(this.SearchFilter.FilterText).ToList();
 
-        private List<Spell> SpellDisplayList => Program.CcsFile.Character.Spells.Filter(this.SearchFilter.FilterText).ToList();
+        private List<Spell> SpellDisplayList => Program.CcsFile.Character.Magic.Spells.Filter(this.SearchFilter.FilterText).ToList();
 
         public void Draw(bool isNewCharacterSheet = false)
         {
@@ -92,12 +92,12 @@ namespace Concierge.Display.Pages
                 this.MagicClassDataGrid.Items.Add(magicClass);
             }
 
-            this.CasterLevelField.Text = $"(Caster Level {Program.CcsFile.Character.CasterLevel})";
+            this.CasterLevelField.Text = $"(Caster Level {Program.CcsFile.Character.Magic.CasterLevel})";
         }
 
         public void DrawSpellSlots()
         {
-            this.SpellSlotsDisplay.FillSpellSlot(Program.CcsFile.Character.SpellSlots);
+            this.SpellSlotsDisplay.FillSpellSlot(Program.CcsFile.Character.Magic.SpellSlots);
         }
 
         private bool NextItem<T>(ConciergeDataGrid dataGrid, DrawList drawList, List<T> list, int limit, int increment)
@@ -117,22 +117,22 @@ namespace Concierge.Display.Pages
 
         private void MagicClassUpButton_Click(object sender, RoutedEventArgs e)
         {
-            this.NextItem(this.MagicClassDataGrid, this.DrawMagicClasses, Program.CcsFile.Character.MagicClasses, 0, -1);
+            this.NextItem(this.MagicClassDataGrid, this.DrawMagicClasses, Program.CcsFile.Character.Magic.MagicClasses, 0, -1);
         }
 
         private void SpellUpButton_Click(object sender, RoutedEventArgs e)
         {
-            this.NextItem(this.SpellListDataGrid, this.DrawSpellList, Program.CcsFile.Character.Spells, 0, -1);
+            this.NextItem(this.SpellListDataGrid, this.DrawSpellList, Program.CcsFile.Character.Magic.Spells, 0, -1);
         }
 
         private void MagicClassDownButton_Click(object sender, RoutedEventArgs e)
         {
-            this.NextItem(this.MagicClassDataGrid, this.DrawMagicClasses, Program.CcsFile.Character.MagicClasses, Program.CcsFile.Character.MagicClasses.Count - 1, 1);
+            this.NextItem(this.MagicClassDataGrid, this.DrawMagicClasses, Program.CcsFile.Character.Magic.MagicClasses, Program.CcsFile.Character.Magic.MagicClasses.Count - 1, 1);
         }
 
         private void SpellDownButton_Click(object sender, RoutedEventArgs e)
         {
-            this.NextItem(this.SpellListDataGrid, this.DrawSpellList, Program.CcsFile.Character.Spells, Program.CcsFile.Character.Spells.Count - 1, 1);
+            this.NextItem(this.SpellListDataGrid, this.DrawSpellList, Program.CcsFile.Character.Magic.Spells, Program.CcsFile.Character.Magic.Spells.Count - 1, 1);
         }
 
         private void MagicClassClearButton_Click(object sender, RoutedEventArgs e)
@@ -148,7 +148,7 @@ namespace Concierge.Display.Pages
         private void MagicClassAddButton_Click(object sender, RoutedEventArgs e)
         {
             var added = ConciergeWindowService.ShowAdd<List<MagicClass>>(
-                Program.CcsFile.Character.MagicClasses,
+                Program.CcsFile.Character.Magic.MagicClasses,
                 typeof(MagicClassWindow),
                 this.Window_ApplyChanges,
                 ConciergePage.Spellcasting);
@@ -163,7 +163,7 @@ namespace Concierge.Display.Pages
         private void SpellAddButton_Click(object sender, RoutedEventArgs e)
         {
             var added = ConciergeWindowService.ShowAdd<List<Spell>>(
-                Program.CcsFile.Character.Spells,
+                Program.CcsFile.Character.Magic.Spells,
                 typeof(SpellWindow),
                 this.Window_ApplyChanges,
                 ConciergePage.Spellcasting);
@@ -193,8 +193,8 @@ namespace Concierge.Display.Pages
                 var magicClass = (MagicClass)this.MagicClassDataGrid.SelectedItem;
                 var index = this.MagicClassDataGrid.SelectedIndex;
 
-                Program.UndoRedoService.AddCommand(new DeleteCommand<MagicClass>(Program.CcsFile.Character.MagicClasses, magicClass, index, this.ConciergePage));
-                Program.CcsFile.Character.MagicClasses.Remove(magicClass);
+                Program.UndoRedoService.AddCommand(new DeleteCommand<MagicClass>(Program.CcsFile.Character.Magic.MagicClasses, magicClass, index, this.ConciergePage));
+                Program.CcsFile.Character.Magic.MagicClasses.Remove(magicClass);
                 this.DrawMagicClasses();
                 this.MagicClassDataGrid.SetSelectedIndex(index);
 
@@ -209,8 +209,8 @@ namespace Concierge.Display.Pages
                 var spell = (Spell)this.SpellListDataGrid.SelectedItem;
                 var index = this.SpellListDataGrid.SelectedIndex;
 
-                Program.UndoRedoService.AddCommand(new DeleteCommand<Spell>(Program.CcsFile.Character.Spells, spell, index, this.ConciergePage));
-                Program.CcsFile.Character.Spells.Remove(spell);
+                Program.UndoRedoService.AddCommand(new DeleteCommand<Spell>(Program.CcsFile.Character.Magic.Spells, spell, index, this.ConciergePage));
+                Program.CcsFile.Character.Magic.Spells.Remove(spell);
                 this.DrawSpellList();
                 this.SpellListDataGrid.SetSelectedIndex(index);
 
@@ -236,12 +236,12 @@ namespace Concierge.Display.Pages
 
         private void SpellListDataGrid_Sorted(object sender, RoutedEventArgs e)
         {
-            this.SpellListDataGrid.SortListFromDataGrid(Program.CcsFile.Character.Spells, this.ConciergePage);
+            this.SpellListDataGrid.SortListFromDataGrid(Program.CcsFile.Character.Magic.Spells, this.ConciergePage);
         }
 
         private void MagicClassDataGrid_Sorted(object sender, RoutedEventArgs e)
         {
-            this.MagicClassDataGrid.SortListFromDataGrid(Program.CcsFile.Character.MagicClasses, this.ConciergePage);
+            this.MagicClassDataGrid.SortListFromDataGrid(Program.CcsFile.Character.Magic.MagicClasses, this.ConciergePage);
         }
 
         private void SpellSlotsDisplay_ValueChanged(object sender, RoutedEventArgs e)
@@ -261,7 +261,7 @@ namespace Concierge.Display.Pages
         private void SpellSlotsDisplay_EditClicked(object sender, RoutedEventArgs e)
         {
             ConciergeWindowService.ShowEdit<SpellSlots>(
-                Program.CcsFile.Character.SpellSlots,
+                Program.CcsFile.Character.Magic.SpellSlots,
                 typeof(SpellSlotsWindow),
                 this.Window_ApplyChanges,
                 ConciergePage.Spellcasting);

@@ -7,7 +7,7 @@ namespace Concierge.Display.Components
     using System.Windows.Controls;
     using System.Windows.Media;
 
-    using Concierge.Character.Journal;
+    using Concierge.Character.Journals;
     using Concierge.Common;
 
     public sealed class ConciergeTreeView : TreeView

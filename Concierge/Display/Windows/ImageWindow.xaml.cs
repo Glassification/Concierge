@@ -8,7 +8,7 @@ namespace Concierge.Display.Windows
     using System.Windows;
     using System.Windows.Media;
 
-    using Concierge.Character.Characteristics;
+    using Concierge.Character;
     using Concierge.Commands;
     using Concierge.Common.Extensions;
     using Concierge.Common.Utilities;

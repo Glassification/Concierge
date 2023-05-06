@@ -11,11 +11,10 @@ namespace Concierge.Display.Pages
     using System.Windows.Controls;
     using System.Windows.Input;
 
-    using Concierge.Character.Statuses;
+    using Concierge.Character;
     using Concierge.Common;
     using Concierge.Common.Extensions;
     using Concierge.Display.Enums;
-    using Concierge.Persistence;
     using Concierge.Persistence.ReadWriters;
     using Concierge.Tools;
     using Concierge.Tools.DiceRoller;

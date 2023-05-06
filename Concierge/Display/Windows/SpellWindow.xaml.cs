@@ -70,7 +70,7 @@ namespace Concierge.Display.Windows
             this.Editing = false;
             this.HeaderTextBlock.Text = this.HeaderText;
             this.OkButton.Visibility = Visibility.Collapsed;
-            this.Spells = Program.CcsFile.Character.Spells;
+            this.Spells = Program.CcsFile.Character.Magic.Spells;
             this.CancelButton.Content = buttonText;
 
             this.ClearFields();

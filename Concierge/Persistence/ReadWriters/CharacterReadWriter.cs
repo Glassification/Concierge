@@ -172,12 +172,12 @@ namespace Concierge.Persistence.ReadWriters
 
         private static void Initialize(ConciergeCharacter character)
         {
-            foreach (var weapon in character.Weapons)
+            foreach (var weapon in character.Equipment.Weapons)
             {
                 weapon.Initialize(character);
             }
 
-            foreach (var weapon in character.Companion.Attacks)
+            foreach (var weapon in character.Companion.Equipment.Weapons)
             {
                 weapon.Initialize(character.Companion);
             }

@@ -8,8 +8,8 @@ namespace Concierge.Display.Controls
     using System.Windows.Controls;
     using System.Windows.Input;
 
+    using Concierge.Character;
     using Concierge.Character.Enums;
-    using Concierge.Character.Statuses;
 
     /// <summary>
     /// Interaction logic for WealthControl.xaml.

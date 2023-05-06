@@ -11,7 +11,7 @@ namespace Concierge.Display.Controls
     using System.Windows.Shapes;
 
     using Concierge.Character.Enums;
-    using Concierge.Character.Statuses;
+    using Concierge.Character.Vitals;
     using Concierge.Commands;
     using Concierge.Common;
     using Concierge.Display.Enums;

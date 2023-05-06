@@ -120,7 +120,7 @@ namespace Concierge.Search
                 return;
             }
 
-            var chapters = Program.CcsFile.Character.Chapters;
+            var chapters = Program.CcsFile.Character.Journal.Chapters;
             if (!chapters.Any() || !DisplayUtility.FindVisualChildren<RichTextBox>(page).Any())
             {
                 return;

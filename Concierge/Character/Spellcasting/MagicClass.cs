@@ -37,7 +37,7 @@ namespace Concierge.Character.Spellcasting
         public string Name { get; set; }
 
         [JsonIgnore]
-        public int PreparedSpells => Program.CcsFile.Character.Spells.Where(x => (x.Class?.Equals(this.Name) ?? false) && x.Level > 0 && x.Prepared).ToList().Count;
+        public int PreparedSpells => Program.CcsFile.Character.Magic.Spells.Where(x => (x.Class?.Equals(this.Name) ?? false) && x.Level > 0 && x.Prepared).ToList().Count;
 
         [JsonIgnore]
         public int Save => Program.CcsFile.Character.CalculateBonusFromAbility(this.Ability) + Constants.BaseDC;

@@ -7,9 +7,9 @@ namespace Concierge.Persistence
     using System.Collections.ObjectModel;
 
     using Concierge.Character.Characteristics;
-    using Concierge.Character.Items;
+    using Concierge.Character.Equipable;
     using Concierge.Character.Spellcasting;
-    using Concierge.Character.Statuses;
+    using Concierge.Character.Vitals;
     using Concierge.Configuration;
     using Concierge.Data;
     using Concierge.Persistence.ReadWriters;
@@ -20,9 +20,9 @@ namespace Concierge.Persistence
         static Defaults()
         {
             Weapons = new ReadOnlyCollection<Weapon>(DefaultListReadWriter.ReadJson<Weapon>(Properties.Resources.Weapon));
-            Ammunitions = new ReadOnlyCollection<Ammunition>(DefaultListReadWriter.ReadJson<Ammunition>(Properties.Resources.Ammunition));
+            Ammunition = new ReadOnlyCollection<Ammunition>(DefaultListReadWriter.ReadJson<Ammunition>(Properties.Resources.Ammunition));
             Spells = new ReadOnlyCollection<Spell>(DefaultListReadWriter.ReadJson<Spell>(Properties.Resources.Spell));
-            Inventories = new ReadOnlyCollection<Inventory>(DefaultListReadWriter.ReadJson<Inventory>(Properties.Resources.Inventory));
+            Inventory = new ReadOnlyCollection<Inventory>(DefaultListReadWriter.ReadJson<Inventory>(Properties.Resources.Inventory));
             Languages = new ReadOnlyCollection<Language>(DefaultListReadWriter.ReadJson<Language>(Properties.Resources.Language));
             Abilities = new ReadOnlyCollection<Ability>(DefaultListReadWriter.ReadJson<Ability>(Properties.Resources.Ability));
             Subrace = new ReadOnlyCollection<CategoryItem>(DefaultListReadWriter.ReadJson<CategoryItem>(Properties.Resources.Subrace));
@@ -50,11 +50,11 @@ namespace Concierge.Persistence
 
         public static ReadOnlyCollection<Weapon> Weapons { get; }
 
-        public static ReadOnlyCollection<Ammunition> Ammunitions { get; }
+        public static ReadOnlyCollection<Ammunition> Ammunition { get; }
 
         public static ReadOnlyCollection<Spell> Spells { get; }
 
-        public static ReadOnlyCollection<Inventory> Inventories { get; }
+        public static ReadOnlyCollection<Inventory> Inventory { get; }
 
         public static ReadOnlyCollection<Language> Languages { get; }
 

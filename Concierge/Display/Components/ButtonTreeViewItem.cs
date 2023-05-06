@@ -8,7 +8,7 @@ namespace Concierge.Display.Components
     using System.Windows;
     using System.Windows.Controls;
 
-    using Concierge.Character.Journal;
+    using Concierge.Character.Journals;
     using Concierge.Common;
     using MaterialDesignThemes.Wpf;
 

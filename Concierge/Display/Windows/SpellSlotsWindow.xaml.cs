@@ -57,7 +57,7 @@ namespace Concierge.Display.Windows
         public override ConciergeWindowResult ShowWizardSetup(string buttonText)
         {
             this.ApplyButton.Visibility = Visibility.Collapsed;
-            this.SpellSlots = Program.CcsFile.Character.SpellSlots;
+            this.SpellSlots = Program.CcsFile.Character.Magic.SpellSlots;
             this.CancelButton.Content = buttonText;
 
             this.FillFields();

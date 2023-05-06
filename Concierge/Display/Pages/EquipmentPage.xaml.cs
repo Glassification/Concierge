@@ -6,17 +6,15 @@ namespace Concierge.Display.Pages
 {
     using System;
     using System.Collections.Generic;
-    using System.Linq;
     using System.Windows;
     using System.Windows.Controls;
 
-    using Concierge.Character.Characteristics;
+    using Concierge.Character;
     using Concierge.Character.Enums;
-    using Concierge.Character.Items;
+    using Concierge.Character.Equipable;
     using Concierge.Character.Spellcasting;
     using Concierge.Commands;
     using Concierge.Common;
-    using Concierge.Common.Extensions;
     using Concierge.Display.Components;
     using Concierge.Display.Enums;
     using Concierge.Display.Windows;
@@ -46,7 +44,7 @@ namespace Concierge.Display.Pages
 
         public void Draw(bool isNewCharacterSheet = false)
         {
-            this.UsedAttunement.Text = $"{Program.CcsFile.Character.EquippedItems.Attuned}/{Constants.MaxAttunedItems}";
+            this.UsedAttunement.Text = $"{Program.CcsFile.Character.Equipment.EquippedItems.Attuned}/{Constants.MaxAttunedItems}";
 
             this.DrawEquippedItems();
             this.DrawImage();
@@ -55,7 +53,7 @@ namespace Concierge.Display.Pages
 
         public void DrawEquippedItems()
         {
-            var equippedItems = Program.CcsFile.Character.EquippedItems;
+            var equippedItems = Program.CcsFile.Character.Equipment.EquippedItems;
 
             DrawEquippedItem(equippedItems.Head, this.HeadEquipmentDataGrid);
             DrawEquippedItem(equippedItems.Torso, this.TorsoEquipmentDataGrid);
@@ -75,7 +73,7 @@ namespace Concierge.Display.Pages
         public void DrawPreparedSpells()
         {
             this.PreparedSpellsDataGrid.Items.Clear();
-            foreach (var spell in Program.CcsFile.Character.Spells)
+            foreach (var spell in Program.CcsFile.Character.Magic.Spells)
             {
                 if (spell.Prepared)
                 {

@@ -8,7 +8,7 @@ namespace Concierge.Display.Controls
     using System.Windows.Controls;
     using System.Windows.Input;
 
-    using Concierge.Character.Items;
+    using Concierge.Character.Equipable;
 
     /// <summary>
     /// Interaction logic for ArmorControl.xaml.

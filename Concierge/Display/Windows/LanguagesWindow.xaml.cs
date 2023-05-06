@@ -51,7 +51,7 @@ namespace Concierge.Display.Windows
         {
             this.Editing = false;
             this.HeaderTextBlock.Text = this.HeaderText;
-            this.Languages = Program.CcsFile.Character.Languages;
+            this.Languages = Program.CcsFile.Character.Characteristic.Languages;
             this.OkButton.Visibility = Visibility.Collapsed;
             this.CancelButton.Content = buttonText;
 

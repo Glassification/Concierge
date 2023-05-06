@@ -11,7 +11,7 @@ namespace Concierge.Display.Windows
     using System.Windows.Controls;
 
     using Concierge.Character.Enums;
-    using Concierge.Character.Items;
+    using Concierge.Character.Equipable;
     using Concierge.Commands;
     using Concierge.Display.Components;
     using Concierge.Display.Enums;
@@ -27,11 +27,11 @@ namespace Concierge.Display.Windows
             this.InitializeComponent();
             this.UseRoundedCorners();
 
-            this.NameComboBox.ItemsSource = Defaults.Ammunitions;
+            this.NameComboBox.ItemsSource = Defaults.Ammunition;
             this.DamageTypeComboBox.ItemsSource = Enum.GetValues(typeof(DamageTypes)).Cast<DamageTypes>();
             this.CoinTypeComboBox.ItemsSource = Enum.GetValues(typeof(CoinType)).Cast<CoinType>();
             this.ConciergePage = ConciergePage.None;
-            this.Ammunitions = new List<Ammunition>();
+            this.Ammunition = new List<Ammunition>();
             this.SelectedAmmo = new Ammunition();
             this.DescriptionTextBlock.DataContext = this.Description;
 
@@ -54,13 +54,13 @@ namespace Concierge.Display.Windows
 
         private Ammunition SelectedAmmo { get; set; }
 
-        private List<Ammunition> Ammunitions { get; set; }
+        private List<Ammunition> Ammunition { get; set; }
 
         public override ConciergeWindowResult ShowWizardSetup(string buttonText)
         {
             this.Editing = false;
             this.HeaderTextBlock.Text = this.HeaderText;
-            this.Ammunitions = Program.CcsFile.Character.Ammunitions;
+            this.Ammunition = Program.CcsFile.Character.Equipment.Ammunition;
             this.OkButton.Visibility = Visibility.Collapsed;
             this.CancelButton.Content = buttonText;
 
@@ -79,7 +79,7 @@ namespace Concierge.Display.Windows
 
             this.Editing = false;
             this.HeaderTextBlock.Text = this.HeaderText;
-            this.Ammunitions = castItem;
+            this.Ammunition = castItem;
             this.ItemsAdded = false;
 
             this.ClearFields();
@@ -114,7 +114,7 @@ namespace Concierge.Display.Windows
             }
             else
             {
-                this.Ammunitions.Add(this.ToAmmunition());
+                this.Ammunition.Add(this.ToAmmunition());
             }
 
             this.CloseConciergeWindow();
@@ -175,7 +175,7 @@ namespace Concierge.Display.Windows
                 CoinType = (CoinType)Enum.Parse(typeof(CoinType), this.CoinTypeComboBox.Text),
             };
 
-            Program.UndoRedoService.AddCommand(new AddCommand<Ammunition>(this.Ammunitions, ammo, this.ConciergePage));
+            Program.UndoRedoService.AddCommand(new AddCommand<Ammunition>(this.Ammunition, ammo, this.ConciergePage));
 
             return ammo;
         }
@@ -193,7 +193,7 @@ namespace Concierge.Display.Windows
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Ammunitions.Add(this.ToAmmunition());
+            this.Ammunition.Add(this.ToAmmunition());
             this.ClearFields();
 
             this.InvokeApplyChanges();

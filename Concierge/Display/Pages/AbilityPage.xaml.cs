@@ -13,7 +13,6 @@ namespace Concierge.Display.Pages
     using Concierge.Character.Characteristics;
     using Concierge.Commands;
     using Concierge.Common.Extensions;
-    using Concierge.Common.Utilities;
     using Concierge.Display.Enums;
     using Concierge.Display.Windows;
     using Concierge.Services;
@@ -32,7 +31,7 @@ namespace Concierge.Display.Pages
 
         public ConciergePage ConciergePage => ConciergePage.Inventory;
 
-        private List<Ability> DisplayList => Program.CcsFile.Character.Abilities.Filter(this.SearchFilter.FilterText).ToList();
+        private List<Ability> DisplayList => Program.CcsFile.Character.Characteristic.Abilities.Filter(this.SearchFilter.FilterText).ToList();
 
         public void Draw(bool isNewCharacterSheet = false)
         {
@@ -78,7 +77,7 @@ namespace Concierge.Display.Pages
 
         private void UpButton_Click(object sender, RoutedEventArgs e)
         {
-            var index = this.AbilitiesDataGrid.NextItem(Program.CcsFile.Character.Abilities, 0, -1, this.ConciergePage);
+            var index = this.AbilitiesDataGrid.NextItem(Program.CcsFile.Character.Characteristic.Abilities, 0, -1, this.ConciergePage);
 
             if (index != -1)
             {
@@ -89,7 +88,7 @@ namespace Concierge.Display.Pages
 
         private void DownButton_Click(object sender, RoutedEventArgs e)
         {
-            var index = this.AbilitiesDataGrid.NextItem(Program.CcsFile.Character.Abilities, Program.CcsFile.Character.Abilities.Count - 1, 1, this.ConciergePage);
+            var index = this.AbilitiesDataGrid.NextItem(Program.CcsFile.Character.Characteristic.Abilities, Program.CcsFile.Character.Characteristic.Abilities.Count - 1, 1, this.ConciergePage);
 
             if (index != -1)
             {
@@ -106,7 +105,7 @@ namespace Concierge.Display.Pages
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
             var added = ConciergeWindowService.ShowAdd<List<Ability>>(
-                Program.CcsFile.Character.Abilities,
+                Program.CcsFile.Character.Characteristic.Abilities,
                 typeof(AbilitiesWindow),
                 this.Window_ApplyChanges,
                 ConciergePage.Abilities);
@@ -133,8 +132,8 @@ namespace Concierge.Display.Pages
                 var ability = (Ability)this.AbilitiesDataGrid.SelectedItem;
                 var index = this.AbilitiesDataGrid.SelectedIndex;
 
-                Program.UndoRedoService.AddCommand(new DeleteCommand<Ability>(Program.CcsFile.Character.Abilities, ability, index, this.ConciergePage));
-                Program.CcsFile.Character.Abilities.Remove(ability);
+                Program.UndoRedoService.AddCommand(new DeleteCommand<Ability>(Program.CcsFile.Character.Characteristic.Abilities, ability, index, this.ConciergePage));
+                Program.CcsFile.Character.Characteristic.Abilities.Remove(ability);
                 this.DrawAbilities();
                 this.AbilitiesDataGrid.SetSelectedIndex(index);
 
@@ -144,7 +143,7 @@ namespace Concierge.Display.Pages
 
         private void AbilitiesDataGrid_Sorted(object sender, RoutedEventArgs e)
         {
-            this.AbilitiesDataGrid.SortListFromDataGrid(Program.CcsFile.Character.Abilities, this.ConciergePage);
+            this.AbilitiesDataGrid.SortListFromDataGrid(Program.CcsFile.Character.Characteristic.Abilities, this.ConciergePage);
         }
 
         private void AbilityDataGrid_Filtered(object sender, RoutedEventArgs e)

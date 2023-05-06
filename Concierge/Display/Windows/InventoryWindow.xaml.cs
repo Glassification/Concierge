@@ -11,7 +11,7 @@ namespace Concierge.Display.Windows
     using System.Windows.Controls;
 
     using Concierge.Character.Enums;
-    using Concierge.Character.Items;
+    using Concierge.Character.Equipable;
     using Concierge.Commands;
     using Concierge.Common;
     using Concierge.Common.Enums;
@@ -34,7 +34,7 @@ namespace Concierge.Display.Windows
             this.InitializeComponent();
             this.UseRoundedCorners();
 
-            this.NameComboBox.ItemsSource = Defaults.Inventories;
+            this.NameComboBox.ItemsSource = Defaults.Inventory;
             this.CategoryComboBox.ItemsSource = Defaults.ItemCategories;
             this.CoinTypeComboBox.ItemsSource = Enum.GetValues(typeof(CoinType)).Cast<CoinType>();
             this.ConciergePage = ConciergePage.None;
@@ -72,7 +72,7 @@ namespace Concierge.Display.Windows
         {
             this.Editing = false;
             this.HeaderTextBlock.Text = this.HeaderText;
-            this.Items = Program.CcsFile.Character.Inventories;
+            this.Items = Program.CcsFile.Character.Equipment.Inventory;
             this.OkButton.Visibility = Visibility.Collapsed;
             this.CancelButton.Content = buttonText;
 
@@ -246,7 +246,7 @@ namespace Concierge.Display.Windows
             {
                 inventory.Attuned = this.AttunedCheckBox.IsChecked ?? false;
 
-                if (Program.CcsFile.Character.EquippedItems.Attuned > Constants.MaxAttunedItems)
+                if (Program.CcsFile.Character.Equipment.EquippedItems.Attuned > Constants.MaxAttunedItems)
                 {
                     inventory.Attuned = false;
                     ConciergeMessageBox.Show(

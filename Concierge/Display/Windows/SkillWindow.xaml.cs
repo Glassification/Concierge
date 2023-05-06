@@ -44,7 +44,7 @@ namespace Concierge.Display.Windows
             this.PersuasionComboBox.ItemsSource = Enum.GetValues(typeof(StatusChecks)).Cast<StatusChecks>();
 
             this.ConciergePage = ConciergePage.None;
-            this.Skill = new Skill();
+            this.Skill = new Skills();
             this.DescriptionTextBlock.DataContext = this.Description;
 
             this.SetFocusEvents(this.AthleticsComboBox);
@@ -71,11 +71,11 @@ namespace Concierge.Display.Windows
 
         public override string WindowName => nameof(SkillWindow);
 
-        private Skill Skill { get; set; }
+        private Skills Skill { get; set; }
 
         public override void ShowEdit<T>(T skill)
         {
-            if (skill is not Skill castItem)
+            if (skill is not Skills castItem)
             {
                 return;
             }
@@ -138,7 +138,7 @@ namespace Concierge.Display.Windows
             this.Skill.Performance.CheckOverride = (StatusChecks)Enum.Parse(typeof(StatusChecks), this.PerformanceComboBox.Text);
             this.Skill.Persuasion.CheckOverride = (StatusChecks)Enum.Parse(typeof(StatusChecks), this.PersuasionComboBox.Text);
 
-            Program.UndoRedoService.AddCommand(new EditCommand<Skill>(this.Skill, oldSkill, this.ConciergePage));
+            Program.UndoRedoService.AddCommand(new EditCommand<Skills>(this.Skill, oldSkill, this.ConciergePage));
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)

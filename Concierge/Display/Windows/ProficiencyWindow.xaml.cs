@@ -58,7 +58,7 @@ namespace Concierge.Display.Windows
             this.Editing = false;
             this.HeaderTextBlock.Text = this.HeaderText;
             this.OkButton.Visibility = Visibility.Collapsed;
-            this.SelectedProficiencies = Program.CcsFile.Character.Proficiencies;
+            this.SelectedProficiencies = Program.CcsFile.Character.Characteristic.Proficiencies;
             this.CancelButton.Content = buttonText;
 
             this.SetEnabledState(true);
