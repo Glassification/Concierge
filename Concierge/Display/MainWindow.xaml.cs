@@ -238,16 +238,12 @@ namespace Concierge.Display
 
         public void ImportCharacter()
         {
-            Program.Logger.Info($"Importing from character sheet.");
+            Program.Logger.Info($"Importing data to character sheet.");
 
-            var result = ConciergeWindowService.ShowWindow(typeof(ImportCharacterWindow));
+            ConciergeWindowService.ShowWindow(typeof(ImportCharacterWindow), this.Window_ApplyChanges);
 
-            if (result is bool imported && imported)
-            {
-                Program.UndoRedoService.Clear();
-                this.animatedTimedTextWorkerService.StartWorker("Imported Character Sheet!");
-                this.DrawAll();
-            }
+            this.animatedTimedTextWorkerService.StartWorker("Imported Character Data!");
+            this.DrawAll();
         }
 
         public int SaveCharacterSheet()
@@ -829,6 +825,7 @@ namespace Concierge.Display
                 case nameof(ImageWindow):
                 case nameof(PropertiesWindow):
                 case nameof(SettingsWindow):
+                case nameof(ImportCharacterWindow):
                     this.DrawAll();
                     break;
             }

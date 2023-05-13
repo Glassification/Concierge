@@ -6,6 +6,7 @@ namespace Concierge.Persistence.ReadWriters
 {
     using System;
     using System.Collections.Generic;
+    using System.IO;
     using System.Text;
 
     using Concierge.Common.Extensions;
@@ -14,6 +15,20 @@ namespace Concierge.Persistence.ReadWriters
 
     public static class DefaultListReadWriter
     {
+        public static List<T> ReadJson<T>(string fileName)
+        {
+            try
+            {
+                var bytes = File.ReadAllBytes(fileName);
+                return ReadJson<T>(bytes);
+            }
+            catch (Exception ex)
+            {
+                Program.ErrorService.LogError(ex);
+                return new List<T>();
+            }
+        }
+
         public static List<T> ReadJson<T>(byte[] resource)
         {
             var defaultList = new List<T>();

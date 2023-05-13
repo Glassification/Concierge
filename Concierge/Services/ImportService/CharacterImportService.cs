@@ -4,129 +4,74 @@
 
 namespace Concierge.Services.ImportService
 {
-    using System;
     using System.Collections.Generic;
+    using System.Linq;
 
-    using Concierge.Character;
-    using Concierge.Common;
     using Concierge.Persistence.ReadWriters;
+    using Concierge.Services.Enums;
 
     public sealed class CharacterImportService
     {
-        private readonly ConciergeCharacter character;
-
-        public CharacterImportService(ConciergeCharacter character)
+        public CharacterImportService()
         {
-            this.character = character;
+            this.Importers = new List<Importer>();
         }
 
-        public bool Import(ImportSettings importSettings)
+        private List<Importer> Importers { get; set; }
+
+        public bool Import(ImportTypes importType, string filename)
         {
-            var importFile = CharacterReadWriter.Read(importSettings.File);
+            return importType switch
+            {
+                ImportTypes.Character => this.ImportCharacter(filename),
+                ImportTypes.Object => this.ImportSingle(filename),
+                _ => false,
+            };
+        }
+
+        public void AddImporter(Importer importer)
+        {
+            this.Importers.Add(importer);
+        }
+
+        private bool ImportSingle(string filename)
+        {
+            var importer = this.Importers.FirstOrDefault();
+            if (importer is null)
+            {
+                return false;
+            }
+
+            var list = importer.Load(filename);
+            if (!list.Any())
+            {
+                return false;
+            }
+
+            importer.Import(list);
+            return true;
+        }
+
+        private bool ImportCharacter(string filename)
+        {
+            var importFile = CharacterReadWriter.Read(filename);
             if (importFile.IsEmpty)
             {
                 return false;
             }
 
-            var character = importFile.Character;
-            this.ImportAbilities(character, importSettings.ImportAbilities);
-            this.ImportAmmo(character, importSettings.ImportAmmo);
-            this.ImportInventory(character, importSettings.ImportInventory);
-            this.ImportJournal(character, importSettings.ImportJournal);
-            this.ImportLanguage(character, importSettings.ImportLanguage);
-            this.ImportProficiency(character, importSettings.ImportProficiency);
-            this.ImportSpells(character, importSettings.ImportSpells);
-            this.ImportWeapons(character, importSettings.ImportWeapons);
+            foreach (var importer in this.Importers)
+            {
+                var list = importer.Load(importFile.Character);
+                if (!list.Any())
+                {
+                    continue;
+                }
+
+                importer.Import(list);
+            }
 
             return true;
-        }
-
-        private static void CycleGuids(IEnumerable<IUnique> list)
-        {
-            foreach (var item in list)
-            {
-                item.Id = Guid.NewGuid();
-            }
-        }
-
-        private void ImportAbilities(ConciergeCharacter importCharacter, bool importAbilities)
-        {
-            if (importAbilities)
-            {
-                Program.Logger.Info($"Import abilities.");
-                CycleGuids(importCharacter.Characteristic.Abilities);
-                this.character.Characteristic.Abilities.AddRange(importCharacter.Characteristic.Abilities);
-            }
-        }
-
-        private void ImportAmmo(ConciergeCharacter importCharacter, bool importAmmo)
-        {
-            if (importAmmo)
-            {
-                Program.Logger.Info($"Import ammo.");
-                CycleGuids(importCharacter.Equipment.Ammunition);
-                this.character.Equipment.Ammunition.AddRange(importCharacter.Equipment.Ammunition);
-            }
-        }
-
-        private void ImportInventory(ConciergeCharacter importCharacter, bool importInventory)
-        {
-            if (importInventory)
-            {
-                Program.Logger.Info($"Import inventory.");
-                CycleGuids(importCharacter.Equipment.Inventory);
-                this.character.Equipment.Inventory.AddRange(importCharacter.Equipment.Inventory);
-            }
-        }
-
-        private void ImportJournal(ConciergeCharacter importCharacter, bool importJournal)
-        {
-            if (importJournal)
-            {
-                Program.Logger.Info($"Import journal.");
-                CycleGuids(importCharacter.Journal.Chapters);
-                this.character.Journal.Chapters.AddRange(importCharacter.Journal.Chapters);
-            }
-        }
-
-        private void ImportLanguage(ConciergeCharacter importCharacter, bool importLanguage)
-        {
-            if (importLanguage)
-            {
-                Program.Logger.Info($"Import language.");
-                CycleGuids(importCharacter.Characteristic.Languages);
-                this.character.Characteristic.Languages.AddRange(importCharacter.Characteristic.Languages);
-            }
-        }
-
-        private void ImportProficiency(ConciergeCharacter importCharacter, bool importProficiency)
-        {
-            if (importProficiency)
-            {
-                Program.Logger.Info($"Import proficiency.");
-                CycleGuids(importCharacter.Characteristic.Proficiencies);
-                this.character.Characteristic.Proficiencies.AddRange(importCharacter.Characteristic.Proficiencies);
-            }
-        }
-
-        private void ImportSpells(ConciergeCharacter importCharacter, bool importSpells)
-        {
-            if (importSpells)
-            {
-                Program.Logger.Info($"Import spells.");
-                CycleGuids(importCharacter.Magic.Spells);
-                this.character.Magic.Spells.AddRange(importCharacter.Magic.Spells);
-            }
-        }
-
-        private void ImportWeapons(ConciergeCharacter importCharacter, bool importWeapons)
-        {
-            if (importWeapons)
-            {
-                Program.Logger.Info($"Import weapons.");
-                CycleGuids(importCharacter.Equipment.Weapons);
-                this.character.Equipment.Weapons.AddRange(importCharacter.Equipment.Weapons);
-            }
         }
     }
 }

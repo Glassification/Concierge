@@ -35,6 +35,14 @@ namespace Concierge.Display.Components
             this.IsUpdating = false;
         }
 
+        public void UncheckUnlessNameMatches(string name)
+        {
+            if (!this.Name.Equals(name))
+            {
+                this.IsChecked = false;
+            }
+        }
+
         private void SoundEffect_Checked(object sender, RoutedEventArgs e)
         {
             if (!this.IsUpdating)

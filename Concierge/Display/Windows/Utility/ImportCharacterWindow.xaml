@@ -10,13 +10,15 @@
     xmlns:components="clr-namespace:Concierge.Display.Components"
     mc:Ignorable="d"
     Title="ImportCharacterWindow"
-    Height="415"
+    Height="480"
     Width="650"
     Style="{StaticResource WindowFontStyle}">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="45"/>
             <RowDefinition Height="60"/>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="5"/>
             <RowDefinition Height="240"/>
             <RowDefinition Height="70"/>
         </Grid.RowDefinitions>
@@ -83,6 +85,66 @@
         </Grid>
 
         <Grid Grid.Row="2">
+            <Grid
+                Grid.Row="2"
+                Grid.Column="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="75*"/>
+                    <ColumnDefinition Width="25*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50*"/>
+                    <RowDefinition Height="50*"/>
+                </Grid.RowDefinitions>
+
+                <!--Title-->
+
+                <components:ConciergeLabel
+                    Grid.Column="0"
+                    Grid.Row="0"
+                    Text="Import From Character (.ccs):"
+                    FontSize="18"
+                    HorizontalAlignment="Right"
+                    Margin="0,0,20,0"/>
+                <components:ConciergeLabel
+                    Grid.Column="0"
+                    Grid.Row="1"
+                    Text="Import From Object (.json):"
+                    FontSize="18"
+                    HorizontalAlignment="Right"
+                    Margin="0,0,20,0"/>
+
+                <!--Value-->
+                <components:ConciergeRadioButton
+                    Grid.Column="1"
+                    Grid.Row="0"
+                    x:Name="ImportCharacterButton"
+                    GroupName="ImportSelection"
+                    IsChecked="True"
+                    Style="{StaticResource RadioButtonStyle}"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center">
+                    <RadioButton.LayoutTransform>
+                        <ScaleTransform ScaleX="1.5" ScaleY="1.5" />
+                    </RadioButton.LayoutTransform>
+                </components:ConciergeRadioButton>
+                <components:ConciergeRadioButton
+                    Grid.Column="1"
+                    Grid.Row="1"
+                    x:Name="ImportObjectButton"
+                    GroupName="ImportSelection"
+                    Style="{StaticResource RadioButtonStyle}"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    Checked="ImportObjectButton_Checked">
+                    <RadioButton.LayoutTransform>
+                        <ScaleTransform ScaleX="1.5" ScaleY="1.5" />
+                    </RadioButton.LayoutTransform>
+                </components:ConciergeRadioButton>
+            </Grid>
+        </Grid>
+
+        <Grid Grid.Row="4">
             <Grid.RowDefinitions>
                 <RowDefinition Height="60"/>
                 <RowDefinition Height="60"/>
@@ -105,14 +167,15 @@
                 <!--Title-->
                 <Grid Grid.Column="0">
                     <components:ConciergeLabel
-                        Text="Import Ammo:"/>
+                        Text="Ammunition:"/>
                 </Grid>
 
                 <!--Value-->
                 <Grid Grid.Column="1" Margin="20,0,0,0">
                     <components:ConciergeCheckBox  
                         x:Name="AmmoCheckBox"
-                        Style="{StaticResource CheckBoxStyle}"/>
+                        Style="{StaticResource CheckBoxStyle}"
+                        Checked="ImportCheckBox_Checked"/>
                 </Grid>
             </Grid>
 
@@ -127,14 +190,15 @@
                 <!--Title-->
                 <Grid Grid.Column="0">
                     <components:ConciergeLabel
-                        Text="Import Weapons:"/>
+                        Text="Weapons:"/>
                 </Grid>
 
                 <!--Value-->
                 <Grid Grid.Column="1" Margin="20,0,0,0">
                     <components:ConciergeCheckBox  
                         x:Name="WeaponsCheckBox"
-                        Style="{StaticResource CheckBoxStyle}"/>
+                        Style="{StaticResource CheckBoxStyle}"
+                        Checked="ImportCheckBox_Checked"/>
                 </Grid>
             </Grid>
 
@@ -149,14 +213,15 @@
                 <!--Title-->
                 <Grid Grid.Column="0">
                     <components:ConciergeLabel
-                        Text="Import Abilities:"/>
+                        Text="Abilities:"/>
                 </Grid>
 
                 <!--Value-->
                 <Grid Grid.Column="1" Margin="20,0,0,0">
                     <components:ConciergeCheckBox  
                         x:Name="AbilitiesCheckBox"
-                        Style="{StaticResource CheckBoxStyle}"/>
+                        Style="{StaticResource CheckBoxStyle}"
+                        Checked="ImportCheckBox_Checked"/>
                 </Grid>
             </Grid>
 
@@ -171,14 +236,15 @@
                 <!--Title-->
                 <Grid Grid.Column="0">
                     <components:ConciergeLabel
-                        Text="Import Inventory:"/>
+                        Text="Inventory:"/>
                 </Grid>
 
                 <!--Value-->
                 <Grid Grid.Column="1" Margin="20,0,0,0">
                     <components:ConciergeCheckBox  
                         x:Name="InventoryCheckBox"
-                        Style="{StaticResource CheckBoxStyle}"/>
+                        Style="{StaticResource CheckBoxStyle}"
+                        Checked="ImportCheckBox_Checked"/>
                 </Grid>
             </Grid>
 
@@ -193,14 +259,15 @@
                 <!--Title-->
                 <Grid Grid.Column="0">
                     <components:ConciergeLabel
-                        Text="Import Spells:"/>
+                        Text="Spells:"/>
                 </Grid>
 
                 <!--Value-->
                 <Grid Grid.Column="1" Margin="20,0,0,0">
                     <components:ConciergeCheckBox  
                         x:Name="SpellsCheckBox"
-                        Style="{StaticResource CheckBoxStyle}"/>
+                        Style="{StaticResource CheckBoxStyle}"
+                        Checked="ImportCheckBox_Checked"/>
                 </Grid>
             </Grid>
 
@@ -215,14 +282,15 @@
                 <!--Title-->
                 <Grid Grid.Column="0">
                     <components:ConciergeLabel
-                        Text="Import Journal:"/>
+                        Text="Journal:"/>
                 </Grid>
 
                 <!--Value-->
                 <Grid Grid.Column="1" Margin="20,0,0,0">
                     <components:ConciergeCheckBox  
                         x:Name="NotesCheckBox"
-                        Style="{StaticResource CheckBoxStyle}"/>
+                        Style="{StaticResource CheckBoxStyle}"
+                        Checked="ImportCheckBox_Checked"/>
                 </Grid>
             </Grid>
 
@@ -237,14 +305,15 @@
                 <!--Title-->
                 <Grid Grid.Column="0">
                     <components:ConciergeLabel
-                        Text="Import Language:"/>
+                        Text="Language:"/>
                 </Grid>
 
                 <!--Value-->
                 <Grid Grid.Column="1" Margin="20,0,0,0">
                     <components:ConciergeCheckBox  
                         x:Name="LanguageCheckBox"
-                        Style="{StaticResource CheckBoxStyle}"/>
+                        Style="{StaticResource CheckBoxStyle}"
+                        Checked="ImportCheckBox_Checked"/>
                 </Grid>
             </Grid>
 
@@ -259,14 +328,15 @@
                 <!--Title-->
                 <Grid Grid.Column="0">
                     <components:ConciergeLabel
-                        Text="Import Proficiency:"/>
+                        Text="Proficiency:"/>
                 </Grid>
 
                 <!--Value-->
                 <Grid Grid.Column="1" Margin="20,0,0,0">
                     <components:ConciergeCheckBox  
                         x:Name="ProficiencyCheckBox"
-                        Style="{StaticResource CheckBoxStyle}"/>
+                        Style="{StaticResource CheckBoxStyle}"
+                        Checked="ImportCheckBox_Checked"/>
                 </Grid>
             </Grid>
         </Grid>
@@ -277,6 +347,12 @@
                 Orientation="Horizontal"
                 VerticalAlignment="Center"
                 HorizontalAlignment="Center">
+                <components:ConciergeTextButton 
+                    x:Name="ImportAndCloseButton"
+                    Style="{StaticResource ConciergeTextButtonStyle}"
+                    Content="Import &amp; Close"
+                    Click="ImportButton_Click">
+                </components:ConciergeTextButton>
                 <components:ConciergeTextButton 
                     x:Name="ImportButton"
                     Style="{StaticResource ConciergeTextButtonStyle}"
