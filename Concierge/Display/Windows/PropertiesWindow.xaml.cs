@@ -10,15 +10,15 @@ namespace Concierge.Display.Windows
     using System.Windows.Media;
 
     using Concierge.Character;
-    using Concierge.Character.Characteristics;
     using Concierge.Commands;
+    using Concierge.Common.Extensions;
     using Concierge.Display.Components;
     using Concierge.Display.Controls;
     using Concierge.Display.Enums;
     using Concierge.Display.Utility;
+    using Concierge.Persistence;
+    using Concierge.Persistence.Enums;
     using Concierge.Services;
-    using Concierge.Utility;
-    using Concierge.Utility.Extensions;
 
     /// <summary>
     /// Interaction logic for PropertiesWindow.xaml.
@@ -34,16 +34,16 @@ namespace Concierge.Display.Windows
 
             this.fileAccessService = new FileAccessService();
 
-            this.AlignmentComboBox.ItemsSource = Constants.Alignment;
-            this.RaceComboBox.ItemsSource = Constants.Races;
-            this.SubRaceComboBox.ItemsSource = Constants.Subrace;
-            this.BackgroundComboBox.ItemsSource = Constants.Backgrounds;
-            this.Class1Class.ItemsSource = Constants.Classes;
-            this.Class2Class.ItemsSource = Constants.Classes;
-            this.Class3Class.ItemsSource = Constants.Classes;
-            this.Class1Subclass.ItemsSource = Constants.Subclass;
-            this.Class2Subclass.ItemsSource = Constants.Subclass;
-            this.Class3Subclass.ItemsSource = Constants.Subclass;
+            this.AlignmentComboBox.ItemsSource = Defaults.Alignment;
+            this.RaceComboBox.ItemsSource = Defaults.Races;
+            this.SubRaceComboBox.ItemsSource = Defaults.Subrace;
+            this.BackgroundComboBox.ItemsSource = Defaults.Backgrounds;
+            this.Class1Class.ItemsSource = Defaults.Classes;
+            this.Class2Class.ItemsSource = Defaults.Classes;
+            this.Class3Class.ItemsSource = Defaults.Classes;
+            this.Class1Subclass.ItemsSource = Defaults.Subclass;
+            this.Class2Subclass.ItemsSource = Defaults.Subclass;
+            this.Class3Subclass.ItemsSource = Defaults.Subclass;
             this.CharacterProperties = new CharacterProperties();
             this.OriginalFileName = string.Empty;
             this.DescriptionTextBlock.DataContext = this.Description;
@@ -233,7 +233,7 @@ namespace Concierge.Display.Windows
 
         private void OpenImageButton_Click(object sender, RoutedEventArgs e)
         {
-            var fileName = this.fileAccessService.OpenImage();
+            var fileName = this.fileAccessService.Open((int)ImageFiltersIndex.Png, FileConstants.ImageOpenFilter, ImageFiltersIndex.Png.ToString().ToLower());
 
             if (!fileName.IsNullOrWhiteSpace())
             {

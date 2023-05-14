@@ -5,18 +5,16 @@
 namespace Concierge.Display.Utility
 {
     using System;
-    using System.Diagnostics;
     using System.Windows;
-    using System.Windows.Controls;
     using System.Windows.Input;
     using System.Windows.Media;
     using System.Windows.Media.Imaging;
 
+    using Concierge.Common;
+    using Concierge.Common.Extensions;
+    using Concierge.Common.Utilities;
+    using Concierge.Data;
     using Concierge.Display.Components;
-    using Concierge.Primitives;
-    using Concierge.Utility;
-    using Concierge.Utility.Extensions;
-    using Concierge.Utility.Utilities;
 
     /// <summary>
     /// Interaction logic for CustomColorWindow.xaml.

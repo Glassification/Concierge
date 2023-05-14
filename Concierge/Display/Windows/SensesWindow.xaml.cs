@@ -11,10 +11,9 @@ namespace Concierge.Display.Windows
     using Concierge.Character.Characteristics;
     using Concierge.Character.Enums;
     using Concierge.Commands;
+    using Concierge.Common;
     using Concierge.Display.Components;
     using Concierge.Display.Enums;
-    using Concierge.Utility;
-    using Concierge.Utility.Utilities;
 
     /// <summary>
     /// Interaction logic for SensesWindow.xaml.
@@ -74,19 +73,19 @@ namespace Concierge.Display.Windows
             var character = Program.CcsFile.Character;
 
             this.InitiativeTextBlock.Text = character.Initiative.ToString();
-            this.InitiativeBonusUpDown.Value = character.Senses.InitiativeBonus;
+            this.InitiativeBonusUpDown.Value = character.Characteristic.Senses.InitiativeBonus;
             this.PerceptionTextBlock.Text = character.PassivePerception.ToString();
-            this.PerceptionBonusUpDown.Value = character.Senses.PerceptionBonus;
-            this.VisionComboBox.Text = character.Senses.Vision.ToString();
-            this.MovementTextBlock.Text = character.Senses.Movement.ToString();
-            this.BaseMovementUpDown.Value = character.Senses.BaseMovement;
-            this.MovementBonusUpDown.Value = character.Senses.MovementBonus;
-            this.InspirationCheckBox.IsChecked = character.Senses.Inspiration;
+            this.PerceptionBonusUpDown.Value = character.Characteristic.Senses.PerceptionBonus;
+            this.VisionComboBox.Text = character.Characteristic.Senses.Vision.ToString();
+            this.MovementTextBlock.Text = character.Characteristic.Senses.Movement.ToString();
+            this.BaseMovementUpDown.Value = character.Characteristic.Senses.BaseMovement;
+            this.MovementBonusUpDown.Value = character.Characteristic.Senses.MovementBonus;
+            this.InspirationCheckBox.IsChecked = character.Characteristic.Senses.Inspiration;
         }
 
         private void UpdateSenses()
         {
-            var senses = Program.CcsFile.Character.Senses;
+            var senses = Program.CcsFile.Character.Characteristic.Senses;
             var oldItem = senses.DeepCopy();
 
             senses.InitiativeBonus = this.InitiativeBonusUpDown.Value;
@@ -127,8 +126,8 @@ namespace Concierge.Display.Windows
 
         private void IntegerUpDown_ValueChanged(object sender, RoutedEventArgs e)
         {
-            this.InitiativeTextBlock.Text = (CharacterUtility.CalculateBonus(Program.CcsFile.Character.Attributes.Dexterity) + this.InitiativeBonusUpDown.Value).ToString();
-            this.PerceptionTextBlock.Text = (Constants.BasePerception + Program.CcsFile.Character.Skill.Perception.Bonus + this.PerceptionBonusUpDown.Value).ToString();
+            this.InitiativeTextBlock.Text = (Constants.CalculateBonus(Program.CcsFile.Character.Characteristic.Attributes.Dexterity) + this.InitiativeBonusUpDown.Value).ToString();
+            this.PerceptionTextBlock.Text = (Constants.BasePerception + Program.CcsFile.Character.Skills.Perception.Bonus + this.PerceptionBonusUpDown.Value).ToString();
             this.MovementTextBlock.Text = Senses.GetMovement(this.BaseMovementUpDown.Value + this.MovementBonusUpDown.Value).ToString();
         }
     }

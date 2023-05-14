@@ -9,10 +9,10 @@ namespace Concierge.Commands
 
     using Concierge.Character;
     using Concierge.Character.Spellcasting;
-    using Concierge.Character.Statuses;
+    using Concierge.Character.Vitals;
+    using Concierge.Common.Extensions;
     using Concierge.Display.Enums;
     using Concierge.Leveling.Dtos.Leveler;
-    using Concierge.Utility.Extensions;
 
     public sealed class LevelUpCommand : Command
     {
@@ -57,13 +57,13 @@ namespace Concierge.Commands
             this.character.Properties.GetClassByNumber(this.newClass.ClassNumber).SetProperties<CharacterClass>(this.newClass);
             if (this.newMagicClass is not null)
             {
-                this.character.SpellSlots.SetProperties<SpellSlots>(this.newSpellSlots);
-                this.character.MagicClasses.Where(x => x.Name.Equals(this.newMagicClass.Name)).First().SetProperties<MagicClass>(this.newMagicClass);
+                this.character.Magic.SpellSlots.SetProperties<SpellSlots>(this.newSpellSlots);
+                this.character.Magic.MagicClasses.Where(x => x.Name.Equals(this.newMagicClass.Name)).First().SetProperties<MagicClass>(this.newMagicClass);
             }
 
             if (this.newClassResource is not null)
             {
-                this.character.ClassResources
+                this.character.Vitality.ClassResources
                     .Where(x => x.Type.Equals(this.newClassResource.Type, StringComparison.InvariantCultureIgnoreCase))
                     .First()
                     .SetProperties<ClassResource>(this.newClassResource);
@@ -76,13 +76,13 @@ namespace Concierge.Commands
             this.character.Properties.GetClassByNumber(this.oldClass.ClassNumber).SetProperties<CharacterClass>(this.oldClass);
             if (this.oldMagicClass is not null)
             {
-                this.character.SpellSlots.SetProperties<SpellSlots>(this.oldSpellSlots);
-                this.character.MagicClasses.Where(x => x.Name.Equals(this.oldMagicClass.Name)).First().SetProperties<MagicClass>(this.oldMagicClass);
+                this.character.Magic.SpellSlots.SetProperties<SpellSlots>(this.oldSpellSlots);
+                this.character.Magic.MagicClasses.Where(x => x.Name.Equals(this.oldMagicClass.Name)).First().SetProperties<MagicClass>(this.oldMagicClass);
             }
 
             if (this.oldClassResource is not null)
             {
-                this.character.ClassResources
+                this.character.Vitality.ClassResources
                     .Where(x => x.Type.Equals(this.oldClassResource.Type, StringComparison.InvariantCultureIgnoreCase))
                     .First()
                     .SetProperties<ClassResource>(this.oldClassResource);

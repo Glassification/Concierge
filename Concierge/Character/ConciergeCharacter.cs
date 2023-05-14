@@ -4,25 +4,23 @@
 
 namespace Concierge.Character
 {
-    using System;
-    using System.Collections.Generic;
     using System.Linq;
 
-    using Concierge.Character.AbilitySavingThrows;
+    using Concierge.Character.AbilitySaves;
     using Concierge.Character.AbilitySkills;
     using Concierge.Character.Characteristics;
     using Concierge.Character.Enums;
-    using Concierge.Character.Items;
-    using Concierge.Character.Journal;
+    using Concierge.Character.Equipable;
+    using Concierge.Character.Journals;
     using Concierge.Character.Spellcasting;
-    using Concierge.Character.Statuses;
+    using Concierge.Character.Vitals;
     using Concierge.Commands;
-    using Concierge.Configuration;
+    using Concierge.Common;
+    using Concierge.Common.Enums;
+    using Concierge.Common.Utilities;
+    using Concierge.Data.Units;
     using Concierge.Leveling;
-    using Concierge.Utility;
-    using Concierge.Utility.Extensions;
-    using Concierge.Utility.Units;
-    using Concierge.Utility.Utilities;
+    using Concierge.Persistence;
     using Newtonsoft.Json;
 
     public sealed class ConciergeCharacter : ICopyable<ConciergeCharacter>, ICreature
@@ -31,154 +29,60 @@ namespace Concierge.Character
 
         public ConciergeCharacter()
         {
-            this.Abilities = new List<Ability>();
-            this.Ammunitions = new List<Ammunition>();
-            this.Appearance = new Appearance();
-            this.Armor = new Armor();
-            this.Attributes = new Attributes();
-            this.Chapters = new List<Chapter>();
-            this.ClassResources = new List<ClassResource>();
+            this.Journal = new Journal();
             this.Companion = new Companion();
-            this.Senses = new Senses();
-            this.Inventories = new List<Inventory>();
-            this.MagicClasses = new List<MagicClass>();
-            this.Personality = new Personality();
-            this.Proficiencies = new List<Proficiency>();
-            this.SavingThrow = new SavingThrow();
-            this.Skill = new Skill();
-            this.Spells = new List<Spell>();
-            this.SpellSlots = new SpellSlots();
+            this.SavingThrows = new SavingThrows();
+            this.Skills = new Skills();
             this.Vitality = new Vitality();
             this.Wealth = new Wealth();
-            this.Weapons = new List<Weapon>();
             this.CharacterImage = new CharacterImage();
-            this.StatusEffects = new List<StatusEffect>();
             this.Properties = new CharacterProperties();
-            this.Languages = new List<Language>();
+            this.Magic = new Magic();
+            this.Characteristic = new Characteristic();
+            this.Equipment = new Equipment();
 
             this.conciergeLeveler = new ConciergeLeveler(this);
-            this.EquippedItems = new EquippedItems(this.Inventories, this.Weapons);
         }
 
-        public List<Ability> Abilities { get; set; }
-
-        public List<Ammunition> Ammunitions { get; set; }
-
-        public Appearance Appearance { get; set; }
-
-        public Armor Armor { get; set; }
-
-        public Attributes Attributes { get; set; }
-
-        public List<Chapter> Chapters { get; set; }
-
-        public CharacterImage CharacterImage { get; set; }
-
-        public List<ClassResource> ClassResources { get; set; }
+        public Characteristic Characteristic { get; set; }
 
         public Companion Companion { get; set; }
 
-        [JsonIgnore]
-        public EquippedItems EquippedItems { get; set; }
+        public Journal Journal { get; set; }
 
-        public List<Inventory> Inventories { get; set; }
-
-        public List<Language> Languages { get; set; }
-
-        public List<MagicClass> MagicClasses { get; set; }
-
-        public Personality Personality { get; set; }
-
-        public List<Proficiency> Proficiencies { get; set; }
+        public Magic Magic { get; set; }
 
         public CharacterProperties Properties { get; set; }
 
-        public SavingThrow SavingThrow { get; set; }
+        public CharacterImage CharacterImage { get; set; }
 
-        public Senses Senses { get; set; }
+        public SavingThrows SavingThrows { get; set; }
 
-        public Skill Skill { get; set; }
-
-        public List<Spell> Spells { get; set; }
-
-        public SpellSlots SpellSlots { get; set; }
-
-        public List<StatusEffect> StatusEffects { get; set; }
+        public Skills Skills { get; set; }
 
         public Vitality Vitality { get; set; }
 
         public Wealth Wealth { get; set; }
 
-        public List<Weapon> Weapons { get; set; }
+        public Equipment Equipment { get; set; }
 
         [JsonIgnore]
-        public double CarryWeight
-        {
-            get
-            {
-                var weight = 0.0;
-
-                foreach (var item in this.Inventories)
-                {
-                    if (!item.IgnoreWeight)
-                    {
-                        weight += item.Weight.Value * item.Amount;
-                    }
-                }
-
-                foreach (var weapon in this.Weapons)
-                {
-                    if (!weapon.IgnoreWeight)
-                    {
-                        weight += weapon.Weight.Value;
-                    }
-                }
-
-                weight += this.Armor.Weight.Value;
-                weight += this.Armor.ShieldWeight.Value;
-
-                if (AppSettingsManager.UserSettings.UseCoinWeight)
-                {
-                    weight += UnitConvertion.Weight(AppSettingsManager.UserSettings.UnitOfMeasurement, this.Wealth.TotalCoins / Constants.CoinGroup);
-                }
-
-                return weight;
-            }
-        }
+        public int ProficiencyBonus => this.Properties.Level - 1 > 0 ? Defaults.ProficiencyLevels[this.Properties.Level - 1] : Defaults.ProficiencyLevels[0];
 
         [JsonIgnore]
-        public int ProficiencyBonus => this.Properties.Level - 1 > 0 ? Constants.ProficiencyLevels[this.Properties.Level - 1] : Constants.ProficiencyLevels[0];
+        public int PassivePerception => Constants.BasePerception + this.Skills.Perception.Bonus + this.Characteristic.Senses.PerceptionBonus;
 
         [JsonIgnore]
-        public int PassivePerception => Constants.BasePerception + this.Skill.Perception.Bonus + this.Senses.PerceptionBonus;
+        public int Initiative => Constants.CalculateBonus(this.Characteristic.Attributes.Dexterity) + this.Characteristic.Senses.InitiativeBonus;
 
         [JsonIgnore]
-        public int Initiative => CharacterUtility.CalculateBonus(this.Attributes.Dexterity) + this.Senses.InitiativeBonus;
+        public double LightCarryCapacity => this.Characteristic.Attributes.Strength * UnitConversion.LightMultiplier;
 
         [JsonIgnore]
-        public int CasterLevel
-        {
-            get
-            {
-                int level = 0;
-
-                foreach (var magicClass in this.MagicClasses)
-                {
-                    level += magicClass.Level;
-                }
-
-                return level;
-            }
-        }
+        public double MediumCarryCapacity => this.Characteristic.Attributes.Strength * UnitConversion.MediumMultiplier;
 
         [JsonIgnore]
-        public double LightCarryCapacity => this.Attributes.Strength * UnitConvertion.LightMultiplier;
-
-        [JsonIgnore]
-        public double MediumCarryCapacity => this.Attributes.Strength * UnitConvertion.MediumMultiplier;
-
-        [JsonIgnore]
-        public double HeavyCarryCapacity => this.Attributes.Strength * UnitConvertion.HeavyMultiplier;
+        public double HeavyCarryCapacity => this.Characteristic.Attributes.Strength * UnitConversion.HeavyMultiplier;
 
         [JsonIgnore]
         public CreatureType CreatureType => CreatureType.Character;
@@ -201,16 +105,41 @@ namespace Concierge.Character
             return base.GetHashCode();
         }
 
+        public int CalculateBonusFromAbility(Abilities ability)
+        {
+            return ability switch
+            {
+                Abilities.STR => Constants.CalculateBonus(this.Characteristic.Attributes.Strength) + this.ProficiencyBonus,
+                Abilities.DEX => Constants.CalculateBonus(this.Characteristic.Attributes.Dexterity) + this.ProficiencyBonus,
+                Abilities.CON => Constants.CalculateBonus(this.Characteristic.Attributes.Constitution) + this.ProficiencyBonus,
+                Abilities.INT => Constants.CalculateBonus(this.Characteristic.Attributes.Intelligence) + this.ProficiencyBonus,
+                Abilities.WIS => Constants.CalculateBonus(this.Characteristic.Attributes.Wisdom) + this.ProficiencyBonus,
+                Abilities.CHA => Constants.CalculateBonus(this.Characteristic.Attributes.Charisma) + this.ProficiencyBonus,
+                Abilities.NONE => this.ProficiencyBonus,
+                _ => this.ProficiencyBonus,
+            };
+        }
+
+        public bool ValidateClassLevel(int number)
+        {
+            var totalLevel =
+                (this.Properties.Class1.ClassNumber == number ? 0 : this.Properties.Class1.Level) +
+                (this.Properties.Class2.ClassNumber == number ? 0 : this.Properties.Class2.Level) +
+                (this.Properties.Class3.ClassNumber == number ? 0 : this.Properties.Class3.Level);
+
+            return totalLevel is <= Constants.MaxLevel and >= 0;
+        }
+
         public void LongRest()
         {
             var oldVitality = this.Vitality.DeepCopy();
-            var oldSpellSlots = this.SpellSlots.DeepCopy();
+            var oldSpellSlots = this.Magic.SpellSlots.DeepCopy();
             var oldCompanionVitality = this.Companion.Vitality.DeepCopy();
 
             this.Vitality.ResetHealth();
             this.Vitality.RegainHitDice();
             this.Vitality.ResetDeathSaves();
-            this.SpellSlots.Reset();
+            this.Magic.SpellSlots.Reset();
 
             this.Companion.Vitality.ResetHealth();
             this.Companion.Vitality.RegainHitDice();
@@ -222,7 +151,7 @@ namespace Concierge.Character
                     oldSpellSlots,
                     this.Vitality.DeepCopy(),
                     this.Companion.Vitality.DeepCopy(),
-                    this.SpellSlots.DeepCopy()));
+                    this.Magic.SpellSlots.DeepCopy()));
         }
 
         public void LevelUp(HitDie hitDie, int classNumber, int bonusHp)
@@ -237,57 +166,39 @@ namespace Concierge.Character
 
             return weapon.ProficiencyOverride
                 ? true
-                : this.Proficiencies.Any(x => x.Name.Equals(weaponName) && x.ProficiencyType == ProficiencyTypes.Weapon) ? true
+                : this.Characteristic.Proficiencies.Any(x => x.Name.Equals(weaponName) && x.ProficiencyType == ProficiencyTypes.Weapon) ? true
                 : weapon.Type switch
             {
                 // Simple Ranged Weapons
-                WeaponTypes.LightCrossbow or WeaponTypes.Dart or WeaponTypes.Shortbow or WeaponTypes.Sling => this.Proficiencies.Any(x => x.Name.Equals(Proficiency.SimpleRanged) && x.ProficiencyType == ProficiencyTypes.Weapon),
+                WeaponTypes.LightCrossbow or WeaponTypes.Dart or WeaponTypes.Shortbow or WeaponTypes.Sling => this.Characteristic.Proficiencies.Any(x => x.Name.Equals(Proficiency.SimpleRanged) && x.ProficiencyType == ProficiencyTypes.Weapon),
 
                 // Simple Melee Weapons
-                WeaponTypes.Club or WeaponTypes.Dagger or WeaponTypes.Greatclub or WeaponTypes.Handaxe or WeaponTypes.Javelin or WeaponTypes.LightHammer or WeaponTypes.Mace or WeaponTypes.Quarterstaff or WeaponTypes.Sickle or WeaponTypes.Spear => this.Proficiencies.Any(x => x.Name.Equals(Proficiency.SimpleMelee) && x.ProficiencyType == ProficiencyTypes.Weapon),
+                WeaponTypes.Club or WeaponTypes.Dagger or WeaponTypes.Greatclub or WeaponTypes.Handaxe or WeaponTypes.Javelin or WeaponTypes.LightHammer or WeaponTypes.Mace or WeaponTypes.Quarterstaff or WeaponTypes.Sickle or WeaponTypes.Spear => this.Characteristic.Proficiencies.Any(x => x.Name.Equals(Proficiency.SimpleMelee) && x.ProficiencyType == ProficiencyTypes.Weapon),
 
                 // Martial Ranged Weapons
-                WeaponTypes.Blowgun or WeaponTypes.HandCrossbow or WeaponTypes.HeavyCrossbow or WeaponTypes.Longbow or WeaponTypes.Net => this.Proficiencies.Any(x => x.Name.Equals(Proficiency.MartialRanged) && x.ProficiencyType == ProficiencyTypes.Weapon),
+                WeaponTypes.Blowgun or WeaponTypes.HandCrossbow or WeaponTypes.HeavyCrossbow or WeaponTypes.Longbow or WeaponTypes.Net => this.Characteristic.Proficiencies.Any(x => x.Name.Equals(Proficiency.MartialRanged) && x.ProficiencyType == ProficiencyTypes.Weapon),
 
                 // Martial Melee Weapons
-                WeaponTypes.Battleaxe or WeaponTypes.Flail or WeaponTypes.Glaive or WeaponTypes.Greataxe or WeaponTypes.Greatsword or WeaponTypes.Halberd or WeaponTypes.Lance or WeaponTypes.Longsword or WeaponTypes.Maul or WeaponTypes.Morningstar or WeaponTypes.Pike or WeaponTypes.Rapier or WeaponTypes.Scimitar or WeaponTypes.Shortsword or WeaponTypes.Trident or WeaponTypes.WarPick or WeaponTypes.Warhammer or WeaponTypes.Whip => this.Proficiencies.Any(x => x.Name.Equals(Proficiency.MartialMelee) && x.ProficiencyType == ProficiencyTypes.Weapon),
+                WeaponTypes.Battleaxe or WeaponTypes.Flail or WeaponTypes.Glaive or WeaponTypes.Greataxe or WeaponTypes.Greatsword or WeaponTypes.Halberd or WeaponTypes.Lance or WeaponTypes.Longsword or WeaponTypes.Maul or WeaponTypes.Morningstar or WeaponTypes.Pike or WeaponTypes.Rapier or WeaponTypes.Scimitar or WeaponTypes.Shortsword or WeaponTypes.Trident or WeaponTypes.WarPick or WeaponTypes.Warhammer or WeaponTypes.Whip => this.Characteristic.Proficiencies.Any(x => x.Name.Equals(Proficiency.MartialMelee) && x.ProficiencyType == ProficiencyTypes.Weapon),
                 _ => false,
             };
-        }
-
-        public Chapter GetChapter(Guid documentId)
-        {
-            return this.Chapters.Single(x => x.Documents.Any(y => y.Id.Equals(documentId)));
         }
 
         public ConciergeCharacter DeepCopy()
         {
             return new ConciergeCharacter()
             {
-                Abilities = this.Abilities.DeepCopy().ToList(),
-                Ammunitions = this.Ammunitions.DeepCopy().ToList(),
-                Appearance = this.Appearance.DeepCopy(),
-                Armor = this.Armor.DeepCopy(),
-                Attributes = this.Attributes.DeepCopy(),
-                Chapters = this.Chapters.DeepCopy().ToList(),
-                ClassResources = this.ClassResources.DeepCopy().ToList(),
+                Journal = this.Journal.DeepCopy(),
                 Companion = this.Companion.DeepCopy(),
-                Senses = this.Senses.DeepCopy(),
-                Inventories = this.Inventories.DeepCopy().ToList(),
-                MagicClasses = this.MagicClasses.DeepCopy().ToList(),
-                Personality = this.Personality.DeepCopy(),
-                Proficiencies = this.Proficiencies.DeepCopy().ToList(),
-                SavingThrow = this.SavingThrow.DeepCopy(),
-                Skill = this.Skill.DeepCopy(),
-                Spells = this.Spells.DeepCopy().ToList(),
-                SpellSlots = this.SpellSlots.DeepCopy(),
+                SavingThrows = this.SavingThrows.DeepCopy(),
+                Skills = this.Skills.DeepCopy(),
                 Vitality = this.Vitality.DeepCopy(),
                 Wealth = this.Wealth.DeepCopy(),
-                Weapons = this.Weapons.DeepCopy().ToList(),
                 CharacterImage = this.CharacterImage.DeepCopy(),
-                StatusEffects = this.StatusEffects.DeepCopy().ToList(),
                 Properties = this.Properties.DeepCopy(),
-                Languages = this.Languages.DeepCopy().ToList(),
+                Magic = this.Magic.DeepCopy(),
+                Characteristic = this.Characteristic.DeepCopy(),
+                Equipment = this.Equipment.DeepCopy(),
             };
         }
     }

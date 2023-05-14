@@ -10,8 +10,8 @@ namespace Concierge.Display.Components
     using System.Windows.Input;
     using System.Windows.Media;
 
-    using Concierge.Character.Journal;
-    using Concierge.Utility;
+    using Concierge.Character.Journals;
+    using Concierge.Common;
     using MaterialDesignThemes.Wpf;
 
     public sealed class ChapterTreeViewItem : TreeViewItem

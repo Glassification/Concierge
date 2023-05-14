@@ -10,11 +10,10 @@ namespace Concierge.Display.Utility
     using System.Windows.Controls;
     using System.Windows.Media;
 
+    using Concierge.Common.Utilities;
+    using Concierge.Data;
     using Concierge.Display.Components;
-    using Concierge.Display.Windows;
-    using Concierge.Primitives;
     using Concierge.Services;
-    using Concierge.Utility.Utilities;
 
     /// <summary>
     /// Interaction logic for ColorPickerWindow.xaml.

@@ -9,13 +9,13 @@ namespace Concierge.Display.Utility
     using System.Windows;
 
     using Concierge.Commands;
+    using Concierge.Common.Enums;
     using Concierge.Configuration;
     using Concierge.Configuration.Dtos;
+    using Concierge.Display;
     using Concierge.Display.Components;
     using Concierge.Display.Enums;
-    using Concierge.Tools.Display;
-    using Concierge.Utility;
-    using Concierge.Utility.Units.Enums;
+    using Concierge.Persistence;
 
     /// <summary>
     /// Interaction logic for SettingsWindow.xaml.
@@ -34,7 +34,7 @@ namespace Concierge.Display.Utility
 
         public override string WindowName => nameof(SettingsWindow);
 
-        private string FormattedInterval => $"Autosave Interval:  {Constants.AutosaveIntervals[(int)this.AutosaveInterval.Value]} minute{((int)this.AutosaveInterval.Value > 0 ? "s" : string.Empty)}";
+        private string FormattedInterval => $"Autosave Interval:  {Defaults.AutosaveIntervals[(int)this.AutosaveInterval.Value]} minute{((int)this.AutosaveInterval.Value > 0 ? "s" : string.Empty)}";
 
         public override void ShowEdit<T>(T item)
         {
@@ -109,7 +109,7 @@ namespace Concierge.Display.Utility
             };
 
             Program.UndoRedoService.AddCommand(new UpdateSettingsCommand(oldSettings, conciergeSettings));
-            AppSettingsManager.UpdateSettings(conciergeSettings);
+            AppSettingsManager.UpdateSettings(conciergeSettings, Program.IsDebug);
 
             return true;
         }

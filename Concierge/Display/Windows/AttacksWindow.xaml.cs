@@ -12,16 +12,16 @@ namespace Concierge.Display.Windows
 
     using Concierge.Character;
     using Concierge.Character.Enums;
-    using Concierge.Character.Items;
+    using Concierge.Character.Equipable;
     using Concierge.Commands;
+    using Concierge.Common.Enums;
+    using Concierge.Common.Exceptions;
     using Concierge.Configuration;
+    using Concierge.Data;
+    using Concierge.Data.Units;
     using Concierge.Display.Components;
     using Concierge.Display.Enums;
-    using Concierge.Exceptions;
-    using Concierge.Primitives;
-    using Concierge.Utility;
-    using Concierge.Utility.Units;
-    using Concierge.Utility.Units.Enums;
+    using Concierge.Persistence;
 
     /// <summary>
     /// Interaction logic for AttacksWindow.xaml.
@@ -33,7 +33,7 @@ namespace Concierge.Display.Windows
             this.InitializeComponent();
             this.UseRoundedCorners();
 
-            this.AttackComboBox.ItemsSource = Constants.Weapons;
+            this.AttackComboBox.ItemsSource = Defaults.Weapons;
             this.TypeComboBox.ItemsSource = Enum.GetValues(typeof(WeaponTypes)).Cast<WeaponTypes>();
             this.AbilityComboBox.ItemsSource = Enum.GetValues(typeof(Abilities)).Cast<Abilities>();
             this.DamageTypeComboBox.ItemsSource = Enum.GetValues(typeof(DamageTypes)).Cast<DamageTypes>();
@@ -76,7 +76,7 @@ namespace Concierge.Display.Windows
 
         public override ConciergeWindowResult ShowWizardSetup(string buttonText)
         {
-            this.Weapons = Program.CcsFile.Character.Weapons;
+            this.Weapons = Program.CcsFile.Character.Equipment.Weapons;
             this.OkButton.Visibility = Visibility.Collapsed;
             this.Editing = false;
             this.HeaderTextBlock.Text = this.HeaderText;

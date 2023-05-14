@@ -8,7 +8,7 @@ namespace Concierge.Services.WorkerServices
     using System.ComponentModel;
     using System.Threading;
 
-    using Concierge.Utility;
+    using Concierge.Common;
 
     public sealed class DateTimeWorkerService : IWorkerService
     {

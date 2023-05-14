@@ -11,17 +11,18 @@ namespace Concierge.Display.Windows
     using System.Windows.Controls;
 
     using Concierge.Character.Enums;
-    using Concierge.Character.Items;
+    using Concierge.Character.Equipable;
     using Concierge.Commands;
+    using Concierge.Common;
+    using Concierge.Common.Enums;
+    using Concierge.Common.Extensions;
     using Concierge.Configuration;
+    using Concierge.Data;
+    using Concierge.Data.Units;
+    using Concierge.Display;
     using Concierge.Display.Components;
     using Concierge.Display.Enums;
-    using Concierge.Primitives;
-    using Concierge.Tools.Display;
-    using Concierge.Utility;
-    using Concierge.Utility.Extensions;
-    using Concierge.Utility.Units;
-    using Concierge.Utility.Units.Enums;
+    using Concierge.Persistence;
 
     /// <summary>
     /// Interaction logic for InventoryWindow.xaml.
@@ -33,8 +34,8 @@ namespace Concierge.Display.Windows
             this.InitializeComponent();
             this.UseRoundedCorners();
 
-            this.NameComboBox.ItemsSource = Constants.Inventories;
-            this.CategoryComboBox.ItemsSource = Constants.ItemCategories;
+            this.NameComboBox.ItemsSource = Defaults.Inventory;
+            this.CategoryComboBox.ItemsSource = Defaults.ItemCategories;
             this.CoinTypeComboBox.ItemsSource = Enum.GetValues(typeof(CoinType)).Cast<CoinType>();
             this.ConciergePage = ConciergePage.None;
             this.SelectedItem = new Inventory();
@@ -71,7 +72,7 @@ namespace Concierge.Display.Windows
         {
             this.Editing = false;
             this.HeaderTextBlock.Text = this.HeaderText;
-            this.Items = Program.CcsFile.Character.Inventories;
+            this.Items = Program.CcsFile.Character.Equipment.Inventory;
             this.OkButton.Visibility = Visibility.Collapsed;
             this.CancelButton.Content = buttonText;
 
@@ -193,7 +194,7 @@ namespace Concierge.Display.Windows
             this.NotesTextBox.Text = string.Empty;
             this.WeightUnits.Text = $"({UnitFormat.WeightPostfix})";
             this.DescriptionTextBox.Text = string.Empty;
-            this.CategoryComboBox.Text = Constants.ItemCategories[0];
+            this.CategoryComboBox.Text = Defaults.ItemCategories[0];
             this.ValueUpDown.Value = 0;
             this.CoinTypeComboBox.Text = CoinType.Copper.ToString();
 
@@ -245,7 +246,7 @@ namespace Concierge.Display.Windows
             {
                 inventory.Attuned = this.AttunedCheckBox.IsChecked ?? false;
 
-                if (Program.CcsFile.Character.EquippedItems.Attuned > Constants.MaxAttunedItems)
+                if (Program.CcsFile.Character.Equipment.EquippedItems.Attuned > Constants.MaxAttunedItems)
                 {
                     inventory.Attuned = false;
                     ConciergeMessageBox.Show(

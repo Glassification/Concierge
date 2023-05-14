@@ -4,7 +4,7 @@
 
 namespace Concierge.Leveling.Dtos.Definitions
 {
-    using Concierge.Character.AbilitySavingThrows.SavingThrowTypes;
+    using Concierge.Character.AbilitySaves;
 
     public sealed class SavingThrowDto
     {

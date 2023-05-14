@@ -8,12 +8,12 @@ namespace Concierge.Leveling
     using System.Linq;
 
     using Concierge.Character;
-    using Concierge.Character.Enums;
     using Concierge.Character.Spellcasting;
     using Concierge.Commands;
+    using Concierge.Common;
+    using Concierge.Common.Enums;
     using Concierge.Leveling.Dtos.Leveler;
-    using Concierge.Tools.DiceRolling.Dice;
-    using Concierge.Utility.Utilities;
+    using Concierge.Tools.DiceRoller;
 
     public sealed class ConciergeLeveler
     {
@@ -53,18 +53,18 @@ namespace Concierge.Leveling
 
         private MagicClassDto LevelUpMagicClass(CharacterClass newClass)
         {
-            var magicClass = this.character.MagicClasses.Where(x => x.Name.Equals(newClass.Name)).FirstOrDefault();
+            var magicClass = this.character.Magic.MagicClasses.Where(x => x.Name.Equals(newClass.Name)).FirstOrDefault();
             var oldMagicClass = magicClass?.DeepCopy();
 
-            magicClass?.LevelUp(CharacterUtility.GetSpellSlotIncrease(newClass.Name, newClass.Subclass, newClass.Level));
+            magicClass?.LevelUp(LevelingMap.GetSpellSlotIncrease(newClass.Name, newClass.Subclass, newClass.Level));
 
             return new MagicClassDto(oldMagicClass, magicClass?.DeepCopy());
         }
 
         private ClassResourcesDto LevelUpClassResource(CharacterClass newClass)
         {
-            var resourceIncrease = CharacterUtility.GetResourceIncrease(newClass.Name, newClass.Subclass, newClass.Level);
-            var resource = this.character.ClassResources.Where(x => x.Type.Equals(resourceIncrease.Name, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
+            var resourceIncrease = LevelingMap.GetResourceIncrease(newClass.Name, newClass.Subclass, newClass.Level);
+            var resource = this.character.Vitality.ClassResources.Where(x => x.Type.Equals(resourceIncrease.Name, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
             var oldResource = resource?.DeepCopy();
 
             if (resource is not null)
@@ -77,19 +77,19 @@ namespace Concierge.Leveling
 
         private SpellSlotsDto LevelUpSpellSlots(MagicClass? newClass)
         {
-            var oldSpellSlots = this.character.SpellSlots.DeepCopy();
+            var oldSpellSlots = this.character.Magic.SpellSlots.DeepCopy();
 
             if (newClass is not null)
             {
-                this.character.SpellSlots.LevelUp(CharacterUtility.GetSpellSlotIncrease(newClass.Name, string.Empty, newClass.Level));
+                this.character.Magic.SpellSlots.LevelUp(LevelingMap.GetSpellSlotIncrease(newClass.Name, string.Empty, newClass.Level));
             }
 
-            return new SpellSlotsDto(oldSpellSlots, this.character.SpellSlots.DeepCopy());
+            return new SpellSlotsDto(oldSpellSlots, this.character.Magic.SpellSlots.DeepCopy());
         }
 
         private VitalityDto LevelUpVitality(HitDie hitDie, int bonusHp)
         {
-            var newHp = DiceRoll.RollHitDie(hitDie) + CharacterUtility.CalculateBonus(this.character.Attributes.Constitution) + bonusHp;
+            var newHp = DiceRoll.RollHitDie(hitDie) + Constants.CalculateBonus(this.character.Characteristic.Attributes.Constitution) + bonusHp;
             var oldVitality = this.character.Vitality.DeepCopy();
 
             this.character.Vitality.LevelUp(hitDie, newHp);

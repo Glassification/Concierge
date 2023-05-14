@@ -9,13 +9,11 @@ namespace Concierge
     using System.Windows.Controls;
     using System.Windows.Threading;
 
+    using Concierge.Common.Exceptions;
     using Concierge.Configuration;
     using Concierge.Display;
     using Concierge.Display.Utility;
-    using Concierge.Exceptions;
     using Concierge.Services;
-
-    using global::Exceptions;
 
     /// <summary>
     /// Interaction logic for App.xaml.

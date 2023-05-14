@@ -10,12 +10,12 @@ namespace Concierge.Display.Controls
     using System.Windows.Input;
 
     using Concierge.Character.Characteristics;
-    using Concierge.Character.Enums;
-    using Concierge.Character.Statuses;
+    using Concierge.Character.Vitals;
     using Concierge.Commands;
+    using Concierge.Common;
+    using Concierge.Common.Enums;
+    using Concierge.Common.Utilities;
     using Concierge.Display.Enums;
-    using Concierge.Utility;
-    using Concierge.Utility.Utilities;
 
     /// <summary>
     /// Interaction logic for HitDiceDisplay.xaml.
@@ -95,8 +95,8 @@ namespace Concierge.Display.Controls
         {
             return this.ConciergePage switch
             {
-                ConciergePage.Companion => Program.CcsFile.Character.Companion.Attributes,
-                _ => Program.CcsFile.Character.Attributes,
+                ConciergePage.Companion => Program.CcsFile.Character.Companion.Characteristic.Attributes,
+                _ => Program.CcsFile.Character.Characteristic.Attributes,
             };
         }
 

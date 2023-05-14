@@ -8,11 +8,11 @@ namespace Concierge.Console.Services
     using System.IO;
     using System.Text;
 
+    using Concierge.Common;
+    using Concierge.Common.Extensions;
     using Concierge.Console.Enums;
     using Concierge.Persistence;
     using Concierge.Persistence.ReadWriters;
-    using Concierge.Utility;
-    using Concierge.Utility.Extensions;
 
     public sealed class ListCommandsScriptService : ScriptService
     {

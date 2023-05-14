@@ -9,8 +9,8 @@ namespace Concierge.Display.Components
     using System.Windows.Controls;
     using System.Windows.Input;
 
-    using Concierge.Utility;
-    using Concierge.Utility.Utilities;
+    using Concierge.Common;
+    using Concierge.Common.Utilities;
 
     public sealed class ConciergeTextBoxBackground : Grid
     {

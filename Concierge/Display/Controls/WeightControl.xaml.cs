@@ -8,9 +8,9 @@ namespace Concierge.Display.Controls
     using System.Windows.Media;
 
     using Concierge.Character;
-    using Concierge.Utility;
-    using Concierge.Utility.Units;
-    using Concierge.Utility.Units.Enums;
+    using Concierge.Common;
+    using Concierge.Common.Enums;
+    using Concierge.Data.Units;
 
     /// <summary>
     /// Interaction logic for WeightDisplay.xaml.
@@ -24,7 +24,7 @@ namespace Concierge.Display.Controls
 
         public void SetWeightValues(ConciergeCharacter character, UnitTypes unitTypes)
         {
-            this.WeightCarriedField.Text = UnitFormat.FormatWeight(unitTypes, character.CarryWeight);
+            this.WeightCarriedField.Text = UnitFormat.FormatWeight(unitTypes, character.Equipment.CarryWeight);
             this.LightWeightField.Text = UnitFormat.FormatWeight(unitTypes, character.LightCarryCapacity, true);
             this.MediumWeightField.Text = UnitFormat.FormatWeight(unitTypes, character.MediumCarryCapacity, true);
             this.HeavyWeightField.Text = UnitFormat.FormatWeight(unitTypes, character.HeavyCarryCapacity, true);
@@ -32,7 +32,7 @@ namespace Concierge.Display.Controls
 
         public void FormatCarryWeight(ConciergeCharacter character)
         {
-            var weight = character.CarryWeight;
+            var weight = character.Equipment.CarryWeight;
 
             if (weight <= character.LightCarryCapacity)
             {

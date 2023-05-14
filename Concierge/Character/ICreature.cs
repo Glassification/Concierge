@@ -6,12 +6,12 @@ namespace Concierge.Character
 {
     using Concierge.Character.Characteristics;
     using Concierge.Character.Enums;
-    using Concierge.Character.Items;
-    using Concierge.Character.Statuses;
+    using Concierge.Character.Equipable;
+    using Concierge.Character.Vitals;
 
     public interface ICreature
     {
-        Attributes Attributes { get; set; }
+        Characteristic Characteristic { get; set; }
 
         Vitality Vitality { get; set; }
 

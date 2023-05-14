@@ -9,11 +9,11 @@ namespace Concierge.Display.Windows
     using System.Windows;
 
     using Concierge.Character.Enums;
-    using Concierge.Character.Items;
+    using Concierge.Character.Equipable;
     using Concierge.Commands;
+    using Concierge.Common.Extensions;
     using Concierge.Display.Components;
     using Concierge.Display.Enums;
-    using Concierge.Utility.Extensions;
 
     /// <summary>
     /// Interaction logic for EquipmentWindow.xaml.
@@ -46,7 +46,7 @@ namespace Concierge.Display.Windows
         {
             this.PreviousSlot = string.Empty;
             this.ClearFields();
-            this.ItemComboBox.ItemsSource = Program.CcsFile.Character.EquippedItems.Equipable;
+            this.ItemComboBox.ItemsSource = Program.CcsFile.Character.Equipment.EquippedItems.Equipable;
             this.OkButton.Visibility = Visibility.Collapsed;
             this.CancelButton.Content = buttonText;
 
@@ -59,7 +59,7 @@ namespace Concierge.Display.Windows
         {
             this.PreviousSlot = string.Empty;
             this.ClearFields();
-            this.ItemComboBox.ItemsSource = Program.CcsFile.Character.EquippedItems.Equipable;
+            this.ItemComboBox.ItemsSource = Program.CcsFile.Character.Equipment.EquippedItems.Equipable;
             this.ItemsAdded = false;
 
             this.ShowConciergeWindow();
@@ -140,7 +140,7 @@ namespace Concierge.Display.Windows
             }
 
             this.ClearFields();
-            this.ItemComboBox.ItemsSource = Program.CcsFile.Character.EquippedItems.Equipable;
+            this.ItemComboBox.ItemsSource = Program.CcsFile.Character.Equipment.EquippedItems.Equipable;
             this.InvokeApplyChanges();
 
             Program.Modify();

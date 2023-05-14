@@ -6,9 +6,9 @@ namespace Concierge.Console.Scripts
 {
     using System;
 
-    using Concierge.Character.Statuses;
+    using Concierge.Character;
+    using Concierge.Common.Extensions;
     using Concierge.Console.Enums;
-    using Concierge.Utility.Extensions;
 
     public class WealthScript : IScript
     {

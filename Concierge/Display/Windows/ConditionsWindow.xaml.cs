@@ -9,12 +9,12 @@ namespace Concierge.Display.Windows
     using System.Windows;
 
     using Concierge.Character.Enums;
-    using Concierge.Character.Statuses.ConditionStatus;
+    using Concierge.Character.Vitals.ConditionStates;
     using Concierge.Commands;
+    using Concierge.Common.Extensions;
+    using Concierge.Common.Utilities;
     using Concierge.Display.Components;
     using Concierge.Display.Enums;
-    using Concierge.Utility.Extensions;
-    using Concierge.Utility.Utilities;
 
     /// <summary>
     /// Interaction logic for ConditionsWindow.xaml.

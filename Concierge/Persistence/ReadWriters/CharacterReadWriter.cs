@@ -9,11 +9,11 @@ namespace Concierge.Persistence.ReadWriters
     using System.Text.RegularExpressions;
 
     using Concierge.Character;
+    using Concierge.Common.Exceptions;
+    using Concierge.Common.Extensions;
     using Concierge.Configuration;
+    using Concierge.Display;
     using Concierge.Display.Enums;
-    using Concierge.Exceptions;
-    using Concierge.Tools.Display;
-    using Concierge.Utility.Extensions;
     using Newtonsoft.Json;
 
     public static class CharacterReadWriter
@@ -172,12 +172,12 @@ namespace Concierge.Persistence.ReadWriters
 
         private static void Initialize(ConciergeCharacter character)
         {
-            foreach (var weapon in character.Weapons)
+            foreach (var weapon in character.Equipment.Weapons)
             {
                 weapon.Initialize(character);
             }
 
-            foreach (var weapon in character.Companion.Attacks)
+            foreach (var weapon in character.Companion.Equipment.Weapons)
             {
                 weapon.Initialize(character.Companion);
             }

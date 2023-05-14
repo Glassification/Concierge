@@ -8,7 +8,7 @@ namespace Concierge.Display.Components
     using System.Windows.Controls;
     using System.Windows.Input;
 
-    using Concierge.Utility;
+    using Concierge.Persistence;
 
     public sealed class ConciergeCheckBox : CheckBox
     {
@@ -33,6 +33,14 @@ namespace Concierge.Display.Components
         public void UpdatedValue()
         {
             this.IsUpdating = false;
+        }
+
+        public void UncheckUnlessNameMatches(string name)
+        {
+            if (!this.Name.Equals(name))
+            {
+                this.IsChecked = false;
+            }
         }
 
         private void SoundEffect_Checked(object sender, RoutedEventArgs e)

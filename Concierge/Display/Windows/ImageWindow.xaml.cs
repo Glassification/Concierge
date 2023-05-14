@@ -8,13 +8,15 @@ namespace Concierge.Display.Windows
     using System.Windows;
     using System.Windows.Media;
 
-    using Concierge.Character.Characteristics;
+    using Concierge.Character;
     using Concierge.Commands;
+    using Concierge.Common.Extensions;
+    using Concierge.Common.Utilities;
     using Concierge.Display.Components;
     using Concierge.Display.Enums;
+    using Concierge.Persistence;
+    using Concierge.Persistence.Enums;
     using Concierge.Services;
-    using Concierge.Utility.Extensions;
-    using Concierge.Utility.Utilities;
 
     /// <summary>
     /// Interaction logic for ImageWindow.xaml.
@@ -127,7 +129,7 @@ namespace Concierge.Display.Windows
 
         private void OpenImageButton_Click(object sender, RoutedEventArgs e)
         {
-            var fileName = this.fileAccessService.OpenImage();
+            var fileName = this.fileAccessService.Open((int)ImageFiltersIndex.Png, FileConstants.ImageOpenFilter, ImageFiltersIndex.Png.ToString().ToLower());
 
             if (!fileName.IsNullOrWhiteSpace())
             {

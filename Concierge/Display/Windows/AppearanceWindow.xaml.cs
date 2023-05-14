@@ -9,15 +9,14 @@ namespace Concierge.Display.Windows
     using System.Windows;
 
     using Concierge.Character.Characteristics;
-    using Concierge.Character.Enums;
     using Concierge.Commands;
+    using Concierge.Common.Enums;
+    using Concierge.Data;
+    using Concierge.Data.Units;
     using Concierge.Display.Components;
     using Concierge.Display.Enums;
     using Concierge.Display.Utility;
-    using Concierge.Primitives;
     using Concierge.Services;
-    using Concierge.Utility.Units;
-    using Concierge.Utility.Units.Enums;
 
     /// <summary>
     /// Interaction logic for AppearanceWindow.xaml.
@@ -105,7 +104,7 @@ namespace Concierge.Display.Windows
 
         public override ConciergeWindowResult ShowWizardSetup(string buttonText)
         {
-            this.Appearance = Program.CcsFile.Character.Appearance;
+            this.Appearance = Program.CcsFile.Character.Characteristic.Appearance;
             this.ApplyButton.Visibility = Visibility.Collapsed;
             this.CancelButton.Content = buttonText;
 

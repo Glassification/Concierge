@@ -6,8 +6,8 @@ namespace Concierge.Display.Windows
 {
     using System.Windows;
 
+    using Concierge.Character;
     using Concierge.Character.Enums;
-    using Concierge.Character.Statuses;
     using Concierge.Commands;
     using Concierge.Display.Components;
     using Concierge.Display.Controls;
@@ -117,6 +117,7 @@ namespace Concierge.Display.Windows
 
         private void FillFields()
         {
+            this.AmountUpDown.Value = 0;
             this.CopperField.Text = this.CP.ToString();
             this.SilverField.Text = this.SP.ToString();
             this.ElectrumField.Text = this.EP.ToString();

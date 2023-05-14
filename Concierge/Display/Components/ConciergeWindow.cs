@@ -13,13 +13,13 @@ namespace Concierge.Display.Components
     using Concierge.Animations;
     using Concierge.Character;
     using Concierge.Character.Enums;
+    using Concierge.Common;
+    using Concierge.Common.Exceptions;
+    using Concierge.Common.Extensions;
+    using Concierge.Data;
     using Concierge.Display.Enums;
     using Concierge.Display.Windows.Helpers;
-    using Concierge.Exceptions;
-    using Concierge.Primitives;
     using Concierge.Services;
-    using Concierge.Utility;
-    using Concierge.Utility.Extensions;
 
     public abstract partial class ConciergeWindow : Window
     {

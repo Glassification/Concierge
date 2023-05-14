@@ -14,11 +14,11 @@ namespace Concierge.Display.Windows
     using Concierge.Character.Characteristics;
     using Concierge.Character.Enums;
     using Concierge.Commands;
+    using Concierge.Common.Extensions;
+    using Concierge.Common.Utilities;
     using Concierge.Display.Components;
     using Concierge.Display.Enums;
-    using Concierge.Utility;
-    using Concierge.Utility.Extensions;
-    using Concierge.Utility.Utilities;
+    using Concierge.Persistence;
 
     /// <summary>
     /// Interaction logic for AbilitiesWindow.xaml.
@@ -62,7 +62,7 @@ namespace Concierge.Display.Windows
         {
             this.Editing = false;
             this.HeaderTextBlock.Text = this.HeaderText;
-            this.Abilities = Program.CcsFile.Character.Abilities;
+            this.Abilities = Program.CcsFile.Character.Characteristic.Abilities;
             this.OkButton.Visibility = Visibility.Collapsed;
             this.CancelButton.Content = buttonText;
 
@@ -116,7 +116,7 @@ namespace Concierge.Display.Windows
             }
             else
             {
-                Program.CcsFile.Character.Abilities.Add(this.ToAbility());
+                Program.CcsFile.Character.Characteristic.Abilities.Add(this.ToAbility());
             }
 
             this.CloseConciergeWindow();
@@ -133,9 +133,9 @@ namespace Concierge.Display.Windows
         {
             return new CompositeCollection
             {
-                new CollectionContainer() { Collection = Constants.Abilities.Where(x => x.Type == AbilityTypes.Feat).OrderBy(x => x.Name).ToList() },
+                new CollectionContainer() { Collection = Defaults.Abilities.Where(x => x.Type == AbilityTypes.Feat).OrderBy(x => x.Name).ToList() },
                 new Separator(),
-                new CollectionContainer() { Collection = Constants.Abilities.Where(x => x.Type == AbilityTypes.Background).OrderBy(x => x.Name).ToList() },
+                new CollectionContainer() { Collection = Defaults.Abilities.Where(x => x.Type == AbilityTypes.Background).OrderBy(x => x.Name).ToList() },
             };
         }
 

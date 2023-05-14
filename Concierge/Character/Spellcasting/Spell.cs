@@ -8,9 +8,9 @@ namespace Concierge.Character.Spellcasting
     using System.Windows.Media;
 
     using Concierge.Character.Enums;
-    using Concierge.Utility;
-    using Concierge.Utility.Attributes;
-    using Concierge.Utility.Dtos;
+    using Concierge.Common;
+    using Concierge.Common.Attributes;
+    using Concierge.Common.Dtos;
     using MaterialDesignThemes.Wpf;
     using Newtonsoft.Json;
 

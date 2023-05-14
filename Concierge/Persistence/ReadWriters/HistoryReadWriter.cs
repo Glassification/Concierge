@@ -8,8 +8,8 @@ namespace Concierge.Persistence.ReadWriters
     using System.Collections.Generic;
     using System.IO;
 
-    using Concierge.Utility;
-    using Concierge.Utility.Extensions;
+    using Concierge.Common;
+    using Concierge.Common.Extensions;
 
     public static class HistoryReadWriter
     {

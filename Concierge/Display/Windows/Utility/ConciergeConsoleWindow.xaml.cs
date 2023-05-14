@@ -8,10 +8,10 @@ namespace Concierge.Display.Utility
     using System.Windows;
     using System.Windows.Input;
 
+    using Concierge.Common;
     using Concierge.Console;
     using Concierge.Display.Components;
     using Concierge.Display.Enums;
-    using Concierge.Utility;
 
     /// <summary>
     /// Interaction logic for ConciergeConsoleWindow.xaml.

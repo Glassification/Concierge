@@ -10,12 +10,12 @@ namespace Concierge.Search
     using System.Text.RegularExpressions;
     using System.Windows.Controls;
 
+    using Concierge.Common;
+    using Concierge.Common.Extensions;
+    using Concierge.Common.Utilities;
     using Concierge.Display;
     using Concierge.Display.Components;
     using Concierge.Search.Enums;
-    using Concierge.Utility;
-    using Concierge.Utility.Extensions;
-    using Concierge.Utility.Utilities;
 
     public sealed class ConciergeSearch
     {
@@ -120,7 +120,7 @@ namespace Concierge.Search
                 return;
             }
 
-            var chapters = Program.CcsFile.Character.Chapters;
+            var chapters = Program.CcsFile.Character.Journal.Chapters;
             if (!chapters.Any() || !DisplayUtility.FindVisualChildren<RichTextBox>(page).Any())
             {
                 return;

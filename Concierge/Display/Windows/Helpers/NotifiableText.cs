@@ -6,7 +6,7 @@ namespace Concierge.Display.Windows.Helpers
 {
     using System.ComponentModel;
 
-    using Concierge.Utility.Extensions;
+    using Concierge.Common.Extensions;
 
     public sealed class NotifiableText : INotifyPropertyChanged
     {

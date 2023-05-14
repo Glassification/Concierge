@@ -15,7 +15,7 @@ namespace Concierge.Display.Windows
     using Concierge.Commands;
     using Concierge.Display.Components;
     using Concierge.Display.Enums;
-    using Concierge.Utility;
+    using Concierge.Persistence;
 
     /// <summary>
     /// Interaction logic for SpellWindow.xaml.
@@ -27,9 +27,9 @@ namespace Concierge.Display.Windows
             this.InitializeComponent();
             this.UseRoundedCorners();
 
-            this.SpellNameComboBox.ItemsSource = Constants.Spells;
+            this.SpellNameComboBox.ItemsSource = Defaults.Spells;
             this.SchoolComboBox.ItemsSource = Enum.GetValues(typeof(ArcaneSchools)).Cast<ArcaneSchools>();
-            this.ClassComboBox.ItemsSource = Constants.Classes;
+            this.ClassComboBox.ItemsSource = Defaults.Classes;
             this.ConciergePage = ConciergePage.None;
             this.SelectedSpell = new Spell();
             this.Spells = new List<Spell>();
@@ -70,7 +70,7 @@ namespace Concierge.Display.Windows
             this.Editing = false;
             this.HeaderTextBlock.Text = this.HeaderText;
             this.OkButton.Visibility = Visibility.Collapsed;
-            this.Spells = Program.CcsFile.Character.Spells;
+            this.Spells = Program.CcsFile.Character.Magic.Spells;
             this.CancelButton.Content = buttonText;
 
             this.ClearFields();

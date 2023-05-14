@@ -4,13 +4,11 @@
 
 namespace Concierge.Character
 {
-    using System.Collections.Generic;
-
     using Concierge.Character.Characteristics;
     using Concierge.Character.Enums;
-    using Concierge.Character.Items;
-    using Concierge.Character.Statuses;
-    using Concierge.Utility;
+    using Concierge.Character.Equipable;
+    using Concierge.Character.Vitals;
+    using Concierge.Common;
     using Newtonsoft.Json;
 
     public sealed class Companion : ICopyable<Companion>, ICreature
@@ -18,8 +16,8 @@ namespace Concierge.Character
         public Companion()
         {
             this.Vitality = new Vitality();
-            this.Attributes = new Attributes();
-            this.Attacks = new List<Weapon>();
+            this.Characteristic = new Characteristic();
+            this.Equipment = new Equipment();
             this.Properties = new CompanionProperties();
             this.CompanionImage = new CharacterImage();
         }
@@ -30,20 +28,20 @@ namespace Concierge.Character
 
         public Vitality Vitality { get; set; }
 
-        public Attributes Attributes { get; set; }
-
-        public List<Weapon> Attacks { get; set; }
-
         [JsonIgnore]
         public CreatureType CreatureType => CreatureType.Companion;
+
+        public Characteristic Characteristic { get; set; }
+
+        public Equipment Equipment { get; set; }
 
         public Companion DeepCopy()
         {
             return new Companion()
             {
                 Vitality = this.Vitality.DeepCopy(),
-                Attributes = this.Attributes.DeepCopy(),
-                Attacks = new List<Weapon>(this.Attacks),
+                Equipment = this.Equipment.DeepCopy(),
+                Characteristic = this.Characteristic.DeepCopy(),
                 Properties = this.Properties.DeepCopy(),
                 CompanionImage = this.CompanionImage.DeepCopy(),
             };

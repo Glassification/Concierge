@@ -6,10 +6,10 @@ namespace Concierge.Display.Utility
 {
     using System.Windows;
 
+    using Concierge.Common;
+    using Concierge.Common.Utilities;
     using Concierge.Display.Components;
     using Concierge.Display.Windows;
-    using Concierge.Utility;
-    using Concierge.Utility.Utilities;
 
     /// <summary>
     /// Interaction logic for AboutConciergeWindow.xaml.
@@ -41,8 +41,8 @@ namespace Concierge.Display.Utility
             this.VersionField.Text = $"{Program.AssemblyVersion}{(Program.IsDebug ? " - Debug" : string.Empty)}";
             this.DesignerField.Text = Constants.Designer;
             this.LicenseField.Text = Constants.License;
-            this.CopyrightField.Text = Program.IsDebug ? GitUtility.BranchName : $"{CopyrightSymbol}{Constants.Copyright}";
-            this.CopyrightLabel.Text = Program.IsDebug ? "Git Branch:" : "Copyright:";
+            this.CopyrightField.Text = $"{CopyrightSymbol}{Constants.Copyright}";
+            this.CopyrightLabel.Text = "Copyright:";
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)

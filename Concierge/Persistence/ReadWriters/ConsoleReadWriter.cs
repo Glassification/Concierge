@@ -8,8 +8,8 @@ namespace Concierge.Persistence.ReadWriters
     using System.Collections.Generic;
     using System.IO;
 
+    using Concierge.Common.Extensions;
     using Concierge.Console;
-    using Concierge.Utility.Extensions;
     using Newtonsoft.Json;
 
     public static class ConsoleReadWriter

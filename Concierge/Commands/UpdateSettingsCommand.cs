@@ -22,12 +22,12 @@ namespace Concierge.Commands
 
         public override void Redo()
         {
-            AppSettingsManager.UpdateSettings(this.newSettingsDto);
+            AppSettingsManager.UpdateSettings(this.newSettingsDto, Program.IsDebug);
         }
 
         public override void Undo()
         {
-            AppSettingsManager.UpdateSettings(this.oldSettingsDto);
+            AppSettingsManager.UpdateSettings(this.oldSettingsDto, Program.IsDebug);
         }
 
         public override bool ShouldAdd()

@@ -7,15 +7,14 @@ namespace Concierge.Console.Services
     using System.Collections.ObjectModel;
 
     using Concierge.Character.Characteristics;
-    using Concierge.Character.Items;
+    using Concierge.Character.Equipable;
     using Concierge.Character.Spellcasting;
-    using Concierge.Character.Statuses;
+    using Concierge.Character.Vitals;
     using Concierge.Console.Enums;
     using Concierge.Console.Scripts;
+    using Concierge.Data;
     using Concierge.Persistence;
-    using Concierge.Primitives;
     using Concierge.Tools.Generators.Names;
-    using Concierge.Utility;
 
     public sealed class ReadWriterScriptService : ScriptService
     {
@@ -72,29 +71,29 @@ namespace Concierge.Console.Services
         {
             return command.Name.ToLower() switch
             {
-                "ability" => new ReadWriterScript<ReadOnlyCollection<Ability>>(Constants.Abilities).Evaluate(command),
-                "ammunition" => new ReadWriterScript<ReadOnlyCollection<Ammunition>>(Constants.Ammunitions).Evaluate(command),
-                "inventory" => new ReadWriterScript<ReadOnlyCollection<Inventory>>(Constants.Inventories).Evaluate(command),
-                "language" => new ReadWriterScript<ReadOnlyCollection<Language>>(Constants.Languages).Evaluate(command),
-                "names" => new ReadWriterScript<ReadOnlyCollection<Name>>(Constants.Names).Evaluate(command),
-                "resources" => new ReadWriterScript<ReadOnlyCollection<ClassResource>>(Constants.Resources).Evaluate(command),
-                "spell" => new ReadWriterScript<ReadOnlyCollection<Spell>>(Constants.Spells).Evaluate(command),
-                "subclass" => new ReadWriterScript<ReadOnlyCollection<CategoryItem>>(Constants.Subclass).Evaluate(command),
-                "subrace" => new ReadWriterScript<ReadOnlyCollection<CategoryItem>>(Constants.Subrace).Evaluate(command),
-                "weapon" => new ReadWriterScript<ReadOnlyCollection<Weapon>>(Constants.Weapons).Evaluate(command),
-                "alignment" => new ReadWriterScript<ReadOnlyCollection<string>>(Constants.Alignment).Evaluate(command),
-                "autosaveinterval" => new ReadWriterScript<ReadOnlyCollection<int>>(Constants.AutosaveIntervals).Evaluate(command),
-                "background" => new ReadWriterScript<ReadOnlyCollection<string>>(Constants.Backgrounds).Evaluate(command),
-                "category" => new ReadWriterScript<ReadOnlyCollection<string>>(Constants.ItemCategories).Evaluate(command),
-                "classname" => new ReadWriterScript<ReadOnlyCollection<string>>(Constants.Classes).Evaluate(command),
-                "game" => new ReadWriterScript<ReadOnlyCollection<string>>(Constants.Games).Evaluate(command),
-                "instrument" => new ReadWriterScript<ReadOnlyCollection<string>>(Constants.Instruments).Evaluate(command),
-                "levelexp" => new ReadWriterScript<ReadOnlyCollection<int>>(Constants.Levels).Evaluate(command),
-                "magicclassname" => new ReadWriterScript<ReadOnlyCollection<string>>(Constants.MagicClasses).Evaluate(command),
-                "proficiency" => new ReadWriterScript<ReadOnlyCollection<int>>(Constants.ProficiencyLevels).Evaluate(command),
-                "race" => new ReadWriterScript<ReadOnlyCollection<string>>(Constants.Races).Evaluate(command),
-                "statuseffect" => new ReadWriterScript<ReadOnlyCollection<string>>(Constants.StatusEffects).Evaluate(command),
-                "tool" => new ReadWriterScript<ReadOnlyCollection<string>>(Constants.Tools).Evaluate(command),
+                "ability" => new ReadWriterScript<ReadOnlyCollection<Ability>>(Defaults.Abilities).Evaluate(command),
+                "ammunition" => new ReadWriterScript<ReadOnlyCollection<Ammunition>>(Defaults.Ammunition).Evaluate(command),
+                "inventory" => new ReadWriterScript<ReadOnlyCollection<Inventory>>(Defaults.Inventory).Evaluate(command),
+                "language" => new ReadWriterScript<ReadOnlyCollection<Language>>(Defaults.Languages).Evaluate(command),
+                "names" => new ReadWriterScript<ReadOnlyCollection<Name>>(Defaults.Names).Evaluate(command),
+                "resources" => new ReadWriterScript<ReadOnlyCollection<ClassResource>>(Defaults.Resources).Evaluate(command),
+                "spell" => new ReadWriterScript<ReadOnlyCollection<Spell>>(Defaults.Spells).Evaluate(command),
+                "subclass" => new ReadWriterScript<ReadOnlyCollection<CategoryItem>>(Defaults.Subclass).Evaluate(command),
+                "subrace" => new ReadWriterScript<ReadOnlyCollection<CategoryItem>>(Defaults.Subrace).Evaluate(command),
+                "weapon" => new ReadWriterScript<ReadOnlyCollection<Weapon>>(Defaults.Weapons).Evaluate(command),
+                "alignment" => new ReadWriterScript<ReadOnlyCollection<string>>(Defaults.Alignment).Evaluate(command),
+                "autosaveinterval" => new ReadWriterScript<ReadOnlyCollection<int>>(Defaults.AutosaveIntervals).Evaluate(command),
+                "background" => new ReadWriterScript<ReadOnlyCollection<string>>(Defaults.Backgrounds).Evaluate(command),
+                "category" => new ReadWriterScript<ReadOnlyCollection<string>>(Defaults.ItemCategories).Evaluate(command),
+                "classname" => new ReadWriterScript<ReadOnlyCollection<string>>(Defaults.Classes).Evaluate(command),
+                "game" => new ReadWriterScript<ReadOnlyCollection<string>>(Defaults.Games).Evaluate(command),
+                "instrument" => new ReadWriterScript<ReadOnlyCollection<string>>(Defaults.Instruments).Evaluate(command),
+                "levelexp" => new ReadWriterScript<ReadOnlyCollection<int>>(Defaults.Levels).Evaluate(command),
+                "magicclassname" => new ReadWriterScript<ReadOnlyCollection<string>>(Defaults.MagicClasses).Evaluate(command),
+                "proficiency" => new ReadWriterScript<ReadOnlyCollection<int>>(Defaults.ProficiencyLevels).Evaluate(command),
+                "race" => new ReadWriterScript<ReadOnlyCollection<string>>(Defaults.Races).Evaluate(command),
+                "statuseffect" => new ReadWriterScript<ReadOnlyCollection<string>>(Defaults.StatusEffects).Evaluate(command),
+                "tool" => new ReadWriterScript<ReadOnlyCollection<string>>(Defaults.Tools).Evaluate(command),
                 "character" => RunForCharacterSheet(command),
                 _ => new ConsoleResult($"Error: '{command}' does not contain a valid command.", ResultType.Error),
             };

@@ -10,9 +10,9 @@ namespace Concierge.Display.Components
     using System.Windows.Media;
 
     using Concierge.Commands;
+    using Concierge.Common;
+    using Concierge.Common.Extensions;
     using Concierge.Display.Enums;
-    using Concierge.Utility;
-    using Concierge.Utility.Extensions;
 
     public sealed class ConciergeDataGrid : DataGrid
     {
@@ -50,6 +50,30 @@ namespace Concierge.Display.Components
         }
 
         public int LastIndex => this.Items.Count - 1;
+
+        public void SortListFromDataGrid<T>(List<T> list, ConciergePage conciergePage)
+        {
+            if (this.Items.IsEmpty)
+            {
+                return;
+            }
+
+            var oldList = new List<T>(list);
+
+            list.Clear();
+            foreach (var item in this.Items)
+            {
+                list.Add((T)item);
+            }
+
+            Program.UndoRedoService.AddCommand(
+                new ListOrderCommand<T>(
+                    list,
+                    oldList,
+                    new List<T>(list),
+                    conciergePage));
+            Program.Modify();
+        }
 
         public void RaiseSortedEvent()
         {

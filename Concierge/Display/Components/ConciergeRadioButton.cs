@@ -8,7 +8,7 @@ namespace Concierge.Display.Components
     using System.Windows.Controls;
     using System.Windows.Input;
 
-    using Concierge.Utility;
+    using Concierge.Persistence;
 
     public sealed class ConciergeRadioButton : RadioButton
     {

@@ -4,7 +4,7 @@
 
 namespace Concierge.Leveling.Dtos.Leveler
 {
-    using Concierge.Character.Statuses;
+    using Concierge.Character.Vitals;
 
     public sealed class ClassResourcesDto
     {

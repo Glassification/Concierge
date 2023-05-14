@@ -10,7 +10,8 @@ namespace Concierge.Display.Utility
     using System.Windows;
     using System.Windows.Input;
 
-    using Concierge.Character.Enums;
+    using Concierge.Common;
+    using Concierge.Common.Enums;
     using Concierge.Display.Components;
     using Concierge.Display.Enums;
     using Concierge.Persistence;
@@ -19,7 +20,6 @@ namespace Concierge.Display.Utility
     using Concierge.Tools.Enums;
     using Concierge.Tools.Generators;
     using Concierge.Tools.Generators.Names;
-    using Concierge.Utility;
 
     /// <summary>
     /// Interaction logic for NameGeneratorWindow.xaml.
@@ -34,9 +34,9 @@ namespace Concierge.Display.Utility
             this.InitializeComponent();
             this.UseRoundedCorners();
 
-            this.RaceComboBox.ItemsSource = Constants.Races;
+            this.RaceComboBox.ItemsSource = Defaults.Races;
             this.GenderComboBox.ItemsSource = Enum.GetValues(typeof(Gender)).Cast<Gender>();
-            this.nameGenerator = new NameGenerator();
+            this.nameGenerator = new NameGenerator(Defaults.Names.ToList());
             this.History = new History(HistoryReadWriter.Read(this.nameHistoryFile), string.Empty);
 
             this.SetGenderState(false);

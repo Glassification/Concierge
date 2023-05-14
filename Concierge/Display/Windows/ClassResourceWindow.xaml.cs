@@ -9,13 +9,13 @@ namespace Concierge.Display.Windows
     using System.Windows;
 
     using Concierge.Character.Enums;
-    using Concierge.Character.Statuses;
+    using Concierge.Character.Vitals;
     using Concierge.Commands;
+    using Concierge.Common.Extensions;
+    using Concierge.Common.Utilities;
     using Concierge.Display.Components;
     using Concierge.Display.Enums;
-    using Concierge.Utility;
-    using Concierge.Utility.Extensions;
-    using Concierge.Utility.Utilities;
+    using Concierge.Persistence;
 
     /// <summary>
     /// Interaction logic for ClassResourceWindow.xaml.
@@ -28,7 +28,7 @@ namespace Concierge.Display.Windows
             this.UseRoundedCorners();
 
             this.ConciergePage = ConciergePage.None;
-            this.ResourceNameComboBox.ItemsSource = Constants.Resources;
+            this.ResourceNameComboBox.ItemsSource = Defaults.Resources;
             this.RecoveryComboBox.ItemsSource = StringUtility.FormatEnumForDisplay(typeof(Recovery));
             this.ClassResource = new ClassResource();
             this.ClassResources = new List<ClassResource>();
@@ -57,7 +57,7 @@ namespace Concierge.Display.Windows
         {
             this.Editing = false;
             this.HeaderTextBlock.Text = this.HeaderText;
-            this.ClassResources = Program.CcsFile.Character.ClassResources;
+            this.ClassResources = Program.CcsFile.Character.Vitality.ClassResources;
             this.OkButton.Visibility = Visibility.Collapsed;
             this.CancelButton.Content = buttonText;
 

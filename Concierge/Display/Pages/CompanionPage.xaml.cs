@@ -10,15 +10,16 @@ namespace Concierge.Display.Pages
     using System.Windows;
     using System.Windows.Controls;
 
+    using Concierge.Character;
     using Concierge.Character.Characteristics;
-    using Concierge.Character.Items;
-    using Concierge.Character.Statuses;
+    using Concierge.Character.Equipable;
+    using Concierge.Character.Vitals;
     using Concierge.Commands;
+    using Concierge.Common;
+    using Concierge.Common.Extensions;
     using Concierge.Display.Enums;
     using Concierge.Display.Windows;
     using Concierge.Services;
-    using Concierge.Utility.Extensions;
-    using Concierge.Utility.Utilities;
 
     /// <summary>
     /// Interaction logic for CompanionPage.xaml.
@@ -35,7 +36,7 @@ namespace Concierge.Display.Pages
 
         public bool HasEditableDataGrid => true;
 
-        private List<Weapon> DisplayList => Program.CcsFile.Character.Companion.Attacks.Filter(this.SearchFilter.FilterText).ToList();
+        private List<Weapon> DisplayList => Program.CcsFile.Character.Companion.Equipment.Weapons.Filter(this.SearchFilter.FilterText).ToList();
 
         public void Draw(bool isNewCharacterSheet = false)
         {
@@ -79,14 +80,14 @@ namespace Concierge.Display.Pages
 
         public void DrawAttributes()
         {
-            var attributes = Program.CcsFile.Character.Companion.Attributes;
+            var attributes = Program.CcsFile.Character.Companion.Characteristic.Attributes;
 
-            this.StrengthAttributeDisplay.Bonus = CharacterUtility.CalculateBonus(attributes.Strength);
-            this.DexterityAttributeDisplay.Bonus = CharacterUtility.CalculateBonus(attributes.Dexterity);
-            this.ConstitutionAttributeDisplay.Bonus = CharacterUtility.CalculateBonus(attributes.Constitution);
-            this.IntelligenceAttributeDisplay.Bonus = CharacterUtility.CalculateBonus(attributes.Intelligence);
-            this.WisdomAttributeDisplay.Bonus = CharacterUtility.CalculateBonus(attributes.Wisdom);
-            this.CharismaAttributeDisplay.Bonus = CharacterUtility.CalculateBonus(attributes.Charisma);
+            this.StrengthAttributeDisplay.Bonus = Constants.CalculateBonus(attributes.Strength);
+            this.DexterityAttributeDisplay.Bonus = Constants.CalculateBonus(attributes.Dexterity);
+            this.ConstitutionAttributeDisplay.Bonus = Constants.CalculateBonus(attributes.Constitution);
+            this.IntelligenceAttributeDisplay.Bonus = Constants.CalculateBonus(attributes.Intelligence);
+            this.WisdomAttributeDisplay.Bonus = Constants.CalculateBonus(attributes.Wisdom);
+            this.CharismaAttributeDisplay.Bonus = Constants.CalculateBonus(attributes.Charisma);
 
             this.StrengthAttributeDisplay.Score = attributes.Strength;
             this.DexterityAttributeDisplay.Score = attributes.Dexterity;
@@ -130,12 +131,12 @@ namespace Concierge.Display.Pages
 
         private void WeaponDataGrid_Sorted(object sender, RoutedEventArgs e)
         {
-            DisplayUtility.SortListFromDataGrid(this.WeaponDataGrid, Program.CcsFile.Character.Companion.Attacks, this.ConciergePage);
+            this.WeaponDataGrid.SortListFromDataGrid(Program.CcsFile.Character.Companion.Equipment.Weapons, this.ConciergePage);
         }
 
         private void AttacksUpButton_Click(object sender, RoutedEventArgs e)
         {
-            var index = this.WeaponDataGrid.NextItem(Program.CcsFile.Character.Companion.Attacks, 0, -1, this.ConciergePage);
+            var index = this.WeaponDataGrid.NextItem(Program.CcsFile.Character.Companion.Equipment.Weapons, 0, -1, this.ConciergePage);
 
             if (index != -1)
             {
@@ -146,7 +147,7 @@ namespace Concierge.Display.Pages
 
         private void AttacksDownButton_Click(object sender, RoutedEventArgs e)
         {
-            var index = this.WeaponDataGrid.NextItem(Program.CcsFile.Character.Companion.Attacks, Program.CcsFile.Character.Companion.Attacks.Count - 1, 1, this.ConciergePage);
+            var index = this.WeaponDataGrid.NextItem(Program.CcsFile.Character.Companion.Equipment.Weapons, Program.CcsFile.Character.Companion.Equipment.Weapons.Count - 1, 1, this.ConciergePage);
 
             if (index != -1)
             {
@@ -163,7 +164,7 @@ namespace Concierge.Display.Pages
         private void AttacksAddButton_Click(object sender, RoutedEventArgs e)
         {
             var added = ConciergeWindowService.ShowAdd<List<Weapon>>(
-                Program.CcsFile.Character.Companion.Attacks,
+                Program.CcsFile.Character.Companion.Equipment.Weapons,
                 typeof(AttacksWindow),
                 this.Window_ApplyChanges,
                 ConciergePage.Companion,
@@ -192,8 +193,8 @@ namespace Concierge.Display.Pages
             }
 
             var index = this.WeaponDataGrid.SelectedIndex;
-            Program.UndoRedoService.AddCommand(new DeleteCommand<Weapon>(Program.CcsFile.Character.Companion.Attacks, weapon, index, this.ConciergePage));
-            Program.CcsFile.Character.Companion.Attacks.Remove(weapon);
+            Program.UndoRedoService.AddCommand(new DeleteCommand<Weapon>(Program.CcsFile.Character.Companion.Equipment.Weapons, weapon, index, this.ConciergePage));
+            Program.CcsFile.Character.Companion.Equipment.Weapons.Remove(weapon);
             this.DrawAttacks();
             this.WeaponDataGrid.SetSelectedIndex(index);
 
@@ -258,7 +259,7 @@ namespace Concierge.Display.Pages
         private void AttributeDisplay_EditClicked(object sender, RoutedEventArgs e)
         {
             ConciergeWindowService.ShowEdit<Attributes>(
-                Program.CcsFile.Character.Companion.Attributes,
+                Program.CcsFile.Character.Companion.Characteristic.Attributes,
                 typeof(AttributesWindow),
                 this.Window_ApplyChanges,
                 ConciergePage.Companion);

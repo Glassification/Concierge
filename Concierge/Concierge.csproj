@@ -6,7 +6,7 @@
     <RootNamespace>Concierge</RootNamespace>
 	<Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
-    <Version>5.2.0</Version>
+    <Version>5.3.0</Version>
     <ApplicationIcon>AppIconImage.ico</ApplicationIcon>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
@@ -19,13 +19,9 @@
     <CheckForOverflowUnderflow>True</CheckForOverflowUnderflow>
   </PropertyGroup>
 
-  <ItemGroup>
-    <None Remove="stylecop.json" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <AdditionalFiles Include="stylecop.json" />
-  </ItemGroup>
+	<ItemGroup>
+		<AdditionalFiles Include="../stylecop.json" />
+	</ItemGroup>
 
   <ItemGroup>
     <Content Include="AppIconImage.ico" />
@@ -52,6 +48,14 @@
 
   <ItemGroup>
     <None Include="..\.editorconfig" Link=".editorconfig" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Concierge.Common\Concierge.Common.csproj" />
+    <ProjectReference Include="..\Concierge.Configuration\Concierge.Configuration.csproj" />
+    <ProjectReference Include="..\Concierge.Data\Concierge.Data.csproj" />
+    <ProjectReference Include="..\Concierge.Logging\Concierge.Logging.csproj" />
+    <ProjectReference Include="..\Concierge.Tools\Concierge.Tools.csproj" />
   </ItemGroup>
 
 	<ItemGroup>

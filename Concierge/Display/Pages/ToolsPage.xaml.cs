@@ -11,17 +11,15 @@ namespace Concierge.Display.Pages
     using System.Windows.Controls;
     using System.Windows.Input;
 
-    using Concierge.Character.Statuses;
+    using Concierge.Character;
+    using Concierge.Common;
+    using Concierge.Common.Extensions;
     using Concierge.Display.Enums;
-    using Concierge.Persistence;
     using Concierge.Persistence.ReadWriters;
     using Concierge.Tools;
-    using Concierge.Tools.DiceRolling;
-    using Concierge.Tools.DiceRolling.Dice;
-    using Concierge.Tools.DivideLoot;
+    using Concierge.Tools.DiceRoller;
     using Concierge.Tools.Enums;
-    using Concierge.Utility;
-    using Concierge.Utility.Extensions;
+    using Concierge.Tools.LootDivider;
 
     /// <summary>
     /// Interaction logic for ToolsPage.xaml.

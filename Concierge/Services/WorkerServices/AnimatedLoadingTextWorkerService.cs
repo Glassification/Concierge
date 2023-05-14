@@ -8,8 +8,8 @@ namespace Concierge.Services.WorkerServices
     using System.ComponentModel;
     using System.Threading;
 
+    using Concierge.Common.Utilities;
     using Concierge.Services.Enums;
-    using Concierge.Utility.Utilities;
 
     public sealed class AnimatedLoadingTextWorkerService : IWorkerService
     {

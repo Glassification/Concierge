@@ -6,11 +6,11 @@ namespace Concierge.Display.Windows
 {
     using System.Windows;
 
-    using Concierge.Character.Journal;
+    using Concierge.Character.Journals;
     using Concierge.Commands;
+    using Concierge.Common.Extensions;
     using Concierge.Display.Components;
     using Concierge.Display.Enums;
-    using Concierge.Utility.Extensions;
 
     /// <summary>
     /// Interaction logic for JournalWindow.xaml.
@@ -123,8 +123,8 @@ namespace Concierge.Display.Windows
             if (this.TreeViewButtonType == TreeViewButtonType.Chapter)
             {
                 var newChapter = new Chapter(this.DocumentTextBox.Text);
-                Program.CcsFile.Character.Chapters.Add(newChapter);
-                Program.UndoRedoService.AddCommand(new AddCommand<Chapter>(Program.CcsFile.Character.Chapters, newChapter, this.ConciergePage));
+                Program.CcsFile.Character.Journal.Chapters.Add(newChapter);
+                Program.UndoRedoService.AddCommand(new AddCommand<Chapter>(Program.CcsFile.Character.Journal.Chapters, newChapter, this.ConciergePage));
             }
             else if (this.CurrentEntry is Chapter chapter)
             {

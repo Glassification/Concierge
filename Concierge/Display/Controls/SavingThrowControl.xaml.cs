@@ -10,12 +10,13 @@ namespace Concierge.Display.Controls
     using System.Windows.Media;
     using System.Windows.Shapes;
 
-    using Concierge.Character.AbilitySavingThrows;
+    using Concierge.Character.AbilitySaves;
     using Concierge.Character.Enums;
     using Concierge.Commands;
+    using Concierge.Common;
     using Concierge.Display.Enums;
     using Concierge.Display.Pages;
-    using Concierge.Utility;
+    using Concierge.Persistence;
 
     /// <summary>
     /// Interaction logic for SavingThrowControl.xaml.
@@ -154,7 +155,7 @@ namespace Concierge.Display.Controls
                 return;
             }
 
-            var save = Program.CcsFile.Character.SavingThrow.GetSavingThrow(this.SavingThrowName);
+            var save = Program.CcsFile.Character.SavingThrows.GetSavingThrow(this.SavingThrowName);
 
             ellipse.Stroke = Brushes.SteelBlue;
             ellipse.Fill = save.Proficiency ? Brushes.SteelBlue : Brushes.Transparent;
@@ -167,7 +168,7 @@ namespace Concierge.Display.Controls
         {
             ConciergeSound.UpdateValue();
 
-            var savingThrow = Program.CcsFile.Character.SavingThrow;
+            var savingThrow = Program.CcsFile.Character.SavingThrows;
             var savingThrowCopy = savingThrow.DeepCopy();
 
             var save = savingThrow.GetSavingThrow(this.SavingThrowName);
@@ -175,7 +176,7 @@ namespace Concierge.Display.Controls
 
             this.RaiseEvent(new RoutedEventArgs(ToggleClickedEvent));
 
-            Program.UndoRedoService.AddCommand(new EditCommand<SavingThrow>(savingThrow, savingThrowCopy, ConciergePage.Overview));
+            Program.UndoRedoService.AddCommand(new EditCommand<SavingThrows>(savingThrow, savingThrowCopy, ConciergePage.Overview));
             Program.Modify();
         }
     }

@@ -9,18 +9,20 @@ namespace Concierge.Display.Pages
     using System.Windows.Controls;
     using System.Windows.Input;
 
-    using Concierge.Character.AbilitySavingThrows;
+    using Concierge.Character;
+    using Concierge.Character.AbilitySaves;
     using Concierge.Character.AbilitySkills;
     using Concierge.Character.Characteristics;
-    using Concierge.Character.Statuses;
+    using Concierge.Character.Vitals;
+    using Concierge.Common.Extensions;
     using Concierge.Configuration;
     using Concierge.Display;
     using Concierge.Display.Enums;
     using Concierge.Display.Windows;
     using Concierge.Services;
-    using Concierge.Utility.Extensions;
-    using Concierge.Utility.Utilities;
     using MaterialDesignThemes.Wpf;
+
+    using Constants = Concierge.Common.Constants;
 
     /// <summary>
     /// Interaction logic for OverviewPage.xaml.
@@ -56,21 +58,21 @@ namespace Concierge.Display.Pages
 
             this.InitiativeLabel.Value = character.Initiative.ToString();
             this.PerceptionLabel.Value = character.PassivePerception.ToString();
-            this.VisionLabel.Value = character.Senses.Vision.ToString().FormatFromEnum();
-            this.MovementLabel.Value = character.Senses.Movement.ToString();
-            this.InspirationLabel.IconKind = character.Senses.Inspiration ? PackIconKind.WeatherSunset : PackIconKind.None;
+            this.VisionLabel.Value = character.Characteristic.Senses.Vision.ToString().FormatFromEnum();
+            this.MovementLabel.Value = character.Characteristic.Senses.Movement.ToString();
+            this.InspirationLabel.IconKind = character.Characteristic.Senses.Inspiration ? PackIconKind.WeatherSunset : PackIconKind.None;
         }
 
         public void DrawAttributes()
         {
-            var attributes = Program.CcsFile.Character.Attributes;
+            var attributes = Program.CcsFile.Character.Characteristic.Attributes;
 
-            this.StrengthAttributeDisplay.Bonus = CharacterUtility.CalculateBonus(attributes.Strength);
-            this.DexterityAttributeDisplay.Bonus = CharacterUtility.CalculateBonus(attributes.Dexterity);
-            this.ConstitutionAttributeDisplay.Bonus = CharacterUtility.CalculateBonus(attributes.Constitution);
-            this.IntelligenceAttributeDisplay.Bonus = CharacterUtility.CalculateBonus(attributes.Intelligence);
-            this.WisdomAttributeDisplay.Bonus = CharacterUtility.CalculateBonus(attributes.Wisdom);
-            this.CharismaAttributeDisplay.Bonus = CharacterUtility.CalculateBonus(attributes.Charisma);
+            this.StrengthAttributeDisplay.Bonus = Constants.CalculateBonus(attributes.Strength);
+            this.DexterityAttributeDisplay.Bonus = Constants.CalculateBonus(attributes.Dexterity);
+            this.ConstitutionAttributeDisplay.Bonus = Constants.CalculateBonus(attributes.Constitution);
+            this.IntelligenceAttributeDisplay.Bonus = Constants.CalculateBonus(attributes.Intelligence);
+            this.WisdomAttributeDisplay.Bonus = Constants.CalculateBonus(attributes.Wisdom);
+            this.CharismaAttributeDisplay.Bonus = Constants.CalculateBonus(attributes.Charisma);
 
             this.StrengthAttributeDisplay.Score = attributes.Strength;
             this.DexterityAttributeDisplay.Score = attributes.Dexterity;
@@ -82,7 +84,7 @@ namespace Concierge.Display.Pages
 
         public void DrawSavingThrows()
         {
-            var savingThrow = Program.CcsFile.Character.SavingThrow;
+            var savingThrow = Program.CcsFile.Character.SavingThrows;
 
             this.StrengthSavingThrow.SavingThrowBonus = savingThrow.Strength.Bonus.ToString();
             this.DexteritySavingThrow.SavingThrowBonus = savingThrow.Dexterity.Bonus.ToString();
@@ -101,7 +103,7 @@ namespace Concierge.Display.Pages
 
         public void DrawSkills()
         {
-            var skill = Program.CcsFile.Character.Skill;
+            var skill = Program.CcsFile.Character.Skills;
 
             this.AthleticsSkill.SkillBonus = skill.Athletics.Bonus.ToString();
             this.AcrobaticsSkill.SkillBonus = skill.Acrobatics.Bonus.ToString();
@@ -154,7 +156,7 @@ namespace Concierge.Display.Pages
 
         public void DrawArmorClass()
         {
-            this.ArmorClassField.Text = Program.CcsFile.Character.Armor.TotalArmorClass.ToString();
+            this.ArmorClassField.Text = Program.CcsFile.Character.Equipment.Armor.TotalArmorClass.ToString();
         }
 
         public void DrawHitDice()
@@ -261,8 +263,8 @@ namespace Concierge.Display.Pages
 
         private void Grid_SavingThrowMouseUp(object sender, MouseButtonEventArgs e)
         {
-            ConciergeWindowService.ShowEdit<SavingThrow>(
-                Program.CcsFile.Character.SavingThrow,
+            ConciergeWindowService.ShowEdit<SavingThrows>(
+                Program.CcsFile.Character.SavingThrows,
                 typeof(SavingThrowWindow),
                 this.Window_ApplyChanges,
                 ConciergePage.Overview);
@@ -271,8 +273,8 @@ namespace Concierge.Display.Pages
 
         private void Grid_SkillMouseUp(object sender, MouseButtonEventArgs e)
         {
-            ConciergeWindowService.ShowEdit<Skill>(
-                Program.CcsFile.Character.Skill,
+            ConciergeWindowService.ShowEdit<Skills>(
+                Program.CcsFile.Character.Skills,
                 typeof(SkillWindow),
                 this.Window_ApplyChanges,
                 ConciergePage.Overview);
@@ -282,7 +284,7 @@ namespace Concierge.Display.Pages
         private void Label_EditClicked(object sender, RoutedEventArgs e)
         {
             ConciergeWindowService.ShowEdit<Senses>(
-                Program.CcsFile.Character.Senses,
+                Program.CcsFile.Character.Characteristic.Senses,
                 typeof(SensesWindow),
                 this.Window_ApplyChanges,
                 ConciergePage.Overview);
@@ -292,7 +294,7 @@ namespace Concierge.Display.Pages
         private void AttributeDisplay_EditClicked(object sender, RoutedEventArgs e)
         {
             ConciergeWindowService.ShowEdit<Attributes>(
-                Program.CcsFile.Character.Attributes,
+                Program.CcsFile.Character.Characteristic.Attributes,
                 typeof(AttributesWindow),
                 this.Window_ApplyChanges,
                 ConciergePage.Overview);

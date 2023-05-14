@@ -8,7 +8,7 @@ namespace Concierge.Display.Windows
     using System.Linq;
     using System.Windows;
 
-    using Concierge.Character.Characteristics;
+    using Concierge.Character;
     using Concierge.Character.Enums;
     using Concierge.Commands;
     using Concierge.Display.Components;

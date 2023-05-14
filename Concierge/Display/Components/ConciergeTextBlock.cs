@@ -8,7 +8,7 @@ namespace Concierge.Display.Components
     using System.Windows.Controls;
     using System.Windows.Media;
 
-    using Concierge.Utility;
+    using Concierge.Common;
 
     public sealed class ConciergeTextBlock : TextBlock
     {

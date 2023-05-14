@@ -9,7 +9,7 @@ namespace Concierge.Display.Components
     using System.Windows.Input;
     using System.Windows.Media;
 
-    using Concierge.Utility;
+    using Concierge.Persistence;
 
     public sealed class ConciergeTextButton : Button
     {

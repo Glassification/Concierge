@@ -12,11 +12,10 @@ namespace Concierge.Display.Windows
     using Concierge.Character.Enums;
     using Concierge.Character.Spellcasting;
     using Concierge.Commands;
+    using Concierge.Common;
     using Concierge.Display.Components;
     using Concierge.Display.Enums;
-    using Concierge.Display.Utility;
-    using Concierge.Utility;
-    using Concierge.Utility.Utilities;
+    using Concierge.Persistence;
 
     /// <summary>
     /// Interaction logic for MagicClassWindow.xaml.
@@ -28,7 +27,7 @@ namespace Concierge.Display.Windows
             this.InitializeComponent();
             this.UseRoundedCorners();
 
-            this.ClassNameComboBox.ItemsSource = Constants.MagicClasses;
+            this.ClassNameComboBox.ItemsSource = Defaults.MagicClasses;
             this.AbilityComboBox.ItemsSource = Enum.GetValues(typeof(Abilities)).Cast<Abilities>();
             this.ConciergePage = ConciergePage.None;
             this.SelectedClass = new MagicClass();
@@ -61,7 +60,7 @@ namespace Concierge.Display.Windows
             this.Editing = false;
             this.HeaderTextBlock.Text = this.HeaderText;
             this.OkButton.Visibility = Visibility.Collapsed;
-            this.MagicClasses = Program.CcsFile.Character.MagicClasses;
+            this.MagicClasses = Program.CcsFile.Character.Magic.MagicClasses;
             this.CancelButton.Content = buttonText;
 
             this.ClearFields();
@@ -188,9 +187,9 @@ namespace Concierge.Display.Windows
         private void RefreshFields()
         {
             string ability = this.AbilityComboBox.SelectedItem.ToString() ?? Abilities.NONE.ToString();
-            this.AttackBonusTextBlock.Text = CharacterUtility.CalculateBonusFromAbility((Abilities)Enum.Parse(typeof(Abilities), ability), Program.CcsFile.Character).ToString();
-            this.SpellSaveTextBlock.Text = (CharacterUtility.CalculateBonusFromAbility((Abilities)Enum.Parse(typeof(Abilities), ability), Program.CcsFile.Character) + Constants.BaseDC).ToString();
-            this.PreparedSpellsTextBlock.Text = Program.CcsFile.Character.Spells.Where(x => (x.Class?.Equals(this.ClassNameComboBox.SelectedItem.ToString()) ?? false) && x.Prepared).ToList().Count.ToString();
+            this.AttackBonusTextBlock.Text = Program.CcsFile.Character.CalculateBonusFromAbility((Abilities)Enum.Parse(typeof(Abilities), ability)).ToString();
+            this.SpellSaveTextBlock.Text = (Program.CcsFile.Character.CalculateBonusFromAbility((Abilities)Enum.Parse(typeof(Abilities), ability)) + Constants.BaseDC).ToString();
+            this.PreparedSpellsTextBlock.Text = Program.CcsFile.Character.Magic.Spells.Where(x => (x.Class?.Equals(this.ClassNameComboBox.SelectedItem.ToString()) ?? false) && x.Prepared).ToList().Count.ToString();
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)

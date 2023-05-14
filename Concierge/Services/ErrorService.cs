@@ -7,12 +7,12 @@ namespace Concierge.Services
     using System;
     using System.Windows;
 
+    using Concierge.Common;
+    using Concierge.Common.Enums;
+    using Concierge.Common.Exceptions;
+    using Concierge.Display;
     using Concierge.Display.Enums;
-    using Concierge.Exceptions;
-    using Concierge.Exceptions.Enums;
     using Concierge.Logging;
-    using Concierge.Tools.Display;
-    using Concierge.Utility;
 
     public sealed class ErrorService
     {

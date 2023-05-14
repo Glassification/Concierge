@@ -10,13 +10,13 @@ namespace Concierge.Console
     using System.ComponentModel;
     using System.IO;
 
+    using Concierge.Common;
+    using Concierge.Common.Extensions;
     using Concierge.Console.Enums;
     using Concierge.Console.Services;
     using Concierge.Persistence;
     using Concierge.Persistence.ReadWriters;
     using Concierge.Tools;
-    using Concierge.Utility;
-    using Concierge.Utility.Extensions;
 
     public sealed class ConciergeConsole : INotifyPropertyChanged
     {

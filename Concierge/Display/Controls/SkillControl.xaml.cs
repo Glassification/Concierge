@@ -14,9 +14,10 @@ namespace Concierge.Display.Controls
     using Concierge.Character.AbilitySkills;
     using Concierge.Character.Enums;
     using Concierge.Commands;
+    using Concierge.Common;
+    using Concierge.Common.Extensions;
     using Concierge.Display.Enums;
-    using Concierge.Utility;
-    using Concierge.Utility.Extensions;
+    using Concierge.Persistence;
 
     /// <summary>
     /// Interaction logic for SkillControl.xaml.
@@ -157,7 +158,7 @@ namespace Concierge.Display.Controls
                 return;
             }
 
-            var save = Program.CcsFile.Character.Skill.GetSkill(this.SkillName.Strip(" "));
+            var save = Program.CcsFile.Character.Skills.GetSkill(this.SkillName.Strip(" "));
             var check = ellipse.Name.Contains("Proficiency", StringComparison.InvariantCultureIgnoreCase) ? save.Proficiency : save.Expertise;
 
             ellipse.Stroke = Brushes.SteelBlue;
@@ -171,7 +172,7 @@ namespace Concierge.Display.Controls
         {
             ConciergeSound.UpdateValue();
 
-            var skill = Program.CcsFile.Character.Skill;
+            var skill = Program.CcsFile.Character.Skills;
             var skillCopy = skill.DeepCopy();
 
             var save = skill.GetSkill(this.SkillName.Strip(" "));
@@ -179,7 +180,7 @@ namespace Concierge.Display.Controls
 
             this.RaiseEvent(new RoutedEventArgs(ToggleClickedEvent));
 
-            Program.UndoRedoService.AddCommand(new EditCommand<Skill>(skill, skillCopy, ConciergePage.Overview));
+            Program.UndoRedoService.AddCommand(new EditCommand<Skills>(skill, skillCopy, ConciergePage.Overview));
             Program.Modify();
         }
 
@@ -187,7 +188,7 @@ namespace Concierge.Display.Controls
         {
             ConciergeSound.UpdateValue();
 
-            var skill = Program.CcsFile.Character.Skill;
+            var skill = Program.CcsFile.Character.Skills;
             var skillCopy = skill.DeepCopy();
 
             var save = skill.GetSkill(this.SkillName.Strip(" "));
@@ -195,7 +196,7 @@ namespace Concierge.Display.Controls
 
             this.RaiseEvent(new RoutedEventArgs(ToggleClickedEvent));
 
-            Program.UndoRedoService.AddCommand(new EditCommand<Skill>(skill, skillCopy, ConciergePage.Overview));
+            Program.UndoRedoService.AddCommand(new EditCommand<Skills>(skill, skillCopy, ConciergePage.Overview));
             Program.Modify();
         }
     }

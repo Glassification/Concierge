@@ -4,9 +4,9 @@
 
 namespace Concierge.Character.Characteristics
 {
-    using Concierge.Primitives;
-    using Concierge.Utility;
-    using Concierge.Utility.Units.Enums;
+    using Concierge.Common;
+    using Concierge.Common.Enums;
+    using Concierge.Data;
 
     public sealed class Appearance : ICopyable<Appearance>
     {

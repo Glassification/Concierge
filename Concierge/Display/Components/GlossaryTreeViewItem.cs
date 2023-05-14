@@ -10,9 +10,9 @@ namespace Concierge.Display.Components
     using System.Windows.Input;
     using System.Windows.Media;
 
-    using Concierge.Tools.Glossary;
-    using Concierge.Utility;
-    using Concierge.Utility.Extensions;
+    using Concierge.Common;
+    using Concierge.Common.Extensions;
+    using Concierge.Data;
     using MaterialDesignThemes.Wpf;
 
     public sealed class GlossaryTreeViewItem : TreeViewItem
