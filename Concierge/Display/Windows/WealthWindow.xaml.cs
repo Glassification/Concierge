@@ -117,6 +117,7 @@ namespace Concierge.Display.Windows
 
         private void FillFields()
         {
+            this.AmountUpDown.Value = 0;
             this.CopperField.Text = this.CP.ToString();
             this.SilverField.Text = this.SP.ToString();
             this.ElectrumField.Text = this.EP.ToString();

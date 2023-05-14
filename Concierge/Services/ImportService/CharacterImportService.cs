@@ -9,6 +9,7 @@ namespace Concierge.Services.ImportService
 
     using Concierge.Persistence.ReadWriters;
     using Concierge.Services.Enums;
+    using Concierge.Services.ImportService.Importers;
 
     public sealed class CharacterImportService
     {
@@ -34,6 +35,11 @@ namespace Concierge.Services.ImportService
             this.Importers.Add(importer);
         }
 
+        public void ClearImporters()
+        {
+            this.Importers.Clear();
+        }
+
         private bool ImportSingle(string filename)
         {
             var importer = this.Importers.FirstOrDefault();
@@ -49,6 +55,7 @@ namespace Concierge.Services.ImportService
             }
 
             importer.Import(list);
+            this.ClearImporters();
             return true;
         }
 
@@ -71,6 +78,7 @@ namespace Concierge.Services.ImportService
                 importer.Import(list);
             }
 
+            this.ClearImporters();
             return true;
         }
     }

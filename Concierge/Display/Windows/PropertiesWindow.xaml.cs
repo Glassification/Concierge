@@ -17,6 +17,7 @@ namespace Concierge.Display.Windows
     using Concierge.Display.Enums;
     using Concierge.Display.Utility;
     using Concierge.Persistence;
+    using Concierge.Persistence.Enums;
     using Concierge.Services;
 
     /// <summary>
@@ -232,7 +233,7 @@ namespace Concierge.Display.Windows
 
         private void OpenImageButton_Click(object sender, RoutedEventArgs e)
         {
-            var fileName = this.fileAccessService.OpenImage();
+            var fileName = this.fileAccessService.Open((int)ImageFiltersIndex.Png, FileConstants.ImageOpenFilter, ImageFiltersIndex.Png.ToString().ToLower());
 
             if (!fileName.IsNullOrWhiteSpace())
             {

@@ -31,6 +31,7 @@ namespace Concierge.Character.Equipable
             this.Id = Guid.NewGuid();
             this.EquipmentSlot = EquipmentSlot.None;
             this.Amount = 1;
+            this.Creature = Program.CcsFile.Character;
         }
 
         public Weapon(ICreature creature)

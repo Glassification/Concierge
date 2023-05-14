@@ -1,8 +1,8 @@
-﻿// <copyright file="AbilityImporter.cs" company="Thomas Beckett">
+﻿// <copyright file="ProficiencyImporter.cs" company="Thomas Beckett">
 // Copyright (c) Thomas Beckett. All rights reserved.
 // </copyright>
 
-namespace Concierge.Services.ImportService
+namespace Concierge.Services.ImportService.Importers
 {
     using System.Collections.Generic;
 
@@ -11,33 +11,33 @@ namespace Concierge.Services.ImportService
     using Concierge.Common;
     using Concierge.Persistence.ReadWriters;
 
-    public class AbilityImporter : Importer
+    public class ProficiencyImporter : Importer
     {
-        public AbilityImporter(ConciergeCharacter character)
+        public ProficiencyImporter(ConciergeCharacter character)
             : base(character)
         {
         }
 
         public override void Import(IEnumerable<IUnique> list)
         {
-            if (list is not List<Ability> abilities)
+            if (list is not List<Proficiency> proficiencies)
             {
                 return;
             }
 
-            Program.Logger.Info($"Import abilities.");
-            CycleGuids(abilities);
-            this.Character.Characteristic.Abilities.AddRange(abilities);
+            Program.Logger.Info($"Import proficiency.");
+            CycleGuids(proficiencies);
+            this.Character.Characteristic.Proficiencies.AddRange(proficiencies);
         }
 
         public override IEnumerable<IUnique> Load(ConciergeCharacter character)
         {
-            return character.Characteristic.Abilities;
+            return character.Characteristic.Proficiencies;
         }
 
         public override IEnumerable<IUnique> Load(string fileName)
         {
-            return DefaultListReadWriter.ReadJson<Ability>(fileName);
+            return DefaultListReadWriter.ReadJson<Proficiency>(fileName);
         }
     }
 }

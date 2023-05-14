@@ -1,43 +1,43 @@
-﻿// <copyright file="AmmunitionImporter.cs" company="Thomas Beckett">
+﻿// <copyright file="JournalImporter.cs" company="Thomas Beckett">
 // Copyright (c) Thomas Beckett. All rights reserved.
 // </copyright>
 
-namespace Concierge.Services.ImportService
+namespace Concierge.Services.ImportService.Importers
 {
     using System.Collections.Generic;
 
     using Concierge.Character;
-    using Concierge.Character.Equipable;
+    using Concierge.Character.Journals;
     using Concierge.Common;
     using Concierge.Persistence.ReadWriters;
 
-    public class AmmunitionImporter : Importer
+    public class JournalImporter : Importer
     {
-        public AmmunitionImporter(ConciergeCharacter character)
+        public JournalImporter(ConciergeCharacter character)
             : base(character)
         {
         }
 
         public override void Import(IEnumerable<IUnique> list)
         {
-            if (list is not List<Ammunition> ammo)
+            if (list is not List<Chapter> chapters)
             {
                 return;
             }
 
-            Program.Logger.Info($"Import ammunition.");
-            CycleGuids(ammo);
-            this.Character.Equipment.Ammunition.AddRange(ammo);
+            Program.Logger.Info($"Import journal.");
+            CycleGuids(chapters);
+            this.Character.Journal.Chapters.AddRange(chapters);
         }
 
         public override IEnumerable<IUnique> Load(ConciergeCharacter character)
         {
-            return character.Equipment.Ammunition;
+            return character.Journal.Chapters;
         }
 
         public override IEnumerable<IUnique> Load(string fileName)
         {
-            return DefaultListReadWriter.ReadJson<Ammunition>(fileName);
+            return DefaultListReadWriter.ReadJson<Chapter>(fileName);
         }
     }
 }

@@ -2,7 +2,7 @@
 // Copyright (c) Thomas Beckett. All rights reserved.
 // </copyright>
 
-namespace Concierge.Services.ImportService
+namespace Concierge.Services.ImportService.Importers
 {
     using System.Collections.Generic;
 
