@@ -46,8 +46,9 @@ namespace Concierge.Configuration
                 RefreshUnits(userSettingsDto);
             }
 
-            UserSettings.AutosaveEnabled = userSettingsDto.AutosaveEnabled;
-            UserSettings.AutosaveInterval = userSettingsDto.AutosaveInterval;
+            UserSettings.Autosaving.Set(userSettingsDto.Autosaving);
+            UserSettings.DefaultFolder.Set(userSettingsDto.DefaultFolder);
+
             UserSettings.CheckVersion = userSettingsDto.CheckVersion;
             UserSettings.MuteSounds = userSettingsDto.MuteSounds;
             UserSettings.UseCoinWeight = userSettingsDto.UseCoinWeight;
@@ -71,9 +72,19 @@ namespace Concierge.Configuration
         {
             return new UserSettingsDto()
             {
-                AutosaveEnabled = UserSettings.AutosaveEnabled,
-                AutosaveInterval = UserSettings.AutosaveInterval,
+                Autosaving = new Autosave()
+                {
+                    Enabled = UserSettings.Autosaving.Enabled,
+                    Interval = UserSettings.Autosaving.Interval,
+                },
                 CheckVersion = UserSettings.CheckVersion,
+                DefaultFolder = new DefaultFolders()
+                {
+                    OpenFolder = UserSettings.DefaultFolder.OpenFolder,
+                    SaveFolder = UserSettings.DefaultFolder.SaveFolder,
+                    UseOpenFolder = UserSettings.DefaultFolder.UseOpenFolder,
+                    UseSaveFolder = UserSettings.DefaultFolder.UseSaveFolder,
+                },
                 MuteSounds = UserSettings.MuteSounds,
                 UseCoinWeight = UserSettings.UseCoinWeight,
                 UseEncumbrance = UserSettings.UseEncumbrance,

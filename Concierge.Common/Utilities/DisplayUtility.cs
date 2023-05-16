@@ -100,5 +100,11 @@ namespace Concierge.Common.Utilities
         {
             return total <= used ? ConciergeBrushes.TotalDarkBox : ConciergeBrushes.TotalLightBox;
         }
+
+        public static void SetControlEnableState(FrameworkElement element, bool isEnabled)
+        {
+            element.IsEnabled = isEnabled;
+            element.Opacity = isEnabled ? 1 : 0.5;
+        }
     }
 }

@@ -8,6 +8,6 @@ namespace Concierge.Services.Enums
     {
         None,
         Character,
-        Object,
+        Single,
     }
 }

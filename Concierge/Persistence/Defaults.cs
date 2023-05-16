@@ -94,6 +94,6 @@ namespace Concierge.Persistence
 
         public static ReadOnlyCollection<GlossaryEntry> Glossary { get; }
 
-        public static int CurrentAutosaveInterval => AutosaveIntervals[AppSettingsManager.UserSettings.AutosaveInterval];
+        public static int CurrentAutosaveInterval => AutosaveIntervals[AppSettingsManager.UserSettings.Autosaving.Interval];
     }
 }

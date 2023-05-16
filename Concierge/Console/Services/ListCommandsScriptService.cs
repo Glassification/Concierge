@@ -11,7 +11,6 @@ namespace Concierge.Console.Services
     using Concierge.Common;
     using Concierge.Common.Extensions;
     using Concierge.Console.Enums;
-    using Concierge.Persistence;
     using Concierge.Persistence.ReadWriters;
 
     public sealed class ListCommandsScriptService : ScriptService

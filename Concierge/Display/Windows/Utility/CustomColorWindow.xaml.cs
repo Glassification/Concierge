@@ -21,7 +21,7 @@ namespace Concierge.Display.Utility
     /// </summary>
     public partial class CustomColorWindow : ConciergeWindow
     {
-        private Color _color;
+        private Color color;
 
         public CustomColorWindow()
         {
@@ -41,13 +41,13 @@ namespace Concierge.Display.Utility
         {
             get
             {
-                return this._color;
+                return this.color;
             }
 
             set
             {
-                this._color = value;
-                this.ColorPreviewFill.Background = new SolidColorBrush(this._color);
+                this.color = value;
+                this.ColorPreviewFill.Background = new SolidColorBrush(this.color);
             }
         }
 

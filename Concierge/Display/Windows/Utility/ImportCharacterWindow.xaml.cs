@@ -57,7 +57,9 @@ namespace Concierge.Display.Utility
             this.NotesCheckBox.UncheckUnlessNameMatches(name);
             this.LanguageCheckBox.UncheckUnlessNameMatches(name);
             this.ProficiencyCheckBox.UncheckUnlessNameMatches(name);
+            this.ResourcesCheckBox.UncheckUnlessNameMatches(name);
             this.SpellsCheckBox.UncheckUnlessNameMatches(name);
+            this.StatusEffectsCheckBox.UncheckUnlessNameMatches(name);
             this.WeaponsCheckBox.UncheckUnlessNameMatches(name);
         }
 
@@ -99,9 +101,19 @@ namespace Concierge.Display.Utility
                 this.characterImporter.AddImporter(new ProficiencyImporter(Program.CcsFile.Character));
             }
 
+            if (this.ResourcesCheckBox.IsChecked ?? false)
+            {
+                this.characterImporter.AddImporter(new ResourceImporter(Program.CcsFile.Character));
+            }
+
             if (this.SpellsCheckBox.IsChecked ?? false)
             {
                 this.characterImporter.AddImporter(new SpellImporter(Program.CcsFile.Character));
+            }
+
+            if (this.StatusEffectsCheckBox.IsChecked ?? false)
+            {
+                this.characterImporter.AddImporter(new StatusEffectImporter(Program.CcsFile.Character));
             }
 
             if (this.WeaponsCheckBox.IsChecked ?? false)
@@ -123,14 +135,16 @@ namespace Concierge.Display.Utility
             this.NotesCheckBox.IsChecked = AutoSelection.FuzzySearch(file, SelectionType.Journal);
             this.LanguageCheckBox.IsChecked = AutoSelection.FuzzySearch(file, SelectionType.Language);
             this.ProficiencyCheckBox.IsChecked = AutoSelection.FuzzySearch(file, SelectionType.Proficiency);
+            this.ResourcesCheckBox.IsChecked = AutoSelection.FuzzySearch(file, SelectionType.Resource);
             this.SpellsCheckBox.IsChecked = AutoSelection.FuzzySearch(file, SelectionType.Spell);
+            this.StatusEffectsCheckBox.IsChecked = AutoSelection.FuzzySearch(file, SelectionType.StatusEffect);
             this.WeaponsCheckBox.IsChecked = AutoSelection.FuzzySearch(file, SelectionType.Weapon);
         }
 
         private void OpenFileButton_Click(object sender, RoutedEventArgs e)
         {
             var filterIndex = this.ImportCharacterButton.IsChecked ?? false ? CcsFiltersIndex.Ccs : CcsFiltersIndex.Json;
-            var file = this.fileAccessService.Open((int)filterIndex, FileConstants.CcsOpenFilter, filterIndex.ToString().ToLower());
+            var file = this.fileAccessService.OpenFile((int)filterIndex, FileConstants.CcsOpenFilter, filterIndex.ToString().ToLower());
 
             if (!file.IsNullOrWhiteSpace())
             {
@@ -154,7 +168,7 @@ namespace Concierge.Display.Utility
             var oldItem = Program.CcsFile.Character.DeepCopy();
             this.LoadImporters();
             var isSuccess = this.characterImporter.Import(
-                this.ImportCharacterButton.IsChecked ?? false ? ImportTypes.Character : ImportTypes.Object,
+                this.ImportCharacterButton.IsChecked ?? false ? ImportTypes.Character : ImportTypes.Single,
                 this.FileSourceTextBox.Text);
 
             if (!isSuccess)

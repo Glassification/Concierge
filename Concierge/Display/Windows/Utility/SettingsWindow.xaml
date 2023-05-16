@@ -9,14 +9,16 @@
     mc:Ignorable="d"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     Title="Concierge Settings"
-    Height="355"
+    Height="415"
     Width="800"
     Style="{StaticResource WindowFontStyle}">
 
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="45"/>
-            <RowDefinition Height="240"/>
+            <RowDefinition Height="200"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
             <RowDefinition Height="70"/>
         </Grid.RowDefinitions>
 
@@ -53,10 +55,10 @@
             <!--Left-->
             <Grid Grid.Column="0">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="60"/>
-                    <RowDefinition Height="60"/>
-                    <RowDefinition Height="60"/>
-                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="50"/>
                 </Grid.RowDefinitions>
 
                 <Grid Grid.Row="0">
@@ -155,10 +157,10 @@
             <!--Right-->
             <Grid Grid.Column="1">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="60"/>
-                    <RowDefinition Height="60"/>
-                    <RowDefinition Height="60"/>
-                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="50"/>
                 </Grid.RowDefinitions>
 
                 <Grid Grid.Row="0">
@@ -243,8 +245,90 @@
             </Grid>
         </Grid>
 
-        <!--Buttons-->
         <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="30*"/>
+                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="65*"/>
+                <ColumnDefinition Width="5*"/>
+            </Grid.ColumnDefinitions>
+
+            <components:ConciergeLabel
+                Grid.Column="0"
+                Text="Default Open Folder:"
+                VerticalAlignment="Center"/>
+
+            <components:ConciergeCheckBox
+                Grid.Column="1"
+                x:Name="DefaultOpenCheckBox"
+                Style="{StaticResource CheckBoxStyle}"
+                Margin="0,10,0,0"
+                ToolTip="Always open from this folder"
+                Checked="DefaultOpenCheckBox_Checked"
+                Unchecked="DefaultOpenCheckBox_Unchecked"/>
+
+            <components:ConciergeTextBoxBackground
+                Grid.Column="2"
+                x:Name="OpenTextBoxBackground">
+                <components:ConciergeTextBox
+                    x:Name="OpenTextBox"/>
+            </components:ConciergeTextBoxBackground>
+
+            <components:ConciergeDesignButton
+                Grid.Column="3"
+                Style="{StaticResource ConciergeTextButtonStyle}"
+                x:Name="OpenFolderButton"
+                Content="..."
+                HorizontalAlignment="Stretch"
+                Foreground="White"
+                Margin="-5,9,10,9"
+                ToolTip="Open Folder Dialog"
+                Click="OpenFolderButton_Click"/>
+        </Grid>
+
+        <Grid Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="30*"/>
+                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="65*"/>
+                <ColumnDefinition Width="5*"/>
+            </Grid.ColumnDefinitions>
+
+            <components:ConciergeLabel
+                Grid.Column="0"
+                Text="Default Save Folder:"
+                VerticalAlignment="Center"/>
+
+            <components:ConciergeCheckBox
+                Grid.Column="1"
+                x:Name="DefaultSaveCheckBox"
+                Style="{StaticResource CheckBoxStyle}"
+                Margin="0,10,0,0"
+                ToolTip="Always save to this folder"
+                Checked="DefaultSaveCheckBox_Checked"
+                Unchecked="DefaultSaveCheckBox_Unchecked"/>
+
+            <components:ConciergeTextBoxBackground
+                Grid.Column="2"
+                x:Name="SaveTextBoxBackground">
+                <components:ConciergeTextBox
+                    x:Name="SaveTextBox"/>
+            </components:ConciergeTextBoxBackground>
+
+            <components:ConciergeDesignButton
+                Grid.Column="3"
+                Style="{StaticResource ConciergeTextButtonStyle}"
+                x:Name="SaveFolderButton"
+                Content="..."
+                HorizontalAlignment="Stretch"
+                Foreground="White"
+                Margin="-5,9,10,9"
+                ToolTip="Save Folder Dialog"
+                Click="SaveFolderButton_Click"/>
+        </Grid>
+
+        <!--Buttons-->
+        <Grid Grid.Row="4">
             <StackPanel Orientation="Horizontal"
                         VerticalAlignment="Center"
                         HorizontalAlignment="Center">

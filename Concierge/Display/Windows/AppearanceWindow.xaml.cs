@@ -23,9 +23,9 @@ namespace Concierge.Display.Windows
     /// </summary>
     public partial class AppearanceWindow : ConciergeWindow
     {
-        private CustomColor? _eyeColor;
-        private CustomColor? _hairColor;
-        private CustomColor? _skinColor;
+        private CustomColor? eyeColor;
+        private CustomColor? hairColor;
+        private CustomColor? skinColor;
 
         public AppearanceWindow()
         {
@@ -61,14 +61,14 @@ namespace Concierge.Display.Windows
         {
             get
             {
-                return this._eyeColor ?? CustomColor.Invalid;
+                return this.eyeColor ?? CustomColor.Invalid;
             }
 
             set
             {
-                this._eyeColor = value;
-                this.EyeColourTextBox.Text = this._eyeColor.Name;
-                this.EyeColorPreview.Color = this._eyeColor;
+                this.eyeColor = value;
+                this.EyeColourTextBox.Text = this.eyeColor.Name;
+                this.EyeColorPreview.Color = this.eyeColor;
             }
         }
 
@@ -76,14 +76,14 @@ namespace Concierge.Display.Windows
         {
             get
             {
-                return this._hairColor ?? CustomColor.Invalid;
+                return this.hairColor ?? CustomColor.Invalid;
             }
 
             set
             {
-                this._hairColor = value;
-                this.HairColourTextBox.Text = this._hairColor.Name;
-                this.HairColorPreview.Color = this._hairColor;
+                this.hairColor = value;
+                this.HairColourTextBox.Text = this.hairColor.Name;
+                this.HairColorPreview.Color = this.hairColor;
             }
         }
 
@@ -91,14 +91,14 @@ namespace Concierge.Display.Windows
         {
             get
             {
-                return this._skinColor ?? CustomColor.Invalid;
+                return this.skinColor ?? CustomColor.Invalid;
             }
 
             set
             {
-                this._skinColor = value;
-                this.SkinColourTextBox.Text = this._skinColor.Name;
-                this.SkinColorPreview.Color = this._skinColor;
+                this.skinColor = value;
+                this.SkinColourTextBox.Text = this.skinColor.Name;
+                this.SkinColorPreview.Color = this.skinColor;
             }
         }
 

@@ -76,7 +76,7 @@ namespace Concierge.Display
 
             this.DataContext = this;
 
-            if (AppSettingsManager.UserSettings.AutosaveEnabled)
+            if (AppSettingsManager.UserSettings.Autosaving.Enabled)
             {
                 this.autosaveTimer.Start(Defaults.CurrentAutosaveInterval);
             }
@@ -225,7 +225,7 @@ namespace Concierge.Display
             Program.UndoRedoService.Clear();
             Program.CcsFile = ccsFile;
             Program.Unmodify();
-            if (AppSettingsManager.UserSettings.AutosaveEnabled)
+            if (AppSettingsManager.UserSettings.Autosaving.Enabled)
             {
                 this.autosaveTimer.Start(Defaults.CurrentAutosaveInterval);
             }
@@ -355,7 +355,7 @@ namespace Concierge.Display
 
         public void StartStopAutosaveTimer()
         {
-            if (AppSettingsManager.UserSettings.AutosaveEnabled)
+            if (AppSettingsManager.UserSettings.Autosaving.Enabled)
             {
                 this.autosaveTimer.Start(Defaults.CurrentAutosaveInterval);
             }

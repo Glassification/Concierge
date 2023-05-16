@@ -107,6 +107,8 @@ namespace Concierge.Display.Controls
             set { this.SetValue(ValueFontSizeProperty, value); }
         }
 
+        public int Delta => this.Value > this.LastValue ? 1 : this.Value < this.LastValue ? -1 : 0;
+
         public int Minimum
         {
             get
@@ -162,6 +164,7 @@ namespace Concierge.Display.Controls
                 value = Math.Max(value, this.Minimum);
                 this.TextBoxValue.Text = value.ToString();
 
+                this.LastValue = (int)this.GetValue(ValueProperty);
                 this.SetValue(ValueProperty, value);
                 this.UpdateSpinnerStatus();
 
@@ -174,6 +177,8 @@ namespace Concierge.Display.Controls
             get { return (int)this.GetValue(IncrementProperty); }
             set { this.SetValue(IncrementProperty, value); }
         }
+
+        private int LastValue { get; set; }
 
         private static void OnValuePropertyChanged(DependencyObject target, DependencyPropertyChangedEventArgs e)
         {

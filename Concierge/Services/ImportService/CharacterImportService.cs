@@ -25,7 +25,7 @@ namespace Concierge.Services.ImportService
             return importType switch
             {
                 ImportTypes.Character => this.ImportCharacter(filename),
-                ImportTypes.Object => this.ImportSingle(filename),
+                ImportTypes.Single => this.ImportSingle(filename),
                 _ => false,
             };
         }

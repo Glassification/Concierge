@@ -10,13 +10,15 @@ namespace Concierge.Configuration.Objects
     {
         public UserSettings()
         {
+            this.Autosaving = new Autosave();
+            this.DefaultFolder = new DefaultFolders();
         }
 
-        public bool AutosaveEnabled { get; set; }
-
-        public int AutosaveInterval { get; set; }
+        public Autosave Autosaving { get; set; }
 
         public bool CheckVersion { get; set; }
+
+        public DefaultFolders DefaultFolder { get; set; }
 
         public bool MuteSounds { get; set; }
 

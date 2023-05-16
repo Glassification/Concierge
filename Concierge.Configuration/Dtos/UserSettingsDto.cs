@@ -5,18 +5,21 @@
 namespace Concierge.Configuration.Dtos
 {
     using Concierge.Common.Enums;
+    using Concierge.Configuration.Objects;
 
     public sealed class UserSettingsDto
     {
         public UserSettingsDto()
         {
+            this.Autosaving = new Autosave();
+            this.DefaultFolder = new DefaultFolders();
         }
 
-        public bool AutosaveEnabled { get; init; }
+        public Autosave Autosaving { get; set; }
 
-        public int AutosaveInterval { get; init; }
+        public bool CheckVersion { get; set; }
 
-        public bool CheckVersion { get; init; }
+        public DefaultFolders DefaultFolder { get; set; }
 
         public bool MuteSounds { get; init; }
 
@@ -34,8 +37,8 @@ namespace Concierge.Configuration.Dtos
             }
 
             return
-                settings.AutosaveInterval == this.AutosaveInterval &&
-                settings.AutosaveEnabled == this.AutosaveEnabled &&
+                settings.Autosaving.Equals(this.Autosaving) &&
+                settings.DefaultFolder.Equals(this.DefaultFolder) &&
                 settings.CheckVersion == this.CheckVersion &&
                 settings.MuteSounds == this.MuteSounds &&
                 settings.UseCoinWeight == this.UseCoinWeight &&

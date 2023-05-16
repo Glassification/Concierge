@@ -10,18 +10,24 @@ namespace Concierge.Display.Utility
 
     using Concierge.Commands;
     using Concierge.Common.Enums;
+    using Concierge.Common.Extensions;
+    using Concierge.Common.Utilities;
     using Concierge.Configuration;
     using Concierge.Configuration.Dtos;
+    using Concierge.Configuration.Objects;
     using Concierge.Display;
     using Concierge.Display.Components;
     using Concierge.Display.Enums;
     using Concierge.Persistence;
+    using Concierge.Services;
 
     /// <summary>
     /// Interaction logic for SettingsWindow.xaml.
     /// </summary>
     public partial class SettingsWindow : ConciergeWindow
     {
+        private readonly FileAccessService fileAccessService = new ();
+
         public SettingsWindow()
         {
             this.InitializeComponent();
@@ -57,30 +63,36 @@ namespace Concierge.Display.Utility
             this.EncumbranceCheckBox.UpdatingValue();
             this.MuteCheckBox.UpdatingValue();
             this.CheckVersionCheckBox.UpdatingValue();
+            this.DefaultOpenCheckBox.UpdatingValue();
+            this.DefaultSaveCheckBox.UpdatingValue();
 
-            this.AutosaveCheckBox.IsChecked = AppSettingsManager.UserSettings.AutosaveEnabled;
-            this.AutosaveInterval.Value = AppSettingsManager.UserSettings.AutosaveInterval;
+            this.AutosaveCheckBox.IsChecked = AppSettingsManager.UserSettings.Autosaving.Enabled;
+            this.AutosaveInterval.Value = AppSettingsManager.UserSettings.Autosaving.Interval;
             this.CoinWeightCheckBox.IsChecked = AppSettingsManager.UserSettings.UseCoinWeight;
             this.EncumbranceCheckBox.IsChecked = AppSettingsManager.UserSettings.UseEncumbrance;
             this.IntervalTextBox.Text = this.FormattedInterval;
             this.MuteCheckBox.IsChecked = AppSettingsManager.UserSettings.MuteSounds;
             this.CheckVersionCheckBox.IsChecked = AppSettingsManager.UserSettings.CheckVersion;
             this.UnitOfMeasurementComboBox.Text = AppSettingsManager.UserSettings.UnitOfMeasurement.ToString();
+            this.DefaultSaveCheckBox.IsChecked = AppSettingsManager.UserSettings.DefaultFolder.UseSaveFolder;
+            this.DefaultOpenCheckBox.IsChecked = AppSettingsManager.UserSettings.DefaultFolder.UseOpenFolder;
+            this.OpenTextBox.Text = AppSettingsManager.UserSettings.DefaultFolder.OpenFolder;
+            this.SaveTextBox.Text = AppSettingsManager.UserSettings.DefaultFolder.SaveFolder;
 
-            if (AppSettingsManager.UserSettings.AutosaveEnabled)
-            {
-                this.EnableAutosaveControls();
-            }
-            else
-            {
-                this.DisableAutosaveControls();
-            }
+            DisplayUtility.SetControlEnableState(this.AutosaveInterval, AppSettingsManager.UserSettings.Autosaving.Enabled);
+            DisplayUtility.SetControlEnableState(this.IntervalTextBox, AppSettingsManager.UserSettings.Autosaving.Enabled);
+            DisplayUtility.SetControlEnableState(this.SaveFolderButton, AppSettingsManager.UserSettings.DefaultFolder.UseSaveFolder);
+            DisplayUtility.SetControlEnableState(this.SaveTextBoxBackground, AppSettingsManager.UserSettings.DefaultFolder.UseSaveFolder);
+            DisplayUtility.SetControlEnableState(this.OpenFolderButton, AppSettingsManager.UserSettings.DefaultFolder.UseOpenFolder);
+            DisplayUtility.SetControlEnableState(this.OpenTextBoxBackground, AppSettingsManager.UserSettings.DefaultFolder.UseOpenFolder);
 
             this.AutosaveCheckBox.UpdatedValue();
             this.CoinWeightCheckBox.UpdatedValue();
             this.EncumbranceCheckBox.UpdatedValue();
             this.MuteCheckBox.UpdatedValue();
             this.CheckVersionCheckBox.UpdatedValue();
+            this.DefaultOpenCheckBox.UpdatedValue();
+            this.DefaultSaveCheckBox.UpdatedValue();
         }
 
         private bool UpdateSettings()
@@ -99,9 +111,19 @@ namespace Concierge.Display.Utility
             var oldSettings = AppSettingsManager.ToUserSettingsDto();
             var conciergeSettings = new UserSettingsDto()
             {
-                AutosaveEnabled = this.AutosaveCheckBox.IsChecked ?? false,
-                AutosaveInterval = (int)this.AutosaveInterval.Value,
+                Autosaving = new Autosave()
+                {
+                    Enabled = this.AutosaveCheckBox.IsChecked ?? false,
+                    Interval = (int)this.AutosaveInterval.Value,
+                },
                 CheckVersion = this.CheckVersionCheckBox.IsChecked ?? false,
+                DefaultFolder = new DefaultFolders()
+                {
+                    OpenFolder = this.OpenTextBox.Text,
+                    SaveFolder = this.SaveTextBox.Text,
+                    UseSaveFolder = this.DefaultSaveCheckBox.IsChecked ?? false,
+                    UseOpenFolder = this.DefaultOpenCheckBox.IsChecked ?? false,
+                },
                 MuteSounds = this.MuteCheckBox.IsChecked ?? false,
                 UseCoinWeight = this.CoinWeightCheckBox.IsChecked ?? false,
                 UseEncumbrance = this.EncumbranceCheckBox.IsChecked ?? false,
@@ -112,22 +134,6 @@ namespace Concierge.Display.Utility
             AppSettingsManager.UpdateSettings(conciergeSettings, Program.IsDebug);
 
             return true;
-        }
-
-        private void EnableAutosaveControls()
-        {
-            this.IntervalTextBox.IsEnabled = true;
-            this.AutosaveInterval.IsEnabled = true;
-            this.IntervalTextBox.Opacity = 1;
-            this.AutosaveInterval.Opacity = 1;
-        }
-
-        private void DisableAutosaveControls()
-        {
-            this.IntervalTextBox.IsEnabled = false;
-            this.AutosaveInterval.IsEnabled = false;
-            this.IntervalTextBox.Opacity = 0.5;
-            this.AutosaveInterval.Opacity = 0.5;
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
@@ -158,12 +164,58 @@ namespace Concierge.Display.Utility
 
         private void AutosaveCheckBox_Checked(object sender, RoutedEventArgs e)
         {
-            this.EnableAutosaveControls();
+            DisplayUtility.SetControlEnableState(this.AutosaveInterval, true);
+            DisplayUtility.SetControlEnableState(this.IntervalTextBox, true);
         }
 
         private void AutosaveCheckBox_Unchecked(object sender, RoutedEventArgs e)
         {
-            this.DisableAutosaveControls();
+            DisplayUtility.SetControlEnableState(this.AutosaveInterval, false);
+            DisplayUtility.SetControlEnableState(this.IntervalTextBox, false);
+        }
+
+        private void SaveFolderButton_Click(object sender, RoutedEventArgs e)
+        {
+            var folder = this.fileAccessService.OpenFolder();
+            this.Activate();
+            if (!folder.IsNullOrWhiteSpace())
+            {
+                this.SaveTextBox.Text = folder;
+            }
+        }
+
+        private void OpenFolderButton_Click(object sender, RoutedEventArgs e)
+        {
+            var folder = this.fileAccessService.OpenFolder();
+            this.Activate();
+            if (!folder.IsNullOrWhiteSpace())
+            {
+                this.OpenTextBox.Text = folder;
+            }
+        }
+
+        private void DefaultSaveCheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            DisplayUtility.SetControlEnableState(this.SaveFolderButton, true);
+            DisplayUtility.SetControlEnableState(this.SaveTextBoxBackground, true);
+        }
+
+        private void DefaultSaveCheckBox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            DisplayUtility.SetControlEnableState(this.SaveFolderButton, false);
+            DisplayUtility.SetControlEnableState(this.SaveTextBoxBackground, false);
+        }
+
+        private void DefaultOpenCheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            DisplayUtility.SetControlEnableState(this.OpenFolderButton, true);
+            DisplayUtility.SetControlEnableState(this.OpenTextBoxBackground, true);
+        }
+
+        private void DefaultOpenCheckBox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            DisplayUtility.SetControlEnableState(this.OpenFolderButton, false);
+            DisplayUtility.SetControlEnableState(this.OpenTextBoxBackground, false);
         }
     }
 }

@@ -120,6 +120,11 @@ namespace Concierge.Display.Windows
         {
             this.CurrentHpUpDown.Maximum = this.TotalHpUpDown.Value;
             this.CurrentHpUpDown.Minimum = -this.TotalHpUpDown.Value;
+
+            if (this.TotalHpUpDown.Delta > 0 && this.TotalHpUpDown.Value - 1 == this.CurrentHpUpDown.Value)
+            {
+                this.CurrentHpUpDown.Value = this.TotalHpUpDown.Value;
+            }
         }
     }
 }

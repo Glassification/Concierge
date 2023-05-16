@@ -17,7 +17,9 @@ namespace Concierge.Services.ImportService
         private static readonly string[] JournalMatch = new string[] { "journal", "journals", "chapter", "chapters", "note", "notes" };
         private static readonly string[] LanguageMatch = new string[] { "language", "languages" };
         private static readonly string[] ProficiencyMatch = new string[] { "proficiency", "proficiencys", "proficiencies", "proficiancy", "proficiancys", "proficiancies" };
+        private static readonly string[] ResourceMatch = new string[] { "classresource", "classresources", "resource", "resources" };
         private static readonly string[] SpellMatch = new string[] { "spell", "spells", "magic" };
+        private static readonly string[] StatusEffectMatch = new string[] { "statuseffect", "statuseffects", "statusaffect", "statusaffects" };
         private static readonly string[] WeaponMatch = new string[] { "weapon", "weapons", "attack", "attacks" };
 
         public static bool FuzzySearch(string text, SelectionType selectionType)
@@ -27,7 +29,7 @@ namespace Concierge.Services.ImportService
                 return false;
             }
 
-            var fileName = Path.GetFileNameWithoutExtension(text).ToLower();
+            var fileName = Path.GetFileNameWithoutExtension(text).ToLower().Strip(" ");
             return selectionType switch
             {
                 SelectionType.Ability => ListContains(AbilityMatch, fileName),
@@ -36,7 +38,9 @@ namespace Concierge.Services.ImportService
                 SelectionType.Journal => ListContains(JournalMatch, fileName),
                 SelectionType.Language => ListContains(LanguageMatch, fileName),
                 SelectionType.Proficiency => ListContains(ProficiencyMatch, fileName),
+                SelectionType.Resource => ListContains(ResourceMatch, fileName),
                 SelectionType.Spell => ListContains(SpellMatch, fileName),
+                SelectionType.StatusEffect => ListContains(StatusEffectMatch, fileName),
                 SelectionType.Weapon => ListContains(WeaponMatch, fileName),
                 _ => false,
             };

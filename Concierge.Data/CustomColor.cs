@@ -19,8 +19,8 @@ namespace Concierge.Data
         private const byte MaxColor = 255;
         private const byte MinColor = 0;
 
-        private static readonly Regex _formatHex = new (@"(.{2})", RegexOptions.Compiled);
-        private string? _name;
+        private static readonly Regex formatHex = new (@"(.{2})", RegexOptions.Compiled);
+        private string? name;
 
         public CustomColor(string name, bool isHex = false)
         {
@@ -102,12 +102,12 @@ namespace Concierge.Data
         {
             get
             {
-                return this._name.IsNullOrWhiteSpace() ? this.Color.GetName() : (this._name ?? this.Color.GetName());
+                return this.name.IsNullOrWhiteSpace() ? this.Color.GetName() : (this.name ?? this.Color.GetName());
             }
 
             set
             {
-                this._name = value;
+                this.name = value;
             }
         }
 
@@ -165,7 +165,7 @@ namespace Concierge.Data
 
         private static byte[] HexToRgb(string hex)
         {
-            var cleanHex = _formatHex.Replace(hex.Strip("#"), "$1 ").Trim();
+            var cleanHex = formatHex.Replace(hex.Strip("#"), "$1 ").Trim();
             var result = cleanHex
                 .Split(' ')
                 .Select(item => Convert.ToByte(item, 16))

@@ -29,7 +29,7 @@ namespace Concierge.Display.Controls
             typeof(RoutedEventHandler),
             typeof(ColorPickerControl));
 
-        private CustomColor? _selectedColor;
+        private CustomColor? selectedColor;
 
         public ColorPickerControl()
         {
@@ -55,15 +55,15 @@ namespace Concierge.Display.Controls
         {
             get
             {
-                return this._selectedColor ?? CustomColor.Invalid;
+                return this.selectedColor ?? CustomColor.Invalid;
             }
 
             set
             {
-                this._selectedColor = value;
-                this.PickColorButton.Foreground = this._selectedColor.Color.GetForeColor();
-                this.PickColorButton.Background = new SolidColorBrush(this._selectedColor.Color);
-                this.PickColorButton.ToolTip = this._selectedColor.Name;
+                this.selectedColor = value;
+                this.PickColorButton.Foreground = this.selectedColor.Color.GetForeColor();
+                this.PickColorButton.Background = new SolidColorBrush(this.selectedColor.Color);
+                this.PickColorButton.ToolTip = this.selectedColor.Name;
                 this.RaiseEvent(new RoutedEventArgs(ColorChangedEvent));
             }
         }

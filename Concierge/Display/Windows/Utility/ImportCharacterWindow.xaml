@@ -6,11 +6,10 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:local="clr-namespace:Concierge.Display.Utility"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-    xmlns:controls="clr-namespace:Concierge.Display.Controls"
     xmlns:components="clr-namespace:Concierge.Display.Components"
     mc:Ignorable="d"
     Title="ImportCharacterWindow"
-    Height="480"
+    Height="490"
     Width="650"
     Style="{StaticResource WindowFontStyle}">
     <Grid>
@@ -19,14 +18,14 @@
             <RowDefinition Height="60"/>
             <RowDefinition Height="60"/>
             <RowDefinition Height="5"/>
-            <RowDefinition Height="240"/>
+            <RowDefinition Height="250"/>
             <RowDefinition Height="70"/>
         </Grid.RowDefinitions>
 
         <!--Header-->
         <Grid Grid.Row="0">
             <TextBlock 
-                Text="Import Details"
+                Text="Import Data"
                 x:Name="HeaderTextBlock"
                 Foreground="#227EA9"
                 FontSize="35"
@@ -79,6 +78,7 @@
                         HorizontalAlignment="Stretch"
                         Foreground="White"
                         Margin="10, 10, 20, 10"
+                        ToolTip="Open File Dialog"
                         Click="OpenFileButton_Click"/>
                 </Grid>
             </Grid>
@@ -102,14 +102,14 @@
                 <components:ConciergeLabel
                     Grid.Column="0"
                     Grid.Row="0"
-                    Text="Import From Character (.ccs):"
+                    Text="Import From Character:"
                     FontSize="18"
                     HorizontalAlignment="Right"
                     Margin="0,0,20,0"/>
                 <components:ConciergeLabel
                     Grid.Column="0"
                     Grid.Row="1"
-                    Text="Import From Object (.json):"
+                    Text="Import From Single List:"
                     FontSize="18"
                     HorizontalAlignment="Right"
                     Margin="0,0,20,0"/>
@@ -146,10 +146,11 @@
 
         <Grid Grid.Row="4">
             <Grid.RowDefinitions>
-                <RowDefinition Height="60"/>
-                <RowDefinition Height="60"/>
-                <RowDefinition Height="60"/>
-                <RowDefinition Height="60"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="50*"/>
@@ -335,6 +336,52 @@
                 <Grid Grid.Column="1" Margin="20,0,0,0">
                     <components:ConciergeCheckBox  
                         x:Name="ProficiencyCheckBox"
+                        Style="{StaticResource CheckBoxStyle}"
+                        Checked="ImportCheckBox_Checked"/>
+                </Grid>
+            </Grid>
+
+            <Grid
+                Grid.Row="4"
+                Grid.Column="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="60*"/>
+                    <ColumnDefinition Width="40*"/>
+                </Grid.ColumnDefinitions>
+
+                <!--Title-->
+                <Grid Grid.Column="0">
+                    <components:ConciergeLabel
+                        Text="Status Effects:"/>
+                </Grid>
+
+                <!--Value-->
+                <Grid Grid.Column="1" Margin="20,0,0,0">
+                    <components:ConciergeCheckBox  
+                        x:Name="StatusEffectsCheckBox"
+                        Style="{StaticResource CheckBoxStyle}"
+                        Checked="ImportCheckBox_Checked"/>
+                </Grid>
+            </Grid>
+
+            <Grid
+                Grid.Row="4"
+                Grid.Column="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="60*"/>
+                    <ColumnDefinition Width="40*"/>
+                </Grid.ColumnDefinitions>
+
+                <!--Title-->
+                <Grid Grid.Column="0">
+                    <components:ConciergeLabel
+                        Text="Class Resources:"/>
+                </Grid>
+
+                <!--Value-->
+                <Grid Grid.Column="1" Margin="20,0,0,0">
+                    <components:ConciergeCheckBox  
+                        x:Name="ResourcesCheckBox"
                         Style="{StaticResource CheckBoxStyle}"
                         Checked="ImportCheckBox_Checked"/>
                 </Grid>

@@ -13,7 +13,8 @@
     "documentationRules": {
       "companyName": "Thomas Beckett",
       "documentExposedElements": false,
-      "documentInternalElements": false
+      "documentInternalElements": false,
+      "documentInterfaces": false
     }
   }
 }

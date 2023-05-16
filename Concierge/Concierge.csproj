@@ -6,17 +6,19 @@
     <RootNamespace>Concierge</RootNamespace>
 	<Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
-    <Version>5.3.0</Version>
+    <Version>5.3.1</Version>
     <ApplicationIcon>AppIconImage.ico</ApplicationIcon>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <CheckForOverflowUnderflow>True</CheckForOverflowUnderflow>
+    <NoWarn>1701;1702;SA1311;SA1600</NoWarn>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <CheckForOverflowUnderflow>True</CheckForOverflowUnderflow>
+    <NoWarn>1701;1702;SA1311;SA1600</NoWarn>
   </PropertyGroup>
 
 	<ItemGroup>

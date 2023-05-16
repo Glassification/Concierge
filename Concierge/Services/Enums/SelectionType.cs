@@ -12,7 +12,9 @@ namespace Concierge.Services.Enums
         Journal,
         Language,
         Proficiency,
+        Resource,
         Spell,
+        StatusEffect,
         Weapon,
     }
 }
