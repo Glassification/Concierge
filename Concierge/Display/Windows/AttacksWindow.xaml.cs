@@ -16,12 +16,14 @@ namespace Concierge.Display.Windows
     using Concierge.Commands;
     using Concierge.Common.Enums;
     using Concierge.Common.Exceptions;
+    using Concierge.Common.Utilities;
     using Concierge.Configuration;
     using Concierge.Data;
     using Concierge.Data.Units;
     using Concierge.Display.Components;
     using Concierge.Display.Enums;
     using Concierge.Persistence;
+    using Newtonsoft.Json.Linq;
 
     /// <summary>
     /// Interaction logic for AttacksWindow.xaml.
@@ -179,18 +181,8 @@ namespace Concierge.Display.Windows
             this.CoinTypeComboBox.Text = weapon.CoinType.ToString();
             this.AttunedCheckBox.IsChecked = weapon.Attuned;
 
-            if (this.EquippedItem)
-            {
-                this.AttunedText.Opacity = 1;
-                this.AttunedCheckBox.Opacity = 1;
-                this.AttunedCheckBox.IsEnabled = true;
-            }
-            else
-            {
-                this.AttunedText.Opacity = 0.5;
-                this.AttunedCheckBox.Opacity = 0.5;
-                this.AttunedCheckBox.IsEnabled = false;
-            }
+            DisplayUtility.SetControlEnableState(this.AttunedText, this.EquippedItem);
+            DisplayUtility.SetControlEnableState(this.AttunedCheckBox, this.EquippedItem);
 
             this.AttunedCheckBox.UpdatedValue();
             this.IgnoreWeightCheckBox.UpdatedValue();

@@ -9,6 +9,7 @@ namespace Concierge.Display.Controls
     using System.Windows.Controls;
     using System.Windows.Input;
 
+    using Concierge.Common.Utilities;
     using Concierge.Persistence;
 
     /// <summary>
@@ -190,36 +191,8 @@ namespace Concierge.Display.Controls
 
         private void UpdateSpinnerStatus()
         {
-            this.SetIncreaseButtonStatus(this.Value, this.Maximum);
-            this.SetDecreaseButtonStatus(this.Value, this.Minimum);
-        }
-
-        private void SetIncreaseButtonStatus(int value, int max)
-        {
-            if (value < max)
-            {
-                this.Increase.IsEnabled = true;
-                this.Increase.Opacity = 1;
-            }
-            else
-            {
-                this.Increase.IsEnabled = false;
-                this.Increase.Opacity = 0.5;
-            }
-        }
-
-        private void SetDecreaseButtonStatus(int value, int min)
-        {
-            if (value > min)
-            {
-                this.Decrease.IsEnabled = true;
-                this.Decrease.Opacity = 1;
-            }
-            else
-            {
-                this.Decrease.IsEnabled = false;
-                this.Decrease.Opacity = 0.5;
-            }
+            DisplayUtility.SetControlEnableState(this.Increase, this.Value < this.Maximum);
+            DisplayUtility.SetControlEnableState(this.Decrease, this.Value > this.Minimum);
         }
 
         private void AttemptToSetValue()

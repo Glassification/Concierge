@@ -12,6 +12,7 @@ namespace Concierge.Display.Utility
 
     using Concierge.Common;
     using Concierge.Common.Enums;
+    using Concierge.Common.Utilities;
     using Concierge.Display.Components;
     using Concierge.Display.Enums;
     using Concierge.Persistence;
@@ -68,18 +69,14 @@ namespace Concierge.Display.Utility
 
         private void SetGenderState(bool isEnabled)
         {
-            this.GenderComboBox.IsEnabled = isEnabled;
-            this.GenderLabel.IsEnabled = isEnabled;
-            this.GenderComboBox.Opacity = isEnabled ? 1 : 0.5;
-            this.GenderLabel.Opacity = isEnabled ? 1 : 0.5;
+            DisplayUtility.SetControlEnableState(this.GenderComboBox, isEnabled);
+            DisplayUtility.SetControlEnableState(this.GenderLabel, isEnabled);
         }
 
         private void SetRaceState(bool isEnabled)
         {
-            this.RaceComboBox.IsEnabled = isEnabled;
-            this.RaceLabel.IsEnabled = isEnabled;
-            this.RaceComboBox.Opacity = isEnabled ? 1 : 0.5;
-            this.RaceLabel.Opacity = isEnabled ? 1 : 0.5;
+            DisplayUtility.SetControlEnableState(this.RaceComboBox, isEnabled);
+            DisplayUtility.SetControlEnableState(this.RaceLabel, isEnabled);
         }
 
         private void ScrollHistory(HistoryDirection direction)

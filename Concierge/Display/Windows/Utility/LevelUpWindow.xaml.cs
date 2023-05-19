@@ -13,6 +13,7 @@ namespace Concierge.Display.Utility
     using Concierge.Common;
     using Concierge.Common.Enums;
     using Concierge.Common.Extensions;
+    using Concierge.Common.Utilities;
     using Concierge.Display.Components;
     using Concierge.Display.Controls;
     using Concierge.Display.Enums;
@@ -69,24 +70,18 @@ namespace Concierge.Display.Utility
 
             if (characterClass.Name.IsNullOrWhiteSpace())
             {
-                classNameBackground.IsEnabled = false;
-                classNameBackground.Opacity = 0.5;
-                className.IsEnabled = false;
-                className.Opacity = 0.5;
-                hitDice.IsEnabled = false;
-                hitDice.Opacity = 0.5;
-                modifier.IsEnabled = false;
-                modifier.Opacity = 0.5;
-                button.IsEnabled = false;
-                button.Opacity = 0.5;
+                DisplayUtility.SetControlEnableState(classNameBackground, false);
+                DisplayUtility.SetControlEnableState(className, false);
+                DisplayUtility.SetControlEnableState(hitDice, false);
+                DisplayUtility.SetControlEnableState(modifier, false);
+                DisplayUtility.SetControlEnableState(button, false);
             }
             else
             {
                 button.Content = $"Level Up ({Math.Min(characterClass.Level + 1, Constants.MaxLevel)})";
                 if (!CanLevelUp(characterClass))
                 {
-                    button.IsEnabled = false;
-                    button.Opacity = 0.5;
+                    DisplayUtility.SetControlEnableState(button, false);
                 }
             }
         }

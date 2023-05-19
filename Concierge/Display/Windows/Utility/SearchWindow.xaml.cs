@@ -251,19 +251,16 @@ namespace Concierge.Display.Utility
 
         private void UseRegexCheckBox_Checked(object? sender, RoutedEventArgs e)
         {
-            this.MatchWholeWordLabel.IsEnabled = false;
-            this.MatchWholeWordCheckBox.IsEnabled = false;
-            this.MatchWholeWordLabel.Opacity = 0.5;
-            this.MatchWholeWordCheckBox.Opacity = 0.5;
+            DisplayUtility.SetControlEnableState(this.MatchWholeWordLabel, false);
+            DisplayUtility.SetControlEnableState(this.MatchWholeWordCheckBox, false);
+
             this.MatchWholeWordCheckBox.IsChecked = false;
         }
 
         private void UseRegexCheckBox_Unchecked(object? sender, RoutedEventArgs e)
         {
-            this.MatchWholeWordLabel.IsEnabled = true;
-            this.MatchWholeWordCheckBox.IsEnabled = true;
-            this.MatchWholeWordLabel.Opacity = 1;
-            this.MatchWholeWordCheckBox.Opacity = 1;
+            DisplayUtility.SetControlEnableState(this.MatchWholeWordLabel, true);
+            DisplayUtility.SetControlEnableState(this.MatchWholeWordCheckBox, true);
         }
     }
 }

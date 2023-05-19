@@ -12,8 +12,8 @@ namespace Concierge.Display.Windows
     using Concierge.Character;
     using Concierge.Commands;
     using Concierge.Common.Extensions;
+    using Concierge.Common.Utilities;
     using Concierge.Display.Components;
-    using Concierge.Display.Controls;
     using Concierge.Display.Enums;
     using Concierge.Display.Utility;
     using Concierge.Persistence;
@@ -86,9 +86,9 @@ namespace Concierge.Display.Windows
             this.CancelButton.Content = buttonText;
             this.CharacterProperties = Program.CcsFile.Character.Properties;
 
-            SetLevelEnableState(this.Class1Level, false);
-            SetLevelEnableState(this.Class2Level, false);
-            SetLevelEnableState(this.Class3Level, false);
+            DisplayUtility.SetControlEnableState(this.Class1Level, false);
+            DisplayUtility.SetControlEnableState(this.Class2Level, false);
+            DisplayUtility.SetControlEnableState(this.Class3Level, false);
 
             this.FillFields();
             this.ShowConciergeWindow();
@@ -116,12 +116,6 @@ namespace Concierge.Display.Windows
             this.CloseConciergeWindow();
 
             Program.Modify();
-        }
-
-        private static void SetLevelEnableState(IntegerUpDownControl level, bool isEnabled)
-        {
-            level.IsEnabled = isEnabled;
-            level.Opacity = isEnabled ? 1 : 0.5;
         }
 
         private void FillFields()
@@ -181,11 +175,8 @@ namespace Concierge.Display.Windows
 
         private void SetImageEnabledState(bool isEnabled)
         {
-            this.OpenImageButton.IsEnabled = isEnabled;
-            this.ImageSourceTextBoxBackground.IsEnabled = isEnabled;
-
-            this.OpenImageButton.Opacity = isEnabled ? 1 : 0.5;
-            this.ImageSourceTextBoxBackground.Opacity = isEnabled ? 1 : 0.5;
+            DisplayUtility.SetControlEnableState(this.OpenImageButton, isEnabled);
+            DisplayUtility.SetControlEnableState(this.ImageSourceTextBoxBackground, isEnabled);
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)

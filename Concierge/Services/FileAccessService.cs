@@ -32,7 +32,7 @@ namespace Concierge.Services
                 return CharacterReadWriter.Read(file);
             }
 
-            if (AppSettingsManager.UserSettings.DefaultFolder.UseOpenFolder)
+            if (AppSettingsManager.UserSettings.DefaultFolder.UseOpenFolder && !AppSettingsManager.UserSettings.DefaultFolder.OpenFolder.IsNullOrWhiteSpace())
             {
                 this.openFileDialog.InitialDirectory = AppSettingsManager.UserSettings.DefaultFolder.OpenFolder;
             }
@@ -46,7 +46,7 @@ namespace Concierge.Services
 
         public string OpenFile(int filterIndex, string filter, string defaultExtension)
         {
-            if (AppSettingsManager.UserSettings.DefaultFolder.UseOpenFolder)
+            if (AppSettingsManager.UserSettings.DefaultFolder.UseOpenFolder && !AppSettingsManager.UserSettings.DefaultFolder.OpenFolder.IsNullOrWhiteSpace())
             {
                 this.openFileDialog.InitialDirectory = AppSettingsManager.UserSettings.DefaultFolder.OpenFolder;
             }
@@ -76,7 +76,7 @@ namespace Concierge.Services
 
         public bool SaveAs(CcsFile ccsFile)
         {
-            if (AppSettingsManager.UserSettings.DefaultFolder.UseSaveFolder)
+            if (AppSettingsManager.UserSettings.DefaultFolder.UseSaveFolder && !AppSettingsManager.UserSettings.DefaultFolder.SaveFolder.IsNullOrWhiteSpace())
             {
                 this.saveFileDialog.InitialDirectory = AppSettingsManager.UserSettings.DefaultFolder.SaveFolder;
             }

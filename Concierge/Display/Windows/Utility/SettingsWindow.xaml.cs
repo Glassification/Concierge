@@ -34,6 +34,20 @@ namespace Concierge.Display.Utility
             this.UseRoundedCorners();
 
             this.UnitOfMeasurementComboBox.ItemsSource = Enum.GetValues(typeof(UnitTypes)).Cast<UnitTypes>();
+            this.DescriptionTextBlock.DataContext = this.Description;
+
+            this.SetFocusEvents(this.AutosaveCheckBox);
+            this.SetFocusEvents(this.AutosaveInterval);
+            this.SetFocusEvents(this.CoinWeightCheckBox);
+            this.SetFocusEvents(this.EncumbranceCheckBox);
+            this.SetFocusEvents(this.IntervalTextBox);
+            this.SetFocusEvents(this.MuteCheckBox);
+            this.SetFocusEvents(this.CheckVersionCheckBox);
+            this.SetFocusEvents(this.UnitOfMeasurementComboBox);
+            this.SetFocusEvents(this.DefaultSaveCheckBox);
+            this.SetFocusEvents(this.DefaultOpenCheckBox);
+            this.SetFocusEvents(this.OpenTextBox);
+            this.SetFocusEvents(this.SaveTextBox);
         }
 
         public override string HeaderText => "Settings";

@@ -368,6 +368,7 @@ namespace Concierge.Display
         public void SetActiveFileText()
         {
             this.ActiveFileNameTextBlock.Text = Program.CcsFile.FileName;
+            this.ActiveFileNameTextBlock.ToolTip = Program.CcsFile.AbsolutePath;
         }
 
         public void DisplayStatusText(string message)

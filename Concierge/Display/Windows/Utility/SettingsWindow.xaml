@@ -9,7 +9,7 @@
     mc:Ignorable="d"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     Title="Concierge Settings"
-    Height="415"
+    Height="475"
     Width="800"
     Style="{StaticResource WindowFontStyle}">
 
@@ -19,6 +19,7 @@
             <RowDefinition Height="200"/>
             <RowDefinition Height="50"/>
             <RowDefinition Height="50"/>
+            <RowDefinition Height="60"/>
             <RowDefinition Height="70"/>
         </Grid.RowDefinitions>
 
@@ -327,8 +328,29 @@
                 Click="SaveFolderButton_Click"/>
         </Grid>
 
+        <Border
+            Grid.Row="4"
+            BorderBrush="#29303E"
+            BorderThickness="5"
+            CornerRadius="10"
+            Margin="10,5,20,5">
+            <Grid
+                Background="#29303E"
+                Margin="-1">
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <components:ConciergeTextBlock
+                        x:Name="DescriptionTextBlock"
+                        HorizontalAlignment="Left"
+                        FontSize="11"
+                        Opacity="0.80"
+                        Margin="10,2,10,2"
+                        Text="{Binding UpdateSourceTrigger=PropertyChanged, Path=Text}"/>
+                </ScrollViewer>
+            </Grid>
+        </Border>
+
         <!--Buttons-->
-        <Grid Grid.Row="4">
+        <Grid Grid.Row="5">
             <StackPanel Orientation="Horizontal"
                         VerticalAlignment="Center"
                         HorizontalAlignment="Center">

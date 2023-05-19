@@ -16,6 +16,7 @@ namespace Concierge.Display.Windows
     using Concierge.Common;
     using Concierge.Common.Enums;
     using Concierge.Common.Extensions;
+    using Concierge.Common.Utilities;
     using Concierge.Configuration;
     using Concierge.Data;
     using Concierge.Data.Units;
@@ -156,26 +157,10 @@ namespace Concierge.Display.Windows
             this.IgnoreWeightCheckBox.IsChecked = inventory.IgnoreWeight;
             this.AttunedCheckBox.IsChecked = inventory.Attuned;
 
-            if (this.EquippedItem)
-            {
-                this.AttunedText.Opacity = 1;
-                this.AttunedCheckBox.Opacity = 1;
-                this.AttunedCheckBox.IsEnabled = true;
-
-                this.AmountTextBlock.Opacity = 0.5;
-                this.AmountUpDown.Opacity = 0.5;
-                this.AmountUpDown.IsEnabled = false;
-            }
-            else
-            {
-                this.AttunedText.Opacity = 0.5;
-                this.AttunedCheckBox.Opacity = 0.5;
-                this.AttunedCheckBox.IsEnabled = false;
-
-                this.AmountTextBlock.Opacity = 1;
-                this.AmountUpDown.Opacity = 1;
-                this.AmountUpDown.IsEnabled = true;
-            }
+            DisplayUtility.SetControlEnableState(this.AttunedText, this.EquippedItem);
+            DisplayUtility.SetControlEnableState(this.AttunedCheckBox, this.EquippedItem);
+            DisplayUtility.SetControlEnableState(this.AmountTextBlock, !this.EquippedItem);
+            DisplayUtility.SetControlEnableState(this.AmountUpDown, !this.EquippedItem);
 
             this.AttunedCheckBox.UpdatedValue();
             this.IgnoreWeightCheckBox.UpdatedValue();

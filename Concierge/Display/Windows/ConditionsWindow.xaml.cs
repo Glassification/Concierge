@@ -98,7 +98,8 @@ namespace Concierge.Display.Windows
             this.UnconsciousCheckBox.IsChecked = this.Conditions.Unconscious.Afflicted;
             this.EncumbranceComboBox.Text = this.Conditions.Encumbered.EncumbranceLevel.ToString().FormatFromEnum();
             this.EncumbranceCheckBox.IsChecked = this.Conditions.Encumbered.OverrideEncumbrance;
-            this.SetEncumbranceEnableState(this.Conditions.Encumbered.OverrideEncumbrance);
+
+            DisplayUtility.SetControlEnableState(this.EncumbranceComboBox, this.Conditions.Encumbered.OverrideEncumbrance);
         }
 
         private void UpdateConditions()
@@ -131,12 +132,6 @@ namespace Concierge.Display.Windows
             Program.UndoRedoService.AddCommand(new EditCommand<Conditions>(this.Conditions, oldItem, this.ConciergePage));
         }
 
-        private void SetEncumbranceEnableState(bool state)
-        {
-            this.EncumbranceComboBox.IsEnabled = state;
-            this.EncumbranceComboBox.Opacity = state ? 1 : 0.5;
-        }
-
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             this.CloseConciergeWindow();
@@ -162,12 +157,12 @@ namespace Concierge.Display.Windows
 
         private void EncumbranceCheckBox_Checked(object sender, RoutedEventArgs e)
         {
-            this.SetEncumbranceEnableState(true);
+            DisplayUtility.SetControlEnableState(this.EncumbranceComboBox, true);
         }
 
         private void EncumbranceCheckBox_Unchecked(object sender, RoutedEventArgs e)
         {
-            this.SetEncumbranceEnableState(false);
+            DisplayUtility.SetControlEnableState(this.EncumbranceComboBox, false);
         }
     }
 }

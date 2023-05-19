@@ -298,7 +298,7 @@ namespace Concierge.Display.Pages
                 typeof(AttributesWindow),
                 this.Window_ApplyChanges,
                 ConciergePage.Overview);
-            this.DrawAttributes();
+            this.Draw();
         }
 
         private void Window_ApplyChanges(object sender, EventArgs e)
@@ -306,7 +306,7 @@ namespace Concierge.Display.Pages
             switch (sender?.GetType()?.Name)
             {
                 case nameof(AttributesWindow):
-                    this.DrawAttributes();
+                    this.Draw();
                     break;
                 case nameof(SensesWindow):
                     this.DrawDetails();

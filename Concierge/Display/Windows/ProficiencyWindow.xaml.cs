@@ -15,6 +15,7 @@ namespace Concierge.Display.Windows
     using Concierge.Character.Enums;
     using Concierge.Commands;
     using Concierge.Common.Extensions;
+    using Concierge.Common.Utilities;
     using Concierge.Display.Components;
     using Concierge.Display.Enums;
     using Concierge.Persistence;
@@ -148,11 +149,8 @@ namespace Concierge.Display.Windows
 
         private void SetEnabledState(bool isEnabled)
         {
-            this.ProficiencyComboBox.IsEnabled = isEnabled;
-            this.TypeLabel.IsEnabled = isEnabled;
-
-            this.ProficiencyComboBox.Opacity = isEnabled ? 1 : 0.5;
-            this.TypeLabel.Opacity = isEnabled ? 1 : 0.5;
+            DisplayUtility.SetControlEnableState(this.ProficiencyComboBox, isEnabled);
+            DisplayUtility.SetControlEnableState(this.TypeLabel, isEnabled);
         }
 
         private void FillFields()

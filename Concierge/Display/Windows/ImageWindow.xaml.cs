@@ -115,16 +115,10 @@ namespace Concierge.Display.Windows
 
         private void SetEnabledState(bool isEnabled)
         {
-            this.ImageSourceTextBox.IsEnabled = isEnabled;
-            this.FillTypeComboBox.IsEnabled = isEnabled;
-            this.OpenImageButton.IsEnabled = isEnabled;
-            this.ImageSourceTextBoxBackground.IsEnabled = isEnabled;
-
-            this.FillTypeComboBox.Opacity = isEnabled ? 1 : 0.5;
-            this.OpenImageButton.Opacity = isEnabled ? 1 : 0.5;
-            this.ImageSourceLabel.Opacity = isEnabled ? 1 : 0.5;
-            this.FillTypeLabel.Opacity = isEnabled ? 1 : 0.5;
-            this.ImageSourceTextBoxBackground.Opacity = isEnabled ? 1 : 0.5;
+            DisplayUtility.SetControlEnableState(this.ImageSourceTextBox, isEnabled);
+            DisplayUtility.SetControlEnableState(this.FillTypeComboBox, isEnabled);
+            DisplayUtility.SetControlEnableState(this.OpenImageButton, isEnabled);
+            DisplayUtility.SetControlEnableState(this.ImageSourceTextBoxBackground, isEnabled);
         }
 
         private void OpenImageButton_Click(object sender, RoutedEventArgs e)

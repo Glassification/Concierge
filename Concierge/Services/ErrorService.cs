@@ -7,7 +7,6 @@ namespace Concierge.Services
     using System;
     using System.Windows;
 
-    using Concierge.Common;
     using Concierge.Common.Enums;
     using Concierge.Common.Exceptions;
     using Concierge.Display;
