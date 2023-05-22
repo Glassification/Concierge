@@ -61,7 +61,7 @@ namespace Concierge.Console
             if (tokens[1].Contains('('))
             {
                 this.Action = tokens[1][..tokens[1].IndexOf('(')];
-                this.Argument = this.textInParentheses.Match(tokens[1]).Value.Strip("(").Strip(")");
+                this.Argument = this.textInParentheses.Match(tokens[1]).Value.Strip("(", ")");
             }
             else
             {

@@ -136,6 +136,16 @@ namespace Concierge.Common.Extensions
             return str.Replace(textToStrip, string.Empty);
         }
 
+        public static string Strip(this string str, params string[] textToStrip)
+        {
+            foreach (var text in textToStrip)
+            {
+                str = str.Replace(text, string.Empty);
+            }
+
+            return str;
+        }
+
         public static bool IsValidRegex(this string pattern)
         {
             if (pattern.IsNullOrWhiteSpace())
@@ -164,7 +174,7 @@ namespace Concierge.Common.Extensions
 
             try
             {
-                colorName = colorName.Strip(" ").Strip("-").Strip(".").Strip("'");
+                colorName = colorName.Strip(" ", "-", ".", "'" );
                 var cc = TypeDescriptor.GetConverter(typeof(Color));
 
                 return (Color?)cc?.ConvertFromString(colorName) ?? Colors.Transparent;

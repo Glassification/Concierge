@@ -5,8 +5,10 @@
 namespace Concierge.Display.Utility
 {
     using System;
+    using System.IO;
     using System.Linq;
     using System.Windows;
+    using System.Windows.Controls;
 
     using Concierge.Commands;
     using Concierge.Common.Enums;
@@ -100,6 +102,9 @@ namespace Concierge.Display.Utility
             DisplayUtility.SetControlEnableState(this.OpenFolderButton, AppSettingsManager.UserSettings.DefaultFolder.UseOpenFolder);
             DisplayUtility.SetControlEnableState(this.OpenTextBoxBackground, AppSettingsManager.UserSettings.DefaultFolder.UseOpenFolder);
 
+            this.OpenWarningVisibility();
+            this.SaveWarningVisibility();
+
             this.AutosaveCheckBox.UpdatedValue();
             this.CoinWeightCheckBox.UpdatedValue();
             this.EncumbranceCheckBox.UpdatedValue();
@@ -148,6 +153,26 @@ namespace Concierge.Display.Utility
             AppSettingsManager.UpdateSettings(conciergeSettings, Program.IsDebug);
 
             return true;
+        }
+
+        private void SaveWarningVisibility()
+        {
+            this.SaveFolderWarning.Visibility =
+                this.SaveTextBox.Text.IsNullOrWhiteSpace() ?
+                Visibility.Collapsed :
+                Directory.Exists(this.SaveTextBox.Text) ?
+                    Visibility.Collapsed :
+                    Visibility.Visible;
+        }
+
+        private void OpenWarningVisibility()
+        {
+            this.OpenFolderWarning.Visibility =
+                this.OpenTextBox.Text.IsNullOrWhiteSpace() ?
+                Visibility.Collapsed :
+                Directory.Exists(this.OpenTextBox.Text) ?
+                    Visibility.Collapsed :
+                    Visibility.Visible;
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
@@ -212,24 +237,38 @@ namespace Concierge.Display.Utility
         {
             DisplayUtility.SetControlEnableState(this.SaveFolderButton, true);
             DisplayUtility.SetControlEnableState(this.SaveTextBoxBackground, true);
+            this.SaveWarningVisibility();
         }
 
         private void DefaultSaveCheckBox_Unchecked(object sender, RoutedEventArgs e)
         {
             DisplayUtility.SetControlEnableState(this.SaveFolderButton, false);
             DisplayUtility.SetControlEnableState(this.SaveTextBoxBackground, false);
+            this.SaveFolderWarning.Visibility = Visibility.Collapsed;
         }
 
         private void DefaultOpenCheckBox_Checked(object sender, RoutedEventArgs e)
         {
             DisplayUtility.SetControlEnableState(this.OpenFolderButton, true);
             DisplayUtility.SetControlEnableState(this.OpenTextBoxBackground, true);
+            this.OpenWarningVisibility();
         }
 
         private void DefaultOpenCheckBox_Unchecked(object sender, RoutedEventArgs e)
         {
             DisplayUtility.SetControlEnableState(this.OpenFolderButton, false);
             DisplayUtility.SetControlEnableState(this.OpenTextBoxBackground, false);
+            this.OpenFolderWarning.Visibility = Visibility.Collapsed;
+        }
+
+        private void SaveTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            this.SaveWarningVisibility();
+        }
+
+        private void OpenTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            this.OpenWarningVisibility();
         }
     }
 }

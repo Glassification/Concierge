@@ -4,6 +4,8 @@
 
 namespace Concierge.Services
 {
+    using System.IO;
+
     using Concierge.Common.Extensions;
     using Concierge.Configuration;
     using Concierge.Persistence;
@@ -32,7 +34,7 @@ namespace Concierge.Services
                 return CharacterReadWriter.Read(file);
             }
 
-            if (AppSettingsManager.UserSettings.DefaultFolder.UseOpenFolder && !AppSettingsManager.UserSettings.DefaultFolder.OpenFolder.IsNullOrWhiteSpace())
+            if (ShouldUseDefaultOpen())
             {
                 this.openFileDialog.InitialDirectory = AppSettingsManager.UserSettings.DefaultFolder.OpenFolder;
             }
@@ -46,7 +48,7 @@ namespace Concierge.Services
 
         public string OpenFile(int filterIndex, string filter, string defaultExtension)
         {
-            if (AppSettingsManager.UserSettings.DefaultFolder.UseOpenFolder && !AppSettingsManager.UserSettings.DefaultFolder.OpenFolder.IsNullOrWhiteSpace())
+            if (ShouldUseDefaultOpen())
             {
                 this.openFileDialog.InitialDirectory = AppSettingsManager.UserSettings.DefaultFolder.OpenFolder;
             }
@@ -76,7 +78,7 @@ namespace Concierge.Services
 
         public bool SaveAs(CcsFile ccsFile)
         {
-            if (AppSettingsManager.UserSettings.DefaultFolder.UseSaveFolder && !AppSettingsManager.UserSettings.DefaultFolder.SaveFolder.IsNullOrWhiteSpace())
+            if (ShouldUseDefaultSave())
             {
                 this.saveFileDialog.InitialDirectory = AppSettingsManager.UserSettings.DefaultFolder.SaveFolder;
             }
@@ -94,6 +96,22 @@ namespace Concierge.Services
             }
 
             return false;
+        }
+
+        private static bool ShouldUseDefaultOpen()
+        {
+            return
+                AppSettingsManager.UserSettings.DefaultFolder.UseOpenFolder &&
+                !AppSettingsManager.UserSettings.DefaultFolder.OpenFolder.IsNullOrWhiteSpace() &&
+                Directory.Exists(AppSettingsManager.UserSettings.DefaultFolder.OpenFolder);
+        }
+
+        private static bool ShouldUseDefaultSave()
+        {
+            return
+                AppSettingsManager.UserSettings.DefaultFolder.UseSaveFolder &&
+                !AppSettingsManager.UserSettings.DefaultFolder.SaveFolder.IsNullOrWhiteSpace() &&
+                Directory.Exists(AppSettingsManager.UserSettings.DefaultFolder.SaveFolder);
         }
     }
 }
