@@ -17,7 +17,7 @@ namespace Concierge.Display.Controls
             DependencyProperty.Register(
                 "LabelTextColor",
                 typeof(Brush),
-                typeof(DivideLootInputControl),
+                typeof(SpellSlotsControl),
                 new UIPropertyMetadata(Brushes.Black));
 
         public static readonly DependencyProperty LabelTextProperty =
@@ -41,8 +41,16 @@ namespace Concierge.Display.Controls
 
         public Brush LabelTextColor
         {
-            get { return (Brush)this.GetValue(LabelTextColorProperty); }
-            set { this.SetValue(LabelTextColorProperty, value); }
+            get
+            {
+                return (Brush)this.GetValue(LabelTextColorProperty);
+            }
+
+            set
+            {
+                this.SetValue(LabelTextColorProperty, value);
+                this.InputUpDown.ForegroundBrush = value;
+            }
         }
 
         public string LabelText
@@ -63,6 +71,7 @@ namespace Concierge.Display.Controls
                 this.SetValue(FillBrushProperty, value);
                 this.DivideLootGrid.Background = value;
                 this.DivideLootBorder.BorderBrush = value;
+                this.InputUpDown.BackgroundBrush = value;
             }
         }
 

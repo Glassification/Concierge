@@ -40,17 +40,13 @@
                 </Grid>
 
                 <!--Input-->
-                <Grid
+                <controls:IntegerUpDownTransparentControl 
                     Grid.Column="1"
-                    Background="#FF3e3e42"
-                    Margin="1">
-                    <controls:IntegerUpDownControl 
-                        x:Name="InputUpDown"
-                        Minimum="0"
-                        ValueFontSize="30"
-                        Height="auto"
-                        Margin="0"/>
-                </Grid>
+                    x:Name="InputUpDown"
+                    Minimum="0"
+                    ValueFontSize="30"
+                    Height="auto"
+                    Margin="0"/>
             </Grid>
         </Border>
     </Grid>

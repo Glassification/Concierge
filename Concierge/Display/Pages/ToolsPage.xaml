@@ -449,30 +449,35 @@
                             x:Name="CopperInput"
                             Grid.Row="1"
                             FillBrush="#ffb87333"
+                            LabelTextColor="Black"
                             LabelText="Copper"/>
 
                         <controls:DivideLootInputControl
                             x:Name="SilverInput"
                             Grid.Row="2"
                             FillBrush="Silver"
+                            LabelTextColor="Black"
                             LabelText="Silver"/>
 
                         <controls:DivideLootInputControl
                             x:Name="ElectrumInput"
                             Grid.Row="3"
                             FillBrush="#ff50c878"
+                            LabelTextColor="Black"
                             LabelText="Electrum"/>
 
                         <controls:DivideLootInputControl
                             x:Name="GoldInput"
                             Grid.Row="4"
                             FillBrush="#ffCFB53B"
+                            LabelTextColor="Black"
                             LabelText="Gold"/>
 
                         <controls:DivideLootInputControl
                             x:Name="PlatinumInput"
                             Grid.Row="5"
                             FillBrush="#ffe5e4e2"
+                            LabelTextColor="Black"
                             LabelText="Platinum"/>
                     </Grid>
 

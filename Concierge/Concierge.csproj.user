@@ -9,7 +9,7 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
-    <Compile Update="Display\Controls\IntegerSpinner.xaml.cs">
+    <Compile Update="Display\Controls\IntegerUpDownTransparentControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Display\Controls\LabelControl.xaml.cs">
@@ -80,10 +80,10 @@
     <Page Update="Display\Controls\HitDiceControl.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Display\Controls\IntegerSpinner.xaml">
+    <Page Update="Display\Controls\IntegerUpDownControl.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Display\Controls\IntegerUpDownControl.xaml">
+    <Page Update="Display\Controls\IntegerUpDownTransparentControl.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Display\Controls\LabelControl.xaml">
