@@ -71,7 +71,6 @@ namespace Concierge.Display.Controls
                 this.SetValue(FillBrushProperty, value);
                 this.DivideLootGrid.Background = value;
                 this.DivideLootBorder.BorderBrush = value;
-                this.InputUpDown.BackgroundBrush = value;
             }
         }
 

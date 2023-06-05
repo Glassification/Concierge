@@ -37,7 +37,7 @@ namespace Concierge.Services.ImportService.Importers
 
         public override IEnumerable<IUnique> Load(string fileName)
         {
-            return DefaultListReadWriter.ReadJson<ClassResource>(fileName);
+            return this.ReadWriter.ReadJson<List<ClassResource>>(fileName);
         }
     }
 }

@@ -9,7 +9,6 @@ namespace Concierge.Services.ImportService.Importers
     using Concierge.Character;
     using Concierge.Character.Characteristics;
     using Concierge.Common;
-    using Concierge.Persistence.ReadWriters;
 
     public class AbilityImporter : Importer
     {
@@ -37,7 +36,7 @@ namespace Concierge.Services.ImportService.Importers
 
         public override IEnumerable<IUnique> Load(string fileName)
         {
-            return DefaultListReadWriter.ReadJson<Ability>(fileName);
+            return this.ReadWriter.ReadJson<List<Ability>>(fileName);
         }
     }
 }

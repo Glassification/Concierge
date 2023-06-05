@@ -8,7 +8,7 @@ namespace Concierge.Display.Components
     using System.Windows.Controls.Primitives;
     using System.Windows.Input;
 
-    using Concierge.Persistence;
+    using Concierge.Services;
 
     public sealed class ConciergeColorToggleButton : ToggleButton
     {
@@ -25,7 +25,7 @@ namespace Concierge.Display.Components
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.TapNavigation();
+            ConciergeSoundService.TapNavigation();
         }
 
         private void Button_MouseEnter(object sender, MouseEventArgs e)

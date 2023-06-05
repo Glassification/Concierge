@@ -16,7 +16,7 @@ namespace Concierge.Display.Controls
     using Concierge.Common;
     using Concierge.Display.Enums;
     using Concierge.Display.Pages;
-    using Concierge.Persistence;
+    using Concierge.Services;
 
     /// <summary>
     /// Interaction logic for SavingThrowControl.xaml.
@@ -166,7 +166,7 @@ namespace Concierge.Display.Controls
 
         private void SavingThrowProficiency_MouseDown(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.UpdateValue();
+            ConciergeSoundService.UpdateValue();
 
             var savingThrow = Program.CcsFile.Character.SavingThrows;
             var savingThrowCopy = savingThrow.DeepCopy();

@@ -27,10 +27,12 @@ namespace Concierge.Console.Services
             "Log",
         };
 
+        private readonly IReadWriters historyReadWriter;
         private readonly string consoleHistoryFile = Path.Combine(ConciergeFiles.HistoryDirectory, ConciergeFiles.ConsoleHistoryName);
 
         public ListCommandsScriptService()
         {
+            this.historyReadWriter = new HistoryReadWriter(Program.ErrorService);
         }
 
         public override string[] Names => names;
@@ -85,7 +87,7 @@ namespace Concierge.Console.Services
 
         private string History()
         {
-            var history = HistoryReadWriter.Read(this.consoleHistoryFile);
+            var history = this.historyReadWriter.ReadList<string>(this.consoleHistoryFile);
             var builder = new StringBuilder();
 
             for (int i = history.Count - 1; i >= 0; i--)

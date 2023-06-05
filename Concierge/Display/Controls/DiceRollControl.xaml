@@ -26,8 +26,8 @@
                     <ColumnDefinition Width="15*"/>
                     <ColumnDefinition Width="20*"/>
                     <ColumnDefinition Width="15*"/>
-                    <ColumnDefinition Width="15*"/>
-                    <ColumnDefinition Width="15*"/>
+                    <ColumnDefinition Width="20*"/>
+                    <ColumnDefinition Width="10*"/>
                     <ColumnDefinition Width="20*"/>
                 </Grid.ColumnDefinitions>
 
@@ -47,7 +47,7 @@
                         Minimum="0"
                         ValueFontSize="30"
                         Height="auto"
-                        Margin="0"/>
+                        Margin="30,0,30,0"/>
                 </Grid>
                 <!--Number-->
                 <controls:IntegerUpDownTransparentControl 
@@ -57,7 +57,7 @@
                     Minimum="0"
                     ValueFontSize="30"
                     Height="auto"
-                    Margin="0"/>
+                    Margin="50,0,50,0"/>
                 <!--PlusMinus-->
                 <Grid Grid.Column="2">
                     <components:ConciergeRadioButton 
@@ -81,7 +81,7 @@
                     Minimum="0"
                     ValueFontSize="30"
                     Height="auto"
-                    Margin="0"/>
+                    Margin="50,0,50,0"/>
                 <!--Roll-->
                 <Grid Grid.Column="4">
                     <components:ConciergeDesignButton 

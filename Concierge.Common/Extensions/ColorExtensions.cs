@@ -55,5 +55,28 @@ namespace Concierge.Common.Extensions
         {
             return color.ToString().Remove(1, 2);
         }
+
+        public static Color Saturate(this Color color, double percent)
+        {
+            percent = Math.Max(0, Math.Min(1, percent));
+
+            var r = (byte)(color.R - (percent / 100.0 * color.R));
+            var g = (byte)(color.G - (percent / 100.0 * color.G));
+            var b = (byte)(color.B - (percent / 100.0 * color.B));
+
+            return Color.FromRgb(r, g, b);
+        }
+
+        public static Color Desaturate(this Color color, double percent)
+        {
+            var greayscale = (0.3 * color.R) + (0.6 * color.G) + (0.1 * color.B);
+            percent = Math.Max(0, Math.Min(1, percent));
+
+            var r = (byte)(color.R + (percent * (greayscale - color.R)));
+            var g = (byte)(color.G + (percent * (greayscale - color.G)));
+            var b = (byte)(color.B + (percent * (greayscale - color.B)));
+
+            return Color.FromRgb(r, g, b);
+        }
     }
 }

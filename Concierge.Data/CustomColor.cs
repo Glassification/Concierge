@@ -19,6 +19,7 @@ namespace Concierge.Data
         private const byte MaxColor = 255;
         private const byte MinColor = 0;
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("GeneratedRegex", "SYSLIB1045:Convert to 'GeneratedRegexAttribute'.", Justification = "We don't do that in Canada.")]
         private static readonly Regex formatHex = new (@"(.{2})", RegexOptions.Compiled);
         private string? name;
 
@@ -60,6 +61,11 @@ namespace Concierge.Data
             this.G = g;
             this.B = b;
             this.Id = Guid.NewGuid();
+        }
+
+        public CustomColor(string name, Color color)
+            : this(name, color.R, color.G, color.B)
+        {
         }
 
         private CustomColor()
@@ -141,6 +147,16 @@ namespace Concierge.Data
         public override int GetHashCode()
         {
             return base.GetHashCode();
+        }
+
+        public CustomColor Saturate(double percent)
+        {
+            return new CustomColor(this.Name, this.Color.Saturate(percent));
+        }
+
+        public CustomColor Desaturate(double percent)
+        {
+            return new CustomColor(this.Name, this.Color.Desaturate(percent));
         }
 
         public CustomColor DeepCopy()

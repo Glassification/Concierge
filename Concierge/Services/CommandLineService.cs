@@ -6,6 +6,7 @@ namespace Concierge.Services
 {
     using System;
 
+    using Concierge.Configuration;
     using Concierge.Persistence.ReadWriters;
 
     public sealed class CommandLineService
@@ -24,7 +25,19 @@ namespace Concierge.Services
                 return;
             }
 
-            Program.CcsFile = CharacterReadWriter.Read(this.commandLineArgs[1]);
+            var characterReadWriter = new CharacterReadWriter(Program.ErrorService, Program.Logger);
+            var ccsFile = characterReadWriter.ReadJson<CcsFile>(this.commandLineArgs[1]);
+
+            ccsFile.AbsolutePath = this.commandLineArgs[1];
+            ccsFile.Initialize();
+            if (!ccsFile.CheckHash() || (AppSettingsManager.UserSettings.CheckVersion && !ccsFile.CheckVersion()))
+            {
+                Program.CcsFile = new CcsFile();
+            }
+            else
+            {
+                Program.CcsFile = ccsFile;
+            }
         }
     }
 }

@@ -10,7 +10,7 @@ namespace Concierge.Display.Components
     using System.Windows.Media;
 
     using Concierge.Data;
-    using Concierge.Persistence;
+    using Concierge.Services;
 
     public sealed class ConciergeColorButton : Button
     {
@@ -50,7 +50,7 @@ namespace Concierge.Display.Components
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.TapNavigation();
+            ConciergeSoundService.TapNavigation();
             Program.Logger.Info($"{this.Name} clicked.");
         }
 

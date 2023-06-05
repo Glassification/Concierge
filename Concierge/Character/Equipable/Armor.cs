@@ -68,10 +68,10 @@ namespace Concierge.Character.Equipable
 
                         break;
                     case ArmorType.Light:
-                        ac += Constants.CalculateBonus(Program.CcsFile.Character.Characteristic.Attributes.Dexterity);
+                        ac += Constants.Bonus(Program.CcsFile.Character.Characteristic.Attributes.Dexterity);
                         break;
                     case ArmorType.Medium:
-                        ac += Math.Min(2, Constants.CalculateBonus(Program.CcsFile.Character.Characteristic.Attributes.Dexterity));
+                        ac += Math.Min(2, Constants.Bonus(Program.CcsFile.Character.Characteristic.Attributes.Dexterity));
                         break;
                     case ArmorType.Heavy:
                     case ArmorType.Massive:

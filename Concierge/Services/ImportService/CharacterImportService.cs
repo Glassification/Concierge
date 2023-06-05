@@ -13,8 +13,11 @@ namespace Concierge.Services.ImportService
 
     public sealed class CharacterImportService
     {
+        private readonly IReadWriters readwriter;
+
         public CharacterImportService()
         {
+            this.readwriter = new CharacterReadWriter(Program.ErrorService, Program.Logger);
             this.Importers = new List<Importer>();
         }
 
@@ -61,7 +64,7 @@ namespace Concierge.Services.ImportService
 
         private bool ImportCharacter(string filename)
         {
-            var importFile = CharacterReadWriter.Read(filename);
+            var importFile = this.readwriter.ReadJson<CcsFile>(filename);
             if (importFile.IsEmpty)
             {
                 return false;

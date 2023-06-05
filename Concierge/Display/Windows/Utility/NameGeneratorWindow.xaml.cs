@@ -15,7 +15,6 @@ namespace Concierge.Display.Utility
     using Concierge.Common.Utilities;
     using Concierge.Display.Components;
     using Concierge.Display.Enums;
-    using Concierge.Persistence;
     using Concierge.Persistence.ReadWriters;
     using Concierge.Tools;
     using Concierge.Tools.Enums;
@@ -29,6 +28,7 @@ namespace Concierge.Display.Utility
     {
         private readonly string nameHistoryFile = Path.Combine(ConciergeFiles.HistoryDirectory, ConciergeFiles.NameGeneratorHistoryName);
         private readonly IGenerator nameGenerator;
+        private readonly IReadWriters historyReadWriter;
 
         public NameGeneratorWindow()
         {
@@ -38,7 +38,8 @@ namespace Concierge.Display.Utility
             this.RaceComboBox.ItemsSource = Defaults.Races;
             this.GenderComboBox.ItemsSource = Enum.GetValues(typeof(Gender)).Cast<Gender>();
             this.nameGenerator = new NameGenerator(Defaults.Names.ToList());
-            this.History = new History(HistoryReadWriter.Read(this.nameHistoryFile), string.Empty);
+            this.historyReadWriter = new HistoryReadWriter(Program.ErrorService);
+            this.History = new History(this.historyReadWriter.ReadList<string>(this.nameHistoryFile), string.Empty);
 
             this.SetGenderState(false);
             this.SetRaceState(false);
@@ -119,7 +120,7 @@ namespace Concierge.Display.Utility
                 var name = nameResult.FullName;
 
                 this.NameTextBox.Text = name;
-                HistoryReadWriter.Write(this.nameHistoryFile, name);
+                this.historyReadWriter.Append(this.nameHistoryFile, name);
                 this.History.Add(name);
             }
         }

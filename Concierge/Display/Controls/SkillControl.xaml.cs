@@ -17,7 +17,7 @@ namespace Concierge.Display.Controls
     using Concierge.Common;
     using Concierge.Common.Extensions;
     using Concierge.Display.Enums;
-    using Concierge.Persistence;
+    using Concierge.Services;
 
     /// <summary>
     /// Interaction logic for SkillControl.xaml.
@@ -170,7 +170,7 @@ namespace Concierge.Display.Controls
 
         private void SkillProficiency_MouseDown(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.UpdateValue();
+            ConciergeSoundService.UpdateValue();
 
             var skill = Program.CcsFile.Character.Skills;
             var skillCopy = skill.DeepCopy();
@@ -186,7 +186,7 @@ namespace Concierge.Display.Controls
 
         private void SkillExpertise_MouseDown(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.UpdateValue();
+            ConciergeSoundService.UpdateValue();
 
             var skill = Program.CcsFile.Character.Skills;
             var skillCopy = skill.DeepCopy();

@@ -8,7 +8,7 @@ namespace Concierge.Display.Components
     using System.Windows.Controls;
     using System.Windows.Input;
 
-    using Concierge.Persistence;
+    using Concierge.Services;
 
     public sealed class ConciergeCheckBox : CheckBox
     {
@@ -47,7 +47,7 @@ namespace Concierge.Display.Components
         {
             if (!this.IsUpdating)
             {
-                ConciergeSound.UpdateValue();
+                ConciergeSoundService.UpdateValue();
             }
 
             this.IsUpdating = false;
@@ -57,7 +57,7 @@ namespace Concierge.Display.Components
         {
             if (!this.IsUpdating)
             {
-                ConciergeSound.UpdateValue();
+                ConciergeSoundService.UpdateValue();
             }
 
             this.IsUpdating = false;

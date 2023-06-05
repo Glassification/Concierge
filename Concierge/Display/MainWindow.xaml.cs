@@ -48,7 +48,7 @@ namespace Concierge.Display
 
         private readonly FileAccessService fileAccessService = new ();
         private readonly MainWindowService mainWindowService;
-        private readonly AutosaveService autosaveTimer = new ();
+        private readonly AutosaveService autosaveTimer = new (new FileAccessService());
         private readonly DateTimeWorkerService dateTimeService = new ();
         private readonly AnimatedTimedTextWorkerService animatedTimedTextWorkerService = new (17);
         private readonly CharacterCreationWizard characterCreationWizard = new ();
@@ -700,49 +700,49 @@ namespace Concierge.Display
 
         private void NewCharacterButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.TapNavigation();
+            ConciergeSoundService.TapNavigation();
             this.NewCharacterSheet();
             this.IgnoreSecondPress = true;
         }
 
         private void OpenCharacterButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.TapNavigation();
+            ConciergeSoundService.TapNavigation();
             this.OpenCharacterSheet();
             this.IgnoreSecondPress = true;
         }
 
         private void ImportCharacterButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.TapNavigation();
+            ConciergeSoundService.TapNavigation();
             this.ImportCharacter();
             this.IgnoreSecondPress = true;
         }
 
         private void SaveCharacterButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.TapNavigation();
+            ConciergeSoundService.TapNavigation();
             this.SaveCharacterSheet();
             this.IgnoreSecondPress = true;
         }
 
         private void SaveCharacterAsButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.TapNavigation();
+            ConciergeSoundService.TapNavigation();
             this.SaveCharacterSheetAs();
             this.IgnoreSecondPress = true;
         }
 
         private void LongRestButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.TapNavigation();
+            ConciergeSoundService.TapNavigation();
             this.LongRest();
             this.IgnoreSecondPress = true;
         }
 
         private void ListViewItem_Selected(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.TapNavigation();
+            ConciergeSoundService.TapNavigation();
             this.PageSelection((sender as ListViewItem)?.Tag as IConciergePage);
         }
 
@@ -761,21 +761,21 @@ namespace Concierge.Display
 
         private void PropertiesButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.TapNavigation();
+            ConciergeSoundService.TapNavigation();
             this.OpenCharacterProperties();
             this.IgnoreSecondPress = true;
         }
 
         private void SettingsButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.TapNavigation();
+            ConciergeSoundService.TapNavigation();
             this.OpenSettings();
             this.IgnoreSecondPress = true;
         }
 
         private void AboutButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.TapNavigation();
+            ConciergeSoundService.TapNavigation();
             Program.Logger.Info($"Open About.");
 
             ConciergeWindowService.ShowWindow(typeof(AboutConciergeWindow));
@@ -785,7 +785,7 @@ namespace Concierge.Display
 
         private void ButtonMinimize_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.TapNavigation();
+            ConciergeSoundService.TapNavigation();
             this.WindowState = WindowState.Minimized;
         }
 
@@ -801,20 +801,20 @@ namespace Concierge.Display
 
         private void CharacterCreationButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.TapNavigation();
+            ConciergeSoundService.TapNavigation();
             this.CreateCharacterWizard();
             this.IgnoreSecondPress = true;
         }
 
         private void MaximizeButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.TapNavigation();
+            ConciergeSoundService.TapNavigation();
             this.ChangeWindowState();
         }
 
         private void SearchButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.TapNavigation();
+            ConciergeSoundService.TapNavigation();
             this.Search();
         }
 
@@ -847,14 +847,14 @@ namespace Concierge.Display
 
         private void RedoButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.TapNavigation();
+            ConciergeSoundService.TapNavigation();
             this.Redo();
             this.IgnoreSecondPress = true;
         }
 
         private void UndoButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.TapNavigation();
+            ConciergeSoundService.TapNavigation();
             this.Undo();
             this.IgnoreSecondPress = true;
         }
@@ -895,7 +895,7 @@ namespace Concierge.Display
 
         private void LevelUpButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.TapNavigation();
+            ConciergeSoundService.TapNavigation();
             this.LevelUp();
             this.IgnoreSecondPress = true;
         }
@@ -912,7 +912,7 @@ namespace Concierge.Display
 
         private void GlossaryButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeSound.TapNavigation();
+            ConciergeSoundService.TapNavigation();
             this.OpenGlossary();
             this.IgnoreSecondPress = true;
         }

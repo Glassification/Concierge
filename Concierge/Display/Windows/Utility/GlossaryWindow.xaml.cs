@@ -11,7 +11,7 @@ namespace Concierge.Display.Windows.Utility
     using Concierge.Data;
     using Concierge.Display.Components;
     using Concierge.Display.Enums;
-    using Concierge.Persistence;
+    using Concierge.Services;
 
     /// <summary>
     /// Interaction logic for GlossaryWindow.xaml.
@@ -112,7 +112,7 @@ namespace Concierge.Display.Windows.Utility
             }
             else
             {
-                ConciergeSound.TapNavigation();
+                ConciergeSoundService.TapNavigation();
                 this.MarkdownViewer.Markdown = markdown;
             }
         }

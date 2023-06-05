@@ -9,13 +9,17 @@ namespace Concierge.Services.ImportService.Importers
 
     using Concierge.Character;
     using Concierge.Common;
+    using Concierge.Persistence.ReadWriters;
 
     public abstract class Importer
     {
         public Importer(ConciergeCharacter character)
         {
+            this.ReadWriter = new DefaultListReadWriter(Program.ErrorService, Program.Logger);
             this.Character = character;
         }
+
+        protected IReadWriters ReadWriter { get; private set; }
 
         protected ConciergeCharacter Character { get; set; }
 

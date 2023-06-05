@@ -114,12 +114,12 @@ namespace Concierge.Character.Equipable
 
                 return this.Ability switch
                 {
-                    Abilities.STR => Constants.CalculateBonus(this.Creature?.Characteristic.Attributes.Strength ?? 10) + bonus,
-                    Abilities.DEX => Constants.CalculateBonus(this.Creature?.Characteristic.Attributes.Dexterity ?? 10) + bonus,
-                    Abilities.CON => Constants.CalculateBonus(this.Creature?.Characteristic.Attributes.Constitution ?? 10) + bonus,
-                    Abilities.INT => Constants.CalculateBonus(this.Creature?.Characteristic.Attributes.Intelligence ?? 10) + bonus,
-                    Abilities.WIS => Constants.CalculateBonus(this.Creature?.Characteristic.Attributes.Wisdom ?? 10) + bonus,
-                    Abilities.CHA => Constants.CalculateBonus(this.Creature?.Characteristic.Attributes.Charisma ?? 10) + bonus,
+                    Abilities.STR => Constants.Bonus(this.Creature?.Characteristic.Attributes.Strength ?? 10) + bonus,
+                    Abilities.DEX => Constants.Bonus(this.Creature?.Characteristic.Attributes.Dexterity ?? 10) + bonus,
+                    Abilities.CON => Constants.Bonus(this.Creature?.Characteristic.Attributes.Constitution ?? 10) + bonus,
+                    Abilities.INT => Constants.Bonus(this.Creature?.Characteristic.Attributes.Intelligence ?? 10) + bonus,
+                    Abilities.WIS => Constants.Bonus(this.Creature?.Characteristic.Attributes.Wisdom ?? 10) + bonus,
+                    Abilities.CHA => Constants.Bonus(this.Creature?.Characteristic.Attributes.Charisma ?? 10) + bonus,
                     Abilities.NONE => bonus,
                     _ => throw new NotImplementedException(),
                 };

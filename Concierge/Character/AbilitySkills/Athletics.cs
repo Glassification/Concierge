@@ -49,7 +49,7 @@ namespace Concierge.Character.AbilitySkills
                     this.bonus += Program.CcsFile.Character.ProficiencyBonus;
                 }
 
-                this.bonus += Constants.CalculateBonus(Program.CcsFile.Character.Characteristic.Attributes.Strength);
+                this.bonus += Constants.Bonus(Program.CcsFile.Character.Characteristic.Attributes.Strength);
 
                 return this.bonus;
             }

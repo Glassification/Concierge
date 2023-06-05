@@ -7,12 +7,13 @@ namespace Concierge.Services
     using System;
     using System.Windows.Threading;
 
-    using Concierge.Persistence.ReadWriters;
-
     public sealed class AutosaveService
     {
-        public AutosaveService()
+        private readonly FileAccessService fileAccessService;
+
+        public AutosaveService(FileAccessService fileAccessService)
         {
+            this.fileAccessService = fileAccessService;
             this.DispatcherTimer = new DispatcherTimer();
             this.DispatcherTimer.Tick += this.DispatcherTimer_Autosave;
 
@@ -41,7 +42,7 @@ namespace Concierge.Services
         {
             Program.Logger.Info($"Autosaving...");
 
-            CharacterReadWriter.Write(Program.CcsFile);
+            this.fileAccessService.Save(Program.CcsFile);
         }
     }
 }

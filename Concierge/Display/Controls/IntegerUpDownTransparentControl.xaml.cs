@@ -11,7 +11,7 @@ namespace Concierge.Display.Controls
     using System.Windows.Media;
 
     using Concierge.Common.Utilities;
-    using Concierge.Persistence;
+    using Concierge.Services;
 
     /// <summary>
     /// Interaction logic for IntegerUpDownTransparentControl.xaml.
@@ -244,7 +244,7 @@ namespace Concierge.Display.Controls
             {
                 this.Value += this.Increment;
                 this.RaiseEvent(new RoutedEventArgs(IncreaseClickedEvent));
-                ConciergeSound.UpdateValue();
+                ConciergeSoundService.UpdateValue();
             }
         }
 
@@ -254,7 +254,7 @@ namespace Concierge.Display.Controls
             {
                 this.Value -= this.Increment;
                 this.RaiseEvent(new RoutedEventArgs(DecreaseClickedEvent));
-                ConciergeSound.UpdateValue();
+                ConciergeSoundService.UpdateValue();
             }
         }
 
@@ -301,7 +301,7 @@ namespace Concierge.Display.Controls
         {
             this.Value += (e.Delta > 0 ? 1 : -1) * this.Increment;
             this.TextBoxValue.Select(this.TextBoxValue.Text.Length, 0);
-            ConciergeSound.UpdateValue();
+            ConciergeSoundService.UpdateValue();
         }
 
         private void TextBoxValue_GotFocus(object sender, RoutedEventArgs e)

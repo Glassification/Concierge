@@ -20,6 +20,9 @@ namespace Concierge.Console
 
     public sealed class ConciergeConsole : INotifyPropertyChanged
     {
+        private readonly IReadWriters consoleReadWriter;
+        private readonly IReadWriters historyReadWriter;
+
         private readonly string consoleHistoryFile = Path.Combine(ConciergeFiles.HistoryDirectory, ConciergeFiles.ConsoleHistoryName);
         private readonly string consoleOutputFile = Path.Combine(ConciergeFiles.AppDataDirectory, ConciergeFiles.ConsoleOutput);
 
@@ -28,10 +31,13 @@ namespace Concierge.Console
 
         public ConciergeConsole()
         {
+            this.consoleReadWriter = new ConsoleReadWriter(Program.ErrorService);
+            this.historyReadWriter = new HistoryReadWriter(Program.ErrorService);
+
             this.GenerateHeader();
             this.LoadConsoleOutput();
 
-            this.History = new History(HistoryReadWriter.Read(this.consoleHistoryFile), Constants.ConsolePrompt);
+            this.History = new History(this.historyReadWriter.ReadList<string>(this.consoleHistoryFile), Constants.ConsolePrompt);
             this.WriteOutput = true;
         }
 
@@ -188,7 +194,7 @@ namespace Concierge.Console
 
         private void WriteResult(ConsoleResult result)
         {
-            HistoryReadWriter.Write(this.consoleHistoryFile, this.ConsoleInput);
+            this.historyReadWriter.Append(this.consoleHistoryFile, this.ConsoleInput);
             this.History.Add(this.ConsoleInput);
             this.ConsoleInput = Constants.ConsolePrompt;
 
@@ -211,12 +217,12 @@ namespace Concierge.Console
         private void AddConsoleOutput(ConsoleResult result)
         {
             this.ConsoleOutput.Add(result);
-            ConsoleReadWriter.Write(this.consoleOutputFile, result);
+            this.consoleReadWriter.Append(this.consoleOutputFile, result);
         }
 
         private void LoadConsoleOutput()
         {
-            var list = ConsoleReadWriter.Read(this.consoleOutputFile);
+            var list = this.consoleReadWriter.ReadList<ConsoleResult>(this.consoleOutputFile);
             foreach (var item in list)
             {
                 this.ConsoleOutput.Add(item);
@@ -225,7 +231,7 @@ namespace Concierge.Console
 
         private void ClearConsoleOutput()
         {
-            ConsoleReadWriter.Clear(this.consoleOutputFile);
+            this.consoleReadWriter.Clear(this.consoleOutputFile);
 
             this.ConsoleOutput.Clear();
             this.GenerateHeader();

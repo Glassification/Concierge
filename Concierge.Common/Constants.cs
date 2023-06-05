@@ -29,7 +29,7 @@ namespace Concierge.Common
         public const string Copyright = "2018-2023 Most Rights Reserved.";
         public const string ConsolePrompt = "CS> ";
 
-        public static int CalculateBonus(int score)
+        public static int Bonus(int score)
         {
             return (int)Math.Floor((score - 10) / 2.0);
         }

@@ -414,7 +414,7 @@ namespace Concierge.Display.Pages
                 this.SelectedDocument = treeViewItem.Document;
                 this.LoadCurrentDocument(this.SelectedDocument.Rtf);
                 this.ResetUndoQueue();
-                ConciergeSound.TapNavigation();
+                ConciergeSoundService.TapNavigation();
             }
             else if (this.NotesTreeView?.SelectedItem is ChapterTreeViewItem)
             {
@@ -428,7 +428,7 @@ namespace Concierge.Display.Pages
                 this.SelectedDocument = null;
                 this.ClearTextBox();
                 this.ResetUndoQueue();
-                ConciergeSound.TapNavigation();
+                ConciergeSoundService.TapNavigation();
             }
 
             this.Lock = false;

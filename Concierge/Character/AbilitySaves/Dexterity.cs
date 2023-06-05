@@ -41,7 +41,7 @@ namespace Concierge.Character.AbilitySaves
                     this.bonus += Program.CcsFile.Character.ProficiencyBonus;
                 }
 
-                this.bonus += Constants.CalculateBonus(Program.CcsFile.Character.Characteristic.Attributes.Dexterity);
+                this.bonus += Constants.Bonus(Program.CcsFile.Character.Characteristic.Attributes.Dexterity);
 
                 return this.bonus;
             }

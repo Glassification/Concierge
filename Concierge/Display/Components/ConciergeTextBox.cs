@@ -10,7 +10,7 @@ namespace Concierge.Display.Components
     using System.Windows.Media;
 
     using Concierge.Common;
-    using Concierge.Persistence;
+    using Concierge.Services;
 
     public sealed class ConciergeTextBox : TextBox
     {
@@ -44,7 +44,7 @@ namespace Concierge.Display.Components
         {
             if (!this.IsUpdating)
             {
-                ConciergeSound.UpdateValue();
+                ConciergeSoundService.UpdateValue();
             }
 
             this.IsUpdating = false;

@@ -126,7 +126,7 @@ namespace Concierge.Display.Windows
 
         private void IntegerUpDown_ValueChanged(object sender, RoutedEventArgs e)
         {
-            this.InitiativeTextBlock.Text = (Constants.CalculateBonus(Program.CcsFile.Character.Characteristic.Attributes.Dexterity) + this.InitiativeBonusUpDown.Value).ToString();
+            this.InitiativeTextBlock.Text = (Constants.Bonus(Program.CcsFile.Character.Characteristic.Attributes.Dexterity) + this.InitiativeBonusUpDown.Value).ToString();
             this.PerceptionTextBlock.Text = (Constants.BasePerception + Program.CcsFile.Character.Skills.Perception.Bonus + this.PerceptionBonusUpDown.Value).ToString();
             this.MovementTextBlock.Text = Senses.GetMovement(this.BaseMovementUpDown.Value + this.MovementBonusUpDown.Value).ToString();
         }

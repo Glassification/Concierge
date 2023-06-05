@@ -26,15 +26,17 @@ namespace Concierge.Display.Pages
     /// </summary>
     public partial class ToolsPage : Page, IConciergePage
     {
+        private readonly IReadWriters historyReadWriter;
         private readonly string diceHistoryFile = Path.Combine(ConciergeFiles.HistoryDirectory, ConciergeFiles.DiceHistoryName);
 
         public ToolsPage()
         {
             this.InitializeComponent();
 
+            this.historyReadWriter = new HistoryReadWriter(Program.ErrorService);
             this.Players = new List<Player>();
             this.RollHistory = new List<IDiceRoll>();
-            this.DiceHistory = new History(HistoryReadWriter.Read(this.diceHistoryFile), string.Empty);
+            this.DiceHistory = new History(this.historyReadWriter.ReadList<string>(this.diceHistoryFile), string.Empty);
 
             this.SetDefaultDiceValues();
             this.SetDefaultDivideValues();
@@ -206,7 +208,7 @@ namespace Concierge.Display.Pages
                 this.CustomInputTextBox.Text = string.Empty;
                 this.CustomResult.Text = result.Total.ToString();
 
-                HistoryReadWriter.Write(this.diceHistoryFile, input);
+                this.historyReadWriter.Append(this.diceHistoryFile, input);
             }
             catch (Exception ex)
             {

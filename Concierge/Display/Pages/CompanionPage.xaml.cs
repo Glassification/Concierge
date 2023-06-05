@@ -82,12 +82,12 @@ namespace Concierge.Display.Pages
         {
             var attributes = Program.CcsFile.Character.Companion.Characteristic.Attributes;
 
-            this.StrengthAttributeDisplay.Bonus = Constants.CalculateBonus(attributes.Strength);
-            this.DexterityAttributeDisplay.Bonus = Constants.CalculateBonus(attributes.Dexterity);
-            this.ConstitutionAttributeDisplay.Bonus = Constants.CalculateBonus(attributes.Constitution);
-            this.IntelligenceAttributeDisplay.Bonus = Constants.CalculateBonus(attributes.Intelligence);
-            this.WisdomAttributeDisplay.Bonus = Constants.CalculateBonus(attributes.Wisdom);
-            this.CharismaAttributeDisplay.Bonus = Constants.CalculateBonus(attributes.Charisma);
+            this.StrengthAttributeDisplay.Bonus = Constants.Bonus(attributes.Strength);
+            this.DexterityAttributeDisplay.Bonus = Constants.Bonus(attributes.Dexterity);
+            this.ConstitutionAttributeDisplay.Bonus = Constants.Bonus(attributes.Constitution);
+            this.IntelligenceAttributeDisplay.Bonus = Constants.Bonus(attributes.Intelligence);
+            this.WisdomAttributeDisplay.Bonus = Constants.Bonus(attributes.Wisdom);
+            this.CharismaAttributeDisplay.Bonus = Constants.Bonus(attributes.Charisma);
 
             this.StrengthAttributeDisplay.Score = attributes.Strength;
             this.DexterityAttributeDisplay.Score = attributes.Dexterity;

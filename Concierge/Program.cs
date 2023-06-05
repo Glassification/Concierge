@@ -12,7 +12,6 @@ namespace Concierge
     using Concierge.Common;
     using Concierge.Display;
     using Concierge.Logging;
-    using Concierge.Persistence;
     using Concierge.Persistence.ReadWriters;
     using Concierge.Services;
     using Microsoft.Win32;
@@ -38,9 +37,12 @@ namespace Concierge
             CcsFile = new CcsFile();
             MainWindow = null;
             BaseState = new ConciergeCharacter();
-            CustomColorService = CustomColorReadWriter.Read(Path.Combine(ConciergeFiles.GetCorrectCustomColorsPath(), ConciergeFiles.CustomColorsName));
 
-            ConsoleReadWriter.Clear(Path.Combine(ConciergeFiles.AppDataDirectory, ConciergeFiles.ConsoleOutput));
+            var colorReadWriter = new CustomColorReadWriter(ErrorService);
+            var consolReadWrite = new ConsoleReadWriter(ErrorService);
+
+            CustomColorService = colorReadWriter.ReadJson<CustomColorService>(Path.Combine(ConciergeFiles.GetCorrectCustomColorsPath(), ConciergeFiles.CustomColorsName));
+            consolReadWrite.Clear(Path.Combine(ConciergeFiles.AppDataDirectory, ConciergeFiles.ConsoleOutput));
         }
 
         public delegate void ModifiedChangedEventHandler(object sender, EventArgs e);

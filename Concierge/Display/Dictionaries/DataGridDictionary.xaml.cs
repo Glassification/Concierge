@@ -7,7 +7,7 @@ namespace Concierge.Display.Dictionaries
     using System.Windows.Controls;
     using System.Windows.Input;
 
-    using Concierge.Persistence;
+    using Concierge.Services;
 
     public partial class DataGridDictionary
     {
@@ -21,7 +21,7 @@ namespace Concierge.Display.Dictionaries
             var page = dataGridRow.Tag as IConciergePage;
             if (page?.HasEditableDataGrid ?? false)
             {
-                ConciergeSound.UpdateValue();
+                ConciergeSoundService.UpdateValue();
             }
 
             page?.Edit(dataGridRow.DataContext);

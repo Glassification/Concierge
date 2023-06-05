@@ -4,6 +4,7 @@
 
 namespace Concierge.Services
 {
+    using System;
     using System.IO;
 
     using Concierge.Common.Extensions;
@@ -16,12 +17,16 @@ namespace Concierge.Services
 
     public sealed class FileAccessService
     {
+        private readonly IReadWriters readwriter;
+
         private readonly OpenFileDialog openFileDialog;
         private readonly SaveFileDialog saveFileDialog;
         private readonly FolderPicker folderPickerDialog;
 
         public FileAccessService()
         {
+            this.readwriter = new CharacterReadWriter(Program.ErrorService, Program.Logger);
+
             this.openFileDialog = new OpenFileDialog();
             this.saveFileDialog = new SaveFileDialog();
             this.folderPickerDialog = new FolderPicker();
@@ -31,7 +36,11 @@ namespace Concierge.Services
         {
             if (!file.IsNullOrWhiteSpace())
             {
-                return CharacterReadWriter.Read(file);
+                var ccsFile2 = this.readwriter.ReadJson<CcsFile>(file);
+                ccsFile2.AbsolutePath = file;
+                ccsFile2.Initialize();
+
+                return !ccsFile2.CheckHash() || (AppSettingsManager.UserSettings.CheckVersion && !ccsFile2.CheckVersion()) ? new CcsFile() : ccsFile2;
             }
 
             if (ShouldUseDefaultOpen())
@@ -43,7 +52,16 @@ namespace Concierge.Services
             this.openFileDialog.DefaultExt = "ccs";
             this.openFileDialog.FilterIndex = (int)CcsFiltersIndex.Ccs;
 
-            return this.openFileDialog.ShowDialog() ?? false ? CharacterReadWriter.Read(this.openFileDialog.FileName) : null;
+            var ccsFile = this.openFileDialog.ShowDialog() ?? false ? this.readwriter.ReadJson<CcsFile>(this.openFileDialog.FileName) : null;
+            if (ccsFile is null)
+            {
+                return null;
+            }
+
+            ccsFile.AbsolutePath = this.openFileDialog.FileName;
+            ccsFile.Initialize();
+
+            return !ccsFile.CheckHash() || (AppSettingsManager.UserSettings.CheckVersion && !ccsFile.CheckVersion()) ? new CcsFile() : ccsFile;
         }
 
         public string OpenFile(int filterIndex, string filter, string defaultExtension)
@@ -70,10 +88,21 @@ namespace Concierge.Services
             return this.folderPickerDialog.ShowDialog() ?? false ? this.folderPickerDialog.ResultPath : string.Empty;
         }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822:Mark members as static", Justification = "Keep consistent with Save As.")]
         public void Save(CcsFile ccsFile)
         {
-            CharacterReadWriter.Write(ccsFile);
+            ccsFile.Version = Program.AssemblyVersion;
+            ccsFile.LastSaveDate = DateTime.Now;
+            ccsFile.Hash = ConciergeHashing.HashData(ccsFile.Character);
+
+            var result = this.readwriter.WriteJson(ccsFile.AbsolutePath, ccsFile);
+            if (result)
+            {
+                Program.Unmodify();
+            }
+            else
+            {
+                Program.Modify();
+            }
         }
 
         public bool SaveAs(CcsFile ccsFile)
@@ -90,9 +119,22 @@ namespace Concierge.Services
 
             if (this.saveFileDialog.ShowDialog() ?? false)
             {
+                ccsFile.Version = Program.AssemblyVersion;
+                ccsFile.LastSaveDate = DateTime.Now;
+                ccsFile.Hash = ConciergeHashing.HashData(ccsFile.Character);
                 ccsFile.AbsolutePath = this.saveFileDialog.FileName;
-                CharacterReadWriter.Write(ccsFile);
-                return true;
+
+                var result = this.readwriter.WriteJson(ccsFile.AbsolutePath, ccsFile);
+                if (result)
+                {
+                    Program.Unmodify();
+                }
+                else
+                {
+                    Program.Modify();
+                }
+
+                return result;
             }
 
             return false;

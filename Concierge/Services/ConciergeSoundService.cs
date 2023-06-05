@@ -1,19 +1,19 @@
-﻿// <copyright file="ConciergeSound.cs" company="Thomas Beckett">
+﻿// <copyright file="ConciergeSoundService.cs" company="Thomas Beckett">
 // Copyright (c) Thomas Beckett. All rights reserved.
 // </copyright>
 
-namespace Concierge.Persistence
+namespace Concierge.Services
 {
     using System;
     using System.Media;
 
     using Concierge.Configuration;
 
-    public static class ConciergeSound
+    public static class ConciergeSoundService
     {
         private static int skipClickCount;
 
-        static ConciergeSound()
+        static ConciergeSoundService()
         {
             try
             {

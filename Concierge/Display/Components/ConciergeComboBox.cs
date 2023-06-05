@@ -10,7 +10,7 @@ namespace Concierge.Display.Components
     using System.Windows.Controls;
     using System.Windows.Input;
 
-    using Concierge.Persistence;
+    using Concierge.Services;
 
     public sealed class ConciergeComboBox : ComboBox
     {
@@ -43,7 +43,7 @@ namespace Concierge.Display.Components
 
         private void ComboBox_DropDownOpened(object? sender, EventArgs e)
         {
-            ConciergeSound.UpdateValue();
+            ConciergeSoundService.UpdateValue();
         }
 
         private void ComboBox_MouseEnter(object sender, MouseEventArgs e)

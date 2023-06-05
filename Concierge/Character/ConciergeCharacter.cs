@@ -73,7 +73,7 @@ namespace Concierge.Character
         public int PassivePerception => Constants.BasePerception + this.Skills.Perception.Bonus + this.Characteristic.Senses.PerceptionBonus;
 
         [JsonIgnore]
-        public int Initiative => Constants.CalculateBonus(this.Characteristic.Attributes.Dexterity) + this.Characteristic.Senses.InitiativeBonus;
+        public int Initiative => Constants.Bonus(this.Characteristic.Attributes.Dexterity) + this.Characteristic.Senses.InitiativeBonus;
 
         [JsonIgnore]
         public double LightCarryCapacity => this.Characteristic.Attributes.Strength * UnitConversion.LightMultiplier;
@@ -109,12 +109,12 @@ namespace Concierge.Character
         {
             return ability switch
             {
-                Abilities.STR => Constants.CalculateBonus(this.Characteristic.Attributes.Strength) + this.ProficiencyBonus,
-                Abilities.DEX => Constants.CalculateBonus(this.Characteristic.Attributes.Dexterity) + this.ProficiencyBonus,
-                Abilities.CON => Constants.CalculateBonus(this.Characteristic.Attributes.Constitution) + this.ProficiencyBonus,
-                Abilities.INT => Constants.CalculateBonus(this.Characteristic.Attributes.Intelligence) + this.ProficiencyBonus,
-                Abilities.WIS => Constants.CalculateBonus(this.Characteristic.Attributes.Wisdom) + this.ProficiencyBonus,
-                Abilities.CHA => Constants.CalculateBonus(this.Characteristic.Attributes.Charisma) + this.ProficiencyBonus,
+                Abilities.STR => Constants.Bonus(this.Characteristic.Attributes.Strength) + this.ProficiencyBonus,
+                Abilities.DEX => Constants.Bonus(this.Characteristic.Attributes.Dexterity) + this.ProficiencyBonus,
+                Abilities.CON => Constants.Bonus(this.Characteristic.Attributes.Constitution) + this.ProficiencyBonus,
+                Abilities.INT => Constants.Bonus(this.Characteristic.Attributes.Intelligence) + this.ProficiencyBonus,
+                Abilities.WIS => Constants.Bonus(this.Characteristic.Attributes.Wisdom) + this.ProficiencyBonus,
+                Abilities.CHA => Constants.Bonus(this.Characteristic.Attributes.Charisma) + this.ProficiencyBonus,
                 Abilities.NONE => this.ProficiencyBonus,
                 _ => this.ProficiencyBonus,
             };

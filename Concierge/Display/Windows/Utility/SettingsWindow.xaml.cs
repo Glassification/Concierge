@@ -138,8 +138,8 @@ namespace Concierge.Display.Utility
                 CheckVersion = this.CheckVersionCheckBox.IsChecked ?? false,
                 DefaultFolder = new DefaultFolders()
                 {
-                    OpenFolder = this.OpenTextBox.Text,
-                    SaveFolder = this.SaveTextBox.Text,
+                    OpenFolder = Path.GetDirectoryName(this.OpenTextBox.Text) ?? string.Empty,
+                    SaveFolder = Path.GetDirectoryName(this.SaveTextBox.Text) ?? string.Empty,
                     UseSaveFolder = this.DefaultSaveCheckBox.IsChecked ?? false,
                     UseOpenFolder = this.DefaultOpenCheckBox.IsChecked ?? false,
                 },

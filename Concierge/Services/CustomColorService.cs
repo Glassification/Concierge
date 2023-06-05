@@ -16,8 +16,12 @@ namespace Concierge.Services
 
     public sealed class CustomColorService
     {
+        private readonly IReadWriters readwriter;
+
         public CustomColorService()
         {
+            this.readwriter = new CustomColorReadWriter(Program.ErrorService);
+
             this.CustomColors = new List<CustomColor>();
             this.DefaultColors = new List<CustomColor>();
             this.DotNetColors = ColorUtility.ListDotNetColors().Select(x => new CustomColor(x)).ToList();
@@ -87,7 +91,7 @@ namespace Concierge.Services
 
         private void Update()
         {
-            CustomColorReadWriter.Write(Path.Combine(ConciergeFiles.GetCorrectCustomColorsPath(), ConciergeFiles.CustomColorsName), this);
+            this.readwriter.WriteJson(Path.Combine(ConciergeFiles.GetCorrectCustomColorsPath(), ConciergeFiles.CustomColorsName), this);
         }
     }
 }

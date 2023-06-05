@@ -10,7 +10,7 @@ namespace Concierge.Display.Utility
 
     using Concierge.Display.Components;
     using Concierge.Display.Enums;
-    using Concierge.Persistence;
+    using Concierge.Services;
     using MaterialDesignThemes.Wpf;
 
     /// <summary>
@@ -42,7 +42,7 @@ namespace Concierge.Display.Utility
             this.SetMessageIcon(messageWindowIcons);
             this.SetMessageButtons(messageWindowButtons);
 
-            ConciergeSound.Warning();
+            ConciergeSoundService.Warning();
 
             this.ShowConciergeWindow();
 

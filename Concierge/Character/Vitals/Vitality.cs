@@ -137,7 +137,7 @@ namespace Concierge.Character.Vitals
         public DiceRoll RollHitDice(HitDie hitDie, Attributes attributes)
         {
             var roll = DiceRoll.RollDice(1, (int)hitDie);
-            var modifier = Constants.CalculateBonus(attributes.Constitution);
+            var modifier = Constants.Bonus(attributes.Constitution);
 
             this.Heal(roll.FirstOrDefault(0) + modifier);
 

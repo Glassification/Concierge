@@ -89,7 +89,7 @@ namespace Concierge.Leveling
 
         private VitalityDto LevelUpVitality(HitDie hitDie, int bonusHp)
         {
-            var newHp = DiceRoll.RollHitDie(hitDie) + Constants.CalculateBonus(this.character.Characteristic.Attributes.Constitution) + bonusHp;
+            var newHp = DiceRoll.RollHitDie(hitDie) + Constants.Bonus(this.character.Characteristic.Attributes.Constitution) + bonusHp;
             var oldVitality = this.character.Vitality.DeepCopy();
 
             this.character.Vitality.LevelUp(hitDie, newHp);
