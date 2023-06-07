@@ -183,7 +183,7 @@
             </Grid>
 
             <!--Denomination-->
-            <Grid Grid.Row="3">
+            <Grid Grid.Row="3" Margin="5,0,5,0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="20*"/>
                     <ColumnDefinition Width="20*"/>
@@ -208,12 +208,16 @@
                             VerticalAlignment="Center"/>
                     </Grid>
 
-                    <Grid Grid.Row="1" Background="#FF3e3e42" Margin="0, 0, 0, 3">
-                        <TextBlock x:Name="CopperField"
-                                           Foreground="White"
-                                           FontSize="18"
-                                           HorizontalAlignment="Center"
-                                           VerticalAlignment="Center"/>
+                    <Grid
+                        Grid.Row="1"
+                        Background="#FF3e3e42"
+                        Margin="0, 0, 0, 3">
+                        <TextBlock
+                            x:Name="CopperField"
+                            Foreground="White"
+                            FontSize="18"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"/>
                     </Grid>
                 </Grid>
 
@@ -233,12 +237,16 @@
                             VerticalAlignment="Center"/>
                     </Grid>
 
-                    <Grid Grid.Row="1" Background="#FF3e3e42" Margin="0, 0, 0, 3">
-                        <TextBlock x:Name="SilverField"
-                                           Foreground="White"
-                                           FontSize="18"
-                                           HorizontalAlignment="Center"
-                                           VerticalAlignment="Center"/>
+                    <Grid
+                        Grid.Row="1"
+                        Background="#FF3e3e42"
+                        Margin="0, 0, 0, 3">
+                        <TextBlock
+                            x:Name="SilverField"
+                            Foreground="White"
+                            FontSize="18"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"/>
                     </Grid>
                 </Grid>
 
@@ -258,12 +266,16 @@
                             VerticalAlignment="Center"/>
                     </Grid>
 
-                    <Grid Grid.Row="1" Background="#FF3e3e42" Margin="0, 0, 0, 3">
-                        <TextBlock x:Name="ElectrumField"
-                                           Foreground="White"
-                                           FontSize="18"
-                                           HorizontalAlignment="Center"
-                                           VerticalAlignment="Center"/>
+                    <Grid
+                        Grid.Row="1"
+                        Background="#FF3e3e42"
+                        Margin="0, 0, 0, 3">
+                        <TextBlock
+                            x:Name="ElectrumField"
+                            Foreground="White"
+                            FontSize="18"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"/>
                     </Grid>
                 </Grid>
 
@@ -283,12 +295,16 @@
                             VerticalAlignment="Center"/>
                     </Grid>
 
-                    <Grid Grid.Row="1" Background="#FF3e3e42" Margin="0, 0, 0, 3">
-                        <TextBlock x:Name="GoldField"
-                                           Foreground="White"
-                                           FontSize="18"
-                                           HorizontalAlignment="Center"
-                                           VerticalAlignment="Center"/>
+                    <Grid
+                        Grid.Row="1"
+                        Background="#FF3e3e42"
+                        Margin="0, 0, 0, 3">
+                        <TextBlock
+                            x:Name="GoldField"
+                            Foreground="White"
+                            FontSize="18"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"/>
                     </Grid>
                 </Grid>
 
@@ -308,12 +324,16 @@
                             VerticalAlignment="Center"/>
                     </Grid>
 
-                    <Grid Grid.Row="1" Background="#FF3e3e42" Margin="0, 0, 0, 3">
-                        <TextBlock x:Name="PlatinumField"
-                                           Foreground="White"
-                                           FontSize="18"
-                                           HorizontalAlignment="Center"
-                                           VerticalAlignment="Center"/>
+                    <Grid
+                        Grid.Row="1"
+                        Background="#FF3e3e42"
+                        Margin="0, 0, 0, 3">
+                        <TextBlock
+                            x:Name="PlatinumField"
+                            Foreground="White"
+                            FontSize="18"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"/>
                     </Grid>
                 </Grid>
             </Grid>
@@ -324,7 +344,7 @@
             BorderBrush="#29303E"
             BorderThickness="5"
             CornerRadius="10"
-            Margin="10,5,20,5">
+            Margin="20,5,20,5">
             <Grid
                 Background="#29303E"
                 Margin="-1">
@@ -342,9 +362,10 @@
 
         <!--Buttons-->
         <Grid Grid.Row="3">
-            <StackPanel Orientation="Horizontal"
-                        VerticalAlignment="Center"
-                        HorizontalAlignment="Center">
+            <StackPanel
+                Orientation="Horizontal"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center">
                 <components:ConciergeTextButton 
                     x:Name="OkButton"
                     Style="{StaticResource ConciergeTextButtonStyle}"

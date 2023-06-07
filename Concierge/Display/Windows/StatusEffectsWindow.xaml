@@ -129,7 +129,7 @@
             BorderBrush="#29303E"
             BorderThickness="5"
             CornerRadius="10"
-            Margin="10,5,20,5">
+            Margin="20,5,20,5">
             <Grid
                 Background="#29303E"
                 Margin="-1">
