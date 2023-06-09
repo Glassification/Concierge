@@ -15,6 +15,10 @@ namespace Concierge.Common.Structs
         public int Top;
         public int Bottom;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MARGINS"/> struct using the specified <see cref="Thickness"/>.
+        /// </summary>
+        /// <param name="t">The <see cref="Thickness"/> from which to initialize the margins.</param>
         public MARGINS(Thickness t)
         {
             this.Left = (int)t.Left;

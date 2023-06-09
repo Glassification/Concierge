@@ -6,6 +6,9 @@ namespace Concierge.Common
 {
     using System;
 
+    /// <summary>
+    /// Provides utility methods and constants for the Concierge application.
+    /// </summary>
     public static class Constants
     {
         public const byte ColorSpace = 255;
@@ -29,6 +32,11 @@ namespace Concierge.Common
         public const string Copyright = "2018-2023 Most Rights Reserved.";
         public const string ConsolePrompt = "CS> ";
 
+        /// <summary>
+        /// Calculates the bonus value based on a given score.
+        /// </summary>
+        /// <param name="score">The score to calculate the bonus for.</param>
+        /// <returns>The calculated bonus value.</returns>
         public static int Bonus(int score)
         {
             return (int)Math.Floor((score - 10) / 2.0);

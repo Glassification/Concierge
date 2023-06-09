@@ -7,8 +7,14 @@ namespace Concierge.Common
     using System.Reflection;
     using System.Windows;
 
+    /// <summary>
+    /// Provides resolution scaling factors based on the current DPI (dots per inch).
+    /// </summary>
     public static class ResolutionScaling
     {
+        /// <summary>
+        /// Gets the current DPI (dots per inch).
+        /// </summary>
         public static int Dpi
         {
             get
@@ -18,6 +24,9 @@ namespace Concierge.Common
             }
         }
 
+        /// <summary>
+        /// Gets the DPI scaling factor for UI elements.
+        /// </summary>
         public static double DpiFactor
         {
             get
@@ -33,6 +42,9 @@ namespace Concierge.Common
             }
         }
 
+        /// <summary>
+        /// Gets the DPI scaling factor for images.
+        /// </summary>
         public static double ImageFactor
         {
             get

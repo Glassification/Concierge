@@ -4,6 +4,9 @@
 
 namespace Concierge.Common.Enums
 {
+    /// <summary>
+    /// Represents the gender of an individual.
+    /// </summary>
     public enum Gender
     {
         Female,

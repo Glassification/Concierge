@@ -14,6 +14,10 @@ namespace Concierge.Data
     using Concierge.Common.Extensions;
     using Newtonsoft.Json;
 
+    /// <summary>
+    /// Represents a custom color with RGBA values and hexadecimal representation.
+    /// Implements <see cref="ICopyable{CustomColor}"/> and <see cref="IUnique"/>.
+    /// </summary>
     public sealed class CustomColor : ICopyable<CustomColor>, IUnique
     {
         private const byte MaxColor = 255;
@@ -23,6 +27,11 @@ namespace Concierge.Data
         private static readonly Regex formatHex = new (@"(.{2})", RegexOptions.Compiled);
         private string? name;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CustomColor"/> class with a color name.
+        /// </summary>
+        /// <param name="name">The name of the color.</param>
+        /// <param name="isHex">A value indicating whether the provided name is a hexadecimal color representation.</param>
         public CustomColor(string name, bool isHex = false)
         {
             var color = (Color)ColorConverter.ConvertFromString(name);
@@ -36,6 +45,11 @@ namespace Concierge.Data
             this.Id = Guid.NewGuid();
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CustomColor"/> class with a color name and hexadecimal representation.
+        /// </summary>
+        /// <param name="name">The name of the color.</param>
+        /// <param name="hex">The hexadecimal representation of the color.</param>
         public CustomColor(string name, string hex)
         {
             var rgb = HexToRgb(hex);
@@ -51,6 +65,14 @@ namespace Concierge.Data
             this.Id = Guid.NewGuid();
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CustomColor"/> class with RGB values.
+        /// </summary>
+        /// <param name="name">The name of the color.</param>
+        /// <param name="r">The red component of the color.</param>
+        /// <param name="g">The green component of the color.</param>
+        /// <param name="b">The blue component of the color.</param>
+        /// <param name="a">The alpha component of the color. (Optional)</param>
         public CustomColor(string name, byte r, byte g, byte b, byte a = MaxColor)
         {
             this.Name = name;
@@ -63,6 +85,11 @@ namespace Concierge.Data
             this.Id = Guid.NewGuid();
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CustomColor"/> class with a color name and <see cref="Color"/> object.
+        /// </summary>
+        /// <param name="name">The name of the color.</param>
+        /// <param name="color">The <see cref="Color"/> object representing the color.</param>
         public CustomColor(string name, Color color)
             : this(name, color.R, color.G, color.B)
         {
@@ -80,30 +107,63 @@ namespace Concierge.Data
             this.A = 85;
         }
 
+        /// <summary>
+        /// Gets an invalid color instance.
+        /// </summary>
         [JsonIgnore]
         public static CustomColor Invalid => new (false);
 
+        /// <summary>
+        /// Gets a white color instance.
+        /// </summary>
         [JsonIgnore]
         public static CustomColor White => new ("White", MaxColor, MaxColor, MaxColor);
 
+        /// <summary>
+        /// Gets a black color instance.
+        /// </summary>
         [JsonIgnore]
         public static CustomColor Black => new ("Black", MinColor, MinColor, MinColor);
 
+        /// <summary>
+        /// Gets the <see cref="Color"/> object representation of the custom color.
+        /// </summary>
         [JsonIgnore]
         public Color Color => Color.FromArgb(this.A, this.R, this.G, this.B);
 
+        /// <summary>
+        /// Gets or sets the alpha component of the color.
+        /// </summary>
         public byte A { get; set; }
 
+        /// <summary>
+        /// Gets or sets the red component of the color.
+        /// </summary>
         public byte R { get; set; }
 
+        /// <summary>
+        /// Gets or sets the green component of the color.
+        /// </summary>
         public byte G { get; set; }
 
+        /// <summary>
+        /// Gets or sets the blue component of the color.
+        /// </summary>
         public byte B { get; set; }
 
+        /// <summary>
+        /// Gets or sets the hexadecimal representation of the color.
+        /// </summary>
         public string Hex { get; set; }
 
+        /// <summary>
+        /// Gets a value indicating whether the color is valid.
+        /// </summary>
         public bool IsValid { get; init; }
 
+        /// <summary>
+        /// Gets or sets the name of the color.
+        /// </summary>
         public string Name
         {
             get
@@ -117,6 +177,9 @@ namespace Concierge.Data
             }
         }
 
+        /// <summary>
+        /// Gets or sets the unique identifier of the color.
+        /// </summary>
         public Guid Id { get; set; }
 
         public static bool operator ==(CustomColor left, CustomColor right)
@@ -149,16 +212,30 @@ namespace Concierge.Data
             return base.GetHashCode();
         }
 
+        /// <summary>
+        /// Creates a new <see cref="CustomColor"/> that is saturated by the specified percentage.
+        /// </summary>
+        /// <param name="percent">The percentage to saturate the color by.</param>
+        /// <returns>A new <see cref="CustomColor"/> that is saturated by the specified percentage.</returns>
         public CustomColor Saturate(double percent)
         {
             return new CustomColor(this.Name, this.Color.Saturate(percent));
         }
 
+        /// <summary>
+        /// Creates a new <see cref="CustomColor"/> that is desaturated by the specified percentage.
+        /// </summary>
+        /// <param name="percent">The percentage to desaturate the color by.</param>
+        /// <returns>A new <see cref="CustomColor"/> that is desaturated by the specified percentage.</returns>
         public CustomColor Desaturate(double percent)
         {
             return new CustomColor(this.Name, this.Color.Desaturate(percent));
         }
 
+        /// <summary>
+        /// Creates a deep copy of the current <see cref="CustomColor"/>.
+        /// </summary>
+        /// <returns>A new <see cref="CustomColor"/> object that is a deep copy of the current instance.</returns>
         public CustomColor DeepCopy()
         {
             return new CustomColor()
@@ -174,6 +251,10 @@ namespace Concierge.Data
             };
         }
 
+        /// <summary>
+        /// Gets the category of the color.
+        /// </summary>
+        /// <returns>The category of the color.</returns>
         public CategoryDto GetCategory()
         {
             throw new NotImplementedException();

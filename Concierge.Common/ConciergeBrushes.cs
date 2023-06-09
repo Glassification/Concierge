@@ -6,6 +6,9 @@ namespace Concierge.Common
 {
     using System.Windows.Media;
 
+    /// <summary>
+    /// Provides a collection of pre-defined SolidColorBrush objects used for styling the Concierge application.
+    /// </summary>
     public static class ConciergeBrushes
     {
         static ConciergeBrushes()

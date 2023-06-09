@@ -7,6 +7,9 @@ namespace Concierge.Tools.DiceRoller
     using System.Collections.Generic;
     using System.Linq;
 
+    /// <summary>
+    /// Provides methods for converting infix expressions to postfix expressions using the Shunting Yard algorithm.
+    /// </summary>
     public static class ShuntingYard
     {
         private static readonly IDictionary<string, Operator> operators = new[]
@@ -18,6 +21,11 @@ namespace Concierge.Tools.DiceRoller
             new Operator("-", 2, false),
         }.ToDictionary(x => x.Symbol);
 
+        /// <summary>
+        /// Converts a list of tokens in infix notation to a postfix notation using the Shunting Yard algorithm.
+        /// </summary>
+        /// <param name="list">The list of tokens in infix notation.</param>
+        /// <returns>A stack representing the list of tokens in postfix notation.</returns>
         public static Stack<object> ToPostfix(List<object> list)
         {
             var stack = new Stack<object>();

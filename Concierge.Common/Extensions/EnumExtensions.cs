@@ -9,8 +9,21 @@ namespace Concierge.Common.Extensions
     using System.Globalization;
     using System.Linq;
 
+    /// <summary>
+    /// Provides extension methods for working with enumerations.
+    /// </summary>
     public static class EnumExtensions
     {
+        /// <summary>
+        /// Retrieves the description attribute value of the specified enumeration value.
+        /// </summary>
+        /// <typeparam name="T">The enumeration type.</typeparam>
+        /// <param name="e">The enumeration value.</param>
+        /// <returns>The description attribute value of the enumeration value, or an empty string if not found.</returns>
+        /// <remarks>
+        /// This method retrieves the description attribute value associated with the specified enumeration value.
+        /// It can be used to provide human-readable descriptions for enumeration values.
+        /// </remarks>
         public static string GetDescription<T>(this T e)
             where T : IConvertible
         {

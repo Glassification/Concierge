@@ -8,8 +8,16 @@ namespace Concierge.Persistence
     using System.IO.Compression;
     using System.Text;
 
+    /// <summary>
+    /// Provides methods for compressing and decompressing data using GZip compression.
+    /// </summary>
     public static class CcsCompression
     {
+        /// <summary>
+        /// Compresses a file into a byte array using GZip compression.
+        /// </summary>
+        /// <param name="file">The file to compress.</param>
+        /// <returns>A byte array representing the compressed data.</returns>
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0063:Use simple 'using' statement", Justification = "Cleaner Code.")]
         public static byte[] Zip(string file)
         {
@@ -27,6 +35,11 @@ namespace Concierge.Persistence
             }
         }
 
+        /// <summary>
+        /// Decompresses a byte array into a string using GZip decompression.
+        /// </summary>
+        /// <param name="bytes">The byte array representing the compressed data.</param>
+        /// <returns>A string representing the decompressed data.</returns>
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0063:Use simple 'using' statement", Justification = "Cleaner Code.")]
         public static string Unzip(byte[] bytes)
         {

@@ -14,7 +14,6 @@ namespace Concierge.Console
     using Concierge.Common.Extensions;
     using Concierge.Console.Enums;
     using Concierge.Console.Services;
-    using Concierge.Persistence;
     using Concierge.Persistence.ReadWriters;
     using Concierge.Tools;
 

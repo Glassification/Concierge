@@ -7,8 +7,16 @@ namespace Concierge.Common.Extensions
     using System.Windows.Controls;
     using System.Windows.Media;
 
+    /// <summary>
+    /// Provides extension methods for working with TreeView controls.
+    /// </summary>
     public static class TreeViewExtensions
     {
+        /// <summary>
+        /// Retrieves the parent TreeViewItem of the specified TreeViewItem.
+        /// </summary>
+        /// <param name="item">The TreeViewItem for which to find the parent.</param>
+        /// <returns>The parent TreeViewItem of the specified item, or null if the parent is not found.</returns>
         public static TreeViewItem? GetSelectedTreeViewItemParent(this TreeViewItem item)
         {
             var parent = VisualTreeHelper.GetParent(item);
@@ -20,6 +28,12 @@ namespace Concierge.Common.Extensions
             return parent as TreeViewItem;
         }
 
+        /// <summary>
+        /// Sets the specified item as selected within the parent ItemsControl.
+        /// </summary>
+        /// <param name="parent">The parent ItemsControl in which to set the selected item.</param>
+        /// <param name="child">The item to set as selected.</param>
+        /// <returns>True if the item is successfully set as selected, false otherwise.</returns>
         private static bool SetSelected(ItemsControl parent, object child)
         {
             if (parent == null || child == null)

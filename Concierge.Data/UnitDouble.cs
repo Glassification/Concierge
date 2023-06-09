@@ -12,8 +12,17 @@ namespace Concierge.Data
     using Concierge.Configuration.Dtos;
     using Concierge.Data.Units;
 
+    /// <summary>
+    /// Represents a double value with associated unit type and measurement.
+    /// </summary>
     public sealed class UnitDouble : ICopyable<UnitDouble>, IComparable
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="UnitDouble"/> class with the specified value, unit type, and measurement.
+        /// </summary>
+        /// <param name="value">The numeric value.</param>
+        /// <param name="unitType">The unit type.</param>
+        /// <param name="measurement">The measurement type.</param>
         public UnitDouble(double value, UnitTypes unitType, Measurements measurement)
         {
             this.Value = value;
@@ -23,12 +32,24 @@ namespace Concierge.Data
             AppSettingsManager.UnitsChanged += this.ConciergeDouble_UnitsChanged;
         }
 
+        /// <summary>
+        /// Gets an empty <see cref="UnitDouble"/> instance with default values.
+        /// </summary>
         public static UnitDouble Empty => new (0.0, UnitTypes.Imperial, Measurements.Weight);
 
+        /// <summary>
+        /// Gets or sets the numeric value.
+        /// </summary>
         public double Value { get; set; }
 
+        /// <summary>
+        /// Gets or sets the unit type.
+        /// </summary>
         public UnitTypes UnitType { get; set; }
 
+        /// <summary>
+        /// Gets the measurement type.
+        /// </summary>
         public Measurements Measurement { get; init; }
 
         public static bool operator ==(UnitDouble a, UnitDouble b)
@@ -56,6 +77,10 @@ namespace Concierge.Data
             return base.GetHashCode();
         }
 
+        /// <summary>
+        /// Creates a deep copy of the <see cref="UnitDouble"/> object.
+        /// </summary>
+        /// <returns>A deep copy of the <see cref="UnitDouble"/> object.</returns>
         public UnitDouble DeepCopy()
         {
             return new UnitDouble(this.Value, this.UnitType, this.Measurement);

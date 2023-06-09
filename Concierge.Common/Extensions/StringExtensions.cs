@@ -13,6 +13,9 @@ namespace Concierge.Common.Extensions
 
     using Concierge.Common.Dtos;
 
+    /// <summary>
+    /// Provides extension methods for string manipulation.
+    /// </summary>
     public static class StringExtensions
     {
         private static readonly Regex rtfRegex = new (@"\\([a-z]{1,32})(-?\d{1,10})?[ ]?|\\'([0-9a-f]{2})|\\([^a-z])|([{}])|[\r\n]+|(.)", RegexOptions.Singleline | RegexOptions.IgnoreCase | RegexOptions.Compiled);
@@ -80,16 +83,32 @@ namespace Concierge.Common.Extensions
             { "rdblquote", "\u201D" },
         };
 
+        /// <summary>
+        /// Determines whether the specified string is null, empty, or consists only of white-space characters.
+        /// </summary>
+        /// <param name="str">The string to test.</param>
+        /// <returns>true if the string is null, empty, or consists only of white-space characters; otherwise, false.</returns>
         public static bool IsNullOrWhiteSpace(this string? str)
         {
             return string.IsNullOrWhiteSpace(str);
         }
 
+        /// <summary>
+        /// Determines whether the specified string is null or empty.
+        /// </summary>
+        /// <param name="str">The string to test.</param>
+        /// <returns>true if the string is null or empty; otherwise, false.</returns>
         public static bool IsNullOrEmpty(this string str)
         {
             return string.IsNullOrEmpty(str);
         }
 
+        /// <summary>
+        /// Counts the occurrences of a specified character in the string.
+        /// </summary>
+        /// <param name="str">The string to count characters in.</param>
+        /// <param name="character">The character to count.</param>
+        /// <returns>The number of occurrences of the character in the string.</returns>
         public static int CountCharacter(this string str, char character)
         {
             var count = 0;
@@ -109,6 +128,11 @@ namespace Concierge.Common.Extensions
             return count;
         }
 
+        /// <summary>
+        /// Formats the string by inserting spaces before each uppercase letter (from an enum representation).
+        /// </summary>
+        /// <param name="str">The string to format.</param>
+        /// <returns>The formatted string.</returns>
         public static string FormatFromEnum(this string str)
         {
             if (str.IsNullOrWhiteSpace())
@@ -131,11 +155,23 @@ namespace Concierge.Common.Extensions
             return str;
         }
 
+        /// <summary>
+        /// Removes the specified text from the string.
+        /// </summary>
+        /// <param name="str">The string to strip.</param>
+        /// <param name="textToStrip">The text to remove.</param>
+        /// <returns>The modified string.</returns>
         public static string Strip(this string str, string textToStrip)
         {
             return str.Replace(textToStrip, string.Empty);
         }
 
+        /// <summary>
+        /// Removes the specified texts from the string.
+        /// </summary>
+        /// <param name="str">The string to strip.</param>
+        /// <param name="textToStrip">The texts to remove.</param>
+        /// <returns>The modified string.</returns>
         public static string Strip(this string str, params string[] textToStrip)
         {
             foreach (var text in textToStrip)
@@ -146,6 +182,11 @@ namespace Concierge.Common.Extensions
             return str;
         }
 
+        /// <summary>
+        /// Determines whether the specified pattern is a valid regular expression.
+        /// </summary>
+        /// <param name="pattern">The pattern to test.</param>
+        /// <returns>true if the pattern is a valid regular expression; otherwise, false.</returns>
         public static bool IsValidRegex(this string pattern)
         {
             if (pattern.IsNullOrWhiteSpace())
@@ -165,6 +206,13 @@ namespace Concierge.Common.Extensions
             return true;
         }
 
+        /// <summary>
+        /// Converts a string representation of a color to a Color object.
+        /// If the input string is null, empty, or consists only of white space, the method returns Colors.Transparent.
+        /// If the conversion fails, the method also returns Colors.Transparent.
+        /// </summary>
+        /// <param name="colorName">The string representation of the color to convert.</param>
+        /// <returns>A Color object representing the converted color, or Colors.Transparent if the conversion fails.</returns>
         public static Color ToColor(this string? colorName)
         {
             if (colorName?.IsNullOrWhiteSpace() ?? true)
@@ -174,7 +222,7 @@ namespace Concierge.Common.Extensions
 
             try
             {
-                colorName = colorName.Strip(" ", "-", ".", "'" );
+                colorName = colorName.Strip(" ", "-", ".", "'");
                 var cc = TypeDescriptor.GetConverter(typeof(Color));
 
                 return (Color?)cc?.ConvertFromString(colorName) ?? Colors.Transparent;
@@ -185,6 +233,12 @@ namespace Concierge.Common.Extensions
             }
         }
 
+
+        /// <summary>
+        /// Formats the given string by inserting a space before each uppercase letter (excluding the first letter).
+        /// </summary>
+        /// <param name="name">The string to format.</param>
+        /// <returns>The formatted string.</returns>
         public static string FormatColorName(this string name)
         {
             var charArray = name.ToArray();
@@ -202,11 +256,22 @@ namespace Concierge.Common.Extensions
             return name;
         }
 
+        /// <summary>
+        /// Checks whether the given string is in RTF (Rich Text Format) format.
+        /// </summary>
+        /// <param name="text">The string to check.</param>
+        /// <returns>True if the string is in RTF format, false otherwise.</returns>
         public static bool IsRtf(this string text)
         {
             return !text.IsNullOrWhiteSpace() && text.TrimStart().StartsWith(@"{\rtf", StringComparison.Ordinal);
         }
 
+        /// <summary>
+        /// Strips the Rich Text Format (RTF) formatting from the input string and returns the plain text.
+        /// If the input string is null or consists only of white space, the method returns an empty string.
+        /// </summary>
+        /// <param name="inputRtf">The RTF-formatted input string to strip the formatting from.</param>
+        /// <returns>The plain text with RTF formatting removed.</returns>
         public static string StripRichTextFormat(this string inputRtf)
         {
             if (inputRtf.IsNullOrWhiteSpace())
@@ -338,6 +403,11 @@ namespace Concierge.Common.Extensions
             return string.Join(string.Empty, outList.ToArray());
         }
 
+        /// <summary>
+        /// Removes empty strings from the input string array and returns a new array containing only non-empty strings.
+        /// </summary>
+        /// <param name="list">The input string array.</param>
+        /// <returns>A new string array without empty strings.</returns>
         public static string[] RemoveEmpty(this string[] list)
         {
             var newList = new List<string>();
@@ -352,6 +422,13 @@ namespace Concierge.Common.Extensions
             return newList.ToArray();
         }
 
+        /// <summary>
+        /// Replaces the last occurrence of a substring in the input string with a new substring and returns the modified string.
+        /// </summary>
+        /// <param name="str">The input string.</param>
+        /// <param name="from">The substring to replace.</param>
+        /// <param name="to">The new substring to insert.</param>
+        /// <returns>The modified string with the last occurrence of the specified substring replaced.</returns>
         public static string ReplaceLast(this string str, string from, string to)
         {
             var index = str.LastIndexOf(from);

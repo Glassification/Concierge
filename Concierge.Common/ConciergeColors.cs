@@ -6,6 +6,9 @@ namespace Concierge.Common
 {
     using System.Windows.Media;
 
+    /// <summary>
+    /// Provides a collection of pre-defined Color objects used for styling the Concierge application.
+    /// </summary>
     public static class ConciergeColors
     {
         static ConciergeColors()

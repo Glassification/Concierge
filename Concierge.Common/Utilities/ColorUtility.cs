@@ -9,8 +9,15 @@ namespace Concierge.Common.Utilities
     using System.Windows;
     using System.Windows.Media;
 
+    /// <summary>
+    /// Provides utility methods for color-related operations.
+    /// </summary>
     public static class ColorUtility
     {
+        /// <summary>
+        /// Retrieves a list of string representations of .NET colors from the <see cref="System.Drawing.KnownColor"/> enumeration.
+        /// </summary>
+        /// <returns>A list of color names.</returns>
         public static List<string> ListDotNetColors()
         {
             var colorList = new List<string>();
@@ -29,6 +36,14 @@ namespace Concierge.Common.Utilities
             return colorList;
         }
 
+        /// <summary>
+        /// Generates a <see cref="LinearGradientBrush"/> with the specified start and end colors.
+        /// </summary>
+        /// <param name="startColor">The starting color of the gradient.</param>
+        /// <param name="endColor">The ending color of the gradient.</param>
+        /// <param name="startPoint">The starting point of the gradient.</param>
+        /// <param name="endPoint">The ending point of the gradient.</param>
+        /// <returns>The created <see cref="LinearGradientBrush"/> object.</returns>
         public static LinearGradientBrush GenerateGradientBrush(Color startColor, Color endColor, Point startPoint, Point endPoint)
         {
             return new LinearGradientBrush(
@@ -41,6 +56,11 @@ namespace Concierge.Common.Utilities
                 endPoint);
         }
 
+        /// <summary>
+        /// Formats the provided hexadecimal color string by adding a "#" symbol if it is missing.
+        /// </summary>
+        /// <param name="hex">The hexadecimal color string to format.</param>
+        /// <returns>The formatted hexadecimal color string.</returns>
         public static string FormatHexString(string hex)
         {
             if (hex.Length < 1)

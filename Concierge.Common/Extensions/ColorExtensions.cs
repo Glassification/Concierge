@@ -8,8 +8,16 @@ namespace Concierge.Common.Extensions
     using System.Linq;
     using System.Windows.Media;
 
+    /// <summary>
+    /// Provides extension methods for working with Color objects.
+    /// </summary>
     public static class ColorExtensions
     {
+        /// <summary>
+        /// Retrieves the name of the color.
+        /// </summary>
+        /// <param name="color">The Color object.</param>
+        /// <returns>The name of the color, formatted.</returns>
         public static string GetName(this Color color)
         {
             var properties = typeof(Colors).GetProperties().FirstOrDefault(p =>
@@ -20,12 +28,22 @@ namespace Concierge.Common.Extensions
             return properties != null ? properties.Name.FormatColorName() : color.ToHexWithoutAlpha();
         }
 
+        /// <summary>
+        /// Retrieves the foreground color (either white or black) based on the brightness of the color.
+        /// </summary>
+        /// <param name="color">The Color object.</param>
+        /// <returns>A SolidColorBrush representing the foreground color.</returns>
         public static SolidColorBrush GetForeColor(this Color color)
         {
             var brightness = (int)Math.Sqrt((color.R * color.R * 0.241) + (color.G * color.G * 0.691) + (color.B * color.B * 0.068));
             return brightness < Constants.BrightnessTransition ? Brushes.White : Brushes.Black;
         }
 
+        /// <summary>
+        /// Retrieves the hue value of the color.
+        /// </summary>
+        /// <param name="color">The Color object.</param>
+        /// <returns>The hue value of the color.</returns>
         public static double GetHue(this Color color)
         {
             double hue;
@@ -51,11 +69,22 @@ namespace Concierge.Common.Extensions
             return Math.Round(hue);
         }
 
+        /// <summary>
+        /// Converts the color to a hexadecimal string representation without the alpha channel.
+        /// </summary>
+        /// <param name="color">The Color object.</param>
+        /// <returns>A hexadecimal string representation of the color without the alpha channel.</returns>
         public static string ToHexWithoutAlpha(this Color color)
         {
             return color.ToString().Remove(1, 2);
         }
 
+        /// <summary>
+        /// Saturates the color by a given percentage.
+        /// </summary>
+        /// <param name="color">The Color object.</param>
+        /// <param name="percent">The percentage to saturate the color by.</param>
+        /// <returns>A new saturated Color object.</returns>
         public static Color Saturate(this Color color, double percent)
         {
             percent = Math.Max(0, Math.Min(1, percent));
@@ -67,6 +96,12 @@ namespace Concierge.Common.Extensions
             return Color.FromRgb(r, g, b);
         }
 
+        /// <summary>
+        /// Desaturates the color by a given percentage.
+        /// </summary>
+        /// <param name="color">The Color object.</param>
+        /// <param name="percent">The percentage to desaturate the color by.</param>
+        /// <returns>A new desaturated Color object.</returns>
         public static Color Desaturate(this Color color, double percent)
         {
             var greayscale = (0.3 * color.R) + (0.6 * color.G) + (0.1 * color.B);
