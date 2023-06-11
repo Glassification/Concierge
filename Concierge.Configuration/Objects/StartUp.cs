@@ -12,6 +12,8 @@ namespace Concierge.Configuration.Objects
 
         public bool CompressCharacterSheet { get; set; }
 
+        public bool EnableConsole { get; set; }
+
         public bool ShowSplashScreen { get; set; }
     }
 }

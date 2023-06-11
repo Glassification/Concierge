@@ -262,6 +262,15 @@ namespace Concierge.Display
             return 0;
         }
 
+        public void OpenConsole()
+        {
+            if (AppSettingsManager.StartUp.EnableConsole)
+            {
+                ConciergeWindowService.ShowWindow(typeof(ConciergeConsoleWindow));
+                this.DrawAll();
+            }
+        }
+
         public void DrawAll(bool isNewCharacterSheet = false)
         {
             Program.Logger.Info($"Draw all.");
@@ -587,8 +596,7 @@ namespace Concierge.Display
                     ConciergeWindowService.ShowWindow(typeof(AboutConciergeWindow));
                     break;
                 case Key.C:
-                    ConciergeWindowService.ShowWindow(typeof(ConciergeConsoleWindow));
-                    this.DrawAll();
+                    this.OpenConsole();
                     break;
                 case Key.F:
                     this.Search();
@@ -597,7 +605,7 @@ namespace Concierge.Display
                     this.OpenGlossary();
                     break;
                 case Key.I:
-                    this.OpenSettings();
+                    this.ImportCharacter();
                     break;
                 case Key.L:
                     this.LongRest();

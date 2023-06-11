@@ -10,6 +10,6 @@ namespace Concierge.Character.Enums
         Advantage,
         Disadvantage,
         Fail,
-        None,
+        Auto,
     }
 }

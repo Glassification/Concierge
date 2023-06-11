@@ -178,7 +178,7 @@ namespace Concierge.Character.Spellcasting
                 return this.EighthUsed;
             }
 
-            if (name.Contains("Nineth", System.StringComparison.InvariantCultureIgnoreCase) && this.NinethUsed < this.NinethTotal)
+            if (name.Contains("Ninth", System.StringComparison.InvariantCultureIgnoreCase) && this.NinethUsed < this.NinethTotal)
             {
                 this.NinethUsed++;
                 return this.NinethUsed;

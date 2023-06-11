@@ -11,14 +11,14 @@ namespace Concierge.Character.AbilitySaves
     {
         private int bonus;
 
-        public Charisma(bool proficiency = false, StatusChecks checkOverride = StatusChecks.None)
+        public Charisma(bool proficiency = false, StatusChecks checkOverride = StatusChecks.Auto)
         {
             this.Proficiency = proficiency;
             this.CheckOverride = checkOverride;
         }
 
         public override StatusChecks StatusChecks =>
-            this.CheckOverride != StatusChecks.None
+            this.CheckOverride != StatusChecks.Auto
             ? this.CheckOverride
             : Program.CcsFile.Character.Vitality.Conditions.Fatigued.ExhaustionLevel == ExhaustionLevel.Three ||
                 Program.CcsFile.Character.Vitality.Conditions.Fatigued.ExhaustionLevel == ExhaustionLevel.Four ||

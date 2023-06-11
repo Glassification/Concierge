@@ -46,7 +46,7 @@
                     Minimum="0"
                     ValueFontSize="30"
                     Height="auto"
-                    Margin="30,0,30,0"/>
+                    Margin="10,0,10,0"/>
             </Grid>
         </Border>
     </Grid>

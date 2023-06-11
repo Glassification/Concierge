@@ -12,6 +12,7 @@ namespace Concierge
     using Concierge.Common;
     using Concierge.Display;
     using Concierge.Logging;
+    using Concierge.Persistence;
     using Concierge.Persistence.ReadWriters;
     using Concierge.Services;
     using Microsoft.Win32;
@@ -19,6 +20,7 @@ namespace Concierge
     public static class Program
     {
         private static int buildNumber = -1;
+        private static ConciergeVersion version = new ();
 
         static Program()
         {
@@ -29,7 +31,7 @@ namespace Concierge
 #endif
 
             Logger = new LocalLogger(ConciergeFiles.LoggingDirectory, IsDebug);
-            Logger.Start(AssemblyVersion);
+            Logger.Start(AssemblyVersion.ToString());
 
             IsTyping = false;
             ErrorService = new ErrorService(Logger);
@@ -65,12 +67,17 @@ namespace Concierge
 
         public static CustomColorService CustomColorService { get; private set; }
 
-        public static string AssemblyVersion
+        public static ConciergeVersion AssemblyVersion
         {
             get
             {
-                var version = Assembly.GetExecutingAssembly().GetName().Version;
-                return $"{version?.Major}.{version?.Minor}.{version?.Build}";
+                if (!version.IsEmpty)
+                {
+                    return version;
+                }
+
+                version = new ConciergeVersion(Assembly.GetExecutingAssembly().GetName().Version ?? new Version());
+                return version;
             }
         }
 

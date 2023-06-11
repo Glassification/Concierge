@@ -11,7 +11,7 @@ namespace Concierge.Character.AbilitySkills
     {
         private int bonus;
 
-        public Deception(bool proficiency = false, bool expertise = false, StatusChecks checkOverride = StatusChecks.None)
+        public Deception(bool proficiency = false, bool expertise = false, StatusChecks checkOverride = StatusChecks.Auto)
         {
             this.Proficiency = proficiency;
             this.Expertise = expertise;
@@ -19,7 +19,7 @@ namespace Concierge.Character.AbilitySkills
         }
 
         public override StatusChecks Checks =>
-            this.CheckOverride != StatusChecks.None
+            this.CheckOverride != StatusChecks.Auto
             ? this.CheckOverride
             : Program.CcsFile.Character.Vitality.Conditions.Fatigued.ExhaustionLevel == ExhaustionLevel.One ||
                 Program.CcsFile.Character.Vitality.Conditions.Fatigued.ExhaustionLevel == ExhaustionLevel.Two ||

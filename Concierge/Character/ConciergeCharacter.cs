@@ -20,7 +20,6 @@ namespace Concierge.Character
     using Concierge.Common.Utilities;
     using Concierge.Data.Units;
     using Concierge.Leveling;
-    using Concierge.Persistence;
     using Newtonsoft.Json;
 
     public sealed class ConciergeCharacter : ICopyable<ConciergeCharacter>, ICreature

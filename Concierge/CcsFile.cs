@@ -22,7 +22,7 @@ namespace Concierge
         {
             this.Character = new ConciergeCharacter();
             this.OriginalCreationDate = ConciergeDateTime.OriginalCreationNow;
-            this.Version = Program.AssemblyVersion;
+            this.Version = new ConciergeVersion();
             this.AbsolutePath = string.Empty;
             this.Hash = string.Empty;
         }
@@ -50,7 +50,7 @@ namespace Concierge
 
         public DateTime LastSaveDate { get; set; }
 
-        public string Version { get; set; }
+        public ConciergeVersion Version { get; set; }
 
         public bool IsEmpty { get; }
 
@@ -61,7 +61,7 @@ namespace Concierge
 
         public bool CheckVersion()
         {
-            if (this.Version.IsNullOrWhiteSpace() || this.CompareMajorMinorVersion())
+            if (this.Version.IsEmpty || this.CompareMajorMinorVersion())
             {
                 var message = string.Format(
                     "This file was saved with version {0} of Concierge. Current version is {1}.\nContinue loading?",
@@ -125,20 +125,7 @@ namespace Concierge
 
         private bool CompareMajorMinorVersion()
         {
-            var fileVersions = this.Version.Split('.');
-            var programVersions = Program.AssemblyVersion.Split('.');
-
-            if (fileVersions.Length != 3 || programVersions.Length != 3)
-            {
-                return true;
-            }
-
-            if (!fileVersions[0].Equals(programVersions[0]) || !fileVersions[1].Equals(programVersions[1]))
-            {
-                return true;
-            }
-
-            return false;
+            return this.Version.Major != Program.AssemblyVersion.Major || this.Version.Minor != Program.AssemblyVersion.Minor;
         }
     }
 }
