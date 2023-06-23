@@ -7,9 +7,8 @@ namespace Concierge.Display.Utility
     using System;
     using System.Windows;
 
-    using Concierge.Common;
-    using Concierge.Services.Enums;
-    using Concierge.Services.WorkerServices;
+    using Concierge.Tools.Enums;
+    using Concierge.Tools.WorkerServices;
 
     /// <summary>
     /// Interaction logic for SplashScreenWindow.xaml.

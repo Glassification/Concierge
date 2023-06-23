@@ -25,6 +25,7 @@ namespace Concierge
             this.Version = new ConciergeVersion();
             this.AbsolutePath = string.Empty;
             this.Hash = string.Empty;
+            this.IsInitialized = false;
         }
 
         public CcsFile(bool empty)
@@ -53,6 +54,8 @@ namespace Concierge
         public ConciergeVersion Version { get; set; }
 
         public bool IsEmpty { get; }
+
+        private bool IsInitialized { get; set; }
 
         public bool IsFileSaved(bool? autosaveChecked)
         {
@@ -112,6 +115,11 @@ namespace Concierge
 
         public void Initialize()
         {
+            if (this.IsInitialized)
+            {
+                return;
+            }
+
             foreach (var weapon in this.Character.Equipment.Weapons)
             {
                 weapon.Initialize(this.Character);
@@ -121,6 +129,8 @@ namespace Concierge
             {
                 weapon.Initialize(this.Character.Companion);
             }
+
+            this.IsInitialized = true;
         }
 
         private bool CompareMajorMinorVersion()

@@ -1,23 +1,20 @@
-﻿// <copyright file="AnimatedLoadingTextWorkerService.cs" company="Thomas Beckett">
+﻿// <copyright file="AnimatedTimedTextWorkerService.cs" company="Thomas Beckett">
 // Copyright (c) Thomas Beckett. All rights reserved.
 // </copyright>
 
-namespace Concierge.Services.WorkerServices
+namespace Concierge.Tools.WorkerServices
 {
     using System;
     using System.ComponentModel;
     using System.Threading;
 
-    using Concierge.Common.Utilities;
-    using Concierge.Services.Enums;
-
-    public sealed class AnimatedLoadingTextWorkerService : IWorkerService
+    public sealed class AnimatedTimedTextWorkerService : IWorkerService
     {
-        private readonly LoadingType loadingType;
-        private readonly int displayTime;
-        private readonly Random random = new ();
+        private const int SleepTime = 150;
 
-        public AnimatedLoadingTextWorkerService(LoadingType loadingType, int displayTime)
+        private readonly int displayTime;
+
+        public AnimatedTimedTextWorkerService(int displayTime)
         {
             this.UpdateText = new BackgroundWorker()
             {
@@ -29,8 +26,6 @@ namespace Concierge.Services.WorkerServices
             this.UpdateText.RunWorkerCompleted += this.UpdateText_RunWorkerCompleted;
 
             this.Message = string.Empty;
-            this.Counter = 0;
-            this.loadingType = loadingType;
             this.displayTime = displayTime;
         }
 
@@ -46,14 +41,9 @@ namespace Concierge.Services.WorkerServices
 
         private string Message { get; set; }
 
-        private int Counter { get; set; }
-
-        private int SleepTime => this.loadingType == LoadingType.Constant ? 150 : this.random.Next(110, 190);
-
         public void StartWorker(string message)
         {
             this.Message = message;
-            this.Counter = 0;
 
             if (this.UpdateText.IsBusy)
             {
@@ -72,13 +62,7 @@ namespace Concierge.Services.WorkerServices
 
         private void UpdateText_ProgressChanged(object? sender, ProgressChangedEventArgs e)
         {
-            if (this.Counter > 5)
-            {
-                this.Counter = 0;
-            }
-
-            this.TextUpdated?.Invoke($"{this.Message}{StringUtility.CreateCharacters(".", this.Counter)}", new EventArgs());
-            this.Counter++;
+            this.TextUpdated?.Invoke(this.Message, new EventArgs());
         }
 
         private void UpdateText_DoWork(object? sender, DoWorkEventArgs e)
@@ -97,7 +81,7 @@ namespace Concierge.Services.WorkerServices
                 }
 
                 worker.ReportProgress(i);
-                Thread.Sleep(this.SleepTime);
+                Thread.Sleep(SleepTime);
             }
         }
 

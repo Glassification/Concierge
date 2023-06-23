@@ -2,7 +2,7 @@
 // Copyright (c) Thomas Beckett. All rights reserved.
 // </copyright>
 
-namespace Concierge.Services.Enums
+namespace Concierge.Tools.Enums
 {
    public enum LoadingType
     {

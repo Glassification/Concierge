@@ -21,9 +21,8 @@ namespace Concierge.Display
     using Concierge.Display.Utility;
     using Concierge.Display.Windows;
     using Concierge.Display.Windows.Utility;
-    using Concierge.Persistence;
     using Concierge.Services;
-    using Concierge.Services.WorkerServices;
+    using Concierge.Tools.WorkerServices;
     using MaterialDesignThemes.Wpf;
 
     /// <summary>

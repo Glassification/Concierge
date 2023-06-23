@@ -2,7 +2,7 @@
 // Copyright (c) Thomas Beckett. All rights reserved.
 // </copyright>
 
-namespace Concierge.Services.WorkerServices
+namespace Concierge.Tools.WorkerServices
 {
     public interface IWorkerService
     {

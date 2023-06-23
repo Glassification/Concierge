@@ -1,20 +1,21 @@
-﻿// <copyright file="AnimatedTimedTextWorkerService.cs" company="Thomas Beckett">
+﻿// <copyright file="AnimatedSpinningTextWorkerService.cs" company="Thomas Beckett">
 // Copyright (c) Thomas Beckett. All rights reserved.
 // </copyright>
 
-namespace Concierge.Services.WorkerServices
+namespace Concierge.Tools.WorkerServices
 {
     using System;
     using System.ComponentModel;
     using System.Threading;
 
-    public sealed class AnimatedTimedTextWorkerService : IWorkerService
+    public sealed class AnimatedSpinningTextWorkerService : IWorkerService
     {
         private const int SleepTime = 150;
 
         private readonly int displayTime;
+        private readonly char[] cursor = new char[4] { '|', '\\', '-', '/' };
 
-        public AnimatedTimedTextWorkerService(int displayTime)
+        public AnimatedSpinningTextWorkerService(int displayTime)
         {
             this.UpdateText = new BackgroundWorker()
             {
@@ -26,6 +27,7 @@ namespace Concierge.Services.WorkerServices
             this.UpdateText.RunWorkerCompleted += this.UpdateText_RunWorkerCompleted;
 
             this.Message = string.Empty;
+            this.Counter = 0;
             this.displayTime = displayTime;
         }
 
@@ -39,11 +41,14 @@ namespace Concierge.Services.WorkerServices
 
         private BackgroundWorker UpdateText { get; }
 
+        private int Counter { get; set; }
+
         private string Message { get; set; }
 
         public void StartWorker(string message)
         {
             this.Message = message;
+            this.Counter = 0;
 
             if (this.UpdateText.IsBusy)
             {
@@ -62,7 +67,13 @@ namespace Concierge.Services.WorkerServices
 
         private void UpdateText_ProgressChanged(object? sender, ProgressChangedEventArgs e)
         {
-            this.TextUpdated?.Invoke(this.Message, new EventArgs());
+            if (this.Counter > 3)
+            {
+                this.Counter = 0;
+            }
+
+            this.TextUpdated?.Invoke($"{this.cursor[this.Counter]}{this.Message}{this.cursor[this.Counter]}", new EventArgs());
+            this.Counter++;
         }
 
         private void UpdateText_DoWork(object? sender, DoWorkEventArgs e)
