@@ -50,6 +50,7 @@ namespace Concierge.Configuration
             UserSettings.DefaultFolder.Set(userSettingsDto.DefaultFolder);
 
             UserSettings.CheckVersion = userSettingsDto.CheckVersion;
+            UserSettings.HeaderAlignment = userSettingsDto.HeaderAlignment;
             UserSettings.MuteSounds = userSettingsDto.MuteSounds;
             UserSettings.UseCoinWeight = userSettingsDto.UseCoinWeight;
             UserSettings.UseEncumbrance = userSettingsDto.UseEncumbrance;
@@ -85,6 +86,7 @@ namespace Concierge.Configuration
                     UseOpenFolder = UserSettings.DefaultFolder.UseOpenFolder,
                     UseSaveFolder = UserSettings.DefaultFolder.UseSaveFolder,
                 },
+                HeaderAlignment = UserSettings.HeaderAlignment,
                 MuteSounds = UserSettings.MuteSounds,
                 UseCoinWeight = UserSettings.UseCoinWeight,
                 UseEncumbrance = UserSettings.UseEncumbrance,

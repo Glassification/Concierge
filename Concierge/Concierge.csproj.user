@@ -9,6 +9,9 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="Display\Controls\HeaderControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Display\Controls\IntegerUpDownTransparentControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -72,6 +75,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Display\Controls\DoubleUpDownControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Display\Controls\HeaderControl.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Display\Controls\HealthControl.xaml">

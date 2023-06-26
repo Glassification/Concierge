@@ -46,7 +46,6 @@ namespace Concierge.Display
         public readonly JournalPage JournalPage = new ();
 
         private readonly FileAccessService fileAccessService = new ();
-        private readonly MainWindowService mainWindowService;
         private readonly AutosaveService autosaveTimer = new (new FileAccessService());
         private readonly DateTimeWorkerService dateTimeService = new ();
         private readonly AnimatedTimedTextWorkerService animatedTimedTextWorkerService = new (17);
@@ -61,7 +60,6 @@ namespace Concierge.Display
             this.dateTimeService.TimeUpdated += this.MainWindow_TimeUpdated;
             this.animatedTimedTextWorkerService.TextUpdated += this.MainWindow_TextUpdated;
 
-            this.mainWindowService = new MainWindowService();
             this.GridContent.Width = GridContentWidthClose;
             this.IsMenuOpen = false;
             this.IgnoreListItemSelectionChanged = true;
@@ -274,8 +272,16 @@ namespace Concierge.Display
         {
             Program.Logger.Info($"Draw all.");
 
-            this.mainWindowService.GenerateCharacterStatusBar(this.CharacterHeaderPanel, Program.CcsFile.Character.Properties);
-            this.UpdateStatusBar(this.CurrentPage?.ConciergePage ?? ConciergePage.None);
+            var properties = Program.CcsFile.Character.Properties;
+            this.CharacterHeader.Draw(
+                properties.Name,
+                properties.Race.ToString(),
+                properties.Background,
+                properties.Alignment,
+                properties.Level > 0 ? $"Level {properties.Level}" : string.Empty,
+                properties.Class1.ToString(),
+                properties.Class2.ToString(),
+                properties.Class3.ToString());
 
             this.InventoryPage.Draw();
             this.AbilityPage.Draw();
@@ -287,6 +293,8 @@ namespace Concierge.Display
             this.ToolsPage.Draw();
             this.EquipmentPage.Draw();
             this.CompanionPage.Draw();
+
+            this.UpdateStatusBar(this.CurrentPage?.ConciergePage ?? ConciergePage.None);
         }
 
         public void LongRest()

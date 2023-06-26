@@ -941,12 +941,6 @@
         "Subclass": "",
         "ClassNumber": 3,
         "Level": 0
-      },
-      "CharacterIcon": {
-        "Encoded": "",
-        "Path": "",
-        "Stretch": 3,
-        "UseCustomImage": false
       }
     },
     "CharacterImage": {
@@ -2502,14 +2496,13 @@
       ]
     }
   },
-  "Hash": "875B7FF3668DC235D949C612C6B9A03ADD0A94DFC5A9B31005942E5D18D511CB",
+  "Hash": "26B8AFF2F6C37DB968C0C48BF9E4BBEB36CEB1825EEB92167831A92118161079",
   "OriginalCreationDate": "Saturday, 13 May 2023 06:48:08 PM",
-  "LastSaveDate": "2023-06-11T11:31:41.3265703-05:00",
+  "LastSaveDate": "2023-06-25T23:04:42.0174044-05:00",
   "Version": {
     "Major": 5,
     "Minor": 3,
-    "Patch": 4,
-    "IsEmpty": false
+    "Patch": 5
   },
   "IsEmpty": false
 }

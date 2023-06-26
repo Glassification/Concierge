@@ -9,7 +9,7 @@
     xmlns:components="clr-namespace:Concierge.Display.Components"
     mc:Ignorable="d"
     Title="Modify Character Properties"
-    Height="595"
+    Height="535"
     Width="800"
     Style="{StaticResource WindowFontStyle}">
 
@@ -18,7 +18,6 @@
             <RowDefinition Height="45"/>
             <RowDefinition Height="180"/>
             <RowDefinition Height="180"/>
-            <RowDefinition Height="60"/>
             <RowDefinition Height="60"/>
             <RowDefinition Height="70"/>
         </Grid.RowDefinitions>
@@ -279,58 +278,8 @@
                 SelectionChanged="SubclassComboBox_SelectionChanged"/>
         </Grid>
         
-        <!--Icon-->
-        <Grid Grid.Row="3">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="17.5*"/>
-                <ColumnDefinition Width="7*"/>
-                <ColumnDefinition Width="75.5*"/>
-            </Grid.ColumnDefinitions>
-
-            <!--Title-->
-            <Grid Grid.Column="0">
-                <components:ConciergeLabel
-                    x:Name="ImageSourceLabel"
-                    Text="Icon:"/>
-            </Grid>
-
-            <Grid Grid.Column="1" Margin="0,0,0,0">
-                <components:ConciergeCheckBox 
-                    x:Name="UseCustomImageCheckBox"
-                    Style="{StaticResource CheckBoxStyle}"
-                    Checked="UseCustomImageCheckBox_Checked"
-                    Unchecked="UseCustomImageCheckBox_Unchecked"/>
-            </Grid>
-
-            <Grid Grid.Column="2">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="88*"/>
-                    <ColumnDefinition Width="12*"/>
-                </Grid.ColumnDefinitions>
-
-                <!--Value-->
-                <components:ConciergeTextBoxBackground
-                    Grid.Column="0"
-                    x:Name="ImageSourceTextBoxBackground"
-                    Margin="0, 10, 0, 10">
-                    <components:ConciergeTextBox x:Name="ImageSourceTextBox"/>
-                </components:ConciergeTextBoxBackground>
-
-                <Grid Grid.Column="1">
-                    <components:ConciergeDesignButton
-                        Style="{StaticResource ConciergeTextButtonStyle}"
-                        x:Name="OpenImageButton"
-                        Content="..."
-                        HorizontalAlignment="Stretch"
-                        Foreground="White"
-                        Margin="10, 10, 20, 10"
-                        Click="OpenImageButton_Click"/>
-                </Grid>
-            </Grid>
-        </Grid>
-
         <Border
-            Grid.Row="4"
+            Grid.Row="3"
             BorderBrush="#29303E"
             BorderThickness="5"
             CornerRadius="10"
@@ -351,7 +300,7 @@
         </Border>
 
         <!--Buttons-->
-        <Grid Grid.Row="5">
+        <Grid Grid.Row="4">
             <StackPanel Orientation="Horizontal"
                         VerticalAlignment="Center"
                         HorizontalAlignment="Center">

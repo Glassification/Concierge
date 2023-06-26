@@ -4,6 +4,8 @@
 
 namespace Concierge.Configuration.Objects
 {
+    using System.Windows;
+
     using Concierge.Common.Enums;
 
     public sealed class UserSettings
@@ -19,6 +21,8 @@ namespace Concierge.Configuration.Objects
         public bool CheckVersion { get; set; }
 
         public DefaultFolders DefaultFolder { get; set; }
+
+        public HorizontalAlignment HeaderAlignment { get; set; }
 
         public bool MuteSounds { get; set; }
 

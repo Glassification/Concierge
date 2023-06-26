@@ -54,13 +54,10 @@
                 <ColumnDefinition Width="245" />
             </Grid.ColumnDefinitions>
 
-            <Grid 
+            <controls:HeaderControl
                 x:Name="CharacterHeader" 
-                Grid.Column="0">
-                <StackPanel
-                    x:Name="CharacterHeaderPanel"
-                    Orientation="Horizontal"/>
-            </Grid>
+                Grid.Column="0"
+                Margin="5, 0, 5, 0"/>
 
             <Grid x:Name="OptionButtons" Grid.Column="1">
                 <materialDesign:PackIcon

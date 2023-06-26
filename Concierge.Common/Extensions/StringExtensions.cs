@@ -406,20 +406,20 @@ namespace Concierge.Common.Extensions
         /// <summary>
         /// Removes empty strings from the input string array and returns a new array containing only non-empty strings.
         /// </summary>
-        /// <param name="list">The input string array.</param>
+        /// <param name="array">The input string array.</param>
         /// <returns>A new string array without empty strings.</returns>
-        public static string[] RemoveEmpty(this string[] list)
+        public static string[] RemoveEmpty(this string[] array)
         {
-            var newList = new List<string>();
-            for (int i = 0; i < list.Length; i++)
+            var list = new List<string>();
+            foreach (var item in array)
             {
-                if (!list[i].Equals(string.Empty))
+                if (!item.IsNullOrWhiteSpace())
                 {
-                    newList.Add(list[i]);
+                    list.Add(item);
                 }
             }
 
-            return newList.ToArray();
+            return list.ToArray();
         }
 
         /// <summary>

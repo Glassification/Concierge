@@ -20,7 +20,6 @@ namespace Concierge.Display.Utility
     using Concierge.Display;
     using Concierge.Display.Components;
     using Concierge.Display.Enums;
-    using Concierge.Persistence;
     using Concierge.Services;
 
     /// <summary>
@@ -36,6 +35,7 @@ namespace Concierge.Display.Utility
             this.UseRoundedCorners();
 
             this.UnitOfMeasurementComboBox.ItemsSource = Enum.GetValues(typeof(UnitTypes)).Cast<UnitTypes>();
+            this.HeaderAlignmentComboBox.ItemsSource = Enum.GetValues(typeof(HorizontalAlignment)).Cast<HorizontalAlignment>();
             this.DescriptionTextBlock.DataContext = this.Description;
 
             this.SetFocusEvents(this.AutosaveCheckBox);
@@ -46,6 +46,7 @@ namespace Concierge.Display.Utility
             this.SetFocusEvents(this.MuteCheckBox);
             this.SetFocusEvents(this.CheckVersionCheckBox);
             this.SetFocusEvents(this.UnitOfMeasurementComboBox);
+            this.SetFocusEvents(this.HeaderAlignmentComboBox);
             this.SetFocusEvents(this.DefaultSaveCheckBox);
             this.SetFocusEvents(this.DefaultOpenCheckBox);
             this.SetFocusEvents(this.OpenTextBox);
@@ -90,6 +91,7 @@ namespace Concierge.Display.Utility
             this.MuteCheckBox.IsChecked = AppSettingsManager.UserSettings.MuteSounds;
             this.CheckVersionCheckBox.IsChecked = AppSettingsManager.UserSettings.CheckVersion;
             this.UnitOfMeasurementComboBox.Text = AppSettingsManager.UserSettings.UnitOfMeasurement.ToString();
+            this.HeaderAlignmentComboBox.Text = AppSettingsManager.UserSettings.HeaderAlignment.ToString();
             this.DefaultSaveCheckBox.IsChecked = AppSettingsManager.UserSettings.DefaultFolder.UseSaveFolder;
             this.DefaultOpenCheckBox.IsChecked = AppSettingsManager.UserSettings.DefaultFolder.UseOpenFolder;
             this.OpenTextBox.Text = AppSettingsManager.UserSettings.DefaultFolder.OpenFolder;
@@ -143,6 +145,7 @@ namespace Concierge.Display.Utility
                     UseSaveFolder = this.DefaultSaveCheckBox.IsChecked ?? false,
                     UseOpenFolder = this.DefaultOpenCheckBox.IsChecked ?? false,
                 },
+                HeaderAlignment = !Enum.TryParse(this.HeaderAlignmentComboBox.Text, out HorizontalAlignment align) ? default : align,
                 MuteSounds = this.MuteCheckBox.IsChecked ?? false,
                 UseCoinWeight = this.CoinWeightCheckBox.IsChecked ?? false,
                 UseEncumbrance = this.EncumbranceCheckBox.IsChecked ?? false,

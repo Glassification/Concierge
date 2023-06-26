@@ -224,24 +224,25 @@
                     </Grid>
                 </Grid>
 
-                <Grid Grid.Row="3" Visibility="Hidden">
+                <Grid Grid.Row="3">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="40*"/>
                         <ColumnDefinition Width="60*"/>
                     </Grid.ColumnDefinitions>
 
                     <!--Title-->
-                    <Grid Grid.Column="0">
-                        <components:ConciergeLabel 
-                            Text="Custom Colour Limit:"
-                            TextWrapping="Wrap"/>
-                    </Grid>
+                    <components:ConciergeLabel
+                        Grid.Column="0"
+                        Text="Header Alignment:"
+                        TextWrapping="Wrap"
+                        FontSize="17"/>
 
                     <!--Value-->
-                    <Grid Grid.Column="1" Margin="20,0,0,0">
-                        <controls:IntegerUpDownControl
-                            x:Name="MaxCustomColorsUpDown"/>
-                    </Grid>
+                    <components:ConciergeComboBox
+                        Grid.Column="1"
+                        Style="{StaticResource ComboBoxStyle}"
+                        x:Name="HeaderAlignmentComboBox"
+                        IsEditable="False"/>
                 </Grid>
             </Grid>
         </Grid>

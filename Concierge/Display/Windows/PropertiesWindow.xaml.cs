@@ -62,8 +62,6 @@ namespace Concierge.Display.Windows
             this.SetFocusEvents(this.Class1Subclass);
             this.SetFocusEvents(this.Class2Subclass);
             this.SetFocusEvents(this.Class3Subclass);
-            this.SetFocusEvents(this.ImageSourceTextBox);
-            this.SetFocusEvents(this.UseCustomImageCheckBox);
 
             Program.Logger.Info($"Initialized {nameof(PropertiesWindow)}.");
         }
@@ -136,10 +134,6 @@ namespace Concierge.Display.Windows
             this.Class1Subclass.Text = this.CharacterProperties.Class1.Subclass;
             this.Class2Subclass.Text = this.CharacterProperties.Class2.Subclass;
             this.Class3Subclass.Text = this.CharacterProperties.Class3.Subclass;
-            this.ImageSourceTextBox.Text = this.OriginalFileName = this.CharacterProperties.CharacterIcon.Path;
-            this.UseCustomImageCheckBox.IsChecked = this.CharacterProperties.CharacterIcon.UseCustomImage;
-
-            this.SetImageEnabledState(this.CharacterProperties.CharacterIcon.UseCustomImage);
 
             this.IsDrawing = false;
         }
@@ -163,20 +157,7 @@ namespace Concierge.Display.Windows
             this.CharacterProperties.Class2.Subclass = this.Class2Subclass.Text;
             this.CharacterProperties.Class3.Subclass = this.Class3Subclass.Text;
 
-            this.CharacterProperties.CharacterIcon.UseCustomImage = this.UseCustomImageCheckBox.IsChecked ?? false;
-            this.CharacterProperties.CharacterIcon.Stretch = Stretch.UniformToFill;
-            if (!this.OriginalFileName.Equals(this.ImageSourceTextBox.Text))
-            {
-                this.CharacterProperties.CharacterIcon.EncodeImage(this.ImageSourceTextBox.Text);
-            }
-
             Program.UndoRedoService.AddCommand(new EditCommand<CharacterProperties>(this.CharacterProperties, oldItem, ConciergePage.None));
-        }
-
-        private void SetImageEnabledState(bool isEnabled)
-        {
-            DisplayUtility.SetControlEnableState(this.OpenImageButton, isEnabled);
-            DisplayUtility.SetControlEnableState(this.ImageSourceTextBoxBackground, isEnabled);
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
@@ -204,32 +185,6 @@ namespace Concierge.Display.Windows
             this.Result = ConciergeWindowResult.Exit;
 
             this.CloseConciergeWindow();
-        }
-
-        private void UseCustomImageCheckBox_Checked(object sender, RoutedEventArgs e)
-        {
-            if (!this.IsDrawing)
-            {
-                this.SetImageEnabledState(true);
-            }
-        }
-
-        private void UseCustomImageCheckBox_Unchecked(object sender, RoutedEventArgs e)
-        {
-            if (!this.IsDrawing)
-            {
-                this.SetImageEnabledState(false);
-            }
-        }
-
-        private void OpenImageButton_Click(object sender, RoutedEventArgs e)
-        {
-            var fileName = this.fileAccessService.OpenFile((int)ImageFiltersIndex.Png, FileConstants.ImageOpenFilter, ImageFiltersIndex.Png.ToString().ToLower());
-
-            if (!fileName.IsNullOrWhiteSpace())
-            {
-                this.ImageSourceTextBox.Text = fileName;
-            }
         }
 
         private void SubRaceComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)

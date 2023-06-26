@@ -4,6 +4,8 @@
 
 namespace Concierge.Configuration.Dtos
 {
+    using System.Windows;
+
     using Concierge.Common.Enums;
     using Concierge.Configuration.Objects;
 
@@ -20,6 +22,8 @@ namespace Concierge.Configuration.Dtos
         public bool CheckVersion { get; set; }
 
         public DefaultFolders DefaultFolder { get; set; }
+
+        public HorizontalAlignment HeaderAlignment { get; set; }
 
         public bool MuteSounds { get; init; }
 
