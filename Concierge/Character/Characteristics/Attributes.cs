@@ -4,6 +4,8 @@
 
 namespace Concierge.Character.Characteristics
 {
+    using System;
+
     using Concierge.Common;
 
     public sealed class Attributes : ICopyable<Attributes>
@@ -76,16 +78,7 @@ namespace Concierge.Character.Characteristics
 
         private static int Truncate(int value)
         {
-            if (value < Constants.MinScore)
-            {
-                return Constants.MinScore;
-            }
-            else if (value > Constants.MaxScore)
-            {
-                return Constants.MaxScore;
-            }
-
-            return value;
+            return Math.Min(Constants.MaxScore, Math.Max(Constants.MinScore, value));
         }
     }
 }

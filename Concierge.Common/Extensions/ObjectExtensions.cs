@@ -95,7 +95,7 @@ namespace Concierge.Common.Extensions
                 foreach (var property in properties)
                 {
                     var propertyValue = property.GetValue(item);
-                    if (propertyValue is null || HasIgnoreProperty(property))
+                    if (propertyValue is null || HasIgnoreAttribute(property))
                     {
                         continue;
                     }
@@ -118,7 +118,7 @@ namespace Concierge.Common.Extensions
         /// </summary>
         /// <param name="propertyInfo">The object representing the property to check.</param>
         /// <returns><c>true</c> if the property has the <paramref name="SearchIgnore"/> attribute; otherwise, <c>false</c>.</returns>
-        private static bool HasIgnoreProperty(PropertyInfo propertyInfo)
+        private static bool HasIgnoreAttribute(PropertyInfo propertyInfo)
         {
             return propertyInfo.GetCustomAttribute(typeof(SearchIgnore)) is not null;
         }

@@ -38,7 +38,6 @@ namespace Concierge.Display.Controls
                 });
 
                 var textBlock = this.CreateTextBlock(20, cleanedInfo[i], this.HeaderGrid.ActualWidth / cleanedInfo.Length);
-                Program.Logger.Info(textBlock.FontSize);
 
                 this.HeaderGrid.Children.Add(textBlock);
                 Grid.SetColumn(textBlock, i);
