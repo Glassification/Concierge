@@ -12,8 +12,16 @@ namespace Concierge.DevTools
 
     public static class GlossaryGenerator
     {
-        public static void Generate()
+        static GlossaryGenerator()
         {
+            RootFolder = string.Empty;
+        }
+
+        private static string RootFolder { get; set; }
+
+        public static void Generate(string rootFolder)
+        {
+            RootFolder = rootFolder;
             var entries = new List<GlossaryEntry>()
             {
                 new GlossaryEntry("Ability Scores", LoadMarkdown("Ability Scores.md", "Ability Scores"))
@@ -249,12 +257,12 @@ namespace Concierge.DevTools
             };
 
             var rawJson = JsonConvert.SerializeObject(entries, Formatting.Indented);
-            File.WriteAllText("C:\\Users\\TomBe\\source\\repos\\Markdown\\Glossary.json", rawJson);
+            File.WriteAllText($"{RootFolder}\\Glossary.json", rawJson);
         }
 
         private static string LoadMarkdown(string name, string folder)
         {
-            return File.ReadAllText(Path.Combine("C:\\Users\\TomBe\\source\\repos\\Markdown", Path.Combine(folder, name)));
+            return File.ReadAllText(Path.Combine(RootFolder, Path.Combine(folder, name)));
         }
     }
 }

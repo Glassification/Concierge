@@ -14,6 +14,8 @@ namespace Concierge.Configuration.Objects
 
         public bool EnableConsole { get; set; }
 
+        public bool EnableNetworkAccess { get; set; }
+
         public bool ShowSplashScreen { get; set; }
     }
 }

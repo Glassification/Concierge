@@ -4,43 +4,63 @@
 
 namespace Concierge.DevTools
 {
-    using Newtonsoft.Json;
+    using System.CommandLine;
+    using System.IO;
+
+    using Concierge.Persistence;
 
     public class Program
     {
-        public static void Main(string[] _)
+        public static void Main(string[] args)
         {
-            /*
             var scrubbedDataOption = new Option<string>(
                 name: "--ScrubbedData",
-                description: "The file to parse the data from.");
+                description: "A csv file to parse the data from. Writes a json file to the same directory.");
 
-            var decodeFileOption = new Option<string>(
-                name: "--EncodedFile",
-                description: "The encoded file to decode.");
+            var colorPickerGeneratorOption = new Option<string>(
+                name: "--ColorPickerGenerator",
+                description: "A file to generate a default color picker json object.");
 
-            var encodeFileOption = new Option<string>(
-                name: "--DecodedFile",
-                description: "The decoded file to encode.");
+            var glossaryGeneratorOption = new Option<string>(
+                name: "--GlossaryGenerator",
+                description: "A folder to generate a glossary json object. Folder structure must already be setup with correct markdown files.");
+
+            var compressFileOption = new Option<string>(
+                name: "--CompressFile",
+                description: "The decompressed file to compress.");
+
+            var decompressFileOption = new Option<string>(
+                name: "--DecompressFile",
+                description: "The compressed file to decompress.");
 
             var rootCommand = new RootCommand("Dev tools for Concierge");
             rootCommand.AddOption(scrubbedDataOption);
-            rootCommand.AddOption(decodeFileOption);
-            rootCommand.AddOption(encodeFileOption);
+            rootCommand.AddOption(colorPickerGeneratorOption);
+            rootCommand.AddOption(glossaryGeneratorOption);
+            rootCommand.AddOption(compressFileOption);
+            rootCommand.AddOption(decompressFileOption);
 
             rootCommand.SetHandler(
-                (file) => { ParseScrubbedDataHandler(file); },
+                (file) => { ParseScrubbedData.Parse(file); },
                 scrubbedDataOption);
+
             rootCommand.SetHandler(
-                (file) => { DecodeFile(file); },
-                decodeFileOption);
+                (file) => { SerializeColorPicker.Save(file); },
+                colorPickerGeneratorOption);
+
             rootCommand.SetHandler(
-                (file) => { EncodeFile(file); },
-                encodeFileOption);
+                (file) => { GlossaryGenerator.Generate(file); },
+                glossaryGeneratorOption);
+
+            rootCommand.SetHandler(
+                (file) => { CcsCompression.Zip(File.ReadAllText(file)); },
+                compressFileOption);
+
+            rootCommand.SetHandler(
+                (file) => { CcsCompression.Unzip(File.ReadAllBytes(file)); },
+                decompressFileOption);
 
             rootCommand.Invoke(args);
-            */
-            GlossaryGenerator.Generate();
         }
     }
 }

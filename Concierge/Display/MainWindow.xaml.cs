@@ -15,6 +15,7 @@ namespace Concierge.Display
     using Concierge.Character;
     using Concierge.Common;
     using Concierge.Common.Extensions;
+    using Concierge.Common.Utilities;
     using Concierge.Configuration;
     using Concierge.Display.Enums;
     using Concierge.Display.Pages;
@@ -48,6 +49,7 @@ namespace Concierge.Display
         private readonly FileAccessService fileAccessService = new ();
         private readonly AutosaveService autosaveTimer = new (new FileAccessService());
         private readonly DateTimeWorkerService dateTimeService = new ();
+        private readonly WifiWorkerService wifiService = new ();
         private readonly AnimatedTimedTextWorkerService animatedTimedTextWorkerService = new (17);
         private readonly CharacterCreationWizard characterCreationWizard = new ();
 
@@ -59,6 +61,7 @@ namespace Concierge.Display
             Program.ModifiedChanged += this.MainWindow_ModifiedChanged;
             this.dateTimeService.TimeUpdated += this.MainWindow_TimeUpdated;
             this.animatedTimedTextWorkerService.TextUpdated += this.MainWindow_TextUpdated;
+            this.wifiService.WifiUpdated += this.MainWindow_WifiUpdated;
 
             this.GridContent.Width = GridContentWidthClose;
             this.IsMenuOpen = false;
@@ -70,6 +73,7 @@ namespace Concierge.Display
             this.OverviewPage.Visibility = Visibility.Visible;
             this.FrameContent.Content = this.OverviewPage;
             this.dateTimeService.StartWorker(string.Empty);
+            this.wifiService.StartWorker(string.Empty);
 
             this.DataContext = this;
 
@@ -157,7 +161,7 @@ namespace Concierge.Display
             this.animatedTimedTextWorkerService.StartWorker("Generated New Character Sheet!");
             this.ResetCharacterSheet();
             this.DrawAll();
-            this.SetActiveFileText();
+            this.MessageBar.DrawActiveFile(Program.CcsFile);
 
             Program.Unmodify();
         }
@@ -176,7 +180,7 @@ namespace Concierge.Display
             this.ResetCharacterSheet();
             this.characterCreationWizard.Start();
             this.DrawAll();
-            this.SetActiveFileText();
+            this.MessageBar.DrawActiveFile(Program.CcsFile);
         }
 
         public void OpenSettings()
@@ -230,7 +234,7 @@ namespace Concierge.Display
             this.animatedTimedTextWorkerService.StartWorker($"Opened '{ccsFile.AbsolutePath}'");
             this.JournalPage.ClearTextBox();
             this.DrawAll(true);
-            this.SetActiveFileText();
+            this.MessageBar.DrawActiveFile(Program.CcsFile);
         }
 
         public void ImportCharacter()
@@ -247,7 +251,7 @@ namespace Concierge.Display
         {
             Program.Logger.Info($"Save character sheet.");
             this.Save(Program.CcsFile.AbsolutePath.IsNullOrWhiteSpace());
-            this.SetActiveFileText();
+            this.MessageBar.DrawActiveFile(Program.CcsFile);
             return 0;
         }
 
@@ -255,7 +259,7 @@ namespace Concierge.Display
         {
             Program.Logger.Info($"Save character sheet as.");
             this.Save(true);
-            this.SetActiveFileText();
+            this.MessageBar.DrawActiveFile(Program.CcsFile);
             return 0;
         }
 
@@ -381,12 +385,6 @@ namespace Concierge.Display
             }
         }
 
-        public void SetActiveFileText()
-        {
-            this.ActiveFileNameTextBlock.Text = Program.CcsFile.FileName;
-            this.ActiveFileNameTextBlock.ToolTip = Program.CcsFile.AbsolutePath;
-        }
-
         public void DisplayStatusText(string message)
         {
             this.animatedTimedTextWorkerService.StartWorker(message);
@@ -462,9 +460,8 @@ namespace Concierge.Display
 
         private void UpdateStatusBar(ConciergePage conciergePage)
         {
-            this.DateTimeTextBlock.Text = ConciergeDateTime.StatusMenuNow;
-            this.DateTimeTextBlock.ToolTip = ConciergeDateTime.ToolTipNow;
-            this.CurrentPageNameTextBlock.Text = $"{conciergePage.ToString().FormatFromEnum()} Page";
+            this.MessageBar.DrawTime();
+            this.MessageBar.DrawCurrentPage($"{conciergePage.ToString().FormatFromEnum()} Page");
         }
 
         private void CalculateScale()
@@ -896,15 +893,19 @@ namespace Concierge.Display
 
         private void MainWindow_TimeUpdated(object sender, EventArgs e)
         {
-            this.DateTimeTextBlock.Text = ConciergeDateTime.StatusMenuNow;
-            this.DateTimeTextBlock.ToolTip = ConciergeDateTime.ToolTipNow;
+            this.MessageBar.DrawTime();
+        }
+
+        private void MainWindow_WifiUpdated(object sender, EventArgs e)
+        {
+            this.MessageBar.DrawWifi();
         }
 
         private void MainWindow_TextUpdated(object sender, EventArgs e)
         {
             if (sender is string updatedText)
             {
-                this.AlertMessageTextBlock.Text = updatedText;
+                this.MessageBar.DrawInformation(updatedText);
             }
         }
 

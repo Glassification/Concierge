@@ -2,7 +2,7 @@
   "version": 3,
   "targets": {
     "net7.0-windows7.0": {
-      "MaterialDesignColors/2.1.2": {
+      "MaterialDesignColors/2.1.4": {
         "type": "package",
         "compile": {
           "lib/net7.0/MaterialDesignColors.dll": {
@@ -15,10 +15,10 @@
           }
         }
       },
-      "MaterialDesignThemes/4.8.0": {
+      "MaterialDesignThemes/4.9.0": {
         "type": "package",
         "dependencies": {
-          "MaterialDesignColors": "2.1.2",
+          "MaterialDesignColors": "2.1.4",
           "Microsoft.Xaml.Behaviors.Wpf": "1.1.39"
         },
         "compile": {
@@ -71,7 +71,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v7.0",
         "dependencies": {
-          "MaterialDesignThemes": "4.8.0",
+          "MaterialDesignThemes": "4.9.0",
           "Newtonsoft.Json": "13.0.3"
         },
         "compile": {
@@ -87,10 +87,10 @@
     }
   },
   "libraries": {
-    "MaterialDesignColors/2.1.2": {
-      "sha512": "7hf7MLRB6JXHj+IOLh3z2L9yBr58QhgpWQXyvffAoWdSamVO+DMEp3DqdWds0R5Rf6dp9yQ9hYUZ+wSsVZG1nQ==",
+    "MaterialDesignColors/2.1.4": {
+      "sha512": "C4Oy+qkjMoMPoZKyqYdCnIYtK8c0OSIHmNP73Vgc69NjiUG093xTkE7W/Ks54cTDS7fmWOtUHfwISTVTtb/YKg==",
       "type": "package",
-      "path": "materialdesigncolors/2.1.2",
+      "path": "materialdesigncolors/2.1.4",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -103,14 +103,14 @@
         "lib/net7.0/MaterialDesignColors.pdb",
         "lib/netcoreapp3.1/MaterialDesignColors.dll",
         "lib/netcoreapp3.1/MaterialDesignColors.pdb",
-        "materialdesigncolors.2.1.2.nupkg.sha512",
+        "materialdesigncolors.2.1.4.nupkg.sha512",
         "materialdesigncolors.nuspec"
       ]
     },
-    "MaterialDesignThemes/4.8.0": {
-      "sha512": "rJDuWrSIqK+sA/RvZlJTlPF9Yp2YBdEZdiDtSHG/CEumkqJPMSewGga2pWF9gnRHkS5D7UWPaRRmT11Wb7F2Cw==",
+    "MaterialDesignThemes/4.9.0": {
+      "sha512": "Bp9Auw70j+9V7WsUMT4pc8ulVzfL0Eav/tyGgICDirxxhKJwhqtC/6PRkTUm+R1t9611xiDuk5pSUNdDV6vfOQ==",
       "type": "package",
-      "path": "materialdesignthemes/4.8.0",
+      "path": "materialdesignthemes/4.9.0",
       "hasTools": true,
       "files": [
         ".nupkg.metadata",
@@ -147,7 +147,7 @@
         "lib/netcoreapp3.1/MaterialDesignThemes.Wpf.dll",
         "lib/netcoreapp3.1/MaterialDesignThemes.Wpf.pdb",
         "lib/netcoreapp3.1/MaterialDesignThemes.Wpf.xml",
-        "materialdesignthemes.4.8.0.nupkg.sha512",
+        "materialdesignthemes.4.9.0.nupkg.sha512",
         "materialdesignthemes.nuspec",
         "tools/VisualStudioToolsManifest.xml"
       ]
@@ -241,13 +241,14 @@
   "projectFileDependencyGroups": {
     "net7.0-windows7.0": [
       "Concierge.Common >= 1.0.0",
-      "MaterialDesignThemes >= 4.8.0",
+      "MaterialDesignThemes >= 4.9.0",
       "Newtonsoft.Json >= 13.0.3",
       "StyleCop.Analyzers >= 1.1.118"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\TomBe\\.nuget\\packages\\": {}
+    "C:\\Users\\TomBe\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
@@ -258,6 +259,9 @@
       "packagesPath": "C:\\Users\\TomBe\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\TomBe\\source\\repos\\Concierge\\Concierge.Logging\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
       "configFilePaths": [
         "C:\\Users\\TomBe\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
@@ -291,7 +295,7 @@
         "dependencies": {
           "MaterialDesignThemes": {
             "target": "Package",
-            "version": "[4.8.0, )"
+            "version": "[4.9.0, )"
           },
           "Newtonsoft.Json": {
             "target": "Package",

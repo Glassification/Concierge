@@ -13,7 +13,7 @@ namespace Concierge.DevTools
 
     public static class SerializeColorPicker
     {
-        public static void Save()
+        public static void Save(string file)
         {
             var colorPicker = new CustomColorService()
             {
@@ -45,7 +45,7 @@ namespace Concierge.DevTools
             };
 
             var rawString = JsonConvert.SerializeObject(colorPicker, Formatting.Indented);
-            File.WriteAllText(@"C:\\Users\\TomBe\\Documents\\My Games\\CustomColorService.json", rawString);
+            File.WriteAllText(file, rawString);
         }
     }
 }

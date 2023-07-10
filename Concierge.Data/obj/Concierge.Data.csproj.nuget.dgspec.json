@@ -13,6 +13,9 @@
         "packagesPath": "C:\\Users\\TomBe\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\TomBe\\source\\repos\\Concierge\\Concierge.Common\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
           "C:\\Users\\TomBe\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
@@ -42,7 +45,7 @@
           "dependencies": {
             "MaterialDesignThemes": {
               "target": "Package",
-              "version": "[4.8.0, )"
+              "version": "[4.9.0, )"
             },
             "Newtonsoft.Json": {
               "target": "Package",
@@ -87,6 +90,9 @@
         "packagesPath": "C:\\Users\\TomBe\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\TomBe\\source\\repos\\Concierge\\Concierge.Configuration\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
           "C:\\Users\\TomBe\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
@@ -120,7 +126,7 @@
           "dependencies": {
             "MaterialDesignThemes": {
               "target": "Package",
-              "version": "[4.8.0, )"
+              "version": "[4.9.0, )"
             },
             "Microsoft.Extensions.Configuration": {
               "target": "Package",
@@ -181,6 +187,9 @@
         "packagesPath": "C:\\Users\\TomBe\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\TomBe\\source\\repos\\Concierge\\Concierge.Data\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
           "C:\\Users\\TomBe\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
@@ -217,7 +226,7 @@
           "dependencies": {
             "MaterialDesignThemes": {
               "target": "Package",
-              "version": "[4.8.0, )"
+              "version": "[4.9.0, )"
             },
             "Newtonsoft.Json": {
               "target": "Package",

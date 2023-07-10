@@ -71,7 +71,7 @@ namespace Concierge
             mainWindow.Show();
 
             this.commandLineService.ReadCommandLineArgs();
-            mainWindow.SetActiveFileText();
+            mainWindow.MessageBar.DrawActiveFile(Program.CcsFile);
             mainWindow.DrawAll();
             Program.Unmodify();
         }

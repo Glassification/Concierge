@@ -21,6 +21,9 @@
     <Compile Update="Display\Controls\PopupButton.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Display\Controls\StatusControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Display\Pages\AbilityPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -111,6 +114,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Display\Controls\SpellSlotsControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Display\Controls\StatusControl.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Display\Controls\WealthControl.xaml">
