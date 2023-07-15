@@ -10,7 +10,6 @@ namespace Concierge.Display.Windows
     using Concierge.Commands;
     using Concierge.Display.Components;
     using Concierge.Display.Enums;
-    using Concierge.Display.Utility;
 
     /// <summary>
     /// Interaction logic for SpellSlotsWindow.xaml.

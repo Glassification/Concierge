@@ -23,7 +23,6 @@ namespace Concierge.Display.Windows
     using Concierge.Display;
     using Concierge.Display.Components;
     using Concierge.Display.Enums;
-    using Concierge.Persistence;
 
     /// <summary>
     /// Interaction logic for InventoryWindow.xaml.

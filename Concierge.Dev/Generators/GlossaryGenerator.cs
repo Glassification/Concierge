@@ -2,7 +2,7 @@
 // Copyright (c) Thomas Beckett. All rights reserved.
 // </copyright>
 
-namespace Concierge.DevTools
+namespace Concierge.DevTools.Generators
 {
     using System.Collections.Generic;
     using System.IO;

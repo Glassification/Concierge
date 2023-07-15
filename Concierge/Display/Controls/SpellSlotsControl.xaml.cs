@@ -10,7 +10,6 @@ namespace Concierge.Display.Controls
     using System.Windows.Input;
 
     using Concierge.Character.Spellcasting;
-    using Concierge.Character.Vitals;
     using Concierge.Commands;
     using Concierge.Common;
     using Concierge.Common.Utilities;

@@ -35,8 +35,17 @@ namespace Concierge.Common.Extensions
         /// <returns>A SolidColorBrush representing the foreground color.</returns>
         public static SolidColorBrush GetForeColor(this Color color)
         {
-            var brightness = (int)Math.Sqrt((color.R * color.R * 0.241) + (color.G * color.G * 0.691) + (color.B * color.B * 0.068));
-            return brightness < Constants.BrightnessTransition ? Brushes.White : Brushes.Black;
+            return color.GetBrightness() < Constants.BrightnessTransition ? Brushes.White : Brushes.Black;
+        }
+
+        /// <summary>
+        /// Calculates the brightness value of the specified color.
+        /// </summary>
+        /// <param name="color">The color to calculate the brightness from.</param>
+        /// <returns>The brightness value of the color, ranging from 0 to 255.</returns>
+        public static int GetBrightness(this Color color)
+        {
+            return (int)Math.Sqrt((color.R * color.R * 0.241) + (color.G * color.G * 0.691) + (color.B * color.B * 0.068));
         }
 
         /// <summary>

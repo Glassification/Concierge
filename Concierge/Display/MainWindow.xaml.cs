@@ -15,7 +15,6 @@ namespace Concierge.Display
     using Concierge.Character;
     using Concierge.Common;
     using Concierge.Common.Extensions;
-    using Concierge.Common.Utilities;
     using Concierge.Configuration;
     using Concierge.Display.Enums;
     using Concierge.Display.Pages;
@@ -49,7 +48,7 @@ namespace Concierge.Display
         private readonly FileAccessService fileAccessService = new ();
         private readonly AutosaveService autosaveTimer = new (new FileAccessService());
         private readonly DateTimeWorkerService dateTimeService = new ();
-        private readonly WifiWorkerService wifiService = new ();
+        private readonly SystemWorkerService systemService = new ();
         private readonly AnimatedTimedTextWorkerService animatedTimedTextWorkerService = new (17);
         private readonly CharacterCreationWizard characterCreationWizard = new ();
 
@@ -61,7 +60,7 @@ namespace Concierge.Display
             Program.ModifiedChanged += this.MainWindow_ModifiedChanged;
             this.dateTimeService.TimeUpdated += this.MainWindow_TimeUpdated;
             this.animatedTimedTextWorkerService.TextUpdated += this.MainWindow_TextUpdated;
-            this.wifiService.WifiUpdated += this.MainWindow_WifiUpdated;
+            this.systemService.SystemUpdated += this.MainWindow_SystemUpdated;
 
             this.GridContent.Width = GridContentWidthClose;
             this.IsMenuOpen = false;
@@ -73,7 +72,7 @@ namespace Concierge.Display
             this.OverviewPage.Visibility = Visibility.Visible;
             this.FrameContent.Content = this.OverviewPage;
             this.dateTimeService.StartWorker(string.Empty);
-            this.wifiService.StartWorker(string.Empty);
+            this.systemService.StartWorker(string.Empty);
 
             this.DataContext = this;
 
@@ -186,8 +185,7 @@ namespace Concierge.Display
         public void OpenSettings()
         {
             Program.Logger.Info($"Open settings.");
-
-            ConciergeWindowService.ShowEdit<string>(
+            ConciergeWindowService.ShowEdit(
                 string.Empty,
                 typeof(SettingsWindow),
                 this.Window_ApplyChanges,
@@ -298,7 +296,9 @@ namespace Concierge.Display
             this.EquipmentPage.Draw();
             this.CompanionPage.Draw();
 
-            this.UpdateStatusBar(this.CurrentPage?.ConciergePage ?? ConciergePage.None);
+            this.MessageBar.DrawVolume();
+
+            this.UpdateStatusBar();
         }
 
         public void LongRest()
@@ -355,7 +355,7 @@ namespace Concierge.Display
             }
 
             this.CollapseAll();
-            this.UpdateStatusBar(conciergePage.ConciergePage);
+            this.UpdateStatusBar();
             page.Visibility = Visibility.Visible;
             this.FrameContent.Content = page;
             conciergePage.Draw();
@@ -458,10 +458,9 @@ namespace Concierge.Display
             }
         }
 
-        private void UpdateStatusBar(ConciergePage conciergePage)
+        private void UpdateStatusBar()
         {
             this.MessageBar.DrawTime();
-            this.MessageBar.DrawCurrentPage($"{conciergePage.ToString().FormatFromEnum()} Page");
         }
 
         private void CalculateScale()
@@ -896,9 +895,10 @@ namespace Concierge.Display
             this.MessageBar.DrawTime();
         }
 
-        private void MainWindow_WifiUpdated(object sender, EventArgs e)
+        private void MainWindow_SystemUpdated(object sender, EventArgs e)
         {
             this.MessageBar.DrawWifi();
+            this.MessageBar.DrawBattery();
         }
 
         private void MainWindow_TextUpdated(object sender, EventArgs e)

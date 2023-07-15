@@ -11,7 +11,6 @@ namespace Concierge.Display.Utility
     using System.Windows.Input;
 
     using Concierge.Display.Components;
-    using Concierge.Display.Windows.Utility;
 
     /// <summary>
     /// Interaction logic for KonamiCodeWindow.xaml.

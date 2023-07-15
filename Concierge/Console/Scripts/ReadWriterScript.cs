@@ -5,17 +5,10 @@
 namespace Concierge.Console.Scripts
 {
     using System;
-    using System.Collections.Generic;
     using System.IO;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
 
-    using Concierge.Character;
     using Concierge.Common.Extensions;
     using Concierge.Console.Enums;
-    using Concierge.Persistence;
-    using Concierge.Persistence.ReadWriters;
     using Newtonsoft.Json;
 
     public class ReadWriterScript<T> : IScript

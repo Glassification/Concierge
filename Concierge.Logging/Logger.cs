@@ -10,6 +10,7 @@ namespace Concierge.Logging
 
     using Concierge.Common;
     using Concierge.Common.Extensions;
+    using Concierge.Common.Utilities;
     using Concierge.Logging.Enums;
     using Newtonsoft.Json;
 
@@ -95,6 +96,8 @@ namespace Concierge.Logging
 
             this.NewLine();
             this.Info($"Starting Concierge v{version}{(this.IsDebug ? " - Debug" : string.Empty)}");
+            this.Info($"WiFi Connected: {SystemUtility.HasInternet}");
+            this.Info($"Starting {SystemUtility.GetBatteryStatus()}");
             this.IsStarted = true;
         }
 
@@ -106,6 +109,7 @@ namespace Concierge.Logging
             }
 
             this.Info($"Stopping Concierge{(this.IsDebug ? " - Debug" : string.Empty)}");
+            this.Info($"Stopping {SystemUtility.GetBatteryStatus()}");
             this.IsStarted = false;
         }
 

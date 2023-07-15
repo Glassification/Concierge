@@ -9,7 +9,6 @@ namespace Concierge.Character
     using Concierge;
 
     using Concierge.Character.Enums;
-    using Concierge.Character.Equipable;
     using Concierge.Common;
     using Newtonsoft.Json;
 

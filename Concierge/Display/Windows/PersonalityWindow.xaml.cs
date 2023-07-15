@@ -4,7 +4,6 @@
 
 namespace Concierge.Display.Windows
 {
-    using System;
     using System.Windows;
 
     using Concierge.Character.Characteristics;

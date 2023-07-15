@@ -12,13 +12,13 @@ namespace Concierge.Display.Controls
     using Concierge.Configuration;
     using MaterialDesignThemes.Wpf;
 
+    using Constants = Concierge.Common.Constants;
+
     /// <summary>
     /// Interaction logic for StatusControl.xaml.
     /// </summary>
     public partial class StatusControl : UserControl
     {
-        private const int FontSizeLimit = 10;
-
         public StatusControl()
         {
             this.InitializeComponent();
@@ -28,41 +28,57 @@ namespace Concierge.Display.Controls
         {
             this.ActiveFileNameTextBlock.Text = ccsFile.FileName;
             this.ActiveFileNameTextBlock.ToolTip = ccsFile.AbsolutePath;
-            this.SetTextSize(this.ActiveFileNameTextBlock, this.ActiveFileNameTextBlock.FontSize, this.ActualWidth * 0.15);
+            this.SetTextSize(this.ActiveFileNameTextBlock, this.ActiveFileNameTextBlock.FontSize, this.ActualWidth * 0.20);
         }
 
         public void DrawInformation(string text)
         {
             this.AlertMessageTextBlock.Text = text;
-            this.SetTextSize(this.AlertMessageTextBlock, this.AlertMessageTextBlock.FontSize, this.ActualWidth * 0.58);
-        }
-
-        public void DrawCurrentPage(string text)
-        {
-            this.CurrentPageNameTextBlock.Text = text;
-            this.SetTextSize(this.CurrentPageNameTextBlock, this.CurrentPageNameTextBlock.FontSize, this.ActualWidth * 0.15);
+            this.SetTextSize(this.AlertMessageTextBlock, this.AlertMessageTextBlock.FontSize, this.ActualWidth * 0.65);
         }
 
         public void DrawTime()
         {
             this.DateTimeTextBlock.Text = ConciergeDateTime.StatusMenuNow;
             this.DateTimeTextBlock.ToolTip = ConciergeDateTime.ToolTipNow;
-            this.SetTextSize(this.DateTimeTextBlock, this.DateTimeTextBlock.FontSize, this.ActualWidth * 0.11);
+            this.SetTextSize(this.DateTimeTextBlock, this.DateTimeTextBlock.FontSize, this.ActualWidth * 0.10);
         }
 
         public void DrawWifi()
         {
-            var connected = AppSettingsManager.StartUp.EnableNetworkAccess && InternetUtility.IsConnected;
+            if (!AppSettingsManager.StartUp.EnableNetworkAccess)
+            {
+                this.WifiIcon.Visibility = Visibility.Collapsed;
+            }
 
-            this.WifiIcon.Kind = connected ? PackIconKind.Wifi : PackIconKind.WifiOff;
-            this.WifiIcon.ToolTip = connected ? "Connected" : "Not Connected";
+            var internet = SystemUtility.GetInternetStatus();
+
+            this.WifiIcon.Visibility = Visibility.Visible;
+            this.WifiIcon.Kind = internet.Icon;
+            this.WifiIcon.ToolTip = internet.ToString();
+        }
+
+        public void DrawBattery()
+        {
+            var batteryStatus = SystemUtility.GetBatteryStatus();
+
+            this.BatteryIcon.Kind = batteryStatus.Icon;
+            this.BatteryIcon.ToolTip = batteryStatus.ToString();
+        }
+
+        public void DrawVolume()
+        {
+            var isMuted = AppSettingsManager.UserSettings.MuteSounds;
+
+            this.VolumeIcon.Kind = isMuted ? PackIconKind.VolumeMute : PackIconKind.VolumeHigh;
+            this.VolumeIcon.ToolTip = isMuted ? "Sound Off" : "Sound On";
         }
 
         private TextBlock SetTextSize(TextBlock textBlock, double fontSize, double columnWidth)
         {
             textBlock.Measure(new Size(double.PositiveInfinity, double.PositiveInfinity));
 
-            if (fontSize <= FontSizeLimit)
+            if (fontSize <= Constants.FontSizeLimit)
             {
                 textBlock.TextTrimming = TextTrimming.CharacterEllipsis;
                 return textBlock;

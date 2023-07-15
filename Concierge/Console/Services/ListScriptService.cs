@@ -13,7 +13,6 @@ namespace Concierge.Console.Services
     using Concierge.Character.Vitals;
     using Concierge.Console.Enums;
     using Concierge.Console.Scripts;
-    using Concierge.Persistence;
 
     public sealed class ListScriptService : ScriptService
     {

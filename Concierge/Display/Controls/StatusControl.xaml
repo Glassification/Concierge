@@ -15,11 +15,10 @@
         x:Name="StatusGrid"
         Background="Transparent">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="15*"/>
-            <ColumnDefinition Width="58*"/>
-            <ColumnDefinition Width="15*"/>
-            <ColumnDefinition Width="11*"/>
-            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="20*"/>
+            <ColumnDefinition Width="65*"/>
+            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="10*"/>
         </Grid.ColumnDefinitions>
 
         <TextBlock
@@ -39,15 +38,6 @@
             HorizontalAlignment="Left"
             Margin="10,0,0,0"/>
         <TextBlock
-            x:Name="CurrentPageNameTextBlock"
-            Grid.Column="2"
-            Text="Overview Page"
-            Foreground="White"
-            FontSize="13"
-            VerticalAlignment="Center"
-            HorizontalAlignment="Center"
-            Margin="0,0,10,0"/>
-        <TextBlock
             x:Name="DateTimeTextBlock"
             Grid.Column="3"
             Text="6:28pm 2022-03-11"
@@ -56,14 +46,30 @@
             VerticalAlignment="Center"
             HorizontalAlignment="Center"
             Margin="0,0,0,0"/>
-
-        <materialDesign:PackIcon
-            x:Name="WifiIcon"
-            Margin="-5,0,0,0"
-            Grid.Column="4"
-            Foreground="White"
-            VerticalAlignment="Stretch"
-            HorizontalAlignment="Stretch"
-            Kind="Wifi"/>
+        <StackPanel
+            Orientation="Horizontal"
+            Grid.Column="2">
+            <materialDesign:PackIcon
+                x:Name="WifiIcon"
+                Foreground="White"
+                VerticalAlignment="Stretch"
+                HorizontalAlignment="Stretch"
+                Margin="0,0,2,0"
+                Kind="Wifi"/>
+            <materialDesign:PackIcon
+                x:Name="VolumeIcon"
+                Foreground="White"
+                VerticalAlignment="Stretch"
+                HorizontalAlignment="Stretch"
+                Margin="2,0,2,0"
+                Kind="VolumeHigh"/>
+            <materialDesign:PackIcon
+                x:Name="BatteryIcon"
+                Foreground="White"
+                VerticalAlignment="Stretch"
+                HorizontalAlignment="Stretch"
+                Margin="2,0,0,0"
+                Kind="Battery"/>
+        </StackPanel>
     </Grid>
 </UserControl>

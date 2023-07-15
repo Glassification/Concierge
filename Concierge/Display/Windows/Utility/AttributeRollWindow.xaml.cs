@@ -7,7 +7,6 @@ namespace Concierge.Display.Utility
     using System.Windows;
 
     using Concierge.Display.Components;
-    using Concierge.Display.Windows;
     using Concierge.Tools.Generators;
     using Concierge.Tools.Generators.Attributes;
 

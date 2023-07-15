@@ -15,6 +15,9 @@ namespace Concierge.Display.Utility
     using Concierge.Common.Utilities;
     using Concierge.Data;
     using Concierge.Display.Components;
+    using MaterialDesignThemes.Wpf;
+
+    using Constants = Concierge.Common.Constants;
 
     /// <summary>
     /// Interaction logic for CustomColorWindow.xaml.
@@ -86,11 +89,34 @@ namespace Concierge.Display.Utility
             }
         }
 
+        private void UpdateBrightness(Color color)
+        {
+            var brightness = color.GetBrightness();
+
+            this.BrightnessTextBox.Text = brightness.ToString();
+            if (brightness < 85)
+            {
+                this.GoodForTextIcon.Foreground = Brushes.IndianRed;
+                this.GoodForTextIcon.Kind = PackIconKind.LowQuality;
+            }
+            else if (brightness > 170)
+            {
+                this.GoodForTextIcon.Foreground = ConciergeBrushes.Mint;
+                this.GoodForTextIcon.Kind = PackIconKind.HighQuality;
+            }
+            else
+            {
+                this.GoodForTextIcon.Foreground = ConciergeBrushes.Deer;
+                this.GoodForTextIcon.Kind = PackIconKind.MediumQuality;
+            }
+        }
+
         private void UpdateRgbValues(Color color)
         {
             this.RgbValueLock = true;
             this.RedUpDown.Value = color.R;
             this.GreenUpDown.Value = color.G;
+            this.UpdateBrightness(color);
             this.RgbValueLock = false;
             this.BlueUpDown.Value = color.B;
         }
@@ -101,6 +127,7 @@ namespace Concierge.Display.Utility
             this.RedSlider.Value = color.R;
             this.GreenSlider.Value = color.G;
             this.BlueSlider.Value = color.B;
+            this.UpdateBrightness(color);
             this.RgbSliderLock = false;
         }
 

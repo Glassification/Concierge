@@ -30,6 +30,8 @@
                         FontSize="22"
                         BorderThickness="0"
                         VerticalAlignment="Center"
+                        VerticalContentAlignment="Center"
+                        Padding="0"
                         Margin="5,0,0,0"
                         KeyUp="FilterTextBox_KeyPress"
                         KeyDown="FilterTextBox_KeyPress"

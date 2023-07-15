@@ -7,9 +7,7 @@ namespace Concierge.Display.Utility
     using System.Windows;
 
     using Concierge.Common;
-    using Concierge.Common.Utilities;
     using Concierge.Display.Components;
-    using Concierge.Display.Windows;
 
     /// <summary>
     /// Interaction logic for AboutConciergeWindow.xaml.

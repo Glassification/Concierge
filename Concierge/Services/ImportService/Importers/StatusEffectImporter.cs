@@ -9,7 +9,6 @@ namespace Concierge.Services.ImportService.Importers
     using Concierge.Character;
     using Concierge.Character.Vitals;
     using Concierge.Common;
-    using Concierge.Persistence.ReadWriters;
 
     public class StatusEffectImporter : Importer
     {

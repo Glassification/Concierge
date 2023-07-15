@@ -5,9 +5,8 @@
 namespace Concierge.DevTools
 {
     using System.CommandLine;
-    using System.IO;
 
-    using Concierge.Persistence;
+    using Concierge.DevTools.Generators;
 
     public class Program
     {
@@ -41,23 +40,23 @@ namespace Concierge.DevTools
             rootCommand.AddOption(decompressFileOption);
 
             rootCommand.SetHandler(
-                (file) => { ParseScrubbedData.Parse(file); },
+                ParseScrubbedData.Parse,
                 scrubbedDataOption);
 
             rootCommand.SetHandler(
-                (file) => { SerializeColorPicker.Save(file); },
+                ColorPickerGenerator.Save,
                 colorPickerGeneratorOption);
 
             rootCommand.SetHandler(
-                (file) => { GlossaryGenerator.Generate(file); },
+                GlossaryGenerator.Generate,
                 glossaryGeneratorOption);
 
             rootCommand.SetHandler(
-                (file) => { CcsCompression.Zip(File.ReadAllText(file)); },
+                FileHelper.Compress,
                 compressFileOption);
 
             rootCommand.SetHandler(
-                (file) => { CcsCompression.Unzip(File.ReadAllBytes(file)); },
+                FileHelper.Decompress,
                 decompressFileOption);
 
             rootCommand.Invoke(args);

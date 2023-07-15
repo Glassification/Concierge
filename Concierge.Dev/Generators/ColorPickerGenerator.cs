@@ -1,8 +1,8 @@
-﻿// <copyright file="SerializeColorPicker.cs" company="Thomas Beckett">
+﻿// <copyright file="ColorPickerGenerator.cs" company="Thomas Beckett">
 // Copyright (c) Thomas Beckett. All rights reserved.
 // </copyright>
 
-namespace Concierge.DevTools
+namespace Concierge.DevTools.Generators
 {
     using System.Collections.Generic;
     using System.IO;
@@ -11,7 +11,7 @@ namespace Concierge.DevTools
     using Concierge.Services;
     using Newtonsoft.Json;
 
-    public static class SerializeColorPicker
+    public static class ColorPickerGenerator
     {
         public static void Save(string file)
         {

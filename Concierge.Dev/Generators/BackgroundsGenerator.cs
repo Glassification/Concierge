@@ -1,8 +1,8 @@
-﻿// <copyright file="GenerateBackgrounds.cs" company="Thomas Beckett">
+﻿// <copyright file="BackgroundsGenerator.cs" company="Thomas Beckett">
 // Copyright (c) Thomas Beckett. All rights reserved.
 // </copyright>
 
-namespace Concierge.DevTools
+namespace Concierge.DevTools.Generators
 {
     using System.Collections.Generic;
     using System.IO;
@@ -12,7 +12,7 @@ namespace Concierge.DevTools
     using Concierge.Character.Enums;
     using Newtonsoft.Json;
 
-    public static class GenerateBackgrounds
+    public static class BackgroundsGenerator
     {
         public static void Generate()
         {

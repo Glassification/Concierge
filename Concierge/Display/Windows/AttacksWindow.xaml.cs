@@ -22,8 +22,6 @@ namespace Concierge.Display.Windows
     using Concierge.Data.Units;
     using Concierge.Display.Components;
     using Concierge.Display.Enums;
-    using Concierge.Persistence;
-    using Newtonsoft.Json.Linq;
 
     /// <summary>
     /// Interaction logic for AttacksWindow.xaml.

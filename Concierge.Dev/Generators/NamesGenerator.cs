@@ -1,8 +1,8 @@
-﻿// <copyright file="GenerateNames.cs" company="Thomas Beckett">
+﻿// <copyright file="NamesGenerator.cs" company="Thomas Beckett">
 // Copyright (c) Thomas Beckett. All rights reserved.
 // </copyright>
 
-namespace Concierge.DevTools
+namespace Concierge.DevTools.Generators
 {
     using System;
     using System.Collections.Generic;
@@ -11,12 +11,11 @@ namespace Concierge.DevTools
 
     using Concierge.Common.Enums;
     using Concierge.Common.Utilities;
-    using Concierge.Persistence;
     using Concierge.Tools.Enums;
     using Concierge.Tools.Generators.Names;
     using Newtonsoft.Json;
 
-    public static class GenerateNames
+    public static class NamesGenerator
     {
         private static readonly string[] postfixes = new string[] { "Male", "Female", "Last" };
 

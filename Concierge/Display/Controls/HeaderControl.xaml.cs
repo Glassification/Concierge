@@ -8,6 +8,7 @@ namespace Concierge.Display.Controls
     using System.Windows.Controls;
     using System.Windows.Media;
 
+    using Concierge.Common;
     using Concierge.Common.Extensions;
     using Concierge.Configuration;
 
@@ -16,8 +17,6 @@ namespace Concierge.Display.Controls
     /// </summary>
     public partial class HeaderControl : UserControl
     {
-        private const int FontSizeLimit = 10;
-
         public HeaderControl()
         {
             this.InitializeComponent();
@@ -59,7 +58,7 @@ namespace Concierge.Display.Controls
 
             textBlock.Measure(new Size(double.PositiveInfinity, double.PositiveInfinity));
 
-            if (fontSize <= FontSizeLimit)
+            if (fontSize <= Constants.FontSizeLimit)
             {
                 textBlock.TextTrimming = TextTrimming.CharacterEllipsis;
                 return textBlock;

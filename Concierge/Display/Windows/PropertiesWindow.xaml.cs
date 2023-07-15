@@ -7,7 +7,6 @@ namespace Concierge.Display.Windows
     using System;
     using System.Windows;
     using System.Windows.Controls;
-    using System.Windows.Media;
 
     using Concierge.Character;
     using Concierge.Commands;
@@ -16,8 +15,6 @@ namespace Concierge.Display.Windows
     using Concierge.Display.Components;
     using Concierge.Display.Enums;
     using Concierge.Display.Utility;
-    using Concierge.Persistence;
-    using Concierge.Persistence.Enums;
     using Concierge.Services;
 
     /// <summary>

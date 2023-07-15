@@ -1,4 +1,4 @@
-﻿// <copyright file="WifiWorkerService.cs" company="Thomas Beckett">
+﻿// <copyright file="SystemWorkerService.cs" company="Thomas Beckett">
 // Copyright (c) Thomas Beckett. All rights reserved.
 // </copyright>
 
@@ -8,11 +8,11 @@ namespace Concierge.Tools.WorkerServices
     using System.ComponentModel;
     using System.Threading;
 
-    public sealed class WifiWorkerService : IWorkerService
+    public sealed class SystemWorkerService : IWorkerService
     {
         private const int OneMinute = 60000;
 
-        public WifiWorkerService()
+        public SystemWorkerService()
         {
             this.UpdateTimer = new BackgroundWorker()
             {
@@ -23,9 +23,9 @@ namespace Concierge.Tools.WorkerServices
             this.UpdateTimer.ProgressChanged += this.UpdateTimer_ProgressChanged;
         }
 
-        public delegate void WifiUpdatedEventHandler(object sender, EventArgs e);
+        public delegate void SystemUpdatedEventHandler(object sender, EventArgs e);
 
-        public event WifiUpdatedEventHandler? WifiUpdated;
+        public event SystemUpdatedEventHandler? SystemUpdated;
 
         private BackgroundWorker UpdateTimer { get; }
 
@@ -48,7 +48,7 @@ namespace Concierge.Tools.WorkerServices
 
         private void UpdateTimer_ProgressChanged(object? sender, ProgressChangedEventArgs e)
         {
-            this.WifiUpdated?.Invoke(new object(), new EventArgs());
+            this.SystemUpdated?.Invoke(new object(), new EventArgs());
         }
 
         private void UpdateTimer_DoWork(object? sender, DoWorkEventArgs e)

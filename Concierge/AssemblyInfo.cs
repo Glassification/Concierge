@@ -2,7 +2,6 @@
 // Copyright (c) Thomas Beckett. All rights reserved.
 // </copyright>
 
-using System.Reflection;
 using System.Windows;
 
 [assembly: ThemeInfo(

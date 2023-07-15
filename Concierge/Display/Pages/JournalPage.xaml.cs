@@ -25,7 +25,6 @@ namespace Concierge.Display.Pages
     using Concierge.Display.Components;
     using Concierge.Display.Enums;
     using Concierge.Display.Windows;
-    using Concierge.Persistence;
     using Concierge.Search;
     using Concierge.Services;
 
