@@ -1,4 +1,4 @@
-﻿// <copyright file="ConsoleReadWriter.cs" company="Thomas Beckett">
+﻿// <copyright file="CustomItemReadWriter.cs" company="Thomas Beckett">
 // Copyright (c) Thomas Beckett. All rights reserved.
 // </copyright>
 
@@ -12,11 +12,11 @@ namespace Concierge.Persistence.ReadWriters
     using Concierge.Common.Extensions;
     using Newtonsoft.Json;
 
-    public sealed class ConsoleReadWriter : IReadWriters
+    public sealed class CustomItemReadWriter : IReadWriters
     {
         private readonly IErrorService errorService;
 
-        public ConsoleReadWriter(IErrorService errorService)
+        public CustomItemReadWriter(IErrorService errorService)
         {
             this.errorService = errorService;
         }
@@ -25,9 +25,11 @@ namespace Concierge.Persistence.ReadWriters
         {
             try
             {
-                var json = JsonConvert.SerializeObject(value);
-                File.AppendAllText(filePath, json);
-                File.AppendAllText(filePath, "\n");
+                var rawBlob = JsonConvert.SerializeObject(value, Formatting.None);
+                if (rawBlob.IsNullOrWhiteSpace())
+                {
+                    File.AppendAllText(filePath, rawBlob);
+                }
             }
             catch (Exception ex)
             {
@@ -37,14 +39,7 @@ namespace Concierge.Persistence.ReadWriters
 
         public void Clear(string filePath)
         {
-            try
-            {
-                File.WriteAllText(filePath, string.Empty);
-            }
-            catch (Exception ex)
-            {
-                this.errorService.LogError(ex);
-            }
+            throw new NotImplementedException();
         }
 
         public T ReadJson<T>(string filePath)
@@ -61,27 +56,27 @@ namespace Concierge.Persistence.ReadWriters
 
         public List<T> ReadList<T>(string filePath)
         {
-            var list = new List<T>();
-
             try
             {
-                var rawJson = File.ReadAllLines(filePath);
-                foreach (var line in rawJson)
+                var list = new List<T>();
+                var lines = File.ReadAllLines(filePath);
+
+                foreach (var line in lines)
                 {
-                    var json = JsonConvert.DeserializeObject<T>(line);
-                    if (json is not null)
+                    var blob = JsonConvert.DeserializeObject<T>(line);
+                    if (blob is not null)
                     {
-                        list.Add(json);
+                        list.Add(blob);
                     }
                 }
+
+                return list;
             }
             catch (Exception ex)
             {
-                ex = ex.TryConvertToReadWriterException(filePath);
                 this.errorService.LogError(ex);
+                return new List<T>();
             }
-
-            return list;
         }
 
         public List<T> ReadList<T>(byte[] file)
@@ -96,7 +91,24 @@ namespace Concierge.Persistence.ReadWriters
 
         public void WriteList<T>(string filePath, List<T> value)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var lines = new List<string>();
+                foreach (var item in value)
+                {
+                    var rawBlob = JsonConvert.SerializeObject(item, Formatting.None);
+                    if (!rawBlob.IsNullOrWhiteSpace())
+                    {
+                        lines.Add(rawBlob);
+                    }
+                }
+
+                File.WriteAllLines(filePath, lines);
+            }
+            catch (Exception ex)
+            {
+                this.errorService.LogError(ex);
+            }
         }
     }
 }

@@ -34,7 +34,7 @@ namespace Concierge.Display.Windows
             this.InitializeComponent();
             this.UseRoundedCorners();
 
-            this.NameComboBox.ItemsSource = Defaults.Inventory;
+            this.NameComboBox.ItemsSource = DisplayUtility.GenerateSelectorComboBox(Defaults.Inventory, Program.CustomItemService.GetCustomItems<Inventory>());
             this.CategoryComboBox.ItemsSource = Defaults.ItemCategories;
             this.CoinTypeComboBox.ItemsSource = Enum.GetValues(typeof(CoinType)).Cast<CoinType>();
             this.ConciergePage = ConciergePage.None;
@@ -193,7 +193,16 @@ namespace Concierge.Display.Windows
         private Inventory ToInventory()
         {
             this.ItemsAdded = true;
-            var item = new Inventory()
+            var item = this.Create();
+
+            Program.UndoRedoService.AddCommand(new AddCommand<Inventory>(this.Items, item, this.ConciergePage));
+
+            return item;
+        }
+
+        private Inventory Create()
+        {
+            return new Inventory()
             {
                 Name = this.NameComboBox.Text,
                 Amount = this.AmountUpDown.Value,
@@ -206,10 +215,6 @@ namespace Concierge.Display.Windows
                 Value = this.ValueUpDown.Value,
                 CoinType = (CoinType)Enum.Parse(typeof(CoinType), this.CoinTypeComboBox.Text),
             };
-
-            Program.UndoRedoService.AddCommand(new AddCommand<Inventory>(this.Items, item, this.ConciergePage));
-
-            return item;
         }
 
         private void UpdateInventory(Inventory inventory)
@@ -241,7 +246,10 @@ namespace Concierge.Display.Windows
                 }
             }
 
-            Program.UndoRedoService.AddCommand(new EditCommand<Inventory>(inventory, oldItem, this.ConciergePage));
+            if (!inventory.IsCustom)
+            {
+                Program.UndoRedoService.AddCommand(new EditCommand<Inventory>(inventory, oldItem, this.ConciergePage));
+            }
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
@@ -271,7 +279,7 @@ namespace Concierge.Display.Windows
 
         private void NameComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (this.NameComboBox.SelectedItem is Inventory inventory)
+            if (this.NameComboBox.SelectedItem is ComboBoxItem item && item.Tag is Inventory inventory)
             {
                 this.FillFields(inventory);
             }
@@ -285,6 +293,18 @@ namespace Concierge.Display.Windows
         {
             this.Result = ConciergeWindowResult.Cancel;
             this.CloseConciergeWindow();
+        }
+
+        private void SaveButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (this.NameComboBox.Text.IsNullOrWhiteSpace())
+            {
+                return;
+            }
+
+            Program.CustomItemService.AddCustomItem(this.Create());
+            this.ClearFields();
+            this.NameComboBox.ItemsSource = DisplayUtility.GenerateSelectorComboBox(Defaults.Inventory, Program.CustomItemService.GetCustomItems<Inventory>());
         }
     }
 }

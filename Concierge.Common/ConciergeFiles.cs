@@ -19,6 +19,7 @@ namespace Concierge.Common
 
         public const string CustomColorsName = "CustomColors.json";
         public const string ConsoleOutput = "ConsoleOutput.json";
+        public const string CustomItemsName = "CustomItems.txt";
 
         public const string DiceHistoryName = "DiceHistory.txt";
         public const string ConsoleHistoryName = "ConsoleHistory.txt";
@@ -89,6 +90,17 @@ namespace Concierge.Common
         public static string GetCorrectCustomColorsPath()
         {
             return FileExistsAtLocation(CustomColorsName, AppDataDirectory) ?
+                AppDataDirectory :
+                BaseDirectory;
+        }
+
+        /// <summary>
+        /// Gets the correct path for the custom items text file.
+        /// </summary>
+        /// <returns>The correct path for the custom items text file.</returns>
+        public static string GetCorrectCustomItemsPath()
+        {
+            return FileExistsAtLocation(CustomItemsName, AppDataDirectory) ?
                 AppDataDirectory :
                 BaseDirectory;
         }

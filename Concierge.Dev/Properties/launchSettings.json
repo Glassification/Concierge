@@ -2,7 +2,7 @@
   "profiles": {
     "ConciergeDevTools": {
       "commandName": "Project",
-      "commandLineArgs": "--ScrubbedData \"this is a string\""
+      "commandLineArgs": "C:\\Users\\TomBe\\AppData\\Roaming\\Concierge\\CustomItems.txt"
     }
   }
 }

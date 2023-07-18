@@ -39,7 +39,7 @@ namespace Concierge.Common.Dtos
         {
             get
             {
-                if (this.Status == BatteryStatus.Undefined)
+                if (!this.HasBattery)
                 {
                     return PackIconKind.PowerPlug;
                 }
@@ -94,6 +94,11 @@ namespace Concierge.Common.Dtos
         }
 
         /// <summary>
+        /// Gets a value indicating whether or not the system has a battery.
+        /// </summary>
+        public bool HasBattery => this.Status != BatteryStatus.Undefined;
+
+        /// <summary>
         /// Gets or sets the percentage value indicating the battery level.
         /// </summary>
         public int Percentage { get; set; }
@@ -105,7 +110,9 @@ namespace Concierge.Common.Dtos
 
         public override string ToString()
         {
-            return $"Battery Status: {this.Status.ToString().FormatFromEnum()}, {this.Percentage}%";
+            return this.HasBattery ?
+                $"Battery Status: {this.Status.ToString().FormatFromEnum()}, {this.Percentage}%" :
+                "Plugged In";
         }
     }
 }

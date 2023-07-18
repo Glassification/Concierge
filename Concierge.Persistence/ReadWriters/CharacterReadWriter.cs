@@ -15,7 +15,7 @@ namespace Concierge.Persistence.ReadWriters
     using Concierge.Logging;
     using Newtonsoft.Json;
 
-    public class CharacterReadWriter : IReadWriters
+    public sealed class CharacterReadWriter : IReadWriters
     {
         private const string JsonSearchText = "\"Character\"";
 

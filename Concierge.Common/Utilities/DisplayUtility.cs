@@ -6,6 +6,7 @@ namespace Concierge.Common.Utilities
 {
     using System;
     using System.Collections.Generic;
+    using System.Collections.ObjectModel;
     using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Input;
@@ -176,6 +177,28 @@ namespace Concierge.Common.Utilities
         {
             element.IsEnabled = isEnabled;
             element.Opacity = isEnabled ? 1 : 0.5;
+        }
+
+        public static List<ComboBoxItem> GenerateSelectorComboBox<T>(ReadOnlyCollection<T> defaultItems, List<T> customItems)
+            where T : IUnique
+        {
+            var combinedItems = new List<T>();
+            combinedItems.AddRange(defaultItems);
+            combinedItems.AddRange(customItems);
+            combinedItems.Sort(new UniqueComparer<T>());
+
+            var comboBoxItems = new List<ComboBoxItem>();
+            foreach (var item in combinedItems)
+            {
+                comboBoxItems.Add(new ComboBoxItem()
+                {
+                    Content = item.Name,
+                    Foreground = item.IsCustom ? Brushes.PowderBlue : Brushes.White,
+                    Tag = item,
+                });
+            }
+
+            return comboBoxItems;
         }
     }
 }

@@ -61,6 +61,12 @@ namespace Concierge.Services
             this.Update();
         }
 
+        public void RemoveCustomColor(CustomColor color)
+        {
+            this.CustomColors.Remove(color);
+            this.Update();
+        }
+
         public void UpdateRecentColors(int index)
         {
             if (this.RecentColors.Count == 0)
@@ -75,18 +81,9 @@ namespace Concierge.Services
             this.Update();
         }
 
-        public List<CustomColor> GetMissingColors(List<CustomColor> customColors)
+        public void UpdateCustomColors()
         {
-            var missingColors = new List<CustomColor>();
-            foreach (var color in this.CustomColors)
-            {
-                if (!customColors.Any(x => x.Id.Equals(color.Id)))
-                {
-                    missingColors.Add(color);
-                }
-            }
-
-            return missingColors;
+            this.Update();
         }
 
         private void Update()

@@ -12,7 +12,7 @@ namespace Concierge.DevTools
     {
         public static void Main(string[] args)
         {
-            var scrubbedDataOption = new Option<string>(
+            /*var scrubbedDataOption = new Option<string>(
                 name: "--ScrubbedData",
                 description: "A csv file to parse the data from. Writes a json file to the same directory.");
 
@@ -23,6 +23,10 @@ namespace Concierge.DevTools
             var glossaryGeneratorOption = new Option<string>(
                 name: "--GlossaryGenerator",
                 description: "A folder to generate a glossary json object. Folder structure must already be setup with correct markdown files.");
+
+            var customBlobGeneratorOption = new Option<string>(
+                name: "--CustomBlobGenerator",
+                description: "A file to generate a custom item list to.");
 
             var compressFileOption = new Option<string>(
                 name: "--CompressFile",
@@ -36,6 +40,7 @@ namespace Concierge.DevTools
             rootCommand.AddOption(scrubbedDataOption);
             rootCommand.AddOption(colorPickerGeneratorOption);
             rootCommand.AddOption(glossaryGeneratorOption);
+            rootCommand.AddOption(customBlobGeneratorOption);
             rootCommand.AddOption(compressFileOption);
             rootCommand.AddOption(decompressFileOption);
 
@@ -52,6 +57,10 @@ namespace Concierge.DevTools
                 glossaryGeneratorOption);
 
             rootCommand.SetHandler(
+                CustomBlobGenerator.Generate,
+                customBlobGeneratorOption);
+
+            rootCommand.SetHandler(
                 FileHelper.Compress,
                 compressFileOption);
 
@@ -59,7 +68,9 @@ namespace Concierge.DevTools
                 FileHelper.Decompress,
                 decompressFileOption);
 
-            rootCommand.Invoke(args);
+            rootCommand.Invoke(args);*/
+
+            CustomBlobGenerator.Generate(args[0]);
         }
     }
 }

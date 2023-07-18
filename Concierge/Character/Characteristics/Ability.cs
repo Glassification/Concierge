@@ -48,6 +48,20 @@ namespace Concierge.Character.Characteristics
 
         public string Description { get; set; }
 
+        [JsonIgnore]
+        [SearchIgnore]
+        public string CustomType => nameof(Ability);
+
+        [JsonIgnore]
+        [SearchIgnore]
+        public Brush CustomTypeColor => Brushes.Aquamarine;
+
+        [JsonIgnore]
+        [SearchIgnore]
+        public PackIconKind CustomTypeIcon => PackIconKind.Run;
+
+        public bool IsCustom { get; set; }
+
         public Guid Id { get; set; }
 
         [JsonIgnore]
@@ -71,6 +85,7 @@ namespace Concierge.Character.Characteristics
                 Action = this.Action,
                 Description = this.Description,
                 Id = this.Id,
+                IsCustom = this.IsCustom,
             };
         }
 

@@ -13,6 +13,7 @@ namespace Concierge.Display.Windows
 
     using Concierge.Character.Characteristics;
     using Concierge.Character.Enums;
+    using Concierge.Character.Equipable;
     using Concierge.Commands;
     using Concierge.Common.Extensions;
     using Concierge.Common.Utilities;
@@ -29,7 +30,7 @@ namespace Concierge.Display.Windows
             this.InitializeComponent();
             this.UseRoundedCorners();
 
-            this.NameComboBox.ItemsSource = GenerateComboBoxItems();
+            this.NameComboBox.ItemsSource = DisplayUtility.GenerateSelectorComboBox(Defaults.Abilities, Program.CustomItemService.GetCustomItems<Ability>());
             this.TypeComboBox.ItemsSource = StringUtility.FormatEnumForDisplay(typeof(AbilityTypes));
             this.ConciergePage = ConciergePage.None;
             this.Abilities = new List<Ability>();
@@ -128,16 +129,6 @@ namespace Concierge.Display.Windows
             base.OnSourceInitialized(e);
         }
 
-        private static CompositeCollection GenerateComboBoxItems()
-        {
-            return new CompositeCollection
-            {
-                new CollectionContainer() { Collection = Defaults.Abilities.Where(x => x.Type == AbilityTypes.Feat).OrderBy(x => x.Name).ToList() },
-                new Separator(),
-                new CollectionContainer() { Collection = Defaults.Abilities.Where(x => x.Type == AbilityTypes.Background).OrderBy(x => x.Name).ToList() },
-            };
-        }
-
         private void FillFields(Ability ability)
         {
             this.NameComboBox.Text = ability.Name;
@@ -160,11 +151,9 @@ namespace Concierge.Display.Windows
             this.NotesTextBox.Text = string.Empty;
         }
 
-        private Ability ToAbility()
+        private Ability Create()
         {
-            this.ItemsAdded = true;
-
-            var ability = new Ability()
+            return new Ability()
             {
                 Name = this.NameComboBox.Text,
                 Type = (AbilityTypes)Enum.Parse(typeof(AbilityTypes), this.TypeComboBox.Text.Strip(" ")),
@@ -174,6 +163,12 @@ namespace Concierge.Display.Windows
                 Action = this.ActionTextBox.Text,
                 Description = this.NotesTextBox.Text,
             };
+        }
+
+        private Ability ToAbility()
+        {
+            this.ItemsAdded = true;
+            var ability = this.Create();
 
             Program.UndoRedoService.AddCommand(new AddCommand<Ability>(this.Abilities, ability, this.ConciergePage));
 
@@ -192,7 +187,10 @@ namespace Concierge.Display.Windows
             ability.Action = this.ActionTextBox.Text;
             ability.Description = this.NotesTextBox.Text;
 
-            Program.UndoRedoService.AddCommand(new EditCommand<Ability>(ability, oldItem, this.ConciergePage));
+            if (!ability.IsCustom)
+            {
+                Program.UndoRedoService.AddCommand(new EditCommand<Ability>(ability, oldItem, this.ConciergePage));
+            }
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
@@ -223,7 +221,7 @@ namespace Concierge.Display.Windows
 
         private void NameComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (this.NameComboBox.SelectedItem is Ability ability)
+            if (this.NameComboBox.SelectedItem is ComboBoxItem item && item.Tag is Ability ability)
             {
                 this.FillFields(ability);
             }
@@ -231,6 +229,18 @@ namespace Concierge.Display.Windows
             {
                 this.ClearFields(this.NameComboBox.Text);
             }
+        }
+
+        private void SaveButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (this.NameComboBox.Text.IsNullOrWhiteSpace())
+            {
+                return;
+            }
+
+            Program.CustomItemService.AddCustomItem(this.Create());
+            this.ClearFields();
+            this.NameComboBox.ItemsSource = DisplayUtility.GenerateSelectorComboBox(Defaults.Abilities, Program.CustomItemService.GetCustomItems<Ability>());
         }
     }
 }

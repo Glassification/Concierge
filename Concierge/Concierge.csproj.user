@@ -54,6 +54,9 @@
     <Compile Update="Display\Pages\ToolsPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Display\Windows\Utility\CustomItemWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Display\Windows\Utility\GlossaryWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -282,6 +285,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Display\Windows\Utility\CustomColorWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Display\Windows\Utility\CustomItemWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Display\Windows\Utility\GlossaryWindow.xaml">

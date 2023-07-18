@@ -5,11 +5,14 @@
 namespace Concierge.Character.Vitals
 {
     using System;
+    using System.Windows.Media;
 
     using Concierge.Character.Enums;
     using Concierge.Common;
+    using Concierge.Common.Attributes;
     using Concierge.Common.Dtos;
     using Concierge.Common.Extensions;
+    using MaterialDesignThemes.Wpf;
     using Newtonsoft.Json;
 
     public sealed class ClassResource : ICopyable<ClassResource>, IUnique
@@ -51,6 +54,20 @@ namespace Concierge.Character.Vitals
             }
         }
 
+        public bool IsCustom { get; set; }
+
+        [JsonIgnore]
+        [SearchIgnore]
+        public string CustomType => nameof(ClassResource);
+
+        [JsonIgnore]
+        [SearchIgnore]
+        public Brush CustomTypeColor => Brushes.LightCoral;
+
+        [JsonIgnore]
+        [SearchIgnore]
+        public PackIconKind CustomTypeIcon => PackIconKind.RecycleVariant;
+
         public string Note { get; set; }
 
         public Recovery Recovery { get; set; }
@@ -75,6 +92,7 @@ namespace Concierge.Character.Vitals
                 Note = this.Note,
                 Recovery = this.Recovery,
                 Id = this.Id,
+                IsCustom = this.IsCustom,
             };
         }
 

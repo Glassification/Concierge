@@ -29,6 +29,17 @@ namespace Concierge.Character.Equipable
 
         public CoinType CoinType { get; set; }
 
+        [JsonIgnore]
+        [SearchIgnore]
+        public string CustomType => nameof(Ammunition);
+
+        [JsonIgnore]
+        [SearchIgnore]
+        public Brush CustomTypeColor => Brushes.BurlyWood;
+        [JsonIgnore]
+        [SearchIgnore]
+        public PackIconKind CustomTypeIcon => PackIconKind.ArrowProjectileMultiple;
+
         public DamageTypes DamageType { get; set; }
 
         [JsonIgnore]
@@ -40,6 +51,8 @@ namespace Concierge.Character.Equipable
         public PackIconKind IconKind => this.GetCategory().IconKind;
 
         public Guid Id { get; set; }
+
+        public bool IsCustom { get; set; }
 
         public string Name { get; set; }
 
@@ -75,6 +88,7 @@ namespace Concierge.Character.Equipable
                 Id = this.Id,
                 CoinType = this.CoinType,
                 Value = this.Value,
+                IsCustom = this.IsCustom,
             };
         }
 

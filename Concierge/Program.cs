@@ -43,6 +43,7 @@ namespace Concierge
             var colorReadWriter = new CustomColorReadWriter(ErrorService);
             var consolReadWrite = new ConsoleReadWriter(ErrorService);
 
+            CustomItemService = new CustomItemService();
             CustomColorService = colorReadWriter.ReadJson<CustomColorService>(Path.Combine(ConciergeFiles.GetCorrectCustomColorsPath(), ConciergeFiles.CustomColorsName));
             consolReadWrite.Clear(Path.Combine(ConciergeFiles.AppDataDirectory, ConciergeFiles.ConsoleOutput));
         }
@@ -66,6 +67,8 @@ namespace Concierge
         public static UndoRedoService UndoRedoService { get; private set; }
 
         public static CustomColorService CustomColorService { get; private set; }
+
+        public static CustomItemService CustomItemService { get; private set; }
 
         public static ConciergeVersion AssemblyVersion
         {
