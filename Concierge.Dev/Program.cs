@@ -4,8 +4,6 @@
 
 namespace Concierge.DevTools
 {
-    using System.CommandLine;
-
     using Concierge.DevTools.Generators;
 
     public class Program
@@ -70,7 +68,7 @@ namespace Concierge.DevTools
 
             rootCommand.Invoke(args);*/
 
-            StatusEffectGenerator.Generate(@"C:\Users\TomBe\source\repos\StatusEffect.json");
+            StatusEffectGenerator.Generate(args[0]);
         }
     }
 }

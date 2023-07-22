@@ -10,15 +10,14 @@ namespace Concierge.DevTools.Generators
     using Concierge.Character.Equipable;
     using Concierge.Character.Spellcasting;
     using Concierge.Character.Vitals;
+    using Concierge.Data;
     using Concierge.Logging;
-    using Concierge.Persistence;
     using Concierge.Persistence.ReadWriters;
     using Concierge.Services;
-    using Newtonsoft.Json;
 
     public static class CustomBlobGenerator
     {
-        public static void Generate(string filePath)
+        public static void Generate()
         {
             var ability = new Ability()
             {

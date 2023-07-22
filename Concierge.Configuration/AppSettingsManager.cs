@@ -13,32 +13,55 @@ namespace Concierge.Configuration
     using Microsoft.Extensions.Configuration;
     using Newtonsoft.Json;
 
+    /// <summary>
+    /// Provides management and access to application settings.
+    /// </summary>
     public static class AppSettingsManager
     {
         static AppSettingsManager()
         {
             IConfigurationSection section;
 
+            // Loads application settings from a JSON file
             var config = new ConfigurationBuilder()
                 .SetBasePath(ConciergeFiles.GetCorrectAppSettingsPath())
                 .AddJsonFile(ConciergeFiles.AppSettingsName)
                 .Build();
 
+            // Initializes startup settings from the configuration file or creates a new instance
             section = config.GetSection(nameof(StartUp));
             StartUp = section.Get<StartUp>() ?? new StartUp();
 
+            // Initializes user settings from the configuration file or creates a new instance
             section = config.GetSection(nameof(UserSettings));
             UserSettings = section.Get<UserSettings>() ?? new UserSettings();
         }
 
+        /// <summary>
+        /// Represents the delegate for the event that is raised when the unit of measurement changes.
+        /// </summary>
         public delegate void UnitsChangedEventHandler(object sender, EventArgs e);
 
+        /// <summary>
+        /// Event that is raised when the unit of measurement changes.
+        /// </summary>
         public static event UnitsChangedEventHandler? UnitsChanged;
 
+        /// <summary>
+        /// Gets the startup settings of the application.
+        /// </summary>
         public static StartUp StartUp { get; private set; }
 
+        /// <summary>
+        /// Gets the user settings of the application.
+        /// </summary>
         public static UserSettings UserSettings { get; private set; }
 
+        /// <summary>
+        /// Updates the user settings of the application with the provided data. Will not update appsettings while in debug mode.
+        /// </summary>
+        /// <param name="userSettingsDto">The <see cref="UserSettingsDto"/> containing the updated settings.</param>
+        /// <param name="isDebug">Indicates whether the application is in debug mode.</param>
         public static void UpdateSettings(UserSettingsDto userSettingsDto, bool isDebug)
         {
             if (UserSettings.UnitOfMeasurement != userSettingsDto.UnitOfMeasurement)
@@ -64,11 +87,19 @@ namespace Concierge.Configuration
             WriteUpdatedSettingsToFile();
         }
 
+        /// <summary>
+        /// Triggers the UnitsChanged event with the provided user settings data.
+        /// </summary>
+        /// <param name="userSettingsDto">The <see cref="UserSettingsDto"/> containing the unit of measurement changes.</param>
         public static void RefreshUnits(UserSettingsDto? userSettingsDto = null)
         {
             UnitsChanged?.Invoke(userSettingsDto is null ? ToUserSettingsDto() : userSettingsDto, new EventArgs());
         }
 
+        /// <summary>
+        /// Converts the current user settings to a <see cref="UserSettingsDto"/> object.
+        /// </summary>
+        /// <returns>The <see cref="UserSettingsDto"/> object representing the current user settings.</returns>
         public static UserSettingsDto ToUserSettingsDto()
         {
             return new UserSettingsDto()

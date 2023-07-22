@@ -8,7 +8,6 @@ namespace Concierge.Character.Equipable
     using System.Windows.Media;
 
     using Concierge.Character.Enums;
-    using Concierge.Character.Journals;
     using Concierge.Common;
     using Concierge.Common.Attributes;
     using Concierge.Common.Dtos;

@@ -13,7 +13,7 @@ namespace Concierge.Services
     using Concierge.Character.Spellcasting;
     using Concierge.Character.Vitals;
     using Concierge.Common;
-    using Concierge.Persistence;
+    using Concierge.Data;
     using Concierge.Persistence.ReadWriters;
     using Newtonsoft.Json;
 

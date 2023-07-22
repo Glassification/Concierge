@@ -14,6 +14,9 @@ namespace Concierge.Logging
     using Concierge.Logging.Enums;
     using Newtonsoft.Json;
 
+    /// <summary>
+    /// Abstract class representing a logger with different log levels and log output handling.
+    /// </summary>
     public abstract class Logger : IDisposable
     {
         private readonly LogVerbosity logVerbosity;
@@ -23,6 +26,10 @@ namespace Concierge.Logging
         private readonly ManualResetEvent waiting = new (false);
         private readonly Thread loggingThread;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Logger"/> class.
+        /// </summary>
+        /// <param name="isDebug">Indicates whether the logger is running in debug mode.</param>
         protected Logger(bool isDebug)
         {
             this.logVerbosity = LogVerbosity.Full;
@@ -35,17 +42,28 @@ namespace Concierge.Logging
             this.SessionLog = new List<string>();
         }
 
+        /// <summary>
+        /// Gets the list of log entries collected during the logger session.
+        /// </summary>
         public List<string> SessionLog { get; private set; }
 
         private bool IsDebug { get; init; }
 
         private bool IsStarted { get; set; }
 
+        /// <summary>
+        /// Logs an information message.
+        /// </summary>
+        /// <param name="message">The information message to log.</param>
         public void Info(string message)
         {
             this.Log(message, LogType.INF);
         }
 
+        /// <summary>
+        /// Logs an information message with the details of an object serialized as JSON.
+        /// </summary>
+        /// <param name="obj">The object to log.</param>
         public void Info(object obj)
         {
             try
@@ -59,21 +77,37 @@ namespace Concierge.Logging
             }
         }
 
+        /// <summary>
+        /// Logs a debug message.
+        /// </summary>
+        /// <param name="message">The debug message to log.</param>
         public void Debug(string message)
         {
             this.Log(message, LogType.DBG);
         }
 
+        /// <summary>
+        /// Logs a warning message.
+        /// </summary>
+        /// <param name="message">The warning message to log.</param>
         public void Warning(string message)
         {
             this.Log(message, LogType.WRN);
         }
 
+        /// <summary>
+        /// Logs an error message.
+        /// </summary>
+        /// <param name="message">The error message to log.</param>
         public void Error(string message)
         {
             this.Log(message, LogType.ERR);
         }
 
+        /// <summary>
+        /// Logs an exception.
+        /// </summary>
+        /// <param name="e">The exception to log.</param>
         public void Error(Exception e)
         {
             if (this.logVerbosity != LogVerbosity.None)
@@ -82,11 +116,18 @@ namespace Concierge.Logging
             }
         }
 
+        /// <summary>
+        /// Logs a new line.
+        /// </summary>
         public void NewLine()
         {
             this.Log();
         }
 
+        /// <summary>
+        /// Starts the logger session.
+        /// </summary>
+        /// <param name="version">The version of the application.</param>
         public void Start(string version)
         {
             if (this.IsStarted)
@@ -101,6 +142,9 @@ namespace Concierge.Logging
             this.IsStarted = true;
         }
 
+        /// <summary>
+        /// Stops the logger session.
+        /// </summary>
         public void Stop()
         {
             if (!this.IsStarted)
@@ -118,6 +162,9 @@ namespace Concierge.Logging
             return $"Logger settings: [Type: {this.GetType().Name}, Verbosity: {this.logVerbosity}, ";
         }
 
+        /// <summary>
+        /// Flushes the logger, waiting for any remaining logs to be processed.
+        /// </summary>
         public void Flush()
         {
             this.waiting.WaitOne();
@@ -130,13 +177,28 @@ namespace Concierge.Logging
             GC.SuppressFinalize(this);
         }
 
+        /// <summary>
+        /// Creates a log entry from the specified message.
+        /// </summary>
+        /// <param name="message">The log message to be created.</param>
         protected abstract void CreateLog(string message);
 
+        /// <summary>
+        /// Composes a log row from the specified message and log type.
+        /// </summary>
+        /// <param name="message">The log message to be composed.</param>
+        /// <param name="logType">The type of log entry.</param>
+        /// <returns>The composed log row.</returns>
         protected virtual string ComposeLogRow(string message, LogType logType)
         {
             return $"[{ConciergeDateTime.LoggingNow} {logType}] - {message}";
         }
 
+        /// <summary>
+        /// Unwraps exception messages recursively, including inner exceptions.
+        /// </summary>
+        /// <param name="ex">The exception to unwrap.</param>
+        /// <returns>The unwrapped exception messages.</returns>
         protected virtual string UnwrapExceptionMessages(Exception? ex)
         {
             if (ex == null)

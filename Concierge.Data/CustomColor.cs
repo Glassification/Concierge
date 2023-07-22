@@ -268,6 +268,10 @@ namespace Concierge.Data
             };
         }
 
+        /// <summary>
+        /// Copies the properties of another <see cref="CustomColor"/> object into the current instance.
+        /// </summary>
+        /// <param name="color">The <see cref="CustomColor"/> object from which to copy the properties.</param>
         public void ShallowCopy(CustomColor color)
         {
             this.A = color.A;
