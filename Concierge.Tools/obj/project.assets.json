@@ -344,8 +344,7 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\TomBe\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\TomBe\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
@@ -356,9 +355,6 @@
       "packagesPath": "C:\\Users\\TomBe\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\TomBe\\source\\repos\\Concierge\\Concierge.Tools\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
         "C:\\Users\\TomBe\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"

@@ -1,0 +1,130 @@
+﻿<components:ConciergeWindow
+    x:Class="Concierge.Display.Windows.Utility.CustomItemWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:components="clr-namespace:Concierge.Display.Components"
+    xmlns:local="clr-namespace:Concierge.Display.Windows.Utility"
+    mc:Ignorable="d"
+    Title="Custom Items"
+    Height="530"
+    Width="850"
+    Style="{StaticResource WindowFontStyle}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="485"/>
+        </Grid.RowDefinitions>
+
+        <!--Header-->
+        <Grid Grid.Row="0">
+            <StackPanel
+                Orientation="Horizontal"
+                HorizontalAlignment="Left">
+                <TextBlock
+                    Text="Custom Items"
+                    x:Name="HeaderTextBlock"
+                    Foreground="#227EA9"
+                    FontSize="35"
+                    VerticalAlignment="Center"
+                    Margin="30, 0, 0, 0"
+                    FontWeight="Bold"
+                    FontFamily="Segoe UI SemiLight"/>
+                <components:ConciergeTextBlock 
+                    x:Name="ItemTotalField"
+                    Text="(69 Items)"
+                    FontSize="18"
+                    VerticalAlignment="Center"
+                    Margin="25, 5, 0, 0"/>
+            </StackPanel>
+
+            <StackPanel
+                Orientation="Horizontal"
+                HorizontalAlignment="Right"
+                Grid.Row="0">
+                <components:ConciergeDesignButton 
+                    Style="{StaticResource ConciergeDesignButtonStyle}" 
+                    x:Name="ClearButton"
+                    Click="ClearButton_Click"
+                    Width="45"
+                    Foreground="Silver"
+                    ToolTip="Clear Selected Item">
+                    <materialDesign:PackIcon Kind="NotificationClearAll" Width="25" Height="25"/>
+                </components:ConciergeDesignButton>
+                <components:ConciergeDesignButton 
+                    Style="{StaticResource ConciergeDesignButtonStyle}" 
+                    x:Name="EditButton"
+                    Click="EditButton_Click"
+                    Width="45"
+                    Foreground="#B98748"
+                    ToolTip="Edit Selected Item">
+                    <materialDesign:PackIcon Kind="TextBoxEdit" Width="25" Height="25"/>
+                </components:ConciergeDesignButton>
+                <components:ConciergeDesignButton 
+                    Style="{StaticResource ConciergeDesignButtonStyle}" 
+                    x:Name="DeleteButton"
+                    Click="DeleteButton_Click"
+                    Width="45"
+                    Foreground="IndianRed"
+                    ToolTip="Delete Selected Item">
+                    <materialDesign:PackIcon Kind="Delete" Width="25" Height="25"/>
+                </components:ConciergeDesignButton>
+                <Label
+                    Height="45"
+                    Width="45"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Background="Transparent"/>
+                <components:ConciergeDesignButton 
+                    Style="{StaticResource ConciergeDesignButtonStyle}" 
+                    x:Name="CloseButton"
+                    Width="45"
+                    Foreground="White"
+                    ToolTip="Close"
+                    HorizontalAlignment="Right"
+                    Click="CloseButton_Click">
+                    <materialDesign:PackIcon Kind="WindowClose" Width="25" Height="25"/>
+                </components:ConciergeDesignButton>
+            </StackPanel>
+        </Grid>
+
+        <components:ConciergeDataGrid
+            Grid.Row="1"
+            x:Name="CustomItemsDataGrid"
+            Margin="10,0,10,10"
+            Style="{DynamicResource WindowDataGridStyle}">
+            <DataGrid.Columns>
+                <DataGridTemplateColumn  Width="0.02*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <materialDesign:PackIcon
+                                Kind="{Binding CustomTypeIcon}"
+                                Foreground="{Binding CustomTypeColor}"
+                                Height="auto"
+                                Width="auto"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn
+                    Header="Name"
+                    Binding="{Binding Name}"
+                    Width="0.20*"
+                    ElementStyle="{StaticResource StandardColumnElementStyle}"/>
+                <DataGridTextColumn
+                    Header="Type"
+                    Binding="{Binding CustomType}"
+                    Width="0.20*"
+                    ElementStyle="{StaticResource StandardColumnElementStyle}"/>
+                <DataGridTextColumn
+                    Header="Id"
+                    Binding="{Binding Id}"
+                    Width="0.58*"
+                    ElementStyle="{StaticResource StandardColumnElementStyle}"/>
+            </DataGrid.Columns>
+        </components:ConciergeDataGrid>
+    </Grid>
+</components:ConciergeWindow>

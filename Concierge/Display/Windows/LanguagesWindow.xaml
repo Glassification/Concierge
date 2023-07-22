@@ -32,16 +32,29 @@
                 VerticalAlignment="Center"
                 Margin="30, 0, 0, 0"
                 FontWeight="Bold"/>
-            <components:ConciergeDesignButton 
-                Style="{StaticResource ConciergeDesignButtonStyle}"
-                x:Name="CloseButton"
-                Width="60"
-                Foreground="White"
-                ToolTip="Close"
-                HorizontalAlignment="Right"
-                Click="CloseButton_Click">
-                <materialDesign:PackIcon Kind="WindowClose" Width="25" Height="25"/>
-            </components:ConciergeDesignButton>
+
+            <StackPanel
+                Orientation="Horizontal"
+                HorizontalAlignment="Right">
+                <components:ConciergeDesignButton 
+                    Style="{StaticResource ConciergeDesignButtonStyle}" 
+                    x:Name="SaveButton"
+                    Width="60"
+                    Foreground="White"
+                    ToolTip="Save As Custom Item"
+                    Click="SaveButton_Click">
+                    <materialDesign:PackIcon Kind="ContentSaveOutline" Width="25" Height="25"/>
+                </components:ConciergeDesignButton>
+                <components:ConciergeDesignButton 
+                    Style="{StaticResource ConciergeDesignButtonStyle}" 
+                    x:Name="CloseButton"
+                    Width="60"
+                    Foreground="White"
+                    ToolTip="Close"
+                    Click="CloseButton_Click">
+                    <materialDesign:PackIcon Kind="WindowClose" Width="25" Height="25"/>
+                </components:ConciergeDesignButton>
+            </StackPanel>
         </Grid>
 
         <!--Fields-->

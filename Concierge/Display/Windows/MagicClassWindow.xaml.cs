@@ -8,11 +8,14 @@ namespace Concierge.Display.Windows
     using System.Collections.Generic;
     using System.Linq;
     using System.Windows;
+    using System.Windows.Controls;
 
     using Concierge.Character.Enums;
     using Concierge.Character.Spellcasting;
     using Concierge.Commands;
     using Concierge.Common;
+    using Concierge.Common.Extensions;
+    using Concierge.Common.Utilities;
     using Concierge.Display.Components;
     using Concierge.Display.Enums;
 
@@ -26,7 +29,7 @@ namespace Concierge.Display.Windows
             this.InitializeComponent();
             this.UseRoundedCorners();
 
-            this.ClassNameComboBox.ItemsSource = Defaults.MagicClasses;
+            this.ClassNameComboBox.ItemsSource = DefaultItems;
             this.AbilityComboBox.ItemsSource = Enum.GetValues(typeof(Abilities)).Cast<Abilities>();
             this.ConciergePage = ConciergePage.None;
             this.SelectedClass = new MagicClass();
@@ -45,6 +48,8 @@ namespace Concierge.Display.Windows
         public override string WindowName => nameof(MagicClassWindow);
 
         public bool ItemsAdded { get; private set; }
+
+        private static List<ComboBoxItem> DefaultItems => DisplayUtility.GenerateSelectorComboBox(Defaults.MagicClasses, Program.CustomItemService.GetCustomItems<MagicClass>());
 
         private bool Editing { get; set; }
 
@@ -123,7 +128,6 @@ namespace Concierge.Display.Windows
         private void FillFields(MagicClass magicClass)
         {
             this.SettingValues = true;
-
             this.ClassNameComboBox.Text = magicClass.Name;
             this.AbilityComboBox.Text = magicClass.Ability.ToString();
             this.AttackBonusTextBlock.Text = magicClass.Attack.ToString();
@@ -132,15 +136,13 @@ namespace Concierge.Display.Windows
             this.CantripsUpDown.Value = magicClass.KnownCantrips;
             this.SpellsUpDown.Value = magicClass.KnownSpells;
             this.PreparedSpellsTextBlock.Text = magicClass.PreparedSpells.ToString();
-
             this.SettingValues = false;
         }
 
-        private void ClearFields()
+        private void ClearFields(string name = "")
         {
             this.SettingValues = true;
-
-            this.ClassNameComboBox.Text = string.Empty;
+            this.ClassNameComboBox.Text = name;
             this.AbilityComboBox.Text = Abilities.NONE.ToString();
             this.AttackBonusTextBlock.Text = "0";
             this.SpellSaveTextBlock.Text = "0";
@@ -148,7 +150,6 @@ namespace Concierge.Display.Windows
             this.CantripsUpDown.Value = 0;
             this.SpellsUpDown.Value = 0;
             this.PreparedSpellsTextBlock.Text = "0";
-
             this.SettingValues = false;
         }
 
@@ -162,14 +163,15 @@ namespace Concierge.Display.Windows
             magicClass.KnownCantrips = this.CantripsUpDown.Value;
             magicClass.KnownSpells = this.SpellsUpDown.Value;
 
-            Program.UndoRedoService.AddCommand(new EditCommand<MagicClass>(magicClass, oldItem, this.ConciergePage));
+            if (!magicClass.IsCustom)
+            {
+                Program.UndoRedoService.AddCommand(new EditCommand<MagicClass>(magicClass, oldItem, this.ConciergePage));
+            }
         }
 
-        private MagicClass ToMagicClass()
+        private MagicClass Create()
         {
-            this.ItemsAdded = true;
-
-            var magicClass = new MagicClass()
+            return new MagicClass()
             {
                 Name = this.ClassNameComboBox.Text,
                 Ability = (Abilities)Enum.Parse(typeof(Abilities), this.AbilityComboBox.Text),
@@ -177,6 +179,12 @@ namespace Concierge.Display.Windows
                 KnownSpells = this.SpellsUpDown.Value,
                 KnownCantrips = this.CantripsUpDown.Value,
             };
+        }
+
+        private MagicClass ToMagicClass()
+        {
+            this.ItemsAdded = true;
+            var magicClass = this.Create();
 
             Program.UndoRedoService.AddCommand(new AddCommand<MagicClass>(this.MagicClasses, magicClass, this.ConciergePage));
 
@@ -188,7 +196,7 @@ namespace Concierge.Display.Windows
             string ability = this.AbilityComboBox.SelectedItem.ToString() ?? Abilities.NONE.ToString();
             this.AttackBonusTextBlock.Text = Program.CcsFile.Character.CalculateBonusFromAbility((Abilities)Enum.Parse(typeof(Abilities), ability)).ToString();
             this.SpellSaveTextBlock.Text = (Program.CcsFile.Character.CalculateBonusFromAbility((Abilities)Enum.Parse(typeof(Abilities), ability)) + Constants.BaseDC).ToString();
-            this.PreparedSpellsTextBlock.Text = Program.CcsFile.Character.Magic.Spells.Where(x => (x.Class?.Equals(this.ClassNameComboBox.SelectedItem.ToString()) ?? false) && x.Prepared).ToList().Count.ToString();
+            this.PreparedSpellsTextBlock.Text = Program.CcsFile.Character.Magic.Spells.Where(x => (x.Class?.Equals(this.ClassNameComboBox.SelectedItem.ToString()) ?? false) && x.Prepared)?.ToList()?.Count.ToString() ?? "0";
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
@@ -217,12 +225,36 @@ namespace Concierge.Display.Windows
             this.CloseConciergeWindow();
         }
 
-        private void ComboBox_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        private void AbilityComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (!this.SettingValues)
             {
                 this.RefreshFields();
             }
+        }
+
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (this.ClassNameComboBox.SelectedItem is ComboBoxItem item && item.Tag is MagicClass magicClass)
+            {
+                this.FillFields(magicClass);
+            }
+            else
+            {
+                this.ClearFields(this.ClassNameComboBox.Text);
+            }
+        }
+
+        private void SaveButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (this.ClassNameComboBox.Text.IsNullOrWhiteSpace())
+            {
+                return;
+            }
+
+            Program.CustomItemService.AddCustomItem(this.Create());
+            this.ClearFields();
+            this.ClassNameComboBox.ItemsSource = DefaultItems;
         }
     }
 }

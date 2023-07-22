@@ -44,6 +44,18 @@ namespace Concierge.Character.Equipable
 
         public bool Attuned { get; set; }
 
+        [JsonIgnore]
+        [SearchIgnore]
+        public string CustomType => nameof(Weapon);
+
+        [JsonIgnore]
+        [SearchIgnore]
+        public Brush CustomTypeColor => Brushes.RosyBrown;
+
+        [JsonIgnore]
+        [SearchIgnore]
+        public PackIconKind CustomTypeIcon => PackIconKind.Sword;
+
         public bool IsEquipped { get; set; }
 
         public EquipmentSlot EquipmentSlot { get; set; }
@@ -67,6 +79,8 @@ namespace Concierge.Character.Equipable
         public Guid Id { get; set; }
 
         public bool IgnoreWeight { get; set; }
+
+        public bool IsCustom { get; set; }
 
         public string Misc { get; set; }
 
@@ -150,6 +164,7 @@ namespace Concierge.Character.Equipable
                 IsEquipped = this.IsEquipped,
                 Amount = this.Amount,
                 EquipmentSlot = this.EquipmentSlot,
+                IsCustom = this.IsCustom,
             };
         }
 

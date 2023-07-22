@@ -7,6 +7,7 @@ namespace Concierge.Display.Windows
     using System;
     using System.Collections.Generic;
     using System.Windows;
+    using System.Windows.Controls;
 
     using Concierge.Character.Enums;
     using Concierge.Character.Vitals;
@@ -27,7 +28,7 @@ namespace Concierge.Display.Windows
             this.UseRoundedCorners();
 
             this.ConciergePage = ConciergePage.None;
-            this.ResourceNameComboBox.ItemsSource = Defaults.Resources;
+            this.ResourceNameComboBox.ItemsSource = DefaultItems;
             this.RecoveryComboBox.ItemsSource = StringUtility.FormatEnumForDisplay(typeof(Recovery));
             this.ClassResource = new ClassResource();
             this.ClassResources = new List<ClassResource>();
@@ -45,6 +46,8 @@ namespace Concierge.Display.Windows
         public override string WindowName => nameof(ClassResourceWindow);
 
         public bool ItemsAdded { get; private set; }
+
+        private static List<ComboBoxItem> DefaultItems => DisplayUtility.GenerateSelectorComboBox(Defaults.Resources, Program.CustomItemService.GetCustomItems<ClassResource>());
 
         private bool Editing { get; set; }
 
@@ -130,11 +133,9 @@ namespace Concierge.Display.Windows
             this.NotesTextBox.Text = string.Empty;
         }
 
-        private ClassResource ToClassResource()
+        private ClassResource Create()
         {
-            this.ItemsAdded = true;
-
-            var resource = new ClassResource()
+            return new ClassResource()
             {
                 Type = this.ResourceNameComboBox.Text,
                 Total = this.PoolUpDown.Value,
@@ -142,7 +143,13 @@ namespace Concierge.Display.Windows
                 Recovery = (Recovery)Enum.Parse(typeof(Recovery), this.RecoveryComboBox.Text.Strip(" ")),
                 Note = this.NotesTextBox.Text,
             };
+        }
 
+        private ClassResource ToClassResource()
+        {
+            this.ItemsAdded = true;
+
+            var resource = this.Create();
             Program.UndoRedoService.AddCommand(new AddCommand<ClassResource>(this.ClassResources, resource, this.ConciergePage));
 
             return resource;
@@ -160,7 +167,10 @@ namespace Concierge.Display.Windows
                 this.ClassResource.Recovery = (Recovery)Enum.Parse(typeof(Recovery), this.RecoveryComboBox.Text.Strip(" "));
                 this.ClassResource.Note = this.NotesTextBox.Text;
 
-                Program.UndoRedoService.AddCommand(new EditCommand<ClassResource>(this.ClassResource, oldItem, this.ConciergePage));
+                if (!this.ClassResource.IsCustom)
+                {
+                    Program.UndoRedoService.AddCommand(new EditCommand<ClassResource>(this.ClassResource, oldItem, this.ConciergePage));
+                }
             }
             else
             {
@@ -204,9 +214,9 @@ namespace Concierge.Display.Windows
             this.SpentUpDown.Maximum = this.PoolUpDown.Value;
         }
 
-        private void ResourceNameComboBox_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        private void ResourceNameComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (this.ResourceNameComboBox.SelectedItem is ClassResource resource)
+            if (this.ResourceNameComboBox.SelectedItem is ComboBoxItem item && item.Tag is ClassResource resource)
             {
                 this.FillFields(resource);
             }
@@ -214,6 +224,18 @@ namespace Concierge.Display.Windows
             {
                 this.ClearFields(this.ResourceNameComboBox.Text);
             }
+        }
+
+        private void SaveButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (this.ResourceNameComboBox.Text.IsNullOrWhiteSpace())
+            {
+                return;
+            }
+
+            Program.CustomItemService.AddCustomItem(this.Create());
+            this.ClearFields();
+            this.ResourceNameComboBox.ItemsSource = DefaultItems;
         }
     }
 }

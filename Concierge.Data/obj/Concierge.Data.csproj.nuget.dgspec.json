@@ -13,9 +13,6 @@
         "packagesPath": "C:\\Users\\TomBe\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\TomBe\\source\\repos\\Concierge\\Concierge.Common\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
           "C:\\Users\\TomBe\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
@@ -94,9 +91,6 @@
         "packagesPath": "C:\\Users\\TomBe\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\TomBe\\source\\repos\\Concierge\\Concierge.Configuration\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
           "C:\\Users\\TomBe\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
@@ -191,9 +185,6 @@
         "packagesPath": "C:\\Users\\TomBe\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\TomBe\\source\\repos\\Concierge\\Concierge.Data\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
           "C:\\Users\\TomBe\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"

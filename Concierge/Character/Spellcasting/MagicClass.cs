@@ -6,12 +6,17 @@ namespace Concierge.Character.Spellcasting
 {
     using System;
     using System.Linq;
+    using System.Windows.Media;
 
     using Concierge.Character.Enums;
     using Concierge.Common;
+    using Concierge.Common.Attributes;
     using Concierge.Common.Dtos;
     using Concierge.Leveling.Dtos.Definitions;
+    using MaterialDesignThemes.Wpf;
     using Newtonsoft.Json;
+
+    using Constants = Concierge.Common.Constants;
 
     public sealed class MagicClass : ICopyable<MagicClass>, IUnique
     {
@@ -26,7 +31,21 @@ namespace Concierge.Character.Spellcasting
         [JsonIgnore]
         public int Attack => Program.CcsFile.Character.CalculateBonusFromAbility(this.Ability);
 
+        [JsonIgnore]
+        [SearchIgnore]
+        public string CustomType => nameof(MagicClass);
+
+        [JsonIgnore]
+        [SearchIgnore]
+        public Brush CustomTypeColor => Brushes.Goldenrod;
+
+        [JsonIgnore]
+        [SearchIgnore]
+        public PackIconKind CustomTypeIcon => PackIconKind.BookAccount;
+
         public Guid Id { get; set; }
+
+        public bool IsCustom { get; set; }
 
         public int KnownCantrips { get; set; }
 
@@ -60,6 +79,7 @@ namespace Concierge.Character.Spellcasting
                 KnownSpells = this.KnownSpells,
                 SpellSlots = this.SpellSlots,
                 Id = this.Id,
+                IsCustom = this.IsCustom,
             };
         }
 

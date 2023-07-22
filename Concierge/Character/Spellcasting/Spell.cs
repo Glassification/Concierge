@@ -38,6 +38,18 @@ namespace Concierge.Character.Spellcasting
 
         public bool Concentration { get; set; }
 
+        [JsonIgnore]
+        [SearchIgnore]
+        public string CustomType => nameof(Spell);
+
+        [JsonIgnore]
+        [SearchIgnore]
+        public Brush CustomTypeColor => Brushes.Plum;
+
+        [JsonIgnore]
+        [SearchIgnore]
+        public PackIconKind CustomTypeIcon => PackIconKind.AutoFix;
+
         public string Damage { get; set; }
 
         public string Description { get; set; }
@@ -69,6 +81,8 @@ namespace Concierge.Character.Spellcasting
         public PackIconKind RitualIcon => GetCheckBox(this.Ritual);
 
         public Guid Id { get; set; }
+
+        public bool IsCustom { get; set; }
 
         public int Level { get; set; }
 
@@ -111,6 +125,7 @@ namespace Concierge.Character.Spellcasting
                 Class = this.Class,
                 Id = this.Id,
                 Name = this.Name,
+                IsCustom = this.IsCustom,
             };
         }
 

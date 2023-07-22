@@ -171,23 +171,8 @@ namespace Concierge.Display.Controls
         private void PopupToggleButton_Click(object sender, RoutedEventArgs e)
         {
             SetColorButtons(this.RecentColorsStackPanel, this.CustomColorService.RecentColors);
-
-            var missingColors = this.CustomColorService.GetMissingColors(this.CustomColorList.ToList<CustomColor>());
-            if (missingColors.IsEmpty())
-            {
-                return;
-            }
-
-            missingColors.Reverse();
-            foreach (var color in missingColors)
-            {
-                this.CustomColorList.Items.Insert(0, new ComboBoxItem()
-                {
-                    Content = color.Name,
-                    Foreground = new SolidColorBrush(color.Color),
-                    Tag = color,
-                });
-            }
+            this.CustomColorList.Items.Clear();
+            InitializeColorList(this.CustomColorService.CustomColors, this.CustomColorList);
         }
     }
 }

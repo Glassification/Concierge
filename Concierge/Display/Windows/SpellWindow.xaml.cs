@@ -13,6 +13,8 @@ namespace Concierge.Display.Windows
     using Concierge.Character.Enums;
     using Concierge.Character.Spellcasting;
     using Concierge.Commands;
+    using Concierge.Common.Extensions;
+    using Concierge.Common.Utilities;
     using Concierge.Display.Components;
     using Concierge.Display.Enums;
 
@@ -26,7 +28,7 @@ namespace Concierge.Display.Windows
             this.InitializeComponent();
             this.UseRoundedCorners();
 
-            this.SpellNameComboBox.ItemsSource = Defaults.Spells;
+            this.SpellNameComboBox.ItemsSource = DefaultItems;
             this.SchoolComboBox.ItemsSource = Enum.GetValues(typeof(ArcaneSchools)).Cast<ArcaneSchools>();
             this.ClassComboBox.ItemsSource = Defaults.Classes;
             this.ConciergePage = ConciergePage.None;
@@ -57,6 +59,8 @@ namespace Concierge.Display.Windows
         public override string WindowName => nameof(SpellWindow);
 
         public bool ItemsAdded { get; private set; }
+
+        private static List<ComboBoxItem> DefaultItems => DisplayUtility.GenerateSelectorComboBox(Defaults.Spells, Program.CustomItemService.GetCustomItems<Spell>());
 
         private bool Editing { get; set; }
 
@@ -204,14 +208,15 @@ namespace Concierge.Display.Windows
             spell.Description = this.NotesTextBox.Text;
             spell.Class = this.ClassComboBox.Text;
 
-            Program.UndoRedoService.AddCommand(new EditCommand<Spell>(spell, oldItem, this.ConciergePage));
+            if (!spell.IsCustom)
+            {
+                Program.UndoRedoService.AddCommand(new EditCommand<Spell>(spell, oldItem, this.ConciergePage));
+            }
         }
 
-        private Spell ToSpell()
+        private Spell Create()
         {
-            this.ItemsAdded = true;
-
-            var spell = new Spell()
+            return new Spell()
             {
                 Name = this.SpellNameComboBox.Text,
                 Prepared = this.PreparedCheckBox.IsChecked ?? false,
@@ -229,6 +234,12 @@ namespace Concierge.Display.Windows
                 Description = this.NotesTextBox.Text,
                 Class = this.ClassComboBox.Text,
             };
+        }
+
+        private Spell ToSpell()
+        {
+            this.ItemsAdded = true;
+            var spell = this.Create();
 
             Program.UndoRedoService.AddCommand(new AddCommand<Spell>(this.Spells, spell, this.ConciergePage));
 
@@ -263,7 +274,7 @@ namespace Concierge.Display.Windows
 
         private void SpellNameComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (this.SpellNameComboBox.SelectedItem is Spell spell)
+            if (this.SpellNameComboBox.SelectedItem is ComboBoxItem item && item.Tag is Spell spell)
             {
                 this.FillFields(spell);
             }
@@ -271,6 +282,18 @@ namespace Concierge.Display.Windows
             {
                 this.ClearFields(this.SpellNameComboBox.Text);
             }
+        }
+
+        private void SaveButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (this.SpellNameComboBox.Text.IsNullOrWhiteSpace())
+            {
+                return;
+            }
+
+            Program.CustomItemService.AddCustomItem(this.Create());
+            this.ClearFields();
+            this.SpellNameComboBox.ItemsSource = DefaultItems;
         }
     }
 }

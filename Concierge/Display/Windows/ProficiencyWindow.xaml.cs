@@ -124,7 +124,7 @@ namespace Concierge.Display.Windows
 
         private static CompositeCollection GenerateComboBoxItems()
         {
-            return new CompositeCollection
+            var items = new CompositeCollection()
             {
                 Proficiency.MartialMelee,
                 Proficiency.MartialRanged,
@@ -144,6 +144,15 @@ namespace Concierge.Display.Windows
                 new Separator(),
                 new CollectionContainer() { Collection = Defaults.Instruments },
             };
+
+            var customItems = Program.CustomItemService.GetCustomItems<Proficiency>();
+            if (!customItems.IsEmpty())
+            {
+                items.Insert(0, new Separator());
+                items.Insert(0, new CollectionContainer() { Collection = customItems });
+            }
+
+            return items;
         }
 
         private void SetEnabledState(bool isEnabled)
@@ -158,15 +167,19 @@ namespace Concierge.Display.Windows
             this.ProficiencyComboBox.Text = this.SelectedProficiency.ProficiencyType.ToString();
         }
 
-        private Proficiency ToProficiency()
+        private Proficiency Create()
         {
-            this.ItemsAdded = true;
-
-            var proficiency = new Proficiency()
+            return new Proficiency()
             {
                 Name = this.ProficiencyTextComboBox.Text,
                 ProficiencyType = (ProficiencyTypes)Enum.Parse(typeof(ProficiencyTypes), this.ProficiencyComboBox.Text),
             };
+        }
+
+        private Proficiency ToProficiency()
+        {
+            this.ItemsAdded = true;
+            var proficiency = this.Create();
 
             Program.UndoRedoService.AddCommand(new AddCommand<Proficiency>(this.SelectedProficiencies, proficiency, this.ConciergePage));
 
@@ -180,7 +193,10 @@ namespace Concierge.Display.Windows
             proficiency.Name = this.ProficiencyTextComboBox.Text;
             proficiency.ProficiencyType = (ProficiencyTypes)Enum.Parse(typeof(ProficiencyTypes), this.ProficiencyComboBox.Text);
 
-            Program.UndoRedoService.AddCommand(new EditCommand<Proficiency>(proficiency, oldItem, this.ConciergePage));
+            if (!proficiency.IsCustom)
+            {
+                Program.UndoRedoService.AddCommand(new EditCommand<Proficiency>(proficiency, oldItem, this.ConciergePage));
+            }
         }
 
         private void ClearFields()
@@ -218,6 +234,18 @@ namespace Concierge.Display.Windows
         {
             this.Result = ConciergeWindowResult.Cancel;
             this.CloseConciergeWindow();
+        }
+
+        private void SaveButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (this.ProficiencyComboBox.Text.IsNullOrWhiteSpace())
+            {
+                return;
+            }
+
+            Program.CustomItemService.AddCustomItem(this.Create());
+            this.ClearFields();
+            this.ProficiencyComboBox.ItemsSource = GenerateComboBoxItems();
         }
     }
 }

@@ -1,0 +1,114 @@
+[
+  {
+    "Name": "Acid",
+    "Type": 0,
+    "Description": "",
+    "Id": "d5d06d46-5191-4794-9543-bd3c342f4e70",
+    "IsCustom": false
+  },
+  {
+    "Name": "Bludgeoning",
+    "Type": 0,
+    "Description": "",
+    "Id": "a6d9ed0e-2919-4dda-9cef-b574747c326a",
+    "IsCustom": false
+  },
+  {
+    "Name": "Cold",
+    "Type": 0,
+    "Description": "",
+    "Id": "acf1d754-9b08-480c-adff-1a86a0a2bb98",
+    "IsCustom": false
+  },
+  {
+    "Name": "Fire",
+    "Type": 0,
+    "Description": "",
+    "Id": "630a7297-ce57-4123-a949-0920f5bcdad8",
+    "IsCustom": false
+  },
+  {
+    "Name": "Force",
+    "Type": 0,
+    "Description": "",
+    "Id": "b36a3a84-06b0-4e16-aabb-668df4015772",
+    "IsCustom": false
+  },
+  {
+    "Name": "Lightning",
+    "Type": 0,
+    "Description": "",
+    "Id": "d9336d2e-b9b5-4b69-a613-63942bc33aea",
+    "IsCustom": false
+  },
+  {
+    "Name": "Magic Weapons",
+    "Type": 0,
+    "Description": "",
+    "Id": "5b945b01-eaaa-4f65-934b-9b428e5d3e0e",
+    "IsCustom": false
+  },
+  {
+    "Name": "Necrotic",
+    "Type": 0,
+    "Description": "",
+    "Id": "873775ff-e804-4e28-ae10-3fdaf030872c",
+    "IsCustom": false
+  },
+  {
+    "Name": "Nonmagical",
+    "Type": 0,
+    "Description": "",
+    "Id": "295b0c0a-801b-4c17-b64c-82541179b33c",
+    "IsCustom": false
+  },
+  {
+    "Name": "Piercing",
+    "Type": 0,
+    "Description": "",
+    "Id": "498a5bc7-aa7d-4ff2-a98e-3d58f07fc804",
+    "IsCustom": false
+  },
+  {
+    "Name": "Poison",
+    "Type": 0,
+    "Description": "",
+    "Id": "5cfae7b7-9190-46a7-925e-020007fb5a1a",
+    "IsCustom": false
+  },
+  {
+    "Name": "Psychic",
+    "Type": 0,
+    "Description": "",
+    "Id": "db2ce1b0-f317-4049-8bd5-4310f3a8a197",
+    "IsCustom": false
+  },
+  {
+    "Name": "Radiant",
+    "Type": 0,
+    "Description": "",
+    "Id": "7892503f-ff0b-4a46-8f72-341809dd49a1",
+    "IsCustom": false
+  },
+  {
+    "Name": "Slashing",
+    "Type": 0,
+    "Description": "",
+    "Id": "4f1fd012-e40c-4ae2-917f-07b858ab2eb3",
+    "IsCustom": false
+  },
+  {
+    "Name": "Spells",
+    "Type": 0,
+    "Description": "",
+    "Id": "6c9fb07f-6151-4f63-91c8-d0cd931ab5f6",
+    "IsCustom": false
+  },
+  {
+    "Name": "Thunder",
+    "Type": 0,
+    "Description": "",
+    "Id": "5c44a2cc-3ed7-452b-af9a-865dc31dcd22",
+    "IsCustom": false
+  }
+]

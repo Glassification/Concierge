@@ -5,10 +5,13 @@
 namespace Concierge.Character.Characteristics
 {
     using System;
+    using System.Windows.Media;
 
     using Concierge.Common;
+    using Concierge.Common.Attributes;
     using Concierge.Common.Dtos;
     using Concierge.Common.Extensions;
+    using MaterialDesignThemes.Wpf;
     using Newtonsoft.Json;
 
     public sealed class Language : ICopyable<Language>, IUnique
@@ -27,6 +30,20 @@ namespace Concierge.Character.Characteristics
 
         public string Speakers { get; set; }
 
+        public bool IsCustom { get; set; }
+
+        [JsonIgnore]
+        [SearchIgnore]
+        public string CustomType => nameof(Language);
+
+        [JsonIgnore]
+        [SearchIgnore]
+        public Brush CustomTypeColor => Brushes.Orchid;
+
+        [JsonIgnore]
+        [SearchIgnore]
+        public PackIconKind CustomTypeIcon => PackIconKind.Translate;
+
         public Guid Id { get; set; }
 
         [JsonIgnore]
@@ -40,6 +57,7 @@ namespace Concierge.Character.Characteristics
                 Script = this.Script,
                 Speakers = this.Speakers,
                 Id = this.Id,
+                IsCustom = this.IsCustom,
             };
         }
 

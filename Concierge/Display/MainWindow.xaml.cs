@@ -101,6 +101,7 @@ namespace Concierge.Display
             this.SettingsButton.AddClickEvent(this.SettingsButton_Click);
             this.AboutButton.AddClickEvent(this.AboutButton_Click);
             this.GlossaryButton.AddClickEvent(this.GlossaryButton_Click);
+            this.CustomItemsButton.AddClickEvent(this.CustomItemsButton_Click);
 
             Program.Logger.Info($"{nameof(MainWindow)} loaded.");
             Program.InitializeMainWindow(this);
@@ -201,6 +202,14 @@ namespace Concierge.Display
             Program.Logger.Info($"Open glossary.");
 
             ConciergeWindowService.ShowNonBlockingWindow(typeof(GlossaryWindow));
+        }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822:Mark members as static", Justification = "The way she goes.")]
+        public void OpenCustomItems()
+        {
+            Program.Logger.Info($"Open custom items.");
+
+            ConciergeWindowService.ShowWindow(typeof(CustomItemWindow));
         }
 
         public void OpenCharacterSheet(string file = "")
@@ -613,6 +622,9 @@ namespace Concierge.Display
                 case Key.L:
                     this.LongRest();
                     break;
+                case Key.M:
+                    this.OpenCustomItems();
+                    break;
                 case Key.N:
                     this.NewCharacterSheet();
                     break;
@@ -930,6 +942,13 @@ namespace Concierge.Display
         {
             ConciergeSoundService.TapNavigation();
             this.OpenGlossary();
+            this.IgnoreSecondPress = true;
+        }
+
+        private void CustomItemsButton_Click(object sender, RoutedEventArgs e)
+        {
+            ConciergeSoundService.TapNavigation();
+            this.OpenCustomItems();
             this.IgnoreSecondPress = true;
         }
     }

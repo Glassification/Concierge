@@ -5,10 +5,14 @@
 namespace Concierge.Character.Characteristics
 {
     using System;
+    using System.Windows.Media;
 
     using Concierge.Character.Enums;
     using Concierge.Common;
+    using Concierge.Common.Attributes;
     using Concierge.Common.Dtos;
+    using MaterialDesignThemes.Wpf;
+    using Newtonsoft.Json;
 
     public sealed class Proficiency : ICopyable<Proficiency>, IUnique
     {
@@ -31,6 +35,20 @@ namespace Concierge.Character.Characteristics
 
         public string Name { get; set; }
 
+        public bool IsCustom { get; set; }
+
+        [JsonIgnore]
+        [SearchIgnore]
+        public string CustomType => nameof(Proficiency);
+
+        [JsonIgnore]
+        [SearchIgnore]
+        public Brush CustomTypeColor => Brushes.LightSeaGreen;
+
+        [JsonIgnore]
+        [SearchIgnore]
+        public PackIconKind CustomTypeIcon => PackIconKind.School;
+
         public ProficiencyTypes ProficiencyType { get; set; }
 
         public Guid Id { get; set; }
@@ -42,6 +60,7 @@ namespace Concierge.Character.Characteristics
                 Name = this.Name,
                 ProficiencyType = this.ProficiencyType,
                 Id = this.Id,
+                IsCustom = this.IsCustom,
             };
         }
 

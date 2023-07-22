@@ -8,6 +8,7 @@ namespace Concierge.Character.Equipable
     using System.Windows.Media;
 
     using Concierge.Character.Enums;
+    using Concierge.Character.Journals;
     using Concierge.Common;
     using Concierge.Common.Attributes;
     using Concierge.Common.Dtos;
@@ -37,6 +38,18 @@ namespace Concierge.Character.Equipable
         public CoinType CoinType { get; set; }
 
         public DateTime CreationDate { get; set; }
+
+        [JsonIgnore]
+        [SearchIgnore]
+        public string CustomType => nameof(Inventory);
+
+        [JsonIgnore]
+        [SearchIgnore]
+        public Brush CustomTypeColor => Brushes.LightSkyBlue;
+
+        [JsonIgnore]
+        [SearchIgnore]
+        public PackIconKind CustomTypeIcon => PackIconKind.BagPersonal;
 
         public string Description { get; set; }
 
@@ -71,6 +84,8 @@ namespace Concierge.Character.Equipable
         public bool IgnoreWeight { get; set; }
 
         public int Index { get; set; }
+
+        public bool IsCustom { get; set; }
 
         public string ItemCategory { get; set; }
 
@@ -133,6 +148,7 @@ namespace Concierge.Character.Equipable
                 CreationDate = this.CreationDate,
                 IsEquipped = this.IsEquipped,
                 EquipmentSlot = this.EquipmentSlot,
+                IsCustom = this.IsCustom,
             };
         }
 

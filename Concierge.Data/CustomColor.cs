@@ -10,8 +10,10 @@ namespace Concierge.Data
     using System.Windows.Media;
 
     using Concierge.Common;
+    using Concierge.Common.Attributes;
     using Concierge.Common.Dtos;
     using Concierge.Common.Extensions;
+    using MaterialDesignThemes.Wpf;
     using Newtonsoft.Json;
 
     /// <summary>
@@ -161,6 +163,20 @@ namespace Concierge.Data
         /// </summary>
         public bool IsValid { get; init; }
 
+        public bool IsCustom { get; set; }
+
+        [JsonIgnore]
+        [SearchIgnore]
+        public string CustomType => nameof(CustomColor);
+
+        [JsonIgnore]
+        [SearchIgnore]
+        public Brush CustomTypeColor => new SolidColorBrush(this.Color);
+
+        [JsonIgnore]
+        [SearchIgnore]
+        public PackIconKind CustomTypeIcon => PackIconKind.Palette;
+
         /// <summary>
         /// Gets or sets the name of the color.
         /// </summary>
@@ -248,7 +264,19 @@ namespace Concierge.Data
                 Name = this.Name,
                 IsValid = this.IsValid,
                 Id = this.Id,
+                IsCustom = this.IsCustom,
             };
+        }
+
+        public void ShallowCopy(CustomColor color)
+        {
+            this.A = color.A;
+            this.R = color.R;
+            this.G = color.G;
+            this.B = color.B;
+            this.Hex = color.Hex;
+            this.Name = color.Name;
+            this.IsCustom = color.IsCustom;
         }
 
         /// <summary>

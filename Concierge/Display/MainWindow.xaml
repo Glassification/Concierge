@@ -141,6 +141,11 @@
                                     Text="Properties..."/>
                                 <Separator Foreground="White"/>
                                 <controls:PopupButton
+                                    x:Name="CustomItemsButton"
+                                    IconKind="PencilBoxMultiple"
+                                    IconColor="#ffd166"
+                                    Text="Custom Items..."/>
+                                <controls:PopupButton
                                     x:Name="SearchButton"
                                     IconKind="FileSearch"
                                     IconColor="#ffd166"

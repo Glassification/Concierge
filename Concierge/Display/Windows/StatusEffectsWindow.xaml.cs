@@ -8,11 +8,13 @@ namespace Concierge.Display.Windows
     using System.Collections.Generic;
     using System.Linq;
     using System.Windows;
+    using System.Windows.Controls;
 
     using Concierge.Character.Enums;
     using Concierge.Character.Vitals;
     using Concierge.Commands;
     using Concierge.Common.Extensions;
+    using Concierge.Common.Utilities;
     using Concierge.Display.Components;
     using Concierge.Display.Enums;
 
@@ -26,7 +28,7 @@ namespace Concierge.Display.Windows
             this.InitializeComponent();
             this.UseRoundedCorners();
 
-            this.NameComboBox.ItemsSource = Defaults.StatusEffects;
+            this.NameComboBox.ItemsSource = DefaultItems;
             this.TypeComboBox.ItemsSource = Enum.GetValues(typeof(StatusEffectTypes)).Cast<StatusEffectTypes>();
             this.ConciergePage = ConciergePage.None;
             this.SelectedEffect = new StatusEffect();
@@ -43,6 +45,8 @@ namespace Concierge.Display.Windows
         public override string WindowName => nameof(StatusEffectsWindow);
 
         public bool ItemsAdded { get; private set; }
+
+        private static List<ComboBoxItem> DefaultItems => DisplayUtility.GenerateSelectorComboBox(Defaults.StatusEffects, Program.CustomItemService.GetCustomItems<StatusEffect>());
 
         private bool Editing { get; set; }
 
@@ -122,9 +126,9 @@ namespace Concierge.Display.Windows
             this.DescriptionTextBox.Text = statusEffect.Description;
         }
 
-        private void ClearFields()
+        private void ClearFields(string name = "")
         {
-            this.NameComboBox.Text = string.Empty;
+            this.NameComboBox.Text = name;
             this.TypeComboBox.Text = StatusEffectTypes.None.ToString();
             this.DescriptionTextBox.Text = string.Empty;
         }
@@ -137,19 +141,26 @@ namespace Concierge.Display.Windows
             this.SelectedEffect.Type = (StatusEffectTypes)Enum.Parse(typeof(StatusEffectTypes), this.TypeComboBox.Text);
             this.SelectedEffect.Description = this.DescriptionTextBox.Text;
 
-            Program.UndoRedoService.AddCommand(new EditCommand<StatusEffect>(this.SelectedEffect, oldItem, this.ConciergePage));
+            if (!this.SelectedEffect.IsCustom)
+            {
+                Program.UndoRedoService.AddCommand(new EditCommand<StatusEffect>(this.SelectedEffect, oldItem, this.ConciergePage));
+            }
         }
 
-        private StatusEffect ToStatusEffect()
+        private StatusEffect Create()
         {
-            this.ItemsAdded = true;
-
-            var effect = new StatusEffect()
+            return new StatusEffect()
             {
                 Name = this.NameComboBox.Text,
                 Type = (StatusEffectTypes)Enum.Parse(typeof(StatusEffectTypes), this.TypeComboBox.Text),
                 Description = this.DescriptionTextBox.Text,
             };
+        }
+
+        private StatusEffect ToStatusEffect()
+        {
+            this.ItemsAdded = true;
+            var effect = this.Create();
 
             Program.UndoRedoService.AddCommand(new AddCommand<StatusEffect>(this.StatusEffects, effect, this.ConciergePage));
 
@@ -180,6 +191,30 @@ namespace Concierge.Display.Windows
         {
             this.Result = ConciergeWindowResult.Cancel;
             this.CloseConciergeWindow();
+        }
+
+        private void SaveButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (this.NameComboBox.Text.IsNullOrWhiteSpace())
+            {
+                return;
+            }
+
+            Program.CustomItemService.AddCustomItem(this.Create());
+            this.ClearFields();
+            this.NameComboBox.ItemsSource = DefaultItems;
+        }
+
+        private void NameComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (this.NameComboBox.SelectedItem is ComboBoxItem item && item.Tag is StatusEffect statusEffect)
+            {
+                this.FillFields(statusEffect);
+            }
+            else
+            {
+                this.ClearFields(this.NameComboBox.Text);
+            }
         }
     }
 }

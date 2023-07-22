@@ -16,6 +16,7 @@ namespace Concierge.Display.Windows
     using Concierge.Commands;
     using Concierge.Common.Enums;
     using Concierge.Common.Exceptions;
+    using Concierge.Common.Extensions;
     using Concierge.Common.Utilities;
     using Concierge.Configuration;
     using Concierge.Data;
@@ -33,7 +34,7 @@ namespace Concierge.Display.Windows
             this.InitializeComponent();
             this.UseRoundedCorners();
 
-            this.AttackComboBox.ItemsSource = Defaults.Weapons;
+            this.AttackComboBox.ItemsSource = DefaultItems;
             this.TypeComboBox.ItemsSource = Enum.GetValues(typeof(WeaponTypes)).Cast<WeaponTypes>();
             this.AbilityComboBox.ItemsSource = Enum.GetValues(typeof(Abilities)).Cast<Abilities>();
             this.DamageTypeComboBox.ItemsSource = Enum.GetValues(typeof(DamageTypes)).Cast<DamageTypes>();
@@ -63,6 +64,8 @@ namespace Concierge.Display.Windows
         public override string WindowName => nameof(AttacksWindow);
 
         public bool ItemsAdded { get; private set; }
+
+        private static List<ComboBoxItem> DefaultItems => DisplayUtility.GenerateSelectorComboBox(Defaults.Weapons, Program.CustomItemService.GetCustomItems<Weapon>());
 
         private bool Editing { get; set; }
 
@@ -233,14 +236,15 @@ namespace Concierge.Display.Windows
             weapon.Value = this.ValueUpDown.Value;
             weapon.CoinType = (CoinType)Enum.Parse(typeof(CoinType), this.CoinTypeComboBox.Text);
 
-            Program.UndoRedoService.AddCommand(new EditCommand<Weapon>(weapon, oldItem, this.ConciergePage));
+            if (!weapon.IsCustom)
+            {
+                Program.UndoRedoService.AddCommand(new EditCommand<Weapon>(weapon, oldItem, this.ConciergePage));
+            }
         }
 
-        private Weapon ToWeapon()
+        private Weapon Create()
         {
-            this.ItemsAdded = true;
-
-            var weapon = new Weapon(this.Creature ?? throw new NullValueException(nameof(this.Creature)))
+            return new Weapon(this.Creature ?? throw new NullValueException(nameof(this.Creature)))
             {
                 Name = this.AttackComboBox.Text,
                 Type = (WeaponTypes)Enum.Parse(typeof(WeaponTypes), this.TypeComboBox.Text),
@@ -257,6 +261,12 @@ namespace Concierge.Display.Windows
                 Attuned = this.AttunedCheckBox.IsChecked ?? false,
                 CoinType = (CoinType)Enum.Parse(typeof(CoinType), this.CoinTypeComboBox.Text),
             };
+        }
+
+        private Weapon ToWeapon()
+        {
+            this.ItemsAdded = true;
+            var weapon = this.Create();
 
             Program.UndoRedoService.AddCommand(new AddCommand<Weapon>(this.Weapons, weapon, this.ConciergePage));
 
@@ -291,7 +301,7 @@ namespace Concierge.Display.Windows
 
         private void AttackComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (this.AttackComboBox.SelectedItem is Weapon weapon)
+            if (this.AttackComboBox.SelectedItem is ComboBoxItem item && item.Tag is Weapon weapon)
             {
                 this.FillFields(weapon);
             }
@@ -299,6 +309,18 @@ namespace Concierge.Display.Windows
             {
                 this.ClearFields(this.AttackComboBox.Text);
             }
+        }
+
+        private void SaveButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (this.AttackComboBox.Text.IsNullOrWhiteSpace())
+            {
+                return;
+            }
+
+            Program.CustomItemService.AddCustomItem(this.Create());
+            this.ClearFields();
+            this.AttackComboBox.ItemsSource = DefaultItems;
         }
     }
 }
