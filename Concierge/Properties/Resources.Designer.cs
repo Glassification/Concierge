@@ -1373,25 +1373,12 @@ namespace Concierge.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Arcane Trickster
-        ///Artificer
-        ///Barbarian
-        ///Bard
-        ///Blood Hunter
-        ///Cleric
-        ///Druid
-        ///Fighter
-        ///Monk
-        ///Paladin
-        ///Ranger
-        ///Rogue
-        ///Sorcerer
-        ///Warlock
-        ///Wizard.
+        ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static string MagicClassName {
+        internal static byte[] MagicClass {
             get {
-                return ResourceManager.GetString("MagicClassName", resourceCulture);
+                object obj = ResourceManager.GetObject("MagicClass", resourceCulture);
+                return ((byte[])(obj));
             }
         }
         
@@ -1618,26 +1605,12 @@ namespace Concierge.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Acid
-        ///Bludgeoning
-        ///Cold
-        ///Fire
-        ///Force
-        ///Lightning
-        ///Magic Weapons
-        ///Necrotic
-        ///Nonmagical
-        ///Piercing
-        ///Poison
-        ///Psychic
-        ///Radiant
-        ///Slashing
-        ///Spells
-        ///Thunder.
+        ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static string StatusEffect {
+        internal static byte[] StatusEffect {
             get {
-                return ResourceManager.GetString("StatusEffect", resourceCulture);
+                object obj = ResourceManager.GetObject("StatusEffect", resourceCulture);
+                return ((byte[])(obj));
             }
         }
         

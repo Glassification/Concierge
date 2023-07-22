@@ -9,7 +9,10 @@ namespace Concierge.Display.Windows
     using System.Windows.Controls;
 
     using Concierge.Character.Characteristics;
+    using Concierge.Character.Equipable;
     using Concierge.Commands;
+    using Concierge.Common.Extensions;
+    using Concierge.Common.Utilities;
     using Concierge.Display.Components;
     using Concierge.Display.Enums;
 
@@ -23,7 +26,7 @@ namespace Concierge.Display.Windows
             this.InitializeComponent();
             this.UseRoundedCorners();
 
-            this.NameComboBox.ItemsSource = Defaults.Languages;
+            this.NameComboBox.ItemsSource = DefaultItems;
             this.ConciergePage = ConciergePage.None;
             this.SelectedLanguage = new Language();
             this.Languages = new List<Language>();
@@ -39,6 +42,8 @@ namespace Concierge.Display.Windows
         public override string WindowName => nameof(LanguagesWindow);
 
         public bool ItemsAdded { get; private set; }
+
+        private static List<ComboBoxItem> DefaultItems => DisplayUtility.GenerateSelectorComboBox(Defaults.Languages, Program.CustomItemService.GetCustomItems<Language>());
 
         private bool Editing { get; set; }
 
@@ -134,19 +139,26 @@ namespace Concierge.Display.Windows
             language.Script = this.ScriptTextBox.Text;
             language.Speakers = this.SpeakersTextBox.Text;
 
-            Program.UndoRedoService.AddCommand(new EditCommand<Language>(language, oldItem, this.ConciergePage));
+            if (!language.IsCustom)
+            {
+                Program.UndoRedoService.AddCommand(new EditCommand<Language>(language, oldItem, this.ConciergePage));
+            }
         }
 
-        private Language ToLanguage()
+        private Language Create()
         {
-            this.ItemsAdded = true;
-
-            var language = new Language()
+            return new Language()
             {
                 Name = this.NameComboBox.Text,
                 Script = this.ScriptTextBox.Text,
                 Speakers = this.SpeakersTextBox.Text,
             };
+        }
+
+        private Language ToLanguage()
+        {
+            this.ItemsAdded = true;
+            var language = this.Create();
 
             Program.UndoRedoService.AddCommand(new AddCommand<Language>(this.Languages, language, this.ConciergePage));
 
@@ -181,7 +193,7 @@ namespace Concierge.Display.Windows
 
         private void NameComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (this.NameComboBox.SelectedItem is Language language)
+            if (this.NameComboBox.SelectedItem is ComboBoxItem item && item.Tag is Language language)
             {
                 this.FillFields(language);
             }
@@ -189,6 +201,18 @@ namespace Concierge.Display.Windows
             {
                 this.ClearFields(this.NameComboBox.Text);
             }
+        }
+
+        private void SaveButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (this.NameComboBox.Text.IsNullOrWhiteSpace())
+            {
+                return;
+            }
+
+            Program.CustomItemService.AddCustomItem(this.Create());
+            this.ClearFields();
+            this.NameComboBox.ItemsSource = DefaultItems;
         }
     }
 }

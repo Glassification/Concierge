@@ -34,7 +34,7 @@ namespace Concierge.Display.Windows
             this.InitializeComponent();
             this.UseRoundedCorners();
 
-            this.NameComboBox.ItemsSource = DisplayUtility.GenerateSelectorComboBox(Defaults.Inventory, Program.CustomItemService.GetCustomItems<Inventory>());
+            this.NameComboBox.ItemsSource = DefaultItems;
             this.CategoryComboBox.ItemsSource = Defaults.ItemCategories;
             this.CoinTypeComboBox.ItemsSource = Enum.GetValues(typeof(CoinType)).Cast<CoinType>();
             this.ConciergePage = ConciergePage.None;
@@ -59,6 +59,8 @@ namespace Concierge.Display.Windows
         public override string WindowName => nameof(InventoryWindow);
 
         public bool ItemsAdded { get; private set; }
+
+        private static List<ComboBoxItem> DefaultItems => DisplayUtility.GenerateSelectorComboBox(Defaults.Inventory, Program.CustomItemService.GetCustomItems<Inventory>());
 
         private bool EquippedItem { get; set; }
 
@@ -304,7 +306,7 @@ namespace Concierge.Display.Windows
 
             Program.CustomItemService.AddCustomItem(this.Create());
             this.ClearFields();
-            this.NameComboBox.ItemsSource = DisplayUtility.GenerateSelectorComboBox(Defaults.Inventory, Program.CustomItemService.GetCustomItems<Inventory>());
+            this.NameComboBox.ItemsSource = DefaultItems;
         }
     }
 }

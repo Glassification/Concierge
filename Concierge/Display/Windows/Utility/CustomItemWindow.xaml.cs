@@ -14,6 +14,7 @@ namespace Concierge.Display.Windows.Utility
     using Concierge.Common;
     using Concierge.Data;
     using Concierge.Display.Components;
+    using Concierge.Display.Enums;
     using Concierge.Display.Utility;
     using Concierge.Services;
 
@@ -58,8 +59,13 @@ namespace Concierge.Display.Windows.Utility
             }
             else if (item is CustomColor color)
             {
-                color.ShallowCopy(ConciergeWindowService.ShowColorWindow(typeof(CustomColorWindow), color));
-                this.Draw();
+                var result = ConciergeWindowService.ShowColorWindow(typeof(CustomColorWindow), color);
+                if (result.IsValid)
+                {
+                    color.ShallowCopy(result);
+                    this.Draw();
+                }
+
                 return;
             }
             else if (item is Inventory)
@@ -159,6 +165,20 @@ namespace Concierge.Display.Windows.Utility
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
+            if (this.CustomItemsDataGrid.SelectedItem is not null)
+            {
+                var result = ConciergeMessageBox.Show(
+                    "Are you sure you wish to delete the item? This action cannot be undone.",
+                    "Confirm Delete",
+                    ConciergeWindowButtons.YesNo,
+                    ConciergeWindowIcons.Question);
+
+                if (result != ConciergeWindowResult.Yes)
+                {
+                    return;
+                }
+            }
+
             if (this.CustomItemsDataGrid.SelectedItem is CustomColor color)
             {
                 Program.CustomColorService.RemoveCustomColor(color);

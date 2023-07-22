@@ -13,6 +13,8 @@ namespace Concierge.Display.Windows
     using Concierge.Character.Enums;
     using Concierge.Character.Equipable;
     using Concierge.Commands;
+    using Concierge.Common.Extensions;
+    using Concierge.Common.Utilities;
     using Concierge.Display.Components;
     using Concierge.Display.Enums;
 
@@ -26,7 +28,7 @@ namespace Concierge.Display.Windows
             this.InitializeComponent();
             this.UseRoundedCorners();
 
-            this.NameComboBox.ItemsSource = Defaults.Ammunition;
+            this.NameComboBox.ItemsSource = DefaultItems;
             this.DamageTypeComboBox.ItemsSource = Enum.GetValues(typeof(DamageTypes)).Cast<DamageTypes>();
             this.CoinTypeComboBox.ItemsSource = Enum.GetValues(typeof(CoinType)).Cast<CoinType>();
             this.ConciergePage = ConciergePage.None;
@@ -48,6 +50,8 @@ namespace Concierge.Display.Windows
         public override string WindowName => nameof(AmmunitionWindow);
 
         public bool ItemsAdded { get; private set; }
+
+        private static List<ComboBoxItem> DefaultItems => DisplayUtility.GenerateSelectorComboBox(Defaults.Ammunition, Program.CustomItemService.GetCustomItems<Ammunition>());
 
         private bool Editing { get; set; }
 
@@ -156,14 +160,15 @@ namespace Concierge.Display.Windows
             ammunition.Value = this.ValueUpDown.Value;
             ammunition.CoinType = (CoinType)Enum.Parse(typeof(CoinType), this.CoinTypeComboBox.Text);
 
-            Program.UndoRedoService.AddCommand(new EditCommand<Ammunition>(ammunition, oldItem, this.ConciergePage));
+            if (!ammunition.IsCustom)
+            {
+                Program.UndoRedoService.AddCommand(new EditCommand<Ammunition>(ammunition, oldItem, this.ConciergePage));
+            }
         }
 
-        private Ammunition ToAmmunition()
+        private Ammunition Create()
         {
-            this.ItemsAdded = true;
-
-            var ammo = new Ammunition()
+            return new Ammunition()
             {
                 Name = this.NameComboBox.Text,
                 Quantity = this.QuantityUpDown.Value,
@@ -173,6 +178,12 @@ namespace Concierge.Display.Windows
                 Value = this.ValueUpDown.Value,
                 CoinType = (CoinType)Enum.Parse(typeof(CoinType), this.CoinTypeComboBox.Text),
             };
+        }
+
+        private Ammunition ToAmmunition()
+        {
+            this.ItemsAdded = true;
+            var ammo = this.Create();
 
             Program.UndoRedoService.AddCommand(new AddCommand<Ammunition>(this.Ammunition, ammo, this.ConciergePage));
 
@@ -207,7 +218,7 @@ namespace Concierge.Display.Windows
 
         private void NameComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (this.NameComboBox.SelectedItem is Ammunition ammunition)
+            if (this.NameComboBox.SelectedItem is ComboBoxItem item && item.Tag is Ammunition ammunition)
             {
                 this.FillFields(ammunition);
             }
@@ -220,6 +231,18 @@ namespace Concierge.Display.Windows
         private void QuantityUsedUpDown_ValueChanged(object sender, RoutedEventArgs e)
         {
             this.UsedUpDown.Maximum = this.QuantityUpDown.Value;
+        }
+
+        private void SaveButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (this.NameComboBox.Text.IsNullOrWhiteSpace())
+            {
+                return;
+            }
+
+            Program.CustomItemService.AddCustomItem(this.Create());
+            this.ClearFields();
+            this.NameComboBox.ItemsSource = DefaultItems;
         }
     }
 }

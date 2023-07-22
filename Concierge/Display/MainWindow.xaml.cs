@@ -622,6 +622,9 @@ namespace Concierge.Display
                 case Key.L:
                     this.LongRest();
                     break;
+                case Key.M:
+                    this.OpenCustomItems();
+                    break;
                 case Key.N:
                     this.NewCharacterSheet();
                     break;

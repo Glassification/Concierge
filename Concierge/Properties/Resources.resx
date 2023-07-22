@@ -517,8 +517,8 @@
   <data name="LevelExp" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Constants\LevelExp.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
-  <data name="MagicClassName" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\Constants\MagicClassName.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  <data name="MagicClass" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Json\MagicClass.json;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="Names" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Json\Names.json;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -581,7 +581,7 @@
     <value>Resources\Json\Spell.json;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="StatusEffect" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\Constants\StatusEffect.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>Resources\Json\StatusEffect.json;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="StatusEffectsWindow_DescriptionTextBox" xml:space="preserve">
     <value>Resistance and then vulnerability are applied after all other modifiers to damage. Multiple instances of resistance or vulnerability that affect the same damage type count as only one instance.</value>

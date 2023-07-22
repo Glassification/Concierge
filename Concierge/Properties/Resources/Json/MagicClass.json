@@ -1,0 +1,152 @@
+[
+  {
+    "Ability": 4,
+    "Id": "a477fb52-0823-4450-ae05-75ea2f6b5aa8",
+    "IsCustom": false,
+    "KnownCantrips": 3,
+    "KnownSpells": 3,
+    "Level": 3,
+    "Name": "Arcane Trickster",
+    "SpellSlots": 2
+  },
+  {
+    "Ability": 4,
+    "Id": "bc5ca94a-0f6d-4cad-8270-907a30c13bf8",
+    "IsCustom": false,
+    "KnownCantrips": 2,
+    "KnownSpells": 0,
+    "Level": 1,
+    "Name": "Artificer",
+    "SpellSlots": 2
+  },
+  {
+    "Ability": 0,
+    "Id": "52c59ed2-f0fc-4c7c-b028-c890b1a29bfc",
+    "IsCustom": false,
+    "KnownCantrips": 0,
+    "KnownSpells": 0,
+    "Level": 1,
+    "Name": "Barbarian",
+    "SpellSlots": 0
+  },
+  {
+    "Ability": 6,
+    "Id": "26348e2e-bad1-418c-a34a-aca30fd90e06",
+    "IsCustom": false,
+    "KnownCantrips": 2,
+    "KnownSpells": 4,
+    "Level": 1,
+    "Name": "Bard",
+    "SpellSlots": 2
+  },
+  {
+    "Ability": 4,
+    "Id": "070d16f9-cd0f-444d-8648-eba5b88c5ada",
+    "IsCustom": false,
+    "KnownCantrips": 1,
+    "KnownSpells": 0,
+    "Level": 1,
+    "Name": "Blood Hunter",
+    "SpellSlots": 0
+  },
+  {
+    "Ability": 5,
+    "Id": "4f8c9011-ef35-4503-8366-2bab1f57eed7",
+    "IsCustom": false,
+    "KnownCantrips": 3,
+    "KnownSpells": 1,
+    "Level": 1,
+    "Name": "Cleric",
+    "SpellSlots": 2
+  },
+  {
+    "Ability": 5,
+    "Id": "96e34224-64de-4f0f-a29b-597099b27188",
+    "IsCustom": false,
+    "KnownCantrips": 3,
+    "KnownSpells": 1,
+    "Level": 1,
+    "Name": "Druid",
+    "SpellSlots": 2
+  },
+  {
+    "Ability": 0,
+    "Id": "39fbbde9-74fb-4ed5-8442-54000ba4861c",
+    "IsCustom": false,
+    "KnownCantrips": 0,
+    "KnownSpells": 0,
+    "Level": 1,
+    "Name": "Fighter",
+    "SpellSlots": 0
+  },
+  {
+    "Ability": 5,
+    "Id": "a0e50c21-372b-4847-8f58-1f1c4d77cd51",
+    "IsCustom": false,
+    "KnownCantrips": 0,
+    "KnownSpells": 0,
+    "Level": 1,
+    "Name": "Monk",
+    "SpellSlots": 0
+  },
+  {
+    "Ability": 6,
+    "Id": "f4f1281e-0fc1-4f47-bf4b-89bed9ea974c",
+    "IsCustom": false,
+    "KnownCantrips": 0,
+    "KnownSpells": 1,
+    "Level": 2,
+    "Name": "Paladin",
+    "SpellSlots": 2
+  },
+  {
+    "Ability": 5,
+    "Id": "9daf6076-5c83-4837-b5a6-fd0de0a3a351",
+    "IsCustom": false,
+    "KnownCantrips": 0,
+    "KnownSpells": 2,
+    "Level": 2,
+    "Name": "Ranger",
+    "SpellSlots": 2
+  },
+  {
+    "Ability": 0,
+    "Id": "861b71f7-de2a-4175-b1cd-fe38c2e90a21",
+    "IsCustom": false,
+    "KnownCantrips": 0,
+    "KnownSpells": 0,
+    "Level": 1,
+    "Name": "Rogue",
+    "SpellSlots": 0
+  },
+  {
+    "Ability": 6,
+    "Id": "8c88713c-17c5-4440-9f1f-a518aef00de7",
+    "IsCustom": false,
+    "KnownCantrips": 4,
+    "KnownSpells": 2,
+    "Level": 1,
+    "Name": "Sorcerer",
+    "SpellSlots": 2
+  },
+  {
+    "Ability": 6,
+    "Id": "2a65dd91-91b0-4993-a37d-74cfdf0ee5e7",
+    "IsCustom": false,
+    "KnownCantrips": 2,
+    "KnownSpells": 2,
+    "Level": 1,
+    "Name": "Warlock",
+    "SpellSlots": 1
+  },
+  {
+    "Ability": 4,
+    "Id": "7a229f2f-e84e-4e33-a75e-b6501cb623c2",
+    "IsCustom": false,
+    "KnownCantrips": 3,
+    "KnownSpells": 1,
+    "Level": 1,
+    "Name": "Wizard",
+    "SpellSlots": 2
+  }
+]

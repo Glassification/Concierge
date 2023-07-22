@@ -70,7 +70,7 @@ namespace Concierge.DevTools
 
             rootCommand.Invoke(args);*/
 
-            CustomBlobGenerator.Generate(args[0]);
+            StatusEffectGenerator.Generate(@"C:\Users\TomBe\source\repos\StatusEffect.json");
         }
     }
 }

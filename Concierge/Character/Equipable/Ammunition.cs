@@ -36,6 +36,7 @@ namespace Concierge.Character.Equipable
         [JsonIgnore]
         [SearchIgnore]
         public Brush CustomTypeColor => Brushes.BurlyWood;
+
         [JsonIgnore]
         [SearchIgnore]
         public PackIconKind CustomTypeIcon => PackIconKind.ArrowProjectileMultiple;

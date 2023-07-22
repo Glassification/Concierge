@@ -6,14 +6,11 @@ namespace Concierge.Display.Windows
 {
     using System;
     using System.Collections.Generic;
-    using System.Linq;
     using System.Windows;
     using System.Windows.Controls;
-    using System.Windows.Data;
 
     using Concierge.Character.Characteristics;
     using Concierge.Character.Enums;
-    using Concierge.Character.Equipable;
     using Concierge.Commands;
     using Concierge.Common.Extensions;
     using Concierge.Common.Utilities;
@@ -30,7 +27,7 @@ namespace Concierge.Display.Windows
             this.InitializeComponent();
             this.UseRoundedCorners();
 
-            this.NameComboBox.ItemsSource = DisplayUtility.GenerateSelectorComboBox(Defaults.Abilities, Program.CustomItemService.GetCustomItems<Ability>());
+            this.NameComboBox.ItemsSource = DefaultItems;
             this.TypeComboBox.ItemsSource = StringUtility.FormatEnumForDisplay(typeof(AbilityTypes));
             this.ConciergePage = ConciergePage.None;
             this.Abilities = new List<Ability>();
@@ -51,6 +48,8 @@ namespace Concierge.Display.Windows
         public override string HeaderText => $"{(this.Editing ? "Edit" : "Add")} Ability";
 
         public override string WindowName => nameof(AbilitiesWindow);
+
+        private static List<ComboBoxItem> DefaultItems => DisplayUtility.GenerateSelectorComboBox(Defaults.Abilities, Program.CustomItemService.GetCustomItems<Ability>());
 
         private bool Editing { get; set; }
 
@@ -240,7 +239,7 @@ namespace Concierge.Display.Windows
 
             Program.CustomItemService.AddCustomItem(this.Create());
             this.ClearFields();
-            this.NameComboBox.ItemsSource = DisplayUtility.GenerateSelectorComboBox(Defaults.Abilities, Program.CustomItemService.GetCustomItems<Ability>());
+            this.NameComboBox.ItemsSource = DefaultItems;
         }
     }
 }

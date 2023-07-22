@@ -26,9 +26,9 @@ namespace Concierge.Persistence.ReadWriters
             try
             {
                 var rawBlob = JsonConvert.SerializeObject(value, Formatting.None);
-                if (rawBlob.IsNullOrWhiteSpace())
+                if (!rawBlob.IsNullOrWhiteSpace())
                 {
-                    File.AppendAllText(filePath, rawBlob);
+                    File.AppendAllText(filePath, $"{rawBlob}{Environment.NewLine}");
                 }
             }
             catch (Exception ex)
@@ -56,9 +56,9 @@ namespace Concierge.Persistence.ReadWriters
 
         public List<T> ReadList<T>(string filePath)
         {
+            var list = new List<T>();
             try
             {
-                var list = new List<T>();
                 var lines = File.ReadAllLines(filePath);
 
                 foreach (var line in lines)
@@ -69,14 +69,13 @@ namespace Concierge.Persistence.ReadWriters
                         list.Add(blob);
                     }
                 }
-
-                return list;
             }
             catch (Exception ex)
             {
                 this.errorService.LogError(ex);
-                return new List<T>();
             }
+
+            return list;
         }
 
         public List<T> ReadList<T>(byte[] file)
