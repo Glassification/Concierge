@@ -11,6 +11,7 @@
           "Requirements": "",
           "Action": "--",
           "Description": "When you enter a ruin or dungeon, you can correctly ascertain its original purpose and determine its builders (must be known race). In addition, you can determine the value of art objects more than a century old.",
+          "IsCustom": false,
           "Id": "e603eed6-9105-4b4c-89be-8f048dbb94bc"
         },
         {
@@ -22,6 +23,7 @@
           "Requirements": "",
           "Action": "--",
           "Description": "You gain proficiency with one skill, one tool or one language, and you gain expertise with one skill.",
+          "IsCustom": false,
           "Id": "6a86f7b5-283d-4686-a09b-ed0a2681edf9"
         },
         {
@@ -33,6 +35,7 @@
           "Requirements": "",
           "Action": "--",
           "Description": "Avtg on saving throws against being charmed. Magic cannot put me to sleep",
+          "IsCustom": false,
           "Id": "dbe6db0e-f5bd-43c0-8e84-b23412b4bed2"
         },
         {
@@ -44,6 +47,7 @@
           "Requirements": "",
           "Action": "--",
           "Description": "Double proficiency bonus in select skills (Again at level 6)",
+          "IsCustom": false,
           "Id": "040f5013-7818-4315-ae56-7008c71b1253"
         },
         {
@@ -55,6 +59,7 @@
           "Requirements": "",
           "Action": "--",
           "Description": "Takes 4 times longer to convey meaning. Target must also know Cant",
+          "IsCustom": false,
           "Id": "c1f4ed37-8ec9-40fe-86d3-ba334fce1165"
         },
         {
@@ -66,6 +71,7 @@
           "Requirements": "",
           "Action": "5d6 Damage",
           "Description": "Must have advantage or target must have enemy within 5 feet",
+          "IsCustom": false,
           "Id": "bea16493-954b-4d79-ae81-59edc8fe5f00"
         },
         {
@@ -77,6 +83,7 @@
           "Requirements": "",
           "Action": "--",
           "Description": "Dash, Disengage, Hide as bonus action",
+          "IsCustom": false,
           "Id": "12249285-5959-4d15-92ae-6fb35ee84ea0"
         },
         {
@@ -88,6 +95,7 @@
           "Requirements": "",
           "Action": "--",
           "Description": "Stow/retrieve/pick lock/disarm trap at range. Succeed on Sleight of Hand check to remain unnoticed. Use bonus action to control the hand.",
+          "IsCustom": false,
           "Id": "da443ef6-7f7a-44ab-8688-6af4ef7a98ce"
         },
         {
@@ -99,6 +107,7 @@
           "Requirements": "",
           "Action": "Reaction",
           "Description": "Use reaction to take half damage against an attack you can see.",
+          "IsCustom": false,
           "Id": "b87410a1-b915-4918-833f-072aabae3470"
         },
         {
@@ -110,6 +119,7 @@
           "Requirements": "",
           "Action": "Dex Save",
           "Description": "Succeed on a DEX save and take no damage, Fail and take half damage.",
+          "IsCustom": false,
           "Id": "707dfc5b-b96b-4ad2-8136-8db8daf7b8c5"
         },
         {
@@ -121,6 +131,7 @@
           "Requirements": "",
           "Action": "Disadvantage on saves",
           "Description": "If hidden when casting a spell on a creature, it will have disadvantage on any saving throw against the spell.",
+          "IsCustom": false,
           "Id": "a261f41a-627c-4023-b3fa-5666b5fad903"
         }
       ],
@@ -144,6 +155,7 @@
           "B": 220,
           "Hex": "#FFE9DC",
           "IsValid": true,
+          "IsCustom": false,
           "Name": "White",
           "Id": "9010325f-dd40-42a3-b67d-05216c10d2a9"
         },
@@ -154,6 +166,7 @@
           "B": 255,
           "Hex": "#4182FF",
           "IsValid": true,
+          "IsCustom": false,
           "Name": "Ice Blue",
           "Id": "bf08d775-b38a-4ebd-8055-78943d58a3af"
         },
@@ -164,6 +177,7 @@
           "B": 0,
           "Hex": "#000000",
           "IsValid": true,
+          "IsCustom": false,
           "Name": "Black",
           "Id": "e40e32f8-24aa-470e-8d5d-9ddc00280381"
         },
@@ -182,42 +196,49 @@
           "Name": "Common",
           "Script": "Common",
           "Speakers": "Humans, halflings, half-elves, half-orcs",
+          "IsCustom": false,
           "Id": "084228b5-8b50-4d8a-8fe1-8d127dad44f9"
         },
         {
           "Name": "Dwarvish",
           "Script": "Dwarvish",
           "Speakers": "Dwarves",
+          "IsCustom": false,
           "Id": "e89cf641-a644-4176-8f09-8dd496e7141b"
         },
         {
           "Name": "Elvish",
           "Script": "Elvish",
           "Speakers": "Elves",
+          "IsCustom": false,
           "Id": "02999407-44b7-44ba-9986-90d1e5e5c9c2"
         },
         {
           "Name": "Infernal",
           "Script": "Infernal",
           "Speakers": "Devils, Tieflings",
+          "IsCustom": false,
           "Id": "56cbe391-a565-44b5-93ed-74dd0ddf6b8e"
         },
         {
           "Name": "Primordial",
           "Script": "Dwarvish",
           "Speakers": "Elementals",
+          "IsCustom": false,
           "Id": "563827f1-4d82-4ab0-80d2-9009d900815b"
         },
         {
           "Name": "Sylvan",
           "Script": "Elvish",
           "Speakers": "Fey creatures (dryads, brownies, leprechauns)",
+          "IsCustom": false,
           "Id": "fb487276-c730-486c-aa48-57a83b74075c"
         },
         {
           "Name": "Celestial",
           "Script": "Celestial",
           "Speakers": "Celestials (angels, devas)",
+          "IsCustom": false,
           "Id": "6b6e9398-e299-45ec-978e-c5454a05f540"
         }
       ],
@@ -232,51 +253,61 @@
       "Proficiencies": [
         {
           "Name": "Simple Ranged Weapons",
+          "IsCustom": false,
           "ProficiencyType": 2,
           "Id": "b6c20c18-8cc1-423e-89f6-449a5573b36f"
         },
         {
           "Name": "Simple Melee Weapons",
+          "IsCustom": false,
           "ProficiencyType": 2,
           "Id": "035b9d77-c91b-4dbf-a146-b8a768505754"
         },
         {
           "Name": "Shortsword",
+          "IsCustom": false,
           "ProficiencyType": 2,
           "Id": "abd497f4-ac51-45ca-b9e8-f4dc3c6e7a34"
         },
         {
           "Name": "Rapier",
+          "IsCustom": false,
           "ProficiencyType": 2,
           "Id": "272d408a-dde9-4286-b4f0-25d3c5a34c81"
         },
         {
           "Name": "Longsword",
+          "IsCustom": false,
           "ProficiencyType": 2,
           "Id": "5ecb6400-a0d0-4484-8ec2-2add670fad36"
         },
         {
           "Name": "Hand Crossbow",
+          "IsCustom": false,
           "ProficiencyType": 2,
           "Id": "bd81f166-4df6-44cc-9b42-056408ca34cf"
         },
         {
           "Name": "Light Armor",
+          "IsCustom": false,
           "ProficiencyType": 0,
           "Id": "da84315e-5d27-41db-b6f3-c80f873888b8"
         },
         {
           "Name": "Thieves' Tools",
+          "IsCustom": false,
           "ProficiencyType": 1,
           "Id": "b5abdc7e-3655-43c6-962b-d6665210e542"
         },
         {
           "Name": "Cartographer's Tools",
+          "IsCustom": false,
           "ProficiencyType": 1,
           "Id": "70a464b0-fc2c-45f3-900f-b21264b1a497"
         },
         {
           "Name": "Calligrapher's Supplies",
+          "IsCustom": false,
           "ProficiencyType": 1,
           "Id": "61fc6a84-363f-4fcc-b482-258098fa86fa"
         }
@@ -449,6 +480,7 @@
             "B": 0,
             "Hex": "#FF0000",
             "IsValid": false,
+            "IsCustom": false,
             "Name": "Not Set",
             "Id": "ff80cc61-06f5-4598-9e58-f94e3ce4f28a"
           },
@@ -459,6 +491,7 @@
             "B": 0,
             "Hex": "#FF0000",
             "IsValid": false,
+            "IsCustom": false,
             "Name": "Not Set",
             "Id": "3cbaa0bb-6514-4df3-9c1f-94c6aac79fbb"
           },
@@ -469,6 +502,7 @@
             "B": 0,
             "Hex": "#FF0000",
             "IsValid": false,
+            "IsCustom": false,
             "Name": "Not Set",
             "Id": "48422fdc-e0f2-4246-8df7-41a1fa8a9f66"
           },
@@ -503,22 +537,27 @@
       },
       "Equipment": {
         "Ammunition": [],
-        "Armor": {
-          "ArmorClass": 0,
-          "Equiped": "",
-          "MagicArmorClass": 0,
-          "MiscArmorClass": 0,
-          "Shield": "",
-          "ShieldArmorClass": 0,
-          "ShieldWeight": {
-            "Value": 0.0,
-            "UnitType": 0,
-            "Measurement": 1
+        "Defense": {
+          "Armor": {
+            "Ac": 0,
+            "Name": "",
+            "Stealth": 0,
+            "Strength": 0,
+            "Type": 0,
+            "Weight": {
+              "Value": 0.0,
+              "UnitType": 0,
+              "Measurement": 1
+            },
+            "Id": "d036c822-3c35-4a30-b5f0-29e070618aa0",
+            "IsCustom": false
           },
-          "Stealth": 0,
-          "Strength": 0,
-          "Type": 0,
-          "Weight": {
+          "ArmorStatus": 1,
+          "MagicAc": 0,
+          "MiscAc": 0,
+          "Shield": "",
+          "ShieldAc": 0,
+          "ShieldWeight": {
             "Value": 0.0,
             "UnitType": 0,
             "Measurement": 1
@@ -537,6 +576,7 @@
               "Created": "Wednesday, 22 February 2023 06:16:29 PM",
               "Id": "7055fd90-f8bf-4d3b-9f49-8d94a6303d92",
               "IsExpanded": false,
+              "IsCustom": false,
               "Name": "Arrival at Damera"
             },
             {
@@ -544,6 +584,7 @@
               "Created": "Wednesday, 22 February 2023 06:16:29 PM",
               "Id": "e94f6f96-75f4-4344-8175-488880d01bfb",
               "IsExpanded": false,
+              "IsCustom": false,
               "Name": "Curse of Lycanthropy"
             },
             {
@@ -551,6 +592,7 @@
               "Created": "Wednesday, 22 February 2023 06:16:29 PM",
               "Id": "b64ca418-c97e-48bd-baee-e16422a54d32",
               "IsExpanded": false,
+              "IsCustom": false,
               "Name": "City of Elves"
             },
             {
@@ -558,6 +600,7 @@
               "Created": "Wednesday, 22 February 2023 06:16:29 PM",
               "Id": "5cf5d376-1618-42ac-a5a7-c62daf40c644",
               "IsExpanded": false,
+              "IsCustom": false,
               "Name": "The Two Towers"
             },
             {
@@ -565,6 +608,7 @@
               "Created": "Wednesday, 22 February 2023 06:16:29 PM",
               "Id": "f066d29a-df66-46ef-9a8d-73aa72dc8c88",
               "IsExpanded": false,
+              "IsCustom": false,
               "Name": "Over Hill and Dale"
             },
             {
@@ -572,6 +616,7 @@
               "Created": "Wednesday, 22 February 2023 06:16:29 PM",
               "Id": "9df11d32-f672-4858-9847-e62a5c507051",
               "IsExpanded": false,
+              "IsCustom": false,
               "Name": "Cabin in the Woods"
             },
             {
@@ -579,6 +624,7 @@
               "Created": "Wednesday, 22 February 2023 06:16:29 PM",
               "Id": "a018d7a8-f2eb-42f3-b91e-9200ad7ef009",
               "IsExpanded": false,
+              "IsCustom": false,
               "Name": "City Underground"
             },
             {
@@ -586,12 +632,14 @@
               "Created": "Wednesday, 22 February 2023 06:16:29 PM",
               "Id": "2cdec6d5-a35b-4136-ad22-f6c8abdedec7",
               "IsExpanded": false,
+              "IsCustom": false,
               "Name": "A Fork in the Road"
             }
           ],
           "Created": "Wednesday, 22 February 2023 06:16:29 PM",
           "Id": "0713d718-e37b-499f-81e4-d73f88e484dd",
           "IsExpanded": false,
+          "IsCustom": false,
           "Name": "The Story so far"
         },
         {
@@ -601,12 +649,14 @@
               "Created": "Wednesday, 22 February 2023 06:16:29 PM",
               "Id": "7f948a0c-b421-4634-bb4e-48a8591b0703",
               "IsExpanded": false,
+              "IsCustom": false,
               "Name": "Caleston's Story v2"
             }
           ],
           "Created": "Wednesday, 22 February 2023 06:16:29 PM",
           "Id": "f6b8aba2-5008-4e0e-ad68-231eaceb6774",
           "IsExpanded": false,
+          "IsCustom": false,
           "Name": "Character Background"
         },
         {
@@ -616,12 +666,14 @@
               "Created": "Wednesday, 22 February 2023 06:16:29 PM",
               "Id": "75dd6d85-aa63-40e2-8190-7bec9f799096",
               "IsExpanded": false,
+              "IsCustom": false,
               "Name": "2023-02-04"
             }
           ],
           "Created": "Wednesday, 22 February 2023 06:16:29 PM",
           "Id": "db6f8f9a-66ac-4d17-b36c-c895a29eba7c",
           "IsExpanded": true,
+          "IsCustom": false,
           "Name": "Session Notes"
         }
       ]
@@ -631,6 +683,7 @@
         {
           "Ability": 4,
           "Id": "b5837543-9a43-4bca-aea7-d271472be3d1",
+          "IsCustom": false,
           "KnownCantrips": 3,
           "KnownSpells": 6,
           "Level": 10,
@@ -648,6 +701,7 @@
           "Description": "Create spectral hand that manipulates objects. Can pick up <= 10 lbs.",
           "Duration": "1 minute",
           "Id": "577844aa-1ea4-488d-b733-1e4317f4b38a",
+          "IsCustom": false,
           "Level": 0,
           "Name": "Mage Hand",
           "Page": 256,
@@ -666,6 +720,7 @@
           "Description": "Create illusory sound or image. Investigation check against spell DC to detect.",
           "Duration": "1 minute",
           "Id": "7fc54134-f11a-4cb6-96a3-22cd1d458e48",
+          "IsCustom": false,
           "Level": 0,
           "Name": "Minor Illusion",
           "Page": 260,
@@ -684,6 +739,7 @@
           "Description": "Target can't take reactions until next turn. Advantage if target has metal armor.",
           "Duration": "Instantaneous",
           "Id": "097a5f0d-d062-41c0-9311-973bdfbe29a7",
+          "IsCustom": false,
           "Level": 0,
           "Name": "Shocking Grasp",
           "Page": 275,
@@ -702,6 +758,7 @@
           "Description": "Create illusion to appear as someone else.  Foiled by Investigation vs. spell DC.",
           "Duration": "1 hour",
           "Id": "d9215884-0907-455f-b02e-c04dfdfdd916",
+          "IsCustom": false,
           "Level": 1,
           "Name": "Disguise Self",
           "Page": 233,
@@ -720,6 +777,7 @@
           "Description": "Target (INT > 4) is prone, incapacitated, can't stand. WIS save each turn to end.",
           "Duration": "1 minute",
           "Id": "2624fd40-2879-406c-82b3-0f1cef390443",
+          "IsCustom": false,
           "Level": 1,
           "Name": "Tasha's Hideous Laughter",
           "Page": 280,
@@ -738,6 +796,7 @@
           "Description": "Create visual-only illusion. Use action to make it move. Investigation to discover.",
           "Duration": "10 minutes",
           "Id": "066fa128-f665-4b95-a284-7094f74db6e2",
+          "IsCustom": false,
           "Level": 1,
           "Name": "Silent Image",
           "Page": 276,
@@ -756,6 +815,7 @@
           "Description": "Target's jump distance tripled until spell ends. Can be used once per long rest.",
           "Duration": "1 minute",
           "Id": "1633009f-1622-4a02-952e-92bd744b2dde",
+          "IsCustom": false,
           "Level": 1,
           "Name": "Jump",
           "Page": 254,
@@ -774,6 +834,7 @@
           "Description": "Lose 30hp and fire a magical arrow of pure force. If the creature is casting a spell <= 5th level, the spell fails. Target must make saving throw using spellcasting modifier. On failed save take 30 damage, on success take 15 damage.",
           "Duration": "Reaction",
           "Id": "43c3c531-8ed5-4e1b-a005-6d60d5937960",
+          "IsCustom": false,
           "Level": 1,
           "Name": "Spelldrinker",
           "Page": 277,
@@ -792,6 +853,7 @@
           "Description": "Charm target so it treats you as friendly. Gets advantage to save if fighting you.",
           "Duration": "1 hour",
           "Id": "39044dfa-57be-4d62-9ec3-3add58933db4",
+          "IsCustom": false,
           "Level": 1,
           "Name": "Charm Person",
           "Page": 221,
@@ -810,6 +872,7 @@
           "Description": "Target becomes invisible. Ends if target attacks or casts a spell.",
           "Duration": "1 hour",
           "Id": "9088f829-91b2-427b-92ce-e615e9ad4352",
+          "IsCustom": false,
           "Level": 2,
           "Name": "Invisibility",
           "Page": 254,
@@ -828,6 +891,7 @@
           "Description": "Teleport <= 30 ft. away to unoccupied location. Bonus Action.",
           "Duration": "Instantaneous",
           "Id": "73efffe8-6641-4ad5-ae6d-3d5c18936f24",
+          "IsCustom": false,
           "Level": 2,
           "Name": "Misty Step",
           "Page": 260,
@@ -846,6 +910,7 @@
           "Description": "You can focus your mind on any one creature that you can see within 30 feet of you. You can sense surface thought, probing deeper will need the creature to make a wisdom saving throw.",
           "Duration": "1 minute",
           "Id": "8d62574f-47d1-4c47-b33a-09bacd9148a6",
+          "IsCustom": false,
           "Level": 2,
           "Name": "Detect Thoughts",
           "Page": 231,
@@ -864,6 +929,7 @@
           "Description": "Creates darkness normal light can't dispel. Dispels light spells <= 2nd level. Darkvision cannot see through it. If cast on creature or object, it will move with it.",
           "Duration": "10 minutes",
           "Id": "0e3a8fdc-6cbb-4cc4-9dda-377f11e898da",
+          "IsCustom": false,
           "Level": 2,
           "Name": "Darkness",
           "Page": 230,
@@ -882,6 +948,7 @@
           "Description": "Create impenetrable wall (even into Ethereal Plane) only unmade by Disintegrate.",
           "Duration": "10 minutes",
           "Id": "52053d31-92b0-49d5-bbef-0971cb935e82",
+          "IsCustom": false,
           "Level": 5,
           "Name": "Wall of Force",
           "Page": 285,
@@ -1197,6 +1264,7 @@
           "Type": "Sneak Attack Dice",
           "Total": 5,
           "Spent": 0,
+          "IsCustom": false,
           "Note": "Uses d6.",
           "Recovery": 0,
           "Id": "670a4b29-6a73-49f7-9590-21b6cc55084e"
@@ -1205,6 +1273,7 @@
           "Type": "Calamari Ring",
           "Total": 3,
           "Spent": 1,
+          "IsCustom": false,
           "Note": "1d4 uses per day.",
           "Recovery": 1,
           "Id": "41e48fba-e675-4fe4-9c94-66b9d0d8f1e1"
@@ -1225,6 +1294,7 @@
           "CoinType": 0,
           "DamageType": 8,
           "Id": "9f0bf339-892e-46ac-97cb-0a1ffa2b084e",
+          "IsCustom": false,
           "Name": "Arrows",
           "Quantity": 18,
           "Used": 0,
@@ -1235,6 +1305,7 @@
           "CoinType": 3,
           "DamageType": 8,
           "Id": "68a4a935-2ef6-4e78-85ec-a7a98c4cfc5f",
+          "IsCustom": false,
           "Name": "Silvered Arrows",
           "Quantity": 7,
           "Used": 0,
@@ -1245,29 +1316,35 @@
           "CoinType": 3,
           "DamageType": 0,
           "Id": "b4f72c59-b426-4365-bbc4-4768bd47f4d0",
+          "IsCustom": false,
           "Name": "Healing Arrows",
           "Quantity": 5,
           "Used": 1,
           "Value": 5
         }
       ],
-      "Armor": {
-        "ArmorClass": 13,
-        "Equiped": "Studded Leather",
-        "MagicArmorClass": 0,
-        "MiscArmorClass": 0,
-        "Shield": "None",
-        "ShieldArmorClass": 0,
+      "Defense": {
+        "Armor": {
+          "Ac": 13,
+          "Name": "Studded Leather",
+          "Stealth": 0,
+          "Strength": 0,
+          "Type": 1,
+          "Weight": {
+            "Value": 13.0,
+            "UnitType": 0,
+            "Measurement": 1
+          },
+          "Id": "4e831cc8-7e1e-44cc-b661-0093f2d2b581",
+          "IsCustom": false
+        },
+        "ArmorStatus": 0,
+        "MagicAc": 0,
+        "MiscAc": 0,
+        "Shield": "",
+        "ShieldAc": 0,
         "ShieldWeight": {
           "Value": 0.0,
-          "UnitType": 0,
-          "Measurement": 1
-        },
-        "Stealth": 0,
-        "Strength": 0,
-        "Type": 1,
-        "Weight": {
-          "Value": 13.0,
           "UnitType": 0,
           "Measurement": 1
         }
@@ -2459,6 +2536,7 @@
           "DamageType": 8,
           "Id": "bf4e1fff-78aa-4260-91e1-aa3b6913dd0f",
           "IgnoreWeight": true,
+          "IsCustom": false,
           "Misc": "",
           "Name": "Dagger",
           "Note": "Finesse, light, thrown",
@@ -2483,6 +2561,7 @@
           "DamageType": 8,
           "Id": "0666d6d3-d419-4c82-8609-75966257c534",
           "IgnoreWeight": false,
+          "IsCustom": false,
           "Misc": "+1",
           "Name": "Jump Blade",
           "Note": "Finesse, Gain the Jump spell.",
@@ -2507,6 +2586,7 @@
           "DamageType": 8,
           "Id": "c8c68d94-8e8c-4d42-bbb6-bed6128bbb01",
           "IgnoreWeight": false,
+          "IsCustom": false,
           "Misc": "",
           "Name": "Silver Dagger",
           "Note": "Finesse, light, thrown",
@@ -2531,6 +2611,7 @@
           "DamageType": 8,
           "Id": "1b2f3349-0d9a-40d9-92d2-3aae87ec8fba",
           "IgnoreWeight": false,
+          "IsCustom": false,
           "Misc": "1d4 Force",
           "Name": "Bow of the Spelldrinker",
           "Note": "Ammunition, two-handed. Wen you see a creature casting a spell within 60' while holding this bow, can cast Spelldrinker. Cannot be used again until a short or long rest.",
@@ -2547,13 +2628,13 @@
       ]
     }
   },
-  "Hash": "7CB0614F8657CC52928A1B284873FD739CFD06C027B91250FE646EB5E995E93A",
+  "Hash": "D272050C72742D020033C3C4B43BD51A5C03D7662F68FB49A18B71AF964FA12B",
   "OriginalCreationDate": "Saturday, 13 May 2023 06:48:08 PM",
-  "LastSaveDate": "2023-07-14T21:06:52.309282-05:00",
+  "LastSaveDate": "2023-07-23T16:52:32.7969976-05:00",
   "Version": {
     "Major": 5,
-    "Minor": 3,
-    "Patch": 7
+    "Minor": 4,
+    "Patch": 3
   },
   "IsEmpty": false
 }

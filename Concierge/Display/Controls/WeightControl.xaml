@@ -74,7 +74,7 @@
 
                     <!--Light-->
                     <Border
-                        Margin="3"
+                        Margin="5"
                         Grid.Column="0"
                         BorderBrush="#ffd8e4bc"
                         BorderThickness="5"
@@ -115,7 +115,7 @@
                    
                     <!--Medium-->
                     <Border
-                        Margin="3"
+                        Margin="5"
                         Grid.Column="1"
                         BorderBrush="#fffcd6b4"
                         BorderThickness="5"
@@ -156,7 +156,7 @@
 
                     <!--Heavy-->
                     <Border
-                        Margin="3"
+                        Margin="5"
                         Grid.Column="2"
                         BorderBrush="Pink"
                         BorderThickness="5"

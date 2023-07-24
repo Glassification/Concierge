@@ -29,11 +29,12 @@
                     Grid.Row="0"
                     MouseUp="Grid_MouseUp">
                     <components:ConciergeTextBlock
-                        Text="Armor"
+                        Text="Defense"
                         Foreground="White"
                         FontSize="30"
                         VerticalAlignment="Center"
-                        HorizontalAlignment="Center"/>
+                        Margin="150,0,0,0"
+                        HorizontalAlignment="Left"/>
                 </Grid>
                 <!--Armor Details-->
                 <Grid Grid.Row="1">

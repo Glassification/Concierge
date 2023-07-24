@@ -156,7 +156,7 @@ namespace Concierge.Display.Pages
 
         public void DrawArmorClass()
         {
-            this.ArmorClassField.Text = Program.CcsFile.Character.Equipment.Armor.TotalArmorClass.ToString();
+            this.ArmorClassField.Text = Program.CcsFile.Character.Equipment.Defense.TotalAc.ToString();
         }
 
         public void DrawHitDice()

@@ -5,42 +5,29 @@
 namespace Concierge.Character.Equipable
 {
     using System;
+    using System.Windows.Media;
 
     using Concierge.Character.Enums;
     using Concierge.Common;
+    using Concierge.Common.Dtos;
     using Concierge.Data;
+    using MaterialDesignThemes.Wpf;
     using Newtonsoft.Json;
 
-    public sealed class Armor : ICopyable<Armor>
+    using Constants = Concierge.Common.Constants;
+
+    public sealed class Armor : ICopyable<Armor>, IUnique
     {
         public Armor()
         {
-            this.Equiped = string.Empty;
-            this.Type = ArmorType.None;
-            this.ArmorClass = 0;
-            this.Strength = 0;
+            this.Name = string.Empty;
             this.Weight = UnitDouble.Empty;
-            this.Stealth = ArmorStealth.Normal;
-            this.Shield = string.Empty;
-            this.ShieldArmorClass = 0;
-            this.ShieldWeight = UnitDouble.Empty;
-            this.MiscArmorClass = 0;
-            this.MagicArmorClass = 0;
+            this.Id = Guid.NewGuid();
         }
 
-        public int ArmorClass { get; set; }
+        public int Ac { get; set; }
 
-        public string Equiped { get; set; }
-
-        public int MagicArmorClass { get; set; }
-
-        public int MiscArmorClass { get; set; }
-
-        public string Shield { get; set; }
-
-        public int ShieldArmorClass { get; set; }
-
-        public UnitDouble ShieldWeight { get; set; }
+        public string Name { get; set; }
 
         public ArmorStealth Stealth { get; set; }
 
@@ -51,53 +38,53 @@ namespace Concierge.Character.Equipable
         public UnitDouble Weight { get; set; }
 
         [JsonIgnore]
-        public int TotalArmorClass
+        public int TotalAc
         {
             get
             {
-                var ac = this.ArmorClass + this.ShieldArmorClass + this.MiscArmorClass + this.MagicArmorClass;
-
-                switch (this.Type)
+                var armorAc = this.Type switch
                 {
-                    default:
-                    case ArmorType.None:
-                        if (this.ArmorClass == 0)
-                        {
-                            ac += 10;
-                        }
+                    ArmorType.None => Constants.Bonus(Program.CcsFile.Character.Characteristic.Attributes.Dexterity),
+                    ArmorType.Light => Constants.Bonus(Program.CcsFile.Character.Characteristic.Attributes.Dexterity),
+                    ArmorType.Medium => Math.Min(2, Constants.Bonus(Program.CcsFile.Character.Characteristic.Attributes.Dexterity)),
+                    _ => 0,
+                };
 
-                        break;
-                    case ArmorType.Light:
-                        ac += Constants.Bonus(Program.CcsFile.Character.Characteristic.Attributes.Dexterity);
-                        break;
-                    case ArmorType.Medium:
-                        ac += Math.Min(2, Constants.Bonus(Program.CcsFile.Character.Characteristic.Attributes.Dexterity));
-                        break;
-                    case ArmorType.Heavy:
-                    case ArmorType.Massive:
-                        break;
-                }
-
-                return ac;
+                return armorAc + this.Ac;
             }
         }
+
+        [JsonIgnore]
+        public string CustomType => nameof(Armor);
+
+        [JsonIgnore]
+        public Brush CustomTypeColor => Brushes.Silver;
+
+        [JsonIgnore]
+        public PackIconKind CustomTypeIcon => PackIconKind.Wall;
+
+        public Guid Id { get; set; }
+
+        public bool IsCustom { get; set; }
 
         public Armor DeepCopy()
         {
             return new Armor()
             {
-                Equiped = this.Equiped,
+                Name = this.Name,
                 Type = this.Type,
-                ArmorClass = this.ArmorClass,
+                Ac = this.Ac,
                 Strength = this.Strength,
                 Weight = this.Weight.DeepCopy(),
                 Stealth = this.Stealth,
-                Shield = this.Shield,
-                ShieldArmorClass = this.ShieldArmorClass,
-                ShieldWeight = this.ShieldWeight.DeepCopy(),
-                MiscArmorClass = this.MiscArmorClass,
-                MagicArmorClass = this.MagicArmorClass,
+                Id = this.Id,
+                IsCustom = this.IsCustom,
             };
+        }
+
+        public CategoryDto GetCategory()
+        {
+            throw new NotImplementedException();
         }
     }
 }

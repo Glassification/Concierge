@@ -86,6 +86,10 @@ namespace Concierge.Services
                 {
                     item = JsonConvert.DeserializeObject<Ammunition>(customBlob.Blob);
                 }
+                else if (customBlob.Name.Equals(nameof(Armor)))
+                {
+                    item = JsonConvert.DeserializeObject<Armor>(customBlob.Blob);
+                }
                 else if (customBlob.Name.Equals(nameof(ClassResource)))
                 {
                     item = JsonConvert.DeserializeObject<ClassResource>(customBlob.Blob);

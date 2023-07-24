@@ -20,90 +20,101 @@
             CornerRadius="10">
             <Grid Background="#2B2B2B">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="25*"/>
-                    <RowDefinition Height="25*"/>
+                    <RowDefinition Height="50*"/>
                     <RowDefinition Height="50*"/>
                 </Grid.RowDefinitions>
 
-                <!--Header-->
-                <Grid
-                    Grid.Row="0"
-                    x:Name="HeaderGrid"
-                    MouseUp="Grid_MouseUp">
-                    <components:ConciergeTextBlock
-                        Text="Wealth"
-                        Foreground="White"
-                        FontSize="30"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"/>
-                </Grid>
-
-                <!--Total Gold-->
-                <Border
-                    Margin="5"
-                    Grid.Row="1"
-                    BorderBrush="#FF333333"
-                    BorderThickness="5"
-                    CornerRadius="10">
-                    <Grid Background="#FF333333">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="29*"/>
-                            <ColumnDefinition Width="19*"/>
-                            <ColumnDefinition Width="04*"/>
-                            <ColumnDefinition Width="29*"/>
-                            <ColumnDefinition Width="19*"/>
-                        </Grid.ColumnDefinitions>
-
-                        <Grid Grid.Column="0">
-                            <components:ConciergeTextBlock
-                                x:Name="TotalWealthField"
-                                Text="0.00"
-                                Foreground="White"
-                                FontSize="25"
-                                HorizontalAlignment="Center"
-                                VerticalAlignment="Center"/>
-                        </Grid>
-
-                        <Grid Grid.Column="1">
-                            <components:ConciergeTextBlock
-                                Text="Gold Value"
-                                Foreground="White"
-                                FontSize="15"
-                                HorizontalAlignment="Left"
-                                VerticalAlignment="Center"/>
-                        </Grid>
-
-                        <Line
-                            Grid.Column="2"
-                            Stroke="SteelBlue"
-                            StrokeThickness="2"
-                            Stretch="Uniform"
-                            X1="0" X2="0" Y1="0" Y2="1"
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50*"/>
+                        <ColumnDefinition Width="50*"/>
+                    </Grid.ColumnDefinitions>
+                    
+                    <!--Header-->
+                    <Grid
+                        Grid.Column="0"
+                        x:Name="HeaderGrid"
+                        MouseUp="Grid_MouseUp">
+                        <components:ConciergeTextBlock
+                            Text="Wealth"
+                            Foreground="White"
+                            FontSize="35"
                             HorizontalAlignment="Center"
-                            StrokeStartLineCap="Round"
-                            StrokeEndLineCap="Round"/>
-
-                        <Grid Grid.Column="3">
-                            <components:ConciergeTextBlock
-                                x:Name="ItemWealthField"
-                                Text="0.00"
-                                Foreground="White"
-                                FontSize="25"
-                                HorizontalAlignment="Center"
-                                VerticalAlignment="Center"/>
-                        </Grid>
-
-                        <Grid Grid.Column="4">
-                            <components:ConciergeTextBlock
-                                Text="Item Value"
-                                Foreground="White"
-                                FontSize="15"
-                                HorizontalAlignment="Left"
-                                VerticalAlignment="Center"/>
-                        </Grid>
+                            VerticalAlignment="Center"/>
                     </Grid>
-                </Border>
 
+                    <Grid Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50*"/>
+                            <RowDefinition Height="50*"/>
+                        </Grid.RowDefinitions>
+
+                        <Border
+                            Margin="5"
+                            Grid.Row="0"
+                            BorderBrush="#FF333333"
+                            BorderThickness="5"
+                            CornerRadius="10">
+                            <Grid Background="#FF333333">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="60*"/>
+                                    <ColumnDefinition Width="40*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <components:ConciergeTextBlock
+                                    x:Name="TotalWealthField"
+                                    Grid.Column="0"
+                                    Text="0.00"
+                                    Foreground="White"
+                                    FontSize="25"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"/>
+
+                                <components:ConciergeTextBlock
+                                    Text="Gold Value"
+                                    Grid.Column="1"
+                                    Foreground="White"
+                                    FontSize="15"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Center"/>
+                            </Grid>
+                        </Border>
+
+                        <Border
+                            Margin="5"
+                            Grid.Row="1"
+                            BorderBrush="#FF333333"
+                            BorderThickness="5"
+                            CornerRadius="10">
+                            <Grid Background="#FF333333">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="60*"/>
+                                    <ColumnDefinition Width="40*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <components:ConciergeTextBlock
+                                    x:Name="ItemWealthField"
+                                    Grid.Column="0"
+                                    Grid.Row="1"
+                                    Text="0.00"
+                                    Foreground="White"
+                                    FontSize="25"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"/>
+
+                                <components:ConciergeTextBlock
+                                    Text="Item Value"
+                                    Grid.Column="1"
+                                    Grid.Row="1"
+                                    Foreground="White"
+                                    FontSize="15"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Center"/>
+                            </Grid>
+                        </Border>
+                    </Grid>
+                </Grid>
+                
                 <!--Currency ff1c1636-->
                 <Grid Grid.Row="2">
                     <Grid.ColumnDefinitions>
@@ -116,7 +127,7 @@
 
                     <!--CP-->
                     <Border
-                        Margin="2"
+                        Margin="5"
                         Grid.Column="0"
                         BorderBrush="#ffb87333"
                         BorderThickness="5"
@@ -162,7 +173,7 @@
 
                     <!--SP-->
                     <Border
-                        Margin="2"
+                        Margin="5"
                         Grid.Column="1"
                         BorderBrush="Silver"
                         BorderThickness="5"
@@ -208,7 +219,7 @@
 
                     <!--EP-->
                     <Border
-                        Margin="2"
+                        Margin="5"
                         Grid.Column="2"
                         BorderBrush="#ff50c878"
                         BorderThickness="5"
@@ -254,7 +265,7 @@
 
                     <!--GP-->
                     <Border
-                        Margin="2"
+                        Margin="5"
                         Grid.Column="3"
                         BorderBrush="#ffCFB53B"
                         BorderThickness="5"
@@ -300,7 +311,7 @@
 
                     <!--PP-->
                     <Border
-                        Margin="1"
+                        Margin="5"
                         Grid.Column="4"
                         BorderBrush="#ffe5e4e2"
                         BorderThickness="5"

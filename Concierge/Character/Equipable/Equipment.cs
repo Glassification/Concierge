@@ -18,7 +18,7 @@ namespace Concierge.Character.Equipable
         public Equipment()
         {
             this.Ammunition = new List<Ammunition>();
-            this.Armor = new Armor();
+            this.Defense = new Defense();
             this.Inventory = new List<Inventory>();
             this.Weapons = new List<Weapon>();
             this.EquippedItems = new EquippedItems(this.Inventory, this.Weapons);
@@ -26,7 +26,7 @@ namespace Concierge.Character.Equipable
 
         public List<Ammunition> Ammunition { get; set; }
 
-        public Armor Armor { get; set; }
+        public Defense Defense { get; set; }
 
         [JsonIgnore]
         public EquippedItems EquippedItems { get; set; }
@@ -58,8 +58,7 @@ namespace Concierge.Character.Equipable
                     }
                 }
 
-                weight += this.Armor.Weight.Value;
-                weight += this.Armor.ShieldWeight.Value;
+                weight += this.Defense.TotalWeight;
 
                 if (AppSettingsManager.UserSettings.UseCoinWeight)
                 {
@@ -75,7 +74,7 @@ namespace Concierge.Character.Equipable
             return new Equipment()
             {
                 Ammunition = this.Ammunition.DeepCopy().ToList(),
-                Armor = this.Armor.DeepCopy(),
+                Defense = this.Defense.DeepCopy(),
                 Inventory = this.Inventory.DeepCopy().ToList(),
                 Weapons = this.Weapons.DeepCopy().ToList(),
             };

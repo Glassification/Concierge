@@ -35,8 +35,8 @@
                         Text="Personality"
                         Foreground="White"
                         FontSize="30"
-                        FontWeight="Bold"
-                        HorizontalAlignment="Center"
+                        Margin="150,0,0,0"
+                        HorizontalAlignment="Left"
                         VerticalAlignment="Center"/>
                 </Grid>
 

@@ -39,7 +39,7 @@ namespace Concierge.Display.Pages
         {
             this.DrawAppearance();
             this.DrawPersonality();
-            this.DrawArmor();
+            this.DrawDefense();
             this.DrawProficiencies();
             this.DrawResources();
             this.DrawLanguages();
@@ -99,9 +99,9 @@ namespace Concierge.Display.Pages
             this.PersonalityDisplay.SetPersonality(Program.CcsFile.Character.Characteristic.Personality);
         }
 
-        public void DrawArmor()
+        public void DrawDefense()
         {
-            this.ArmorDisplay.SetArmorDetails(Program.CcsFile.Character.Equipment.Armor);
+            this.ArmorDisplay.SetDefenseDetails(Program.CcsFile.Character.Equipment.Defense);
         }
 
         public void DrawProficiencies()
@@ -427,12 +427,12 @@ namespace Concierge.Display.Pages
 
         private void ArmorDisplay_EditClicked(object sender, RoutedEventArgs e)
         {
-            ConciergeWindowService.ShowEdit<Armor>(
-                Program.CcsFile.Character.Equipment.Armor,
+            ConciergeWindowService.ShowEdit<Defense>(
+                Program.CcsFile.Character.Equipment.Defense,
                 typeof(ArmorWindow),
                 this.Window_ApplyChanges,
                 ConciergePage.Details);
-            this.DrawArmor();
+            this.DrawDefense();
         }
 
         private void Window_ApplyChanges(object sender, EventArgs e)
@@ -440,7 +440,7 @@ namespace Concierge.Display.Pages
             switch (sender?.GetType()?.Name)
             {
                 case nameof(ArmorWindow):
-                    this.DrawArmor();
+                    this.DrawDefense();
                     break;
                 case nameof(AppearanceWindow):
                     this.DrawAppearance();

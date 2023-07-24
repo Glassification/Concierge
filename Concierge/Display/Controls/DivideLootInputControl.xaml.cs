@@ -50,6 +50,7 @@ namespace Concierge.Display.Controls
             {
                 this.SetValue(LabelTextColorProperty, value);
                 this.InputUpDown.ForegroundBrush = value;
+                this.InputUpDown.ForegroundColor = value is SolidColorBrush solidBrush ? solidBrush.Color : Colors.White;
             }
         }
 

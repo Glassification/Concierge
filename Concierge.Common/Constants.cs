@@ -27,6 +27,11 @@ namespace Concierge.Common
         public const int MinAttributeTotal = 60;
 
         /// <summary>
+        /// The base AC (Armor Class).
+        /// </summary>
+        public const int BaseAC = 10;
+
+        /// <summary>
         /// The base DC (Difficulty Class).
         /// </summary>
         public const int BaseDC = 8;

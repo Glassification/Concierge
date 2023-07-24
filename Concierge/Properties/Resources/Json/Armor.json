@@ -1,0 +1,170 @@
+[
+  {
+    "Ac": 11,
+    "Name": "Padded",
+    "Stealth": 1,
+    "Strength": 0,
+    "Type": 1,
+    "Weight": {
+      "Value": 8.0,
+      "UnitType": 0,
+      "Measurement": 1
+    },
+    "Id": "a0af6608-8b8d-4250-ba9f-ae02ea3e6953",
+    "IsCustom": false
+  },
+  {
+    "Ac": 11,
+    "Name": "Leather",
+    "Stealth": 0,
+    "Strength": 0,
+    "Type": 1,
+    "Weight": {
+      "Value": 10.0,
+      "UnitType": 0,
+      "Measurement": 1
+    },
+    "Id": "806695de-3bb2-4394-ac2e-c75cfa6bd523",
+    "IsCustom": false
+  },
+  {
+    "Ac": 12,
+    "Name": "Studded Leather",
+    "Stealth": 0,
+    "Strength": 0,
+    "Type": 1,
+    "Weight": {
+      "Value": 13.0,
+      "UnitType": 0,
+      "Measurement": 1
+    },
+    "Id": "1a50a1ec-3e5d-4ad6-af14-00f7bae31fa5",
+    "IsCustom": false
+  },
+  {
+    "Ac": 12,
+    "Name": "Hide",
+    "Stealth": 0,
+    "Strength": 0,
+    "Type": 2,
+    "Weight": {
+      "Value": 12.0,
+      "UnitType": 0,
+      "Measurement": 1
+    },
+    "Id": "a9ad7c35-2db4-424a-b3e6-8a9b691ba737",
+    "IsCustom": false
+  },
+  {
+    "Ac": 13,
+    "Name": "Chain Shirt",
+    "Stealth": 0,
+    "Strength": 0,
+    "Type": 2,
+    "Weight": {
+      "Value": 20.0,
+      "UnitType": 0,
+      "Measurement": 1
+    },
+    "Id": "30c9ff7f-e91a-453a-87ba-5aea3f5ef2b0",
+    "IsCustom": false
+  },
+  {
+    "Ac": 14,
+    "Name": "Scale Mail",
+    "Stealth": 1,
+    "Strength": 0,
+    "Type": 2,
+    "Weight": {
+      "Value": 45.0,
+      "UnitType": 0,
+      "Measurement": 1
+    },
+    "Id": "36146f4d-f71b-4520-8f35-4729ddefb62f",
+    "IsCustom": false
+  },
+  {
+    "Ac": 14,
+    "Name": "Breastplate",
+    "Stealth": 0,
+    "Strength": 0,
+    "Type": 2,
+    "Weight": {
+      "Value": 20.0,
+      "UnitType": 0,
+      "Measurement": 1
+    },
+    "Id": "48f9bc1c-ca7e-48d9-8729-365ff18a7c12",
+    "IsCustom": false
+  },
+  {
+    "Ac": 15,
+    "Name": "Half Plate",
+    "Stealth": 1,
+    "Strength": 0,
+    "Type": 2,
+    "Weight": {
+      "Value": 40.0,
+      "UnitType": 0,
+      "Measurement": 1
+    },
+    "Id": "d20f63e2-51c8-45d9-9ee2-0a361ddd815e",
+    "IsCustom": false
+  },
+  {
+    "Ac": 14,
+    "Name": "Ring Mail",
+    "Stealth": 1,
+    "Strength": 0,
+    "Type": 3,
+    "Weight": {
+      "Value": 40.0,
+      "UnitType": 0,
+      "Measurement": 1
+    },
+    "Id": "e0f71cee-380d-41cf-89e4-529da1802351",
+    "IsCustom": false
+  },
+  {
+    "Ac": 16,
+    "Name": "Chain Mail",
+    "Stealth": 1,
+    "Strength": 13,
+    "Type": 3,
+    "Weight": {
+      "Value": 55.0,
+      "UnitType": 0,
+      "Measurement": 1
+    },
+    "Id": "d0cb2784-54ff-4a71-850b-33a5ac74c1ce",
+    "IsCustom": false
+  },
+  {
+    "Ac": 17,
+    "Name": "Splint",
+    "Stealth": 1,
+    "Strength": 15,
+    "Type": 3,
+    "Weight": {
+      "Value": 60.0,
+      "UnitType": 0,
+      "Measurement": 1
+    },
+    "Id": "32a78fd3-19b1-4679-8245-71503a54d4dd",
+    "IsCustom": false
+  },
+  {
+    "Ac": 18,
+    "Name": "Plate",
+    "Stealth": 1,
+    "Strength": 15,
+    "Type": 3,
+    "Weight": {
+      "Value": 65.0,
+      "UnitType": 0,
+      "Measurement": 1
+    },
+    "Id": "d09bbf7f-f507-44da-8fb4-875a923e3796",
+    "IsCustom": false
+  }
+]

@@ -24,7 +24,7 @@
         <!--Header-->
         <Grid Grid.Row="0">
             <TextBlock
-                Text="Edit Armor"
+                Text="Edit Defense"
                 x:Name="HeaderTextBlock"
                 Foreground="#227EA9"
                 FontSize="35"
@@ -32,16 +32,29 @@
                 VerticalAlignment="Center"
                 Margin="30, 0, 0, 0"
                 FontWeight="Bold"/>
-            <components:ConciergeDesignButton 
-                Style="{StaticResource ConciergeDesignButtonStyle}" 
-                x:Name="CloseButton"
-                Width="60"
-                Foreground="White"
-                ToolTip="Close"
-                HorizontalAlignment="Right"
-                Click="CloseButton_Click">
-                <materialDesign:PackIcon Kind="WindowClose" Width="25" Height="25"/>
-            </components:ConciergeDesignButton>
+
+            <StackPanel
+                Orientation="Horizontal"
+                HorizontalAlignment="Right">
+                <components:ConciergeDesignButton 
+                    Style="{StaticResource ConciergeDesignButtonStyle}" 
+                    x:Name="SaveButton"
+                    Width="60"
+                    Foreground="White"
+                    ToolTip="Save As Custom Item"
+                    Click="SaveButton_Click">
+                    <materialDesign:PackIcon Kind="ContentSaveOutline" Width="25" Height="25"/>
+                </components:ConciergeDesignButton>
+                <components:ConciergeDesignButton 
+                    Style="{StaticResource ConciergeDesignButtonStyle}" 
+                    x:Name="CloseButton"
+                    Width="60"
+                    Foreground="White"
+                    ToolTip="Close"
+                    Click="CloseButton_Click">
+                    <materialDesign:PackIcon Kind="WindowClose" Width="25" Height="25"/>
+                </components:ConciergeDesignButton>
+            </StackPanel>
         </Grid>
 
         <!--Fields-->
@@ -62,7 +75,7 @@
                     <RowDefinition Height="60"/>
                 </Grid.RowDefinitions>
 
-                <!--Equiped-->
+                <!--Equipped-->
                 <Grid Grid.Row="0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="35*"/>
@@ -72,13 +85,15 @@
                     <!--Title-->
                     <Grid Grid.Column="0">
                         <components:ConciergeLabel
-                            Text="Equiped:"/>
+                            Text="Armor Name:"/>
                     </Grid>
 
                     <!--Value-->
-                    <components:ConciergeTextBoxBackground Grid.Column="1">
-                        <components:ConciergeTextBox x:Name="EquipedTextBox"/>
-                    </components:ConciergeTextBoxBackground>
+                    <components:ConciergeComboBox
+                        Grid.Column="1"
+                        Style="{StaticResource ComboBoxStyle}"
+                        x:Name="ArmorNameComboBox"
+                        SelectionChanged="ArmorNameComboBox_SelectionChanged"/>
                 </Grid>
 
                 <!--Type-->
@@ -91,7 +106,7 @@
                     <!--Title-->
                     <Grid Grid.Column="0">
                         <components:ConciergeLabel
-                            Text="Type:"/>
+                            Text="Armor Type:"/>
                     </Grid>
 
                     <!--Value-->
@@ -113,7 +128,7 @@
                     <!--Title-->
                     <Grid Grid.Column="0">
                         <components:ConciergeLabel
-                            Text="Base AC:"/>
+                            Text="Armor Class:"/>
                     </Grid>
 
                     <!--Value-->
@@ -164,7 +179,7 @@
                     <!--Title-->
                     <Grid Grid.Column="0">
                         <components:ConciergeLabel
-                            Text="Strength:"/>
+                            Text="Armor Strength:"/>
                     </Grid>
 
                     <!--Value-->
@@ -183,7 +198,9 @@
                     <!--Title-->
                     <Grid Grid.Column="0">
                         <components:ConciergeLabel
-                            Text="Stealth:"/>
+                            Text=" Armor Stealth:"
+                            HorizontalAlignment="Left"
+                            Margin="3,0,0,0"/>
                     </Grid>
 
                     <!--Value-->
@@ -217,7 +234,7 @@
                     <!--Title-->
                     <Grid Grid.Column="0">
                         <components:ConciergeLabel
-                            Text="Shield:"/>
+                            Text="Shield Name:"/>
                     </Grid>
 
                     <!--Value-->
@@ -313,6 +330,27 @@
                     <Grid Grid.Column="1">
                         <controls:IntegerUpDownControl x:Name="MagicArmorClassUpDown"/>
                     </Grid>
+                </Grid>
+
+                <Grid Grid.Row="5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="35*"/>
+                        <ColumnDefinition Width="65*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!--Title-->
+                    <components:ConciergeLabel
+                        Grid.Column="0"
+                        Text="Armor Status:"
+                        HorizontalAlignment="Left"
+                        Margin="3,0,0,0"/>
+
+                    <!--Value-->
+                    <components:ConciergeComboBox
+                        Grid.Column="1"
+                        Style="{StaticResource ComboBoxStyle}"
+                        x:Name="StatusComboBox"
+                        IsEditable="False"/>
                 </Grid>
             </Grid>
         </Grid>

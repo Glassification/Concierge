@@ -36,7 +36,7 @@ namespace Concierge.Character.Vitals.ConditionStates
 
                 var encumbrance = EncumbranceLevel.Normal;
 
-                if (Program.CcsFile.Character.Equipment.Armor.Strength > Program.CcsFile.Character.Characteristic.Attributes.Strength)
+                if (Program.CcsFile.Character.Equipment.Defense.Armor.Strength > Program.CcsFile.Character.Characteristic.Attributes.Strength)
                 {
                     encumbrance = EncumbranceLevel.Encumbered;
                 }

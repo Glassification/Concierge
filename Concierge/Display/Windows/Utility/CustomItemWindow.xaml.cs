@@ -53,6 +53,10 @@ namespace Concierge.Display.Windows.Utility
             {
                 type = typeof(AmmunitionWindow);
             }
+            else if (item is Armor)
+            {
+                type = typeof(ArmorWindow);
+            }
             else if (item is ClassResource)
             {
                 type = typeof(ClassResourceWindow);
@@ -113,7 +117,7 @@ namespace Concierge.Display.Windows.Utility
                 item,
                 type,
                 this.Window_ApplyChanges,
-                Enums.ConciergePage.None);
+                ConciergePage.None);
             this.Draw();
         }
 

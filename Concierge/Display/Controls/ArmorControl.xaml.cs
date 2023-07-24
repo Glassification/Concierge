@@ -33,16 +33,16 @@ namespace Concierge.Display.Controls
             remove { this.RemoveHandler(EditClickedEvent, value); }
         }
 
-        public void SetArmorDetails(Armor armor)
+        public void SetDefenseDetails(Defense defense)
         {
-            this.AcField.Text = armor.ArmorClass.ToString();
-            this.ArmorWornField.Text = armor.Equiped;
-            this.ArmorTypeField.Text = armor.Type.ToString();
-            this.ArmorStealthField.Text = armor.Stealth.ToString();
-            this.ShieldWornField.Text = armor.Shield;
-            this.ShieldAcField.Text = armor.ShieldArmorClass.ToString();
-            this.MiscAcField.Text = armor.MiscArmorClass.ToString();
-            this.MagicAcField.Text = armor.MagicArmorClass.ToString();
+            this.AcField.Text = defense.Armor.Ac.ToString();
+            this.ArmorWornField.Text = defense.Armor.Name;
+            this.ArmorTypeField.Text = defense.Armor.Type.ToString();
+            this.ArmorStealthField.Text = defense.Armor.Stealth.ToString();
+            this.ShieldWornField.Text = defense.Shield;
+            this.ShieldAcField.Text = defense.ShieldAc.ToString();
+            this.MiscAcField.Text = defense.MiscAc.ToString();
+            this.MagicAcField.Text = defense.MagicAc.ToString();
         }
 
         private void Grid_MouseUp(object sender, MouseButtonEventArgs e)

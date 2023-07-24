@@ -35,6 +35,7 @@ namespace Concierge
             Glossary = new ReadOnlyCollection<GlossaryEntry>(defaultListReadWriter.ReadJson<List<GlossaryEntry>>(Properties.Resources.Glossary));
             MagicClasses = new ReadOnlyCollection<MagicClass>(defaultListReadWriter.ReadJson<List<MagicClass>>(Properties.Resources.MagicClass));
             StatusEffects = new ReadOnlyCollection<StatusEffect>(defaultListReadWriter.ReadJson<List<StatusEffect>>(Properties.Resources.StatusEffect));
+            Armor = new ReadOnlyCollection<Armor>(defaultListReadWriter.ReadJson<List<Armor>>(Properties.Resources.Armor));
 
             AutosaveIntervals = new ReadOnlyCollection<int>(defaultListReadWriter.ReadList<int>(Properties.Resources.AutosaveInterval));
             Alignment = new ReadOnlyCollection<string>(defaultListReadWriter.ReadList<string>(Properties.Resources.Alignment));
@@ -96,6 +97,8 @@ namespace Concierge
         public static ReadOnlyCollection<Name> Names { get; }
 
         public static ReadOnlyCollection<GlossaryEntry> Glossary { get; }
+
+        public static ReadOnlyCollection<Armor> Armor { get; }
 
         public static int CurrentAutosaveInterval => AutosaveIntervals[AppSettingsManager.UserSettings.Autosaving.Interval];
     }

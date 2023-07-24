@@ -68,7 +68,7 @@ namespace Concierge.DevTools
 
             rootCommand.Invoke(args);*/
 
-            StatusEffectGenerator.Generate(args[0]);
+            ArmorGenerator.Generate(args[0]);
         }
     }
 }

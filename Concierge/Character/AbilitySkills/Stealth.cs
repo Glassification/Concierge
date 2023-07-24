@@ -28,7 +28,7 @@ namespace Concierge.Character.AbilitySkills
                 Program.CcsFile.Character.Vitality.Conditions.Fatigued.ExhaustionLevel == ExhaustionLevel.Five ||
                 Program.CcsFile.Character.Vitality.Conditions.Frightened.Afflicted ||
                 Program.CcsFile.Character.Vitality.Conditions.Poisoned.Afflicted ||
-                Program.CcsFile.Character.Equipment.Armor.Stealth == ArmorStealth.Disadvantage
+                Program.CcsFile.Character.Equipment.Defense.Armor.Stealth == ArmorStealth.Disadvantage
                 ? StatusChecks.Disadvantage
                 : Program.CcsFile.Character.Vitality.Conditions.Blinded.Afflicted
                     ? StatusChecks.Fail

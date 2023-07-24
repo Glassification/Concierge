@@ -242,9 +242,9 @@ namespace Concierge.Display.Windows
             }
         }
 
-        private Weapon Create()
+        private Weapon Create(ICreature? creature)
         {
-            return new Weapon(this.Creature ?? throw new NullValueException(nameof(this.Creature)))
+            return new Weapon(creature ?? throw new NullValueException(nameof(creature)))
             {
                 Name = this.AttackComboBox.Text,
                 Type = (WeaponTypes)Enum.Parse(typeof(WeaponTypes), this.TypeComboBox.Text),
@@ -266,7 +266,7 @@ namespace Concierge.Display.Windows
         private Weapon ToWeapon()
         {
             this.ItemsAdded = true;
-            var weapon = this.Create();
+            var weapon = this.Create(this.Creature);
 
             Program.UndoRedoService.AddCommand(new AddCommand<Weapon>(this.Weapons, weapon, this.ConciergePage));
 
@@ -318,7 +318,7 @@ namespace Concierge.Display.Windows
                 return;
             }
 
-            Program.CustomItemService.AddCustomItem(this.Create());
+            Program.CustomItemService.AddCustomItem(this.Create(Program.CcsFile.Character));
             this.ClearFields();
             this.AttackComboBox.ItemsSource = DefaultItems;
         }

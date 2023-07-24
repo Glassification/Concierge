@@ -128,7 +128,6 @@ namespace Concierge.Display.Controls
             this.DiceNumberUpDown.Value = 1;
             this.DxDieUpDown.Value = 1;
             this.DiceModifierUpDown.Value = 0;
-            this.DicePlus.IsChecked = true;
             this.DiceResult.Text = "0";
         }
 
@@ -137,10 +136,9 @@ namespace Concierge.Display.Controls
             var diceNumber = this.DiceNumberUpDown.Value;
             var modified = this.DiceModifierUpDown.Value;
             var diceSides = this.CustomSidesVisibility == Visibility.Visible ? this.DxDieUpDown.Value : this.DiceSides;
-            var isPlus = this.DicePlus.IsChecked ?? false;
 
             var rolledDice = DiceRoll.RollDice(diceNumber, diceSides);
-            return new DiceRoll(diceSides, rolledDice, isPlus ? modified : modified * -1);
+            return new DiceRoll(diceSides, rolledDice, modified);
         }
 
         private void ButtonRoll_Click(object sender, RoutedEventArgs e)

@@ -315,6 +315,16 @@ namespace Concierge.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Armor {
+            get {
+                object obj = ResourceManager.GetObject("Armor", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The armor&apos;s base AC without any modifiers added..
         /// </summary>
         internal static string ArmorWindow_ArmorClassUpDown {

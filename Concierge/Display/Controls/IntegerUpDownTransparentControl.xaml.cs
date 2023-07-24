@@ -67,6 +67,13 @@ namespace Concierge.Display.Controls
                 typeof(AppearanceControl), // No idea why it only works this way
                 new UIPropertyMetadata(Brushes.White));
 
+        public static readonly DependencyProperty ForegroundColorProperty =
+            DependencyProperty.Register(
+                "ForegroundColor",
+                typeof(Color),
+                typeof(AppearanceControl), // No idea why it only works this way
+                new UIPropertyMetadata(Colors.White));
+
         private static readonly RoutedEvent ValueChangedEvent =
             EventManager.RegisterRoutedEvent(
                 "ValueChanged",
@@ -206,6 +213,12 @@ namespace Concierge.Display.Controls
         {
             get { return (Brush)this.GetValue(ForegroundBrushProperty); }
             set { this.SetValue(ForegroundBrushProperty, value); }
+        }
+
+        public Color ForegroundColor
+        {
+            get { return (Color)this.GetValue(ForegroundColorProperty); }
+            set { this.SetValue(ForegroundColorProperty, value); }
         }
 
         private int LastValue { get; set; }
