@@ -285,10 +285,6 @@ namespace Concierge.Display.Windows
             {
                 this.FillFields(inventory);
             }
-            else
-            {
-                this.ClearFields(this.NameComboBox.Text);
-            }
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)

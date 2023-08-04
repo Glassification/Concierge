@@ -1,2 +1,11 @@
-﻿Add object before/after on info log
-Level up spellcasting stats.
+﻿Armor
+resources
+langauages
+proficiency
+ammunition
+attacks
+effects
+abilities
+inventory
+magic class
+spells

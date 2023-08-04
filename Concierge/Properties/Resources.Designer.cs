@@ -660,6 +660,7 @@ namespace Concierge.Properties {
         ///Gemstone
         ///Heavy Armor
         ///Holy Symbol
+        ///Key
         ///Light Armor
         ///Medium Armor
         ///Mount

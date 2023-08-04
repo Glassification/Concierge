@@ -164,6 +164,7 @@ namespace Concierge.Character.Equipable
                 "Gemstone" => new CategoryDto(PackIconKind.DiamondStone, Brushes.Cyan, this.ItemCategory),
                 "Heavy Armor" => new CategoryDto(PackIconKind.Wall, Brushes.LightGray, this.ItemCategory),
                 "Holy Symbol" => new CategoryDto(PackIconKind.Christianity, Brushes.PaleGoldenrod, this.ItemCategory),
+                "Key" => new CategoryDto(PackIconKind.KeyVariant, Brushes.PaleGreen, this.ItemCategory),
                 "Light Armor" => new CategoryDto(PackIconKind.Wall, Brushes.LightGray, this.ItemCategory),
                 "Medium Armor" => new CategoryDto(PackIconKind.Wall, Brushes.LightGray, this.ItemCategory),
                 "Mount" => new CategoryDto(PackIconKind.HorsebackRiding, Brushes.SandyBrown, this.ItemCategory),
