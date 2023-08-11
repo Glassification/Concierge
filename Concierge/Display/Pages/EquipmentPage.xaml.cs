@@ -18,6 +18,7 @@ namespace Concierge.Display.Pages
     using Concierge.Display.Components;
     using Concierge.Display.Enums;
     using Concierge.Display.Windows;
+    using Concierge.Display.Windows.Utility;
     using Concierge.Services;
 
     /// <summary>
@@ -290,6 +291,20 @@ namespace Concierge.Display.Pages
                 case nameof(EquipmentWindow):
                     this.Draw();
                     break;
+            }
+        }
+
+        private void ItemUseButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (this.SelectedItem is Weapon weapon)
+            {
+                var result = weapon.Use(null);
+                ConciergeWindowService.ShowUseItemWindow(typeof(UseItemWindow), result);
+            }
+            else if (this.SelectedItem is Spell spell)
+            {
+                var result = spell.Use();
+                ConciergeWindowService.ShowUseItemWindow(typeof(UseItemWindow), result);
             }
         }
     }

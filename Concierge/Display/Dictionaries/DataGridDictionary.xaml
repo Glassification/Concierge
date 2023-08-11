@@ -171,7 +171,25 @@
         <Setter Property="TextWrapping" Value="Wrap"/>
         <Setter Property="FontSize" Value="14"/>
     </Style>
-    
+
+    <!--Details Left-->
+    <Style x:Key="LeftDetailsDataGridStyle" TargetType="{x:Type DataGrid}">
+        <Setter Property="ColumnHeaderStyle" Value="{DynamicResource LeftDetailsDataGridHeaderStyle}"/>
+        <Setter Property="RowStyle" Value="{DynamicResource StandardDataGridRowStyle}"/>
+        <Setter Property="Background" Value="#2B2B2B" />
+        <Setter Property="AlternationCount" Value="2" />
+    </Style>
+    <Style x:Key="LeftDetailsDataGridHeaderStyle" TargetType="DataGridColumnHeader">
+        <Setter Property="Height" Value="35"/>
+        <Setter Property="Background" Value="#2B2B2B" />
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="FontSize" Value="18" />
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Margin" Value="10,0,0,0"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+    </Style>
+
     <!--Spellcasting-->
     <Style x:Key="SpellcastingDataGridStyle" TargetType="{x:Type DataGrid}">
         <Setter Property="ColumnHeaderStyle" Value="{DynamicResource SpellcastingDataGridHeaderStyle}"/>

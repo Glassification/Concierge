@@ -17,6 +17,7 @@ namespace Concierge.Display.Pages
     using Concierge.Display.Components;
     using Concierge.Display.Enums;
     using Concierge.Display.Windows;
+    using Concierge.Display.Windows.Utility;
     using Concierge.Services;
 
     /// <summary>
@@ -223,7 +224,7 @@ namespace Concierge.Display.Pages
             var oldItem = ammunition.DeepCopy();
             var index = this.AmmoDataGrid.SelectedIndex;
 
-            ammunition.Used++;
+            ammunition.Use(1);
             this.DrawAmmoList();
             this.AmmoDataGrid.SetSelectedIndex(index);
             Program.UndoRedoService.AddCommand(new EditCommand<Ammunition>(ammunition, oldItem, this.ConciergePage));
@@ -301,7 +302,7 @@ namespace Concierge.Display.Pages
 
         private void DeleteEffectsButton_Click(object sender, RoutedEventArgs e)
         {
-            if (this.StatusEffectsDataGrid.SelectedItem == null)
+            if (this.StatusEffectsDataGrid.SelectedItem is null)
             {
                 return;
             }
@@ -353,6 +354,20 @@ namespace Concierge.Display.Pages
             this.SearchFilter.SetButtonEnableState(this.AttacksDownButton);
 
             this.DrawWeaponList();
+        }
+
+        private void AttackUseButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (this.WeaponDataGrid.SelectedItem is null)
+            {
+                return;
+            }
+
+            var ammunition = this.AmmoDataGrid.SelectedItem as Ammunition;
+            var weapon = (Weapon)this.WeaponDataGrid.SelectedItem;
+            var result = weapon.Use(ammunition);
+
+            ConciergeWindowService.ShowUseItemWindow(typeof(UseItemWindow), result);
         }
     }
 }

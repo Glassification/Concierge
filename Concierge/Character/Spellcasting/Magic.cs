@@ -4,6 +4,7 @@
 
 namespace Concierge.Character.Spellcasting
 {
+    using System;
     using System.Collections.Generic;
     using System.Linq;
 
@@ -32,7 +33,6 @@ namespace Concierge.Character.Spellcasting
             get
             {
                 int level = 0;
-
                 foreach (var magicClass in this.MagicClasses)
                 {
                     level += magicClass.Level;
@@ -40,6 +40,11 @@ namespace Concierge.Character.Spellcasting
 
                 return level;
             }
+        }
+
+        public int GetSpellAttack(string className)
+        {
+            return this.MagicClasses.Where(x => x.Name.Equals(className, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault()?.Attack ?? 0;
         }
 
         public Magic DeepCopy()

@@ -5,6 +5,7 @@
 namespace Concierge.Character.Equipable
 {
     using System;
+    using System.Collections.Generic;
     using System.Windows.Media;
 
     using Concierge.Character.Enums;
@@ -13,6 +14,8 @@ namespace Concierge.Character.Equipable
     using Concierge.Common.Dtos;
     using Concierge.Common.Exceptions;
     using Concierge.Data;
+    using Concierge.Tools;
+    using Concierge.Tools.DiceRoller;
     using MaterialDesignThemes.Wpf;
     using Newtonsoft.Json;
 
@@ -176,6 +179,21 @@ namespace Concierge.Character.Equipable
         public override string ToString()
         {
             return this.Name;
+        }
+
+        public UsedItem Use(Ammunition? ammunition)
+        {
+            var damageInput = $"{this.Damage} {this.Misc} {(ammunition is not null ? ammunition.Bonus : string.Empty)}";
+            var cleanedInput = DiceParser.Clean(damageInput, Enum.GetNames(typeof(DamageTypes)));
+            if (!DiceParser.IsValidInput(cleanedInput))
+            {
+                cleanedInput = "0";
+            }
+
+            var attack = new DiceRoll(20, 1, this.Attack);
+            var damage = new CustomDiceRoll(DiceParser.Parse(cleanedInput));
+
+            return new UsedItem(attack, damage, this.Name, this.Note);
         }
 
         public CategoryDto GetCategory()

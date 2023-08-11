@@ -116,7 +116,7 @@
                                     Foreground="#B9487B"
                                     Click="AmmoUseButton_Click"
                                     ToolTip="Use Ammunition">
-                                    <materialDesign:PackIcon Kind="MinusBox" Width="25" Height="25"/>
+                                    <materialDesign:PackIcon Kind="PlayBox" Width="25" Height="25"/>
                                 </components:ConciergeDesignButton>
                                 <components:ConciergeDesignButton 
                                     Style="{StaticResource ConciergeDesignButtonStyle}" 
@@ -214,10 +214,12 @@
                                 Foreground="White"
                                 FontSize="25"
                                 VerticalAlignment="Center"
-                                HorizontalAlignment="Center"/>
+                                HorizontalAlignment="Left"
+                                Margin="10,0,0,0"/>
+
                             <StackPanel 
                                 Orientation="Horizontal"
-                                HorizontalAlignment="Left"
+                                HorizontalAlignment="Right"
                                 VerticalAlignment="Stretch">
                                 <components:ConciergeDesignButton Style="{StaticResource ConciergeDesignButtonStyle}" 
                                     x:Name="ClearEffectsButton"
@@ -228,21 +230,6 @@
                                     Click="ClearEffectsButton_Click">
                                     <materialDesign:PackIcon Kind="NotificationClearAll" Width="25" Height="25"/>
                                 </components:ConciergeDesignButton>
-                                <components:ConciergeDesignButton 
-                                    Style="{StaticResource ConciergeDesignButtonStyle}" 
-                                    x:Name="DeleteEffectsButton"
-                                    Width="35"
-                                    HorizontalAlignment="Left"
-                                    Foreground="IndianRed"
-                                    ToolTip="Delete Selected Status Effect"
-                                    Click="DeleteEffectsButton_Click">
-                                    <materialDesign:PackIcon Kind="Delete" Width="25" Height="25"/>
-                                </components:ConciergeDesignButton>
-                            </StackPanel>
-                            <StackPanel 
-                                Orientation="Horizontal"
-                                HorizontalAlignment="Right"
-                                VerticalAlignment="Stretch">
                                 <components:ConciergeDesignButton 
                                     Style="{StaticResource ConciergeDesignButtonStyle}" 
                                     x:Name="AddEffectsButton"
@@ -262,6 +249,16 @@
                                     ToolTip="Edit Selected Status Effect"
                                     Click="EditEffectsButton_Click">
                                     <materialDesign:PackIcon Kind="TextBoxEdit" Width="25" Height="25"/>
+                                </components:ConciergeDesignButton>
+                                <components:ConciergeDesignButton 
+                                    Style="{StaticResource ConciergeDesignButtonStyle}" 
+                                    x:Name="DeleteEffectsButton"
+                                    Width="35"
+                                    HorizontalAlignment="Left"
+                                    Foreground="IndianRed"
+                                    ToolTip="Delete Selected Status Effect"
+                                    Click="DeleteEffectsButton_Click">
+                                    <materialDesign:PackIcon Kind="Delete" Width="25" Height="25"/>
                                 </components:ConciergeDesignButton>
                             </StackPanel>
                         </Grid>
@@ -377,6 +374,15 @@
                                 Click="AttacksEditButton_Click"
                                 ToolTip="Edit Selected Attack">
                                 <materialDesign:PackIcon Kind="TextBoxEdit" Width="25" Height="25"/>
+                            </components:ConciergeDesignButton>
+                            <components:ConciergeDesignButton 
+                                Style="{StaticResource ConciergeDesignButtonStyle}" 
+                                x:Name="AttackUseButton"
+                                Width="60"
+                                Foreground="#B9487B"
+                                Click="AttackUseButton_Click"
+                                ToolTip="Use Attack">
+                                <materialDesign:PackIcon Kind="PlayBox" Width="25" Height="25"/>
                             </components:ConciergeDesignButton>
                             <components:ConciergeDesignButton 
                                 Style="{StaticResource ConciergeDesignButtonStyle}" 

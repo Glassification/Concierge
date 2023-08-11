@@ -162,7 +162,6 @@ namespace Concierge.Display.Windows
                 Weight = new UnitDouble(this.WeightUpDown.Value, UnitTypes.Imperial, Measurements.Weight),
                 Strength = this.StrengthUpDown.Value,
                 Stealth = (ArmorStealth)Enum.Parse(typeof(ArmorStealth), this.StealthComboBox.Text),
-
             };
         }
 

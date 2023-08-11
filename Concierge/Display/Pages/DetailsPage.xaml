@@ -249,7 +249,7 @@
                     Background="#2B2B2B">
                     <components:ConciergeDataGrid 
                         x:Name="ResourcesDataGrid"
-                        Style="{DynamicResource DetailsDataGridStyle}"
+                        Style="{DynamicResource LeftDetailsDataGridStyle}"
                         Sorted="ResourcesDataGrid_Sorted">
                         <DataGrid.Columns>
                             <DataGridTextColumn 
@@ -262,35 +262,18 @@
 
                     <StackPanel 
                         Orientation="Horizontal"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Top">
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Top"
+                        Margin="0,5,0,0">
                         <components:ConciergeDesignButton Style="{StaticResource ConciergeDesignButtonStyle}" 
                             x:Name="ClearResourcesButton"
                             Width="35"
                             HorizontalAlignment="Left"
                             Foreground="Silver"
                             ToolTip="Clear Selected Resource"
-                            Click="ClearResourcesButton_Click"
-                            Margin="0, 0, 3, 3">
+                            Click="ClearResourcesButton_Click">
                             <materialDesign:PackIcon Kind="NotificationClearAll" Width="25" Height="25"/>
                         </components:ConciergeDesignButton>
-                        <components:ConciergeDesignButton 
-                            Style="{StaticResource ConciergeDesignButtonStyle}" 
-                            x:Name="DeleteResourcesButton"
-                            Width="35"
-                            HorizontalAlignment="Left"
-                            Foreground="IndianRed"
-                            ToolTip="Delete Selected Resource"
-                            Click="DeleteResourcesButton_Click"
-                            Margin="0, 0, 3, 3">
-                            <materialDesign:PackIcon Kind="Delete" Width="25" Height="25"/>
-                        </components:ConciergeDesignButton>
-                    </StackPanel>
-                    
-                    <StackPanel 
-                        Orientation="Horizontal"
-                        HorizontalAlignment="Right"
-                        VerticalAlignment="Top">
                         <components:ConciergeDesignButton 
                             Style="{StaticResource ConciergeDesignButtonStyle}" 
                             x:Name="AddResourcesButton"
@@ -298,8 +281,7 @@
                             HorizontalAlignment="Center"
                             Foreground="#48B987"
                             ToolTip="Add New Resource"
-                            Click="AddResourcesButton_Click"
-                            Margin="0, 0, 3, 3">
+                            Click="AddResourcesButton_Click">
                             <materialDesign:PackIcon Kind="AddBox" Width="25" Height="25"/>
                         </components:ConciergeDesignButton>
                         <components:ConciergeDesignButton 
@@ -309,9 +291,18 @@
                             HorizontalAlignment="Right"
                             Foreground="#B98748"
                             ToolTip="Edit Selected Resources"
-                            Click="EditResourcesButton_Click"
-                            Margin="0, 0, 3, 3">
+                            Click="EditResourcesButton_Click">
                             <materialDesign:PackIcon Kind="TextBoxEdit" Width="25" Height="25"/>
+                        </components:ConciergeDesignButton>
+                        <components:ConciergeDesignButton 
+                            Style="{StaticResource ConciergeDesignButtonStyle}" 
+                            x:Name="DeleteResourcesButton"
+                            Width="35"
+                            HorizontalAlignment="Left"
+                            Foreground="IndianRed"
+                            ToolTip="Delete Selected Resource"
+                            Click="DeleteResourcesButton_Click">
+                            <materialDesign:PackIcon Kind="Delete" Width="25" Height="25"/>
                         </components:ConciergeDesignButton>
                     </StackPanel>
                 </Grid>
@@ -329,7 +320,7 @@
                     Background="#2B2B2B">
                     <components:ConciergeDataGrid 
                         x:Name="LanguagesDataGrid"
-                        Style="{DynamicResource DetailsDataGridStyle}"
+                        Style="{DynamicResource LeftDetailsDataGridStyle}"
                         Sorted="LanguagesDataGrid_Sorted">
                         <DataGrid.Columns>
                             <DataGridTextColumn 
@@ -339,11 +330,12 @@
                                 ElementStyle="{StaticResource DetailsColumnElementStyle}"/>
                         </DataGrid.Columns>
                     </components:ConciergeDataGrid>
-                    
+                   
                     <StackPanel
                         Orientation="Horizontal"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Top">
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Top"
+                        Margin="0,5,0,0">
                         <components:ConciergeDesignButton 
                             Style="{StaticResource ConciergeDesignButtonStyle}"
                             x:Name="ClearLanguagesButton"
@@ -351,27 +343,9 @@
                             HorizontalAlignment="Left"
                             Foreground="Silver"
                             ToolTip="Clear Selected Language"
-                            Click="ClearLanguagesButton_Click"
-                            Margin="0, 0, 3, 3">
+                            Click="ClearLanguagesButton_Click">
                             <materialDesign:PackIcon Kind="NotificationClearAll" Width="25" Height="25"/>
                         </components:ConciergeDesignButton>
-                        <components:ConciergeDesignButton 
-                            Style="{StaticResource ConciergeDesignButtonStyle}" 
-                            x:Name="DeleteLanguagesButton"
-                            Width="35"
-                            HorizontalAlignment="Left"
-                            Foreground="IndianRed"
-                            ToolTip="Delete Selected Language"
-                            Click="DeleteLanguagesButton_Click"
-                            Margin="0, 0, 3, 3">
-                            <materialDesign:PackIcon Kind="Delete" Width="25" Height="25"/>
-                        </components:ConciergeDesignButton>
-                    </StackPanel>
-                    
-                    <StackPanel
-                        Orientation="Horizontal"
-                        HorizontalAlignment="Right"
-                        VerticalAlignment="Top">
                         <components:ConciergeDesignButton 
                             Style="{StaticResource ConciergeDesignButtonStyle}"
                             x:Name="AddLanguagesButton"
@@ -379,8 +353,7 @@
                             HorizontalAlignment="Center"
                             Foreground="#48B987"
                             ToolTip="Add New Language"
-                            Click="AddLanguagesButton_Click"
-                            Margin="0, 0, 3, 3">
+                            Click="AddLanguagesButton_Click">
                             <materialDesign:PackIcon Kind="AddBox" Width="25" Height="25"/>
                         </components:ConciergeDesignButton>
                         <components:ConciergeDesignButton 
@@ -390,9 +363,18 @@
                             HorizontalAlignment="Right"
                             Foreground="#B98748"
                             ToolTip="Edit Selected Language"
-                            Click="EditLanguagesButton_Click"
-                            Margin="0, 0, 3, 3">
+                            Click="EditLanguagesButton_Click">
                             <materialDesign:PackIcon Kind="TextBoxEdit" Width="25" Height="25"/>
+                        </components:ConciergeDesignButton>
+                        <components:ConciergeDesignButton 
+                            Style="{StaticResource ConciergeDesignButtonStyle}" 
+                            x:Name="DeleteLanguagesButton"
+                            Width="35"
+                            HorizontalAlignment="Left"
+                            Foreground="IndianRed"
+                            ToolTip="Delete Selected Language"
+                            Click="DeleteLanguagesButton_Click">
+                            <materialDesign:PackIcon Kind="Delete" Width="25" Height="25"/>
                         </components:ConciergeDesignButton>
                     </StackPanel>
                 </Grid>
@@ -410,7 +392,7 @@
                     Background="#2B2B2B">
                     <components:ConciergeDataGrid 
                         x:Name="ConditionsDataGrid"
-                        Style="{DynamicResource DetailsDataGridStyle}"
+                        Style="{DynamicResource LeftDetailsDataGridStyle}"
                         SelectionMode="Single">
                         <DataGrid.Columns>
                             <DataGridTextColumn 
@@ -424,7 +406,8 @@
                     <StackPanel
                         Orientation="Horizontal"
                         VerticalAlignment="Top"
-                        HorizontalAlignment="Right">
+                        HorizontalAlignment="Right"
+                        Margin="0,5,0,0">
                         <components:ConciergeDesignButton 
                             Style="{StaticResource ConciergeDesignButtonStyle}" 
                             x:Name="ClearConditionsButton"

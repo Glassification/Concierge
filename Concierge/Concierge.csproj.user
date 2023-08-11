@@ -60,6 +60,9 @@
     <Compile Update="Display\Windows\Utility\GlossaryWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Display\Windows\Utility\UseItemWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="Display\Controls\AppearanceControl.xaml">
@@ -312,6 +315,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Display\Windows\Utility\SplashScreenWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Display\Windows\Utility\UseItemWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Display\Windows\WealthWindow.xaml">

@@ -5,6 +5,7 @@
 namespace Concierge.Display.Components
 {
     using System;
+    using System.Collections.Generic;
     using System.Runtime.InteropServices;
     using System.Windows;
     using System.Windows.Input;
@@ -20,6 +21,8 @@ namespace Concierge.Display.Components
     using Concierge.Display.Enums;
     using Concierge.Display.Windows.Helpers;
     using Concierge.Services;
+    using Concierge.Tools;
+    using Concierge.Tools.DiceRoller;
 
     public abstract partial class ConciergeWindow : Window
     {
@@ -114,6 +117,11 @@ namespace Concierge.Display.Components
         {
             Program.Logger.Error(new ImplementedMethodException(nameof(this.ShowColorWindow), color));
             return CustomColor.Invalid;
+        }
+
+        public virtual void ShowUseItemWindow(UsedItem usedItem)
+        {
+            Program.Logger.Error(new ImplementedMethodException(nameof(this.ShowUseItemWindow)));
         }
 
         public virtual PopupButtons ShowPopup()

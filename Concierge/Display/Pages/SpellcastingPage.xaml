@@ -294,6 +294,15 @@
                             </components:ConciergeDesignButton>
                             <components:ConciergeDesignButton 
                                 Style="{StaticResource ConciergeDesignButtonStyle}" 
+                                x:Name="SpellUseButton"
+                                Width="60"
+                                Foreground="#B9487B"
+                                Click="SpellUseButton_Click"
+                                ToolTip="Use Spell">
+                                <materialDesign:PackIcon Kind="PlayBox" Width="25" Height="25"/>
+                            </components:ConciergeDesignButton>
+                            <components:ConciergeDesignButton 
+                                Style="{StaticResource ConciergeDesignButtonStyle}" 
                                 x:Name="SpellDeleteButton"
                                 Width="60"
                                 Foreground="IndianRed"

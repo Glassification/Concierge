@@ -110,5 +110,10 @@ namespace Concierge.Character.Equipable
                 _ => new CategoryDto(),
             };
         }
+
+        public void Use(int use)
+        {
+            this.Used += use;
+        }
     }
 }

@@ -183,6 +183,22 @@ namespace Concierge.Common.Extensions
         }
 
         /// <summary>
+        /// Removes the specified texts from the string.
+        /// </summary>
+        /// <param name="str">The string to strip.</param>
+        /// <param name="textToStrip">The texts to remove.</param>
+        /// <returns>The modified string.</returns>
+        public static string Strip(this string str, StringComparison stringComparison, params string[] textToStrip)
+        {
+            foreach (var text in textToStrip)
+            {
+                str = str.Replace(text, string.Empty, stringComparison);
+            }
+
+            return str;
+        }
+
+        /// <summary>
         /// Determines whether the specified pattern is a valid regular expression.
         /// </summary>
         /// <param name="pattern">The pattern to test.</param>
@@ -437,6 +453,29 @@ namespace Concierge.Common.Extensions
             newStr = newStr.Insert(index, to);
 
             return newStr;
+        }
+
+        /// <summary>
+        /// Checks if the provided string matches any of the specified string values
+        /// using a case-insensitive comparison with invariant culture.
+        /// </summary>
+        /// <param name="str">The string to check.</param>
+        /// <param name="find">An array of string values to compare against.</param>
+        /// <returns>
+        /// <c>true</c> if the provided string matches any of the specified string values;
+        /// otherwise, <c>false</c>.
+        /// </returns>
+        public static bool IsAny(this string str, params string[] find)
+        {
+            foreach (var item in find)
+            {
+                if (str.Equals(item, StringComparison.InvariantCultureIgnoreCase))
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
     }
 }

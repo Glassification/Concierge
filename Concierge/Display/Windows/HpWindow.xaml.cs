@@ -29,7 +29,7 @@ namespace Concierge.Display.Windows
             this.SetFocusEvents(this.HpUpDown);
         }
 
-        public override string HeaderText => this.IsHealing ? "Heal" : "Damage";
+        public override string HeaderText => this.IsHealing ? "Healing" : "Damage";
 
         public override string WindowName => nameof(HpWindow);
 

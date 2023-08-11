@@ -11,6 +11,8 @@ namespace Concierge.Character.Spellcasting
     using Concierge.Common;
     using Concierge.Common.Attributes;
     using Concierge.Common.Dtos;
+    using Concierge.Tools;
+    using Concierge.Tools.DiceRoller;
     using MaterialDesignThemes.Wpf;
     using Newtonsoft.Json;
 
@@ -127,6 +129,21 @@ namespace Concierge.Character.Spellcasting
                 Name = this.Name,
                 IsCustom = this.IsCustom,
             };
+        }
+
+        public UsedItem Use()
+        {
+            var cleanedInput = DiceParser.Clean(this.Damage, Enum.GetNames(typeof(DamageTypes)));
+            if (!DiceParser.IsValidInput(cleanedInput))
+            {
+                cleanedInput = "0";
+            }
+
+            var attackBonus = Program.CcsFile.Character.Magic.GetSpellAttack(this.Class);
+            var attack = new DiceRoll(20, 1, attackBonus);
+            var damage = new CustomDiceRoll(DiceParser.Parse(cleanedInput));
+
+            return new UsedItem(attack, damage, this.Name, this.Description);
         }
 
         public CategoryDto GetCategory()

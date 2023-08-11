@@ -11,6 +11,7 @@ namespace Concierge.Services
     using Concierge.Data;
     using Concierge.Display.Components;
     using Concierge.Display.Enums;
+    using Concierge.Tools;
 
     using static Concierge.Display.Components.ConciergeWindow;
 
@@ -123,6 +124,17 @@ namespace Concierge.Services
             }
 
             return conciergeWindow.ShowColorWindow(color);
+        }
+
+        public static void ShowUseItemWindow(Type typeOfWindow, UsedItem usedItem)
+        {
+            var conciergeWindow = (ConciergeWindow?)Activator.CreateInstance(typeOfWindow);
+            if (conciergeWindow is null)
+            {
+                return;
+            }
+
+            conciergeWindow.ShowUseItemWindow(usedItem);
         }
 
         public static PopupButtons ShowPopup(Type typeOfWindow)

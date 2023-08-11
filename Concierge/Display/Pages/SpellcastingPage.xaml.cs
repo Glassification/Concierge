@@ -16,6 +16,7 @@ namespace Concierge.Display.Pages
     using Concierge.Display.Components;
     using Concierge.Display.Enums;
     using Concierge.Display.Windows;
+    using Concierge.Display.Windows.Utility;
     using Concierge.Services;
 
     /// <summary>
@@ -282,6 +283,19 @@ namespace Concierge.Display.Pages
                     this.DrawSpellSlots();
                     break;
             }
+        }
+
+        private void SpellUseButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (this.SpellListDataGrid.SelectedItem is null)
+            {
+                return;
+            }
+
+            var spell = (Spell)this.SpellListDataGrid.SelectedItem;
+            var result = spell.Use();
+
+            ConciergeWindowService.ShowUseItemWindow(typeof(UseItemWindow), result);
         }
     }
 }

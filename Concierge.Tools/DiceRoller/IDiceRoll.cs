@@ -9,5 +9,7 @@ namespace Concierge.Tools.DiceRoller
         string Dice { get; }
 
         int Total { get; }
+
+        void ReRoll();
     }
 }
