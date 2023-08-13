@@ -121,8 +121,6 @@ namespace Concierge.Display.Windows
             }
 
             this.CloseConciergeWindow();
-
-            Program.Modify();
         }
 
         private void FillFields(MagicClass magicClass)
@@ -215,8 +213,6 @@ namespace Concierge.Display.Windows
             this.MagicClasses.Add(this.ToMagicClass());
             this.ClearFields();
             this.InvokeApplyChanges();
-
-            Program.Modify();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)

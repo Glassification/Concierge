@@ -156,12 +156,12 @@ namespace Concierge.Display.Utility
             this.SetRaceState(false);
         }
 
-        private void NameTextBox_PreviewKeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        private void NameTextBox_PreviewKeyDown(object sender, KeyEventArgs e)
         {
             this.ScrollHistory(e.Key == Key.Up ? HistoryDirection.Backward : e.Key == Key.Down ? HistoryDirection.Forward : HistoryDirection.None);
         }
 
-        private void NameTextBox_MouseWheel(object sender, System.Windows.Input.MouseWheelEventArgs e)
+        private void NameTextBox_MouseWheel(object sender, MouseWheelEventArgs e)
         {
             this.ScrollHistory(e.Delta < 0 ? HistoryDirection.Forward : HistoryDirection.Backward);
         }

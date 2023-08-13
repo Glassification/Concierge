@@ -106,6 +106,15 @@
                     </components:ConciergeDesignButton>
                     <components:ConciergeDesignButton 
                         Style="{StaticResource ConciergeDesignButtonStyle}" 
+                        x:Name="ItemUseButton"
+                        Width="60"
+                        Foreground="#B9487B"
+                        Click="ItemUseButton_Click"
+                        ToolTip="Use Equipped Item">
+                        <materialDesign:PackIcon Kind="PlayBox" Width="25" Height="25"/>
+                    </components:ConciergeDesignButton>
+                    <components:ConciergeDesignButton 
+                        Style="{StaticResource ConciergeDesignButtonStyle}" 
                         x:Name="DeleteButton"
                         Click="DeleteButton_Click"
                         Width="60"

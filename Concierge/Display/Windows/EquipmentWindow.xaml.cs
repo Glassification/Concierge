@@ -73,8 +73,6 @@ namespace Concierge.Display.Windows
 
             this.EquipItem();
             this.CloseConciergeWindow();
-
-            Program.Modify();
         }
 
         private void ClearFields()
@@ -142,8 +140,6 @@ namespace Concierge.Display.Windows
             this.ClearFields();
             this.ItemComboBox.ItemsSource = Program.CcsFile.Character.Equipment.EquippedItems.Equipable;
             this.InvokeApplyChanges();
-
-            Program.Modify();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)

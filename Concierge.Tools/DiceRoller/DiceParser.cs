@@ -7,6 +7,7 @@ namespace Concierge.Tools.DiceRoller
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Text;
     using System.Text.RegularExpressions;
 
     using Concierge.Common.Exceptions;
@@ -19,6 +20,7 @@ namespace Concierge.Tools.DiceRoller
     {
         private static readonly Regex patternSplit = new (@"(\+|\-)", RegexOptions.Compiled);
         private static readonly Regex hasNumber = new ("[0-9]", RegexOptions.Compiled);
+        private static readonly Regex hasDice = new ("\\d[Dd]\\d\\+*\\d*", RegexOptions.Compiled);
 
         private static readonly string[] filter = { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "+", "-", "d" };
 
@@ -49,6 +51,28 @@ namespace Concierge.Tools.DiceRoller
             {
                 throw new InvalidExpressionException(input);
             }
+        }
+
+        /// <summary>
+        /// Finds and parses dice expressions within the provided input string.
+        /// </summary>
+        /// <param name="input">The input string containing dice expressions.</param>
+        /// <returns>A stack of parsed dice expressions as objects.</returns>
+        public static Stack<object> FindAndParse(string input)
+        {
+            var builder = new StringBuilder();
+            var matches = hasDice.Matches(input.Strip(" "));
+            if (matches.Count == 0)
+            {
+                return new Stack<object>();
+            }
+
+            foreach (Match match in matches.Cast<Match>())
+            {
+                builder.Append(match.Value);
+            }
+
+            return Parse(builder.ToString());
         }
 
         /// <summary>

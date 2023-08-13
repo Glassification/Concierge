@@ -5,13 +5,13 @@
 namespace Concierge.Character.Equipable
 {
     using System;
-    using System.Collections.Generic;
     using System.Windows.Media;
 
     using Concierge.Character.Enums;
     using Concierge.Common;
     using Concierge.Common.Attributes;
     using Concierge.Common.Dtos;
+    using Concierge.Common.Enums;
     using Concierge.Common.Exceptions;
     using Concierge.Data;
     using Concierge.Tools;
@@ -181,7 +181,7 @@ namespace Concierge.Character.Equipable
             return this.Name;
         }
 
-        public UsedItem Use(Ammunition? ammunition)
+        public UsedItem Use(Ammunition? ammunition = null)
         {
             var damageInput = $"{this.Damage} {this.Misc} {(ammunition is not null ? ammunition.Bonus : string.Empty)}";
             var cleanedInput = DiceParser.Clean(damageInput, Enum.GetNames(typeof(DamageTypes)));
@@ -190,10 +190,10 @@ namespace Concierge.Character.Equipable
                 cleanedInput = "0";
             }
 
-            var attack = new DiceRoll(20, 1, this.Attack);
+            var attack = new DiceRoll(Dice.D20, 1, this.Attack);
             var damage = new CustomDiceRoll(DiceParser.Parse(cleanedInput));
 
-            return new UsedItem(attack, damage, this.Name, this.Note);
+            return new UsedItem(attack, damage, this.Name, this.DamageType.ToString(), this.Note);
         }
 
         public CategoryDto GetCategory()

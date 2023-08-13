@@ -65,8 +65,6 @@ namespace Concierge.Display.Windows
         {
             this.UpdateSavingThrows();
             this.CloseConciergeWindow();
-
-            Program.Modify();
         }
 
         private void FillFields()
@@ -107,8 +105,6 @@ namespace Concierge.Display.Windows
         {
             this.UpdateSavingThrows();
             this.InvokeApplyChanges();
-
-            Program.Modify();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)

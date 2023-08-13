@@ -137,8 +137,6 @@ namespace Concierge.Display.Windows
             }
 
             this.CloseConciergeWindow();
-
-            Program.Modify();
         }
 
         private void FillFields(Inventory inventory)
@@ -270,8 +268,6 @@ namespace Concierge.Display.Windows
             this.Items.Add(this.ToInventory());
             this.ClearFields();
             this.InvokeApplyChanges();
-
-            Program.Modify();
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)

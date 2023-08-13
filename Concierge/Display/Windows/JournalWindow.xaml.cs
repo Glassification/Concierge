@@ -149,8 +149,6 @@ namespace Concierge.Display.Windows
             {
                 this.ToEntry();
             }
-
-            Program.Modify();
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)

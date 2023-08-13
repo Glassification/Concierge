@@ -140,6 +140,7 @@ namespace Concierge.Display.Controls
                 this.MainHealthGrid.RowDefinitions.RemoveAt(2);
                 this.DeathSaveGrid.Visibility = Visibility.Collapsed;
                 this.DeathSaveBorder.Visibility = Visibility.Collapsed;
+                this.HpLabel.Margin = new Thickness(5, 40, 0, 0);
             }
         }
 
@@ -150,10 +151,10 @@ namespace Concierge.Display.Controls
 
             var brush = hp < third && hp > 0
                 ? Brushes.IndianRed
-                : hp >= third * 2 ? Brushes.DarkGreen : hp <= 0 ? Brushes.DarkGray : Brushes.DarkOrange;
+                : hp >= third * 2 && hp > 0 ? Brushes.DarkGreen : hp <= 0 ? Brushes.DarkGray : Brushes.DarkOrange;
 
-            this.HpBackground.Foreground = brush;
-            this.TotalHpField.Foreground = brush;
+            this.HpBackground.Background = brush;
+            this.HpBorder.BorderBrush = brush;
         }
 
         public void SetDeathSaveStyle(DeathSavingThrows deathSavingThrows)
@@ -189,8 +190,6 @@ namespace Concierge.Display.Controls
             Program.UndoRedoService.AddCommand(new EditCommand<DeathSavingThrows>(character.Vitality.DeathSavingThrows, oldItem, ConciergePage.Overview));
 
             this.RaiseEvent(new RoutedEventArgs(SaveClickedEvent));
-
-            Program.Modify();
         }
 
         private void FailSave_Click(object sender, RoutedEventArgs e)
@@ -207,7 +206,6 @@ namespace Concierge.Display.Controls
             Program.UndoRedoService.AddCommand(new EditCommand<DeathSavingThrows>(character.Vitality.DeathSavingThrows, oldItem, ConciergePage.Overview));
 
             this.RaiseEvent(new RoutedEventArgs(SaveClickedEvent));
-            Program.Modify();
         }
 
         private void ResetSaves_Click(object sender, RoutedEventArgs e)
@@ -217,8 +215,6 @@ namespace Concierge.Display.Controls
             Program.UndoRedoService.AddCommand(new EditCommand<DeathSavingThrows>(Program.CcsFile.Character.Vitality.DeathSavingThrows, oldItem, ConciergePage.Overview));
 
             this.RaiseEvent(new RoutedEventArgs(SaveClickedEvent));
-
-            Program.Modify();
         }
 
         private void HealDamageButton_Click(object sender, RoutedEventArgs e)

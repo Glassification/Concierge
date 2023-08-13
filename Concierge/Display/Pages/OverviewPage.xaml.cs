@@ -9,11 +9,6 @@ namespace Concierge.Display.Pages
     using System.Windows.Controls;
     using System.Windows.Input;
 
-    using Concierge.Character;
-    using Concierge.Character.AbilitySaves;
-    using Concierge.Character.AbilitySkills;
-    using Concierge.Character.Characteristics;
-    using Concierge.Character.Vitals;
     using Concierge.Common.Extensions;
     using Concierge.Configuration;
     using Concierge.Display;
@@ -190,7 +185,7 @@ namespace Concierge.Display.Pages
 
         private void TakeDamageButton_Click(object sender, RoutedEventArgs e)
         {
-            var result = ConciergeWindowService.ShowDamage<Vitality>(
+            var result = ConciergeWindowService.ShowDamage(
                 Program.CcsFile.Character.Vitality,
                 typeof(HpWindow),
                 this.Window_ApplyChanges,
@@ -200,7 +195,7 @@ namespace Concierge.Display.Pages
 
         private void HealDamageButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeWindowService.ShowHeal<Vitality>(
+            ConciergeWindowService.ShowHeal(
                 Program.CcsFile.Character.Vitality,
                 typeof(HpWindow),
                 this.Window_ApplyChanges,
@@ -232,7 +227,7 @@ namespace Concierge.Display.Pages
 
         private void EditHealth_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeWindowService.ShowEdit<Health>(
+            ConciergeWindowService.ShowEdit(
                 Program.CcsFile.Character.Vitality.Health,
                 typeof(HealthWindow),
                 this.Window_ApplyChanges,
@@ -242,7 +237,7 @@ namespace Concierge.Display.Pages
 
         private void HitDiceDisplay_EditClicked(object sender, RoutedEventArgs e)
         {
-            ConciergeWindowService.ShowEdit<HitDice>(
+            ConciergeWindowService.ShowEdit(
                 Program.CcsFile.Character.Vitality.HitDice,
                 typeof(HitDiceWindow),
                 this.Window_ApplyChanges,
@@ -252,7 +247,7 @@ namespace Concierge.Display.Pages
 
         private void WealthDisplay_EditClicked(object sender, RoutedEventArgs e)
         {
-            ConciergeWindowService.ShowEdit<Wealth>(
+            ConciergeWindowService.ShowEdit(
                 Program.CcsFile.Character.Wealth,
                 sender,
                 typeof(WealthWindow),
@@ -263,7 +258,7 @@ namespace Concierge.Display.Pages
 
         private void Grid_SavingThrowMouseUp(object sender, MouseButtonEventArgs e)
         {
-            ConciergeWindowService.ShowEdit<SavingThrows>(
+            ConciergeWindowService.ShowEdit(
                 Program.CcsFile.Character.SavingThrows,
                 typeof(SavingThrowWindow),
                 this.Window_ApplyChanges,
@@ -273,7 +268,7 @@ namespace Concierge.Display.Pages
 
         private void Grid_SkillMouseUp(object sender, MouseButtonEventArgs e)
         {
-            ConciergeWindowService.ShowEdit<Skills>(
+            ConciergeWindowService.ShowEdit(
                 Program.CcsFile.Character.Skills,
                 typeof(SkillWindow),
                 this.Window_ApplyChanges,
@@ -283,7 +278,7 @@ namespace Concierge.Display.Pages
 
         private void Label_EditClicked(object sender, RoutedEventArgs e)
         {
-            ConciergeWindowService.ShowEdit<Senses>(
+            ConciergeWindowService.ShowEdit(
                 Program.CcsFile.Character.Characteristic.Senses,
                 typeof(SensesWindow),
                 this.Window_ApplyChanges,
@@ -293,7 +288,7 @@ namespace Concierge.Display.Pages
 
         private void AttributeDisplay_EditClicked(object sender, RoutedEventArgs e)
         {
-            ConciergeWindowService.ShowEdit<Attributes>(
+            ConciergeWindowService.ShowEdit(
                 Program.CcsFile.Character.Characteristic.Attributes,
                 typeof(AttributesWindow),
                 this.Window_ApplyChanges,
@@ -305,6 +300,9 @@ namespace Concierge.Display.Pages
         {
             switch (sender?.GetType()?.Name)
             {
+                case nameof(ArmorWindow):
+                    this.DrawArmorClass();
+                    break;
                 case nameof(AttributesWindow):
                     this.Draw();
                     break;
@@ -324,6 +322,16 @@ namespace Concierge.Display.Pages
                     this.DrawSavingThrows();
                     break;
             }
+        }
+
+        private void ArmorClass_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            ConciergeWindowService.ShowEdit(
+                Program.CcsFile.Character.Equipment.Defense,
+                typeof(ArmorWindow),
+                this.Window_ApplyChanges,
+                ConciergePage.Overview);
+            this.DrawArmorClass();
         }
     }
 }

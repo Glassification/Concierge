@@ -67,6 +67,7 @@
                 <components:ConciergeLabel
                     Grid.Column="0"
                     Grid.Row="1"
+                    x:Name="DamageLabel"
                     Text="Damage:"
                     FontSize="22"/>
 

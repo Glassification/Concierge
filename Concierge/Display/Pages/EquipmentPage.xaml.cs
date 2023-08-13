@@ -9,7 +9,6 @@ namespace Concierge.Display.Pages
     using System.Windows;
     using System.Windows.Controls;
 
-    using Concierge.Character;
     using Concierge.Character.Enums;
     using Concierge.Character.Equipable;
     using Concierge.Character.Spellcasting;
@@ -88,7 +87,7 @@ namespace Concierge.Display.Pages
             if (itemToEdit is Inventory inventory && this.SelectedDataGrid is not null)
             {
                 var index = this.SelectedDataGrid.SelectedIndex;
-                ConciergeWindowService.ShowEdit<Inventory>(
+                ConciergeWindowService.ShowEdit(
                     inventory,
                     true,
                     typeof(InventoryWindow),
@@ -100,7 +99,7 @@ namespace Concierge.Display.Pages
             else if (itemToEdit is Weapon weapon && this.SelectedDataGrid is not null)
             {
                 var index = this.SelectedDataGrid.SelectedIndex;
-                ConciergeWindowService.ShowEdit<Weapon>(
+                ConciergeWindowService.ShowEdit(
                     weapon,
                     true,
                     typeof(AttacksWindow),
@@ -112,7 +111,7 @@ namespace Concierge.Display.Pages
             else if (itemToEdit is Spell spell && this.SelectedDataGrid is not null)
             {
                 var index = this.SelectedDataGrid.SelectedIndex;
-                ConciergeWindowService.ShowEdit<Spell>(
+                ConciergeWindowService.ShowEdit(
                     spell,
                     typeof(SpellWindow),
                     this.Window_ApplyChanges,
@@ -216,7 +215,7 @@ namespace Concierge.Display.Pages
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            var added = ConciergeWindowService.ShowAdd<string>(
+            var added = ConciergeWindowService.ShowAdd(
                 string.Empty,
                 typeof(EquipmentWindow),
                 this.Window_ApplyChanges,
@@ -269,13 +268,11 @@ namespace Concierge.Display.Pages
                 this.SelectedItem = null;
                 this.SelectedDataGrid = null;
             }
-
-            Program.Modify();
         }
 
         private void CharacterImage_MouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            ConciergeWindowService.ShowEdit<CharacterImage>(
+            ConciergeWindowService.ShowEdit(
                 Program.CcsFile.Character.CharacterImage,
                 typeof(ImageWindow),
                 this.Window_ApplyChanges,
@@ -298,7 +295,7 @@ namespace Concierge.Display.Pages
         {
             if (this.SelectedItem is Weapon weapon)
             {
-                var result = weapon.Use(null);
+                var result = weapon.Use();
                 ConciergeWindowService.ShowUseItemWindow(typeof(UseItemWindow), result);
             }
             else if (this.SelectedItem is Spell spell)

@@ -95,8 +95,6 @@ namespace Concierge.Display.Windows
 
             this.UpdateDefense(this.SelectedDefense);
             this.CloseConciergeWindow();
-
-            Program.Modify();
         }
 
         private void FillFields(Armor armor)
@@ -175,8 +173,6 @@ namespace Concierge.Display.Windows
         {
             this.UpdateDefense(this.SelectedDefense);
             this.InvokeApplyChanges();
-
-            Program.Modify();
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)

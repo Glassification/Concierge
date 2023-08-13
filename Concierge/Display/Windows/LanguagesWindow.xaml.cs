@@ -112,8 +112,6 @@ namespace Concierge.Display.Windows
             }
 
             this.CloseConciergeWindow();
-
-            Program.Modify();
         }
 
         private void FillFields(Language language)
@@ -180,8 +178,6 @@ namespace Concierge.Display.Windows
             this.Languages.Add(this.ToLanguage());
             this.ClearFields();
             this.InvokeApplyChanges();
-
-            Program.Modify();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)

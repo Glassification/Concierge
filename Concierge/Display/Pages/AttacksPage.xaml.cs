@@ -50,7 +50,7 @@ namespace Concierge.Display.Pages
             if (itemToEdit is Ammunition ammunition)
             {
                 var index = this.AmmoDataGrid.SelectedIndex;
-                ConciergeWindowService.ShowEdit<Ammunition>(
+                ConciergeWindowService.ShowEdit(
                     ammunition,
                     typeof(AmmunitionWindow),
                     this.Window_ApplyChanges,
@@ -61,7 +61,7 @@ namespace Concierge.Display.Pages
             else if (itemToEdit is Weapon weapon)
             {
                 var index = this.WeaponDataGrid.SelectedIndex;
-                ConciergeWindowService.ShowEdit<Weapon>(
+                ConciergeWindowService.ShowEdit(
                     weapon,
                     typeof(AttacksWindow),
                     this.Window_ApplyChanges,
@@ -72,7 +72,7 @@ namespace Concierge.Display.Pages
             else if (itemToEdit is StatusEffect statusEffect)
             {
                 var index = this.StatusEffectsDataGrid.SelectedIndex;
-                ConciergeWindowService.ShowEdit<StatusEffect>(
+                ConciergeWindowService.ShowEdit(
                     statusEffect,
                     typeof(StatusEffectsWindow),
                     this.Window_ApplyChanges,
@@ -169,7 +169,7 @@ namespace Concierge.Display.Pages
 
         private void AmmoAddButton_Click(object sender, RoutedEventArgs e)
         {
-            var added = ConciergeWindowService.ShowAdd<List<Ammunition>>(
+            var added = ConciergeWindowService.ShowAdd(
                 Program.CcsFile.Character.Equipment.Ammunition,
                 typeof(AmmunitionWindow),
                 this.Window_ApplyChanges,
@@ -184,7 +184,7 @@ namespace Concierge.Display.Pages
 
         private void AttacksAddButton_Click(object sender, RoutedEventArgs e)
         {
-            var added = ConciergeWindowService.ShowAdd<List<Weapon>>(
+            var added = ConciergeWindowService.ShowAdd(
                 Program.CcsFile.Character.Equipment.Weapons,
                 typeof(AttacksWindow),
                 this.Window_ApplyChanges,
@@ -244,8 +244,6 @@ namespace Concierge.Display.Pages
             Program.CcsFile.Character.Equipment.Ammunition.Remove(ammo);
             this.DrawAmmoList();
             this.AmmoDataGrid.SetSelectedIndex(index);
-
-            Program.Modify();
         }
 
         private void AttacksDeleteButton_Click(object sender, RoutedEventArgs e)
@@ -262,8 +260,6 @@ namespace Concierge.Display.Pages
             Program.CcsFile.Character.Equipment.Weapons.Remove(weapon);
             this.DrawWeaponList();
             this.WeaponDataGrid.SetSelectedIndex(index);
-
-            Program.Modify();
         }
 
         private void WeaponDataGrid_Sorted(object sender, RoutedEventArgs e)
@@ -314,13 +310,11 @@ namespace Concierge.Display.Pages
             Program.CcsFile.Character.Vitality.StatusEffects.Remove(effect);
             this.DrawStatusEffects();
             this.StatusEffectsDataGrid.SetSelectedIndex(index);
-
-            Program.Modify();
         }
 
         private void AddEffectsButton_Click(object sender, RoutedEventArgs e)
         {
-            var added = ConciergeWindowService.ShowAdd<List<StatusEffect>>(
+            var added = ConciergeWindowService.ShowAdd(
                 Program.CcsFile.Character.Vitality.StatusEffects,
                 typeof(StatusEffectsWindow),
                 this.Window_ApplyChanges,

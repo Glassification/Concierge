@@ -500,7 +500,7 @@ namespace Concierge.Display.Pages
                 return;
             }
 
-            ConciergeWindowService.ShowAdd<Chapter?>(
+            ConciergeWindowService.ShowAdd(
                 button.Tag as Chapter,
                 typeof(JournalWindow),
                 this.Window_ApplyChanges,
@@ -515,7 +515,7 @@ namespace Concierge.Display.Pages
                 return;
             }
 
-            ConciergeWindowService.ShowAdd<Chapter?>(
+            ConciergeWindowService.ShowAdd(
                 button.Tag as Chapter,
                 typeof(JournalWindow),
                 this.Window_ApplyChanges,
@@ -532,7 +532,7 @@ namespace Concierge.Display.Pages
 
             if (this.NotesTreeView.SelectedItem is ChapterTreeViewItem chapterTreeViewItem)
             {
-                ConciergeWindowService.ShowEdit<Chapter>(
+                ConciergeWindowService.ShowEdit(
                     chapterTreeViewItem.Chapter,
                     typeof(JournalWindow),
                     this.Window_ApplyChanges,
@@ -540,7 +540,7 @@ namespace Concierge.Display.Pages
             }
             else if (this.NotesTreeView.SelectedItem is DocumentTreeViewItem documentTreeViewItem)
             {
-                ConciergeWindowService.ShowEdit<Document>(
+                ConciergeWindowService.ShowEdit(
                     documentTreeViewItem.Document,
                     typeof(JournalWindow),
                     this.Window_ApplyChanges,
@@ -595,8 +595,6 @@ namespace Concierge.Display.Pages
 
             this.ClearWorkspace();
             this.Draw();
-
-            Program.Modify();
         }
 
         private void NotesTextBox_GotFocus(object sender, RoutedEventArgs e)

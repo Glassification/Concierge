@@ -119,8 +119,6 @@ namespace Concierge.Display.Windows
             }
 
             this.CloseConciergeWindow();
-
-            Program.Modify();
         }
 
         protected override void OnSourceInitialized(EventArgs e)
@@ -203,8 +201,6 @@ namespace Concierge.Display.Windows
             this.Abilities.Add(this.ToAbility());
             this.ClearFields();
             this.InvokeApplyChanges();
-
-            Program.Modify();
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)

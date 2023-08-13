@@ -462,27 +462,34 @@
                                 Grid.Row="0"
                                 Text="Armor Class"
                                 Foreground="White"
+                                Margin="25,0,0,0"
                                 FontSize="30"
                                 FontFamily="Sergoe UI SemiLight"
-                                HorizontalAlignment="Center"
+                                HorizontalAlignment="Left"
                                 VerticalAlignment="Center"/>
-                            <materialDesign:PackIcon
+
+                            <Border
                                 Grid.Row="1"
-                                Kind="Shield"
-                                Foreground="#33415C"
-                                HorizontalAlignment="Stretch"
-                                VerticalAlignment="Stretch"
-                                Height="auto"
-                                Width="auto"
-                                Margin="0,0,0,0"/>
-                            <components:ConciergeTextBlock 
-                                Grid.Row="1"
-                                x:Name="ArmorClassField"
-                                Foreground="White"
-                                HorizontalAlignment="Center"
-                                VerticalAlignment="Center"
-                                FontSize="75"
-                                FontWeight="Bold" Margin="0,0,0,0"/>
+                                BorderBrush="#33415C"
+                                BorderThickness="5"
+                                CornerRadius="10"
+                                Margin="25"
+                                MouseDown="ArmorClass_MouseDown">
+                                <Grid
+                                    Grid.Row="1"
+                                    Margin="-1"
+                                    Background="#33415C">
+                                    <components:ConciergeTextBlock 
+                                        x:Name="ArmorClassField"
+                                        Foreground="White"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        FontSize="75"
+                                        FontWeight="DemiBold"
+                                        FontFamily="Sergoe UI Variable"
+                                        Margin="0,10,0,0"/>
+                                </Grid>
+                            </Border>
                         </Grid>
                     </Border>
                 </Grid>

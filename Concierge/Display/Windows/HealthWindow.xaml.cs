@@ -66,8 +66,6 @@ namespace Concierge.Display.Windows
 
             this.UpdateHealth();
             this.CloseConciergeWindow();
-
-            Program.Modify();
         }
 
         private void FillFields()
@@ -107,8 +105,6 @@ namespace Concierge.Display.Windows
         {
             this.UpdateHealth();
             this.InvokeApplyChanges();
-
-            Program.Modify();
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)

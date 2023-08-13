@@ -10,15 +10,13 @@ namespace Concierge.Display.Pages
     using System.Windows;
     using System.Windows.Controls;
 
-    using Concierge.Character;
-    using Concierge.Character.Characteristics;
     using Concierge.Character.Equipable;
-    using Concierge.Character.Vitals;
     using Concierge.Commands;
     using Concierge.Common;
     using Concierge.Common.Extensions;
     using Concierge.Display.Enums;
     using Concierge.Display.Windows;
+    using Concierge.Display.Windows.Utility;
     using Concierge.Services;
 
     /// <summary>
@@ -56,7 +54,7 @@ namespace Concierge.Display.Pages
             }
 
             var index = this.WeaponDataGrid.SelectedIndex;
-            ConciergeWindowService.ShowEdit<Weapon>(
+            ConciergeWindowService.ShowEdit(
                 weapon,
                 typeof(AttacksWindow),
                 this.Window_ApplyChanges,
@@ -163,7 +161,7 @@ namespace Concierge.Display.Pages
 
         private void AttacksAddButton_Click(object sender, RoutedEventArgs e)
         {
-            var added = ConciergeWindowService.ShowAdd<List<Weapon>>(
+            var added = ConciergeWindowService.ShowAdd(
                 Program.CcsFile.Character.Companion.Equipment.Weapons,
                 typeof(AttacksWindow),
                 this.Window_ApplyChanges,
@@ -197,13 +195,11 @@ namespace Concierge.Display.Pages
             Program.CcsFile.Character.Companion.Equipment.Weapons.Remove(weapon);
             this.DrawAttacks();
             this.WeaponDataGrid.SetSelectedIndex(index);
-
-            Program.Modify();
         }
 
         private void TakeDamageButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeWindowService.ShowDamage<Vitality>(
+            ConciergeWindowService.ShowDamage(
                 Program.CcsFile.Character.Companion.Vitality,
                 typeof(HpWindow),
                 this.Window_ApplyChanges,
@@ -213,7 +209,7 @@ namespace Concierge.Display.Pages
 
         private void HealDamageButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeWindowService.ShowHeal<Vitality>(
+            ConciergeWindowService.ShowHeal(
                 Program.CcsFile.Character.Companion.Vitality,
                 typeof(HpWindow),
                 this.Window_ApplyChanges,
@@ -237,7 +233,7 @@ namespace Concierge.Display.Pages
 
         private void HealthDisplay_EditClicked(object sender, RoutedEventArgs e)
         {
-            ConciergeWindowService.ShowEdit<Health>(
+            ConciergeWindowService.ShowEdit(
                 Program.CcsFile.Character.Companion.Vitality.Health,
                 typeof(HealthWindow),
                 this.Window_ApplyChanges,
@@ -247,7 +243,7 @@ namespace Concierge.Display.Pages
 
         private void HitDiceDisplay_EditClicked(object sender, RoutedEventArgs e)
         {
-            ConciergeWindowService.ShowEdit<HitDice>(
+            ConciergeWindowService.ShowEdit(
                 Program.CcsFile.Character.Companion.Vitality.HitDice,
                 typeof(HitDiceWindow),
                 this.Window_ApplyChanges,
@@ -258,7 +254,7 @@ namespace Concierge.Display.Pages
 
         private void AttributeDisplay_EditClicked(object sender, RoutedEventArgs e)
         {
-            ConciergeWindowService.ShowEdit<Attributes>(
+            ConciergeWindowService.ShowEdit(
                 Program.CcsFile.Character.Companion.Characteristic.Attributes,
                 typeof(AttributesWindow),
                 this.Window_ApplyChanges,
@@ -269,7 +265,7 @@ namespace Concierge.Display.Pages
 
         private void CompanionDetails_MouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            ConciergeWindowService.ShowEdit<CompanionProperties>(
+            ConciergeWindowService.ShowEdit(
                 Program.CcsFile.Character.Companion.Properties,
                 typeof(CompanionWindow),
                 this.Window_ApplyChanges,
@@ -279,12 +275,25 @@ namespace Concierge.Display.Pages
 
         private void CompanionImage_MouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            ConciergeWindowService.ShowEdit<CharacterImage>(
+            ConciergeWindowService.ShowEdit(
                 Program.CcsFile.Character.Companion.CompanionImage,
                 typeof(ImageWindow),
                 this.Window_ApplyChanges,
                 ConciergePage.Companion);
             this.DrawImage();
+        }
+
+        private void AttackUseButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (this.WeaponDataGrid.SelectedItem is null)
+            {
+                return;
+            }
+
+            var weapon = (Weapon)this.WeaponDataGrid.SelectedItem;
+            var result = weapon.Use();
+
+            ConciergeWindowService.ShowUseItemWindow(typeof(UseItemWindow), result);
         }
 
         private void Window_ApplyChanges(object sender, EventArgs e)

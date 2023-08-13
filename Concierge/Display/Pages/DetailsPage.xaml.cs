@@ -12,9 +12,7 @@ namespace Concierge.Display.Pages
 
     using Concierge.Character.Characteristics;
     using Concierge.Character.Enums;
-    using Concierge.Character.Equipable;
     using Concierge.Character.Vitals;
-    using Concierge.Character.Vitals.ConditionStates;
     using Concierge.Commands;
     using Concierge.Display.Components;
     using Concierge.Display.Enums;
@@ -57,7 +55,7 @@ namespace Concierge.Display.Pages
                 }
 
                 var index = selectedDataGrid.SelectedIndex;
-                ConciergeWindowService.ShowEdit<Proficiency>(
+                ConciergeWindowService.ShowEdit(
                     proficiency,
                     typeof(ProficiencyWindow),
                     this.Window_ApplyChanges,
@@ -68,7 +66,7 @@ namespace Concierge.Display.Pages
             else if (itemToEdit is Language language)
             {
                 var index = this.LanguagesDataGrid.SelectedIndex;
-                ConciergeWindowService.ShowEdit<Language>(
+                ConciergeWindowService.ShowEdit(
                     language,
                     typeof(LanguagesWindow),
                     this.Window_ApplyChanges,
@@ -79,7 +77,7 @@ namespace Concierge.Display.Pages
             else if (itemToEdit is ClassResource resource)
             {
                 var index = this.ResourcesDataGrid.SelectedIndex;
-                ConciergeWindowService.ShowEdit<ClassResource>(
+                ConciergeWindowService.ShowEdit(
                     resource,
                     typeof(ClassResourceWindow),
                     this.Window_ApplyChanges,
@@ -204,8 +202,6 @@ namespace Concierge.Display.Pages
 
             this.DrawProficiencies();
             dataGrid.SetSelectedIndex(index);
-
-            Program.Modify();
         }
 
         private void DeleteProficencyButton_Click(object sender, RoutedEventArgs e)
@@ -230,7 +226,7 @@ namespace Concierge.Display.Pages
 
         private void AddProficencyButton_Click(object sender, RoutedEventArgs e)
         {
-            var added = ConciergeWindowService.ShowAdd<List<Proficiency>>(
+            var added = ConciergeWindowService.ShowAdd(
                 Program.CcsFile.Character.Characteristic.Proficiencies,
                 typeof(ProficiencyWindow),
                 this.Window_ApplyChanges,
@@ -286,12 +282,11 @@ namespace Concierge.Display.Pages
                     oldList,
                     new List<Proficiency>(characteristic.Proficiencies),
                     this.ConciergePage));
-            Program.Modify();
         }
 
         private void EditConditionsButton_Click(object sender, RoutedEventArgs e)
         {
-            ConciergeWindowService.ShowEdit<Conditions>(
+            ConciergeWindowService.ShowEdit(
                 Program.CcsFile.Character.Vitality.Conditions,
                 typeof(ConditionsWindow),
                 this.Window_ApplyChanges,
@@ -320,7 +315,7 @@ namespace Concierge.Display.Pages
 
         private void AddLanguagesButton_Click(object sender, RoutedEventArgs e)
         {
-            var added = ConciergeWindowService.ShowAdd<List<Language>>(
+            var added = ConciergeWindowService.ShowAdd(
                 Program.CcsFile.Character.Characteristic.Languages,
                 typeof(LanguagesWindow),
                 this.Window_ApplyChanges,
@@ -335,7 +330,7 @@ namespace Concierge.Display.Pages
 
         private void AddResourcesButton_Click(object sender, RoutedEventArgs e)
         {
-            var added = ConciergeWindowService.ShowAdd<List<ClassResource>>(
+            var added = ConciergeWindowService.ShowAdd(
                 Program.CcsFile.Character.Vitality.ClassResources,
                 typeof(ClassResourceWindow),
                 this.Window_ApplyChanges,
@@ -360,8 +355,6 @@ namespace Concierge.Display.Pages
             Program.CcsFile.Character.Characteristic.Languages.Remove(language);
             this.DrawLanguages();
             this.LanguagesDataGrid.SetSelectedIndex(index);
-
-            Program.Modify();
         }
 
         private void DeleteResourcesButton_Click(object sender, RoutedEventArgs e)
@@ -376,8 +369,6 @@ namespace Concierge.Display.Pages
             Program.CcsFile.Character.Vitality.ClassResources.Remove(resource);
             this.DrawResources();
             this.ResourcesDataGrid.SetSelectedIndex(index);
-
-            Program.Modify();
         }
 
         private void ClearLanguagesButton_Click(object sender, RoutedEventArgs e)
@@ -407,7 +398,7 @@ namespace Concierge.Display.Pages
 
         private void AppearanceDisplay_EditClicked(object sender, RoutedEventArgs e)
         {
-            ConciergeWindowService.ShowEdit<Appearance>(
+            ConciergeWindowService.ShowEdit(
                 Program.CcsFile.Character.Characteristic.Appearance,
                 typeof(AppearanceWindow),
                 this.Window_ApplyChanges,
@@ -417,7 +408,7 @@ namespace Concierge.Display.Pages
 
         private void PersonalityDisplay_EditClicked(object sender, RoutedEventArgs e)
         {
-            ConciergeWindowService.ShowEdit<Personality>(
+            ConciergeWindowService.ShowEdit(
                 Program.CcsFile.Character.Characteristic.Personality,
                 typeof(PersonalityWindow),
                 this.Window_ApplyChanges,
@@ -427,7 +418,7 @@ namespace Concierge.Display.Pages
 
         private void ArmorDisplay_EditClicked(object sender, RoutedEventArgs e)
         {
-            ConciergeWindowService.ShowEdit<Defense>(
+            ConciergeWindowService.ShowEdit(
                 Program.CcsFile.Character.Equipment.Defense,
                 typeof(ArmorWindow),
                 this.Window_ApplyChanges,

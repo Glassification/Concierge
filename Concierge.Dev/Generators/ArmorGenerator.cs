@@ -6,6 +6,7 @@ namespace Concierge.DevTools.Generators
 {
     using System.Collections.Generic;
     using System.IO;
+
     using Concierge.Character.Enums;
     using Concierge.Character.Equipable;
     using Concierge.Common.Enums;

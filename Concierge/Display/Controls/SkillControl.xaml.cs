@@ -181,7 +181,6 @@ namespace Concierge.Display.Controls
             this.RaiseEvent(new RoutedEventArgs(ToggleClickedEvent));
 
             Program.UndoRedoService.AddCommand(new EditCommand<Skills>(skill, skillCopy, ConciergePage.Overview));
-            Program.Modify();
         }
 
         private void SkillExpertise_MouseDown(object sender, RoutedEventArgs e)
@@ -197,7 +196,6 @@ namespace Concierge.Display.Controls
             this.RaiseEvent(new RoutedEventArgs(ToggleClickedEvent));
 
             Program.UndoRedoService.AddCommand(new EditCommand<Skills>(skill, skillCopy, ConciergePage.Overview));
-            Program.Modify();
         }
     }
 }

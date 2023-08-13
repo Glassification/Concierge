@@ -90,7 +90,6 @@ namespace Concierge.Display.Controls
             }
 
             Program.UndoRedoService.AddCommand(new EditCommand<SpellSlots>(spellSlots, oldItem, ConciergePage.Spellcasting));
-            Program.Modify();
 
             this.RaiseEvent(new RoutedEventArgs(ValueChangedEvent));
         }

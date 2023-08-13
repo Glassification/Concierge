@@ -112,29 +112,29 @@ namespace Concierge.Character.Vitals
             };
         }
 
-        public void LevelUp(HitDie hitDie, int newHp)
+        public void LevelUp(Dice hitDie, int newHp)
         {
             this.Health.MaxHealth += newHp;
             this.ResetHealth();
             this.RegainHitDice();
             switch (hitDie)
             {
-                case HitDie.D6:
+                case Dice.D6:
                     this.HitDice.TotalD6++;
                     break;
-                case HitDie.D8:
+                case Dice.D8:
                     this.HitDice.TotalD8++;
                     break;
-                case HitDie.D10:
+                case Dice.D10:
                     this.HitDice.TotalD10++;
                     break;
-                case HitDie.D12:
+                case Dice.D12:
                     this.HitDice.TotalD12++;
                     break;
             }
         }
 
-        public DiceRoll RollHitDice(HitDie hitDie, Attributes attributes)
+        public DiceRoll RollHitDice(Dice hitDie, Attributes attributes)
         {
             var roll = DiceRoll.RollDice(1, (int)hitDie);
             var modifier = Constants.Bonus(attributes.Constitution);

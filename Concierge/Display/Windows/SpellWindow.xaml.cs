@@ -130,8 +130,6 @@ namespace Concierge.Display.Windows
             }
 
             this.CloseConciergeWindow();
-
-            Program.Modify();
         }
 
         private void FillFields(Spell spell)
@@ -262,8 +260,6 @@ namespace Concierge.Display.Windows
             this.Spells.Add(this.ToSpell());
             this.ClearFields();
             this.InvokeApplyChanges();
-
-            Program.Modify();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)

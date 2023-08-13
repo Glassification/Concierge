@@ -153,7 +153,7 @@ namespace Concierge.Character
                     this.Magic.SpellSlots.DeepCopy()));
         }
 
-        public void LevelUp(HitDie hitDie, int classNumber, int bonusHp)
+        public void LevelUp(Dice hitDie, int classNumber, int bonusHp)
         {
             this.conciergeLeveler.LevelUp(hitDie, classNumber, bonusHp);
         }

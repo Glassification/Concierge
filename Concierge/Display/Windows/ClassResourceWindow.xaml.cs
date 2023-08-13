@@ -109,8 +109,6 @@ namespace Concierge.Display.Windows
 
             this.UpdateClassResource();
             this.CloseConciergeWindow();
-
-            Program.Modify();
         }
 
         private void FillFields(ClassResource resource)
@@ -199,8 +197,6 @@ namespace Concierge.Display.Windows
             }
 
             this.InvokeApplyChanges();
-
-            Program.Modify();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)

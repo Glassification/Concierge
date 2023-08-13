@@ -116,7 +116,7 @@ namespace Concierge.Display.Controls
             var oldItem = vitality.DeepCopy();
 
             var result = vitality.HitDice.Increment(border.Name);
-            if (result == HitDie.None)
+            if (result == Dice.None)
             {
                 return;
             }
@@ -126,7 +126,6 @@ namespace Concierge.Display.Controls
 
             Program.MainWindow?.DisplayStatusText($"Rolled Hit Die: {roll}");
             Program.UndoRedoService.AddCommand(new EditCommand<Vitality>(vitality, oldItem, this.ConciergePage));
-            Program.Modify();
 
             this.RaiseEvent(new RoutedEventArgs(ValueChangedEvent));
         }

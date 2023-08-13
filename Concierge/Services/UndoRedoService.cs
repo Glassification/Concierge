@@ -51,6 +51,7 @@ namespace Concierge.Common
         {
             if (command?.ShouldAdd() ?? false)
             {
+                Program.Modify();
                 Program.Logger.Info($"Add new {command.GetType()}.");
 
                 this.UndoStack.Push(command);

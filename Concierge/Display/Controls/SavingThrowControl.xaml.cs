@@ -177,7 +177,6 @@ namespace Concierge.Display.Controls
             this.RaiseEvent(new RoutedEventArgs(ToggleClickedEvent));
 
             Program.UndoRedoService.AddCommand(new EditCommand<SavingThrows>(savingThrow, savingThrowCopy, ConciergePage.Overview));
-            Program.Modify();
         }
     }
 }

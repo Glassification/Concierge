@@ -24,7 +24,7 @@ namespace Concierge.Leveling
             this.character = character;
         }
 
-        public void LevelUp(HitDie hitDie, int classNumber, int bonusHp)
+        public void LevelUp(Dice hitDie, int classNumber, int bonusHp)
         {
             var vitalityDto = this.LevelUpVitality(hitDie, bonusHp);
             var classDto = this.LevelUpCharacterClass(classNumber);
@@ -87,7 +87,7 @@ namespace Concierge.Leveling
             return new SpellSlotsDto(oldSpellSlots, this.character.Magic.SpellSlots.DeepCopy());
         }
 
-        private VitalityDto LevelUpVitality(HitDie hitDie, int bonusHp)
+        private VitalityDto LevelUpVitality(Dice hitDie, int bonusHp)
         {
             var newHp = DiceRoll.RollHitDie(hitDie) + Constants.Bonus(this.character.Characteristic.Attributes.Constitution) + bonusHp;
             var oldVitality = this.character.Vitality.DeepCopy();

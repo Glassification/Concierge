@@ -121,7 +121,6 @@ namespace Concierge.Display.Windows
             }
 
             this.CloseConciergeWindow();
-            Program.Modify();
         }
 
         private void FillFields(Ammunition ammunition)
@@ -207,7 +206,6 @@ namespace Concierge.Display.Windows
             this.ClearFields();
 
             this.InvokeApplyChanges();
-            Program.Modify();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)

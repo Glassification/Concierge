@@ -116,7 +116,6 @@ namespace Concierge.Display.Windows
             }
 
             this.CloseConciergeWindow();
-            Program.Modify();
         }
 
         private void FillFields(StatusEffect statusEffect)
@@ -183,8 +182,6 @@ namespace Concierge.Display.Windows
             this.StatusEffects.Add(this.ToStatusEffect());
             this.ClearFields();
             this.InvokeApplyChanges();
-
-            Program.Modify();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)

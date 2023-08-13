@@ -157,7 +157,6 @@ namespace Concierge.Display.Windows
             }
 
             this.CloseConciergeWindow();
-            Program.Modify();
         }
 
         private void FillFields(Weapon weapon)
@@ -290,8 +289,6 @@ namespace Concierge.Display.Windows
             this.Weapons.Add(this.ToWeapon());
             this.ClearFields();
             this.InvokeApplyChanges();
-
-            Program.Modify();
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)

@@ -72,7 +72,6 @@ namespace Concierge.Display.Components
                     oldList,
                     new List<T>(list),
                     conciergePage));
-            Program.Modify();
         }
 
         public void RaiseSortedEvent()
@@ -98,7 +97,6 @@ namespace Concierge.Display.Components
                 var newList = new List<T>(list);
 
                 Program.UndoRedoService.AddCommand(new ListOrderCommand<T>(list, oldList, newList, conciergePage));
-                Program.Modify();
 
                 return index + increment;
             }

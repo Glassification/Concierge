@@ -28,7 +28,7 @@ namespace Concierge.Services
             conciergeWindow.ApplyChanges += applyEvent;
             conciergeWindow.ConciergePage = conciergePage;
 
-            return conciergeWindow.ShowAdd<T>(item);
+            return conciergeWindow.ShowAdd(item);
         }
 
         public static bool ShowAdd<T>(T item, Type typeOfWindow, ApplyChangesEventHandler applyEvent, ConciergePage conciergePage, ICreature creature)
@@ -42,7 +42,7 @@ namespace Concierge.Services
             conciergeWindow.ApplyChanges += applyEvent;
             conciergeWindow.ConciergePage = conciergePage;
 
-            return conciergeWindow.ShowAdd<T>(item, creature);
+            return conciergeWindow.ShowAdd(item, creature);
         }
 
         public static void ShowEdit<T>(T item, Type typeOfWindow, ApplyChangesEventHandler applyEvent, ConciergePage conciergePage)
@@ -56,7 +56,7 @@ namespace Concierge.Services
             conciergeWindow.ApplyChanges += applyEvent;
             conciergeWindow.ConciergePage = conciergePage;
 
-            conciergeWindow.ShowEdit<T>(item);
+            conciergeWindow.ShowEdit(item);
         }
 
         public static void ShowEdit<T>(T item, object sender, Type typeOfWindow, ApplyChangesEventHandler applyEvent, ConciergePage conciergePage)
@@ -70,7 +70,7 @@ namespace Concierge.Services
             conciergeWindow.ApplyChanges += applyEvent;
             conciergeWindow.ConciergePage = conciergePage;
 
-            conciergeWindow.ShowEdit<T>(item, sender);
+            conciergeWindow.ShowEdit(item, sender);
         }
 
         public static void ShowEdit<T>(T item, bool equippedItem, Type typeOfWindow, ApplyChangesEventHandler applyEvent, ConciergePage conciergePage)
@@ -84,7 +84,7 @@ namespace Concierge.Services
             conciergeWindow.ApplyChanges += applyEvent;
             conciergeWindow.ConciergePage = conciergePage;
 
-            conciergeWindow.ShowEdit<T>(item, equippedItem);
+            conciergeWindow.ShowEdit(item, equippedItem);
         }
 
         public static ConciergeWindowResult ShowHeal<T>(T item, Type typeOfWindow, ApplyChangesEventHandler applyEvent, ConciergePage conciergePage)
@@ -98,7 +98,7 @@ namespace Concierge.Services
             conciergeWindow.ApplyChanges += applyEvent;
             conciergeWindow.ConciergePage = conciergePage;
 
-            return conciergeWindow.ShowHeal<T>(item);
+            return conciergeWindow.ShowHeal(item);
         }
 
         public static ConciergeWindowResult ShowDamage<T>(T item, Type typeOfWindow, ApplyChangesEventHandler applyEvent, ConciergePage conciergePage)
@@ -112,7 +112,7 @@ namespace Concierge.Services
             conciergeWindow.ApplyChanges += applyEvent;
             conciergeWindow.ConciergePage = conciergePage;
 
-            return conciergeWindow.ShowDamage<T>(item);
+            return conciergeWindow.ShowDamage(item);
         }
 
         public static CustomColor ShowColorWindow(Type typeOfWindow, CustomColor color)

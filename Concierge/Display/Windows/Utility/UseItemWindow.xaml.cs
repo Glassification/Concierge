@@ -39,11 +39,13 @@ namespace Concierge.Display.Windows.Utility
 
         private void FillFields(UsedItem usedItem)
         {
+            this.DamageLabel.Text = usedItem.IsHealing ? "Healing:" : "Damage:";
+
             this.AttackTextBlock.Text = usedItem.Attack.Dice;
             this.DamageTextBlock.Text = usedItem.Damage.Dice;
 
             this.AttackTotalTextBlock.Text = $"{usedItem.Attack.Total} To Hit";
-            this.DamageTotalTextBlock.Text = $"{usedItem.Damage.Total} Damage";
+            this.DamageTotalTextBlock.Text = $"{usedItem.Damage.Total} {(usedItem.IsHealing ? "Healing" : "Damage")}";
 
             this.DescriptionTextBlock.Text = usedItem.Description;
         }

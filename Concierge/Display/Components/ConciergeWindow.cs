@@ -5,7 +5,6 @@
 namespace Concierge.Display.Components
 {
     using System;
-    using System.Collections.Generic;
     using System.Runtime.InteropServices;
     using System.Windows;
     using System.Windows.Input;
@@ -22,7 +21,6 @@ namespace Concierge.Display.Components
     using Concierge.Display.Windows.Helpers;
     using Concierge.Services;
     using Concierge.Tools;
-    using Concierge.Tools.DiceRoller;
 
     public abstract partial class ConciergeWindow : Window
     {

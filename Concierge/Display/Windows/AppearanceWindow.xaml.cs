@@ -132,8 +132,6 @@ namespace Concierge.Display.Windows
 
             this.UpdateAppearance();
             this.CloseConciergeWindow();
-
-            Program.Modify();
         }
 
         private void FillHeightFields()
@@ -214,8 +212,6 @@ namespace Concierge.Display.Windows
         {
             this.UpdateAppearance();
             this.InvokeApplyChanges();
-
-            Program.Modify();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)

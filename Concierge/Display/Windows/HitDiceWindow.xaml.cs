@@ -73,8 +73,6 @@ namespace Concierge.Display.Windows
 
             this.UpdateHitDice();
             this.CloseConciergeWindow();
-
-            Program.Modify();
         }
 
         private void FillFields()
@@ -131,8 +129,6 @@ namespace Concierge.Display.Windows
         {
             this.UpdateHitDice();
             this.InvokeApplyChanges();
-
-            Program.Modify();
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)

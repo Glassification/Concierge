@@ -12,7 +12,6 @@ namespace Concierge.Display
     using System.Windows.Interop;
     using System.Windows.Navigation;
 
-    using Concierge.Character;
     using Concierge.Common;
     using Concierge.Common.Extensions;
     using Concierge.Configuration;
@@ -314,7 +313,6 @@ namespace Concierge.Display
         {
             Program.Logger.Info($"Long rest.");
             Program.CcsFile.Character.LongRest();
-            Program.Modify();
 
             this.animatedTimedTextWorkerService.StartWorker("Long Rest Complete!   HP and Spell Slots Replenished.");
             this.DrawAll();
@@ -324,7 +322,6 @@ namespace Concierge.Display
         {
             Program.Logger.Info($"Level up.");
             ConciergeWindowService.ShowWindow(typeof(LevelUpWindow), this.Window_ApplyChanges);
-            Program.Modify();
             this.DrawAll();
         }
 
@@ -773,7 +770,7 @@ namespace Concierge.Display
         {
             Program.Logger.Info($"Open properties.");
 
-            ConciergeWindowService.ShowEdit<CharacterProperties>(
+            ConciergeWindowService.ShowEdit(
                 Program.CcsFile.Character.Properties,
                 typeof(PropertiesWindow),
                 this.Window_ApplyChanges,

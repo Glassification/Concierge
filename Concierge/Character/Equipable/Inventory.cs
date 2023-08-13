@@ -13,6 +13,8 @@ namespace Concierge.Character.Equipable
     using Concierge.Common.Dtos;
     using Concierge.Common.Extensions;
     using Concierge.Data;
+    using Concierge.Tools;
+    using Concierge.Tools.DiceRoller;
     using MaterialDesignThemes.Wpf;
     using Newtonsoft.Json;
 
@@ -176,6 +178,17 @@ namespace Concierge.Character.Equipable
                 "Vehicle (Water)" => new CategoryDto(PackIconKind.SailBoat, Brushes.LightSkyBlue, this.ItemCategory),
                 _ => new CategoryDto(),
             };
+        }
+
+        public UsedItem Use()
+        {
+            var dice = DiceParser.FindAndParse(this.Description);
+            var attack = DiceRoll.Empty;
+            IDiceRoll damage = dice.Count == 0 ? DiceRoll.Empty : new CustomDiceRoll(dice);
+
+            this.Amount--;
+
+            return new UsedItem(attack, damage, this.Name, this.Name, this.Description);
         }
 
         private (PackIconKind IconKind, Brush Brush) GetAttunedValue()

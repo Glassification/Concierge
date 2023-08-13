@@ -51,7 +51,7 @@ namespace Concierge.Display.Pages
             if (itemToEdit is Spell spell)
             {
                 var index = this.SpellListDataGrid.SelectedIndex;
-                ConciergeWindowService.ShowEdit<Spell>(
+                ConciergeWindowService.ShowEdit(
                     spell,
                     typeof(SpellWindow),
                     this.Window_ApplyChanges,
@@ -63,7 +63,7 @@ namespace Concierge.Display.Pages
             else if (itemToEdit is MagicClass magicClass)
             {
                 var index = this.MagicClassDataGrid.SelectedIndex;
-                ConciergeWindowService.ShowEdit<MagicClass>(
+                ConciergeWindowService.ShowEdit(
                     magicClass,
                     typeof(MagicClassWindow),
                     this.Window_ApplyChanges,
@@ -147,7 +147,7 @@ namespace Concierge.Display.Pages
 
         private void MagicClassAddButton_Click(object sender, RoutedEventArgs e)
         {
-            var added = ConciergeWindowService.ShowAdd<List<MagicClass>>(
+            var added = ConciergeWindowService.ShowAdd(
                 Program.CcsFile.Character.Magic.MagicClasses,
                 typeof(MagicClassWindow),
                 this.Window_ApplyChanges,
@@ -162,7 +162,7 @@ namespace Concierge.Display.Pages
 
         private void SpellAddButton_Click(object sender, RoutedEventArgs e)
         {
-            var added = ConciergeWindowService.ShowAdd<List<Spell>>(
+            var added = ConciergeWindowService.ShowAdd(
                 Program.CcsFile.Character.Magic.Spells,
                 typeof(SpellWindow),
                 this.Window_ApplyChanges,
@@ -197,8 +197,6 @@ namespace Concierge.Display.Pages
                 Program.CcsFile.Character.Magic.MagicClasses.Remove(magicClass);
                 this.DrawMagicClasses();
                 this.MagicClassDataGrid.SetSelectedIndex(index);
-
-                Program.Modify();
             }
         }
 
@@ -213,8 +211,6 @@ namespace Concierge.Display.Pages
                 Program.CcsFile.Character.Magic.Spells.Remove(spell);
                 this.DrawSpellList();
                 this.SpellListDataGrid.SetSelectedIndex(index);
-
-                Program.Modify();
             }
         }
 
@@ -260,7 +256,7 @@ namespace Concierge.Display.Pages
 
         private void SpellSlotsDisplay_EditClicked(object sender, RoutedEventArgs e)
         {
-            ConciergeWindowService.ShowEdit<SpellSlots>(
+            ConciergeWindowService.ShowEdit(
                 Program.CcsFile.Character.Magic.SpellSlots,
                 typeof(SpellSlotsWindow),
                 this.Window_ApplyChanges,

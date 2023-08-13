@@ -118,8 +118,6 @@ namespace Concierge.Display.Windows
             }
 
             this.CloseConciergeWindow();
-
-            Program.Modify();
         }
 
         private static CompositeCollection GenerateComboBoxItems()
@@ -226,8 +224,6 @@ namespace Concierge.Display.Windows
             this.SelectedProficiencies.Add(this.ToProficiency());
             this.ClearFields();
             this.InvokeApplyChanges();
-
-            Program.Modify();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)

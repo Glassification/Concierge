@@ -23,12 +23,12 @@ namespace Concierge.Tools.DiceRoller
         /// <param name="sides">The number of sides on each die.</param>
         /// <param name="number">The number of dice to roll.</param>
         /// <param name="modifier">An additional modifier to apply to the roll.</param>
-        public DiceRoll(int sides, int number, int modifier)
+        public DiceRoll(Dice sides, int number, int modifier)
         {
-            this.Sides = sides;
+            this.Sides = (int)sides;
             this.Modifier = modifier;
             this.Number = number;
-            this.DiceList = RollDice(number, sides).ToList();
+            this.DiceList = RollDice(number, (int)sides).ToList();
         }
 
         /// <summary>
@@ -45,7 +45,7 @@ namespace Concierge.Tools.DiceRoller
             this.DiceList = new List<int>(list);
         }
 
-        public static DiceRoll Empty => new (0, 0, 0);
+        public static DiceRoll Empty => new (Common.Enums.Dice.None, 0, 0);
 
         /// <summary>
         /// Gets the number of sides on each die.
@@ -113,7 +113,7 @@ namespace Concierge.Tools.DiceRoller
         /// </summary>
         /// <param name="hitDie">The type of hit die.</param>
         /// <returns>The rolled hit die value.</returns>
-        public static int RollHitDie(HitDie hitDie)
+        public static int RollHitDie(Dice hitDie)
         {
             var val = 1;
             while (val == 1)

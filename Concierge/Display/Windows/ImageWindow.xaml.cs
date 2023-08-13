@@ -81,8 +81,6 @@ namespace Concierge.Display.Windows
             this.Result = ConciergeWindowResult.OK;
             this.UpdateCharacterImage();
             this.CloseConciergeWindow();
-
-            Program.Modify();
         }
 
         private void FillFields()
@@ -140,8 +138,6 @@ namespace Concierge.Display.Windows
         {
             this.UpdateCharacterImage();
             this.InvokeApplyChanges();
-
-            Program.Modify();
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)

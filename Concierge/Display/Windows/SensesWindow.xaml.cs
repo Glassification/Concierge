@@ -64,8 +64,6 @@ namespace Concierge.Display.Windows
 
             this.UpdateSenses();
             this.CloseConciergeWindow();
-
-            Program.Modify();
         }
 
         private void FillFields()
@@ -108,8 +106,6 @@ namespace Concierge.Display.Windows
             this.UpdateSenses();
             this.FillFields();
             this.InvokeApplyChanges();
-
-            Program.Modify();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)

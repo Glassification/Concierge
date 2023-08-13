@@ -97,8 +97,6 @@ namespace Concierge.Display.Windows
             this.SelectedWealth.Platinum = this.PP;
 
             Program.UndoRedoService.AddCommand(new EditCommand<Wealth>(this.SelectedWealth, oldItem, this.ConciergePage));
-            Program.Modify();
-
             this.CloseConciergeWindow();
         }
 
@@ -194,8 +192,6 @@ namespace Concierge.Display.Windows
         {
             this.AddSelectedAmount();
             this.FillFields();
-
-            Program.Modify();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)

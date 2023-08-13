@@ -46,7 +46,7 @@ namespace Concierge.Display.Pages
             }
 
             var index = this.AbilitiesDataGrid.SelectedIndex;
-            ConciergeWindowService.ShowEdit<Ability>(
+            ConciergeWindowService.ShowEdit(
                 ability,
                 typeof(AbilitiesWindow),
                 this.Window_ApplyChanges,
@@ -104,7 +104,7 @@ namespace Concierge.Display.Pages
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            var added = ConciergeWindowService.ShowAdd<List<Ability>>(
+            var added = ConciergeWindowService.ShowAdd(
                 Program.CcsFile.Character.Characteristic.Abilities,
                 typeof(AbilitiesWindow),
                 this.Window_ApplyChanges,
@@ -136,8 +136,6 @@ namespace Concierge.Display.Pages
                 Program.CcsFile.Character.Characteristic.Abilities.Remove(ability);
                 this.DrawAbilities();
                 this.AbilitiesDataGrid.SetSelectedIndex(index);
-
-                Program.Modify();
             }
         }
 

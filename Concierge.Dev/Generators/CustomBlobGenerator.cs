@@ -41,7 +41,7 @@ namespace Concierge.DevTools.Generators
             {
                 Name = "Holy Hand Grenade",
                 Notes = "Count to 3.",
-                Weight = new Data.UnitDouble(6.6, Common.Enums.UnitTypes.Imperial, Common.Enums.Measurements.Weight),
+                Weight = new UnitDouble(6.6, Common.Enums.UnitTypes.Imperial, Common.Enums.Measurements.Weight),
                 IsCustom = true,
             };
 

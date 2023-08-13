@@ -28,9 +28,9 @@ namespace Concierge.Display.Utility
             this.InitializeComponent();
             this.UseRoundedCorners();
 
-            this.Class1DiceComboBox.ItemsSource = Enum.GetValues(typeof(HitDie)).Cast<HitDie>();
-            this.Class2DiceComboBox.ItemsSource = Enum.GetValues(typeof(HitDie)).Cast<HitDie>();
-            this.Class3DiceComboBox.ItemsSource = Enum.GetValues(typeof(HitDie)).Cast<HitDie>();
+            this.Class1DiceComboBox.ItemsSource = Enum.GetValues(typeof(Dice)).Cast<Dice>();
+            this.Class2DiceComboBox.ItemsSource = Enum.GetValues(typeof(Dice)).Cast<Dice>();
+            this.Class3DiceComboBox.ItemsSource = Enum.GetValues(typeof(Dice)).Cast<Dice>();
 
             this.Class1ModIntegerUpDown.Value = 0;
             this.Class2ModIntegerUpDown.Value = 0;
@@ -89,7 +89,7 @@ namespace Concierge.Display.Utility
         private static void LevelUpClass(ConciergeComboBox hitDice, IntegerUpDownControl modifier, CharacterClass characterClass)
         {
             var character = Program.CcsFile.Character;
-            var hitDieEnum = (HitDie)Enum.Parse(typeof(HitDie), hitDice.Text);
+            var hitDieEnum = (Dice)Enum.Parse(typeof(Dice), hitDice.Text);
 
             character.LevelUp(hitDieEnum, characterClass.ClassNumber, modifier.Value);
         }

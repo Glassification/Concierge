@@ -38,14 +38,14 @@ namespace Concierge.Character.Vitals
         public int SpentD12 { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0066:Convert switch statement to expression", Justification = "Improve Readability.")]
-        public static HitDie GetHitDice(string className)
+        public static Dice GetHitDice(string className)
         {
             switch (className)
             {
                 case "Sorcerer":
                 case "Wizard":
                 default:
-                    return HitDie.D6;
+                    return Dice.D6;
                 case "Artificer":
                 case "Bard":
                 case "Cleric":
@@ -54,44 +54,44 @@ namespace Concierge.Character.Vitals
                 case "Monk":
                 case "Rogue":
                 case "Warlock":
-                    return HitDie.D8;
+                    return Dice.D8;
                 case "Blood Hunter":
                 case "Fighter":
                 case "Paladin":
                 case "Ranger":
-                    return HitDie.D10;
+                    return Dice.D10;
                 case "Barbarian":
-                    return HitDie.D12;
+                    return Dice.D12;
             }
         }
 
-        public HitDie Increment(string name)
+        public Dice Increment(string name)
         {
             if (name.Contains("d6", System.StringComparison.InvariantCultureIgnoreCase) && this.SpentD6 < this.TotalD6)
             {
                 this.SpentD6++;
-                return HitDie.D6;
+                return Dice.D6;
             }
 
             if (name.Contains("d8", System.StringComparison.InvariantCultureIgnoreCase) && this.SpentD8 < this.TotalD8)
             {
                 this.SpentD8++;
-                return HitDie.D8;
+                return Dice.D8;
             }
 
             if (name.Contains("d10", System.StringComparison.InvariantCultureIgnoreCase) && this.SpentD10 < this.TotalD10)
             {
                 this.SpentD10++;
-                return HitDie.D10;
+                return Dice.D10;
             }
 
             if (name.Contains("d12", System.StringComparison.InvariantCultureIgnoreCase) && this.SpentD12 < this.TotalD12)
             {
                 this.SpentD12++;
-                return HitDie.D12;
+                return Dice.D12;
             }
 
-            return HitDie.None;
+            return Dice.None;
         }
 
         public HitDice DeepCopy()

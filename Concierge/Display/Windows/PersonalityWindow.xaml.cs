@@ -69,8 +69,6 @@ namespace Concierge.Display.Windows
 
             this.UpdatePersonality();
             this.CloseConciergeWindow();
-
-            Program.Modify();
         }
 
         private void FillFields()
@@ -112,8 +110,6 @@ namespace Concierge.Display.Windows
         {
             this.UpdatePersonality();
             this.InvokeApplyChanges();
-
-            Program.Modify();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)

@@ -15,6 +15,7 @@ namespace Concierge.Display.Pages
     using Concierge.Common.Extensions;
     using Concierge.Display.Enums;
     using Concierge.Display.Windows;
+    using Concierge.Display.Windows.Utility;
     using Concierge.Services;
 
     /// <summary>
@@ -46,7 +47,7 @@ namespace Concierge.Display.Pages
             }
 
             var index = this.InventoryDataGrid.SelectedIndex;
-            ConciergeWindowService.ShowEdit<Inventory>(
+            ConciergeWindowService.ShowEdit(
                 inventory,
                 false,
                 typeof(InventoryWindow),
@@ -109,7 +110,7 @@ namespace Concierge.Display.Pages
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            var added = ConciergeWindowService.ShowAdd<List<Inventory>>(
+            var added = ConciergeWindowService.ShowAdd(
                 Program.CcsFile.Character.Equipment.Inventory,
                 typeof(InventoryWindow),
                 this.Window_ApplyChanges,
@@ -142,8 +143,6 @@ namespace Concierge.Display.Pages
 
                 this.DrawInventory();
                 this.InventoryDataGrid.SetSelectedIndex(index);
-
-                Program.Modify();
             }
         }
 
@@ -169,6 +168,31 @@ namespace Concierge.Display.Pages
                     this.ScrollInventory();
                     break;
             }
+        }
+
+        private void ItemUseButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (this.InventoryDataGrid.SelectedItem is null)
+            {
+                return;
+            }
+
+            var item = (Inventory)this.InventoryDataGrid.SelectedItem;
+            if (item.Amount == 0)
+            {
+                return;
+            }
+
+            var oldItem = item.DeepCopy();
+            var result = item.Use();
+
+            ConciergeWindowService.ShowUseItemWindow(typeof(UseItemWindow), result);
+
+            var index = this.InventoryDataGrid.SelectedIndex;
+            this.DrawInventory();
+            this.InventoryDataGrid.SetSelectedIndex(index);
+
+            Program.UndoRedoService.AddCommand(new EditCommand<Inventory>(item, oldItem, this.ConciergePage));
         }
     }
 }
