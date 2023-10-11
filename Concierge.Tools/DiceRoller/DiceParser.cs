@@ -54,17 +54,17 @@ namespace Concierge.Tools.DiceRoller
         }
 
         /// <summary>
-        /// Finds and parses dice expressions within the provided input string.
+        /// Finds the dice expressions within the provided input string.
         /// </summary>
         /// <param name="input">The input string containing dice expressions.</param>
-        /// <returns>A stack of parsed dice expressions as objects.</returns>
-        public static Stack<object> FindAndParse(string input)
+        /// <returns>A string of found dice expressions.</returns>
+        public static string Find(string input)
         {
             var builder = new StringBuilder();
             var matches = hasDice.Matches(input.Strip(" "));
             if (matches.Count == 0)
             {
-                return new Stack<object>();
+                return string.Empty;
             }
 
             foreach (Match match in matches.Cast<Match>())
@@ -72,7 +72,7 @@ namespace Concierge.Tools.DiceRoller
                 builder.Append(match.Value);
             }
 
-            return Parse(builder.ToString());
+            return builder.ToString();
         }
 
         /// <summary>

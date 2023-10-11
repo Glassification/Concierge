@@ -110,7 +110,7 @@
                         Width="60"
                         Foreground="#B9487B"
                         Click="ItemUseButton_Click"
-                        ToolTip="Use Equipped Item">
+                        ToolTip="Use Item">
                         <materialDesign:PackIcon Kind="PlayBox" Width="25" Height="25"/>
                     </components:ConciergeDesignButton>
                     <components:ConciergeDesignButton 
@@ -191,7 +191,7 @@
                     </DataGridTemplateColumn>
                     <DataGridTextColumn
                         Header="Notes"
-                        Binding="{Binding Notes}"
+                        Binding="{Binding NotesDisplay}"
                         Width="0.09*"
                         ElementStyle="{StaticResource WallOfTextColumnElementStyle}"/>
                     <DataGridTextColumn

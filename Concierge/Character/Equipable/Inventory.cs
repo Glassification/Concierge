@@ -18,7 +18,7 @@ namespace Concierge.Character.Equipable
     using MaterialDesignThemes.Wpf;
     using Newtonsoft.Json;
 
-    public sealed class Inventory : ICopyable<Inventory>, IUnique, IEquipable
+    public sealed class Inventory : ICopyable<Inventory>, IUnique, IEquipable, IUsable
     {
         public Inventory()
         {
@@ -70,6 +70,8 @@ namespace Concierge.Character.Equipable
         [SearchIgnore]
         public PackIconKind AttunedIconKind => this.GetAttunedValue().IconKind;
 
+        public bool Consumable { get; set; }
+
         [JsonIgnore]
         [SearchIgnore]
         public Brush IconColor => this.GetCategory().Brush;
@@ -91,6 +93,9 @@ namespace Concierge.Character.Equipable
         public string ItemCategory { get; set; }
 
         public string Notes { get; set; }
+
+        [JsonIgnore]
+        public string NotesDisplay => this.GetNotesDisplay();
 
         public int Value { get; set; }
 
@@ -150,6 +155,7 @@ namespace Concierge.Character.Equipable
                 IsEquipped = this.IsEquipped,
                 EquipmentSlot = this.EquipmentSlot,
                 IsCustom = this.IsCustom,
+                Consumable = this.Consumable,
             };
         }
 
@@ -180,13 +186,13 @@ namespace Concierge.Character.Equipable
             };
         }
 
-        public UsedItem Use()
+        public UsedItem Use(IUsable? usableItem = null)
         {
-            var dice = DiceParser.FindAndParse(this.Description);
+            var dice = DiceParser.Find(this.Description);
             var attack = DiceRoll.Empty;
-            IDiceRoll damage = dice.Count == 0 ? DiceRoll.Empty : new CustomDiceRoll(dice);
+            IDiceRoll damage = dice.IsNullOrWhiteSpace() ? DiceRoll.Empty : new CustomDiceRoll(dice);
 
-            this.Amount--;
+            this.Amount += this.Consumable && !this.IsEquipped ? -1 : 0;
 
             return new UsedItem(attack, damage, this.Name, this.Name, this.Description);
         }
@@ -203,6 +209,16 @@ namespace Concierge.Character.Equipable
             return this.IgnoreWeight ?
                 PackIconKind.CheckboxBlank :
                 PackIconKind.CheckBox;
+        }
+
+        private string GetNotesDisplay()
+        {
+            if (!this.Consumable || this.Notes.Contains("Consum", StringComparison.InvariantCultureIgnoreCase))
+            {
+                return this.Notes;
+            }
+
+            return $"{this.Notes}{(this.Notes.Length == 0 ? string.Empty : ", ")}Consumable";
         }
     }
 }

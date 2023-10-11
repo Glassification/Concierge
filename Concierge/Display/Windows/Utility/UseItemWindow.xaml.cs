@@ -7,6 +7,7 @@ namespace Concierge.Display.Windows.Utility
     using System.Windows;
 
     using Concierge.Display.Components;
+    using Concierge.Display.Enums;
     using Concierge.Tools;
 
     /// <summary>
@@ -28,13 +29,15 @@ namespace Concierge.Display.Windows.Utility
 
         private UsedItem UsedItem { get; set; }
 
-        public override void ShowUseItemWindow(UsedItem usedItem)
+        public override ConciergeWindowResult ShowUseItemWindow(UsedItem usedItem)
         {
             this.UsedItem = usedItem;
             this.HeaderTextBlock.Text = usedItem.Name;
 
             this.FillFields(usedItem);
             this.ShowConciergeWindow();
+
+            return this.Result;
         }
 
         private void FillFields(UsedItem usedItem)
@@ -52,6 +55,7 @@ namespace Concierge.Display.Windows.Utility
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
+            this.Result = ConciergeWindowResult.Exit;
             this.CloseConciergeWindow();
         }
 
@@ -70,6 +74,12 @@ namespace Concierge.Display.Windows.Utility
         {
             this.UsedItem.Damage.ReRoll();
             this.FillFields(this.UsedItem);
+        }
+
+        private void CancelButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Result = ConciergeWindowResult.Cancel;
+            this.CloseConciergeWindow();
         }
     }
 }

@@ -224,7 +224,7 @@ namespace Concierge.Display.Pages
             var oldItem = ammunition.DeepCopy();
             var index = this.AmmoDataGrid.SelectedIndex;
 
-            ammunition.Use(1);
+            ammunition.Use();
             this.DrawAmmoList();
             this.AmmoDataGrid.SetSelectedIndex(index);
             Program.UndoRedoService.AddCommand(new EditCommand<Ammunition>(ammunition, oldItem, this.ConciergePage));
@@ -361,7 +361,19 @@ namespace Concierge.Display.Pages
             var weapon = (Weapon)this.WeaponDataGrid.SelectedItem;
             var result = weapon.Use(ammunition);
 
-            ConciergeWindowService.ShowUseItemWindow(typeof(UseItemWindow), result);
+            var windowResult = ConciergeWindowService.ShowUseItemWindow(typeof(UseItemWindow), result);
+
+            if (ammunition is not null && windowResult == ConciergeWindowResult.OK)
+            {
+                var index = this.AmmoDataGrid.SelectedIndex;
+                var oldItem = ammunition.DeepCopy();
+
+                ammunition.Use();
+                this.DrawAmmoList();
+                this.AmmoDataGrid.SetSelectedIndex(index);
+
+                Program.UndoRedoService.AddCommand(new EditCommand<Ammunition>(ammunition, oldItem, this.ConciergePage));
+            }
         }
     }
 }

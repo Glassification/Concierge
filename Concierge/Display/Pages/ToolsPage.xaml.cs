@@ -199,8 +199,7 @@ namespace Concierge.Display.Pages
 
             try
             {
-                var stack = DiceParser.Parse(input);
-                var result = new CustomDiceRoll(stack);
+                var result = new CustomDiceRoll(input);
 
                 this.RollHistory.Add(result);
                 this.DiceHistory.Add(input);

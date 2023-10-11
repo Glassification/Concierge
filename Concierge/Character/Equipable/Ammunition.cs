@@ -11,10 +11,11 @@ namespace Concierge.Character.Equipable
     using Concierge.Common;
     using Concierge.Common.Attributes;
     using Concierge.Common.Dtos;
+    using Concierge.Tools;
     using MaterialDesignThemes.Wpf;
     using Newtonsoft.Json;
 
-    public sealed class Ammunition : ICopyable<Ammunition>, IUnique
+    public sealed class Ammunition : ICopyable<Ammunition>, IUnique, IUsable
     {
         private int used;
 
@@ -111,9 +112,10 @@ namespace Concierge.Character.Equipable
             };
         }
 
-        public void Use(int use)
+        public UsedItem Use(IUsable? usableItem = null)
         {
-            this.Used += use;
+            this.Used++;
+            return new UsedItem();
         }
     }
 }

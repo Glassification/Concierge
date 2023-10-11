@@ -186,7 +186,12 @@ namespace Concierge.Display.Pages
             var oldItem = item.DeepCopy();
             var result = item.Use();
 
-            ConciergeWindowService.ShowUseItemWindow(typeof(UseItemWindow), result);
+            var windowResult = ConciergeWindowService.ShowUseItemWindow(typeof(UseItemWindow), result);
+            if (windowResult != ConciergeWindowResult.OK)
+            {
+                item.Amount = oldItem.Amount;
+                return;
+            }
 
             var index = this.InventoryDataGrid.SelectedIndex;
             this.DrawInventory();

@@ -464,9 +464,9 @@
                                 Foreground="White"
                                 Margin="25,0,0,0"
                                 FontSize="30"
-                                FontFamily="Sergoe UI SemiLight"
                                 HorizontalAlignment="Left"
-                                VerticalAlignment="Center"/>
+                                VerticalAlignment="Center"
+                                MouseDown="ArmorClass_MouseDown"/>
 
                             <Border
                                 Grid.Row="1"

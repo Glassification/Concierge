@@ -11,6 +11,8 @@ namespace Concierge.Display.Windows
     using Concierge.Character;
     using Concierge.Character.Enums;
     using Concierge.Commands;
+    using Concierge.Common.Extensions;
+    using Concierge.Common.Utilities;
     using Concierge.Display.Components;
     using Concierge.Display.Enums;
 
@@ -24,7 +26,7 @@ namespace Concierge.Display.Windows
             this.InitializeComponent();
             this.UseRoundedCorners();
 
-            this.VisionComboBox.ItemsSource = Enum.GetValues(typeof(VisionTypes)).Cast<VisionTypes>();
+            this.VisionComboBox.ItemsSource = StringUtility.FormatEnumForDisplay(typeof(VisionTypes));
             this.CreatureSizeComboBox.ItemsSource = Enum.GetValues(typeof(CreatureSizes)).Cast<CreatureSizes>();
             this.ConciergePage = ConciergePage.None;
             this.Properties = new CompanionProperties();
@@ -68,7 +70,7 @@ namespace Concierge.Display.Windows
             this.NameTextBox.Text = this.Properties.Name;
             this.AcUpDown.Value = this.Properties.ArmorClass;
             this.PerceptionUpDown.Value = this.Properties.Perception;
-            this.VisionComboBox.Text = this.Properties.Vision.ToString();
+            this.VisionComboBox.Text = this.Properties.Vision.ToString().FormatFromEnum();
             this.MovementUpDown.Value = this.Properties.Movement;
             this.CreatureSizeComboBox.Text = this.Properties.CreatureSize.ToString();
             this.InitiativeUpDown.Value = this.Properties.Initiative;
@@ -81,7 +83,7 @@ namespace Concierge.Display.Windows
             this.Properties.Name = this.NameTextBox.Text;
             this.Properties.ArmorClass = this.AcUpDown.Value;
             this.Properties.Perception = this.PerceptionUpDown.Value;
-            this.Properties.Vision = (VisionTypes)Enum.Parse(typeof(VisionTypes), this.VisionComboBox.Text);
+            this.Properties.Vision = (VisionTypes)Enum.Parse(typeof(VisionTypes), this.VisionComboBox.Text.Strip(" "));
             this.Properties.Movement = this.MovementUpDown.Value;
             this.Properties.CreatureSize = (CreatureSizes)Enum.Parse(typeof(CreatureSizes), this.CreatureSizeComboBox.Text);
             this.Properties.Initiative = this.InitiativeUpDown.Value;

@@ -117,9 +117,10 @@ namespace Concierge.Display.Components
             return CustomColor.Invalid;
         }
 
-        public virtual void ShowUseItemWindow(UsedItem usedItem)
+        public virtual ConciergeWindowResult ShowUseItemWindow(UsedItem usedItem)
         {
             Program.Logger.Error(new ImplementedMethodException(nameof(this.ShowUseItemWindow)));
+            return ConciergeWindowResult.NoResult;
         }
 
         public virtual PopupButtons ShowPopup()

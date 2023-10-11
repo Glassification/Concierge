@@ -126,15 +126,15 @@ namespace Concierge.Services
             return conciergeWindow.ShowColorWindow(color);
         }
 
-        public static void ShowUseItemWindow(Type typeOfWindow, UsedItem usedItem)
+        public static ConciergeWindowResult ShowUseItemWindow(Type typeOfWindow, UsedItem usedItem)
         {
             var conciergeWindow = (ConciergeWindow?)Activator.CreateInstance(typeOfWindow);
             if (conciergeWindow is null)
             {
-                return;
+                return ConciergeWindowResult.NoResult;
             }
 
-            conciergeWindow.ShowUseItemWindow(usedItem);
+            return conciergeWindow.ShowUseItemWindow(usedItem);
         }
 
         public static PopupButtons ShowPopup(Type typeOfWindow)

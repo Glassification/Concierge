@@ -1,0 +1,232 @@
+﻿<UserControl
+    x:Class="Concierge.Display.Controls.MenuControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:local="clr-namespace:Concierge.Display.Controls"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:components="clr-namespace:Concierge.Display.Components"
+    Style="{StaticResource UserControlFontStyle}"
+    mc:Ignorable="d">
+    <Grid>
+        <components:ConciergeColorToggleButton
+            x:Name="PopupToggleButton"
+            Width="60"
+            Style="{StaticResource ConciergeMenuToggleButtonStyle}"
+            IsHitTestVisible="{Binding ElementName=MenuPopup, Path=IsOpen, Mode=OneWay, Converter={local:BoolInverter}}">
+            <materialDesign:PackIcon
+                Kind="Menu"
+                Foreground="White"
+                Width="25"
+                Height="25"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"/>
+        </components:ConciergeColorToggleButton>
+        
+        <Popup
+            x:Name="MenuPopup"
+            Placement="Bottom"
+            AllowsTransparency="True"
+            Focusable="False"
+            StaysOpen="False"
+            IsOpen="{Binding IsChecked, ElementName=PopupToggleButton}"
+            PopupAnimation="Slide"
+            Width="310">
+            <Border
+                BorderBrush="#888888"
+                BorderThickness="1">
+                <Grid Background="#191919">
+                    <StackPanel Orientation="Vertical">
+                        <Grid>
+                            <local:PopupToggleButton
+                                x:Name="FileMenuItem"
+                                Label="File"
+                                Shortcut=">"
+                                IconKind="File"
+                                IconColor="#6a4c93"
+                                IsHitTestVisible="{Binding ElementName=FileMenuPopup, Path=IsOpen, Mode=OneWay, Converter={local:BoolInverter}}"/>
+                            <Popup
+                                x:Name="FileMenuPopup"
+                                Placement="Right"
+                                AllowsTransparency="True"
+                                Focusable="False"
+                                StaysOpen="False"
+                                IsOpen="{Binding IsChecked, ElementName=FileMenuItem}"
+                                PopupAnimation="Scroll"
+                                Width="310"
+                                Closed="FileMenuPopup_Closed">
+                                <Border
+                                    BorderBrush="#888888"
+                                    BorderThickness="1">
+                                    <Grid Background="#191919">
+                                        <StackPanel Orientation="Vertical">
+                                            <local:PopupButton
+                                                x:Name="NewCharacterMenuItem"
+                                                Label="New"
+                                                Shortcut="Ctrl+N"
+                                                IconKind="FolderPlus"
+                                                IconColor="#6a4c93"/>
+                                            <local:PopupButton
+                                                x:Name="OpenCharacterMenuItem"
+                                                Label="Open..."
+                                                Shortcut="Ctrl+O"
+                                                IconKind="FolderOpen"
+                                                IconColor="#6a4c93"/>
+                                            <local:PopupButton
+                                                x:Name="ImportCharacterMenuItem"
+                                                Label="Import..."
+                                                Shortcut="Ctrl+I"
+                                                IconKind="Import"
+                                                IconColor="#6a4c93"/>
+                                            <local:PopupButton
+                                                x:Name="SaveCharacterMenuItem"
+                                                Label="Save"
+                                                Shortcut="Ctrl+S"
+                                                IconKind="ContentSave"
+                                                IconColor="#6a4c93"/>
+                                            <local:PopupButton
+                                                x:Name="SaveAsCharacterMenuItem"
+                                                Label="Save As..."
+                                                Shortcut="Ctrl+Shift+S"
+                                                IconKind="ContentSaveAll"
+                                                IconColor="#6a4c93"/>
+                                        </StackPanel>
+                                    </Grid>
+                                </Border>
+                            </Popup>
+                        </Grid>
+                        <local:PopupButton
+                            x:Name="UndoMenuItem"
+                            Label="Undo"
+                            Shortcut="Ctrl+Z"
+                            IconKind="Undo"
+                            IconColor="#118ab2"/>
+                        <local:PopupButton
+                            x:Name="RedoMenuItem"
+                            Label="Redo"
+                            Shortcut="Ctrl+Y"
+                            IconKind="Redo"
+                            IconColor="#118ab2"/>
+                        <Grid>
+                            <local:PopupToggleButton
+                                x:Name="CharacterMenuItem"
+                                Label="Character"
+                                Shortcut=">"
+                                IconKind="CardAccountDetails"
+                                IconColor="#06d6a0"
+                                IsHitTestVisible="{Binding ElementName=CharacterMenuPopup, Path=IsOpen, Mode=OneWay, Converter={local:BoolInverter}}"/>
+                            <Popup
+                                x:Name="CharacterMenuPopup"
+                                Placement="Right"
+                                AllowsTransparency="True"
+                                Focusable="False"
+                                StaysOpen="False"
+                                IsOpen="{Binding IsChecked, ElementName=CharacterMenuItem}"
+                                PopupAnimation="Scroll"
+                                Width="310"
+                                Closed="CharacterMenuPopup_Closed">
+                                <Border
+                                    BorderBrush="#888888"
+                                    BorderThickness="1">
+                                    <Grid Background="#191919">
+                                        <StackPanel Orientation="Vertical">
+                                            <local:PopupButton
+                                                x:Name="CharacterCreationMenuItem"
+                                                Label="Create Character..."
+                                                Shortcut="Ctrl+W"
+                                                IconKind="Creation"
+                                                IconColor="#06d6a0"/>
+                                            <local:PopupButton
+                                                x:Name="LevelUpMenuItem"
+                                                Label="Level Up..."
+                                                Shortcut="Ctrl+U"
+                                                IconKind="AccountArrowUp"
+                                                IconColor="#06d6a0"/>
+                                            <local:PopupButton
+                                                x:Name="LongRestMenuItem"
+                                                Label="Long Rest"
+                                                Shortcut="Ctrl+L"
+                                                IconKind="BedClock"
+                                                IconColor="#06d6a0"/>
+                                            <local:PopupButton
+                                                x:Name="CharacterPropertiesMenuItem"
+                                                Label="Properties..."
+                                                Shortcut="Ctrl+P"
+                                                IconKind="SmartCardOutline"
+                                                IconColor="#06d6a0"/>
+                                        </StackPanel>
+                                    </Grid>
+                                </Border>
+                            </Popup>
+                        </Grid>
+                        <Grid>
+                            <local:PopupToggleButton
+                                x:Name="ToolsMenuItem"
+                                Label="Tools"
+                                Shortcut=">"
+                                IconKind="Toolbox"
+                                IconColor="#ffd166"
+                                IsHitTestVisible="{Binding ElementName=ToolsMenuPopup, Path=IsOpen, Mode=OneWay, Converter={local:BoolInverter}}"/>
+                            <Popup
+                                x:Name="ToolsMenuPopup"
+                                Placement="Right"
+                                AllowsTransparency="True"
+                                Focusable="False"
+                                StaysOpen="False"
+                                IsOpen="{Binding IsChecked, ElementName=ToolsMenuItem}"
+                                PopupAnimation="Scroll"
+                                Width="310"
+                                Closed="ToolsMenuPopup_Closed">
+                                <Border
+                                    BorderBrush="#888888"
+                                    BorderThickness="1">
+                                    <Grid Background="#191919">
+                                        <StackPanel Orientation="Vertical">
+                                            <local:PopupButton
+                                                x:Name="ConsoleMenuItem"
+                                                Label="Console..."
+                                                Shortcut=""
+                                                IconKind="Console"
+                                                IconColor="#ffd166"/>
+                                            <local:PopupButton
+                                                x:Name="CustomItemsMenuItem"
+                                                Label="Custom Items..."
+                                                Shortcut="Ctrl+C"
+                                                IconKind="PencilBoxMultiple"
+                                                IconColor="#ffd166"/>
+                                            <local:PopupButton
+                                                x:Name="SearchMenuItem"
+                                                Label="Search..."
+                                                Shortcut="Ctrl+F"
+                                                IconKind="FileSearch"
+                                                IconColor="#ffd166"/>
+                                            <local:PopupButton
+                                                x:Name="SettingsMenuItem"
+                                                Label="Settings..."
+                                                Shortcut=""
+                                                IconKind="Settings"
+                                                IconColor="#ffd166"/>
+                                        </StackPanel>
+                                    </Grid>
+                                </Border>
+                            </Popup>
+                        </Grid>
+                        <local:PopupButton
+                            x:Name="AboutMenuItem"
+                            Label="About..."
+                            Shortcut="Ctrl+A"
+                            IconKind="About"
+                            IconColor="#ef476f"/>
+                        <local:PopupButton
+                            x:Name="HelpMenuItem"
+                            Label="Help..."
+                            Shortcut="Ctrl+H"
+                            IconKind="Bookshelf"
+                            IconColor="#ef476f"/>
+                    </StackPanel>
+                </Grid>
+            </Border>
+        </Popup>
+    </Grid>
+</UserControl>

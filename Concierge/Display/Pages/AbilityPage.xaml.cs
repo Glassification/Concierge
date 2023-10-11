@@ -15,6 +15,7 @@ namespace Concierge.Display.Pages
     using Concierge.Common.Extensions;
     using Concierge.Display.Enums;
     using Concierge.Display.Windows;
+    using Concierge.Display.Windows.Utility;
     using Concierge.Services;
 
     /// <summary>
@@ -161,6 +162,19 @@ namespace Concierge.Display.Pages
                     this.ScrollAbilities();
                     break;
             }
+        }
+
+        private void AbilityUseButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (this.AbilitiesDataGrid.SelectedItem is null)
+            {
+                return;
+            }
+
+            var ability = (Ability)this.AbilitiesDataGrid.SelectedItem;
+            var result = ability.Use();
+
+            ConciergeWindowService.ShowUseItemWindow(typeof(UseItemWindow), result);
         }
     }
 }

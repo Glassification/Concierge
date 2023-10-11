@@ -14,6 +14,7 @@ namespace Concierge.Display
 
     using Concierge.Common;
     using Concierge.Common.Extensions;
+    using Concierge.Common.Utilities;
     using Concierge.Configuration;
     using Concierge.Display.Enums;
     using Concierge.Display.Pages;
@@ -66,6 +67,7 @@ namespace Concierge.Display
             this.IgnoreListItemSelectionChanged = true;
 
             this.SetListViewItemTag();
+            this.SetUndoRedoState();
             this.CollapseAll();
             this.ListViewMenu.SelectedIndex = 0;
             this.OverviewPage.Visibility = Visibility.Visible;
@@ -80,27 +82,27 @@ namespace Concierge.Display
                 this.autosaveTimer.Start(Defaults.CurrentAutosaveInterval);
             }
 
-            this.PopupBoxButton.ResetScaling();
             this.ButtonClose.ResetScaling();
             this.ButtonMinimize.ResetScaling();
             this.MaximizeButton.ResetScaling();
 
-            this.NewCharacterButton.AddClickEvent(this.NewCharacterButton_Click);
-            this.OpenCharacterButton.AddClickEvent(this.OpenCharacterButton_Click);
-            this.ImportCharacterButton.AddClickEvent(this.ImportCharacterButton_Click);
-            this.SaveCharacterButton.AddClickEvent(this.SaveCharacterButton_Click);
-            this.SaveCharacterAsButton.AddClickEvent(this.SaveCharacterAsButton_Click);
-            this.UndoButton.AddClickEvent(this.UndoButton_Click);
-            this.RedoButton.AddClickEvent(this.RedoButton_Click);
-            this.CharacterCreationButton.AddClickEvent(this.CharacterCreationButton_Click);
-            this.LevelUpButton.AddClickEvent(this.LevelUpButton_Click);
-            this.LongRestButton.AddClickEvent(this.LongRestButton_Click);
-            this.CharacterPropertiesButton.AddClickEvent(this.PropertiesButton_Click);
-            this.SearchButton.AddClickEvent(this.SearchButton_Click);
-            this.SettingsButton.AddClickEvent(this.SettingsButton_Click);
-            this.AboutButton.AddClickEvent(this.AboutButton_Click);
-            this.GlossaryButton.AddClickEvent(this.GlossaryButton_Click);
-            this.CustomItemsButton.AddClickEvent(this.CustomItemsButton_Click);
+            this.MenuButton.NewCharacterMenuItem.AddClickEvent(this.NewCharacterButton_Click);
+            this.MenuButton.OpenCharacterMenuItem.AddClickEvent(this.OpenCharacterButton_Click);
+            this.MenuButton.ImportCharacterMenuItem.AddClickEvent(this.ImportCharacterButton_Click);
+            this.MenuButton.SaveCharacterMenuItem.AddClickEvent(this.SaveCharacterButton_Click);
+            this.MenuButton.SaveAsCharacterMenuItem.AddClickEvent(this.SaveCharacterAsButton_Click);
+            this.MenuButton.UndoMenuItem.AddClickEvent(this.UndoButton_Click);
+            this.MenuButton.RedoMenuItem.AddClickEvent(this.RedoButton_Click);
+            this.MenuButton.CharacterCreationMenuItem.AddClickEvent(this.CharacterCreationButton_Click);
+            this.MenuButton.LevelUpMenuItem.AddClickEvent(this.LevelUpButton_Click);
+            this.MenuButton.LongRestMenuItem.AddClickEvent(this.LongRestButton_Click);
+            this.MenuButton.CharacterPropertiesMenuItem.AddClickEvent(this.PropertiesButton_Click);
+            this.MenuButton.ConsoleMenuItem.AddClickEvent(this.ConsoleButton_Click);
+            this.MenuButton.CustomItemsMenuItem.AddClickEvent(this.CustomItemsButton_Click);
+            this.MenuButton.SearchMenuItem.AddClickEvent(this.SearchButton_Click);
+            this.MenuButton.SettingsMenuItem.AddClickEvent(this.SettingsButton_Click);
+            this.MenuButton.AboutMenuItem.AddClickEvent(this.AboutButton_Click);
+            this.MenuButton.HelpMenuItem.AddClickEvent(this.GlossaryButton_Click);
 
             Program.Logger.Info($"{nameof(MainWindow)} loaded.");
             Program.InitializeMainWindow(this);
@@ -131,8 +133,6 @@ namespace Concierge.Display
         private static bool IsControl => (Keyboard.Modifiers & ModifierKeys.Control) == ModifierKeys.Control;
 
         private static bool IsShift => (Keyboard.Modifiers & ModifierKeys.Shift) == ModifierKeys.Shift;
-
-        private bool IgnoreSecondPress { get; set; }
 
         private bool IgnoreListItemSelectionChanged { get; set; }
 
@@ -328,7 +328,6 @@ namespace Concierge.Display
         public void Search()
         {
             ConciergeWindowService.ShowWindow(typeof(SearchWindow));
-            this.IgnoreSecondPress = true;
         }
 
         public void Redo()
@@ -444,6 +443,12 @@ namespace Concierge.Display
             {
                 mainWindow.OnScaleValueChanged((double)e.OldValue, (double)e.NewValue);
             }
+        }
+
+        private void SetUndoRedoState()
+        {
+            DisplayUtility.SetControlEnableState(this.MenuButton.UndoMenuItem, Program.UndoRedoService.CanUndo);
+            DisplayUtility.SetControlEnableState(this.MenuButton.RedoMenuItem, Program.UndoRedoService.CanRedo);
         }
 
         private void Save(bool saveAs)
@@ -581,7 +586,6 @@ namespace Concierge.Display
             switch (keyPressed)
             {
                 case Key.Tab:
-                    this.PopupBoxControl.IsPopupOpen = !this.PopupBoxControl.IsPopupOpen;
                     break;
             }
         }
@@ -605,12 +609,12 @@ namespace Concierge.Display
                     ConciergeWindowService.ShowWindow(typeof(AboutConciergeWindow));
                     break;
                 case Key.C:
-                    this.OpenConsole();
+                    this.OpenCustomItems();
                     break;
                 case Key.F:
                     this.Search();
                     break;
-                case Key.G:
+                case Key.H:
                     this.OpenGlossary();
                     break;
                 case Key.I:
@@ -618,9 +622,6 @@ namespace Concierge.Display
                     break;
                 case Key.L:
                     this.LongRest();
-                    break;
-                case Key.M:
-                    this.OpenCustomItems();
                     break;
                 case Key.N:
                     this.NewCharacterSheet();
@@ -722,42 +723,36 @@ namespace Concierge.Display
         {
             ConciergeSoundService.TapNavigation();
             this.NewCharacterSheet();
-            this.IgnoreSecondPress = true;
         }
 
         private void OpenCharacterButton_Click(object sender, RoutedEventArgs e)
         {
             ConciergeSoundService.TapNavigation();
             this.OpenCharacterSheet();
-            this.IgnoreSecondPress = true;
         }
 
         private void ImportCharacterButton_Click(object sender, RoutedEventArgs e)
         {
             ConciergeSoundService.TapNavigation();
             this.ImportCharacter();
-            this.IgnoreSecondPress = true;
         }
 
         private void SaveCharacterButton_Click(object sender, RoutedEventArgs e)
         {
             ConciergeSoundService.TapNavigation();
             this.SaveCharacterSheet();
-            this.IgnoreSecondPress = true;
         }
 
         private void SaveCharacterAsButton_Click(object sender, RoutedEventArgs e)
         {
             ConciergeSoundService.TapNavigation();
             this.SaveCharacterSheetAs();
-            this.IgnoreSecondPress = true;
         }
 
         private void LongRestButton_Click(object sender, RoutedEventArgs e)
         {
             ConciergeSoundService.TapNavigation();
             this.LongRest();
-            this.IgnoreSecondPress = true;
         }
 
         private void ListViewItem_Selected(object sender, RoutedEventArgs e)
@@ -783,14 +778,12 @@ namespace Concierge.Display
         {
             ConciergeSoundService.TapNavigation();
             this.OpenCharacterProperties();
-            this.IgnoreSecondPress = true;
         }
 
         private void SettingsButton_Click(object sender, RoutedEventArgs e)
         {
             ConciergeSoundService.TapNavigation();
             this.OpenSettings();
-            this.IgnoreSecondPress = true;
         }
 
         private void AboutButton_Click(object sender, RoutedEventArgs e)
@@ -799,8 +792,6 @@ namespace Concierge.Display
             Program.Logger.Info($"Open About.");
 
             ConciergeWindowService.ShowWindow(typeof(AboutConciergeWindow));
-
-            this.IgnoreSecondPress = true;
         }
 
         private void ButtonMinimize_Click(object sender, RoutedEventArgs e)
@@ -809,21 +800,10 @@ namespace Concierge.Display
             this.WindowState = WindowState.Minimized;
         }
 
-        private void PopupBoxButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (!this.IgnoreSecondPress)
-            {
-                this.PopupBoxControl.IsPopupOpen = true;
-            }
-
-            this.IgnoreSecondPress = false;
-        }
-
         private void CharacterCreationButton_Click(object sender, RoutedEventArgs e)
         {
             ConciergeSoundService.TapNavigation();
             this.CreateCharacterWizard();
-            this.IgnoreSecondPress = true;
         }
 
         private void MaximizeButton_Click(object sender, RoutedEventArgs e)
@@ -854,7 +834,7 @@ namespace Concierge.Display
 
         private void CharacterHeader_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            if (e.ClickCount == 2)
+            if (e.ClickCount == 2 && !this.MenuButton.MenuPopup.IsOpen)
             {
                 this.ChangeWindowState();
             }
@@ -869,20 +849,17 @@ namespace Concierge.Display
         {
             ConciergeSoundService.TapNavigation();
             this.Redo();
-            this.IgnoreSecondPress = true;
         }
 
         private void UndoButton_Click(object sender, RoutedEventArgs e)
         {
             ConciergeSoundService.TapNavigation();
             this.Undo();
-            this.IgnoreSecondPress = true;
         }
 
         private void UndoRedo_StackChanged(object sender, EventArgs e)
         {
-            this.UndoButton.IsEnabled = Program.UndoRedoService.CanUndo;
-            this.RedoButton.IsEnabled = Program.UndoRedoService.CanRedo;
+            this.SetUndoRedoState();
             if (sender is not UndoRedoService service)
             {
                 return;
@@ -922,7 +899,6 @@ namespace Concierge.Display
         {
             ConciergeSoundService.TapNavigation();
             this.LevelUp();
-            this.IgnoreSecondPress = true;
         }
 
         private void ListViewItem_MouseEnter(object sender, MouseEventArgs e)
@@ -939,14 +915,18 @@ namespace Concierge.Display
         {
             ConciergeSoundService.TapNavigation();
             this.OpenGlossary();
-            this.IgnoreSecondPress = true;
         }
 
         private void CustomItemsButton_Click(object sender, RoutedEventArgs e)
         {
             ConciergeSoundService.TapNavigation();
             this.OpenCustomItems();
-            this.IgnoreSecondPress = true;
+        }
+
+        private void ConsoleButton_Click(object sender, RoutedEventArgs e)
+        {
+            ConciergeSoundService.TapNavigation();
+            this.OpenConsole();
         }
     }
 }

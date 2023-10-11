@@ -179,6 +179,12 @@
                     Content="OK"
                     Click="OkButton_Click">
                 </components:ConciergeTextButton>
+                <components:ConciergeTextButton 
+                    x:Name="CancelButton"
+                    Style="{StaticResource ConciergeTextButtonStyle}"
+                    Content="Cancel"
+                    Click="CancelButton_Click">
+                </components:ConciergeTextButton>
             </StackPanel>
         </Grid>
     </Grid>

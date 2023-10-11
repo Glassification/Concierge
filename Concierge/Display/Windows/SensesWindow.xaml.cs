@@ -5,13 +5,14 @@
 namespace Concierge.Display.Windows
 {
     using System;
-    using System.Linq;
     using System.Windows;
 
     using Concierge.Character.Characteristics;
     using Concierge.Character.Enums;
     using Concierge.Commands;
     using Concierge.Common;
+    using Concierge.Common.Extensions;
+    using Concierge.Common.Utilities;
     using Concierge.Display.Components;
     using Concierge.Display.Enums;
 
@@ -25,7 +26,7 @@ namespace Concierge.Display.Windows
             this.InitializeComponent();
             this.UseRoundedCorners();
 
-            this.VisionComboBox.ItemsSource = Enum.GetValues(typeof(VisionTypes)).Cast<VisionTypes>();
+            this.VisionComboBox.ItemsSource = StringUtility.FormatEnumForDisplay(typeof(VisionTypes));
             this.ConciergePage = ConciergePage.None;
             this.DescriptionTextBlock.DataContext = this.Description;
 
@@ -74,7 +75,7 @@ namespace Concierge.Display.Windows
             this.InitiativeBonusUpDown.Value = character.Characteristic.Senses.InitiativeBonus;
             this.PerceptionTextBlock.Text = character.PassivePerception.ToString();
             this.PerceptionBonusUpDown.Value = character.Characteristic.Senses.PerceptionBonus;
-            this.VisionComboBox.Text = character.Characteristic.Senses.Vision.ToString();
+            this.VisionComboBox.Text = character.Characteristic.Senses.Vision.ToString().FormatFromEnum();
             this.MovementTextBlock.Text = character.Characteristic.Senses.Movement.ToString();
             this.BaseMovementUpDown.Value = character.Characteristic.Senses.BaseMovement;
             this.MovementBonusUpDown.Value = character.Characteristic.Senses.MovementBonus;
@@ -88,7 +89,7 @@ namespace Concierge.Display.Windows
 
             senses.InitiativeBonus = this.InitiativeBonusUpDown.Value;
             senses.PerceptionBonus = this.PerceptionBonusUpDown.Value;
-            senses.Vision = (VisionTypes)Enum.Parse(typeof(VisionTypes), this.VisionComboBox.Text);
+            senses.Vision = (VisionTypes)Enum.Parse(typeof(VisionTypes), this.VisionComboBox.Text.Strip(" "));
             senses.BaseMovement = this.BaseMovementUpDown.Value;
             senses.MovementBonus = this.MovementBonusUpDown.Value;
             senses.Inspiration = this.InspirationCheckBox.IsChecked ?? false;

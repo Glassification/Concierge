@@ -17,7 +17,7 @@ namespace Concierge.Character.Spellcasting
     using MaterialDesignThemes.Wpf;
     using Newtonsoft.Json;
 
-    public sealed class Spell : ICopyable<Spell>, IUnique
+    public sealed class Spell : ICopyable<Spell>, IUnique, IUsable
     {
         public Spell()
         {
@@ -132,7 +132,7 @@ namespace Concierge.Character.Spellcasting
             };
         }
 
-        public UsedItem Use()
+        public UsedItem Use(IUsable? usableItem = null)
         {
             var cleanedInput = DiceParser.Clean(this.Damage, Enum.GetNames(typeof(DamageTypes)));
             if (!DiceParser.IsValidInput(cleanedInput))
@@ -142,7 +142,7 @@ namespace Concierge.Character.Spellcasting
 
             var attackBonus = Program.CcsFile.Character.Magic.GetSpellAttack(this.Class);
             var attack = new DiceRoll(Dice.D20, 1, attackBonus);
-            var damage = new CustomDiceRoll(DiceParser.Parse(cleanedInput));
+            var damage = new CustomDiceRoll(cleanedInput);
 
             return new UsedItem(attack, damage, this.Name, string.Empty, this.Description);
         }

@@ -1,4 +1,4 @@
-﻿// <copyright file="PopupButton.xaml.cs" company="Thomas Beckett">
+﻿// <copyright file="PopupToggleButton.xaml.cs" company="Thomas Beckett">
 // Copyright (c) Thomas Beckett. All rights reserved.
 // </copyright>
 
@@ -12,39 +12,46 @@ namespace Concierge.Display.Controls
     using MaterialDesignThemes.Wpf;
 
     /// <summary>
-    /// Interaction logic for PopupButton.xaml.
+    /// Interaction logic for PopupToggleButton.xaml.
     /// </summary>
-    public partial class PopupButton : UserControl
+    public partial class PopupToggleButton : UserControl
     {
         public static readonly DependencyProperty IconKindProperty =
-            DependencyProperty.Register(
-                "IconKind",
-                typeof(PackIconKind),
-                typeof(PopupButton),
-                new UIPropertyMetadata(PackIconKind.Error));
+           DependencyProperty.Register(
+               "IconKind",
+               typeof(PackIconKind),
+               typeof(PopupToggleButton),
+               new UIPropertyMetadata(PackIconKind.Error));
 
         public static readonly DependencyProperty IconColorProperty =
             DependencyProperty.Register(
                 "IconColor",
                 typeof(Brush),
-                typeof(PopupButton),
+                typeof(PopupToggleButton),
                 new UIPropertyMetadata(Brushes.Red));
 
         public static readonly DependencyProperty LabelProperty =
             DependencyProperty.Register(
                 "Label",
                 typeof(string),
-                typeof(PopupButton),
+                typeof(PopupToggleButton),
                 new UIPropertyMetadata("Your text here"));
 
         public static readonly DependencyProperty ShortcutProperty =
             DependencyProperty.Register(
                 "Shortcut",
                 typeof(string),
-                typeof(PopupButton),
+                typeof(PopupToggleButton),
                 new UIPropertyMetadata("Ctrl-_"));
 
-        public PopupButton()
+        public static readonly DependencyProperty IsCheckedProperty =
+            DependencyProperty.Register(
+                "IsChecked",
+                typeof(bool),
+                typeof(PopupToggleButton),
+                new UIPropertyMetadata(false));
+
+        public PopupToggleButton()
         {
             this.InitializeComponent();
         }
@@ -73,6 +80,12 @@ namespace Concierge.Display.Controls
             set { this.SetValue(ShortcutProperty, value); }
         }
 
+        public bool IsChecked
+        {
+            get { return (bool)this.GetValue(IsCheckedProperty); }
+            set { this.SetValue(IsCheckedProperty, value); }
+        }
+
         public void AddClickEvent(RoutedEventHandler click)
         {
             this.RealButton.Click += click;
@@ -86,6 +99,16 @@ namespace Concierge.Display.Controls
         private void RealButton_MouseLeave(object sender, MouseEventArgs e)
         {
             Mouse.OverrideCursor = Cursors.Arrow;
+        }
+
+        private void RealButton_Checked(object sender, RoutedEventArgs e)
+        {
+            this.IsChecked = true;
+        }
+
+        private void RealButton_Unchecked(object sender, RoutedEventArgs e)
+        {
+            this.IsChecked = false;
         }
     }
 }

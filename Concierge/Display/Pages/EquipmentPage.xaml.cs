@@ -19,6 +19,7 @@ namespace Concierge.Display.Pages
     using Concierge.Display.Windows;
     using Concierge.Display.Windows.Utility;
     using Concierge.Services;
+    using Concierge.Tools;
 
     /// <summary>
     /// Interaction logic for EquipmentPage.xaml.
@@ -293,14 +294,9 @@ namespace Concierge.Display.Pages
 
         private void ItemUseButton_Click(object sender, RoutedEventArgs e)
         {
-            if (this.SelectedItem is Weapon weapon)
+            if (this.SelectedItem is IUsable usable)
             {
-                var result = weapon.Use();
-                ConciergeWindowService.ShowUseItemWindow(typeof(UseItemWindow), result);
-            }
-            else if (this.SelectedItem is Spell spell)
-            {
-                var result = spell.Use();
+                var result = usable.Use();
                 ConciergeWindowService.ShowUseItemWindow(typeof(UseItemWindow), result);
             }
         }

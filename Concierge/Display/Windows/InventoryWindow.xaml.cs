@@ -43,6 +43,7 @@ namespace Concierge.Display.Windows
             this.DescriptionTextBlock.DataContext = this.Description;
 
             this.SetFocusEvents(this.NameComboBox);
+            this.SetFocusEvents(this.ConsumableCheckBox);
             this.SetFocusEvents(this.CategoryComboBox);
             this.SetFocusEvents(this.AmountUpDown);
             this.SetFocusEvents(this.WeightUpDown);
@@ -155,6 +156,7 @@ namespace Concierge.Display.Windows
             this.CoinTypeComboBox.Text = inventory.CoinType.ToString();
             this.IgnoreWeightCheckBox.IsChecked = inventory.IgnoreWeight;
             this.AttunedCheckBox.IsChecked = inventory.Attuned;
+            this.ConsumableCheckBox.IsChecked = inventory.Consumable;
 
             DisplayUtility.SetControlEnableState(this.AttunedText, this.EquippedItem);
             DisplayUtility.SetControlEnableState(this.AttunedCheckBox, this.EquippedItem);
@@ -181,6 +183,7 @@ namespace Concierge.Display.Windows
             this.CategoryComboBox.Text = Defaults.ItemCategories[0];
             this.ValueUpDown.Value = 0;
             this.CoinTypeComboBox.Text = CoinType.Copper.ToString();
+            this.ConsumableCheckBox.IsChecked = false;
 
             this.AttunedText.Opacity = 0.5;
             this.AttunedCheckBox.Opacity = 0.5;
@@ -214,6 +217,7 @@ namespace Concierge.Display.Windows
                 ItemCategory = this.CategoryComboBox.Text,
                 Value = this.ValueUpDown.Value,
                 CoinType = (CoinType)Enum.Parse(typeof(CoinType), this.CoinTypeComboBox.Text),
+                Consumable = this.ConsumableCheckBox.IsChecked ?? false,
             };
         }
 
@@ -230,6 +234,7 @@ namespace Concierge.Display.Windows
             inventory.Value = this.ValueUpDown.Value;
             inventory.CoinType = (CoinType)Enum.Parse(typeof(CoinType), this.CoinTypeComboBox.Text);
             inventory.IgnoreWeight = this.IgnoreWeightCheckBox.IsChecked ?? false;
+            inventory.Consumable = this.ConsumableCheckBox.IsChecked ?? false;
 
             if (this.EquippedItem)
             {

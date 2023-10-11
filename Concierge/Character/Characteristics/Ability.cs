@@ -12,10 +12,12 @@ namespace Concierge.Character.Characteristics
     using Concierge.Common.Attributes;
     using Concierge.Common.Dtos;
     using Concierge.Common.Extensions;
+    using Concierge.Tools;
+    using Concierge.Tools.DiceRoller;
     using MaterialDesignThemes.Wpf;
     using Newtonsoft.Json;
 
-    public sealed class Ability : ICopyable<Ability>, IUnique
+    public sealed class Ability : ICopyable<Ability>, IUnique, IUsable
     {
         public Ability()
         {
@@ -105,6 +107,20 @@ namespace Concierge.Character.Characteristics
                 AbilityTypes.None => new CategoryDto(PackIconKind.BorderNone, Brushes.SlateGray, this.Type.ToString()),
                 _ => new CategoryDto(),
             };
+        }
+
+        public UsedItem Use(IUsable? usableItem = null)
+        {
+            var cleanedInput = DiceParser.Clean(this.Action, Enum.GetNames(typeof(DamageTypes)));
+            if (!DiceParser.IsValidInput(cleanedInput))
+            {
+                cleanedInput = "0";
+            }
+
+            var attack = DiceRoll.Empty;
+            var damage = new CustomDiceRoll(cleanedInput);
+
+            return new UsedItem(attack, damage, this.Name, this.Type.ToString(), this.Description);
         }
     }
 }

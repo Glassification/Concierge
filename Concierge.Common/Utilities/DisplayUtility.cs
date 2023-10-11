@@ -179,6 +179,13 @@ namespace Concierge.Common.Utilities
             element.Opacity = isEnabled ? 1 : 0.5;
         }
 
+        /// <summary>
+        /// Generates a list of ComboBoxItems using default items and custom items, sorted by their name.
+        /// </summary>
+        /// <typeparam name="T">The type of items that implement the IUnique interface.</typeparam>
+        /// <param name="defaultItems">A collection of default items.</param>
+        /// <param name="customItems">A list of custom items to be combined with default items.</param>
+        /// <returns>A list of ComboBoxItems with content, foreground color, and tag set based on the provided items.</returns>
         public static List<ComboBoxItem> GenerateSelectorComboBox<T>(ReadOnlyCollection<T> defaultItems, List<T> customItems)
             where T : IUnique
         {

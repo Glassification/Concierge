@@ -1,5 +1,5 @@
 ﻿<UserControl
-    x:Class="Concierge.Display.Controls.PopupButton"
+    x:Class="Concierge.Display.Controls.PopupToggleButton"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -11,13 +11,16 @@
     d:DesignHeight="100"
     d:DesignWidth="300">
     <Grid>
-        <Button 
+        <ToggleButton 
             x:Name="RealButton"
-            Style="{StaticResource ConciergePopupButtonStyle}"
+            Style="{StaticResource ConciergePopupToggleButtonStyle}"
             HorizontalAlignment="Stretch"
             MouseEnter="RealButton_MouseEnter"
-            MouseLeave="RealButton_MouseLeave"/>
-        
+            MouseLeave="RealButton_MouseLeave"
+            Checked="RealButton_Checked"
+            Unchecked="RealButton_Unchecked"
+            />
+
         <Grid
             HorizontalAlignment="Stretch"
             IsHitTestVisible="False"

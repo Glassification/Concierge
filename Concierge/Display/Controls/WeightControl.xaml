@@ -37,7 +37,6 @@
                             Text="Weight Carried"
                             Foreground="White"
                             FontSize="30"
-                            FontWeight="Bold"
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"/>
                     </Grid>

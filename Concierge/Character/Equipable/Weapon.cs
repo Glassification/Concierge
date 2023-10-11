@@ -21,7 +21,7 @@ namespace Concierge.Character.Equipable
 
     using Constants = Concierge.Common.Constants;
 
-    public sealed class Weapon : ICopyable<Weapon>, IUnique, IEquipable
+    public sealed class Weapon : ICopyable<Weapon>, IUnique, IEquipable, IUsable
     {
         public Weapon()
         {
@@ -181,8 +181,10 @@ namespace Concierge.Character.Equipable
             return this.Name;
         }
 
-        public UsedItem Use(Ammunition? ammunition = null)
+        public UsedItem Use(IUsable? usableItem = null)
         {
+            var ammunition = usableItem as Ammunition;
+
             var damageInput = $"{this.Damage} {this.Misc} {(ammunition is not null ? ammunition.Bonus : string.Empty)}";
             var cleanedInput = DiceParser.Clean(damageInput, Enum.GetNames(typeof(DamageTypes)));
             if (!DiceParser.IsValidInput(cleanedInput))
@@ -191,9 +193,10 @@ namespace Concierge.Character.Equipable
             }
 
             var attack = new DiceRoll(Dice.D20, 1, this.Attack);
-            var damage = new CustomDiceRoll(DiceParser.Parse(cleanedInput));
+            var damage = new CustomDiceRoll(cleanedInput);
+            var damageType = $"{this.DamageType} {ammunition?.DamageType}";
 
-            return new UsedItem(attack, damage, this.Name, this.DamageType.ToString(), this.Note);
+            return new UsedItem(attack, damage, this.Name, damageType, this.Note);
         }
 
         public CategoryDto GetCategory()

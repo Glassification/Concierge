@@ -18,9 +18,11 @@ namespace Concierge.Tools.DiceRoller
         /// <summary>
         /// Initializes a new instance of the <see cref="CustomDiceRoll"/> class with the specified stack.
         /// </summary>
-        /// <param name="stack">A stack containing objects representing dice rolls and operations.</param>
-        public CustomDiceRoll(Stack<object> stack)
+        /// <param name="input">A string representing dice rolls and operations.</param>
+        public CustomDiceRoll(string input)
         {
+            var stack = DiceParser.Parse(input);
+
             this.Dice = string.Empty;
             this.FirstIteration = true;
             this.Stack = stack.Clone();
