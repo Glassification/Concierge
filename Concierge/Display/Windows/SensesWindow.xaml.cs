@@ -30,12 +30,15 @@ namespace Concierge.Display.Windows
             this.ConciergePage = ConciergePage.None;
             this.DescriptionTextBlock.DataContext = this.Description;
 
-            this.SetFocusEvents(this.BaseMovementUpDown);
-            this.SetFocusEvents(this.VisionComboBox);
-            this.SetFocusEvents(this.InitiativeBonusUpDown);
-            this.SetFocusEvents(this.PerceptionBonusUpDown);
-            this.SetFocusEvents(this.MovementBonusUpDown);
-            this.SetFocusEvents(this.InspirationCheckBox);
+            this.SetMouseOverEvents(this.BaseMovementUpDown);
+            this.SetMouseOverEvents(this.VisionComboBox);
+            this.SetMouseOverEvents(this.InitiativeBonusUpDown);
+            this.SetMouseOverEvents(this.PerceptionBonusUpDown);
+            this.SetMouseOverEvents(this.MovementBonusUpDown);
+            this.SetMouseOverEvents(this.InspirationCheckBox);
+            this.SetMouseOverEvents(this.InitiativeTextBox, this.InitiativeTextBackground);
+            this.SetMouseOverEvents(this.PerceptionTextBox, this.PerceptionTextBackground);
+            this.SetMouseOverEvents(this.MovementTextBox, this.MovementTextBackground);
         }
 
         public override string HeaderText => "Edit Senses";
@@ -71,12 +74,12 @@ namespace Concierge.Display.Windows
         {
             var character = Program.CcsFile.Character;
 
-            this.InitiativeTextBlock.Text = character.Initiative.ToString();
+            this.InitiativeTextBox.Text = character.Initiative.ToString();
             this.InitiativeBonusUpDown.Value = character.Characteristic.Senses.InitiativeBonus;
-            this.PerceptionTextBlock.Text = character.PassivePerception.ToString();
+            this.PerceptionTextBox.Text = character.PassivePerception.ToString();
             this.PerceptionBonusUpDown.Value = character.Characteristic.Senses.PerceptionBonus;
             this.VisionComboBox.Text = character.Characteristic.Senses.Vision.ToString().FormatFromEnum();
-            this.MovementTextBlock.Text = character.Characteristic.Senses.Movement.ToString();
+            this.MovementTextBox.Text = character.Characteristic.Senses.Movement.ToString();
             this.BaseMovementUpDown.Value = character.Characteristic.Senses.BaseMovement;
             this.MovementBonusUpDown.Value = character.Characteristic.Senses.MovementBonus;
             this.InspirationCheckBox.IsChecked = character.Characteristic.Senses.Inspiration;
@@ -123,9 +126,9 @@ namespace Concierge.Display.Windows
 
         private void IntegerUpDown_ValueChanged(object sender, RoutedEventArgs e)
         {
-            this.InitiativeTextBlock.Text = (Constants.Bonus(Program.CcsFile.Character.Characteristic.Attributes.Dexterity) + this.InitiativeBonusUpDown.Value).ToString();
-            this.PerceptionTextBlock.Text = (Constants.BasePerception + Program.CcsFile.Character.Skills.Perception.Bonus + this.PerceptionBonusUpDown.Value).ToString();
-            this.MovementTextBlock.Text = Senses.GetMovement(this.BaseMovementUpDown.Value + this.MovementBonusUpDown.Value).ToString();
+            this.InitiativeTextBox.Text = (Constants.Bonus(Program.CcsFile.Character.Characteristic.Attributes.Dexterity) + this.InitiativeBonusUpDown.Value).ToString();
+            this.PerceptionTextBox.Text = (Constants.BasePerception + Program.CcsFile.Character.Skills.Perception.Bonus + this.PerceptionBonusUpDown.Value).ToString();
+            this.MovementTextBox.Text = Senses.GetMovement(this.BaseMovementUpDown.Value + this.MovementBonusUpDown.Value).ToString();
         }
     }
 }

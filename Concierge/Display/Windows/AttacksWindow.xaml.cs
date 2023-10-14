@@ -44,19 +44,19 @@ namespace Concierge.Display.Windows
             this.SelectedAttack = new Weapon();
             this.DescriptionTextBlock.DataContext = this.Description;
 
-            this.SetFocusEvents(this.AttackComboBox);
-            this.SetFocusEvents(this.TypeComboBox);
-            this.SetFocusEvents(this.AbilityComboBox);
-            this.SetFocusEvents(this.DamageTextBox);
-            this.SetFocusEvents(this.MiscDamageTextBox);
-            this.SetFocusEvents(this.DamageTypeComboBox);
-            this.SetFocusEvents(this.RangeTextBox);
-            this.SetFocusEvents(this.WeightUpDown);
-            this.SetFocusEvents(this.IgnoreWeightCheckBox);
-            this.SetFocusEvents(this.ValueUpDown);
-            this.SetFocusEvents(this.CoinTypeComboBox);
-            this.SetFocusEvents(this.ProficencyOverrideCheckBox);
-            this.SetFocusEvents(this.NotesTextBox);
+            this.SetMouseOverEvents(this.AttackComboBox);
+            this.SetMouseOverEvents(this.TypeComboBox);
+            this.SetMouseOverEvents(this.AbilityComboBox);
+            this.SetMouseOverEvents(this.DamageTextBox, this.DamageTextBackground);
+            this.SetMouseOverEvents(this.MiscDamageTextBox, this.MiscDamageTextBackground);
+            this.SetMouseOverEvents(this.DamageTypeComboBox);
+            this.SetMouseOverEvents(this.RangeTextBox, this.RangeTextBackground);
+            this.SetMouseOverEvents(this.WeightUpDown);
+            this.SetMouseOverEvents(this.IgnoreWeightCheckBox);
+            this.SetMouseOverEvents(this.ValueUpDown);
+            this.SetMouseOverEvents(this.CoinTypeComboBox);
+            this.SetMouseOverEvents(this.ProficencyOverrideCheckBox);
+            this.SetMouseOverEvents(this.NotesTextBox, this.NotesTextBackground);
         }
 
         public override string HeaderText => $"{(this.Editing ? "Edit" : "Add")} Attack";

@@ -31,9 +31,9 @@ namespace Concierge.Display.Windows
             this.Languages = new List<Language>();
             this.DescriptionTextBlock.DataContext = this.Description;
 
-            this.SetFocusEvents(this.NameComboBox);
-            this.SetFocusEvents(this.ScriptTextBox);
-            this.SetFocusEvents(this.SpeakersTextBox);
+            this.SetMouseOverEvents(this.NameComboBox);
+            this.SetMouseOverEvents(this.ScriptTextBox, this.ScriptTextBackground);
+            this.SetMouseOverEvents(this.SpeakersTextBox, this.SpeakersTextBackground);
         }
 
         public override string HeaderText => $"{(this.Editing ? "Edit" : "Add")} Language";

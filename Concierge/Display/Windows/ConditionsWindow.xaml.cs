@@ -32,24 +32,24 @@ namespace Concierge.Display.Windows
             this.Conditions = new Conditions();
             this.DescriptionTextBlock.DataContext = this.Description;
 
-            this.SetFocusEvents(this.BlindedCheckBox);
-            this.SetFocusEvents(this.CharmedCheckBox);
-            this.SetFocusEvents(this.DeathCheckBox);
-            this.SetFocusEvents(this.DeafenedCheckBox);
-            this.SetFocusEvents(this.FatiguedComboBox);
-            this.SetFocusEvents(this.FrightenedCheckBox);
-            this.SetFocusEvents(this.GrappledCheckBox);
-            this.SetFocusEvents(this.IncapacitatedCheckBox);
-            this.SetFocusEvents(this.InvisibleCheckBox);
-            this.SetFocusEvents(this.ParalyzedCheckBox);
-            this.SetFocusEvents(this.PetrifiedCheckBox);
-            this.SetFocusEvents(this.PoisonedCheckBox);
-            this.SetFocusEvents(this.RestrainedCheckBox);
-            this.SetFocusEvents(this.ProneCheckBox);
-            this.SetFocusEvents(this.StunnedCheckBox);
-            this.SetFocusEvents(this.UnconsciousCheckBox);
-            this.SetFocusEvents(this.EncumbranceComboBox);
-            this.SetFocusEvents(this.EncumbranceCheckBox);
+            this.SetMouseOverEvents(this.BlindedCheckBox);
+            this.SetMouseOverEvents(this.CharmedCheckBox);
+            this.SetMouseOverEvents(this.DeathCheckBox);
+            this.SetMouseOverEvents(this.DeafenedCheckBox);
+            this.SetMouseOverEvents(this.FatiguedComboBox);
+            this.SetMouseOverEvents(this.FrightenedCheckBox);
+            this.SetMouseOverEvents(this.GrappledCheckBox);
+            this.SetMouseOverEvents(this.IncapacitatedCheckBox);
+            this.SetMouseOverEvents(this.InvisibleCheckBox);
+            this.SetMouseOverEvents(this.ParalyzedCheckBox);
+            this.SetMouseOverEvents(this.PetrifiedCheckBox);
+            this.SetMouseOverEvents(this.PoisonedCheckBox);
+            this.SetMouseOverEvents(this.RestrainedCheckBox);
+            this.SetMouseOverEvents(this.ProneCheckBox);
+            this.SetMouseOverEvents(this.StunnedCheckBox);
+            this.SetMouseOverEvents(this.UnconsciousCheckBox);
+            this.SetMouseOverEvents(this.EncumbranceComboBox);
+            this.SetMouseOverEvents(this.EncumbranceCheckBox);
         }
 
         public override string HeaderText => "Edit Conditions";

@@ -47,24 +47,24 @@ namespace Concierge.Display.Windows
             this.Skill = new Skills();
             this.DescriptionTextBlock.DataContext = this.Description;
 
-            this.SetFocusEvents(this.AthleticsComboBox);
-            this.SetFocusEvents(this.AcrobaticsComboBox);
-            this.SetFocusEvents(this.SleightOfHandComboBox);
-            this.SetFocusEvents(this.StealthComboBox);
-            this.SetFocusEvents(this.ArcanaComboBox);
-            this.SetFocusEvents(this.HistoryComboBox);
-            this.SetFocusEvents(this.InvestigationComboBox);
-            this.SetFocusEvents(this.NatureComboBox);
-            this.SetFocusEvents(this.ReligionComboBox);
-            this.SetFocusEvents(this.AnimalHandlingComboBox);
-            this.SetFocusEvents(this.InsightComboBox);
-            this.SetFocusEvents(this.MedicineComboBox);
-            this.SetFocusEvents(this.PerceptionComboBox);
-            this.SetFocusEvents(this.SurvivalComboBox);
-            this.SetFocusEvents(this.DeceptionComboBox);
-            this.SetFocusEvents(this.IntimidationComboBox);
-            this.SetFocusEvents(this.PerformanceComboBox);
-            this.SetFocusEvents(this.PersuasionComboBox);
+            this.SetMouseOverEvents(this.AthleticsComboBox);
+            this.SetMouseOverEvents(this.AcrobaticsComboBox);
+            this.SetMouseOverEvents(this.SleightOfHandComboBox);
+            this.SetMouseOverEvents(this.StealthComboBox);
+            this.SetMouseOverEvents(this.ArcanaComboBox);
+            this.SetMouseOverEvents(this.HistoryComboBox);
+            this.SetMouseOverEvents(this.InvestigationComboBox);
+            this.SetMouseOverEvents(this.NatureComboBox);
+            this.SetMouseOverEvents(this.ReligionComboBox);
+            this.SetMouseOverEvents(this.AnimalHandlingComboBox);
+            this.SetMouseOverEvents(this.InsightComboBox);
+            this.SetMouseOverEvents(this.MedicineComboBox);
+            this.SetMouseOverEvents(this.PerceptionComboBox);
+            this.SetMouseOverEvents(this.SurvivalComboBox);
+            this.SetMouseOverEvents(this.DeceptionComboBox);
+            this.SetMouseOverEvents(this.IntimidationComboBox);
+            this.SetMouseOverEvents(this.PerformanceComboBox);
+            this.SetMouseOverEvents(this.PersuasionComboBox);
         }
 
         public override string HeaderText => "Edit Skill Checks";

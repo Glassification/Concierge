@@ -35,12 +35,12 @@ namespace Concierge.Display.Windows
             this.SavingThrow = new SavingThrows();
             this.DescriptionTextBlock.DataContext = this.Description;
 
-            this.SetFocusEvents(this.StrengthComboBox);
-            this.SetFocusEvents(this.DexterityComboBox);
-            this.SetFocusEvents(this.ConstitutionComboBox);
-            this.SetFocusEvents(this.IntelligenceComboBox);
-            this.SetFocusEvents(this.WisdomComboBox);
-            this.SetFocusEvents(this.CharismaComboBox);
+            this.SetMouseOverEvents(this.StrengthComboBox);
+            this.SetMouseOverEvents(this.DexterityComboBox);
+            this.SetMouseOverEvents(this.ConstitutionComboBox);
+            this.SetMouseOverEvents(this.IntelligenceComboBox);
+            this.SetMouseOverEvents(this.WisdomComboBox);
+            this.SetMouseOverEvents(this.CharismaComboBox);
         }
 
         public override string HeaderText => "Edit Saving Throw Checks";

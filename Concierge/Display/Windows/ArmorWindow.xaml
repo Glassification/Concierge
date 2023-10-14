@@ -238,7 +238,9 @@
                     </Grid>
 
                     <!--Value-->
-                    <components:ConciergeTextBoxBackground Grid.Column="1">
+                    <components:ConciergeTextBoxBackground
+                        x:Name="ShieldTextBackground"
+                        Grid.Column="1">
                         <components:ConciergeTextBox x:Name="ShieldTextBox"/>
                     </components:ConciergeTextBoxBackground>
                 </Grid>

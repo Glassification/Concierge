@@ -30,8 +30,8 @@ namespace Concierge.Display.Windows
             this.PreviousSlot = string.Empty;
             this.DescriptionTextBlock.DataContext = this.Description;
 
-            this.SetFocusEvents(this.SlotComboBox);
-            this.SetFocusEvents(this.ItemComboBox);
+            this.SetMouseOverEvents(this.SlotComboBox);
+            this.SetMouseOverEvents(this.ItemComboBox);
         }
 
         public override string HeaderText => "Edit Equipped Items";

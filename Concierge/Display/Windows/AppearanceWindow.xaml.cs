@@ -40,15 +40,15 @@ namespace Concierge.Display.Windows
             this.SkinColor = CustomColor.Invalid;
             this.DescriptionTextBlock.DataContext = this.Description;
 
-            this.SetFocusEvents(this.GenderComboBox);
-            this.SetFocusEvents(this.AgeUpDown);
-            this.SetFocusEvents(this.FeetUpDown);
-            this.SetFocusEvents(this.InchesUpDown);
-            this.SetFocusEvents(this.WeightUpDown);
-            this.SetFocusEvents(this.SkinColourTextBox);
-            this.SetFocusEvents(this.EyeColourTextBox);
-            this.SetFocusEvents(this.HairColourTextBox);
-            this.SetFocusEvents(this.DistinguishingMarksTextBox);
+            this.SetMouseOverEvents(this.GenderComboBox);
+            this.SetMouseOverEvents(this.AgeUpDown);
+            this.SetMouseOverEvents(this.FeetUpDown);
+            this.SetMouseOverEvents(this.InchesUpDown);
+            this.SetMouseOverEvents(this.WeightUpDown);
+            this.SetMouseOverEvents(this.SkinColourTextBox, this.SkinColourTextBackground);
+            this.SetMouseOverEvents(this.EyeColourTextBox, this.EyeColourTextBackground);
+            this.SetMouseOverEvents(this.HairColourTextBox, this.HairColourTextBackground);
+            this.SetMouseOverEvents(this.DistinguishingMarksTextBox, this.DistinguishingMarksTextBackground);
         }
 
         public override string HeaderText => "Edit Appearance";

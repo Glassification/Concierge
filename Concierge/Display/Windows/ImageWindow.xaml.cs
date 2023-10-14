@@ -37,9 +37,9 @@ namespace Concierge.Display.Windows
             this.OriginalFileName = string.Empty;
             this.DescriptionTextBlock.DataContext = this.Description;
 
-            this.SetFocusEvents(this.UseCustomImageCheckBox);
-            this.SetFocusEvents(this.ImageSourceTextBox);
-            this.SetFocusEvents(this.FillTypeComboBox);
+            this.SetMouseOverEvents(this.UseCustomImageCheckBox);
+            this.SetMouseOverEvents(this.ImageSourceTextBox, this.ImageSourceTextBoxBackground);
+            this.SetMouseOverEvents(this.FillTypeComboBox);
         }
 
         public override string HeaderText => "Edit Image";

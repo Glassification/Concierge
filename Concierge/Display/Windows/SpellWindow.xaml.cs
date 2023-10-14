@@ -36,22 +36,22 @@ namespace Concierge.Display.Windows
             this.Spells = new List<Spell>();
             this.DescriptionTextBlock.DataContext = this.Description;
 
-            this.SetFocusEvents(this.SpellNameComboBox);
-            this.SetFocusEvents(this.PreparedCheckBox);
-            this.SetFocusEvents(this.LevelUpDown);
-            this.SetFocusEvents(this.PageUpDown);
-            this.SetFocusEvents(this.LevelUpDown);
-            this.SetFocusEvents(this.SchoolComboBox);
-            this.SetFocusEvents(this.RitualCheckBox);
-            this.SetFocusEvents(this.ComponentsTextBox);
-            this.SetFocusEvents(this.ConcentrationCheckBox);
-            this.SetFocusEvents(this.RangeTextBox);
-            this.SetFocusEvents(this.DurationTextBox);
-            this.SetFocusEvents(this.AreaTextBox);
-            this.SetFocusEvents(this.SaveTextBox);
-            this.SetFocusEvents(this.DamageTextBox);
-            this.SetFocusEvents(this.ClassComboBox);
-            this.SetFocusEvents(this.NotesTextBox);
+            this.SetMouseOverEvents(this.SpellNameComboBox);
+            this.SetMouseOverEvents(this.PreparedCheckBox);
+            this.SetMouseOverEvents(this.LevelUpDown);
+            this.SetMouseOverEvents(this.PageUpDown);
+            this.SetMouseOverEvents(this.LevelUpDown);
+            this.SetMouseOverEvents(this.SchoolComboBox);
+            this.SetMouseOverEvents(this.RitualCheckBox);
+            this.SetMouseOverEvents(this.ComponentsTextBox, this.ComponentsTextBackground);
+            this.SetMouseOverEvents(this.ConcentrationCheckBox);
+            this.SetMouseOverEvents(this.RangeTextBox, this.RangeTextBackground);
+            this.SetMouseOverEvents(this.DurationTextBox, this.DurationTextBackground);
+            this.SetMouseOverEvents(this.AreaTextBox, this.AreaTextBackground);
+            this.SetMouseOverEvents(this.SaveTextBox, this.SaveTextBackground);
+            this.SetMouseOverEvents(this.DamageTextBox, this.DamageTextBackground);
+            this.SetMouseOverEvents(this.ClassComboBox);
+            this.SetMouseOverEvents(this.NotesTextBox, this.NotesTextBackground);
         }
 
         public override string HeaderText => $"{(this.Editing ? "Edit" : "Add")} Spell";

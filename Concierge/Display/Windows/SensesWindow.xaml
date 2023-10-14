@@ -77,10 +77,11 @@
 
                     <!--Value-->
                     <components:ConciergeTextBoxBackground
+                        x:Name="InitiativeTextBackground"
                         Grid.Column="1"
                         IsEnabled="False">
                         <components:ConciergeTextBox
-                            x:Name="InitiativeTextBlock"
+                            x:Name="InitiativeTextBox"
                             FontSize="25"
                             HorizontalContentAlignment="Center"/>
                     </components:ConciergeTextBoxBackground>
@@ -103,10 +104,11 @@
 
                     <!--Value-->
                     <components:ConciergeTextBoxBackground
+                        x:Name="PerceptionTextBackground"
                         Grid.Column="1"
                         IsEnabled="False">
                         <components:ConciergeTextBox
-                            x:Name="PerceptionTextBlock"
+                            x:Name="PerceptionTextBox"
                             FontSize="25"
                             HorizontalContentAlignment="Center"/>
                     </components:ConciergeTextBoxBackground>
@@ -129,10 +131,11 @@
 
                     <!--Value-->
                     <components:ConciergeTextBoxBackground
+                        x:Name="MovementTextBackground"
                         Grid.Column="1"
                         IsEnabled="False">
                         <components:ConciergeTextBox
-                            x:Name="MovementTextBlock"
+                            x:Name="MovementTextBox"
                             FontSize="25"
                             HorizontalContentAlignment="Center"
                             VerticalAlignment="Center"/>

@@ -106,7 +106,9 @@
                     </Grid>
 
                     <!--Value-->
-                    <components:ConciergeTextBoxBackground Grid.Column="1">
+                    <components:ConciergeTextBoxBackground
+                        x:Name="ScriptTextBackground"
+                        Grid.Column="1">
                         <components:ConciergeTextBox x:Name="ScriptTextBox"/>
                     </components:ConciergeTextBoxBackground>
                 </Grid>
@@ -128,7 +130,9 @@
                 </Grid>
 
                 <!--Value-->
-                <components:ConciergeTextBoxBackground Grid.Column="1" >
+                <components:ConciergeTextBoxBackground
+                    x:Name="SpeakersTextBackground"
+                    Grid.Column="1" >
                     <ScrollViewer VerticalScrollBarVisibility="Auto">
                         <components:ConciergeTextBox 
                             x:Name="SpeakersTextBox"

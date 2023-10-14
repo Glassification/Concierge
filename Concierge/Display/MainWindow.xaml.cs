@@ -49,7 +49,7 @@ namespace Concierge.Display
         private readonly AutosaveService autosaveTimer = new (new FileAccessService());
         private readonly DateTimeWorkerService dateTimeService = new ();
         private readonly SystemWorkerService systemService = new ();
-        private readonly AnimatedTimedTextWorkerService animatedTimedTextWorkerService = new (17);
+        private readonly AnimatedTimedTextWorkerService animatedTimedTextWorkerService = new (Common.Constants.StatusDisplayTime);
         private readonly CharacterCreationWizard characterCreationWizard = new ();
 
         public MainWindow()
@@ -103,6 +103,7 @@ namespace Concierge.Display
             this.MenuButton.SettingsMenuItem.AddClickEvent(this.SettingsButton_Click);
             this.MenuButton.AboutMenuItem.AddClickEvent(this.AboutButton_Click);
             this.MenuButton.HelpMenuItem.AddClickEvent(this.GlossaryButton_Click);
+            this.MenuButton.ExitMenuItem.AddClickEvent(this.ButtonClose_Click);
 
             Program.Logger.Info($"{nameof(MainWindow)} loaded.");
             Program.InitializeMainWindow(this);
@@ -325,6 +326,7 @@ namespace Concierge.Display
             this.DrawAll();
         }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822:Mark members as static", Justification = "Way she goes.")]
         public void Search()
         {
             ConciergeWindowService.ShowWindow(typeof(SearchWindow));
@@ -632,9 +634,6 @@ namespace Concierge.Display
                 case Key.P:
                     this.OpenCharacterProperties();
                     break;
-                case Key.Q:
-                    this.CloseWindow();
-                    break;
                 case Key.S:
                     _ = IsShift ? this.SaveCharacterSheetAs() : this.SaveCharacterSheet();
                     break;
@@ -716,6 +715,7 @@ namespace Concierge.Display
 
         private void ButtonClose_Click(object sender, RoutedEventArgs e)
         {
+            ConciergeSoundService.TapNavigation();
             this.CloseWindow();
         }
 

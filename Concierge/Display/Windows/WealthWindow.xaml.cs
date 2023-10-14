@@ -27,14 +27,19 @@ namespace Concierge.Display.Windows
             this.SelectedWealth = new Wealth();
             this.DescriptionTextBlock.DataContext = this.Description;
 
-            this.SetFocusEvents(this.AddRadioButton);
-            this.SetFocusEvents(this.SubtractRadioButton);
-            this.SetFocusEvents(this.AmountUpDown);
-            this.SetFocusEvents(this.CpRadioButton);
-            this.SetFocusEvents(this.SpRadioButton);
-            this.SetFocusEvents(this.EpRadioButton);
-            this.SetFocusEvents(this.GpRadioButton);
-            this.SetFocusEvents(this.PpRadioButton);
+            this.SetMouseOverEvents(this.AddRadioButton);
+            this.SetMouseOverEvents(this.SubtractRadioButton);
+            this.SetMouseOverEvents(this.AmountUpDown);
+            this.SetMouseOverEvents(this.CpRadioButton);
+            this.SetMouseOverEvents(this.SpRadioButton);
+            this.SetMouseOverEvents(this.EpRadioButton);
+            this.SetMouseOverEvents(this.GpRadioButton);
+            this.SetMouseOverEvents(this.PpRadioButton);
+            this.SetMouseOverEvents(this.CopperField);
+            this.SetMouseOverEvents(this.SilverField);
+            this.SetMouseOverEvents(this.ElectrumField);
+            this.SetMouseOverEvents(this.GoldField);
+            this.SetMouseOverEvents(this.PlatinumField);
         }
 
         public override string HeaderText => "Edit Wealth";

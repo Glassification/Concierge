@@ -9,6 +9,7 @@ namespace Concierge.Display.Controls
     using System.Windows.Input;
     using System.Windows.Media;
 
+    using Concierge.Services;
     using MaterialDesignThemes.Wpf;
 
     /// <summary>
@@ -36,13 +37,6 @@ namespace Concierge.Display.Controls
                 typeof(string),
                 typeof(PopupToggleButton),
                 new UIPropertyMetadata("Your text here"));
-
-        public static readonly DependencyProperty ShortcutProperty =
-            DependencyProperty.Register(
-                "Shortcut",
-                typeof(string),
-                typeof(PopupToggleButton),
-                new UIPropertyMetadata("Ctrl-_"));
 
         public static readonly DependencyProperty IsCheckedProperty =
             DependencyProperty.Register(
@@ -74,12 +68,6 @@ namespace Concierge.Display.Controls
             set { this.SetValue(LabelProperty, value); }
         }
 
-        public string Shortcut
-        {
-            get { return (string)this.GetValue(ShortcutProperty); }
-            set { this.SetValue(ShortcutProperty, value); }
-        }
-
         public bool IsChecked
         {
             get { return (bool)this.GetValue(IsCheckedProperty); }
@@ -104,11 +92,18 @@ namespace Concierge.Display.Controls
         private void RealButton_Checked(object sender, RoutedEventArgs e)
         {
             this.IsChecked = true;
+            this.ExpandIcon.Kind = PackIconKind.MenuDown;
         }
 
         private void RealButton_Unchecked(object sender, RoutedEventArgs e)
         {
             this.IsChecked = false;
+            this.ExpandIcon.Kind = PackIconKind.MenuRight;
+        }
+
+        private void RealButton_Click(object sender, RoutedEventArgs e)
+        {
+            ConciergeSoundService.TapNavigation();
         }
     }
 }

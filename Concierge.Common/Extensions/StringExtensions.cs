@@ -249,7 +249,6 @@ namespace Concierge.Common.Extensions
             }
         }
 
-
         /// <summary>
         /// Formats the given string by inserting a space before each uppercase letter (excluding the first letter).
         /// </summary>

@@ -25,14 +25,14 @@ namespace Concierge.Display.Windows
             this.HitDice = new HitDice();
             this.DescriptionTextBlock.DataContext = this.Description;
 
-            this.SetFocusEvents(this.UsedD6UpDown);
-            this.SetFocusEvents(this.UsedD8UpDown);
-            this.SetFocusEvents(this.UsedD10UpDown);
-            this.SetFocusEvents(this.UsedD12UpDown);
-            this.SetFocusEvents(this.TotalD6UpDown);
-            this.SetFocusEvents(this.TotalD8UpDown);
-            this.SetFocusEvents(this.TotalD10UpDown);
-            this.SetFocusEvents(this.TotalD12UpDown);
+            this.SetMouseOverEvents(this.UsedD6UpDown);
+            this.SetMouseOverEvents(this.UsedD8UpDown);
+            this.SetMouseOverEvents(this.UsedD10UpDown);
+            this.SetMouseOverEvents(this.UsedD12UpDown);
+            this.SetMouseOverEvents(this.TotalD6UpDown);
+            this.SetMouseOverEvents(this.TotalD8UpDown);
+            this.SetMouseOverEvents(this.TotalD10UpDown);
+            this.SetMouseOverEvents(this.TotalD12UpDown);
         }
 
         public override string HeaderText => "Edit Hit Dice";

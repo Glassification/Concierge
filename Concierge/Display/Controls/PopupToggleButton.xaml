@@ -19,7 +19,7 @@
             MouseLeave="RealButton_MouseLeave"
             Checked="RealButton_Checked"
             Unchecked="RealButton_Unchecked"
-            />
+            Click="RealButton_Click"/>
 
         <Grid
             HorizontalAlignment="Stretch"
@@ -45,14 +45,16 @@
                 HorizontalAlignment="Left" 
                 FontSize="20"
                 Margin="20 10"/>
-            <TextBlock
+            <materialDesign:PackIcon
+                x:Name="ExpandIcon"
                 Grid.Column="1"
-                Text="{Binding Path=Shortcut,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=UserControl}}" 
-                Foreground="White" 
-                VerticalAlignment="Center" 
-                HorizontalAlignment="Right" 
-                FontSize="16"
-                Margin="20 10"/>
+                Kind="MenuRight" 
+                Foreground="White"
+                Height="20" 
+                Width="20" 
+                Margin="20 10"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Right"/>
         </Grid>
     </Grid>
 </UserControl>

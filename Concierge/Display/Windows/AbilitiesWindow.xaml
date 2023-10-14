@@ -129,7 +129,9 @@
                     </Grid>
 
                     <!--Value-->
-                    <components:ConciergeTextBoxBackground Grid.Column="1">
+                    <components:ConciergeTextBoxBackground
+                        x:Name="UsesTextBackground"
+                        Grid.Column="1">
                         <components:ConciergeTextBox x:Name="UsesTextBox"/>
                     </components:ConciergeTextBoxBackground>
                 </Grid>
@@ -148,7 +150,9 @@
                     </Grid>
 
                     <!--Value-->
-                    <components:ConciergeTextBoxBackground Grid.Column="1">
+                    <components:ConciergeTextBoxBackground
+                        x:Name="ActionTextBackground"
+                        Grid.Column="1">
                         <components:ConciergeTextBox x:Name="ActionTextBox"/>
                     </components:ConciergeTextBoxBackground>
                 </Grid>
@@ -195,7 +199,9 @@
                     </Grid>
 
                     <!--Value-->
-                    <components:ConciergeTextBoxBackground Grid.Column="1">
+                    <components:ConciergeTextBoxBackground
+                        x:Name="RecoveryTextBackground"
+                        Grid.Column="1">
                         <components:ConciergeTextBox x:Name="RecoveryTextBox"/>
                     </components:ConciergeTextBoxBackground>
                 </Grid>
@@ -216,7 +222,9 @@
                     </Grid>
 
                     <!--Value-->
-                    <components:ConciergeTextBoxBackground Grid.Column="1">
+                    <components:ConciergeTextBoxBackground
+                        x:Name="NotesTextBackground"
+                        Grid.Column="1">
                         <ScrollViewer VerticalScrollBarVisibility="Auto">
                             <components:ConciergeTextBox 
                                 x:Name="NotesTextBox"

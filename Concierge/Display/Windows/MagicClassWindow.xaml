@@ -137,10 +137,11 @@
 
                     <!--Value-->
                     <components:ConciergeTextBoxBackground
+                        x:Name="AttackBonusTextBackground"
                         Grid.Column="1"
                         IsEnabled="False">
                         <components:ConciergeTextBox
-                            x:Name="AttackBonusTextBlock"
+                            x:Name="AttackBonusTextBox"
                             FontSize="25"
                             HorizontalContentAlignment="Center"/>
                     </components:ConciergeTextBoxBackground>
@@ -163,10 +164,11 @@
 
                     <!--Value-->
                     <components:ConciergeTextBoxBackground
+                        x:Name="SpellSaveTextBackground"
                         Grid.Column="1"
                         IsEnabled="False">
                         <components:ConciergeTextBox
-                            x:Name="SpellSaveTextBlock"
+                            x:Name="SpellSaveTextBox"
                             FontSize="25"
                             HorizontalContentAlignment="Center"/>
                     </components:ConciergeTextBoxBackground>
@@ -261,10 +263,11 @@
 
                     <!--Value-->
                     <components:ConciergeTextBoxBackground
+                        x:Name="PreparedSpellsTextBackground"
                         Grid.Column="1"
                         IsEnabled="False">
                         <components:ConciergeTextBox
-                            x:Name="PreparedSpellsTextBlock"
+                            x:Name="PreparedSpellsTextBox"
                             FontSize="25"
                             HorizontalContentAlignment="Center"/>
                     </components:ConciergeTextBoxBackground>

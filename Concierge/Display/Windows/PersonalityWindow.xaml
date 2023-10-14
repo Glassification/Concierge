@@ -69,7 +69,9 @@
                 </Grid>
 
                 <!--Value-->
-                <components:ConciergeTextBoxBackground Grid.Column="1">
+                <components:ConciergeTextBoxBackground
+                    x:Name="Trait1TextBackground"
+                    Grid.Column="1">
                     <ScrollViewer VerticalScrollBarVisibility="Auto">
                         <components:ConciergeTextBox 
                             x:Name="Trait1TextBox"
@@ -95,7 +97,9 @@
                 </Grid>
 
                 <!--Value-->
-                <components:ConciergeTextBoxBackground Grid.Column="1">
+                <components:ConciergeTextBoxBackground
+                    x:Name="Trait2TextBackground"
+                    Grid.Column="1">
                     <ScrollViewer VerticalScrollBarVisibility="Auto">
                         <components:ConciergeTextBox 
                             x:Name="Trait2TextBox"
@@ -121,7 +125,9 @@
                 </Grid>
 
                 <!--Value-->
-                <components:ConciergeTextBoxBackground Grid.Column="1">
+                <components:ConciergeTextBoxBackground
+                    x:Name="IdealTextBackground"
+                    Grid.Column="1">
                     <ScrollViewer VerticalScrollBarVisibility="Auto">
                         <components:ConciergeTextBox 
                             x:Name="IdealTextBox"
@@ -147,7 +153,9 @@
                 </Grid>
 
                 <!--Value-->
-                <components:ConciergeTextBoxBackground Grid.Column="1">
+                <components:ConciergeTextBoxBackground
+                    x:Name="BondTextBackground"
+                    Grid.Column="1">
                     <ScrollViewer VerticalScrollBarVisibility="Auto">
                         <components:ConciergeTextBox 
                             x:Name="BondTextBox"
@@ -173,7 +181,9 @@
                 </Grid>
 
                 <!--Value-->
-                <components:ConciergeTextBoxBackground Grid.Column="1">
+                <components:ConciergeTextBoxBackground
+                    x:Name="FlawTextBackground"
+                    Grid.Column="1">
                     <ScrollViewer VerticalScrollBarVisibility="Auto">
                         <components:ConciergeTextBox 
                             x:Name="FlawTextBox"
@@ -199,7 +209,9 @@
                 </Grid>
 
                 <!--Value-->
-                <components:ConciergeTextBoxBackground Grid.Column="1">
+                <components:ConciergeTextBoxBackground
+                    x:Name="NotesTextBackground"
+                    Grid.Column="1">
                     <ScrollViewer VerticalScrollBarVisibility="Auto">
                         <components:ConciergeTextBox 
                             x:Name="NotesTextBox"

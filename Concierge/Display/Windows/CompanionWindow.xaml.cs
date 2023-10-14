@@ -32,13 +32,13 @@ namespace Concierge.Display.Windows
             this.Properties = new CompanionProperties();
             this.DescriptionTextBlock.DataContext = this.Description;
 
-            this.SetFocusEvents(this.NameTextBox);
-            this.SetFocusEvents(this.AcUpDown);
-            this.SetFocusEvents(this.VisionComboBox);
-            this.SetFocusEvents(this.CreatureSizeComboBox);
-            this.SetFocusEvents(this.PerceptionUpDown);
-            this.SetFocusEvents(this.MovementUpDown);
-            this.SetFocusEvents(this.InitiativeUpDown);
+            this.SetMouseOverEvents(this.NameTextBox, this.NameTextBackground);
+            this.SetMouseOverEvents(this.AcUpDown);
+            this.SetMouseOverEvents(this.VisionComboBox);
+            this.SetMouseOverEvents(this.CreatureSizeComboBox);
+            this.SetMouseOverEvents(this.PerceptionUpDown);
+            this.SetMouseOverEvents(this.MovementUpDown);
+            this.SetMouseOverEvents(this.InitiativeUpDown);
         }
 
         public override string HeaderText => "Edit Companion Properties";

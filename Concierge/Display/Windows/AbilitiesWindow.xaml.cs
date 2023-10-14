@@ -34,13 +34,13 @@ namespace Concierge.Display.Windows
             this.SelectedAbility = new Ability();
             this.DescriptionTextBlock.DataContext = this.Description;
 
-            this.SetFocusEvents(this.NameComboBox);
-            this.SetFocusEvents(this.TypeComboBox);
-            this.SetFocusEvents(this.UsesTextBox);
-            this.SetFocusEvents(this.ActionTextBox);
-            this.SetFocusEvents(this.LevelUpDown);
-            this.SetFocusEvents(this.RecoveryTextBox);
-            this.SetFocusEvents(this.NotesTextBox);
+            this.SetMouseOverEvents(this.NameComboBox);
+            this.SetMouseOverEvents(this.TypeComboBox);
+            this.SetMouseOverEvents(this.UsesTextBox, this.UsesTextBackground);
+            this.SetMouseOverEvents(this.ActionTextBox, this.ActionTextBackground);
+            this.SetMouseOverEvents(this.LevelUpDown);
+            this.SetMouseOverEvents(this.RecoveryTextBox, this.RecoveryTextBackground);
+            this.SetMouseOverEvents(this.NotesTextBox, this.NotesTextBackground);
         }
 
         public bool ItemsAdded { get; private set; }

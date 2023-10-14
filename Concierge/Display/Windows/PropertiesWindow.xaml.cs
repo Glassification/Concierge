@@ -45,20 +45,20 @@ namespace Concierge.Display.Windows
             this.OriginalFileName = string.Empty;
             this.DescriptionTextBlock.DataContext = this.Description;
 
-            this.SetFocusEvents(this.NameTextBox);
-            this.SetFocusEvents(this.RaceComboBox);
-            this.SetFocusEvents(this.BackgroundComboBox);
-            this.SetFocusEvents(this.AlignmentComboBox);
-            this.SetFocusEvents(this.SubRaceComboBox);
-            this.SetFocusEvents(this.Class1Level);
-            this.SetFocusEvents(this.Class2Level);
-            this.SetFocusEvents(this.Class3Level);
-            this.SetFocusEvents(this.Class1Class);
-            this.SetFocusEvents(this.Class2Class);
-            this.SetFocusEvents(this.Class3Class);
-            this.SetFocusEvents(this.Class1Subclass);
-            this.SetFocusEvents(this.Class2Subclass);
-            this.SetFocusEvents(this.Class3Subclass);
+            this.SetMouseOverEvents(this.NameTextBox, this.NameTextBackground);
+            this.SetMouseOverEvents(this.RaceComboBox);
+            this.SetMouseOverEvents(this.BackgroundComboBox);
+            this.SetMouseOverEvents(this.AlignmentComboBox);
+            this.SetMouseOverEvents(this.SubRaceComboBox);
+            this.SetMouseOverEvents(this.Class1Level);
+            this.SetMouseOverEvents(this.Class2Level);
+            this.SetMouseOverEvents(this.Class3Level);
+            this.SetMouseOverEvents(this.Class1Class);
+            this.SetMouseOverEvents(this.Class2Class);
+            this.SetMouseOverEvents(this.Class3Class);
+            this.SetMouseOverEvents(this.Class1Subclass);
+            this.SetMouseOverEvents(this.Class2Subclass);
+            this.SetMouseOverEvents(this.Class3Subclass);
 
             Program.Logger.Info($"Initialized {nameof(PropertiesWindow)}.");
         }

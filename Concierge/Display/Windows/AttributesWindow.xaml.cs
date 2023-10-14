@@ -27,12 +27,12 @@ namespace Concierge.Display.Windows
             this.Attributes = new Attributes();
             this.DescriptionTextBlock.DataContext = this.Description;
 
-            this.SetFocusEvents(this.StrengthUpDown);
-            this.SetFocusEvents(this.DexterityUpDown);
-            this.SetFocusEvents(this.ConstitutionUpDown);
-            this.SetFocusEvents(this.IntelligenceUpDown);
-            this.SetFocusEvents(this.WisdomUpDown);
-            this.SetFocusEvents(this.CharismaUpDown);
+            this.SetMouseOverEvents(this.StrengthUpDown);
+            this.SetMouseOverEvents(this.DexterityUpDown);
+            this.SetMouseOverEvents(this.ConstitutionUpDown);
+            this.SetMouseOverEvents(this.IntelligenceUpDown);
+            this.SetMouseOverEvents(this.WisdomUpDown);
+            this.SetMouseOverEvents(this.CharismaUpDown);
         }
 
         public override string HeaderText => "Edit Attributes";

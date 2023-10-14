@@ -14,8 +14,12 @@
             x:Name="PopupToggleButton"
             Width="60"
             Style="{StaticResource ConciergeMenuToggleButtonStyle}"
-            IsHitTestVisible="{Binding ElementName=MenuPopup, Path=IsOpen, Mode=OneWay, Converter={local:BoolInverter}}">
+            IsHitTestVisible="{Binding ElementName=MenuPopup, Path=IsOpen, Mode=OneWay, Converter={local:BoolInverter}}"
+            Checked="PopupToggleButton_Checked"
+            Unchecked="PopupToggleButton_Unchecked"
+            ToolTip="Open Menu">
             <materialDesign:PackIcon
+                x:Name="MenuButtonIcon"
                 Kind="Menu"
                 Foreground="White"
                 Width="25"
@@ -42,7 +46,6 @@
                             <local:PopupToggleButton
                                 x:Name="FileMenuItem"
                                 Label="File"
-                                Shortcut=">"
                                 IconKind="File"
                                 IconColor="#6a4c93"
                                 IsHitTestVisible="{Binding ElementName=FileMenuPopup, Path=IsOpen, Mode=OneWay, Converter={local:BoolInverter}}"/>
@@ -112,7 +115,6 @@
                             <local:PopupToggleButton
                                 x:Name="CharacterMenuItem"
                                 Label="Character"
-                                Shortcut=">"
                                 IconKind="CardAccountDetails"
                                 IconColor="#06d6a0"
                                 IsHitTestVisible="{Binding ElementName=CharacterMenuPopup, Path=IsOpen, Mode=OneWay, Converter={local:BoolInverter}}"/>
@@ -133,7 +135,7 @@
                                         <StackPanel Orientation="Vertical">
                                             <local:PopupButton
                                                 x:Name="CharacterCreationMenuItem"
-                                                Label="Create Character..."
+                                                Label="Create..."
                                                 Shortcut="Ctrl+W"
                                                 IconKind="Creation"
                                                 IconColor="#06d6a0"/>
@@ -164,7 +166,6 @@
                             <local:PopupToggleButton
                                 x:Name="ToolsMenuItem"
                                 Label="Tools"
-                                Shortcut=">"
                                 IconKind="Toolbox"
                                 IconColor="#ffd166"
                                 IsHitTestVisible="{Binding ElementName=ToolsMenuPopup, Path=IsOpen, Mode=OneWay, Converter={local:BoolInverter}}"/>
@@ -201,17 +202,23 @@
                                                 Shortcut="Ctrl+F"
                                                 IconKind="FileSearch"
                                                 IconColor="#ffd166"/>
-                                            <local:PopupButton
-                                                x:Name="SettingsMenuItem"
-                                                Label="Settings..."
-                                                Shortcut=""
-                                                IconKind="Settings"
-                                                IconColor="#ffd166"/>
                                         </StackPanel>
                                     </Grid>
                                 </Border>
                             </Popup>
                         </Grid>
+                        <local:PopupButton
+                            x:Name="SettingsMenuItem"
+                            Label="Settings..."
+                            Shortcut=""
+                            IconKind="Settings"
+                            IconColor="#ffd166"/>
+                        <local:PopupButton
+                            x:Name="HelpMenuItem"
+                            Label="Help..."
+                            Shortcut="Ctrl+H"
+                            IconKind="Bookshelf"
+                            IconColor="#ef476f"/>
                         <local:PopupButton
                             x:Name="AboutMenuItem"
                             Label="About..."
@@ -219,10 +226,10 @@
                             IconKind="About"
                             IconColor="#ef476f"/>
                         <local:PopupButton
-                            x:Name="HelpMenuItem"
-                            Label="Help..."
-                            Shortcut="Ctrl+H"
-                            IconKind="Bookshelf"
+                            x:Name="ExitMenuItem"
+                            Label="Exit"
+                            Shortcut="Alt+F4"
+                            IconKind="EmergencyExit"
                             IconColor="#ef476f"/>
                     </StackPanel>
                 </Grid>

@@ -152,6 +152,7 @@
                         VerticalAlignment="Top"
                         Margin="10, 20, 0, 0"/>
                     <components:ConciergeTextBoxBackground
+                        x:Name="NotesTextBackground"
                         Grid.Column="1"
                         Margin="0,10,20,10">
                         <ScrollViewer VerticalScrollBarVisibility="Auto">

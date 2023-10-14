@@ -92,6 +92,11 @@ namespace Concierge.Common
         public const int FontSizeLimit = 10;
 
         /// <summary>
+        /// Length to display status text on the screen.
+        /// </summary>
+        public const int StatusDisplayTime = 17;
+
+        /// <summary>
         /// The name of the designer.
         /// </summary>
         public const string Designer = "Thomas Beckett";

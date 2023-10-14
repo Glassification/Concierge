@@ -42,17 +42,17 @@ namespace Concierge.Display.Windows
             this.Items = new List<Inventory>();
             this.DescriptionTextBlock.DataContext = this.Description;
 
-            this.SetFocusEvents(this.NameComboBox);
-            this.SetFocusEvents(this.ConsumableCheckBox);
-            this.SetFocusEvents(this.CategoryComboBox);
-            this.SetFocusEvents(this.AmountUpDown);
-            this.SetFocusEvents(this.WeightUpDown);
-            this.SetFocusEvents(this.IgnoreWeightCheckBox);
-            this.SetFocusEvents(this.AttunedCheckBox);
-            this.SetFocusEvents(this.ValueUpDown);
-            this.SetFocusEvents(this.CoinTypeComboBox);
-            this.SetFocusEvents(this.NotesTextBox);
-            this.SetFocusEvents(this.DescriptionTextBox);
+            this.SetMouseOverEvents(this.NameComboBox);
+            this.SetMouseOverEvents(this.ConsumableCheckBox);
+            this.SetMouseOverEvents(this.CategoryComboBox);
+            this.SetMouseOverEvents(this.AmountUpDown);
+            this.SetMouseOverEvents(this.WeightUpDown);
+            this.SetMouseOverEvents(this.IgnoreWeightCheckBox);
+            this.SetMouseOverEvents(this.AttunedCheckBox);
+            this.SetMouseOverEvents(this.ValueUpDown);
+            this.SetMouseOverEvents(this.CoinTypeComboBox);
+            this.SetMouseOverEvents(this.NotesTextBox, this.NotesTextBackground);
+            this.SetMouseOverEvents(this.DescriptionTextBox, this.DescriptionTextBackground);
         }
 
         public override string HeaderText => $"{(this.Editing ? "Edit" : "Add")} Item";

@@ -5,6 +5,7 @@
 namespace Concierge.Display.Components
 {
     using System;
+    using System.Reflection.Metadata;
     using System.Runtime.InteropServices;
     using System.Windows;
     using System.Windows.Input;
@@ -25,7 +26,7 @@ namespace Concierge.Display.Components
     public abstract partial class ConciergeWindow : Window
     {
         private readonly WindowAnimation windowAnimation;
-        private readonly StringResourceService stringResourceService;
+        private readonly StringResourceService resourceService;
 
         public ConciergeWindow()
         {
@@ -38,12 +39,13 @@ namespace Concierge.Display.Components
             this.Background = ConciergeBrushes.WindowBackground;
             this.HandleEnter = false;
             this.Description = new NotifiableText();
+            this.FocusedText = string.Empty;
 
             this.MouseDown += this.Window_MouseDown;
             this.KeyDown += this.Window_KeyDown;
 
             this.windowAnimation = new WindowAnimation(WindowAnimation.DefaultAnimationSpeed, this.Window_OnClose);
-            this.stringResourceService = new StringResourceService();
+            this.resourceService = new StringResourceService();
         }
 
         public delegate void ApplyChangesEventHandler(object sender, EventArgs e);
@@ -65,6 +67,8 @@ namespace Concierge.Display.Components
         protected bool HandleEnter { get; set; }
 
         protected NotifiableText Description { get; set; }
+
+        protected string FocusedText { get; set; }
 
         public virtual bool ShowAdd<T>(T item)
         {
@@ -198,21 +202,46 @@ namespace Concierge.Display.Components
             Marshal.ThrowExceptionForHR(DwmSetWindowAttribute(hWnd, attribute, ref preference, sizeof(uint)));
         }
 
-        protected void SetFocusEvents(UIElement element)
+        protected void SetMouseOverEvents(UIElement element)
+        {
+            element.MouseEnter += this.Control_MouseEnter;
+            element.MouseLeave += this.Control_MouseLeave;
+            element.GotFocus += this.Control_GotFocus;
+            element.LostFocus += this.Control_LostFocus;
+        }
+
+        protected void SetMouseOverEvents(UIElement element, UIElement backgroundElement)
         {
             element.GotFocus += this.Control_GotFocus;
             element.LostFocus += this.Control_LostFocus;
+
+            backgroundElement.MouseEnter += this.Control_MouseEnter;
+            backgroundElement.MouseLeave += this.Control_MouseLeave;
+        }
+
+        protected void Control_MouseEnter(object sender, RoutedEventArgs e)
+        {
+            var controlName = this.resourceService.CleanString(sender.GetProperty("Name"));
+            this.Description.Text = this.resourceService.GetPropertyDescription(this.WindowName, controlName, defaultDescription: controlName);
+        }
+
+        protected void Control_MouseLeave(object sender, RoutedEventArgs e)
+        {
+            this.Description.Text = this.FocusedText;
         }
 
         protected void Control_GotFocus(object sender, RoutedEventArgs e)
         {
             var controlName = sender.GetProperty("Name");
-            this.Description.Text = this.stringResourceService.GetPropertyDescription(this.WindowName, controlName, defaultDescription: controlName);
+            var text = this.resourceService.GetPropertyDescription(this.WindowName, controlName, defaultDescription: controlName);
+            this.Description.Text = text;
+            this.FocusedText = text;
         }
 
         protected void Control_LostFocus(object sender, RoutedEventArgs e)
         {
             this.Description.Text = string.Empty;
+            this.FocusedText = string.Empty;
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)

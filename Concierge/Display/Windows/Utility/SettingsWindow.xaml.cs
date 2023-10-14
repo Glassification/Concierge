@@ -38,19 +38,19 @@ namespace Concierge.Display.Utility
             this.HeaderAlignmentComboBox.ItemsSource = Enum.GetValues(typeof(HorizontalAlignment)).Cast<HorizontalAlignment>();
             this.DescriptionTextBlock.DataContext = this.Description;
 
-            this.SetFocusEvents(this.AutosaveCheckBox);
-            this.SetFocusEvents(this.AutosaveInterval);
-            this.SetFocusEvents(this.CoinWeightCheckBox);
-            this.SetFocusEvents(this.EncumbranceCheckBox);
-            this.SetFocusEvents(this.IntervalTextBox);
-            this.SetFocusEvents(this.MuteCheckBox);
-            this.SetFocusEvents(this.CheckVersionCheckBox);
-            this.SetFocusEvents(this.UnitOfMeasurementComboBox);
-            this.SetFocusEvents(this.HeaderAlignmentComboBox);
-            this.SetFocusEvents(this.DefaultSaveCheckBox);
-            this.SetFocusEvents(this.DefaultOpenCheckBox);
-            this.SetFocusEvents(this.OpenTextBox);
-            this.SetFocusEvents(this.SaveTextBox);
+            this.SetMouseOverEvents(this.AutosaveCheckBox);
+            this.SetMouseOverEvents(this.AutosaveInterval);
+            this.SetMouseOverEvents(this.CoinWeightCheckBox);
+            this.SetMouseOverEvents(this.EncumbranceCheckBox);
+            this.SetMouseOverEvents(this.IntervalTextBox);
+            this.SetMouseOverEvents(this.MuteCheckBox);
+            this.SetMouseOverEvents(this.CheckVersionCheckBox);
+            this.SetMouseOverEvents(this.UnitOfMeasurementComboBox);
+            this.SetMouseOverEvents(this.HeaderAlignmentComboBox);
+            this.SetMouseOverEvents(this.DefaultSaveCheckBox);
+            this.SetMouseOverEvents(this.DefaultOpenCheckBox);
+            this.SetMouseOverEvents(this.OpenTextBox, this.OpenTextBoxBackground);
+            this.SetMouseOverEvents(this.SaveTextBox, this.SaveTextBoxBackground);
         }
 
         public override string HeaderText => "Settings";

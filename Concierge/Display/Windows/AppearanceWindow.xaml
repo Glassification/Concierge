@@ -212,7 +212,9 @@
                                 Style="{StaticResource ColorPickerButtonStyle}"/>
                         </Grid>
                         
-                        <components:ConciergeTextBoxBackground Grid.Column="1">
+                        <components:ConciergeTextBoxBackground
+                            x:Name="SkinColourTextBackground"
+                            Grid.Column="1">
                             <components:ConciergeTextBox 
                                 x:Name="SkinColourTextBox"
                                 IsReadOnly="True"/>
@@ -260,7 +262,9 @@
                                 Style="{StaticResource ColorPickerButtonStyle}"/>
                         </Grid>
                         
-                        <components:ConciergeTextBoxBackground Grid.Column="1" >
+                        <components:ConciergeTextBoxBackground
+                            x:Name="EyeColourTextBackground"
+                            Grid.Column="1" >
                             <components:ConciergeTextBox 
                                 x:Name="EyeColourTextBox"
                                 IsReadOnly="True"/>
@@ -299,7 +303,9 @@
                                 Style="{StaticResource ColorPickerButtonStyle}"/>
                         </Grid>
                         
-                        <components:ConciergeTextBoxBackground Grid.Column="1">
+                        <components:ConciergeTextBoxBackground
+                            x:Name="HairColourTextBackground"
+                            Grid.Column="1">
                             <components:ConciergeTextBox 
                                 x:Name="HairColourTextBox"
                                 IsReadOnly="True"/>
@@ -324,7 +330,9 @@
                     </Grid>
 
                     <!--Value-->
-                    <components:ConciergeTextBoxBackground Grid.Column="1">
+                    <components:ConciergeTextBoxBackground
+                        x:Name="DistinguishingMarksTextBackground"
+                        Grid.Column="1">
                         <ScrollViewer VerticalScrollBarVisibility="Auto">
                             <components:ConciergeTextBox 
                                 x:Name="DistinguishingMarksTextBox"

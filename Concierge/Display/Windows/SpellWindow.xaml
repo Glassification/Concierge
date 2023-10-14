@@ -218,7 +218,9 @@
                     </Grid>
 
                     <!--Value-->
-                    <components:ConciergeTextBoxBackground Grid.Column="1">
+                    <components:ConciergeTextBoxBackground
+                        x:Name="ComponentsTextBackground"
+                        Grid.Column="1">
                         <components:ConciergeTextBox x:Name="ComponentsTextBox"/>
                     </components:ConciergeTextBoxBackground>
                 </Grid>
@@ -272,7 +274,9 @@
                     </Grid>
 
                     <!--Value-->
-                    <components:ConciergeTextBoxBackground Grid.Column="1">
+                    <components:ConciergeTextBoxBackground
+                        x:Name="RangeTextBackground"
+                        Grid.Column="1">
                         <components:ConciergeTextBox x:Name="RangeTextBox"/>
                     </components:ConciergeTextBoxBackground>
                 </Grid>
@@ -291,7 +295,9 @@
                     </Grid>
 
                     <!--Value-->
-                    <components:ConciergeTextBoxBackground Grid.Column="1">
+                    <components:ConciergeTextBoxBackground
+                        x:Name="DurationTextBackground"
+                        Grid.Column="1">
                         <components:ConciergeTextBox x:Name="DurationTextBox"/>
                     </components:ConciergeTextBoxBackground>
                 </Grid>
@@ -310,7 +316,9 @@
                     </Grid>
 
                     <!--Value-->
-                    <components:ConciergeTextBoxBackground Grid.Column="1">
+                    <components:ConciergeTextBoxBackground
+                        x:Name="AreaTextBackground"
+                        Grid.Column="1">
                         <components:ConciergeTextBox x:Name="AreaTextBox"/>
                     </components:ConciergeTextBoxBackground>
                 </Grid>
@@ -329,7 +337,9 @@
                     </Grid>
 
                     <!--Value-->
-                    <components:ConciergeTextBoxBackground Grid.Column="1">
+                    <components:ConciergeTextBoxBackground
+                        x:Name="SaveTextBackground"
+                        Grid.Column="1">
                         <components:ConciergeTextBox x:Name="SaveTextBox"/>
                     </components:ConciergeTextBoxBackground>
                 </Grid>
@@ -348,7 +358,9 @@
                     </Grid>
 
                     <!--Value-->
-                    <components:ConciergeTextBoxBackground Grid.Column="1">
+                    <components:ConciergeTextBoxBackground
+                        x:Name="DamageTextBackground"
+                        Grid.Column="1">
                         <components:ConciergeTextBox x:Name="DamageTextBox"/>
                     </components:ConciergeTextBoxBackground>
                 </Grid>
@@ -390,7 +402,9 @@
                     </Grid>
 
                     <!--Value-->
-                    <components:ConciergeTextBoxBackground Grid.Column="1">
+                    <components:ConciergeTextBoxBackground
+                        x:Name="NotesTextBackground"
+                        Grid.Column="1">
                         <ScrollViewer VerticalScrollBarVisibility="Auto">
                             <components:ConciergeTextBox 
                                 x:Name="NotesTextBox"

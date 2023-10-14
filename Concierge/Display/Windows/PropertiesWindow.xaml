@@ -89,7 +89,9 @@
                     </Grid>
 
                     <!--Value-->
-                    <components:ConciergeTextBoxBackground Grid.Column="1">
+                    <components:ConciergeTextBoxBackground
+                        x:Name="NameTextBackground"
+                        Grid.Column="1">
                         <components:ConciergeTextBox x:Name="NameTextBox"/>
                     </components:ConciergeTextBoxBackground>
                 </Grid>

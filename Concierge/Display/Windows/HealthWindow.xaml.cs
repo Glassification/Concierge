@@ -25,9 +25,9 @@ namespace Concierge.Display.Windows
             this.Health = new Health();
             this.DescriptionTextBlock.DataContext = this.Description;
 
-            this.SetFocusEvents(this.TotalHpUpDown);
-            this.SetFocusEvents(this.CurrentHpUpDown);
-            this.SetFocusEvents(this.TemporaryHpUpDown);
+            this.SetMouseOverEvents(this.TotalHpUpDown);
+            this.SetMouseOverEvents(this.CurrentHpUpDown);
+            this.SetMouseOverEvents(this.TemporaryHpUpDown);
         }
 
         public override string HeaderText => "Edit Health";

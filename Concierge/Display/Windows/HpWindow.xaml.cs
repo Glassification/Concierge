@@ -26,7 +26,7 @@ namespace Concierge.Display.Windows
             this.ConciergePage = ConciergePage.None;
             this.DescriptionTextBlock.DataContext = this.Description;
 
-            this.SetFocusEvents(this.HpUpDown);
+            this.SetMouseOverEvents(this.HpUpDown);
         }
 
         public override string HeaderText => this.IsHealing ? "Healing" : "Damage";

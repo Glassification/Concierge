@@ -39,18 +39,18 @@ namespace Concierge.Display.Windows
             this.SelectedDefense = new Defense();
             this.DescriptionTextBlock.DataContext = this.Description;
 
-            this.SetFocusEvents(this.ArmorNameComboBox);
-            this.SetFocusEvents(this.TypeComboBox);
-            this.SetFocusEvents(this.ArmorClassUpDown);
-            this.SetFocusEvents(this.WeightUpDown);
-            this.SetFocusEvents(this.StrengthUpDown);
-            this.SetFocusEvents(this.StealthComboBox);
-            this.SetFocusEvents(this.ShieldTextBox);
-            this.SetFocusEvents(this.ShieldArmorClassUpDown);
-            this.SetFocusEvents(this.ShieldWeightUpDown);
-            this.SetFocusEvents(this.MiscArmorClassUpDown);
-            this.SetFocusEvents(this.MagicArmorClassUpDown);
-            this.SetFocusEvents(this.StatusComboBox);
+            this.SetMouseOverEvents(this.ArmorNameComboBox);
+            this.SetMouseOverEvents(this.TypeComboBox);
+            this.SetMouseOverEvents(this.ArmorClassUpDown);
+            this.SetMouseOverEvents(this.WeightUpDown);
+            this.SetMouseOverEvents(this.StrengthUpDown);
+            this.SetMouseOverEvents(this.StealthComboBox);
+            this.SetMouseOverEvents(this.ShieldTextBox, this.ShieldTextBackground);
+            this.SetMouseOverEvents(this.ShieldArmorClassUpDown);
+            this.SetMouseOverEvents(this.ShieldWeightUpDown);
+            this.SetMouseOverEvents(this.MiscArmorClassUpDown);
+            this.SetMouseOverEvents(this.MagicArmorClassUpDown);
+            this.SetMouseOverEvents(this.StatusComboBox);
         }
 
         public override string HeaderText => "Edit Defense";

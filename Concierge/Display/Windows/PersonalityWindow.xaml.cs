@@ -25,12 +25,12 @@ namespace Concierge.Display.Windows
             this.Personality = new Personality();
             this.DescriptionTextBlock.DataContext = this.Description;
 
-            this.SetFocusEvents(this.Trait1TextBox);
-            this.SetFocusEvents(this.Trait2TextBox);
-            this.SetFocusEvents(this.IdealTextBox);
-            this.SetFocusEvents(this.BondTextBox);
-            this.SetFocusEvents(this.FlawTextBox);
-            this.SetFocusEvents(this.NotesTextBox);
+            this.SetMouseOverEvents(this.Trait1TextBox, this.Trait1TextBackground);
+            this.SetMouseOverEvents(this.Trait2TextBox, this.Trait2TextBackground);
+            this.SetMouseOverEvents(this.IdealTextBox, this.IdealTextBackground);
+            this.SetMouseOverEvents(this.BondTextBox, this.BondTextBackground);
+            this.SetMouseOverEvents(this.FlawTextBox, this.FlawTextBackground);
+            this.SetMouseOverEvents(this.NotesTextBox, this.NotesTextBackground);
         }
 
         public override string HeaderText => "Edit Personality";

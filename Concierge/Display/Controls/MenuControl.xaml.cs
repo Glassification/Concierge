@@ -8,6 +8,8 @@ namespace Concierge.Display.Controls
     using System.Windows;
     using System.Windows.Controls;
 
+    using MaterialDesignThemes.Wpf;
+
     /// <summary>
     /// Interaction logic for MenuControl.xaml.
     /// </summary>
@@ -60,6 +62,16 @@ namespace Concierge.Display.Controls
         private void ToolsMenuPopup_Closed(object sender, EventArgs e)
         {
             this.ToolsMenuItem.RealButton.IsChecked = false;
+        }
+
+        private void PopupToggleButton_Checked(object sender, RoutedEventArgs e)
+        {
+            this.MenuButtonIcon.Kind = PackIconKind.MenuOpen;
+        }
+
+        private void PopupToggleButton_Unchecked(object sender, RoutedEventArgs e)
+        {
+            this.MenuButtonIcon.Kind = PackIconKind.Menu;
         }
     }
 }

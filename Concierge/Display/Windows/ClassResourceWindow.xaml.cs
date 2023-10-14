@@ -34,11 +34,11 @@ namespace Concierge.Display.Windows
             this.ClassResources = new List<ClassResource>();
             this.DescriptionTextBlock.DataContext = this.Description;
 
-            this.SetFocusEvents(this.ResourceNameComboBox);
-            this.SetFocusEvents(this.PoolUpDown);
-            this.SetFocusEvents(this.SpentUpDown);
-            this.SetFocusEvents(this.RecoveryComboBox);
-            this.SetFocusEvents(this.NotesTextBox);
+            this.SetMouseOverEvents(this.ResourceNameComboBox);
+            this.SetMouseOverEvents(this.PoolUpDown);
+            this.SetMouseOverEvents(this.SpentUpDown);
+            this.SetMouseOverEvents(this.RecoveryComboBox);
+            this.SetMouseOverEvents(this.NotesTextBox, this.NotesTextBackground);
         }
 
         public override string HeaderText => $"{(this.Editing ? "Edit" : "Add")} Resource";

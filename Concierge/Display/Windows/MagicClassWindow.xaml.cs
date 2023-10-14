@@ -36,11 +36,14 @@ namespace Concierge.Display.Windows
             this.MagicClasses = new List<MagicClass>();
             this.DescriptionTextBlock.DataContext = this.Description;
 
-            this.SetFocusEvents(this.ClassNameComboBox);
-            this.SetFocusEvents(this.AbilityComboBox);
-            this.SetFocusEvents(this.CantripsUpDown);
-            this.SetFocusEvents(this.SpellsUpDown);
-            this.SetFocusEvents(this.LevelUpDown);
+            this.SetMouseOverEvents(this.ClassNameComboBox);
+            this.SetMouseOverEvents(this.AbilityComboBox);
+            this.SetMouseOverEvents(this.CantripsUpDown);
+            this.SetMouseOverEvents(this.SpellsUpDown);
+            this.SetMouseOverEvents(this.LevelUpDown);
+            this.SetMouseOverEvents(this.AttackBonusTextBox, this.AttackBonusTextBackground);
+            this.SetMouseOverEvents(this.SpellSaveTextBox, this.SpellSaveTextBackground);
+            this.SetMouseOverEvents(this.PreparedSpellsTextBox, this.PreparedSpellsTextBackground);
         }
 
         public override string HeaderText => $"{(this.Editing ? "Edit" : "Add")} Spellcasting Class";
@@ -128,12 +131,12 @@ namespace Concierge.Display.Windows
             this.SettingValues = true;
             this.ClassNameComboBox.Text = magicClass.Name;
             this.AbilityComboBox.Text = magicClass.Ability.ToString();
-            this.AttackBonusTextBlock.Text = magicClass.Attack.ToString();
-            this.SpellSaveTextBlock.Text = magicClass.Save.ToString();
+            this.AttackBonusTextBox.Text = magicClass.Attack.ToString();
+            this.SpellSaveTextBox.Text = magicClass.Save.ToString();
             this.LevelUpDown.Value = magicClass.Level;
             this.CantripsUpDown.Value = magicClass.KnownCantrips;
             this.SpellsUpDown.Value = magicClass.KnownSpells;
-            this.PreparedSpellsTextBlock.Text = magicClass.PreparedSpells.ToString();
+            this.PreparedSpellsTextBox.Text = magicClass.PreparedSpells.ToString();
             this.SettingValues = false;
         }
 
@@ -142,12 +145,12 @@ namespace Concierge.Display.Windows
             this.SettingValues = true;
             this.ClassNameComboBox.Text = name;
             this.AbilityComboBox.Text = Abilities.NONE.ToString();
-            this.AttackBonusTextBlock.Text = "0";
-            this.SpellSaveTextBlock.Text = "0";
+            this.AttackBonusTextBox.Text = "0";
+            this.SpellSaveTextBox.Text = "0";
             this.LevelUpDown.Value = 0;
             this.CantripsUpDown.Value = 0;
             this.SpellsUpDown.Value = 0;
-            this.PreparedSpellsTextBlock.Text = "0";
+            this.PreparedSpellsTextBox.Text = "0";
             this.SettingValues = false;
         }
 
@@ -192,9 +195,9 @@ namespace Concierge.Display.Windows
         private void RefreshFields()
         {
             string ability = this.AbilityComboBox.SelectedItem.ToString() ?? Abilities.NONE.ToString();
-            this.AttackBonusTextBlock.Text = Program.CcsFile.Character.CalculateBonusFromAbility((Abilities)Enum.Parse(typeof(Abilities), ability)).ToString();
-            this.SpellSaveTextBlock.Text = (Program.CcsFile.Character.CalculateBonusFromAbility((Abilities)Enum.Parse(typeof(Abilities), ability)) + Constants.BaseDC).ToString();
-            this.PreparedSpellsTextBlock.Text = Program.CcsFile.Character.Magic.Spells.Where(x => (x.Class?.Equals(this.ClassNameComboBox.SelectedItem.ToString()) ?? false) && x.Prepared)?.ToList()?.Count.ToString() ?? "0";
+            this.AttackBonusTextBox.Text = Program.CcsFile.Character.CalculateBonusFromAbility((Abilities)Enum.Parse(typeof(Abilities), ability)).ToString();
+            this.SpellSaveTextBox.Text = (Program.CcsFile.Character.CalculateBonusFromAbility((Abilities)Enum.Parse(typeof(Abilities), ability)) + Constants.BaseDC).ToString();
+            this.PreparedSpellsTextBox.Text = Program.CcsFile.Character.Magic.Spells.Where(x => (x.Class?.Equals(this.ClassNameComboBox.SelectedItem.ToString()) ?? false) && x.Prepared)?.ToList()?.Count.ToString() ?? "0";
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)

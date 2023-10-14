@@ -184,7 +184,9 @@
                     </Grid>
 
                     <!--Value-->
-                    <components:ConciergeTextBoxBackground Grid.Column="1">
+                    <components:ConciergeTextBoxBackground
+                        x:Name="BonusTextBackground"
+                        Grid.Column="1">
                         <components:ConciergeTextBox x:Name="BonusTextBox"/>
                     </components:ConciergeTextBoxBackground>
                 </Grid>

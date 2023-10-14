@@ -37,8 +37,8 @@ namespace Concierge.Display.Windows
 
             this.DescriptionTextBlock.DataContext = this.Description;
 
-            this.SetFocusEvents(this.ProficiencyComboBox);
-            this.SetFocusEvents(this.ProficiencyTextComboBox);
+            this.SetMouseOverEvents(this.ProficiencyComboBox);
+            this.SetMouseOverEvents(this.ProficiencyTextComboBox);
         }
 
         public override string HeaderText => $"{(this.Editing ? "Edit" : "Add")} Proficiency";

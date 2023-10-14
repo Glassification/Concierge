@@ -277,7 +277,9 @@
                     </Grid>
 
                     <!--Value-->
-                    <components:ConciergeTextBoxBackground Grid.Column="1">
+                    <components:ConciergeTextBoxBackground
+                        x:Name="NotesTextBackground"
+                        Grid.Column="1">
                         <components:ConciergeTextBox 
                             x:Name="NotesTextBox"
                             FontSize="15"
@@ -301,7 +303,9 @@
                     </Grid>
 
                     <!--Value-->
-                    <components:ConciergeTextBoxBackground Grid.Column="1">
+                    <components:ConciergeTextBoxBackground
+                        x:Name="DescriptionTextBackground"
+                        Grid.Column="1">
                         <ScrollViewer VerticalScrollBarVisibility="Auto">
                             <components:ConciergeTextBox 
                                 x:Name="DescriptionTextBox"
