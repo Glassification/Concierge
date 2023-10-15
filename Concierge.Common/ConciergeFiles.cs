@@ -33,6 +33,7 @@ namespace Concierge.Common
 
             Directory.CreateDirectory(AppDataDirectory);
             Directory.CreateDirectory(HistoryDirectory);
+            Directory.CreateDirectory(BackupDirectory);
             Directory.CreateDirectory(LoggingDirectory);
         }
 
@@ -45,6 +46,11 @@ namespace Concierge.Common
         /// Gets the path to the directory where history files are stored.
         /// </summary>
         public static string HistoryDirectory => Path.Combine(applicationData, @"Concierge\History");
+
+        /// <summary>
+        /// Gets the path to the directory where backup files are stored.
+        /// </summary>
+        public static string BackupDirectory => Path.Combine(applicationData, @"Concierge\Backups");
 
         /// <summary>
         /// Gets the path to the directory where logging files are stored.

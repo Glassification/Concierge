@@ -57,6 +57,7 @@ namespace Concierge.Display.Windows
             this.SetMouseOverEvents(this.CoinTypeComboBox);
             this.SetMouseOverEvents(this.ProficencyOverrideCheckBox);
             this.SetMouseOverEvents(this.NotesTextBox, this.NotesTextBackground);
+            this.SetMouseOverEvents(this.AttunedCheckBox);
         }
 
         public override string HeaderText => $"{(this.Editing ? "Edit" : "Add")} Attack";

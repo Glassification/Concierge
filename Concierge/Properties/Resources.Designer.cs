@@ -334,6 +334,15 @@ namespace Concierge.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to This could be the generic type of armor equipped, or a spectacular named set of armor. Or anything in between..
+        /// </summary>
+        internal static string ArmorWindow_ArmorNameComboBox {
+            get {
+                return ResourceManager.GetString("ArmorWindow_ArmorNameComboBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Armor might have a snazzy title..
         /// </summary>
         internal static string ArmorWindow_EquipedTextBox {
@@ -388,6 +397,15 @@ namespace Concierge.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Unequipped armor will not provide any bonus or armor class imporvements..
+        /// </summary>
+        internal static string ArmorWindow_StatusComboBox {
+            get {
+                return ResourceManager.GetString("ArmorWindow_StatusComboBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Determines if the wearer has disadvantage on stealth checks..
         /// </summary>
         internal static string ArmorWindow_StealthComboBox {
@@ -438,6 +456,15 @@ namespace Concierge.Properties {
         internal static string AttacksWindow_AttackComboBox {
             get {
                 return ResourceManager.GetString("AttacksWindow_AttackComboBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sets whether a character has bonded with this weapon, and if it counts towards the attunement limit..
+        /// </summary>
+        internal static string AttacksWindow_AttunedCheckBox {
+            get {
+                return ResourceManager.GetString("AttacksWindow_AttunedCheckBox", resourceCulture);
             }
         }
         
@@ -1220,7 +1247,7 @@ namespace Concierge.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Eating Sixty-four slices of American Cheese might make you blind..
         /// </summary>
         internal static string InventoryWindow_AmountUpDown {
             get {
@@ -1238,7 +1265,7 @@ namespace Concierge.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Specify the type of gear being carried..
         /// </summary>
         internal static string InventoryWindow_CategoryComboBox {
             get {
@@ -1252,6 +1279,15 @@ namespace Concierge.Properties {
         internal static string InventoryWindow_CoinTypeComboBox {
             get {
                 return ResourceManager.GetString("InventoryWindow_CoinTypeComboBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Indeicates if the amount should decrease when the item is used..
+        /// </summary>
+        internal static string InventoryWindow_ConsumableCheckBox {
+            get {
+                return ResourceManager.GetString("InventoryWindow_ConsumableCheckBox", resourceCulture);
             }
         }
         
@@ -1274,7 +1310,7 @@ namespace Concierge.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to All item names are made up, if you stop to think about it..
         /// </summary>
         internal static string InventoryWindow_NameComboBox {
             get {
@@ -1283,7 +1319,7 @@ namespace Concierge.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Informs at a glance what this item is good for..
         /// </summary>
         internal static string InventoryWindow_NotesTextBox {
             get {
@@ -1390,6 +1426,51 @@ namespace Concierge.Properties {
             get {
                 object obj = ResourceManager.GetObject("MagicClass", resourceCulture);
                 return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The ability used by the class to cast spells. For example Wizards, Artificers, and Druids are magic users that cast with Intelligence and Wisdom. .
+        /// </summary>
+        internal static string MagicClassWindow_AbilityComboBox {
+            get {
+                return ResourceManager.GetString("MagicClassWindow_AbilityComboBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The amount of cantrips known the the class at this level. These do not burn a spell slots when used..
+        /// </summary>
+        internal static string MagicClassWindow_CantripsUpDown {
+            get {
+                return ResourceManager.GetString("MagicClassWindow_CantripsUpDown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Choosing the right class for yourself AND your character will dictate the effectiveness of your character’s career..
+        /// </summary>
+        internal static string MagicClassWindow_ClassNameComboBox {
+            get {
+                return ResourceManager.GetString("MagicClassWindow_ClassNameComboBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This class level determins the amount of usable spell slots, as well as the maximum spell level available..
+        /// </summary>
+        internal static string MagicClassWindow_LevelUpDown {
+            get {
+                return ResourceManager.GetString("MagicClassWindow_LevelUpDown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The amount of total spells known to the class at this level..
+        /// </summary>
+        internal static string MagicClassWindow_SpellsUpDown {
+            get {
+                return ResourceManager.GetString("MagicClassWindow_SpellsUpDown", resourceCulture);
             }
         }
         
@@ -1504,6 +1585,132 @@ namespace Concierge.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to A typical creature in the game world has an alignment, which broadly describes its moral and personal attitudes. Alignment is a combination of two factors: one identifies morality, and the other describes attitudes toward society and order..
+        /// </summary>
+        internal static string PropertiesWindow_AlignmentComboBox {
+            get {
+                return ResourceManager.GetString("PropertiesWindow_AlignmentComboBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Every story has a beginning. Your character’s background reveals where you came from, how you became an adventurer, and your place in the world..
+        /// </summary>
+        internal static string PropertiesWindow_BackgroundComboBox {
+            get {
+                return ResourceManager.GetString("PropertiesWindow_BackgroundComboBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Every adventurer is a member of a class. Class broadly describes a character’s vocation, what special talents he or she possesses, and the tactics he or she is most likely to employ..
+        /// </summary>
+        internal static string PropertiesWindow_Class1Class {
+            get {
+                return ResourceManager.GetString("PropertiesWindow_Class1Class", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Typically, a character starts at 1st level and advances in level by adventuring and gaining experience points. A 1st-level character is inexperienced in the adventuring world.
+        /// </summary>
+        internal static string PropertiesWindow_Class1Level {
+            get {
+                return ResourceManager.GetString("PropertiesWindow_Class1Level", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Class is the primary definition of what your character can do, and Subclass refines it. It’s more than a profession; it’s your character’s calling..
+        /// </summary>
+        internal static string PropertiesWindow_Class1Subclass {
+            get {
+                return ResourceManager.GetString("PropertiesWindow_Class1Subclass", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Every adventurer is a member of a class. Class broadly describes a character’s vocation, what special talents he or she possesses, and the tactics he or she is most likely to employ..
+        /// </summary>
+        internal static string PropertiesWindow_Class2Class {
+            get {
+                return ResourceManager.GetString("PropertiesWindow_Class2Class", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Typically, a character starts at 1st level and advances in level by adventuring and gaining experience points. A 1st-level character is inexperienced in the adventuring world.
+        /// </summary>
+        internal static string PropertiesWindow_Class2Level {
+            get {
+                return ResourceManager.GetString("PropertiesWindow_Class2Level", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Class is the primary definition of what your character can do, and Subclass refines it. It’s more than a profession; it’s your character’s calling..
+        /// </summary>
+        internal static string PropertiesWindow_Class2Subclass {
+            get {
+                return ResourceManager.GetString("PropertiesWindow_Class2Subclass", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Every adventurer is a member of a class. Class broadly describes a character’s vocation, what special talents he or she possesses, and the tactics he or she is most likely to employ..
+        /// </summary>
+        internal static string PropertiesWindow_Class3Class {
+            get {
+                return ResourceManager.GetString("PropertiesWindow_Class3Class", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Typically, a character starts at 1st level and advances in level by adventuring and gaining experience points. A 1st-level character is inexperienced in the adventuring world.
+        /// </summary>
+        internal static string PropertiesWindow_Class3Level {
+            get {
+                return ResourceManager.GetString("PropertiesWindow_Class3Level", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Class is the primary definition of what your character can do, and Subclass refines it. It’s more than a profession; it’s your character’s calling..
+        /// </summary>
+        internal static string PropertiesWindow_Class3Subclass {
+            get {
+                return ResourceManager.GetString("PropertiesWindow_Class3Subclass", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your character’s race description includes sample names for members of that race. Put some thought into your name even if you’re just picking one from a list..
+        /// </summary>
+        internal static string PropertiesWindow_NameTextBox {
+            get {
+                return ResourceManager.GetString("PropertiesWindow_NameTextBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Every character belongs to a race, one of the many intelligent humanoid species in the D&amp;D world. The most common player character races are dwarves, elves, halflings, and humans..
+        /// </summary>
+        internal static string PropertiesWindow_RaceComboBox {
+            get {
+                return ResourceManager.GetString("PropertiesWindow_RaceComboBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Just like the common Antelope can have differences within their species, some races also have subraces, such as mountain dwarf or wood elf..
+        /// </summary>
+        internal static string PropertiesWindow_SubRaceComboBox {
+            get {
+                return ResourceManager.GetString("PropertiesWindow_SubRaceComboBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Aarakocra
         ///Aasimar
         ///Bugbear
@@ -1606,12 +1813,435 @@ namespace Concierge.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Concierge will automatically save at the set interval. This will always overwrite the current character..
+        /// </summary>
+        internal static string SettingsWindow_AutosaveCheckBox {
+            get {
+                return ResourceManager.GetString("SettingsWindow_AutosaveCheckBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sets the interval in minutes between autosaves..
+        /// </summary>
+        internal static string SettingsWindow_AutosaveInterval {
+            get {
+                return ResourceManager.GetString("SettingsWindow_AutosaveInterval", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This will check if a character was saved with a different major or minor version of Concierge..
+        /// </summary>
+        internal static string SettingsWindow_CheckVersionCheckBox {
+            get {
+                return ResourceManager.GetString("SettingsWindow_CheckVersionCheckBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Specifies if your money will weight you down..
+        /// </summary>
+        internal static string SettingsWindow_CoinWeightCheckBox {
+            get {
+                return ResourceManager.GetString("SettingsWindow_CoinWeightCheckBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Will always open characters from the same directory..
+        /// </summary>
+        internal static string SettingsWindow_DefaultOpenCheckBox {
+            get {
+                return ResourceManager.GetString("SettingsWindow_DefaultOpenCheckBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Will always save characters to the same directory..
+        /// </summary>
+        internal static string SettingsWindow_DefaultSaveCheckBox {
+            get {
+                return ResourceManager.GetString("SettingsWindow_DefaultSaveCheckBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Use encumbrance rules for your carry weight, based on the characters strength attribute..
+        /// </summary>
+        internal static string SettingsWindow_EncumbranceCheckBox {
+            get {
+                return ResourceManager.GetString("SettingsWindow_EncumbranceCheckBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set how the text in the header bar is alighned. Everyone has different preferences..
+        /// </summary>
+        internal static string SettingsWindow_HeaderAlignmentComboBox {
+            get {
+                return ResourceManager.GetString("SettingsWindow_HeaderAlignmentComboBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Toggle if button clicks and warning messages will play sound..
+        /// </summary>
+        internal static string SettingsWindow_MuteCheckBox {
+            get {
+                return ResourceManager.GetString("SettingsWindow_MuteCheckBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Default folder location for the &quot;Open&quot; dialog..
+        /// </summary>
+        internal static string SettingsWindow_OpenTextBox {
+            get {
+                return ResourceManager.GetString("SettingsWindow_OpenTextBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Default folder location for the &quot;Save&quot; dialog..
+        /// </summary>
+        internal static string SettingsWindow_SaveTextBox {
+            get {
+                return ResourceManager.GetString("SettingsWindow_SaveTextBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to D&amp;D is unfortunatly designed for feet and pounds, but metric is always an option..
+        /// </summary>
+        internal static string SettingsWindow_UnitOfMeasurementComboBox {
+            get {
+                return ResourceManager.GetString("SettingsWindow_UnitOfMeasurementComboBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
         internal static byte[] Spell {
             get {
                 object obj = ResourceManager.GetObject("Spell", resourceCulture);
                 return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The maximum amount of usable 1st level spells..
+        /// </summary>
+        internal static string SpellSlotsWindow_Total1UpDown {
+            get {
+                return ResourceManager.GetString("SpellSlotsWindow_Total1UpDown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The maximum amount of usable 2nd level spells..
+        /// </summary>
+        internal static string SpellSlotsWindow_Total2UpDown {
+            get {
+                return ResourceManager.GetString("SpellSlotsWindow_Total2UpDown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The maximum amount of usable 3rd level spells..
+        /// </summary>
+        internal static string SpellSlotsWindow_Total3UpDown {
+            get {
+                return ResourceManager.GetString("SpellSlotsWindow_Total3UpDown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The maximum amount of usable 4th level spells..
+        /// </summary>
+        internal static string SpellSlotsWindow_Total4UpDown {
+            get {
+                return ResourceManager.GetString("SpellSlotsWindow_Total4UpDown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The maximum amount of usable 5th level spells..
+        /// </summary>
+        internal static string SpellSlotsWindow_Total5UpDown {
+            get {
+                return ResourceManager.GetString("SpellSlotsWindow_Total5UpDown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The maximum amount of usable 6th level spells..
+        /// </summary>
+        internal static string SpellSlotsWindow_Total6UpDown {
+            get {
+                return ResourceManager.GetString("SpellSlotsWindow_Total6UpDown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The maximum amount of usable 7th level spells..
+        /// </summary>
+        internal static string SpellSlotsWindow_Total7UpDown {
+            get {
+                return ResourceManager.GetString("SpellSlotsWindow_Total7UpDown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The maximum amount of usable 8th level spells..
+        /// </summary>
+        internal static string SpellSlotsWindow_Total8UpDown {
+            get {
+                return ResourceManager.GetString("SpellSlotsWindow_Total8UpDown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The maximum amount of usable 9th level spells..
+        /// </summary>
+        internal static string SpellSlotsWindow_Total9UpDown {
+            get {
+                return ResourceManager.GetString("SpellSlotsWindow_Total9UpDown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The maximum amount of usable Pact spells..
+        /// </summary>
+        internal static string SpellSlotsWindow_TotalPactUpDown {
+            get {
+                return ResourceManager.GetString("SpellSlotsWindow_TotalPactUpDown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The number of remaining 1st level spell slots..
+        /// </summary>
+        internal static string SpellSlotsWindow_Used1UpDown {
+            get {
+                return ResourceManager.GetString("SpellSlotsWindow_Used1UpDown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The number of remaining 2nd level spell slots..
+        /// </summary>
+        internal static string SpellSlotsWindow_Used2UpDown {
+            get {
+                return ResourceManager.GetString("SpellSlotsWindow_Used2UpDown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The number of remaining 3rd level spell slots..
+        /// </summary>
+        internal static string SpellSlotsWindow_Used3UpDown {
+            get {
+                return ResourceManager.GetString("SpellSlotsWindow_Used3UpDown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The number of remaining 4th level spell slots..
+        /// </summary>
+        internal static string SpellSlotsWindow_Used4UpDown {
+            get {
+                return ResourceManager.GetString("SpellSlotsWindow_Used4UpDown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The number of remaining 5th level spell slots..
+        /// </summary>
+        internal static string SpellSlotsWindow_Used5UpDown {
+            get {
+                return ResourceManager.GetString("SpellSlotsWindow_Used5UpDown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The number of remaining 6th level spell slots..
+        /// </summary>
+        internal static string SpellSlotsWindow_Used6UpDown {
+            get {
+                return ResourceManager.GetString("SpellSlotsWindow_Used6UpDown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The number of remaining 7th level spell slots..
+        /// </summary>
+        internal static string SpellSlotsWindow_Used7UpDown {
+            get {
+                return ResourceManager.GetString("SpellSlotsWindow_Used7UpDown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The number of remaining 8th level spell slots..
+        /// </summary>
+        internal static string SpellSlotsWindow_Used8UpDown {
+            get {
+                return ResourceManager.GetString("SpellSlotsWindow_Used8UpDown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The number of remaining 9th level spell slots..
+        /// </summary>
+        internal static string SpellSlotsWindow_Used9UpDown {
+            get {
+                return ResourceManager.GetString("SpellSlotsWindow_Used9UpDown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The number of remaining Pact spell slots..
+        /// </summary>
+        internal static string SpellSlotsWindow_UsedPactUpDown {
+            get {
+                return ResourceManager.GetString("SpellSlotsWindow_UsedPactUpDown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Typically will be one of five different shapes: cone, cube, cylinder, line, or sphere..
+        /// </summary>
+        internal static string SpellWindow_AreaTextBox {
+            get {
+                return ResourceManager.GetString("SpellWindow_AreaTextBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The magic class this spell is associated with. This allows auto-calculating of certain values..
+        /// </summary>
+        internal static string SpellWindow_ClassComboBox {
+            get {
+                return ResourceManager.GetString("SpellWindow_ClassComboBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A spell&apos;s components are the physical requirements you must meet in order to cast it. Each spell&apos;s description indicates whether it requires verbal (V), somatic (S), or material (M) components..
+        /// </summary>
+        internal static string SpellWindow_ComponentsTextBox {
+            get {
+                return ResourceManager.GetString("SpellWindow_ComponentsTextBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Some spells require you to maintain concentration in order to keep their magic active. If you lose concentration, such a spell ends..
+        /// </summary>
+        internal static string SpellWindow_ConcentrationCheckBox {
+            get {
+                return ResourceManager.GetString("SpellWindow_ConcentrationCheckBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your attack bonus with a spell attack equals your spellcasting ability modifier + your proficiency bonus..
+        /// </summary>
+        internal static string SpellWindow_DamageTextBox {
+            get {
+                return ResourceManager.GetString("SpellWindow_DamageTextBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A spell&apos;s duration is the length of time the spell persists. A duration can be expressed in rounds, minutes, hours, or even years. Some spells specify that their effects last until the spells are dispelled or destroyed..
+        /// </summary>
+        internal static string SpellWindow_DurationTextBox {
+            get {
+                return ResourceManager.GetString("SpellWindow_DurationTextBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Every spell has a level from 0 to 9. A spell&apos;s level is a general indicator of how powerful it is, with the lowly (but still impressive) magic missile at 1st level and the earth-shaking wish at 9th..
+        /// </summary>
+        internal static string SpellWindow_LevelUpDown {
+            get {
+                return ResourceManager.GetString("SpellWindow_LevelUpDown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Spells can be versatile tools, weapons, or protective wards. They can deal damage or undo it, impose or remove conditions, drain life energy away, and restore life to the dead..
+        /// </summary>
+        internal static string SpellWindow_NotesTextBox {
+            get {
+                return ResourceManager.GetString("SpellWindow_NotesTextBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Refences that page the spell is found in the Player&apos;s Handbook..
+        /// </summary>
+        internal static string SpellWindow_PageUpDown {
+            get {
+                return ResourceManager.GetString("SpellWindow_PageUpDown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Before a spellcaster can use a spell, he or she must have the spell firmly fixed in mind, or must have access to the spell in a magic item..
+        /// </summary>
+        internal static string SpellWindow_PreparedCheckBox {
+            get {
+                return ResourceManager.GetString("SpellWindow_PreparedCheckBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The target of a spell must be within the spell&apos;s range. For a spell like magic missile, the target is a creature. For a spell like fireball, the target is the point in space where the ball of fire erupts..
+        /// </summary>
+        internal static string SpellWindow_RangeTextBox {
+            get {
+                return ResourceManager.GetString("SpellWindow_RangeTextBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The ritual version of a spell takes 10 minutes longer to cast than normal. It also doesn&apos;t expend a spell slot, which means the ritual version of a spell can&apos;t be cast at a higher level..
+        /// </summary>
+        internal static string SpellWindow_RitualCheckBox {
+            get {
+                return ResourceManager.GetString("SpellWindow_RitualCheckBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The DC to resist one of your spells equals 8 + your spellcasting ability modifier + your proficiency bonus + any special modifiers..
+        /// </summary>
+        internal static string SpellWindow_SaveTextBox {
+            get {
+                return ResourceManager.GetString("SpellWindow_SaveTextBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Academies of magic group spells into eight categories called schools of magic. These help describe spells; they have no rules of their own, although some rules refer to the schools..
+        /// </summary>
+        internal static string SpellWindow_SchoolComboBox {
+            get {
+                return ResourceManager.GetString("SpellWindow_SchoolComboBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A discrete magical effect, a single shaping of the magical energies that suffuse the multiverse into a specific, limited expression..
+        /// </summary>
+        internal static string SpellWindow_SpellNameComboBox {
+            get {
+                return ResourceManager.GetString("SpellWindow_SpellNameComboBox", resourceCulture);
             }
         }
         

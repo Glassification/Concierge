@@ -205,6 +205,9 @@
   <data name="ArmorWindow_ArmorClassUpDown" xml:space="preserve">
     <value>The armor's base AC without any modifiers added.</value>
   </data>
+  <data name="ArmorWindow_ArmorNameComboBox" xml:space="preserve">
+    <value>This could be the generic type of armor equipped, or a spectacular named set of armor. Or anything in between.</value>
+  </data>
   <data name="ArmorWindow_EquipedTextBox" xml:space="preserve">
     <value>Armor might have a snazzy title.</value>
   </data>
@@ -223,6 +226,9 @@
   <data name="ArmorWindow_ShieldWeightUpDown" xml:space="preserve">
     <value>Generally weighs more than 0.</value>
   </data>
+  <data name="ArmorWindow_StatusComboBox" xml:space="preserve">
+    <value>Unequipped armor will not provide any bonus or armor class imporvements.</value>
+  </data>
   <data name="ArmorWindow_StealthComboBox" xml:space="preserve">
     <value>Determines if the wearer has disadvantage on stealth checks.</value>
   </data>
@@ -240,6 +246,9 @@
   </data>
   <data name="AttacksWindow_AttackComboBox" xml:space="preserve">
     <value>Your race, class, and feats can grant you proficiency with certain weapons or categories of weapons.</value>
+  </data>
+  <data name="AttacksWindow_AttunedCheckBox" xml:space="preserve">
+    <value>Sets whether a character has bonded with this weapon, and if it counts towards the attunement limit.</value>
   </data>
   <data name="AttacksWindow_CoinTypeComboBox" xml:space="preserve">
     <value>Specify the denomination so you don't have to worry about math.</value>
@@ -473,16 +482,19 @@
     <value>Resources\Json\Inventory.json;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="InventoryWindow_AmountUpDown" xml:space="preserve">
-    <value />
+    <value>Eating Sixty-four slices of American Cheese might make you blind.</value>
   </data>
   <data name="InventoryWindow_AttunedCheckBox" xml:space="preserve">
     <value>Spend time attuning to this item, allowing the use of special abilities. Your character can only attune to 3 items at a time.</value>
   </data>
   <data name="InventoryWindow_CategoryComboBox" xml:space="preserve">
-    <value />
+    <value>Specify the type of gear being carried.</value>
   </data>
   <data name="InventoryWindow_CoinTypeComboBox" xml:space="preserve">
     <value>Specify the denomination so you don't have to worry about math.</value>
+  </data>
+  <data name="InventoryWindow_ConsumableCheckBox" xml:space="preserve">
+    <value>Indeicates if the amount should decrease when the item is used.</value>
   </data>
   <data name="InventoryWindow_DescriptionTextBox" xml:space="preserve">
     <value>Describe, in detail, why your character looted this item.</value>
@@ -491,10 +503,10 @@
     <value>This is generally used to 'place' the item in a bag of holding.</value>
   </data>
   <data name="InventoryWindow_NameComboBox" xml:space="preserve">
-    <value />
+    <value>All item names are made up, if you stop to think about it.</value>
   </data>
   <data name="InventoryWindow_NotesTextBox" xml:space="preserve">
-    <value />
+    <value>Informs at a glance what this item is good for.</value>
   </data>
   <data name="InventoryWindow_ValueUpDown" xml:space="preserve">
     <value>The worth of this item. Lisa, I'd like to buy your rock.</value>
@@ -522,6 +534,21 @@
   </data>
   <data name="MagicClass" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Json\MagicClass.json;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="MagicClassWindow_AbilityComboBox" xml:space="preserve">
+    <value>The ability used by the class to cast spells. For example Wizards, Artificers, and Druids are magic users that cast with Intelligence and Wisdom. </value>
+  </data>
+  <data name="MagicClassWindow_CantripsUpDown" xml:space="preserve">
+    <value>The amount of cantrips known the the class at this level. These do not burn a spell slots when used.</value>
+  </data>
+  <data name="MagicClassWindow_ClassNameComboBox" xml:space="preserve">
+    <value>Choosing the right class for yourself AND your character will dictate the effectiveness of your character’s career.</value>
+  </data>
+  <data name="MagicClassWindow_LevelUpDown" xml:space="preserve">
+    <value>This class level determins the amount of usable spell slots, as well as the maximum spell level available.</value>
+  </data>
+  <data name="MagicClassWindow_SpellsUpDown" xml:space="preserve">
+    <value>The amount of total spells known to the class at this level.</value>
   </data>
   <data name="Names" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Json\Names.json;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -553,6 +580,48 @@
   <data name="ProficiencyWindow_ProficiencyTextComboBox" xml:space="preserve">
     <value>The name of the armors, weapons, or tools that a characters is proficient in.</value>
   </data>
+  <data name="PropertiesWindow_AlignmentComboBox" xml:space="preserve">
+    <value>A typical creature in the game world has an alignment, which broadly describes its moral and personal attitudes. Alignment is a combination of two factors: one identifies morality, and the other describes attitudes toward society and order.</value>
+  </data>
+  <data name="PropertiesWindow_BackgroundComboBox" xml:space="preserve">
+    <value>Every story has a beginning. Your character’s background reveals where you came from, how you became an adventurer, and your place in the world.</value>
+  </data>
+  <data name="PropertiesWindow_Class1Class" xml:space="preserve">
+    <value>Every adventurer is a member of a class. Class broadly describes a character’s vocation, what special talents he or she possesses, and the tactics he or she is most likely to employ.</value>
+  </data>
+  <data name="PropertiesWindow_Class1Level" xml:space="preserve">
+    <value>Typically, a character starts at 1st level and advances in level by adventuring and gaining experience points. A 1st-level character is inexperienced in the adventuring world</value>
+  </data>
+  <data name="PropertiesWindow_Class1Subclass" xml:space="preserve">
+    <value>Class is the primary definition of what your character can do, and Subclass refines it. It’s more than a profession; it’s your character’s calling.</value>
+  </data>
+  <data name="PropertiesWindow_Class2Class" xml:space="preserve">
+    <value>Every adventurer is a member of a class. Class broadly describes a character’s vocation, what special talents he or she possesses, and the tactics he or she is most likely to employ.</value>
+  </data>
+  <data name="PropertiesWindow_Class2Level" xml:space="preserve">
+    <value>Typically, a character starts at 1st level and advances in level by adventuring and gaining experience points. A 1st-level character is inexperienced in the adventuring world</value>
+  </data>
+  <data name="PropertiesWindow_Class2Subclass" xml:space="preserve">
+    <value>Class is the primary definition of what your character can do, and Subclass refines it. It’s more than a profession; it’s your character’s calling.</value>
+  </data>
+  <data name="PropertiesWindow_Class3Class" xml:space="preserve">
+    <value>Every adventurer is a member of a class. Class broadly describes a character’s vocation, what special talents he or she possesses, and the tactics he or she is most likely to employ.</value>
+  </data>
+  <data name="PropertiesWindow_Class3Level" xml:space="preserve">
+    <value>Typically, a character starts at 1st level and advances in level by adventuring and gaining experience points. A 1st-level character is inexperienced in the adventuring world</value>
+  </data>
+  <data name="PropertiesWindow_Class3Subclass" xml:space="preserve">
+    <value>Class is the primary definition of what your character can do, and Subclass refines it. It’s more than a profession; it’s your character’s calling.</value>
+  </data>
+  <data name="PropertiesWindow_NameTextBox" xml:space="preserve">
+    <value>Your character’s race description includes sample names for members of that race. Put some thought into your name even if you’re just picking one from a list.</value>
+  </data>
+  <data name="PropertiesWindow_RaceComboBox" xml:space="preserve">
+    <value>Every character belongs to a race, one of the many intelligent humanoid species in the D&amp;D world. The most common player character races are dwarves, elves, halflings, and humans.</value>
+  </data>
+  <data name="PropertiesWindow_SubRaceComboBox" xml:space="preserve">
+    <value>Just like the common Antelope can have differences within their species, some races also have subraces, such as mountain dwarf or wood elf.</value>
+  </data>
   <data name="Race" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Constants\Race.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
@@ -580,8 +649,149 @@
   <data name="SensesWindow_VisionComboBox" xml:space="preserve">
     <value>Visual traits granted to the player.</value>
   </data>
+  <data name="SettingsWindow_AutosaveCheckBox" xml:space="preserve">
+    <value>Concierge will automatically save at the set interval. This will always overwrite the current character.</value>
+  </data>
+  <data name="SettingsWindow_AutosaveInterval" xml:space="preserve">
+    <value>Sets the interval in minutes between autosaves.</value>
+  </data>
+  <data name="SettingsWindow_CheckVersionCheckBox" xml:space="preserve">
+    <value>This will check if a character was saved with a different major or minor version of Concierge.</value>
+  </data>
+  <data name="SettingsWindow_CoinWeightCheckBox" xml:space="preserve">
+    <value>Specifies if your money will weight you down.</value>
+  </data>
+  <data name="SettingsWindow_DefaultOpenCheckBox" xml:space="preserve">
+    <value>Will always open characters from the same directory.</value>
+  </data>
+  <data name="SettingsWindow_DefaultSaveCheckBox" xml:space="preserve">
+    <value>Will always save characters to the same directory.</value>
+  </data>
+  <data name="SettingsWindow_EncumbranceCheckBox" xml:space="preserve">
+    <value>Use encumbrance rules for your carry weight, based on the characters strength attribute.</value>
+  </data>
+  <data name="SettingsWindow_HeaderAlignmentComboBox" xml:space="preserve">
+    <value>Set how the text in the header bar is alighned. Everyone has different preferences.</value>
+  </data>
+  <data name="SettingsWindow_MuteCheckBox" xml:space="preserve">
+    <value>Toggle if button clicks and warning messages will play sound.</value>
+  </data>
+  <data name="SettingsWindow_OpenTextBox" xml:space="preserve">
+    <value>Default folder location for the "Open" dialog.</value>
+  </data>
+  <data name="SettingsWindow_SaveTextBox" xml:space="preserve">
+    <value>Default folder location for the "Save" dialog.</value>
+  </data>
+  <data name="SettingsWindow_UnitOfMeasurementComboBox" xml:space="preserve">
+    <value>D&amp;D is unfortunatly designed for feet and pounds, but metric is always an option.</value>
+  </data>
   <data name="Spell" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Json\Spell.json;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SpellSlotsWindow_Total1UpDown" xml:space="preserve">
+    <value>The maximum amount of usable 1st level spells.</value>
+  </data>
+  <data name="SpellSlotsWindow_Total2UpDown" xml:space="preserve">
+    <value>The maximum amount of usable 2nd level spells.</value>
+  </data>
+  <data name="SpellSlotsWindow_Total3UpDown" xml:space="preserve">
+    <value>The maximum amount of usable 3rd level spells.</value>
+  </data>
+  <data name="SpellSlotsWindow_Total4UpDown" xml:space="preserve">
+    <value>The maximum amount of usable 4th level spells.</value>
+  </data>
+  <data name="SpellSlotsWindow_Total5UpDown" xml:space="preserve">
+    <value>The maximum amount of usable 5th level spells.</value>
+  </data>
+  <data name="SpellSlotsWindow_Total6UpDown" xml:space="preserve">
+    <value>The maximum amount of usable 6th level spells.</value>
+  </data>
+  <data name="SpellSlotsWindow_Total7UpDown" xml:space="preserve">
+    <value>The maximum amount of usable 7th level spells.</value>
+  </data>
+  <data name="SpellSlotsWindow_Total8UpDown" xml:space="preserve">
+    <value>The maximum amount of usable 8th level spells.</value>
+  </data>
+  <data name="SpellSlotsWindow_Total9UpDown" xml:space="preserve">
+    <value>The maximum amount of usable 9th level spells.</value>
+  </data>
+  <data name="SpellSlotsWindow_TotalPactUpDown" xml:space="preserve">
+    <value>The maximum amount of usable Pact spells.</value>
+  </data>
+  <data name="SpellSlotsWindow_Used1UpDown" xml:space="preserve">
+    <value>The number of remaining 1st level spell slots.</value>
+  </data>
+  <data name="SpellSlotsWindow_Used2UpDown" xml:space="preserve">
+    <value>The number of remaining 2nd level spell slots.</value>
+  </data>
+  <data name="SpellSlotsWindow_Used3UpDown" xml:space="preserve">
+    <value>The number of remaining 3rd level spell slots.</value>
+  </data>
+  <data name="SpellSlotsWindow_Used4UpDown" xml:space="preserve">
+    <value>The number of remaining 4th level spell slots.</value>
+  </data>
+  <data name="SpellSlotsWindow_Used5UpDown" xml:space="preserve">
+    <value>The number of remaining 5th level spell slots.</value>
+  </data>
+  <data name="SpellSlotsWindow_Used6UpDown" xml:space="preserve">
+    <value>The number of remaining 6th level spell slots.</value>
+  </data>
+  <data name="SpellSlotsWindow_Used7UpDown" xml:space="preserve">
+    <value>The number of remaining 7th level spell slots.</value>
+  </data>
+  <data name="SpellSlotsWindow_Used8UpDown" xml:space="preserve">
+    <value>The number of remaining 8th level spell slots.</value>
+  </data>
+  <data name="SpellSlotsWindow_Used9UpDown" xml:space="preserve">
+    <value>The number of remaining 9th level spell slots.</value>
+  </data>
+  <data name="SpellSlotsWindow_UsedPactUpDown" xml:space="preserve">
+    <value>The number of remaining Pact spell slots.</value>
+  </data>
+  <data name="SpellWindow_AreaTextBox" xml:space="preserve">
+    <value>Typically will be one of five different shapes: cone, cube, cylinder, line, or sphere.</value>
+  </data>
+  <data name="SpellWindow_ClassComboBox" xml:space="preserve">
+    <value>The magic class this spell is associated with. This allows auto-calculating of certain values.</value>
+  </data>
+  <data name="SpellWindow_ComponentsTextBox" xml:space="preserve">
+    <value>A spell's components are the physical requirements you must meet in order to cast it. Each spell's description indicates whether it requires verbal (V), somatic (S), or material (M) components.</value>
+  </data>
+  <data name="SpellWindow_ConcentrationCheckBox" xml:space="preserve">
+    <value>Some spells require you to maintain concentration in order to keep their magic active. If you lose concentration, such a spell ends.</value>
+  </data>
+  <data name="SpellWindow_DamageTextBox" xml:space="preserve">
+    <value>Your attack bonus with a spell attack equals your spellcasting ability modifier + your proficiency bonus.</value>
+  </data>
+  <data name="SpellWindow_DurationTextBox" xml:space="preserve">
+    <value>A spell's duration is the length of time the spell persists. A duration can be expressed in rounds, minutes, hours, or even years. Some spells specify that their effects last until the spells are dispelled or destroyed.</value>
+  </data>
+  <data name="SpellWindow_LevelUpDown" xml:space="preserve">
+    <value>Every spell has a level from 0 to 9. A spell's level is a general indicator of how powerful it is, with the lowly (but still impressive) magic missile at 1st level and the earth-shaking wish at 9th.</value>
+  </data>
+  <data name="SpellWindow_NotesTextBox" xml:space="preserve">
+    <value>Spells can be versatile tools, weapons, or protective wards. They can deal damage or undo it, impose or remove conditions, drain life energy away, and restore life to the dead.</value>
+  </data>
+  <data name="SpellWindow_PageUpDown" xml:space="preserve">
+    <value>Refences that page the spell is found in the Player's Handbook.</value>
+  </data>
+  <data name="SpellWindow_PreparedCheckBox" xml:space="preserve">
+    <value>Before a spellcaster can use a spell, he or she must have the spell firmly fixed in mind, or must have access to the spell in a magic item.</value>
+  </data>
+  <data name="SpellWindow_RangeTextBox" xml:space="preserve">
+    <value>The target of a spell must be within the spell's range. For a spell like magic missile, the target is a creature. For a spell like fireball, the target is the point in space where the ball of fire erupts.</value>
+  </data>
+  <data name="SpellWindow_RitualCheckBox" xml:space="preserve">
+    <value>The ritual version of a spell takes 10 minutes longer to cast than normal. It also doesn't expend a spell slot, which means the ritual version of a spell can't be cast at a higher level.</value>
+  </data>
+  <data name="SpellWindow_SaveTextBox" xml:space="preserve">
+    <value>The DC to resist one of your spells equals 8 + your spellcasting ability modifier + your proficiency bonus + any special modifiers.</value>
+  </data>
+  <data name="SpellWindow_SchoolComboBox" xml:space="preserve">
+    <value>Academies of magic group spells into eight categories called schools of magic. These help describe spells; they have no rules of their own, although some rules refer to the schools.</value>
+  </data>
+  <data name="SpellWindow_SpellNameComboBox" xml:space="preserve">
+    <value>A discrete magical effect, a single shaping of the magical energies that suffuse the multiverse into a specific, limited expression.</value>
   </data>
   <data name="StatusEffect" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Json\StatusEffect.json;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>

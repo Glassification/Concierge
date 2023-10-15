@@ -47,6 +47,7 @@ namespace Concierge.Display
 
         private readonly FileAccessService fileAccessService = new ();
         private readonly AutosaveService autosaveTimer = new (new FileAccessService());
+        private readonly BackupService backupService = new (new FileAccessService(), ConciergeFiles.BackupDirectory);
         private readonly DateTimeWorkerService dateTimeService = new ();
         private readonly SystemWorkerService systemService = new ();
         private readonly AnimatedTimedTextWorkerService animatedTimedTextWorkerService = new (Common.Constants.StatusDisplayTime);
@@ -58,9 +59,6 @@ namespace Concierge.Display
 
             Program.UndoRedoService.StackChanged += this.UndoRedo_StackChanged;
             Program.ModifiedChanged += this.MainWindow_ModifiedChanged;
-            this.dateTimeService.TimeUpdated += this.MainWindow_TimeUpdated;
-            this.animatedTimedTextWorkerService.TextUpdated += this.MainWindow_TextUpdated;
-            this.systemService.SystemUpdated += this.MainWindow_SystemUpdated;
 
             this.GridContent.Width = GridContentWidthClose;
             this.IsMenuOpen = false;
@@ -72,15 +70,9 @@ namespace Concierge.Display
             this.ListViewMenu.SelectedIndex = 0;
             this.OverviewPage.Visibility = Visibility.Visible;
             this.FrameContent.Content = this.OverviewPage;
-            this.dateTimeService.StartWorker(string.Empty);
-            this.systemService.StartWorker(string.Empty);
-
             this.DataContext = this;
 
-            if (AppSettingsManager.UserSettings.Autosaving.Enabled)
-            {
-                this.autosaveTimer.Start(Defaults.CurrentAutosaveInterval);
-            }
+            this.StartServices();
 
             this.ButtonClose.ResetScaling();
             this.ButtonMinimize.ResetScaling();
@@ -444,6 +436,22 @@ namespace Concierge.Display
             if (o is MainWindow mainWindow)
             {
                 mainWindow.OnScaleValueChanged((double)e.OldValue, (double)e.NewValue);
+            }
+        }
+
+        private void StartServices()
+        {
+            this.dateTimeService.TimeUpdated += this.MainWindow_TimeUpdated;
+            this.animatedTimedTextWorkerService.TextUpdated += this.MainWindow_TextUpdated;
+            this.systemService.SystemUpdated += this.MainWindow_SystemUpdated;
+
+            this.dateTimeService.StartWorker(string.Empty);
+            this.systemService.StartWorker(string.Empty);
+
+            this.backupService.Start();
+            if (AppSettingsManager.UserSettings.Autosaving.Enabled)
+            {
+                this.autosaveTimer.Start(Defaults.CurrentAutosaveInterval);
             }
         }
 

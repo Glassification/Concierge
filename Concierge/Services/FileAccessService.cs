@@ -105,6 +105,15 @@ namespace Concierge.Services
             }
         }
 
+        public void Save(CcsFile ccsFile, string path)
+        {
+            ccsFile.Version = Program.AssemblyVersion;
+            ccsFile.LastSaveDate = DateTime.Now;
+            ccsFile.Hash = ConciergeHashing.HashData(ccsFile.Character);
+
+            this.readwriter.WriteJson(path, ccsFile);
+        }
+
         public bool SaveAs(CcsFile ccsFile)
         {
             if (ShouldUseDefaultSave())

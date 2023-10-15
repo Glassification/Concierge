@@ -17,6 +17,11 @@ namespace Concierge.Configuration.Objects
         }
 
         /// <summary>
+        /// Gets or sets a value indicating how many backup slots to maintain.
+        /// </summary>
+        public int MaxBackups { get; set; }
+
+        /// <summary>
         /// Gets or sets a value indicating whether to compress the character sheet when saving.
         /// </summary>
         public bool CompressCharacterSheet { get; set; }
