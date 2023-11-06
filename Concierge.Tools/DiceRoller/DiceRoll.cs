@@ -74,7 +74,7 @@ namespace Concierge.Tools.DiceRoller
                 str = $"{str.Trim(new char[] { ',', ' ' })})";
                 if (this.Modifier != 0)
                 {
-                    str = $"{str}{(this.Modifier > 0 ? " + " : " - ")}{this.Modifier}";
+                    str = $"{str}{(this.Modifier > 0 ? " + " : " - ")}{Math.Abs(this.Modifier)}";
                 }
 
                 return str;

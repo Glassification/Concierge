@@ -191,9 +191,15 @@
     </Style>
 
     <!--Spellcasting-->
-    <Style x:Key="SpellcastingDataGridStyle" TargetType="{x:Type DataGrid}">
+    <Style x:Key="MagicClassDataGridStyle" TargetType="{x:Type DataGrid}">
         <Setter Property="ColumnHeaderStyle" Value="{DynamicResource SpellcastingDataGridHeaderStyle}"/>
         <Setter Property="RowStyle" Value="{DynamicResource StandardDataGridRowStyle}"/>
+        <Setter Property="Background" Value="#2B2B2B" />
+        <Setter Property="AlternationCount" Value="2" />
+    </Style>
+    <Style x:Key="SpellcastingDataGridStyle" TargetType="{x:Type DataGrid}">
+        <Setter Property="ColumnHeaderStyle" Value="{DynamicResource SpellcastingDataGridHeaderStyle}"/>
+        <Setter Property="RowStyle" Value="{DynamicResource SpellcastingDataGridRowStyle}"/>
         <Setter Property="Background" Value="#2B2B2B" />
         <Setter Property="AlternationCount" Value="2" />
     </Style>
@@ -216,6 +222,31 @@
         <Setter Property="Margin" Value="10,10,10,10" />
         <Setter Property="TextWrapping" Value="Wrap"/>
         <Setter Property="FontSize" Value="12"/>
+    </Style>
+    <Style x:Key="SpellcastingDataGridRowStyle" TargetType="DataGridRow">
+        <EventSetter Event="MouseDoubleClick" Handler="DataGridRow_MouseDoubleClick"/>
+        <Setter Property="Tag" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type Page}}}"/>
+        <Style.Triggers>
+            <Trigger Property="ItemsControl.AlternationIndex" Value="0">
+                <Setter Property="Background" Value="#FF3e3e42"/>
+                <Setter Property="Foreground" Value="White"/>
+            </Trigger>
+            <Trigger Property="ItemsControl.AlternationIndex" Value="1">
+                <Setter Property="Background" Value="#2B2B2B"/>
+                <Setter Property="Foreground" Value="White"/>
+            </Trigger>
+            <DataTrigger Binding="{Binding CurrentConcentration}" Value="true">
+                <Setter Property="Background" Value="#33415C"/>
+                <Setter Property="Foreground" Value="White"/>
+                <Setter Property="ToolTip" Value="Concentrating on this spell"/>
+            </DataTrigger>
+            <Trigger Property="IsSelected" Value="True">
+                <Setter Property="Background" Value="#1C3947"/>
+                <Setter Property="BorderBrush" Value="#227EA9"/>
+                <Setter Property="BorderThickness" Value="1"/>
+                <Setter Property="Foreground" Value="White"/>
+            </Trigger>
+        </Style.Triggers>
     </Style>
     
     <!--Tools-->

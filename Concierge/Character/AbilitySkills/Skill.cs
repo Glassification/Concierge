@@ -8,7 +8,7 @@ namespace Concierge.Character.AbilitySkills
     using Concierge.Common;
     using Newtonsoft.Json;
 
-    public abstract class Skill : ICopyable<Skill>
+    public abstract class Skill : ICopyable<Skill>, IAbility
     {
         public bool Proficiency { get; set; }
 
@@ -17,7 +17,7 @@ namespace Concierge.Character.AbilitySkills
         public StatusChecks CheckOverride { get; set; }
 
         [JsonIgnore]
-        public abstract StatusChecks Checks { get; }
+        public abstract StatusChecks StatusChecks { get; }
 
         [JsonIgnore]
         public abstract int Bonus { get; }

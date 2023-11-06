@@ -88,7 +88,7 @@
                             Background="Green"
                             Margin="-1"
                             MouseUp="Grid_MouseUp">
-                            <StackPanel Orientation="Horizontal">
+                            <StackPanel Margin="0,-15,0,0" Orientation="Horizontal">
                                 <components:ConciergeTextBlock
                                     x:Name="CurrentHpField"
                                     Foreground="Black"
@@ -104,13 +104,13 @@
                                     FontSize="20"
                                     Foreground="Black"
                                     VerticalAlignment="Top"
-                                    Margin="5,20,0,0"/>
+                                    Margin="5,30,0,0"/>
                             </StackPanel>
                             
                             <components:ConciergeTextBlock 
                                 x:Name="TotalHpField"
                                 Foreground="Black"
-                                FontSize="30"
+                                FontSize="27"
                                 Margin="0,0,20,0"
                                 VerticalAlignment="Bottom"
                                 HorizontalAlignment="Right"/>

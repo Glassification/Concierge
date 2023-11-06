@@ -171,7 +171,7 @@ namespace Concierge.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Add any extra damage, status effects, or behaviours here..
+        ///   Looks up a localized string similar to Add any extra damage, status effects, or behaviors here..
         /// </summary>
         internal static string AmmunitionWindow_BonusTextBox {
             get {
@@ -261,7 +261,7 @@ namespace Concierge.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to A stong and tough character might be tall or just heavy..
+        ///   Looks up a localized string similar to A strong and tough character might be tall or just heavy..
         /// </summary>
         internal static string AppearanceWindow_FeetUpDown {
             get {
@@ -270,7 +270,7 @@ namespace Concierge.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Male, female, or even &apos;other&apos; characters don&apos;t gain any special benifits or hindrances..
+        ///   Looks up a localized string similar to Male, female, or even &apos;other&apos; characters don&apos;t gain any special benefits or hindrances..
         /// </summary>
         internal static string AppearanceWindow_GenderComboBox {
             get {
@@ -288,7 +288,7 @@ namespace Concierge.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to A stong and tough character might be tall or just heavy..
+        ///   Looks up a localized string similar to A strong and tough character might be tall or just heavy..
         /// </summary>
         internal static string AppearanceWindow_InchesUpDown {
             get {
@@ -343,15 +343,6 @@ namespace Concierge.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Armor might have a snazzy title..
-        /// </summary>
-        internal static string ArmorWindow_EquipedTextBox {
-            get {
-                return ResourceManager.GetString("ArmorWindow_EquipedTextBox", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Total of any magic bonuses that affect Armor Class..
         /// </summary>
         internal static string ArmorWindow_MagicArmorClassUpDown {
@@ -370,7 +361,7 @@ namespace Concierge.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Weilding a shield normally increases AC by 2..
+        ///   Looks up a localized string similar to Wielding a shield normally increases AC by 2..
         /// </summary>
         internal static string ArmorWindow_ShieldArmorClassUpDown {
             get {
@@ -397,7 +388,7 @@ namespace Concierge.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Unequipped armor will not provide any bonus or armor class imporvements..
+        ///   Looks up a localized string similar to Unequipped armor will not provide any bonus or armor class improvements..
         /// </summary>
         internal static string ArmorWindow_StatusComboBox {
             get {
@@ -1065,7 +1056,7 @@ namespace Concierge.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Current health from your pool remaning..
+        ///   Looks up a localized string similar to Current health from your pool remaining..
         /// </summary>
         internal static string HealthWindow_CurrentHpUpDown {
             get {
@@ -1083,7 +1074,7 @@ namespace Concierge.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The maximim health your character can heal to..
+        ///   Looks up a localized string similar to The maximum health your character can heal to..
         /// </summary>
         internal static string HealthWindow_TotalHpUpDown {
             get {
@@ -1111,7 +1102,7 @@ namespace Concierge.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Maximum d10 hit dice..
+        ///   Looks up a localized string similar to Maximum d10 hit dice available to be spent..
         /// </summary>
         internal static string HitDiceWindow_TotalD10UpDown {
             get {
@@ -1120,7 +1111,7 @@ namespace Concierge.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Maximum d12 hit dice..
+        ///   Looks up a localized string similar to Maximum d12 hit dice available to be spent..
         /// </summary>
         internal static string HitDiceWindow_TotalD12UpDown {
             get {
@@ -1129,7 +1120,7 @@ namespace Concierge.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Maximum d6 hit dice..
+        ///   Looks up a localized string similar to Maximum d6 hit dice available to be spent..
         /// </summary>
         internal static string HitDiceWindow_TotalD6UpDown {
             get {
@@ -1138,7 +1129,7 @@ namespace Concierge.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Maximum d8 hit dice..
+        ///   Looks up a localized string similar to Maximum d8 hit dice available to be spent..
         /// </summary>
         internal static string HitDiceWindow_TotalD8UpDown {
             get {
@@ -1147,7 +1138,7 @@ namespace Concierge.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Expended d10 hit dice..
+        ///   Looks up a localized string similar to Spend one or more d10 at the end of a short rest, up to the maximum..
         /// </summary>
         internal static string HitDiceWindow_UsedD10UpDown {
             get {
@@ -1156,7 +1147,7 @@ namespace Concierge.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Expended d12 hit dice..
+        ///   Looks up a localized string similar to Spend one or more d12 at the end of a short rest, up to the maximum..
         /// </summary>
         internal static string HitDiceWindow_UsedD12UpDown {
             get {
@@ -1165,7 +1156,7 @@ namespace Concierge.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Expended d6 hit dice..
+        ///   Looks up a localized string similar to Spend one or more d6 at the end of a short rest, up to the maximum..
         /// </summary>
         internal static string HitDiceWindow_UsedD6UpDown {
             get {
@@ -1174,7 +1165,7 @@ namespace Concierge.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Expended d8 hit dice..
+        ///   Looks up a localized string similar to Spend one or more d8 at the end of a short rest, up to the maximum..
         /// </summary>
         internal static string HitDiceWindow_UsedD8UpDown {
             get {
@@ -1283,7 +1274,7 @@ namespace Concierge.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Indeicates if the amount should decrease when the item is used..
+        ///   Looks up a localized string similar to Indicates if the amount should decrease when the item is used..
         /// </summary>
         internal static string InventoryWindow_ConsumableCheckBox {
             get {
@@ -1439,7 +1430,7 @@ namespace Concierge.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The amount of cantrips known the the class at this level. These do not burn a spell slots when used..
+        ///   Looks up a localized string similar to The amount of cantrips known the class at this level. These do not burn a spell slots when used..
         /// </summary>
         internal static string MagicClassWindow_CantripsUpDown {
             get {
@@ -1457,7 +1448,7 @@ namespace Concierge.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to This class level determins the amount of usable spell slots, as well as the maximum spell level available..
+        ///   Looks up a localized string similar to This class level determines the amount of usable spell slots, as well as the maximum spell level available..
         /// </summary>
         internal static string MagicClassWindow_LevelUpDown {
             get {
@@ -1759,7 +1750,61 @@ namespace Concierge.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Maximum a character may move on a given turn..
+        ///   Looks up a localized string similar to Set if a charisma saving throw will have no bonuses, advantage, disadvantage, always fail, or will automatically be set..
+        /// </summary>
+        internal static string SavingThrowWindow_CharismaComboBox {
+            get {
+                return ResourceManager.GetString("SavingThrowWindow_CharismaComboBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set if a constitution saving throw will have no bonuses, advantage, disadvantage, always fail, or will automatically be set..
+        /// </summary>
+        internal static string SavingThrowWindow_ConstitutionComboBox {
+            get {
+                return ResourceManager.GetString("SavingThrowWindow_ConstitutionComboBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set if a dexterity saving throw will have no bonuses, advantage, disadvantage, always fail, or will automatically be set..
+        /// </summary>
+        internal static string SavingThrowWindow_DexterityComboBox {
+            get {
+                return ResourceManager.GetString("SavingThrowWindow_DexterityComboBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set if an intelligence saving throw will have no bonuses, advantage, disadvantage, always fail, or will automatically be set..
+        /// </summary>
+        internal static string SavingThrowWindow_IntelligenceComboBox {
+            get {
+                return ResourceManager.GetString("SavingThrowWindow_IntelligenceComboBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set if a strength saving throw will have no bonuses, advantage, disadvantage, always fail, or will automatically be set..
+        /// </summary>
+        internal static string SavingThrowWindow_StrengthComboBox {
+            get {
+                return ResourceManager.GetString("SavingThrowWindow_StrengthComboBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set if a wisdom saving throw will have no bonuses, advantage, disadvantage, always fail, or will automatically be set..
+        /// </summary>
+        internal static string SavingThrowWindow_WisdomComboBox {
+            get {
+                return ResourceManager.GetString("SavingThrowWindow_WisdomComboBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The distance a character can walk in 1 round. This number assumes short bursts of energetic movement in the midst of a life-threatening situation..
         /// </summary>
         internal static string SensesWindow_BaseMovementUpDown {
             get {
@@ -1768,7 +1813,7 @@ namespace Concierge.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Extra bonus to initiative..
+        ///   Looks up a localized string similar to Intitiative determines the order of a turn during combat. A dexterity check sets a place in the initiative order..
         /// </summary>
         internal static string SensesWindow_InitiativeBonusUpDown {
             get {
@@ -1777,7 +1822,7 @@ namespace Concierge.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Determins if the player can roll an insperation die..
+        ///   Looks up a localized string similar to Inspiration dice are granted by the DM as a reward for roleplaying a character in a way that reflects their bonds, flaws, ideals, and personality traits..
         /// </summary>
         internal static string SensesWindow_InspirationCheckBox {
             get {
@@ -1795,7 +1840,7 @@ namespace Concierge.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Bonus to a characters awareness..
+        ///   Looks up a localized string similar to A characters ability to automatically notice details of their surroundings. This does not require a die roll..
         /// </summary>
         internal static string SensesWindow_PerceptionBonusUpDown {
             get {
@@ -1804,7 +1849,7 @@ namespace Concierge.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Visual traits granted to the player..
+        ///   Looks up a localized string similar to The most fundamental tasks of adventuring--noticing danger, finding hidden objects, hitting an enemy in combat, and targeting a spell, to name just a few--rely heavily on a character&apos;s ability to see..
         /// </summary>
         internal static string SensesWindow_VisionComboBox {
             get {
@@ -1917,6 +1962,168 @@ namespace Concierge.Properties {
         internal static string SettingsWindow_UnitOfMeasurementComboBox {
             get {
                 return ResourceManager.GetString("SettingsWindow_UnitOfMeasurementComboBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set if an acrobatics check will have no bonuses, advantage, disadvantage, always fail, or will automatically be set..
+        /// </summary>
+        internal static string SkillWindow_AcrobaticsComboBox {
+            get {
+                return ResourceManager.GetString("SkillWindow_AcrobaticsComboBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set if an animal handling check will have no bonuses, advantage, disadvantage, always fail, or will automatically be set..
+        /// </summary>
+        internal static string SkillWindow_AnimalHandlingComboBox {
+            get {
+                return ResourceManager.GetString("SkillWindow_AnimalHandlingComboBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set if an arcana check will have no bonuses, advantage, disadvantage, always fail, or will automatically be set..
+        /// </summary>
+        internal static string SkillWindow_ArcanaComboBox {
+            get {
+                return ResourceManager.GetString("SkillWindow_ArcanaComboBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set if an athletics check will have no bonuses, advantage, disadvantage, always fail, or will automatically be set..
+        /// </summary>
+        internal static string SkillWindow_AthleticsComboBox {
+            get {
+                return ResourceManager.GetString("SkillWindow_AthleticsComboBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set if a deception check will have no bonuses, advantage, disadvantage, always fail, or will automatically be set..
+        /// </summary>
+        internal static string SkillWindow_DeceptionComboBox {
+            get {
+                return ResourceManager.GetString("SkillWindow_DeceptionComboBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set if a history check will have no bonuses, advantage, disadvantage, always fail, or will automatically be set..
+        /// </summary>
+        internal static string SkillWindow_HistoryComboBox {
+            get {
+                return ResourceManager.GetString("SkillWindow_HistoryComboBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set if an insight check will have no bonuses, advantage, disadvantage, always fail, or will automatically be set..
+        /// </summary>
+        internal static string SkillWindow_InsightComboBox {
+            get {
+                return ResourceManager.GetString("SkillWindow_InsightComboBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set if an intimidation check will have no bonuses, advantage, disadvantage, always fail, or will automatically be set..
+        /// </summary>
+        internal static string SkillWindow_IntimidationComboBox {
+            get {
+                return ResourceManager.GetString("SkillWindow_IntimidationComboBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set if an investigation check will have no bonuses, advantage, disadvantage, always fail, or will automatically be set..
+        /// </summary>
+        internal static string SkillWindow_InvestigationComboBox {
+            get {
+                return ResourceManager.GetString("SkillWindow_InvestigationComboBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set if a medicine check will have no bonuses, advantage, disadvantage, always fail, or will automatically be set..
+        /// </summary>
+        internal static string SkillWindow_MedicineComboBox {
+            get {
+                return ResourceManager.GetString("SkillWindow_MedicineComboBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set if a nature check will have no bonuses, advantage, disadvantage, always fail, or will automatically be set..
+        /// </summary>
+        internal static string SkillWindow_NatureComboBox {
+            get {
+                return ResourceManager.GetString("SkillWindow_NatureComboBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set if a perception check will have no bonuses, advantage, disadvantage, always fail, or will automatically be set..
+        /// </summary>
+        internal static string SkillWindow_PerceptionComboBox {
+            get {
+                return ResourceManager.GetString("SkillWindow_PerceptionComboBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set if a performance check will have no bonuses, advantage, disadvantage, always fail, or will automatically be set..
+        /// </summary>
+        internal static string SkillWindow_PerformanceComboBox {
+            get {
+                return ResourceManager.GetString("SkillWindow_PerformanceComboBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set if a persuasion check will have no bonuses, advantage, disadvantage, always fail, or will automatically be set..
+        /// </summary>
+        internal static string SkillWindow_PersuasionComboBox {
+            get {
+                return ResourceManager.GetString("SkillWindow_PersuasionComboBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set if a religion check will have no bonuses, advantage, disadvantage, always fail, or will automatically be set..
+        /// </summary>
+        internal static string SkillWindow_ReligionComboBox {
+            get {
+                return ResourceManager.GetString("SkillWindow_ReligionComboBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set if a sleight of hand check will have no bonuses, advantage, disadvantage, always fail, or will automatically be set..
+        /// </summary>
+        internal static string SkillWindow_SleightOfHandComboBox {
+            get {
+                return ResourceManager.GetString("SkillWindow_SleightOfHandComboBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set if a stealth check will have no bonuses, advantage, disadvantage, always fail, or will automatically be set..
+        /// </summary>
+        internal static string SkillWindow_StealthComboBox {
+            get {
+                return ResourceManager.GetString("SkillWindow_StealthComboBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set if a survival check will have no bonuses, advantage, disadvantage, always fail, or will automatically be set..
+        /// </summary>
+        internal static string SkillWindow_SurvivalComboBox {
+            get {
+                return ResourceManager.GetString("SkillWindow_SurvivalComboBox", resourceCulture);
             }
         }
         

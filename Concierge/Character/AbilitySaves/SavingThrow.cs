@@ -8,8 +8,10 @@ namespace Concierge.Character.AbilitySaves
     using Concierge.Common;
     using Newtonsoft.Json;
 
-    public abstract class SavingThrow : ICopyable<SavingThrow>
+    public abstract class SavingThrow : ICopyable<SavingThrow>, IAbility
     {
+        public static SavingThrow Empty => new Strength();
+
         public bool Proficiency { get; set; }
 
         public StatusChecks CheckOverride { get; set; }

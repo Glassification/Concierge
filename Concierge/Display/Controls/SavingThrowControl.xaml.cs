@@ -16,6 +16,7 @@ namespace Concierge.Display.Controls
     using Concierge.Common;
     using Concierge.Display.Enums;
     using Concierge.Display.Pages;
+    using Concierge.Display.Windows.Utility;
     using Concierge.Services;
 
     /// <summary>
@@ -98,12 +99,13 @@ namespace Concierge.Display.Controls
             }
         }
 
-        public void SetStyle(bool proficiencyFlag, StatusChecks check)
+        public void SetStyle(SavingThrow savingThrow)
         {
-            this.ProficiencyBox.Fill = proficiencyFlag ? Brushes.SteelBlue : Brushes.Transparent;
+            this.Tag = savingThrow;
+            this.ProficiencyBox.Fill = savingThrow.Proficiency ? Brushes.SteelBlue : Brushes.Transparent;
 
-            SetTextStyleHelper(check, this.SavingThrowNameField);
-            SetTextStyleHelper(check, this.SavingThrowBonusField);
+            SetTextStyleHelper(savingThrow.StatusChecks, this.SavingThrowNameField);
+            SetTextStyleHelper(savingThrow.StatusChecks, this.SavingThrowBonusField);
         }
 
         private static void SetTextStyleHelper(StatusChecks check, TextBlock textBlock)
@@ -177,6 +179,14 @@ namespace Concierge.Display.Controls
             this.RaiseEvent(new RoutedEventArgs(ToggleClickedEvent));
 
             Program.UndoRedoService.AddCommand(new EditCommand<SavingThrows>(savingThrow, savingThrowCopy, ConciergePage.Overview));
+        }
+
+        private void SavingThrowField_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (this.Tag is SavingThrow savingThrow)
+            {
+                ConciergeWindowService.ShowAbilityCheckWindow(typeof(AbilityCheckWindow), savingThrow, 0);
+            }
         }
     }
 }

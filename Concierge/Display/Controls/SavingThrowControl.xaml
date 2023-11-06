@@ -41,7 +41,8 @@
                         Foreground="White"
                         FontSize="15"
                         FontWeight="Bold"
-                        VerticalAlignment="Center"/>
+                        VerticalAlignment="Center"
+                        MouseDown="SavingThrowField_MouseDown"/>
                 </Grid>
 
                 <!--Value-->
@@ -52,7 +53,8 @@
                         FontSize="17"
                         FontWeight="Bold"
                         HorizontalAlignment="Center"
-                        VerticalAlignment="Center"/>
+                        VerticalAlignment="Center"
+                        MouseDown="SavingThrowField_MouseDown"/>
                 </Grid>
             </Grid>
         </Border>

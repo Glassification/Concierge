@@ -166,12 +166,12 @@ namespace Concierge.Display.Controls
             SetDeathSaveStyleHelper(this.DeathSave5, deathSavingThrows.DeathSaves[4]);
         }
 
-        private static void SetDeathSaveStyleHelper(Ellipse ellipse, DeathSave deathSave)
+        private static void SetDeathSaveStyleHelper(Ellipse ellipse, AbilitySave deathSave)
         {
             ellipse.Fill = deathSave switch
             {
-                DeathSave.Failure => Brushes.IndianRed,
-                DeathSave.Success => ConciergeBrushes.Mint,
+                AbilitySave.Failure => Brushes.IndianRed,
+                AbilitySave.Success => ConciergeBrushes.Mint,
                 _ => ConciergeBrushes.ControlBackGray,
             };
         }
@@ -180,13 +180,13 @@ namespace Concierge.Display.Controls
         {
             var character = Program.CcsFile.Character;
 
-            if (character.Vitality.DeathSavingThrows.DeathSaveStatus != DeathSave.None)
+            if (character.Vitality.DeathSavingThrows.DeathSaveStatus != AbilitySave.None)
             {
                 return;
             }
 
             var oldItem = character.Vitality.DeathSavingThrows.DeepCopy();
-            character.Vitality.DeathSavingThrows.MakeDeathSave(DeathSave.Success);
+            character.Vitality.DeathSavingThrows.MakeDeathSave(AbilitySave.Success);
             Program.UndoRedoService.AddCommand(new EditCommand<DeathSavingThrows>(character.Vitality.DeathSavingThrows, oldItem, ConciergePage.Overview));
 
             this.RaiseEvent(new RoutedEventArgs(SaveClickedEvent));
@@ -196,13 +196,13 @@ namespace Concierge.Display.Controls
         {
             var character = Program.CcsFile.Character;
 
-            if (character.Vitality.DeathSavingThrows.DeathSaveStatus != DeathSave.None)
+            if (character.Vitality.DeathSavingThrows.DeathSaveStatus != AbilitySave.None)
             {
                 return;
             }
 
             var oldItem = character.Vitality.DeathSavingThrows.DeepCopy();
-            character.Vitality.DeathSavingThrows.MakeDeathSave(DeathSave.Failure);
+            character.Vitality.DeathSavingThrows.MakeDeathSave(AbilitySave.Failure);
             Program.UndoRedoService.AddCommand(new EditCommand<DeathSavingThrows>(character.Vitality.DeathSavingThrows, oldItem, ConciergePage.Overview));
 
             this.RaiseEvent(new RoutedEventArgs(SaveClickedEvent));

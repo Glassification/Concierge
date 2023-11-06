@@ -1,10 +1,10 @@
-﻿// <copyright file="DeathSave.cs" company="Thomas Beckett">
+﻿// <copyright file="AbilitySave.cs" company="Thomas Beckett">
 // Copyright (c) Thomas Beckett. All rights reserved.
 // </copyright>
 
 namespace Concierge.Character.Enums
 {
-    public enum DeathSave
+    public enum AbilitySave
     {
         None,
         Success,

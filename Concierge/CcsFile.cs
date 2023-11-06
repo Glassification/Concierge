@@ -6,6 +6,7 @@ namespace Concierge
 {
     using System;
     using System.IO;
+    using System.Linq;
     using System.Text.RegularExpressions;
 
     using Concierge.Character;
@@ -128,6 +129,15 @@ namespace Concierge
             foreach (var weapon in this.Character.Companion.Equipment.Weapons)
             {
                 weapon.Initialize(this.Character.Companion);
+            }
+
+            var concentratedSpells = this.Character.Magic.Spells.Where(x => x.CurrentConcentration).ToList();
+            if (concentratedSpells.Count > 1)
+            {
+                foreach (var spell in concentratedSpells)
+                {
+                    spell.CurrentConcentration = false;
+                }
             }
 
             this.IsInitialized = true;

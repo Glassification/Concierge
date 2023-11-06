@@ -98,6 +98,7 @@ namespace Concierge
                 var currentBuildStr = reg?.GetValue("CurrentBuild") as string;
                 if (int.TryParse(currentBuildStr, out int currentBuild))
                 {
+                    Logger.Info($"Found current Windows version: {currentBuild}.");
                     buildNumber = currentBuild;
                     return currentBuild >= 22000;
                 }

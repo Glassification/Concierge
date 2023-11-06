@@ -18,16 +18,16 @@ namespace Concierge.Character.Vitals
 
         public DeathSavingThrows()
         {
-            this.DeathSaves = new List<DeathSave>();
+            this.DeathSaves = new List<AbilitySave>();
             this.CurrentDeathSave = 0;
         }
 
         [JsonIgnore]
-        public DeathSave DeathSaveStatus => this.HasRequiredInARow(DeathSave.Failure) ? DeathSave.Failure : this.HasRequiredInARow(DeathSave.Success) ? DeathSave.Success : DeathSave.None;
+        public AbilitySave DeathSaveStatus => this.HasRequiredInARow(AbilitySave.Failure) ? AbilitySave.Failure : this.HasRequiredInARow(AbilitySave.Success) ? AbilitySave.Success : AbilitySave.None;
 
         public int CurrentDeathSave { get; set; }
 
-        public List<DeathSave> DeathSaves { get; set; }
+        public List<AbilitySave> DeathSaves { get; set; }
 
         public void LazyInitialize()
         {
@@ -37,7 +37,7 @@ namespace Concierge.Character.Vitals
             }
         }
 
-        public void MakeDeathSave(DeathSave deathSave)
+        public void MakeDeathSave(AbilitySave deathSave)
         {
             this.LazyInitialize();
             if (this.CurrentDeathSave < MaxDeathSaves)
@@ -55,7 +55,7 @@ namespace Concierge.Character.Vitals
 
             for (int i = 0; i < MaxDeathSaves; i++)
             {
-                this.DeathSaves.Add(DeathSave.None);
+                this.DeathSaves.Add(AbilitySave.None);
             }
         }
 
@@ -64,11 +64,11 @@ namespace Concierge.Character.Vitals
             return new DeathSavingThrows()
             {
                 CurrentDeathSave = this.CurrentDeathSave,
-                DeathSaves = new List<DeathSave>(this.DeathSaves),
+                DeathSaves = new List<AbilitySave>(this.DeathSaves),
             };
         }
 
-        private bool HasRequiredInARow(DeathSave deathSave)
+        private bool HasRequiredInARow(AbilitySave deathSave)
         {
             var count = 0;
 

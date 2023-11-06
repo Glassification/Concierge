@@ -7,6 +7,7 @@ namespace Concierge.Services
     using System;
 
     using Concierge.Character;
+    using Concierge.Character.AbilitySaves;
     using Concierge.Character.Enums;
     using Concierge.Data;
     using Concierge.Display.Components;
@@ -137,15 +138,15 @@ namespace Concierge.Services
             return conciergeWindow.ShowUseItemWindow(usedItem);
         }
 
-        public static PopupButtons ShowPopup(Type typeOfWindow)
+        public static AbilitySave ShowAbilityCheckWindow(Type typeOfWindow, IAbility ability, int value)
         {
             var conciergeWindow = (ConciergeWindow?)Activator.CreateInstance(typeOfWindow);
             if (conciergeWindow is null)
             {
-                return PopupButtons.None;
+                return AbilitySave.None;
             }
 
-            return conciergeWindow.ShowPopup();
+            return conciergeWindow.ShowAbilityCheckWindow(ability, value);
         }
 
         public static object? ShowWindow(Type typeOfWindow)

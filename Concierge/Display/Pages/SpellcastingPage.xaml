@@ -137,7 +137,7 @@
                     <components:ConciergeDataGrid 
                         Grid.Row="1"
                         x:Name="MagicClassDataGrid"
-                        Style="{DynamicResource SpellcastingDataGridStyle}"
+                        Style="{DynamicResource MagicClassDataGridStyle}"
                         SelectionChanged="MagicClassDataGrid_SelectionChanged"
                         Sorted="MagicClassDataGrid_Sorted"
                         Margin="5,0,5,0">
@@ -258,6 +258,15 @@
                                 Click="SpellDownButton_Click"
                                 ToolTip="Move Selected Spell Down">
                                 <materialDesign:PackIcon Kind="ArrowDownBox" Width="25" Height="25"/>
+                            </components:ConciergeDesignButton>
+                            <components:ConciergeDesignButton 
+                                Style="{StaticResource ConciergeDesignButtonStyle}" 
+                                x:Name="SpellClearConcentrationButton"
+                                Width="60"
+                                Foreground="#B9487B"
+                                Click="SpellClearConcentrationButton_Click"
+                                ToolTip="Clear Concentrated Spell">
+                                <materialDesign:PackIcon Kind="CloudCancel" Width="25" Height="25"/>
                             </components:ConciergeDesignButton>
                             <components:ConciergeDesignButton 
                                 Style="{StaticResource ConciergeDesignButtonStyle}" 

@@ -103,6 +103,8 @@ namespace Concierge.Character.Spellcasting
 
         public ArcaneSchools School { get; set; }
 
+        public bool CurrentConcentration { get; set; }
+
         public override string ToString()
         {
             return this.Name;
@@ -129,6 +131,7 @@ namespace Concierge.Character.Spellcasting
                 Id = this.Id,
                 Name = this.Name,
                 IsCustom = this.IsCustom,
+                CurrentConcentration = this.CurrentConcentration,
             };
         }
 

@@ -18,7 +18,7 @@ namespace Concierge.Character.AbilitySkills
             this.CheckOverride = checkOverride;
         }
 
-        public override StatusChecks Checks =>
+        public override StatusChecks StatusChecks =>
             this.CheckOverride != StatusChecks.Auto
             ? this.CheckOverride
             : Program.CcsFile.Character.Vitality.Conditions.Fatigued.ExhaustionLevel == ExhaustionLevel.One ||

@@ -54,7 +54,8 @@
                         Foreground="White"
                         FontSize="15"
                         FontWeight="Bold"
-                        VerticalAlignment="Center"/>
+                        VerticalAlignment="Center"
+                        MouseDown="SkillField_MouseDown"/>
                 </Grid>
 
                 <!--Value-->
@@ -65,7 +66,8 @@
                         FontSize="17"
                         FontWeight="Bold"
                         HorizontalAlignment="Center"
-                        VerticalAlignment="Center"/>
+                        VerticalAlignment="Center"
+                        MouseDown="SkillField_MouseDown"/>
                 </Grid>
             </Grid>
         </Border>

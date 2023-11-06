@@ -37,6 +37,11 @@ namespace Concierge.Common
         public const int BaseDC = 8;
 
         /// <summary>
+        /// The base DC (Difficulty Class) for maintaining concentration.
+        /// </summary>
+        public const int BaseConcentrationDC = 10;
+
+        /// <summary>
         /// The number of coins in a group.
         /// </summary>
         public const int CoinGroup = 50;
@@ -118,12 +123,24 @@ namespace Concierge.Common
 
         /// <summary>
         /// Calculates the bonus value based on a given score.
+        /// Subtract 10 from the ability score and then divides the total by 2 (rounded down).
         /// </summary>
         /// <param name="score">The score to calculate the bonus for.</param>
         /// <returns>The calculated bonus value.</returns>
         public static int Bonus(int score)
         {
             return (int)Math.Floor((score - 10) / 2.0);
+        }
+
+        /// <summary>
+        /// Calculates the DC (Difficulty Class) of a concentration check.
+        /// Divides the damage by 2 (rounded down), and takes the greater of the result or 10.
+        /// </summary>
+        /// <param name="damage">The damage to calculate the concentration check for.</param>
+        /// <returns>The calculated bonus value.</returns>
+        public static int Concentration(int damage)
+        {
+            return Math.Max((int)Math.Floor(damage / 2.0), 10);
         }
     }
 }

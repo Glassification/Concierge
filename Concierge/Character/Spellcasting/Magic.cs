@@ -9,6 +9,8 @@ namespace Concierge.Character.Spellcasting
     using System.Linq;
 
     using Concierge.Common;
+    using Concierge.Common.Attributes;
+    using Concierge.Common.Exceptions;
     using Concierge.Common.Extensions;
     using Newtonsoft.Json;
 
@@ -28,6 +30,10 @@ namespace Concierge.Character.Spellcasting
         public SpellSlots SpellSlots { get; set; }
 
         [JsonIgnore]
+        [SearchIgnore]
+        public Spell? ConcentratedSpell => this.Spells.Where(x => x.CurrentConcentration).FirstOrDefault();
+
+        [JsonIgnore]
         public int CasterLevel
         {
             get
@@ -39,6 +45,28 @@ namespace Concierge.Character.Spellcasting
                 }
 
                 return level;
+            }
+        }
+
+        public void SetConcentration(Spell spell)
+        {
+            this.ClearConcentration();
+            spell.CurrentConcentration = true;
+        }
+
+        public void ClearConcentration()
+        {
+            try
+            {
+                var concentration = this.Spells.SingleOrDefault(x => x.CurrentConcentration);
+                if (concentration is not null)
+                {
+                    concentration.CurrentConcentration = false;
+                }
+            }
+            catch (Exception)
+            {
+                Program.ErrorService.LogError(new InvalidListException($"This {nameof(this.Spells)} list has {this.Spells.Count} elements. There should only be 1 or 0."));
             }
         }
 

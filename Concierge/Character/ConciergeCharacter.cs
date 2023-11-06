@@ -134,11 +134,13 @@ namespace Concierge.Character
             var oldVitality = this.Vitality.DeepCopy();
             var oldSpellSlots = this.Magic.SpellSlots.DeepCopy();
             var oldCompanionVitality = this.Companion.Vitality.DeepCopy();
+            var oldConcentratedSpell = this.Magic.ConcentratedSpell;
 
             this.Vitality.ResetHealth();
             this.Vitality.RegainHitDice();
             this.Vitality.ResetDeathSaves();
             this.Magic.SpellSlots.Reset();
+            this.Magic.ClearConcentration();
 
             this.Companion.Vitality.ResetHealth();
             this.Companion.Vitality.RegainHitDice();
@@ -148,6 +150,7 @@ namespace Concierge.Character
                     oldVitality,
                     oldCompanionVitality,
                     oldSpellSlots,
+                    oldConcentratedSpell,
                     this.Vitality.DeepCopy(),
                     this.Companion.Vitality.DeepCopy(),
                     this.Magic.SpellSlots.DeepCopy()));

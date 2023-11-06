@@ -152,7 +152,7 @@
     <value>Resources\Json\Ammunition.json;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="AmmunitionWindow_BonusTextBox" xml:space="preserve">
-    <value>Add any extra damage, status effects, or behaviours here.</value>
+    <value>Add any extra damage, status effects, or behaviors here.</value>
   </data>
   <data name="AmmunitionWindow_CoinTypeComboBox" xml:space="preserve">
     <value>Specify the denomination so you don't have to worry about math.</value>
@@ -182,16 +182,16 @@
     <value>Select a distinctive eye colour.</value>
   </data>
   <data name="AppearanceWindow_FeetUpDown" xml:space="preserve">
-    <value>A stong and tough character might be tall or just heavy.</value>
+    <value>A strong and tough character might be tall or just heavy.</value>
   </data>
   <data name="AppearanceWindow_GenderComboBox" xml:space="preserve">
-    <value>Male, female, or even 'other' characters don't gain any special benifits or hindrances.</value>
+    <value>Male, female, or even 'other' characters don't gain any special benefits or hindrances.</value>
   </data>
   <data name="AppearanceWindow_HairColourTextBox" xml:space="preserve">
     <value>Choose an interesting hair colour.</value>
   </data>
   <data name="AppearanceWindow_InchesUpDown" xml:space="preserve">
-    <value>A stong and tough character might be tall or just heavy.</value>
+    <value>A strong and tough character might be tall or just heavy.</value>
   </data>
   <data name="AppearanceWindow_SkinColourTextBox" xml:space="preserve">
     <value>Select a reasonable skin colour. Or don't. I'm just text, I can't stop you.</value>
@@ -208,9 +208,6 @@
   <data name="ArmorWindow_ArmorNameComboBox" xml:space="preserve">
     <value>This could be the generic type of armor equipped, or a spectacular named set of armor. Or anything in between.</value>
   </data>
-  <data name="ArmorWindow_EquipedTextBox" xml:space="preserve">
-    <value>Armor might have a snazzy title.</value>
-  </data>
   <data name="ArmorWindow_MagicArmorClassUpDown" xml:space="preserve">
     <value>Total of any magic bonuses that affect Armor Class.</value>
   </data>
@@ -218,7 +215,7 @@
     <value>Total of any status bonuses that affect Armor Class.</value>
   </data>
   <data name="ArmorWindow_ShieldArmorClassUpDown" xml:space="preserve">
-    <value>Weilding a shield normally increases AC by 2.</value>
+    <value>Wielding a shield normally increases AC by 2.</value>
   </data>
   <data name="ArmorWindow_ShieldTextBox" xml:space="preserve">
     <value>Usually made from wood or metal and carried in one hand.</value>
@@ -227,7 +224,7 @@
     <value>Generally weighs more than 0.</value>
   </data>
   <data name="ArmorWindow_StatusComboBox" xml:space="preserve">
-    <value>Unequipped armor will not provide any bonus or armor class imporvements.</value>
+    <value>Unequipped armor will not provide any bonus or armor class improvements.</value>
   </data>
   <data name="ArmorWindow_StealthComboBox" xml:space="preserve">
     <value>Determines if the wearer has disadvantage on stealth checks.</value>
@@ -425,13 +422,13 @@
     <value>..\Resources\Glossary.json;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="HealthWindow_CurrentHpUpDown" xml:space="preserve">
-    <value>Current health from your pool remaning.</value>
+    <value>Current health from your pool remaining.</value>
   </data>
   <data name="HealthWindow_TemporaryHpUpDown" xml:space="preserve">
     <value>Temporary bonus to HP. This might allow you to increase health beyond the normal maximum. Damage will drain from this pool first.</value>
   </data>
   <data name="HealthWindow_TotalHpUpDown" xml:space="preserve">
-    <value>The maximim health your character can heal to.</value>
+    <value>The maximum health your character can heal to.</value>
   </data>
   <data name="hey-whats-going-on" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Videos\hey-whats-going-on.wmv;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -440,28 +437,28 @@
     <value>Resources\Sounds\HighPitchTapSoundLoud.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="HitDiceWindow_TotalD10UpDown" xml:space="preserve">
-    <value>Maximum d10 hit dice.</value>
+    <value>Maximum d10 hit dice available to be spent.</value>
   </data>
   <data name="HitDiceWindow_TotalD12UpDown" xml:space="preserve">
-    <value>Maximum d12 hit dice.</value>
+    <value>Maximum d12 hit dice available to be spent.</value>
   </data>
   <data name="HitDiceWindow_TotalD6UpDown" xml:space="preserve">
-    <value>Maximum d6 hit dice.</value>
+    <value>Maximum d6 hit dice available to be spent.</value>
   </data>
   <data name="HitDiceWindow_TotalD8UpDown" xml:space="preserve">
-    <value>Maximum d8 hit dice.</value>
+    <value>Maximum d8 hit dice available to be spent.</value>
   </data>
   <data name="HitDiceWindow_UsedD10UpDown" xml:space="preserve">
-    <value>Expended d10 hit dice.</value>
+    <value>Spend one or more d10 at the end of a short rest, up to the maximum.</value>
   </data>
   <data name="HitDiceWindow_UsedD12UpDown" xml:space="preserve">
-    <value>Expended d12 hit dice.</value>
+    <value>Spend one or more d12 at the end of a short rest, up to the maximum.</value>
   </data>
   <data name="HitDiceWindow_UsedD6UpDown" xml:space="preserve">
-    <value>Expended d6 hit dice.</value>
+    <value>Spend one or more d6 at the end of a short rest, up to the maximum.</value>
   </data>
   <data name="HitDiceWindow_UsedD8UpDown" xml:space="preserve">
-    <value>Expended d8 hit dice.</value>
+    <value>Spend one or more d8 at the end of a short rest, up to the maximum.</value>
   </data>
   <data name="HpWindow_HpUpDown" xml:space="preserve">
     <value>The amount of healing or damage to take. 10 points to Gryffindor!</value>
@@ -494,7 +491,7 @@
     <value>Specify the denomination so you don't have to worry about math.</value>
   </data>
   <data name="InventoryWindow_ConsumableCheckBox" xml:space="preserve">
-    <value>Indeicates if the amount should decrease when the item is used.</value>
+    <value>Indicates if the amount should decrease when the item is used.</value>
   </data>
   <data name="InventoryWindow_DescriptionTextBox" xml:space="preserve">
     <value>Describe, in detail, why your character looted this item.</value>
@@ -539,13 +536,13 @@
     <value>The ability used by the class to cast spells. For example Wizards, Artificers, and Druids are magic users that cast with Intelligence and Wisdom. </value>
   </data>
   <data name="MagicClassWindow_CantripsUpDown" xml:space="preserve">
-    <value>The amount of cantrips known the the class at this level. These do not burn a spell slots when used.</value>
+    <value>The amount of cantrips known the class at this level. These do not burn a spell slots when used.</value>
   </data>
   <data name="MagicClassWindow_ClassNameComboBox" xml:space="preserve">
     <value>Choosing the right class for yourself AND your character will dictate the effectiveness of your character’s career.</value>
   </data>
   <data name="MagicClassWindow_LevelUpDown" xml:space="preserve">
-    <value>This class level determins the amount of usable spell slots, as well as the maximum spell level available.</value>
+    <value>This class level determines the amount of usable spell slots, as well as the maximum spell level available.</value>
   </data>
   <data name="MagicClassWindow_SpellsUpDown" xml:space="preserve">
     <value>The amount of total spells known to the class at this level.</value>
@@ -631,23 +628,41 @@
   <data name="ResourceValidation" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\ResourceValidation.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
+  <data name="SavingThrowWindow_CharismaComboBox" xml:space="preserve">
+    <value>Set if a charisma saving throw will have no bonuses, advantage, disadvantage, always fail, or will automatically be set.</value>
+  </data>
+  <data name="SavingThrowWindow_ConstitutionComboBox" xml:space="preserve">
+    <value>Set if a constitution saving throw will have no bonuses, advantage, disadvantage, always fail, or will automatically be set.</value>
+  </data>
+  <data name="SavingThrowWindow_DexterityComboBox" xml:space="preserve">
+    <value>Set if a dexterity saving throw will have no bonuses, advantage, disadvantage, always fail, or will automatically be set.</value>
+  </data>
+  <data name="SavingThrowWindow_IntelligenceComboBox" xml:space="preserve">
+    <value>Set if an intelligence saving throw will have no bonuses, advantage, disadvantage, always fail, or will automatically be set.</value>
+  </data>
+  <data name="SavingThrowWindow_StrengthComboBox" xml:space="preserve">
+    <value>Set if a strength saving throw will have no bonuses, advantage, disadvantage, always fail, or will automatically be set.</value>
+  </data>
+  <data name="SavingThrowWindow_WisdomComboBox" xml:space="preserve">
+    <value>Set if a wisdom saving throw will have no bonuses, advantage, disadvantage, always fail, or will automatically be set.</value>
+  </data>
   <data name="SensesWindow_BaseMovementUpDown" xml:space="preserve">
-    <value>Maximum a character may move on a given turn.</value>
+    <value>The distance a character can walk in 1 round. This number assumes short bursts of energetic movement in the midst of a life-threatening situation.</value>
   </data>
   <data name="SensesWindow_InitiativeBonusUpDown" xml:space="preserve">
-    <value>Extra bonus to initiative.</value>
+    <value>Intitiative determines the order of a turn during combat. A dexterity check sets a place in the initiative order.</value>
   </data>
   <data name="SensesWindow_InspirationCheckBox" xml:space="preserve">
-    <value>Determins if the player can roll an insperation die.</value>
+    <value>Inspiration dice are granted by the DM as a reward for roleplaying a character in a way that reflects their bonds, flaws, ideals, and personality traits.</value>
   </data>
   <data name="SensesWindow_MovementBonusUpDown" xml:space="preserve">
     <value>Additional increase to a players maximum movement speed.</value>
   </data>
   <data name="SensesWindow_PerceptionBonusUpDown" xml:space="preserve">
-    <value>Bonus to a characters awareness.</value>
+    <value>A characters ability to automatically notice details of their surroundings. This does not require a die roll.</value>
   </data>
   <data name="SensesWindow_VisionComboBox" xml:space="preserve">
-    <value>Visual traits granted to the player.</value>
+    <value>The most fundamental tasks of adventuring--noticing danger, finding hidden objects, hitting an enemy in combat, and targeting a spell, to name just a few--rely heavily on a character's ability to see.</value>
   </data>
   <data name="SettingsWindow_AutosaveCheckBox" xml:space="preserve">
     <value>Concierge will automatically save at the set interval. This will always overwrite the current character.</value>
@@ -684,6 +699,60 @@
   </data>
   <data name="SettingsWindow_UnitOfMeasurementComboBox" xml:space="preserve">
     <value>D&amp;D is unfortunatly designed for feet and pounds, but metric is always an option.</value>
+  </data>
+  <data name="SkillWindow_AcrobaticsComboBox" xml:space="preserve">
+    <value>Set if an acrobatics check will have no bonuses, advantage, disadvantage, always fail, or will automatically be set.</value>
+  </data>
+  <data name="SkillWindow_AnimalHandlingComboBox" xml:space="preserve">
+    <value>Set if an animal handling check will have no bonuses, advantage, disadvantage, always fail, or will automatically be set.</value>
+  </data>
+  <data name="SkillWindow_ArcanaComboBox" xml:space="preserve">
+    <value>Set if an arcana check will have no bonuses, advantage, disadvantage, always fail, or will automatically be set.</value>
+  </data>
+  <data name="SkillWindow_AthleticsComboBox" xml:space="preserve">
+    <value>Set if an athletics check will have no bonuses, advantage, disadvantage, always fail, or will automatically be set.</value>
+  </data>
+  <data name="SkillWindow_DeceptionComboBox" xml:space="preserve">
+    <value>Set if a deception check will have no bonuses, advantage, disadvantage, always fail, or will automatically be set.</value>
+  </data>
+  <data name="SkillWindow_HistoryComboBox" xml:space="preserve">
+    <value>Set if a history check will have no bonuses, advantage, disadvantage, always fail, or will automatically be set.</value>
+  </data>
+  <data name="SkillWindow_InsightComboBox" xml:space="preserve">
+    <value>Set if an insight check will have no bonuses, advantage, disadvantage, always fail, or will automatically be set.</value>
+  </data>
+  <data name="SkillWindow_IntimidationComboBox" xml:space="preserve">
+    <value>Set if an intimidation check will have no bonuses, advantage, disadvantage, always fail, or will automatically be set.</value>
+  </data>
+  <data name="SkillWindow_InvestigationComboBox" xml:space="preserve">
+    <value>Set if an investigation check will have no bonuses, advantage, disadvantage, always fail, or will automatically be set.</value>
+  </data>
+  <data name="SkillWindow_MedicineComboBox" xml:space="preserve">
+    <value>Set if a medicine check will have no bonuses, advantage, disadvantage, always fail, or will automatically be set.</value>
+  </data>
+  <data name="SkillWindow_NatureComboBox" xml:space="preserve">
+    <value>Set if a nature check will have no bonuses, advantage, disadvantage, always fail, or will automatically be set.</value>
+  </data>
+  <data name="SkillWindow_PerceptionComboBox" xml:space="preserve">
+    <value>Set if a perception check will have no bonuses, advantage, disadvantage, always fail, or will automatically be set.</value>
+  </data>
+  <data name="SkillWindow_PerformanceComboBox" xml:space="preserve">
+    <value>Set if a performance check will have no bonuses, advantage, disadvantage, always fail, or will automatically be set.</value>
+  </data>
+  <data name="SkillWindow_PersuasionComboBox" xml:space="preserve">
+    <value>Set if a persuasion check will have no bonuses, advantage, disadvantage, always fail, or will automatically be set.</value>
+  </data>
+  <data name="SkillWindow_ReligionComboBox" xml:space="preserve">
+    <value>Set if a religion check will have no bonuses, advantage, disadvantage, always fail, or will automatically be set.</value>
+  </data>
+  <data name="SkillWindow_SleightOfHandComboBox" xml:space="preserve">
+    <value>Set if a sleight of hand check will have no bonuses, advantage, disadvantage, always fail, or will automatically be set.</value>
+  </data>
+  <data name="SkillWindow_StealthComboBox" xml:space="preserve">
+    <value>Set if a stealth check will have no bonuses, advantage, disadvantage, always fail, or will automatically be set.</value>
+  </data>
+  <data name="SkillWindow_SurvivalComboBox" xml:space="preserve">
+    <value>Set if a survival check will have no bonuses, advantage, disadvantage, always fail, or will automatically be set.</value>
   </data>
   <data name="Spell" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Json\Spell.json;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>

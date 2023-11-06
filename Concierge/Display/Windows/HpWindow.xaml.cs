@@ -6,16 +6,21 @@ namespace Concierge.Display.Windows
 {
     using System.Windows;
 
+    using Concierge.Character.Enums;
     using Concierge.Character.Vitals;
     using Concierge.Commands;
     using Concierge.Display.Components;
     using Concierge.Display.Enums;
+    using Concierge.Display.Windows.Utility;
+    using Concierge.Services;
 
     /// <summary>
     /// Interaction logic for HpWindow.xaml.
     /// </summary>
     public partial class HpWindow : ConciergeWindow
     {
+        private AbilitySave abilitySave;
+
         public HpWindow()
         {
             this.InitializeComponent();
@@ -81,7 +86,18 @@ namespace Concierge.Display.Windows
             {
                 var oldItem = castItem.Health.DeepCopy();
                 castItem.Damage(this.HpUpDown.Value);
-                Program.UndoRedoService.AddCommand(new EditCommand<Health>(castItem.Health, oldItem, this.ConciergePage));
+                Program.UndoRedoService.AddCommand(
+                    new DamageCommand(
+                        castItem,
+                        oldItem,
+                        castItem.Health.DeepCopy(),
+                        this.abilitySave != AbilitySave.Success ? Program.CcsFile.Character.Magic.ConcentratedSpell : null,
+                        this.ConciergePage));
+
+                if (this.abilitySave == AbilitySave.Failure)
+                {
+                    Program.CcsFile.Character.Magic.ClearConcentration();
+                }
             }
 
             return this.Result;
@@ -99,6 +115,20 @@ namespace Concierge.Display.Windows
             }
         }
 
+        private void ConcentrationCheck(int damage)
+        {
+            var concentratedSpell = Program.CcsFile.Character.Magic.ConcentratedSpell;
+            if (this.ConciergePage != ConciergePage.Overview || concentratedSpell is null)
+            {
+                return;
+            }
+
+            this.abilitySave = ConciergeWindowService.ShowAbilityCheckWindow(
+                typeof(ConcentrationCheckWindow),
+                Program.CcsFile.Character.SavingThrows.Constitution,
+                damage);
+        }
+
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             this.Result = ConciergeWindowResult.Exit;
@@ -113,6 +143,7 @@ namespace Concierge.Display.Windows
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
+            this.ConcentrationCheck(this.HpUpDown.Value);
             this.ReturnAndClose();
         }
     }

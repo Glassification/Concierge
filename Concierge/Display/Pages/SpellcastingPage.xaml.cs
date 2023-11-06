@@ -7,6 +7,7 @@ namespace Concierge.Display.Pages
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Text.RegularExpressions;
     using System.Windows;
     using System.Windows.Controls;
 
@@ -289,9 +290,43 @@ namespace Concierge.Display.Pages
             }
 
             var spell = (Spell)this.SpellListDataGrid.SelectedItem;
+            var concentratedSpell = Program.CcsFile.Character.Magic.ConcentratedSpell;
+            if (concentratedSpell is not null && concentratedSpell.Id != spell.Id && spell.Concentration)
+            {
+                var messageResult = ConciergeMessageBox.Show(
+                    Regex.Unescape($"You are currently concentrating on {concentratedSpell.Name}. Using another concentration spell will drop the current one.\nDo you wish to use {spell.Name}?"),
+                    "Concentration",
+                    ConciergeWindowButtons.YesNo,
+                    ConciergeWindowIcons.Question);
+
+                if (messageResult != ConciergeWindowResult.Yes)
+                {
+                    return;
+                }
+            }
+
             var result = spell.Use();
+            if (spell.Concentration)
+            {
+                Program.CcsFile.Character.Magic.SetConcentration(spell);
+                Program.UndoRedoService.AddCommand(new ConcentrationCommand(spell, concentratedSpell));
+            }
 
             ConciergeWindowService.ShowUseItemWindow(typeof(UseItemWindow), result);
+            this.DrawSpellList();
+        }
+
+        private void SpellClearConcentrationButton_Click(object sender, RoutedEventArgs e)
+        {
+            var concentratedSpell = Program.CcsFile.Character.Magic.ConcentratedSpell;
+            if (concentratedSpell is null)
+            {
+                return;
+            }
+
+            Program.UndoRedoService.AddCommand(new ConcentrationCommand(concentratedSpell, null));
+            Program.CcsFile.Character.Magic.ClearConcentration();
+            this.DrawSpellList();
         }
     }
 }

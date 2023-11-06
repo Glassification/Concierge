@@ -476,5 +476,27 @@ namespace Concierge.Common.Extensions
 
             return false;
         }
+
+        /// <summary>
+        /// Retrieves the appropriate determiner ("a" or "an") for a given string, optionally in lowercase.
+        /// </summary>
+        /// <param name="str">The input string.</param>
+        /// <param name="lowercase">Specifies whether the determiner should be in lowercase.</param>
+        /// <returns>The determiner ("a" or "an") based on the first character of the input string.</returns>
+        public static string GetDeterminer(this string str, bool lowercase)
+        {
+            if (str.Length == 0)
+            {
+                return lowercase ? "a" : "A";
+            }
+
+            var isVowel = "aeiouAEIOU".Contains(str[0]);
+            if (isVowel)
+            {
+                return lowercase ? "an" : "An";
+            }
+
+            return lowercase ? "a" : "A";
+        }
     }
 }

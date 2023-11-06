@@ -16,6 +16,7 @@ namespace Concierge.Commands
         private readonly Vitality oldVitality;
         private readonly Vitality newVitality;
         private readonly Vitality oldCompanionVitality;
+        private readonly Spell? oldConcentratedSpell;
         private readonly Vitality newCompanionVitality;
         private readonly SpellSlots oldSpellSlots;
         private readonly SpellSlots newSpellSlots;
@@ -26,6 +27,7 @@ namespace Concierge.Commands
             Vitality oldVitality,
             Vitality oldCompanionVitality,
             SpellSlots oldSpellSlots,
+            Spell? oldConcentratedSpell,
             Vitality newVitality,
             Vitality newCompanionVitality,
             SpellSlots newSpellSlots)
@@ -36,6 +38,7 @@ namespace Concierge.Commands
             this.newCompanionVitality = newCompanionVitality;
             this.oldSpellSlots = oldSpellSlots;
             this.newSpellSlots = newSpellSlots;
+            this.oldConcentratedSpell = oldConcentratedSpell;
             this.ConciergePage = ConciergePage.None;
             this.character = Program.CcsFile.Character;
         }
@@ -45,6 +48,7 @@ namespace Concierge.Commands
             this.character.Vitality.SetProperties<Vitality>(this.newVitality);
             this.character.Magic.SpellSlots.SetProperties<SpellSlots>(this.newSpellSlots);
             this.character.Companion.Vitality.SetProperties<Vitality>(this.newCompanionVitality);
+            this.character.Magic.ClearConcentration();
         }
 
         public override void Undo()
@@ -52,6 +56,10 @@ namespace Concierge.Commands
             this.character.Vitality.SetProperties<Vitality>(this.oldVitality);
             this.character.Magic.SpellSlots.SetProperties<SpellSlots>(this.oldSpellSlots);
             this.character.Companion.Vitality.SetProperties<Vitality>(this.oldCompanionVitality);
+            if (this.oldConcentratedSpell is not null)
+            {
+                this.oldConcentratedSpell.CurrentConcentration = true;
+            }
         }
 
         public override bool ShouldAdd()
@@ -63,7 +71,7 @@ namespace Concierge.Commands
             var newSpellSlots = JsonConvert.SerializeObject(this.newSpellSlots, Formatting.Indented);
             var newCompanion = JsonConvert.SerializeObject(this.newCompanionVitality, Formatting.Indented);
 
-            return !(oldVitality.Equals(newVitality) && oldSpellSlots.Equals(newSpellSlots) && oldCompanion.Equals(newCompanion));
+            return !(oldVitality.Equals(newVitality) && oldSpellSlots.Equals(newSpellSlots) && oldCompanion.Equals(newCompanion) && this.oldConcentratedSpell is null);
         }
     }
 }

@@ -88,12 +88,12 @@ namespace Concierge.Display.Pages
             this.WisdomSavingThrow.SavingThrowBonus = savingThrow.Wisdom.Bonus.ToString();
             this.CharismaSavingThrow.SavingThrowBonus = savingThrow.Charisma.Bonus.ToString();
 
-            this.StrengthSavingThrow.SetStyle(savingThrow.Strength.Proficiency, savingThrow.Strength.StatusChecks);
-            this.DexteritySavingThrow.SetStyle(savingThrow.Dexterity.Proficiency, savingThrow.Dexterity.StatusChecks);
-            this.ConstitutionSavingThrow.SetStyle(savingThrow.Constitution.Proficiency, savingThrow.Constitution.StatusChecks);
-            this.IntelligenceSavingThrow.SetStyle(savingThrow.Intelligence.Proficiency, savingThrow.Intelligence.StatusChecks);
-            this.WisdomSavingThrow.SetStyle(savingThrow.Wisdom.Proficiency, savingThrow.Wisdom.StatusChecks);
-            this.CharismaSavingThrow.SetStyle(savingThrow.Charisma.Proficiency, savingThrow.Charisma.StatusChecks);
+            this.StrengthSavingThrow.SetStyle(savingThrow.Strength);
+            this.DexteritySavingThrow.SetStyle(savingThrow.Dexterity);
+            this.ConstitutionSavingThrow.SetStyle(savingThrow.Constitution);
+            this.IntelligenceSavingThrow.SetStyle(savingThrow.Intelligence);
+            this.WisdomSavingThrow.SetStyle(savingThrow.Wisdom);
+            this.CharismaSavingThrow.SetStyle(savingThrow.Charisma);
         }
 
         public void DrawSkills()
@@ -119,24 +119,24 @@ namespace Concierge.Display.Pages
             this.PerformanceSkill.SkillBonus = skill.Performance.Bonus.ToString();
             this.PersuasionSkill.SkillBonus = skill.Persuasion.Bonus.ToString();
 
-            this.AthleticsSkill.SetStyle(skill.Athletics.Proficiency, skill.Athletics.Expertise, skill.Athletics.Checks);
-            this.AcrobaticsSkill.SetStyle(skill.Acrobatics.Proficiency, skill.Acrobatics.Expertise, skill.Acrobatics.Checks);
-            this.SleightOfHandSkill.SetStyle(skill.SleightOfHand.Proficiency, skill.SleightOfHand.Expertise, skill.SleightOfHand.Checks);
-            this.StealthSkill.SetStyle(skill.Stealth.Proficiency, skill.Stealth.Expertise, skill.Stealth.Checks);
-            this.ArcanaSkill.SetStyle(skill.Arcana.Proficiency, skill.Arcana.Expertise, skill.Arcana.Checks);
-            this.HistorySkill.SetStyle(skill.History.Proficiency, skill.History.Expertise, skill.History.Checks);
-            this.InvestigationSkill.SetStyle(skill.Investigation.Proficiency, skill.Investigation.Expertise, skill.Investigation.Checks);
-            this.NatureSkill.SetStyle(skill.Nature.Proficiency, skill.Nature.Expertise, skill.Nature.Checks);
-            this.ReligionSkill.SetStyle(skill.Religion.Proficiency, skill.Religion.Expertise, skill.Religion.Checks);
-            this.AnimalHandlingSkill.SetStyle(skill.AnimalHandling.Proficiency, skill.AnimalHandling.Expertise, skill.AnimalHandling.Checks);
-            this.InsightSkill.SetStyle(skill.Insight.Proficiency, skill.Insight.Expertise, skill.Insight.Checks);
-            this.MedicineSkill.SetStyle(skill.Medicine.Proficiency, skill.Medicine.Expertise, skill.Medicine.Checks);
-            this.PerceptionSkill.SetStyle(skill.Perception.Proficiency, skill.Perception.Expertise, skill.Perception.Checks);
-            this.SurvivalSkill.SetStyle(skill.Survival.Proficiency, skill.Survival.Expertise, skill.Survival.Checks);
-            this.DeceptionSkill.SetStyle(skill.Deception.Proficiency, skill.Deception.Expertise, skill.Deception.Checks);
-            this.IntimidationSkill.SetStyle(skill.Intimidation.Proficiency, skill.Intimidation.Expertise, skill.Intimidation.Checks);
-            this.PerformanceSkill.SetStyle(skill.Performance.Proficiency, skill.Performance.Expertise, skill.Performance.Checks);
-            this.PersuasionSkill.SetStyle(skill.Persuasion.Proficiency, skill.Persuasion.Expertise, skill.Persuasion.Checks);
+            this.AthleticsSkill.SetStyle(skill.Athletics);
+            this.AcrobaticsSkill.SetStyle(skill.Acrobatics);
+            this.SleightOfHandSkill.SetStyle(skill.SleightOfHand);
+            this.StealthSkill.SetStyle(skill.Stealth);
+            this.ArcanaSkill.SetStyle(skill.Arcana);
+            this.HistorySkill.SetStyle(skill.History);
+            this.InvestigationSkill.SetStyle(skill.Investigation);
+            this.NatureSkill.SetStyle(skill.Nature);
+            this.ReligionSkill.SetStyle(skill.Religion);
+            this.AnimalHandlingSkill.SetStyle(skill.AnimalHandling);
+            this.InsightSkill.SetStyle(skill.Insight);
+            this.MedicineSkill.SetStyle(skill.Medicine);
+            this.PerceptionSkill.SetStyle(skill.Perception);
+            this.SurvivalSkill.SetStyle(skill.Survival);
+            this.DeceptionSkill.SetStyle(skill.Deception);
+            this.IntimidationSkill.SetStyle(skill.Intimidation);
+            this.PerformanceSkill.SetStyle(skill.Performance);
+            this.PersuasionSkill.SetStyle(skill.Persuasion);
         }
 
         public void DrawHealth()

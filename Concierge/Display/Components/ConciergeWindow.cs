@@ -5,7 +5,6 @@
 namespace Concierge.Display.Components
 {
     using System;
-    using System.Reflection.Metadata;
     using System.Runtime.InteropServices;
     using System.Windows;
     using System.Windows.Input;
@@ -13,6 +12,7 @@ namespace Concierge.Display.Components
 
     using Concierge.Animations;
     using Concierge.Character;
+    using Concierge.Character.AbilitySaves;
     using Concierge.Character.Enums;
     using Concierge.Common;
     using Concierge.Common.Exceptions;
@@ -28,6 +28,8 @@ namespace Concierge.Display.Components
         private readonly WindowAnimation windowAnimation;
         private readonly StringResourceService resourceService;
 
+        private UIElement? focusedElement;
+
         public ConciergeWindow()
         {
             this.AllowsTransparency = true;
@@ -42,6 +44,7 @@ namespace Concierge.Display.Components
             this.FocusedText = string.Empty;
 
             this.MouseDown += this.Window_MouseDown;
+            this.MouseUp += this.Window_MouseUp;
             this.KeyDown += this.Window_KeyDown;
 
             this.windowAnimation = new WindowAnimation(WindowAnimation.DefaultAnimationSpeed, this.Window_OnClose);
@@ -57,8 +60,6 @@ namespace Concierge.Display.Components
         public abstract string WindowName { get; }
 
         public ConciergePage ConciergePage { get; set; }
-
-        protected PopupButtons ButtonPress { get; set; }
 
         protected ConciergeWindowResult Result { get; set; }
 
@@ -127,10 +128,10 @@ namespace Concierge.Display.Components
             return ConciergeWindowResult.NoResult;
         }
 
-        public virtual PopupButtons ShowPopup()
+        public virtual AbilitySave ShowAbilityCheckWindow(IAbility ability, int value)
         {
-            Program.Logger.Error(new ImplementedMethodException(nameof(this.ShowPopup)));
-            return PopupButtons.None;
+            Program.Logger.Error(new ImplementedMethodException(nameof(this.ShowAbilityCheckWindow)));
+            return AbilitySave.None;
         }
 
         public virtual object? ShowWindow()
@@ -236,12 +237,14 @@ namespace Concierge.Display.Components
             var text = this.resourceService.GetPropertyDescription(this.WindowName, controlName, defaultDescription: controlName);
             this.Description.Text = text;
             this.FocusedText = text;
+            this.focusedElement = sender as UIElement;
         }
 
         protected void Control_LostFocus(object sender, RoutedEventArgs e)
         {
             this.Description.Text = string.Empty;
             this.FocusedText = string.Empty;
+            this.focusedElement = null;
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
@@ -250,7 +253,6 @@ namespace Concierge.Display.Components
             {
                 case Key.Escape:
                     Program.Logger.Info($"{e.Key} key pressed.");
-                    this.ButtonPress = PopupButtons.Cancel;
                     this.Result = ConciergeWindowResult.Exit;
                     this.CloseConciergeWindow();
                     break;
@@ -270,6 +272,15 @@ namespace Concierge.Display.Components
             if (e.ChangedButton == MouseButton.Left && e.ButtonState == MouseButtonState.Pressed)
             {
                 this.DragMove();
+            }
+        }
+
+        private void Window_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left && this.focusedElement is not null)
+            {
+                FocusManager.SetFocusedElement(FocusManager.GetFocusScope(this.focusedElement), null);
+                Keyboard.ClearFocus();
             }
         }
 

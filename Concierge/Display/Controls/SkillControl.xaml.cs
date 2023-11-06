@@ -17,6 +17,7 @@ namespace Concierge.Display.Controls
     using Concierge.Common;
     using Concierge.Common.Extensions;
     using Concierge.Display.Enums;
+    using Concierge.Display.Windows.Utility;
     using Concierge.Services;
 
     /// <summary>
@@ -100,13 +101,14 @@ namespace Concierge.Display.Controls
             }
         }
 
-        public void SetStyle(bool proficiencyFlag, bool expertiseFlag, StatusChecks check)
+        public void SetStyle(Skill skill)
         {
-            this.ProficiencyBox.Fill = proficiencyFlag ? Brushes.SteelBlue : Brushes.Transparent;
-            this.ExpertiseBox.Fill = expertiseFlag ? Brushes.SteelBlue : Brushes.Transparent;
+            this.Tag = skill;
+            this.ProficiencyBox.Fill = skill.Proficiency ? Brushes.SteelBlue : Brushes.Transparent;
+            this.ExpertiseBox.Fill = skill.Expertise ? Brushes.SteelBlue : Brushes.Transparent;
 
-            SetTextStyleHelper(check, this.SkillNameField);
-            SetTextStyleHelper(check, this.SkillBonusField);
+            SetTextStyleHelper(skill.StatusChecks, this.SkillNameField);
+            SetTextStyleHelper(skill.StatusChecks, this.SkillBonusField);
         }
 
         private static void SetTextStyleHelper(StatusChecks check, TextBlock textBlock)
@@ -196,6 +198,14 @@ namespace Concierge.Display.Controls
             this.RaiseEvent(new RoutedEventArgs(ToggleClickedEvent));
 
             Program.UndoRedoService.AddCommand(new EditCommand<Skills>(skill, skillCopy, ConciergePage.Overview));
+        }
+
+        private void SkillField_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (this.Tag is Skill skill)
+            {
+                ConciergeWindowService.ShowAbilityCheckWindow(typeof(AbilityCheckWindow), skill, 0);
+            }
         }
     }
 }

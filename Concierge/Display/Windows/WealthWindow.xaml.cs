@@ -35,11 +35,6 @@ namespace Concierge.Display.Windows
             this.SetMouseOverEvents(this.EpRadioButton);
             this.SetMouseOverEvents(this.GpRadioButton);
             this.SetMouseOverEvents(this.PpRadioButton);
-            this.SetMouseOverEvents(this.CopperField);
-            this.SetMouseOverEvents(this.SilverField);
-            this.SetMouseOverEvents(this.ElectrumField);
-            this.SetMouseOverEvents(this.GoldField);
-            this.SetMouseOverEvents(this.PlatinumField);
         }
 
         public override string HeaderText => "Edit Wealth";

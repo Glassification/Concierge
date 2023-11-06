@@ -88,7 +88,6 @@ namespace Concierge.Tools
             return this.history[this.Index];
         }
 
-
         /// <summary>
         /// Adds a new item to the history.
         /// </summary>

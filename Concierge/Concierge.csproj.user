@@ -60,6 +60,12 @@
     <Compile Update="Display\Pages\ToolsPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Display\Windows\Utility\AbilityCheckWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Display\Windows\Utility\ConcentrationCheckWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Display\Windows\Utility\CustomItemWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -284,6 +290,9 @@
     <Page Update="Display\Windows\SkillWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Display\Windows\Utility\AbilityCheckWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Display\Windows\Utility\AboutConciergeWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -291,6 +300,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Display\Windows\Utility\ColorPickerWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Display\Windows\Utility\ConcentrationCheckWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Display\Windows\Utility\ConciergeConsoleWindow.xaml">
