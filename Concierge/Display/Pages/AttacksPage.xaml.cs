@@ -110,31 +110,19 @@ namespace Concierge.Display.Pages
         private void DrawWeaponList()
         {
             this.WeaponDataGrid.Items.Clear();
-
-            foreach (var weapon in this.WeaponDisplayList)
-            {
-                this.WeaponDataGrid.Items.Add(weapon);
-            }
+            this.WeaponDisplayList.ForEach(weapon => this.WeaponDataGrid.Items.Add(weapon));
         }
 
         private void DrawStatusEffects()
         {
             this.StatusEffectsDataGrid.Items.Clear();
-
-            foreach (var effect in Program.CcsFile.Character.Vitality.StatusEffects)
-            {
-                this.StatusEffectsDataGrid.Items.Add(effect);
-            }
+            Program.CcsFile.Character.Vitality.StatusEffects.ForEach(effect => this.StatusEffectsDataGrid.Items.Add(effect));
         }
 
         private void DrawAmmoList()
         {
             this.AmmoDataGrid.Items.Clear();
-
-            foreach (var ammo in Program.CcsFile.Character.Equipment.Ammunition)
-            {
-                this.AmmoDataGrid.Items.Add(ammo);
-            }
+            Program.CcsFile.Character.Equipment.Ammunition.ForEach(ammo => this.AmmoDataGrid.Items.Add(ammo));
         }
 
         private void AmmoUpButton_Click(object sender, RoutedEventArgs e)
@@ -374,6 +362,24 @@ namespace Concierge.Display.Pages
 
                 Program.UndoRedoService.AddCommand(new EditCommand<Ammunition>(ammunition, oldItem, this.ConciergePage));
             }
+        }
+
+        private void AmmoRecoverButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (this.AmmoDataGrid.SelectedItem is null)
+            {
+                return;
+            }
+
+            var ammo = (Ammunition)this.AmmoDataGrid.SelectedItem;
+            var index = this.AmmoDataGrid.SelectedIndex;
+            var oldItem = ammo.DeepCopy();
+
+            ammo.Recover();
+            this.DrawAmmoList();
+            this.AmmoDataGrid.SetSelectedIndex(index);
+
+            Program.UndoRedoService.AddCommand(new EditCommand<Ammunition>(ammo, oldItem, this.ConciergePage));
         }
     }
 }

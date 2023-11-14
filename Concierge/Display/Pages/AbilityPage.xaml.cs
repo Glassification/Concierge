@@ -59,11 +59,7 @@ namespace Concierge.Display.Pages
         private void DrawAbilities()
         {
             this.AbilitiesDataGrid.Items.Clear();
-
-            foreach (var ability in this.DisplayList)
-            {
-                this.AbilitiesDataGrid.Items.Add(ability);
-            }
+            this.DisplayList.ForEach(ability => this.AbilitiesDataGrid.Items.Add(ability));
         }
 
         private void ScrollAbilities()

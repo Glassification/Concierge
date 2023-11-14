@@ -44,7 +44,7 @@ namespace Concierge.Display.Windows
 
         public override ConciergeWindowResult ShowWizardSetup(string buttonText)
         {
-            this.PreviousSlot = string.Empty;
+            this.PreviousSlot = EquipmentSlot.Torso.ToString();
             this.ClearFields();
             this.ItemComboBox.ItemsSource = Program.CcsFile.Character.Equipment.EquippedItems.Equipable;
             this.OkButton.Visibility = Visibility.Collapsed;
@@ -57,7 +57,7 @@ namespace Concierge.Display.Windows
 
         public override bool ShowAdd<T>(T item)
         {
-            this.PreviousSlot = string.Empty;
+            this.PreviousSlot = EquipmentSlot.Torso.ToString();
             this.ClearFields();
             this.ItemComboBox.ItemsSource = Program.CcsFile.Character.Equipment.EquippedItems.Equipable;
             this.ItemsAdded = false;

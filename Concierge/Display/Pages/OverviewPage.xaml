@@ -145,9 +145,7 @@
                             <RowDefinition Height="14*"/>
                         </Grid.RowDefinitions>
 
-                        <Grid
-                            Grid.Row="0"
-                            MouseUp="Grid_SavingThrowMouseUp">
+                        <Grid Grid.Row="0">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="15*"/>
                                 <ColumnDefinition Width="65*"/>
@@ -158,14 +156,17 @@
                                 Grid.Column="0"
                                 Margin="0,0,0,5">
                                 <components:ConciergeTextBlock Text="Proficiency"
-                                   Foreground="White"
-                                   FontSize="15"
-                                   FontWeight="Bold"
-                                   HorizontalAlignment="Center"
-                                   VerticalAlignment="Center"/>
+                                    Foreground="White"
+                                    FontSize="15"
+                                    FontWeight="Bold"
+                                    MouseDown="SaveProficiency_MouseDown"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"/>
                             </Grid>
 
-                            <Grid Grid.Column="1">
+                            <Grid
+                                Grid.Column="1"
+                                MouseUp="Grid_SavingThrowMouseUp">
                                 <components:ConciergeTextBlock Text="Saving Throws"
                                    Foreground="White"
                                    FontSize="23"
@@ -174,7 +175,9 @@
                                    VerticalAlignment="Center"/>
                             </Grid>
 
-                            <Grid Grid.Column="20">
+                            <Grid
+                                Grid.Column="2"
+                                MouseUp="Grid_SavingThrowMouseUp">
                                 <components:ConciergeTextBlock Text="Bonus"
                                    Foreground="White"
                                    FontSize="15"
@@ -257,8 +260,7 @@
 
                         <Grid
                             Grid.Row="0"
-                            Margin="0,0,0,5"
-                            MouseUp="Grid_SkillMouseUp">
+                            Margin="0,0,0,5">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="15*"/>
                                 <ColumnDefinition Width="15*"/>
@@ -272,6 +274,7 @@
                                 Foreground="White"
                                 FontSize="15"
                                 FontWeight="Bold"
+                                MouseDown="AllProficiency_MouseDown"
                                 HorizontalAlignment="Center"
                                 VerticalAlignment="Center"/>
                             <components:ConciergeTextBlock
@@ -280,6 +283,7 @@
                                 Foreground="White"
                                 FontSize="15"
                                 FontWeight="Bold"
+                                MouseDown="AllExpertise_MouseDown"
                                 HorizontalAlignment="Center"
                                 VerticalAlignment="Center"/>
                             <components:ConciergeTextBlock
@@ -288,6 +292,7 @@
                                 Foreground="White"
                                 FontSize="23"
                                 FontWeight="Bold"
+                                MouseUp="Grid_SkillMenuMouseUp"
                                 HorizontalAlignment="Center"
                                 VerticalAlignment="Center"/>
                             <components:ConciergeTextBlock
@@ -296,6 +301,7 @@
                                 Foreground="White"
                                 FontSize="15"
                                 FontWeight="Bold"
+                                MouseUp="Grid_SkillMenuMouseUp"
                                 HorizontalAlignment="Center"
                                 VerticalAlignment="Center"/>
                             </Grid>

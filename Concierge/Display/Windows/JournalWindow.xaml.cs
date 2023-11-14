@@ -43,7 +43,7 @@ namespace Concierge.Display.Windows
         {
             if (item is Chapter chapter)
             {
-                this.TreeViewButtonType = TreeViewButtonType.Document;
+                this.TreeViewButtonType = TreeViewButtonType.Page;
                 this.CurrentEntry = chapter;
             }
             else
@@ -93,7 +93,7 @@ namespace Concierge.Display.Windows
 
         private void EditDocument(Document document)
         {
-            this.TreeViewButtonType = TreeViewButtonType.Document;
+            this.TreeViewButtonType = TreeViewButtonType.Page;
             this.HeaderTextBlock.Text = this.HeaderText;
             this.DocumentTextBox.Text = document.Name;
             this.CreationDateLabel.Text = $"Creation Date: {document.Created}";

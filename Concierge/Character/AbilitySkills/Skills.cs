@@ -118,5 +118,101 @@ namespace Concierge.Character.AbilitySkills
                 _ => throw new NotImplementedException(),
             };
         }
+
+        public void SetAllProficency(bool state)
+        {
+            this.Athletics.Proficiency = state;
+            this.Acrobatics.Proficiency = state;
+            this.SleightOfHand.Proficiency = state;
+            this.Stealth.Proficiency = state;
+            this.Arcana.Proficiency = state;
+            this.History.Proficiency = state;
+            this.Investigation.Proficiency = state;
+            this.Nature.Proficiency = state;
+            this.Religion.Proficiency = state;
+            this.AnimalHandling.Proficiency = state;
+            this.Insight.Proficiency = state;
+            this.Medicine.Proficiency = state;
+            this.Perception.Proficiency = state;
+            this.Survival.Proficiency = state;
+            this.Deception.Proficiency = state;
+            this.Intimidation.Proficiency = state;
+            this.Performance.Proficiency = state;
+            this.Persuasion.Proficiency = state;
+        }
+
+        public void SetAllExpertise(bool state)
+        {
+            this.Athletics.Expertise = state;
+            this.Acrobatics.Expertise = state;
+            this.SleightOfHand.Expertise = state;
+            this.Stealth.Expertise = state;
+            this.Arcana.Expertise = state;
+            this.History.Expertise = state;
+            this.Investigation.Expertise = state;
+            this.Nature.Expertise = state;
+            this.Religion.Expertise = state;
+            this.AnimalHandling.Expertise = state;
+            this.Insight.Expertise = state;
+            this.Medicine.Expertise = state;
+            this.Perception.Expertise = state;
+            this.Survival.Expertise = state;
+            this.Deception.Expertise = state;
+            this.Intimidation.Expertise = state;
+            this.Performance.Expertise = state;
+            this.Persuasion.Expertise = state;
+        }
+
+        public bool GetProficiencyState()
+        {
+            var trueCount = 0;
+
+            trueCount += this.Athletics.Proficiency ? 1 : 0;
+            trueCount += this.Acrobatics.Proficiency ? 1 : 0;
+            trueCount += this.SleightOfHand.Proficiency ? 1 : 0;
+            trueCount += this.Stealth.Proficiency ? 1 : 0;
+            trueCount += this.Arcana.Proficiency ? 1 : 0;
+            trueCount += this.History.Proficiency ? 1 : 0;
+            trueCount += this.Investigation.Proficiency ? 1 : 0;
+            trueCount += this.Nature.Proficiency ? 1 : 0;
+            trueCount += this.Religion.Proficiency ? 1 : 0;
+            trueCount += this.AnimalHandling.Proficiency ? 1 : 0;
+            trueCount += this.Insight.Proficiency ? 1 : 0;
+            trueCount += this.Medicine.Proficiency ? 1 : 0;
+            trueCount += this.Perception.Proficiency ? 1 : 0;
+            trueCount += this.Survival.Proficiency ? 1 : 0;
+            trueCount += this.Deception.Proficiency ? 1 : 0;
+            trueCount += this.Intimidation.Proficiency ? 1 : 0;
+            trueCount += this.Performance.Proficiency ? 1 : 0;
+            trueCount += this.Persuasion.Proficiency ? 1 : 0;
+
+            return trueCount < 18;
+        }
+
+        public bool GetExpertiseState()
+        {
+            var trueCount = 0;
+
+            trueCount += this.Athletics.Expertise ? 1 : 0;
+            trueCount += this.Acrobatics.Expertise ? 1 : 0;
+            trueCount += this.SleightOfHand.Expertise ? 1 : 0;
+            trueCount += this.Stealth.Expertise ? 1 : 0;
+            trueCount += this.Arcana.Expertise ? 1 : 0;
+            trueCount += this.History.Expertise ? 1 : 0;
+            trueCount += this.Investigation.Expertise ? 1 : 0;
+            trueCount += this.Nature.Expertise ? 1 : 0;
+            trueCount += this.Religion.Expertise ? 1 : 0;
+            trueCount += this.AnimalHandling.Expertise ? 1 : 0;
+            trueCount += this.Insight.Expertise ? 1 : 0;
+            trueCount += this.Medicine.Expertise ? 1 : 0;
+            trueCount += this.Perception.Expertise ? 1 : 0;
+            trueCount += this.Survival.Expertise ? 1 : 0;
+            trueCount += this.Deception.Expertise ? 1 : 0;
+            trueCount += this.Intimidation.Expertise ? 1 : 0;
+            trueCount += this.Performance.Expertise ? 1 : 0;
+            trueCount += this.Persuasion.Expertise ? 1 : 0;
+
+            return trueCount < 18;
+        }
     }
 }

@@ -116,41 +116,25 @@ namespace Concierge.Display.Pages
         public void DrawResources()
         {
             this.ResourcesDataGrid.Items.Clear();
-
-            foreach (var resource in Program.CcsFile.Character.Vitality.ClassResources)
-            {
-                this.ResourcesDataGrid.Items.Add(resource);
-            }
+            Program.CcsFile.Character.Vitality.ClassResources.ForEach(resource => this.ResourcesDataGrid.Items.Add(resource));
         }
 
         public void DrawLanguages()
         {
             this.LanguagesDataGrid.Items.Clear();
-
-            foreach (var language in Program.CcsFile.Character.Characteristic.Languages)
-            {
-                this.LanguagesDataGrid.Items.Add(language);
-            }
+            Program.CcsFile.Character.Characteristic.Languages.ForEach(language => this.LanguagesDataGrid.Items.Add(language));
         }
 
         public void DrawConditions()
         {
             this.ConditionsDataGrid.Items.Clear();
-
-            foreach (var condition in Program.CcsFile.Character.Vitality.Conditions.ToList())
-            {
-                this.ConditionsDataGrid.Items.Add(condition);
-            }
+            Program.CcsFile.Character.Vitality.Conditions.ToList().ForEach(condition => this.ConditionsDataGrid.Items.Add(condition));
         }
 
         private static void DrawProficiency(ConciergeDataGrid conciergeDataGrid, List<Proficiency> proficiencies)
         {
             conciergeDataGrid.Items.Clear();
-
-            foreach (var item in proficiencies)
-            {
-                conciergeDataGrid.Items.Add(item);
-            }
+            proficiencies.ForEach(item => conciergeDataGrid.Items.Add(item));
         }
 
         private static void AddSortedToList(List<Proficiency> proficiencies, ConciergeDataGrid dataGrid)

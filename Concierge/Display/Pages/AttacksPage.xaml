@@ -16,8 +16,8 @@
 
     <Grid Background="#202020">
         <Grid.RowDefinitions>
-            <RowDefinition Height="32*"/>
-            <RowDefinition Height="68*"/>
+            <RowDefinition Height="35*"/>
+            <RowDefinition Height="65*"/>
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0">
@@ -75,6 +75,15 @@
                                     Click="AmmonDownButton_Click"
                                     ToolTip="Move Selected Ammunition Down">
                                     <materialDesign:PackIcon Kind="ArrowDownBox" Width="25" Height="25"/>
+                                </components:ConciergeDesignButton>
+                                <components:ConciergeDesignButton 
+                                    Style="{StaticResource ConciergeDesignButtonStyle}" 
+                                    x:Name="AmmoRecoverButton"
+                                    Width="60"
+                                    Foreground="#B9487B"
+                                    Click="AmmoRecoverButton_Click"
+                                    ToolTip="Recover Ammunition">
+                                    <materialDesign:PackIcon Kind="Recycle" Width="25" Height="25"/>
                                 </components:ConciergeDesignButton>
                                 <components:ConciergeDesignButton 
                                     Style="{StaticResource ConciergeDesignButtonStyle}" 
@@ -158,28 +167,33 @@
                                 <DataGridTextColumn
                                     Header="Ammo"
                                     Binding="{Binding Name}"
-                                    Width="0.3*"
+                                    Width="0.25*"
                                     ElementStyle="{StaticResource StandardColumnElementStyle}"/>
                                 <DataGridTextColumn
                                     Header="Quantity"
                                     Binding="{Binding Quantity}"
-                                    Width="0.12*"
+                                    Width="0.10*"
                                     ElementStyle="{StaticResource StandardColumnElementStyle}"/>
                                 <DataGridTextColumn
                                     Header="Used"
                                     Binding="{Binding Used}"
-                                    Width="0.12*"
+                                    Width="0.10*"
                                     ElementStyle="{StaticResource StandardColumnElementStyle}"/>
                                 <DataGridTextColumn
                                     Header="Damage Bonus"
                                     Binding="{Binding Bonus}"
-                                    Width="0.22*"
+                                    Width="0.17*"
                                     ElementStyle="{StaticResource StandardColumnElementStyle}"/>
                                 <DataGridTextColumn
                                     Header="Damage Type"
                                     Binding="{Binding DamageType}"
-                                    Width="0.22*"
+                                    Width="0.17*"
                                     ElementStyle="{StaticResource StandardColumnElementStyle}"/>
+                                <DataGridTextColumn
+                                    Header="Description"
+                                    Binding="{Binding Description}"
+                                    Width="0.21*"
+                                    ElementStyle="{StaticResource WallOfTextColumnElementStyle}"/>
                             </DataGrid.Columns>
                         </components:ConciergeDataGrid>
                     </Grid>
@@ -458,7 +472,7 @@
                                 Header="Description"
                                 Binding="{Binding Note}"
                                 Width="0.19*"
-                                ElementStyle="{StaticResource StandardColumnElementStyle}"/>
+                                ElementStyle="{StaticResource WallOfTextColumnElementStyle}"/>
                             <DataGridTemplateColumn Width="0.01*">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>

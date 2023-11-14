@@ -74,13 +74,7 @@ namespace Concierge.Display.Pages
         public void DrawPreparedSpells()
         {
             this.PreparedSpellsDataGrid.Items.Clear();
-            foreach (var spell in Program.CcsFile.Character.Magic.Spells)
-            {
-                if (spell.Prepared)
-                {
-                    this.PreparedSpellsDataGrid.Items.Add(spell);
-                }
-            }
+            Program.CcsFile.Character.Magic.PreparedSpells.ForEach(spell => this.PreparedSpellsDataGrid.Items.Add(spell));
         }
 
         public void Edit(object itemToEdit)
@@ -125,11 +119,7 @@ namespace Concierge.Display.Pages
         private static void DrawEquippedItem(List<IEquipable> items, ConciergeDataGrid dataGrid)
         {
             dataGrid.Items.Clear();
-
-            foreach (var item in items)
-            {
-                dataGrid.Items.Add(item);
-            }
+            items.ForEach(item => dataGrid.Items.Add(item));
         }
 
         private void DequipInventory(Inventory item)

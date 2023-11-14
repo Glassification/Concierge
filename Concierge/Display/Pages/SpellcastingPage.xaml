@@ -265,7 +265,7 @@
                                 Width="60"
                                 Foreground="#B9487B"
                                 Click="SpellClearConcentrationButton_Click"
-                                ToolTip="Clear Concentrated Spell">
+                                ToolTip="Clear Spell Concentration">
                                 <materialDesign:PackIcon Kind="CloudCancel" Width="25" Height="25"/>
                             </components:ConciergeDesignButton>
                             <components:ConciergeDesignButton 

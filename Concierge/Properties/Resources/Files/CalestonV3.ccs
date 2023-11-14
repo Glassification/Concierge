@@ -1307,10 +1307,12 @@
           "Bonus": "",
           "CoinType": 0,
           "DamageType": 8,
+          "Description": "A fin-stabilized projectile launched by a bow.",
           "Id": "9f0bf339-892e-46ac-97cb-0a1ffa2b084e",
           "IsCustom": false,
           "Name": "Arrows",
           "Quantity": 18,
+          "Recoverable": false,
           "Used": 0,
           "Value": 5
         },
@@ -1318,10 +1320,12 @@
           "Bonus": "",
           "CoinType": 3,
           "DamageType": 8,
+          "Description": "Some enemies will resist mundane weapon damage unless the weapon has been silvered.",
           "Id": "68a4a935-2ef6-4e78-85ec-a7a98c4cfc5f",
           "IsCustom": false,
           "Name": "Silvered Arrows",
           "Quantity": 7,
+          "Recoverable": false,
           "Used": 0,
           "Value": 1
         },
@@ -1329,10 +1333,12 @@
           "Bonus": "2d4+8",
           "CoinType": 3,
           "DamageType": 14,
+          "Description": "",
           "Id": "b4f72c59-b426-4365-bbc4-4768bd47f4d0",
           "IsCustom": false,
           "Name": "Healing Arrows",
           "Quantity": 5,
+          "Recoverable": false,
           "Used": 1,
           "Value": 5
         }
@@ -2693,13 +2699,13 @@
       ]
     }
   },
-  "Hash": "AA5681146CC25E17E441B6ADBB89C152B724915954CD8B629CE04A43B44B8CDB",
+  "Hash": "82C3BD1CCDCAEFADE9E4FC902FD585D0CB8C5115F60B9C7A7F53E7BED9F88E3B",
   "OriginalCreationDate": "Saturday, 13 May 2023 06:48:08 PM",
-  "LastSaveDate": "2023-11-04T16:01:23.6302334-05:00",
+  "LastSaveDate": "2023-11-13T17:11:35.3905666-06:00",
   "Version": {
     "Major": 5,
     "Minor": 5,
-    "Patch": 0
+    "Patch": 2
   },
   "IsEmpty": false
 }

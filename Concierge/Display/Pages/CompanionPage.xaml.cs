@@ -120,11 +120,7 @@ namespace Concierge.Display.Pages
         public void DrawAttacks()
         {
             this.WeaponDataGrid.Items.Clear();
-
-            foreach (var weapon in this.DisplayList)
-            {
-                this.WeaponDataGrid.Items.Add(weapon);
-            }
+            this.DisplayList.ForEach(weapon => this.WeaponDataGrid.Items.Add(weapon));
         }
 
         private void WeaponDataGrid_Sorted(object sender, RoutedEventArgs e)

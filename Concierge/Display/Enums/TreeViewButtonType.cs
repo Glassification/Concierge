@@ -7,6 +7,6 @@ namespace Concierge.Display.Enums
     public enum TreeViewButtonType
     {
         Chapter,
-        Document,
+        Page,
     }
 }

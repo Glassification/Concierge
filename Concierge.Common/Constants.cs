@@ -142,5 +142,16 @@ namespace Concierge.Common
         {
             return Math.Max((int)Math.Floor(damage / 2.0), 10);
         }
+
+        /// <summary>
+        /// Calculates the amount of an item that is recoverable.
+        /// Divides the amount by 2 (rounded down).
+        /// </summary>
+        /// <param name="amount">The amount to calculate the recovery for.</param>
+        /// <returns>The recovered amount.</returns>
+        public static int Recover(int amount)
+        {
+            return (int)Math.Floor(amount / 2.0);
+        }
     }
 }

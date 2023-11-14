@@ -23,6 +23,7 @@ namespace Concierge.Character.Equipable
         {
             this.Name = string.Empty;
             this.Bonus = string.Empty;
+            this.Description = string.Empty;
             this.Id = Guid.NewGuid();
         }
 
@@ -44,6 +45,8 @@ namespace Concierge.Character.Equipable
 
         public DamageTypes DamageType { get; set; }
 
+        public string Description { get; set; }
+
         [JsonIgnore]
         [SearchIgnore]
         public Brush IconColor => this.GetCategory().Brush;
@@ -59,6 +62,8 @@ namespace Concierge.Character.Equipable
         public string Name { get; set; }
 
         public int Quantity { get; set; }
+
+        public bool Recoverable { get; set; }
 
         public int Used
         {
@@ -91,6 +96,8 @@ namespace Concierge.Character.Equipable
                 CoinType = this.CoinType,
                 Value = this.Value,
                 IsCustom = this.IsCustom,
+                Recoverable = this.Recoverable,
+                Description = this.Description,
             };
         }
 
@@ -103,11 +110,11 @@ namespace Concierge.Character.Equipable
         {
             return this.Name switch
             {
-                string a when a.Contains("arrows", StringComparison.InvariantCultureIgnoreCase) => new CategoryDto(PackIconKind.ArrowProjectile, Brushes.IndianRed, this.Name),
-                string b when b.Contains("needles", StringComparison.InvariantCultureIgnoreCase) => new CategoryDto(PackIconKind.SignPole, Brushes.LightGreen, this.Name),
-                string c when c.Contains("bolts", StringComparison.InvariantCultureIgnoreCase) => new CategoryDto(PackIconKind.RayStartArrow, Brushes.LightBlue, this.Name),
+                string a when a.Contains("arrow", StringComparison.InvariantCultureIgnoreCase) => new CategoryDto(PackIconKind.ArrowProjectile, Brushes.IndianRed, this.Name),
+                string b when b.Contains("needle", StringComparison.InvariantCultureIgnoreCase) => new CategoryDto(PackIconKind.SignPole, Brushes.LightGreen, this.Name),
+                string c when c.Contains("bolt", StringComparison.InvariantCultureIgnoreCase) => new CategoryDto(PackIconKind.RayStartArrow, Brushes.LightBlue, this.Name),
                 string d when d.Contains("shuriken", StringComparison.InvariantCultureIgnoreCase) => new CategoryDto(PackIconKind.Shuriken, Brushes.Orange, this.Name),
-                string e when e.Contains("bullets", StringComparison.InvariantCultureIgnoreCase) => new CategoryDto(PackIconKind.SquareSmall, Brushes.MediumPurple, this.Name),
+                string e when e.Contains("bullet", StringComparison.InvariantCultureIgnoreCase) => new CategoryDto(PackIconKind.SquareSmall, Brushes.MediumPurple, this.Name),
                 _ => new CategoryDto(),
             };
         }
@@ -116,6 +123,12 @@ namespace Concierge.Character.Equipable
         {
             this.Used++;
             return new UsedItem();
+        }
+
+        public void Recover()
+        {
+            this.Quantity -= this.Recoverable ? this.Used - Common.Constants.Recover(this.Used) : this.Used;
+            this.Used = 0;
         }
     }
 }

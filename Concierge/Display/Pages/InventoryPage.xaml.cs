@@ -64,11 +64,7 @@ namespace Concierge.Display.Pages
 
             this.ItemTotalField.Text = $"({count} Item{(count == 1 ? string.Empty : "s")})";
             this.InventoryDataGrid.Items.Clear();
-
-            foreach (var inventory in this.DisplayList)
-            {
-                this.InventoryDataGrid.Items.Add(inventory);
-            }
+            this.DisplayList.ForEach(item => this.InventoryDataGrid.Items.Add(item));
         }
 
         private void ScrollInventory()

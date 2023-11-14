@@ -77,22 +77,13 @@ namespace Concierge.Display.Pages
         public void DrawSpellList()
         {
             this.SpellListDataGrid.Items.Clear();
-
-            foreach (var spell in this.SpellDisplayList)
-            {
-                this.SpellListDataGrid.Items.Add(spell);
-            }
+            this.SpellDisplayList.ForEach(spell => this.SpellListDataGrid.Items.Add(spell));
         }
 
         public void DrawMagicClasses()
         {
             this.MagicClassDataGrid.Items.Clear();
-
-            foreach (var magicClass in this.MagicClassDisplayList)
-            {
-                this.MagicClassDataGrid.Items.Add(magicClass);
-            }
-
+            this.MagicClassDisplayList.ForEach(magicClass => this.MagicClassDataGrid.Items.Add(magicClass));
             this.CasterLevelField.Text = $"(Caster Level {Program.CcsFile.Character.Magic.CasterLevel})";
         }
 
@@ -290,6 +281,7 @@ namespace Concierge.Display.Pages
             }
 
             var spell = (Spell)this.SpellListDataGrid.SelectedItem;
+            var index = this.SpellListDataGrid.SelectedIndex;
             var concentratedSpell = Program.CcsFile.Character.Magic.ConcentratedSpell;
             if (concentratedSpell is not null && concentratedSpell.Id != spell.Id && spell.Concentration)
             {
@@ -314,10 +306,12 @@ namespace Concierge.Display.Pages
 
             ConciergeWindowService.ShowUseItemWindow(typeof(UseItemWindow), result);
             this.DrawSpellList();
+            this.SpellListDataGrid.SetSelectedIndex(index);
         }
 
         private void SpellClearConcentrationButton_Click(object sender, RoutedEventArgs e)
         {
+            var index = this.SpellListDataGrid.SelectedIndex;
             var concentratedSpell = Program.CcsFile.Character.Magic.ConcentratedSpell;
             if (concentratedSpell is null)
             {
@@ -325,8 +319,10 @@ namespace Concierge.Display.Pages
             }
 
             Program.UndoRedoService.AddCommand(new ConcentrationCommand(concentratedSpell, null));
+
             Program.CcsFile.Character.Magic.ClearConcentration();
             this.DrawSpellList();
+            this.SpellListDataGrid.SetSelectedIndex(index);
         }
     }
 }

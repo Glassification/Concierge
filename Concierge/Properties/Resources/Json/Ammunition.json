@@ -4,9 +4,35 @@
     "Quantity": 20,
     "Bonus": "",
     "DamageType": 8,
+    "Description": "A fin-stabilized projectile launched by a bow.",
     "Used": 0,
-    "Value": 5,
-    "CoinType": 0,
+    "Recoverable": true,
+    "Value": 1,
+    "CoinType": 3,
+    "Id": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "Name": "Blinding Arrows",
+    "Quantity": 5,
+    "Bonus": "",
+    "DamageType": 2,
+    "Description": "Arrows with a small clay head with an opening inside, containing a reactive chemical. On hit, the chemical releases a bright flash, blinding the target until the start of your next turn.",
+    "Used": 0,
+    "Recoverable": true,
+    "Value": 3,
+    "CoinType": 3,
+    "Id": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "Name": "Broadhead Arrows",
+    "Quantity": 20,
+    "Bonus": "",
+    "DamageType": 12,
+    "Description": "These arrows do 1 die less damage (e.g. 1d6 instead of 1d8), but on a critical hit these arrows apply a bleeding effect.",
+    "Used": 0,
+    "Recoverable": true,
+    "Value": 2,
+    "CoinType": 3,
     "Id": "00000000-0000-0000-0000-000000000000"
   },
   {
@@ -14,9 +40,23 @@
     "Quantity": 50,
     "Bonus": "",
     "DamageType": 8,
+    "Description": "Dart-like light projectiles.",
     "Used": 0,
+    "Recoverable": false,
     "Value": 2,
     "CoinType": 0,
+    "Id": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "Name": "Corkscrew Arrows",
+    "Quantity": 20,
+    "Bonus": "",
+    "DamageType": 8,
+    "Description": "More effectively travels through water. As long as the arrow was fired from outside the water, ignores the ranged weapon attack underwater combat rules.",
+    "Used": 0,
+    "Recoverable": true,
+    "Value": 3,
+    "CoinType": 3,
     "Id": "00000000-0000-0000-0000-000000000000"
   },
   {
@@ -24,9 +64,47 @@
     "Quantity": 20,
     "Bonus": "",
     "DamageType": 8,
+    "Description": "A bolt or quarrel is a dart-like projectile used by crossbows.",
     "Used": 0,
+    "Recoverable": true,
     "Value": 5,
     "CoinType": 0,
+    "Id": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "Name": "Fire Arrows",
+    "Quantity": 10,
+    "Bonus": "1d4 Fire",
+    "DamageType": 8,
+    "Description": "Open 'cage' with flammable material included. Must be ignited before fired to take effect. Ignites non-worn, non-carried flammable materials.",
+    "Used": 0,
+    "Recoverable": true,
+    "Value": 3,
+    "CoinType": 3,
+    "Id": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "Name": "Non-lethal Arrows",
+    "Quantity": 20,
+    "Bonus": "",
+    "DamageType": 2,
+    "Description": "These blunted arrows do 1 die less damage (e.g. 1d6 instead of 1d8), but on a critical hit these arrows apply the stunned effect to the target until the start of your next turn.",
+    "Used": 0,
+    "Recoverable": true,
+    "Value": 2,
+    "CoinType": 3,
+    "Id": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "Name": "Rope Arrows",
+    "Quantity": 5,
+    "Bonus": "",
+    "DamageType": 8,
+    "Description": "A 25ft rope is attached to the end of this strengthened arrow.",
+    "Used": 0,
+    "Recoverable": true,
+    "Value": 3,
+    "CoinType": 3,
     "Id": "00000000-0000-0000-0000-000000000000"
   },
   {
@@ -34,9 +112,23 @@
     "Quantity": 10,
     "Bonus": "",
     "DamageType": 8,
+    "Description": "Small, hand-held circular plates of metal with a bladed edge.",
     "Used": 0,
+    "Recoverable": true,
     "Value": 1,
     "CoinType": 1,
+    "Id": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "Name": "Silvered Arrows",
+    "Quantity": 20,
+    "Bonus": "",
+    "DamageType": 8,
+    "Description": "Some enemies will resist mundane weapon damage unless the weapon has been silvered.",
+    "Used": 0,
+    "Recoverable": true,
+    "Value": 2,
+    "CoinType": 3,
     "Id": "00000000-0000-0000-0000-000000000000"
   },
   {
@@ -45,8 +137,22 @@
     "Bonus": "",
     "DamageType": 2,
     "Used": 0,
+    "Recoverable": false,
+    "Description": "A blunt projectile such as a stone, clay, or lead.",
     "Value": 1,
     "CoinType": 0,
+    "Id": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "Name": "Smoking Arrows",
+    "Quantity": 5,
+    "Bonus": "",
+    "DamageType": 2,
+    "Description": "Arrows with a small clay head with an opening inside, containing a reactive chemical. On hit, the chemical releases smoke in a 10ft sphere, heavily obscuring vision in that area. The smoke lasts for 10 rounds, unless removed by a strong wind.",
+    "Used": 0,
+    "Recoverable": true,
+    "Value": 3,
+    "CoinType": 3,
     "Id": "00000000-0000-0000-0000-000000000000"
   }
 ]

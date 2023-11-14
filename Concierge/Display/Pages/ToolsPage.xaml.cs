@@ -73,11 +73,7 @@ namespace Concierge.Display.Pages
         public void DrawDiceHistory()
         {
             this.RollDiceHistoryDataGrid.Items.Clear();
-
-            foreach (var dice in this.RollHistory)
-            {
-                this.RollDiceHistoryDataGrid.Items.Add(dice);
-            }
+            this.RollHistory.ForEach(dice => this.RollDiceHistoryDataGrid.Items.Add(dice));
 
             if (this.RollDiceHistoryDataGrid.Items.Count > 0)
             {

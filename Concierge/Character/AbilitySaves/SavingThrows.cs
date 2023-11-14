@@ -69,5 +69,29 @@ namespace Concierge.Character.AbilitySaves
                 _ => throw new NotImplementedException(),
             };
         }
+
+        public void SetAllProficency(bool state)
+        {
+            this.Strength.Proficiency = state;
+            this.Dexterity.Proficiency = state;
+            this.Constitution.Proficiency = state;
+            this.Intelligence.Proficiency = state;
+            this.Wisdom.Proficiency = state;
+            this.Charisma.Proficiency = state;
+        }
+
+        public bool GetProficiencyState()
+        {
+            var trueCount = 0;
+
+            trueCount += this.Strength.Proficiency ? 1 : 0;
+            trueCount += this.Dexterity.Proficiency ? 1 : 0;
+            trueCount += this.Constitution.Proficiency ? 1 : 0;
+            trueCount += this.Intelligence.Proficiency ? 1 : 0;
+            trueCount += this.Wisdom.Proficiency ? 1 : 0;
+            trueCount += this.Charisma.Proficiency ? 1 : 0;
+
+            return trueCount < 6;
+        }
     }
 }

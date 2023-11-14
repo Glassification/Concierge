@@ -41,7 +41,9 @@ namespace Concierge.Display.Windows
             this.SetMouseOverEvents(this.UsedUpDown);
             this.SetMouseOverEvents(this.ValueUpDown);
             this.SetMouseOverEvents(this.CoinTypeComboBox);
+            this.SetMouseOverEvents(this.RecoverableCheckBox);
             this.SetMouseOverEvents(this.BonusTextBox, this.BonusTextBackground);
+            this.SetMouseOverEvents(this.DescriptionTextBox, this.DescriptionTextBackground);
             this.SetMouseOverEvents(this.DamageTypeComboBox);
         }
 
@@ -132,6 +134,8 @@ namespace Concierge.Display.Windows
             this.UsedUpDown.Value = ammunition.Used;
             this.ValueUpDown.Value = ammunition.Value;
             this.CoinTypeComboBox.Text = ammunition.CoinType.ToString();
+            this.RecoverableCheckBox.IsChecked = ammunition.Recoverable;
+            this.DescriptionTextBox.Text = ammunition.Description;
 
             this.UsedUpDown.Maximum = this.QuantityUpDown.Value;
         }
@@ -145,6 +149,8 @@ namespace Concierge.Display.Windows
             this.UsedUpDown.Value = 0;
             this.ValueUpDown.Value = 0;
             this.CoinTypeComboBox.Text = CoinType.Copper.ToString();
+            this.RecoverableCheckBox.IsChecked = false;
+            this.DescriptionTextBox.Text = string.Empty;
         }
 
         private void UpdateAmmunition(Ammunition ammunition)
@@ -158,6 +164,8 @@ namespace Concierge.Display.Windows
             ammunition.Used = this.UsedUpDown.Value;
             ammunition.Value = this.ValueUpDown.Value;
             ammunition.CoinType = (CoinType)Enum.Parse(typeof(CoinType), this.CoinTypeComboBox.Text);
+            ammunition.Recoverable = this.RecoverableCheckBox.IsChecked ?? false;
+            ammunition.Description = this.DescriptionTextBox.Text;
 
             if (!ammunition.IsCustom)
             {
@@ -176,6 +184,8 @@ namespace Concierge.Display.Windows
                 Used = this.UsedUpDown.Value,
                 Value = this.ValueUpDown.Value,
                 CoinType = (CoinType)Enum.Parse(typeof(CoinType), this.CoinTypeComboBox.Text),
+                Recoverable = this.RecoverableCheckBox.IsChecked ?? false,
+                Description = this.DescriptionTextBox.Text,
             };
         }
 

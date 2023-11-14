@@ -160,10 +160,16 @@
   <data name="AmmunitionWindow_DamageTypeComboBox" xml:space="preserve">
     <value>Set the type of wound this projectile will cause.</value>
   </data>
+  <data name="AmmunitionWindow_DescriptionTextBox" xml:space="preserve">
+    <value>Many ammunition types have special properties related to their use, as shown in the ammunition table.</value>
+  </data>
   <data name="AmmunitionWindow_NameComboBox" xml:space="preserve">
     <value>You can use a weapon that has the ammunition property to make a ranged attack only if you have ammunition to fire from the weapon. Drawing the ammunition from a quiver, case, or other container is part of the attack.</value>
   </data>
   <data name="AmmunitionWindow_QuantityUpDown" xml:space="preserve">
+    <value>Carried amount of ammunition before starting an engagement.</value>
+  </data>
+  <data name="AmmunitionWindow_RecoverableCheckBox" xml:space="preserve">
     <value>At the end of the battle, you can recover half your expended ammunition by taking a minute to search the battlefield.</value>
   </data>
   <data name="AmmunitionWindow_UsedUpDown" xml:space="preserve">

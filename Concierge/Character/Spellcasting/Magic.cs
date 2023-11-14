@@ -34,6 +34,10 @@ namespace Concierge.Character.Spellcasting
         public Spell? ConcentratedSpell => this.Spells.Where(x => x.CurrentConcentration).FirstOrDefault();
 
         [JsonIgnore]
+        [SearchIgnore]
+        public List<Spell> PreparedSpells => this.Spells.Where(x => x.Prepared).ToList();
+
+        [JsonIgnore]
         public int CasterLevel
         {
             get

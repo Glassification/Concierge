@@ -8,7 +8,10 @@ namespace Concierge.Display.Pages
     using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Input;
-
+    using Concierge.Character.AbilitySaves;
+    using Concierge.Character.AbilitySkills;
+    using Concierge.Character.Spellcasting;
+    using Concierge.Commands;
     using Concierge.Common.Extensions;
     using Concierge.Configuration;
     using Concierge.Display;
@@ -266,7 +269,7 @@ namespace Concierge.Display.Pages
             this.DrawSavingThrows();
         }
 
-        private void Grid_SkillMouseUp(object sender, MouseButtonEventArgs e)
+        private void Grid_SkillMenuMouseUp(object sender, MouseButtonEventArgs e)
         {
             ConciergeWindowService.ShowEdit(
                 Program.CcsFile.Character.Skills,
@@ -332,6 +335,42 @@ namespace Concierge.Display.Pages
                 this.Window_ApplyChanges,
                 ConciergePage.Overview);
             this.DrawArmorClass();
+        }
+
+        private void AllProficiency_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            var skill = Program.CcsFile.Character.Skills;
+            var skillCopy = skill.DeepCopy();
+            var state = skill.GetProficiencyState();
+
+            skill.SetAllProficency(state);
+            this.DrawSkills();
+
+            Program.UndoRedoService.AddCommand(new EditCommand<Skills>(skill, skillCopy, ConciergePage.Overview));
+        }
+
+        private void AllExpertise_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            var skill = Program.CcsFile.Character.Skills;
+            var skillCopy = skill.DeepCopy();
+            var state = skill.GetExpertiseState();
+
+            skill.SetAllExpertise(state);
+            this.DrawSkills();
+
+            Program.UndoRedoService.AddCommand(new EditCommand<Skills>(skill, skillCopy, ConciergePage.Overview));
+        }
+
+        private void SaveProficiency_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            var save = Program.CcsFile.Character.SavingThrows;
+            var saveCopy = save.DeepCopy();
+            var state = save.GetProficiencyState();
+
+            save.SetAllProficency(state);
+            this.DrawSavingThrows();
+
+            Program.UndoRedoService.AddCommand(new EditCommand<SavingThrows>(save, saveCopy, ConciergePage.Overview));
         }
     }
 }
