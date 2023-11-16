@@ -10,18 +10,17 @@ namespace Concierge.Services
     using Concierge.Common.Extensions;
     using Concierge.Configuration;
     using Concierge.Persistence;
-    using Concierge.Persistence.Dialogs;
     using Concierge.Persistence.Enums;
     using Concierge.Persistence.ReadWriters;
     using Microsoft.Win32;
 
     public sealed class FileAccessService
     {
-        private readonly IReadWriters readwriter;
+        private readonly CharacterReadWriter readwriter;
 
         private readonly OpenFileDialog openFileDialog;
         private readonly SaveFileDialog saveFileDialog;
-        private readonly FolderPicker folderPickerDialog;
+        private readonly OpenFolderDialog openFolderDialog;
 
         public FileAccessService()
         {
@@ -29,7 +28,7 @@ namespace Concierge.Services
 
             this.openFileDialog = new OpenFileDialog();
             this.saveFileDialog = new SaveFileDialog();
-            this.folderPickerDialog = new FolderPicker();
+            this.openFolderDialog = new OpenFolderDialog();
         }
 
         public CcsFile? OpenCcs(string file)
@@ -82,10 +81,10 @@ namespace Concierge.Services
         {
             if (!defaultPath.IsNullOrWhiteSpace())
             {
-                this.folderPickerDialog.InputPath = defaultPath;
+                this.openFolderDialog.DefaultDirectory = defaultPath;
             }
 
-            return this.folderPickerDialog.ShowDialog() ?? false ? this.folderPickerDialog.ResultPath : string.Empty;
+            return this.openFolderDialog.ShowDialog() ?? false ? this.openFolderDialog.FolderName : string.Empty;
         }
 
         public void Save(CcsFile ccsFile)

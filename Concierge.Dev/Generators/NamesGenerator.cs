@@ -17,7 +17,7 @@ namespace Concierge.DevTools.Generators
 
     public static class NamesGenerator
     {
-        private static readonly string[] postfixes = new string[] { "Male", "Female", "Last" };
+        private static readonly string[] postfixes = ["Male", "Female", "Last"];
 
         public static void Generate()
         {

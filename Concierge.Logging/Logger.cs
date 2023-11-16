@@ -215,7 +215,7 @@ namespace Concierge.Logging
             {
                 this.waiting.Set();
 
-                var i = WaitHandle.WaitAny(new WaitHandle[] { this.hasNewItems, this.terminate });
+                var i = WaitHandle.WaitAny([this.hasNewItems, this.terminate]);
 
                 if (i == 1)
                 {

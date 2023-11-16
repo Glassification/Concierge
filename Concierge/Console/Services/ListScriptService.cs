@@ -16,8 +16,8 @@ namespace Concierge.Console.Services
 
     public sealed class ListScriptService : ScriptService
     {
-        private static readonly string[] names = new string[]
-        {
+        private static readonly string[] names =
+        [
             "Inventory",
             "Weapons",
             "Ammunition",
@@ -28,16 +28,16 @@ namespace Concierge.Console.Services
             "ClassResource",
             "StatusEffect",
             "All",
-        };
+        ];
 
-        private static readonly string[] actions = new string[]
-        {
+        private static readonly string[] actions =
+        [
             "AddItem",
             "RemoveItem",
             "Count",
             "AddCategory",
             "GetId",
-        };
+        ];
 
         public ListScriptService()
             : this(true)

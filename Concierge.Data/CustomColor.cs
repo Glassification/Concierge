@@ -38,7 +38,7 @@ namespace Concierge.Data
         {
             var color = (Color)ColorConverter.ConvertFromString(name);
             this.IsValid = true;
-            this.Hex = RgbToHex(new byte[] { color.R, color.G, color.B });
+            this.Hex = RgbToHex([color.R, color.G, color.B]);
             this.A = MaxColor;
             this.R = color.R;
             this.G = color.G;
@@ -79,7 +79,7 @@ namespace Concierge.Data
         {
             this.Name = name;
             this.IsValid = true;
-            this.Hex = RgbToHex(new byte[] { r, g, b });
+            this.Hex = RgbToHex([r, g, b]);
             this.A = a;
             this.R = r;
             this.G = g;

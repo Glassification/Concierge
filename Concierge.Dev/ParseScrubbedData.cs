@@ -28,7 +28,7 @@ namespace Concierge.DevTools
             {
                 var tokens = CommaSplit.Matches(line)
                     .Cast<Match>()
-                    .Select(m => m.Value.Trim(new char[] { ',', '"' }))
+                    .Select(m => m.Value.Trim([',', '"']))
                     .ToList();
                 var value = tokens[2].Equals("--") ? 0 : int.Parse(tokens[2].Split(' ')[0]);
                 var coinType = value == 0 ? CoinType.Copper : GetCoinType(tokens[2].Split(' ')[1]);

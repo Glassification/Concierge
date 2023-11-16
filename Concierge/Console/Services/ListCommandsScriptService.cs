@@ -15,17 +15,17 @@ namespace Concierge.Console.Services
 
     public sealed class ListCommandsScriptService : ScriptService
     {
-        private static readonly string[] names = new string[]
-        {
+        private static readonly string[] names =
+        [
             "List",
-        };
+        ];
 
-        private static readonly string[] actions = new string[]
-        {
+        private static readonly string[] actions =
+        [
             "Commands",
             "History",
             "Log",
-        };
+        ];
 
         private readonly IReadWriters historyReadWriter;
         private readonly string consoleHistoryFile = Path.Combine(ConciergeFiles.HistoryDirectory, ConciergeFiles.ConsoleHistoryName);

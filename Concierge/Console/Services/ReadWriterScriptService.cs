@@ -17,8 +17,8 @@ namespace Concierge.Console.Services
 
     public sealed class ReadWriterScriptService : ScriptService
     {
-        private static readonly string[] names = new string[]
-        {
+        private static readonly string[] names =
+        [
             "Ability",
             "Ammunition",
             "Inventory",
@@ -43,14 +43,14 @@ namespace Concierge.Console.Services
             "StatusEffect",
             "Tool",
             "Character",
-        };
+        ];
 
-        private static readonly string[] actions = new string[]
-        {
+        private static readonly string[] actions =
+        [
             "Read",
             "Write",
             "New",
-        };
+        ];
 
         public ReadWriterScriptService()
             : this(true)

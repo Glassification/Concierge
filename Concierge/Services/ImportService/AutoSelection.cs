@@ -11,16 +11,16 @@ namespace Concierge.Services.ImportService
 
     public static class AutoSelection
     {
-        private static readonly string[] AbilityMatch = new string[] { "ability", "abilities", "abilitys" };
-        private static readonly string[] AmmunitionMatch = new string[] { "ammunition", "ammunitions", "ammo", "ammos" };
-        private static readonly string[] InventoryMatch = new string[] { "inventory", "inventorys", "inventories" };
-        private static readonly string[] JournalMatch = new string[] { "journal", "journals", "chapter", "chapters", "note", "notes" };
-        private static readonly string[] LanguageMatch = new string[] { "language", "languages" };
-        private static readonly string[] ProficiencyMatch = new string[] { "proficiency", "proficiencys", "proficiencies", "proficiancy", "proficiancys", "proficiancies" };
-        private static readonly string[] ResourceMatch = new string[] { "classresource", "classresources", "resource", "resources" };
-        private static readonly string[] SpellMatch = new string[] { "spell", "spells", "magic" };
-        private static readonly string[] StatusEffectMatch = new string[] { "statuseffect", "statuseffects", "statusaffect", "statusaffects" };
-        private static readonly string[] WeaponMatch = new string[] { "weapon", "weapons", "attack", "attacks" };
+        private static readonly string[] AbilityMatch = ["ability", "abilities", "abilitys"];
+        private static readonly string[] AmmunitionMatch = ["ammunition", "ammunitions", "ammo", "ammos"];
+        private static readonly string[] InventoryMatch = ["inventory", "inventorys", "inventories"];
+        private static readonly string[] JournalMatch = ["journal", "journals", "chapter", "chapters", "note", "notes"];
+        private static readonly string[] LanguageMatch = ["language", "languages"];
+        private static readonly string[] ProficiencyMatch = ["proficiency", "proficiencys", "proficiencies", "proficiancy", "proficiancys", "proficiancies"];
+        private static readonly string[] ResourceMatch = ["classresource", "classresources", "resource", "resources"];
+        private static readonly string[] SpellMatch = ["spell", "spells", "magic"];
+        private static readonly string[] StatusEffectMatch = ["statuseffect", "statuseffects", "statusaffect", "statusaffects"];
+        private static readonly string[] WeaponMatch = ["weapon", "weapons", "attack", "attacks"];
 
         public static bool FuzzySearch(string text, SelectionType selectionType)
         {

@@ -8,16 +8,16 @@ namespace Concierge.Console.Services
 
     public sealed class CcsCompressionScriptService : ScriptService
     {
-        private static readonly string[] names = new string[]
-        {
+        private static readonly string[] names =
+        [
             "Character",
-        };
+        ];
 
-        private static readonly string[] actions = new string[]
-        {
+        private static readonly string[] actions =
+        [
             "Zip",
             "Unzip",
-        };
+        ];
 
         public CcsCompressionScriptService()
             : this(true)

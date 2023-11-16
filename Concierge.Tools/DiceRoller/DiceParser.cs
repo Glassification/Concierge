@@ -22,7 +22,7 @@ namespace Concierge.Tools.DiceRoller
         private static readonly Regex hasNumber = new ("[0-9]", RegexOptions.Compiled);
         private static readonly Regex hasDice = new ("\\d[Dd]\\d\\+*\\d*", RegexOptions.Compiled);
 
-        private static readonly string[] filter = { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "+", "-", "d" };
+        private static readonly string[] filter = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "+", "-", "d"];
 
         /// <summary>
         /// Parses the input dice expression and returns a stack of objects in postfix notation representing the expression.

@@ -12,22 +12,22 @@ namespace Concierge.Console.Services
 
     public sealed class WealthScriptService : ScriptService
     {
-        private static readonly string[] names = new string[]
-        {
+        private static readonly string[] names =
+        [
             "Copper",
             "Silver",
             "Electrum",
             "Gold",
             "Platinum",
             "All",
-        };
+        ];
 
-        private static readonly string[] actions = new string[]
-        {
+        private static readonly string[] actions =
+        [
             "Add",
             "Subtract",
             "Count",
-        };
+        ];
 
         public WealthScriptService()
             : this(true)

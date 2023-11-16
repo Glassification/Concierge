@@ -53,7 +53,7 @@ namespace Concierge.Character
 
         public static string FormatSubclass(string subclass)
         {
-            return Regex.Replace(subclass, @"\((.*?)\)", string.Empty).Trim(new char[] { '-', ' ' });
+            return Regex.Replace(subclass, @"\((.*?)\)", string.Empty).Trim(['-', ' ']);
         }
 
         public override string ToString()

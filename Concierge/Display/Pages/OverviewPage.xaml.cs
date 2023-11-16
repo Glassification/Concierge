@@ -8,9 +8,9 @@ namespace Concierge.Display.Pages
     using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Input;
+
     using Concierge.Character.AbilitySaves;
     using Concierge.Character.AbilitySkills;
-    using Concierge.Character.Spellcasting;
     using Concierge.Commands;
     using Concierge.Common.Extensions;
     using Concierge.Configuration;

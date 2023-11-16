@@ -1,0 +1,13 @@
+C:\Users\TomBe\source\repos\Concierge\Concierge.Common\bin\Debug\net7.0-windows\Concierge.Common.deps.json
+C:\Users\TomBe\source\repos\Concierge\Concierge.Common\bin\Debug\net7.0-windows\Concierge.Common.dll
+C:\Users\TomBe\source\repos\Concierge\Concierge.Common\bin\Debug\net7.0-windows\Concierge.Common.pdb
+C:\Users\TomBe\source\repos\Concierge\Concierge.Common\obj\Debug\net7.0-windows\Concierge.Common.csproj.AssemblyReference.cache
+C:\Users\TomBe\source\repos\Concierge\Concierge.Common\obj\Debug\net7.0-windows\Concierge.Common.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\TomBe\source\repos\Concierge\Concierge.Common\obj\Debug\net7.0-windows\Concierge.Common.AssemblyInfoInputs.cache
+C:\Users\TomBe\source\repos\Concierge\Concierge.Common\obj\Debug\net7.0-windows\Concierge.Common.AssemblyInfo.cs
+C:\Users\TomBe\source\repos\Concierge\Concierge.Common\obj\Debug\net7.0-windows\Concierge.Common.csproj.CoreCompileInputs.cache
+C:\Users\TomBe\source\repos\Concierge\Concierge.Common\obj\Debug\net7.0-windows\Concierge.Common.dll
+C:\Users\TomBe\source\repos\Concierge\Concierge.Common\obj\Debug\net7.0-windows\refint\Concierge.Common.dll
+C:\Users\TomBe\source\repos\Concierge\Concierge.Common\obj\Debug\net7.0-windows\Concierge.Common.pdb
+C:\Users\TomBe\source\repos\Concierge\Concierge.Common\obj\Debug\net7.0-windows\ref\Concierge.Common.dll
+C:\Users\TomBe\source\repos\Concierge\Concierge.Common\obj\Debug\net7.0-windows\Concierge.Common.sourcelink.json

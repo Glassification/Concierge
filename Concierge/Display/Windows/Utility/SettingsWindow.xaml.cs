@@ -219,7 +219,6 @@ namespace Concierge.Display.Utility
         private void SaveFolderButton_Click(object sender, RoutedEventArgs e)
         {
             var folder = this.fileAccessService.OpenFolder();
-            this.Activate();
             if (!folder.IsNullOrWhiteSpace())
             {
                 this.SaveTextBox.Text = folder;
@@ -229,7 +228,6 @@ namespace Concierge.Display.Utility
         private void OpenFolderButton_Click(object sender, RoutedEventArgs e)
         {
             var folder = this.fileAccessService.OpenFolder();
-            this.Activate();
             if (!folder.IsNullOrWhiteSpace())
             {
                 this.OpenTextBox.Text = folder;

@@ -13,7 +13,7 @@ namespace Concierge.Tools.WorkerServices
         private const int SleepTime = 150;
 
         private readonly int displayTime;
-        private readonly char[] cursor = new char[4] { '|', '\\', '-', '/' };
+        private readonly char[] cursor = ['|', '\\', '-', '/'];
 
         public AnimatedSpinningTextWorkerService(int displayTime)
         {

@@ -23,7 +23,7 @@ namespace Concierge.Character
 
         public static string FormatSubRace(string subrace)
         {
-            return Regex.Replace(subrace, @"\((.*?)\)", string.Empty).Trim(new char[] { '-', ' ' });
+            return Regex.Replace(subrace, @"\((.*?)\)", string.Empty).Trim(['-', ' ']);
         }
 
         public Race DeepCopy()

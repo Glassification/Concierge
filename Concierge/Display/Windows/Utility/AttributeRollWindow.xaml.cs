@@ -7,7 +7,6 @@ namespace Concierge.Display.Utility
     using System.Windows;
 
     using Concierge.Display.Components;
-    using Concierge.Tools.Generators;
     using Concierge.Tools.Generators.Attributes;
 
     /// <summary>
@@ -15,7 +14,7 @@ namespace Concierge.Display.Utility
     /// </summary>
     public partial class AttributeRollWindow : ConciergeWindow
     {
-        private readonly IGenerator attributeGenerator;
+        private readonly AttributeGenerator attributeGenerator;
 
         public AttributeRollWindow()
         {
@@ -31,7 +30,7 @@ namespace Concierge.Display.Utility
 
         public override ConciergeWindow? ShowNonBlockingWindow()
         {
-            this.SetValues(new int[] { 0, 0, 0, 0, 0, 0 });
+            this.SetValues([0, 0, 0, 0, 0, 0]);
             this.ShowNonBlockingConciergeWindow();
 
             return this;
