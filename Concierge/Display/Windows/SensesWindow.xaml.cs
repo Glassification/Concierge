@@ -12,7 +12,6 @@ namespace Concierge.Display.Windows
     using Concierge.Commands;
     using Concierge.Common;
     using Concierge.Common.Extensions;
-    using Concierge.Common.Utilities;
     using Concierge.Display.Components;
     using Concierge.Display.Enums;
 
@@ -26,7 +25,7 @@ namespace Concierge.Display.Windows
             this.InitializeComponent();
             this.UseRoundedCorners();
 
-            this.VisionComboBox.ItemsSource = StringUtility.FormatEnumForDisplay(typeof(VisionTypes));
+            this.VisionComboBox.ItemsSource = ComboBoxGenerator.VisionComboBox();
             this.ConciergePage = ConciergePage.None;
             this.DescriptionTextBlock.DataContext = this.Description;
 

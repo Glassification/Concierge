@@ -84,12 +84,7 @@ namespace Concierge.Display.Controls
         {
             foreach (var customColor in colors)
             {
-                comboBox.Items.Add(new ComboBoxItem()
-                {
-                    Content = customColor.Name,
-                    Foreground = new SolidColorBrush(customColor.Color),
-                    Tag = customColor,
-                });
+                comboBox.Items.Add(new ComboBoxItemControl(customColor));
             }
 
             comboBox.SelectedIndex = 0;
@@ -102,12 +97,12 @@ namespace Concierge.Display.Controls
                 return;
             }
 
-            if (e.AddedItems[0] is not ComboBoxItem item)
+            if (e.AddedItems[0] is not ComboBoxItemControl item)
             {
                 return;
             }
 
-            if (item.Tag is not CustomColor customColor)
+            if (item.Item is not CustomColor customColor)
             {
                 return;
             }

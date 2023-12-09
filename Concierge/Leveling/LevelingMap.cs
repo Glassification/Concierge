@@ -68,7 +68,7 @@ namespace Concierge.Leveling
                 "Sorcerer" => ClassProficiencyDefinitions.GetSorcererProficiencies(multiClass),
                 "Warlock" => ClassProficiencyDefinitions.GetWarlockProficiencies(multiClass),
                 "Wizard" => ClassProficiencyDefinitions.GetWizardProficiencies(multiClass),
-                _ => new List<Proficiency>(),
+                _ => [],
             };
         }
 

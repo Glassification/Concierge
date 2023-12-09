@@ -47,7 +47,7 @@ namespace Concierge.Common.Utilities
                 stringArray[i] = stringArray[i].FormatFromEnum();
             }
 
-            return stringArray.ToList();
+            return [.. stringArray];
         }
 
         /// <summary>

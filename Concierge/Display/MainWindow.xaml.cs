@@ -673,16 +673,16 @@ namespace Concierge.Display
                     this.MoveSelection(ConciergePage.Attacks);
                     break;
                 case Key.D4:
-                    this.MoveSelection(ConciergePage.Abilities);
-                    break;
-                case Key.D5:
                     this.MoveSelection(ConciergePage.Equipment);
                     break;
-                case Key.D6:
+                case Key.D5:
                     this.MoveSelection(ConciergePage.Inventory);
                     break;
-                case Key.D7:
+                case Key.D6:
                     this.MoveSelection(ConciergePage.Spellcasting);
+                    break;
+                case Key.D7:
+                    this.MoveSelection(ConciergePage.Abilities);
                     break;
                 case Key.D8:
                     this.MoveSelection(ConciergePage.Companion);

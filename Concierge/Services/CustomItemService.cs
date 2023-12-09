@@ -25,7 +25,7 @@ namespace Concierge.Services
         public CustomItemService()
         {
             this.readwriter = new CustomItemReadWriter(Program.ErrorService);
-            this.CustomItems = new List<IUnique>();
+            this.CustomItems = [];
 
             this.Initialize();
         }

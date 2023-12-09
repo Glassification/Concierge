@@ -5,7 +5,6 @@
 namespace Concierge.Character.Journals
 {
     using System.Collections.Generic;
-    using System.Linq;
 
     using Concierge.Common;
     using Concierge.Common.Extensions;
@@ -15,7 +14,7 @@ namespace Concierge.Character.Journals
         public Chapter(string name)
             : base(name)
         {
-            this.Documents = new List<Document>();
+            this.Documents = [];
         }
 
         public List<Document> Documents { get; set; }
@@ -24,7 +23,7 @@ namespace Concierge.Character.Journals
         {
             return new Chapter(this.Name)
             {
-                Documents = this.Documents.DeepCopy().ToList(),
+                Documents = [.. this.Documents.DeepCopy()],
                 IsExpanded = this.IsExpanded,
                 Id = this.Id,
                 Created = this.Created,

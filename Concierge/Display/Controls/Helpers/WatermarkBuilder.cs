@@ -29,7 +29,7 @@ namespace Concierge.Display.Controls
         /// <summary>
         /// Dictionary of ItemsControls.
         /// </summary>
-        private static readonly Dictionary<object, ItemsControl> itemsControls = new ();
+        private static readonly Dictionary<object, ItemsControl> itemsControls = [];
 
         /// <summary>
         /// Gets the Watermark property.  This dependency property indicates the watermark for the control.

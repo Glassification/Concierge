@@ -6,7 +6,6 @@ namespace Concierge.Display.Windows
 {
     using System;
     using System.Collections.Generic;
-    using System.Linq;
     using System.Windows;
     using System.Windows.Controls;
 
@@ -22,6 +21,7 @@ namespace Concierge.Display.Windows
     using Concierge.Data.Units;
     using Concierge.Display;
     using Concierge.Display.Components;
+    using Concierge.Display.Controls;
     using Concierge.Display.Enums;
 
     /// <summary>
@@ -35,11 +35,11 @@ namespace Concierge.Display.Windows
             this.UseRoundedCorners();
 
             this.NameComboBox.ItemsSource = DefaultItems;
-            this.CategoryComboBox.ItemsSource = Defaults.ItemCategories;
-            this.CoinTypeComboBox.ItemsSource = Enum.GetValues(typeof(CoinType)).Cast<CoinType>();
+            this.CategoryComboBox.ItemsSource = ComboBoxGenerator.ItemCategoriesComboBox();
+            this.CoinTypeComboBox.ItemsSource = ComboBoxGenerator.CoinTypesComboBox();
             this.ConciergePage = ConciergePage.None;
             this.SelectedItem = new Inventory();
-            this.Items = new List<Inventory>();
+            this.Items = [];
             this.DescriptionTextBlock.DataContext = this.Description;
 
             this.SetMouseOverEvents(this.NameComboBox);
@@ -61,7 +61,7 @@ namespace Concierge.Display.Windows
 
         public bool ItemsAdded { get; private set; }
 
-        private static List<ComboBoxItem> DefaultItems => DisplayUtility.GenerateSelectorComboBox(Defaults.Inventory, Program.CustomItemService.GetCustomItems<Inventory>());
+        private static List<ComboBoxItemControl> DefaultItems => ComboBoxGenerator.SelectorComboBox(Defaults.Inventory, Program.CustomItemService.GetCustomItems<Inventory>());
 
         private bool EquippedItem { get; set; }
 
@@ -282,7 +282,7 @@ namespace Concierge.Display.Windows
 
         private void NameComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (this.NameComboBox.SelectedItem is ComboBoxItem item && item.Tag is Inventory inventory)
+            if (this.NameComboBox.SelectedItem is ComboBoxItemControl item && item.Item is Inventory inventory)
             {
                 this.FillFields(inventory);
             }

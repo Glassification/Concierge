@@ -15,7 +15,7 @@ namespace Concierge.Character.Journals
     {
         public Journal()
         {
-            this.Chapters = new List<Chapter>();
+            this.Chapters = [];
         }
 
         public List<Chapter> Chapters { get; set; }
@@ -29,7 +29,7 @@ namespace Concierge.Character.Journals
         {
             return new Journal()
             {
-                Chapters = this.Chapters.DeepCopy().ToList(),
+                Chapters = [.. this.Chapters.DeepCopy()],
             };
         }
     }

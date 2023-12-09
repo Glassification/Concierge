@@ -18,7 +18,7 @@ namespace Concierge.Character.Vitals
 
         public DeathSavingThrows()
         {
-            this.DeathSaves = new List<AbilitySave>();
+            this.DeathSaves = [];
             this.CurrentDeathSave = 0;
         }
 

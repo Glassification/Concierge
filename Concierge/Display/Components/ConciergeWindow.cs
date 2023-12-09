@@ -12,7 +12,6 @@ namespace Concierge.Display.Components
 
     using Concierge.Animations;
     using Concierge.Character;
-    using Concierge.Character.AbilitySaves;
     using Concierge.Character.Enums;
     using Concierge.Common;
     using Concierge.Common.Exceptions;

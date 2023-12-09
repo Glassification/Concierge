@@ -5,7 +5,6 @@
 namespace Concierge.Display.Windows
 {
     using System;
-    using System.Linq;
     using System.Windows;
 
     using Concierge.Character.AbilitySaves;
@@ -24,12 +23,12 @@ namespace Concierge.Display.Windows
             this.InitializeComponent();
             this.UseRoundedCorners();
 
-            this.StrengthComboBox.ItemsSource = Enum.GetValues(typeof(StatusChecks)).Cast<StatusChecks>();
-            this.DexterityComboBox.ItemsSource = Enum.GetValues(typeof(StatusChecks)).Cast<StatusChecks>();
-            this.ConstitutionComboBox.ItemsSource = Enum.GetValues(typeof(StatusChecks)).Cast<StatusChecks>();
-            this.IntelligenceComboBox.ItemsSource = Enum.GetValues(typeof(StatusChecks)).Cast<StatusChecks>();
-            this.WisdomComboBox.ItemsSource = Enum.GetValues(typeof(StatusChecks)).Cast<StatusChecks>();
-            this.CharismaComboBox.ItemsSource = Enum.GetValues(typeof(StatusChecks)).Cast<StatusChecks>();
+            this.StrengthComboBox.ItemsSource = ComboBoxGenerator.StatusChecksComboBox();
+            this.DexterityComboBox.ItemsSource = ComboBoxGenerator.StatusChecksComboBox();
+            this.ConstitutionComboBox.ItemsSource = ComboBoxGenerator.StatusChecksComboBox();
+            this.IntelligenceComboBox.ItemsSource = ComboBoxGenerator.StatusChecksComboBox();
+            this.WisdomComboBox.ItemsSource = ComboBoxGenerator.StatusChecksComboBox();
+            this.CharismaComboBox.ItemsSource = ComboBoxGenerator.StatusChecksComboBox();
 
             this.ConciergePage = ConciergePage.None;
             this.SavingThrow = new SavingThrows();

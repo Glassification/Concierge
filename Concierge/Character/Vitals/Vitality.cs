@@ -4,7 +4,6 @@
 
 namespace Concierge.Character.Vitals
 {
-    using System;
     using System.Collections.Generic;
     using System.Linq;
 
@@ -25,8 +24,8 @@ namespace Concierge.Character.Vitals
             this.HitDice = new HitDice();
             this.Conditions = new Conditions();
             this.DeathSavingThrows = new DeathSavingThrows();
-            this.StatusEffects = new List<StatusEffect>();
-            this.ClassResources = new List<ClassResource>();
+            this.StatusEffects = [];
+            this.ClassResources = [];
         }
 
         [JsonIgnore]
@@ -69,10 +68,10 @@ namespace Concierge.Character.Vitals
 
         public void RegainHitDice()
         {
-            this.HitDice.SpentD6 = RegainHitDie(this.HitDice.SpentD6);
-            this.HitDice.SpentD8 = RegainHitDie(this.HitDice.SpentD8);
-            this.HitDice.SpentD10 = RegainHitDie(this.HitDice.SpentD10);
-            this.HitDice.SpentD12 = RegainHitDie(this.HitDice.SpentD12);
+            this.HitDice.SpentD6 = Constants.Regain(this.HitDice.SpentD6);
+            this.HitDice.SpentD8 = Constants.Regain(this.HitDice.SpentD8);
+            this.HitDice.SpentD10 = Constants.Regain(this.HitDice.SpentD10);
+            this.HitDice.SpentD12 = Constants.Regain(this.HitDice.SpentD12);
         }
 
         public void ResetDeathSaves()
@@ -107,8 +106,8 @@ namespace Concierge.Character.Vitals
                 HitDice = this.HitDice.DeepCopy(),
                 Conditions = this.Conditions.DeepCopy(),
                 DeathSavingThrows = this.DeathSavingThrows.DeepCopy(),
-                StatusEffects = this.StatusEffects.DeepCopy().ToList(),
-                ClassResources = this.ClassResources.DeepCopy().ToList(),
+                StatusEffects = [.. this.StatusEffects.DeepCopy()],
+                ClassResources = [.. this.ClassResources.DeepCopy()],
             };
         }
 
@@ -142,12 +141,6 @@ namespace Concierge.Character.Vitals
             this.Heal(roll.FirstOrDefault(0) + modifier);
 
             return new DiceRoll((int)hitDie, roll, modifier);
-        }
-
-        private static int RegainHitDie(int spent)
-        {
-            spent -= Math.Max(spent / 2, 1);
-            return Math.Max(spent, 0);
         }
     }
 }

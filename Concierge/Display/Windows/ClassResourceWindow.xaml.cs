@@ -13,8 +13,8 @@ namespace Concierge.Display.Windows
     using Concierge.Character.Vitals;
     using Concierge.Commands;
     using Concierge.Common.Extensions;
-    using Concierge.Common.Utilities;
     using Concierge.Display.Components;
+    using Concierge.Display.Controls;
     using Concierge.Display.Enums;
 
     /// <summary>
@@ -29,9 +29,9 @@ namespace Concierge.Display.Windows
 
             this.ConciergePage = ConciergePage.None;
             this.ResourceNameComboBox.ItemsSource = DefaultItems;
-            this.RecoveryComboBox.ItemsSource = StringUtility.FormatEnumForDisplay(typeof(Recovery));
+            this.RecoveryComboBox.ItemsSource = ComboBoxGenerator.RecoveryComboBox();
             this.ClassResource = new ClassResource();
-            this.ClassResources = new List<ClassResource>();
+            this.ClassResources = [];
             this.DescriptionTextBlock.DataContext = this.Description;
 
             this.SetMouseOverEvents(this.ResourceNameComboBox);
@@ -47,7 +47,7 @@ namespace Concierge.Display.Windows
 
         public bool ItemsAdded { get; private set; }
 
-        private static List<ComboBoxItem> DefaultItems => DisplayUtility.GenerateSelectorComboBox(Defaults.Resources, Program.CustomItemService.GetCustomItems<ClassResource>());
+        private static List<ComboBoxItemControl> DefaultItems => ComboBoxGenerator.SelectorComboBox(Defaults.Resources, Program.CustomItemService.GetCustomItems<ClassResource>());
 
         private bool Editing { get; set; }
 
@@ -212,7 +212,7 @@ namespace Concierge.Display.Windows
 
         private void ResourceNameComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (this.ResourceNameComboBox.SelectedItem is ComboBoxItem item && item.Tag is ClassResource resource)
+            if (this.ResourceNameComboBox.SelectedItem is ComboBoxItemControl item && item.Item is ClassResource resource)
             {
                 this.FillFields(resource);
             }

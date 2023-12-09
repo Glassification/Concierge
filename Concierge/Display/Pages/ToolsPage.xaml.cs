@@ -34,8 +34,8 @@ namespace Concierge.Display.Pages
             this.InitializeComponent();
 
             this.historyReadWriter = new HistoryReadWriter(Program.ErrorService);
-            this.Players = new List<Player>();
-            this.RollHistory = new List<IDiceRoll>();
+            this.Players = [];
+            this.RollHistory = [];
             this.DiceHistory = new History(this.historyReadWriter.ReadList<string>(this.diceHistoryFile), string.Empty);
 
             this.SetDefaultDiceValues();

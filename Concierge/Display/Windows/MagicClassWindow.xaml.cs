@@ -15,8 +15,8 @@ namespace Concierge.Display.Windows
     using Concierge.Commands;
     using Concierge.Common;
     using Concierge.Common.Extensions;
-    using Concierge.Common.Utilities;
     using Concierge.Display.Components;
+    using Concierge.Display.Controls;
     using Concierge.Display.Enums;
 
     /// <summary>
@@ -30,10 +30,10 @@ namespace Concierge.Display.Windows
             this.UseRoundedCorners();
 
             this.ClassNameComboBox.ItemsSource = DefaultItems;
-            this.AbilityComboBox.ItemsSource = Enum.GetValues(typeof(Abilities)).Cast<Abilities>();
+            this.AbilityComboBox.ItemsSource = ComboBoxGenerator.AbilitiesComboBox();
             this.ConciergePage = ConciergePage.None;
             this.SelectedClass = new MagicClass();
-            this.MagicClasses = new List<MagicClass>();
+            this.MagicClasses = [];
             this.DescriptionTextBlock.DataContext = this.Description;
 
             this.SetMouseOverEvents(this.ClassNameComboBox);
@@ -52,7 +52,7 @@ namespace Concierge.Display.Windows
 
         public bool ItemsAdded { get; private set; }
 
-        private static List<ComboBoxItem> DefaultItems => DisplayUtility.GenerateSelectorComboBox(Defaults.MagicClasses, Program.CustomItemService.GetCustomItems<MagicClass>());
+        private static List<ComboBoxItemControl> DefaultItems => ComboBoxGenerator.SelectorComboBox(Defaults.MagicClasses, Program.CustomItemService.GetCustomItems<MagicClass>());
 
         private bool Editing { get; set; }
 
@@ -234,7 +234,7 @@ namespace Concierge.Display.Windows
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (this.ClassNameComboBox.SelectedItem is ComboBoxItem item && item.Tag is MagicClass magicClass)
+            if (this.ClassNameComboBox.SelectedItem is ComboBoxItemControl item && item.Item is MagicClass magicClass)
             {
                 this.FillFields(magicClass);
             }

@@ -4,9 +4,13 @@
 
 namespace Concierge.Character.Equipable
 {
+    using System.Windows.Media;
+
     using Concierge.Character.Enums;
     using Concierge.Common;
+    using Concierge.Common.Attributes;
     using Concierge.Data;
+    using MaterialDesignThemes.Wpf;
     using Newtonsoft.Json;
 
     public sealed class Defense : ICopyable<Defense>
@@ -31,6 +35,14 @@ namespace Concierge.Character.Equipable
 
         public ArmorStatus ArmorStatus { get; set; }
 
+        [SearchIgnore]
+        [JsonIgnore]
+        public PackIconKind ArmorStatusIcon => this.ArmorStatus == ArmorStatus.Doffed ? PackIconKind.ShieldOff : PackIconKind.Shield;
+
+        [SearchIgnore]
+        [JsonIgnore]
+        public Brush ArmorStatusBrush => this.ArmorStatus == ArmorStatus.Doffed ? Brushes.IndianRed : ConciergeBrushes.Mint;
+
         public int MagicAc { get; set; }
 
         public int MiscAc { get; set; }
@@ -42,12 +54,10 @@ namespace Concierge.Character.Equipable
         public UnitDouble ShieldWeight { get; set; }
 
         [JsonIgnore]
-        public int TotalAc => this.MagicAc + this.MiscAc + this.ShieldAc + this.ArmorStatus == ArmorStatus.Donned ? this.Armor.TotalAc : DoffedAc;
+        public int TotalAc => this.MagicAc + this.MiscAc + this.ShieldAc + this.ArmorStatus == ArmorStatus.Donned ? this.Armor.TotalAc : GetDoffedAc();
 
         [JsonIgnore]
         public double TotalWeight => this.Armor.Weight.Value + this.ShieldWeight.Value;
-
-        private static int DoffedAc => Constants.BaseAC + Constants.Bonus(Program.CcsFile.Character.Characteristic.Attributes.Dexterity);
 
         public Defense DeepCopy()
         {
@@ -61,6 +71,11 @@ namespace Concierge.Character.Equipable
                 ShieldAc = this.ShieldAc,
                 ShieldWeight = this.ShieldWeight.DeepCopy(),
             };
+        }
+
+        private static int GetDoffedAc()
+        {
+            return Common.Constants.BaseAC + Common.Constants.Bonus(Program.CcsFile.Character.Characteristic.Attributes.Dexterity);
         }
     }
 }

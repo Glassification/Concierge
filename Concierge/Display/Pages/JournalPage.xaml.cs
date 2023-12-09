@@ -7,7 +7,6 @@ namespace Concierge.Display.Pages
     using System;
     using System.Collections.Generic;
     using System.IO;
-    using System.Linq;
     using System.Text;
     using System.Windows;
     using System.Windows.Controls;
@@ -23,6 +22,7 @@ namespace Concierge.Display.Pages
     using Concierge.Data;
     using Concierge.Display;
     using Concierge.Display.Components;
+    using Concierge.Display.Controls;
     using Concierge.Display.Enums;
     using Concierge.Display.Windows;
     using Concierge.Search;
@@ -43,8 +43,8 @@ namespace Concierge.Display.Pages
 
             this.SelectedDocument = null;
             this.Lock = false;
-            this.FontFamilyList.ItemsSource = Fonts.SystemFontFamilies.OrderBy(f => f.Source);
-            this.FontSizeList.ItemsSource = new List<double>() { 8, 9, 10, 11, 12, 14, 16, 18, 20, 22, 24, 26, 28, 36, 48, 72 };
+            this.FontFamilyList.ItemsSource = ComboBoxGenerator.FontFamilyComboBox();
+            this.FontSizeList.ItemsSource = ComboBoxGenerator.FontSizeComboBox();
             this.NotesTextBox.UndoLimit = MaxUndoQueue;
 
             this.SetDefaultFontStyle();
@@ -373,9 +373,9 @@ namespace Concierge.Display.Pages
                 return;
             }
 
-            if (this.FontFamilyList.SelectedItem != null)
+            if (this.FontFamilyList.SelectedItem is ComboBoxItemControl control && control.Tag is FontFamily fontFamily)
             {
-                this.NotesTextBox.Selection.ApplyPropertyValue(TextElement.FontFamilyProperty, this.FontFamilyList.SelectedItem);
+                this.NotesTextBox.Selection.ApplyPropertyValue(TextElement.FontFamilyProperty, fontFamily);
             }
         }
 

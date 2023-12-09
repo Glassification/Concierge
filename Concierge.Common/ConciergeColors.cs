@@ -46,6 +46,16 @@ namespace Concierge.Common
             Mint = Color.FromArgb(255, 72, 185, 135);
 
             Deer = Color.FromArgb(255, 185, 135, 72);
+
+            Copper = Color.FromArgb(255, 184, 115, 51);
+
+            Silver = Colors.Silver;
+
+            Electrum = Color.FromArgb(255, 80, 200, 120);
+
+            Gold = Color.FromArgb(255, 207, 181, 59);
+
+            Platinum = Color.FromArgb(255, 229, 228, 226);
         }
 
         public static Color WindowBackground { get; }
@@ -81,5 +91,15 @@ namespace Concierge.Common
         public static Color Mint { get; }
 
         public static Color Deer { get; }
+
+        public static Color Copper { get; }
+
+        public static Color Silver { get; }
+
+        public static Color Electrum { get; }
+
+        public static Color Gold { get; }
+
+        public static Color Platinum { get; }
     }
 }

@@ -215,7 +215,7 @@
                             IconColor="#ffd166"/>
                         <local:PopupButton
                             x:Name="HelpMenuItem"
-                            Label="Help..."
+                            Label="Wiki..."
                             Shortcut="Ctrl+H"
                             IconKind="Bookshelf"
                             IconColor="#ef476f"/>

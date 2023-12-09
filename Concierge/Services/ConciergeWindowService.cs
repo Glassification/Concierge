@@ -7,7 +7,6 @@ namespace Concierge.Services
     using System;
 
     using Concierge.Character;
-    using Concierge.Character.AbilitySaves;
     using Concierge.Character.Enums;
     using Concierge.Data;
     using Concierge.Display.Components;
@@ -20,7 +19,7 @@ namespace Concierge.Services
     {
         public static bool ShowAdd<T>(T item, Type typeOfWindow, ApplyChangesEventHandler applyEvent, ConciergePage conciergePage)
         {
-            var conciergeWindow = (ConciergeWindow?)Activator.CreateInstance(typeOfWindow);
+            var conciergeWindow = Create(typeOfWindow);
             if (conciergeWindow is null)
             {
                 return false;
@@ -34,7 +33,7 @@ namespace Concierge.Services
 
         public static bool ShowAdd<T>(T item, Type typeOfWindow, ApplyChangesEventHandler applyEvent, ConciergePage conciergePage, ICreature creature)
         {
-            var conciergeWindow = (ConciergeWindow?)Activator.CreateInstance(typeOfWindow);
+            var conciergeWindow = Create(typeOfWindow);
             if (conciergeWindow is null)
             {
                 return false;
@@ -48,7 +47,7 @@ namespace Concierge.Services
 
         public static void ShowEdit<T>(T item, Type typeOfWindow, ApplyChangesEventHandler applyEvent, ConciergePage conciergePage)
         {
-            var conciergeWindow = (ConciergeWindow?)Activator.CreateInstance(typeOfWindow);
+            var conciergeWindow = Create(typeOfWindow);
             if (conciergeWindow is null)
             {
                 return;
@@ -62,7 +61,7 @@ namespace Concierge.Services
 
         public static void ShowEdit<T>(T item, object sender, Type typeOfWindow, ApplyChangesEventHandler applyEvent, ConciergePage conciergePage)
         {
-            var conciergeWindow = (ConciergeWindow?)Activator.CreateInstance(typeOfWindow);
+            var conciergeWindow = Create(typeOfWindow);
             if (conciergeWindow is null)
             {
                 return;
@@ -76,7 +75,7 @@ namespace Concierge.Services
 
         public static void ShowEdit<T>(T item, bool equippedItem, Type typeOfWindow, ApplyChangesEventHandler applyEvent, ConciergePage conciergePage)
         {
-            var conciergeWindow = (ConciergeWindow?)Activator.CreateInstance(typeOfWindow);
+            var conciergeWindow = Create(typeOfWindow);
             if (conciergeWindow is null)
             {
                 return;
@@ -90,7 +89,7 @@ namespace Concierge.Services
 
         public static ConciergeWindowResult ShowHeal<T>(T item, Type typeOfWindow, ApplyChangesEventHandler applyEvent, ConciergePage conciergePage)
         {
-            var conciergeWindow = (ConciergeWindow?)Activator.CreateInstance(typeOfWindow);
+            var conciergeWindow = Create(typeOfWindow);
             if (conciergeWindow is null)
             {
                 return ConciergeWindowResult.NoResult;
@@ -104,7 +103,7 @@ namespace Concierge.Services
 
         public static ConciergeWindowResult ShowDamage<T>(T item, Type typeOfWindow, ApplyChangesEventHandler applyEvent, ConciergePage conciergePage)
         {
-            var conciergeWindow = (ConciergeWindow?)Activator.CreateInstance(typeOfWindow);
+            var conciergeWindow = Create(typeOfWindow);
             if (conciergeWindow is null)
             {
                 return ConciergeWindowResult.NoResult;
@@ -118,7 +117,7 @@ namespace Concierge.Services
 
         public static CustomColor ShowColorWindow(Type typeOfWindow, CustomColor color)
         {
-            var conciergeWindow = (ConciergeWindow?)Activator.CreateInstance(typeOfWindow);
+            var conciergeWindow = Create(typeOfWindow);
             if (conciergeWindow is null)
             {
                 return CustomColor.Invalid;
@@ -129,7 +128,7 @@ namespace Concierge.Services
 
         public static ConciergeWindowResult ShowUseItemWindow(Type typeOfWindow, UsedItem usedItem)
         {
-            var conciergeWindow = (ConciergeWindow?)Activator.CreateInstance(typeOfWindow);
+            var conciergeWindow = Create(typeOfWindow);
             if (conciergeWindow is null)
             {
                 return ConciergeWindowResult.NoResult;
@@ -140,7 +139,7 @@ namespace Concierge.Services
 
         public static AbilitySave ShowAbilityCheckWindow(Type typeOfWindow, IAbility ability, int value)
         {
-            var conciergeWindow = (ConciergeWindow?)Activator.CreateInstance(typeOfWindow);
+            var conciergeWindow = Create(typeOfWindow);
             if (conciergeWindow is null)
             {
                 return AbilitySave.None;
@@ -151,7 +150,7 @@ namespace Concierge.Services
 
         public static object? ShowWindow(Type typeOfWindow)
         {
-            var conciergeWindow = (ConciergeWindow?)Activator.CreateInstance(typeOfWindow);
+            var conciergeWindow = Create(typeOfWindow);
             if (conciergeWindow is null)
             {
                 return null;
@@ -162,7 +161,7 @@ namespace Concierge.Services
 
         public static void ShowWindow(Type typeOfWindow, ApplyChangesEventHandler applyEvent)
         {
-            var conciergeWindow = (ConciergeWindow?)Activator.CreateInstance(typeOfWindow);
+            var conciergeWindow = Create(typeOfWindow);
             if (conciergeWindow is null)
             {
                 return;
@@ -175,13 +174,18 @@ namespace Concierge.Services
 
         public static ConciergeWindow? ShowNonBlockingWindow(Type typeOfWindow)
         {
-            var conciergeWindow = (ConciergeWindow?)Activator.CreateInstance(typeOfWindow);
+            var conciergeWindow = Create(typeOfWindow);
             if (conciergeWindow is null)
             {
                 return null;
             }
 
             return conciergeWindow.ShowNonBlockingWindow();
+        }
+
+        private static ConciergeWindow? Create(Type typeOfWindow)
+        {
+            return (ConciergeWindow?)Activator.CreateInstance(typeOfWindow);
         }
     }
 }

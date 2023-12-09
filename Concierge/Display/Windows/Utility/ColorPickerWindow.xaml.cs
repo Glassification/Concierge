@@ -8,11 +8,11 @@ namespace Concierge.Display.Utility
     using System.Linq;
     using System.Windows;
     using System.Windows.Controls;
-    using System.Windows.Media;
 
     using Concierge.Common.Utilities;
     using Concierge.Data;
     using Concierge.Display.Components;
+    using Concierge.Display.Controls;
     using Concierge.Services;
 
     /// <summary>
@@ -64,12 +64,7 @@ namespace Concierge.Display.Utility
         {
             foreach (var customColor in colors)
             {
-                comboBox.Items.Add(new ComboBoxItem()
-                {
-                    Content = customColor.Name,
-                    Foreground = new SolidColorBrush(customColor.Color),
-                    Tag = customColor,
-                });
+                comboBox.Items.Add(new ComboBoxItemControl(customColor));
             }
 
             comboBox.SelectedIndex = 0;
@@ -102,12 +97,12 @@ namespace Concierge.Display.Utility
                 return;
             }
 
-            if (e.AddedItems[0] is not ComboBoxItem item)
+            if (e.AddedItems[0] is not ComboBoxItemControl item)
             {
                 return;
             }
 
-            if (item.Tag is not CustomColor customColor)
+            if (item.Item is not CustomColor customColor)
             {
                 return;
             }

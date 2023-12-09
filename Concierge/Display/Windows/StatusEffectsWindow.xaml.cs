@@ -6,7 +6,6 @@ namespace Concierge.Display.Windows
 {
     using System;
     using System.Collections.Generic;
-    using System.Linq;
     using System.Windows;
     using System.Windows.Controls;
 
@@ -14,8 +13,8 @@ namespace Concierge.Display.Windows
     using Concierge.Character.Vitals;
     using Concierge.Commands;
     using Concierge.Common.Extensions;
-    using Concierge.Common.Utilities;
     using Concierge.Display.Components;
+    using Concierge.Display.Controls;
     using Concierge.Display.Enums;
 
     /// <summary>
@@ -29,10 +28,10 @@ namespace Concierge.Display.Windows
             this.UseRoundedCorners();
 
             this.NameComboBox.ItemsSource = DefaultItems;
-            this.TypeComboBox.ItemsSource = Enum.GetValues(typeof(StatusEffectTypes)).Cast<StatusEffectTypes>();
+            this.TypeComboBox.ItemsSource = ComboBoxGenerator.StatusEffectTypesComboBox();
             this.ConciergePage = ConciergePage.None;
             this.SelectedEffect = new StatusEffect();
-            this.StatusEffects = new List<StatusEffect>();
+            this.StatusEffects = [];
             this.DescriptionTextBlock.DataContext = this.Description;
 
             this.SetMouseOverEvents(this.NameComboBox);
@@ -46,7 +45,7 @@ namespace Concierge.Display.Windows
 
         public bool ItemsAdded { get; private set; }
 
-        private static List<ComboBoxItem> DefaultItems => DisplayUtility.GenerateSelectorComboBox(Defaults.StatusEffects, Program.CustomItemService.GetCustomItems<StatusEffect>());
+        private static List<ComboBoxItemControl> DefaultItems => ComboBoxGenerator.SelectorComboBox(Defaults.StatusEffects, Program.CustomItemService.GetCustomItems<StatusEffect>());
 
         private bool Editing { get; set; }
 
@@ -204,7 +203,7 @@ namespace Concierge.Display.Windows
 
         private void NameComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (this.NameComboBox.SelectedItem is ComboBoxItem item && item.Tag is StatusEffect statusEffect)
+            if (this.NameComboBox.SelectedItem is ComboBoxItemControl item && item.Item is StatusEffect statusEffect)
             {
                 this.FillFields(statusEffect);
             }

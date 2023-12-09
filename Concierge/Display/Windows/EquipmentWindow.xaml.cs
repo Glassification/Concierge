@@ -5,7 +5,6 @@
 namespace Concierge.Display.Windows
 {
     using System;
-    using System.Linq;
     using System.Windows;
 
     using Concierge.Character.Enums;
@@ -25,7 +24,7 @@ namespace Concierge.Display.Windows
             this.InitializeComponent();
             this.UseRoundedCorners();
 
-            this.SlotComboBox.ItemsSource = Enum.GetValues(typeof(EquipmentSlot)).Cast<EquipmentSlot>().ToList().GetRange(0, (int)EquipmentSlot.None);
+            this.SlotComboBox.ItemsSource = ComboBoxGenerator.EquipmentSlotLevelComboBox();
             this.ConciergePage = ConciergePage.None;
             this.PreviousSlot = string.Empty;
             this.DescriptionTextBlock.DataContext = this.Description;

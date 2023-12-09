@@ -494,6 +494,13 @@
                                         FontWeight="DemiBold"
                                         FontFamily="Sergoe UI Variable"
                                         Margin="0,10,0,0"/>
+                                    <materialDesign:PackIcon
+                                        x:Name="ArmorStatusIcon"
+                                        Height="25"
+                                        Width="25"
+                                        VerticalAlignment="Bottom"
+                                        HorizontalAlignment="Right"
+                                        Kind="Shield"/>
                                 </Grid>
                             </Border>
                         </Grid>

@@ -10,6 +10,8 @@ namespace Concierge.Character.Characteristics
 
     public sealed class Attributes : ICopyable<Attributes>
     {
+        public const int DefaultScore = 10;
+
         private int strength;
         private int dexterity;
         private int constitution;
@@ -19,12 +21,12 @@ namespace Concierge.Character.Characteristics
 
         public Attributes()
         {
-            this.strength = 10;
-            this.dexterity = 10;
-            this.constitution = 10;
-            this.intelligence = 10;
-            this.wisdom = 10;
-            this.charisma = 10;
+            this.strength = DefaultScore;
+            this.dexterity = DefaultScore;
+            this.constitution = DefaultScore;
+            this.intelligence = DefaultScore;
+            this.wisdom = DefaultScore;
+            this.charisma = DefaultScore;
         }
 
         public int Strength

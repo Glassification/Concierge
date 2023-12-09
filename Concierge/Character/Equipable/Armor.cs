@@ -84,7 +84,16 @@ namespace Concierge.Character.Equipable
 
         public CategoryDto GetCategory()
         {
-            throw new NotImplementedException();
+            var color = this.Type switch
+            {
+                ArmorType.Light => ConciergeBrushes.LightCarryCapacity,
+                ArmorType.Medium => ConciergeBrushes.MediumCarryCapacity,
+                ArmorType.Heavy => ConciergeBrushes.HeavyCarryCapacity,
+                ArmorType.Massive => ConciergeBrushes.Verdigris,
+                _ => ConciergeBrushes.Silver,
+            };
+
+            return new CategoryDto(PackIconKind.Wall, color, this.Name);
         }
     }
 }

@@ -5,7 +5,6 @@
 namespace Concierge.Character.Equipable
 {
     using System.Collections.Generic;
-    using System.Linq;
 
     using Concierge.Common;
     using Concierge.Common.Extensions;
@@ -17,10 +16,10 @@ namespace Concierge.Character.Equipable
     {
         public Equipment()
         {
-            this.Ammunition = new List<Ammunition>();
+            this.Ammunition = [];
             this.Defense = new Defense();
-            this.Inventory = new List<Inventory>();
-            this.Weapons = new List<Weapon>();
+            this.Inventory = [];
+            this.Weapons = [];
             this.EquippedItems = new EquippedItems(this.Inventory, this.Weapons);
         }
 
@@ -73,10 +72,10 @@ namespace Concierge.Character.Equipable
         {
             return new Equipment()
             {
-                Ammunition = this.Ammunition.DeepCopy().ToList(),
+                Ammunition = [.. this.Ammunition.DeepCopy()],
                 Defense = this.Defense.DeepCopy(),
-                Inventory = this.Inventory.DeepCopy().ToList(),
-                Weapons = this.Weapons.DeepCopy().ToList(),
+                Inventory = [.. this.Inventory.DeepCopy()],
+                Weapons = [.. this.Weapons.DeepCopy()],
             };
         }
     }

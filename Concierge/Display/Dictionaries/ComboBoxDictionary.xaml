@@ -59,7 +59,7 @@
                         <ContentPresenter
                             Name="ContentSite"
                             IsHitTestVisible="False" 
-                            Content="{TemplateBinding SelectionBoxItem}"
+                            Content="{TemplateBinding Text}"
                             ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
                             ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
                             Margin="5"
@@ -76,6 +76,7 @@
                             Background="#373737"
                             Foreground="White"
                             Visibility="Hidden"
+                            TextWrapping="Wrap"
                             IsReadOnly="{TemplateBinding IsReadOnly}"/>
                         <Popup
                             Name="Popup"
@@ -135,15 +136,13 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ComboBoxItem}">
-                    <Border Name="Border"
-                              Padding="2"
-                              SnapsToDevicePixels="true">
+                    <Border
+                        Name="Border"
+                        Padding="2"
+                        SnapsToDevicePixels="true">
                         <ContentPresenter />
                     </Border>
                     <ControlTemplate.Triggers>
-                        <Trigger Property="IsHighlighted" Value="true">
-                            <Setter TargetName="Border" Property="Background" Value="#FF4F4F4F"/>
-                        </Trigger>
                         <Trigger Property="IsEnabled" Value="false">
                             <Setter Property="Foreground" Value="#888888"/>
                         </Trigger>

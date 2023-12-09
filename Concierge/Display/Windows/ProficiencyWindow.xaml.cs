@@ -6,18 +6,22 @@ namespace Concierge.Display.Windows
 {
     using System;
     using System.Collections.Generic;
-    using System.Linq;
+    using System.Collections.ObjectModel;
     using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Data;
+    using System.Windows.Media;
 
     using Concierge.Character.Characteristics;
     using Concierge.Character.Enums;
     using Concierge.Commands;
+    using Concierge.Common;
     using Concierge.Common.Extensions;
     using Concierge.Common.Utilities;
     using Concierge.Display.Components;
+    using Concierge.Display.Controls;
     using Concierge.Display.Enums;
+    using MaterialDesignThemes.Wpf;
 
     /// <summary>
     /// Interaction logic for ProficiencyWindow.xaml.
@@ -29,10 +33,10 @@ namespace Concierge.Display.Windows
             this.InitializeComponent();
             this.UseRoundedCorners();
 
-            this.ProficiencyComboBox.ItemsSource = Enum.GetValues(typeof(ProficiencyTypes)).Cast<ProficiencyTypes>();
-            this.ProficiencyTextComboBox.ItemsSource = GenerateComboBoxItems();
+            this.ProficiencyComboBox.ItemsSource = ComboBoxGenerator.ProficiencyTypesComboBox();
+            this.ProficiencyTextComboBox.ItemsSource = GenerateComboBoxItems(ProficiencyTypes.Weapon);
             this.ConciergePage = ConciergePage.None;
-            this.SelectedProficiencies = new List<Proficiency>();
+            this.SelectedProficiencies = [];
             this.SelectedProficiency = new Proficiency();
 
             this.DescriptionTextBlock.DataContext = this.Description;
@@ -120,37 +124,53 @@ namespace Concierge.Display.Windows
             this.CloseConciergeWindow();
         }
 
-        private static CompositeCollection GenerateComboBoxItems()
+        private static CompositeCollection GenerateComboBoxItems(ProficiencyTypes proficiencyType)
         {
-            var items = new CompositeCollection()
+            var items = new CompositeCollection();
+            switch (proficiencyType)
             {
-                Proficiency.MartialMelee,
-                Proficiency.MartialRanged,
-                Proficiency.SimpleMelee,
-                Proficiency.SimpleRanged,
-                new Separator(),
-                new CollectionContainer() { Collection = Defaults.Weapons },
-                new Separator(),
-                ArmorType.Light.GetDescription(),
-                ArmorType.Medium.GetDescription(),
-                ArmorType.Heavy.GetDescription(),
-                ArmorType.Massive.GetDescription(),
-                new Separator(),
-                new CollectionContainer() { Collection = Defaults.Tools },
-                new Separator(),
-                new CollectionContainer() { Collection = Defaults.Games },
-                new Separator(),
-                new CollectionContainer() { Collection = Defaults.Instruments },
-            };
+                case ProficiencyTypes.Armor:
+                    items.Add(new CollectionContainer() { Collection = ComboBoxGenerator.ArmorTypeComboBox() });
+                    break;
+                case ProficiencyTypes.Tool:
+                    items.Add(new CollectionContainer() { Collection = CreateTools(Defaults.Tools, ConciergeBrushes.Mint, PackIconKind.Tools) });
+                    items.Add(new Separator());
+                    items.Add(new CollectionContainer() { Collection = CreateTools(Defaults.Games, ConciergeBrushes.Deer, PackIconKind.Cards) });
+                    items.Add(new Separator());
+                    items.Add(new CollectionContainer() { Collection = CreateTools(Defaults.Instruments, Brushes.IndianRed, PackIconKind.GuitarAcoustic) });
+                    break;
+                case ProficiencyTypes.Weapon:
+                    items.Add(new ComboBoxItemControl(PackIconKind.Sword, Brushes.IndianRed, Proficiency.MartialMelee));
+                    items.Add(new ComboBoxItemControl(PackIconKind.BowArrow, Brushes.Orange, Proficiency.MartialRanged));
+                    items.Add(new ComboBoxItemControl(PackIconKind.Sword, Brushes.IndianRed, Proficiency.SimpleMelee));
+                    items.Add(new ComboBoxItemControl(PackIconKind.BowArrow, Brushes.Orange, Proficiency.SimpleRanged));
+                    items.Add(new Separator());
+                    items.Add(new CollectionContainer() { Collection = ComboBoxGenerator.WeaponTypesComboBox() });
+                    break;
+            }
 
             var customItems = Program.CustomItemService.GetCustomItems<Proficiency>();
             if (!customItems.IsEmpty())
             {
                 items.Insert(0, new Separator());
-                items.Insert(0, new CollectionContainer() { Collection = customItems });
+                foreach (var item in customItems)
+                {
+                    items.Insert(0, new ComboBoxItemControl(PackIconKind.ListStatus, Brushes.PowderBlue, item.Name));
+                }
             }
 
             return items;
+        }
+
+        private static List<ComboBoxItemControl> CreateTools(ReadOnlyCollection<string> tools, Brush color, PackIconKind icon)
+        {
+            var comboBoxItems = new List<ComboBoxItemControl>();
+            foreach (var tool in tools)
+            {
+                comboBoxItems.Add(new ComboBoxItemControl(icon, color, tool));
+            }
+
+            return comboBoxItems;
         }
 
         private void SetEnabledState(bool isEnabled)
@@ -241,7 +261,15 @@ namespace Concierge.Display.Windows
 
             Program.CustomItemService.AddCustomItem(this.Create());
             this.ClearFields();
-            this.ProficiencyComboBox.ItemsSource = GenerateComboBoxItems();
+            this.ProficiencyTextComboBox.ItemsSource = GenerateComboBoxItems(ProficiencyTypes.Weapon);
+        }
+
+        private void ProficiencyComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (sender is ConciergeComboBox comboBox && comboBox.SelectedItem is ProficiencyTypes proficency)
+            {
+                this.ProficiencyTextComboBox.ItemsSource = GenerateComboBoxItems(proficency);
+            }
         }
     }
 }

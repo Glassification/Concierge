@@ -82,6 +82,7 @@
                     <components:ConciergeComboBox
                         Style="{StaticResource ComboBoxStyle}"
                         x:Name="ProficiencyComboBox"
+                        SelectionChanged="ProficiencyComboBox_SelectionChanged"
                         IsEditable="False"/>
                 </Grid>
             </Grid>

@@ -134,6 +134,12 @@ namespace Concierge.Data
         public Color Color => Color.FromArgb(this.A, this.R, this.G, this.B);
 
         /// <summary>
+        /// Gets the <see cref="Brush"/> object representation of the custom color.
+        /// </summary>
+        [JsonIgnore]
+        public Brush Brush => new SolidColorBrush(this.Color);
+
+        /// <summary>
         /// Gets or sets the alpha component of the color.
         /// </summary>
         public byte A { get; set; }
@@ -289,7 +295,7 @@ namespace Concierge.Data
         /// <returns>The category of the color.</returns>
         public CategoryDto GetCategory()
         {
-            throw new NotImplementedException();
+            return new CategoryDto(PackIconKind.Palette, new SolidColorBrush(this.Color), this.Name);
         }
 
         private static byte[] HexToRgb(string hex)

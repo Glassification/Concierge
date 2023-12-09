@@ -31,16 +31,16 @@ namespace Concierge.Display.Windows
 
             this.fileAccessService = new FileAccessService();
 
-            this.AlignmentComboBox.ItemsSource = Defaults.Alignment;
-            this.RaceComboBox.ItemsSource = Defaults.Races;
-            this.SubRaceComboBox.ItemsSource = Defaults.Subrace;
-            this.BackgroundComboBox.ItemsSource = Defaults.Backgrounds;
-            this.Class1Class.ItemsSource = Defaults.Classes;
-            this.Class2Class.ItemsSource = Defaults.Classes;
-            this.Class3Class.ItemsSource = Defaults.Classes;
-            this.Class1Subclass.ItemsSource = Defaults.Subclass;
-            this.Class2Subclass.ItemsSource = Defaults.Subclass;
-            this.Class3Subclass.ItemsSource = Defaults.Subclass;
+            this.AlignmentComboBox.ItemsSource = ComboBoxGenerator.AlignmentTypesComboBox();
+            this.RaceComboBox.ItemsSource = ComboBoxGenerator.RacesComboBox();
+            this.SubRaceComboBox.ItemsSource = ComboBoxGenerator.SubRacesComboBox();
+            this.BackgroundComboBox.ItemsSource = ComboBoxGenerator.BackgroundsComboBox();
+            this.Class1Class.ItemsSource = ComboBoxGenerator.ClassesComboBox();
+            this.Class2Class.ItemsSource = ComboBoxGenerator.ClassesComboBox();
+            this.Class3Class.ItemsSource = ComboBoxGenerator.ClassesComboBox();
+            this.Class1Subclass.ItemsSource = ComboBoxGenerator.SubClassesComboBox();
+            this.Class2Subclass.ItemsSource = ComboBoxGenerator.SubClassesComboBox();
+            this.Class3Subclass.ItemsSource = ComboBoxGenerator.SubClassesComboBox();
             this.CharacterProperties = new CharacterProperties();
             this.OriginalFileName = string.Empty;
             this.DescriptionTextBlock.DataContext = this.Description;

@@ -4,7 +4,6 @@
 
 namespace Concierge.Console.Services
 {
-    using System.Collections.Generic;
     using System.Linq;
 
     using Concierge.Character.Characteristics;
@@ -64,15 +63,15 @@ namespace Concierge.Console.Services
 
             return command.Name.ToLower() switch
             {
-                "inventory" => new ListScript<Inventory>(Defaults.Inventory.ToList(), character.Equipment.Inventory).Evaluate(command),
-                "weapons" => new ListScript<Weapon>(Defaults.Weapons.ToList(), character.Equipment.Weapons).Evaluate(command),
-                "ammunition" => new ListScript<Ammunition>(Defaults.Ammunition.ToList(), character.Equipment.Ammunition).Evaluate(command),
-                "spells" => new ListScript<Spell>(Defaults.Spells.ToList(), character.Magic.Spells).Evaluate(command),
-                "magicclasses" => new ListScript<MagicClass>(new List<MagicClass>(), character.Magic.MagicClasses).Evaluate(command),
-                "ability" => new ListScript<Ability>(Defaults.Abilities.ToList(), character.Characteristic.Abilities).Evaluate(command),
-                "language" => new ListScript<Language>(Defaults.Languages.ToList(), character.Characteristic.Languages).Evaluate(command),
-                "classresource" => new ListScript<ClassResource>(new List<ClassResource>(), character.Vitality.ClassResources).Evaluate(command),
-                "statuseffect" => new ListScript<StatusEffect>(new List<StatusEffect>(), character.Vitality.StatusEffects).Evaluate(command),
+                "inventory" => new ListScript<Inventory>([.. Defaults.Inventory], character.Equipment.Inventory).Evaluate(command),
+                "weapons" => new ListScript<Weapon>([.. Defaults.Weapons], character.Equipment.Weapons).Evaluate(command),
+                "ammunition" => new ListScript<Ammunition>([.. Defaults.Ammunition], character.Equipment.Ammunition).Evaluate(command),
+                "spells" => new ListScript<Spell>([.. Defaults.Spells], character.Magic.Spells).Evaluate(command),
+                "magicclasses" => new ListScript<MagicClass>([], character.Magic.MagicClasses).Evaluate(command),
+                "ability" => new ListScript<Ability>([.. Defaults.Abilities], character.Characteristic.Abilities).Evaluate(command),
+                "language" => new ListScript<Language>([.. Defaults.Languages], character.Characteristic.Languages).Evaluate(command),
+                "classresource" => new ListScript<ClassResource>([], character.Vitality.ClassResources).Evaluate(command),
+                "statuseffect" => new ListScript<StatusEffect>([], character.Vitality.StatusEffects).Evaluate(command),
                 "all" => this.RunAllListScripts(command),
                 _ => new ConsoleResult($"Error: '{command}' does not contain a valid command.", ResultType.Error),
             };

@@ -5,7 +5,6 @@
 namespace Concierge.Display.Windows
 {
     using System;
-    using System.Linq;
     using System.Windows;
 
     using Concierge.Character.AbilitySkills;
@@ -24,24 +23,24 @@ namespace Concierge.Display.Windows
             this.InitializeComponent();
             this.UseRoundedCorners();
 
-            this.AthleticsComboBox.ItemsSource = Enum.GetValues(typeof(StatusChecks)).Cast<StatusChecks>();
-            this.AcrobaticsComboBox.ItemsSource = Enum.GetValues(typeof(StatusChecks)).Cast<StatusChecks>();
-            this.SleightOfHandComboBox.ItemsSource = Enum.GetValues(typeof(StatusChecks)).Cast<StatusChecks>();
-            this.StealthComboBox.ItemsSource = Enum.GetValues(typeof(StatusChecks)).Cast<StatusChecks>();
-            this.ArcanaComboBox.ItemsSource = Enum.GetValues(typeof(StatusChecks)).Cast<StatusChecks>();
-            this.HistoryComboBox.ItemsSource = Enum.GetValues(typeof(StatusChecks)).Cast<StatusChecks>();
-            this.InvestigationComboBox.ItemsSource = Enum.GetValues(typeof(StatusChecks)).Cast<StatusChecks>();
-            this.NatureComboBox.ItemsSource = Enum.GetValues(typeof(StatusChecks)).Cast<StatusChecks>();
-            this.ReligionComboBox.ItemsSource = Enum.GetValues(typeof(StatusChecks)).Cast<StatusChecks>();
-            this.AnimalHandlingComboBox.ItemsSource = Enum.GetValues(typeof(StatusChecks)).Cast<StatusChecks>();
-            this.InsightComboBox.ItemsSource = Enum.GetValues(typeof(StatusChecks)).Cast<StatusChecks>();
-            this.MedicineComboBox.ItemsSource = Enum.GetValues(typeof(StatusChecks)).Cast<StatusChecks>();
-            this.PerceptionComboBox.ItemsSource = Enum.GetValues(typeof(StatusChecks)).Cast<StatusChecks>();
-            this.SurvivalComboBox.ItemsSource = Enum.GetValues(typeof(StatusChecks)).Cast<StatusChecks>();
-            this.DeceptionComboBox.ItemsSource = Enum.GetValues(typeof(StatusChecks)).Cast<StatusChecks>();
-            this.IntimidationComboBox.ItemsSource = Enum.GetValues(typeof(StatusChecks)).Cast<StatusChecks>();
-            this.PerformanceComboBox.ItemsSource = Enum.GetValues(typeof(StatusChecks)).Cast<StatusChecks>();
-            this.PersuasionComboBox.ItemsSource = Enum.GetValues(typeof(StatusChecks)).Cast<StatusChecks>();
+            this.AthleticsComboBox.ItemsSource = ComboBoxGenerator.StatusChecksComboBox();
+            this.AcrobaticsComboBox.ItemsSource = ComboBoxGenerator.StatusChecksComboBox();
+            this.SleightOfHandComboBox.ItemsSource = ComboBoxGenerator.StatusChecksComboBox();
+            this.StealthComboBox.ItemsSource = ComboBoxGenerator.StatusChecksComboBox();
+            this.ArcanaComboBox.ItemsSource = ComboBoxGenerator.StatusChecksComboBox();
+            this.HistoryComboBox.ItemsSource = ComboBoxGenerator.StatusChecksComboBox();
+            this.InvestigationComboBox.ItemsSource = ComboBoxGenerator.StatusChecksComboBox();
+            this.NatureComboBox.ItemsSource = ComboBoxGenerator.StatusChecksComboBox();
+            this.ReligionComboBox.ItemsSource = ComboBoxGenerator.StatusChecksComboBox();
+            this.AnimalHandlingComboBox.ItemsSource = ComboBoxGenerator.StatusChecksComboBox();
+            this.InsightComboBox.ItemsSource = ComboBoxGenerator.StatusChecksComboBox();
+            this.MedicineComboBox.ItemsSource = ComboBoxGenerator.StatusChecksComboBox();
+            this.PerceptionComboBox.ItemsSource = ComboBoxGenerator.StatusChecksComboBox();
+            this.SurvivalComboBox.ItemsSource = ComboBoxGenerator.StatusChecksComboBox();
+            this.DeceptionComboBox.ItemsSource = ComboBoxGenerator.StatusChecksComboBox();
+            this.IntimidationComboBox.ItemsSource = ComboBoxGenerator.StatusChecksComboBox();
+            this.PerformanceComboBox.ItemsSource = ComboBoxGenerator.StatusChecksComboBox();
+            this.PersuasionComboBox.ItemsSource = ComboBoxGenerator.StatusChecksComboBox();
 
             this.ConciergePage = ConciergePage.None;
             this.Skill = new Skills();

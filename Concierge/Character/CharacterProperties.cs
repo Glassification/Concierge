@@ -5,6 +5,7 @@
 namespace Concierge.Character
 {
     using Concierge.Common;
+    using Concierge.Common.Exceptions;
     using Newtonsoft.Json;
 
     public sealed class CharacterProperties : ICopyable<CharacterProperties>
@@ -59,9 +60,10 @@ namespace Concierge.Character
         {
             return num switch
             {
+                1 => this.Class1,
                 2 => this.Class2,
                 3 => this.Class3,
-                _ => this.Class1,
+                _ => throw new InvalidValueException(num.ToString()),
             };
         }
     }

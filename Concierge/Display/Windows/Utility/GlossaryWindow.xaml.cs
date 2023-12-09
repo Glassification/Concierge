@@ -24,9 +24,9 @@ namespace Concierge.Display.Windows.Utility
             this.UseRoundedCorners();
         }
 
-        public override string HeaderText => "Glossary";
+        public override string HeaderText => "Wiki";
 
-        public override string WindowName => nameof(GlossaryWindow);
+        public override string WindowName => "WikiWindow";
 
         public override ConciergeWindow? ShowNonBlockingWindow()
         {

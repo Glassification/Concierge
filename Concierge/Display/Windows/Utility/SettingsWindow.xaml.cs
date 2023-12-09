@@ -6,7 +6,6 @@ namespace Concierge.Display.Utility
 {
     using System;
     using System.IO;
-    using System.Linq;
     using System.Windows;
     using System.Windows.Controls;
 
@@ -34,8 +33,8 @@ namespace Concierge.Display.Utility
             this.InitializeComponent();
             this.UseRoundedCorners();
 
-            this.UnitOfMeasurementComboBox.ItemsSource = Enum.GetValues(typeof(UnitTypes)).Cast<UnitTypes>();
-            this.HeaderAlignmentComboBox.ItemsSource = Enum.GetValues(typeof(HorizontalAlignment)).Cast<HorizontalAlignment>();
+            this.UnitOfMeasurementComboBox.ItemsSource = ComboBoxGenerator.UnitTypesComboBox();
+            this.HeaderAlignmentComboBox.ItemsSource = ComboBoxGenerator.HorizontalAlignmentComboBox();
             this.DescriptionTextBlock.DataContext = this.Description;
 
             this.SetMouseOverEvents(this.AutosaveCheckBox);

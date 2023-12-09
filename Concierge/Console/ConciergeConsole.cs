@@ -26,7 +26,7 @@ namespace Concierge.Console
         private readonly string consoleOutputFile = Path.Combine(ConciergeFiles.AppDataDirectory, ConciergeFiles.ConsoleOutput);
 
         private string consoleInput = Constants.ConsolePrompt;
-        private ObservableCollection<ConsoleResult> consoleOutput = new ();
+        private ObservableCollection<ConsoleResult> consoleOutput = [];
 
         public ConciergeConsole()
         {

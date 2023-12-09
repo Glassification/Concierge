@@ -47,11 +47,10 @@ namespace Concierge.Common.Utilities
         public static LinearGradientBrush GenerateGradientBrush(Color startColor, Color endColor, Point startPoint, Point endPoint)
         {
             return new LinearGradientBrush(
-                new GradientStopCollection()
-                {
+                [
                     new GradientStop(startColor, 0.0),
                     new GradientStop(endColor, 1.0),
-                },
+                ],
                 startPoint,
                 endPoint);
         }

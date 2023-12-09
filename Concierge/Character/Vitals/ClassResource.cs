@@ -98,7 +98,18 @@ namespace Concierge.Character.Vitals
 
         public CategoryDto GetCategory()
         {
-            throw new NotImplementedException();
+            return this.Name switch
+            {
+                "Bardic Inspiration" => new CategoryDto(PackIconKind.LightbulbAlert, Brushes.Yellow, this.Name),
+                "Divine Sense" => new CategoryDto(PackIconKind.Leak, Brushes.Cyan, this.Name),
+                "Infusions" => new CategoryDto(PackIconKind.Needle, Brushes.Goldenrod, this.Name),
+                "Ki Points" => new CategoryDto(PackIconKind.Kabaddi, Brushes.LightGreen, this.Name),
+                "Rages" => new CategoryDto(PackIconKind.EmojiAngry, Brushes.IndianRed, this.Name),
+                "Sneak Attack Dice" => new CategoryDto(PackIconKind.DiceD6, Brushes.SteelBlue, this.Name),
+                "Sorcery Points" => new CategoryDto(PackIconKind.Creation, Brushes.OrangeRed, this.Name),
+                "Superiority Dice" => new CategoryDto(PackIconKind.DiceD12, Brushes.SteelBlue, this.Name),
+                _ => new CategoryDto(PackIconKind.ListStatus, Brushes.MediumPurple, this.Name),
+            };
         }
     }
 }

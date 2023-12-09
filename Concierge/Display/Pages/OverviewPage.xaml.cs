@@ -154,7 +154,12 @@ namespace Concierge.Display.Pages
 
         public void DrawArmorClass()
         {
-            this.ArmorClassField.Text = Program.CcsFile.Character.Equipment.Defense.TotalAc.ToString();
+            var defense = Program.CcsFile.Character.Equipment.Defense;
+
+            this.ArmorClassField.Text = defense.TotalAc.ToString();
+            this.ArmorStatusIcon.Kind = defense.ArmorStatusIcon;
+            this.ArmorStatusIcon.ToolTip = $"Armor is {defense.ArmorStatus}";
+            this.ArmorStatusIcon.Foreground = defense.ArmorStatusBrush;
         }
 
         public void DrawHitDice()

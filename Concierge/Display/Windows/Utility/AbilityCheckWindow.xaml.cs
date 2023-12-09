@@ -91,7 +91,7 @@ namespace Concierge.Display.Windows.Utility
                 name.Equals(nameof(Wisdom)) ||
                 name.Equals(nameof(Charisma)))
             {
-                return "Saving Throw";
+                return "Save";
             }
 
             return "Check";

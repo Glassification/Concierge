@@ -6,7 +6,6 @@ namespace Concierge.Common.Utilities
 {
     using System;
     using System.Collections.Generic;
-    using System.Collections.ObjectModel;
     using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Input;
@@ -177,35 +176,6 @@ namespace Concierge.Common.Utilities
         {
             element.IsEnabled = isEnabled;
             element.Opacity = isEnabled ? 1 : 0.5;
-        }
-
-        /// <summary>
-        /// Generates a list of ComboBoxItems using default items and custom items, sorted by their name.
-        /// </summary>
-        /// <typeparam name="T">The type of items that implement the IUnique interface.</typeparam>
-        /// <param name="defaultItems">A collection of default items.</param>
-        /// <param name="customItems">A list of custom items to be combined with default items.</param>
-        /// <returns>A list of ComboBoxItems with content, foreground color, and tag set based on the provided items.</returns>
-        public static List<ComboBoxItem> GenerateSelectorComboBox<T>(ReadOnlyCollection<T> defaultItems, List<T> customItems)
-            where T : IUnique
-        {
-            var combinedItems = new List<T>();
-            combinedItems.AddRange(defaultItems);
-            combinedItems.AddRange(customItems);
-            combinedItems.Sort(new UniqueComparer<T>());
-
-            var comboBoxItems = new List<ComboBoxItem>();
-            foreach (var item in combinedItems)
-            {
-                comboBoxItems.Add(new ComboBoxItem()
-                {
-                    Content = item.Name,
-                    Foreground = item.IsCustom ? Brushes.PowderBlue : Brushes.White,
-                    Tag = item,
-                });
-            }
-
-            return comboBoxItems;
         }
     }
 }

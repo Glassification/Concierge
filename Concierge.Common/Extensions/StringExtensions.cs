@@ -20,8 +20,8 @@ namespace Concierge.Common.Extensions
     {
         private static readonly Regex rtfRegex = new (@"\\([a-z]{1,32})(-?\d{1,10})?[ ]?|\\'([0-9a-f]{2})|\\([^a-z])|([{}])|[\r\n]+|(.)", RegexOptions.Singleline | RegexOptions.IgnoreCase | RegexOptions.Compiled);
 
-        private static readonly List<string> destinations = new ()
-        {
+        private static readonly List<string> destinations =
+        [
             "aftncn", "aftnsep", "aftnsepc", "annotation", "atnauthor", "atndate", "atnicn", "atnid",
             "atnparent", "atnref", "atntime", "atrfend", "atrfstart", "author", "background",
             "bkmkend", "bkmkstart", "blipuid", "buptim", "category", "colorschememapping",
@@ -62,7 +62,7 @@ namespace Concierge.Common.Extensions
             "wgrffmtfilter", "windowcaption", "writereservation", "writereservhash", "xe", "xform",
             "xmlattrname", "xmlattrvalue", "xmlclose", "xmlname", "xmlnstbl",
             "xmlopen",
-        };
+        ];
 
         private static readonly Dictionary<string, string> specialCharacters = new ()
         {
@@ -415,7 +415,7 @@ namespace Concierge.Common.Extensions
                 }
             }
 
-            return string.Join(string.Empty, outList.ToArray());
+            return string.Join(string.Empty, [.. outList]);
         }
 
         /// <summary>
@@ -434,7 +434,7 @@ namespace Concierge.Common.Extensions
                 }
             }
 
-            return list.ToArray();
+            return [.. list];
         }
 
         /// <summary>

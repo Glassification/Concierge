@@ -13,8 +13,8 @@ namespace Concierge.Display.Windows
     using Concierge.Character.Enums;
     using Concierge.Commands;
     using Concierge.Common.Extensions;
-    using Concierge.Common.Utilities;
     using Concierge.Display.Components;
+    using Concierge.Display.Controls;
     using Concierge.Display.Enums;
 
     /// <summary>
@@ -28,9 +28,9 @@ namespace Concierge.Display.Windows
             this.UseRoundedCorners();
 
             this.NameComboBox.ItemsSource = DefaultItems;
-            this.TypeComboBox.ItemsSource = StringUtility.FormatEnumForDisplay(typeof(AbilityTypes));
+            this.TypeComboBox.ItemsSource = ComboBoxGenerator.AbilityTypesComboBox();
             this.ConciergePage = ConciergePage.None;
-            this.Abilities = new List<Ability>();
+            this.Abilities = [];
             this.SelectedAbility = new Ability();
             this.DescriptionTextBlock.DataContext = this.Description;
 
@@ -49,7 +49,7 @@ namespace Concierge.Display.Windows
 
         public override string WindowName => nameof(AbilitiesWindow);
 
-        private static List<ComboBoxItem> DefaultItems => DisplayUtility.GenerateSelectorComboBox(Defaults.Abilities, Program.CustomItemService.GetCustomItems<Ability>());
+        private static List<ComboBoxItemControl> DefaultItems => ComboBoxGenerator.SelectorComboBox(Defaults.Abilities, Program.CustomItemService.GetCustomItems<Ability>());
 
         private bool Editing { get; set; }
 
@@ -216,7 +216,7 @@ namespace Concierge.Display.Windows
 
         private void NameComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (this.NameComboBox.SelectedItem is ComboBoxItem item && item.Tag is Ability ability)
+            if (this.NameComboBox.SelectedItem is ComboBoxItemControl item && item.Item is Ability ability)
             {
                 this.FillFields(ability);
             }

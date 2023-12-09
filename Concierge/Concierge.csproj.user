@@ -9,6 +9,9 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="Display\Controls\ComboBoxItemControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Display\Controls\HeaderControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -87,6 +90,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Display\Controls\ColorPickerControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Display\Controls\ComboBoxItemControl.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Display\Controls\DiceRollControl.xaml">

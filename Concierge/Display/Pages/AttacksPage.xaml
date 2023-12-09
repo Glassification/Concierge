@@ -289,6 +289,20 @@
                             HeadersVisibility="None"
                             Grid.ColumnSpan="2">
                             <DataGrid.Columns>
+                                <DataGridTemplateColumn
+                                    Width="0.02*">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <materialDesign:PackIcon
+                                                Kind="{Binding IconKind}"
+                                                Foreground="{Binding IconColor}"
+                                                Height="auto"
+                                                Width="auto"
+                                                HorizontalAlignment="Center"
+                                                VerticalAlignment="Center"/>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
                                 <DataGridTextColumn
                                     Width="100*"
                                     Binding="{Binding Display}"

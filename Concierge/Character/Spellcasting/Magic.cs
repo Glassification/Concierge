@@ -18,8 +18,8 @@ namespace Concierge.Character.Spellcasting
     {
         public Magic()
         {
-            this.MagicClasses = new List<MagicClass>();
-            this.Spells = new List<Spell>();
+            this.MagicClasses = [];
+            this.Spells = [];
             this.SpellSlots = new SpellSlots();
         }
 
@@ -83,8 +83,8 @@ namespace Concierge.Character.Spellcasting
         {
             return new Magic()
             {
-                MagicClasses = this.MagicClasses.DeepCopy().ToList(),
-                Spells = this.Spells.DeepCopy().ToList(),
+                MagicClasses = [.. this.MagicClasses.DeepCopy()],
+                Spells = [.. this.Spells.DeepCopy()],
                 SpellSlots = this.SpellSlots.DeepCopy(),
             };
         }

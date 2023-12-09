@@ -153,5 +153,16 @@ namespace Concierge.Common
         {
             return (int)Math.Floor(amount / 2.0);
         }
+
+        /// <summary>
+        /// Calculates the amount of spent resources to regain.
+        /// Divides the amount by 2 (rounded down) and takes the greater of the result or 1.
+        /// </summary>
+        /// <param name="spent">The amount to calculate the regain for.</param>
+        /// <returns>The recovered amount.</returns>
+        public static int Regain(int spent)
+        {
+            return Math.Max(spent -= Math.Max(spent / 2, 1), 0);
+        }
     }
 }

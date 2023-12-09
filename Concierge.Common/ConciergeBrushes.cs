@@ -63,6 +63,21 @@ namespace Concierge.Common
 
             Deer = new SolidColorBrush(ConciergeColors.Deer);
             Deer.Freeze();
+
+            Copper = new SolidColorBrush(ConciergeColors.Copper);
+            Copper.Freeze();
+
+            Silver = new SolidColorBrush(ConciergeColors.Silver);
+            Silver.Freeze();
+
+            Electrum = new SolidColorBrush(ConciergeColors.Electrum);
+            Electrum.Freeze();
+
+            Gold = new SolidColorBrush(ConciergeColors.Gold);
+            Gold.Freeze();
+
+            Platinum = new SolidColorBrush(ConciergeColors.Platinum);
+            Platinum.Freeze();
         }
 
         public static SolidColorBrush WindowBackground { get; }
@@ -98,5 +113,15 @@ namespace Concierge.Common
         public static SolidColorBrush Mint { get; }
 
         public static SolidColorBrush Deer { get; }
+
+        public static SolidColorBrush Copper { get; }
+
+        public static SolidColorBrush Silver { get; }
+
+        public static SolidColorBrush Electrum { get; }
+
+        public static SolidColorBrush Gold { get; }
+
+        public static SolidColorBrush Platinum { get; }
     }
 }

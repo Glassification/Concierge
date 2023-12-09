@@ -5,7 +5,6 @@
 namespace Concierge.Character.Characteristics
 {
     using System.Collections.Generic;
-    using System.Linq;
 
     using Concierge.Common;
     using Concierge.Common.Extensions;
@@ -14,12 +13,12 @@ namespace Concierge.Character.Characteristics
     {
         public Characteristic()
         {
-            this.Abilities = new List<Ability>();
+            this.Abilities = [];
             this.Appearance = new Appearance();
             this.Attributes = new Attributes();
-            this.Languages = new List<Language>();
+            this.Languages = [];
             this.Personality = new Personality();
-            this.Proficiencies = new List<Proficiency>();
+            this.Proficiencies = [];
             this.Senses = new Senses();
         }
 
@@ -41,12 +40,12 @@ namespace Concierge.Character.Characteristics
         {
             return new Characteristic()
             {
-                Abilities = this.Abilities.DeepCopy().ToList(),
+                Abilities = [.. this.Abilities.DeepCopy()],
                 Appearance = this.Appearance.DeepCopy(),
                 Attributes = this.Attributes.DeepCopy(),
-                Languages = this.Languages.DeepCopy().ToList(),
+                Languages = [.. this.Languages.DeepCopy()],
                 Personality = this.Personality.DeepCopy(),
-                Proficiencies = this.Proficiencies.DeepCopy().ToList(),
+                Proficiencies = [.. this.Proficiencies.DeepCopy()],
                 Senses = this.Senses.DeepCopy(),
             };
         }

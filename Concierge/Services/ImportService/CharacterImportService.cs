@@ -18,7 +18,7 @@ namespace Concierge.Services.ImportService
         public CharacterImportService()
         {
             this.readwriter = new CharacterReadWriter(Program.ErrorService, Program.Logger);
-            this.Importers = new List<Importer>();
+            this.Importers = [];
         }
 
         private List<Importer> Importers { get; set; }

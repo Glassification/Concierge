@@ -22,10 +22,10 @@ namespace Concierge.Services
         {
             this.readwriter = new CustomColorReadWriter(Program.ErrorService);
 
-            this.CustomColors = new List<CustomColor>();
-            this.DefaultColors = new List<CustomColor>();
+            this.CustomColors = [];
+            this.DefaultColors = [];
             this.DotNetColors = ColorUtility.ListDotNetColors().Select(x => new CustomColor(x)).ToList();
-            this.RecentColors = new List<CustomColor>();
+            this.RecentColors = [];
         }
 
         public List<CustomColor> CustomColors { get; set; }

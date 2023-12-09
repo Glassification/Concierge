@@ -4,8 +4,6 @@
 
 namespace Concierge.Display.Windows
 {
-    using System;
-    using System.Linq;
     using System.Windows;
 
     using Concierge.Character.Characteristics;
@@ -32,7 +30,7 @@ namespace Concierge.Display.Windows
             this.InitializeComponent();
             this.UseRoundedCorners();
 
-            this.GenderComboBox.ItemsSource = Enum.GetValues(typeof(Gender)).Cast<Gender>();
+            this.GenderComboBox.ItemsSource = ComboBoxGenerator.GenderComboBox();
             this.ConciergePage = ConciergePage.None;
             this.Appearance = new Appearance();
             this.EyeColor = CustomColor.Invalid;

@@ -6,7 +6,6 @@ namespace Concierge.Display.Windows
 {
     using System;
     using System.Collections.Generic;
-    using System.Linq;
     using System.Windows;
     using System.Windows.Controls;
 
@@ -22,6 +21,7 @@ namespace Concierge.Display.Windows
     using Concierge.Data;
     using Concierge.Data.Units;
     using Concierge.Display.Components;
+    using Concierge.Display.Controls;
     using Concierge.Display.Enums;
 
     /// <summary>
@@ -35,12 +35,12 @@ namespace Concierge.Display.Windows
             this.UseRoundedCorners();
 
             this.AttackComboBox.ItemsSource = DefaultItems;
-            this.TypeComboBox.ItemsSource = Enum.GetValues(typeof(WeaponTypes)).Cast<WeaponTypes>();
-            this.AbilityComboBox.ItemsSource = Enum.GetValues(typeof(Abilities)).Cast<Abilities>();
-            this.DamageTypeComboBox.ItemsSource = Enum.GetValues(typeof(DamageTypes)).Cast<DamageTypes>();
-            this.CoinTypeComboBox.ItemsSource = Enum.GetValues(typeof(CoinType)).Cast<CoinType>();
+            this.TypeComboBox.ItemsSource = ComboBoxGenerator.WeaponTypesComboBox();
+            this.AbilityComboBox.ItemsSource = ComboBoxGenerator.AbilitiesComboBox();
+            this.DamageTypeComboBox.ItemsSource = ComboBoxGenerator.DamageTypesComboBox();
+            this.CoinTypeComboBox.ItemsSource = ComboBoxGenerator.CoinTypesComboBox();
             this.ConciergePage = ConciergePage.None;
-            this.Weapons = new List<Weapon>();
+            this.Weapons = [];
             this.SelectedAttack = new Weapon();
             this.DescriptionTextBlock.DataContext = this.Description;
 
@@ -66,7 +66,7 @@ namespace Concierge.Display.Windows
 
         public bool ItemsAdded { get; private set; }
 
-        private static List<ComboBoxItem> DefaultItems => DisplayUtility.GenerateSelectorComboBox(Defaults.Weapons, Program.CustomItemService.GetCustomItems<Weapon>());
+        private static List<ComboBoxItemControl> DefaultItems => ComboBoxGenerator.SelectorComboBox(Defaults.Weapons, Program.CustomItemService.GetCustomItems<Weapon>());
 
         private bool Editing { get; set; }
 
@@ -167,7 +167,7 @@ namespace Concierge.Display.Windows
             this.ProficencyOverrideCheckBox.UpdatingValue();
 
             this.AttackComboBox.Text = weapon.Name;
-            this.TypeComboBox.Text = weapon.Type.ToString();
+            this.TypeComboBox.Text = weapon.Type.ToString().FormatFromEnum();
             this.AbilityComboBox.Text = weapon.Ability.ToString();
             this.DamageTextBox.Text = weapon.Damage;
             this.MiscDamageTextBox.Text = weapon.Misc;
@@ -222,7 +222,7 @@ namespace Concierge.Display.Windows
             var oldItem = weapon.DeepCopy();
 
             weapon.Name = this.AttackComboBox.Text;
-            weapon.Type = (WeaponTypes)Enum.Parse(typeof(WeaponTypes), this.TypeComboBox.Text);
+            weapon.Type = (WeaponTypes)Enum.Parse(typeof(WeaponTypes), this.TypeComboBox.Text.Strip(" "));
             weapon.Ability = (Abilities)Enum.Parse(typeof(Abilities), this.AbilityComboBox.Text);
             weapon.Damage = this.DamageTextBox.Text;
             weapon.Misc = this.MiscDamageTextBox.Text;
@@ -247,7 +247,7 @@ namespace Concierge.Display.Windows
             return new Weapon(creature ?? throw new NullValueException(nameof(creature)))
             {
                 Name = this.AttackComboBox.Text,
-                Type = (WeaponTypes)Enum.Parse(typeof(WeaponTypes), this.TypeComboBox.Text),
+                Type = (WeaponTypes)Enum.Parse(typeof(WeaponTypes), this.TypeComboBox.Text.Strip(" ")),
                 Ability = (Abilities)Enum.Parse(typeof(Abilities), this.AbilityComboBox.Text),
                 Damage = this.DamageTextBox.Text,
                 Misc = this.MiscDamageTextBox.Text,
@@ -299,7 +299,7 @@ namespace Concierge.Display.Windows
 
         private void AttackComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (this.AttackComboBox.SelectedItem is ComboBoxItem item && item.Tag is Weapon weapon)
+            if (this.AttackComboBox.SelectedItem is ComboBoxItemControl item && item.Item is Weapon weapon)
             {
                 this.FillFields(weapon);
             }

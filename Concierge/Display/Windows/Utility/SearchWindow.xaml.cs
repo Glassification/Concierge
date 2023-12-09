@@ -42,9 +42,9 @@ namespace Concierge.Display.Utility
 
             this.conciergeSearch = new ConciergeSearch(Program.MainWindow);
             this.conciergeNavigate = new ConciergeNavigate();
-            this.SearchResults = new List<SearchResult>();
+            this.SearchResults = [];
             this.mainWindow = Program.MainWindow;
-            this.SearchDomainComboBox.ItemsSource = StringUtility.FormatEnumForDisplay(typeof(SearchDomain));
+            this.SearchDomainComboBox.ItemsSource = ComboBoxGenerator.SearchDomainComboBox();
             this.SearchDomainComboBox.Text = SearchDomain.CurrentPage.ToString().FormatFromEnum();
             this.SearchResultTextBlock.Text = string.Empty;
         }

@@ -5,7 +5,6 @@
 namespace Concierge.Display.Utility
 {
     using System;
-    using System.Linq;
     using System.Windows;
 
     using Concierge.Character;
@@ -28,9 +27,9 @@ namespace Concierge.Display.Utility
             this.InitializeComponent();
             this.UseRoundedCorners();
 
-            this.Class1DiceComboBox.ItemsSource = Enum.GetValues(typeof(Dice)).Cast<Dice>();
-            this.Class2DiceComboBox.ItemsSource = Enum.GetValues(typeof(Dice)).Cast<Dice>();
-            this.Class3DiceComboBox.ItemsSource = Enum.GetValues(typeof(Dice)).Cast<Dice>();
+            this.Class1DiceComboBox.ItemsSource = ComboBoxGenerator.DiceComboBox();
+            this.Class2DiceComboBox.ItemsSource = ComboBoxGenerator.DiceComboBox();
+            this.Class3DiceComboBox.ItemsSource = ComboBoxGenerator.DiceComboBox();
 
             this.Class1ModIntegerUpDown.Value = 0;
             this.Class2ModIntegerUpDown.Value = 0;

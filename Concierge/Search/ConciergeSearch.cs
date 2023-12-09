@@ -22,7 +22,7 @@ namespace Concierge.Search
         public ConciergeSearch(MainWindow mainWindow)
         {
             this.MainWindow = mainWindow;
-            this.Results = new List<SearchResult>();
+            this.Results = [];
             this.SearchSettings = new SearchSettings();
             this.Regex = new Regex(string.Empty);
         }

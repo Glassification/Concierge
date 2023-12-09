@@ -22,7 +22,7 @@
 
         <Grid Grid.Row="0">
             <TextBlock
-                Text="Glossary"
+                Text="Wiki"
                 x:Name="HeaderTextBlock"
                 Foreground="#227EA9"
                 FontSize="35"

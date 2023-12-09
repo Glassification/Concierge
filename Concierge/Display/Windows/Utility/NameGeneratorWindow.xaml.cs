@@ -4,9 +4,7 @@
 
 namespace Concierge.Display.Utility
 {
-    using System;
     using System.IO;
-    using System.Linq;
     using System.Windows;
     using System.Windows.Input;
 
@@ -18,7 +16,6 @@ namespace Concierge.Display.Utility
     using Concierge.Persistence.ReadWriters;
     using Concierge.Tools;
     using Concierge.Tools.Enums;
-    using Concierge.Tools.Generators;
     using Concierge.Tools.Generators.Names;
 
     /// <summary>
@@ -27,17 +24,17 @@ namespace Concierge.Display.Utility
     public partial class NameGeneratorWindow : ConciergeWindow
     {
         private readonly string nameHistoryFile = Path.Combine(ConciergeFiles.HistoryDirectory, ConciergeFiles.NameGeneratorHistoryName);
-        private readonly IGenerator nameGenerator;
-        private readonly IReadWriters historyReadWriter;
+        private readonly NameGenerator nameGenerator;
+        private readonly HistoryReadWriter historyReadWriter;
 
         public NameGeneratorWindow()
         {
             this.InitializeComponent();
             this.UseRoundedCorners();
 
-            this.RaceComboBox.ItemsSource = Defaults.Races;
-            this.GenderComboBox.ItemsSource = Enum.GetValues(typeof(Gender)).Cast<Gender>();
-            this.nameGenerator = new NameGenerator(Defaults.Names.ToList());
+            this.RaceComboBox.ItemsSource = ComboBoxGenerator.RacesComboBox();
+            this.GenderComboBox.ItemsSource = ComboBoxGenerator.GenderComboBox();
+            this.nameGenerator = new NameGenerator([.. Defaults.Names]);
             this.historyReadWriter = new HistoryReadWriter(Program.ErrorService);
             this.History = new History(this.historyReadWriter.ReadList<string>(this.nameHistoryFile), string.Empty);
 

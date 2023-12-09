@@ -6,7 +6,6 @@ namespace Concierge.Display.Windows
 {
     using System;
     using System.Collections.Generic;
-    using System.Linq;
     using System.Windows;
     using System.Windows.Controls;
 
@@ -14,8 +13,8 @@ namespace Concierge.Display.Windows
     using Concierge.Character.Equipable;
     using Concierge.Commands;
     using Concierge.Common.Extensions;
-    using Concierge.Common.Utilities;
     using Concierge.Display.Components;
+    using Concierge.Display.Controls;
     using Concierge.Display.Enums;
 
     /// <summary>
@@ -27,12 +26,11 @@ namespace Concierge.Display.Windows
         {
             this.InitializeComponent();
             this.UseRoundedCorners();
-
             this.NameComboBox.ItemsSource = DefaultItems;
-            this.DamageTypeComboBox.ItemsSource = Enum.GetValues(typeof(DamageTypes)).Cast<DamageTypes>();
-            this.CoinTypeComboBox.ItemsSource = Enum.GetValues(typeof(CoinType)).Cast<CoinType>();
+            this.DamageTypeComboBox.ItemsSource = ComboBoxGenerator.DamageTypesComboBox();
+            this.CoinTypeComboBox.ItemsSource = ComboBoxGenerator.CoinTypesComboBox();
             this.ConciergePage = ConciergePage.None;
-            this.Ammunition = new List<Ammunition>();
+            this.Ammunition = [];
             this.SelectedAmmo = new Ammunition();
             this.DescriptionTextBlock.DataContext = this.Description;
 
@@ -53,7 +51,7 @@ namespace Concierge.Display.Windows
 
         public bool ItemsAdded { get; private set; }
 
-        private static List<ComboBoxItem> DefaultItems => DisplayUtility.GenerateSelectorComboBox(Defaults.Ammunition, Program.CustomItemService.GetCustomItems<Ammunition>());
+        private static List<ComboBoxItemControl> DefaultItems => ComboBoxGenerator.SelectorComboBox(Defaults.Ammunition, Program.CustomItemService.GetCustomItems<Ammunition>());
 
         private bool Editing { get; set; }
 
@@ -226,7 +224,7 @@ namespace Concierge.Display.Windows
 
         private void NameComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (this.NameComboBox.SelectedItem is ComboBoxItem item && item.Tag is Ammunition ammunition)
+            if (this.NameComboBox.SelectedItem is ComboBoxItemControl item && item.Item is Ammunition ammunition)
             {
                 this.FillFields(ammunition);
             }

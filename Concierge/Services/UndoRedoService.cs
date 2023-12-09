@@ -6,7 +6,6 @@ namespace Concierge.Common
 {
     using System;
     using System.Collections.Generic;
-    using System.Linq;
 
     using Concierge.Commands;
     using Concierge.Display;
@@ -109,12 +108,12 @@ namespace Concierge.Common
 
         public List<Command> GetRedoCommands()
         {
-            return this.RedoStack.ToList();
+            return [.. this.RedoStack];
         }
 
         public List<Command> GetUndoCommands()
         {
-            return this.UndoStack.ToList();
+            return [.. this.UndoStack];
         }
     }
 }

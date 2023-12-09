@@ -28,7 +28,7 @@ namespace Concierge.Tools.DiceRoller
             this.Sides = (int)sides;
             this.Modifier = modifier;
             this.Number = number;
-            this.DiceList = RollDice(number, (int)sides).ToList();
+            this.DiceList = [.. RollDice(number, (int)sides)];
         }
 
         /// <summary>
@@ -134,7 +134,7 @@ namespace Concierge.Tools.DiceRoller
         /// </summary>
         public void ReRoll()
         {
-            this.DiceList = RollDice(this.Number, this.Sides).ToList();
+            this.DiceList = [.. RollDice(this.Number, this.Sides)];
         }
     }
 }

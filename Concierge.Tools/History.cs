@@ -19,7 +19,7 @@ namespace Concierge.Tools
         /// </summary>
         /// <param name="defaultText">The default text to use when the history is empty.</param>
         public History(string defaultText)
-            : this(new List<string>(), defaultText)
+            : this([], defaultText)
         {
         }
 

@@ -177,7 +177,7 @@ namespace Concierge.Tools.DiceRoller
 
         private static List<string> SplitAndMaintainDelimiter(string input)
         {
-            return patternSplit.Split(input).ToList();
+            return [.. patternSplit.Split(input)];
         }
     }
 }

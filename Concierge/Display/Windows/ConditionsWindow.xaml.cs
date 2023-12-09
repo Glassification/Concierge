@@ -5,7 +5,6 @@
 namespace Concierge.Display.Windows
 {
     using System;
-    using System.Linq;
     using System.Windows;
 
     using Concierge.Character.Enums;
@@ -26,8 +25,8 @@ namespace Concierge.Display.Windows
             this.InitializeComponent();
             this.UseRoundedCorners();
 
-            this.FatiguedComboBox.ItemsSource = Enum.GetValues(typeof(ExhaustionLevel)).Cast<ExhaustionLevel>();
-            this.EncumbranceComboBox.ItemsSource = StringUtility.FormatEnumForDisplay(typeof(EncumbranceLevel));
+            this.FatiguedComboBox.ItemsSource = ComboBoxGenerator.ExhaustionLevelComboBox();
+            this.EncumbranceComboBox.ItemsSource = ComboBoxGenerator.EncumbranceLevelComboBox();
             this.ConciergePage = ConciergePage.None;
             this.Conditions = new Conditions();
             this.DescriptionTextBlock.DataContext = this.Description;

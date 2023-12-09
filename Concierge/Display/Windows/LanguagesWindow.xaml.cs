@@ -11,8 +11,8 @@ namespace Concierge.Display.Windows
     using Concierge.Character.Characteristics;
     using Concierge.Commands;
     using Concierge.Common.Extensions;
-    using Concierge.Common.Utilities;
     using Concierge.Display.Components;
+    using Concierge.Display.Controls;
     using Concierge.Display.Enums;
 
     /// <summary>
@@ -28,7 +28,7 @@ namespace Concierge.Display.Windows
             this.NameComboBox.ItemsSource = DefaultItems;
             this.ConciergePage = ConciergePage.None;
             this.SelectedLanguage = new Language();
-            this.Languages = new List<Language>();
+            this.Languages = [];
             this.DescriptionTextBlock.DataContext = this.Description;
 
             this.SetMouseOverEvents(this.NameComboBox);
@@ -42,7 +42,7 @@ namespace Concierge.Display.Windows
 
         public bool ItemsAdded { get; private set; }
 
-        private static List<ComboBoxItem> DefaultItems => DisplayUtility.GenerateSelectorComboBox(Defaults.Languages, Program.CustomItemService.GetCustomItems<Language>());
+        private static List<ComboBoxItemControl> DefaultItems => ComboBoxGenerator.SelectorComboBox(Defaults.Languages, Program.CustomItemService.GetCustomItems<Language>());
 
         private bool Editing { get; set; }
 
@@ -188,7 +188,7 @@ namespace Concierge.Display.Windows
 
         private void NameComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (this.NameComboBox.SelectedItem is ComboBoxItem item && item.Tag is Language language)
+            if (this.NameComboBox.SelectedItem is ComboBoxItemControl item && item.Item is Language language)
             {
                 this.FillFields(language);
             }

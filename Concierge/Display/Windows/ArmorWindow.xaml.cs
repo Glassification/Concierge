@@ -6,7 +6,6 @@ namespace Concierge.Display.Windows
 {
     using System;
     using System.Collections.Generic;
-    using System.Linq;
     using System.Windows;
     using System.Windows.Controls;
 
@@ -15,10 +14,10 @@ namespace Concierge.Display.Windows
     using Concierge.Commands;
     using Concierge.Common.Enums;
     using Concierge.Common.Extensions;
-    using Concierge.Common.Utilities;
     using Concierge.Data;
     using Concierge.Data.Units;
     using Concierge.Display.Components;
+    using Concierge.Display.Controls;
     using Concierge.Display.Enums;
 
     /// <summary>
@@ -32,9 +31,9 @@ namespace Concierge.Display.Windows
             this.UseRoundedCorners();
 
             this.ArmorNameComboBox.ItemsSource = DefaultItems;
-            this.TypeComboBox.ItemsSource = Enum.GetValues(typeof(ArmorType)).Cast<ArmorType>();
-            this.StealthComboBox.ItemsSource = Enum.GetValues(typeof(ArmorStealth)).Cast<ArmorStealth>();
-            this.StatusComboBox.ItemsSource = Enum.GetValues(typeof(ArmorStatus)).Cast<ArmorStatus>();
+            this.TypeComboBox.ItemsSource = ComboBoxGenerator.ArmorTypeComboBox();
+            this.StealthComboBox.ItemsSource = ComboBoxGenerator.StealthComboBox();
+            this.StatusComboBox.ItemsSource = ComboBoxGenerator.ArmorStatusComboBox();
             this.ConciergePage = ConciergePage.None;
             this.SelectedDefense = new Defense();
             this.DescriptionTextBlock.DataContext = this.Description;
@@ -57,7 +56,7 @@ namespace Concierge.Display.Windows
 
         public override string WindowName => nameof(ArmorWindow);
 
-        private static List<ComboBoxItem> DefaultItems => DisplayUtility.GenerateSelectorComboBox(Defaults.Armor, Program.CustomItemService.GetCustomItems<Armor>());
+        private static List<ComboBoxItemControl> DefaultItems => ComboBoxGenerator.SelectorComboBox(Defaults.Armor, Program.CustomItemService.GetCustomItems<Armor>());
 
         private Defense SelectedDefense { get; set; }
 
@@ -188,7 +187,7 @@ namespace Concierge.Display.Windows
 
         private void ArmorNameComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (this.ArmorNameComboBox.SelectedItem is ComboBoxItem item && item.Tag is Armor armor)
+            if (this.ArmorNameComboBox.SelectedItem is ComboBoxItemControl item && item.Item is Armor armor)
             {
                 this.FillFields(armor);
             }

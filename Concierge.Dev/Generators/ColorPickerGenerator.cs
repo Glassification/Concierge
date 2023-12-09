@@ -4,7 +4,6 @@
 
 namespace Concierge.DevTools.Generators
 {
-    using System.Collections.Generic;
     using System.IO;
 
     using Concierge.Data;
@@ -17,8 +16,8 @@ namespace Concierge.DevTools.Generators
         {
             var colorPicker = new CustomColorService()
             {
-                DefaultColors = new List<CustomColor>()
-                {
+                DefaultColors =
+                [
                     new CustomColor("Red", 255, 0, 0),
                     new CustomColor("Green", 0, 255, 0),
                     new CustomColor("Blue", 0, 0, 255),
@@ -26,9 +25,9 @@ namespace Concierge.DevTools.Generators
                     new CustomColor("Orange", 255, 165, 0),
                     new CustomColor("White", 255, 255, 255),
                     new CustomColor("Black", 0, 0, 0),
-                },
-                RecentColors = new List<CustomColor>()
-                {
+                ],
+                RecentColors =
+                [
                     new CustomColor("Peru", 205, 133, 63),
                     new CustomColor("Medium Violet Red", 199, 21, 133),
                     new CustomColor("Goldenrod", 238, 232, 170),
@@ -36,12 +35,12 @@ namespace Concierge.DevTools.Generators
                     new CustomColor("Purple", 128, 0, 128),
                     new CustomColor("Steel Blue", 70, 130, 180),
                     new CustomColor("Firebrick", 178, 34, 34),
-                },
-                CustomColors = new List<CustomColor>()
-                {
+                ],
+                CustomColors =
+                [
                     new CustomColor("White", 255, 233, 220),
                     new CustomColor("Ice Blue", 65, 130, 255),
-                },
+                ],
             };
 
             var rawString = JsonConvert.SerializeObject(colorPicker, Formatting.Indented);

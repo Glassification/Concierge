@@ -6,7 +6,6 @@ namespace Concierge.Display.Windows
 {
     using System;
     using System.Collections.Generic;
-    using System.Linq;
     using System.Windows;
     using System.Windows.Controls;
 
@@ -14,8 +13,8 @@ namespace Concierge.Display.Windows
     using Concierge.Character.Spellcasting;
     using Concierge.Commands;
     using Concierge.Common.Extensions;
-    using Concierge.Common.Utilities;
     using Concierge.Display.Components;
+    using Concierge.Display.Controls;
     using Concierge.Display.Enums;
 
     /// <summary>
@@ -29,11 +28,11 @@ namespace Concierge.Display.Windows
             this.UseRoundedCorners();
 
             this.SpellNameComboBox.ItemsSource = DefaultItems;
-            this.SchoolComboBox.ItemsSource = Enum.GetValues(typeof(ArcaneSchools)).Cast<ArcaneSchools>();
-            this.ClassComboBox.ItemsSource = Defaults.Classes;
+            this.SchoolComboBox.ItemsSource = ComboBoxGenerator.ArcaneSchoolsComboBox();
+            this.ClassComboBox.ItemsSource = ComboBoxGenerator.ClassesComboBox();
             this.ConciergePage = ConciergePage.None;
             this.SelectedSpell = new Spell();
-            this.Spells = new List<Spell>();
+            this.Spells = [];
             this.DescriptionTextBlock.DataContext = this.Description;
 
             this.SetMouseOverEvents(this.SpellNameComboBox);
@@ -60,7 +59,7 @@ namespace Concierge.Display.Windows
 
         public bool ItemsAdded { get; private set; }
 
-        private static List<ComboBoxItem> DefaultItems => DisplayUtility.GenerateSelectorComboBox(Defaults.Spells, Program.CustomItemService.GetCustomItems<Spell>());
+        private static List<ComboBoxItemControl> DefaultItems => ComboBoxGenerator.SelectorComboBox(Defaults.Spells, Program.CustomItemService.GetCustomItems<Spell>());
 
         private bool Editing { get; set; }
 
@@ -270,7 +269,7 @@ namespace Concierge.Display.Windows
 
         private void SpellNameComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (this.SpellNameComboBox.SelectedItem is ComboBoxItem item && item.Tag is Spell spell)
+            if (this.SpellNameComboBox.SelectedItem is ComboBoxItemControl item && item.Item is Spell spell)
             {
                 this.FillFields(spell);
             }

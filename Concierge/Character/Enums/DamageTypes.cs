@@ -20,7 +20,5 @@ namespace Concierge.Character.Enums
         Radiant,
         Slashing,
         Thunder,
-        Healing,
-        Damage,
     }
 }

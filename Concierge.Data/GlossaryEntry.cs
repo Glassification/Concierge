@@ -31,7 +31,7 @@ namespace Concierge.Data
         {
             this.Name = name;
             this.Markdown = markdown;
-            this.GlossaryEntries = new List<GlossaryEntry>();
+            this.GlossaryEntries = [];
         }
 
         /// <summary>

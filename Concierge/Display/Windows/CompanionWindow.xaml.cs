@@ -5,14 +5,12 @@
 namespace Concierge.Display.Windows
 {
     using System;
-    using System.Linq;
     using System.Windows;
 
     using Concierge.Character;
     using Concierge.Character.Enums;
     using Concierge.Commands;
     using Concierge.Common.Extensions;
-    using Concierge.Common.Utilities;
     using Concierge.Display.Components;
     using Concierge.Display.Enums;
 
@@ -26,8 +24,8 @@ namespace Concierge.Display.Windows
             this.InitializeComponent();
             this.UseRoundedCorners();
 
-            this.VisionComboBox.ItemsSource = StringUtility.FormatEnumForDisplay(typeof(VisionTypes));
-            this.CreatureSizeComboBox.ItemsSource = Enum.GetValues(typeof(CreatureSizes)).Cast<CreatureSizes>();
+            this.VisionComboBox.ItemsSource = ComboBoxGenerator.VisionComboBox();
+            this.CreatureSizeComboBox.ItemsSource = ComboBoxGenerator.CreatureSizesComboBox();
             this.ConciergePage = ConciergePage.None;
             this.Properties = new CompanionProperties();
             this.DescriptionTextBlock.DataContext = this.Description;

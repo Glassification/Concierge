@@ -39,7 +39,7 @@ namespace Concierge.Logging
 
             this.IsDebug = isDebug;
             this.IsStarted = false;
-            this.SessionLog = new List<string>();
+            this.SessionLog = [];
         }
 
         /// <summary>

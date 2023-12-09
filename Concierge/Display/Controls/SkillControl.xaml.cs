@@ -121,18 +121,18 @@ namespace Concierge.Display.Controls
                     textBlock.ToolTip = "Automatic Fail";
                     break;
                 case StatusChecks.Advantage:
-                    textBlock.TextDecorations = new TextDecorationCollection();
+                    textBlock.TextDecorations = [];
                     textBlock.Foreground = Brushes.Green;
                     textBlock.ToolTip = "Advantage";
                     break;
                 case StatusChecks.Disadvantage:
-                    textBlock.TextDecorations = new TextDecorationCollection();
+                    textBlock.TextDecorations = [];
                     textBlock.Foreground = Brushes.IndianRed;
                     textBlock.ToolTip = "Disadvantage";
                     break;
                 case StatusChecks.Normal:
                 default:
-                    textBlock.TextDecorations = new TextDecorationCollection();
+                    textBlock.TextDecorations = [];
                     textBlock.Foreground = Brushes.White;
                     textBlock.ToolTip = null;
                     break;

@@ -31,7 +31,7 @@ namespace Concierge.Display.Windows
             this.UseRoundedCorners();
 
             this.fileAccessService = new FileAccessService();
-            this.FillTypeComboBox.ItemsSource = StringUtility.FormatEnumForDisplay(typeof(Stretch));
+            this.FillTypeComboBox.ItemsSource = ComboBoxGenerator.StretchLevelComboBox();
             this.ConciergePage = ConciergePage.None;
             this.CharacterImage = new CharacterImage();
             this.OriginalFileName = string.Empty;

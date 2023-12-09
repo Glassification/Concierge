@@ -68,7 +68,7 @@ namespace Concierge.Character.Characteristics
 
         public CategoryDto GetCategory()
         {
-            throw new NotImplementedException();
+            return new CategoryDto(PackIconKind.AlphabetAurebesh, Brushes.LightBlue, this.Name);
         }
 
         private static bool IsValid(string value)

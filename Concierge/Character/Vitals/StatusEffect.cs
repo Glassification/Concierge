@@ -47,6 +47,14 @@ namespace Concierge.Character.Vitals
         public PackIconKind CustomTypeIcon => PackIconKind.ListStatus;
 
         [JsonIgnore]
+        [SearchIgnore]
+        public Brush IconColor => this.GetCategory().Brush;
+
+        [JsonIgnore]
+        [SearchIgnore]
+        public PackIconKind IconKind => this.GetCategory().IconKind;
+
+        [JsonIgnore]
         public string Display => $"{this.Name}{(this.Type == StatusEffectTypes.None ? string.Empty : $" {this.Type}")}{(this.Description.IsNullOrWhiteSpace() ? string.Empty : " - ")}{this.Description}";
 
         public StatusEffect DeepCopy()
@@ -63,7 +71,28 @@ namespace Concierge.Character.Vitals
 
         public CategoryDto GetCategory()
         {
-            throw new NotImplementedException();
+            return this.Name.ToLower().Strip(" ") switch
+            {
+                "acid" => new CategoryDto(PackIconKind.Flask, Brushes.LightGreen, this.Name),
+                "bludgeoning" => new CategoryDto(PackIconKind.AxeBattle, Brushes.IndianRed, this.Name),
+                "cold" => new CategoryDto(PackIconKind.Snowflake, Brushes.Silver, this.Name),
+                "fire" => new CategoryDto(PackIconKind.Fire, Brushes.OrangeRed, this.Name),
+                "force" => new CategoryDto(PackIconKind.Triforce, Brushes.IndianRed, this.Name),
+                "lightning" => new CategoryDto(PackIconKind.LightningBolt, Brushes.Goldenrod, this.Name),
+                "magicweapons" => new CategoryDto(PackIconKind.MagicStaff, Brushes.Cyan, this.Name),
+                "necrotic" => new CategoryDto(PackIconKind.Coffin, Brushes.YellowGreen, this.Name),
+                "nonmagical" => new CategoryDto(PackIconKind.HumanHandsdown, Brushes.IndianRed, this.Name),
+                "piercing" => new CategoryDto(PackIconKind.ArrowProjectile, Brushes.IndianRed, this.Name),
+                "poison" => new CategoryDto(PackIconKind.Poison, Brushes.LightGreen, this.Name),
+                "psychic" => new CategoryDto(PackIconKind.CrystalBall, Brushes.Cyan, this.Name),
+                "radiant" => new CategoryDto(PackIconKind.WeatherSunny, Brushes.Goldenrod, this.Name),
+                "slashing" => new CategoryDto(PackIconKind.Sword, Brushes.IndianRed, this.Name),
+                "spells" => new CategoryDto(PackIconKind.Creation, Brushes.Cyan, this.Name),
+                "thunder" => new CategoryDto(PackIconKind.WeatherLightning, Brushes.Goldenrod, this.Name),
+                "healing" => new CategoryDto(PackIconKind.HeartPlus, ConciergeBrushes.Mint, this.Name),
+                "damage" => new CategoryDto(PackIconKind.HeartMinus, Brushes.IndianRed, this.Name),
+                _ => new CategoryDto(PackIconKind.ListStatus, Brushes.MediumPurple, this.Name),
+            };
         }
 
         public override string ToString()
