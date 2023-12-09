@@ -295,7 +295,7 @@ namespace Concierge.Data
         /// <returns>The category of the color.</returns>
         public CategoryDto GetCategory()
         {
-            return new CategoryDto(PackIconKind.Palette, new SolidColorBrush(this.Color), this.Name);
+            return new CategoryDto(PackIconKind.Palette, this.Brush, this.Name);
         }
 
         private static byte[] HexToRgb(string hex)

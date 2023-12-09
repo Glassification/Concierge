@@ -12,6 +12,7 @@ namespace Concierge.Display.Windows
     using Concierge.Commands;
     using Concierge.Common.Extensions;
     using Concierge.Display.Components;
+    using Concierge.Display.Controls;
     using Concierge.Display.Enums;
 
     /// <summary>
@@ -83,7 +84,12 @@ namespace Concierge.Display.Windows
         private bool EquipItem()
         {
             var item = this.ItemComboBox.SelectedItem;
-            if ((item is not Inventory && item is not Weapon) || this.SlotComboBox.Text.IsNullOrWhiteSpace())
+            if (item is not ComboBoxItemControl itemControl)
+            {
+                return false;
+            }
+
+            if ((itemControl.Item is not Inventory && itemControl.Item is not Weapon) || this.SlotComboBox.Text.IsNullOrWhiteSpace())
             {
                 return false;
             }
@@ -92,11 +98,11 @@ namespace Concierge.Display.Windows
             this.ItemsAdded = true;
             var slot = (EquipmentSlot)Enum.Parse(typeof(EquipmentSlot), this.SlotComboBox.Text);
 
-            if (item is Inventory inventory)
+            if (itemControl.Item is Inventory inventory)
             {
                 this.EquipInventory(inventory, slot);
             }
-            else if (item is Weapon weapon)
+            else if (itemControl.Item is Weapon weapon)
             {
                 this.EquipWeapon(weapon, slot);
             }

@@ -93,7 +93,24 @@ namespace Concierge.Character.Spellcasting
 
         public CategoryDto GetCategory()
         {
-            throw new NotImplementedException();
+            return this.Name switch
+            {
+                "Artificer" => new CategoryDto(PackIconKind.Notebook, Brushes.MediumPurple, this.Name),
+                "Barbarian" => new CategoryDto(PackIconKind.Notebook, Brushes.LightGreen, this.Name),
+                "Bard" => new CategoryDto(PackIconKind.Notebook, Brushes.IndianRed, this.Name),
+                "Blood Hunter" => new CategoryDto(PackIconKind.Notebook, Brushes.Goldenrod, this.Name),
+                "Cleric" => new CategoryDto(PackIconKind.Notebook, Brushes.Cyan, this.Name),
+                "Druid" => new CategoryDto(PackIconKind.Notebook, Brushes.OrangeRed, this.Name),
+                "Fighter" => new CategoryDto(PackIconKind.Notebook, Brushes.LightPink, this.Name),
+                "Monk" => new CategoryDto(PackIconKind.Notebook, Brushes.YellowGreen, this.Name),
+                "Paladin" => new CategoryDto(PackIconKind.Notebook, Brushes.Magenta, this.Name),
+                "Ranger" => new CategoryDto(PackIconKind.Notebook, Brushes.Orange, this.Name),
+                "Rogue" => new CategoryDto(PackIconKind.Notebook, Brushes.Coral, this.Name),
+                "Sorcerer" => new CategoryDto(PackIconKind.Notebook, Brushes.SteelBlue, this.Name),
+                "Warlock" => new CategoryDto(PackIconKind.Notebook, Brushes.Yellow, this.Name),
+                "Wizard" => new CategoryDto(PackIconKind.Notebook, Brushes.MediumSeaGreen, this.Name),
+                _ => new CategoryDto(PackIconKind.Notebook, Brushes.Silver, this.Name),
+            };
         }
     }
 }
