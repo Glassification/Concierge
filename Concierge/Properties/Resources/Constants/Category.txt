@@ -13,6 +13,7 @@ Medium Armor
 Mount
 Poison
 Potion
+Scroll
 Shield
 Tool
 Vehicle (Land)

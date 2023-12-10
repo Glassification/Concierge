@@ -178,6 +178,7 @@ namespace Concierge.Character.Equipable
                 "Mount" => new CategoryDto(PackIconKind.HorsebackRiding, Brushes.SandyBrown, this.ItemCategory),
                 "Poison" => new CategoryDto(PackIconKind.Poison, Brushes.LightGreen, this.ItemCategory),
                 "Potion" => new CategoryDto(PackIconKind.HealthPotion, Brushes.Pink, this.ItemCategory),
+                "Scroll" => new CategoryDto(PackIconKind.Scroll, Brushes.MediumPurple, this.ItemCategory),
                 "Shield" => new CategoryDto(PackIconKind.ShieldPerson, Brushes.LightSlateGray, this.ItemCategory),
                 "Tool" => new CategoryDto(PackIconKind.RulerSquareCompass, Brushes.LightYellow, this.ItemCategory),
                 "Vehicle (Land)" => new CategoryDto(PackIconKind.Caravan, Brushes.SaddleBrown, this.ItemCategory),

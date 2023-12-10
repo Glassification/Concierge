@@ -43,6 +43,7 @@
                 <controls:IntegerUpDownTransparentControl 
                     Grid.Column="1"
                     x:Name="InputUpDown"
+                    Maximum="999999"
                     Minimum="0"
                     ValueFontSize="30"
                     Height="auto"

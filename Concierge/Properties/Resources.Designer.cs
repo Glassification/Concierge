@@ -702,6 +702,7 @@ namespace Concierge.Properties {
         ///Mount
         ///Poison
         ///Potion
+        ///Scroll
         ///Shield
         ///Tool
         ///Vehicle (Land)

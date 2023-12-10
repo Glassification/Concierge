@@ -567,19 +567,19 @@
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
                             <DataGridTextColumn
-                                Header="Attack"
+                                Header="Name"
                                 Binding="{Binding Name}"
                                 Width="0.19*"
                                 ElementStyle="{StaticResource StandardColumnElementStyle}"/>
                             <DataGridTextColumn
-                                Header="Attack Bonus"
+                                Header="Attack"
                                 Binding="{Binding Attack}"
-                                Width="0.1*"
+                                Width="0.05*"
                                 ElementStyle="{StaticResource StandardColumnElementStyle}"/>
                             <DataGridTextColumn
                                 Header="Ability"
                                 Binding="{Binding Ability}"
-                                Width="0.1*"
+                                Width="0.05*"
                                 ElementStyle="{StaticResource StandardColumnElementStyle}"/>
                             <DataGridTextColumn
                                 Header="Damage"
@@ -604,7 +604,7 @@
                             <DataGridTextColumn
                                 Header="Description"
                                 Binding="{Binding Note}"
-                                Width="0.19*"
+                                Width="0.29*"
                                 ElementStyle="{StaticResource StandardColumnElementStyle}"/>
                         </DataGrid.Columns>
                     </components:ConciergeDataGrid>

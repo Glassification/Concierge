@@ -167,17 +167,17 @@
                                 <DataGridTextColumn
                                     Header="Ammo"
                                     Binding="{Binding Name}"
-                                    Width="0.25*"
+                                    Width="0.20*"
                                     ElementStyle="{StaticResource StandardColumnElementStyle}"/>
                                 <DataGridTextColumn
                                     Header="Quantity"
                                     Binding="{Binding Quantity}"
-                                    Width="0.10*"
+                                    Width="0.08*"
                                     ElementStyle="{StaticResource StandardColumnElementStyle}"/>
                                 <DataGridTextColumn
                                     Header="Used"
                                     Binding="{Binding Used}"
-                                    Width="0.10*"
+                                    Width="0.08*"
                                     ElementStyle="{StaticResource StandardColumnElementStyle}"/>
                                 <DataGridTextColumn
                                     Header="Damage Bonus"
@@ -192,7 +192,7 @@
                                 <DataGridTextColumn
                                     Header="Description"
                                     Binding="{Binding Description}"
-                                    Width="0.21*"
+                                    Width="0.30*"
                                     ElementStyle="{StaticResource WallOfTextColumnElementStyle}"/>
                             </DataGrid.Columns>
                         </components:ConciergeDataGrid>
@@ -448,19 +448,19 @@
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
                             <DataGridTextColumn
-                                Header="Attack"
+                                Header="Name"
                                 Binding="{Binding Name}"
                                 Width="0.18*"
                                 ElementStyle="{StaticResource StandardColumnElementStyle}"/>
                             <DataGridTextColumn
-                                Header="Attack Bonus"
+                                Header="Attack"
                                 Binding="{Binding Attack}"
-                                Width="0.1*"
+                                Width="0.05*"
                                 ElementStyle="{StaticResource StandardColumnElementStyle}"/>
                             <DataGridTextColumn
                                 Header="Ability"
                                 Binding="{Binding Ability}"
-                                Width="0.1*"
+                                Width="0.05*"
                                 ElementStyle="{StaticResource StandardColumnElementStyle}"/>
                             <DataGridTextColumn
                                 Header="Damage"
@@ -485,7 +485,7 @@
                             <DataGridTextColumn
                                 Header="Description"
                                 Binding="{Binding Note}"
-                                Width="0.19*"
+                                Width="0.29*"
                                 ElementStyle="{StaticResource WallOfTextColumnElementStyle}"/>
                             <DataGridTemplateColumn Width="0.01*">
                                 <DataGridTemplateColumn.CellTemplate>

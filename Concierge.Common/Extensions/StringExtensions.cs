@@ -140,6 +140,11 @@ namespace Concierge.Common.Extensions
                 return string.Empty;
             }
 
+            if (str.IsAllUpper())
+            {
+                return str;
+            }
+
             var charArray = str.ToCharArray();
             var offset = 0;
 
@@ -153,6 +158,24 @@ namespace Concierge.Common.Extensions
             }
 
             return str;
+        }
+
+        /// <summary>
+        /// Checks if each char in a string is uppercase.
+        /// </summary>
+        /// <param name="input">The string to check.</param>
+        /// <returns>true if all characters are uppercase; otherwise, false.</returns>
+        public static bool IsAllUpper(this string input)
+        {
+            for (int i = 0; i < input.Length; i++)
+            {
+                if (!char.IsUpper(input[i]))
+                {
+                    return false;
+                }
+            }
+
+            return true;
         }
 
         /// <summary>

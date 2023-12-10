@@ -266,9 +266,9 @@ namespace Concierge.Display.Windows
 
         private void ProficiencyComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (sender is ConciergeComboBox comboBox && comboBox.SelectedItem is ProficiencyTypes proficency)
+            if (sender is ConciergeComboBox comboBox && comboBox.SelectedItem is ComboBoxItemControl control && control.Tag is ProficiencyTypes proficiency)
             {
-                this.ProficiencyTextComboBox.ItemsSource = GenerateComboBoxItems(proficency);
+                this.ProficiencyTextComboBox.ItemsSource = GenerateComboBoxItems(proficiency);
             }
         }
     }

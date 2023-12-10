@@ -375,11 +375,6 @@
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
-                        <DataGridTextColumn
-                            Header="Comp"
-                            Binding="{Binding Components}"
-                            Width="0.08*"
-                            ElementStyle="{StaticResource SpellcastingColumnElementStyle}"/>
                         <DataGridTemplateColumn
                             Header="Concen"
                             Width="0.05*">
@@ -424,7 +419,7 @@
                         <DataGridTextColumn
                             Header="Description"
                             Binding="{Binding Description}"
-                            Width="0.20*"
+                            Width="0.28*"
                             ElementStyle="{StaticResource SpellcastingColumnElementStyle}"/>
                         <DataGridTemplateColumn
                             Width="0.01*">

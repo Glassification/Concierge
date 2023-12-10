@@ -255,14 +255,6 @@ namespace Concierge.Display.Components
                     this.Result = ConciergeWindowResult.Exit;
                     this.CloseConciergeWindow();
                     break;
-                case Key.Enter:
-                    Program.Logger.Info($"{e.Key} key pressed.");
-                    if (!this.HandleEnter)
-                    {
-                        this.ReturnAndClose();
-                    }
-
-                    break;
             }
         }
 

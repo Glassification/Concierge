@@ -54,7 +54,7 @@ namespace Concierge.Character.Equipable
         public UnitDouble ShieldWeight { get; set; }
 
         [JsonIgnore]
-        public int TotalAc => this.MagicAc + this.MiscAc + this.ShieldAc + this.ArmorStatus == ArmorStatus.Donned ? this.Armor.TotalAc : GetDoffedAc();
+        public int TotalAc => this.MagicAc + this.MiscAc + this.ShieldAc + (this.ArmorStatus == ArmorStatus.Donned ? this.Armor.TotalAc : GetDoffedAc());
 
         [JsonIgnore]
         public double TotalWeight => this.Armor.Weight.Value + this.ShieldWeight.Value;

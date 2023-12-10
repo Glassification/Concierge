@@ -118,6 +118,8 @@ namespace Concierge.Display
                 new (PackIconKind.WeatherSunny, Brushes.Goldenrod,  DamageTypes.Radiant.ToString()),
                 new (PackIconKind.Sword, Brushes.IndianRed,  DamageTypes.Slashing.ToString()),
                 new (PackIconKind.WeatherLightning, Brushes.Goldenrod,  DamageTypes.Thunder.ToString()),
+                new (PackIconKind.HeartPlus, ConciergeBrushes.Mint, DamageTypes.Healing.ToString()),
+                new (PackIconKind.HeartMinus, Brushes.IndianRed, DamageTypes.Damage.ToString()),
             ];
         }
 
@@ -323,9 +325,9 @@ namespace Concierge.Display
         {
             return
             [
-                new (PackIconKind.Wall, Brushes.LightBlue, ProficiencyTypes.Armor.ToString()),
-                new (PackIconKind.Tools, Brushes.Goldenrod, ProficiencyTypes.Tool.ToString()),
-                new (PackIconKind.SwordCross, Brushes.OrangeRed, ProficiencyTypes.Weapon.ToString()),
+                new (PackIconKind.Wall, Brushes.LightBlue, ProficiencyTypes.Armor.ToString(), ProficiencyTypes.Armor),
+                new (PackIconKind.Tools, Brushes.Goldenrod, ProficiencyTypes.Tool.ToString(), ProficiencyTypes.Tool),
+                new (PackIconKind.SwordCross, Brushes.OrangeRed, ProficiencyTypes.Weapon.ToString(), ProficiencyTypes.Weapon),
             ];
         }
 
