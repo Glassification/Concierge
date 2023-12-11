@@ -57,6 +57,10 @@ namespace Concierge.Character.Vitals
         [JsonIgnore]
         public string Display => $"{this.Name}{(this.Type == StatusEffectTypes.None ? string.Empty : $" {this.Type}")}{(this.Description.IsNullOrWhiteSpace() ? string.Empty : " - ")}{this.Description}";
 
+        [JsonIgnore]
+        [SearchIgnore]
+        public string Information => $"";
+
         public StatusEffect DeepCopy()
         {
             return new StatusEffect()

@@ -49,6 +49,10 @@ namespace Concierge.Character.Characteristics
         [JsonIgnore]
         public string Description => $"{this.Name}{(IsValid(this.Script) ? $" ({this.Script})" : string.Empty)}, Spoken by: {this.Speakers}";
 
+        [JsonIgnore]
+        [SearchIgnore]
+        public string Information => $"";
+
         public Language DeepCopy()
         {
             return new Language()
@@ -68,7 +72,7 @@ namespace Concierge.Character.Characteristics
 
         public CategoryDto GetCategory()
         {
-            return new CategoryDto(PackIconKind.AlphabetAurebesh, Brushes.LightBlue, this.Name);
+            return new CategoryDto(PackIconKind.Translate, Brushes.LightBlue, this.Name);
         }
 
         private static bool IsValid(string value)

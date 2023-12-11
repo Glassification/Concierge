@@ -13,6 +13,8 @@ namespace Concierge.Character.Equipable
     using Concierge.Common.Dtos;
     using Concierge.Common.Enums;
     using Concierge.Common.Exceptions;
+    using Concierge.Common.Extensions;
+    using Concierge.Common.Utilities;
     using Concierge.Data;
     using Concierge.Tools;
     using Concierge.Tools.DiceRoller;
@@ -142,6 +144,10 @@ namespace Concierge.Character.Equipable
                 };
             }
         }
+
+        [JsonIgnore]
+        [SearchIgnore]
+        public string Information => $"{this.DamageType} {StringUtility.FormatName(this.Type.ToString())} - {this.Value}{this.CoinType.GetDescription()}";
 
         private ICreature? Creature { get; set; }
 

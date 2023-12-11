@@ -77,6 +77,10 @@ namespace Concierge.Character.Vitals
 
         public Guid Id { get; set; }
 
+        [JsonIgnore]
+        [SearchIgnore]
+        public string Information => $"";
+
         public override string ToString()
         {
             return this.Type;

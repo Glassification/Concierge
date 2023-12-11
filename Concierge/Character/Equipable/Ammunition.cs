@@ -11,6 +11,7 @@ namespace Concierge.Character.Equipable
     using Concierge.Common;
     using Concierge.Common.Attributes;
     using Concierge.Common.Dtos;
+    using Concierge.Common.Extensions;
     using Concierge.Tools;
     using MaterialDesignThemes.Wpf;
     using Newtonsoft.Json;
@@ -82,6 +83,10 @@ namespace Concierge.Character.Equipable
         }
 
         public int Value { get; set; }
+
+        [JsonIgnore]
+        [SearchIgnore]
+        public string Information => $"({this.Quantity}) {this.DamageType} - {this.Value}{this.CoinType.GetDescription()}";
 
         public Ammunition DeepCopy()
         {

@@ -24,6 +24,8 @@ namespace Concierge.Common
 
         string Name { get; set; }
 
+        string Information { get; }
+
         CategoryDto GetCategory();
     }
 }

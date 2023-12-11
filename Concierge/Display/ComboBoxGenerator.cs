@@ -65,12 +65,36 @@ namespace Concierge.Display
         ];
 
         /// <summary>
-        /// Generates a list of ComboBoxItems using default items and custom items, sorted by their name.
+        /// Generates a list of DetailedComboBoxItemControl using default items and custom items, sorted by their name.
         /// </summary>
         /// <typeparam name="T">The type of items that implement the IUnique interface.</typeparam>
         /// <param name="defaultItems">A collection of default items.</param>
         /// <param name="customItems">A list of custom items to be combined with default items.</param>
-        /// <returns>A list of ComboBoxItems with content, foreground color, and tag set based on the provided items.</returns>
+        /// <returns>A list of DetailedComboBoxItemControl with content, foreground color, and tag set based on the provided items.</returns>
+        public static List<DetailedComboBoxItemControl> DetailedSelectorComboBox<T>(ReadOnlyCollection<T> defaultItems, List<T> customItems)
+            where T : IUnique
+        {
+            var combinedItems = new List<T>();
+            combinedItems.AddRange(defaultItems);
+            combinedItems.AddRange(customItems);
+            combinedItems.Sort(new UniqueComparer<T>());
+
+            var comboBoxItems = new List<DetailedComboBoxItemControl>();
+            foreach (var item in combinedItems)
+            {
+                comboBoxItems.Add(new DetailedComboBoxItemControl(item));
+            }
+
+            return comboBoxItems;
+        }
+
+        /// <summary>
+        /// Generates a list of ComboBoxItemControl using default items and custom items, sorted by their name.
+        /// </summary>
+        /// <typeparam name="T">The type of items that implement the IUnique interface.</typeparam>
+        /// <param name="defaultItems">A collection of default items.</param>
+        /// <param name="customItems">A list of custom items to be combined with default items.</param>
+        /// <returns>A list of ComboBoxItemControl with content, foreground color, and tag set based on the provided items.</returns>
         public static List<ComboBoxItemControl> SelectorComboBox<T>(ReadOnlyCollection<T> defaultItems, List<T> customItems)
             where T : IUnique
         {
@@ -92,11 +116,11 @@ namespace Concierge.Display
         {
             return
             [
-                new (PackIconKind.ArrangeSendBackward, Brushes.LightBlue, AbilityTypes.None.ToString()),
-                new (PackIconKind.StarCircleOutline, Brushes.MediumPurple, AbilityTypes.Background.ToString()),
-                new (PackIconKind.BookVariant, Brushes.Orange, AbilityTypes.Feat.ToString()),
-                new (PackIconKind.BookVariant, Brushes.IndianRed, AbilityTypes.ClassFeature.ToString()),
-                new (PackIconKind.BorderNone, Brushes.SlateGray, AbilityTypes.RaceFeature.ToString()),
+                new (PackIconKind.BorderNone, Brushes.SlateGray, AbilityTypes.None.ToString()),
+                new (PackIconKind.ArrangeSendBackward, Brushes.LightBlue, AbilityTypes.Background.ToString()),
+                new (PackIconKind.StarCircleOutline, Brushes.MediumPurple, AbilityTypes.Feat.ToString()),
+                new (PackIconKind.BookVariant, Brushes.Orange, AbilityTypes.ClassFeature.ToString()),
+                new (PackIconKind.BookVariant, Brushes.IndianRed, AbilityTypes.RaceFeature.ToString()),
             ];
         }
 

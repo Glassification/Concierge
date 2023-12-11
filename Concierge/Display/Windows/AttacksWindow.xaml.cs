@@ -66,7 +66,7 @@ namespace Concierge.Display.Windows
 
         public bool ItemsAdded { get; private set; }
 
-        private static List<ComboBoxItemControl> DefaultItems => ComboBoxGenerator.SelectorComboBox(Defaults.Weapons, Program.CustomItemService.GetCustomItems<Weapon>());
+        private static List<DetailedComboBoxItemControl> DefaultItems => ComboBoxGenerator.DetailedSelectorComboBox(Defaults.Weapons, Program.CustomItemService.GetCustomItems<Weapon>());
 
         private bool Editing { get; set; }
 
@@ -299,7 +299,7 @@ namespace Concierge.Display.Windows
 
         private void AttackComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (this.AttackComboBox.SelectedItem is ComboBoxItemControl item && item.Item is Weapon weapon)
+            if (this.AttackComboBox.SelectedItem is DetailedComboBoxItemControl item && item.Item is Weapon weapon)
             {
                 this.FillFields(weapon);
             }

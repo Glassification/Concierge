@@ -51,6 +51,10 @@ namespace Concierge.Character.Journals
 
         public string Name { get; set; }
 
+        [JsonIgnore]
+        [SearchIgnore]
+        public string Information => $"";
+
         public CategoryDto GetCategory()
         {
             throw new NotImplementedException();

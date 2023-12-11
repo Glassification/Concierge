@@ -63,6 +63,10 @@ namespace Concierge.Character.Spellcasting
 
         public int SpellSlots { get; set; }
 
+        [JsonIgnore]
+        [SearchIgnore]
+        public string Information => $"{(this.Ability == Abilities.NONE ? "No Default" : $"{this.Ability} Based")}. Attack: {this.Attack}, Save: {this.Save}";
+
         public override string ToString()
         {
             return this.Name;

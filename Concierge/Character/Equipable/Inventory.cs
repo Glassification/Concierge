@@ -17,6 +17,7 @@ namespace Concierge.Character.Equipable
     using Concierge.Tools.DiceRoller;
     using MaterialDesignThemes.Wpf;
     using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
 
     public sealed class Inventory : ICopyable<Inventory>, IUnique, IEquipable, IUsable
     {
@@ -107,6 +108,10 @@ namespace Concierge.Character.Equipable
         public bool IsEquipped { get; set; }
 
         public EquipmentSlot EquipmentSlot { get; set; }
+
+        [JsonIgnore]
+        [SearchIgnore]
+        public string Information => $"{(this.IsCustom ? "Custom " : string.Empty)}{this.ItemCategory} - {this.Value}{this.CoinType.GetDescription()}";
 
         public override bool Equals(object? obj)
         {

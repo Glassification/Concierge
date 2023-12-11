@@ -12,6 +12,7 @@ namespace Concierge.Character.Spellcasting
     using Concierge.Common.Attributes;
     using Concierge.Common.Dtos;
     using Concierge.Common.Enums;
+    using Concierge.Common.Extensions;
     using Concierge.Tools;
     using Concierge.Tools.DiceRoller;
     using MaterialDesignThemes.Wpf;
@@ -105,6 +106,10 @@ namespace Concierge.Character.Spellcasting
 
         public bool CurrentConcentration { get; set; }
 
+        [JsonIgnore]
+        [SearchIgnore]
+        public string Information => $"{(this.IsCustom ? "Custom " : string.Empty)}{this.SchoolAndLevel()}";
+
         public override string ToString()
         {
             return this.Name;
@@ -179,6 +184,16 @@ namespace Concierge.Character.Spellcasting
             return this.Prepared ?
                 (IconKind: PackIconKind.RadioButtonChecked, Brush: ConciergeBrushes.Mint) :
                 (IconKind: PackIconKind.RadioButtonUnchecked, Brush: ConciergeBrushes.Deer);
+        }
+
+        private string SchoolAndLevel()
+        {
+            if (this.Level == 0)
+            {
+                return $"{this.School} Cantrip";
+            }
+
+            return $"{this.Level.GetPostfix(true)} Level {this.School}";
         }
     }
 }

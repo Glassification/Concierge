@@ -9,6 +9,7 @@ namespace Concierge.Character.Equipable
 
     using Concierge.Character.Enums;
     using Concierge.Common;
+    using Concierge.Common.Attributes;
     using Concierge.Common.Dtos;
     using Concierge.Data;
     using MaterialDesignThemes.Wpf;
@@ -66,6 +67,10 @@ namespace Concierge.Character.Equipable
         public Guid Id { get; set; }
 
         public bool IsCustom { get; set; }
+
+        [JsonIgnore]
+        [SearchIgnore]
+        public string Information => $"{this.Type}, {this.Ac} AC - {this.Stealth} Stealth";
 
         public Armor DeepCopy()
         {

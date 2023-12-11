@@ -52,7 +52,7 @@ namespace Concierge.Display.Windows
 
         public bool ItemsAdded { get; private set; }
 
-        private static List<ComboBoxItemControl> DefaultItems => ComboBoxGenerator.SelectorComboBox(Defaults.MagicClasses, Program.CustomItemService.GetCustomItems<MagicClass>());
+        private static List<DetailedComboBoxItemControl> DefaultItems => ComboBoxGenerator.DetailedSelectorComboBox(Defaults.MagicClasses, Program.CustomItemService.GetCustomItems<MagicClass>());
 
         private bool Editing { get; set; }
 
@@ -234,7 +234,7 @@ namespace Concierge.Display.Windows
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (this.ClassNameComboBox.SelectedItem is ComboBoxItemControl item && item.Item is MagicClass magicClass)
+            if (this.ClassNameComboBox.SelectedItem is DetailedComboBoxItemControl item && item.Item is MagicClass magicClass)
             {
                 this.FillFields(magicClass);
             }

@@ -53,6 +53,10 @@ namespace Concierge.Character.Characteristics
 
         public Guid Id { get; set; }
 
+        [JsonIgnore]
+        [SearchIgnore]
+        public string Information => $"";
+
         public Proficiency DeepCopy()
         {
             return new Proficiency()

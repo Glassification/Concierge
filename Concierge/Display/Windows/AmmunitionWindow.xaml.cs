@@ -51,7 +51,7 @@ namespace Concierge.Display.Windows
 
         public bool ItemsAdded { get; private set; }
 
-        private static List<ComboBoxItemControl> DefaultItems => ComboBoxGenerator.SelectorComboBox(Defaults.Ammunition, Program.CustomItemService.GetCustomItems<Ammunition>());
+        private static List<DetailedComboBoxItemControl> DefaultItems => ComboBoxGenerator.DetailedSelectorComboBox(Defaults.Ammunition, Program.CustomItemService.GetCustomItems<Ammunition>());
 
         private bool Editing { get; set; }
 
@@ -224,7 +224,7 @@ namespace Concierge.Display.Windows
 
         private void NameComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (this.NameComboBox.SelectedItem is ComboBoxItemControl item && item.Item is Ammunition ammunition)
+            if (this.NameComboBox.SelectedItem is DetailedComboBoxItemControl item && item.Item is Ammunition ammunition)
             {
                 this.FillFields(ammunition);
             }

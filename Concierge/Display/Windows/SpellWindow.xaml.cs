@@ -59,7 +59,7 @@ namespace Concierge.Display.Windows
 
         public bool ItemsAdded { get; private set; }
 
-        private static List<ComboBoxItemControl> DefaultItems => ComboBoxGenerator.SelectorComboBox(Defaults.Spells, Program.CustomItemService.GetCustomItems<Spell>());
+        private static List<DetailedComboBoxItemControl> DefaultItems => ComboBoxGenerator.DetailedSelectorComboBox(Defaults.Spells, Program.CustomItemService.GetCustomItems<Spell>());
 
         private bool Editing { get; set; }
 
@@ -269,7 +269,7 @@ namespace Concierge.Display.Windows
 
         private void SpellNameComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (this.SpellNameComboBox.SelectedItem is ComboBoxItemControl item && item.Item is Spell spell)
+            if (this.SpellNameComboBox.SelectedItem is DetailedComboBoxItemControl item && item.Item is Spell spell)
             {
                 this.FillFields(spell);
             }

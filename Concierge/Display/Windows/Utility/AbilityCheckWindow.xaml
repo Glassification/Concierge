@@ -89,6 +89,8 @@
                     Grid.Row="1"
                     Grid.Column="1"
                     x:Name="ModifierUpDown"
+                    Minimum="-100"
+                    Maximum="100"
                     Value="0"/>
             </Grid>
 

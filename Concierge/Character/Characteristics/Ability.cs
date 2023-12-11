@@ -74,6 +74,10 @@ namespace Concierge.Character.Characteristics
         [SearchIgnore]
         public PackIconKind IconKind => this.GetCategory().IconKind;
 
+        [JsonIgnore]
+        [SearchIgnore]
+        public string Information => $"";
+
         public Ability DeepCopy()
         {
             return new Ability()
