@@ -108,7 +108,7 @@ namespace Concierge.Character.Spellcasting
 
         [JsonIgnore]
         [SearchIgnore]
-        public string Information => $"{(this.IsCustom ? "Custom " : string.Empty)}{this.SchoolAndLevel()}";
+        public string Information => this.Level == 0 ? $"{this.School} Cantrip" : $"{this.Level.GetPostfix(true)} Level {this.School}";
 
         public override string ToString()
         {
@@ -184,16 +184,6 @@ namespace Concierge.Character.Spellcasting
             return this.Prepared ?
                 (IconKind: PackIconKind.RadioButtonChecked, Brush: ConciergeBrushes.Mint) :
                 (IconKind: PackIconKind.RadioButtonUnchecked, Brush: ConciergeBrushes.Deer);
-        }
-
-        private string SchoolAndLevel()
-        {
-            if (this.Level == 0)
-            {
-                return $"{this.School} Cantrip";
-            }
-
-            return $"{this.Level.GetPostfix(true)} Level {this.School}";
         }
     }
 }

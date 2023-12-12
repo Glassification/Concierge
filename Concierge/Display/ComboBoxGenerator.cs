@@ -173,11 +173,11 @@ namespace Concierge.Display
         {
             return
             [
-                new (PackIconKind.ShieldSword, ConciergeBrushes.Silver, ArmorType.None.ToString()),
-                new (PackIconKind.ShieldSword, ConciergeBrushes.LightCarryCapacity, ArmorType.Light.ToString()),
-                new (PackIconKind.ShieldSword, ConciergeBrushes.MediumCarryCapacity, ArmorType.Medium.ToString()),
-                new (PackIconKind.ShieldSword, ConciergeBrushes.HeavyCarryCapacity, ArmorType.Heavy.ToString()),
-                new (PackIconKind.ShieldSword, ConciergeBrushes.Verdigris, ArmorType.Massive.ToString()),
+                new (PackIconKind.Wall, ConciergeBrushes.Silver, ArmorType.None.ToString()),
+                new (PackIconKind.Wall, ConciergeBrushes.LightCarryCapacity, ArmorType.Light.ToString()),
+                new (PackIconKind.Wall, ConciergeBrushes.MediumCarryCapacity, ArmorType.Medium.ToString()),
+                new (PackIconKind.Wall, ConciergeBrushes.HeavyCarryCapacity, ArmorType.Heavy.ToString()),
+                new (PackIconKind.Wall, ConciergeBrushes.Verdigris, ArmorType.Massive.ToString()),
             ];
         }
 

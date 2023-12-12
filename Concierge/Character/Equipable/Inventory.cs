@@ -111,7 +111,7 @@ namespace Concierge.Character.Equipable
 
         [JsonIgnore]
         [SearchIgnore]
-        public string Information => $"{(this.IsCustom ? "Custom " : string.Empty)}{this.ItemCategory} - {this.Value}{this.CoinType.GetDescription()}";
+        public string Information => $"{this.ItemCategory} - {this.Value}{this.CoinType.GetDescription()}";
 
         public override bool Equals(object? obj)
         {

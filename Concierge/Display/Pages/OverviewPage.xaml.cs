@@ -329,6 +329,9 @@ namespace Concierge.Display.Pages
                 case nameof(SavingThrowWindow):
                     this.DrawSavingThrows();
                     break;
+                case nameof(WealthWindow):
+                    this.DrawWealth();
+                    break;
             }
         }
 

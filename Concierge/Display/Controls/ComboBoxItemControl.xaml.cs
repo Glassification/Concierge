@@ -56,16 +56,6 @@ namespace Concierge.Display.Controls
             this.Tag = tag;
         }
 
-        public ComboBoxItemControl(PackIconKind icon, Brush iconColor, string name, Brush nameColor)
-            : this()
-        {
-            this.ItemIcon.Kind = icon;
-            this.ItemIcon.Foreground = iconColor;
-
-            this.ItemName.Text = name.Strip(" ").FormatFromEnum();
-            this.ItemName.Foreground = nameColor;
-        }
-
         public IUnique? Item { get; private set; }
 
         public string Text => this.ItemName.Text;

@@ -4,6 +4,7 @@
 
 namespace Concierge.Display.Windows
 {
+    using System;
     using System.Windows;
 
     using Concierge.Character;
@@ -86,9 +87,13 @@ namespace Concierge.Display.Windows
         protected override void ReturnAndClose()
         {
             this.Result = ConciergeWindowResult.OK;
-            var oldItem = this.SelectedWealth.DeepCopy();
+            this.UpdateWealth();
+            this.CloseConciergeWindow();
+        }
 
-            this.AddSelectedAmount();
+        private void UpdateWealth()
+        {
+            var oldItem = this.SelectedWealth.DeepCopy();
 
             this.SelectedWealth.Copper = this.CP;
             this.SelectedWealth.Silver = this.SP;
@@ -97,7 +102,6 @@ namespace Concierge.Display.Windows
             this.SelectedWealth.Platinum = this.PP;
 
             Program.UndoRedoService.AddCommand(new EditCommand<Wealth>(this.SelectedWealth, oldItem, this.ConciergePage));
-            this.CloseConciergeWindow();
         }
 
         private void ClearFields(CoinType coinType = CoinType.Gold)
@@ -157,23 +161,23 @@ namespace Concierge.Display.Windows
         {
             if (this.CpRadioButton.IsChecked ?? false)
             {
-                this.CP += this.GetAmount();
+                this.CP = Math.Max(0, this.CP + this.GetAmount());
             }
             else if (this.SpRadioButton.IsChecked ?? false)
             {
-                this.SP += this.GetAmount();
+                this.SP = Math.Max(0, this.SP + this.GetAmount());
             }
             else if (this.EpRadioButton.IsChecked ?? false)
             {
-                this.EP += this.GetAmount();
+                this.EP = Math.Max(0, this.EP + this.GetAmount());
             }
             else if (this.GpRadioButton.IsChecked ?? false)
             {
-                this.GP += this.GetAmount();
+                this.GP = Math.Max(0, this.GP + this.GetAmount());
             }
             else if (this.PpRadioButton.IsChecked ?? false)
             {
-                this.PP += this.GetAmount();
+                this.PP = Math.Max(0, this.PP + this.GetAmount());
             }
         }
 
@@ -188,7 +192,7 @@ namespace Concierge.Display.Windows
             this.ReturnAndClose();
         }
 
-        private void ApplyButton_Click(object sender, RoutedEventArgs e)
+        private void AddButton_Click(object sender, RoutedEventArgs e)
         {
             this.AddSelectedAmount();
             this.FillFields();
@@ -198,6 +202,22 @@ namespace Concierge.Display.Windows
         {
             this.Result = ConciergeWindowResult.Cancel;
             this.CloseConciergeWindow();
+        }
+
+        private void AddRadioButton_Checked(object sender, RoutedEventArgs e)
+        {
+            this.AddButton.Content = "Add";
+        }
+
+        private void SubtractRadioButton_Checked(object sender, RoutedEventArgs e)
+        {
+            this.AddButton.Content = "Subtract";
+        }
+
+        private void ApplyButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.UpdateWealth();
+            this.InvokeApplyChanges();
         }
     }
 }

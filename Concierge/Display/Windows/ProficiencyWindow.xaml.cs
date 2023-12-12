@@ -131,6 +131,8 @@ namespace Concierge.Display.Windows
             {
                 case ProficiencyTypes.Armor:
                     items.Add(new CollectionContainer() { Collection = ComboBoxGenerator.ArmorTypeComboBox() });
+                    items.Add(new Separator());
+                    items.Add(new ComboBoxItemControl(PackIconKind.Shield, Brushes.SteelBlue, "Shields"));
                     break;
                 case ProficiencyTypes.Tool:
                     items.Add(new CollectionContainer() { Collection = CreateTools(Defaults.Tools, ConciergeBrushes.Mint, PackIconKind.Tools) });

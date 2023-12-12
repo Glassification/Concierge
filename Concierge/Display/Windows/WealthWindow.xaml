@@ -9,13 +9,13 @@
     xmlns:components="clr-namespace:Concierge.Display.Components"
     mc:Ignorable="d"
     Title="Modify Wealth"
-    Height="475"
+    Height="415"
     Width="650"
     Style="{StaticResource WindowFontStyle}">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="45"/>
-            <RowDefinition Height="300"/>
+            <RowDefinition Height="240"/>
             <RowDefinition Height="60"/>
             <RowDefinition Height="70"/>
         </Grid.RowDefinitions>
@@ -48,65 +48,103 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="60"/>
                 <RowDefinition Height="60"/>
-                <RowDefinition Height="60"/>
                 <RowDefinition Height="120"/>
             </Grid.RowDefinitions>
 
-            <!--Add/Subtract-->
             <Grid Grid.Row="0">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="40*"/>
-                    <ColumnDefinition Width="10*"/>
-                    <ColumnDefinition Width="10*"/>
-                    <ColumnDefinition Width="40*"/>
+                    <ColumnDefinition Width="85*"/>
+                    <ColumnDefinition Width="15*"/>
                 </Grid.ColumnDefinitions>
 
                 <Grid Grid.Column="0">
-                    <components:ConciergeLabel 
-                        Text="Add"
-                        FontSize="25"
-                        HorizontalAlignment="Right"/>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="35*"/>
+                        <ColumnDefinition Width="45*"/>
+                        <ColumnDefinition Width="20*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <components:ConciergeLabel
+                        Text="Value:"
+                        Margin="15,0,0,0"
+                        FontSize="21"/>
+
+                    <controls:IntegerUpDownControl 
+                        Grid.Column="1"
+                        x:Name="AmountUpDown"
+                        Margin="10, 0, 0, 0"/>
+
+                    <Grid Grid.Column="2">
+                        <components:ConciergeDesignButton
+                            Style="{StaticResource ConciergeTextButtonStyle}"
+                            x:Name="AddButton"
+                            Content="Add"
+                            HorizontalAlignment="Stretch"
+                            Foreground="White"
+                            Margin="10, 10, 20, 10"
+                            Click="AddButton_Click"/>
+                    </Grid>
                 </Grid>
+
                 <Grid Grid.Column="1">
-                    <components:ConciergeRadioButton 
-                        x:Name="AddRadioButton"
-                        Style="{StaticResource RadioButtonStyle}"
-                        GroupName="AddSubtract"
-                        VerticalAlignment="Center"
-                        HorizontalAlignment="Center">
-                        <RadioButton.LayoutTransform>
-                            <ScaleTransform ScaleX="1.5" ScaleY="1.5" />
-                        </RadioButton.LayoutTransform>
-                    </components:ConciergeRadioButton>
-                </Grid>
-                <Grid Grid.Column="2">
-                    <components:ConciergeRadioButton 
-                        x:Name="SubtractRadioButton"
-                        Style="{StaticResource RadioButtonStyle}"
-                        GroupName="AddSubtract"
-                        VerticalAlignment="Center"
-                        HorizontalAlignment="Center">
-                        <RadioButton.LayoutTransform>
-                            <ScaleTransform ScaleX="1.5" ScaleY="1.5" />
-                        </RadioButton.LayoutTransform>
-                    </components:ConciergeRadioButton>
-                </Grid>
-                <Grid Grid.Column="3">
-                    <components:ConciergeLabel 
-                        Text="Subtract"
-                        FontSize="25"/>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50*"/>
+                        <RowDefinition Height="50*"/>
+                    </Grid.RowDefinitions>
+
+                    <StackPanel
+                        Orientation="Horizontal"
+                        Grid.Row="0">
+                        <components:ConciergeRadioButton
+                            x:Name="AddRadioButton"
+                            Style="{StaticResource RadioButtonStyle}"
+                            GroupName="AddSubtract"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Left"
+                            Checked="AddRadioButton_Checked">
+                            <RadioButton.LayoutTransform>
+                                <ScaleTransform ScaleX="1.5" ScaleY="1.5" />
+                            </RadioButton.LayoutTransform>
+                        </components:ConciergeRadioButton>
+
+                        <materialDesign:PackIcon
+                            Width="25"
+                            Height="25"
+                            Foreground="#3EB489"
+                            Kind="PlusBox"
+                            VerticalAlignment="Center"
+                            Margin="10,0,0,0"/>
+                    </StackPanel>
+
+                    <StackPanel 
+                        Orientation="Horizontal"
+                        Grid.Row="1">
+                        <components:ConciergeRadioButton
+                            x:Name="SubtractRadioButton"
+                            Style="{StaticResource RadioButtonStyle}"
+                            GroupName="AddSubtract"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Left"
+                            Checked="SubtractRadioButton_Checked">
+                            <RadioButton.LayoutTransform>
+                                <ScaleTransform ScaleX="1.5" ScaleY="1.5" />
+                            </RadioButton.LayoutTransform>
+                        </components:ConciergeRadioButton>
+
+                        <materialDesign:PackIcon
+                            Width="25"
+                            Height="25"
+                            Foreground="IndianRed"
+                            Kind="MinusBox"
+                            VerticalAlignment="Center"
+                            Margin="10,0,0,0"/>
+                    </StackPanel>
+                    
                 </Grid>
             </Grid>
-
-            <!--Amount-->
-            <Grid Grid.Row="1">
-                <controls:IntegerUpDownControl 
-                    x:Name="AmountUpDown"
-                    Margin="130, 0, 130, 0"/>
-            </Grid>
-
+           
             <!--Currency-->
-            <Grid Grid.Row="2">
+            <Grid Grid.Row="1">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="20*"/>
                     <ColumnDefinition Width="20*"/>
@@ -183,7 +221,7 @@
             </Grid>
 
             <!--Denomination-->
-            <Grid Grid.Row="3" Margin="5,0,5,0">
+            <Grid Grid.Row="2" Margin="5,0,5,0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="20*"/>
                     <ColumnDefinition Width="20*"/>
@@ -369,14 +407,14 @@
                 <components:ConciergeTextButton 
                     x:Name="OkButton"
                     Style="{StaticResource ConciergeTextButtonStyle}"
-                    Content="Confirm"
+                    Content="OK"
                     Click="OkButton_Click">
                 </components:ConciergeTextButton>
                 <components:ConciergeTextButton 
                     x:Name="ApplyButton"
-                    Style="{StaticResource ConciergeTextButtonStyle}"
-                    Content="Add"
-                    Click="ApplyButton_Click">
+                    Content="Apply"
+                    Click="ApplyButton_Click"
+                    Style="{StaticResource ConciergeTextButtonStyle}">
                 </components:ConciergeTextButton>
                 <components:ConciergeTextButton 
                     x:Name="CancelButton"

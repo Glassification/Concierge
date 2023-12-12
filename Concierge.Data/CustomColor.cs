@@ -201,7 +201,7 @@ namespace Concierge.Data
 
         [JsonIgnore]
         [SearchIgnore]
-        public string Information => $"{this.Hex} [{this.R},{this.G},{this.B}]";
+        public string Information => string.Empty;
 
         /// <summary>
         /// Gets or sets the unique identifier of the color.
