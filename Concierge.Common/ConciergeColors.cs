@@ -56,6 +56,8 @@ namespace Concierge.Common
             Gold = Color.FromArgb(255, 207, 181, 59);
 
             Platinum = Color.FromArgb(255, 229, 228, 226);
+
+            Border = Color.FromArgb(255, 74, 74, 74);
         }
 
         public static Color WindowBackground { get; }
@@ -101,5 +103,7 @@ namespace Concierge.Common
         public static Color Gold { get; }
 
         public static Color Platinum { get; }
+
+        public static Color Border { get; }
     }
 }

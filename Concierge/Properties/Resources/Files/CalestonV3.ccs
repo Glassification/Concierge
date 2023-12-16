@@ -826,7 +826,7 @@
           "Components": "V,M (a piece of parchment rolled up into a cone)",
           "Concentration": false,
           "Damage": "--",
-          "Description": "You can make your voice (or any sound that you can normally make vocally) seem to issue from someplace else. You can speak in any language you know. With respect to such voices and sounds, anyone who hears the sound can attempt an Investigation check against your spell save DC. On a success, they recognize it as illusory, but still hear it. You can dismiss it at will for the duration, no action required.",
+          "Description": "You can make your voice (or any sound that you can normally make vocally) seem to issue from someplace else. You can speak in any language you know. With respect to such voices and sounds, anyone who hears the sound can attempt an Investigation check against your spell save DC. On a success, they recognize it as illusory, but still hear it. You can dismiss it at will for the duration.",
           "Duration": "1 minute",
           "Id": "820380b1-5871-4d53-9a25-57102c17bf7b",
           "IsCustom": false,
@@ -3061,13 +3061,13 @@
       ]
     }
   },
-  "Hash": "6056B420208365318E0C961AF8D0E8664470310091F1B18E9DABF4AA582579DC",
+  "Hash": "3DD303790612E3BE2AFC683EB06950FCA563E79873B4B2BB300DC0379BBC94C7",
   "OriginalCreationDate": "Saturday, 13 May 2023 06:48:08 PM",
-  "LastSaveDate": "2023-12-10T11:48:55.8318482-06:00",
+  "LastSaveDate": "2023-12-16T13:00:54.4888654-06:00",
   "Version": {
     "Major": 5,
     "Minor": 5,
-    "Patch": 6
+    "Patch": 9
   },
   "IsEmpty": false
 }

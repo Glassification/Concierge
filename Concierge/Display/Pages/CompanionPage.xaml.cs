@@ -229,6 +229,8 @@ namespace Concierge.Display.Pages
 
         private void HealthDisplay_EditClicked(object sender, RoutedEventArgs e)
         {
+            ConciergeSoundService.TapNavigation();
+
             ConciergeWindowService.ShowEdit(
                 Program.CcsFile.Character.Companion.Vitality.Health,
                 typeof(HealthWindow),
@@ -239,6 +241,8 @@ namespace Concierge.Display.Pages
 
         private void HitDiceDisplay_EditClicked(object sender, RoutedEventArgs e)
         {
+            ConciergeSoundService.TapNavigation();
+
             ConciergeWindowService.ShowEdit(
                 Program.CcsFile.Character.Companion.Vitality.HitDice,
                 typeof(HitDiceWindow),
@@ -250,6 +254,8 @@ namespace Concierge.Display.Pages
 
         private void AttributeDisplay_EditClicked(object sender, RoutedEventArgs e)
         {
+            ConciergeSoundService.TapNavigation();
+
             ConciergeWindowService.ShowEdit(
                 Program.CcsFile.Character.Companion.Characteristic.Attributes,
                 typeof(AttributesWindow),
@@ -261,6 +267,8 @@ namespace Concierge.Display.Pages
 
         private void CompanionDetails_MouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
+            ConciergeSoundService.TapNavigation();
+
             ConciergeWindowService.ShowEdit(
                 Program.CcsFile.Character.Companion.Properties,
                 typeof(CompanionWindow),
@@ -271,6 +279,8 @@ namespace Concierge.Display.Pages
 
         private void CompanionImage_MouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
+            ConciergeSoundService.TapNavigation();
+
             ConciergeWindowService.ShowEdit(
                 Program.CcsFile.Character.Companion.CompanionImage,
                 typeof(ImageWindow),

@@ -21,6 +21,7 @@ namespace Concierge.Display
     using Concierge.Display.Utility;
     using Concierge.Display.Windows;
     using Concierge.Display.Windows.Utility;
+    using Concierge.Persistence.Exporters;
     using Concierge.Services;
     using Concierge.Tools.WorkerServices;
     using MaterialDesignThemes.Wpf;
@@ -92,6 +93,7 @@ namespace Concierge.Display
             this.MenuButton.ConsoleMenuItem.AddClickEvent(this.ConsoleButton_Click);
             this.MenuButton.CustomItemsMenuItem.AddClickEvent(this.CustomItemsButton_Click);
             this.MenuButton.SearchMenuItem.AddClickEvent(this.SearchButton_Click);
+            this.MenuButton.ExportAppDataMenuItem.AddClickEvent(this.ExportAppDataButton_Click);
             this.MenuButton.SettingsMenuItem.AddClickEvent(this.SettingsButton_Click);
             this.MenuButton.AboutMenuItem.AddClickEvent(this.AboutButton_Click);
             this.MenuButton.HelpMenuItem.AddClickEvent(this.GlossaryButton_Click);
@@ -150,7 +152,7 @@ namespace Concierge.Display
                 return;
             }
 
-            this.animatedTimedTextWorkerService.StartWorker("Generated New Character Sheet!");
+            this.DisplayStatusText("Generated New Character Sheet!");
             this.ResetCharacterSheet();
             this.DrawAll();
             this.MessageBar.DrawActiveFile(Program.CcsFile);
@@ -230,7 +232,7 @@ namespace Concierge.Display
                 this.autosaveTimer.Start(Defaults.CurrentAutosaveInterval);
             }
 
-            this.animatedTimedTextWorkerService.StartWorker($"Opened '{ccsFile.AbsolutePath}'");
+            this.DisplayStatusText($"Opened '{ccsFile.AbsolutePath}'");
             this.JournalPage.ClearTextBox();
             this.DrawAll(true);
             this.MessageBar.DrawActiveFile(Program.CcsFile);
@@ -242,7 +244,7 @@ namespace Concierge.Display
 
             ConciergeWindowService.ShowWindow(typeof(ImportCharacterWindow), this.Window_ApplyChanges);
 
-            this.animatedTimedTextWorkerService.StartWorker("Imported Character Data!");
+            this.DisplayStatusText("Imported Character Data!");
             this.DrawAll();
         }
 
@@ -307,7 +309,7 @@ namespace Concierge.Display
             Program.Logger.Info($"Long rest.");
             Program.CcsFile.Character.LongRest();
 
-            this.animatedTimedTextWorkerService.StartWorker("Long Rest Complete!   HP and Spell Slots Replenished.");
+            this.DisplayStatusText("Long Rest Complete!   HP and Spell Slots Replenished.");
             this.DrawAll();
         }
 
@@ -469,13 +471,13 @@ namespace Concierge.Display
             {
                 if (this.fileAccessService.SaveAs(Program.CcsFile))
                 {
-                    this.animatedTimedTextWorkerService.StartWorker($"Save As '{Program.CcsFile.AbsolutePath}'");
+                    this.DisplayStatusText($"Save As '{Program.CcsFile.AbsolutePath}'");
                 }
             }
             else
             {
                 this.fileAccessService.Save(Program.CcsFile);
-                this.animatedTimedTextWorkerService.StartWorker($"Save '{Program.CcsFile.AbsolutePath}'");
+                this.DisplayStatusText($"Save '{Program.CcsFile.AbsolutePath}'");
             }
         }
 
@@ -824,6 +826,16 @@ namespace Concierge.Display
         {
             ConciergeSoundService.TapNavigation();
             this.Search();
+        }
+
+        private void ExportAppDataButton_Click(object sender, RoutedEventArgs e)
+        {
+            ConciergeSoundService.TapNavigation();
+
+            if (new AppDataExporter(Program.Logger).Export())
+            {
+                this.DisplayStatusText("Successfully Exported AppData.");
+            }
         }
 
         private void Window_ApplyChanges(object sender, EventArgs e)

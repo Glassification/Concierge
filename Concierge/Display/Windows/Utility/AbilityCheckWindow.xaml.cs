@@ -105,6 +105,7 @@ namespace Concierge.Display.Windows.Utility
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
+            Program.Logger.Info($"{this.HeaderText} {this.RollResultLabel.Text}.");
             this.ReturnAndClose();
         }
 

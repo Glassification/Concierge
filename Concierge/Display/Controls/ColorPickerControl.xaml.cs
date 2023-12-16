@@ -82,32 +82,16 @@ namespace Concierge.Display.Controls
 
         private static void InitializeColorList(List<CustomColor> colors, ConciergeComboBox comboBox)
         {
-            foreach (var customColor in colors)
-            {
-                comboBox.Items.Add(new ComboBoxItemControl(customColor));
-            }
-
+            colors.ForEach(x => comboBox.Items.Add(new ComboBoxItemControl(x)));
             comboBox.SelectedIndex = 0;
         }
 
         private void ColorList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (e.AddedItems.Count <= 0)
+            if (e.AddedItems.Count > 0 && e.AddedItems[0] is ComboBoxItemControl item && item.Item is CustomColor customColor)
             {
-                return;
+                this.SelectDefaultColorButton.Color = customColor;
             }
-
-            if (e.AddedItems[0] is not ComboBoxItemControl item)
-            {
-                return;
-            }
-
-            if (item.Item is not CustomColor customColor)
-            {
-                return;
-            }
-
-            this.SelectDefaultColorButton.Color = customColor;
         }
 
         private void ColorButton_Click(object sender, RoutedEventArgs e)

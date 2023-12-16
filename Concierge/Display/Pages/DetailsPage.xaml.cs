@@ -382,6 +382,8 @@ namespace Concierge.Display.Pages
 
         private void AppearanceDisplay_EditClicked(object sender, RoutedEventArgs e)
         {
+            ConciergeSoundService.TapNavigation();
+
             ConciergeWindowService.ShowEdit(
                 Program.CcsFile.Character.Characteristic.Appearance,
                 typeof(AppearanceWindow),
@@ -392,6 +394,8 @@ namespace Concierge.Display.Pages
 
         private void PersonalityDisplay_EditClicked(object sender, RoutedEventArgs e)
         {
+            ConciergeSoundService.TapNavigation();
+
             ConciergeWindowService.ShowEdit(
                 Program.CcsFile.Character.Characteristic.Personality,
                 typeof(PersonalityWindow),
@@ -402,6 +406,8 @@ namespace Concierge.Display.Pages
 
         private void ArmorDisplay_EditClicked(object sender, RoutedEventArgs e)
         {
+            ConciergeSoundService.TapNavigation();
+
             ConciergeWindowService.ShowEdit(
                 Program.CcsFile.Character.Equipment.Defense,
                 typeof(ArmorWindow),

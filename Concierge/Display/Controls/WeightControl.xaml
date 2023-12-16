@@ -18,8 +18,8 @@
             BorderBrush="#2B2B2B"
             BorderThickness="5"
             CornerRadius="10">
-        
-            <Grid Background="#2B2B2B">
+
+            <Grid Background="#2B2B2B"  Margin="-1">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="45*"/>
                     <RowDefinition Height="55*"/>

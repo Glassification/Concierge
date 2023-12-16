@@ -263,6 +263,8 @@ namespace Concierge.Display.Pages
 
         private void CharacterImage_MouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
+            ConciergeSoundService.TapNavigation();
+
             ConciergeWindowService.ShowEdit(
                 Program.CcsFile.Character.CharacterImage,
                 typeof(ImageWindow),

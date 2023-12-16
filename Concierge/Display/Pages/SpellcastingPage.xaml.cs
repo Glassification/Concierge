@@ -248,6 +248,8 @@ namespace Concierge.Display.Pages
 
         private void SpellSlotsDisplay_EditClicked(object sender, RoutedEventArgs e)
         {
+            ConciergeSoundService.TapNavigation();
+
             ConciergeWindowService.ShowEdit(
                 Program.CcsFile.Character.Magic.SpellSlots,
                 typeof(SpellSlotsWindow),

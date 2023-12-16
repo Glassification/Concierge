@@ -22,6 +22,8 @@ namespace Concierge.Display.Utility
         {
             this.InitializeComponent();
             this.UseRoundedCorners();
+
+            this.CloseOnEnter = true;
         }
 
         public override string HeaderText => "Concierge Message";

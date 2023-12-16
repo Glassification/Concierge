@@ -80,10 +80,7 @@ namespace Concierge.Display
             combinedItems.Sort(new UniqueComparer<T>());
 
             var comboBoxItems = new List<DetailedComboBoxItemControl>();
-            foreach (var item in combinedItems)
-            {
-                comboBoxItems.Add(new DetailedComboBoxItemControl(item));
-            }
+            combinedItems.ForEach(x => comboBoxItems.Add(new DetailedComboBoxItemControl(x)));
 
             return comboBoxItems;
         }
@@ -104,10 +101,7 @@ namespace Concierge.Display
             combinedItems.Sort(new UniqueComparer<T>());
 
             var comboBoxItems = new List<ComboBoxItemControl>();
-            foreach (var item in combinedItems)
-            {
-                comboBoxItems.Add(new ComboBoxItemControl(item));
-            }
+            combinedItems.ForEach(x => comboBoxItems.Add(new ComboBoxItemControl(x)));
 
             return comboBoxItems;
         }
@@ -185,8 +179,8 @@ namespace Concierge.Display
         {
             return
             [
-                new (PackIconKind.EyeOff, ConciergeBrushes.Mint, ArmorStealth.Normal.ToString()),
-                new (PackIconKind.Eye, Brushes.IndianRed, ArmorStealth.Disadvantage.ToString()),
+                new (PackIconKind.Eye, ConciergeBrushes.Mint, ArmorStealth.Normal.ToString()),
+                new (PackIconKind.EyeOff, Brushes.IndianRed, ArmorStealth.Disadvantage.ToString()),
             ];
         }
 

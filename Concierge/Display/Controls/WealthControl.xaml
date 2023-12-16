@@ -18,7 +18,7 @@
             BorderBrush="#2B2B2B"
             BorderThickness="5"
             CornerRadius="10">
-            <Grid Background="#2B2B2B">
+            <Grid Background="#2B2B2B"  Margin="-1">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="50*"/>
                     <RowDefinition Height="50*"/>
@@ -55,7 +55,7 @@
                             BorderBrush="#FF333333"
                             BorderThickness="5"
                             CornerRadius="10">
-                            <Grid Background="#FF333333">
+                            <Grid Background="#FF333333"  Margin="-1">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="60*"/>
                                     <ColumnDefinition Width="40*"/>
@@ -86,7 +86,7 @@
                             BorderBrush="#FF333333"
                             BorderThickness="5"
                             CornerRadius="10">
-                            <Grid Background="#FF333333">
+                            <Grid Background="#FF333333"  Margin="-1">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="60*"/>
                                     <ColumnDefinition Width="40*"/>

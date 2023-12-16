@@ -14,6 +14,7 @@ namespace Concierge.Display.Controls
     using Concierge.Common;
     using Concierge.Common.Utilities;
     using Concierge.Display.Enums;
+    using Concierge.Services;
 
     /// <summary>
     /// Interaction logic for SpellSlotsControl.xaml.
@@ -80,6 +81,7 @@ namespace Concierge.Display.Controls
                 return;
             }
 
+            ConciergeSoundService.UpdateValue();
             var spellSlots = Program.CcsFile.Character.Magic.SpellSlots;
             var oldItem = spellSlots.DeepCopy();
 

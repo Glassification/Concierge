@@ -16,6 +16,7 @@ namespace Concierge.Display.Controls
     using Concierge.Common.Enums;
     using Concierge.Common.Utilities;
     using Concierge.Display.Enums;
+    using Concierge.Services;
 
     /// <summary>
     /// Interaction logic for HitDiceDisplay.xaml.
@@ -107,6 +108,7 @@ namespace Concierge.Display.Controls
                 return;
             }
 
+            ConciergeSoundService.UpdateValue();
             var vitality = this.GetVitality();
             if (vitality.Health.IsFull)
             {

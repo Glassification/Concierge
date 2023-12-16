@@ -197,6 +197,12 @@
                                                 IconKind="PencilBoxMultiple"
                                                 IconColor="#ffd166"/>
                                             <local:PopupButton
+                                                x:Name="ExportAppDataMenuItem"
+                                                Label="Export AppData..."
+                                                Shortcut=""
+                                                IconKind="Export"
+                                                IconColor="#ffd166"/>
+                                            <local:PopupButton
                                                 x:Name="SearchMenuItem"
                                                 Label="Search..."
                                                 Shortcut="Ctrl+F"

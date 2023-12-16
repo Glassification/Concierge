@@ -127,6 +127,10 @@ namespace Concierge.Display.Windows
                 typeof(ConcentrationCheckWindow),
                 Program.CcsFile.Character.SavingThrows.Constitution,
                 damage);
+            var status = $"{(this.abilitySave == AbilitySave.Failure ? "Lost" : "Kept")} concentration on {concentratedSpell.Name}.";
+
+            Program.Logger.Info(status);
+            Program.MainWindow?.DisplayStatusText(status);
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)

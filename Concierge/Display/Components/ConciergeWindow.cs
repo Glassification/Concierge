@@ -38,7 +38,6 @@ namespace Concierge.Display.Components
             this.Left = 0;
             this.Top = 0;
             this.Background = ConciergeBrushes.WindowBackground;
-            this.HandleEnter = false;
             this.Description = new NotifiableText();
             this.FocusedText = string.Empty;
 
@@ -64,11 +63,11 @@ namespace Concierge.Display.Components
 
         protected ConciergeWindow? NonBlockingWindow { get; set; }
 
-        protected bool HandleEnter { get; set; }
-
         protected NotifiableText Description { get; set; }
 
         protected string FocusedText { get; set; }
+
+        protected bool CloseOnEnter { get; set; }
 
         public virtual bool ShowAdd<T>(T item)
         {
@@ -191,15 +190,18 @@ namespace Concierge.Display.Components
 
         protected void UseRoundedCorners()
         {
-            if (!Program.IsWindows11)
+            if (Program.IsWindows11)
             {
-                return;
+                IntPtr hWnd = new WindowInteropHelper(GetWindow(this)).EnsureHandle();
+                var attribute = DWMWINDOWATTRIBUTE.DWMWA_WINDOW_CORNER_PREFERENCE;
+                var preference = DWM_WINDOW_CORNER_PREFERENCE.DWMWCP_ROUND;
+                Marshal.ThrowExceptionForHR(DwmSetWindowAttribute(hWnd, attribute, ref preference, sizeof(uint)));
             }
-
-            IntPtr hWnd = new WindowInteropHelper(GetWindow(this)).EnsureHandle();
-            var attribute = DWMWINDOWATTRIBUTE.DWMWA_WINDOW_CORNER_PREFERENCE;
-            var preference = DWM_WINDOW_CORNER_PREFERENCE.DWMWCP_ROUND;
-            Marshal.ThrowExceptionForHR(DwmSetWindowAttribute(hWnd, attribute, ref preference, sizeof(uint)));
+            else
+            {
+                this.BorderBrush = ConciergeBrushes.Border;
+                this.BorderThickness = new Thickness(1);
+            }
         }
 
         protected void SetMouseOverEvents(UIElement element)
@@ -254,6 +256,15 @@ namespace Concierge.Display.Components
                     Program.Logger.Info($"{e.Key} key pressed.");
                     this.Result = ConciergeWindowResult.Exit;
                     this.CloseConciergeWindow();
+                    break;
+                case Key.Enter:
+                    if (this.CloseOnEnter)
+                    {
+                        Program.Logger.Info($"{e.Key} key pressed.");
+                        this.Result = ConciergeWindowResult.OK;
+                        this.CloseConciergeWindow();
+                    }
+
                     break;
             }
         }

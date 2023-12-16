@@ -25,7 +25,6 @@ namespace Concierge.Display.Utility
 
             this.Console = new ConciergeConsole();
             this.DataContext = this.Console;
-            this.HandleEnter = true;
             this.CaretChanging = false;
 
             this.Console.Exited += this.ConciergeConsole_Exited;

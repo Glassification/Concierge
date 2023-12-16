@@ -235,6 +235,8 @@ namespace Concierge.Display.Pages
 
         private void EditHealth_Click(object sender, RoutedEventArgs e)
         {
+            ConciergeSoundService.TapNavigation();
+
             ConciergeWindowService.ShowEdit(
                 Program.CcsFile.Character.Vitality.Health,
                 typeof(HealthWindow),
@@ -245,6 +247,8 @@ namespace Concierge.Display.Pages
 
         private void HitDiceDisplay_EditClicked(object sender, RoutedEventArgs e)
         {
+            ConciergeSoundService.TapNavigation();
+
             ConciergeWindowService.ShowEdit(
                 Program.CcsFile.Character.Vitality.HitDice,
                 typeof(HitDiceWindow),
@@ -255,6 +259,8 @@ namespace Concierge.Display.Pages
 
         private void WealthDisplay_EditClicked(object sender, RoutedEventArgs e)
         {
+            ConciergeSoundService.TapNavigation();
+
             ConciergeWindowService.ShowEdit(
                 Program.CcsFile.Character.Wealth,
                 sender,
@@ -266,6 +272,8 @@ namespace Concierge.Display.Pages
 
         private void Grid_SavingThrowMouseUp(object sender, MouseButtonEventArgs e)
         {
+            ConciergeSoundService.TapNavigation();
+
             ConciergeWindowService.ShowEdit(
                 Program.CcsFile.Character.SavingThrows,
                 typeof(SavingThrowWindow),
@@ -276,6 +284,8 @@ namespace Concierge.Display.Pages
 
         private void Grid_SkillMenuMouseUp(object sender, MouseButtonEventArgs e)
         {
+            ConciergeSoundService.TapNavigation();
+
             ConciergeWindowService.ShowEdit(
                 Program.CcsFile.Character.Skills,
                 typeof(SkillWindow),
@@ -286,6 +296,8 @@ namespace Concierge.Display.Pages
 
         private void Label_EditClicked(object sender, RoutedEventArgs e)
         {
+            ConciergeSoundService.TapNavigation();
+
             ConciergeWindowService.ShowEdit(
                 Program.CcsFile.Character.Characteristic.Senses,
                 typeof(SensesWindow),
@@ -296,6 +308,8 @@ namespace Concierge.Display.Pages
 
         private void AttributeDisplay_EditClicked(object sender, RoutedEventArgs e)
         {
+            ConciergeSoundService.TapNavigation();
+
             ConciergeWindowService.ShowEdit(
                 Program.CcsFile.Character.Characteristic.Attributes,
                 typeof(AttributesWindow),
@@ -337,6 +351,8 @@ namespace Concierge.Display.Pages
 
         private void ArmorClass_MouseDown(object sender, MouseButtonEventArgs e)
         {
+            ConciergeSoundService.TapNavigation();
+
             ConciergeWindowService.ShowEdit(
                 Program.CcsFile.Character.Equipment.Defense,
                 typeof(ArmorWindow),
@@ -347,6 +363,8 @@ namespace Concierge.Display.Pages
 
         private void AllProficiency_MouseDown(object sender, MouseButtonEventArgs e)
         {
+            ConciergeSoundService.UpdateValue();
+
             var skill = Program.CcsFile.Character.Skills;
             var skillCopy = skill.DeepCopy();
             var state = skill.GetProficiencyState();
@@ -359,6 +377,8 @@ namespace Concierge.Display.Pages
 
         private void AllExpertise_MouseDown(object sender, MouseButtonEventArgs e)
         {
+            ConciergeSoundService.UpdateValue();
+
             var skill = Program.CcsFile.Character.Skills;
             var skillCopy = skill.DeepCopy();
             var state = skill.GetExpertiseState();
@@ -371,6 +391,8 @@ namespace Concierge.Display.Pages
 
         private void SaveProficiency_MouseDown(object sender, MouseButtonEventArgs e)
         {
+            ConciergeSoundService.UpdateValue();
+
             var save = Program.CcsFile.Character.SavingThrows;
             var saveCopy = save.DeepCopy();
             var state = save.GetProficiencyState();

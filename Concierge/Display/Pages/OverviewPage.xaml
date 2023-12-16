@@ -134,7 +134,7 @@
                     BorderThickness="5"
                     CornerRadius="10"
                     Margin="5">
-                    <Grid Background="#2B2B2B">
+                    <Grid Background="#2B2B2B"  Margin="-1">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="16*"/>
                             <RowDefinition Height="14*"/>
@@ -235,7 +235,7 @@
                     BorderThickness="5"
                     CornerRadius="10"
                     Margin="5">
-                    <Grid Background="#2B2B2B">
+                    <Grid Background="#2B2B2B" Margin="-1">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="6.4*"/>
                             <RowDefinition Height="5.2*"/>

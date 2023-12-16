@@ -25,8 +25,18 @@ namespace Concierge.Persistence
         public const string SaveFilter = "CCS (*.ccs)|*.ccs";
 
         /// <summary>
+        /// The file filter used for saving ZIP files.
+        /// </summary>
+        public const string ZipFilter = "ZIP (*.zip)|*.zip";
+
+        /// <summary>
         /// The default file name used when creating a new CCS (Concierge Character Sheet) file.
         /// </summary>
         public const string DefaultFileName = "New Character.ccs";
+
+        /// <summary>
+        /// The default file name used when creating a new AppData ZIP file.
+        /// </summary>
+        public const string DefaultAppDataFileName = "AppData.zip";
     }
 }

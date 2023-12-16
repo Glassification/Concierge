@@ -38,6 +38,7 @@ namespace Concierge.Display.Controls
             this.ConsoleMenuItem.AddClickEvent(this.MenuButton_Click);
             this.CustomItemsMenuItem.AddClickEvent(this.MenuButton_Click);
             this.SearchMenuItem.AddClickEvent(this.MenuButton_Click);
+            this.ExportAppDataMenuItem.AddClickEvent(this.MenuButton_Click);
             this.SettingsMenuItem.AddClickEvent(this.MenuButton_Click);
         }
 

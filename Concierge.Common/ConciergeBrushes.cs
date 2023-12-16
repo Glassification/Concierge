@@ -78,6 +78,9 @@ namespace Concierge.Common
 
             Platinum = new SolidColorBrush(ConciergeColors.Platinum);
             Platinum.Freeze();
+
+            Border = new SolidColorBrush(ConciergeColors.Border);
+            Border.Freeze();
         }
 
         public static SolidColorBrush WindowBackground { get; }
@@ -123,5 +126,7 @@ namespace Concierge.Common
         public static SolidColorBrush Gold { get; }
 
         public static SolidColorBrush Platinum { get; }
+
+        public static SolidColorBrush Border { get; }
     }
 }
