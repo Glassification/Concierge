@@ -15,6 +15,8 @@ namespace Concierge.Common
         {
             WindowBackground = Color.FromArgb(255, 32, 32, 32);
 
+            WindowMenuBar = Color.FromArgb(255, 28, 28, 28);
+
             LightCarryCapacity = Color.FromArgb(255, 216, 228, 188);
 
             MediumCarryCapacity = Color.FromArgb(255, 252, 213, 180);
@@ -61,6 +63,8 @@ namespace Concierge.Common
         }
 
         public static Color WindowBackground { get; }
+
+        public static Color WindowMenuBar { get; }
 
         public static Color Verdigris { get; }
 

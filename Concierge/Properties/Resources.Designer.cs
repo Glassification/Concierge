@@ -715,24 +715,12 @@ namespace Concierge.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Artificer
-        ///Barbarian
-        ///Bard
-        ///Blood Hunter
-        ///Cleric
-        ///Druid
-        ///Fighter
-        ///Monk
-        ///Paladin
-        ///Ranger
-        ///Rogue
-        ///Sorcerer
-        ///Warlock
-        ///Wizard.
+        ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static string ClassName {
+        internal static byte[] Class {
             get {
-                return ResourceManager.GetString("ClassName", resourceCulture);
+                object obj = ResourceManager.GetObject("Class", resourceCulture);
+                return ((byte[])(obj));
             }
         }
         
@@ -1721,31 +1709,12 @@ namespace Concierge.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Aarakocra
-        ///Aasimar
-        ///Bugbear
-        ///Dragonborn
-        ///Dwarf
-        ///Elf
-        ///Genasi
-        ///Gnome
-        ///Goblin
-        ///Goliath
-        ///Half-Elf
-        ///Half-Orc
-        ///Halfling
-        ///Human
-        ///Kenku
-        ///Tabaxi
-        ///Tiefling
-        ///Tortle
-        ///Triton
-        ///Warforged
-        ///Yuan-ti-Pureblood.
+        ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static string Race {
+        internal static byte[] Race {
             get {
-                return ResourceManager.GetString("Race", resourceCulture);
+                object obj = ResourceManager.GetObject("Race", resourceCulture);
+                return ((byte[])(obj));
             }
         }
         

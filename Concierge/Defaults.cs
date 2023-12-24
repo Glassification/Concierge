@@ -36,14 +36,14 @@ namespace Concierge
             MagicClasses = new ReadOnlyCollection<MagicClass>(defaultListReadWriter.ReadJson<List<MagicClass>>(Properties.Resources.MagicClass));
             StatusEffects = new ReadOnlyCollection<StatusEffect>(defaultListReadWriter.ReadJson<List<StatusEffect>>(Properties.Resources.StatusEffect));
             Armor = new ReadOnlyCollection<Armor>(defaultListReadWriter.ReadJson<List<Armor>>(Properties.Resources.Armor));
+            Classes = new ReadOnlyCollection<DetailedItem>(defaultListReadWriter.ReadJson<List<DetailedItem>>(Properties.Resources.Class));
+            Races = new ReadOnlyCollection<DetailedItem>(defaultListReadWriter.ReadJson<List<DetailedItem>>(Properties.Resources.Race));
 
             AutosaveIntervals = new ReadOnlyCollection<int>(defaultListReadWriter.ReadList<int>(Properties.Resources.AutosaveInterval));
             Alignment = new ReadOnlyCollection<string>(defaultListReadWriter.ReadList<string>(Properties.Resources.Alignment));
             Backgrounds = new ReadOnlyCollection<string>(defaultListReadWriter.ReadList<string>(Properties.Resources.Background));
-            Races = new ReadOnlyCollection<string>(defaultListReadWriter.ReadList<string>(Properties.Resources.Race));
             Levels = new ReadOnlyCollection<int>(defaultListReadWriter.ReadList<int>(Properties.Resources.LevelExp));
             ProficiencyLevels = new ReadOnlyCollection<int>(defaultListReadWriter.ReadList<int>(Properties.Resources.ProficiencyLevel));
-            Classes = new ReadOnlyCollection<string>(defaultListReadWriter.ReadList<string>(Properties.Resources.ClassName));
             Tools = new ReadOnlyCollection<string>(defaultListReadWriter.ReadList<string>(Properties.Resources.Tool));
             Games = new ReadOnlyCollection<string>(defaultListReadWriter.ReadList<string>(Properties.Resources.Game));
             Instruments = new ReadOnlyCollection<string>(defaultListReadWriter.ReadList<string>(Properties.Resources.Instrument));
@@ -66,13 +66,13 @@ namespace Concierge
 
         public static ReadOnlyCollection<string> Backgrounds { get; }
 
-        public static ReadOnlyCollection<string> Races { get; }
+        public static ReadOnlyCollection<DetailedItem> Races { get; }
 
         public static ReadOnlyCollection<int> Levels { get; }
 
         public static ReadOnlyCollection<int> ProficiencyLevels { get; }
 
-        public static ReadOnlyCollection<string> Classes { get; }
+        public static ReadOnlyCollection<DetailedItem> Classes { get; }
 
         public static ReadOnlyCollection<MagicClass> MagicClasses { get; }
 

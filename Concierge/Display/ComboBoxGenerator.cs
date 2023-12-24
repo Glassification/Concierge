@@ -23,47 +23,6 @@ namespace Concierge.Display
         private static readonly double[] fontSizes = [8, 9, 10, 11, 12, 14, 16, 18, 20, 22, 24, 26, 28, 36, 48, 72];
         private static readonly FontFamily[] fontFamilies = [.. Fonts.SystemFontFamilies.OrderBy(f => f.Source)];
 
-        private static readonly Brush[] raceBrushes = [
-            Brushes.MediumPurple,
-            Brushes.LightGreen,
-            Brushes.IndianRed,
-            Brushes.Goldenrod,
-            Brushes.Cyan,
-            Brushes.OrangeRed,
-            Brushes.LightPink,
-            Brushes.YellowGreen,
-            Brushes.Magenta,
-            Brushes.Orange,
-            Brushes.Coral,
-            Brushes.Silver,
-            Brushes.SteelBlue,
-            Brushes.Yellow,
-            Brushes.Silver,
-            Brushes.Silver,
-            Brushes.MediumSeaGreen,
-            Brushes.Silver,
-            Brushes.Silver,
-            Brushes.Silver,
-            Brushes.Silver,
-        ];
-
-        private static readonly Brush[] classBrushes = [
-            Brushes.MediumPurple,
-            Brushes.LightGreen,
-            Brushes.IndianRed,
-            Brushes.Goldenrod,
-            Brushes.Cyan,
-            Brushes.OrangeRed,
-            Brushes.LightPink,
-            Brushes.YellowGreen,
-            Brushes.Magenta,
-            Brushes.Orange,
-            Brushes.Coral,
-            Brushes.SteelBlue,
-            Brushes.Yellow,
-            Brushes.MediumSeaGreen,
-        ];
-
         /// <summary>
         /// Generates a list of DetailedComboBoxItemControl using default items and custom items, sorted by their name.
         /// </summary>
@@ -382,12 +341,12 @@ namespace Concierge.Display
             return items;
         }
 
-        public static List<ComboBoxItemControl> RacesComboBox()
+        public static List<DetailedComboBoxItemControl> RacesComboBox()
         {
-            var items = new List<ComboBoxItemControl>();
-            for (int i = 0; i < Defaults.Races.Count; i++)
+            var items = new List<DetailedComboBoxItemControl>();
+            foreach (var race in Defaults.Races)
             {
-                items.Add(new ComboBoxItemControl(PackIconKind.FaceWomanProfile, raceBrushes[i], Defaults.Races[i]));
+                items.Add(new DetailedComboBoxItemControl(race.Icon, race.IconColor, race.Name, race.Information));
             }
 
             return items;
@@ -396,13 +355,13 @@ namespace Concierge.Display
         public static List<ComboBoxItemControl> SubRacesComboBox()
         {
             var items = new List<ComboBoxItemControl>();
-            for (int i = 0; i < Defaults.Races.Count; i++)
+            foreach (var race in Defaults.Races)
             {
                 foreach (var subRace in Defaults.Subrace)
                 {
-                    if (subRace.Name.Equals(Defaults.Races[i]))
+                    if (subRace.Name.Equals(race.Name))
                     {
-                        items.Add(new ComboBoxItemControl(PackIconKind.FaceWomanProfile, raceBrushes[i], subRace.ToString()));
+                        items.Add(new ComboBoxItemControl(PackIconKind.FaceWomanProfile, race.IconColor, subRace.ToString()));
                     }
                 }
             }
@@ -413,9 +372,20 @@ namespace Concierge.Display
         public static List<ComboBoxItemControl> ClassesComboBox()
         {
             var items = new List<ComboBoxItemControl>();
-            for (int i = 0; i < Defaults.Classes.Count; i++)
+            foreach (var classes in Defaults.Classes)
             {
-                items.Add(new ComboBoxItemControl(PackIconKind.Notebook, classBrushes[i], Defaults.Classes[i]));
+                items.Add(new ComboBoxItemControl(PackIconKind.Notebook, classes.IconColor, classes.Name));
+            }
+
+            return items;
+        }
+
+        public static List<DetailedComboBoxItemControl> DetailedClassesComboBox()
+        {
+            var items = new List<DetailedComboBoxItemControl>();
+            foreach (var classes in Defaults.Classes)
+            {
+                items.Add(new DetailedComboBoxItemControl(classes.Icon, classes.IconColor, classes.Name, classes.Information));
             }
 
             return items;
@@ -424,13 +394,13 @@ namespace Concierge.Display
         public static List<ComboBoxItemControl> SubClassesComboBox()
         {
             var items = new List<ComboBoxItemControl>();
-            for (int i = 0; i < Defaults.Classes.Count; i++)
+            foreach (var classes in Defaults.Classes)
             {
                 foreach (var subClass in Defaults.Subclass)
                 {
-                    if (subClass.Name.Equals(Defaults.Classes[i]))
+                    if (subClass.Name.Equals(classes.Name))
                     {
-                        items.Add(new ComboBoxItemControl(PackIconKind.Notebook, classBrushes[i], subClass.ToString()));
+                        items.Add(new ComboBoxItemControl(PackIconKind.Notebook, classes.IconColor, subClass.ToString()));
                     }
                 }
             }

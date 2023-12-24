@@ -16,6 +16,9 @@ namespace Concierge.Common
             WindowBackground = new SolidColorBrush(ConciergeColors.WindowBackground);
             WindowBackground.Freeze();
 
+            WindowMenuBar = new SolidColorBrush(ConciergeColors.WindowMenuBar);
+            WindowMenuBar.Freeze();
+
             LightCarryCapacity = new SolidColorBrush(ConciergeColors.LightCarryCapacity);
             LightCarryCapacity.Freeze();
 
@@ -84,6 +87,8 @@ namespace Concierge.Common
         }
 
         public static SolidColorBrush WindowBackground { get; }
+
+        public static SolidColorBrush WindowMenuBar { get; }
 
         public static SolidColorBrush Verdigris { get; }
 

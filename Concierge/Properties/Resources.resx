@@ -313,8 +313,8 @@
   <data name="Category" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Constants\Category.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
-  <data name="ClassName" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\Constants\ClassName.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  <data name="Class" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Json\Class.json;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="ClassResourceWindow_NotesTextBox" xml:space="preserve">
     <value>Any extra information to help Danial so he remembers to rage.</value>
@@ -626,7 +626,7 @@
     <value>Just like the common Antelope can have differences within their species, some races also have subraces, such as mountain dwarf or wood elf.</value>
   </data>
   <data name="Race" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\Constants\Race.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>Resources\Json\Race.json;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="Resource" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Json\Resource.json;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>

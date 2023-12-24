@@ -65,6 +65,7 @@ namespace Concierge.Character.Equipable
         {
             if (!equipable.IsEquipped)
             {
+                equipable.IsEquipped = true;
                 equipable.EquipmentSlot = slot;
             }
         }
@@ -73,6 +74,7 @@ namespace Concierge.Character.Equipable
         {
             if (equipable.IsEquipped)
             {
+                equipable.IsEquipped = false;
                 equipable.EquipmentSlot = EquipmentSlot.None;
                 equipable.Attuned = false;
             }

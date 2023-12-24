@@ -1,0 +1,116 @@
+[
+  {
+    "Name": "Aarakocra",
+    "Information": "A winged people who originated on the Elemental Plane of Air",
+    "Icon": 2745,
+    "IconColor": "#FF9370DB"
+  },
+  {
+    "Name": "Aasimar",
+    "Information": "Mortals who carry a spark of the Upper Planes within their souls",
+    "Icon": 2745,
+    "IconColor": "#FF90EE90"
+  },
+  {
+    "Name": "Bugbear",
+    "Information": "Neither bugs nor bears, they are the cousins of goblins and hobgoblins",
+    "Icon": 2745,
+    "IconColor": "#FFCD5C5C"
+  },
+  {
+    "Name": "Dragonborn",
+    "Information": "Humanoids shaped by draconic gods or the dragons themselves",
+    "Icon": 2745,
+    "IconColor": "#FFDAA520"
+  },
+  {
+    "Name": "Dwarf",
+    "Information": "Commitment to clan, and a burning hatred of goblins and orcs",
+    "Icon": 2745,
+    "IconColor": "#FF00FFFF"
+  },
+  {
+    "Name": "Elf",
+    "Information": "A magical people of otherworldly grace and ethereal beauty",
+    "Icon": 2745,
+    "IconColor": "#FFFF4500"
+  },
+  {
+    "Name": "Genasi",
+    "Information": "Planetouched humans, infused with the power of the elements",
+    "Icon": 2745,
+    "IconColor": "#FFFFB6C1"
+  },
+  {
+    "Name": "Gnome",
+    "Information": "Enjoy every moment of invention, exploration, investigation, and creation",
+    "Icon": 2745,
+    "IconColor": "#FF9ACD32"
+  },
+  {
+    "Name": "Goblin",
+    "Information": "A subterranean folk, they can be found in every corner of the multiverse",
+    "Icon": 2745,
+    "IconColor": "#FFFF00FF"
+  },
+  {
+    "Name": "Goliath",
+    "Information": "Distantly related to giants and infused with supernatural essence",
+    "Icon": 2745,
+    "IconColor": "#FFFFA500"
+  },
+  {
+    "Name": "Half-Elf",
+    "Information": "Walking in two worlds but truly belonging to neither",
+    "Icon": 2745,
+    "IconColor": "#FFFF7F50"
+  },
+  {
+    "Name": "Half-Orc",
+    "Information": "When alliances between humans and orcs are sealed by marriages",
+    "Icon": 2745,
+    "IconColor": "#FFC0C0C0"
+  },
+  {
+    "Name": "Halfling",
+    "Information": "The comforts of home are the goals of most halflings' lives",
+    "Icon": 2745,
+    "IconColor": "#FF4682B4"
+  },
+  {
+    "Name": "Human",
+    "Information": "The youngest of the common races, late to arrive on the world scene",
+    "Icon": 2745,
+    "IconColor": "#FFFFFF00"
+  },
+  {
+    "Name": "Kenku",
+    "Information": "Feathered folk who resemble ravens, blessed with keen observation",
+    "Icon": 2745,
+    "IconColor": "#FFC0C0C0"
+  },
+  {
+    "Name": "Tabaxi",
+    "Information": "Created by the Cat Lord to blend the qualities of humanoids and cats",
+    "Icon": 2745,
+    "IconColor": "#FFC0C0C0"
+  },
+  {
+    "Name": "Tiefling",
+    "Information": "Their appearance and nature are not their fault but the result of an ancient sin",
+    "Icon": 2745,
+    "IconColor": "#FF3CB371"
+  },
+  {
+    "Name": "Tortle",
+    "Information": "Tortles have a saying: “We wear our homes on our backs.” ",
+    "Icon": 2745,
+    "IconColor": "#FFC0C0C0"
+  },
+  {
+    "Name": "Triton",
+    "Information": "Originally from the Elemental Plane of Water",
+    "Icon": 2745,
+    "IconColor": "#FFC0C0C0"
+  }
+]

@@ -10,9 +10,11 @@ namespace Concierge.Display.Windows
 
     using Concierge.Character;
     using Concierge.Commands;
+    using Concierge.Common;
     using Concierge.Common.Extensions;
     using Concierge.Common.Utilities;
     using Concierge.Display.Components;
+    using Concierge.Display.Controls;
     using Concierge.Display.Enums;
     using Concierge.Display.Utility;
     using Concierge.Services;
@@ -35,9 +37,9 @@ namespace Concierge.Display.Windows
             this.RaceComboBox.ItemsSource = ComboBoxGenerator.RacesComboBox();
             this.SubRaceComboBox.ItemsSource = ComboBoxGenerator.SubRacesComboBox();
             this.BackgroundComboBox.ItemsSource = ComboBoxGenerator.BackgroundsComboBox();
-            this.Class1Class.ItemsSource = ComboBoxGenerator.ClassesComboBox();
-            this.Class2Class.ItemsSource = ComboBoxGenerator.ClassesComboBox();
-            this.Class3Class.ItemsSource = ComboBoxGenerator.ClassesComboBox();
+            this.Class1Class.ItemsSource = ComboBoxGenerator.DetailedClassesComboBox();
+            this.Class2Class.ItemsSource = ComboBoxGenerator.DetailedClassesComboBox();
+            this.Class3Class.ItemsSource = ComboBoxGenerator.DetailedClassesComboBox();
             this.Class1Subclass.ItemsSource = ComboBoxGenerator.SubClassesComboBox();
             this.Class2Subclass.ItemsSource = ComboBoxGenerator.SubClassesComboBox();
             this.Class3Subclass.ItemsSource = ComboBoxGenerator.SubClassesComboBox();
@@ -111,6 +113,23 @@ namespace Concierge.Display.Windows
             this.CloseConciergeWindow();
         }
 
+        private static void DisableAndBlank(ConciergeComboBox comboBox)
+        {
+            comboBox.Text = string.Empty;
+            DisplayUtility.SetControlEnableState(comboBox, false);
+        }
+
+        private static void DisableAndBlank(IntegerUpDownControl integerUpDown)
+        {
+            integerUpDown.Value = 0;
+            DisplayUtility.SetControlEnableState(integerUpDown, false);
+        }
+
+        private static void SetIntegerUpDownMax(IntegerUpDownControl control, int other1, int other2)
+        {
+            control.Maximum = Constants.MaxLevel - other1 - other2;
+        }
+
         private void FillFields()
         {
             this.IsDrawing = true;
@@ -129,6 +148,14 @@ namespace Concierge.Display.Windows
             this.Class1Subclass.Text = this.CharacterProperties.Class1.Subclass;
             this.Class2Subclass.Text = this.CharacterProperties.Class2.Subclass;
             this.Class3Subclass.Text = this.CharacterProperties.Class3.Subclass;
+
+            this.CheckClass1State(this.Class1Class.Text);
+            this.CheckClass2State(this.Class2Class.Text);
+            this.CheckClass3State(this.Class3Class.Text);
+
+            SetIntegerUpDownMax(this.Class1Level, this.Class2Level.Value, this.Class3Level.Value);
+            SetIntegerUpDownMax(this.Class2Level, this.Class1Level.Value, this.Class3Level.Value);
+            SetIntegerUpDownMax(this.Class3Level, this.Class2Level.Value, this.Class1Level.Value);
 
             this.IsDrawing = false;
         }
@@ -153,6 +180,55 @@ namespace Concierge.Display.Windows
             this.CharacterProperties.Class3.Subclass = this.Class3Subclass.Text;
 
             Program.UndoRedoService.AddCommand(new EditCommand<CharacterProperties>(this.CharacterProperties, oldItem, ConciergePage.None));
+        }
+
+        private void CheckClass1State(string name)
+        {
+            if (name.IsNullOrWhiteSpace())
+            {
+                DisableAndBlank(this.Class1Subclass);
+                DisableAndBlank(this.Class2Level);
+                DisableAndBlank(this.Class2Class);
+                DisableAndBlank(this.Class2Subclass);
+                DisableAndBlank(this.Class3Level);
+                DisableAndBlank(this.Class3Class);
+                DisableAndBlank(this.Class3Subclass);
+            }
+            else
+            {
+                DisplayUtility.SetControlEnableState(this.Class1Subclass, true);
+                DisplayUtility.SetControlEnableState(this.Class2Level, true);
+                DisplayUtility.SetControlEnableState(this.Class2Class, true);
+            }
+        }
+
+        private void CheckClass2State(string name)
+        {
+            if (name.IsNullOrWhiteSpace())
+            {
+                DisableAndBlank(this.Class2Subclass);
+                DisableAndBlank(this.Class3Level);
+                DisableAndBlank(this.Class3Class);
+                DisableAndBlank(this.Class3Subclass);
+            }
+            else
+            {
+                DisplayUtility.SetControlEnableState(this.Class2Subclass, true);
+                DisplayUtility.SetControlEnableState(this.Class3Level, true);
+                DisplayUtility.SetControlEnableState(this.Class3Class, true);
+            }
+        }
+
+        private void CheckClass3State(string name)
+        {
+            if (name.IsNullOrWhiteSpace())
+            {
+                DisableAndBlank(this.Class3Subclass);
+            }
+            else
+            {
+                DisplayUtility.SetControlEnableState(this.Class3Subclass, true);
+            }
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
@@ -225,6 +301,63 @@ namespace Concierge.Display.Windows
             {
                 this.NameTextBox.Text = name;
             }
+        }
+
+        private void Class1Class_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (sender is ConciergeComboBox comboBox && comboBox.SelectedValue is ComboBoxItemControl item)
+            {
+                this.CheckClass1State(item.Text);
+            }
+        }
+
+        private void Class2Class_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (sender is ConciergeComboBox comboBox && comboBox.SelectedValue is ComboBoxItemControl item)
+            {
+                this.CheckClass2State(item.Text);
+            }
+        }
+
+        private void Class3Class_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (sender is ConciergeComboBox comboBox && comboBox.SelectedValue is ComboBoxItemControl item)
+            {
+                this.CheckClass3State(item.Text);
+            }
+        }
+
+        private void Class1Class_LostFocus(object sender, RoutedEventArgs e)
+        {
+            this.CheckClass1State(this.Class1Class.Text);
+        }
+
+        private void Class2Class_LostFocus(object sender, RoutedEventArgs e)
+        {
+            this.CheckClass2State(this.Class2Class.Text);
+        }
+
+        private void Class3Class_LostFocus(object sender, RoutedEventArgs e)
+        {
+            this.CheckClass3State(this.Class3Class.Text);
+        }
+
+        private void Class1Level_ValueChanged(object sender, RoutedEventArgs e)
+        {
+            SetIntegerUpDownMax(this.Class2Level, this.Class1Level.Value, this.Class3Level.Value);
+            SetIntegerUpDownMax(this.Class3Level, this.Class1Level.Value, this.Class2Level.Value);
+        }
+
+        private void Class2Level_ValueChanged(object sender, RoutedEventArgs e)
+        {
+            SetIntegerUpDownMax(this.Class1Level, this.Class2Level.Value, this.Class3Level.Value);
+            SetIntegerUpDownMax(this.Class3Level, this.Class1Level.Value, this.Class2Level.Value);
+        }
+
+        private void Class3Level_ValueChanged(object sender, RoutedEventArgs e)
+        {
+            SetIntegerUpDownMax(this.Class2Level, this.Class1Level.Value, this.Class3Level.Value);
+            SetIntegerUpDownMax(this.Class1Level, this.Class3Level.Value, this.Class2Level.Value);
         }
     }
 }

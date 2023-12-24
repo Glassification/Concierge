@@ -55,12 +55,8 @@ namespace Concierge.Services
         private static void RunDefinitions()
         {
             var character = Program.CcsFile.Character;
-
-            if (character.Properties.Class1.Level > 0)
-            {
-                character.Characteristic.Proficiencies.AddRange(LevelingMap.GetProficiencies(character.Properties.Class1.Name, false));
-                character.SavingThrows.SetProficiency(LevelingMap.GetSavingThrows(character.Properties.Class1.Name));
-            }
+            character.Characteristic.Proficiencies.AddRange(LevelingMap.GetProficiencies(character.Properties.Class1.Name, false));
+            character.SavingThrows.SetProficiency(LevelingMap.GetSavingThrows(character.Properties.Class1.Name));
 
             if (character.Properties.Class2.Level > 0)
             {
@@ -88,13 +84,13 @@ namespace Concierge.Services
         {
             this.NextSetupStep(typeof(PropertiesWindow), "Skip Section");
             this.NextSetupStep(typeof(MagicClassWindow), "Continue");
+            this.NextSetupStep(typeof(AttributesWindow), "Skip Section");
             this.NextSetupStep(typeof(LevelUpWindow), "Skip Section");
             RunDefinitions();
-            this.NextSetupStep(typeof(AttributesWindow), "Skip Section");
             this.NextSetupStep(typeof(SensesWindow), "Skip Section");
             this.NextSetupStep(typeof(HealthWindow), "Skip Section");
             this.NextSetupStep(typeof(HitDiceWindow), "Skip Section");
-            this.NextSetupStep(typeof(WealthWindow), "Skip Section");
+            this.NextSetupStep(typeof(WealthWindow), "Continue");
             this.NextSetupStep(typeof(AppearanceWindow), "Skip Section");
             this.NextSetupStep(typeof(PersonalityWindow), "Skip Section");
             this.NextSetupStep(typeof(LanguagesWindow), "Continue");

@@ -20,12 +20,12 @@
             <RowDefinition Height="70"/>
         </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0">
+        <Grid Grid.Row="0" Background="#1C1C1C">
             <TextBlock
                 Text="Concentration Check"
                 FontSize="35"
                 Foreground="#227EA9"
-                Margin="30, 0, 0, 0"
+                Margin="30, -3, 0, 0"
                 FontWeight="Bold"
                 VerticalAlignment="Center"
                 HorizontalAlignment="Left"/>

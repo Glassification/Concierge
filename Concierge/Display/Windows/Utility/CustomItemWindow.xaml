@@ -19,7 +19,7 @@
         </Grid.RowDefinitions>
 
         <!--Header-->
-        <Grid Grid.Row="0">
+        <Grid Grid.Row="0" Background="#1C1C1C">
             <StackPanel
                 Orientation="Horizontal"
                 HorizontalAlignment="Left">
@@ -29,7 +29,7 @@
                     Foreground="#227EA9"
                     FontSize="35"
                     VerticalAlignment="Center"
-                    Margin="30, 0, 0, 0"
+                    Margin="30, -3, 0, 0"
                     FontWeight="Bold"
                     FontFamily="Segoe UI SemiLight"/>
                 <components:ConciergeTextBlock 
@@ -37,7 +37,7 @@
                     Text="(69 Items)"
                     FontSize="18"
                     VerticalAlignment="Center"
-                    Margin="25, 5, 0, 0"/>
+                    Margin="25, 2, 0, 0"/>
             </StackPanel>
 
             <StackPanel

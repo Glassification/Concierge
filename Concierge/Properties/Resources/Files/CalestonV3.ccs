@@ -2279,7 +2279,7 @@
             "UnitType": 0,
             "Measurement": 1
           },
-          "IsEquipped": false,
+          "IsEquipped": true,
           "EquipmentSlot": 1
         },
         {
@@ -2759,7 +2759,7 @@
             "UnitType": 0,
             "Measurement": 1
           },
-          "IsEquipped": false,
+          "IsEquipped": true,
           "EquipmentSlot": 0
         },
         {
@@ -2911,7 +2911,7 @@
         {
           "Amount": 1,
           "Attuned": false,
-          "IsEquipped": false,
+          "IsEquipped": true,
           "EquipmentSlot": 1,
           "Ability": 2,
           "CoinType": 3,
@@ -3061,13 +3061,13 @@
       ]
     }
   },
-  "Hash": "3DD303790612E3BE2AFC683EB06950FCA563E79873B4B2BB300DC0379BBC94C7",
+  "Hash": "2AD8F7E5306AD8A8D6063B420981B6567B3EC0963FDCCDCFF49A65235B6EF327",
   "OriginalCreationDate": "Saturday, 13 May 2023 06:48:08 PM",
-  "LastSaveDate": "2023-12-16T13:00:54.4888654-06:00",
+  "LastSaveDate": "2023-12-17T13:56:08.3692201-06:00",
   "Version": {
     "Major": 5,
     "Minor": 5,
-    "Patch": 9
+    "Patch": 11
   },
   "IsEmpty": false
 }

@@ -22,7 +22,7 @@
         </Grid.RowDefinitions>
 
         <!--Header-->
-        <Grid Grid.Row="0">
+        <Grid Grid.Row="0" Background="#1C1C1C">
             <TextBlock
                 Text="Add Language"
                 x:Name="HeaderTextBlock"
@@ -30,7 +30,7 @@
                 FontSize="35"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Center"
-                Margin="30, 0, 0, 0"
+                Margin="30, -3, 0, 0"
                 FontWeight="Bold"/>
 
             <StackPanel
@@ -43,7 +43,7 @@
                     Foreground="White"
                     ToolTip="Save As Custom Item"
                     Click="SaveButton_Click">
-                    <materialDesign:PackIcon Kind="ContentSaveOutline" Width="25" Height="25"/>
+                    <materialDesign:PackIcon Kind="ContentSavePlusOutline"  Width="25" Height="25"/>
                 </components:ConciergeDesignButton>
                 <components:ConciergeDesignButton 
                     Style="{StaticResource ConciergeDesignButtonStyle}" 

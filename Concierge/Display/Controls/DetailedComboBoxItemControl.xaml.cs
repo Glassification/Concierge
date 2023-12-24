@@ -8,6 +8,7 @@ namespace Concierge.Display.Controls
     using System.Windows.Media;
 
     using Concierge.Common;
+    using MaterialDesignThemes.Wpf;
 
     /// <summary>
     /// Interaction logic for DetailedComboBoxItemControl.xaml.
@@ -34,6 +35,19 @@ namespace Concierge.Display.Controls
             this.ItemInfo.Foreground = Brushes.White;
 
             this.Item = item;
+        }
+
+        public DetailedComboBoxItemControl(PackIconKind icon, Brush iconColor, string name, string info)
+            : this()
+        {
+            this.ItemIcon.Kind = icon;
+            this.ItemIcon.Foreground = iconColor;
+
+            this.ItemName.Text = name;
+            this.ItemName.Foreground = Brushes.White;
+
+            this.ItemInfo.Text = info;
+            this.ItemInfo.Foreground = Brushes.White;
         }
 
         public IUnique? Item { get; private set; }

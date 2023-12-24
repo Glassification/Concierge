@@ -23,7 +23,7 @@
         </Grid.RowDefinitions>
 
         <!--Header-->
-        <Grid Grid.Row="0">
+        <Grid Grid.Row="0" Background="#1C1C1C">
             <TextBlock 
                 Text="Edit Character Properties"
                 x:Name="HeaderTextBlock"
@@ -31,7 +31,7 @@
                 FontSize="35"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Center"
-                Margin="30, 0, 0, 0"
+                Margin="30, -3, 0, 0"
                 FontWeight="Bold"/>
             <components:ConciergeDesignButton 
                 Style="{StaticResource ConciergeDesignButtonStyle}" 
@@ -226,36 +226,45 @@
                 Grid.Column="1"
                 Grid.Row="0"
                 x:Name="Class1Level"
+                ValueChanged="Class1Level_ValueChanged"
                 Maximum="20"/>
 
             <controls:IntegerUpDownControl
                 Grid.Column="1"
                 Grid.Row="1"
                 x:Name="Class2Level"
+                ValueChanged="Class2Level_ValueChanged"
                 Maximum="20"/>
 
             <controls:IntegerUpDownControl
                 Grid.Column="1"
                 Grid.Row="2"
                 x:Name="Class3Level"
+                ValueChanged="Class3Level_ValueChanged"
                 Maximum="20"/>
 
             <components:ConciergeComboBox
                 Grid.Column="2"
                 Grid.Row="0"
                 x:Name="Class1Class"
+                SelectionChanged="Class1Class_SelectionChanged"
+                LostFocus="Class1Class_LostFocus"
                 Style="{StaticResource ComboBoxStyle}"/>
 
             <components:ConciergeComboBox
                 Grid.Column="2"
                 Grid.Row="1"
                 x:Name="Class2Class"
+                SelectionChanged="Class2Class_SelectionChanged"
+                LostFocus="Class2Class_LostFocus"
                 Style="{StaticResource ComboBoxStyle}"/>
 
             <components:ConciergeComboBox
                 Grid.Column="2"
                 Grid.Row="2"
                 x:Name="Class3Class"
+                SelectionChanged="Class3Class_SelectionChanged"
+                LostFocus="Class3Class_LostFocus"
                 Style="{StaticResource ComboBoxStyle}"/>
 
             <components:ConciergeComboBox

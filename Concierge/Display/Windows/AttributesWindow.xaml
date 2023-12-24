@@ -22,7 +22,7 @@
         </Grid.RowDefinitions>
 
         <!--Header-->
-        <Grid Grid.Row="0">
+        <Grid Grid.Row="0" Background="#1C1C1C">
             <StackPanel
                 Orientation="Horizontal"
                 VerticalAlignment="Center">
@@ -33,7 +33,7 @@
                     FontSize="35"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Center"
-                    Margin="30, 0, 0, 0"/>
+                    Margin="30, -3, 0, 0"/>
 
                 <components:ConciergeDesignButton
                     x:Name="GenerateAttributesButton"

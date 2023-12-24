@@ -68,7 +68,7 @@ namespace Concierge.DevTools
 
             rootCommand.Invoke(args);*/
 
-            ArmorGenerator.Generate(args[0]);
+            DetailedItemGenerator.Generate();
         }
     }
 }

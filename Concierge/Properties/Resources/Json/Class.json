@@ -1,0 +1,86 @@
+[
+  {
+    "Name": "Artificer",
+    "Information": "INT based - Masters of invention",
+    "Icon": 3580,
+    "IconColor": "#FF9370DB"
+  },
+  {
+    "Name": "Barbarian",
+    "Information": "STR based - Fighters with primal ferocity",
+    "Icon": 669,
+    "IconColor": "#FFCD5C5C"
+  },
+  {
+    "Name": "Bard",
+    "Information": "CHA based - Masters of song and speech",
+    "Icon": 4671,
+    "IconColor": "#FF00FFFF"
+  },
+  {
+    "Name": "Blood Hunter",
+    "Information": "DEX,INT based - Unending determination to destroy evils",
+    "Icon": 7134,
+    "IconColor": "#FFFF4500"
+  },
+  {
+    "Name": "Cleric",
+    "Information": "WIS based - Intermediaries between mortals and gods",
+    "Icon": 2383,
+    "IconColor": "#FFDAA520"
+  },
+  {
+    "Name": "Druid",
+    "Information": "WIS based - Extensions of nature's indomitable will",
+    "Icon": 3551,
+    "IconColor": "#FF3CB371"
+  },
+  {
+    "Name": "Fighter",
+    "Information": "STR,DEX based - Unparalleled martial mastery",
+    "Icon": 6387,
+    "IconColor": "#FFFFA500"
+  },
+  {
+    "Name": "Monk",
+    "Information": "DEX,WIS based - Deadly martial artist",
+    "Icon": 3602,
+    "IconColor": "#FF9ACD32"
+  },
+  {
+    "Name": "Paladin",
+    "Information": "STR,CHA based - An oath is a powerful bond",
+    "Icon": 5927,
+    "IconColor": "#FF4682B4"
+  },
+  {
+    "Name": "Ranger",
+    "Information": "DEX,WIS based - Keeping an unending watch",
+    "Icon": 1117,
+    "IconColor": "#FFFFA500"
+  },
+  {
+    "Name": "Rogue",
+    "Information": "DEX based - Cornerstone of any adventuring party",
+    "Icon": 2780,
+    "IconColor": "#FFFF7F50"
+  },
+  {
+    "Name": "Sorcerer",
+    "Information": "CHA based - The power chooses the sorcerer",
+    "Icon": 2155,
+    "IconColor": "#FF4682B4"
+  },
+  {
+    "Name": "Warlock",
+    "Information": "CHA based - Unlock magic both subtle and spectacular",
+    "Icon": 4205,
+    "IconColor": "#FFFFFF00"
+  },
+  {
+    "Name": "Wizard",
+    "Information": "INT based - The supreme magic-users",
+    "Icon": 7292,
+    "IconColor": "#FF3CB371"
+  }
+]
