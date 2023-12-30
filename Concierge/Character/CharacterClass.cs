@@ -51,11 +51,6 @@ namespace Concierge.Character
             }
         }
 
-        public static string FormatSubclass(string subclass)
-        {
-            return Regex.Replace(subclass, @"\((.*?)\)", string.Empty).Trim(['-', ' ']);
-        }
-
         public override string ToString()
         {
             return $"{this.Name}{(this.Subclass.IsNullOrWhiteSpace() ? string.Empty : $" ({this.Subclass})")}";

@@ -93,7 +93,7 @@ namespace Concierge.Display.Windows
             this.RestrainedCheckBox.IsChecked = this.Conditions.Restrained.Afflicted;
             this.StunnedCheckBox.IsChecked = this.Conditions.Stunned.Afflicted;
             this.UnconsciousCheckBox.IsChecked = this.Conditions.Unconscious.Afflicted;
-            this.EncumbranceComboBox.Text = this.Conditions.Encumbered.EncumbranceLevel.ToString().FormatFromEnum();
+            this.EncumbranceComboBox.Text = this.Conditions.Encumbered.EncumbranceLevel.ToString().FormatFromPascalCase();
             this.EncumbranceCheckBox.IsChecked = this.Conditions.Encumbered.OverrideEncumbrance;
 
             DisplayUtility.SetControlEnableState(this.EncumbranceComboBox, this.Conditions.Encumbered.OverrideEncumbrance);

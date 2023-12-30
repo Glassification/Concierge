@@ -90,7 +90,7 @@ namespace Concierge.Services
             this.NextSetupStep(typeof(SensesWindow), "Skip Section");
             this.NextSetupStep(typeof(HealthWindow), "Skip Section");
             this.NextSetupStep(typeof(HitDiceWindow), "Skip Section");
-            this.NextSetupStep(typeof(WealthWindow), "Continue");
+            this.NextSetupStep(typeof(WealthWindow), "Skip Section");
             this.NextSetupStep(typeof(AppearanceWindow), "Skip Section");
             this.NextSetupStep(typeof(PersonalityWindow), "Skip Section");
             this.NextSetupStep(typeof(LanguagesWindow), "Continue");

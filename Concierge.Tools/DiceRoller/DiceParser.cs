@@ -16,12 +16,8 @@ namespace Concierge.Tools.DiceRoller
     /// <summary>
     /// Provides methods to parse and evaluate dice expressions, returning the results in postfix notation.
     /// </summary>
-    public static class DiceParser
+    public static partial class DiceParser
     {
-        private static readonly Regex patternSplit = new (@"(\+|\-)", RegexOptions.Compiled);
-        private static readonly Regex hasNumber = new ("[0-9]", RegexOptions.Compiled);
-        private static readonly Regex hasDice = new ("\\d[Dd]\\d\\+*\\d*", RegexOptions.Compiled);
-
         private static readonly string[] filter = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "+", "-", "d"];
 
         /// <summary>
@@ -61,7 +57,7 @@ namespace Concierge.Tools.DiceRoller
         public static string Find(string input)
         {
             var builder = new StringBuilder();
-            var matches = hasDice.Matches(input.Strip(" "));
+            var matches = HasDiceRegex().Matches(input.Strip(" "));
             if (matches.Count == 0)
             {
                 return string.Empty;
@@ -117,7 +113,7 @@ namespace Concierge.Tools.DiceRoller
                 !input.Contains('.') &&
                 !input.Contains('*') &&
                 !input.Contains('/') &&
-                hasNumber.Match(input).Success;
+                HasNumberRegex().Match(input).Success;
         }
 
         private static List<object> Evaluate(List<string> list)
@@ -177,7 +173,16 @@ namespace Concierge.Tools.DiceRoller
 
         private static List<string> SplitAndMaintainDelimiter(string input)
         {
-            return [.. patternSplit.Split(input)];
+            return [.. PatternSplitRegex().Split(input)];
         }
+
+        [GeneratedRegex(@"(\+|\-)", RegexOptions.Compiled)]
+        private static partial Regex PatternSplitRegex();
+
+        [GeneratedRegex("[0-9]", RegexOptions.Compiled)]
+        private static partial Regex HasNumberRegex();
+
+        [GeneratedRegex("\\d[Dd]\\d\\+*\\d*", RegexOptions.Compiled)]
+        private static partial Regex HasDiceRegex();
     }
 }

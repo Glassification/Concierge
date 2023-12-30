@@ -129,7 +129,7 @@ namespace Concierge.Display.Windows
         private void FillFields(Ability ability)
         {
             this.NameComboBox.Text = ability.Name;
-            this.TypeComboBox.Text = ability.Type.ToString().FormatFromEnum();
+            this.TypeComboBox.Text = ability.Type.ToString().FormatFromPascalCase();
             this.LevelUpDown.Value = ability.Level;
             this.UsesTextBox.Text = ability.Uses;
             this.RecoveryTextBox.Text = ability.Recovery;
@@ -230,6 +230,11 @@ namespace Concierge.Display.Windows
         {
             if (this.NameComboBox.Text.IsNullOrWhiteSpace())
             {
+                ConciergeMessageBox.Show(
+                    "Could not save the Ability.\nA name is required before saving a custom item.",
+                    "Warning",
+                    ConciergeWindowButtons.Ok,
+                    ConciergeWindowIcons.Alert);
                 return;
             }
 

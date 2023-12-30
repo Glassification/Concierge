@@ -19,14 +19,13 @@ namespace Concierge.Tools.Generators.Attributes
 
         public IGeneratorResult Generate(IGeneratorSettings generatorSettings)
         {
-            do
+            while (this.attributeRolls.Sum() <= Constants.MinAttributeTotal)
             {
                 for (int i = 0; i < this.attributeRolls.Length; i++)
                 {
                     this.attributeRolls[i] = CalculateAttribute();
                 }
             }
-            while (this.attributeRolls.Sum() <= Constants.MinAttributeTotal);
 
             return new AttributeResult(this.attributeRolls);
         }

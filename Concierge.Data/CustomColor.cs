@@ -20,13 +20,11 @@ namespace Concierge.Data
     /// Represents a custom color with RGBA values and hexadecimal representation.
     /// Implements <see cref="ICopyable{CustomColor}"/> and <see cref="IUnique"/>.
     /// </summary>
-    public sealed class CustomColor : ICopyable<CustomColor>, IUnique
+    public sealed partial class CustomColor : ICopyable<CustomColor>, IUnique
     {
         private const byte MaxColor = 255;
         private const byte MinColor = 0;
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("GeneratedRegex", "SYSLIB1045:Convert to 'GeneratedRegexAttribute'.", Justification = "We don't do that in Canada.")]
-        private static readonly Regex formatHex = new (@"(.{2})", RegexOptions.Compiled);
         private string? name;
 
         /// <summary>
@@ -304,7 +302,7 @@ namespace Concierge.Data
 
         private static byte[] HexToRgb(string hex)
         {
-            var cleanHex = formatHex.Replace(hex.Strip("#"), "$1 ").Trim();
+            var cleanHex = FormatHexRegex().Replace(hex.Strip("#"), "$1 ").Trim();
             var result = cleanHex
                 .Split(' ')
                 .Select(item => Convert.ToByte(item, 16))
@@ -317,5 +315,8 @@ namespace Concierge.Data
         {
             return BitConverter.ToString(rgb).Replace("-", string.Empty).Insert(0, "#");
         }
+
+        [GeneratedRegex(@"(.{2})", RegexOptions.Compiled)]
+        private static partial Regex FormatHexRegex();
     }
 }

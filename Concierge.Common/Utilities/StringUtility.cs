@@ -44,7 +44,7 @@ namespace Concierge.Common.Utilities
 
             for (int i = 0; i < stringArray.Length; i++)
             {
-                stringArray[i] = stringArray[i].FormatFromEnum();
+                stringArray[i] = stringArray[i].FormatFromPascalCase();
             }
 
             return [.. stringArray];

@@ -4,7 +4,6 @@
 
 namespace Concierge.Display.Windows
 {
-    using System;
     using System.Windows;
     using System.Windows.Controls;
 
@@ -35,14 +34,10 @@ namespace Concierge.Display.Windows
 
             this.AlignmentComboBox.ItemsSource = ComboBoxGenerator.AlignmentTypesComboBox();
             this.RaceComboBox.ItemsSource = ComboBoxGenerator.RacesComboBox();
-            this.SubRaceComboBox.ItemsSource = ComboBoxGenerator.SubRacesComboBox();
             this.BackgroundComboBox.ItemsSource = ComboBoxGenerator.BackgroundsComboBox();
             this.Class1Class.ItemsSource = ComboBoxGenerator.DetailedClassesComboBox();
             this.Class2Class.ItemsSource = ComboBoxGenerator.DetailedClassesComboBox();
             this.Class3Class.ItemsSource = ComboBoxGenerator.DetailedClassesComboBox();
-            this.Class1Subclass.ItemsSource = ComboBoxGenerator.SubClassesComboBox();
-            this.Class2Subclass.ItemsSource = ComboBoxGenerator.SubClassesComboBox();
-            this.Class3Subclass.ItemsSource = ComboBoxGenerator.SubClassesComboBox();
             this.CharacterProperties = new CharacterProperties();
             this.OriginalFileName = string.Empty;
             this.DescriptionTextBlock.DataContext = this.Description;
@@ -153,6 +148,8 @@ namespace Concierge.Display.Windows
             this.CheckClass2State(this.Class2Class.Text);
             this.CheckClass3State(this.Class3Class.Text);
 
+            this.CheckRaceRelations(this.RaceComboBox.Text);
+
             SetIntegerUpDownMax(this.Class1Level, this.Class2Level.Value, this.Class3Level.Value);
             SetIntegerUpDownMax(this.Class2Level, this.Class1Level.Value, this.Class3Level.Value);
             SetIntegerUpDownMax(this.Class3Level, this.Class2Level.Value, this.Class1Level.Value);
@@ -196,6 +193,9 @@ namespace Concierge.Display.Windows
             }
             else
             {
+                var temp = this.Class1Subclass.Text;
+                this.Class1Subclass.ItemsSource = ComboBoxGenerator.SubClassesComboBox(name);
+                this.Class1Subclass.Text = temp;
                 DisplayUtility.SetControlEnableState(this.Class1Subclass, true);
                 DisplayUtility.SetControlEnableState(this.Class2Level, true);
                 DisplayUtility.SetControlEnableState(this.Class2Class, true);
@@ -213,6 +213,9 @@ namespace Concierge.Display.Windows
             }
             else
             {
+                var temp = this.Class2Subclass.Text;
+                this.Class2Subclass.ItemsSource = ComboBoxGenerator.SubClassesComboBox(name);
+                this.Class2Subclass.Text = temp;
                 DisplayUtility.SetControlEnableState(this.Class2Subclass, true);
                 DisplayUtility.SetControlEnableState(this.Class3Level, true);
                 DisplayUtility.SetControlEnableState(this.Class3Class, true);
@@ -227,7 +230,25 @@ namespace Concierge.Display.Windows
             }
             else
             {
+                var temp = this.Class3Subclass.Text;
+                this.Class3Subclass.ItemsSource = ComboBoxGenerator.SubClassesComboBox(name);
+                this.Class3Subclass.Text = temp;
                 DisplayUtility.SetControlEnableState(this.Class3Subclass, true);
+            }
+        }
+
+        private void CheckRaceRelations(string name)
+        {
+            if (name.IsNullOrWhiteSpace())
+            {
+                DisableAndBlank(this.SubRaceComboBox);
+            }
+            else
+            {
+                var temp = this.SubRaceComboBox.Text;
+                this.SubRaceComboBox.ItemsSource = ComboBoxGenerator.SubRacesComboBox(name);
+                this.SubRaceComboBox.Text = temp;
+                DisplayUtility.SetControlEnableState(this.SubRaceComboBox, true);
             }
         }
 
@@ -256,45 +277,6 @@ namespace Concierge.Display.Windows
             this.CloseConciergeWindow();
         }
 
-        private void SubRaceComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            var changedText = string.Empty;
-            foreach (var item in e.AddedItems)
-            {
-                changedText = item.ToString() ?? string.Empty;
-            }
-
-            if (changedText.IsNullOrWhiteSpace())
-            {
-                return;
-            }
-
-            Action a = () => this.SubRaceComboBox.Text = Race.FormatSubRace(changedText);
-            this.Dispatcher.BeginInvoke(a);
-        }
-
-        private void SubclassComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (sender is not ConciergeComboBox comboBox)
-            {
-                return;
-            }
-
-            var changedText = string.Empty;
-            foreach (var item in e.AddedItems)
-            {
-                changedText = item.ToString() ?? string.Empty;
-            }
-
-            if (changedText.IsNullOrWhiteSpace())
-            {
-                return;
-            }
-
-            Action a = () => comboBox.Text = CharacterClass.FormatSubclass(changedText);
-            this.Dispatcher.BeginInvoke(a);
-        }
-
         private void GenerateNameButton_Click(object sender, RoutedEventArgs e)
         {
             if (ConciergeWindowService.ShowWindow(typeof(NameGeneratorWindow)) is string name)
@@ -305,7 +287,7 @@ namespace Concierge.Display.Windows
 
         private void Class1Class_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (sender is ConciergeComboBox comboBox && comboBox.SelectedValue is ComboBoxItemControl item)
+            if (sender is ConciergeComboBox comboBox && comboBox.SelectedValue is DetailedComboBoxItemControl item)
             {
                 this.CheckClass1State(item.Text);
             }
@@ -313,7 +295,7 @@ namespace Concierge.Display.Windows
 
         private void Class2Class_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (sender is ConciergeComboBox comboBox && comboBox.SelectedValue is ComboBoxItemControl item)
+            if (sender is ConciergeComboBox comboBox && comboBox.SelectedValue is DetailedComboBoxItemControl item)
             {
                 this.CheckClass2State(item.Text);
             }
@@ -321,7 +303,7 @@ namespace Concierge.Display.Windows
 
         private void Class3Class_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (sender is ConciergeComboBox comboBox && comboBox.SelectedValue is ComboBoxItemControl item)
+            if (sender is ConciergeComboBox comboBox && comboBox.SelectedValue is DetailedComboBoxItemControl item)
             {
                 this.CheckClass3State(item.Text);
             }
@@ -358,6 +340,19 @@ namespace Concierge.Display.Windows
         {
             SetIntegerUpDownMax(this.Class2Level, this.Class1Level.Value, this.Class3Level.Value);
             SetIntegerUpDownMax(this.Class1Level, this.Class3Level.Value, this.Class2Level.Value);
+        }
+
+        private void RaceComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (sender is ConciergeComboBox comboBox && comboBox.SelectedValue is DetailedComboBoxItemControl item)
+            {
+                this.CheckRaceRelations(item.Text);
+            }
+        }
+
+        private void RaceComboBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            this.CheckRaceRelations(this.RaceComboBox.Text);
         }
     }
 }

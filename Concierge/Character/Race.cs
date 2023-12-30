@@ -4,8 +4,6 @@
 
 namespace Concierge.Character
 {
-    using System.Text.RegularExpressions;
-
     using Concierge.Common;
     using Concierge.Common.Extensions;
 
@@ -21,11 +19,6 @@ namespace Concierge.Character
 
         public string Subrace { get; set; }
 
-        public static string FormatSubRace(string subrace)
-        {
-            return Regex.Replace(subrace, @"\((.*?)\)", string.Empty).Trim(['-', ' ']);
-        }
-
         public Race DeepCopy()
         {
             return new Race()
@@ -37,7 +30,12 @@ namespace Concierge.Character
 
         public override string ToString()
         {
-            return $"{this.Name}{(this.Subrace.IsNullOrWhiteSpace() ? string.Empty : $" ({this.Subrace})")}";
+            return $"{(this.Subrace.IsNullOrWhiteSpace() ? string.Empty : $"{this.Subrace} ")}{this.Name}";
+        }
+
+        public bool IsNullOrWhiteSpace()
+        {
+            return this.Subrace.IsNullOrWhiteSpace() && this.Name.IsNullOrWhiteSpace();
         }
     }
 }

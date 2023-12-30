@@ -34,7 +34,7 @@ namespace Concierge.Character.Characteristics
         public AbilityTypes Type { get; set; }
 
         [JsonIgnore]
-        public string TypeDisplay => this.Type.ToString().FormatFromEnum();
+        public string TypeDisplay => this.Type.ToString().FormatFromPascalCase();
 
         public string Name { get; set; }
 

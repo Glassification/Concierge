@@ -68,7 +68,7 @@ namespace Concierge.Display.Windows
             this.NameTextBox.Text = this.Properties.Name;
             this.AcUpDown.Value = this.Properties.ArmorClass;
             this.PerceptionUpDown.Value = this.Properties.Perception;
-            this.VisionComboBox.Text = this.Properties.Vision.ToString().FormatFromEnum();
+            this.VisionComboBox.Text = this.Properties.Vision.ToString().FormatFromPascalCase();
             this.MovementUpDown.Value = this.Properties.Movement;
             this.CreatureSizeComboBox.Text = this.Properties.CreatureSize.ToString();
             this.InitiativeUpDown.Value = this.Properties.Initiative;

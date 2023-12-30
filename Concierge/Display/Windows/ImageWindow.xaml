@@ -94,7 +94,7 @@
 
                     <!--Value-->
                     <components:ConciergeTextBoxBackground
-                        x:Name="ImageSourceTextBoxBackground"
+                        x:Name="ImageSourceTextBackground"
                         Grid.Column="0"
                         Margin="0, 10, 0, 10">
                         <components:ConciergeTextBox x:Name="ImageSourceTextBox"/>

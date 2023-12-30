@@ -13,16 +13,13 @@ namespace Concierge.Services
     using Concierge.Common.Extensions;
     using Concierge.Configuration;
 
-    public sealed class BackupService
+    public sealed partial class BackupService
     {
         public const int Interval = 10;
 
         private readonly string backupFolder;
         private readonly FileAccessService fileAccessService;
         private readonly DispatcherTimer dispatcherTimer;
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("GeneratedRegex", "SYSLIB1045:Convert to 'GeneratedRegexAttribute'.", Justification = "<The way she goes.>")]
-        private readonly Regex extractNumber = new (@"\d+", RegexOptions.Compiled);
 
         public BackupService(FileAccessService fileAccessService, string backupFolder)
         {
@@ -57,6 +54,9 @@ namespace Concierge.Services
             return $"{name}_Backup";
         }
 
+        [GeneratedRegex(@"\d+", RegexOptions.Compiled)]
+        private static partial Regex ExtractNumberRegex();
+
         private int GetIndex(CcsFile ccsFile)
         {
             var directoryInfo = new DirectoryInfo(this.backupFolder);
@@ -74,7 +74,7 @@ namespace Concierge.Services
                 return matchedFiles.Count + 1;
             }
 
-            if (int.TryParse(this.extractNumber.Match(oldestFile.Name).Value, out int index))
+            if (int.TryParse(ExtractNumberRegex().Match(oldestFile.Name).Value, out int index))
             {
                 return index;
             }

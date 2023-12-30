@@ -4,12 +4,15 @@
 
 namespace Concierge.Display.Controls
 {
+    using System.Text;
     using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Media;
 
+    using Concierge.Character;
     using Concierge.Common;
     using Concierge.Common.Extensions;
+    using Concierge.Common.Utilities;
     using Concierge.Configuration;
 
     /// <summary>
@@ -22,28 +25,21 @@ namespace Concierge.Display.Controls
             this.InitializeComponent();
         }
 
-        public void Draw(params string[] info)
+        public void Draw(CharacterProperties properties)
         {
-            var cleanedInfo = info.RemoveEmpty();
-            var width = 100.0 / cleanedInfo.Length;
             this.HeaderGrid.Children.Clear();
-            this.HeaderGrid.ColumnDefinitions.Clear();
 
-            for (int i = 0; i < cleanedInfo.Length; i++)
-            {
-                this.HeaderGrid.ColumnDefinitions.Add(new ColumnDefinition()
-                {
-                    Width = new GridLength(width, GridUnitType.Star),
-                });
+            var text = $"{properties.Name}  -  {GetLevelRace(properties)}{StringUtility.CreateCharacters(" ", 10)}{GetAlignmentAndBackground(properties)}";
+            var nameBlock = CreateTextBlock(20, text.Strip("-").IsNullOrWhiteSpace() ? string.Empty : text, this.HeaderGrid.ActualWidth * 0.60);
+            this.HeaderGrid.Children.Add(nameBlock);
+            Grid.SetColumn(nameBlock, 0);
 
-                var textBlock = this.CreateTextBlock(20, cleanedInfo[i], this.HeaderGrid.ActualWidth / cleanedInfo.Length);
-
-                this.HeaderGrid.Children.Add(textBlock);
-                Grid.SetColumn(textBlock, i);
-            }
+            var classBlock = CreateTextBlock(20, GetClasses(properties), this.HeaderGrid.ActualWidth * 0.40);
+            this.HeaderGrid.Children.Add(classBlock);
+            Grid.SetColumn(classBlock, 1);
         }
 
-        private TextBlock CreateTextBlock(double fontSize, string text, double columnWidth)
+        private static TextBlock CreateTextBlock(double fontSize, string text, double columnWidth)
         {
             var textBlock = new TextBlock()
             {
@@ -65,12 +61,43 @@ namespace Concierge.Display.Controls
             }
             else if (columnWidth < textBlock.DesiredSize.Width)
             {
-                return this.CreateTextBlock(fontSize - 1, text, columnWidth);
+                return CreateTextBlock(fontSize - 1, text, columnWidth);
             }
             else
             {
                 return textBlock;
             }
+        }
+
+        private static string GetLevelRace(CharacterProperties properties)
+        {
+            return properties.Level > 0 || !properties.Race.IsNullOrWhiteSpace() ? $"Lvl {properties.Level}  {properties.Race}" : string.Empty;
+        }
+
+        private static string GetAlignmentAndBackground(CharacterProperties properties)
+        {
+            return $"{properties.Alignment}   {properties.Background}".Trim();
+        }
+
+        private static string GetClasses(CharacterProperties properties)
+        {
+            var builder = new StringBuilder();
+            if (!properties.Class1.ToString().IsNullOrWhiteSpace())
+            {
+                builder.Append($"{properties.Class1}");
+            }
+
+            if (!properties.Class2.ToString().IsNullOrWhiteSpace())
+            {
+                builder.Append($", {properties.Class2}");
+            }
+
+            if (!properties.Class3.ToString().IsNullOrWhiteSpace())
+            {
+                builder.Append($", {properties.Class3}");
+            }
+
+            return builder.ToString();
         }
     }
 }

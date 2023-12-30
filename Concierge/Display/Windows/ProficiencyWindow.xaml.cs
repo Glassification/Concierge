@@ -258,6 +258,11 @@ namespace Concierge.Display.Windows
         {
             if (this.ProficiencyComboBox.Text.IsNullOrWhiteSpace())
             {
+                ConciergeMessageBox.Show(
+                    "Could not save the Proficiency.\nA name is required before saving a custom item.",
+                    "Warning",
+                    ConciergeWindowButtons.Ok,
+                    ConciergeWindowIcons.Alert);
                 return;
             }
 

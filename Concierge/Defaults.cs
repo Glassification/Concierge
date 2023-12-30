@@ -18,36 +18,36 @@ namespace Concierge
 
     public static class Defaults
     {
+        private static readonly DefaultListReadWriter defaultListReadWriter = new (Program.ErrorService, Program.Logger);
+
         static Defaults()
         {
-            var defaultListReadWriter = new DefaultListReadWriter(Program.ErrorService, Program.Logger);
+            Weapons = ReadJson<Weapon>(Properties.Resources.Weapon, nameof(Properties.Resources.Weapon));
+            Ammunition = ReadJson<Ammunition>(Properties.Resources.Ammunition, nameof(Properties.Resources.Ammunition));
+            Spells = ReadJson<Spell>(Properties.Resources.Spell, nameof(Properties.Resources.Spell));
+            Inventory = ReadJson<Inventory>(Properties.Resources.Inventory, nameof(Properties.Resources.Inventory));
+            Languages = ReadJson<Language>(Properties.Resources.Language, nameof(Properties.Resources.Language));
+            Abilities = ReadJson<Ability>(Properties.Resources.Ability, nameof(Properties.Resources.Ability));
+            Subrace = ReadJson<CategoryItem>(Properties.Resources.Subrace, nameof(Properties.Resources.Subrace));
+            Subclass = ReadJson<CategoryItem>(Properties.Resources.Subclass, nameof(Properties.Resources.Subclass));
+            Resources = ReadJson<ClassResource>(Properties.Resources.Resource, nameof(Properties.Resources.Resource));
+            Names = ReadJson<Name>(Properties.Resources.Names, nameof(Properties.Resources.Names));
+            Glossary = ReadJson<GlossaryEntry>(Properties.Resources.Glossary, nameof(Properties.Resources.Glossary));
+            MagicClasses = ReadJson<MagicClass>(Properties.Resources.MagicClass, nameof(Properties.Resources.MagicClass));
+            StatusEffects = ReadJson<StatusEffect>(Properties.Resources.StatusEffect, nameof(Properties.Resources.StatusEffect));
+            Armor = ReadJson<Armor>(Properties.Resources.Armor, nameof(Properties.Resources.Armor));
+            Classes = ReadJson<DetailedItem>(Properties.Resources.Class, nameof(Properties.Resources.Class));
+            Races = ReadJson<DetailedItem>(Properties.Resources.Race, nameof(Properties.Resources.Race));
 
-            Weapons = new ReadOnlyCollection<Weapon>(defaultListReadWriter.ReadJson<List<Weapon>>(Properties.Resources.Weapon));
-            Ammunition = new ReadOnlyCollection<Ammunition>(defaultListReadWriter.ReadJson<List<Ammunition>>(Properties.Resources.Ammunition));
-            Spells = new ReadOnlyCollection<Spell>(defaultListReadWriter.ReadJson<List<Spell>>(Properties.Resources.Spell));
-            Inventory = new ReadOnlyCollection<Inventory>(defaultListReadWriter.ReadJson<List<Inventory>>(Properties.Resources.Inventory));
-            Languages = new ReadOnlyCollection<Language>(defaultListReadWriter.ReadJson<List<Language>>(Properties.Resources.Language));
-            Abilities = new ReadOnlyCollection<Ability>(defaultListReadWriter.ReadJson<List<Ability>>(Properties.Resources.Ability));
-            Subrace = new ReadOnlyCollection<CategoryItem>(defaultListReadWriter.ReadJson<List<CategoryItem>>(Properties.Resources.Subrace));
-            Subclass = new ReadOnlyCollection<CategoryItem>(defaultListReadWriter.ReadJson<List<CategoryItem>>(Properties.Resources.Subclass));
-            Resources = new ReadOnlyCollection<ClassResource>(defaultListReadWriter.ReadJson<List<ClassResource>>(Properties.Resources.Resource));
-            Names = new ReadOnlyCollection<Name>(defaultListReadWriter.ReadJson<List<Name>>(Properties.Resources.Names));
-            Glossary = new ReadOnlyCollection<GlossaryEntry>(defaultListReadWriter.ReadJson<List<GlossaryEntry>>(Properties.Resources.Glossary));
-            MagicClasses = new ReadOnlyCollection<MagicClass>(defaultListReadWriter.ReadJson<List<MagicClass>>(Properties.Resources.MagicClass));
-            StatusEffects = new ReadOnlyCollection<StatusEffect>(defaultListReadWriter.ReadJson<List<StatusEffect>>(Properties.Resources.StatusEffect));
-            Armor = new ReadOnlyCollection<Armor>(defaultListReadWriter.ReadJson<List<Armor>>(Properties.Resources.Armor));
-            Classes = new ReadOnlyCollection<DetailedItem>(defaultListReadWriter.ReadJson<List<DetailedItem>>(Properties.Resources.Class));
-            Races = new ReadOnlyCollection<DetailedItem>(defaultListReadWriter.ReadJson<List<DetailedItem>>(Properties.Resources.Race));
-
-            AutosaveIntervals = new ReadOnlyCollection<int>(defaultListReadWriter.ReadList<int>(Properties.Resources.AutosaveInterval));
-            Alignment = new ReadOnlyCollection<string>(defaultListReadWriter.ReadList<string>(Properties.Resources.Alignment));
-            Backgrounds = new ReadOnlyCollection<string>(defaultListReadWriter.ReadList<string>(Properties.Resources.Background));
-            Levels = new ReadOnlyCollection<int>(defaultListReadWriter.ReadList<int>(Properties.Resources.LevelExp));
-            ProficiencyLevels = new ReadOnlyCollection<int>(defaultListReadWriter.ReadList<int>(Properties.Resources.ProficiencyLevel));
-            Tools = new ReadOnlyCollection<string>(defaultListReadWriter.ReadList<string>(Properties.Resources.Tool));
-            Games = new ReadOnlyCollection<string>(defaultListReadWriter.ReadList<string>(Properties.Resources.Game));
-            Instruments = new ReadOnlyCollection<string>(defaultListReadWriter.ReadList<string>(Properties.Resources.Instrument));
-            ItemCategories = new ReadOnlyCollection<string>(defaultListReadWriter.ReadList<string>(Properties.Resources.Category));
+            AutosaveIntervals = ReadList<int>(Properties.Resources.AutosaveInterval, nameof(Properties.Resources.AutosaveInterval));
+            Alignment = ReadList<string>(Properties.Resources.Alignment, nameof(Properties.Resources.Alignment));
+            Backgrounds = ReadList<string>(Properties.Resources.Background, nameof(Properties.Resources.Background));
+            Levels = ReadList<int>(Properties.Resources.LevelExp, nameof(Properties.Resources.LevelExp));
+            ProficiencyLevels = ReadList<int>(Properties.Resources.ProficiencyLevel, nameof(Properties.Resources.ProficiencyLevel));
+            Tools = ReadList<string>(Properties.Resources.Tool, nameof(Properties.Resources.Tool));
+            Games = ReadList<string>(Properties.Resources.Game, nameof(Properties.Resources.Game));
+            Instruments = ReadList<string>(Properties.Resources.Instrument, nameof(Properties.Resources.Instrument));
+            ItemCategories = ReadList<string>(Properties.Resources.Category, nameof(Properties.Resources.Category));
         }
 
         public static ReadOnlyCollection<int> AutosaveIntervals { get; }
@@ -101,5 +101,17 @@ namespace Concierge
         public static ReadOnlyCollection<Armor> Armor { get; }
 
         public static int CurrentAutosaveInterval => AutosaveIntervals[AppSettingsManager.UserSettings.Autosaving.Interval];
+
+        private static ReadOnlyCollection<T> ReadJson<T>(byte[] json, string name)
+        {
+            Program.Logger.Info($"Loading {name}...");
+            return new ReadOnlyCollection<T>(defaultListReadWriter.ReadJson<List<T>>(json));
+        }
+
+        private static ReadOnlyCollection<T> ReadList<T>(string path, string name)
+        {
+            Program.Logger.Info($"Loading {name}...");
+            return new ReadOnlyCollection<T>(defaultListReadWriter.ReadList<T>(path));
+        }
     }
 }

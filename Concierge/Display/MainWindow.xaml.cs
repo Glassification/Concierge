@@ -278,16 +278,8 @@ namespace Concierge.Display
             Program.Logger.Info($"Draw all.");
 
             var properties = Program.CcsFile.Character.Properties;
-            this.CharacterHeader.Draw(
-                properties.Name,
-                properties.Race.ToString(),
-                properties.Background,
-                properties.Alignment,
-                properties.Level > 0 ? $"Level {properties.Level}" : string.Empty,
-                properties.Class1.ToString(),
-                properties.Class2.ToString(),
-                properties.Class3.ToString());
 
+            this.CharacterHeader.Draw(properties);
             this.InventoryPage.Draw();
             this.AbilityPage.Draw();
             this.AttacksPage.Draw();

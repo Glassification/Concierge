@@ -201,6 +201,11 @@ namespace Concierge.Display.Windows
         {
             if (this.ArmorNameComboBox.Text.IsNullOrWhiteSpace())
             {
+                ConciergeMessageBox.Show(
+                    "Could not save the Armor.\nA name is required before saving a custom item.",
+                    "Warning",
+                    ConciergeWindowButtons.Ok,
+                    ConciergeWindowIcons.Alert);
                 return;
             }
 

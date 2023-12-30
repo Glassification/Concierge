@@ -78,7 +78,7 @@ namespace Concierge.Display.Windows.Utility
 
         private string GetName()
         {
-            return this.ability.GetType().Name.FormatFromEnum();
+            return this.ability.GetType().Name.FormatFromPascalCase();
         }
 
         private string GetAction()

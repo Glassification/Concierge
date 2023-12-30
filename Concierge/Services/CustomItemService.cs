@@ -13,13 +13,14 @@ namespace Concierge.Services
     using Concierge.Character.Spellcasting;
     using Concierge.Character.Vitals;
     using Concierge.Common;
+    using Concierge.Common.Extensions;
     using Concierge.Data;
     using Concierge.Persistence.ReadWriters;
     using Newtonsoft.Json;
 
     public sealed class CustomItemService
     {
-        private readonly IReadWriters readwriter;
+        private readonly CustomItemReadWriter readwriter;
         private readonly string filePath = Path.Combine(ConciergeFiles.GetCorrectCustomItemsPath(), ConciergeFiles.CustomItemsName);
 
         public CustomItemService()
@@ -39,6 +40,8 @@ namespace Concierge.Services
 
             this.CustomItems.Add(item);
             this.readwriter.Append(this.filePath, blob);
+
+            Program.MainWindow?.DisplayStatusText($"Added custom {item.GetType().Name.FormatFromPascalCase()} {item.Name}");
         }
 
         public void UpdateCustomItem()

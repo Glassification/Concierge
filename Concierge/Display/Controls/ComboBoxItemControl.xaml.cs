@@ -35,23 +35,23 @@ namespace Concierge.Display.Controls
             this.Item = item;
         }
 
-        public ComboBoxItemControl(PackIconKind icon, Brush iconColor, string name)
+        public ComboBoxItemControl(PackIconKind icon, Brush iconColor, string name, bool isEnum = true)
             : this()
         {
             this.ItemIcon.Kind = icon;
             this.ItemIcon.Foreground = iconColor;
 
-            this.ItemName.Text = name.Strip(" ").FormatFromEnum();
+            this.ItemName.Text = isEnum ? name.Strip(" ").FormatFromPascalCase() : name;
             this.ItemName.Foreground = Brushes.White;
         }
 
-        public ComboBoxItemControl(PackIconKind icon, Brush iconColor, string name, object tag)
+        public ComboBoxItemControl(PackIconKind icon, Brush iconColor, string name, object tag, bool isEnum = true)
             : this()
         {
             this.ItemIcon.Kind = icon;
             this.ItemIcon.Foreground = iconColor;
 
-            this.ItemName.Text = name.Strip(" ").FormatFromEnum();
+            this.ItemName.Text = isEnum ? name.Strip(" ").FormatFromPascalCase() : name;
             this.ItemName.Foreground = Brushes.White;
             this.Tag = tag;
         }

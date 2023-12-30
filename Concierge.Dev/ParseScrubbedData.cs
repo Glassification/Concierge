@@ -15,10 +15,8 @@ namespace Concierge.DevTools
     using Concierge.Data;
     using Newtonsoft.Json;
 
-    public static class ParseScrubbedData
+    public static partial class ParseScrubbedData
     {
-        private static readonly Regex CommaSplit = new ("(?:^|,)(\"(?:[^\"])*\"|[^,]*)", RegexOptions.Compiled);
-
         public static void Parse(string file)
         {
             var lines = File.ReadAllLines(file);
@@ -26,7 +24,7 @@ namespace Concierge.DevTools
 
             foreach (var line in lines)
             {
-                var tokens = CommaSplit.Matches(line)
+                var tokens = CommaSplitRegex().Matches(line)
                     .Cast<Match>()
                     .Select(m => m.Value.Trim([',', '"']))
                     .ToList();
@@ -66,5 +64,8 @@ namespace Concierge.DevTools
                 _ => CoinType.Copper,
             };
         }
+
+        [GeneratedRegex("(?:^|,)(\"(?:[^\"])*\"|[^,]*)", RegexOptions.Compiled)]
+        private static partial Regex CommaSplitRegex();
     }
 }

@@ -56,7 +56,7 @@ namespace Concierge.Display.Pages
 
             this.InitiativeLabel.Value = character.Initiative.ToString();
             this.PerceptionLabel.Value = character.PassivePerception.ToString();
-            this.VisionLabel.Value = character.Characteristic.Senses.Vision.ToString().FormatFromEnum();
+            this.VisionLabel.Value = character.Characteristic.Senses.Vision.ToString().FormatFromPascalCase();
             this.MovementLabel.Value = character.Characteristic.Senses.Movement.ToString();
             this.InspirationLabel.IconKind = character.Characteristic.Senses.Inspiration ? PackIconKind.WeatherSunset : PackIconKind.None;
         }

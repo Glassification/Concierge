@@ -116,7 +116,7 @@ namespace Concierge.Display.Windows
             this.ResourceNameComboBox.Text = resource.Type;
             this.PoolUpDown.Value = resource.Total;
             this.SpentUpDown.Value = resource.Spent;
-            this.RecoveryComboBox.Text = resource.Recovery.ToString().FormatFromEnum();
+            this.RecoveryComboBox.Text = resource.Recovery.ToString().FormatFromPascalCase();
             this.NotesTextBox.Text = resource.Note;
 
             this.SpentUpDown.Maximum = this.PoolUpDown.Value;
@@ -226,6 +226,11 @@ namespace Concierge.Display.Windows
         {
             if (this.ResourceNameComboBox.Text.IsNullOrWhiteSpace())
             {
+                ConciergeMessageBox.Show(
+                    "Could not save the Resource.\nA name is required before saving a custom item.",
+                    "Warning",
+                    ConciergeWindowButtons.Ok,
+                    ConciergeWindowIcons.Alert);
                 return;
             }
 

@@ -298,6 +298,11 @@ namespace Concierge.Display.Windows
         {
             if (this.NameComboBox.Text.IsNullOrWhiteSpace())
             {
+                ConciergeMessageBox.Show(
+                    "Could not save the Inventory item.\nA name is required before saving a custom item.",
+                    "Warning",
+                    ConciergeWindowButtons.Ok,
+                    ConciergeWindowIcons.Alert);
                 return;
             }
 

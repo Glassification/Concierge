@@ -121,7 +121,7 @@ namespace Concierge.Search
             }
 
             var chapters = Program.CcsFile.Character.Journal.Chapters;
-            if (!chapters.Any() || !DisplayUtility.FindVisualChildren<RichTextBox>(page).Any())
+            if (chapters.Count == 0 || !DisplayUtility.FindVisualChildren<RichTextBox>(page).Any())
             {
                 return;
             }
@@ -129,7 +129,7 @@ namespace Concierge.Search
             foreach (var chapter in chapters)
             {
                 var documents = chapter.Documents;
-                if (!documents.Any())
+                if (documents.Count == 0)
                 {
                     continue;
                 }

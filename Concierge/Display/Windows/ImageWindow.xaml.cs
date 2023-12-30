@@ -38,7 +38,7 @@ namespace Concierge.Display.Windows
             this.DescriptionTextBlock.DataContext = this.Description;
 
             this.SetMouseOverEvents(this.UseCustomImageCheckBox);
-            this.SetMouseOverEvents(this.ImageSourceTextBox, this.ImageSourceTextBoxBackground);
+            this.SetMouseOverEvents(this.ImageSourceTextBox, this.ImageSourceTextBackground);
             this.SetMouseOverEvents(this.FillTypeComboBox);
         }
 
@@ -88,7 +88,7 @@ namespace Concierge.Display.Windows
             this.IsDrawing = true;
 
             this.ImageSourceTextBox.Text = this.OriginalFileName = this.CharacterImage.Path;
-            this.FillTypeComboBox.Text = this.CharacterImage.Stretch.ToString().FormatFromEnum();
+            this.FillTypeComboBox.Text = this.CharacterImage.Stretch.ToString().FormatFromPascalCase();
             this.UseCustomImageCheckBox.IsChecked = this.CharacterImage.UseCustomImage;
 
             this.SetEnabledState(this.CharacterImage.UseCustomImage);
@@ -116,7 +116,7 @@ namespace Concierge.Display.Windows
             DisplayUtility.SetControlEnableState(this.ImageSourceTextBox, isEnabled);
             DisplayUtility.SetControlEnableState(this.FillTypeComboBox, isEnabled);
             DisplayUtility.SetControlEnableState(this.OpenImageButton, isEnabled);
-            DisplayUtility.SetControlEnableState(this.ImageSourceTextBoxBackground, isEnabled);
+            DisplayUtility.SetControlEnableState(this.ImageSourceTextBackground, isEnabled);
         }
 
         private void OpenImageButton_Click(object sender, RoutedEventArgs e)

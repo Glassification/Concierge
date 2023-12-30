@@ -45,7 +45,7 @@ namespace Concierge.Display.Utility
             this.SearchResults = [];
             this.mainWindow = Program.MainWindow;
             this.SearchDomainComboBox.ItemsSource = ComboBoxGenerator.SearchDomainComboBox();
-            this.SearchDomainComboBox.Text = SearchDomain.CurrentPage.ToString().FormatFromEnum();
+            this.SearchDomainComboBox.Text = SearchDomain.CurrentPage.ToString().FormatFromPascalCase();
             this.SearchResultTextBlock.Text = string.Empty;
         }
 
@@ -88,7 +88,7 @@ namespace Concierge.Display.Utility
             this.MatchCaseCheckBox.IsChecked = false;
             this.MatchWholeWordCheckBox.IsChecked = false;
             this.UseRegexCheckBox.IsChecked = false;
-            this.SearchDomainComboBox.Text = SearchDomain.CurrentPage.ToString().FormatFromEnum();
+            this.SearchDomainComboBox.Text = SearchDomain.CurrentPage.ToString().FormatFromPascalCase();
             this.SearchTextBox.Text = string.Empty;
         }
 

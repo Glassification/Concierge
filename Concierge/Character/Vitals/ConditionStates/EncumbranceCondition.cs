@@ -23,7 +23,7 @@ namespace Concierge.Character.Vitals.ConditionStates
             this.OverrideEncumbrance = false;
         }
 
-        public override string Value => $"{this.EncumbranceLevel.ToString().FormatFromEnum()} - {this.Description}";
+        public override string Value => $"{this.EncumbranceLevel.ToString().FormatFromPascalCase()} - {this.Description}";
 
         public EncumbranceLevel EncumbranceLevel
         {

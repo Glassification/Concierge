@@ -69,7 +69,7 @@ namespace Concierge.Display.Pages
 
             this.NameField.Text = properties.Name;
             this.PerceptionField.Text = properties.Perception.ToString();
-            this.VisionField.Text = properties.Vision.ToString().FormatFromEnum();
+            this.VisionField.Text = properties.Vision.ToString().FormatFromPascalCase();
             this.MovementField.Text = properties.Movement.ToString();
             this.ArmorClassField.Text = properties.ArmorClass.ToString();
             this.CreatureSizeField.Text = properties.CreatureSize.ToString();

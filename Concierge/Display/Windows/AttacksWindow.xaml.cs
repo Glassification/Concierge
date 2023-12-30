@@ -167,7 +167,7 @@ namespace Concierge.Display.Windows
             this.ProficencyOverrideCheckBox.UpdatingValue();
 
             this.AttackComboBox.Text = weapon.Name;
-            this.TypeComboBox.Text = weapon.Type.ToString().FormatFromEnum();
+            this.TypeComboBox.Text = weapon.Type.ToString().FormatFromPascalCase();
             this.AbilityComboBox.Text = weapon.Ability.ToString();
             this.DamageTextBox.Text = weapon.Damage;
             this.MiscDamageTextBox.Text = weapon.Misc;
@@ -313,6 +313,11 @@ namespace Concierge.Display.Windows
         {
             if (this.AttackComboBox.Text.IsNullOrWhiteSpace())
             {
+                ConciergeMessageBox.Show(
+                    "Could not save the Attack.\nA name is required before saving a custom item.",
+                    "Warning",
+                    ConciergeWindowButtons.Ok,
+                    ConciergeWindowIcons.Alert);
                 return;
             }
 

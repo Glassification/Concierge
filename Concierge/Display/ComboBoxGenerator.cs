@@ -352,16 +352,21 @@ namespace Concierge.Display
             return items;
         }
 
-        public static List<ComboBoxItemControl> SubRacesComboBox()
+        public static List<ComboBoxItemControl> SubRacesComboBox(string raceFilter)
         {
             var items = new List<ComboBoxItemControl>();
             foreach (var race in Defaults.Races)
             {
+                if (!race.Name.Equals(raceFilter))
+                {
+                    continue;
+                }
+
                 foreach (var subRace in Defaults.Subrace)
                 {
                     if (subRace.Name.Equals(race.Name))
                     {
-                        items.Add(new ComboBoxItemControl(PackIconKind.FaceWomanProfile, race.IconColor, subRace.ToString()));
+                        items.Add(new ComboBoxItemControl(PackIconKind.FaceWomanProfile, race.IconColor, subRace.Category, false));
                     }
                 }
             }
@@ -391,16 +396,21 @@ namespace Concierge.Display
             return items;
         }
 
-        public static List<ComboBoxItemControl> SubClassesComboBox()
+        public static List<ComboBoxItemControl> SubClassesComboBox(string classFilter)
         {
             var items = new List<ComboBoxItemControl>();
             foreach (var classes in Defaults.Classes)
             {
+                if (!classes.Name.Equals(classFilter))
+                {
+                    continue;
+                }
+
                 foreach (var subClass in Defaults.Subclass)
                 {
                     if (subClass.Name.Equals(classes.Name))
                     {
-                        items.Add(new ComboBoxItemControl(PackIconKind.Notebook, classes.IconColor, subClass.ToString()));
+                        items.Add(new ComboBoxItemControl(PackIconKind.Notebook, classes.IconColor, subClass.Category, false));
                     }
                 }
             }

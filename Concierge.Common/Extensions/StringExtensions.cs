@@ -16,10 +16,8 @@ namespace Concierge.Common.Extensions
     /// <summary>
     /// Provides extension methods for string manipulation.
     /// </summary>
-    public static class StringExtensions
+    public static partial class StringExtensions
     {
-        private static readonly Regex rtfRegex = new (@"\\([a-z]{1,32})(-?\d{1,10})?[ ]?|\\'([0-9a-f]{2})|\\([^a-z])|([{}])|[\r\n]+|(.)", RegexOptions.Singleline | RegexOptions.IgnoreCase | RegexOptions.Compiled);
-
         private static readonly List<string> destinations =
         [
             "aftncn", "aftnsep", "aftnsepc", "annotation", "atnauthor", "atndate", "atnicn", "atnid",
@@ -112,9 +110,8 @@ namespace Concierge.Common.Extensions
         public static int CountCharacter(this string str, char character)
         {
             var count = 0;
-            var regex = new Regex("\".*?\"");
 
-            str = regex.Replace(str, m => m.Value.Replace(',', '@'));
+            str = CountCharacterRegex().Replace(str, m => m.Value.Replace(',', '@'));
             var array = str.ToCharArray();
 
             for (int i = 0; i < array.Length; i++)
@@ -129,11 +126,11 @@ namespace Concierge.Common.Extensions
         }
 
         /// <summary>
-        /// Formats the string by inserting spaces before each uppercase letter (from an enum representation).
+        /// Formats the string by inserting spaces before each uppercase letter, except for the first character.
         /// </summary>
         /// <param name="str">The string to format.</param>
         /// <returns>The formatted string.</returns>
-        public static string FormatFromEnum(this string str)
+        public static string FormatFromPascalCase(this string str)
         {
             if (str.IsNullOrWhiteSpace())
             {
@@ -323,7 +320,7 @@ namespace Concierge.Common.Extensions
             int curskip = 0;                     // Number of ASCII characters left to skip
             var outList = new List<string>();    // Output buffer.
 
-            MatchCollection matches = rtfRegex.Matches(inputRtf);
+            MatchCollection matches = RtfRegex().Matches(inputRtf);
 
             if (matches.Count == 0)
             {
@@ -521,5 +518,11 @@ namespace Concierge.Common.Extensions
 
             return lowercase ? "a" : "A";
         }
+
+        [GeneratedRegex(@"\\([a-z]{1,32})(-?\d{1,10})?[ ]?|\\'([0-9a-f]{2})|\\([^a-z])|([{}])|[\r\n]+|(.)", RegexOptions.IgnoreCase | RegexOptions.Compiled | RegexOptions.Singleline, "en-CA")]
+        private static partial Regex RtfRegex();
+
+        [GeneratedRegex("\".*?\"")]
+        private static partial Regex CountCharacterRegex();
     }
 }
