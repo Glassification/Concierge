@@ -10,7 +10,7 @@ namespace Concierge.Services.ImportService.Importers
     using Concierge.Character.Equipable;
     using Concierge.Common;
 
-    public class AmmunitionImporter : Importer
+    public sealed class AmmunitionImporter : Importer
     {
         public AmmunitionImporter(ConciergeCharacter character)
             : base(character)

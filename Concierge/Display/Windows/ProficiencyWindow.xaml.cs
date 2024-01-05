@@ -4,7 +4,6 @@
 
 namespace Concierge.Display.Windows
 {
-    using System;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using System.Windows;
@@ -192,7 +191,7 @@ namespace Concierge.Display.Windows
             return new Proficiency()
             {
                 Name = this.ProficiencyTextComboBox.Text,
-                ProficiencyType = (ProficiencyTypes)Enum.Parse(typeof(ProficiencyTypes), this.ProficiencyComboBox.Text),
+                ProficiencyType = this.ProficiencyComboBox.Text.ToEnum<ProficiencyTypes>(),
             };
         }
 
@@ -211,7 +210,7 @@ namespace Concierge.Display.Windows
             var oldItem = proficiency.DeepCopy();
 
             proficiency.Name = this.ProficiencyTextComboBox.Text;
-            proficiency.ProficiencyType = (ProficiencyTypes)Enum.Parse(typeof(ProficiencyTypes), this.ProficiencyComboBox.Text);
+            proficiency.ProficiencyType = this.ProficiencyComboBox.Text.ToEnum<ProficiencyTypes>();
 
             if (!proficiency.IsCustom)
             {

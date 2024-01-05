@@ -4,7 +4,6 @@
 
 namespace Concierge.Display.Windows
 {
-    using System;
     using System.Collections.Generic;
     using System.Windows;
     using System.Windows.Controls;
@@ -158,10 +157,10 @@ namespace Concierge.Display.Windows
             ammunition.Name = this.NameComboBox.Text;
             ammunition.Quantity = this.QuantityUpDown.Value;
             ammunition.Bonus = this.BonusTextBox.Text;
-            ammunition.DamageType = (DamageTypes)Enum.Parse(typeof(DamageTypes), this.DamageTypeComboBox.Text);
+            ammunition.DamageType = this.DamageTypeComboBox.Text.ToEnum<DamageTypes>();
             ammunition.Used = this.UsedUpDown.Value;
             ammunition.Value = this.ValueUpDown.Value;
-            ammunition.CoinType = (CoinType)Enum.Parse(typeof(CoinType), this.CoinTypeComboBox.Text);
+            ammunition.CoinType = this.CoinTypeComboBox.Text.ToEnum<CoinType>();
             ammunition.Recoverable = this.RecoverableCheckBox.IsChecked ?? false;
             ammunition.Description = this.DescriptionTextBox.Text;
 
@@ -178,10 +177,10 @@ namespace Concierge.Display.Windows
                 Name = this.NameComboBox.Text,
                 Quantity = this.QuantityUpDown.Value,
                 Bonus = this.BonusTextBox.Text,
-                DamageType = (DamageTypes)Enum.Parse(typeof(DamageTypes), this.DamageTypeComboBox.Text),
+                DamageType = this.DamageTypeComboBox.Text.ToEnum<DamageTypes>(),
                 Used = this.UsedUpDown.Value,
                 Value = this.ValueUpDown.Value,
-                CoinType = (CoinType)Enum.Parse(typeof(CoinType), this.CoinTypeComboBox.Text),
+                CoinType = this.CoinTypeComboBox.Text.ToEnum<CoinType>(),
                 Recoverable = this.RecoverableCheckBox.IsChecked ?? false,
                 Description = this.DescriptionTextBox.Text,
             };

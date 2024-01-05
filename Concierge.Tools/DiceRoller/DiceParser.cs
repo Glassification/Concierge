@@ -182,7 +182,7 @@ namespace Concierge.Tools.DiceRoller
         [GeneratedRegex("[0-9]", RegexOptions.Compiled)]
         private static partial Regex HasNumberRegex();
 
-        [GeneratedRegex("\\d[Dd]\\d\\+*\\d*", RegexOptions.Compiled)]
+        [GeneratedRegex("\\d*[Dd]\\d\\+*\\d*", RegexOptions.Compiled)]
         private static partial Regex HasDiceRegex();
     }
 }

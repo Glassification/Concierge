@@ -10,7 +10,7 @@ namespace Concierge.Services.ImportService.Importers
     using Concierge.Character.Characteristics;
     using Concierge.Common;
 
-    public class ProficiencyImporter : Importer
+    public sealed class ProficiencyImporter : Importer
     {
         public ProficiencyImporter(ConciergeCharacter character)
             : base(character)

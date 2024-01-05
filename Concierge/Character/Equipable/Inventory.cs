@@ -17,7 +17,6 @@ namespace Concierge.Character.Equipable
     using Concierge.Tools.DiceRoller;
     using MaterialDesignThemes.Wpf;
     using Newtonsoft.Json;
-    using Newtonsoft.Json.Linq;
 
     public sealed class Inventory : ICopyable<Inventory>, IUnique, IEquipable, IUsable
     {

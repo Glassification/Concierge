@@ -88,7 +88,7 @@ namespace Concierge.Display.Utility
         private static void LevelUpClass(ConciergeComboBox hitDice, IntegerUpDownControl modifier, CharacterClass characterClass)
         {
             var character = Program.CcsFile.Character;
-            var hitDieEnum = (Dice)Enum.Parse(typeof(Dice), hitDice.Text);
+            var hitDieEnum = hitDice.Text.ToEnum<Dice>();
 
             character.LevelUp(hitDieEnum, characterClass.ClassNumber, modifier.Value);
         }

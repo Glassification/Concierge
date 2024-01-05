@@ -40,6 +40,16 @@ namespace Concierge.Tools.DiceRoller
         /// </summary>
         public int Total { get; private set; }
 
+        /// <summary>
+        /// Gets the maximum possible sum of the custom dice roll expression.
+        /// </summary>
+        public int Max { get; private set; }
+
+        /// <summary>
+        /// Gets the minimum possible sum of the custom dice roll expression.
+        /// </summary>
+        public int Min { get; private set; }
+
         private bool FirstIteration { get; set; }
 
         private Stack<object> Stack { get; set; }
@@ -120,7 +130,12 @@ namespace Concierge.Tools.DiceRoller
 
             if (stack.Count == 1)
             {
-                stack.Push(this.GetValueAndAddToString(stack.Pop(), reRoll));
+                var obj = stack.Pop();
+
+                this.AddToMin(obj, null, string.Empty, reRoll);
+                this.AddToMax(obj, null, string.Empty, reRoll);
+
+                stack.Push(this.GetValueAndAddToString(obj, reRoll));
             }
             else
             {
@@ -129,6 +144,9 @@ namespace Concierge.Tools.DiceRoller
                     var first = stack.Pop();
                     var second = stack.Pop();
                     var operation = stack.Pop();
+
+                    this.AddToMin(first, second, operation, reRoll);
+                    this.AddToMax(first, second, operation, reRoll);
 
                     var firstInt = this.GetValueAndAddToString(first, reRoll);
                     var operationString = this.GetOperationAndAddToString(operation);
@@ -142,6 +160,94 @@ namespace Concierge.Tools.DiceRoller
             }
 
             return (int)stack.Pop();
+        }
+
+        private void AddToMin(object left, object? right, object operation, bool reRoll)
+        {
+            var leftValue = 0;
+            var rightValue = 0;
+
+            if (reRoll || operation is not string opp)
+            {
+                return;
+            }
+
+            if (left is DiceRoll leftRoll)
+            {
+                leftValue = leftRoll.Min;
+            }
+            else if (left is int leftInt)
+            {
+                leftValue = leftInt;
+            }
+
+            if (right is null)
+            {
+                this.Min += leftValue;
+                return;
+            }
+
+            if (right is DiceRoll rightRoll)
+            {
+                rightValue = rightRoll.Min;
+            }
+            else if (right is int rightInt)
+            {
+                rightValue = rightInt;
+            }
+
+            if (opp.Equals("+"))
+            {
+                this.Min += leftValue + rightValue;
+            }
+            else if (opp.Equals("-"))
+            {
+                this.Min += leftValue - rightValue;
+            }
+        }
+
+        private void AddToMax(object left, object? right, object operation, bool reRoll)
+        {
+            var leftValue = 0;
+            var rightValue = 0;
+
+            if (reRoll || operation is not string opp)
+            {
+                return;
+            }
+
+            if (left is DiceRoll leftRoll)
+            {
+                leftValue = leftRoll.Max;
+            }
+            else if (left is int leftInt)
+            {
+                leftValue = leftInt;
+            }
+
+            if (right is null)
+            {
+                this.Max += leftValue;
+                return;
+            }
+
+            if (right is DiceRoll rightRoll)
+            {
+                rightValue = rightRoll.Max;
+            }
+            else if (right is int rightInt)
+            {
+                rightValue = rightInt;
+            }
+
+            if (opp.Equals("+"))
+            {
+                this.Max += leftValue + rightValue;
+            }
+            else if (opp.Equals("-"))
+            {
+                this.Max += leftValue - rightValue;
+            }
         }
     }
 }

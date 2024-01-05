@@ -4,7 +4,6 @@
 
 namespace Concierge.Display.Utility
 {
-    using System;
     using System.Collections.Generic;
     using System.ComponentModel;
     using System.Windows;
@@ -99,7 +98,7 @@ namespace Concierge.Display.Utility
                 MatchCase = this.MatchCaseCheckBox.IsChecked ?? false,
                 MatchWholeWord = this.MatchWholeWordCheckBox.IsChecked ?? false,
                 UseRegex = this.UseRegexCheckBox.IsChecked ?? false,
-                SearchDomain = (SearchDomain)Enum.Parse(typeof(SearchDomain), this.SearchDomainComboBox.Text.Strip(" ")),
+                SearchDomain = this.SearchDomainComboBox.Text.Strip(" ").ToEnum<SearchDomain>(),
                 TextToSearch = this.SearchTextBox.Text,
             };
         }

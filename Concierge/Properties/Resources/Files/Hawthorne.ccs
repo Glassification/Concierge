@@ -1,0 +1,1003 @@
+{
+  "Character": {
+    "Characteristic": {
+      "Abilities": [],
+      "Appearance": {
+        "Gender": "Male",
+        "Age": 29,
+        "Height": {
+          "Value": 69.0,
+          "UnitType": 0,
+          "Measurement": 0
+        },
+        "Weight": {
+          "Value": 157.0,
+          "UnitType": 0,
+          "Measurement": 1
+        },
+        "SkinColour": {
+          "A": 85,
+          "R": 255,
+          "G": 0,
+          "B": 0,
+          "Hex": "#FF0000",
+          "IsValid": false,
+          "IsCustom": false,
+          "Name": "Not Set",
+          "Id": "3f42dbd6-7b8c-4a23-90c4-c5cfc1fc9849"
+        },
+        "EyeColour": {
+          "A": 85,
+          "R": 255,
+          "G": 0,
+          "B": 0,
+          "Hex": "#FF0000",
+          "IsValid": false,
+          "IsCustom": false,
+          "Name": "Not Set",
+          "Id": "f3c4bb91-146c-47b9-b605-dfd2114e442c"
+        },
+        "HairColour": {
+          "A": 85,
+          "R": 255,
+          "G": 0,
+          "B": 0,
+          "Hex": "#FF0000",
+          "IsValid": false,
+          "IsCustom": false,
+          "Name": "Not Set",
+          "Id": "1e0d4e21-0eb5-46d9-94b4-a468abca56a5"
+        },
+        "DistinguishingMarks": ""
+      },
+      "Attributes": {
+        "Strength": 8,
+        "Dexterity": 14,
+        "Constitution": 16,
+        "Intelligence": 12,
+        "Wisdom": 10,
+        "Charisma": 24
+      },
+      "Languages": [
+        {
+          "Name": "Common",
+          "Script": "Common",
+          "Speakers": "Humans, halflings, half-elves, half-orcs",
+          "IsCustom": false,
+          "Id": "97fdf393-cae9-49b9-8b0c-f722caca40c7"
+        },
+        {
+          "Name": "Elvish",
+          "Script": "Elvish",
+          "Speakers": "Elves",
+          "IsCustom": false,
+          "Id": "bbbed32a-9892-462e-a35c-ebd441cc8aa2"
+        },
+        {
+          "Name": "Celestial",
+          "Script": "Celestial",
+          "Speakers": "Celestials (angels, devas)",
+          "IsCustom": false,
+          "Id": "5dbf0ab0-0408-4040-a717-f67be86551df"
+        }
+      ],
+      "Personality": {
+        "Trait1": "",
+        "Trait2": "",
+        "Ideal": "",
+        "Bond": "",
+        "Flaw": "",
+        "Notes": ""
+      },
+      "Proficiencies": [
+        {
+          "Name": "Dagger",
+          "IsCustom": false,
+          "ProficiencyType": 2,
+          "Id": "00000000-0000-0000-0000-000000000000"
+        },
+        {
+          "Name": "Dart",
+          "IsCustom": false,
+          "ProficiencyType": 2,
+          "Id": "00000000-0000-0000-0000-000000000000"
+        },
+        {
+          "Name": "Sling",
+          "IsCustom": false,
+          "ProficiencyType": 2,
+          "Id": "00000000-0000-0000-0000-000000000000"
+        },
+        {
+          "Name": "Quarterstaff",
+          "IsCustom": false,
+          "ProficiencyType": 2,
+          "Id": "00000000-0000-0000-0000-000000000000"
+        },
+        {
+          "Name": "Light Crossbow",
+          "IsCustom": false,
+          "ProficiencyType": 2,
+          "Id": "00000000-0000-0000-0000-000000000000"
+        },
+        {
+          "Name": "Light",
+          "IsCustom": false,
+          "ProficiencyType": 0,
+          "Id": "5283e87b-ecf1-4351-b204-d7b909494032"
+        }
+      ],
+      "Senses": {
+        "InitiativeBonus": 0,
+        "Inspiration": true,
+        "PerceptionBonus": 0,
+        "BaseMovement": 30,
+        "MovementBonus": 0,
+        "Vision": 2
+      }
+    },
+    "Companion": {
+      "Properties": {
+        "ArmorClass": 0,
+        "CreatureSize": 4,
+        "Initiative": 0,
+        "Movement": 0,
+        "Name": "",
+        "Perception": 0,
+        "Vision": 0
+      },
+      "CompanionImage": {
+        "Encoded": "",
+        "Path": "",
+        "Stretch": 3,
+        "UseCustomImage": false
+      },
+      "Vitality": {
+        "Health": {
+          "MaxHealth": 0,
+          "TemporaryHealth": 0,
+          "BaseHealth": 0
+        },
+        "HitDice": {
+          "TotalD6": 0,
+          "TotalD8": 0,
+          "TotalD10": 0,
+          "TotalD12": 0,
+          "SpentD6": 0,
+          "SpentD8": 0,
+          "SpentD10": 0,
+          "SpentD12": 0
+        },
+        "Conditions": {
+          "Blinded": {
+            "Value": "Blinded - Automatically fail any ability checks. Attack rolls against you have advantage, your attacks have disadvantage.",
+            "Afflicted": false,
+            "Description": "Automatically fail any ability checks. Attack rolls against you have advantage, your attacks have disadvantage.",
+            "Name": "Blinded"
+          },
+          "Charmed": {
+            "Value": "Charmed - You cannot attack the charmer. The charmer has advantage on ability checks when interacting socially.",
+            "Afflicted": false,
+            "Description": "You cannot attack the charmer. The charmer has advantage on ability checks when interacting socially.",
+            "Name": "Charmed"
+          },
+          "Dead": {
+            "Value": "Dead - You must succeed on 3 death saving throws, before failing 3. Succeeding will stabilize at 0 HP.",
+            "Afflicted": false,
+            "Description": "You must succeed on 3 death saving throws, before failing 3. Succeeding will stabilize at 0 HP.",
+            "Name": "Dead"
+          },
+          "Deafened": {
+            "Value": "Deafened - You cannot hear and automatically fails any ability check that requires hearing.",
+            "Afflicted": false,
+            "Description": "You cannot hear and automatically fails any ability check that requires hearing.",
+            "Name": "Deafened"
+          },
+          "Fatigued": {
+            "Value": " - Exhaustion levels stack up to 6. A long rest reduces the level by 1. .",
+            "ExhaustionLevel": 0,
+            "Description": "Exhaustion levels stack up to 6. A long rest reduces the level by 1.",
+            "Name": "Fatigued"
+          },
+          "Frightened": {
+            "Value": "Frightened - You have disadvantage on Ability Checks and Attack rolls while the source of fear is within line of sight. You can’t willingly move closer to the source.",
+            "Afflicted": false,
+            "Description": "You have disadvantage on Ability Checks and Attack rolls while the source of fear is within line of sight. You can’t willingly move closer to the source.",
+            "Name": "Frightened"
+          },
+          "Grappled": {
+            "Value": "Grappled - Your speed becomes 0. It ends when the grappler is incapacitated or you are thrown away.",
+            "Afflicted": false,
+            "Description": "Your speed becomes 0. It ends when the grappler is incapacitated or you are thrown away.",
+            "Name": "Grappled"
+          },
+          "Incapacitated": {
+            "Value": "Incapacitated - You Cannot take Actions or reactions.",
+            "Afflicted": false,
+            "Description": "You Cannot take Actions or reactions.",
+            "Name": "Incapacitated"
+          },
+          "Invisible": {
+            "Value": "Invisible - You are impossible to see without the aid of magic or a Special sense. Attacks against you have disadvantage, your attacks have advantage.",
+            "Afflicted": false,
+            "Description": "You are impossible to see without the aid of magic or a Special sense. Attacks against you have disadvantage, your attacks have advantage.",
+            "Name": "Invisible"
+          },
+          "Paralyzed": {
+            "Value": "Paralyzed - You are incapacitated and automatically fail Strength and Dexterity Saving Throws. Attacks have advantage, and melee are auto crit.",
+            "Afflicted": false,
+            "Description": "You are incapacitated and automatically fail Strength and Dexterity Saving Throws. Attacks have advantage, and melee are auto crit.",
+            "Name": "Paralyzed"
+          },
+          "Petrified": {
+            "Value": "Petrified - You are transformed into an inanimate substance and are incapacitated. Resistant to all damage and immune to poison and disease.",
+            "Afflicted": false,
+            "Description": "You are transformed into an inanimate substance and are incapacitated. Resistant to all damage and immune to poison and disease.",
+            "Name": "Petrified"
+          },
+          "Poisoned": {
+            "Value": "Poisoned - You have disadvantage on Attack rolls and Ability Checks",
+            "Afflicted": false,
+            "Description": "You have disadvantage on Attack rolls and Ability Checks",
+            "Name": "Poisoned"
+          },
+          "Prone": {
+            "Value": "Prone - Your only movement option is to crawl and have disadvantage on attacks. Melee attack is advantage, ranged is disadvantage.",
+            "Afflicted": false,
+            "Description": "Your only movement option is to crawl and have disadvantage on attacks. Melee attack is advantage, ranged is disadvantage.",
+            "Name": "Prone"
+          },
+          "Restrained": {
+            "Value": "Restrained - Your speed becomes 0. Your attacks have disadvantage, enemies have advantage. Dexterity Saving Throws are disadvantage.",
+            "Afflicted": false,
+            "Description": "Your speed becomes 0. Your attacks have disadvantage, enemies have advantage. Dexterity Saving Throws are disadvantage.",
+            "Name": "Restrained"
+          },
+          "Stunned": {
+            "Value": "Stunned - You are incapacitated and speak falteringly, and automatically fail Strength and Dexterity Saving Throws. Attacks against have advantage.",
+            "Afflicted": false,
+            "Description": "You are incapacitated and speak falteringly, and automatically fail Strength and Dexterity Saving Throws. Attacks against have advantage.",
+            "Name": "Stunned"
+          },
+          "Unconscious": {
+            "Value": "Unconscious - You are incapacitated, drop what you're holding, and fall prone. Attacks against have advantage and hits are auto crit.",
+            "Afflicted": false,
+            "Description": "You are incapacitated, drop what you're holding, and fall prone. Attacks against have advantage and hits are auto crit.",
+            "Name": "Unconscious"
+          }
+        },
+        "DeathSavingThrows": {
+          "CurrentDeathSave": 0,
+          "DeathSaves": []
+        },
+        "StatusEffects": [],
+        "ClassResources": []
+      },
+      "Characteristic": {
+        "Abilities": [],
+        "Appearance": {
+          "Gender": "",
+          "Age": 0,
+          "Height": {
+            "Value": 0.0,
+            "UnitType": 0,
+            "Measurement": 0
+          },
+          "Weight": {
+            "Value": 0.0,
+            "UnitType": 0,
+            "Measurement": 1
+          },
+          "SkinColour": {
+            "A": 85,
+            "R": 255,
+            "G": 0,
+            "B": 0,
+            "Hex": "#FF0000",
+            "IsValid": false,
+            "IsCustom": false,
+            "Name": "Not Set",
+            "Id": "f6e2bd14-c1ad-42e0-9835-cce856af64fd"
+          },
+          "EyeColour": {
+            "A": 85,
+            "R": 255,
+            "G": 0,
+            "B": 0,
+            "Hex": "#FF0000",
+            "IsValid": false,
+            "IsCustom": false,
+            "Name": "Not Set",
+            "Id": "d4395c63-4930-4920-962d-884dd3e4b27d"
+          },
+          "HairColour": {
+            "A": 85,
+            "R": 255,
+            "G": 0,
+            "B": 0,
+            "Hex": "#FF0000",
+            "IsValid": false,
+            "IsCustom": false,
+            "Name": "Not Set",
+            "Id": "2bd31fa3-c736-4747-9ffb-a50b4a8bdc1b"
+          },
+          "DistinguishingMarks": ""
+        },
+        "Attributes": {
+          "Strength": 10,
+          "Dexterity": 10,
+          "Constitution": 10,
+          "Intelligence": 10,
+          "Wisdom": 10,
+          "Charisma": 10
+        },
+        "Languages": [],
+        "Personality": {
+          "Trait1": "",
+          "Trait2": "",
+          "Ideal": "",
+          "Bond": "",
+          "Flaw": "",
+          "Notes": ""
+        },
+        "Proficiencies": [],
+        "Senses": {
+          "InitiativeBonus": 0,
+          "Inspiration": false,
+          "PerceptionBonus": 0,
+          "BaseMovement": 30,
+          "MovementBonus": 0,
+          "Vision": 0
+        }
+      },
+      "Equipment": {
+        "Ammunition": [],
+        "Defense": {
+          "Armor": {
+            "Ac": 0,
+            "Name": "",
+            "Stealth": 0,
+            "Strength": 0,
+            "Type": 0,
+            "Weight": {
+              "Value": 0.0,
+              "UnitType": 0,
+              "Measurement": 1
+            },
+            "Id": "70ccd782-5a6a-43d7-bf2c-480379595582",
+            "IsCustom": false
+          },
+          "ArmorStatus": 1,
+          "MagicAc": 0,
+          "MiscAc": 0,
+          "Shield": "",
+          "ShieldAc": 0,
+          "ShieldWeight": {
+            "Value": 0.0,
+            "UnitType": 0,
+            "Measurement": 1
+          }
+        },
+        "Inventory": [],
+        "Weapons": []
+      }
+    },
+    "Journal": {
+      "Chapters": []
+    },
+    "Magic": {
+      "MagicClasses": [
+        {
+          "Ability": 6,
+          "Id": "e91ab48e-8c17-42df-a406-0fe3a2a25102",
+          "IsCustom": false,
+          "KnownCantrips": 6,
+          "KnownSpells": 12,
+          "Level": 12,
+          "Name": "Sorcerer",
+          "SpellSlots": 15
+        }
+      ],
+      "Spells": [
+        {
+          "Area": "20 ft. radius sphere",
+          "Class": "Sorcerer",
+          "Components": "V, S, M (tiny ball of guano and sulfur)",
+          "Concentration": false,
+          "Damage": "8d6 Fire",
+          "Description": "Fire spreads around corners and ignites flammable objects.",
+          "Duration": "Instantaneous",
+          "Id": "51105b98-bc9b-49c3-8104-2e6db0db7da1",
+          "IsCustom": false,
+          "Level": 3,
+          "Name": "Fireball",
+          "Page": 241,
+          "Prepared": true,
+          "Range": "150 ft.",
+          "Ritual": false,
+          "Save": "DEX (Half DAM)",
+          "School": 4,
+          "CurrentConcentration": false
+        },
+        {
+          "Area": "100 ft. line",
+          "Class": "Sorcerer",
+          "Components": "V, S, M (bit of fur and glass rod)",
+          "Concentration": false,
+          "Damage": "8d6 LIghtning",
+          "Description": "Lightning ignites flammable objects.",
+          "Duration": "Instantaneous",
+          "Id": "5e5bca20-5699-4482-8ae5-30b30b6483fa",
+          "IsCustom": false,
+          "Level": 3,
+          "Name": "Lightning Bolt",
+          "Page": 255,
+          "Prepared": true,
+          "Range": "Self",
+          "Ritual": false,
+          "Save": "DEX (Half DAM)",
+          "School": 4,
+          "CurrentConcentration": false
+        },
+        {
+          "Area": "1 target, then 3 within 30ft.",
+          "Class": "Sorcerer",
+          "Components": "V, S, M (bit of fur, glass, 3 silver pins)",
+          "Concentration": false,
+          "Damage": "10d8 Lightning",
+          "Description": "Bolt hits one target then forks to up to 3 others.",
+          "Duration": "Instantaneous",
+          "Id": "88721e09-f50d-4b0e-8db3-febf0f5125dd",
+          "IsCustom": false,
+          "Level": 6,
+          "Name": "Chain Lightning",
+          "Page": 221,
+          "Prepared": true,
+          "Range": "150 ft.",
+          "Ritual": false,
+          "Save": "DEX (Half DAM)",
+          "School": 4,
+          "CurrentConcentration": false
+        },
+        {
+          "Area": "20 ft. radius sphere",
+          "Class": "Sorcerer",
+          "Components": "V, S",
+          "Concentration": true,
+          "Damage": "5d8 Poison",
+          "Description": "DAM taken on entering or starting turn in area. Fog moves away 10 ft. per turn.",
+          "Duration": "10 minutes",
+          "Id": "16615acd-edc2-46a6-bad2-7c806c019555",
+          "IsCustom": false,
+          "Level": 5,
+          "Name": "Cloudkill",
+          "Page": 222,
+          "Prepared": true,
+          "Range": "120 ft.",
+          "Ritual": false,
+          "Save": "CON (Half DAM)",
+          "School": 1,
+          "CurrentConcentration": false
+        },
+        {
+          "Area": "Self",
+          "Class": "Sorcerer",
+          "Components": "V, S",
+          "Concentration": false,
+          "Damage": "--",
+          "Description": "Gain +5 bonus to AC, including triggering attack. Negates Magic Missile attacks.",
+          "Duration": "1 round",
+          "Id": "541a5b60-b56a-42fd-997f-7d4aab5711c2",
+          "IsCustom": false,
+          "Level": 1,
+          "Name": "Shield",
+          "Page": 275,
+          "Prepared": true,
+          "Range": "Self",
+          "Ritual": false,
+          "Save": "--",
+          "School": 0,
+          "CurrentConcentration": false
+        },
+        {
+          "Area": "Any creature in range.",
+          "Class": "Sorcerer",
+          "Components": "V, S",
+          "Concentration": false,
+          "Damage": "(1d4+1)x3 Force",
+          "Description": "You choose the target for each dart that does 1d4+1 DAM.",
+          "Duration": "Instantaneous",
+          "Id": "66733bf0-3096-452d-812c-3c7fa308070f",
+          "IsCustom": false,
+          "Level": 1,
+          "Name": "Magic Missile",
+          "Page": 257,
+          "Prepared": true,
+          "Range": "120 ft.",
+          "Ritual": false,
+          "Save": "--",
+          "School": 4,
+          "CurrentConcentration": false
+        },
+        {
+          "Area": "Self",
+          "Class": "Sorcerer",
+          "Components": "V",
+          "Concentration": false,
+          "Damage": "--",
+          "Description": "Teleport <= 30 ft. away to unoccupied location.",
+          "Duration": "Instantaneous",
+          "Id": "d39057e5-6d18-4f0b-bc98-46914f1ce5f4",
+          "IsCustom": false,
+          "Level": 2,
+          "Name": "Misty Step",
+          "Page": 260,
+          "Prepared": true,
+          "Range": "Self",
+          "Ritual": false,
+          "Save": "--",
+          "School": 1,
+          "CurrentConcentration": false
+        },
+        {
+          "Area": "1 creature/object",
+          "Class": "Sorcerer",
+          "Components": "V, S",
+          "Concentration": false,
+          "Damage": "1d10 Fire",
+          "Description": "DAM at 5th level: 2d10, at 11th level: 3d10, at 17th level: 4d10.",
+          "Duration": "Instantaneous",
+          "Id": "c0649f7b-7866-42a8-bbba-bf2227db812c",
+          "IsCustom": false,
+          "Level": 0,
+          "Name": "Fire Bolt",
+          "Page": 242,
+          "Prepared": true,
+          "Range": "120 ft.",
+          "Ritual": false,
+          "Save": "Ranged Spell Attack",
+          "School": 4,
+          "CurrentConcentration": false
+        },
+        {
+          "Area": "1 creature",
+          "Class": "Sorcerer",
+          "Components": "V, S",
+          "Concentration": false,
+          "Damage": "1d8 Lightning",
+          "Description": "Target can't take reactions until next turn. Advantage if target has metal armor.",
+          "Duration": "Instantaneous",
+          "Id": "04cbe3d6-5813-4d07-b7bf-a35d76629007",
+          "IsCustom": false,
+          "Level": 0,
+          "Name": "Shocking Grasp",
+          "Page": 275,
+          "Prepared": true,
+          "Range": "Touch",
+          "Ritual": false,
+          "Save": "Melee Spell Attack",
+          "School": 4,
+          "CurrentConcentration": false
+        },
+        {
+          "Area": "Self",
+          "Class": "Sorcerer",
+          "Components": "V, S",
+          "Concentration": false,
+          "Damage": "--",
+          "Description": "Create illusion to appear as someone else.  Foiled by Investigation vs. spell DC.",
+          "Duration": "1 hour",
+          "Id": "5adc6c0e-8889-44de-803f-7f55d2099c47",
+          "IsCustom": false,
+          "Level": 1,
+          "Name": "Disguise Self",
+          "Page": 233,
+          "Prepared": true,
+          "Range": "Self",
+          "Ritual": false,
+          "Save": "--",
+          "School": 5,
+          "CurrentConcentration": false
+        },
+        {
+          "Area": "1 creature",
+          "Class": "Sorcerer",
+          "Components": "V, S, M (lodestone and pinch of dust)",
+          "Concentration": false,
+          "Damage": "10d6+40 Force",
+          "Description": "If target drops to 0 HP, is disintegrated. Only revived by True Resurrection.",
+          "Duration": "Instantaneous",
+          "Id": "4fd5a2f0-892e-47f7-9efe-4779865c0a39",
+          "IsCustom": false,
+          "Level": 6,
+          "Name": "Disintegrate",
+          "Page": 233,
+          "Prepared": true,
+          "Range": "60 ft.",
+          "Ritual": false,
+          "Save": "DEX (Fail)",
+          "School": 7,
+          "CurrentConcentration": false
+        },
+        {
+          "Area": "1 creature",
+          "Class": "Sorcerer",
+          "Components": "S",
+          "Concentration": true,
+          "Damage": "--",
+          "Description": "Next turn you gain advantage on first attack against the target.",
+          "Duration": "1 round",
+          "Id": "1a118efd-297b-4db3-bc69-09ba3c1c607a",
+          "IsCustom": false,
+          "Level": 0,
+          "Name": "True Strike",
+          "Page": 284,
+          "Prepared": true,
+          "Range": "30 ft.",
+          "Ritual": false,
+          "Save": "--",
+          "School": 2,
+          "CurrentConcentration": false
+        }
+      ],
+      "SpellSlots": {
+        "PactTotal": 0,
+        "FirstTotal": 4,
+        "SecondTotal": 2,
+        "ThirdTotal": 3,
+        "FourthTotal": 3,
+        "FifthTotal": 2,
+        "SixthTotal": 1,
+        "SeventhTotal": 0,
+        "EighthTotal": 0,
+        "NinethTotal": 0,
+        "PactUsed": 0,
+        "FirstUsed": 0,
+        "SecondUsed": 0,
+        "ThirdUsed": 0,
+        "FourthUsed": 0,
+        "FifthUsed": 0,
+        "SixthUsed": 0,
+        "SeventhUsed": 0,
+        "EighthUsed": 0,
+        "NinethUsed": 0
+      }
+    },
+    "Properties": {
+      "Name": "Isaac Hawthorne",
+      "Race": {
+        "Name": "Half-Elf",
+        "Subrace": "High"
+      },
+      "Background": "Charlatan",
+      "Alignment": "Neutral Good",
+      "Experience": "",
+      "Class1": {
+        "Name": "Sorcerer",
+        "Subclass": "Wild Magic",
+        "ClassNumber": 1,
+        "Level": 12
+      },
+      "Class2": {
+        "Name": "",
+        "Subclass": "",
+        "ClassNumber": 2,
+        "Level": 0
+      },
+      "Class3": {
+        "Name": "",
+        "Subclass": "",
+        "ClassNumber": 3,
+        "Level": 0
+      }
+    },
+    "CharacterImage": {
+      "Encoded": "",
+      "Path": "",
+      "Stretch": 3,
+      "UseCustomImage": false
+    },
+    "SavingThrows": {
+      "Strength": {
+        "Proficiency": false,
+        "CheckOverride": 4
+      },
+      "Dexterity": {
+        "Proficiency": false,
+        "CheckOverride": 4
+      },
+      "Constitution": {
+        "Proficiency": true,
+        "CheckOverride": 4
+      },
+      "Intelligence": {
+        "Proficiency": false,
+        "CheckOverride": 4
+      },
+      "Wisdom": {
+        "Proficiency": false,
+        "CheckOverride": 4
+      },
+      "Charisma": {
+        "Proficiency": true,
+        "CheckOverride": 4
+      }
+    },
+    "Skills": {
+      "Athletics": {
+        "Proficiency": false,
+        "Expertise": false,
+        "CheckOverride": 4
+      },
+      "Acrobatics": {
+        "Proficiency": false,
+        "Expertise": false,
+        "CheckOverride": 4
+      },
+      "SleightOfHand": {
+        "Proficiency": true,
+        "Expertise": false,
+        "CheckOverride": 4
+      },
+      "Stealth": {
+        "Proficiency": false,
+        "Expertise": false,
+        "CheckOverride": 4
+      },
+      "Arcana": {
+        "Proficiency": true,
+        "Expertise": true,
+        "CheckOverride": 4
+      },
+      "History": {
+        "Proficiency": false,
+        "Expertise": false,
+        "CheckOverride": 4
+      },
+      "Investigation": {
+        "Proficiency": false,
+        "Expertise": false,
+        "CheckOverride": 4
+      },
+      "Nature": {
+        "Proficiency": false,
+        "Expertise": false,
+        "CheckOverride": 4
+      },
+      "Religion": {
+        "Proficiency": false,
+        "Expertise": false,
+        "CheckOverride": 4
+      },
+      "AnimalHandling": {
+        "Proficiency": false,
+        "Expertise": false,
+        "CheckOverride": 4
+      },
+      "Insight": {
+        "Proficiency": false,
+        "Expertise": false,
+        "CheckOverride": 4
+      },
+      "Medicine": {
+        "Proficiency": false,
+        "Expertise": false,
+        "CheckOverride": 4
+      },
+      "Perception": {
+        "Proficiency": true,
+        "Expertise": false,
+        "CheckOverride": 4
+      },
+      "Survival": {
+        "Proficiency": false,
+        "Expertise": false,
+        "CheckOverride": 4
+      },
+      "Deception": {
+        "Proficiency": true,
+        "Expertise": true,
+        "CheckOverride": 4
+      },
+      "Intimidation": {
+        "Proficiency": false,
+        "Expertise": false,
+        "CheckOverride": 4
+      },
+      "Performance": {
+        "Proficiency": true,
+        "Expertise": false,
+        "CheckOverride": 4
+      },
+      "Persuasion": {
+        "Proficiency": true,
+        "Expertise": false,
+        "CheckOverride": 4
+      }
+    },
+    "Vitality": {
+      "Health": {
+        "MaxHealth": 91,
+        "TemporaryHealth": 0,
+        "BaseHealth": 91
+      },
+      "HitDice": {
+        "TotalD6": 12,
+        "TotalD8": 0,
+        "TotalD10": 0,
+        "TotalD12": 0,
+        "SpentD6": 0,
+        "SpentD8": 0,
+        "SpentD10": 0,
+        "SpentD12": 0
+      },
+      "Conditions": {
+        "Blinded": {
+          "Value": "Blinded - Automatically fail any ability checks. Attack rolls against you have advantage, your attacks have disadvantage.",
+          "Afflicted": false,
+          "Description": "Automatically fail any ability checks. Attack rolls against you have advantage, your attacks have disadvantage.",
+          "Name": "Blinded"
+        },
+        "Charmed": {
+          "Value": "Charmed - You cannot attack the charmer. The charmer has advantage on ability checks when interacting socially.",
+          "Afflicted": false,
+          "Description": "You cannot attack the charmer. The charmer has advantage on ability checks when interacting socially.",
+          "Name": "Charmed"
+        },
+        "Dead": {
+          "Value": "Dead - You must succeed on 3 death saving throws, before failing 3. Succeeding will stabilize at 0 HP.",
+          "Afflicted": false,
+          "Description": "You must succeed on 3 death saving throws, before failing 3. Succeeding will stabilize at 0 HP.",
+          "Name": "Dead"
+        },
+        "Deafened": {
+          "Value": "Deafened - You cannot hear and automatically fails any ability check that requires hearing.",
+          "Afflicted": false,
+          "Description": "You cannot hear and automatically fails any ability check that requires hearing.",
+          "Name": "Deafened"
+        },
+        "Fatigued": {
+          "Value": " - Exhaustion levels stack up to 6. A long rest reduces the level by 1. .",
+          "ExhaustionLevel": 0,
+          "Description": "Exhaustion levels stack up to 6. A long rest reduces the level by 1.",
+          "Name": "Fatigued"
+        },
+        "Frightened": {
+          "Value": "Frightened - You have disadvantage on Ability Checks and Attack rolls while the source of fear is within line of sight. You can’t willingly move closer to the source.",
+          "Afflicted": false,
+          "Description": "You have disadvantage on Ability Checks and Attack rolls while the source of fear is within line of sight. You can’t willingly move closer to the source.",
+          "Name": "Frightened"
+        },
+        "Grappled": {
+          "Value": "Grappled - Your speed becomes 0. It ends when the grappler is incapacitated or you are thrown away.",
+          "Afflicted": false,
+          "Description": "Your speed becomes 0. It ends when the grappler is incapacitated or you are thrown away.",
+          "Name": "Grappled"
+        },
+        "Incapacitated": {
+          "Value": "Incapacitated - You Cannot take Actions or reactions.",
+          "Afflicted": false,
+          "Description": "You Cannot take Actions or reactions.",
+          "Name": "Incapacitated"
+        },
+        "Invisible": {
+          "Value": "Invisible - You are impossible to see without the aid of magic or a Special sense. Attacks against you have disadvantage, your attacks have advantage.",
+          "Afflicted": false,
+          "Description": "You are impossible to see without the aid of magic or a Special sense. Attacks against you have disadvantage, your attacks have advantage.",
+          "Name": "Invisible"
+        },
+        "Paralyzed": {
+          "Value": "Paralyzed - You are incapacitated and automatically fail Strength and Dexterity Saving Throws. Attacks have advantage, and melee are auto crit.",
+          "Afflicted": false,
+          "Description": "You are incapacitated and automatically fail Strength and Dexterity Saving Throws. Attacks have advantage, and melee are auto crit.",
+          "Name": "Paralyzed"
+        },
+        "Petrified": {
+          "Value": "Petrified - You are transformed into an inanimate substance and are incapacitated. Resistant to all damage and immune to poison and disease.",
+          "Afflicted": false,
+          "Description": "You are transformed into an inanimate substance and are incapacitated. Resistant to all damage and immune to poison and disease.",
+          "Name": "Petrified"
+        },
+        "Poisoned": {
+          "Value": "Poisoned - You have disadvantage on Attack rolls and Ability Checks",
+          "Afflicted": false,
+          "Description": "You have disadvantage on Attack rolls and Ability Checks",
+          "Name": "Poisoned"
+        },
+        "Prone": {
+          "Value": "Prone - Your only movement option is to crawl and have disadvantage on attacks. Melee attack is advantage, ranged is disadvantage.",
+          "Afflicted": false,
+          "Description": "Your only movement option is to crawl and have disadvantage on attacks. Melee attack is advantage, ranged is disadvantage.",
+          "Name": "Prone"
+        },
+        "Restrained": {
+          "Value": "Restrained - Your speed becomes 0. Your attacks have disadvantage, enemies have advantage. Dexterity Saving Throws are disadvantage.",
+          "Afflicted": false,
+          "Description": "Your speed becomes 0. Your attacks have disadvantage, enemies have advantage. Dexterity Saving Throws are disadvantage.",
+          "Name": "Restrained"
+        },
+        "Stunned": {
+          "Value": "Stunned - You are incapacitated and speak falteringly, and automatically fail Strength and Dexterity Saving Throws. Attacks against have advantage.",
+          "Afflicted": false,
+          "Description": "You are incapacitated and speak falteringly, and automatically fail Strength and Dexterity Saving Throws. Attacks against have advantage.",
+          "Name": "Stunned"
+        },
+        "Unconscious": {
+          "Value": "Unconscious - You are incapacitated, drop what you're holding, and fall prone. Attacks against have advantage and hits are auto crit.",
+          "Afflicted": false,
+          "Description": "You are incapacitated, drop what you're holding, and fall prone. Attacks against have advantage and hits are auto crit.",
+          "Name": "Unconscious"
+        }
+      },
+      "DeathSavingThrows": {
+        "CurrentDeathSave": 0,
+        "DeathSaves": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "StatusEffects": [],
+      "ClassResources": [
+        {
+          "Type": "Sorcery Points",
+          "Total": 12,
+          "Spent": 0,
+          "IsCustom": false,
+          "Note": "Used to power spells.",
+          "Recovery": 1,
+          "Id": "1e013ff6-11ea-4927-b9f8-b31522d24cd3"
+        }
+      ]
+    },
+    "Wealth": {
+      "Copper": 0,
+      "Silver": 0,
+      "Electrum": 0,
+      "Gold": 27000,
+      "Platinum": 0
+    },
+    "Equipment": {
+      "Ammunition": [],
+      "Defense": {
+        "Armor": {
+          "Ac": 10,
+          "Name": "Clothing",
+          "Stealth": 0,
+          "Strength": 0,
+          "Type": 0,
+          "Weight": {
+            "Value": 0.0,
+            "UnitType": 0,
+            "Measurement": 1
+          },
+          "Id": "25aa2dd6-a62d-42d4-bd1a-2c0958ca4993",
+          "IsCustom": false
+        },
+        "ArmorStatus": 0,
+        "MagicAc": 1,
+        "MiscAc": 2,
+        "Shield": "",
+        "ShieldAc": 0,
+        "ShieldWeight": {
+          "Value": 0.0,
+          "UnitType": 0,
+          "Measurement": 1
+        }
+      },
+      "Inventory": [],
+      "Weapons": []
+    }
+  },
+  "Hash": "3CACE4C9DDCD98F77DFB5ADADAB4302BA2AE98763D036CC61DB4CDD8BE645E1F",
+  "OriginalCreationDate": "Thursday, 04 January 2024 11:03:53 AM",
+  "LastSaveDate": "2024-01-04T11:23:59.435605-06:00",
+  "Version": {
+    "Major": 5,
+    "Minor": 5,
+    "Patch": 13
+  },
+  "IsEmpty": false
+}

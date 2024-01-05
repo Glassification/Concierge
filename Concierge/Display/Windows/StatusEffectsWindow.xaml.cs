@@ -4,7 +4,6 @@
 
 namespace Concierge.Display.Windows
 {
-    using System;
     using System.Collections.Generic;
     using System.Windows;
     using System.Windows.Controls;
@@ -136,7 +135,7 @@ namespace Concierge.Display.Windows
             var oldItem = this.SelectedEffect.DeepCopy();
 
             this.SelectedEffect.Name = this.NameComboBox.Text;
-            this.SelectedEffect.Type = (StatusEffectTypes)Enum.Parse(typeof(StatusEffectTypes), this.TypeComboBox.Text);
+            this.SelectedEffect.Type = this.TypeComboBox.Text.ToEnum<StatusEffectTypes>();
             this.SelectedEffect.Description = this.DescriptionTextBox.Text;
 
             if (!this.SelectedEffect.IsCustom)
@@ -150,7 +149,7 @@ namespace Concierge.Display.Windows
             return new StatusEffect()
             {
                 Name = this.NameComboBox.Text,
-                Type = (StatusEffectTypes)Enum.Parse(typeof(StatusEffectTypes), this.TypeComboBox.Text),
+                Type = this.TypeComboBox.Text.ToEnum<StatusEffectTypes>(),
                 Description = this.DescriptionTextBox.Text,
             };
         }

@@ -120,7 +120,8 @@ namespace Concierge.Services
                 this.saveFileDialog.InitialDirectory = AppSettingsManager.UserSettings.DefaultFolder.SaveFolder;
             }
 
-            this.saveFileDialog.FileName = FileConstants.DefaultFileName;
+            var name = ccsFile.Character.Properties.Name;
+            this.saveFileDialog.FileName = name.IsNullOrWhiteSpace() ? FileConstants.DefaultFileName : name;
             this.saveFileDialog.Filter = FileConstants.SaveFilter;
             this.saveFileDialog.DefaultExt = "ccs";
             this.saveFileDialog.FilterIndex = (int)CcsFiltersIndex.Ccs;

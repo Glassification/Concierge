@@ -4,7 +4,6 @@
 
 namespace Concierge.Display.Windows
 {
-    using System;
     using System.Windows;
 
     using Concierge.Character.Enums;
@@ -96,7 +95,7 @@ namespace Concierge.Display.Windows
 
             this.PreviousSlot = this.SlotComboBox.Text;
             this.ItemsAdded = true;
-            var slot = (EquipmentSlot)Enum.Parse(typeof(EquipmentSlot), this.SlotComboBox.Text);
+            var slot = this.SlotComboBox.Text.ToEnum<EquipmentSlot>();
 
             if (itemControl.Item is Inventory inventory)
             {

@@ -4,7 +4,6 @@
 
 namespace Concierge.Display.Windows
 {
-    using System;
     using System.Collections.Generic;
     using System.Windows;
     using System.Windows.Controls;
@@ -138,7 +137,7 @@ namespace Concierge.Display.Windows
                 Type = this.ResourceNameComboBox.Text,
                 Total = this.PoolUpDown.Value,
                 Spent = this.SpentUpDown.Value,
-                Recovery = (Recovery)Enum.Parse(typeof(Recovery), this.RecoveryComboBox.Text.Strip(" ")),
+                Recovery = this.RecoveryComboBox.Text.Strip(" ").ToEnum<Recovery>(),
                 Note = this.NotesTextBox.Text,
             };
         }
@@ -162,7 +161,7 @@ namespace Concierge.Display.Windows
                 this.ClassResource.Type = this.ResourceNameComboBox.Text;
                 this.ClassResource.Total = this.PoolUpDown.Value;
                 this.ClassResource.Spent = this.SpentUpDown.Value;
-                this.ClassResource.Recovery = (Recovery)Enum.Parse(typeof(Recovery), this.RecoveryComboBox.Text.Strip(" "));
+                this.ClassResource.Recovery = this.RecoveryComboBox.Text.Strip(" ").ToEnum<Recovery>();
                 this.ClassResource.Note = this.NotesTextBox.Text;
 
                 if (!this.ClassResource.IsCustom)

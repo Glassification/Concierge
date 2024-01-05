@@ -4,7 +4,6 @@
 
 namespace Concierge.Display.Windows
 {
-    using System;
     using System.Windows;
 
     using Concierge.Character.Characteristics;
@@ -91,7 +90,7 @@ namespace Concierge.Display.Windows
 
             senses.InitiativeBonus = this.InitiativeBonusUpDown.Value;
             senses.PerceptionBonus = this.PerceptionBonusUpDown.Value;
-            senses.Vision = (VisionTypes)Enum.Parse(typeof(VisionTypes), this.VisionComboBox.Text.Strip(" "));
+            senses.Vision = this.VisionComboBox.Text.Strip(" ").ToEnum<VisionTypes>();
             senses.BaseMovement = this.BaseMovementUpDown.Value;
             senses.MovementBonus = this.MovementBonusUpDown.Value;
             senses.Inspiration = this.InspirationCheckBox.IsChecked ?? false;

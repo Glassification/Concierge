@@ -10,7 +10,7 @@ namespace Concierge.Services.ImportService.Importers
     using Concierge.Character.Vitals;
     using Concierge.Common;
 
-    public class StatusEffectImporter : Importer
+    public sealed class StatusEffectImporter : Importer
     {
         public StatusEffectImporter(ConciergeCharacter character)
             : base(character)

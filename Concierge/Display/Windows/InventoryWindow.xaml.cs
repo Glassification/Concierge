@@ -4,7 +4,6 @@
 
 namespace Concierge.Display.Windows
 {
-    using System;
     using System.Collections.Generic;
     using System.Windows;
     using System.Windows.Controls;
@@ -216,7 +215,7 @@ namespace Concierge.Display.Windows
                 Description = this.DescriptionTextBox.Text,
                 ItemCategory = this.CategoryComboBox.Text,
                 Value = this.ValueUpDown.Value,
-                CoinType = (CoinType)Enum.Parse(typeof(CoinType), this.CoinTypeComboBox.Text),
+                CoinType = this.CoinTypeComboBox.Text.ToEnum<CoinType>(),
                 Consumable = this.ConsumableCheckBox.IsChecked ?? false,
             };
         }
@@ -232,7 +231,7 @@ namespace Concierge.Display.Windows
             inventory.Description = this.DescriptionTextBox.Text;
             inventory.ItemCategory = this.CategoryComboBox.Text;
             inventory.Value = this.ValueUpDown.Value;
-            inventory.CoinType = (CoinType)Enum.Parse(typeof(CoinType), this.CoinTypeComboBox.Text);
+            inventory.CoinType = this.CoinTypeComboBox.Text.ToEnum<CoinType>();
             inventory.IgnoreWeight = this.IgnoreWeightCheckBox.IsChecked ?? false;
             inventory.Consumable = this.ConsumableCheckBox.IsChecked ?? false;
 

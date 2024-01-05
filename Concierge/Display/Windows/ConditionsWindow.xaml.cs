@@ -4,7 +4,6 @@
 
 namespace Concierge.Display.Windows
 {
-    using System;
     using System.Windows;
 
     using Concierge.Character.Enums;
@@ -107,7 +106,7 @@ namespace Concierge.Display.Windows
             this.Conditions.Charmed.Afflicted = this.CharmedCheckBox.IsChecked ?? false;
             this.Conditions.Dead.Afflicted = this.DeathCheckBox.IsChecked ?? false;
             this.Conditions.Deafened.Afflicted = this.DeafenedCheckBox.IsChecked ?? false;
-            this.Conditions.Fatigued.ExhaustionLevel = (ExhaustionLevel)Enum.Parse(typeof(ExhaustionLevel), this.FatiguedComboBox.Text);
+            this.Conditions.Fatigued.ExhaustionLevel = this.FatiguedComboBox.Text.ToEnum<ExhaustionLevel>();
             this.Conditions.Frightened.Afflicted = this.FrightenedCheckBox.IsChecked ?? false;
             this.Conditions.Grappled.Afflicted = this.GrappledCheckBox.IsChecked ?? false;
             this.Conditions.Incapacitated.Afflicted = this.IncapacitatedCheckBox.IsChecked ?? false;
@@ -123,7 +122,7 @@ namespace Concierge.Display.Windows
 
             if (this.Conditions.Encumbered.OverrideEncumbrance)
             {
-                this.Conditions.Encumbered.EncumbranceLevelOverride = (EncumbranceLevel)Enum.Parse(typeof(EncumbranceLevel), this.EncumbranceComboBox.Text.Strip(" "));
+                this.Conditions.Encumbered.EncumbranceLevelOverride = this.EncumbranceComboBox.Text.Strip(" ").ToEnum<EncumbranceLevel>();
             }
 
             Program.UndoRedoService.AddCommand(new EditCommand<Conditions>(this.Conditions, oldItem, this.ConciergePage));

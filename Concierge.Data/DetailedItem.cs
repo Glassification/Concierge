@@ -11,7 +11,7 @@ namespace Concierge.Data
     /// <summary>
     /// Represents a detailed item with a name, additional information, an icon, and an icon color.
     /// </summary>
-    public class DetailedItem
+    public sealed class DetailedItem
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="DetailedItem"/> class with default values.

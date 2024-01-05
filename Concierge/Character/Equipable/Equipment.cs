@@ -12,7 +12,7 @@ namespace Concierge.Character.Equipable
     using Concierge.Data.Units;
     using Newtonsoft.Json;
 
-    public class Equipment : ICopyable<Equipment>
+    public sealed class Equipment : ICopyable<Equipment>
     {
         public Equipment()
         {

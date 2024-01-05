@@ -4,7 +4,6 @@
 
 namespace Concierge.Display.Windows
 {
-    using System;
     using System.Windows;
 
     using Concierge.Character;
@@ -81,9 +80,9 @@ namespace Concierge.Display.Windows
             this.Properties.Name = this.NameTextBox.Text;
             this.Properties.ArmorClass = this.AcUpDown.Value;
             this.Properties.Perception = this.PerceptionUpDown.Value;
-            this.Properties.Vision = (VisionTypes)Enum.Parse(typeof(VisionTypes), this.VisionComboBox.Text.Strip(" "));
+            this.Properties.Vision = this.VisionComboBox.Text.Strip(" ").ToEnum<VisionTypes>();
             this.Properties.Movement = this.MovementUpDown.Value;
-            this.Properties.CreatureSize = (CreatureSizes)Enum.Parse(typeof(CreatureSizes), this.CreatureSizeComboBox.Text);
+            this.Properties.CreatureSize = this.CreatureSizeComboBox.Text.ToEnum<CreatureSizes>();
             this.Properties.Initiative = this.InitiativeUpDown.Value;
 
             Program.UndoRedoService.AddCommand(new EditCommand<CompanionProperties>(this.Properties, oldItem, this.ConciergePage));

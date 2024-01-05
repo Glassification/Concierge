@@ -10,7 +10,7 @@ namespace Concierge.Services.ImportService.Importers
     using Concierge.Character.Spellcasting;
     using Concierge.Common;
 
-    public class SpellImporter : Importer
+    public sealed class SpellImporter : Importer
     {
         public SpellImporter(ConciergeCharacter character)
             : base(character)

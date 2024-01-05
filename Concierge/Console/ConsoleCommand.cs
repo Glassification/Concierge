@@ -10,10 +10,8 @@ namespace Concierge.Console
     using Concierge.Common.Extensions;
     using Newtonsoft.Json;
 
-    public class ConsoleCommand
+    public sealed partial class ConsoleCommand
     {
-        private readonly Regex textInParentheses = new (@"\(.*?\)", RegexOptions.Compiled);
-
         public ConsoleCommand(string command)
         {
             this.Name = string.Empty;
@@ -39,6 +37,9 @@ namespace Concierge.Console
             return JsonConvert.SerializeObject(this, Formatting.None);
         }
 
+        [GeneratedRegex(@"\(.*?\)", RegexOptions.Compiled)]
+        private static partial Regex TextInParenthesesRegex();
+
         private void Parse(string command)
         {
             command = command.Strip(Constants.ConsolePrompt);
@@ -61,7 +62,7 @@ namespace Concierge.Console
             if (tokens[1].Contains('('))
             {
                 this.Action = tokens[1][..tokens[1].IndexOf('(')];
-                this.Argument = this.textInParentheses.Match(tokens[1]).Value.Strip("(", ")");
+                this.Argument = TextInParenthesesRegex().Match(tokens[1]).Value.Strip("(", ")");
             }
             else
             {

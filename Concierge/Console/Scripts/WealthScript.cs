@@ -10,7 +10,7 @@ namespace Concierge.Console.Scripts
     using Concierge.Common.Extensions;
     using Concierge.Console.Enums;
 
-    public class WealthScript : IScript
+    public sealed class WealthScript : IScript
     {
         public WealthScript(Wealth wealth)
         {

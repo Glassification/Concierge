@@ -4,7 +4,6 @@
 
 namespace Concierge.Display.Windows
 {
-    using System;
     using System.Collections.Generic;
     using System.Windows;
     using System.Windows.Controls;
@@ -222,11 +221,11 @@ namespace Concierge.Display.Windows
             var oldItem = weapon.DeepCopy();
 
             weapon.Name = this.AttackComboBox.Text;
-            weapon.Type = (WeaponTypes)Enum.Parse(typeof(WeaponTypes), this.TypeComboBox.Text.Strip(" "));
-            weapon.Ability = (Abilities)Enum.Parse(typeof(Abilities), this.AbilityComboBox.Text);
+            weapon.Type = this.TypeComboBox.Text.Strip(" ").ToEnum<WeaponTypes>();
+            weapon.Ability = this.AbilityComboBox.Text.ToEnum<Abilities>();
             weapon.Damage = this.DamageTextBox.Text;
             weapon.Misc = this.MiscDamageTextBox.Text;
-            weapon.DamageType = (DamageTypes)Enum.Parse(typeof(DamageTypes), this.DamageTypeComboBox.Text);
+            weapon.DamageType = this.DamageTypeComboBox.Text.ToEnum<DamageTypes>();
             weapon.Range = this.RangeTextBox.Text;
             weapon.Weight.Value = this.WeightUpDown.Value;
             weapon.ProficiencyOverride = this.ProficencyOverrideCheckBox.IsChecked ?? false;
@@ -234,7 +233,7 @@ namespace Concierge.Display.Windows
             weapon.Attuned = this.AttunedCheckBox.IsChecked ?? false;
             weapon.Note = this.NotesTextBox.Text;
             weapon.Value = this.ValueUpDown.Value;
-            weapon.CoinType = (CoinType)Enum.Parse(typeof(CoinType), this.CoinTypeComboBox.Text);
+            weapon.CoinType = this.CoinTypeComboBox.Text.ToEnum<CoinType>();
 
             if (!weapon.IsCustom)
             {
@@ -247,11 +246,11 @@ namespace Concierge.Display.Windows
             return new Weapon(creature ?? throw new NullValueException(nameof(creature)))
             {
                 Name = this.AttackComboBox.Text,
-                Type = (WeaponTypes)Enum.Parse(typeof(WeaponTypes), this.TypeComboBox.Text.Strip(" ")),
-                Ability = (Abilities)Enum.Parse(typeof(Abilities), this.AbilityComboBox.Text),
+                Type = this.TypeComboBox.Text.Strip(" ").ToEnum<WeaponTypes>(),
+                Ability = this.AbilityComboBox.Text.ToEnum<Abilities>(),
                 Damage = this.DamageTextBox.Text,
                 Misc = this.MiscDamageTextBox.Text,
-                DamageType = (DamageTypes)Enum.Parse(typeof(DamageTypes), this.DamageTypeComboBox.Text),
+                DamageType = this.DamageTypeComboBox.Text.ToEnum<DamageTypes>(),
                 Range = this.RangeTextBox.Text,
                 Weight = new UnitDouble(this.WeightUpDown.Value, AppSettingsManager.UserSettings.UnitOfMeasurement, Measurements.Weight),
                 ProficiencyOverride = this.ProficencyOverrideCheckBox.IsChecked ?? false,
@@ -259,7 +258,7 @@ namespace Concierge.Display.Windows
                 Note = this.NotesTextBox.Text,
                 Value = this.ValueUpDown.Value,
                 Attuned = this.AttunedCheckBox.IsChecked ?? false,
-                CoinType = (CoinType)Enum.Parse(typeof(CoinType), this.CoinTypeComboBox.Text),
+                CoinType = this.CoinTypeComboBox.Text.ToEnum<CoinType>(),
             };
         }
 

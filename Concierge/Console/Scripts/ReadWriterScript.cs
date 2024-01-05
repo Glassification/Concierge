@@ -11,7 +11,7 @@ namespace Concierge.Console.Scripts
     using Concierge.Console.Enums;
     using Newtonsoft.Json;
 
-    public class ReadWriterScript<T> : IScript
+    public sealed class ReadWriterScript<T> : IScript
     {
         public ReadWriterScript(T item)
         {

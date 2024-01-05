@@ -202,7 +202,7 @@ namespace Concierge.Character.Equipable
             var damage = new CustomDiceRoll(cleanedInput);
             var damageType = $"{this.DamageType} {ammunition?.DamageType}";
 
-            return new UsedItem(attack, damage, this.Name, damageType, this.Note);
+            return new UsedItem(attack, damage, this.Name, damageType, $"[Damage: {damage.Min} - {damage.Max}] {this.Note}");
         }
 
         public CategoryDto GetCategory()

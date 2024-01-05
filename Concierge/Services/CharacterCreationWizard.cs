@@ -7,7 +7,6 @@ namespace Concierge.Services
     using System;
     using System.Linq;
 
-    using Concierge.Character;
     using Concierge.Display;
     using Concierge.Display.Components;
     using Concierge.Display.Enums;
@@ -17,39 +16,37 @@ namespace Concierge.Services
 
     public sealed class CharacterCreationWizard
     {
+        private bool isStopped;
+
         public CharacterCreationWizard()
         {
-            this.IsStopped = false;
+            this.isStopped = false;
         }
 
-        private bool IsStopped { get; set; }
-
-        public void Start()
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822:Mark members as static", Justification = "The way she goes.")]
+        public ConciergeWindowResult Prompt()
         {
-            this.IsStopped = false;
-
-            var result = ConciergeMessageBox.Show(
+            return ConciergeMessageBox.Show(
                 "This is the Concierge Character Creation Wizard. This will help jump start your path to godhood.",
                 "Character Creation",
                 ConciergeWindowButtons.OkCancel,
                 ConciergeWindowIcons.Information);
+        }
 
-            if (result != ConciergeWindowResult.OK)
-            {
-                this.Stop();
-                return;
-            }
+        public bool Start()
+        {
+            this.isStopped = false;
 
             this.RunSetupSteps();
             RemoveDuplicates();
             Program.UndoRedoService.Clear();
+
+            return !this.isStopped;
         }
 
         public void Stop()
         {
-            this.IsStopped = true;
-            Program.CcsFile.Character = new ConciergeCharacter();
-            Program.Unmodify();
+            this.isStopped = true;
         }
 
         private static void RunDefinitions()
@@ -110,7 +107,7 @@ namespace Concierge.Services
             ConciergeWindowResult wizardResult;
             ConciergeWindowResult confirmExitResult;
 
-            if (this.IsStopped)
+            if (this.isStopped)
             {
                 return;
             }

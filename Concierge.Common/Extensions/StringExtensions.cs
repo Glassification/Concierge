@@ -519,6 +519,51 @@ namespace Concierge.Common.Extensions
             return lowercase ? "a" : "A";
         }
 
+        /// <summary>
+        /// Converts a string representation to an enumerated type of the specified <typeparamref name="T"/>.
+        /// </summary>
+        /// <typeparam name="T">The enumerated type to convert to.</typeparam>
+        /// <param name="str">The string representation of the enumerated value.</param>
+        /// <returns>
+        /// An enumerated type of the specified <typeparamref name="T"/> parsed from the input string.
+        /// </returns>
+        /// <exception cref="ArgumentException">
+        /// Thrown if <typeparamref name="T"/> is not an enumerated type.
+        /// </exception>
+        public static T ToEnum<T>(this string str)
+            where T : struct, IConvertible
+        {
+            if (!typeof(T).IsEnum)
+            {
+                throw new ArgumentException("T must be an enumerated type");
+            }
+
+            return (T)Enum.Parse(typeof(T), str);
+        }
+
+        /// <summary>
+        /// Attempts to convert a string representation to an enumerated type of the specified <typeparamref name="T"/>.
+        /// </summary>
+        /// <typeparam name="T">The enumerated type to convert to.</typeparam>
+        /// <param name="str">The string representation of the enumerated value.</param>
+        /// <returns>
+        /// An enumerated type of the specified <typeparamref name="T"/> parsed from the input string,
+        /// or the default value of <typeparamref name="T"/> if the conversion fails.
+        /// </returns>
+        /// <exception cref="ArgumentException">
+        /// Thrown if <typeparamref name="T"/> is not an enumerated type.
+        /// </exception>
+        public static T TryToEnum<T>(this string str)
+            where T : struct, IConvertible
+        {
+            if (!typeof(T).IsEnum)
+            {
+                throw new ArgumentException("T must be an enumerated type");
+            }
+
+            return Enum.TryParse(str, out T value) ? value : default;
+        }
+
         [GeneratedRegex(@"\\([a-z]{1,32})(-?\d{1,10})?[ ]?|\\'([0-9a-f]{2})|\\([^a-z])|([{}])|[\r\n]+|(.)", RegexOptions.IgnoreCase | RegexOptions.Compiled | RegexOptions.Singleline, "en-CA")]
         private static partial Regex RtfRegex();
 

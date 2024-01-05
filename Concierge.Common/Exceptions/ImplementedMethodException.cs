@@ -9,7 +9,7 @@ namespace Concierge.Common.Exceptions
     /// <summary>
     /// Represents an exception that is thrown when a method is expected to be implemented but is not.
     /// </summary>
-    public class ImplementedMethodException : ConciergeException
+    public sealed class ImplementedMethodException : ConciergeException
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="ImplementedMethodException"/> class with the specified method name and optional item.

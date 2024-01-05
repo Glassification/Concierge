@@ -10,6 +10,10 @@ namespace Concierge.Tools.DiceRoller
 
         int Total { get; }
 
+        int Max { get; }
+
+        int Min { get; }
+
         void ReRoll();
     }
 }

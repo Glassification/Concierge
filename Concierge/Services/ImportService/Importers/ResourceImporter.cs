@@ -10,7 +10,7 @@ namespace Concierge.Services.ImportService.Importers
     using Concierge.Character.Vitals;
     using Concierge.Common;
 
-    public class ResourceImporter : Importer
+    public sealed class ResourceImporter : Importer
     {
         public ResourceImporter(ConciergeCharacter character)
             : base(character)

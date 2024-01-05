@@ -7,7 +7,7 @@ namespace Concierge.Configuration.Objects
     /// <summary>
     /// Represents autosave settings, including whether autosave is enabled and the autosave interval.
     /// </summary>
-    public class Autosave
+    public sealed class Autosave
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Autosave"/> class with default settings.

@@ -4,8 +4,6 @@
 
 namespace Concierge.Character
 {
-    using System.Text.RegularExpressions;
-
     using Concierge.Common;
 
     using Concierge.Common.Extensions;

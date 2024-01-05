@@ -11,7 +11,7 @@ namespace Concierge.Character.Journals
     using Concierge.Common;
     using Concierge.Common.Extensions;
 
-    public class Journal : ICopyable<Journal>
+    public sealed class Journal : ICopyable<Journal>
     {
         public Journal()
         {

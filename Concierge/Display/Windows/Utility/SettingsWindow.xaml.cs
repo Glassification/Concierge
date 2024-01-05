@@ -4,7 +4,6 @@
 
 namespace Concierge.Display.Utility
 {
-    using System;
     using System.IO;
     using System.Windows;
     using System.Windows.Controls;
@@ -144,11 +143,11 @@ namespace Concierge.Display.Utility
                     UseSaveFolder = this.DefaultSaveCheckBox.IsChecked ?? false,
                     UseOpenFolder = this.DefaultOpenCheckBox.IsChecked ?? false,
                 },
-                HeaderAlignment = !Enum.TryParse(this.HeaderAlignmentComboBox.Text, out HorizontalAlignment align) ? default : align,
+                HeaderAlignment = this.HeaderAlignmentComboBox.Text.TryToEnum<HorizontalAlignment>(),
                 MuteSounds = this.MuteCheckBox.IsChecked ?? false,
                 UseCoinWeight = this.CoinWeightCheckBox.IsChecked ?? false,
                 UseEncumbrance = this.EncumbranceCheckBox.IsChecked ?? false,
-                UnitOfMeasurement = !Enum.TryParse(this.UnitOfMeasurementComboBox.Text, out UnitTypes value) ? default : value,
+                UnitOfMeasurement = this.UnitOfMeasurementComboBox.Text.TryToEnum<UnitTypes>(),
             };
 
             Program.UndoRedoService.AddCommand(new UpdateSettingsCommand(oldSettings, conciergeSettings));

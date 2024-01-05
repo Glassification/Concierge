@@ -114,7 +114,7 @@ namespace Concierge.Common
         /// <summary>
         /// The copyright notice.
         /// </summary>
-        public const string Copyright = "2018-2023 Most Rights Reserved.";
+        public const string Copyright = "2018-2024 Most Rights Reserved.";
 
         /// <summary>
         /// The prompt text for the console.

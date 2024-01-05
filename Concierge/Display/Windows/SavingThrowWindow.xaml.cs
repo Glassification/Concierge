@@ -4,12 +4,12 @@
 
 namespace Concierge.Display.Windows
 {
-    using System;
     using System.Windows;
 
     using Concierge.Character.AbilitySaves;
     using Concierge.Character.Enums;
     using Concierge.Commands;
+    using Concierge.Common.Extensions;
     using Concierge.Display.Components;
     using Concierge.Display.Enums;
 
@@ -80,12 +80,12 @@ namespace Concierge.Display.Windows
         {
             var oldSavingThrow = this.SavingThrow.DeepCopy();
 
-            this.SavingThrow.Strength.CheckOverride = (StatusChecks)Enum.Parse(typeof(StatusChecks), this.StrengthComboBox.Text);
-            this.SavingThrow.Dexterity.CheckOverride = (StatusChecks)Enum.Parse(typeof(StatusChecks), this.DexterityComboBox.Text);
-            this.SavingThrow.Constitution.CheckOverride = (StatusChecks)Enum.Parse(typeof(StatusChecks), this.ConstitutionComboBox.Text);
-            this.SavingThrow.Intelligence.CheckOverride = (StatusChecks)Enum.Parse(typeof(StatusChecks), this.IntelligenceComboBox.Text);
-            this.SavingThrow.Wisdom.CheckOverride = (StatusChecks)Enum.Parse(typeof(StatusChecks), this.WisdomComboBox.Text);
-            this.SavingThrow.Charisma.CheckOverride = (StatusChecks)Enum.Parse(typeof(StatusChecks), this.CharismaComboBox.Text);
+            this.SavingThrow.Strength.CheckOverride = this.StrengthComboBox.Text.ToEnum<StatusChecks>();
+            this.SavingThrow.Dexterity.CheckOverride = this.DexterityComboBox.Text.ToEnum<StatusChecks>();
+            this.SavingThrow.Constitution.CheckOverride = this.ConstitutionComboBox.Text.ToEnum<StatusChecks>();
+            this.SavingThrow.Intelligence.CheckOverride = this.IntelligenceComboBox.Text.ToEnum<StatusChecks>();
+            this.SavingThrow.Wisdom.CheckOverride = this.WisdomComboBox.Text.ToEnum<StatusChecks>();
+            this.SavingThrow.Charisma.CheckOverride = this.CharismaComboBox.Text.ToEnum<StatusChecks>();
 
             Program.UndoRedoService.AddCommand(new EditCommand<SavingThrows>(this.SavingThrow, oldSavingThrow, this.ConciergePage));
         }

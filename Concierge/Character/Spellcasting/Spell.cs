@@ -152,7 +152,7 @@ namespace Concierge.Character.Spellcasting
             var attack = new DiceRoll(Dice.D20, 1, attackBonus);
             var damage = new CustomDiceRoll(cleanedInput);
 
-            return new UsedItem(attack, damage, this.Name, string.Empty, this.Description);
+            return new UsedItem(attack, damage, this.Name, string.Empty, $"[Damage: {damage.Min} - {damage.Max}] {this.Description}");
         }
 
         public CategoryDto GetCategory()

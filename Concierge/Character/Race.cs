@@ -7,7 +7,7 @@ namespace Concierge.Character
     using Concierge.Common;
     using Concierge.Common.Extensions;
 
-    public class Race : ICopyable<Race>
+    public sealed class Race : ICopyable<Race>
     {
         public Race()
         {

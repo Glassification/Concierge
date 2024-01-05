@@ -24,24 +24,30 @@ namespace Concierge.Display.Controls
             this.InitializeComponent();
         }
 
+        public void ClearActiveFile()
+        {
+            this.ActiveFileNameTextBlock.Text = string.Empty;
+            this.ActiveFileNameTextBlock.ToolTip = string.Empty;
+        }
+
         public void DrawActiveFile(CcsFile ccsFile)
         {
             this.ActiveFileNameTextBlock.Text = ccsFile.FileName;
             this.ActiveFileNameTextBlock.ToolTip = ccsFile.AbsolutePath;
-            this.SetTextSize(this.ActiveFileNameTextBlock, this.ActiveFileNameTextBlock.FontSize, this.ActualWidth * 0.20);
+            SetTextSize(this.ActiveFileNameTextBlock, this.ActiveFileNameTextBlock.FontSize, this.ActualWidth * 0.20);
         }
 
         public void DrawInformation(string text)
         {
             this.AlertMessageTextBlock.Text = text;
-            this.SetTextSize(this.AlertMessageTextBlock, this.AlertMessageTextBlock.FontSize, this.ActualWidth * 0.65);
+            SetTextSize(this.AlertMessageTextBlock, this.AlertMessageTextBlock.FontSize, this.ActualWidth * 0.65);
         }
 
         public void DrawTime()
         {
             this.DateTimeTextBlock.Text = ConciergeDateTime.StatusMenuNow;
             this.DateTimeTextBlock.ToolTip = ConciergeDateTime.ToolTipNow;
-            this.SetTextSize(this.DateTimeTextBlock, this.DateTimeTextBlock.FontSize, this.ActualWidth * 0.10);
+            SetTextSize(this.DateTimeTextBlock, this.DateTimeTextBlock.FontSize, this.ActualWidth * 0.10);
         }
 
         public void DrawWifi()
@@ -74,7 +80,7 @@ namespace Concierge.Display.Controls
             this.VolumeIcon.ToolTip = isMuted ? "Sound Off" : "Sound On";
         }
 
-        private TextBlock SetTextSize(TextBlock textBlock, double fontSize, double columnWidth)
+        private static TextBlock SetTextSize(TextBlock textBlock, double fontSize, double columnWidth)
         {
             textBlock.Measure(new Size(double.PositiveInfinity, double.PositiveInfinity));
 
@@ -85,7 +91,7 @@ namespace Concierge.Display.Controls
             }
             else if (columnWidth < textBlock.DesiredSize.Width)
             {
-                return this.SetTextSize(textBlock, fontSize - 1, columnWidth);
+                return SetTextSize(textBlock, fontSize - 1, columnWidth);
             }
             else
             {

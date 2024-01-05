@@ -7,7 +7,7 @@ namespace Concierge.Configuration.Objects
     /// <summary>
     /// Represents default folder settings, including open and save folders, and options to use them.
     /// </summary>
-    public class DefaultFolders
+    public sealed class DefaultFolders
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="DefaultFolders"/> class with default settings.

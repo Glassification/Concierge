@@ -15,7 +15,7 @@ namespace Concierge.Persistence.Exporters
     /// <summary>
     /// Provides functionality to export application data to a compressed ZIP file.
     /// </summary>
-    public class AppDataExporter : IExporter
+    public sealed class AppDataExporter : IExporter
     {
         private readonly Logger logger;
         private readonly SaveFileDialog saveFileDialog;

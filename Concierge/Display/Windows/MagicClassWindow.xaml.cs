@@ -4,7 +4,6 @@
 
 namespace Concierge.Display.Windows
 {
-    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Windows;
@@ -159,7 +158,7 @@ namespace Concierge.Display.Windows
             var oldItem = magicClass.DeepCopy();
 
             magicClass.Name = this.ClassNameComboBox.Text;
-            magicClass.Ability = (Abilities)Enum.Parse(typeof(Abilities), this.AbilityComboBox.Text);
+            magicClass.Ability = this.AbilityComboBox.Text.ToEnum<Abilities>();
             magicClass.Level = this.LevelUpDown.Value;
             magicClass.KnownCantrips = this.CantripsUpDown.Value;
             magicClass.KnownSpells = this.SpellsUpDown.Value;
@@ -175,7 +174,7 @@ namespace Concierge.Display.Windows
             return new MagicClass()
             {
                 Name = this.ClassNameComboBox.Text,
-                Ability = (Abilities)Enum.Parse(typeof(Abilities), this.AbilityComboBox.Text),
+                Ability = this.AbilityComboBox.Text.ToEnum<Abilities>(),
                 Level = this.LevelUpDown.Value,
                 KnownSpells = this.SpellsUpDown.Value,
                 KnownCantrips = this.CantripsUpDown.Value,
@@ -195,8 +194,8 @@ namespace Concierge.Display.Windows
         private void RefreshFields()
         {
             string ability = this.AbilityComboBox.SelectedItem.ToString() ?? Abilities.NONE.ToString();
-            this.AttackBonusTextBox.Text = Program.CcsFile.Character.CalculateBonusFromAbility((Abilities)Enum.Parse(typeof(Abilities), ability)).ToString();
-            this.SpellSaveTextBox.Text = (Program.CcsFile.Character.CalculateBonusFromAbility((Abilities)Enum.Parse(typeof(Abilities), ability)) + Constants.BaseDC).ToString();
+            this.AttackBonusTextBox.Text = Program.CcsFile.Character.CalculateBonusFromAbility(ability.ToEnum<Abilities>()).ToString();
+            this.SpellSaveTextBox.Text = (Program.CcsFile.Character.CalculateBonusFromAbility(ability.ToEnum<Abilities>()) + Constants.BaseDC).ToString();
             this.PreparedSpellsTextBox.Text = Program.CcsFile.Character.Magic.Spells.Where(x => (x.Class?.Equals(this.ClassNameComboBox.SelectedItem.ToString()) ?? false) && x.Prepared)?.ToList()?.Count.ToString() ?? "0";
         }
 

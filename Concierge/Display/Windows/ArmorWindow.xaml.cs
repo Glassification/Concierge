@@ -4,7 +4,6 @@
 
 namespace Concierge.Display.Windows
 {
-    using System;
     using System.Collections.Generic;
     using System.Windows;
     using System.Windows.Controls;
@@ -120,17 +119,17 @@ namespace Concierge.Display.Windows
             var oldItem = defense.DeepCopy();
 
             defense.Armor.Name = this.ArmorNameComboBox.Text;
-            defense.Armor.Type = (ArmorType)Enum.Parse(typeof(ArmorType), this.TypeComboBox.Text);
+            defense.Armor.Type = this.TypeComboBox.Text.ToEnum<ArmorType>();
             defense.Armor.Ac = this.ArmorClassUpDown.Value;
             defense.Armor.Weight.Value = this.WeightUpDown.Value;
             defense.Armor.Strength = this.StrengthUpDown.Value;
-            defense.Armor.Stealth = (ArmorStealth)Enum.Parse(typeof(ArmorStealth), this.StealthComboBox.Text);
+            defense.Armor.Stealth = this.StealthComboBox.Text.ToEnum<ArmorStealth>();
             defense.Shield = this.ShieldTextBox.Text;
             defense.ShieldAc = this.ShieldArmorClassUpDown.Value;
             defense.ShieldWeight.Value = this.ShieldWeightUpDown.Value;
             defense.MiscAc = this.MiscArmorClassUpDown.Value;
             defense.MagicAc = this.MagicArmorClassUpDown.Value;
-            defense.ArmorStatus = (ArmorStatus)Enum.Parse(typeof(ArmorStatus), this.StatusComboBox.Text);
+            defense.ArmorStatus = this.StatusComboBox.Text.ToEnum<ArmorStatus>();
 
             if (!defense.Armor.IsCustom)
             {
@@ -154,11 +153,11 @@ namespace Concierge.Display.Windows
             return new Armor()
             {
                 Name = this.ArmorNameComboBox.Text,
-                Type = (ArmorType)Enum.Parse(typeof(ArmorType), this.TypeComboBox.Text),
+                Type = this.TypeComboBox.Text.ToEnum<ArmorType>(),
                 Ac = this.ArmorClassUpDown.Value,
                 Weight = new UnitDouble(this.WeightUpDown.Value, UnitTypes.Imperial, Measurements.Weight),
                 Strength = this.StrengthUpDown.Value,
-                Stealth = (ArmorStealth)Enum.Parse(typeof(ArmorStealth), this.StealthComboBox.Text),
+                Stealth = this.StealthComboBox.Text.ToEnum<ArmorStealth>(),
             };
         }
 

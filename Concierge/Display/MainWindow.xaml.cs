@@ -23,6 +23,7 @@ namespace Concierge.Display
     using Concierge.Display.Windows.Utility;
     using Concierge.Persistence.Exporters;
     using Concierge.Services;
+    using Concierge.Services.EasterEggs;
     using Concierge.Tools.WorkerServices;
     using MaterialDesignThemes.Wpf;
 
@@ -53,6 +54,7 @@ namespace Concierge.Display
         private readonly SystemWorkerService systemService = new ();
         private readonly AnimatedTimedTextWorkerService animatedTimedTextWorkerService = new (Common.Constants.StatusDisplayTime);
         private readonly CharacterCreationWizard characterCreationWizard = new ();
+        private readonly EasterEggService easterEggService = new ();
 
         public MainWindow()
         {
@@ -155,7 +157,7 @@ namespace Concierge.Display
             this.DisplayStatusText("Generated New Character Sheet!");
             this.ResetCharacterSheet();
             this.DrawAll();
-            this.MessageBar.DrawActiveFile(Program.CcsFile);
+            this.MessageBar.ClearActiveFile();
 
             Program.Unmodify();
         }
@@ -164,17 +166,32 @@ namespace Concierge.Display
         {
             Program.Logger.Info($"Open Character Creation.");
 
-            var result = this.CheckSaveBeforeAction("creating a new character");
+            var result = this.characterCreationWizard.Prompt();
+            if (result != ConciergeWindowResult.OK)
+            {
+                return;
+            }
 
+            result = this.CheckSaveBeforeAction("creating a new character");
             if (result == ConciergeWindowResult.Cancel)
             {
                 return;
             }
 
             this.ResetCharacterSheet();
-            this.characterCreationWizard.Start();
             this.DrawAll();
-            this.MessageBar.DrawActiveFile(Program.CcsFile);
+            if (!this.characterCreationWizard.Start())
+            {
+                this.ResetCharacterSheet();
+                this.DisplayStatusText("Canceled character creation wizard");
+                this.MessageBar.ClearActiveFile();
+                Program.Unmodify();
+            }
+            else
+            {
+                this.DrawAll();
+                this.MessageBar.DrawActiveFile(Program.CcsFile);
+            }
         }
 
         public void OpenSettings()
@@ -702,11 +719,12 @@ namespace Concierge.Display
 
         private void MainWindow_KeyPress(object sender, KeyEventArgs e)
         {
-            EasterEggController.KonamiCode(e.Key);
             if (Program.IsTyping)
             {
                 return;
             }
+
+            this.easterEggService.Evaluate(e.Key);
 
             // Move off Side Bar to avoid reset
             this.FrameContent.Focus();

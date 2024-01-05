@@ -29,6 +29,8 @@ namespace Concierge.Tools.DiceRoller
             this.Modifier = modifier;
             this.Number = number;
             this.DiceList = [.. RollDice(number, (int)sides)];
+            this.Max = ((int)sides * number) + modifier;
+            this.Min = number + modifier;
         }
 
         /// <summary>
@@ -43,6 +45,8 @@ namespace Concierge.Tools.DiceRoller
             this.Modifier = modifier;
             this.Number = list.Length;
             this.DiceList = new List<int>(list);
+            this.Max = (sides * list.Length) + modifier;
+            this.Min = list.Length + modifier;
         }
 
         public static DiceRoll Empty => new (Common.Enums.Dice.None, 0, 0);
@@ -85,6 +89,16 @@ namespace Concierge.Tools.DiceRoller
         /// Gets the total sum of the rolled dice results along with the modifier.
         /// </summary>
         public int Total => Math.Max(this.DiceList.Sum() + this.Modifier, 0);
+
+        /// <summary>
+        /// Gets the maximum possible value of the rolled dice.
+        /// </summary>
+        public int Max { get; private set; }
+
+        /// <summary>
+        /// Gets the minimum possible value of the rolled dice.
+        /// </summary>
+        public int Min { get; private set; }
 
         private List<int> DiceList { get; set; }
 

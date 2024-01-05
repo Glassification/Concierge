@@ -4,7 +4,6 @@
 
 namespace Concierge.Display.Windows
 {
-    using System;
     using System.Windows;
     using System.Windows.Media;
 
@@ -105,7 +104,7 @@ namespace Concierge.Display.Windows
                 this.CharacterImage.EncodeImage(this.ImageSourceTextBox.Text);
             }
 
-            this.CharacterImage.Stretch = (Stretch)Enum.Parse(typeof(Stretch), this.FillTypeComboBox.Text.Strip(" "));
+            this.CharacterImage.Stretch = this.FillTypeComboBox.Text.Strip(" ").ToEnum<Stretch>();
             this.CharacterImage.UseCustomImage = this.UseCustomImageCheckBox.IsChecked ?? false;
 
             Program.UndoRedoService.AddCommand(new EditCommand<CharacterImage>(this.CharacterImage, oldItem, this.ConciergePage));

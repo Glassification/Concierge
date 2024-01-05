@@ -14,7 +14,7 @@ namespace Concierge.Character.Spellcasting
     using Concierge.Common.Extensions;
     using Newtonsoft.Json;
 
-    public class Magic : ICopyable<Magic>
+    public sealed class Magic : ICopyable<Magic>
     {
         public Magic()
         {

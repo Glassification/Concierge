@@ -25,12 +25,15 @@ namespace Concierge.Display.Windows
     {
         private readonly FileAccessService fileAccessService;
 
+        private bool isNormalEdit;
+
         public PropertiesWindow()
         {
             this.InitializeComponent();
             this.UseRoundedCorners();
 
             this.fileAccessService = new FileAccessService();
+            this.isNormalEdit = true;
 
             this.AlignmentComboBox.ItemsSource = ComboBoxGenerator.AlignmentTypesComboBox();
             this.RaceComboBox.ItemsSource = ComboBoxGenerator.RacesComboBox();
@@ -77,6 +80,7 @@ namespace Concierge.Display.Windows
             this.ApplyButton.Visibility = Visibility.Collapsed;
             this.CancelButton.Content = buttonText;
             this.CharacterProperties = Program.CcsFile.Character.Properties;
+            this.isNormalEdit = false;
 
             DisplayUtility.SetControlEnableState(this.Class1Level, false);
             DisplayUtility.SetControlEnableState(this.Class2Level, false);
@@ -197,7 +201,7 @@ namespace Concierge.Display.Windows
                 this.Class1Subclass.ItemsSource = ComboBoxGenerator.SubClassesComboBox(name);
                 this.Class1Subclass.Text = temp;
                 DisplayUtility.SetControlEnableState(this.Class1Subclass, true);
-                DisplayUtility.SetControlEnableState(this.Class2Level, true);
+                DisplayUtility.SetControlEnableState(this.Class2Level, this.isNormalEdit);
                 DisplayUtility.SetControlEnableState(this.Class2Class, true);
             }
         }
@@ -217,7 +221,7 @@ namespace Concierge.Display.Windows
                 this.Class2Subclass.ItemsSource = ComboBoxGenerator.SubClassesComboBox(name);
                 this.Class2Subclass.Text = temp;
                 DisplayUtility.SetControlEnableState(this.Class2Subclass, true);
-                DisplayUtility.SetControlEnableState(this.Class3Level, true);
+                DisplayUtility.SetControlEnableState(this.Class3Level, this.isNormalEdit);
                 DisplayUtility.SetControlEnableState(this.Class3Class, true);
             }
         }

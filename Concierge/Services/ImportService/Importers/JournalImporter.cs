@@ -10,7 +10,7 @@ namespace Concierge.Services.ImportService.Importers
     using Concierge.Character.Journals;
     using Concierge.Common;
 
-    public class JournalImporter : Importer
+    public sealed class JournalImporter : Importer
     {
         public JournalImporter(ConciergeCharacter character)
             : base(character)

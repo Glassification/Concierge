@@ -4,12 +4,12 @@
 
 namespace Concierge.Display.Windows
 {
-    using System;
     using System.Windows;
 
     using Concierge.Character.AbilitySkills;
     using Concierge.Character.Enums;
     using Concierge.Commands;
+    using Concierge.Common.Extensions;
     using Concierge.Display.Components;
     using Concierge.Display.Enums;
 
@@ -116,24 +116,24 @@ namespace Concierge.Display.Windows
         {
             var oldSkill = this.Skill.DeepCopy();
 
-            this.Skill.Athletics.CheckOverride = (StatusChecks)Enum.Parse(typeof(StatusChecks), this.AthleticsComboBox.Text);
-            this.Skill.Acrobatics.CheckOverride = (StatusChecks)Enum.Parse(typeof(StatusChecks), this.AcrobaticsComboBox.Text);
-            this.Skill.SleightOfHand.CheckOverride = (StatusChecks)Enum.Parse(typeof(StatusChecks), this.SleightOfHandComboBox.Text);
-            this.Skill.Stealth.CheckOverride = (StatusChecks)Enum.Parse(typeof(StatusChecks), this.StealthComboBox.Text);
-            this.Skill.Arcana.CheckOverride = (StatusChecks)Enum.Parse(typeof(StatusChecks), this.ArcanaComboBox.Text);
-            this.Skill.History.CheckOverride = (StatusChecks)Enum.Parse(typeof(StatusChecks), this.HistoryComboBox.Text);
-            this.Skill.Investigation.CheckOverride = (StatusChecks)Enum.Parse(typeof(StatusChecks), this.InvestigationComboBox.Text);
-            this.Skill.Nature.CheckOverride = (StatusChecks)Enum.Parse(typeof(StatusChecks), this.NatureComboBox.Text);
-            this.Skill.Religion.CheckOverride = (StatusChecks)Enum.Parse(typeof(StatusChecks), this.ReligionComboBox.Text);
-            this.Skill.AnimalHandling.CheckOverride = (StatusChecks)Enum.Parse(typeof(StatusChecks), this.AnimalHandlingComboBox.Text);
-            this.Skill.Insight.CheckOverride = (StatusChecks)Enum.Parse(typeof(StatusChecks), this.InsightComboBox.Text);
-            this.Skill.Medicine.CheckOverride = (StatusChecks)Enum.Parse(typeof(StatusChecks), this.MedicineComboBox.Text);
-            this.Skill.Perception.CheckOverride = (StatusChecks)Enum.Parse(typeof(StatusChecks), this.PerceptionComboBox.Text);
-            this.Skill.Survival.CheckOverride = (StatusChecks)Enum.Parse(typeof(StatusChecks), this.SurvivalComboBox.Text);
-            this.Skill.Deception.CheckOverride = (StatusChecks)Enum.Parse(typeof(StatusChecks), this.DeceptionComboBox.Text);
-            this.Skill.Intimidation.CheckOverride = (StatusChecks)Enum.Parse(typeof(StatusChecks), this.IntimidationComboBox.Text);
-            this.Skill.Performance.CheckOverride = (StatusChecks)Enum.Parse(typeof(StatusChecks), this.PerformanceComboBox.Text);
-            this.Skill.Persuasion.CheckOverride = (StatusChecks)Enum.Parse(typeof(StatusChecks), this.PersuasionComboBox.Text);
+            this.Skill.Athletics.CheckOverride = this.AthleticsComboBox.Text.ToEnum<StatusChecks>();
+            this.Skill.Acrobatics.CheckOverride = this.AcrobaticsComboBox.Text.ToEnum<StatusChecks>();
+            this.Skill.SleightOfHand.CheckOverride = this.SleightOfHandComboBox.Text.ToEnum<StatusChecks>();
+            this.Skill.Stealth.CheckOverride = this.StealthComboBox.Text.ToEnum<StatusChecks>();
+            this.Skill.Arcana.CheckOverride = this.ArcanaComboBox.Text.ToEnum<StatusChecks>();
+            this.Skill.History.CheckOverride = this.HistoryComboBox.Text.ToEnum<StatusChecks>();
+            this.Skill.Investigation.CheckOverride = this.InvestigationComboBox.Text.ToEnum<StatusChecks>();
+            this.Skill.Nature.CheckOverride = this.NatureComboBox.Text.ToEnum<StatusChecks>();
+            this.Skill.Religion.CheckOverride = this.ReligionComboBox.Text.ToEnum<StatusChecks>();
+            this.Skill.AnimalHandling.CheckOverride = this.AnimalHandlingComboBox.Text.ToEnum<StatusChecks>();
+            this.Skill.Insight.CheckOverride = this.InsightComboBox.Text.ToEnum<StatusChecks>();
+            this.Skill.Medicine.CheckOverride = this.MedicineComboBox.Text.ToEnum<StatusChecks>();
+            this.Skill.Perception.CheckOverride = this.PerceptionComboBox.Text.ToEnum<StatusChecks>();
+            this.Skill.Survival.CheckOverride = this.SurvivalComboBox.Text.ToEnum<StatusChecks>();
+            this.Skill.Deception.CheckOverride = this.DeceptionComboBox.Text.ToEnum<StatusChecks>();
+            this.Skill.Intimidation.CheckOverride = this.IntimidationComboBox.Text.ToEnum<StatusChecks>();
+            this.Skill.Performance.CheckOverride = this.PerformanceComboBox.Text.ToEnum<StatusChecks>();
+            this.Skill.Persuasion.CheckOverride = this.PersuasionComboBox.Text.ToEnum<StatusChecks>();
 
             Program.UndoRedoService.AddCommand(new EditCommand<Skills>(this.Skill, oldSkill, this.ConciergePage));
         }

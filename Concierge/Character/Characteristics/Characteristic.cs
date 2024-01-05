@@ -9,7 +9,7 @@ namespace Concierge.Character.Characteristics
     using Concierge.Common;
     using Concierge.Common.Extensions;
 
-    public class Characteristic : ICopyable<Characteristic>
+    public sealed class Characteristic : ICopyable<Characteristic>
     {
         public Characteristic()
         {

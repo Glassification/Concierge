@@ -4,7 +4,6 @@
 
 namespace Concierge.Display.Windows
 {
-    using System;
     using System.Collections.Generic;
     using System.Windows;
     using System.Windows.Controls;
@@ -193,7 +192,7 @@ namespace Concierge.Display.Windows
             spell.Prepared = this.PreparedCheckBox.IsChecked ?? false;
             spell.Level = this.LevelUpDown.Value;
             spell.Page = this.PageUpDown.Value;
-            spell.School = (ArcaneSchools)Enum.Parse(typeof(ArcaneSchools), this.SchoolComboBox.Text);
+            spell.School = this.SchoolComboBox.Text.ToEnum<ArcaneSchools>();
             spell.Ritual = this.RitualCheckBox.IsChecked ?? false;
             spell.Components = this.ComponentsTextBox.Text;
             spell.Concentration = this.ConcentrationCheckBox.IsChecked ?? false;
@@ -219,7 +218,7 @@ namespace Concierge.Display.Windows
                 Prepared = this.PreparedCheckBox.IsChecked ?? false,
                 Level = this.LevelUpDown.Value,
                 Page = this.PageUpDown.Value,
-                School = (ArcaneSchools)Enum.Parse(typeof(ArcaneSchools), this.SchoolComboBox.Text),
+                School = this.SchoolComboBox.Text.ToEnum<ArcaneSchools>(),
                 Ritual = this.RitualCheckBox.IsChecked ?? false,
                 Components = this.ComponentsTextBox.Text,
                 Concentration = this.ConcentrationCheckBox.IsChecked ?? false,
