@@ -4,6 +4,7 @@
 
 namespace Concierge.Display.Controls
 {
+    using System.Linq;
     using System.Text;
     using System.Windows;
     using System.Windows.Controls;
@@ -29,14 +30,29 @@ namespace Concierge.Display.Controls
         {
             this.HeaderGrid.Children.Clear();
 
-            var text = $"{properties.Name}  -  {GetLevelRace(properties)}{StringUtility.CreateCharacters(" ", 10)}{GetAlignmentAndBackground(properties)}";
-            var nameBlock = CreateTextBlock(20, text.Strip("-").IsNullOrWhiteSpace() ? string.Empty : text, this.HeaderGrid.ActualWidth * 0.60);
+            var text = $"{properties.Name}  ~  {GetLevelRace(properties)}{StringUtility.CreateCharacters(" ", 10)}{GetAlignmentAndBackground(properties)}";
+            var nameBlock = CreateTextBlock(20, CleanNameBlock(text), this.HeaderGrid.ActualWidth * 0.60);
             this.HeaderGrid.Children.Add(nameBlock);
             Grid.SetColumn(nameBlock, 0);
 
             var classBlock = CreateTextBlock(20, GetClasses(properties), this.HeaderGrid.ActualWidth * 0.40);
             this.HeaderGrid.Children.Add(classBlock);
             Grid.SetColumn(classBlock, 1);
+        }
+
+        private static string CleanNameBlock(string text)
+        {
+            if (text.Strip("~").IsNullOrWhiteSpace())
+            {
+                return string.Empty;
+            }
+
+            if (text.TrimStart().First() == '~' || text.TrimEnd().Last() == '~')
+            {
+                text = text.Strip("~");
+            }
+
+            return text;
         }
 
         private static TextBlock CreateTextBlock(double fontSize, string text, double columnWidth)

@@ -12,11 +12,11 @@
     d:DesignHeight="600"
     d:DesignWidth="1020"
     Title="InventoryPage"
-    Background="#2B2B2B"
+    Background="#1E2636"
     Style="{StaticResource PageFontStyle}">
 
     <Grid
-        Background="#2B2B2B"
+        Background="#1E2636"
         Margin="5">
         <Grid.RowDefinitions>
             <RowDefinition Height="07*"/>
@@ -24,12 +24,12 @@
         </Grid.RowDefinitions>
 
         <Border
-            BorderBrush="#FF333333"
+            BorderBrush="#262E42"
             BorderThickness="5"
             CornerRadius="10">
             <Grid
                 Grid.Row="0"
-                Background="#FF333333"
+                Background="#262E42"
                 Margin="-1">
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                     <components:ConciergeTextBlock 
@@ -173,7 +173,7 @@
                                 <StackPanel Orientation="Horizontal">
                                     <materialDesign:PackIcon
                                         Kind="{Binding IgnoreWeightIcon}"
-                                        Foreground="#227EA9"
+                                        Foreground="#A9C7FF"
                                         Margin="0,12,0,0"
                                         Height="18"
                                         Width="18"

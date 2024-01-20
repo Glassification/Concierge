@@ -19,12 +19,12 @@
     <Grid>
         <Border
             Grid.Row="0"
-            BorderBrush="#2B2B2B"
+            BorderBrush="#1E2636"
             BorderThickness="5"
             CornerRadius="10"
             Margin="5">
             <Grid
-                Background="#2B2B2B"
+                Background="#1E2636"
                 Margin="-1">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="40*"/>
@@ -35,7 +35,7 @@
                 <Grid Grid.Row="0">
                     <TextBlock
                         Text="Concierge"
-                        Foreground="SteelBlue"
+                        Foreground="#A9C7FF"
                         FontSize="50"
                         FontFamily="Segoe UI SemiBold"
                         Margin="20,0,20,20">
@@ -44,7 +44,7 @@
                         </TextBlock.Effect>
                     </TextBlock>
                     <Line
-                        Stroke="SteelBlue"
+                        Stroke="#A9C7FF"
                         StrokeThickness="1"
                         VerticalAlignment="Bottom"
                         Stretch="Uniform"

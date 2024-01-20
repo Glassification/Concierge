@@ -16,6 +16,7 @@ namespace Concierge.Display
     using Concierge.Common.Extensions;
     using Concierge.Common.Utilities;
     using Concierge.Configuration;
+    using Concierge.Data.Enums;
     using Concierge.Display.Enums;
     using Concierge.Display.Pages;
     using Concierge.Display.Utility;
@@ -96,6 +97,7 @@ namespace Concierge.Display
             this.MenuButton.CustomItemsMenuItem.AddClickEvent(this.CustomItemsButton_Click);
             this.MenuButton.SearchMenuItem.AddClickEvent(this.SearchButton_Click);
             this.MenuButton.ExportAppDataMenuItem.AddClickEvent(this.ExportAppDataButton_Click);
+            this.MenuButton.MessageHistoryMenuItem.AddClickEvent(this.MessageHistoryButton_Click);
             this.MenuButton.SettingsMenuItem.AddClickEvent(this.SettingsButton_Click);
             this.MenuButton.AboutMenuItem.AddClickEvent(this.AboutButton_Click);
             this.MenuButton.HelpMenuItem.AddClickEvent(this.GlossaryButton_Click);
@@ -137,7 +139,7 @@ namespace Concierge.Display
         {
             var result = this.CheckSaveBeforeAction("closing");
 
-            if (result != ConciergeWindowResult.Cancel && result != ConciergeWindowResult.Exit)
+            if (result != ConciergeResult.Cancel && result != ConciergeResult.Exit)
             {
                 this.Close();
             }
@@ -149,7 +151,7 @@ namespace Concierge.Display
 
             var result = this.CheckSaveBeforeAction("creating a new sheet");
 
-            if (result == ConciergeWindowResult.Cancel)
+            if (result == ConciergeResult.Cancel)
             {
                 return;
             }
@@ -167,13 +169,13 @@ namespace Concierge.Display
             Program.Logger.Info($"Open Character Creation.");
 
             var result = this.characterCreationWizard.Prompt();
-            if (result != ConciergeWindowResult.OK)
+            if (result != ConciergeResult.OK)
             {
                 return;
             }
 
             result = this.CheckSaveBeforeAction("creating a new character");
-            if (result == ConciergeWindowResult.Cancel)
+            if (result == ConciergeResult.Cancel)
             {
                 return;
             }
@@ -228,7 +230,7 @@ namespace Concierge.Display
             Program.Logger.Info($"Opening character sheet.");
 
             var result = this.CheckSaveBeforeAction("opening");
-            if (result == ConciergeWindowResult.Cancel)
+            if (result == ConciergeResult.Cancel)
             {
                 return;
             }
@@ -397,6 +399,7 @@ namespace Concierge.Display
 
         public void DisplayStatusText(string message)
         {
+            Program.MessageService.Add(message, MessageType.Information);
             this.animatedTimedTextWorkerService.StartWorker(message);
         }
 
@@ -503,21 +506,21 @@ namespace Concierge.Display
             this.ScaleValueY = (double)OnCoerceScaleValueY(this.MainGrid, yScale);
         }
 
-        private ConciergeWindowResult CheckSaveBeforeAction(string action)
+        private ConciergeResult CheckSaveBeforeAction(string action)
         {
             if (!Program.IsModified)
             {
-                return ConciergeWindowResult.No;
+                return ConciergeResult.No;
             }
 
             var name = Program.CcsFile.FileName;
             var result = ConciergeMessageBox.Show(
                 $"Do you want to save the changes you made to {(name.IsNullOrWhiteSpace() ? "this sheet" : name)} before {action}?\n\nYour changes will be lost if you don't save them.",
                 "Warning",
-                ConciergeWindowButtons.YesNoCancel,
-                ConciergeWindowIcons.Warning);
+                ConciergeButtons.Yes | ConciergeButtons.No | ConciergeButtons.Cancel,
+                ConciergeIcons.Warning);
 
-            if (result == ConciergeWindowResult.Yes)
+            if (result == ConciergeResult.Yes)
             {
                 this.SaveCharacterSheet();
             }
@@ -804,6 +807,12 @@ namespace Concierge.Display
         {
             ConciergeSoundService.TapNavigation();
             this.OpenSettings();
+        }
+
+        private void MessageHistoryButton_Click(object sender, RoutedEventArgs e)
+        {
+            ConciergeSoundService.TapNavigation();
+            ConciergeWindowService.ShowWindow(typeof(MessageHistoryWindow));
         }
 
         private void AboutButton_Click(object sender, RoutedEventArgs e)

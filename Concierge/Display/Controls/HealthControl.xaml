@@ -15,12 +15,12 @@
         Margin="5"
         Background="Transparent">
         <Border
-            BorderBrush="#2B2B2B"
+            BorderBrush="#1E2636"
             BorderThickness="5"
             CornerRadius="10">
             <Grid
                 x:Name="MainHealthGrid"
-                Background="#2B2B2B"
+                Background="#1E2636"
                 Margin="-1">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="15*"/>
@@ -124,12 +124,12 @@
                     x:Name="DeathSaveBorder"
                     Margin="5"
                     Grid.Row="2"
-                    BorderBrush="#FF333333"
+                    BorderBrush="#262E42"
                     BorderThickness="5"
                     CornerRadius="10">
                     <Grid
                         x:Name="DeathSaveGrid"
-                        Background="#FF333333"
+                        Background="#262E42"
                         Margin="-1">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="12.5*"/>
@@ -145,36 +145,36 @@
                         <Ellipse
                             Grid.Column="0"
                             x:Name="DeathSave1"
-                            Fill="#2B2B2B"
-                            Stroke="#2B2B2B"
+                            Fill="#1E2636"
+                            Stroke="#1E2636"
                             Stretch="Uniform"
                             Margin="0"/>
                         <Ellipse
                             Grid.Column="1"
                             x:Name="DeathSave2"
-                            Fill="#2B2B2B"
-                            Stroke="#2B2B2B"
+                            Fill="#1E2636"
+                            Stroke="#1E2636"
                             Stretch="Uniform"
                             Margin="0"/>
                         <Ellipse
                             Grid.Column="2"
                             x:Name="DeathSave3"
-                            Fill="#2B2B2B"
-                            Stroke="#2B2B2B"
+                            Fill="#1E2636"
+                            Stroke="#1E2636"
                             Stretch="Uniform"
                             Margin="0"/>
                         <Ellipse
                             Grid.Column="3"
                             x:Name="DeathSave4"
-                            Fill="#2B2B2B"
-                            Stroke="#2B2B2B"
+                            Fill="#1E2636"
+                            Stroke="#1E2636"
                             Stretch="Uniform"
                             Margin="0"/>
                         <Ellipse
                             Grid.Column="4"
                             x:Name="DeathSave5"
-                            Fill="#2B2B2B"
-                            Stroke="#2B2B2B"
+                            Fill="#1E2636"
+                            Stroke="#1E2636"
                             Stretch="Uniform"
                             Margin="0"/>
 

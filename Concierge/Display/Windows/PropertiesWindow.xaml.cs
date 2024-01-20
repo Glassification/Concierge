@@ -75,7 +75,7 @@ namespace Concierge.Display.Windows
 
         private bool IsChanging { get; set; }
 
-        public override ConciergeWindowResult ShowWizardSetup(string buttonText)
+        public override ConciergeResult ShowWizardSetup(string buttonText)
         {
             this.ApplyButton.Visibility = Visibility.Collapsed;
             this.CancelButton.Content = buttonText;
@@ -106,7 +106,7 @@ namespace Concierge.Display.Windows
 
         protected override void ReturnAndClose()
         {
-            this.Result = ConciergeWindowResult.OK;
+            this.Result = ConciergeResult.OK;
 
             this.UpdateProperties();
             this.CloseConciergeWindow();
@@ -269,14 +269,14 @@ namespace Concierge.Display.Windows
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Result = ConciergeWindowResult.Cancel;
+            this.Result = ConciergeResult.Cancel;
 
             this.CloseConciergeWindow();
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Result = ConciergeWindowResult.Exit;
+            this.Result = ConciergeResult.Exit;
 
             this.CloseConciergeWindow();
         }

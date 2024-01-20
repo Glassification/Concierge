@@ -38,9 +38,9 @@
             PopupAnimation="Slide"
             Width="310">
             <Border
-                BorderBrush="#888888"
+                BorderBrush="#A9C7FF"
                 BorderThickness="1">
-                <Grid Background="#191919">
+                <Grid Background="#121626">
                     <StackPanel Orientation="Vertical">
                         <Grid>
                             <local:PopupToggleButton
@@ -60,9 +60,9 @@
                                 Width="310"
                                 Closed="FileMenuPopup_Closed">
                                 <Border
-                                    BorderBrush="#888888"
+                                    BorderBrush="#A9C7FF"
                                     BorderThickness="1">
-                                    <Grid Background="#191919">
+                                    <Grid Background="#121626">
                                         <StackPanel Orientation="Vertical">
                                             <local:PopupButton
                                                 x:Name="NewCharacterMenuItem"
@@ -129,9 +129,9 @@
                                 Width="310"
                                 Closed="CharacterMenuPopup_Closed">
                                 <Border
-                                    BorderBrush="#888888"
+                                    BorderBrush="#A9C7FF"
                                     BorderThickness="1">
-                                    <Grid Background="#191919">
+                                    <Grid Background="#121626">
                                         <StackPanel Orientation="Vertical">
                                             <local:PopupButton
                                                 x:Name="CharacterCreationMenuItem"
@@ -180,9 +180,9 @@
                                 Width="310"
                                 Closed="ToolsMenuPopup_Closed">
                                 <Border
-                                    BorderBrush="#888888"
+                                    BorderBrush="#A9C7FF"
                                     BorderThickness="1">
-                                    <Grid Background="#191919">
+                                    <Grid Background="#121626">
                                         <StackPanel Orientation="Vertical">
                                             <local:PopupButton
                                                 x:Name="ConsoleMenuItem"
@@ -201,6 +201,12 @@
                                                 Label="Export AppData..."
                                                 Shortcut=""
                                                 IconKind="Export"
+                                                IconColor="#ffd166"/>
+                                            <local:PopupButton
+                                                x:Name="MessageHistoryMenuItem"
+                                                Label="Message History..."
+                                                Shortcut=""
+                                                IconKind="History"
                                                 IconColor="#ffd166"/>
                                             <local:PopupButton
                                                 x:Name="SearchMenuItem"

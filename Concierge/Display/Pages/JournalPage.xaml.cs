@@ -145,7 +145,7 @@ namespace Concierge.Display.Pages
         public void ClearHighlightSelection()
         {
             this.NotesTextBox.SelectAll();
-            this.NotesTextBox.Selection.ApplyPropertyValue(TextElement.BackgroundProperty, ConciergeColors.TotalLightBox);
+            this.NotesTextBox.Selection.ApplyPropertyValue(TextElement.BackgroundProperty, ConciergeColors.ControlForeBlue);
         }
 
         private void DrawTreeView()
@@ -562,10 +562,10 @@ namespace Concierge.Display.Pages
                 var result = ConciergeMessageBox.Show(
                     "Are you sure yo want to delete this chapter and all pages within?",
                     "Warning",
-                    ConciergeWindowButtons.YesNo,
-                    ConciergeWindowIcons.Question);
+                    ConciergeButtons.Yes | ConciergeButtons.No,
+                    ConciergeIcons.Question);
 
-                if (result != ConciergeWindowResult.Yes)
+                if (result != ConciergeResult.Yes)
                 {
                     return;
                 }
@@ -579,10 +579,10 @@ namespace Concierge.Display.Pages
                 var result = ConciergeMessageBox.Show(
                     "Are you sure yo want to delete this page?",
                     "Warning",
-                    ConciergeWindowButtons.YesNo,
-                    ConciergeWindowIcons.Question);
+                    ConciergeButtons.Yes | ConciergeButtons.No,
+                    ConciergeIcons.Question);
 
-                if (result != ConciergeWindowResult.Yes)
+                if (result != ConciergeResult.Yes)
                 {
                     return;
                 }

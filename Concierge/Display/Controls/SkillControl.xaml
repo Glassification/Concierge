@@ -5,6 +5,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
     xmlns:components="clr-namespace:Concierge.Display.Components"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:local="clr-namespace:Concierge.Display.Controls"
     mc:Ignorable="d" 
     Style="{StaticResource UserControlFontStyle}"
@@ -23,27 +24,43 @@
                 </Grid.ColumnDefinitions>
 
                 <!--Proficiency-->
-                <Grid Grid.Column="0">
-                    <Ellipse
-                        x:Name="ProficiencyBox"
-                        Stroke="SteelBlue"
-                        Stretch="Uniform"
-                        Margin="50,0,0,0"
-                        MouseDown="SkillProficiency_MouseDown"
-                        MouseEnter="ToggleBox_MouseEnter"
-                        MouseLeave="ToggleBox_MouseLeave"/>
+                <Grid
+                    Grid.Column="0"
+                    x:Name="ProficiencyGrid"
+                    ToolTip="{Binding Path=ProficiencyToolTip,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=UserControl}}"
+                    MouseEnter="Toggle_MouseEnter"
+                    MouseLeave="Toggle_MouseLeave"
+                    MouseDown="ProficiencyToggle_MouseDown"
+                    Background="{Binding Path=FillBrush,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=UserControl}}">
+                    <materialDesign:PackIcon
+                        x:Name="ProficiencyToggle"
+                        Foreground="SteelBlue"
+                        Margin="0,0,0,0"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch"
+                        Width="30"
+                        Height="30"
+                        Kind="ToggleSwitchOffOutline"/>
                 </Grid>
 
                 <!--Expertise-->
-                <Grid Grid.Column="1">
-                    <Ellipse
-                        x:Name="ExpertiseBox"
-                        Stroke="SteelBlue"
-                        Stretch="Uniform"
-                        Margin="50,0,0,0"
-                        MouseDown="SkillExpertise_MouseDown"
-                        MouseEnter="ToggleBox_MouseEnter"
-                        MouseLeave="ToggleBox_MouseLeave"/>
+                <Grid
+                    Grid.Column="1"
+                    x:Name="ExpertiseGrid"
+                    ToolTip="{Binding Path=ExpertiseToolTip,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=UserControl}}"
+                    MouseEnter="Toggle_MouseEnter"
+                    MouseLeave="Toggle_MouseLeave"
+                    MouseDown="ExpertiseToggle_MouseDown"
+                    Background="{Binding Path=FillBrush,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=UserControl}}">
+                    <materialDesign:PackIcon
+                        x:Name="ExpertiseToggle"
+                        Foreground="SteelBlue"
+                        Margin="0,0,0,0"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch"
+                        Width="30"
+                        Height="30"
+                        Kind="ToggleSwitchOffOutline"/>
                 </Grid>
 
                 <!--Name-->

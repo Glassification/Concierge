@@ -59,7 +59,7 @@ namespace Concierge.Display.Windows
 
         private Defense SelectedDefense { get; set; }
 
-        public override ConciergeWindowResult ShowWizardSetup(string buttonText)
+        public override ConciergeResult ShowWizardSetup(string buttonText)
         {
             this.SelectedDefense = Program.CcsFile.Character.Equipment.Defense;
             this.ApplyButton.Visibility = Visibility.Collapsed;
@@ -89,7 +89,7 @@ namespace Concierge.Display.Windows
 
         protected override void ReturnAndClose()
         {
-            this.Result = ConciergeWindowResult.OK;
+            this.Result = ConciergeResult.OK;
 
             this.UpdateDefense(this.SelectedDefense);
             this.CloseConciergeWindow();
@@ -163,7 +163,7 @@ namespace Concierge.Display.Windows
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Result = ConciergeWindowResult.Exit;
+            this.Result = ConciergeResult.Exit;
             this.CloseConciergeWindow();
         }
 
@@ -180,7 +180,7 @@ namespace Concierge.Display.Windows
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Result = ConciergeWindowResult.Cancel;
+            this.Result = ConciergeResult.Cancel;
             this.CloseConciergeWindow();
         }
 
@@ -203,8 +203,8 @@ namespace Concierge.Display.Windows
                 ConciergeMessageBox.Show(
                     "Could not save the Armor.\nA name is required before saving a custom item.",
                     "Warning",
-                    ConciergeWindowButtons.Ok,
-                    ConciergeWindowIcons.Alert);
+                    ConciergeButtons.Ok,
+                    ConciergeIcons.Alert);
                 return;
             }
 

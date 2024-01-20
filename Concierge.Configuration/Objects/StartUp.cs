@@ -40,5 +40,10 @@ namespace Concierge.Configuration.Objects
         /// Gets or sets a value indicating whether to show the splash screen during startup.
         /// </summary>
         public bool ShowSplashScreen { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether to enable advanced features.
+        /// </summary>
+        public bool ExpertMode { get; set; }
     }
 }

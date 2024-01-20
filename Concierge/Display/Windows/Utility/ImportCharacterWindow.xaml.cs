@@ -176,8 +176,8 @@ namespace Concierge.Display.Utility
                 ConciergeMessageBox.Show(
                     "Concierge was unable to find any data to import.",
                     "Error",
-                    ConciergeWindowButtons.Ok,
-                    ConciergeWindowIcons.Error);
+                    ConciergeButtons.Ok,
+                    ConciergeIcons.Error);
                 return;
             }
 
@@ -196,14 +196,14 @@ namespace Concierge.Display.Utility
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Result = ConciergeWindowResult.Cancel;
+            this.Result = ConciergeResult.Cancel;
 
             this.CloseConciergeWindow();
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Result = ConciergeWindowResult.Exit;
+            this.Result = ConciergeResult.Exit;
 
             this.CloseConciergeWindow();
         }

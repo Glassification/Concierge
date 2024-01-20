@@ -19,14 +19,14 @@
         </Grid.RowDefinitions>
 
         <!--Header-->
-        <Grid Grid.Row="0" Background="#1C1C1C">
+        <Grid Grid.Row="0" Background="#0E121E">
             <StackPanel
                 Orientation="Horizontal"
                 HorizontalAlignment="Left">
                 <TextBlock
                     Text="Custom Items"
                     x:Name="HeaderTextBlock"
-                    Foreground="#227EA9"
+                    Foreground="#A9C7FF"
                     FontSize="35"
                     VerticalAlignment="Center"
                     Margin="30, -3, 0, 0"

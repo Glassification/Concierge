@@ -174,10 +174,10 @@ namespace Concierge.Display.Windows.Utility
                 var result = ConciergeMessageBox.Show(
                     "Are you sure you wish to delete the item? This action cannot be undone.",
                     "Confirm Delete",
-                    ConciergeWindowButtons.YesNo,
-                    ConciergeWindowIcons.Question);
+                    ConciergeButtons.Yes | ConciergeButtons.No,
+                    ConciergeIcons.Question);
 
-                if (result != ConciergeWindowResult.Yes)
+                if (result != ConciergeResult.Yes)
                 {
                     return;
                 }

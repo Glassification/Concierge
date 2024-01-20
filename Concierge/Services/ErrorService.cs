@@ -67,8 +67,8 @@ namespace Concierge.Services
             ConciergeMessageBox.Show(
                 ex.Message,
                 ex.IsFatal ? "Fatal Error" : "Error",
-                ConciergeWindowButtons.Ok,
-                ConciergeWindowIcons.Error);
+                ConciergeButtons.Ok,
+                ConciergeIcons.Error);
         }
     }
 }

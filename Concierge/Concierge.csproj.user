@@ -78,6 +78,9 @@
     <Compile Update="Display\Windows\Utility\GlossaryWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Display\Windows\Utility\MessageHistoryWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Display\Windows\Utility\UseItemWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -339,6 +342,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Display\Windows\Utility\LevelUpWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Display\Windows\Utility\MessageHistoryWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Display\Windows\Utility\NameGeneratorWindow.xaml">

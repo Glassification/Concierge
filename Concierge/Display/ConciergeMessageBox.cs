@@ -4,18 +4,31 @@
 
 namespace Concierge.Display
 {
+    using Concierge.Data.Enums;
     using Concierge.Display.Enums;
     using Concierge.Display.Utility;
 
     public static class ConciergeMessageBox
     {
-        public static ConciergeWindowResult Show(
+        public static ConciergeResult Show(
             string message,
             string title,
-            ConciergeWindowButtons messageWindowButtons,
-            ConciergeWindowIcons messageWindowIcons)
+            ConciergeButtons messageWindowButtons,
+            ConciergeIcons messageWindowIcons)
         {
+            Program.MessageService.Add(message, IconToType(messageWindowIcons));
             return new ConciergeMessageWindow().ShowWindow(message, title, messageWindowButtons, messageWindowIcons);
+        }
+
+        private static MessageType IconToType(ConciergeIcons messageWindowIcons)
+        {
+            return messageWindowIcons switch
+            {
+                ConciergeIcons.Information => MessageType.Information,
+                ConciergeIcons.Warning => MessageType.Warning,
+                ConciergeIcons.Error => MessageType.Error,
+                _ => MessageType.Unknown,
+            };
         }
     }
 }

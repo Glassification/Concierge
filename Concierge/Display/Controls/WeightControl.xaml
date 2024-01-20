@@ -15,11 +15,11 @@
         Margin="5"
         Background="Transparent">
         <Border
-            BorderBrush="#2B2B2B"
+            BorderBrush="#1E2636"
             BorderThickness="5"
             CornerRadius="10">
 
-            <Grid Background="#2B2B2B"  Margin="-1">
+            <Grid Background="#1E2636"  Margin="-1">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="45*"/>
                     <RowDefinition Height="55*"/>
@@ -75,7 +75,7 @@
                     <Border
                         Margin="5"
                         Grid.Column="0"
-                        BorderBrush="#ffd8e4bc"
+                        BorderBrush="#d8e4bc"
                         BorderThickness="5"
                         CornerRadius="10">
                         <Grid Margin="-1">
@@ -84,7 +84,7 @@
                                 <RowDefinition Height="55*"/>
                             </Grid.RowDefinitions>
 
-                            <Grid Grid.Row="0" Background="#ffd8e4bc">
+                            <Grid Grid.Row="0" Background="#d8e4bc">
                                 <components:ConciergeTextBlock
                                     Text="Light"
                                     FontSize="25"
@@ -94,14 +94,14 @@
                             </Grid>
                             <Line
                                 Grid.Row="0"
-                                Stroke="SteelBlue"
+                                Stroke="#A3AC8E"
                                 StrokeThickness="2"
                                 Stretch="Uniform"
                                 X1="0" X2="1" Y1="0" Y2="0"
                                 VerticalAlignment="Bottom"
                                 StrokeStartLineCap="Round"
                                 StrokeEndLineCap="Round"/>
-                            <Grid Grid.Row="1" Background="#ffd8e4bc">
+                            <Grid Grid.Row="1" Background="#d8e4bc">
                                 <components:ConciergeTextBlock 
                                     FontSize="26"
                                     Foreground="Black"
@@ -116,7 +116,7 @@
                     <Border
                         Margin="5"
                         Grid.Column="1"
-                        BorderBrush="#fffcd6b4"
+                        BorderBrush="#fcd6b4"
                         BorderThickness="5"
                         CornerRadius="10">
                         <Grid Margin="-1">
@@ -125,7 +125,7 @@
                                 <RowDefinition Height="55*"/>
                             </Grid.RowDefinitions>
 
-                            <Grid Grid.Row="0" Background="#fffcd6b4">
+                            <Grid Grid.Row="0" Background="#fcd6b4">
                                 <components:ConciergeTextBlock
                                     Text="Medium"
                                     FontSize="25"
@@ -135,14 +135,14 @@
                             </Grid>
                             <Line
                                 Grid.Row="0"
-                                Stroke="SteelBlue"
+                                Stroke="#C4A68C"
                                 StrokeThickness="2"
                                 Stretch="Uniform"
                                 X1="0" X2="1" Y1="0" Y2="0"
                                 VerticalAlignment="Bottom"
                                 StrokeStartLineCap="Round"
                                 StrokeEndLineCap="Round"/>
-                            <Grid Grid.Row="1" Background="#fffcd6b4">
+                            <Grid Grid.Row="1" Background="#fcd6b4">
                                 <components:ConciergeTextBlock 
                                     FontSize="26"
                                     Foreground="Black"
@@ -176,7 +176,7 @@
                             </Grid>
                             <Line
                                 Grid.Row="0"
-                                Stroke="SteelBlue"
+                                Stroke="#C7969E"
                                 StrokeThickness="2"
                                 Stretch="Uniform"
                                 X1="0" X2="1" Y1="0" Y2="0"

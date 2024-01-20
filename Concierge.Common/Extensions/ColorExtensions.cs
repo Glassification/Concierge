@@ -14,7 +14,7 @@ namespace Concierge.Common.Extensions
     public static class ColorExtensions
     {
         /// <summary>
-        /// Retrieves the name of the color.
+        /// Retrieves the name of the color, or the HEX value if name is undefined.
         /// </summary>
         /// <param name="color">The Color object.</param>
         /// <returns>The name of the color, formatted.</returns>
@@ -25,7 +25,7 @@ namespace Concierge.Common.Extensions
                 Color color1 = (Color)(p.GetValue(null) ?? Colors.Transparent);
                 return Color.AreClose(color1, color);
             });
-            return properties != null ? properties.Name.FormatColorName() : color.ToHexWithoutAlpha();
+            return properties is not null ? properties.Name.FormatColorName() : color.ToHexWithoutAlpha();
         }
 
         /// <summary>

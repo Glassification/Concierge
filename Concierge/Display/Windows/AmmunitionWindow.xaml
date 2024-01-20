@@ -22,11 +22,11 @@
         </Grid.RowDefinitions>
 
         <!--Header-->
-        <Grid Grid.Row="0" Background="#1C1C1C">
+        <Grid Grid.Row="0" Background="#0E121E">
             <TextBlock
                 Text="Add Ammunition"
                 x:Name="HeaderTextBlock"
-                Foreground="#227EA9"
+                Foreground="#A9C7FF"
                 FontSize="35"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Center"

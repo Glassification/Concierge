@@ -47,9 +47,9 @@
                 Height="265"
                 PopupAnimation="Slide">
                 <Border
-                    BorderBrush="#888888"
+                    BorderBrush="#A9C7FF"
                     BorderThickness="1">
-                    <Grid Background="#252526">
+                    <Grid Background="#121626">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="10*"/>
                             <RowDefinition Height="30*"/>

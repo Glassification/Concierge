@@ -1,10 +1,10 @@
-﻿// <copyright file="ConciergeWindowResult.cs" company="Thomas Beckett">
+﻿// <copyright file="ConciergeResult.cs" company="Thomas Beckett">
 // Copyright (c) Thomas Beckett. All rights reserved.
 // </copyright>
 
 namespace Concierge.Display.Enums
 {
-    public enum ConciergeWindowResult
+    public enum ConciergeResult
     {
         OK,
         Yes,

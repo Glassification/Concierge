@@ -41,5 +41,11 @@ namespace Concierge.Common
         /// The format is "dddd MMMM d, yyyy".
         /// </summary>
         public static string ToolTipNow => DateTime.Now.ToString("dddd MMMM d, yyyy");
+
+        /// <summary>
+        /// Gets the current time formatted for message history display purposes.
+        /// The format is "hh:mm:ss tt".
+        /// </summary>
+        public static string MessageTime => DateTime.Now.ToString("hh:mm:ss tt");
     }
 }

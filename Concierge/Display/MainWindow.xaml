@@ -16,7 +16,7 @@
     ResizeMode="NoResize"
     WindowStartupLocation="CenterScreen"
     WindowStyle="None"
-    Background="#0F0F0F"
+    Background="#06070D"
     BorderBrush="#227EA9"
     BorderThickness="0"
     KeyDown="MainWindow_KeyPress"
@@ -44,7 +44,7 @@
 
         <!-- Title Menu -->
         <Grid
-            Background="#0F0F0F"
+            Background="#06070D"
             x:Name="GridTitle"
             Grid.Row="0"
             Grid.Column="1"
@@ -111,7 +111,7 @@
             </Grid.ColumnDefinitions>
 
             <ListView
-                Background="#0F0F0F"
+                Background="#06070D"
                 Grid.Column="0"
                 Foreground="White"
                 x:Name="ListViewMenu" 
@@ -324,7 +324,7 @@
                     VerticalAlignment="Stretch"
                     ContentRendered="MainWindow_ContentRendered"/>
                 <Border
-                    BorderBrush="#0F0F0F"
+                    BorderBrush="#06070D"
                     BorderThickness="5"
                     CornerRadius="10"
                     Margin="-5,-5,15,-5"/>
@@ -335,6 +335,6 @@
         <controls:StatusControl
             Grid.Row="2"
             x:Name="MessageBar"
-            Background="#0F0F0F"/>
+            Background="#06070D"/>
     </Grid>
 </Window>

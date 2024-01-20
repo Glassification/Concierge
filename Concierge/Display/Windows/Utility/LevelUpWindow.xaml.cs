@@ -40,7 +40,7 @@ namespace Concierge.Display.Utility
 
         public override string WindowName => nameof(LevelUpWindow);
 
-        public override ConciergeWindowResult ShowWizardSetup(string buttonText)
+        public override ConciergeResult ShowWizardSetup(string buttonText)
         {
             this.FillFields();
             this.ShowConciergeWindow();
@@ -128,13 +128,13 @@ namespace Concierge.Display.Utility
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             this.CloseConciergeWindow();
-            this.Result = ConciergeWindowResult.Exit;
+            this.Result = ConciergeResult.Exit;
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
             this.CloseConciergeWindow();
-            this.Result = ConciergeWindowResult.Cancel;
+            this.Result = ConciergeResult.Cancel;
         }
 
         private void LevelUpButton_Click(object sender, RoutedEventArgs e)

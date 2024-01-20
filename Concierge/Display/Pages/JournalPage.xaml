@@ -14,7 +14,7 @@
     Title="JournalPage"
     Style="{StaticResource PageFontStyle}">
 
-    <Grid Background="#202020">
+    <Grid Background="#0F1220">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="25*"/>
             <ColumnDefinition Width="75*"/>
@@ -23,12 +23,12 @@
         <Border
             Margin="5"
             Grid.Column="0"
-            BorderBrush="#2B2B2B"
+            BorderBrush="#1E2636"
             BorderThickness="5"
             CornerRadius="10">
             <Grid
                 Grid.Column="0"
-                Background="#2B2B2B"
+                Background="#1E2636"
                 Margin="-1">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="7*"/>
@@ -38,11 +38,11 @@
                 <Border
                     Grid.Row="0"
                     Margin="5"
-                    BorderBrush="#FF333333"
+                    BorderBrush="#242A38"
                     BorderThickness="5"
                     CornerRadius="10">
                     <Grid
-                        Background="#FF333333"
+                        Background="#242A38"
                         Margin="-1">
                         <StackPanel
                             Orientation="Horizontal"
@@ -100,7 +100,7 @@
                     Grid.Row="1"
                     x:Name="NotesTreeView"
                     Margin="3"
-                    Background="#2B2B2B"
+                    Background="#1E2636"
                     BorderBrush="{x:Null}"
                     SelectedItemChanged="NotesTreeView_SelectedItemChanged"
                     ScrollViewer.HorizontalScrollBarVisibility="Disabled">
@@ -125,12 +125,12 @@
         <Border
             Margin="5"
             Grid.Column="1"
-            BorderBrush="#2B2B2B"
+            BorderBrush="#1E2636"
             BorderThickness="5"
             CornerRadius="10">
             <Grid
                 Grid.Column="0"
-                Background="#2B2B2B"
+                Background="#1E2636"
                 Margin="-1">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="7*"/>
@@ -140,11 +140,11 @@
                 <Border
                     Grid.Row="0"
                     Margin="5"
-                    BorderBrush="#FF333333"
+                    BorderBrush="#242A38"
                     BorderThickness="5"
                     CornerRadius="10">
                     <Grid
-                        Background="#FF333333"
+                        Background="#242A38"
                         Margin="-1">
                     
                         <StackPanel
@@ -246,7 +246,7 @@
                 <RichTextBox 
                     Grid.Row="1"
                     x:Name="NotesTextBox"
-                    Background="#2B2B2B"
+                    Background="#1E2636"
                     Margin="3"
                     BorderBrush="{x:Null}"
                     SpellCheck.IsEnabled="True"

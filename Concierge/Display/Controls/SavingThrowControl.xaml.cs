@@ -4,20 +4,23 @@
 
 namespace Concierge.Display.Controls
 {
+    using System.Linq;
     using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Input;
     using System.Windows.Media;
-    using System.Windows.Shapes;
 
     using Concierge.Character.AbilitySaves;
     using Concierge.Character.Enums;
     using Concierge.Commands;
     using Concierge.Common;
+    using Concierge.Common.Extensions;
+    using Concierge.Common.Utilities;
     using Concierge.Display.Enums;
     using Concierge.Display.Pages;
     using Concierge.Display.Windows.Utility;
     using Concierge.Services;
+    using MaterialDesignThemes.Wpf;
 
     /// <summary>
     /// Interaction logic for SavingThrowControl.xaml.
@@ -99,10 +102,14 @@ namespace Concierge.Display.Controls
             }
         }
 
+        public string ProficiencyToolTip => $"Toggle {this.SavingThrowName} Proficiency";
+
         public void SetStyle(SavingThrow savingThrow)
         {
             this.Tag = savingThrow;
-            this.ProficiencyBox.Fill = savingThrow.Proficiency ? Brushes.SteelBlue : Brushes.Transparent;
+
+            this.ProficiencyToggle.Foreground = savingThrow.Proficiency ? ConciergeBrushes.Mint : Brushes.SlateGray;
+            this.ProficiencyToggle.Kind = savingThrow.Proficiency ? PackIconKind.RhombusSplit : PackIconKind.RhombusSplitOutline;
 
             SetTextStyleHelper(savingThrow.StatusChecks, this.SavingThrowNameField);
             SetTextStyleHelper(savingThrow.StatusChecks, this.SavingThrowBonusField);
@@ -136,57 +143,53 @@ namespace Concierge.Display.Controls
             }
         }
 
-        private void ToggleBox_MouseEnter(object sender, MouseEventArgs e)
-        {
-            if (sender is not Ellipse ellipse)
-            {
-                return;
-            }
-
-            ellipse.Stroke = ConciergeBrushes.BorderHighlight;
-            ellipse.Fill = ConciergeBrushes.BorderHighlight;
-            ellipse.StrokeThickness = 1;
-
-            Mouse.OverrideCursor = Cursors.Hand;
-        }
-
-        private void ToggleBox_MouseLeave(object sender, MouseEventArgs e)
-        {
-            if (sender is not Ellipse ellipse)
-            {
-                return;
-            }
-
-            var save = Program.CcsFile.Character.SavingThrows.GetSavingThrow(this.SavingThrowName);
-
-            ellipse.Stroke = Brushes.SteelBlue;
-            ellipse.Fill = save.Proficiency ? Brushes.SteelBlue : Brushes.Transparent;
-            ellipse.StrokeThickness = 1;
-
-            Mouse.OverrideCursor = Cursors.Arrow;
-        }
-
-        private void SavingThrowProficiency_MouseDown(object sender, RoutedEventArgs e)
-        {
-            ConciergeSoundService.UpdateValue();
-
-            var savingThrow = Program.CcsFile.Character.SavingThrows;
-            var savingThrowCopy = savingThrow.DeepCopy();
-
-            var save = savingThrow.GetSavingThrow(this.SavingThrowName);
-            save.Proficiency = !save.Proficiency;
-
-            this.RaiseEvent(new RoutedEventArgs(ToggleClickedEvent));
-
-            Program.UndoRedoService.AddCommand(new EditCommand<SavingThrows>(savingThrow, savingThrowCopy, ConciergePage.Overview));
-        }
-
         private void SavingThrowField_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (this.Tag is SavingThrow savingThrow)
             {
                 ConciergeWindowService.ShowAbilityCheckWindow(typeof(AbilityCheckWindow), savingThrow, 0);
             }
+        }
+
+        private void Toggle_MouseEnter(object sender, MouseEventArgs e)
+        {
+            if (sender is not Grid grid)
+            {
+                return;
+            }
+
+            var packIcon = DisplayUtility.FindVisualChildren<PackIcon>(grid).First();
+            packIcon.Foreground = ConciergeBrushes.BorderHighlight;
+            Mouse.OverrideCursor = Cursors.Hand;
+        }
+
+        private void Toggle_MouseLeave(object sender, MouseEventArgs e)
+        {
+            if (sender is not Grid grid)
+            {
+                return;
+            }
+
+            var packIcon = DisplayUtility.FindVisualChildren<PackIcon>(grid).First();
+            var save = Program.CcsFile.Character.SavingThrows.GetSavingThrow(this.SavingThrowName.Strip(" "));
+
+            packIcon.Foreground = save.Proficiency ? ConciergeBrushes.Mint : Brushes.SlateGray;
+            Mouse.OverrideCursor = Cursors.Arrow;
+        }
+
+        private void ProficiencyToggle_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            ConciergeSoundService.UpdateValue();
+
+            var save = Program.CcsFile.Character.SavingThrows;
+            var savelCopy = save.DeepCopy();
+
+            var saveThrow = save.GetSavingThrow(this.SavingThrowName.Strip(" "));
+            saveThrow.Proficiency = !saveThrow.Proficiency;
+
+            this.RaiseEvent(new RoutedEventArgs(ToggleClickedEvent));
+
+            Program.UndoRedoService.AddCommand(new EditCommand<SavingThrows>(save, savelCopy, ConciergePage.Overview));
         }
     }
 }

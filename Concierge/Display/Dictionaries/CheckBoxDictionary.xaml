@@ -19,9 +19,9 @@
                                 Width="15" 
                                 Height="15" 
                                 CornerRadius="0" 
-                                Background="#373737"
+                                Background="#262E42"
                                 BorderThickness="0.5"
-                                BorderBrush="#2B2B2B">
+                                BorderBrush="#1E2636">
                                 <Path 
                                     Width="10" Height="10" 
                                     x:Name="CheckMark"

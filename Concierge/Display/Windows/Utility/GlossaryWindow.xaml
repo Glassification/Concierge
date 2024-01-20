@@ -20,11 +20,11 @@
             <RowDefinition Height="600"/>
         </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0" Background="#1C1C1C">
+        <Grid Grid.Row="0" Background="#0E121E">
             <TextBlock
                 Text="Wiki"
                 x:Name="HeaderTextBlock"
-                Foreground="#227EA9"
+                Foreground="#A9C7FF"
                 FontSize="35"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Center"
@@ -101,7 +101,7 @@
                     Grid.Row="2"
                     Margin="0,0,-1,0"
                     x:Name="GlossaryTreeView"
-                    Background="#202020"
+                    Background="#0F1220"
                     BorderBrush="{x:Null}"
                     SelectedItemChanged="GlossaryTreeView_SelectedItemChanged"
                     ScrollViewer.HorizontalScrollBarVisibility="Disabled">
@@ -124,7 +124,7 @@
 
             <Line
                 Grid.Row="1"
-                Stroke="SteelBlue"
+                Stroke="#A9C7FF"
                 StrokeThickness="1"
                 Stretch="Uniform"
                 X1="0" X2="0" Y1="0" Y2="1"
@@ -138,7 +138,7 @@
                 Grid.Column="1"
                 Margin="5,3,0,5"
                 Foreground="White"
-                Background="#2B2B2B"
+                Background="#1E2636"
                 xml:space="preserve"/>
         </Grid>
         

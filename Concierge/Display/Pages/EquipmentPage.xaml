@@ -14,7 +14,7 @@
     Title="EquipmentPage"
     Style="{StaticResource PageFontStyle}">
     
-    <Grid Background="#202020">
+    <Grid Background="#0F1220">
         <Grid.RowDefinitions>
             <RowDefinition Height="07*"/>
             <RowDefinition Height="93*"/>
@@ -23,12 +23,12 @@
         <Border
             Grid.Row="0"
             Margin="5,5,5,0"
-            BorderBrush="#FF333333"
+            BorderBrush="#262E42"
             BorderThickness="5"
             CornerRadius="10">
             <Grid
                 Grid.Row="0"
-                Background="#FF333333"
+                Background="#262E42"
                 Margin="-1">
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                     <components:ConciergeTextBlock 
@@ -113,11 +113,11 @@
                 <Border
                     Margin="5,95,5,95"
                     Grid.Row="0"
-                    BorderBrush="#2B2B2B"
+                    BorderBrush="#1E2636"
                     BorderThickness="5"
                     CornerRadius="10">
                     <Grid
-                        Background="#2B2B2B"
+                        Background="#1E2636"
                         Margin="-1">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="40*"/>
@@ -131,7 +131,7 @@
                             TextWrapping="Wrap"/>
                         <Line
                             Grid.Column="0"
-                            Stroke="SteelBlue"
+                            Stroke="#A9C7FF"
                             StrokeThickness="2"
                             Stretch="Uniform"
                             X1="0" X2="0" Y1="0" Y2="1"
@@ -149,11 +149,11 @@
                 <Border
                     Margin="5"
                     Grid.Row="1"
-                    BorderBrush="#2B2B2B"
+                    BorderBrush="#1E2636"
                     BorderThickness="5"
                     CornerRadius="10">
                     <Grid
-                        Background="#2B2B2B"
+                        Background="#1E2636"
                         Margin="-1">
                         <components:ConciergeDataGrid 
                             x:Name="TorsoEquipmentDataGrid"
@@ -206,11 +206,11 @@
                 <Border
                     Margin="5"
                     Grid.Row="2"
-                    BorderBrush="#2B2B2B"
+                    BorderBrush="#1E2636"
                     BorderThickness="5"
                     CornerRadius="10">
                     <Grid
-                        Background="#2B2B2B"
+                        Background="#1E2636"
                         Margin="-1">
                         <components:ConciergeDataGrid 
                             x:Name="LegsEquipmentDataGrid"
@@ -264,11 +264,11 @@
             <Border
                 Margin="5"
                 Grid.Column="2"
-                BorderBrush="#2B2B2B"
+                BorderBrush="#1E2636"
                 BorderThickness="5"
                 CornerRadius="10">
                 <Grid
-                    Background="#2B2B2B"
+                    Background="#1E2636"
                     Margin="-1"
                     MouseUp="CharacterImage_MouseUp">
                     <materialDesign:PackIcon
@@ -282,7 +282,7 @@
                     <Image x:Name="CharacterImage"/>
                     <Border
                         Margin="0"
-                        BorderBrush="#2B2B2B"
+                        BorderBrush="#1E2636"
                         BorderThickness="5"
                         CornerRadius="10"/>
                 </Grid>
@@ -290,7 +290,7 @@
             <Border
                 Margin="5"
                 Grid.Column="2"
-                BorderBrush="#2B2B2B"
+                BorderBrush="#1E2636"
                 BorderThickness="6"
                 CornerRadius="10"/>
 
@@ -304,11 +304,11 @@
                 <Border
                     Margin="5"
                     Grid.Row="0"
-                    BorderBrush="#2B2B2B"
+                    BorderBrush="#1E2636"
                     BorderThickness="5"
                     CornerRadius="10">
                     <Grid
-                        Background="#2B2B2B"
+                        Background="#1E2636"
                         Margin="-1">
                         <components:ConciergeDataGrid 
                             x:Name="HeadEquipmentDataGrid"
@@ -361,11 +361,11 @@
                 <Border
                     Margin="5"
                     Grid.Row="1"
-                    BorderBrush="#2B2B2B"
+                    BorderBrush="#1E2636"
                     BorderThickness="5"
                     CornerRadius="10">
                     <Grid
-                        Background="#2B2B2B"
+                        Background="#1E2636"
                         Margin="-1">
                         <components:ConciergeDataGrid 
                             x:Name="HandsEquipmentDataGrid"
@@ -418,11 +418,11 @@
                 <Border
                     Margin="5"
                     Grid.Row="2"
-                    BorderBrush="#2B2B2B"
+                    BorderBrush="#1E2636"
                     BorderThickness="5"
                     CornerRadius="10">
                     <Grid
-                        Background="#2B2B2B"
+                        Background="#1E2636"
                         Margin="-1">
                         <components:ConciergeDataGrid 
                             x:Name="FeetEquipmentDataGrid"
@@ -477,11 +477,11 @@
                 Margin="5"
                 Grid.Row="1"
                 Grid.Column="3"
-                BorderBrush="#2B2B2B"
+                BorderBrush="#1E2636"
                 BorderThickness="5"
                 CornerRadius="10">
                 <Grid
-                    Background="#2B2B2B"
+                    Background="#1E2636"
                     Margin="-1">
                     <components:ConciergeDataGrid 
                         x:Name="PreparedSpellsDataGrid"

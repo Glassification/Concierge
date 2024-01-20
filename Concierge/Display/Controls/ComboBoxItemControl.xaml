@@ -16,10 +16,10 @@
         <Border
             x:Name="MainBorder"
             BorderThickness="1"
-            BorderBrush="#373737">
+            BorderBrush="#262E42">
             <Grid
                 x:Name="MainGrid"
-                Background="#373737">
+                Background="#262E42">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="30" />
                     <ColumnDefinition Width="1*" />

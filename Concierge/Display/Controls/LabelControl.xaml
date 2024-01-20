@@ -15,10 +15,10 @@
         Margin="5"
         Background="Transparent">
         <Border
-            BorderBrush="#2B2B2B"
+            BorderBrush="#1E2636"
             BorderThickness="5"
             CornerRadius="10">
-            <Grid Background="#2B2B2B" Margin="-1">
+            <Grid Background="#1E2636" Margin="-1">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="45*"/>
                     <ColumnDefinition Width="55*"/>
@@ -38,7 +38,7 @@
 
                 <Line
                     Grid.Row="1"
-                    Stroke="SteelBlue"
+                    Stroke="#A9C7FF"
                     StrokeThickness="2"
                     Stretch="Uniform"
                     X1="0" X2="0" Y1="0" Y2="1"

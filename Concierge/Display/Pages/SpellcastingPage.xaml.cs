@@ -290,10 +290,10 @@ namespace Concierge.Display.Pages
                 var messageResult = ConciergeMessageBox.Show(
                     Regex.Unescape($"You are currently concentrating on {concentratedSpell.Name}. Using another concentration spell will drop the current one.\nDo you wish to use {spell.Name}?"),
                     "Concentration",
-                    ConciergeWindowButtons.YesNo,
-                    ConciergeWindowIcons.Question);
+                    ConciergeButtons.Yes | ConciergeButtons.No,
+                    ConciergeIcons.Question);
 
-                if (messageResult != ConciergeWindowResult.Yes)
+                if (messageResult != ConciergeResult.Yes)
                 {
                     return;
                 }

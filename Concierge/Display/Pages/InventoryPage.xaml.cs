@@ -183,7 +183,7 @@ namespace Concierge.Display.Pages
             var result = item.Use();
 
             var windowResult = ConciergeWindowService.ShowUseItemWindow(typeof(UseItemWindow), result);
-            if (windowResult != ConciergeWindowResult.OK)
+            if (windowResult != ConciergeResult.OK)
             {
                 item.Amount = oldItem.Amount;
                 return;

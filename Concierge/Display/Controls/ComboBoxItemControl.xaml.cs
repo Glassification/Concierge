@@ -73,8 +73,8 @@ namespace Concierge.Display.Controls
 
         private void Grid_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
         {
-            this.MainGrid.Background = ConciergeBrushes.TotalLightBox;
-            this.MainBorder.BorderBrush = ConciergeBrushes.TotalLightBox;
+            this.MainGrid.Background = ConciergeBrushes.ControlForeBlue;
+            this.MainBorder.BorderBrush = ConciergeBrushes.ControlForeBlue;
         }
     }
 }

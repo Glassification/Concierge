@@ -5,20 +5,22 @@
 namespace Concierge.Display.Controls
 {
     using System;
+    using System.Linq;
     using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Input;
     using System.Windows.Media;
-    using System.Windows.Shapes;
 
     using Concierge.Character.AbilitySkills;
     using Concierge.Character.Enums;
     using Concierge.Commands;
     using Concierge.Common;
     using Concierge.Common.Extensions;
+    using Concierge.Common.Utilities;
     using Concierge.Display.Enums;
     using Concierge.Display.Windows.Utility;
     using Concierge.Services;
+    using MaterialDesignThemes.Wpf;
 
     /// <summary>
     /// Interaction logic for SkillControl.xaml.
@@ -101,11 +103,19 @@ namespace Concierge.Display.Controls
             }
         }
 
+        public string ProficiencyToolTip => $"Toggle {this.SkillName} Proficiency";
+
+        public string ExpertiseToolTip => $"Toggle {this.SkillName} Expertise";
+
         public void SetStyle(Skill skill)
         {
             this.Tag = skill;
-            this.ProficiencyBox.Fill = skill.Proficiency ? Brushes.SteelBlue : Brushes.Transparent;
-            this.ExpertiseBox.Fill = skill.Expertise ? Brushes.SteelBlue : Brushes.Transparent;
+
+            this.ProficiencyToggle.Foreground = skill.Proficiency ? ConciergeBrushes.Mint : Brushes.SlateGray;
+            this.ProficiencyToggle.Kind = skill.Proficiency ? PackIconKind.RhombusSplit : PackIconKind.RhombusSplitOutline;
+
+            this.ExpertiseToggle.Foreground = skill.Expertise ? ConciergeBrushes.Mint : Brushes.SlateGray;
+            this.ExpertiseToggle.Kind = skill.Expertise ? PackIconKind.RhombusSplit : PackIconKind.RhombusSplitOutline;
 
             SetTextStyleHelper(skill.StatusChecks, this.SkillNameField);
             SetTextStyleHelper(skill.StatusChecks, this.SkillBonusField);
@@ -139,38 +149,42 @@ namespace Concierge.Display.Controls
             }
         }
 
-        private void ToggleBox_MouseEnter(object sender, MouseEventArgs e)
+        private void SkillField_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            if (sender is not Ellipse ellipse)
+            if (this.Tag is Skill skill)
+            {
+                ConciergeWindowService.ShowAbilityCheckWindow(typeof(AbilityCheckWindow), skill, 0);
+            }
+        }
+
+        private void Toggle_MouseEnter(object sender, MouseEventArgs e)
+        {
+            if (sender is not Grid grid)
             {
                 return;
             }
 
-            ellipse.Stroke = ConciergeBrushes.BorderHighlight;
-            ellipse.Fill = ConciergeBrushes.BorderHighlight;
-            ellipse.StrokeThickness = 1;
-
+            var packIcon = DisplayUtility.FindVisualChildren<PackIcon>(grid).First();
+            packIcon.Foreground = ConciergeBrushes.BorderHighlight;
             Mouse.OverrideCursor = Cursors.Hand;
         }
 
-        private void ToggleBox_MouseLeave(object sender, MouseEventArgs e)
+        private void Toggle_MouseLeave(object sender, MouseEventArgs e)
         {
-            if (sender is not Ellipse ellipse)
+            if (sender is not Grid grid)
             {
                 return;
             }
 
-            var save = Program.CcsFile.Character.Skills.GetSkill(this.SkillName.Strip(" "));
-            var check = ellipse.Name.Contains("Proficiency", StringComparison.InvariantCultureIgnoreCase) ? save.Proficiency : save.Expertise;
+            var packIcon = DisplayUtility.FindVisualChildren<PackIcon>(grid).First();
+            var skill = Program.CcsFile.Character.Skills.GetSkill(this.SkillName.Strip(" "));
+            var check = packIcon.Name.Contains("Proficiency", StringComparison.InvariantCultureIgnoreCase) ? skill.Proficiency : skill.Expertise;
 
-            ellipse.Stroke = Brushes.SteelBlue;
-            ellipse.Fill = check ? Brushes.SteelBlue : Brushes.Transparent;
-            ellipse.StrokeThickness = 1;
-
+            packIcon.Foreground = check ? ConciergeBrushes.Mint : Brushes.SlateGray;
             Mouse.OverrideCursor = Cursors.Arrow;
         }
 
-        private void SkillProficiency_MouseDown(object sender, RoutedEventArgs e)
+        private void ProficiencyToggle_MouseDown(object sender, MouseButtonEventArgs e)
         {
             ConciergeSoundService.UpdateValue();
 
@@ -185,7 +199,7 @@ namespace Concierge.Display.Controls
             Program.UndoRedoService.AddCommand(new EditCommand<Skills>(skill, skillCopy, ConciergePage.Overview));
         }
 
-        private void SkillExpertise_MouseDown(object sender, RoutedEventArgs e)
+        private void ExpertiseToggle_MouseDown(object sender, MouseButtonEventArgs e)
         {
             ConciergeSoundService.UpdateValue();
 
@@ -198,14 +212,6 @@ namespace Concierge.Display.Controls
             this.RaiseEvent(new RoutedEventArgs(ToggleClickedEvent));
 
             Program.UndoRedoService.AddCommand(new EditCommand<Skills>(skill, skillCopy, ConciergePage.Overview));
-        }
-
-        private void SkillField_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            if (this.Tag is Skill skill)
-            {
-                ConciergeWindowService.ShowAbilityCheckWindow(typeof(AbilityCheckWindow), skill, 0);
-            }
         }
     }
 }

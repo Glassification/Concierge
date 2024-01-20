@@ -29,7 +29,7 @@ namespace Concierge.Display.Windows.Utility
 
         private UsedItem UsedItem { get; set; }
 
-        public override ConciergeWindowResult ShowUseItemWindow(UsedItem usedItem)
+        public override ConciergeResult ShowUseItemWindow(UsedItem usedItem)
         {
             this.UsedItem = usedItem;
             this.HeaderTextBlock.Text = usedItem.Name;
@@ -55,7 +55,7 @@ namespace Concierge.Display.Windows.Utility
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Result = ConciergeWindowResult.Exit;
+            this.Result = ConciergeResult.Exit;
             this.CloseConciergeWindow();
         }
 
@@ -78,7 +78,7 @@ namespace Concierge.Display.Windows.Utility
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Result = ConciergeWindowResult.Cancel;
+            this.Result = ConciergeResult.Cancel;
             this.CloseConciergeWindow();
         }
     }

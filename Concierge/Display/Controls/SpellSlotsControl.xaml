@@ -15,10 +15,10 @@
         Margin="2"
         Background="Transparent">
         <Border
-            BorderBrush="#2B2B2B"
+            BorderBrush="#1E2636"
             BorderThickness="5"
             CornerRadius="10">
-            <Grid Background="#2B2B2B">
+            <Grid Background="#1E2636">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1*"/>
                     <ColumnDefinition Width="9*"/>
@@ -46,11 +46,11 @@
                     <Border
                         Margin="2"
                         Grid.Row="1"
-                        BorderBrush="#FF333333"
+                        BorderBrush="#262E42"
                         BorderThickness="5"
                         CornerRadius="10">
                         <Grid
-                            Background="#FF333333"
+                            Background="#262E42"
                             Margin="-1"
                             MouseUp="Grid_MouseUp">
                             <components:ConciergeTextBlock 
@@ -89,15 +89,16 @@
                             x:Name="PactHeaderBorder"
                             Margin="2"
                             Grid.Row="0"
-                            BorderBrush="#FF333333"
+                            BorderBrush="#262E42"
                             BorderThickness="5"
                             CornerRadius="10"
+                            ToolTip="Use Pact Spell Slot"
                             MouseDown="Header_MouseDown"
                             MouseEnter="Header_MouseEnter"
                             MouseLeave="Header_MouseLeave">
                             <Grid
                                 x:Name="PactHeaderGrid"
-                                Background="#FF333333"
+                                Background="#262E42"
                                 Margin="-1">
                                 <components:ConciergeTextBlock
                                     Text="Pact"
@@ -111,14 +112,14 @@
                         <Border
                             Margin="2"
                             Grid.Row="1"
-                            BorderBrush="#FF333333"
+                            BorderBrush="#262E42"
                             BorderThickness="5"
                             CornerRadius="10"
                             x:Name="PactBorder">
                             <Grid
                                 Margin="-1"
                                 x:Name="PactGrid"
-                                Background="#FF333333">
+                                Background="#262E42">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="50*"/>
                                     <RowDefinition Height="50*"/>
@@ -133,7 +134,7 @@
                                     VerticalAlignment="Center"/>
                                 <Line
                                     Grid.Row="0"
-                                    Stroke="SteelBlue"
+                                    Stroke="#A9C7FF"
                                     StrokeThickness="2"
                                     Stretch="Uniform"
                                     X1="0" X2="1" Y1="0" Y2="0"
@@ -162,15 +163,16 @@
                             x:Name="FirstHeaderBorder"
                             Margin="2"
                             Grid.Row="0"
-                            BorderBrush="#FF333333"
+                            BorderBrush="#262E42"
                             BorderThickness="5"
                             CornerRadius="10"
+                            ToolTip="Use 1st Level Spell Slot"
                             MouseDown="Header_MouseDown"
                             MouseEnter="Header_MouseEnter"
                             MouseLeave="Header_MouseLeave">
                             <Grid
                                 x:Name="FirstHeaderGrid"
-                                Background="#FF333333"
+                                Background="#262E42"
                                 Margin="-1">
                                 <components:ConciergeTextBlock
                                     Text="1st"
@@ -184,14 +186,14 @@
                         <Border
                             Margin="2"
                             Grid.Row="1"
-                            BorderBrush="#FF333333"
+                            BorderBrush="#262E42"
                             BorderThickness="5"
                             CornerRadius="10"
                             x:Name="FirstBorder">
                             <Grid
                                 Margin="-1"
                                 x:Name="FirstGrid"
-                                Background="#FF333333">
+                                Background="#262E42">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="50*"/>
                                     <RowDefinition Height="50*"/>
@@ -206,7 +208,7 @@
                                     VerticalAlignment="Center"/>
                                 <Line
                                     Grid.Row="0"
-                                    Stroke="SteelBlue"
+                                    Stroke="#A9C7FF"
                                     StrokeThickness="2"
                                     Stretch="Uniform"
                                     X1="0" X2="1" Y1="0" Y2="0"
@@ -235,15 +237,16 @@
                             x:Name="SecondHeaderBorder"
                             Margin="2"
                             Grid.Row="0"
-                            BorderBrush="#FF333333"
+                            BorderBrush="#262E42"
                             BorderThickness="5"
                             CornerRadius="10"
+                            ToolTip="Use 2nd Level Spell Slot"
                             MouseDown="Header_MouseDown"
                             MouseEnter="Header_MouseEnter"
                             MouseLeave="Header_MouseLeave">
                             <Grid
                                 x:Name="SecondHeaderGrid"
-                                Background="#FF333333"
+                                Background="#262E42"
                                 Margin="-1">
                                 <components:ConciergeTextBlock
                                     Text="2nd"
@@ -257,14 +260,14 @@
                         <Border
                             Margin="2"
                             Grid.Row="1"
-                            BorderBrush="#FF333333"
+                            BorderBrush="#262E42"
                             BorderThickness="5"
                             CornerRadius="10"
                             x:Name="SecondBorder">
                             <Grid
                                 Margin="-1"
                                 x:Name="SecondGrid"
-                                Background="#FF333333">
+                                Background="#262E42">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="50*"/>
                                     <RowDefinition Height="50*"/>
@@ -279,7 +282,7 @@
                                     VerticalAlignment="Center"/>
                                 <Line
                                     Grid.Row="0"
-                                    Stroke="SteelBlue"
+                                    Stroke="#A9C7FF"
                                     StrokeThickness="2"
                                     Stretch="Uniform"
                                     X1="0" X2="1" Y1="0" Y2="0"
@@ -308,15 +311,16 @@
                             x:Name="ThirdHeaderBorder"
                             Margin="2"
                             Grid.Row="0"
-                            BorderBrush="#FF333333"
+                            BorderBrush="#262E42"
                             BorderThickness="5"
                             CornerRadius="10"
+                            ToolTip="Use 3rd Level Spell Slot"
                             MouseDown="Header_MouseDown"
                             MouseEnter="Header_MouseEnter"
                             MouseLeave="Header_MouseLeave">
                             <Grid
                                 x:Name="ThirdHeaderGrid"
-                                Background="#FF333333"
+                                Background="#262E42"
                                 Margin="-1">
                                 <components:ConciergeTextBlock
                                     Text="3rd"
@@ -330,14 +334,14 @@
                         <Border
                             Margin="2"
                             Grid.Row="1"
-                            BorderBrush="#FF333333"
+                            BorderBrush="#262E42"
                             BorderThickness="5"
                             CornerRadius="10"
                             x:Name="ThirdBorder">
                             <Grid
                                 Margin="-1"
                                 x:Name="ThirdGrid"
-                                Background="#FF333333">
+                                Background="#262E42">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="50*"/>
                                     <RowDefinition Height="50*"/>
@@ -352,7 +356,7 @@
                                     VerticalAlignment="Center"/>
                                 <Line
                                     Grid.Row="0"
-                                    Stroke="SteelBlue"
+                                    Stroke="#A9C7FF"
                                     StrokeThickness="2"
                                     Stretch="Uniform"
                                     X1="0" X2="1" Y1="0" Y2="0"
@@ -381,15 +385,16 @@
                             x:Name="FourthHeaderBorder"
                             Margin="2"
                             Grid.Row="0"
-                            BorderBrush="#FF333333"
+                            BorderBrush="#262E42"
                             BorderThickness="5"
                             CornerRadius="10"
+                            ToolTip="Use 4th Level Spell Slot"
                             MouseDown="Header_MouseDown"
                             MouseEnter="Header_MouseEnter"
                             MouseLeave="Header_MouseLeave">
                             <Grid
                                 x:Name="FourthHeaderGrid"
-                                Background="#FF333333"
+                                Background="#262E42"
                                 Margin="-1">
                                 <components:ConciergeTextBlock
                                     Text="4th"
@@ -403,14 +408,14 @@
                         <Border
                             Margin="2"
                             Grid.Row="1"
-                            BorderBrush="#FF333333"
+                            BorderBrush="#262E42"
                             BorderThickness="5"
                             CornerRadius="10"
                             x:Name="FourthBorder">
                             <Grid
                                 Margin="-1"
                                 x:Name="FourthGrid"
-                                Background="#FF333333">
+                                Background="#262E42">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="50*"/>
                                     <RowDefinition Height="50*"/>
@@ -425,7 +430,7 @@
                                     VerticalAlignment="Center"/>
                                 <Line
                                     Grid.Row="0"
-                                    Stroke="SteelBlue"
+                                    Stroke="#A9C7FF"
                                     StrokeThickness="2"
                                     Stretch="Uniform"
                                     X1="0" X2="1" Y1="0" Y2="0"
@@ -454,15 +459,16 @@
                             x:Name="FifthHeaderBorder"
                             Margin="2"
                             Grid.Row="0"
-                            BorderBrush="#FF333333"
+                            BorderBrush="#262E42"
                             BorderThickness="5"
                             CornerRadius="10"
+                            ToolTip="Use 5th Level Spell Slot"
                             MouseDown="Header_MouseDown"
                             MouseEnter="Header_MouseEnter"
                             MouseLeave="Header_MouseLeave">
                             <Grid
                                 x:Name="FifthHeaderGrid"
-                                Background="#FF333333"
+                                Background="#262E42"
                                 Margin="-1">
                                 <components:ConciergeTextBlock
                                     Text="5th"
@@ -476,14 +482,14 @@
                         <Border
                             Margin="2"
                             Grid.Row="1"
-                            BorderBrush="#FF333333"
+                            BorderBrush="#262E42"
                             BorderThickness="5"
                             CornerRadius="10"
                             x:Name="FifthBorder">
                             <Grid
                                 Margin="-1"
                                 x:Name="FifthGrid"
-                                Background="#FF333333">
+                                Background="#262E42">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="50*"/>
                                     <RowDefinition Height="50*"/>
@@ -498,7 +504,7 @@
                                     VerticalAlignment="Center"/>
                                 <Line
                                     Grid.Row="0"
-                                    Stroke="SteelBlue"
+                                    Stroke="#A9C7FF"
                                     StrokeThickness="2"
                                     Stretch="Uniform"
                                     X1="0" X2="1" Y1="0" Y2="0"
@@ -527,15 +533,16 @@
                             x:Name="SixthHeaderBorder"
                             Margin="2"
                             Grid.Row="0"
-                            BorderBrush="#FF333333"
+                            BorderBrush="#262E42"
                             BorderThickness="5"
                             CornerRadius="10"
+                            ToolTip="Use 6th Level Spell Slot"
                             MouseDown="Header_MouseDown"
                             MouseEnter="Header_MouseEnter"
                             MouseLeave="Header_MouseLeave">
                             <Grid
                                 x:Name="SixthHeaderGrid"
-                                Background="#FF333333"
+                                Background="#262E42"
                                 Margin="-1">
                                 <components:ConciergeTextBlock
                                     Text="6th"
@@ -549,14 +556,14 @@
                         <Border
                             Margin="2"
                             Grid.Row="1"
-                            BorderBrush="#FF333333"
+                            BorderBrush="#262E42"
                             BorderThickness="5"
                             CornerRadius="10"
                             x:Name="SixthBorder">
                             <Grid
                                 Margin="-1"
                                 x:Name="SixthGrid"
-                                Background="#FF333333">
+                                Background="#262E42">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="50*"/>
                                     <RowDefinition Height="50*"/>
@@ -571,7 +578,7 @@
                                     VerticalAlignment="Center"/>
                                 <Line
                                     Grid.Row="0"
-                                    Stroke="SteelBlue"
+                                    Stroke="#A9C7FF"
                                     StrokeThickness="2"
                                     Stretch="Uniform"
                                     X1="0" X2="1" Y1="0" Y2="0"
@@ -600,15 +607,16 @@
                             x:Name="SeventhHeaderBorder"
                             Margin="2"
                             Grid.Row="0"
-                            BorderBrush="#FF333333"
+                            BorderBrush="#262E42"
                             BorderThickness="5"
                             CornerRadius="10"
+                            ToolTip="Use 7th Level Spell Slot"
                             MouseDown="Header_MouseDown"
                             MouseEnter="Header_MouseEnter"
                             MouseLeave="Header_MouseLeave">
                             <Grid
                                 x:Name="SeventhHeaderGrid"
-                                Background="#FF333333"
+                                Background="#262E42"
                                 Margin="-1">
                                 <components:ConciergeTextBlock
                                     Text="7th"
@@ -622,14 +630,14 @@
                         <Border
                             Margin="2"
                             Grid.Row="1"
-                            BorderBrush="#FF333333"
+                            BorderBrush="#262E42"
                             BorderThickness="5"
                             CornerRadius="10"
                             x:Name="SeventhBorder">
                             <Grid
                                 Margin="-1"
                                 x:Name="SeventhGrid"
-                                Background="#FF333333">
+                                Background="#262E42">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="50*"/>
                                     <RowDefinition Height="50*"/>
@@ -644,7 +652,7 @@
                                     VerticalAlignment="Center"/>
                                 <Line
                                     Grid.Row="0"
-                                    Stroke="SteelBlue"
+                                    Stroke="#A9C7FF"
                                     StrokeThickness="2"
                                     Stretch="Uniform"
                                     X1="0" X2="1" Y1="0" Y2="0"
@@ -673,15 +681,16 @@
                             x:Name="EighthHeaderBorder"
                             Margin="2"
                             Grid.Row="0"
-                            BorderBrush="#FF333333"
+                            BorderBrush="#262E42"
                             BorderThickness="5"
                             CornerRadius="10"
+                            ToolTip="Use 8th Level Spell Slot"
                             MouseDown="Header_MouseDown"
                             MouseEnter="Header_MouseEnter"
                             MouseLeave="Header_MouseLeave">
                             <Grid
                                 x:Name="EighthHeaderGrid"
-                                Background="#FF333333"
+                                Background="#262E42"
                                 Margin="-1">
                                 <components:ConciergeTextBlock
                                     Text="8th"
@@ -695,14 +704,14 @@
                         <Border
                             Margin="2"
                             Grid.Row="1"
-                            BorderBrush="#FF333333"
+                            BorderBrush="#262E42"
                             BorderThickness="5"
                             CornerRadius="10"
                             x:Name="EighthBorder">
                             <Grid
                                 Margin="-1"
                                 x:Name="EighthGrid"
-                                Background="#FF333333">
+                                Background="#262E42">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="50*"/>
                                     <RowDefinition Height="50*"/>
@@ -717,7 +726,7 @@
                                     VerticalAlignment="Center"/>
                                 <Line
                                     Grid.Row="0"
-                                    Stroke="SteelBlue"
+                                    Stroke="#A9C7FF"
                                     StrokeThickness="2"
                                     Stretch="Uniform"
                                     X1="0" X2="1" Y1="0" Y2="0"
@@ -746,15 +755,16 @@
                             x:Name="NinethHeaderBorder"
                             Margin="2"
                             Grid.Row="0"
-                            BorderBrush="#FF333333"
+                            BorderBrush="#262E42"
                             BorderThickness="5"
                             CornerRadius="10"
+                            ToolTip="Use 9th Level Spell Slot"
                             MouseDown="Header_MouseDown"
                             MouseEnter="Header_MouseEnter"
                             MouseLeave="Header_MouseLeave">
                             <Grid
                                 x:Name="NinethHeaderGrid"
-                                Background="#FF333333"
+                                Background="#262E42"
                                 Margin="-1">
                                 <components:ConciergeTextBlock
                                     Text="9th"
@@ -768,14 +778,14 @@
                         <Border
                             Margin="2"
                             Grid.Row="1"
-                            BorderBrush="#FF333333"
+                            BorderBrush="#262E42"
                             BorderThickness="5"
                             CornerRadius="10"
                             x:Name="NinethBorder">
                             <Grid
                                 Margin="-1"
                                 x:Name="NinethGrid"
-                                Background="#FF333333">
+                                Background="#262E42">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="50*"/>
                                     <RowDefinition Height="50*"/>
@@ -790,7 +800,7 @@
                                     VerticalAlignment="Center"/>
                                 <Line
                                     Grid.Row="0"
-                                    Stroke="SteelBlue"
+                                    Stroke="#A9C7FF"
                                     StrokeThickness="2"
                                     Stretch="Uniform"
                                     X1="0" X2="1" Y1="0" Y2="0"

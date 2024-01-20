@@ -14,7 +14,7 @@
     Title="SpellcastingPage"
     Style="{StaticResource PageFontStyle}">
 
-    <Grid Background="#202020">
+    <Grid Background="#0F1220">
         <Grid.RowDefinitions>
             <RowDefinition Height="28*"/>
             <RowDefinition Height="72*"/>
@@ -29,11 +29,11 @@
             <Border
                 Margin="5"
                 Grid.Column="0"
-                BorderBrush="#2B2B2B"
+                BorderBrush="#1E2636"
                 BorderThickness="5"
                 CornerRadius="10">
                 <Grid
-                    Background="#2B2B2B"
+                    Background="#1E2636"
                     Margin="-1">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="20*"/>
@@ -42,11 +42,11 @@
 
                     <Border
                         Grid.Row="0"
-                        BorderBrush="#FF333333"
+                        BorderBrush="#262E42"
                         BorderThickness="5"
                         CornerRadius="10">
                         <Grid
-                            Background="#FF333333"
+                            Background="#262E42"
                             Margin="-1">
                             <StackPanel
                                 Orientation="Horizontal"
@@ -185,11 +185,11 @@
             <Border
                 Margin="5"
                 Grid.Column="1"
-                BorderBrush="#2B2B2B"
+                BorderBrush="#1E2636"
                 BorderThickness="5"
                 CornerRadius="10">
                 <Grid
-                    Background="#2B2B2B"
+                    Background="#1E2636"
                     Margin="-1">
                     <controls:SpellSlotsControl
                         x:Name="SpellSlotsDisplay"
@@ -202,11 +202,11 @@
         <Border
             Margin="5"
             Grid.Row="2"
-            BorderBrush="#2B2B2B"
+            BorderBrush="#1E2636"
             BorderThickness="5"
             CornerRadius="10">
             <Grid
-                Background="#2B2B2B"
+                Background="#1E2636"
                 Margin="-1">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="08*"/>
@@ -215,11 +215,11 @@
 
                 <Border
                     Grid.Row="0"
-                    BorderBrush="#FF333333"
+                    BorderBrush="#262E42"
                     BorderThickness="5"
                     CornerRadius="10">
                     <Grid
-                        Background="#FF333333"
+                        Background="#262E42"
                         Margin="-1">
                         <StackPanel
                             Orientation="Horizontal"
@@ -367,7 +367,7 @@
                                     <materialDesign:PackIcon
                                         Kind="{Binding RitualIcon}"
                                         Margin="0,10,0,0"
-                                        Foreground="#227EA9"
+                                        Foreground="#A9C7FF"
                                         Height="18"
                                         Width="18"
                                         HorizontalAlignment="Center"
@@ -383,7 +383,7 @@
                                     <materialDesign:PackIcon
                                         Kind="{Binding ConcentrationIcon}"
                                         Margin="0,10,0,0"
-                                        Foreground="#227EA9"
+                                        Foreground="#A9C7FF"
                                         Height="18"
                                         Width="18"
                                         HorizontalAlignment="Center"

@@ -14,7 +14,7 @@
     Title="CompanionPage"
     Style="{StaticResource PageFontStyle}">
 
-    <Grid Background="#202020">
+    <Grid Background="#0F1220">
         <Grid.RowDefinitions>
             <RowDefinition Height="50*"/>
             <RowDefinition Height="50*"/>
@@ -36,12 +36,12 @@
                 <Border
                     Margin="5"
                     Grid.Row="0"
-                    BorderBrush="#2B2B2B"
+                    BorderBrush="#1E2636"
                     BorderThickness="5"
                     CornerRadius="10">
                     <Grid
                         Margin="-1"
-                        Background="#2B2B2B">
+                        Background="#1E2636">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="25*"/>
                             <ColumnDefinition Width="75*"/>
@@ -55,7 +55,7 @@
                             MouseUp="CompanionDetails_MouseUp"/>
                         <Line
                             Grid.Column="0"
-                            Stroke="SteelBlue"
+                            Stroke="#A9C7FF"
                             StrokeThickness="2"
                             Stretch="Uniform"
                             X1="0" X2="0" Y1="0" Y2="1"
@@ -74,12 +74,12 @@
                 <Border
                     Margin="5"
                     Grid.Row="1"
-                    BorderBrush="#2B2B2B"
+                    BorderBrush="#1E2636"
                     BorderThickness="5"
                     CornerRadius="10">
                     <Grid
                         Margin="-1"
-                        Background="#2B2B2B">
+                        Background="#1E2636">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="50*"/>
                             <RowDefinition Height="50*"/>
@@ -94,11 +94,11 @@
                             Margin="5"
                             Grid.Row="0"
                             Grid.Column="0"
-                            BorderBrush="#333333"
+                            BorderBrush="#242A38"
                             BorderThickness="5"
                             CornerRadius="10">
                             <Grid
-                                Background="#333333"
+                                Background="#242A38"
                                 Margin="-1">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="25*"/>
@@ -113,7 +113,7 @@
                                     MouseUp="CompanionDetails_MouseUp"/>
                                 <Line
                                     Grid.Row="0"
-                                    Stroke="SteelBlue"
+                                    Stroke="#A9C7FF"
                                     StrokeThickness="2"
                                     Stretch="Uniform"
                                     X1="0" X2="1" Y1="0" Y2="0"
@@ -132,11 +132,11 @@
                             Margin="5"
                             Grid.Row="0"
                             Grid.Column="1"
-                            BorderBrush="#333333"
+                            BorderBrush="#242A38"
                             BorderThickness="5"
                             CornerRadius="10">
                             <Grid
-                                Background="#333333"
+                                Background="#242A38"
                                 Margin="-1">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="25*"/>
@@ -151,7 +151,7 @@
                                     MouseUp="CompanionDetails_MouseUp"/>
                                 <Line
                                     Grid.Row="0"
-                                    Stroke="SteelBlue"
+                                    Stroke="#A9C7FF"
                                     StrokeThickness="2"
                                     Stretch="Uniform"
                                     X1="0" X2="1" Y1="0" Y2="0"
@@ -170,11 +170,11 @@
                             Margin="5"
                             Grid.Row="0"
                             Grid.Column="2"
-                            BorderBrush="#333333"
+                            BorderBrush="#242A38"
                             BorderThickness="5"
                             CornerRadius="10">
                             <Grid
-                                Background="#333333"
+                                Background="#242A38"
                                 Margin="-1">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="25*"/>
@@ -189,7 +189,7 @@
                                     MouseUp="CompanionDetails_MouseUp"/>
                                 <Line
                                     Grid.Row="0"
-                                    Stroke="SteelBlue"
+                                    Stroke="#A9C7FF"
                                     StrokeThickness="2"
                                     Stretch="Uniform"
                                     X1="0" X2="1" Y1="0" Y2="0"
@@ -208,11 +208,11 @@
                             Margin="5"
                             Grid.Row="1"
                             Grid.Column="0"
-                            BorderBrush="#333333"
+                            BorderBrush="#242A38"
                             BorderThickness="5"
                             CornerRadius="10">
                             <Grid
-                                Background="#333333"
+                                Background="#242A38"
                                 Margin="-1">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="25*"/>
@@ -227,7 +227,7 @@
                                     MouseUp="CompanionDetails_MouseUp"/>
                                 <Line
                                     Grid.Row="0"
-                                    Stroke="SteelBlue"
+                                    Stroke="#A9C7FF"
                                     StrokeThickness="2"
                                     Stretch="Uniform"
                                     X1="0" X2="1" Y1="0" Y2="0"
@@ -246,11 +246,11 @@
                             Margin="5"
                             Grid.Row="1"
                             Grid.Column="1"
-                            BorderBrush="#333333"
+                            BorderBrush="#242A38"
                             BorderThickness="5"
                             CornerRadius="10">
                             <Grid
-                                Background="#333333"
+                                Background="#242A38"
                                 Margin="-1">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="25*"/>
@@ -265,7 +265,7 @@
                                     MouseUp="CompanionDetails_MouseUp"/>
                                 <Line
                                     Grid.Row="0"
-                                    Stroke="SteelBlue"
+                                    Stroke="#A9C7FF"
                                     StrokeThickness="2"
                                     Stretch="Uniform"
                                     X1="0" X2="1" Y1="0" Y2="0"
@@ -284,11 +284,11 @@
                             Margin="5"
                             Grid.Row="1"
                             Grid.Column="2"
-                            BorderBrush="#333333"
+                            BorderBrush="#242A38"
                             BorderThickness="5"
                             CornerRadius="10">
                             <Grid
-                                Background="#333333"
+                                Background="#242A38"
                                 Margin="-1">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="25*"/>
@@ -303,7 +303,7 @@
                                     MouseUp="CompanionDetails_MouseUp"/>
                                 <Line
                                     Grid.Row="0"
-                                    Stroke="SteelBlue"
+                                    Stroke="#A9C7FF"
                                     StrokeThickness="2"
                                     Stretch="Uniform"
                                     X1="0" X2="1" Y1="0" Y2="0"
@@ -393,11 +393,11 @@
                     <Border
                         Margin="5"
                         Grid.Column="1"
-                        BorderBrush="#2B2B2B"
+                        BorderBrush="#1E2636"
                         BorderThickness="5"
                         CornerRadius="10">
                         <Grid
-                            Background="#2B2B2B"
+                            Background="#1E2636"
                             Margin="-1"
                             MouseUp="CompanionImage_MouseUp">
                             <materialDesign:PackIcon
@@ -411,7 +411,7 @@
                             <Image x:Name="CompanionImage"/>
                             <Border
                                 Margin="0"
-                                BorderBrush="#2B2B2B"
+                                BorderBrush="#1E2636"
                                 BorderThickness="5"
                                 CornerRadius="10"/>
                         </Grid>
@@ -419,7 +419,7 @@
                     <Border
                         Margin="5"
                         Grid.Column="1"
-                        BorderBrush="#2B2B2B"
+                        BorderBrush="#1E2636"
                         BorderThickness="6"
                         CornerRadius="10"/>
                 </Grid>
@@ -435,13 +435,13 @@
         
         <Border
             Grid.Row="1"
-            BorderBrush="#2B2B2B"
+            BorderBrush="#1E2636"
             BorderThickness="5"
             CornerRadius="10"
             Margin="5">
             <Grid
                 Margin="-1"
-                Background="#2B2B2B">
+                Background="#1E2636">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="11*"/>
                     <RowDefinition Height="89*"/>
@@ -449,12 +449,12 @@
 
                 <Border
                     Grid.Row="0"
-                    BorderBrush="#333333"
+                    BorderBrush="#242A38"
                     BorderThickness="5"
                     CornerRadius="10">
                     <Grid
                         Margin="-1"
-                        Background="#333333">
+                        Background="#242A38">
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                             <components:ConciergeTextBlock 
                                 Text="Attacks"
@@ -574,12 +574,12 @@
                             <DataGridTextColumn
                                 Header="Attack"
                                 Binding="{Binding Attack}"
-                                Width="0.05*"
+                                Width="0.06*"
                                 ElementStyle="{StaticResource StandardColumnElementStyle}"/>
                             <DataGridTextColumn
                                 Header="Ability"
                                 Binding="{Binding Ability}"
-                                Width="0.05*"
+                                Width="0.06*"
                                 ElementStyle="{StaticResource StandardColumnElementStyle}"/>
                             <DataGridTextColumn
                                 Header="Damage"
@@ -599,12 +599,12 @@
                             <DataGridTextColumn
                                 Header="Range"
                                 Binding="{Binding Range}"
-                                Width="0.1*"
+                                Width="0.09*"
                                 ElementStyle="{StaticResource StandardColumnElementStyle}"/>
                             <DataGridTextColumn
                                 Header="Description"
                                 Binding="{Binding Note}"
-                                Width="0.29*"
+                                Width="0.28*"
                                 ElementStyle="{StaticResource StandardColumnElementStyle}"/>
                         </DataGrid.Columns>
                     </components:ConciergeDataGrid>

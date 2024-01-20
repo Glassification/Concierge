@@ -99,7 +99,7 @@ namespace Concierge.Display.Windows.Utility
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Result = ConciergeWindowResult.Exit;
+            this.Result = ConciergeResult.Exit;
             this.CloseConciergeWindow();
         }
 

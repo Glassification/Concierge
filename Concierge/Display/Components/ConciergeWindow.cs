@@ -59,7 +59,7 @@ namespace Concierge.Display.Components
 
         public ConciergePage ConciergePage { get; set; }
 
-        protected ConciergeWindowResult Result { get; set; }
+        protected ConciergeResult Result { get; set; }
 
         protected ConciergeWindow? NonBlockingWindow { get; set; }
 
@@ -96,22 +96,22 @@ namespace Concierge.Display.Components
             Program.Logger.Error(new ImplementedMethodException(nameof(this.ShowEdit), item));
         }
 
-        public virtual ConciergeWindowResult ShowWizardSetup(string buttonText)
+        public virtual ConciergeResult ShowWizardSetup(string buttonText)
         {
             Program.Logger.Error(new ImplementedMethodException(nameof(this.ShowWizardSetup)));
-            return ConciergeWindowResult.NoResult;
+            return ConciergeResult.NoResult;
         }
 
-        public virtual ConciergeWindowResult ShowHeal<T>(T item)
+        public virtual ConciergeResult ShowHeal<T>(T item)
         {
             Program.Logger.Error(new ImplementedMethodException(nameof(this.ShowHeal), item));
-            return ConciergeWindowResult.NoResult;
+            return ConciergeResult.NoResult;
         }
 
-        public virtual ConciergeWindowResult ShowDamage<T>(T item)
+        public virtual ConciergeResult ShowDamage<T>(T item)
         {
             Program.Logger.Error(new ImplementedMethodException(nameof(this.ShowDamage), item));
-            return ConciergeWindowResult.NoResult;
+            return ConciergeResult.NoResult;
         }
 
         public virtual CustomColor ShowColorWindow(CustomColor color)
@@ -120,10 +120,10 @@ namespace Concierge.Display.Components
             return CustomColor.Invalid;
         }
 
-        public virtual ConciergeWindowResult ShowUseItemWindow(UsedItem usedItem)
+        public virtual ConciergeResult ShowUseItemWindow(UsedItem usedItem)
         {
             Program.Logger.Error(new ImplementedMethodException(nameof(this.ShowUseItemWindow)));
-            return ConciergeWindowResult.NoResult;
+            return ConciergeResult.NoResult;
         }
 
         public virtual AbilitySave ShowAbilityCheckWindow(IAbility ability, int value)
@@ -153,7 +153,7 @@ namespace Concierge.Display.Components
 
         protected virtual void ReturnAndClose()
         {
-            this.Result = ConciergeWindowResult.OK;
+            this.Result = ConciergeResult.OK;
             this.CloseConciergeWindow();
         }
 
@@ -254,14 +254,14 @@ namespace Concierge.Display.Components
             {
                 case Key.Escape:
                     Program.Logger.Info($"{e.Key} key pressed.");
-                    this.Result = ConciergeWindowResult.Exit;
+                    this.Result = ConciergeResult.Exit;
                     this.CloseConciergeWindow();
                     break;
                 case Key.Enter:
                     if (this.CloseOnEnter)
                     {
                         Program.Logger.Info($"{e.Key} key pressed.");
-                        this.Result = ConciergeWindowResult.OK;
+                        this.Result = ConciergeResult.OK;
                         this.CloseConciergeWindow();
                     }
 

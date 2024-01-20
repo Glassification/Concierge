@@ -72,7 +72,7 @@
                         Style="{StaticResource ConciergeDesignButtonStyle}" 
                         x:Name="RollDiceButton"
                         Width="60"
-                        Foreground="#227EA9"
+                        Foreground="#A9C7FF"
                         ToolTip="{Binding Path=DiceToolTip,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=UserControl}}"
                         Click="ButtonRoll_Click">
                         <materialDesign:PackIcon Kind="{Binding Path=DiceSymbol,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=UserControl}}" Height="25" Width="25"/>

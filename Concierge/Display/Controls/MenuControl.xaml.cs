@@ -8,6 +8,7 @@ namespace Concierge.Display.Controls
     using System.Windows;
     using System.Windows.Controls;
 
+    using Concierge.Configuration;
     using MaterialDesignThemes.Wpf;
 
     /// <summary>
@@ -39,7 +40,20 @@ namespace Concierge.Display.Controls
             this.CustomItemsMenuItem.AddClickEvent(this.MenuButton_Click);
             this.SearchMenuItem.AddClickEvent(this.MenuButton_Click);
             this.ExportAppDataMenuItem.AddClickEvent(this.MenuButton_Click);
+            this.MessageHistoryMenuItem.AddClickEvent(this.MenuButton_Click);
             this.SettingsMenuItem.AddClickEvent(this.MenuButton_Click);
+
+            this.CheckExpertMode();
+        }
+
+        private void CheckExpertMode()
+        {
+            if (!AppSettingsManager.StartUp.ExpertMode)
+            {
+                this.ConsoleMenuItem.Visibility = Visibility.Collapsed;
+                this.ExportAppDataMenuItem.Visibility = Visibility.Collapsed;
+                this.MessageHistoryMenuItem.Visibility = Visibility.Collapsed;
+            }
         }
 
         private void MenuButton_Click(object sender, RoutedEventArgs e)

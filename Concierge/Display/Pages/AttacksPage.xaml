@@ -14,7 +14,7 @@
     Title="AttacksPage"
     Style="{StaticResource PageFontStyle}">
 
-    <Grid Background="#202020">
+    <Grid Background="#0F1220">
         <Grid.RowDefinitions>
             <RowDefinition Height="35*"/>
             <RowDefinition Height="65*"/>
@@ -28,14 +28,14 @@
 
             <Border
                 Grid.Column="0"
-                BorderBrush="#2B2B2B"
+                BorderBrush="#1E2636"
                 BorderThickness="5"
                 CornerRadius="10"
                 Margin="5">
                 <Grid
                     Grid.Row="1"
                     Margin="-1"
-                    Background="#2B2B2B">
+                    Background="#1E2636">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="18*"/>
                         <RowDefinition Height="82*"/>
@@ -43,11 +43,11 @@
 
                     <Border
                         Grid.Row="0"
-                        BorderBrush="#333333"
+                        BorderBrush="#242A38"
                         BorderThickness="5"
                         CornerRadius="10">
                         <Grid
-                            Background="#333333"
+                            Background="#242A38"
                             Margin="-1">
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                                 <components:ConciergeTextBlock 
@@ -202,14 +202,14 @@
 
             <Border
                 Grid.Column="1"
-                BorderBrush="#2B2B2B"
+                BorderBrush="#1E2636"
                 BorderThickness="5"
                 CornerRadius="10"
                 Margin="5">
                 <Grid
                     Grid.Row="1"
                     Margin="-1"
-                    Background="#2B2B2B">
+                    Background="#1E2636">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="18*"/>
                         <RowDefinition Height="82*"/>
@@ -217,11 +217,11 @@
 
                     <Border
                         Grid.Row="0"
-                        BorderBrush="#333333"
+                        BorderBrush="#242A38"
                         BorderThickness="5"
                         CornerRadius="10">
                         <Grid
-                            Background="#333333"
+                            Background="#242A38"
                             Margin="-1">
                             <components:ConciergeTextBlock
                                 Text="Effects"
@@ -316,13 +316,13 @@
 
         <Border
             Grid.Row="1"
-            BorderBrush="#2B2B2B"
+            BorderBrush="#1E2636"
             BorderThickness="5"
             CornerRadius="10"
             Margin="5">
             <Grid
                 Margin="-1"
-                Background="#2B2B2B">
+                Background="#1E2636">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="8.47*"/>
                     <RowDefinition Height="91.53*"/>
@@ -330,12 +330,12 @@
 
                 <Border
                     Grid.Row="0"
-                    BorderBrush="#333333"
+                    BorderBrush="#242A38"
                     BorderThickness="5"
                     CornerRadius="10">
                     <Grid
                         Margin="-1"
-                        Background="#333333">
+                        Background="#242A38">
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                             <components:ConciergeTextBlock 
                                 Text="Attacks"
@@ -455,12 +455,12 @@
                             <DataGridTextColumn
                                 Header="Attack"
                                 Binding="{Binding Attack}"
-                                Width="0.05*"
+                                Width="0.06*"
                                 ElementStyle="{StaticResource StandardColumnElementStyle}"/>
                             <DataGridTextColumn
                                 Header="Ability"
                                 Binding="{Binding Ability}"
-                                Width="0.05*"
+                                Width="0.06*"
                                 ElementStyle="{StaticResource StandardColumnElementStyle}"/>
                             <DataGridTextColumn
                                 Header="Damage"
@@ -480,12 +480,12 @@
                             <DataGridTextColumn
                                 Header="Range"
                                 Binding="{Binding Range}"
-                                Width="0.1*"
+                                Width="0.09*"
                                 ElementStyle="{StaticResource StandardColumnElementStyle}"/>
                             <DataGridTextColumn
                                 Header="Description"
                                 Binding="{Binding Note}"
-                                Width="0.29*"
+                                Width="0.28*"
                                 ElementStyle="{StaticResource WallOfTextColumnElementStyle}"/>
                             <DataGridTemplateColumn Width="0.01*">
                                 <DataGridTemplateColumn.CellTemplate>

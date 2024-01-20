@@ -351,7 +351,7 @@ namespace Concierge.Display.Pages
 
             var windowResult = ConciergeWindowService.ShowUseItemWindow(typeof(UseItemWindow), result);
 
-            if (ammunition is not null && windowResult == ConciergeWindowResult.OK)
+            if (ammunition is not null && windowResult == ConciergeResult.OK)
             {
                 var index = this.AmmoDataGrid.SelectedIndex;
                 var oldItem = ammunition.DeepCopy();

@@ -25,7 +25,7 @@
                     Width="auto"
                     Height="auto"
                     VerticalContentAlignment="Center"
-                    Background="#373737"
+                    Background="#262E42"
                     Foreground="White"
                     BorderThickness="0"
                     FontSize="25"

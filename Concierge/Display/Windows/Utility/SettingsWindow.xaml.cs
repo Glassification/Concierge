@@ -121,8 +121,8 @@ namespace Concierge.Display.Utility
                 ConciergeMessageBox.Show(
                     "You must save this sheet before enabling autosave.",
                     "Warning",
-                    ConciergeWindowButtons.Ok,
-                    ConciergeWindowIcons.Alert);
+                    ConciergeButtons.Ok,
+                    ConciergeIcons.Alert);
 
                 return false;
             }

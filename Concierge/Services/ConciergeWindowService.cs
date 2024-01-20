@@ -87,12 +87,12 @@ namespace Concierge.Services
             conciergeWindow.ShowEdit(item, equippedItem);
         }
 
-        public static ConciergeWindowResult ShowHeal<T>(T item, Type typeOfWindow, ApplyChangesEventHandler applyEvent, ConciergePage conciergePage)
+        public static ConciergeResult ShowHeal<T>(T item, Type typeOfWindow, ApplyChangesEventHandler applyEvent, ConciergePage conciergePage)
         {
             var conciergeWindow = Create(typeOfWindow);
             if (conciergeWindow is null)
             {
-                return ConciergeWindowResult.NoResult;
+                return ConciergeResult.NoResult;
             }
 
             conciergeWindow.ApplyChanges += applyEvent;
@@ -101,12 +101,12 @@ namespace Concierge.Services
             return conciergeWindow.ShowHeal(item);
         }
 
-        public static ConciergeWindowResult ShowDamage<T>(T item, Type typeOfWindow, ApplyChangesEventHandler applyEvent, ConciergePage conciergePage)
+        public static ConciergeResult ShowDamage<T>(T item, Type typeOfWindow, ApplyChangesEventHandler applyEvent, ConciergePage conciergePage)
         {
             var conciergeWindow = Create(typeOfWindow);
             if (conciergeWindow is null)
             {
-                return ConciergeWindowResult.NoResult;
+                return ConciergeResult.NoResult;
             }
 
             conciergeWindow.ApplyChanges += applyEvent;
@@ -126,12 +126,12 @@ namespace Concierge.Services
             return conciergeWindow.ShowColorWindow(color);
         }
 
-        public static ConciergeWindowResult ShowUseItemWindow(Type typeOfWindow, UsedItem usedItem)
+        public static ConciergeResult ShowUseItemWindow(Type typeOfWindow, UsedItem usedItem)
         {
             var conciergeWindow = Create(typeOfWindow);
             if (conciergeWindow is null)
             {
-                return ConciergeWindowResult.NoResult;
+                return ConciergeResult.NoResult;
             }
 
             return conciergeWindow.ShowUseItemWindow(usedItem);

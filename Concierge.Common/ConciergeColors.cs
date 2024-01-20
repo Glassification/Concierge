@@ -13,9 +13,7 @@ namespace Concierge.Common
     {
         static ConciergeColors()
         {
-            WindowBackground = Color.FromArgb(255, 32, 32, 32);
-
-            WindowMenuBar = Color.FromArgb(255, 28, 28, 28);
+            WindowBackground = Color.FromArgb(255, 18, 22, 38);
 
             LightCarryCapacity = Color.FromArgb(255, 216, 228, 188);
 
@@ -25,11 +23,9 @@ namespace Concierge.Common
 
             UsedBox = Color.FromArgb(255, 62, 62, 66);
 
-            TotalDarkBox = Color.FromArgb(255, 15, 15, 15);
+            DarkGreyBox = Color.FromArgb(255, 15, 15, 15);
 
-            TotalLightBox = Color.FromArgb(255, 55, 55, 55);
-
-            ControlBackground = Color.FromArgb(255, 55, 55, 55);
+            ControlBackground = Color.FromArgb(255, 51, 65, 92);
 
             BorderHighlight = Color.FromArgb(255, 34, 126, 169);
 
@@ -39,9 +35,9 @@ namespace Concierge.Common
 
             TreeItemHover = Color.FromArgb(255, 130, 223, 251);
 
-            ControlForeGray = Color.FromArgb(255, 51, 51, 51);
+            ControlForeBlue = Color.FromArgb(255, 38, 46, 66);
 
-            ControlBackGray = Color.FromArgb(255, 43, 43, 43);
+            ControlBackBlue = Color.FromArgb(255, 23, 27, 36);
 
             Verdigris = Color.FromArgb(255, 72, 179, 185);
 
@@ -64,13 +60,9 @@ namespace Concierge.Common
 
         public static Color WindowBackground { get; }
 
-        public static Color WindowMenuBar { get; }
-
         public static Color Verdigris { get; }
 
-        public static Color TotalDarkBox { get; }
-
-        public static Color TotalLightBox { get; }
+        public static Color DarkGreyBox { get; }
 
         public static Color ControlBackground { get; }
 
@@ -90,9 +82,9 @@ namespace Concierge.Common
 
         public static Color HeavyCarryCapacity { get; }
 
-        public static Color ControlForeGray { get; }
+        public static Color ControlForeBlue { get; }
 
-        public static Color ControlBackGray { get; }
+        public static Color ControlBackBlue { get; }
 
         public static Color Mint { get; }
 

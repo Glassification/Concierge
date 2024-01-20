@@ -44,11 +44,11 @@ namespace Concierge.Display.Windows
 
         private bool IsHealing { get; set; }
 
-        public override ConciergeWindowResult ShowHeal<T>(T vitality)
+        public override ConciergeResult ShowHeal<T>(T vitality)
         {
             if (vitality is not Vitality castItem)
             {
-                return ConciergeWindowResult.NoResult;
+                return ConciergeResult.NoResult;
             }
 
             this.IsHealing = true;
@@ -58,7 +58,7 @@ namespace Concierge.Display.Windows
             this.ShowConciergeWindow();
             this.SetPreviousValue();
 
-            if (this.Result == ConciergeWindowResult.OK)
+            if (this.Result == ConciergeResult.OK)
             {
                 var oldItem = castItem.Health.DeepCopy();
                 castItem.Heal(this.HpUpDown.Value);
@@ -68,11 +68,11 @@ namespace Concierge.Display.Windows
             return this.Result;
         }
 
-        public override ConciergeWindowResult ShowDamage<T>(T vitality)
+        public override ConciergeResult ShowDamage<T>(T vitality)
         {
             if (vitality is not Vitality castItem)
             {
-                return ConciergeWindowResult.NoResult;
+                return ConciergeResult.NoResult;
             }
 
             this.IsHealing = false;
@@ -82,7 +82,7 @@ namespace Concierge.Display.Windows
             this.ShowConciergeWindow();
             this.SetPreviousValue();
 
-            if (this.Result == ConciergeWindowResult.OK)
+            if (this.Result == ConciergeResult.OK)
             {
                 var oldItem = castItem.Health.DeepCopy();
                 castItem.Damage(this.HpUpDown.Value);
@@ -135,13 +135,13 @@ namespace Concierge.Display.Windows
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Result = ConciergeWindowResult.Exit;
+            this.Result = ConciergeResult.Exit;
             this.CloseConciergeWindow();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Result = ConciergeWindowResult.Cancel;
+            this.Result = ConciergeResult.Cancel;
             this.CloseConciergeWindow();
         }
 

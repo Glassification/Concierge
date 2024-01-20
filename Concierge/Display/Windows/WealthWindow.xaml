@@ -21,11 +21,11 @@
         </Grid.RowDefinitions>
 
         <!--Header-->
-        <Grid Grid.Row="0" Background="#1C1C1C">
+        <Grid Grid.Row="0" Background="#0E121E">
             <TextBlock
                 Text="Edit Wealth"
                 x:Name="HeaderTextBlock"
-                Foreground="#227EA9"
+                Foreground="#A9C7FF"
                 FontSize="35"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Center"
@@ -248,7 +248,7 @@
 
                     <Grid
                         Grid.Row="1"
-                        Background="#FF3e3e42"
+                        Background="#1B2032"
                         Margin="0, 0, 0, 3">
                         <TextBlock
                             x:Name="CopperField"
@@ -277,7 +277,7 @@
 
                     <Grid
                         Grid.Row="1"
-                        Background="#FF3e3e42"
+                        Background="#1B2032"
                         Margin="0, 0, 0, 3">
                         <TextBlock
                             x:Name="SilverField"
@@ -306,7 +306,7 @@
 
                     <Grid
                         Grid.Row="1"
-                        Background="#FF3e3e42"
+                        Background="#1B2032"
                         Margin="0, 0, 0, 3">
                         <TextBlock
                             x:Name="ElectrumField"
@@ -335,7 +335,7 @@
 
                     <Grid
                         Grid.Row="1"
-                        Background="#FF3e3e42"
+                        Background="#1B2032"
                         Margin="0, 0, 0, 3">
                         <TextBlock
                             x:Name="GoldField"
@@ -364,7 +364,7 @@
 
                     <Grid
                         Grid.Row="1"
-                        Background="#FF3e3e42"
+                        Background="#1B2032"
                         Margin="0, 0, 0, 3">
                         <TextBlock
                             x:Name="PlatinumField"

@@ -35,7 +35,7 @@ namespace Concierge.Display.Windows
 
         private bool Editing { get; set; }
 
-        private TreeViewButtonType TreeViewButtonType { get; set; }
+        private TreeButtonType TreeViewButtonType { get; set; }
 
         private Entry CurrentEntry { get; set; }
 
@@ -43,12 +43,12 @@ namespace Concierge.Display.Windows
         {
             if (item is Chapter chapter)
             {
-                this.TreeViewButtonType = TreeViewButtonType.Page;
+                this.TreeViewButtonType = TreeButtonType.Page;
                 this.CurrentEntry = chapter;
             }
             else
             {
-                this.TreeViewButtonType = TreeViewButtonType.Chapter;
+                this.TreeViewButtonType = TreeButtonType.Chapter;
             }
 
             this.Editing = false;
@@ -82,7 +82,7 @@ namespace Concierge.Display.Windows
 
         private void EditChapter(Chapter chapter)
         {
-            this.TreeViewButtonType = TreeViewButtonType.Chapter;
+            this.TreeViewButtonType = TreeButtonType.Chapter;
             this.HeaderTextBlock.Text = this.HeaderText;
             this.DocumentTextBox.Text = chapter.Name;
             this.CreationDateLabel.Text = $"Creation Date: {chapter.Created}";
@@ -93,7 +93,7 @@ namespace Concierge.Display.Windows
 
         private void EditDocument(Document document)
         {
-            this.TreeViewButtonType = TreeViewButtonType.Page;
+            this.TreeViewButtonType = TreeButtonType.Page;
             this.HeaderTextBlock.Text = this.HeaderText;
             this.DocumentTextBox.Text = document.Name;
             this.CreationDateLabel.Text = $"Creation Date: {document.Created}";
@@ -120,7 +120,7 @@ namespace Concierge.Display.Windows
 
         private void ToEntry()
         {
-            if (this.TreeViewButtonType == TreeViewButtonType.Chapter)
+            if (this.TreeViewButtonType == TreeButtonType.Chapter)
             {
                 var newChapter = new Chapter(this.DocumentTextBox.Text);
                 Program.CcsFile.Character.Journal.Chapters.Add(newChapter);

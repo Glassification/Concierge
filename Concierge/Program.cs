@@ -36,6 +36,7 @@ namespace Concierge
             IsTyping = false;
             ErrorService = new ErrorService(Logger);
             UndoRedoService = new UndoRedoService();
+            MessageService = new MessageService();
             CcsFile = new CcsFile();
             MainWindow = null;
             BaseState = new ConciergeCharacter();
@@ -69,6 +70,8 @@ namespace Concierge
         public static CustomColorService CustomColorService { get; private set; }
 
         public static CustomItemService CustomItemService { get; private set; }
+
+        public static MessageService MessageService { get; private set; }
 
         public static ConciergeVersion AssemblyVersion
         {

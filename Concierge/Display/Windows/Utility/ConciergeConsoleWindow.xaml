@@ -18,11 +18,11 @@
         </Grid.RowDefinitions>
 
         <!--Header-->
-        <Grid Grid.Row="0" Background="#1C1C1C">
+        <Grid Grid.Row="0" Background="#0E121E">
             <TextBlock
                 Text="Console"
                 x:Name="HeaderTextBlock"
-                Foreground="#227EA9"
+                Foreground="#A9C7FF"
                 FontSize="35"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Center"
@@ -44,7 +44,7 @@
         <Grid Grid.Row="1">
             <ScrollViewer
                 x:Name="ConsoleScroller"
-                Background="#373737">
+                Background="#262E42">
                 <StackPanel Margin="10">
                     <ItemsControl
                         ItemsSource="{Binding ConsoleOutput, Mode=OneWay}">
@@ -61,7 +61,7 @@
                     </ItemsControl>
                     <TextBox
                         Text="{Binding ConsoleInput, Mode=TwoWay}"
-                        Background="#373737"
+                        Background="#262E42"
                         Foreground="White"
                         FontFamily="Consolas"
                         FontSize="18"

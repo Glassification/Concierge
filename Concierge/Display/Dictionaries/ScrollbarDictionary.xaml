@@ -9,9 +9,9 @@
     <SolidColorBrush x:Key="SelectedForegroundBrush" Color="Yellow" />
     <SolidColorBrush x:Key="DisabledForegroundBrush" Color="Pink" />
     <SolidColorBrush x:Key="GlyphBrush" Color="Purple" />
-    <SolidColorBrush x:Key="NormalBrush" Color="DimGray" />
+    <SolidColorBrush x:Key="NormalBrush" Color="#849BC7" />
     <SolidColorBrush x:Key="NormalBorderBrush" Color="Blue" />
-    <SolidColorBrush x:Key="HorizontalNormalBrush" Color="DimGray" />
+    <SolidColorBrush x:Key="HorizontalNormalBrush" Color="#849BC7" />
     <SolidColorBrush x:Key="HorizontalNormalBorderBrush" Color="Red" />
 
     <Style x:Key="ScrollBarLineButton" TargetType="{x:Type RepeatButton}">
@@ -30,7 +30,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type RepeatButton}">
-                    <Border Background="#191919" />
+                    <Border Background="#171B24" />
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
@@ -63,7 +63,7 @@
                 <RowDefinition Height="0.00001*"/>
                 <RowDefinition MaxHeight="0"/>
             </Grid.RowDefinitions>
-            <Border Grid.RowSpan="3" CornerRadius="2" Background="#FF191919" />
+            <Border Grid.RowSpan="3" CornerRadius="2" Background="#171B24" />
             <RepeatButton Grid.Row="0" Style="{StaticResource ScrollBarLineButton}" Height="18" Command="ScrollBar.LineUpCommand" Content="M 0 4 L 8 4 L 4 0 Z" />
             <Track Name="PART_Track" Grid.Row="1" IsDirectionReversed="true">
                 <Track.DecreaseRepeatButton>
@@ -86,7 +86,7 @@
                 <ColumnDefinition Width="0.00001*"/>
                 <ColumnDefinition MaxWidth="18"/>
             </Grid.ColumnDefinitions>
-            <Border Grid.ColumnSpan="3" CornerRadius="2" Background="#FF191919"/>
+            <Border Grid.ColumnSpan="3" CornerRadius="2" Background="#171B24"/>
             <RepeatButton Grid.Column="0"  Style="{StaticResource ScrollBarLineButton}" Width="18" Command="ScrollBar.LineLeftCommand" Content="M 4 0 L 4 8 L 0 4 Z" />
             <Track Name="PART_Track" Grid.Column="1" IsDirectionReversed="False">
                 <Track.DecreaseRepeatButton>

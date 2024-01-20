@@ -16,9 +16,6 @@ namespace Concierge.Common
             WindowBackground = new SolidColorBrush(ConciergeColors.WindowBackground);
             WindowBackground.Freeze();
 
-            WindowMenuBar = new SolidColorBrush(ConciergeColors.WindowMenuBar);
-            WindowMenuBar.Freeze();
-
             LightCarryCapacity = new SolidColorBrush(ConciergeColors.LightCarryCapacity);
             LightCarryCapacity.Freeze();
 
@@ -31,11 +28,8 @@ namespace Concierge.Common
             UsedBox = new SolidColorBrush(ConciergeColors.UsedBox);
             UsedBox.Freeze();
 
-            TotalDarkBox = new SolidColorBrush(ConciergeColors.TotalDarkBox);
-            TotalDarkBox.Freeze();
-
-            TotalLightBox = new SolidColorBrush(ConciergeColors.TotalLightBox);
-            TotalLightBox.Freeze();
+            DarkGreyBox = new SolidColorBrush(ConciergeColors.DarkGreyBox);
+            DarkGreyBox.Freeze();
 
             ControlBackground = new SolidColorBrush(ConciergeColors.ControlBackground);
             ControlBackground.Freeze();
@@ -52,11 +46,11 @@ namespace Concierge.Common
             TreeItemHover = new SolidColorBrush(ConciergeColors.TreeItemHover);
             TreeItemHover.Freeze();
 
-            ControlForeGray = new SolidColorBrush(ConciergeColors.ControlForeGray);
-            ControlForeGray.Freeze();
+            ControlForeBlue = new SolidColorBrush(ConciergeColors.ControlForeBlue);
+            ControlForeBlue.Freeze();
 
-            ControlBackGray = new SolidColorBrush(ConciergeColors.ControlBackGray);
-            ControlBackGray.Freeze();
+            ControlBackBlue = new SolidColorBrush(ConciergeColors.ControlBackBlue);
+            ControlBackBlue.Freeze();
 
             Verdigris = new SolidColorBrush(ConciergeColors.Verdigris);
             Verdigris.Freeze();
@@ -88,13 +82,9 @@ namespace Concierge.Common
 
         public static SolidColorBrush WindowBackground { get; }
 
-        public static SolidColorBrush WindowMenuBar { get; }
-
         public static SolidColorBrush Verdigris { get; }
 
-        public static SolidColorBrush TotalDarkBox { get; }
-
-        public static SolidColorBrush TotalLightBox { get; }
+        public static SolidColorBrush DarkGreyBox { get; }
 
         public static SolidColorBrush ControlBackground { get; }
 
@@ -114,9 +104,9 @@ namespace Concierge.Common
 
         public static SolidColorBrush HeavyCarryCapacity { get; }
 
-        public static SolidColorBrush ControlForeGray { get; }
+        public static SolidColorBrush ControlForeBlue { get; }
 
-        public static SolidColorBrush ControlBackGray { get; }
+        public static SolidColorBrush ControlBackBlue { get; }
 
         public static SolidColorBrush Mint { get; }
 

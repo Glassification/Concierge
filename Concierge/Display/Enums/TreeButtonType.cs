@@ -1,10 +1,10 @@
-﻿// <copyright file="TreeViewButtonType.cs" company="Thomas Beckett">
+﻿// <copyright file="TreeButtonType.cs" company="Thomas Beckett">
 // Copyright (c) Thomas Beckett. All rights reserved.
 // </copyright>
 
 namespace Concierge.Display.Enums
 {
-    public enum TreeViewButtonType
+    public enum TreeButtonType
     {
         Chapter,
         Page,

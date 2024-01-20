@@ -76,13 +76,13 @@ namespace Concierge
                 var result = ConciergeMessageBox.Show(
                     Regex.Unescape(message),
                     "Warning",
-                    ConciergeWindowButtons.YesNo,
-                    ConciergeWindowIcons.Alert);
+                    ConciergeButtons.Yes | ConciergeButtons.No,
+                    ConciergeIcons.Alert);
 
-                Program.Logger.Info($"{(result == ConciergeWindowResult.OK ? "Continue" : "Cancel")} opening file.");
+                Program.Logger.Info($"{(result == ConciergeResult.OK ? "Continue" : "Cancel")} opening file.");
                 return result switch
                 {
-                    ConciergeWindowResult.Yes => true,
+                    ConciergeResult.Yes => true,
                     _ => false,
                 };
             }
@@ -103,13 +103,13 @@ namespace Concierge
             var result = ConciergeMessageBox.Show(
                 Regex.Unescape(message),
                 "Warning",
-                ConciergeWindowButtons.YesNo,
-                ConciergeWindowIcons.Alert);
+                ConciergeButtons.Yes | ConciergeButtons.No,
+                ConciergeIcons.Alert);
 
-            Program.Logger.Info($"{(result == ConciergeWindowResult.OK ? "Continue" : "Cancel")} opening file.");
+            Program.Logger.Info($"{(result == ConciergeResult.OK ? "Continue" : "Cancel")} opening file.");
             return result switch
             {
-                ConciergeWindowResult.Yes => true,
+                ConciergeResult.Yes => true,
                 _ => false,
             };
         }

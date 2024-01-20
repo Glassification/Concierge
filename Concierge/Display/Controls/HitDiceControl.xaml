@@ -15,10 +15,10 @@
         Margin="5"
         Background="Transparent">
         <Border
-            BorderBrush="#2B2B2B"
+            BorderBrush="#1E2636"
             BorderThickness="5"
             CornerRadius="10">
-            <Grid Background="#2B2B2B" Margin="-1">
+            <Grid Background="#1E2636" Margin="-1">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="30*"/>
                     <ColumnDefinition Width="70*"/>
@@ -45,11 +45,11 @@
                     <Border
                         Grid.Row="1"
                         Margin="5"
-                        BorderBrush="#FF333333"
+                        BorderBrush="#262E42"
                         BorderThickness="5"
                         CornerRadius="10">
                         <Grid
-                            Background="#FF333333"
+                            Background="#262E42"
                             Margin="-1"
                             MouseUp="Grid_MouseUp">
                             <components:ConciergeTextBlock
@@ -84,15 +84,16 @@
                             x:Name="D6HeaderBorder"
                             Margin="5"
                             Grid.Row="0"
-                            BorderBrush="#FF333333"
+                            BorderBrush="#262E42"
                             BorderThickness="5"
                             CornerRadius="10"
+                            ToolTip="Roll D6 Hit Die"
                             MouseDown="Header_MouseDown"
                             MouseEnter="Header_MouseEnter"
                             MouseLeave="Header_MouseLeave">
                             <Grid
                                 x:Name="D6HeaderGrid"
-                                Background="#FF333333"
+                                Background="#262E42"
                                 Margin="-1">
                                 <components:ConciergeTextBlock
                                     Text="D6"
@@ -106,14 +107,14 @@
                         <Border
                             Margin="5"
                             Grid.Row="1"
-                            BorderBrush="#FF333333"
+                            BorderBrush="#262E42"
                             BorderThickness="5"
                             CornerRadius="10"
                             x:Name="D6Border">
                             <Grid
                                 Margin="-1"
                                 x:Name="D6Grid"
-                                Background="#FF333333">
+                                Background="#262E42">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="50*"/>
                                     <RowDefinition Height="50*"/>
@@ -128,7 +129,7 @@
                                     VerticalAlignment="Center"/>
                                 <Line
                                     Grid.Row="0"
-                                    Stroke="SteelBlue"
+                                    Stroke="#A9C7FF"
                                     StrokeThickness="2"
                                     Stretch="Uniform"
                                     X1="0" X2="1" Y1="0" Y2="0"
@@ -158,15 +159,16 @@
                             x:Name="D8HeaderBorder"
                             Margin="5"
                             Grid.Row="0"
-                            BorderBrush="#FF333333"
+                            BorderBrush="#262E42"
                             BorderThickness="5"
                             CornerRadius="10"
+                            ToolTip="Roll D8 Hit Die"
                             MouseDown="Header_MouseDown"
                             MouseEnter="Header_MouseEnter"
                             MouseLeave="Header_MouseLeave">
                             <Grid
                                 x:Name="D8HeaderGrid"
-                                Background="#FF333333"
+                                Background="#262E42"
                                 Margin="-1">
                                 <components:ConciergeTextBlock
                                     Text="D8"
@@ -181,14 +183,14 @@
                         <Border
                             Margin="5"
                             Grid.Row="1"
-                            BorderBrush="#FF333333"
+                            BorderBrush="#262E42"
                             BorderThickness="5"
                             CornerRadius="10"
                             x:Name="D8Border">
                             <Grid
                                 Margin="-1"
                                 x:Name="D8Grid"
-                                Background="#FF333333">
+                                Background="#262E42">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="50*"/>
                                     <RowDefinition Height="50*"/>
@@ -203,7 +205,7 @@
                                     VerticalAlignment="Center"/>
                                 <Line
                                     Grid.Row="0"
-                                    Stroke="SteelBlue"
+                                    Stroke="#A9C7FF"
                                     StrokeThickness="2"
                                     Stretch="Uniform"
                                     X1="0" X2="1" Y1="0" Y2="0"
@@ -233,15 +235,16 @@
                             x:Name="D10HeaderBorder"
                             Margin="5"
                             Grid.Row="0"
-                            BorderBrush="#FF333333"
+                            BorderBrush="#262E42"
                             BorderThickness="5"
                             CornerRadius="10"
+                            ToolTip="Roll D10 Hit Die"
                             MouseDown="Header_MouseDown"
                             MouseEnter="Header_MouseEnter"
                             MouseLeave="Header_MouseLeave">
                             <Grid
                                 x:Name="D10HeaderGrid"
-                                Background="#FF333333"
+                                Background="#262E42"
                                 Margin="-1">
                                 <components:ConciergeTextBlock
                                     Text="D10"
@@ -256,14 +259,14 @@
                         <Border
                             Margin="5"
                             Grid.Row="1"
-                            BorderBrush="#FF333333"
+                            BorderBrush="#262E42"
                             BorderThickness="5"
                             CornerRadius="10"
                             x:Name="D10Border">
                             <Grid
                                 Margin="-1"
                                 x:Name="D10Grid"
-                                Background="#FF333333">
+                                Background="#262E42">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="50*"/>
                                     <RowDefinition Height="50*"/>
@@ -278,7 +281,7 @@
                                     VerticalAlignment="Center"/>
                                 <Line
                                     Grid.Row="0"
-                                    Stroke="SteelBlue"
+                                    Stroke="#A9C7FF"
                                     StrokeThickness="2"
                                     Stretch="Uniform"
                                     X1="0" X2="1" Y1="0" Y2="0"
@@ -308,15 +311,16 @@
                             x:Name="D12HeaderBorder"
                             Margin="5"
                             Grid.Row="0"
-                            BorderBrush="#FF333333"
+                            BorderBrush="#262E42"
                             BorderThickness="5"
                             CornerRadius="10"
+                            ToolTip="Roll D12 Hit Die"
                             MouseDown="Header_MouseDown"
                             MouseEnter="Header_MouseEnter"
                             MouseLeave="Header_MouseLeave">
                             <Grid
                                 x:Name="D12HeaderGrid"
-                                Background="#FF333333"
+                                Background="#262E42"
                                 Margin="-1">
                                 <components:ConciergeTextBlock
                                     Text="D12"
@@ -331,14 +335,14 @@
                         <Border
                             Margin="5"
                             Grid.Row="1"
-                            BorderBrush="#FF333333"
+                            BorderBrush="#262E42"
                             BorderThickness="5"
                             CornerRadius="10"
                             x:Name="D12Border">
                             <Grid
                                 Margin="-1"
                                 x:Name="D12Grid"
-                                Background="#FF333333">
+                                Background="#262E42">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="50*"/>
                                     <RowDefinition Height="50*"/>
@@ -353,7 +357,7 @@
                                     VerticalAlignment="Center"/>
                                 <Line
                                     Grid.Row="0"
-                                    Stroke="SteelBlue"
+                                    Stroke="#A9C7FF"
                                     StrokeThickness="2"
                                     Stretch="Uniform"
                                     X1="0" X2="1" Y1="0" Y2="0"

@@ -177,8 +177,8 @@ namespace Concierge.Display.Utility
                 ConciergeMessageBox.Show(
                     $"The current Regex: {this.SearchTextBox.Text} is invalid.",
                     "Error",
-                    ConciergeWindowButtons.Ok,
-                    ConciergeWindowIcons.Error);
+                    ConciergeButtons.Ok,
+                    ConciergeIcons.Error);
 
                 return false;
             }

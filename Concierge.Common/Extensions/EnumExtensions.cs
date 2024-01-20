@@ -8,6 +8,7 @@ namespace Concierge.Common.Extensions
     using System.ComponentModel;
     using System.Globalization;
     using System.Linq;
+    using System.Windows;
 
     /// <summary>
     /// Provides extension methods for working with enumerations.
@@ -24,16 +25,19 @@ namespace Concierge.Common.Extensions
         /// This method retrieves the description attribute value associated with the specified enumeration value.
         /// It can be used to provide human-readable descriptions for enumeration values.
         /// </remarks>
+        /// <exception cref="ArgumentException">
+        /// Thrown if <param name="e"/> is not an enumerated type.
+        /// </exception>
         public static string GetDescription<T>(this T e)
             where T : IConvertible
         {
             if (e is not Enum)
             {
-                return string.Empty;
+                throw new ArgumentException("e must be an enumerated type");
             }
 
-            Type type = e.GetType();
-            Array values = Enum.GetValues(type);
+            var type = e.GetType();
+            var values = Enum.GetValues(type);
 
             foreach (int val in values)
             {
@@ -50,6 +54,29 @@ namespace Concierge.Common.Extensions
             }
 
             return string.Empty;
+        }
+
+        /// <summary>
+        /// Determines the visibility based on whether a specified flag is set in the given enumerated value.
+        /// </summary>
+        /// <typeparam name="T">The enumerated type.</typeparam>
+        /// <param name="e">The enumerated value to check for the presence of the flag.</param>
+        /// <param name="flag">The flag to check for in the enumerated value.</param>
+        /// <returns>
+        /// <see cref="Visibility.Visible"/> if the specified flag is set in the enumerated value; otherwise, <see cref="Visibility.Collapsed"/>.
+        /// </returns>
+        /// <exception cref="ArgumentException">
+        /// Thrown if either <paramref name="e"/> or <paramref name="flag"/> is not an enumerated type.
+        /// </exception>
+        public static Visibility HasFlagVisibility<T>(this T e, T flag)
+            where T : IConvertible
+        {
+            if (e is not Enum en || flag is not Enum eFlag)
+            {
+                throw new ArgumentException("e must be an enumerated type");
+            }
+
+            return en.HasFlag(eFlag) ? Visibility.Visible : Visibility.Collapsed;
         }
     }
 }

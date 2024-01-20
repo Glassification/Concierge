@@ -43,7 +43,7 @@ namespace Concierge.Display.Windows
 
         public override string WindowName => nameof(SensesWindow);
 
-        public override ConciergeWindowResult ShowWizardSetup(string buttonText)
+        public override ConciergeResult ShowWizardSetup(string buttonText)
         {
             this.FillFields();
             this.ApplyButton.Visibility = Visibility.Collapsed;
@@ -62,7 +62,7 @@ namespace Concierge.Display.Windows
 
         protected override void ReturnAndClose()
         {
-            this.Result = ConciergeWindowResult.OK;
+            this.Result = ConciergeResult.OK;
 
             this.UpdateSenses();
             this.CloseConciergeWindow();
@@ -112,13 +112,13 @@ namespace Concierge.Display.Windows
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Result = ConciergeWindowResult.Cancel;
+            this.Result = ConciergeResult.Cancel;
             this.CloseConciergeWindow();
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Result = ConciergeWindowResult.Exit;
+            this.Result = ConciergeResult.Exit;
             this.CloseConciergeWindow();
         }
 

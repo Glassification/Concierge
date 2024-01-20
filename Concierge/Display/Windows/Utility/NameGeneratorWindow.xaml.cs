@@ -52,7 +52,7 @@ namespace Concierge.Display.Utility
         {
             this.ShowConciergeWindow();
 
-            return this.Result == ConciergeWindowResult.OK ? this.NameTextBox.Text : null;
+            return this.Result == ConciergeResult.OK ? this.NameTextBox.Text : null;
         }
 
         private Gender GetGenderText()
@@ -99,7 +99,7 @@ namespace Concierge.Display.Utility
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Result = ConciergeWindowResult.Exit;
+            this.Result = ConciergeResult.Exit;
             this.CloseConciergeWindow();
         }
 
@@ -129,7 +129,7 @@ namespace Concierge.Display.Utility
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Result = ConciergeWindowResult.Cancel;
+            this.Result = ConciergeResult.Cancel;
             this.CloseConciergeWindow();
         }
 

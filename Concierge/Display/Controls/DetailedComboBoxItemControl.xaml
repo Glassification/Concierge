@@ -16,10 +16,10 @@
         <Border
             x:Name="MainBorder"
             BorderThickness="1"
-            BorderBrush="#373737">
+            BorderBrush="#262E42">
             <Grid
                 x:Name="MainGrid"
-                Background="#373737">
+                Background="#262E42">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="30" />
                     <ColumnDefinition Width="1*" />
@@ -52,7 +52,7 @@
                         Margin="10,0,25,0"
                         X1="0" X2="1" Y1="0" Y2="0"
                         VerticalAlignment="Bottom"
-                        Stroke="SteelBlue"
+                        Stroke="#A9C7FF"
                         StrokeThickness="1"
                         Stretch="Uniform"
                         StrokeStartLineCap="Round"

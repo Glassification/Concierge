@@ -12,7 +12,7 @@
     Title="OverviewPage"
     Style="{StaticResource PageFontStyle}">
 
-    <Grid Background="#202020">
+    <Grid Background="#0F1220">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="20*"/>
@@ -130,11 +130,11 @@
 
                 <Border
                     Grid.Row="0"
-                    BorderBrush="#2B2B2B"
+                    BorderBrush="#1E2636"
                     BorderThickness="5"
                     CornerRadius="10"
                     Margin="5">
-                    <Grid Background="#2B2B2B"  Margin="-1">
+                    <Grid Background="#1E2636"  Margin="-1">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="16*"/>
                             <RowDefinition Height="14*"/>
@@ -191,39 +191,42 @@
                         <controls:SavingThrowControl
                             Grid.Row="1"
                             x:Name="StrengthSavingThrow"
-                            FillBrush="#FF333333"
+                            FillBrush="#262E42"
                             SavingThrowName="Strength"
                             ToggleClicked="SavingThrow_ToggleClicked"/>
                         <!--Dexterity-->
                         <controls:SavingThrowControl
                             Grid.Row="2"
                             x:Name="DexteritySavingThrow"
+                            FillBrush="#1E2636"
                             SavingThrowName="Dexterity"
                             ToggleClicked="SavingThrow_ToggleClicked"/>
                         <!--Constitution-->
                         <controls:SavingThrowControl
                             Grid.Row="3"
                             x:Name="ConstitutionSavingThrow"
-                            FillBrush="#FF333333"
+                            FillBrush="#262E42"
                             SavingThrowName="Constitution"
                             ToggleClicked="SavingThrow_ToggleClicked"/>
                         <!--Intelligence-->
                         <controls:SavingThrowControl
                             Grid.Row="4"
                             x:Name="IntelligenceSavingThrow"
+                            FillBrush="#1E2636"
                             SavingThrowName="Intelligence"
                             ToggleClicked="SavingThrow_ToggleClicked"/>
                         <!--Wisdom-->
                         <controls:SavingThrowControl
                             Grid.Row="5"
                             x:Name="WisdomSavingThrow"
-                            FillBrush="#FF333333"
+                            FillBrush="#262E42"
                             SavingThrowName="Wisdom"
                             ToggleClicked="SavingThrow_ToggleClicked"/>
                         <!--Charisma-->
                         <controls:SavingThrowControl
                             Grid.Row="6"
                             x:Name="CharismaSavingThrow"
+                            FillBrush="#1E2636"
                             SavingThrowName="Charisma"
                             ToggleClicked="SavingThrow_ToggleClicked"/>
                     </Grid>
@@ -231,11 +234,11 @@
                 
                 <Border
                     Grid.Row="1"
-                    BorderBrush="#2B2B2B"
+                    BorderBrush="#1E2636"
                     BorderThickness="5"
                     CornerRadius="10"
                     Margin="5">
-                    <Grid Background="#2B2B2B" Margin="-1">
+                    <Grid Background="#1E2636" Margin="-1">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="6.4*"/>
                             <RowDefinition Height="5.2*"/>
@@ -310,7 +313,7 @@
                         <controls:SkillControl
                             Grid.Row="1"
                             x:Name="AthleticsSkill"
-                            FillBrush="#FF333333"
+                            FillBrush="#262E42"
                             SkillName="Athletics"
                             ToggleClicked="Skill_ToggleClicked"/>
                         <!--Acrobatics-->
@@ -323,7 +326,7 @@
                         <controls:SkillControl
                             Grid.Row="3"
                             x:Name="SleightOfHandSkill"
-                            FillBrush="#FF333333"
+                            FillBrush="#262E42"
                             SkillName="Sleight Of Hand"
                             ToggleClicked="Skill_ToggleClicked"/>
                         <!--Stealth-->
@@ -336,7 +339,7 @@
                         <controls:SkillControl
                             Grid.Row="5"
                             x:Name="ArcanaSkill"
-                            FillBrush="#FF333333"
+                            FillBrush="#262E42"
                             SkillName="Arcana"
                             ToggleClicked="Skill_ToggleClicked"/>
                         <!--History-->
@@ -349,7 +352,7 @@
                         <controls:SkillControl
                             Grid.Row="7"
                             x:Name="InvestigationSkill"
-                            FillBrush="#FF333333"
+                            FillBrush="#262E42"
                             SkillName="Investigation"
                             ToggleClicked="Skill_ToggleClicked"/>
                         <!--Nature-->
@@ -362,7 +365,7 @@
                         <controls:SkillControl
                             Grid.Row="9"
                             x:Name="ReligionSkill"
-                            FillBrush="#FF333333"
+                            FillBrush="#262E42"
                             SkillName="Religion"
                             ToggleClicked="Skill_ToggleClicked"/>
                         <!--Animal Handling-->
@@ -375,7 +378,7 @@
                         <controls:SkillControl
                             Grid.Row="11"
                             x:Name="InsightSkill"
-                            FillBrush="#FF333333"
+                            FillBrush="#262E42"
                             SkillName="Insight"
                             ToggleClicked="Skill_ToggleClicked"/>
                         <!--Medicine-->
@@ -388,7 +391,7 @@
                         <controls:SkillControl
                             Grid.Row="13"
                             x:Name="PerceptionSkill"
-                            FillBrush="#FF333333"
+                            FillBrush="#262E42"
                             SkillName="Perception"
                             ToggleClicked="Skill_ToggleClicked"/>
                         <!--Survival-->
@@ -401,7 +404,7 @@
                         <controls:SkillControl
                             Grid.Row="15"
                             x:Name="DeceptionSkill"
-                            FillBrush="#FF333333"
+                            FillBrush="#262E42"
                             SkillName="Deception"
                             ToggleClicked="Skill_ToggleClicked"/>
                         <!--Intimidation-->
@@ -414,7 +417,7 @@
                         <controls:SkillControl
                             Grid.Row="17"
                             x:Name="PerformanceSkill"
-                            FillBrush="#FF333333"
+                            FillBrush="#262E42"
                             SkillName="Performance"
                             ToggleClicked="Skill_ToggleClicked"/>
                         <!--Persuasion-->
@@ -451,14 +454,14 @@
 
                     <Border
                         Grid.Column="1"
-                        BorderBrush="#2B2B2B"
+                        BorderBrush="#1E2636"
                         BorderThickness="5"
                         CornerRadius="10"
                         Margin="5">
                         <Grid
                             Grid.Row="1"
                             Margin="-1"
-                            Background="#2B2B2B">
+                            Background="#1E2636">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="15*"/>
                                 <RowDefinition Height="85*"/>

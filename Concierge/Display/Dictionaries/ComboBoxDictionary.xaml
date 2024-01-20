@@ -11,15 +11,15 @@
                   x:Name="Border"
                   Grid.ColumnSpan="2"
                   CornerRadius="0"
-                  Background="#2B2B2B"
+                  Background="#1E2636"
                   BorderBrush="Transparent"
                   BorderThickness="1" />
             <Border
                   Grid.Column="0"
                   CornerRadius="0"
                   Margin="1"
-                  Background="#373737"
-                  BorderBrush="#888888"
+                  Background="#262E42"
+                  BorderBrush="#A9C7FF"
                   BorderThickness="0,0,1,0" />
             <Path
                   x:Name="Arrow"
@@ -73,7 +73,7 @@
                             VerticalAlignment="Center"
                             Margin="5"
                             Focusable="True"
-                            Background="#373737"
+                            Background="#262E42"
                             Foreground="White"
                             Visibility="Hidden"
                             TextWrapping="Wrap"
@@ -92,9 +92,9 @@
                               MaxHeight="{TemplateBinding MaxDropDownHeight}">
                                 <Border
                                     x:Name="DropDownBorder"
-                                    Background="#373737"
+                                    Background="#262E42"
                                     BorderThickness="1"
-                                    BorderBrush="#888888"/>
+                                    BorderBrush="#A9C7FF"/>
                                     <ScrollViewer Margin="4,6,4,6" SnapsToDevicePixels="True">
                                         <StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Contained" />
                                     </ScrollViewer>
@@ -106,7 +106,7 @@
                             <Setter TargetName="DropDownBorder" Property="MinHeight" Value="95"/>
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="false">
-                            <Setter Property="Foreground" Value="#888888"/>
+                            <Setter Property="Foreground" Value="#A9C7FF"/>
                         </Trigger>
                         <Trigger Property="IsGrouping" Value="true">
                             <Setter Property="ScrollViewer.CanContentScroll" Value="false"/>
@@ -144,7 +144,7 @@
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsEnabled" Value="false">
-                            <Setter Property="Foreground" Value="#888888"/>
+                            <Setter Property="Foreground" Value="#A9C7FF"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

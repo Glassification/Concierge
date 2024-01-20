@@ -58,7 +58,7 @@ namespace Concierge.Display.Windows
 
         private List<Ammunition> Ammunition { get; set; }
 
-        public override ConciergeWindowResult ShowWizardSetup(string buttonText)
+        public override ConciergeResult ShowWizardSetup(string buttonText)
         {
             this.Editing = false;
             this.HeaderTextBlock.Text = this.HeaderText;
@@ -108,7 +108,7 @@ namespace Concierge.Display.Windows
 
         protected override void ReturnAndClose()
         {
-            this.Result = ConciergeWindowResult.OK;
+            this.Result = ConciergeResult.OK;
 
             if (this.Editing)
             {
@@ -198,7 +198,7 @@ namespace Concierge.Display.Windows
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Result = ConciergeWindowResult.Exit;
+            this.Result = ConciergeResult.Exit;
             this.CloseConciergeWindow();
         }
 
@@ -217,7 +217,7 @@ namespace Concierge.Display.Windows
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Result = ConciergeWindowResult.Cancel;
+            this.Result = ConciergeResult.Cancel;
             this.CloseConciergeWindow();
         }
 
@@ -245,8 +245,8 @@ namespace Concierge.Display.Windows
                 ConciergeMessageBox.Show(
                     "Could not save the Ammunition.\nA name is required before saving a custom item.",
                     "Warning",
-                    ConciergeWindowButtons.Ok,
-                    ConciergeWindowIcons.Alert);
+                    ConciergeButtons.Ok,
+                    ConciergeIcons.Alert);
                 return;
             }
 

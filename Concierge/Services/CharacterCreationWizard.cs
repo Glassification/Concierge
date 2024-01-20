@@ -24,13 +24,13 @@ namespace Concierge.Services
         }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822:Mark members as static", Justification = "The way she goes.")]
-        public ConciergeWindowResult Prompt()
+        public ConciergeResult Prompt()
         {
             return ConciergeMessageBox.Show(
                 "This is the Concierge Character Creation Wizard. This will help jump start your path to godhood.",
                 "Character Creation",
-                ConciergeWindowButtons.OkCancel,
-                ConciergeWindowIcons.Information);
+                ConciergeButtons.Ok | ConciergeButtons.Cancel,
+                ConciergeIcons.Information);
         }
 
         public bool Start()
@@ -104,8 +104,8 @@ namespace Concierge.Services
 
         private void NextSetupStep(Type conciergeWindowType, string buttonText)
         {
-            ConciergeWindowResult wizardResult;
-            ConciergeWindowResult confirmExitResult;
+            ConciergeResult wizardResult;
+            ConciergeResult confirmExitResult;
 
             if (this.isStopped)
             {
@@ -115,24 +115,24 @@ namespace Concierge.Services
             do
             {
                 var conciergeWindow = (ConciergeWindow?)Activator.CreateInstance(conciergeWindowType);
-                confirmExitResult = ConciergeWindowResult.NoResult;
-                wizardResult = conciergeWindow?.ShowWizardSetup(buttonText) ?? ConciergeWindowResult.NoResult;
+                confirmExitResult = ConciergeResult.NoResult;
+                wizardResult = conciergeWindow?.ShowWizardSetup(buttonText) ?? ConciergeResult.NoResult;
 
-                if (wizardResult == ConciergeWindowResult.Exit)
+                if (wizardResult == ConciergeResult.Exit)
                 {
                     confirmExitResult = ConciergeMessageBox.Show(
                         "Would you like to exit Character Creation? Existing progress will be lost.",
                         "Character Creation",
-                        ConciergeWindowButtons.YesNo,
-                        ConciergeWindowIcons.Question);
+                        ConciergeButtons.Yes | ConciergeButtons.No,
+                        ConciergeIcons.Question);
 
-                    if (confirmExitResult is ConciergeWindowResult.Yes or ConciergeWindowResult.Exit)
+                    if (confirmExitResult is ConciergeResult.Yes or ConciergeResult.Exit)
                     {
                         this.Stop();
                     }
                 }
             }
-            while (confirmExitResult == ConciergeWindowResult.No);
+            while (confirmExitResult == ConciergeResult.No);
 
             Program.Modify();
         }

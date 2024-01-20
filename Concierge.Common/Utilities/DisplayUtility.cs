@@ -164,7 +164,7 @@ namespace Concierge.Common.Utilities
         /// <returns>The Brush representing the box style.</returns>
         public static Brush SetTotalBoxStyle(int total, int used)
         {
-            return total <= used ? ConciergeBrushes.TotalDarkBox : ConciergeBrushes.TotalLightBox;
+            return total <= used ? ConciergeBrushes.DarkGreyBox : ConciergeBrushes.ControlForeBlue;
         }
 
         /// <summary>

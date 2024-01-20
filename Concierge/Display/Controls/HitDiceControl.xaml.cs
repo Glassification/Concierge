@@ -163,8 +163,8 @@ namespace Concierge.Display.Controls
                 return;
             }
 
-            border.BorderBrush = ConciergeBrushes.ControlForeGray;
-            grid.Background = ConciergeBrushes.ControlForeGray;
+            border.BorderBrush = ConciergeBrushes.ControlForeBlue;
+            grid.Background = ConciergeBrushes.ControlForeBlue;
             Mouse.OverrideCursor = Cursors.Arrow;
         }
 

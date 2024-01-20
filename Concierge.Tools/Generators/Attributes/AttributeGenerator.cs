@@ -4,6 +4,7 @@
 
 namespace Concierge.Tools.Generators.Attributes
 {
+    using System;
     using System.Linq;
 
     using Concierge.Common;
@@ -19,6 +20,7 @@ namespace Concierge.Tools.Generators.Attributes
 
         public IGeneratorResult Generate(IGeneratorSettings generatorSettings)
         {
+            Array.Clear(this.attributeRolls);
             while (this.attributeRolls.Sum() <= Constants.MinAttributeTotal)
             {
                 for (int i = 0; i < this.attributeRolls.Length; i++)

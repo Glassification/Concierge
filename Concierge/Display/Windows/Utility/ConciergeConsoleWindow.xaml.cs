@@ -54,7 +54,7 @@ namespace Concierge.Display.Utility
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Result = ConciergeWindowResult.Exit;
+            this.Result = ConciergeResult.Exit;
             this.CloseConciergeWindow();
         }
 
@@ -114,7 +114,7 @@ namespace Concierge.Display.Utility
 
         private void ConciergeConsole_Exited(object sender, EventArgs e)
         {
-            this.Result = ConciergeWindowResult.Exit;
+            this.Result = ConciergeResult.Exit;
             this.CloseConciergeWindow();
         }
     }

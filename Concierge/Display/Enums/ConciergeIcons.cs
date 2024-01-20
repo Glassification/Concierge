@@ -1,10 +1,10 @@
-﻿// <copyright file="ConciergeWindowIcons.cs" company="Thomas Beckett">
+﻿// <copyright file="ConciergeIcons.cs" company="Thomas Beckett">
 // Copyright (c) Thomas Beckett. All rights reserved.
 // </copyright>
 
 namespace Concierge.Display.Enums
 {
-    public enum ConciergeWindowIcons
+    public enum ConciergeIcons
     {
         None,
         Alert,

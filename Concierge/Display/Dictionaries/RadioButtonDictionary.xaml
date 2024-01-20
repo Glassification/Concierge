@@ -12,10 +12,10 @@
                             <Grid Width="15" Height="15">
                                 <Ellipse x:Name="Border" StrokeThickness="1">
                                     <Ellipse.Stroke>
-                                        <SolidColorBrush Color="#2B2B2B"/>
+                                        <SolidColorBrush Color="#1E2636"/>
                                     </Ellipse.Stroke>
                                     <Ellipse.Fill>
-                                        <SolidColorBrush Color="DimGray"/>
+                                        <SolidColorBrush Color="#262E42"/>
                                     </Ellipse.Fill>
                                 </Ellipse>
                                 <Ellipse x:Name="CheckMark" Margin="5" Visibility="Collapsed">

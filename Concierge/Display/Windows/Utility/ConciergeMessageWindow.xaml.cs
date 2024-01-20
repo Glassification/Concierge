@@ -4,10 +4,10 @@
 
 namespace Concierge.Display.Utility
 {
-    using System;
     using System.Windows;
     using System.Windows.Media;
 
+    using Concierge.Common.Extensions;
     using Concierge.Display.Components;
     using Concierge.Display.Enums;
     using Concierge.Services;
@@ -18,6 +18,8 @@ namespace Concierge.Display.Utility
     /// </summary>
     public partial class ConciergeMessageWindow : ConciergeWindow
     {
+        private bool isOk;
+
         public ConciergeMessageWindow()
         {
             this.InitializeComponent();
@@ -30,15 +32,13 @@ namespace Concierge.Display.Utility
 
         public override string WindowName => nameof(ConciergeMessageWindow);
 
-        private bool IsOk { get; set; }
-
-        public ConciergeWindowResult ShowWindow(
+        public ConciergeResult ShowWindow(
             string message,
             string title,
-            ConciergeWindowButtons messageWindowButtons,
-            ConciergeWindowIcons messageWindowIcons)
+            ConciergeButtons messageWindowButtons,
+            ConciergeIcons messageWindowIcons)
         {
-            this.IsOk = messageWindowButtons.ToString().Contains("Ok", StringComparison.InvariantCultureIgnoreCase);
+            this.isOk = messageWindowButtons.HasFlag(ConciergeButtons.Ok);
             this.MessageText.Text = message;
             this.MessageTitle.Text = title;
             this.SetMessageIcon(messageWindowIcons);
@@ -53,112 +53,71 @@ namespace Concierge.Display.Utility
 
         protected override void ReturnAndClose()
         {
-            this.Result = this.IsOk ? ConciergeWindowResult.OK : ConciergeWindowResult.Yes;
+            this.Result = this.isOk ? ConciergeResult.OK : ConciergeResult.Yes;
             this.CloseConciergeWindow();
         }
 
-        private void SetMessageIcon(ConciergeWindowIcons messageWindowIcons)
+        private void SetMessageIcon(ConciergeIcons messageWindowIcons)
         {
             this.MessageIcon.Visibility = Visibility.Visible;
 
             switch (messageWindowIcons)
             {
-                case ConciergeWindowIcons.Alert:
+                case ConciergeIcons.Alert:
                     this.MessageIcon.Kind = PackIconKind.Alert;
                     this.MessageIcon.Foreground = Brushes.Gold;
                     break;
-                case ConciergeWindowIcons.Error:
+                case ConciergeIcons.Error:
                     this.MessageIcon.Kind = PackIconKind.AlertOctagon;
                     this.MessageIcon.Foreground = Brushes.DarkRed;
                     break;
-                case ConciergeWindowIcons.Help:
+                case ConciergeIcons.Help:
                     this.MessageIcon.Kind = PackIconKind.HelpCircle;
                     this.MessageIcon.Foreground = Brushes.DodgerBlue;
                     break;
-                case ConciergeWindowIcons.Information:
+                case ConciergeIcons.Information:
                     this.MessageIcon.Kind = PackIconKind.Information;
                     this.MessageIcon.Foreground = Brushes.DodgerBlue;
                     break;
-                case ConciergeWindowIcons.Question:
+                case ConciergeIcons.Question:
                     this.MessageIcon.Kind = PackIconKind.QuestionMarkCircle;
                     this.MessageIcon.Foreground = Brushes.DodgerBlue;
                     break;
-                case ConciergeWindowIcons.Warning:
+                case ConciergeIcons.Warning:
                     this.MessageIcon.Kind = PackIconKind.WarningCircle;
                     this.MessageIcon.Foreground = Brushes.Gold;
                     break;
-                case ConciergeWindowIcons.None:
+                case ConciergeIcons.None:
                 default:
                     this.MessageIcon.Visibility = Visibility.Hidden;
                     break;
             }
         }
 
-        private void SetMessageButtons(ConciergeWindowButtons messageWindowButtons)
+        private void SetMessageButtons(ConciergeButtons buttons)
         {
-            switch (messageWindowButtons)
-            {
-                case ConciergeWindowButtons.YesNoCancel:
-                    this.CollapseAllButtons();
-                    this.YesButton.Visibility = Visibility.Visible;
-                    this.NoButton.Visibility = Visibility.Visible;
-                    this.CancelButton.Visibility = Visibility.Visible;
-                    break;
-                case ConciergeWindowButtons.YesNo:
-                    this.CollapseAllButtons();
-                    this.YesButton.Visibility = Visibility.Visible;
-                    this.NoButton.Visibility = Visibility.Visible;
-                    break;
-                case ConciergeWindowButtons.Ok:
-                    this.CollapseAllButtons();
-                    this.OkButton.Visibility = Visibility.Visible;
-                    break;
-                case ConciergeWindowButtons.OkCancel:
-                    this.CollapseAllButtons();
-                    this.OkButton.Visibility = Visibility.Visible;
-                    this.CancelButton.Visibility = Visibility.Visible;
-                    break;
-                case ConciergeWindowButtons.OkApply:
-                    this.CollapseAllButtons();
-                    this.OkButton.Visibility = Visibility.Visible;
-                    this.ApplyButton.Visibility = Visibility.Visible;
-                    break;
-                case ConciergeWindowButtons.OkApplyCancel:
-                    this.CollapseAllButtons();
-                    this.OkButton.Visibility = Visibility.Visible;
-                    this.ApplyButton.Visibility = Visibility.Visible;
-                    this.CancelButton.Visibility = Visibility.Visible;
-                    break;
-                default:
-                    this.CollapseAllButtons();
-                    break;
-            }
-        }
-
-        private void CollapseAllButtons()
-        {
-            this.YesButton.Visibility = Visibility.Collapsed;
-            this.NoButton.Visibility = Visibility.Collapsed;
-            this.CancelButton.Visibility = Visibility.Collapsed;
-            this.OkButton.Visibility = Visibility.Collapsed;
-            this.ApplyButton.Visibility = Visibility.Collapsed;
+            this.OkButton.Visibility = buttons.HasFlagVisibility(ConciergeButtons.Ok);
+            this.YesButton.Visibility = buttons.HasFlagVisibility(ConciergeButtons.Yes);
+            this.NoButton.Visibility = buttons.HasFlagVisibility(ConciergeButtons.No);
+            this.ApplyButton.Visibility = buttons.HasFlagVisibility(ConciergeButtons.Apply);
+            this.CancelButton.Visibility = buttons.HasFlagVisibility(ConciergeButtons.Cancel);
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Result = ConciergeWindowResult.Exit;
+            this.Result = ConciergeResult.Exit;
             this.CloseConciergeWindow();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Result = ConciergeWindowResult.Cancel;
+            this.Result = ConciergeResult.Cancel;
             this.CloseConciergeWindow();
         }
 
         private void NoButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Result = ConciergeWindowResult.No;
+            this.Result = ConciergeResult.No;
             this.CloseConciergeWindow();
         }
 
@@ -174,7 +133,7 @@ namespace Concierge.Display.Utility
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Result = ConciergeWindowResult.Apply;
+            this.Result = ConciergeResult.Apply;
             this.CloseConciergeWindow();
         }
     }

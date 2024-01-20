@@ -172,7 +172,7 @@ namespace Concierge.Display.Controls
             {
                 AbilitySave.Failure => Brushes.IndianRed,
                 AbilitySave.Success => ConciergeBrushes.Mint,
-                _ => ConciergeBrushes.ControlBackGray,
+                _ => ConciergeBrushes.ControlBackBlue,
             };
         }
 
