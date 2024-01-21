@@ -25,8 +25,6 @@ namespace Concierge.Common
 
             DarkGreyBox = Color.FromArgb(255, 15, 15, 15);
 
-            ControlBackground = Color.FromArgb(255, 51, 65, 92);
-
             BorderHighlight = Color.FromArgb(255, 34, 126, 169);
 
             Highlight = Color.FromArgb(255, 28, 57, 71);
@@ -63,8 +61,6 @@ namespace Concierge.Common
         public static Color Verdigris { get; }
 
         public static Color DarkGreyBox { get; }
-
-        public static Color ControlBackground { get; }
 
         public static Color UsedBox { get; }
 

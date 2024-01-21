@@ -230,6 +230,19 @@ namespace Concierge.Display.Pages
 
         private void HealthDisplay_SaveClicked(object sender, RoutedEventArgs e)
         {
+            var deathSave = Program.CcsFile.Character.Vitality.DeathSavingThrows;
+            var name = Program.CcsFile.Character.Properties.Name;
+            if (deathSave.DeathSaveStatus == Character.Enums.AbilitySave.Success)
+            {
+                var succeed = name.IsNullOrWhiteSpace() ? "Succeeded 3 saves and stabilized!" : $"{name} succeeded 3 saves and is stabilized!";
+                Program.MainWindow?.DisplayStatusText(succeed);
+            }
+            else if (deathSave.DeathSaveStatus == Character.Enums.AbilitySave.Failure)
+            {
+                var fail = name.IsNullOrWhiteSpace() ? "Failed 3 saves and died!" : $"{name} failed 3 saves and has died!";
+                Program.MainWindow?.DisplayStatusText(fail);
+            }
+
             this.DrawDeathSavingThrows();
         }
 

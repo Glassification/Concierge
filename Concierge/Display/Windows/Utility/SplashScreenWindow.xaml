@@ -61,7 +61,7 @@
                     <Grid Grid.Column="0">
                         <materialDesign:PackIcon
                             Kind="HexagonOutline"
-                            Foreground="#33415C"
+                            Foreground="#849BC7"
                             HorizontalAlignment="Stretch"
                             VerticalAlignment="Stretch"
                             Height="auto"

@@ -4,8 +4,8 @@
 
 namespace Concierge.Data
 {
-    using System;
     using System.Windows.Media;
+
     using Concierge.Common;
     using Concierge.Data.Enums;
     using MaterialDesignThemes.Wpf;
@@ -66,9 +66,11 @@ namespace Concierge.Data
             return type switch
             {
                 MessageType.Information => ((PackIconKind, Brush))(PackIconKind.InformationSlabBox, Brushes.LightBlue),
+                MessageType.Question => ((PackIconKind, Brush))(PackIconKind.HelpBox, Brushes.LightGreen),
+                MessageType.Popup => ((PackIconKind, Brush))(PackIconKind.AppsBox, Brushes.LightPink),
                 MessageType.Warning => ((PackIconKind, Brush))(PackIconKind.AlertBox, Brushes.Goldenrod),
                 MessageType.Error => ((PackIconKind, Brush))(PackIconKind.AlertOctagon, Brushes.IndianRed),
-                _ => ((PackIconKind, Brush))(PackIconKind.HelpBox, Brushes.White),
+                _ => ((PackIconKind, Brush))(PackIconKind.CloseBox, Brushes.White),
             };
         }
     }

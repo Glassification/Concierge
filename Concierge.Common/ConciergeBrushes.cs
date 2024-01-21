@@ -31,17 +31,11 @@ namespace Concierge.Common
             DarkGreyBox = new SolidColorBrush(ConciergeColors.DarkGreyBox);
             DarkGreyBox.Freeze();
 
-            ControlBackground = new SolidColorBrush(ConciergeColors.ControlBackground);
-            ControlBackground.Freeze();
-
             BorderHighlight = new SolidColorBrush(ConciergeColors.BorderHighlight);
             BorderHighlight.Freeze();
 
             Highlight = new SolidColorBrush(ConciergeColors.Highlight);
             Highlight.Freeze();
-
-            HighlightRichTextBox = new SolidColorBrush(ConciergeColors.HighlightRichTextBox);
-            HighlightRichTextBox.Freeze();
 
             TreeItemHover = new SolidColorBrush(ConciergeColors.TreeItemHover);
             TreeItemHover.Freeze();
@@ -86,15 +80,11 @@ namespace Concierge.Common
 
         public static SolidColorBrush DarkGreyBox { get; }
 
-        public static SolidColorBrush ControlBackground { get; }
-
         public static SolidColorBrush UsedBox { get; }
 
         public static SolidColorBrush BorderHighlight { get; }
 
         public static SolidColorBrush Highlight { get; }
-
-        public static SolidColorBrush HighlightRichTextBox { get; }
 
         public static SolidColorBrush TreeItemHover { get; }
 

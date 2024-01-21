@@ -24,10 +24,12 @@ namespace Concierge.Display
         {
             return messageWindowIcons switch
             {
+                ConciergeIcons.Question => MessageType.Question,
+                ConciergeIcons.Alert => MessageType.Information,
                 ConciergeIcons.Information => MessageType.Information,
                 ConciergeIcons.Warning => MessageType.Warning,
                 ConciergeIcons.Error => MessageType.Error,
-                _ => MessageType.Unknown,
+                _ => MessageType.Popup,
             };
         }
     }

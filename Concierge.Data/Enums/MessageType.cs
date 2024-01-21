@@ -20,6 +20,16 @@ namespace Concierge.Data.Enums
         Information,
 
         /// <summary>
+        /// The message is for user input.
+        /// </summary>
+        Question,
+
+        /// <summary>
+        /// The message is from a pop-up window.
+        /// </summary>
+        Popup,
+
+        /// <summary>
         /// The message is a warning.
         /// </summary>
         Warning,

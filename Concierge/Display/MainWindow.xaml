@@ -17,7 +17,7 @@
     WindowStartupLocation="CenterScreen"
     WindowStyle="None"
     Background="#06070D"
-    BorderBrush="#227EA9"
+    BorderBrush="#A9C7FF"
     BorderThickness="0"
     KeyDown="MainWindow_KeyPress"
     WindowState="Maximized"
@@ -127,7 +127,7 @@
                     Selected="ListViewItem_Selected">
                     <StackPanel Orientation="Vertical">
                         <materialDesign:PackIcon
-                            Foreground="SteelBlue" 
+                            Foreground="#A9C7FF" 
                             Margin="10"
                             Kind="Globe"
                             Width="auto"           
@@ -146,7 +146,7 @@
                     Selected="ListViewItem_Selected">
                     <StackPanel Orientation="Vertical">
                         <materialDesign:PackIcon
-                            Foreground="SteelBlue" 
+                            Foreground="#A9C7FF" 
                             Margin="10"
                             Kind="Details"
                             Width="auto"           
@@ -165,7 +165,7 @@
                     Selected="ListViewItem_Selected">
                     <StackPanel Orientation="Vertical">
                         <materialDesign:PackIcon
-                            Foreground="SteelBlue" 
+                            Foreground="#A9C7FF" 
                             Margin="10"
                             Kind="SwordCross"
                             Width="auto"           
@@ -184,7 +184,7 @@
                     Selected="ListViewItem_Selected">
                     <StackPanel Orientation="Vertical">
                         <materialDesign:PackIcon
-                            Foreground="SteelBlue" 
+                            Foreground="#A9C7FF" 
                             Margin="10"
                             Kind="HumanMaleHeight"
                             Width="auto"           
@@ -203,7 +203,7 @@
                     Selected="ListViewItem_Selected">
                     <StackPanel Orientation="Vertical">
                         <materialDesign:PackIcon
-                            Foreground="SteelBlue" 
+                            Foreground="#A9C7FF" 
                             Margin="10"
                             Kind="Backpack"
                             Width="auto"           
@@ -222,7 +222,7 @@
                     Selected="ListViewItem_Selected">
                     <StackPanel Orientation="Vertical">
                         <materialDesign:PackIcon
-                            Foreground="SteelBlue" 
+                            Foreground="#A9C7FF" 
                             Margin="10"
                             Kind="Magic"
                             Width="auto"           
@@ -241,7 +241,7 @@
                     Selected="ListViewItem_Selected">
                     <StackPanel Orientation="Vertical">
                         <materialDesign:PackIcon
-                            Foreground="SteelBlue" 
+                            Foreground="#A9C7FF" 
                             Margin="10"
                             Kind="Brain"
                             Width="auto"           
@@ -260,7 +260,7 @@
                     Selected="ListViewItem_Selected">
                     <StackPanel Orientation="Vertical">
                         <materialDesign:PackIcon
-                            Foreground="SteelBlue" 
+                            Foreground="#A9C7FF" 
                             Margin="10"
                             Kind="AccountSupervisor"
                             Width="auto"           
@@ -279,7 +279,7 @@
                     Selected="ListViewItem_Selected">
                     <StackPanel Orientation="Vertical">
                         <materialDesign:PackIcon
-                            Foreground="SteelBlue" 
+                            Foreground="#A9C7FF" 
                             Margin="10"
                             Kind="Journal"
                             Width="auto"           
@@ -298,7 +298,7 @@
                     Selected="ListViewItem_Selected">
                     <StackPanel Orientation="Vertical">
                         <materialDesign:PackIcon
-                            Foreground="SteelBlue" 
+                            Foreground="#A9C7FF" 
                             Margin="10"
                             Kind="Tools"
                             Width="auto"           
