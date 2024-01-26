@@ -121,6 +121,17 @@ namespace Concierge.Display.Pages
         {
             this.WeaponDataGrid.Items.Clear();
             this.DisplayList.ForEach(weapon => this.WeaponDataGrid.Items.Add(weapon));
+            this.SetWeaponDataGridControlState();
+        }
+
+        private void SetWeaponDataGridControlState()
+        {
+            this.WeaponDataGrid.SetButtonControlsEnableState(
+                this.AttacksUpButton,
+                this.AttacksDownButton,
+                this.AttacksEditButton,
+                this.AttackUseButton,
+                this.AttacksDeleteButton);
         }
 
         private void WeaponDataGrid_Sorted(object sender, RoutedEventArgs e)
@@ -325,6 +336,11 @@ namespace Concierge.Display.Pages
                     this.DrawImage();
                     break;
             }
+        }
+
+        private void WeaponDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            this.SetWeaponDataGridControlState();
         }
     }
 }

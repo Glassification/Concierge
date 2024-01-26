@@ -250,7 +250,8 @@
                     <components:ConciergeDataGrid 
                         x:Name="ResourcesDataGrid"
                         Style="{DynamicResource LeftDetailsDataGridStyle}"
-                        Sorted="ResourcesDataGrid_Sorted">
+                        Sorted="ResourcesDataGrid_Sorted"
+                        SelectionChanged="ResourcesDataGrid_SelectionChanged">
                         <DataGrid.Columns>
                             <DataGridTextColumn 
                                 Header="Resources"
@@ -321,7 +322,8 @@
                     <components:ConciergeDataGrid 
                         x:Name="LanguagesDataGrid"
                         Style="{DynamicResource LeftDetailsDataGridStyle}"
-                        Sorted="LanguagesDataGrid_Sorted">
+                        Sorted="LanguagesDataGrid_Sorted"
+                        SelectionChanged="LanguagesDataGrid_SelectionChanged">
                         <DataGrid.Columns>
                             <DataGridTextColumn 
                                 Header="Languages"

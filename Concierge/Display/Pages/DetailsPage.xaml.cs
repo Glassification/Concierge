@@ -110,6 +110,10 @@ namespace Concierge.Display.Pages
             DrawProficiency(this.ArmorProficiencyDataGrid, character.Characteristic.Proficiencies.Where(x => x.ProficiencyType == ProficiencyTypes.Armor).ToList());
             DrawProficiency(this.ToolProficiencyDataGrid, character.Characteristic.Proficiencies.Where(x => x.ProficiencyType == ProficiencyTypes.Tool).ToList());
 
+            this.SetProficiencyDataGridControlState(this.WeaponProficiencyDataGrid);
+            this.SetProficiencyDataGridControlState(this.ArmorProficiencyDataGrid);
+            this.SetProficiencyDataGridControlState(this.ToolProficiencyDataGrid);
+
             this.ProficiencyBonusField.Text = $"  Bonus: {Program.CcsFile.Character.ProficiencyBonus}  ";
         }
 
@@ -117,12 +121,14 @@ namespace Concierge.Display.Pages
         {
             this.ResourcesDataGrid.Items.Clear();
             Program.CcsFile.Character.Vitality.ClassResources.ForEach(resource => this.ResourcesDataGrid.Items.Add(resource));
+            this.SetResourceDataGridControlState();
         }
 
         public void DrawLanguages()
         {
             this.LanguagesDataGrid.Items.Clear();
             Program.CcsFile.Character.Characteristic.Languages.ForEach(language => this.LanguagesDataGrid.Items.Add(language));
+            this.SetLanguageDataGridControlState();
         }
 
         public void DrawConditions()
@@ -188,6 +194,21 @@ namespace Concierge.Display.Pages
             dataGrid.SetSelectedIndex(index);
         }
 
+        private void SetProficiencyDataGridControlState(ConciergeDataGrid dataGrid)
+        {
+            dataGrid.SetButtonControlsEnableState(this.EditProficencyButton, this.DeleteProficencyButton);
+        }
+
+        private void SetResourceDataGridControlState()
+        {
+            this.ResourcesDataGrid.SetButtonControlsEnableState(this.EditResourcesButton, this.DeleteResourcesButton);
+        }
+
+        private void SetLanguageDataGridControlState()
+        {
+            this.LanguagesDataGrid.SetButtonControlsEnableState(this.EditLanguagesButton, this.DeleteLanguagesButton);
+        }
+
         private void DeleteProficencyButton_Click(object sender, RoutedEventArgs e)
         {
             var selectedGrid = this.GetSelectedProficencyDataGrid();
@@ -228,29 +249,35 @@ namespace Concierge.Display.Pages
 
         private void WeaponProficiencyDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (this.WeaponProficiencyDataGrid.SelectedItem != null)
+            if (this.WeaponProficiencyDataGrid.SelectedItem is not null)
             {
                 this.ArmorProficiencyDataGrid.UnselectAll();
                 this.ToolProficiencyDataGrid.UnselectAll();
             }
+
+            this.SetProficiencyDataGridControlState(this.WeaponProficiencyDataGrid);
         }
 
         private void ArmorProficiencyDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (this.ArmorProficiencyDataGrid.SelectedItem != null)
+            if (this.ArmorProficiencyDataGrid.SelectedItem is not null)
             {
                 this.WeaponProficiencyDataGrid.UnselectAll();
                 this.ToolProficiencyDataGrid.UnselectAll();
             }
+
+            this.SetProficiencyDataGridControlState(this.ArmorProficiencyDataGrid);
         }
 
         private void ToolProficiencyDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (this.ToolProficiencyDataGrid.SelectedItem != null)
+            if (this.ToolProficiencyDataGrid.SelectedItem is not null)
             {
                 this.WeaponProficiencyDataGrid.UnselectAll();
                 this.ArmorProficiencyDataGrid.UnselectAll();
             }
+
+            this.SetProficiencyDataGridControlState(this.ToolProficiencyDataGrid);
         }
 
         private void ProficiencyDataGrid_Sorted(object sender, RoutedEventArgs e)
@@ -442,6 +469,16 @@ namespace Concierge.Display.Pages
                     this.DrawProficiencies();
                     break;
             }
+        }
+
+        private void ResourcesDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            this.SetResourceDataGridControlState();
+        }
+
+        private void LanguagesDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            this.SetLanguageDataGridControlState();
         }
     }
 }

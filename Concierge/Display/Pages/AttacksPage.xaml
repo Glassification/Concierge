@@ -148,6 +148,7 @@
                         <components:ConciergeDataGrid 
                             x:Name="AmmoDataGrid"
                             Style="{DynamicResource StandardDataGridStyle}"
+                            SelectionChanged="AmmoDataGrid_SelectionChanged"
                             Sorted="AmmoDataGrid_Sorted">
                             <DataGrid.Columns>
                                 <DataGridTemplateColumn
@@ -170,7 +171,7 @@
                                     Width="0.20*"
                                     ElementStyle="{StaticResource StandardColumnElementStyle}"/>
                                 <DataGridTextColumn
-                                    Header="Quantity"
+                                    Header="Total"
                                     Binding="{Binding Quantity}"
                                     Width="0.08*"
                                     ElementStyle="{StaticResource StandardColumnElementStyle}"/>
@@ -285,6 +286,7 @@
                             x:Name="StatusEffectsDataGrid"
                             VerticalScrollBarVisibility="Hidden"
                             Style="{DynamicResource StandardDataGridStyle}"
+                            SelectionChanged="StatusEffectsDataGrid_SelectionChanged"
                             Sorted="StatusEffectsDataGrid_Sorted"
                             HeadersVisibility="None"
                             Grid.ColumnSpan="2">
@@ -432,7 +434,8 @@
                     <components:ConciergeDataGrid 
                         x:Name="WeaponDataGrid"
                         Style="{DynamicResource StandardDataGridStyle}"
-                        Sorted="WeaponDataGrid_Sorted">
+                        Sorted="WeaponDataGrid_Sorted"
+                        SelectionChanged="WeaponDataGrid_SelectionChanged">
                         <DataGrid.Columns>
                             <DataGridTemplateColumn Width="0.02*">
                                 <DataGridTemplateColumn.CellTemplate>

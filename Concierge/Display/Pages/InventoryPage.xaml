@@ -130,7 +130,8 @@
             <components:ConciergeDataGrid 
                 x:Name="InventoryDataGrid"
                 Style="{DynamicResource StandardDataGridStyle}"
-                Sorted="InventoryDataGrid_Sorted">
+                Sorted="InventoryDataGrid_Sorted"
+                SelectionChanged="InventoryDataGrid_SelectionChanged">
                 <DataGrid.Columns>
                     <DataGridTemplateColumn  Width="0.02*">
                         <DataGridTemplateColumn.CellTemplate>

@@ -94,7 +94,8 @@
             Grid.Row="1"
             x:Name="CustomItemsDataGrid"
             Margin="10,0,10,10"
-            Style="{DynamicResource WindowDataGridStyle}">
+            Style="{DynamicResource WindowDataGridStyle}"
+            SelectionChanged="CustomItemsDataGrid_SelectionChanged">
             <DataGrid.Columns>
                 <DataGridTemplateColumn  Width="0.02*">
                     <DataGridTemplateColumn.CellTemplate>

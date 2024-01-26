@@ -138,6 +138,13 @@ namespace Concierge.Display.Windows.Utility
             {
                 this.CustomItemsDataGrid.Items.Add(color);
             }
+
+            this.SetCustomItemsDataGridControlState();
+        }
+
+        public void SetCustomItemsDataGridControlState()
+        {
+            this.CustomItemsDataGrid.SetButtonControlsEnableState(this.EditButton, this.DeleteButton);
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
@@ -198,6 +205,11 @@ namespace Concierge.Display.Windows.Utility
         private void Window_ApplyChanges(object sender, EventArgs e)
         {
             this.Draw();
+        }
+
+        private void CustomItemsDataGrid_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+            this.SetCustomItemsDataGridControlState();
         }
     }
 }

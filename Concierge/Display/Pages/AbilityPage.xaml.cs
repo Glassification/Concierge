@@ -60,6 +60,7 @@ namespace Concierge.Display.Pages
         {
             this.AbilitiesDataGrid.Items.Clear();
             this.DisplayList.ForEach(ability => this.AbilitiesDataGrid.Items.Add(ability));
+            this.SetDataGridControlState();
         }
 
         private void ScrollAbilities()
@@ -70,6 +71,16 @@ namespace Concierge.Display.Pages
                 this.AbilitiesDataGrid.UpdateLayout();
                 this.AbilitiesDataGrid.ScrollIntoView(this.AbilitiesDataGrid.SelectedItem);
             }
+        }
+
+        private void SetDataGridControlState()
+        {
+            this.AbilitiesDataGrid.SetButtonControlsEnableState(
+                this.UpButton,
+                this.DownButton,
+                this.EditButton,
+                this.AbilityUseButton,
+                this.DeleteButton);
         }
 
         private void UpButton_Click(object sender, RoutedEventArgs e)
@@ -171,6 +182,11 @@ namespace Concierge.Display.Pages
             var result = ability.Use();
 
             ConciergeWindowService.ShowUseItemWindow(typeof(UseItemWindow), result);
+        }
+
+        private void AbilitiesDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            this.SetDataGridControlState();
         }
     }
 }

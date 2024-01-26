@@ -9,6 +9,7 @@ namespace Concierge.Display.Components
 
     using Concierge.Character.Journals;
     using Concierge.Common;
+    using Concierge.Common.Utilities;
 
     public sealed class ConciergeTreeView : TreeView
     {
@@ -73,15 +74,26 @@ namespace Concierge.Display.Components
 
         public void ExpandAll()
         {
-            this.ExpandHelper(this.Items, true);
+            ExpandHelper(this.Items, true);
         }
 
         public void CollapseAll()
         {
-            this.ExpandHelper(this.Items, false);
+            ExpandHelper(this.Items, false);
         }
 
-        private void ExpandHelper(ItemCollection items, bool expand)
+        public bool SetButtonControlsEnableState(params ConciergeDesignButton[] buttons)
+        {
+            var hasSelection = this.SelectedItem is not null;
+            foreach (var button in buttons)
+            {
+                DisplayUtility.SetControlEnableState(button, hasSelection);
+            }
+
+            return hasSelection;
+        }
+
+        private static void ExpandHelper(ItemCollection items, bool expand)
         {
             foreach (var item in items)
             {
@@ -92,7 +104,7 @@ namespace Concierge.Display.Components
 
                 if (!treeViewItem.Items.IsEmpty)
                 {
-                    this.ExpandHelper(treeViewItem.Items, expand);
+                    ExpandHelper(treeViewItem.Items, expand);
                 }
 
                 treeViewItem.IsExpanded = expand;

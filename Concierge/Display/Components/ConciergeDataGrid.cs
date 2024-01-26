@@ -12,6 +12,7 @@ namespace Concierge.Display.Components
     using Concierge.Commands;
     using Concierge.Common;
     using Concierge.Common.Extensions;
+    using Concierge.Common.Utilities;
     using Concierge.Display.Enums;
 
     public sealed class ConciergeDataGrid : DataGrid
@@ -119,6 +120,17 @@ namespace Concierge.Display.Components
             this.SelectedIndex = index;
 
             this.ScrollIntoView(this.SelectedItem);
+        }
+
+        public bool SetButtonControlsEnableState(params ConciergeDesignButton[] buttons)
+        {
+            var hasSelection = this.SelectedItem is not null;
+            foreach (var button in buttons)
+            {
+                DisplayUtility.SetControlEnableState(button, hasSelection);
+            }
+
+            return hasSelection;
         }
 
         protected override void OnSorting(DataGridSortingEventArgs eventArgs)

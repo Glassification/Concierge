@@ -65,6 +65,7 @@ namespace Concierge.Display.Pages
             this.ItemTotalField.Text = $"({count} Item{(count == 1 ? string.Empty : "s")})";
             this.InventoryDataGrid.Items.Clear();
             this.DisplayList.ForEach(item => this.InventoryDataGrid.Items.Add(item));
+            this.SetInventoryDataGridControlState();
         }
 
         private void ScrollInventory()
@@ -75,6 +76,16 @@ namespace Concierge.Display.Pages
                 this.InventoryDataGrid.UpdateLayout();
                 this.InventoryDataGrid.ScrollIntoView(this.InventoryDataGrid.SelectedItem);
             }
+        }
+
+        private void SetInventoryDataGridControlState()
+        {
+            this.InventoryDataGrid.SetButtonControlsEnableState(
+                this.UpButton,
+                this.DownButton,
+                this.EditButton,
+                this.ItemUseButton,
+                this.DeleteButton);
         }
 
         private void UpButton_Click(object sender, RoutedEventArgs e)
@@ -194,6 +205,11 @@ namespace Concierge.Display.Pages
             this.InventoryDataGrid.SetSelectedIndex(index);
 
             Program.UndoRedoService.AddCommand(new EditCommand<Inventory>(item, oldItem, this.ConciergePage));
+        }
+
+        private void InventoryDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            this.SetInventoryDataGridControlState();
         }
     }
 }

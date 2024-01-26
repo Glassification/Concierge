@@ -551,7 +551,8 @@
                     <components:ConciergeDataGrid 
                         x:Name="WeaponDataGrid"
                         Style="{DynamicResource StandardDataGridStyle}"
-                        Sorted="WeaponDataGrid_Sorted">
+                        Sorted="WeaponDataGrid_Sorted"
+                        SelectionChanged="WeaponDataGrid_SelectionChanged">
                         <DataGrid.Columns>
                             <DataGridTemplateColumn Width="0.02*">
                                 <DataGridTemplateColumn.CellTemplate>

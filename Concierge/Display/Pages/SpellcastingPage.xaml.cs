@@ -78,6 +78,7 @@ namespace Concierge.Display.Pages
         {
             this.SpellListDataGrid.Items.Clear();
             this.SpellDisplayList.ForEach(spell => this.SpellListDataGrid.Items.Add(spell));
+            this.SetSpellListDataGridDataGridControlState();
         }
 
         public void DrawMagicClasses()
@@ -85,6 +86,7 @@ namespace Concierge.Display.Pages
             this.MagicClassDataGrid.Items.Clear();
             this.MagicClassDisplayList.ForEach(magicClass => this.MagicClassDataGrid.Items.Add(magicClass));
             this.CasterLevelField.Text = $"(Caster Level {Program.CcsFile.Character.Magic.CasterLevel})";
+            this.SetMagicClassDataGridControlState();
         }
 
         public void DrawSpellSlots()
@@ -105,6 +107,25 @@ namespace Concierge.Display.Pages
             }
 
             return false;
+        }
+
+        private void SetMagicClassDataGridControlState()
+        {
+            this.MagicClassDataGrid.SetButtonControlsEnableState(
+                this.MagicClassUpButton,
+                this.MagicClassDownButton,
+                this.MagicClassEditButton,
+                this.MagicClassDeleteButton);
+        }
+
+        private void SetSpellListDataGridDataGridControlState()
+        {
+            this.SpellListDataGrid.SetButtonControlsEnableState(
+                this.SpellUpButton,
+                this.SpellDownButton,
+                this.SpellEditButton,
+                this.SpellUseButton,
+                this.SpellDeleteButton);
         }
 
         private void MagicClassUpButton_Click(object sender, RoutedEventArgs e)
@@ -208,18 +229,12 @@ namespace Concierge.Display.Pages
 
         private void MagicClassDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (this.MagicClassDataGrid.SelectedItem != null)
-            {
-                this.SpellListDataGrid.UnselectAll();
-            }
+            this.SetMagicClassDataGridControlState();
         }
 
         private void SpellListDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (this.SpellListDataGrid.SelectedItem != null)
-            {
-                this.MagicClassDataGrid.UnselectAll();
-            }
+            this.SetSpellListDataGridDataGridControlState();
         }
 
         private void SpellListDataGrid_Sorted(object sender, RoutedEventArgs e)

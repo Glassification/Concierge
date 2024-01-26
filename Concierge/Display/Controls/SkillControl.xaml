@@ -38,8 +38,8 @@
                         Margin="0,0,0,0"
                         HorizontalAlignment="Stretch"
                         VerticalAlignment="Stretch"
-                        Width="30"
-                        Height="30"
+                        Width="auto"
+                        Height="auto"
                         Kind="ToggleSwitchOffOutline"/>
                 </Grid>
 
@@ -58,8 +58,8 @@
                         Margin="0,0,0,0"
                         HorizontalAlignment="Stretch"
                         VerticalAlignment="Stretch"
-                        Width="30"
-                        Height="30"
+                        Width="auto"
+                        Height="auto"
                         Kind="ToggleSwitchOffOutline"/>
                 </Grid>
 

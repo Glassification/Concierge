@@ -111,18 +111,47 @@ namespace Concierge.Display.Pages
         {
             this.WeaponDataGrid.Items.Clear();
             this.WeaponDisplayList.ForEach(weapon => this.WeaponDataGrid.Items.Add(weapon));
+            this.SetWeaponDataGridControlState();
         }
 
         private void DrawStatusEffects()
         {
             this.StatusEffectsDataGrid.Items.Clear();
             Program.CcsFile.Character.Vitality.StatusEffects.ForEach(effect => this.StatusEffectsDataGrid.Items.Add(effect));
+            this.SetStatusDataGridControlState();
         }
 
         private void DrawAmmoList()
         {
             this.AmmoDataGrid.Items.Clear();
             Program.CcsFile.Character.Equipment.Ammunition.ForEach(ammo => this.AmmoDataGrid.Items.Add(ammo));
+            this.SetAmmoDataGridControlState();
+        }
+
+        private void SetAmmoDataGridControlState()
+        {
+            this.AmmoDataGrid.SetButtonControlsEnableState(
+                this.AmmoUpButton,
+                this.AmmonDownButton,
+                this.AmmoRecoverButton,
+                this.AmmoEditButton,
+                this.AmmoUseButton,
+                this.AmmoDeleteButton);
+        }
+
+        private void SetStatusDataGridControlState()
+        {
+            this.StatusEffectsDataGrid.SetButtonControlsEnableState(this.EditEffectsButton, this.DeleteEffectsButton);
+        }
+
+        private void SetWeaponDataGridControlState()
+        {
+            this.WeaponDataGrid.SetButtonControlsEnableState(
+                this.AttacksUpButton,
+                this.AttacksDownButton,
+                this.AttacksEditButton,
+                this.AttackUseButton,
+                this.AttacksDeleteButton);
         }
 
         private void AmmoUpButton_Click(object sender, RoutedEventArgs e)
@@ -380,6 +409,21 @@ namespace Concierge.Display.Pages
             this.AmmoDataGrid.SetSelectedIndex(index);
 
             Program.UndoRedoService.AddCommand(new EditCommand<Ammunition>(ammo, oldItem, this.ConciergePage));
+        }
+
+        private void AmmoDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            this.SetAmmoDataGridControlState();
+        }
+
+        private void StatusEffectsDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            this.SetStatusDataGridControlState();
+        }
+
+        private void WeaponDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            this.SetWeaponDataGridControlState();
         }
     }
 }

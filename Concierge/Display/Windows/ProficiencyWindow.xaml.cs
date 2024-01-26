@@ -130,14 +130,14 @@ namespace Concierge.Display.Windows
             {
                 case ProficiencyTypes.Armor:
                     items.Add(new CollectionContainer() { Collection = ComboBoxGenerator.ArmorTypeComboBox() });
-                    items.Add(new Separator());
+                    items.Add(new ConciergeSeparator());
                     items.Add(new ComboBoxItemControl(PackIconKind.Shield, Brushes.SteelBlue, "Shields"));
                     break;
                 case ProficiencyTypes.Tool:
                     items.Add(new CollectionContainer() { Collection = CreateTools(Defaults.Tools, ConciergeBrushes.Mint, PackIconKind.Tools) });
-                    items.Add(new Separator());
+                    items.Add(new ConciergeSeparator());
                     items.Add(new CollectionContainer() { Collection = CreateTools(Defaults.Games, ConciergeBrushes.Deer, PackIconKind.Cards) });
-                    items.Add(new Separator());
+                    items.Add(new ConciergeSeparator());
                     items.Add(new CollectionContainer() { Collection = CreateTools(Defaults.Instruments, Brushes.IndianRed, PackIconKind.GuitarAcoustic) });
                     break;
                 case ProficiencyTypes.Weapon:
@@ -145,7 +145,7 @@ namespace Concierge.Display.Windows
                     items.Add(new ComboBoxItemControl(PackIconKind.BowArrow, Brushes.Orange, Proficiency.MartialRanged));
                     items.Add(new ComboBoxItemControl(PackIconKind.Sword, Brushes.IndianRed, Proficiency.SimpleMelee));
                     items.Add(new ComboBoxItemControl(PackIconKind.BowArrow, Brushes.Orange, Proficiency.SimpleRanged));
-                    items.Add(new Separator());
+                    items.Add(new ConciergeSeparator());
                     items.Add(new CollectionContainer() { Collection = ComboBoxGenerator.WeaponTypesComboBox() });
                     break;
             }
@@ -153,7 +153,7 @@ namespace Concierge.Display.Windows
             var customItems = Program.CustomItemService.GetCustomItems<Proficiency>();
             if (!customItems.IsEmpty())
             {
-                items.Insert(0, new Separator());
+                items.Insert(0, new ConciergeSeparator());
                 foreach (var item in customItems)
                 {
                     items.Insert(0, new ComboBoxItemControl(PackIconKind.ListStatus, Brushes.PowderBlue, item.Name));

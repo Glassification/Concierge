@@ -15,6 +15,8 @@ namespace Concierge.Tools.DiceRoller
     /// </summary>
     public sealed class DiceRoll : IDiceRoll
     {
+        private const int RollLimit = 20;
+
         private static readonly Random random = new ();
 
         /// <summary>
@@ -124,13 +126,14 @@ namespace Concierge.Tools.DiceRoller
 
         /// <summary>
         /// Rolls a hit die corresponding to a character's hit points calculation.
+        /// This method cannot roll a 1.
         /// </summary>
         /// <param name="hitDie">The type of hit die.</param>
         /// <returns>The rolled hit die value.</returns>
         public static int RollHitDie(Dice hitDie)
         {
             var val = 1;
-            while (val == 1)
+            for (int i = 0; i < RollLimit && val != 1; i++)
             {
                 val = random.Next(1, (int)hitDie + 1);
             }

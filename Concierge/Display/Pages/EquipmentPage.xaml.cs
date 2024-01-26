@@ -56,11 +56,11 @@ namespace Concierge.Display.Pages
         {
             var equippedItems = Program.CcsFile.Character.Equipment.EquippedItems;
 
-            DrawEquippedItem(equippedItems.Head, this.HeadEquipmentDataGrid);
-            DrawEquippedItem(equippedItems.Torso, this.TorsoEquipmentDataGrid);
-            DrawEquippedItem(equippedItems.Hands, this.HandsEquipmentDataGrid);
-            DrawEquippedItem(equippedItems.Legs, this.LegsEquipmentDataGrid);
-            DrawEquippedItem(equippedItems.Feet, this.FeetEquipmentDataGrid);
+            this.DrawEquippedItem(equippedItems.Head, this.HeadEquipmentDataGrid);
+            this.DrawEquippedItem(equippedItems.Torso, this.TorsoEquipmentDataGrid);
+            this.DrawEquippedItem(equippedItems.Hands, this.HandsEquipmentDataGrid);
+            this.DrawEquippedItem(equippedItems.Legs, this.LegsEquipmentDataGrid);
+            this.DrawEquippedItem(equippedItems.Feet, this.FeetEquipmentDataGrid);
         }
 
         public void DrawImage()
@@ -116,10 +116,11 @@ namespace Concierge.Display.Pages
             }
         }
 
-        private static void DrawEquippedItem(List<IEquipable> items, ConciergeDataGrid dataGrid)
+        private void DrawEquippedItem(List<IEquipable> items, ConciergeDataGrid dataGrid)
         {
             dataGrid.Items.Clear();
             items.ForEach(item => dataGrid.Items.Add(item));
+            this.SetEquipmetDataGridControlState(dataGrid);
         }
 
         private void DequipInventory(Inventory item)
@@ -134,6 +135,44 @@ namespace Concierge.Display.Pages
             var oldItem = weapon.DeepCopy();
             EquippedItems.Dequip(weapon);
             Program.UndoRedoService.AddCommand(new EditCommand<Weapon>(weapon, oldItem, this.ConciergePage));
+        }
+
+        private bool SetEquipmetDataGridControlState(ConciergeDataGrid dataGrid)
+        {
+            return dataGrid.SetButtonControlsEnableState(this.EditButton, this.ItemUseButton, this.DeleteButton);
+        }
+
+        private void CheckAndSet()
+        {
+            if (this.SetEquipmetDataGridControlState(this.HeadEquipmentDataGrid))
+            {
+                return;
+            }
+
+            if (this.SetEquipmetDataGridControlState(this.TorsoEquipmentDataGrid))
+            {
+                return;
+            }
+
+            if (this.SetEquipmetDataGridControlState(this.HandsEquipmentDataGrid))
+            {
+                return;
+            }
+
+            if (this.SetEquipmetDataGridControlState(this.LegsEquipmentDataGrid))
+            {
+                return;
+            }
+
+            if (this.SetEquipmetDataGridControlState(this.FeetEquipmentDataGrid))
+            {
+                return;
+            }
+
+            if (this.SetEquipmetDataGridControlState(this.PreparedSpellsDataGrid))
+            {
+                return;
+            }
         }
 
         private void EquipmentDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -188,6 +227,7 @@ namespace Concierge.Display.Pages
                 this.PreparedSpellsDataGrid.UnselectAll();
             }
 
+            this.CheckAndSet();
             this.IsSelecting = false;
         }
 

@@ -6,11 +6,11 @@ namespace Concierge.Character.Equipable
 {
     using System.Collections.Generic;
     using System.Linq;
-    using System.Windows.Controls;
     using System.Windows.Data;
 
     using Concierge.Character.Enums;
     using Concierge.Common.Extensions;
+    using Concierge.Display.Components;
     using Concierge.Display.Controls;
 
     public sealed class EquippedItems
@@ -88,17 +88,17 @@ namespace Concierge.Character.Equipable
 
             if (!unequippedItems.IsEmpty())
             {
-                collection.Add(new CollectionContainer() { Collection = unequippedItems.Select(x => new ComboBoxItemControl(x)) });
+                collection.Add(new CollectionContainer() { Collection = unequippedItems.Select(x => new DetailedComboBoxItemControl(x)) });
             }
 
             if (!unequippedWeapons.IsEmpty())
             {
-                collection.Add(new CollectionContainer() { Collection = unequippedWeapons.Select(x => new ComboBoxItemControl(x)) });
+                collection.Add(new CollectionContainer() { Collection = unequippedWeapons.Select(x => new DetailedComboBoxItemControl(x)) });
             }
 
             if (collection.Count == 2)
             {
-                collection.Insert(1, new Separator());
+                collection.Insert(1, new ConciergeSeparator());
             }
 
             return collection;

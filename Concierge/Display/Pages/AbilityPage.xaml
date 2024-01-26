@@ -125,7 +125,8 @@
                 x:Name="AbilitiesDataGrid"
                 MaxHeight="{Binding Path=AbilitiesHeight}"
                 Style="{DynamicResource StandardDataGridStyle}"
-                Sorted="AbilitiesDataGrid_Sorted">
+                Sorted="AbilitiesDataGrid_Sorted"
+                SelectionChanged="AbilitiesDataGrid_SelectionChanged">
                 <DataGrid.Columns>
                     <DataGridTemplateColumn
                         Width="0.02*">

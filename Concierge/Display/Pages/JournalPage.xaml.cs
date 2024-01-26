@@ -184,6 +184,8 @@ namespace Concierge.Display.Pages
                     item.Focus();
                 }
             }
+
+            this.SetNotesTreeViewControlState();
         }
 
         private void SetDefaultFontStyle()
@@ -302,6 +304,11 @@ namespace Concierge.Display.Pages
             this.Lock = true;
             this.DrawTreeView();
             this.Lock = false;
+        }
+
+        private void SetNotesTreeViewControlState()
+        {
+            this.NotesTreeView.SetButtonControlsEnableState(this.UpButton, this.DownButton, this.EditButton, this.DeleteButton);
         }
 
         private void CutButton_Click(object sender, RoutedEventArgs e)
@@ -429,6 +436,8 @@ namespace Concierge.Display.Pages
                 this.ResetUndoQueue();
                 ConciergeSoundService.TapNavigation();
             }
+
+            this.SetNotesTreeViewControlState();
 
             this.Lock = false;
         }
