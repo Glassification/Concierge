@@ -28,5 +28,27 @@ namespace Concierge.Common.Extensions
 
             return $"{(includeNumber ? value : string.Empty)}{postfix}";
         }
+
+        /// <summary>
+        /// Converts an integer value representing a spell slot into its corresponding textual representation.
+        /// </summary>
+        /// <param name="value">The integer value representing the spell slot.</param>
+        /// <returns>The textual representation of the spell slot, such as "first", "second", etc.</returns>
+        public static string ToSpellSlot(this int value)
+        {
+            return value switch
+            {
+                1 => "first",
+                2 => "second",
+                3 => "third",
+                4 => "fourth",
+                5 => "fifth",
+                6 => "sixth",
+                7 => "seventh",
+                8 => "eighth",
+                9 => "ninth",
+                _ => string.Empty,
+            };
+        }
     }
 }

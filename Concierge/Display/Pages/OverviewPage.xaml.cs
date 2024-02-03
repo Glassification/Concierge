@@ -144,11 +144,7 @@ namespace Concierge.Display.Pages
 
         public void DrawHealth()
         {
-            var vitality = Program.CcsFile.Character.Vitality;
-
-            this.HealthDisplay.CurrentHealth = vitality.CurrentHealth;
-            this.HealthDisplay.TotalHealth = vitality.Health.MaxHealth;
-            this.HealthDisplay.SetHealthStyle(vitality);
+            this.HealthDisplay.Draw(Program.CcsFile.Character.Vitality);
             this.DrawDeathSavingThrows();
         }
 

@@ -27,6 +27,12 @@ namespace Concierge.Character.Vitals
         [JsonIgnore]
         public bool IsFull => this.BaseHealth >= this.MaxHealth;
 
+        [JsonIgnore]
+        public bool IsZero => this.BaseHealth + this.TemporaryHealth == 0;
+
+        [JsonIgnore]
+        public bool IsEmpty => this.BaseHealth <= -this.MaxHealth;
+
         public int BaseHealth
         {
             get => this.baseHealthField;

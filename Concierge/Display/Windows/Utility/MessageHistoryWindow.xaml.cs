@@ -4,9 +4,10 @@
 
 namespace Concierge.Display.Windows.Utility
 {
-
     using System.Windows;
 
+    using Concierge.Common.Extensions;
+    using Concierge.Data;
     using Concierge.Display.Components;
 
     /// <summary>
@@ -32,12 +33,22 @@ namespace Concierge.Display.Windows.Utility
             return null;
         }
 
+        public override void ShowEdit<T>(T item)
+        {
+            if (item is not MessageHistory messageHistory)
+            {
+                return;
+            }
+
+            Clipboard.SetText(messageHistory.Message);
+        }
+
         public void Draw()
         {
             var messageHistory = Program.MessageService.Get();
             var count = messageHistory.Count;
 
-            this.ItemTotalField.Text = $"({count} Item{(count == 1 ? string.Empty : "s")})";
+            this.ItemTotalField.Text = $"({count} {"Item".Pluralize("s", count)})";
             messageHistory.ForEach(x => this.MessageHistoryDataGrid.Items.Add(x));
         }
 

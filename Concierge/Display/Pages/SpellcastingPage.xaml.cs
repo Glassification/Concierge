@@ -91,7 +91,7 @@ namespace Concierge.Display.Pages
 
         public void DrawSpellSlots()
         {
-            this.SpellSlotsDisplay.FillSpellSlot(Program.CcsFile.Character.Magic.SpellSlots);
+            this.SpellSlotsDisplay.FillSpellSlots(Program.CcsFile.Character.Magic.SpellSlots);
         }
 
         private bool NextItem<T>(ConciergeDataGrid dataGrid, DrawList drawList, List<T> list, int limit, int increment)
@@ -297,9 +297,12 @@ namespace Concierge.Display.Pages
                 return;
             }
 
+            var magic = Program.CcsFile.Character.Magic;
+            var commands = new List<Command>();
             var spell = (Spell)this.SpellListDataGrid.SelectedItem;
             var index = this.SpellListDataGrid.SelectedIndex;
-            var concentratedSpell = Program.CcsFile.Character.Magic.ConcentratedSpell;
+            var concentratedSpell = magic.ConcentratedSpell;
+
             if (concentratedSpell is not null && concentratedSpell.Id != spell.Id && spell.Concentration)
             {
                 var messageResult = ConciergeMessageBox.Show(
@@ -317,12 +320,21 @@ namespace Concierge.Display.Pages
             var result = spell.Use();
             if (spell.Concentration)
             {
-                Program.CcsFile.Character.Magic.SetConcentration(spell);
-                Program.UndoRedoService.AddCommand(new ConcentrationCommand(spell, concentratedSpell));
+                magic.SetConcentration(spell);
+                commands.Add(new ConcentrationCommand(spell, concentratedSpell));
             }
 
+            if (!spell.Class.IsNullOrWhiteSpace() && !spell.Class.Equals("Warlock") && spell.Level > 0)
+            {
+                var spellSlots = magic.SpellSlots.DeepCopy();
+                magic.SpellSlots.Increment(spell.Level.ToSpellSlot());
+                commands.Add(new EditCommand<SpellSlots>(magic.SpellSlots, spellSlots, this.ConciergePage));
+            }
+
+            Program.UndoRedoService.AddCommand(new CompositeCommand(this.ConciergePage, [.. commands]));
             ConciergeWindowService.ShowUseItemWindow(typeof(UseItemWindow), result);
             this.DrawSpellList();
+            this.DrawSpellSlots();
             this.SpellListDataGrid.SetSelectedIndex(index);
         }
 

@@ -17,6 +17,7 @@ namespace Concierge.Display.Controls
     using Concierge.Common.Utilities;
     using Concierge.Display.Enums;
     using Concierge.Services;
+    using Microsoft.VisualBasic.ApplicationServices;
 
     /// <summary>
     /// Interaction logic for HitDiceDisplay.xaml.
@@ -69,18 +70,32 @@ namespace Concierge.Display.Controls
 
         public void DrawHitDice(HitDice hitDice)
         {
-            DrawHitDiceHelper(this.D6TotalField, this.D6SpentField, this.D6Grid, this.D6Border, hitDice.SpentD6, hitDice.TotalD6);
-            DrawHitDiceHelper(this.D8TotalField, this.D8SpentField, this.D8Grid, this.D8Border, hitDice.SpentD8, hitDice.TotalD8);
-            DrawHitDiceHelper(this.D10TotalField, this.D10SpentField, this.D10Grid, this.D10Border, hitDice.SpentD10, hitDice.TotalD10);
-            DrawHitDiceHelper(this.D12TotalField, this.D12SpentField, this.D12Grid, this.D12Border, hitDice.SpentD12, hitDice.TotalD12);
+            DrawHitDie(this.D6TotalField, this.D6SpentField, this.D6Grid, this.D6Border, hitDice.SpentD6, hitDice.TotalD6);
+            DrawHitDie(this.D8TotalField, this.D8SpentField, this.D8Grid, this.D8Border, hitDice.SpentD8, hitDice.TotalD8);
+            DrawHitDie(this.D10TotalField, this.D10SpentField, this.D10Grid, this.D10Border, hitDice.SpentD10, hitDice.TotalD10);
+            DrawHitDie(this.D12TotalField, this.D12SpentField, this.D12Grid, this.D12Border, hitDice.SpentD12, hitDice.TotalD12);
+
+            this.DrawHitDieHeader(this.D6HeaderGrid, this.D6HeaderBorder);
+            this.DrawHitDieHeader(this.D8HeaderGrid, this.D8HeaderBorder);
+            this.DrawHitDieHeader(this.D10HeaderGrid, this.D10HeaderBorder);
+            this.DrawHitDieHeader(this.D12HeaderGrid, this.D12HeaderBorder);
         }
 
-        private static void DrawHitDiceHelper(TextBlock totalField, TextBlock spentField, Grid grid, Border border, int spent, int total)
+        private static void DrawHitDie(TextBlock totalField, TextBlock spentField, Grid grid, Border border, int spent, int total)
         {
             totalField.Text = total.ToString();
             spentField.Text = spent.ToString();
             totalField.Foreground = spentField.Foreground = DisplayUtility.SetTotalTextStyle(total, spent);
             grid.Background = border.BorderBrush = DisplayUtility.SetTotalBoxStyle(total, spent);
+        }
+
+        private void DrawHitDieHeader(Grid header, Border headerBorder)
+        {
+            if (this.ShouldNotHighlight(header.Name))
+            {
+                headerBorder.BorderBrush = ConciergeBrushes.ControlForeBlue;
+                header.Background = ConciergeBrushes.ControlForeBlue;
+            }
         }
 
         private Vitality GetVitality()
@@ -101,9 +116,21 @@ namespace Concierge.Display.Controls
             };
         }
 
+        private bool ShouldNotHighlight(string name)
+        {
+            return name switch
+            {
+                "D6HeaderGrid" => this.D6TotalField.Text.Equals(this.D6SpentField.Text),
+                "D8HeaderGrid" => this.D8TotalField.Text.Equals(this.D8SpentField.Text),
+                "D10HeaderGrid" => this.D10TotalField.Text.Equals(this.D10SpentField.Text),
+                "D12HeaderGrid" => this.D12TotalField.Text.Equals(this.D12SpentField.Text),
+                _ => false,
+            };
+        }
+
         private void Header_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            if (sender is not Border border)
+            if (sender is not Border border || this.ShouldNotHighlight(border.Name.Replace("Border", "Grid")))
             {
                 return;
             }
@@ -117,14 +144,19 @@ namespace Concierge.Display.Controls
 
             var oldItem = vitality.DeepCopy();
 
-            var result = vitality.HitDice.Increment(border.Name);
-            if (result == Dice.None)
+            var (dice, used, total) = vitality.HitDice.Increment(border.Name);
+            if (dice == Dice.None)
             {
                 return;
             }
 
+            if (used == total)
+            {
+                Mouse.OverrideCursor = Cursors.Arrow;
+            }
+
             var attributes = this.GetAttributes();
-            var roll = vitality.RollHitDice(result, attributes);
+            var roll = vitality.RollHitDice(dice, attributes);
 
             Program.MainWindow?.DisplayStatusText($"Rolled Hit Die: {roll}");
             Program.UndoRedoService.AddCommand(new EditCommand<Vitality>(vitality, oldItem, this.ConciergePage));
@@ -140,7 +172,7 @@ namespace Concierge.Display.Controls
             }
 
             var grid = DisplayUtility.FindVisualChildren<Grid>(border).FirstOrDefault(x => x.Name.Contains("HeaderGrid"));
-            if (grid is null)
+            if (grid is null || this.ShouldNotHighlight(grid.Name))
             {
                 return;
             }
@@ -158,7 +190,7 @@ namespace Concierge.Display.Controls
             }
 
             var grid = DisplayUtility.FindVisualChildren<Grid>(border).FirstOrDefault(x => x.Name.Contains("HeaderGrid"));
-            if (grid is null)
+            if (grid is null || this.ShouldNotHighlight(grid.Name))
             {
                 return;
             }

@@ -65,33 +65,33 @@ namespace Concierge.Character.Vitals
             }
         }
 
-        public Dice Increment(string name)
+        public (Dice dice, int used, int total) Increment(string name)
         {
             if (name.Contains("d6", System.StringComparison.InvariantCultureIgnoreCase) && this.SpentD6 < this.TotalD6)
             {
                 this.SpentD6++;
-                return Dice.D6;
+                return (Dice.D6, this.SpentD6, this.TotalD6);
             }
 
             if (name.Contains("d8", System.StringComparison.InvariantCultureIgnoreCase) && this.SpentD8 < this.TotalD8)
             {
                 this.SpentD8++;
-                return Dice.D8;
+                return (Dice.D8, this.SpentD8, this.TotalD8);
             }
 
             if (name.Contains("d10", System.StringComparison.InvariantCultureIgnoreCase) && this.SpentD10 < this.TotalD10)
             {
                 this.SpentD10++;
-                return Dice.D10;
+                return (Dice.D10, this.SpentD10, this.TotalD10);
             }
 
             if (name.Contains("d12", System.StringComparison.InvariantCultureIgnoreCase) && this.SpentD12 < this.TotalD12)
             {
                 this.SpentD12++;
-                return Dice.D12;
+                return (Dice.D12, this.SpentD12, this.TotalD12);
             }
 
-            return Dice.None;
+            return (Dice.None, 0, 0);
         }
 
         public HitDice DeepCopy()

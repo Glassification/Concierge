@@ -45,7 +45,7 @@
                     Click="GenerateAttributesButton_Click">
                     <materialDesign:PackIcon
                         Kind="Autorenew"
-                        Foreground="SteelBlue"
+                        Foreground="#A9C7FF"
                         Width="25"
                         Height="25"/>
                 </components:ConciergeDesignButton>

@@ -122,69 +122,69 @@ namespace Concierge.Character.Spellcasting
             this.Reset();
         }
 
-        public int Increment(string name)
+        public (int used, int total) Increment(string name)
         {
             if (name.Contains("pact", System.StringComparison.InvariantCultureIgnoreCase) && this.PactUsed < this.PactTotal)
             {
                 this.PactUsed++;
-                return this.PactUsed;
+                return (this.PactUsed, this.PactTotal);
             }
 
             if (name.Contains("first", System.StringComparison.InvariantCultureIgnoreCase) && this.FirstUsed < this.FirstTotal)
             {
                 this.FirstUsed++;
-                return this.FirstUsed;
+                return (this.FirstUsed, this.FirstTotal);
             }
 
             if (name.Contains("second", System.StringComparison.InvariantCultureIgnoreCase) && this.SecondUsed < this.SecondTotal)
             {
                 this.SecondUsed++;
-                return this.SecondUsed;
+                return (this.SecondUsed, this.SecondTotal);
             }
 
             if (name.Contains("Third", System.StringComparison.InvariantCultureIgnoreCase) && this.ThirdUsed < this.ThirdTotal)
             {
                 this.ThirdUsed++;
-                return this.ThirdUsed;
+                return (this.ThirdUsed, this.ThirdTotal);
             }
 
             if (name.Contains("Fourth", System.StringComparison.InvariantCultureIgnoreCase) && this.FourthUsed < this.FourthTotal)
             {
                 this.FourthUsed++;
-                return this.FourthUsed;
+                return (this.FourthUsed, this.FourthTotal);
             }
 
             if (name.Contains("Fifth", System.StringComparison.InvariantCultureIgnoreCase) && this.FifthUsed < this.FifthTotal)
             {
                 this.FifthUsed++;
-                return this.FifthUsed;
+                return (this.FifthUsed, this.FifthTotal);
             }
 
             if (name.Contains("Sixth", System.StringComparison.InvariantCultureIgnoreCase) && this.SixthUsed < this.SixthTotal)
             {
                 this.SixthUsed++;
-                return this.SixthUsed;
+                return (this.SixthUsed, this.SixthTotal);
             }
 
             if (name.Contains("Seventh", System.StringComparison.InvariantCultureIgnoreCase) && this.SeventhUsed < this.SeventhTotal)
             {
                 this.SeventhUsed++;
-                return this.SeventhUsed;
+                return (this.SeventhUsed, this.SeventhTotal);
             }
 
             if (name.Contains("Eighth", System.StringComparison.InvariantCultureIgnoreCase) && this.EighthUsed < this.EighthTotal)
             {
                 this.EighthUsed++;
-                return this.EighthUsed;
+                return (this.EighthUsed, this.EighthTotal);
             }
 
             if (name.Contains("Ninth", System.StringComparison.InvariantCultureIgnoreCase) && this.NinethUsed < this.NinethTotal)
             {
                 this.NinethUsed++;
-                return this.NinethUsed;
+                return (this.NinethUsed, this.NinethTotal);
             }
 
-            return 0;
+            return (0, 0);
         }
     }
 }

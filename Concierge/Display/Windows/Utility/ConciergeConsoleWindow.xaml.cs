@@ -10,6 +10,7 @@ namespace Concierge.Display.Utility
 
     using Concierge.Common;
     using Concierge.Console;
+    using Concierge.Console.Enums;
     using Concierge.Display.Components;
     using Concierge.Display.Enums;
 
@@ -70,10 +71,14 @@ namespace Concierge.Display.Utility
             {
                 case Key.Enter:
                     this.Console.ConsoleInput = this.InputBlock.Text;
-                    this.Console.Execute();
+                    var result = this.Console.Execute();
                     this.InputBlock.Focus();
                     this.InputBlock.CaretIndex = this.InputBlock.Text.Length;
-                    this.ConsoleScroller.ScrollToBottom();
+                    if (result == ResultType.Success || result == ResultType.Warning)
+                    {
+                        this.InvokeApplyChanges();
+                    }
+
                     break;
             }
         }
@@ -94,6 +99,8 @@ namespace Concierge.Display.Utility
                     this.LimitBackspace(e);
                     break;
             }
+
+            this.ConsoleScroller.ScrollToBottom();
         }
 
         private void InputBlock_SelectionChanged(object sender, RoutedEventArgs e)

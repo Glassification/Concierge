@@ -19,8 +19,8 @@ namespace Concierge.Console
 
     public sealed class ConciergeConsole : INotifyPropertyChanged
     {
-        private readonly IReadWriters consoleReadWriter;
-        private readonly IReadWriters historyReadWriter;
+        private readonly ConsoleReadWriter consoleReadWriter;
+        private readonly HistoryReadWriter historyReadWriter;
 
         private readonly string consoleHistoryFile = Path.Combine(ConciergeFiles.HistoryDirectory, ConciergeFiles.ConsoleHistoryName);
         private readonly string consoleOutputFile = Path.Combine(ConciergeFiles.AppDataDirectory, ConciergeFiles.ConsoleOutput);
@@ -78,12 +78,12 @@ namespace Concierge.Console
 
         private bool WriteOutput { get; set; }
 
-        public void Execute()
+        public ResultType Execute()
         {
             if (IsEmpty(this.ConsoleInput))
             {
                 this.AddConsoleOutput(ConsoleResult.Empty);
-                return;
+                return ResultType.NotImplemented;
             }
 
             this.AddConsoleOutput(new ConsoleResult(this.ConsoleInput, ResultType.Information));
@@ -94,7 +94,7 @@ namespace Concierge.Console
             if (!command.IsValid)
             {
                 this.WriteResult(ConsoleResult.DefaultError(this.ConsoleInput));
-                return;
+                return ResultType.Error;
             }
 
             var scripts = this.GetScriptService(command);
@@ -102,6 +102,8 @@ namespace Concierge.Console
             Program.Logger.Info($"Command result: {result}");
 
             this.WriteResult(result);
+
+            return result.Type;
         }
 
         private static ConsoleResult RunAllScripts(ConsoleCommand command, List<ScriptService> services)

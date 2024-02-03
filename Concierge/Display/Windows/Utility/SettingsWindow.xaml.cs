@@ -55,7 +55,14 @@ namespace Concierge.Display.Utility
 
         public override string WindowName => nameof(SettingsWindow);
 
-        private string FormattedInterval => $"Autosave Interval:  {Defaults.AutosaveIntervals[(int)this.AutosaveInterval.Value]} minute{((int)this.AutosaveInterval.Value > 0 ? "s" : string.Empty)}";
+        private string FormattedInterval
+        {
+            get
+            {
+                var interval = Defaults.AutosaveIntervals[(int)this.AutosaveInterval.Value];
+                return $"Autosave Interval:  {interval} {"minute".Pluralize("s", interval)}";
+            }
+        }
 
         public override void ShowEdit<T>(T item)
         {

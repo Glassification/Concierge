@@ -10,8 +10,10 @@ namespace Concierge
     using System.Windows.Threading;
 
     using Concierge.Common.Exceptions;
+    using Concierge.Common.Utilities;
     using Concierge.Configuration;
     using Concierge.Display;
+    using Concierge.Display.Enums;
     using Concierge.Display.Utility;
     using Concierge.Services;
 
@@ -45,6 +47,17 @@ namespace Concierge
             return isValid;
         }
 
+        private static void LoadAllPages(MainWindow mainWindow)
+        {
+            var pages = EnumUtility.GetValues<ConciergePage>();
+            foreach (var page in pages)
+            {
+                mainWindow.MoveSelection(page);
+            }
+
+            mainWindow.MoveSelection(ConciergePage.Overview);
+        }
+
         private void Dispatcher_UnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
         {
             Program.ErrorService.LogError(new UnhandledException(e.Exception));
@@ -56,12 +69,15 @@ namespace Concierge
         /// </summary>
         private void Application_Startup(object sender, StartupEventArgs e)
         {
+            Program.Logger.Info($"Verify Resource Manager.");
             if (!VerifyResourceManager())
             {
                 return;
             }
 
             var mainWindow = new MainWindow();
+            Program.Logger.Info($"Cycle through all pages.");
+            LoadAllPages(mainWindow);
             if (AppSettingsManager.StartUp.ShowSplashScreen)
             {
                 new SplashScreenWindow().ShowWindow();

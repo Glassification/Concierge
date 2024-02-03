@@ -82,8 +82,8 @@
                     Grid.Column="1"
                     Margin="40,15,0,0"
                     Style="{StaticResource CheckBoxStyle}"
-                    Checked="FilterRaceCheckBox_Checked"
-                    Unchecked="FilterRaceCheckBox_Unchecked"/>
+                    Checked="FilterRaceCheckBox_CheckChanged"
+                    Unchecked="FilterRaceCheckBox_CheckChanged"/>
 
                 <components:ConciergeLabel
                     x:Name="RaceLabel"
@@ -114,8 +114,8 @@
                     Grid.Column="1"
                     Margin="40,15,0,0"
                     Style="{StaticResource CheckBoxStyle}"
-                    Checked="FilterGenderCheckBox_Checked"
-                    Unchecked="FilterGenderCheckBox_Unchecked"/>
+                    Checked="FilterGenderCheckBox_CheckChanged"
+                    Unchecked="FilterGenderCheckBox_CheckChanged"/>
 
                 <components:ConciergeLabel
                     x:Name="GenderLabel"

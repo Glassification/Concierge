@@ -14,7 +14,7 @@ namespace Concierge.Character.Vitals.ConditionStates
         public const string Exausted3 = "Disadvantage on Attack rolls and Saving Throws";
         public const string Exausted4 = "Hit point maximum halved";
         public const string Exausted5 = "Speed reduced to 0";
-        public const string Exausted6 = "Death.";
+        public const string Exausted6 = "Death";
 
         public ExhaustionCondition()
             : base(string.Empty, string.Empty)

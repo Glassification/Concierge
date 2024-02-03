@@ -142,41 +142,51 @@
                             <ColumnDefinition Width="12.5*"/>
                         </Grid.ColumnDefinitions>
 
-                        <Ellipse
+                        <materialDesign:PackIcon
                             Grid.Column="0"
+                            Kind="Octahedron"
                             x:Name="DeathSave1"
-                            Fill="#1E2636"
-                            Stroke="#1E2636"
-                            Stretch="Uniform"
-                            Margin="0"/>
-                        <Ellipse
+                            Foreground="SlateGray"
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Stretch"
+                            Height="auto"
+                            Width="auto"/>
+                        <materialDesign:PackIcon
                             Grid.Column="1"
+                            Kind="Octahedron"
                             x:Name="DeathSave2"
-                            Fill="#1E2636"
-                            Stroke="#1E2636"
-                            Stretch="Uniform"
-                            Margin="0"/>
-                        <Ellipse
+                            Foreground="SlateGray"
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Stretch"
+                            Height="auto"
+                            Width="auto"/>
+                        <materialDesign:PackIcon
                             Grid.Column="2"
+                            Kind="Octahedron"
                             x:Name="DeathSave3"
-                            Fill="#1E2636"
-                            Stroke="#1E2636"
-                            Stretch="Uniform"
-                            Margin="0"/>
-                        <Ellipse
+                            Foreground="SlateGray"
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Stretch"
+                            Height="auto"
+                            Width="auto"/>
+                        <materialDesign:PackIcon
                             Grid.Column="3"
+                            Kind="Octahedron"
                             x:Name="DeathSave4"
-                            Fill="#1E2636"
-                            Stroke="#1E2636"
-                            Stretch="Uniform"
-                            Margin="0"/>
-                        <Ellipse
+                            Foreground="SlateGray"
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Stretch"
+                            Height="auto"
+                            Width="auto"/>
+                        <materialDesign:PackIcon
                             Grid.Column="4"
+                            Kind="Octahedron"
                             x:Name="DeathSave5"
-                            Fill="#1E2636"
-                            Stroke="#1E2636"
-                            Stretch="Uniform"
-                            Margin="0"/>
+                            Foreground="SlateGray"
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Stretch"
+                            Height="auto"
+                            Width="auto"/>
 
                         <components:ConciergeDesignButton 
                             Grid.Column="5"

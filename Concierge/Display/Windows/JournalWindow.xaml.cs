@@ -76,8 +76,14 @@ namespace Concierge.Display.Windows
 
         protected override void ReturnAndClose()
         {
-            this.OkApplyChanges();
-            this.CloseConciergeWindow();
+            if (this.OkApplyChanges())
+            {
+                this.CloseConciergeWindow();
+            }
+            else
+            {
+                this.InvalidNameMessage();
+            }
         }
 
         private void EditChapter(Chapter chapter)
@@ -134,11 +140,20 @@ namespace Concierge.Display.Windows
             }
         }
 
-        private void OkApplyChanges()
+        private void InvalidNameMessage()
+        {
+            ConciergeMessageBox.Show(
+                $"Cannot create a {this.TreeViewButtonType.ToString().ToLower()} with a missing name. Add a valid one to continue.",
+                "Warning",
+                ConciergeButtons.Ok,
+                ConciergeIcons.Warning);
+        }
+
+        private bool OkApplyChanges()
         {
             if (this.DocumentTextBox.Text.IsNullOrWhiteSpace())
             {
-                return;
+                return false;
             }
 
             if (this.Editing)
@@ -149,6 +164,8 @@ namespace Concierge.Display.Windows
             {
                 this.ToEntry();
             }
+
+            return true;
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
@@ -163,9 +180,13 @@ namespace Concierge.Display.Windows
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
-            this.OkApplyChanges();
-            this.DocumentTextBox.Text = string.Empty;
+            if (!this.OkApplyChanges())
+            {
+                this.InvalidNameMessage();
+                return;
+            }
 
+            this.DocumentTextBox.Text = string.Empty;
             this.InvokeApplyChanges();
         }
 

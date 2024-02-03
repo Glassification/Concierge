@@ -52,21 +52,32 @@ namespace Concierge.Display.Controls
             remove { this.RemoveHandler(ValueChangedEvent, value); }
         }
 
-        public void FillSpellSlot(SpellSlots spellSlots)
+        public void FillSpellSlots(SpellSlots spellSlots)
         {
-            DrawSpellSlotsHelper(this.TotalPactField, this.UsedPactField, this.PactGrid, this.PactBorder, spellSlots.PactUsed, spellSlots.PactTotal);
-            DrawSpellSlotsHelper(this.TotalFirstField, this.UsedFirstField, this.FirstGrid, this.FirstBorder, spellSlots.FirstUsed, spellSlots.FirstTotal);
-            DrawSpellSlotsHelper(this.TotalSecondField, this.UsedSecondField, this.SecondGrid, this.SecondBorder, spellSlots.SecondUsed, spellSlots.SecondTotal);
-            DrawSpellSlotsHelper(this.TotalThirdField, this.UsedThirdField, this.ThirdGrid, this.ThirdBorder, spellSlots.ThirdUsed, spellSlots.ThirdTotal);
-            DrawSpellSlotsHelper(this.TotalFourthField, this.UsedFourthField, this.FourthGrid, this.FourthBorder, spellSlots.FourthUsed, spellSlots.FourthTotal);
-            DrawSpellSlotsHelper(this.TotalFifthField, this.UsedFifthField, this.FifthGrid, this.FifthBorder, spellSlots.FifthUsed, spellSlots.FifthTotal);
-            DrawSpellSlotsHelper(this.TotalSixthField, this.UsedSixthField, this.SixthGrid, this.SixthBorder, spellSlots.SixthUsed, spellSlots.SixthTotal);
-            DrawSpellSlotsHelper(this.TotalSeventhField, this.UsedSeventhField, this.SeventhGrid, this.SeventhBorder, spellSlots.SeventhUsed, spellSlots.SeventhTotal);
-            DrawSpellSlotsHelper(this.TotalEighthField, this.UsedEighthField, this.EighthGrid, this.EighthBorder, spellSlots.EighthUsed, spellSlots.EighthTotal);
-            DrawSpellSlotsHelper(this.TotalNinethField, this.UsedNinethField, this.NinethGrid, this.NinethBorder, spellSlots.NinethUsed, spellSlots.NinethTotal);
+            DrawSpellSlot(this.TotalPactField, this.UsedPactField, this.PactGrid, this.PactBorder, spellSlots.PactUsed, spellSlots.PactTotal);
+            DrawSpellSlot(this.TotalFirstField, this.UsedFirstField, this.FirstGrid, this.FirstBorder, spellSlots.FirstUsed, spellSlots.FirstTotal);
+            DrawSpellSlot(this.TotalSecondField, this.UsedSecondField, this.SecondGrid, this.SecondBorder, spellSlots.SecondUsed, spellSlots.SecondTotal);
+            DrawSpellSlot(this.TotalThirdField, this.UsedThirdField, this.ThirdGrid, this.ThirdBorder, spellSlots.ThirdUsed, spellSlots.ThirdTotal);
+            DrawSpellSlot(this.TotalFourthField, this.UsedFourthField, this.FourthGrid, this.FourthBorder, spellSlots.FourthUsed, spellSlots.FourthTotal);
+            DrawSpellSlot(this.TotalFifthField, this.UsedFifthField, this.FifthGrid, this.FifthBorder, spellSlots.FifthUsed, spellSlots.FifthTotal);
+            DrawSpellSlot(this.TotalSixthField, this.UsedSixthField, this.SixthGrid, this.SixthBorder, spellSlots.SixthUsed, spellSlots.SixthTotal);
+            DrawSpellSlot(this.TotalSeventhField, this.UsedSeventhField, this.SeventhGrid, this.SeventhBorder, spellSlots.SeventhUsed, spellSlots.SeventhTotal);
+            DrawSpellSlot(this.TotalEighthField, this.UsedEighthField, this.EighthGrid, this.EighthBorder, spellSlots.EighthUsed, spellSlots.EighthTotal);
+            DrawSpellSlot(this.TotalNinethField, this.UsedNinethField, this.NinethGrid, this.NinethBorder, spellSlots.NinethUsed, spellSlots.NinethTotal);
+
+            this.DrawSpellSlotHeader(this.PactHeaderGrid, this.PactHeaderBorder);
+            this.DrawSpellSlotHeader(this.FirstHeaderGrid, this.FirstHeaderBorder);
+            this.DrawSpellSlotHeader(this.SecondHeaderGrid, this.SecondHeaderBorder);
+            this.DrawSpellSlotHeader(this.ThirdHeaderGrid, this.ThirdHeaderBorder);
+            this.DrawSpellSlotHeader(this.FourthHeaderGrid, this.FourthHeaderBorder);
+            this.DrawSpellSlotHeader(this.FifthHeaderGrid, this.FifthHeaderBorder);
+            this.DrawSpellSlotHeader(this.SixthHeaderGrid, this.SixthHeaderBorder);
+            this.DrawSpellSlotHeader(this.SeventhHeaderGrid, this.SeventhHeaderBorder);
+            this.DrawSpellSlotHeader(this.EighthHeaderGrid, this.EighthHeaderBorder);
+            this.DrawSpellSlotHeader(this.NinethHeaderGrid, this.NinethHeaderBorder);
         }
 
-        private static void DrawSpellSlotsHelper(TextBlock totalField, TextBlock spentField, Grid grid, Border border, int spent, int total)
+        private static void DrawSpellSlot(TextBlock totalField, TextBlock spentField, Grid grid, Border border, int spent, int total)
         {
             totalField.Text = total.ToString();
             spentField.Text = spent.ToString();
@@ -74,9 +85,36 @@ namespace Concierge.Display.Controls
             grid.Background = border.BorderBrush = DisplayUtility.SetTotalBoxStyle(total, spent);
         }
 
+        private void DrawSpellSlotHeader(Grid header, Border headerBorder)
+        {
+            if (this.ShouldNotHighlight(header.Name))
+            {
+                headerBorder.BorderBrush = ConciergeBrushes.ControlForeBlue;
+                header.Background = ConciergeBrushes.ControlForeBlue;
+            }
+        }
+
+        private bool ShouldNotHighlight(string name)
+        {
+            return name switch
+            {
+                "PactHeaderGrid" => this.TotalPactField.Text.Equals(this.UsedPactField.Text),
+                "FirstHeaderGrid" => this.TotalFirstField.Text.Equals(this.UsedFirstField.Text),
+                "SecondHeaderGrid" => this.TotalSecondField.Text.Equals(this.UsedSecondField.Text),
+                "ThirdHeaderGrid" => this.TotalThirdField.Text.Equals(this.UsedThirdField.Text),
+                "FourthHeaderGrid" => this.TotalFourthField.Text.Equals(this.UsedFourthField.Text),
+                "FifthHeaderGrid" => this.TotalFifthField.Text.Equals(this.UsedFifthField.Text),
+                "SixthHeaderGrid" => this.TotalSixthField.Text.Equals(this.UsedSixthField.Text),
+                "SeventhHeaderGrid" => this.TotalSeventhField.Text.Equals(this.UsedSeventhField.Text),
+                "EighthHeaderGrid" => this.TotalEighthField.Text.Equals(this.UsedEighthField.Text),
+                "NinethHeaderGrid" => this.TotalNinethField.Text.Equals(this.UsedNinethField.Text),
+                _ => false,
+            };
+        }
+
         private void Header_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            if (sender is not Border border)
+            if (sender is not Border border || this.ShouldNotHighlight(border.Name.Replace("Border", "Grid")))
             {
                 return;
             }
@@ -85,10 +123,15 @@ namespace Concierge.Display.Controls
             var spellSlots = Program.CcsFile.Character.Magic.SpellSlots;
             var oldItem = spellSlots.DeepCopy();
 
-            var result = spellSlots.Increment(border.Name);
-            if (result == 0)
+            var (used, total) = spellSlots.Increment(border.Name);
+            if (used == 0)
             {
                 return;
+            }
+
+            if (used == total)
+            {
+                Mouse.OverrideCursor = Cursors.Arrow;
             }
 
             Program.UndoRedoService.AddCommand(new EditCommand<SpellSlots>(spellSlots, oldItem, ConciergePage.Spellcasting));
@@ -104,7 +147,7 @@ namespace Concierge.Display.Controls
             }
 
             var grid = DisplayUtility.FindVisualChildren<Grid>(border).FirstOrDefault(x => x.Name.Contains("HeaderGrid"));
-            if (grid is null)
+            if (grid is null || this.ShouldNotHighlight(grid.Name))
             {
                 return;
             }
@@ -122,7 +165,7 @@ namespace Concierge.Display.Controls
             }
 
             var grid = DisplayUtility.FindVisualChildren<Grid>(border).FirstOrDefault(x => x.Name.Contains("HeaderGrid"));
-            if (grid is null)
+            if (grid is null || this.ShouldNotHighlight(grid.Name))
             {
                 return;
             }

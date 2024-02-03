@@ -62,7 +62,7 @@ namespace Concierge.Display.Pages
         {
             var count = Program.CcsFile.Character.Equipment.Inventory.Count;
 
-            this.ItemTotalField.Text = $"({count} Item{(count == 1 ? string.Empty : "s")})";
+            this.ItemTotalField.Text = $"({count} {"Item".Pluralize("s", count)})";
             this.InventoryDataGrid.Items.Clear();
             this.DisplayList.ForEach(item => this.InventoryDataGrid.Items.Add(item));
             this.SetInventoryDataGridControlState();

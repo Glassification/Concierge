@@ -287,8 +287,7 @@ namespace Concierge.Display
         {
             if (AppSettingsManager.StartUp.EnableConsole)
             {
-                ConciergeWindowService.ShowWindow(typeof(ConciergeConsoleWindow));
-                this.DrawAll();
+                ConciergeWindowService.ShowWindow(typeof(ConciergeConsoleWindow), this.Window_ApplyChanges);
             }
         }
 
@@ -377,11 +376,16 @@ namespace Concierge.Display
 
         public void MoveSelection(ConciergePage page)
         {
+            if (page == ConciergePage.None)
+            {
+                return;
+            }
+
             if (page >= 0 && ((int)page) < this.ListViewMenu.Items.Count)
             {
                 this.ListViewMenu.SelectedItem = this.ListViewMenu.Items[(int)page];
                 this.UpdateLayout();
-                ((ListViewItem)this.ListViewMenu.ItemContainerGenerator.ContainerFromIndex((int)page)).Focus();
+                ((ListViewItem)this.ListViewMenu.ItemContainerGenerator.ContainerFromIndex((int)page))?.Focus();
             }
         }
 
@@ -866,6 +870,7 @@ namespace Concierge.Display
                 case nameof(PropertiesWindow):
                 case nameof(SettingsWindow):
                 case nameof(ImportCharacterWindow):
+                case nameof(ConciergeConsoleWindow):
                     this.DrawAll();
                     break;
             }

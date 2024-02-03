@@ -54,7 +54,7 @@ namespace Concierge.Display.Controls
             }
             else
             {
-                this.WeightCarriedField.Foreground = Brushes.Red;
+                this.WeightCarriedField.Foreground = Brushes.Crimson;
                 this.WeightCarriedGrid.Background = Brushes.DimGray;
                 this.WeightCarriedBorder.BorderBrush = Brushes.DimGray;
             }

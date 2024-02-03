@@ -14,7 +14,9 @@ namespace Concierge.Display.Controls
     using Concierge.Character.Vitals;
     using Concierge.Commands;
     using Concierge.Common;
+    using Concierge.Common.Utilities;
     using Concierge.Display.Enums;
+    using MaterialDesignThemes.Wpf;
 
     /// <summary>
     /// Interaction logic for HealthControl.xaml.
@@ -144,8 +146,11 @@ namespace Concierge.Display.Controls
             }
         }
 
-        public void SetHealthStyle(Vitality vitality)
+        public void Draw(Vitality vitality)
         {
+            this.CurrentHealth = vitality.CurrentHealth;
+            this.TotalHealth = vitality.Health.MaxHealth;
+
             int third = vitality.Health.MaxHealth / 3;
             int hp = vitality.CurrentHealth;
 
@@ -155,6 +160,9 @@ namespace Concierge.Display.Controls
 
             this.HpBackground.Background = brush;
             this.HpBorder.BorderBrush = brush;
+
+            DisplayUtility.SetControlEnableState(this.HealDamageButton, !vitality.Health.IsFull);
+            DisplayUtility.SetControlEnableState(this.TakeDamageButton, !vitality.Health.IsEmpty);
         }
 
         public void SetDeathSaveStyle(DeathSavingThrows deathSavingThrows)
@@ -166,14 +174,21 @@ namespace Concierge.Display.Controls
             SetDeathSaveStyleHelper(this.DeathSave5, deathSavingThrows.DeathSaves[4]);
         }
 
-        private static void SetDeathSaveStyleHelper(Ellipse ellipse, AbilitySave deathSave)
+        private static void SetDeathSaveStyleHelper(PackIcon packIcon, AbilitySave deathSave)
         {
-            ellipse.Fill = deathSave switch
+            packIcon.Foreground = deathSave switch
             {
                 AbilitySave.Failure => Brushes.IndianRed,
                 AbilitySave.Success => ConciergeBrushes.Mint,
-                _ => ConciergeBrushes.ControlBackBlue,
+                _ => Brushes.SlateGray,
             };
+        }
+
+        private void SetButtonEnableState(AbilitySave abilitySave)
+        {
+            var isEnabled = abilitySave == AbilitySave.None;
+            DisplayUtility.SetControlEnableState(this.PassSave, isEnabled);
+            DisplayUtility.SetControlEnableState(this.FailSave, isEnabled);
         }
 
         private void PassSave_Click(object sender, RoutedEventArgs e)
@@ -189,6 +204,7 @@ namespace Concierge.Display.Controls
             character.Vitality.DeathSavingThrows.MakeDeathSave(AbilitySave.Success);
             Program.UndoRedoService.AddCommand(new EditCommand<DeathSavingThrows>(character.Vitality.DeathSavingThrows, oldItem, ConciergePage.Overview));
 
+            this.SetButtonEnableState(character.Vitality.DeathSavingThrows.DeathSaveStatus);
             this.RaiseEvent(new RoutedEventArgs(SaveClickedEvent));
         }
 
@@ -205,15 +221,18 @@ namespace Concierge.Display.Controls
             character.Vitality.DeathSavingThrows.MakeDeathSave(AbilitySave.Failure);
             Program.UndoRedoService.AddCommand(new EditCommand<DeathSavingThrows>(character.Vitality.DeathSavingThrows, oldItem, ConciergePage.Overview));
 
+            this.SetButtonEnableState(character.Vitality.DeathSavingThrows.DeathSaveStatus);
             this.RaiseEvent(new RoutedEventArgs(SaveClickedEvent));
         }
 
         private void ResetSaves_Click(object sender, RoutedEventArgs e)
         {
-            var oldItem = Program.CcsFile.Character.Vitality.DeathSavingThrows.DeepCopy();
-            Program.CcsFile.Character.Vitality.DeathSavingThrows.ResetDeathSaves();
-            Program.UndoRedoService.AddCommand(new EditCommand<DeathSavingThrows>(Program.CcsFile.Character.Vitality.DeathSavingThrows, oldItem, ConciergePage.Overview));
+            var character = Program.CcsFile.Character;
+            var oldItem = character.Vitality.DeathSavingThrows.DeepCopy();
+            character.Vitality.DeathSavingThrows.ResetDeathSaves();
+            Program.UndoRedoService.AddCommand(new EditCommand<DeathSavingThrows>(character.Vitality.DeathSavingThrows, oldItem, ConciergePage.Overview));
 
+            this.SetButtonEnableState(character.Vitality.DeathSavingThrows.DeathSaveStatus);
             this.RaiseEvent(new RoutedEventArgs(SaveClickedEvent));
         }
 

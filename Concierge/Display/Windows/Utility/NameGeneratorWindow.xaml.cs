@@ -50,6 +50,9 @@ namespace Concierge.Display.Utility
 
         public override object? ShowWindow()
         {
+            this.RaceComboBox.SelectedIndex = 0;
+            this.GenderComboBox.SelectedIndex = 0;
+
             this.ShowConciergeWindow();
 
             return this.Result == ConciergeResult.OK ? this.NameTextBox.Text : null;
@@ -133,24 +136,20 @@ namespace Concierge.Display.Utility
             this.CloseConciergeWindow();
         }
 
-        private void FilterGenderCheckBox_Checked(object sender, RoutedEventArgs e)
+        private void FilterGenderCheckBox_CheckChanged(object sender, RoutedEventArgs e)
         {
-            this.SetGenderState(true);
+            if (sender is ConciergeCheckBox conciergeCheckBox)
+            {
+                this.SetGenderState(conciergeCheckBox.IsChecked ?? false);
+            }
         }
 
-        private void FilterGenderCheckBox_Unchecked(object sender, RoutedEventArgs e)
+        private void FilterRaceCheckBox_CheckChanged(object sender, RoutedEventArgs e)
         {
-            this.SetGenderState(false);
-        }
-
-        private void FilterRaceCheckBox_Checked(object sender, RoutedEventArgs e)
-        {
-            this.SetRaceState(true);
-        }
-
-        private void FilterRaceCheckBox_Unchecked(object sender, RoutedEventArgs e)
-        {
-            this.SetRaceState(false);
+            if (sender is ConciergeCheckBox conciergeCheckBox)
+            {
+                this.SetRaceState(conciergeCheckBox.IsChecked ?? false);
+            }
         }
 
         private void NameTextBox_PreviewKeyDown(object sender, KeyEventArgs e)

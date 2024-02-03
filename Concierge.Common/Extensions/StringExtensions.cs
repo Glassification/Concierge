@@ -564,6 +564,23 @@ namespace Concierge.Common.Extensions
             return Enum.TryParse(str, out T value) ? value : default;
         }
 
+        /// <summary>
+        /// Pluralizes a string based on the count provided.
+        /// </summary>
+        /// <param name="str">The string to be pluralized.</param>
+        /// <param name="plural">The plural form of the string.</param>
+        /// <param name="count">The count determining whether the string should be pluralized.</param>
+        /// <returns>The pluralized string if the count is greater than 1; otherwise, returns the original string.</returns>
+        public static string Pluralize(this string str, string plural, int count)
+        {
+            if (count == 1)
+            {
+                return str;
+            }
+
+            return $"{str}{plural}";
+        }
+
         [GeneratedRegex(@"\\([a-z]{1,32})(-?\d{1,10})?[ ]?|\\'([0-9a-f]{2})|\\([^a-z])|([{}])|[\r\n]+|(.)", RegexOptions.IgnoreCase | RegexOptions.Compiled | RegexOptions.Singleline, "en-CA")]
         private static partial Regex RtfRegex();
 
