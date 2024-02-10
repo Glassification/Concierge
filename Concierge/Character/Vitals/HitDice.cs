@@ -65,6 +65,31 @@ namespace Concierge.Character.Vitals
             }
         }
 
+        public Dice GetFirstAvailable()
+        {
+            if (this.TotalD6 > 0)
+            {
+                return Dice.D6;
+            }
+
+            if (this.TotalD8 > 0)
+            {
+                return Dice.D8;
+            }
+
+            if (this.TotalD10 > 0)
+            {
+                return Dice.D10;
+            }
+
+            if (this.TotalD12 > 0)
+            {
+                return Dice.D12;
+            }
+
+            return Dice.None;
+        }
+
         public (Dice dice, int used, int total) Increment(string name)
         {
             if (name.Contains("d6", System.StringComparison.InvariantCultureIgnoreCase) && this.SpentD6 < this.TotalD6)

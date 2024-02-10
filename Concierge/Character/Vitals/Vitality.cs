@@ -4,6 +4,7 @@
 
 namespace Concierge.Character.Vitals
 {
+    using System;
     using System.Collections.Generic;
     using System.Linq;
 
@@ -18,6 +19,8 @@ namespace Concierge.Character.Vitals
 
     public sealed class Vitality : ICopyable<Vitality>
     {
+        private const double HealingRatio = 0.1;
+
         public Vitality()
         {
             this.Health = new Health();
@@ -141,6 +144,15 @@ namespace Concierge.Character.Vitals
             this.Heal(roll.FirstOrDefault(0) + modifier);
 
             return new DiceRoll((int)hitDie, roll, modifier);
+        }
+
+        public void RollShortRestHitDice(Dice hitDie, Attributes attributes)
+        {
+            var threshold = this.Health.MaxHealth - (int)Math.Ceiling(this.Health.MaxHealth * HealingRatio);
+            while (this.Health.BaseHealth < threshold && this.HitDice.Increment(hitDie.ToString()).dice != Dice.None)
+            {
+                this.RollHitDice(hitDie, attributes);
+            }
         }
     }
 }

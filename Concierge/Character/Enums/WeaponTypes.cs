@@ -41,6 +41,7 @@ namespace Concierge.Character.Enums
         Sling,
         Spear,
         Trident,
+        Unarmed,
         WarPick,
         Warhammer,
         Whip,

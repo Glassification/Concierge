@@ -317,18 +317,29 @@ namespace Concierge.Display.Pages
                 }
             }
 
+            if (!spell.Class.IsNullOrWhiteSpace() && spell.Level > 0)
+            {
+                var spellSlots = magic.SpellSlots.DeepCopy();
+                var name = spell.Class.Equals("Warlock", StringComparison.InvariantCultureIgnoreCase) ? "pact" : spell.Level.ToSpellSlot();
+                var (used, total) = magic.SpellSlots.Increment(name);
+                if (used == 0 && total == 0)
+                {
+                    ConciergeMessageBox.Show(
+                        $"You have no remaining spell slots to cast {spell.Name}.",
+                        "Warning",
+                        ConciergeButtons.Ok,
+                        ConciergeIcons.Warning);
+                    return;
+                }
+
+                commands.Add(new EditCommand<SpellSlots>(magic.SpellSlots, spellSlots, this.ConciergePage));
+            }
+
             var result = spell.Use();
             if (spell.Concentration)
             {
                 magic.SetConcentration(spell);
                 commands.Add(new ConcentrationCommand(spell, concentratedSpell));
-            }
-
-            if (!spell.Class.IsNullOrWhiteSpace() && !spell.Class.Equals("Warlock") && spell.Level > 0)
-            {
-                var spellSlots = magic.SpellSlots.DeepCopy();
-                magic.SpellSlots.Increment(spell.Level.ToSpellSlot());
-                commands.Add(new EditCommand<SpellSlots>(magic.SpellSlots, spellSlots, this.ConciergePage));
             }
 
             Program.UndoRedoService.AddCommand(new CompositeCommand(this.ConciergePage, [.. commands]));

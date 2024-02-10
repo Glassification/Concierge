@@ -1,4 +1,4 @@
-﻿// <copyright file="LongRestCommand.cs" company="Thomas Beckett">
+﻿// <copyright file="RestCommand.cs" company="Thomas Beckett">
 // Copyright (c) Thomas Beckett. All rights reserved.
 // </copyright>
 
@@ -11,7 +11,7 @@ namespace Concierge.Commands
     using Concierge.Display.Enums;
     using Newtonsoft.Json;
 
-    public sealed class LongRestCommand : Command
+    public sealed class RestCommand : Command
     {
         private readonly Vitality oldVitality;
         private readonly Vitality newVitality;
@@ -23,7 +23,7 @@ namespace Concierge.Commands
 
         private readonly ConciergeCharacter character;
 
-        public LongRestCommand(
+        public RestCommand(
             Vitality oldVitality,
             Vitality oldCompanionVitality,
             SpellSlots oldSpellSlots,

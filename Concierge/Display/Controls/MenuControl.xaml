@@ -146,12 +146,6 @@
                                                 IconKind="AccountArrowUp"
                                                 IconColor="#06d6a0"/>
                                             <local:PopupButton
-                                                x:Name="LongRestMenuItem"
-                                                Label="Long Rest"
-                                                Shortcut="Ctrl+L"
-                                                IconKind="BedClock"
-                                                IconColor="#06d6a0"/>
-                                            <local:PopupButton
                                                 x:Name="CharacterPropertiesMenuItem"
                                                 Label="Properties..."
                                                 Shortcut="Ctrl+P"
@@ -162,6 +156,18 @@
                                 </Border>
                             </Popup>
                         </Grid>
+                        <local:PopupButton
+                            x:Name="ShortRestMenuItem"
+                            Label="Short Rest"
+                            Shortcut="Ctrl+R"
+                            IconKind="EyeClosed"
+                            IconColor="#06d6a0"/>
+                        <local:PopupButton
+                            x:Name="LongRestMenuItem"
+                            Label="Long Rest"
+                            Shortcut="Ctrl+Shift+R"
+                            IconKind="PowerSleep"
+                            IconColor="#06d6a0"/>
                         <Grid>
                             <local:PopupToggleButton
                                 x:Name="ToolsMenuItem"
@@ -207,6 +213,12 @@
                                                 Label="Message History..."
                                                 Shortcut=""
                                                 IconKind="History"
+                                                IconColor="#ffd166"/>
+                                            <local:PopupButton
+                                                x:Name="KeyboardMenuItem"
+                                                Label="On-Screen Keyboard"
+                                                Shortcut="Ctrl+K"
+                                                IconKind="Keyboard"
                                                 IconColor="#ffd166"/>
                                             <local:PopupButton
                                                 x:Name="SearchMenuItem"

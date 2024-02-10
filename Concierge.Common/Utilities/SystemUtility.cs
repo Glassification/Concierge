@@ -5,6 +5,7 @@
 namespace Concierge.Common.Utilities
 {
     using System;
+    using System.Diagnostics;
     using System.Management;
     using System.Net.NetworkInformation;
 
@@ -95,6 +96,17 @@ namespace Concierge.Common.Utilities
             {
                 return 0.0;
             }
+        }
+
+        /// <summary>
+        /// Opens the on-screen keyboard application.
+        /// </summary>
+        public static void OpenOnScreenKeyboard()
+        {
+            Process.Start(new ProcessStartInfo("osk.exe")
+            {
+                UseShellExecute = true,
+            });
         }
     }
 }

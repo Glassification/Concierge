@@ -33,6 +33,7 @@ namespace Concierge.Display.Controls
 
             this.CharacterCreationMenuItem.AddClickEvent(this.MenuButton_Click);
             this.LevelUpMenuItem.AddClickEvent(this.MenuButton_Click);
+            this.ShortRestMenuItem.AddClickEvent(this.MenuButton_Click);
             this.LongRestMenuItem.AddClickEvent(this.MenuButton_Click);
             this.CharacterPropertiesMenuItem.AddClickEvent(this.MenuButton_Click);
 
@@ -41,6 +42,7 @@ namespace Concierge.Display.Controls
             this.SearchMenuItem.AddClickEvent(this.MenuButton_Click);
             this.ExportAppDataMenuItem.AddClickEvent(this.MenuButton_Click);
             this.MessageHistoryMenuItem.AddClickEvent(this.MenuButton_Click);
+            this.KeyboardMenuItem.AddClickEvent(this.MenuButton_Click);
             this.SettingsMenuItem.AddClickEvent(this.MenuButton_Click);
 
             this.CheckExpertMode();

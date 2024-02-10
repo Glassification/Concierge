@@ -48,7 +48,7 @@ namespace Concierge.Common
 
         public void AddCommand(Command command)
         {
-            if (command?.ShouldAdd() ?? false)
+            if (command.ShouldAdd())
             {
                 Program.Modify();
                 Program.Logger.Info($"Add new {command.GetType()}.");

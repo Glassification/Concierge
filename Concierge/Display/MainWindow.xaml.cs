@@ -91,6 +91,7 @@ namespace Concierge.Display
             this.MenuButton.RedoMenuItem.AddClickEvent(this.RedoButton_Click);
             this.MenuButton.CharacterCreationMenuItem.AddClickEvent(this.CharacterCreationButton_Click);
             this.MenuButton.LevelUpMenuItem.AddClickEvent(this.LevelUpButton_Click);
+            this.MenuButton.ShortRestMenuItem.AddClickEvent(this.ShortRestButton_Click);
             this.MenuButton.LongRestMenuItem.AddClickEvent(this.LongRestButton_Click);
             this.MenuButton.CharacterPropertiesMenuItem.AddClickEvent(this.PropertiesButton_Click);
             this.MenuButton.ConsoleMenuItem.AddClickEvent(this.ConsoleButton_Click);
@@ -98,6 +99,7 @@ namespace Concierge.Display
             this.MenuButton.SearchMenuItem.AddClickEvent(this.SearchButton_Click);
             this.MenuButton.ExportAppDataMenuItem.AddClickEvent(this.ExportAppDataButton_Click);
             this.MenuButton.MessageHistoryMenuItem.AddClickEvent(this.MessageHistoryButton_Click);
+            this.MenuButton.KeyboardMenuItem.AddClickEvent(this.OnScreenKeyboardButton_Click);
             this.MenuButton.SettingsMenuItem.AddClickEvent(this.SettingsButton_Click);
             this.MenuButton.AboutMenuItem.AddClickEvent(this.AboutButton_Click);
             this.MenuButton.HelpMenuItem.AddClickEvent(this.GlossaryButton_Click);
@@ -272,7 +274,7 @@ namespace Concierge.Display
             Program.Logger.Info($"Save character sheet.");
             this.Save(Program.CcsFile.AbsolutePath.IsNullOrWhiteSpace());
             this.MessageBar.DrawActiveFile(Program.CcsFile);
-            return 0;
+            return Common.Constants.Void;
         }
 
         public int SaveCharacterSheetAs()
@@ -280,7 +282,7 @@ namespace Concierge.Display
             Program.Logger.Info($"Save character sheet as.");
             this.Save(true);
             this.MessageBar.DrawActiveFile(Program.CcsFile);
-            return 0;
+            return Common.Constants.Void;
         }
 
         public void OpenConsole()
@@ -314,13 +316,26 @@ namespace Concierge.Display
             this.UpdateStatusBar();
         }
 
-        public void LongRest()
+        public int LongRest()
         {
             Program.Logger.Info($"Long rest.");
             Program.CcsFile.Character.LongRest();
 
             this.DisplayStatusText("Long Rest Complete!   HP and Spell Slots Replenished.");
             this.DrawAll();
+
+            return Common.Constants.Void;
+        }
+
+        public int ShortRest()
+        {
+            Program.Logger.Info($"Short rest.");
+            Program.CcsFile.Character.ShortRest();
+
+            this.DisplayStatusText("Short Rest Complete!   Hit Dice Used and Pact Slots Replenished.");
+            this.DrawAll();
+
+            return Common.Constants.Void;
         }
 
         public void LevelUp()
@@ -648,8 +663,8 @@ namespace Concierge.Display
                 case Key.I:
                     this.ImportCharacter();
                     break;
-                case Key.L:
-                    this.LongRest();
+                case Key.K:
+                    SystemUtility.OpenOnScreenKeyboard();
                     break;
                 case Key.N:
                     this.NewCharacterSheet();
@@ -659,6 +674,9 @@ namespace Concierge.Display
                     break;
                 case Key.P:
                     this.OpenCharacterProperties();
+                    break;
+                case Key.R:
+                    _ = IsShift ? this.LongRest() : this.ShortRest();
                     break;
                 case Key.S:
                     _ = IsShift ? this.SaveCharacterSheetAs() : this.SaveCharacterSheet();
@@ -780,6 +798,12 @@ namespace Concierge.Display
         {
             ConciergeSoundService.TapNavigation();
             this.LongRest();
+        }
+
+        private void ShortRestButton_Click(object sender, RoutedEventArgs e)
+        {
+            ConciergeSoundService.TapNavigation();
+            this.ShortRest();
         }
 
         private void ListViewItem_Selected(object sender, RoutedEventArgs e)
@@ -971,6 +995,12 @@ namespace Concierge.Display
         {
             ConciergeSoundService.TapNavigation();
             this.OpenConsole();
+        }
+
+        private void OnScreenKeyboardButton_Click(object sender, RoutedEventArgs e)
+        {
+            ConciergeSoundService.TapNavigation();
+            SystemUtility.OpenOnScreenKeyboard();
         }
     }
 }

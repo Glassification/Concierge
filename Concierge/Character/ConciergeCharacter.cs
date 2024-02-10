@@ -146,7 +146,43 @@ namespace Concierge.Character
             this.Companion.Vitality.RegainHitDice();
 
             Program.UndoRedoService.AddCommand(
-                new LongRestCommand(
+                new RestCommand(
+                    oldVitality,
+                    oldCompanionVitality,
+                    oldSpellSlots,
+                    oldConcentratedSpell,
+                    this.Vitality.DeepCopy(),
+                    this.Companion.Vitality.DeepCopy(),
+                    this.Magic.SpellSlots.DeepCopy()));
+        }
+
+        public void ShortRest()
+        {
+            var oldVitality = this.Vitality.DeepCopy();
+            var oldSpellSlots = this.Magic.SpellSlots.DeepCopy();
+            var oldCompanionVitality = this.Companion.Vitality.DeepCopy();
+            var oldConcentratedSpell = this.Magic.ConcentratedSpell;
+
+            this.Magic.SpellSlots.PactUsed = 0;
+            this.Companion.Vitality.RollShortRestHitDice(this.Companion.Vitality.HitDice.GetFirstAvailable(), this.Companion.Characteristic.Attributes);
+
+            if (this.Properties.Class1.IsValid)
+            {
+                this.Vitality.RollShortRestHitDice(HitDice.GetHitDice(this.Properties.Class1.Name), this.Characteristic.Attributes);
+            }
+
+            if (this.Properties.Class2.IsValid)
+            {
+                this.Vitality.RollShortRestHitDice(HitDice.GetHitDice(this.Properties.Class2.Name), this.Characteristic.Attributes);
+            }
+
+            if (this.Properties.Class3.IsValid)
+            {
+                this.Vitality.RollShortRestHitDice(HitDice.GetHitDice(this.Properties.Class3.Name), this.Characteristic.Attributes);
+            }
+
+            Program.UndoRedoService.AddCommand(
+                new RestCommand(
                     oldVitality,
                     oldCompanionVitality,
                     oldSpellSlots,

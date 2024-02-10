@@ -205,6 +205,7 @@ namespace Concierge.Display
                 new (PackIconKind.Gesture, Brushes.MediumPurple, WeaponTypes.Sling.ToString()),
                 new (PackIconKind.Spear, Brushes.LightBlue, WeaponTypes.Spear.ToString()),
                 new (PackIconKind.SilverwareFork, Brushes.MediumPurple, WeaponTypes.Trident.ToString()),
+                new (PackIconKind.HandFrontLeft, Brushes.Cyan, WeaponTypes.Unarmed.ToString()),
                 new (PackIconKind.Hammer, Brushes.Cyan, WeaponTypes.Warhammer.ToString()),
                 new (PackIconKind.Pickaxe, Brushes.MediumPurple, WeaponTypes.WarPick.ToString()),
                 new (PackIconKind.JumpRope, Brushes.MediumPurple, WeaponTypes.Whip.ToString()),

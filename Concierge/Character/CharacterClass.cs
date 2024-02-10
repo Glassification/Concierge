@@ -7,6 +7,7 @@ namespace Concierge.Character
     using Concierge.Common;
 
     using Concierge.Common.Extensions;
+    using Newtonsoft.Json;
 
     public sealed class CharacterClass : ICopyable<CharacterClass>
     {
@@ -48,6 +49,9 @@ namespace Concierge.Character
                 }
             }
         }
+
+        [JsonIgnore]
+        public bool IsValid => this.Level > 0;
 
         public override string ToString()
         {

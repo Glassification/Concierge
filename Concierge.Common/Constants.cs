@@ -102,6 +102,11 @@ namespace Concierge.Common
         public const int StatusDisplayTime = 17;
 
         /// <summary>
+        /// Represents the void value, which has an integer value of 0.
+        /// </summary>
+        public const int Void = 0;
+
+        /// <summary>
         /// The name of the designer.
         /// </summary>
         public const string Designer = "Thomas Beckett";
@@ -133,11 +138,11 @@ namespace Concierge.Common
         }
 
         /// <summary>
-        /// Calculates the DC (Difficulty Class) of a concentration check.
+        /// Calculates the concentration threshold based on the damage received.
         /// Divides the damage by 2 (rounded down), and takes the greater of the result or 10.
         /// </summary>
-        /// <param name="damage">The damage to calculate the concentration check for.</param>
-        /// <returns>The calculated bonus value.</returns>
+        /// <param name="damage">The amount of damage received.</param>
+        /// <returns>The concentration threshold.</returns>
         public static int Concentration(int damage)
         {
             return Math.Max((int)Math.Floor(damage / 2.0), 10);

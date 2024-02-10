@@ -22,8 +22,8 @@
                 x:Name="DivideLootGrid"
                 Margin="-1">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="45*"/>
-                    <ColumnDefinition Width="55*"/>
+                    <ColumnDefinition Width="40*"/>
+                    <ColumnDefinition Width="60*"/>
                 </Grid.ColumnDefinitions>
 
                 <!--Label-->
