@@ -165,6 +165,25 @@ namespace Concierge.Display.Controls
             DisplayUtility.SetControlEnableState(this.TakeDamageButton, !vitality.Health.IsEmpty);
         }
 
+        public void Draw(Health health)
+        {
+            this.CurrentHealth = health.BaseHealth;
+            this.TotalHealth = health.MaxHealth;
+
+            int third = health.MaxHealth / 3;
+            int hp = health.BaseHealth;
+
+            var brush = hp < third && hp > 0
+                ? Brushes.IndianRed
+                : hp >= third * 2 && hp > 0 ? Brushes.DarkGreen : hp <= 0 ? Brushes.DarkGray : Brushes.DarkOrange;
+
+            this.HpBackground.Background = brush;
+            this.HpBorder.BorderBrush = brush;
+
+            DisplayUtility.SetControlEnableState(this.HealDamageButton, !health.IsFull);
+            DisplayUtility.SetControlEnableState(this.TakeDamageButton, !health.IsEmpty);
+        }
+
         public void SetDeathSaveStyle(DeathSavingThrows deathSavingThrows)
         {
             SetDeathSaveStyleHelper(this.DeathSave1, deathSavingThrows.DeathSaves[0]);

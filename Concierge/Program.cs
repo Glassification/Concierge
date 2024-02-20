@@ -39,7 +39,7 @@ namespace Concierge
             MessageService = new MessageService();
             CcsFile = new CcsFile();
             MainWindow = null;
-            BaseState = new ConciergeCharacter();
+            BaseState = new CharacterSheet();
 
             var colorReadWriter = new CustomColorReadWriter(ErrorService);
             var consolReadWrite = new ConsoleReadWriter(ErrorService);
@@ -112,7 +112,7 @@ namespace Concierge
 
         public static MainWindow? MainWindow { get; private set; }
 
-        private static ConciergeCharacter BaseState { get; set; }
+        private static CharacterSheet BaseState { get; set; }
 
         public static void InitializeMainWindow(MainWindow mainWindow)
         {

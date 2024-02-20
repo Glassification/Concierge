@@ -10,7 +10,7 @@ namespace Concierge.DevTools.Generators
     using System.Linq;
 
     using Concierge.Common.Enums;
-    using Concierge.Common.Utilities;
+    using Concierge.Common.Extensions;
     using Concierge.Tools.Enums;
     using Concierge.Tools.Generators.Names;
     using Newtonsoft.Json;
@@ -56,7 +56,7 @@ namespace Concierge.DevTools.Generators
                 var names = File.ReadAllLines(@$"C:\Users\TomBe\source\repos\{fileName}");
                 var gender = fileName.Contains("Male") ? Gender.Male : fileName.Contains("Female") ? Gender.Female : Gender.Other;
                 var nameType = fileName.Contains("Last") ? NameType.Last : NameType.First;
-                var tokens = StringUtility.FormatName(fileName).Split(' ');
+                var tokens = fileName.FormatFromPascalCase().Split(' ');
                 var race = tokens[0];
                 if (race.Contains('-'))
                 {

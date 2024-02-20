@@ -9,8 +9,8 @@ namespace Concierge.Display.Pages
     using System.Windows.Controls;
     using System.Windows.Input;
 
-    using Concierge.Character.AbilitySaves;
-    using Concierge.Character.AbilitySkills;
+    using Concierge.Character.Aspects;
+    using Concierge.Character.Enums;
     using Concierge.Commands;
     using Concierge.Common.Extensions;
     using Concierge.Configuration;
@@ -19,8 +19,6 @@ namespace Concierge.Display.Pages
     using Concierge.Display.Windows;
     using Concierge.Services;
     using MaterialDesignThemes.Wpf;
-
-    using Constants = Concierge.Common.Constants;
 
     /// <summary>
     /// Interaction logic for OverviewPage.xaml.
@@ -56,90 +54,57 @@ namespace Concierge.Display.Pages
 
             this.InitiativeLabel.Value = character.Initiative.ToString();
             this.PerceptionLabel.Value = character.PassivePerception.ToString();
-            this.VisionLabel.Value = character.Characteristic.Senses.Vision.ToString().FormatFromPascalCase();
-            this.MovementLabel.Value = character.Characteristic.Senses.Movement.ToString();
-            this.InspirationLabel.IconKind = character.Characteristic.Senses.Inspiration ? PackIconKind.WeatherSunset : PackIconKind.None;
+            this.VisionLabel.Value = character.Detail.Senses.Vision.ToString().FormatFromPascalCase();
+            this.MovementLabel.Value = character.GetMovement().ToString();
+            this.InspirationLabel.IconKind = character.Detail.Senses.Inspiration ? PackIconKind.WeatherSunset : PackIconKind.None;
         }
 
         public void DrawAttributes()
         {
-            var attributes = Program.CcsFile.Character.Characteristic.Attributes;
+            var character = Program.CcsFile.Character;
 
-            this.StrengthAttributeDisplay.Bonus = Constants.Bonus(attributes.Strength);
-            this.DexterityAttributeDisplay.Bonus = Constants.Bonus(attributes.Dexterity);
-            this.ConstitutionAttributeDisplay.Bonus = Constants.Bonus(attributes.Constitution);
-            this.IntelligenceAttributeDisplay.Bonus = Constants.Bonus(attributes.Intelligence);
-            this.WisdomAttributeDisplay.Bonus = Constants.Bonus(attributes.Wisdom);
-            this.CharismaAttributeDisplay.Bonus = Constants.Bonus(attributes.Charisma);
-
-            this.StrengthAttributeDisplay.Score = attributes.Strength;
-            this.DexterityAttributeDisplay.Score = attributes.Dexterity;
-            this.ConstitutionAttributeDisplay.Score = attributes.Constitution;
-            this.IntelligenceAttributeDisplay.Score = attributes.Intelligence;
-            this.WisdomAttributeDisplay.Score = attributes.Wisdom;
-            this.CharismaAttributeDisplay.Score = attributes.Charisma;
+            this.StrengthAttributeDisplay.Draw(character.Attributes.Strength);
+            this.DexterityAttributeDisplay.Draw(character.Attributes.Dexterity);
+            this.ConstitutionAttributeDisplay.Draw(character.Attributes.Constitution);
+            this.IntelligenceAttributeDisplay.Draw(character.Attributes.Intelligence);
+            this.WisdomAttributeDisplay.Draw(character.Attributes.Wisdom);
+            this.CharismaAttributeDisplay.Draw(character.Attributes.Charisma);
         }
 
         public void DrawSavingThrows()
         {
-            var savingThrow = Program.CcsFile.Character.SavingThrows;
+            var character = Program.CcsFile.Character;
 
-            this.StrengthSavingThrow.SavingThrowBonus = savingThrow.Strength.Bonus.ToString();
-            this.DexteritySavingThrow.SavingThrowBonus = savingThrow.Dexterity.Bonus.ToString();
-            this.ConstitutionSavingThrow.SavingThrowBonus = savingThrow.Constitution.Bonus.ToString();
-            this.IntelligenceSavingThrow.SavingThrowBonus = savingThrow.Intelligence.Bonus.ToString();
-            this.WisdomSavingThrow.SavingThrowBonus = savingThrow.Wisdom.Bonus.ToString();
-            this.CharismaSavingThrow.SavingThrowBonus = savingThrow.Charisma.Bonus.ToString();
-
-            this.StrengthSavingThrow.SetStyle(savingThrow.Strength);
-            this.DexteritySavingThrow.SetStyle(savingThrow.Dexterity);
-            this.ConstitutionSavingThrow.SetStyle(savingThrow.Constitution);
-            this.IntelligenceSavingThrow.SetStyle(savingThrow.Intelligence);
-            this.WisdomSavingThrow.SetStyle(savingThrow.Wisdom);
-            this.CharismaSavingThrow.SetStyle(savingThrow.Charisma);
+            this.StrengthSavingThrow.Draw(character.Attributes.Strength);
+            this.DexteritySavingThrow.Draw(character.Attributes.Dexterity);
+            this.ConstitutionSavingThrow.Draw(character.Attributes.Constitution);
+            this.IntelligenceSavingThrow.Draw(character.Attributes.Intelligence);
+            this.WisdomSavingThrow.Draw(character.Attributes.Wisdom);
+            this.CharismaSavingThrow.Draw(character.Attributes.Charisma);
         }
 
         public void DrawSkills()
         {
-            var skill = Program.CcsFile.Character.Skills;
+            var character = Program.CcsFile.Character;
 
-            this.AthleticsSkill.SkillBonus = skill.Athletics.Bonus.ToString();
-            this.AcrobaticsSkill.SkillBonus = skill.Acrobatics.Bonus.ToString();
-            this.SleightOfHandSkill.SkillBonus = skill.SleightOfHand.Bonus.ToString();
-            this.StealthSkill.SkillBonus = skill.Stealth.Bonus.ToString();
-            this.ArcanaSkill.SkillBonus = skill.Arcana.Bonus.ToString();
-            this.HistorySkill.SkillBonus = skill.History.Bonus.ToString();
-            this.InvestigationSkill.SkillBonus = skill.Investigation.Bonus.ToString();
-            this.NatureSkill.SkillBonus = skill.Nature.Bonus.ToString();
-            this.ReligionSkill.SkillBonus = skill.Religion.Bonus.ToString();
-            this.AnimalHandlingSkill.SkillBonus = skill.AnimalHandling.Bonus.ToString();
-            this.InsightSkill.SkillBonus = skill.Insight.Bonus.ToString();
-            this.MedicineSkill.SkillBonus = skill.Medicine.Bonus.ToString();
-            this.PerceptionSkill.SkillBonus = skill.Perception.Bonus.ToString();
-            this.SurvivalSkill.SkillBonus = skill.Survival.Bonus.ToString();
-            this.DeceptionSkill.SkillBonus = skill.Deception.Bonus.ToString();
-            this.IntimidationSkill.SkillBonus = skill.Intimidation.Bonus.ToString();
-            this.PerformanceSkill.SkillBonus = skill.Performance.Bonus.ToString();
-            this.PersuasionSkill.SkillBonus = skill.Persuasion.Bonus.ToString();
-
-            this.AthleticsSkill.SetStyle(skill.Athletics);
-            this.AcrobaticsSkill.SetStyle(skill.Acrobatics);
-            this.SleightOfHandSkill.SetStyle(skill.SleightOfHand);
-            this.StealthSkill.SetStyle(skill.Stealth);
-            this.ArcanaSkill.SetStyle(skill.Arcana);
-            this.HistorySkill.SetStyle(skill.History);
-            this.InvestigationSkill.SetStyle(skill.Investigation);
-            this.NatureSkill.SetStyle(skill.Nature);
-            this.ReligionSkill.SetStyle(skill.Religion);
-            this.AnimalHandlingSkill.SetStyle(skill.AnimalHandling);
-            this.InsightSkill.SetStyle(skill.Insight);
-            this.MedicineSkill.SetStyle(skill.Medicine);
-            this.PerceptionSkill.SetStyle(skill.Perception);
-            this.SurvivalSkill.SetStyle(skill.Survival);
-            this.DeceptionSkill.SetStyle(skill.Deception);
-            this.IntimidationSkill.SetStyle(skill.Intimidation);
-            this.PerformanceSkill.SetStyle(skill.Performance);
-            this.PersuasionSkill.SetStyle(skill.Persuasion);
+            this.AthleticsSkill.Draw(character.Attributes, character.Attributes.Athletics);
+            this.AcrobaticsSkill.Draw(character.Attributes, character.Attributes.Acrobatics);
+            this.SleightOfHandSkill.Draw(character.Attributes, character.Attributes.SleightOfHand);
+            this.StealthSkill.Draw(character.Attributes, character.Attributes.Stealth);
+            this.ArcanaSkill.Draw(character.Attributes, character.Attributes.Arcana);
+            this.HistorySkill.Draw(character.Attributes, character.Attributes.History);
+            this.InvestigationSkill.Draw(character.Attributes, character.Attributes.Investigation);
+            this.NatureSkill.Draw(character.Attributes, character.Attributes.Nature);
+            this.ReligionSkill.Draw(character.Attributes, character.Attributes.Religion);
+            this.AnimalHandlingSkill.Draw(character.Attributes, character.Attributes.AnimalHandling);
+            this.InsightSkill.Draw(character.Attributes, character.Attributes.Insight);
+            this.MedicineSkill.Draw(character.Attributes, character.Attributes.Medicine);
+            this.PerceptionSkill.Draw(character.Attributes, character.Attributes.Perception);
+            this.SurvivalSkill.Draw(character.Attributes, character.Attributes.Survival);
+            this.DeceptionSkill.Draw(character.Attributes, character.Attributes.Deception);
+            this.IntimidationSkill.Draw(character.Attributes, character.Attributes.Intimidation);
+            this.PerformanceSkill.Draw(character.Attributes, character.Attributes.Performance);
+            this.PersuasionSkill.Draw(character.Attributes, character.Attributes.Persuasion);
         }
 
         public void DrawHealth()
@@ -150,12 +115,12 @@ namespace Concierge.Display.Pages
 
         public void DrawArmorClass()
         {
-            var defense = Program.CcsFile.Character.Equipment.Defense;
+            var character = Program.CcsFile.Character;
 
-            this.ArmorClassField.Text = defense.TotalAc.ToString();
-            this.ArmorStatusIcon.Kind = defense.ArmorStatusIcon;
-            this.ArmorStatusIcon.ToolTip = $"Armor is {defense.ArmorStatus}";
-            this.ArmorStatusIcon.Foreground = defense.ArmorStatusBrush;
+            this.ArmorClassField.Text = character.Equipment.Defense.GetTotalArmorClass(character.Attributes.Dexterity).ToString();
+            this.ArmorStatusIcon.Kind = character.Equipment.Defense.ArmorStatusIcon;
+            this.ArmorStatusIcon.ToolTip = $"Armor is {character.Equipment.Defense.ArmorStatus}";
+            this.ArmorStatusIcon.Foreground = character.Equipment.Defense.ArmorStatusBrush;
         }
 
         public void DrawHitDice()
@@ -165,7 +130,7 @@ namespace Concierge.Display.Pages
 
         public void DrawWealth()
         {
-            this.WealthDisplay.SetWealth(Program.CcsFile.Character.Wealth);
+            this.WealthDisplay.SetWealth(Program.CcsFile.Character.Wealth, Program.CcsFile.Character.Equipment);
         }
 
         public void DrawWeight()
@@ -227,13 +192,13 @@ namespace Concierge.Display.Pages
         private void HealthDisplay_SaveClicked(object sender, RoutedEventArgs e)
         {
             var deathSave = Program.CcsFile.Character.Vitality.DeathSavingThrows;
-            var name = Program.CcsFile.Character.Properties.Name;
-            if (deathSave.DeathSaveStatus == Character.Enums.AbilitySave.Success)
+            var name = Program.CcsFile.Character.Disposition.Name;
+            if (deathSave.DeathSaveStatus == AbilitySave.Success)
             {
                 var succeed = name.IsNullOrWhiteSpace() ? "Succeeded 3 saves and stabilized!" : $"{name} succeeded 3 saves and is stabilized!";
                 Program.MainWindow?.DisplayStatusText(succeed);
             }
-            else if (deathSave.DeathSaveStatus == Character.Enums.AbilitySave.Failure)
+            else if (deathSave.DeathSaveStatus == AbilitySave.Failure)
             {
                 var fail = name.IsNullOrWhiteSpace() ? "Failed 3 saves and died!" : $"{name} failed 3 saves and has died!";
                 Program.MainWindow?.DisplayStatusText(fail);
@@ -284,7 +249,7 @@ namespace Concierge.Display.Pages
             ConciergeSoundService.TapNavigation();
 
             ConciergeWindowService.ShowEdit(
-                Program.CcsFile.Character.SavingThrows,
+                Program.CcsFile.Character,
                 typeof(SavingThrowWindow),
                 this.Window_ApplyChanges,
                 ConciergePage.Overview);
@@ -296,7 +261,7 @@ namespace Concierge.Display.Pages
             ConciergeSoundService.TapNavigation();
 
             ConciergeWindowService.ShowEdit(
-                Program.CcsFile.Character.Skills,
+                Program.CcsFile.Character,
                 typeof(SkillWindow),
                 this.Window_ApplyChanges,
                 ConciergePage.Overview);
@@ -308,7 +273,7 @@ namespace Concierge.Display.Pages
             ConciergeSoundService.TapNavigation();
 
             ConciergeWindowService.ShowEdit(
-                Program.CcsFile.Character.Characteristic.Senses,
+                Program.CcsFile.Character.Detail.Senses,
                 typeof(SensesWindow),
                 this.Window_ApplyChanges,
                 ConciergePage.Overview);
@@ -320,7 +285,7 @@ namespace Concierge.Display.Pages
             ConciergeSoundService.TapNavigation();
 
             ConciergeWindowService.ShowEdit(
-                Program.CcsFile.Character.Characteristic.Attributes,
+                Program.CcsFile.Character,
                 typeof(AttributesWindow),
                 this.Window_ApplyChanges,
                 ConciergePage.Overview);
@@ -374,42 +339,47 @@ namespace Concierge.Display.Pages
         {
             ConciergeSoundService.UpdateValue();
 
-            var skill = Program.CcsFile.Character.Skills;
-            var skillCopy = skill.DeepCopy();
-            var state = skill.GetProficiencyState();
+            var character = Program.CcsFile.Character;
+            var attributeCopy = character.Attributes.DeepCopy();
 
-            skill.SetAllProficency(state);
+            var state = character.Attributes.GetProficiencyState();
+            character.Attributes.SetProficiencyState(state);
             this.DrawSkills();
 
-            Program.UndoRedoService.AddCommand(new EditCommand<Skills>(skill, skillCopy, ConciergePage.Overview));
+            Program.UndoRedoService.AddCommand(new EditCommand<Attributes>(character.Attributes, attributeCopy, this.ConciergePage));
         }
 
         private void AllExpertise_MouseDown(object sender, MouseButtonEventArgs e)
         {
             ConciergeSoundService.UpdateValue();
 
-            var skill = Program.CcsFile.Character.Skills;
-            var skillCopy = skill.DeepCopy();
-            var state = skill.GetExpertiseState();
+            var character = Program.CcsFile.Character;
+            var attributeCopy = character.Attributes.DeepCopy();
 
-            skill.SetAllExpertise(state);
+            var state = character.Attributes.GetExpertiseState();
+            character.Attributes.SetExpertiseState(state);
             this.DrawSkills();
 
-            Program.UndoRedoService.AddCommand(new EditCommand<Skills>(skill, skillCopy, ConciergePage.Overview));
+            Program.UndoRedoService.AddCommand(new EditCommand<Attributes>(character.Attributes, attributeCopy, this.ConciergePage));
         }
 
         private void SaveProficiency_MouseDown(object sender, MouseButtonEventArgs e)
         {
             ConciergeSoundService.UpdateValue();
 
-            var save = Program.CcsFile.Character.SavingThrows;
-            var saveCopy = save.DeepCopy();
-            var state = save.GetProficiencyState();
+            var character = Program.CcsFile.Character;
+            var attributeCopy = character.Attributes.DeepCopy();
 
-            save.SetAllProficency(state);
-            this.DrawSavingThrows();
+            var state = character.Attributes.GetState();
+            character.Attributes.Strength.Proficiency = state;
+            character.Attributes.Dexterity.Proficiency = state;
+            character.Attributes.Constitution.Proficiency = state;
+            character.Attributes.Intelligence.Proficiency = state;
+            character.Attributes.Wisdom.Proficiency = state;
+            character.Attributes.Charisma.Proficiency = state;
+            this.DrawSkills();
 
-            Program.UndoRedoService.AddCommand(new EditCommand<SavingThrows>(save, saveCopy, ConciergePage.Overview));
+            Program.UndoRedoService.AddCommand(new EditCommand<Attributes>(character.Attributes, attributeCopy, this.ConciergePage));
         }
     }
 }

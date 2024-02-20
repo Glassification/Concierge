@@ -6,7 +6,7 @@ namespace Concierge.Display.Windows
 {
     using System.Windows;
 
-    using Concierge.Character.AbilitySaves;
+    using Concierge.Character.Aspects;
     using Concierge.Character.Enums;
     using Concierge.Commands;
     using Concierge.Common.Extensions;
@@ -18,6 +18,8 @@ namespace Concierge.Display.Windows
     /// </summary>
     public partial class SavingThrowWindow : ConciergeWindow
     {
+        private Attributes attributes = new ();
+
         public SavingThrowWindow()
         {
             this.InitializeComponent();
@@ -31,7 +33,6 @@ namespace Concierge.Display.Windows
             this.CharismaComboBox.ItemsSource = ComboBoxGenerator.StatusChecksComboBox();
 
             this.ConciergePage = ConciergePage.None;
-            this.SavingThrow = new SavingThrows();
             this.DescriptionTextBlock.DataContext = this.Description;
 
             this.SetMouseOverEvents(this.StrengthComboBox);
@@ -46,16 +47,14 @@ namespace Concierge.Display.Windows
 
         public override string WindowName => nameof(SavingThrowWindow);
 
-        private SavingThrows SavingThrow { get; set; }
-
         public override void ShowEdit<T>(T savingThrow)
         {
-            if (savingThrow is not SavingThrows castItem)
+            if (savingThrow is not Attributes castItem)
             {
                 return;
             }
 
-            this.SavingThrow = castItem;
+            this.attributes = castItem;
             this.FillFields();
             this.ShowConciergeWindow();
         }
@@ -68,26 +67,26 @@ namespace Concierge.Display.Windows
 
         private void FillFields()
         {
-            this.StrengthComboBox.Text = this.SavingThrow.Strength.CheckOverride.ToString();
-            this.DexterityComboBox.Text = this.SavingThrow.Dexterity.CheckOverride.ToString();
-            this.ConstitutionComboBox.Text = this.SavingThrow.Constitution.CheckOverride.ToString();
-            this.IntelligenceComboBox.Text = this.SavingThrow.Intelligence.CheckOverride.ToString();
-            this.WisdomComboBox.Text = this.SavingThrow.Wisdom.CheckOverride.ToString();
-            this.CharismaComboBox.Text = this.SavingThrow.Charisma.CheckOverride.ToString();
+            this.StrengthComboBox.Text = this.attributes.Strength.SaveOverride.ToString();
+            this.DexterityComboBox.Text = this.attributes.Dexterity.SaveOverride.ToString();
+            this.ConstitutionComboBox.Text = this.attributes.Constitution.SaveOverride.ToString();
+            this.IntelligenceComboBox.Text = this.attributes.Intelligence.SaveOverride.ToString();
+            this.WisdomComboBox.Text = this.attributes.Wisdom.SaveOverride.ToString();
+            this.CharismaComboBox.Text = this.attributes.Charisma.SaveOverride.ToString();
         }
 
         private void UpdateSavingThrows()
         {
-            var oldSavingThrow = this.SavingThrow.DeepCopy();
+            var oldSavingThrow = this.attributes.DeepCopy();
 
-            this.SavingThrow.Strength.CheckOverride = this.StrengthComboBox.Text.ToEnum<StatusChecks>();
-            this.SavingThrow.Dexterity.CheckOverride = this.DexterityComboBox.Text.ToEnum<StatusChecks>();
-            this.SavingThrow.Constitution.CheckOverride = this.ConstitutionComboBox.Text.ToEnum<StatusChecks>();
-            this.SavingThrow.Intelligence.CheckOverride = this.IntelligenceComboBox.Text.ToEnum<StatusChecks>();
-            this.SavingThrow.Wisdom.CheckOverride = this.WisdomComboBox.Text.ToEnum<StatusChecks>();
-            this.SavingThrow.Charisma.CheckOverride = this.CharismaComboBox.Text.ToEnum<StatusChecks>();
+            this.attributes.Strength.SaveOverride = this.StrengthComboBox.Text.ToEnum<StatusChecks>();
+            this.attributes.Dexterity.SaveOverride = this.DexterityComboBox.Text.ToEnum<StatusChecks>();
+            this.attributes.Constitution.SaveOverride = this.ConstitutionComboBox.Text.ToEnum<StatusChecks>();
+            this.attributes.Intelligence.SaveOverride = this.IntelligenceComboBox.Text.ToEnum<StatusChecks>();
+            this.attributes.Wisdom.SaveOverride = this.WisdomComboBox.Text.ToEnum<StatusChecks>();
+            this.attributes.Charisma.SaveOverride = this.CharismaComboBox.Text.ToEnum<StatusChecks>();
 
-            Program.UndoRedoService.AddCommand(new EditCommand<SavingThrows>(this.SavingThrow, oldSavingThrow, this.ConciergePage));
+            Program.UndoRedoService.AddCommand(new EditCommand<Attributes>(this.attributes, oldSavingThrow, this.ConciergePage));
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)

@@ -7,7 +7,7 @@ namespace Concierge.Display.Controls
     using System;
     using System.Windows;
     using System.Windows.Controls;
-
+    using Concierge.Common.Utilities;
     using Concierge.Configuration;
     using MaterialDesignThemes.Wpf;
 
@@ -44,6 +44,10 @@ namespace Concierge.Display.Controls
             this.MessageHistoryMenuItem.AddClickEvent(this.MenuButton_Click);
             this.KeyboardMenuItem.AddClickEvent(this.MenuButton_Click);
             this.SettingsMenuItem.AddClickEvent(this.MenuButton_Click);
+
+            DisplayUtility.SetControlEnableState(this.LevelUpMenuItem, false);
+            DisplayUtility.SetControlEnableState(this.ShortRestMenuItem, false);
+            DisplayUtility.SetControlEnableState(this.LongRestMenuItem, false);
 
             this.CheckExpertMode();
         }

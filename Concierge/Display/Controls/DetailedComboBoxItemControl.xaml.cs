@@ -5,6 +5,7 @@
 namespace Concierge.Display.Controls
 {
     using System.Windows.Controls;
+    using System.Windows.Input;
     using System.Windows.Media;
 
     using Concierge.Common;
@@ -59,13 +60,13 @@ namespace Concierge.Display.Controls
             return this.ItemName.Text;
         }
 
-        private void Grid_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
+        private void Grid_MouseEnter(object sender, MouseEventArgs e)
         {
             this.MainGrid.Background = ConciergeBrushes.Highlight;
             this.MainBorder.BorderBrush = ConciergeBrushes.BorderHighlight;
         }
 
-        private void Grid_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
+        private void Grid_MouseLeave(object sender, MouseEventArgs e)
         {
             this.MainGrid.Background = ConciergeBrushes.ControlForeBlue;
             this.MainBorder.BorderBrush = ConciergeBrushes.ControlForeBlue;

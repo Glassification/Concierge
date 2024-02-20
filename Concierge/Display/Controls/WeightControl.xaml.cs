@@ -22,31 +22,31 @@ namespace Concierge.Display.Controls
             this.InitializeComponent();
         }
 
-        public void SetWeightValues(ConciergeCharacter character, UnitTypes unitTypes)
+        public void SetWeightValues(CharacterSheet character, UnitTypes unitTypes)
         {
-            this.WeightCarriedField.Text = UnitFormat.FormatWeight(unitTypes, character.Equipment.CarryWeight);
-            this.LightWeightField.Text = UnitFormat.FormatWeight(unitTypes, character.LightCarryCapacity, true);
-            this.MediumWeightField.Text = UnitFormat.FormatWeight(unitTypes, character.MediumCarryCapacity, true);
-            this.HeavyWeightField.Text = UnitFormat.FormatWeight(unitTypes, character.HeavyCarryCapacity, true);
+            this.WeightCarriedField.Text = UnitFormat.FormatWeight(unitTypes, character.CarryWeight);
+            this.LightWeightField.Text = UnitFormat.FormatWeight(unitTypes, character.LightCapacity, true);
+            this.MediumWeightField.Text = UnitFormat.FormatWeight(unitTypes, character.MediumCapacity, true);
+            this.HeavyWeightField.Text = UnitFormat.FormatWeight(unitTypes, character.HeavyCapacity, true);
         }
 
-        public void FormatCarryWeight(ConciergeCharacter character)
+        public void FormatCarryWeight(CharacterSheet character)
         {
-            var weight = character.Equipment.CarryWeight;
+            var weight = character.CarryWeight;
 
-            if (weight <= character.LightCarryCapacity)
+            if (weight <= character.LightCapacity)
             {
                 this.WeightCarriedField.Foreground = Brushes.Black;
                 this.WeightCarriedGrid.Background = ConciergeBrushes.LightCarryCapacity;
                 this.WeightCarriedBorder.BorderBrush = ConciergeBrushes.LightCarryCapacity;
             }
-            else if (weight > character.LightCarryCapacity && weight <= character.MediumCarryCapacity)
+            else if (weight > character.LightCapacity && weight <= character.MediumCapacity)
             {
                 this.WeightCarriedField.Foreground = ConciergeBrushes.HeavyCarryCapacity;
                 this.WeightCarriedGrid.Background = ConciergeBrushes.MediumCarryCapacity;
                 this.WeightCarriedBorder.BorderBrush = ConciergeBrushes.MediumCarryCapacity;
             }
-            else if (weight > character.MediumCarryCapacity && weight <= character.HeavyCarryCapacity)
+            else if (weight > character.MediumCapacity && weight <= character.HeavyCapacity)
             {
                 this.WeightCarriedField.Foreground = Brushes.DarkRed;
                 this.WeightCarriedGrid.Background = Brushes.Pink;

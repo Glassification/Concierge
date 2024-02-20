@@ -14,6 +14,7 @@ namespace Concierge.Display
     using Concierge.Character.Equipable;
     using Concierge.Common;
     using Concierge.Common.Enums;
+    using Concierge.Common.Extensions;
     using Concierge.Display.Controls;
     using Concierge.Search.Enums;
     using MaterialDesignThemes.Wpf;
@@ -256,23 +257,13 @@ namespace Concierge.Display
         {
             return
             [
-                new (PackIconKind.Numeric0BoxMultiple, ConciergeBrushes.Mint, ExhaustionLevel.Normal.ToString()),
-                new (PackIconKind.Numeric1BoxMultiple, Brushes.LightBlue, ExhaustionLevel.One.ToString()),
-                new (PackIconKind.Numeric2BoxMultiple, Brushes.Yellow, ExhaustionLevel.Two.ToString()),
-                new (PackIconKind.Numeric3BoxMultiple, Brushes.Goldenrod, ExhaustionLevel.Three.ToString()),
-                new (PackIconKind.Numeric4BoxMultiple, Brushes.Orange, ExhaustionLevel.Four.ToString()),
-                new (PackIconKind.Numeric5BoxMultiple, Brushes.OrangeRed, ExhaustionLevel.Five.ToString()),
-                new (PackIconKind.Numeric6BoxMultiple, Brushes.IndianRed, ExhaustionLevel.Six.ToString()),
-            ];
-        }
-
-        public static List<ComboBoxItemControl> EncumbranceLevelComboBox()
-        {
-            return
-            [
-                new (PackIconKind.Weight, ConciergeBrushes.Mint, EncumbranceLevel.Normal.ToString()),
-                new (PackIconKind.WeightGram, Brushes.Orange, EncumbranceLevel.Encumbered.ToString()),
-                new (PackIconKind.WeightKg, Brushes.IndianRed, EncumbranceLevel.HeavilyEncumbered.ToString()),
+                new (PackIconKind.Numeric0BoxMultiple, ConciergeBrushes.Mint, ConditionStatus.Normal.ToString().FormatFromPascalCase()),
+                new (PackIconKind.Numeric1BoxMultiple, Brushes.LightBlue, ConditionStatus.Exhaustion1.ToString().FormatFromPascalCase()),
+                new (PackIconKind.Numeric2BoxMultiple, Brushes.Yellow, ConditionStatus.Exhaustion2.ToString().FormatFromPascalCase()),
+                new (PackIconKind.Numeric3BoxMultiple, Brushes.Goldenrod, ConditionStatus.Exhaustion3.ToString().FormatFromPascalCase()),
+                new (PackIconKind.Numeric4BoxMultiple, Brushes.Orange, ConditionStatus.Exhaustion4.ToString().FormatFromPascalCase()),
+                new (PackIconKind.Numeric5BoxMultiple, Brushes.OrangeRed, ConditionStatus.Exhaustion5.ToString().FormatFromPascalCase()),
+                new (PackIconKind.Numeric6BoxMultiple, Brushes.IndianRed, ConditionStatus.Exhaustion6.ToString().FormatFromPascalCase()),
             ];
         }
 

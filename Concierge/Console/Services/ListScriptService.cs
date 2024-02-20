@@ -6,9 +6,9 @@ namespace Concierge.Console.Services
 {
     using System.Linq;
 
-    using Concierge.Character.Characteristics;
+    using Concierge.Character.Details;
     using Concierge.Character.Equipable;
-    using Concierge.Character.Spellcasting;
+    using Concierge.Character.Magic;
     using Concierge.Character.Vitals;
     using Concierge.Console.Enums;
     using Concierge.Console.Scripts;
@@ -66,12 +66,12 @@ namespace Concierge.Console.Services
                 "inventory" => new ListScript<Inventory>([.. Defaults.Inventory], character.Equipment.Inventory).Evaluate(command),
                 "weapons" => new ListScript<Weapon>([.. Defaults.Weapons], character.Equipment.Weapons).Evaluate(command),
                 "ammunition" => new ListScript<Ammunition>([.. Defaults.Ammunition], character.Equipment.Ammunition).Evaluate(command),
-                "spells" => new ListScript<Spell>([.. Defaults.Spells], character.Magic.Spells).Evaluate(command),
-                "magicclasses" => new ListScript<MagicClass>([], character.Magic.MagicClasses).Evaluate(command),
-                "ability" => new ListScript<Ability>([.. Defaults.Abilities], character.Characteristic.Abilities).Evaluate(command),
-                "language" => new ListScript<Language>([.. Defaults.Languages], character.Characteristic.Languages).Evaluate(command),
+                "spells" => new ListScript<Spell>([.. Defaults.Spells], character.SpellCasting.Spells).Evaluate(command),
+                "magicclasses" => new ListScript<MagicalClass>([], character.SpellCasting.MagicalClasses).Evaluate(command),
+                "ability" => new ListScript<Ability>([.. Defaults.Abilities], character.Detail.Abilities).Evaluate(command),
+                "language" => new ListScript<Language>([.. Defaults.Languages], character.Detail.Languages).Evaluate(command),
                 "classresource" => new ListScript<ClassResource>([], character.Vitality.ClassResources).Evaluate(command),
-                "statuseffect" => new ListScript<StatusEffect>([], character.Vitality.StatusEffects).Evaluate(command),
+                "statuseffect" => new ListScript<StatusEffect>([], character.Vitality.Status.StatusEffects).Evaluate(command),
                 "all" => this.RunAllListScripts(command),
                 _ => new ConsoleResult($"Error: '{command}' does not contain a valid command.", ResultType.Error),
             };

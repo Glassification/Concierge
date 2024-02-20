@@ -574,9 +574,6 @@
   <data name="PersonalityWindow_Trait2TextBox" xml:space="preserve">
     <value>They should be self-descriptions that are specific about what makes a character stand out.</value>
   </data>
-  <data name="ProficiencyLevel" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\Constants\ProficiencyLevel.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
-  </data>
   <data name="ProficiencyWindow_ProficiencyComboBox" xml:space="preserve">
     <value>A character can be proficient in armors, weapons, or tools.</value>
   </data>

@@ -12,7 +12,7 @@ namespace Concierge.Services.ImportService.Importers
 
     public sealed class JournalImporter : Importer
     {
-        public JournalImporter(ConciergeCharacter character)
+        public JournalImporter(CharacterSheet character)
             : base(character)
         {
         }
@@ -29,7 +29,7 @@ namespace Concierge.Services.ImportService.Importers
             this.Character.Journal.Chapters.AddRange(chapters);
         }
 
-        public override IEnumerable<IUnique> Load(ConciergeCharacter character)
+        public override IEnumerable<IUnique> Load(CharacterSheet character)
         {
             return character.Journal.Chapters;
         }

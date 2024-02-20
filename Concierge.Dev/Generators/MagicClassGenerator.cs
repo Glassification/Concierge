@@ -8,16 +8,16 @@ namespace Concierge.DevTools.Generators
     using System.IO;
 
     using Concierge.Character.Enums;
-    using Concierge.Character.Spellcasting;
+    using Concierge.Character.Magic;
     using Newtonsoft.Json;
 
     public static class MagicClassGenerator
     {
         public static void Generate(string file)
         {
-            var list = new List<MagicClass>()
+            var list = new List<MagicalClass>()
             {
-                new MagicClass()
+                new MagicalClass()
                 {
                     Name = "Arcane Trickster",
                     Ability = Abilities.INT,
@@ -26,7 +26,7 @@ namespace Concierge.DevTools.Generators
                     KnownSpells = 3,
                     SpellSlots = 2,
                 },
-                new MagicClass()
+                new MagicalClass()
                 {
                     Name = "Artificer",
                     Ability = Abilities.INT,
@@ -35,7 +35,7 @@ namespace Concierge.DevTools.Generators
                     KnownSpells = 0,
                     SpellSlots = 2,
                 },
-                new MagicClass()
+                new MagicalClass()
                 {
                     Name = "Barbarian",
                     Ability = Abilities.NONE,
@@ -44,7 +44,7 @@ namespace Concierge.DevTools.Generators
                     KnownSpells = 0,
                     SpellSlots = 0,
                 },
-                new MagicClass()
+                new MagicalClass()
                 {
                     Name = "Bard",
                     Ability = Abilities.CHA,
@@ -53,7 +53,7 @@ namespace Concierge.DevTools.Generators
                     KnownSpells = 4,
                     SpellSlots = 2,
                 },
-                new MagicClass()
+                new MagicalClass()
                 {
                     Name = "Blood Hunter",
                     Ability = Abilities.INT,
@@ -62,7 +62,7 @@ namespace Concierge.DevTools.Generators
                     KnownSpells = 0,
                     SpellSlots = 0,
                 },
-                new MagicClass()
+                new MagicalClass()
                 {
                     Name = "Cleric",
                     Ability = Abilities.WIS,
@@ -71,7 +71,7 @@ namespace Concierge.DevTools.Generators
                     KnownSpells = 1,
                     SpellSlots = 2,
                 },
-                new MagicClass()
+                new MagicalClass()
                 {
                     Name = "Druid",
                     Ability = Abilities.WIS,
@@ -80,7 +80,7 @@ namespace Concierge.DevTools.Generators
                     KnownSpells = 1,
                     SpellSlots = 2,
                 },
-                new MagicClass()
+                new MagicalClass()
                 {
                     Name = "Fighter",
                     Ability = Abilities.NONE,
@@ -89,7 +89,7 @@ namespace Concierge.DevTools.Generators
                     KnownSpells = 0,
                     SpellSlots = 0,
                 },
-                new MagicClass()
+                new MagicalClass()
                 {
                     Name = "Monk",
                     Ability = Abilities.WIS,
@@ -98,7 +98,7 @@ namespace Concierge.DevTools.Generators
                     KnownSpells = 0,
                     SpellSlots = 0,
                 },
-                new MagicClass()
+                new MagicalClass()
                 {
                     Name = "Paladin",
                     Ability = Abilities.CHA,
@@ -107,7 +107,7 @@ namespace Concierge.DevTools.Generators
                     KnownSpells = 1,
                     SpellSlots = 2,
                 },
-                new MagicClass()
+                new MagicalClass()
                 {
                     Name = "Ranger",
                     Ability = Abilities.WIS,
@@ -116,7 +116,7 @@ namespace Concierge.DevTools.Generators
                     KnownSpells = 2,
                     SpellSlots = 2,
                 },
-                new MagicClass()
+                new MagicalClass()
                 {
                     Name = "Rogue",
                     Ability = Abilities.NONE,
@@ -125,7 +125,7 @@ namespace Concierge.DevTools.Generators
                     KnownSpells = 0,
                     SpellSlots = 0,
                 },
-                new MagicClass()
+                new MagicalClass()
                 {
                     Name = "Sorcerer",
                     Ability = Abilities.CHA,
@@ -134,7 +134,7 @@ namespace Concierge.DevTools.Generators
                     KnownSpells = 2,
                     SpellSlots = 2,
                 },
-                new MagicClass()
+                new MagicalClass()
                 {
                     Name = "Warlock",
                     Ability = Abilities.CHA,
@@ -143,7 +143,7 @@ namespace Concierge.DevTools.Generators
                     KnownSpells = 2,
                     SpellSlots = 1,
                 },
-                new MagicClass()
+                new MagicalClass()
                 {
                     Name = "Wizard",
                     Ability = Abilities.INT,

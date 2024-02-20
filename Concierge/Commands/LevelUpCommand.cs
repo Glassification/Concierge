@@ -8,7 +8,8 @@ namespace Concierge.Commands
     using System.Linq;
 
     using Concierge.Character;
-    using Concierge.Character.Spellcasting;
+    using Concierge.Character.Dispositions;
+    using Concierge.Character.Magic;
     using Concierge.Character.Vitals;
     using Concierge.Common.Extensions;
     using Concierge.Display.Enums;
@@ -18,16 +19,16 @@ namespace Concierge.Commands
     {
         private readonly Vitality oldVitality;
         private readonly Vitality newVitality;
-        private readonly CharacterClass oldClass;
-        private readonly CharacterClass newClass;
-        private readonly MagicClass? oldMagicClass;
-        private readonly MagicClass? newMagicClass;
+        private readonly Class oldClass;
+        private readonly Class newClass;
+        private readonly MagicalClass? oldMagicClass;
+        private readonly MagicalClass? newMagicClass;
         private readonly SpellSlots oldSpellSlots;
         private readonly SpellSlots newSpellSlots;
         private readonly ClassResource? oldClassResource;
         private readonly ClassResource? newClassResource;
 
-        private readonly ConciergeCharacter character;
+        private readonly CharacterSheet character;
 
         public LevelUpCommand(
             CharacterClassDto characterClass,
@@ -54,11 +55,11 @@ namespace Concierge.Commands
         public override void Redo()
         {
             this.character.Vitality.SetProperties<Vitality>(this.newVitality);
-            this.character.Properties.GetClassByNumber(this.newClass.ClassNumber).SetProperties<CharacterClass>(this.newClass);
+            this.character.Disposition.GetClass(this.newClass.ClassNumber).SetProperties<Class>(this.newClass);
             if (this.newMagicClass is not null)
             {
-                this.character.Magic.SpellSlots.SetProperties<SpellSlots>(this.newSpellSlots);
-                this.character.Magic.MagicClasses.Where(x => x.Name.Equals(this.newMagicClass.Name)).First().SetProperties<MagicClass>(this.newMagicClass);
+                this.character.SpellCasting.SpellSlots.SetProperties<SpellSlots>(this.newSpellSlots);
+                this.character.SpellCasting.MagicalClasses.Where(x => x.Name.Equals(this.newMagicClass.Name)).First().SetProperties<MagicalClass>(this.newMagicClass);
             }
 
             if (this.newClassResource is not null)
@@ -73,11 +74,11 @@ namespace Concierge.Commands
         public override void Undo()
         {
             this.character.Vitality.SetProperties<Vitality>(this.oldVitality);
-            this.character.Properties.GetClassByNumber(this.oldClass.ClassNumber).SetProperties<CharacterClass>(this.oldClass);
+            this.character.Disposition.GetClass(this.oldClass.ClassNumber).SetProperties<Class>(this.oldClass);
             if (this.oldMagicClass is not null)
             {
-                this.character.Magic.SpellSlots.SetProperties<SpellSlots>(this.oldSpellSlots);
-                this.character.Magic.MagicClasses.Where(x => x.Name.Equals(this.oldMagicClass.Name)).First().SetProperties<MagicClass>(this.oldMagicClass);
+                this.character.SpellCasting.SpellSlots.SetProperties<SpellSlots>(this.oldSpellSlots);
+                this.character.SpellCasting.MagicalClasses.Where(x => x.Name.Equals(this.oldMagicClass.Name)).First().SetProperties<MagicalClass>(this.oldMagicClass);
             }
 
             if (this.oldClassResource is not null)

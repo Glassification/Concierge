@@ -10,10 +10,11 @@ namespace Concierge.Display.Pages
     using System.Windows;
     using System.Windows.Controls;
 
-    using Concierge.Character.Characteristics;
+    using Concierge.Character.Details;
     using Concierge.Character.Enums;
     using Concierge.Character.Vitals;
     using Concierge.Commands;
+    using Concierge.Common.Extensions;
     using Concierge.Display.Components;
     using Concierge.Display.Enums;
     using Concierge.Display.Windows;
@@ -89,12 +90,12 @@ namespace Concierge.Display.Pages
 
         public void DrawAppearance()
         {
-            this.AppearanceDisplay.SetAppearance(Program.CcsFile.Character.Characteristic.Appearance);
+            this.AppearanceDisplay.SetAppearance(Program.CcsFile.Character.Detail.Appearance);
         }
 
         public void DrawPersonality()
         {
-            this.PersonalityDisplay.SetPersonality(Program.CcsFile.Character.Characteristic.Personality);
+            this.PersonalityDisplay.SetPersonality(Program.CcsFile.Character.Detail.Personality);
         }
 
         public void DrawDefense()
@@ -106,9 +107,9 @@ namespace Concierge.Display.Pages
         {
             var character = Program.CcsFile.Character;
 
-            DrawProficiency(this.WeaponProficiencyDataGrid, character.Characteristic.Proficiencies.Where(x => x.ProficiencyType == ProficiencyTypes.Weapon).ToList());
-            DrawProficiency(this.ArmorProficiencyDataGrid, character.Characteristic.Proficiencies.Where(x => x.ProficiencyType == ProficiencyTypes.Armor).ToList());
-            DrawProficiency(this.ToolProficiencyDataGrid, character.Characteristic.Proficiencies.Where(x => x.ProficiencyType == ProficiencyTypes.Tool).ToList());
+            DrawProficiency(this.WeaponProficiencyDataGrid, character.Detail.Proficiencies.Where(x => x.ProficiencyType == ProficiencyTypes.Weapon).ToList());
+            DrawProficiency(this.ArmorProficiencyDataGrid, character.Detail.Proficiencies.Where(x => x.ProficiencyType == ProficiencyTypes.Armor).ToList());
+            DrawProficiency(this.ToolProficiencyDataGrid, character.Detail.Proficiencies.Where(x => x.ProficiencyType == ProficiencyTypes.Tool).ToList());
 
             this.SetProficiencyDataGridControlState(this.WeaponProficiencyDataGrid);
             this.SetProficiencyDataGridControlState(this.ArmorProficiencyDataGrid);
@@ -127,14 +128,30 @@ namespace Concierge.Display.Pages
         public void DrawLanguages()
         {
             this.LanguagesDataGrid.Items.Clear();
-            Program.CcsFile.Character.Characteristic.Languages.ForEach(language => this.LanguagesDataGrid.Items.Add(language));
+            Program.CcsFile.Character.Detail.Languages.ForEach(language => this.LanguagesDataGrid.Items.Add(language));
             this.SetLanguageDataGridControlState();
         }
 
         public void DrawConditions()
         {
+            var character = Program.CcsFile.Character;
+
             this.ConditionsDataGrid.Items.Clear();
-            Program.CcsFile.Character.Vitality.Conditions.ToList().ForEach(condition => this.ConditionsDataGrid.Items.Add(condition));
+            var conditions = character.Vitality.Status.ActiveConditions();
+            foreach (var condition in conditions)
+            {
+                this.ConditionsDataGrid.Items.Add(condition.Value);
+            }
+
+            if (character.Vitality.Status.Exhaustion.IsAfflicted())
+            {
+                this.ConditionsDataGrid.Items.Add(character.Vitality.Status.Exhaustion.Value);
+            }
+
+            if (character.Encumbrance != ConditionStatus.Normal)
+            {
+                this.ConditionsDataGrid.Items.Add($"{character.Encumbrance.ToString().FormatFromPascalCase()} - {ConditionDescriptions.Encumbered}");
+            }
         }
 
         private static void DrawProficiency(ConciergeDataGrid conciergeDataGrid, List<Proficiency> proficiencies)
@@ -187,8 +204,8 @@ namespace Concierge.Display.Pages
             }
 
             var index = dataGrid.SelectedIndex;
-            Program.UndoRedoService.AddCommand(new DeleteCommand<Proficiency>(Program.CcsFile.Character.Characteristic.Proficiencies, proficiency, index, this.ConciergePage));
-            Program.CcsFile.Character.Characteristic.Proficiencies.Remove(proficiency);
+            Program.UndoRedoService.AddCommand(new DeleteCommand<Proficiency>(Program.CcsFile.Character.Detail.Proficiencies, proficiency, index, this.ConciergePage));
+            Program.CcsFile.Character.Detail.Proficiencies.Remove(proficiency);
 
             this.DrawProficiencies();
             dataGrid.SetSelectedIndex(index);
@@ -232,7 +249,7 @@ namespace Concierge.Display.Pages
         private void AddProficencyButton_Click(object sender, RoutedEventArgs e)
         {
             var added = ConciergeWindowService.ShowAdd(
-                Program.CcsFile.Character.Characteristic.Proficiencies,
+                Program.CcsFile.Character.Detail.Proficiencies,
                 typeof(ProficiencyWindow),
                 this.Window_ApplyChanges,
                 ConciergePage.Details);
@@ -282,7 +299,7 @@ namespace Concierge.Display.Pages
 
         private void ProficiencyDataGrid_Sorted(object sender, RoutedEventArgs e)
         {
-            var characteristic = Program.CcsFile.Character.Characteristic;
+            var characteristic = Program.CcsFile.Character.Detail;
             var oldList = new List<Proficiency>(characteristic.Proficiencies);
             characteristic.Proficiencies.Clear();
             this.SortProficiencyItems(characteristic.Proficiencies);
@@ -298,7 +315,7 @@ namespace Concierge.Display.Pages
         private void EditConditionsButton_Click(object sender, RoutedEventArgs e)
         {
             ConciergeWindowService.ShowEdit(
-                Program.CcsFile.Character.Vitality.Conditions,
+                Program.CcsFile.Character.Vitality.Status,
                 typeof(ConditionsWindow),
                 this.Window_ApplyChanges,
                 ConciergePage.Details);
@@ -327,7 +344,7 @@ namespace Concierge.Display.Pages
         private void AddLanguagesButton_Click(object sender, RoutedEventArgs e)
         {
             var added = ConciergeWindowService.ShowAdd(
-                Program.CcsFile.Character.Characteristic.Languages,
+                Program.CcsFile.Character.Detail.Languages,
                 typeof(LanguagesWindow),
                 this.Window_ApplyChanges,
                 ConciergePage.Details);
@@ -362,8 +379,8 @@ namespace Concierge.Display.Pages
             }
 
             var index = this.LanguagesDataGrid.SelectedIndex;
-            Program.UndoRedoService.AddCommand(new DeleteCommand<Language>(Program.CcsFile.Character.Characteristic.Languages, language, index, this.ConciergePage));
-            Program.CcsFile.Character.Characteristic.Languages.Remove(language);
+            Program.UndoRedoService.AddCommand(new DeleteCommand<Language>(Program.CcsFile.Character.Detail.Languages, language, index, this.ConciergePage));
+            Program.CcsFile.Character.Detail.Languages.Remove(language);
             this.DrawLanguages();
             this.LanguagesDataGrid.SetSelectedIndex(index);
         }
@@ -399,7 +416,7 @@ namespace Concierge.Display.Pages
 
         private void LanguagesDataGrid_Sorted(object sender, RoutedEventArgs e)
         {
-            this.LanguagesDataGrid.SortListFromDataGrid(Program.CcsFile.Character.Characteristic.Languages, this.ConciergePage);
+            this.LanguagesDataGrid.SortListFromDataGrid(Program.CcsFile.Character.Detail.Languages, this.ConciergePage);
         }
 
         private void ResourcesDataGrid_Sorted(object sender, RoutedEventArgs e)
@@ -412,7 +429,7 @@ namespace Concierge.Display.Pages
             ConciergeSoundService.TapNavigation();
 
             ConciergeWindowService.ShowEdit(
-                Program.CcsFile.Character.Characteristic.Appearance,
+                Program.CcsFile.Character.Detail.Appearance,
                 typeof(AppearanceWindow),
                 this.Window_ApplyChanges,
                 ConciergePage.Details);
@@ -424,7 +441,7 @@ namespace Concierge.Display.Pages
             ConciergeSoundService.TapNavigation();
 
             ConciergeWindowService.ShowEdit(
-                Program.CcsFile.Character.Characteristic.Personality,
+                Program.CcsFile.Character.Detail.Personality,
                 typeof(PersonalityWindow),
                 this.Window_ApplyChanges,
                 ConciergePage.Details);

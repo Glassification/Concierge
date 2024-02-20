@@ -1,0 +1,86 @@
+﻿// <copyright file="CompanionAttributes.cs" company="Thomas Beckett">
+// Copyright (c) Thomas Beckett. All rights reserved.
+// </copyright>
+
+namespace Concierge.Character.Companions
+{
+    using System;
+
+    using Concierge.Common;
+
+    public sealed class CompanionAttributes : ICopyable<CompanionAttributes>
+    {
+        public const int DefaultScore = 10;
+
+        private int strength;
+        private int dexterity;
+        private int constitution;
+        private int intelligence;
+        private int wisdom;
+        private int charisma;
+
+        public CompanionAttributes()
+        {
+            this.strength = DefaultScore;
+            this.dexterity = DefaultScore;
+            this.constitution = DefaultScore;
+            this.intelligence = DefaultScore;
+            this.wisdom = DefaultScore;
+            this.charisma = DefaultScore;
+        }
+
+        public int Strength
+        {
+            get => this.strength;
+            set => this.strength = Truncate(value);
+        }
+
+        public int Dexterity
+        {
+            get => this.dexterity;
+            set => this.dexterity = Truncate(value);
+        }
+
+        public int Constitution
+        {
+            get => this.constitution;
+            set => this.constitution = Truncate(value);
+        }
+
+        public int Intelligence
+        {
+            get => this.intelligence;
+            set => this.intelligence = Truncate(value);
+        }
+
+        public int Wisdom
+        {
+            get => this.wisdom;
+            set => this.wisdom = Truncate(value);
+        }
+
+        public int Charisma
+        {
+            get => this.charisma;
+            set => this.charisma = Truncate(value);
+        }
+
+        public CompanionAttributes DeepCopy()
+        {
+            return new CompanionAttributes()
+            {
+                Strength = this.Strength,
+                Dexterity = this.Dexterity,
+                Constitution = this.Constitution,
+                Intelligence = this.Intelligence,
+                Wisdom = this.Wisdom,
+                Charisma = this.Charisma,
+            };
+        }
+
+        private static int Truncate(int value)
+        {
+            return Math.Min(Constants.MaxScore, Math.Max(Constants.MinScore, value));
+        }
+    }
+}

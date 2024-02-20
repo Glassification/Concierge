@@ -524,15 +524,6 @@
                             </components:ConciergeDesignButton>
                             <components:ConciergeDesignButton 
                                 Style="{StaticResource ConciergeDesignButtonStyle}" 
-                                x:Name="AttackUseButton"
-                                Width="60"
-                                Foreground="#B9487B"
-                                Click="AttackUseButton_Click"
-                                ToolTip="Use Attack">
-                                <materialDesign:PackIcon Kind="PlayBox" Width="25" Height="25"/>
-                            </components:ConciergeDesignButton>
-                            <components:ConciergeDesignButton 
-                                Style="{StaticResource ConciergeDesignButtonStyle}" 
                                 x:Name="AttacksDeleteButton"
                                 Width="60"
                                 Foreground="IndianRed"

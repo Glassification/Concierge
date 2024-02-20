@@ -1537,34 +1537,6 @@ namespace Concierge.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 2
-        ///2
-        ///2
-        ///2
-        ///3
-        ///3
-        ///3
-        ///3
-        ///4
-        ///4
-        ///4
-        ///4
-        ///5
-        ///5
-        ///5
-        ///5
-        ///6
-        ///6
-        ///6
-        ///6.
-        /// </summary>
-        internal static string ProficiencyLevel {
-            get {
-                return ResourceManager.GetString("ProficiencyLevel", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to A character can be proficient in armors, weapons, or tools..
         /// </summary>
         internal static string ProficiencyWindow_ProficiencyComboBox {

@@ -10,6 +10,7 @@ namespace Concierge.Display.Controls
 
     using Concierge.Character;
     using Concierge.Character.Enums;
+    using Concierge.Character.Equipable;
 
     /// <summary>
     /// Interaction logic for WealthControl.xaml.
@@ -36,10 +37,10 @@ namespace Concierge.Display.Controls
 
         public CoinType SelectedCoin { get; private set; }
 
-        public void SetWealth(Wealth wealth)
+        public void SetWealth(Wealth wealth, Equipment equipment)
         {
             this.TotalWealthField.Text = Wealth.FormatGoldValue(wealth.TotalValue);
-            this.ItemWealthField.Text = Wealth.FormatGoldValue(wealth.ItemValue);
+            this.ItemWealthField.Text = Wealth.FormatGoldValue(equipment.EquipmentValue);
 
             this.CopperField.Text = wealth.Copper.ToString();
             this.SilverField.Text = wealth.Silver.ToString();

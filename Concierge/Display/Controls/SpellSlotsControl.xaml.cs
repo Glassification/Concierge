@@ -8,8 +8,7 @@ namespace Concierge.Display.Controls
     using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Input;
-
-    using Concierge.Character.Spellcasting;
+    using Concierge.Character.Magic;
     using Concierge.Commands;
     using Concierge.Common;
     using Concierge.Common.Utilities;
@@ -120,7 +119,7 @@ namespace Concierge.Display.Controls
             }
 
             ConciergeSoundService.UpdateValue();
-            var spellSlots = Program.CcsFile.Character.Magic.SpellSlots;
+            var spellSlots = Program.CcsFile.Character.SpellCasting.SpellSlots;
             var oldItem = spellSlots.DeepCopy();
 
             var (used, total) = spellSlots.Increment(border.Name);

@@ -297,9 +297,9 @@ namespace Concierge.Display
         {
             Program.Logger.Info($"Draw all.");
 
-            var properties = Program.CcsFile.Character.Properties;
+            var disposition = Program.CcsFile.Character.Disposition;
 
-            this.CharacterHeader.Draw(properties);
+            this.CharacterHeader.Draw(disposition);
             this.InventoryPage.Draw();
             this.AbilityPage.Draw();
             this.AttacksPage.Draw();
@@ -319,7 +319,8 @@ namespace Concierge.Display
         public int LongRest()
         {
             Program.Logger.Info($"Long rest.");
-            Program.CcsFile.Character.LongRest();
+            //TODO
+            //Program.CcsFile.Character.LongRest();
 
             this.DisplayStatusText("Long Rest Complete!   HP and Spell Slots Replenished.");
             this.DrawAll();
@@ -330,7 +331,8 @@ namespace Concierge.Display
         public int ShortRest()
         {
             Program.Logger.Info($"Short rest.");
-            Program.CcsFile.Character.ShortRest();
+            //TODO
+            //Program.CcsFile.Character.ShortRest();
 
             this.DisplayStatusText("Short Rest Complete!   Hit Dice Used and Pact Slots Replenished.");
             this.DrawAll();
@@ -341,7 +343,8 @@ namespace Concierge.Display
         public void LevelUp()
         {
             Program.Logger.Info($"Level up.");
-            ConciergeWindowService.ShowWindow(typeof(LevelUpWindow), this.Window_ApplyChanges);
+            //TODO
+            //ConciergeWindowService.ShowWindow(typeof(LevelUpWindow), this.Window_ApplyChanges);
             this.DrawAll();
         }
 
@@ -817,7 +820,7 @@ namespace Concierge.Display
             Program.Logger.Info($"Open properties.");
 
             ConciergeWindowService.ShowEdit(
-                Program.CcsFile.Character.Properties,
+                Program.CcsFile.Character.Disposition,
                 typeof(PropertiesWindow),
                 this.Window_ApplyChanges,
                 ConciergePage.None);

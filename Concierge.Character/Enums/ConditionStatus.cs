@@ -1,0 +1,20 @@
+﻿// <copyright file="ConditionStatus.cs" company="Thomas Beckett">
+// Copyright (c) Thomas Beckett. All rights reserved.
+// </copyright>
+
+namespace Concierge.Character.Enums
+{
+    public enum ConditionStatus
+    {
+        Normal,
+        Afflicted,
+        Encumbered,
+        HeavilyEncumbered,
+        Exhaustion1,
+        Exhaustion2,
+        Exhaustion3,
+        Exhaustion4,
+        Exhaustion5,
+        Exhaustion6,
+    }
+}

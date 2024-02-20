@@ -5,7 +5,7 @@
 namespace Concierge.Commands
 {
     using Concierge.Character;
-    using Concierge.Character.Spellcasting;
+    using Concierge.Character.Magic;
     using Concierge.Character.Vitals;
     using Concierge.Common.Extensions;
     using Concierge.Display.Enums;
@@ -17,7 +17,7 @@ namespace Concierge.Commands
         private readonly Health newHealth;
         private readonly Spell? concentratedSpell;
 
-        private readonly ConciergeCharacter character;
+        private readonly CharacterSheet character;
 
         public DamageCommand(Vitality vitality, Health oldHealth, Health newHealth, Spell? concentratedSpell, ConciergePage conciergePage)
         {
@@ -35,7 +35,7 @@ namespace Concierge.Commands
             this.vitality.Health.SetProperties<Vitality>(this.newHealth);
             if (this.concentratedSpell is not null)
             {
-                this.character.Magic.ClearConcentration();
+                this.character.SpellCasting.ClearConcentration();
             }
         }
 
@@ -44,7 +44,7 @@ namespace Concierge.Commands
             this.vitality.Health.SetProperties<Vitality>(this.oldHealth);
             if (this.concentratedSpell is not null)
             {
-                this.character.Magic.SetConcentration(this.concentratedSpell);
+                this.character.SpellCasting.SetConcentration(this.concentratedSpell);
             }
         }
     }

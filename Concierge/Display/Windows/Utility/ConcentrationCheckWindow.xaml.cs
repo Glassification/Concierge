@@ -7,8 +7,7 @@ namespace Concierge.Display.Windows.Utility
     using System.Windows;
     using System.Windows.Media;
 
-    using Concierge.Character;
-    using Concierge.Character.AbilitySaves;
+    using Concierge.Character.Aspects;
     using Concierge.Character.Enums;
     using Concierge.Common;
     using Concierge.Common.Enums;
@@ -21,7 +20,7 @@ namespace Concierge.Display.Windows.Utility
     /// </summary>
     public partial class ConcentrationCheckWindow : ConciergeWindow
     {
-        private IAbility ability;
+        private Attribute attribute = Attribute.Default;
         private AbilitySave result;
         private int difficultyClass;
 
@@ -29,21 +28,19 @@ namespace Concierge.Display.Windows.Utility
         {
             this.InitializeComponent();
             this.UseRoundedCorners();
-
-            this.ability = SavingThrow.Empty;
         }
 
         public override string HeaderText => "Concentration Check";
 
         public override string WindowName => nameof(ConcentrationCheckWindow);
 
-        public override AbilitySave ShowAbilityCheckWindow(IAbility ability, int value)
+        public override AbilitySave ShowAbilityCheckWindow(Attribute attribute, int value)
         {
             this.difficultyClass = Constants.Concentration(value);
-            this.ability = ability;
+            this.attribute = attribute;
 
             this.ConstitutionBonusUpDown.Value = 0;
-            this.ConstitutionSaveTextBox.Text = ability.Bonus.ToString();
+            this.ConstitutionSaveTextBox.Text = attribute.Bonus.ToString();
             this.DamageTextBox.Text = value.ToString();
             this.DifficultyClassTextBox.Text = this.difficultyClass.ToString();
             this.RollResultLabel.Text = "Roll a constitution check...";
@@ -59,7 +56,7 @@ namespace Concierge.Display.Windows.Utility
             var diceRoll1 = new DiceRoll(Dice.D20, 1, modifier);
             var diceRoll2 = new DiceRoll(Dice.D20, 1, modifier);
 
-            switch (this.ability.StatusChecks)
+            switch (this.attribute.GetSaveStatus(Program.CcsFile.Character.Vitality))
             {
                 default:
                 case StatusChecks.Normal:

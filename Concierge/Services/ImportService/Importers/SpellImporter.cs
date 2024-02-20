@@ -7,12 +7,12 @@ namespace Concierge.Services.ImportService.Importers
     using System.Collections.Generic;
 
     using Concierge.Character;
-    using Concierge.Character.Spellcasting;
+    using Concierge.Character.Magic;
     using Concierge.Common;
 
     public sealed class SpellImporter : Importer
     {
-        public SpellImporter(ConciergeCharacter character)
+        public SpellImporter(CharacterSheet character)
             : base(character)
         {
         }
@@ -26,12 +26,12 @@ namespace Concierge.Services.ImportService.Importers
 
             Program.Logger.Info($"Import spells.");
             CycleGuids(spells);
-            this.Character.Magic.Spells.AddRange(spells);
+            this.Character.SpellCasting.Spells.AddRange(spells);
         }
 
-        public override IEnumerable<IUnique> Load(ConciergeCharacter character)
+        public override IEnumerable<IUnique> Load(CharacterSheet character)
         {
-            return character.Magic.Spells;
+            return character.SpellCasting.Spells;
         }
 
         public override IEnumerable<IUnique> Load(string fileName)

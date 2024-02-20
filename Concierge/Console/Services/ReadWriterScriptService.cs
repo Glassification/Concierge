@@ -6,9 +6,9 @@ namespace Concierge.Console.Services
 {
     using System.Collections.ObjectModel;
 
-    using Concierge.Character.Characteristics;
+    using Concierge.Character.Details;
     using Concierge.Character.Equipable;
-    using Concierge.Character.Spellcasting;
+    using Concierge.Character.Magic;
     using Concierge.Character.Vitals;
     using Concierge.Console.Enums;
     using Concierge.Console.Scripts;
@@ -88,8 +88,7 @@ namespace Concierge.Console.Services
                 "game" => new ReadWriterScript<ReadOnlyCollection<string>>(Defaults.Games).Evaluate(command),
                 "instrument" => new ReadWriterScript<ReadOnlyCollection<string>>(Defaults.Instruments).Evaluate(command),
                 "levelexp" => new ReadWriterScript<ReadOnlyCollection<int>>(Defaults.Levels).Evaluate(command),
-                "magicclassname" => new ReadWriterScript<ReadOnlyCollection<MagicClass>>(Defaults.MagicClasses).Evaluate(command),
-                "proficiency" => new ReadWriterScript<ReadOnlyCollection<int>>(Defaults.ProficiencyLevels).Evaluate(command),
+                "magicclassname" => new ReadWriterScript<ReadOnlyCollection<MagicalClass>>(Defaults.MagicClasses).Evaluate(command),
                 "race" => new ReadWriterScript<ReadOnlyCollection<DetailedItem>>(Defaults.Races).Evaluate(command),
                 "statuseffect" => new ReadWriterScript<ReadOnlyCollection<StatusEffect>>(Defaults.StatusEffects).Evaluate(command),
                 "tool" => new ReadWriterScript<ReadOnlyCollection<string>>(Defaults.Tools).Evaluate(command),

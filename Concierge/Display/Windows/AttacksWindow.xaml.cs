@@ -75,8 +75,6 @@ namespace Concierge.Display.Windows
 
         private List<Weapon> Weapons { get; set; }
 
-        private ICreature? Creature { get; set; }
-
         public override ConciergeResult ShowWizardSetup(string buttonText)
         {
             this.Weapons = Program.CcsFile.Character.Equipment.Weapons;
@@ -91,7 +89,7 @@ namespace Concierge.Display.Windows
             return this.Result;
         }
 
-        public override bool ShowAdd<T>(T weapons, ICreature creature)
+        public override bool ShowAdd<T>(T weapons)
         {
             if (weapons is not List<Weapon> castItem)
             {
@@ -102,7 +100,6 @@ namespace Concierge.Display.Windows
             this.Editing = false;
             this.HeaderTextBlock.Text = this.HeaderText;
             this.ItemsAdded = false;
-            this.Creature = creature;
 
             this.ClearFields();
             this.ShowConciergeWindow();
@@ -241,9 +238,9 @@ namespace Concierge.Display.Windows
             }
         }
 
-        private Weapon Create(ICreature? creature)
+        private Weapon Create()
         {
-            return new Weapon(creature ?? throw new NullValueException(nameof(creature)))
+            return new Weapon(new CharacterService(Program.CcsFile.Character))
             {
                 Name = this.AttackComboBox.Text,
                 Type = this.TypeComboBox.Text.Strip(" ").ToEnum<WeaponTypes>(),
@@ -265,7 +262,7 @@ namespace Concierge.Display.Windows
         private Weapon ToWeapon()
         {
             this.ItemsAdded = true;
-            var weapon = this.Create(this.Creature);
+            var weapon = this.Create();
 
             Program.UndoRedoService.AddCommand(new AddCommand<Weapon>(this.Weapons, weapon, this.ConciergePage));
 
@@ -320,7 +317,7 @@ namespace Concierge.Display.Windows
                 return;
             }
 
-            Program.CustomItemService.AddCustomItem(this.Create(Program.CcsFile.Character));
+            Program.CustomItemService.AddCustomItem(this.Create());
             this.ClearFields();
             this.AttackComboBox.ItemsSource = DefaultItems;
         }

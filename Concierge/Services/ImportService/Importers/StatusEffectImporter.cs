@@ -12,7 +12,7 @@ namespace Concierge.Services.ImportService.Importers
 
     public sealed class StatusEffectImporter : Importer
     {
-        public StatusEffectImporter(ConciergeCharacter character)
+        public StatusEffectImporter(CharacterSheet character)
             : base(character)
         {
         }
@@ -26,12 +26,12 @@ namespace Concierge.Services.ImportService.Importers
 
             Program.Logger.Info($"Import status effect.");
             CycleGuids(effects);
-            this.Character.Vitality.StatusEffects.AddRange(effects);
+            this.Character.Vitality.Status.StatusEffects.AddRange(effects);
         }
 
-        public override IEnumerable<IUnique> Load(ConciergeCharacter character)
+        public override IEnumerable<IUnique> Load(CharacterSheet character)
         {
-            return character.Vitality.StatusEffects;
+            return character.Vitality.Status.StatusEffects;
         }
 
         public override IEnumerable<IUnique> Load(string fileName)

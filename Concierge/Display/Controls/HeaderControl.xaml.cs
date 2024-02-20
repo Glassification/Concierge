@@ -11,6 +11,7 @@ namespace Concierge.Display.Controls
     using System.Windows.Media;
 
     using Concierge.Character;
+    using Concierge.Character.Dispositions;
     using Concierge.Common;
     using Concierge.Common.Extensions;
     using Concierge.Common.Utilities;
@@ -26,16 +27,16 @@ namespace Concierge.Display.Controls
             this.InitializeComponent();
         }
 
-        public void Draw(CharacterProperties properties)
+        public void Draw(Disposition disposition)
         {
             this.HeaderGrid.Children.Clear();
 
-            var text = $"{properties.Name}  ~  {GetLevelRace(properties)}{StringUtility.CreateCharacters(" ", 10)}{GetAlignmentAndBackground(properties)}";
+            var text = $"{disposition.Name}  ~  {GetLevelRace(disposition)}{StringUtility.CreateCharacters(" ", 10)}{GetAlignmentAndBackground(disposition)}";
             var nameBlock = CreateTextBlock(20, CleanNameBlock(text), this.HeaderGrid.ActualWidth * 0.60);
             this.HeaderGrid.Children.Add(nameBlock);
             Grid.SetColumn(nameBlock, 0);
 
-            var classBlock = CreateTextBlock(20, GetClasses(properties), this.HeaderGrid.ActualWidth * 0.40);
+            var classBlock = CreateTextBlock(20, GetClasses(disposition), this.HeaderGrid.ActualWidth * 0.40);
             this.HeaderGrid.Children.Add(classBlock);
             Grid.SetColumn(classBlock, 1);
         }
@@ -85,32 +86,32 @@ namespace Concierge.Display.Controls
             }
         }
 
-        private static string GetLevelRace(CharacterProperties properties)
+        private static string GetLevelRace(Disposition disposition)
         {
-            return properties.Level > 0 || !properties.Race.IsNullOrWhiteSpace() ? $"Lvl {properties.Level}  {properties.Race}" : string.Empty;
+            return disposition.Level > 0 || !disposition.Race.IsNullOrWhiteSpace() ? $"Lvl {disposition.Level}  {disposition.Race}" : string.Empty;
         }
 
-        private static string GetAlignmentAndBackground(CharacterProperties properties)
+        private static string GetAlignmentAndBackground(Disposition disposition)
         {
-            return $"{properties.Alignment}   {properties.Background}".Trim();
+            return $"{disposition.Alignment}   {disposition.Background}".Trim();
         }
 
-        private static string GetClasses(CharacterProperties properties)
+        private static string GetClasses(Disposition disposition)
         {
             var builder = new StringBuilder();
-            if (!properties.Class1.ToString().IsNullOrWhiteSpace())
+            if (!disposition.Class1.ToString().IsNullOrWhiteSpace())
             {
-                builder.Append($"{properties.Class1}");
+                builder.Append($"{disposition.Class1}");
             }
 
-            if (!properties.Class2.ToString().IsNullOrWhiteSpace())
+            if (!disposition.Class2.ToString().IsNullOrWhiteSpace())
             {
-                builder.Append($", {properties.Class2}");
+                builder.Append($", {disposition.Class2}");
             }
 
-            if (!properties.Class3.ToString().IsNullOrWhiteSpace())
+            if (!disposition.Class3.ToString().IsNullOrWhiteSpace())
             {
-                builder.Append($", {properties.Class3}");
+                builder.Append($", {disposition.Class3}");
             }
 
             return builder.ToString();

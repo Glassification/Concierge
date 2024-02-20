@@ -4,7 +4,7 @@
 
 namespace Concierge.Commands
 {
-    using Concierge.Character.Spellcasting;
+    using Concierge.Character.Magic;
     using Concierge.Display.Enums;
 
     public sealed class ConcentrationCommand : Command

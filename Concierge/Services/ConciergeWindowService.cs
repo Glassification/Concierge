@@ -6,7 +6,7 @@ namespace Concierge.Services
 {
     using System;
 
-    using Concierge.Character;
+    using Concierge.Character.Aspects;
     using Concierge.Character.Enums;
     using Concierge.Data;
     using Concierge.Display.Components;
@@ -14,6 +14,8 @@ namespace Concierge.Services
     using Concierge.Tools;
 
     using static Concierge.Display.Components.ConciergeWindow;
+
+    using Attribute = Concierge.Character.Aspects.Attribute;
 
     public static class ConciergeWindowService
     {
@@ -29,20 +31,6 @@ namespace Concierge.Services
             conciergeWindow.ConciergePage = conciergePage;
 
             return conciergeWindow.ShowAdd(item);
-        }
-
-        public static bool ShowAdd<T>(T item, Type typeOfWindow, ApplyChangesEventHandler applyEvent, ConciergePage conciergePage, ICreature creature)
-        {
-            var conciergeWindow = Create(typeOfWindow);
-            if (conciergeWindow is null)
-            {
-                return false;
-            }
-
-            conciergeWindow.ApplyChanges += applyEvent;
-            conciergeWindow.ConciergePage = conciergePage;
-
-            return conciergeWindow.ShowAdd(item, creature);
         }
 
         public static void ShowEdit<T>(T item, Type typeOfWindow, ApplyChangesEventHandler applyEvent, ConciergePage conciergePage)
@@ -137,7 +125,7 @@ namespace Concierge.Services
             return conciergeWindow.ShowUseItemWindow(usedItem);
         }
 
-        public static AbilitySave ShowAbilityCheckWindow(Type typeOfWindow, IAbility ability, int value)
+        public static AbilitySave ShowAbilityCheckWindow(Type typeOfWindow, Attribute attribute, int value)
         {
             var conciergeWindow = Create(typeOfWindow);
             if (conciergeWindow is null)
@@ -145,7 +133,18 @@ namespace Concierge.Services
                 return AbilitySave.None;
             }
 
-            return conciergeWindow.ShowAbilityCheckWindow(ability, value);
+            return conciergeWindow.ShowAbilityCheckWindow(attribute, value);
+        }
+
+        public static AbilitySave ShowAbilityCheckWindow(Type typeOfWindow, Skill skill, int value)
+        {
+            var conciergeWindow = Create(typeOfWindow);
+            if (conciergeWindow is null)
+            {
+                return AbilitySave.None;
+            }
+
+            return conciergeWindow.ShowAbilityCheckWindow( skill, value);
         }
 
         public static object? ShowWindow(Type typeOfWindow)

@@ -7,9 +7,9 @@ namespace Concierge
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
 
-    using Concierge.Character.Characteristics;
+    using Concierge.Character.Details;
     using Concierge.Character.Equipable;
-    using Concierge.Character.Spellcasting;
+    using Concierge.Character.Magic;
     using Concierge.Character.Vitals;
     using Concierge.Configuration;
     using Concierge.Data;
@@ -33,7 +33,7 @@ namespace Concierge
             Resources = ReadJson<ClassResource>(Properties.Resources.Resource, nameof(Properties.Resources.Resource));
             Names = ReadJson<Name>(Properties.Resources.Names, nameof(Properties.Resources.Names));
             Glossary = ReadJson<GlossaryEntry>(Properties.Resources.Glossary, nameof(Properties.Resources.Glossary));
-            MagicClasses = ReadJson<MagicClass>(Properties.Resources.MagicClass, nameof(Properties.Resources.MagicClass));
+            MagicClasses = ReadJson<MagicalClass>(Properties.Resources.MagicClass, nameof(Properties.Resources.MagicClass));
             StatusEffects = ReadJson<StatusEffect>(Properties.Resources.StatusEffect, nameof(Properties.Resources.StatusEffect));
             Armor = ReadJson<Armor>(Properties.Resources.Armor, nameof(Properties.Resources.Armor));
             Classes = ReadJson<DetailedItem>(Properties.Resources.Class, nameof(Properties.Resources.Class));
@@ -43,7 +43,6 @@ namespace Concierge
             Alignment = ReadList<string>(Properties.Resources.Alignment, nameof(Properties.Resources.Alignment));
             Backgrounds = ReadList<string>(Properties.Resources.Background, nameof(Properties.Resources.Background));
             Levels = ReadList<int>(Properties.Resources.LevelExp, nameof(Properties.Resources.LevelExp));
-            ProficiencyLevels = ReadList<int>(Properties.Resources.ProficiencyLevel, nameof(Properties.Resources.ProficiencyLevel));
             Tools = ReadList<string>(Properties.Resources.Tool, nameof(Properties.Resources.Tool));
             Games = ReadList<string>(Properties.Resources.Game, nameof(Properties.Resources.Game));
             Instruments = ReadList<string>(Properties.Resources.Instrument, nameof(Properties.Resources.Instrument));
@@ -70,11 +69,9 @@ namespace Concierge
 
         public static ReadOnlyCollection<int> Levels { get; }
 
-        public static ReadOnlyCollection<int> ProficiencyLevels { get; }
-
         public static ReadOnlyCollection<DetailedItem> Classes { get; }
 
-        public static ReadOnlyCollection<MagicClass> MagicClasses { get; }
+        public static ReadOnlyCollection<MagicalClass> MagicClasses { get; }
 
         public static ReadOnlyCollection<Ability> Abilities { get; }
 

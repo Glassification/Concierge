@@ -8,9 +8,9 @@ namespace Concierge.Services
     using System.IO;
     using System.Linq;
 
-    using Concierge.Character.Characteristics;
+    using Concierge.Character.Details;
     using Concierge.Character.Equipable;
-    using Concierge.Character.Spellcasting;
+    using Concierge.Character.Magic;
     using Concierge.Character.Vitals;
     using Concierge.Common;
     using Concierge.Common.Extensions;
@@ -105,9 +105,9 @@ namespace Concierge.Services
                 {
                     item = JsonConvert.DeserializeObject<Language>(customBlob.Blob);
                 }
-                else if (customBlob.Name.Equals(nameof(MagicClass)))
+                else if (customBlob.Name.Equals(nameof(MagicalClass)))
                 {
-                    item = JsonConvert.DeserializeObject<MagicClass>(customBlob.Blob);
+                    item = JsonConvert.DeserializeObject<MagicalClass>(customBlob.Blob);
                 }
                 else if (customBlob.Name.Equals(nameof(Proficiency)))
                 {

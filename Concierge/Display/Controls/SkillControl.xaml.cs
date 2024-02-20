@@ -11,11 +11,10 @@ namespace Concierge.Display.Controls
     using System.Windows.Input;
     using System.Windows.Media;
 
-    using Concierge.Character.AbilitySkills;
+    using Concierge.Character.Aspects;
     using Concierge.Character.Enums;
     using Concierge.Commands;
     using Concierge.Common;
-    using Concierge.Common.Extensions;
     using Concierge.Common.Utilities;
     using Concierge.Display.Enums;
     using Concierge.Display.Windows.Utility;
@@ -55,9 +54,13 @@ namespace Concierge.Display.Controls
                 typeof(AttributeControl), // No idea why it only works this way
                 new UIPropertyMetadata(Brushes.Transparent));
 
+        private Skill skill;
+
         public SkillControl()
         {
             this.InitializeComponent();
+
+            this.skill = Skill.Default;
             this.HorizontalAlignment = HorizontalAlignment.Stretch;
             this.VerticalAlignment = VerticalAlignment.Stretch;
         }
@@ -107,18 +110,20 @@ namespace Concierge.Display.Controls
 
         public string ExpertiseToolTip => $"Toggle {this.SkillName} Expertise";
 
-        public void SetStyle(Skill skill)
+        public void Draw(Attributes attributes, Skill skill)
         {
-            this.Tag = skill;
+            this.skill = skill;
 
-            this.ProficiencyToggle.Foreground = skill.Proficiency ? ConciergeBrushes.Mint : Brushes.SlateGray;
-            this.ProficiencyToggle.Kind = skill.Proficiency ? PackIconKind.RhombusSplit : PackIconKind.RhombusSplitOutline;
+            this.SkillBonus = attributes.GetSkillBonus(this.skill, Program.CcsFile.Character.ProficiencyBonus).ToString();
+            this.ProficiencyToggle.Foreground = this.skill.Proficiency ? ConciergeBrushes.Mint : Brushes.SlateGray;
+            this.ProficiencyToggle.Kind = this.skill.Proficiency ? PackIconKind.RhombusSplit : PackIconKind.RhombusSplitOutline;
 
-            this.ExpertiseToggle.Foreground = skill.Expertise ? ConciergeBrushes.Mint : Brushes.SlateGray;
-            this.ExpertiseToggle.Kind = skill.Expertise ? PackIconKind.RhombusSplit : PackIconKind.RhombusSplitOutline;
+            this.ExpertiseToggle.Foreground = this.skill.Expertise ? ConciergeBrushes.Mint : Brushes.SlateGray;
+            this.ExpertiseToggle.Kind = this.skill.Expertise ? PackIconKind.RhombusSplit : PackIconKind.RhombusSplitOutline;
 
-            SetTextStyleHelper(skill.StatusChecks, this.SkillNameField);
-            SetTextStyleHelper(skill.StatusChecks, this.SkillBonusField);
+            var status = this.skill.GetStatus(Program.CcsFile.Character.Vitality);
+            SetTextStyleHelper(status, this.SkillNameField);
+            SetTextStyleHelper(status, this.SkillBonusField);
         }
 
         private static void SetTextStyleHelper(StatusChecks check, TextBlock textBlock)
@@ -151,10 +156,7 @@ namespace Concierge.Display.Controls
 
         private void SkillField_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            if (this.Tag is Skill skill)
-            {
-                ConciergeWindowService.ShowAbilityCheckWindow(typeof(AbilityCheckWindow), skill, 0);
-            }
+            ConciergeWindowService.ShowAbilityCheckWindow(typeof(AbilityCheckWindow), this.skill, 0);
         }
 
         private void Toggle_MouseEnter(object sender, MouseEventArgs e)
@@ -177,8 +179,7 @@ namespace Concierge.Display.Controls
             }
 
             var packIcon = DisplayUtility.FindVisualChildren<PackIcon>(grid).First();
-            var skill = Program.CcsFile.Character.Skills.GetSkill(this.SkillName.Strip(" "));
-            var check = packIcon.Name.Contains("Proficiency", StringComparison.InvariantCultureIgnoreCase) ? skill.Proficiency : skill.Expertise;
+            var check = packIcon.Name.Contains("Proficiency", StringComparison.InvariantCultureIgnoreCase) ? this.skill.Proficiency : this.skill.Expertise;
 
             packIcon.Foreground = check ? ConciergeBrushes.Mint : Brushes.SlateGray;
             Mouse.OverrideCursor = Cursors.Arrow;
@@ -188,30 +189,22 @@ namespace Concierge.Display.Controls
         {
             ConciergeSoundService.UpdateValue();
 
-            var skill = Program.CcsFile.Character.Skills;
-            var skillCopy = skill.DeepCopy();
-
-            var save = skill.GetSkill(this.SkillName.Strip(" "));
-            save.Proficiency = !save.Proficiency;
-
+            var skillCopy = this.skill.DeepCopy();
+            this.skill.Proficiency = !this.skill.Proficiency;
             this.RaiseEvent(new RoutedEventArgs(ToggleClickedEvent));
 
-            Program.UndoRedoService.AddCommand(new EditCommand<Skills>(skill, skillCopy, ConciergePage.Overview));
+            Program.UndoRedoService.AddCommand(new EditCommand<Skill>(this.skill, skillCopy, ConciergePage.Overview));
         }
 
         private void ExpertiseToggle_MouseDown(object sender, MouseButtonEventArgs e)
         {
             ConciergeSoundService.UpdateValue();
 
-            var skill = Program.CcsFile.Character.Skills;
-            var skillCopy = skill.DeepCopy();
-
-            var save = skill.GetSkill(this.SkillName.Strip(" "));
-            save.Expertise = !save.Expertise;
-
+            var skillCopy = this.skill.DeepCopy();
+            this.skill.Expertise = !this.skill.Expertise;
             this.RaiseEvent(new RoutedEventArgs(ToggleClickedEvent));
 
-            Program.UndoRedoService.AddCommand(new EditCommand<Skills>(skill, skillCopy, ConciergePage.Overview));
+            Program.UndoRedoService.AddCommand(new EditCommand<Skill>(this.skill, skillCopy, ConciergePage.Overview));
         }
     }
 }

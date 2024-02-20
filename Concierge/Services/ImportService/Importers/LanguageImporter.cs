@@ -7,12 +7,12 @@ namespace Concierge.Services.ImportService.Importers
     using System.Collections.Generic;
 
     using Concierge.Character;
-    using Concierge.Character.Characteristics;
+    using Concierge.Character.Details;
     using Concierge.Common;
 
     public sealed class LanguageImporter : Importer
     {
-        public LanguageImporter(ConciergeCharacter character)
+        public LanguageImporter(CharacterSheet character)
             : base(character)
         {
         }
@@ -26,12 +26,12 @@ namespace Concierge.Services.ImportService.Importers
 
             Program.Logger.Info($"Import language.");
             CycleGuids(languages);
-            this.Character.Characteristic.Languages.AddRange(languages);
+            this.Character.Detail.Languages.AddRange(languages);
         }
 
-        public override IEnumerable<IUnique> Load(ConciergeCharacter character)
+        public override IEnumerable<IUnique> Load(CharacterSheet character)
         {
-            return character.Characteristic.Languages;
+            return character.Detail.Languages;
         }
 
         public override IEnumerable<IUnique> Load(string fileName)

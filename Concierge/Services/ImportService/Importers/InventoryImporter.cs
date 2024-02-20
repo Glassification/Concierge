@@ -12,7 +12,7 @@ namespace Concierge.Services.ImportService.Importers
 
     public sealed class InventoryImporter : Importer
     {
-        public InventoryImporter(ConciergeCharacter character)
+        public InventoryImporter(CharacterSheet character)
             : base(character)
         {
         }
@@ -29,7 +29,7 @@ namespace Concierge.Services.ImportService.Importers
             this.Character.Equipment.Inventory.AddRange(items);
         }
 
-        public override IEnumerable<IUnique> Load(ConciergeCharacter character)
+        public override IEnumerable<IUnique> Load(CharacterSheet character)
         {
             return character.Equipment.Inventory;
         }

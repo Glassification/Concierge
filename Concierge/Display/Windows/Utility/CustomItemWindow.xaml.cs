@@ -7,9 +7,9 @@ namespace Concierge.Display.Windows.Utility
     using System;
     using System.Windows;
 
-    using Concierge.Character.Characteristics;
+    using Concierge.Character.Details;
     using Concierge.Character.Equipable;
-    using Concierge.Character.Spellcasting;
+    using Concierge.Character.Magic;
     using Concierge.Character.Vitals;
     using Concierge.Common;
     using Concierge.Data;
@@ -87,7 +87,7 @@ namespace Concierge.Display.Windows.Utility
             {
                 type = typeof(LanguagesWindow);
             }
-            else if (item is MagicClass)
+            else if (item is MagicalClass)
             {
                 type = typeof(MagicClassWindow);
             }

@@ -4,7 +4,9 @@
 
 namespace Concierge.Display.Windows
 {
+    using System.Linq;
     using System.Windows;
+    using System.Windows.Data;
 
     using Concierge.Character.Enums;
     using Concierge.Character.Equipable;
@@ -45,7 +47,7 @@ namespace Concierge.Display.Windows
         {
             this.PreviousSlot = EquipmentSlot.Torso.ToString();
             this.ClearFields();
-            this.ItemComboBox.ItemsSource = Program.CcsFile.Character.Equipment.EquippedItems.Equipable;
+            this.ItemComboBox.ItemsSource = GetEquipableItems();
             this.OkButton.Visibility = Visibility.Collapsed;
             this.CancelButton.Content = buttonText;
 
@@ -58,7 +60,7 @@ namespace Concierge.Display.Windows
         {
             this.PreviousSlot = EquipmentSlot.Torso.ToString();
             this.ClearFields();
-            this.ItemComboBox.ItemsSource = Program.CcsFile.Character.Equipment.EquippedItems.Equipable;
+            this.ItemComboBox.ItemsSource = GetEquipableItems();
             this.ItemsAdded = false;
 
             this.ShowConciergeWindow();
@@ -72,6 +74,30 @@ namespace Concierge.Display.Windows
 
             this.EquipItem();
             this.CloseConciergeWindow();
+        }
+
+        private static CompositeCollection GetEquipableItems()
+        {
+            var collection = new CompositeCollection();
+            var unequippedItems = Program.CcsFile.Character.Equipment.Inventory.Where(x => x.EquipmentSlot == EquipmentSlot.None).ToList();
+            var unequippedWeapons = Program.CcsFile.Character.Equipment.Weapons.Where(x => x.EquipmentSlot == EquipmentSlot.None).ToList();
+
+            if (!unequippedItems.IsEmpty())
+            {
+                collection.Add(new CollectionContainer() { Collection = unequippedItems.Select(x => new DetailedComboBoxItemControl(x)) });
+            }
+
+            if (!unequippedWeapons.IsEmpty())
+            {
+                collection.Add(new CollectionContainer() { Collection = unequippedWeapons.Select(x => new DetailedComboBoxItemControl(x)) });
+            }
+
+            if (collection.Count == 2)
+            {
+                collection.Insert(1, new ConciergeSeparator());
+            }
+
+            return collection;
         }
 
         private void ClearFields()
@@ -142,7 +168,7 @@ namespace Concierge.Display.Windows
             }
 
             this.ClearFields();
-            this.ItemComboBox.ItemsSource = Program.CcsFile.Character.Equipment.EquippedItems.Equipable;
+            this.ItemComboBox.ItemsSource = GetEquipableItems();
             this.InvokeApplyChanges();
         }
 

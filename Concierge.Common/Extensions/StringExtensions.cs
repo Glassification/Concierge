@@ -126,7 +126,7 @@ namespace Concierge.Common.Extensions
         }
 
         /// <summary>
-        /// Formats the string by inserting spaces before each uppercase letter, except for the first character.
+        /// Formats the string by inserting spaces before each uppercase letter or digit, except for the first character.
         /// </summary>
         /// <param name="str">The string to format.</param>
         /// <returns>The formatted string.</returns>
@@ -147,7 +147,7 @@ namespace Concierge.Common.Extensions
 
             for (int i = 1; i < charArray.Length; i++)
             {
-                if (char.IsUpper(charArray[i]))
+                if (char.IsUpper(charArray[i]) || char.IsDigit(charArray[i]))
                 {
                     str = str.Insert(i + offset, " ");
                     offset++;

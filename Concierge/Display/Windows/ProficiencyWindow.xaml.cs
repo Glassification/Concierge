@@ -11,7 +11,7 @@ namespace Concierge.Display.Windows
     using System.Windows.Data;
     using System.Windows.Media;
 
-    using Concierge.Character.Characteristics;
+    using Concierge.Character.Details;
     using Concierge.Character.Enums;
     using Concierge.Commands;
     using Concierge.Common;
@@ -61,7 +61,7 @@ namespace Concierge.Display.Windows
             this.Editing = false;
             this.HeaderTextBlock.Text = this.HeaderText;
             this.OkButton.Visibility = Visibility.Collapsed;
-            this.SelectedProficiencies = Program.CcsFile.Character.Characteristic.Proficiencies;
+            this.SelectedProficiencies = Program.CcsFile.Character.Detail.Proficiencies;
             this.CancelButton.Content = buttonText;
 
             this.SetEnabledState(true);

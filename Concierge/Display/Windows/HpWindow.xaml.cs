@@ -91,12 +91,12 @@ namespace Concierge.Display.Windows
                         castItem,
                         oldItem,
                         castItem.Health.DeepCopy(),
-                        this.abilitySave != AbilitySave.Success ? Program.CcsFile.Character.Magic.ConcentratedSpell : null,
+                        this.abilitySave != AbilitySave.Success ? Program.CcsFile.Character.SpellCasting.ConcentratedSpell : null,
                         this.ConciergePage));
 
                 if (this.abilitySave == AbilitySave.Failure)
                 {
-                    Program.CcsFile.Character.Magic.ClearConcentration();
+                    Program.CcsFile.Character.SpellCasting.ClearConcentration();
                 }
             }
 
@@ -117,7 +117,7 @@ namespace Concierge.Display.Windows
 
         private void ConcentrationCheck(int damage)
         {
-            var concentratedSpell = Program.CcsFile.Character.Magic.ConcentratedSpell;
+            var concentratedSpell = Program.CcsFile.Character.SpellCasting.ConcentratedSpell;
             if (this.ConciergePage != ConciergePage.Overview || concentratedSpell is null)
             {
                 return;
@@ -125,7 +125,7 @@ namespace Concierge.Display.Windows
 
             this.abilitySave = ConciergeWindowService.ShowAbilityCheckWindow(
                 typeof(ConcentrationCheckWindow),
-                Program.CcsFile.Character.SavingThrows.Constitution,
+                Program.CcsFile.Character.Attributes.Constitution,
                 damage);
             var status = $"{(this.abilitySave == AbilitySave.Failure ? "Lost" : "Kept")} concentration on {concentratedSpell.Name}.";
 

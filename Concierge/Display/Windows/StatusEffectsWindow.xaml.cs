@@ -57,7 +57,7 @@ namespace Concierge.Display.Windows
             this.Editing = false;
             this.HeaderTextBlock.Text = this.HeaderText;
             this.OkButton.Visibility = Visibility.Collapsed;
-            this.StatusEffects = Program.CcsFile.Character.Vitality.StatusEffects;
+            this.StatusEffects = Program.CcsFile.Character.Vitality.Status.StatusEffects;
             this.CancelButton.Content = buttonText;
 
             this.ClearFields();

@@ -5,7 +5,7 @@
 namespace Concierge.Commands
 {
     using Concierge.Character;
-    using Concierge.Character.Spellcasting;
+    using Concierge.Character.Magic;
     using Concierge.Character.Vitals;
     using Concierge.Common.Extensions;
     using Concierge.Display.Enums;
@@ -15,27 +15,33 @@ namespace Concierge.Commands
     {
         private readonly Vitality oldVitality;
         private readonly Vitality newVitality;
-        private readonly Vitality oldCompanionVitality;
+        private readonly Health oldCompanionHealth;
+        private readonly HitDice oldCompanionHitDice;
         private readonly Spell? oldConcentratedSpell;
-        private readonly Vitality newCompanionVitality;
+        private readonly Health newCompanionHealth;
+        private readonly HitDice newCompanionHitDice;
         private readonly SpellSlots oldSpellSlots;
         private readonly SpellSlots newSpellSlots;
 
-        private readonly ConciergeCharacter character;
+        private readonly CharacterSheet character;
 
         public RestCommand(
             Vitality oldVitality,
-            Vitality oldCompanionVitality,
+            Health oldCompanionHealth,
+            HitDice oldCompanionHitDice,
             SpellSlots oldSpellSlots,
             Spell? oldConcentratedSpell,
             Vitality newVitality,
-            Vitality newCompanionVitality,
+            Health newCompanionHealth,
+            HitDice newCompanionHitDice,
             SpellSlots newSpellSlots)
         {
             this.oldVitality = oldVitality;
             this.newVitality = newVitality;
-            this.oldCompanionVitality = oldCompanionVitality;
-            this.newCompanionVitality = newCompanionVitality;
+            this.oldCompanionHealth = oldCompanionHealth;
+            this.newCompanionHealth = newCompanionHealth;
+            this.oldCompanionHitDice = oldCompanionHitDice;
+            this.newCompanionHitDice = newCompanionHitDice;
             this.oldSpellSlots = oldSpellSlots;
             this.newSpellSlots = newSpellSlots;
             this.oldConcentratedSpell = oldConcentratedSpell;
@@ -46,16 +52,18 @@ namespace Concierge.Commands
         public override void Redo()
         {
             this.character.Vitality.SetProperties<Vitality>(this.newVitality);
-            this.character.Magic.SpellSlots.SetProperties<SpellSlots>(this.newSpellSlots);
-            this.character.Companion.Vitality.SetProperties<Vitality>(this.newCompanionVitality);
-            this.character.Magic.ClearConcentration();
+            this.character.SpellCasting.SpellSlots.SetProperties<SpellSlots>(this.newSpellSlots);
+            this.character.Companion.Health.SetProperties<Health>(this.newCompanionHealth);
+            this.character.Companion.HitDice.SetProperties<HitDice>(this.newCompanionHitDice);
+            this.character.SpellCasting.ClearConcentration();
         }
 
         public override void Undo()
         {
             this.character.Vitality.SetProperties<Vitality>(this.oldVitality);
-            this.character.Magic.SpellSlots.SetProperties<SpellSlots>(this.oldSpellSlots);
-            this.character.Companion.Vitality.SetProperties<Vitality>(this.oldCompanionVitality);
+            this.character.SpellCasting.SpellSlots.SetProperties<SpellSlots>(this.oldSpellSlots);
+            this.character.Companion.Health.SetProperties<Health>(this.oldCompanionHealth);
+            this.character.Companion.HitDice.SetProperties<HitDice>(this.oldCompanionHitDice);
             if (this.oldConcentratedSpell is not null)
             {
                 this.oldConcentratedSpell.CurrentConcentration = true;
@@ -66,12 +74,19 @@ namespace Concierge.Commands
         {
             var oldVitality = JsonConvert.SerializeObject(this.oldVitality, Formatting.Indented);
             var oldSpellSlots = JsonConvert.SerializeObject(this.oldSpellSlots, Formatting.Indented);
-            var oldCompanion = JsonConvert.SerializeObject(this.oldCompanionVitality, Formatting.Indented);
+            var oldCompanionHealth = JsonConvert.SerializeObject(this.oldCompanionHealth, Formatting.Indented);
+            var oldCompanionHitDice = JsonConvert.SerializeObject(this.oldCompanionHitDice, Formatting.Indented);
             var newVitality = JsonConvert.SerializeObject(this.newVitality, Formatting.Indented);
             var newSpellSlots = JsonConvert.SerializeObject(this.newSpellSlots, Formatting.Indented);
-            var newCompanion = JsonConvert.SerializeObject(this.newCompanionVitality, Formatting.Indented);
+            var newCompanionHealth = JsonConvert.SerializeObject(this.newCompanionHealth, Formatting.Indented);
+            var newCompanionHitDice = JsonConvert.SerializeObject(this.newCompanionHitDice, Formatting.Indented);
 
-            return !(oldVitality.Equals(newVitality) && oldSpellSlots.Equals(newSpellSlots) && oldCompanion.Equals(newCompanion) && this.oldConcentratedSpell is null);
+            return !(
+                oldVitality.Equals(newVitality) &&
+                oldSpellSlots.Equals(newSpellSlots) &&
+                oldCompanionHealth.Equals(newCompanionHealth) &&
+                oldCompanionHitDice.Equals(newCompanionHitDice) &&
+                this.oldConcentratedSpell is null);
         }
     }
 }

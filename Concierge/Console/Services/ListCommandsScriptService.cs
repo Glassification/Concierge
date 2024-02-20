@@ -27,7 +27,7 @@ namespace Concierge.Console.Services
             "Log",
         ];
 
-        private readonly IReadWriters historyReadWriter;
+        private readonly HistoryReadWriter historyReadWriter;
         private readonly string consoleHistoryFile = Path.Combine(ConciergeFiles.HistoryDirectory, ConciergeFiles.ConsoleHistoryName);
 
         public ListCommandsScriptService()

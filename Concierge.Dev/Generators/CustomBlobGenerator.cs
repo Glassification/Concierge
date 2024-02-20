@@ -6,9 +6,9 @@ namespace Concierge.DevTools.Generators
 {
     using System.Collections.Generic;
 
-    using Concierge.Character.Characteristics;
+    using Concierge.Character.Details;
     using Concierge.Character.Equipable;
-    using Concierge.Character.Spellcasting;
+    using Concierge.Character.Magic;
     using Concierge.Character.Vitals;
     using Concierge.Data;
     using Concierge.Logging;
@@ -51,7 +51,7 @@ namespace Concierge.DevTools.Generators
                 IsCustom = true,
             };
 
-            var magicClass = new MagicClass()
+            var magicClass = new MagicalClass()
             {
                 Name = "Psylock",
                 IsCustom = true,

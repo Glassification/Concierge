@@ -8,6 +8,7 @@ namespace Concierge.Display.Utility
     using System.Windows;
 
     using Concierge.Character;
+    using Concierge.Character.Dispositions;
     using Concierge.Character.Vitals;
     using Concierge.Common;
     using Concierge.Common.Enums;
@@ -62,7 +63,7 @@ namespace Concierge.Display.Utility
             ConciergeComboBox hitDice,
             IntegerUpDownControl modifier,
             ConciergeTextButton button,
-            CharacterClass characterClass)
+            Class characterClass)
         {
             className.Text = characterClass.Name;
             hitDice.Text = HitDice.GetHitDice(characterClass.Name).ToString();
@@ -85,17 +86,18 @@ namespace Concierge.Display.Utility
             }
         }
 
-        private static void LevelUpClass(ConciergeComboBox hitDice, IntegerUpDownControl modifier, CharacterClass characterClass)
+        private static void LevelUpClass(ConciergeComboBox hitDice, IntegerUpDownControl modifier, Class characterClass)
         {
             var character = Program.CcsFile.Character;
             var hitDieEnum = hitDice.Text.ToEnum<Dice>();
 
-            character.LevelUp(hitDieEnum, characterClass.ClassNumber, modifier.Value);
+            // TODO
+            // character.LevelUp(hitDieEnum, characterClass.ClassNumber, modifier.Value);
         }
 
-        private static bool CanLevelUp(CharacterClass characterClass)
+        private static bool CanLevelUp(Class characterClass)
         {
-            return characterClass.Level < Constants.MaxLevel && Program.CcsFile.Character.Properties.Level < Constants.MaxLevel;
+            return characterClass.Level < Constants.MaxLevel && Program.CcsFile.Character.Disposition.Level < Constants.MaxLevel;
         }
 
         private void FillFields()
@@ -108,21 +110,21 @@ namespace Concierge.Display.Utility
                 this.Class1DiceComboBox,
                 this.Class1ModIntegerUpDown,
                 this.Class1LevelUpButton,
-                character.Properties.Class1);
+                character.Disposition.Class1);
             FillClass(
                 this.Class2NameTextBox,
                 this.Class2NameTextBoxBackground,
                 this.Class2DiceComboBox,
                 this.Class2ModIntegerUpDown,
                 this.Class2LevelUpButton,
-                character.Properties.Class2);
+                character.Disposition.Class2);
             FillClass(
                 this.Class3NameTextBox,
                 this.Class3NameTextBoxBackground,
                 this.Class3DiceComboBox,
                 this.Class3ModIntegerUpDown,
                 this.Class3LevelUpButton,
-                character.Properties.Class3);
+                character.Disposition.Class3);
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
@@ -145,17 +147,17 @@ namespace Concierge.Display.Utility
                 return;
             }
 
-            if (button.Name.Contains('1') && CanLevelUp(Program.CcsFile.Character.Properties.Class1))
+            if (button.Name.Contains('1') && CanLevelUp(Program.CcsFile.Character.Disposition.Class1))
             {
-                LevelUpClass(this.Class1DiceComboBox, this.Class1ModIntegerUpDown, Program.CcsFile.Character.Properties.Class1);
+                LevelUpClass(this.Class1DiceComboBox, this.Class1ModIntegerUpDown, Program.CcsFile.Character.Disposition.Class1);
             }
-            else if (button.Name.Contains('2') && CanLevelUp(Program.CcsFile.Character.Properties.Class2))
+            else if (button.Name.Contains('2') && CanLevelUp(Program.CcsFile.Character.Disposition.Class2))
             {
-                LevelUpClass(this.Class2DiceComboBox, this.Class2ModIntegerUpDown, Program.CcsFile.Character.Properties.Class2);
+                LevelUpClass(this.Class2DiceComboBox, this.Class2ModIntegerUpDown, Program.CcsFile.Character.Disposition.Class2);
             }
-            else if (CanLevelUp(Program.CcsFile.Character.Properties.Class3))
+            else if (CanLevelUp(Program.CcsFile.Character.Disposition.Class3))
             {
-                LevelUpClass(this.Class3DiceComboBox, this.Class3ModIntegerUpDown, Program.CcsFile.Character.Properties.Class3);
+                LevelUpClass(this.Class3DiceComboBox, this.Class3ModIntegerUpDown, Program.CcsFile.Character.Disposition.Class3);
             }
 
             this.FillFields();

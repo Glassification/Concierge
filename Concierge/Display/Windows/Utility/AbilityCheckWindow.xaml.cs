@@ -6,8 +6,7 @@ namespace Concierge.Display.Windows.Utility
 {
     using System.Windows;
 
-    using Concierge.Character;
-    using Concierge.Character.AbilitySaves;
+    using Concierge.Character.Aspects;
     using Concierge.Character.Enums;
     using Concierge.Common.Enums;
     using Concierge.Common.Extensions;
@@ -20,41 +19,51 @@ namespace Concierge.Display.Windows.Utility
     /// </summary>
     public partial class AbilityCheckWindow : ConciergeWindow
     {
-        private IAbility ability;
+        private Attribute? attribute;
+        private Skill? skill;
 
         public AbilityCheckWindow()
         {
             this.InitializeComponent();
             this.UseRoundedCorners();
-
-            this.ability = SavingThrow.Empty;
         }
 
         public override string HeaderText => $"{this.GetName()} {this.GetAction()}";
 
         public override string WindowName => nameof(AbilityCheckWindow);
 
-        public override AbilitySave ShowAbilityCheckWindow(IAbility ability, int value)
+        public override AbilitySave ShowAbilityCheckWindow(Attribute attribute, int value)
         {
-            this.ability = ability;
+            this.attribute = attribute;
 
             var name = this.GetName();
             var action = this.GetAction();
 
             this.HeaderLabel.Text = this.HeaderText;
             this.ModifierUpDown.Value = 0;
-            this.AbilityBonusTextBox.Text = ability.Bonus.ToString();
+            this.AbilityBonusTextBox.Text = attribute.Bonus.ToString();
             this.RollResultLabel.Text = $"Roll {name.GetDeterminer(true)} {name} {action}...";
-            if (action.Equals("Check"))
-            {
-                this.AbilityLabel.Text = "Skill Bonus:";
-                this.AbilityModifierLabel.Text = "Skill Modifier:";
-            }
-            else
-            {
-                this.AbilityLabel.Text = "Saving Throw Bonus:";
-                this.AbilityModifierLabel.Text = "Ability Save Modifier:";
-            }
+            this.AbilityLabel.Text = "Saving Throw Bonus:";
+            this.AbilityModifierLabel.Text = "Ability Save Modifier:";
+
+            this.ShowConciergeWindow();
+
+            return AbilitySave.None;
+        }
+
+        public override AbilitySave ShowAbilityCheckWindow(Skill skill, int value)
+        {
+            this.skill = skill;
+
+            var name = this.GetName();
+            var action = this.GetAction();
+
+            this.HeaderLabel.Text = this.HeaderText;
+            this.ModifierUpDown.Value = 0;
+            this.AbilityBonusTextBox.Text = Program.CcsFile.Character.Attributes.GetSkillBonus(skill, Program.CcsFile.Character.ProficiencyBonus).ToString();
+            this.RollResultLabel.Text = $"Roll {name.GetDeterminer(true)} {name} {action}...";
+            this.AbilityLabel.Text = "Skill Bonus:";
+            this.AbilityModifierLabel.Text = "Skill Modifier:";
 
             this.ShowConciergeWindow();
 
@@ -67,7 +76,7 @@ namespace Concierge.Display.Windows.Utility
             var diceRoll1 = new DiceRoll(Dice.D20, 1, modifier);
             var diceRoll2 = new DiceRoll(Dice.D20, 1, modifier);
 
-            return this.ability.StatusChecks switch
+            return this.GetStatus() switch
             {
                 StatusChecks.Advantage => $"Rolled {(diceRoll1.Total > diceRoll2.Total ? diceRoll1 : diceRoll2)} with Advantage.",
                 StatusChecks.Disadvantage => $"Rolled {(diceRoll1.Total > diceRoll2.Total ? diceRoll2 : diceRoll1)} with Disadvantage.",
@@ -78,23 +87,18 @@ namespace Concierge.Display.Windows.Utility
 
         private string GetName()
         {
-            return this.ability.GetType().Name.FormatFromPascalCase();
+            return (this.skill is null ? this.attribute?.Type.ToString().FormatFromPascalCase() : this.skill?.Type.ToString().FormatFromPascalCase()) ?? string.Empty;
+        }
+
+        private StatusChecks GetStatus()
+        {
+            var vitality = Program.CcsFile.Character.Vitality;
+            return (this.skill is null ? this.attribute?.GetSaveStatus(vitality) : this.skill?.GetStatus(vitality)) ?? StatusChecks.Normal;
         }
 
         private string GetAction()
         {
-            var name = this.ability.GetType().Name;
-            if (name.Equals(nameof(Strength)) ||
-                name.Equals(nameof(Dexterity)) ||
-                name.Equals(nameof(Constitution)) ||
-                name.Equals(nameof(Intelligence)) ||
-                name.Equals(nameof(Wisdom)) ||
-                name.Equals(nameof(Charisma)))
-            {
-                return "Save";
-            }
-
-            return "Check";
+            return this.attribute is null ? "Check" : "Save";
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)

@@ -19,6 +19,7 @@ namespace Concierge.Display.Pages
     using Concierge.Display.Windows;
     using Concierge.Display.Windows.Utility;
     using Concierge.Services;
+    using Concierge.Tools;
 
     /// <summary>
     /// Interaction logic for AttacksPage.xaml.
@@ -117,7 +118,7 @@ namespace Concierge.Display.Pages
         private void DrawStatusEffects()
         {
             this.StatusEffectsDataGrid.Items.Clear();
-            Program.CcsFile.Character.Vitality.StatusEffects.ForEach(effect => this.StatusEffectsDataGrid.Items.Add(effect));
+            Program.CcsFile.Character.Vitality.Status.StatusEffects.ForEach(effect => this.StatusEffectsDataGrid.Items.Add(effect));
             this.SetStatusDataGridControlState();
         }
 
@@ -205,8 +206,7 @@ namespace Concierge.Display.Pages
                 Program.CcsFile.Character.Equipment.Weapons,
                 typeof(AttacksWindow),
                 this.Window_ApplyChanges,
-                ConciergePage.Attacks,
-                Program.CcsFile.Character);
+                ConciergePage.Attacks);
 
             this.DrawWeaponList();
             if (added)
@@ -241,7 +241,7 @@ namespace Concierge.Display.Pages
             var oldItem = ammunition.DeepCopy();
             var index = this.AmmoDataGrid.SelectedIndex;
 
-            ammunition.Use();
+            ammunition.Use(UseItem.Empty);
             this.DrawAmmoList();
             this.AmmoDataGrid.SetSelectedIndex(index);
             Program.UndoRedoService.AddCommand(new EditCommand<Ammunition>(ammunition, oldItem, this.ConciergePage));
@@ -323,8 +323,8 @@ namespace Concierge.Display.Pages
             var effect = (StatusEffect)this.StatusEffectsDataGrid.SelectedItem;
             var index = this.StatusEffectsDataGrid.SelectedIndex;
 
-            Program.UndoRedoService.AddCommand(new DeleteCommand<StatusEffect>(Program.CcsFile.Character.Vitality.StatusEffects, effect, index, this.ConciergePage));
-            Program.CcsFile.Character.Vitality.StatusEffects.Remove(effect);
+            Program.UndoRedoService.AddCommand(new DeleteCommand<StatusEffect>(Program.CcsFile.Character.Vitality.Status.StatusEffects, effect, index, this.ConciergePage));
+            Program.CcsFile.Character.Vitality.Status.StatusEffects.Remove(effect);
             this.DrawStatusEffects();
             this.StatusEffectsDataGrid.SetSelectedIndex(index);
         }
@@ -332,7 +332,7 @@ namespace Concierge.Display.Pages
         private void AddEffectsButton_Click(object sender, RoutedEventArgs e)
         {
             var added = ConciergeWindowService.ShowAdd(
-                Program.CcsFile.Character.Vitality.StatusEffects,
+                Program.CcsFile.Character.Vitality.Status.StatusEffects,
                 typeof(StatusEffectsWindow),
                 this.Window_ApplyChanges,
                 ConciergePage.Attacks);
@@ -356,7 +356,7 @@ namespace Concierge.Display.Pages
 
         private void StatusEffectsDataGrid_Sorted(object sender, RoutedEventArgs e)
         {
-            this.StatusEffectsDataGrid.SortListFromDataGrid(Program.CcsFile.Character.Vitality.StatusEffects, this.ConciergePage);
+            this.StatusEffectsDataGrid.SortListFromDataGrid(Program.CcsFile.Character.Vitality.Status.StatusEffects, this.ConciergePage);
         }
 
         private void AttackDataGrid_Filtered(object sender, RoutedEventArgs e)
@@ -376,7 +376,7 @@ namespace Concierge.Display.Pages
 
             var ammunition = this.AmmoDataGrid.SelectedItem as Ammunition;
             var weapon = (Weapon)this.WeaponDataGrid.SelectedItem;
-            var result = weapon.Use(ammunition);
+            var result = weapon.Use(new UseItem(ammunition, 0));
 
             var windowResult = ConciergeWindowService.ShowUseItemWindow(typeof(UseItemWindow), result);
 
@@ -385,7 +385,7 @@ namespace Concierge.Display.Pages
                 var index = this.AmmoDataGrid.SelectedIndex;
                 var oldItem = ammunition.DeepCopy();
 
-                ammunition.Use();
+                ammunition.Use(UseItem.Empty);
                 this.DrawAmmoList();
                 this.AmmoDataGrid.SetSelectedIndex(index);
 

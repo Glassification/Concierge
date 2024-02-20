@@ -8,18 +8,19 @@ namespace Concierge.Leveling
     using System.Linq;
 
     using Concierge.Character;
-    using Concierge.Character.Spellcasting;
+    using Concierge.Character.Dispositions;
+    using Concierge.Character.Enums;
+    using Concierge.Character.Magic;
     using Concierge.Commands;
-    using Concierge.Common;
     using Concierge.Common.Enums;
     using Concierge.Leveling.Dtos.Leveler;
     using Concierge.Tools.DiceRoller;
 
     public sealed class ConciergeLeveler
     {
-        private readonly ConciergeCharacter character;
+        private readonly CharacterSheet character;
 
-        public ConciergeLeveler(ConciergeCharacter character)
+        public ConciergeLeveler(CharacterSheet character)
         {
             this.character = character;
         }
@@ -43,7 +44,7 @@ namespace Concierge.Leveling
 
         private CharacterClassDto LevelUpCharacterClass(int classNumber)
         {
-            var levelClass = this.character.Properties.GetClassByNumber(classNumber);
+            var levelClass = this.character.Disposition.GetClass(classNumber);
             var oldClass = levelClass.DeepCopy();
 
             levelClass.Level++;
@@ -51,17 +52,18 @@ namespace Concierge.Leveling
             return new CharacterClassDto(oldClass, levelClass.DeepCopy());
         }
 
-        private MagicClassDto LevelUpMagicClass(CharacterClass newClass)
+        private MagicClassDto LevelUpMagicClass(Class newClass)
         {
-            var magicClass = this.character.Magic.MagicClasses.Where(x => x.Name.Equals(newClass.Name)).FirstOrDefault();
+            var magicClass = this.character.SpellCasting.MagicalClasses.Where(x => x.Name.Equals(newClass.Name)).FirstOrDefault();
             var oldMagicClass = magicClass?.DeepCopy();
 
-            magicClass?.LevelUp(LevelingMap.GetSpellSlotIncrease(newClass.Name, newClass.Subclass, newClass.Level));
+            //TODO
+            //magicClass?.LevelUp(LevelingMap.GetSpellSlotIncrease(newClass.Name, newClass.Subclass, newClass.Level));
 
             return new MagicClassDto(oldMagicClass, magicClass?.DeepCopy());
         }
 
-        private ClassResourcesDto LevelUpClassResource(CharacterClass newClass)
+        private ClassResourcesDto LevelUpClassResource(Class newClass)
         {
             var resourceIncrease = LevelingMap.GetResourceIncrease(newClass.Name, newClass.Subclass, newClass.Level);
             var resource = this.character.Vitality.ClassResources.Where(x => x.Type.Equals(resourceIncrease.Name, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
@@ -75,24 +77,26 @@ namespace Concierge.Leveling
             return new ClassResourcesDto(oldResource, resource?.DeepCopy());
         }
 
-        private SpellSlotsDto LevelUpSpellSlots(MagicClass? newClass)
+        private SpellSlotsDto LevelUpSpellSlots(MagicalClass? newClass)
         {
-            var oldSpellSlots = this.character.Magic.SpellSlots.DeepCopy();
+            var oldSpellSlots = this.character.SpellCasting.SpellSlots.DeepCopy();
 
             if (newClass is not null)
             {
-                this.character.Magic.SpellSlots.LevelUp(LevelingMap.GetSpellSlotIncrease(newClass.Name, string.Empty, newClass.Level));
+                //TODO
+                //this.character.SpellCasting.SpellSlots.LevelUp(LevelingMap.GetSpellSlotIncrease(newClass.Name, string.Empty, newClass.Level));
             }
 
-            return new SpellSlotsDto(oldSpellSlots, this.character.Magic.SpellSlots.DeepCopy());
+            return new SpellSlotsDto(oldSpellSlots, this.character.SpellCasting.SpellSlots.DeepCopy());
         }
 
         private VitalityDto LevelUpVitality(Dice hitDie, int bonusHp)
         {
-            var newHp = DiceRoll.RollHitDie(hitDie) + Constants.Bonus(this.character.Characteristic.Attributes.Constitution) + bonusHp;
+            var newHp = DiceRoll.RollHitDie(hitDie) + this.character.Attributes.Constitution.Bonus + bonusHp;
             var oldVitality = this.character.Vitality.DeepCopy();
 
-            this.character.Vitality.LevelUp(hitDie, newHp);
+            //TODO
+            //this.character.Vitality.LevelUp(hitDie, newHp);
 
             return new VitalityDto(oldVitality, this.character.Vitality.DeepCopy());
         }

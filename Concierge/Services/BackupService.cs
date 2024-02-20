@@ -48,7 +48,7 @@ namespace Concierge.Services
 
         private static string GenerateSaveName(CcsFile ccsFile)
         {
-            var name = ccsFile.Character.Properties.Name.Strip(" ");
+            var name = ccsFile.Character.Disposition.Name.Strip(" ");
             name = name.IsNullOrWhiteSpace() ? "Character" : name;
 
             return $"{name}_Backup";
